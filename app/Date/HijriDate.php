@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class HijriDate extends CalendarDate {
 	/** @var int[] Convert GEDCOM month names to month numbers  */
-	public static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
+	public static $MONTH_ABBREV = ['' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12];
 
 	/**
 	 * Create a date from either:
@@ -53,7 +53,7 @@ class HijriDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram */ I18N::translateContext('NOMINATIVE', 'Muharram'),
 				2  => /* I18N: http://en.wikipedia.org/wiki/Safar */ I18N::translateContext('NOMINATIVE', 'Safar'),
@@ -67,7 +67,7 @@ class HijriDate extends CalendarDate {
 				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal */ I18N::translateContext('NOMINATIVE', 'Shawwal'),
 				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */ I18N::translateContext('NOMINATIVE', 'Dhu al-Qi’dah'),
 				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */ I18N::translateContext('NOMINATIVE', 'Dhu al-Hijjah'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -85,7 +85,7 @@ class HijriDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram */ I18N::translateContext('GENITIVE', 'Muharram'),
 				2  => /* I18N: http://en.wikipedia.org/wiki/Safar */ I18N::translateContext('GENITIVE', 'Safar'),
@@ -99,7 +99,7 @@ class HijriDate extends CalendarDate {
 				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal */ I18N::translateContext('GENITIVE', 'Shawwal'),
 				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */ I18N::translateContext('GENITIVE', 'Dhu al-Qi’dah'),
 				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */ I18N::translateContext('GENITIVE', 'Dhu al-Hijjah'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -117,7 +117,7 @@ class HijriDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram */ I18N::translateContext('LOCATIVE', 'Muharram'),
 				2  => /* I18N: http://en.wikipedia.org/wiki/Safar */ I18N::translateContext('LOCATIVE', 'Safar'),
@@ -131,7 +131,7 @@ class HijriDate extends CalendarDate {
 				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal */ I18N::translateContext('LOCATIVE', 'Shawwal'),
 				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */ I18N::translateContext('LOCATIVE', 'Dhu al-Qi’dah'),
 				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */ I18N::translateContext('LOCATIVE', 'Dhu al-Hijjah'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -149,7 +149,7 @@ class HijriDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram */ I18N::translateContext('INSTRUMENTAL', 'Muharram'),
 				2  => /* I18N: http://en.wikipedia.org/wiki/Safar */ I18N::translateContext('INSTRUMENTAL', 'Safar'),
@@ -163,7 +163,7 @@ class HijriDate extends CalendarDate {
 				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal */ I18N::translateContext('INSTRUMENTAL', 'Shawwal'),
 				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */ I18N::translateContext('INSTRUMENTAL', 'Dhu al-Qi’dah'),
 				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */ I18N::translateContext('INSTRUMENTAL', 'Dhu al-Hijjah'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];

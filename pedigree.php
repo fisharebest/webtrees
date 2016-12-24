@@ -179,7 +179,7 @@ $controller
 						<?php echo FunctionsEdit::editFieldInteger('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
+						<?php echo FunctionsEdit::selectEditControl('orientation', [0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')], null, $controller->orientation); ?>
 					</td>
 					<td class="optionbox center">
 						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>

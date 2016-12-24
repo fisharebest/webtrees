@@ -300,9 +300,9 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 	<table class="list_table width100" border="0">
 	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">';
 
-	$all           = strlen($qs) ? explode(',', strtoupper($qs)) : array();
-	$preselDefault = array();
-	$preselCustom  = array();
+	$all           = strlen($qs) ? explode(',', strtoupper($qs)) : [];
+	$preselDefault = [];
+	$preselCustom  = [];
 	foreach ($all as $one) {
 		if (GedcomTag::isTag($one)) {
 			$preselDefault[] = $one;
@@ -547,7 +547,7 @@ if ($action === 'filter') {
 	// Output Individual
 	if ($type === 'indi') {
 		echo '<div id="find-output">';
-		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -568,8 +568,8 @@ if ($action === 'filter') {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			FunctionsDb::searchFamilyNames($filter_array, array($WT_TREE)),
-			FunctionsDb::searchFamilies($filter_array, array($WT_TREE))
+			FunctionsDb::searchFamilyNames($filter_array, [$WT_TREE]),
+			FunctionsDb::searchFamilies($filter_array, [$WT_TREE])
 		));
 
 		if ($myfamlist) {
@@ -673,7 +673,7 @@ if ($action === 'filter') {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = FunctionsDb::searchRepositories($filter_array, array($WT_TREE));
+			$repo_list = FunctionsDb::searchRepositories($filter_array, [$WT_TREE]);
 		} else {
 			$repo_list = FunctionsDb::getRepositoryList($WT_TREE);
 		}
@@ -695,7 +695,7 @@ if ($action === 'filter') {
 	if ($type == "note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = FunctionsDb::searchNotes($filter_array, array($WT_TREE));
+			$mynotelist = FunctionsDb::searchNotes($filter_array, [$WT_TREE]);
 		} else {
 			$mynotelist = FunctionsDb::getNoteList($WT_TREE);
 		}
@@ -717,7 +717,7 @@ if ($action === 'filter') {
 	if ($type == "source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = FunctionsDb::searchSources($filter_array, array($WT_TREE));
+			$mysourcelist = FunctionsDb::searchSources($filter_array, [$WT_TREE]);
 		} else {
 			$mysourcelist = FunctionsDb::getSourceList($WT_TREE);
 		}

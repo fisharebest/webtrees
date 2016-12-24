@@ -326,7 +326,7 @@ $controller->pageHeader();
 <?php
 
 // Fetch data for day/month/year views
-$found_facts = array();
+$found_facts = [];
 
 switch ($view) {
 case 'day':
@@ -337,7 +337,7 @@ case 'month':
 	$cal_date->setJdFromYmd();
 	// Make a separate list for each day. Unspecified/invalid days go in day 0.
 	for ($d = 0; $d <= $days_in_month; ++$d) {
-		$found_facts[$d] = array();
+		$found_facts[$d] = [];
 	}
 	// Fetch events for each day
 	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd) {
@@ -364,9 +364,9 @@ case 'year':
 }
 
 // Group the facts by family/individual
-$indis     = array();
-$fams      = array();
-$cal_facts = array();
+$indis     = [];
+$fams      = [];
+$cal_facts = [];
 
 switch ($view) {
 case 'year':
@@ -391,7 +391,7 @@ case 'day':
 	break;
 case 'month':
 	foreach ($found_facts as $d => $facts) {
-		$cal_facts[$d] = array();
+		$cal_facts[$d] = [];
 		foreach ($facts as $fact) {
 			$xref = $fact->getParent()->getXref();
 			if (empty($cal_facts[$d][$xref])) {
@@ -484,7 +484,7 @@ case 'month':
 				echo '<div class="details1" style="height: 180px; overflow: auto;">';
 				echo calendar_list_text($cal_facts[0], '', '', false);
 				echo '</div>';
-				$cal_facts[0] = array();
+				$cal_facts[0] = [];
 			}
 		} else {
 			// Format the day number using the calendar
@@ -550,7 +550,7 @@ echo '</div>'; //close "calendar-page"
  * @return array
  */
 function apply_filter($facts, $filterof, $filtersx) {
-	$filtered      = array();
+	$filtered      = [];
 	$hundred_years = WT_CLIENT_JD - 36525;
 	foreach ($facts as $fact) {
 		$record = $fact->getParent();

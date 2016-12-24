@@ -34,8 +34,8 @@ class ReportPdfCell extends ReportBaseCell {
 		}
 		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		$match    = array();
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
+		$match    = [];
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
 			if (!empty($this->bgcolor)) {

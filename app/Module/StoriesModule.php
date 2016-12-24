@@ -88,11 +88,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				" WHERE module_name=?" .
 				" AND xref=?" .
 				" AND gedcom_id=?"
-			)->execute(array(
+			)->execute([
 				$this->getName(),
 				$controller->record->getXref(),
 				$controller->record->getTree()->getTreeId(),
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 
 		$html = '';
 		foreach ($block_ids as $block_id) {
@@ -132,11 +132,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				" WHERE module_name=?" .
 				" AND xref=?" .
 				" AND gedcom_id=?"
-			)->execute(array(
+			)->execute([
 				$this->getName(),
 				$controller->record->getXref(),
 				$controller->record->getTree()->getTreeId(),
-			))->fetchOne();
+			])->fetchOne();
 
 		return $count_of_stories == 0;
 	}
@@ -163,16 +163,16 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				if ($block_id) {
 					Database::prepare(
 						"UPDATE `##block` SET gedcom_id=?, xref=? WHERE block_id=?"
-					)->execute(array(Filter::postInteger('gedcom_id'), Filter::post('xref', WT_REGEX_XREF), $block_id));
+					)->execute([Filter::postInteger('gedcom_id'), Filter::post('xref', WT_REGEX_XREF), $block_id]);
 				} else {
 					Database::prepare(
 						"INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
-					)->execute(array(
+					)->execute([
 						Filter::postInteger('gedcom_id'),
 						Filter::post('xref', WT_REGEX_XREF),
 						$this->getName(),
 						0,
-					));
+					]);
 					$block_id = Database::getInstance()->lastInsertId();
 				}
 				$this->setBlockSetting($block_id, 'title', Filter::post('title'));
@@ -190,7 +190,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					$story_body = $this->getBlockSetting($block_id, 'story_body');
 					$xref       = Database::prepare(
 						"SELECT xref FROM `##block` WHERE block_id=?"
-					)->execute(array($block_id))->fetchOne();
+					)->execute([$block_id])->fetchOne();
 				} else {
 					$controller->setPageTitle(I18N::translate('Add a story'));
 					$title      = '';
@@ -291,11 +291,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 			Database::prepare(
 				"DELETE FROM `##block_setting` WHERE block_id=?"
-			)->execute(array($block_id));
+			)->execute([$block_id]);
 
 			Database::prepare(
 				"DELETE FROM `##block` WHERE block_id=?"
-			)->execute(array($block_id));
+			)->execute([$block_id]);
 		} else {
 			header('Location: ' . WT_BASE_URL);
 			exit;
@@ -340,7 +340,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
+		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
 
 		?>
 		<ol class="breadcrumb small">
@@ -449,7 +449,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
+		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
 
 		echo '<h2 class="center">', I18N::translate('Stories'), '</h2>';
 		if (count($stories) > 0) {

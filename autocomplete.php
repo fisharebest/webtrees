@@ -32,7 +32,7 @@ $type = Filter::get('field');
 
 switch ($type) {
 case 'ASSO': // Associates of an individuals, whose name contains the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
 		"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
@@ -40,12 +40,12 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
 		" WHERE (n_full LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND i_file = :tree_id" .
 		" ORDER BY n_full COLLATE :collate"
-	)->execute(array(
+	)->execute([
 		'term_1'  => $term,
 		'term_2'  => $term,
 		'tree_id' => $WT_TREE->getTreeId(),
 		'collate' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 
 	// Filter for privacy and whether they could be alive at the right time
 	$event_date = Filter::get('extra');
@@ -73,7 +73,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 			} else {
 				$label .= ', <i>' . $person->getLifeSpan() . '</i>';
 			}
-			$data[$row->xref] = array('value' => $row->xref, 'label' => $label);
+			$data[$row->xref] = ['value' => $row->xref, 'label' => $label];
 		}
 	}
 	echo json_encode($data);
@@ -81,17 +81,17 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 	return;
 
 case 'CEME': // Cemetery fields, that contain the search term
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
 		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file = :tree_id" .
 		" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'tree_id'   => $WT_TREE->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -106,7 +106,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 	return;
 
 case 'FAM': // Families, whose name contains the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_FAM_rows($WT_TREE, $term);
 	// Filter for privacy
@@ -115,9 +115,9 @@ case 'FAM': // Families, whose name contains the search terms
 		if ($family->canShowName()) {
 			$marriage_year = $family->getMarriageYear();
 			if ($marriage_year) {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>');
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>'];
 			} else {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName());
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName()];
 			}
 		}
 	}
@@ -133,17 +133,17 @@ case 'GIVN': // Given names, that start with the search term
 			" FROM `##name`" .
 			" WHERE n_givn LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
 			" ORDER BY n_givn COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'term'      => $term,
 			'tree_id'   => $WT_TREE->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchOneColumn()
+		])->fetchOneColumn()
 	);
 
 	return;
 
 case 'INDI': // Individuals, whose name contains the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
 		"SELECT i_id AS xref, i_gedcom AS gedcom, n_full" .
@@ -151,17 +151,17 @@ case 'INDI': // Individuals, whose name contains the search terms
 		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
 		" WHERE (n_full LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND i_file = :tree_id" .
 		" ORDER BY n_full COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term_1'    => $term,
 		'term_2'    => $term,
 		'tree_id'   => $WT_TREE->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $row->xref, 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = ['value' => $row->xref, 'label' => str_replace(['@N.N.', '@P.N.'], [I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')], $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>'];
 		}
 	}
 	echo json_encode($data);
@@ -169,14 +169,14 @@ case 'INDI': // Individuals, whose name contains the search terms
 	return;
 
 case 'NOTE': // Notes which contain the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_NOTE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$note = Note::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($note->canShowName()) {
-			$data[] = array('value' => $note->getXref(), 'label' => $note->getFullName());
+			$data[] = ['value' => $note->getXref(), 'label' => $note->getFullName()];
 		}
 	}
 	echo json_encode($data);
@@ -184,14 +184,14 @@ case 'NOTE': // Notes which contain the search terms
 	return;
 
 case 'OBJE':
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_OBJE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($media->canShowName()) {
-			$data[] = array('value' => $row->xref, 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName());
+			$data[] = ['value' => $row->xref, 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName()];
 		}
 	}
 	echo json_encode($data);
@@ -200,7 +200,7 @@ case 'OBJE':
 
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy. Place names on their own do not identify individuals.
-	$data = array();
+	$data = [];
 	foreach (Place::findPlaces($term, $WT_TREE) as $place) {
 		$data[] = $place->getGedcomName();
 	}
@@ -244,17 +244,17 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 			" FROM `##places`" .
 			" WHERE p_place LIKE CONCAT('%', :term, '%') AND p_file = :tree_id" .
 			" ORDER BY p_place COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'term'      => $term,
 			'tree_id'   => $WT_TREE->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchOneColumn()
+		])->fetchOneColumn()
 	);
 
 	return;
 
 case 'REPO': // Repositories, that include the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_REPO_rows($WT_TREE, $term);
 	// Filter for privacy
@@ -262,7 +262,7 @@ case 'REPO': // Repositories, that include the search terms
 		$record = Repository::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($record->canShowName()) {
 			foreach ($record->getFacts('NAME') as $fact) {
-				$data[] = array('value' => $record->getXref(), 'label' => $fact->getValue());
+				$data[] = ['value' => $record->getXref(), 'label' => $fact->getValue()];
 			}
 		}
 	}
@@ -271,7 +271,7 @@ case 'REPO': // Repositories, that include the search terms
 	return;
 
 case 'REPO_NAME': // Repository names, that include the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_REPO_rows($WT_TREE, $term);
 	// Filter for privacy
@@ -286,7 +286,7 @@ case 'REPO_NAME': // Repository names, that include the search terms
 	return;
 
 case 'SOUR': // Sources, that include the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_SOUR_rows($WT_TREE, $term);
 	// Filter for privacy
@@ -294,7 +294,7 @@ case 'SOUR': // Sources, that include the search terms
 		$record = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($record->canShowName()) {
 			foreach ($record->getFacts('TITL') as $fact) {
-				$data[] = array('value' => $record->getXref(), 'label' => $fact->getValue());
+				$data[] = ['value' => $record->getXref(), 'label' => $fact->getValue()];
 			}
 		}
 	}
@@ -303,18 +303,18 @@ case 'SOUR': // Sources, that include the search terms
 	return;
 
 case 'PAGE': // Citation details, for a given source, that contain the search term
-	$data = array();
+	$data = [];
 	$sid  = Filter::get('extra', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
 		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND i_file = :tree_id"
-	)->execute(array(
+	)->execute([
 		'xref'    => $sid,
 		'term'    => $term,
 		'tree_id' => $WT_TREE->getTreeId(),
-	))->fetchAll();
+	])->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -330,11 +330,11 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 		"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
 		" FROM `##families`" .
 		" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
-	)->execute(array(
+	)->execute([
 		'xref'    => $sid,
 		'term'    => $term,
 		'tree_id' => $WT_TREE->getTreeId(),
-	))->fetchAll();
+	])->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -354,18 +354,18 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	return;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
 		"SELECT s_id AS xref, s_gedcom AS gedcom, s_name" .
 		" FROM `##sources`" .
 		" WHERE s_name LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND s_file = :tree_id" .
 		" ORDER BY s_name COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $WT_TREE->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -385,24 +385,24 @@ case 'SURN': // Surnames, that start with the search term
 			" FROM `##name`" .
 			" WHERE n_surname LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
 			" ORDER BY n_surname COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'term'      => $term,
 			'tree_id'   => $WT_TREE->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchOneColumn()
+		])->fetchOneColumn()
 	);
 
 	return;
 
 case 'IFSRO':
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_INDI_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = ['value' => $person->getXref(), 'label' => str_replace(['@N.N.', '@P.N.'], [I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')], $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>'];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -411,7 +411,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($source->canShowName()) {
-			$data[] = array('value' => $source->getXref(), 'label' => $source->getFullName());
+			$data[] = ['value' => $source->getXref(), 'label' => $source->getFullName()];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -420,7 +420,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$repository = Repository::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($repository->canShowName()) {
-			$data[] = array('value' => $repository->getXref(), 'label' => $repository->getFullName());
+			$data[] = ['value' => $repository->getXref(), 'label' => $repository->getFullName()];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -429,7 +429,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($media->canShowName()) {
-			$data[] = array('value' => $media->getXref(), 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName());
+			$data[] = ['value' => $media->getXref(), 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName()];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -440,9 +440,9 @@ case 'IFSRO':
 		if ($family->canShowName()) {
 			$marriage_year = $family->getMarriageYear();
 			if ($marriage_year) {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>');
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>'];
 			} else {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName());
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName()];
 			}
 		}
 	}
@@ -452,7 +452,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$note = Note::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($note->canShowName()) {
-			$data[] = array('value' => $note->getXref(), 'label' => $note->getFullName());
+			$data[] = ['value' => $note->getXref(), 'label' => $note->getFullName()];
 		}
 	}
 	echo json_encode($data);
@@ -460,14 +460,14 @@ case 'IFSRO':
 	return;
 
 case 'IFS':
-	$data = array();
+	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_INDI_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = ['value' => $person->getXref(), 'label' => str_replace(['@N.N.', '@P.N.'], [I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')], $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>'];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -476,7 +476,7 @@ case 'IFS':
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($source->canShowName()) {
-			$data[] = array('value' => $source->getXref(), 'label' => $source->getFullName());
+			$data[] = ['value' => $source->getXref(), 'label' => $source->getFullName()];
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -487,9 +487,9 @@ case 'IFS':
 		if ($family->canShowName()) {
 			$marriage_year = $family->getMarriageYear();
 			if ($marriage_year) {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>');
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName() . ', <i>' . $marriage_year . '</i>'];
 			} else {
-				$data[] = array('value' => $family->getXref(), 'label' => $family->getFullName());
+				$data[] = ['value' => $family->getXref(), 'label' => $family->getFullName()];
 			}
 		}
 	}
@@ -515,11 +515,11 @@ function get_FAM_rows(Tree $tree, $term) {
 		" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id" .
 		" AND husb_name.n_type <> '_MARNM' AND wife_name.n_type <> '_MARNM'" .
 		" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }
 
 /**
@@ -536,11 +536,11 @@ function get_INDI_rows(Tree $tree, $term) {
 		" FROM `##individuals`" .
 		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
 		" WHERE n_full LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND i_file = :tree_id ORDER BY n_full COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }
 
 /**
@@ -558,11 +558,11 @@ function get_NOTE_rows(Tree $tree, $term) {
 		" JOIN `##name` ON o_id = n_id AND o_file = n_file" .
 		" WHERE o_gedcom LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND o_file = :tree_id AND o_type = 'NOTE'" .
 		" ORDER BY n_full COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }
 
 /**
@@ -579,12 +579,12 @@ function get_OBJE_rows(Tree $tree, $term) {
 		" FROM `##media`" .
 		" WHERE (m_titl LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND m_file = :tree_id" .
 		" ORDER BY m_titl COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term_1'    => $term,
 		'term_2'    => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }
 
 /**
@@ -602,11 +602,11 @@ function get_REPO_rows(Tree $tree, $term) {
 		" JOIN `##name` ON o_id = n_id AND o_file = n_file" .
 		" WHERE n_full LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND o_file = :tree_id AND o_type = 'REPO'" .
 		" ORDER BY n_full COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }
 
 /**
@@ -623,9 +623,9 @@ function get_SOUR_rows(Tree $tree, $term) {
 		" FROM `##sources`" .
 		" WHERE s_name LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND s_file = :tree_id" .
 		" ORDER BY s_name COLLATE :collation"
-	)->execute(array(
+	)->execute([
 		'term'      => $term,
 		'tree_id'   => $tree->getTreeId(),
 		'collation' => I18N::collation(),
-	))->fetchAll();
+	])->fetchAll();
 }

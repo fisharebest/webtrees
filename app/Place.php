@@ -38,7 +38,7 @@ class Place {
 			$this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
 		} else {
 			// Empty => "Top level"
-			$this->gedcom_place = array();
+			$this->gedcom_place = [];
 		}
 		$this->tree = $tree;
 	}
@@ -53,11 +53,11 @@ class Place {
 		foreach (array_reverse($this->gedcom_place) as $place) {
 			$place_id = Database::prepare(
 				"SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
-			)->execute(array(
+			)->execute([
 				'parent_id' => $place_id,
 				'place'     => $place,
 				'tree_id'   => $this->tree->getTreeId(),
-			))->fetchOne();
+			])->fetchOne();
 		}
 
 		return $place_id;
@@ -78,7 +78,7 @@ class Place {
 	 * @return Place[]
 	 */
 	public function getChildPlaces() {
-		$children = array();
+		$children = [];
 		if ($this->getPlaceId()) {
 			$parent_text = self::GEDCOM_SEPARATOR . $this->getGedcomName();
 		} else {
@@ -89,11 +89,11 @@ class Place {
 			"SELECT SQL_CACHE p_place FROM `##places`" .
 			" WHERE p_parent_id = :parent_id AND p_file = :tree_id" .
 			" ORDER BY p_place COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'parent_id' => $this->getPlaceId(),
 			'tree_id'   => $this->tree->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 		foreach ($rows as $row) {
 			$children[] = new self($row . $parent_text, $this->tree);
 		}
@@ -161,7 +161,7 @@ class Place {
 			return '<span dir="auto">' . Filter::escapeHtml(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
 		} else {
 			// If a place hierarchy is a list of distinct items
-			$tmp = array();
+			$tmp = [];
 			foreach ($this->gedcom_place as $place) {
 				$tmp[] = '<span dir="auto">' . Filter::escapeHtml($place) . '</span>';
 			}
@@ -201,7 +201,7 @@ class Place {
 	 * @return string
 	 */
 	public function getReverseName() {
-		$tmp = array();
+		$tmp = [];
 		foreach (array_reverse($this->gedcom_place) as $place) {
 			$tmp[] = '<span dir="auto">' . Filter::escapeHtml($place) . '</span>';
 		}
@@ -217,7 +217,7 @@ class Place {
 	 * @return string[]
 	 */
 	public static function allPlaces(Tree $tree) {
-		$places = array();
+		$places = [];
 		$rows   =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
@@ -233,10 +233,10 @@ class Place {
 				" WHERE p1.p_file = :tree_id" .
 				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE :collate"
 			)
-			->execute(array(
+			->execute([
 				'tree_id' => $tree->getTreeId(),
 				'collate' => I18N::collation(),
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[] = new self($row, $tree);
 		}
@@ -253,7 +253,7 @@ class Place {
 	 * @return Place[]
 	 */
 	public static function findPlaces($filter, Tree $tree) {
-		$places = array();
+		$places = [];
 		$rows   =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
@@ -268,12 +268,12 @@ class Place {
 				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
 				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', :filter_1, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', :filter_2, '%') AND p1.p_file = :tree_id" .
 				" ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE :collation"
-			)->execute(array(
+			)->execute([
 				'filter_1'  => preg_quote($filter),
 				'filter_2'  => preg_quote($filter),
 				'tree_id'   => $tree->getTreeId(),
 				'collation' => I18N::collation(),
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[] = new self($row, $tree);
 		}

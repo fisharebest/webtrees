@@ -43,17 +43,17 @@ $vars     = Filter::get('vars');
 $varnames = Filter::get('varnames');
 $type     = Filter::get('type');
 if (!is_array($vars)) {
-	$vars = array();
+	$vars = [];
 }
 if (!is_array($varnames)) {
-	$varnames = array();
+	$varnames = [];
 }
 if (!is_array($type)) {
-	$type = array();
+	$type = [];
 }
 
 //-- setup the arrays
-$newvars = array();
+$newvars = [];
 foreach ($vars as $name => $var) {
 	$newvars[$name]['id'] = $var;
 	if (!empty($type[$name])) {
@@ -95,7 +95,7 @@ foreach ($varnames as $name) {
 	}
 }
 
-$reports = array();
+$reports = [];
 foreach (Module::getActiveReports($WT_TREE) as $rep) {
 	$menu = $rep->getReportMenu();
 	if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
@@ -153,7 +153,7 @@ case 'setup':
 		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['description'], '</td></tr>';
 
 	if (!isset($report_array['inputs'])) {
-		$report_array['inputs'] = array();
+		$report_array['inputs'] = [];
 	}
 	foreach ($report_array['inputs'] as $input) {
 		echo '<tr><td class="descriptionbox wrap">';

@@ -133,7 +133,7 @@ $controller
 echo '<h2 class="center">', I18N::translate('Individuals'), '</h2>';
 
 // Print a selection list of initial letters
-$list = array();
+$list = [];
 foreach (QueryName::surnameAlpha($WT_TREE, $show_marnm === 'yes', false) as $letter => $count) {
 	switch ($letter) {
 	case '@':
@@ -223,7 +223,7 @@ if ($show === 'indi' || $show === 'surn') {
 			if ($surname || $show_all === 'yes') {
 				// Don't show the list until we have some filter criteria
 				$show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
-				$list = array();
+				$list = [];
 				foreach ($givn_initials as $givn_initial => $count) {
 					switch ($givn_initial) {
 					case '@':

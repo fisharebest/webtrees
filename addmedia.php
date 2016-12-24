@@ -369,10 +369,10 @@ case 'update': // Save the information from the “editmedia” action
 	}
 
 	// Insert the 1 FILE xxx record into the arrays used by function FunctionsEdit::handle_updatesges()
-	$glevels = array_merge(array('1'), $glevels);
-	$tag     = array_merge(array('FILE'), $tag);
-	$islink  = array_merge(array(0), $islink);
-	$text    = array_merge(array($newFilename), $text);
+	$glevels = array_merge(['1'], $glevels);
+	$tag     = array_merge(['FILE'], $tag);
+	$islink  = array_merge([0], $islink);
+	$text    = array_merge([$newFilename], $text);
 
 	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";

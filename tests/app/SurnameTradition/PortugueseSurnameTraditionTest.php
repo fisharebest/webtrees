@@ -56,7 +56,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
-			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),
+			['NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'],
 			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
 		);
 	}
@@ -68,7 +68,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
-			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),
+			['NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'],
 			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
 		);
 	}
@@ -80,7 +80,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
-			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),
+			['NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'],
 			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
 		);
 	}
@@ -92,7 +92,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithNoParentsNames() {
 		$this->assertSame(
-			array('NAME' => '// //', 'SURN' => ''),
+			['NAME' => '// //', 'SURN' => ''],
 			$this->surname_tradition->newChildNames('', '', 'U')
 		);
 	}
@@ -104,11 +104,11 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesCompunds() {
 		$this->assertSame(
-			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),
+			['NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'],
 			$this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
 		);
 		$this->assertSame(
-			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),
+			['NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'],
 			$this->surname_tradition->newChildNames('Gabriel /Garcia y Iglesias/', 'Maria /Ruiz y Lorca/', 'M')
 		);
 	}
@@ -120,7 +120,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
-			array('NAME' => '// /Garcia/', 'SURN' => 'Garcia'),
+			['NAME' => '// /Garcia/', 'SURN' => 'Garcia'],
 			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'M')
 		);
 	}
@@ -132,7 +132,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
-			array('NAME' => '// /Iglesias/', 'SURN' => 'Iglesias'),
+			['NAME' => '// /Iglesias/', 'SURN' => 'Iglesias'],
 			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'F')
 		);
 	}
@@ -144,7 +144,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
-			array('NAME' => '// //'),
+			['NAME' => '// //'],
 			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
 		);
 	}
@@ -156,7 +156,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
-			array('NAME' => '// //'),
+			['NAME' => '// //'],
 			$this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
 		);
 	}
@@ -168,7 +168,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
-			array('NAME' => '// //'),
+			['NAME' => '// //'],
 			$this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
 		);
 	}
@@ -180,7 +180,7 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
-			array('NAME' => '// //'),
+			['NAME' => '// //'],
 			$this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
 		);
 	}

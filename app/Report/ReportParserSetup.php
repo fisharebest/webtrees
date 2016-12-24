@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class ReportParserSetup extends ReportParserBase {
 	/** @var array An array of report options/parameters */
-	private $data = array();
+	private $data = [];
 
 	/** @var string[] An array of input attributes */
 	private $input;
@@ -105,20 +105,20 @@ class ReportParserSetup extends ReportParserBase {
 	 */
 	protected function inputStartHandler($attrs) {
 		$this->text  = '';
-		$this->input = array(
+		$this->input = [
 			'name'    => isset($attrs['name']) ? $attrs['name'] : '',
 			'type'    => isset($attrs['type']) ? $attrs['type'] : '',
 			'lookup'  => isset($attrs['lookup']) ? $attrs['lookup'] : '',
 			'options' => isset($attrs['options']) ? $attrs['options'] : '',
 			'default' => '',
 			'value'   => '',
-		);
+		];
 
 		if (isset($attrs['default'])) {
 			if ($attrs['default'] === 'NOW') {
 				$this->input['default'] = date('d M Y');
 			} else {
-				$match = array();
+				$match = [];
 				if (preg_match('/NOW\s*([+\-])\s*(\d+)/', $attrs['default'], $match) > 0) {
 					$plus = 1;
 					if ($match[1] === '-') {
@@ -138,7 +138,7 @@ class ReportParserSetup extends ReportParserBase {
 	protected function inputEndHandler() {
 		$this->input['value'] = $this->text;
 		if (!isset($this->data['inputs'])) {
-			$this->data['inputs'] = array();
+			$this->data['inputs'] = [];
 		}
 		$this->data['inputs'][] = $this->input;
 		$this->text             = '';

@@ -46,7 +46,7 @@ class PedigreeController extends ChartController {
 	public $generations;
 
 	/** @var array data pertaining to each chart node */
-	public $nodes = array();
+	public $nodes = [];
 
 	/** @var int Number of nodes in the chart */
 	public $treesize;
@@ -58,7 +58,7 @@ class PedigreeController extends ChartController {
 	public $arrows;
 
 	/** @var array Holds results of chart dimension calculations */
-	public $chartsize = array();
+	public $chartsize = [];
 
 	/**
 	 * Create a pedigree controller
@@ -72,7 +72,7 @@ class PedigreeController extends ChartController {
 		$bxspacing         = Theme::theme()->parameter('chart-spacing-x');
 		$byspacing         = Theme::theme()->parameter('chart-spacing-y');
 		$curgen            = 1; // -- track which generation the algorithm is currently working on
-		$addoffset         = array();
+		$addoffset         = [];
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
 		if ($this->generations > 8) {
@@ -92,7 +92,7 @@ class PedigreeController extends ChartController {
 
 		// sosaAncestors() starts array at index 1 we need to start at 0
 		$this->nodes = array_map(function ($item) {
-			return array('indi' => $item, 'x' => 0, 'y' => 0);
+			return ['indi' => $item, 'x' => 0, 'y' => 0];
 		}, array_values($this->sosaAncestors($this->generations)));
 
 		//check earliest generation for any ancestors

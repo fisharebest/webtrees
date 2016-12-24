@@ -51,7 +51,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $controller, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
@@ -59,7 +59,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('days', 'infoStyle', 'block') as $name) {
+		foreach (['days', 'infoStyle', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -81,7 +81,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
 		// need to handle a few special cases.
 		// Fetch normal anniversaries...
-		$yahrzeits = array();
+		$yahrzeits = [];
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
 			foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
@@ -273,16 +273,16 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('calendar', array(
+		echo FunctionsEdit::selectEditControl('calendar', [
 			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
 			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
-		), null, $calendar, '');
+		], null, $calendar, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class JalaliDate extends CalendarDate {
 	/** @var int[] Convert GEDCOM month names to month numbers  */
-	public static $MONTH_ABBREV = array('' => 0, 'FARVA' => 1, 'ORDIB' => 2, 'KHORD' => 3, 'TIR' => 4, 'MORDA' => 5, 'SHAHR' => 6, 'MEHR' => 7, 'ABAN' => 8, 'AZAR' => 9, 'DEY' => 10, 'BAHMA' => 11, 'ESFAN' => 12);
+	public static $MONTH_ABBREV = ['' => 0, 'FARVA' => 1, 'ORDIB' => 2, 'KHORD' => 3, 'TIR' => 4, 'MORDA' => 5, 'SHAHR' => 6, 'MEHR' => 7, 'ABAN' => 8, 'AZAR' => 9, 'DEY' => 10, 'BAHMA' => 11, 'ESFAN' => 12];
 
 	/**
 	 * Create a date from either:
@@ -50,7 +50,7 @@ class JalaliDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: 1st month in the Persian/Jalali calendar */ I18N::translateContext('NOMINATIVE', 'Farvardin'),
 				2  => /* I18N: 2nd month in the Persian/Jalali calendar */ I18N::translateContext('NOMINATIVE', 'Ordibehesht'),
@@ -64,7 +64,7 @@ class JalaliDate extends CalendarDate {
 				10 => /* I18N: 10th month in the Persian/Jalali calendar */ I18N::translateContext('NOMINATIVE', 'Dey'),
 				11 => /* I18N: 11th month in the Persian/Jalali calendar */ I18N::translateContext('NOMINATIVE', 'Bahman'),
 				12 => /* I18N: 12th month in the Persian/Jalali calendar */ I18N::translateContext('NOMINATIVE', 'Esfand'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -82,7 +82,7 @@ class JalaliDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: 1st month in the Persian/Jalali calendar */ I18N::translateContext('GENITIVE', 'Farvardin'),
 				2  => /* I18N: 2nd month in the Persian/Jalali calendar */ I18N::translateContext('GENITIVE', 'Ordibehesht'),
@@ -96,7 +96,7 @@ class JalaliDate extends CalendarDate {
 				10 => /* I18N: 10th month in the Persian/Jalali calendar */ I18N::translateContext('GENITIVE', 'Dey'),
 				11 => /* I18N: 11th month in the Persian/Jalali calendar */ I18N::translateContext('GENITIVE', 'Bahman'),
 				12 => /* I18N: 12th month in the Persian/Jalali calendar */ I18N::translateContext('GENITIVE', 'Esfand'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -114,7 +114,7 @@ class JalaliDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: 1st month in the Persian/Jalali calendar */ I18N::translateContext('LOCATIVE', 'Farvardin'),
 				2  => /* I18N: 2nd month in the Persian/Jalali calendar */ I18N::translateContext('LOCATIVE', 'Ordibehesht'),
@@ -128,7 +128,7 @@ class JalaliDate extends CalendarDate {
 				10 => /* I18N: 10th month in the Persian/Jalali calendar */ I18N::translateContext('LOCATIVE', 'Dey'),
 				11 => /* I18N: 11th month in the Persian/Jalali calendar */ I18N::translateContext('LOCATIVE', 'Bahman'),
 				12 => /* I18N: 12th month in the Persian/Jalali calendar */ I18N::translateContext('LOCATIVE', 'Esfand'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -146,7 +146,7 @@ class JalaliDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: 1st month in the Persian/Jalali calendar */ I18N::translateContext('INSTRUMENTAL', 'Farvardin'),
 				2  => /* I18N: 2nd month in the Persian/Jalali calendar */ I18N::translateContext('INSTRUMENTAL', 'Ordibehesht'),
@@ -160,7 +160,7 @@ class JalaliDate extends CalendarDate {
 				10 => /* I18N: 10th month in the Persian/Jalali calendar */ I18N::translateContext('INSTRUMENTAL', 'Dey'),
 				11 => /* I18N: 11th month in the Persian/Jalali calendar */ I18N::translateContext('INSTRUMENTAL', 'Bahman'),
 				12 => /* I18N: 12th month in the Persian/Jalali calendar */ I18N::translateContext('INSTRUMENTAL', 'Esfand'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -178,7 +178,7 @@ class JalaliDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('Abbreviation for Persian month: Farvardin', 'Far'),
 				2  => I18N::translateContext('Abbreviation for Persian month: Ordibehesht', 'Ord'),
@@ -192,7 +192,7 @@ class JalaliDate extends CalendarDate {
 				10 => I18N::translateContext('Abbreviation for Persian month: Dey', 'Dey'),
 				11 => I18N::translateContext('Abbreviation for Persian month: Bahman', 'Bah'),
 				12 => I18N::translateContext('Abbreviation for Persian month: Esfand', 'Esf'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];

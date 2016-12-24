@@ -35,84 +35,84 @@ class QueryName {
 	private static function getAlphabetForLocale($locale) {
 		switch ($locale) {
 		case 'ar':
-			return array(
+			return [
 				'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی',
-			);
+			];
 		case 'cs':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			);
+			];
 		case 'da':
 		case 'nb':
 		case 'nn':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å',
-			);
+			];
 		case 'el':
-			return array(
+			return [
 				'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω',
-			);
+			];
 		case 'es':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			);
+			];
 		case 'et':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y',
-			);
+			];
 		case 'fi':
 		case 'sv':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö',
-			);
+			];
 		case 'he':
-			return array(
+			return [
 				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת',
-			);
+			];
 		case 'hu':
-			return array(
+			return [
 				'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS',
-			);
+			];
 		case 'lt':
-			return array(
+			return [
 				'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž',
-			);
+			];
 		case 'nl':
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ',
-			);
+			];
 		case 'pl':
-			return array(
+			return [
 				'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż',
-			);
+			];
 		case 'ro':
-			return array(
+			return [
 				'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			);
+			];
 		case 'ru':
-			return array(
+			return [
 				'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
-			);
+			];
 		case 'sk':
-			return array(
+			return [
 				'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž',
-			);
+			];
 		case 'sl':
-			return array(
+			return [
 				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
-			);
+			];
 		case 'sr':
-			return array(
+			return [
 				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
-			);
+			];
 		case 'tr':
-			return array(
+			return [
 				'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z',
-			);
+			];
 		default:
-			return array(
+			return [
 				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			);
+			];
 		}
 	}
 
@@ -240,7 +240,7 @@ class QueryName {
 	 * @return int[]
 	 */
 	public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
-		$alphas = array();
+		$alphas = [];
 
 		$sql =
 			"SELECT SQL_CACHE COUNT(n_id)" .
@@ -269,9 +269,9 @@ class QueryName {
 			" WHERE n_file = :tree_id AND n_surn <> ''" .
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		$args = array(
+		$args = [
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
 			$sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
@@ -291,9 +291,9 @@ class QueryName {
 			" WHERE n_file = :tree_id AND n_surn = ''" .
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		$args = array(
+		$args = [
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		$num_none = Database::prepare($sql)->execute($args)->fetchOne();
 		if ($num_none) {
@@ -316,7 +316,7 @@ class QueryName {
 	 * @return int[]
 	 */
 	public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
-		$alphas = array();
+		$alphas = [];
 
 		$sql =
 			"SELECT SQL_CACHE COUNT(DISTINCT n_id)" .
@@ -355,9 +355,9 @@ class QueryName {
 			" WHERE n_file = :tree_id" .
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		$args = array(
+		$args = [
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
@@ -406,10 +406,10 @@ class QueryName {
 			" WHERE n_file = :tree_id" .
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		$args = array(
+		$args = [
 			'tree_id'   => $tree->getTreeId(),
 			'collate_0' => I18N::collation(),
-		);
+		];
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
@@ -429,7 +429,7 @@ class QueryName {
 		$args['collate_2'] = I18N::collation();
 		$args['collate_3'] = I18N::collation();
 
-		$list = array();
+		$list = [];
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
 		}
@@ -461,9 +461,9 @@ class QueryName {
 			"WHERE n_file = :tree_id " .
 			($marnm ? "" : "AND n_type != '_MARNM'");
 
-		$args = array(
+		$args = [
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
@@ -487,7 +487,7 @@ class QueryName {
 		$args['collate_2'] = I18N::collation();
 		$args['collate_3'] = I18N::collation();
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
@@ -522,7 +522,7 @@ class QueryName {
 	 * @return Family[]
 	 */
 	public static function families(Tree $tree, $surn, $salpha, $galpha, $marnm) {
-		$list = array();
+		$list = [];
 		foreach (self::individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
 				$list[$family->getXref()] = $family;

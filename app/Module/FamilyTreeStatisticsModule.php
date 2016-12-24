@@ -51,7 +51,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE, $ctype;
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
@@ -77,7 +77,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		// This can be overriden when embedding in an HTML block
 		$block = '0';
 
-		foreach (array('show_common_surnames', 'number_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'block') as $name) {
+		foreach (['show_common_surnames', 'number_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -201,7 +201,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		if ($show_common_surnames) {
 			$surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, (int) $number_of_surnames);
 
-			$all_surnames = array();
+			$all_surnames = [];
 			foreach (array_keys($surnames) as $surname) {
 				$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $surname, '', false, false));
 			}

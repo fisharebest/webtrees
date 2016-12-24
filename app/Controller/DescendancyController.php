@@ -39,10 +39,10 @@ class DescendancyController extends ChartController {
 	public $generations;
 
 	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
-	public $dabo_num = array();
+	public $dabo_num = [];
 
 	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
-	public $dabo_sex = array();
+	public $dabo_sex = [];
 
 	/**
 	 * Create the descendancy controller

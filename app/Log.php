@@ -44,13 +44,13 @@ class Log {
 
 		Database::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
-		)->execute(array(
+		)->execute([
 					$log_type,
 					$message,
 					WT_CLIENT_IP,
 					Auth::id(),
 					$tree ? $tree->getTreeId() : null,
-		));
+		]);
 	}
 
 	/**

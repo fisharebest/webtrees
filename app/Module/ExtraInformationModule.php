@@ -52,7 +52,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 	public function getSidebarContent() {
 		global $controller;
 
-		$indifacts = array();
+		$indifacts = [];
 		// The individual’s own facts
 		foreach ($controller->record->getFacts() as $fact) {
 			if (self::showFact($fact)) {

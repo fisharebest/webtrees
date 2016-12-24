@@ -126,14 +126,14 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
-		$parameters = array(
+		$parameters = [
 			'chart-background-f'             => 'e9daf1',
 			'chart-background-m'             => 'b1cff0',
 			'chart-box-x'                    => 260,
 			'chart-box-y'                    => 85,
 			'distribution-chart-high-values' => '9ca3d4',
 			'distribution-chart-low-values'  => 'e5e6ef',
-		);
+		];
 
 		if (array_key_exists($parameter_name, $parameters)) {
 			return $parameters[$parameter_name];
@@ -148,10 +148,10 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return array(
+		return [
 			'themes/fab/jquery-ui-1.11.2/jquery-ui.css',
 			$this->assetUrl() . 'style.css',
-		);
+		];
 	}
 
 	/**

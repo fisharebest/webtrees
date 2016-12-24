@@ -123,12 +123,12 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
-		$parameters = array(
+		$parameters = [
 			'chart-background-f'             => 'dddddd',
 			'chart-background-m'             => 'cccccc',
 			'distribution-chart-low-values'  => 'cccccc',
 			'distribution-chart-no-values'   => 'ffffff',
-		);
+		];
 
 		if (array_key_exists($parameter_name, $parameters)) {
 			return $parameters[$parameter_name];
@@ -143,10 +143,10 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return array(
+		return [
 			'themes/minimal/jquery-ui-1.11.2/jquery-ui.css',
 			$this->assetUrl() . 'style.css',
-		);
+		];
 	}
 
 	/**

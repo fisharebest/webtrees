@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodePedi {
 	/** @var string[] Possible values for pedigree field */
-	private static $TYPES = array('adopted', 'birth', 'foster', 'rada', 'sealing');
+	private static $TYPES = ['adopted', 'birth', 'foster', 'rada', 'sealing'];
 
 	/**
 	 * Translate a code, for an optional record
@@ -104,7 +104,7 @@ class GedcomCodePedi {
 	 * @return string[]
 	 */
 	public static function getValues(GedcomRecord $record = null) {
-		$values = array();
+		$values = [];
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
 		}

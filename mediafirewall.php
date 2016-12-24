@@ -244,7 +244,7 @@ function imagettftextErrorHandler($errno, $errstr) {
  * @return string|false
  */
 function isImageTypeSupported($reqtype) {
-	$supportByGD = array('jpg' => 'jpeg', 'jpeg' => 'jpeg', 'gif' => 'gif', 'png' => 'png');
+	$supportByGD = ['jpg' => 'jpeg', 'jpeg' => 'jpeg', 'gif' => 'gif', 'png' => 'png'];
 	$reqtype     = strtolower($reqtype);
 
 	if (empty($supportByGD[$reqtype])) {

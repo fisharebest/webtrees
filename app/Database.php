@@ -33,13 +33,13 @@ class Database {
 	private static $log;
 
 	/** @var Statement[] Cache of prepared statements */
-	private static $prepared = array();
+	private static $prepared = [];
 
 	/**
 	 * Prevent instantiation via new Database
 	 */
 	private function __construct() {
-		self::$log = array();
+		self::$log = [];
 	}
 
 	/**
@@ -89,15 +89,15 @@ class Database {
 				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
 			),
 			$DBUSER, $DBPASS,
-			array(
+			[
 				PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 				PDO::ATTR_CASE               => PDO::CASE_LOWER,
 				PDO::ATTR_AUTOCOMMIT         => true,
-			)
+			]
 		);
 		self::$pdo->exec("SET NAMES UTF8");
-		self::$pdo->prepare("SET time_zone = :time_zone")->execute(array('time_zone' => date('P')));
+		self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
 		self::$instance = new self;
 	}
@@ -196,7 +196,7 @@ class Database {
 	 */
 	public static function getQueryLog() {
 		$html      = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
-		self::$log = array();
+		self::$log = [];
 
 		return $html;
 	}
@@ -241,7 +241,7 @@ class Database {
 		$start = microtime(true);
 		$rows  = self::$pdo->exec($sql);
 		$end   = microtime(true);
-		self::logQuery($sql, $rows, $end - $start, array());
+		self::logQuery($sql, $rows, $end - $start, []);
 
 		return $rows;
 	}

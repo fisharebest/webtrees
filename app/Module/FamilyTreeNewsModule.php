@@ -71,14 +71,14 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		switch (Filter::get('action')) {
 		case 'deletenews':
 			$news_id = Filter::get('news_id');
 			if ($news_id) {
-				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
+				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute([$news_id]);
 			}
 			break;
 		}
@@ -88,17 +88,17 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 
 		$articles = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC LIMIT :limit"
-		)->execute(array(
+		)->execute([
 			'offset'  => WT_TIMESTAMP_OFFSET,
 			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => $limit,
-		))->fetchAll();
+		])->fetchAll();
 
 		$count = Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 
 		$id      = $this->getName() . $block_id;
 		$class   = $this->getName() . '_block';

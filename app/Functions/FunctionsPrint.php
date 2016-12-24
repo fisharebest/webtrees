@@ -226,8 +226,8 @@ class FunctionsPrint {
 			// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
 			// However, we only highlight the original search string, not the search terms.
 			// The controller needs to provide its "query_terms" array.
-			$regex = array();
-			foreach (array($controller->query) as $search_term) {
+			$regex = [];
+			foreach ([$controller->query] as $search_term) {
 				$regex[] = preg_quote($search_term, '/');
 			}
 			// Match these strings, provided they do not occur inside HTML tags
@@ -413,7 +413,7 @@ class FunctionsPrint {
 			$html .= I18N::translate('yes');
 		}
 		// print gedcom ages
-		foreach (array(GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age) as $label => $age) {
+		foreach ([GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age] as $label => $age) {
 			if ($age != '') {
 				$html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
 			}
@@ -602,7 +602,7 @@ class FunctionsPrint {
 		}
 		$addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
 		$quickfacts          = array_intersect($quickfacts, $addfacts);
-		$translated_addfacts = array();
+		$translated_addfacts = [];
 		foreach ($addfacts as $addfact) {
 			$translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
 		}

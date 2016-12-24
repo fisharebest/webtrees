@@ -34,7 +34,7 @@ class ReportHtmlText extends ReportBaseText {
 		}
 		$temptext = str_replace("#PAGENUM#", $renderer->pageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 
 		// If any text at all
 		if (!empty($temptext)) {
@@ -162,7 +162,7 @@ class ReportHtmlText extends ReportBaseText {
 				$this->text = $newtext;
 				$lfct       = substr_count($this->text, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -171,6 +171,6 @@ class ReportHtmlText extends ReportBaseText {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

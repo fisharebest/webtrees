@@ -53,30 +53,30 @@ class I18N {
 	private static $alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 	/** @var int[][] Character ranges used by each script. */
-	private static $scripts = array(
-		array('Latn', 0x0041, 0x005A), // a-z
-		array('Latn', 0x0061, 0x007A), // A-Z
-		array('Latn', 0x0100, 0x02AF),
-		array('Grek', 0x0370, 0x03FF),
-		array('Cyrl', 0x0400, 0x052F),
-		array('Hebr', 0x0590, 0x05FF),
-		array('Arab', 0x0600, 0x06FF),
-		array('Arab', 0x0750, 0x077F),
-		array('Arab', 0x08A0, 0x08FF),
-		array('Deva', 0x0900, 0x097F),
-		array('Taml', 0x0B80, 0x0BFF),
-		array('Sinh', 0x0D80, 0x0DFF),
-		array('Thai', 0x0E00, 0x0E7F),
-		array('Geor', 0x10A0, 0x10FF),
-		array('Grek', 0x1F00, 0x1FFF),
-		array('Deva', 0xA8E0, 0xA8FF),
-		array('Hans', 0x3000, 0x303F), // Mixed CJK, not just Hans
-		array('Hans', 0x3400, 0xFAFF), // Mixed CJK, not just Hans
-		array('Hans', 0x20000, 0x2FA1F), // Mixed CJK, not just Hans
-	);
+	private static $scripts = [
+		['Latn', 0x0041, 0x005A], // a-z
+		['Latn', 0x0061, 0x007A], // A-Z
+		['Latn', 0x0100, 0x02AF],
+		['Grek', 0x0370, 0x03FF],
+		['Cyrl', 0x0400, 0x052F],
+		['Hebr', 0x0590, 0x05FF],
+		['Arab', 0x0600, 0x06FF],
+		['Arab', 0x0750, 0x077F],
+		['Arab', 0x08A0, 0x08FF],
+		['Deva', 0x0900, 0x097F],
+		['Taml', 0x0B80, 0x0BFF],
+		['Sinh', 0x0D80, 0x0DFF],
+		['Thai', 0x0E00, 0x0E7F],
+		['Geor', 0x10A0, 0x10FF],
+		['Grek', 0x1F00, 0x1FFF],
+		['Deva', 0xA8E0, 0xA8FF],
+		['Hans', 0x3000, 0x303F], // Mixed CJK, not just Hans
+		['Hans', 0x3400, 0xFAFF], // Mixed CJK, not just Hans
+		['Hans', 0x20000, 0x2FA1F], // Mixed CJK, not just Hans
+	];
 
 	/** @var string[] Characters that are displayed in mirror form in RTL text. */
-	private static $mirror_characters = array(
+	private static $mirror_characters = [
 		'('   => ')',
 		')'   => '(',
 		'['   => ']',
@@ -95,7 +95,7 @@ class I18N {
 		'”'   => '“',
 		'‘'   => '’',
 		'’'   => '‘',
-	);
+	];
 
 	/** @var string Punctuation used to separate list items, typically a comma */
 	public static $list_separator;
@@ -111,14 +111,14 @@ class I18N {
 		if ($code_list) {
 			$codes = explode(',', $code_list);
 		} else {
-			$codes = array(
+			$codes = [
 				'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
 				'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
 				'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans',
-			);
+			];
 		}
 
-		$locales = array();
+		$locales = [];
 		foreach ($codes as $code) {
 			if (file_exists(WT_ROOT . 'language/' . $code . '.mo')) {
 				try {
@@ -169,7 +169,7 @@ class I18N {
 	 */
 	public static function datatablesI18N(array $lengths = null) {
 		if ($lengths === null) {
-			$lengths = array(10, 20, 30, 50, 100, -1);
+			$lengths = [10, 20, 30, 50, 100, -1];
 		}
 
 		$length_menu = '';
@@ -293,7 +293,7 @@ class I18N {
 			// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 			return self::translate('(in childhood)');
 		}
-		$age = array();
+		$age = [];
 		if (preg_match('/(\d+)y/', $string, $match)) {
 			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 			$years = $match[1];
@@ -390,20 +390,20 @@ class I18N {
 		// is in force and no files are found. See PHP bug #47358.
 		if (defined('GLOB_BRACE')) {
 			$translation_files = array_merge(
-				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
+				[WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: [],
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: []
 			);
 		} else {
 			// Some servers do not have GLOB_BRACE - see http://php.net/manual/en/function.glob.php
 			$translation_files = array_merge(
-				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ?: array(),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ?: array(),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ?: array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: array()
+				[WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ?: [],
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ?: [],
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ?: [],
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: [],
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: [],
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: []
 			);
 		}
 		// Rebuild files after one hour
@@ -417,7 +417,7 @@ class I18N {
 		}
 
 		if ($rebuild_cache) {
-			$translations = array();
+			$translations = [];
 			foreach ($translation_files as $translation_file) {
 				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
@@ -451,7 +451,7 @@ class I18N {
 	 * @return LocaleInterface[]
 	 */
 	public static function installedLocales() {
-		$locales = array();
+		$locales = [];
 		foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
 			try {
 				$locales[] = Locale::create(basename($file, '.mo'));
@@ -686,7 +686,7 @@ class I18N {
 	 */
 	public static function strtolower($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			$string = strtr($string, array('I' => 'ı', 'İ' => 'i'));
+			$string = strtr($string, ['I' => 'ı', 'İ' => 'i']);
 		}
 
 		return mb_strtolower($string);
@@ -703,7 +703,7 @@ class I18N {
 	 */
 	public static function strtoupper($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			$string = strtr($string, array('ı' => 'I', 'i' => 'İ'));
+			$string = strtr($string, ['ı' => 'I', 'i' => 'İ']);
 		}
 
 		return mb_strtoupper($string);
@@ -736,7 +736,7 @@ class I18N {
 	public static function textScript($string) {
 		$string = strip_tags($string); // otherwise HTML tags show up as latin
 		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
-		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
+		$string = str_replace(['@N.N.', '@P.N.'], '', $string); // otherwise unknown names show up as latin
 		$pos    = 0;
 		$strlen = strlen($string);
 		while ($pos < $strlen) {

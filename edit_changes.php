@@ -50,8 +50,8 @@ echo '<div id="pending"><h2>', I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
 case 'undo':
-	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
 	// Undo a change, and subsequent changes to the same record
 	Database::prepare(
 		"UPDATE `##change`" .
@@ -60,11 +60,11 @@ case 'undo':
 		" AND   gedcom_id  = ?" .
 		" AND   xref       = ?" .
 		" AND   change_id >= ?"
-	)->execute(array($gedcom_id, $xref, $change_id));
+	)->execute([$gedcom_id, $xref, $change_id]);
 	break;
 case 'accept':
-	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
 	// Accept a change, and all previous changes to the same record
 	$changes = Database::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
@@ -75,7 +75,7 @@ case 'accept':
 		" AND   xref       = ?" .
 		" AND   change_id <= ?" .
 		" ORDER BY change_id"
-	)->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
+	)->execute([$gedcom_id, $xref, $change_id])->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -84,7 +84,7 @@ case 'accept':
 			// add/update
 			FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
 		}
-		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
 		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
@@ -93,7 +93,7 @@ case 'undoall':
 		"UPDATE `##change`" .
 		" SET status='rejected'" .
 		" WHERE status='pending' AND gedcom_id=?"
-	)->execute(array($WT_TREE->getTreeId()));
+	)->execute([$WT_TREE->getTreeId()]);
 	break;
 case 'acceptall':
 	$changes = Database::prepare(
@@ -102,7 +102,7 @@ case 'acceptall':
 		" JOIN `##gedcom` g USING (gedcom_id)" .
 		" WHERE c.status='pending' AND gedcom_id=?" .
 		" ORDER BY change_id"
-	)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+	)->execute([$WT_TREE->getTreeId()])->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -111,7 +111,7 @@ case 'acceptall':
 			// add/update
 			FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
 		}
-		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
 		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
@@ -134,7 +134,7 @@ if ($changed_gedcoms) {
 		" WHERE c.status='pending'" .
 		" ORDER BY gedcom_id, c.xref, c.change_id"
 	)
-	->execute(array('offset' => WT_TIMESTAMP_OFFSET))
+	->execute(['offset' => WT_TIMESTAMP_OFFSET])
 	->fetchAll();
 
 	$output         = '<br><br><table class="list_table">';

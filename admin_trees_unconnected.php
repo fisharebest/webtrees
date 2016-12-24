@@ -36,10 +36,10 @@ $controller
 
 $rows = Database::prepare(
 	"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
-$graph = array();
+])->fetchAll();
+$graph = [];
 
 foreach ($rows as $row) {
 	$graph[$row->l_from][$row->l_to] = 1;
@@ -52,12 +52,12 @@ $root       = $controller->getSignificantIndividual();
 $root_id    = $root->getXref();
 
 /** @var Individual[][] */
-$individual_groups = array();
+$individual_groups = [];
 $group_number      = 1;
 
 foreach ($components as $key => $component) {
 	if (!in_array($root_id, $component)) {
-		$individuals = array();
+		$individuals = [];
 		foreach ($component as $xref) {
 			$individual = Individual::getInstance($xref, $WT_TREE);
 			if ($individual instanceof Individual) {

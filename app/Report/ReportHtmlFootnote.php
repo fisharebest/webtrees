@@ -45,7 +45,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 
 		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
 		$html->write($this->num . ". " . $temptext);
 		echo "</div>";
@@ -154,7 +154,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 				$this->numText = $newtext;
 				$lfct          = substr_count($this->numText, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -163,6 +163,6 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

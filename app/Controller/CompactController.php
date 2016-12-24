@@ -26,7 +26,7 @@ class CompactController extends ChartController {
 	public $show_thumbs = false;
 
 	/** int[] Data for the controller. */
-	private $treeid = array();
+	private $treeid = [];
 
 	/**
 	 * Startup activity

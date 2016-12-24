@@ -28,13 +28,13 @@ use Fisharebest\Webtrees\Soundex;
  */
 class AdvancedSearchController extends SearchController {
 	/** @var string[] Fields to search */
-	public $fields    = array();
+	public $fields    = [];
 
 	/** @var string[] Field values to search */
-	public $values    = array();
+	public $values    = [];
 
 	/** @var int[] Range of days either side of target date */
-	public $plusminus = array();
+	public $plusminus = [];
 
 	/**
 	 * Startup activity
@@ -62,7 +62,7 @@ class AdvancedSearchController extends SearchController {
 			$this->advancedSearch();
 		}
 		if (!$this->fields) {
-			$this->fields = array(
+			$this->fields = [
 				'NAME:GIVN:SDX',
 				'NAME:SURN:SDX',
 				'BIRT:DATE',
@@ -75,7 +75,7 @@ class AdvancedSearchController extends SearchController {
 				'FAMC:HUSB:NAME:SURN:SDX',
 				'FAMC:WIFE:NAME:GIVN:SDX',
 				'FAMC:WIFE:NAME:SURN:SDX',
-			);
+			];
 		}
 	}
 
@@ -87,7 +87,7 @@ class AdvancedSearchController extends SearchController {
 	public function getOtherFields() {
 		global $WT_TREE;
 
-		$ofields = array(
+		$ofields = [
 			'ADDR', 'ADDR:CITY', 'ADDR:STAE', 'ADDR:CTRY', 'ADDR:POST',
 			'ADOP:DATE', 'ADOP:PLAC',
 			'AFN',
@@ -128,7 +128,7 @@ class AdvancedSearchController extends SearchController {
 			'TITL',
 			'_BRTM:DATE', '_BRTM:PLAC',
 			'_MILI',
-		);
+		];
 		// Allow (some of) the user-specified fields to be selected
 		preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
@@ -143,7 +143,7 @@ class AdvancedSearchController extends SearchController {
 				$ofields[] = $fact;
 			}
 		}
-		$fields = array();
+		$fields = [];
 		foreach ($ofields as $field) {
 			$fields[$field] = strip_tags(GedcomTag::getLabel($field)); // Custom tags have error markup
 		}
@@ -230,10 +230,10 @@ class AdvancedSearchController extends SearchController {
 	 */
 	private function reorderFields() {
 		$i         = 0;
-		$newfields = array();
-		$newvalues = array();
-		$newplus   = array();
-		$rels      = array();
+		$newfields = [];
+		$newvalues = [];
+		$newplus   = [];
+		$rels      = [];
 		foreach ($this->fields as $j => $field) {
 			if (strpos($this->fields[$j], "FAMC:HUSB:NAME") === 0 || strpos($this->fields[$j], "FAMC:WIFE:NAME") === 0) {
 				$rels[$this->fields[$j]] = $this->values[$j];
@@ -263,7 +263,7 @@ class AdvancedSearchController extends SearchController {
 	private function advancedSearch() {
 		global $WT_TREE;
 
-		$this->myindilist = array();
+		$this->myindilist = [];
 		$fct              = count($this->fields);
 		if (!array_filter($this->values)) {
 			return;
@@ -271,7 +271,7 @@ class AdvancedSearchController extends SearchController {
 
 		// Dynamic SQL query, plus bind variables
 		$sql  = 'SELECT DISTINCT ind.i_id AS xref, ind.i_gedcom AS gedcom FROM `##individuals` ind';
-		$bind = array();
+		$bind = [];
 
 		// Join the following tables
 		$father_name     = false;

@@ -62,7 +62,7 @@ class LifespanController extends PageController {
 	public $subtitle  = '&nbsp;';
 
 	/** @var Individual[] A list of individuals to display. */
-	private $people = array();
+	private $people = [];
 
 	/** @var string The default calendar to use. */
 	private $defaultCalendar;
@@ -83,7 +83,7 @@ class LifespanController extends PageController {
 	private $currentYear;
 
 	/** @var string[] A list of colors to use. */
-	private $colors = array();
+	private $colors = [];
 
 	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Place|null A place to serarh. */
@@ -105,10 +105,10 @@ class LifespanController extends PageController {
 	public $facts;
 
 	/** @var string[] Facts and events to exclude from the chart */
-	private $nonfacts = array(
+	private $nonfacts = [
 		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL',
 		'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO',
-	);
+	];
 
 	/**
 	 * Startup activity
@@ -142,7 +142,7 @@ class LifespanController extends PageController {
 		// Build a list of people based on the input parameters
 		if ($clear) {
 			// Empty list & reset form
-			$xrefs           = array();
+			$xrefs           = [];
 			$this->place     = null;
 			$this->beginYear = null;
 			$this->endYear   = null;
@@ -160,13 +160,13 @@ class LifespanController extends PageController {
 				" JOIN `##families` ON `pl_gid`=`f_id` AND `pl_file`=`f_file`" .
 				" WHERE `f_file`=:tree_id" .
 				" AND `pl_p_id`=:place_id"
-			)->execute(array(
+			)->execute([
 				'tree_id'  => $WT_TREE->getTreeId(),
 				'place_id' => $this->place_obj->getPlaceId(),
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 		} else {
 			// Modify an existing list of records
-			$xrefs = Session::get(self::SESSION_DATA, array());
+			$xrefs = Session::get(self::SESSION_DATA, []);
 			if ($newpid) {
 				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $WT_TREE), $addfam));
 				$xrefs = array_unique($xrefs);
@@ -178,10 +178,10 @@ class LifespanController extends PageController {
 		$tmp               = $this->getCalendarDate(unixtojd());
 		$this->currentYear = $tmp->today()->y;
 
-		$tmp = strtoupper(strtr($this->calendar, array(
+		$tmp = strtoupper(strtr($this->calendar, [
 			'jewish' => 'hebrew',
 			'french' => 'french r',
-		)));
+		]));
 		$this->calendarEscape = sprintf('@#D%s@', $tmp);
 
 		if ($xrefs) {
@@ -301,7 +301,7 @@ class LifespanController extends PageController {
 	 * @return array
 	 */
 	private function addFamily(Individual $person, $add_family) {
-		$xrefs   = array();
+		$xrefs   = [];
 		$xrefs[] = $person->getXref();
 		if ($add_family) {
 			foreach ($person->getSpouseFamilies() as $family) {
@@ -346,7 +346,7 @@ class LifespanController extends PageController {
 	 * @return int
 	 */
 	public function fillTimeline() {
-		$rows = array();
+		$rows = [];
 		$maxY = self::CHART_TOP;
 		//base case
 		if (!$this->people) {
@@ -399,23 +399,23 @@ class LifespanController extends PageController {
 					(($that->place_obj || $that->startDate) && $that->checkFact($fact));
 			});
 
-			$eventList = array();
+			$eventList = [];
 			foreach ($acceptedFacts as $fact) {
 				$tag = $fact->getTag();
 				//-- if the fact is a generic EVENt then get the qualifying TYPE
 				if ($tag == "EVEN") {
 					$tag = $fact->getAttribute('TYPE');
 				}
-				$eventList[] = array(
+				$eventList[] = [
 					'label' => GedcomTag::getLabel($tag),
 					'date'  => $fact->getDate()->display(),
 					'place' => $fact->getPlace()->getFullName(),
-				);
+				];
 			}
 			$direction  = I18N::direction() === 'ltr' ? 'left' : 'right';
 			$lifespan   = ' ' . $person->getLifeSpan(); // put the space here so its included in the length calcs
 			$sex        = $person->getSex();
-			$popupClass = strtr($sex, array('M' => '', 'U' => 'NN'));
+			$popupClass = strtr($sex, ['M' => '', 'U' => 'NN']);
 			$color      = $sex === 'U' ? '' : sprintf("background-color: %s", $this->colors[$sex]->getNextColor());
 
 			// following lines are a nasty method of approximating

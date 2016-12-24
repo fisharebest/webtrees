@@ -221,7 +221,7 @@ class HourglassController extends ChartController {
 		$numkids  = 0;
 		$families = $person->getSpouseFamilies();
 		$famNum   = 0;
-		$children = array();
+		$children = [];
 		if ($count < $this->dgenerations) {
 			// Put all of the children in a common array
 			foreach ($families as $family) {

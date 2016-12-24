@@ -71,7 +71,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
 		$wife_name     = $match[1];
-		$married_names = array();
+		$married_names = [];
 		foreach (self::surnamesToAdd($xref, $gedrec) as $surname) {
 			switch ($this->surname) {
 			case 'add':
@@ -79,7 +79,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 				break;
 			case 'replace':
 				if ($SURNAME_TRADITION === 'polish') {
-					$surname = preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
+					$surname = preg_replace(['/ski$/', '/cki$/', '/dzki$/'], ['ska', 'cka', 'dzka'], $surname);
 				}
 				$married_names[] = "\n2 _MARNM " . preg_replace('!/.*/!', '/' . $surname . '/', $wife_name);
 				break;
@@ -99,8 +99,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	 */
 	private function surnamesToAdd($xref, $gedrec) {
 		$wife_surnames    = self::surnames($xref, $gedrec);
-		$husb_surnames    = array();
-		$missing_surnames = array();
+		$husb_surnames    = [];
+		$missing_surnames = [];
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
 			$famrec = BatchUpdateModule::getLatestRecord($famid, 'FAM');
@@ -130,7 +130,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 		if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedrec, $match)) {
 			return $match[1];
 		} else {
-			return array();
+			return [];
 		}
 	}
 

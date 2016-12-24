@@ -30,7 +30,7 @@ class ReportHtmlCell extends ReportBaseCell {
 		}
 		$temptext = str_replace("#PAGENUM#", $renderer->pageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 
 		// Setup the style name
 		if ($renderer->getCurrentStyle() != $this->styleName) {

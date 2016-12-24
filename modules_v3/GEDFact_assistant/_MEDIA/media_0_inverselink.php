@@ -77,7 +77,7 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the title of this existing Media item
 		$title =
 			Database::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, $WT_TREE->getTreeId()))
+			->execute([$mediaid, $WT_TREE->getTreeId()])
 			->fetchOne();
 		if ($title) {
 			echo '<b>', $title, '</b>';
@@ -88,7 +88,7 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the filename of this existing Media item
 		$filename =
 			Database::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, $WT_TREE->getTreeId()))
+			->execute([$mediaid, $WT_TREE->getTreeId()])
 			->fetchOne();
 		$media = Media::getInstance($mediaid, $WT_TREE);
 		echo $media->displayImage();

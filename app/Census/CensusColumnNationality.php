@@ -23,12 +23,12 @@ use Fisharebest\Webtrees\Individual;
  */
 class CensusColumnNationality extends AbstractCensusColumn implements CensusColumnInterface {
 	/** @var array Convert a country name to a nationality */
-	private $nationalities = array(
+	private $nationalities = [
 		'England'     => 'British',
 		'Scotland'    => 'British',
 		'Wales'       => 'British',
 		'Deutschland' => 'Deutsch',
-	);
+	];
 
 	/**
 	 * Generate the likely value of this census column, based on available information.

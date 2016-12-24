@@ -73,7 +73,7 @@ class FunctionsRtl {
 	 * @return string The input string, with &lrm; and &rlm; stripped
 	 */
 	public static function stripLrmRlm($inputText) {
-		return str_replace(array(WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
+		return str_replace([WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"], "", $inputText);
 	}
 
 	/**
@@ -93,7 +93,7 @@ class FunctionsRtl {
 		}
 
 		$workingText = str_replace("\n", '<br>', $inputText);
-		$workingText = str_replace(array('<span class="starredname"><br>', '<span<br>class="starredname">'), '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
+		$workingText = str_replace(['<span class="starredname"><br>', '<span<br>class="starredname">'], '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
 		$workingText = self::stripLrmRlm($workingText); // Get rid of any existing UTF8 control codes
 
 		// $nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
@@ -111,7 +111,7 @@ class FunctionsRtl {
 		$numberState         = false; // Set when we're inside a numeric string
 		$result              = '';
 		self::$waitingText   = '';
-		$openParDirection    = array();
+		$openParDirection    = [];
 
 		self::beginCurrentSpan($result);
 
@@ -433,7 +433,7 @@ class FunctionsRtl {
 		}
 
 		// Convert '<LTRbr>' and '<RTLbr /'
-		$result = str_replace(array('<LTRbr>', '<RTLbr>'), array(self::$endLTR . '<br>' . self::$startLTR, self::$endRTL . '<br>' . self::$startRTL), $result);
+		$result = str_replace(['<LTRbr>', '<RTLbr>'], [self::$endLTR . '<br>' . self::$startLTR, self::$endRTL . '<br>' . self::$startRTL], $result);
 
 		// Include leading indeterminate directional text in whatever follows
 		if (substr($result . "\n", 0, self::$lenStart) != self::$startLTR && substr($result . "\n", 0, self::$lenStart) != self::$startRTL && substr($result . "\n", 0, 6) != '<br>') {
@@ -454,10 +454,10 @@ class FunctionsRtl {
 		}
 
 		// Include solitary "-" and "+" in surrounding RTL text
-		$result = str_replace(array(self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL, self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL), array('-', '+'), $result);
+		$result = str_replace([self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL, self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL], ['-', '+'], $result);
 
 		// Remove empty spans
-		$result = str_replace(array(self::$startLTR . self::$endLTR, self::$startRTL . self::$endRTL), '', $result);
+		$result = str_replace([self::$startLTR . self::$endLTR, self::$startRTL . self::$endRTL], '', $result);
 
 		// Finally, correct '<LTR>', '</LTR>', '<RTL>', and '</RTL>'
 		switch ($direction) {
@@ -490,7 +490,7 @@ class FunctionsRtl {
 			$eRTL = $nothing . '</span>';
 			break;
 		}
-		$result = str_replace(array(self::$startLTR, self::$endLTR, self::$startRTL, self::$endRTL), array($sLTR, $eLTR, $sRTL, $eRTL), $result);
+		$result = str_replace([self::$startLTR, self::$endLTR, self::$startRTL, self::$endRTL], [$sLTR, $eLTR, $sRTL, $eRTL], $result);
 
 		return $result;
 	}
@@ -527,7 +527,7 @@ class FunctionsRtl {
 			}
 			$textSpan = preg_replace('~<span class="starredname">(.*)</span>~', '<u>\1</u>', $textSpan);
 			// The &nbsp; is a work-around for a TCPDF bug eating blanks.
-			$textSpan = str_replace(array(' <u>', '</u> '), array('&nbsp;<u>', '</u>&nbsp;'), $textSpan);
+			$textSpan = str_replace([' <u>', '</u> '], ['&nbsp;<u>', '</u>&nbsp;'], $textSpan);
 		} else {
 			// Text and page directions differ:  remove the <span> and </span>
 			$textSpan = preg_replace('~(.*)\*~', '\1', $textSpan);
@@ -548,7 +548,7 @@ class FunctionsRtl {
 	public static function getChar($text, $offset) {
 
 		if ($text == '') {
-			return array('letter' => '', 'length' => 0);
+			return ['letter' => '', 'length' => 0];
 		}
 
 		$char   = substr($text, $offset, 1);
@@ -564,7 +564,7 @@ class FunctionsRtl {
 		}
 		$letter = substr($text, $offset, $length);
 
-		return array('letter' => $letter, 'length' => $length);
+		return ['letter' => $letter, 'length' => $length];
 	}
 
 	/**
@@ -579,8 +579,6 @@ class FunctionsRtl {
 
 		$breakString = '<' . self::$currentState . 'br>';
 		$result .= $breakString;
-
-		return;
 	}
 
 	/**
@@ -610,7 +608,7 @@ class FunctionsRtl {
 		$result   = substr($result, 0, self::$posSpanStart);
 
 		// Get rid of empty spans, so that our check for presence of RTL will work
-		$result = str_replace(array(self::$startLTR . self::$endLTR, self::$startRTL . self::$endRTL), '', $result);
+		$result = str_replace([self::$startLTR . self::$endLTR, self::$startRTL . self::$endRTL], '', $result);
 
 		// Look for numeric strings that are times (hh:mm:ss). These have to be separated from surrounding numbers.
 		$tempResult = '';
@@ -1102,8 +1100,6 @@ class FunctionsRtl {
 		}
 
 		$result .= $trailingBreaks; // Get rid of any waiting <br>
-
-		return;
 	}
 
 	/**

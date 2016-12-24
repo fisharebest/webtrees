@@ -76,7 +76,7 @@ $controller->addInlineJavascript('
 $linked_fam  = $controller->record->linkedFamilies('OBJE');
 $linked_indi = $controller->record->linkedIndividuals('OBJE');
 $linked_note = $controller->record->linkedNotes('OBJE');
-$linked_obje = array();
+$linked_obje = [];
 $linked_sour = $controller->record->linkedSources('OBJE');
 $linked_repo = $controller->record->linkedRepositories('OBJE');
 

@@ -25,7 +25,7 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
 	 * @return CensusInterface[]
 	 */
 	public function allCensusDates() {
-		return array(
+		return [
 			new CensusOfUnitedStates1790(),
 			new CensusOfUnitedStates1800(),
 			new CensusOfUnitedStates1810(),
@@ -42,7 +42,7 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
 			new CensusOfUnitedStates1920(),
 			new CensusOfUnitedStates1930(),
 			new CensusOfUnitedStates1940(),
-		);
+		];
 	}
 
 	/**

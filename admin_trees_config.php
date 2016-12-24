@@ -32,62 +32,62 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager($WT_TREE));
 
-$calendars = array('none' => I18N::translate('No calendar conversion')) + Date::calendarNames();
+$calendars = ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames();
 
 $french_calendar_start    = new Date('22 SEP 1792');
 $french_calendar_end      = new Date('31 DEC 1805');
 $gregorian_calendar_start = new Date('15 OCT 1582');
 
-$hide_show = array(
+$hide_show = [
 	0 => I18N::translate('hide'),
 	1 => I18N::translate('show'),
-);
+];
 
-$surname_list_styles = array(
+$surname_list_styles = [
 	'style1' => /* I18N: Layout option for lists of names */ I18N::translate('list'),
 	'style2' => /* I18N: Layout option for lists of names */ I18N::translate('table'),
 	'style3' => /* I18N: Layout option for lists of names */ I18N::translate('tag cloud'),
-);
+];
 
-$layouts = array(
+$layouts = [
 	0 => /* I18N: page orientation */ I18N::translate('Portrait'),
 	1 => /* I18N: page orientation */ I18N::translate('Landscape'),
-);
+];
 
-$one_to_nine = array();
+$one_to_nine = [];
 for ($n = 1; $n <= 9; ++$n) {
 	$one_to_nine[$n] = I18N::number($n);
 }
 
-$formats = array(
+$formats = [
 	''         => /* I18N: None of the other options */ I18N::translate('none'),
 	'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ I18N::translate('markdown'),
-);
+];
 
-$source_types = array(
+$source_types = [
 	0 => I18N::translate('none'),
 	1 => I18N::translate('facts'),
 	2 => I18N::translate('records'),
-);
+];
 
-$no_yes = array(
+$no_yes = [
 	0 => I18N::translate('no'),
 	1 => I18N::translate('yes'),
-);
+];
 
-$PRIVACY_CONSTANTS = array(
+$PRIVACY_CONSTANTS = [
 	'none'         => I18N::translate('Show to visitors'),
 	'privacy'      => I18N::translate('Show to members'),
 	'confidential' => I18N::translate('Show to managers'),
 	'hidden'       => I18N::translate('Hide from everyone'),
-);
+];
 
-$privacy = array(
+$privacy = [
 	Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
 	Auth::PRIV_USER    => I18N::translate('Show to members'),
 	Auth::PRIV_NONE    => I18N::translate('Show to managers'),
 	Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
-);
+];
 
 $tags = array_unique(array_merge(
 	explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
@@ -95,10 +95,10 @@ $tags = array_unique(array_merge(
 	explode(',', $WT_TREE->getPreference('NOTE_FACTS_ADD')), explode(',', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('SOUR_FACTS_ADD')), explode(',', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('REPO_FACTS_ADD')), explode(',', $WT_TREE->getPreference('REPO_FACTS_UNIQUE')),
-	array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
+	['SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN']
 ));
 
-$all_tags = array();
+$all_tags = [];
 foreach ($tags as $tag) {
 	if ($tag) {
 		$all_tags[$tag] = GedcomTag::getLabel($tag);
@@ -113,7 +113,7 @@ $resns = Database::prepare(
 	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
 	" WHERE gedcom_id=?" .
 	" ORDER BY xref IS NULL, n_sort, xref, tag_type"
-)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+)->execute([$WT_TREE->getTreeId()])->fetchAll();
 
 foreach ($resns as $resn) {
 	$resn->record = GedcomRecord::getInstance($resn->xref, $WT_TREE);
@@ -136,7 +136,7 @@ case 'privacy':
 	foreach (Filter::postArray('delete', WT_REGEX_INTEGER) as $delete_resn) {
 		Database::prepare(
 			"DELETE FROM `##default_resn` WHERE default_resn_id=?"
-		)->execute(array($delete_resn));
+		)->execute([$delete_resn]);
 	}
 
 	$xrefs     = Filter::postArray('xref', WT_REGEX_XREF);
@@ -152,17 +152,17 @@ case 'privacy':
 			if ($xref === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
-				)->execute(array($WT_TREE->getTreeId(), $tag_type));
+				)->execute([$WT_TREE->getTreeId(), $tag_type]);
 			}
 			if ($tag_type === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
-				)->execute(array($WT_TREE->getTreeId(), $xref));
+				)->execute([$WT_TREE->getTreeId(), $xref]);
 			}
 			// Add (or update) the new data
 			Database::prepare(
 				"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-			)->execute(array($WT_TREE->getTreeId(), $xref, $tag_type, $resn));
+			)->execute([$WT_TREE->getTreeId(), $xref, $tag_type, $resn]);
 		}
 	}
 
@@ -198,10 +198,10 @@ case 'general':
 	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', Filter::postBool('ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
-	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique(array(
+	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
 		Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
-	))));
+	])));
 	$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
 	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
@@ -291,8 +291,8 @@ case 'general':
 	$gedcom = Filter::post('gedcom');
 	if ($gedcom && $gedcom !== $WT_TREE->getName()) {
 		try {
-			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, $WT_TREE->getTreeId()));
-			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, $WT_TREE->getName()));
+			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([$gedcom, $WT_TREE->getTreeId()]);
+			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([$gedcom, $WT_TREE->getName()]);
 		} catch (\Exception $ex) {
 			// Probably a duplicate name.
 		}
@@ -365,7 +365,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo FunctionsEdit::selectEditControl('REQUIRE_AUTHENTICATION', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('REQUIRE_AUTHENTICATION', ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')], null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.'); ?>
 			</p>
@@ -429,7 +429,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo FunctionsEdit::selectEditControl('HIDE_LIVE_PEOPLE', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('HIDE_LIVE_PEOPLE', ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')], null, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.'); ?>
 			</p>
@@ -489,7 +489,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo FunctionsEdit::selectEditControl('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('SHOW_PRIVATE_RELATIONSHIPS', ['0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')], null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
 			</p>
@@ -1018,7 +1018,7 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('MEDIA_UPLOAD', array(Auth::PRIV_USER => I18N::translate('Show to members'), Auth::PRIV_NONE => I18N::translate('Show to managers'), Auth::PRIV_HIDE => I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('MEDIA_UPLOAD', [Auth::PRIV_USER => I18N::translate('Show to members'), Auth::PRIV_NONE => I18N::translate('Show to managers'), Auth::PRIV_HIDE => I18N::translate('Hide from everyone')], null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Who can upload new media files” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
@@ -1515,10 +1515,10 @@ $controller
 			<?php echo /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ I18N::translate(
 				'Show the %1$s %2$s parts of a place name.',
 				FunctionsEdit::selectEditControl('SHOW_PEDIGREE_PLACES_SUFFIX',
-					array(
+					[
 						false => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
 						true  => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last'),
-					), null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
+					], null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
 				),
 				FunctionsEdit::selectEditControl('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'))
 			); ?>

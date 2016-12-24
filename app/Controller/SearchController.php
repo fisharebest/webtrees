@@ -51,19 +51,19 @@ class SearchController extends PageController {
 	public $srnote;
 
 	/** @var Tree[] A list of trees to search */
-	public $search_trees = array();
+	public $search_trees = [];
 
 	/** @var Individual[] Individual search results */
-	protected $myindilist = array();
+	protected $myindilist = [];
 
 	/** @var Source[] Source search results */
-	protected $mysourcelist = array();
+	protected $mysourcelist = [];
 
 	/** @var Family[] Family search results */
-	protected $myfamlist = array();
+	protected $myfamlist = [];
 
 	/** @var Note[] Note search results */
-	protected $mynotelist = array();
+	protected $mynotelist = [];
 
 	/** @var string The search term(s) */
 	public $query;
@@ -200,7 +200,7 @@ class SearchController extends PageController {
 			break;
 		case 'replace':
 			$this->setPageTitle(I18N::translate('Search and replace'));
-			$this->search_trees = array($WT_TREE);
+			$this->search_trees = [$WT_TREE];
 			$this->srindi       = 'checked';
 			$this->srfams       = 'checked';
 			$this->srsour       = 'checked';
@@ -218,7 +218,7 @@ class SearchController extends PageController {
 	 */
 	private function generalSearch() {
 		// Split search terms into an array
-		$query_terms = array();
+		$query_terms = [];
 		$query       = $this->query;
 		// Words in double quotes stay together
 		while (preg_match('/"([^"]+)"/', $query, $match)) {
@@ -469,7 +469,7 @@ class SearchController extends PageController {
 			if ($this->search_trees) {
 				$this->myindilist = FunctionsDb::searchIndividualsPhonetic($this->soundex, $this->lastname, $this->firstname, $this->place, $this->search_trees);
 			} else {
-				$this->myindilist = array();
+				$this->myindilist = [];
 			}
 		}
 

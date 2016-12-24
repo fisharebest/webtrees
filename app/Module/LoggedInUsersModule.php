@@ -46,14 +46,14 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE;
 
 		$id        = $this->getName() . $block_id;
 		$class     = $this->getName() . '_block';
 		$title     = $this->getTitle();
 		$anonymous = 0;
-		$logged_in = array();
+		$logged_in = [];
 		$content   = '';
 		foreach (User::allLoggedIn() as $user) {
 			if (Auth::isAdmin() || $user->getPreference('visibleonline')) {

@@ -160,10 +160,10 @@ abstract class AbstractTheme {
 	protected function analyticsGoogleTracker($analytics_id) {
 		if ($analytics_id) {
 			// Add extra dimensions (i.e. filtering categories)
-			$dimensions = (object) array(
+			$dimensions = (object) [
 				'dimension1' => $this->tree ? $this->tree->getName() : '-',
 				'dimension2' => $this->tree ? Auth::accessLevel($this->tree) : '-',
-			);
+			];
 
 			return
 				'<script async src="https://www.google-analytics.com/analytics.js"></script>' .
@@ -186,7 +186,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function analyticsPiwikTracker($url, $site_id) {
-		$url = preg_replace(array('/^https?:\/\//', '/\/$/'), '', $url);
+		$url = preg_replace(['/^https?:\/\//', '/\/$/'], '', $url);
 
 		if ($url && $site_id) {
 			return
@@ -738,7 +738,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function individualBox(Individual $individual) {
-		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
+		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->canShow() && $individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
@@ -790,7 +790,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function individualBoxLarge(Individual $individual) {
-		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
+		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
@@ -833,7 +833,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function individualBoxSmall(Individual $individual) {
-		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
+		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
@@ -965,7 +965,7 @@ abstract class AbstractTheme {
 	 * @return Menu[]
 	 */
 	protected function individualBoxMenuCharts(Individual $individual) {
-		$menus = array();
+		$menus = [];
 		foreach (Module::getActiveCharts($this->tree) as $chart) {
 			$menu = $chart->getBoxChartMenu($individual);
 			if ($menu) {
@@ -988,7 +988,7 @@ abstract class AbstractTheme {
 	 * @return Menu[]
 	 */
 	protected function individualBoxMenuFamilyLinks(Individual $individual) {
-		$menus = array();
+		$menus = [];
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->getHtmlUrl());
@@ -1058,14 +1058,14 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuCalendar() {
-		return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', array('rel' => 'nofollow'), array(
+		return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', ['rel' => 'nofollow'], [
 			// Day view
-			new Menu(I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day', array('rel' => 'nofollow')),
+			new Menu(I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day', ['rel' => 'nofollow']),
 			// Month view
-			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', array('rel' => 'nofollow')),
+			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', ['rel' => 'nofollow']),
 			//Year view
-			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow')),
-		));
+			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', ['rel' => 'nofollow']),
+		]);
 	}
 
 	/**
@@ -1091,7 +1091,7 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChart(Individual $individual) {
-		$submenus = array();
+		$submenus = [];
 		foreach (Module::getActiveCharts($this->tree) as $chart) {
 			$menu = $chart->getChartMenu($individual);
 			if ($menu) {
@@ -1104,7 +1104,7 @@ abstract class AbstractTheme {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
-			return new Menu(I18N::translate('Charts'), '#', 'menu-chart', array('rel' => 'nofollow'), $submenus);
+			return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus);
 		} else {
 			return null;
 		}
@@ -1339,11 +1339,11 @@ abstract class AbstractTheme {
 		} elseif ($show_tree_favorites) {
 			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId());
 		} else {
-			$favorites = array();
+			$favorites = [];
 		}
 
-		$submenus = array();
-		$records  = array();
+		$submenus = [];
+		$records  = [];
 		foreach ($favorites as $favorite) {
 			switch ($favorite['type']) {
 			case 'URL':
@@ -1364,15 +1364,15 @@ abstract class AbstractTheme {
 		}
 
 		if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
-			$submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', array(
+			$submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', [
 				'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite", {xref:"' . $controller->record->getXref() . '"},function(){location.reload();})',
-			));
+			]);
 		}
 
 		if (empty($submenus)) {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', array(), $submenus);
+			return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', [], $submenus);
 		}
 	}
 
@@ -1385,7 +1385,7 @@ abstract class AbstractTheme {
 		if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') === '0') {
 			return new Menu(I18N::translate('Family tree'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
 		} else {
-			$submenus = array();
+			$submenus = [];
 			foreach (Tree::getAll() as $tree) {
 				if ($tree == $this->tree) {
 					$active = 'active ';
@@ -1395,7 +1395,7 @@ abstract class AbstractTheme {
 				$submenus[] = new Menu($tree->getTitleHtml(), 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(), $active . 'menu-tree-' . $tree->getTreeId());
 			}
 
-			return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', array(), $submenus);
+			return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
 		}
 	}
 
@@ -1410,10 +1410,10 @@ abstract class AbstractTheme {
 		foreach (I18N::activeLocales() as $locale) {
 			$language_tag = $locale->languageTag();
 			$class        = 'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '');
-			$menu->addSubmenu(new Menu($locale->endonym(), '#', $class, array(
+			$menu->addSubmenu(new Menu($locale->endonym(), '#', $class, [
 				'onclick'       => 'return false;',
 				'data-language' => $language_tag,
-			)));
+			]));
 		}
 
 		if (count($menu->getSubmenus()) > 1) {
@@ -1438,19 +1438,19 @@ abstract class AbstractTheme {
 			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='REPO') AS repo," .
 			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .
 			" EXISTS(SELECT 1 FROM `##media` WHERE m_file = ?) AS obje"
-		)->execute(array(
+		)->execute([
 			$this->tree->getTreeId(),
 			$this->tree->getTreeId(),
 			$this->tree->getTreeId(),
 			$this->tree->getTreeId(),
-		))->fetchOneRow();
+		])->fetchOneRow();
 
-		$submenus = array(
+		$submenus = [
 			$this->menuListsIndividuals($surname),
 			$this->menuListsFamilies($surname),
 			$this->menuListsBranches($surname),
 			$this->menuListsPlaces(),
-		);
+		];
 		if ($row->obje) {
 			$submenus[] = $this->menuListsMedia();
 		}
@@ -1468,7 +1468,7 @@ abstract class AbstractTheme {
 			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
-		return new Menu(I18N::translate('Lists'), '#', 'menu-list', array(), $submenus);
+		return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus);
 	}
 
 	/**
@@ -1479,7 +1479,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsBranches($surname) {
-		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-branches', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-branches', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1490,7 +1490,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsFamilies($surname) {
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-fam', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-fam', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1510,7 +1510,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsMedia() {
-		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1519,7 +1519,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsNotes() {
-		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1528,7 +1528,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsPlaces() {
-		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl(), 'menu-list-plac', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl(), 'menu-list-plac', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1537,7 +1537,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsRepositories() {
-		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1546,7 +1546,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsSources() {
-		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1558,7 +1558,7 @@ abstract class AbstractTheme {
 		if (Auth::check() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', array('rel' => 'nofollow'));
+			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', ['rel' => 'nofollow']);
 		}
 	}
 
@@ -1581,7 +1581,7 @@ abstract class AbstractTheme {
 	 * @return Menu[]
 	 */
 	protected function menuModules() {
-		$menus = array();
+		$menus = [];
 		foreach (Module::getActiveMenus($this->tree) as $module) {
 			$menus[] = $module->getMenu();
 		}
@@ -1633,14 +1633,14 @@ abstract class AbstractTheme {
 	 */
 	protected function menuMyPages() {
 		if (Auth::id()) {
-			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', array(), array_filter(array(
+			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
 				$this->menuMyPage(),
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
 				$this->menuMyAccount(),
 				$this->menuControlPanel(),
 				$this->menuChangeBlocks(),
-			)));
+			]));
 		} else {
 			return null;
 		}
@@ -1675,7 +1675,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$menu = new Menu(I18N::translate('Pending changes'), '#', 'menu-pending', array('onclick' => 'window.open("edit_changes.php", "_blank", chan_window_specs); return false;'));
+			$menu = new Menu(I18N::translate('Pending changes'), '#', 'menu-pending', ['onclick' => 'window.open("edit_changes.php", "_blank", chan_window_specs); return false;']);
 
 			return $menu;
 		} else {
@@ -1689,13 +1689,13 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuReports() {
-		$submenus = array();
+		$submenus = [];
 		foreach (Module::getActiveReports($this->tree) as $report) {
 			$submenus[] = $report->getReportMenu();
 		}
 
 		if ($submenus) {
-			return new Menu(I18N::translate('Reports'), '#', 'menu-report', array('rel' => 'nofollow'), $submenus);
+			return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus);
 		} else {
 			return null;
 		}
@@ -1707,12 +1707,12 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearch() {
-		return new Menu(I18N::translate('Search'), '#', 'menu-search', array('rel' => 'nofollow'), array_filter(array(
+		return new Menu(I18N::translate('Search'), '#', 'menu-search', ['rel' => 'nofollow'], array_filter([
 			$this->menuSearchGeneral(),
 			$this->menuSearchPhonetic(),
 			$this->menuSearchAdvanced(),
 			$this->menuSearchAndReplace(),
-		)));
+		]));
 	}
 
 	/**
@@ -1721,7 +1721,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchGeneral() {
-		return new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1730,7 +1730,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchPhonetic() {
-		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', array('rel' => 'nofollow'));
+		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1739,7 +1739,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchAdvanced() {
-		return new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1762,20 +1762,20 @@ abstract class AbstractTheme {
 	 */
 	public function menuThemes() {
 		if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
-			$submenus = array();
+			$submenus = [];
 			foreach (Theme::installedThemes() as $theme) {
 				$class      = 'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '');
-				$submenus[] = new Menu($theme->themeName(), '#', $class, array(
+				$submenus[] = new Menu($theme->themeName(), '#', $class, [
 					'onclick'    => 'return false;',
 					'data-theme' => $theme->themeId(),
-				));
+				]);
 			}
 
 			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
-			$menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', array(), $submenus);
+			$menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus);
 
 			return $menu;
 		} else {
@@ -1888,7 +1888,7 @@ abstract class AbstractTheme {
 	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
-		$parameters = array(
+		$parameters = [
 			'chart-background-f'             => 'dddddd',
 			'chart-background-m'             => 'cccccc',
 			'chart-background-u'             => 'eeeeee',
@@ -1922,7 +1922,7 @@ abstract class AbstractTheme {
 			'image-vline'                    => $this->assetUrl() . 'images/vline.png',
 			'image-minus'                    => $this->assetUrl() . 'images/minus.png',
 			'image-plus'                     => $this->assetUrl() . 'images/plus.png',
-		);
+		];
 
 		if (array_key_exists($parameter_name, $parameters)) {
 			return $parameters[$parameter_name];
@@ -1972,17 +1972,17 @@ abstract class AbstractTheme {
 		if ($this->tree) {
 			$individual = $controller->getSignificantIndividual();
 
-			return array_filter(array_merge(array(
+			return array_filter(array_merge([
 				$this->menuHomePage(),
 				$this->menuChart($individual),
 				$this->menuLists($controller->getSignificantSurname()),
 				$this->menuCalendar(),
 				$this->menuReports(),
 				$this->menuSearch(),
-			), $this->menuModules()));
+			], $this->menuModules()));
 		} else {
 			// No public trees? No genealogy menu!
-			return array();
+			return [];
 		}
 	}
 
@@ -2016,7 +2016,7 @@ abstract class AbstractTheme {
 	 * @return Menu[]
 	 */
 	protected function secondaryMenu() {
-		return array_filter(array(
+		return array_filter([
 			$this->menuPendingChanges(),
 			$this->menuMyPages(),
 			$this->menuFavorites(),
@@ -2024,7 +2024,7 @@ abstract class AbstractTheme {
 			$this->menuLanguages(),
 			$this->menuLogin(),
 			$this->menuLogout(),
-		));
+		]);
 	}
 
 	/**
@@ -2064,11 +2064,11 @@ abstract class AbstractTheme {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		$stylesheets = array(
+		$stylesheets = [
 			WT_BOOTSTRAP_CSS_URL,
 			WT_FONT_AWESOME_CSS_URL,
 			WT_FONT_AWESOME_RTL_CSS_URL,
-		);
+		];
 
 		if (I18N::direction() === 'rtl') {
 			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;

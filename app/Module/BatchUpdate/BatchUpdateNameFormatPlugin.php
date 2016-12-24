@@ -63,14 +63,14 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
 	 */
 	public function updateRecord($xref, $gedrec) {
 		return preg_replace(
-			array(
+			[
 				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
 				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-			),
-			array(
+			],
+			[
 				'$1/',
 				'$1 $2',
-			),
+			],
 			$gedrec
 		);
 	}

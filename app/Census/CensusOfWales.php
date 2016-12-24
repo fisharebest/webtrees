@@ -25,7 +25,7 @@ class CensusOfWales extends Census implements CensusPlaceInterface {
 	 * @return CensusInterface[]
 	 */
 	public function allCensusDates() {
-		return array(
+		return [
 			new CensusOfWales1841(),
 			new CensusOfWales1851(),
 			new CensusOfWales1861(),
@@ -35,7 +35,7 @@ class CensusOfWales extends Census implements CensusPlaceInterface {
 			new CensusOfWales1901(),
 			new CensusOfWales1911(),
 			new RegisterOfWales1939(),
-		);
+		];
 	}
 
 	/**

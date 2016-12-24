@@ -35,7 +35,7 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGivenNames() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe')));
+		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
@@ -50,7 +50,7 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array());
+		$individual->shouldReceive('getAllNames')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 

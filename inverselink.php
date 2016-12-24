@@ -73,7 +73,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			//-- Get the title of this existing Media item
 			$title =
 				Database::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
-				->execute(array($mediaid, $WT_TREE->getTreeId()))
+				->execute([$mediaid, $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($title) {
 				echo '<b>', Filter::escapeHtml($title), '</b>';

@@ -83,14 +83,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 				I18N::translate('Relationship to me'),
 				'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $tree->getNameUrl(),
 				'menu-chart-relationship',
-				array('rel' => 'nofollow')
+				['rel' => 'nofollow']
 			);
 		} else {
 			return new Menu(
 				I18N::translate('Relationships'),
 				'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $tree->getNameUrl(),
 				'menu-chart-relationship',
-				array('rel' => 'nofollow')
+				['rel' => 'nofollow']
 			);
 		}
 	}
@@ -130,23 +130,23 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	 * Possible options for the ancestors option
 	 */
 	private function ancestorsOptions() {
-		return array(
+		return [
 			0 => I18N::translate('Find any relationship'),
 			1 => I18N::translate('Find relationships via ancestors'),
-		);
+		];
 	}
 
 	/**
 	 * Possible options for the recursion option
 	 */
 	private function recursionOptions() {
-		return array(
+		return [
 			0                         => I18N::translate('none'),
 			1                         => I18N::number(1),
 			2                         => I18N::number(2),
 			3                         => I18N::number(3),
 			self::UNLIMITED_RECURSION => I18N::translate('unlimited'),
-		);
+		];
 	}
 
 	/**

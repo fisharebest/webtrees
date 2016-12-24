@@ -42,11 +42,11 @@ $conv_path        = Filter::get('conv_path');
 $privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
 if ($action === 'download') {
-	$exportOptions = array(
+	$exportOptions = [
 		'privatize' => $privatize_export,
 		'toANSI'    => $convert,
 		'path'      => $conv_path,
-	);
+	];
 
 	// What to call the downloaded file
 	$download_filename = $WT_TREE->getName();

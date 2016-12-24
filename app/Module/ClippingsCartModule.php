@@ -554,18 +554,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	public function getMenu() {
 		global $controller, $WT_TREE;
 
-		$submenus = array();
+		$submenus = [];
 		if (isset($controller->record)) {
-			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', array('rel' => 'nofollow'));
+			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', ['rel' => 'nofollow']);
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
-			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', array('rel' => 'nofollow'));
+			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', ['rel' => 'nofollow']);
 		}
 
 		if ($submenus) {
-			return new Menu($this->getTitle(), '#', 'menu-clippings', array('rel' => 'nofollow'), $submenus);
+			return new Menu($this->getTitle(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);
 		} else {
-			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', array('rel' => 'nofollow'));
+			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', ['rel' => 'nofollow']);
 		}
 	}
 
@@ -651,7 +651,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			unset($cart[$WT_TREE->getTreeId()][$remove]);
 			Session::put('cart', $cart);
 		} elseif (isset($_REQUEST['empty'])) {
-			$cart[$WT_TREE->getTreeId()] = array();
+			$cart[$WT_TREE->getTreeId()] = [];
 			Session::put('cart', $cart);
 		} elseif (isset($_REQUEST['download'])) {
 			return $this->downloadForm($clip_ctrl);
@@ -668,9 +668,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	public function getCartList() {
 		global $WT_TREE;
 
-		$cart = Session::get('cart', array());
+		$cart = Session::get('cart', []);
 		if (!array_key_exists($WT_TREE->getTreeId(), $cart)) {
-			$cart[$WT_TREE->getTreeId()] = array();
+			$cart[$WT_TREE->getTreeId()] = [];
 		}
 		$pid = Filter::get('pid', WT_REGEX_XREF);
 
