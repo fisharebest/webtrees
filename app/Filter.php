@@ -216,38 +216,26 @@ class Filter {
 	 */
 	private static function inputArray($source, $variable, $regexp = null, $default = null) {
 		if ($regexp) {
-			// PHP5.3 requires the $tmp variable
-			$tmp = filter_input_array(
-				$source,
-				[
-					$variable => [
-						'flags'   => FILTER_REQUIRE_ARRAY,
-						'filter'  => FILTER_VALIDATE_REGEXP,
-						'options' => [
-							'regexp'  => '/^(' . $regexp . ')$/u',
-							'default' => $default,
-						],
+			return filter_input_array($source, [
+				$variable => [
+					'flags'   => FILTER_REQUIRE_ARRAY,
+					'filter'  => FILTER_VALIDATE_REGEXP,
+					'options' => [
+						'regexp'  => '/^(' . $regexp . ')$/u',
+						'default' => $default,
 					],
-				]
-			);
-
-			return $tmp[$variable] ?: [];
+				],
+			])[$variable] ?: [];
 		} else {
-			// PHP5.3 requires the $tmp variable
-			$tmp = filter_input_array(
-				$source,
-				[
-					$variable => [
-						'flags'   => FILTER_REQUIRE_ARRAY,
-						'filter'  => FILTER_CALLBACK,
-						'options' => function ($x) {
-							return mb_check_encoding($x, 'UTF-8') ? $x : false;
-						},
-					],
-				]
-			);
-
-			return $tmp[$variable] ?: [];
+			return filter_input_array($source, [
+				$variable => [
+					'flags'   => FILTER_REQUIRE_ARRAY,
+					'filter'  => FILTER_CALLBACK,
+					'options' => function ($x) {
+						return mb_check_encoding($x, 'UTF-8') ? $x : false;
+					},
+				],
+			])[$variable] ?: [];
 		}
 	}
 
