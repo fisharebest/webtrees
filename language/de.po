@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-22 13:29+0000\n"
+"PO-Revision-Date: 2016-12-24 19:37+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -6322,7 +6322,7 @@ msgstr "Finde eine Person"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Jede Beziehung finden"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6335,7 +6335,7 @@ msgstr "Andere Beziehungen finden"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Beziehungen über Vorfahren finden"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6343,7 +6343,7 @@ msgstr "Die engste Verwandschaftsbeziehung finden"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Finde unverbundene Personen"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -14106,7 +14106,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Diese Gruppen von Personen sind nicht verbunden mit %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
