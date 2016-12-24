@@ -121,7 +121,7 @@ if (!isset($_POST['lang'])) {
 		}
 	}
 	// Mandatory extensions
-	foreach (['pcre', 'pdo', 'pdo_mysql', 'session', 'iconv'] as $extension) {
+	foreach (['mbstring', 'iconv', 'pcre', 'pdo', 'pdo_mysql', 'session'] as $extension) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors = true;

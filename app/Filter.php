@@ -66,11 +66,7 @@ class Filter {
 	 */
 	public static function escapeJs($string) {
 		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function ($x) {
-			if (strlen($x[0]) == 1) {
-				return sprintf('\\x%02X', ord($x[0]));
-			} elseif (function_exists('iconv')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(iconv('UTF-8', 'UTF-16BE', $x[0]))));
-			} elseif (function_exists('mb_convert_encoding')) {
+			if (strlen($x[0]) === 1) {
 				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', 'UTF-8'))));
 			} else {
 				return $x[0];
@@ -245,7 +241,7 @@ class Filter {
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_CALLBACK,
 						'options' => function ($x) {
-							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
+							return mb_check_encoding($x, 'UTF-8') ? $x : false;
 						},
 					],
 				]
