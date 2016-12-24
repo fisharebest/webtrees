@@ -178,7 +178,7 @@ class RelationshipController extends PageController {
 				$parameters
 			)->fetchOneColumn();
 
-			$queue = array()
+			$queue = array();
 			foreach ($parents as $parent) {
 				if (!in_array($parent, $ancestors)) {
 					$ancestors[] = $parent;
