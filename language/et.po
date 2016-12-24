@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-21 15:47+0000\n"
+"PO-Revision-Date: 2016-12-24 19:06+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -6327,7 +6327,7 @@ msgstr "Leia isik"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Leia mistahes sugulusside"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6340,7 +6340,7 @@ msgstr "Leia teisi sugulussidemeid"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Leia sugulussidemed esivanemate kaudu"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6348,7 +6348,7 @@ msgstr "Leia lähim sugulusside"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Leia seoseta isikuid"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -14111,7 +14111,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Need grupid inimesi ei ole seotud %s-ga."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
