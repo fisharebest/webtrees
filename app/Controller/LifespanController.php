@@ -85,24 +85,20 @@ class LifespanController extends PageController {
 	/** @var string[] A list of colors to use. */
 	private $colors = [];
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Place|null A place to serarh. */
-	public $place_obj = null;
+	private $place_obj = null;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null Start of the date range. */
-	public $startDate = null;
+	private $startDate = null;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null End of the date range. */
-	public $endDate = null;
+	private $endDate = null;
 
 	/** @var bool Only match dates in the chosen calendar. */
 	private $strictDate;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var string[] List of facts/events to include. */
-	public $facts;
+	private $facts;
 
 	/** @var string[] Facts and events to exclude from the chart */
 	private $nonfacts = [
@@ -271,9 +267,8 @@ class LifespanController extends PageController {
 			$bdate   = $this->getCalendarDate($this->people[0]->getEstimatedBirthDate()->minimumJulianDay());
 			$minyear = $bdate->y;
 
-			$that    = $this; // PHP5.3 cannot access $this inside a closure
-			$maxyear = array_reduce($this->people, function ($carry, Individual $item) use ($that) {
-				$date = $that->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
+			$maxyear = array_reduce($this->people, function ($carry, Individual $item) {
+				$date = $this->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
 
 				return max($carry, $date->y);
 			}, 0);
@@ -392,11 +387,10 @@ class LifespanController extends PageController {
 			}
 			Functions::sortFacts($facts);
 
-			$that          = $this; // PHP5.3 cannot access $this inside a closure
-			$acceptedFacts = array_filter($facts, function (Fact $fact) use ($that) {
+			$acceptedFacts = array_filter($facts, function (Fact $fact) {
 				return
-					(in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
-					(($that->place_obj || $that->startDate) && $that->checkFact($fact));
+					(in_array($fact->getTag(), $this->facts) && $fact->getDate()->isOK()) ||
+					(($this->place_obj || $this->startDate) && $this->checkFact($fact));
 			});
 
 			$eventList = [];
@@ -472,13 +466,11 @@ class LifespanController extends PageController {
 	 *
 	 * Does this fact meet the search criteria?
 	 *
-	 * @todo This function is public to support the PHP5.3 closure workaround.
-	 *
 	 * @param  Fact $fact
 	 *
 	 * @return bool
 	 */
-	public function checkFact(Fact $fact) {
+	private function checkFact(Fact $fact) {
 		$valid = !in_array($fact->getTag(), $this->nonfacts);
 		if ($valid && $this->place_obj) {
 			$valid = stripos($fact->getPlace()->getGedcomName(), $this->place_obj->getGedcomName()) !== false;
@@ -499,13 +491,11 @@ class LifespanController extends PageController {
 	/**
 	 * Function getCalendarDate
 	 *
-	 * @todo This function is public to support the PHP5.3 closure workaround.
-	 *
 	 * @param int $date
 	 *
 	 * @return object
 	 */
-	public function getCalendarDate($date) {
+	private function getCalendarDate($date) {
 		switch ($this->calendar) {
 		case 'julian':
 			$caldate = new JulianDate($date);

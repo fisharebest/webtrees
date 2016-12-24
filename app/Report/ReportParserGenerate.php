@@ -110,9 +110,8 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var ReportBase Nested report elements */
 	private $wt_report;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var string[][] Variables defined in the report at run-time */
-	public $vars;
+	private $vars;
 
 	/**
 	 * Create a parser for a report
@@ -2811,15 +2810,14 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @return string
 	 */
 	private function substituteVars($expression, $quote) {
-		$that = $this; // PHP5.3 cannot access $this inside a closure
 		return preg_replace_callback(
 			'/\$(\w+)/',
-			function ($matches) use ($that, $quote) {
-				if (isset($that->vars[$matches[1]]['id'])) {
+			function ($matches) use ($quote) {
+				if (isset($this->vars[$matches[1]]['id'])) {
 					if ($quote) {
-						return "'" . addcslashes($that->vars[$matches[1]]['id'], "'") . "'";
+						return "'" . addcslashes($this->vars[$matches[1]]['id'], "'") . "'";
 					} else {
-						return $that->vars[$matches[1]]['id'];
+						return $this->vars[$matches[1]]['id'];
 					}
 				} else {
 					Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
