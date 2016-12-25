@@ -255,8 +255,8 @@ case 'requestpw':
 			I18N::translate('Lost password request'),
 			I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 			I18N::translate('A new password has been requested for your username.') . Mail::EOL . Mail::EOL .
-			I18N::translate('Username') . ": " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-			I18N::translate('Password') . ": " . $user_new_pw . Mail::EOL . Mail::EOL .
+			I18N::translate('Username') . ': ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+			I18N::translate('Password') . ': ' . $user_new_pw . Mail::EOL . Mail::EOL .
 			I18N::translate('After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
 			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
@@ -342,10 +342,10 @@ case 'register':
 				I18N::translate('Follow this link to verify your email address.') .
 				Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
-				WT_LOGIN_URL . "?user_name=" . Filter::escapeHtml($user->getUserName()) . "&amp;user_hashcode=" . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
+				WT_LOGIN_URL . '?user_name=' . Filter::escapeHtml($user->getUserName()) . '&amp;user_hashcode=' . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
 				'</a>' . Mail::EOL . Mail::EOL .
-				I18N::translate('Username') . " - " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-				I18N::translate('Comments') . " - " . $user->getPreference('comment') . Mail::EOL .
+				I18N::translate('Username') . ' - ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+				I18N::translate('Comments') . ' - ' . $user->getPreference('comment') . Mail::EOL .
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);
 			$mail2_to      = $user->getEmail();
@@ -553,7 +553,7 @@ case 'verify_hash':
 	I18N::init($webmaster->getPreference('language'));
 
 	$user          = User::findByUserName($user_name);
-	$edit_user_url = WT_BASE_URL . "admin_users.php?action=edit&amp;user_id=" . $user->getUserId();
+	$edit_user_url = WT_BASE_URL . 'admin_users.php?action=edit&amp;user_id=' . $user->getUserId();
 	$mail1_body    =
 		I18N::translate('Hello administrator…') .
 		Mail::EOL . Mail::EOL .

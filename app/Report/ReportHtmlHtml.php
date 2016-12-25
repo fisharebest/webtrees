@@ -29,15 +29,15 @@ class ReportHtmlHtml extends ReportBaseHtml {
 	 * @return string
 	 */
 	public function render($renderer, $sub = false, $inat = true) {
-		if (!empty($this->attrs["wt_style"])) {
-			$renderer->setCurrentStyle($this->attrs["wt_style"]);
+		if (!empty($this->attrs['wt_style'])) {
+			$renderer->setCurrentStyle($this->attrs['wt_style']);
 		}
 
 		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
-			if (is_string($element) && $element == "footnotetexts") {
+			if (is_string($element) && $element == 'footnotetexts') {
 				$renderer->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$renderer->addPage();
 			} elseif ($element instanceof ReportBaseHtml) {
 				$element->render($renderer, true, false);
@@ -55,7 +55,7 @@ class ReportHtmlHtml extends ReportBaseHtml {
 			$startX = $renderer->getX();
 			$startY = $renderer->getY();
 			$width  = $renderer->getRemainingWidth();
-			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $renderer->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
+			echo '<div style="position: absolute;top: ', $startY, 'pt;', $renderer->alignRTL, ': ', $startX, 'pt;width: ', $width, 'pt;">';
 			$startY += $renderer->getCurrentStyleHeight() + 2;
 			$renderer->setY($startY);
 		}

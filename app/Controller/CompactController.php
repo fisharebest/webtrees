@@ -125,9 +125,9 @@ class CompactController extends ChartController {
 			$title = I18N::translate('Compact tree of %s', $indi->getFullName());
 			$text  = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
 			if ($this->show_thumbs) {
-				$text .= "&amp;show_thumbs=" . $this->show_thumbs;
+				$text .= '&amp;show_thumbs=' . $this->show_thumbs;
 			}
-			$text .= "\"></a>";
+			$text .= '"></a>';
 		} else {
 			$text = '<i class="icon-' . $arrow_dir . 'arrow"></i>';
 		}

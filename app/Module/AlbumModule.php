@@ -136,12 +136,12 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				$submenu = new Menu(I18N::translate('View the notes'), '#', '', [
 					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View the notes') . '"); return false;',
 				]);
-				$submenu->addClass("submenuitem");
+				$submenu->addClass('submenuitem');
 				$menu->addSubmenu($submenu);
 			}
 			//View Details
 			$submenu = new Menu(I18N::translate('View the details'), $media->getHtmlUrl());
-			$submenu->addClass("submenuitem");
+			$submenu->addClass('submenuitem');
 			$menu->addSubmenu($submenu);
 
 			//View Sources
@@ -159,14 +159,14 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', [
 					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
 				]);
-				$submenu->addClass("submenuitem");
+				$submenu->addClass('submenuitem');
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
 						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', [
 							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
 						]);
-						$submenu->addClass("submenuitem");
+						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 					} else {
 						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', [
@@ -190,7 +190,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', [
 						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
 					]);
-					$submenu->addClass("submenuitem");
+					$submenu->addClass('submenuitem');
 					$menu->addSubmenu($submenu);
 				}
 			}

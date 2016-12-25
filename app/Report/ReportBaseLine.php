@@ -24,25 +24,25 @@ class ReportBaseLine extends ReportBaseElement {
 	 *
 	 * @var mixed
 	 */
-	public $x1 = ".";
+	public $x1 = '.';
 	/**
 	 * Start vertical position, current position (default)
 	 *
 	 * @var mixed
 	 */
-	public $y1 = ".";
+	public $y1 = '.';
 	/**
 	 * End horizontal position, maximum width (default)
 	 *
 	 * @var mixed
 	 */
-	public $x2 = ".";
+	public $x2 = '.';
 	/**
 	 * End vertical position
 	 *
 	 * @var mixed
 	 */
-	public $y2 = ".";
+	public $y2 = '.';
 
 	/**
 	 * Create a line class - Base

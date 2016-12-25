@@ -25,7 +25,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
-		$renderer->setCurrentStyle("footnotenum");
+		$renderer->setCurrentStyle('footnotenum');
 		$renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
 
@@ -39,15 +39,15 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace('#PAGENUM#', $pdf->PageNo(), $this->text);
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
 		// Print first the source number
 		// working
 		if ($pdf->getRTL()) {
-			$pdf->writeHTML("<span> ." . $this->num . "</span>", false, false, false, false, "");
+			$pdf->writeHTML('<span> .' . $this->num . '</span>', false, false, false, false, '');
 		} else {
-			$temptext = "<span>" . $this->num . ". </span>" . $temptext;
+			$temptext = '<span>' . $this->num . '. </span>' . $temptext;
 		}
 		// underline «title» part of Source item
 		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
@@ -75,7 +75,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 */
 	public function getWidth($pdf) {
 		// Setup the style name, a font must be selected to calculate the width
-		$pdf->setCurrentStyle("footnotenum");
+		$pdf->setCurrentStyle('footnotenum');
 
 		// Check for the largest font size in the box
 		$fsize = $pdf->getCurrentStyleHeight();
@@ -106,22 +106,22 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 					$lw = ceil($pdf->GetStringWidth($line));
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words    = explode(" ", $line);
+						$words    = explode(' ', $line);
 						$addspace = count($words);
 						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += ceil($pdf->GetStringWidth($word . " "));
+							$lw += ceil($pdf->GetStringWidth($word . ' '));
 							if ($lw < $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 							} else {
-								$lw = $pdf->GetStringWidth($word . " ");
+								$lw = $pdf->GetStringWidth($word . ' ');
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 								// Reset the wrap width to the cell width
 								$wrapWidthRemaining = $this->wrapWidthCell;

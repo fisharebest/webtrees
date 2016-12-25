@@ -102,7 +102,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '</tr>';
 			}
 		}
-		$content .= "</table>";
+		$content .= '</table>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
@@ -161,9 +161,9 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
-		echo "<tr><td class=\"descriptionbox wrap width33\">";
+		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
-		echo "</td><td class=\"optionbox\">";
+		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('count_placement', ['before' => I18N::translate('before'), 'after' => I18N::translate('after')], null, $count_placement, '');
 		echo '</td></tr>';
 	}

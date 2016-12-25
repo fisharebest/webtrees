@@ -162,7 +162,7 @@ class FunctionsPrint {
 					if ($note->canShow()) {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-						$data .= self::printNoteRecord(($nt > 0) ? $n1match[1] : "", 1, $noterec, $textOnly);
+						$data .= self::printNoteRecord(($nt > 0) ? $n1match[1] : '', 1, $noterec, $textOnly);
 						if (!$textOnly) {
 							if (strpos($noterec, '1 SOUR') !== false) {
 								$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
@@ -175,9 +175,9 @@ class FunctionsPrint {
 			}
 			if (!$textOnly) {
 				if (strpos($factrec, "$nlevel SOUR") !== false) {
-					$data .= "<div class=\"indent\">";
+					$data .= '<div class="indent">';
 					$data .= FunctionsPrintFacts::printFactSources($nrec, $nlevel);
-					$data .= "</div>";
+					$data .= '</div>';
 				}
 			}
 		}
@@ -358,7 +358,7 @@ class FunctionsPrint {
 								$husb_age != '' && $record->getSex() == 'M' && $husb_age != $age ||
 								$wife_age != '' && $record->getSex() == 'F' && $wife_age != $age
 							) {
-								if ($age != "0d") {
+								if ($age != '0d') {
 									$ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
 								}
 							}
@@ -368,7 +368,7 @@ class FunctionsPrint {
 						// After death, print time since death
 						$age = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($death_date, $date));
 						if ($age != '') {
-							if (Date::getAgeGedcom($death_date, $date) == "0d") {
+							if (Date::getAgeGedcom($death_date, $date) == '0d') {
 								$ageText = '(' . I18N::translate('on the date of death') . ')';
 							} else {
 								$ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
@@ -450,7 +450,7 @@ class FunctionsPrint {
 						$html .= ' - ' . $wt_place->getFullName();
 					}
 				}
-				$map_lati = "";
+				$map_lati = '';
 				$cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
 				if ($cts > 0) {
 					$map_lati = $match[1];
@@ -463,8 +463,8 @@ class FunctionsPrint {
 					$html .= ' <span class="label">' . GedcomTag::getLabel('LONG') . ': </span>' . $map_long;
 				}
 				if ($map_lati && $map_long) {
-					$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
-					$map_long = trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
+					$map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
+					$map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
 					$html .= ' <a rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . I18N::translate('Google Maps™') . '"></a>';
 					$html .= ' <a rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . I18N::translate('Bing Maps™') . '"></a>';
 					$html .= ' <a rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . I18N::translate('OpenStreetMap™') . '"></a>';
@@ -543,7 +543,7 @@ class FunctionsPrint {
 		if (is_array(Session::get('clipboard'))) {
 			$newRow = true;
 			foreach (array_reverse(Session::get('clipboard'), true) as $fact_id => $fact) {
-				if ($fact["type"] == $type || $fact["type"] == 'all') {
+				if ($fact['type'] == $type || $fact['type'] == 'all') {
 					if ($newRow) {
 						$newRow = false;
 						echo '<tr class="noprint"><td class="descriptionbox">';
@@ -572,30 +572,30 @@ class FunctionsPrint {
 
 		// -- Add from pick list
 		switch ($type) {
-		case "INDI":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'INDI':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "FAM":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'FAM':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "SOUR":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'SOUR':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "NOTE":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'NOTE':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "REPO":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'REPO':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
 		default:
 			return;
@@ -730,7 +730,7 @@ class FunctionsPrint {
 		foreach ($choices as $choice) {
 			echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
 			echo '\'', $choice, '\';';
-			echo " return false;\">", $choice, '</span> ';
+			echo ' return false;">', $choice, '</span> ';
 		}
 		echo '</small>';
 	}

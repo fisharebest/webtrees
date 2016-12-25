@@ -47,11 +47,11 @@ class ReportBaseHtml extends ReportBaseElement {
 	 * @return string
 	 */
 	public function getStart() {
-		$str = "<" . $this->tag . " ";
+		$str = '<' . $this->tag . ' ';
 		foreach ($this->attrs as $key => $value) {
-			$str .= $key . "=\"" . $value . "\" ";
+			$str .= $key . '="' . $value . '" ';
 		}
-		$str .= ">";
+		$str .= '>';
 
 		return $str;
 	}
@@ -62,7 +62,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	 * @return string
 	 */
 	public function getEnd() {
-		return "</" . $this->tag . ">";
+		return '</' . $this->tag . '>';
 	}
 
 	/**

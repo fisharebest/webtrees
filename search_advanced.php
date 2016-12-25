@@ -135,10 +135,10 @@ echo '</script>';
 	<?php
 	$fct = count($controller->fields);
 	for ($i = 0; $i < $fct; $i++) {
-		if (strpos($controller->getField($i), "FAMC:HUSB:NAME") === 0) {
+		if (strpos($controller->getField($i), 'FAMC:HUSB:NAME') === 0) {
 			continue;
 		}
-		if (strpos($controller->getField($i), "FAMC:WIFE:NAME") === 0) {
+		if (strpos($controller->getField($i), 'FAMC:WIFE:NAME') === 0) {
 			continue;
 		}
 	?>
@@ -152,17 +152,17 @@ echo '</script>';
 			$currentField       = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
 				<input type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo substr($controller->getField($i), -4) == 'PLAC' ? 'data-autocomplete-type="PLAC"' : ''; ?>>
-			<?php if (preg_match("/^NAME:/", $currentFieldSearch) > 0) { ?>
+			<?php if (preg_match('/^NAME:/', $currentFieldSearch) > 0) { ?>
 				<select name="fields[<?php echo $i; ?>]">
-					<option value="<?php echo $currentField; ?>:EXACT" <?php if (preg_match("/:EXACT$/", $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Exact'); ?></option>
-					<option value="<?php echo $currentField; ?>:BEGINS" <?php if (preg_match("/:BEGINS$/", $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Begins with'); ?></option>
-					<option value="<?php echo $currentField; ?>:CONTAINS" <?php if (preg_match("/:CONTAINS$/", $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Contains'); ?></option>
-					<option value="<?php echo $currentField; ?>:SDX" <?php if (preg_match("/:SDX$/", $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Sounds like'); ?></option>
+					<option value="<?php echo $currentField; ?>:EXACT" <?php if (preg_match('/:EXACT$/', $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Exact'); ?></option>
+					<option value="<?php echo $currentField; ?>:BEGINS" <?php if (preg_match('/:BEGINS$/', $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Begins with'); ?></option>
+					<option value="<?php echo $currentField; ?>:CONTAINS" <?php if (preg_match('/:CONTAINS$/', $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Contains'); ?></option>
+					<option value="<?php echo $currentField; ?>:SDX" <?php if (preg_match('/:SDX$/', $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Sounds like'); ?></option>
 				</select>
 			<?php } else { ?>
 			<input type="hidden" name="fields[<?php echo $i; ?>]" value="<?php echo $controller->getField($i); ?>">
 			<?php }
-			if (preg_match("/:DATE$/", $currentFieldSearch) > 0) {
+			if (preg_match('/:DATE$/', $currentFieldSearch) > 0) {
 				?>
 				<select name="plusminus[<?php echo $i; ?>]">
 					<option value=""><?php echo I18N::translate('Exact date'); ?></option>

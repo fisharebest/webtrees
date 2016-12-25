@@ -104,7 +104,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		/** Responsive Design */
 		$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') . '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') . '</div><div class="facts_value stats_value stat-cell"><a href="' . 'indilist.php?surname_sublist=no&amp;ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</div></div>';
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</div></div>';
 		}

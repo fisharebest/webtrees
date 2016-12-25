@@ -45,8 +45,8 @@ class ReportParserSetup extends ReportParserBase {
 	protected function reportStartHandler($attrs) {
 		$access = Auth::PRIV_PRIVATE;
 		if (isset($attrs['access'])) {
-			if (isset($$attrs["access"])) {
-				$access = $$attrs["access"];
+			if (isset($$attrs['access'])) {
+				$access = $$attrs['access'];
 			}
 		}
 		$this->data['access'] = $access;

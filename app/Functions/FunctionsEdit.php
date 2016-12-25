@@ -1634,7 +1634,7 @@ class FunctionsEdit {
 				$text .= $fields[$j];
 			}
 			$text = rtrim($text);
-			while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
+			while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
 				$text .= "\n" . $cmatch[1];
 				$i++;
 			}

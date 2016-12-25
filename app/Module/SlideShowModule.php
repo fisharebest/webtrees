@@ -136,7 +136,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 					$icon_class = 'icon-media-play';
 				}
 				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id . '"><br>';
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"" . $icon_class . "\" title=\"" . I18N::translate('Play') . "/" . I18N::translate('Stop') . '"></a>';
+				$content .= '<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="' . $icon_class . '" title="' . I18N::translate('Play') . '/' . I18N::translate('Stop') . '"></a>';
 				$content .= '<a href="#" onclick="jQuery(\'#block_' . $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . I18N::translate('Next image') . '" class="icon-media-next"></a>';
 				$content .= '</div><script>
 					var play = false;
@@ -183,7 +183,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View this source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);
+			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), '1', false);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content

@@ -397,7 +397,7 @@ class LifespanController extends PageController {
 			foreach ($acceptedFacts as $fact) {
 				$tag = $fact->getTag();
 				//-- if the fact is a generic EVENt then get the qualifying TYPE
-				if ($tag == "EVEN") {
+				if ($tag == 'EVEN') {
 					$tag = $fact->getAttribute('TYPE');
 				}
 				$eventList[] = [
@@ -410,7 +410,7 @@ class LifespanController extends PageController {
 			$lifespan   = ' ' . $person->getLifeSpan(); // put the space here so its included in the length calcs
 			$sex        = $person->getSex();
 			$popupClass = strtr($sex, ['M' => '', 'U' => 'NN']);
-			$color      = $sex === 'U' ? '' : sprintf("background-color: %s", $this->colors[$sex]->getNextColor());
+			$color      = $sex === 'U' ? '' : sprintf('background-color: %s', $this->colors[$sex]->getNextColor());
 
 			// following lines are a nasty method of approximating
 			// the width of a string in pixels from the character count
@@ -448,7 +448,7 @@ class LifespanController extends PageController {
 
 			// Add events to popup
 			foreach ($eventList as $event) {
-				printf("<div>%s: %s %s</div>", $event['label'], $event['date'], $event['place']);
+				printf('<div>%s: %s %s</div>', $event['label'], $event['date'], $event['place']);
 			}
 			echo
 				'</div>' . // class="popup"

@@ -29,7 +29,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	public function render($renderer) {
 
 		$newelements      = [];
-		$lastelement      = "";
+		$lastelement      = '';
 		$footnote_element = [];
 		// Element counter
 		$cE = count($this->elements);
@@ -50,7 +50,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					} else {
 						// Checking if the Text has the same style
 						if ($element->getStyleName() == $lastelement->getStyleName()) {
-							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
+							$lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement   = $element;
@@ -68,7 +68,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
 				} //-- do not keep empty footnotes
-				elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != "") {
+				elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != '') {
 					if (!empty($footnote_element)) {
 						ksort($footnote_element);
 						foreach ($footnote_element as $links) {
@@ -113,7 +113,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		$renderer->largestFontHeight = 0;
 
 		// If current position (left)
-		if ($this->left == ".") {
+		if ($this->left == '.') {
 			$cX = $renderer->GetX();
 		} else {
 			// For static position add margin (returns and updates X)
@@ -121,7 +121,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		}
 
 		// If current position (top)
-		if ($this->top == ".") {
+		if ($this->top == '.') {
 			$cY = $renderer->GetY();
 		} else {
 			$cY = $this->top;
@@ -223,16 +223,16 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		}
 
 		// Setup the border and background color
-		$cS = ""; // Class Style
+		$cS = ''; // Class Style
 		if ($this->border) {
-			$cS = "D";
+			$cS = 'D';
 		} // D or empty string: Draw (default)
 		$match = [];
 		// Fill the background
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {
-				if (preg_match("/#?(..)(..)(..)/", $this->bgcolor, $match)) {
-					$cS .= "F"; // F: Fill the background
+				if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
+					$cS .= 'F'; // F: Fill the background
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);

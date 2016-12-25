@@ -146,7 +146,7 @@ class CensusAssistantModule extends AbstractModule {
 		function pasteid(id, name, thumb) {
 			if (thumb) {
 				window.opener.paste_id(id, name, thumb);
-				<?php if (!$multiple) { echo "window.close();"; } ?>
+				<?php if (!$multiple) { echo 'window.close();'; } ?>
 			} else {
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
@@ -156,7 +156,7 @@ class CensusAssistantModule extends AbstractModule {
 			if (window.opener.pastename) {
 				window.opener.pastename(name);
 			}
-			<?php if (!$multiple) { echo "window.close();"; } ?>
+			<?php if (!$multiple) { echo 'window.close();'; } ?>
 			}
 		}
 		function checknames(frm) {
@@ -205,19 +205,19 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getBirthYear() . "' ,
 					'" . (1901 - $indi->getBirthYear()) . "' ,
 					'" . $indi->getBirthPlace() . "'); return false;\">
-					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
+					<b>" . $indi->getFullName() . '</b>&nbsp;&nbsp;&nbsp;';
 
 				$born = GedcomTag::getLabel('BIRT');
-				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getBirthYear(), "&nbsp;&nbsp;&nbsp;", $indi->getBirthPlace(), "</span></a></li>";
-				echo "<hr>";
+				echo '</span><br><span class="list_item">', $born, ' ', $indi->getBirthYear(), '&nbsp;&nbsp;&nbsp;', $indi->getBirthPlace(), '</span></a></li>';
+				echo '<hr>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
 		} else {
-			echo "<td class=\"list_value_wrap\">";
+			echo '<td class="list_value_wrap">';
 			echo I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '</td></tr>';
 		}
-		echo "</table>";
+		echo '</table>';
 		echo '</div>';
 	}
 

@@ -45,9 +45,9 @@ class AdvancedSearchController extends SearchController {
 		$this->setPageTitle(I18N::translate('Advanced search'));
 
 		if (empty($_REQUEST['action'])) {
-			$this->action = "advanced";
+			$this->action = 'advanced';
 		}
-		if ($this->action == "advanced") {
+		if ($this->action == 'advanced') {
 			if (isset($_REQUEST['fields'])) {
 				$this->fields = $_REQUEST['fields'];
 				ksort($this->fields);
@@ -235,7 +235,7 @@ class AdvancedSearchController extends SearchController {
 		$newplus   = [];
 		$rels      = [];
 		foreach ($this->fields as $j => $field) {
-			if (strpos($this->fields[$j], "FAMC:HUSB:NAME") === 0 || strpos($this->fields[$j], "FAMC:WIFE:NAME") === 0) {
+			if (strpos($this->fields[$j], 'FAMC:HUSB:NAME') === 0 || strpos($this->fields[$j], 'FAMC:WIFE:NAME') === 0) {
 				$rels[$this->fields[$j]] = $this->values[$j];
 				continue;
 			}
@@ -373,7 +373,7 @@ class AdvancedSearchController extends SearchController {
 			if ($value === '') {
 				continue;
 			}
-			$parts = preg_split("/:/", $field . '::::');
+			$parts = preg_split('/:/', $field . '::::');
 			if ($parts[0] == 'NAME') {
 				// NAME:*
 				switch ($parts[1]) {

@@ -270,7 +270,7 @@ abstract class AbstractTheme {
 		case 'mailto':
 			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(Functions::getQueryUrl()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
+			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . '", "' . $method . '", "' . WT_BASE_URL . Filter::escapeHtml(Functions::getQueryUrl()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
 		}
 	}
 

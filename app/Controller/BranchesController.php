@@ -189,7 +189,7 @@ class BranchesController extends PageController {
 		// A person has many names. Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {
-			list($surn1) = explode(",", $name['sort']);
+			list($surn1) = explode(',', $name['sort']);
 			if (// one name is a substring of the other
 				stripos($surn1, $this->surname) !== false ||
 				stripos($this->surname, $surn1) !== false ||

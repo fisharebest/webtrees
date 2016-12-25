@@ -537,9 +537,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<?php if (Filter::post('selcountry') == 'Countries') { ?>
 					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[Filter::post('FLAGS')] ?>.png';
 					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/flags/<?php echo $country[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
-		<?php } elseif (Filter::post('selstate') != "States") { ?>
+		<?php } elseif (Filter::post('selstate') != 'States') { ?>
 					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected . '/flags/' . Filter::post('selstate') . '/' . $flags_s[Filter::post('FLAGS')] ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . "/flags/" . Filter::post('selstate') . '/' . $flags_s[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . '/flags/' . Filter::post('selstate') . '/' . $flags_s[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } else { ?>
 					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected . '/flags/' . $flags[Filter::post('FLAGS')] ?>.png";
 					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . '/flags/' . $flags[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
@@ -624,7 +624,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$path = WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/';
 				$path .= $countrySelected == 'Countries' ? 'flags/' : $countrySelected . '/flags/';
 				foreach (array_chunk($flags, 4) as $row) {
-					echo "<tr>";
+					echo '<tr>';
 					foreach ($row as $flag) {
 						if ($flag != 'blank') {
 							if (isset($countries[$flag])) {
@@ -643,7 +643,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 
 					echo str_repeat('<td></td>', 4 - count($row));
-					echo "</tr>";
+					echo '</tr>';
 				}
 
 				echo'<tr style="visibility:' . (($countrySelected == 'Countries' || count($stateList) == 0) ? 'hidden' : 'visible') . '">';
@@ -668,7 +668,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$i = 0;
 			if (!empty($flags_s)) {
 				foreach (array_chunk($flags_s, 4) as $row) {
-					echo "<tr>";
+					echo '<tr>';
 					foreach ($row as $flag) {
 						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '</td>';
 					}
@@ -1403,8 +1403,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$x   = 0;
 		$max = 0;
 		while ($x < $i) {
-			$levels                 = explode(",", $place_list[$x]);
-			$parts                  = count($levels);
+			$levels = explode(',', $place_list[$x]);
+			$parts  = count($levels);
 			if ($parts > $max) {
 				$max = $parts;
 			}
@@ -1456,7 +1456,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			foreach ($levels as $pindex => $ppart) {
 				$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
 			}
-			$placestr .= '">' . $place_list[$x] . "</a>";
+			$placestr .= '">' . $place_list[$x] . '</a>';
 			$gedplace    = '<tr><td>' . $placestr . '</td>';
 			$z           = 0;
 			$id          = 0;
@@ -1494,15 +1494,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 
 				if ($row['pl_place'] != '') {
-					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom') . ' ' . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+					$placestr2 = $mapstr_edit . $id . '&amp;level=' . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom') . ' ' . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
 					if ($row['pl_place'] === 'unknown') {
 						$matched[$x]++;
 					}
 				} else {
 					if ($levels[$z] === 'unknown') {
-						$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . I18N::translate('unknown') . "</strong>" . $mapstr8; $matched[$x]++;
+						$placestr2 = $mapstr_add . $id . '&amp;level=' . $level . $mapstr3 . $mapstr7 . '<strong>' . I18N::translate('unknown') . '</strong>' . $mapstr8; $matched[$x]++;
 					} else {
-						$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="danger">' . $levels[$z] . '</span>' . $mapstr8; $matched[$x]++;
+						$placestr2 = $mapstr_add . $id . '&amp;place_name=' . urlencode($levels[$z]) . '&amp;level=' . $level . $mapstr3 . $mapstr7 . '<span class="danger">' . $levels[$z] . '</span>' . $mapstr8; $matched[$x]++;
 					}
 				}
 				$plac[$z] = '<td>' . $placestr2 . '</td>';
@@ -1523,8 +1523,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$matched[$x]++;
 				}
 				$level++;
-				$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($row['pl_placerequested']);
-				$mapstr4 = $mapstr4 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($levels[$z]);
+				$mapstr3 = $mapstr3 . '&amp;parent[' . $z . ']=' . Filter::escapeJs($row['pl_placerequested']);
+				$mapstr4 = $mapstr4 . '&amp;parent[' . $z . ']=' . Filter::escapeJs($levels[$z]);
 				$z++;
 			}
 			if ($matching) {
@@ -2333,7 +2333,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							<?php echo Filter::getCsrf() ?>
 							<input type='hidden' name='placeid' value='<?php echo $placeid ?>'>
 							<input type='hidden' name='action' value='update_sv_params'>
-							<input type='hidden' name='destination' value='<?php echo Filter::server("REQUEST_URI") ?>'>
+							<input type='hidden' name='destination' value='<?php echo Filter::server('REQUEST_URI') ?>'>
 							<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI') ?></label>
 							<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat ?>" style='width:42px;' value='<?php echo $sv_lat ?>'>
 							<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG') ?></label>
@@ -2766,7 +2766,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$it = new \RecursiveIteratorIterator($di);
 
 			foreach ($it as $file) {
-				if ($file->getExtension() == "csv") {
+				if ($file->getExtension() == 'csv') {
 					$placefiles[] = '/' . $file->getFilename();
 				}
 			}
@@ -2857,7 +2857,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->fetchOneRow();
 			$place_name       = $row->pl_place;
 			$place_icon       = $row->pl_icon;
-			$selected_country = explode("/", $place_icon);
+			$selected_country = explode('/', $place_icon);
 			if (isset($selected_country[1]) && $selected_country[1] !== 'flags') {
 				$selected_country = $selected_country[1];
 			} else {
@@ -3515,10 +3515,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$i        = 1;
 				$placerec = Functions::getSubRecord(2, '2 PLAC', $gedrec, $i);
 				while (!empty($placerec)) {
-					if (preg_match("/2 PLAC (.+)/", $placerec, $match)) {
+					if (preg_match('/2 PLAC (.+)/', $placerec, $match)) {
 						$placelist[$j]          = [];
 						$placelist[$j]['place'] = trim($match[1]);
-						if (preg_match("/4 LATI (.*)/", $placerec, $match)) {
+						if (preg_match('/4 LATI (.*)/', $placerec, $match)) {
 							$placelist[$j]['lati'] = trim($match[1]);
 							if (($placelist[$j]['lati'][0] != 'N') && ($placelist[$j]['lati'][0] != 'S')) {
 								if ($placelist[$j]['lati'] < 0) {
@@ -3530,7 +3530,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						} else {
 							$placelist[$j]['lati'] = null;
 						}
-						if (preg_match("/4 LONG (.*)/", $placerec, $match)) {
+						if (preg_match('/4 LONG (.*)/', $placerec, $match)) {
 							$placelist[$j]['long'] = trim($match[1]);
 							if (($placelist[$j]['long'][0] != 'E') && ($placelist[$j]['long'][0] != 'W')) {
 								if ($placelist[$j]['long'] < 0) {
@@ -3659,7 +3659,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						foreach ($placefiles as $p => $placefile) {
 							unset($placefiles[$p]);
 							$p = Filter::escapeHtml($placefile);
-							if (substr($placefile, 0, 1) == "/") {
+							if (substr($placefile, 0, 1) == '/') {
 								$placefiles[$p] = substr($placefile, 1);
 							} else {
 								$placefiles[$p] = $placefile;

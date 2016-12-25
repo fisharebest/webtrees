@@ -148,7 +148,7 @@ class Database {
 					unset($trace[$n]);
 				}
 			}
-			$stack = '<abbr title="' . Filter::escapeHtml(implode(" / ", $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
+			$stack = '<abbr title="' . Filter::escapeHtml(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
 			// Bind variables
 			foreach ($bind_variables as $key => $value) {
 				if (is_null($value)) {
@@ -257,7 +257,7 @@ class Database {
 	 */
 	public static function prepare($sql) {
 		if (!self::$pdo instanceof PDO) {
-			throw new \Exception("No Connection Established");
+			throw new \Exception('No Connection Established');
 		}
 		$sql = str_replace('##', WT_TBLPREFIX, $sql);
 

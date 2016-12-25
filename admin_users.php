@@ -229,7 +229,7 @@ case 'load_json':
 		}
 		// $datum[6] is the sortable registration timestamp
 		$datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
-		if (date("U") - $datum[6] > 604800 && !$datum[10]) {
+		if (date('U') - $datum[6] > 604800 && !$datum[10]) {
 			$datum[7] = '<span class="red">' . $datum[7] . '</span>';
 		}
 		// $datum[8] is the sortable last-login timestamp

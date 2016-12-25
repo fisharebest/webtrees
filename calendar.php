@@ -520,7 +520,7 @@ case 'month':
 					break 2;
 				}
 				if (get_class($alt_date) !== get_class($cal_date)) {
-					echo '<span class="rtl_cal_day">' . $alt_date->format("%j %M") . '</span>';
+					echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
 					// Just show the first conversion
 					break;
 				}

@@ -157,7 +157,7 @@ case 'setup':
 	}
 	foreach ($report_array['inputs'] as $input) {
 		echo '<tr><td class="descriptionbox wrap">';
-		echo '<input type="hidden" name="varnames[]" value="', Filter::escapeHtml($input["name"]), '">';
+		echo '<input type="hidden" name="varnames[]" value="', Filter::escapeHtml($input['name']), '">';
 		echo I18N::translate($input['value']), '</td><td class="optionbox">';
 		if (!isset($input['type'])) {
 			$input['type'] = 'text';

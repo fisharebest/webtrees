@@ -108,11 +108,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
 			$content = '';
 			if (Auth::isModerator($WT_TREE)) {
-				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
+				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
 			}
 			if ($sendmail === '1') {
-				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
-				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
+				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';
+				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . '<br><br>';
 			}
 			$content .= '<ul>';
 			$changes = Database::prepare(

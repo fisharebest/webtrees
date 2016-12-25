@@ -73,7 +73,7 @@ class FunctionsRtl {
 	 * @return string The input string, with &lrm; and &rlm; stripped
 	 */
 	public static function stripLrmRlm($inputText) {
-		return str_replace([WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"], "", $inputText);
+		return str_replace([WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, '&lrm;', '&rlm;', '&LRM;', '&RLM;'], '', $inputText);
 	}
 
 	/**

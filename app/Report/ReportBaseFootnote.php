@@ -24,7 +24,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @var string
 	 */
-	public $styleName = "";
+	public $styleName = '';
 
 	/**
 	 * Numbers for the links
@@ -38,7 +38,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @var string
 	 */
-	public $numText = "";
+	public $numText = '';
 
 	/**
 	 * Remaining width of a cell
@@ -62,12 +62,12 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @param string $style
 	 */
-	public function __construct($style = "") {
-		$this->text = "";
+	public function __construct($style = '') {
+		$this->text = '';
 		if (!empty($style)) {
 			$this->styleName = $style;
 		} else {
-			$this->styleName = "footnote";
+			$this->styleName = 'footnote';
 		}
 	}
 
@@ -80,7 +80,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 */
 	public function addText($t) {
 		$t = trim($t, "\r\n\t");
-		$t = str_replace(["<br>", "&nbsp;"], ["\n", " "], $t);
+		$t = str_replace(['<br>', '&nbsp;'], ["\n", ' '], $t);
 		$t = strip_tags($t);
 		$t = htmlspecialchars_decode($t);
 		$this->text .= $t;

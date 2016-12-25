@@ -109,7 +109,7 @@ echo '<script>';
 	function pasteid(id, name, thumb) {
 		if (thumb) {
 			window.opener.<?php echo $callback; ?>(id, name, thumb);
-			<?php echo "window.close();"; ?>
+			<?php echo 'window.close();'; ?>
 		} else {
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
@@ -117,7 +117,7 @@ echo '<script>';
 			}
 			window.opener.<?php echo $callback; ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);
-			<?php echo "window.close();"; ?>
+			<?php echo 'window.close();'; ?>
 		}
 	}
 	function checknames(frm) {
@@ -139,7 +139,7 @@ echo '</script>';
 echo '<div id="find-page"><h2>', $controller->getPageTitle(), '</h2>';
 
 // Show indi and hide the rest
-if ($type == "indi") {
+if ($type == 'indi') {
 	echo '<div id="find-header">
 	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
 	<input type="hidden" name="callback" value="' . $callback . '">
@@ -156,7 +156,7 @@ if ($type == "indi") {
 }
 
 // Show fam and hide the rest
-if ($type == "fam") {
+if ($type == 'fam') {
 	echo '<div id="find-header">
 	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
 	<input type="hidden" name="callback" value="' . $callback . '">
@@ -192,7 +192,7 @@ if ($type == 'media') {
 }
 
 // Show place and hide the rest
-if ($type == "place") {
+if ($type == 'place') {
 	echo '<div id="find-header">
 	<form name="filterplace" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
@@ -210,7 +210,7 @@ if ($type == "place") {
 }
 
 // Show repo and hide the rest
-if ($type == "repo") {
+if ($type == 'repo') {
 	echo '<div id="find-header">
 	<form name="filterrepo" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
@@ -229,7 +229,7 @@ if ($type == "repo") {
 }
 
 // Show Shared Notes and hide the rest
-if ($type == "note") {
+if ($type == 'note') {
 	echo '<div id="find-header">
 	<form name="filternote" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
@@ -247,7 +247,7 @@ if ($type == "note") {
 }
 
 // Show source and hide the rest
-if ($type == "source") {
+if ($type == 'source') {
 	echo '<div id="find-header">
 	<form name="filtersource" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
@@ -291,7 +291,7 @@ if ($type == 'specialchar') {
 }
 
 // Show facts
-if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLAC") {
+if ($type == 'factINDI' || $type == 'factFAM' || $type == 'factSOUR' || $type == 'factREPO' || $type == 'factNAME' || $type == 'factPLAC') {
 	echo '<div id="find-facts-header">
 	<form name="filterfacts" method="get" action="find.php"
 	input type="hidden" name="type" value="facts">
@@ -530,7 +530,7 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 
 	<table id="tabFilterAndCustom"><tbody>
 		<tr><td>', I18N::translate('Filter'), ':</td><td><input type="text" id="tbxFilter"></td></tr>
-		<tr><td>', I18N::translate('Custom tags'), ':</td><td><input type="text" id="tbxCustom" value="', addslashes(implode(",", $preselCustom)), '"></td></tr>
+		<tr><td>', I18N::translate('Custom tags'), ':</td><td><input type="text" id="tbxCustom" value="', addslashes(implode(',', $preselCustom)), '"></td></tr>
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
@@ -563,7 +563,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Family
-	if ($type == "fam") {
+	if ($type == 'fam') {
 		echo '<div id="find-output">';
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
@@ -643,7 +643,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Places
-	if ($type == "place") {
+	if ($type == 'place') {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
 			$places = Place::allPlaces($WT_TREE);
@@ -670,7 +670,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Repositories
-	if ($type == "repo") {
+	if ($type == 'repo') {
 		echo '<div id="find-output">';
 		if ($filter) {
 			$repo_list = FunctionsDb::searchRepositories($filter_array, [$WT_TREE]);
@@ -684,7 +684,7 @@ if ($action === 'filter') {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
 			}
 			echo '</ul>
-			<p>', I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
+			<p>', I18N::translate('Repositories found'), ' ', count($repo_list), '</p>';
 		} else {
 			echo '<p>', I18N::translate('No results found.'), '</p>';
 		}
@@ -692,7 +692,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Shared Notes
-	if ($type == "note") {
+	if ($type == 'note') {
 		echo '<div id="find-output">';
 		if ($filter) {
 			$mynotelist = FunctionsDb::searchNotes($filter_array, [$WT_TREE]);
@@ -714,7 +714,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Sources
-	if ($type == "source") {
+	if ($type == 'source') {
 		echo '<div id="find-output">';
 		if ($filter) {
 			$mysourcelist = FunctionsDb::searchSources($filter_array, [$WT_TREE]);
@@ -738,7 +738,7 @@ if ($action === 'filter') {
 	}
 
 	// Output Special Characters
-	if ($type == "specialchar") {
+	if ($type == 'specialchar') {
 		echo '<div id="find-output-special"><p>';
 		// lower case special characters
 		foreach (SpecialChars::create($language_filter)->upper() as $special_character) {
@@ -758,4 +758,4 @@ if ($action === 'filter') {
 	}
 }
 echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
-echo "</div>";
+echo '</div>';

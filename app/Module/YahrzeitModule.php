@@ -123,11 +123,11 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			foreach ($yahrzeits as $yahrzeit) {
 				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
 					$ind = $yahrzeit->getParent();
-					$content .= "<a href=\"" . $ind->getHtmlUrl() . "\" class=\"list_item name2\">" . $ind->getFullName() . "</a>" . $ind->getSexImage();
-					$content .= "<div class=\"indent\">";
+					$content .= '<a href="' . $ind->getHtmlUrl() . '" class="list_item name2">' . $ind->getFullName() . '</a>' . $ind->getSexImage();
+					$content .= '<div class="indent">';
 					$content .= $yahrzeit->getDate()->display(true);
 					$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
-					$content .= "</div>";
+					$content .= '</div>';
 				}
 			}
 			break;

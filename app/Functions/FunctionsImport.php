@@ -413,8 +413,8 @@ class FunctionsImport {
 					$data =
 						$match[1] . "\n" .
 						($level + 1) . " MAP\n" .
-						($level + 2) . " LATI " . ($match[5] . (round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4))) . "\n" .
-						($level + 2) . " LONG " . ($match[9] . (round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4)));
+						($level + 2) . ' LATI ' . ($match[5] . (round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4))) . "\n" .
+						($level + 2) . ' LONG ' . ($match[9] . (round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4)));
 				}
 				break;
 			case 'POSTAL_CODE':
@@ -556,13 +556,13 @@ class FunctionsImport {
 				while (strpos($data, '  ')) {
 					$data = str_replace('  ', ' ', $data);
 				}
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'NOTE':
 			case 'TEXT':
 			case 'DATA':
 			case 'CONT':
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'FILE':
 				// Strip off the user-defined path prefix
@@ -571,9 +571,9 @@ class FunctionsImport {
 					$data = substr($data, strlen($GEDCOM_MEDIA_PATH));
 				}
 				// convert backslashes in filenames to forward slashes
-				$data = preg_replace("/\\\/", "/", $data);
+				$data = preg_replace("/\\\/", '/', $data);
 
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'CONC':
 				// Merge CONC lines, to simplify access later on.
@@ -630,7 +630,7 @@ class FunctionsImport {
 					->execute([$xref, $tree_id])
 					->fetchOneColumn();
 			foreach ($old_linked_media as $media_id) {
-				$gedrec .= "\n1 OBJE @" . $media_id . "@";
+				$gedrec .= "\n1 OBJE @" . $media_id . '@';
 			}
 		}
 
@@ -771,7 +771,7 @@ class FunctionsImport {
 		$personplace = [];
 		// import all place locations, but not control info such as
 		// 0 HEAD/1 PLAC or 0 _EVDEF/1 PLAC
-		$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
+		$pt = preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $match, PREG_SET_ORDER);
 		for ($i = 0; $i < $pt; $i++) {
 			$place    = trim($match[$i][1]);
 			$lowplace = I18N::strtolower($place);
@@ -788,7 +788,7 @@ class FunctionsImport {
 
 			foreach ($secalp as $place) {
 				$place = trim($place);
-				$key   = strtolower(mb_substr($place, 0, 150) . "_" . $parent_id);
+				$key   = strtolower(mb_substr($place, 0, 150) . '_' . $parent_id);
 				//-- if this place has already been added then we don't need to add it again
 				if (isset($placecache[$key])) {
 					$parent_id = $placecache[$key];
@@ -1101,7 +1101,7 @@ class FunctionsImport {
 			$gid  = $match[1];
 			$type = $match[1];
 		} else {
-			echo "ERROR: Invalid gedcom record.";
+			echo 'ERROR: Invalid gedcom record.';
 
 			return;
 		}

@@ -46,7 +46,7 @@ if (Auth::check()) {
 	$from = Auth::user()->getUserName();
 } else {
 	// Visitors must provide a valid email address
-	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
+	if ($from_email && (!preg_match('/(.+)@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
 		$errors .= '<p class="ui-state-error">' . I18N::translate('Please enter a valid email address.') . '</p>';
 		$action = 'compose';
 	}
@@ -282,7 +282,7 @@ function addMessage($message) {
 	}
 
 	if (empty($message['created'])) {
-		$message['created'] = gmdate("D, d M Y H:i:s T");
+		$message['created'] = gmdate('D, d M Y H:i:s T');
 	}
 
 	if ($message['method'] !== 'messaging3' && $message['method'] !== 'mailto' && $message['method'] !== 'none') {

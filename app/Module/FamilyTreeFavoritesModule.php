@@ -166,7 +166,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 					$record = GedcomRecord::getInstance($favorite['gid'], $WT_TREE);
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
-							$content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
+							$content .= '<div id="box' . $favorite['gid'] . '.0" class="person_box action_header';
 							switch ($record->getSex()) {
 							case 'M':
 								break;
@@ -178,7 +178,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 								break;
 							}
 							$content .= '">';
-							if ($ctype == "user" || Auth::isManager($WT_TREE)) {
+							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
 							$content .= Theme::theme()->individualBoxLarge($record);

@@ -38,9 +38,9 @@ $controller
 
 $action = Filter::post('action');
 
-if ($action == "upload") {
+if ($action == 'upload') {
 	for ($i = 1; $i < 6; $i++) {
-		if (!empty($_FILES['mediafile' . $i]["name"]) || !empty($_FILES['thumbnail' . $i]["name"])) {
+		if (!empty($_FILES['mediafile' . $i]['name']) || !empty($_FILES['thumbnail' . $i]['name'])) {
 			$folder = Filter::post('folder' . $i);
 
 			// Validate the media folder
@@ -172,7 +172,7 @@ $mediaFolders = QueryMedia::folderListAll();
 // Determine file size limit
 $filesize = ini_get('upload_max_filesize');
 if (empty($filesize)) {
-	$filesize = "2M";
+	$filesize = '2M';
 }
 
 ?>
@@ -221,7 +221,7 @@ for ($i = 1; $i < 6; $i++) {
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
 		if ($i == 1) {
-			echo '<p class="small text-muted">', I18N::translate('Do not change to keep original filename.'), "</p>";
+			echo '<p class="small text-muted">', I18N::translate('Do not change to keep original filename.'), '</p>';
 			echo '<p class="small text-muted">', I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.'), '</p>';
 		}
 		echo '</td></tr>';
@@ -239,12 +239,12 @@ for ($i = 1; $i < 6; $i++) {
 		echo '<option';
 		echo ' value="/"> ', I18N::translate('&lt;select&gt;'), ' </option>';
 		if (Auth::isAdmin()) {
-			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), "</option>";
+			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), '</option>';
 		}
 		foreach ($mediaFolders as $f) {
-			echo '<option value="', Filter::escapeHtml($f), '">', Filter::escapeHtml($f), "</option>";
+			echo '<option value="', Filter::escapeHtml($f), '">', Filter::escapeHtml($f), '</option>';
 		}
-		echo "</select>";
+		echo '</select>';
 		if (Auth::isAdmin()) {
 			echo '<br><input name="folder', $i, '" type="text" size="40" value="">';
 		} else {

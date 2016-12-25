@@ -124,7 +124,7 @@ class Stats {
 		isset($funcs) or $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
-		preg_match_all("/#([^#]+)(?=#)/", (string) $text, $match);
+		preg_match_all('/#([^#]+)(?=#)/', (string) $text, $match);
 		$tags       = $match[1];
 		$c          = count($tags);
 		$new_tags   = []; // tag to replace
@@ -496,7 +496,7 @@ class Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -519,7 +519,7 @@ class Stats {
 				I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
 			$chart_title = I18N::translate('Families with sources');
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -946,7 +946,7 @@ class Stats {
 				I18N::translate('Females') . ' - ' . $per_f . I18N::$list_separator .
 				I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		} else {
 			$chd = $this->arrayToExtendedEncoding([4095 * $tot_f / $tot, 4095 * $tot_m / $tot]);
 			$chl =
@@ -955,7 +955,7 @@ class Stats {
 			$chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
 				I18N::translate('Females') . ' - ' . $per_f;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -1040,7 +1040,7 @@ class Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_living = strtolower($params[1]);
@@ -1070,7 +1070,7 @@ class Stats {
 			$chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
 				I18N::translate('Dead') . ' - ' . $per_d;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -1357,8 +1357,8 @@ class Stats {
 		}
 		// Build a table listing only the media types actually present in the GEDCOM
 		$mediaCounts = [];
-		$mediaTypes  = "";
-		$chart_title = "";
+		$mediaTypes  = '';
+		$chart_title = '';
 		$c           = 0;
 		$max         = 0;
 		$media       = [];
@@ -1402,7 +1402,7 @@ class Stats {
 		$chd         = $this->arrayToExtendedEncoding($mediaCounts);
 		$chl         = substr($mediaTypes, 0, -1);
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 	}
 
 	/**
@@ -1457,7 +1457,7 @@ class Stats {
 			$result = $date->display();
 			break;
 		case 'name':
-			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+			$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 			break;
 		case 'place':
 			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
@@ -1632,7 +1632,7 @@ class Stats {
 		I18N::init(WT_LOCALE);
 		switch ($chart_type) {
 		case 'surname_distribution_chart':
-			if ($surname == "") {
+			if ($surname == '') {
 				$surname = $this->getCommonSurname();
 			}
 			$chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
@@ -1722,11 +1722,11 @@ class Stats {
 			}
 			break;
 		}
-		$chart_url = "https://chart.googleapis.com/chart?cht=t&amp;chtm=" . $chart_shows;
-		$chart_url .= "&amp;chco=" . $WT_STATS_CHART_COLOR1 . "," . $WT_STATS_CHART_COLOR3 . "," . $WT_STATS_CHART_COLOR2; // country colours
-		$chart_url .= "&amp;chf=bg,s,ECF5FF"; // sea colour
-		$chart_url .= "&amp;chs=" . $WT_STATS_MAP_X . "x" . $WT_STATS_MAP_Y;
-		$chart_url .= "&amp;chld=" . implode('', array_keys($surn_countries)) . "&amp;chd=s:";
+		$chart_url = 'https://chart.googleapis.com/chart?cht=t&amp;chtm=' . $chart_shows;
+		$chart_url .= '&amp;chco=' . $WT_STATS_CHART_COLOR1 . ',' . $WT_STATS_CHART_COLOR3 . ',' . $WT_STATS_CHART_COLOR2; // country colours
+		$chart_url .= '&amp;chf=bg,s,ECF5FF'; // sea colour
+		$chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
+		$chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
 		foreach ($surn_countries as $count) {
 			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
 		}
@@ -1884,8 +1884,8 @@ class Stats {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->getTreeId()} AND " .
-				"d_year<>0 AND " .
+				"d_file = {$this->tree->getTreeId()} AND " .
+				"d_year <> 0 AND " .
 				"d_fact='BIRT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} elseif ($sex) {
@@ -1920,7 +1920,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -1941,7 +1941,7 @@ class Stats {
 			if ($tot == 0) {
 				return '';
 			}
-			$centuries = "";
+			$centuries = '';
 			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
@@ -1950,7 +1950,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries, 0, -1));
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . "\" title=\"" . I18N::translate('Births by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . '" title="' . I18N::translate('Births by century') . '" />';
 		} else {
 			return $rows;
 		}
@@ -2013,7 +2013,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -2034,7 +2034,7 @@ class Stats {
 			if ($tot == 0) {
 				return '';
 			}
-			$centuries = "";
+			$centuries = '';
 			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
@@ -2043,7 +2043,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries, 0, -1));
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Deaths by century') . "\" title=\"" . I18N::translate('Deaths by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Deaths by century') . '" title="' . I18N::translate('Deaths by century') . '" />';
 		}
 
 		return $rows;
@@ -2271,7 +2271,7 @@ class Stats {
 			$result = I18N::number((int) ($row['age'] / 365.25));
 			break;
 		case 'name':
-			$result = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a>";
+			$result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
 			break;
 		}
 
@@ -2340,9 +2340,9 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($person->canShow()) {
 				if ($type == 'list') {
-					$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
+					$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
-					$top10[] = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")";
+					$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
@@ -2418,9 +2418,9 @@ class Stats {
 			}
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type === 'list') {
-				$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
+				$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 			} else {
-				$top10[] = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")";
+				$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
 			}
 		}
 		if ($type === 'list') {
@@ -2596,7 +2596,7 @@ class Stats {
 				$chtt = substr_replace($title, '|', $counter[$half], 1);
 			}
 
-			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . "\" title=\"" . I18N::translate('Average age related to death century') . "\" />";
+			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . '" title="' . I18N::translate('Average age related to death century') . '" />';
 		} else {
 			$sex_search = '';
 			$years      = '';
@@ -2627,7 +2627,7 @@ class Stats {
 				" birth.d_file=indi.i_file AND" .
 				" birth.d_fact='BIRT' AND" .
 				" death.d_fact='DEAT' AND" .
-				" birth.d_julianday1<>0 AND" .
+				" birth.d_julianday1 <> 0 AND" .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
 				" death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
 				" death.d_julianday1>birth.d_julianday2" .
@@ -2962,7 +2962,7 @@ class Stats {
 			}
 			break;
 		case 'name':
-			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+			$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 			break;
 		case 'place':
 			$fact = $record->getFirstFact($row['fact']);
@@ -3257,9 +3257,9 @@ class Stats {
 			if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
 				if ($family->canShow()) {
 					if ($type === 'list') {
-						$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
+						$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 					} else {
-						$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
+						$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 					}
 				}
 				if (++$i === $total) {
@@ -3348,7 +3348,7 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
 					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 				}
@@ -3507,7 +3507,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -3537,7 +3537,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries, 0, -1);
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . "\" title=\"" . I18N::translate('Marriages by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . '" title="' . I18N::translate('Marriages by century') . '" />';
 		}
 
 		return $rows;
@@ -3604,7 +3604,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -3634,7 +3634,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries, 0, -1);
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Divorces by century') . "\" title=\"" . I18N::translate('Divorces by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Divorces by century') . '" title="' . I18N::translate('Divorces by century') . '" />';
 		}
 
 		return $rows;
@@ -3939,7 +3939,7 @@ class Stats {
 				$chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
 			}
 
-			return "<img src=\"" . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(I18N::translate('Males') . "|" . I18N::translate('Females') . "|" . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . "\" title=\"" . I18N::translate('Average age in century of marriage') . "\" />";
+			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . '" title="' . I18N::translate('Average age in century of marriage') . '" />';
 		} else {
 			if ($year1 >= 0 && $year2 >= 0) {
 				$years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
@@ -4409,7 +4409,7 @@ class Stats {
 			$result = I18N::number($row['tot']);
 			break;
 		case 'name':
-			$result = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . '</a>';
+			$result = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
 			break;
 		}
 
@@ -4554,32 +4554,32 @@ class Stats {
 			if ($type == 'list') {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canShow() && $child2->canShow()) {
-						$return = "<li>";
-						$return .= "<a href=\"" . $child2->getHtmlUrl() . "\">" . $child2->getFullName() . "</a> ";
-						$return .= I18N::translate('and') . " ";
-						$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
-						$return .= " (" . $age . ")";
-						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+						$return = '<li>';
+						$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+						$return .= I18N::translate('and') . ' ';
+						$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+						$return .= ' (' . $age . ')';
+						$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
 					}
 				} elseif (!$one && $child1->canShow() && $child2->canShow()) {
-					$return = "<li>";
-					$return .= "<a href=\"" . $child2->getHtmlUrl() . "\">" . $child2->getFullName() . "</a> ";
-					$return .= I18N::translate('and') . " ";
-					$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
-					$return .= " (" . $age . ")";
-					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+					$return = '<li>';
+					$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+					$return .= I18N::translate('and') . ' ';
+					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+					$return .= ' (' . $age . ')';
+					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 					$return .= '</li>';
 					$top10[] = $return;
 				}
 			} else {
 				if ($child1->canShow() && $child2->canShow()) {
 					$return = $child2->formatList('span', false, $child2->getFullName());
-					$return .= "<br>" . I18N::translate('and') . "<br>";
+					$return .= '<br>' . I18N::translate('and') . '<br>';
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+					$return .= '<br><a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 
 					return $return;
 				} else {
@@ -4853,7 +4853,7 @@ class Stats {
 		}
 		$chl = rawurlencode(implode('|', $chl));
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Largest families') . "\" title=\"" . I18N::translate('Largest families') . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Largest families') . '" title="' . I18N::translate('Largest families') . '" />';
 	}
 
 	/**
@@ -4916,15 +4916,15 @@ class Stats {
 					$max = $values['num'];
 				}
 			}
-			$chm    = "";
-			$chxl   = "0:|";
+			$chm    = '';
+			$chxl   = '0:|';
 			$i      = 0;
 			$counts = [];
 			foreach ($rows as $values) {
 				if ($sizes[0] < 980) {
 					$sizes[0] += 38;
 				}
-				$chxl .= $this->centuryName($values['century']) . "|";
+				$chxl .= $this->centuryName($values['century']) . '|';
 				if ($max <= 5) {
 					$counts[] = round($values['num'] * 819.2 - 1, 1);
 				} elseif ($max <= 10) {
@@ -4938,14 +4938,14 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chm = substr($chm, 0, -1);
 			if ($max <= 5) {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|3:||' . I18N::translate('Number of children') . '|';
 			} elseif ($max <= 10) {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|3:||' . I18N::translate('Number of children') . '|';
 			} else {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||' . I18N::translate('Number of children') . '|';
 			}
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . "\" title=\"" . I18N::translate('Average number of children per family') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . '" title="' . I18N::translate('Average number of children per family') . '" />';
 		} else {
 			if ($sex == 'M') {
 				$sql =
@@ -4980,7 +4980,7 @@ class Stats {
 				} else {
 					$sql .= "WHERE f_file={$this->tree->getTreeId()}";
 				}
-				$sql .= " GROUP BY f_numchil";
+				$sql .= ' GROUP BY f_numchil';
 			}
 			$rows = $this->runSql($sql);
 
@@ -5091,9 +5091,9 @@ class Stats {
 			$family = Family::getInstance($row['family'], $this->tree);
 			if ($family->canShow()) {
 				if ($type == 'list') {
-					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a></li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a></li>';
 				} else {
-					$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a>";
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
 				}
 			}
 		}
@@ -5139,7 +5139,7 @@ class Stats {
 		if ($year1 >= 0 && $year2 >= 0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 		} else {
-			$years = "";
+			$years = '';
 		}
 		$max  = 0;
 		$tot  = 0;
@@ -5172,15 +5172,15 @@ class Stats {
 		if ($unknown > $max) {
 			$max = $unknown;
 		}
-		$chm    = "";
-		$chxl   = "0:|";
+		$chm    = '';
+		$chxl   = '0:|';
 		$i      = 0;
 		$counts = [];
 		foreach ($rows as $values) {
 			if ($sizes[0] < 980) {
 				$sizes[0] += 38;
 			}
-			$chxl .= $this->centuryName($values['century']) . "|";
+			$chxl .= $this->centuryName($values['century']) . '|';
 			$counts[] = round(4095 * $values['count'] / ($max + 1));
 			$chm .= 't' . $values['count'] . ',000000,0,' . $i . ',11,1|';
 			$i++;
@@ -5188,7 +5188,7 @@ class Stats {
 		$counts[] = round(4095 * $unknown / ($max + 1));
 		$chd      = $this->arrayToExtendedEncoding($counts);
 		$chm .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
-		$chxl .= I18N::translateContext('unknown century', 'Unknown') . "|1:||" . I18N::translate('century') . "|2:|0|";
+		$chxl .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
 		$step = $max + 1;
 		for ($d = (int) ($max + 1); $d > 0; $d--) {
 			if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
@@ -5203,11 +5203,11 @@ class Stats {
 			}
 		}
 		for ($n = $step; $n <= ($max + 1); $n += $step) {
-			$chxl .= $n . "|";
+			$chxl .= $n . '|';
 		}
-		$chxl .= "3:||" . I18N::translate('Total families') . "|";
+		$chxl .= '3:||' . I18N::translate('Total families') . '|';
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . "\" title=\"" . I18N::translate('Number of families without children') . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . '" title="' . I18N::translate('Number of families without children') . '" />';
 	}
 
 	/**
@@ -5406,7 +5406,7 @@ class Stats {
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-		$size               = empty($params[0]) ? $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y : strtolower($params[0]);
+		$size               = empty($params[0]) ? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y : strtolower($params[0]);
 		$color_from         = empty($params[1]) ? $WT_STATS_CHART_COLOR1 : strtolower($params[1]);
 		$color_to           = empty($params[2]) ? $WT_STATS_CHART_COLOR2 : strtolower($params[2]);
 		$number_of_surnames = empty($params[3]) ? 10 : (int) $params[3];
@@ -5826,7 +5826,7 @@ class Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -5875,7 +5875,7 @@ class Stats {
 		$chart_title = implode(I18N::$list_separator, $chl);
 		$chl         = implode('|', $chl);
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 	}
 
 	/**
@@ -5907,9 +5907,9 @@ class Stats {
 		if ($LoginUsers > 0) {
 			if ($NumAnonymous) {
 				if ($type == 'list') {
-					$content .= "<br><br>";
+					$content .= '<br><br>';
 				} else {
-					$content .= " " . I18N::translate('and') . " ";
+					$content .= ' ' . I18N::translate('and') . ' ';
 				}
 			}
 			$content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';

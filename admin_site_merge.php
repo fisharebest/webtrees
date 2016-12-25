@@ -149,7 +149,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		" WHERE gedcom_id=? AND page_parameter=?"
 	)->execute([$WT_TREE->getTreeId(), $gid2]);
 
-	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+	$gedcom = '0 @' . $rec1->getXref() . '@ ' . $rec1::RECORD_TYPE;
 	foreach ($facts as $fact_id => $fact) {
 		$gedcom .= "\n" . $fact->getGedcom();
 	}

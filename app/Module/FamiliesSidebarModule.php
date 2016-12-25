@@ -163,7 +163,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				break;
 			}
 			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
-			$out .= $html . " ";
+			$out .= $html . ' ';
 		}
 
 		$out .= '</p>';

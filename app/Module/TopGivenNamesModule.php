@@ -77,7 +77,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
 		switch ($infoStyle) {
-		case "list": // Output style 1:  Simple list style. Better suited to left side of page.
+		case 'list': // Output style 1:  Simple list style. Better suited to left side of page.
 			if (I18N::direction() === 'ltr') {
 				$padding = 'padding-left: 15px';
 			} else {
@@ -95,7 +95,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 				$content .= '<b>' . I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
 			}
 			break;
-		case "table": // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
+		case 'table': // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
 			$params = [1, $num, 'rcount'];
 			$content .= '<table style="margin:auto;">
 						<tr>
@@ -104,7 +104,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			$content .= '</tr></table>';
 			break;
 		}
-		$content .= "</div>";
+		$content .= '</div>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

@@ -533,7 +533,7 @@ class Fact {
 			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
 				$atag = $match[1];
 			} else {
-				$atag = "_????_";
+				$atag = '_????_';
 			}
 		}
 
@@ -541,7 +541,7 @@ class Fact {
 			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
 				$btag = $match[1];
 			} else {
-				$btag = "_????_";
+				$btag = '_????_';
 			}
 		}
 

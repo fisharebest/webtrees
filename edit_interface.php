@@ -1219,11 +1219,11 @@ case 'addnewsource':
 				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('TITL'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ABBR'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('ABBR'); ?></td></tr>
-				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
+				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('_HEB'); ?></td></tr>
 				<?php } ?>
-				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
+				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'); ?></td>
 				<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('ROMN'); ?></td></tr>
 				<?php } ?>
@@ -1536,11 +1536,11 @@ case 'addnewrepository':
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('REPO_NAME'); ?></td></tr>
-			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
+			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('_HEB'); ?></td></tr>
 			<?php } ?>
-			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
+			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('ROMN'); ?></td></tr>
 			<?php } ?>
@@ -2525,7 +2525,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		echo '</table><br><table class="facts_table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
-			FunctionsEdit::addSimpleTag("0 SEX M");
+			FunctionsEdit::addSimpleTag('0 SEX M');
 		} elseif ($famtag === 'WIFE' || $gender === 'F') {
 			FunctionsEdit::addSimpleTag('0 SEX F');
 		} else {

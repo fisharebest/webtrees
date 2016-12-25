@@ -53,7 +53,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 		$paramok = GedcomRecord::getInstance($linktoid, $WT_TREE)->canShow();
 	}
 
-	if ($action == "choose" && $paramok) {
+	if ($action == 'choose' && $paramok) {
 		echo '<form name="link" method="get" action="inverselink.php">';
 		echo '<input type="hidden" name="action" value="update">';
 		if (!empty($mediaid)) {
@@ -91,10 +91,10 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 		}
 		echo '<tr><td class="descriptionbox">';
 
-		if ($linkto == "person") {
-			echo I18N::translate('Individual'), "</td>";
+		if ($linkto == 'person') {
+			echo I18N::translate('Individual'), '</td>';
 			echo '<td class="optionbox wrap">';
-			if ($linktoid == "") {
+			if ($linktoid == '') {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
 				echo FunctionsPrint::printFindIndividualLink('linktopid');
 			} else {
@@ -103,10 +103,10 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			}
 		}
 
-		if ($linkto == "family") {
+		if ($linkto == 'family') {
 			echo I18N::translate('Family'), '</td>';
 			echo '<td class="optionbox wrap">';
-			if ($linktoid == "") {
+			if ($linktoid == '') {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '"> ';
 				echo FunctionsPrint::printFindFamilyLink('linktofamid');
 			} else {
@@ -115,10 +115,10 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			}
 		}
 
-		if ($linkto == "source") {
-			echo I18N::translate('Source'), "</td>";
+		if ($linkto == 'source') {
+			echo I18N::translate('Source'), '</td>';
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid == "") {
+			if ($linktoid == '') {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '"> ';
 				echo FunctionsPrint::printFindSourceLink('linktosid');
 			} else {
@@ -126,10 +126,10 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
-		if ($linkto == "repository") {
-			echo I18N::translate('Repository'), "</td>";
+		if ($linkto == 'repository') {
+			echo I18N::translate('Repository'), '</td>';
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid == "") {
+			if ($linktoid == '') {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Repository::getInstance($linktoid, $WT_TREE);
@@ -137,10 +137,10 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			}
 		}
 
-		if ($linkto == "note") {
-			echo I18N::translate('Shared note'), "</td>";
+		if ($linkto == 'note') {
+			echo I18N::translate('Shared note'), '</td>';
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid == "") {
+			if ($linktoid == '') {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Note::getInstance($linktoid, $WT_TREE);
@@ -152,7 +152,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', /* I18N: A button label (a verb). */ I18N::translate('link'), '"></td></tr>';
 		echo '</table>';
 		echo '</form>';
-	} elseif ($action == "update" && $paramok) {
+	} elseif ($action == 'update' && $paramok) {
 		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $mediaid . '@', true);
 		$controller->addInlineJavascript('closePopupAndReloadParent();');

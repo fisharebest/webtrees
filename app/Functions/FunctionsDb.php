@@ -374,8 +374,8 @@ class FunctionsDb {
 
 		$sql .= " AND f_file IN (";
 		foreach ($trees as $n => $tree) {
-			$sql .= $n ? ", " : "";
-			$sql .= ":tree_id_" . $n;
+			$sql .= $n ? ', ' : '';
+			$sql .= ':tree_id_' . $n;
 			$args['tree_id_' . $n] = $tree->getTreeId();
 		}
 		$sql .= ")";
@@ -892,7 +892,7 @@ class FunctionsDb {
 	 */
 	public static function getCalendarEvents($jd1, $jd2, $facts, Tree $tree) {
 		// If no facts specified, get all except these
-		$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
+		$skipfacts = 'CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT';
 
 		$found_facts = [];
 

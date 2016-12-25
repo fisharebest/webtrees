@@ -34,12 +34,12 @@ $controller
 	->restrictAccess(Auth::isModerator($WT_TREE))
 	->setPageTitle(I18N::translate('Pending changes'))
 	->pageHeader()
-	->addInlineJavascript("
+	->addInlineJavascript('
 		function show_diff(diffurl) {
 			window.opener.location = diffurl;
 			return false;
 		}
-	");
+	');
 
 $action    = Filter::get('action');
 $change_id = Filter::getInteger('change_id');

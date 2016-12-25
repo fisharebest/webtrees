@@ -218,8 +218,8 @@ class PedigreeController extends ChartController {
 				}
 				break;
 			}
-			$this->nodes[$i]["x"] = (int) $xoffset;
-			$this->nodes[$i]["y"] = (int) $yoffset;
+			$this->nodes[$i]['x'] = (int) $xoffset;
+			$this->nodes[$i]['y'] = (int) $yoffset;
 		}
 
 		// find the minimum x & y offsets and deduct that number from

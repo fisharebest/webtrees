@@ -31,13 +31,13 @@ class ReportPdfText extends ReportBaseText {
 		if ($renderer->getCurrentStyle() != $this->styleName) {
 			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
+		$temptext = str_replace('#PAGENUM#', $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 
 		// Paint the text color or they might use inherited colors by the previous function
 		$match = [];
-		if (preg_match("/#?(..)(..)(..)/", $this->color, $match)) {
+		if (preg_match('/#?(..)(..)(..)/', $this->color, $match)) {
 			$r = hexdec($match[1]);
 			$g = hexdec($match[2]);
 			$b = hexdec($match[3]);
@@ -45,7 +45,7 @@ class ReportPdfText extends ReportBaseText {
 		} else {
 			$renderer->SetTextColor(0, 0, 0);
 		}
-		$temptext = FunctionsRtl::spanLtrRtl($temptext, "BOTH");
+		$temptext = FunctionsRtl::spanLtrRtl($temptext, 'BOTH');
 		$temptext = str_replace(
 			['<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ', ' <'],
 			['<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'],
@@ -57,7 +57,7 @@ class ReportPdfText extends ReportBaseText {
 			false,
 			true,
 			false,
-			""
+			''
 		); //change height - line break etc. - the form is mirror on rtl pages
 		// Reset the text color to black or it will be inherited
 		$renderer->SetTextColor(0, 0, 0);
@@ -104,7 +104,7 @@ class ReportPdfText extends ReportBaseText {
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if ($lw >= $wrapWidthRemaining || $lfct > 1) {
-				$newtext = "";
+				$newtext = '';
 				$lines   = explode("\n", $this->text);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
@@ -112,22 +112,22 @@ class ReportPdfText extends ReportBaseText {
 					$lw = $pdf->GetStringWidth($line);
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words    = explode(" ", $line);
+						$words    = explode(' ', $line);
 						$addspace = count($words);
 						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += $pdf->GetStringWidth($word . " ");
+							$lw += $pdf->GetStringWidth($word . ' ');
 							if ($lw <= $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 							} else {
-								$lw = $pdf->GetStringWidth($word . " ");
+								$lw = $pdf->GetStringWidth($word . ' ');
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 								// Reset the wrap width to the cell width
 								$wrapWidthRemaining = $this->wrapWidthCell;

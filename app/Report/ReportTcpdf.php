@@ -60,18 +60,18 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}
@@ -85,9 +85,9 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 			// Delete used elements in hope to reduce 'some' memory usage
@@ -117,9 +117,9 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}

@@ -164,7 +164,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				break;
 			}
 			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_indi_letter">' . $html . '</a>';
-			$out .= $html . " ";
+			$out .= $html . ' ';
 		}
 
 		$out .= '</p>';
