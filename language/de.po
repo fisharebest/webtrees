@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 08:59+0000\n"
-"PO-Revision-Date: 2016-12-22 13:29+0000\n"
+"PO-Revision-Date: 2016-12-25 08:29+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
+"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4318,7 +4318,7 @@ msgstr "Zypern"
 #. I18N: Name of a country or state
 #: app/Stats.php:6731
 msgid "Czech Republic"
-msgstr "Tschechische Republik"
+msgstr "Tschechien"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
@@ -6311,7 +6311,7 @@ msgstr "Finde ein Sonderzeichen"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr "Alle möglichen Verwandschaftsbeziehungen finden"
+msgstr "Alle möglichen Beziehungen finden"
 
 #: app/Functions/FunctionsPrint.php:686 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6339,7 +6339,7 @@ msgstr ""
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
-msgstr "Die engste Verwandschaftsbeziehung finden"
+msgstr "Die engste Beziehung finden"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
@@ -11419,21 +11419,21 @@ msgstr "Beziehung"
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
 msgid "Relationship to father"
-msgstr "Verwandtschaft zum Vater"
+msgstr "Beziehung zum Vater"
 
 #: app/Module/RelationshipsChartModule.php:83
 msgid "Relationship to me"
-msgstr "Verwandtschaft zu mir"
+msgstr "Beziehung zu mir"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1667
 msgid "Relationship to mother"
-msgstr "Verwandtschaft zur Mutter"
+msgstr "Beziehung zur Mutter"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr "Verwandtschaft zu den Eltern"
+msgstr "Beziehung zu den Eltern"
 
 #: relationship.php:166
 #, php-format
@@ -15775,7 +15775,7 @@ msgstr "Wenn Sie diese Nachricht senden, erhalten Sie eine Kopie an die von Ihne
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Bearbeiter oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten bzw. lebenden Personen verhindern. Sie geben die Anzahl der Stufen zu den Verwandten an, die der Benutzer sehen darf."
+msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Bearbeiter oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten, lebenden Verwandten verhindern. Sie geben die Anzahl der Beziehungsgrade an, die der Benutzer sehen darf."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
