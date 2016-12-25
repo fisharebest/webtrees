@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-08-01 08:36+0000\n"
+"PO-Revision-Date: 2016-12-25 09:42+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6326,7 +6326,7 @@ msgstr "Cerca una persona"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Cerca qualsevol parentiu"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6334,12 +6334,12 @@ msgstr "Cerca duplicats"
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr "Troba altres parentius"
+msgstr "Cerca altres parentius"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Cerca parentius via avantpassats"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6347,7 +6347,7 @@ msgstr "Cerca els parents més propers"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Cerca persones sense vincles"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -14110,7 +14110,7 @@ msgstr "Termidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Aquests grups de persones no estan vinculats amb %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
