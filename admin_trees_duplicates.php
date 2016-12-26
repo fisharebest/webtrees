@@ -157,7 +157,7 @@ $all_duplicates = [
 
 <h2><?php echo $title; ?></h2>
 
-<?php if ($duplicate_list): ?>
+<?php if (!empty($duplicate_list)): ?>
 <ul>
 	<?php foreach ($duplicate_list as $duplicates): ?>
 	<li>
