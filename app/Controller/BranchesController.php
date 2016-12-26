@@ -52,11 +52,11 @@ class BranchesController extends PageController {
 
 		parent::__construct();
 
-		$this->surname     = Filter::get('surname');
+		$this->surname     = Filter::get('surname', null, '');
 		$this->soundex_std = Filter::getBool('soundex_std');
 		$this->soundex_dm  = Filter::getBool('soundex_dm');
 
-		if ($this->surname) {
+		if ($this->surname !== '') {
 			$this->setPageTitle(/* I18N: %s is a surname */
 				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
@@ -72,7 +72,7 @@ class BranchesController extends PageController {
 	/**
 	 * The surname to be used on this page.
 	 *
-	 * @return null|string
+	 * @return string
 	 */
 	public function getSurname() {
 		return $this->surname;
@@ -209,7 +209,7 @@ class BranchesController extends PageController {
 
 		// Is this individual one of our ancestors?
 		$sosa = array_search($individual, $this->ancestors, true);
-		if ($sosa) {
+		if ($sosa !== false) {
 			$sosa_class = 'search_hit';
 			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {

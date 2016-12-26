@@ -101,7 +101,7 @@ class FamilyBookController extends ChartController {
 			}
 		}
 		if ($generation < $this->dgenerations) {
-			if ($children) {
+			if (!empty($children)) {
 				// real people
 				echo '<table>';
 				foreach ($children as $i => $child) {
@@ -365,7 +365,7 @@ class FamilyBookController extends ChartController {
 			return;
 		}
 		$families = $person->getSpouseFamilies();
-		if ($families) {
+		if (!empty($families)) {
 			echo
 			'<h3>',
 			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),

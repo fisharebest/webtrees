@@ -125,7 +125,7 @@ $changed_gedcoms = Database::prepare(
 	" GROUP BY g.gedcom_name"
 )->fetchOneColumn();
 
-if ($changed_gedcoms) {
+if (!empty($changed_gedcoms)) {
 	$changes = Database::prepare(
 		"SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
 		" FROM `##change` c" .

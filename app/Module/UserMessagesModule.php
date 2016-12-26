@@ -144,7 +144,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</form>';
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 

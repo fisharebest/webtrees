@@ -202,7 +202,7 @@ class DescendancyController extends ChartController {
 		// children
 		$children = $family->getChildren();
 		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
-		if ($children) {
+		if (!empty($children)) {
 			echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded

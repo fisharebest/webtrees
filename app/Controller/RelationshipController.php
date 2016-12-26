@@ -55,7 +55,7 @@ class RelationshipController extends PageController {
 		$graph = [];
 
 		foreach ($rows as $row) {
-			if (!$ancestors || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
+			if (empty($ancestors) || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
 				$graph[$row->l_from][$row->l_to] = 1;
 				$graph[$row->l_to][$row->l_from] = 1;
 			}

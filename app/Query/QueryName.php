@@ -295,10 +295,10 @@ class QueryName {
 			'tree_id' => $tree->getTreeId(),
 		];
 
-		$num_none = Database::prepare($sql)->execute($args)->fetchOne();
-		if ($num_none) {
+		$count_no_surname = (int) Database::prepare($sql)->execute($args)->fetchOne();
+		if ($count_no_surname !== 0) {
 			// Special code to indicate "no surname"
-			$alphas[','] = $num_none;
+			$alphas[','] = $count_no_surname;
 		}
 
 		return $alphas;

@@ -252,7 +252,7 @@ case 'importform':
 								}
 								echo'>', Filter::escapeHtml($gedcom_file), '</option>';
 							}
-							if (!$files) {
+							if (empty($files)) {
 								echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
 							}
 							echo '</select>';

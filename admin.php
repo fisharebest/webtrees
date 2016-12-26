@@ -586,7 +586,7 @@ if (
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 	<!-- SERVER WARNINGS -->
-	<?php if ($server_warnings): ?>
+	<?php if (!empty($server_warnings)): ?>
 		<div class="panel panel-danger">
 			<div class="panel-heading" role="tab" id="server-heading">
 				<h2 class="panel-title">
@@ -883,7 +883,7 @@ if (
 	</div>
 
 	<!-- OLD FILES -->
-	<?php if (Auth::isAdmin() && $files_to_delete): ?>
+	<?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
 	<div class="panel panel-danger">
 		<div class="panel-heading" role="tab" id="old-files-heading">
 			<h2 class="panel-title">
