@@ -206,7 +206,7 @@ $controller->pageHeader();
 			</h2>
 		</div>
 		<div class="panel-body">
-			<?php if ($facts): ?>
+			<?php if (!empty($facts)): ?>
 			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
@@ -253,7 +253,7 @@ $controller->pageHeader();
 					</h2>
 				</div>
 				<div class="panel-body">
-					<?php if ($facts1): ?>
+					<?php if (!empty($facts1)): ?>
 						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
@@ -299,7 +299,7 @@ $controller->pageHeader();
 					</h2>
 				</div>
 				<div class="panel-body">
-					<?php if ($facts2): ?>
+					<?php if (!empty($facts2)): ?>
 						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
