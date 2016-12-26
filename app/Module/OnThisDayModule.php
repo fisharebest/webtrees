@@ -89,7 +89,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 
