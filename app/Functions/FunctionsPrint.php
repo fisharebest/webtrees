@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Controller\SearchController;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -322,6 +323,7 @@ class FunctionsPrint {
 		}
 
 		// Calculated age
+		$fact = $event->getTag();
 		if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
 			$date = new Date($match[1]);
 			$html .= ' ' . $date->display($anchor);
@@ -329,7 +331,6 @@ class FunctionsPrint {
 			if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
 				$html .= ' – <span class="date">' . $match[1] . '</span>';
 			}
-			$fact = $event->getTag();
 			if ($record instanceof Individual) {
 				if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 					// age of parents at child birth
@@ -408,7 +409,7 @@ class FunctionsPrint {
 					}
 				}
 			}
-		} elseif (strpos($factrec, "\n2 PLAC ") === false) {
+		} elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
 			// There is no DATE.  If there is also no PLAC, then print "yes"
 			$html .= I18N::translate('yes');
 		}
