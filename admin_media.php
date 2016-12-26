@@ -379,7 +379,7 @@ function media_paths($media_folder) {
 		'media_folder' => $media_folder,
 	])->fetchOneColumn();
 
-	if (!$media_paths || reset($media_paths) != '') {
+	if (empty($media_paths) || $media_paths[0] !== '') {
 		// Always include a (possibly empty) top-level folder
 		array_unshift($media_paths, '');
 	}
@@ -560,7 +560,7 @@ function mediaObjectInfo(Media $media) {
 		// Invalid GEDCOM - you cannot link a REPO to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	if ($linked) {
+	if (!empty($linked)) {
 		$html .= '<ul>';
 		foreach ($linked as $link) {
 			$html .= '<li>' . $link . '</li>';
