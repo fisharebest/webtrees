@@ -77,7 +77,11 @@ class ColorGenerator {
 
 		if ($lightness >= 100) {
 			$lightness = $this->baselightness;
-			$hue += $hueStep * (abs($this->range) / $this->range);
+			if ($this->range > 0) {
+				$hue += $hueStep;
+			} else {
+				$hue -= $hueStep;
+			}
 			if (($hue - $this->basehue) * ($hue - ($this->basehue + $this->range)) >= 0) {
 				$hue = $this->basehue;
 			}
