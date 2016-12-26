@@ -110,7 +110,7 @@ $controller
 </form>
 
 <?php if ($search && $replace) { ?>
-	<?php if ($changes) { ?>
+	<?php if (!empty($changes)) { ?>
 	<p>
 		<?php echo $confirm ? I18N::translate('The following places have been changed:') : I18N::translate('The following places would be changed:'); ?>
 	</p>
