@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-24 15:25+0000\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2016-12-26 19:32+0000\n"
+"Last-Translator: Nathalie <nvedovotto@gmail.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1752,12 +1752,12 @@ msgstr "Affichage de l’âge des parents à côté de la date de naissance"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
-msgstr "Âge à la naissance"
+msgstr "Longévité selon l'année de naissance"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:540
 #: statisticsplot.php:1182
 msgid "Age related to death year"
-msgstr "Âge au décès"
+msgstr "Longévité selon l'année de décès"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -4777,7 +4777,7 @@ msgstr "Décès d’un petit-fils"
 
 #: app/GedcomTag.php:1419
 msgid "Death of a half-brother"
-msgstr "Décès du demi-frère"
+msgstr "Décès d'un demi-frère"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
@@ -4789,7 +4789,7 @@ msgstr "Décès d’une demi-sœur"
 
 #: app/GedcomTag.php:1446
 msgid "Death of a husband"
-msgstr "Décès de l’époux/épouse"
+msgstr "Décès d'un époux/épouse"
 
 #: app/GedcomTag.php:1410
 msgid "Death of a maternal grandfather"
@@ -4829,11 +4829,11 @@ msgstr "Décès d’un fils"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
-msgstr "Décès du conjoint"
+msgstr "Décès d'un conjoint"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
-msgstr "Décès de l’épouse"
+msgstr "Décès d'une épouse"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1459
@@ -5357,13 +5357,13 @@ msgstr "Naissance la plus ancienne"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr "Premier décès"
+msgstr "Décès le plus ancien"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
 #: app/Module/HtmlBlockModule.php:226
 msgid "Earliest death year"
-msgstr "Décès le plus ancien"
+msgstr "Année du décès le plus ancien"
 
 #: statistics.php:232
 msgid "Earliest divorce"
@@ -8118,7 +8118,7 @@ msgstr "Dernier décès"
 #: app/Module/FamilyTreeStatisticsModule.php:362
 #: app/Module/HtmlBlockModule.php:231
 msgid "Latest death year"
-msgstr "Décès le plus récent"
+msgstr "Année du décès le plus récent"
 
 #: statistics.php:240
 msgid "Latest divorce"
