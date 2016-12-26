@@ -2491,6 +2491,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// Create the map and mapOptions
 			var mapOptions = {
+				minZoom: ' . $this->getSetting('GM_MIN_ZOOM') . ',
 				zoom: 8,
 				center: map_center,
 				mapTypeId: google.maps.MapTypeId.' . $this->getSetting('GM_MAP_TYPE') . ',
