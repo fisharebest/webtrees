@@ -94,12 +94,10 @@ class BaseController {
 		}
 
 		// Inline (lower priority) javascript
-		if ($this->inline_javascript) {
-			foreach ($this->inline_javascript as $priority => $scripts) {
-				if ($priority !== self::JS_PRIORITY_HIGH) {
-					foreach ($scripts as $script) {
-						$javascript3 .= $script;
-					}
+		foreach ($this->inline_javascript as $priority => $scripts) {
+			if ($priority !== self::JS_PRIORITY_HIGH) {
+				foreach ($scripts as $script) {
+					$javascript3 .= $script;
 				}
 			}
 		}

@@ -61,7 +61,7 @@ class AdvancedSearchController extends SearchController {
 			$this->reorderFields();
 			$this->advancedSearch();
 		}
-		if (!$this->fields) {
+		if (empty($this->fields)) {
 			$this->fields = [
 				'NAME:GIVN:SDX',
 				'NAME:SURN:SDX',
@@ -657,7 +657,7 @@ class AdvancedSearchController extends SearchController {
 	 * Display the search results
 	 */
 	public function printResults() {
-		if ($this->myindilist) {
+		if (!empty($this->myindilist)) {
 			uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo FunctionsPrintLists::individualTable($this->myindilist);
 		} elseif (array_filter($this->values)) {
