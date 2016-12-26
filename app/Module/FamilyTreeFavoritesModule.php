@@ -80,7 +80,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $controller, $WT_TREE;
 
 		$action = Filter::get('action');
@@ -100,7 +100,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			if ($gid) {
 				$record = GedcomRecord::getInstance($gid, $WT_TREE);
 				if ($record && $record->canShow()) {
-					self::addFavorite(array(
+					self::addFavorite([
 						'user_id'   => $ctype === 'user' ? Auth::id() : null,
 						'gedcom_id' => $WT_TREE->getTreeId(),
 						'gid'       => $record->getXref(),
@@ -108,10 +108,10 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 						'url'       => null,
 						'note'      => $favnote,
 						'title'     => $favtitle,
-					));
+					]);
 				}
 			} elseif ($url) {
-				self::addFavorite(array(
+				self::addFavorite([
 					'user_id'   => $ctype === 'user' ? Auth::id() : null,
 					'gedcom_id' => $WT_TREE->getTreeId(),
 					'gid'       => null,
@@ -119,14 +119,14 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 					'url'       => $url,
 					'note'      => $favnote,
 					'title'     => $favtitle ? $favtitle : $url,
-				));
+				]);
 			}
 			break;
 		}
 
 		$block = $this->getBlockSetting($block_id, 'block', '0');
 
-		foreach (array('block') as $name) {
+		foreach (['block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -134,7 +134,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
 		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : $WT_TREE->getTreeId());
 		if (!is_array($userfavs)) {
-			$userfavs = array();
+			$userfavs = [];
 		}
 
 		$id    = $this->getName() . $block_id;
@@ -166,7 +166,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 					$record = GedcomRecord::getInstance($favorite['gid'], $WT_TREE);
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
-							$content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
+							$content .= '<div id="box' . $favorite['gid'] . '.0" class="person_box action_header';
 							switch ($record->getSex()) {
 							case 'M':
 								break;
@@ -178,7 +178,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 								break;
 							}
 							$content .= '">';
-							if ($ctype == "user" || Auth::isManager($WT_TREE)) {
+							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
 							$content .= Theme::theme()->individualBoxLarge($record);
@@ -299,7 +299,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	public static function deleteFavorite($favorite_id) {
 		return (bool)
 			Database::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
-			->execute(array($favorite_id));
+			->execute([$favorite_id]);
 	}
 
 	/**
@@ -319,10 +319,10 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		$sql = "SELECT SQL_NO_CACHE 1 FROM `##favorite` WHERE";
 		if (!empty($favorite['gid'])) {
 			$sql .= " xref=?";
-			$vars = array($favorite['gid']);
+			$vars = [$favorite['gid']];
 		} else {
 			$sql .= " url=?";
-			$vars = array($favorite['url']);
+			$vars = [$favorite['url']];
 		}
 		$sql .= " AND gedcom_id=?";
 		$vars[] = $favorite['gedcom_id'];
@@ -340,7 +340,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		//-- add the favorite to the database
 		return (bool)
 			Database::prepare("INSERT INTO `##favorite` (user_id, gedcom_id, xref, favorite_type, url, title, note) VALUES (? ,? ,? ,? ,? ,? ,?)")
-				->execute(array($favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']));
+				->execute([$favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']]);
 	}
 
 	/**
@@ -355,7 +355,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .
 				" FROM `##favorite` WHERE gedcom_id=? AND user_id IS NULL")
-			->execute(array($gedcom_id))
+			->execute([$gedcom_id])
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

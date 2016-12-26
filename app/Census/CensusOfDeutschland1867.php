@@ -43,7 +43,7 @@ class CensusOfDeutschland1867 extends CensusOfDeutschland implements CensusInter
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, '1.Nr.', 'Ordnungs-Nummer (1-15).'),
 			new CensusColumnGivenNames($this, '2.Vorname', 'I. Vor- und Familien-Name jeder Person. Vorname'),
 			new CensusColumnSurname($this, '3.Familienname', 'I. Vor- und Familien-Name jeder Person. Familienname.'),
@@ -67,6 +67,6 @@ class CensusOfDeutschland1867 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, '21.taubstumm', 'IX. Besondere Mängel einzelner Individuen. taubstumm.'),
 			new CensusColumnNull($this, '22.blödsinnig', 'IX. Besondere Mängel einzelner Individuen. blödsinnig.'),
 			new CensusColumnNull($this, '23.irrsinnig', 'IX. Besondere Mängel einzelner Individuen. irrsinnig.'),
-		);
+		];
 	}
 }

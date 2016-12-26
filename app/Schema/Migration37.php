@@ -60,7 +60,7 @@ class Migration37 implements MigrationInterface {
 				") VALUES (" .
 				" :gedcom_id, :xref, :gedcom, :name, :address, :restriction, :uid, :changed_at" .
 				")"
-			)->execute(array(
+			)->execute([
 				'gedcom_id'   => $repository->o_file,
 				'xref'        => $repository->o_id,
 				'gedcom'      => $repository->o_gedcom,
@@ -69,14 +69,14 @@ class Migration37 implements MigrationInterface {
 				'restriction' => '',
 				'uid'         => '',
 				'changed_at'  => '',
-			));
+			]);
 
 			Database::prepare(
 				"DELETE FROM `##other` WHERE o_file = :gedcom_id AND o_id = :xref"
-			)->execute(array(
+			)->execute([
 				'gedcom_id' => $repository->o_file,
 				'xref'      => $repository->o_id,
-			));
+			]);
 
 			if ($n % 500 === 499) {
 				Database::exec("COMMIT");

@@ -28,7 +28,7 @@ class AjaxController extends BaseController {
 		// Ajax responses are always UTF8
 		header('Content-Type: text/html; charset=UTF-8');
 		// We've displayed the header - display the footer automatically
-		register_shutdown_function(array($this, 'pageFooter'));
+		register_shutdown_function([$this, 'pageFooter']);
 
 		return $this;
 	}

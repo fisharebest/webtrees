@@ -220,7 +220,7 @@ function checknames(frm) {
 	</form>
 
 <?php endif; ?>
-<?php if ($controller->action == "soundex"): ?>
+<?php if ($controller->action === 'soundex'): ?>
 
 	<form name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="soundex">

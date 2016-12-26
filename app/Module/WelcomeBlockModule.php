@@ -44,7 +44,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $controller, $WT_TREE;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
@@ -59,8 +59,8 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
 			$content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></td>';
 		}
-		$content .= "</tr>";
-		$content .= "</table>";
+		$content .= '</tr>';
+		$content .= '</table>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

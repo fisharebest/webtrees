@@ -60,10 +60,10 @@ if ($rec1 && $rec2 && $rec1::RECORD_TYPE !== $rec2::RECORD_TYPE) {
 }
 
 // Facts found both records
-$facts = array();
+$facts = [];
 // Facts found in only one record
-$facts1 = array();
-$facts2 = array();
+$facts1 = [];
+$facts2 = [];
 
 if ($rec1) {
 	foreach ($rec1->getFacts() as $fact) {
@@ -128,7 +128,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		"UPDATE `##user_gedcom_setting`" .
 		" SET setting_value=?" .
 		" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
-	)->execute(array($gid2, $WT_TREE->getTreeId(), $gid1));
+	)->execute([$gid2, $WT_TREE->getTreeId(), $gid1]);
 
 	// Merge hit counters
 	$hits = Database::prepare(
@@ -136,20 +136,20 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		" FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
 		" GROUP BY page_name"
-	)->execute(array($WT_TREE->getTreeId(), $gid1, $gid2))->fetchAssoc();
+	)->execute([$WT_TREE->getTreeId(), $gid1, $gid2])->fetchAssoc();
 
 	foreach ($hits as $page_name => $page_count) {
 		Database::prepare(
 			"UPDATE `##hit_counter` SET page_count=?" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-		)->execute(array($page_count, $WT_TREE->getTreeId(), $page_name, $gid1));
+		)->execute([$page_count, $WT_TREE->getTreeId(), $page_name, $gid1]);
 	}
 	Database::prepare(
 		"DELETE FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter=?"
-	)->execute(array($WT_TREE->getTreeId(), $gid2));
+	)->execute([$WT_TREE->getTreeId(), $gid2]);
 
-	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+	$gedcom = '0 @' . $rec1->getXref() . '@ ' . $rec1::RECORD_TYPE;
 	foreach ($facts as $fact_id => $fact) {
 		$gedcom .= "\n" . $fact->getGedcom();
 	}

@@ -66,7 +66,7 @@ class SurnameTradition {
 	 * @return string[]
 	 */
 	public static function allDescriptions() {
-		return array(
+		return [
 			'paternal' =>
 				I18N::translateContext('Surname tradition', 'paternal') .
 				' — ' . /* I18N: In the paternal surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
@@ -98,7 +98,7 @@ class SurnameTradition {
 				' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
 			'none' =>
 				I18N::translateContext('Surname tradition', 'none'),
-		);
+		];
 
 	}
 }

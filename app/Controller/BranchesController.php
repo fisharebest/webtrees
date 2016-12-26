@@ -39,10 +39,10 @@ class BranchesController extends PageController {
 	private $soundex_dm;
 
 	/** @var Individual[] Everyone with the selected surname */
-	private $individuals = array();
+	private $individuals = [];
 
 	/** @var Individual[] Ancestors of the root person - for SOSA numbers */
-	private $ancestors = array();
+	private $ancestors = [];
 
 	/**
 	 * Create a branches list controller
@@ -109,7 +109,7 @@ class BranchesController extends PageController {
 			" WHERE n_file = ?" .
 			" AND n_type != ?" .
 			" AND (n_surn = ? OR n_surname = ?";
-		$args = array($WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname);
+		$args = [$WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname];
 		if ($this->soundex_std) {
 			$sdx = Soundex::russell($this->surname);
 			if ($sdx !== null) {
@@ -130,7 +130,7 @@ class BranchesController extends PageController {
 		}
 		$sql .= ')';
 		$rows              = Database::prepare($sql)->execute($args)->fetchAll();
-		$this->individuals = array();
+		$this->individuals = [];
 		foreach ($rows as $row) {
 			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
@@ -189,7 +189,7 @@ class BranchesController extends PageController {
 		// A person has many names. Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {
-			list($surn1) = explode(",", $name['sort']);
+			list($surn1) = explode(',', $name['sort']);
 			if (// one name is a substring of the other
 				stripos($surn1, $this->surname) !== false ||
 				stripos($this->surname, $surn1) !== false ||

@@ -42,7 +42,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 	if ($z_axis === 300) {
 		$num = $stats->statsBirthQuery(false);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					fill_y_data(0, $key, $values['total']);
 					$total += $values['total'];
@@ -52,7 +52,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 	} elseif ($z_axis === 301) {
 		$num = $stats->statsBirthQuery(false, true);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
@@ -69,7 +69,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsBirthQuery(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
-				foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+				foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 					if ($month === $values['d_month']) {
 						fill_y_data($boundary, $key, $values['total']);
 						$total += $values['total'];
@@ -98,7 +98,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 	if ($z_axis === 300) {
 		$num = $stats->monthFirstChildQuery(false);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					fill_y_data(0, $key, $values['total']);
 					$total += $values['total'];
@@ -108,7 +108,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 	} elseif ($z_axis === 301) {
 		$num = $stats->monthFirstChildQuery(false, true);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
@@ -125,7 +125,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->monthFirstChildQuery(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
-				foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+				foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 					if ($month === $values['d_month']) {
 						fill_y_data($boundary, $key, $values['total']);
 						$total += $values['total'];
@@ -154,7 +154,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 	if ($z_axis === 300) {
 		$num = $stats->statsDeathQuery(false);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					fill_y_data(0, $key, $values['total']);
 					$total += $values['total'];
@@ -164,7 +164,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 	} elseif ($z_axis === 301) {
 		$num = $stats->statsDeathQuery(false, true);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
@@ -181,7 +181,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsDeathQuery(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
-				foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+				foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 					if ($month === $values['d_month']) {
 						fill_y_data($boundary, $key, $values['total']);
 						$total += $values['total'];
@@ -210,7 +210,7 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	if ($z_axis === 300) {
 		$num = $stats->statsMarrQuery(false, false);
 		foreach ($num as $values) {
-			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+			foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 				if ($month === $values['d_month']) {
 					fill_y_data(0, $key, $values['total']);
 					$total += $values['total'];
@@ -222,7 +222,7 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsMarrQuery(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
-				foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+				foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 					if ($month === $values['d_month']) {
 						fill_y_data($boundary, $key, $values['total']);
 						$total += $values['total'];
@@ -250,11 +250,11 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 	if ($z_axis === 300) {
 		$num  = $stats->statsMarrQuery(false, true);
-		$indi = array();
-		$fam  = array();
+		$indi = [];
+		$fam  = [];
 		foreach ($num as $values) {
 			if (!in_array($values['indi'], $indi) && !in_array($values['fams'], $fam)) {
-				foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+				foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 					if ($month === $values['month']) {
 						fill_y_data(0, $key, 1);
 						$total++;
@@ -266,13 +266,13 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 		}
 	} else {
 		$zstart = 0;
-		$indi   = array();
-		$fam    = array();
+		$indi   = [];
+		$fam    = [];
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsMarrQuery(false, true, $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['indi'], $indi) && !in_array($values['fams'], $fam)) {
-					foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
+					foreach (['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as $key => $month) {
 						if ($month === $values['month']) {
 							fill_y_data($boundary, $key, 1);
 							$total++;
@@ -461,7 +461,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 	if ($z_axis === 300) {
 		$num  = $stats->statsMarrAgeQuery(false, 'M');
-		$indi = array();
+		$indi = [];
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
 				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
@@ -470,7 +470,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 			}
 		}
 		$num  = $stats->statsMarrAgeQuery(false, 'F');
-		$indi = array();
+		$indi = [];
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
 				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
@@ -480,7 +480,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 		}
 	} elseif ($z_axis === 301) {
 		$num  = $stats->statsMarrAgeQuery(false, 'M');
-		$indi = array();
+		$indi = [];
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
 				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
@@ -489,7 +489,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 			}
 		}
 		$num  = $stats->statsMarrAgeQuery(false, 'F');
-		$indi = array();
+		$indi = [];
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
 				fill_y_data(1, (int) ($values['age'] / 365.25), 1);
@@ -499,7 +499,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 		}
 	} else {
 		$zstart = 0;
-		$indi   = array();
+		$indi   = [];
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsMarrAgeQuery(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
@@ -626,7 +626,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	if ($percentage) {
 		$ypercentmax = 0;
-		$yt          = array();
+		$yt          = [];
 		for ($i = 0; $i < $stop; $i++) {
 			if (isset($ydata[$i])) {
 				$ymax   = max($ydata[$i]);
@@ -683,7 +683,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 			}
 		}
 	}
-	$colors      = array('0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000');
+	$colors      = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
 	$colorstring = 'chco=';
 	for ($i = 0; $i < $stop; $i++) {
 		if (isset($colors[$i])) {
@@ -847,25 +847,25 @@ $x_axis       = Filter::getInteger('x-as', 1, 21, 11);
 $y_axis       = Filter::getInteger('y-as', 201, 202, 201);
 $z_axis       = Filter::getInteger('z-as', 300, 302, 302);
 $stats        = new Stats($WT_TREE);
-$z_boundaries = array();
+$z_boundaries = [];
 
 echo '<div class="statistics_chart" title="', I18N::translate('Statistics chart'), '">';
 
 switch ($x_axis) {
 case '1':
-	echo $stats->chartDistribution(array(Filter::get('chart_shows'), Filter::get('chart_type'), Filter::get('SURN')));
+	echo $stats->chartDistribution([Filter::get('chart_shows'), Filter::get('chart_type'), Filter::get('SURN')]);
 	break;
 case '2':
-	echo $stats->chartDistribution(array(Filter::get('chart_shows'), 'birth_distribution_chart'));
+	echo $stats->chartDistribution([Filter::get('chart_shows'), 'birth_distribution_chart']);
 	break;
 case '3':
-	echo $stats->chartDistribution(array(Filter::get('chart_shows'), 'death_distribution_chart'));
+	echo $stats->chartDistribution([Filter::get('chart_shows'), 'death_distribution_chart']);
 	break;
 case '4':
-	echo $stats->chartDistribution(array(Filter::get('chart_shows'), 'marriage_distribution_chart'));
+	echo $stats->chartDistribution([Filter::get('chart_shows'), 'marriage_distribution_chart']);
 	break;
 case '11':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -915,7 +915,7 @@ case '11':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '12':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -965,7 +965,7 @@ case '12':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '13':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1019,7 +1019,7 @@ case '13':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '14':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1069,7 +1069,7 @@ case '14':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '15':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1123,7 +1123,7 @@ case '15':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '17':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1173,7 +1173,7 @@ case '17':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '18':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1223,7 +1223,7 @@ case '18':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '19':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1273,7 +1273,7 @@ case '19':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '20':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
@@ -1323,7 +1323,7 @@ case '20':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '21':
-	$monthdata = array();
+	$monthdata = [];
 	for ($i = 0; $i < 12; ++$i) {
 		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}

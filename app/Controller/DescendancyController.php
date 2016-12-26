@@ -39,10 +39,10 @@ class DescendancyController extends ChartController {
 	public $generations;
 
 	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
-	public $dabo_num = array();
+	public $dabo_num = [];
 
 	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
-	public $dabo_sex = array();
+	public $dabo_sex = [];
 
 	/**
 	 * Create the descendancy controller
@@ -95,10 +95,10 @@ class DescendancyController extends ChartController {
 	 * @param int        $depth the descendancy depth to show
 	 */
 	public function printChildDescendancy(Individual $person, $depth) {
-		echo "<li>";
-		echo "<table><tr><td>";
+		echo '<li>';
+		echo '<table><tr><td>';
 		if ($depth == $this->generations) {
-			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
+			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""></td><td>';
 		} else {
 			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3">';
 			echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 3, '"></td><td>';
@@ -137,15 +137,15 @@ class DescendancyController extends ChartController {
 			if ($isf === 'U') {
 				$isf = 'NN';
 			}
-			echo "<span class=\"person_box" . $isf . "\">&nbsp;" . $this->dabo_num[$i] . "&nbsp;</span>";
+			echo '<span class="person_box' . $isf . '">&nbsp;' . $this->dabo_num[$i] . '&nbsp;</span>';
 			if ($i < $level) {
 				echo '.';
 			}
 		}
-		echo "</span>";
-		echo "</td></tr>";
-		echo "</table>";
-		echo "</li>";
+		echo '</span>';
+		echo '</td></tr>';
+		echo '</table>';
+		echo '</li>';
 
 		// loop for each spouse
 		foreach ($person->getSpouseFamilies() as $family) {
@@ -166,7 +166,7 @@ class DescendancyController extends ChartController {
 		echo '<li>';
 		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '">';
 		echo '<span class="details1">';
-		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . "_img\" class=\"icon-minus\" title=\"" . I18N::translate('View this family') . "\"></i></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';

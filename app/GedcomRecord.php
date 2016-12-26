@@ -93,16 +93,16 @@ class GedcomRecord {
 			$gedcom_facts = preg_split('/\n(?=1)/s', $this->gedcom);
 			array_shift($gedcom_facts);
 		} else {
-			$gedcom_facts = array();
+			$gedcom_facts = [];
 		}
 		if ($this->pending) {
 			$pending_facts = preg_split('/\n(?=1)/s', $this->pending);
 			array_shift($pending_facts);
 		} else {
-			$pending_facts = array();
+			$pending_facts = [];
 		}
 
-		$this->facts = array();
+		$this->facts = [];
 
 		foreach ($gedcom_facts as $gedcom_fact) {
 			$fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
@@ -156,12 +156,12 @@ class GedcomRecord {
 		if (Auth::isEditor($tree)) {
 			if (!isset(self::$pending_record_cache[$tree_id])) {
 				// Fetch all pending records in one database query
-				self::$pending_record_cache[$tree_id] = array();
+				self::$pending_record_cache[$tree_id] = [];
 				$rows                                 = Database::prepare(
 					"SELECT xref, new_gedcom FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id ORDER BY change_id"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $tree_id,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
 				}
@@ -265,10 +265,10 @@ class GedcomRecord {
 
 		return Database::prepare(
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'xref'    => $xref,
 			'tree_id' => $tree_id,
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -541,12 +541,12 @@ class GedcomRecord {
 	 * @param string $gedcom
 	 */
 	protected function addName($type, $value, $gedcom) {
-		$this->_getAllNames[] = array(
+		$this->_getAllNames[] = [
 			'type'   => $type,
 			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
 			'full'   => '<span dir="auto">' . Filter::escapeHtml($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
-		);
+		];
 	}
 
 	/**
@@ -598,7 +598,7 @@ class GedcomRecord {
 	 */
 	public function getAllNames() {
 		if ($this->_getAllNames === null) {
-			$this->_getAllNames = array();
+			$this->_getAllNames = [];
 			if ($this->canShowName()) {
 				// Ask the record to extract its names
 				$this->extractNames();
@@ -843,14 +843,14 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON i_file = n_file AND i_id = n_id AND n_num = 0" .
 			" WHERE i_file = :tree_id AND l_type = :link AND l_to = :xref" .
 			" ORDER BY n_sort COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -875,13 +875,13 @@ class GedcomRecord {
 			" JOIN `##link` ON f_file = l_file AND f_id = l_from" .
 			" LEFT JOIN `##name` ON f_file = n_file AND f_id = n_id AND n_num = 0" .
 			" WHERE f_file = :tree_id AND l_type = :link AND l_to = :xref"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
 			'link'    => $link,
 			'xref'    => $this->xref,
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Family::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -906,14 +906,14 @@ class GedcomRecord {
 			" JOIN `##link` ON s_file = l_file AND s_id = l_from" .
 			" WHERE s_file = :tree_id AND l_type = :link AND l_to = :xref" .
 			" ORDER BY s_name COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Source::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -938,14 +938,14 @@ class GedcomRecord {
 			" JOIN `##link` ON m_file = l_file AND m_id = l_from" .
 			" WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref" .
 			" ORDER BY m_titl COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Media::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -971,14 +971,14 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
 			" WHERE o_file = :tree_id AND o_type = 'NOTE' AND l_type = :link AND l_to = :xref" .
 			" ORDER BY n_sort COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Note::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -1004,14 +1004,14 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
 			" WHERE o_file = :tree_id AND o_type = 'REPO' AND l_type = :link AND l_to = :xref" .
 			" ORDER BY n_sort COLLATE :collation"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$record = Repository::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
@@ -1034,7 +1034,7 @@ class GedcomRecord {
 	 * @return Date[]
 	 */
 	public function getAllEventDates($event_type) {
-		$dates = array();
+		$dates = [];
 		foreach ($this->getFacts($event_type) as $event) {
 			if ($event->getDate()->isOK()) {
 				$dates[] = $event->getDate();
@@ -1052,7 +1052,7 @@ class GedcomRecord {
 	 * @return array
 	 */
 	public function getAllEventPlaces($event_type) {
-		$places = array();
+		$places = [];
 		foreach ($this->getFacts($event_type) as $event) {
 			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
 				foreach ($ged_places[1] as $ged_place) {
@@ -1096,7 +1096,7 @@ class GedcomRecord {
 			$access_level = Auth::accessLevel($this->tree);
 		}
 
-			$facts = array();
+			$facts = [];
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter === null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
@@ -1243,13 +1243,13 @@ class GedcomRecord {
 			// Save the changes
 			Database::prepare(
 				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-			)->execute(array(
+			)->execute([
 				$this->tree->getTreeId(),
 				$this->xref,
 				$old_gedcom,
 				$new_gedcom,
 				Auth::id(),
-			));
+			]);
 
 			$this->pending = $new_gedcom;
 
@@ -1282,13 +1282,13 @@ class GedcomRecord {
 		// Create a pending change
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-		)->execute(array(
+		)->execute([
 			$this->tree->getTreeId(),
 			$this->xref,
 			$this->getGedcom(),
 			$gedcom,
 			Auth::id(),
-		));
+		]);
 
 		// Clear the cache
 		$this->pending = $gedcom;
@@ -1313,12 +1313,12 @@ class GedcomRecord {
 		if (!$this->isPendingDeletion()) {
 			Database::prepare(
 				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
-			)->execute(array(
+			)->execute([
 				$this->tree->getTreeId(),
 				$this->xref,
 				$this->getGedcom(),
 				Auth::id(),
-			));
+			]);
 		}
 
 		// Auto-accept this pending change

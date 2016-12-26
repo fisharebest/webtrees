@@ -66,7 +66,7 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
 			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 }

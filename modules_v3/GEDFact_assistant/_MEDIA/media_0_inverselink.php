@@ -77,7 +77,7 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the title of this existing Media item
 		$title =
 			Database::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, $WT_TREE->getTreeId()))
+			->execute([$mediaid, $WT_TREE->getTreeId()])
 			->fetchOne();
 		if ($title) {
 			echo '<b>', $title, '</b>';
@@ -88,7 +88,7 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the filename of this existing Media item
 		$filename =
 			Database::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, $WT_TREE->getTreeId()))
+			->execute([$mediaid, $WT_TREE->getTreeId()])
 			->fetchOne();
 		$media = Media::getInstance($mediaid, $WT_TREE);
 		echo $media->displayImage();
@@ -105,7 +105,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Keep'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Remove'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Family navigator'), '</td>';
-		echo "</tr>";
+		echo '</tr>';
 
 		$links = array_merge(
 			$media->linkedIndividuals('OBJE'),
@@ -147,17 +147,19 @@ if ($action == 'choose' && $paramok) {
 			echo '</tr>';
 		}
 
-		echo "</table>";
-		echo "</td></tr></table>";
+		echo '</table>';
+		echo '</td></tr></table>';
 		echo '</td></tr>';
 	}
 
-	if (!isset($linktoid)) { $linktoid = ""; }
+	if (!isset($linktoid)) {
+		$linktoid = '';
+	}
 
 	echo '<tr><td class="descriptionbox wrap">';
 	echo I18N::translate('Add links');
 	echo '<td class="optionbox wrap ">';
-	if ($linktoid == "") {
+	if ($linktoid == '') {
 		// ----
 	} else {
 		$record = Individual::getInstance($linktoid, $WT_TREE);
@@ -172,7 +174,7 @@ if ($action == 'choose' && $paramok) {
 	echo ' ', FunctionsPrint::printFindFamilyLink('gid');
 	echo ' ', FunctionsPrint::printFindSourceLink('gid');
 	echo '</td></tr></table>';
-	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.') . "</sub>";
+	echo '<sub>' . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.') . '</sub>';
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 
@@ -555,7 +557,7 @@ function shiftlinks() {
 	</p>
 </form>
 <?php
-} elseif ($action == "update" && $paramok) {
+} elseif ($action == 'update' && $paramok) {
 	// Unlink records indicated by radio button =========
 	if ($exist_links) {
 		foreach (explode(',', $exist_links) as $remLinkId) {

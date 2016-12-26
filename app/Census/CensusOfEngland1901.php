@@ -34,7 +34,7 @@ class CensusOfEngland1901 extends CensusOfEngland implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name and surname'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
@@ -45,6 +45,6 @@ class CensusOfEngland1901 extends CensusOfEngland implements CensusInterface {
 			new CensusColumnNull($this, 'Home', 'Working at home'),
 			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
 			new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, lunatic, imbecile, feeble-minded'),
-		);
+		];
 	}
 }

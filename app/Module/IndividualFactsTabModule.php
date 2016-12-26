@@ -56,7 +56,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		global $controller;
 		$EXPAND_HISTO_EVENTS = false;
 
-		$indifacts = array();
+		$indifacts = [];
 		// The individual’s own facts
 		foreach ($controller->record->getFacts() as $fact) {
 			switch ($fact->getTag()) {
@@ -195,7 +195,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	private static function spouseFacts(Individual $individual, Individual $spouse) {
 		$SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
-		$facts = array();
+		$facts = [];
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			// Only include events between birth and death
 			$birt_date = $individual->getEstimatedBirthDate();
@@ -231,7 +231,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
-		$facts = array();
+		$facts = [];
 
 		// Only include events between birth and death
 		$birt_date = $controller->record->getEstimatedBirthDate();
@@ -364,7 +364,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
-		$facts = array();
+		$facts = [];
 
 		// Only include events between birth and death
 		$birt_date = $controller->record->getEstimatedBirthDate();
@@ -462,7 +462,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	private static function historicalFacts(Individual $person) {
 		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
-		$facts = array();
+		$facts = [];
 
 		if ($SHOW_RELATIVES_EVENTS) {
 			// Only include events between birth and death
@@ -470,7 +470,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			$deat_date = $person->getEstimatedDeathDate();
 
 			if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-				$histo = array();
+				$histo = [];
 				require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 				foreach ($histo as $hist) {
 					// Earlier versions of the WIKI encouraged people to use HTML entities,
@@ -497,7 +497,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	 * @return Fact[]
 	 */
 	private static function associateFacts(Individual $person) {
-		$facts = array();
+		$facts = [];
 
 		$associates = array_merge(
 			$person->linkedIndividuals('ASSO'),

@@ -48,7 +48,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
@@ -62,7 +62,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			" WHERE m_file = ?" .
 			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
-		)->execute(array(
+		)->execute([
 			$WT_TREE->getTreeId(),
 			$this->getBlockSetting($block_id, 'filter_avi', '0') ? 'avi' : null,
 			$this->getBlockSetting($block_id, 'filter_bmp', '1') ? 'bmp' : null,
@@ -94,7 +94,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$this->getBlockSetting($block_id, 'filter_photo', '1') ? 'photo' : null,
 			$this->getBlockSetting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
 			$this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 
 		// Keep looking through the media until a suitable one is found.
 		$random_media = null;
@@ -116,7 +116,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				}
 			}
 			unset($all_media[$n]);
-		};
+		}
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
@@ -136,7 +136,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 					$icon_class = 'icon-media-play';
 				}
 				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id . '"><br>';
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"" . $icon_class . "\" title=\"" . I18N::translate('Play') . "/" . I18N::translate('Stop') . '"></a>';
+				$content .= '<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="' . $icon_class . '" title="' . I18N::translate('Play') . '/' . I18N::translate('Stop') . '"></a>';
 				$content .= '<a href="#" onclick="jQuery(\'#block_' . $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . I18N::translate('Next image') . '" class="icon-media-next"></a>';
 				$content .= '</div><script>
 					var play = false;
@@ -183,7 +183,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View this source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);
+			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), '1', false);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content
@@ -261,10 +261,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Show only individuals, events, or all');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
+		echo FunctionsEdit::selectEditControl('filter', ['indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')], null, $filter, '');
 		echo '</td></tr>';
 
-		$filters = array(
+		$filters = [
 			'avi'         => $this->getBlockSetting($block_id, 'filter_avi', '0'),
 			'bmp'         => $this->getBlockSetting($block_id, 'filter_bmp', '1'),
 			'gif'         => $this->getBlockSetting($block_id, 'filter_gif', '1'),
@@ -294,7 +294,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			'photo'       => $this->getBlockSetting($block_id, 'filter_photo', '1'),
 			'tombstone'   => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
 			'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
-		);
+		];
 
 		?>
 	<tr>

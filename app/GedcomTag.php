@@ -22,7 +22,7 @@ use Rhumsaa\Uuid\Uuid;
  */
 class GedcomTag {
 	/** @var string[] All tags that webtrees knows how to translate - including special/internal tags */
-	private static $ALL_TAGS = array(
+	private static $ALL_TAGS = [
 		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
 		'AFN', 'AGE', 'AGNC', 'ALIA', 'ANCE', 'ANCI', 'ANUL', 'ASSO', 'AUTH', 'BAPL',
 		'BAPL:DATE', 'BAPL:PLAC', 'BAPM', 'BAPM:DATE', 'BAPM:PLAC', 'BARM',
@@ -76,14 +76,14 @@ class GedcomTag {
 		'__BRTM_GCHI', '__BRTM_GCH1', '__BRTM_GCH2', '__BRTM_HSIB', '__BRTM_SIBL',
 		// These pseudo-tags are generated dynamically to display media object attributes
 		'__FILE_SIZE__', '__IMAGE_SIZE__',
-	);
+	];
 
 	/** @var string[] Possible values for the Object-File-Format types */
-	private static $OBJE_FILE_FORM_TYPE = array(
+	private static $OBJE_FILE_FORM_TYPE = [
 		'audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic',
 		'fiche', 'film', 'magazine', 'manuscript', 'map', 'newspaper', 'photo',
 		'tombstone', 'video', 'painting', 'other',
-	);
+	];
 
 	/**
 	 * Is $tag one of our known tags?
@@ -1824,7 +1824,7 @@ class GedcomTag {
 	public static function getPicklistFacts($fact_type) {
 		switch ($fact_type) {
 		case 'INDI':
-			$tags = array(
+			$tags = [
 				// Facts, attributes for individuals (no links to FAMs)
 				'RESN', 'NAME', 'SEX', 'BIRT', 'CHR', 'DEAT', 'BURI', 'CREM',
 				'ADOP', 'BAPM', 'BARM', 'BASM', 'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN',
@@ -1838,10 +1838,10 @@ class GedcomTag {
 				'_BRTM', '_DEG', '_DNA', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM',
 				'_HOL', '_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
 				'_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
-			);
+			];
 			break;
 		case 'FAM':
-			$tags = array(
+			$tags = [
 				// Facts for families, left out HUSB, WIFE & CHIL links
 				'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC',
 				'MARR', 'MARL', 'MARS', 'RESI', 'EVEN', 'NCHI', 'SUBM', 'SLGS',
@@ -1849,46 +1849,46 @@ class GedcomTag {
 				// non standard tags
 				'_NMR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN',
 				'_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
-			);
+			];
 		break;
 		case 'SOUR':
-			$tags = array(
+			$tags = [
 				// Facts for sources
 				'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
 				'CHAN', 'NOTE', 'SHARED_NOTE', 'OBJE',
 				'RESN',
-			);
+			];
 			break;
 		case 'REPO':
-			$tags = array(
+			$tags = [
 				// Facts for repositories
 				'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW',
 				'NOTE', 'SHARED_NOTE', 'REFN', 'RIN', 'CHAN',
 				'RESN',
-			);
+			];
 			break;
 		case 'PLAC':
-			$tags = array(
+			$tags = [
 				// Facts for places
 				'FONE', 'ROMN',
 				// non standard tags
 				'_HEB',
-			);
+			];
 			break;
 		case 'NAME':
-			$tags = array(
+			$tags = [
 				// Facts subordinate to NAME
 				'NICK', 'FONE', 'ROMN',
 				// non standard tags
 				'_HEB', '_AKA',
-			);
+			];
 			break;
 		default:
-			$tags = array();
+			$tags = [];
 			break;
 		}
 
-		$facts = array();
+		$facts = [];
 		foreach ($tags as $tag) {
 			$facts[$tag] = self::getLabel($tag, null);
 		}
@@ -1951,7 +1951,7 @@ class GedcomTag {
 	 * @return string[]
 	 */
 	public static function getFileFormTypes() {
-		$values = array();
+		$values = [];
 		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
 			$values[$type] = self::getFileFormTypeValue($type);
 		}

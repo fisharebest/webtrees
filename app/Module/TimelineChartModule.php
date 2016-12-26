@@ -63,7 +63,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 			$this->getTitle(),
 			'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-timeline',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

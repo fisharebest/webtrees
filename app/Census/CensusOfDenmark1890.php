@@ -34,7 +34,7 @@ class CensusOfDenmark1890 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers fulde Navn.'),
 			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).'),
 			new CensusColumnAge($this, 'Alder', 'Alder. Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.'),
@@ -50,6 +50,6 @@ class CensusOfDenmark1890 extends CensusOfDenmark implements CensusInterface {
 			new CensusColumnNull($this, 'Idioter', 'Uden Forstandsovner (Idioter).'),
 			new CensusColumnNull($this, 'Sindssyge', 'Sindssyge.'),
 			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
-		);
+		];
 	}
 }

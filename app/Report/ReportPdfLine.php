@@ -25,16 +25,16 @@ class ReportPdfLine extends ReportBaseLine {
 	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
-		if ($this->x1 == ".") {
+		if ($this->x1 == '.') {
 			$this->x1 = $renderer->GetX();
 		}
-		if ($this->y1 == ".") {
+		if ($this->y1 == '.') {
 			$this->y1 = $renderer->GetY();
 		}
-		if ($this->x2 == ".") {
+		if ($this->x2 == '.') {
 			$this->x2 = $renderer->getMaxLineWidth();
 		}
-		if ($this->y2 == ".") {
+		if ($this->y2 == '.') {
 			$this->y2 = $renderer->GetY();
 		}
 		if ($renderer->getRTL()) {

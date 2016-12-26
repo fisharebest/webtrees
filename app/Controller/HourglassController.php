@@ -125,10 +125,10 @@ class HourglassController extends ChartController {
 			echo '<td>';
 			//-- print the father box
 			FunctionsPrint::printPedigreePerson($family->getHusband(), $this->showFull());
-			echo "</td>";
+			echo '</td>';
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
-				echo "<td id=\"td_" . $ARID . "\">";
+				echo '<td id="td_' . $ARID . '">';
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count == $this->generations - 1 && $family->getHusband()->getChildFamilies()) {
@@ -136,7 +136,7 @@ class HourglassController extends ChartController {
 				}
 				//-- recursively get the father’s family
 				$this->printPersonPedigree($family->getHusband(), $count + 1);
-				echo "</td>";
+				echo '</td>';
 			} else {
 				echo '<td>';
 				if ($count < $genoffset - 1) {
@@ -221,7 +221,7 @@ class HourglassController extends ChartController {
 		$numkids  = 0;
 		$families = $person->getSpouseFamilies();
 		$famNum   = 0;
-		$children = array();
+		$children = [];
 		if ($count < $this->dgenerations) {
 			// Put all of the children in a common array
 			foreach ($families as $family) {
@@ -297,14 +297,14 @@ class HourglassController extends ChartController {
 				echo "</td></tr><tr><td style='text-align:$otablealign'>";
 				FunctionsPrint::printPedigreePerson($family->getSpouse($person), $this->showFull());
 				$numkids++;
-				echo "</td><td></td>";
+				echo '</td><td></td>';
 			}
 			//-- add offset divs to make things line up better
 			if ($count == $this->dgenerations) {
-				echo "<tr><td colspan '2'><div style='height:", ($this->bhalfheight / 2), "px; width:", $this->getBoxDimensions()->width, "px;'><br></div>";
+				echo "<tr><td colspan '2'><div style='height:", ($this->bhalfheight / 2), 'px; width:', $this->getBoxDimensions()->width, "px;'><br></div>";
 			}
 		}
-		echo "</td></tr></table>";
+		echo '</td></tr></table>';
 
 		// For the root person, print a down arrow that allows changing the root of tree
 		if ($showNav && $count == 1) {
@@ -324,7 +324,7 @@ class HourglassController extends ChartController {
 					echo '<table class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {
-						echo "<span class='name1'>" . I18N::translate('Family') . "</span>";
+						echo "<span class='name1'>" . I18N::translate('Family') . '</span>';
 						$spouse = $family->getSpouse($person);
 						if ($spouse) {
 							printf(self::SWITCH_LINK, $spouse->getXref(), $this->show_spouse, $this->showFull(), $this->generations, $spouse->getFullName());
@@ -337,7 +337,7 @@ class HourglassController extends ChartController {
 					//-- print the siblings
 					foreach ($cfamids as $family) {
 						if ($family->getHusband() || $family->getWife()) {
-							echo "<span class='name1'>" . I18N::translate('Parents') . "</span>";
+							echo "<span class='name1'>" . I18N::translate('Parents') . '</span>';
 							$husb = $family->getHusband();
 							if ($husb) {
 								printf(self::SWITCH_LINK, $husb->getXref(), $this->show_spouse, $this->showFull(), $this->generations, $husb->getFullName());
@@ -356,7 +356,7 @@ class HourglassController extends ChartController {
 						if ($num) {
 							echo "<span class='name1'>";
 							echo $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
-							echo "</span>";
+							echo '</span>';
 							foreach ($siblings as $child) {
 								printf(self::SWITCH_LINK, $child->getXref(), $this->show_spouse, $this->showFull(), $this->generations, $child->getFullName());
 							}

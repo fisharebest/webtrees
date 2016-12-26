@@ -34,7 +34,7 @@ switch ($help) {
 
 case 'DATE':
 	$title = GedcomTag::getLabel('DATE');
-	$dates = array(
+	$dates = [
 		'1900'                                                       => new Date('1900'),
 		'JAN 1900'                                                   => new Date('JAN 1900'),
 		'FEB 1900'                                                   => new Date('FEB 1900'),
@@ -107,13 +107,13 @@ case 'DATE':
 		'TO @#DHEBREW@ TMZ 5481'                          => new Date('TO @#DHEBREW@ TMZ 5481'),
 		'EST @#DHEBREW@ AAV 5481'                         => new Date('EST @#DHEBREW@ AAV 5481'),
 		'@#DHEBREW@ 03 ELL 5481'                          => new Date('@#DHEBREW@ 03 ELL 5481'),
-	);
+	];
 
 	foreach ($dates as &$date) {
 		$date = strip_tags($date->display(false, null, false));
 	}
 	// These shortcuts work differently for different languages
-	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), I18N::dateFormat()))) {
+	switch (preg_replace('/[^DMY]/', '', str_replace(['J', 'F'], ['D', 'M'], I18N::dateFormat()))) {
 	case 'YMD':
 		$example1 = '11/12/1913'; // Note: we ignore the DMY order if it doesn't make sense.
 		$example2 = '03/02/01';
@@ -324,4 +324,4 @@ default:
 // This file is called by a getJSON call so return the data
 // in correct format
 header('Content-Type: application/json');
-echo json_encode(array('title' => $title, 'content' => $text));
+echo json_encode(['title' => $title, 'content' => $text]);

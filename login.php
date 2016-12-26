@@ -130,10 +130,10 @@ case 'login':
 				"SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" .
 				" WHERE setting_name = 'gedcomid' AND user_id = :user_id" .
 				" ORDER BY gedcom_id = :tree_id DESC"
-			)->execute(array(
+			)->execute([
 				'user_id' => Auth::user()->getUserId(),
 				'tree_id' => $WT_TREE->getTreeId(),
-			))->fetchOne();
+			])->fetchOne();
 			$url .= '&ged=' . Filter::escapeUrl($tree);
 		}
 
@@ -255,8 +255,8 @@ case 'requestpw':
 			I18N::translate('Lost password request'),
 			I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 			I18N::translate('A new password has been requested for your username.') . Mail::EOL . Mail::EOL .
-			I18N::translate('Username') . ": " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-			I18N::translate('Password') . ": " . $user_new_pw . Mail::EOL . Mail::EOL .
+			I18N::translate('Username') . ': ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+			I18N::translate('Password') . ': ' . $user_new_pw . Mail::EOL . Mail::EOL .
 			I18N::translate('After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
 			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
@@ -342,10 +342,10 @@ case 'register':
 				I18N::translate('Follow this link to verify your email address.') .
 				Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
-				WT_LOGIN_URL . "?user_name=" . Filter::escapeHtml($user->getUserName()) . "&amp;user_hashcode=" . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
+				WT_LOGIN_URL . '?user_name=' . Filter::escapeHtml($user->getUserName()) . '&amp;user_hashcode=' . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
 				'</a>' . Mail::EOL . Mail::EOL .
-				I18N::translate('Username') . " - " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-				I18N::translate('Comments') . " - " . $user->getPreference('comment') . Mail::EOL .
+				I18N::translate('Username') . ' - ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+				I18N::translate('Comments') . ' - ' . $user->getPreference('comment') . Mail::EOL .
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);
 			$mail2_to      = $user->getEmail();
@@ -383,7 +383,7 @@ case 'register':
 			$mail1_method = $webmaster->getPreference('contact_method');
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+					->execute([$user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
@@ -553,7 +553,7 @@ case 'verify_hash':
 	I18N::init($webmaster->getPreference('language'));
 
 	$user          = User::findByUserName($user_name);
-	$edit_user_url = WT_BASE_URL . "admin_users.php?action=edit&amp;user_id=" . $user->getUserId();
+	$edit_user_url = WT_BASE_URL . 'admin_users.php?action=edit&amp;user_id=' . $user->getUserId();
 	$mail1_body    =
 		I18N::translate('Hello administrator…') .
 		Mail::EOL . Mail::EOL .
@@ -602,7 +602,7 @@ case 'verify_hash':
 		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
 		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-				->execute(array($user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+				->execute([$user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
 		}
 
 		$user

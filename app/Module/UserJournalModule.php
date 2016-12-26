@@ -65,24 +65,24 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		switch (Filter::get('action')) {
 		case 'deletenews':
 			$news_id = Filter::getInteger('news_id');
 			if ($news_id) {
-				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
+				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute([$news_id]);
 			}
 			break;
 		}
 
 		$articles = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
-		)->execute(array(
+		)->execute([
 			'offset'  => WT_TIMESTAMP_OFFSET,
 			'user_id' => Auth::id(),
-		))->fetchAll();
+		])->fetchAll();
 
 		$id      = $this->getName() . $block_id;
 		$class   = $this->getName() . '_block';

@@ -25,8 +25,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 * @param ReportHtml $renderer
 	 */
 	public function render($renderer) {
-		$renderer->setCurrentStyle("footnotenum");
-		echo "<a href=\"#footnote", $this->num, "\"><sup>";
+		$renderer->setCurrentStyle('footnotenum');
+		echo '<a href="#footnote', $this->num, '"><sup>';
 		$renderer->write($renderer->entityRTL . $this->num);
 		echo "</sup></a>\n";
 	}
@@ -43,12 +43,12 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 			$html->setCurrentStyle($this->styleName);
 		}
 
-		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
+		$temptext = str_replace('#PAGENUM#', $html->pageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
-		$html->write($this->num . ". " . $temptext);
-		echo "</div>";
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
+		echo "\n<div><a name=\"footnote", $this->num, '"></a>';
+		$html->write($this->num . '. ' . $temptext);
+		echo '</div>';
 
 		$html->setXy(0, $html->getY() + $this->getFootnoteHeight($html));
 	}
@@ -86,7 +86,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 */
 	public function getWidth($html) {
 		// Setup the style name
-		$html->setCurrentStyle("footnotenum");
+		$html->setCurrentStyle('footnotenum');
 
 		// Check for the largest font size in the box
 		$fsize = $html->getCurrentStyleHeight();
@@ -107,7 +107,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
-				$newtext            = "";
+				$newtext            = '';
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines              = explode("\n", $this->numText);
 				// Go throught the text line by line
@@ -116,22 +116,22 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 					$lw = $html->getStringWidth($line);
 					// If the line has to be wraped
 					if ($lw > $wrapWidthRemaining) {
-						$words    = explode(" ", $line);
+						$words    = explode(' ', $line);
 						$addspace = count($words);
 						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += $html->getStringWidth($word . " ");
+							$lw += $html->getStringWidth($word . ' ');
 							if ($lw <= $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 							} else {
-								$lw = $html->getStringWidth($word . " ");
+								$lw = $html->getStringWidth($word . ' ');
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 								// Reset the wrap width to the cell width
 								$wrapWidthRemaining = $this->wrapWidthCell;
@@ -154,7 +154,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 				$this->numText = $newtext;
 				$lfct          = substr_count($this->numText, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -163,6 +163,6 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

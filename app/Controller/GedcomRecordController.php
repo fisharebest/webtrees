@@ -106,16 +106,16 @@ class GedcomRecordController extends PageController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-record-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-record-editraw', [
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-record-del', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-record-del', [
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		return $menu;

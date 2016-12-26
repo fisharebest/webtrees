@@ -110,7 +110,7 @@ case 'hierarchy':
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
 		$linklevels  = '';
-		$place_names = array();
+		$place_names = [];
 		for ($j = 0; $j < $level; $j++) {
 			$linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
 		}
@@ -165,12 +165,12 @@ case 'hierarchy':
 	}
 	if ($place_id && $action == 'show') {
 		// -- array of names
-		$myindilist = array();
-		$myfamlist  = array();
+		$myindilist = [];
+		$myfamlist  = [];
 
 		$positions =
 			Database::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-			->execute(array($place_id, $WT_TREE->getTreeId()))
+			->execute([$place_id, $WT_TREE->getTreeId()])
 			->fetchOneColumn();
 
 		foreach ($positions as $position) {

@@ -31,7 +31,7 @@ require './includes/session.php';
 $block_id = Filter::getInteger('block_id');
 $block    = Database::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
-)->execute(array($block_id))->fetchOneRow();
+)->execute([$block_id])->fetchOneRow();
 
 // Check access. (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin

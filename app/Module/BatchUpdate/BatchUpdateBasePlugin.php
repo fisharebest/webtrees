@@ -41,7 +41,7 @@ class BatchUpdateBasePlugin {
 	 * @return string[]
 	 */
 	public function getRecordTypesToUpdate() {
-		return array('INDI');
+		return ['INDI'];
 	}
 
 	/**
@@ -61,7 +61,7 @@ class BatchUpdateBasePlugin {
 			'<div class="form-group">' .
 			'<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
 			'<div class="col-sm-9">' .
-			FunctionsEdit::radioButtons('chan', array(0 => I18N::translate('no'), 1 => I18N::translate('yes')), ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
+			FunctionsEdit::radioButtons('chan', [0 => I18N::translate('no'), 1 => I18N::translate('yes')], ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
 			'</div></div>';
 	}
 
@@ -74,14 +74,14 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
-			return array(
+			return [
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all'),
-			);
+			];
 		} else {
-			return array(
+			return [
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-			);
+			];
 		}
 	}
 
@@ -97,7 +97,7 @@ class BatchUpdateBasePlugin {
 		$new_lines   = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
 		$algorithm   = new MyersDiff;
 		$differences = $algorithm->calculate($old_lines, $new_lines);
-		$diff_lines  = array();
+		$diff_lines  = [];
 
 		foreach ($differences as $difference) {
 			switch ($difference[1]) {

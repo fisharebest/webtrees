@@ -99,19 +99,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			if ($block_id) {
 				Database::prepare(
 					"UPDATE `##block` SET gedcom_id = NULLIF(:tree_id, '0'), block_order = :block_order WHERE block_id = :block_id"
-				)->execute(array(
+				)->execute([
 					'tree_id'     => Filter::postInteger('gedcom_id'),
 					'block_order' => Filter::postInteger('block_order'),
 					'block_id'    => $block_id,
-				));
+				]);
 			} else {
 				Database::prepare(
 					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(:tree_id, '0'), :module_name, :block_order)"
-				)->execute(array(
+				)->execute([
 					'tree_id'     => Filter::postInteger('gedcom_id'),
 					'module_name' => $this->getName(),
 					'block_order' => Filter::postInteger('block_order'),
-				));
+				]);
 				$block_id = Database::getInstance()->lastInsertId();
 			}
 			$this->setBlockSetting($block_id, 'header', Filter::post('header'));
@@ -138,17 +138,17 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			$faqbody     = $this->getBlockSetting($block_id, 'faqbody');
 			$block_order = Database::prepare(
 				"SELECT block_order FROM `##block` WHERE block_id = :block_id"
-			)->execute(array('block_id' => $block_id))->fetchOne();
+			)->execute(['block_id' => $block_id])->fetchOne();
 			$gedcom_id   = Database::prepare(
 				"SELECT gedcom_id FROM `##block` WHERE block_id = :block_id"
-			)->execute(array('block_id' => $block_id))->fetchOne();
+			)->execute(['block_id' => $block_id])->fetchOne();
 		} else {
 			$controller->setPageTitle(/* I18N: FAQ = “Frequently Asked Question” */ I18N::translate('Add an FAQ'));
 			$header      = '';
 			$faqbody     = '';
 			$block_order = Database::prepare(
 				"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name = :module_name"
-			)->execute(array('module_name' => $this->getName()))->fetchOne();
+			)->execute(['module_name' => $this->getName()])->fetchOne();
 			$gedcom_id   = $WT_TREE->getTreeId();
 		}
 		$controller->pageHeader();
@@ -246,11 +246,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		Database::prepare(
 			"DELETE FROM `##block_setting` WHERE block_id = :block_id"
-		)->execute(array('block_id' => $block_id));
+		)->execute(['block_id' => $block_id]);
 
 		Database::prepare(
 			"DELETE FROM `##block` WHERE block_id = :block_id"
-		)->execute(array('block_id' => $block_id));
+		)->execute(['block_id' => $block_id]);
 	}
 
 	/**
@@ -261,7 +261,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		$block_order = Database::prepare(
 			"SELECT block_order FROM `##block` WHERE block_id = :block_id"
-		)->execute(array('block_id' => $block_id))->fetchOne();
+		)->execute(['block_id' => $block_id])->fetchOne();
 
 		$swap_block = Database::prepare(
 			"SELECT block_order, block_id" .
@@ -270,24 +270,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < :block_order AND module_name = :module_name_1" .
 			" ) AND module_name = :module_name_2" .
 			" LIMIT 1"
-		)->execute(array(
+		)->execute([
 			'block_order'   => $block_order,
 			'module_name_1' => $this->getName(),
 			'module_name_2' => $this->getName(),
-		))->fetchOneRow();
+		])->fetchOneRow();
 		if ($swap_block) {
 			Database::prepare(
 				"UPDATE `##block` SET block_order = :block_order WHERE block_id = :block_id"
-			)->execute(array(
+			)->execute([
 				'block_order' => $swap_block->block_order,
 				'block_id'    => $block_id,
-			));
+			]);
 			Database::prepare(
 				"UPDATE `##block` SET block_order = :block_order WHERE block_id = :block_id"
-			)->execute(array(
+			)->execute([
 				'block_order' => $block_order,
 				'block_id'    => $swap_block->block_id,
-			));
+			]);
 		}
 	}
 
@@ -299,9 +299,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		$block_order = Database::prepare(
 			"SELECT block_order FROM `##block` WHERE block_id = :block_id"
-		)->execute(array(
+		)->execute([
 			'block_id' => $block_id,
-		))->fetchOne();
+		])->fetchOne();
 
 		$swap_block = Database::prepare(
 			"SELECT block_order, block_id" .
@@ -310,24 +310,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			"  SELECT MIN(block_order) FROM `##block` WHERE block_order > :block_order AND module_name = :module_name_1" .
 			" ) AND module_name = :module_name_2" .
 			" LIMIT 1"
-		)->execute(array(
+		)->execute([
 			'block_order'   => $block_order,
 			'module_name_1' => $this->getName(),
 			'module_name_2' => $this->getName(),
-			))->fetchOneRow();
+			])->fetchOneRow();
 		if ($swap_block) {
 			Database::prepare(
 				"UPDATE `##block` SET block_order = :block_order WHERE block_id = :block_id"
-			)->execute(array(
+			)->execute([
 				'block_order' => $swap_block->block_order,
 				'block_id'    => $block_id,
-			));
+			]);
 			Database::prepare(
 				"UPDATE `##block` SET block_order = :block_order WHERE block_id = :block_id"
-			)->execute(array(
+			)->execute([
 				'block_order' => $block_order,
 				'block_id'    => $swap_block->block_id,
-			));
+			]);
 		}
 	}
 
@@ -354,11 +354,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			" AND bs3.setting_name = 'languages'" .
 			" AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2" .
 			" ORDER BY block_order"
-		)->execute(array(
+		)->execute([
 			'module_name' => $this->getName(),
 			'tree_id_1'   => $WT_TREE->getTreeId(),
 			'tree_id_2'   => $WT_TREE->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		echo '<h2 class="center">', I18N::translate('Frequently asked questions');
 		if (Auth::isManager($WT_TREE)) {
@@ -415,23 +415,23 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			" AND bs2.setting_name = 'faqbody'" .
 			" AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2" .
 			" ORDER BY block_order"
-		)->execute(array(
+		)->execute([
 			'module_name' => $this->getName(),
 			'tree_id_1'   => $WT_TREE->getTreeId(),
 			'tree_id_2'   => $WT_TREE->getTreeId(),
-			))->fetchAll();
+			])->fetchAll();
 
 		$min_block_order = Database::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 
 		$max_block_order = Database::prepare(
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 
 		?>
 		<ol class="breadcrumb small">
@@ -526,12 +526,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			" JOIN `##block_setting` USING (block_id)" .
 			" WHERE module_name = :module_name AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2" .
 			" AND setting_name='languages' AND (setting_value LIKE CONCAT('%', :locale, '%') OR setting_value='')"
-		)->execute(array(
+		)->execute([
 			'module_name' => $this->getName(),
 			'tree_id_1'   => $WT_TREE->getTreeId(),
 			'tree_id_2'   => $WT_TREE->getTreeId(),
 			'locale'      => WT_LOCALE,
-		))->fetchAll();
+		])->fetchAll();
 
 		if ($faqs) {
 			return new Menu($this->getTitle(), 'module.php?mod=faq&amp;mod_action=show', 'menu-help');

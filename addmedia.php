@@ -208,7 +208,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$controller->pageHeader();
 	// Build the gedcom record
-	$newged = "0 @new@ OBJE";
+	$newged = '0 @new@ OBJE';
 	if ($tag[0] == 'FILE') {
 		// The admin has an edit field to change the filename
 		$text[0] = $folderName . $fileName;
@@ -322,7 +322,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia       = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
+		$newmedia       = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -369,10 +369,10 @@ case 'update': // Save the information from the “editmedia” action
 	}
 
 	// Insert the 1 FILE xxx record into the arrays used by function FunctionsEdit::handle_updatesges()
-	$glevels = array_merge(array('1'), $glevels);
-	$tag     = array_merge(array('FILE'), $tag);
-	$islink  = array_merge(array(0), $islink);
-	$text    = array_merge(array($newFilename), $text);
+	$glevels = array_merge(['1'], $glevels);
+	$tag     = array_merge(['FILE'], $tag);
+	$islink  = array_merge([0], $islink);
+	$text    = array_merge([$newFilename], $text);
 
 	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";
@@ -521,14 +521,14 @@ if (!$isExternal) {
 		}
 		echo ' value=""> ', I18N::translate('Choose: '), ' </option>';
 		if (Auth::isAdmin()) {
-			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), "</option>";
+			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), '</option>';
 		}
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', $f, '" ';
 			if ($folder == $f) {
 				echo 'selected';
 			}
-			echo '>', $f, "</option>";
+			echo '>', $f, '</option>';
 		}
 		echo '</select>';
 	} else {

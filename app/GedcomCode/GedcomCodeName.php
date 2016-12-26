@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodeName {
 	/** @var string[] A list of possible types of name */
-	private static $TYPES = array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
+	private static $TYPES = ['adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious'];
 
 	/**
 	 * Translate a code, for an (optional) record
@@ -156,7 +156,7 @@ class GedcomCodeName {
 	 * @return string[]
 	 */
 	public static function getValues(GedcomRecord $record = null) {
-		$values = array();
+		$values = [];
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
 		}

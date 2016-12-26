@@ -55,13 +55,13 @@ class FunctionsDb {
 				" UNION " .
 				"SELECT xref FROM `##change` WHERE status = 'pending' AND gedcom_id = ? AND new_gedcom LIKE" .
 				" CONCAT('%@', ?, '@%') AND new_gedcom NOT LIKE CONCAT('0 @', ?, '@%')"
-			)->execute(array(
+			)->execute([
 				$gedcom_id,
 				$xref,
 				$gedcom_id,
 				$xref,
 				$xref,
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 	}
 
 	/**
@@ -74,11 +74,11 @@ class FunctionsDb {
 	public static function getSourceList(Tree $tree) {
 		$rows = Database::prepare(
 			"SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 		}
@@ -98,11 +98,11 @@ class FunctionsDb {
 	public static function getRepositoryList(Tree $tree) {
 		$rows = Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
-		)->execute(array(
+		)->execute([
 			$tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 		}
@@ -122,11 +122,11 @@ class FunctionsDb {
 	public static function getNoteList(Tree $tree) {
 		$rows = Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 		}
@@ -146,10 +146,10 @@ class FunctionsDb {
 	 */
 	public static function searchIndividuals(array $query, array $trees) {
 		// Convert the query into a regular expression
-		$queryregex = array();
+		$queryregex = [];
 
 		$sql  = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE 1";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
@@ -166,7 +166,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
@@ -199,7 +199,7 @@ class FunctionsDb {
 	 */
 	public static function searchIndividualNames(array $query, array $trees) {
 		$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE 1";
-		$args = array();
+		$args = [];
 
 		// Convert the query into a SQL expression
 		foreach ($query as $n => $q) {
@@ -215,7 +215,7 @@ class FunctionsDb {
 			$args['tree_id_' . $n] = $tree->getTreeId();
 		}
 		$sql .= ")";
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$indi = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
@@ -265,11 +265,11 @@ class FunctionsDb {
 
 		// Nothing to search for? Return nothing.
 		if (!$givn_sdx && !$surn_sdx && !$plac_sdx) {
-			return array();
+			return [];
 		}
 
 		$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals`";
-		$args = array();
+		$args = [];
 
 		if ($place) {
 			$sql .= " JOIN `##placelinks` ON pl_file = i_file AND pl_gid = i_id";
@@ -340,7 +340,7 @@ class FunctionsDb {
 			$sql .= ")";
 		}
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
@@ -360,10 +360,10 @@ class FunctionsDb {
 	 */
 	public static function searchFamilies(array $query, array $trees) {
 		// Convert the query into a regular expression
-		$queryregex = array();
+		$queryregex = [];
 
 		$sql  = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE 1";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
@@ -374,13 +374,13 @@ class FunctionsDb {
 
 		$sql .= " AND f_file IN (";
 		foreach ($trees as $n => $tree) {
-			$sql .= $n ? ", " : "";
-			$sql .= ":tree_id_" . $n;
+			$sql .= $n ? ', ' : '';
+			$sql .= ':tree_id_' . $n;
 			$args['tree_id_' . $n] = $tree->getTreeId();
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
@@ -416,7 +416,7 @@ class FunctionsDb {
 	public static function searchFamilyNames(array $query, array $trees) {
 		// No query => no results
 		if (!$query) {
-			return array();
+			return [];
 		}
 
 		$sql =
@@ -425,7 +425,7 @@ class FunctionsDb {
 			" LEFT JOIN `##name` husb ON f_husb = husb.n_id AND f_file = husb.n_file" .
 			" LEFT JOIN `##name` wife ON f_wife = wife.n_id AND f_file = wife.n_file" .
 			" WHERE 1";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
@@ -443,7 +443,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$list[] = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
@@ -473,10 +473,10 @@ class FunctionsDb {
 	 */
 	public static function searchSources($query, $trees) {
 		// Convert the query into a regular expression
-		$queryregex = array();
+		$queryregex = [];
 
 		$sql  = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE 1";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
@@ -493,7 +493,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
@@ -528,10 +528,10 @@ class FunctionsDb {
 	 */
 	public static function searchNotes(array $query, array $trees) {
 		// Convert the query into a regular expression
-		$queryregex = array();
+		$queryregex = [];
 
 		$sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE'";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
@@ -548,7 +548,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
@@ -583,10 +583,10 @@ class FunctionsDb {
 	 */
 	public static function searchRepositories(array $query, array $trees) {
 		// Convert the query into a regular expression
-		$queryregex = array();
+		$queryregex = [];
 
 		$sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO'";
-		$args = array();
+		$args = [];
 
 		foreach ($query as $n => $q) {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
@@ -603,7 +603,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		$list = array();
+		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
@@ -640,7 +640,7 @@ class FunctionsDb {
 
 		$xref =
 			Database::prepare("SELECT i_id FROM `##individuals` WHERE i_rin=? AND i_file=?")
-				->execute(array($rin, $WT_TREE->getTreeId()))
+				->execute([$rin, $WT_TREE->getTreeId()])
 				->fetchOne();
 
 		return $xref ? $xref : $rin;
@@ -683,10 +683,10 @@ class FunctionsDb {
 					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'min'     => $min,
-				))->fetchAssoc();
+				])->fetchAssoc();
 		} else {
 			return
 				Database::prepare(
@@ -695,11 +695,11 @@ class FunctionsDb {
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC" .
 					" LIMIT :limit"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'min'     => $min,
 					'limit'   => $max,
-				))->fetchAssoc();
+				])->fetchAssoc();
 		}
 	}
 
@@ -714,15 +714,15 @@ class FunctionsDb {
 	 * @return Fact[]
 	 */
 	public static function getAnniversaryEvents($jd, $facts, Tree $tree) {
-		$found_facts = array();
-		foreach (array(
+		$found_facts = [];
+		foreach ([
 			new GregorianDate($jd),
 			new JulianDate($jd),
 			new FrenchDate($jd),
 			new JewishDate($jd),
 			new HijriDate($jd),
 			new JalaliDate($jd),
-		 ) as $anniv) {
+		 ] as $anniv) {
 			// Build a SQL where clause to match anniversaries in the appropriate calendar.
 			$ind_sql =
 				"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
@@ -732,16 +732,16 @@ class FunctionsDb {
 				"SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
 				" FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
 				" WHERE d_type = :type AND d_file = :tree_id";
-			$args = array(
+			$args = [
 				'type'    => $anniv->format('%@'),
 				'tree_id' => $tree->getTreeId(),
-			);
+			];
 
 			$where = "";
 			// SIMPLE CASES:
 			// a) Non-hebrew anniversaries
 			// b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-			if (!$anniv instanceof JewishDate || in_array($anniv->m, array(1, 5, 6, 9, 10, 11, 12, 13))) {
+			if (!$anniv instanceof JewishDate || in_array($anniv->m, [1, 5, 6, 9, 10, 11, 12, 13])) {
 				// Dates without days go on the first day of the month
 				// Dates with invalid days go on the last day of the month
 				if ($anniv->d === 1) {
@@ -775,7 +775,7 @@ class FunctionsDb {
 					// 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
 					// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
 					if ($anniv->d === 1) {
-						$tmp = new JewishDate(array($anniv->y, 'CSH', 1));
+						$tmp = new JewishDate([$anniv->y, 'CSH', 1]);
 						if ($tmp->daysInMonth() === 29) {
 							$where .= " AND (d_day <= 1 AND d_mon = 3 OR d_day = 30 AND d_mon = 2)";
 						} else {
@@ -793,7 +793,7 @@ class FunctionsDb {
 				case 4:
 					// 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
 					if ($anniv->d === 1) {
-						$tmp = new JewishDate(array($anniv->y, 'KSL', 1));
+						$tmp = new JewishDate([$anniv->y, 'KSL', 1]);
 						if ($tmp->daysInMonth() === 29) {
 							$where .= " AND (d_day <=1 AND d_mon = 4 OR d_day = 30 AND d_mon = 3)";
 						} else {
@@ -858,7 +858,7 @@ class FunctionsDb {
 			$order_by = " ORDER BY d_day, d_year DESC";
 
 			// Now fetch these anniversaries
-			foreach (array('INDI' => $ind_sql . $where . $order_by, 'FAM' => $fam_sql . $where . $order_by) as $type => $sql) {
+			foreach (['INDI' => $ind_sql . $where . $order_by, 'FAM' => $fam_sql . $where . $order_by] as $type => $sql) {
 				$rows = Database::prepare($sql)->execute($args)->fetchAll();
 				foreach ($rows as $row) {
 					if ($type === 'INDI') {
@@ -892,9 +892,9 @@ class FunctionsDb {
 	 */
 	public static function getCalendarEvents($jd1, $jd2, $facts, Tree $tree) {
 		// If no facts specified, get all except these
-		$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
+		$skipfacts = 'CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT';
 
-		$found_facts = array();
+		$found_facts = [];
 
 		// Events that start or end during the period
 		$where = "WHERE (d_julianday1>={$jd1} AND d_julianday1<={$jd2} OR d_julianday2>={$jd1} AND d_julianday2<={$jd2})";
@@ -913,7 +913,7 @@ class FunctionsDb {
 		// Now fetch these events
 		$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
 		$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_julianday1";
-		foreach (array('INDI' => $ind_sql, 'FAM' => $fam_sql) as $type => $sql) {
+		foreach (['INDI' => $ind_sql, 'FAM' => $fam_sql] as $type => $sql) {
 			$rows = Database::prepare($sql)->fetchAll();
 			foreach ($rows as $row) {
 				if ($type === 'INDI') {
@@ -945,7 +945,7 @@ class FunctionsDb {
 	 * @return Fact[]
 	 */
 	public static function getEventsList($jd1, $jd2, $events, Tree $tree) {
-		$found_facts = array();
+		$found_facts = [];
 		for ($jd = $jd1; $jd <= $jd2; ++$jd) {
 			$found_facts = array_merge($found_facts, self::getAnniversaryEvents($jd, $events, $tree));
 		}
@@ -964,7 +964,7 @@ class FunctionsDb {
 	public static function isMediaUsedInOtherTree($file_name, $ged_id) {
 		return
 			(bool) Database::prepare("SELECT COUNT(*) FROM `##media` WHERE m_filename LIKE ? AND m_file<>?")
-				->execute(array("%{$file_name}", $ged_id))
+				->execute(["%{$file_name}", $ged_id])
 				->fetchOne();
 	}
 
@@ -978,7 +978,7 @@ class FunctionsDb {
 	public static function getUserBlocks($user_id) {
 		global $WT_TREE;
 
-		$blocks = array('main' => array(), 'side' => array());
+		$blocks = ['main' => [], 'side' => []];
 		$rows   = Database::prepare(
 			"SELECT SQL_CACHE location, block_id, module_name" .
 			" FROM  `##block`" .
@@ -989,7 +989,7 @@ class FunctionsDb {
 			" AND   `##module_privacy`.gedcom_id=?" .
 			" AND   access_level>=?" .
 			" ORDER BY location, block_order"
-		)->execute(array($user_id, $WT_TREE->getTreeId(), Auth::accessLevel($WT_TREE)))->fetchAll();
+		)->execute([$user_id, $WT_TREE->getTreeId(), Auth::accessLevel($WT_TREE)])->fetchAll();
 		foreach ($rows as $row) {
 			$blocks[$row->location][$row->block_id] = $row->module_name;
 		}
@@ -1011,7 +1011,7 @@ class FunctionsDb {
 			$access_level = Auth::accessLevel(Tree::findById($gedcom_id));
 		}
 
-		$blocks = array('main' => array(), 'side' => array());
+		$blocks = ['main' => [], 'side' => []];
 		$rows   = Database::prepare(
 			"SELECT SQL_CACHE location, block_id, module_name" .
 			" FROM  `##block`" .
@@ -1021,10 +1021,10 @@ class FunctionsDb {
 			" AND   status='enabled'" .
 			" AND   access_level >= :access_level" .
 			" ORDER BY location, block_order"
-		)->execute(array(
+		)->execute([
 			'tree_id'      => $gedcom_id,
 			'access_level' => $access_level,
-		))->fetchAll();
+		])->fetchAll();
 		foreach ($rows as $row) {
 			$blocks[$row->location][$row->block_id] = $row->module_name;
 		}
@@ -1044,7 +1044,7 @@ class FunctionsDb {
 	public static function updateFavorites($xref_from, $xref_to, Tree $tree) {
 		return
 			Database::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
-				->execute(array($xref_to, $xref_from, $tree->getTreeId()))
+				->execute([$xref_to, $xref_from, $tree->getTreeId()])
 				->rowCount();
 	}
 }

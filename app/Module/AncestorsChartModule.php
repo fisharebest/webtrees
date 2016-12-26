@@ -63,7 +63,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 			$this->getTitle(),
 			'ancestry.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-ancestry',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

@@ -162,7 +162,7 @@ case 3:
 	// Family list
 	$ancestors = $controller->sosaAncestors($controller->generations - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-	$families  = array();
+	$families  = [];
 	foreach ($ancestors as $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
 			$families[$family->getXref()] = $family;

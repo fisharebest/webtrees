@@ -212,10 +212,10 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
 			" WHERE n_sort LIKE CONCAT('%', :query, '%') AND i_file = :tree_id" .
 			" ORDER BY n_sort"
-		)->execute(array(
+		)->execute([
 			'query'   => $query,
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		$out = '';
 		foreach ($rows as $row) {

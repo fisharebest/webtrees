@@ -52,9 +52,9 @@ case 'compose':
 	echo '<h3>' . I18N::translate('Add/edit a journal/news entry') . '</h3>';
 	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id=' . $news_id . '">';
 	if ($news_id) {
-		$news = Database::prepare("SELECT SQL_CACHE news_id AS id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id=?")->execute(array($news_id))->fetchOneRow(PDO::FETCH_ASSOC);
+		$news = Database::prepare("SELECT SQL_CACHE news_id AS id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id=?")->execute([$news_id])->fetchOneRow(PDO::FETCH_ASSOC);
 	} else {
-		$news              = array();
+		$news              = [];
 		$news['user_id']   = $user_id;
 		$news['gedcom_id'] = $gedcom_id;
 		$news['date']      = WT_TIMESTAMP;
@@ -77,9 +77,9 @@ case 'compose':
 	break;
 case 'save':
 	if ($news_id) {
-		Database::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")->execute(array($title, $text, $date, $news_id));
+		Database::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")->execute([$title, $text, $date, $news_id]);
 	} else {
-		Database::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body, updated) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?, CURRENT_TIMESTAMP)")->execute(array($user_id, $gedcom_id, $title, $text));
+		Database::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body, updated) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?, CURRENT_TIMESTAMP)")->execute([$user_id, $gedcom_id, $title, $text]);
 	}
 
 	$controller->addInlineJavascript('window.opener.location.reload();window.close();');

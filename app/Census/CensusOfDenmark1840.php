@@ -34,11 +34,11 @@ class CensusOfDenmark1840 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Navn', ''),
 			new CensusColumnAge($this, 'Alder', ''),
 			new CensusColumnConditionDanish($this, 'Civilstand', ''),
 			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-		);
+		];
 	}
 }

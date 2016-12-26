@@ -40,29 +40,29 @@ class RepositoryController extends GedcomRecordController {
 			$fact = $this->record->getFirstFact('NAME');
 			if ($fact) {
 				// Edit existing name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', [
 					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-				)));
+				]));
 			} else {
 				// Add new name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', [
 					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "NAME");',
-				)));
+				]));
 			}
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-repo-del', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-repo-del', [
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-repo-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-repo-editraw', [
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		// add to favorites
@@ -71,9 +71,9 @@ class RepositoryController extends GedcomRecordController {
 				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-repo-addfav',
-				array(
+				[
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)
+				]
 			));
 		}
 

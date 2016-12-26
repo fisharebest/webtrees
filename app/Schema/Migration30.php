@@ -120,14 +120,14 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'WATERMARK_THUMB', '0')," .
 			"(-1, 'WEBTREES_EMAIL', :WEBTREES_EMAIL)," .
 			"(-1, 'WORD_WRAPPED_NOTES', '0')"
-		)->execute(array(
+		)->execute([
 			'MEDIA_UPLOAD'      => Auth::PRIV_USER,
 			'META_TITLE'        => WT_WEBTREES,
 			'SHOW_DEAD_PEOPLE'  => Auth::PRIV_PRIVATE,
 			'SHOW_LIVING_NAMES' => Auth::PRIV_USER,
 			'SHOW_NO_WATERMARK' => Auth::PRIV_USER,
 			'WEBTREES_EMAIL'    => $WEBTREES_EMAIL,
-		));
+		]);
 
 		// Previous versions of webtrees allowed this setting to be empty.
 		Database::prepare(
@@ -138,9 +138,9 @@ class Migration30 implements MigrationInterface {
 			"INSERT IGNORE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
 			" SELECT gedcom_id, 'WEBTREES_EMAIL', :WEBTREES_EMAIL" .
 			" FROM `##gedcom` WHERE gedcom_id > 0"
-		)->execute(array(
+		)->execute([
 			'WEBTREES_EMAIL' => $WEBTREES_EMAIL,
-		));
+		]);
 
 		// Default restrictions
 		Database::prepare(

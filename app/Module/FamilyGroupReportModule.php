@@ -58,7 +58,7 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;famid=' . $controller->getSignificantFamily()->getXref(),
 			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 }

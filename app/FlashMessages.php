@@ -33,7 +33,7 @@ class FlashMessages {
 		$message->text   = $text;
 		$message->status = $status;
 
-		$messages   = Session::get(self::FLASH_KEY, array());
+		$messages   = Session::get(self::FLASH_KEY, []);
 		$messages[] = $message;
 		Session::put(self::FLASH_KEY, $messages);
 	}
@@ -44,7 +44,7 @@ class FlashMessages {
 	 * @return string[]
 	 */
 	public static function getMessages() {
-		$messages = Session::get(self::FLASH_KEY, array());
+		$messages = Session::get(self::FLASH_KEY, []);
 		Session::forget(self::FLASH_KEY);
 
 		return $messages;

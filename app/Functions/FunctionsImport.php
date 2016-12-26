@@ -44,7 +44,7 @@ class FunctionsImport {
 	 */
 	public static function reformatRecord($rec, Tree $tree) {
 		// Strip out UTF8 formatting characters
-		$rec = str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
+		$rec = str_replace([WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM], '', $rec);
 
 		// Strip out mac/msdos line endings
 		$rec = preg_replace("/[\r\n]+/", "\n", $rec);
@@ -413,8 +413,8 @@ class FunctionsImport {
 					$data =
 						$match[1] . "\n" .
 						($level + 1) . " MAP\n" .
-						($level + 2) . " LATI " . ($match[5] . (round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4))) . "\n" .
-						($level + 2) . " LONG " . ($match[9] . (round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4)));
+						($level + 2) . ' LATI ' . ($match[5] . (round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4))) . "\n" .
+						($level + 2) . ' LONG ' . ($match[9] . (round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4)));
 				}
 				break;
 			case 'POSTAL_CODE':
@@ -556,13 +556,13 @@ class FunctionsImport {
 				while (strpos($data, '  ')) {
 					$data = str_replace('  ', ' ', $data);
 				}
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'NOTE':
 			case 'TEXT':
 			case 'DATA':
 			case 'CONT':
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'FILE':
 				// Strip off the user-defined path prefix
@@ -571,9 +571,9 @@ class FunctionsImport {
 					$data = substr($data, strlen($GEDCOM_MEDIA_PATH));
 				}
 				// convert backslashes in filenames to forward slashes
-				$data = preg_replace("/\\\/", "/", $data);
+				$data = preg_replace("/\\\/", '/', $data);
 
-				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != "NOTE" ? '' : ' ' . $data);
+				$newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
 				break;
 			case 'CONC':
 				// Merge CONC lines, to simplify access later on.
@@ -627,10 +627,10 @@ class FunctionsImport {
 		if ($tree->getPreference('keep_media') && $xref) {
 			$old_linked_media =
 				Database::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
-					->execute(array($xref, $tree_id))
+					->execute([$xref, $tree_id])
 					->fetchOneColumn();
 			foreach ($old_linked_media as $media_id) {
-				$gedrec .= "\n1 OBJE @" . $media_id . "@";
+				$gedrec .= "\n1 OBJE @" . $media_id . '@';
 			}
 		}
 
@@ -647,9 +647,9 @@ class FunctionsImport {
 			}
 			Database::prepare(
 				"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?, ?, ?, ?, ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $tree_id, $rin, $record->getSex(), $gedrec,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updatePlaces($xref, $tree_id, $gedrec);
 			self::updateDates($xref, $tree_id, $gedrec);
@@ -676,9 +676,9 @@ class FunctionsImport {
 			}
 			Database::prepare(
 				"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?, ?, ?, ?, ?, ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $tree_id, $husb, $wife, $gedrec, $nchi,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updatePlaces($xref, $tree_id, $gedrec);
 			self::updateDates($xref, $tree_id, $gedrec);
@@ -698,9 +698,9 @@ class FunctionsImport {
 			}
 			Database::prepare(
 				"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, LEFT(?, 255), ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $tree_id, $name, $gedrec,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			self::updateNames($xref, $tree_id, $record);
@@ -712,9 +712,9 @@ class FunctionsImport {
 			$record = new Repository($xref, $gedrec, null, $tree);
 			Database::prepare(
 				"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'REPO', ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $tree_id, $gedrec,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			self::updateNames($xref, $tree_id, $record);
@@ -723,9 +723,9 @@ class FunctionsImport {
 			$record = new Note($xref, $gedrec, null, $tree);
 			Database::prepare(
 				"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'NOTE', ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $tree_id, $gedrec,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			self::updateNames($xref, $tree_id, $record);
@@ -734,9 +734,9 @@ class FunctionsImport {
 			$record = new Media($xref, $gedrec, null, $tree);
 			Database::prepare(
 				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, LEFT(?, 6), LEFT(?, 60), LEFT(?, 255), left(?, 512), ?, ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree_id, $gedrec,
-			));
+			]);
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			self::updateNames($xref, $tree_id, $record);
@@ -748,7 +748,7 @@ class FunctionsImport {
 			}
 			Database::prepare(
 				"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
-			)->execute(array($xref, $tree_id, $type, $gedrec));
+			)->execute([$xref, $tree_id, $type, $gedrec]);
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			break;
@@ -766,12 +766,12 @@ class FunctionsImport {
 		global $placecache;
 
 		if (!isset($placecache)) {
-			$placecache = array();
+			$placecache = [];
 		}
-		$personplace = array();
+		$personplace = [];
 		// import all place locations, but not control info such as
 		// 0 HEAD/1 PLAC or 0 _EVDEF/1 PLAC
-		$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
+		$pt = preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $match, PREG_SET_ORDER);
 		for ($i = 0; $i < $pt; $i++) {
 			$place    = trim($match[$i][1]);
 			$lowplace = I18N::strtolower($place);
@@ -788,7 +788,7 @@ class FunctionsImport {
 
 			foreach ($secalp as $place) {
 				$place = trim($place);
-				$key   = strtolower(mb_substr($place, 0, 150) . "_" . $parent_id);
+				$key   = strtolower(mb_substr($place, 0, 150) . '_' . $parent_id);
 				//-- if this place has already been added then we don't need to add it again
 				if (isset($placecache[$key])) {
 					$parent_id = $placecache[$key];
@@ -800,9 +800,9 @@ class FunctionsImport {
 						// We need a better solution that attaches multiple names to single places
 						Database::prepare(
 							"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
-						)->execute(array(
+						)->execute([
 							$parent_id, $gid, $ged_id,
-						));
+						]);
 					}
 					continue;
 				}
@@ -812,9 +812,9 @@ class FunctionsImport {
 					//-- check if this place and level has already been added
 					$tmp = Database::prepare(
 						"SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
-					)->execute(array(
+					)->execute([
 						$ged_id, $parent_id, $place,
-					))->fetchOne();
+					])->fetchOne();
 					if ($tmp) {
 						$p_id = $tmp;
 					} else {
@@ -828,17 +828,17 @@ class FunctionsImport {
 					$dm_soundex  = Soundex::daitchMokotoff($place);
 					Database::prepare(
 						"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
-					)->execute(array(
+					)->execute([
 						$place, $parent_id, $ged_id, $std_soundex, $dm_soundex,
-					));
+					]);
 					$p_id = Database::getInstance()->lastInsertId();
 				}
 
 				Database::prepare(
 					"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
-				)->execute(array(
+				)->execute([
 					$p_id, $gid, $ged_id,
-				));
+				]);
 				//-- increment the level and assign the parent id for the next place level
 				$parent_id         = $p_id;
 				$placecache[$key]  = $p_id;
@@ -864,7 +864,7 @@ class FunctionsImport {
 				$date = new Date($match[2]);
 				Database::prepare(
 					"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
-				)->execute(array(
+				)->execute([
 					$date->minimumDate()->d,
 					$date->minimumDate()->format('%O'),
 					$date->minimumDate()->m,
@@ -875,11 +875,11 @@ class FunctionsImport {
 					$xref,
 					$ged_id,
 					$date->minimumDate()->format('%@'),
-				));
+				]);
 				if ($date->minimumDate() !== $date->maximumDate()) {
 					Database::prepare(
 						"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
-					)->execute(array(
+					)->execute([
 						$date->maximumDate()->d,
 						$date->maximumDate()->format('%O'),
 						$date->maximumDate()->m,
@@ -890,7 +890,7 @@ class FunctionsImport {
 						$xref,
 						$ged_id,
 						$date->maximumDate()->format('%@'),
-					));
+					]);
 				}
 			}
 		}
@@ -905,7 +905,7 @@ class FunctionsImport {
 	 */
 	public static function updateLinks($xref, $ged_id, $gedrec) {
 		if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
-			$data = array();
+			$data = [];
 			foreach ($matches as $match) {
 				// Include each link once only.
 				if (!in_array($match[1] . $match[2], $data)) {
@@ -914,9 +914,9 @@ class FunctionsImport {
 					try {
 						Database::prepare(
 							"INSERT INTO `##link` (l_from, l_to, l_type, l_file) VALUES (?, ?, ?, ?)"
-						)->execute(array(
+						)->execute([
 							$xref, $match[2], $match[1], $ged_id,
-						));
+						]);
 					} catch (PDOException $e) {
 						// We could display a warning here....
 					}
@@ -951,15 +951,15 @@ class FunctionsImport {
 				}
 				Database::prepare(
 					"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)"
-				)->execute(array(
+				)->execute([
 					$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm,
-				));
+				]);
 			} else {
 				Database::prepare(
 					"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))"
-				)->execute(array(
+				)->execute([
 					$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'],
-				));
+				]);
 			}
 		}
 	}
@@ -1011,9 +1011,9 @@ class FunctionsImport {
 		// Have we already created a media object with the same title/filename?
 		$xref = Database::prepare(
 			"SELECT m_id FROM `##media` WHERE m_filename = ? AND m_titl = ? AND m_file = ?"
-		)->execute(array(
+		)->execute([
 			$file, $titl, $tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 
 		if (!$xref) {
 			$xref = $tree->getNewXref('OBJE');
@@ -1031,9 +1031,9 @@ class FunctionsImport {
 			$record = new Media($xref, $gedrec, null, $tree);
 			Database::prepare(
 				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
-			)->execute(array(
+			)->execute([
 				$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree->getTreeId(), $gedrec,
-			));
+			]);
 		}
 
 		return "\n" . $level . ' OBJE @' . $xref . '@';
@@ -1052,7 +1052,7 @@ class FunctionsImport {
 			" JOIN `##gedcom` g USING (gedcom_id)" .
 			" WHERE c.status='pending' AND xref=? AND gedcom_id=?" .
 			" ORDER BY change_id"
-		)->execute(array($xref, $ged_id))->fetchAll();
+		)->execute([$xref, $ged_id])->fetchAll();
 		foreach ($changes as $change) {
 			if (empty($change->new_gedcom)) {
 				// delete
@@ -1065,7 +1065,7 @@ class FunctionsImport {
 				"UPDATE `##change`" .
 				" SET status='accepted'" .
 				" WHERE status='pending' AND xref=? AND gedcom_id=?"
-			)->execute(array($xref, $ged_id));
+			)->execute([$xref, $ged_id]);
 			Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
 		}
 	}
@@ -1080,10 +1080,10 @@ class FunctionsImport {
 			"UPDATE `##change`" .
 			" SET status = 'rejected'" .
 			" WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
-		)->execute(array(
+		)->execute([
 			'xref'    => $record->getXref(),
 			'tree_id' => $record->getTree()->getTreeId(),
-		));
+		]);
 	}
 
 	/**
@@ -1101,7 +1101,7 @@ class FunctionsImport {
 			$gid  = $match[1];
 			$type = $match[1];
 		} else {
-			echo "ERROR: Invalid gedcom record.";
+			echo 'ERROR: Invalid gedcom record.';
 
 			return;
 		}
@@ -1109,41 +1109,41 @@ class FunctionsImport {
 		// TODO deleting unlinked places can be done more efficiently in a single query
 		$placeids =
 			Database::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
-				->execute(array($gid, $ged_id))
+				->execute([$gid, $ged_id])
 				->fetchOneColumn();
 
-		Database::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
-		Database::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute([$gid, $ged_id]);
+		Database::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute([$gid, $ged_id]);
 
 		//-- delete any unlinked places
 		foreach ($placeids as $p_id) {
 			$num =
 				Database::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-					->execute(array($p_id, $ged_id))
+					->execute([$p_id, $ged_id])
 					->fetchOne();
 			if ($num == 0) {
-				Database::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
+				Database::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute([$p_id, $ged_id]);
 			}
 		}
 
-		Database::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
-		Database::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute([$gid, $ged_id]);
+		Database::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute([$gid, $ged_id]);
 
 		switch ($type) {
 		case 'INDI':
-			Database::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
+			Database::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute([$gid, $ged_id]);
 			break;
 		case 'FAM':
-			Database::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
+			Database::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute([$gid, $ged_id]);
 			break;
 		case 'SOUR':
-			Database::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
+			Database::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute([$gid, $ged_id]);
 			break;
 		case 'OBJE':
-			Database::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute(array($gid, $ged_id));
+			Database::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute([$gid, $ged_id]);
 			break;
 		default:
-			Database::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
+			Database::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute([$gid, $ged_id]);
 			break;
 		}
 

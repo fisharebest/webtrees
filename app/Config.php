@@ -29,12 +29,12 @@ class Config {
 	 * @return string[]
 	 */
 	public static function namePrefixes() {
-		return array(
+		return [
 			'Adm', 'Amb', 'Brig', 'Can', 'Capt', 'Chan', 'Chapln', 'Cmdr', 'Col', 'Cpl',
 			'Cpt', 'Dr', 'Gen', 'Gov', 'Hon', 'Lady', 'Lt', 'Mr', 'Mrs', 'Ms', 'Msgr',
 			'Pfc', 'Pres', 'Prof', 'Pvt', 'Rabbi', 'Rep', 'Rev', 'Sen', 'Sgt', 'Sir',
 			'Sr', 'Sra', 'Srta', 'Ven',
-		);
+		];
 	}
 
 	/**
@@ -43,9 +43,9 @@ class Config {
 	 * @return string[]
 	 */
 	public static function fileFormats() {
-		return array(
+		return [
 			'avi', 'bmp', 'gif', 'jpeg', 'mp3', 'ole', 'pcx', 'png', 'tiff', 'wav',
-		);
+		];
 	}
 
 	/**
@@ -54,14 +54,14 @@ class Config {
 	 * return string[]
 	 */
 	public static function emptyFacts() {
-		return array(
+		return [
 			'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
 			'CENS', 'CHAN', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DATA', 'DEAT',
 			'DIV', 'DIVF', 'EMIG', 'ENDL', 'ENGA', 'FCOM', 'GRAD', 'HUSB', 'IMMI',
 			'MAP', 'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'ORDN', 'PROB',
 			'RESI', 'RETI', 'SLGC', 'SLGS', 'WIFE', 'WILL', '_HOL', '_NMR', '_NMAR',
 			'_SEPR',
-		);
+		];
 	}
 
 	/**
@@ -70,9 +70,9 @@ class Config {
 	 * @return string[]
 	 */
 	public static function nonPlaceFacts() {
-		return array(
+		return [
 			'ENDL', 'NCHI', 'REFN', 'SLGC', 'SLGS',
-		);
+		];
 	}
 
 	/**
@@ -81,11 +81,11 @@ class Config {
 	 * @return string[]
 	 */
 	public static function nonDateFacts() {
-		return array(
+		return [
 			'ABBR', 'ADDR', 'AFN', 'ALIA', 'AUTH', 'CHIL', 'EMAIL', 'FAX', 'FILE',
 			'HUSB', 'NAME', 'NCHI', 'NOTE', 'OBJE', 'PHON', 'PUBL', 'REFN', 'REPO',
 			'RESN', 'SEX', 'SOUR', 'SSN', 'TEXT', 'TITL', 'WIFE', 'WWW', '_EMAIL',
-		);
+		];
 	}
 
 	/**
@@ -94,9 +94,9 @@ class Config {
 	 * @return string[]
 	 */
 	public static function dateAndTime() {
-		return array(
+		return [
 			'BIRT', 'DEAT',
-		);
+		];
 	}
 
 	/**
@@ -106,96 +106,96 @@ class Config {
 	 * @return string[][]
 	 */
 	public static function levelTwoTags() {
-		return array(
-			'_HEB'     => array(
+		return [
+			'_HEB'     => [
 				'NAME', 'TITL',
-			),
-			'ROMN'     => array(
+			],
+			'ROMN'     => [
 				'NAME', 'TITL',
-			),
-			'TYPE'     => array(
+			],
+			'TYPE'     => [
 				'EVEN', 'FACT', 'GRAD', 'IDNO', 'MARR', 'ORDN', 'SSN',
-			),
-			'AGNC'     => array(
+			],
+			'AGNC'     => [
 				'EDUC', 'GRAD', 'OCCU', 'ORDN', 'RETI',
-			),
-			'CALN'     => array(
+			],
+			'CALN'     => [
 				'REPO',
-			),
-			'CEME'     => array(// CEME is NOT a valid 5.5.1 tag
+			],
+			'CEME'     => [// CEME is NOT a valid 5.5.1 tag
 				//'BURI',
-			),
-			'RELA'     => array(
+			],
+			'RELA'     => [
 				'ASSO', '_ASSO',
-			),
-			'DATE'     => array(
+			],
+			'DATE'     => [
 				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
 				'CENS', 'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'DSCR', 'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI',
 				'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB',
 				'PROP', 'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'WILL', '_TODO',
-			),
-			'AGE'      => array(
+			],
+			'AGE'      => [
 				'CENS', 'DEAT',
-			),
-			'TEMP'     => array(
+			],
+			'TEMP'     => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
-			),
-			'PLAC'     => array(
+			],
+			'PLAC'     => [
 				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
 				'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI', 'MARB',
 				'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB', 'PROP',
 				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'WILL',
-			),
-			'STAT'     => array(
+			],
+			'STAT'     => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
-			),
-			'ADDR'     => array(
+			],
+			'ADDR'     => [
 				'BAPM', 'BIRT', 'BURI', 'CENS', 'CHR', 'CHRA', 'CONF', 'CREM', 'DEAT',
 				'EDUC', 'EVEN', 'GRAD', 'MARR', 'OCCU', 'ORDN', 'PROP', 'RESI',
-			),
-			'CAUS'     => array(
+			],
+			'CAUS'     => [
 				'DEAT',
-			),
-			'PHON'     => array(
+			],
+			'PHON'     => [
 				'OCCU', 'RESI',
-			),
-			'FAX'      => array(
+			],
+			'FAX'      => [
 				'OCCU', 'RESI',
-			),
-			'WWW'      => array(
+			],
+			'WWW'      => [
 				'OCCU', 'RESI',
-			),
-			'EMAIL'    => array(
+			],
+			'EMAIL'    => [
 				'OCCU', 'RESI',
-			),
-			'HUSB'     => array(
+			],
+			'HUSB'     => [
 				'MARR',
-			),
-			'WIFE'     => array(
+			],
+			'WIFE'     => [
 				'MARR',
-			),
-			'FAMC'     => array(
+			],
+			'FAMC'     => [
 				'ADOP', 'SLGC',
-			),
-			'FILE'     => array(
+			],
+			'FILE'     => [
 				'OBJE',
-			),
-			'_PRIM'    => array(
+			],
+			'_PRIM'    => [
 				'OBJE',
-			),
-			'EVEN'     => array(
+			],
+			'EVEN'     => [
 				'DATA',
-			),
-			'_WT_USER' => array(
+			],
+			'_WT_USER' => [
 				'_TODO',
-			),
+			],
 			// See https://bugs.launchpad.net/webtrees/+bug/1082666
-			'RELI'     => array(
+			'RELI'     => [
 				'CHR', 'CHRA', 'BAPM', 'MARR', 'BURI',
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -204,9 +204,9 @@ class Config {
 	 * @return string[]
 	 */
 	public static function standardNameFacts() {
-		return array(
+		return [
 			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
-		);
+		];
 	}
 
 	/**
@@ -216,8 +216,8 @@ class Config {
 	 * @return string[]
 	 */
 	public static function twoAssociates() {
-		return array(
+		return [
 			'CHR', 'BAPM', 'MARR',
-		);
+		];
 	}
 }
