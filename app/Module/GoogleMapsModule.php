@@ -61,6 +61,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';
 	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\GoogleMaps\Schema';
 
+	const GM_MIN_ZOOM_MINIMUM = 1;
+	const GM_MIN_ZOOM_DEFAULT = 2;
+	const GM_MIN_ZOOM_MAXIMUM = 14;
+
+	const GM_MAX_ZOOM_MINIMUM = 1;
+	const GM_MAX_ZOOM_DEFAULT = 15;
+	const GM_MAX_ZOOM_MAXIMUM = 20;
+
 	/** @var Individual[] of ancestors of root person */
 	private $ancestors = [];
 
@@ -138,8 +146,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 		<script src="<?php echo $this->googleMapsScript() ?>"></script>
 		<script>
-			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
-			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
+			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>;
+			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>;
 			var startZoomLevel = maxZoomLevel;
 		</script>
 		<?php
@@ -353,13 +361,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_MIN_ZOOM"><?php echo I18N::translate('minimum') ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_MIN_ZOOM', array_combine(range(1, 14), range(1, 14)), null, $this->getSetting('GM_MIN_ZOOM'), 'class="form-control"') ?>
+								<?php echo FunctionsEdit::selectEditControl('GM_MIN_ZOOM', array_combine(range(self::GM_MIN_ZOOM_MINIMUM, self::GM_MIN_ZOOM_MAXIMUM), range(self::GM_MIN_ZOOM_MINIMUM, self::GM_MIN_ZOOM_MAXIMUM)), null, $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT), 'class="form-control"') ?>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_MAX_ZOOM"><?php echo I18N::translate('maximum') ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_MAX_ZOOM', array_combine(range(1, 20), range(1, 20)), null, $this->getSetting('GM_MAX_ZOOM'), 'class="form-control"') ?>
+								<?php echo FunctionsEdit::selectEditControl('GM_MAX_ZOOM', array_combine(range(self::GM_MAX_ZOOM_MINIMUM, self::GM_MAX_ZOOM_MAXIMUM), range(self::GM_MAX_ZOOM_MINIMUM, self::GM_MAX_ZOOM_MAXIMUM)), null, $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT), 'class="form-control"') ?>
 							</div>
 						</div>
 					</div>
@@ -1109,6 +1117,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// create the map
 		var myOptions = {
 			zoom:                     6,
+			minZoom:                  ' . $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) . ',
+			maxZoom:                  ' . $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) . ',
 			center:                   new google.maps.LatLng(0, 0),
 			mapTypeId:                google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
 			mapTypeControlOptions:    {
@@ -1244,7 +1254,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		pm_map.setCenter(bounds.getCenter());
 		pm_map.fitBounds(bounds);
 		google.maps.event.addListenerOnce(pm_map, "bounds_changed", function(event) {
-			var maxZoom = ' . $this->getSetting('GM_MAX_ZOOM') . ';
+			var maxZoom = ' . $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) . ';
 			if (this.getZoom() > maxZoom) {
 				this.setZoom(maxZoom);
 			}
@@ -1779,7 +1789,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param Individual $indi
 	 */
 	private function buildIndividualMap(Individual $indi) {
-		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
+		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT);
 		$facts       = $indi->getFacts();
 		foreach ($indi->getSpouseFamilies() as $family) {
 			$facts = array_merge($facts, $family->getFacts());
@@ -2042,6 +2052,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// Create the map and mapOptions
 					var mapOptions = {
 						zoom:                     7,
+						minZoom:                  <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT); ?>,
+						maxZoom:                  <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT); ?>,
 						center:                   map_center,
 						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
 						mapTypeControlOptions:    {
@@ -2491,7 +2503,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// Create the map and mapOptions
 			var mapOptions = {
-				minZoom: ' . $this->getSetting('GM_MIN_ZOOM') . ',
+				minZoom: ' . $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) . ',
+				maxZoom: ' . $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) . ',
 				zoom: 8,
 				center: map_center,
 				mapTypeId: google.maps.MapTypeId.' . $this->getSetting('GM_MAP_TYPE') . ',
@@ -2782,7 +2795,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * Edit places.
 	 */
 	private function placesEdit() {
-		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
+		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT);
 
 		$action     = Filter::post('action', null, Filter::get('action'));
 		$placeid    = Filter::post('placeid', null, Filter::get('placeid'));
@@ -2928,7 +2941,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$parent_long = 0.0;
 				$parent_id   = 0;
 				$level       = 0;
-				$zoomfactor  = $this->getSetting('GM_MIN_ZOOM');
+				$zoomfactor  = $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT);
 			}
 			$selected_country = 'Countries';
 
@@ -3287,19 +3300,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php } ?>
 						var zoomlevel = map.getZoom();
 
-						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM') ?>) {
-							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
+						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>) {
+							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>;
 						}
-						if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM') ?>) {
-							zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
+						if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>) {
+							zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>;
 						}
 						if (document.editplaces.NEW_ZOOM_FACTOR.value < zoomlevel) {
 							zoomlevel = document.editplaces.NEW_ZOOM_FACTOR.value;
-							if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM') ?>) {
-								zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
+							if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>) {
+								zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>;
 							}
-							if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM') ?>) {
-								zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
+							if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>) {
+								zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>;
 							}
 						}
 						map.setCenter(bounds.getCenter());
@@ -3837,7 +3850,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							} elseif (isset($default_zoom_level[$i])) {
 								$zoomlevel = $default_zoom_level[$i];
 							} else {
-								$zoomlevel = $this->getSetting('GM_MAX_ZOOM');
+								$zoomlevel = $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT);
 							}
 							if (($place['lati'] == '0') || ($place['long'] == '0') || (($i + 1) < $num_parent)) {
 								Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?)")
