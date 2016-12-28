@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-28 10:10+0000\n"
+"PO-Revision-Date: 2016-12-28 10:15+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -1750,12 +1750,12 @@ msgstr "Affichage de l’âge des parents à côté de la date de naissance"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
-msgstr "Âge à la naissance"
+msgstr "Longévité selon l’année de naissance"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:540
 #: statisticsplot.php:1182
 msgid "Age related to death year"
-msgstr "Âge au décès"
+msgstr "Longévité selon l’année de décès"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
