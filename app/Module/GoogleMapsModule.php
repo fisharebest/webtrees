@@ -113,9 +113,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		case 'places_edit':
 			$this->placesEdit();
 			break;
-		case 'wt_street_view':
-			$this->wtStreetView();
-			break;
 		default:
 			http_response_code(404);
 			break;
@@ -245,7 +242,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if (Filter::post('action') === 'update') {
 			$this->setSetting('GM_API_KEY', Filter::post('GM_API_KEY'));
 			$this->setSetting('GM_MAP_TYPE', Filter::post('GM_MAP_TYPE'));
-			$this->setSetting('GM_USE_STREETVIEW', Filter::post('GM_USE_STREETVIEW'));
 			$this->setSetting('GM_MIN_ZOOM', Filter::post('GM_MIN_ZOOM'));
 			$this->setSetting('GM_MAX_ZOOM', Filter::post('GM_MAX_ZOOM'));
 			$this->setSetting('GM_PLACE_HIERARCHY', Filter::post('GM_PLACE_HIERARCHY'));
@@ -340,16 +336,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					?>
 				</div>
 			</div>
-
-			<!-- GM_USE_STREETVIEW -->
-			<fieldset class="form-group">
-				<legend class="control-label col-sm-3">
-					<?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™') ?>
-				</legend>
-				<div class="col-sm-9">
-					<?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', [false => I18N::translate('hide'), true => I18N::translate('show')], $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"') ?>
-				</div>
-			</fieldset>
 
 			<!-- GM_MIN_ZOOM / GM_MAX_ZOOM -->
 			<fieldset class="form-group">
@@ -1128,7 +1114,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
 				style:    google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 			},
-			streetViewControl:        false,  // Show Pegman or not
 			scrollwheel:              true
 		};
 		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
@@ -1718,7 +1703,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		return Database::prepare(
-			"SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level" .
+			"SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level" .
 			" FROM `##placelocation`" .
 			" WHERE pl_id = ?" .
 			" ORDER BY pl_place"
@@ -1748,11 +1733,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					'lng'          => strtr($match2[1], ['E' => '', 'W' => '-', ',' => '.']),
 					'pl_icon'      => '',
 					'pl_zoom'      => '0',
-					'sv_bearing'   => '0',
-					'sv_elevation' => '0',
-					'sv_lati'      => '0',
-					'sv_long'      => '0',
-					'sv_zoom'      => '0',
 					'events'       => '',
 				],
 			];
@@ -1769,11 +1749,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'lng'          => strtr($place_location->pl_long, ['E' => '', 'W' => '-', ',' => '.']),
 						'pl_icon'      => $place_location->pl_icon,
 						'pl_zoom'      => $place_location->pl_zoom,
-						'sv_bearing'   => $place_location->sv_bearing,
-						'sv_elevation' => $place_location->sv_elevation,
-						'sv_lati'      => $place_location->sv_lati,
-						'sv_long'      => $place_location->sv_long,
-						'sv_zoom'      => $place_location->sv_zoom,
 						'events'       => '',
 					],
 				];
@@ -1888,9 +1863,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			echo '</table></div>';
-
-			// *** ENABLE STREETVIEW ***
-			$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
 			?>
 
 			<script>
@@ -1898,10 +1870,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				var gmarkers   = [];
 				var gicons     = [];
 				var map        = null;
-				var head       = '';
-				var dir        = '';
-				var svzoom     = '';
-
 				var infowindow = new google.maps.InfoWindow({});
 
 				gicons["red"] = {
@@ -1909,18 +1877,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					size:   google.maps.Size(20, 34),
 					origin: google.maps.Point(0, 0),
 					anchor: google.maps.Point(9, 34)
-				};
-
-				var iconImage = {
-					url:    "https://maps.google.com/mapfiles/marker.png",
-					size:   new google.maps.Size(20, 34),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(9, 34)
-				};
-
-				var iconShape = {
-					coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
-					type:  "poly"
 				};
 
 				function getMarkerImage(iconColor) {
@@ -1938,13 +1894,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					return gicons[iconColor];
 				}
 
-				var sv2_bear = null;
-				var sv2_elev = null;
-				var sv2_zoom = null;
 				var placer   = null;
 
 				// A function to create the marker and set up the event window
-				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
+				function createMarker(latlng, html, tooltip, marker_icon) {
 					// Use flag icon (if defined) instead of regular marker icon
 					if (marker_icon) {
 						var icon_image = {
@@ -1957,12 +1910,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						var icon_image = getMarkerImage('red');
 					}
 
-					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
-					if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
-						placer = latlng;
-					} else {
-						placer = sv_point;
-					}
+					placer = latlng;
 
 					// Define the marker
 					var marker = new google.maps.Marker({
@@ -1974,27 +1922,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					});
 
 					// Store the tab and event info as marker properties
-					marker.sv_lati  = sv_lati;
-					marker.sv_long  = sv_long;
-					marker.sv_point = sv_point;
-
-					if (sv_bearing == '') {
-						marker.sv_bearing = 0;
-					} else {
-						marker.sv_bearing = sv_bearing;
-					}
-					if (sv_elevation == '') {
-						marker.sv_elevation = 5;
-					} else {
-						marker.sv_elevation = sv_elevation;
-					}
-					if (sv_zoom == '' || sv_zoom == 0 || sv_zoom == 1) {
-						marker.sv_zoom = 1.2;
-					} else {
-						marker.sv_zoom = sv_zoom;
-					}
-
-					marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
 					gmarkers.push(marker);
 
 					// Open infowindow when marker is clicked
@@ -2002,42 +1929,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						infowindow.close();
 						infowindow.setContent(html);
 						infowindow.open(map, marker);
-
-						var panoramaOptions = {
-							position:          marker.position,
-							mode:              'html5',
-							navigationControl: false,
-							linksControl:      false,
-							addressControl:    false,
-							pov:               {
-								heading: sv_bearing,
-								pitch:   sv_elevation,
-								zoom:    sv_zoom
-							}
-						};
-
-						// Tabs within the info-windows.
-						<?php if ($STREETVIEW) { ?>
-						google.maps.event.addListener(infowindow, 'domready', function() {
-							jQuery('#gm-tab-events').click(function () {
-								document.getElementById("gm-tab-events").classList.add('gm-tab-active');
-								document.getElementById("gm-tab-streetview").classList.remove('gm-tab-active');
-								document.getElementById("gm-pane-events").style.display = 'block';
-								document.getElementById("gm-pane-streetview").style.display = 'none';
-
-								return false;
-							});
-							jQuery('#gm-tab-streetview').click(function () {
-								document.getElementById("gm-tab-events").classList.remove('gm-tab-active');
-								document.getElementById("gm-tab-streetview").classList.add('gm-tab-active');
-								document.getElementById("gm-pane-events").style.display = 'none';
-								document.getElementById("gm-pane-streetview").style.display = 'block';
-								var panorama = new google.maps.StreetViewPanorama(document.querySelector(".gm-streetview"), panoramaOptions);
-
-								return false;
-							});
-						});
-						<?php } ?>
 					});
 				}
 
@@ -2064,7 +1955,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
 							style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 						},
-						streetViewControl:        true,
 						scrollwheel:              true
 					};
 					map = new google.maps.Map(document.querySelector('.gm-map'), mapOptions);
@@ -2084,34 +1974,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
 
 					jQuery.each(locations, function(index, location) {
-						var point     = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
-						var sv_point  = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-						var html      =
+						var point = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
+						var html  =
 					    '<div class="gm-info-window">' +
 					    '<div class="gm-info-window-header">' + location.place + '</div>' +
 					    '<ul class="gm-tabs">' +
 					    '<li class="gm-tab gm-tab-active" id="gm-tab-events"><a href="#"><?php echo I18N::translate('Events') ?></a></li>' +
-					    <?php if ($STREETVIEW) { ?>
-					    '<li class="gm-tab" id="gm-tab-streetview"><a href="#"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
-					    <?php } ?>
 					    '</ul>' +
 						  '<div class="gm-panes">' +
 					    '<div class="gm-pane" id="gm-pane-events">' + location.events + '</div>' +
-					    <?php if ($STREETVIEW) { ?>
-					    '<div class="gm-pane" id="gm-pane-streetview" hidden><div class="gm-streetview"></div></div>' +
-					    <?php } ?>
 					    '</div>' +
 					    '</div>';
 
-						createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-						// if streetview coordinates are available, use them for marker,
-						// else use the place coordinates
-						if (sv_point && sv_point != "(0, 0)") {
-							var myLatLng = sv_point;
-						} else {
-							var myLatLng = point;
-						}
-						bounds.extend(myLatLng);
+						createMarker(point, html, location.tooltip, location.pl_icon);
+						bounds.extend(point);
 					}); // end loop through location markers
 
 					map.setCenter(bounds.getCenter());
@@ -2268,23 +2144,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
-		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
-		$parent     = Filter::getArray('parent');
-		$levelm     = $this->setLevelMap($level, $parent);
+		$parent = Filter::getArray('parent');
+		$levelm = $this->setLevelMap($level, $parent);
 
 		$latlng =
-			Database::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
+			Database::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom FROM `##placelocation` WHERE pl_id=?")
 			->execute([$levelm])
 			->fetch(PDO::FETCH_ASSOC);
 
 		echo '<table style="margin:auto; border-collapse: collapse;">';
 		echo '<tr style="vertical-align:top;"><td>';
-		if ($STREETVIEW && $level != 0) {
-			// Leave space for the Street View buttons, so that the maps align vertically
-			echo '<div id="place_map" style="margin-top:25px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
-		} else {
-			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
-		}
+		echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		echo '"><i class="icon-loading-large"></i></div>';
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
 
@@ -2311,59 +2181,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</div>';
 		}
 		echo '</td>';
-
-		if ($STREETVIEW) {
-			echo '<td>';
-
-			global $pl_lati, $pl_long;
-			if ($level >= 1) {
-				$pl_lati = strtr($latlng['pl_lati'], ['N' => '', 'S' => '-', ',' => '.']); // WT_placelocation lati
-				$pl_long = strtr($latlng['pl_long'], ['E' => '', 'W' => '-', ',' => '.']); // WT_placelocation long
-
-				// Check if Streetview location parameters are stored in database
-				$placeid  = $latlng['pl_id']; // Placelocation place id
-				$sv_lat   = $latlng['sv_lati']; // StreetView Point of View Latitude
-				$sv_lng   = $latlng['sv_long']; // StreetView Point of View Longitude
-				$sv_dir   = $latlng['sv_bearing']; // StreetView Point of View Direction (degrees from North)
-				$sv_pitch = $latlng['sv_elevation']; // StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
-				$sv_zoom  = $latlng['sv_zoom']; // StreetView Point of View Zoom (0, 1, 2 or 3)
-
-				// Check if Street View Lati/Long are the default of 0, if so use regular Place Lati/Long to set an initial location for the panda
-				if ($latlng['sv_lati'] == 0 && $latlng['sv_long'] == 0) {
-						$sv_lat = $pl_lati;
-						$sv_lng = $pl_long;
-				}
-				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35; // Add height of buttons
-
-				?>
-				<iframe class="gm-streetview-frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
-				<?php
-				if (Auth::isAdmin()) {
-					?>
-					<div class="gm-streetview-parameters">
-						<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
-							<?php echo Filter::getCsrf() ?>
-							<input type='hidden' name='placeid' value='<?php echo $placeid ?>'>
-							<input type='hidden' name='action' value='update_sv_params'>
-							<input type='hidden' name='destination' value='<?php echo Filter::server('REQUEST_URI') ?>'>
-							<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI') ?></label>
-							<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat ?>" style='width:42px;' value='<?php echo $sv_lat ?>'>
-							<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG') ?></label>
-							<input name='sv_longText' id='sv_longText' type='text' title="<?php echo $sv_lng ?>" style='width:42px;' value='<?php echo $sv_lng ?>'>
-							<label for='sv_bearText'><?php echo /* I18N: Compass bearing (in degrees), for street-view mapping */ I18N::translate('Bearing') ?></label>
-							<input name='sv_bearText' id='sv_bearText' type='text' style='width:30px;' value='<?php echo $sv_dir ?>'>
-							<label for='sv_elevText'><?php echo /* I18N: Angle of elevation (in degrees), for street-view mapping */ I18N::translate('Elevation') ?></label>
-							<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px;' value='<?php echo $sv_pitch ?>'>
-							<label for='sv_zoomText'><?php echo I18N::translate('Zoom') ?></label>
-							<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px;' value='<?php echo $sv_zoom ?>'>
-							<input type="submit" name="Submit" value="<?php echo I18N::translate('save') ?>">
-						</form>
-					</div>
-					<?php
-				}
-			}
-			echo '</td>';
-		}
 		echo '</tr></table>';
 	}
 
@@ -2516,7 +2333,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					position: google.maps.ControlPosition.TOP_RIGHT, // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
 					style: google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 				},
-				streetViewControl: false, // Show Pegman or not
 				scrollwheel: true
 			};
 			map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
@@ -2802,27 +2618,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$place_name = Filter::post('place_name', null, Filter::get('place_name'));
 		$placeid    = (int) $placeid; // Convert empty string to zero
 		$place_icon = '';
-
-		// Update Street View fields fields
-		if ($action === 'update_sv_params' && Auth::isAdmin() && Filter::checkCsrf()) {
-			Database::prepare(
-				"UPDATE `##placelocation`" .
-				" SET sv_lati = :sv_latitude, sv_long = :sv_longitude, sv_bearing = :sv_bearing, sv_elevation = :sv_elevation, sv_zoom = :sv_zoom" .
-				" WHERE pl_id = :place_id"
-			)->execute([
-				'sv_latitude'  => (float) Filter::post('sv_latiText'),
-				'sv_longitude' => (float) Filter::post('sv_longText'),
-				'sv_bearing'   => (float) Filter::post('sv_bearText'),
-				'sv_elevation' => (float) Filter::post('sv_elevText'),
-				'sv_zoom'      => (float) Filter::post('sv_zoomText'),
-				'place_id'     => $placeid,
-			]);
-			// TODO - submit this data via AJAX, so we won't need to redraw the page.
-			header('Location: ' . Filter::post('destination', null, 'index.php'));
-
-			return;
-		}
-
 		$controller = new SimpleController;
 		$controller
 			->restrictAccess(Auth::isAdmin())
@@ -3133,7 +2928,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					position: google.maps.ControlPosition.TOP_RIGHT, // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
 					style: google.maps.NavigationControlStyle.SMALL // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 					},
-					streetViewControl: false, // Show Pegman or not
 					scrollwheel: true
 				};
 
@@ -4099,275 +3893,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</div>
 			</div>
 		</form>
-		<?php
-	}
-
-	/**
-	 * Generate the streetview window.
-	 */
-	private function wtStreetView() {
-		header('Content-type: text/html; charset=UTF-8');
-
-		?>
-		<html>
-			<head>
-				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/gm_streetview.css" rel="stylesheet">
-				<script src="<?php echo $this->googleMapsScript() ?>"></script>
-				<script>
-
-		// Following function creates an array of the google map parameters passed ---------------------
-		var qsParm = [];
-		function qs() {
-			var query = window.location.search.substring(1);
-			var parms = query.split('&');
-			for (var i=0; i<parms.length; i++) {
-				var pos = parms[i].indexOf('=');
-				if (pos > 0) {
-					var key = parms[i].substring(0,pos);
-					qsParm[key] = parms[i].substring(pos + 1);
-				}
-			}
-		}
-		qsParm['x'] = null;
-		qsParm['y'] = null;
-		qs();
-
-		var geocoder = new google.maps.Geocoder();
-
-		function geocodePosition(pos) {
-			geocoder.geocode({
-					latLng: pos
-			}, function(responses) {
-				if (responses && responses.length > 0) {
-					updateMarkerAddress(responses[0].formatted_address);
-				} else {
-					updateMarkerAddress('Cannot determine address at this location.');
-				}
-			});
-		}
-
-		function updateMarkerStatus(str) {
-			document.getElementById('markerStatus').innerHTML = str;
-		}
-
-		function updateMarkerPosition(latLng) {
-			document.getElementById('info').innerHTML = [
-				latLng.lat(),
-				latLng.lng()
-			].join(', ');
-		}
-
-		function updateMarkerAddress(str) {
-			document.getElementById('address').innerHTML = str;
-		}
-
-		function roundNumber(num, dec) {
-			return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
-		}
-
-		function initialize() {
-			var x = qsParm['x'];
-			var y = qsParm['y'];
-			var b = parseFloat(qsParm['b']);
-			var p = parseFloat(qsParm['p']);
-			var m = parseFloat(qsParm['m']);
-
-			var latLng = new google.maps.LatLng(y, x);
-
-			// Create the map and mapOptions
-			var mapOptions = {
-				zoom: 16,
-				center: latLng,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				mapTypeControlOptions: {
-					mapTypeIds: [] // Disable the map type (road/satellite) selector.
-				},
-				navigationControl: true,
-				navigationControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT,
-					style: google.maps.NavigationControlStyle.SMALL
-				},
-				streetViewControl: false,
-				scrollwheel: true
-			};
-
-			var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
-
-			var bearing = b;
-			if (bearing < 0) {
-				bearing=bearing+360;
-			}
-			var pitch = p;
-			var svzoom = m;
-
-			var imageNum = Math.round(bearing/22.5) % 16;
-
-			var image = {
-				url:    '<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
-				// This marker is 50 pixels wide by 50 pixels tall.
-				size:   new google.maps.Size(50, 50),
-				// The origin for this image is 0,0.
-				origin: new google.maps.Point(0, 0),
-				// The anchor for this image is the base of the flagpole at 0,32.
-				anchor: new google.maps.Point(26, 36)
-			};
-
-			var shape = {
-				coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-				type: 'poly'
-			};
-
-			var marker = new google.maps.Marker({
-				icon: image,
-				// shape: shape,
-				position: latLng,
-				title: 'Drag me to a Blue Street',
-				map: map,
-				draggable: true
-			});
-
-			// ===Next, get the map’s default panorama and set up some defaults. ===========================
-
-			// --- First check if Browser supports html5 ---
-			var browserName=navigator.appName;
-			if (browserName=='Microsoft Internet Explorer') {
-				var render_type = '';
-			} else {
-				var render_type = 'html5';
-			}
-
-			// --- Create the panorama ---
-			var panoramaOptions = {
-				navigationControl: true,
-				navigationControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-					style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
-				},
-				linksControl: true,
-				addressControl: true,
-				addressControlOptions: {
-					style: {
-						// display: 'none'
-						// backgroundColor: 'red'
-					}
-				},
-				position: latLng,
-				mode: render_type,
-				pov: {
-					heading: bearing,
-					pitch: pitch,
-					zoom: svzoom
-				}
-			};
-			panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
-			panorama.setPosition(latLng);
-			setTimeout(function() { panorama.setVisible(true); }, 1000);
-			setTimeout(function() { panorama.setVisible(true); }, 2000);
-			setTimeout(function() { panorama.setVisible(true); }, 3000);
-
-			// Enable navigator contol and address control to be toggled with right mouse button -------
-			var aLink = document.createElement('a');
-			aLink.href = 'javascript:void(0)'; onmousedown=function(e) {
-				if (parseInt(navigator.appVersion)>3) {
-					var clickType=1;
-					if (navigator.appName=='Netscape') {
-						clickType=e.which;
-					} else {
-						clickType=event.button;
-					}
-					if (clickType==1) {
-						self.status='Left button!';
-					}
-					if (clickType!=1) {
-						if (panorama.get('addressControl') == false) {
-							panorama.set('navigationControl', false);
-							panorama.set('addressControl', true);
-							panorama.set('linksControl', true);
-						} else {
-							panorama.set('navigationControl', false);
-							panorama.set('addressControl', false);
-							panorama.set('linksControl', false);
-						}
-					}
-				}
-				return true;
-			};
-			panorama.controls[google.maps.ControlPosition.TOP_RIGHT].push(aLink);
-
-			// Update current position info.
-			updateMarkerPosition(latLng);
-			geocodePosition(latLng);
-
-			// Add dragging event listeners.
-			google.maps.event.addListener(marker, 'dragstart', function() {
-				updateMarkerAddress('Dragging...');
-			});
-
-			google.maps.event.addListener(marker, 'drag', function() {
-				updateMarkerStatus('Dragging...');
-				updateMarkerPosition(marker.getPosition());
-				panorama.setPosition(marker.getPosition());
-			});
-
-			google.maps.event.addListener(marker, 'dragend', function() {
-				updateMarkerStatus('Drag ended');
-				geocodePosition(marker.getPosition());
-			});
-
-			google.maps.event.addListener(panorama, 'pov_changed', function() {
-				var povLevel = panorama.getPov();
-				parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2);
-				parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2);
-				parent.document.getElementById('sv_zoomText').value = roundNumber(povLevel.zoom, 2);
-			});
-
-			google.maps.event.addListener(panorama, 'position_changed', function() {
-				var pos = panorama.getPosition();
-				marker.setPosition(pos);
-				parent.document.getElementById('sv_latiText').value = pos.lat();
-				parent.document.getElementById('sv_longText').value = pos.lng();
-			});
-
-			var streetViewLayer = new google.maps.StreetViewCoverageLayer();
-			streetViewLayer.setMap(map);		}
-
-		function toggleStreetView() {
-			var toggle = panorama.getVisible();
-			if (toggle == false) {
-				panorama.setVisible(true);
-				document.getElementById('butt1').value = "<?php echo I18N::translate('Google Maps™') ?>";
-			} else {
-				panorama.setVisible(false);
-				document.getElementById('butt1').value = "<?php echo I18N::translate('Google Street View™') ?>";
-			}
-		}
-
-		// Onload handler to fire off the app.
-		google.maps.event.addDomListener(window, 'load', initialize);
-
-				</script>
-			</head>
-			<body>
-				<div id="toggle">
-					<button id="butt1" type="button" onclick="toggleStreetView();">
-						<?php echo I18N::translate('Google Maps™') ?>
-					</button>
-					<button type="button" onclick="initialize();">
-						<?php echo I18N::translate('reset') ?>
-					</button>
-				</div>
-
-				<div id="mapCanvas" style="height: <?php echo $this->getSetting('GM_PH_YSIZE') ?>;">
-				</div>
-
-				<div id="infoPanel">
-					<div id="markerStatus"><em>Click and drag the marker.</em></div>
-					<div id="info" ></div>
-					<div id="address"></div>
-				</div>
-			</body>
-		</html>
 		<?php
 	}
 }
