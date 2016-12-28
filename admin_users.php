@@ -819,9 +819,9 @@ default:
 					/* email             */ null,
 					/* language          */ null,
 					/* registered (sort) */ { visible: false },
-					/* registered        */ { dataSort: 7 },
+					/* registered        */ { dataSort: 6 },
 					/* last_login (sort) */ { visible: false },
-					/* last_login        */ { dataSort: 9 },
+					/* last_login        */ { dataSort: 8 },
 					/* verified          */ null,
 					/* approved          */ null
 				]
