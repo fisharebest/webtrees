@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-27 09:21+0000\n"
+"PO-Revision-Date: 2016-12-28 16:58+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
@@ -6347,7 +6347,7 @@ msgstr "Finn næraste slektskap"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr "Finn individ utan relasjon"
+msgstr "Finn ikkjerelaterte personar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
