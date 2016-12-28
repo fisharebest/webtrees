@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 08:59+0000\n"
-"PO-Revision-Date: 2016-01-18 20:45+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
+"PO-Revision-Date: 2016-12-28 16:58+0000\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -844,9 +844,8 @@ msgstr "Uvítacia správa pre návštevníkov stránky."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Zoznam zmien, ktoré vyžadujú schválenie moderátora a e-mailové upozornenie."
+msgstr "Zoznam zmien, ktoré vyžadujú schválenie moderátora a e-mailové upozornenia."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1031,7 +1030,7 @@ msgstr "Výpis dôležitých záznamov pre dané miesto alebo dátum."
 #: admin_users.php:523
 #, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rola je súbor prístupových práv, ktoré dávaju povolenie zobrazovať údaje, meniť konfiguračné nastavenie, atď. Prístupové práva sú pridelené jednotlivým roliam a užívateľom je pridelená príslušná rola. V každom rodokmeni môže byť priradený jednotlivej roli iný prístup a užívatelia môžu mať rôzne role v rôznych rodokmeňoch."
+msgstr "Rola je súbor prístupových práv, ktoré dávajú povolenie zobrazovať údaje, meniť konfiguračné nastavenia, atď. Prístupové práva sú pridelené jednotlivým roliam a užívateľom je pridelená príslušná rola. V každom rodokmeni môže byť priradený jednotlivej roli iný prístup a užívatelia môžu mať rôzne role v rôznych rodokmeňoch."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1714,7 +1713,6 @@ msgid "Adult christening"
 msgstr "Krst dospelého"
 
 #: admin_trees_config.php:2027
-#, fuzzy
 msgid "Advanced fact preferences"
 msgstr "Rozšírené nastavenia pre fakty"
 
@@ -7410,7 +7408,6 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Ak ukryjete prázdny blok, nebudete môcť meniť jeho nastavenie až do doby než nebude zobrazený."
 
 #: admin_site_config.php:185
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Ak zvolíte iný priečinok, tak musíte presunúť aj všetky súbory (okrem config.ini.php, index.php a .htaccess) do tohoto priečinku."
 
@@ -9999,9 +9996,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk"
 
 #: admin_users.php:444
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normálne musia byť všetky zmeny v rodokmeni schválené moderátorom. Táto voľba umožní uživateľovi urobiť zmeny bez tohoto schválenia."
+msgstr "Normálne musia byť všetky zmeny v rodokmeni schválené moderátorom. Táto voľba umožní užívateľovi urobiť zmeny bez nutnosti schválenia moderátorom."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6857
