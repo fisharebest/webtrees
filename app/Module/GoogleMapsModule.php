@@ -1324,7 +1324,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<label for="gedcom_id">', I18N::translate('Family tree'), '</label> ';
 		echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();" class="form-control"'), ' ';
 		echo '<label for="country">', I18N::translate('Country'), '</label> ';
-		echo '<select name="country" onchange="this.form.submit();" class="form-control"> ';
+		echo '<select id="country" name="country" onchange="this.form.submit();" class="form-control"> ';
 		echo '<option value="XYZ">', I18N::translate('All'), '</option>';
 		foreach ($rows as $id => $place) {
 			echo '<option value="', Filter::escapeHtml($place), '" ';
@@ -1762,6 +1762,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * Build a map for an individual.
 	 *
 	 * @param Individual $indi
+	 *
+	 * @return string
 	 */
 	private function buildIndividualMap(Individual $indi) {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT);
@@ -1774,10 +1776,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		$facts = array_values(array_filter($facts, function ($item) {
-			// remove null facts (child without birth event) and
-			// facts without places
-			return !is_null($item) && !$item->getPlace()->isEmpty();
+		$facts = array_values(array_filter($facts, function (Fact $item) {
+			// remove null facts (child without birth event) and facts without places
+			return $item !== null && !$item->getPlace()->isEmpty();
 		}));
 
 		Functions::sortFacts($facts);
