@@ -553,14 +553,14 @@ function fill_y_data($z, $x, $val) {
 /**
  * Plot the data.
  *
- * @param string      $mytitle
+ * @param string      $chart_title
  * @param integer[][] $xdata
  * @param string      $xtitle
  * @param integer[][] $ydata
  * @param string      $ytitle
  * @param string[]    $legend
  */
-function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
+function my_plot($chart_title, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	global $percentage, $male_female, $ymax, $scalefactor, $datastring, $imgurl;
 
 	// Google Chart API only allows text encoding for numbers less than 100
@@ -642,10 +642,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 	}
 
-	$titleLength = strpos($mytitle . "\n", "\n");
-	$title       = substr($mytitle, 0, $titleLength);
-
-	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($title) . '&amp;' . $datastring . '&amp;' . $colorstring . '&amp;chbh=';
+	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($chart_title) . '&amp;' . $datastring . '&amp;' . $colorstring . '&amp;chbh=';
 	if (count($ydata) > 3) {
 		$imgurl .= '5,1';
 	} elseif (count($ydata) < 2) {
@@ -691,8 +688,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 			$imgurl .= rawurlencode($data);
 		}
 	}
-	$title = strstr($mytitle, '|', true);
-	echo '<img src="', $imgurl, '" width="950" height="300" alt="', Filter::escapeHtml($title), '" title="', Filter::escapeHtml($title), '">';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', Filter::escapeHtml($chart_title), '">';
 }
 
 /**
@@ -820,7 +816,7 @@ case '11':
 	$xgiven            = true;
 	$zgiven            = false;
 	$title             = I18N::translate('Month of birth');
-	$xtitle            = I18N::translate('month');
+	$xtitle            = I18N::translate('Month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
 	$xdata             = $monthdata;
@@ -848,9 +844,6 @@ case '11':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -859,8 +852,7 @@ case '11':
 		}
 	}
 	$total = month_of_birth($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '12':
 	$monthdata = [];
@@ -870,7 +862,7 @@ case '12':
 	$xgiven            = true;
 	$zgiven            = false;
 	$title             = I18N::translate('Month of death');
-	$xtitle            = I18N::translate('month');
+	$xtitle            = I18N::translate('Month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
 	$xdata             = $monthdata;
@@ -898,9 +890,6 @@ case '12':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -909,8 +898,7 @@ case '12':
 		}
 	}
 	$total = month_of_death($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '13':
 	$monthdata = [];
@@ -924,7 +912,7 @@ case '13':
 	$xgiven            = true;
 	$zgiven            = false;
 	$title             = I18N::translate('Month of marriage');
-	$xtitle            = I18N::translate('month');
+	$xtitle            = I18N::translate('Month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
 	$xdata             = $monthdata;
@@ -952,9 +940,6 @@ case '13':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -963,8 +948,7 @@ case '13':
 		}
 	}
 	$total = month_of_marriage($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '14':
 	$monthdata = [];
@@ -974,7 +958,7 @@ case '14':
 	$xgiven            = true;
 	$zgiven            = false;
 	$title             = I18N::translate('Month of birth of first child in a relation');
-	$xtitle            = I18N::translate('month');
+	$xtitle            = I18N::translate('Month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
 	$xdata             = $monthdata;
@@ -1002,9 +986,6 @@ case '14':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1013,8 +994,7 @@ case '14':
 		}
 	}
 	$total = month_of_birth_of_first_child($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '15':
 	$monthdata = [];
@@ -1028,7 +1008,7 @@ case '15':
 	$xgiven            = true;
 	$zgiven            = false;
 	$title             = I18N::translate('Month of first marriage');
-	$xtitle            = I18N::translate('month');
+	$xtitle            = I18N::translate('Month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
 	$xdata             = $monthdata;
@@ -1056,9 +1036,6 @@ case '15':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1067,8 +1044,7 @@ case '15':
 		}
 	}
 	$total = month_of_first_marriage($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '18':
 	$xgiven            = false;
@@ -1102,9 +1078,6 @@ case '18':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1113,8 +1086,7 @@ case '18':
 		}
 	}
 	$total = longevity_versus_time($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '19':
 	$xgiven            = false;
@@ -1148,9 +1120,6 @@ case '19':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1159,8 +1128,7 @@ case '19':
 		}
 	}
 	$total = age_at_marriage($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '20':
 	$xgiven            = false;
@@ -1194,9 +1162,6 @@ case '20':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1205,8 +1170,7 @@ case '20':
 		}
 	}
 	$total = age_at_first_marriage($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '21':
 	$xgiven            = false;
@@ -1240,9 +1204,6 @@ case '21':
 		$legend[0]   = I18N::translate('Male');
 		$legend[1]   = I18N::translate('Female');
 		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
 	}
 	//-- reset the data array
 	for ($i = 0; $i < $zmax; $i++) {
@@ -1251,8 +1212,7 @@ case '21':
 		}
 	}
 	$total = number_of_children($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalChildren();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
+	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 default:
 	echo '<i class="icon-loading-large"></i>';
