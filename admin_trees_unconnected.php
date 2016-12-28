@@ -34,9 +34,15 @@ $controller
 	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . $WT_TREE->getTitleHtml())
 	->pageHeader();
 
-$rows = Database::prepare(
-	"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
-)->execute([
+$associates = Filter::getBool('associates');
+
+if ($associates) {
+	$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'ASSO', '_ASSO')";
+} else {
+	$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')";
+}
+
+$rows = Database::prepare($sql)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
 ])->fetchAll();
 $graph = [];
@@ -76,6 +82,17 @@ foreach ($components as $key => $component) {
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<form class="form-inline">
+	<div class="form-group">
+		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+		<label for="associates"><?php echo I18N::translate('Include associates') ?></label>
+		<input type="checkbox" value="1" id="associates" name="associates" <?php echo $associates ? 'checked' : ''; ?>>
+	</div>
+	<button type="submit">
+		<?php echo I18N::translate('update'); ?>
+	</button>
+</form>
 
 <p><?php echo I18N::translate('These groups of individuals are not related to %s.', $root->getFullName()) ?></p>
 
