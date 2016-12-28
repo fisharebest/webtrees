@@ -4637,7 +4637,7 @@ class Stats {
 			"  SELECT" .
 			"  link1.l_from AS family," .
 			"  link1.l_to AS child," .
-			"  child1.d_julianday2 as date," .
+			"  child1.d_julianday2 AS date," .
 			"  child1.d_month as d_month" .
 			$sql_sex1 .
 			"  FROM `##link` AS link1" .
@@ -4648,12 +4648,11 @@ class Stats {
 			"  link1.l_type = 'CHIL' AND" .
 			"  child1.d_gid = link1.l_to AND" .
 			"  child1.d_fact = 'BIRT' AND" .
-			"  d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-			"  child1.d_month <> ''" .
+			"  child1.d_month IN ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')" .
 			$sql_years .
 			"  ORDER BY date" .
 			" ) AS children" .
-			" GROUP BY family" .
+			" GROUP BY family, d_month{$sql_sex1}" .
 			") AS first_child " .
 			"GROUP BY d_month";
 		if ($sex) {
