@@ -290,7 +290,7 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 }
 
 /**
- * Age related to birth year
+ * Longevity versus time
  *
  * @param int   $z_axis
  * @param int[] $z_boundaries
@@ -298,59 +298,7 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
-	$total = 0;
-
-	if ($z_axis === 300) {
-		$num = $stats->statsAgeQuery(false, 'BIRT');
-		foreach ($num as $values) {
-			foreach ($values as $age_value) {
-				fill_y_data(0, (int) ($age_value / 365.25), 1);
-				$total++;
-			}
-		}
-	} elseif ($z_axis === 301) {
-		$num = $stats->statsAgeQuery(false, 'BIRT', 'M');
-		foreach ($num as $values) {
-			foreach ($values as $age_value) {
-				fill_y_data(0, (int) ($age_value / 365.25), 1);
-				$total++;
-			}
-		}
-		$num = $stats->statsAgeQuery(false, 'BIRT', 'F');
-		foreach ($num as $values) {
-			foreach ($values as $age_value) {
-				fill_y_data(1, (int) ($age_value / 365.25), 1);
-				$total++;
-			}
-		}
-	} else {
-		$zstart = 0;
-		foreach ($z_boundaries as $boundary) {
-			$num = $stats->statsAgeQuery(false, 'BIRT', 'BOTH', $zstart, $boundary);
-			foreach ($num as $values) {
-				foreach ($values as $age_value) {
-					fill_y_data($boundary, (int) ($age_value / 365.25), 1);
-					$total++;
-				}
-			}
-			$zstart = $boundary + 1;
-		}
-	}
-
-	return $total;
-}
-
-/**
- * Age related to death year
- *
- * @param int   $z_axis
- * @param int[] $z_boundaries
- * @param Stats $stats
- *
- * @return int
- */
-function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
+function longevity_versus_time($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
 
 	if ($z_axis === 300) {
@@ -1122,64 +1070,10 @@ case '15':
 	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
-case '17':
-	$monthdata = [];
-	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
-	}
-	$xgiven            = false;
-	$zgiven            = false;
-	$title             = I18N::translate('Age related to birth year');
-	$xtitle            = I18N::translate('age');
-	$ytitle            = I18N::translate('numbers');
-	$boundaries_x_axis = Filter::get('x-axis-boundaries-ages');
-	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	calculate_axis($boundaries_x_axis);
-	if ($z_axis !== 300 && $z_axis !== 301) {
-		calculate_legend($boundaries_z_axis);
-	}
-	$percentage = false;
-	if ($y_axis === 201) {
-		$percentage = false;
-		$ytitle     = I18N::translate('Individuals');
-	} elseif ($y_axis === 202) {
-		$percentage = true;
-		$ytitle     = I18N::translate('percentage');
-	}
-	$male_female = false;
-	if ($z_axis === 300) {
-		$zgiven          = false;
-		$legend[0]       = 'all';
-		$zmax            = 1;
-		$z_boundaries[0] = 100000;
-	} elseif ($z_axis === 301) {
-		$male_female = true;
-		$zgiven      = true;
-		$legend[0]   = I18N::translate('Male');
-		$legend[1]   = I18N::translate('Female');
-		$zmax        = 2;
-		$xtitle      = $xtitle . I18N::translate(' per gender');
-	} elseif ($z_axis === 302) {
-		$xtitle = $xtitle . I18N::translate(' per time period');
-	}
-	//-- reset the data array
-	for ($i = 0; $i < $zmax; $i++) {
-		for ($j = 0; $j < $xmax; $j++) {
-			$ydata[$i][$j] = 0;
-		}
-	}
-	$total = lifespan_by_birth_year($z_axis, $z_boundaries, $stats);
-	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
-	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
-	break;
 case '18':
-	$monthdata = [];
-	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
-	}
 	$xgiven            = false;
 	$zgiven            = false;
-	$title             = I18N::translate('Age related to death year');
+	$title             = /* I18N: Two axes of a graph */ I18N::translate('Longevity versus time');
 	$xtitle            = I18N::translate('age');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_x_axis = Filter::get('x-axis-boundaries-ages');
@@ -1218,15 +1112,11 @@ case '18':
 			$ydata[$i][$j] = 0;
 		}
 	}
-	$total = lifespan_by_death_year($z_axis, $z_boundaries, $stats);
+	$total = longevity_versus_time($z_axis, $z_boundaries, $stats);
 	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '19':
-	$monthdata = [];
-	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
-	}
 	$xgiven            = false;
 	$zgiven            = false;
 	$title             = I18N::translate('Age in year of marriage');
@@ -1273,10 +1163,6 @@ case '19':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '20':
-	$monthdata = [];
-	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
-	}
 	$xgiven            = false;
 	$zgiven            = false;
 	$title             = I18N::translate('Age in year of first marriage');
@@ -1323,10 +1209,6 @@ case '20':
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '21':
-	$monthdata = [];
-	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
-	}
 	$xgiven            = false;
 	$zgiven            = false;
 	$title             = I18N::translate('Number of children');
