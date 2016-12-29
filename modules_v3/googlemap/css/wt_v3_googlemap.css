@@ -86,31 +86,6 @@
 	border-bottom: 1px dotted #aaa;
 }
 
-/* The map has flags, which have popup windows, which have tabs */
-.gm-tabs {
-	margin: 0;
-	padding: 0;
-	height: 19px;
-	display: flex;
-}
-
-.gm-tab {
-	list-style-type: none;
-	margin: 0 2px;
-	background-color: #eee;
-	border-radius: 4px 4px 0 0;
-	border: 1px solid #666;
-	color: #777;
-	height: 18px;
-	display: block;
-	padding: 0 10px;
-}
-
-.gm-tab-active,
-.gm-tab:hover {
-	background-color: #fff;
-}
-
 .gm-pane {
 	background-color: #eee;
 	border: 1px solid #666;

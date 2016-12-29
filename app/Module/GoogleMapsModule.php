@@ -1867,55 +1867,33 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			?>
 
 			<script>
-				var map_center = new google.maps.LatLng(0, 0);
 				var gmarkers   = [];
-				var gicons     = [];
 				var map        = null;
 				var infowindow = new google.maps.InfoWindow({});
-
-				gicons["red"] = {
-					url:    "https://maps.google.com/mapfiles/marker.png",
-					size:   google.maps.Size(20, 34),
-					origin: google.maps.Point(0, 0),
-					anchor: google.maps.Point(9, 34)
-				};
-
-				function getMarkerImage(iconColor) {
-					if (typeof(iconColor) === 'undefined' || iconColor === null) {
-						iconColor = 'red';
-					}
-					if (!gicons[iconColor]) {
-						gicons[iconColor] = {
-							url:    '//maps.google.com/mapfiles/marker' + iconColor + '.png',
-							size:   new google.maps.Size(20, 34),
-							origin: new google.maps.Point(0, 0),
-							anchor: google.maps.Point(9, 34)
-						};
-					}
-					return gicons[iconColor];
-				}
-
-				var placer   = null;
 
 				// A function to create the marker and set up the event window
 				function createMarker(latlng, html, tooltip, marker_icon) {
 					// Use flag icon (if defined) instead of regular marker icon
+					var icon_image;
 					if (marker_icon) {
-						var icon_image = {
+						icon_image = {
 							url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
 							size:   new google.maps.Size(25, 15),
 							origin: new google.maps.Point(0, 0),
 							anchor: new google.maps.Point(12, 15)
 						};
 					} else {
-						var icon_image = getMarkerImage('red');
+						icon_image = {
+							url:    "https://maps.google.com/mapfiles/marker.png",
+							size:   google.maps.Size(20, 34),
+							origin: google.maps.Point(0, 0),
+							anchor: google.maps.Point(9, 34)
+						};
 					}
-
-					placer = latlng;
 
 					// Define the marker
 					var marker = new google.maps.Marker({
-						position: placer,
+						position: latlng,
 						icon:     icon_image,
 						map:      map,
 						title:    tooltip,
@@ -1946,7 +1924,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						zoom:                     7,
 						minZoom:                  <?php echo $this->getSetting('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT); ?>,
 						maxZoom:                  <?php echo $this->getSetting('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT); ?>,
-						center:                   map_center,
+						center:                   {lat: 0, lng: 0},
 						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
 						mapTypeControlOptions:    {
 							style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
@@ -1966,7 +1944,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					});
 
 					// Add the markers to the map
-
 					// Group the markers by location
 					var locations = <?php echo json_encode($unique_places) ?>;
 
@@ -1979,10 +1956,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						var html  =
 					    '<div class="gm-info-window">' +
 					    '<div class="gm-info-window-header">' + location.place + '</div>' +
-					    '<ul class="gm-tabs">' +
-					    '<li class="gm-tab gm-tab-active" id="gm-tab-events"><a href="#"><?php echo I18N::translate('Events') ?></a></li>' +
-					    '</ul>' +
-						  '<div class="gm-panes">' +
+                        '<div class="gm-panes">' +
 					    '<div class="gm-pane" id="gm-pane-events">' + location.events + '</div>' +
 					    '</div>' +
 					    '</div>';
