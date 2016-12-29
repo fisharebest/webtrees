@@ -19297,19 +19297,19 @@ msgstr "rechazado"
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A button label.
 #: search.php:217
