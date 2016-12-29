@@ -20417,3 +20417,14 @@ msgstr ""
 
 #~ msgid "over"
 #~ msgstr "свыше"
+
+msgid "Religious name"
+msgstr "რელიგიური სახელი"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "რელიგიური სახელი (მონაზონი)"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "რელიგიური სახელი (ბერი)"

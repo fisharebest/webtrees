@@ -20381,3 +20381,14 @@ msgstr "…"
 
 #~ msgid "sign-in and registration"
 #~ msgstr "ארײַנלאָגירן און רעגיסטראַציע"
+
+msgid "Religious name"
+msgstr "רעליגיעז נאָמען"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "רעליגיעז נאָמען"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "רעליגיעז נאָמען"

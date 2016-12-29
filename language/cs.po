@@ -20557,3 +20557,14 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "více než"
+
+msgid "Religious name"
+msgstr "Náboženské jméno"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Náboženské jméno"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Náboženské jméno"

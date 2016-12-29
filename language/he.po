@@ -20509,3 +20509,14 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "מעל"
+
+msgid "Religious name"
+msgstr "שם דתי"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "שם דתי"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "שם דתי"

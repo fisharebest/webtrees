@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @group legacy
+ */
 class Swift_Transport_MailTransportTest extends \SwiftMailerTestCase
 {
     public function testTransportInvokesMailOncePerMessage()
@@ -182,6 +185,33 @@ class Swift_Transport_MailTransportTest extends \SwiftMailerTestCase
         $invoker->shouldReceive('mail')
             ->once()
             ->with(\Mockery::any(), \Mockery::any(), \Mockery::any(), \Mockery::any(), '-x\'foo\'');
+
+        $transport->send($message);
+    }
+
+    public function testTransportSettingInvalidFromEmail()
+    {
+        $invoker = $this->_createInvoker();
+        $dispatcher = $this->_createEventDispatcher();
+        $transport = $this->_createTransport($invoker, $dispatcher);
+
+        $headers = $this->_createHeaders();
+        $message = $this->_createMessageWithRecipient($headers);
+
+        $message->shouldReceive('getReturnPath')
+            ->zeroOrMoreTimes()
+            ->andReturn(
+                '"attacker\" -oQ/tmp/ -X/var/www/cache/phpcode.php "@email.com'
+            );
+        $message->shouldReceive('getSender')
+            ->zeroOrMoreTimes()
+            ->andReturn(null);
+        $message->shouldReceive('getFrom')
+            ->zeroOrMoreTimes()
+            ->andReturn(null);
+        $invoker->shouldReceive('mail')
+            ->once()
+            ->with(\Mockery::any(), \Mockery::any(), \Mockery::any(), \Mockery::any(), null);
 
         $transport->send($message);
     }

@@ -20534,3 +20534,14 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "hơn"
+
+msgid "Religious name"
+msgstr "Tên đạo"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Tên đạo"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Tên đạo"

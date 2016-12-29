@@ -20164,3 +20164,14 @@ msgstr ""
 
 #~ msgid "Upload"
 #~ msgstr "上傳"
+
+msgid "Religious name"
+msgstr ""
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr ""
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr ""

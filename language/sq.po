@@ -20498,3 +20498,14 @@ msgstr ""
 
 #~ msgid "over"
 #~ msgstr "mbi"
+
+msgid "Religious name"
+msgstr "Emri religjioz"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Emri religjioz"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Emri religjioz"

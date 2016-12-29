@@ -20208,3 +20208,14 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+msgid "Religious name"
+msgstr "Jina la kidini"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Jina la kidini"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Jina la kidini"

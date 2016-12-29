@@ -84,7 +84,7 @@ class FunctionsPrintFacts {
 			return;
 		default:
 			// Hide unrecognized/custom tags?
-			if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') && !GedcomTag::isTag($fact->getTag())) {
+			if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
 				return;
 			}
 			break;
@@ -463,7 +463,7 @@ class FunctionsPrintFacts {
 				echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 				break;
 			default:
-				if (!$fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') || GedcomTag::isTag($match[1])) {
+				if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
 					if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
 						// Links
 						$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
@@ -722,7 +722,7 @@ class FunctionsPrintFacts {
 					echo '</div>'; //close div "media-display-title"
 					echo '</div>'; //close div "media-display"
 				}
-			} elseif (!$WT_TREE->getPreference('HIDE_GEDCOM_ERRORS')) {
+			} elseif ($WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
 				echo '<p class="ui-state-error">', $media_id, '</p>';
 			}
 			$objectNum++;
