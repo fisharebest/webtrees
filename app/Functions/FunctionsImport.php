@@ -1071,7 +1071,7 @@ class FunctionsImport {
 	}
 
 	/**
-	 * Accept all pending changes for a specified record.
+	 * Reject all pending changes for a specified record.
 	 *
 	 * @param GedcomRecord $record
 	 */

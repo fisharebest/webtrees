@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-09-28 18:59+0000\n"
-"Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
+"PO-Revision-Date: 2016-12-28 16:59+0000\n"
+"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -6322,7 +6322,7 @@ msgstr "Finn person"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Finn relasjon"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6335,7 +6335,7 @@ msgstr "Finn andre slekskap"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Finn slektskap via aner"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6343,7 +6343,7 @@ msgstr "Finn nærmeste slektskap"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Finn ikkerelaterte personer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -14106,7 +14106,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Disse grupper av individer har ingen relasjon til %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15295,7 +15295,7 @@ msgstr "Oppdateringsassistent"
 
 #: app/Module/GoogleMapsModule.php:3630 app/Module/GoogleMapsModule.php:4056
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Last opp geografiske data"
 
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179

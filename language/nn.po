@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-09-21 05:53+0000\n"
+"PO-Revision-Date: 2016-12-28 16:58+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6326,7 +6326,7 @@ msgstr "Finn person"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Finn relasjon"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6339,7 +6339,7 @@ msgstr "Finn andre slektskap"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Finn slektskap via aner"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6347,7 +6347,7 @@ msgstr "Finn næraste slektskap"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Finn ikkjerelaterte personar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -14110,7 +14110,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Desse grupper av individ har ingen relason til %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."

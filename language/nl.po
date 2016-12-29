@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-26 14:46+0000\n"
+"PO-Revision-Date: 2016-12-26 14:47+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -4322,7 +4322,7 @@ msgstr "Cyprus"
 #. I18N: Name of a country or state
 #: app/Stats.php:6731
 msgid "Czech Republic"
-msgstr "Tsjechische Republiek"
+msgstr "Tsjechië"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
