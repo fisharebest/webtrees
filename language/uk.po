@@ -20610,3 +20610,14 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "понад"
+
+msgid "Religious name"
+msgstr "Релігійне ім'я"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Релігійне ім'я"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Релігійне ім'я"

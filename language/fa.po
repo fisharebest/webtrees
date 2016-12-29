@@ -20267,3 +20267,14 @@ msgstr ""
 
 #~ msgid "Website and META tag settings"
 #~ msgstr "تنظیمات متا و تگ های سیستم"
+
+msgid "Religious name"
+msgstr ""
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr ""
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr ""

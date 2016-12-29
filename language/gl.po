@@ -20390,3 +20390,14 @@ msgstr ""
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
+
+msgid "Religious name"
+msgstr ""
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr ""
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr ""
