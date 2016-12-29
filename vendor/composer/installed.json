@@ -14,7 +14,7 @@
             "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
             "shasum": ""
         },
-        "time": "2014-06-05 11:42:24",
+        "time": "2014-06-05T11:42:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -60,7 +60,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2015-12-11 22:50:01",
+        "time": "2015-12-11T22:50:01+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -119,7 +119,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.*"
         },
-        "time": "2014-11-20 16:49:30",
+        "time": "2014-11-20T16:49:30+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -180,7 +180,7 @@
             "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
             "symfony/console": "Support for use of the bin/uuid command line tool."
         },
-        "time": "2015-07-23 19:00:41",
+        "time": "2015-07-23T19:00:41+00:00",
         "bin": [
             "bin/uuid"
         ],
@@ -232,7 +232,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-09-12 10:08:34",
+        "time": "2015-09-12T10:08:34+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -297,7 +297,7 @@
         "require-dev": {
             "phpunit/phpunit": "~3.7"
         },
-        "time": "2014-11-17 16:24:50",
+        "time": "2014-11-17T16:24:50+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -352,7 +352,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "~1.0"
         },
-        "time": "2016-02-05 22:51:18",
+        "time": "2016-02-05T22:51:18+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -401,7 +401,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2016-03-03 16:49:40",
+        "time": "2016-03-03T16:49:40+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -459,7 +459,7 @@
         "suggest": {
             "ext-iconv": "For best performance"
         },
-        "time": "2016-02-26 11:31:02",
+        "time": "2016-02-26T11:31:02+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -520,7 +520,7 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2016-02-15 04:08:08",
+        "time": "2016-02-15T04:08:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -582,7 +582,7 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2016-02-15 04:08:08",
+        "time": "2016-02-15T04:08:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -647,7 +647,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-01-20 09:13:37",
+        "time": "2016-01-20T09:13:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -705,7 +705,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2016-01-25 19:13:00",
+        "time": "2016-01-25T19:13:00+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -766,7 +766,7 @@
             "ircmaxell/password-compat": "~1.0",
             "php": ">=5.3.3"
         },
-        "time": "2016-01-20 09:13:37",
+        "time": "2016-01-20T09:13:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -823,7 +823,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2016-01-20 09:13:37",
+        "time": "2016-01-20T09:13:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -881,7 +881,7 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2016-02-26 16:18:12",
+        "time": "2016-02-26T16:18:12+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -943,7 +943,7 @@
         "suggest": {
             "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
         },
-        "time": "2016-03-18 20:34:03",
+        "time": "2016-03-18T20:34:03+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -988,7 +988,7 @@
             "php": ">=5.3.3",
             "symfony/polyfill-util": "~1.0"
         },
-        "time": "2016-01-20 09:13:37",
+        "time": "2016-01-20T09:13:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1046,7 +1046,7 @@
             "paragonie/random_compat": "~1.0",
             "php": ">=5.3.3"
         },
-        "time": "2016-01-28 22:42:02",
+        "time": "2016-01-28T22:42:02+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1109,7 +1109,7 @@
         "suggest": {
             "ext-xml": "For best performance"
         },
-        "time": "2016-01-20 09:13:37",
+        "time": "2016-01-20T09:13:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1170,7 +1170,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2016-06-02 13:56:47",
+        "time": "2016-06-02T13:56:47+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1222,7 +1222,7 @@
         "require": {
             "php": ">=5.2"
         },
-        "time": "2016-07-16 12:58:58",
+        "time": "2016-07-16T12:58:58+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1268,7 +1268,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-29 18:58:20",
+        "time": "2016-10-29T18:58:20+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1325,7 +1325,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2016-12-05 20:20:29",
+        "time": "2016-12-05T20:20:29+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1354,61 +1354,6 @@
         ]
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.4",
-        "version_normalized": "5.4.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/545ce9136690cea74f98f86fbb9c92dd9ab1a756",
-            "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.1"
-        },
-        "time": "2016-11-24 01:01:23",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/swift_required.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
-        "keywords": [
-            "email",
-            "mail",
-            "mailer"
-        ]
-    },
-    {
         "name": "symfony/intl",
         "version": "v2.8.15",
         "version_normalized": "2.8.15.0",
@@ -1434,7 +1379,7 @@
         "suggest": {
             "ext-intl": "to use the component with locales other than \"en\""
         },
-        "time": "2016-11-18 21:10:01",
+        "time": "2016-11-18T21:10:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1484,6 +1429,62 @@
             "intl",
             "l10n",
             "localization"
+        ]
+    },
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.5",
+        "version_normalized": "5.4.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "cd142238a339459b10da3d8234220963f392540c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
+            "reference": "cd142238a339459b10da3d8234220963f392540c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1",
+            "symfony/phpunit-bridge": "~3.2"
+        },
+        "time": "2016-12-29T10:02:40+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
         ]
     }
 ]
