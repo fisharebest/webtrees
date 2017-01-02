@@ -1692,7 +1692,7 @@ class FunctionsPrintLists {
 					$html .= $record->getSexImage();
 				}
 				$html .= '</td>';
-				$html .= '<td data-sort="' . $fact->getDate()->minimumJulianDay() . '">';
+				$html .= '<td data-sort="' . $fact->jd . '">';
 				$html .= $fact->getDate()->display();
 				$html .= '</td>';
 				$html .= '<td class="center" data-sort="' . $fact->anniv . '">';
