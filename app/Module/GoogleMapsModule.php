@@ -1772,14 +1772,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$facts = array_merge($facts, $family->getFacts());
 			// Add birth of children from this family to the facts array
 			foreach ($family->getChildren() as $child) {
-				$facts[] = $child->getFirstFact('BIRT');
+				$birth_fact = $child->getFirstFact('BIRT');
+				// Exclude children without birthplaces
+				// facts without places
+				if ($birth_fact !== null && $birth_fact->getPlace() !== null) {
+					$facts[] = $birth_fact;
+				}
 			}
 		}
-
-		$facts = array_values(array_filter($facts, function (Fact $item) {
-			// remove null facts (child without birth event) and facts without places
-			return $item !== null && !$item->getPlace()->isEmpty();
-		}));
 
 		Functions::sortFacts($facts);
 
