@@ -42,7 +42,7 @@ $day      = Filter::get('day', '\d\d?');
 $month    = Filter::get('month', '[A-Z]{3,5}');
 $year     = Filter::get('year', '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
 $view     = Filter::get('view', 'day|month|year', 'day');
-$filterev = Filter::get('filterev', '[_A-Z-]+', 'BIRT-MARR-DEAT');
+$filterev = Filter::get('filterev', '[_A-Z-]*', 'BIRT-MARR-DEAT');
 $filterof = Filter::get('filterof', 'all|living|recent', 'all');
 $filtersx = Filter::get('filtersx', '[MF]', '');
 
