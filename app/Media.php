@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsMedia;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 
@@ -546,26 +547,29 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function displayImage() {
-		if ($this->isExternal() || !file_exists($this->getServerFilename('thumb'))) {
-			// Use an icon
-			$mime_type = str_replace('/', '-', $this->mimeType());
-			$image     =
-				'<i' .
-				' dir="' . 'auto' . '"' . // For the tool-tip
-				' class="' . 'icon-mime-' . $mime_type . '"' .
-				' title="' . strip_tags($this->getFullName()) . '"' .
-				'></i>';
-		} else {
-			$imgsize = getimagesize($this->getServerFilename('thumb'));
-			// Use a thumbnail image
-			$image =
-				'<img' .
-				' dir="' . 'auto' . '"' . // For the tool-tip
-				' src="' . $this->getHtmlUrlDirect('thumb') . '"' .
-				' alt="' . strip_tags($this->getFullName()) . '"' .
-				' title="' . strip_tags($this->getFullName()) . '"' .
-				' ' . $imgsize[3] . // height="yyy" width="xxx"
-				'>';
+		// Default image for external, missing or corrupt images.
+		$image =
+			'<i' .
+			' dir="' . 'auto' . '"' . // For the tool-tip
+			' class="' . 'icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
+			' title="' . strip_tags($this->getFullName()) . '"' .
+			'></i>';
+
+		// Use a thumbnail image.
+		if (!$this->isExternal()) {
+			try {
+				$imgsize = getimagesize($this->getServerFilename('thumb'));
+				$image   =
+					'<img' .
+					' dir="' . 'auto' . '"' . // For the tool-tip
+					' src="' . $this->getHtmlUrlDirect('thumb') . '"' .
+					' alt="' . strip_tags($this->getFullName()) . '"' .
+					' title="' . strip_tags($this->getFullName()) . '"' .
+					' ' . $imgsize[3] . // height="yyy" width="xxx"
+					'>';
+			} catch (Exception $ex) {
+				// Image file unreadable or Corrupt.
+			}
 		}
 
 		return
