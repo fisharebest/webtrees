@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-09-11 22:12+0000\n"
-"Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
+"PO-Revision-Date: 2017-01-04 19:37+0000\n"
+"Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -6374,7 +6374,7 @@ msgstr "Найти другие отношения"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Найти отношения через предков"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -11510,6 +11510,17 @@ msgstr "Религиозные Учреждение"
 msgid "Religious marriage"
 msgstr "Церковный брак"
 
+msgid "Religious name"
+msgstr "Религиозное имя"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Религиозное имя"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Религиозное имя"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Частота напоминаний по электронной почте (дней)"
@@ -12222,7 +12233,7 @@ msgstr "Укажите блоки по умолчанию для новых ге
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr "Укажити блоки по умолчанию для новых пользователей"
+msgstr "Указать блоки по умолчанию для новых пользователей"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -20560,14 +20571,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "свыше"
-
-msgid "Religious name"
-msgstr "Религиозное имя"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Религиозное имя"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Религиозное имя"
