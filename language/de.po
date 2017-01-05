@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 08:59+0000\n"
-"PO-Revision-Date: 2016-12-25 08:29+0000\n"
+"PO-Revision-Date: 2017-01-05 10:28+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1097,7 +1097,7 @@ msgstr "ALPHABET_lower=aäbcdefghijklmnoöpqrsßtuüvwxyz"
 
 #: app/I18N.php:439
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ALPHABET_upper=AÄBCDEFGHIJKLMNOÖPQRSßTUÜVWXYZ"
+msgstr "ALPHABET_upper=AÄBCDEFGHIJKLMNOÖPQRSẞßTUÜVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
@@ -16659,7 +16659,7 @@ msgstr "Schwiegertochters Mutter"
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "Schwiegertochters Vater/Mutter"
+msgstr "Schwiegertochters Eltern"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -19625,7 +19625,7 @@ msgstr "Schwiegersohns Mutter"
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "Schwiegersohns Vater/Mutter"
+msgstr "Schwiegersohns Eltern"
 
 #: app/Functions/Functions.php:822
 msgctxt "child’s spouse"
