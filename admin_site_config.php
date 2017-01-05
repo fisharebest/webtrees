@@ -512,7 +512,7 @@ $controller->pageHeader();
 			<?php echo I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.') ?>
 		</p>
 
-		<h2><a href="https://http://www.bing.com/toolbox/webmaster/">Bing Webmaster Tools</a></h2>
+		<h2><a href="https://www.bing.com/toolbox/webmaster/">Bing Webmaster Tools</a></h2>
 
 		<!-- BING_WEBMASTER_ID -->
 		<div class="form-group">
@@ -554,7 +554,7 @@ $controller->pageHeader();
 			</div>
 		</div>
 
-		<h2><a href="http://www.google.com/analytics/">Google Analytics</a></h2>
+		<h2><a href="https://www.google.com/analytics/">Google Analytics</a></h2>
 
 		<!-- GOOGLE_ANALYTICS_ID -->
 		<div class="form-group">
