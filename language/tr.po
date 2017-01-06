@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-06 23:20+0000\n"
+"PO-Revision-Date: 2017-01-06 23:53+0000\n"
 "Last-Translator: Adem GENÇ <tutastes@gmail.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -14190,6 +14190,7 @@ msgstr "Bu aile çocuksuz kaldı"
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] "Bu soy ağacında bulunan %s kayıt başka bir soy ağacında bulunan “XREF” değerini taşıyor."
+msgstr[1] "Bu soy ağacında bulunan %s kayıt başka bir soy ağacında bulunan “XREF” değerini taşıyor."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14231,7 +14232,7 @@ msgstr "Bu birey yok veya görmek için izniniz yok."
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Bu birey siindi. Silineni bir moderatör tarafından gözden geçirilmesi gerekiyor."
+msgstr "Bu birey silindi. Silineni bir moderatör tarafından gözden geçirilmesi gerekiyor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
@@ -14512,6 +14513,7 @@ msgstr "Bu sayfa her zamanki formları atlayarak ve doğrudan temel verileri dü
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
 msgstr[0] "Bu sayfa %s kez görüntülendi."
+msgstr[1] "Bu sayfa %s kez görüntülendi."
 
 #: app/Module/GoogleMapsModule.php:2418
 msgid "This place has no coordinates"
@@ -14869,6 +14871,7 @@ msgstr "Tonga"
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] "En %s verilen ad"
+msgstr[1] "En %s verilen ad"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
@@ -15165,7 +15168,7 @@ msgstr "Ukrayna"
 
 #: setup.php:264 setup.php:336
 msgid "Unable to connect using this username and password. Your server gave the following error."
-msgstr "Bu ayarları kullanarak bağlantı kurulamıyor. Sunucu aşağudaki hatayı verdi."
+msgstr "Bu ayarları kullanarak bağlantı kurulamıyor. Sunucu aşağıdaki hatayı verdi."
 
 #: admin_trees_config.php:674
 msgid "Unable to find record with ID"
@@ -15340,6 +15343,7 @@ msgstr "Tek bir karakteri eşleştirmek için &laquo;?&raquo; kullan, sıfır ve
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Enaz %s karakter kullanın."
+msgstr[1] "Enaz %s karakter kullanın."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
@@ -15364,7 +15368,7 @@ msgstr "Şifre kullan"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr "Birey için vurgulanmış bir resim bulunmadığında silüet resim kullan. Her bir cinsiyet için farklı resim kullanılır."
+msgstr "Birey için vurgulanmış bir resim bulunmadığında siluet resim kullan. Her bir cinsiyet için farklı resim kullanılır."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
@@ -15975,11 +15979,11 @@ msgstr "Güncellemeden sonra bu temaları tekrar aktif hale getirebilirsiniz."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "Soy ağacındaki bu kayıdı yeniden numaralandırabilirsiniz, böylece bu dahili referans numarası diğer bir soyağacı ile çakışmayacaktır."
+msgstr "Soy ağacındaki bu kaydı yeniden numaralandırabilirsiniz, böylece bu dahili referans numarası diğer bir soyağacı ile çakışmayacaktır."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr "Bu soy ağacını yeniden numaralandırabilirsiniz."
+msgstr "Bu soy ağacını yeniden numaralandıra bilirsiniz."
 
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -16122,11 +16126,11 @@ msgstr "Güncelleme yapmadan önce bütün bekleyen değişiklikleri onaylamalı
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "Bu versiyon webtrees ile uyumlu olup olmadığınu modülün yapımcısına danışmalısınız."
+msgstr "Bu versiyon webtrees ile uyumlu olup olmadığını modülün yapımcısına danışmalısınız."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr "Bu versiyon webtrees ile uyumlu olup olmadığınu temanın yapımcısına danışmalısınız."
+msgstr "Bu versiyon webtrees ile uyumlu olup olmadığını temanın yapımcısına danışmalısınız."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:293 message.php:58
@@ -16165,7 +16169,7 @@ msgstr "En genç anne"
 #: app/Module/ClippingsCartModule.php:344
 #: app/Module/ClippingsCartModule.php:678
 msgid "Your clippings cart is empty."
-msgstr "Küpür sepetiniz boş."
+msgstr "Kupür sepetiniz boş."
 
 #: message.php:116 message.php:269 setup.php:425
 msgid "Your name"
@@ -17171,6 +17175,7 @@ msgstr "dördüncü kuzen"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "%1$s daki bütün kayıtları %2$s ya kopyala"
+msgstr[1] "%1$s daki bütün kayıtları %2$s ya kopyala"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
@@ -18771,6 +18776,7 @@ msgstr "yorumlandı %s (%s)"
 msgid "interval %s year"
 msgid_plural "interval %s years"
 msgstr[0] "%s. yıl dönümü"
+msgstr[1] "%s. yıl dönümü"
 
 #: statistics.php:640
 msgid "interval one child"
@@ -18908,6 +18914,7 @@ msgstr "en az"
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
 msgstr[0] "en fazla %s gün"
+msgstr[1] "en fazla %s gün"
 
 #: admin_trees_config.php:364 admin_trees_config.php:388
 #: admin_trees_config.php:428 admin_trees_config.php:468
@@ -20146,6 +20153,7 @@ msgstr "küçük kız kardeş"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s yıl"
+msgstr[1] "±%s yıl"
 
 #: app/Individual.php:1218
 #, php-format
