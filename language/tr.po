@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-10-29 11:06+0000\n"
-"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"PO-Revision-Date: 2017-01-06 23:20+0000\n"
+"Last-Translator: Adem GENÇ <tutastes@gmail.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -115,12 +115,14 @@ msgstr "%1$s in %2$s ile geriye bağlantısı yok."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s dosya %2$s saniyede çıkarıldı."
+msgstr[1] "%1$s dosya %2$s saniyede çıkarıldı."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
 msgstr[0] "Burada %3$s nesilden toplam %2$s normalin dışında %1$s birey gösterildi."
+msgstr[1] "Burada %3$s nesilden toplam %2$s normalin dışında %1$s birey gösterildi."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
@@ -128,6 +130,7 @@ msgstr[0] "Burada %3$s nesilden toplam %2$s normalin dışında %1$s birey göst
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "%1$s kişinin doğum yerinin harita koordinatları eksik: %2$s."
+msgstr[1] "%1$s kişinin doğum yerinin harita koordinatları eksik: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -238,6 +241,7 @@ msgstr[1] "%s anonim kullanıcı çevrimiçi"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s çocuk"
+msgstr[1] "%s çocuk"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
@@ -245,54 +249,63 @@ msgstr[0] "%s çocuk"
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s gün"
+msgstr[1] "%s gün"
 
 #: app/I18N.php:802
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "%s gün önce"
+msgstr[1] "%s gün önce"
 
 #: app/Controller/SearchController.php:378
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s aile güncellendi."
+msgstr[1] "%s aile güncellendi."
 
 #: admin.php:861
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "%s aile ağacı"
+msgstr[1] "%s aile ağacı"
 
 #: app/Stats.php:5255 app/Stats.php:5259
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s torun"
+msgstr[1] "%s torun"
 
 #: app/I18N.php:806
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "%s saat önce"
+msgstr[1] "%s saat önce"
 
 #: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s birey"
+msgstr[1] "%s birey"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s birey güncellendi."
+msgstr[1] "%s birey güncellendi."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s bireyin hususi alanıdır."
+msgstr[1] "%s bireyin hususi alanıdır."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -313,6 +326,7 @@ msgstr[1] "%s ile alakalı %s adet birey"
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s ve %s tarihleri arasındaki olaylarla %s içerisinde %s birey"
+msgstr[1] "%s ve %s tarihleri arasındaki olaylarla %s içerisinde %s birey"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
@@ -325,12 +339,14 @@ msgstr "%s sunucuda devre dışı bırakıldı. Tekrar etkinleştirmeden webtree
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s mesajınız var"
+msgstr[1] "%s mesajınız var"
 
 #: app/I18N.php:810
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] "%s dakika önce"
+msgstr[1] "%s dakika önce"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:306
@@ -339,18 +355,21 @@ msgstr[0] "%s dakika önce"
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s ay"
+msgstr[1] "%s ay"
 
 #: app/I18N.php:798
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
 msgstr[0] "%s ay önce"
+msgstr[1] "%s ay önce"
 
 #: app/Controller/SearchController.php:432
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
 msgstr[0] "%s not güncellendi."
+msgstr[1] "%s not güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -369,6 +388,7 @@ msgstr "%s alttan bir çıkarıldı"
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s saniye önce"
+msgstr[1] "%s saniye önce"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
@@ -388,6 +408,7 @@ msgstr[1] "%s kullanıcı çevrimiçi"
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
 msgstr[0] "%s kaynak güncellendi."
+msgstr[1] "%s kaynak güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -419,6 +440,7 @@ msgstr "%s iki kez çıkarıldı (azalan)"
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s hafta"
+msgstr[1] "%s hafta"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
@@ -426,12 +448,14 @@ msgstr[0] "%s hafta"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s yıl"
+msgstr[1] "%s yıl"
 
 #: app/I18N.php:794
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s yıl önce"
+msgstr[1] "%s yıl önce"
 
 #: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:129
 #: calendar.php:601
@@ -2133,7 +2157,7 @@ msgstr "Bu aile ağacında yapılan tüm değişiklikeri geri almak istediğiniz
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "Bu medya öğesine olan bağlantıyı silmek istediğinizden eminmisiniz?"
+msgstr "Bu medya öğesine olan bağlantıyı silmek istediğinizden emin misiniz?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -3472,6 +3496,7 @@ msgstr "Değişenler"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Son %s gün içindeki değişiklikler"
+msgstr[1] "Son %s gün içindeki değişiklikler"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
@@ -4992,7 +5017,7 @@ msgstr "Hesabımı sil"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Bu aileyi silerseniz buna bağlı tüm bireyler (çocukları, eşleri) ile bağlantıyı koparmış olacaksınız. ancak bu bireyler silinmeyerek bağlantısız bir şekilde kalacaktır. Yinede siz bu aileyi silmek istediğinizden eminmisiniz?"
+msgstr "Bu aileyi silerseniz buna bağlı tüm bireyler (çocukları, eşleri) ile bağlantıyı koparmış olacaksınız. ancak bu bireyler silinmeyerek bağlantısız bir şekilde kalacaktır. Yinede siz bu aileyi silmek istediğinizden emin misiniz?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
@@ -5238,7 +5263,7 @@ msgstr "Cibuti"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
-msgstr "Orijinal dosya adını konurmak için değişiklik yapmayınız."
+msgstr "Orijinal dosya adını korumak için değişiklik yapmayınız."
 
 #: app/Module/GoogleMapsModule.php:3687
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -5584,7 +5609,7 @@ msgstr "Aktif"
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:370
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Bu seçeneği seştiğinizde, tüm ziyaretçiler sitede bulunan herhangi bir veriyi görmek için çevrimiçi olmaya zorlanır."
+msgstr "Bu seçeneği seçtiğinizde, tüm ziyaretçiler sitede bulunan herhangi bir veriyi görmek için çevrimiçi olmaya zorlanır."
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
@@ -5716,7 +5741,7 @@ msgstr "Yakınlarının hadiseleri"
 
 #: admin_users.php:532
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr "Herkez bu role sahiptir. Ziyaretçiler ve arama motorları da buna dahildir."
+msgstr "Herkes bu role sahiptir. Ziyaretçiler ve arama motorları da buna dahildir."
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:255 search_advanced.php:270
@@ -6296,7 +6321,7 @@ msgstr "Bir birey bul"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Herhangi bir ilişki bul"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6309,7 +6334,7 @@ msgstr "Diğer akrabalıkları bul"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Ataların yolu ile ilişki bul"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6317,7 +6342,7 @@ msgstr "Tüm olası ilişkileri bul"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "İlişkisi olmayan kişileri bul"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -6438,7 +6463,7 @@ msgstr "Birden fazla aile ağacı bulunduran siteler için bu seçenek işaretle
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr "Parolamı unuttum?"
+msgstr "Parola mı unuttum?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -6754,7 +6779,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
 msgid "Get an API key from Google."
-msgstr "Google API anaharı alın."
+msgstr "Google API anahtarı alın."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6757
@@ -7043,7 +7068,7 @@ msgstr "Merhaba %s …"
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Merhaba %s …<br>Kaydolduğunuz için teşekkür ederiz."
+msgstr "Merhaba %s …<br>Kayıt olduğunuz için teşekkür ederiz."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -7306,7 +7331,7 @@ msgstr "Eğer web sitesi yöneticisi iseniz bunu denetlemeniz gerekir:"
 
 #: site-unavailable.php:95
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Eğer sorunu kendiniz çözemez iseniz <a href=\"https://webtrees.net\">webtrees.net</a> forumlarından yardım alablirsiniz."
+msgstr "Eğer sorunu kendiniz çözemez iseniz <a href=\"https://webtrees.net\">webtrees.net</a> forumlarından yardım alabilirsiniz."
 
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7330,7 +7355,7 @@ msgstr "Eğer webtrees içinde medya öğeleri oluşturdunuz ve medya öğelerin
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr "Eğer boş bir blok gizlenirse blok dolu olanakadar yapılandırmasını değiştirmek mümkün olmayacaktır."
+msgstr "Eğer boş bir blok gizlenirse blok dolu olana kadar yapılandırmasını değiştirmek mümkün olmayacaktır."
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7399,7 +7424,7 @@ msgstr "Aile ağacındaki her bir kaydın \"F123\" yada \"R14\" gibi dahili bir 
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Birçok kültürde isimler, geleneksel telaffuzu belirtmek için düzeltme işaretleri kulanarak yada lokal alfabe ile yazıldığı gibi, ingilizce gibi latin harfleri ile de yazılabilmektedir.<br><br>Eğer standart isim alanlarına İbranice, Yunanca, Çince veya Arapça gibi Latin olmayan bir alfabe kullanmak istiyorsanız, bu alanı aynı ismin Latin versiyonunu girmek için kullanabilirsiniz. Adın her iki versiyonu da listelerde ve grafiklerde görünecektir.<br><br>Bu alan \"Romanize\" etiketli olmasına rağmen, sadece Latin alfabesiyle sınırlı değildir. Burada Japon isimleri kullanılarak üç farklı alfabe kullanılabilir."
+msgstr "Birçok kültürde isimler, geleneksel telaffuzu belirtmek için düzeltme işaretleri kulanarak yada lokal alfabe ile yazıldığı gibi, ingilizce gibi latin harfleri ile de yazıla bilmektedir.<br><br>Eğer standart isim alanlarına İbranice, Yunanca, Çince veya Arapça gibi Latin olmayan bir alfabe kullanmak istiyorsanız, bu alanı aynı ismin Latin versiyonunu girmek için kullanabilirsiniz. Adın her iki versiyonu da listelerde ve grafiklerde görünecektir.<br><br>Bu alan \"Romanize\" etiketli olmasına rağmen, sadece Latin alfabesiyle sınırlı değildir. Burada Japon isimleri kullanılarak üç farklı alfabe kullanılabilir."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
@@ -7408,7 +7433,7 @@ msgstr "Birçok kültürde isimler, geleneksel telaffuzu belirtmek için düzelt
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "Bazı takvimlerde gün gece yarısı başlar, bazılarında ise günbatımında. Bu tip takvimler arasındaki donuşumlerde bu durum dikkate alınmadığından, gün batımı ile gece yarısı arasında gerçekleşen olaylar arasında bir günlük fark olacaktır."
+msgstr "Bazı takvimlerde gün gece yarısı başlar, bazılarında ise gün batımında. Bu tip takvimler arasındaki dönüşümlerde bu durum dikkate alınmadığından, gün batımı ile gece yarısı arasında gerçekleşen olaylar arasında bir günlük fark olacaktır."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
@@ -9785,6 +9810,7 @@ msgstr "Hiçbir hata bulunmadı."
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
 msgstr[0] "Sonraki %s gün için mevcut hadise yok."
+msgstr[1] "Sonraki %s gün için mevcut hadise yok."
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
@@ -9813,6 +9839,7 @@ msgstr "Yarın yaşayan insan için hadiseler mevcut değil."
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] "Sonraki %s gün içerisinde yaşayan insanlar için bir olay yok."
+msgstr[1] "Sonraki %s gün içerisinde yaşayan insanlar için bir olay yok."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -9987,7 +10014,7 @@ msgstr "Not"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Kullanıcı hesabi aile ağacındaki bir kişi ile ilişkilendirildiğinde, bu kullanıcının bu kişi kaydını daima gürebileceği unutulmamalıdır."
+msgstr "Kullanıcı hesabi aile ağacındaki bir kişi ile ilişkilendirildiğinde, bu kullanıcının bu kişi kaydını daima gürele bileceği unutulmamalıdır."
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10374,7 +10401,7 @@ msgstr "PHP uzantısı “%s” devredişidir. Bu etkinleştirilene kadar webtre
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
 msgid "PHP failed to write to disk."
-msgstr "PHP diske yazmakta başarız."
+msgstr "PHP diske yazmakta başarısız."
 
 #: admin_site_info.php:51
 msgid "PHP information"
@@ -10502,7 +10529,7 @@ msgstr "Şifre"
 
 #: admin_users.php:343 edituser.php:219 login.php:461
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Şifreniz en az 6 karaker uzunluğunda olmalıdır, şifre BÜYÜK ve küçük karakterlere duyarlıdır. örnek \"s3CR#t\" ile \"S3CR#t\" faklıdır."
+msgstr "Şifreniz en az 6 karakter uzunluğunda olmalıdır, şifre BÜYÜK ve küçük karakterlere duyarlıdır. örnek \"s3CR#t\" ile \"S3CR#t\" faklıdır."
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
@@ -10558,7 +10585,7 @@ msgstr "Bekleyen Değişiklikler"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Bekleyen değişiklikler sadece sizin hesabınızın değişiklik yetkisi var ise görüntülenir. Çevrimdışı olduğunuzda göremezsiniz. Ayrıca bekleyen değişikşikler sadece belirli sayfalarda görüntülenir. Örneğin: liste, rapor yada arama sonuçları sayfasında göremezsiniz."
+msgstr "Bekleyen değişiklikler sadece sizin hesabınızın değişiklik yetkisi var ise görüntülenir. Çevrimdışı olduğunuzda göremezsiniz. Ayrıca bekleyen değişiklikler sadece belirli sayfalarda görüntülenir. Örneğin: liste, rapor yada arama sonuçları sayfasında göremezsiniz."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -11441,6 +11468,17 @@ msgstr "Dini Kurum"
 msgid "Religious marriage"
 msgstr "Dini Nikâh"
 
+msgid "Religious name"
+msgstr "Dini adı"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Dini ismi"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Dini ismi"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Hatırlatıcı email aralığı (gün)"
@@ -11580,7 +11618,7 @@ msgstr "Araştırma görevleri"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Araştırma görevleri aile ağacınızdaki kişikere eklenebilen ve daha detaylı araştırma gerektiğini belirten özel olaylardır. Bunları döküman yada fotoğraf temin etmek, çelişkili bilgileri çözmek vb. olguları daha güvenilir kaynakdan kontrol etmenizi hatırlatması için kullanabilirsiniz."
+msgstr "Araştırma görevleri aile ağacınızda ki kişilere eklenebilen ve daha detaylı araştırma gerektiğini belirten özel olaylardır. Bunları doküman yada fotoğraf temin etmek, çelişkili bilgileri çözmek vb. olguları daha güvenilir kaynaklardan kontrol etmenizi hatırlatması için kullanabilirsiniz."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -11860,7 +11898,7 @@ msgstr "Kapatma"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing canceled (divorce)"
-msgstr "Kapatma iptalı (boşanma)"
+msgstr "Kapatma iptali (boşanma)"
 
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
 #: app/Module/FamiliesSidebarModule.php:149
@@ -12774,7 +12812,7 @@ msgstr "Oturum açma ve kayıt"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Basit tarihler miladi takviminde olduğu varsayılmaktadır. Başka bir takvimde bir tarih belirtmek için, tarihinden önce bir anahtar kelime ekleyin. Eğer ay veya yıl biçim tarihi kesin yarapsanız bu anahtar kelime isteğe bağlıdır."
+msgstr "Basit tarihler miladi takviminde olduğu varsayılmaktadır. Başka bir takvimde bir tarih belirtmek için, tarihinden önce bir anahtar kelime ekleyin. Eğer ay veya yıl biçim tarihi kesin yaparsanız bu anahtar kelime isteğe bağlıdır."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
@@ -12907,7 +12945,7 @@ msgstr "Somali"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Bazı soy ağacı yazılımları medya dosyalarının adını, dosyanın diskteki yerlerini de içerecek şekilde GEDCOM dosyaları oluşturur. Bu dosya yolları web sunucu üzerinde mevcut olmayacaktır. Webtrees in bu dosyaları bulabılmesi için, dosya yolunun ilk bölümünün çıkarılması gerekir."
+msgstr "Bazı soy ağacı yazılımları medya dosyalarının adını, dosyanın diskteki yerlerini de içerecek şekilde GEDCOM dosyaları oluşturur. Bu dosya yolları web sunucu üzerinde mevcut olmayacaktır. Webtrees in bu dosyaları bulabilmesi için, dosya yolunun ilk bölümünün çıkarılması gerekir."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
@@ -13477,7 +13515,7 @@ msgstr "<b>Adı</b> alanı kişinin telaffuz edilen yada kayıtlı tam adını i
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "<b>Soyadı</b> alanı kişinin sıralama yada gruplandırma adını içerir. Bu, kişinin daima <b>adı</b> alanından alınan gerçek soyadından farklı olabilir. Bu alan soyadlarını önekli yada öneksiz (Gogh / van Gogh) olarak sıralamak için kullanılabilir. Aynı şekilde yazım varyasyonları (Kowalski / Kowalska) sıralamak için de kullanılabilir. Eğer kişi birden fazla soyadı altında sıralnmak istenirse, herbiri virgül ile ayrılarak girilmelidir."
+msgstr "<b>Soyadı</b> alanı kişinin sıralama yada gruplandırma adını içerir. Bu, kişinin daima <b>adı</b> alanından alınan gerçek soyadından farklı olabilir. Bu alan soyadlarını önekli yada öneksiz (Gogh / van Gogh) olarak sıralamak için kullanılabilir. Aynı şekilde yazım varyasyonları (Kowalski / Kowalska) sıralamak için de kullanılabilir. Eğer kişi birden fazla soyadı altında sıralanmak istenirse, herbiri virgül ile ayrılarak girilmelidir."
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -13660,13 +13698,13 @@ msgstr "Klasör yolu, tüm yol (örn: /home/kullanıcı_adı/webtrees_data/) vey
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr "Aşağıdaki olgu ve hadiseler her iki kayıttada mevcuttur."
+msgstr "Aşağıdaki olgu ve hadiseler her iki kayıtta da mevcuttur."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Aşağıdaki olgu ve hadiseler sadece %s kaydında mevcutur."
+msgstr "Aşağıdaki olgu ve hadiseler sadece %s kaydında mevcuttur."
 
 #: setup.php:171
 msgid "The following list shows typical requirements."
@@ -13714,7 +13752,7 @@ msgstr "“%1$s” ile “%2$s” arasındaki bağlantı güncellendi."
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr "Ana medya %1$s dosyası %2$s olarak yeniden adlandırılanmaz."
+msgstr "Ana medya %1$s dosyası %2$s olarak yeniden adlandırılanamaz."
 
 #: addmedia.php:342
 #, php-format
@@ -13881,7 +13919,7 @@ msgstr "Tema menüsü sadece web sitesi seçeneklerinde kullanıcıların kendi 
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr "Önizleme %1$s dosyası %2$s olarak yeniden adlandırılanmadı."
+msgstr "Önizleme %1$s dosyası %2$s olarak yeniden adlandırılanamadı."
 
 #: addmedia.php:358
 #, php-format
@@ -13896,7 +13934,7 @@ msgstr "Önizleme dosyası %s mevcut değil."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:289
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "Saniye olarak webtrees in tekrar otutum açmak gerekmeden oturumu açık tutması için gerekli süre. Varsayılan değer 7200 saniye (2 saat)."
+msgstr "Saniye olarak webtrees in tekrar oturum açmak gerekmeden oturumu açık tutması için gerekli süre. Varsayılan değer 7200 saniye (2 saat)."
 
 #: admin_site_config.php:235 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -13908,6 +13946,7 @@ msgstr "Zaman dilimi bugünün tarihini bilmek gibi tarih hesaplamaları için g
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var."
+msgstr[1] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -13953,7 +13992,7 @@ msgstr "%s sürümü çok eski."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr "Site erşim kuralı oluşturuldu."
+msgstr "Site erişim kuralı oluşturuldu."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
@@ -13979,7 +14018,7 @@ msgstr "webtrees geliştiricileri bu hata hakkında öğrenmek için çok ilgili
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr "\"%\" Karakteri bir jokerdir ve sıfır veya daha fazla karakter ile işlelecektir."
+msgstr "\"%\" Karakteri bir jokerdir ve sıfır veya daha fazla karakter ile işlenecektir."
 
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
@@ -14039,6 +14078,7 @@ msgstr "Onaylanmayı bekleyen değişiklikler mevcut."
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "Son %s günde hiç bir değişiklik yapılmadı."
+msgstr[1] "Son %s günde hiç bir değişiklik yapılmadı."
 
 #: login.php:266
 #, php-format
@@ -14076,7 +14116,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Bu kişi grupları %s ile ilgili değildir."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -20466,14 +20506,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "üzerinde"
-
-msgid "Religious name"
-msgstr "Dini adı"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Dini ismi"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Dini ismi"
