@@ -870,6 +870,7 @@ class FunctionsDb {
 					foreach ($record->getFacts() as $fact) {
 						if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
 							$fact->anniv   = $row->d_year === '0' ? 0 : $anniv->y - $row->d_year;
+							$fact->jd      = $jd;
 							$found_facts[] = $fact;
 						}
 					}

@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-09-11 22:12+0000\n"
-"Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
+"PO-Revision-Date: 2017-01-07 18:28+0000\n"
+"Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -5378,7 +5378,7 @@ msgstr "Каждый источник записывает конкретные 
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Каждая учетная запись пользователя имеет параметр «автоматически принять изменения». Когда этот параметр включен, любые изменения, внесенные пользователем, сохраняются немедленно. Многие администраторы включают этот параметр в учетной записи пользователя."
+msgstr "Каждая учетная запись пользователя имеет параметр \"автоматически принимать изменения\". Когда этот параметр включен, любые изменения, внесенные пользователем, сохраняются немедленно. Многие администраторы включают этот параметр в учетной записи пользователя."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -6361,7 +6361,7 @@ msgstr "Найти запись о человеке"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Найти любые отношения"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6374,7 +6374,7 @@ msgstr "Найти другие отношения"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Найти отношения через предков"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -9086,7 +9086,7 @@ msgstr "Мельбурн, Австралия"
 #: app/Module/ClippingsCartModule.php:768
 #: app/Module/ClippingsCartModule.php:775
 msgid "Member"
-msgstr "Член"
+msgstr "Участник"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:196
@@ -9719,7 +9719,7 @@ msgstr "Газета"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Следущее напоминание будет прислано Вам электронной почтой через "
+msgstr "Следующее напоминание будет прислано Вам электронной почтой после "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -11510,6 +11510,17 @@ msgstr "Религиозные Учреждение"
 msgid "Religious marriage"
 msgstr "Церковный брак"
 
+msgid "Religious name"
+msgstr "Религиозное имя"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Религиозное имя"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Религиозное имя"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Частота напоминаний по электронной почте (дней)"
@@ -12222,7 +12233,7 @@ msgstr "Укажите блоки по умолчанию для новых ге
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr "Укажити блоки по умолчанию для новых пользователей"
+msgstr "Указать блоки по умолчанию для новых пользователей"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -14149,7 +14160,7 @@ msgstr "Термидор"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Эти группы лиц не связаны с %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14498,7 +14509,7 @@ msgstr "Эта заметка была отредактирована. Вы до
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Этот паарметр контролирует, следует ли автоматически отображать содержимое <i>Примечания</i> на странице персоны."
+msgstr "Этот параметр контролирует, следует ли автоматически отображать содержимое <i>Примечания</i> на странице персоны."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
@@ -14610,23 +14621,23 @@ msgstr "Этот репозиторий был отредактирован. В�
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Эта роль имеет все права Редактора и дополнительно права принимать/отклонять изменения других пользователей."
+msgstr "Эта роль имеет все разрешения роли Редактор и возможность принимать/отклонять изменения других пользователей."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Владельцы этого уровня доступа обладают всеми разрешениями как менеджер во всех деревах и дополнительно разрешение изменять настройки сайта, пользователей и модулей."
+msgstr "Эта роль имеет все разрешения роли Менеджер во всех генеалогических деревьях и разрешения на изменение настроек сайта, пользователей и модулей."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Эта роль имеет все разрешения для роли пользователя, а также возможность добавления/изменения/удаления данных. Любые изменения должны быть одобрены модератором,если было включен параметр «автоматически принять изменения»."
+msgstr "Эта роль имеет все разрешения роли Участник и возможность добавления/изменения/удаления данных. Все изменения должны быть одобрены модератором, кроме случая когда у пользователя включен параметр \"автоматически принимать изменения\"."
 
 #: admin_users.php:560
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Владельцы этого уровня доступа обладают всеми разрешениями как модераторы, дополнительно другими разрешениями в соответствии конфигурации генеалогического дерева и разрешения изменять настройки генеалогического дерева."
+msgstr "Эта роль имеет все разрешения роли Модератор и другие разрешения в соответствии с конфигурацией генеалогического дерева и разрешения изменять настройки генеалогического дерева."
 
 #: admin_users.php:538
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr "Владельцы этого уровня доступа обладают всеми разрешениями как посетители и дополнительно другими разрешениями в соответствии конфигурации генеалогического дерева."
+msgstr "Эта роль имеет все разрешения роли Посетитель и дополнительные разрешения предоставленные настройками генеалогического дерева."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:262
@@ -15825,7 +15836,7 @@ msgstr "Вы получите копию сообщения на указанн�
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Если пользователь связан с записью лица, в семейном дереве и есть атрибут роли пользователя, редактора или модератора, Вы можете помешать ему получить подробную информацию о далеких и живых родственников. Можно определить число ступеней родства, которые пользователь может увидеть."
+msgstr "Если пользователь связан с записью лица, в семейном дереве и имеет роль участник, редактор или модератор, Вы можете помешать ему получить подробную информацию о далеких и живых родственников. Можно определить число ступеней родства, которые пользователь может увидеть."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
@@ -20560,14 +20571,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "свыше"
-
-msgid "Religious name"
-msgstr "Религиозное имя"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Религиозное имя"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Религиозное имя"

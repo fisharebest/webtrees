@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -102,23 +103,22 @@ class FunctionsExport {
 		$CHAR = "\n1 CHAR UTF-8";
 		$FILE = "\n1 FILE " . $tree->getName();
 		$LANG = '';
-		$PLAC = "\n1 PLAC\n2 FORM City, County, State/Province, Country";
 		$COPR = '';
 		$SUBN = '';
 		$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
 
 		// Preserve some values from the original header
 		$record = GedcomRecord::getInstance('HEAD', $tree);
-		if ($fact = $record->getFirstFact('PLAC')) {
-			$PLAC = "\n1 PLAC\n2 FORM " . $fact->getAttribute('FORM');
-		}
-		if ($fact = $record->getFirstFact('LANG')) {
+		$fact = $record->getFirstFact('LANG');
+		if ($fact instanceof Fact) {
 			$LANG = $fact->getValue();
 		}
-		if ($fact = $record->getFirstFact('SUBN')) {
+		$fact = $record->getFirstFact('SUBN');
+		if ($fact instanceof Fact) {
 			$SUBN = $fact->getValue();
 		}
-		if ($fact = $record->getFirstFact('COPR')) {
+		$fact = $record->getFirstFact('COPR');
+		if ($fact instanceof Fact) {
 			$COPR = $fact->getValue();
 		}
 		// Link to actual SUBM/SUBN records, if they exist
@@ -137,7 +137,7 @@ class FunctionsExport {
 			$SUBM = "\n1 SUBM @{$subm}@";
 		}
 
-		return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $PLAC . $SUBN . $SUBM . "\n";
+		return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $SUBN . $SUBM . "\n";
 	}
 
 	/**
