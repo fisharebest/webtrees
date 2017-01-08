@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Collator;
 use Exception;
 use Fisharebest\ExtCalendar\ArabicCalendar;
 use Fisharebest\ExtCalendar\CalendarInterface;
@@ -38,21 +37,25 @@ class I18N {
 	/** @var Translator An object that performs translation*/
 	private static $translator;
 
-	/** @var  Collator From the php-intl library */
-	private static $collator;
-
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
 
-	// These locales need special handling for the dotless letter I.
-	const DOTLESS_I_LOCALES = ['az', 'tr'];
-	const DOTLESS_I_TOLOWER = ['I' => 'ı', 'İ' => 'i'];
-	const DOTLESS_I_TOUPPER = ['ı' => 'I', 'i' => 'İ'];
+	// Reversable character conversions from the UNICODE 5.1 database.
+	// It excludes ambiguous (turkish dotless i) and mixed-case (Dz) characters.
+	// The characters should be arranged in default unicode-collation order.
+	const ALPHABET_LOWER = 'aàáâãäåāăąǎǟǡǻȁȃȧḁạảấầẩẫậắằẳẵặⓐａæǣǽbḃḅḇⓑｂƀɓƃcçćĉċčḉⅽⓒｃƈdďḋḍḏḑḓⅾⓓｄǆǳđɖɗƌðeèéêëēĕėęěȅȇȩḕḗḙḛḝẹẻẽếềểễệⓔｅǝəɛfḟⓕｆƒgĝğġģǧǵḡⓖｇǥɠɣƣhĥȟḣḥḧḩḫⓗｈƕħiìíîïĩīĭįǐȉȋḭḯỉịⅰⓘｉⅱⅲĳⅳⅸɨɩjĵⓙｊkķǩḱḳḵⓚｋƙlĺļľḷḹḻḽⅼⓛｌŀǉłƚmḿṁṃⅿⓜｍnñńņňǹṅṇṉṋⓝｎǌɲƞŋoòóôõöōŏőơǒǫǭȍȏȫȭȯȱṍṏṑṓọỏốồổỗộớờởỡợⓞｏœøǿɔɵȣpṕṗⓟｐƥqⓠｑrŕŗřȑȓṙṛṝṟⓡｒʀsśŝşšșṡṣṥṧṩⓢｓʃtţťțṫṭṯṱⓣｔŧƭʈuùúûüũūŭůűųưǔǖǘǚǜȕȗṳṵṷṹṻụủứừửữựⓤｕʉɯʊvṽṿⅴⓥｖⅵⅶⅷʋʌwŵẁẃẅẇẉⓦｗxẋẍⅹⓧｘⅺⅻyýÿŷȳẏỳỵỷỹⓨｙƴzźżžẑẓẕⓩｚƶȥǯʒƹȝþƿƨƽƅάαἀἁἂἃἄἅἆἇὰάᾀᾁᾂᾃᾄᾅᾆᾇᾰᾱᾳβγδέεἐἑἒἓἔἕὲέϝϛζήηἠἡἢἣἤἥἦἧὴήᾐᾑᾒᾓᾔᾕᾖᾗῃθϊἰἱἲἳἴἵἶἷὶίῐῑκϗλμνξοόὀὁὂὃὄὅὸόπϟϙρῥσϲτυϋύὑὓὕὗὺύῠῡφχψωώὠὡὢὣὤὥὦὧὼώᾠᾡᾢᾣᾤᾥᾦᾧῳϡϸϻϣϥϧϩϫϭϯаӑӓәӛӕбвгґғҕдԁђԃѓҙеѐёӗєжӂӝҗзԅӟѕӡԇиѝӣҋӥіїйјкқӄҡҟҝлӆљԉмӎнӊңӈҥњԋоӧөӫпҧҁрҏсԍҫтԏҭћќуӯўӱӳүұѹфхҳһѡѿѽѻцҵчӵҷӌҹҽҿџшщъыӹьҍѣэӭюяѥѧѫѩѭѯѱѳѵѷҩաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆȼɂɇɉɋɍɏͱͳͷͻͼͽӏӷӻӽӿԑԓԕԗԙԛԝԟԡԣԥᵹᵽỻỽỿⅎↄⰰⰱⰲⰳⰴⰵⰶⰷⰸⰹⰺⰻⰼⰽⰾⰿⱀⱁⱂⱃⱄⱅⱆⱇⱈⱉⱊⱋⱌⱍⱎⱏⱐⱑⱒⱓⱔⱕⱖⱗⱘⱙⱚⱛⱜⱝⱞⱡⱨⱪⱬⱳⱶⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⲳⲵⲷⲹⲻⲽⲿⳁⳃⳅⳇⳉⳋⳍⳏⳑⳓⳕⳗⳙⳛⳝⳟⳡⳣⳬⳮⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥꙁꙃꙅꙇꙉꙋꙍꙏꙑꙓꙕꙗꙙꙛꙝꙟꙣꙥꙧꙩꙫꙭꚁꚃꚅꚇꚉꚋꚍꚏꚑꚓꚕꚗꜣꜥꜧꜩꜫꜭꜯꜳꜵꜷꜹꜻꜽꜿꝁꝃꝅꝇꝉꝋꝍꝏꝑꝓꝕꝗꝙꝛꝝꝟꝡꝣꝥꝧꝩꝫꝭꝯꝺꝼꝿꞁꞃꞅꞇꞌ';
+	const ALPHABET_UPPER = 'AÀÁÂÃÄÅĀĂĄǍǞǠǺȀȂȦḀẠẢẤẦẨẪẬẮẰẲẴẶⒶＡÆǢǼBḂḄḆⒷＢɃƁƂCÇĆĈĊČḈⅭⒸＣƇDĎḊḌḎḐḒⅮⒹＤǄǱĐƉƊƋÐEÈÉÊËĒĔĖĘĚȄȆȨḔḖḘḚḜẸẺẼẾỀỂỄỆⒺＥƎƏƐFḞⒻＦƑGĜĞĠĢǦǴḠⒼＧǤƓƔƢHĤȞḢḤḦḨḪⒽＨǶĦIÌÍÎÏĨĪĬĮǏȈȊḬḮỈỊⅠⒾＩⅡⅢĲⅣⅨƗƖJĴⒿＪKĶǨḰḲḴⓀＫƘLĹĻĽḶḸḺḼⅬⓁＬĿǇŁȽMḾṀṂⅯⓂＭNÑŃŅŇǸṄṆṈṊⓃＮǊƝȠŊOÒÓÔÕÖŌŎŐƠǑǪǬȌȎȪȬȮȰṌṎṐṒỌỎỐỒỔỖỘỚỜỞỠỢⓄＯŒØǾƆƟȢPṔṖⓅＰƤQⓆＱRŔŖŘȐȒṘṚṜṞⓇＲƦSŚŜŞŠȘṠṢṤṦṨⓈＳƩTŢŤȚṪṬṮṰⓉＴŦƬƮUÙÚÛÜŨŪŬŮŰŲƯǓǕǗǙǛȔȖṲṴṶṸṺỤỦỨỪỬỮỰⓊＵɄƜƱVṼṾⅤⓋＶⅥⅦⅧƲɅWŴẀẂẄẆẈⓌＷXẊẌⅩⓍＸⅪⅫYÝŸŶȲẎỲỴỶỸⓎＹƳZŹŻŽẐẒẔⓏＺƵȤǮƷƸȜÞǷƧƼƄΆΑἈἉἊἋἌἍἎἏᾺΆᾈᾉᾊᾋᾌᾍᾎᾏᾸᾹᾼΒΓΔΈΕἘἙἚἛἜἝῈΈϜϚΖΉΗἨἩἪἫἬἭἮἯῊΉᾘᾙᾚᾛᾜᾝᾞᾟῌΘΪἸἹἺἻἼἽἾἿῚΊῘῙΚϏΛΜΝΞΟΌὈὉὊὋὌὍῸΌΠϞϘΡῬΣϹΤΥΫΎὙὛὝὟῪΎῨῩΦΧΨΩΏὨὩὪὫὬὭὮὯῺΏᾨᾩᾪᾫᾬᾭᾮᾯῼϠϷϺϢϤϦϨϪϬϮАӐӒӘӚӔБВГҐҒҔДԀЂԂЃҘЕЀЁӖЄЖӁӜҖЗԄӞЅӠԆИЍӢҊӤІЇЙЈКҚӃҠҞҜЛӅЉԈМӍНӉҢӇҤЊԊОӦӨӪПҦҀРҎСԌҪТԎҬЋЌУӮЎӰӲҮҰѸФХҲҺѠѾѼѺЦҴЧӴҶӋҸҼҾЏШЩЪЫӸЬҌѢЭӬЮЯѤѦѪѨѬѮѰѲѴѶҨԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖȻɁɆɈɊɌɎͰͲͶϽϾϿӀӶӺӼӾԐԒԔԖԘԚԜԞԠԢԤꝽⱣỺỼỾℲↃⰀⰁⰂⰃⰄⰅⰆⰇⰈⰉⰊⰋⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙⰚⰛⰜⰝⰞⰟⰠⰡⰢⰣⰤⰥⰦⰧⰨⰩⰪⰫⰬⰭⰮⱠⱧⱩⱫⱲⱵⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⲲⲴⲶⲸⲺⲼⲾⳀⳂⳄⳆⳈⳊⳌⳎⳐⳒⳔⳖⳘⳚⳜⳞⳠⳢⳫⳭႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅꙀꙂꙄꙆꙈꙊꙌꙎꙐꙒꙔꙖꙘꙚꙜꙞꙢꙤꙦꙨꙪꙬꚀꚂꚄꚆꚈꚊꚌꚎꚐꚒꚔꚖꜢꜤꜦꜨꜪꜬꜮꜲꜴꜶꜸꜺꜼꜾꝀꝂꝄꝆꝈꝊꝌꝎꝐꝒꝔꝖꝘꝚꝜꝞꝠꝢꝤꝦꝨꝪꝬꝮꝹꝻꝾꞀꞂꞄꞆꞋ';
 
-	// The ranges of characters used by each script.
-	const SCRIPT_CHARACTER_RANGES = [
-		['Latn', 0x0041, 0x005A],
-		['Latn', 0x0061, 0x007A],
+	/** @var string Alphabet, in lower case, for the current locale. */
+	private static $alphabet_lower = 'abcdefghijklmnopqrstuvwxyz';
+
+	/** @var string Alphabet, in upper case, for the current locale. */
+	private static $alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+	/** @var int[][] Character ranges used by each script. */
+	private static $scripts = [
+		['Latn', 0x0041, 0x005A], // a-z
+		['Latn', 0x0061, 0x007A], // A-Z
 		['Latn', 0x0100, 0x02AF],
 		['Grek', 0x0370, 0x03FF],
 		['Cyrl', 0x0400, 0x052F],
@@ -72,33 +75,26 @@ class I18N {
 		['Hans', 0x20000, 0x2FA1F], // Mixed CJK, not just Hans
 	];
 
-	// Characters that are displayed in mirror form in RTL text.
-	const MIRROR_CHARACTERS = [
-		'(' => ')',
-		')' => '(',
-		'[' => ']',
-		']' => '[',
-		'{' => '}',
-		'}' => '{',
-		'<' => '>',
-		'>' => '<',
-		'‹' => '›',
-		'›' => '‹',
-		'«' => '»',
-		'»' => '«',
-		'﴾' => '﴿',
-		'﴿' => '﴾',
-		'“' => '”',
-		'”' => '“',
-		'‘' => '’',
-		'’' => '‘',
-	];
-
-	// Default list of locales to show in the menu.
-	const DEFAULT_LOCALES = [
-		'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
-		'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
-		'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans',
+	/** @var string[] Characters that are displayed in mirror form in RTL text. */
+	private static $mirror_characters = [
+		'('   => ')',
+		')'   => '(',
+		'['   => ']',
+		']'   => '[',
+		'{'   => '}',
+		'}'   => '{',
+		'<'   => '>',
+		'>'   => '<',
+		'‹'   => '›',
+		'›'   => '‹',
+		'«'   => '»',
+		'»'   => '«',
+		'﴾'   => '﴿',
+		'﴿'   => '﴾',
+		'“'   => '”',
+		'”'   => '“',
+		'‘'   => '’',
+		'’'   => '‘',
 	];
 
 	/** @var string Punctuation used to separate list items, typically a comma */
@@ -112,10 +108,14 @@ class I18N {
 	public static function activeLocales() {
 		$code_list = Site::getPreference('LANGUAGES');
 
-		if (empty($code_list)) {
-			$codes = self::DEFAULT_LOCALES;
-		} else {
+		if ($code_list) {
 			$codes = explode(',', $code_list);
+		} else {
+			$codes = [
+				'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
+				'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
+				'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans',
+			];
 		}
 
 		$locales = [];
@@ -435,16 +435,12 @@ class I18N {
 		// Create a translator
 		self::$translator = new Translator($translations, self::$locale->pluralRule());
 
-		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
+		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_upper) = explode('=', self::$translator->translate('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_lower) = explode('=', self::$translator->translate('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
 
-		// Create a collator
-		try {
-			self::$collator = new Collator(self::$locale->code());
-			// Ignore upper/lower case differences
-			self::$collator->setStrength(Collator::SECONDARY);
-		} catch (Exception $ex) {
-			// PHP-INTL is not installed?  We'll use a fallback later.
-		}
+		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
 
 		return self::$locale->languageTag();
 	}
@@ -565,7 +561,7 @@ class I18N {
 		}
 
 		// Mirrored characters
-		$text = strtr($text, self::MIRROR_CHARACTERS);
+		$text = strtr($text, self::$mirror_characters);
 
 		$reversed = '';
 		$digits   = '';
@@ -606,7 +602,9 @@ class I18N {
 	}
 
 	/**
-	 * Perform a case-insensitive comparison of two strings.
+	 * UTF8 version of PHP::strcasecmp()
+	 *
+	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
 	 *
 	 * @param string $string1
 	 * @param string $string2
@@ -614,38 +612,98 @@ class I18N {
 	 * @return int
 	 */
 	public static function strcasecmp($string1, $string2) {
-		if (self::$collator instanceof Collator) {
-			return self::$collator->compare($string1, $string2);
-		} else {
-			return strcmp(self::strtolower($string1), self::strtolower($string2));
+		$strpos1 = 0;
+		$strpos2 = 0;
+		$strlen1 = strlen($string1);
+		$strlen2 = strlen($string2);
+		while ($strpos1 < $strlen1 && $strpos2 < $strlen2) {
+			$byte1 = ord($string1[$strpos1]);
+			$byte2 = ord($string2[$strpos2]);
+			if (($byte1 & 0xE0) === 0xC0) {
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++];
+			} elseif (($byte1 & 0xF0) === 0xE0) {
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++] . $string1[$strpos1++];
+			} else {
+				$chr1 = $string1[$strpos1++];
+			}
+			if (($byte2 & 0xE0) === 0xC0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++];
+			} elseif (($byte2 & 0xF0) === 0xE0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++] . $string2[$strpos2++];
+			} else {
+				$chr2 = $string2[$strpos2++];
+			}
+			if ($chr1 === $chr2) {
+				continue;
+			}
+			// Try the local alphabet first
+			$offset1 = strpos(self::$alphabet_lower, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::$alphabet_upper, $chr1);
+			}
+			$offset2 = strpos(self::$alphabet_lower, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::$alphabet_upper, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 === $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Try the global alphabet next
+			$offset1 = strpos(self::ALPHABET_LOWER, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::ALPHABET_UPPER, $chr1);
+			}
+			$offset2 = strpos(self::ALPHABET_LOWER, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::ALPHABET_UPPER, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 === $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Just compare by unicode order
+			return strcmp($chr1, $chr2);
 		}
+		// Shortest string comes first.
+		return ($strlen1 - $strpos1) - ($strlen2 - $strpos2);
 	}
 
 	/**
-	 * Convert a string to lower case.
+	 * UTF8 version of PHP::strtolower()
+	 *
+	 * Convert a string to lower case, using the rules from the current locale
 	 *
 	 * @param string $string
 	 *
 	 * @return string
 	 */
 	public static function strtolower($string) {
-		if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
-			$string = strtr($string, self::DOTLESS_I_TOLOWER);
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
+			$string = strtr($string, ['I' => 'ı', 'İ' => 'i']);
 		}
 
 		return mb_strtolower($string);
 	}
 
 	/**
-	 * Convert a string to upper case.
+	 * UTF8 version of PHP::strtoupper()
+	 *
+	 * Convert a string to upper case, using the rules from the current locale
 	 *
 	 * @param string $string
 	 *
 	 * @return string
 	 */
 	public static function strtoupper($string) {
-		if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
-			$string = strtr($string, self::DOTLESS_I_TOUPPER);
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
+			$string = strtr($string, ['ı' => 'I', 'i' => 'İ']);
 		}
 
 		return mb_strtoupper($string);
@@ -704,7 +762,7 @@ class I18N {
 				return 'Latn';
 			}
 
-			foreach (self::SCRIPT_CHARACTER_RANGES as $range) {
+			foreach (self::$scripts as $range) {
 				if ($code_point >= $range[1] && $code_point <= $range[2]) {
 					return $range[0];
 				}
