@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 08:59+0000\n"
-"PO-Revision-Date: 2017-01-05 10:28+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2017-01-08 20:03+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -16649,17 +16649,17 @@ msgstr "Schwiegertochter"
 #: app/Functions/Functions.php:1360
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "Schwiegertochters Vater"
+msgstr "Vater der Schwiegertochter"
 
 #: app/Functions/Functions.php:1362
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "Schwiegertochters Mutter"
+msgstr "Mutter der Schwiegertochter"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "Schwiegertochters Eltern"
+msgstr "Eltern der Schwiegertochter"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -19615,17 +19615,17 @@ msgstr "Schwiegersohn"
 #: app/Functions/Functions.php:1072
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "Schwiegersohns Vater"
+msgstr "Vater des Schwiegersohns"
 
 #: app/Functions/Functions.php:1074
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "Schwiegersohns Mutter"
+msgstr "Mutter des Schwiegersohns"
 
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "Schwiegersohns Eltern"
+msgstr "Eltern des Schwiegersohns"
 
 #: app/Functions/Functions.php:822
 msgctxt "child’s spouse"
