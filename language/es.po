@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-10 01:09+0000\n"
+"PO-Revision-Date: 2017-01-10 05:36+0000\n"
 "Last-Translator: Elián Hanisch <lambdae2@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
 "Language: es\n"
@@ -5489,7 +5489,7 @@ msgstr "Editar esta persona para reemplazar los detalles con los que quieres."
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
 msgid "Editor"
-msgstr "Redactor"
+msgstr "Editor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
@@ -13820,9 +13820,8 @@ msgstr "Los hechos más comunes para repositorios son listados por separado, as�
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
-#, fuzzy
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Es la lista corta de hechos GEDCOM para las fuentes que aparece junto a la lista completa y que pueden añadirse con un solo clic."
+msgstr "Los hechos más comunes para fuentes son listados por separado, así pueden agregarse más fácilmente."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -13922,9 +13921,8 @@ msgstr "Los apellidos se delimitan por barras: <%s>John Paul /Smith/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
-#, fuzzy
 msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Permite al usuario seleccionar su propio tema mediante un menú.<br><br>Aunque esté fijada está opción, el tema actual puede que no proporcione el menú correspondiente. Para que funcione, es necesario que se fije también la opción <b>Permitir a los usuarios seleccionar su propio tema</b>."
+msgstr "El menú de temas será mostrado solamente si la configuración del sitio web permite a los usuarios seleccionar su propio tema."
 
 #: addmedia.php:360
 #, php-format
@@ -14502,9 +14500,8 @@ msgstr "Esto le dice al programa en que formato mostrará el Árbol de Ascendien
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
-#, fuzzy
 msgid "This option will make it easier for users to download images."
-msgstr "El Visor de Objetos puede mostrar un vínculo que, al hacerse clic en él, descargará el archivo del objeto al equipo local.<br><br>Puede desear ocultar el vínculo de descarga por razones de seguridad."
+msgstr "Esta opción hará más fácil descargar imágenes a los usuarios."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
@@ -14584,18 +14581,16 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Este repositorio ha sido editado.  Debe revisar los cambios y %1$s o %2$s."
 
 #: admin_users.php:552
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "El moderador tiene todos los permisos de un editor, además de permiso para aprobar / rechazar los cambios realizados por otros usuarios."
+msgstr "Este rol tiene todos los permisos del rol de editor, más los permisos para aprobar/rechazar los cambios realizados por otros usuarios."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "El administrador del sitio tiene todos los permisos del administrador en todos los árboles genealógicos, además de permisos para cambiar las configuraciones del sitio, los usuarios y los módulos."
 
 #: admin_users.php:546
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Un editor tiene todos los permisos de un miembro, además de permisos para añadir / modificar / borrar datos. Cada cambio tiene que ser aprobado por un moderador, a menos que el usuario tiene el permiso «automáticamente aceptan cambios»."
+msgstr "Este rol tiene todos los permisos del rol de miembro, más los permisos para añadir/modificar/borrar datos. Cada cambio tiene que ser aprobado por un moderador, a menos que el usuario tenga la opción «automáticamente aceptar cambios» habilitada."
 
 #: admin_users.php:560
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -15185,9 +15180,8 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr "Ha sido imposible realizar la conexión con la configuración actual.  El servidor devolvió el siguiente error."
 
 #: admin_trees_config.php:674
-#, fuzzy
 msgid "Unable to find record with ID"
-msgstr "Imposible encontrar un registro con el ID"
+msgstr "No es posible encontrar un registro con ID"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
@@ -15600,9 +15594,8 @@ msgid "View the notes"
 msgstr "Ver notas"
 
 #: calendar.php:292
-#, fuzzy
 msgid "View this day"
-msgstr "Ver día"
+msgstr "Ver este día"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15611,29 +15604,24 @@ msgstr "Ver día"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4535 app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4582
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "Ver Familia"
+msgstr "Ver esta familia"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Ver Persona"
+msgstr "Ver este individuo"
 
 #: calendar.php:296
-#, fuzzy
 msgid "View this month"
-msgstr "Ver mes"
+msgstr "Ver este mes"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Ver fuente"
+msgstr "Ver esta fuente"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this year"
-msgstr "Ver año"
+msgstr "Ver este año"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15916,9 +15904,8 @@ msgstr "Mundo"
 
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
-#, fuzzy
 msgid "XREF prefixes"
-msgstr "Opciones para los ID"
+msgstr "prefijos XREF"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
@@ -16101,9 +16088,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Usted debe volver a numerar los registros de uno de los árboles antes de poder combinarlos."
 
 #: app/Module/ChartsBlockModule.php:138
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Hay que seleccionar una persona y un tipo de gráfico en la configuración del bloque."
+msgstr "Hay que seleccionar una persona y un tipo de gráfico en la configuración del bloque"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
