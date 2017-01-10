@@ -44,20 +44,20 @@ class HitCounter {
 			Database::prepare(
 				"INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)" .
 				" VALUES (:tree_id, :page, :parameter, 1)"
-			)->execute(array(
+			)->execute([
 				'tree_id'   => $tree->getTreeId(),
 				'page'      => $page,
 				'parameter' => $parameter,
-			));
+			]);
 		} else {
 			Database::prepare(
 				"UPDATE `##hit_counter` SET page_count = page_count + 1" .
 				" WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-			)->execute(array(
+			)->execute([
 				'tree_id'   => $tree->getTreeId(),
 				'page'      => $page,
 				'parameter' => $parameter,
-			));
+			]);
 		}
 
 		$page_count++;
@@ -83,10 +83,10 @@ class HitCounter {
 		return (int) Database::prepare(
 			"SELECT page_count FROM `##hit_counter`" .
 			" WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-		)->execute(array(
+		)->execute([
 			'tree_id'   => $tree->getTreeId(),
 			'page'      => $page,
 			'parameter' => $parameter,
-		))->fetchOne();
+		])->fetchOne();
 	}
 }

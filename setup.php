@@ -33,10 +33,13 @@ define('WT_BASE_URL', '');
 define('WT_DATA_DIR', 'data/');
 define('WT_DEBUG_SQL', false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
-define('WT_REQUIRED_PHP_VERSION', '5.3.2');
+define('WT_REQUIRED_PHP_VERSION', '5.6');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
 define('WT_CLIENT_IP', $_SERVER['REMOTE_ADDR']);
+
+// PHP requires a time zone to be set. We'll set a better one later on.
+date_default_timezone_set('UTC');
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -99,7 +102,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 ////////////////////////////////////////////////////////////////////////////////
 
 if (!isset($_POST['lang'])) {
-	$installed_languages = array();
+	$installed_languages = [];
 	foreach (I18N::installedLocales() as $installed_locale) {
 		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
@@ -114,34 +117,34 @@ if (!isset($_POST['lang'])) {
 
 	// Mandatory functions
 	$disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
-	foreach (array('parse_ini_file') as $function) {
+	foreach (['parse_ini_file'] as $function) {
 		if (in_array($function, $disable_functions)) {
 			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
 			$errors = true;
 		}
 	}
 	// Mandatory extensions
-	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
+	foreach (['mbstring', 'iconv', 'pcre', 'pdo', 'pdo_mysql', 'session'] as $extension) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors = true;
 		}
 	}
 	// Recommended extensions
-	foreach (array(
+	foreach ([
 		'gd'        => /* I18N: a program feature */ I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ I18N::translate('reporting'),
-	) as $extension => $features) {
+	] as $extension => $features) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
 			$warnings = true;
 		}
 	}
 	// Settings
-	foreach (array(
+	foreach ([
 		'file_uploads' => /* I18N: a program feature */ I18N::translate('file upload capability'),
-	) as $setting => $features) {
+	] as $setting => $features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings = true;
@@ -314,8 +317,8 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 //
 // Other characters may be invalid (objects must be valid filenames on the
 // MySQL server’s filesystem), so block the usual ones.
-$DBNAME    = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
-$TBLPREFIX = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
+$DBNAME    = str_replace(['`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'], '', $_POST['dbname']);
+$TBLPREFIX = str_replace(['`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'], '', $_POST['tblpfx']);
 
 // If we have specified a database, and we have not used invalid characters,
 // try to connect to it.

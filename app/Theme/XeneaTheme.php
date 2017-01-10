@@ -105,12 +105,12 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
-		$parameters = array(
+		$parameters = [
 			'chart-background-f'             => 'e9daf1',
 			'chart-background-m'             => 'b1cff0',
 			'distribution-chart-high-values' => '84beff',
 			'distribution-chart-low-values'  => 'c3dfff',
-		);
+		];
 
 		if (array_key_exists($parameter_name, $parameters)) {
 			return $parameters[$parameter_name];
@@ -125,10 +125,10 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return array(
+		return [
 			'themes/xenea/jquery-ui-1.11.2/jquery-ui.css',
 			$this->assetUrl() . 'style.css',
-		);
+		];
 	}
 
 	/**

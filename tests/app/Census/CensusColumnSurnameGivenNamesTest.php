@@ -35,8 +35,8 @@ class CensusColumnSurnameGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testOneGivenName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe', 'surn' => 'Sixpack')));
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe', 'surn' => 'Sixpack']]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('');
@@ -52,8 +52,8 @@ class CensusColumnSurnameGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMultipleGivenNames() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe Fred', 'surn' => 'Sixpack')));
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe Fred', 'surn' => 'Sixpack']]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('');
@@ -69,8 +69,8 @@ class CensusColumnSurnameGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array());
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+		$individual->shouldReceive('getAllNames')->andReturn([]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('');

@@ -54,13 +54,13 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		foreach (array('count_placement', 'num') as $name) {
+		foreach (['count_placement', 'num'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -82,10 +82,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			" FROM `##hit_counter`" .
 			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
 			" ORDER BY page_count DESC LIMIT :limit"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => (int) $num,
-		))->fetchAssoc();
+		])->fetchAssoc();
 
 		$content .= '<table>';
 		foreach ($top10 as $id => $count) {
@@ -102,7 +102,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '</tr>';
 			}
 		}
-		$content .= "</table>";
+		$content .= '</table>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
@@ -161,10 +161,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
-		echo "<tr><td class=\"descriptionbox wrap width33\">";
+		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
-		echo "</td><td class=\"optionbox\">";
-		echo FunctionsEdit::selectEditControl('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
+		echo '</td><td class="optionbox">';
+		echo FunctionsEdit::selectEditControl('count_placement', ['before' => I18N::translate('before'), 'after' => I18N::translate('after')], null, $count_placement, '');
 		echo '</td></tr>';
 	}
 }

@@ -62,7 +62,7 @@ class LifespanController extends PageController {
 	public $subtitle  = '&nbsp;';
 
 	/** @var Individual[] A list of individuals to display. */
-	private $people = array();
+	private $people = [];
 
 	/** @var string The default calendar to use. */
 	private $defaultCalendar;
@@ -83,32 +83,28 @@ class LifespanController extends PageController {
 	private $currentYear;
 
 	/** @var string[] A list of colors to use. */
-	private $colors = array();
+	private $colors = [];
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Place|null A place to serarh. */
-	public $place_obj = null;
+	private $place_obj = null;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null Start of the date range. */
-	public $startDate = null;
+	private $startDate = null;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null End of the date range. */
-	public $endDate = null;
+	private $endDate = null;
 
 	/** @var bool Only match dates in the chosen calendar. */
 	private $strictDate;
 
-	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var string[] List of facts/events to include. */
-	public $facts;
+	private $facts;
 
 	/** @var string[] Facts and events to exclude from the chart */
-	private $nonfacts = array(
+	private $nonfacts = [
 		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL',
 		'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO',
-	);
+	];
 
 	/**
 	 * Startup activity
@@ -142,7 +138,7 @@ class LifespanController extends PageController {
 		// Build a list of people based on the input parameters
 		if ($clear) {
 			// Empty list & reset form
-			$xrefs           = array();
+			$xrefs           = [];
 			$this->place     = null;
 			$this->beginYear = null;
 			$this->endYear   = null;
@@ -160,13 +156,13 @@ class LifespanController extends PageController {
 				" JOIN `##families` ON `pl_gid`=`f_id` AND `pl_file`=`f_file`" .
 				" WHERE `f_file`=:tree_id" .
 				" AND `pl_p_id`=:place_id"
-			)->execute(array(
+			)->execute([
 				'tree_id'  => $WT_TREE->getTreeId(),
 				'place_id' => $this->place_obj->getPlaceId(),
-			))->fetchOneColumn();
+			])->fetchOneColumn();
 		} else {
 			// Modify an existing list of records
-			$xrefs = Session::get(self::SESSION_DATA, array());
+			$xrefs = Session::get(self::SESSION_DATA, []);
 			if ($newpid) {
 				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $WT_TREE), $addfam));
 				$xrefs = array_unique($xrefs);
@@ -178,10 +174,10 @@ class LifespanController extends PageController {
 		$tmp               = $this->getCalendarDate(unixtojd());
 		$this->currentYear = $tmp->today()->y;
 
-		$tmp = strtoupper(strtr($this->calendar, array(
+		$tmp = strtoupper(strtr($this->calendar, [
 			'jewish' => 'hebrew',
 			'french' => 'french r',
-		)));
+		]));
 		$this->calendarEscape = sprintf('@#D%s@', $tmp);
 
 		if ($xrefs) {
@@ -271,9 +267,8 @@ class LifespanController extends PageController {
 			$bdate   = $this->getCalendarDate($this->people[0]->getEstimatedBirthDate()->minimumJulianDay());
 			$minyear = $bdate->y;
 
-			$that    = $this; // PHP5.3 cannot access $this inside a closure
-			$maxyear = array_reduce($this->people, function ($carry, Individual $item) use ($that) {
-				$date = $that->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
+			$maxyear = array_reduce($this->people, function ($carry, Individual $item) {
+				$date = $this->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
 
 				return max($carry, $date->y);
 			}, 0);
@@ -301,7 +296,7 @@ class LifespanController extends PageController {
 	 * @return array
 	 */
 	private function addFamily(Individual $person, $add_family) {
-		$xrefs   = array();
+		$xrefs   = [];
 		$xrefs[] = $person->getXref();
 		if ($add_family) {
 			foreach ($person->getSpouseFamilies() as $family) {
@@ -346,7 +341,7 @@ class LifespanController extends PageController {
 	 * @return int
 	 */
 	public function fillTimeline() {
-		$rows = array();
+		$rows = [];
 		$maxY = self::CHART_TOP;
 		//base case
 		if (!$this->people) {
@@ -392,31 +387,30 @@ class LifespanController extends PageController {
 			}
 			Functions::sortFacts($facts);
 
-			$that          = $this; // PHP5.3 cannot access $this inside a closure
-			$acceptedFacts = array_filter($facts, function (Fact $fact) use ($that) {
+			$acceptedFacts = array_filter($facts, function (Fact $fact) {
 				return
-					(in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
-					(($that->place_obj || $that->startDate) && $that->checkFact($fact));
+					(in_array($fact->getTag(), $this->facts) && $fact->getDate()->isOK()) ||
+					(($this->place_obj || $this->startDate) && $this->checkFact($fact));
 			});
 
-			$eventList = array();
+			$eventList = [];
 			foreach ($acceptedFacts as $fact) {
 				$tag = $fact->getTag();
 				//-- if the fact is a generic EVENt then get the qualifying TYPE
-				if ($tag == "EVEN") {
+				if ($tag == 'EVEN') {
 					$tag = $fact->getAttribute('TYPE');
 				}
-				$eventList[] = array(
+				$eventList[] = [
 					'label' => GedcomTag::getLabel($tag),
 					'date'  => $fact->getDate()->display(),
 					'place' => $fact->getPlace()->getFullName(),
-				);
+				];
 			}
 			$direction  = I18N::direction() === 'ltr' ? 'left' : 'right';
 			$lifespan   = ' ' . $person->getLifeSpan(); // put the space here so its included in the length calcs
 			$sex        = $person->getSex();
-			$popupClass = strtr($sex, array('M' => '', 'U' => 'NN'));
-			$color      = $sex === 'U' ? '' : sprintf("background-color: %s", $this->colors[$sex]->getNextColor());
+			$popupClass = strtr($sex, ['M' => '', 'U' => 'NN']);
+			$color      = $sex === 'U' ? '' : sprintf('background-color: %s', $this->colors[$sex]->getNextColor());
 
 			// following lines are a nasty method of approximating
 			// the width of a string in pixels from the character count
@@ -454,7 +448,7 @@ class LifespanController extends PageController {
 
 			// Add events to popup
 			foreach ($eventList as $event) {
-				printf("<div>%s: %s %s</div>", $event['label'], $event['date'], $event['place']);
+				printf('<div>%s: %s %s</div>', $event['label'], $event['date'], $event['place']);
 			}
 			echo
 				'</div>' . // class="popup"
@@ -472,13 +466,11 @@ class LifespanController extends PageController {
 	 *
 	 * Does this fact meet the search criteria?
 	 *
-	 * @todo This function is public to support the PHP5.3 closure workaround.
-	 *
 	 * @param  Fact $fact
 	 *
 	 * @return bool
 	 */
-	public function checkFact(Fact $fact) {
+	private function checkFact(Fact $fact) {
 		$valid = !in_array($fact->getTag(), $this->nonfacts);
 		if ($valid && $this->place_obj) {
 			$valid = stripos($fact->getPlace()->getGedcomName(), $this->place_obj->getGedcomName()) !== false;
@@ -499,13 +491,11 @@ class LifespanController extends PageController {
 	/**
 	 * Function getCalendarDate
 	 *
-	 * @todo This function is public to support the PHP5.3 closure workaround.
-	 *
 	 * @param int $date
 	 *
 	 * @return object
 	 */
-	public function getCalendarDate($date) {
+	private function getCalendarDate($date) {
 		switch ($this->calendar) {
 		case 'julian':
 			$caldate = new JulianDate($date);

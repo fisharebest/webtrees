@@ -54,7 +54,7 @@ class Family extends GedcomRecord {
 
 		// Make sure husb/wife are the right way round.
 		if ($this->husb && $this->husb->getSex() === 'F' || $this->wife && $this->wife->getSex() === 'M') {
-			list($this->husb, $this->wife) = array($this->wife, $this->husb);
+			list($this->husb, $this->wife) = [$this->wife, $this->husb];
 		}
 	}
 
@@ -92,10 +92,10 @@ class Family extends GedcomRecord {
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT f_gedcom FROM `##families` WHERE f_id = :xref AND f_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'xref'    => $xref,
 			'tree_id' => $tree_id,
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -189,10 +189,10 @@ class Family extends GedcomRecord {
 	 * @return Individual[]
 	 */
 	public function getSpouses($access_level = null) {
-		return array_filter(array(
+		return array_filter([
 			$this->getHusband($access_level),
 			$this->getWife($access_level),
-		));
+		]);
 	}
 
 	/**
@@ -209,7 +209,7 @@ class Family extends GedcomRecord {
 
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-		$children = array();
+		$children = [];
 		foreach ($this->getFacts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
 			$child = $fact->getTarget();
 			if ($child && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
@@ -315,7 +315,7 @@ class Family extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -330,7 +330,7 @@ class Family extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -344,13 +344,13 @@ class Family extends GedcomRecord {
 			if ($this->husb) {
 				$husb_names = $this->husb->getAllNames();
 			} else {
-				$husb_names = array(
-					0 => array(
+				$husb_names = [
+					0 => [
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
 						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
-					),
-				);
+					],
+				];
 			}
 			foreach ($husb_names as $n => $husb_name) {
 				$husb_names[$n]['script'] = I18N::textScript($husb_name['full']);
@@ -358,13 +358,13 @@ class Family extends GedcomRecord {
 			if ($this->wife) {
 				$wife_names = $this->wife->getAllNames();
 			} else {
-				$wife_names = array(
-					0 => array(
+				$wife_names = [
+					0 => [
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
 						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
-					),
-				);
+					],
+				];
 			}
 			foreach ($wife_names as $n => $wife_name) {
 				$wife_names[$n]['script'] = I18N::textScript($wife_name['full']);
@@ -373,12 +373,12 @@ class Family extends GedcomRecord {
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {
 					if ($husb_name['type'] != '_MARNM' && $wife_name['type'] != '_MARNM' && $husb_name['script'] == $wife_name['script']) {
-						$this->_getAllNames[] = array(
+						$this->_getAllNames[] = [
 							'type' => $husb_name['type'],
 							'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
 							'full' => $husb_name['full'] . ' + ' . $wife_name['full'],
 							// No need for a fullNN entry - we do not currently store FAM names in the database
-						);
+						];
 					}
 				}
 			}
@@ -386,12 +386,12 @@ class Family extends GedcomRecord {
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {
 					if ($husb_name['type'] != '_MARNM' && $wife_name['type'] != '_MARNM' && $husb_name['script'] != $wife_name['script']) {
-						$this->_getAllNames[] = array(
+						$this->_getAllNames[] = [
 							'type' => $husb_name['type'],
 							'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
 							'full' => $husb_name['full'] . ' + ' . $wife_name['full'],
 							// No need for a fullNN entry - we do not currently store FAM names in the database
-						);
+						];
 					}
 				}
 			}

@@ -37,7 +37,7 @@ $controller
 	->restrictAccess(Auth::isEditor($WT_TREE))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
-	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), I18N::dateFormat())) . '";');
+	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(['j', 'F'], ['D', 'M'], I18N::dateFormat())) . '";');
 
 switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
@@ -1219,11 +1219,11 @@ case 'addnewsource':
 				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('TITL'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ABBR'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('ABBR'); ?></td></tr>
-				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
+				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('_HEB'); ?></td></tr>
 				<?php } ?>
-				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
+				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'); ?></td>
 				<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo FunctionsPrint::printSpecialCharacterLink('ROMN'); ?></td></tr>
 				<?php } ?>
@@ -1491,7 +1491,7 @@ case 'editnoteaction':
 		->pageHeader();
 
 	// We have user-supplied data in a replacement string - escape it against backreferences
-	$note = str_replace(array('\\', '$'), array('\\\\', '\\$'), $note);
+	$note = str_replace(['\\', '$'], ['\\\\', '\\$'], $note);
 
 	$gedrec = preg_replace(
 		'/^0 @' . $record->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
@@ -1536,11 +1536,11 @@ case 'addnewrepository':
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('REPO_NAME'); ?></td></tr>
-			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
+			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('_HEB'); ?></td></tr>
 			<?php } ?>
-			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
+			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo FunctionsPrint::printSpecialCharacterLink('ROMN'); ?></td></tr>
 			<?php } ?>
@@ -1684,7 +1684,7 @@ case 'reorder_media':
 		');
 
 	// Get the current sort order
-	$sort_obje = array();
+	$sort_obje = [];
 	foreach ($person->getFacts('_WT_OBJE_SORT') as $fact) {
 		$media = $fact->getTarget();
 		if ($media && $media->canShow()) {
@@ -1693,7 +1693,7 @@ case 'reorder_media':
 	}
 
 	// Add other media objects from the individual and any spouse-families
-	$record_list = array($person);
+	$record_list = [$person];
 	foreach ($person->getSpouseFamilies() as $family) {
 		$record_list[] = $family;
 	}
@@ -1765,7 +1765,7 @@ case 'reorder_media_update':
 		->pageHeader();
 
 	// Delete any existing _WT_OBJE_SORT records
-	$facts = array('0 @' . $person->getXref() . '@ INDI');
+	$facts = ['0 @' . $person->getXref() . '@ INDI'];
 	foreach ($person->getFacts() as $fact) {
 		if ($fact->getTag() !== '_WT_OBJE_SORT') {
 			$facts[] = $fact->getGedcom();
@@ -1811,11 +1811,11 @@ case 'reorder_children':
 			<ul id="reorder_list">
 				<?php
 				// reorder children in modified families
-				$ids = array();
+				$ids = [];
 				foreach ($family->getChildren() as $child) {
 					$ids[] = $child->getXref();
 				}
-				$children = array();
+				$children = [];
 				foreach ($family->getChildren() as $k => $child) {
 					$bdate = $child->getEstimatedBirthDate();
 					if ($bdate->isOK()) {
@@ -1870,7 +1870,7 @@ case 'reorder_update':
 		->pageHeader();
 
 	if (is_array($order)) {
-		$gedcom = array('0 @' . $family->getXref() . '@ FAM');
+		$gedcom = ['0 @' . $family->getXref() . '@ FAM'];
 		$facts  = $family->getFacts();
 
 		// Move children to the end of the record
@@ -2057,7 +2057,7 @@ case 'changefamily_update':
 		return;
 	}
 
-	$CHIL = array();
+	$CHIL = [];
 	for ($i = 0; isset($_POST['CHIL' . $i]); ++$i) {
 		$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 	}
@@ -2077,7 +2077,7 @@ case 'changefamily_update':
 	// New family members
 	$new_father   = Individual::getInstance($HUSB, $WT_TREE);
 	$new_mother   = Individual::getInstance($WIFE, $WT_TREE);
-	$new_children = array();
+	$new_children = [];
 	foreach ($CHIL as $child) {
 		$new_children[] = Individual::getInstance($child, $WT_TREE);
 	}
@@ -2225,7 +2225,7 @@ case 'reorder_fams_update':
 		->pageHeader();
 
 	if (is_array($order)) {
-		$gedcom = array('0 @' . $person->getXref() . '@ INDI');
+		$gedcom = ['0 @' . $person->getXref() . '@ INDI'];
 		$facts  = $person->getFacts();
 
 		// Move families to the end of the record
@@ -2305,7 +2305,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// Different cultures do surnames differently
 	$surname_tradition = SurnameTradition::create($WT_TREE->getPreference('SURNAME_TRADITION'));
 
-	$name_fields = array();
+	$name_fields = [];
 	if ($name_fact) {
 		// Editing an existing name
 		$name_fact_id = $name_fact->getFactId();
@@ -2443,9 +2443,9 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	// Second - new/existing advanced name fields
 	if ($surname_tradition->hasMarriedNames() || preg_match('/\n2 _MARNM /', $namerec)) {
-		$adv_name_fields = array('_MARNM' => '');
+		$adv_name_fields = ['_MARNM' => ''];
 	} else {
-		$adv_name_fields = array();
+		$adv_name_fields = [];
 	}
 	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		foreach ($match[1] as $tag) {
@@ -2491,7 +2491,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$glevel   = $fields[0];
 		$level    = $glevel;
 		$type     = $fields[1];
-		$tags     = array();
+		$tags     = [];
 		$i        = 0;
 		do {
 			if ($type !== 'TYPE' && !array_key_exists($type, $name_fields) && !array_key_exists($type, $adv_name_fields)) {
@@ -2525,7 +2525,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		echo '</table><br><table class="facts_table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
-			FunctionsEdit::addSimpleTag("0 SEX M");
+			FunctionsEdit::addSimpleTag('0 SEX M');
 		} elseif ($famtag === 'WIFE' || $gender === 'F') {
 			FunctionsEdit::addSimpleTag('0 SEX F');
 		} else {

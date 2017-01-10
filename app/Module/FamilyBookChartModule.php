@@ -63,7 +63,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 			$this->getTitle(),
 			'familybook.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-familybook',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

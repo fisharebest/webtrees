@@ -35,7 +35,7 @@ class User {
 	private $preferences;
 
 	/** @var  User[] Only fetch users from the database once. */
-	private static $cache = array();
+	private static $cache = [];
 
 	/**
 	 * Find the user with a specified user_id.
@@ -48,7 +48,7 @@ class User {
 		if (!array_key_exists($user_id, self::$cache)) {
 			$row = Database::prepare(
 				"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
-			)->execute(array($user_id))->fetchOneRow();
+			)->execute([$user_id])->fetchOneRow();
 			if ($row) {
 				self::$cache[$user_id] = new self($row);
 			} else {
@@ -69,9 +69,9 @@ class User {
 	public static function findByUserName($user_name) {
 		$user_id = Database::prepare(
 			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
-		)->execute(array(
+		)->execute([
 			'user_name' => $user_name,
-		))->fetchOne();
+		])->fetchOne();
 
 		return self::find($user_id);
 	}
@@ -86,9 +86,9 @@ class User {
 	public static function findByEmail($email) {
 		$user_id = Database::prepare(
 			"SELECT SQL_CACHE user_id FROM `##user` WHERE email = :email"
-		)->execute(array(
+		)->execute([
 			'email' => $email,
-		))->fetchOne();
+		])->fetchOne();
 
 		return self::find($user_id);
 	}
@@ -103,7 +103,7 @@ class User {
 	public static function findByIdentifier($identifier) {
 		$user_id = Database::prepare(
 			"SELECT SQL_CACHE user_id FROM `##user` WHERE ? IN (user_name, email)"
-		)->execute(array($identifier))->fetchOne();
+		)->execute([$identifier])->fetchOne();
 
 		return self::find($user_id);
 	}
@@ -120,10 +120,10 @@ class User {
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .
 			" WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $individual->getTree()->getTreeId(),
 			'xref'    => $individual->getXref(),
-		))->fetchOne();
+		])->fetchOne();
 
 		return self::find($user_id);
 	}
@@ -160,19 +160,19 @@ class User {
 	public static function create($user_name, $real_name, $email, $password) {
 		Database::prepare(
 			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
-		)->execute(array(
+		)->execute([
 			'user_name' => $user_name,
 			'real_name' => $real_name,
 			'email'     => $email,
-			'password'  => self::passwordHash($password),
-		));
+			'password'  => password_hash($password, PASSWORD_DEFAULT),
+		]);
 
 		// Set default blocks for this user
 		$user = self::findByIdentifier($user_name);
 		Database::prepare(
 			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
 			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
-		)->execute(array('user_id' => $user->getUserId()));
+		)->execute(['user_id' => $user->getUserId()]);
 
 		return $user;
 	}
@@ -196,7 +196,7 @@ class User {
 	 * @return User[]
 	 */
 	public static function all() {
-		$users = array();
+		$users = [];
 
 		$rows = Database::prepare(
 			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
@@ -227,7 +227,7 @@ class User {
 			"   AND setting_value = '1'"
 		)->fetchAll();
 
-		$users = array();
+		$users = [];
 		foreach ($rows as $row) {
 			$users[] = new self($row);
 		}
@@ -250,7 +250,7 @@ class User {
 			"   AND setting_value = '1'"
 		)->fetchAll();
 
-		$users = array();
+		$users = [];
 		foreach ($rows as $row) {
 			$users[] = new self($row);
 		}
@@ -270,7 +270,7 @@ class User {
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
 
-		$users = array();
+		$users = [];
 		foreach ($rows as $row) {
 			$users[] = new self($row);
 		}
@@ -295,17 +295,17 @@ class User {
 	 */
 	public function delete() {
 		// Don't delete the logs.
-		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
+		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute([$this->user_id]);
 		// Take over the user’s pending changes. (What else could we do with them?)
-		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute(array($this->user_id));
-		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(Auth::id(), $this->user_id));
-		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($this->user_id));
+		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute([$this->user_id]);
+		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute([Auth::id(), $this->user_id]);
+		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
 	}
 
 	/** Validate a supplied password
@@ -316,10 +316,10 @@ class User {
 	public function checkPassword($password) {
 		$password_hash = Database::prepare(
 			"SELECT password FROM `##user` WHERE user_id = ?"
-		)->execute(array($this->user_id))->fetchOne();
+		)->execute([$this->user_id])->fetchOne();
 
-		if ($this->passwordVerify($password, $password_hash)) {
-			if ($this->passwordNeedsRehash($password_hash)) {
+		if (password_verify($password, $password_hash)) {
+			if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
 				$this->setPassword($password);
 			}
 
@@ -359,7 +359,7 @@ class User {
 			$this->user_name = $user_name;
 			Database::prepare(
 				"UPDATE `##user` SET user_name = ? WHERE user_id = ?"
-			)->execute(array($user_name, $this->user_id));
+			)->execute([$user_name, $this->user_id]);
 		}
 
 		return $this;
@@ -395,7 +395,7 @@ class User {
 			$this->real_name = $real_name;
 			Database::prepare(
 				"UPDATE `##user` SET real_name = ? WHERE user_id = ?"
-			)->execute(array($real_name, $this->user_id));
+			)->execute([$real_name, $this->user_id]);
 		}
 
 		return $this;
@@ -422,7 +422,7 @@ class User {
 			$this->email = $email;
 			Database::prepare(
 				"UPDATE `##user` SET email = ? WHERE user_id = ?"
-			)->execute(array($email, $this->user_id));
+			)->execute([$email, $this->user_id]);
 		}
 
 		return $this;
@@ -437,8 +437,11 @@ class User {
 	 */
 	public function setPassword($password) {
 		Database::prepare(
-			"UPDATE `##user` SET password = ? WHERE user_id = ?"
-		)->execute(array($this->passwordHash($password), $this->user_id));
+			"UPDATE `##user` SET password = :password WHERE user_id = :user_id"
+		)->execute([
+			'password' => password_hash($password, PASSWORD_DEFAULT),
+			'user_id'  => $this->user_id,
+		]);
 
 		return $this;
 	}
@@ -459,10 +462,10 @@ class User {
 			if ($this->user_id) {
 				$this->preferences = Database::prepare(
 					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
-				)->execute(array($this->user_id))->fetchAssoc();
+				)->execute([$this->user_id])->fetchAssoc();
 			} else {
 				// Not logged in? We have no preferences.
-				$this->preferences = array();
+				$this->preferences = [];
 			}
 		}
 
@@ -484,7 +487,7 @@ class User {
 	public function setPreference($setting_name, $setting_value) {
 		if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
 			Database::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
-				->execute(array($this->user_id, $setting_name, $setting_value));
+				->execute([$this->user_id, $setting_name, $setting_value]);
 			$this->preferences[$setting_name] = $setting_value;
 		}
 
@@ -501,60 +504,10 @@ class User {
 	public function deletePreference($setting_name) {
 		if ($this->user_id && $this->getPreference($setting_name) !== null) {
 			Database::prepare("DELETE FROM `##user_setting` WHERE user_id = ? AND setting_name = ?")
-				->execute(array($this->user_id, $setting_name));
+				->execute([$this->user_id, $setting_name]);
 			unset($this->preferences[$setting_name]);
 		}
 
 		return $this;
-	}
-
-	/**
-	 * The ircmaxell/password_compat implementation of the password_hash() function
-	 * relies on an encryption library which is not secure in PHP < 5.3.7
-	 *
-	 * @return bool
-	 */
-	private static function isPhpCryptBroken() {
-		return PHP_VERSION_ID < 50307 && password_hash('foo', PASSWORD_DEFAULT) === false;
-	}
-
-	/**
-	 * @param string $password
-	 *
-	 * @return string
-	 */
-	private static function passwordHash($password) {
-		if (self::isPhpCryptBroken()) {
-			return crypt($password);
-		} else {
-			return password_hash($password, PASSWORD_DEFAULT);
-		}
-	}
-
-	/**
-	 * @param string $hash
-	 *
-	 * @return bool
-	 */
-	private static function passwordNeedsRehash($hash) {
-		if (self::isPhpCryptBroken()) {
-			return false;
-		} else {
-			return password_needs_rehash($hash, PASSWORD_DEFAULT);
-		}
-	}
-
-	/**
-	 * @param string $password
-	 * @param string $hash
-	 *
-	 * @return bool
-	 */
-	private static function passwordVerify($password, $hash) {
-		if (self::isPhpCryptBroken()) {
-			return crypt($password, $hash) === $hash;
-		} else {
-			return password_verify($password, $hash);
-		}
 	}
 }

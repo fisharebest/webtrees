@@ -25,13 +25,13 @@ class CensusOfDeutschland extends Census implements CensusPlaceInterface {
 	 * @return CensusInterface[]
 	 */
 	public function allCensusDates() {
-		return array(
+		return [
 			new CensusOfDeutschland1819(),
 			new CensusOfDeutschland1867(),
 			new CensusOfDeutschlandNL1867(),			
 			new CensusOfDeutschland1900(),
 			new CensusOfDeutschland1919(),
-		);
+		];
 	}
 
 	/**

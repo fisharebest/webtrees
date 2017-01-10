@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class GedcomCodeQuay {
 	/** @var string[] Valid values for a QUAY tag. */
-	private static $TYPES = array('3', '2', '1', '0');
+	private static $TYPES = ['3', '2', '1', '0'];
 
 	/**
 	 * Translate a code, for an optional record
@@ -60,7 +60,7 @@ class GedcomCodeQuay {
 	 * @return string[]
 	 */
 	public static function getValues() {
-		$values = array();
+		$values = [];
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type);
 		}

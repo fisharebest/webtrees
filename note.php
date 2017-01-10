@@ -76,11 +76,11 @@ $controller->addInlineJavascript('
 
 $linked_fam  = $controller->record->linkedFamilies('NOTE');
 $linked_indi = $controller->record->linkedIndividuals('NOTE');
-$linked_note = array();
+$linked_note = [];
 $linked_obje = $controller->record->linkedMedia('NOTE');
 $linked_sour = $controller->record->linkedSources('NOTE');
 
-$facts = array();
+$facts = [];
 foreach ($controller->record->getFacts() as $fact) {
 	if ($fact->getTag() != 'CONT') {
 		$facts[] = $fact;

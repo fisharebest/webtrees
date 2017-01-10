@@ -171,12 +171,12 @@ class PageController extends BaseController {
 		if ($this->popup) {
 			echo Theme::theme()->bodyHeaderPopupWindow();
 			// We've displayed the header - display the footer automatically
-			register_shutdown_function(array($this, 'pageFooterPopupWindow'), $this->popup);
+			register_shutdown_function([$this, 'pageFooterPopupWindow'], $this->popup);
 
 		} else {
 			echo Theme::theme()->bodyHeader();
 			// We've displayed the header - display the footer automatically
-			register_shutdown_function(array($this, 'pageFooter'), $this->popup);
+			register_shutdown_function([$this, 'pageFooter'], $this->popup);
 		}
 
 		return $this;
@@ -206,7 +206,7 @@ class PageController extends BaseController {
 			$individual = Individual::getInstance(
 				Database::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
-				)->execute(array($WT_TREE->getTreeId()))->fetchOne(),
+				)->execute([$WT_TREE->getTreeId()])->fetchOne(),
 				$WT_TREE
 			);
 		}

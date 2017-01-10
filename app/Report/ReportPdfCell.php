@@ -32,15 +32,15 @@ class ReportPdfCell extends ReportBaseCell {
 		if (($renderer->getCurrentStyle()) != ($this->styleName)) {
 			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
+		$temptext = str_replace('#PAGENUM#', $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		$match    = array();
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
+		$match    = [];
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
 			if (!empty($this->bgcolor)) {
 				// HTML color to RGB
-				if (preg_match("/#?(..)(..)(..)/", $this->bgcolor, $match)) {
+				if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);
@@ -54,7 +54,7 @@ class ReportPdfCell extends ReportBaseCell {
 		// Paint the Border color if set
 		if (!empty($this->bocolor)) {
 			// HTML color to RGB
-			if (preg_match("/#?(..)(..)(..)/", $this->bocolor, $match)) {
+			if (preg_match('/#?(..)(..)(..)/', $this->bocolor, $match)) {
 				$r = hexdec($match[1]);
 				$g = hexdec($match[2]);
 				$b = hexdec($match[3]);
@@ -62,7 +62,7 @@ class ReportPdfCell extends ReportBaseCell {
 			}
 		}
 		// Paint the text color or they might use inherited colors by the previous function
-		if (preg_match("/#?(..)(..)(..)/", $this->tcolor, $match)) {
+		if (preg_match('/#?(..)(..)(..)/', $this->tcolor, $match)) {
 			$r = hexdec($match[1]);
 			$g = hexdec($match[2]);
 			$b = hexdec($match[3]);
@@ -72,7 +72,7 @@ class ReportPdfCell extends ReportBaseCell {
 		}
 
 		// If current position (left)
-		if ($this->left == ".") {
+		if ($this->left == '.') {
 			$cX = $renderer->GetX();
 		} // For static position add margin (also updates X)
 		else {
@@ -84,7 +84,7 @@ class ReportPdfCell extends ReportBaseCell {
 			$this->width = $renderer->getRemainingWidthPDF();
 		}
 		// For current position
-		if ($this->top == ".") {
+		if ($this->top == '.') {
 			$this->top = $renderer->GetY();
 		} else {
 			$renderer->SetY($this->top);
@@ -109,7 +109,7 @@ class ReportPdfCell extends ReportBaseCell {
 			if ($renderer->checkPageBreakPDF($cHT)) {
 				$this->top = $renderer->GetY();
 			}
-			$temptext = FunctionsRtl::spanLtrRtl($temptext, "BOTH");
+			$temptext = FunctionsRtl::spanLtrRtl($temptext, 'BOTH');
 		}
 		// HTML ready - last value is true
 		$renderer->MultiCell(

@@ -58,7 +58,7 @@ if ($person1 && $person2) {
 	$controller
 		->setPageTitle(I18N::translate('Relationships'))
 		->pageHeader();
-	$paths = array();
+	$paths = [];
 }
 
 ?>
@@ -167,7 +167,7 @@ if ($person1 && $person2) {
 		$num_paths++;
 
 		// Use a table/grid for layout.
-		$table = array();
+		$table = [];
 		// Current position in the grid.
 		$x     = 0;
 		$y     = 0;

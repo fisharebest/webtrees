@@ -291,8 +291,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		}
 
 		echo '</table>';
-
-		return;
 	}
 
 	/** {@inheritdoc} */
@@ -369,7 +367,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo I18N::translate('Link this individual to an existing family as a child'); ?></a>
 				</td>
 			</tr>
-			<?php if ($controller->record->getSex() != "F") { ?>
+			<?php if ($controller->record->getSex() != 'F') { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo I18N::translate('Add a wife'); ?></a>
@@ -381,7 +379,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 			</tr>
 			<?php }
-			if ($controller->record->getSex() != "M") { ?>
+			if ($controller->record->getSex() != 'M') { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a husband'); ?></a>

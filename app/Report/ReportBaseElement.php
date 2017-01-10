@@ -62,7 +62,7 @@ class ReportBaseElement {
 	 */
 	public function addText($t) {
 		$t = trim($t, "\r\n\t");
-		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
+		$t = str_replace(['<br>', '&nbsp;'], ["\n", ' '], $t);
 		$t = strip_tags($t);
 		$t = htmlspecialchars_decode($t);
 		$this->text .= $t;

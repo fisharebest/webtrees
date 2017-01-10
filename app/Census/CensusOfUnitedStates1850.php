@@ -34,7 +34,7 @@ class CensusOfUnitedStates1850 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name'),
 			new CensusColumnAge($this, 'Age', 'Age'),
 			new CensusColumnSexMF($this, 'Sex', 'Sex'),
@@ -46,6 +46,6 @@ class CensusOfUnitedStates1850 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'School', 'Attended school within the year'),
 			new CensusColumnNull($this, 'R+W', 'Persons over 20 years of age who cannot read and write'),
 			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, idiotic, pauper or convict'),
-		);
+		];
 	}
 }

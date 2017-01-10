@@ -34,7 +34,7 @@ class CensusOfUnitedStates1890 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnGivenNameInitial($this, 'Name', 'Christian name in full, and initial of middle name'),
 			new CensusColumnSurname($this, 'Surname', 'Surname'),
 			new CensusColumnNull($this, 'CW', 'Whether a soldier, sailor or marine during the civil war (U.S. or Conf.), or widow of such person'),
@@ -59,6 +59,6 @@ class CensusOfUnitedStates1890 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'Disease', 'Whether suffering from acute or chronic disease, with name of disease and length of time afflicted'),
 			new CensusColumnNull($this, 'Infirm', 'Whether defective in mind, sight, hearing, or speech, or whether crippled, maimed, or deformed, with name of defect'),
 			new CensusColumnNull($this, 'Prisoner', 'Whether a prisoner, convict, homeless child, or pauper'),
-		);
+		];
 	}
 }

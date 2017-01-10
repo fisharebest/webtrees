@@ -50,7 +50,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -60,7 +60,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$block      = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', self::DEFAULT_HIDE_EMPTY);
 
-		foreach (array('days', 'infoStyle', 'sortStyle', 'hide_empty', 'show_user', 'block') as $name) {
+		foreach (['days', 'infoStyle', 'sortStyle', 'hide_empty', 'show_user', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -99,7 +99,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 
@@ -152,17 +152,17 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', [
 			'name'      => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
-		), null, $sortStyle, '');
+		], null, $sortStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
@@ -200,14 +200,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			"SELECT d_gid FROM `##dates`" .
 			" WHERE d_fact='CHAN' AND d_julianday1 >= :jd AND d_file = :tree_id";
 
-		$vars = array(
+		$vars = [
 			'jd'      => $jd,
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		$xrefs = Database::prepare($sql)->execute($vars)->fetchOneColumn();
 
-		$records = array();
+		$records = [];
 		foreach ($xrefs as $xref) {
 			$record = GedcomRecord::getInstance($xref, $tree);
 			if ($record->canShow()) {
@@ -230,14 +230,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	private function changesList(array $records, $sort, $show_user) {
 		switch ($sort) {
 		case 'name':
-			uasort($records, array('self', 'sortByNameAndChangeDate'));
+			uasort($records, ['self', 'sortByNameAndChangeDate']);
 			break;
 		case 'date_asc':
-			uasort($records, array('self', 'sortByChangeDateAndName'));
+			uasort($records, ['self', 'sortByChangeDateAndName']);
 			$records = array_reverse($records);
 			break;
 		case 'date_desc':
-			uasort($records, array('self', 'sortByChangeDateAndName'));
+			uasort($records, ['self', 'sortByChangeDateAndName']);
 		}
 
 		$html = '';

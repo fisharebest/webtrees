@@ -105,13 +105,13 @@ case 'load_json':
 			"  OR   m_titl LIKE CONCAT('%', :search_2, '%'))" .
 			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'";
-		$ARGS1 = array(
+		$ARGS1 = [
 			'media_path_1' => $media_path,
 			'media_folder' => $media_folder,
 			'media_path_2' => Filter::escapeLike($media_path),
 			'search_1'     => Filter::escapeLike($search),
 			'search_2'     => Filter::escapeLike($search),
-		);
+		];
 		// Unfiltered rows
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
@@ -121,10 +121,10 @@ case 'load_json':
 			" AND   m_filename LIKE CONCAT(:media_path_3, '%')" .
 			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'";
-		$ARGS2 = array(
+		$ARGS2 = [
 			'media_folder' => $media_folder,
 			'media_path_3' => $media_path,
-		);
+		];
 
 		if ($subfolders == 'exclude') {
 			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
@@ -167,14 +167,14 @@ case 'load_json':
 		$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 		$recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-		$data = array();
+		$data = [];
 		foreach ($rows as $row) {
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			$data[] = array(
+			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
 				mediaObjectInfo($media),
-			);
+			];
 		}
 		break;
 
@@ -185,16 +185,16 @@ case 'load_json':
 			" FROM  `##media`" .
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
-		$ARGS1 = array(
+		$ARGS1 = [
 			'search_1' => Filter::escapeLike($search),
 			'search_2' => Filter::escapeLike($search),
-		);
+		];
 		// Unfiltered rows
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM  `##media`" .
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
-		$ARGS2 = array();
+		$ARGS2 = [];
 
 		$order = Filter::getArray('order');
 		$SELECT1 .= " ORDER BY ";
@@ -231,14 +231,14 @@ case 'load_json':
 		$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 		$recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-		$data = array();
+		$data = [];
 		foreach ($rows as $row) {
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			$data[] = array(
+			$data[] = [
 				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
 				mediaObjectInfo($media),
-			);
+			];
 		}
 		break;
 
@@ -249,9 +249,9 @@ case 'load_json':
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
 			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
-		)->execute(array(
+		)->execute([
 			'media_folder' => $media_folder,
-		))->fetchAssoc();
+		])->fetchAssoc();
 
 		$disk_files = all_disk_files($media_folder, $media_path, $subfolders, $search);
 		$db_files   = all_media_files($media_folder, $media_path, $subfolders, $search);
@@ -276,7 +276,7 @@ case 'load_json':
 		// Paginate unused files
 		$unused_files = array_slice($unused_files, $start, $length);
 
-		$data = array();
+		$data = [];
 		foreach ($unused_files as $unused_file) {
 			$full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
 			$thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
@@ -302,9 +302,9 @@ case 'load_json':
 			// Is there a pending record for this file?
 			$exists_pending = Database::prepare(
 				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
-			)->execute(array(
+			)->execute([
 				'unused_file' => Filter::escapeLike($unused_file),
-			))->fetchOne();
+			])->fetchOne();
 
 			// Form to create new media object in each tree
 			$create_form = '';
@@ -319,11 +319,11 @@ case 'load_json':
 			$delete_link =
 				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
-			$data[] = array(
+			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
 				$create_form,
-			);
+			];
 		}
 		break;
 
@@ -333,12 +333,12 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'), // String, but always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 
 	return;
 }
@@ -355,7 +355,7 @@ function all_media_folders() {
 		" WHERE setting_name='MEDIA_DIRECTORY' AND gedcom_id > 0" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array())->fetchAssoc();
+	)->execute([])->fetchAssoc();
 }
 
 /**
@@ -375,11 +375,11 @@ function media_paths($media_folder) {
 		" AND   m_filename NOT LIKE 'https://%'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array(
+	)->execute([
 		'media_folder' => $media_folder,
-	))->fetchOneColumn();
+	])->fetchOneColumn();
 
-	if (!$media_paths || reset($media_paths) != '') {
+	if (empty($media_paths) || $media_paths[0] !== '') {
 		// Always include a (possibly empty) top-level folder
 		array_unshift($media_paths, '');
 	}
@@ -397,7 +397,7 @@ function media_paths($media_folder) {
  * @return string[]
  */
 function scan_dirs($dir, $recursive, $filter) {
-	$files = array();
+	$files = [];
 
 	// $dir comes from the database. The actual folder may not exist.
 	if (is_dir($dir)) {
@@ -458,13 +458,13 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 		"  OR   m_titl LIKE CONCAT('%', :filter_2, '%'))" .
 		" AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
-	)->execute(array(
+	)->execute([
 		'media_path_1' => $media_path,
 		'media_folder' => $media_folder,
 		'media_path_2' => Filter::escapeLike($media_path),
 		'filter_1'     => Filter::escapeLike($filter),
 		'filter_2'     => Filter::escapeLike($filter),
-	))->fetchOneColumn();
+	])->fetchOneColumn();
 }
 
 /**
@@ -542,7 +542,7 @@ function mediaObjectInfo(Media $media) {
 
 	$html .= '<br>';
 
-	$linked = array();
+	$linked = [];
 	foreach ($media->linkedIndividuals('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
@@ -560,7 +560,7 @@ function mediaObjectInfo(Media $media) {
 		// Invalid GEDCOM - you cannot link a REPO to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	if ($linked) {
+	if (!empty($linked)) {
 		$html .= '<ul>';
 		foreach ($linked as $link) {
 			$html .= '<li>' . $link . '</li>';
@@ -594,7 +594,7 @@ $controller
 		processing: true,
 		serverSide: true,
 		ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
-		' . I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+		' . I18N::datatablesI18N([5, 10, 20, 50, 100, 500, 1000, -1]) . ',
 		autoWidth:false,
 		pageLength: 10,
 		pagingType: "full_numbers",

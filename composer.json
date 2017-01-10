@@ -13,7 +13,6 @@
 		"fisharebest/algorithm": "1.*",
 		"fisharebest/ext-calendar": "2.*",
 		"fisharebest/localization": "1.*",
-		"fisharebest/php-polyfill": "1.*",
 		"michelf/php-markdown": "1.*",
 		"pclzip/pclzip": "2.*",
 		"rhumsaa/uuid": "2.*",
@@ -21,7 +20,7 @@
 		"tecnickcom/tcpdf": "6.*"
 	},
 	"require-dev": {
-		"fabpot/php-cs-fixer": "*",
+		"friendsofphp/php-cs-fixer": "*",
 		"mockery/mockery": "*",
 		"phpdocumentor/phpdocumentor": "*",
 		"phpunit/phpunit": "*",

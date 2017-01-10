@@ -63,7 +63,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 			$this->getTitle(),
 			'statistics.php?ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-statistics',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

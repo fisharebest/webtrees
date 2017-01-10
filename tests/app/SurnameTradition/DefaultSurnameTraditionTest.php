@@ -56,7 +56,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
 		);
 	}
@@ -68,7 +68,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
 		);
 	}
@@ -80,7 +80,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
 		);
 	}
@@ -92,7 +92,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'M')
 		);
 	}
@@ -104,7 +104,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'F')
 		);
 	}
@@ -116,7 +116,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'U')
 		);
 	}
@@ -128,7 +128,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
 		);
 	}
@@ -140,7 +140,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('John /White/', 'F')
 		);
 	}
@@ -152,7 +152,7 @@ class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
 		);
 	}

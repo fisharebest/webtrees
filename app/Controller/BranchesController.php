@@ -39,10 +39,10 @@ class BranchesController extends PageController {
 	private $soundex_dm;
 
 	/** @var Individual[] Everyone with the selected surname */
-	private $individuals = array();
+	private $individuals = [];
 
 	/** @var Individual[] Ancestors of the root person - for SOSA numbers */
-	private $ancestors = array();
+	private $ancestors = [];
 
 	/**
 	 * Create a branches list controller
@@ -52,11 +52,11 @@ class BranchesController extends PageController {
 
 		parent::__construct();
 
-		$this->surname     = Filter::get('surname');
+		$this->surname     = Filter::get('surname', null, '');
 		$this->soundex_std = Filter::getBool('soundex_std');
 		$this->soundex_dm  = Filter::getBool('soundex_dm');
 
-		if ($this->surname) {
+		if ($this->surname !== '') {
 			$this->setPageTitle(/* I18N: %s is a surname */
 				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
@@ -72,7 +72,7 @@ class BranchesController extends PageController {
 	/**
 	 * The surname to be used on this page.
 	 *
-	 * @return null|string
+	 * @return string
 	 */
 	public function getSurname() {
 		return $this->surname;
@@ -109,7 +109,7 @@ class BranchesController extends PageController {
 			" WHERE n_file = ?" .
 			" AND n_type != ?" .
 			" AND (n_surn = ? OR n_surname = ?";
-		$args = array($WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname);
+		$args = [$WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname];
 		if ($this->soundex_std) {
 			$sdx = Soundex::russell($this->surname);
 			if ($sdx !== null) {
@@ -130,7 +130,7 @@ class BranchesController extends PageController {
 		}
 		$sql .= ')';
 		$rows              = Database::prepare($sql)->execute($args)->fetchAll();
-		$this->individuals = array();
+		$this->individuals = [];
 		foreach ($rows as $row) {
 			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
@@ -189,7 +189,7 @@ class BranchesController extends PageController {
 		// A person has many names. Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {
-			list($surn1) = explode(",", $name['sort']);
+			list($surn1) = explode(',', $name['sort']);
 			if (// one name is a substring of the other
 				stripos($surn1, $this->surname) !== false ||
 				stripos($this->surname, $surn1) !== false ||
@@ -209,7 +209,7 @@ class BranchesController extends PageController {
 
 		// Is this individual one of our ancestors?
 		$sosa = array_search($individual, $this->ancestors, true);
-		if ($sosa) {
+		if ($sosa !== false) {
 			$sosa_class = 'search_hit';
 			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {

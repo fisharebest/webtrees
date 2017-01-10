@@ -32,25 +32,25 @@ class FunctionsCharts {
 	 * @param string $pid optional pid
 	 * @param string $arrowDirection direction of link arrow
 	 */
-	public static function printSosaNumber($sosa, $pid = "", $arrowDirection = "up") {
-		if (substr($sosa, -1, 1) == ".") {
+	public static function printSosaNumber($sosa, $pid = '', $arrowDirection = 'up') {
+		if (substr($sosa, -1, 1) == '.') {
 			$personLabel = substr($sosa, 0, -1);
 		} else {
 			$personLabel = $sosa;
 		}
-		if ($arrowDirection == "blank") {
-			$visibility = "hidden";
+		if ($arrowDirection == 'blank') {
+			$visibility = 'hidden';
 		} else {
-			$visibility = "normal";
+			$visibility = 'normal';
 		}
-		echo "<td class=\"subheaders center\" style=\"vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ", $visibility, ";\">";
+		echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
 		echo $personLabel;
-		if ($sosa != "1" && $pid != "") {
-			if ($arrowDirection == "left") {
+		if ($sosa != '1' && $pid != '') {
+			if ($arrowDirection == 'left') {
 				$dir = 0;
-			} elseif ($arrowDirection == "right") {
+			} elseif ($arrowDirection == 'right') {
 				$dir = 1;
-			} elseif ($arrowDirection == "down") {
+			} elseif ($arrowDirection == 'down') {
 				$dir = 3;
 			} else {
 				$dir = 2; // either 'blank' or 'up'
@@ -307,7 +307,7 @@ class FunctionsCharts {
 
 		if ($sosa == 0 && Auth::isEditor($family->getTree())) {
 			echo '<br>';
-			echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . I18N::translate('Add a child to this family') . "</a>";
+			echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . I18N::translate('Add a child to this family') . '</a>';
 			echo ' <a class="icon-sex_m_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'M\');" title="', I18N::translate('son'), '"></a>';
 			echo ' <a class="icon-sex_f_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'F\');" title="', I18N::translate('daughter'), '"></a>';
 			echo '<br><br>';
@@ -326,9 +326,9 @@ class FunctionsCharts {
 					if ($child->getXref() == $childid) {
 						self::printSosaNumber($sosa, $childid);
 					} elseif (empty($label)) {
-						self::printSosaNumber("");
+						self::printSosaNumber('');
 					} else {
-						self::printSosaNumber($label . ($nchi++) . ".");
+						self::printSosaNumber($label . ($nchi++) . '.');
 					}
 				}
 				if ($child->isPendingAddtion()) {
@@ -384,24 +384,24 @@ class FunctionsCharts {
 								echo '–', $div->getDate()->minimumDate()->format('%Y');
 							}
 						}
-						echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\">";
-						echo "</td>";
+						echo '<br><img width="100%" class="line5" height="3" src="' . Theme::theme()->parameter('image-hline') . '" alt="">';
+						echo '</td>';
 						// spouse information
-						echo "<td style=\"vertical-align: center;";
+						echo '<td style="vertical-align: center;';
 						if (!empty($divrec)) {
-							echo " filter:alpha(opacity=40);opacity:0.4;\">";
+							echo ' filter:alpha(opacity=40);opacity:0.4;">';
 						} else {
-							echo "\">";
+							echo '">';
 						}
 						FunctionsPrint::printPedigreePerson($spouse, $show_full);
-						echo "</td>";
+						echo '</td>';
 						// cousins
 						if ($show_cousins) {
 							self::printCousins($famid_child, $show_full);
 						}
 					}
 				}
-				echo "</tr>";
+				echo '</tr>';
 			}
 		} elseif ($sosa < 1) {
 			// message 'no children' except for sosa
@@ -409,7 +409,7 @@ class FunctionsCharts {
 				echo '<tr><td><i class="icon-childless"></i> ' . I18N::translate('This family remained childless') . '</td></tr>';
 			}
 		}
-		echo "</table><br>";
+		echo '</table><br>';
 	}
 
 	/**
@@ -463,7 +463,7 @@ class FunctionsCharts {
 		}
 
 		// arrow style     0         1         2         3
-		$array_style = array('icon-larrow', 'icon-rarrow', 'icon-uarrow', 'icon-darrow');
+		$array_style = ['icon-larrow', 'icon-rarrow', 'icon-uarrow', 'icon-darrow'];
 		$astyle      = $array_style[$adir];
 
 		// Labels include people’s names, which may contain markup

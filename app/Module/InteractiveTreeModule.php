@@ -82,7 +82,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 			$this->getTitle(),
 			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-tree',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

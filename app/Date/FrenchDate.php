@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class FrenchDate extends CalendarDate {
 	/** @var int[] Convert GEDCOM month names to month numbers  */
-	public static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
+	public static $MONTH_ABBREV = ['' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13];
 
 	/**
 	 * Create a date from either:
@@ -50,7 +50,7 @@ class FrenchDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the French republican calendar */ I18N::translateContext('NOMINATIVE', 'Vendemiaire'),
 				2  => /* I18N: a month in the French republican calendar */ I18N::translateContext('NOMINATIVE', 'Brumaire'),
@@ -65,7 +65,7 @@ class FrenchDate extends CalendarDate {
 				11 => /* I18N: a month in the French republican calendar */ I18N::translateContext('NOMINATIVE', 'Thermidor'),
 				12 => /* I18N: a month in the French republican calendar */ I18N::translateContext('NOMINATIVE', 'Fructidor'),
 				13 => /* I18N: a month in the French republican calendar */ I18N::translateContext('NOMINATIVE', 'jours complementaires'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -83,7 +83,7 @@ class FrenchDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the French republican calendar */ I18N::translateContext('GENITIVE', 'Vendemiaire'),
 				2  => /* I18N: a month in the French republican calendar */ I18N::translateContext('GENITIVE', 'Brumaire'),
@@ -98,7 +98,7 @@ class FrenchDate extends CalendarDate {
 				11 => /* I18N: a month in the French republican calendar */ I18N::translateContext('GENITIVE', 'Thermidor'),
 				12 => /* I18N: a month in the French republican calendar */ I18N::translateContext('GENITIVE', 'Fructidor'),
 				13 => /* I18N: a month in the French republican calendar */ I18N::translateContext('GENITIVE', 'jours complementaires'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -116,7 +116,7 @@ class FrenchDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the French republican calendar */ I18N::translateContext('LOCATIVE', 'Vendemiaire'),
 				2  => /* I18N: a month in the French republican calendar */ I18N::translateContext('LOCATIVE', 'Brumaire'),
@@ -131,7 +131,7 @@ class FrenchDate extends CalendarDate {
 				11 => /* I18N: a month in the French republican calendar */ I18N::translateContext('LOCATIVE', 'Thermidor'),
 				12 => /* I18N: a month in the French republican calendar */ I18N::translateContext('LOCATIVE', 'Fructidor'),
 				13 => /* I18N: a month in the French republican calendar */ I18N::translateContext('LOCATIVE', 'jours complementaires'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -149,7 +149,7 @@ class FrenchDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the French republican calendar */ I18N::translateContext('INSTRUMENTAL', 'Vendemiaire'),
 				2  => /* I18N: a month in the French republican calendar */ I18N::translateContext('INSTRUMENTAL', 'Brumaire'),
@@ -164,7 +164,7 @@ class FrenchDate extends CalendarDate {
 				11 => /* I18N: a month in the French republican calendar */ I18N::translateContext('INSTRUMENTAL', 'Thermidor'),
 				12 => /* I18N: a month in the French republican calendar */ I18N::translateContext('INSTRUMENTAL', 'Fructidor'),
 				13 => /* I18N: a month in the French republican calendar */ I18N::translateContext('INSTRUMENTAL', 'jours complementaires'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -193,7 +193,7 @@ class FrenchDate extends CalendarDate {
 		static $translated_day_names;
 
 		if ($translated_day_names === null) {
-			$translated_day_names = array(
+			$translated_day_names = [
 				0  => /* I18N: The first day in the French republican calendar */ I18N::translate('Primidi'),
 				1  => /* I18N: The second day in the French republican calendar */ I18N::translate('Duodi'),
 				2  => /* I18N: The third day in the French republican calendar */ I18N::translate('Tridi'),
@@ -204,7 +204,7 @@ class FrenchDate extends CalendarDate {
 				7  => /* I18N: The eighth day in the French republican calendar */ I18N::translate('Octidi'),
 				8  => /* I18N: The ninth day in the French republican calendar */ I18N::translate('Nonidi'),
 				9  => /* I18N: The tenth day in the French republican calendar */ I18N::translate('Decidi'),
-			);
+			];
 		}
 
 		return $translated_day_names[$day_number];

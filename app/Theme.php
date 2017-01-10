@@ -21,13 +21,6 @@ use Fisharebest\Webtrees\Theme\ThemeInterface;
  * Provide access to the current theme.
  */
 class Theme {
-	/**
-	 * PHP 5.3.2 requires a constructor when there is also a method
-	 * called theme()
-	 */
-	private function __construct() {
-	}
-
 	/** @var ThemeInterface The current theme*/
 	private static $theme;
 
@@ -42,7 +35,7 @@ class Theme {
 	 */
 	public static function installedThemes() {
 		if (self::$installed_themes === null) {
-			self::$installed_themes = array();
+			self::$installed_themes = [];
 			foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
 				try {
 					$theme = include $theme_path;
@@ -65,7 +58,7 @@ class Theme {
 	 * @return string[]
 	 */
 	public static function themeNames() {
-		$theme_names = array();
+		$theme_names = [];
 		foreach (self::installedThemes() as $theme) {
 			$theme_names[$theme->themeId()] = $theme->themeName();
 		}

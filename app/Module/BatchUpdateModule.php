@@ -309,8 +309,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	private function getAllXrefs() {
 		global $WT_TREE;
 
-		$sql  = array();
-		$vars = array();
+		$sql  = [];
+		$vars = [];
 		foreach ($this->PLUGIN->getRecordTypesToUpdate() as $type) {
 			switch ($type) {
 			case 'INDI':
@@ -349,7 +349,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 * @return BatchUpdateBasePlugin[]
 	 */
 	private function getPluginList() {
-		$plugins    = array();
+		$plugins    = [];
 		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
 		while (($file = readdir($dir_handle)) !== false) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {

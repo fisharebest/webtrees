@@ -43,7 +43,7 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, 'Nummer', 'Laufende Nummer'),
 			new CensusColumnGivenNames($this, 'Vorname', 'Vorname'),
 			new CensusColumnSurname($this, 'Familienname', 'Familienname'),
@@ -61,6 +61,6 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, 'Wohn-/ Aufenthaltsort', 'Wohnort bei nur vorübergehend Anwesenden. Aufenthaltsort bei vorübergehend Abwesenden'),
 			new CensusColumnNull($this, 'Dienstgrad', 'Für Militärpersonen: Angabe des Dienstgrades'),
 			new CensusColumnNull($this, 'Kriegsgefangener', 'Angabe ob Kriegsgefangener'),
-		);
+		];
 	}
 }

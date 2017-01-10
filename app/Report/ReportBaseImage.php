@@ -54,13 +54,13 @@ class ReportBaseImage extends ReportBaseElement {
 	 *
 	 * @var string
 	 */
-	public $align = "";
+	public $align = '';
 	/**
 	 * T:same line, N:next line
 	 *
 	 * @var string
 	 */
-	public $line = "";
+	public $line = '';
 
 	/**
 	 * Image class function - Base

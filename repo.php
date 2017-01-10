@@ -73,10 +73,10 @@ $controller->addInlineJavascript('
 		});
 ');
 
-$linked_fam  = array();
-$linked_indi = array();
-$linked_note = array();
-$linked_obje = array();
+$linked_fam  = [];
+$linked_indi = [];
+$linked_note = [];
+$linked_obje = [];
 $linked_sour = $controller->record->linkedSources('REPO');
 
 $facts = $controller->record->getFacts();
@@ -84,7 +84,7 @@ $facts = $controller->record->getFacts();
 usort(
 	$facts,
 	function (Fact $x, Fact $y) {
-		static $order = array(
+		static $order = [
 			'NAME' => 0,
 			'ADDR' => 1,
 			'NOTE' => 2,
@@ -93,7 +93,7 @@ usort(
 			'RIN'  => 5,
 			'_UID' => 6,
 			'CHAN' => 7,
-		);
+		];
 
 		return
 			(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)

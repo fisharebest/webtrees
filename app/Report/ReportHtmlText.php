@@ -32,9 +32,9 @@ class ReportHtmlText extends ReportBaseText {
 		if ($renderer->getCurrentStyle() != $this->styleName) {
 			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $renderer->pageNo(), $this->text);
+		$temptext = str_replace('#PAGENUM#', $renderer->pageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 
 		// If any text at all
 		if (!empty($temptext)) {
@@ -50,7 +50,7 @@ class ReportHtmlText extends ReportBaseText {
 				if ($renderer->getStringWidth($temptext) > $width) {
 					$lines = explode("\n", $temptext);
 					foreach ($lines as $line) {
-						echo "<div style=\"position:absolute;top:", $startY, "pt;", $renderer->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
+						echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->alignRTL, ':', $startX, 'pt;width:', $width, 'pt;">';
 						$line = $renderer->textWrap($line, $width);
 						$startY += $renderer->getTextCellHeight($line);
 						$renderer->setY($startY);
@@ -58,7 +58,7 @@ class ReportHtmlText extends ReportBaseText {
 						echo "</div>\n";
 					}
 				} else {
-					echo "<div style=\"position:absolute;top:", $startY, "pt;", $renderer->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
+					echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->alignRTL, ':', $startX, 'pt;width:', $width, 'pt;">';
 					$renderer->write($temptext, $this->color);
 					echo "</div>\n";
 					$renderer->setX($startX + $renderer->getStringWidth($temptext));
@@ -85,7 +85,7 @@ class ReportHtmlText extends ReportBaseText {
 		}
 		$style = $html->getStyle($this->styleName);
 
-		return ($style["size"] * $ct) * $html->cellHeightRatio;
+		return ($style['size'] * $ct) * $html->cellHeightRatio;
 	}
 
 	/**
@@ -115,7 +115,7 @@ class ReportHtmlText extends ReportBaseText {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
-				$newtext            = "";
+				$newtext            = '';
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines              = explode("\n", $this->text);
 				// Go throught the text line by line
@@ -124,22 +124,22 @@ class ReportHtmlText extends ReportBaseText {
 					$lw = $html->getStringWidth($line);
 					// If the line has to be wraped
 					if ($lw > $wrapWidthRemaining) {
-						$words    = explode(" ", $line);
+						$words    = explode(' ', $line);
 						$addspace = count($words);
 						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += $html->getStringWidth($word . " ");
+							$lw += $html->getStringWidth($word . ' ');
 							if ($lw <= $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 							} else {
-								$lw = $html->getStringWidth($word . " ");
+								$lw = $html->getStringWidth($word . ' ');
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
-									$newtext .= " ";
+									$newtext .= ' ';
 								}
 								// Reset the wrap width to the cell width
 								$wrapWidthRemaining = $this->wrapWidthCell;
@@ -162,7 +162,7 @@ class ReportHtmlText extends ReportBaseText {
 				$this->text = $newtext;
 				$lfct       = substr_count($this->text, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -171,6 +171,6 @@ class ReportHtmlText extends ReportBaseText {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

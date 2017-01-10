@@ -120,7 +120,7 @@ foreach (Module::getInstalledModules('disabled') as $module) {
 		case 'disable':
 			Database::prepare(
 				"UPDATE `##module` SET status = 'disabled' WHERE module_name = ?"
-			)->execute(array($module->getName()));
+			)->execute([$module->getName()]);
 			break;
 		case 'ignore':
 			echo '<br>', I18N::translate('Custom module'), ' — ', WT_MODULES_DIR, $module->getName(), ' — ', $module->getTitle(), $icon_success;
@@ -169,19 +169,19 @@ foreach (Theme::themeNames() as $theme_id => $theme_name) {
 			"SELECT EXISTS (SELECT 1 FROM `##site_setting`   WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
-		)->execute(array($theme_id, $theme_id, $theme_id))->fetchOne();
+		)->execute([$theme_id, $theme_id, $theme_id])->fetchOne();
 		if ($theme_used) {
 			switch ($themes_action) {
 			case 'disable':
 				Database::prepare(
 					"DELETE FROM `##site_setting`   WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_id));
+				)->execute([$theme_id]);
 				Database::prepare(
 					"DELETE FROM `##gedcom_setting` WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_id));
+				)->execute([$theme_id]);
 				Database::prepare(
 					"DELETE FROM `##user_setting`   WHERE setting_name = 'theme'     AND setting_value = ?"
-				)->execute(array($theme_id));
+				)->execute([$theme_id]);
 				break;
 			case 'ignore':
 				echo '<br>', I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_success;

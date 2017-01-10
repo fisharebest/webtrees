@@ -81,10 +81,7 @@ To install **webtrees**, you need:
   to use a specific type or version.
 * Approximately 65MB of disk space for the application files, plus whatever is
   needed for your media files, GEDCOM files and database.
-* PHP 5.3.2 or later. Note that many web hosts offer *both* PHP4 and PHP5,
-  typically with PHP4 as the default. If this is the case, you will be able to
-  switch between the two using a control panel or a configuration file. Refer
-  to your web host's support documentation for details.
+* PHP 5.6 or later.  Servers with PHP 5.3 - 5.5 should use webtrees 1.7.  Servers with PHP 5.2 should use webtrees 1.4.
    * PHP should be configured with the PHP/PDO library for MySQL. This is a
      server configuration option. It is enabled by default on most hosts.
      See [http://php.net/pdo](http://php.net/pdo)

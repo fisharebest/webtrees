@@ -221,7 +221,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 				}
 				if ($stepParents) {
 					$relationship = $father instanceof Individual ?
-						I18N::translateContext("father’s wife", "step-mother") : I18N::translateContext("mother’s husband", "step-father");
+						I18N::translateContext('father’s wife', 'step-mother') : I18N::translateContext('mother’s husband', 'step-father');
 					$html .= sprintf(self::TTL, $relationship) . $stepParents;
 				}
 			}

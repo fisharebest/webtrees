@@ -46,7 +46,7 @@ class Statement {
 	 *
 	 * @return Statement
 	 */
-	public function execute($bind_variables = array()) {
+	public function execute($bind_variables = []) {
 		if ($this->executed) {
 			throw new \Exception('Statement::execute() called twice.');
 		}
@@ -185,7 +185,7 @@ class Statement {
 			$this->execute();
 		}
 
-		$rows = array();
+		$rows = [];
 		while ($row = $this->pdo_statement->fetch(PDO::FETCH_NUM)) {
 			$rows[$row[0]] = $row[1];
 		}
@@ -206,7 +206,7 @@ class Statement {
 			$this->execute();
 		}
 
-		$list = array();
+		$list = [];
 		while ($row = $this->pdo_statement->fetch(PDO::FETCH_NUM)) {
 			$list[] = $row[0];
 		}

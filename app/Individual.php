@@ -42,10 +42,10 @@ class Individual extends GedcomRecord {
 	 * @param string[] $xrefs
 	 */
 	public static function load(Tree $tree, array $xrefs) {
-		$args = array(
+		$args = [
 			'tree_id' => $tree->getTreeId(),
-		);
-		$placeholders = array();
+		];
+		$placeholders = [];
 
 		foreach (array_unique($xrefs) as $n => $xref) {
 			if (!isset(self::$gedcom_record_cache[$tree->getTreeId()][$xref])) {
@@ -148,10 +148,10 @@ class Individual extends GedcomRecord {
 		$user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
 		if ($user_individual) {
 			if (!$cache) {
-				$cache = array(
-					0 => array($user_individual),
-					1 => array(),
-				);
+				$cache = [
+					0 => [$user_individual],
+					1 => [],
+				];
 				foreach ($user_individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
 					$family = $fact->getTarget();
 					if ($family) {
@@ -176,7 +176,7 @@ class Individual extends GedcomRecord {
 				}
 			} else {
 				// Need to calculate these paths
-				$cache[$n] = array();
+				$cache[$n] = [];
 				if ($n % 2 == 0) {
 					// Add FAM->INDI links
 					foreach ($cache[$n - 1] as $family) {
@@ -253,10 +253,10 @@ class Individual extends GedcomRecord {
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'xref'    => $xref,
 			'tree_id' => $tree_id,
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -566,7 +566,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -582,7 +582,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -598,7 +598,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -614,7 +614,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -631,8 +631,8 @@ class Individual extends GedcomRecord {
 				}
 			}
 			if (is_null($this->_getEstimatedBirthDate)) {
-				$min = array();
-				$max = array();
+				$min = [];
+				$max = [];
 				$tmp = $this->getDeathDate();
 				if ($tmp->isOK()) {
 					$min[] = $tmp->minimumJulianDay() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
@@ -771,7 +771,7 @@ class Individual extends GedcomRecord {
 	 * @return string
 	 */
 	public function getBoxStyle() {
-		$tmp = array('M' => '', 'F' => 'F', 'U' => 'NN');
+		$tmp = ['M' => '', 'F' => 'F', 'U' => 'NN'];
 
 		return 'person_box' . $tmp[$this->getSex()];
 	}
@@ -790,7 +790,7 @@ class Individual extends GedcomRecord {
 
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-		$families = array();
+		$families = [];
 		foreach ($this->getFacts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
 			$family = $fact->getTarget();
 			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
@@ -828,7 +828,7 @@ class Individual extends GedcomRecord {
 		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
 			return $match[1];
 		} else {
-			$children = array();
+			$children = [];
 			foreach ($this->getSpouseFamilies() as $fam) {
 				foreach ($fam->getChildren() as $child) {
 					$children[$child->getXref()] = true;
@@ -853,7 +853,7 @@ class Individual extends GedcomRecord {
 
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-		$families = array();
+		$families = [];
 		foreach ($this->getFacts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
 			$family = $fact->getTarget();
 			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
@@ -915,7 +915,7 @@ class Individual extends GedcomRecord {
 	 * @return Family[]
 	 */
 	public function getChildStepFamilies() {
-		$step_families = array();
+		$step_families = [];
 		$families      = $this->getChildFamilies();
 		foreach ($families as $family) {
 			$father = $family->getHusband();
@@ -945,7 +945,7 @@ class Individual extends GedcomRecord {
 	 * @return Family[]
 	 */
 	public function getSpouseStepFamilies() {
-		$step_families = array();
+		$step_families = [];
 		$families      = $this->getSpouseFamilies();
 		foreach ($families as $family) {
 			$spouse = $family->getSpouse($this);
@@ -1124,7 +1124,7 @@ class Individual extends GedcomRecord {
 		if ($SURN) {
 			$SURNS = preg_split('/ *, */', $SURN);
 		} else {
-			$SURNS = array();
+			$SURNS = [];
 		}
 		// ...so is GIVN - but nobody uses it like that
 		$GIVN = str_replace('/ *, */', ' ', $GIVN);
@@ -1160,25 +1160,25 @@ class Individual extends GedcomRecord {
 				}
 			} else {
 				// It is valid not to have a surname at all
-				$SURNS = array('');
+				$SURNS = [''];
 			}
 		}
 
 		// If we don’t have a GIVN record, extract it from the NAME
 		if (!$GIVN) {
 			$GIVN = preg_replace(
-				array(
+				[
 					'/ ?\/.*\/ ?/', // remove surname
 					'/ ?".+"/', // remove nickname
 					'/ {2,}/', // multiple spaces, caused by the above
 					'/^ | $/', // leading/trailing spaces, caused by the above
-				),
-				array(
+				],
+				[
 					' ',
 					' ',
 					' ',
 					'',
-				),
+				],
 				$full
 			);
 		}
@@ -1232,7 +1232,7 @@ class Individual extends GedcomRecord {
 				$SURN = substr_replace($SURN, 'Mac', 0, 4);
 			}
 
-			$this->_getAllNames[] = array(
+			$this->_getAllNames[] = [
 				'type'    => $type,
 				'sort'    => $SURN . ',' . $GIVN,
 				'full'    => $full, // This is used for display
@@ -1240,7 +1240,7 @@ class Individual extends GedcomRecord {
 				'surname' => $surname, // This goes into the database
 				'givn'    => $GIVN, // This goes into the database
 				'surn'    => $SURN, // This goes into the database
-			);
+			];
 		}
 	}
 
@@ -1299,8 +1299,8 @@ class Individual extends GedcomRecord {
 				$surn = substr($surn, 0, $max_surn) . '…';
 			}
 			$shortname = str_replace(
-				array('@P.N.', '@N.N.'),
-				array(I18N::translateContext('Unknown given name', '…'), I18N::translateContext('Unknown surname', '…')),
+				['@P.N.', '@N.N.'],
+				[I18N::translateContext('Unknown given name', '…'), I18N::translateContext('Unknown surname', '…')],
 				$givn . ' ' . $surn
 			);
 

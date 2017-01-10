@@ -74,33 +74,33 @@ class FamilyController extends GedcomRecordController {
 
 		if (Auth::isEditor($this->record->getTree())) {
 			// edit_fam / members
-			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change', [
 				'onclick' => 'return change_family_members("' . $this->record->getXref() . '");',
-			)));
+			]));
 
 			// edit_fam / add child
-			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil', [
 				'onclick' => 'return add_child_to_family("' . $this->record->getXref() . '", "U");',
-			)));
+			]));
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), '#', 'menu-fam-orderchil', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), '#', 'menu-fam-orderchil', [
 					'onclick' => 'return reorder_children("' . $this->record->getXref() . '");',
-				)));
+				]));
 			}
 
 			// delete
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', [
 				'onclick' => 'return delete_record("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-fam-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-fam-editraw', [
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		return $menu;

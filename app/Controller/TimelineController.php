@@ -34,16 +34,16 @@ class TimelineController extends PageController {
 	public $bheight = 30;
 
 	/** @var Fact[] The facts to display on the chart */
-	public $indifacts = array(); // array to store the fact records in for sorting and displaying
+	public $indifacts = []; // array to store the fact records in for sorting and displaying
 
 	/** @var int[] Numeric birth years of each individual */
-	public $birthyears = array();
+	public $birthyears = [];
 
 	/** @var int[] Numeric birth months of each individual */
-	public $birthmonths = array();
+	public $birthmonths = [];
 
 	/** @var int[] Numeric birth days of each individual */
-	public $birthdays = array();
+	public $birthdays = [];
 
 	/** @var int Lowest year to display */
 	public $baseyear = 0;
@@ -52,7 +52,7 @@ class TimelineController extends PageController {
 	public $topyear = 0;
 
 	/** @var Individual[] List of individuals to display */
-	public $people = array();
+	public $people = [];
 
 	/** @var string URL-encoded list of XREFs */
 	public $pidlinks = '';
@@ -61,7 +61,7 @@ class TimelineController extends PageController {
 	public $scale = 2;
 
 	/** @var string[] GEDCOM elements that may have DATE data, but should not be displayed */
-	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
+	private $nonfacts = ['BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN'];
 
 	/**
 	 * Startup activity
@@ -183,7 +183,7 @@ class TimelineController extends PageController {
 		$xoffset += abs($tyoffset);
 		$placements[$place] = $yoffset;
 
-		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
+		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . 'px; font-size: 8pt; height: ' . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
 		echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
 		echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
 		if (I18N::direction() === 'ltr') {

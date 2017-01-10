@@ -35,7 +35,7 @@ class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInt
 	 */
 
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
 			new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
 			new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
@@ -68,6 +68,6 @@ class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'F14', 'Free colored females 14-26 years'),
 			new CensusColumnNull($this, 'F26', 'Free colored females 26-45 years'),
 			new CensusColumnNull($this, 'F45', 'Free colored females 45+ years'),
-		);
+		];
 	}
 }

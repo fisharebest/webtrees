@@ -34,7 +34,7 @@ class CensusOfFrance1851 extends CensusOfFrance implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
 			new CensusColumnGivenNames($this, 'Prénoms', ''),
 			new CensusColumnOccupation($this, 'Professions', ''),
@@ -48,6 +48,6 @@ class CensusOfFrance1851 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnNull($this, 'Fr', 'Français d’origine'),
 			new CensusColumnNull($this, 'Nat', 'Naturalisés français'),
 			new CensusColumnNull($this, 'Etr', 'Étrangers (indiquer leur pays d’origine)'),
-		);
+		];
 	}
 }

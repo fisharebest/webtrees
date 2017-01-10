@@ -34,13 +34,13 @@ class CensusOfScotland1841 extends CensusOfScotland implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name'),
 			new CensusColumnAgeMale5Years($this, 'AgeM', 'Age (males)'),
 			new CensusColumnAgeFemale5Years($this, 'AgeF', 'Age (females)'),
 			new CensusColumnOccupation($this, 'Occupation', 'Profession, trade, employment or of independent means'),
 			new CensusColumnNull($this, 'BiC', 'Born in same county'),
 			new CensusColumnBornForeignParts($this, 'EIF', 'Born in England, Ireland or foreign parts'),
-		);
+		];
 	}
 }

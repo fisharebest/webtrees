@@ -20,20 +20,20 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  */
 class PolishSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface {
 	/** @var string[] Inflect a surname for females */
-	protected $inflect_female = array(
+	protected $inflect_female = [
 		'cki\b'  => 'cka',
 		'dzki\b' => 'dzka',
 		'ski\b'  => 'ska',
 		'żki\b'  => 'żka',
-	);
+	];
 
 	/** @var string[] Inflect a surname for males */
-	protected $inflect_male = array(
+	protected $inflect_male = [
 		'cka\b'  => 'cki',
 		'dzka\b' => 'dzki',
 		'ska\b'  => 'ski',
 		'żka\b'  => 'żki',
-	);
+	];
 
 	/**
 	 * What names are given to a new child
@@ -47,20 +47,20 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
 	public function newChildNames($father_name, $mother_name, $child_sex) {
 		if (preg_match(self::REGEX_SURN, $father_name, $match)) {
 			if ($child_sex === 'F') {
-				return array_filter(array(
+				return array_filter([
 					'NAME' => $this->inflect($match['NAME'], $this->inflect_female),
 					'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-				));
+				]);
 			} else {
-				return array_filter(array(
+				return array_filter([
 					'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
 					'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-				));
+				]);
 			}
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 
@@ -74,14 +74,14 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
 	 */
 	public function newParentNames($child_name, $parent_sex) {
 		if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
-			return array_filter(array(
+			return array_filter([
 				'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
 				'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-			));
+			]);
 		} else {
-			return array(
+			return [
 				'NAME'   => '//',
-			);
+			];
 		}
 	}
 
@@ -95,14 +95,14 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
 	 */
 	public function newSpouseNames($spouse_name, $spouse_sex) {
 		if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
-			return array(
+			return [
 				'NAME'   => '//',
 				'_MARNM' => $this->inflect($match['NAME'], $this->inflect_female),
-			);
+			];
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 }

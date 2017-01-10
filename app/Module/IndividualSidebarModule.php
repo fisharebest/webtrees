@@ -164,7 +164,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				break;
 			}
 			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_indi_letter">' . $html . '</a>';
-			$out .= $html . " ";
+			$out .= $html . ' ';
 		}
 
 		$out .= '</p>';
@@ -243,12 +243,12 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 			" AND i_id = n_id AND i_file = n_file AND i_file = :tree_id" .
 			" ORDER BY n_sort COLLATE :collation" .
 			" LIMIT 50"
-		)->execute(array(
+		)->execute([
 			'query_1'   => $query,
 			'query_2'   => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {

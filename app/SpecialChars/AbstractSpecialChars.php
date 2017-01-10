@@ -28,7 +28,7 @@ abstract class AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function upper() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -37,7 +37,7 @@ abstract class AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function lower() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -46,9 +46,9 @@ abstract class AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function other() {
-		return array(
+		return [
 			'¡', '¿', '„', '“', '”', '‚', '‛', '‘', '’', '«', '»', '‹', '›',
 			'–', 'ª', 'º', '€', '¢', '£', '¥', '©', '°', '†', '‡', '§', '¶',
-		);
+		];
 	}
 }

@@ -28,9 +28,9 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	 */
 	public function render($renderer) {
 
-		$newelements      = array();
-		$lastelement      = "";
-		$footnote_element = array();
+		$newelements      = [];
+		$lastelement      = '';
+		$footnote_element = [];
 		// Element counter
 		$cE = count($this->elements);
 		//-- collapse duplicate elements
@@ -43,14 +43,14 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
-						$footnote_element = array();
+						$footnote_element = [];
 					}
 					if (empty($lastelement)) {
 						$lastelement = $element;
 					} else {
 						// Checking if the Text has the same style
 						if ($element->getStyleName() == $lastelement->getStyleName()) {
-							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
+							$lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement   = $element;
@@ -63,36 +63,36 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement   = array();
+						$lastelement   = [];
 					}
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
 				} //-- do not keep empty footnotes
-				elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != "") {
+				elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != '') {
 					if (!empty($footnote_element)) {
 						ksort($footnote_element);
 						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
-						$footnote_element = array();
+						$footnote_element = [];
 					}
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement   = array();
+						$lastelement   = [];
 					}
 					$newelements[] = $element;
 				}
 			} else {
 				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
-					$lastelement   = array();
+					$lastelement   = [];
 				}
 				if (!empty($footnote_element)) {
 					ksort($footnote_element);
 					foreach ($footnote_element as $links) {
 						$newelements[] = $links;
 					}
-					$footnote_element = array();
+					$footnote_element = [];
 				}
 				$newelements[] = $element;
 			}
@@ -113,7 +113,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		$renderer->largestFontHeight = 0;
 
 		// If current position (left)
-		if ($this->left == ".") {
+		if ($this->left == '.') {
 			$cX = $renderer->GetX();
 		} else {
 			// For static position add margin (returns and updates X)
@@ -121,7 +121,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		}
 
 		// If current position (top)
-		if ($this->top == ".") {
+		if ($this->top == '.') {
 			$cY = $renderer->GetY();
 		} else {
 			$cY = $this->top;
@@ -153,7 +153,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		// 0 => last line width
 		// 1 => 1 if text was wrapped, 0 if text did not wrap
 		// 2 => number of LF
-		$lw = array();
+		$lw = [];
 		// Element counter
 		$cE = count($this->elements);
 		//-- calculate the text box height + width
@@ -223,16 +223,16 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		}
 
 		// Setup the border and background color
-		$cS = ""; // Class Style
+		$cS = ''; // Class Style
 		if ($this->border) {
-			$cS = "D";
+			$cS = 'D';
 		} // D or empty string: Draw (default)
-		$match = array();
+		$match = [];
 		// Fill the background
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {
-				if (preg_match("/#?(..)(..)(..)/", $this->bgcolor, $match)) {
-					$cS .= "F"; // F: Fill the background
+				if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
+					$cS .= 'F'; // F: Fill the background
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);

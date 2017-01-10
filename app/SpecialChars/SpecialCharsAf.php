@@ -28,9 +28,9 @@ class SpecialCharsAf extends AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function upper() {
-		return array(
+		return [
 			'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Û',
-		);
+		];
 	}
 
 	/**
@@ -39,8 +39,8 @@ class SpecialCharsAf extends AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function lower() {
-		return array(
+		return [
 			'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'û', 'ŉ',
-		);
+		];
 	}
 }

@@ -39,9 +39,9 @@ class FunctionsDate {
 			return I18N::translate('Stillborn');
 		default:
 			return preg_replace_callback(
-				array(
+				[
 					'/(\d+)([ymwd])/',
-				),
+				],
 				function ($match) {
 					switch ($match[2]) {
 					case 'y':

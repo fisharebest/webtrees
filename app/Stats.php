@@ -38,12 +38,12 @@ class Stats {
 	private $tree;
 
 	/** @var string[] All public functions are available as keywords - except these ones */
-	private $public_but_not_allowed = array(
+	private $public_but_not_allowed = [
 		'__construct', 'embedTags', 'iso3166', 'getAllCountries', 'getAllTagsTable', 'getAllTagsText', 'statsPlaces', 'statsBirthQuery', 'statsDeathQuery', 'statsMarrQuery', 'statsAgeQuery', 'monthFirstChildQuery', 'statsChildrenQuery', 'statsMarrAgeQuery',
-	);
+	];
 
 	/** @var string[] List of GEDCOM media types */
-	private $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
+	private $_media_types = ['audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other'];
 
 	/**
 	 * Create the statistics for a tree.
@@ -60,7 +60,7 @@ class Stats {
 	 * @return string
 	 */
 	public function getAllTagsTable() {
-		$examples = array();
+		$examples = [];
 		foreach (get_class_methods($this) as $method) {
 			$reflection = new \ReflectionMethod($this, $method);
 			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
@@ -98,7 +98,7 @@ class Stats {
 	 * @return string
 	 */
 	public function getAllTagsText() {
-		$examples = array();
+		$examples = [];
 		foreach (get_class_methods($this) as $method) {
 			$reflection = new \ReflectionMethod($this, $method);
 			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
@@ -124,11 +124,11 @@ class Stats {
 		isset($funcs) or $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
-		preg_match_all("/#([^#]+)(?=#)/", (string) $text, $match);
+		preg_match_all('/#([^#]+)(?=#)/', (string) $text, $match);
 		$tags       = $match[1];
 		$c          = count($tags);
-		$new_tags   = array(); // tag to replace
-		$new_values = array(); // value to replace it with
+		$new_tags   = []; // tag to replace
+		$new_values = []; // value to replace it with
 
 		/*
 		 * Parse block tags.
@@ -140,17 +140,17 @@ class Stats {
 			if (count($params) > 1) {
 				$tags[$i] = array_shift($params);
 			} else {
-				$params = array();
+				$params = [];
 			}
 
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
 				$new_tags[]   = "#{$full_tag}#";
-				$new_values[] = call_user_func_array(array($this, $tags[$i]), array($params));
+				$new_values[] = call_user_func_array([$this, $tags[$i]], [$params]);
 			}
 		}
 
-		return array($new_tags, $new_values);
+		return [$new_tags, $new_values];
 	}
 
 	/**
@@ -214,7 +214,7 @@ class Stats {
 			$version = $sour->getAttribute('VERS');
 		}
 
-		return array($title, $version, $source);
+		return [$title, $version, $source];
 	}
 
 	/**
@@ -274,7 +274,7 @@ class Stats {
 	public function gedcomUpdated() {
 		$row = Database::prepare(
 			"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
-		)->execute(array($this->tree->getTreeId()))->fetchOneRow();
+		)->execute([$this->tree->getTreeId()])->fetchOneRow();
 		if ($row) {
 			$date = new Date("{$row->d_day} {$row->d_month} {$row->d_year}");
 
@@ -344,9 +344,9 @@ class Stats {
 	private function totalIndividualsQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -368,9 +368,9 @@ class Stats {
 			"SELECT SQL_CACHE COUNT(DISTINCT i_id)" .
 			" FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
 			" WHERE l_file = :tree_id AND l_type = 'SOUR'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -389,7 +389,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartIndisWithSources($params = array()) {
+	public function chartIndisWithSources($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -416,7 +416,7 @@ class Stats {
 			return '';
 		} else {
 			$tot_sindi_per = round($this->totalIndisWithSourcesQuery() / $tot_indi, 3);
-			$chd           = $this->arrayToExtendedEncoding(array(100 - 100 * $tot_sindi_per, 100 * $tot_sindi_per));
+			$chd           = $this->arrayToExtendedEncoding([100 - 100 * $tot_sindi_per, 100 * $tot_sindi_per]);
 			$chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' .
 				I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
 			$chart_title = I18N::translate('Individuals with sources');
@@ -442,9 +442,9 @@ class Stats {
 	private function totalFamiliesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -466,9 +466,9 @@ class Stats {
 			"SELECT SQL_CACHE COUNT(DISTINCT f_id)" .
 			" FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
 			" WHERE l_file = :tree_id AND l_type = 'SOUR'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -487,7 +487,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartFamsWithSources($params = array()) {
+	public function chartFamsWithSources($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -496,7 +496,7 @@ class Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -514,12 +514,12 @@ class Stats {
 			return '';
 		} else {
 			$tot_sfam_per = round($this->totalFamsWithSourcesQuery() / $tot_fam, 3);
-			$chd          = $this->arrayToExtendedEncoding(array(100 - 100 * $tot_sfam_per, 100 * $tot_sfam_per));
+			$chd          = $this->arrayToExtendedEncoding([100 - 100 * $tot_sfam_per, 100 * $tot_sfam_per]);
 			$chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' .
 				I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
 			$chart_title = I18N::translate('Families with sources');
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -540,9 +540,9 @@ class Stats {
 	private function totalSourcesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -571,9 +571,9 @@ class Stats {
 	private function totalNotesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -602,9 +602,9 @@ class Stats {
 	private function totalRepositoriesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -632,7 +632,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function totalSurnames($params = array()) {
+	public function totalSurnames($params = []) {
 		if ($params) {
 			$opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
 			$distinct = '';
@@ -641,7 +641,7 @@ class Stats {
 			$distinct = 'DISTINCT';
 		}
 		$params[] = $this->tree->getTreeId();
-		$total =
+		$total    =
 			Database::prepare(
 				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
 				" FROM `##name`" .
@@ -661,7 +661,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function totalGivennames($params = array()) {
+	public function totalGivennames($params = []) {
 		if ($params) {
 			$qs       = implode(',', array_fill(0, count($params), '?'));
 			$params[] = $this->tree->getTreeId();
@@ -672,7 +672,7 @@ class Stats {
 		} else {
 			$total =
 				Database::prepare("SELECT SQL_CACHE COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?")
-					->execute(array($this->tree->getTreeId()))
+					->execute([$this->tree->getTreeId()])
 					->fetchOne();
 		}
 
@@ -686,13 +686,13 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function totalEvents($params = array()) {
+	public function totalEvents($params = []) {
 		$sql  = "SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-		$vars = array($this->tree->getTreeId());
+		$vars = [$this->tree->getTreeId()];
 
-		$no_types = array('HEAD', 'CHAN');
+		$no_types = ['HEAD', 'CHAN'];
 		if ($params) {
-			$types = array();
+			$types = [];
 			foreach ($params as $type) {
 				if (substr($type, 0, 1) == '!') {
 					$no_types[] = substr($type, 1);
@@ -726,7 +726,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalBirths() {
-		return $this->totalEvents(array('BIRT'));
+		return $this->totalEvents(['BIRT']);
 	}
 
 	/**
@@ -744,7 +744,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalDeaths() {
-		return $this->totalEvents(array('DEAT'));
+		return $this->totalEvents(['DEAT']);
 	}
 
 	/**
@@ -762,7 +762,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalMarriages() {
-		return $this->totalEvents(array('MARR'));
+		return $this->totalEvents(['MARR']);
 	}
 
 	/**
@@ -780,7 +780,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalDivorces() {
-		return $this->totalEvents(array('DIV'));
+		return $this->totalEvents(['DIV']);
 	}
 
 	/**
@@ -790,7 +790,7 @@ class Stats {
 	 */
 	public function totalEventsOther() {
 		$facts    = array_merge(explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT));
-		$no_facts = array();
+		$no_facts = [];
 		foreach ($facts as $fact) {
 			$fact       = '!' . str_replace('\'', '', $fact);
 			$no_facts[] = $fact;
@@ -807,9 +807,9 @@ class Stats {
 	private function totalSexMalesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -838,9 +838,9 @@ class Stats {
 	private function totalSexFemalesQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -869,9 +869,9 @@ class Stats {
 	private function totalSexUnknownQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -899,7 +899,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartSex($params = array()) {
+	public function chartSex($params = []) {
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
@@ -936,7 +936,7 @@ class Stats {
 		if ($tot == 0) {
 			return '';
 		} elseif ($tot_u > 0) {
-			$chd = $this->arrayToExtendedEncoding(array(4095 * $tot_u / $tot, 4095 * $tot_f / $tot, 4095 * $tot_m / $tot));
+			$chd = $this->arrayToExtendedEncoding([4095 * $tot_u / $tot, 4095 * $tot_f / $tot, 4095 * $tot_m / $tot]);
 			$chl =
 				I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
 				I18N::translate('Females') . ' - ' . $per_f . '|' .
@@ -946,16 +946,16 @@ class Stats {
 				I18N::translate('Females') . ' - ' . $per_f . I18N::$list_separator .
 				I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		} else {
-			$chd = $this->arrayToExtendedEncoding(array(4095 * $tot_f / $tot, 4095 * $tot_m / $tot));
+			$chd = $this->arrayToExtendedEncoding([4095 * $tot_f / $tot, 4095 * $tot_m / $tot]);
 			$chl =
 				I18N::translate('Females') . ' - ' . $per_f . '|' .
 				I18N::translate('Males') . ' - ' . $per_m;
 			$chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
 				I18N::translate('Females') . ' - ' . $per_f;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -972,9 +972,9 @@ class Stats {
 	private function totalLivingQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -1003,9 +1003,9 @@ class Stats {
 	private function totalDeceasedQuery() {
 		return (int) Database::prepare(
 			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -1033,14 +1033,14 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartMortality($params = array()) {
+	public function chartMortality($params = []) {
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_living = strtolower($params[1]);
@@ -1063,14 +1063,14 @@ class Stats {
 		if ($tot == 0) {
 			return '';
 		} else {
-			$chd = $this->arrayToExtendedEncoding(array(4095 * $tot_l / $tot, 4095 * $tot_d / $tot));
+			$chd = $this->arrayToExtendedEncoding([4095 * $tot_l / $tot, 4095 * $tot_d / $tot]);
 			$chl =
 				I18N::translate('Living') . ' - ' . $per_l . '|' .
 				I18N::translate('Dead') . ' - ' . $per_d . '|';
 			$chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
 				I18N::translate('Dead') . ' - ' . $per_d;
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 		}
 	}
 
@@ -1081,7 +1081,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function totalUsers($params = array()) {
+	public function totalUsers($params = []) {
 		if (isset($params[0])) {
 			$total = count(User::all()) + (int) $params[0];
 		} else {
@@ -1121,7 +1121,7 @@ class Stats {
 			return 0;
 		}
 		$sql  = "SELECT SQL_CACHE COUNT(*) AS tot FROM `##media` WHERE m_file=?";
-		$vars = array($this->tree->getTreeId());
+		$vars = [$this->tree->getTreeId()];
 
 		if ($type != 'all') {
 			if ($type == 'unknown') {
@@ -1328,7 +1328,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartMedia($params = array()) {
+	public function chartMedia($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -1356,12 +1356,12 @@ class Stats {
 			return I18N::translate('None');
 		}
 		// Build a table listing only the media types actually present in the GEDCOM
-		$mediaCounts = array();
-		$mediaTypes  = "";
-		$chart_title = "";
+		$mediaCounts = [];
+		$mediaTypes  = '';
+		$chart_title = '';
 		$c           = 0;
 		$max         = 0;
-		$media       = array();
+		$media       = [];
 		foreach ($this->_media_types as $type) {
 			$count = $this->totalMediaType($type);
 			if ($count > 0) {
@@ -1402,7 +1402,7 @@ class Stats {
 		$chd         = $this->arrayToExtendedEncoding($mediaCounts);
 		$chl         = substr($mediaTypes, 0, -1);
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 	}
 
 	/**
@@ -1457,7 +1457,7 @@ class Stats {
 			$result = $date->display();
 			break;
 		case 'name':
-			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+			$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 			break;
 		case 'place':
 			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
@@ -1487,17 +1487,17 @@ class Stats {
 			if ($what == 'INDI') {
 				$rows = Database::prepare(
 					"SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom LIKE '%\n2 PLAC %'"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $this->tree->getTreeId(),
-				))->fetchAll();
+				])->fetchAll();
 			} elseif ($what == 'FAM') {
 				$rows = Database::prepare(
 					"SELECT f_gedcom AS ged FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\n2 PLAC %'"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $this->tree->getTreeId(),
-				))->fetchAll();
+				])->fetchAll();
 			}
-			$placelist = array();
+			$placelist = [];
 			foreach ($rows as $row) {
 				if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
 					if ($country) {
@@ -1573,7 +1573,7 @@ class Stats {
 	private function totalPlacesQuery() {
 		return
 			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
-				->execute(array($this->tree->getTreeId()))
+				->execute([$this->tree->getTreeId()])
 				->fetchOne();
 	}
 
@@ -1593,7 +1593,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartDistribution($params = array()) {
+	public function chartDistribution($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_CHART_COLOR3 = Theme::theme()->parameter('distribution-chart-low-values');
@@ -1620,7 +1620,7 @@ class Stats {
 			return '';
 		}
 		// Get the country names for each language
-		$country_to_iso3166 = array();
+		$country_to_iso3166 = [];
 		foreach (I18N::activeLocales() as $locale) {
 			I18N::init($locale->languageTag());
 			$countries = $this->getAllCountries();
@@ -1632,12 +1632,12 @@ class Stats {
 		I18N::init(WT_LOCALE);
 		switch ($chart_type) {
 		case 'surname_distribution_chart':
-			if ($surname == "") {
+			if ($surname == '') {
 				$surname = $this->getCommonSurname();
 			}
 			$chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
 			// Count how many people are events in each country
-			$surn_countries = array();
+			$surn_countries = [];
 			$indis          = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
@@ -1652,12 +1652,12 @@ class Stats {
 						}
 					}
 				}
-			};
+			}
 			break;
 		case 'birth_distribution_chart':
 			$chart_title = I18N::translate('Birth by country');
 			// Count how many people were born in each country
-			$surn_countries = array();
+			$surn_countries = [];
 			$b_countries    = $this->statsPlaces('INDI', 'BIRT', 0, true);
 			foreach ($b_countries as $place => $count) {
 				$country = $place;
@@ -1673,7 +1673,7 @@ class Stats {
 		case 'death_distribution_chart':
 			$chart_title = I18N::translate('Death by country');
 			// Count how many people were death in each country
-			$surn_countries = array();
+			$surn_countries = [];
 			$d_countries    = $this->statsPlaces('INDI', 'DEAT', 0, true);
 			foreach ($d_countries as $place => $count) {
 				$country = $place;
@@ -1689,7 +1689,7 @@ class Stats {
 		case 'marriage_distribution_chart':
 			$chart_title = I18N::translate('Marriage by country');
 			// Count how many families got marriage in each country
-			$surn_countries = array();
+			$surn_countries = [];
 			$m_countries    = $this->statsPlaces('FAM');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
@@ -1707,7 +1707,7 @@ class Stats {
 		default:
 			$chart_title = I18N::translate('Individual distribution chart');
 			// Count how many people have events in each country
-			$surn_countries = array();
+			$surn_countries = [];
 			$a_countries    = $this->statsPlaces('INDI');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($a_countries as $place) {
@@ -1722,11 +1722,11 @@ class Stats {
 			}
 			break;
 		}
-		$chart_url = "https://chart.googleapis.com/chart?cht=t&amp;chtm=" . $chart_shows;
-		$chart_url .= "&amp;chco=" . $WT_STATS_CHART_COLOR1 . "," . $WT_STATS_CHART_COLOR3 . "," . $WT_STATS_CHART_COLOR2; // country colours
-		$chart_url .= "&amp;chf=bg,s,ECF5FF"; // sea colour
-		$chart_url .= "&amp;chs=" . $WT_STATS_MAP_X . "x" . $WT_STATS_MAP_Y;
-		$chart_url .= "&amp;chld=" . implode('', array_keys($surn_countries)) . "&amp;chd=s:";
+		$chart_url = 'https://chart.googleapis.com/chart?cht=t&amp;chtm=' . $chart_shows;
+		$chart_url .= '&amp;chco=' . $WT_STATS_CHART_COLOR1 . ',' . $WT_STATS_CHART_COLOR3 . ',' . $WT_STATS_CHART_COLOR2; // country colours
+		$chart_url .= '&amp;chf=bg,s,ECF5FF'; // sea colour
+		$chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
+		$chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
 		foreach ($surn_countries as $count) {
 			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
 		}
@@ -1752,10 +1752,10 @@ class Stats {
 		if (empty($countries)) {
 			return '';
 		}
-		$top10 = array();
+		$top10 = [];
 		$i     = 1;
 		// Get the country names for each language
-		$country_names = array();
+		$country_names = [];
 		foreach (I18N::activeLocales() as $locale) {
 			I18N::init($locale->languageTag());
 			$all_countries = $this->getAllCountries();
@@ -1764,7 +1764,7 @@ class Stats {
 			}
 		}
 		I18N::init(WT_LOCALE);
-		$all_db_countries = array();
+		$all_db_countries = [];
 		foreach ($countries as $place) {
 			$country = trim($place['country']);
 			if (array_key_exists($country, $country_names)) {
@@ -1801,7 +1801,7 @@ class Stats {
 	 */
 	public function commonBirthPlacesList() {
 		$places = $this->statsPlaces('INDI', 'BIRT');
-		$top10  = array();
+		$top10  = [];
 		$i      = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
@@ -1824,7 +1824,7 @@ class Stats {
 	 */
 	public function commonDeathPlacesList() {
 		$places = $this->statsPlaces('INDI', 'DEAT');
-		$top10  = array();
+		$top10  = [];
 		$i      = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
@@ -1847,7 +1847,7 @@ class Stats {
 	 */
 	public function commonMarriagePlacesList() {
 		$places = $this->statsPlaces('FAM', 'MARR');
-		$top10  = array();
+		$top10  = [];
 		$i      = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
@@ -1874,7 +1874,7 @@ class Stats {
 	 *
 	 * @return array|string
 	 */
-	public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -1884,8 +1884,8 @@ class Stats {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->getTreeId()} AND " .
-				"d_year<>0 AND " .
+				"d_file = {$this->tree->getTreeId()} AND " .
+				"d_year <> 0 AND " .
 				"d_fact='BIRT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} elseif ($sex) {
@@ -1920,7 +1920,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -1941,8 +1941,8 @@ class Stats {
 			if ($tot == 0) {
 				return '';
 			}
-			$centuries = "";
-			$counts    = array();
+			$centuries = '';
+			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . I18N::number($values['total']) . '|';
@@ -1950,7 +1950,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries, 0, -1));
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . "\" title=\"" . I18N::translate('Births by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . '" title="' . I18N::translate('Births by century') . '" />';
 		} else {
 			return $rows;
 		}
@@ -1967,7 +1967,7 @@ class Stats {
 	 *
 	 * @return array|string
 	 */
-	public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -2013,7 +2013,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -2034,8 +2034,8 @@ class Stats {
 			if ($tot == 0) {
 				return '';
 			}
-			$centuries = "";
-			$counts    = array();
+			$centuries = '';
+			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . I18N::number($values['total']) . '|';
@@ -2043,7 +2043,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries, 0, -1));
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Deaths by century') . "\" title=\"" . I18N::translate('Deaths by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Deaths by century') . '" title="' . I18N::translate('Deaths by century') . '" />';
 		}
 
 		return $rows;
@@ -2128,7 +2128,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsBirth($params = array()) {
+	public function statsBirth($params = []) {
 		return $this->statsBirthQuery(true, false, -1, -1, $params);
 	}
 
@@ -2211,7 +2211,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsDeath($params = array()) {
+	public function statsDeath($params = []) {
 		return $this->statsDeathQuery(true, false, -1, -1, $params);
 	}
 
@@ -2271,7 +2271,7 @@ class Stats {
 			$result = I18N::number((int) ($row['age'] / 365.25));
 			break;
 		case 'name':
-			$result = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a>";
+			$result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
 			break;
 		}
 
@@ -2287,7 +2287,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = array()) {
+	private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = []) {
 		if ($sex === 'F') {
 			$sex_search = " AND i_sex='F' ";
 		} elseif ($sex === 'M') {
@@ -2326,7 +2326,7 @@ class Stats {
 		if (!isset($rows[0])) {
 			return '';
 		}
-		$top10 = array();
+		$top10 = [];
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row['deathdate'], $this->tree);
 			$age    = $row['age'];
@@ -2340,9 +2340,9 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($person->canShow()) {
 				if ($type == 'list') {
-					$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
+					$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
-					$top10[] = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")";
+					$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
@@ -2352,7 +2352,7 @@ class Stats {
 			$top10 = implode(' ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type == 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -2370,7 +2370,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
+	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = []) {
 		if (!Auth::isMember($this->tree)) {
 			return I18N::translate('This information is private and cannot be shown.');
 		}
@@ -2405,7 +2405,7 @@ class Stats {
 			" ORDER BY age" .
 			" ASC LIMIT " . $total
 		);
-		$top10 = array();
+		$top10 = [];
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row['id'], $this->tree);
 			$age    = (WT_CLIENT_JD - $row['age']);
@@ -2418,9 +2418,9 @@ class Stats {
 			}
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type === 'list') {
-				$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
+				$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 			} else {
-				$top10[] = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")";
+				$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
 			}
 		}
 		if ($type === 'list') {
@@ -2429,7 +2429,7 @@ class Stats {
 			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -2505,7 +2505,7 @@ class Stats {
 	 *
 	 * @return array|string
 	 */
-	public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = []) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
@@ -2542,7 +2542,7 @@ class Stats {
 			$countsm = '';
 			$countsf = '';
 			$countsa = '';
-			$out     = array();
+			$out     = [];
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']] = $values['age'];
 			}
@@ -2588,7 +2588,7 @@ class Stats {
 				$chtt = $title;
 			} else {
 				$offset  = 0;
-				$counter = array();
+				$counter = [];
 				while ($offset = strpos($title, ' ', $offset + 1)) {
 					$counter[] = $offset;
 				}
@@ -2596,7 +2596,7 @@ class Stats {
 				$chtt = substr_replace($title, '|', $counter[$half], 1);
 			}
 
-			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . "\" title=\"" . I18N::translate('Average age related to death century') . "\" />";
+			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . '" title="' . I18N::translate('Average age related to death century') . '" />';
 		} else {
 			$sex_search = '';
 			$years      = '';
@@ -2627,7 +2627,7 @@ class Stats {
 				" birth.d_file=indi.i_file AND" .
 				" birth.d_fact='BIRT' AND" .
 				" death.d_fact='DEAT' AND" .
-				" birth.d_julianday1<>0 AND" .
+				" birth.d_julianday1 <> 0 AND" .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
 				" death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
 				" death.d_julianday1>birth.d_julianday2" .
@@ -2646,7 +2646,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsAge($params = array()) {
+	public function statsAge($params = []) {
 		return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $params);
 	}
 
@@ -2684,7 +2684,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldest($params = array()) {
+	public function topTenOldest($params = []) {
 		return $this->topTenOldestQuery('nolist', 'BOTH', $params);
 	}
 
@@ -2695,7 +2695,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestList($params = array()) {
+	public function topTenOldestList($params = []) {
 		return $this->topTenOldestQuery('list', 'BOTH', $params);
 	}
 
@@ -2706,7 +2706,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestAlive($params = array()) {
+	public function topTenOldestAlive($params = []) {
 		return $this->topTenOldestAliveQuery('nolist', 'BOTH', $params);
 	}
 
@@ -2717,7 +2717,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestListAlive($params = array()) {
+	public function topTenOldestListAlive($params = []) {
 		return $this->topTenOldestAliveQuery('list', 'BOTH', $params);
 	}
 
@@ -2766,7 +2766,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestFemale($params = array()) {
+	public function topTenOldestFemale($params = []) {
 		return $this->topTenOldestQuery('nolist', 'F', $params);
 	}
 
@@ -2777,7 +2777,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestFemaleList($params = array()) {
+	public function topTenOldestFemaleList($params = []) {
 		return $this->topTenOldestQuery('list', 'F', $params);
 	}
 
@@ -2788,7 +2788,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestFemaleAlive($params = array()) {
+	public function topTenOldestFemaleAlive($params = []) {
 		return $this->topTenOldestAliveQuery('nolist', 'F', $params);
 	}
 
@@ -2799,7 +2799,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestFemaleListAlive($params = array()) {
+	public function topTenOldestFemaleListAlive($params = []) {
 		return $this->topTenOldestAliveQuery('list', 'F', $params);
 	}
 
@@ -2848,7 +2848,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestMale($params = array()) {
+	public function topTenOldestMale($params = []) {
 		return $this->topTenOldestQuery('nolist', 'M', $params);
 	}
 
@@ -2859,7 +2859,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestMaleList($params = array()) {
+	public function topTenOldestMaleList($params = []) {
 		return $this->topTenOldestQuery('list', 'M', $params);
 	}
 
@@ -2870,7 +2870,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestMaleAlive($params = array()) {
+	public function topTenOldestMaleAlive($params = []) {
 		return $this->topTenOldestAliveQuery('nolist', 'M', $params);
 	}
 
@@ -2881,7 +2881,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenOldestMaleListAlive($params = array()) {
+	public function topTenOldestMaleListAlive($params = []) {
 		return $this->topTenOldestAliveQuery('list', 'M', $params);
 	}
 
@@ -2906,14 +2906,14 @@ class Stats {
 	 * @return string
 	 */
 	private function eventQuery($type, $direction, $facts) {
-		$eventTypes = array(
+		$eventTypes = [
 			'BIRT' => I18N::translate('birth'),
 			'DEAT' => I18N::translate('death'),
 			'MARR' => I18N::translate('marriage'),
 			'ADOP' => I18N::translate('adoption'),
 			'BURI' => I18N::translate('burial'),
 			'CENS' => I18N::translate('census added'),
-		);
+		];
 
 		$fact_query = "IN ('" . str_replace('|', "','", $facts) . "')";
 
@@ -2962,7 +2962,7 @@ class Stats {
 			}
 			break;
 		case 'name':
-			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+			$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 			break;
 		case 'place':
 			$fact = $record->getFirstFact($row['fact']);
@@ -3156,7 +3156,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = array()) {
+	private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []) {
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -3213,7 +3213,7 @@ class Stats {
 		if (!isset($hrows) && !isset($wrows) && !isset($drows)) {
 			return '';
 		}
-		$rows = array();
+		$rows = [];
 		foreach ($drows as $family) {
 			$rows[$family['family']] = $family['age'];
 		}
@@ -3234,7 +3234,7 @@ class Stats {
 		} else {
 			asort($rows);
 		}
-		$top10 = array();
+		$top10 = [];
 		$i     = 0;
 		foreach ($rows as $fam => $age) {
 			$family = Family::getInstance($fam, $this->tree);
@@ -3257,9 +3257,9 @@ class Stats {
 			if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
 				if ($family->canShow()) {
 					if ($type === 'list') {
-						$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
+						$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 					} else {
-						$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
+						$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 					}
 				}
 				if (++$i === $total) {
@@ -3273,7 +3273,7 @@ class Stats {
 			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -3291,7 +3291,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = array()) {
+	private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = []) {
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -3326,12 +3326,12 @@ class Stats {
 		}
 		$rows = Database::prepare(
 			$sql
-		)->execute(array(
+		)->execute([
 			'tree_id' => $this->tree->getTreeId(),
 			'limit'   => $total,
-		))->fetchAll();
+		])->fetchAll();
 
-		$top10 = array();
+		$top10 = [];
 		foreach ($rows as $fam) {
 			$family = Family::getInstance($fam->xref, $this->tree);
 			if ($fam->age < 0) {
@@ -3348,7 +3348,7 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
 					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 				}
@@ -3456,7 +3456,7 @@ class Stats {
 	 *
 	 * @return string|array
 	 */
-	public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -3507,7 +3507,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -3529,7 +3529,7 @@ class Stats {
 				return '';
 			}
 			$centuries = '';
-			$counts    = array();
+			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . I18N::number($values['total']) . '|';
@@ -3537,7 +3537,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries, 0, -1);
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . "\" title=\"" . I18N::translate('Marriages by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . '" title="' . I18N::translate('Marriages by century') . '" />';
 		}
 
 		return $rows;
@@ -3554,7 +3554,7 @@ class Stats {
 	 *
 	 * @return string|array
 	 */
-	private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
+	private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -3604,7 +3604,7 @@ class Stats {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
 			} else {
-				$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+				$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 			}
 			if (isset($params[1]) && $params[1] != '') {
 				$color_from = strtolower($params[1]);
@@ -3626,7 +3626,7 @@ class Stats {
 				return '';
 			}
 			$centuries = '';
-			$counts    = array();
+			$counts    = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . I18N::number($values['total']) . '|';
@@ -3634,7 +3634,7 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries, 0, -1);
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Divorces by century') . "\" title=\"" . I18N::translate('Divorces by century') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Divorces by century') . '" title="' . I18N::translate('Divorces by century') . '" />';
 		}
 
 		return $rows;
@@ -3719,7 +3719,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsMarr($params = array()) {
+	public function statsMarr($params = []) {
 		return $this->statsMarrQuery(true, false, -1, -1, $params);
 	}
 
@@ -3802,7 +3802,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsDiv($params = array()) {
+	public function statsDiv($params = []) {
 		return $this->statsDivQuery(true, false, -1, -1, $params);
 	}
 
@@ -3817,7 +3817,7 @@ class Stats {
 	 *
 	 * @return array|string
 	 */
-	public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = []) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
@@ -3870,7 +3870,7 @@ class Stats {
 			$countsm = '';
 			$countsf = '';
 			$countsa = '';
-			$out     = array();
+			$out     = [];
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']] = $values['age'];
 			}
@@ -3931,7 +3931,7 @@ class Stats {
 				$chtt = I18N::translate('Average age in century of marriage');
 			} else {
 				$offset  = 0;
-				$counter = array();
+				$counter = [];
 				while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
 					$counter[] = $offset;
 				}
@@ -3939,7 +3939,7 @@ class Stats {
 				$chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
 			}
 
-			return "<img src=\"" . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(I18N::translate('Males') . "|" . I18N::translate('Females') . "|" . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . "\" title=\"" . I18N::translate('Average age in century of marriage') . "\" />";
+			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . '" title="' . I18N::translate('Average age in century of marriage') . '" />';
 		} else {
 			if ($year1 >= 0 && $year2 >= 0) {
 				$years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
@@ -4101,7 +4101,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsMarrAge($params = array()) {
+	public function statsMarrAge($params = []) {
 		return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $params);
 	}
 
@@ -4112,7 +4112,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function ageBetweenSpousesMF($params = array()) {
+	public function ageBetweenSpousesMF($params = []) {
 		return $this->ageBetweenSpousesQuery('nolist', 'DESC', $params);
 	}
 
@@ -4123,7 +4123,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function ageBetweenSpousesMFList($params = array()) {
+	public function ageBetweenSpousesMFList($params = []) {
 		return $this->ageBetweenSpousesQuery('list', 'DESC', $params);
 	}
 
@@ -4134,7 +4134,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function ageBetweenSpousesFM($params = array()) {
+	public function ageBetweenSpousesFM($params = []) {
 		return $this->ageBetweenSpousesQuery('nolist', 'ASC', $params);
 	}
 
@@ -4145,7 +4145,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function ageBetweenSpousesFMList($params = array()) {
+	public function ageBetweenSpousesFMList($params = []) {
 		return $this->ageBetweenSpousesQuery('list', 'ASC', $params);
 	}
 
@@ -4155,7 +4155,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeOfMarriageFamily() {
-		return $this->ageOfMarriageQuery('name', 'DESC', array('1'));
+		return $this->ageOfMarriageQuery('name', 'DESC', ['1']);
 	}
 
 	/**
@@ -4164,7 +4164,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeOfMarriage() {
-		return $this->ageOfMarriageQuery('age', 'DESC', array('1'));
+		return $this->ageOfMarriageQuery('age', 'DESC', ['1']);
 	}
 
 	/**
@@ -4174,7 +4174,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeOfMarriageFamilies($params = array()) {
+	public function topAgeOfMarriageFamilies($params = []) {
 		return $this->ageOfMarriageQuery('nolist', 'DESC', $params);
 	}
 
@@ -4185,7 +4185,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeOfMarriageFamiliesList($params = array()) {
+	public function topAgeOfMarriageFamiliesList($params = []) {
 		return $this->ageOfMarriageQuery('list', 'DESC', $params);
 	}
 
@@ -4195,7 +4195,7 @@ class Stats {
 	 * @return string
 	 */
 	public function minAgeOfMarriageFamily() {
-		return $this->ageOfMarriageQuery('name', 'ASC', array('1'));
+		return $this->ageOfMarriageQuery('name', 'ASC', ['1']);
 	}
 
 	/**
@@ -4204,7 +4204,7 @@ class Stats {
 	 * @return string
 	 */
 	public function minAgeOfMarriage() {
-		return $this->ageOfMarriageQuery('age', 'ASC', array('1'));
+		return $this->ageOfMarriageQuery('age', 'ASC', ['1']);
 	}
 
 	/**
@@ -4214,7 +4214,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function minAgeOfMarriageFamilies($params = array()) {
+	public function minAgeOfMarriageFamilies($params = []) {
 		return $this->ageOfMarriageQuery('nolist', 'ASC', $params);
 	}
 
@@ -4225,7 +4225,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function minAgeOfMarriageFamiliesList($params = array()) {
+	public function minAgeOfMarriageFamiliesList($params = []) {
 		return $this->ageOfMarriageQuery('list', 'ASC', $params);
 	}
 
@@ -4352,7 +4352,7 @@ class Stats {
 	 */
 	public function totalMarriedMales() {
 		$n = Database::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->tree->getTreeId()))
+			->execute([$this->tree->getTreeId()])
 			->fetchOne();
 
 		return I18N::number($n);
@@ -4365,7 +4365,7 @@ class Stats {
 	 */
 	public function totalMarriedFemales() {
 		$n = Database::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->tree->getTreeId()))
+			->execute([$this->tree->getTreeId()])
 			->fetchOne();
 
 		return I18N::number($n);
@@ -4409,7 +4409,7 @@ class Stats {
 			$result = I18N::number($row['tot']);
 			break;
 		case 'name':
-			$result = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . '</a>';
+			$result = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
 			break;
 		}
 
@@ -4424,7 +4424,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function topTenFamilyQuery($type = 'list', $params = array()) {
+	private function topTenFamilyQuery($type = 'list', $params = []) {
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -4444,7 +4444,7 @@ class Stats {
 		if (count($rows) < $total) {
 			$total = count($rows);
 		}
-		$top10 = array();
+		$top10 = [];
 		for ($c = 0; $c < $total; $c++) {
 			$family = Family::getInstance($rows[$c]['id'], $this->tree);
 			if ($family->canShow()) {
@@ -4465,7 +4465,7 @@ class Stats {
 			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -4482,7 +4482,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function ageBetweenSiblingsQuery($type = 'list', $params = array()) {
+	private function ageBetweenSiblingsQuery($type = 'list', $params = []) {
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -4521,8 +4521,8 @@ class Stats {
 		if (!isset($rows[0])) {
 			return '';
 		}
-		$top10 = array();
-		$dist  = array();
+		$top10 = [];
+		$dist  = [];
 		foreach ($rows as $fam) {
 			$family = Family::getInstance($fam['family'], $this->tree);
 			$child1 = Individual::getInstance($fam['ch1'], $this->tree);
@@ -4554,32 +4554,32 @@ class Stats {
 			if ($type == 'list') {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canShow() && $child2->canShow()) {
-						$return = "<li>";
-						$return .= "<a href=\"" . $child2->getHtmlUrl() . "\">" . $child2->getFullName() . "</a> ";
-						$return .= I18N::translate('and') . " ";
-						$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
-						$return .= " (" . $age . ")";
-						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+						$return = '<li>';
+						$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+						$return .= I18N::translate('and') . ' ';
+						$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+						$return .= ' (' . $age . ')';
+						$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
 					}
 				} elseif (!$one && $child1->canShow() && $child2->canShow()) {
-					$return = "<li>";
-					$return .= "<a href=\"" . $child2->getHtmlUrl() . "\">" . $child2->getFullName() . "</a> ";
-					$return .= I18N::translate('and') . " ";
-					$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
-					$return .= " (" . $age . ")";
-					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+					$return = '<li>';
+					$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+					$return .= I18N::translate('and') . ' ';
+					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+					$return .= ' (' . $age . ')';
+					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 					$return .= '</li>';
 					$top10[] = $return;
 				}
 			} else {
 				if ($child1->canShow() && $child2->canShow()) {
 					$return = $child2->formatList('span', false, $child2->getFullName());
-					$return .= "<br>" . I18N::translate('and') . "<br>";
+					$return .= '<br>' . I18N::translate('and') . '<br>';
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
+					$return .= '<br><a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 
 					return $return;
 				} else {
@@ -4591,7 +4591,7 @@ class Stats {
 			$top10 = implode('', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -4611,7 +4611,7 @@ class Stats {
 	 *
 	 * @return string|string[][]
 	 */
-	public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+	public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -4637,7 +4637,7 @@ class Stats {
 			"  SELECT" .
 			"  link1.l_from AS family," .
 			"  link1.l_to AS child," .
-			"  child1.d_julianday2 as date," .
+			"  child1.d_julianday2 AS date," .
 			"  child1.d_month as d_month" .
 			$sql_sex1 .
 			"  FROM `##link` AS link1" .
@@ -4648,12 +4648,11 @@ class Stats {
 			"  link1.l_type = 'CHIL' AND" .
 			"  child1.d_gid = link1.l_to AND" .
 			"  child1.d_fact = 'BIRT' AND" .
-			"  d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-			"  child1.d_month <> ''" .
+			"  child1.d_month IN ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')" .
 			$sql_years .
 			"  ORDER BY date" .
 			" ) AS children" .
-			" GROUP BY family" .
+			" GROUP BY family, d_month{$sql_sex1}" .
 			") AS first_child " .
 			"GROUP BY d_month";
 		if ($sex) {
@@ -4686,7 +4685,7 @@ class Stats {
 				return '';
 			}
 			$text   = '';
-			$counts = array();
+			$counts = [];
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				switch ($values['d_month']) {
@@ -4773,7 +4772,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenLargestFamily($params = array()) {
+	public function topTenLargestFamily($params = []) {
 		return $this->topTenFamilyQuery('nolist', $params);
 	}
 
@@ -4784,7 +4783,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenLargestFamilyList($params = array()) {
+	public function topTenLargestFamilyList($params = []) {
 		return $this->topTenFamilyQuery('list', $params);
 	}
 
@@ -4795,7 +4794,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartLargestFamilies($params = array()) {
+	public function chartLargestFamilies($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
@@ -4838,7 +4837,7 @@ class Stats {
 			$tot += (int) $row['tot'];
 		}
 		$chd = '';
-		$chl = array();
+		$chl = [];
 		foreach ($rows as $row) {
 			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
@@ -4847,13 +4846,13 @@ class Stats {
 				} else {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
-				$chd .= $this->arrayToExtendedEncoding(array($per));
+				$chd .= $this->arrayToExtendedEncoding([$per]);
 				$chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row['tot']);
 			}
 		}
 		$chl = rawurlencode(implode('|', $chl));
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Largest families') . "\" title=\"" . I18N::translate('Largest families') . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Largest families') . '" title="' . I18N::translate('Largest families') . '" />';
 	}
 
 	/**
@@ -4889,7 +4888,7 @@ class Stats {
 	 *
 	 * @return string|string[][]
 	 */
-	public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
+	public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = []) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
@@ -4916,15 +4915,15 @@ class Stats {
 					$max = $values['num'];
 				}
 			}
-			$chm    = "";
-			$chxl   = "0:|";
+			$chm    = '';
+			$chxl   = '0:|';
 			$i      = 0;
-			$counts = array();
+			$counts = [];
 			foreach ($rows as $values) {
 				if ($sizes[0] < 980) {
 					$sizes[0] += 38;
 				}
-				$chxl .= $this->centuryName($values['century']) . "|";
+				$chxl .= $this->centuryName($values['century']) . '|';
 				if ($max <= 5) {
 					$counts[] = round($values['num'] * 819.2 - 1, 1);
 				} elseif ($max <= 10) {
@@ -4938,14 +4937,14 @@ class Stats {
 			$chd = $this->arrayToExtendedEncoding($counts);
 			$chm = substr($chm, 0, -1);
 			if ($max <= 5) {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|3:||' . I18N::translate('Number of children') . '|';
 			} elseif ($max <= 10) {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|3:||' . I18N::translate('Number of children') . '|';
 			} else {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||" . I18N::translate('Number of children') . "|";
+				$chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||' . I18N::translate('Number of children') . '|';
 			}
 
-			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . "\" title=\"" . I18N::translate('Average number of children per family') . "\" />";
+			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . '" title="' . I18N::translate('Average number of children per family') . '" />';
 		} else {
 			if ($sex == 'M') {
 				$sql =
@@ -4980,7 +4979,7 @@ class Stats {
 				} else {
 					$sql .= "WHERE f_file={$this->tree->getTreeId()}";
 				}
-				$sql .= " GROUP BY f_numchil";
+				$sql .= ' GROUP BY f_numchil';
 			}
 			$rows = $this->runSql($sql);
 
@@ -4995,7 +4994,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function statsChildren($params = array()) {
+	public function statsChildren($params = []) {
 		return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $params);
 	}
 
@@ -5006,7 +5005,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeBetweenSiblingsName($params = array()) {
+	public function topAgeBetweenSiblingsName($params = []) {
 		return $this->ageBetweenSiblingsQuery('name', $params);
 	}
 
@@ -5017,7 +5016,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeBetweenSiblings($params = array()) {
+	public function topAgeBetweenSiblings($params = []) {
 		return $this->ageBetweenSiblingsQuery('age', $params);
 	}
 
@@ -5028,7 +5027,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeBetweenSiblingsFullName($params = array()) {
+	public function topAgeBetweenSiblingsFullName($params = []) {
 		return $this->ageBetweenSiblingsQuery('nolist', $params);
 	}
 
@@ -5039,7 +5038,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topAgeBetweenSiblingsList($params = array()) {
+	public function topAgeBetweenSiblingsList($params = []) {
 		return $this->ageBetweenSiblingsQuery('list', $params);
 	}
 
@@ -5073,7 +5072,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function noChildrenFamiliesList($params = array()) {
+	public function noChildrenFamiliesList($params = []) {
 		if (isset($params[0]) && $params[0] != '') {
 			$type = strtolower($params[0]);
 		} else {
@@ -5086,14 +5085,14 @@ class Stats {
 		if (!isset($rows[0])) {
 			return '';
 		}
-		$top10 = array();
+		$top10 = [];
 		foreach ($rows as $row) {
 			$family = Family::getInstance($row['family'], $this->tree);
 			if ($family->canShow()) {
 				if ($type == 'list') {
-					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a></li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a></li>';
 				} else {
-					$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a>";
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
 				}
 			}
 		}
@@ -5103,7 +5102,7 @@ class Stats {
 			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -5119,7 +5118,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartNoChildrenFamilies($params = array()) {
+	public function chartNoChildrenFamilies($params = []) {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
@@ -5139,7 +5138,7 @@ class Stats {
 		if ($year1 >= 0 && $year2 >= 0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 		} else {
-			$years = "";
+			$years = '';
 		}
 		$max  = 0;
 		$tot  = 0;
@@ -5172,15 +5171,15 @@ class Stats {
 		if ($unknown > $max) {
 			$max = $unknown;
 		}
-		$chm    = "";
-		$chxl   = "0:|";
+		$chm    = '';
+		$chxl   = '0:|';
 		$i      = 0;
-		$counts = array();
+		$counts = [];
 		foreach ($rows as $values) {
 			if ($sizes[0] < 980) {
 				$sizes[0] += 38;
 			}
-			$chxl .= $this->centuryName($values['century']) . "|";
+			$chxl .= $this->centuryName($values['century']) . '|';
 			$counts[] = round(4095 * $values['count'] / ($max + 1));
 			$chm .= 't' . $values['count'] . ',000000,0,' . $i . ',11,1|';
 			$i++;
@@ -5188,7 +5187,7 @@ class Stats {
 		$counts[] = round(4095 * $unknown / ($max + 1));
 		$chd      = $this->arrayToExtendedEncoding($counts);
 		$chm .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
-		$chxl .= I18N::translateContext('unknown century', 'Unknown') . "|1:||" . I18N::translate('century') . "|2:|0|";
+		$chxl .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
 		$step = $max + 1;
 		for ($d = (int) ($max + 1); $d > 0; $d--) {
 			if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
@@ -5203,11 +5202,11 @@ class Stats {
 			}
 		}
 		for ($n = $step; $n <= ($max + 1); $n += $step) {
-			$chxl .= $n . "|";
+			$chxl .= $n . '|';
 		}
-		$chxl .= "3:||" . I18N::translate('Total families') . "|";
+		$chxl .= '3:||' . I18N::translate('Total families') . '|';
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . "\" title=\"" . I18N::translate('Number of families without children') . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . '" title="' . I18N::translate('Number of families without children') . '" />';
 	}
 
 	/**
@@ -5218,7 +5217,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function topTenGrandFamilyQuery($type = 'list', $params = array()) {
+	private function topTenGrandFamilyQuery($type = 'list', $params = []) {
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -5245,7 +5244,7 @@ class Stats {
 		if (!isset($rows[0])) {
 			return '';
 		}
-		$top10 = array();
+		$top10 = [];
 		foreach ($rows as $row) {
 			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
@@ -5266,7 +5265,7 @@ class Stats {
 			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
+			$top10 = str_replace(['[', ']', '(', ')', '+'], ['&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'], $top10);
 		}
 		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
@@ -5282,7 +5281,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenLargestGrandFamily($params = array()) {
+	public function topTenLargestGrandFamily($params = []) {
 		return $this->topTenGrandFamilyQuery('nolist', $params);
 	}
 
@@ -5293,7 +5292,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function topTenLargestGrandFamilyList($params = array()) {
+	public function topTenLargestGrandFamilyList($params = []) {
 		return $this->topTenGrandFamilyQuery('list', $params);
 	}
 
@@ -5306,7 +5305,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array()) {
+	private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = []) {
 		$threshold          = empty($params[0]) ? 10 : (int) $params[0];
 		$number_of_surnames = empty($params[1]) ? 10 : (int) $params[1];
 		$sorting            = empty($params[2]) ? 'alpha' : $params[2];
@@ -5330,7 +5329,7 @@ class Stats {
 		}
 
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
-		$surnames = array();
+		$surnames = [];
 		foreach (array_keys($surname_list) as $surname) {
 			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
@@ -5356,7 +5355,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonSurnames($params = array('', '', 'alpha')) {
+	public function commonSurnames($params = ['', '', 'alpha']) {
 		return $this->commonSurnamesQuery('nolist', false, $params);
 	}
 
@@ -5367,7 +5366,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonSurnamesTotals($params = array('', '', 'rcount')) {
+	public function commonSurnamesTotals($params = ['', '', 'rcount']) {
 		return $this->commonSurnamesQuery('nolist', true, $params);
 	}
 
@@ -5378,7 +5377,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonSurnamesList($params = array('', '', 'alpha')) {
+	public function commonSurnamesList($params = ['', '', 'alpha']) {
 		return $this->commonSurnamesQuery('list', false, $params);
 	}
 
@@ -5389,7 +5388,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonSurnamesListTotals($params = array('', '', 'rcount')) {
+	public function commonSurnamesListTotals($params = ['', '', 'rcount']) {
 		return $this->commonSurnamesQuery('list', true, $params);
 	}
 
@@ -5400,13 +5399,13 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartCommonSurnames($params = array()) {
+	public function chartCommonSurnames($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-		$size               = empty($params[0]) ? $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y : strtolower($params[0]);
+		$size               = empty($params[0]) ? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y : strtolower($params[0]);
 		$color_from         = empty($params[1]) ? $WT_STATS_CHART_COLOR1 : strtolower($params[1]);
 		$color_to           = empty($params[2]) ? $WT_STATS_CHART_COLOR2 : strtolower($params[2]);
 		$number_of_surnames = empty($params[3]) ? 10 : (int) $params[3];
@@ -5418,14 +5417,14 @@ class Stats {
 			return '';
 		}
 		$SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-		$all_surnames      = array();
+		$all_surnames      = [];
 		$tot               = 0;
 		foreach ($surnames as $surname => $num) {
 			$all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
 			$tot += $num;
 		}
 		$chd = '';
-		$chl = array();
+		$chl = [];
 		foreach ($all_surnames as $surns) {
 			$count_per = 0;
 			$max_name  = 0;
@@ -5442,15 +5441,15 @@ class Stats {
 			switch ($SURNAME_TRADITION) {
 			case 'polish':
 				// most common surname should be in male variant (Kowalski, not Kowalska)
-				$top_name = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
+				$top_name = preg_replace(['/ska$/', '/cka$/', '/dzka$/', '/żka$/'], ['ski', 'cki', 'dzki', 'żki'], $top_name);
 			}
 			$per = round(100 * $count_per / $tot_indi, 0);
-			$chd .= $this->arrayToExtendedEncoding(array($per));
+			$chd .= $this->arrayToExtendedEncoding([$per]);
 			$chl[] = $top_name . ' - ' . I18N::number($count_per);
 
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-		$chd .= $this->arrayToExtendedEncoding(array($per));
+		$chd .= $this->arrayToExtendedEncoding([$per]);
 		$chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
 		$chart_title = implode(I18N::$list_separator, $chl);
@@ -5469,7 +5468,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = array()) {
+	private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = []) {
 		if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
 			$threshold = (int) $params[0];
 		} else {
@@ -5500,7 +5499,7 @@ class Stats {
 
 		$rows = Database::prepare("SELECT SQL_CACHE n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
 			->fetchAll();
-		$nameList = array();
+		$nameList = [];
 		foreach ($rows as $row) {
 			// Split “John Thomas” into “John” and “Thomas” and count against both totals
 			foreach (explode(' ', $row->n_givn) as $given) {
@@ -5523,7 +5522,7 @@ class Stats {
 		if ($type == 'chart') {
 			return $nameList;
 		}
-		$common = array();
+		$common = [];
 		foreach ($nameList as $given => $total) {
 			if ($maxtoshow !== -1) {
 				if ($maxtoshow-- <= 0) {
@@ -5575,7 +5574,7 @@ class Stats {
 					});
 					jQuery("#' . $table_id . '").css("visibility", "visible");
 				');
-				$lookup = array('M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All'));
+				$lookup = ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All')];
 
 				return '<table id="' . $table_id . '" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Count') . '</th><th>COUNT</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
 			case 'list':
@@ -5597,7 +5596,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGiven($params = array(1, 10, 'alpha')) {
+	public function commonGiven($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('B', 'nolist', false, $params);
 	}
 
@@ -5608,7 +5607,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('B', 'nolist', true, $params);
 	}
 
@@ -5619,7 +5618,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenList($params = array(1, 10, 'alpha')) {
+	public function commonGivenList($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('B', 'list', false, $params);
 	}
 
@@ -5630,7 +5629,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenListTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenListTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('B', 'list', true, $params);
 	}
 
@@ -5641,7 +5640,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenTable($params = array(1, 10, 'rcount')) {
+	public function commonGivenTable($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('B', 'table', false, $params);
 	}
 
@@ -5652,7 +5651,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenFemale($params = array(1, 10, 'alpha')) {
+	public function commonGivenFemale($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('F', 'nolist', false, $params);
 	}
 
@@ -5663,7 +5662,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenFemaleTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenFemaleTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('F', 'nolist', true, $params);
 	}
 
@@ -5674,7 +5673,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenFemaleList($params = array(1, 10, 'alpha')) {
+	public function commonGivenFemaleList($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('F', 'list', false, $params);
 	}
 
@@ -5685,7 +5684,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenFemaleListTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenFemaleListTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('F', 'list', true, $params);
 	}
 
@@ -5696,7 +5695,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenFemaleTable($params = array(1, 10, 'rcount')) {
+	public function commonGivenFemaleTable($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('F', 'table', false, $params);
 	}
 
@@ -5707,7 +5706,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenMale($params = array(1, 10, 'alpha')) {
+	public function commonGivenMale($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('M', 'nolist', false, $params);
 	}
 
@@ -5718,7 +5717,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenMaleTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenMaleTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('M', 'nolist', true, $params);
 	}
 
@@ -5729,7 +5728,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenMaleList($params = array(1, 10, 'alpha')) {
+	public function commonGivenMaleList($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('M', 'list', false, $params);
 	}
 
@@ -5740,7 +5739,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenMaleListTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenMaleListTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('M', 'list', true, $params);
 	}
 
@@ -5751,7 +5750,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenMaleTable($params = array(1, 10, 'rcount')) {
+	public function commonGivenMaleTable($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('M', 'table', false, $params);
 	}
 
@@ -5762,7 +5761,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenUnknown($params = array(1, 10, 'alpha')) {
+	public function commonGivenUnknown($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('U', 'nolist', false, $params);
 	}
 
@@ -5773,7 +5772,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenUnknownTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenUnknownTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('U', 'nolist', true, $params);
 	}
 
@@ -5784,7 +5783,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenUnknownList($params = array(1, 10, 'alpha')) {
+	public function commonGivenUnknownList($params = [1, 10, 'alpha']) {
 		return $this->commonGivenQuery('U', 'list', false, $params);
 	}
 
@@ -5795,7 +5794,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenUnknownListTotals($params = array(1, 10, 'rcount')) {
+	public function commonGivenUnknownListTotals($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('U', 'list', true, $params);
 	}
 
@@ -5806,7 +5805,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function commonGivenUnknownTable($params = array(1, 10, 'rcount')) {
+	public function commonGivenUnknownTable($params = [1, 10, 'rcount']) {
 		return $this->commonGivenQuery('U', 'table', false, $params);
 	}
 
@@ -5817,7 +5816,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function chartCommonGiven($params = array()) {
+	public function chartCommonGiven($params = []) {
 		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
 		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -5826,7 +5825,7 @@ class Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -5858,24 +5857,24 @@ class Stats {
 			$tot += $count;
 		}
 		$chd = '';
-		$chl = array();
+		$chl = [];
 		foreach ($given as $givn => $count) {
 			if ($tot == 0) {
 				$per = 0;
 			} else {
 				$per = round(100 * $count / $tot_indi, 0);
 			}
-			$chd .= $this->arrayToExtendedEncoding(array($per));
+			$chd .= $this->arrayToExtendedEncoding([$per]);
 			$chl[] = $givn . ' - ' . I18N::number($count);
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-		$chd .= $this->arrayToExtendedEncoding(array($per));
+		$chd .= $this->arrayToExtendedEncoding([$per]);
 		$chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
 		$chart_title = implode(I18N::$list_separator, $chl);
 		$chl         = implode('|', $chl);
 
-		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
+		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
 	}
 
 	/**
@@ -5889,7 +5888,7 @@ class Stats {
 		$content = '';
 		// List active users
 		$NumAnonymous = 0;
-		$loggedusers  = array();
+		$loggedusers  = [];
 		foreach (User::allLoggedIn() as $user) {
 			if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
 				$loggedusers[] = $user;
@@ -5907,9 +5906,9 @@ class Stats {
 		if ($LoginUsers > 0) {
 			if ($NumAnonymous) {
 				if ($type == 'list') {
-					$content .= "<br><br>";
+					$content .= '<br><br>';
 				} else {
-					$content .= " " . I18N::translate('and') . " ";
+					$content .= ' ' . I18N::translate('and') . ' ';
 				}
 			}
 			$content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
@@ -6032,7 +6031,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function userName($params = array()) {
+	public function userName($params = []) {
 		if (Auth::check()) {
 			return Filter::escapeHtml(Auth::user()->getUserName());
 		} elseif (isset($params[0]) && $params[0] != '') {
@@ -6060,7 +6059,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	private function getLatestUserData($type = 'userid', $params = array()) {
+	private function getLatestUserData($type = 'userid', $params = []) {
 		static $user_id = null;
 
 		if ($user_id === null) {
@@ -6105,7 +6104,7 @@ class Stats {
 				$no = I18N::translate('no');
 			}
 
-			return Database::prepare("SELECT SQL_NO_CACHE 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user->getUserId()))->fetchOne() ? $yes : $no;
+			return Database::prepare("SELECT SQL_NO_CACHE 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute([$user->getUserId()])->fetchOne() ? $yes : $no;
 		}
 	}
 
@@ -6143,7 +6142,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function latestUserRegDate($params = array()) {
+	public function latestUserRegDate($params = []) {
 		return $this->getLatestUserData('regdate', $params);
 	}
 
@@ -6154,7 +6153,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function latestUserRegTime($params = array()) {
+	public function latestUserRegTime($params = []) {
 		return $this->getLatestUserData('regtime', $params);
 	}
 
@@ -6165,7 +6164,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function latestUserLoggedin($params = array()) {
+	public function latestUserLoggedin($params = []) {
 		return $this->getLatestUserData('loggedin', $params);
 	}
 
@@ -6308,7 +6307,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCount($params = array()) {
+	public function hitCount($params = []) {
 		return $this->hitCountQuery(null, $params);
 	}
 
@@ -6319,7 +6318,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountUser($params = array()) {
+	public function hitCountUser($params = []) {
 		return $this->hitCountQuery('index.php', $params);
 	}
 
@@ -6330,7 +6329,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountIndi($params = array()) {
+	public function hitCountIndi($params = []) {
 		return $this->hitCountQuery('individual.php', $params);
 	}
 
@@ -6341,7 +6340,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountFam($params = array()) {
+	public function hitCountFam($params = []) {
 		return $this->hitCountQuery('family.php', $params);
 	}
 
@@ -6352,7 +6351,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountSour($params = array()) {
+	public function hitCountSour($params = []) {
 		return $this->hitCountQuery('source.php', $params);
 	}
 
@@ -6363,7 +6362,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountRepo($params = array()) {
+	public function hitCountRepo($params = []) {
 		return $this->hitCountQuery('repo.php', $params);
 	}
 
@@ -6374,7 +6373,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountNote($params = array()) {
+	public function hitCountNote($params = []) {
 		return $this->hitCountQuery('note.php', $params);
 	}
 
@@ -6385,7 +6384,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function hitCountObje($params = array()) {
+	public function hitCountObje($params = []) {
 		return $this->hitCountQuery('mediaviewer.php', $params);
 	}
 
@@ -6446,7 +6445,7 @@ class Stats {
 	 * @return string[][]
 	 */
 	private function runSql($sql) {
-		static $cache = array();
+		static $cache = [];
 
 		$id = md5($sql);
 		if (isset($cache[$id])) {
@@ -6523,7 +6522,7 @@ class Stats {
 	 *
 	 * @return string
 	 */
-	public function callBlock($params = array()) {
+	public function callBlock($params = []) {
 		global $ctype;
 
 		if (isset($params[0]) && $params[0] != '') {
@@ -6531,7 +6530,7 @@ class Stats {
 		} else {
 			return '';
 		}
-		$all_blocks = array();
+		$all_blocks = [];
 		foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
 			if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
 				$all_blocks[$name] = $active_block;
@@ -6542,7 +6541,7 @@ class Stats {
 		}
 		// Build the config array
 		array_shift($params);
-		$cfg = array();
+		$cfg = [];
 		foreach ($params as $config) {
 			$bits = explode('=', $config);
 			if (count($bits) < 2) {
@@ -6565,7 +6564,7 @@ class Stats {
 	 */
 	public function totalUserMessages() {
 		$total = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##message` WHERE user_id = ?")
-			->execute(array(Auth::id()))
+			->execute([Auth::id()])
 			->fetchOne();
 
 		return I18N::number($total);
@@ -6579,7 +6578,7 @@ class Stats {
 	public function totalUserJournal() {
 		try {
 			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE user_id = ?")
-				->execute(array(Auth::id()))
+				->execute([Auth::id()])
 				->fetchOne();
 		} catch (PDOException $ex) {
 			// The module may not be installed, so the table may not exist.
@@ -6597,7 +6596,7 @@ class Stats {
 	public function totalGedcomNews() {
 		try {
 			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = ?")
-				->execute(array($this->tree->getTreeId()))
+				->execute([$this->tree->getTreeId()])
 				->fetchOne();
 		} catch (PDOException $ex) {
 			// The module may not be installed, so the table may not exist.
@@ -6615,7 +6614,7 @@ class Stats {
 	 * @return string[]
 	 */
 	public function iso3166() {
-		return array(
+		return [
 			'ABW' => 'AW', 'AFG' => 'AF', 'AGO' => 'AO', 'AIA' => 'AI', 'ALA' => 'AX', 'ALB' => 'AL',
 			'AND' => 'AD', 'ARE' => 'AE', 'ARG' => 'AR', 'ARM' => 'AM', 'ASM' => 'AS',
 			'ATA' => 'AQ', 'ATF' => 'TF', 'ATG' => 'AG', 'AUS' => 'AU', 'AUT' => 'AT', 'AZE' => 'AZ',
@@ -6658,7 +6657,7 @@ class Stats {
 			'VAT' => 'VA', 'VCT' => 'VC', 'VEN' => 'VE', 'VGB' => 'VG', 'VIR' => 'VI', 'VNM' => 'VN',
 			'VUT' => 'VU', 'WLF' => 'WF', 'WLS' => 'GB', 'WSM' => 'WS', 'YEM' => 'YE', 'ZAF' => 'ZA',
 			'ZMB' => 'ZM', 'ZWE' => 'ZW',
-		);
+		];
 	}
 
 	/**
@@ -6667,7 +6666,7 @@ class Stats {
 	 * @return string[]
 	 */
 	public function getAllCountries() {
-		return array(
+		return [
 			'???' => /* I18N: Name of a country or state */ I18N::translate('Unknown'),
 			'ABW' => /* I18N: Name of a country or state */ I18N::translate('Aruba'),
 			'AFG' => /* I18N: Name of a country or state */ I18N::translate('Afghanistan'),
@@ -6925,7 +6924,7 @@ class Stats {
 			'ZAF' => /* I18N: Name of a country or state */ I18N::translate('South Africa'),
 			'ZMB' => /* I18N: Name of a country or state */ I18N::translate('Zambia'),
 			'ZWE' => /* I18N: Name of a country or state */ I18N::translate('Zimbabwe'),
-		);
+		];
 	}
 
 	/**

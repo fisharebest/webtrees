@@ -66,11 +66,7 @@ class Filter {
 	 */
 	public static function escapeJs($string) {
 		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function ($x) {
-			if (strlen($x[0]) == 1) {
-				return sprintf('\\x%02X', ord($x[0]));
-			} elseif (function_exists('iconv')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(iconv('UTF-8', 'UTF-16BE', $x[0]))));
-			} elseif (function_exists('mb_convert_encoding')) {
+			if (strlen($x[0]) === 1) {
 				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', 'UTF-8'))));
 			} else {
 				return $x[0];
@@ -88,11 +84,11 @@ class Filter {
 	public static function escapeLike($string) {
 		return strtr(
 			$string,
-			array(
+			[
 				'\\' => '\\\\',
 				'%'  => '\%',
 				'_'  => '\_',
-			)
+			]
 		);
 	}
 
@@ -185,23 +181,23 @@ class Filter {
 				$source,
 				$variable,
 				FILTER_VALIDATE_REGEXP,
-				array(
-					'options' => array(
+				[
+					'options' => [
 						'regexp'  => '/^(' . $regexp . ')$/u',
 						'default' => $default,
-					),
-				)
+					],
+				]
 			);
 		} else {
 			$tmp = filter_input(
 				$source,
 				$variable,
 				FILTER_CALLBACK,
-				array(
+				[
 					'options' => function ($x) {
 						return mb_check_encoding($x, 'UTF-8') ? $x : false;
 					},
-				)
+				]
 			);
 
 			return ($tmp === null || $tmp === false) ? $default : $tmp;
@@ -220,38 +216,26 @@ class Filter {
 	 */
 	private static function inputArray($source, $variable, $regexp = null, $default = null) {
 		if ($regexp) {
-			// PHP5.3 requires the $tmp variable
-			$tmp = filter_input_array(
-				$source,
-				array(
-					$variable => array(
-						'flags'   => FILTER_REQUIRE_ARRAY,
-						'filter'  => FILTER_VALIDATE_REGEXP,
-						'options' => array(
-							'regexp'  => '/^(' . $regexp . ')$/u',
-							'default' => $default,
-						),
-					),
-				)
-			);
-
-			return $tmp[$variable] ?: array();
+			return filter_input_array($source, [
+				$variable => [
+					'flags'   => FILTER_REQUIRE_ARRAY,
+					'filter'  => FILTER_VALIDATE_REGEXP,
+					'options' => [
+						'regexp'  => '/^(' . $regexp . ')$/u',
+						'default' => $default,
+					],
+				],
+			])[$variable] ?: [];
 		} else {
-			// PHP5.3 requires the $tmp variable
-			$tmp = filter_input_array(
-				$source,
-				array(
-					$variable => array(
-						'flags'   => FILTER_REQUIRE_ARRAY,
-						'filter'  => FILTER_CALLBACK,
-						'options' => function ($x) {
-							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
-						},
-					),
-				)
-			);
-
-			return $tmp[$variable] ?: array();
+			return filter_input_array($source, [
+				$variable => [
+					'flags'   => FILTER_REQUIRE_ARRAY,
+					'filter'  => FILTER_CALLBACK,
+					'options' => function ($x) {
+						return mb_check_encoding($x, 'UTF-8') ? $x : false;
+					},
+				],
+			])[$variable] ?: [];
 		}
 	}
 
@@ -303,7 +287,7 @@ class Filter {
 	 * @return int
 	 */
 	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
 	}
 
 	/**
@@ -378,7 +362,7 @@ class Filter {
 	 * @return int
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
 	}
 
 	/**

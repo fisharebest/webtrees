@@ -34,12 +34,12 @@ class CensusOfDenmark1801 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Navn', ''),
 			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
 			new CensusColumnAge($this, 'Alder', ''),
 			new CensusColumnConditionDanish($this, 'Civilstand', ''),
 			new CensusColumnOccupation($this, 'Erhverv', ''),
-		);
+		];
 	}
 }

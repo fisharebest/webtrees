@@ -67,7 +67,7 @@ class Migration22 implements MigrationInterface {
 						"UPDATE `##gedcom_setting`" .
 						" SET setting_value=?" .
 						" WHERE gedcom_id=? AND setting_name='MEDIA_DIRECTORY'"
-					)->execute(array($_media_dir, $_cfg->gedcom_id));
+					)->execute([$_media_dir, $_cfg->gedcom_id]);
 				}
 			} else {
 				// Not using the media firewall - just move the public folder to the new location (if we can).

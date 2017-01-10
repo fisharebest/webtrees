@@ -111,8 +111,8 @@ class Date {
 			$d = $match[1];
 			$m = $match[2];
 			$y = $match[3];
-		} else // A date with just a year
-			if (preg_match('/^(\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)$/', $date, $match)) {
+		} elseif (preg_match('/^(\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)$/', $date, $match)) {
+				// A date with just a year
 				$d = '';
 				$m = '';
 				$y = $match[1];
@@ -170,19 +170,19 @@ class Date {
 		// Now construct an object of the correct type
 		switch ($cal) {
 		case '@#DGREGORIAN@':
-			return new GregorianDate(array($y, $m, $d));
+			return new GregorianDate([$y, $m, $d]);
 		case '@#DJULIAN@':
-			return new JulianDate(array($y, $m, $d));
+			return new JulianDate([$y, $m, $d]);
 		case '@#DHEBREW@':
-			return new JewishDate(array($y, $m, $d));
+			return new JewishDate([$y, $m, $d]);
 		case '@#DHIJRI@':
-			return new HijriDate(array($y, $m, $d));
+			return new HijriDate([$y, $m, $d]);
 		case '@#DFRENCH R@':
-			return new FrenchDate(array($y, $m, $d));
+			return new FrenchDate([$y, $m, $d]);
 		case '@#DJALALI@':
-			return new JalaliDate(array($y, $m, $d));
+			return new JalaliDate([$y, $m, $d]);
 		case '@#DROMAN@':
-			return new RomanDate(array($y, $m, $d));
+			return new RomanDate([$y, $m, $d]);
 		default:
 			throw new \DomainException('Invalid calendar');
 		}
@@ -194,14 +194,14 @@ class Date {
 	 * @return string[]
 	 */
 	public static function calendarNames() {
-		return array(
+		return [
 			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
 			'julian'    => /* I18N: The julian calendar */ I18N::translate('Julian'),
 			'french'    => /* I18N: The French calendar */ I18N::translate('French'),
 			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
 			'hijri'     => /* I18N: The Arabic/Hijri calendar */ I18N::translate('Hijri'),
 			'jalali'    => /* I18N: The Persian/Jalali calendar */ I18N::translate('Jalali'),
-		);
+		];
 	}
 
 	/**
@@ -225,7 +225,7 @@ class Date {
 		if ($convert_calendars) {
 			$calendar_format = explode('_and_', $CALENDAR_FORMAT);
 		} else {
-			$calendar_format = array();
+			$calendar_format = [];
 		}
 
 		// Two dates with text before, between and after

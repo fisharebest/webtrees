@@ -45,10 +45,10 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition implements Surn
 			$mother_surname = '';
 		}
 
-		return array(
+		return [
 			'NAME' => '/' . $father_surname . '/ /' . $mother_surname . '/',
 			'SURN' => trim($father_surname . ',' . $mother_surname, ','),
-		);
+		];
 	}
 
 	/**
@@ -63,21 +63,21 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition implements Surn
 		if (preg_match(self::REGEX_SURNS, $child_name, $match)) {
 			switch ($parent_sex) {
 			case 'M':
-				return array(
+				return [
 					'NAME' => '// /' . $match['SURN1'] . '/',
 					'SURN' => $match['SURN1'],
-				);
+				];
 			case 'F':
-				return array(
+				return [
 					'NAME' => '// /' . $match['SURN2'] . '/',
 					'SURN' => $match['SURN2'],
-				);
+				];
 			}
 		}
 
-		return array(
+		return [
 			'NAME' => '// //',
-		);
+		];
 	}
 
 	/**
@@ -89,8 +89,8 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition implements Surn
 	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
 	 */
 	public function newSpouseNames($spouse_name, $spouse_sex) {
-		return array(
+		return [
 			'NAME' => '// //',
-		);
+		];
 	}
 }

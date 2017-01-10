@@ -28,10 +28,10 @@ class ReportHtmlImage extends ReportBaseImage {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Get the current positions
-		if ($this->x == ".") {
+		if ($this->x == '.') {
 			$this->x = $renderer->getX();
 		}
-		if ($this->y == ".") {
+		if ($this->y == '.') {
 			//-- first check for a collision with the last picture
 			if (isset($lastpicbottom)) {
 				if (($renderer->pageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
@@ -43,20 +43,20 @@ class ReportHtmlImage extends ReportBaseImage {
 
 		// Image alignment
 		switch ($this->align) {
-		case "L":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+		case 'L':
+			echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
+			echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
-		case "C":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+		case 'C':
+			echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
+			echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
-		case "R":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+		case 'R':
+			echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
+			echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
 		default:
-			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $renderer->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
+			echo '<img src="', $this->file, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
 		}
 
 		$lastpicpage   = $renderer->pageNo();
@@ -64,7 +64,7 @@ class ReportHtmlImage extends ReportBaseImage {
 		$lastpicright  = $this->x + $this->width;
 		$lastpicbottom = $this->y + $this->height;
 		// Setup for the next line
-		if ($this->line == "N") {
+		if ($this->line == 'N') {
 			$renderer->setY($lastpicbottom);
 		}
 		// Keep max Y updated

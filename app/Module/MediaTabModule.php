@@ -118,7 +118,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 					}
 				}
 			}
-			$this->facts = array();
+			$this->facts = [];
 			foreach ($facts as $fact) {
 				if (preg_match('/(?:^1|\n\d) OBJE @' . WT_REGEX_XREF . '@/', $fact->getGedcom())) {
 					$this->facts[] = $fact;

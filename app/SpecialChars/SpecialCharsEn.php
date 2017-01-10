@@ -28,10 +28,10 @@ class SpecialCharsEn extends AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function upper() {
-		return array(
+		return [
 			'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'Ð', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï',
 			'Ĳ', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Œ', 'Ø', 'Þ', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'Ÿ',
-		);
+		];
 	}
 
 	/**
@@ -40,9 +40,9 @@ class SpecialCharsEn extends AbstractSpecialChars {
 	 * @return string[]
 	 */
 	public function lower() {
-		return array(
+		return [
 			'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'ð', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï',
 			'ĳ', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'œ', 'ø', 'þ', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', 'ß',
-		);
+		];
 	}
 }

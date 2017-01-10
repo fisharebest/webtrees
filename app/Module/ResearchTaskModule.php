@@ -53,7 +53,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $controller, $WT_TREE;
 
 		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
@@ -61,7 +61,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
 		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
-		foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
+		foreach (['show_unassigned', 'show_other', 'show_future', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -117,12 +117,12 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$xrefs = Database::prepare(
 			"SELECT DISTINCT d_gid FROM `##dates`" .
 			" WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
 			'jd'      => $end_jd,
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 
-		$facts = array();
+		$facts = [];
 		foreach ($xrefs as $xref) {
 			$record = GedcomRecord::getInstance($xref, $WT_TREE);
 			if ($record->canShow()) {
@@ -152,7 +152,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 
