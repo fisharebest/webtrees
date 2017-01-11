@@ -72,7 +72,7 @@ case 'editraw':
 							<?php echo $fact->summary(); ?>
 						</div>
 						<input type="hidden" name="fact_id[]" value="<?php echo $fact->getFactId(); ?>">
-						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match_all('/\n/', $fact->getGedcom(), $dummy_parameter_for_php53); ?>" style="width:100%;"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></textarea>
+						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match_all('/\n/', $fact->getGedcom()); ?>" style="width:100%;"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></textarea>
 					</li>
 					<?php } ?>
 				<?php } ?>
