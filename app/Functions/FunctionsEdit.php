@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
+use Fisharebest\Webtrees\Census\CensusOfDeutschland;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
 use Fisharebest\Webtrees\Census\CensusOfScotland;
@@ -985,6 +986,9 @@ class FunctionsEdit {
 		case 'da':
 			$census_places = [new CensusOfDenmark];
 			break;
+		case 'de':
+			$census_places = array(new CensusOfDeutschland);
+			break;	
 		default:
 			$census_places = [];
 			break;
