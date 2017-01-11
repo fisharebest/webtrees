@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-11 18:17+0000\n"
+"PO-Revision-Date: 2017-01-11 18:22+0000\n"
 "Last-Translator: Elián Hanisch <lambdae2@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
 "Language: es\n"
@@ -874,7 +874,7 @@ msgstr "Ha sido solicitada una nueva contraseña para su identificador de usuari
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Un nuevo usuario (%1$s) ha solicitado una cuenta (%2$s) y verificado una dirección de email (%3$s)."
+msgstr "Un nuevo usuario (%1$s) ha solicitado una cuenta (%2$s) y verificado una dirección de correo electrónico (%3$s)."
 
 #: admin.php:632 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -1175,7 +1175,7 @@ msgstr "Acceso a Árboles genealógicos"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr "Aprobación de cuenta y verificación de email"
+msgstr "Aprobación de cuenta y verificación de correo electrónico"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -12094,7 +12094,7 @@ msgstr "Nombre del remitente"
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Enviando email"
+msgstr "Correo electrónico"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:421
@@ -14140,7 +14140,7 @@ msgstr "Esta cuenta no ha sido aprobada. Por favor, espere a que un administrado
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Esta cuenta no ha sido verificada. Por favor revise su email por un mensaje de verificación."
+msgstr "Esta cuenta no ha sido verificada. Por favor revise su correo electrónico por un mensaje de verificación."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -15934,7 +15934,7 @@ msgstr "Yemen"
 #: login.php:340
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Usted (o alguien que pretende ser usted) ha solicitado una cuenta en %1$s usando la dirección de email %2$s."
+msgstr "Usted (o alguien que pretende ser usted) ha solicitado una cuenta en %1$s usando la dirección de correo electrónico %2$s."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
