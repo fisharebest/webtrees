@@ -987,8 +987,8 @@ class FunctionsEdit {
 			$census_places = [new CensusOfDenmark];
 			break;
 		case 'de':
-			$census_places = array(new CensusOfDeutschland);
-			break;	
+			$census_places = [new CensusOfDeutschland];
+			break;
 		default:
 			$census_places = [];
 			break;
