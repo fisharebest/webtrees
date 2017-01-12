@@ -183,7 +183,6 @@ class I18N {
 		$length_menu = /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
 
 		return
-			'"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) { return sPre.replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
 			'"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
 			'"language": {' .
 			' "paginate": {' .
@@ -194,7 +193,7 @@ class I18N {
 			' },' .
 			' "emptyTable":     "' . self::translate('No records to display') . '",' .
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
-			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0) . '",' .
+			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
 			' "lengthMenu":     "' . Filter::escapeJs($length_menu) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
