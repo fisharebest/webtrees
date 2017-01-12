@@ -50,7 +50,7 @@ use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class FunctionsEdit - common functions
+ * Class FunctionsEdit - common functions for editing
  */
 class FunctionsEdit {
 	/**
@@ -166,6 +166,24 @@ class FunctionsEdit {
 			'<input type="checkbox" name="' . $name . '-GUI-ONLY" value="1"' .
 			($is_checked ? ' checked' : '') .
 			' onclick="document.getElementById(\'' . $name . '\').value=(this.checked?1:0);" ' . $extra . '>';
+	}
+
+	/**
+	 * A list of integers (e.g. for an edit control).
+	 *
+	 * @return string[]
+	 */
+	public static function numericOptions($integers) {
+		$array = [];
+		foreach ($integers as $integer) {
+			if ($integer === -1) {
+				$array[$integer] = I18N::translate('All');
+			} else {
+				$array[$integer] = I18N::number($integer);
+			}
+		}
+
+		return $array;
 	}
 
 	/**
