@@ -182,41 +182,9 @@ class I18N {
 		$length_menu = '<select>' . $length_menu . '</select>';
 		$length_menu = /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
 
-		$digits = self::$locale->digits('0123456789');
-		if ($digits === '0123456789') {
-			$callback = '';
-		} else {
-			$callback = ',
-				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
-					return sPre
-						.replace(/0/g, "' . mb_substr($digits, 0, 1) . '")
-						.replace(/1/g, "' . mb_substr($digits, 1, 1) . '")
-						.replace(/2/g, "' . mb_substr($digits, 2, 1) . '")
-						.replace(/3/g, "' . mb_substr($digits, 3, 1) . '")
-						.replace(/4/g, "' . mb_substr($digits, 4, 1) . '")
-						.replace(/5/g, "' . mb_substr($digits, 5, 1) . '")
-						.replace(/6/g, "' . mb_substr($digits, 6, 1) . '")
-						.replace(/7/g, "' . mb_substr($digits, 7, 1) . '")
-						.replace(/8/g, "' . mb_substr($digits, 8, 1) . '")
-						.replace(/9/g, "' . mb_substr($digits, 9, 1) . '");
-				},
-				"formatNumber": function(iIn) {
-					return String(iIn)
-						.replace(/0/g, "' . mb_substr($digits, 0, 1) . '")
-						.replace(/1/g, "' . mb_substr($digits, 1, 1) . '")
-						.replace(/2/g, "' . mb_substr($digits, 2, 1) . '")
-						.replace(/3/g, "' . mb_substr($digits, 3, 1) . '")
-						.replace(/4/g, "' . mb_substr($digits, 4, 1) . '")
-						.replace(/5/g, "' . mb_substr($digits, 5, 1) . '")
-						.replace(/6/g, "' . mb_substr($digits, 6, 1) . '")
-						.replace(/7/g, "' . mb_substr($digits, 7, 1) . '")
-						.replace(/8/g, "' . mb_substr($digits, 8, 1) . '")
-						.replace(/9/g, "' . mb_substr($digits, 9, 1) . '");
-				}
-			';
-		}
-
 		return
+			'"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) { return sPre.replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
+			'"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
 			'"language": {' .
 			' "paginate": {' .
 			'  "first":    "' . /* I18N: A button label, first page */ self::translate('first') . '",' .
@@ -228,15 +196,12 @@ class I18N {
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
 			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-			' "infoPostfix":    "",' .
 			' "lengthMenu":     "' . Filter::escapeJs($length_menu) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
 			' "processing":     "' . self::translate('Loading…') . '",' .
 			' "search":         "' . self::translate('Filter') . '",' .
-			' "url":            "",' .
 			' "zeroRecords":    "' . self::translate('No records to display') . '"' .
-			'}' .
-			$callback;
+			'}';
 	}
 
 	/**
