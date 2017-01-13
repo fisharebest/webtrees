@@ -256,9 +256,9 @@ class BranchesController extends PageController {
 					if ($marriage_year) {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . GedcomTag::getLabel('MARR') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
 					} elseif ($family->getFirstFact('_NMR')) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . GedcomTag::getLabel('_NMR') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
 					}
 					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
 				}

@@ -63,12 +63,12 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		global $controller;
 
 		$controller->addInlineJavascript('
-			jQuery("#sb_family_nav_content")
+			$("#sb_family_nav_content")
 				.on("click", ".flyout a", function() {
 					return false;
 				})
 				.on("click", ".flyout3", function() {
-					window.location.href = jQuery(this).data("href");
+					window.location.href = $(this).data("href");
 					return false;
 				});
 		');
@@ -116,8 +116,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		?>
 		<tr>
 			<td class="center" colspan="2">
-				<a class="famnav_title" href="<?php echo $family->getHtmlUrl(); ?>">
-					<?php echo $title; ?>
+				<a class="famnav_title" href="<?= $family->getHtmlUrl() ?>">
+					<?= $title ?>
 				</a>
 			</td>
 		</tr>
@@ -129,19 +129,19 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 			?>
 			<tr>
 				<td class="facts_label">
-					<?php echo $menu->getMenu(); ?>
+					<?= $menu->getMenu() ?>
 				</td>
-				<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
+				<td class="center <?= $controller->getPersonStyle($spouse) ?> nam">
 					<?php if ($spouse->canShow()): ?>
-					<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
-						<?php echo $spouse->getFullName(); ?>
+					<a class="famnav_link" href="<?= $spouse->getHtmlUrl() ?>">
+						<?= $spouse->getFullName() ?>
 					</a>
 					<div class="font9">
-						<?php echo $spouse->getLifeSpan(); ?>
+						<?= $spouse->getLifeSpan() ?>
 					</div>
 					<?php else: ?>
-						<?php echo $spouse->getFullName(); ?>
-					<?php endif; ?>
+						<?= $spouse->getFullName() ?>
+					<?php endif ?>
 				</td>
 			</tr>
 		<?php
@@ -154,19 +154,19 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 			?>
 			<tr>
 				<td class="facts_label">
-					<?php echo $menu->getMenu(); ?>
+					<?= $menu->getMenu() ?>
 				</td>
-				<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
+				<td class="center <?= $controller->getPersonStyle($child) ?> nam">
 					<?php if ($child->canShow()): ?>
-					<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
-						<?php echo $child->getFullName(); ?>
+					<a class="famnav_link" href="<?= $child->getHtmlUrl() ?>">
+						<?= $child->getFullName() ?>
 					</a>
 					<div class="font9">
-						<?php echo $child->getLifeSpan(); ?>
+						<?= $child->getLifeSpan() ?>
 					</div>
 					<?php else: ?>
-						<?php echo $child->getFullName(); ?>
-					<?php endif; ?>
+						<?= $child->getFullName() ?>
+					<?php endif ?>
 				</td>
 			</tr>
 		<?php

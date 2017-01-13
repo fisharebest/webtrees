@@ -83,7 +83,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable( {
+				$("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -113,24 +113,24 @@ class FunctionsPrintLists {
 					pagingType: "full_numbers"
 				});
 
-				jQuery("#' . $table_id . '")
+				$("#' . $table_id . '")
 				/* Hide/show parents */
 				.on("click", ".btn-toggle-parents", function() {
-					jQuery(this).toggleClass("ui-state-active");
-					jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
+					$(this).toggleClass("ui-state-active");
+					$(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
 				})
 				/* Hide/show statistics */
 				.on("click", ".btn-toggle-statistics", function() {
-					jQuery(this).toggleClass("ui-state-active");
-					jQuery("#indi_list_table-charts_' . $table_id . '").slideToggle();
+					$(this).toggleClass("ui-state-active");
+					$("#indi_list_table-charts_' . $table_id . '").slideToggle();
 				})
 				/* Filter buttons in table header */
 				.on("click", "button[data-filter-column]", function() {
-					var btn = jQuery(this);
+					var btn = $(this);
 					// De-activate the other buttons in this button group
 					btn.siblings().removeClass("ui-state-active");
 					// Apply (or clear) this filter
-					var col = jQuery("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
+					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
 					if (btn.hasClass("ui-state-active")) {
 						btn.removeClass("ui-state-active");
 						col.search("").draw();
@@ -140,8 +140,8 @@ class FunctionsPrintLists {
 					}
 				});
 
-				jQuery(".indi-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".indi-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 			');
 
 		$stats = new Stats($WT_TREE);
@@ -224,7 +224,7 @@ class FunctionsPrintLists {
 											title="' . I18N::translate('Show individuals who died more than 100 years ago.') . '"
 											type="button"
 										>
-											' . GedcomTag::getLabel('DEAT') . '&gt;100
+											' . I18N::translate('Death') . '&gt;100
 										</button>
 										<button
 											class="ui-state-default"
@@ -233,7 +233,7 @@ class FunctionsPrintLists {
 											title="' . I18N::translate('Show individuals who died within the last 100 years.') . '"
 											type="button"
 										>
-											' . GedcomTag::getLabel('DEAT') . '&lt;=100
+											' . I18N::translate('Death') . '&lt;=100
 										</button>
 									</div>
 									<div class="btn-group">
@@ -244,7 +244,7 @@ class FunctionsPrintLists {
 											title="' . I18N::translate('Show individuals born more than 100 years ago.') . '"
 											type="button"
 										>
-											' . GedcomTag::getLabel('BIRT') . '&gt;100
+											' . I18N::translate('Birth') . '&gt;100
 										</button>
 										<button
 											class="ui-state-default"
@@ -253,7 +253,7 @@ class FunctionsPrintLists {
 											title="' . I18N::translate('Show individuals born within the last 100 years.') . '"
 											type="button"
 										>
-											' . GedcomTag::getLabel('BIRT') . '&lt;=100
+											' . I18N::translate('Birth') . '&lt;=100
 										</button>
 									</div>
 									<div class="btn-group">
@@ -280,18 +280,18 @@ class FunctionsPrintLists {
 							</th>
 						</tr>
 						<tr>
-							<th>' . GedcomTag::getLabel('GIVN') . '</th>
-							<th>' . GedcomTag::getLabel('SURN') . '</th>
+							<th>' . I18N::translate('Given names') . '</th>
+							<th>' . I18N::translate('Surname') . '</th>
 							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */ I18N::translate('Sosa') . '</th>
-							<th>' . GedcomTag::getLabel('BIRT') . '</th>
+							<th>' . I18N::translate('Birth') . '</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-							<th>' . GedcomTag::getLabel('PLAC') . '</th>
+							<th>' . I18N::translate('Place') . '</th>
 							<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
-							<th>' . GedcomTag::getLabel('DEAT') . '</th>
+							<th>' . I18N::translate('Death') . '</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>' . GedcomTag::getLabel('PLAC') . '</th>
-							<th>' . GedcomTag::getLabel('CHAN') . '</th>
+							<th>' . I18N::translate('Age') . '</th>
+							<th>' . I18N::translate('Place') . '</th>
+							<th>' . I18N::translate('Last change') . '</th>
 							<th hidden></th>
 							<th hidden></th>
 							<th hidden></th>
@@ -526,7 +526,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable( {
+				$("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -554,16 +554,16 @@ class FunctionsPrintLists {
 					pagingType: "full_numbers"
 			   });
 
-				jQuery("#' . $table_id . '")
+				$("#' . $table_id . '")
 				/* Hide/show parents */
 				.on("click", ".btn-toggle-parents", function() {
-					jQuery(this).toggleClass("ui-state-active");
-					jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
+					$(this).toggleClass("ui-state-active");
+					$(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
 				})
 				/* Hide/show statistics */
 				.on("click",  ".btn-toggle-statistics", function() {
-					jQuery(this).toggleClass("ui-state-active");
-					jQuery("#fam_list_table-charts_' . $table_id . '").slideToggle();
+					$(this).toggleClass("ui-state-active");
+					$("#fam_list_table-charts_' . $table_id . '").slideToggle();
 				})
 				/* Filter buttons in table header */
 				.on("click", "button[data-filter-column]", function() {
@@ -571,7 +571,7 @@ class FunctionsPrintLists {
 					// De-activate the other buttons in this button group
 					btn.siblings().removeClass("ui-state-active");
 					// Apply (or clear) this filter
-					var col = jQuery("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
+					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
 					if (btn.hasClass("ui-state-active")) {
 						btn.removeClass("ui-state-active");
 						col.search("").draw();
@@ -581,8 +581,8 @@ class FunctionsPrintLists {
 					}
 				});
 
-				jQuery(".fam-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".fam-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 		');
 
 		$stats   = new Stats($WT_TREE);
@@ -674,7 +674,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
 										>
-											' . GedcomTag::getLabel('MARR') . '
+											' . I18N::translate('Marriage') . '
 										</button>
 										<button
 											type="button"
@@ -683,7 +683,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
 										>
-											' . GedcomTag::getLabel('MARR') . '&gt;100
+											' . I18N::translate('Marriage') . '&gt;100
 										</button>
 										<button
 											type="button"
@@ -692,7 +692,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
 										>
-											' . GedcomTag::getLabel('MARR') . '&lt;=100
+											' . I18N::translate('Marriage') . '&lt;=100
 										</button>
 										<button
 											type="button"
@@ -701,7 +701,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											title="' . I18N::translate('Show divorced couples.') . '"
 										>
-											' . GedcomTag::getLabel('DIV') . '
+											' . I18N::translate('Divorce') . '
 										</button>
 										<button
 											type="button"
@@ -717,17 +717,17 @@ class FunctionsPrintLists {
 							</th>
 						</tr>
 						<tr>
-							<th>' . GedcomTag::getLabel('GIVN') . '</th>
-							<th>' . GedcomTag::getLabel('SURN') . '</th>
-							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>' . GedcomTag::getLabel('GIVN') . '</th>
-							<th>' . GedcomTag::getLabel('SURN') . '</th>
-							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>' . GedcomTag::getLabel('MARR') . '</th>
+							<th>' . I18N::translate('Given names') . '</th>
+							<th>' . I18N::translate('Surname') . '</th>
+							<th>' . I18N::translate('Age') . '</th>
+							<th>' . I18N::translate('Given names') . '</th>
+							<th>' . I18N::translate('Surname') . '</th>
+							<th>' . I18N::translate('Age') . '</th>
+							<th>' . I18N::translate('Marriage') . '</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-							<th>' . GedcomTag::getLabel('PLAC') . '</th>
+							<th>' . I18N::translate('Place') . '</th>
 							<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
-							<th>' . GedcomTag::getLabel('CHAN') . '</th>
+							<th>' . I18N::translate('Last change') . '</th>
 							<th hidden></th>
 							<th hidden></th>
 							<th hidden></th>
@@ -1011,7 +1011,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable( {
+				$("#' . $table_id . '").dataTable( {
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -1030,20 +1030,20 @@ class FunctionsPrintLists {
 					displayLength: 20,
 					pagingType: "full_numbers"
 			   });
-				jQuery(".source-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".source-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 			');
 
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="source-list">';
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
-		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('AUTH') . '</th>';
+		$html .= '<th>' . I18N::translate('Title') . '</th>';
+		$html .= '<th>' . I18N::translate('Author') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
 		$html .= '<th>' . I18N::translate('Shared notes') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
@@ -1138,7 +1138,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable({
+				$("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -1156,19 +1156,19 @@ class FunctionsPrintLists {
 					displayLength: 20,
 					pagingType: "full_numbers"
 				});
-				jQuery(".note-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".note-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 			');
 
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="note-list">';
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
-		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
+		$html .= '<th>' . I18N::translate('Title') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
@@ -1235,7 +1235,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable({
+				$("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -1250,8 +1250,8 @@ class FunctionsPrintLists {
 					displayLength: 20,
 					pagingType: "full_numbers"
 				});
-				jQuery(".repo-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".repo-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 			');
 
 		$html .= '<div class="loading-image"></div>';
@@ -1259,7 +1259,7 @@ class FunctionsPrintLists {
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
@@ -1321,7 +1321,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable({
+				$("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
 					jQueryUI: true,
@@ -1338,19 +1338,19 @@ class FunctionsPrintLists {
 					displayLength: 20,
 					pagingType: "full_numbers"
 				});
-				jQuery(".media-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				$(".media-list").css("visibility", "visible");
+				$(".loading-image").css("display", "none");
 			');
 
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="media-list">';
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . I18N::translate('Media') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
+		$html .= '<th>' . I18N::translate('Title') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
 
@@ -1437,7 +1437,7 @@ class FunctionsPrintLists {
 			'<table class="surname-list">' .
 			'<thead>' .
 			'<tr>' .
-			'<th>' . GedcomTag::getLabel('SURN') . '</th>' .
+			'<th>' . I18N::translate('Surname') . '</th>' .
 			'<th>' . $col_heading . '</th>' .
 			'</tr>' .
 			'</thead>';
@@ -1626,7 +1626,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery("#' . $table_id . '").dataTable({
+				$("#' . $table_id . '").dataTable({
 					dom: "t",
 					' . I18N::datatablesI18N() . ',
 					autoWidth: false,

@@ -212,26 +212,26 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 					<select class="form-control" name="plugin" onchange="reset_reload();">
 						<?php if (!$this->plugin): ?>
 							<option value="" selected></option>
-						<?php endif; ?>
+						<?php endif ?>
 						<?php foreach ($this->plugins as $class => $plugin): ?>
-							<option value="<?php echo $class ?>" <?php echo $this->plugin == $class ? 'selected' : ''; ?>><?php echo $plugin->getName(); ?></option>
-					<?php endforeach; ?>
+							<option value="<?= $class ?>" <?= $this->plugin == $class ? 'selected' : '' ?>><?= $plugin->getName() ?></option>
+					<?php endforeach ?>
 					</select>
 					<?php if ($this->PLUGIN): ?>
-						<p class="small text-muted"><?php echo $this->PLUGIN->getDescription() ?></p>
-		<?php endif; ?>
+						<p class="small text-muted"><?= $this->PLUGIN->getDescription() ?></p>
+		<?php endif ?>
 				</div>
 			</div>
 
 				<?php if (!Auth::user()->getPreference('auto_accept')): ?>
 				<div class="alert alert-danger">
-				<?php echo I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.'); ?>
+				<?= I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.') ?>
 				</div>
-			<?php endif; ?>
+			<?php endif ?>
 
 			<?php // If a plugin is selected, display the details ?>
 			<?php if ($this->PLUGIN): ?>
-				<?php echo $this->PLUGIN->getOptionsForm(); ?>
+				<?= $this->PLUGIN->getOptionsForm() ?>
 				<?php if (substr($this->action, -4) == '_all'): ?>
 					<?php // Reset - otherwise we might "undo all changes", which refreshes the ?>
 					<?php // page, which makes them all again!  ?>
@@ -241,24 +241,24 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 					<div id="batch_update2" class="col-sm-12">
 						<?php if ($this->curr_xref): ?>
 							<?php // Create an object, so we can get the latest version of the name. ?>
-								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE); ?>
+								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE) ?>
 							<div class="form-group">
-								<?php echo self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) ?>
-					<?php echo self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
+								<?= self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) ?>
+					<?= self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
 							</div>
 							<div class="form-group">
-								<a class="lead" href="<?php echo $this->record->getHtmlUrl(); ?>"><?php echo $this->record->getFullName(); ?></a>
-					<?php echo $this->PLUGIN->getActionPreview($this->record); ?>
+								<a class="lead" href="<?= $this->record->getHtmlUrl() ?>"><?= $this->record->getFullName() ?></a>
+					<?= $this->PLUGIN->getActionPreview($this->record) ?>
 							</div>
 							<div class="form-group">
-							<?php echo implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)); ?>
+							<?= implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) ?>
 							</div>
 						<?php else: ?>
-							<div class="alert alert-info"><?php echo I18N::translate('Nothing found.'); ?></div>
-					<?php endif; ?>
+							<div class="alert alert-info"><?= I18N::translate('Nothing found.') ?></div>
+					<?php endif ?>
 					</div>
-				<?php endif; ?>
-		<?php endif; ?>
+				<?php endif ?>
+		<?php endif ?>
 		</form>
 		<?php
 	}

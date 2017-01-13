@@ -45,7 +45,7 @@ class AncestryController extends ChartController {
 
 		// Extract form parameters
 		$this->show_cousins = Filter::getInteger('show_cousins', 0, 1);
-		$this->chart_style  = Filter::getInteger('chart_style', 0, 3);
+		$this->chart_style  = Filter::get('chart_style', '[0123]', '0');
 		$this->generations  = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {

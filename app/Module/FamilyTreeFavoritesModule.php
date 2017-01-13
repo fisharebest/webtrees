@@ -203,12 +203,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';
 			$content .= '</div>';
 			$content .= '<div id="add_fav' . $uniqueID . '" style="display: none;">';
-			$content .= '<form name="addfavform" method="get" action="index.php">';
+			$content .= '<form name="addfavform" action="index.php">';
 			$content .= '<input type="hidden" name="action" value="addfav">';
 			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
 			$content .= '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
 			$content .= '<div class="add_fav_ref">';
-			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="jQuery(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
+			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="$(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); $(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
 			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid' . $uniqueID . '" size="5" value="">';
 			$content .= ' ' . FunctionsPrint::printFindIndividualLink('gid' . $uniqueID);
@@ -219,7 +219,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= ' ' . FunctionsPrint::printFindMediaLink('gid' . $uniqueID);
 			$content .= '</div>';
 			$content .= '<div class="add_fav_url">';
-			$content .= '<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
+			$content .= '<input type="radio" name="fav_category" value="url" onclick="$(\'#url, #favtitle\').removeAttr(\'disabled\'); $(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . GedcomTag::getLabel('URL') . '" disabled> ';
 			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="' . I18N::translate('Title') . '" disabled>';
 			$content .= '<p>' . I18N::translate('Enter an optional note about this favorite') . '</p>';

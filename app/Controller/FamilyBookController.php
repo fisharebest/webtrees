@@ -49,7 +49,7 @@ class FamilyBookController extends ChartController {
 		parent::__construct();
 
 		// Extract the request parameters
-		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1);
+		$this->show_spouse = Filter::get('show_spouse', '[01]', '0');
 		$this->descent     = Filter::getInteger('descent', 0, 9, 5);
 		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
 

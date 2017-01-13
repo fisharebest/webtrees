@@ -413,30 +413,30 @@ class HourglassController extends ChartController {
 		$js = "
 			var WT_HOURGLASS_CHART = (function() {
 				function sizeLines() {
-					jQuery('.tvertline').each(function(i,e) {
+					$('.tvertline').each(function(i,e) {
 						var pid = e.id.split('_').pop();
-						e.style.height = Math.abs(jQuery('#table_' + pid)[0].offsetHeight - (jQuery('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5)) + 'px';
+						e.style.height = Math.abs($('#table_' + pid)[0].offsetHeight - ($('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5)) + 'px';
 					});
 
-					jQuery('.bvertline').each(function(i,e) {
+					$('.bvertline').each(function(i,e) {
 						var pid = e.id.split('_').pop();
-						e.style.height = jQuery('#table_' + pid)[0].offsetTop + jQuery('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5 + 'px';
+						e.style.height = $('#table_' + pid)[0].offsetTop + $('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5 + 'px';
 					});
 
-					jQuery('.pvline').each(function(i,e) {
-						var el = jQuery(e);
+					$('.pvline').each(function(i,e) {
+						var el = $(e);
 						el.height(Math.floor(el.parent().height()/2));
 					});
 				}
 
-				jQuery('#childarrow').on('click', '.icon-darrow', function(e) {
+				$('#childarrow').on('click', '.icon-darrow', function(e) {
 					e.preventDefault();
-					jQuery('#childbox').slideToggle('fast');
+					$('#childbox').slideToggle('fast');
 				})
-				jQuery('.hourglassChart').on('click', '.icon-larrow, .icon-rarrow', function(e){
+				$('.hourglassChart').on('click', '.icon-larrow, .icon-rarrow', function(e){
 					e.preventDefault();
 					e.stopPropagation();
-					var self = jQuery(this),
+					var self = $(this),
 						parms = self.data('parms').split('-'),
 						id = self.attr('href');
 					jQuery('#td_'+id).load('hourglass_ajax.php?rootid='+ id +'&generations=1&type='+parms[0]+'&show_full='+(parseInt(parms[1]) ? 1:0) +'&show_spouse='+(parseInt(parms[2]) ? 1:0), function(){
