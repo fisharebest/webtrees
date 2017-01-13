@@ -1413,7 +1413,7 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
 				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				jQuery(".surname-list").dataTable({
+				$(".surname-list").dataTable({
 					dom: "t",
 					jQueryUI: true,
 					autoWidth: false,
