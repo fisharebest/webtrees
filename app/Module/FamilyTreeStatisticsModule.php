@@ -293,16 +293,16 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="show-last-update">
-					<?php echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update') ?>
+					<?= /* I18N: label for yes/no option */ I18N::translate('Show date of last update') ?>
 				</label>
 			</td>
 			<td class="optionbox">
-				<input type="checkbox" value="yes" id="show-last-update" name="show_last_update" <?php echo $show_last_update ? 'checked' : ''; ?>>
+				<input type="checkbox" value="yes" id="show-last-update" name="show_last_update" <?= $show_last_update ? 'checked' : '' ?>>
 			</td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Statistics'); ?>
+				<?= I18N::translate('Statistics') ?>
 			</td>
 			<td class="optionbox">
 				<table>
@@ -310,112 +310,112 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_indi" <?php echo $stat_indi ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Individuals'); ?>
+									<input type="checkbox" value="yes" name="stat_indi" <?= $stat_indi ? 'checked' : '' ?>>
+									<?= I18N::translate('Individuals') ?>
 								</label>
 							</td>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_first_birth" <?php echo $stat_first_birth ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Earliest birth year'); ?>
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_surname" <?php echo $stat_surname ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Total surnames'); ?>
-								</label>
-							</td>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_last_birth" <?php echo $stat_last_birth ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Latest birth year'); ?>
+									<input type="checkbox" value="yes" name="stat_first_birth" <?= $stat_first_birth ? 'checked' : '' ?>>
+									<?= I18N::translate('Earliest birth year') ?>
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_fam" <?php echo $stat_fam ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Families'); ?>
+									<input type="checkbox" value="yes" name="stat_surname" <?= $stat_surname ? 'checked' : '' ?>>
+									<?= I18N::translate('Total surnames') ?>
 								</label>
 							</td>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_first_death" <?php echo $stat_first_death ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Earliest death year'); ?>
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_sour" <?php echo $stat_sour ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Sources'); ?>
-								</label>
-							</td>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_last_death" <?php echo $stat_last_death ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Latest death year'); ?>
+									<input type="checkbox" value="yes" name="stat_last_birth" <?= $stat_last_birth ? 'checked' : '' ?>>
+									<?= I18N::translate('Latest birth year') ?>
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_media" <?php echo $stat_media ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Media objects'); ?>
+									<input type="checkbox" value="yes" name="stat_fam" <?= $stat_fam ? 'checked' : '' ?>>
+									<?= I18N::translate('Families') ?>
 								</label>
 							</td>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_long_life" <?php echo $stat_long_life ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Individual who lived the longest'); ?>
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_repo" <?php echo $stat_repo ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Repositories'); ?>
-								</label>
-							</td>
-							<td>
-								<label>
-									<input type="checkbox" value="yes" name="stat_avg_life" <?php echo $stat_avg_life ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Average age at death'); ?>
+									<input type="checkbox" value="yes" name="stat_first_death" <?= $stat_first_death ? 'checked' : '' ?>>
+									<?= I18N::translate('Earliest death year') ?>
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_events" <?php echo $stat_events ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Total events'); ?>
+									<input type="checkbox" value="yes" name="stat_sour" <?= $stat_sour ? 'checked' : '' ?>>
+									<?= I18N::translate('Sources') ?>
 								</label>
 							</td>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_most_chil" <?php echo $stat_most_chil ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Family with the most children'); ?>
+									<input type="checkbox" value="yes" name="stat_last_death" <?= $stat_last_death ? 'checked' : '' ?>>
+									<?= I18N::translate('Latest death year') ?>
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_users" <?php echo $stat_users ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Total users'); ?>
+									<input type="checkbox" value="yes" name="stat_media" <?= $stat_media ? 'checked' : '' ?>>
+									<?= I18N::translate('Media objects') ?>
 								</label>
 							</td>
 							<td>
 								<label>
-									<input type="checkbox" value="yes" name="stat_avg_chil" <?php echo $stat_avg_chil ? 'checked' : ''; ?>>
-									<?php echo I18N::translate('Average number of children per family'); ?>
+									<input type="checkbox" value="yes" name="stat_long_life" <?= $stat_long_life ? 'checked' : '' ?>>
+									<?= I18N::translate('Individual who lived the longest') ?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_repo" <?= $stat_repo ? 'checked' : '' ?>>
+									<?= I18N::translate('Repositories') ?>
+								</label>
+							</td>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_avg_life" <?= $stat_avg_life ? 'checked' : '' ?>>
+									<?= I18N::translate('Average age at death') ?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_events" <?= $stat_events ? 'checked' : '' ?>>
+									<?= I18N::translate('Total events') ?>
+								</label>
+							</td>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_most_chil" <?= $stat_most_chil ? 'checked' : '' ?>>
+									<?= I18N::translate('Family with the most children') ?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_users" <?= $stat_users ? 'checked' : '' ?>>
+									<?= I18N::translate('Total users') ?>
+								</label>
+							</td>
+							<td>
+								<label>
+									<input type="checkbox" value="yes" name="stat_avg_chil" <?= $stat_avg_chil ? 'checked' : '' ?>>
+									<?= I18N::translate('Average number of children per family') ?>
 								</label>
 							</td>
 						</tr>
@@ -426,17 +426,17 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="show-common-surnames">
-					<?php echo I18N::translate('Most common surnames') ?>
+					<?= I18N::translate('Most common surnames') ?>
 				</label>
 			</td>
 			<td class="optionbox">
-				<input type="checkbox" value="yes" id="show-common-surnames" name="show_common_surnames" <?php echo $show_common_surnames ? 'checked' : ''; ?>>
+				<input type="checkbox" value="yes" id="show-common-surnames" name="show_common_surnames" <?= $show_common_surnames ? 'checked' : '' ?>>
 			</td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="number-of-surnames">
-					<?php echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
+					<?= /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
 				</label>
 			</td>
 			<td class="optionbox">
@@ -447,7 +447,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 					pattern="[1-9][0-9]*"
 					required
 					type="text"
-					value="<?php echo Filter::escapeHtml($number_of_surnames); ?>"
+					value="<?= Filter::escapeHtml($number_of_surnames) ?>"
 				>
 			</td>
 		</tr>

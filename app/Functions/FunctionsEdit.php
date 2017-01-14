@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
+use Fisharebest\Webtrees\Census\CensusOfDeutschland;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
 use Fisharebest\Webtrees\Census\CensusOfScotland;
@@ -49,7 +50,7 @@ use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class FunctionsEdit - common functions
+ * Class FunctionsEdit - common functions for editing
  */
 class FunctionsEdit {
 	/**
@@ -165,6 +166,24 @@ class FunctionsEdit {
 			'<input type="checkbox" name="' . $name . '-GUI-ONLY" value="1"' .
 			($is_checked ? ' checked' : '') .
 			' onclick="document.getElementById(\'' . $name . '\').value=(this.checked?1:0);" ' . $extra . '>';
+	}
+
+	/**
+	 * A list of integers (e.g. for an edit control).
+	 *
+	 * @return string[]
+	 */
+	public static function numericOptions($integers) {
+		$array = [];
+		foreach ($integers as $integer) {
+			if ($integer === -1) {
+				$array[$integer] = I18N::translate('All');
+			} else {
+				$array[$integer] = I18N::number($integer);
+			}
+		}
+
+		return $array;
 	}
 
 	/**
@@ -770,7 +789,7 @@ class FunctionsEdit {
 			if ($fact === 'PLAC') {
 				echo '<div id="', $element_id, '_pop" style="display: inline;">';
 				echo FunctionsPrint::printSpecialCharacterLink($element_id), ' ', FunctionsPrint::printFindPlaceLink($element_id);
-				echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', GedcomTag::getLabel('LATI'), ' / ', GedcomTag::getLabel('LONG'), '"></span>';
+				echo '<span  onclick="$(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', I18N::translate('Latitude'), ' / ', I18N::translate('Longitude'), '"></span>';
 				echo '</div>';
 				if (Module::getModuleByName('places_assistant')) {
 					\PlacesAssistantModule::setup_place_subfields($element_id);
@@ -984,6 +1003,9 @@ class FunctionsEdit {
 			break;
 		case 'da':
 			$census_places = [new CensusOfDenmark];
+			break;
+		case 'de':
+			$census_places = [new CensusOfDeutschland];
 			break;
 		default:
 			$census_places = [];

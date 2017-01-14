@@ -23,14 +23,14 @@
  * @param access true or false
  */
 function setPrivacyFeedback(sel, who, access) {
-	var form_group = jQuery(sel).closest(".form-group");
+	var form_group = $(sel).closest(".form-group");
 
 	if (access) {
-		jQuery("." + who, form_group).addClass("label-success").removeClass("label-default");
-		jQuery("." + who + " i", form_group).addClass("fa-check").removeClass("fa-times");
+		$("." + who, form_group).addClass("label-success").removeClass("label-default");
+		$("." + who + " i", form_group).addClass("fa-check").removeClass("fa-times");
 	} else {
-		jQuery("." + who, form_group).addClass("label-default").removeClass("label-success");
-		jQuery("." + who + " i", form_group).addClass("fa-times").removeClass("fa-check");
+		$("." + who, form_group).addClass("label-default").removeClass("label-success");
+		$("." + who + " i", form_group).addClass("fa-times").removeClass("fa-check");
 	}
 }
 
@@ -38,11 +38,11 @@ function setPrivacyFeedback(sel, who, access) {
  * Update all the privacy feedback labels.
  */
 function updatePrivacyFeedback() {
-	var require_authentication = parseInt(jQuery("[name=REQUIRE_AUTHENTICATION]").val(), 10);
-	var show_dead_people = parseInt(jQuery("[name=SHOW_DEAD_PEOPLE]").val(), 10);
-	var hide_live_people = parseInt(jQuery("[name=HIDE_LIVE_PEOPLE]").val(), 10);
-	var show_living_names = parseInt(jQuery("[name=SHOW_LIVING_NAMES]").val(), 10);
-	var show_private_relationships = parseInt(jQuery("[name=SHOW_PRIVATE_RELATIONSHIPS]").val(), 10);
+	var require_authentication = parseInt($("[name=REQUIRE_AUTHENTICATION]").val(), 10);
+	var show_dead_people = parseInt($("[name=SHOW_DEAD_PEOPLE]").val(), 10);
+	var hide_live_people = parseInt($("[name=HIDE_LIVE_PEOPLE]").val(), 10);
+	var show_living_names = parseInt($("[name=SHOW_LIVING_NAMES]").val(), 10);
+	var show_private_relationships = parseInt($("[name=SHOW_PRIVATE_RELATIONSHIPS]").val(), 10);
 
 	setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "visitors", require_authentication === 0);
 	setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "members", true);
@@ -63,9 +63,9 @@ function updatePrivacyFeedback() {
 
 // Onsubmit validation for the import/upload GEDCOM form
 function checkGedcomImportForm(message) {
-	var old_file = jQuery("#gedcom_filename").val();
-	var method   = jQuery("input[name=action]:checked").val();
-	var new_file = method === "replace_import" ? jQuery("#import-server-file").val() : jQuery("#import-computer-file").val();
+	var old_file = $("#gedcom_filename").val();
+	var method   = $("input[name=action]:checked").val();
+	var new_file = method === "replace_import" ? $("#import-server-file").val() : $("#import-computer-file").val();
 
 	// Some browsers include c:\fakepath\ in the filename.
 	new_file = new_file.replace(/.*[\/\\]/, '');
@@ -79,18 +79,18 @@ function checkGedcomImportForm(message) {
 /**
  * Add handlers to various screen elements
  */
-jQuery(document).ready(function() {
+$(document).ready(function() {
 	// Activate the privacy feedback labels.
 	updatePrivacyFeedback();
-	jQuery("[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]").on("change", function () {
+	$("[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]").on("change", function () {
 		updatePrivacyFeedback();
 	});
 
 	// Import from file on server/computer
-	jQuery("#import-server-file").on("focus", function () {
-		jQuery("#import-server").prop("checked", true);
+	$("#import-server-file").on("focus", function () {
+		$("#import-server").prop("checked", true);
 	});
-	jQuery("#import-computer-file").on("focus", function () {
-		jQuery("#import-computer").prop("checked", true);
+	$("#import-computer-file").on("focus", function () {
+		$("#import-computer").prop("checked", true);
 	});
 });

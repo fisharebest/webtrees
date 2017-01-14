@@ -134,7 +134,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			if (Auth::isManager($WT_TREE)) {
 				$content .= ' | ';
 			}
-			$content .= '<a href="#" onclick="jQuery(\'#' . $id . '\').load(\'index.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '&amp;block_id=' . $block_id . '&amp;action=ajax&amp;more_news=' . ($more_news + 1) . '\'); return false;">' . I18N::translate('More news articles') . '</a>';
+			$content .= '<a href="#" onclick="$(\'#' . $id . '\').load(\'index.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '&amp;block_id=' . $block_id . '&amp;action=ajax&amp;more_news=' . ($more_news + 1) . '\'); return false;">' . I18N::translate('More news articles') . '</a>';
 		}
 
 		if ($template) {

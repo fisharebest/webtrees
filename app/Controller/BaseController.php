@@ -57,7 +57,7 @@ class BaseController {
 
 	/**
 	 * Make a list of inline Javascript, so we can render them in the footer
-	 * NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
+	 * NOTE: there is no need to use "$(document).ready(function(){...})", etc.
 	 * as this Javascript won’t be inserted until the very end of the page.
 	 *
 	 * @param string $script

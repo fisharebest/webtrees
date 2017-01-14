@@ -56,7 +56,7 @@ class CkeditorModule extends AbstractModule {
 			->addInlineJavascript('CKEDITOR.config.extraAllowedContent = 
     "area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]";')
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(config){config.removePlugins = "forms";}, {
+			->addInlineJavascript('$(".html-edit").ckeditor(function(config){config.removePlugins = "forms";}, {
 				language: "' . strtolower(WT_LOCALE) . '"
 			});');
 	}

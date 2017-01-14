@@ -509,9 +509,9 @@ class SearchController extends PageController {
 	public function printResults() {
 		if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
-				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');
-				$this->addInlineJavascript('jQuery("#search-result-tabs").css("visibility", "visible");');
-				$this->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
+				$this->addInlineJavascript('$("#search-result-tabs").tabs();');
+				$this->addInlineJavascript('$("#search-result-tabs").css("visibility", "visible");');
+				$this->addInlineJavascript('$(".loading-image").css("display", "none");');
 				echo '<br>';
 				echo '<div class="loading-image"></div>';
 				echo '<div id="search-result-tabs"><ul>';

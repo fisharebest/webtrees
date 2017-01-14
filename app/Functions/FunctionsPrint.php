@@ -414,7 +414,7 @@ class FunctionsPrint {
 			$html .= I18N::translate('yes');
 		}
 		// print gedcom ages
-		foreach ([GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age] as $label => $age) {
+		foreach ([I18N::translate('Age') => $fact_age, I18N::translate('Husband') => $husb_age, I18N::translate('Wife') => $wife_age] as $label => $age) {
 			if ($age != '') {
 				$html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
 			}
@@ -455,13 +455,13 @@ class FunctionsPrint {
 				$cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
 				if ($cts > 0) {
 					$map_lati = $match[1];
-					$html .= '<br><span class="label">' . GedcomTag::getLabel('LATI') . ': </span>' . $map_lati;
+					$html .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
 				}
 				$map_long = '';
 				$cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
 				if ($cts > 0) {
 					$map_long = $match[1];
-					$html .= ' <span class="label">' . GedcomTag::getLabel('LONG') . ': </span>' . $map_long;
+					$html .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
 				}
 				if ($map_lati && $map_long) {
 					$map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
@@ -549,7 +549,7 @@ class FunctionsPrint {
 						$newRow = false;
 						echo '<tr class="noprint"><td class="descriptionbox">';
 						echo I18N::translate('Add from clipboard'), '</td>';
-						echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="?" onsubmit="return false;">';
+						echo '<td class="optionbox wrap"><form name="newFromClipboard" onsubmit="return false;">';
 						echo '<select id="newClipboardFact">';
 					}
 					echo '<option value="', Filter::escapeHtml($fact_id), '">', GedcomTag::getLabel($fact['fact']);
@@ -614,7 +614,7 @@ class FunctionsPrint {
 		echo I18N::translate('Fact or event');
 		echo '</td>';
 		echo '<td class="optionbox wrap">';
-		echo '<form method="get" name="newfactform" action="?" onsubmit="return false;">';
+		echo '<form name="newfactform" onsubmit="return false;">';
 		echo '<select id="newfact" name="newfact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
