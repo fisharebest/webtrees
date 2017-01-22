@@ -128,7 +128,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
 				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
 				$tv  = new TreeView;
-				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 				$content .= '<script src="' . $mod->js() . '"></script>';
 				list($html, $js) = $tv->drawViewport($person, 2);
 				$content .= $html . '<script>' . $js . '</script>';
@@ -195,7 +195,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	?>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Chart type'); ?>
+				<?= I18N::translate('Chart type') ?>
 			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
@@ -203,7 +203,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Show details'); ?>
+				<?= I18N::translate('Show details') ?>
 			</td>
 		<td class="optionbox">
 			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
@@ -212,11 +212,11 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="pid">
-					<?php echo I18N::translate('Individual'); ?>
+					<?= I18N::translate('Individual') ?>
 				</label>
 			</td>
 			<td class="optionbox">
-				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
+				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?= $pid ?>" size="5">
 				<?php
 				echo FunctionsPrint::printFindIndividualLink('pid');
 				$root = Individual::getInstance($pid, $WT_TREE);

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-10 05:36+0000\n"
+"PO-Revision-Date: 2017-01-11 18:22+0000\n"
 "Last-Translator: Elián Hanisch <lambdae2@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
 "Language: es\n"
@@ -874,7 +874,7 @@ msgstr "Ha sido solicitada una nueva contraseña para su identificador de usuari
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Un nuevo usuario (%1$s) ha solicitado una cuenta (%2$s) y verificado una dirección de email (%3$s)."
+msgstr "Un nuevo usuario (%1$s) ha solicitado una cuenta (%2$s) y verificado una dirección de correo electrónico (%3$s)."
 
 #: admin.php:632 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -1175,7 +1175,7 @@ msgstr "Acceso a Árboles genealógicos"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr "Aprobación de cuenta y verificación de email"
+msgstr "Aprobación de cuenta y verificación de correo electrónico"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -7329,7 +7329,7 @@ msgstr "Si los visitantes no pueden ver el árbol genealógico, no podrán inscr
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
-msgstr "Si le preocupa que los usuarios pueden subir imágenes inapropiadas, puede restringir el cargar de los medios a los administradores solamente."
+msgstr "Si le preocupa que los usuarios pueden subir imágenes inapropiadas, puede restringir el cargar de los medios a los supervisores solamente."
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
@@ -8514,11 +8514,11 @@ msgstr "Administrar vinculos"
 #: app/Module/ClippingsCartModule.php:390
 #: app/Module/ClippingsCartModule.php:767
 msgid "Manager"
-msgstr "Administrador"
+msgstr "Supervisor"
 
 #: admin.php:687
 msgid "Managers"
-msgstr "Gerentes"
+msgstr "Supervisores"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
@@ -9545,7 +9545,6 @@ msgstr "Nombre en hebreo"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:642
-#, fuzzy
 msgid "Name prefix"
 msgstr "Título honorífico"
 
@@ -10265,7 +10264,7 @@ msgstr "En un día como éste…"
 #: app/Functions/FunctionsPrintFacts.php:839
 #: app/Functions/FunctionsPrintFacts.php:1105
 msgid "Only managers can edit"
-msgstr "Sólo los gerentes pueden editar"
+msgstr "Sólo los supervisores pueden editar"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -12095,7 +12094,7 @@ msgstr "Nombre del remitente"
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Enviando email"
+msgstr "Correo electrónico"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:421
@@ -12732,7 +12731,7 @@ msgstr "Mostrar miniaturas en los gráficos y grupos de familia."
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr "Mostrar a los gerentes"
+msgstr "Mostrar a los supervisores"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -13565,9 +13564,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Los cambios en «%s» han sido rechazados."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "El Carrito genealógico le permite extraer «recortes» de este árbol geneálogico y agruparlos en un solo archivo disponible para descargar e importar a su propio programa genealógico. El archivo descargable será en formato GEDCOM.<br><ul><li>¿Cómo se hace recortes?<br>Es veraderamente fácil. Siempre que vea un nombre que se puede hacer clic (persona, familia, fuente, etc.), vaya a la página de detalles de ese nombre. Ahí encontrará la opción <b>Añadir al carrito genealógico</b>. Al hacer clic en el enlace, aparecerán distintas opciones de descarga.</li><li>¿Cómo descargar los recortes?<br>Cuando hay registros en el carro, puede descargarlos haciendo clic en el enlace <b>Descargar ahora</b>. Siga las instrucciones y los enlaces.</li></ul>"
+msgstr "El carrito de recortes permite extraer extractos de este árbol genealógico y descargarlos en un archivo GEDCOM."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -14142,12 +14140,11 @@ msgstr "Esta cuenta no ha sido aprobada. Por favor, espere a que un administrado
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Esta cuenta no ha sido verificada. Por favor revise su email por un mensaje de verificación."
+msgstr "Esta cuenta no ha sido verificada. Por favor revise su correo electrónico por un mensaje de verificación."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Este bloque se muestra a los editores una lista de registros con cambios pendientes que no son aprobados por un moderador. También manda mensajes cotidianos a los moderadores cuando existen cambios pendientes."
+msgstr "Este bloque muestra a los editores una lista de registros con cambios pendientes que necesitan ser aprobados por un moderador. También genera mensajes diariamente a los moderadores cuando existen cambios pendientes."
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14586,7 +14583,7 @@ msgstr "Este rol tiene todos los permisos del rol de editor, más los permisos p
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "El administrador del sitio tiene todos los permisos del administrador en todos los árboles genealógicos, además de permisos para cambiar las configuraciones del sitio, los usuarios y los módulos."
+msgstr "Este rol tiene todos los permisos del rol de supervisor en todos los árboles genealógicos, más los permisos para cambiar las configuraciones del sitio, los usuarios y los módulos."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -15767,9 +15764,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Cuando se edita un registro, el usuario y la fecha y hora se registran. A veces es deseable mantener la información de \"último cambio\" existente, por ejemplo al hacer pequeñas correcciones a los datos de otra persona. Esta opción controla si esta función está activada de forma predeterminada."
 
 #: admin_users.php:388
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Al registrar una cuenta, se enviará a la dirección de correo electrónico un mensaje que contiene un enlace a una página de prueba.  Cuando el usuario hace clic en este enlace, el sistema reconoce que la dirección de correo electrónico es correcta, y el «email verificado» se selecciona automáticamente."
+msgstr "Cuando un usuario registra una cuenta nueva, se envía a su dirección de correo electrónico un mensaje con un enlace de verificación. Cuando el usuario utiliza este enlace, el sistema reconoce que la dirección de correo electrónico es correcta y automáticamente queda verificada."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15938,7 +15934,7 @@ msgstr "Yemen"
 #: login.php:340
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Usted (o alguien que pretende ser usted) ha solicitado una cuenta en %1$s usando la dirección de email %2$s."
+msgstr "Usted (o alguien que pretende ser usted) ha solicitado una cuenta en %1$s usando la dirección de correo electrónico %2$s."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -15966,9 +15962,8 @@ msgid "You can choose the prefix that will be used whenever new XREFs are create
 msgstr "Puede escoger el prefijo a usar cuando un nuevo XREF sea creado."
 
 #: admin_users.php:462 edituser.php:312
-#, fuzzy
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Esta casilla controla su visibilidad frente a otros usuarios mientras se encuentra conectado. También controla su capacidad de ver a otros usuarios configurados como visibles.<br><br>Si esta casilla no está marcada, Vd. será completamente invisible a otros usuarios y Vd. tampoco podrá ver a otros usuarios conectados. Si se marca esta casilla, el resultado es exactamente el contrario. Vd. será visible a otros usuarios y, además, podrá ver a otros usuarios que estén configurados como visibles."
+msgstr "Puedes elegir si quieres aparecer en la lista de usuarios actualmente conectados."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -16003,7 +15998,7 @@ msgstr "Puede pedir un límite superior o inferior, aunque el servidor puede ign
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Puedes configurar el acceso a un registro, hecho o evento específico agregando una restricción a él. Si un registro, hecho o evento no tiene restricciones, entonces las siguientes restricciones serán usadas por defecto."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -16050,7 +16045,6 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "Se puede usar HTML para la respuesta y para agregar vínculos a otros sitios web."
 
 #: admin_site_config.php:434
-#, fuzzy
 msgid "You must also enable “less secure applications” in your Google account."
 msgstr "Debes también habilitar «aplicaciones menos seguras» en tu cuenta de Google."
 
@@ -16198,9 +16192,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "El administrador de su servidor le proporcionará los datos de la conexión."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Su cuenta de usuario no puede «aprobar los cambios automáticamente». Sólo se podrá cambiar un registro a la vez."
+msgstr "Su cuenta de usuario no está habilitada para aceptar cambios automáticamente. Sólo puede cambiar un registro a la vez."
 
 #: admin.php:578
 #, php-format
@@ -18858,7 +18851,7 @@ msgstr "apellido de soltera"
 
 #: admin_trees_config.php:469
 msgid "managers"
-msgstr "gerentes"
+msgstr "supervisores"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-10-25 08:33+0000\n"
+"PO-Revision-Date: 2017-01-19 19:49+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -6359,7 +6359,7 @@ msgstr "Hledat osobu"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Najít jakýkoliv vztah"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6372,7 +6372,7 @@ msgstr "Najít jiné vztahy"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Najít vztah skrze předky"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6380,7 +6380,7 @@ msgstr "Najít nejbližší vztahy"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Najít nespřízněné osoby"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -11508,6 +11508,17 @@ msgstr "Náboženská instituce"
 msgid "Religious marriage"
 msgstr "Církevní sňatek"
 
+msgid "Religious name"
+msgstr "Náboženské jméno"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Náboženské jméno"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Náboženské jméno"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Častost emailových upozornění (dny)"
@@ -14147,7 +14158,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Tyto skupiny osob nejsou s %s 1 spřízněny."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14891,7 +14902,7 @@ msgstr "Tokio, Japonsko"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Tombstone"
-msgstr "Náhrobní kámen"
+msgstr "Náhrobek"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6901
@@ -20557,14 +20568,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "více než"
-
-msgid "Religious name"
-msgstr "Náboženské jméno"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Náboženské jméno"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Náboženské jméno"
