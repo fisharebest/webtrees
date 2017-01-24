@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-06-28 11:11+0000\n"
+"PO-Revision-Date: 2017-01-24 10:53+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <https://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -1015,7 +1015,6 @@ msgid "A report of vital records for a given date or place."
 msgstr "Įrašų ataskaitą pagal nurodytą datą ar vietovę."
 
 #: admin_users.php:523
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr "Vaidmuo yra prieigos teisių rinkinys, kuris suteiks leidimą peržiūrėti duomenis, pakeisti konfigūracijos nustatymus ir t.t. Prieigos teisės yra priskirtos vaidmenims ir vaidmenys yra paskirti vartotojams. Kiekvienas šeimos medis gali turėti skirtingus priėjimus surištus prie kiekvieno vaidmens, o vartotojai gali turėti skirtingą vaidmenį kiekviename šeimos medyje."
 
@@ -6447,9 +6446,8 @@ msgid "Folder name on server"
 msgstr "Aplanko pavadinimas serveryje"
 
 #: login.php:342
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Tam, kad patvirtintumėme naudotojo vardą ir elektroninį adresą, prašome eiti šia nuoroda ir užpildyti duomenis."
+msgstr "Naudokite šią nuorodą patvirtinti elektroninio pašto adresą."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -9983,7 +9981,6 @@ msgid "Norfolk Island"
 msgstr "Norfolko sala"
 
 #: admin_users.php:444
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Paprastai visi šeimos medžio pakeitimai turi būti patvirtinti moderatoriaus. Ši parinktis leidžia vartotojui padaryti pakeitimus be moderatoriaus patvirtinimo."
 
@@ -11508,6 +11505,17 @@ msgstr "Religinė institucija"
 msgid "Religious marriage"
 msgstr "Bažnytinė santuoka"
 
+msgid "Religious name"
+msgstr "Religinis vardas"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Religinis vardas"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Religinis vardas"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Priminimų elektroninių laiškų dažnumas (dienomis)"
@@ -12019,9 +12027,8 @@ msgid "Select a GEDCOM file to import"
 msgstr "Pasirinkti GEDCOM bylą importavimui"
 
 #: index_edit.php:284 index_edit.php:367
-#, fuzzy
 msgid "Select a block and use the arrows to move it."
-msgstr "Paryškinkite bloko pavadinimą, tada spustelėkite vieną iš rodyklių piktogramų, kad išryškintas blokas judėtų nurodyta kryptimi."
+msgstr "Pasirinkite bloką ir naudokite rodykles jį pajudinti."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -12744,9 +12751,8 @@ msgid "Show this block for which languages"
 msgstr "Kokiomis kalbomis rodyti šį bloką"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Rodyti pažymėtus vaizdus žmonių asmeniniuose įrašuose"
+msgstr "Rodyti pažymėtus vaizdus žmonių asmeniniuose įrašuose."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
@@ -13589,9 +13595,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Pakeitimai nuo „%s“ buvo atmesti."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą. Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį. Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami „Atsisiųsti“ nuorodą. Sekite instrukcijas ir nuorodas.</li></ul>"
+msgstr "Iškarpų krepšelis leidžia jums paimti ištraukas („iškarpas“) iš šio šeimos medžio ir atsisiūsti jas GEDCOM byloje."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -14173,9 +14178,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Ši paskyra nebuvo patvirtinta. Prašome pasitikrinti el. paštą dėl patvirtinimo žinutės."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Šis blokas bus rodomas redaktoriams su įrašais, kuriuos reikia patvirtinti moderatoriui. Jis taip pat sukuria kasdienius laiškus moderatoriams, kai tik atsiranda pakeitimai."
+msgstr "Šis blokas bus rodomas redaktoriams su įrašais, kuriuos reikia patvirtinti moderatoriui. Jis taip pat sukuria kasdienius laiškus moderatoriams, kai yra pakeitimų."
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -20544,14 +20548,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "daugiau"
-
-msgid "Religious name"
-msgstr "Religinis vardas"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Religinis vardas"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Religinis vardas"
