@@ -38,21 +38,6 @@ class MyersDiff {
 	const INSERT = 1;
 
 	/**
-	 * When one of the sequences is empty, we just insert/delete the other.
-	 *
-	 * @param string[] $x
-	 * @param int      $action
-	 */
-	private function degenerateCase(array $x, $action) {
-		$solution = array();
-		foreach ($x as $token) {
-			$solution[] = array($token, $action);
-		}
-
-		return $solution;
-	}
-
-	/**
 	 * Backtrack through the intermediate results to extract the "snakes" that
 	 * are visited on the chosen "D-path".
 	 *
@@ -64,7 +49,7 @@ class MyersDiff {
 	 */
 	private function extractSnakes(array $v_save, $x, $y) {
 		$snakes = array();
-		for ($d = count($v_save) - 1; $x > 0 && $y > 0; --$d) {
+		for ($d = count($v_save) - 1; $x >= 0 && $y >= 0; --$d) {
 			array_unshift($snakes, array($x, $y));
 
 			$v = $v_save[$d];
@@ -98,19 +83,19 @@ class MyersDiff {
 		foreach ($snakes as $snake) {
 			// Horizontals
 			while ($snake[0] - $snake[1] > $x - $y) {
-				++$x;
 				$solution[] = array($a[$x], self::DELETE);
+				++$x;
 			}
 			// Verticals
 			while ($snake[0] - $snake[1] < $x - $y) {
-				++$y;
 				$solution[] = array($b[$y], self::INSERT);
+				++$y;
 			}
 			// Diagonals
 			while ($x < $snake[0]) {
+				$solution[] = array($a[$x], self::KEEP);
 				++$x;
 				++$y;
-				$solution[] = array($a[$x], self::KEEP);
 			}
 		}
 
@@ -126,19 +111,11 @@ class MyersDiff {
 	 * @return array[] - pairs of token and edit (-1 for delete, 0 for keep, +1 for insert)
 	 */
 	public function calculate(array $a, array $b) {
-		// Check for degenerate cases.
-		if (empty($a)) {
-			return $this->degenerateCase($b, self::INSERT);
-		}
-		if (empty($b)) {
-			return $this->degenerateCase($a, self::DELETE);
-		}
-
-		// The algorithm uses array keys numbered from one.
+		// The algorithm uses array keys numbered from zero.
 		$n = count($a);
 		$m = count($b);
-		$a = array_combine(range(1, $n), array_values($a));
-		$b = array_combine(range(1, $m), array_values($b));
+		$a = array_values($a);
+		$b = array_values($b);
 		$max = $m + $n;
 
 		// Keep a copy of $v after each iteration of $d.
@@ -159,7 +136,7 @@ class MyersDiff {
 				// Derive Y from X.
 				$y = $x - $k;
 				// Follow the diagonal.
-				while ($x < $n && $y < $m && $a[$x + 1] === $b[$y + 1]) {
+				while ($x < $n && $y < $m && $a[$x] === $b[$y]) {
 					++$x;
 					++$y;
 				}

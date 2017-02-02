@@ -34,7 +34,7 @@ class CensusOfUnitedStates1810 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
 			new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
 			new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
@@ -50,6 +50,6 @@ class CensusOfUnitedStates1810 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
 			new CensusColumnNull($this, 'Total', 'Total number of individuals'),
 
-		);
+		];
 	}
 }

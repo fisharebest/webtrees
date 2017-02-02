@@ -74,10 +74,10 @@ class ClippingsCartController {
 		global $WT_TREE;
 
 		// Our cart is an array of items in the session
-		$this->cart = Session::get('cart', array());
+		$this->cart = Session::get('cart', []);
 
 		if (!array_key_exists($WT_TREE->getTreeId(), $this->cart)) {
-			$this->cart[$WT_TREE->getTreeId()] = array();
+			$this->cart[$WT_TREE->getTreeId()] = [];
 		}
 
 		$this->action           = Filter::get('action');
@@ -135,9 +135,9 @@ class ClippingsCartController {
 				if ($others === 'parents') {
 					$this->addClipping($obj->getHusband());
 					$this->addClipping($obj->getWife());
-				} elseif ($others === "members") {
+				} elseif ($others === 'members') {
 					$this->addFamilyMembers(Family::getInstance($this->id, $WT_TREE));
-				} elseif ($others === "descendants") {
+				} elseif ($others === 'descendants') {
 					$this->addFamilyDescendancy(Family::getInstance($this->id, $WT_TREE));
 				}
 			} elseif ($this->type === 'INDI') {
@@ -159,33 +159,33 @@ class ClippingsCartController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($this->cart[$WT_TREE->getTreeId()], array($this, 'compareClippings'));
+				uksort($this->cart[$WT_TREE->getTreeId()], [$this, 'compareClippings']);
 			}
 		} elseif ($this->action === 'remove') {
 			unset($this->cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$this->cart[$WT_TREE->getTreeId()] = array();
+			$this->cart[$WT_TREE->getTreeId()] = [];
 		} elseif ($this->action === 'download') {
-			$media      = array();
+			$media      = [];
 			$mediacount = 0;
 			$filetext   = FunctionsExport::gedcomHeader($WT_TREE);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBN', $WT_TREE->getTreeId()))
+				->execute(['SUBN', $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($subn) {
 				$filetext .= $subn . "\n";
 			}
 			$subm =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBM', $WT_TREE->getTreeId()))
+				->execute(['SUBM', $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($subm) {
 				$filetext .= $subm . "\n";
 			}
-			if ($convert === "yes") {
-				$filetext = str_replace("UTF-8", "ANSI", $filetext);
+			if ($convert === 'yes') {
+				$filetext = str_replace('UTF-8', 'ANSI', $filetext);
 				$filetext = utf8_decode($filetext);
 			}
 
@@ -237,16 +237,16 @@ class ClippingsCartController {
 					case 'INDI':
 						$filetext .= $record . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+						$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
 						break;
 					case 'FAM':
 						$filetext .= $record . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+						$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
 						break;
 					case 'SOUR':
 						$filetext .= $record . "\n";
-						$filetext .= "1 NOTE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+						$filetext .= '1 NOTE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
 						break;
 					default:
 						// This autoloads the PclZip library, so we can use its constants.
@@ -257,10 +257,10 @@ class ClippingsCartController {
 						for ($k = 0; $k < $ft; $k++) {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
-								$media[$mediacount] = array(
+								$media[$mediacount] = [
 									\PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
 									\PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
-								);
+								];
 								$mediacount++;
 							}
 						}
@@ -270,15 +270,15 @@ class ClippingsCartController {
 				}
 			}
 
-			if ($this->IncludeMedia === "yes") {
+			if ($this->IncludeMedia === 'yes') {
 				$this->media_list = $media;
 			} else {
-				$this->media_list = array();
+				$this->media_list = [];
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
 			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
 				$user = User::find($user_id);
-				$filetext .= "1 AUTH " . $user->getRealName() . "\n";
+				$filetext .= '1 AUTH ' . $user->getRealName() . "\n";
 			}
 			$filetext .= "0 TRLR\n";
 			//-- make sure the preferred line endings are used
@@ -294,30 +294,30 @@ class ClippingsCartController {
 	 */
 	private function zipCart() {
 		$tempFileName = 'clipping' . rand() . '.ged';
-		$fp           = fopen(WT_DATA_DIR . $tempFileName, "wb");
+		$fp           = fopen(WT_DATA_DIR . $tempFileName, 'wb');
 		if ($fp) {
 			flock($fp, LOCK_EX);
 			fwrite($fp, $this->download_data);
 			flock($fp, LOCK_UN);
 			fclose($fp);
-			$zipName = "clippings" . rand(0, 1500) . ".zip";
+			$zipName = 'clippings' . rand(0, 1500) . '.zip';
 			$fname   = WT_DATA_DIR . $zipName;
-			$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("d M Y") . ".";
+			$comment = 'Created by ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . date('d M Y') . '.';
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
-			$this->media_list[] = array(\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
+			$this->media_list[] = [\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName];
 			$v_list             = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) {
-				echo "Error : " . $archive->errorInfo(true) . "</td></tr>";
+				echo 'Error : ' . $archive->errorInfo(true) . '</td></tr>';
 			} else {
-				$openedFile          = fopen($fname, "rb");
+				$openedFile          = fopen($fname, 'rb');
 				$this->download_data = fread($openedFile, filesize($fname));
 				fclose($openedFile);
 				unlink($fname);
 			}
 			unlink(WT_DATA_DIR . $tempFileName);
 		} else {
-			echo I18N::translate('The file %s could not be created.', WT_DATA_DIR . $tempFileName) . " " . I18N::translate('Check the access rights on this folder.') . "<br><br>";
+			echo I18N::translate('The file %s could not be created.', WT_DATA_DIR . $tempFileName) . ' ' . I18N::translate('Check the access rights on this folder.') . '<br><br>';
 		}
 	}
 

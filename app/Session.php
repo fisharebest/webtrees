@@ -24,8 +24,8 @@ class Session {
 	 *
 	 * @param array $config
 	 */
-	public static function start(array $config = array()) {
-		$default_config = array(
+	public static function start(array $config = []) {
+		$default_config = [
 			'use_cookies'     => 1,
 			'name'            => 'WT_SESSION',
 			'cookie_lifetime' => 0,
@@ -34,7 +34,7 @@ class Session {
 			'gc_divisor'      => 100,
 			'cookie_path'     => '',
 			'cookie_httponly' => true,
-		);
+		];
 		session_register_shutdown();
 		foreach ($config + $default_config as $key => $value) {
 			ini_set('session.' . $key, $value);
@@ -92,7 +92,7 @@ class Session {
 	 * Remove all stored data from the session.
 	 */
 	public static function clear() {
-		$_SESSION = array();
+		$_SESSION = [];
 	}
 
 	/**

@@ -63,7 +63,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 			$this->getTitle(),
 			'compact.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-compact',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

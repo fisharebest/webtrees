@@ -39,11 +39,11 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getDate')->andReturn(new Date('01 DEC 1859'));
 
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array($fact));
+		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date('15 MAR 1840'));
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -66,11 +66,11 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoMarriage() {
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getFacts')->with('MARR')->andReturn(array());
+		$family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -87,7 +87,7 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	public function testNoSpouseFamily() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date('15 MAR 1840'));
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');

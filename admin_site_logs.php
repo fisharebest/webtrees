@@ -34,8 +34,8 @@ $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Website logs'));
 
-$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
-$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
+$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
 
 // Filtering
 $action = Filter::get('action');
@@ -63,7 +63,7 @@ $sql_select =
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
 $where = " WHERE 1";
-$args  = array();
+$args  = [];
 if ($search) {
 	$where .= " AND log_message LIKE CONCAT('%', :search, '%')";
 	$args['search'] = $search;
@@ -174,12 +174,12 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 
 	return;
 }
@@ -195,7 +195,7 @@ $controller
 			processing: true,
 			serverSide: true,
 			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
-			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 10) . ',
 			columns: [
@@ -226,7 +226,7 @@ $controller
 		});
 	');
 
-$users_array = array();
+$users_array = [];
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
@@ -267,7 +267,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Type') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', array('' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'), null, $type, 'class="form-control"') ?>
+			<?php echo FunctionsEdit::selectEditControl('type', ['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'], null, $type, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-4">

@@ -181,8 +181,8 @@ class Functions {
 	 * @param Fact[] $arr
 	 */
 	public static function sortFacts(&$arr) {
-		$dated    = array();
-		$nondated = array();
+		$dated    = [];
+		$nondated = [];
 		//-- split the array into dated and non-dated arrays
 		$order = 0;
 		foreach ($arr as $event) {
@@ -296,23 +296,23 @@ class Functions {
 			return false;
 		}
 
-		$spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
-		$parent_codes  = array('M' => 'fat', 'F' => 'mot', 'U' => 'par');
-		$child_codes   = array('M' => 'son', 'F' => 'dau', 'U' => 'chi');
-		$sibling_codes = array('M' => 'bro', 'F' => 'sis', 'U' => 'sib');
+		$spouse_codes  = ['M' => 'hus', 'F' => 'wif', 'U' => 'spo'];
+		$parent_codes  = ['M' => 'fat', 'F' => 'mot', 'U' => 'par'];
+		$child_codes   = ['M' => 'son', 'F' => 'dau', 'U' => 'chi'];
+		$sibling_codes = ['M' => 'bro', 'F' => 'sis', 'U' => 'sib'];
 
 		//-- current path nodes
-		$p1nodes = array();
+		$p1nodes = [];
 		//-- ids visited
-		$visited = array();
+		$visited = [];
 
 		//-- set up first node for person1
-		$node1 = array(
-			'path'      => array($person1),
+		$node1 = [
+			'path'      => [$person1],
 			'length'    => 0,
 			'indi'      => $person1,
-			'relations' => array('self'),
-		);
+			'relations' => ['self'],
+		];
 		$p1nodes[] = $node1;
 
 		$visited[$person1->getXref()] = true;
@@ -648,7 +648,7 @@ class Functions {
 	}
 
 	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
-	protected static $relationshipsCache = array();
+	protected static $relationshipsCache = [];
 
 	/**
 	 * Convert a relationship path into a relationship name.
@@ -2178,7 +2178,7 @@ class Functions {
 	 */
 	public static function getQueryUrl($overwrite = null, $separator = '&') {
 		if (empty($_GET)) {
-			$get = array();
+			$get = [];
 		} else {
 			$get = $_GET;
 		}

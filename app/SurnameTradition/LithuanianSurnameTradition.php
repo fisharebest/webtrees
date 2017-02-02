@@ -20,30 +20,30 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  */
 class LithuanianSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface {
 	/** @var string[] Inflect a surname for wives */
-	protected $inflect_wife = array(
+	protected $inflect_wife = [
 		'as\b' => 'ienė',
 		'is\b' => 'ienė',
 		'ys\b' => 'ienė',
 		'us\b' => 'ienė',
-	);
+	];
 
 	/** @var string[] Inflect a surname for daughters */
-	protected $inflect_daughter = array(
+	protected $inflect_daughter = [
 		'a\b'   => 'aitė',
 		'as\b'  => 'aitė',
 		'is\b'  => 'ytė',
 		'ys\b'  => 'ytė',
 		'ius\b' => 'iūtė',
 		'us\b'  => 'utė',
-	);
+	];
 
 	/** @var string[] Inflect a surname for males */
-	protected $inflect_male = array(
+	protected $inflect_male = [
 		'aitė\b' => 'as',
 		'ytė\b'  => 'is',
 		'iūtė\b' => 'ius',
 		'utė\b'  => 'us',
-	);
+	];
 
 	/**
 	 * What names are given to a new child
@@ -57,20 +57,20 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
 	public function newChildNames($father_name, $mother_name, $child_sex) {
 		if (preg_match(self::REGEX_SURN, $father_name, $match)) {
 			if ($child_sex === 'F') {
-				return array_filter(array(
+				return array_filter([
 					'NAME' => $this->inflect($match['NAME'], $this->inflect_daughter),
 					'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-				));
+				]);
 			} else {
-				return array_filter(array(
+				return array_filter([
 					'NAME' => $match['NAME'],
 					'SURN' => $match['SURN'],
-				));
+				]);
 			}
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 
@@ -84,14 +84,14 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
 	 */
 	public function newParentNames($child_name, $parent_sex) {
 		if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
-			return array_filter(array(
+			return array_filter([
 				'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
 				'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-			));
+			]);
 		} else {
-			return array(
+			return [
 				'NAME'   => '//',
-			);
+			];
 		}
 	}
 
@@ -105,14 +105,14 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
 	 */
 	public function newSpouseNames($spouse_name, $spouse_sex) {
 		if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
-			return array(
+			return [
 				'NAME'   => '//',
 				'_MARNM' => $this->inflect($match['NAME'], $this->inflect_wife),
-			);
+			];
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 }

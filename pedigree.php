@@ -90,7 +90,7 @@ $controller
 				p1 = jQuery("#sosa_" + (i+1));
 				// change line y position if within 10% of box top/bottom
 				addOffset = boxHeight / (p1.position().top - p0.position().top) > 0.9 ? extraOffsetY: 0;
-				if (' . json_encode(I18N::direction() === "rtl") . ') {
+				if (' . json_encode(I18N::direction() === 'rtl') . ') {
 					drawLines(
 						ctx,
 						p0.position().left + p0.width(),
@@ -179,7 +179,7 @@ $controller
 						<?php echo FunctionsEdit::editFieldInteger('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
+						<?php echo FunctionsEdit::selectEditControl('orientation', [0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')], null, $controller->orientation); ?>
 					</td>
 					<td class="optionbox center">
 						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
@@ -204,7 +204,7 @@ echo '<div id="pedigree_chart" class="layout', $controller->orientation, '">';
 foreach ($controller->nodes as $i => $node) {
 
 	// -- draw the box
-	printf('<div id="sosa_%s" class="shadow" style="%s:%spx; top:%spx">', $i + 1, $posn, $node["x"], $node["y"]);
+	printf('<div id="sosa_%s" class="shadow" style="%s:%spx; top:%spx">', $i + 1, $posn, $node['x'], $node['y']);
 
 	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 		if ($i >= $lastgenStart) {

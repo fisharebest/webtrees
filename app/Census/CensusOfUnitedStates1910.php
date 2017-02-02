@@ -34,7 +34,7 @@ class CensusOfUnitedStates1910 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
 			new CensusColumnSexMF($this, 'Sex', 'Sex'),
@@ -46,7 +46,7 @@ class CensusOfUnitedStates1910 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
 			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
 			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
+			new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
 			new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
 			new CensusColumnNull($this, 'Nat', 'Whether naturalized or alien'),
 			new CensusColumnNull($this, 'Lang', 'Whether able to speak English, of if not, give language spoken'),
@@ -64,6 +64,6 @@ class CensusOfUnitedStates1910 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'CW', 'Whether a survivor of the Union or Confederate Army or Navy'),
 			new CensusColumnNull($this, 'Blind', 'Whether blind (both eyes)'),
 			new CensusColumnNull($this, 'Deaf', 'Whether deaf and dumb'),
-		);
+		];
 	}
 }

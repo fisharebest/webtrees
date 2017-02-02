@@ -132,7 +132,7 @@ $medialist = QueryMedia::mediaList(
 				<td class="optionbox wrap">
 					<select name="max" id="max">
 						<?php
-						foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
+						foreach (['10', '20', '30', '40', '50', '75', '100', '125', '150', '200'] as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
 							if ($selectEntry == $max) {
 								echo 'selected';
@@ -167,7 +167,7 @@ $medialist = QueryMedia::mediaList(
 				<td class="optionbox wrap">
 					<select name="columns" id="columns">
 						<?php
-						foreach (array('1', '2') as $selectEntry) {
+						foreach (['1', '2'] as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
 							if ($selectEntry == $columns) {
 								echo 'selected';
@@ -225,9 +225,9 @@ if ($action === 'submit') {
 	}
 
 	if (I18N::direction() === 'ltr') {
-		$icons = array('first' => 'ldarrow', 'previous' => 'larrow', 'next' => 'rarrow', 'last' => 'rdarrow');
+		$icons = ['first' => 'ldarrow', 'previous' => 'larrow', 'next' => 'rarrow', 'last' => 'rdarrow'];
 	} else {
-		$icons = array('first' => 'rdarrow', 'previous' => 'rarrow', 'next' => 'larrow', 'last' => 'ldarrow');
+		$icons = ['first' => 'rdarrow', 'previous' => 'rarrow', 'next' => 'larrow', 'last' => 'ldarrow'];
 	}
 
 	echo '<div><p>', I18N::translate('Media objects found'), ' ', $count, '</p>';
@@ -235,7 +235,7 @@ if ($action === 'submit') {
 	if ($count > 0) {
 		echo '<table class="list_table">';
 		// Display controls twice - at the top and bottom of the table
-		foreach (array('thead', 'tfoot') as $tsection) {
+		foreach (['thead', 'tfoot'] as $tsection) {
 			echo '<', $tsection, '><tr><td colspan="2">';
 			echo '<table class="list_table_controls"><tr><td>';
 			if ($page > 1) {

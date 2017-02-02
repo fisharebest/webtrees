@@ -24,7 +24,7 @@ class ReportBaseCell extends ReportBaseElement {
 	 *
 	 * @var string
 	 */
-	public $align = "";
+	public $align = '';
 	/**
 	 * Whether or not a border should be printed around this box. 0 = no border, 1 = border. Default is 0.
 	 * Or a string containing some or all of the following characters (in any order):<ul><li>L: left</li><li>T: top</li><li>R: right</li><li>B: bottom</li></ul>
@@ -141,10 +141,10 @@ class ReportBaseCell extends ReportBaseElement {
 		$this->left      = $left;
 		$this->newline   = $ln;
 		$this->styleName = $style;
-		$this->text      = "";
+		$this->text      = '';
 		$this->tcolor    = $tcolor;
 		$this->top       = $top;
-		$this->url       = "";
+		$this->url       = '';
 		$this->stretch   = $stretch;
 		$this->width     = $width;
 		$this->reseth    = $reseth;

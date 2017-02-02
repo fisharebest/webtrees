@@ -30,15 +30,15 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
 	 */
 	public function newChildNames($father_name, $mother_name, $child_sex) {
 		if (preg_match(self::REGEX_SPFX_SURN, $father_name, $match)) {
-			return array_filter(array(
+			return array_filter([
 				'NAME' => $match['NAME'],
 				'SPFX' => $match['SPFX'],
 				'SURN' => $match['SURN'],
-			));
+			]);
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 
@@ -52,15 +52,15 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
 	 */
 	public function newParentNames($child_name, $parent_sex) {
 		if ($parent_sex === 'M' && preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
-			return array_filter(array(
+			return array_filter([
 				'NAME' => $match['NAME'],
 				'SPFX' => $match['SPFX'],
 				'SURN' => $match['SURN'],
-			));
+			]);
 		} else {
-			return array(
+			return [
 				'NAME' => '//',
-			);
+			];
 		}
 	}
 

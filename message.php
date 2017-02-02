@@ -46,7 +46,7 @@ if (Auth::check()) {
 	$from = Auth::user()->getUserName();
 } else {
 	// Visitors must provide a valid email address
-	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
+	if ($from_email && (!preg_match('/(.+)@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
 		$errors .= '<p class="ui-state-error">' . I18N::translate('Please enter a valid email address.') . '</p>';
 		$action = 'compose';
 	}
@@ -143,15 +143,15 @@ case 'send':
 		$from = $from_email;
 	}
 
-	$toarray = array($to);
+	$toarray = [$to];
 	if ($to === 'all') {
-		$toarray = array();
+		$toarray = [];
 		foreach (User::all() as $user) {
 			$toarray[$user->getUserId()] = $user->getUserName();
 		}
 	}
 	if ($to === 'never_logged') {
-		$toarray = array();
+		$toarray = [];
 		foreach (User::all() as $user) {
 			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
 				$toarray[$user->getUserId()] = $user->getUserName();
@@ -159,7 +159,7 @@ case 'send':
 		}
 	}
 	if ($to === 'last_6mo') {
-		$toarray = array();
+		$toarray = [];
 		$sixmos  = 60 * 60 * 24 * 30 * 6; //-- timestamp for six months
 		foreach (User::all() as $user) {
 			if ($user->getPreference('sessiontime') > 0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
@@ -172,7 +172,7 @@ case 'send':
 	}
 	$i = 0;
 	foreach ($toarray as $indexval => $to) {
-		$message         = array();
+		$message         = [];
 		$message['to']   = $to;
 		$message['from'] = $from;
 		if (!empty($from_name)) {
@@ -282,18 +282,18 @@ function addMessage($message) {
 	}
 
 	if (empty($message['created'])) {
-		$message['created'] = gmdate("D, d M Y H:i:s T");
+		$message['created'] = gmdate('D, d M Y H:i:s T');
 	}
 
 	if ($message['method'] !== 'messaging3' && $message['method'] !== 'mailto' && $message['method'] !== 'none') {
 		Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-			->execute(array(
+			->execute([
 				$message['from'],
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$message['subject'],
 				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email. Perhaps create different messages
-			));
+			]);
 	}
 	if ($message['method'] !== 'messaging') {
 		if ($sender) {

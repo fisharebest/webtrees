@@ -49,7 +49,7 @@ if (Filter::post('action') === 'update_mods' && Filter::checkCsrf()) {
 			$new_status = $new_status ? 'enabled' : 'disabled';
 			$old_status = $module_status[$module->getName()];
 			if ($new_status !== $old_status) {
-				Database::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module->getName()));
+				Database::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute([$new_status, $module->getName()]);
 				if ($new_status === 'disabled') {
 					FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->getTitle()), 'success');
 				} else {
@@ -72,16 +72,16 @@ if (Filter::post('action') === 'delete' && Filter::checkCsrf()) {
 		" JOIN `##block` USING (block_id)" .
 		" JOIN `##module` USING (module_name)" .
 		" WHERE module_name=?"
-	)->execute(array($module_name));
+	)->execute([$module_name]);
 	Database::prepare(
 		"DELETE `##block`" .
 		" FROM `##block`" .
 		" JOIN `##module` USING (module_name)" .
 		" WHERE module_name=?"
-	)->execute(array($module_name));
-	Database::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
-	Database::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-	Database::prepare("DELETE FROM `##module` WHERE module_name=?")->execute(array($module_name));
+	)->execute([$module_name]);
+	Database::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute([$module_name]);
+	Database::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute([$module_name]);
+	Database::prepare("DELETE FROM `##module` WHERE module_name=?")->execute([$module_name]);
 
 	FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 

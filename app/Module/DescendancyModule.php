@@ -91,22 +91,22 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
 		$controller->addInlineJavascript('
 			function dsearchQ() {
-				var query = jQuery("#sb_desc_name").val();
+				var query = $("#sb_desc_name").val();
 				if (query.length>1) {
-					jQuery("#sb_desc_content").load("module.php?mod=' . $this->getName() . '&mod_action=search&search="+query);
+					$("#sb_desc_content").load("module.php?mod=' . $this->getName() . '&mod_action=search&search="+query);
 				}
 			}
 
-			jQuery("#sb_desc_name").focus(function(){this.select();});
-			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="' . I18N::translate('Search') . '";});
+			$("#sb_desc_name").focus(function(){this.select();});
+			$("#sb_desc_name").blur(function(){if (this.value=="") this.value="' . I18N::translate('Search') . '";});
 			var dtimerid = null;
-			jQuery("#sb_desc_name").keyup(function(e) {
+			$("#sb_desc_name").keyup(function(e) {
 				if (dtimerid) window.clearTimeout(dtimerid);
 				dtimerid = window.setTimeout("dsearchQ()", 500);
 			});
 
-			jQuery("#sb_desc_content").on("click", ".sb_desc_indi", function() {
-				var self = jQuery(this),
+			$("#sb_desc_content").on("click", ".sb_desc_indi", function() {
+				var self = $(this),
 					state = self.children(".plusminus"),
 					target = self.siblings("div");
 				if(state.hasClass("icon-plus")) {
@@ -212,10 +212,10 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
 			" WHERE n_sort LIKE CONCAT('%', :query, '%') AND i_file = :tree_id" .
 			" ORDER BY n_sort"
-		)->execute(array(
+		)->execute([
 			'query'   => $query,
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		$out = '';
 		foreach ($rows as $row) {

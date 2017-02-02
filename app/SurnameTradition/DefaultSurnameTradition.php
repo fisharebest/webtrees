@@ -59,9 +59,9 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
 	 */
 	public function newChildNames($father_name, $mother_name, $child_sex) {
-		return array(
+		return [
 			'NAME' => '//',
-		);
+		];
 	}
 
 	/**
@@ -73,9 +73,9 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
 	 */
 	public function newParentNames($child_name, $parent_sex) {
-		return array(
+		return [
 			'NAME' => '//',
-		);
+		];
 	}
 
 	/**
@@ -87,8 +87,8 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
 	 */
 	public function newSpouseNames($spouse_name, $spouse_sex) {
-		return array(
+		return [
 			'NAME' => '//',
-		);
+		];
 	}
 }

@@ -50,7 +50,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -60,7 +60,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$block      = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', self::DEFAULT_HIDE_EMPTY);
 
-		foreach (array('days', 'infoStyle', 'sortStyle', 'hide_empty', 'show_user', 'block') as $name) {
+		foreach (['days', 'infoStyle', 'sortStyle', 'hide_empty', 'show_user', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -99,7 +99,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 
@@ -152,17 +152,17 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', [
 			'name'      => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
-		), null, $sortStyle, '');
+		], null, $sortStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
@@ -200,14 +200,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			"SELECT d_gid FROM `##dates`" .
 			" WHERE d_fact='CHAN' AND d_julianday1 >= :jd AND d_file = :tree_id";
 
-		$vars = array(
+		$vars = [
 			'jd'      => $jd,
 			'tree_id' => $tree->getTreeId(),
-		);
+		];
 
 		$xrefs = Database::prepare($sql)->execute($vars)->fetchOneColumn();
 
-		$records = array();
+		$records = [];
 		foreach ($xrefs as $xref) {
 			$record = GedcomRecord::getInstance($xref, $tree);
 			if ($record->canShow()) {
@@ -230,14 +230,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	private function changesList(array $records, $sort, $show_user) {
 		switch ($sort) {
 		case 'name':
-			uasort($records, array('self', 'sortByNameAndChangeDate'));
+			uasort($records, ['self', 'sortByNameAndChangeDate']);
 			break;
 		case 'date_asc':
-			uasort($records, array('self', 'sortByChangeDateAndName'));
+			uasort($records, ['self', 'sortByChangeDateAndName']);
 			$records = array_reverse($records);
 			break;
 		case 'date_desc':
-			uasort($records, array('self', 'sortByChangeDateAndName'));
+			uasort($records, ['self', 'sortByChangeDateAndName']);
 		}
 
 		$html = '';
@@ -284,13 +284,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		switch ($sort) {
 		case 'name':
 		default:
-			$aaSorting = "[2,'asc'], [4,'desc']";
+			$aaSorting = "[1,'asc'], [2,'desc']";
 			break;
 		case 'date_asc':
-			$aaSorting = "[4,'asc'], [2,'asc']";
+			$aaSorting = "[2,'asc'], [1,'asc']";
 			break;
 		case 'date_desc':
-			$aaSorting = "[4,'desc'], [2,'asc']";
+			$aaSorting = "[2,'desc'], [1,'asc']";
 			break;
 		}
 
@@ -298,8 +298,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'t\',
 					paging: false,
@@ -310,12 +308,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 					jQueryUI: true,
 					sorting: [' . $aaSorting . '],
 					columns: [
-						/* 0-Type */     { sortable: false, class: "center" },
-						/* 1-Record */   { dataSort: 2 },
-						/* 2-SORTNAME */ { type: "unicode" },
-						/* 3-Change */   { dataSort: 4 },
-						/* 4-DATE */     null
-						' . ($show_user ? ',/* 5-By */      null' : '') . '
+						{ sortable: false, class: "center" },
+						null,
+						null,
+						{ visible: ' . ($show_user ? 'true' : 'false') . ' }
 					]
 				});
 			');
@@ -324,57 +320,42 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$html .= '<thead><tr>';
 		$html .= '<th></th>';
 		$html .= '<th>' . I18N::translate('Record') . '</th>';
-		$html .= '<th hidden>SORTNAME</th>';
 		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th hidden>DATE</th>';
-		if ($show_user) {
-			$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
-		}
+		$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
 		$html .= '</tr></thead><tbody>';
 
 		foreach ($records as $record) {
 			$html .= '<tr><td>';
 			switch ($record::RECORD_TYPE) {
 			case 'INDI':
-				$icon = $record->getSexImage('small');
+				$html .= $record->getSexImage('small');
 				break;
 			case 'FAM':
-				$icon = '<i class="icon-button_family"></i>';
+				$html .= '<i class="icon-button_family"></i>';
 				break;
 			case 'OBJE':
-				$icon = '<i class="icon-button_media"></i>';
+				$html .= '<i class="icon-button_media"></i>';
 				break;
 			case 'NOTE':
-				$icon = '<i class="icon-button_note"></i>';
+				$html .= '<i class="icon-button_note"></i>';
 				break;
 			case 'SOUR':
-				$icon = '<i class="icon-button_source"></i>';
+				$html .= '<i class="icon-button_source"></i>';
 				break;
 			case 'REPO':
-				$icon = '<i class="icon-button_repository"></i>';
-				break;
-			default:
-				$icon = '&nbsp;';
+				$html .= '<i class="icon-button_repository"></i>';
 				break;
 			}
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $icon . '</a>';
 			$html .= '</td>';
-			$name = $record->getFullName();
-			$html .= '<td class="wrap">';
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $name . '</a>';
-			if ($record instanceof Individual) {
-				$addname = $record->getAddName();
-				if ($addname) {
-					$html .= '<div class="indent"><a href="' . $record->getHtmlUrl() . '">' . $addname . '</a></div>';
-				}
+			$html .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '">';
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+			$addname = $record->getAddName();
+			if ($addname) {
+				$html .= '<div class="indent"><a href="' . $record->getHtmlUrl() . '">' . $addname . '</a></div>';
 			}
 			$html .= '</td>';
-			$html .= '<td hidden>' . $record->getSortName() . '</td>';
-			$html .= '<td class="wrap">' . $record->lastChangeTimestamp() . '</td>';
-			$html .= '<td hidden>' . $record->lastChangeTimestamp(true) . '</td>';
-			if ($show_user) {
-				$html .= '<td class="wrap">' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
-			}
+			$html .= '<td data-sort="' . $record->lastChangeTimestamp(true) . '">' . $record->lastChangeTimestamp() . '</td>';
+			$html .= '<td>' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
 			$html .= '</tr>';
 		}
 

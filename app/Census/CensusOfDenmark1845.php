@@ -34,7 +34,7 @@ class CensusOfDenmark1845 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Navn', ''),
 			new CensusColumnAge($this, 'Alder', ''),
 			new CensusColumnConditionDanish($this, 'Civilstand', ''),
@@ -42,6 +42,6 @@ class CensusOfDenmark1845 extends CensusOfDenmark implements CensusInterface {
 			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
 			new CensusColumnNull($this, '', ''),
 			new CensusColumnNull($this, '', ''),
-		);
+		];
 	}
 }

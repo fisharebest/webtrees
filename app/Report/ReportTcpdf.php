@@ -24,19 +24,19 @@ use TCPDF;
  */
 class ReportTcpdf extends TCPDF {
 	/** @var ReportBaseElement[] Array of elements in the header */
-	public $headerElements = array();
+	public $headerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the page header */
-	public $pageHeaderElements = array();
+	public $pageHeaderElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the footer */
-	public $footerElements = array();
+	public $footerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the body */
-	public $bodyElements = array();
+	public $bodyElements = [];
 
 	/** @var ReportBaseFootnote[] Array of elements in the footer notes */
-	public $printedfootnotes = array();
+	public $printedfootnotes = [];
 
 	/** @var string Currently used style name */
 	public $currentStyle;
@@ -60,18 +60,18 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}
@@ -85,9 +85,9 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 			// Delete used elements in hope to reduce 'some' memory usage
@@ -117,9 +117,9 @@ class ReportTcpdf extends TCPDF {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$this->footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$this->newPage();
 			}
 		}
@@ -218,7 +218,7 @@ class ReportTcpdf extends TCPDF {
 	 */
 	public function clearHeader() {
 		unset($this->headerElements);
-		$this->headerElements = array();
+		$this->headerElements = [];
 	}
 
 	/**
@@ -226,7 +226,7 @@ class ReportTcpdf extends TCPDF {
 	 */
 	public function clearPageHeader() {
 		unset($this->pageHeaderElements);
-		$this->pageHeaderElements = array();
+		$this->pageHeaderElements = [];
 	}
 
 	/**

@@ -49,7 +49,7 @@ class FamilyBookController extends ChartController {
 		parent::__construct();
 
 		// Extract the request parameters
-		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1);
+		$this->show_spouse = Filter::get('show_spouse', '[01]', '0');
 		$this->descent     = Filter::getInteger('descent', 0, 9, 5);
 		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
 
@@ -88,7 +88,7 @@ class FamilyBookController extends ChartController {
 		$numkids = 0;
 
 		// Load children
-		$children = array();
+		$children = [];
 		if ($person) {
 			// Count is position from center to left, dgenerations is number of generations
 			if ($generation < $this->dgenerations) {
@@ -101,7 +101,7 @@ class FamilyBookController extends ChartController {
 			}
 		}
 		if ($generation < $this->dgenerations) {
-			if ($children) {
+			if (!empty($children)) {
 				// real people
 				echo '<table>';
 				foreach ($children as $i => $child) {
@@ -365,7 +365,7 @@ class FamilyBookController extends ChartController {
 			return;
 		}
 		$families = $person->getSpouseFamilies();
-		if ($families) {
+		if (!empty($families)) {
 			echo
 			'<h3>',
 			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),

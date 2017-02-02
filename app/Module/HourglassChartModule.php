@@ -63,7 +63,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 			$this->getTitle(),
 			'hourglass.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 			'menu-chart-hourglass',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

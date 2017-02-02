@@ -73,11 +73,11 @@ if ($PGV_PATH) {
 		$config_php = file_get_contents($PGV_PATH . '/config.php');
 		// The easiest way to do this is to exec() the file - but not lines containing require or PHP tags
 		$config_php = preg_replace(
-			array(
+			[
 				'/^\s*(include|require).*/m',
 				'/.*<\?php.*/',
 				'/.*\?>.*/',
-			), '', $config_php
+			], '', $config_php
 		);
 		eval($config_php);
 		// $INDEX_DIRECTORY can be either absolute or relative to the PhpGedView root.
@@ -137,7 +137,7 @@ $controller->pageHeader();
 
 if (!$PGV_PATH) {
 	// Look for PhpGedView in some nearby directories
-	$pgv_dirs = array();
+	$pgv_dirs = [];
 	$dir      = opendir(realpath('..'));
 	while (($subdir = readdir($dir)) !== false) {
 		// Exclude '..' as ascending too many levels can trigger open_basedir_restriction errors.
@@ -396,7 +396,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			foreach ($GEDCOMS as $array) {
 				try {
 					Database::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
-						->execute(array($array['id'], $array['gedcom']));
+						->execute([$array['id'], $array['gedcom']]);
 				} catch (PDOException $ex) {
 					// Ignore duplicates
 				}
@@ -405,7 +405,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					if ($key != 'id' && $key != 'gedcom' && $key != 'commonsurnames') {
 						try {
 							Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
-								->execute(array($array['id'], $key, $value));
+								->execute([$array['id'], $key, $value]);
 						} catch (PDOException $ex) {
 							// Ignore duplicates
 						}
@@ -559,7 +559,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree->getTreeId(), 'gedcomid', $value));
+					)->execute([$setting->user_id, $tree->getTreeId(), 'gedcomid', $value]);
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -573,7 +573,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree->getTreeId(), 'rootid', $value));
+					)->execute([$setting->user_id, $tree->getTreeId(), 'rootid', $value]);
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -587,7 +587,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree->getTreeId(), 'canedit', $value));
+					)->execute([$setting->user_id, $tree->getTreeId(), 'canedit', $value]);
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -704,7 +704,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$WEBMASTER_EMAIL              = '';
 	$WORD_WRAPPED_NOTES           = '';
 
-	$config = str_replace(array('$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'), $INDEX_DIRECTORY, $GED_DATA['config']);
+	$config = str_replace(['$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'], $INDEX_DIRECTORY, $GED_DATA['config']);
 	if (substr($config, 0, 1) === '.') {
 		$config = $PGV_PATH . '/' . $config;
 	}
@@ -718,35 +718,35 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_default_resn   = Database::prepare("INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, CASE ? WHEN -1 THEN 'hidden' WHEN 0 THEN 'confidential' WHEN 1 THEN 'privacy' ELSE 'none' END)");
 	$stmt_gedcom_setting = Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?,?)");
 
-	$privacy = str_replace(array('$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'), $INDEX_DIRECTORY, $GED_DATA['privacy']);
+	$privacy = str_replace(['$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'], $INDEX_DIRECTORY, $GED_DATA['privacy']);
 	if (substr($config, 0, 1) == '.') {
 		$privacy = $PGV_PATH . '/' . $privacy;
 	}
 	if (is_readable($privacy)) {
 		// initialise this, in case it is missing from the file
-		$person_privacy = array();
-		$person_facts   = array();
-		$global_facts   = array();
+		$person_privacy = [];
+		$person_facts   = [];
+		$global_facts   = [];
 
 		echo '<p>Reading privacy file ', $privacy, '</p>';
 		require $privacy;
 
 		foreach ($global_facts as $key => $value) {
 			if (isset($value['details'])) {
-				$stmt_default_resn->execute(array($GED_DATA['id'], null, $key, $value['details']));
+				$stmt_default_resn->execute([$GED_DATA['id'], null, $key, $value['details']]);
 			}
 		}
 
 		foreach ($person_privacy as $key => $value) {
 			if (isset($value['details'])) {
-				$stmt_default_resn->execute(array($GED_DATA['id'], $key, null, $value['details']));
+				$stmt_default_resn->execute([$GED_DATA['id'], $key, null, $value['details']]);
 			}
 		}
 
 		foreach ($person_facts as $key1 => $array) {
 			foreach ($array as $key2 => $value) {
 				if (isset($value['details'])) {
-					$stmt_default_resn->execute(array($GED_DATA['id'], $key1, $key2, $value['details']));
+					$stmt_default_resn->execute([$GED_DATA['id'], $key1, $key2, $value['details']]);
 				}
 			}
 		}
@@ -755,136 +755,136 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		echo '<p>Could not read privacy file ', $privacy, '</p>';
 	}
 
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ADVANCED_NAME_FACTS', $ADVANCED_NAME_FACTS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ADVANCED_PLAC_FACTS', $ADVANCED_PLAC_FACTS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CALENDAR_FORMAT', $CALENDAR_FORMAT));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CHART_BOX_TAGS', $CHART_BOX_TAGS));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'ADVANCED_NAME_FACTS', $ADVANCED_NAME_FACTS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'ADVANCED_PLAC_FACTS', $ADVANCED_PLAC_FACTS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CALENDAR_FORMAT', $CALENDAR_FORMAT]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CHART_BOX_TAGS', $CHART_BOX_TAGS]);
 	$user = User::findByIdentifier($CONTACT_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()]);
 	}
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES', $EXPAND_NOTES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_SOURCES', $EXPAND_SOURCES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FAM_FACTS_ADD', $FAM_FACTS_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FAM_FACTS_QUICK', $FAM_FACTS_QUICK));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FAM_FACTS_UNIQUE', $FAM_FACTS_UNIQUE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FAM_ID_PREFIX', $FAM_ID_PREFIX));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FULL_SOURCES', $FULL_SOURCES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'GEDCOM_ID_PREFIX', $GEDCOM_ID_PREFIX));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'GENERATE_UIDS', $GENERATE_UIDS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'HIDE_GEDCOM_ERRORS', $HIDE_GEDCOM_ERRORS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'INDI_FACTS_ADD', $INDI_FACTS_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'INDI_FACTS_QUICK', $INDI_FACTS_QUICK));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'INDI_FACTS_UNIQUE', $INDI_FACTS_UNIQUE));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'EXPAND_NOTES', $EXPAND_NOTES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'EXPAND_SOURCES', $EXPAND_SOURCES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_ADD', $FAM_FACTS_ADD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_QUICK', $FAM_FACTS_QUICK]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_UNIQUE', $FAM_FACTS_UNIQUE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_ID_PREFIX', $FAM_ID_PREFIX]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FULL_SOURCES', $FULL_SOURCES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'GEDCOM_ID_PREFIX', $GEDCOM_ID_PREFIX]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'GENERATE_UIDS', $GENERATE_UIDS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'HIDE_GEDCOM_ERRORS', $HIDE_GEDCOM_ERRORS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_ADD', $INDI_FACTS_ADD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_QUICK', $INDI_FACTS_QUICK]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_UNIQUE', $INDI_FACTS_UNIQUE]);
 	switch ($LANGUAGE) {
 	case 'catalan':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ca'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ca']);
 		break;
 	case 'english-uk':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-GB'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-GB']);
 		break;
 	case 'polish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'pl'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pl']);
 		break;
 	case 'italian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'it'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'it']);
 		break;
 	case 'spanish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'es'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'es']);
 		break;
 	case 'finnish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'fi'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fi']);
 		break;
 	case 'french':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'fr'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fr']);
 		break;
 	case 'german':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'de'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'de']);
 		break;
 	case 'danish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'da'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'da']);
 		break;
 	case 'portuguese':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'pt'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pt']);
 		break;
 	case 'hebrew':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'he'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'he']);
 		break;
 	case 'estonian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'et'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'et']);
 		break;
 	case 'turkish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'tr'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'tr']);
 		break;
 	case 'dutch':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'nl'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nl']);
 		break;
 	case 'slovak':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'sk'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sk']);
 		break;
 	case 'norwegian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'nn'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nn']);
 		break;
 	case 'slovenian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'sl'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sl']);
 		break;
 	case 'hungarian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'hu'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'hu']);
 		break;
 	case 'swedish':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'sv'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sv']);
 		break;
 	case 'russian':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ru'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ru']);
 		break;
 	default:
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-US'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-US']);
 		break;
 	}
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_DESCENDANCY_GENERATIONS', $MAX_DESCENDANCY_GENERATIONS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_PEDIGREE_GENERATIONS', $MAX_PEDIGREE_GENERATIONS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_RELATION_PATH_LENGTH', $MAX_RELATION_PATH_LENGTH));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_DIRECTORY', 'media/'));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_ID_PREFIX', $MEDIA_ID_PREFIX));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'META_DESCRIPTION', $META_DESCRIPTION));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'META_TITLE', $META_TITLE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_UPLOAD', $MULTI_MEDIA)); // see schema v12-13
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'NOTE_FACTS_ADD', $NOTE_FACTS_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'NOTE_FACTS_QUICK', $NOTE_FACTS_QUICK));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'NOTE_FACTS_UNIQUE', $NOTE_FACTS_UNIQUE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'NOTE_ID_PREFIX', 'N'));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'NO_UPDATE_CHAN', $NO_UPDATE_CHAN));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_LAYOUT', $PEDIGREE_LAYOUT));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_ROOT_ID', $PEDIGREE_ROOT_ID));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_SHOW_GENDER', $PEDIGREE_SHOW_GENDER));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PREFER_LEVEL2_SOURCES', $PREFER_LEVEL2_SOURCES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'QUICK_REQUIRED_FACTS', $QUICK_REQUIRED_FACTS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'QUICK_REQUIRED_FAMFACTS', $QUICK_REQUIRED_FAMFACTS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REPO_FACTS_ADD', $REPO_FACTS_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REPO_FACTS_QUICK', $REPO_FACTS_QUICK));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REPO_FACTS_UNIQUE', $REPO_FACTS_UNIQUE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REPO_ID_PREFIX', $REPO_ID_PREFIX));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_COUNTER', $SHOW_COUNTER));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_DEAD_PEOPLE', $SHOW_DEAD_PEOPLE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_FACT_ICONS', $SHOW_FACT_ICONS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_GEDCOM_RECORD', $SHOW_GEDCOM_RECORD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_HIGHLIGHT_IMAGES', $SHOW_HIGHLIGHT_IMAGES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LDS_AT_GLANCE', $SHOW_LDS_AT_GLANCE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LIST_PLACES', $SHOW_LIST_PLACES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LIVING_NAMES', $SHOW_LIVING_NAMES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PARENTS_AGE', $SHOW_PARENTS_AGE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PEDIGREE_PLACES', $SHOW_PEDIGREE_PLACES));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PRIVATE_RELATIONSHIPS', $SHOW_PRIVATE_RELATIONSHIPS));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_DESCENDANCY_GENERATIONS', $MAX_DESCENDANCY_GENERATIONS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_PEDIGREE_GENERATIONS', $MAX_PEDIGREE_GENERATIONS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_RELATION_PATH_LENGTH', $MAX_RELATION_PATH_LENGTH]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_DIRECTORY', 'media/']);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_ID_PREFIX', $MEDIA_ID_PREFIX]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'META_DESCRIPTION', $META_DESCRIPTION]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'META_TITLE', $META_TITLE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_UPLOAD', $MULTI_MEDIA]); // see schema v12-13
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_ADD', $NOTE_FACTS_ADD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_QUICK', $NOTE_FACTS_QUICK]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_UNIQUE', $NOTE_FACTS_UNIQUE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_ID_PREFIX', 'N']);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NO_UPDATE_CHAN', $NO_UPDATE_CHAN]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_LAYOUT', $PEDIGREE_LAYOUT]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_ROOT_ID', $PEDIGREE_ROOT_ID]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_SHOW_GENDER', $PEDIGREE_SHOW_GENDER]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PREFER_LEVEL2_SOURCES', $PREFER_LEVEL2_SOURCES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'QUICK_REQUIRED_FACTS', $QUICK_REQUIRED_FACTS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'QUICK_REQUIRED_FAMFACTS', $QUICK_REQUIRED_FAMFACTS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_ADD', $REPO_FACTS_ADD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_QUICK', $REPO_FACTS_QUICK]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_UNIQUE', $REPO_FACTS_UNIQUE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_ID_PREFIX', $REPO_ID_PREFIX]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_COUNTER', $SHOW_COUNTER]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_DEAD_PEOPLE', $SHOW_DEAD_PEOPLE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_FACT_ICONS', $SHOW_FACT_ICONS]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_GEDCOM_RECORD', $SHOW_GEDCOM_RECORD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_HIGHLIGHT_IMAGES', $SHOW_HIGHLIGHT_IMAGES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_LDS_AT_GLANCE', $SHOW_LDS_AT_GLANCE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_LIST_PLACES', $SHOW_LIST_PLACES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_LIVING_NAMES', $SHOW_LIVING_NAMES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_PARENTS_AGE', $SHOW_PARENTS_AGE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_PEDIGREE_PLACES', $SHOW_PEDIGREE_PLACES]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_PRIVATE_RELATIONSHIPS', $SHOW_PRIVATE_RELATIONSHIPS]);
 
 	// Update these - see db_schema_5_6.php
 	$SHOW_RELATIVES_EVENTS = preg_replace('/_(BIRT|MARR|DEAT)_(COUS|MSIB|FSIB|GGCH|NEPH|GGPA)/', '', $SHOW_RELATIVES_EVENTS);
@@ -892,45 +892,45 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$SHOW_RELATIVES_EVENTS = preg_replace('/_MARR_(MOTH|FATH|FAMC)/', '_MARR_PARE', $SHOW_RELATIVES_EVENTS);
 	$SHOW_RELATIVES_EVENTS = preg_replace('/_DEAT_(MOTH|FATH)/', '_DEAT_PARE', $SHOW_RELATIVES_EVENTS);
 	preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0]))));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0]))]);
 
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOURCE_ID_PREFIX', $SOURCE_ID_PREFIX));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOUR_FACTS_ADD', $SOUR_FACTS_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOUR_FACTS_QUICK', $SOUR_FACTS_QUICK));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOUR_FACTS_UNIQUE', $SOUR_FACTS_UNIQUE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SUBLIST_TRIGGER_I', $SUBLIST_TRIGGER_I));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SURNAME_LIST_STYLE', $SURNAME_LIST_STYLE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SURNAME_TRADITION', $SURNAME_TRADITION));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOURCE_ID_PREFIX', $SOURCE_ID_PREFIX]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_ADD', $SOUR_FACTS_ADD]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_QUICK', $SOUR_FACTS_QUICK]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_UNIQUE', $SOUR_FACTS_UNIQUE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SUBLIST_TRIGGER_I', $SUBLIST_TRIGGER_I]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_LIST_STYLE', $SURNAME_LIST_STYLE]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_TRADITION', $SURNAME_TRADITION]);
 	switch ($THEME_DIR) {
 	case '':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', ''));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', '']);
 		break;
 	case 'themes/cloudy/':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'clouds'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'clouds']);
 		break;
 	case 'themes/minimal/':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'minimal'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'minimal']);
 		break;
 	case 'themes/simplyblue/':
 	case 'themes/simplygreen/':
 	case 'themes/simplyred/':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'colors'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'colors']);
 		break;
 	case 'themes/xenea/':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'xenea'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'xenea']);
 		break;
 	default:
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'webtrees'));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'webtrees']);
 		break;
 	}
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THUMBNAIL_WIDTH', $THUMBNAIL_WIDTH));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THUMBNAIL_WIDTH', $THUMBNAIL_WIDTH]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY]);
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB]);
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()));
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);
 	}
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES));
+	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES]);
 }
 Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('config', 'privacy', 'path', 'pgv_ver', 'imported')")->execute();
 
@@ -1009,7 +1009,7 @@ if ($PGV_SCHEMA_VERSION >= 13) {
 						$page_parameter = 'gedcom:' . $GED_DATA['id'];
 					}
 					try {
-						$statement->execute(array($GED_DATA['id'], $page_name, $page_parameter, $match[3]));
+						$statement->execute([$GED_DATA['id'], $page_name, $page_parameter, $match[3]]);
 					} catch (PDOException $ex) {
 						// Primary key violation? Ignore?
 					}

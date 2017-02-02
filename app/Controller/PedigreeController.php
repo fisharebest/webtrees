@@ -46,7 +46,7 @@ class PedigreeController extends ChartController {
 	public $generations;
 
 	/** @var array data pertaining to each chart node */
-	public $nodes = array();
+	public $nodes = [];
 
 	/** @var int Number of nodes in the chart */
 	public $treesize;
@@ -58,7 +58,7 @@ class PedigreeController extends ChartController {
 	public $arrows;
 
 	/** @var array Holds results of chart dimension calculations */
-	public $chartsize = array();
+	public $chartsize = [];
 
 	/**
 	 * Create a pedigree controller
@@ -72,7 +72,7 @@ class PedigreeController extends ChartController {
 		$bxspacing         = Theme::theme()->parameter('chart-spacing-x');
 		$byspacing         = Theme::theme()->parameter('chart-spacing-y');
 		$curgen            = 1; // -- track which generation the algorithm is currently working on
-		$addoffset         = array();
+		$addoffset         = [];
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
 		if ($this->generations > 8) {
@@ -81,8 +81,7 @@ class PedigreeController extends ChartController {
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
-				/* I18N: %s is an individual’s name */
-				I18N::translate('Pedigree tree of %s', $this->root->getFullName())
+				/* I18N: %s is an individual’s name */ I18N::translate('Pedigree tree of %s', $this->root->getFullName())
 			);
 		} else {
 			$this->setPageTitle(I18N::translate('Pedigree'));
@@ -92,7 +91,7 @@ class PedigreeController extends ChartController {
 
 		// sosaAncestors() starts array at index 1 we need to start at 0
 		$this->nodes = array_map(function ($item) {
-			return array('indi' => $item, 'x' => 0, 'y' => 0);
+			return ['indi' => $item, 'x' => 0, 'y' => 0];
 		}, array_values($this->sosaAncestors($this->generations)));
 
 		//check earliest generation for any ancestors
@@ -218,8 +217,8 @@ class PedigreeController extends ChartController {
 				}
 				break;
 			}
-			$this->nodes[$i]["x"] = (int) $xoffset;
-			$this->nodes[$i]["y"] = (int) $yoffset;
+			$this->nodes[$i]['x'] = (int) $xoffset;
+			$this->nodes[$i]['y'] = (int) $yoffset;
 		}
 
 		// find the minimum x & y offsets and deduct that number from
@@ -257,35 +256,33 @@ class PedigreeController extends ChartController {
 	 * @return string
 	 */
 	public function getMenu() {
-		$famids = $this->root->getSpouseFamilies();
-		$html   = '';
-		if ($famids) {
+		$families = $this->root->getSpouseFamilies();
+		$html     = '';
+		if (!empty($families)) {
 			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect noprint %s"></a><div id="childbox">', $this->arrows->menu);
 
-			foreach ($famids as $family) {
+			foreach ($families as $family) {
 				$html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
 				$spouse = $family->getSpouse($this->root);
 				if ($spouse) {
 					$html .= sprintf(self::MENU_ITEM, $spouse->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $spouse->getFullName());
 				}
 				$children = $family->getChildren();
-				foreach ($children as $child) {
-					$html .= sprintf(self::MENU_ITEM, $child->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $child->getFullName());
+				foreach ($children as $sibling) {
+					$html .= sprintf(self::MENU_ITEM, $sibling->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $sibling->getFullName());
 				}
 			}
 			//-- echo the siblings
-			$tmp = $this->root; // PHP5.3 cannot use $this in closures
 			foreach ($this->root->getChildFamilies() as $family) {
-				$siblings = array_filter($family->getChildren(), function (Individual $item) use ($tmp) {
-					return $tmp->getXref() !== $item->getXref();
+				$siblings = array_filter($family->getChildren(), function (Individual $item) {
+					return $this->root->getXref() !== $item->getXref();
 				});
-				$num      = count($siblings);
-				if ($num) {
+				if (!empty($siblings)) {
 					$html .= '<span class="name1">';
-					$html .= $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
+					$html .= count($siblings) > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
 					$html .= '</span>';
-					foreach ($siblings as $child) {
-						$html .= sprintf(self::MENU_ITEM, $child->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $child->getFullName());
+					foreach ($siblings as $sibling) {
+						$html .= sprintf(self::MENU_ITEM, $sibling->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $sibling->getFullName());
 					}
 				}
 			}

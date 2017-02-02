@@ -66,7 +66,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 				$this->getTitle(),
 				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
 				'menu-chart-fanchart',
-				array('rel' => 'nofollow')
+				['rel' => 'nofollow']
 			);
 		} else {
 			return null;

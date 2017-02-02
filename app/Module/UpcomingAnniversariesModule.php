@@ -53,7 +53,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
@@ -63,7 +63,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+		foreach (['days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -96,7 +96,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 
@@ -165,16 +165,16 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', [
 			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
 			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
-		), null, $sortStyle, '');
+		], null, $sortStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

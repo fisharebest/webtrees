@@ -96,7 +96,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			// Output Individual for GEDFact Assistant ======================
 			echo '<table class="list_table width90">';
-			$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
+			$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
 			if ($myindilist) {
 				echo '<tr><td class="list_value_wrap"><ul>';
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -146,7 +146,7 @@ class CensusAssistantModule extends AbstractModule {
 		function pasteid(id, name, thumb) {
 			if (thumb) {
 				window.opener.paste_id(id, name, thumb);
-				<?php if (!$multiple) { echo "window.close();"; } ?>
+				<?php if (!$multiple) { echo 'window.close();'; } ?>
 			} else {
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
@@ -156,7 +156,7 @@ class CensusAssistantModule extends AbstractModule {
 			if (window.opener.pastename) {
 				window.opener.pastename(name);
 			}
-			<?php if (!$multiple) { echo "window.close();"; } ?>
+			<?php if (!$multiple) { echo 'window.close();'; } ?>
 			}
 		}
 		function checknames(frm) {
@@ -166,7 +166,7 @@ class CensusAssistantModule extends AbstractModule {
 				button = "";
 			}
 			if (frm.filter.value.length < 2 && button !== "all") {
-				alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
+				alert("<?= I18N::translate('Please enter more than one character.') ?>");
 				frm.filter.focus();
 				return false;
 			}
@@ -192,7 +192,7 @@ class CensusAssistantModule extends AbstractModule {
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo '<table class="tabs_table width90"><tr>';
-		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
 		if ($myindilist) {
 			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -205,19 +205,19 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getBirthYear() . "' ,
 					'" . (1901 - $indi->getBirthYear()) . "' ,
 					'" . $indi->getBirthPlace() . "'); return false;\">
-					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
+					<b>" . $indi->getFullName() . '</b>&nbsp;&nbsp;&nbsp;';
 
-				$born = GedcomTag::getLabel('BIRT');
-				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getBirthYear(), "&nbsp;&nbsp;&nbsp;", $indi->getBirthPlace(), "</span></a></li>";
-				echo "<hr>";
+				$born = I18N::translate('Birth');
+				echo '</span><br><span class="list_item">', $born, ' ', $indi->getBirthYear(), '&nbsp;&nbsp;&nbsp;', $indi->getBirthPlace(), '</span></a></li>';
+				echo '<hr>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
 		} else {
-			echo "<td class=\"list_value_wrap\">";
+			echo '<td class="list_value_wrap">';
 			echo I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '</td></tr>';
 		}
-		echo "</table>";
+		echo '</table>';
 		echo '</div>';
 	}
 
@@ -249,7 +249,7 @@ class CensusAssistantModule extends AbstractModule {
 				function insertId() {
 					if (window.opener.document.getElementById('addlinkQueue')) {
 						// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
-						window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlspecialchars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
+						window.opener.insertRowToTable('<?= $record->getXref() ?>', '<?= htmlspecialchars($record->getFullName()) ?>', '<?= $headjs ?>');
 						window.close();
 					}
 				}
@@ -259,7 +259,7 @@ class CensusAssistantModule extends AbstractModule {
 			?>
 			<script>
 				function insertId() {
-					window.opener.alert('<?php echo $iid2; ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
+					window.opener.alert('<?= $iid2 ?> - <?= I18N::translate('Not a valid individual, family, or source ID') ?>');
 					window.close();
 				}
 			</script>
@@ -291,7 +291,7 @@ class CensusAssistantModule extends AbstractModule {
 			// Get the column headers for the census to which this note refers
 			// requires the fact place & date to match the specific census
 			// censusPlace() (Soundex match) and censusDate() functions
-			$fmt_headers   = array();
+			$fmt_headers   = [];
 			$linkedRecords = array_merge($note->linkedIndividuals('NOTE'), $note->linkedFamilies('NOTE'));
 			$firstRecord   = array_shift($linkedRecords);
 			if ($firstRecord) {
@@ -427,7 +427,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $grandparent) . ' - ' . $grandparent->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
+						['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");']
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -438,19 +438,19 @@ class CensusAssistantModule extends AbstractModule {
 			?>
 			<tr>
 				<td class="optionbox">
-					<?php echo $menu->getMenu(); ?>
+					<?= $menu->getMenu() ?>
 				</td>
 				<td class="facts_value nowrap">
-					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(self::censusTableRow($census, $spouse, $head)); ?>');">
-						<?php echo $spouse->getFullName(); ?>
+					<a href="#" onclick="return appendCensusRow('<?= Filter::escapeJs(self::censusTableRow($census, $spouse, $head)) ?>');">
+						<?= $spouse->getFullName() ?>
 					</a>
 				</td>
 				<td class="facts_value">
 					<?php if ($head !== $spouse): ?>
-						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>&amp;census=<?php echo get_class($census); ?>">
-							<?php echo $headImg2; ?>
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?= $spouse->getXref() ?>&amp;gedcom=<?= $spouse->getTree()->getNameUrl() ?>&amp;census=<?= get_class($census) ?>">
+							<?= $headImg2 ?>
 						</a>
-					<?php endif; ?>
+					<?php endif ?>
 				</td>
 			</tr>
 			<?php
@@ -465,7 +465,7 @@ class CensusAssistantModule extends AbstractModule {
 							Functions::getCloseRelationshipName($head, $spouse_family_spouse) . ' - ' . $spouse_family_spouse->getFullName(),
 							'#',
 							'',
-							array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
+							['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");']
 						);
 						$submenu->addClass('submenuitem', '');
 						$menu->addSubmenu($submenu);
@@ -477,7 +477,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $spouse_family_child) . ' - ' . $spouse_family_child->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
+						['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");']
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -488,19 +488,19 @@ class CensusAssistantModule extends AbstractModule {
 			?>
 			<tr>
 				<td class="optionbox">
-					<?php echo $menu->getMenu(); ?>
+					<?= $menu->getMenu() ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(self::censusTableRow($census, $child, $head)); ?>');">
-						<?php echo $child->getFullName(); ?>
+					<a href="#" onclick="return appendCensusRow('<?= Filter::escapeJs(self::censusTableRow($census, $child, $head)) ?>');">
+						<?= $child->getFullName() ?>
 					</a>
 				</td>
 				<td class="facts_value">
 					<?php if ($head !== $child): ?>
-						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo $child->getTree()->getNameUrl(); ?>&amp;census=<?php echo get_class($census); ?>">
-							<?php echo $headImg2; ?>
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?= $child->getXref() ?>&amp;gedcom=<?= $child->getTree()->getNameUrl() ?>&amp;census=<?= get_class($census) ?>">
+							<?= $headImg2 ?>
 						</a>
-					<?php endif; ?>
+					<?php endif ?>
 				</td>
 			</tr>
 			<?php

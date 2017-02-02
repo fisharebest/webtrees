@@ -23,14 +23,15 @@ class Census {
 	 * @return CensusPlaceInterface[]
 	 */
 	public static function allCensusPlaces() {
-		return array(
+		return [
 			new CensusOfCzechRepublic,
 			new CensusOfDenmark,
+			new CensusOfDeutschland,
 			new CensusOfEngland,
 			new CensusOfFrance,
 			new CensusOfScotland,
 			new CensusOfUnitedStates,
 			new CensusOfWales,
-		);
+		];
 	}
 }

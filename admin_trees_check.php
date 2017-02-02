@@ -46,9 +46,9 @@ $rows = Database::prepare(
 	"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?" .
 	" UNION " .
 	"SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
-)->execute(array($WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId()))->fetchAll();
+)->execute([$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId()])->fetchAll();
 
-$records = array();
+$records = [];
 foreach ($rows as $row) {
 	$records[$row->xref] = $row;
 }
@@ -64,7 +64,7 @@ $rows = Database::prepare(
 	"  GROUP BY xref" .
 	" ) AS t1" .
 	" JOIN `##change` t2 USING (change_id)"
-)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+)->execute([$WT_TREE->getTreeId()])->fetchAll();
 
 foreach ($rows as $row) {
 	if ($row->gedrec) {
@@ -77,13 +77,13 @@ foreach ($rows as $row) {
 }
 
 // Keep a list of upper case XREFs, to detect mismatches.
-$ukeys = array();
+$ukeys = [];
 foreach (array_keys($records) as $key) {
 	$ukeys[strtoupper($key)] = $key;
 }
 
 // LOOK FOR BROKEN LINKS
-$XREF_LINKS = array(
+$XREF_LINKS = [
 	'NOTE'          => 'NOTE',
 	'SOUR'          => 'SOUR',
 	'REPO'          => 'REPO',
@@ -103,19 +103,19 @@ $XREF_LINKS = array(
 	'DESI'          => 'SUBM',
 	'_WT_OBJE_SORT' => 'OBJE',
 	'_LOC'          => '_LOC',
-);
+];
 
-$RECORD_LINKS = array(
-	'INDI' => array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'),
-	'FAM'  => array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'),
-	'SOUR' => array('NOTE', 'OBJE', 'REPO', 'AUTH'),
-	'REPO' => array('NOTE'),
-	'OBJE' => array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
-	'NOTE' => array(), // The spec also allows SOUR, but we treat this as a warning
-	'SUBM' => array('NOTE', 'OBJE'),
-	'SUBN' => array('SUBM'),
-	'_LOC' => array('SOUR', 'OBJE', '_LOC'),
-);
+$RECORD_LINKS = [
+	'INDI' => ['NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'],
+	'FAM'  => ['NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'],
+	'SOUR' => ['NOTE', 'OBJE', 'REPO', 'AUTH'],
+	'REPO' => ['NOTE'],
+	'OBJE' => ['NOTE'], // The spec also allows SOUR, but we treat this as a warning
+	'NOTE' => [], // The spec also allows SOUR, but we treat this as a warning
+	'SUBM' => ['NOTE', 'OBJE'],
+	'SUBN' => ['SUBM'],
+	'_LOC' => ['SOUR', 'OBJE', '_LOC'],
+];
 
 $errors = false;
 
@@ -141,10 +141,10 @@ $errors = false;
 <?php
 
 // Generate lists of all links
-$all_links   = array();
-$upper_links = array();
+$all_links   = [];
+$upper_links = [];
 foreach ($records as $record) {
-	$all_links[$record->xref]               = array();
+	$all_links[$record->xref]               = [];
 	$upper_links[strtoupper($record->xref)] = $record->xref;
 	preg_match_all('/\n\d (' . WT_REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
 	foreach ($matches as $match) {

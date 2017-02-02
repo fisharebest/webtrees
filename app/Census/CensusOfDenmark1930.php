@@ -34,7 +34,7 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurnameGivenNames($this, 'Navn', ''),
 			new CensusColumnNull($this, 'Bopæl', ''),
 			new CensusColumnNull($this, 'Andetsteds', 'Hvis den i Rubrik 3 opførte Person har fast Bopæl andetsteds, anføres her den faste Bopæl'),
@@ -53,6 +53,6 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 			new CensusColumnNull($this, '', ''),
 			new CensusColumnNull($this, '', ''),
 			new CensusColumnNull($this, '', ''),
-		);
+		];
 	}
 }

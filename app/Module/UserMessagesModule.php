@@ -50,10 +50,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
 
 			foreach (Filter::postArray('message_id') as $id) {
-				$stmt->execute(array(
+				$stmt->execute([
 					'message_id' => $id,
 					'user_id'    => Auth::id(),
-				));
+				]);
 			}
 		}
 
@@ -72,17 +72,17 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$block = $this->getBlockSetting($block_id, 'block', '1');
-		foreach (array('block') as $name) {
+		foreach (['block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
 		}
 		$messages = Database::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
-			->execute(array(Auth::id()))
+			->execute([Auth::id()])
 			->fetchAll();
 
 		$count = count($messages);
@@ -144,7 +144,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</form>';
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 

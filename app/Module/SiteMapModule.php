@@ -94,13 +94,13 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 				if ($tree->getPreference('include_in_sitemap')) {
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
+					)->execute(['tree_id' => $tree->getTreeId()])->fetchOne();
 					for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 						$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
+					)->execute(['tree_id' => $tree->getTreeId()])->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
@@ -108,7 +108,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'REPO'"
-					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
+					)->execute(['tree_id' => $tree->getTreeId()])->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
@@ -116,7 +116,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'NOTE'"
-					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
+					)->execute(['tree_id' => $tree->getTreeId()])->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
@@ -124,7 +124,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##media` WHERE m_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
+					)->execute(['tree_id' => $tree->getTreeId()])->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
@@ -158,7 +158,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$data    = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
-			$records = array();
+			$records = [];
 			switch ($rec_type) {
 			case 'i':
 				$rows = Database::prepare(
@@ -167,11 +167,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					" WHERE i_file = :tree_id" .
 					" ORDER BY i_id" .
 					" LIMIT :limit OFFSET :offset"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'limit'   => self::RECORDS_PER_VOLUME,
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
 				}
@@ -183,11 +183,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					" WHERE s_file = :tree_id" .
 					" ORDER BY s_id" .
 					" LIMIT :limit OFFSET :offset"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'limit'   => self::RECORDS_PER_VOLUME,
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 				}
@@ -199,11 +199,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					" WHERE o_file = :tree_id AND o_type = 'REPO'" .
 					" ORDER BY o_id" .
 					" LIMIT :limit OFFSET :offset"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'limit'   => self::RECORDS_PER_VOLUME,
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 				}
@@ -215,11 +215,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					" WHERE o_file = :tree_id AND o_type = 'NOTE'" .
 					" ORDER BY o_id" .
 					" LIMIT :limit OFFSET :offset"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'limit'   => self::RECORDS_PER_VOLUME,
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 				}
@@ -231,11 +231,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 					" WHERE m_file = :tree_id" .
 					" ORDER BY m_id" .
 					" LIMIT :limit OFFSET :offset"
-				)->execute(array(
+				)->execute([
 					'tree_id' => $ged_id,
 					'limit'   => self::RECORDS_PER_VOLUME,
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				))->fetchAll();
+				])->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = Media::getInstance($row->xref, $tree, $row->gedcom);
 				}
@@ -331,8 +331,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 				'<p>', I18N::translate('To tell search engines that sitemaps are available, you can use the following links.'), '</p>',
 				'<ul>',
 				// This list comes from http://en.wikipedia.org/wiki/Sitemaps
-				'<li><a href="http://www.bing.com/webmaster/ping.aspx?siteMap=' . $site_map_url2 . '">Bing</a></li>',
-				'<li><a href="http://www.google.com/webmasters/tools/ping?sitemap=' . $site_map_url2 . '">Google</a></li>',
+				'<li><a href="https://www.bing.com/webmaster/ping.aspx?siteMap=' . $site_map_url2 . '">Bing</a></li>',
+				'<li><a href="https://www.google.com/webmasters/tools/ping?sitemap=' . $site_map_url2 . '">Google</a></li>',
 				'</ul>';
 
 		}

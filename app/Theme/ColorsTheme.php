@@ -72,7 +72,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * Create resources for the colors theme.
 	 */
 	public function hookAfterInit() {
-		$this->palettes = array(
+		$this->palettes = [
 			'aquamarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
 			'ash'              => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
 			'belgianchocolate' => /* I18N: The name of a colour-scheme */ I18N::translate('Belgian Chocolate'),
@@ -89,7 +89,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 			'sage'             => /* I18N: The name of a colour-scheme */ I18N::translate('Sage'),
 			'shinytomato'      => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
 			'tealtop'          => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
-		);
+		];
 		uasort($this->palettes, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		// If we've selected a new palette, and we are logged in, set this value as a default.
@@ -126,7 +126,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return Menu[]
 	 */
 	protected function secondaryMenu() {
-		return array_filter(array(
+		return array_filter([
 			$this->menuPendingChanges(),
 			$this->menuMyPages(),
 			$this->menuFavorites(),
@@ -135,7 +135,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 			$this->menuLanguages(),
 			$this->menuLogin(),
 			$this->menuLogout(),
-		));
+		]);
 	}
 
 	/**
@@ -151,8 +151,11 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 			foreach ($this->palettes as $palette_id => $palette_name) {
 				$menu->addSubmenu(new Menu(
 					$palette_name,
-					Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
-					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
+					'#',
+					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : ''),
+					[
+						'onclick' => 'document.location=\'' . Functions::getQueryUrl(['themecolor' => $palette_id], '&') . '\'',
+					]
 				));
 			}
 
@@ -168,11 +171,11 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return array(
+		return [
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
 			$this->assetUrl() . 'style.css',
 			$this->assetUrl() . 'palette/' . $this->palette . '.css',
-		);
+		];
 	}
 
 	/**

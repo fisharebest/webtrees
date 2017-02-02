@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -94,50 +95,49 @@ class FunctionsExport {
 	 */
 	public static function gedcomHeader(Tree $tree) {
 		// Default values for a new header
-		$HEAD = "0 HEAD";
+		$HEAD = '0 HEAD';
 		$SOUR = "\n1 SOUR " . WT_WEBTREES . "\n2 NAME " . WT_WEBTREES . "\n2 VERS " . WT_VERSION;
 		$DEST = "\n1 DEST DISKETTE";
-		$DATE = "\n1 DATE " . strtoupper(date("d M Y")) . "\n2 TIME " . date("H:i:s");
+		$DATE = "\n1 DATE " . strtoupper(date('d M Y')) . "\n2 TIME " . date('H:i:s');
 		$GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
 		$CHAR = "\n1 CHAR UTF-8";
 		$FILE = "\n1 FILE " . $tree->getName();
-		$LANG = "";
-		$PLAC = "\n1 PLAC\n2 FORM City, County, State/Province, Country";
-		$COPR = "";
-		$SUBN = "";
+		$LANG = '';
+		$COPR = '';
+		$SUBN = '';
 		$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
 
 		// Preserve some values from the original header
 		$record = GedcomRecord::getInstance('HEAD', $tree);
-		if ($fact = $record->getFirstFact('PLAC')) {
-			$PLAC = "\n1 PLAC\n2 FORM " . $fact->getAttribute('FORM');
-		}
-		if ($fact = $record->getFirstFact('LANG')) {
+		$fact = $record->getFirstFact('LANG');
+		if ($fact instanceof Fact) {
 			$LANG = $fact->getValue();
 		}
-		if ($fact = $record->getFirstFact('SUBN')) {
+		$fact = $record->getFirstFact('SUBN');
+		if ($fact instanceof Fact) {
 			$SUBN = $fact->getValue();
 		}
-		if ($fact = $record->getFirstFact('COPR')) {
+		$fact = $record->getFirstFact('COPR');
+		if ($fact instanceof Fact) {
 			$COPR = $fact->getValue();
 		}
 		// Link to actual SUBM/SUBN records, if they exist
 		$subn =
 			Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBN', $tree->getTreeId()))
+				->execute(['SUBN', $tree->getTreeId()])
 				->fetchOne();
 		if ($subn) {
 			$SUBN = "\n1 SUBN @{$subn}@";
 		}
 		$subm =
 			Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBM', $tree->getTreeId()))
+				->execute(['SUBM', $tree->getTreeId()])
 				->fetchOne();
 		if ($subm) {
 			$SUBM = "\n1 SUBM @{$subm}@";
 		}
 
-		return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $PLAC . $SUBN . $SUBM . "\n";
+		return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $SUBN . $SUBM . "\n";
 	}
 
 	/**
@@ -214,9 +214,9 @@ class FunctionsExport {
 		$rows       = Database::prepare(
 			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media` WHERE m_file = :tree_id ORDER BY m_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		foreach ($rows as $row) {
 			$rec = Media::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -230,9 +230,9 @@ class FunctionsExport {
 		$rows = Database::prepare(
 			"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
 			" FROM `##sources` WHERE s_file = :tree_id ORDER BY s_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		foreach ($rows as $row) {
 			$rec = Source::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -245,9 +245,9 @@ class FunctionsExport {
 		$rows = Database::prepare(
 			"SELECT o_type AS type, o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other` WHERE o_file = :tree_id AND o_type NOT IN ('HEAD', 'TRLR') ORDER BY o_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		foreach ($rows as $row) {
 			switch ($row->type) {
@@ -272,9 +272,9 @@ class FunctionsExport {
 		$rows = Database::prepare(
 			"SELECT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals` WHERE i_file = :tree_id ORDER BY i_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		foreach ($rows as $row) {
 			$rec = Individual::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -291,9 +291,9 @@ class FunctionsExport {
 		$rows = Database::prepare(
 			"SELECT f_id AS xref, f_gedcom AS gedcom" .
 			" FROM `##families` WHERE f_file = :tree_id ORDER BY f_id"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $tree->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		foreach ($rows as $row) {
 			$rec = Family::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);

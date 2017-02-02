@@ -36,21 +36,21 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('#', $menu->getLink());
 		$this->assertSame('', $menu->getClass());
-		$this->assertSame(array(), $menu->getAttrs());
-		$this->assertSame(array(), $menu->getSubmenus());
+		$this->assertSame([], $menu->getAttrs());
+		$this->assertSame([], $menu->getSubmenus());
 	}
 
 	/**
 	 * Test the constructor with non-default parameters.
 	 */
 	public function testConstructorNonDefaults() {
-		$submenus = array(new Menu('Submenu'));
-		$menu     = new Menu('Test!', 'link.html', 'link-class', array('foo' => 'bar'), $submenus);
+		$submenus = [new Menu('Submenu')];
+		$menu     = new Menu('Test!', 'link.html', 'link-class', ['foo' => 'bar'], $submenus);
 
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('link.html', $menu->getLink());
 		$this->assertSame('link-class', $menu->getClass());
-		$this->assertSame(array('foo' => 'bar'), $menu->getAttrs());
+		$this->assertSame(['foo' => 'bar'], $menu->getAttrs());
 		$this->assertSame($submenus, $menu->getSubmenus());
 	}
 
@@ -96,10 +96,10 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	public function testGetterSetterAttrs() {
 		$menu = new Menu('Test!');
 
-		$return = $menu->setAttrs(array('foo' => 'bar'));
+		$return = $menu->setAttrs(['foo' => 'bar']);
 
 		$this->assertSame($return, $menu);
-		$this->assertSame(array('foo' => 'bar'), $menu->getAttrs());
+		$this->assertSame(['foo' => 'bar'], $menu->getAttrs());
 	}
 
 	/**
@@ -107,10 +107,10 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGetterSetterSubmenus() {
 		$menu     = new Menu('Test!');
-		$submenus = array(
+		$submenus = [
 			new Menu('Sub1'),
 			new Menu('Sub2'),
-		);
+		];
 
 		$return = $menu->setSubmenus($submenus);
 
@@ -167,7 +167,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 * Test the list rendering for an onclick link.
 	 */
 	public function testFormatAsListWithAttrs() {
-		$menu = new Menu('Test!', '#', '', array('foo' => 'bar'));
+		$menu = new Menu('Test!', '#', '', ['foo' => 'bar']);
 
 		$this->assertSame('<li class=""><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
 	}
@@ -176,7 +176,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 * Test the list rendering for an onclick link.
 	 */
 	public function testFormatAsListWithAttrsAndId() {
-		$menu = new Menu('Test!', '#', 'link-class', array('foo' => 'bar'));
+		$menu = new Menu('Test!', '#', 'link-class', ['foo' => 'bar']);
 
 		$this->assertSame('<li class="link-class"><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
 	}

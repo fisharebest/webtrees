@@ -51,14 +51,14 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
 		$days     = $this->getBlockSetting($block_id, 'days', '1');
 		$block    = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('days', 'sendmail', 'block') as $name) {
+		foreach (['days', 'sendmail', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -108,11 +108,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
 			$content = '';
 			if (Auth::isModerator($WT_TREE)) {
-				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
+				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
 			}
 			if ($sendmail === '1') {
-				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
-				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
+				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';
+				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . '<br><br>';
 			}
 			$content .= '<ul>';
 			$changes = Database::prepare(
@@ -121,7 +121,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				" WHERE status='pending'" .
 				" AND   gedcom_id=?" .
 				" GROUP BY xref"
-			)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+			)->execute([$WT_TREE->getTreeId()])->fetchAll();
 			foreach ($changes as $change) {
 				$record = GedcomRecord::getInstance($change->xref, $WT_TREE);
 				if ($record->canShow()) {
@@ -131,7 +131,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			$content .= '</ul>';
 
 			if ($template) {
-				if ($block) {
+				if ($block === '1') {
 					$class .= ' small_inner_block';
 				}
 

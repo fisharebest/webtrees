@@ -66,7 +66,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url" .
 				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
-			->execute(array($user_id, $WT_TREE->getTreeId()))
+			->execute([$user_id, $WT_TREE->getTreeId()])
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
@@ -84,7 +84,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
 			$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 			if (Auth::check() && $record->canShowName()) {
-				self::addFavorite(array(
+				self::addFavorite([
 					'user_id'   => Auth::id(),
 					'gedcom_id' => $record->getTree()->getTreeId(),
 					'gid'       => $record->getXref(),
@@ -92,7 +92,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 					'url'       => null,
 					'note'      => null,
 					'title'     => null,
-				));
+				]);
 				FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 			}
 			break;

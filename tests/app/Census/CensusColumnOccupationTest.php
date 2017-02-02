@@ -35,7 +35,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoOccupation() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getFacts')->withArgs(array('OCCU'))->andReturn(array());
+		$individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
@@ -53,7 +53,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getValue')->andReturn('Farmer');
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getFacts')->withArgs(array('OCCU'))->andReturn(array($fact));
+		$individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([$fact]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 

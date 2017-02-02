@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodeRela {
 	/** @var string[] List of possible values for the RELA tag */
-	private static $TYPES = array(
+	private static $TYPES = [
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
 		'circumciser', 'civil_registrar', 'employee', 'employer', 'foster_child',
 		'foster_father', 'foster_mother', 'friend', 'godfather', 'godmother',
@@ -32,7 +32,7 @@ class GedcomCodeRela {
 		'informant', 'lodger', 'nanny', 'nurse', 'owner',
 		'priest', 'rabbi', 'registry_officer', 'seller', 'servant',
 		'slave', 'ward', 'witness',
-	);
+	];
 
 	/**
 	 * Translate a code, for an (optional) record.
@@ -266,7 +266,7 @@ class GedcomCodeRela {
 			// Do we need separate male/female translations for this?
 			return I18N::translate('Witness');
 		default:
-			return $type;
+			return I18N::translate($type);
 		}
 	}
 
@@ -278,7 +278,7 @@ class GedcomCodeRela {
 	 * @return string[]
 	 */
 	public static function getValues(GedcomRecord $record = null) {
-		$values = array();
+		$values = [];
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
 		}

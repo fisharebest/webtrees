@@ -65,7 +65,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	 * @return string[]
 	 */
 	public function getRecordTypesToUpdate() {
-		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
+		return ['INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE'];
 	}
 
 	/**
@@ -113,7 +113,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			$this->regex = '\b' . preg_quote($this->search, '/') . '\b';
 			break;
 		case 'wildcards':
-			$this->regex = '\b' . str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')) . '\b';
+			$this->regex = '\b' . str_replace(['\*', '\?'], ['.*', '.'], preg_quote($this->search, '/')) . '\b';
 			break;
 		case 'regex':
 			$this->regex = $this->search;
@@ -135,12 +135,12 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	 * @return string
 	 */
 	public function getOptionsForm() {
-		$descriptions = array(
+		$descriptions = [
 			'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
 			'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
 			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
-		);
+		];
 
 		return
 			'<div class="form-group">' .
@@ -169,7 +169,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'<div class="form-group">' .
 			'<label class="control-label col-sm-3">' . I18N::translate('Case insensitive') . '</label>' .
 			'<div class="col-sm-9">' .
-			FunctionsEdit::radioButtons('case', array('I' => I18N::translate('no'), 'i' => I18N::translate('yes')), ($this->case ? 'i' : 'I'), 'class="radio-inline" onchange="this.form.submit();"') .
+			FunctionsEdit::radioButtons('case', ['I' => I18N::translate('no'), 'i' => I18N::translate('yes')], ($this->case ? 'i' : 'I'), 'class="radio-inline" onchange="this.form.submit();"') .
 			'<p class="small text-muted">' . /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') . '</p>' .
 			'</div></div>' .
 			parent::getOptionsForm();

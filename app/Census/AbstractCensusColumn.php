@@ -145,7 +145,7 @@ class AbstractCensusColumn {
 	 */
 	public function spouseFamily(Individual $individual) {
 		// Exclude families that were created after this census date
-		$families = array();
+		$families = [];
 		foreach ($individual->getSpouseFamilies() as $family) {
 			if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
 				$families[] = $family;

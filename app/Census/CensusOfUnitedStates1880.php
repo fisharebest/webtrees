@@ -34,7 +34,7 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name'),
 			new CensusColumnAge($this, 'Age', 'Age'),
 			new CensusColumnSexMF($this, 'Sex', 'Sex'),
@@ -58,6 +58,6 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth, naming the state, territory, or country'),
 			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father, naming the state, territory, or country'),
 			new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother, naming the state, territory, or country'),
-		);
+		];
 	}
 }

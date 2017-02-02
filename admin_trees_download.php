@@ -42,11 +42,11 @@ $conv_path        = Filter::get('conv_path');
 $privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
 if ($action === 'download') {
-	$exportOptions = array(
+	$exportOptions = [
 		'privatize' => $privatize_export,
 		'toANSI'    => $convert,
 		'path'      => $conv_path,
-	);
+	];
 
 	// What to call the downloaded file
 	$download_filename = $WT_TREE->getName();
@@ -59,22 +59,22 @@ if ($action === 'download') {
 		$zip_file = $download_filename . '.zip';
 
 		if (!File::mkdir($temp_dir)) {
-			echo "Error : Could not create temporary path!";
+			echo 'Error : Could not create temporary path!';
 
 			return;
 		}
 
 		// Create the unzipped GEDCOM on disk, so we can ZIP it.
-		$stream = fopen($temp_dir . $download_filename, "w");
+		$stream = fopen($temp_dir . $download_filename, 'w');
 		FunctionsExport::exportGedcom($WT_TREE, $stream, $exportOptions);
 		fclose($stream);
 
 		// Create a ZIP file containing the GEDCOM file.
-		$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("r") . ".";
+		$comment = 'Created by ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . date('r') . '.';
 		$archive = new PclZip($temp_dir . $zip_file);
 		$v_list  = $archive->add($temp_dir . $download_filename, \PCLZIP_OPT_COMMENT, $comment, \PCLZIP_OPT_REMOVE_PATH, $temp_dir);
 		if ($v_list == 0) {
-			echo "Error : " . $archive->errorInfo(true);
+			echo 'Error : ' . $archive->errorInfo(true);
 		} else {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="' . $zip_file . '"');

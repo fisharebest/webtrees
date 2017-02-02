@@ -35,13 +35,13 @@ $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
 
 // Valid values for form variables
-$ALL_EDIT_OPTIONS = array(
+$ALL_EDIT_OPTIONS = [
 	'none'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Visitor'),
 	'access' => /* I18N: Listbox entry; name of a role */ I18N::translate('Member'),
 	'edit'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Editor'),
 	'accept' => /* I18N: Listbox entry; name of a role */ I18N::translate('Moderator'),
 	'admin'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Manager'),
-);
+];
 
 // Form actions
 switch (Filter::post('action')) {
@@ -146,7 +146,7 @@ case 'load_json':
 	$order  = Filter::postArray('order');
 
 	$sql_select =
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value" .
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, NULL, us3.setting_value, NULL, us4.setting_value, us5.setting_value" .
 		" FROM `##user` u" .
 		" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
 		" LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')" .
@@ -155,7 +155,7 @@ case 'load_json':
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
 		" WHERE u.user_id > 0";
 
-	$args = array();
+	$args = [];
 
 	if ($search) {
 		$sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
@@ -195,7 +195,7 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
-	$installed_languages = array();
+	$installed_languages = [];
 	foreach (I18N::installedLocales() as $installed_locale) {
 		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
@@ -228,13 +228,13 @@ case 'load_json':
 			$datum[5] = $installed_languages[$datum[5]];
 		}
 		// $datum[6] is the sortable registration timestamp
-		$datum[7] = $datum[7] ? FunctionsDate::formatTimestamp($datum[7]) : '';
-		if (date("U") - $datum[6] > 604800 && !$datum[10]) {
+		$datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
+		if (date('U') - $datum[6] > 604800 && !$datum[10]) {
 			$datum[7] = '<span class="red">' . $datum[7] . '</span>';
 		}
 		// $datum[8] is the sortable last-login timestamp
 		if ($datum[8]) {
-			$datum[9] = FunctionsDate::formatTimestamp($datum[8]) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
+			$datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
 		} else {
 			$datum[9] = I18N::translate('Never');
 		}
@@ -248,12 +248,12 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 
 	return;
 
@@ -819,9 +819,9 @@ default:
 					/* email             */ null,
 					/* language          */ null,
 					/* registered (sort) */ { visible: false },
-					/* registered        */ { dataSort: 7 },
+					/* registered        */ { dataSort: 6 },
 					/* last_login (sort) */ { visible: false },
-					/* last_login        */ { dataSort: 9 },
+					/* last_login        */ { dataSort: 8 },
 					/* verified          */ null,
 					/* approved          */ null
 				]

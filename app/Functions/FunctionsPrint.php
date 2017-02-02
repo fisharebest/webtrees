@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Controller\SearchController;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -162,7 +163,7 @@ class FunctionsPrint {
 					if ($note->canShow()) {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-						$data .= self::printNoteRecord(($nt > 0) ? $n1match[1] : "", 1, $noterec, $textOnly);
+						$data .= self::printNoteRecord(($nt > 0) ? $n1match[1] : '', 1, $noterec, $textOnly);
 						if (!$textOnly) {
 							if (strpos($noterec, '1 SOUR') !== false) {
 								$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
@@ -175,9 +176,9 @@ class FunctionsPrint {
 			}
 			if (!$textOnly) {
 				if (strpos($factrec, "$nlevel SOUR") !== false) {
-					$data .= "<div class=\"indent\">";
+					$data .= '<div class="indent">';
 					$data .= FunctionsPrintFacts::printFactSources($nrec, $nlevel);
-					$data .= "</div>";
+					$data .= '</div>';
 				}
 			}
 		}
@@ -226,8 +227,8 @@ class FunctionsPrint {
 			// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
 			// However, we only highlight the original search string, not the search terms.
 			// The controller needs to provide its "query_terms" array.
-			$regex = array();
-			foreach (array($controller->query) as $search_term) {
+			$regex = [];
+			foreach ([$controller->query] as $search_term) {
 				$regex[] = preg_quote($search_term, '/');
 			}
 			// Match these strings, provided they do not occur inside HTML tags
@@ -322,6 +323,7 @@ class FunctionsPrint {
 		}
 
 		// Calculated age
+		$fact = $event->getTag();
 		if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
 			$date = new Date($match[1]);
 			$html .= ' ' . $date->display($anchor);
@@ -329,7 +331,6 @@ class FunctionsPrint {
 			if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
 				$html .= ' – <span class="date">' . $match[1] . '</span>';
 			}
-			$fact = $event->getTag();
 			if ($record instanceof Individual) {
 				if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 					// age of parents at child birth
@@ -358,7 +359,7 @@ class FunctionsPrint {
 								$husb_age != '' && $record->getSex() == 'M' && $husb_age != $age ||
 								$wife_age != '' && $record->getSex() == 'F' && $wife_age != $age
 							) {
-								if ($age != "0d") {
+								if ($age != '0d') {
 									$ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
 								}
 							}
@@ -368,7 +369,7 @@ class FunctionsPrint {
 						// After death, print time since death
 						$age = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($death_date, $date));
 						if ($age != '') {
-							if (Date::getAgeGedcom($death_date, $date) == "0d") {
+							if (Date::getAgeGedcom($death_date, $date) == '0d') {
 								$ageText = '(' . I18N::translate('on the date of death') . ')';
 							} else {
 								$ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
@@ -408,18 +409,12 @@ class FunctionsPrint {
 					}
 				}
 			}
-		} else {
-			// 1 DEAT Y with no DATE => print YES
-			// 1 BIRT 2 SOUR @S1@ => print YES
-			// 1 DEAT N is not allowed
-			// It is not proper GEDCOM form to use a N(o) value with an event tag to infer that it did not happen.
-			$factdetail = explode(' ', trim($factrec));
-			if (isset($factdetail) && (count($factdetail) == 3 && strtoupper($factdetail[2]) == 'Y') || (count($factdetail) == 4 && $factdetail[2] == 'SOUR')) {
-				$html .= I18N::translate('yes');
-			}
+		} elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
+			// There is no DATE.  If there is also no PLAC, then print "yes"
+			$html .= I18N::translate('yes');
 		}
 		// print gedcom ages
-		foreach (array(GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age) as $label => $age) {
+		foreach ([I18N::translate('Age') => $fact_age, I18N::translate('Husband') => $husb_age, I18N::translate('Wife') => $wife_age] as $label => $age) {
 			if ($age != '') {
 				$html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
 			}
@@ -456,21 +451,21 @@ class FunctionsPrint {
 						$html .= ' - ' . $wt_place->getFullName();
 					}
 				}
-				$map_lati = "";
+				$map_lati = '';
 				$cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
 				if ($cts > 0) {
 					$map_lati = $match[1];
-					$html .= '<br><span class="label">' . GedcomTag::getLabel('LATI') . ': </span>' . $map_lati;
+					$html .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
 				}
 				$map_long = '';
 				$cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
 				if ($cts > 0) {
 					$map_long = $match[1];
-					$html .= ' <span class="label">' . GedcomTag::getLabel('LONG') . ': </span>' . $map_long;
+					$html .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
 				}
 				if ($map_lati && $map_long) {
-					$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
-					$map_long = trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
+					$map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
+					$map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
 					$html .= ' <a rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . I18N::translate('Google Maps™') . '"></a>';
 					$html .= ' <a rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . I18N::translate('Bing Maps™') . '"></a>';
 					$html .= ' <a rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . I18N::translate('OpenStreetMap™') . '"></a>';
@@ -549,12 +544,12 @@ class FunctionsPrint {
 		if (is_array(Session::get('clipboard'))) {
 			$newRow = true;
 			foreach (array_reverse(Session::get('clipboard'), true) as $fact_id => $fact) {
-				if ($fact["type"] == $type || $fact["type"] == 'all') {
+				if ($fact['type'] == $type || $fact['type'] == 'all') {
 					if ($newRow) {
 						$newRow = false;
 						echo '<tr class="noprint"><td class="descriptionbox">';
 						echo I18N::translate('Add from clipboard'), '</td>';
-						echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="?" onsubmit="return false;">';
+						echo '<td class="optionbox wrap"><form name="newFromClipboard" onsubmit="return false;">';
 						echo '<select id="newClipboardFact">';
 					}
 					echo '<option value="', Filter::escapeHtml($fact_id), '">', GedcomTag::getLabel($fact['fact']);
@@ -578,37 +573,37 @@ class FunctionsPrint {
 
 		// -- Add from pick list
 		switch ($type) {
-		case "INDI":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'INDI':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "FAM":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'FAM':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "SOUR":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'SOUR':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "NOTE":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'NOTE':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
-		case "REPO":
-			$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-			$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-			$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		case 'REPO':
+			$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
 		default:
 			return;
 		}
 		$addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
 		$quickfacts          = array_intersect($quickfacts, $addfacts);
-		$translated_addfacts = array();
+		$translated_addfacts = [];
 		foreach ($addfacts as $addfact) {
 			$translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
 		}
@@ -619,7 +614,7 @@ class FunctionsPrint {
 		echo I18N::translate('Fact or event');
 		echo '</td>';
 		echo '<td class="optionbox wrap">';
-		echo '<form method="get" name="newfactform" action="?" onsubmit="return false;">';
+		echo '<form name="newfactform" onsubmit="return false;">';
 		echo '<select id="newfact" name="newfact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
@@ -736,7 +731,7 @@ class FunctionsPrint {
 		foreach ($choices as $choice) {
 			echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
 			echo '\'', $choice, '\';';
-			echo " return false;\">", $choice, '</span> ';
+			echo ' return false;">', $choice, '</span> ';
 		}
 		echo '</small>';
 	}

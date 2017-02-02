@@ -315,7 +315,7 @@ class Fact {
 	 */
 	public function getCitations() {
 		preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
-		$citations = array();
+		$citations = [];
 		foreach ($matches as $match) {
 			$source = Source::getInstance($match[2], $this->getParent()->getTree());
 			if ($source->canShow()) {
@@ -332,7 +332,7 @@ class Fact {
 	 * @return string[]|Note[]
 	 */
 	public function getNotes() {
-		$notes = array();
+		$notes = [];
 		preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
 			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
@@ -357,7 +357,7 @@ class Fact {
 	 * @return Media[]
 	 */
 	public function getMedia() {
-		$media = array();
+		$media = [];
 		preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
 			$obje = Media::getInstance($match, $this->getParent()->getTree());
@@ -375,7 +375,7 @@ class Fact {
 	 * @return string
 	 */
 	public function summary() {
-		$attributes = array();
+		$attributes = [];
 		$target     = $this->getTarget();
 		if ($target) {
 			$attributes[] = $target->getFullName();
@@ -457,7 +457,7 @@ class Fact {
 
 		if (empty($factsort)) {
 			$factsort = array_flip(
-				array(
+				[
 					'BIRT',
 					'_HNM',
 					'ALIA', '_AKA', '_AKAN',
@@ -514,7 +514,7 @@ class Fact {
 					'AFN', 'REFN', '_PRMN', 'REF', 'RIN', '_UID',
 					'OBJE', 'NOTE', 'SOUR',
 					'CHAN', '_TODO',
-				)
+				]
 			);
 		}
 
@@ -533,7 +533,7 @@ class Fact {
 			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
 				$atag = $match[1];
 			} else {
-				$atag = "_????_";
+				$atag = '_????_';
 			}
 		}
 
@@ -541,7 +541,7 @@ class Fact {
 			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
 				$btag = $match[1];
 			} else {
-				$btag = "_????_";
+				$btag = '_????_';
 			}
 		}
 

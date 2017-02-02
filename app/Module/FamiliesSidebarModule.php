@@ -99,23 +99,23 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 			var famloadedNames = new Array();
 
 			function fsearchQ() {
-				var query = jQuery("#sb_fam_name").val();
+				var query = $("#sb_fam_name").val();
 				if (query.length>1) {
-					jQuery("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
+					$("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
 				}
 			}
 
 			var famtimerid = null;
-			jQuery("#sb_fam_name").keyup(function(e) {
+			$("#sb_fam_name").keyup(function(e) {
 				if (famtimerid) window.clearTimeout(famtimerid);
 				famtimerid = window.setTimeout("fsearchQ()", 500);
 			});
-			jQuery("#sb_content_families").on("click", ".sb_fam_letter", function() {
-				jQuery("#sb_fam_content").load(this.href);
+			$("#sb_content_families").on("click", ".sb_fam_letter", function() {
+				$("#sb_fam_content").load(this.href);
 				return false;
 			});
-			jQuery("#sb_content_families").on("click", ".sb_fam_surname", function() {
-				var element = jQuery(this);
+			$("#sb_content_families").on("click", ".sb_fam_surname", function() {
+				var element = $(this);
 				var surname = element.data("surname");
 				var alpha   = element.data("alpha");
 
@@ -124,7 +124,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
-					    jQuery("div.name_tree_div", element.closest("li"))
+					    $("div.name_tree_div", element.closest("li"))
 					    .html(html)
 					    .show("fast")
 					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
@@ -133,12 +133,12 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 					});
 				} else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
-					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					$("div.name_tree_div", $(this).closest("li"))
 					.show()
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 				} else {
 					famloadedNames[surname]=1;
-					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					$("div.name_tree_div", $(this).closest("li"))
 					.hide("fast")
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
@@ -163,7 +163,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				break;
 			}
 			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
-			$out .= $html . " ";
+			$out .= $html . ' ';
 		}
 
 		$out .= '</p>';
@@ -242,19 +242,19 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 			" AND i_id = n_id AND i_file = n_file AND i_file = :tree_id" .
 			" ORDER BY n_sort COLLATE :collation" .
 			" LIMIT 50"
-		)->execute(array(
+		)->execute([
 			'query_1'   => $query,
 			'query_2'   => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$ids = array();
+		$ids = [];
 		foreach ($rows as $row) {
 			$ids[] = $row->xref;
 		}
 
-		$vars = array();
+		$vars = [];
 		if (empty($ids)) {
 			//-- no match : search for FAM id
 			$where  = "f_id LIKE CONCAT('%', ?, '%')";

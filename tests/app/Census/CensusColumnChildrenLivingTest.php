@@ -71,11 +71,11 @@ class CensusColumnChildrenLivingTest extends \PHPUnit_Framework_TestCase {
 		$child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
 
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getChildren')->andReturn(array($child1, $child2, $child3, $child4));
+		$family->shouldReceive('getChildren')->andReturn([$child1, $child2, $child3, $child4]);
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 MAR 1911');

@@ -260,7 +260,7 @@ document.onmouseup = function () {
 				$pid = $indi->getXref();
 				$col = $p % 6;
 				if ($i === $half) {
-					echo "</tr><tr>";
+					echo '</tr><tr>';
 				}
 				$i++;
 				?>
@@ -310,8 +310,8 @@ document.onmouseup = function () {
 				$scalemod = round($controller->scale * .2) + 1;
 				?>
 				<td class="list_value" style="padding: 5px;">
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
+					<a href="<?php echo WT_SCRIPT_NAME . '?' . $controller->pidlinks . 'scale=' . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
+					<a href="<?php echo WT_SCRIPT_NAME . '?' . $controller->pidlinks . 'scale=' . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
 					<input type="button" value="<?php echo I18N::translate('reset'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>';">
 				</td>
 			<?php } ?>
@@ -324,7 +324,7 @@ if (count($controller->people) > 0) {
 	?>
 	<div id="timeline_chart">
 		<!-- print the timeline line image -->
-		<div id="line" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 22) : "right: " . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
+		<div id="line" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 22) : 'right: ' . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
 		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo $baseyoffset + ($controller->topyear - $controller->baseyear) * $controller->scale; ?>">
 		</div>
 		<!-- print divs for the grid -->

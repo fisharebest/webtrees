@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
+use Fisharebest\Webtrees\Census\CensusOfDeutschland;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
 use Fisharebest\Webtrees\Census\CensusOfScotland;
@@ -49,7 +50,7 @@ use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class FunctionsEdit - common functions
+ * Class FunctionsEdit - common functions for editing
  */
 class FunctionsEdit {
 	/**
@@ -130,7 +131,7 @@ class FunctionsEdit {
 	 */
 	public static function editFieldYesNo($name, $selected = false, $extra = '') {
 		return self::radioButtons(
-			$name, array(I18N::translate('no'), I18N::translate('yes')), $selected, $extra
+			$name, [I18N::translate('no'), I18N::translate('yes')], $selected, $extra
 		);
 	}
 
@@ -168,6 +169,24 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * A list of integers (e.g. for an edit control).
+	 *
+	 * @return string[]
+	 */
+	public static function numericOptions($integers) {
+		$array = [];
+		foreach ($integers as $integer) {
+			if ($integer === -1) {
+				$array[$integer] = I18N::translate('All');
+			} else {
+				$array[$integer] = I18N::number($integer);
+			}
+		}
+
+		return $array;
+	}
+
+	/**
 	 * Function edit_language_checkboxes
 	 *
 	 * @param string $parameter_name
@@ -200,12 +219,12 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldAccessLevel($name, $selected = '', $extra = '') {
-		$ACCESS_LEVEL = array(
+		$ACCESS_LEVEL = [
 			Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
 			Auth::PRIV_USER    => I18N::translate('Show to members'),
 			Auth::PRIV_NONE    => I18N::translate('Show to managers'),
 			Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
-		);
+		];
 
 		return self::selectEditControl($name, $ACCESS_LEVEL, null, $selected, $extra);
 	}
@@ -220,13 +239,13 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldRestriction($name, $selected = '', $extra = '') {
-		$RESN = array(
+		$RESN = [
 			''             => '',
 			'none'         => I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
 			'privacy'      => I18N::translate('Show to members'),
 			'confidential' => I18N::translate('Show to managers'),
 			'locked'       => I18N::translate('Only managers can edit'),
-		);
+		];
 
 		return self::selectEditControl($name, $RESN, null, $selected, $extra);
 	}
@@ -242,13 +261,13 @@ class FunctionsEdit {
 	 */
 	public static function editFieldContact($name, $selected = '', $extra = '') {
 		// Different ways to contact the users
-		$CONTACT_METHODS = array(
+		$CONTACT_METHODS = [
 			'messaging'  => I18N::translate('Internal messaging'),
 			'messaging2' => I18N::translate('Internal messaging with emails'),
 			'messaging3' => I18N::translate('webtrees sends emails with no storage'),
 			'mailto'     => I18N::translate('Mailto link'),
 			'none'       => I18N::translate('No contact'),
-		);
+		];
 
 		return self::selectEditControl($name, $CONTACT_METHODS, null, $selected, $extra);
 	}
@@ -263,7 +282,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldLanguage($name, $selected = '', $extra = '') {
-		$languages = array();
+		$languages = [];
 		foreach (I18N::activeLocales() as $locale) {
 			$languages[$locale->languageTag()] = $locale->endonym();
 		}
@@ -283,7 +302,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldInteger($name, $selected = '', $min, $max, $extra = '') {
-		$array = array();
+		$array = [];
 		for ($i = $min; $i <= $max; ++$i) {
 			$array[$i] = I18N::number($i);
 		}
@@ -301,7 +320,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldUsername($name, $selected = '', $extra = '') {
-		$users = array();
+		$users = [];
 		foreach (User::all() as $user) {
 			$users[$user->getUserName()] = $user->getRealName() . ' - ' . $user->getUserName();
 		}
@@ -368,7 +387,7 @@ class FunctionsEdit {
 		$rela_codes = GedcomCodeRela::getValues();
 		// The user is allowed to specify values that aren't in the list.
 		if (!array_key_exists($selected, $rela_codes)) {
-			$rela_codes[$selected] = $selected;
+			$rela_codes[$selected] = I18N::translate($selected);
 		}
 
 		return self::selectEditControl($name, $rela_codes, '', $selected, $extra);
@@ -485,7 +504,7 @@ class FunctionsEdit {
 		// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
 		static $source_element_id;
 
-		$subnamefacts = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN');
+		$subnamefacts = ['NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN'];
 		preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 		list(, $level, $fact, $value) = $match;
 		$level                        = (int) $level;
@@ -764,13 +783,13 @@ class FunctionsEdit {
 				echo '>';
 			}
 
-			$tmp_array = array('TYPE', 'TIME', 'NOTE', 'SOUR', 'REPO', 'OBJE', 'ASSO', '_ASSO', 'AGE');
+			$tmp_array = ['TYPE', 'TIME', 'NOTE', 'SOUR', 'REPO', 'OBJE', 'ASSO', '_ASSO', 'AGE'];
 
 			// split PLAC
 			if ($fact === 'PLAC') {
 				echo '<div id="', $element_id, '_pop" style="display: inline;">';
 				echo FunctionsPrint::printSpecialCharacterLink($element_id), ' ', FunctionsPrint::printFindPlaceLink($element_id);
-				echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', GedcomTag::getLabel('LATI'), ' / ', GedcomTag::getLabel('LONG'), '"></span>';
+				echo '<span  onclick="$(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', I18N::translate('Latitude'), ' / ', I18N::translate('Longitude'), '"></span>';
 				echo '</div>';
 				if (Module::getModuleByName('places_assistant')) {
 					\PlacesAssistantModule::setup_place_subfields($element_id);
@@ -786,7 +805,7 @@ class FunctionsEdit {
 			echo 'document.getElementById(\'', $element_id, '\').style.display=\'none\'';
 			echo '</script>';
 			echo '<select id="', $element_id, '_sel" onchange="document.getElementById(\'', $element_id, '\').value=this.value;" >';
-			foreach (array('Unknown', 'Civil', 'Religious', 'Partners') as $key) {
+			foreach (['Unknown', 'Civil', 'Religious', 'Partners'] as $key) {
 				if ($key === 'Unknown') {
 					echo '<option value="" ';
 				} else {
@@ -969,24 +988,27 @@ class FunctionsEdit {
 		// Show more likely census details at the top of the list.
 		switch (WT_LOCALE) {
 		case 'cs':
-			$census_places = array(new CensusOfCzechRepublic);
+			$census_places = [new CensusOfCzechRepublic];
 			break;
 		case 'en-AU':
 		case 'en-GB':
-			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
+			$census_places = [new CensusOfEngland, new CensusOfWales, new CensusOfScotland];
 			break;
 		case 'en-US':
-			$census_places = array(new CensusOfUnitedStates);
+			$census_places = [new CensusOfUnitedStates];
 			break;
 		case 'fr':
 		case 'fr-CA':
-			$census_places = array(new CensusOfFrance);
+			$census_places = [new CensusOfFrance];
 			break;
 		case 'da':
-			$census_places = array(new CensusOfDenmark);
+			$census_places = [new CensusOfDenmark];
+			break;
+		case 'de':
+			$census_places = [new CensusOfDeutschland];
 			break;
 		default:
-			$census_places = array();
+			$census_places = [];
 			break;
 		}
 		foreach (Census::allCensusPlaces() as $census_place) {
@@ -1186,7 +1208,7 @@ class FunctionsEdit {
 
 		$gedrec = "\n1 NAME " . Filter::post('NAME');
 
-		$tags = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
+		$tags = ['NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX'];
 
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 			$tags = array_merge($tags, $match[1]);
@@ -1306,15 +1328,15 @@ class FunctionsEdit {
 		global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 		global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-		$glevelsSOUR = array();
-		$tagSOUR     = array();
-		$islinkSOUR  = array();
-		$textSOUR    = array();
+		$glevelsSOUR = [];
+		$tagSOUR     = [];
+		$islinkSOUR  = [];
+		$textSOUR    = [];
 
-		$glevelsRest = array();
-		$tagRest     = array();
-		$islinkRest  = array();
-		$textRest    = array();
+		$glevelsRest = [];
+		$tagRest     = [];
+		$islinkRest  = [];
+		$textRest    = [];
 
 		$inSOUR = false;
 
@@ -1531,7 +1553,7 @@ class FunctionsEdit {
 	public static function createAddForm($fact) {
 		global $tags, $WT_TREE;
 
-		$tags = array();
+		$tags = [];
 
 		// handle  MARRiage TYPE
 		if (substr($fact, 0, 5) === 'MARR_') {
@@ -1544,7 +1566,7 @@ class FunctionsEdit {
 				$fact .= ' ' . GedcomTag::createUid();
 			}
 			// These new level 1 tags need to be turned into links
-			if (in_array($fact, array('ALIA', 'ASSO'))) {
+			if (in_array($fact, ['ALIA', 'ASSO'])) {
 				$fact .= ' @';
 			}
 			if (in_array($fact, Config::emptyFacts())) {
@@ -1577,7 +1599,7 @@ class FunctionsEdit {
 
 		$record = $fact->getParent();
 
-		$tags     = array();
+		$tags     = [];
 		$gedlines = explode("\n", $fact->getGedcom());
 
 		$linenum = 0;
@@ -1598,27 +1620,27 @@ class FunctionsEdit {
 		// NB add_missing_subtags() already takes care of the simple cases
 		// where a level 1 tag is missing a level 2 tag. Here we only need to
 		// handle the more complicated cases.
-		$expected_subtags = array(
-			'SOUR' => array('PAGE', 'DATA'),
-			'DATA' => array('TEXT'),
-			'PLAC' => array('MAP'),
-			'MAP'  => array('LATI', 'LONG'),
-		);
+		$expected_subtags = [
+			'SOUR' => ['PAGE', 'DATA'],
+			'DATA' => ['TEXT'],
+			'PLAC' => ['MAP'],
+			'MAP'  => ['LATI', 'LONG'],
+		];
 		if ($record->getTree()->getPreference('FULL_SOURCES')) {
 			$expected_subtags['SOUR'][] = 'QUAY';
 			$expected_subtags['DATA'][] = 'DATE';
 		}
 		if (GedcomCodeTemp::isTagLDS($level1type)) {
-			$expected_subtags['STAT'] = array('DATE');
+			$expected_subtags['STAT'] = ['DATE'];
 		}
 		if (in_array($level1type, Config::dateAndTime())) {
-			$expected_subtags['DATE'] = array('TIME'); // TIME is NOT a valid 5.5.1 tag
+			$expected_subtags['DATE'] = ['TIME']; // TIME is NOT a valid 5.5.1 tag
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->getTree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 		}
 
-		$stack = array();
+		$stack = [];
 		// Loop on existing tags :
 		while (true) {
 			// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
@@ -1634,7 +1656,7 @@ class FunctionsEdit {
 				$text .= $fields[$j];
 			}
 			$text = rtrim($text);
-			while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
+			while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
 				$text .= "\n" . $cmatch[1];
 				$i++;
 			}
@@ -1665,7 +1687,7 @@ class FunctionsEdit {
 			}
 
 			// Get a list of tags present at the next level
-			$subtags = array();
+			$subtags = [];
 			for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^(\d+) (\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
 				if ($mm[1] == $level + 1) {
 					$subtags[] = $mm[2];
@@ -1790,7 +1812,7 @@ class FunctionsEdit {
 		}
 		// Do something (anything!) with unrecognized custom tags
 		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_TODO') {
-			foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag) {
+			foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
 				if (!in_array($tag, $tags)) {
 					self::addSimpleTag('2 ' . $tag);
 					if ($tag === 'PLAC') {

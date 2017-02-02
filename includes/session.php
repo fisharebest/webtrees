@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.9-dev');
+define('WT_VERSION', '1.8.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
@@ -197,7 +197,7 @@ set_exception_handler(function ($ex) {
 	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
 	foreach ($ex->getTrace() as $level => $frame) {
-		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
+		$frame += ['args' => [], 'file' => 'unknown', 'line' => 'unknown'];
 		array_walk($frame['args'], function (&$arg) {
 			switch (gettype($arg)) {
 			case 'boolean':
@@ -316,7 +316,7 @@ $rule = Database::prepare(
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"
-)->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')))->fetchOne();
+)->execute([WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')])->fetchOne();
 
 switch ($rule) {
 case 'allow':
@@ -335,7 +335,7 @@ case 'unknown':
 case '':
 	Database::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
+	)->execute([WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')]);
 	$SEARCH_SPIDER = true;
 	break;
 }
@@ -352,7 +352,7 @@ session_set_save_handler(
 	},
 	// read
 	function ($id) {
-		return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
+		return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute([$id])->fetchOne();
 	},
 	// write
 	function ($id, $data) {
@@ -365,39 +365,39 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int) Auth::id(), WT_CLIENT_IP, $data));
+		)->execute([$id, (int) Auth::id(), WT_CLIENT_IP, $data]);
 
 		return true;
 	},
 	// destroy
 	function ($id) {
-		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
+		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute([$id]);
 
 		return true;
 	},
 	// gc
 	function ($maxlifetime) {
-		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
+		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute([$maxlifetime]);
 
 		return true;
 	}
 );
 
-Session::start(array(
+Session::start([
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
 	'cookie_path'    => parse_url(WT_BASE_URL, PHP_URL_PATH),
-));
+]);
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-	Session::regenerate(false);
+	Session::regenerate(true);
 	Session::put('initiated', true);
 } else {
 	// An existing session
 }
 
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
-foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
+foreach ([Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')] as $tree_name) {
 	$WT_TREE = Tree::findByName($tree_name);
 	if ($WT_TREE) {
 		Session::put('GEDCOM', $tree_name);
@@ -457,7 +457,9 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
-	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	if (Session::get('masquerade') === null) {
+		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	}
 	Session::put('activity_time', WT_TIMESTAMP);
 }
 
@@ -493,10 +495,10 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 }
 
 // Search engines are only allowed to see certain pages.
-if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
+if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, [
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
-))) {
+])) {
 	http_response_code(403);
 	$controller = new PageController;
 	$controller->setPageTitle(I18N::translate('Search engine'));

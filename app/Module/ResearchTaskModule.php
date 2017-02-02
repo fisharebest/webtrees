@@ -53,7 +53,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $controller, $WT_TREE;
 
 		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
@@ -61,7 +61,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
 		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
-		foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
+		foreach (['show_unassigned', 'show_other', 'show_future', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -91,11 +91,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				info: true,
 				jQueryUI: true,
 				columns: [
-					/* 0-DATE */     null,
-					/* 1-Date */     { dataSort: 0 },
-					/* 2-Record */   null,
-					/* 3-Username */ null,
-					/* 4-Text */     null
+					null,
+					null,
+					null,
+					null
 				]
 			});
 			jQuery("#' . $table_id . '").css("visibility", "visible");
@@ -106,7 +105,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<div class="loading-image">&nbsp;</div>';
 		$content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
-		$content .= '<th hidden>DATE</th>';
 		$content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
 		$content .= '<th>' . I18N::translate('Record') . '</th>';
 		$content .= '<th>' . I18N::translate('Username') . '</th>';
@@ -119,12 +117,12 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$xrefs = Database::prepare(
 			"SELECT DISTINCT d_gid FROM `##dates`" .
 			" WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $WT_TREE->getTreeId(),
 			'jd'      => $end_jd,
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 
-		$facts = array();
+		$facts = [];
 		foreach ($xrefs as $xref) {
 			$record = GedcomRecord::getInstance($xref, $WT_TREE);
 			if ($record->canShow()) {
@@ -139,11 +137,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 				$content .= '<tr>';
-				$content .= '<td hidden>' . $fact->getDate()->julianDay() . '</td>';
-				$content .= '<td class="wrap">' . $fact->getDate()->display() . '</td>';
-				$content .= '<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-				$content .= '<td class="wrap">' . $user_name . '</td>';
-				$content .= '<td class="wrap" dir="auto">' . $fact->getValue() . '</td>';
+				$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
+				$content .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+				$content .= '<td>' . $user_name . '</td>';
+				$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
 				$content .= '</tr>';
 				$found = true;
 			}
@@ -155,7 +152,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		}
 
 		if ($template) {
-			if ($block) {
+			if ($block === '1') {
 				$class .= ' small_inner_block';
 			}
 

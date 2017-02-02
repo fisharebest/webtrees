@@ -30,7 +30,7 @@ var fam_nav_specs = 'width=350,height=550,left=25,top=75,resizable=1,scrollbars=
 var pastefield, nameElement, remElement; // Elements to paste to
 
 // "rtl" on right-to-left pages.
-var textDirection = jQuery('html').attr('dir');
+var textDirection = $('html').attr('dir');
 
 // Get a help message.
 function helpDialog(topic, module) {
@@ -41,7 +41,7 @@ function helpDialog(topic, module) {
 
 // Create a modal dialog to display notes & help
 function modalNotes(content, title) {
-	jQuery('<div title="' + title + '"></div>')
+	$('<div title="' + title + '"></div>')
 		.html(content)
 		.dialog({
 			modal: true,
@@ -49,8 +49,8 @@ function modalNotes(content, title) {
 			open:  function () {
 				// Close the window when we click outside it.
 				var self = this;
-				jQuery('.ui-widget-overlay').on('click', function () {
-					jQuery(self).dialog('close');
+				$('.ui-widget-overlay').on('click', function () {
+					$(self).dialog('close');
 				});
 			}
 		});
@@ -70,9 +70,9 @@ function closePopupAndReloadParent(url) {
 }
 
 function expand_layer(sid) {
-	jQuery("#" + sid + "_img").toggleClass("icon-plus icon-minus");
-	jQuery('#' + sid).slideToggle("fast");
-	jQuery('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
+	$("#" + sid + "_img").toggleClass("icon-plus icon-minus");
+	$('#' + sid).slideToggle("fast");
+	$('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
 	return false;
 }
 
@@ -116,7 +116,7 @@ function edit_note(xref) {
 }
 
 function add_record(xref, fact_field) {
-	var fact = jQuery('#' + fact_field).val();
+	var fact = $('#' + fact_field).val();
 	if (fact) {
 		if (fact === "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
@@ -322,7 +322,7 @@ function paste_fact(xref, element) {
 	jQuery.post('action.php', {
 			action:  'paste-fact',
 			xref:    xref,
-			fact_id: jQuery(element).val(), // element is the <select> containing the option
+			fact_id: $(element).val(), // element is the <select> containing the option
 			ged:     WT_GEDCOM,
 			csrf:    WT_CSRF_TOKEN
 		},
@@ -1059,14 +1059,14 @@ function activate_colorbox(config) {
 	}
 
 	// Trigger an event when we click on an (any) image
-	jQuery('body').on('click', 'a.gallery', function () {
+	$('body').on('click', 'a.gallery', function () {
 		// Remove colorbox from hidden media (e.g. on other tabs)
 		// (not needed unless we add :visible to our selectors - which may not
 		// work on all browsers?)
 		//jQuery.colorbox.remove();
 
 		// Enable colorbox for images
-		jQuery('a[type^=image].gallery').colorbox({
+		$('a[type^=image].gallery').colorbox({
 			photo:         true,
 			maxWidth:      '95%',
 			maxHeight:     '95%',
@@ -1075,17 +1075,17 @@ function activate_colorbox(config) {
 			slideshowAuto: false,
 			// Add wheelzoom to the displayed image
 			onComplete:    function () {
-				jQuery('.cboxPhoto').wheelzoom();
+				$('.cboxPhoto').wheelzoom();
 			}
 		});
 
 		// Enable colorbox for audio using <audio></audio>, where supported
-		//jQuery('html.video a[type^=video].gallery').colorbox({
+		//$('html.video a[type^=video].gallery').colorbox({
 		//  rel:         'nofollow' // Slideshows are just for images
 		//});
 
 		// Enable colorbox for video using <video></video>, where supported
-		//jQuery('html.audio a[type^=audio].gallery').colorbox({
+		//$('html.audio a[type^=audio].gallery').colorbox({
 		//  rel:         'nofollow', // Slideshows are just for images
 		//});
 
@@ -1099,26 +1099,26 @@ function autocomplete(selector) {
 		selector = "input[data-autocomplete-type]";
 	}
 
-	jQuery(selector).each(function () {
-		var type = jQuery(this).data("autocomplete-type"); // What type of field
-		var ged = jQuery(this).data("autocomplete-ged"); // Which family tree
+	$(selector).each(function () {
+		var type = $(this).data("autocomplete-type"); // What type of field
+		var ged = $(this).data("autocomplete-ged"); // Which family tree
 		if (typeof(type) === "undefined") {
 			alert("Missing data-autocomplete-type attribute");
 		}
 
 		// Default to the current tree
 		if (typeof(ged) === "undefined") {
-			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
+			$(this).data("autocomplete-ged", WT_GEDCOM);
 		}
 
-		var self = jQuery(this);
+		var self = $(this);
 		self.autocomplete({
 			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
 			source: function (request, response) {
 				// Some autocomplete fields require the current value of an earlier field
 				var extra = null;
 				if (self.data("autocomplete-extra")) {
-					extra = jQuery(self.data("autocomplete-extra")).val();
+					extra = $(self.data("autocomplete-extra")).val();
 				}
 
 				jQuery.getJSON("autocomplete.php", {
@@ -1158,12 +1158,12 @@ jQuery.widget("ui.dialog", jQuery.ui.dialog, {
 		}
 
 		// address interaction issues with dialog window
-		if (jQuery(event.target).closest(".cke_dialog").length) {
+		if ($(event.target).closest(".cke_dialog").length) {
 			return true;
 		}
 
 		// address interaction issues with iframe based drop downs in IE
-		if (jQuery(event.target).closest(".cke").length) {
+		if ($(event.target).closest(".cke").length) {
 			return true;
 		}
 	},
@@ -1179,11 +1179,11 @@ jQuery.widget("ui.dialog", jQuery.ui.dialog, {
 });
 
 /* Show / Hide event data for boxes used on charts and elsewhere */
-jQuery('body').on ('click', '.iconz', function (e) {
+$('body').on ('click', '.iconz', function (e) {
 	"use strict";
 	e.stopPropagation ();
 
-	var wrapper = jQuery(this).closest (".person_box_template"),
+	var wrapper = $(this).closest (".person_box_template"),
 		inout = wrapper.find (".inout"),
 		inout2 = wrapper.find (".inout2"),
 		namedef = wrapper.find (".namedef"),
@@ -1230,7 +1230,7 @@ jQuery('body').on ('click', '.iconz', function (e) {
 });
 
 // Activate the langauge selection menu.
-jQuery(".menu-language").on("click", "li a", function () {
+$(".menu-language").on("click", "li a", function () {
 	jQuery.post("action.php", {
 		action:   "language",
 		language: $(this).data("language"),
@@ -1241,7 +1241,7 @@ jQuery(".menu-language").on("click", "li a", function () {
 });
 
 // Activate the theme selection menu.
-jQuery(".menu-theme").on("click", "li a", function () {
+$(".menu-theme").on("click", "li a", function () {
 	jQuery.post("action.php", {
 		action: "theme",
 		theme:  $(this).data("theme"),
@@ -1250,3 +1250,11 @@ jQuery(".menu-theme").on("click", "li a", function () {
 		location.reload();
 	});
 });
+
+// Locale-aware functions for sorting user-data.
+function textCompareAsc(x, y) {
+	return x.localeCompare(y, WT_LOCALE, {'sensitivity': 'base'});
+}
+function textCompareDesc(x, y) {
+	return y.localeCompare(x, WT_LOCALE, {'sensitivity': 'base'});
+}

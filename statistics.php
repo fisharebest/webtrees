@@ -531,13 +531,8 @@ if (!$ajax) {
 								</label>
 								<br>
 								<label>
-									<input type="radio" name="x-as" value="17" onclick="statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
-									<?php echo I18N::translate('Age related to birth year') ?>
-								</label>
-								<br>
-								<label>
 									<input type="radio" name="x-as" value="18" onclick="statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
-									<?php echo I18N::translate('Age related to death year') ?>
+									<?php echo I18N::translate('Longevity versus time') ?>
 								</label>
 								<br>
 								<label>

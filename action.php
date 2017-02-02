@@ -77,13 +77,13 @@ case 'copy-fact':
 				}
 				$clipboard = Session::get('clipboard');
 				if (!is_array($clipboard)) {
-					$clipboard = array();
+					$clipboard = [];
 				}
-				$clipboard[$fact_id] = array(
+				$clipboard[$fact_id] = [
 					'type'    => $type,
 					'factrec' => $fact->getGedcom(),
 					'fact'    => $fact->getTag(),
-					);
+					];
 				// The clipboard only holds 10 facts
 				while (count($clipboard) > 10) {
 					array_shift($clipboard);
@@ -194,6 +194,7 @@ case 'masquerade':
 	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
 		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
 		Auth::login($user);
+		Session::put('masquerade', '1');
 	} else {
 		http_response_code(406);
 	}
@@ -216,7 +217,7 @@ case 'unlink-media':
 						$source->deleteFact($fact->getFactId(), true);
 					} elseif (strpos($fact->getGedcom(), ' @' . $target . '@')) {
 						// Level 2-3 links
-						$source->updateFact($fact->getFactId(), preg_replace(array('/\n2 OBJE @' . $target . '@(\n[3-9].*)*/', '/\n3 OBJE @' . $target . '@(\n[4-9].*)*/'), '', $fact->getGedcom()), true);
+						$source->updateFact($fact->getFactId(), preg_replace(['/\n2 OBJE @' . $target . '@(\n[3-9].*)*/', '/\n3 OBJE @' . $target . '@(\n[4-9].*)*/'], '', $fact->getGedcom()), true);
 					}
 				}
 			}

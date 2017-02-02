@@ -66,7 +66,7 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
 			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 }

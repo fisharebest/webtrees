@@ -63,7 +63,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 			$this->getTitle(),
 			'lifespan.php',
 			'menu-chart-lifespan',
-			array('rel' => 'nofollow')
+			['rel' => 'nofollow']
 		);
 	}
 

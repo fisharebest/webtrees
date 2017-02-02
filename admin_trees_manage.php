@@ -40,12 +40,12 @@ $multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD') ?: 500
 // Note that glob() returns false instead of an empty array when open_basedir_restriction
 // is in force and no files are found. See PHP bug #47358.
 if (defined('GLOB_BRACE')) {
-	$gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE) ?: array();
+	$gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE) ?: [];
 } else {
 	$gedcom_files = array_merge(
-		glob(WT_DATA_DIR . '*.ged', GLOB_NOSORT) ?: array(),
-		glob(WT_DATA_DIR . '*.Ged', GLOB_NOSORT) ?: array(),
-		glob(WT_DATA_DIR . '*.GED', GLOB_NOSORT) ?: array()
+		glob(WT_DATA_DIR . '*.ged', GLOB_NOSORT) ?: [],
+		glob(WT_DATA_DIR . '*.Ged', GLOB_NOSORT) ?: [],
+		glob(WT_DATA_DIR . '*.GED', GLOB_NOSORT) ?: []
 	);
 }
 // Process POST actions
@@ -131,7 +131,7 @@ case 'replace_import':
 
 case 'synchronize':
 	if (Filter::checkCsrf()) {
-		$basenames = array();
+		$basenames = [];
 
 		foreach ($gedcom_files as $gedcom_file) {
 			$filemtime   = filemtime($gedcom_file); // Only import files that have changed
@@ -231,7 +231,7 @@ case 'importform':
 							</span>
 							<?php
 							$d     = opendir(WT_DATA_DIR);
-							$files = array();
+							$files = [];
 							while (($f = readdir($d)) !== false) {
 								if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
 									$fp     = fopen(WT_DATA_DIR . $f, 'rb');
@@ -252,7 +252,7 @@ case 'importform':
 								}
 								echo'>', Filter::escapeHtml($gedcom_file), '</option>';
 							}
-							if (!$files) {
+							if (empty($files)) {
 								echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
 							}
 							echo '</select>';
@@ -359,7 +359,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing = Database::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
-		)->execute(array($tree->getTreeId()))->fetchOne();
+		)->execute([$tree->getTreeId()])->fetchOne();
 		if ($importing) {
 				?>
 				<div id="import<?php echo $tree->getTreeId(); ?>" class="col-xs-12">
@@ -497,6 +497,16 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 								<i class="fa fa-li fa-check"></i>
 								<a href="admin_trees_check.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Check for errors'); ?>
+									<span class="sr-only">
+										<?php echo $tree->getTitleHtml(); ?>
+									</span>
+								</a>
+							</li>
+							<!-- UNCONNECTED INDIVIDUALS -->
+							<li>
+								<i class="fa fa-li fa-chain-broken"></i>
+								<a href="admin_trees_unconnected.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::translate('Find unrelated individuals'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
 									</span>

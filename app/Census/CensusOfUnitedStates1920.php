@@ -34,7 +34,7 @@ class CensusOfUnitedStates1920 extends CensusOfUnitedStates implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
 			new CensusColumnNull($this, 'Home', 'Owned or rented'),
@@ -59,6 +59,6 @@ class CensusOfUnitedStates1920 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnOccupation($this, 'Occupation', 'Trade, profession, or particular kind of work done'),
 			new CensusColumnNull($this, 'Ind', 'Industry, business of establishment in which at work'),
 			new CensusColumnNull($this, 'Emp', 'Employer, salary or wage worker, or work on own account'),
-		);
+		];
 	}
 }
