@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-07 18:28+0000\n"
+"PO-Revision-Date: 2017-01-31 12:30+0000\n"
 "Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
@@ -8998,7 +8998,7 @@ msgstr "Медиа-папки"
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:650
 msgid "Media object"
-msgstr "Мадиаобъект"
+msgstr "Медиаобъект"
 
 #: admin.php:847 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
