@@ -412,7 +412,7 @@ class FunctionsPrintLists {
 
 			// Death anniversary
 			if (isset($death_dates[0]) && $death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->getXref()])) {
-				$birt_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex();
+				$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex();
 				$anniversary = Date::getAge($death_dates[0], null, 2);
 			} else {
 				$anniversary = '';
@@ -423,7 +423,7 @@ class FunctionsPrintLists {
 			if (isset($birth_dates[0]) && isset($death_dates[0])) {
 				$age_at_death      = Date::getAge($birth_dates[0], $death_dates[0], 0);
 				$age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0], 2);
-				if (!isset($unique_indis[$individual->getXref()]) && $age >= 0 && $age <= $max_age) {
+				if (!isset($unique_indis[$individual->getXref()]) && $age_at_death >= 0 && $age_at_death <= $max_age) {
 					$deat_by_age[$age_at_death] .= $individual->getSex();
 				}
 			} else {
