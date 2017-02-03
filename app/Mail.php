@@ -21,6 +21,7 @@ use Swift_MailTransport;
 use Swift_Message;
 use Swift_NullTransport;
 use Swift_Preferences;
+use Swift_SendmailTransport;
 use Swift_SmtpTransport;
 use Swift_Transport;
 
@@ -99,6 +100,8 @@ class Mail {
 		switch (Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
 			return Swift_MailTransport::newInstance();
+		case 'sendmail':
+			return Swift_SendmailTransport::newInstance();
 		case 'external':
             $transport = Swift_SmtpTransport::newInstance()
                 ->setHost(Site::getPreference('SMTP_HOST'))
