@@ -114,6 +114,7 @@ $SMTP_SSL_OPTIONS = array(
 );
 $SMTP_ACTIVE_OPTIONS = array(
 	'internal' => I18N::translate('Use PHP mail to send messages'),
+	'sendmail' => /* I18N: "sendmail" is the name of some mail software */ I18N::translate('Use sendmail to send messages'),
 	'external' => I18N::translate('Use SMTP to send messages'),
 );
 $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
