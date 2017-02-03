@@ -20,6 +20,8 @@ use Swift_Mailer;
 use Swift_MailTransport;
 use Swift_Message;
 use Swift_NullTransport;
+use Swift_Preferences;
+use Swift_SendmailTransport;
 use Swift_SmtpTransport;
 use Swift_Transport;
 
@@ -45,15 +47,21 @@ class Mail {
 	 */
 	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
-		    $mail = Swift_Message::newInstance()
-                ->setSubject($subject)
-                ->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
-                ->setTo($to_email, $to_name)
-                ->setReplyTo($replyto_email, $replyto_name)
-                ->setBody($message, 'text/html')
-                ->addPart(Filter::unescapeHtml($message), 'text/plain');
-		    
-            Swift_Mailer::newInstance(self::transport())->send($mail);
+			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
+			// is outside the open_basedir list.  Therefore we must set one explicitly.
+			File::mkdir(WT_DATA_DIR . 'tmp');
+
+			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
+
+			$mail = Swift_Message::newInstance()
+				->setSubject($subject)
+				->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
+				->setTo($to_email, $to_name)
+				->setReplyTo($replyto_email, $replyto_name)
+				->setBody($message, 'text/html')
+				->addPart(Filter::unescapeHtml($message), 'text/plain');
+
+			Swift_Mailer::newInstance(self::transport())->send($mail);
 		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
@@ -92,22 +100,24 @@ class Mail {
 		switch (Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
 			return Swift_MailTransport::newInstance();
+		case 'sendmail':
+			return Swift_SendmailTransport::newInstance();
 		case 'external':
             $transport = Swift_SmtpTransport::newInstance()
                 ->setHost(Site::getPreference('SMTP_HOST'))
                 ->setPort(Site::getPreference('SMTP_PORT'))
                 ->setLocalDomain(Site::getPreference('SMTP_HELO'));
-            
+
             if (Site::getPreference('SMTP_AUTH')) {
                 $transport
                     ->setUsername(Site::getPreference('SMTP_AUTH_USER'))
                     ->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
             }
-            
+
             if (Site::getPreference('SMTP_SSL') !== 'none') {
                 $transport->setEncryption(Site::getPreference('SMTP_SSL'));
             }
-			
+
 			return $transport;
 		default:
 			// For testing

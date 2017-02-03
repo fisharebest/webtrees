@@ -131,7 +131,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
 					if ($newrecord != $record) {
 						if ($newrecord) {
-							GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, $this->PLUGIN->chan);
+							GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
 						} else {
 							GedcomRecord::getInstance($this->xref, $WT_TREE)->deleteRecord();
 						}
@@ -146,7 +146,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
 						if ($newrecord != $record) {
 							if ($newrecord) {
-								GedcomRecord::getInstance($xref, $WT_TREE)->updateRecord($newrecord, $this->PLUGIN->chan);
+								GedcomRecord::getInstance($xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
 							} else {
 								GedcomRecord::getInstance($xref, $WT_TREE)->deleteRecord();
 							}
