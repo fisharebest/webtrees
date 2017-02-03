@@ -48,9 +48,7 @@ class Mail {
 		try {
 			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
 			// is outside the open_basedir list.  Therefore we must set one explicitly.
-			if (!is_dir(WT_DATA_DIR . 'tmp')) {
-				mkdir(WT_DATA_DIR . 'tmp');
-			}
+			File::mkdir(WT_DATA_DIR . 'tmp');
 
 			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
 
