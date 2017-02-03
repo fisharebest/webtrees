@@ -8,7 +8,21 @@
 			"Fisharebest\\Webtrees\\": "app/"
 		}
 	},
+	"config": {
+		"platform": {
+			"php" : "5.3.3"
+		}
+	},
 	"require": {
+		"ext-gd": "*",
+		"ext-iconv": "*",
+		"ext-mbstring": "*",
+		"ext-pcre": "*",
+		"ext-pdo": "*",
+		"ext-pdo_mysql": "*",
+		"ext-session": "*",
+		"ext-simplexml": "*",
+		"ext-xml": "*",
 		"ezyang/htmlpurifier": "4.*",
 		"fisharebest/algorithm": "1.*",
 		"fisharebest/ext-calendar": "2.*",
