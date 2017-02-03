@@ -14,7 +14,7 @@
             "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
             "shasum": ""
         },
-        "time": "2014-06-05 11:42:24",
+        "time": "2014-06-05T11:42:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -60,7 +60,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2015-12-11 22:50:01",
+        "time": "2015-12-11T22:50:01+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -102,75 +102,6 @@
         ]
     },
     {
-        "name": "rhumsaa/uuid",
-        "version": "2.8.2",
-        "version_normalized": "2.8.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ramsey/rhumsaa-uuid.git",
-            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/rhumsaa-uuid/zipball/9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
-            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "replace": {
-            "rhumsaa/uuid": "self.version"
-        },
-        "require-dev": {
-            "doctrine/dbal": ">=2.3",
-            "jakub-onderka/php-parallel-lint": "^0.9.0",
-            "moontoast/math": "~1.1",
-            "phpunit/phpunit": "~4.1",
-            "satooshi/php-coveralls": "~0.6",
-            "squizlabs/php_codesniffer": "^2.3",
-            "symfony/console": "~2.3"
-        },
-        "suggest": {
-            "doctrine/dbal": "Allow the use of a UUID as doctrine field type.",
-            "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
-            "symfony/console": "Support for use of the bin/uuid command line tool."
-        },
-        "time": "2015-07-23 19:00:41",
-        "bin": [
-            "bin/uuid"
-        ],
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Rhumsaa\\Uuid\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Marijn Huizendveld",
-                "email": "marijn.huizendveld@gmail.com"
-            },
-            {
-                "name": "Ben Ramsey",
-                "homepage": "http://benramsey.com"
-            }
-        ],
-        "description": "NO LONGER MAINTAINED. Use ramsey/uuid instead. A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
-        "homepage": "https://github.com/ramsey/rhumsaa-uuid",
-        "keywords": [
-            "guid",
-            "identifier",
-            "uuid"
-        ],
-        "abandoned": "ramsey/uuid"
-    },
-    {
         "name": "tecnickcom/tcpdf",
         "version": "6.2.12",
         "version_normalized": "6.2.12.0",
@@ -188,7 +119,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-09-12 10:08:34",
+        "time": "2015-09-12T10:08:34+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -257,7 +188,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2016-06-02 13:56:47",
+        "time": "2016-06-02T13:56:47+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -309,7 +240,7 @@
         "require": {
             "php": ">=5.2"
         },
-        "time": "2016-07-16 12:58:58",
+        "time": "2016-07-16T12:58:58+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -355,7 +286,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-29 18:58:20",
+        "time": "2016-10-29T18:58:20+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -412,7 +343,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2016-12-05 20:20:29",
+        "time": "2016-12-05T20:20:29+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -462,7 +393,7 @@
             "mockery/mockery": "~0.9.1",
             "symfony/phpunit-bridge": "~3.2"
         },
-        "time": "2016-12-29 10:02:40",
+        "time": "2016-12-29T10:02:40+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -494,6 +425,125 @@
             "email",
             "mail",
             "mailer"
+        ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "v2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2016-11-07T23:38:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "ramsey/uuid",
+        "version": "2.9.0",
+        "version_normalized": "2.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ramsey/uuid.git",
+            "reference": "b2ef4dd9584268d73f92f752a62bc24cd534dc9a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/b2ef4dd9584268d73f92f752a62bc24cd534dc9a",
+            "reference": "b2ef4dd9584268d73f92f752a62bc24cd534dc9a",
+            "shasum": ""
+        },
+        "require": {
+            "paragonie/random_compat": "^1.0|^2.0",
+            "php": ">=5.3.3"
+        },
+        "replace": {
+            "rhumsaa/uuid": "self.version"
+        },
+        "require-dev": {
+            "doctrine/dbal": ">=2.3",
+            "jakub-onderka/php-parallel-lint": "^0.9.0",
+            "moontoast/math": "~1.1",
+            "phpunit/phpunit": "~4.1|~5.0",
+            "satooshi/php-coveralls": "~0.6",
+            "squizlabs/php_codesniffer": "^2.3",
+            "symfony/console": "~2.3|~3.0"
+        },
+        "suggest": {
+            "doctrine/dbal": "Allow the use of a UUID as doctrine field type.",
+            "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
+            "symfony/console": "Support for use of the bin/uuid command line tool."
+        },
+        "time": "2016-03-22T18:20:19+00:00",
+        "bin": [
+            "bin/uuid"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Rhumsaa\\Uuid\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marijn Huizendveld",
+                "email": "marijn.huizendveld@gmail.com"
+            },
+            {
+                "name": "Ben Ramsey",
+                "homepage": "http://benramsey.com"
+            }
+        ],
+        "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+        "homepage": "https://github.com/ramsey/uuid",
+        "keywords": [
+            "guid",
+            "identifier",
+            "uuid"
         ]
     }
 ]

@@ -93,7 +93,7 @@ final class Uuid
     /**
      * Version of the Rhumsaa\Uuid package
      */
-    const VERSION = '2.8.2';
+    const VERSION = '2.8.3';
 
     /**
      * For testing, 64-bit system override; if true, treat the system as 32-bit
@@ -111,12 +111,12 @@ final class Uuid
     public static $forceNoBigNumber = false;
 
     /**
-     * For testing, openssl_random_pseudo_bytes() override; if true, treat as
-     * if openssl_random_pseudo_bytes() is not available
+     * For testing, random_bytes() override; if true, treat as
+     * if random_bytes() is not available
      *
      * @var bool
      */
-    public static $forceNoOpensslRandomPseudoBytes = false;
+    public static $forceNoRandomBytes = false;
 
     /**
      * For testing, sets time of day to a static, known value
@@ -1112,8 +1112,7 @@ final class Uuid
 
         throw new Exception\UnsatisfiedDependencyException(
             'When calling ' . __METHOD__ . ' on a 32-bit system, '
-            . 'Moontoast\Math\BigNumber must be present in order '
-            . 'to generate version 1 UUIDs'
+            . 'Moontoast\Math\BigNumber must be present'
         );
     }
 
@@ -1186,13 +1185,13 @@ final class Uuid
     }
 
     /**
-     * Returns true if the system has openssl_random_pseudo_bytes()
+     * Returns true if the system has random_bytes()
      *
      * @return bool
      */
-    protected static function hasOpensslRandomPseudoBytes()
+    protected static function hasRandomBytes()
     {
-        return (function_exists('openssl_random_pseudo_bytes') && !self::$forceNoOpensslRandomPseudoBytes);
+        return (function_exists('random_bytes') && !self::$forceNoRandomBytes);
     }
 
     /**
@@ -1245,8 +1244,8 @@ final class Uuid
      */
     private static function generateBytes($length)
     {
-        if (self::hasOpensslRandomPseudoBytes()) {
-            return openssl_random_pseudo_bytes($length);
+        if (self::hasRandomBytes()) {
+            return random_bytes($length);
         }
 
         $bytes = '';
