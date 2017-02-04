@@ -112,11 +112,17 @@ $SMTP_SSL_OPTIONS = array(
 	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'      => I18N::translate('ssl'),
 	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls' => I18N::translate('tls'),
 );
+
 $SMTP_ACTIVE_OPTIONS = array(
 	'internal' => I18N::translate('Use PHP mail to send messages'),
 	'sendmail' => /* I18N: "sendmail" is the name of some mail software */ I18N::translate('Use sendmail to send messages'),
 	'external' => I18N::translate('Use SMTP to send messages'),
 );
+
+if (!function_exists('proc_open')) {
+	unset($SMTP_ACTIVE_OPTIONS['sendmail']);
+}
+
 $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 	0 => I18N::translate('No predefined text'),
 	1 => I18N::translate('Predefined text that states all users can request a user account'),
