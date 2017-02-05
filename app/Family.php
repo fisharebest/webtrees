@@ -341,38 +341,42 @@ class Family extends GedcomRecord {
 	public function getAllNames() {
 		if (is_null($this->_getAllNames)) {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
+			$husb_names = array();
 			if ($this->husb) {
-				$husb_names = $this->husb->getAllNames();
-			} else {
-				$husb_names = array(
-					0 => array(
-						'type' => 'BIRT',
-						'sort' => '@N.N.',
-						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
-					),
+				$husb_names = array_filter($this->husb->getAllNames(), function(array $x) { return $x['type'] !== '_MARNM'; } );
+			}
+			// If the individual only has married names, create a dummy birth name.
+			if (empty($husb_names)) {
+				$husb_names[] = array(
+					'type' => 'BIRT',
+					'sort' => '@N.N.',
+					'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 				);
 			}
 			foreach ($husb_names as $n => $husb_name) {
 				$husb_names[$n]['script'] = I18N::textScript($husb_name['full']);
 			}
+
+			$wife_names = array();
 			if ($this->wife) {
-				$wife_names = $this->wife->getAllNames();
-			} else {
-				$wife_names = array(
-					0 => array(
-						'type' => 'BIRT',
-						'sort' => '@N.N.',
-						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
-					),
+				$wife_names = array_filter($this->wife->getAllNames(), function(array $x) { return $x['type'] !== '_MARNM'; } );
+			}
+			// If the individual only has married names, create a dummy birth name.
+			if (empty($wife_names)) {
+				$wife_names[] = array(
+					'type' => 'BIRT',
+					'sort' => '@N.N.',
+					'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 				);
 			}
 			foreach ($wife_names as $n => $wife_name) {
 				$wife_names[$n]['script'] = I18N::textScript($wife_name['full']);
 			}
+
 			// Add the matched names first
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {
-					if ($husb_name['type'] != '_MARNM' && $wife_name['type'] != '_MARNM' && $husb_name['script'] == $wife_name['script']) {
+					if ($husb_name['script'] == $wife_name['script']) {
 						$this->_getAllNames[] = array(
 							'type' => $husb_name['type'],
 							'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
@@ -382,10 +386,11 @@ class Family extends GedcomRecord {
 					}
 				}
 			}
+
 			// Add the unmatched names second (there may be no matched names)
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {
-					if ($husb_name['type'] != '_MARNM' && $wife_name['type'] != '_MARNM' && $husb_name['script'] != $wife_name['script']) {
+					if ($husb_name['script'] != $wife_name['script']) {
 						$this->_getAllNames[] = array(
 							'type' => $husb_name['type'],
 							'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
