@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-24 19:06+0000\n"
+"PO-Revision-Date: 2017-02-04 13:05+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -11474,6 +11474,17 @@ msgstr "Religioosne institutsioon"
 msgid "Religious marriage"
 msgstr "Kiriklik abielu"
 
+msgid "Religious name"
+msgstr "Religioosne nimi"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Religioosne nimi"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Religioosne nimi"
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr "Meeldetuletuste e-maili sagedus (päevades)"
@@ -13834,7 +13845,7 @@ msgstr "SMTP serveriga autentimiseks vajalik parool."
 
 #: admin_users.php:75 edituser.php:134 setup.php:416
 msgid "The passwords do not match."
-msgstr "Paroolid ei kattu."
+msgstr "Paroolid ei ühti."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13875,7 +13886,7 @@ msgstr "Kirje %1$s on ümber nimetatud %2$s-ks."
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr "Lõikeluda kopeeritud kirje."
+msgstr "Kirje on kopeeritud lõikelauale."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -13909,12 +13920,12 @@ msgstr "Perekonnanimi on ümbritsetud kaldjoontega: <%s>John Paul /Smith/<%s>"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
 msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Teemade menüüd näidatakse ainult siis kui veebilehe eelistused lubavad kasutajatel enda teemat valida."
+msgstr "Teemade menüüd näidatakse ainult siis, kui veebilehe eelistused lubavad kasutajatel enda teemat valida."
 
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr "Pisipilti %1$s ei saadud ümber nimetada: %2$s."
+msgstr "Pisipilti %1$s ei saadud %2$s ümber nimetada."
 
 #: addmedia.php:358
 #, php-format
@@ -13978,12 +13989,12 @@ msgstr "Väärtus, mida paigutada 'meta description' sildi juurde HTML lehe päi
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "Versioon %s'st on liiga uus."
+msgstr "Versioon %s on liiga uus."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr "Versioon %s'st on liiga vana."
+msgstr "Versioon %s on liiga vana."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -14009,7 +14020,7 @@ msgstr "Veebilehekülg www.geonames.org sisaldab suurt kohanimede andmebaasi. Te
 
 #: setup.php:506
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "webtrees arendajad oleksid selle vea teadasaamisest väga huvitatud. Kui saad nendega ühendust võtta, saavad nad sul aidata probleemi lahendada."
+msgstr "Webtrees arendajad oleksid selle vea teadasaamisest väga huvitatud. Võttes nendega ühendust, saavad nad sul aidata probleemi lahendada."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -20509,14 +20520,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "üle"
-
-msgid "Religious name"
-msgstr "Religioosne nimi"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Religioosne nimi"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Religioosne nimi"
