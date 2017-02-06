@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-12-27 06:42+0000\n"
+"PO-Revision-Date: 2017-02-06 11:45+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6503,7 +6503,7 @@ msgstr "En nourrice"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"
-msgstr "Enfant nourricier"
+msgstr "Enfant en nourrice"
 
 #: app/GedcomCode/GedcomCodeRela.php:123
 msgid "Foster father"
@@ -11472,6 +11472,17 @@ msgstr "Institution religieuse"
 #: app/GedcomTag.php:586 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
 msgstr "Mariage religieux"
+
+msgid "Religious name"
+msgstr "Nom en religion"
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr "Nom en religion"
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr "Nom en religion"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
@@ -20508,14 +20519,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "plus de"
-
-msgid "Religious name"
-msgstr "Nom en religion"
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr "Nom en religion"
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr "Nom en religion"
