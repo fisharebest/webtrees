@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2016-04-19 10:24+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2017-02-10 06:27+0000\n"
+"Last-Translator: Nik Ramzi Al-Samadi bin Abdul <nikramzixk@gmail.com>\n"
 "Language-Team: Malay <https://translate.webtrees.net/projects/webtrees/webtrees/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -371,7 +371,7 @@ msgstr[0] "%s sesaat yang lalu"
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s telah menghantar pada kamu mesej berikut."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5915
 #, php-format
@@ -401,137 +401,134 @@ msgstr "%s tiga kali dipisahkan urutan turun"
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s dua kali dibuang secara turutan menaik"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s dua kali dibuang secara turutan menurun"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:310
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minggu"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s tahun"
 
 #: app/I18N.php:794
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s tahun lalu"
 
 #: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:129
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s tahun ulangtahun perkahwinan"
 
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x sepupu"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × pupu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s pupu"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp; Sebelum Tahun Masihi"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp; Sebelum Tahun Masihi"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s +"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s , dia punya moyang dan keluarganya"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s dia punya ayah dan adik beradiknya"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, dia punya pasangan dan anak-anaknya"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, dia punya pasangan dan keturunan"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, dia punya moyang dan keluarga mereka"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, dia punya ibu-bapa dan adik beradik"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, dia punya pasangan dan anak-anak"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, dia punya pasangan dan keturunannya"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:618
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;pilih &gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(berumur %s tahun)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -11444,6 +11441,17 @@ msgstr ""
 msgid "Religious marriage"
 msgstr ""
 
+msgid "Religious name"
+msgstr ""
+
+msgctxt "FEMALE"
+msgid "Religious name"
+msgstr ""
+
+msgctxt "MALE"
+msgid "Religious name"
+msgstr ""
+
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
 msgstr ""
@@ -12748,12 +12756,12 @@ msgstr ""
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Bar tepi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6878
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
@@ -12770,104 +12778,104 @@ msgstr "Log keluar"
 #. I18N: A configuration setting
 #: admin_site_config.php:446
 msgid "Sign-in URL"
-msgstr ""
+msgstr "URL log masuk"
 
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Log masuk dan pendaftaran"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Tarikh yang sesuai perlu didalam kalenadar. Untuk menetukan satu satu tarikh dalam kalendar, sila masukkan kata kunci sebelum tarikh yang dikehendaki. Kata kunci ini merupakan satu pilihan jika format bulan dan tahun tersebut dari tahun yang kabur."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
 msgid "Singapore"
-msgstr ""
+msgstr "Singapura"
 
 #: modules_v3/individual_ext_report/report.xml:355
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Kakak atau adik"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:562 admin_site_config.php:578
 #: admin_site_config.php:603
 msgid "Site identification code"
-msgstr ""
+msgstr "Kod identifkasi web"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Ahli portal boleh menghantar mesej antara satu sama lain. Anda boleh tentukan bagaiman mesej akan dihantar pada anda, atau boleh untuk lansung tidak menerima mesej mereka."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
 msgid "Site verification code"
-msgstr ""
+msgstr "Kod verifkasi portal"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Kod verifikasi portal tidak berfungsi sekiranya webtress ini dipasang di dalam sub folder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "Peta laman"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "Peta laman merupakan salah satu carai webmaster memberitahu kepada enjin carian mengenai laman didalam website sedia untuk di crawl. Semua enjin carian menyokong fungsi peta laman. untuk maklumat lebih lanjut, sila lihat <a href=\"http://www.sitemaps.org/\"></a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Bulan Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Bulan Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Bulan Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Bulan Sivan"
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "size peta (didalam bentuk pixel)"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Abaikan untuk terus ke menu utama"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "Hamba"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "Hamba"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "Hamba"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
@@ -12878,31 +12886,31 @@ msgstr "Papar Slaid"
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovakia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
 msgid "Slovenia"
-msgstr ""
+msgstr "Negara Slovenia"
 
 #: setup.php:173
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "Sistem kecil (500 individu): 16-32 MB, 10-20 saat"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Snowflake, Arizona, United States"
-msgstr ""
+msgstr "Lokasi Snowflake, Arizona, United States"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr ""
+msgstr "Nombor keselamatan sosial"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Negara Solomin Islands"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6881
@@ -20172,14 +20180,3 @@ msgstr ""
 
 #~ msgid "Signed-in as "
 #~ msgstr "Log Masuk sebagai "
-
-msgid "Religious name"
-msgstr ""
-
-msgctxt "FEMALE"
-msgid "Religious name"
-msgstr ""
-
-msgctxt "MALE"
-msgid "Religious name"
-msgstr ""
