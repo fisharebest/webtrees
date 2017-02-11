@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-12-24 09:00+0000\n"
-"PO-Revision-Date: 2017-01-26 11:55+0000\n"
-"Last-Translator: Ghazy Abdallah <ghzooooon@gmail.com>\n"
+"PO-Revision-Date: 2017-02-11 04:37+0000\n"
+"Last-Translator: Muadh Hamidaddin <muadhh@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -12086,7 +12086,7 @@ msgstr "نص/نمط البحث"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr "قد يستغرق البحث عن جميع العلاقات الممكنة الكثير من الوقت في الأشجار المعقدة."
+msgstr "قد يستغرق البحث عن جميع العلاقات الممكنة الكثير من الوقت في المشجرات المعقدة."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
