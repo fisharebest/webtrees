@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-01-08 19:26+0000\n"
+"PO-Revision-Date: 2017-02-11 12:48+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -6288,7 +6288,7 @@ msgstr "Bir birey bul"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr "Herhangi bir ilişki bul"
+msgstr "Herhangi bir ilişki bulun"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6301,7 +6301,7 @@ msgstr "Diğer akrabalıkları bul"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr "Ataların yolu ile ilişki bul"
+msgstr "Atalarla ilişkileri bulun"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
