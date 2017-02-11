@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2016-12-25 09:42+0000\n"
+"PO-Revision-Date: 2017-02-11 20:41+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6305,7 +6305,7 @@ msgstr "Cerca altres parentius"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr "Cerca parentius via avantpassats"
+msgstr "Cerca parentiu a través dels avantpassats"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6313,7 +6313,7 @@ msgstr "Cerca els parents més propers"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr "Cerca persones sense vincles"
+msgstr "Cerca persones desvinculades"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -7416,7 +7416,7 @@ msgstr "Enguany…"
 
 #: admin_trees_unconnected.php:89
 msgid "Include associates"
-msgstr ""
+msgstr "Inclou-hi associats"
 
 #: app/Module/GoogleMapsModule.php:1353
 msgid "Include fully matched places"
@@ -8345,7 +8345,7 @@ msgstr "Matrimoni més durador"
 #. I18N: Two axes of a graph
 #: statistics.php:535 statisticsplot.php:1052
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Longevitat en funció del temps"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:792 app/Functions/FunctionsPrint.php:464
@@ -14114,7 +14114,7 @@ msgstr "Termidor"
 #: admin_trees_unconnected.php:97
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "Aquests grups de persones no estan vinculats amb %s."
+msgstr "Aquests grups de persones no estan relacionats amb %s."
 
 #: admin.php:583
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15369,7 +15369,7 @@ msgstr "Utilitza contrasenya"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Utilitza sendmail per enviar missatges"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
