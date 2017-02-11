@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-01-19 19:49+0000\n"
+"PO-Revision-Date: 2017-02-11 12:31+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -7449,7 +7449,7 @@ msgstr "Tohoto roku …"
 
 #: admin_trees_unconnected.php:89
 msgid "Include associates"
-msgstr ""
+msgstr "Včetně společníků"
 
 #: app/Module/GoogleMapsModule.php:1353
 msgid "Include fully matched places"
@@ -8378,7 +8378,7 @@ msgstr "Nejdelší manželství"
 #. I18N: Two axes of a graph
 #: statistics.php:535 statisticsplot.php:1052
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Dlouhověkost proti času"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:792 app/Functions/FunctionsPrint.php:464
@@ -15411,7 +15411,7 @@ msgstr "Použij heslo"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Zprávy zasílat pomocí poštovního softwaru"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
