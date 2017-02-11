@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-12-24 08:59+0000\n"
+"POT-Creation-Date: 2017-02-11 11:13+0000\n"
 "PO-Revision-Date: 2016-01-12 00:36+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
@@ -161,7 +161,7 @@ msgid "%1$s × %2$s"
 msgstr "%1$s 代 %2$s"
 
 #. I18N: image dimensions, width × height
-#: admin_media.php:497 app/Media.php:386
+#: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s 像素"
@@ -190,13 +190,13 @@ msgid "%j %F %Y"
 msgstr "%Y年 %n月 %j日"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
-#: app/Stats.php:6941
+#: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
 msgstr ""
 
 #. I18N: size of file in KB
-#: admin_media.php:489 app/Media.php:276
+#: admin_media.php:489 app/Media.php:277
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
@@ -231,7 +231,7 @@ msgstr "%s和她的孩子们"
 msgid "%s and their descendants"
 msgstr "%s和他们的后代"
 
-#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5905
+#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
@@ -268,7 +268,7 @@ msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "%s的家谱"
 
-#: app/Stats.php:5255 app/Stats.php:5259
+#: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
@@ -317,7 +317,7 @@ msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s个人在%s事件介于 %s 和 %s 之间"
 
 #. I18N: %s is a PHP function/module/setting
-#: setup.php:119
+#: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
 msgstr "%s在此服务器上已被禁用。除非它被启用，否则无法安装webtrees。请问您的服务器管理员请求启用它。"
@@ -378,7 +378,7 @@ msgstr[0] "%s 秒前"
 msgid "%s sent you the following message."
 msgstr "下面的消息来自webtrees用户帐户:%s"
 
-#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5915
+#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
@@ -524,7 +524,7 @@ msgstr "%s,他的配偶和子女"
 msgid "%s, his spouses and descendants"
 msgstr "%s,他的配偶和后代"
 
-#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:618
+#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
 msgstr "&lt; 选择 &gt;"
@@ -573,107 +573,107 @@ msgstr "(夭折的)"
 msgid ", "
 msgstr ", "
 
-#: app/Stats.php:6968
+#: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "10th"
 msgstr "十世纪"
 
-#: app/Stats.php:6966
+#: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "11th"
 msgstr "十一世纪"
 
-#: app/Stats.php:6964
+#: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "12th"
 msgstr "十二世纪"
 
-#: app/Stats.php:6962
+#: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "13th"
 msgstr "十三世纪"
 
-#: app/Stats.php:6960
+#: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "14th"
 msgstr "十四世纪"
 
-#: app/Stats.php:6958
+#: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "15th"
 msgstr "十五世纪"
 
-#: app/Stats.php:6956
+#: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "16th"
 msgstr "十六世纪"
 
-#: app/Stats.php:6954
+#: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "17th"
 msgstr "十七世纪"
 
-#: app/Stats.php:6952
+#: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "18th"
 msgstr "十八世纪"
 
-#: app/Stats.php:6950
+#: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "19th"
 msgstr "十九世纪"
 
-#: app/Stats.php:6986
+#: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
 msgstr "一世纪"
 
-#: app/Stats.php:6948
+#: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "20th"
 msgstr "二十世纪"
 
-#: app/Stats.php:6946
+#: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "21st"
 msgstr "二十一世纪"
 
-#: app/Stats.php:6984
+#: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr "二世纪"
 
-#: app/Stats.php:6982
+#: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr "三世纪"
 
-#: app/Stats.php:6980
+#: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "4th"
 msgstr "四世纪"
 
-#: app/Stats.php:6978
+#: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "5th"
 msgstr "五世纪"
 
-#: app/Stats.php:6976
+#: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "6th"
 msgstr "六世纪"
 
-#: app/Stats.php:6974
+#: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "7th"
 msgstr "七世纪"
 
-#: app/Stats.php:6972
+#: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "8th"
 msgstr "八世纪"
 
-#: app/Stats.php:6970
+#: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "九世纪"
@@ -745,7 +745,7 @@ msgstr "一个孩子可能有一组以上的父母。父母和孩子间的关系
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr "一个常见的错误是有多个链接指向相同的记录，例如同一个孩子超过一个家庭记录。"
 
-#: setup.php:369
+#: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr "数据库服务器可以存储许多不同的数据库。你需要选择一个现有的数据库（由服务器管理员创建）或创建一个新的（如果你的数据库用户帐户具有足够的特权）。"
 
@@ -1295,7 +1295,7 @@ msgstr "用已有的个人添加丈夫"
 msgid "Add a journal entry"
 msgstr "添加日记项目"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
+#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
@@ -1313,12 +1313,12 @@ msgstr "添加名字"
 msgid "Add a news article"
 msgstr "添加一个新闻文章"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
+#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "添加资源情况记事"
 
-#: app/Functions/FunctionsEdit.php:1135
+#: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
 msgstr "添加一个新的限制"
 
@@ -1331,7 +1331,7 @@ msgstr "添加一个新的限制"
 msgid "Add a scrollbar when block contents grow"
 msgstr "当内容增长时添加一个滚动条"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
+#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "添加一个新的共享记事"
@@ -1340,7 +1340,7 @@ msgstr "添加一个新的共享记事"
 msgid "Add a son or daughter"
 msgstr "添加一个儿子或女儿"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
+#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "添加资源情況"
@@ -1380,7 +1380,7 @@ msgstr "用已有的个人添加妻子"
 msgid "Add an FAQ"
 msgstr "添加常见问题项"
 
-#: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
+#: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
 msgstr "添加相关人员"
 
@@ -1388,7 +1388,7 @@ msgstr "添加相关人员"
 msgid "Add another individual to the chart"
 msgstr "添加另一个人到图表"
 
-#: app/Functions/FunctionsPrint.php:550
+#: app/Functions/FunctionsPrint.php:551
 msgid "Add from clipboard"
 msgstr "添加到剪贴板"
 
@@ -1496,7 +1496,7 @@ msgstr "阿德莱德，澳大利亚"
 msgid "Administrator"
 msgstr "网站管理员"
 
-#: setup.php:421 setup.php:423
+#: setup.php:424 setup.php:426
 msgid "Administrator account"
 msgstr "管理员帐号"
 
@@ -1668,7 +1668,7 @@ msgid "Advanced search"
 msgstr "高级搜索"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6673
+#: app/Stats.php:6672
 msgid "Afghanistan"
 msgstr "阿富汗"
 
@@ -1688,7 +1688,7 @@ msgstr "登录后，选择«我的网页»菜单下的«我的帐户»链接，�
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
 #: app/Controller/TimelineController.php:232
-#: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:402
+#: app/Functions/FunctionsPrint.php:363 app/Functions/FunctionsPrint.php:403
 #: app/GedcomTag.php:142 app/Stats.php:2585 app/Stats.php:3926
 #: app/Stats.php:3928 autocomplete.php:72 timeline.php:382
 msgid "Age"
@@ -1747,12 +1747,12 @@ msgid "Agency"
 msgstr "代办处"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6676
+#: app/Stats.php:6675
 msgid "Aland Islands"
 msgstr "阿兰群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6677
+#: app/Stats.php:6676
 msgid "Albania"
 msgstr "阿尔巴尼亚"
 
@@ -1767,7 +1767,7 @@ msgid "Albuquerque, New Mexico, United States"
 msgstr "卡德斯顿，阿尔伯塔，加拿大"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6737
+#: app/Stats.php:6736
 msgid "Algeria"
 msgstr "阿尔及利亚"
 
@@ -1785,7 +1785,7 @@ msgstr "活着的"
 #: app/Module/FrequentlyAskedQuestionsModule.php:474
 #: app/Module/GoogleMapsModule.php:1333 app/Module/GoogleMapsModule.php:1346
 #: app/Module/GoogleMapsModule.php:4079 app/Module/SlideShowModule.php:264
-#: app/Module/UserMessagesModule.php:111 app/Stats.php:5578 calendar.php:257
+#: app/Module/UserMessagesModule.php:111 app/Stats.php:5577 calendar.php:257
 #: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
 #: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
 #: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
@@ -1856,12 +1856,12 @@ msgid "Allow users to see raw GEDCOM records"
 msgstr "允许用户查看原GEDCOM文件记录"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:259
+#: admin_site_config.php:266
 msgid "Allow users to select their own theme"
 msgstr "允许用户选择他们自己的主题"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:484
+#: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
 msgstr "允许游客申请新的用户账号"
 
@@ -1883,7 +1883,7 @@ msgid "Also known as"
 msgstr "也被称为"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6682
+#: app/Stats.php:6681
 msgid "American Samoa"
 msgstr "美属萨摩亚"
 
@@ -1893,7 +1893,7 @@ msgstr "美属萨摩亚"
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "FAQ条目可以只显示在一个家谱上，也可以显示到所有家谱。"
 
-#: admin_site_config.php:491
+#: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr "管理员必须审批新用户账号，并在用户能够登录前选择一个进入级别。"
 
@@ -1922,11 +1922,11 @@ msgstr "选择一个新的主题的另一种方式。"
 msgid "An alternative way to sign in and sign out."
 msgstr "登录和注销的另一种方式。"
 
-#: app/Functions/FunctionsEdit.php:909
+#: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr "相关人员是一个和这个个体有关系（如证人或密探）事实或是事件。"
 
-#: app/Functions/FunctionsEdit.php:907
+#: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr "相关人员是一个和这个个体有关系（如朋友或雇主）个体。"
 
@@ -1950,7 +1950,7 @@ msgstr ""
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "显示一个人所有的祖先和后代的交互树。"
 
-#: setup.php:504
+#: setup.php:507
 msgid "An unexpected database error occurred."
 msgstr "数据库发生意外错误。"
 
@@ -1990,17 +1990,17 @@ msgid "Anchorage, Alaska, United States"
 msgstr "安克雷奇，阿拉斯加"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6678
+#: app/Stats.php:6677
 msgid "Andorra"
 msgstr "安道尔共和国"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6674
+#: app/Stats.php:6673
 msgid "Angola"
 msgstr "安哥拉"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6675
+#: app/Stats.php:6674
 msgid "Anguilla"
 msgstr "安圭拉岛"
 
@@ -2025,12 +2025,12 @@ msgid "Answer"
 msgstr "答复"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6683
+#: app/Stats.php:6682
 msgid "Antarctica"
 msgstr "南极洲"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6685
+#: app/Stats.php:6684
 msgid "Antigua and Barbuda"
 msgstr "安提瓜和巴布达"
 
@@ -2098,7 +2098,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "四月"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "四月"
@@ -2152,7 +2152,7 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "你确定你想从你的名单的收藏删除该项目吗？"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6680
+#: app/Stats.php:6679
 msgid "Argentina"
 msgstr "阿根廷"
 
@@ -2175,12 +2175,12 @@ msgid "Arial"
 msgstr "宋体"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6681
+#: app/Stats.php:6680
 msgid "Armenia"
 msgstr "亚美尼亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6672
+#: app/Stats.php:6671
 msgid "Aruba"
 msgstr "阿鲁巴岛"
 
@@ -2217,7 +2217,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Asunción, 巴拉圭"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6870
+#: app/Stats.php:6869
 msgid "At sea"
 msgstr "在海上"
 
@@ -2279,18 +2279,18 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "八月"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "八月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6686
+#: app/Stats.php:6685
 msgid "Australia"
 msgstr "澳大利亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6687
+#: app/Stats.php:6686
 msgid "Austria"
 msgstr "奥地利"
 
@@ -2368,7 +2368,7 @@ msgstr "死亡平均年龄"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
-#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4948 statistics.php:306
+#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4947 statistics.php:306
 msgid "Average number of children per family"
 msgstr "家庭平均孩子数"
 
@@ -2407,12 +2407,12 @@ msgid "Azar"
 msgstr "第九月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6688
+#: app/Stats.php:6687
 msgid "Azerbaijan"
 msgstr "阿塞拜疆"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6689
+#: app/Stats.php:6688
 msgid "Azores"
 msgstr "亚述尔群岛"
 
@@ -2422,7 +2422,7 @@ msgid "Bah"
 msgstr "第十一月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6698
+#: app/Stats.php:6697
 msgid "Bahamas"
 msgstr "巴哈马群岛"
 
@@ -2451,12 +2451,12 @@ msgid "Bahman"
 msgstr "第十一月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6697
+#: app/Stats.php:6696
 msgid "Bahrain"
 msgstr "巴林"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6695
+#: app/Stats.php:6694
 msgid "Bangladesh"
 msgstr "孟加拉共和国"
 
@@ -2539,7 +2539,7 @@ msgid "Bar mitzvah"
 msgstr "受诫礼"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6706
+#: app/Stats.php:6705
 msgid "Barbados"
 msgstr "巴巴多斯岛"
 
@@ -2560,7 +2560,7 @@ msgid "Baton Rouge, Louisiana, United States"
 msgstr "巴吞鲁日路易斯安那"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2341
+#: app/Module/GoogleMapsModule.php:2340
 msgid "Bearing"
 msgstr "方位"
 
@@ -2570,7 +2570,7 @@ msgid "Begins with"
 msgstr "开头"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6701
+#: app/Stats.php:6700
 msgid "Belarus"
 msgstr "白俄罗斯"
 
@@ -2580,22 +2580,22 @@ msgid "Belgian Chocolate"
 msgstr "比利时巧克力"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6691
+#: app/Stats.php:6690
 msgid "Belgium"
 msgstr "比利时"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6702
+#: app/Stats.php:6701
 msgid "Belize"
 msgstr "伯利兹城"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6692
+#: app/Stats.php:6691
 msgid "Benin"
 msgstr "贝宁湾"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6703
+#: app/Stats.php:6702
 msgid "Bermuda"
 msgstr "百慕大群岛"
 
@@ -2609,7 +2609,7 @@ msgid "Best man"
 msgstr "伴郞"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6708
+#: app/Stats.php:6707
 msgid "Bhutan"
 msgstr "不丹"
 
@@ -2628,7 +2628,7 @@ msgstr "比林斯，蒙大纳"
 msgid "Binary data object"
 msgstr "数码资料"
 
-#: app/Functions/FunctionsPrint.php:469
+#: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
@@ -2791,11 +2791,11 @@ msgstr "出生日期范围的开始"
 msgid "Birth of a brother"
 msgstr "兄弟出生"
 
-#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
 msgstr "孩子出生"
 
-#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a daughter"
 msgstr "女儿出生"
 
@@ -2851,7 +2851,7 @@ msgstr "兄弟姐妹出生"
 msgid "Birth of a sister"
 msgstr "姐妹出生"
 
-#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a son"
 msgstr "儿子出生"
 
@@ -2918,7 +2918,7 @@ msgid "Boise, Idaho, United States"
 msgstr "博伊西，爱达荷州"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6704
+#: app/Stats.php:6703
 msgid "Bolivia"
 msgstr "玻利维亚"
 
@@ -2937,7 +2937,7 @@ msgid "Born in the covenant"
 msgstr "婚约"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6699
+#: app/Stats.php:6698
 msgid "Bosnia and Herzegovina"
 msgstr "波斯尼亚和黑塞哥维那"
 
@@ -2955,7 +2955,7 @@ msgid "Both dead"
 msgstr "都死了"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6710
+#: app/Stats.php:6709
 msgid "Botswana"
 msgstr "博茨瓦纳"
 
@@ -2965,7 +2965,7 @@ msgid "Bountiful, Utah, United States"
 msgstr "Bountifu，犹他州"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6709
+#: app/Stats.php:6708
 msgid "Bouvet Island"
 msgstr "布韦岛"
 
@@ -2981,7 +2981,7 @@ msgid "Branches of the %s family"
 msgstr "%s 家庭的分支"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6705
+#: app/Stats.php:6704
 msgid "Brazil"
 msgstr "巴西"
 
@@ -3031,12 +3031,12 @@ msgid "Brit milah of a son"
 msgstr "儿子的割礼"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6780
+#: app/Stats.php:6779
 msgid "British Indian Ocean Territory"
 msgstr "英属印度洋领地"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6917
+#: app/Stats.php:6916
 msgid "British Virgin Islands"
 msgstr "英属维京群岛"
 
@@ -3070,7 +3070,7 @@ msgid "Brumaire"
 msgstr "第二月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6707
+#: app/Stats.php:6706
 msgid "Brunei Darussalam"
 msgstr "文莱达鲁萨兰国"
 
@@ -3080,7 +3080,7 @@ msgid "Buenos Aires, Argentina"
 msgstr "布宜诺斯艾利斯,阿根廷"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6696
+#: app/Stats.php:6695
 msgid "Bulgaria"
 msgstr "保加利亚"
 
@@ -3225,12 +3225,12 @@ msgid "Burial place contains"
 msgstr "埋葬的地点包含"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6694
+#: app/Stats.php:6693
 msgid "Burkina Faso"
 msgstr "布基纳法索"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6690
+#: app/Stats.php:6689
 msgid "Burundi"
 msgstr "布隆迪"
 
@@ -3249,7 +3249,7 @@ msgid "Buyer"
 msgstr "男买主"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:361
+#: admin_site_config.php:368
 msgid "By default, SMTP works on port 25."
 msgstr "默认情况下，SMTP在端口25上工作。"
 
@@ -3257,14 +3257,14 @@ msgstr "默认情况下，SMTP在端口25上工作。"
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 msgstr "默认情况下，该列表中仅显示那些可以在你的家谱找到的地方。你可能对其他地方进行完善，如从外部文件导入。选择此选项将显示所有的地方，包括那些目前没有使用。"
 
-#: admin_site_config.php:217
+#: admin_site_config.php:224
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] "默认情况下，您的服务器允许脚本运行%s秒。"
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:201
+#: admin_site_config.php:208
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "默认情况下，您的服务器允许脚本使用%s的内存。"
@@ -3300,12 +3300,12 @@ msgid "Call number"
 msgstr "书号"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6794
+#: app/Stats.php:6793
 msgid "Cambodia"
 msgstr "柬埔寨"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6718
+#: app/Stats.php:6717
 msgid "Cameroon"
 msgstr "喀麦隆"
 
@@ -3315,12 +3315,12 @@ msgid "Campinas, Brazil"
 msgstr "金边，巴西"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6712
+#: app/Stats.php:6711
 msgid "Canada"
 msgstr "加拿大"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6724
+#: app/Stats.php:6723
 msgid "Cape Verde"
 msgstr "佛得角"
 
@@ -3374,7 +3374,7 @@ msgid "Caution: old themes may not work, or they may prevent webtrees from worki
 msgstr "注意：老的主题可能无法工作，或者他们可能会阻止webtrees的工作。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6729
+#: app/Stats.php:6728
 msgid "Cayman Islands"
 msgstr "开曼群岛"
 
@@ -3405,7 +3405,7 @@ msgstr "人口统计"
 msgid "Census assistant"
 msgstr "普查员"
 
-#: app/Functions/FunctionsEdit.php:1024 app/GedcomTag.php:252
+#: app/Functions/FunctionsEdit.php:1028 app/GedcomTag.php:252
 msgid "Census date"
 msgstr "人口普查时间"
 
@@ -3418,7 +3418,7 @@ msgid "Census transcript"
 msgstr "调查笔录"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6711
+#: app/Stats.php:6710
 msgid "Central African Republic"
 msgstr "中非共和国"
 
@@ -3428,7 +3428,7 @@ msgid "Certificate"
 msgstr "证书"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6894
+#: app/Stats.php:6893
 msgid "Chad"
 msgstr "乍得"
 
@@ -3543,15 +3543,15 @@ msgstr "检查挂起的更改…"
 msgid "Check the access rights on this folder."
 msgstr "查看该目录的访问权限。"
 
-#: setup.php:266 setup.php:338
+#: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
 msgstr "检查设置并再次尝试。"
 
-#: setup.php:153
+#: setup.php:156
 msgid "Checking server capacity"
 msgstr "服务器配置正确"
 
-#: setup.php:111
+#: setup.php:114
 msgid "Checking server configuration"
 msgstr "检查服务器配置"
 
@@ -3622,12 +3622,12 @@ msgid "Children take their mother’s surname."
 msgstr "孩子随母姓。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6715
+#: app/Stats.php:6714
 msgid "Chile"
 msgstr "智利"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6716
+#: app/Stats.php:6715
 msgid "China"
 msgstr "中国"
 
@@ -3645,7 +3645,7 @@ msgstr "选择亲戚"
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图片,您可能希望生成自己的缩略图,尤其是对其他媒体类型。例如,您可以提供一个静态图像从一个视频或音乐照片。"
 
-#: admin_site_config.php:124
+#: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
 msgstr "选择用户定义的文本在下面输入欢迎文本"
 
@@ -3730,7 +3730,7 @@ msgid "Christening of a son"
 msgstr "儿子的洗礼"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6728
+#: app/Stats.php:6727
 msgid "Christmas Island"
 msgstr "圣诞岛"
 
@@ -3806,7 +3806,7 @@ msgid "Cochabamba, Bolivia"
 msgstr "科恰班巴、玻利维亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6713
+#: app/Stats.php:6712
 msgid "Cocos (Keeling) Islands"
 msgstr "可可(吉林)群岛"
 
@@ -3821,7 +3821,7 @@ msgid "Cold Day"
 msgstr "冷天"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6722
+#: app/Stats.php:6721
 msgid "Colombia"
 msgstr "哥伦比亚"
 
@@ -3869,7 +3869,7 @@ msgid "Communicate directly with other users, using private messages."
 msgstr "利用私人消息邮件直接与其他用户进行交流。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6723
+#: app/Stats.php:6722
 msgid "Comoros"
 msgstr "科摩罗"
 
@@ -3914,7 +3914,7 @@ msgstr "确认密码"
 msgid "Confirmation"
 msgstr "确认"
 
-#: setup.php:272
+#: setup.php:275
 msgid "Connection to database server"
 msgstr "连接到数据库服务器"
 
@@ -3945,7 +3945,7 @@ msgstr "继续"
 #: admin_module_menus.php:74 admin_module_reports.php:53
 #: admin_module_sidebar.php:74 admin_module_tabs.php:74 admin_modules.php:141
 #: admin_pgv_to_wt.php:129 admin_site_access.php:239 admin_site_access.php:345
-#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:159
+#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:166
 #: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:186
 #: admin_site_readme.php:37 admin_trees_check.php:124
 #: admin_trees_config.php:341 admin_trees_download.php:102
@@ -3970,7 +3970,7 @@ msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "从UTF-8转换为ANSI(ISO-8859-1)"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6721
+#: app/Stats.php:6720
 msgid "Cook Islands"
 msgstr "库克群岛"
 
@@ -4027,12 +4027,12 @@ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as p
 msgstr "修正由老家谱程序产生的名字记录表单 ‘Joe/BLOGGS/’ or ‘Joe /BLOGGS’。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6725
+#: app/Stats.php:6724
 msgid "Costa Rica"
 msgstr "哥斯达黎加"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6717
+#: app/Stats.php:6716
 msgid "Cote d’Ivoire"
 msgstr "科特迪瓦"
 
@@ -4040,7 +4040,7 @@ msgstr "科特迪瓦"
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr "无法验证您输入的信息。请确认后再试一次。"
 
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 msgid "Count"
 msgstr "计数"
 
@@ -4074,27 +4074,27 @@ msgstr "创建"
 msgid "Create a family tree"
 msgstr "创建一个新的家谱"
 
-#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
+#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
 msgstr "新建一个媒体对象"
 
-#: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
 msgstr "创建存储库"
 
-#: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
 msgstr "创建一个新的共享的记事"
 
-#: app/Functions/FunctionsEdit.php:627
+#: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
 msgstr "使用助理创建一个新的共享笔记"
 
-#: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
 msgstr "创建新的资源记录"
@@ -4246,12 +4246,12 @@ msgid "Cremation of a wife"
 msgstr "妻子的火葬"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6774
+#: app/Stats.php:6773
 msgid "Croatia"
 msgstr "克罗地亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6726
+#: app/Stats.php:6725
 msgid "Cuba"
 msgstr "古巴"
 
@@ -4268,11 +4268,11 @@ msgstr "现有的"
 msgid "Custom"
 msgstr "定制"
 
-#: app/Functions/FunctionsPrint.php:624 calendar.php:281
+#: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
 msgstr "自定义事件"
 
-#: app/Functions/FunctionsPrint.php:623
+#: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
 msgstr "自定义事实"
 
@@ -4289,7 +4289,7 @@ msgid "Custom theme"
 msgstr "自定义主题"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:471
+#: admin_site_config.php:478
 msgid "Custom welcome text"
 msgstr "自定义欢迎文本"
 
@@ -4298,12 +4298,12 @@ msgid "Customize this page"
 msgstr "自定义此页"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6730
+#: app/Stats.php:6729
 msgid "Cyprus"
 msgstr "塞浦路斯"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6731
+#: app/Stats.php:6730
 msgid "Czech Republic"
 msgstr "捷克共和国"
 
@@ -4333,27 +4333,27 @@ msgid "Data"
 msgstr "资料"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:174
+#: admin_site_config.php:181
 msgid "Data folder"
 msgstr "数据文件夹"
 
-#: setup.php:368
+#: setup.php:371
 msgid "Database and table names"
 msgstr "数据库和表名"
 
-#: setup.php:275
+#: setup.php:278
 msgid "Database connection"
 msgstr "数据库连接"
 
-#: setup.php:370 setup.php:372
+#: setup.php:373 setup.php:375
 msgid "Database name"
 msgstr "数据库名称"
 
-#: setup.php:289
+#: setup.php:292
 msgid "Database password"
 msgstr "数据库密码"
 
-#: setup.php:285
+#: setup.php:288
 msgid "Database user account"
 msgstr "数据库用户帐户"
 
@@ -4874,7 +4874,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "十二月"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "十二月"
@@ -4917,7 +4917,7 @@ msgid "Default pedigree generations"
 msgstr "默认的谱代"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:243 admin_trees_config.php:973
+#: admin_site_config.php:250 admin_trees_config.php:973
 msgid "Default theme"
 msgstr "默认主题"
 
@@ -5008,12 +5008,12 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "删除这个家庭将拆开所有的个人彼此关系,将个人独立。你确定你要删除这个家庭吗?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6719
+#: app/Stats.php:6718
 msgid "Democratic Republic of the Congo"
 msgstr "刚果(金沙萨)"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6735
+#: app/Stats.php:6734
 msgid "Denmark"
 msgstr "丹麦"
 
@@ -5089,7 +5089,7 @@ msgstr "目的地"
 msgid "Details"
 msgstr "详细资料"
 
-#: admin_site_config.php:490
+#: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr "新用户的详细信息将被发送到相应家谱。"
 
@@ -5245,7 +5245,7 @@ msgid "Divorces by century"
 msgstr "按世纪统计离婚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6733
+#: app/Stats.php:6732
 msgid "Djibouti"
 msgstr "吉布提"
 
@@ -5273,12 +5273,12 @@ msgid "Document"
 msgstr "文件"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6734
+#: app/Stats.php:6733
 msgid "Dominica"
 msgstr "多米尼加"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6736
+#: app/Stats.php:6735
 msgid "Dominican Republic"
 msgstr "多米尼加共和国"
 
@@ -5357,7 +5357,7 @@ msgid "Earliest marriage"
 msgstr "最早婚姻"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6738
+#: app/Stats.php:6737
 msgid "Ecuador"
 msgstr "厄瓜多尔"
 
@@ -5424,7 +5424,7 @@ msgid "Edit the media object"
 msgstr "编辑媒体对象"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:698 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
 msgid "Edit the name"
 msgstr "编辑名字"
 
@@ -5448,7 +5448,7 @@ msgstr "编辑原始GEDCOM记录"
 msgid "Edit the repository"
 msgstr "编辑库"
 
-#: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
 msgstr "编辑共享记事"
@@ -5486,12 +5486,12 @@ msgid "Education"
 msgstr "教育"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6739
+#: app/Stats.php:6738
 msgid "Egypt"
 msgstr "埃及"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6879
+#: app/Stats.php:6878
 msgid "El Salvador"
 msgstr "萨尔瓦多"
 
@@ -5501,7 +5501,7 @@ msgid "Electronic"
 msgstr "电子文件"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2343
+#: app/Module/GoogleMapsModule.php:2342
 msgid "Elevation"
 msgstr "视角"
 
@@ -5536,7 +5536,7 @@ msgstr "第十二月"
 #: admin_users.php:361 admin_users.php:847 app/GedcomTag.php:392
 #: app/GedcomTag.php:396 app/GedcomTag.php:400 app/GedcomTag.php:1467
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
-#: login.php:430 message.php:117 message.php:270 setup.php:440
+#: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
 msgstr "电子邮件地址"
 
@@ -5626,7 +5626,7 @@ msgid "Engagement"
 msgstr "订婚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6740
+#: app/Stats.php:6739
 msgid "England"
 msgstr "英格兰"
 
@@ -5648,12 +5648,12 @@ msgid "Entire record"
 msgstr "整个记录"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6763
+#: app/Stats.php:6762
 msgid "Equatorial Guinea"
 msgstr "赤道几内亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6741
+#: app/Stats.php:6740
 msgid "Eritrea"
 msgstr "厄立特里亚"
 
@@ -5697,12 +5697,12 @@ msgid "Estimated dates for birth and death"
 msgstr "估计出生和死亡日期"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6744
+#: app/Stats.php:6743
 msgid "Estonia"
 msgstr "爱沙尼亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6745
+#: app/Stats.php:6744
 msgid "Ethiopia"
 msgstr "埃塞俄比亚"
 
@@ -5717,7 +5717,7 @@ msgstr "欧洲"
 msgid "Event"
 msgstr "事件"
 
-#: app/Module/GoogleMapsModule.php:2081 statistics.php:110 statistics.php:212
+#: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
 msgstr "事件"
 
@@ -5884,7 +5884,7 @@ msgstr "事实9"
 msgid "Fact icons"
 msgstr "事件图标"
 
-#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:613
+#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
 msgstr "事实或事件"
 
@@ -5921,7 +5921,7 @@ msgid "Facts for source records"
 msgstr "资源事件"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6749
+#: app/Stats.php:6748
 msgid "Falkland Islands"
 msgstr "福克兰群岛"
 
@@ -5933,7 +5933,7 @@ msgstr "福克兰群岛"
 #: app/Functions/FunctionsPrintLists.php:1351
 #: app/Module/FamilyTreeStatisticsModule.php:115
 #: app/Module/FamilyTreeStatisticsModule.php:342
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:187
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
 #: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
@@ -5951,7 +5951,7 @@ msgstr "家庭资源"
 #. I18N: Name of a module/report
 #: admin_trees_config.php:758 app/Controller/HourglassController.php:327
 #: app/Controller/PedigreeController.php:266
-#: app/Functions/FunctionsEdit.php:867 app/GedcomTag.php:444
+#: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
 #: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
@@ -6107,7 +6107,7 @@ msgid "Far"
 msgstr "第一月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6751
+#: app/Stats.php:6750
 msgid "Faroe Islands"
 msgstr "法罗群岛"
 
@@ -6150,7 +6150,7 @@ msgstr "父亲"
 msgid "Father: %s"
 msgstr "父亲: %s"
 
-#: app/Functions/FunctionsPrint.php:275
+#: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
 msgstr "父亲的年龄"
 
@@ -6195,14 +6195,14 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "二月"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "二月"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
-#: app/Functions/FunctionsEdit.php:674 app/Stats.php:5578 calendar.php:635
+#: app/Functions/FunctionsEdit.php:675 app/Stats.php:5577 calendar.php:635
 #: statisticsplot.php:901 statisticsplot.php:951 statisticsplot.php:1005
 #: statisticsplot.php:1055 statisticsplot.php:1109 statisticsplot.php:1159
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
@@ -6221,7 +6221,7 @@ msgid "Females"
 msgstr "女性"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6747
+#: app/Stats.php:6746
 msgid "Fiji"
 msgstr "斐济"
 
@@ -6265,37 +6265,37 @@ msgstr "标有 %s 文件正常操作需要和不能被删除。"
 msgid "Filter"
 msgstr "过滤器"
 
-#: app/Functions/FunctionsPrint.php:793 find.php:76 find.php:81 find.php:86
+#: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
 msgstr "找一个事实或事件"
 
-#: app/Functions/FunctionsPrint.php:708 find.php:54
+#: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
 msgstr "找一个家庭"
 
-#: app/Functions/FunctionsPrint.php:782 find.php:57
+#: app/Functions/FunctionsPrint.php:783 find.php:57
 msgid "Find a media object"
 msgstr "找一个媒体对象"
 
-#: app/Functions/FunctionsPrint.php:697 find.php:60
+#: app/Functions/FunctionsPrint.php:698 find.php:60
 msgid "Find a place"
 msgstr "找个地方"
 
-#: app/Functions/FunctionsPrint.php:770 find.php:63
+#: app/Functions/FunctionsPrint.php:771 find.php:63
 msgid "Find a repository"
 msgstr "找一个存储库"
 
-#: app/Functions/FunctionsPrint.php:759 find.php:66
+#: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
 msgstr "找一个记事"
 
-#: app/Functions/FunctionsPrint.php:747 find.php:69
+#: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "找一个资源"
 
-#: app/Functions/FunctionsPrint.php:719 find.php:72
+#: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
 msgstr "找一个特殊字符"
 
@@ -6303,7 +6303,7 @@ msgstr "找一个特殊字符"
 msgid "Find all possible relationships"
 msgstr "找到所有可能的关系"
 
-#: app/Functions/FunctionsPrint.php:686 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6336,7 +6336,7 @@ msgid "Find unrelated individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6746
+#: app/Stats.php:6745
 msgid "Finland"
 msgstr "芬兰"
 
@@ -6365,7 +6365,7 @@ msgid "Flag"
 msgstr "标志"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6748
+#: app/Stats.php:6747
 msgid "Flanders"
 msgstr "弗兰德斯"
 
@@ -6449,7 +6449,7 @@ msgid "For technical support or genealogy questions contact %s."
 msgstr "关于技术支持或家谱的问题,请联系%s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
-#: admin_site_config.php:276
+#: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr "对于具有一个以上的家谱网站，此选项会显示在主菜单的家谱列表，搜索页面等。"
 
@@ -6501,7 +6501,7 @@ msgid "Foster mother"
 msgstr "养母"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6750
+#: app/Stats.php:6749
 msgid "France"
 msgstr "法国"
 
@@ -6521,17 +6521,17 @@ msgid "French"
 msgstr "法国历"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6768
+#: app/Stats.php:6767
 msgid "French Guiana"
 msgstr "法属圭亚那"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6861
+#: app/Stats.php:6860
 msgid "French Polynesia"
 msgstr "法属波利尼西亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6684
+#: app/Stats.php:6683
 msgid "French Southern Territories"
 msgstr "法国南部地区"
 
@@ -6548,7 +6548,7 @@ msgid "Fresno, California, United States"
 msgstr "加州弗雷斯诺"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "星期五"
 
@@ -6645,12 +6645,12 @@ msgid "GEDCOM file"
 msgstr "GEDCOM文件"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6753
+#: app/Stats.php:6752
 msgid "Gabon"
 msgstr "加蓬"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6761
+#: app/Stats.php:6760
 msgid "Gambia"
 msgstr "冈比亚"
 
@@ -6727,20 +6727,20 @@ msgstr "地理区域"
 
 #: app/Module/GoogleMapsModule.php:175 app/Module/GoogleMapsModule.php:289
 #: app/Module/GoogleMapsModule.php:826 app/Module/GoogleMapsModule.php:1309
-#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2296
-#: app/Module/GoogleMapsModule.php:2420 app/Module/GoogleMapsModule.php:2815
+#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2295
+#: app/Module/GoogleMapsModule.php:2419 app/Module/GoogleMapsModule.php:2815
 #: app/Module/GoogleMapsModule.php:3495 app/Module/GoogleMapsModule.php:3507
 #: app/Module/GoogleMapsModule.php:3719 app/Module/GoogleMapsModule.php:3886
 msgid "Geographic data"
 msgstr "地理数据"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6755
+#: app/Stats.php:6754
 msgid "Georgia"
 msgstr "格鲁吉亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6732
+#: app/Stats.php:6731
 msgid "Germany"
 msgstr "德国"
 
@@ -6774,12 +6774,12 @@ msgid "Get an API key from Google."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6757
+#: app/Stats.php:6756
 msgid "Ghana"
 msgstr "加纳"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6758
+#: app/Stats.php:6757
 msgid "Gibraltar"
 msgstr "直布罗陀"
 
@@ -6828,7 +6828,7 @@ msgid "Godson"
 msgstr "教子"
 
 #. I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: app/Functions/FunctionsPrint.php:468 app/Module/GoogleMapsModule.php:72
+#: app/Functions/FunctionsPrint.php:469 app/Module/GoogleMapsModule.php:72
 #: app/Module/GoogleMapsModule.php:235 app/Module/GoogleMapsModule.php:1291
 #: app/Module/GoogleMapsModule.php:3477 app/Module/GoogleMapsModule.php:4325
 #: app/Module/GoogleMapsModule.php:4340
@@ -6838,12 +6838,12 @@ msgstr "谷歌地图™"
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:184
 #: app/Module/GoogleMapsModule.php:284 app/Module/GoogleMapsModule.php:299
 #: app/Module/GoogleMapsModule.php:825 app/Module/GoogleMapsModule.php:1304
-#: app/Module/GoogleMapsModule.php:2295 app/Module/GoogleMapsModule.php:3490
+#: app/Module/GoogleMapsModule.php:2294 app/Module/GoogleMapsModule.php:3490
 msgid "Google Maps™ preferences"
 msgstr "谷歌地图™ 偏好"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2083
+#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2082
 #: app/Module/GoogleMapsModule.php:4328
 msgid "Google Street View™"
 msgstr "谷歌街景™"
@@ -6870,7 +6870,7 @@ msgid "Greatest age between siblings"
 msgstr "兄弟姐妹之间最大的年龄差"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6764
+#: app/Stats.php:6763
 msgid "Greece"
 msgstr "希腊"
 
@@ -6880,7 +6880,7 @@ msgid "Green Beam"
 msgstr "绿色光束"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6766
+#: app/Stats.php:6765
 msgid "Greenland"
 msgstr "格陵兰"
 
@@ -6890,7 +6890,7 @@ msgid "Gregorian"
 msgstr "格利高里历"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6765
+#: app/Stats.php:6764
 msgid "Grenada"
 msgstr "格林纳达"
 
@@ -6900,12 +6900,12 @@ msgid "Guadalajara, Mexico"
 msgstr "墨西哥,瓜达拉哈拉"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6760
+#: app/Stats.php:6759
 msgid "Guadeloupe"
 msgstr "瓜德罗普岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6769
+#: app/Stats.php:6768
 msgid "Guam"
 msgstr "关岛"
 
@@ -6924,7 +6924,7 @@ msgid "Guardian"
 msgstr "男监护人"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6767
+#: app/Stats.php:6766
 msgid "Guatemala"
 msgstr "危地马拉"
 
@@ -6939,22 +6939,22 @@ msgid "Guayaquil, Ecuador"
 msgstr "瓜亚基尔、厄瓜多尔"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6756
+#: app/Stats.php:6755
 msgid "Guernsey"
 msgstr "根西岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6759
+#: app/Stats.php:6758
 msgid "Guinea"
 msgstr "几内亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6762
+#: app/Stats.php:6761
 msgid "Guinea-Bissau"
 msgstr "几内亚比绍"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6770
+#: app/Stats.php:6769
 msgid "Guyana"
 msgstr "圭亚那"
 
@@ -6969,7 +6969,7 @@ msgid "Hair color"
 msgstr "头发颜色"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6775
+#: app/Stats.php:6774
 msgid "Haiti"
 msgstr "海地"
 
@@ -7033,7 +7033,7 @@ msgid "Header"
 msgstr "标头"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6772
+#: app/Stats.php:6771
 msgid "Heard Island and McDonald Islands"
 msgstr "听到岛和麦当劳群岛"
 
@@ -7128,7 +7128,7 @@ msgstr "第二月"
 
 #: admin_trees_config.php:82 admin_trees_config.php:89
 #: admin_trees_config.php:492 admin_trees_config.php:1021
-#: app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:208
 msgid "Hide from everyone"
 msgstr "对所有人隐藏"
 
@@ -7171,13 +7171,13 @@ msgid "Home page"
 msgstr "主页"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6773
+#: app/Stats.php:6772
 msgid "Honduras"
 msgstr "洪都拉斯"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
-#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6771
+#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6770
 msgid "Hong Kong"
 msgstr "香港"
 
@@ -7208,7 +7208,7 @@ msgid "How much recursion to use when searching for relationships"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6776
+#: app/Stats.php:6775
 msgid "Hungary"
 msgstr "匈牙利"
 
@@ -7241,7 +7241,7 @@ msgid "IP address"
 msgstr "IP地址"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6784
+#: app/Stats.php:6783
 msgid "Iceland"
 msgstr "冰岛"
 
@@ -7350,7 +7350,7 @@ msgstr "如果您已经在webtrees创建了媒体对象,并脱机使用一个程
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
 msgstr "如果你隐藏空块,你将不能改变其配置,直到它变得不再是空并可见时。"
 
-#: admin_site_config.php:185
+#: admin_site_config.php:192
 #, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "如果你选择一个不同的文件夹，你还必须将所有文件（除了config.ini.php，index.php和。htaccess文件），从现有的文件夹到新的文件夹。"
@@ -7365,20 +7365,20 @@ msgstr "如果你选择一个不同的文件夹，你还必须将所有媒体文
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr "如果你显示活着人信息给游客，所有其他的隐私限制被忽略。做到这一点只有在树中的所有数据是公开的。"
 
-#: setup.php:182
+#: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr "如果超过这些限制,你可能会遇到服务器访问超时或空白页。"
 
-#: admin_site_config.php:512
+#: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "如果您使用下面的跟踪和分析服务之一，webtrees可以自动添加跟踪代码。"
 
-#: setup.php:184
+#: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
 msgstr "如果您的服务器安全政策允许,您可以使用webtrees管理页面增加内存或CPU时间。或者您联系服务器的管理员。"
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:303
+#: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
 msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/</b>和<b> http://webtrees.example.com/</b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
 
@@ -7468,7 +7468,7 @@ msgid "Include the individual’s immediate family"
 msgstr "包括这个人的直系亲属吗?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6778
+#: app/Stats.php:6777
 msgid "India"
 msgstr "印度"
 
@@ -7480,7 +7480,7 @@ msgstr ""
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:547 ancestry.php:52
-#: app/Functions/FunctionsEdit.php:848 app/GedcomTag.php:532
+#: app/Functions/FunctionsEdit.php:849 app/GedcomTag.php:532
 #: app/Module/ChartsBlockModule.php:215 app/Module/GoogleMapsModule.php:730
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
 #: app/Module/StoriesModule.php:375 app/Module/StoriesModule.php:459
@@ -7541,7 +7541,7 @@ msgstr "寿命最长"
 #: app/Functions/FunctionsPrintLists.php:1433
 #: app/Module/FamilyTreeStatisticsModule.php:107
 #: app/Module/FamilyTreeStatisticsModule.php:314
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:171
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:171
 #: app/Module/SlideShowModule.php:264 app/Theme/AbstractTheme.php:1504
 #: calendar.php:413 descendancy.php:65 gedrecord.php:111 indilist.php:130
 #: indilist.php:133 mediaviewer.php:100 modules_v3/fact_sources/report.xml:54
@@ -7562,7 +7562,7 @@ msgid "Individuals with surname %s"
 msgstr "姓 %s 的人"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6777
+#: app/Stats.php:6776
 msgid "Indonesia"
 msgstr "印尼"
 
@@ -7602,11 +7602,11 @@ msgstr "交互树"
 msgid "Interactive tree of %s"
 msgstr "%s 的交互树"
 
-#: app/Functions/FunctionsEdit.php:246
+#: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
 msgstr "内部消息"
 
-#: app/Functions/FunctionsEdit.php:247
+#: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
 msgstr "内部消息和电子邮件"
 
@@ -7640,27 +7640,27 @@ msgid "Invalid date"
 msgstr "无效日期"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6782
+#: app/Stats.php:6781
 msgid "Iran"
 msgstr "伊朗"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6783
+#: app/Stats.php:6782
 msgid "Iraq"
 msgstr "伊拉克"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6781
+#: app/Stats.php:6780
 msgid "Ireland"
 msgstr "爱尔兰"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6779
+#: app/Stats.php:6778
 msgid "Isle of Man"
 msgstr "马恩岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6785
+#: app/Stats.php:6784
 msgid "Israel"
 msgstr "以色列"
 
@@ -7669,7 +7669,7 @@ msgid "It can take several minutes to download and install the upgrade. Be patie
 msgstr "这可能需要几分钟下载并安装升级。 耐心一点。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6786
+#: app/Stats.php:6785
 msgid "Italy"
 msgstr "意大利"
 
@@ -7703,7 +7703,7 @@ msgid "Jalali"
 msgstr "波斯历"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6787
+#: app/Stats.php:6786
 msgid "Jamaica"
 msgstr "牙买加"
 
@@ -7727,13 +7727,13 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "一月"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:644
+#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "一月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6790
+#: app/Stats.php:6789
 msgid "Japan"
 msgstr "日本"
 
@@ -7753,7 +7753,7 @@ msgid "John /DOE/"
 msgstr "乔 /布洛格斯/"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6789
+#: app/Stats.php:6788
 msgid "Jordan"
 msgstr "乔丹"
 
@@ -7792,7 +7792,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "七月"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "七月"
@@ -7865,7 +7865,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "六月"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "六月"
@@ -7876,7 +7876,7 @@ msgid "Kansas City, Missouri, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6791
+#: app/Stats.php:6790
 msgid "Kazakhstan"
 msgstr "哈萨克斯坦"
 
@@ -7901,7 +7901,7 @@ msgid "Keep the existing “last change” information"
 msgstr "保留现有的“最后一变”的信息"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6792
+#: app/Stats.php:6791
 msgid "Kenya"
 msgstr "肯尼亚"
 
@@ -7944,7 +7944,7 @@ msgid "Kiev, Ukraine"
 msgstr "前南斯拉夫的马其顿共和国、乌克兰基辅"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6795
+#: app/Stats.php:6794
 msgid "Kiribati"
 msgstr "基里巴斯"
 
@@ -7978,17 +7978,17 @@ msgid "Kona, Hawaii, United States"
 msgstr "夏威夷科纳,夏威夷"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6797
+#: app/Stats.php:6796
 msgid "Korea"
 msgstr "韩国"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6798
+#: app/Stats.php:6797
 msgid "Kuwait"
 msgstr "科威特"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6793
+#: app/Stats.php:6792
 msgid "Kyrgyzstan"
 msgstr "吉尔吉斯斯坦"
 
@@ -8022,7 +8022,7 @@ msgstr "在图表中的LDS条例码"
 msgid "LDS spouse sealing"
 msgstr "LDS 配偶密封"
 
-#: app/Functions/FunctionsPrint.php:479
+#: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
 msgstr "LDS 寺庙"
 
@@ -8039,27 +8039,27 @@ msgstr "横图表"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
-#: admin_site_config.php:632 admin_trees_config.php:635 admin_users.php:406
+#: admin_site_config.php:639 admin_trees_config.php:635 admin_users.php:406
 #: admin_users.php:848 app/GedcomTag.php:540 app/Theme/AbstractTheme.php:1408
-#: edituser.php:238 setup.php:108
+#: edituser.php:238 setup.php:111
 msgid "Language"
 msgstr "语言"
 
 #. I18N: Menu entry
-#: admin_site_config.php:146 app/Theme/AdministrationTheme.php:98
+#: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
 msgstr "语言"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6799
+#: app/Stats.php:6798
 msgid "Laos"
 msgstr "老挝"
 
-#: setup.php:177
+#: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
 msgstr "大型系统(50000人):64 - 128 mb,40 - 80秒"
 
-#: app/Stats.php:4856 statistics.php:318
+#: app/Stats.php:4855 statistics.php:318
 msgid "Largest families"
 msgstr "最大家庭"
 
@@ -8125,7 +8125,7 @@ msgid "Latitude"
 msgstr "纬度"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6809
+#: app/Stats.php:6808
 msgid "Latvia"
 msgstr "拉脱维亚"
 
@@ -8137,8 +8137,8 @@ msgstr "布局"
 msgid "Leave the password blank if you want to keep the current password."
 msgstr "如果你想要保持当前的密码保留空白。"
 
-#: admin_site_config.php:203 admin_site_config.php:222
-#: admin_site_config.php:290 admin_site_config.php:304
+#: admin_site_config.php:210 admin_site_config.php:229
+#: admin_site_config.php:297 admin_site_config.php:311
 msgid "Leave this blank to use the default value."
 msgstr "如果这里留空,将使用缺省值。"
 
@@ -8148,7 +8148,7 @@ msgid "Leaves"
 msgstr "未录入孩子的"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6800
+#: app/Stats.php:6799
 msgid "Lebanon"
 msgstr "黎巴嫩"
 
@@ -8180,7 +8180,7 @@ msgid "Length of marriage"
 msgstr "婚姻长度"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6806
+#: app/Stats.php:6805
 msgid "Lesotho"
 msgstr "莱索托"
 
@@ -8208,17 +8208,17 @@ msgid "Level"
 msgstr "层次"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6801
+#: app/Stats.php:6800
 msgid "Liberia"
 msgstr "利比里亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6802
+#: app/Stats.php:6801
 msgid "Libya"
 msgstr "利比亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6804
+#: app/Stats.php:6803
 msgid "Liechtenstein"
 msgstr "列支敦士登"
 
@@ -8292,7 +8292,7 @@ msgid "Lists"
 msgstr "列表"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6807
+#: app/Stats.php:6806
 msgid "Lithuania"
 msgstr "立陶宛"
 
@@ -8390,22 +8390,22 @@ msgid "Lubbock, Texas, United States"
 msgstr "卢博克市,德克萨斯州"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6808
+#: app/Stats.php:6807
 msgid "Luxembourg"
 msgstr "卢森堡"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6810
+#: app/Stats.php:6809
 msgid "Macau"
 msgstr "澳门"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6819
+#: app/Stats.php:6818
 msgid "Macedonia"
 msgstr "马其顿"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6815
+#: app/Stats.php:6814
 msgid "Madagascar"
 msgstr "马达加斯加"
 
@@ -8424,7 +8424,7 @@ msgstr "杂志"
 msgid "Mailing name"
 msgstr "邮件名称"
 
-#: app/Functions/FunctionsEdit.php:249
+#: app/Functions/FunctionsEdit.php:250
 msgid "Mailto link"
 msgstr "mailto链接"
 
@@ -8433,23 +8433,23 @@ msgid "Main section blocks"
 msgstr "主要部分"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6831
+#: app/Stats.php:6830
 msgid "Malawi"
 msgstr "马拉维"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6832
+#: app/Stats.php:6831
 msgid "Malaysia"
 msgstr "马来西亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6816
+#: app/Stats.php:6815
 msgid "Maldives"
 msgstr "马尔代夫"
 
 #: app/Controller/IndividualController.php:238
 #: app/Controller/IndividualController.php:241
-#: app/Functions/FunctionsEdit.php:670 app/Stats.php:5578 calendar.php:631
+#: app/Functions/FunctionsEdit.php:671 app/Stats.php:5577 calendar.php:631
 #: statisticsplot.php:900 statisticsplot.php:950 statisticsplot.php:1004
 #: statisticsplot.php:1054 statisticsplot.php:1108 statisticsplot.php:1158
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
@@ -8468,12 +8468,12 @@ msgid "Males"
 msgstr "男性"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6820
+#: app/Stats.php:6819
 msgid "Mali"
 msgstr "马里"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6821
+#: app/Stats.php:6820
 msgid "Malta"
 msgstr "马耳他"
 
@@ -8540,7 +8540,7 @@ msgid "Many genealogy programs create GEDCOM files with custom tags, and webtree
 msgstr "许多家谱程序创建自定义标签的GEDCOM文件，webtrees最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
 
 #. I18N: Help text for the "Sending server name" site configuration setting
-#: admin_site_config.php:426
+#: admin_site_config.php:433
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr "许多邮件服务器需要发送服务器验证，用一个有效的域名。"
 
@@ -8571,7 +8571,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "三月"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "三月"
@@ -8813,12 +8813,12 @@ msgid "Married surname"
 msgstr "婚后姓"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6818
+#: app/Stats.php:6817
 msgid "Marshall Islands"
 msgstr "马绍尔群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6829
+#: app/Stats.php:6828
 msgid "Martinique"
 msgstr "马提尼克"
 
@@ -8846,12 +8846,12 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "精确匹配的文本,除非有关键字。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6827
+#: app/Stats.php:6826
 msgid "Mauritania"
 msgstr "毛里塔尼亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6830
+#: app/Stats.php:6829
 msgid "Mauritius"
 msgstr "毛里求斯"
 
@@ -8894,13 +8894,13 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "五月"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "五月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6833
+#: app/Stats.php:6832
 msgid "Mayotte"
 msgstr "马约特"
 
@@ -8997,7 +8997,7 @@ msgstr "健康情况"
 msgid "Mediterranio"
 msgstr "地中海"
 
-#: setup.php:175
+#: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr "中型系统(5000人):32 - 64 mb,20 - 40秒"
 
@@ -9045,7 +9045,7 @@ msgid "Member"
 msgstr "成员"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:196
+#: admin_site_config.php:203
 msgid "Memory limit"
 msgstr "内存限制"
 
@@ -9098,7 +9098,7 @@ msgstr "消息"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
-#: admin_site_config.php:315 app/Module/UserMessagesModule.php:33
+#: admin_site_config.php:322 app/Module/UserMessagesModule.php:33
 msgid "Messages"
 msgstr "消息"
 
@@ -9127,7 +9127,7 @@ msgid "Messidor"
 msgstr "第十月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6817
+#: app/Stats.php:6816
 msgid "Mexico"
 msgstr "墨西哥"
 
@@ -9147,7 +9147,7 @@ msgid "Microfilm"
 msgstr "微电影"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6752
+#: app/Stats.php:6751
 msgid "Micronesia"
 msgstr "密克罗尼西亚"
 
@@ -9219,17 +9219,17 @@ msgid "Modules"
 msgstr "模块"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6814
+#: app/Stats.php:6813
 msgid "Moldova"
 msgstr "摩尔多瓦"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "星期一"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6813
+#: app/Stats.php:6812
 msgid "Monaco"
 msgstr "摩纳哥"
 
@@ -9238,12 +9238,12 @@ msgid "Monday"
 msgstr "星期一"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6823
+#: app/Stats.php:6822
 msgid "Mongolia"
 msgstr "蒙古"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6825
+#: app/Stats.php:6824
 msgid "Montenegro"
 msgstr "黑山共和国"
 
@@ -9265,7 +9265,7 @@ msgstr "月"
 msgid "Month of birth"
 msgstr "出生月份"
 
-#: app/Stats.php:4736 statistics.php:530 statisticsplot.php:1028
+#: app/Stats.php:4735 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
 msgstr "第一个孩子出生的月份"
 
@@ -9296,7 +9296,7 @@ msgid "Montreal, Quebec, Canada"
 msgstr "蒙特利尔,魁北克,加拿大"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6828
+#: app/Stats.php:6827
 msgid "Montserrat"
 msgstr "蒙特塞拉特"
 
@@ -9334,12 +9334,12 @@ msgid "More news articles"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6812
+#: app/Stats.php:6811
 msgid "Morocco"
 msgstr "摩洛哥"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:374
+#: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
 msgstr "大多数的SMTP服务器需要一个密码。"
 
@@ -9350,15 +9350,15 @@ msgid "Most common surnames"
 msgstr "最常见的姓氏"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
-#: admin_site_config.php:413
+#: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
 msgstr "大多数服务器不使用安全连接。"
 
-#: setup.php:279
+#: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr "大多数的网站都是配置为localhost。这意味着您的数据库和web服务器运行在同一台服务器上。"
 
-#: setup.php:283
+#: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
 msgstr "大多数的网站都是配置为使用默认值3306。"
 
@@ -9382,7 +9382,7 @@ msgstr "母亲"
 msgid "Mother: %s"
 msgstr "母亲: %s"
 
-#: app/Functions/FunctionsPrint.php:267
+#: app/Functions/FunctionsPrint.php:268
 msgid "Mother’s age"
 msgstr "母亲的年龄"
 
@@ -9421,7 +9421,7 @@ msgid "Move up"
 msgstr "上移"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6826
+#: app/Stats.php:6825
 msgid "Mozambique"
 msgstr "莫桑比克"
 
@@ -9492,13 +9492,13 @@ msgid "MySQL variables"
 msgstr "MySQL的变量"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6822
+#: app/Stats.php:6821
 msgid "Myanmar"
 msgstr "缅甸"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:104
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:525
 #: modules_v3/bdm_report/report.xml:5 modules_v3/bdm_report/report.xml:49
@@ -9554,7 +9554,7 @@ msgid "Namesake"
 msgstr "同名"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6834
+#: app/Stats.php:6833
 msgid "Namibia"
 msgstr "纳米比亚"
 
@@ -9582,7 +9582,7 @@ msgid "Naturalization"
 msgstr "移入"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6845
+#: app/Stats.php:6844
 msgid "Nauru"
 msgstr "瑙鲁"
 
@@ -9597,12 +9597,12 @@ msgid "Nauvoo (original), Illinois, United States"
 msgstr "诺伍，伊利诺斯（原）"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6844
+#: app/Stats.php:6843
 msgid "Nepal"
 msgstr "尼泊尔"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6842
+#: app/Stats.php:6841
 msgid "Netherlands"
 msgstr "荷兰"
 
@@ -9628,7 +9628,7 @@ msgid "Never married"
 msgstr "光棍"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6835
+#: app/Stats.php:6834
 msgid "New Caledonia"
 msgstr "新喀里多尼亚"
 
@@ -9638,7 +9638,7 @@ msgid "New York, New York, United States"
 msgstr "纽约,纽约"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6846
+#: app/Stats.php:6845
 msgid "New Zealand"
 msgstr "新西兰"
 
@@ -9682,7 +9682,7 @@ msgid "Next image"
 msgstr "下一个图像"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6839
+#: app/Stats.php:6838
 msgid "Nicaragua"
 msgstr "尼加拉瓜"
 
@@ -9692,12 +9692,12 @@ msgid "Nickname"
 msgstr "昵称"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6836
+#: app/Stats.php:6835
 msgid "Niger"
 msgstr "尼日尔"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6838
+#: app/Stats.php:6837
 msgid "Nigeria"
 msgstr "尼日利亚"
 
@@ -9726,7 +9726,7 @@ msgid "Nissan"
 msgstr "第七月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6841
+#: app/Stats.php:6840
 msgid "Niue"
 msgstr "纽埃"
 
@@ -9779,7 +9779,7 @@ msgstr "没有日历转换"
 msgid "No children"
 msgstr "沒有孩子"
 
-#: app/Functions/FunctionsEdit.php:250
+#: app/Functions/FunctionsEdit.php:251
 msgid "No contact"
 msgstr "没有接触"
 
@@ -9872,7 +9872,7 @@ msgstr "没有找到地方"
 msgid "No places have been found."
 msgstr "任何找到地方。"
 
-#: admin_site_config.php:120
+#: admin_site_config.php:127
 msgid "No predefined text"
 msgstr "没有预定义的文本"
 
@@ -9889,11 +9889,11 @@ msgstr "没有要显示的记录"
 msgid "No results found."
 msgstr "没有结果。"
 
-#: app/Stats.php:5902
+#: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
 msgstr "没有登录，没有匿名用户"
 
-#: app/Functions/FunctionsEdit.php:633
+#: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
 msgstr "没有寺庙—生活条例"
 
@@ -9933,7 +9933,7 @@ msgid "Noon"
 msgstr "中午"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6837
+#: app/Stats.php:6836
 msgid "Norfolk Island"
 msgstr "诺福克岛"
 
@@ -9943,22 +9943,22 @@ msgid "Normally, any changes made to a family tree need to be reviewed by a mode
 msgstr "通常，家谱的任何修改都需要由主持人批准。此选项允许用户将不需要主持人的批准的变更。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6857
+#: app/Stats.php:6856
 msgid "North Korea"
 msgstr "北韩"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6840
+#: app/Stats.php:6839
 msgid "Northern Ireland"
 msgstr "北爱尔兰自治区"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6824
+#: app/Stats.php:6823
 msgid "Northern Mariana Islands"
 msgstr "北马里亚纳群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6843
+#: app/Stats.php:6842
 msgid "Norway"
 msgstr "挪威"
 
@@ -9998,7 +9998,7 @@ msgstr "用户没有确认"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
-#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:638
+#: app/Functions/FunctionsPrint.php:174 app/GedcomTag.php:638
 #: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
@@ -10053,7 +10053,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "十一月"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "十一月"
@@ -10064,8 +10064,8 @@ msgid "Nuku’Alofa, Tonga"
 msgstr "汤加努库阿洛法"
 
 #. I18N: gedcom tag NCHI
-#: app/GedcomTag.php:626 app/Stats.php:4941 app/Stats.php:4943
-#: app/Stats.php:4945 statistics.php:555 statisticsplot.php:1332
+#: app/GedcomTag.php:626 app/Stats.php:4940 app/Stats.php:4942
+#: app/Stats.php:4944 statistics.php:555 statisticsplot.php:1332
 msgid "Number of children"
 msgstr "孩子数目"
 
@@ -10075,7 +10075,7 @@ msgstr "孩子数目"
 msgid "Number of days to show"
 msgstr "显示天数"
 
-#: app/Stats.php:5210 statistics.php:307
+#: app/Stats.php:5209 statistics.php:307
 msgid "Number of families without children"
 msgstr "没有孩子的家庭数量"
 
@@ -10148,7 +10148,7 @@ msgid "Occupations"
 msgstr "职业"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6860
+#: app/Stats.php:6859
 msgid "Occupied Palestinian Territory"
 msgstr "被占领的巴勒斯坦领土"
 
@@ -10177,7 +10177,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "十月"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "十月"
@@ -10234,7 +10234,7 @@ msgid "Olivia"
 msgstr "奥利维亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6847
+#: app/Stats.php:6846
 msgid "Oman"
 msgstr "阿曼"
 
@@ -10247,7 +10247,7 @@ msgstr "在这一天"
 msgid "On this day…"
 msgstr "在这天…"
 
-#: app/Functions/FunctionsEdit.php:228
+#: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
 #: app/Functions/FunctionsPrintFacts.php:443
 #: app/Functions/FunctionsPrintFacts.php:839
@@ -10259,11 +10259,11 @@ msgstr "只有管理员可以编辑"
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr "哎呀！服务器无法连接到数据库服务器。它可能是忙碌的，正在进行维护或异常。几分钟后<a href =\"index.php\">再试</a>或与网站管理员联系。"
 
-#: setup.php:210
+#: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
 msgstr "注意！webtrees 不能在这个目录创建文件。"
 
-#: app/Functions/FunctionsPrint.php:470
+#: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
 
@@ -10331,7 +10331,7 @@ msgid "Orlando, Florida, United States"
 msgstr "奥兰多,佛罗里达"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1944 app/Stats.php:5454 app/Stats.php:5873
+#: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
 msgstr "其他"
 
@@ -10384,12 +10384,12 @@ msgstr "下午."
 msgid "PHP blocked the file because of its extension."
 msgstr "PHP阻止的文件扩展。"
 
-#: setup.php:137
+#: setup.php:140
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "PHP设置 \"%1$s \" 是禁用的。以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
 
-#: setup.php:126
+#: setup.php:129
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
 msgstr "PHP扩展 “%s”是禁用的。如果不启用不能安装webtrees。请联系服务器的管理员启用它。"
@@ -10403,13 +10403,13 @@ msgstr "PHP未能写入磁盘。"
 msgid "PHP information"
 msgstr "PHP 信息"
 
-#: setup.php:146
+#: setup.php:149
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "PHP设置 \"%1$s \" 是禁用的。没有它,以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:211
+#: admin_site_config.php:218
 msgid "PHP time limit"
 msgstr "PHP时间限制"
 
@@ -10457,12 +10457,12 @@ msgid "Painting"
 msgstr "绘画"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6848
+#: app/Stats.php:6847
 msgid "Pakistan"
 msgstr "巴基斯坦"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6853
+#: app/Stats.php:6852
 msgid "Palau"
 msgstr "帕劳"
 
@@ -10477,7 +10477,7 @@ msgid "Palmyra, New York, United States"
 msgstr "巴尔米拉,纽约"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6849
+#: app/Stats.php:6848
 msgid "Panama"
 msgstr "巴拿马"
 
@@ -10492,12 +10492,12 @@ msgid "Papeete, Tahiti"
 msgstr "帕、塔希提"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6854
+#: app/Stats.php:6853
 msgid "Papua New Guinea"
 msgstr "巴布亚新几内亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6859
+#: app/Stats.php:6858
 msgid "Paraguay"
 msgstr "巴拉圭"
 
@@ -10512,14 +10512,14 @@ msgstr "父母"
 msgid "Parents and siblings"
 msgstr "父母和兄弟姐妹"
 
-#: app/Functions/FunctionsPrint.php:279
+#: app/Functions/FunctionsPrint.php:280
 msgid "Parent’s age"
 msgstr "父母的年龄"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:395 admin_users.php:338
+#: admin_site_config.php:402 admin_users.php:338
 #: app/Module/LoginBlockModule.php:79 edituser.php:213 login.php:197
-#: login.php:259 login.php:450 login.php:530 setup.php:433
+#: login.php:259 login.php:450 login.php:530 setup.php:436
 msgid "Password"
 msgstr "密码"
 
@@ -10598,12 +10598,12 @@ msgid "Perth, Australia"
 msgstr "澳大利亚珀斯"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6851
+#: app/Stats.php:6850
 msgid "Peru"
 msgstr "秘鲁"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6852
+#: app/Stats.php:6851
 msgid "Philippines"
 msgstr "菲律宾"
 
@@ -10673,7 +10673,7 @@ msgid "Pink Plastic"
 msgstr "粉红色"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6850
+#: app/Stats.php:6849
 msgid "Pitcairn"
 msgstr "皮特克恩"
 
@@ -10695,7 +10695,7 @@ msgstr "地点"
 
 #: app/Module/GoogleMapsModule.php:176 app/Module/GoogleMapsModule.php:294
 #: app/Module/GoogleMapsModule.php:827 app/Module/GoogleMapsModule.php:1314
-#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2297
+#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2296
 #: app/Module/GoogleMapsModule.php:3500
 msgid "Place check"
 msgstr "地方检查"
@@ -10918,7 +10918,7 @@ msgid "Pluviose"
 msgstr "第五月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6855
+#: app/Stats.php:6854
 msgid "Poland"
 msgstr "波兰"
 
@@ -10928,7 +10928,7 @@ msgid "Polish"
 msgstr "波兰"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:356 setup.php:281
+#: admin_site_config.php:363 setup.php:284
 msgid "Port number"
 msgstr "端口号"
 
@@ -10949,7 +10949,7 @@ msgid "Portrait"
 msgstr "竖图表"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6858
+#: app/Stats.php:6857
 msgid "Portugal"
 msgstr "葡萄牙"
 
@@ -10987,15 +10987,15 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "第九月"
 
-#: admin_site_config.php:122
+#: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "管理员审核请求用户帐户的预定义的文本"
 
-#: admin_site_config.php:121
+#: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
 msgstr "所有用户申请用户账户的预定义的文本"
 
-#: admin_site_config.php:123
+#: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
 msgstr "家庭成员可以申请用户帐户的预定义的文本"
 
@@ -11105,12 +11105,12 @@ msgid "Publication"
 msgstr "出版"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6856
+#: app/Stats.php:6855
 msgid "Puerto Rico"
 msgstr "波多黎各"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6862
+#: app/Stats.php:6861
 msgid "Qatar"
 msgstr "卡塔尔"
 
@@ -11581,7 +11581,7 @@ msgid "Repository name"
 msgstr "库名称"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6720
+#: app/Stats.php:6719
 msgid "Republic of the Congo"
 msgstr "刚果(布拉柴维尔)"
 
@@ -11653,7 +11653,7 @@ msgid "Retirement"
 msgstr "退休"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6863
+#: app/Stats.php:6862
 msgid "Reunion"
 msgstr "留尼旺岛"
 
@@ -11672,7 +11672,7 @@ msgid "Role"
 msgstr "角色"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6864
+#: app/Stats.php:6863
 msgid "Romania"
 msgstr "罗马尼亚"
 
@@ -11706,16 +11706,16 @@ msgid "Russell"
 msgstr "拉塞尔"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6865
+#: app/Stats.php:6864
 msgid "Russia"
 msgstr "俄罗斯"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6866
+#: app/Stats.php:6865
 msgid "Rwanda"
 msgstr "卢旺达"
 
-#: admin_site_config.php:338
+#: admin_site_config.php:345
 msgid "SMTP mail server"
 msgstr "SMTP邮件服务器"
 
@@ -11754,27 +11754,27 @@ msgid "Sage"
 msgstr "圣人"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6875
+#: app/Stats.php:6874
 msgid "Saint Helena"
 msgstr "圣赫勒拿"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6796
+#: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
 msgstr "圣基茨和尼维斯"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6803
+#: app/Stats.php:6802
 msgid "Saint Lucia"
 msgstr "圣卢西亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6882
+#: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
 msgstr "圣皮埃尔和密克隆"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6915
+#: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
 msgstr "圣文森特和格林纳丁斯"
 
@@ -11784,7 +11784,7 @@ msgid "Salt Lake City, Utah, United States"
 msgstr "犹他州盐湖城"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6923
+#: app/Stats.php:6922
 msgid "Samoa"
 msgstr "萨摩亚"
 
@@ -11804,7 +11804,7 @@ msgid "San Jose, Costa Rica"
 msgstr "圣何塞,哥斯达黎加"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6880
+#: app/Stats.php:6879
 msgid "San Marino"
 msgstr "圣马力诺"
 
@@ -11829,12 +11829,12 @@ msgid "Sao Paulo, Brazil"
 msgstr "圣保罗,巴西"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6884
+#: app/Stats.php:6883
 msgid "Sao Tome and Principe"
 msgstr "圣多美和普林西比"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "周六"
 
@@ -11847,7 +11847,7 @@ msgid "Saturday"
 msgstr "星期六"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6867
+#: app/Stats.php:6866
 msgid "Saudi Arabia"
 msgstr "沙特阿拉伯"
 
@@ -11856,7 +11856,7 @@ msgid "School or college"
 msgstr "学校或学院"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6868
+#: app/Stats.php:6867
 msgid "Scotland"
 msgstr "苏格兰"
 
@@ -11953,12 +11953,12 @@ msgid "Second record"
 msgstr "第二个记录"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:408
+#: admin_site_config.php:415
 msgid "Secure connection"
 msgstr "安全连接"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:613
+#: admin_site_config.php:620
 msgid "Security code"
 msgstr "安全码"
 
@@ -11982,7 +11982,7 @@ msgstr "选择要导入的GEDCOM文件"
 msgid "Select a block and use the arrows to move it."
 msgstr "选中一个块名称,然后点击一个箭头图标移动那选中块到箭头方向。"
 
-#: app/Functions/FunctionsEdit.php:404 reportengine.php:244
+#: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
 msgstr "选择日期"
 
@@ -12015,7 +12015,7 @@ msgstr "选择所需的计算时间间隔"
 msgid "Select the facts and events to keep from both records."
 msgstr "选择的事实和事件，以防止重复的记录。"
 
-#: admin_site_config.php:627
+#: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
 msgstr "选择将在菜单中显示的语言。"
 
@@ -12043,7 +12043,7 @@ msgid "Send"
 msgstr "发送"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
-#: app/Stats.php:5931 app/Stats.php:5933 edit_changes.php:201 message.php:103
+#: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
 msgid "Send a message"
 msgstr "发送消息"
 
@@ -12070,22 +12070,22 @@ msgid "Send out reminder emails"
 msgstr "发送提醒邮件吗?"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:328
+#: admin_site_config.php:335
 msgid "Sender name"
 msgstr "发件人名称"
 
 #. I18N: Menu entry
-#: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
+#: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
 msgstr "电子邮件发送地址"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:421
+#: admin_site_config.php:428
 msgid "Sending server name"
 msgstr "发送服务器名称"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6871
+#: app/Stats.php:6870
 msgid "Senegal"
 msgstr "塞内加尔"
 
@@ -12119,7 +12119,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "九月"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "九月"
@@ -12130,7 +12130,7 @@ msgid "Septidi"
 msgstr "周七"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6872
+#: app/Stats.php:6871
 msgid "Serbia"
 msgstr "塞尔维亚"
 
@@ -12154,12 +12154,12 @@ msgid "Server information"
 msgstr "服务器信息"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:343 setup.php:277
+#: admin_site_config.php:350 setup.php:280
 msgid "Server name"
 msgstr "服务器名称"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:284
+#: admin_site_config.php:291
 msgid "Session timeout"
 msgstr "会话超时"
 
@@ -12212,7 +12212,7 @@ msgstr "将状态设置为\"批准\"。"
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr "此设置<b>是</b>将显示个人和家庭的资源链接，点击让用户打开另一个包含从GEDCOM文件取出来原始数据的窗口。"
 
-#: setup.php:90
+#: setup.php:93
 msgid "Setup wizard for webtrees"
 msgstr "webtrees 安装向导"
 
@@ -12222,7 +12222,7 @@ msgid "Sextidi"
 msgstr "周六"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6891
+#: app/Stats.php:6890
 msgid "Seychelles"
 msgstr "塞舌尔"
 
@@ -12412,7 +12412,7 @@ msgid "Show a download link in the media viewer"
 msgstr "显示媒体展示的下载链接"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:499
+#: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr "在《请求新的用户帐户》页面显示使用协议"
 
@@ -12537,7 +12537,7 @@ msgid "Show individuals who died within the last 100 years."
 msgstr "显示100年内去世的人。"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:271
+#: admin_site_config.php:278
 msgid "Show list of family trees"
 msgstr "显示家谱的列表"
 
@@ -12708,8 +12708,8 @@ msgid "Show thumbnail images in charts and family groups."
 msgstr "在个人信息里显示图像"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
-#: app/Functions/FunctionsEdit.php:227
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:271
 #: app/Functions/FunctionsPrintFacts.php:440
 #: app/Functions/FunctionsPrintFacts.php:836
@@ -12719,8 +12719,8 @@ msgstr "显示给管理员"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:205
-#: app/Functions/FunctionsEdit.php:226
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
+#: app/Functions/FunctionsEdit.php:227
 #: app/Functions/FunctionsPrintFacts.php:268
 #: app/Functions/FunctionsPrintFacts.php:437
 #: app/Functions/FunctionsPrintFacts.php:833
@@ -12730,8 +12730,8 @@ msgstr "显示给成员"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:204
-#: app/Functions/FunctionsEdit.php:225
+#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:205
+#: app/Functions/FunctionsEdit.php:226
 #: app/Functions/FunctionsPrintFacts.php:265
 #: app/Functions/FunctionsPrintFacts.php:434
 #: app/Functions/FunctionsPrintFacts.php:830
@@ -12776,7 +12776,7 @@ msgid "Sidebars"
 msgstr "侧边栏"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6878
+#: app/Stats.php:6877
 msgid "Sierra Leone"
 msgstr "塞拉利昂"
 
@@ -12791,12 +12791,12 @@ msgid "Sign out"
 msgstr "注销"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:446
+#: admin_site_config.php:453
 msgid "Sign-in URL"
 msgstr "登录URL"
 
 #. I18N: Menu entry
-#: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
+#: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
 msgstr "登录和注册"
 
@@ -12805,7 +12805,7 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "阳历被认为是更简单的日期。指定一个日期,可以在日期前添加一个关键字。如果这个月或年格式使日期明确这个关键字是可选的。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6873
+#: app/Stats.php:6872
 msgid "Singapore"
 msgstr "新加坡"
 
@@ -12815,8 +12815,8 @@ msgid "Sister"
 msgstr "姐妹"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:562 admin_site_config.php:578
-#: admin_site_config.php:603
+#: admin_site_config.php:569 admin_site_config.php:585
+#: admin_site_config.php:610
 msgid "Site identification code"
 msgstr "站点识别代码"
 
@@ -12826,12 +12826,12 @@ msgid "Site members can send each other messages. You can choose to how these me
 msgstr "网站成员可以发送互相传递信息。 您可以选择这些邮件是否发送给您，或选择根本不接收他们。"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:520 admin_site_config.php:541
+#: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
 msgstr "网站验证码"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
-#: admin_site_config.php:531 admin_site_config.php:552
+#: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr "webtrees 安装在子文件夹中时网站验证代码不能工作。"
 
@@ -12899,16 +12899,16 @@ msgid "Slide show"
 msgstr "幻灯片"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6886
+#: app/Stats.php:6885
 msgid "Slovakia"
 msgstr "斯洛伐克"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6887
+#: app/Stats.php:6886
 msgid "Slovenia"
 msgstr "斯洛文尼亚"
 
-#: setup.php:173
+#: setup.php:176
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "小型系统(500人):16-32MB,10至20秒"
 
@@ -12923,12 +12923,12 @@ msgid "Social security number"
 msgstr "社会安全号码"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6877
+#: app/Stats.php:6876
 msgid "Solomon Islands"
 msgstr "所罗门群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6881
+#: app/Stats.php:6880
 msgid "Somalia"
 msgstr "索马里"
 
@@ -13057,7 +13057,7 @@ msgid "Sources to the events"
 msgstr "为事件添加资源"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6925
+#: app/Stats.php:6924
 msgid "South Africa"
 msgstr "南非"
 
@@ -13066,17 +13066,17 @@ msgid "South America"
 msgstr "南美"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6874
+#: app/Stats.php:6873
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "南乔治亚岛和南桑威奇群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6883
+#: app/Stats.php:6882
 msgid "South Sudan"
 msgstr "南苏丹"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6743
+#: app/Stats.php:6742
 msgid "Spain"
 msgstr "西班牙"
 
@@ -13119,7 +13119,7 @@ msgid "Spouses and children"
 msgstr "配偶和子女"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6805
+#: app/Stats.php:6804
 msgid "Sri Lanka"
 msgstr "斯里兰卡"
 
@@ -13186,7 +13186,7 @@ msgstr "统计图"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:321 admin_site_change.php:388
-#: app/Functions/FunctionsPrint.php:482 app/GedcomTag.php:804
+#: app/Functions/FunctionsPrint.php:483 app/GedcomTag.php:804
 msgid "Status"
 msgstr "状态"
 
@@ -13263,7 +13263,7 @@ msgid "Submitter"
 msgstr "提交者"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6869
+#: app/Stats.php:6868
 msgid "Sudan"
 msgstr "苏丹"
 
@@ -13272,7 +13272,7 @@ msgid "Suffixes"
 msgstr "后缀"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:658
+#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "周日"
 
@@ -13287,7 +13287,7 @@ msgid "Support and documentation can be found at %s."
 msgstr "支持和文档在 %s."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6885
+#: app/Stats.php:6884
 msgid "Suriname"
 msgstr "苏里南"
 
@@ -13333,7 +13333,7 @@ msgid "Suva, Fiji"
 msgstr "斐济苏瓦"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6876
+#: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
 msgstr "斯瓦尔巴群岛和扬马延岛群岛"
 
@@ -13343,17 +13343,17 @@ msgid "Swap individuals"
 msgstr "更换个人"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6889
+#: app/Stats.php:6888
 msgid "Swaziland"
 msgstr "斯威士兰"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6888
+#: app/Stats.php:6887
 msgid "Sweden"
 msgstr "瑞典"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6714
+#: app/Stats.php:6713
 msgid "Switzerland"
 msgstr "瑞士"
 
@@ -13367,7 +13367,7 @@ msgid "Synchronize family trees with GEDCOM files"
 msgstr "用GEDCOM文件同步家谱"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6892
+#: app/Stats.php:6891
 msgid "Syria"
 msgstr "叙利亚"
 
@@ -13375,7 +13375,7 @@ msgstr "叙利亚"
 msgid "Tab"
 msgstr "选项卡"
 
-#: setup.php:376
+#: setup.php:379
 msgid "Table prefix"
 msgstr "表前缀"
 
@@ -13395,12 +13395,12 @@ msgid "Taipei, Taiwan"
 msgstr "台北,台湾"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6906
+#: app/Stats.php:6905
 msgid "Taiwan"
 msgstr "台湾"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6897
+#: app/Stats.php:6896
 msgid "Tajikistan"
 msgstr "塔吉克斯坦"
 
@@ -13434,7 +13434,7 @@ msgid "Tamuz"
 msgstr "第十月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6907
+#: app/Stats.php:6906
 msgid "Tanzania"
 msgstr "坦桑尼亚"
 
@@ -13496,7 +13496,7 @@ msgid "Text"
 msgstr "文本"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6896
+#: app/Stats.php:6895
 msgid "Thailand"
 msgstr "泰国"
 
@@ -13684,7 +13684,7 @@ msgstr "文件夹 %s 已经被创建。"
 msgid "The folder %s has been deleted."
 msgstr "文件夹 %s 已被删除。"
 
-#: admin_site_config.php:188
+#: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr "文件夹可以全路径（例如/home/user_name/webtrees_data/）或相对的安装文件夹（例如./../ webtrees_data/）。"
 
@@ -13698,7 +13698,7 @@ msgstr "下面的事实和事件存在于多个记录中。"
 msgid "The following facts and events were only found in the record of %s."
 msgstr "以下的事实和事件，仅存在于 %s 记录。"
 
-#: setup.php:171
+#: setup.php:174
 msgid "The following list shows typical requirements."
 msgstr "下面的列表显示了典型的需求。"
 
@@ -13764,7 +13764,7 @@ msgstr "这个家谱中没有媒体文件。"
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr "你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br><br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br><br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
 
-#: setup.php:169
+#: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr "内存和CPU的要求取决于你的家谱的个体数目。"
 
@@ -13816,7 +13816,7 @@ msgstr "这是简短GEDCOM资源事件列表，完善旁边的列表，单击可
 msgid "The new files are currently located in the folder %s."
 msgstr "新的文件当前位于文件夹 %s。"
 
-#: admin_site_config.php:489
+#: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr "新用户在创建帐户之前，要确认他们的电子邮件地址。"
 
@@ -13824,16 +13824,16 @@ msgstr "新用户在创建帐户之前，要确认他们的电子邮件地址。
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
 msgstr "对指定的名称出现的次数会显示在地图上。如果你保留这个字段是空的，将使用最常见的姓。"
 
-#: setup.php:414
+#: setup.php:417
 msgid "The password needs to be at least six characters long."
 msgstr "密码必须至少六个字符长。"
 
 #. I18N: Help text for the "Password" site configuration setting
-#: admin_site_config.php:400
+#: admin_site_config.php:407
 msgid "The password required for authentication with the SMTP server."
 msgstr "SMTP服务器需要身份验证的密码。"
 
-#: admin_users.php:75 edituser.php:134 setup.php:416
+#: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
 msgstr "密码不匹配。"
 
@@ -13865,7 +13865,7 @@ msgstr "模块“%s”的首选项已被删除。"
 msgid "The preferences for the module “%s” have been updated."
 msgstr "已更新模块“%s”的首选项。"
 
-#: setup.php:378
+#: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让几个不同的应用程序共用相同的数据库。建议“wt_”，但可以是任何你想要的。"
 
@@ -13889,7 +13889,7 @@ msgstr "已经合并的记录“%1$s”和“%2$s”。"
 msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "正则表达式似乎包含错误。不能用。"
 
-#: setup.php:151
+#: setup.php:154
 msgid "The server configuration is OK."
 msgstr "服务器配正常。"
 
@@ -13929,11 +13929,11 @@ msgid "The thumbnail file %s does not exist."
 msgstr "缩略图文件 %s 不存在。"
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:289
+#: admin_site_config.php:296
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
 msgstr "一个webtrees会话仍然活动不需要登录的时间。默认值是7200秒，就是2小时。"
 
-#: admin_site_config.php:235 admin_users.php:427 edituser.php:253
+#: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr "时区是日期计算所必需的，例如知道今天的日期。"
 
@@ -13967,7 +13967,7 @@ msgid "The username or password is incorrect."
 msgstr "用户名或密码不正确。"
 
 #. I18N: Help text for the "Username" site configuration setting
-#: admin_site_config.php:387
+#: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
 msgstr "SMTP服务器需要身份验证的用户名称。"
 
@@ -14008,7 +14008,7 @@ msgstr "已更新的网站首选项。"
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr "网站 www.geonames.org 提供大型数据库的地名。 可以输入新的地名进行搜索。 若要使用此功能，必须注册一个免费帐户，在 www.geonames.org 和提供的用户名。"
 
-#: setup.php:506
+#: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "webtrees开发者对这个错误很感兴趣。如果你和他们联系，他们会帮助你解决问题。"
 
@@ -14036,7 +14036,7 @@ msgstr "选择主题下拉选择器"
 msgid "Themes"
 msgstr "主题"
 
-#: admin_site_config.php:251
+#: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "主题可以选择三个等级: 用户、 家谱和网站。 用户设置优先于家谱设置，反过来接管网站设置的优先级。 选择\"默认主题\"一个级别，则将在下一级使用的主题。"
 
@@ -14138,16 +14138,16 @@ msgstr "这个账户没有得到确认。请检查您的电子邮件以一个确
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表。每当有待定的更改将给主持人发送电子邮件。"
 
-#: setup.php:348 setup.php:359
+#: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
 msgstr "这个数据库表前缀似乎被另一应用程序使用。如果您现在有一个的phpgedview系统，你可以创建一个新的webtrees系统。导入您的phpgedview数据后配置。"
 
-#: setup.php:255
+#: setup.php:258
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
 msgstr "数据库只有运行在版本 %s 的MySQL 。这里您无法安装webtrees。"
 
-#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:442
+#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "该电子邮件地址将被用来发送你的密码提示和网站其他家庭成员网站通知和消息。"
 
@@ -14210,7 +14210,7 @@ msgid "This file is linked to another family tree on this server. It cannot be d
 msgstr "本文件被服务器上的另一个家谱数据库调用。它不能被删除，移动或重命名，至到这些调用已被删除。"
 
 #. I18N: Help text for the "Data folder" site configuration setting
-#: admin_site_config.php:179
+#: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr "将使用此文件夹webtrees存储媒体文件，GEDCOM文件，临时文件，这些文件可能包含私人数据，并且不应该在互联网上提供。"
 
@@ -14291,11 +14291,11 @@ msgstr "这个链接到你自己在家谱的记录。如果这是连接到错的
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
 msgstr "这是个人的<abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr>条例摘要。 \"B\"指示 LDS 洗礼。 \"E\"指示 LDS 养老。 \"S\"表示密封 LDS 配偶。 \"P\"表示 LDS 子-父密封。"
 
-#: setup.php:287 setup.php:291
+#: setup.php:290 setup.php:294
 msgid "This is case sensitive."
 msgstr "这是区分大小写的。"
 
-#: setup.php:374
+#: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
 msgstr "这是区分大小写的。如果这个名字的数据库已经不存在，webtrees将尝试为你创建新的。成功与否将取决于您的web服务器的权限设置,但是如果失败你会得到通知。"
 
@@ -14350,7 +14350,7 @@ msgid "This is the list of GEDCOM facts that your users can only add once to sou
 msgstr "用户只能为资源添加<u>一次</u>的GEDCOM事件列表。例如，如果TITL在这个列表中，用户将无法添加多个TITL记录到一个资源。在这个列表事实的名字，就不能同时出现在资源事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:348
+#: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台计算机上运行您的Web服务器。"
 
@@ -14359,7 +14359,7 @@ msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台�
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
 msgstr "这是宽度(像素),程序将自动生成缩略图时使用。默认设置是100。"
 
-#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:427
+#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 #, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "这是你的真实姓名,它会显示在屏幕上。"
@@ -14425,12 +14425,12 @@ msgstr "这个消息被发送,同时查看以下网址: "
 msgid "This message will be sent to %s"
 msgstr "这消息将被发送给 %s"
 
-#: setup.php:435
+#: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr "这必须是至少6个字符。它是区分大小写的。"
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:333
+#: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr "从这台服务器发送自动电子邮件时，在\"发件人\"字段中，使用此名称。"
 
@@ -14514,7 +14514,7 @@ msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
 msgstr[0] "此页面已被浏览 %s 次。"
 
-#: app/Module/GoogleMapsModule.php:2418
+#: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
 msgstr "没有这个地方坐标"
 
@@ -14597,7 +14597,7 @@ msgstr "这个角色有游客的权限,加上任何额外的访问授权的家�
 msgid "This server does not support secure downloads using HTTPS."
 msgstr "此服务器不支持安全的下载使用 HTTPS。"
 
-#: setup.php:180
+#: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr "这个服务器的内存限制是 %s MB和它的CPU时间限制是 %s 秒。"
@@ -14644,7 +14644,7 @@ msgstr "这种类型的链接在这里是不允许的。"
 msgid "This user account does not have access to any tree."
 msgstr "此用户帐户没有访问任何族谱。"
 
-#: setup.php:211
+#: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
 msgstr "这意味着你要将这个目录的权限改成777。"
 
@@ -14675,7 +14675,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "这将更新或多个最高级别的地方名称部分。 例如，\"墨西哥\"将匹配\"金塔纳罗奥州，墨西哥\"，但不是\"，新墨西哥圣菲\"。"
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "星期四"
 
@@ -14706,7 +14706,7 @@ msgid "Time"
 msgstr "时间"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:230 admin_users.php:422 edituser.php:247
+#: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
 msgstr "时区"
 
@@ -14721,7 +14721,7 @@ msgid "Timestamp"
 msgstr "时间戳"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6900
+#: app/Stats.php:6899
 msgid "Timor-Leste"
 msgstr "东帝汶"
 
@@ -14816,7 +14816,7 @@ msgid "To prevent visitors from accessing the website while you are in the middl
 msgstr "当您正在复制的文件，可以暂时在服务器上创建文件 %s 来阻止访问者访问网站。 如果它包含一条消息，它将显示给访客。"
 
 #. I18N: “Apache” is a software program.
-#: admin_site_config.php:182
+#: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "为了保护私人数据，webtrees使用Apache的配置文件（.htaccess文件），阻止访问此文件夹。如果你的web服务器不支持.htaccess文件，你不能限制访问此文件夹，那么你可以从Web文档选择另一个文件夹。"
 
@@ -14825,7 +14825,7 @@ msgid "To reduce the size of the download, you can compress the data into a .ZIP
 msgstr "为了减少下载的大小，您可以压缩成数据.ZIP 文件。 您需要解压缩.ZIP 文件后才能使用它。"
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
-#: admin_site_config.php:476
+#: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr "若要设置此为其他语言的文本，必须切换到该语言，并再次访问此页。"
 
@@ -14837,17 +14837,17 @@ msgstr "告诉搜索引擎网站地图是可用的，你可以使用下面的链
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr "告诉搜索引擎网站地图是可用的，你应该添加以下行到你的robots.txt文件。"
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "使用谷歌邮件账户，请使用以下设置： server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6895
+#: app/Stats.php:6894
 msgid "Togo"
 msgstr "多哥"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6898
+#: app/Stats.php:6897
 msgid "Tokelau"
 msgstr "托克劳群岛"
 
@@ -14862,7 +14862,7 @@ msgid "Tombstone"
 msgstr "墓碑"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6901
+#: app/Stats.php:6900
 msgid "Tonga"
 msgstr "汤加"
 
@@ -14941,7 +14941,7 @@ msgstr "总离婚"
 msgid "Total events"
 msgstr "总共事件"
 
-#: app/Stats.php:5208 modules_v3/fact_sources/report.xml:248
+#: app/Stats.php:5207 modules_v3/fact_sources/report.xml:248
 #: modules_v3/fact_sources/report.xml:252
 #: modules_v3/fact_sources/report.xml:350
 #: modules_v3/fact_sources/report.xml:354
@@ -15025,12 +15025,12 @@ msgstr "总用户"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
-#: admin_site_config.php:143 app/Theme/AdministrationTheme.php:99
+#: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
 msgstr "跟踪和分析"
 
-#: admin_site_config.php:568 admin_site_config.php:593
-#: admin_site_config.php:618
+#: admin_site_config.php:575 admin_site_config.php:600
+#: admin_site_config.php:625
 msgid "Tracking and analytics are not added to the control panel."
 msgstr "跟踪和分析不会添加到控制面板中。"
 
@@ -15045,7 +15045,7 @@ msgid "Tridi"
 msgstr "周三"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6902
+#: app/Stats.php:6901
 msgid "Trinidad and Tobago"
 msgstr "特立尼达和多巴哥"
 
@@ -15055,7 +15055,7 @@ msgid "Trujillo, Peru"
 msgstr ""
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "星期二"
 
@@ -15064,27 +15064,27 @@ msgid "Tuesday"
 msgstr "星期二"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6903
+#: app/Stats.php:6902
 msgid "Tunisia"
 msgstr "突尼斯"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6904
+#: app/Stats.php:6903
 msgid "Turkey"
 msgstr "土耳其"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6899
+#: app/Stats.php:6898
 msgid "Turkmenistan"
 msgstr "土库曼斯坦"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6893
+#: app/Stats.php:6892
 msgid "Turks and Caicos Islands"
 msgstr "特克斯和凯科斯群岛"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6905
+#: app/Stats.php:6904
 msgid "Tuvalu"
 msgstr "图瓦卢"
 
@@ -15122,7 +15122,7 @@ msgstr "地方标列表类型"
 msgid "Type the password again."
 msgstr "再次输入密码。"
 
-#: edituser.php:232 login.php:477 setup.php:438
+#: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "再次输入您的密码,以确保你输入的是否正确。"
 
@@ -15134,19 +15134,19 @@ msgstr "错误类型"
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_site_config.php:588 admin_trees_config.php:609
+#: admin_site_config.php:595 admin_trees_config.php:609
 #: admin_trees_manage.php:661 app/GedcomTag.php:852 app/GedcomTag.php:868
 #: app/GedcomTag.php:1755
 msgid "URL"
 msgstr "URL"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6910
+#: app/Stats.php:6909
 msgid "US Minor Outlying Islands"
 msgstr "美国本土外小岛屿"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6918
+#: app/Stats.php:6917
 msgid "US Virgin Islands"
 msgstr "美属维尔京群岛"
 
@@ -15156,16 +15156,16 @@ msgid "UTC"
 msgstr "UTC"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6908
+#: app/Stats.php:6907
 msgid "Uganda"
 msgstr "乌干达"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6909
+#: app/Stats.php:6908
 msgid "Ukraine"
 msgstr "乌克兰"
 
-#: setup.php:264 setup.php:336
+#: setup.php:267 setup.php:339
 msgid "Unable to connect using this username and password. Your server gave the following error."
 msgstr "无法使用这些设置连接。您的服务器给出下列错误。"
 
@@ -15207,33 +15207,33 @@ msgid "Unique source facts"
 msgstr "独特的资源事件"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6679
+#: app/Stats.php:6678
 msgid "United Arab Emirates"
 msgstr "阿拉伯联合酋长国"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6754
+#: app/Stats.php:6753
 msgid "United Kingdom"
 msgstr "英国"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6912 statistics.php:685
+#: app/Stats.php:6911 statistics.php:685
 msgid "United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6671
+#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
 msgid "Unknown"
 msgstr "未知"
 
-#: app/Stats.php:5191
+#: app/Stats.php:5190
 msgctxt "unknown century"
 msgid "Unknown"
 msgstr "未知"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
-#: app/Functions/FunctionsEdit.php:678 app/Stats.php:5578 calendar.php:639
+#: app/Functions/FunctionsEdit.php:679 app/Stats.php:5577 calendar.php:639
 #: modules_v3/family_group_report/report.xml:844
 #: modules_v3/individual_ext_report/report.xml:391
 #: modules_v3/individual_ext_report/report.xml:598
@@ -15284,7 +15284,7 @@ msgstr "更新所有"
 msgid "Update all the place names in a family tree"
 msgstr "更新家谱中的所有地方名称"
 
-#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2298
+#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
 msgstr "更新地名"
 
@@ -15318,7 +15318,7 @@ msgid "Upload one or more media files from your local computer. Media files can 
 msgstr "从您的本地计算机上上传一个或多个媒体文件。媒体文件可以是图片，视频，音频，或其他格式。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6911
+#: app/Stats.php:6910
 msgid "Uruguay"
 msgstr "乌拉圭"
 
@@ -15326,11 +15326,11 @@ msgstr "乌拉圭"
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "使用谷歌地图™的地方列表"
 
-#: admin_site_config.php:116
+#: admin_site_config.php:117
 msgid "Use PHP mail to send messages"
 msgstr "使用PHP邮件功能发送消息"
 
-#: admin_site_config.php:117
+#: admin_site_config.php:119
 msgid "Use SMTP to send messages"
 msgstr "使用SMTP发送消息"
 
@@ -15361,9 +15361,14 @@ msgid "Use full source citations"
 msgstr "使用完整的资源引用"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:369
+#: admin_site_config.php:376
 msgid "Use password"
 msgstr "使用密码"
+
+#. I18N: "sendmail" is the name of some mail software
+#: admin_site_config.php:118
+msgid "Use sendmail to send messages"
+msgstr ""
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15383,7 +15388,7 @@ msgstr "使用GeoNames数据库自动完善地方"
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "使用此字段告诉网站管理员为什么您申请帐户，你与本网站上家谱的关系。您也可以使用此输入你可能对网站管理员有其他意见。"
 
-#: app/Functions/FunctionsEdit.php:664
+#: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
 msgstr "使用本图在图表和个人的页面上。"
 
@@ -15425,10 +15430,10 @@ msgid "User-agent string"
 msgstr "用户代理字符串"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:382 admin_users.php:325 admin_users.php:845
+#: admin_site_config.php:389 admin_users.php:325 admin_users.php:845
 #: app/Module/LoginBlockModule.php:74 app/Module/ResearchTaskModule.php:110
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
-#: login.php:440 login.php:526 setup.php:429
+#: login.php:440 login.php:526 setup.php:432
 msgid "Username"
 msgstr "用户名"
 
@@ -15458,7 +15463,7 @@ msgid "Using the pull down menu it is possible to select a country, of which a f
 msgstr "使用下拉菜单可以选择一个已经配置标记国家。如果没有标志显示，是因为没有为这个国家的定义标记。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6913
+#: app/Stats.php:6912
 msgid "Uzbekistan"
 msgstr "乌兹别克斯坦"
 
@@ -15468,7 +15473,7 @@ msgid "Vancouver, British Columbia, Canada"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6920
+#: app/Stats.php:6919
 msgid "Vanuatu"
 msgstr "瓦努阿图"
 
@@ -15478,7 +15483,7 @@ msgid "Various statistics charts."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6914
+#: app/Stats.php:6913
 msgid "Vatican City"
 msgstr "梵蒂冈城"
 
@@ -15507,7 +15512,7 @@ msgid "Vendemiaire"
 msgstr "第一月"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6916
+#: app/Stats.php:6915
 msgid "Venezuela"
 msgstr "委内瑞拉"
 
@@ -15564,7 +15569,7 @@ msgid "Video"
 msgstr "录像"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6919
+#: app/Stats.php:6918
 msgid "Vietnam"
 msgstr "越南"
 
@@ -15652,12 +15657,12 @@ msgid "Vital records"
 msgstr "关键记录"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6922
+#: app/Stats.php:6921
 msgid "Wales"
 msgstr "威尔士"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6921
+#: app/Stats.php:6920
 msgid "Wallis and Futuna"
 msgstr "沃利斯和富图纳群岛群岛"
 
@@ -15705,7 +15710,7 @@ msgid "Website"
 msgstr "网站"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:298
+#: admin_site_config.php:305
 msgid "Website URL"
 msgstr "网站 URL"
 
@@ -15721,12 +15726,12 @@ msgid "Website logs"
 msgstr "网站日志"
 
 #. I18N: Menu entry
-#: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
+#: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
 msgstr "网站首选项"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "星期三"
 
@@ -15746,7 +15751,7 @@ msgid "Welcome %s"
 msgstr "%s 欢迎来到"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:459
+#: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
 msgstr "欢迎登录页面上的欢迎信息"
 
@@ -15755,7 +15760,7 @@ msgid "Welcome to this genealogy website"
 msgstr "欢迎访问这个家谱网站"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6742
+#: app/Stats.php:6741
 msgid "Western Sahara"
 msgstr "西撒哈拉"
 
@@ -15929,7 +15934,7 @@ msgid "Year:"
 msgstr "年:"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6924
+#: app/Stats.php:6923
 msgid "Yemen"
 msgstr "也门"
 
@@ -15955,7 +15960,7 @@ msgstr ""
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
-#: admin_site_config.php:248 admin_trees_config.php:978 edituser.php:287
+#: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr "您可以使用“主题”更改webtrees的外观。每个主题都有不同的风格，布局，配色方案，等等。"
 
@@ -15995,7 +16000,7 @@ msgstr "这些内部参考号码不会与任何其他家庭树重复，您可以
 msgid "You can renumber this family tree."
 msgstr "您可以重新编排这本家谱。"
 
-#: admin_site_config.php:202 admin_site_config.php:221
+#: admin_site_config.php:209 admin_site_config.php:228
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr "虽然服务器可以忽略此请求，您可以要求更高或更低的限制。"
 
@@ -16048,11 +16053,11 @@ msgstr "您可以输入一个以“http://”。"
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
-#: setup.php:212
+#: setup.php:215
 msgid "You must change this before you can continue."
 msgstr "你一定要修正它才能继续。"
 
@@ -16069,7 +16074,7 @@ msgstr "您必须输入真实姓名。"
 msgid "You must enter a username."
 msgstr "您必须输入一个用户名。"
 
-#: setup.php:418
+#: setup.php:421
 msgid "You must enter all the administrator account fields."
 msgstr "您必须输入管理员帐户字段。"
 
@@ -16110,7 +16115,7 @@ msgstr "您需要创建一个家谱。"
 msgid "You need to review the account details."
 msgstr "您需要查看帐户详细信息。"
 
-#: setup.php:422
+#: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "您需要设置一个管理员帐户。此帐户可以控制这个webtrees安装的各个方面。请选择一个强密码。"
 
@@ -16119,7 +16124,7 @@ msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "你要用你的PhpGedView用户和密码登陆。"
 
 #. I18N: Help text for the "Login URL" site configuration setting
-#: admin_site_config.php:451
+#: admin_site_config.php:458
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr "当用户登录时如果你想重定向到不同的站点或位置，您需要输入登录URL。当用户登录时，如果你需要从HTTP到HTTPS切换，这是非常有用的。包含完整的网址为<i>的login.php</i>。例如，https://www.yourserver.com/webtrees/login.php。"
 
@@ -16157,7 +16162,7 @@ msgstr "你不应该批准一个帐户,除非你知道电子邮件地址是正�
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "用户请求将通过电子邮件通知。您就可以激活的用户名。直到您激活帐户,此用户将无法登录。"
 
-#: setup.php:431
+#: setup.php:434
 msgid "You will use this to sign in to webtrees."
 msgstr "您将使用此登录到webtrees。"
 
@@ -16182,7 +16187,7 @@ msgstr "最年轻母亲"
 msgid "Your clippings cart is empty."
 msgstr "您的收集箱是空的。"
 
-#: message.php:116 message.php:269 setup.php:425
+#: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
 msgstr "你的名字"
 
@@ -16192,7 +16197,7 @@ msgstr "你的名字"
 msgid "Your registration at %s"
 msgstr "您的在 %s 注册"
 
-#: setup.php:274
+#: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
 msgstr "您的服务器的管理员将为您提供连接的详细信息。"
 
@@ -16212,12 +16217,12 @@ msgid "Your web server is using PHP version %s, which is no longer receiving sec
 msgstr "您的Web服务器使用的PHP版本 %s ，它不再接收安全更新。你应该尽快升级到更高版本。"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6926
+#: app/Stats.php:6925
 msgid "Zambia"
 msgstr "赞比亚"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6927
+#: app/Stats.php:6926
 msgid "Zimbabwe"
 msgstr "津巴布韦"
 
@@ -16226,7 +16231,7 @@ msgstr "津巴布韦"
 msgid "Zip file(s)"
 msgstr "Zip文件"
 
-#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2345
+#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2344
 #: fanchart.php:109
 msgid "Zoom"
 msgstr "放大"
@@ -16281,8 +16286,8 @@ msgid "accepted"
 msgstr "接受"
 
 #. I18N: A button label.
-#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:568
-#: app/Functions/FunctionsPrint.php:627 app/Module/ClippingsCartModule.php:334
+#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
@@ -16320,7 +16325,7 @@ msgstr "以后"
 msgid "after %s"
 msgstr "在 %s 之后"
 
-#: app/Functions/FunctionsPrint.php:374
+#: app/Functions/FunctionsPrint.php:375
 msgid "after death"
 msgstr "去世后"
 
@@ -16352,12 +16357,12 @@ msgid "also known as"
 msgstr "也被称为"
 
 #. I18N: option in list box “always use this image”
-#: app/Functions/FunctionsEdit.php:656
+#: app/Functions/FunctionsEdit.php:657
 msgid "always"
 msgstr "总是"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
-#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5912
+#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
 #: modules_v3/ahnentafel_report/report.xml:394
 #: modules_v3/descendancy_report/report.xml:131
 #: modules_v3/descendancy_report/report.xml:230
@@ -16562,8 +16567,8 @@ msgstr "取消"
 msgid "census added"
 msgstr "人口普查增加"
 
-#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4941
-#: app/Stats.php:4943 app/Stats.php:4945 app/Stats.php:5191
+#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4940
+#: app/Stats.php:4942 app/Stats.php:4944 app/Stats.php:5190
 msgid "century"
 msgstr "世纪"
 
@@ -16632,7 +16637,7 @@ msgstr "紧凑列表"
 #: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
-#: setup.php:187 setup.php:213 setup.php:295 setup.php:381 setup.php:446
+#: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
 msgstr "继续"
 
@@ -16642,7 +16647,7 @@ msgid "create"
 msgstr "创建"
 
 #. I18N: a program feature
-#: setup.php:132
+#: setup.php:135
 msgid "creating thumbnails of images"
 msgstr "创建图像的缩略图"
 
@@ -16905,7 +16910,7 @@ msgid "fifth cousin"
 msgstr "第五代堂兄(妹)"
 
 #. I18N: a program feature
-#: setup.php:143
+#: setup.php:146
 msgid "file upload capability"
 msgstr "文件上传功能"
 
@@ -18737,7 +18742,7 @@ msgid "herself"
 msgstr ""
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
-#: app/Functions/FunctionsEdit.php:761
+#: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
 msgstr "hh:mm 或者 hh:mm:ss"
 
@@ -19032,7 +19037,7 @@ msgid "nephew/niece"
 msgstr "甥子/甥女"
 
 #. I18N: option in list box “never use this image”
-#: app/Functions/FunctionsEdit.php:662
+#: app/Functions/FunctionsEdit.php:663
 msgid "never"
 msgstr "从不"
 
@@ -19087,12 +19092,12 @@ msgid "ninth cousin"
 msgstr "第九代堂兄(妹)"
 
 #: admin_trees_config.php:74 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133
+#: app/Functions/FunctionsEdit.php:134
 #: app/Functions/FunctionsPrintFacts.php:1214
 #: app/Functions/FunctionsPrintLists.php:877
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6105 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6104 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:255
 #: modules_v3/family_group_report/report.xml:426
 #: modules_v3/family_group_report/report.xml:609
@@ -19147,7 +19152,7 @@ msgstr "数字"
 msgid "of"
 msgstr "从"
 
-#: app/Functions/FunctionsPrint.php:372
+#: app/Functions/FunctionsPrint.php:373
 msgid "on the date of death"
 msgstr "死亡日期"
 
@@ -19287,7 +19292,7 @@ msgid "replace"
 msgstr "替换"
 
 #. I18N: a program feature
-#: setup.php:133 setup.php:134
+#: setup.php:136 setup.php:137
 msgid "reporting"
 msgstr "报告"
 
@@ -19306,11 +19311,11 @@ msgstr "机器人"
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
 #: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
+#: admin_site_access.php:307 admin_site_config.php:658 admin_site_merge.php:344
 #: admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:470 app/Module/GoogleMapsModule.php:684
-#: app/Module/GoogleMapsModule.php:2347 app/Module/GoogleMapsModule.php:3406
+#: app/Module/GoogleMapsModule.php:2346 app/Module/GoogleMapsModule.php:3406
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
@@ -20005,8 +20010,8 @@ msgstr "姨父"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:188
-#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2411
-#: app/Module/GoogleMapsModule.php:2452 app/Module/GoogleMapsModule.php:2898
+#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2410
+#: app/Module/GoogleMapsModule.php:2451 app/Module/GoogleMapsModule.php:2898
 #: app/Module/GoogleMapsModule.php:2935 app/Module/GoogleMapsModule.php:2940
 #: app/Module/GoogleMapsModule.php:3931 app/Module/GoogleMapsModule.php:3938
 #: app/Module/GoogleMapsModule.php:3979 app/Place.php:141
@@ -20079,13 +20084,13 @@ msgstr "webtrees无法连接到phpgedview数据库: %s."
 msgid "webtrees message"
 msgstr "webtrees信息"
 
-#: setup.php:273
+#: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
 msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:320
+#: admin_site_config.php:327
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 msgstr "webtrees需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服务，您将需要为其提供连接的详细信息。"
 
@@ -20094,7 +20099,7 @@ msgstr "webtrees需要发送电子邮件，如密码提醒和网站通知。要�
 msgid "webtrees reply address"
 msgstr "webtrees回复地址"
 
-#: app/Functions/FunctionsEdit.php:248
+#: app/Functions/FunctionsEdit.php:249
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees发送电子邮件且没有内部消息"
 
@@ -20102,7 +20107,7 @@ msgstr "webtrees发送电子邮件且没有内部消息"
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr "webtrees使用UTF-8编码的重音字母，特殊字符和非拉丁文字。如果你希望使用的族谱软件，这个GEDCOM文件不支持UTF-8，那么你可以使用ISO-8859-1编码创建它。"
 
-#: app/Functions/FunctionsPrint.php:210
+#: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
 msgstr "webtrees维基"
 
@@ -20129,13 +20134,13 @@ msgid "years"
 msgstr "年"
 
 #: admin_trees_config.php:75 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:619
-#: app/Functions/FunctionsPrint.php:413
+#: app/Functions/FunctionsEdit.php:134 app/Functions/FunctionsEdit.php:620
+#: app/Functions/FunctionsPrint.php:414
 #: app/Functions/FunctionsPrintFacts.php:1211
 #: app/Functions/FunctionsPrintLists.php:879
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6100 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6099 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:252
 #: modules_v3/family_group_report/report.xml:423
 #: modules_v3/family_group_report/report.xml:606
@@ -20186,11 +20191,11 @@ msgstr "‘%s’ 已被添加到您的收藏夹。"
 msgid "“%s” has been deleted."
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:119 app/Note.php:107
+#: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
 #: autocomplete.php:470 famlist.php:97 famlist.php:230 indilist.php:97
 #: indilist.php:230
@@ -20198,7 +20203,7 @@ msgctxt "Unknown given name"
 msgid "…"
 msgstr "缺少名字"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:108

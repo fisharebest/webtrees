@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-12-24 08:59+0000\n"
+"POT-Creation-Date: 2017-02-11 11:13+0000\n"
 "PO-Revision-Date: 2016-11-20 18:38+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -164,7 +164,7 @@ msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
-#: admin_media.php:497 app/Media.php:386
+#: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s képpont"
@@ -193,13 +193,13 @@ msgid "%j %F %Y"
 msgstr "%Y. %F %d."
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
-#: app/Stats.php:6941
+#: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
 msgstr "i. e. %s"
 
 #. I18N: size of file in KB
-#: admin_media.php:489 app/Media.php:276
+#: admin_media.php:489 app/Media.php:277
 #, php-format
 msgid "%s KB"
 msgstr "%s kilobájt"
@@ -234,7 +234,7 @@ msgstr "%s és gyerekeik"
 msgid "%s and their descendants"
 msgstr "%s és utódaik"
 
-#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5905
+#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
@@ -277,7 +277,7 @@ msgid_plural "%s family trees"
 msgstr[0] "%s családfa"
 msgstr[1] "%s családfa"
 
-#: app/Stats.php:5255 app/Stats.php:5259
+#: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
@@ -334,7 +334,7 @@ msgstr[0] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 msgstr[1] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 
 #. I18N: %s is a PHP function/module/setting
-#: setup.php:119
+#: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
 msgstr "%s nem aktív ezen a szerveren. Amíg inaktív, a webtrees nem telepíthető. Legyen szíves, kérje meg a szerver rendszergazdáját az aktiválására."
@@ -401,7 +401,7 @@ msgstr[1] "%s másodperccel ezelőtt"
 msgid "%s sent you the following message."
 msgstr "%s küldte az alábbi üzenetet."
 
-#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5915
+#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
@@ -552,7 +552,7 @@ msgstr "%s, házastársai és gyermekei"
 msgid "%s, his spouses and descendants"
 msgstr "%s, házastársai és utódai"
 
-#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:618
+#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
 msgstr "&lt;válasszon&gt;"
@@ -601,107 +601,107 @@ msgstr "(halva született)"
 msgid ", "
 msgstr ", "
 
-#: app/Stats.php:6968
+#: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "10th"
 msgstr "10."
 
-#: app/Stats.php:6966
+#: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "11th"
 msgstr "11."
 
-#: app/Stats.php:6964
+#: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "12th"
 msgstr "12."
 
-#: app/Stats.php:6962
+#: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "13th"
 msgstr "13."
 
-#: app/Stats.php:6960
+#: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "14th"
 msgstr "14."
 
-#: app/Stats.php:6958
+#: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "15th"
 msgstr "15."
 
-#: app/Stats.php:6956
+#: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "16th"
 msgstr "16."
 
-#: app/Stats.php:6954
+#: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "17th"
 msgstr "17."
 
-#: app/Stats.php:6952
+#: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "18th"
 msgstr "18."
 
-#: app/Stats.php:6950
+#: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "19th"
 msgstr "19."
 
-#: app/Stats.php:6986
+#: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
 msgstr "1."
 
-#: app/Stats.php:6948
+#: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "20th"
 msgstr "20."
 
-#: app/Stats.php:6946
+#: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "21st"
 msgstr "21."
 
-#: app/Stats.php:6984
+#: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr "2."
 
-#: app/Stats.php:6982
+#: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr "3."
 
-#: app/Stats.php:6980
+#: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "4th"
 msgstr "4."
 
-#: app/Stats.php:6978
+#: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "5th"
 msgstr "5."
 
-#: app/Stats.php:6976
+#: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "6th"
 msgstr "6."
 
-#: app/Stats.php:6974
+#: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "7th"
 msgstr "7."
 
-#: app/Stats.php:6972
+#: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "8th"
 msgstr "8."
 
-#: app/Stats.php:6970
+#: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "9."
@@ -773,7 +773,7 @@ msgstr "Egy gyermeknek több szülőpárja is lehet. A gyermek és szülei köz�
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr "Általános hiba, hogy több hivatkozás ugyanarra a bejegyzésre mutat, például, amikor egy gyermek többször szerepel egy családbejegyzésben."
 
-#: setup.php:369
+#: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr "Egy adatbázisszerver különböző adatbázisokat is tárolhat. Válasszon ki egy már létezőt (a rendszergazda által létrehozottat), vagy hozzon létre egy újat (ha az adatbázis-felhasználói jogosultsága ezt megengedi)."
 
@@ -1318,7 +1318,7 @@ msgstr "Férj felvétele egy bejegyzett személy felhasználásával"
 msgid "Add a journal entry"
 msgstr "Naplóbejegyzés felvétele"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
+#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
@@ -1336,12 +1336,12 @@ msgstr "Név felvétele"
 msgid "Add a news article"
 msgstr "Újságcikk felvétele"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
+#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Jegyzet felvétele"
 
-#: app/Functions/FunctionsEdit.php:1135
+#: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
 msgstr "Korlátozás felvétele"
 
@@ -1354,7 +1354,7 @@ msgstr "Korlátozás felvétele"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Legyen függőleges görgetősáv, ha a blokk túl magas"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
+#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Megosztott jegyzet felvétele"
@@ -1363,7 +1363,7 @@ msgstr "Megosztott jegyzet felvétele"
 msgid "Add a son or daughter"
 msgstr "Gyermek felvétele"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
+#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Forrásidézet felvétele"
@@ -1402,7 +1402,7 @@ msgstr "Feleség felvétele egy bejegyzett személy felhasználásával"
 msgid "Add an FAQ"
 msgstr "GYIK felvétele"
 
-#: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
+#: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
 msgstr "Kapcsolat felvétele"
 
@@ -1410,7 +1410,7 @@ msgstr "Kapcsolat felvétele"
 msgid "Add another individual to the chart"
 msgstr "Másik személy felvétele az ábrába"
 
-#: app/Functions/FunctionsPrint.php:550
+#: app/Functions/FunctionsPrint.php:551
 msgid "Add from clipboard"
 msgstr "Felvétel a vágólapról"
 
@@ -1517,7 +1517,7 @@ msgstr "Adelaide, Ausztrália"
 msgid "Administrator"
 msgstr "Rendszergazda"
 
-#: setup.php:421 setup.php:423
+#: setup.php:424 setup.php:426
 msgid "Administrator account"
 msgstr "Rendszergazdafiók"
 
@@ -1688,7 +1688,7 @@ msgid "Advanced search"
 msgstr "Részletes keresés"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6673
+#: app/Stats.php:6672
 msgid "Afghanistan"
 msgstr "Afganisztán"
 
@@ -1707,7 +1707,7 @@ msgstr "Miután bejelentkezett, válassza a „Felhasználói fiókom” hivatko
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
 #: app/Controller/TimelineController.php:232
-#: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:402
+#: app/Functions/FunctionsPrint.php:363 app/Functions/FunctionsPrint.php:403
 #: app/GedcomTag.php:142 app/Stats.php:2585 app/Stats.php:3926
 #: app/Stats.php:3928 autocomplete.php:72 timeline.php:382
 msgid "Age"
@@ -1766,12 +1766,12 @@ msgid "Agency"
 msgstr "Képviselet"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6676
+#: app/Stats.php:6675
 msgid "Aland Islands"
 msgstr "Åland"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6677
+#: app/Stats.php:6676
 msgid "Albania"
 msgstr "Albánia"
 
@@ -1786,7 +1786,7 @@ msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Új Mexikó, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6737
+#: app/Stats.php:6736
 msgid "Algeria"
 msgstr "Algéria"
 
@@ -1804,7 +1804,7 @@ msgstr "Élők"
 #: app/Module/FrequentlyAskedQuestionsModule.php:474
 #: app/Module/GoogleMapsModule.php:1333 app/Module/GoogleMapsModule.php:1346
 #: app/Module/GoogleMapsModule.php:4079 app/Module/SlideShowModule.php:264
-#: app/Module/UserMessagesModule.php:111 app/Stats.php:5578 calendar.php:257
+#: app/Module/UserMessagesModule.php:111 app/Stats.php:5577 calendar.php:257
 #: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
 #: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
 #: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
@@ -1875,12 +1875,12 @@ msgid "Allow users to see raw GEDCOM records"
 msgstr "A felhasználók láthatják a nyers GEDCOM-bejegyzéseket"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:259
+#: admin_site_config.php:266
 msgid "Allow users to select their own theme"
 msgstr "A felhasználók saját témát választhatnak"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:484
+#: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
 msgstr "Engedélyezzük a látogatóknak új felhasználói fiók igénylését"
 
@@ -1902,7 +1902,7 @@ msgid "Also known as"
 msgstr "Ismert, mint"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6682
+#: app/Stats.php:6681
 msgid "American Samoa"
 msgstr "Amerikai Szamoa"
 
@@ -1911,7 +1911,7 @@ msgstr "Amerikai Szamoa"
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "Egy GYIK megjeleníthető csak a családfák egyikén vagy az összes családfán."
 
-#: admin_site_config.php:491
+#: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr "A rendszergazdának jóvá kell hagynia az új felhasználói fiókot és be kell állítania egy jogosultsági szintet – mielőtt a felhasználó bejelentkezhetne."
 
@@ -1940,11 +1940,11 @@ msgstr "Új témaválasztás egyéb módja."
 msgid "An alternative way to sign in and sign out."
 msgstr "Be- és kijelentkezés egyéb módja."
 
-#: app/Functions/FunctionsEdit.php:909
+#: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr "A kapcsolat egy másik személy, akinek köze volt ehhez a tényhez vagy eseményhez, mint pl. egy tanú vagy lelkész."
 
-#: app/Functions/FunctionsEdit.php:907
+#: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr "A kapcsolat egy másik személy, akinek köze volt ehhez a személyhez, mint pl. egy barát vagy egy munkaadó."
 
@@ -1968,7 +1968,7 @@ msgstr "Egy személy őseinek és utódainak homokóraábrája."
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Egy családfaág – a személy összes ősével és utódával."
 
-#: setup.php:504
+#: setup.php:507
 msgid "An unexpected database error occurred."
 msgstr "Váratlan adatbázishiba történt."
 
@@ -2008,17 +2008,17 @@ msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Alaszka, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6678
+#: app/Stats.php:6677
 msgid "Andorra"
 msgstr "Andorra"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6674
+#: app/Stats.php:6673
 msgid "Angola"
 msgstr "Angola"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6675
+#: app/Stats.php:6674
 msgid "Anguilla"
 msgstr "Anguilla"
 
@@ -2043,12 +2043,12 @@ msgid "Answer"
 msgstr "Válasz"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6683
+#: app/Stats.php:6682
 msgid "Antarctica"
 msgstr "Antarktisz"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6685
+#: app/Stats.php:6684
 msgid "Antigua and Barbuda"
 msgstr "Antigua és Barbuda"
 
@@ -2116,7 +2116,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "április"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "április"
@@ -2169,7 +2169,7 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Biztos, hogy törli ezt az elemet a kedvencei listájából?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6680
+#: app/Stats.php:6679
 msgid "Argentina"
 msgstr "Argentína"
 
@@ -2192,12 +2192,12 @@ msgid "Arial"
 msgstr "Arial"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6681
+#: app/Stats.php:6680
 msgid "Armenia"
 msgstr "Örményország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6672
+#: app/Stats.php:6671
 msgid "Aruba"
 msgstr "Aruba"
 
@@ -2234,7 +2234,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Asunción, Paraguay"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6870
+#: app/Stats.php:6869
 msgid "At sea"
 msgstr "Tengeren"
 
@@ -2296,18 +2296,18 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "augusztus"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "augusztus"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6686
+#: app/Stats.php:6685
 msgid "Australia"
 msgstr "Ausztrália"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6687
+#: app/Stats.php:6686
 msgid "Austria"
 msgstr "Ausztria"
 
@@ -2384,7 +2384,7 @@ msgstr "Átlagéletkor az elhalálozás százada szerint"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
-#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4948 statistics.php:306
+#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4947 statistics.php:306
 msgid "Average number of children per family"
 msgstr "Gyermekek átlagos száma családonként"
 
@@ -2423,12 +2423,12 @@ msgid "Azar"
 msgstr "Azar"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6688
+#: app/Stats.php:6687
 msgid "Azerbaijan"
 msgstr "Azerbajdzsán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6689
+#: app/Stats.php:6688
 msgid "Azores"
 msgstr "Azori-szigetek"
 
@@ -2438,7 +2438,7 @@ msgid "Bah"
 msgstr "Bah"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6698
+#: app/Stats.php:6697
 msgid "Bahamas"
 msgstr "Bahama-szigetek"
 
@@ -2467,12 +2467,12 @@ msgid "Bahman"
 msgstr "Bahman"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6697
+#: app/Stats.php:6696
 msgid "Bahrain"
 msgstr "Bahrein"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6695
+#: app/Stats.php:6694
 msgid "Bangladesh"
 msgstr "Banglades"
 
@@ -2555,7 +2555,7 @@ msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6706
+#: app/Stats.php:6705
 msgid "Barbados"
 msgstr "Barbados"
 
@@ -2576,7 +2576,7 @@ msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, Egyesült Államok"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2341
+#: app/Module/GoogleMapsModule.php:2340
 msgid "Bearing"
 msgstr "Irány"
 
@@ -2586,7 +2586,7 @@ msgid "Begins with"
 msgstr "Ezzel kezdődik"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6701
+#: app/Stats.php:6700
 msgid "Belarus"
 msgstr "Belorusszia"
 
@@ -2596,22 +2596,22 @@ msgid "Belgian Chocolate"
 msgstr "Belga csokoládé"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6691
+#: app/Stats.php:6690
 msgid "Belgium"
 msgstr "Belgium"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6702
+#: app/Stats.php:6701
 msgid "Belize"
 msgstr "Belize"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6692
+#: app/Stats.php:6691
 msgid "Benin"
 msgstr "Benin"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6703
+#: app/Stats.php:6702
 msgid "Bermuda"
 msgstr "Bermuda"
 
@@ -2625,7 +2625,7 @@ msgid "Best man"
 msgstr "Legjobb ember"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6708
+#: app/Stats.php:6707
 msgid "Bhutan"
 msgstr "Bhután"
 
@@ -2644,7 +2644,7 @@ msgstr "Billings, Montana, Egyesült Államok"
 msgid "Binary data object"
 msgstr "Bináris adatobjektumok"
 
-#: app/Functions/FunctionsPrint.php:469
+#: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
@@ -2807,11 +2807,11 @@ msgstr "Születés-dátumtartomány kezdete"
 msgid "Birth of a brother"
 msgstr "Fiútestvér születése"
 
-#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
 msgstr "Gyermek születése"
 
-#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a daughter"
 msgstr "Lánygyermek születése"
 
@@ -2867,7 +2867,7 @@ msgstr "Testvér születése"
 msgid "Birth of a sister"
 msgstr "Lánytestvér születése"
 
-#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a son"
 msgstr "Fiúgyermek születése"
 
@@ -2934,7 +2934,7 @@ msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6704
+#: app/Stats.php:6703
 msgid "Bolivia"
 msgstr "Bolívia"
 
@@ -2953,7 +2953,7 @@ msgid "Born in the covenant"
 msgstr "Szövetségben született"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6699
+#: app/Stats.php:6698
 msgid "Bosnia and Herzegovina"
 msgstr "Bosznia-Hercegovina"
 
@@ -2971,7 +2971,7 @@ msgid "Both dead"
 msgstr "Mindkettő elhunyt"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6710
+#: app/Stats.php:6709
 msgid "Botswana"
 msgstr "Botswana"
 
@@ -2981,7 +2981,7 @@ msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Utah, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6709
+#: app/Stats.php:6708
 msgid "Bouvet Island"
 msgstr "Bouvet-sziget"
 
@@ -2997,7 +2997,7 @@ msgid "Branches of the %s family"
 msgstr "A(z) %s család ágai"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6705
+#: app/Stats.php:6704
 msgid "Brazil"
 msgstr "Brazília"
 
@@ -3047,12 +3047,12 @@ msgid "Brit milah of a son"
 msgstr "Fiúgyermek körülmetélése"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6780
+#: app/Stats.php:6779
 msgid "British Indian Ocean Territory"
 msgstr "Brit Indiai-óceáni Terület"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6917
+#: app/Stats.php:6916
 msgid "British Virgin Islands"
 msgstr "Brit Virgin-szigetek"
 
@@ -3086,7 +3086,7 @@ msgid "Brumaire"
 msgstr "Köd hava"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6707
+#: app/Stats.php:6706
 msgid "Brunei Darussalam"
 msgstr "Brunei Szultanátus"
 
@@ -3096,7 +3096,7 @@ msgid "Buenos Aires, Argentina"
 msgstr "Buenos Aires, Argentína"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6696
+#: app/Stats.php:6695
 msgid "Bulgaria"
 msgstr "Bulgária"
 
@@ -3241,12 +3241,12 @@ msgid "Burial place contains"
 msgstr "A temetés helye tartalmazza"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6694
+#: app/Stats.php:6693
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6690
+#: app/Stats.php:6689
 msgid "Burundi"
 msgstr "Burundi"
 
@@ -3265,7 +3265,7 @@ msgid "Buyer"
 msgstr "Vevő"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:361
+#: admin_site_config.php:368
 msgid "By default, SMTP works on port 25."
 msgstr "Alapértelmezés szerint az SMTP a 25-ös porton fut."
 
@@ -3273,7 +3273,7 @@ msgstr "Alapértelmezés szerint az SMTP a 25-ös porton fut."
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 msgstr "Alapértelmezés szerint a listában csak a családfájában található helyek szerepelnek. Amennyiben vannak adatok más helyekről is, ezeket ömlesztve egy fájlból lehet betölteni. Bejelölve ezt az opciót, megjelennek azon helyek is, amelyeket eddig nem használt fel."
 
-#: admin_site_config.php:217
+#: admin_site_config.php:224
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
@@ -3281,7 +3281,7 @@ msgstr[0] "Alapértelmezés szerint az Ön szervere a szkriptek futását %s má
 msgstr[1] "Alapértelmezés szerint az Ön szervere a szkriptek futását %s másodpercig engedi."
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:201
+#: admin_site_config.php:208
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "Alapértelmezés szerint az Ön szervere a szkripteknek %s memóriahasználatot engedélyez."
@@ -3317,12 +3317,12 @@ msgid "Call number"
 msgstr "Hívószám"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6794
+#: app/Stats.php:6793
 msgid "Cambodia"
 msgstr "Kambodzsa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6718
+#: app/Stats.php:6717
 msgid "Cameroon"
 msgstr "Kamerun"
 
@@ -3332,12 +3332,12 @@ msgid "Campinas, Brazil"
 msgstr "Campinas, Brazília"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6712
+#: app/Stats.php:6711
 msgid "Canada"
 msgstr "Kanada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6724
+#: app/Stats.php:6723
 msgid "Cape Verde"
 msgstr "Zöld-foki szigetek"
 
@@ -3391,7 +3391,7 @@ msgid "Caution: old themes may not work, or they may prevent webtrees from worki
 msgstr "Figyelem! A régi témák működésképtelenek lehetnek, vagy akadályozhatják a webtrees működését."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6729
+#: app/Stats.php:6728
 msgid "Cayman Islands"
 msgstr "Kajmán-szigetek"
 
@@ -3422,7 +3422,7 @@ msgstr "Népszámlálás"
 msgid "Census assistant"
 msgstr "Statisztikai asszisztens"
 
-#: app/Functions/FunctionsEdit.php:1024 app/GedcomTag.php:252
+#: app/Functions/FunctionsEdit.php:1028 app/GedcomTag.php:252
 msgid "Census date"
 msgstr "Népszámlálás dátuma"
 
@@ -3435,7 +3435,7 @@ msgid "Census transcript"
 msgstr "Statisztikai átirat"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6711
+#: app/Stats.php:6710
 msgid "Central African Republic"
 msgstr "Közép-Afrikai Köztársaság"
 
@@ -3445,7 +3445,7 @@ msgid "Certificate"
 msgstr "Igazolás"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6894
+#: app/Stats.php:6893
 msgid "Chad"
 msgstr "Csád"
 
@@ -3561,15 +3561,15 @@ msgstr "Függő változtatások ellenőrzése…"
 msgid "Check the access rights on this folder."
 msgstr "E mappa elérési jogainak ellenőrzése."
 
-#: setup.php:266 setup.php:338
+#: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
 msgstr "Ellenőrizze a beállításokat, és próbálja újra."
 
-#: setup.php:153
+#: setup.php:156
 msgid "Checking server capacity"
 msgstr "A szerver erőforrásának ellenőrzése"
 
-#: setup.php:111
+#: setup.php:114
 msgid "Checking server configuration"
 msgstr "Szerverbeállítások ellenőrzése"
 
@@ -3640,12 +3640,12 @@ msgid "Children take their mother’s surname."
 msgstr "A gyerekek az anyjuk vezetéknevét viselik."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6715
+#: app/Stats.php:6714
 msgid "Chile"
 msgstr "Chile"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6716
+#: app/Stats.php:6715
 msgid "China"
 msgstr "Kína"
 
@@ -3663,7 +3663,7 @@ msgstr "Rokonok kiválasztása"
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr "Válassza ki a feltöltendő bélyegképet. Habár a képek bélyegképe automatikusan létrehozható, főleg egyéb médiatípusok esetén saját bélyegképet hozhat létre. Például a mozgóképnél megadhat egy állóképet egy videóból, vagy a személy fényképét, aki hangfelvételt készített."
 
-#: admin_site_config.php:124
+#: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
 msgstr "Válassza a felhasználó által definiált – alább begépelt – üdvözlőszöveget"
 
@@ -3748,7 +3748,7 @@ msgid "Christening of a son"
 msgstr "Fiúgyermek keresztelése"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6728
+#: app/Stats.php:6727
 msgid "Christmas Island"
 msgstr "Karácsony-sziget"
 
@@ -3824,7 +3824,7 @@ msgid "Cochabamba, Bolivia"
 msgstr "Cochabamba, Bolívia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6713
+#: app/Stats.php:6712
 msgid "Cocos (Keeling) Islands"
 msgstr "Kókusz (Keeling)-szigetek"
 
@@ -3839,7 +3839,7 @@ msgid "Cold Day"
 msgstr "Hűvös nap"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6722
+#: app/Stats.php:6721
 msgid "Colombia"
 msgstr "Kolumbia"
 
@@ -3887,7 +3887,7 @@ msgid "Communicate directly with other users, using private messages."
 msgstr "Társalogjon közvetlenül más felhasználókkal – személyes üzenetekkel."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6723
+#: app/Stats.php:6722
 msgid "Comoros"
 msgstr "Comore-szigetek"
 
@@ -3932,7 +3932,7 @@ msgstr "A jelszó megerősítése"
 msgid "Confirmation"
 msgstr "Bérmálás/Konfirmáció"
 
-#: setup.php:272
+#: setup.php:275
 msgid "Connection to database server"
 msgstr "Csatlakozás az adatbázisszerverhez"
 
@@ -3963,7 +3963,7 @@ msgstr "Folytatás"
 #: admin_module_menus.php:74 admin_module_reports.php:53
 #: admin_module_sidebar.php:74 admin_module_tabs.php:74 admin_modules.php:141
 #: admin_pgv_to_wt.php:129 admin_site_access.php:239 admin_site_access.php:345
-#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:159
+#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:166
 #: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:186
 #: admin_site_readme.php:37 admin_trees_check.php:124
 #: admin_trees_config.php:341 admin_trees_download.php:102
@@ -3988,7 +3988,7 @@ msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Átalakítás UTF-8-ról ISO-8859-1-re"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6721
+#: app/Stats.php:6720
 msgid "Cook Islands"
 msgstr "Cook-szigetek"
 
@@ -4045,12 +4045,12 @@ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as p
 msgstr "A helyes névbejegyzés (NAME) alakja „/NAGY/János” vagy „/NAGY/ János”, ahogy a régebbi származástani programok létrehozták."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6725
+#: app/Stats.php:6724
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6717
+#: app/Stats.php:6716
 msgid "Cote d’Ivoire"
 msgstr "Elefántcsontpart"
 
@@ -4058,7 +4058,7 @@ msgstr "Elefántcsontpart"
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr "Nem lehetett ellenőrizni a megadott információt. Kérjük, próbálja újra, vagy további információért lépjen kapcsolatba a rendszergazdával."
 
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 msgid "Count"
 msgstr "Fő"
 
@@ -4092,27 +4092,27 @@ msgstr "Létrehozás"
 msgid "Create a family tree"
 msgstr "Családfa létrehozása"
 
-#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
+#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
 msgstr "Médiaobjektum létrehozása"
 
-#: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
 msgstr "Adattár létrehozása"
 
-#: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
 msgstr "Megosztott jegyzet létrehozása"
 
-#: app/Functions/FunctionsEdit.php:627
+#: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
 msgstr "Megosztott jegyzet létrehozása összeíró-segédlet használatával"
 
-#: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
 msgstr "Forrás létrehozása"
@@ -4264,12 +4264,12 @@ msgid "Cremation of a wife"
 msgstr "Feleség hamvasztása"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6774
+#: app/Stats.php:6773
 msgid "Croatia"
 msgstr "Horvátország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6726
+#: app/Stats.php:6725
 msgid "Cuba"
 msgstr "Kuba"
 
@@ -4286,11 +4286,11 @@ msgstr "Jelenlegi"
 msgid "Custom"
 msgstr "Egyedi"
 
-#: app/Functions/FunctionsPrint.php:624 calendar.php:281
+#: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
 msgstr "Egyedi esemény"
 
-#: app/Functions/FunctionsPrint.php:623
+#: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
 msgstr "Egyedi tény"
 
@@ -4307,7 +4307,7 @@ msgid "Custom theme"
 msgstr "Egyedi téma"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:471
+#: admin_site_config.php:478
 msgid "Custom welcome text"
 msgstr "Saját üdvözlőszöveg"
 
@@ -4316,12 +4316,12 @@ msgid "Customize this page"
 msgstr "Saját oldalam testreszabása"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6730
+#: app/Stats.php:6729
 msgid "Cyprus"
 msgstr "Ciprus"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6731
+#: app/Stats.php:6730
 msgid "Czech Republic"
 msgstr "Cseh Köztársaság"
 
@@ -4351,27 +4351,27 @@ msgid "Data"
 msgstr "Adat"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:174
+#: admin_site_config.php:181
 msgid "Data folder"
 msgstr "Adatmappa"
 
-#: setup.php:368
+#: setup.php:371
 msgid "Database and table names"
 msgstr "Adatbázis- és táblanevek"
 
-#: setup.php:275
+#: setup.php:278
 msgid "Database connection"
 msgstr "Adatbázis-csatlakozás"
 
-#: setup.php:370 setup.php:372
+#: setup.php:373 setup.php:375
 msgid "Database name"
 msgstr "Adatbázisnév"
 
-#: setup.php:289
+#: setup.php:292
 msgid "Database password"
 msgstr "Adatbázisjelszó"
 
-#: setup.php:285
+#: setup.php:288
 msgid "Database user account"
 msgstr "Adatbázis-felhasználó"
 
@@ -4892,7 +4892,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "december"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "december"
@@ -4935,7 +4935,7 @@ msgid "Default pedigree generations"
 msgstr "Az ősfa nemzedékeinek alapértelmezett száma"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:243 admin_trees_config.php:973
+#: admin_site_config.php:250 admin_trees_config.php:973
 msgid "Default theme"
 msgstr "Alapértelmezett téma"
 
@@ -5026,12 +5026,12 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "A család törlése megszüntet minden kapcsolatot az egyes személyek között, de a személyeket meghagyja. Biztos benne, hogy törölni akarja ezt a családot?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6719
+#: app/Stats.php:6718
 msgid "Democratic Republic of the Congo"
 msgstr "Kongói Demokratikus Köztársaság"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6735
+#: app/Stats.php:6734
 msgid "Denmark"
 msgstr "Dánia"
 
@@ -5107,7 +5107,7 @@ msgstr "Cél"
 msgid "Details"
 msgstr "Részletek"
 
-#: admin_site_config.php:490
+#: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr "Az új felhasználó adatait elküldjük a megfelelő családfa származástani kapcsolattartójának."
 
@@ -5263,7 +5263,7 @@ msgid "Divorces by century"
 msgstr "Válások századok szerint"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6733
+#: app/Stats.php:6732
 msgid "Djibouti"
 msgstr "Dzsibuti"
 
@@ -5291,12 +5291,12 @@ msgid "Document"
 msgstr "Dokumentum"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6734
+#: app/Stats.php:6733
 msgid "Dominica"
 msgstr "Dominika"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6736
+#: app/Stats.php:6735
 msgid "Dominican Republic"
 msgstr "Dominikai Köztársaság"
 
@@ -5375,7 +5375,7 @@ msgid "Earliest marriage"
 msgstr "Legkorábbi házasság"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6738
+#: app/Stats.php:6737
 msgid "Ecuador"
 msgstr "Ecuador"
 
@@ -5440,7 +5440,7 @@ msgid "Edit the media object"
 msgstr "Médiaobjektum szerkesztése"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:698 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
 msgid "Edit the name"
 msgstr "Név szerkesztése"
 
@@ -5464,7 +5464,7 @@ msgstr "A nyers GEDCOM-kód szerkesztése"
 msgid "Edit the repository"
 msgstr "Adattár szerkesztése"
 
-#: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
 msgstr "Megosztott jegyzet szerkesztése"
@@ -5502,12 +5502,12 @@ msgid "Education"
 msgstr "Végzettség"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6739
+#: app/Stats.php:6738
 msgid "Egypt"
 msgstr "Egyiptom"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6879
+#: app/Stats.php:6878
 msgid "El Salvador"
 msgstr "Salvador"
 
@@ -5517,7 +5517,7 @@ msgid "Electronic"
 msgstr "Elektronikus"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2343
+#: app/Module/GoogleMapsModule.php:2342
 msgid "Elevation"
 msgstr "Emelkedés"
 
@@ -5552,7 +5552,7 @@ msgstr "Elul"
 #: admin_users.php:361 admin_users.php:847 app/GedcomTag.php:392
 #: app/GedcomTag.php:396 app/GedcomTag.php:400 app/GedcomTag.php:1467
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
-#: login.php:430 message.php:117 message.php:270 setup.php:440
+#: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
 msgstr "E-mail cím"
 
@@ -5642,7 +5642,7 @@ msgid "Engagement"
 msgstr "Eljegyzés"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6740
+#: app/Stats.php:6739
 msgid "England"
 msgstr "Anglia"
 
@@ -5664,12 +5664,12 @@ msgid "Entire record"
 msgstr "Összes bejegyzés"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6763
+#: app/Stats.php:6762
 msgid "Equatorial Guinea"
 msgstr "Egyenlítői Guinea"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6741
+#: app/Stats.php:6740
 msgid "Eritrea"
 msgstr "Eritrea"
 
@@ -5713,12 +5713,12 @@ msgid "Estimated dates for birth and death"
 msgstr "Születés és elhalálozás becsült dátuma"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6744
+#: app/Stats.php:6743
 msgid "Estonia"
 msgstr "Észtország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6745
+#: app/Stats.php:6744
 msgid "Ethiopia"
 msgstr "Etiópia"
 
@@ -5733,7 +5733,7 @@ msgstr "Európa"
 msgid "Event"
 msgstr "Esemény"
 
-#: app/Module/GoogleMapsModule.php:2081 statistics.php:110 statistics.php:212
+#: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
 msgstr "Események"
 
@@ -5899,7 +5899,7 @@ msgstr "9. tény"
 msgid "Fact icons"
 msgstr "Tényikonok"
 
-#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:613
+#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
 msgstr "Tény vagy esemény"
 
@@ -5936,7 +5936,7 @@ msgid "Facts for source records"
 msgstr "Forrásbejegyzések tényei"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6749
+#: app/Stats.php:6748
 msgid "Falkland Islands"
 msgstr "Falkland-szigetek"
 
@@ -5948,7 +5948,7 @@ msgstr "Falkland-szigetek"
 #: app/Functions/FunctionsPrintLists.php:1351
 #: app/Module/FamilyTreeStatisticsModule.php:115
 #: app/Module/FamilyTreeStatisticsModule.php:342
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:187
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
 #: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
@@ -5966,7 +5966,7 @@ msgstr "Családok forrással"
 #. I18N: Name of a module/report
 #: admin_trees_config.php:758 app/Controller/HourglassController.php:327
 #: app/Controller/PedigreeController.php:266
-#: app/Functions/FunctionsEdit.php:867 app/GedcomTag.php:444
+#: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
 #: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
@@ -6122,7 +6122,7 @@ msgid "Far"
 msgstr "Far"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6751
+#: app/Stats.php:6750
 msgid "Faroe Islands"
 msgstr "Feröer-szigetek"
 
@@ -6165,7 +6165,7 @@ msgstr "Apa"
 msgid "Father: %s"
 msgstr "Apa: %s"
 
-#: app/Functions/FunctionsPrint.php:275
+#: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
 msgstr "Apja kora ekkor"
 
@@ -6210,14 +6210,14 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "február"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "február"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
-#: app/Functions/FunctionsEdit.php:674 app/Stats.php:5578 calendar.php:635
+#: app/Functions/FunctionsEdit.php:675 app/Stats.php:5577 calendar.php:635
 #: statisticsplot.php:901 statisticsplot.php:951 statisticsplot.php:1005
 #: statisticsplot.php:1055 statisticsplot.php:1109 statisticsplot.php:1159
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
@@ -6236,7 +6236,7 @@ msgid "Females"
 msgstr "Nők"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6747
+#: app/Stats.php:6746
 msgid "Fiji"
 msgstr "Fidzsi"
 
@@ -6280,37 +6280,37 @@ msgstr "A %s jellel jelölt fájok szükségesek a rendes működéshez, ezért 
 msgid "Filter"
 msgstr "Szűrő&nbsp;"
 
-#: app/Functions/FunctionsPrint.php:793 find.php:76 find.php:81 find.php:86
+#: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
 msgstr "Tény vagy esemény keresése"
 
-#: app/Functions/FunctionsPrint.php:708 find.php:54
+#: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
 msgstr "Család keresése"
 
-#: app/Functions/FunctionsPrint.php:782 find.php:57
+#: app/Functions/FunctionsPrint.php:783 find.php:57
 msgid "Find a media object"
 msgstr "Médiaobjektum keresése"
 
-#: app/Functions/FunctionsPrint.php:697 find.php:60
+#: app/Functions/FunctionsPrint.php:698 find.php:60
 msgid "Find a place"
 msgstr "Hely keresése"
 
-#: app/Functions/FunctionsPrint.php:770 find.php:63
+#: app/Functions/FunctionsPrint.php:771 find.php:63
 msgid "Find a repository"
 msgstr "Adattár keresése"
 
-#: app/Functions/FunctionsPrint.php:759 find.php:66
+#: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
 msgstr "Megosztott jegyzet keresése"
 
-#: app/Functions/FunctionsPrint.php:747 find.php:69
+#: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "Forrás keresése"
 
-#: app/Functions/FunctionsPrint.php:719 find.php:72
+#: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
 msgstr "Különleges karakter keresése"
 
@@ -6318,7 +6318,7 @@ msgstr "Különleges karakter keresése"
 msgid "Find all possible relationships"
 msgstr "Minden lehetséges kapcsolat keresése"
 
-#: app/Functions/FunctionsPrint.php:686 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6351,7 +6351,7 @@ msgid "Find unrelated individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6746
+#: app/Stats.php:6745
 msgid "Finland"
 msgstr "Finnország"
 
@@ -6380,7 +6380,7 @@ msgid "Flag"
 msgstr "Zászló"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6748
+#: app/Stats.php:6747
 msgid "Flanders"
 msgstr "Flandria"
 
@@ -6463,7 +6463,7 @@ msgid "For technical support or genealogy questions contact %s."
 msgstr "Technikai vagy származástani kérdésekben segítséget nyújt: %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
-#: admin_site_config.php:276
+#: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr "Egynél több családfát tartalmazó webhelyek esetén ez a beállítás megjeleníti a családfák listáját a főmenüben, a keresőoldalakon stb."
 
@@ -6515,7 +6515,7 @@ msgid "Foster mother"
 msgstr "Nevelőanya"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6750
+#: app/Stats.php:6749
 msgid "France"
 msgstr "Franciaország"
 
@@ -6535,17 +6535,17 @@ msgid "French"
 msgstr "Francia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6768
+#: app/Stats.php:6767
 msgid "French Guiana"
 msgstr "Francia Guyana"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6861
+#: app/Stats.php:6860
 msgid "French Polynesia"
 msgstr "Francia Polinézia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6684
+#: app/Stats.php:6683
 msgid "French Southern Territories"
 msgstr "Francia Déli Területek"
 
@@ -6562,7 +6562,7 @@ msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornia, Egyesült Államok"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "P."
 
@@ -6659,12 +6659,12 @@ msgid "GEDCOM file"
 msgstr "GEDCOM-állomány"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6753
+#: app/Stats.php:6752
 msgid "Gabon"
 msgstr "Gabon"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6761
+#: app/Stats.php:6760
 msgid "Gambia"
 msgstr "Gambia"
 
@@ -6741,20 +6741,20 @@ msgstr "Földrajzi terület"
 
 #: app/Module/GoogleMapsModule.php:175 app/Module/GoogleMapsModule.php:289
 #: app/Module/GoogleMapsModule.php:826 app/Module/GoogleMapsModule.php:1309
-#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2296
-#: app/Module/GoogleMapsModule.php:2420 app/Module/GoogleMapsModule.php:2815
+#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2295
+#: app/Module/GoogleMapsModule.php:2419 app/Module/GoogleMapsModule.php:2815
 #: app/Module/GoogleMapsModule.php:3495 app/Module/GoogleMapsModule.php:3507
 #: app/Module/GoogleMapsModule.php:3719 app/Module/GoogleMapsModule.php:3886
 msgid "Geographic data"
 msgstr "Földrajzi adatok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6755
+#: app/Stats.php:6754
 msgid "Georgia"
 msgstr "Grúzia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6732
+#: app/Stats.php:6731
 msgid "Germany"
 msgstr "Németország"
 
@@ -6788,12 +6788,12 @@ msgid "Get an API key from Google."
 msgstr "API-kulcs szerzése a Google-tól."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6757
+#: app/Stats.php:6756
 msgid "Ghana"
 msgstr "Ghána"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6758
+#: app/Stats.php:6757
 msgid "Gibraltar"
 msgstr "Gibraltár"
 
@@ -6842,7 +6842,7 @@ msgid "Godson"
 msgstr "Keresztfiú"
 
 #. I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: app/Functions/FunctionsPrint.php:468 app/Module/GoogleMapsModule.php:72
+#: app/Functions/FunctionsPrint.php:469 app/Module/GoogleMapsModule.php:72
 #: app/Module/GoogleMapsModule.php:235 app/Module/GoogleMapsModule.php:1291
 #: app/Module/GoogleMapsModule.php:3477 app/Module/GoogleMapsModule.php:4325
 #: app/Module/GoogleMapsModule.php:4340
@@ -6852,12 +6852,12 @@ msgstr "Google Maps™"
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:184
 #: app/Module/GoogleMapsModule.php:284 app/Module/GoogleMapsModule.php:299
 #: app/Module/GoogleMapsModule.php:825 app/Module/GoogleMapsModule.php:1304
-#: app/Module/GoogleMapsModule.php:2295 app/Module/GoogleMapsModule.php:3490
+#: app/Module/GoogleMapsModule.php:2294 app/Module/GoogleMapsModule.php:3490
 msgid "Google Maps™ preferences"
 msgstr "Google Maps™-beállítások"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2083
+#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2082
 #: app/Module/GoogleMapsModule.php:4328
 msgid "Google Street View™"
 msgstr "Google Street View™ (utcakép)"
@@ -6884,7 +6884,7 @@ msgid "Greatest age between siblings"
 msgstr "Legnagyobb korkülönbség testvérek között"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6764
+#: app/Stats.php:6763
 msgid "Greece"
 msgstr "Görögország"
 
@@ -6894,7 +6894,7 @@ msgid "Green Beam"
 msgstr "Zöld fénysugár"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6766
+#: app/Stats.php:6765
 msgid "Greenland"
 msgstr "Grönland"
 
@@ -6904,7 +6904,7 @@ msgid "Gregorian"
 msgstr "Gergely"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6765
+#: app/Stats.php:6764
 msgid "Grenada"
 msgstr "Grenada"
 
@@ -6914,12 +6914,12 @@ msgid "Guadalajara, Mexico"
 msgstr "Guadalajara, Mexikó"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6760
+#: app/Stats.php:6759
 msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6769
+#: app/Stats.php:6768
 msgid "Guam"
 msgstr "Guam"
 
@@ -6938,7 +6938,7 @@ msgid "Guardian"
 msgstr "Gondnok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6767
+#: app/Stats.php:6766
 msgid "Guatemala"
 msgstr "Guatemala"
 
@@ -6953,22 +6953,22 @@ msgid "Guayaquil, Ecuador"
 msgstr "Guayaquil, Ecuador"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6756
+#: app/Stats.php:6755
 msgid "Guernsey"
 msgstr "Guernsey"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6759
+#: app/Stats.php:6758
 msgid "Guinea"
 msgstr "Guinea"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6762
+#: app/Stats.php:6761
 msgid "Guinea-Bissau"
 msgstr "Bissau-Guinea"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6770
+#: app/Stats.php:6769
 msgid "Guyana"
 msgstr "Guyana"
 
@@ -6983,7 +6983,7 @@ msgid "Hair color"
 msgstr "Hajszín"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6775
+#: app/Stats.php:6774
 msgid "Haiti"
 msgstr "Haiti"
 
@@ -7047,7 +7047,7 @@ msgid "Header"
 msgstr "Fejléc"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6772
+#: app/Stats.php:6771
 msgid "Heard Island and McDonald Islands"
 msgstr "Heard- és McDonald-szigetek"
 
@@ -7142,7 +7142,7 @@ msgstr "Hesván"
 
 #: admin_trees_config.php:82 admin_trees_config.php:89
 #: admin_trees_config.php:492 admin_trees_config.php:1021
-#: app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:208
 msgid "Hide from everyone"
 msgstr "Elrejtve mindenki elől"
 
@@ -7185,13 +7185,13 @@ msgid "Home page"
 msgstr "Honlap"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6773
+#: app/Stats.php:6772
 msgid "Honduras"
 msgstr "Honduras"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
-#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6771
+#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6770
 msgid "Hong Kong"
 msgstr "Hongkong"
 
@@ -7222,7 +7222,7 @@ msgid "How much recursion to use when searching for relationships"
 msgstr "A kapcsolatkeresés milyen mélységig történjen"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6776
+#: app/Stats.php:6775
 msgid "Hungary"
 msgstr "Magyarország"
 
@@ -7255,7 +7255,7 @@ msgid "IP address"
 msgstr "IP-cím"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6784
+#: app/Stats.php:6783
 msgid "Iceland"
 msgstr "Izland"
 
@@ -7363,7 +7363,7 @@ msgstr "Ha létrehozott médiaobjektumokat a webtreesben, majd a GEDCOM-adatokat
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
 msgstr "Egy üres blokk elrejtése után nem változtatható meg a beállítása, amíg újra láthatóvá nem válik azzal, hogy többé nem üres."
 
-#: admin_site_config.php:185
+#: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Ha egy másik mappát választ, minden fájlt (kivéve a config.ini.php, az index.php és a .htaccess fájlokat) szintén át kell helyeznie a mostani mappából az újba."
 
@@ -7377,20 +7377,20 @@ msgstr "Ha egy másik mappát választ, minden médiaállományt át kell helyez
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr "Ha az élő személyeket megjeleníti a látogatóknak, minden további adatvédelmi megkötés érvényét veszti. Ezt csak akkor tegye, ha a teljes családfa adatai nyilvánosak."
 
-#: setup.php:182
+#: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr "Ha ezeket a korlátokat megpróbálja túllépni, szerveridő-túllépésre és üres oldalakra számíthat."
 
-#: admin_site_config.php:512
+#: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Ha a következő követő- és elemzőszolgáltatások egyikét használja, a webtrees automatikusan felveheti a követőkódot."
 
-#: setup.php:184
+#: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
 msgstr "Ha a szerverének biztonsági beállításai megengedik, a webtrees beállításainak oldalán kérhet megnövelt memóriát vagy processzoridőt. Ellenkező esetben ezt a szerver rendszergazdájától kell kérnie."
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:303
+#: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
 msgstr "Ha a webhely több internetcímen (URL) is elérhető, például a <b>http://www.pelda.com/webtrees/</b> és a <b>http://webtrees.pelda.com/</b> címen, meghatározhatja az előnyben részesített URL-t. Átirányítás révén a többire irányuló kérés is ide vezet."
 
@@ -7479,7 +7479,7 @@ msgid "Include the individual’s immediate family"
 msgstr "Tartalmazza a személy közvetlen családját"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6778
+#: app/Stats.php:6777
 msgid "India"
 msgstr "India"
 
@@ -7491,7 +7491,7 @@ msgstr "Indianapolis, Indiana, Egyesült Államok"
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:547 ancestry.php:52
-#: app/Functions/FunctionsEdit.php:848 app/GedcomTag.php:532
+#: app/Functions/FunctionsEdit.php:849 app/GedcomTag.php:532
 #: app/Module/ChartsBlockModule.php:215 app/Module/GoogleMapsModule.php:730
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
 #: app/Module/StoriesModule.php:375 app/Module/StoriesModule.php:459
@@ -7552,7 +7552,7 @@ msgstr "Legmagasabb kort megélt személy"
 #: app/Functions/FunctionsPrintLists.php:1433
 #: app/Module/FamilyTreeStatisticsModule.php:107
 #: app/Module/FamilyTreeStatisticsModule.php:314
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:171
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:171
 #: app/Module/SlideShowModule.php:264 app/Theme/AbstractTheme.php:1504
 #: calendar.php:413 descendancy.php:65 gedrecord.php:111 indilist.php:130
 #: indilist.php:133 mediaviewer.php:100 modules_v3/fact_sources/report.xml:54
@@ -7573,7 +7573,7 @@ msgid "Individuals with surname %s"
 msgstr "Személyek %s vezetéknévvel"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6777
+#: app/Stats.php:6776
 msgid "Indonesia"
 msgstr "Indonézia"
 
@@ -7613,11 +7613,11 @@ msgstr "Családfaág"
 msgid "Interactive tree of %s"
 msgstr "%s családfaága"
 
-#: app/Functions/FunctionsEdit.php:246
+#: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
 msgstr "Belső üzenetküldés"
 
-#: app/Functions/FunctionsEdit.php:247
+#: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
 msgstr "Belső üzenetküldés – e-mailekkel"
 
@@ -7651,27 +7651,27 @@ msgid "Invalid date"
 msgstr "Érvénytelen dátum"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6782
+#: app/Stats.php:6781
 msgid "Iran"
 msgstr "Irán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6783
+#: app/Stats.php:6782
 msgid "Iraq"
 msgstr "Irak"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6781
+#: app/Stats.php:6780
 msgid "Ireland"
 msgstr "Írország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6779
+#: app/Stats.php:6778
 msgid "Isle of Man"
 msgstr "Man"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6785
+#: app/Stats.php:6784
 msgid "Israel"
 msgstr "Izrael"
 
@@ -7680,7 +7680,7 @@ msgid "It can take several minutes to download and install the upgrade. Be patie
 msgstr "Néhány percig eltarthat a frissítés letöltése és telepítése. Kis türelmet kérünk."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6786
+#: app/Stats.php:6785
 msgid "Italy"
 msgstr "Olaszország"
 
@@ -7714,7 +7714,7 @@ msgid "Jalali"
 msgstr "Jalali"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6787
+#: app/Stats.php:6786
 msgid "Jamaica"
 msgstr "Jamaika"
 
@@ -7738,13 +7738,13 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "január"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:644
+#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "január"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6790
+#: app/Stats.php:6789
 msgid "Japan"
 msgstr "Japán"
 
@@ -7764,7 +7764,7 @@ msgid "John /DOE/"
 msgstr "/GIPSZ/ Jakab"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6789
+#: app/Stats.php:6788
 msgid "Jordan"
 msgstr "Jordánia"
 
@@ -7803,7 +7803,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "július"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "július"
@@ -7876,7 +7876,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "június"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "június"
@@ -7887,7 +7887,7 @@ msgid "Kansas City, Missouri, United States"
 msgstr "Kansas City, Missouri, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6791
+#: app/Stats.php:6790
 msgid "Kazakhstan"
 msgstr "Kazahsztán"
 
@@ -7912,7 +7912,7 @@ msgid "Keep the existing “last change” information"
 msgstr "Tartsd meg az „utolsó módosítás” eddigi értékét"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6792
+#: app/Stats.php:6791
 msgid "Kenya"
 msgstr "Kenya"
 
@@ -7955,7 +7955,7 @@ msgid "Kiev, Ukraine"
 msgstr "Kijev, Ukrajna"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6795
+#: app/Stats.php:6794
 msgid "Kiribati"
 msgstr "Kiribati"
 
@@ -7989,17 +7989,17 @@ msgid "Kona, Hawaii, United States"
 msgstr "Kona, Hawaii, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6797
+#: app/Stats.php:6796
 msgid "Korea"
 msgstr "Koreai Köztársaság"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6798
+#: app/Stats.php:6797
 msgid "Kuwait"
 msgstr "Kuvait"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6793
+#: app/Stats.php:6792
 msgid "Kyrgyzstan"
 msgstr "Kirgizisztán"
 
@@ -8033,7 +8033,7 @@ msgstr "UNSZ-szertartás jelei az ábrakeretekben"
 msgid "LDS spouse sealing"
 msgstr "UNSZ-házasság pecsételése"
 
-#: app/Functions/FunctionsPrint.php:479
+#: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
 msgstr "UNSZ-templom"
 
@@ -8050,27 +8050,27 @@ msgstr "Szélesebb"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
-#: admin_site_config.php:632 admin_trees_config.php:635 admin_users.php:406
+#: admin_site_config.php:639 admin_trees_config.php:635 admin_users.php:406
 #: admin_users.php:848 app/GedcomTag.php:540 app/Theme/AbstractTheme.php:1408
-#: edituser.php:238 setup.php:108
+#: edituser.php:238 setup.php:111
 msgid "Language"
 msgstr "Nyelv"
 
 #. I18N: Menu entry
-#: admin_site_config.php:146 app/Theme/AdministrationTheme.php:98
+#: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
 msgstr "Nyelvek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6799
+#: app/Stats.php:6798
 msgid "Laos"
 msgstr "Laosz"
 
-#: setup.php:177
+#: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
 msgstr "Nagy rendszerek (50 000 személy): 64–128 megabájt, 40–80 másodperc"
 
-#: app/Stats.php:4856 statistics.php:318
+#: app/Stats.php:4855 statistics.php:318
 msgid "Largest families"
 msgstr "Legnagyobb családok"
 
@@ -8136,7 +8136,7 @@ msgid "Latitude"
 msgstr "Szélesség"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6809
+#: app/Stats.php:6808
 msgid "Latvia"
 msgstr "Litvánia"
 
@@ -8148,8 +8148,8 @@ msgstr "Elrendezés"
 msgid "Leave the password blank if you want to keep the current password."
 msgstr "Hagyja üresen a jelszómezőt, ha meg szeretné tartani a jelenlegi jelszót."
 
-#: admin_site_config.php:203 admin_site_config.php:222
-#: admin_site_config.php:290 admin_site_config.php:304
+#: admin_site_config.php:210 admin_site_config.php:229
+#: admin_site_config.php:297 admin_site_config.php:311
 msgid "Leave this blank to use the default value."
 msgstr "Ha ezt a rovatot üresen hagyja, az alapértelmezett érték lép érvénybe."
 
@@ -8159,7 +8159,7 @@ msgid "Leaves"
 msgstr "Levelek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6800
+#: app/Stats.php:6799
 msgid "Lebanon"
 msgstr "Libanon"
 
@@ -8191,7 +8191,7 @@ msgid "Length of marriage"
 msgstr "Házasság hossza"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6806
+#: app/Stats.php:6805
 msgid "Lesotho"
 msgstr "Lesothó"
 
@@ -8219,17 +8219,17 @@ msgid "Level"
 msgstr "Szint"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6801
+#: app/Stats.php:6800
 msgid "Liberia"
 msgstr "Libéria"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6802
+#: app/Stats.php:6801
 msgid "Libya"
 msgstr "Líbia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6804
+#: app/Stats.php:6803
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
@@ -8303,7 +8303,7 @@ msgid "Lists"
 msgstr "Listák"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6807
+#: app/Stats.php:6806
 msgid "Lithuania"
 msgstr "Litvánia"
 
@@ -8401,22 +8401,22 @@ msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Texas, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6808
+#: app/Stats.php:6807
 msgid "Luxembourg"
 msgstr "Luxemburg"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6810
+#: app/Stats.php:6809
 msgid "Macau"
 msgstr "Makaó"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6819
+#: app/Stats.php:6818
 msgid "Macedonia"
 msgstr "Macedónia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6815
+#: app/Stats.php:6814
 msgid "Madagascar"
 msgstr "Madagaszkár"
 
@@ -8435,7 +8435,7 @@ msgstr "Magazin"
 msgid "Mailing name"
 msgstr "Levelezési név"
 
-#: app/Functions/FunctionsEdit.php:249
+#: app/Functions/FunctionsEdit.php:250
 msgid "Mailto link"
 msgstr "Levélküldési hivatkozás"
 
@@ -8444,23 +8444,23 @@ msgid "Main section blocks"
 msgstr "Fő rész blokkjai"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6831
+#: app/Stats.php:6830
 msgid "Malawi"
 msgstr "Malavi"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6832
+#: app/Stats.php:6831
 msgid "Malaysia"
 msgstr "Malajzia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6816
+#: app/Stats.php:6815
 msgid "Maldives"
 msgstr "Maldív-szigetek"
 
 #: app/Controller/IndividualController.php:238
 #: app/Controller/IndividualController.php:241
-#: app/Functions/FunctionsEdit.php:670 app/Stats.php:5578 calendar.php:631
+#: app/Functions/FunctionsEdit.php:671 app/Stats.php:5577 calendar.php:631
 #: statisticsplot.php:900 statisticsplot.php:950 statisticsplot.php:1004
 #: statisticsplot.php:1054 statisticsplot.php:1108 statisticsplot.php:1158
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
@@ -8479,12 +8479,12 @@ msgid "Males"
 msgstr "Férfiak"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6820
+#: app/Stats.php:6819
 msgid "Mali"
 msgstr "Mali"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6821
+#: app/Stats.php:6820
 msgid "Malta"
 msgstr "Málta"
 
@@ -8551,7 +8551,7 @@ msgid "Many genealogy programs create GEDCOM files with custom tags, and webtree
 msgstr "Sok származástani alkalmazás a GEDCOM-fájlt saját címkékkel hozza létre, amik nagy részét a webtrees érti. Ezzel az opcióval választhat, hogy nem felismerhető címkék esetén mellőzzük azokat, vagy figyelmeztető üzenet jelenjen meg."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
-#: admin_site_config.php:426
+#: admin_site_config.php:433
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr "Sok e-mail szerver megköveteli, hogy a küldő szerver helyesen, egy érvényes doménnévvel azonosítsa magát."
 
@@ -8582,7 +8582,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "március"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "március"
@@ -8824,12 +8824,12 @@ msgid "Married surname"
 msgstr "Házassági vezetéknév"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6818
+#: app/Stats.php:6817
 msgid "Marshall Islands"
 msgstr "Marshall-szigetek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6829
+#: app/Stats.php:6828
 msgid "Martinique"
 msgstr "Martinique"
 
@@ -8856,12 +8856,12 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Egyeztesse a pontos szöveget, kivéve, ha a szó közepén található."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6827
+#: app/Stats.php:6826
 msgid "Mauritania"
 msgstr "Mauritánia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6830
+#: app/Stats.php:6829
 msgid "Mauritius"
 msgstr "Mauritius"
 
@@ -8904,13 +8904,13 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "május"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "május"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6833
+#: app/Stats.php:6832
 msgid "Mayotte"
 msgstr "Mayotte"
 
@@ -9007,7 +9007,7 @@ msgstr "Egészségi állapot"
 msgid "Mediterranio"
 msgstr "Mediterrán"
 
-#: setup.php:175
+#: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr "Közepes rendszerek (5000 személy): 32-64 megabájt, 20-40 másodperc"
 
@@ -9055,7 +9055,7 @@ msgid "Member"
 msgstr "Tag"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:196
+#: admin_site_config.php:203
 msgid "Memory limit"
 msgstr "Memóriahatár"
 
@@ -9108,7 +9108,7 @@ msgstr "Üzenet"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
-#: admin_site_config.php:315 app/Module/UserMessagesModule.php:33
+#: admin_site_config.php:322 app/Module/UserMessagesModule.php:33
 msgid "Messages"
 msgstr "Üzenetek"
 
@@ -9137,7 +9137,7 @@ msgid "Messidor"
 msgstr "Aratás hónapja"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6817
+#: app/Stats.php:6816
 msgid "Mexico"
 msgstr "Mexikó"
 
@@ -9157,7 +9157,7 @@ msgid "Microfilm"
 msgstr "Mikrofilm"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6752
+#: app/Stats.php:6751
 msgid "Micronesia"
 msgstr "Mikronézia"
 
@@ -9229,17 +9229,17 @@ msgid "Modules"
 msgstr "Modulok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6814
+#: app/Stats.php:6813
 msgid "Moldova"
 msgstr "Moldva"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "H."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6813
+#: app/Stats.php:6812
 msgid "Monaco"
 msgstr "Monakó"
 
@@ -9248,12 +9248,12 @@ msgid "Monday"
 msgstr "Hétfő"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6823
+#: app/Stats.php:6822
 msgid "Mongolia"
 msgstr "Mongólia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6825
+#: app/Stats.php:6824
 msgid "Montenegro"
 msgstr "Montenegró"
 
@@ -9275,7 +9275,7 @@ msgstr "Hónap"
 msgid "Month of birth"
 msgstr "A születés hónapja"
 
-#: app/Stats.php:4736 statistics.php:530 statisticsplot.php:1028
+#: app/Stats.php:4735 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
 msgstr "Az első gyermek születési hónapja egy kapcsolatban"
 
@@ -9306,7 +9306,7 @@ msgid "Montreal, Quebec, Canada"
 msgstr "Montreal, Quebec, Kanada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6828
+#: app/Stats.php:6827
 msgid "Montserrat"
 msgstr "Montserrat"
 
@@ -9344,12 +9344,12 @@ msgid "More news articles"
 msgstr "További újságcikkek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6812
+#: app/Stats.php:6811
 msgid "Morocco"
 msgstr "Marokkó"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:374
+#: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
 msgstr "A legtöbb SMTP-szerver jelszót igényel."
 
@@ -9360,15 +9360,15 @@ msgid "Most common surnames"
 msgstr "Leggyakoribb vezetéknevek"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
-#: admin_site_config.php:413
+#: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
 msgstr "A legtöbb szerver nem használ biztonságos kapcsolatot."
 
-#: setup.php:279
+#: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr "A webhelyek többsége a localhostot használja. Ez azt jelenti, hogy az adatbázis ugyanazon a számítógépen fut, amelyen a webszerver."
 
-#: setup.php:283
+#: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
 msgstr "A webhelyek többsége az alapértelmezett 3306-os értéket használja."
 
@@ -9392,7 +9392,7 @@ msgstr "Anya"
 msgid "Mother: %s"
 msgstr "Anya: %s"
 
-#: app/Functions/FunctionsPrint.php:267
+#: app/Functions/FunctionsPrint.php:268
 msgid "Mother’s age"
 msgstr "Anyja kora ekkor"
 
@@ -9431,7 +9431,7 @@ msgid "Move up"
 msgstr "Felfelé"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6826
+#: app/Stats.php:6825
 msgid "Mozambique"
 msgstr "Mozambik"
 
@@ -9502,13 +9502,13 @@ msgid "MySQL variables"
 msgstr "MySQL-változók"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6822
+#: app/Stats.php:6821
 msgid "Myanmar"
 msgstr "Mianmar"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:104
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:525
 #: modules_v3/bdm_report/report.xml:5 modules_v3/bdm_report/report.xml:49
@@ -9564,7 +9564,7 @@ msgid "Namesake"
 msgstr "Névrokon"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6834
+#: app/Stats.php:6833
 msgid "Namibia"
 msgstr "Namíbia"
 
@@ -9592,7 +9592,7 @@ msgid "Naturalization"
 msgstr "Honosítás"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6845
+#: app/Stats.php:6844
 msgid "Nauru"
 msgstr "Nauru"
 
@@ -9607,12 +9607,12 @@ msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo (eredeti), Illinois, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6844
+#: app/Stats.php:6843
 msgid "Nepal"
 msgstr "Nepál"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6842
+#: app/Stats.php:6841
 msgid "Netherlands"
 msgstr "Hollandia"
 
@@ -9638,7 +9638,7 @@ msgid "Never married"
 msgstr "Agglegény"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6835
+#: app/Stats.php:6834
 msgid "New Caledonia"
 msgstr "Új-Kaledónia"
 
@@ -9648,7 +9648,7 @@ msgid "New York, New York, United States"
 msgstr "New York, New York, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6846
+#: app/Stats.php:6845
 msgid "New Zealand"
 msgstr "Új-Zéland"
 
@@ -9692,7 +9692,7 @@ msgid "Next image"
 msgstr "Következő kép"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6839
+#: app/Stats.php:6838
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -9702,12 +9702,12 @@ msgid "Nickname"
 msgstr "Becenév"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6836
+#: app/Stats.php:6835
 msgid "Niger"
 msgstr "Nigéria"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6838
+#: app/Stats.php:6837
 msgid "Nigeria"
 msgstr "Nigéria"
 
@@ -9736,7 +9736,7 @@ msgid "Nissan"
 msgstr "Niszán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6841
+#: app/Stats.php:6840
 msgid "Niue"
 msgstr "Niue"
 
@@ -9789,7 +9789,7 @@ msgstr "Nincs naptár-átalakítás"
 msgid "No children"
 msgstr "Nincsenek gyerekek"
 
-#: app/Functions/FunctionsEdit.php:250
+#: app/Functions/FunctionsEdit.php:251
 msgid "No contact"
 msgstr "Nincs kapcsolat"
 
@@ -9884,7 +9884,7 @@ msgstr "Nem találhatóak helyek"
 msgid "No places have been found."
 msgstr "Nem találtunk helyeket."
 
-#: admin_site_config.php:120
+#: admin_site_config.php:127
 msgid "No predefined text"
 msgstr "Nincs előredefiniált szöveg"
 
@@ -9901,11 +9901,11 @@ msgstr "Nincsenek kijelezni való adatok"
 msgid "No results found."
 msgstr "Nincs találat."
 
-#: app/Stats.php:5902
+#: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
 msgstr "Nincs bejelentkezett és névtelen felhasználó"
 
-#: app/Functions/FunctionsEdit.php:633
+#: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
 msgstr "Nincs templomi élő szertartás"
 
@@ -9945,7 +9945,7 @@ msgid "Noon"
 msgstr "Dél"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6837
+#: app/Stats.php:6836
 msgid "Norfolk Island"
 msgstr "Norfolk-sziget"
 
@@ -9954,22 +9954,22 @@ msgid "Normally, any changes made to a family tree need to be reviewed by a mode
 msgstr "Általában, a családfán végzett bármilyen módosítást webhelykezelőnek kell ellenőriznie. Ez az opció lehetővé teszi a felhasználó számára a felülvizsgálat nélküli változtatást."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6857
+#: app/Stats.php:6856
 msgid "North Korea"
 msgstr "Észak-Korea"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6840
+#: app/Stats.php:6839
 msgid "Northern Ireland"
 msgstr "Észak-Írország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6824
+#: app/Stats.php:6823
 msgid "Northern Mariana Islands"
 msgstr "Északi-Mariana-szigetek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6843
+#: app/Stats.php:6842
 msgid "Norway"
 msgstr "Norvégia"
 
@@ -10009,7 +10009,7 @@ msgstr "Felhasználó által nem ellenőrzött"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
-#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:638
+#: app/Functions/FunctionsPrint.php:174 app/GedcomTag.php:638
 #: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
@@ -10064,7 +10064,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "november"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "november"
@@ -10075,8 +10075,8 @@ msgid "Nuku’Alofa, Tonga"
 msgstr "Nuku’Alofa, Tonga"
 
 #. I18N: gedcom tag NCHI
-#: app/GedcomTag.php:626 app/Stats.php:4941 app/Stats.php:4943
-#: app/Stats.php:4945 statistics.php:555 statisticsplot.php:1332
+#: app/GedcomTag.php:626 app/Stats.php:4940 app/Stats.php:4942
+#: app/Stats.php:4944 statistics.php:555 statisticsplot.php:1332
 msgid "Number of children"
 msgstr "Gyerekek száma"
 
@@ -10086,7 +10086,7 @@ msgstr "Gyerekek száma"
 msgid "Number of days to show"
 msgstr "A mutatandó napok száma"
 
-#: app/Stats.php:5210 statistics.php:307
+#: app/Stats.php:5209 statistics.php:307
 msgid "Number of families without children"
 msgstr "Gyermek nélküli családok száma"
 
@@ -10159,7 +10159,7 @@ msgid "Occupations"
 msgstr "Foglalkozások"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6860
+#: app/Stats.php:6859
 msgid "Occupied Palestinian Territory"
 msgstr "Megszállt palesztin terület"
 
@@ -10188,7 +10188,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "október"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "október"
@@ -10245,7 +10245,7 @@ msgid "Olivia"
 msgstr "Olivazöld"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6847
+#: app/Stats.php:6846
 msgid "Oman"
 msgstr "Omán"
 
@@ -10258,7 +10258,7 @@ msgstr "A mai napon"
 msgid "On this day…"
 msgstr "A mai napon…"
 
-#: app/Functions/FunctionsEdit.php:228
+#: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
 #: app/Functions/FunctionsPrintFacts.php:443
 #: app/Functions/FunctionsPrintFacts.php:839
@@ -10270,11 +10270,11 @@ msgstr "Csak webhelyfelügyelők szerkeszthetik"
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr "Hoppá! A webszerver nem tud kapcsolódni az adatbázisszerverhez. Túlterhelt lehet, karbantartás alatt állhat vagy egyszerűen elromlott. <a href=\"index.php\">Próbálja újra</a> pár perc múlva, vagy vegye fel a kapcsolatot a webhely rendszergazdájával."
 
-#: setup.php:210
+#: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
 msgstr "Hoppá! A webtrees nem tudott fájlokat létrehozni ebben a mappában."
 
-#: app/Functions/FunctionsPrint.php:470
+#: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
 
@@ -10342,7 +10342,7 @@ msgid "Orlando, Florida, United States"
 msgstr "Orlando, Florida, Egyesült Államok"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1944 app/Stats.php:5454 app/Stats.php:5873
+#: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
 msgstr "Egyéb"
 
@@ -10394,12 +10394,12 @@ msgstr "du."
 msgid "PHP blocked the file because of its extension."
 msgstr "A PHP blokkolta a fájlt a kiterjesztése miatt."
 
-#: setup.php:137
+#: setup.php:140
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "A(z) „%1$s” PHP-bővítmény inaktív. Nélküle a(z) %2$s funkció nem működik. Kérje meg a szerver rendszergazdáját, hogy aktiválja."
 
-#: setup.php:126
+#: setup.php:129
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
 msgstr "A(z) „%s” PHP-bővítmény inaktív. Aktiválása előtt a webtrees nem telepíthető. Kérje meg a szerver rendszergazdáját, hogy aktiválja."
@@ -10413,13 +10413,13 @@ msgstr "A PHP nem tudott írni a lemezre."
 msgid "PHP information"
 msgstr "PHP-információ"
 
-#: setup.php:146
+#: setup.php:149
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "A(z) „%1$s” PHP-beállítás inaktív. Enélkül a(z) %2$s funkció nem működik. Kérje meg a szerver rendszergazdáját, hogy aktiválja."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:211
+#: admin_site_config.php:218
 msgid "PHP time limit"
 msgstr "PHP-időkorlát"
 
@@ -10467,12 +10467,12 @@ msgid "Painting"
 msgstr "Festmény"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6848
+#: app/Stats.php:6847
 msgid "Pakistan"
 msgstr "Pakisztán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6853
+#: app/Stats.php:6852
 msgid "Palau"
 msgstr "Palau"
 
@@ -10487,7 +10487,7 @@ msgid "Palmyra, New York, United States"
 msgstr "Palmyra, New York, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6849
+#: app/Stats.php:6848
 msgid "Panama"
 msgstr "Panama"
 
@@ -10502,12 +10502,12 @@ msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiti"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6854
+#: app/Stats.php:6853
 msgid "Papua New Guinea"
 msgstr "Pápua Új-Guinea"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6859
+#: app/Stats.php:6858
 msgid "Paraguay"
 msgstr "Paraguay"
 
@@ -10522,14 +10522,14 @@ msgstr "Szülők"
 msgid "Parents and siblings"
 msgstr "Szülők és testvérek"
 
-#: app/Functions/FunctionsPrint.php:279
+#: app/Functions/FunctionsPrint.php:280
 msgid "Parent’s age"
 msgstr "Szülők életkora"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:395 admin_users.php:338
+#: admin_site_config.php:402 admin_users.php:338
 #: app/Module/LoginBlockModule.php:79 edituser.php:213 login.php:197
-#: login.php:259 login.php:450 login.php:530 setup.php:433
+#: login.php:259 login.php:450 login.php:530 setup.php:436
 msgid "Password"
 msgstr "Jelszó"
 
@@ -10608,12 +10608,12 @@ msgid "Perth, Australia"
 msgstr "Perth, Ausztrália"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6851
+#: app/Stats.php:6850
 msgid "Peru"
 msgstr "Peru"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6852
+#: app/Stats.php:6851
 msgid "Philippines"
 msgstr "Fülöp-szigetek"
 
@@ -10683,7 +10683,7 @@ msgid "Pink Plastic"
 msgstr "Pasztellrubin"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6850
+#: app/Stats.php:6849
 msgid "Pitcairn"
 msgstr "Pitcairn-szigetek"
 
@@ -10705,7 +10705,7 @@ msgstr "Hely"
 
 #: app/Module/GoogleMapsModule.php:176 app/Module/GoogleMapsModule.php:294
 #: app/Module/GoogleMapsModule.php:827 app/Module/GoogleMapsModule.php:1314
-#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2297
+#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2296
 #: app/Module/GoogleMapsModule.php:3500
 msgid "Place check"
 msgstr "Hely ellenőrzése"
@@ -10928,7 +10928,7 @@ msgid "Pluviose"
 msgstr "Eső hava"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6855
+#: app/Stats.php:6854
 msgid "Poland"
 msgstr "Lengyelország"
 
@@ -10938,7 +10938,7 @@ msgid "Polish"
 msgstr "lengyel"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:356 setup.php:281
+#: admin_site_config.php:363 setup.php:284
 msgid "Port number"
 msgstr "Portszám"
 
@@ -10959,7 +10959,7 @@ msgid "Portrait"
 msgstr "Keskenyebb"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6858
+#: app/Stats.php:6857
 msgid "Portugal"
 msgstr "Portugália"
 
@@ -10997,15 +10997,15 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "Rét hava"
 
-#: admin_site_config.php:122
+#: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "Előredefiniált szöveg, mely szerint a rendszergazda dönt az egyes felhasználói fiók iránti kérelmekről"
 
-#: admin_site_config.php:121
+#: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
 msgstr "Előredefiniált szöveg, mely szerint minden felhasználó igényelhet felhasználói fiókot"
 
-#: admin_site_config.php:123
+#: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Előredefiniált szöveg, mely szerint kizárólag családtagok igényelhetnek felhasználói fiókot"
 
@@ -11114,12 +11114,12 @@ msgid "Publication"
 msgstr "Publikáció"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6856
+#: app/Stats.php:6855
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6862
+#: app/Stats.php:6861
 msgid "Qatar"
 msgstr "Katar"
 
@@ -11588,7 +11588,7 @@ msgid "Repository name"
 msgstr "Adattár neve"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6720
+#: app/Stats.php:6719
 msgid "Republic of the Congo"
 msgstr "Kongó (Brazzaville)"
 
@@ -11660,7 +11660,7 @@ msgid "Retirement"
 msgstr "Nyugdíjazás"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6863
+#: app/Stats.php:6862
 msgid "Reunion"
 msgstr "Reunion-sziget"
 
@@ -11679,7 +11679,7 @@ msgid "Role"
 msgstr "Szerepkör"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6864
+#: app/Stats.php:6863
 msgid "Romania"
 msgstr "Románia"
 
@@ -11713,16 +11713,16 @@ msgid "Russell"
 msgstr "Russell"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6865
+#: app/Stats.php:6864
 msgid "Russia"
 msgstr "Oroszország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6866
+#: app/Stats.php:6865
 msgid "Rwanda"
 msgstr "Ruanda"
 
-#: admin_site_config.php:338
+#: admin_site_config.php:345
 msgid "SMTP mail server"
 msgstr "SMTP-levélszerver"
 
@@ -11761,27 +11761,27 @@ msgid "Sage"
 msgstr "Zsályazöld"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6875
+#: app/Stats.php:6874
 msgid "Saint Helena"
 msgstr "Szent Ilona"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6796
+#: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
 msgstr "Saint Kitts és Nevis"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6803
+#: app/Stats.php:6802
 msgid "Saint Lucia"
 msgstr "Szent Lucia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6882
+#: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
 msgstr "St. Pierre és Miquelon"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6915
+#: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent és Grenadines"
 
@@ -11791,7 +11791,7 @@ msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Utah, Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6923
+#: app/Stats.php:6922
 msgid "Samoa"
 msgstr "Szamoa"
 
@@ -11811,7 +11811,7 @@ msgid "San Jose, Costa Rica"
 msgstr "San Jose, Costa Rica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6880
+#: app/Stats.php:6879
 msgid "San Marino"
 msgstr "San Marino"
 
@@ -11836,12 +11836,12 @@ msgid "Sao Paulo, Brazil"
 msgstr "Sao Paulo, Brazília"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6884
+#: app/Stats.php:6883
 msgid "Sao Tome and Principe"
 msgstr "Sao Tome és Principe"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "Szo."
 
@@ -11854,7 +11854,7 @@ msgid "Saturday"
 msgstr "Szombat"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6867
+#: app/Stats.php:6866
 msgid "Saudi Arabia"
 msgstr "Szaúd-Arábia"
 
@@ -11863,7 +11863,7 @@ msgid "School or college"
 msgstr "Iskola vagy főiskola"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6868
+#: app/Stats.php:6867
 msgid "Scotland"
 msgstr "Skócia"
 
@@ -11960,12 +11960,12 @@ msgid "Second record"
 msgstr "Második bejegyzés"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:408
+#: admin_site_config.php:415
 msgid "Secure connection"
 msgstr "Biztonságos kapcsolat"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:613
+#: admin_site_config.php:620
 msgid "Security code"
 msgstr "Biztonsági kód"
 
@@ -11988,7 +11988,7 @@ msgstr "Válasszon egy betöltendő GEDCOM-fájlt"
 msgid "Select a block and use the arrows to move it."
 msgstr "Jelöljön ki egy blokkot és használja a nyilakat az áthelyezéséhez."
 
-#: app/Functions/FunctionsEdit.php:404 reportengine.php:244
+#: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
 msgstr "Dátumválasztás"
 
@@ -12021,7 +12021,7 @@ msgstr "Válassza ki a kívánt összesítési intervallumot"
 msgid "Select the facts and events to keep from both records."
 msgstr "Válassza a tényeket és eseményeket, hogy mindkét bejegyzésből megmaradjanak."
 
-#: admin_site_config.php:627
+#: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
 msgstr "Jelölje ki a menüben megjelenítendő nyelveket."
 
@@ -12049,7 +12049,7 @@ msgid "Send"
 msgstr "Elküld"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
-#: app/Stats.php:5931 app/Stats.php:5933 edit_changes.php:201 message.php:103
+#: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
 msgid "Send a message"
 msgstr "Üzenetküldés"
 
@@ -12076,22 +12076,22 @@ msgid "Send out reminder emails"
 msgstr "Küldjünk emlékeztető e-maileket"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:328
+#: admin_site_config.php:335
 msgid "Sender name"
 msgstr "Feladó neve"
 
 #. I18N: Menu entry
-#: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
+#: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
 msgstr "E-mail küldése"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:421
+#: admin_site_config.php:428
 msgid "Sending server name"
 msgstr "Szervernév küldése"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6871
+#: app/Stats.php:6870
 msgid "Senegal"
 msgstr "Szenegál"
 
@@ -12125,7 +12125,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "szeptember"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "szeptember"
@@ -12136,7 +12136,7 @@ msgid "Septidi"
 msgstr "Hetes napok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6872
+#: app/Stats.php:6871
 msgid "Serbia"
 msgstr "Szerbia"
 
@@ -12160,12 +12160,12 @@ msgid "Server information"
 msgstr "Szerverinformáció"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:343 setup.php:277
+#: admin_site_config.php:350 setup.php:280
 msgid "Server name"
 msgstr "Szervernév"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:284
+#: admin_site_config.php:291
 msgid "Session timeout"
 msgstr "Munkamenet lejárata"
 
@@ -12218,7 +12218,7 @@ msgstr "A státuszt állítsa „jóváhagyva” állapotúra."
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr "Az <b>igen</b> hivatkozást helyez el személyekhez, forrásokhoz és családokhoz, hogy a felhasználók egy felugró ablakban megjeleníthessék a nyers adatokat egyenesen a GEDCOM-fájlból."
 
-#: setup.php:90
+#: setup.php:93
 msgid "Setup wizard for webtrees"
 msgstr "A webtrees beállításvarázslója"
 
@@ -12228,7 +12228,7 @@ msgid "Sextidi"
 msgstr "Hatos napok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6891
+#: app/Stats.php:6890
 msgid "Seychelles"
 msgstr "Seychelle-szigetek"
 
@@ -12418,7 +12418,7 @@ msgid "Show a download link in the media viewer"
 msgstr "Legyen letöltési hivatkozás a médiamegjelenítőben"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:499
+#: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr "Jelenjen meg az elfogadandó felhasználói megállapodás az „Új felhasználói fiók igénylése” lapon"
 
@@ -12543,7 +12543,7 @@ msgid "Show individuals who died within the last 100 years."
 msgstr "Mutasd azokat a személyeket, akik az elmúlt 100 évben hunytak el."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:271
+#: admin_site_config.php:278
 msgid "Show list of family trees"
 msgstr "Családfák listájának megjelenítése"
 
@@ -12713,8 +12713,8 @@ msgid "Show thumbnail images in charts and family groups."
 msgstr "Bélyegkép az ábrákon és családcsoportokban."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
-#: app/Functions/FunctionsEdit.php:227
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:271
 #: app/Functions/FunctionsPrintFacts.php:440
 #: app/Functions/FunctionsPrintFacts.php:836
@@ -12724,8 +12724,8 @@ msgstr "Mutasd a webhelyfelügyelőknek"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:205
-#: app/Functions/FunctionsEdit.php:226
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
+#: app/Functions/FunctionsEdit.php:227
 #: app/Functions/FunctionsPrintFacts.php:268
 #: app/Functions/FunctionsPrintFacts.php:437
 #: app/Functions/FunctionsPrintFacts.php:833
@@ -12735,8 +12735,8 @@ msgstr "Mutasd a tagoknak"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:204
-#: app/Functions/FunctionsEdit.php:225
+#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:205
+#: app/Functions/FunctionsEdit.php:226
 #: app/Functions/FunctionsPrintFacts.php:265
 #: app/Functions/FunctionsPrintFacts.php:434
 #: app/Functions/FunctionsPrintFacts.php:830
@@ -12781,7 +12781,7 @@ msgid "Sidebars"
 msgstr "Oldalpanelok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6878
+#: app/Stats.php:6877
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
@@ -12796,12 +12796,12 @@ msgid "Sign out"
 msgstr "Kijelentkezés"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:446
+#: admin_site_config.php:453
 msgid "Sign-in URL"
 msgstr "Bejelentkező URL"
 
 #. I18N: Menu entry
-#: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
+#: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
 msgstr "Bejelentkezés és regisztráció"
 
@@ -12810,7 +12810,7 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "Az egyszerű dátumok feltételezetten Gergely-naptárbeliek. Más naptár a dátumot megelőző kulcsszó megadásával írható elő. Ez a kulcsszó elhagyható, ha a hónap vagy az év formátuma egyértelműsíti a dátumot."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6873
+#: app/Stats.php:6872
 msgid "Singapore"
 msgstr "Szingapúr"
 
@@ -12820,8 +12820,8 @@ msgid "Sister"
 msgstr "Lánytestvér"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:562 admin_site_config.php:578
-#: admin_site_config.php:603
+#: admin_site_config.php:569 admin_site_config.php:585
+#: admin_site_config.php:610
 msgid "Site identification code"
 msgstr "Webhely-azonosító kód"
 
@@ -12831,12 +12831,12 @@ msgid "Site members can send each other messages. You can choose to how these me
 msgstr "A tagok küldhetnek egymásnak üzeneteket. Megválaszthatja, hogy ezek az üzenetek hogyan jussanak el Önhöz, vagy hogy egyáltalán ne is kapjon."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:520 admin_site_config.php:541
+#: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
 msgstr "Webhelyellenőrző kód"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
-#: admin_site_config.php:531 admin_site_config.php:552
+#: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr "A webhelyellenőrző kód nem működik, ha telepítéskor a webtrees egy almappába került."
 
@@ -12904,16 +12904,16 @@ msgid "Slide show"
 msgstr "Diavetítés"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6886
+#: app/Stats.php:6885
 msgid "Slovakia"
 msgstr "Szlovákia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6887
+#: app/Stats.php:6886
 msgid "Slovenia"
 msgstr "Szlovénia"
 
-#: setup.php:173
+#: setup.php:176
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Kis rendszerek (500 személy): 16–32 megabájt, 10–20 másodperc"
 
@@ -12928,12 +12928,12 @@ msgid "Social security number"
 msgstr "Társadalombiztosítási szám"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6877
+#: app/Stats.php:6876
 msgid "Solomon Islands"
 msgstr "Salamon-szigetek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6881
+#: app/Stats.php:6880
 msgid "Somalia"
 msgstr "Szomália"
 
@@ -13061,7 +13061,7 @@ msgid "Sources to the events"
 msgstr "Események forrásai"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6925
+#: app/Stats.php:6924
 msgid "South Africa"
 msgstr "Dél-Afrika"
 
@@ -13070,17 +13070,17 @@ msgid "South America"
 msgstr "Dél-Amerika"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6874
+#: app/Stats.php:6873
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Déli-Georgia és Déli-Sandwich-szigetek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6883
+#: app/Stats.php:6882
 msgid "South Sudan"
 msgstr "Dél-Szudán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6743
+#: app/Stats.php:6742
 msgid "Spain"
 msgstr "Spanyolország"
 
@@ -13123,7 +13123,7 @@ msgid "Spouses and children"
 msgstr "Házastársak és gyermekek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6805
+#: app/Stats.php:6804
 msgid "Sri Lanka"
 msgstr "Srí Lanka"
 
@@ -13190,7 +13190,7 @@ msgstr "Statisztikai ábra"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:321 admin_site_change.php:388
-#: app/Functions/FunctionsPrint.php:482 app/GedcomTag.php:804
+#: app/Functions/FunctionsPrint.php:483 app/GedcomTag.php:804
 msgid "Status"
 msgstr "Állapot"
 
@@ -13267,7 +13267,7 @@ msgid "Submitter"
 msgstr "Adatszolgáltató"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6869
+#: app/Stats.php:6868
 msgid "Sudan"
 msgstr "Szudán"
 
@@ -13276,7 +13276,7 @@ msgid "Suffixes"
 msgstr "Utótagok"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:658
+#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "Vas."
 
@@ -13291,7 +13291,7 @@ msgid "Support and documentation can be found at %s."
 msgstr "Támogatás és dokumentáció: %s."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6885
+#: app/Stats.php:6884
 msgid "Suriname"
 msgstr "Suriname"
 
@@ -13337,7 +13337,7 @@ msgid "Suva, Fiji"
 msgstr "Suva, Fiji"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6876
+#: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
 msgstr "Svalbard- és Jan Mayen-szigetek"
 
@@ -13347,17 +13347,17 @@ msgid "Swap individuals"
 msgstr "A személyek cseréje"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6889
+#: app/Stats.php:6888
 msgid "Swaziland"
 msgstr "Szváziföld"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6888
+#: app/Stats.php:6887
 msgid "Sweden"
 msgstr "Svédország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6714
+#: app/Stats.php:6713
 msgid "Switzerland"
 msgstr "Svájc"
 
@@ -13371,7 +13371,7 @@ msgid "Synchronize family trees with GEDCOM files"
 msgstr "A családfák összehangolása GEDCOM-fájlokkal"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6892
+#: app/Stats.php:6891
 msgid "Syria"
 msgstr "Szíria"
 
@@ -13379,7 +13379,7 @@ msgstr "Szíria"
 msgid "Tab"
 msgstr "Fül"
 
-#: setup.php:376
+#: setup.php:379
 msgid "Table prefix"
 msgstr "Táblaelőtag"
 
@@ -13399,12 +13399,12 @@ msgid "Taipei, Taiwan"
 msgstr "Taipei, Tajvan"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6906
+#: app/Stats.php:6905
 msgid "Taiwan"
 msgstr "Tajvan"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6897
+#: app/Stats.php:6896
 msgid "Tajikistan"
 msgstr "Tádzsikisztán"
 
@@ -13438,7 +13438,7 @@ msgid "Tamuz"
 msgstr "Tamuz"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6907
+#: app/Stats.php:6906
 msgid "Tanzania"
 msgstr "Tanzánia"
 
@@ -13500,7 +13500,7 @@ msgid "Text"
 msgstr "Szöveg"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6896
+#: app/Stats.php:6895
 msgid "Thailand"
 msgstr "Thaiföld"
 
@@ -13687,7 +13687,7 @@ msgstr "A(z) %s mappa létrejött."
 msgid "The folder %s has been deleted."
 msgstr "A(z) %s mappa törlése megtörtént."
 
-#: admin_site_config.php:188
+#: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr "A mappa megadható a teljes elérési úttal (pl. /home/user_name/webtrees_data/) vagy a telepítés mappájához viszonyítva (pl. ../../webtrees_data/)."
 
@@ -13701,7 +13701,7 @@ msgstr "A következő tények és események találhatók mindkét bejegyzésben
 msgid "The following facts and events were only found in the record of %s."
 msgstr "A következő tények és események csak a(z) %s bejegyzésben találhatók."
 
-#: setup.php:171
+#: setup.php:174
 msgid "The following list shows typical requirements."
 msgstr "A következő lista a tipikus követelményeket mutatja."
 
@@ -13767,7 +13767,7 @@ msgstr "A médiafájl nem található ebben a családfában."
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr "A feltöltendő médiaállományt át lehet és valószínűleg át is kell nevezni, hogy más neve legyen a szerveren, mint a saját számítógépén. Ennek oka, hogy gyakran a helyi fájlnév az Ön számára értelmes, míg sokkal kevésbé érthető azok számára, akik idelátogatnak. Az átnevezés indokolt lehet tekintettel arra a lehetőségre is, hogy Ön és valaki más is megkísérelhet különböző fájlokat feltölteni azonos, pl. „nagyi.jpg” névvel.<br><br>Ebbe a mezőbe beírhatja a feltöltendő fájl új nevét. Ugyanez használható a bélyegkép elnevezésére, amely külön feltölthető vagy automatikusan létrejön. A fájlnév kiterjesztését (jpg, gif, pdf, doc stb.) nem kell megadni.<br><br>Hagyja ezt a mezőt üresen a számítógépéről feltöltendő fájl eredeti nevének megtartásához."
 
-#: setup.php:169
+#: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr "A memóriaigény és a központi egység (CPU) időszükséglete a családfában található személyek számától függ."
 
@@ -13815,7 +13815,7 @@ msgstr "A leggyakoribb forrástények és -események külön listában szerepel
 msgid "The new files are currently located in the folder %s."
 msgstr "Az új fájlok jelenleg a(z) %s mappában találhatók."
 
-#: admin_site_config.php:489
+#: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr "A fiók létrehozása előtt az új felhasználót felkérjük az e-mail címe megerősítésére."
 
@@ -13823,16 +13823,16 @@ msgstr "A fiók létrehozása előtt az új felhasználót felkérjük az e-mail
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
 msgstr "A térkép mutatja a megadott név előfordulásainak számát. Ha ezt a mezőt üresen hagyja, a leggyakoribb vezetéknevet használjuk."
 
-#: setup.php:414
+#: setup.php:417
 msgid "The password needs to be at least six characters long."
 msgstr "A jelszónak legalább hat karakter hosszúnak kell lennie."
 
 #. I18N: Help text for the "Password" site configuration setting
-#: admin_site_config.php:400
+#: admin_site_config.php:407
 msgid "The password required for authentication with the SMTP server."
 msgstr "A jelszó szükséges az SMPT-szerverrel történő azonosításhoz."
 
-#: admin_users.php:75 edituser.php:134 setup.php:416
+#: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
 msgstr "A jelszavak nem egyeznek."
 
@@ -13864,7 +13864,7 @@ msgstr "A(z) „%s” modul beállításainak törlése megtörtént."
 msgid "The preferences for the module “%s” have been updated."
 msgstr "A(z) „%s” modul beállításainak frissítése megtörtént."
 
-#: setup.php:378
+#: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 msgstr "Az előtag opcionális, de ajánlott. A táblanevekhez adott egyedi előtaggal több különböző alkalmazás megoszthatja ugyanazt az adatbázist. A „wt_” előtag javaslat, de tetszés szerint bármi lehet."
 
@@ -13888,7 +13888,7 @@ msgstr "A(z) „%1$s” és „%2$s” bejegyzések összefűzése megtörtént.
 msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "Úgy tűnik, a regex hibát tartalmaz, ezért nem használható."
 
-#: setup.php:151
+#: setup.php:154
 msgid "The server configuration is OK."
 msgstr "A szerverbeállítások rendben vannak."
 
@@ -13927,11 +13927,11 @@ msgid "The thumbnail file %s does not exist."
 msgstr "A(z) %s bélyegképfájl nem létezik."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:289
+#: admin_site_config.php:296
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
 msgstr "Az idő másodpercben, amíg aktív a webtrees-munkamenet, és mielőtt újra be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
 
-#: admin_site_config.php:235 admin_users.php:427 edituser.php:253
+#: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr "Az időzóna szükséges a dátumszámításhoz, mint a mai dátum ismeretéhez."
 
@@ -13966,7 +13966,7 @@ msgid "The username or password is incorrect."
 msgstr "A felhasználónév vagy jelszó helytelen."
 
 #. I18N: Help text for the "Username" site configuration setting
-#: admin_site_config.php:387
+#: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
 msgstr "A felhasználónév szükséges az SMTP-szerverrel történő azonosításhoz."
 
@@ -14007,7 +14007,7 @@ msgstr "A webhelybeállítások frissítése megtörtént."
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr "A www.geonames.org egy óriási helynévgyűjteményt tartalmaz. A helynév megadásakor ebben az állományban is lehet keresni. E szolgáltatás használatához regisztrálni kell a www.geonames.org webhelyen, és meg kell adni a felhasználónevet."
 
-#: setup.php:506
+#: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "A webtrees fejlesztői nagyon szeretnének hallani erről a hibáról. Ha felveszi velük a kapcsolatot, segítenek a probléma megoldásában."
 
@@ -14034,7 +14034,7 @@ msgstr "Témamenü"
 msgid "Themes"
 msgstr "Témák"
 
-#: admin_site_config.php:251
+#: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "A témák három szinten választhatók: felhasználói, családfa- és webhelyszinten. A felhasználói beállítás elsőbbséget élvez a családfa-beállításhoz képest, amely elsőbbséget élvez a webhelybeállításhoz képest. Az „alapértelmezett téma” választása egyik szinten előírja, hogy azt a témát használja a következő szint is."
 
@@ -14135,16 +14135,16 @@ msgstr "E fiók ellenőrzése még nem történt meg. Kérjük, keresse az e-mai
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő felülvizsgálatára váró, függőben lévő változtatások listáját, továbbá naponta küld a webhelykezelőknek e-mailt, ha van függőben lévő változtatás."
 
-#: setup.php:348 setup.php:359
+#: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
 msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtrees-rendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
 
-#: setup.php:255
+#: setup.php:258
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
 msgstr "Ez az adatbázis csak MySQL %s verzión fut. A webtrees ide nem telepíthető."
 
-#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:442
+#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Ezt az e-mail címet használjuk jelszó-emlékeztetők, webhelyértesítések és az ezen a webhelyen regisztrált más családtagok üzeneteinek elküldéséhez."
 
@@ -14208,7 +14208,7 @@ msgid "This file is linked to another family tree on this server. It cannot be d
 msgstr "Ez a fájl egy másik családfához is kapcsolódik a szerveren. Ameddig ez a kapcsolat él, nem törölheti, mozgathatja vagy nevezheti át."
 
 #. I18N: Help text for the "Data folder" site configuration setting
-#: admin_site_config.php:179
+#: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr "A webtrees ebben a mappában tárolja majd a média-, GEDCOM-, ideiglenes fájlokat stb. Ezek a fájlok bizalmas adatokat is tartalmazhatnak, és nem ajánlatos lehetővé tenni a világhálón való elérésüket."
 
@@ -14289,11 +14289,11 @@ msgstr "Ez a hivatkozás vezet a családfában a saját adataihoz. Ha ez nem a m
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
 msgstr "Ez a személy <abbr title=\"Az Utolsó Napok Szentjeinek Jézus Krisztus Egyháza\">UNSZ</abbr>-szertartásainak összegzése. „B” jelöli az UNSZ-keresztelést. „E” jelöli az UNSZ-felruházást. „S” jelöli az UNSZ-házasságpecsételést. „P” jelöli az UNSZ-gyerek szülőkhöz pecsételését."
 
-#: setup.php:287 setup.php:291
+#: setup.php:290 setup.php:294
 msgid "This is case sensitive."
 msgstr "Ez érzékeny a kis- és nagybetűk közötti különbségre."
 
-#: setup.php:374
+#: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
 msgstr "Ez érzékeny a kis- és nagybetűk közötti különbségre. Ha még nem létezik adatbázis ilyen névvel, a webtrees megkísérli a létrehozását. Ennek sikere az Ön adatbázisjogain múlik, de ha nem sikerül, értesítést kap."
 
@@ -14347,7 +14347,7 @@ msgid "This is the list of GEDCOM facts that your users can only add once to sou
 msgstr "Ez a GEDCOM-tények listája, amit a felhasználók csak egyszer vehetnek fel forrásokhoz. Például, ha a TITL (cím) szerepel a listában, a felhasználók nem tudnak további TITL bejegyzést felvenni a forráshoz. Az ebben a listában található ténynevek nem szerepelhetnek „Az összes forrástény” listában."
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:348
+#: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Ez az SMTP-szerver neve. A „localhost” azt jelenti, hogy a levelezőszolgáltatás ugyanazon a számítógépen fut, amelyen a webszerver."
 
@@ -14356,7 +14356,7 @@ msgstr "Ez az SMTP-szerver neve. A „localhost” azt jelenti, hogy a levelező
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
 msgstr "Ez lesz a webtrees által automatikusan létrehozott bélyegképek szélessége (képpontban). Az alapértelmezett érték 100."
 
-#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:427
+#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Ez az Ön valódi neve, ahogy szeretné, hogy megjelenjen a képernyőn."
 
@@ -14421,12 +14421,12 @@ msgstr "Az üzenetet elküldtük, amíg a következő internetcím (URL) volt l�
 msgid "This message will be sent to %s"
 msgstr "Ezt az üzenetet %s részére küldjük"
 
-#: setup.php:435
+#: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr "Legalább hat karakter hosszúnak kell lennie. Érzékeny a kis- és nagybetűk közötti különbségre."
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:333
+#: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr "Ez a név szerepel majd a „Feladó” mezőben, amikor automatikus e-maileket küldünk erről a szerverről."
 
@@ -14510,7 +14510,7 @@ msgid_plural "This page has been viewed %s times."
 msgstr[0] "Ezt az oldalt %s alkalommal látogatták meg."
 msgstr[1] "Ezt az oldalt %s alkalommal látogatták meg."
 
-#: app/Module/GoogleMapsModule.php:2418
+#: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
 msgstr "Ennek a helynek nincsenek koordinátái"
 
@@ -14591,7 +14591,7 @@ msgstr "Ez a szerepkör magában foglalja a látogató-szerepkör összes jogát
 msgid "This server does not support secure downloads using HTTPS."
 msgstr "Ez a szerver nem támogatja a HTTPS-t használó biztonságos letöltést."
 
-#: setup.php:180
+#: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr "E szerver memóriakorlátja %s megabájt és a processzoridő-korlátja %s másodperc."
@@ -14638,7 +14638,7 @@ msgstr "Ilyen típusú hivatkozás itt nem megengedett."
 msgid "This user account does not have access to any tree."
 msgstr "Ez a felhasználó nem férhet hozzá egyik fához sem."
 
-#: setup.php:211
+#: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
 msgstr "Ez általában azt jelenti, hogy a mappa hozzáférési engedélyeit 777-re kell állítani."
 
@@ -14669,7 +14669,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "Az űrlap segítségével frissítheti a helynév legmagasabb szintű részét vagy részeit. Például „Mexico”-nak megfelel majd „Quintana Roo, Mexico”, „Santa Fe, New Mexico” viszont nem."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "Csüt."
 
@@ -14700,7 +14700,7 @@ msgid "Time"
 msgstr "Idő"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:230 admin_users.php:422 edituser.php:247
+#: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
 msgstr "Időzóna"
 
@@ -14715,7 +14715,7 @@ msgid "Timestamp"
 msgstr "Időbélyeg"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6900
+#: app/Stats.php:6899
 msgid "Timor-Leste"
 msgstr "Kelet-Timor"
 
@@ -14810,7 +14810,7 @@ msgid "To prevent visitors from accessing the website while you are in the middl
 msgstr "Hogy az állománymásolás alatt a látogatók ne érhessék el a webhelyet, ideiglenesen létrehozhat egy %s fájlt a szerveren. Ha üzenetet tartalmaz, megjelenik a látogatók számára."
 
 #. I18N: “Apache” is a software program.
-#: admin_site_config.php:182
+#: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "Ezen privát adatok védelmében a webtrees az Apache beállítások fájlját (.htaccess) használja, amely tiltja e mappa elérését. Ha a webszervere nem támogatja a .htaccess használatát, és nem tudja korlátozni a mappához való hozzáférést, választhat egy másik mappát – távol a webdokumentumaitól."
 
@@ -14819,7 +14819,7 @@ msgid "To reduce the size of the download, you can compress the data into a .ZIP
 msgstr "A letöltés nagyságának csökkentéhez, tömörítheti az adatokat .ZIP-fájlba. A .ZIP-fájt használat előtt ki kell bontani."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
-#: admin_site_config.php:476
+#: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr "E szöveg más nyelvre állításához, át kell váltani az adott nyelvre, majd újra meg kell látogatni ezt az oldalt."
 
@@ -14831,17 +14831,17 @@ msgstr "Hogy tudassa a webhelytérkép létezését a keresőmotorokkal, haszná
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr "Hogy tudassa a webhelytérkép létezését a keresőmotorokkal, egészítse ki a robots.txt fájlt a következő sorral."
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "Egy Google-levelezőfiók használatához a következő beállítások szükségesek: szerver: smtp.gmail.com, port: 587, biztonság: tls, felhasználónév: xxxxx@gmail.com, jelszó: [az Ön gmail-jelszava]"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6895
+#: app/Stats.php:6894
 msgid "Togo"
 msgstr "Togó"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6898
+#: app/Stats.php:6897
 msgid "Tokelau"
 msgstr "Tokelau-szigetek"
 
@@ -14856,7 +14856,7 @@ msgid "Tombstone"
 msgstr "Sírkő"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6901
+#: app/Stats.php:6900
 msgid "Tonga"
 msgstr "Tonga"
 
@@ -14937,7 +14937,7 @@ msgstr "Válások száma összesen"
 msgid "Total events"
 msgstr "Események száma összesen"
 
-#: app/Stats.php:5208 modules_v3/fact_sources/report.xml:248
+#: app/Stats.php:5207 modules_v3/fact_sources/report.xml:248
 #: modules_v3/fact_sources/report.xml:252
 #: modules_v3/fact_sources/report.xml:350
 #: modules_v3/fact_sources/report.xml:354
@@ -15021,12 +15021,12 @@ msgstr "Felhasználók száma összesen"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
-#: admin_site_config.php:143 app/Theme/AdministrationTheme.php:99
+#: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
 msgstr "Oldalkövetés és elemzések"
 
-#: admin_site_config.php:568 admin_site_config.php:593
-#: admin_site_config.php:618
+#: admin_site_config.php:575 admin_site_config.php:600
+#: admin_site_config.php:625
 msgid "Tracking and analytics are not added to the control panel."
 msgstr "Az oldalkövetés és elemzés nincs felvéve a vezérlőpultban."
 
@@ -15041,7 +15041,7 @@ msgid "Tridi"
 msgstr "Hármas napok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6902
+#: app/Stats.php:6901
 msgid "Trinidad and Tobago"
 msgstr "Trinidad és Tobago"
 
@@ -15051,7 +15051,7 @@ msgid "Trujillo, Peru"
 msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "K."
 
@@ -15060,27 +15060,27 @@ msgid "Tuesday"
 msgstr "Kedd"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6903
+#: app/Stats.php:6902
 msgid "Tunisia"
 msgstr "Tunézia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6904
+#: app/Stats.php:6903
 msgid "Turkey"
 msgstr "Törökország"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6899
+#: app/Stats.php:6898
 msgid "Turkmenistan"
 msgstr "Türkmenisztán"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6893
+#: app/Stats.php:6892
 msgid "Turks and Caicos Islands"
 msgstr "Turks- és Caicos-szigetek"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6905
+#: app/Stats.php:6904
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
@@ -15118,7 +15118,7 @@ msgstr "Helyjelölőtípusok a helyrangsorban"
 msgid "Type the password again."
 msgstr "Írja be újra a jelszót."
 
-#: edituser.php:232 login.php:477 setup.php:438
+#: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Írja be újra a jelszavát, hogy meggyőződhessünk a gépelése helyességéről."
 
@@ -15130,19 +15130,19 @@ msgstr "Hibatípusok"
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_site_config.php:588 admin_trees_config.php:609
+#: admin_site_config.php:595 admin_trees_config.php:609
 #: admin_trees_manage.php:661 app/GedcomTag.php:852 app/GedcomTag.php:868
 #: app/GedcomTag.php:1755
 msgid "URL"
 msgstr "URL"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6910
+#: app/Stats.php:6909
 msgid "US Minor Outlying Islands"
 msgstr "Egyesült Államok Külső Szigetei"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6918
+#: app/Stats.php:6917
 msgid "US Virgin Islands"
 msgstr "Amerikai Virgin-szigetek"
 
@@ -15152,16 +15152,16 @@ msgid "UTC"
 msgstr "UTC (koordinált világidő)"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6908
+#: app/Stats.php:6907
 msgid "Uganda"
 msgstr "Uganda"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6909
+#: app/Stats.php:6908
 msgid "Ukraine"
 msgstr "Ukrajna"
 
-#: setup.php:264 setup.php:336
+#: setup.php:267 setup.php:339
 msgid "Unable to connect using this username and password. Your server gave the following error."
 msgstr "Nem lehet csatlakozni ezekkel a beállításokkal. A szervere a következő hibaüzenetet adta."
 
@@ -15201,33 +15201,33 @@ msgid "Unique source facts"
 msgstr "Egyedi forrástények"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6679
+#: app/Stats.php:6678
 msgid "United Arab Emirates"
 msgstr "Egyesült Arab Emirátusok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6754
+#: app/Stats.php:6753
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6912 statistics.php:685
+#: app/Stats.php:6911 statistics.php:685
 msgid "United States"
 msgstr "Egyesült Államok"
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6671
+#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: app/Stats.php:5191
+#: app/Stats.php:5190
 msgctxt "unknown century"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
-#: app/Functions/FunctionsEdit.php:678 app/Stats.php:5578 calendar.php:639
+#: app/Functions/FunctionsEdit.php:679 app/Stats.php:5577 calendar.php:639
 #: modules_v3/family_group_report/report.xml:844
 #: modules_v3/individual_ext_report/report.xml:391
 #: modules_v3/individual_ext_report/report.xml:598
@@ -15278,7 +15278,7 @@ msgstr "Mind frissítése"
 msgid "Update all the place names in a family tree"
 msgstr "A családfa összes helynevének frissítése"
 
-#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2298
+#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
 msgstr "Helynevek frissítése"
 
@@ -15312,7 +15312,7 @@ msgid "Upload one or more media files from your local computer. Media files can 
 msgstr "Egy vagy több médiafájl felöltése a számítógépéről. A médiafájl lehet kép, videó, hanganyag vagy egyéb formátum."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6911
+#: app/Stats.php:6910
 msgid "Uruguay"
 msgstr "Uruguay"
 
@@ -15320,11 +15320,11 @@ msgstr "Uruguay"
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Google Maps™ használata a helyrangsorhoz"
 
-#: admin_site_config.php:116
+#: admin_site_config.php:117
 msgid "Use PHP mail to send messages"
 msgstr "PHP mail funkció használata levélküldéshez"
 
-#: admin_site_config.php:117
+#: admin_site_config.php:119
 msgid "Use SMTP to send messages"
 msgstr "SMTP használata levélküldéshez"
 
@@ -15356,9 +15356,14 @@ msgid "Use full source citations"
 msgstr "Teljes forrásidézet használata"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:369
+#: admin_site_config.php:376
 msgid "Use password"
 msgstr "Jelszó használata"
+
+#. I18N: "sendmail" is the name of some mail software
+#: admin_site_config.php:118
+msgid "Use sendmail to send messages"
+msgstr ""
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15378,7 +15383,7 @@ msgstr "Használja a GeoNames adatbázist a helynevek automatikus kiegészítés
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Ebben a mezőben írhatja meg a rendszergazdának, hogy miért igényel felhasználói fiókot, és hogy milyen kapcsolatban áll ezzel a családdal. Természetesen bármilyen más közlendője is lehet a rendszergazda számára."
 
-#: app/Functions/FunctionsEdit.php:664
+#: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
 msgstr "Ezen kép használata ábrákon és a személy oldalán."
 
@@ -15419,10 +15424,10 @@ msgid "User-agent string"
 msgstr "böngésző-azonosító karakterlánc"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:382 admin_users.php:325 admin_users.php:845
+#: admin_site_config.php:389 admin_users.php:325 admin_users.php:845
 #: app/Module/LoginBlockModule.php:74 app/Module/ResearchTaskModule.php:110
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
-#: login.php:440 login.php:526 setup.php:429
+#: login.php:440 login.php:526 setup.php:432
 msgid "Username"
 msgstr "Felhasználónév"
 
@@ -15452,7 +15457,7 @@ msgid "Using the pull down menu it is possible to select a country, of which a f
 msgstr "A legördülő menü segítségével kiválaszthat egy országot és annak révén a zászlóját. Ha nem látható zászló, akkor ahhoz az országhoz nem áll rendelkezésre."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6913
+#: app/Stats.php:6912
 msgid "Uzbekistan"
 msgstr "Üzbegisztán"
 
@@ -15462,7 +15467,7 @@ msgid "Vancouver, British Columbia, Canada"
 msgstr "Vancouver, Brit Columbia, Kanada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6920
+#: app/Stats.php:6919
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
@@ -15472,7 +15477,7 @@ msgid "Various statistics charts."
 msgstr "Különböző statisztikai ábrák."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6914
+#: app/Stats.php:6913
 msgid "Vatican City"
 msgstr "Vatikán"
 
@@ -15501,7 +15506,7 @@ msgid "Vendemiaire"
 msgstr "Szüret hava"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6916
+#: app/Stats.php:6915
 msgid "Venezuela"
 msgstr "Venezuela"
 
@@ -15558,7 +15563,7 @@ msgid "Video"
 msgstr "Videó"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6919
+#: app/Stats.php:6918
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -15640,12 +15645,12 @@ msgid "Vital records"
 msgstr "Alapvető adatok"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6922
+#: app/Stats.php:6921
 msgid "Wales"
 msgstr "Wales"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6921
+#: app/Stats.php:6920
 msgid "Wallis and Futuna"
 msgstr "Wallis és Futuna"
 
@@ -15693,7 +15698,7 @@ msgid "Website"
 msgstr "Webhely"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:298
+#: admin_site_config.php:305
 msgid "Website URL"
 msgstr "Webhely URL"
 
@@ -15709,12 +15714,12 @@ msgid "Website logs"
 msgstr "Webhelynaplók"
 
 #. I18N: Menu entry
-#: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
+#: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
 msgstr "Webhelybeállítások"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "Sze."
 
@@ -15734,7 +15739,7 @@ msgid "Welcome %s"
 msgstr "Üdvözlet, %s!"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:459
+#: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
 msgstr "A bejelentkező oldal üdvözlőszövege"
 
@@ -15743,7 +15748,7 @@ msgid "Welcome to this genealogy website"
 msgstr "Üdvözöljük ezen a származástani webhelyen!"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6742
+#: app/Stats.php:6741
 msgid "Western Sahara"
 msgstr "Nyugat-Szahara"
 
@@ -15915,7 +15920,7 @@ msgid "Year:"
 msgstr "Év:"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6924
+#: app/Stats.php:6923
 msgid "Yemen"
 msgstr "Jemen"
 
@@ -15941,7 +15946,7 @@ msgstr "Az alábbi hivatkozást használva kérhet egy fiókot."
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
-#: admin_site_config.php:248 admin_trees_config.php:978 edituser.php:287
+#: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr "A webtrees küllemét megváltoztathatja „témák” használatával. Az egyes témáknak eltérő az ízlés- és színvilága, elrendezése stb."
 
@@ -15980,7 +15985,7 @@ msgstr "A családfabejegyzések átsorszámozhatók úgy, hogy ezek a belső hiv
 msgid "You can renumber this family tree."
 msgstr "Ezt a családfát átszámozhatja."
 
-#: admin_site_config.php:202 admin_site_config.php:221
+#: admin_site_config.php:209 admin_site_config.php:228
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr "Kérhet magasabb vagy alacsonyabb határértéket, habár a szerver mellőzheti a kérést."
 
@@ -16033,11 +16038,11 @@ msgstr "Megadhat egy „http://” kezdetű URL-t."
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "Használhat HTML-t a válasza megformázásához és más webhelyekre vezető hivatkozások felvételéhez."
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
 msgstr "Aktiválnia kell a „kevésbé biztonságos alkalmazások” opciót is a Google fiókjában."
 
-#: setup.php:212
+#: setup.php:215
 msgid "You must change this before you can continue."
 msgstr "Ezt meg kell változtatni, mielőtt folytathatná."
 
@@ -16054,7 +16059,7 @@ msgstr "Egy valós nevet kell megadnia."
 msgid "You must enter a username."
 msgstr "Meg kell adnia egy felhasználónevet."
 
-#: setup.php:418
+#: setup.php:421
 msgid "You must enter all the administrator account fields."
 msgstr "A rendszergazdafiók összes rovatát ki kell töltenie."
 
@@ -16094,7 +16099,7 @@ msgstr "Létre kell hoznia egy családfát."
 msgid "You need to review the account details."
 msgstr "Ellenőriznie kell a felhasználói adatokat."
 
-#: setup.php:422
+#: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Létre kell hoznia egy rendszergazdafiókot. Ez a fiók vezérelheti a teljes webtrees-telepítést. Kérjük, válasszon egy erős jelszót."
 
@@ -16103,7 +16108,7 @@ msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "Újra be kell jelentkeznie a PhpGedView-felhasználónevével és -jelszavával."
 
 #. I18N: Help text for the "Login URL" site configuration setting
-#: admin_site_config.php:451
+#: admin_site_config.php:458
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr "Csak akkor kell bejelentkező URL-t megadnia, ha a felhasználó bejelentkezésekor át szeretné irányítani egy másik webhelyre vagy helyre. Ez akkor nagyon hasznos, ha bejelentkezéskor át kell kapcsolni http-ről https-re. Vegye fel a teljes URL-t a <i>login.php</i>-ba. Például: https://www.szervere.com/webtrees/login.php."
 
@@ -16141,7 +16146,7 @@ msgstr "Nem szabad jóváhagyni egy felhasználói fiókot, amíg nem tudja, hog
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "E-mail értesítést kap, ha a leendő felhasználó megerősítette a kérelmét. Ezután befejezheti a folyamatot a felhasználó nevének aktiválásával. Az új felhasználó addig nem tud bejelentkezni, amíg Ön nem aktiválja a fiókját."
 
-#: setup.php:431
+#: setup.php:434
 msgid "You will use this to sign in to webtrees."
 msgstr "Ezt fogja használni, hogy bejelentkezzen a webtrees webhelyre."
 
@@ -16166,7 +16171,7 @@ msgstr "Legfiatalabb anya"
 msgid "Your clippings cart is empty."
 msgstr "Az Ön metszési kosara üres."
 
-#: message.php:116 message.php:269 setup.php:425
+#: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
 msgstr "Az Ön neve"
 
@@ -16176,7 +16181,7 @@ msgstr "Az Ön neve"
 msgid "Your registration at %s"
 msgstr "Az Ön regisztrációja a(z) %s webhelyen"
 
-#: setup.php:274
+#: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
 msgstr "A szerver rendszergazdája ismerteti majd Önnel a kapcsolat részleteit."
 
@@ -16195,12 +16200,12 @@ msgid "Your web server is using PHP version %s, which is no longer receiving sec
 msgstr "Az Ön webszervere %s verziójú PHP-t használ, amelyhez már nem érkeznek biztonsági frissítések. Amilyen hamar csak lehet, térjen át egy újabb változatra."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6926
+#: app/Stats.php:6925
 msgid "Zambia"
 msgstr "Zambia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6927
+#: app/Stats.php:6926
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
@@ -16209,7 +16214,7 @@ msgstr "Zimbabwe"
 msgid "Zip file(s)"
 msgstr "Zip (tömörített) fájl(ok)"
 
-#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2345
+#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2344
 #: fanchart.php:109
 msgid "Zoom"
 msgstr "Nagyítás"
@@ -16264,8 +16269,8 @@ msgid "accepted"
 msgstr "elfogadva"
 
 #. I18N: A button label.
-#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:568
-#: app/Functions/FunctionsPrint.php:627 app/Module/ClippingsCartModule.php:334
+#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
@@ -16303,7 +16308,7 @@ msgstr "mögé"
 msgid "after %s"
 msgstr "%s után"
 
-#: app/Functions/FunctionsPrint.php:374
+#: app/Functions/FunctionsPrint.php:375
 msgid "after death"
 msgstr "elhalálozás után"
 
@@ -16335,12 +16340,12 @@ msgid "also known as"
 msgstr "ismert, mint"
 
 #. I18N: option in list box “always use this image”
-#: app/Functions/FunctionsEdit.php:656
+#: app/Functions/FunctionsEdit.php:657
 msgid "always"
 msgstr "mindig"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
-#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5912
+#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
 #: modules_v3/ahnentafel_report/report.xml:394
 #: modules_v3/descendancy_report/report.xml:131
 #: modules_v3/descendancy_report/report.xml:230
@@ -16544,8 +16549,8 @@ msgstr "mégse"
 msgid "census added"
 msgstr "népszámlálás felvéve"
 
-#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4941
-#: app/Stats.php:4943 app/Stats.php:4945 app/Stats.php:5191
+#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4940
+#: app/Stats.php:4942 app/Stats.php:4944 app/Stats.php:5190
 msgid "century"
 msgstr "évszázad"
 
@@ -16614,7 +16619,7 @@ msgstr "felsorolás"
 #: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
-#: setup.php:187 setup.php:213 setup.php:295 setup.php:381 setup.php:446
+#: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
 msgstr "tovább"
 
@@ -16624,7 +16629,7 @@ msgid "create"
 msgstr "létrehozás"
 
 #. I18N: a program feature
-#: setup.php:132
+#: setup.php:135
 msgid "creating thumbnails of images"
 msgstr "képek bélyegképének létrehozása"
 
@@ -16886,7 +16891,7 @@ msgid "fifth cousin"
 msgstr "ötöd-unokatestvér"
 
 #. I18N: a program feature
-#: setup.php:143
+#: setup.php:146
 msgid "file upload capability"
 msgstr "fájlfeltöltési képesség"
 
@@ -18719,7 +18724,7 @@ msgid "herself"
 msgstr "ő maga"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
-#: app/Functions/FunctionsEdit.php:761
+#: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
 msgstr "óó:pp vagy óó:pp:mm"
 
@@ -19014,7 +19019,7 @@ msgid "nephew/niece"
 msgstr "unokaöcs/unokahúg"
 
 #. I18N: option in list box “never use this image”
-#: app/Functions/FunctionsEdit.php:662
+#: app/Functions/FunctionsEdit.php:663
 msgid "never"
 msgstr "sosem"
 
@@ -19069,12 +19074,12 @@ msgid "ninth cousin"
 msgstr "kilenced-unokatestvér"
 
 #: admin_trees_config.php:74 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133
+#: app/Functions/FunctionsEdit.php:134
 #: app/Functions/FunctionsPrintFacts.php:1214
 #: app/Functions/FunctionsPrintLists.php:877
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6105 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6104 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:255
 #: modules_v3/family_group_report/report.xml:426
 #: modules_v3/family_group_report/report.xml:609
@@ -19129,7 +19134,7 @@ msgstr "számok"
 msgid "of"
 msgstr "/"
 
-#: app/Functions/FunctionsPrint.php:372
+#: app/Functions/FunctionsPrint.php:373
 msgid "on the date of death"
 msgstr "az elhalálozás napján"
 
@@ -19269,7 +19274,7 @@ msgid "replace"
 msgstr "csere"
 
 #. I18N: a program feature
-#: setup.php:133 setup.php:134
+#: setup.php:136 setup.php:137
 msgid "reporting"
 msgstr "jelentés"
 
@@ -19288,11 +19293,11 @@ msgstr "keresőrobot"
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
 #: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
+#: admin_site_access.php:307 admin_site_config.php:658 admin_site_merge.php:344
 #: admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:470 app/Module/GoogleMapsModule.php:684
-#: app/Module/GoogleMapsModule.php:2347 app/Module/GoogleMapsModule.php:3406
+#: app/Module/GoogleMapsModule.php:2346 app/Module/GoogleMapsModule.php:3406
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
@@ -19987,8 +19992,8 @@ msgstr "nagybácsi"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:188
-#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2411
-#: app/Module/GoogleMapsModule.php:2452 app/Module/GoogleMapsModule.php:2898
+#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2410
+#: app/Module/GoogleMapsModule.php:2451 app/Module/GoogleMapsModule.php:2898
 #: app/Module/GoogleMapsModule.php:2935 app/Module/GoogleMapsModule.php:2940
 #: app/Module/GoogleMapsModule.php:3931 app/Module/GoogleMapsModule.php:3938
 #: app/Module/GoogleMapsModule.php:3979 app/Place.php:141
@@ -20059,13 +20064,13 @@ msgstr "A webtrees nem tud csatlakozni a PhpGedView adatbázisához: %s."
 msgid "webtrees message"
 msgstr "webtrees-üzenet"
 
-#: setup.php:273
+#: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
 msgstr "A webtrees a MySQL %s vagy újabb verzióját igényli."
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:320
+#: admin_site_config.php:327
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 msgstr "A webtrees automatikusan küld leveleket, például jelszó-emlékeztetőket vagy webhelyértesítéseket. Ehhez használhatja a szerver beépített PHP levélküldő képességét (amely nem mindig áll rendelkezésre) vagy egy külső SMTP (levéltovábbító) szolgáltatást, amelyhez meg kell adnia a kapcsolódási információkat."
 
@@ -20074,7 +20079,7 @@ msgstr "A webtrees automatikusan küld leveleket, például jelszó-emlékeztet�
 msgid "webtrees reply address"
 msgstr "webtrees-válaszcím"
 
-#: app/Functions/FunctionsEdit.php:248
+#: app/Functions/FunctionsEdit.php:249
 msgid "webtrees sends emails with no storage"
 msgstr "A webtrees tárolás nélkül küldi az e-maileket"
 
@@ -20082,7 +20087,7 @@ msgstr "A webtrees tárolás nélkül küldi az e-maileket"
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr "A webtrees UTF-8 kódolást használ az ékezetes betűkhöz, a különleges karakterekhez és a nem latin betűs íráshoz. Ha ezt a GEDCOM-fájlt olyan származástani alkalmazással szeretné használni, amely nem támogatja az UTF-8 kódolást, létrehozhatja ISO-8859-1 kódolást használva."
 
-#: app/Functions/FunctionsPrint.php:210
+#: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
 msgstr "webtrees wiki"
 
@@ -20109,13 +20114,13 @@ msgid "years"
 msgstr "év"
 
 #: admin_trees_config.php:75 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:619
-#: app/Functions/FunctionsPrint.php:413
+#: app/Functions/FunctionsEdit.php:134 app/Functions/FunctionsEdit.php:620
+#: app/Functions/FunctionsPrint.php:414
 #: app/Functions/FunctionsPrintFacts.php:1211
 #: app/Functions/FunctionsPrintLists.php:879
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6100 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6099 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:252
 #: modules_v3/family_group_report/report.xml:423
 #: modules_v3/family_group_report/report.xml:606
@@ -20167,11 +20172,11 @@ msgstr "A(z) „%s” a kedvencei közé került."
 msgid "“%s” has been deleted."
 msgstr "„%s” és adatainak törlése megtörtént."
 
-#: app/Functions/FunctionsPrint.php:119 app/Note.php:107
+#: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
 #: autocomplete.php:470 famlist.php:97 famlist.php:230 indilist.php:97
 #: indilist.php:230
@@ -20179,7 +20184,7 @@ msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:108

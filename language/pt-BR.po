@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-12-24 08:59+0000\n"
+"POT-Creation-Date: 2017-02-11 11:13+0000\n"
 "PO-Revision-Date: 2016-07-04 03:00+0000\n"
 "Last-Translator: Fábio Zamin <fabio.zamin@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
@@ -163,7 +163,7 @@ msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
-#: admin_media.php:497 app/Media.php:386
+#: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s pixels"
@@ -192,13 +192,13 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
-#: app/Stats.php:6941
+#: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
 msgstr "%s AEC"
 
 #. I18N: size of file in KB
-#: admin_media.php:489 app/Media.php:276
+#: admin_media.php:489 app/Media.php:277
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
@@ -233,7 +233,7 @@ msgstr "%s e seus filhos"
 msgid "%s and their descendants"
 msgstr "%s e seus descendentes"
 
-#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5905
+#: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
@@ -276,7 +276,7 @@ msgid_plural "%s family trees"
 msgstr[0] "%s árvore genealógica"
 msgstr[1] "%s árvores genealógicas"
 
-#: app/Stats.php:5255 app/Stats.php:5259
+#: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
@@ -333,7 +333,7 @@ msgstr[0] "%s pessoa com eventos em %s entre %s e %s"
 msgstr[1] "%s pessoas com eventos em %s entre %s e %s"
 
 #. I18N: %s is a PHP function/module/setting
-#: setup.php:119
+#: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
 msgstr "%s está desabilitado neste servidor. Você não pode instalar webtrees até que ele esteja habilitado. Por favor solicite para o administrador de seu servidor web que habilite-o."
@@ -400,7 +400,7 @@ msgstr[1] "%s segundos atrás"
 msgid "%s sent you the following message."
 msgstr "%s enviou para você a seguinte mensagem."
 
-#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5915
+#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
@@ -551,7 +551,7 @@ msgstr "%s, seus cônjuges e filhos"
 msgid "%s, his spouses and descendants"
 msgstr "%s, seus cônjuges e descendentes"
 
-#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:618
+#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
 msgstr "&lt;selecionar&gt;"
@@ -600,107 +600,107 @@ msgstr "(natimorto)"
 msgid ", "
 msgstr ", "
 
-#: app/Stats.php:6968
+#: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "10th"
 msgstr "10º"
 
-#: app/Stats.php:6966
+#: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "11th"
 msgstr "11º"
 
-#: app/Stats.php:6964
+#: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "12th"
 msgstr "12º"
 
-#: app/Stats.php:6962
+#: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "13th"
 msgstr "13º"
 
-#: app/Stats.php:6960
+#: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "14th"
 msgstr "14º"
 
-#: app/Stats.php:6958
+#: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "15th"
 msgstr "15º"
 
-#: app/Stats.php:6956
+#: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "16th"
 msgstr "16º"
 
-#: app/Stats.php:6954
+#: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "17th"
 msgstr "17º"
 
-#: app/Stats.php:6952
+#: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "18th"
 msgstr "18º"
 
-#: app/Stats.php:6950
+#: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "19th"
 msgstr "19º"
 
-#: app/Stats.php:6986
+#: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
 msgstr "1º"
 
-#: app/Stats.php:6948
+#: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "20th"
 msgstr "20º"
 
-#: app/Stats.php:6946
+#: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "21st"
 msgstr "21º"
 
-#: app/Stats.php:6984
+#: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr "2º"
 
-#: app/Stats.php:6982
+#: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr "3º"
 
-#: app/Stats.php:6980
+#: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "4th"
 msgstr "4º"
 
-#: app/Stats.php:6978
+#: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "5th"
 msgstr "5º"
 
-#: app/Stats.php:6976
+#: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "6th"
 msgstr "6º"
 
-#: app/Stats.php:6974
+#: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "7th"
 msgstr "7º"
 
-#: app/Stats.php:6972
+#: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "8th"
 msgstr "8º"
 
-#: app/Stats.php:6970
+#: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "9º"
@@ -772,7 +772,7 @@ msgstr "Uma criança pode ter mais de um conjunto de pais. A relação entre a c
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr "Um erro comum é ter múltiplos links para o mesmo registro, por exemplo listando o mesmo filho mais que uma vez em um registro de família."
 
-#: setup.php:369
+#: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr "Um servidor de banco de dados pode armazenar muitos bancos de dados separados. Você precisa selecionar um banco de dados existente (criado pelo administrador de seu servidor) ou criar um novo (se sua conta de usuário do banco de dados tiver os privilégios suficientes)."
 
@@ -1317,7 +1317,7 @@ msgstr "Adicionar um marido a partir de uma pessoa da árvore"
 msgid "Add a journal entry"
 msgstr "Adicionar informação ao Diário"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
+#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
@@ -1335,12 +1335,12 @@ msgstr "Adicionar nome"
 msgid "Add a news article"
 msgstr "Adicionar Notícia"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
+#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Adicionar uma nova nota"
 
-#: app/Functions/FunctionsEdit.php:1135
+#: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
 msgstr "Adicionar uma nova restrição"
 
@@ -1353,7 +1353,7 @@ msgstr "Adicionar uma nova restrição"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Adicionar uma barra de rolagem quando o conteúdo do bloco aumentar"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
+#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Adicionar uma nova nota compartilhada"
@@ -1362,7 +1362,7 @@ msgstr "Adicionar uma nova nota compartilhada"
 msgid "Add a son or daughter"
 msgstr "Adicionar novo filho ou filha"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
+#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Adicionar uma nova citação da fonte"
@@ -1401,7 +1401,7 @@ msgstr "Adicionar uma esposa a partir de uma pessoa da árvore"
 msgid "Add an FAQ"
 msgstr "Adicionar item nas Perguntas Mais Frequentes (FAQ)"
 
-#: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
+#: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
 msgstr "Nova Testemunha"
 
@@ -1409,7 +1409,7 @@ msgstr "Nova Testemunha"
 msgid "Add another individual to the chart"
 msgstr "Adicionar outra pessoa ao gráfico"
 
-#: app/Functions/FunctionsPrint.php:550
+#: app/Functions/FunctionsPrint.php:551
 msgid "Add from clipboard"
 msgstr "Adicionar da Área de Transferência"
 
@@ -1516,7 +1516,7 @@ msgstr "Adelaide, Austrália"
 msgid "Administrator"
 msgstr "Administrador"
 
-#: setup.php:421 setup.php:423
+#: setup.php:424 setup.php:426
 msgid "Administrator account"
 msgstr "Conta de administrador"
 
@@ -1687,7 +1687,7 @@ msgid "Advanced search"
 msgstr "Pesquisa avançada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6673
+#: app/Stats.php:6672
 msgid "Afghanistan"
 msgstr "Afeganistão"
 
@@ -1706,7 +1706,7 @@ msgstr "Após identificar-se, clique em 'Minha conta' da opção de menu 'Minha 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
 #: app/Controller/TimelineController.php:232
-#: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:402
+#: app/Functions/FunctionsPrint.php:363 app/Functions/FunctionsPrint.php:403
 #: app/GedcomTag.php:142 app/Stats.php:2585 app/Stats.php:3926
 #: app/Stats.php:3928 autocomplete.php:72 timeline.php:382
 msgid "Age"
@@ -1765,12 +1765,12 @@ msgid "Agency"
 msgstr "Agência"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6676
+#: app/Stats.php:6675
 msgid "Aland Islands"
 msgstr "Ilhas Aland"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6677
+#: app/Stats.php:6676
 msgid "Albania"
 msgstr "Albânia"
 
@@ -1785,7 +1785,7 @@ msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Novo México"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6737
+#: app/Stats.php:6736
 msgid "Algeria"
 msgstr "Argélia"
 
@@ -1803,7 +1803,7 @@ msgstr "Vivo"
 #: app/Module/FrequentlyAskedQuestionsModule.php:474
 #: app/Module/GoogleMapsModule.php:1333 app/Module/GoogleMapsModule.php:1346
 #: app/Module/GoogleMapsModule.php:4079 app/Module/SlideShowModule.php:264
-#: app/Module/UserMessagesModule.php:111 app/Stats.php:5578 calendar.php:257
+#: app/Module/UserMessagesModule.php:111 app/Stats.php:5577 calendar.php:257
 #: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
 #: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
 #: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
@@ -1874,12 +1874,12 @@ msgid "Allow users to see raw GEDCOM records"
 msgstr "Permitir que usuários vejam registros GEDCOM"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:259
+#: admin_site_config.php:266
 msgid "Allow users to select their own theme"
 msgstr "Usuários podem selecionar o tema de sua preferência"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:484
+#: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
 msgstr "Permitir que visitantes solicitem uma nova conta de usuário"
 
@@ -1901,7 +1901,7 @@ msgid "Also known as"
 msgstr "Também conhecido como"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6682
+#: app/Stats.php:6681
 msgid "American Samoa"
 msgstr "Samoa Americana"
 
@@ -1910,7 +1910,7 @@ msgstr "Samoa Americana"
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "Um item FAQ pode ser exibido para somente uma árvore de família, ou para todas as árvores de família."
 
-#: admin_site_config.php:491
+#: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr "Um administrador deve aprovar a nova conta de usuário e selecionar um nível de acesso antes que o usuário possa se conectar."
 
@@ -1939,11 +1939,11 @@ msgstr "Uma forma alternativa para selecionar um novo tema."
 msgid "An alternative way to sign in and sign out."
 msgstr "Uma forma alternativa para conectar-se e desconectar-se."
 
-#: app/Functions/FunctionsEdit.php:909
+#: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr "Um associado é outra pessoa que esteve envolvida com este fato ou evento, como uma testemunha ou um padre."
 
-#: app/Functions/FunctionsEdit.php:907
+#: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr "Um associado é outra pessoa que esteve envolvida com esta pessoa, como um amigo ou um empregador."
 
@@ -1967,7 +1967,7 @@ msgstr "Um gráfico de ampulheta dos antepassados e descendentes de um indivídu
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Uma árvore interativa, que apresenta todos os antepassados e descendentes de uma pessoa."
 
-#: setup.php:504
+#: setup.php:507
 msgid "An unexpected database error occurred."
 msgstr "Ocorreu um erro inesperado no banco de dados."
 
@@ -2007,17 +2007,17 @@ msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Alasca"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6678
+#: app/Stats.php:6677
 msgid "Andorra"
 msgstr "Andorra"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6674
+#: app/Stats.php:6673
 msgid "Angola"
 msgstr "Angola"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6675
+#: app/Stats.php:6674
 msgid "Anguilla"
 msgstr "Anguila"
 
@@ -2042,12 +2042,12 @@ msgid "Answer"
 msgstr "Resposta"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6683
+#: app/Stats.php:6682
 msgid "Antarctica"
 msgstr "Antártida"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6685
+#: app/Stats.php:6684
 msgid "Antigua and Barbuda"
 msgstr "Antígua e Barbuda"
 
@@ -2115,7 +2115,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "Abril"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "Abril"
@@ -2168,7 +2168,7 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Tem certeza que deseja remover este item da sua lista de Favoritos?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6680
+#: app/Stats.php:6679
 msgid "Argentina"
 msgstr "Argentina"
 
@@ -2191,12 +2191,12 @@ msgid "Arial"
 msgstr "Arial"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6681
+#: app/Stats.php:6680
 msgid "Armenia"
 msgstr "Armênia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6672
+#: app/Stats.php:6671
 msgid "Aruba"
 msgstr "Aruba"
 
@@ -2233,7 +2233,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Assunção, Paraguai"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6870
+#: app/Stats.php:6869
 msgid "At sea"
 msgstr "No Mar"
 
@@ -2295,18 +2295,18 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "Agosto"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "Agosto"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6686
+#: app/Stats.php:6685
 msgid "Australia"
 msgstr "Austrália"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6687
+#: app/Stats.php:6686
 msgid "Austria"
 msgstr "Áustria"
 
@@ -2383,7 +2383,7 @@ msgstr "Média de idade relacionada ao século de falecimento"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
-#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4948 statistics.php:306
+#: app/Module/HtmlBlockModule.php:251 app/Stats.php:4947 statistics.php:306
 msgid "Average number of children per family"
 msgstr "Média de filhos por família"
 
@@ -2422,12 +2422,12 @@ msgid "Azar"
 msgstr "Azar"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6688
+#: app/Stats.php:6687
 msgid "Azerbaijan"
 msgstr "Azerbaijão"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6689
+#: app/Stats.php:6688
 msgid "Azores"
 msgstr "Açores"
 
@@ -2437,7 +2437,7 @@ msgid "Bah"
 msgstr "Bah"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6698
+#: app/Stats.php:6697
 msgid "Bahamas"
 msgstr "Bahamas"
 
@@ -2466,12 +2466,12 @@ msgid "Bahman"
 msgstr "Bahman"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6697
+#: app/Stats.php:6696
 msgid "Bahrain"
 msgstr "Barém"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6695
+#: app/Stats.php:6694
 msgid "Bangladesh"
 msgstr "Bangladeche"
 
@@ -2554,7 +2554,7 @@ msgid "Bar mitzvah"
 msgstr "Bar mitzvá"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6706
+#: app/Stats.php:6705
 msgid "Barbados"
 msgstr "Barbados"
 
@@ -2575,7 +2575,7 @@ msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, United States"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2341
+#: app/Module/GoogleMapsModule.php:2340
 msgid "Bearing"
 msgstr "Direção"
 
@@ -2585,7 +2585,7 @@ msgid "Begins with"
 msgstr "Começa com"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6701
+#: app/Stats.php:6700
 msgid "Belarus"
 msgstr "Bielo-Rússia"
 
@@ -2595,22 +2595,22 @@ msgid "Belgian Chocolate"
 msgstr "Chocolate Belga"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6691
+#: app/Stats.php:6690
 msgid "Belgium"
 msgstr "Bélgica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6702
+#: app/Stats.php:6701
 msgid "Belize"
 msgstr "Belize"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6692
+#: app/Stats.php:6691
 msgid "Benin"
 msgstr "Benim"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6703
+#: app/Stats.php:6702
 msgid "Bermuda"
 msgstr "Bermudas"
 
@@ -2624,7 +2624,7 @@ msgid "Best man"
 msgstr "Padrinho"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6708
+#: app/Stats.php:6707
 msgid "Bhutan"
 msgstr "Butão"
 
@@ -2643,7 +2643,7 @@ msgstr "Billings, Montana, United States"
 msgid "Binary data object"
 msgstr "Objeto Binário de Dados"
 
-#: app/Functions/FunctionsPrint.php:469
+#: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
@@ -2806,11 +2806,11 @@ msgstr "Início do período de data de nascimento"
 msgid "Birth of a brother"
 msgstr "Nascimento de um irmão"
 
-#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
 msgstr "Nascimento de filho"
 
-#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a daughter"
 msgstr "Nascimento de uma filha"
 
@@ -2866,7 +2866,7 @@ msgstr "Nascimento de um irmão"
 msgid "Birth of a sister"
 msgstr "Nascimento de uma irmã"
 
-#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1819
+#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a son"
 msgstr "Nascimento de um filho"
 
@@ -2933,7 +2933,7 @@ msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, United States"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6704
+#: app/Stats.php:6703
 msgid "Bolivia"
 msgstr "Bolívia"
 
@@ -2952,7 +2952,7 @@ msgid "Born in the covenant"
 msgstr "Nascido na aliança"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6699
+#: app/Stats.php:6698
 msgid "Bosnia and Herzegovina"
 msgstr "Bósnia e Herzegovina"
 
@@ -2970,7 +2970,7 @@ msgid "Both dead"
 msgstr "Ambos falecidos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6710
+#: app/Stats.php:6709
 msgid "Botswana"
 msgstr "Botsuana"
 
@@ -2980,7 +2980,7 @@ msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Utah, United States"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6709
+#: app/Stats.php:6708
 msgid "Bouvet Island"
 msgstr "Ilha Bouvet"
 
@@ -2996,7 +2996,7 @@ msgid "Branches of the %s family"
 msgstr "Ramos da família %s"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6705
+#: app/Stats.php:6704
 msgid "Brazil"
 msgstr "Brasil"
 
@@ -3046,12 +3046,12 @@ msgid "Brit milah of a son"
 msgstr "Brit milá de um filho"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6780
+#: app/Stats.php:6779
 msgid "British Indian Ocean Territory"
 msgstr "Território Britânico do Oceano Índico"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6917
+#: app/Stats.php:6916
 msgid "British Virgin Islands"
 msgstr "Ilhas Virgens Britânicas"
 
@@ -3085,7 +3085,7 @@ msgid "Brumaire"
 msgstr "Brumário"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6707
+#: app/Stats.php:6706
 msgid "Brunei Darussalam"
 msgstr "Brunei"
 
@@ -3095,7 +3095,7 @@ msgid "Buenos Aires, Argentina"
 msgstr "Buenos Aires, Argentina"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6696
+#: app/Stats.php:6695
 msgid "Bulgaria"
 msgstr "Bulgária"
 
@@ -3240,12 +3240,12 @@ msgid "Burial place contains"
 msgstr "Local de Sepultamento contém"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6694
+#: app/Stats.php:6693
 msgid "Burkina Faso"
 msgstr "Burquina Faso"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6690
+#: app/Stats.php:6689
 msgid "Burundi"
 msgstr "Burúndi"
 
@@ -3264,7 +3264,7 @@ msgid "Buyer"
 msgstr "Comprador"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:361
+#: admin_site_config.php:368
 msgid "By default, SMTP works on port 25."
 msgstr "Por padrão, SMTP funciona na porta 25."
 
@@ -3272,7 +3272,7 @@ msgstr "Por padrão, SMTP funciona na porta 25."
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 msgstr "Por padrão, a lista exibe somente aqueles locais que podem ser encontrados em sua árvore genealógica. Você pode ter mais detalhes de outros locais, como os importados em lote de um arquivo externo. Selecionando esta opção serão exibidos todos os locais, incluindo os que não estão sendo atualmente usados."
 
-#: admin_site_config.php:217
+#: admin_site_config.php:224
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
@@ -3280,7 +3280,7 @@ msgstr[0] "Por padrão, seu servidor permite que scripts rodem por %s segundo."
 msgstr[1] "Por padrão, seu servidor permite que scripts rodem por %s segundos."
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:201
+#: admin_site_config.php:208
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "Por padrão, seu servidor permite scripts a usar %s de memória."
@@ -3316,12 +3316,12 @@ msgid "Call number"
 msgstr "Número de Chamada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6794
+#: app/Stats.php:6793
 msgid "Cambodia"
 msgstr "Camboja"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6718
+#: app/Stats.php:6717
 msgid "Cameroon"
 msgstr "Camarões"
 
@@ -3331,12 +3331,12 @@ msgid "Campinas, Brazil"
 msgstr "Campinas, Brasil"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6712
+#: app/Stats.php:6711
 msgid "Canada"
 msgstr "Canadá"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6724
+#: app/Stats.php:6723
 msgid "Cape Verde"
 msgstr "Cabo Verde"
 
@@ -3390,7 +3390,7 @@ msgid "Caution: old themes may not work, or they may prevent webtrees from worki
 msgstr "Cuidado: temas antigos podem não funcionar, ou eles podem impedir o webtrees de funcionar."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6729
+#: app/Stats.php:6728
 msgid "Cayman Islands"
 msgstr "Ilhas Cayman"
 
@@ -3421,7 +3421,7 @@ msgstr "Censo"
 msgid "Census assistant"
 msgstr "Assistente de censo"
 
-#: app/Functions/FunctionsEdit.php:1024 app/GedcomTag.php:252
+#: app/Functions/FunctionsEdit.php:1028 app/GedcomTag.php:252
 msgid "Census date"
 msgstr "Data do censo"
 
@@ -3434,7 +3434,7 @@ msgid "Census transcript"
 msgstr "Transcrição do censo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6711
+#: app/Stats.php:6710
 msgid "Central African Republic"
 msgstr "República Centro-Africana"
 
@@ -3444,7 +3444,7 @@ msgid "Certificate"
 msgstr "Certificado"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6894
+#: app/Stats.php:6893
 msgid "Chad"
 msgstr "Chade"
 
@@ -3560,15 +3560,15 @@ msgstr "Verificar alterações pendentes…"
 msgid "Check the access rights on this folder."
 msgstr "Verifique os direitos de acesso deste diretório."
 
-#: setup.php:266 setup.php:338
+#: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
 msgstr "Verifique as configurações e tente novamente."
 
-#: setup.php:153
+#: setup.php:156
 msgid "Checking server capacity"
 msgstr "Verificando a capacidade do servidor"
 
-#: setup.php:111
+#: setup.php:114
 msgid "Checking server configuration"
 msgstr "Verificando configuração do servidor"
 
@@ -3639,12 +3639,12 @@ msgid "Children take their mother’s surname."
 msgstr "Filhos levam o sobrenome de sua mãe."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6715
+#: app/Stats.php:6714
 msgid "Chile"
 msgstr "Chile"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6716
+#: app/Stats.php:6715
 msgid "China"
 msgstr "China"
 
@@ -3662,7 +3662,7 @@ msgstr "Escolha parentes"
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr "Escolha a imagem em miniatura que você deseja enviar. Apesar de miniaturas de imagens poderem ser geradas automaticamente, você pode querer gerar sua própria miniatura, especialmente para outros tipos de mídia. Por exemplo, você pode fornecer uma imagem estática de um vídeo ou uma fotografia da pessoa que fez uma gravação de áudio."
 
-#: admin_site_config.php:124
+#: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
 msgstr "Escolher o texto abaixo como sendo de boas-vindas"
 
@@ -3747,7 +3747,7 @@ msgid "Christening of a son"
 msgstr "Batizado de um filho"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6728
+#: app/Stats.php:6727
 msgid "Christmas Island"
 msgstr "Ilha Christmas"
 
@@ -3823,7 +3823,7 @@ msgid "Cochabamba, Bolivia"
 msgstr "Cochabamba, Bolívia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6713
+#: app/Stats.php:6712
 msgid "Cocos (Keeling) Islands"
 msgstr "Ilhas Cocos"
 
@@ -3838,7 +3838,7 @@ msgid "Cold Day"
 msgstr "Dia Frio"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6722
+#: app/Stats.php:6721
 msgid "Colombia"
 msgstr "Colômbia"
 
@@ -3886,7 +3886,7 @@ msgid "Communicate directly with other users, using private messages."
 msgstr "Comunicar diretamente com outros usuários, usando mensagens privativas."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6723
+#: app/Stats.php:6722
 msgid "Comoros"
 msgstr "Comores"
 
@@ -3931,7 +3931,7 @@ msgstr "Confirmar senha"
 msgid "Confirmation"
 msgstr "Confirmação"
 
-#: setup.php:272
+#: setup.php:275
 msgid "Connection to database server"
 msgstr "Conexão com o servidor de banco de dados"
 
@@ -3962,7 +3962,7 @@ msgstr "Contínuo"
 #: admin_module_menus.php:74 admin_module_reports.php:53
 #: admin_module_sidebar.php:74 admin_module_tabs.php:74 admin_modules.php:141
 #: admin_pgv_to_wt.php:129 admin_site_access.php:239 admin_site_access.php:345
-#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:159
+#: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:166
 #: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:186
 #: admin_site_readme.php:37 admin_trees_check.php:124
 #: admin_trees_config.php:341 admin_trees_download.php:102
@@ -3987,7 +3987,7 @@ msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Converter de UTF-8 para ISO-8859-1"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6721
+#: app/Stats.php:6720
 msgid "Cook Islands"
 msgstr "Ilhas Cook"
 
@@ -4044,12 +4044,12 @@ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as p
 msgstr "Corrige registros NAME na forma 'João/SILVA/' ou 'João /SILVA', como produzido por antigos programas de genealogia."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6725
+#: app/Stats.php:6724
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6717
+#: app/Stats.php:6716
 msgid "Cote d’Ivoire"
 msgstr "Costa do Marfim"
 
@@ -4057,7 +4057,7 @@ msgstr "Costa do Marfim"
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr "Não foi possível verificar as informações. Por favor retorne e tente novamente."
 
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 msgid "Count"
 msgstr "Contagem"
 
@@ -4091,27 +4091,27 @@ msgstr "Criar"
 msgid "Create a family tree"
 msgstr "Criar uma nova árvore genealógica"
 
-#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
+#: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
 msgstr "Criar um novo objeto de mídia"
 
-#: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
 msgstr "Criar Repositório"
 
-#: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
 msgstr "Criar uma nova Nota Compartilhada"
 
-#: app/Functions/FunctionsEdit.php:627
+#: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
 msgstr "Criar uma nova Nota Compartilhada usando Assistente"
 
-#: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
 msgstr "Criar uma nova fonte"
@@ -4263,12 +4263,12 @@ msgid "Cremation of a wife"
 msgstr "Cremação de uma esposa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6774
+#: app/Stats.php:6773
 msgid "Croatia"
 msgstr "Croácia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6726
+#: app/Stats.php:6725
 msgid "Cuba"
 msgstr "Cuba"
 
@@ -4285,11 +4285,11 @@ msgstr "Atual"
 msgid "Custom"
 msgstr "Personalizado"
 
-#: app/Functions/FunctionsPrint.php:624 calendar.php:281
+#: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
 msgstr "Configurar Evento"
 
-#: app/Functions/FunctionsPrint.php:623
+#: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
 msgstr "Fato customizado"
 
@@ -4306,7 +4306,7 @@ msgid "Custom theme"
 msgstr "Tema customizado"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:471
+#: admin_site_config.php:478
 msgid "Custom welcome text"
 msgstr "Texto personalizado de boas vindas"
 
@@ -4315,12 +4315,12 @@ msgid "Customize this page"
 msgstr "Personalize esta página"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6730
+#: app/Stats.php:6729
 msgid "Cyprus"
 msgstr "Chipre"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6731
+#: app/Stats.php:6730
 msgid "Czech Republic"
 msgstr "República Checa"
 
@@ -4350,27 +4350,27 @@ msgid "Data"
 msgstr "Dados"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:174
+#: admin_site_config.php:181
 msgid "Data folder"
 msgstr "Pasta de dados"
 
-#: setup.php:368
+#: setup.php:371
 msgid "Database and table names"
 msgstr "Nomes do banco de dados e tabelas"
 
-#: setup.php:275
+#: setup.php:278
 msgid "Database connection"
 msgstr "Conexão de banco de dados"
 
-#: setup.php:370 setup.php:372
+#: setup.php:373 setup.php:375
 msgid "Database name"
 msgstr "Nome do banco de dados"
 
-#: setup.php:289
+#: setup.php:292
 msgid "Database password"
 msgstr "Senha do banco de dados"
 
-#: setup.php:285
+#: setup.php:288
 msgid "Database user account"
 msgstr "Conta de usuário do banco de dados"
 
@@ -4891,7 +4891,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "Dezembro"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "Dezembro"
@@ -4934,7 +4934,7 @@ msgid "Default pedigree generations"
 msgstr "Gerações de árvore genealógica padrão"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:243 admin_trees_config.php:973
+#: admin_site_config.php:250 admin_trees_config.php:973
 msgid "Default theme"
 msgstr "Tema padrão"
 
@@ -5025,12 +5025,12 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Excluir uma família significa que a ligação entre as pessoas desta família é que será excluída. Você está certo que quer excluir esta família?"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6719
+#: app/Stats.php:6718
 msgid "Democratic Republic of the Congo"
 msgstr "Congo-Kinshasa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6735
+#: app/Stats.php:6734
 msgid "Denmark"
 msgstr "Dinamarca"
 
@@ -5106,7 +5106,7 @@ msgstr "Destino"
 msgid "Details"
 msgstr "Detalhes"
 
-#: admin_site_config.php:490
+#: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr "Detalhes do novo usuário serão enviados para o contato de genealogia da árvore genealógica correspondente."
 
@@ -5262,7 +5262,7 @@ msgid "Divorces by century"
 msgstr "Divórcios por século"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6733
+#: app/Stats.php:6732
 msgid "Djibouti"
 msgstr "Djibouti"
 
@@ -5290,12 +5290,12 @@ msgid "Document"
 msgstr "Documento"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6734
+#: app/Stats.php:6733
 msgid "Dominica"
 msgstr "Dominica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6736
+#: app/Stats.php:6735
 msgid "Dominican Republic"
 msgstr "República Dominicana"
 
@@ -5374,7 +5374,7 @@ msgid "Earliest marriage"
 msgstr "Casamento mais antigo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6738
+#: app/Stats.php:6737
 msgid "Ecuador"
 msgstr "Equador"
 
@@ -5439,7 +5439,7 @@ msgid "Edit the media object"
 msgstr "Editar objeto de mídia"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:698 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
 msgid "Edit the name"
 msgstr "Alterar nome"
 
@@ -5463,7 +5463,7 @@ msgstr "Alterar registro GEDCOM"
 msgid "Edit the repository"
 msgstr "Alterar repositório"
 
-#: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
 msgstr "Alterar Nota Compartilhada"
@@ -5501,12 +5501,12 @@ msgid "Education"
 msgstr "Educação"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6739
+#: app/Stats.php:6738
 msgid "Egypt"
 msgstr "Egito"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6879
+#: app/Stats.php:6878
 msgid "El Salvador"
 msgstr "El Salvador"
 
@@ -5516,7 +5516,7 @@ msgid "Electronic"
 msgstr "Eletrônico"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2343
+#: app/Module/GoogleMapsModule.php:2342
 msgid "Elevation"
 msgstr "Elevação"
 
@@ -5551,7 +5551,7 @@ msgstr "Elul"
 #: admin_users.php:361 admin_users.php:847 app/GedcomTag.php:392
 #: app/GedcomTag.php:396 app/GedcomTag.php:400 app/GedcomTag.php:1467
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
-#: login.php:430 message.php:117 message.php:270 setup.php:440
+#: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
 msgstr "Endereço de email"
 
@@ -5641,7 +5641,7 @@ msgid "Engagement"
 msgstr "Noivado"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6740
+#: app/Stats.php:6739
 msgid "England"
 msgstr "Inglaterra"
 
@@ -5663,12 +5663,12 @@ msgid "Entire record"
 msgstr "Registro completo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6763
+#: app/Stats.php:6762
 msgid "Equatorial Guinea"
 msgstr "Guiné Equatorial"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6741
+#: app/Stats.php:6740
 msgid "Eritrea"
 msgstr "Eritreia"
 
@@ -5712,12 +5712,12 @@ msgid "Estimated dates for birth and death"
 msgstr "Datas estimadas para nascimento e falecimento"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6744
+#: app/Stats.php:6743
 msgid "Estonia"
 msgstr "Estônia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6745
+#: app/Stats.php:6744
 msgid "Ethiopia"
 msgstr "Etiópia"
 
@@ -5732,7 +5732,7 @@ msgstr "Europa"
 msgid "Event"
 msgstr "Evento"
 
-#: app/Module/GoogleMapsModule.php:2081 statistics.php:110 statistics.php:212
+#: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
 msgstr "Eventos"
 
@@ -5898,7 +5898,7 @@ msgstr "Fato 9"
 msgid "Fact icons"
 msgstr "Ícone de fatos"
 
-#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:613
+#: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
 msgstr "Fato ou evento"
 
@@ -5935,7 +5935,7 @@ msgid "Facts for source records"
 msgstr "Fatos para registros de Fontes"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6749
+#: app/Stats.php:6748
 msgid "Falkland Islands"
 msgstr "Ilhas Falkland"
 
@@ -5947,7 +5947,7 @@ msgstr "Ilhas Falkland"
 #: app/Functions/FunctionsPrintLists.php:1351
 #: app/Module/FamilyTreeStatisticsModule.php:115
 #: app/Module/FamilyTreeStatisticsModule.php:342
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:187
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
 #: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
@@ -5965,7 +5965,7 @@ msgstr "Famílias com fontes"
 #. I18N: Name of a module/report
 #: admin_trees_config.php:758 app/Controller/HourglassController.php:327
 #: app/Controller/PedigreeController.php:266
-#: app/Functions/FunctionsEdit.php:867 app/GedcomTag.php:444
+#: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
 #: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
@@ -6121,7 +6121,7 @@ msgid "Far"
 msgstr "Far"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6751
+#: app/Stats.php:6750
 msgid "Faroe Islands"
 msgstr "Ilhas Faroé"
 
@@ -6164,7 +6164,7 @@ msgstr "Pai"
 msgid "Father: %s"
 msgstr "Pai: %s"
 
-#: app/Functions/FunctionsPrint.php:275
+#: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
 msgstr "Idade do pai"
 
@@ -6209,14 +6209,14 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "Fevereiro"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Fevereiro"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
-#: app/Functions/FunctionsEdit.php:674 app/Stats.php:5578 calendar.php:635
+#: app/Functions/FunctionsEdit.php:675 app/Stats.php:5577 calendar.php:635
 #: statisticsplot.php:901 statisticsplot.php:951 statisticsplot.php:1005
 #: statisticsplot.php:1055 statisticsplot.php:1109 statisticsplot.php:1159
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
@@ -6235,7 +6235,7 @@ msgid "Females"
 msgstr "Mulheres"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6747
+#: app/Stats.php:6746
 msgid "Fiji"
 msgstr "Fiji"
 
@@ -6279,37 +6279,37 @@ msgstr "Arquivo marcados com %s são requeridos para o correto funcionamento e n
 msgid "Filter"
 msgstr "Filtrar"
 
-#: app/Functions/FunctionsPrint.php:793 find.php:76 find.php:81 find.php:86
+#: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
 msgstr "Localizar um fato ou evento"
 
-#: app/Functions/FunctionsPrint.php:708 find.php:54
+#: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
 msgstr "Localizar uma família"
 
-#: app/Functions/FunctionsPrint.php:782 find.php:57
+#: app/Functions/FunctionsPrint.php:783 find.php:57
 msgid "Find a media object"
 msgstr "Localizar um objeto de mídia"
 
-#: app/Functions/FunctionsPrint.php:697 find.php:60
+#: app/Functions/FunctionsPrint.php:698 find.php:60
 msgid "Find a place"
 msgstr "Localizar um local"
 
-#: app/Functions/FunctionsPrint.php:770 find.php:63
+#: app/Functions/FunctionsPrint.php:771 find.php:63
 msgid "Find a repository"
 msgstr "Localizar um repositório"
 
-#: app/Functions/FunctionsPrint.php:759 find.php:66
+#: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
 msgstr "Localizar uma nota"
 
-#: app/Functions/FunctionsPrint.php:747 find.php:69
+#: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "Localizar uma fonte"
 
-#: app/Functions/FunctionsPrint.php:719 find.php:72
+#: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
 msgstr "Localizar um caracter especial"
 
@@ -6317,7 +6317,7 @@ msgstr "Localizar um caracter especial"
 msgid "Find all possible relationships"
 msgstr "Encontrar todos os relacionamentos possíveis"
 
-#: app/Functions/FunctionsPrint.php:686 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6350,7 +6350,7 @@ msgid "Find unrelated individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6746
+#: app/Stats.php:6745
 msgid "Finland"
 msgstr "Finlândia"
 
@@ -6379,7 +6379,7 @@ msgid "Flag"
 msgstr "Bandeira"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6748
+#: app/Stats.php:6747
 msgid "Flanders"
 msgstr "Flanders"
 
@@ -6462,7 +6462,7 @@ msgid "For technical support or genealogy questions contact %s."
 msgstr "Para suporte técnico ou questões genealógicas, por favor entre em contato com %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
-#: admin_site_config.php:276
+#: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr "Para sites com mais que uma árvore genealógica, esta opção exibirá a lista de árvores em um menu principal, as páginas de busca, etc."
 
@@ -6514,7 +6514,7 @@ msgid "Foster mother"
 msgstr "Mãe Adotiva"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6750
+#: app/Stats.php:6749
 msgid "France"
 msgstr "França"
 
@@ -6534,17 +6534,17 @@ msgid "French"
 msgstr "Francês"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6768
+#: app/Stats.php:6767
 msgid "French Guiana"
 msgstr "Guiana Francesa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6861
+#: app/Stats.php:6860
 msgid "French Polynesia"
 msgstr "Polinésia Francesa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6684
+#: app/Stats.php:6683
 msgid "French Southern Territories"
 msgstr "Territórios Austrais Franceses"
 
@@ -6561,7 +6561,7 @@ msgid "Fresno, California, United States"
 msgstr "Fresno, Califórnia"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "Sex"
 
@@ -6658,12 +6658,12 @@ msgid "GEDCOM file"
 msgstr "Arquivo GEDCOM"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6753
+#: app/Stats.php:6752
 msgid "Gabon"
 msgstr "Gabão"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6761
+#: app/Stats.php:6760
 msgid "Gambia"
 msgstr "Gâmbia"
 
@@ -6740,20 +6740,20 @@ msgstr "Área geográfica"
 
 #: app/Module/GoogleMapsModule.php:175 app/Module/GoogleMapsModule.php:289
 #: app/Module/GoogleMapsModule.php:826 app/Module/GoogleMapsModule.php:1309
-#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2296
-#: app/Module/GoogleMapsModule.php:2420 app/Module/GoogleMapsModule.php:2815
+#: app/Module/GoogleMapsModule.php:1432 app/Module/GoogleMapsModule.php:2295
+#: app/Module/GoogleMapsModule.php:2419 app/Module/GoogleMapsModule.php:2815
 #: app/Module/GoogleMapsModule.php:3495 app/Module/GoogleMapsModule.php:3507
 #: app/Module/GoogleMapsModule.php:3719 app/Module/GoogleMapsModule.php:3886
 msgid "Geographic data"
 msgstr "Dados geográficos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6755
+#: app/Stats.php:6754
 msgid "Georgia"
 msgstr "Geórgia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6732
+#: app/Stats.php:6731
 msgid "Germany"
 msgstr "Alemanha"
 
@@ -6787,12 +6787,12 @@ msgid "Get an API key from Google."
 msgstr "Obter uma chave API do Google."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6757
+#: app/Stats.php:6756
 msgid "Ghana"
 msgstr "Gana"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6758
+#: app/Stats.php:6757
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
@@ -6841,7 +6841,7 @@ msgid "Godson"
 msgstr "Afilhado"
 
 #. I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: app/Functions/FunctionsPrint.php:468 app/Module/GoogleMapsModule.php:72
+#: app/Functions/FunctionsPrint.php:469 app/Module/GoogleMapsModule.php:72
 #: app/Module/GoogleMapsModule.php:235 app/Module/GoogleMapsModule.php:1291
 #: app/Module/GoogleMapsModule.php:3477 app/Module/GoogleMapsModule.php:4325
 #: app/Module/GoogleMapsModule.php:4340
@@ -6851,12 +6851,12 @@ msgstr "Google Maps™"
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:184
 #: app/Module/GoogleMapsModule.php:284 app/Module/GoogleMapsModule.php:299
 #: app/Module/GoogleMapsModule.php:825 app/Module/GoogleMapsModule.php:1304
-#: app/Module/GoogleMapsModule.php:2295 app/Module/GoogleMapsModule.php:3490
+#: app/Module/GoogleMapsModule.php:2294 app/Module/GoogleMapsModule.php:3490
 msgid "Google Maps™ preferences"
 msgstr "Preferências de Google Maps™"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2083
+#: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2082
 #: app/Module/GoogleMapsModule.php:4328
 msgid "Google Street View™"
 msgstr "Google Street View™"
@@ -6883,7 +6883,7 @@ msgid "Greatest age between siblings"
 msgstr "Maior idade entre irmãos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6764
+#: app/Stats.php:6763
 msgid "Greece"
 msgstr "Grécia"
 
@@ -6893,7 +6893,7 @@ msgid "Green Beam"
 msgstr "Barra Verde"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6766
+#: app/Stats.php:6765
 msgid "Greenland"
 msgstr "Groenlândia"
 
@@ -6903,7 +6903,7 @@ msgid "Gregorian"
 msgstr "Gregoriano"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6765
+#: app/Stats.php:6764
 msgid "Grenada"
 msgstr "Granada"
 
@@ -6913,12 +6913,12 @@ msgid "Guadalajara, Mexico"
 msgstr "Guadalajara, México"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6760
+#: app/Stats.php:6759
 msgid "Guadeloupe"
 msgstr "Guadalupe"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6769
+#: app/Stats.php:6768
 msgid "Guam"
 msgstr "Guam"
 
@@ -6937,7 +6937,7 @@ msgid "Guardian"
 msgstr "Guardião"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6767
+#: app/Stats.php:6766
 msgid "Guatemala"
 msgstr "Guatemala"
 
@@ -6952,22 +6952,22 @@ msgid "Guayaquil, Ecuador"
 msgstr "Guayaquil, Equador"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6756
+#: app/Stats.php:6755
 msgid "Guernsey"
 msgstr "Guernsey"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6759
+#: app/Stats.php:6758
 msgid "Guinea"
 msgstr "Guiné"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6762
+#: app/Stats.php:6761
 msgid "Guinea-Bissau"
 msgstr "Guiné-Bissau"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6770
+#: app/Stats.php:6769
 msgid "Guyana"
 msgstr "Guiana"
 
@@ -6982,7 +6982,7 @@ msgid "Hair color"
 msgstr "Cor do cabelo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6775
+#: app/Stats.php:6774
 msgid "Haiti"
 msgstr "Haiti"
 
@@ -7046,7 +7046,7 @@ msgid "Header"
 msgstr "Cabeçalho"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6772
+#: app/Stats.php:6771
 msgid "Heard Island and McDonald Islands"
 msgstr "Ilhas Heard e McDonald"
 
@@ -7141,7 +7141,7 @@ msgstr "Heshvan"
 
 #: admin_trees_config.php:82 admin_trees_config.php:89
 #: admin_trees_config.php:492 admin_trees_config.php:1021
-#: app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:208
 msgid "Hide from everyone"
 msgstr "Esconder de todos"
 
@@ -7184,13 +7184,13 @@ msgid "Home page"
 msgstr "Página inicial"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6773
+#: app/Stats.php:6772
 msgid "Honduras"
 msgstr "Honduras"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
-#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6771
+#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6770
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
@@ -7221,7 +7221,7 @@ msgid "How much recursion to use when searching for relationships"
 msgstr "Quantidade de interações para utilizar na pesquisa de relaçionamento"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6776
+#: app/Stats.php:6775
 msgid "Hungary"
 msgstr "Hungria"
 
@@ -7254,7 +7254,7 @@ msgid "IP address"
 msgstr "Endereço IP"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6784
+#: app/Stats.php:6783
 msgid "Iceland"
 msgstr "Islândia"
 
@@ -7362,7 +7362,7 @@ msgstr "Se você criou objetos de mídia no webtrees, e editou o seu gedcom off-
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
 msgstr "Se você esconde um bloco quando está vazio, você não poderá alterar suas configurações até que ele se torne visível por não estar vazio."
 
-#: admin_site_config.php:185
+#: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Se você selecionar uma pasta diferente, você deve também mover todos os arquivos (exceto o config.ini.php, index.php e o .htaccess) da pasta existente para a nova pasta."
 
@@ -7376,20 +7376,20 @@ msgstr "Se você selecionar uma pasta diferente, você deve também mover todos 
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr "Se você exibir pessoas vivas para os visitantes, todas as outras restrições de privacidade são ignoradas. Faça isso somente se todos os dados na sua árvore são públicos."
 
-#: setup.php:182
+#: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr "Se você tentar exceder estes limites, você pode ter erros no servidor e páginas em branco."
 
-#: admin_site_config.php:512
+#: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Se você usa um dos serviços de rastreio e analíticos, o webtrees pode adicionar códigos de rastreio automaticamente."
 
-#: setup.php:184
+#: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
 msgstr "Se a política de segurança do seu servidor permitir, você poderá pedir aumento de memória ou tempo de CPU usando a página de administração do webtrees. Caso contrário, você vai precisar contatar o administrador do servidor."
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:303
+#: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
 msgstr "Se seu site puder ser acessado usando mais que uma URL, tal como <b>http://www.examplo.com/webtrees/</b> e <b>http://webtrees.examplo.com/</b>, você pode especificar a URL preferida. Solicitações para outras URLs serão redirecionadas para a preferida."
 
@@ -7478,7 +7478,7 @@ msgid "Include the individual’s immediate family"
 msgstr "Incluir a família imediata do indivíduo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6778
+#: app/Stats.php:6777
 msgid "India"
 msgstr "Índia"
 
@@ -7490,7 +7490,7 @@ msgstr "Indianápolis, Indiana, Estados Unidos"
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:547 ancestry.php:52
-#: app/Functions/FunctionsEdit.php:848 app/GedcomTag.php:532
+#: app/Functions/FunctionsEdit.php:849 app/GedcomTag.php:532
 #: app/Module/ChartsBlockModule.php:215 app/Module/GoogleMapsModule.php:730
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
 #: app/Module/StoriesModule.php:375 app/Module/StoriesModule.php:459
@@ -7551,7 +7551,7 @@ msgstr "Pessoa Que Mais Viveu"
 #: app/Functions/FunctionsPrintLists.php:1433
 #: app/Module/FamilyTreeStatisticsModule.php:107
 #: app/Module/FamilyTreeStatisticsModule.php:314
-#: app/Module/GoogleMapsModule.php:2383 app/Module/HtmlBlockModule.php:171
+#: app/Module/GoogleMapsModule.php:2382 app/Module/HtmlBlockModule.php:171
 #: app/Module/SlideShowModule.php:264 app/Theme/AbstractTheme.php:1504
 #: calendar.php:413 descendancy.php:65 gedrecord.php:111 indilist.php:130
 #: indilist.php:133 mediaviewer.php:100 modules_v3/fact_sources/report.xml:54
@@ -7572,7 +7572,7 @@ msgid "Individuals with surname %s"
 msgstr "Pessoas com o sobrenome %s"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6777
+#: app/Stats.php:6776
 msgid "Indonesia"
 msgstr "Indonésia"
 
@@ -7612,11 +7612,11 @@ msgstr "Árvore interativa"
 msgid "Interactive tree of %s"
 msgstr "Árvore interativa de %s"
 
-#: app/Functions/FunctionsEdit.php:246
+#: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
 msgstr "Mensagem interna"
 
-#: app/Functions/FunctionsEdit.php:247
+#: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
 msgstr "Mensageiro interno com e-mails"
 
@@ -7650,27 +7650,27 @@ msgid "Invalid date"
 msgstr "Data inválida"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6782
+#: app/Stats.php:6781
 msgid "Iran"
 msgstr "Irã"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6783
+#: app/Stats.php:6782
 msgid "Iraq"
 msgstr "Iraque"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6781
+#: app/Stats.php:6780
 msgid "Ireland"
 msgstr "Irlanda"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6779
+#: app/Stats.php:6778
 msgid "Isle of Man"
 msgstr "Ilha de Man"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6785
+#: app/Stats.php:6784
 msgid "Israel"
 msgstr "Israel"
 
@@ -7679,7 +7679,7 @@ msgid "It can take several minutes to download and install the upgrade. Be patie
 msgstr "Pode levar vários minutos para baixar e instalar a atualização. Seja paciente."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6786
+#: app/Stats.php:6785
 msgid "Italy"
 msgstr "Itália"
 
@@ -7713,7 +7713,7 @@ msgid "Jalali"
 msgstr "Jalali"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6787
+#: app/Stats.php:6786
 msgid "Jamaica"
 msgstr "Jamaica"
 
@@ -7737,13 +7737,13 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "Janeiro"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:644
+#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "Janeiro"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6790
+#: app/Stats.php:6789
 msgid "Japan"
 msgstr "Japão"
 
@@ -7763,7 +7763,7 @@ msgid "John /DOE/"
 msgstr "João /SILVA/"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6789
+#: app/Stats.php:6788
 msgid "Jordan"
 msgstr "Jordânia"
 
@@ -7802,7 +7802,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "Julho"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Julho"
@@ -7875,7 +7875,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "Junho"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "Junho"
@@ -7886,7 +7886,7 @@ msgid "Kansas City, Missouri, United States"
 msgstr "Kansas City, Missouri, Estados Unidos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6791
+#: app/Stats.php:6790
 msgid "Kazakhstan"
 msgstr "Cazaquistão"
 
@@ -7911,7 +7911,7 @@ msgid "Keep the existing “last change” information"
 msgstr "Manter a informação existente de \"última alteração\""
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6792
+#: app/Stats.php:6791
 msgid "Kenya"
 msgstr "Quênia"
 
@@ -7954,7 +7954,7 @@ msgid "Kiev, Ukraine"
 msgstr "Kiev, Ucrânia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6795
+#: app/Stats.php:6794
 msgid "Kiribati"
 msgstr "Kiribati"
 
@@ -7988,17 +7988,17 @@ msgid "Kona, Hawaii, United States"
 msgstr "Kona, Hawaí"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6797
+#: app/Stats.php:6796
 msgid "Korea"
 msgstr "Coreia do Sul"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6798
+#: app/Stats.php:6797
 msgid "Kuwait"
 msgstr "Kuwait"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6793
+#: app/Stats.php:6792
 msgid "Kyrgyzstan"
 msgstr "Quirguistão"
 
@@ -8032,7 +8032,7 @@ msgstr "Códigos de ordenação mórmom nas caixas dos gráficos"
 msgid "LDS spouse sealing"
 msgstr "Selamento Mórmom de cônjuge"
 
-#: app/Functions/FunctionsPrint.php:479
+#: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
 msgstr "Templo Mórmom"
 
@@ -8049,27 +8049,27 @@ msgstr "Paisagem"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
-#: admin_site_config.php:632 admin_trees_config.php:635 admin_users.php:406
+#: admin_site_config.php:639 admin_trees_config.php:635 admin_users.php:406
 #: admin_users.php:848 app/GedcomTag.php:540 app/Theme/AbstractTheme.php:1408
-#: edituser.php:238 setup.php:108
+#: edituser.php:238 setup.php:111
 msgid "Language"
 msgstr "Idioma"
 
 #. I18N: Menu entry
-#: admin_site_config.php:146 app/Theme/AdministrationTheme.php:98
+#: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
 msgstr "Idiomas"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6799
+#: app/Stats.php:6798
 msgid "Laos"
 msgstr "Laos"
 
-#: setup.php:177
+#: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
 msgstr "Grandes sistemas (50000 pessoas): 64-128MB, 40-80 segundos"
 
-#: app/Stats.php:4856 statistics.php:318
+#: app/Stats.php:4855 statistics.php:318
 msgid "Largest families"
 msgstr "Maiores famílias"
 
@@ -8135,7 +8135,7 @@ msgid "Latitude"
 msgstr "Latitude"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6809
+#: app/Stats.php:6808
 msgid "Latvia"
 msgstr "Letônia"
 
@@ -8147,8 +8147,8 @@ msgstr "Disposição de apresentação"
 msgid "Leave the password blank if you want to keep the current password."
 msgstr "Deixe a senha em branco para manter a senha atual."
 
-#: admin_site_config.php:203 admin_site_config.php:222
-#: admin_site_config.php:290 admin_site_config.php:304
+#: admin_site_config.php:210 admin_site_config.php:229
+#: admin_site_config.php:297 admin_site_config.php:311
 msgid "Leave this blank to use the default value."
 msgstr "Se você deixar esta configuração vazia, o valor padrão será usado."
 
@@ -8158,7 +8158,7 @@ msgid "Leaves"
 msgstr "Folhas"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6800
+#: app/Stats.php:6799
 msgid "Lebanon"
 msgstr "Líbano"
 
@@ -8190,7 +8190,7 @@ msgid "Length of marriage"
 msgstr "Duração do casamento"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6806
+#: app/Stats.php:6805
 msgid "Lesotho"
 msgstr "Lesoto"
 
@@ -8218,17 +8218,17 @@ msgid "Level"
 msgstr "Nível"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6801
+#: app/Stats.php:6800
 msgid "Liberia"
 msgstr "Libéria"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6802
+#: app/Stats.php:6801
 msgid "Libya"
 msgstr "Líbia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6804
+#: app/Stats.php:6803
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
@@ -8302,7 +8302,7 @@ msgid "Lists"
 msgstr "Listas"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6807
+#: app/Stats.php:6806
 msgid "Lithuania"
 msgstr "Lituânia"
 
@@ -8400,22 +8400,22 @@ msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Texas, United States"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6808
+#: app/Stats.php:6807
 msgid "Luxembourg"
 msgstr "Luxemburgo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6810
+#: app/Stats.php:6809
 msgid "Macau"
 msgstr "Macau"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6819
+#: app/Stats.php:6818
 msgid "Macedonia"
 msgstr "Macedônia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6815
+#: app/Stats.php:6814
 msgid "Madagascar"
 msgstr "Madagáscar"
 
@@ -8434,7 +8434,7 @@ msgstr "Revista"
 msgid "Mailing name"
 msgstr "Nome para correspondência"
 
-#: app/Functions/FunctionsEdit.php:249
+#: app/Functions/FunctionsEdit.php:250
 msgid "Mailto link"
 msgstr "Link para e-mail"
 
@@ -8443,23 +8443,23 @@ msgid "Main section blocks"
 msgstr "Blocos da Seção Principal"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6831
+#: app/Stats.php:6830
 msgid "Malawi"
 msgstr "Malawi"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6832
+#: app/Stats.php:6831
 msgid "Malaysia"
 msgstr "Malásia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6816
+#: app/Stats.php:6815
 msgid "Maldives"
 msgstr "Maldivas"
 
 #: app/Controller/IndividualController.php:238
 #: app/Controller/IndividualController.php:241
-#: app/Functions/FunctionsEdit.php:670 app/Stats.php:5578 calendar.php:631
+#: app/Functions/FunctionsEdit.php:671 app/Stats.php:5577 calendar.php:631
 #: statisticsplot.php:900 statisticsplot.php:950 statisticsplot.php:1004
 #: statisticsplot.php:1054 statisticsplot.php:1108 statisticsplot.php:1158
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
@@ -8478,12 +8478,12 @@ msgid "Males"
 msgstr "Homens"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6820
+#: app/Stats.php:6819
 msgid "Mali"
 msgstr "Mali"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6821
+#: app/Stats.php:6820
 msgid "Malta"
 msgstr "Malta"
 
@@ -8550,7 +8550,7 @@ msgid "Many genealogy programs create GEDCOM files with custom tags, and webtree
 msgstr "Muitos programas genealógicos criam arquivos GEDCOM com marcas próprias, e webtrees entende muitas delas. Quando marcas não reconhecidas são encontradas, esta opção deixa você escolher se as ignora ou se exibe uma mensagem de aviso."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
-#: admin_site_config.php:426
+#: admin_site_config.php:433
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr "Muitos servidores de e-mail requerem que o servidor remetente se identifique corretamente, usando um nome de domínio válido."
 
@@ -8581,7 +8581,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "Março"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "Março"
@@ -8823,12 +8823,12 @@ msgid "Married surname"
 msgstr "Sobrenome de casada"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6818
+#: app/Stats.php:6817
 msgid "Marshall Islands"
 msgstr "Ilhas Marshall"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6829
+#: app/Stats.php:6828
 msgid "Martinique"
 msgstr "Martinica"
 
@@ -8855,12 +8855,12 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Coincidir com o texto exato, exceto que ocorra no meio de uma palavra."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6827
+#: app/Stats.php:6826
 msgid "Mauritania"
 msgstr "Mauritânia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6830
+#: app/Stats.php:6829
 msgid "Mauritius"
 msgstr "Ilhas Maurício"
 
@@ -8903,13 +8903,13 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "Maio"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "Maio"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6833
+#: app/Stats.php:6832
 msgid "Mayotte"
 msgstr "Mayotte"
 
@@ -9006,7 +9006,7 @@ msgstr "Condição médica"
 msgid "Mediterranio"
 msgstr "Mediterrâneo"
 
-#: setup.php:175
+#: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr "Médios sistemas (5000 pessoas): 32-64MB, 20-40 segundos"
 
@@ -9054,7 +9054,7 @@ msgid "Member"
 msgstr "Membro"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:196
+#: admin_site_config.php:203
 msgid "Memory limit"
 msgstr "Limite de memória"
 
@@ -9107,7 +9107,7 @@ msgstr "Mensagem"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
-#: admin_site_config.php:315 app/Module/UserMessagesModule.php:33
+#: admin_site_config.php:322 app/Module/UserMessagesModule.php:33
 msgid "Messages"
 msgstr "Mensagens"
 
@@ -9136,7 +9136,7 @@ msgid "Messidor"
 msgstr "Messidor"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6817
+#: app/Stats.php:6816
 msgid "Mexico"
 msgstr "México"
 
@@ -9156,7 +9156,7 @@ msgid "Microfilm"
 msgstr "Microfilme"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6752
+#: app/Stats.php:6751
 msgid "Micronesia"
 msgstr "Micronésia"
 
@@ -9228,17 +9228,17 @@ msgid "Modules"
 msgstr "Módulos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6814
+#: app/Stats.php:6813
 msgid "Moldova"
 msgstr "Moldávia"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "Seg"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6813
+#: app/Stats.php:6812
 msgid "Monaco"
 msgstr "Mônaco"
 
@@ -9247,12 +9247,12 @@ msgid "Monday"
 msgstr "Segunda-feira"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6823
+#: app/Stats.php:6822
 msgid "Mongolia"
 msgstr "Mongólia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6825
+#: app/Stats.php:6824
 msgid "Montenegro"
 msgstr "Montenegro"
 
@@ -9274,7 +9274,7 @@ msgstr "Mês"
 msgid "Month of birth"
 msgstr "Mês de nascimento"
 
-#: app/Stats.php:4736 statistics.php:530 statisticsplot.php:1028
+#: app/Stats.php:4735 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
 msgstr "Mês do nascimento do primeiro filho na relação"
 
@@ -9305,7 +9305,7 @@ msgid "Montreal, Quebec, Canada"
 msgstr "Montreal, Quebec, Canadá"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6828
+#: app/Stats.php:6827
 msgid "Montserrat"
 msgstr "Montserrat"
 
@@ -9343,12 +9343,12 @@ msgid "More news articles"
 msgstr "Mais artigos de notícias"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6812
+#: app/Stats.php:6811
 msgid "Morocco"
 msgstr "Marrocos"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:374
+#: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
 msgstr "Muitos servidores SMTP requerem uma senha."
 
@@ -9359,15 +9359,15 @@ msgid "Most common surnames"
 msgstr "Sobrenomes mais comuns"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
-#: admin_site_config.php:413
+#: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
 msgstr "Muitos servidores não usam conexões seguras."
 
-#: setup.php:279
+#: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr "Muitos sites são configurados para usar localmente (localhost). Isto significa que seu banco de dados funciona no mesmo computador como um servidor web."
 
-#: setup.php:283
+#: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
 msgstr "Muitos sites são configurados para usar o valor padrão 3306."
 
@@ -9391,7 +9391,7 @@ msgstr "Mãe"
 msgid "Mother: %s"
 msgstr "Mãe: %s"
 
-#: app/Functions/FunctionsPrint.php:267
+#: app/Functions/FunctionsPrint.php:268
 msgid "Mother’s age"
 msgstr "Idade da mãe"
 
@@ -9430,7 +9430,7 @@ msgid "Move up"
 msgstr "Mover para Cima"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6826
+#: app/Stats.php:6825
 msgid "Mozambique"
 msgstr "Moçambique"
 
@@ -9501,13 +9501,13 @@ msgid "MySQL variables"
 msgstr "Variáveis MySQL"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6822
+#: app/Stats.php:6821
 msgid "Myanmar"
 msgstr "Mianmar"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
-#: app/Stats.php:5580
+#: app/Stats.php:5579
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:104
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:525
 #: modules_v3/bdm_report/report.xml:5 modules_v3/bdm_report/report.xml:49
@@ -9563,7 +9563,7 @@ msgid "Namesake"
 msgstr "Homônimo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6834
+#: app/Stats.php:6833
 msgid "Namibia"
 msgstr "Namíbia"
 
@@ -9591,7 +9591,7 @@ msgid "Naturalization"
 msgstr "Naturalização"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6845
+#: app/Stats.php:6844
 msgid "Nauru"
 msgstr "Nauru"
 
@@ -9606,12 +9606,12 @@ msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Illinois (antigo)"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6844
+#: app/Stats.php:6843
 msgid "Nepal"
 msgstr "Nepal"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6842
+#: app/Stats.php:6841
 msgid "Netherlands"
 msgstr "Holanda"
 
@@ -9637,7 +9637,7 @@ msgid "Never married"
 msgstr "Nunca casou"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6835
+#: app/Stats.php:6834
 msgid "New Caledonia"
 msgstr "Nova Caledônia"
 
@@ -9647,7 +9647,7 @@ msgid "New York, New York, United States"
 msgstr "Nova York, Nova York"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6846
+#: app/Stats.php:6845
 msgid "New Zealand"
 msgstr "Nova Zelândia"
 
@@ -9691,7 +9691,7 @@ msgid "Next image"
 msgstr "Próxima imagem"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6839
+#: app/Stats.php:6838
 msgid "Nicaragua"
 msgstr "Nicarágua"
 
@@ -9701,12 +9701,12 @@ msgid "Nickname"
 msgstr "Apelido"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6836
+#: app/Stats.php:6835
 msgid "Niger"
 msgstr "Níger"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6838
+#: app/Stats.php:6837
 msgid "Nigeria"
 msgstr "Nigéria"
 
@@ -9735,7 +9735,7 @@ msgid "Nissan"
 msgstr "Nissan"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6841
+#: app/Stats.php:6840
 msgid "Niue"
 msgstr "Niue"
 
@@ -9788,7 +9788,7 @@ msgstr "Sem conversão de calendário"
 msgid "No children"
 msgstr "Sem filhos"
 
-#: app/Functions/FunctionsEdit.php:250
+#: app/Functions/FunctionsEdit.php:251
 msgid "No contact"
 msgstr "Sem contato"
 
@@ -9883,7 +9883,7 @@ msgstr "Nenhum lugar encontrado"
 msgid "No places have been found."
 msgstr "Nenhum local foi encontrado."
 
-#: admin_site_config.php:120
+#: admin_site_config.php:127
 msgid "No predefined text"
 msgstr "Sem texto pré-definido"
 
@@ -9900,11 +9900,11 @@ msgstr "Nenhum registro para exibir"
 msgid "No results found."
 msgstr "Nenhum resultado encontrado."
 
-#: app/Stats.php:5902
+#: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
 msgstr "Sem usuários conectados e anônimos"
 
-#: app/Functions/FunctionsEdit.php:633
+#: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
 msgstr "Sem templo - Ordenação vivo"
 
@@ -9944,7 +9944,7 @@ msgid "Noon"
 msgstr "Meio-dia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6837
+#: app/Stats.php:6836
 msgid "Norfolk Island"
 msgstr "Ilha Norfolk"
 
@@ -9953,22 +9953,22 @@ msgid "Normally, any changes made to a family tree need to be reviewed by a mode
 msgstr "Normalmente, quaisquer alterações feitas a uma árvore genealógica precisam ser aprovadas por um moderador. Esta opção permite ao usuário fazer alterações sem a necessidade de aprovação de um moderador."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6857
+#: app/Stats.php:6856
 msgid "North Korea"
 msgstr "Coreia do Norte"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6840
+#: app/Stats.php:6839
 msgid "Northern Ireland"
 msgstr "Irlanda do Norte"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6824
+#: app/Stats.php:6823
 msgid "Northern Mariana Islands"
 msgstr "Ilhas Marianas do Norte"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6843
+#: app/Stats.php:6842
 msgid "Norway"
 msgstr "Noruega"
 
@@ -10008,7 +10008,7 @@ msgstr "Não verificado pelo usuário"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
-#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:638
+#: app/Functions/FunctionsPrint.php:174 app/GedcomTag.php:638
 #: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
@@ -10063,7 +10063,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "Novembro"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "Novembro"
@@ -10074,8 +10074,8 @@ msgid "Nuku’Alofa, Tonga"
 msgstr "Nuku'Alofa, Tonga"
 
 #. I18N: gedcom tag NCHI
-#: app/GedcomTag.php:626 app/Stats.php:4941 app/Stats.php:4943
-#: app/Stats.php:4945 statistics.php:555 statisticsplot.php:1332
+#: app/GedcomTag.php:626 app/Stats.php:4940 app/Stats.php:4942
+#: app/Stats.php:4944 statistics.php:555 statisticsplot.php:1332
 msgid "Number of children"
 msgstr "Número de filhos"
 
@@ -10085,7 +10085,7 @@ msgstr "Número de filhos"
 msgid "Number of days to show"
 msgstr "Quantidade de dias para exibir"
 
-#: app/Stats.php:5210 statistics.php:307
+#: app/Stats.php:5209 statistics.php:307
 msgid "Number of families without children"
 msgstr "Número de famílias sem filhos"
 
@@ -10158,7 +10158,7 @@ msgid "Occupations"
 msgstr "Ocupações"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6860
+#: app/Stats.php:6859
 msgid "Occupied Palestinian Territory"
 msgstr "Território Ocupado da Palestina"
 
@@ -10187,7 +10187,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "Outubro"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "Outubro"
@@ -10244,7 +10244,7 @@ msgid "Olivia"
 msgstr "Oliva"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6847
+#: app/Stats.php:6846
 msgid "Oman"
 msgstr "Omã"
 
@@ -10257,7 +10257,7 @@ msgstr "Neste dia"
 msgid "On this day…"
 msgstr "Este Dia em nossa história …"
 
-#: app/Functions/FunctionsEdit.php:228
+#: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
 #: app/Functions/FunctionsPrintFacts.php:443
 #: app/Functions/FunctionsPrintFacts.php:839
@@ -10269,11 +10269,11 @@ msgstr "Somente gestores podem alterar"
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr "Oops! O servidor web não conseguiu se conectar no servidor da base de dados. Ele pode estar ocupado, em manutenção, ou simplesmente quebrado. Você deveria <a href=\"index.php\">tentar novamente</a> em alguns minutos ou contatar o administrador do site."
 
-#: setup.php:210
+#: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
 msgstr "Ops! O webtrees não conseguiu criar arquivos neste diretório."
 
-#: app/Functions/FunctionsPrint.php:470
+#: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
 
@@ -10341,7 +10341,7 @@ msgid "Orlando, Florida, United States"
 msgstr "Orlando, Flórida"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1944 app/Stats.php:5454 app/Stats.php:5873
+#: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
 msgstr "Outro"
 
@@ -10393,12 +10393,12 @@ msgstr "P.M."
 msgid "PHP blocked the file because of its extension."
 msgstr "PHP bloqueou o arquivo pela extensão."
 
-#: setup.php:137
+#: setup.php:140
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "A extensão PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador do seu servidor para habilitá-la."
 
-#: setup.php:126
+#: setup.php:129
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
 msgstr "A extensão PHP “%s” está desabilitada. Você não pode instalar webtrees até que ela esteja habilitada. Por favor solicite ao administrador do seu servidor para habilitá-lo."
@@ -10412,13 +10412,13 @@ msgstr "PHP falhou ao escrever no disco."
 msgid "PHP information"
 msgstr "Informações do PHP"
 
-#: setup.php:146
+#: setup.php:149
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "Configuração PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador de seu servidor habilitá-la."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:211
+#: admin_site_config.php:218
 msgid "PHP time limit"
 msgstr "Tempo limite do PHP"
 
@@ -10466,12 +10466,12 @@ msgid "Painting"
 msgstr "Pintura"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6848
+#: app/Stats.php:6847
 msgid "Pakistan"
 msgstr "Paquistão"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6853
+#: app/Stats.php:6852
 msgid "Palau"
 msgstr "Palau"
 
@@ -10486,7 +10486,7 @@ msgid "Palmyra, New York, United States"
 msgstr "Palmyra, Nova York"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6849
+#: app/Stats.php:6848
 msgid "Panama"
 msgstr "Panamá"
 
@@ -10501,12 +10501,12 @@ msgid "Papeete, Tahiti"
 msgstr "Papeete, Taiti"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6854
+#: app/Stats.php:6853
 msgid "Papua New Guinea"
 msgstr "Papua-Nova Guiné"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6859
+#: app/Stats.php:6858
 msgid "Paraguay"
 msgstr "Paraguai"
 
@@ -10521,14 +10521,14 @@ msgstr "Pais"
 msgid "Parents and siblings"
 msgstr "Pais e irmãos"
 
-#: app/Functions/FunctionsPrint.php:279
+#: app/Functions/FunctionsPrint.php:280
 msgid "Parent’s age"
 msgstr "Idade dos pais"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:395 admin_users.php:338
+#: admin_site_config.php:402 admin_users.php:338
 #: app/Module/LoginBlockModule.php:79 edituser.php:213 login.php:197
-#: login.php:259 login.php:450 login.php:530 setup.php:433
+#: login.php:259 login.php:450 login.php:530 setup.php:436
 msgid "Password"
 msgstr "Senha"
 
@@ -10607,12 +10607,12 @@ msgid "Perth, Australia"
 msgstr "Perth, Austrália"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6851
+#: app/Stats.php:6850
 msgid "Peru"
 msgstr "Peru"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6852
+#: app/Stats.php:6851
 msgid "Philippines"
 msgstr "Filipinas"
 
@@ -10682,7 +10682,7 @@ msgid "Pink Plastic"
 msgstr "Plástico Rosa"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6850
+#: app/Stats.php:6849
 msgid "Pitcairn"
 msgstr "Pitcairn"
 
@@ -10704,7 +10704,7 @@ msgstr "Local"
 
 #: app/Module/GoogleMapsModule.php:176 app/Module/GoogleMapsModule.php:294
 #: app/Module/GoogleMapsModule.php:827 app/Module/GoogleMapsModule.php:1314
-#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2297
+#: app/Module/GoogleMapsModule.php:1320 app/Module/GoogleMapsModule.php:2296
 #: app/Module/GoogleMapsModule.php:3500
 msgid "Place check"
 msgstr "Seleção de Local"
@@ -10927,7 +10927,7 @@ msgid "Pluviose"
 msgstr "Pluvioso"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6855
+#: app/Stats.php:6854
 msgid "Poland"
 msgstr "Polônia"
 
@@ -10937,7 +10937,7 @@ msgid "Polish"
 msgstr "Polonês"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:356 setup.php:281
+#: admin_site_config.php:363 setup.php:284
 msgid "Port number"
 msgstr "Número de porta"
 
@@ -10958,7 +10958,7 @@ msgid "Portrait"
 msgstr "Retrato"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6858
+#: app/Stats.php:6857
 msgid "Portugal"
 msgstr "Portugal"
 
@@ -10996,15 +10996,15 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "Pradial"
 
-#: admin_site_config.php:122
+#: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "Texto pré-definido que estabelece que o administrador decidirá sobre cada requisição para uma conta de usuário"
 
-#: admin_site_config.php:121
+#: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
 msgstr "Texto pré-definido que estabelece que todos os usuários podem requisitar uma conta de usuário"
 
-#: admin_site_config.php:123
+#: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Texto pré-definido que estabelece que somente membros da família podem solicitar uma conta de usuário"
 
@@ -11113,12 +11113,12 @@ msgid "Publication"
 msgstr "Publicação"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6856
+#: app/Stats.php:6855
 msgid "Puerto Rico"
 msgstr "Porto Rico"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6862
+#: app/Stats.php:6861
 msgid "Qatar"
 msgstr "Catar"
 
@@ -11587,7 +11587,7 @@ msgid "Repository name"
 msgstr "Nome do repositório"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6720
+#: app/Stats.php:6719
 msgid "Republic of the Congo"
 msgstr "Congo-Brazzaville"
 
@@ -11659,7 +11659,7 @@ msgid "Retirement"
 msgstr "Aposentadoria"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6863
+#: app/Stats.php:6862
 msgid "Reunion"
 msgstr "Reunião"
 
@@ -11678,7 +11678,7 @@ msgid "Role"
 msgstr "Cargo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6864
+#: app/Stats.php:6863
 msgid "Romania"
 msgstr "Romênia"
 
@@ -11712,16 +11712,16 @@ msgid "Russell"
 msgstr "Russell"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6865
+#: app/Stats.php:6864
 msgid "Russia"
 msgstr "Rússia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6866
+#: app/Stats.php:6865
 msgid "Rwanda"
 msgstr "Ruanda"
 
-#: admin_site_config.php:338
+#: admin_site_config.php:345
 msgid "SMTP mail server"
 msgstr "Servidor de correio SMTP"
 
@@ -11760,27 +11760,27 @@ msgid "Sage"
 msgstr "Verde translúcido"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6875
+#: app/Stats.php:6874
 msgid "Saint Helena"
 msgstr "Santa Helena"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6796
+#: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
 msgstr "São Cristóvão e Neves"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6803
+#: app/Stats.php:6802
 msgid "Saint Lucia"
 msgstr "Santa Lúcia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6882
+#: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
 msgstr "São Pedro e Miquelon"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6915
+#: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
 msgstr "São Vicente e Granadinas"
 
@@ -11790,7 +11790,7 @@ msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Utah, United States"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6923
+#: app/Stats.php:6922
 msgid "Samoa"
 msgstr "Samoa"
 
@@ -11810,7 +11810,7 @@ msgid "San Jose, Costa Rica"
 msgstr "San Jose, Costa Rica"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6880
+#: app/Stats.php:6879
 msgid "San Marino"
 msgstr "San Marino"
 
@@ -11835,12 +11835,12 @@ msgid "Sao Paulo, Brazil"
 msgstr "São Paulo, Brasil"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6884
+#: app/Stats.php:6883
 msgid "Sao Tome and Principe"
 msgstr "São Tomé e Príncipe"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "Sáb"
 
@@ -11853,7 +11853,7 @@ msgid "Saturday"
 msgstr "Sábado"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6867
+#: app/Stats.php:6866
 msgid "Saudi Arabia"
 msgstr "Arábia Saudita"
 
@@ -11862,7 +11862,7 @@ msgid "School or college"
 msgstr "Escola ou faculdade"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6868
+#: app/Stats.php:6867
 msgid "Scotland"
 msgstr "Escócia"
 
@@ -11959,12 +11959,12 @@ msgid "Second record"
 msgstr "Segundo registro"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:408
+#: admin_site_config.php:415
 msgid "Secure connection"
 msgstr "Conexão segura"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:613
+#: admin_site_config.php:620
 msgid "Security code"
 msgstr "Código de segurança"
 
@@ -11987,7 +11987,7 @@ msgstr "Selecionar um arquivo GEDCOM para importar"
 msgid "Select a block and use the arrows to move it."
 msgstr "Selecione um bloco e use as setas para movê-lo."
 
-#: app/Functions/FunctionsEdit.php:404 reportengine.php:244
+#: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
 msgstr "Selecionar uma data"
 
@@ -12020,7 +12020,7 @@ msgstr "Selecione o intervalo de contagem desejado"
 msgid "Select the facts and events to keep from both records."
 msgstr "Selecionar os fatos e eventos para manter de ambos os registros."
 
-#: admin_site_config.php:627
+#: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
 msgstr "Selecionar os idiomas que serão exibidos nos menus."
 
@@ -12048,7 +12048,7 @@ msgid "Send"
 msgstr "Enviar"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
-#: app/Stats.php:5931 app/Stats.php:5933 edit_changes.php:201 message.php:103
+#: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
 msgid "Send a message"
 msgstr "Enviar Mensagem"
 
@@ -12075,22 +12075,22 @@ msgid "Send out reminder emails"
 msgstr "Enviar lembrete por emails"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:328
+#: admin_site_config.php:335
 msgid "Sender name"
 msgstr "Nome do remetente"
 
 #. I18N: Menu entry
-#: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
+#: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
 msgstr "Enviando mensagem"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:421
+#: admin_site_config.php:428
 msgid "Sending server name"
 msgstr "Nome do servidor do remetente"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6871
+#: app/Stats.php:6870
 msgid "Senegal"
 msgstr "Senegal"
 
@@ -12124,7 +12124,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "Setembro"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "Setembro"
@@ -12135,7 +12135,7 @@ msgid "Septidi"
 msgstr "Septidi"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6872
+#: app/Stats.php:6871
 msgid "Serbia"
 msgstr "Sérvia"
 
@@ -12159,12 +12159,12 @@ msgid "Server information"
 msgstr "Informação do servidor"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:343 setup.php:277
+#: admin_site_config.php:350 setup.php:280
 msgid "Server name"
 msgstr "Nome do servidor"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:284
+#: admin_site_config.php:291
 msgid "Session timeout"
 msgstr "Tempo máximo de sessão"
 
@@ -12217,7 +12217,7 @@ msgstr "Definir a condição para \"aprovado\"."
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr "Definindo isto para <b>Sim</b> ira colocar links nas pessoas, fontes e famílias para deixar os usuários abrir uma outra janela contendo os dados direto do arquivo GEDCOM."
 
-#: setup.php:90
+#: setup.php:93
 msgid "Setup wizard for webtrees"
 msgstr "Configurar passo a passo o webtrees"
 
@@ -12227,7 +12227,7 @@ msgid "Sextidi"
 msgstr "Sextidi"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6891
+#: app/Stats.php:6890
 msgid "Seychelles"
 msgstr "Seicheles"
 
@@ -12417,7 +12417,7 @@ msgid "Show a download link in the media viewer"
 msgstr "Mostrar link para download no visualizador de mídia"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:499
+#: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr "Mostrar os termos de uso na página de \"Solicitar nova conta de usuário\""
 
@@ -12542,7 +12542,7 @@ msgid "Show individuals who died within the last 100 years."
 msgstr "Exibir pessoas que morreram nos últimos 100 anos."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:271
+#: admin_site_config.php:278
 msgid "Show list of family trees"
 msgstr "Exibir lista de árvores genealógicas"
 
@@ -12712,8 +12712,8 @@ msgid "Show thumbnail images in charts and family groups."
 msgstr "Exibir imagens em miniatura em gráficos e grupos de família."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
-#: app/Functions/FunctionsEdit.php:227
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
+#: app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:271
 #: app/Functions/FunctionsPrintFacts.php:440
 #: app/Functions/FunctionsPrintFacts.php:836
@@ -12723,8 +12723,8 @@ msgstr "Mostrar para gestores"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:205
-#: app/Functions/FunctionsEdit.php:226
+#: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
+#: app/Functions/FunctionsEdit.php:227
 #: app/Functions/FunctionsPrintFacts.php:268
 #: app/Functions/FunctionsPrintFacts.php:437
 #: app/Functions/FunctionsPrintFacts.php:833
@@ -12734,8 +12734,8 @@ msgstr "Mostrar para membros"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
-#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:204
-#: app/Functions/FunctionsEdit.php:225
+#: admin_trees_config.php:492 app/Functions/FunctionsEdit.php:205
+#: app/Functions/FunctionsEdit.php:226
 #: app/Functions/FunctionsPrintFacts.php:265
 #: app/Functions/FunctionsPrintFacts.php:434
 #: app/Functions/FunctionsPrintFacts.php:830
@@ -12780,7 +12780,7 @@ msgid "Sidebars"
 msgstr "Barras laterais"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6878
+#: app/Stats.php:6877
 msgid "Sierra Leone"
 msgstr "Serra-Leoa"
 
@@ -12795,12 +12795,12 @@ msgid "Sign out"
 msgstr "Desconectar"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:446
+#: admin_site_config.php:453
 msgid "Sign-in URL"
 msgstr "URL da Página de Conexão"
 
 #. I18N: Menu entry
-#: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
+#: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
 msgstr "Conectar e registrar"
 
@@ -12809,7 +12809,7 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "Datas simples são assumidas como sendo do calendário gregoriano. Para especificar uma data em outro calendário, adicione uma palavra-chave antes da data."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6873
+#: app/Stats.php:6872
 msgid "Singapore"
 msgstr "Cingapura"
 
@@ -12819,8 +12819,8 @@ msgid "Sister"
 msgstr "Irmã"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:562 admin_site_config.php:578
-#: admin_site_config.php:603
+#: admin_site_config.php:569 admin_site_config.php:585
+#: admin_site_config.php:610
 msgid "Site identification code"
 msgstr "Código de identificação do site"
 
@@ -12830,12 +12830,12 @@ msgid "Site members can send each other messages. You can choose to how these me
 msgstr "Membros do site podem enviar mensagens entre eles. Você pode escolher como estas mensagens são enviadas para você, ou escolher não recebê-las."
 
 #. I18N: A configuration setting
-#: admin_site_config.php:520 admin_site_config.php:541
+#: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
 msgstr "Código de verificação do site"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
-#: admin_site_config.php:531 admin_site_config.php:552
+#: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr "Códigos de verificação do site não funcionam quando o webtrees está instalado em um subdiretório."
 
@@ -12903,16 +12903,16 @@ msgid "Slide show"
 msgstr "Apresentação de slides"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6886
+#: app/Stats.php:6885
 msgid "Slovakia"
 msgstr "Eslováquia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6887
+#: app/Stats.php:6886
 msgid "Slovenia"
 msgstr "Eslovênia"
 
-#: setup.php:173
+#: setup.php:176
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Pequenos sistemas (500 pessoas): 16-32MB, 10-20 segundos"
 
@@ -12927,12 +12927,12 @@ msgid "Social security number"
 msgstr "Número do Seguro Social"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6877
+#: app/Stats.php:6876
 msgid "Solomon Islands"
 msgstr "Ilhas Salomão"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6881
+#: app/Stats.php:6880
 msgid "Somalia"
 msgstr "Somália"
 
@@ -13060,7 +13060,7 @@ msgid "Sources to the events"
 msgstr "Fontes para eventos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6925
+#: app/Stats.php:6924
 msgid "South Africa"
 msgstr "África do Sul"
 
@@ -13069,17 +13069,17 @@ msgid "South America"
 msgstr "América do Sul"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6874
+#: app/Stats.php:6873
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Ilhas Geórgia do Sul e Sandwich do Sul"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6883
+#: app/Stats.php:6882
 msgid "South Sudan"
 msgstr "Sudão do Sul"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6743
+#: app/Stats.php:6742
 msgid "Spain"
 msgstr "Espanha"
 
@@ -13122,7 +13122,7 @@ msgid "Spouses and children"
 msgstr "Cônjuges e filhos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6805
+#: app/Stats.php:6804
 msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
@@ -13189,7 +13189,7 @@ msgstr "Gráfico de estatísticas"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:321 admin_site_change.php:388
-#: app/Functions/FunctionsPrint.php:482 app/GedcomTag.php:804
+#: app/Functions/FunctionsPrint.php:483 app/GedcomTag.php:804
 msgid "Status"
 msgstr "Situação"
 
@@ -13266,7 +13266,7 @@ msgid "Submitter"
 msgstr "Remetente"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6869
+#: app/Stats.php:6868
 msgid "Sudan"
 msgstr "Sudão"
 
@@ -13275,7 +13275,7 @@ msgid "Suffixes"
 msgstr "Sufixos"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:658
+#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "Dom"
 
@@ -13290,7 +13290,7 @@ msgid "Support and documentation can be found at %s."
 msgstr "Suporte e documentação podem ser encontrados em %s."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6885
+#: app/Stats.php:6884
 msgid "Suriname"
 msgstr "Suriname"
 
@@ -13336,7 +13336,7 @@ msgid "Suva, Fiji"
 msgstr "Suva, Fiji"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6876
+#: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
 msgstr "Ilhas Svalbard e Jan Mayen"
 
@@ -13346,17 +13346,17 @@ msgid "Swap individuals"
 msgstr "Trocar pessoas"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6889
+#: app/Stats.php:6888
 msgid "Swaziland"
 msgstr "Suazilândia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6888
+#: app/Stats.php:6887
 msgid "Sweden"
 msgstr "Suécia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6714
+#: app/Stats.php:6713
 msgid "Switzerland"
 msgstr "Suíça"
 
@@ -13370,7 +13370,7 @@ msgid "Synchronize family trees with GEDCOM files"
 msgstr "Sincronizar árvores genealógicas com arquivos GEDCOM"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6892
+#: app/Stats.php:6891
 msgid "Syria"
 msgstr "Síria"
 
@@ -13378,7 +13378,7 @@ msgstr "Síria"
 msgid "Tab"
 msgstr "Aba"
 
-#: setup.php:376
+#: setup.php:379
 msgid "Table prefix"
 msgstr "Prefixo da tabela"
 
@@ -13398,12 +13398,12 @@ msgid "Taipei, Taiwan"
 msgstr "Taipé, Taiwan"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6906
+#: app/Stats.php:6905
 msgid "Taiwan"
 msgstr "Taiwan"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6897
+#: app/Stats.php:6896
 msgid "Tajikistan"
 msgstr "Tadjiquistão"
 
@@ -13437,7 +13437,7 @@ msgid "Tamuz"
 msgstr "Tamuz"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6907
+#: app/Stats.php:6906
 msgid "Tanzania"
 msgstr "Tanzânia"
 
@@ -13499,7 +13499,7 @@ msgid "Text"
 msgstr "Texto"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6896
+#: app/Stats.php:6895
 msgid "Thailand"
 msgstr "Tailândia"
 
@@ -13686,7 +13686,7 @@ msgstr "A pasta %s foi criada."
 msgid "The folder %s has been deleted."
 msgstr "A pasta %s foi excluída."
 
-#: admin_site_config.php:188
+#: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr "A pasta pode ser especificada no caminho completo (/home/usuario/dados_webtrees/) ou relativo à pasta de instalação (ex. ../../dados_webtrees)."
 
@@ -13700,7 +13700,7 @@ msgstr "Os fatos e eventos seguintes foram encontrados em ambos registros."
 msgid "The following facts and events were only found in the record of %s."
 msgstr "Os fatos e eventos seguintes foram encontrados somente no registro de %s."
 
-#: setup.php:171
+#: setup.php:174
 msgid "The following list shows typical requirements."
 msgstr "A seguinte lista apresenta os requisitos típicos."
 
@@ -13766,7 +13766,7 @@ msgstr "O arquivo de mídia não foi encontrado nesta árvore genealógica."
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr "O arquivo de mídia que você está carregando pode ser, e provavelmente deve ser, um nome diferente no servidor do que está em seu computador. Isto é assim porque muitas vezes o nome de arquivo local tem significado para você, mas é muito menos significativa para os outros que visitam este site. Considere também a possibilidade de que você e mais alguém quer tentar carregar arquivos diferentes chamados \"vovo.jpg\".<br><br>Neste campo, você especifica o novo nome do arquivo que você está carregando. O nome que você entrar aqui também vai ser usado para nomear a miniatura, que pode ser carregada separadamente ou gerada automaticamente. Você não precisa digitar a extensão do arquivo (jpg, gif, pdf, doc, etc)<br><br>Deixe este campo em branco para manter o nome original do arquivo que você enviou de seu computador."
 
-#: setup.php:169
+#: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr "Os requisitos de memória e tempo de processamento dependem do número de pessoas em sua árvore genealógica."
 
@@ -13814,7 +13814,7 @@ msgstr "Os fatos mais comuns de fontes são exibidos separadamente, para que pos
 msgid "The new files are currently located in the folder %s."
 msgstr "Os novos arquivos estão atualmente localizados na pasta %s."
 
-#: admin_site_config.php:489
+#: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr "O novo usuário será perguntado para confirmar seu endereço de e-mail antes que sua conta seja criada."
 
@@ -13822,16 +13822,16 @@ msgstr "O novo usuário será perguntado para confirmar seu endereço de e-mail 
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
 msgstr "O número de ocorrências que um nome específico será exibido no mapa. Se você deixar este campo vazio, o mais frequente sobrenome será usado."
 
-#: setup.php:414
+#: setup.php:417
 msgid "The password needs to be at least six characters long."
 msgstr "A senha precisa ter no mínimo seis caracteres."
 
 #. I18N: Help text for the "Password" site configuration setting
-#: admin_site_config.php:400
+#: admin_site_config.php:407
 msgid "The password required for authentication with the SMTP server."
 msgstr "A senha requerida para autenticação no servidor SMTP."
 
-#: admin_users.php:75 edituser.php:134 setup.php:416
+#: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
 msgstr "As senhas não são iguais."
 
@@ -13863,7 +13863,7 @@ msgstr "As preferências para o módulo “%s” foram excluídas."
 msgid "The preferences for the module “%s” have been updated."
 msgstr "As preferências para o módulo “%s” foram atualizadas."
 
-#: setup.php:378
+#: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 msgstr "O prefixo é opcional, mas recomendado. Ao colocar um prefixo único nas tabelas você pode deixar diferentes aplicações compartilhar o mesmo banco de dados. \"wt_\" é sugerido, mas pode ser ser qualquer um que você queira."
 
@@ -13887,7 +13887,7 @@ msgstr "Os registros “%1$s” e “%2$s” foram mesclados."
 msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "A expressão regular parece ter um erro. Ela não pode ser usada."
 
-#: setup.php:151
+#: setup.php:154
 msgid "The server configuration is OK."
 msgstr "A configuração do servidor está correta."
 
@@ -13926,11 +13926,11 @@ msgid "The thumbnail file %s does not exist."
 msgstr "O arquivo de miniatura %s não existe."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:289
+#: admin_site_config.php:296
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
 msgstr "O tempo em segundos que uma sessão webtrees permanece ativa antes de exigir um login. O padrão é 7200, que é de 2 horas."
 
-#: admin_site_config.php:235 admin_users.php:427 edituser.php:253
+#: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr "O fuso horário é necessário para os cálculos de data, tal como saber a data de hoje."
 
@@ -13965,7 +13965,7 @@ msgid "The username or password is incorrect."
 msgstr "O usuário ou a senha estão incorretos."
 
 #. I18N: Help text for the "Username" site configuration setting
-#: admin_site_config.php:387
+#: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
 msgstr "O usuário requerido para autenticação no servidor SMTP."
 
@@ -14006,7 +14006,7 @@ msgstr "As preferências do website foram atualizadas."
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr "O website www.geonames.org disponibiliza uma grande base de dados de nomes de locais. Ele pode ser pesquisado quando inserindo novos locais. Para usar esta funcionalidade, você deve registrar uma consta em www.geonames.org e disponibilizar o nome de usuário."
 
-#: setup.php:506
+#: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "Os desenvolvedores do webtrees têm interesse em saber mais sobre este erro. Se você contactá-los, eles o ajudarão a resolver o problema."
 
@@ -14033,7 +14033,7 @@ msgstr "Caixa de seleção para trocas de temas"
 msgid "Themes"
 msgstr "Temas"
 
-#: admin_site_config.php:251
+#: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Temas podem ser selecionados em três níveis: usuário, árvore genealógica, e website. Definições de usuário têm prioridade sobre definições de árvore genealógica, que por sua vez têm prioridade sobre definições do website. Selecionando \"tema padrão\" em um nível usará o tema no próximo nível."
 
@@ -14134,16 +14134,16 @@ msgstr "Esta conta não foi verificada. Por favor, verifique a mensagem de confi
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Este bloco mostra para editores uma lista de registros com as alterações pendentes que precisam ser aprovados por um moderador. Também gera e-mails diários aos moderadores, sempre que existam alterações pendentes."
 
-#: setup.php:348 setup.php:359
+#: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
 msgstr "Este banco de dados e prefixo de tabela aparecem para ser usados por outra aplicação. Se você tem um sistema PhpGedView, você pode criar um novo sistema webtrees. Você pode importar mais tarde seus dados do PhpGedView e configurações."
 
-#: setup.php:255
+#: setup.php:258
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
 msgstr "Este banco de dados está com a versão %s do MySQL. Você não pode instalar o webtrees aqui."
 
-#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:442
+#: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Este endereço de email será usado para enviar seus lembretes de senha, notificações do site e mensagens de outros membros da família que estiverem registrados no site."
 
@@ -14207,7 +14207,7 @@ msgid "This file is linked to another family tree on this server. It cannot be d
 msgstr "Esta árvore contém ligações para outra árvore genealógica neste mesmo servidor. Antes de excluir, mover ou renomear a árvore, é necessário excluir estas ligações."
 
 #. I18N: Help text for the "Data folder" site configuration setting
-#: admin_site_config.php:179
+#: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr "Esta pasta será usada pelo webtrees para armazenar arquivos de mídia, arquivos GEDCOM, arquivos temporários, etc. Estes arquivos podem conter dados privados, e deveriam não estar disponíveis na Internet."
 
@@ -14288,11 +14288,11 @@ msgstr "Este é um link para seu próprio registro na árvore de família. Se es
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
 msgstr "Este é um sumário para as ordenações para a pessoa <abbr title=\"A Igreja de Jesus Cristo dos Santos dos Últimos Dias\">SUD</abbr>. \"B\" indica um batismo SUD. \"E\" indica uma doação SUD. \"S\" indica um selamento conjugal SUD. \"P\" indica um selamento filho-para-pai SUD."
 
-#: setup.php:287 setup.php:291
+#: setup.php:290 setup.php:294
 msgid "This is case sensitive."
 msgstr "Diferencia maiúsculo e minúsculo."
 
-#: setup.php:374
+#: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
 msgstr "Este sistema diferencia maiúsculo e minúsculo. Se um banco de dados com este nome já não existir o webtress tentará criar um para você. O sucesso dependerá das permissões do seu webserver, mas você será informado se falhar."
 
@@ -14346,7 +14346,7 @@ msgid "This is the list of GEDCOM facts that your users can only add once to sou
 msgstr "Esta é a lista de fatos e eventos de fontes, que os usuário podem adicionar uma <u>única</u> vez. Por exemplo, se TITL esta na lista, usuários poderão adicionar apenas uma vez TITL a uma fonte. Fatos e eventos desta lista não podem estar na lista <i>Fatos/Eventos de Fonte</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:348
+#: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Este é o nome do servidor de SMTP. 'localhost' significa que o serviço de correio está funcionando no mesmo computador como seu servidor web."
 
@@ -14355,7 +14355,7 @@ msgstr "Este é o nome do servidor de SMTP. 'localhost' significa que o serviço
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
 msgstr "Esta é a largura (em pixels) que o programa usará quando automaticamente gerar miniaturas. O valor padrão é 100."
 
-#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:427
+#: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Este é seu nome real, como você gostaria de ser apresentado."
 
@@ -14420,12 +14420,12 @@ msgstr "Esta mensagem foi enviada quando navegava pelo seguinte endereço: "
 msgid "This message will be sent to %s"
 msgstr "Esta mensagem será enviada para %s"
 
-#: setup.php:435
+#: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr "Isto deve ter no mínimo seis caracteres. Ele diferencia maiúsculo e minúsculo."
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:333
+#: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr "Este nome é usado no campo \"De\", ao enviar mensagens automáticas deste servidor."
 
@@ -14509,7 +14509,7 @@ msgid_plural "This page has been viewed %s times."
 msgstr[0] "Esta página foi visualizada %s time."
 msgstr[1] "Esta página foi visualizada %s times."
 
-#: app/Module/GoogleMapsModule.php:2418
+#: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
 msgstr "Este local não tem coordenadas"
 
@@ -14590,7 +14590,7 @@ msgstr "Este papel tem todas as permissões do papel de visitante, além de qual
 msgid "This server does not support secure downloads using HTTPS."
 msgstr "Este servidor não suporta downloads seguros usando HTTPS."
 
-#: setup.php:180
+#: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr "O limite de memória do servidor é de %sMB e o limite de tempo de processamento é de %s segundos."
@@ -14637,7 +14637,7 @@ msgstr "Este tipo de link não é permitido aqui."
 msgid "This user account does not have access to any tree."
 msgstr "Esta conta de usuário não tem acesso a nenhuma árvore."
 
-#: setup.php:211
+#: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
 msgstr "Isto normalmente significa que você precisa alterar as permissões do diretório para 777."
 
@@ -14668,7 +14668,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "Isto atualizará a parte ou partes de mais alto nível do nome de local. Por exemplo, “Brasil” irá corresponder com “Paraíba, Brasil”, mas não com “Acre, Estados Unidos do Brasil”."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "Qui"
 
@@ -14699,7 +14699,7 @@ msgid "Time"
 msgstr "Hora"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:230 admin_users.php:422 edituser.php:247
+#: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
 msgstr "Fuso horário"
 
@@ -14714,7 +14714,7 @@ msgid "Timestamp"
 msgstr "Data e hora"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6900
+#: app/Stats.php:6899
 msgid "Timor-Leste"
 msgstr "Timor Leste"
 
@@ -14809,7 +14809,7 @@ msgid "To prevent visitors from accessing the website while you are in the middl
 msgstr "Para prevenir visitante de acessar o site enquanto estão no meio da cópia de arquivos, você pode temporariamente criar o arquivo %s no servidor. Se ele contém uma mensagem, ela será exibida para os visitantes."
 
 #. I18N: “Apache” is a software program.
-#: admin_site_config.php:182
+#: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "Para proteger estes dados privados, o webtrees usa um arquivo de configuração do Apache (.htaccess) que bloqueia todos os acessos a esta pasta. Se seu servidor web não suporta arquivos .htaccess e você não pode restringir o acesso a esta pasta, então você pode selecionar outra pasta, longe dos seus documentos web."
 
@@ -14818,7 +14818,7 @@ msgid "To reduce the size of the download, you can compress the data into a .ZIP
 msgstr "Para reduzir o tamanho do download, você pode comprimir os dados em um arquivo .ZIP. Você precisará descomprimir o arquivo .ZIP antes de poder usá-lo."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
-#: admin_site_config.php:476
+#: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr "Para definir este texto para outros idiomas, você deve alternar para este idioma, e visitar esta página novamente."
 
@@ -14830,17 +14830,17 @@ msgstr "Para informar motores de busca que o mapa do site está disponível, voc
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr "Para informar motores de busca que o mapa do site está disponível, você deveria adicionar a seguinte linha em seu arquivo robots.txt."
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "Para usar uma conta de email do Google, use as seguintes configurações: servidor=smtp.gmail.com, porta=587, segurança=tls, nome de usuário=xxxxx@gmail.com, senha=[sua senha do Gmail]"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6895
+#: app/Stats.php:6894
 msgid "Togo"
 msgstr "Togo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6898
+#: app/Stats.php:6897
 msgid "Tokelau"
 msgstr "Tokelau"
 
@@ -14855,7 +14855,7 @@ msgid "Tombstone"
 msgstr "Lápide"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6901
+#: app/Stats.php:6900
 msgid "Tonga"
 msgstr "Tonga"
 
@@ -14936,7 +14936,7 @@ msgstr "Total de divórcios"
 msgid "Total events"
 msgstr "Total de eventos"
 
-#: app/Stats.php:5208 modules_v3/fact_sources/report.xml:248
+#: app/Stats.php:5207 modules_v3/fact_sources/report.xml:248
 #: modules_v3/fact_sources/report.xml:252
 #: modules_v3/fact_sources/report.xml:350
 #: modules_v3/fact_sources/report.xml:354
@@ -15020,12 +15020,12 @@ msgstr "Total de Usuários"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
-#: admin_site_config.php:143 app/Theme/AdministrationTheme.php:99
+#: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
 msgstr "Rastreamento e analíticos"
 
-#: admin_site_config.php:568 admin_site_config.php:593
-#: admin_site_config.php:618
+#: admin_site_config.php:575 admin_site_config.php:600
+#: admin_site_config.php:625
 msgid "Tracking and analytics are not added to the control panel."
 msgstr "Rastreamento e analíticos não são adicionados ao painel de controle."
 
@@ -15040,7 +15040,7 @@ msgid "Tridi"
 msgstr "Tridi"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6902
+#: app/Stats.php:6901
 msgid "Trinidad and Tobago"
 msgstr "Trinidad e Tobago"
 
@@ -15050,7 +15050,7 @@ msgid "Trujillo, Peru"
 msgstr "Trujillo, Perú"
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "Ter"
 
@@ -15059,27 +15059,27 @@ msgid "Tuesday"
 msgstr "Terça-feira"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6903
+#: app/Stats.php:6902
 msgid "Tunisia"
 msgstr "Tunísia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6904
+#: app/Stats.php:6903
 msgid "Turkey"
 msgstr "Turquia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6899
+#: app/Stats.php:6898
 msgid "Turkmenistan"
 msgstr "Turcomenistão"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6893
+#: app/Stats.php:6892
 msgid "Turks and Caicos Islands"
 msgstr "Ilhas Turcas e Caicos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6905
+#: app/Stats.php:6904
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
@@ -15117,7 +15117,7 @@ msgstr "Tipo de marcadores de local na Hierarquia de Local"
 msgid "Type the password again."
 msgstr "Digite a senha novamente."
 
-#: edituser.php:232 login.php:477 setup.php:438
+#: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Digite sua senha novamente, para ter certeza que digitou corretamente."
 
@@ -15129,19 +15129,19 @@ msgstr "Tipos de erros"
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_site_config.php:588 admin_trees_config.php:609
+#: admin_site_config.php:595 admin_trees_config.php:609
 #: admin_trees_manage.php:661 app/GedcomTag.php:852 app/GedcomTag.php:868
 #: app/GedcomTag.php:1755
 msgid "URL"
 msgstr "URL"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6910
+#: app/Stats.php:6909
 msgid "US Minor Outlying Islands"
 msgstr "Ilhas Menores Distantes dos Estados Unidos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6918
+#: app/Stats.php:6917
 msgid "US Virgin Islands"
 msgstr "Ilhas Virgens Americanas"
 
@@ -15151,16 +15151,16 @@ msgid "UTC"
 msgstr "TUC"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6908
+#: app/Stats.php:6907
 msgid "Uganda"
 msgstr "Uganda"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6909
+#: app/Stats.php:6908
 msgid "Ukraine"
 msgstr "Ucrânia"
 
-#: setup.php:264 setup.php:336
+#: setup.php:267 setup.php:339
 msgid "Unable to connect using this username and password. Your server gave the following error."
 msgstr "Incapaz de conectar usando estas configurações. Seu servidor informou o seguinte erro."
 
@@ -15200,33 +15200,33 @@ msgid "Unique source facts"
 msgstr "Fatos/Eventos Singulares de Fonte"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6679
+#: app/Stats.php:6678
 msgid "United Arab Emirates"
 msgstr "Emirados Árabes Unidos"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6754
+#: app/Stats.php:6753
 msgid "United Kingdom"
 msgstr "Reino Unido"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6912 statistics.php:685
+#: app/Stats.php:6911 statistics.php:685
 msgid "United States"
 msgstr "Estados Unidos"
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6671
+#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: app/Stats.php:5191
+#: app/Stats.php:5190
 msgctxt "unknown century"
 msgid "Unknown"
 msgstr "Desconhecido"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
-#: app/Functions/FunctionsEdit.php:678 app/Stats.php:5578 calendar.php:639
+#: app/Functions/FunctionsEdit.php:679 app/Stats.php:5577 calendar.php:639
 #: modules_v3/family_group_report/report.xml:844
 #: modules_v3/individual_ext_report/report.xml:391
 #: modules_v3/individual_ext_report/report.xml:598
@@ -15277,7 +15277,7 @@ msgstr "Atualizar tudo"
 msgid "Update all the place names in a family tree"
 msgstr "Atualizar todos os nomes de local na árvore genealógica"
 
-#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2298
+#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
 msgstr "Atualizar nomes de local"
 
@@ -15311,7 +15311,7 @@ msgid "Upload one or more media files from your local computer. Media files can 
 msgstr "Enviar um ou mais arquivos de mídia de seu computador local. Os arquivos de mídia podem ser imagens, vídeo, áudio, ou outros formatos."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6911
+#: app/Stats.php:6910
 msgid "Uruguay"
 msgstr "Uruguai"
 
@@ -15319,11 +15319,11 @@ msgstr "Uruguai"
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Usar Google Maps™ para a hierarquia de locais"
 
-#: admin_site_config.php:116
+#: admin_site_config.php:117
 msgid "Use PHP mail to send messages"
 msgstr "Usar o correio PHP para enviar mensagens"
 
-#: admin_site_config.php:117
+#: admin_site_config.php:119
 msgid "Use SMTP to send messages"
 msgstr "Usar SMTP para enviar mensagens"
 
@@ -15355,9 +15355,14 @@ msgid "Use full source citations"
 msgstr "Usar citações completas de fonte"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:369
+#: admin_site_config.php:376
 msgid "Use password"
 msgstr "Usar senha"
+
+#. I18N: "sendmail" is the name of some mail software
+#: admin_site_config.php:118
+msgid "Use sendmail to send messages"
+msgstr ""
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15377,7 +15382,7 @@ msgstr "Usar base de dados GeoNames para autocompletar locais"
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Use este campo para informar ao Administrador as razões para seu acesso à árvore e qual seu relacionamento com as pessoas deste site. Pode ser utilizado também para qualquer outro comentário pessoal ao Administrador."
 
-#: app/Functions/FunctionsEdit.php:664
+#: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
 msgstr "Usar esta imagem para gráficos e na página da pessoa."
 
@@ -15418,10 +15423,10 @@ msgid "User-agent string"
 msgstr "User-agent string"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:382 admin_users.php:325 admin_users.php:845
+#: admin_site_config.php:389 admin_users.php:325 admin_users.php:845
 #: app/Module/LoginBlockModule.php:74 app/Module/ResearchTaskModule.php:110
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
-#: login.php:440 login.php:526 setup.php:429
+#: login.php:440 login.php:526 setup.php:432
 msgid "Username"
 msgstr "Usuário"
 
@@ -15451,7 +15456,7 @@ msgid "Using the pull down menu it is possible to select a country, of which a f
 msgstr "Usando o menu suspenso, é possível selecionar um país, de que uma bandeira pode ser selecionado. Se não são mostradas bandeiras, então não há bandeiras definidas para este país."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6913
+#: app/Stats.php:6912
 msgid "Uzbekistan"
 msgstr "Usbequistão"
 
@@ -15461,7 +15466,7 @@ msgid "Vancouver, British Columbia, Canada"
 msgstr "Vancouver, Columbia Britânica, Canadá"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6920
+#: app/Stats.php:6919
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
@@ -15471,7 +15476,7 @@ msgid "Various statistics charts."
 msgstr "Vários gráficos estatísticos."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6914
+#: app/Stats.php:6913
 msgid "Vatican City"
 msgstr "Vaticano"
 
@@ -15500,7 +15505,7 @@ msgid "Vendemiaire"
 msgstr "Vindimiário"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6916
+#: app/Stats.php:6915
 msgid "Venezuela"
 msgstr "Venezuela"
 
@@ -15557,7 +15562,7 @@ msgid "Video"
 msgstr "Vídeo"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6919
+#: app/Stats.php:6918
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -15639,12 +15644,12 @@ msgid "Vital records"
 msgstr "Registros vitais"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6922
+#: app/Stats.php:6921
 msgid "Wales"
 msgstr "Gales"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6921
+#: app/Stats.php:6920
 msgid "Wallis and Futuna"
 msgstr "Ilhas Wallis e Futuna"
 
@@ -15692,7 +15697,7 @@ msgid "Website"
 msgstr "Website"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:298
+#: admin_site_config.php:305
 msgid "Website URL"
 msgstr "URL da Página Web"
 
@@ -15708,12 +15713,12 @@ msgid "Website logs"
 msgstr "Registros do website"
 
 #. I18N: Menu entry
-#: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
+#: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
 msgstr "Preferências do website"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "Qua"
 
@@ -15733,7 +15738,7 @@ msgid "Welcome %s"
 msgstr "Bem-vindo %s"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:459
+#: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
 msgstr "Texto de boas vindas na página de autenticação"
 
@@ -15742,7 +15747,7 @@ msgid "Welcome to this genealogy website"
 msgstr "Bem-vindo a este site de Genealogia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6742
+#: app/Stats.php:6741
 msgid "Western Sahara"
 msgstr "Sahara Ocidental"
 
@@ -15914,7 +15919,7 @@ msgid "Year:"
 msgstr "Ano:"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6924
+#: app/Stats.php:6923
 msgid "Yemen"
 msgstr "Iémen"
 
@@ -15940,7 +15945,7 @@ msgstr "Você pode solicitar uma conta usando o link abaixo."
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
-#: admin_site_config.php:248 admin_trees_config.php:978 edituser.php:287
+#: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr "Você pode alterar a aparência do webtrees usando \"temas\". Cada tema tem um estilo , organização, esquema de cores diferentes, entre outros."
 
@@ -15979,7 +15984,7 @@ msgstr "Você pode renumerar os registros em uma árvore genealógica, para que 
 msgid "You can renumber this family tree."
 msgstr "Você pode renumerar esta árvore genealógica."
 
-#: admin_site_config.php:202 admin_site_config.php:221
+#: admin_site_config.php:209 admin_site_config.php:228
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr "Você pode solicitar um limite maior ou menor, embora o servidor pode ignorar esta solicitação."
 
@@ -16032,11 +16037,11 @@ msgstr "Você pode inserir uma URL inciando por “http://”."
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "Você pode usar HTML para formatar a resposta e adicionar links para outros websites."
 
-#: admin_site_config.php:434
+#: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
 msgstr "Você também deve permitir \"aplicações menos seguras\" em sua conta do Google."
 
-#: setup.php:212
+#: setup.php:215
 msgid "You must change this before you can continue."
 msgstr "Você precisa alterar isto antes de continuar."
 
@@ -16053,7 +16058,7 @@ msgstr "Você deve informar um nome real."
 msgid "You must enter a username."
 msgstr "Você deve informar um nome de usuário."
 
-#: setup.php:418
+#: setup.php:421
 msgid "You must enter all the administrator account fields."
 msgstr "Você deve colocar todos os campos de conta de administrador."
 
@@ -16093,7 +16098,7 @@ msgstr "Você precisa criar uma árvore genealógica."
 msgid "You need to review the account details."
 msgstr "Você precisa rever os detalhes da conta."
 
-#: setup.php:422
+#: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Você precisa definir uma conta de administrador. Esta conta pode controlar todos os aspectos desta instalação do webtrees. Por favor escolha uma senha forte."
 
@@ -16102,7 +16107,7 @@ msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "Você precisa se autenticar novamente, usando seu usuário e senha do PhpGedView."
 
 #. I18N: Help text for the "Login URL" site configuration setting
-#: admin_site_config.php:451
+#: admin_site_config.php:458
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr "Você somente precisa inserir um URL de Login se você quiser redirecionar para um site ou local diferente onde seus usuários realizam o login. Isto é bastante útil se você precisa alternar entre http para https quando os usuários logarem. Incluir o URL completo para <i>login.php</i>. Por exemplo, https://www.seuservidor.com/webtrees/login.php ."
 
@@ -16140,7 +16145,7 @@ msgstr "Você não deve aprovar uma conta se você não sabe que o endereço de 
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Você será informado por e-mail quando este usuário em potencial confirmar o pedido. Você pode, então, concluir o processo, ativando o nome de usuário. O novo usuário não será capaz de entrar até que você ative a conta."
 
-#: setup.php:431
+#: setup.php:434
 msgid "You will use this to sign in to webtrees."
 msgstr "Você usará este para se conectar ao webtrees."
 
@@ -16165,7 +16170,7 @@ msgstr "Mãe mais jovem"
 msgid "Your clippings cart is empty."
 msgstr "Seu carrinho de recortes está vazio."
 
-#: message.php:116 message.php:269 setup.php:425
+#: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
 msgstr "Seu nome"
 
@@ -16175,7 +16180,7 @@ msgstr "Seu nome"
 msgid "Your registration at %s"
 msgstr "Seu registro em %s"
 
-#: setup.php:274
+#: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
 msgstr "O administrador do seu servidor pode prover detalhes de conexão."
 
@@ -16194,12 +16199,12 @@ msgid "Your web server is using PHP version %s, which is no longer receiving sec
 msgstr "Seu servidor web está usando a versão %s do PHP, que não está mais recebendo atualizações de segurança. Você deveria atualizar para uma versão posterior o mais breve possível."
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6926
+#: app/Stats.php:6925
 msgid "Zambia"
 msgstr "Zâmbia"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6927
+#: app/Stats.php:6926
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
@@ -16208,7 +16213,7 @@ msgstr "Zimbabwe"
 msgid "Zip file(s)"
 msgstr "Arquivo(s) Compactado(s)"
 
-#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2345
+#: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2344
 #: fanchart.php:109
 msgid "Zoom"
 msgstr "Zoom"
@@ -16263,8 +16268,8 @@ msgid "accepted"
 msgstr "aceito"
 
 #. I18N: A button label.
-#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:568
-#: app/Functions/FunctionsPrint.php:627 app/Module/ClippingsCartModule.php:334
+#: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
@@ -16302,7 +16307,7 @@ msgstr "depois"
 msgid "after %s"
 msgstr "depois de %s"
 
-#: app/Functions/FunctionsPrint.php:374
+#: app/Functions/FunctionsPrint.php:375
 msgid "after death"
 msgstr "depois do falecimento"
 
@@ -16334,12 +16339,12 @@ msgid "also known as"
 msgstr "também conhecido como"
 
 #. I18N: option in list box “always use this image”
-#: app/Functions/FunctionsEdit.php:656
+#: app/Functions/FunctionsEdit.php:657
 msgid "always"
 msgstr "sempre"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
-#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5912
+#: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
 #: modules_v3/ahnentafel_report/report.xml:394
 #: modules_v3/descendancy_report/report.xml:131
 #: modules_v3/descendancy_report/report.xml:230
@@ -16543,8 +16548,8 @@ msgstr "cancelar"
 msgid "census added"
 msgstr "censo adicionado"
 
-#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4941
-#: app/Stats.php:4943 app/Stats.php:4945 app/Stats.php:5191
+#: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4940
+#: app/Stats.php:4942 app/Stats.php:4944 app/Stats.php:5190
 msgid "century"
 msgstr "século"
 
@@ -16613,7 +16618,7 @@ msgstr "lista compacta"
 #: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
-#: setup.php:187 setup.php:213 setup.php:295 setup.php:381 setup.php:446
+#: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
 msgstr "continuar"
 
@@ -16623,7 +16628,7 @@ msgid "create"
 msgstr "criar"
 
 #. I18N: a program feature
-#: setup.php:132
+#: setup.php:135
 msgid "creating thumbnails of images"
 msgstr "Criando miniatura de imagens"
 
@@ -16885,7 +16890,7 @@ msgid "fifth cousin"
 msgstr "primo de quinto grau"
 
 #. I18N: a program feature
-#: setup.php:143
+#: setup.php:146
 msgid "file upload capability"
 msgstr "capacidade de upload de arquivos"
 
@@ -18718,7 +18723,7 @@ msgid "herself"
 msgstr "ela mesma"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
-#: app/Functions/FunctionsEdit.php:761
+#: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
 msgstr "hh:mm ou hh:mm:ss"
 
@@ -19013,7 +19018,7 @@ msgid "nephew/niece"
 msgstr "sobrinho/sobrinha"
 
 #. I18N: option in list box “never use this image”
-#: app/Functions/FunctionsEdit.php:662
+#: app/Functions/FunctionsEdit.php:663
 msgid "never"
 msgstr "nunca"
 
@@ -19068,12 +19073,12 @@ msgid "ninth cousin"
 msgstr "primo de nono grau"
 
 #: admin_trees_config.php:74 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133
+#: app/Functions/FunctionsEdit.php:134
 #: app/Functions/FunctionsPrintFacts.php:1214
 #: app/Functions/FunctionsPrintLists.php:877
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6105 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6104 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:255
 #: modules_v3/family_group_report/report.xml:426
 #: modules_v3/family_group_report/report.xml:609
@@ -19128,7 +19133,7 @@ msgstr "Valores"
 msgid "of"
 msgstr "de"
 
-#: app/Functions/FunctionsPrint.php:372
+#: app/Functions/FunctionsPrint.php:373
 msgid "on the date of death"
 msgstr "na data do falecimento"
 
@@ -19268,7 +19273,7 @@ msgid "replace"
 msgstr "substituir"
 
 #. I18N: a program feature
-#: setup.php:133 setup.php:134
+#: setup.php:136 setup.php:137
 msgid "reporting"
 msgstr "relatando"
 
@@ -19287,11 +19292,11 @@ msgstr "robô"
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
 #: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
+#: admin_site_access.php:307 admin_site_config.php:658 admin_site_merge.php:344
 #: admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:470 app/Module/GoogleMapsModule.php:684
-#: app/Module/GoogleMapsModule.php:2347 app/Module/GoogleMapsModule.php:3406
+#: app/Module/GoogleMapsModule.php:2346 app/Module/GoogleMapsModule.php:3406
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
@@ -19986,8 +19991,8 @@ msgstr "tio"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:188
-#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2411
-#: app/Module/GoogleMapsModule.php:2452 app/Module/GoogleMapsModule.php:2898
+#: app/Module/GoogleMapsModule.php:1503 app/Module/GoogleMapsModule.php:2410
+#: app/Module/GoogleMapsModule.php:2451 app/Module/GoogleMapsModule.php:2898
 #: app/Module/GoogleMapsModule.php:2935 app/Module/GoogleMapsModule.php:2940
 #: app/Module/GoogleMapsModule.php:3931 app/Module/GoogleMapsModule.php:3938
 #: app/Module/GoogleMapsModule.php:3979 app/Place.php:141
@@ -20058,13 +20063,13 @@ msgstr "webtrees não pode conectar ao banco de dados do PhpGedView: %s."
 msgid "webtrees message"
 msgstr "Mensagem do webtrees"
 
-#: setup.php:273
+#: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
 msgstr "webtrees precisa de um banco de dados MySQL, versão %s ou maior."
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:320
+#: admin_site_config.php:327
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 msgstr "O webtrees precisa enviar emails, tais como lembretes de senha e notificações do site. Para fazer isto, ele precisa usar o recurso de correio escrito em PHP deste servidor (que nem sempre está disponível) ou um serviço externo de SMTP (retransmissão de email), para o qual você precisará informar os detalhes de conexão."
 
@@ -20073,7 +20078,7 @@ msgstr "O webtrees precisa enviar emails, tais como lembretes de senha e notific
 msgid "webtrees reply address"
 msgstr "Endereço de resposta webtrees"
 
-#: app/Functions/FunctionsEdit.php:248
+#: app/Functions/FunctionsEdit.php:249
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees envia e-mails sem armazenamento"
 
@@ -20081,7 +20086,7 @@ msgstr "webtrees envia e-mails sem armazenamento"
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr "webtrees usa codificação UTF-8 para letras acentuadas, caracteres especiais e não latinos. Se você quiser usar este arquivo GEDCOM com seu programa de computador de genealogia que não suporta UTF-8, então você deve criá-lo usando codificação ISO-8859-1."
 
-#: app/Functions/FunctionsPrint.php:210
+#: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
 msgstr "wiki webtrees"
 
@@ -20108,13 +20113,13 @@ msgid "years"
 msgstr "anos"
 
 #: admin_trees_config.php:75 admin_users.php:241 admin_users.php:242
-#: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:619
-#: app/Functions/FunctionsPrint.php:413
+#: app/Functions/FunctionsEdit.php:134 app/Functions/FunctionsEdit.php:620
+#: app/Functions/FunctionsPrint.php:414
 #: app/Functions/FunctionsPrintFacts.php:1211
 #: app/Functions/FunctionsPrintLists.php:879
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:64
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:172
-#: app/Stats.php:6100 modules_v3/change_report/report.xml:8
+#: app/Stats.php:6099 modules_v3/change_report/report.xml:8
 #: modules_v3/family_group_report/report.xml:252
 #: modules_v3/family_group_report/report.xml:423
 #: modules_v3/family_group_report/report.xml:606
@@ -20166,11 +20171,11 @@ msgstr "“%s” foi adicionado aos seus favoritos."
 msgid "“%s” has been deleted."
 msgstr "\"%s\" foi apagado."
 
-#: app/Functions/FunctionsPrint.php:119 app/Note.php:107
+#: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
 #: autocomplete.php:470 famlist.php:97 famlist.php:230 indilist.php:97
 #: indilist.php:230
@@ -20178,7 +20183,7 @@ msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
+#: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:108
