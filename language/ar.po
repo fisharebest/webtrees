@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-12 05:15+0000\n"
+"PO-Revision-Date: 2017-02-12 05:34+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadhh@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
@@ -391,7 +391,7 @@ msgstr[5] "يوجد %s أفراد لديهم أحداث في %s بين %s و %s"
 #: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s معطل على هذا الخادم ولا يمكنك تثبيت webtrees حتى يتم تفعيله. يرجى طلب تفعيله من قبل مدير النظام."
+msgstr "%s معطل على هذا الخادم ولا يمكنك تثبيت webtrees حتى يتم تفعيله. يمكن طلب تفعيله من قبل مدير النظام."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
@@ -3474,7 +3474,7 @@ msgstr "سبب الوفاة"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr "الرجاء الانتظار. قد تستغرق العملية وقت للاتمام."
+msgstr "إنتباه! قد تستغرق العملية وقت طويل يستلزم الصبر."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -6389,7 +6389,7 @@ msgstr "بحث عن مستودع"
 
 #: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
-msgstr "بحث عن ملاحظة"
+msgstr "بحث عن ملاحظة مشتركة"
 
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
@@ -6413,7 +6413,7 @@ msgstr "بحث عن فرد"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr "البحث عن أي علاقة"
+msgstr "بحث عن أي علاقة"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6504,7 +6504,7 @@ msgstr "إسم المجلد في الخادم"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "يرجى النقر على الرابط التالي وإدخال البيانات المطلوبة ليتم تأكيد عنوان البريد الإلكتروني الخاص بك."
+msgstr "أنقر على الرابط التالي لتأكيد عنوان بريدك الإلكتروني."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6536,17 +6536,17 @@ msgstr "مثلاً عند تحديد مدى المسار بـ 2، سيتمكن �
 #: app/Theme/AbstractTheme.php:296
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "للإستفسارات المتعلقة بالأنساب، يرجى التواصل مع%s."
+msgstr "للإستفسارات المتعلقة بالأنساب، يمكن التواصل مع%s."
 
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "للدعم الفني أو الإستفسارات يرجى التواصل مع%s."
+msgstr "للدعم الفني أو الإستفسارات يمكن التواصل مع%s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "للدعم الفني أو الإستفسارات المتعلقة بالأنساب يرجى التواصل مع %s."
+msgstr "للدعم الفني أو الإستفسارات المتعلقة بالأنساب يمكن التواصل مع %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -7762,7 +7762,7 @@ msgstr "إسرائيل"
 
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
-msgstr "يرجى الانتظار. قد يستغرق التحديث عدة دقائق."
+msgstr "قد يستغرق التحديث عدة دقائق، إنتظر قليلاً."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
@@ -14251,7 +14251,7 @@ msgstr "ثيرميدور"
 #: admin_trees_unconnected.php:97
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "هذة المجموعات من الأفراد غير مرتبطين ب %s."
+msgstr "محموعة الأفراد هذه ليس لها علاقة بـ%s."
 
 #: admin.php:583
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14363,7 +14363,7 @@ msgstr "هذا المجلد سيستخدم لحفظ ملفات الوسائط ا
 
 #: app/Filter.php:464
 msgid "This form has expired. Try again."
-msgstr "لقد انتهت صلاحية هذا النموذج. يرجى المحاولة مرة أخرى."
+msgstr "لقد انتهت صلاحية هذا النموذج. يمكن المحاولة مرة أخرى."
 
 #: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
@@ -14678,7 +14678,7 @@ msgstr "لقد تم حذف هذا السجل. سيتم مراجعة عملية �
 #: gedrecord.php:52
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "لقد تم حذف هذا السجل. يرجى منك مراجعة عملية الحذف ومن ثم %1$s أو %2$s."
+msgstr "لقد تم حذف هذا السجل. يلزم مراجعة عملية الحذف ومن ثم %1$s أو %2$s."
 
 #: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
@@ -14688,7 +14688,7 @@ msgstr "لقد تم تحرير هذا السجل. سيتم مراجعة التع
 #: gedrecord.php:62
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "لقد تم تحرير هذا السجل. يرجى منك مراجعة التعديلات ومن ثم %1$s أو %2$s."
+msgstr "لقد تم تحرير هذا السجل. يلزم مراجعة التعديلات ومن ثم %1$s أو %2$s."
 
 #: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14792,7 +14792,7 @@ msgstr "في الغالب عليك تغيير صلاحيات الملف إلى 7
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr "جاري الآن تحديث لنظام هذا الموقع . يرجى المحاولة مرة أخرى بعد بضع دقائق."
+msgstr "جاري الآن تحديث لنظام هذا الموقع . يمكن المحاولة مرة أخرى بعد بضع دقائق."
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -14944,7 +14944,7 @@ msgstr "توجد نماذج معدة مسبقاً للإعانة في إستخد
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
-msgstr "يرجى تثبيت الملفات يدويا لإكمال عملية تحديث النظام ."
+msgstr "يلزم تثبيت الملفات يدويا لإكمال عملية تحديث النظام ."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -16285,7 +16285,7 @@ msgstr "لقد أرسلت الرسالة التالية إلى مستخدم آخ
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "يرجى قبول أو رفض طلبات التعديلات المعلقة قبل التحديث."
+msgstr "يلزم قبول أو رفض طلبات التعديلات المعلقة قبل التحديث."
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16355,12 +16355,12 @@ msgstr "لأن خاصية \"قبول التعديلات تلقائياً\" في 
 #: admin.php:575
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr "خادمك يستخدم النسخة %s من PHP الغير مدعوم. يرجى التحديث."
+msgstr "خادمك يستخدم النسخة %s من PHP الغير مدعوم. يلزم التحديث إلى نسخة لاحقة."
 
 #: admin.php:568
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "خادمك يستخدم النسخة %s من PHP الذي لم يعد يتلقى التحديثات الأمنية. يرجى التحديث."
+msgstr "خادمك يستخدم النسخة %s من PHP الذي لم يعد يتلقى التحديثات الأمنية. يلزم التحديث إلى نسخة لاحقة في أقرب وقت ممكن."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
