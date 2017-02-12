@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-11 04:37+0000\n"
+"PO-Revision-Date: 2017-02-12 05:15+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadhh@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
@@ -7537,7 +7537,7 @@ msgstr "في هذه السنة …"
 
 #: admin_trees_unconnected.php:89
 msgid "Include associates"
-msgstr ""
+msgstr "تضمن المرافقين"
 
 #: app/Module/GoogleMapsModule.php:1353
 msgid "Include fully matched places"
@@ -8466,7 +8466,7 @@ msgstr "الزواج الأطول مدة"
 #. I18N: Two axes of a graph
 #: statistics.php:535 statisticsplot.php:1052
 msgid "Longevity versus time"
-msgstr ""
+msgstr "محوري الرسم البياني"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:792 app/Functions/FunctionsPrint.php:464
@@ -15526,7 +15526,7 @@ msgstr "إستخدم كلمة مرور"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "إستخدم أرسل بريد لإرسال الخطابات"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
