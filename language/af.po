@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2016-12-25 05:02+0000\n"
+"PO-Revision-Date: 2017-02-12 09:21+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -7412,7 +7412,7 @@ msgstr "In hierdie jaar…"
 
 #: admin_trees_unconnected.php:89
 msgid "Include associates"
-msgstr ""
+msgstr "Sluit deelgenote in"
 
 #: app/Module/GoogleMapsModule.php:1353
 msgid "Include fully matched places"
@@ -8341,7 +8341,7 @@ msgstr "Langste huwelik"
 #. I18N: Two axes of a graph
 #: statistics.php:535 statisticsplot.php:1052
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Langslewendheid teenoor tyd"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:792 app/Functions/FunctionsPrint.php:464
@@ -15365,7 +15365,7 @@ msgstr "Gebruik wagwoord"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Gebruik sendmail om boodskappe te stuur"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
