@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-11-10 16:02+0000\n"
-"Last-Translator: Marko Kohtala <marko.kohtala@gmail.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
+"PO-Revision-Date: 2017-02-13 22:38+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -10896,7 +10896,7 @@ msgstr "Huom! Muista kirjoittaa myös tekstisi."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr "Ilmoita sähköpostiosoitteesi, silloin voidaan vastata sinun kysymyksiin. Ilman sitä emme pysty välittämään sinulle tietoa. Sähköpostiosoitteesi käytetään ainoastaan tässä tarkoituksessa."
+msgstr "Ilmoita sähköpostiosoitteesi, jotta voimme ottaa yhteytta vastauksena tähän viestiin. Ilman sitä emme pysty vastaamaan kyselyihin. Sähköpostiosoittettasi ei käytetä mihinkään muuhun kuin vastauksena tähän kyselyyn."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
