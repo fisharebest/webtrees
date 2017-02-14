@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-06-28 20:57+0000\n"
+"PO-Revision-Date: 2017-02-14 13:16+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6326,7 +6326,7 @@ msgstr "מצא אדם"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "מצא כל קשר"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6339,7 +6339,7 @@ msgstr "מצא יחסים אחרים"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "מצא קשרים דרך אב אבות"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6347,7 +6347,7 @@ msgstr "מצא את היחסים הקרובים ביותר"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "מצא אנשים שאינם קרובים"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -14110,7 +14110,7 @@ msgstr "תרמידור"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "קבוצות האנשים הללו אינן קרובות של %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15362,7 +15362,7 @@ msgstr "השתמש בסיסמה"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "השתמש ב-sendmail למשלוח הודעות"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
