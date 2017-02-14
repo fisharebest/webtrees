@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2016-06-28 20:57+0000\n"
+"PO-Revision-Date: 2017-02-14 22:08+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -706,7 +706,7 @@ msgstr "<עיצוב ברירת מחדל>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיעים באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר למי אתה קשור, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div>"
+msgstr "<div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיעים באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר מי אקרוב שלך, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -1381,7 +1381,7 @@ msgstr "הוסף שאלה נפוצה"
 
 #: app/Functions/FunctionsEdit.php:1104 app/Functions/FunctionsEdit.php:1108
 msgid "Add an associate"
-msgstr "הוסף שותף"
+msgstr "הוסף מקורב"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
@@ -1920,11 +1920,11 @@ msgstr "חלופה להתחברות והתנתקות."
 
 #: app/Functions/FunctionsEdit.php:928
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "שותף הוא אדם אחר שהיה מעורב עם העובדה או האירוע, כגון עד או רב."
+msgstr "מקורב הוא אדם אחר שהיה מעורב עם העובדה או האירוע, כגון עד או רב."
 
 #: app/Functions/FunctionsEdit.php:926
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "שותף הוא אדם אחר שהיה מעורב עם אדם זה, כגון חבר או מעסיק."
+msgstr "מקורב הוא אדם אחר שהיה מעורב עם אדם זה, כגון חבר או מעסיק."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -2196,7 +2196,7 @@ msgstr "אסיה"
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:148 app/GedcomTag.php:668
 msgid "Associate"
-msgstr "שותפים"
+msgstr "מקורבים"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
@@ -2204,7 +2204,7 @@ msgstr "קשר אירועים למקור זה"
 
 #: search.php:107 search.php:266
 msgid "Associates"
-msgstr "שותפים"
+msgstr "מקורבים"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
@@ -6292,7 +6292,7 @@ msgstr "מצא אדם"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "מצא כל קשר"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6305,7 +6305,7 @@ msgstr "מצא יחסים אחרים"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "מצא קשרים דרך אב אבות"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6313,7 +6313,7 @@ msgstr "מצא את היחסים הקרובים ביותר"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "מצא אנשים שאינם קרובים"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -7416,7 +7416,7 @@ msgstr "בשנה הזו …"
 
 #: admin_trees_unconnected.php:89
 msgid "Include associates"
-msgstr ""
+msgstr "כלול מקורבים"
 
 #: app/Module/GoogleMapsModule.php:1353
 msgid "Include fully matched places"
@@ -8345,7 +8345,7 @@ msgstr "הנישואין הארוכים"
 #. I18N: Two axes of a graph
 #: statistics.php:535 statisticsplot.php:1052
 msgid "Longevity versus time"
-msgstr ""
+msgstr "אריכות ימים לעומת זמן"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:792 app/Functions/FunctionsPrint.php:464
@@ -11399,7 +11399,7 @@ msgstr "משפחות קרובות"
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr "אנשים קשורים"
+msgstr "אנשים קרובים"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:496
@@ -12624,7 +12624,7 @@ msgstr "הראה קרבה לאדם פרטי"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
-msgstr "הראה אנשים/משפחות קשורים"
+msgstr "הראה אנשים קרובים/משפחות קרובות"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
@@ -14114,7 +14114,7 @@ msgstr "תרמידור"
 #: admin_trees_unconnected.php:97
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "קבוצות האנשים הללו אינן קרובות של %s."
 
 #: admin.php:583
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15369,7 +15369,7 @@ msgstr "השתמש בסיסמה"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "השתמש ב-sendmail למשלוח הודעות"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -20025,7 +20025,7 @@ msgstr "העלה"
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
 msgid "view"
-msgstr "ראה"
+msgstr "הראה"
 
 #: admin_trees_config.php:363 admin_trees_config.php:387
 #: admin_trees_config.php:427 admin_trees_config.php:467
