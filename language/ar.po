@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-12 05:34+0000\n"
+"PO-Revision-Date: 2017-02-14 03:57+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadhh@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ar/>\n"
 "Language: ar\n"
@@ -306,12 +306,12 @@ msgstr[5] "تم تحديث بيانات %s أسر."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "هناك %s شجرات للعائلة"
-msgstr[1] "هناك %s شجرات للعائلة"
-msgstr[2] "هناك %s شجرتي العائلة"
-msgstr[3] "هناك %s شجرات للعائلة"
-msgstr[4] "توجد %s شجرات للعوائل"
-msgstr[5] "توجد %s شجرات للعوائل"
+msgstr[0] "هناك %s مشجر للعائلة"
+msgstr[1] "هناك %s مشجر للعائلة"
+msgstr[2] "هناك %s مشجرات  للعائلة"
+msgstr[3] "هناك %s مشجرات للعائلة"
+msgstr[4] "هناك %s مشجر للعوائل"
+msgstr[5] "هناك %s مشجراً  للعوائل"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
@@ -855,12 +855,12 @@ msgstr "رسم بياني يظهر أسلاف وأحفاد الفرد على ش�
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "رسم بياني لأسلاف الفرد علي شكل شجرة موجزة."
+msgstr "رسم بياني لأسلاف الفرد علي شكل مشجر مضغوط."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "رسم بياني لأسلاف الفرد، منسق بشكل شجرة ."
+msgstr "رسم بياني لأسلاف الفرد، منسق بشكل مشجر."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -1101,7 +1101,7 @@ msgstr "تقرير عن سجلات حيوية في زمان أو مكان محد
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "تعتبر الأدوار هي مجموعة من الصلاحيات التي تسمح بالإطلاع على البيانات أو تغييرها وتهيئة الإعدادات وما إلى ذلك. تحدد هذه الصلاحيات لكل دور التي بدورها تعطى للمستخدمين. بالإمكان إعطاء صلاحيات مختلفة للأدوار بحسب كل شجرة على حدى كما يمكن تحديد أدوار مختلفة للمستخدمين في كل شجرة على حدى."
+msgstr "تعتبر الأدوار هي مجموعة من الصلاحيات التي تسمح بالإطلاع على البيانات أو تغييرها وتهيئة الإعدادات وما إلى ذلك. تحدد هذه الصلاحيات لكل دور التي بدورها تعطى للمستخدمين. بالإمكان إعطاء صلاحيات مختلفة للأدوار بحسب كل مشجر على حدى كما يمكن تحديد أدوار مختلفة للمستخدمين في كل مشجر على حدى."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1283,7 +1283,7 @@ msgstr "مستوى النفاذ"
 
 #: admin_users.php:520
 msgid "Access to family trees"
-msgstr "إعدادات النفاذ إلى الشجرة"
+msgstr "إعدادات النفاذ إلى المشجر"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1810,7 +1810,7 @@ msgstr "إفريقيا"
 
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr "بإمكانك تحميل ملف الجيدكوم بعد إنشاء الشجرة."
+msgstr "بإمكانك تحميل ملف الجيدكوم بعد إنشاء المشجر."
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -2021,7 +2021,7 @@ msgstr "ساموا الأمريكية"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "بالإمكان عرض نص أي سؤال شائع  في شجرة عائلة محددة، أو في جميعها."
+msgstr "بالإمكان عرض نص أي سؤال شائع  في مشجر عائلة محددة، أو في جميعها."
 
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -2078,7 +2078,7 @@ msgstr "رسم بياني بشكل الساعة الرملية يعرض أسلا
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "شجرة تفاعلية تظهر الأسلاف والأنسال للفرد."
+msgstr "مشجر تفاعلي يظهر الأسلاف والأنسال للفرد."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -2188,12 +2188,12 @@ msgstr "تطبيق إعدادات الخصوصية"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
 msgid "Apply these preferences to all family trees"
-msgstr "تطبيق هذه التفضيلات على جميع أشجار العائلة"
+msgstr "تطبيق هذه التفضيلات على جميع مشجرات العائلة"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2161
 msgid "Apply these preferences to new family trees"
-msgstr "تطبيق هذه التفضيلات على أشجارالعائلة الجديدة"
+msgstr "تطبيق هذه التفضيلات على المشجرات الجديدة"
 
 #: admin_users.php:100
 #, php-format
@@ -2270,7 +2270,7 @@ msgstr "هل أنت متأكد من رغبتك في حذف ”%s“؟"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "هل تريد رفض جميع التعديلات المقترحة لهذه الشجرة؟"
+msgstr "هل تريد رفض جميع التعديلات المقترحة لهذا المشجر؟"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -4015,14 +4015,14 @@ msgstr "جزر القمر"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "شجرة مضغوطة"
+msgstr "مشجر مضغوط"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr "شجرة مضغوطة لـ: %s"
+msgstr "مشجر مضغوط لـ: %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -4251,7 +4251,7 @@ msgstr "إنشاء رسمك المخصص"
 
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "إنشاء، تحديث و حذف شجرة العائلة لكل ملف GEDCOM في المجلد."
+msgstr "إنشاء، تحديث و حذف مشجر العائلة لكل ملف GEDCOM في المجلد."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -5229,7 +5229,7 @@ msgstr "تفاصيل"
 
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "سيتم إرسال تفاصيل المستخدم الجديد إلى المسؤول عن الأنساب لشجرة العائلة هذه."
+msgstr "سيتم إرسال تفاصيل المستخدم الجديد إلى المسؤول عن الأنساب لمشجر العائلة هذه."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
@@ -6159,7 +6159,7 @@ msgstr "أسرة %s"
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
 #: edit_changes.php:185
 msgid "Family tree"
-msgstr "شجرة العائلة"
+msgstr "مشجر العائلة"
 
 #: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
@@ -6167,13 +6167,13 @@ msgstr "سلة مقتطفات المشجر"
 
 #: admin_trees_config.php:590 admin_trees_manage.php:645
 msgid "Family tree title"
-msgstr "مسمى شجرة العائلة"
+msgstr "مسمى مشجر العائلة"
 
 #. I18N: Menu entry
 #: admin.php:762 admin.php:770 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
-msgstr "أشجار العائلة"
+msgstr "مشجرات"
 
 #. I18N: %s is the spouse name
 #: app/Controller/IndividualController.php:416
@@ -6585,7 +6585,7 @@ msgstr "للدعم الفني أو الإستفسارات المتعلقة با�
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "للمواقع المحتوية على أكثر من شجرة عائلة واحدة،سوف يتيح هذا الخيارإظهار قائمة من أشجار العائلة في القائمة الرئيسية، صفحات البحث ، الخ."
+msgstr "للمواقع المحتوية على أكثر من مشجر عائلة واحدة، سوف يتيح هذا الخيارإظهار قائمة من المشجرات في القائمة الرئيسية، صفحات البحث ، الخ."
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
@@ -7444,7 +7444,7 @@ msgstr "يمكن لمشجرين عائلة مختلفين إستخدام مجل�
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr "في حال عدم تمكن الزوار من رؤية شجرة العائلة لن يتمكنوا من تقديم طلب لتسجيل حساب في الموقع. وفي تلك الحالة سيستوجب عليك إضافة حساباً لهم."
+msgstr "في حال عدم تمكن الزوار من رؤية مشجر العائلة لن يتمكنوا من تقديم طلب لتسجيل حساب في الموقع. وفي تلك الحالة سيستوجب عليك إضافة حساباً لهم."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1023
@@ -7495,7 +7495,7 @@ msgstr "إذا تم إختيار مجلد جديد، فيلزم نقل ملفا�
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "اذا قمت بعرض الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات الشجرة الخاصة بك عامة ."
+msgstr "اذا قمت بعرض الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات المشجر الخاصة بك عامة ."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7546,7 +7546,7 @@ msgstr "توريد الخصائص"
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "في شجرة العائلة، يحتوي كل سجل على رقم مرجعي داخلي (يسمى \" XREF \" ) مثل \" F123 \" أو \" R14 \" ."
+msgstr "في مشجر العائلة، يحتوي كل سجل على رقم مرجعي داخلي (يسمى \" XREF \" ) مثل \" F123 \" أو \" R14 \" ."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7723,7 +7723,7 @@ msgstr "مجلد التنصيب"
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr "شجرة تفاعلية"
+msgstr "مشجر تفاعلي"
 
 #: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7731,7 +7731,7 @@ msgstr "شجرة تفاعلية"
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "شجرة تفاعلية لـ: %s"
+msgstr "مشجر تفاعلي لـ: %s"
 
 #: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
@@ -8371,7 +8371,7 @@ msgstr "ليما، بيرو"
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr "ربط حساب المستخدم مع أحد أفراد الشجرة."
+msgstr "ربط حساب المستخدم مع أحد أفراد المشجر."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -8395,7 +8395,7 @@ msgstr "ربط هذا الكائن بفرد"
 
 #: admin_users.php:594
 msgid "Link this user to an individual in the family tree."
-msgstr "ربط هذا المستخدم مع أحد أفراد شجرة العائلة."
+msgstr "ربط هذا المستخدم مع أحد أفراد مشجر العائلة."
 
 #: app/Controller/FamilyController.php:165 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
@@ -9206,7 +9206,7 @@ msgstr "دمج"
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr "دمج أشجار العوائل"
+msgstr "دمج مشجرات العوائل"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
@@ -10079,7 +10079,7 @@ msgstr "جزيرة نورفولك"
 
 #: admin_users.php:444
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "تتطلب أي تغييرات تطرأ على الشجرة بالعادة الحصول على موافقة المراقب قبل إعتمادها. ولكن يتيح هذا الخيار إمكانية إعتمادها مباشرة دون الحاجة لموافقة المراقب."
+msgstr "تتطلب أي تغييرات تطرأ على المشجر بالعادة الحصول على موافقة المراقب قبل إعتمادها. ولكن يتيح هذا الخيار إمكانية إعتمادها مباشرة دون الحاجة لموافقة المراقب."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -11663,7 +11663,7 @@ msgstr "إعادة الترقيم"
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr "إعادة ترقيم شجرة العائلة"
+msgstr "إعادة ترقيم مشجر العائلة"
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
@@ -12135,7 +12135,7 @@ msgstr "حدد الأفراد حسب المكان أوالتاريخ"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "إنتقاء سجلات من شجرة العائلة لحفظها في ملف GEDCOM."
+msgstr "إنتقاء سجلات من مشجر العائلة لحفظها في ملف GEDCOM."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
@@ -12304,7 +12304,7 @@ msgstr "تعيين كافتراضي"
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr "تعيين مستوى الوصول لكل شجرة ."
+msgstr "تعيين مستوى الوصول لكل مشجر."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12673,7 +12673,7 @@ msgstr "إظهار من توفي خلال المائة عاماً الماضية
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr "عرض قائمة بأشجار العائلة"
+msgstr "عرض قائمة بالمشجرات"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
@@ -12810,7 +12810,7 @@ msgstr "إظهار أحداث متعلقة بالأقرباء في صفحة مف
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr "إظهار شجرة العائلة"
+msgstr "إظهار مشجر العائلة"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -13077,7 +13077,7 @@ msgstr "بإمكان بعض صفحات الموقع عرض عدد المرات �
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "بالإمكان كتابة بعض أسماء الأماكن ببواديء ولواحق إختيارية مثل، الروضة مقابل حي الروضة. إذا كانت الشجرة تحتوي على الإسم الكامل للمكان ولكن قاعدة البيانات الجغرافية تحتوي على الإسم المختصر يجب عندئذ إنشاء قائمة تحتوى على البواديء واللواحق المهملة مفرقة بفواصل منقوطة مثل: \"حي; مقاطعة; محافظة\"."
+msgstr "بالإمكان كتابة بعض أسماء الأماكن ببواديء ولواحق إختيارية مثل، الروضة مقابل حي الروضة. إذا كان المشجر يحتوي على الإسم الكامل للمكان ولكن قاعدة البيانات الجغرافية تحتوي على الإسم المختصر يجب عندئذ إنشاء قائمة تحتوى على البواديء واللواحق المهملة مفرقة بفواصل منقوطة مثل: \"حي; مقاطعة; محافظة\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
@@ -13496,7 +13496,7 @@ msgstr "سيدني، استراليا"
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "مزامنة شجرة العائلة مع ملفات GEDCOM"
+msgstr "مزامنة مشجر العائلة مع ملفات GEDCOM"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
@@ -13657,7 +13657,7 @@ msgstr "مجلد PHP المؤقت مفقود."
 
 #: admin_trees_manage.php:714
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "هذه عملية آلية لمساعدة المدراء في نقل شجرة العائلة الخاصة بهم من PhpGedView إلى webtrees. بحيث سيتم نقل جميع بيانات ملف GEDCOM وكذلك قاعدة بيانات المعلومات الأخرى مباشرة إلى قاعدة بيانات webtrees الجديدة. يجب تحقق الشروط التالية :"
+msgstr "هذه عملية آلية لمساعدة المدراء في نقل مشجر العائلة الخاصة بهم من PhpGedView إلى webtrees. بحيث سيتم نقل جميع بيانات ملف GEDCOM وكذلك قاعدة بيانات المعلومات الأخرى مباشرة إلى قاعدة بيانات webtrees الجديدة. يجب تحقق الشروط التالية :"
 
 #: admin_users.php:101
 #, php-format
@@ -13682,7 +13682,7 @@ msgstr "لقد تم رفض التعديلات على ”%s“."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "تتيح سلة المقتطفات  للمستخدم أخذ مقتطفات (\"قصاصات\") من الشجرة ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه (فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل."
+msgstr "تتيح سلة المقتطفات  للمستخدم أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه (فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -13710,25 +13710,25 @@ msgstr "تم تصدير المشجر إلى %s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "الشجرة %s موجودة حالياً."
+msgstr "المشجر %s موجود حالياً."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "تم إنشاء شجرة العائلة %s."
+msgstr "تم إنشاء مشجرالعائلة %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "تم حذف شجرة العائلة %s."
+msgstr "تم حذف مشجر العائلة %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "سوف تظهر شجرة العائلة %s للزوار عند دخولهم للموقع."
+msgstr "سوف يظهر مشجر العائلة %s للزوار عند دخولهم للموقع."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13889,7 +13889,7 @@ msgstr "ملف الوسائط %s غير موجود."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "لم يتم العثور على ملف الوسائط في هذه الشجرة."
+msgstr "لم يتم العثور على ملف الوسائط في هذا المشجر."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13966,11 +13966,11 @@ msgstr "كلمات المرور غير متطابقة."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr "تم تحديث التفضيلات الخاصة بجميع أشجار العوائل."
+msgstr "تم تحديث التفضيلات الخاصة بجميع مشجرات العوائل."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr "تم تحديث التفضيلات الخاصة بأشجار العوائل الجديدة."
+msgstr "تم تحديث التفضيلات الخاصة بمشجرات العوائل الجديدة."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -13980,7 +13980,7 @@ msgstr "تم تحديث التفضيلات الخاصة بالرسم البيا�
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "تم تحديث التفضيلات الخاصة بشجرة العائلة %s."
+msgstr "تم تحديث التفضيلات الخاصة بمشجر العائلة %s."
 
 #: admin_modules.php:86
 #, php-format
@@ -14168,7 +14168,7 @@ msgstr "الأنماط"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "يمكن اختيار نمط الموقع على ثلاثة مستويات : المستخدم ، شجرة العائلة و الموقع. تفضيلات المستخدم لها الأولوية على تفضيلات شجرة العائلة، والتي بدورها لها الأولوية على تفضيلات الموقع. و عند اختيار \"النمط الافتراضي\" في مستوى معين سوف يستخدم النمط في المستوى التالي ."
+msgstr "يمكن اختيار نمط الموقع على ثلاثة مستويات : المستخدم ، مشجر العائلة و الموقع. تفضيلات المستخدم لها الأولوية على تفضيلات مشجر العائلة، والتي بدورها لها الأولوية على تفضيلات الموقع. و عند اختيار \"النمط الافتراضي\" في مستوى معين سوف يستخدم النمط في المستوى التالي ."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
@@ -14320,12 +14320,12 @@ msgstr "لم تنجب هذه الأسرة"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "توجد %s سجلات في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
-msgstr[1] "توجد %s سجلات في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
-msgstr[2] "توجد %s سجلات في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
-msgstr[3] "توجد %s سجل في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
-msgstr[4] "توجد %s سجلات في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
-msgstr[5] "توجد %s سجلات في شجرة العائلة هذه تحتوي علي “XREF” مطابق لشجرة أخري."
+msgstr[0] "هناك %s سجلا في مشجر العائلة هذه يحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[1] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[2] "هناك %s سجلان في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[3] "هناك %s سجلات  في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[4] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[5] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14780,7 +14780,7 @@ msgstr "هذا النوع من الروابط غير مسموح به هنا."
 
 #: includes/session.php:448
 msgid "This user account does not have access to any tree."
-msgstr "ليست لدى حساب هذا المستخدم هذا صلاحية الوصول إلى أي شجرة ."
+msgstr "ليست لدى حساب هذا المستخدم هذا صلاحية الوصول إلى أي مشجر."
 
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15338,7 +15338,7 @@ msgstr "معرف عالمي فريد"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "تمكن المعرفات الفريدة من العثور على نفس السجل في أشجار مختلفة و أنظمة مختلفة. تتم إضافتها كلما تتم إنشاء سجلات أو تحديثها. إذا كنت لا ترغب في ظهور المعرفات الفريدة، بإمكانك إخفائها باستخدام قواعد الخصوصية."
+msgstr "تمكن المعرفات الفريدة من العثور على نفس السجل في مشجرات مختلفة و أنظمة مختلفة. تتم إضافتها كلما تتم إنشاء سجلات أو تحديثها. إذا كنت لا ترغب في ظهور المعرفات الفريدة، بإمكانك إخفائها باستخدام قواعد الخصوصية."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15428,7 +15428,7 @@ msgstr "تحديث الجميع"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
-msgstr "تحديث جميع المواقع المخزنة في شجرة العائلة"
+msgstr "تحديث جميع المواقع المخزنة في مشجر العائلة"
 
 #: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
@@ -16135,11 +16135,11 @@ msgstr "يمكنك إعادة تفعيل هذه الأنماط بعد الترق
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "بإمكانك إعادة ترقيم السجلات في شجرة العائلة ، بحيث لا يتم تكرارالأرقام المرجعية الداخلية هذه في أي شجرة عائلة الأخرى."
+msgstr "بإمكانك إعادة ترقيم السجلات في مشجر العائلة ، بحيث لا يتم تكرارالأرقام المرجعية الداخلية هذه في أي مشجر عائلة أخرى."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr "بإمكانك إعادة ترقيم شجرة العائلة التالية."
+msgstr "بإمكانك إعادة ترقيم مشجر العائلة التالية."
 
 #: admin_site_config.php:209 admin_site_config.php:228
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -16249,7 +16249,7 @@ msgstr "يجب الحصول على حساب مستخدم مصرح له الدخ�
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr "يجب إنشاء شجرة للعائلة."
+msgstr "يجب إنشاء مشجر للعائلة."
 
 #: login.php:567
 msgid "You need to review the account details."
