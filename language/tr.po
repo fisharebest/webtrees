@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-11 12:48+0000\n"
+"PO-Revision-Date: 2017-02-15 18:22+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/tr/>\n"
 "Language: tr\n"
@@ -6343,7 +6343,7 @@ msgstr "Tüm olası ilişkileri bul"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "İlişkisi olmayan kişileri bul"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -14106,7 +14106,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Bu kişi grupları %s ile ilgili değildir."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
