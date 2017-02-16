@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-14 22:08+0000\n"
+"PO-Revision-Date: 2017-02-16 21:01+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -14114,7 +14114,7 @@ msgstr "תרמידור"
 #: admin_trees_unconnected.php:97
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "קבוצות האנשים הללו אינן קרובות של %s."
+msgstr "האנשים בקבוצות הללו אינם קרובים של %s."
 
 #: admin.php:583
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
