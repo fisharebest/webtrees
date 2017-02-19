@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-11-04 13:43+0000\n"
+"PO-Revision-Date: 2017-02-19 22:44+0000\n"
 "Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
-"Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
+"Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -6302,7 +6302,7 @@ msgstr "Find opbevaringssted"
 
 #: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
-msgstr "Find en note"
+msgstr "Find en delt note"
 
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
@@ -6326,7 +6326,7 @@ msgstr "Find en person"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Find hvilket som helst slægtsskab"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6339,7 +6339,7 @@ msgstr "Find andre relationer"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Find slægtsskab via aner"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6347,7 +6347,7 @@ msgstr "Find nærmeste slægtskab"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Find ikke-relaterede individer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -13782,7 +13782,7 @@ msgstr "Besked sendt til %s."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Modulet “%s” er blevet gjort deaktivt."
+msgstr "Modulet “%s” er blevet deaktiveret."
 
 #: admin_modules.php:56
 #, php-format
@@ -14110,7 +14110,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Disse grupper af individer er ikke beslægtet med %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15362,7 +15362,7 @@ msgstr "Brug adgangskode"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Brug sendmail til at sende beskeder"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
