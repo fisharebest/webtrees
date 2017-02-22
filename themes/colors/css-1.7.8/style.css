@@ -4852,11 +4852,11 @@ footer {
 }
 
 .menu-indi-addname {
-	background-position: left -780px;
+	background-position: left -680px;
 }
 
 [dir=rtl] .menu-indi-addname {
-	background-position: right -780px;
+	background-position: right -680px;
 }
 
 .menu-indi-del,
@@ -4878,11 +4878,11 @@ footer {
 }
 
 .menu-indi-editsex {
-	background-position: left -780px;
+	background-position: left -680px;
 }
 
 [dir=rtl] .menu-indi-editsex {
-	background-position: right -780px;
+	background-position: right -680px;
 }
 
 .menu-list-fam {
