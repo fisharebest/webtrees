@@ -403,9 +403,12 @@ class I18N {
 
 		// Create a collator
 		try {
-			self::$collator = new Collator(self::$locale->code());
-			// Ignore upper/lower case differences
-			self::$collator->setStrength(Collator::SECONDARY);
+			// PHP 5.6 cannot catch errors, so test first
+			if (class_exists('Collator')) {
+				self::$collator = new Collator(self::$locale->code());
+				// Ignore upper/lower case differences
+				self::$collator->setStrength(Collator::SECONDARY);
+			}
 		} catch (Exception $ex) {
 			// PHP-INTL is not installed?  We'll use a fallback later.
 		}

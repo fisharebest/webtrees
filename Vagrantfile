@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/wily64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -74,10 +74,10 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get -y upgrade
     # LAMP server
-    sudo apt-get -y install git lamp-server^ php5-gd php5-curl
-    [ -L /var/www ] || sudo rm -Rf /var/www && sudo ln -s /vagrant /var/www
+    sudo apt-get -y install git lamp-server^ php-gd php-curl php-mbstring php-xml gettext make
+    [ -L /var/www/html ] || sudo rm -Rf /var/www/html && sudo ln -s /vagrant /var/www/html
 		# PHP configuration
-		sed -i -e 's/^display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini
+		sed -i -e 's/^display_errors = Off/display_errors = On/' /etc/php/7.0/apache2/php.ini
 		sudo service apache2 restart
     # Composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

@@ -1,15 +1,13 @@
 # Rhumsaa\Uuid for PHP
 
-_**WARNING: This package is no longer maintained. Use [ramsey/uuid](https://github.com/ramsey/uuid) instead.**_
-
-----
-
 [![Build Status](https://travis-ci.org/ramsey/uuid.png?branch=master)](https://travis-ci.org/ramsey/uuid)
 [![Coverage Status](https://coveralls.io/repos/ramsey/uuid/badge.png)](https://coveralls.io/r/ramsey/uuid)
 [![Latest Stable Version](https://poser.pugx.org/rhumsaa/uuid/v/stable.png)](https://packagist.org/packages/rhumsaa/uuid)
 [![Latest Unstable Version](https://poser.pugx.org/rhumsaa/uuid/v/unstable.png)](https://packagist.org/packages/rhumsaa/uuid)
 [![Total Downloads](https://poser.pugx.org/rhumsaa/uuid/downloads.png)](https://packagist.org/packages/rhumsaa/uuid)
 [![HHVM Status](http://hhvm.h4cc.de/badge/rhumsaa/uuid.png)](http://hhvm.h4cc.de/package/rhumsaa/uuid)
+
+This project adheres to a [Contributor Code of Conduct](https://github.com/ramsey/uuid/blob/master/CODE_OF_CONDUCT.md). By participating in this project and its community, you are expected to uphold this code.
 
 ## About
 

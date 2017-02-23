@@ -8,14 +8,28 @@
 			"Fisharebest\\Webtrees\\": "app/"
 		}
 	},
+	"config": {
+		"platform": {
+			"php" : "5.6"
+		}
+	},
 	"require": {
+		"ext-gd": "*",
+		"ext-iconv": "*",
+		"ext-mbstring": "*",
+		"ext-pcre": "*",
+		"ext-pdo": "*",
+		"ext-pdo_mysql": "*",
+		"ext-session": "*",
+		"ext-simplexml": "*",
+		"ext-xml": "*",
 		"ezyang/htmlpurifier": "4.*",
 		"fisharebest/algorithm": "1.*",
 		"fisharebest/ext-calendar": "2.*",
 		"fisharebest/localization": "1.*",
 		"michelf/php-markdown": "1.*",
 		"pclzip/pclzip": "2.*",
-		"rhumsaa/uuid": "2.*",
+		"ramsey/uuid": "2.*",
 		"swiftmailer/swiftmailer": "~5.0",
 		"tecnickcom/tcpdf": "6.*"
 	},
