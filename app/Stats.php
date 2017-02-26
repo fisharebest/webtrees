@@ -6083,7 +6083,7 @@ class Stats {
 				$datestamp = I18N::dateFormat();
 			}
 
-			return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
+			return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
