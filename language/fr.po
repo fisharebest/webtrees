@@ -14110,7 +14110,7 @@ msgstr "thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "Ces groupes d'individus ne sont pas apparentés avec %s"
+msgstr "Ces groupes d'individus ne sont pas apparentés avec %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
