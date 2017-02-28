@@ -285,7 +285,7 @@ try {
 	}
 } catch (PDOException $ex) {
 	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
-	throw $ex;
+	exit;
 }
 
 // The config.ini.php file must always be in a fixed location.
