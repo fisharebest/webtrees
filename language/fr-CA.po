@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-12-28 10:15+0000\n"
+"PO-Revision-Date: 2017-03-01 14:50+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Country: CANADA\n"
 "X-Poedit-Language: French\n"
 
@@ -6324,7 +6324,7 @@ msgstr "Chercher un individu"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Trouver une relation de parenté"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6337,7 +6337,7 @@ msgstr "Trouver d’autres relations de parenté"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Trouver des relations de parenté via des ancêtres"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6345,7 +6345,7 @@ msgstr "Trouver les plus proches liens de parenté"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Trouver des individus non apparentés"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -14108,7 +14108,7 @@ msgstr "thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ces groupes d’individus ne sont pas apparentés avec %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
