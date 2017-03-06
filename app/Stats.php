@@ -6083,7 +6083,7 @@ class Stats {
 				$datestamp = I18N::dateFormat();
 			}
 
-			return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
+			return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
@@ -6091,7 +6091,7 @@ class Stats {
 				$datestamp = str_replace('%', '', I18N::timeFormat());
 			}
 
-			return date($datestamp, $user->getPreference('reg_timestamp'));
+			return date($datestamp, (int) $user->getPreference('reg_timestamp'));
 		case 'loggedin':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$yes = $params[0];
