@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-12 22:45+0000\n"
+"PO-Revision-Date: 2017-03-07 21:18+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -697,7 +697,7 @@ msgstr "<b>Belangrijke opmerking:</b> De overstapwizard kan niet helpen met het 
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Let op:</b> Privé informatie van levende personen wordt alleen aan directe familie en goede vrienden gegeven. U wordt gevraagd om uw relatie te verifiëren voordat privé informatie wordt verstrekt. Soms is informatie over overleden personen ook privé. Dat is het geval als wij te weinig informatie hebben om vast te stellen of deze persoon al dan niet in leven is en waarschijnlijk hebben wij geen verdere informatie over deze persoon.</b></b>Voordat u een vraag stelt controleert u dan nog even of uw vraag over de juiste persoon gaat door de data, plaatsen en naaste verwanten te checken. Wanneer u wijzigingen wilt aanbrengen in de genealogische gegevens, vermeld dan ook de bronnen van deze gegevens."
+msgstr "<b>Let op:</b> Privé informatie over levende personen verstrekken wij alleen aan directe familie en goede vrienden. Wij kunnen u vragen om uw relatie te verifiëren voordat u privé informatie ontvangt. Informatie over overleden personen kan privé zijn, wanneer wij te weinig informatie hebben om vast te stellen of de persoon in kwestie al dan niet in leven is. Meestal hebben wij dan geen verdere informatie over deze persoon.<br><br>Controleer, voordat u een vraag stelt, of uw vraag over de juiste persoon gaat door data, plaatsen en naaste verwanten te checken. Wanneer u wijzigingen wilt aanbrengen in genealogische gegevens, vermeld dan ook de bronnen van deze gegevens."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
