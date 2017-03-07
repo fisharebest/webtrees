@@ -15,17 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Date\GregorianDate;
 
-define('WT_SCRIPT_NAME', 'statisticsplot.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+
+global $WT_TREE;
+
+require 'includes/session.php';
 
 /**
  * Month of birth
@@ -1215,7 +1211,6 @@ case '21':
 	my_plot($title, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 default:
-	echo '<i class="icon-loading-large"></i>';
 	break;
 }
 echo '</div>';

@@ -15,17 +15,12 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Functions\Functions;
 
-define('WT_SCRIPT_NAME', 'expand_view.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 header('Content-Type: text/html; charset=UTF-8');
 $individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);

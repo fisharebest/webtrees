@@ -15,17 +15,12 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'admin_trees_duplicates.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -144,41 +139,40 @@ $all_duplicates = [
 	I18N::translate('Media objects') => $media,
 ];
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <?php foreach ($all_duplicates as $title => $duplicate_list): ?>
 
-<h2><?php echo $title; ?></h2>
+<h2><?= $title ?></h2>
 
 <?php if (!empty($duplicate_list)): ?>
 <ul>
 	<?php foreach ($duplicate_list as $duplicates): ?>
 	<li>
-		<?php echo $duplicates[0]->getFullName(); ?>
+		<?= $duplicates[0]->getFullName() ?>
 		<?php foreach ($duplicates as $record): ?>
 		—
-		<a href="<?php echo $record->getHtmlUrl(); ?>">
-			<?php echo $record->getXref(); ?>
+		<a href="<?= $record->getHtmlUrl() ?>">
+			<?= $record->getXref() ?>
 		</a>
-		<?php endforeach; ?>
+		<?php endforeach ?>
 		<?php if (count($duplicates) === 2): ?>
 		—
-		<a href="admin_site_merge.php?ged=<?php echo $WT_TREE->getNameHtml(); ?>&amp;gid1=<?php echo $duplicates[0]->getXref(); ?>&amp;gid2=<?php echo $duplicates[1]->getXref(); ?>&amp;url=admin_trees_duplicates.php">
-			<?php echo I18N::translate('Merge'); ?>
+		<a href="admin_site_merge.php?ged=<?= $WT_TREE->getNameHtml() ?>&amp;gid1=<?= $duplicates[0]->getXref() ?>&amp;gid2=<?= $duplicates[1]->getXref() ?>&amp;url=admin_trees_duplicates.php">
+			<?= I18N::translate('Merge') ?>
 		</a>
-		<?php endif; ?>
+		<?php endif ?>
 	</li>
-<?php endforeach; ?>
+<?php endforeach ?>
 </ul>
 <?php else: ?>
-<p><?php echo I18N::translate('No duplicates have been found.'); ?></p>
-<?php endif; ?>
+<p><?= I18N::translate('No duplicates have been found.') ?></p>
+<?php endif ?>
 
-<?php endforeach; ?>
+<?php endforeach ?>

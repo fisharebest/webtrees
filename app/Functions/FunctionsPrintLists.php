@@ -17,10 +17,12 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Datatables;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -79,14 +81,10 @@ class FunctionsPrintLists {
 		$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				$("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
 					autoWidth: false,
 					processing: true,
 					retrieve: true,
@@ -139,9 +137,6 @@ class FunctionsPrintLists {
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
-
-				$(".indi-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
 			');
 
 		$stats = new Stats($WT_TREE);
@@ -162,7 +157,6 @@ class FunctionsPrintLists {
 		}
 
 		$html = '
-			<div class="loading-image"></div>
 			<div class="indi-list">
 				<table id="' . $table_id . '">
 					<thead>
@@ -348,7 +342,7 @@ class FunctionsPrintLists {
 					$class     = '';
 					$sex_image = '';
 				}
-				$html .= '<a ' . $title . ' href="' . $individual->getHtmlUrl() . '"' . $class . '>' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>' . $sex_image . '<br>';
+				$html .= '<a ' . $title . ' href="' . $individual->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 			}
 			$html .= $individual->getPrimaryParentsNames('parents details1', 'none');
 			$html .= '</td>';
@@ -359,7 +353,7 @@ class FunctionsPrintLists {
 			// SOSA
 			$html .= '<td class="center" data-sort="' . $key . '">';
 			if ($option === 'sosa') {
-				$html .= '<a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a>';
+				$html .= '<a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '" rel="nofollow">' . I18N::number($key) . '</a>';
 			}
 			$html .= '</td>';
 
@@ -391,7 +385,7 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
+				$html .= $tmp->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 
@@ -430,7 +424,7 @@ class FunctionsPrintLists {
 				$age_at_death      = '';
 				$age_at_death_sort = PHP_INT_MAX;
 			}
-			$html .= '<td class="center" data-sort="' . $age_at_death_sort . '">' . $age_at_death . '</td>';
+			$html .= '<td class="center" data-sort="' . $age_at_death_sort . '">' . I18N::number($age_at_death) . '</td>';
 
 			// Death place
 			$html .= '<td>';
@@ -440,7 +434,7 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
+				$html .= $tmp->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 
@@ -522,14 +516,10 @@ class FunctionsPrintLists {
 		$table_id = 'table-fam-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				$("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
 					autoWidth: false,
 					processing: true,
 					retrieve: true,
@@ -580,9 +570,6 @@ class FunctionsPrintLists {
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
-
-				$(".fam-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
 		');
 
 		$stats   = new Stats($WT_TREE);
@@ -601,7 +588,6 @@ class FunctionsPrintLists {
 		}
 
 		$html = '
-			<div class="loading-image"></div>
 			<div class="fam-list">
 				<table id="' . $table_id . '">
 					<thead>
@@ -794,7 +780,7 @@ class FunctionsPrintLists {
 				}
 				// Only show married names if they are the name we are filtering by.
 				if ($name['type'] != '_MARNM' || $num == $husb->getPrimaryName()) {
-					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>' . $sex_image . '<br>';
+					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 				}
 			}
 			// Husband parents
@@ -837,7 +823,7 @@ class FunctionsPrintLists {
 				}
 				// Only show married names if they are the name we are filtering by.
 				if ($name['type'] != '_MARNM' || $num == $wife->getPrimaryName()) {
-					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>' . $sex_image . '<br>';
+					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 				}
 			}
 			// Wife parents
@@ -893,7 +879,7 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
+				$html .= $tmp->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 
@@ -986,8 +972,6 @@ class FunctionsPrintLists {
 	 * @return string
 	 */
 	public static function sourceTable($sources) {
-		global $WT_TREE, $controller;
-
 		// Count the number of linked records. These numbers include private records.
 		// It is not good to bypass privacy, but many servers do not have the resources
 		// to process privacy for every record in the tree
@@ -1003,40 +987,8 @@ class FunctionsPrintLists {
 		$count_notes = Database::prepare(
 			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to, l_file"
 		)->fetchAssoc();
-
-		$html     = '';
-		$table_id = 'table-sour-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				$("#' . $table_id . '").dataTable( {
-					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
-					autoWidth: false,
-					processing: true,
-					columns: [
-						/* Title         */ { type: "text" },
-						/* Author        */ { type: "text" },
-						/* Individuals   */ { type: "num" },
-						/* Families      */ { type: "num" },
-						/* Media objects */ { type: "num" },
-						/* Notes         */ { type: "num" },
-						/* Last change   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* Delete        */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
-					],
-					displayLength: 20,
-					pagingType: "full_numbers"
-			   });
-				$(".source-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
-			');
-
-		$html .= '<div class="loading-image"></div>';
-		$html .= '<div class="source-list">';
-		$html .= '<table id="' . $table_id . '"><thead><tr>';
+		$html = '';
+		$html .= '<table ' . Datatables::sourceTableAttributes() . '><thead><tr>';
 		$html .= '<th>' . I18N::translate('Title') . '</th>';
 		$html .= '<th>' . I18N::translate('Author') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
@@ -1067,9 +1019,9 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				if ($n == $source->getPrimaryName()) {
-					$html .= '<a class="name2" href="' . $source->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>';
+					$html .= '<a class="name2" href="' . $source->getHtmlUrl() . '">' . $name['full'] . '</a>';
 				} else {
-					$html .= '<a href="' . $source->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>';
+					$html .= '<a href="' . $source->getHtmlUrl() . '">' . $name['full'] . '</a>';
 				}
 			}
 			$html .= '</td>';
@@ -1080,7 +1032,7 @@ class FunctionsPrintLists {
 			} else {
 				$author = '';
 			}
-			$html .= '<td data-sort="' . Filter::escapeHtml($author) . '">' . FunctionsPrint::highlightSearchHits($author) . '</td>';
+			$html .= '<td data-sort="' . Filter::escapeHtml($author) . '">' . $author . '</td>';
 			$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1097,10 +1049,10 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $source->lastChangeTimestamp(true) . '">' . $source->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . '", "' . $source->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
-		$html .= '</tbody></table></div>';
+		$html .= '</tbody></table>';
 
 		return $html;
 	}
@@ -1113,8 +1065,6 @@ class FunctionsPrintLists {
 	 * @return string
 	 */
 	public static function noteTable($notes) {
-		global $WT_TREE, $controller;
-
 		// Count the number of linked records. These numbers include private records.
 		// It is not good to bypass privacy, but many servers do not have the resources
 		// to process privacy for every record in the tree
@@ -1132,37 +1082,7 @@ class FunctionsPrintLists {
 		)->fetchAssoc();
 
 		$html     = '';
-		$table_id = 'table-note-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				$("#' . $table_id . '").dataTable({
-					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
-					autoWidth: false,
-					processing: true,
-					columns: [
-						/* Title         */ { type: "text" },
-						/* Individuals   */ { type: "num" },
-						/* Families      */ { type: "num" },
-						/* Media objects */ { type: "num" },
-						/* Sources       */ { type: "num" },
-						/* Last change   */ { type: "num", visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* Delete        */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
-					],
-					displayLength: 20,
-					pagingType: "full_numbers"
-				});
-				$(".note-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
-			');
-
-		$html .= '<div class="loading-image"></div>';
-		$html .= '<div class="note-list">';
-		$html .= '<table id="' . $table_id . '"><thead><tr>';
+		$html .= '<table ' . Datatables::noteTableAttributes() . '><thead><tr>';
 		$html .= '<th>' . I18N::translate('Title') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
@@ -1186,7 +1106,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Count of linked notes
-			$html .= '<td data-sort="' . Filter::escapeHtml($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($note->getFullName()) . '</a></td>';
+			$html .= '<td data-sort="' . Filter::escapeHtml($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
 			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1203,10 +1123,10 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $note->lastChangeTimestamp(true) . '">' . $note->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . '", "' . $note->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
-		$html .= '</tbody></table></div>';
+		$html .= '</tbody></table>';
 
 		return $html;
 	}
@@ -1219,8 +1139,6 @@ class FunctionsPrintLists {
 	 * @return string
 	 */
 	public static function repositoryTable($repositories) {
-		global $WT_TREE, $controller;
-
 		// Count the number of linked records. These numbers include private records.
 		// It is not good to bypass privacy, but many servers do not have the resources
 		// to process privacy for every record in the tree
@@ -1228,36 +1146,8 @@ class FunctionsPrintLists {
 			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to, l_file"
 		)->fetchAssoc();
 
-		$html     = '';
-		$table_id = 'table-repo-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				$("#' . $table_id . '").dataTable({
-					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
-					autoWidth: false,
-					processing: true,
-					columns: [
-						/* Name        */ { type: "text" },
-						/* Sources     */ { type: "num" },
-						/* Last change */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* Delete      */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
-					],
-					displayLength: 20,
-					pagingType: "full_numbers"
-				});
-				$(".repo-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
-			');
-
-		$html .= '<div class="loading-image"></div>';
-		$html .= '<div class="repo-list">';
-		$html .= '<table id="' . $table_id . '"><thead><tr>';
-		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
+		$html = '';
+		$html .= '<table ' . Datatables::repositoryTableAttributes() . '><thead><tr>';		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
 		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '<th>' . I18N::translate('Delete') . '</th>';
@@ -1283,9 +1173,9 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				if ($n == $repository->getPrimaryName()) {
-					$html .= '<a class="name2" href="' . $repository->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>';
+					$html .= '<a class="name2" href="' . $repository->getHtmlUrl() . '">' . $name['full'] . '</a>';
 				} else {
-					$html .= '<a href="' . $repository->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>';
+					$html .= '<a href="' . $repository->getHtmlUrl() . '">' . $name['full'] . '</a>';
 				}
 			}
 			$html .= '</td>';
@@ -1296,7 +1186,7 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . '", "' . $repository->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';
@@ -1317,14 +1207,10 @@ class FunctionsPrintLists {
 		$html     = '';
 		$table_id = 'table-obje-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				$("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
 					autoWidth:false,
 					processing: true,
 					columns: [
@@ -1338,11 +1224,8 @@ class FunctionsPrintLists {
 					displayLength: 20,
 					pagingType: "full_numbers"
 				});
-				$(".media-list").css("visibility", "visible");
-				$(".loading-image").css("display", "none");
 			');
 
-		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="media-list">';
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . I18N::translate('Media') . '</th>';
@@ -1369,8 +1252,7 @@ class FunctionsPrintLists {
 				$html .= '<td>' . $media_object->displayImage() . '</td>';
 				// Media object name(s)
 				$html .= '<td data-sort="' . Filter::escapeHtml($media_object->getSortName()) . '">';
-				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
-				$html .= FunctionsPrint::highlightSearchHits($name) . '</a>';
+				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';
 				if (Auth::isEditor($media_object->getTree())) {
 					$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
 				}
@@ -1405,28 +1287,7 @@ class FunctionsPrintLists {
 	 * @return string
 	 */
 	public static function surnameTable($surnames, $script, Tree $tree) {
-		global $controller;
-
 		$html = '';
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
-				$(".surname-list").dataTable({
-					dom: "t",
-					jQueryUI: true,
-					autoWidth: false,
-					' . I18N::datatablesI18N() . ',
-					paging: false,
-					sorting: [[0, "asc"]],
-					columns: [
-						/* Surname */ { type: "text" },
-						/* Count   */ { type: "num" } 
-					]
-				});
-			');
-
 		if ($script == 'famlist.php') {
 			$col_heading = I18N::translate('Spouses');
 		} else {
@@ -1434,7 +1295,7 @@ class FunctionsPrintLists {
 		}
 
 		$html .=
-			'<table class="surname-list">' .
+			'<table ' . Datatables::surnameTableAttributes() . '>' .
 			'<thead>' .
 			'<tr>' .
 			'<th>' . I18N::translate('Surname') . '</th>' .
@@ -1468,7 +1329,7 @@ class FunctionsPrintLists {
 			foreach ($surns as $indis) {
 				$subtotal += count($indis);
 			}
-			$html .= '<td class="center" data-sort="' . $subtotal . '">';
+			$html .= '<td class="text-center" data-sort="' . $subtotal . '">';
 			foreach ($surns as $indis) {
 				$html .= I18N::number(count($indis)) . '<br>';
 			}
@@ -1622,10 +1483,7 @@ class FunctionsPrintLists {
 		$html     = '';
 		$table_id = 'table-even-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
-				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				$("#' . $table_id . '").dataTable({
 					dom: "t",
 					' . I18N::datatablesI18N() . ',
@@ -1634,7 +1492,6 @@ class FunctionsPrintLists {
 					lengthChange: false,
 					filter: false,
 					info: true,
-					jQueryUI: true,
 					sorting: [[ ' . ($sort_by == 'alpha' ? 0 : 1) . ', "asc"]],
 					columns: [
 						/* Name        */ { type: "text" },

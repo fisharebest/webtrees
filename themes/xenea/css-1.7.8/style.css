@@ -13,39 +13,960 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* ======== Globals ========== */
+/* The xenea theme */
 
-/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
-html {
-	overflow-y: scroll;
+/* Override Bootstrap formatting */
+.btn-link {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 
-body {
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+}
+
+/*
+ * Icons use FontAwesome by default, but have additional classes to
+ * allow them to be overridden
+ *
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-down.png);
+}
+
+a > .wt-icon-arrow-down:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-down-hover.png);
+}
+
+.wt-icon-arrow-end::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-right.png);
+}
+
+[dir=rtl] .wt-icon-arrow-end::before {
+	content: url(icons/arrow-left.png);
+}
+
+a > .wt-icon-arrow-end:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-right-hover.png);
+}
+
+[dir=rtl] a > .wt-icon-arrow-end:hover::before {
+	content: url(icons/arrow-left-hover.png);
+}
+
+.wt-icon-arrow-start::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-left.png);
+}
+
+[dir=rtl] .wt-icon-arrow-start::before {
+	content: url(icons/arrow-right.png);
+}
+
+a > .wt-icon-arrow-start:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-left-hover.png);
+}
+
+[dir=rtl] a > .wt-icon-arrow-start:hover::before {
+	content: url(icons/arrow-right-hover.png);
+}
+
+.wt-icon-arrow-up::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-up.png);
+}
+
+a > .wt-icon-arrow-up:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-up-hover.png);
+}
+
+.wt-icon-bing-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/bing-maps.png);
+}
+
+.wt-icon-calendar::before {
+	width: 19px;
+	height: 15px;
+	content: url(icons/calendar.png)
+}
+
+.wt-icon-coordinates::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/coordinates.png)
+}
+
+.wt-icon-copy::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/copy.png)
+}
+
+.wt-icon-delete::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/delete.png);
+}
+
+.wt-icon-edit::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/edit.png);
+}
+
+.wt-icon-family::before {
+	width: 14px;
+	height: 15px;
+	content: url(icons/family.png);
+}
+
+.wt-icon-help::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/help.png);
+}
+
+.wt-icon-google-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/google-maps.png);
+}
+
+.wt-icon-individual::before {
+	width: 11px;
+	height: 15px;
+	content: url(icons/individual.png);
+}
+
+.wt-icon-keyboard::before {
+	width: 30px;
+	height: 15px;
+	content: url(icons/keyboard.png);
+}
+
+.wt-icon-media::before {
+	width: 18px;
+	height: 16px;
+	content: url(icons/media.png);
+}
+
+.wt-icon-note::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/note.png);
+}
+
+.wt-icon-openstreetmap::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/openstreetmap.png);
+}
+
+.wt-icon-preferences::before {
+	width: 25px;
+	height: 25px;
+	content: url(icons/preferences.png);
+}
+
+.wt-icon-repository::before {
+	width: 15px;
+	height: 15px;
+	content: url(icons/repository.png);
+}
+
+.wt-icon-source::before {
+	width: 18px;
+	height: 16px;
+	content: url(icons/source.png);
+}
+
+.wt-icon-submitter::before {
+	width: 11px;
+	height: 15px;
+	content: url(icons/individual.png);
+}
+
+/*
+ * Pages have the following high-level structure:
+ *
+ * wt-global
+ * +---wt-header-wrapper
+ *     +---wt-header-container
+ *     |   +---wt-header-content
+ *     |       +---wt-accessibility-links
+ *     |       +---wt-site-logo
+ *     |       +---wt-site-title
+ *     |       +---wt-header-search
+ *     |       |   +---wt-header-search-form
+ *     |       |       +---wt-header-search-field
+ *     |       |       +---wt-header-search-button
+ *     |       +---wt-secondary-navigation
+ *     |       |   +---wt-secondary-menu
+ *     |       +---wt-primary-navigation
+ *     |           +---wt-primary-menu
+ *     +---wt-main-container
+ *     |   +---wt-main-content
+ *     |       +---wt-messages
+ *     |       +---wt-page-title
+ *     |       +---wt-page-options wt-page-options-xxxxx
+ *     |       +---wt-page-content
+ *     +---wt-footer-container
+ *         +---wt-footer-content
+ *             +---wt-contact-links
+ *             +---wt-powered-by-webtrees
+ *             +---wt-page-views
+ *             +---wt-cookie-warning
+ */
+
+.wt-global {
 	color: #006;
-	background-color: #fff;
-	font: 12px tahoma, arial, helvetica, sans-serif;
-	margin: 1px;
 }
 
-main {
-	display: block;
-	clear: both;
+.wt-header-wrapper {
+	background-image: linear-gradient(to right, #06d, #acf);
+	border-bottom: 2px solid #0073cf;
 }
+
+.wt-header-container {
+	color: #fff;
+}
+
+.wt-header-content {
+}
+
+.wt-accessibility-links {
+}
+
+.wt-site-logo {
+	display: none;
+}
+
+.wt-site-title {
+	order: 1;
+	flex: 0 0 calc(100% - 15rem);
+	font-size: 1.5rem;
+	margin: 0.5rem 0;
+}
+
+.wt-header-search {
+	order: 2;
+	flex: 0 0 15rem;
+	margin: 0.25rem 0;
+}
+
+.wt-header-search-form {
+}
+
+.wt-header-search-button {
+	color: #000;
+	background: #ddd;
+	border: 0;
+}
+
+.wt-header-search-button .fa-search::before {
+	content: ">";
+}
+
+.wt-secondary-navigation {
+	order: 3;
+	background-image: linear-gradient(#1548a7, #81bafc, #1548a7);
+	/* Extend to full page width */
+	flex: 0 1 100vw;
+	max-width: 100vw;
+	/* Recalculate margins for content */
+	margin: 0 calc(50% - 50vw);
+	padding: 0 calc(50vw - 50%);
+}
+
+.wt-secondary-menu {
+	padding: 0.25rem 0;
+	justify-content: space-between;
+}
+
+.wt-secondary-menu a.nav-link {
+	color: #fff;
+	font-weight: bold;
+}
+
+.wt-secondary-menu .dropdown-toggle::after {
+	display: none;
+}
+
+.wt-primary-navigation {
+	order: 4;
+	background: #fff;
+	/* Extend to full page width */
+	flex: 0 1 100vw;
+	max-width: 100vw;
+	/* Recalculate margins for content */
+	margin: 0 calc(50% - 50vw);
+	padding: 0 calc(50vw - 50%);
+}
+
+.wt-primary-menu {
+	justify-content: center;
+}
+
+.wt-primary-menu .nav-item {
+	text-align: center;
+	min-width: 5rem;
+	padding-top: 0.25rem;
+}
+
+.wt-primary-menu .nav-link::before {
+	display: block;
+}
+
+.wt-primary-menu .dropdown-toggle::after {
+	display: none;
+}
+
+.wt-primary-menu .dropdown-menu {
+	border-radius: 0;
+}
+
+.wt-primary-menu .dropdown-item {
+	padding: 0 0.25rem;
+}
+
+.wt-primary-menu .dropdown-item::before {
+	vertical-align: top;
+	padding: 0 0.25rem;
+}
+
+.menu-tree .nav-link::before {
+	content: url(menu/tree.png);
+}
+
+.menu-tree .dropdown-item::before {
+	content: url(menu/tree-tree.png);
+}
+
+.menu-chart .nav-link::before {
+	content: url(menu/chart.png);
+}
+
+.menu-chart-ancestry::before {
+	content: url(menu/chart-ancestors.png);
+}
+
+.menu-chart-compact::before {
+	content: url(menu/chart-compact.png);
+}
+
+.menu-chart-descendants::before {
+	content: url(menu/chart-descendants.png);
+}
+
+.menu-chart-familybook::before {
+	content: url(menu/chart-family-book.png);
+}
+
+.menu-chart-fanchart::before {
+	content: url(menu/chart-fanchart.png);
+}
+
+.menu-chart-hourglass::before {
+	content: url(menu/chart-hourglass.png);
+}
+
+.menu-chart-lifespan::before {
+	content: url(menu/chart-lifespan.png);
+}
+
+.menu-chart-pedigree::before {
+	content: url(menu/chart-pedigree.png);
+}
+
+.menu-chart-pedigreemap::before {
+	content: url(menu/chart-pedigree-map.png);
+}
+
+.menu-chart-relationship::before {
+	content: url(menu/chart-relationship.png);
+}
+
+.menu-chart-statistics::before {
+	content: url(menu/chart-statistics.png);
+}
+
+.menu-chart-timeline::before {
+	content: url(menu/chart-timeline.png);
+}
+
+.menu-chart-tree::before {
+	content: url(menu/chart-tree.png);
+}
+
+.menu-list .nav-link::before {
+	content: url(menu/list.png);
+}
+
+.menu-branches::before {
+	content: url(menu/branches.png);
+}
+
+.menu-list-fam::before {
+	content: url(menu/list-fam.png);
+}
+
+.menu-list-indi::before {
+	content: url(menu/list-indi.png);
+}
+
+.menu-list-note::before {
+	content: url(menu/list-note.png);
+}
+
+.menu-list-obje::before {
+	content: url(menu/list-obje.png);
+}
+
+.menu-list-plac::before {
+	content: url(menu/list-plac.png);
+}
+
+.menu-list-repo::before {
+	content: url(menu/list-repo.png);
+}
+
+.menu-list-sour::before {
+	content: url(menu/list-sour.png);
+}
+
+.menu-calendar .nav-link::before {
+	content: url(menu/calendar.png);
+}
+
+.menu-calendar-day::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-calendar-month::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-calendar-year::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-report .nav-link::before {
+	content: url(menu/report.png);
+}
+
+.menu-report .dropdown-item::before {
+	content: url(menu/report-report.png);
+}
+
+.menu-search .nav-link::before {
+	content: url(menu/search.png);
+}
+
+.menu-search .dropdown-item::before {
+	content: url(menu/search-search.png);
+}
+
+.menu-help .nav-link::before {
+	content: url(menu/help.png);
+}
+
+.menu-clippings .nav-link::before {
+	content: url(menu/clippings.png);
+}
+
+.menu-clippings-add::before {
+	content: url(menu/clippings-add.png);
+}
+
+.menu-clippings-cart::before {
+	content: url(menu/clippings-cart.png);
+}
+
+.menu-fam .nav-link::before {
+	content: url(menu/fam.png);
+}
+
+.menu-fam-change::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-addchil::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-orderchil::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-fam-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-fam-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-indi .nav-link::before {
+	content: url(menu/indi.png);
+}
+
+.menu-indi-addname::before {
+	content: url(menu/edit-indi.png);
+}
+
+.menu-indi-editsex::before {
+	content: url(menu/edit-indi.png);
+}
+
+.menu-indi-orderfam::before {
+	content: url(menu/edit-reorder.png);
+}
+
+.menu-indi-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-indi-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-indi-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-obje .nav-link::before {
+	content: url(menu/obje.png);
+}
+
+.menu-obje-edit::before {
+	content: url(menu/edit-obje.png);
+}
+
+.menu-obje-link::before {
+	content: url(menu/edit-link.png);
+}
+
+.menu-obje-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-obje-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-obje-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-note .nav-link::before {
+	content: url(menu/note.png);
+}
+
+.menu-note-edit::before {
+	content: url(menu/edit-note.png);
+}
+
+.menu-note-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-note-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-note-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-record .nav-link::before {
+	content: url(menu/indi.png);
+}
+
+.menu-record-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-record-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-repo .nav-link::before {
+	content: url(menu/repo.png);
+}
+
+.menu-repo-edit::before {
+	content: url(menu/edit-repo.png);
+}
+
+.menu-repo-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-repo-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-repo-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-sour .nav-link::before {
+	content: url(menu/sour.png);
+}
+
+.menu-sour-edit::before {
+	content: url(menu/edit-sour.png);
+}
+
+.menu-sour-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-sour-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-sour-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-story .nav-link::before {
+	content: url(menu/story.png);
+}
+
+.wt-main-container {
+}
+
+.wt-main {
+}
+
+.wt-messages {
+}
+
+.wt-page-title {
+	text-align: center;
+}
+
+.wt-page-options {
+	max-width: 50rem;
+	margin: 0 auto;
+}
+
+.wt-page-options .form-group {
+	margin-bottom: 2px;
+}
+
+.wt-page-options-label {
+	color: #006;
+	background-color: #95b8e0;
+	border-left: 2px solid transparent;
+	border-right: 2px solid transparent;
+}
+
+.wt-page-options-value {
+	background-color: #ecf5ff;
+	border: thin solid #c3dfff;
+	padding: 0.25rem 0.75rem;
+}
+
+.wt-page-content {
+	margin-top: 1rem;
+}
+
+.wt-footer-container {
+}
+
+.wt-footer-content {
+}
+
+.wt-contact-links {
+}
+
+.wt-powered-by-webtrees {
+}
+
+.wt-page-views {
+}
+
+.wt-cookie-warning {
+}
+
+/*
+ * The home/my pages
+ *
+ * wt-home-page / wt-my-page
+ * +---wt-main-blocks
+ * |   +---wt-block, wt-block-AAA
+ * |   +---wt-block, wt-block-BBB
+ * |   +---wt-block, wt-block-CCC
+ * +---wt-side-blocks
+ *     +---wt-block, wt-block-XXX
+ *     +---wt-block, wt-block-YYY
+ *     +---wt-block, wt-block-ZZZ
+ *
+ * Each block as the structure
+ * wt-block, wt-block-XXX
+ * +---wt-block-header, wt-block-header-XXX
+ * +---wt-block-content, wt-block-content-XXX
+ */
+
+.wt-block {
+	background-color: #edf7fd;
+	border: thin solid #81a9cb;
+}
+
+.wt-block-header {
+	background-color: #edf7fd;
+	border-bottom: none;
+	font-weight: bold;
+}
+
+.wt-block-content {
+	margin: 5px;
+	overflow: auto;
+}
+
+.wt-block-content .list_table {
+	border-spacing: 1px;
+	border: solid #81a9cb 1px;
+	border-right: 0;
+}
+
+.wt-block-content .list_value,
+.wt-block-content .list_value_wrap {
+	border: 0;
+	border-top: solid #81a9cb 1px;
+	border-right: solid #81a9cb 1px;
+}
+
+/*
+ * Ancestors chart
+ *
+ * wt-chart, wt-ancestors-chart
+ * +---wt-ancestors-chart-list
+ *     +---wt-ancestors-chart-list-item
+ */
+.wt-ancestors-chart-list {
+}
+
+/*
+ * Compact chart
+ *
+ * wt-chart, wt-compact-chart
+ */
+
+.wt-ancestors-chart-list-item {
+}
+
+/*
+ * Descendants chart
+ *
+ * wt-chart, wt-descendants-chart
+ * +---wt-descendants-chart-list
+ *     +---wt-descendants-chart-list-item
+ */
+.wt-descendants-chart-list {
+}
+
+.wt-descendants-chart-list-item {
+}
+
+/*
+ * Family book chart
+ *
+ * wt-chart, wt-family-book-chart
+ */
+
+/*
+ * Fan chart
+ *
+ * wt-chart, wt-fan-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-hourglass-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-interactive-tree
+ */
+
+/*
+ * Lifespans chart
+ *
+ * wt-chart, wt-lifespans-chart
+ */
+
+/*
+ * Pedigree chart
+ *
+ * wt-chart, wt-pedigree-chart
+ */
+
+/*
+ * Pedigree map
+ *
+ * wt-chart, wt-pedigree-map
+ */
+
+/*
+ * Relationships chart
+ *
+ * wt-chart, wt-relationships-chart
+ */
+
+/*
+ * Statistics chart
+ *
+ * wt-chart, wt-statistics-chart
+ */
+
+/*
+ * Timeline chart
+ *
+ * wt-chart, wt-timeline-chart
+ */
+
+/*
+ * Family list and individual list
+ *
+ * wt-page-options
+ * +---wt-initials-list
+ *     +---wt-initial-list-item
+ *         +---wt-initial
+ *         +---wt-initial, active
+ * wt-page-content
+ * +---wt-list, wt-{family,individual}-list
+ */
+
+.wt-initials-list {
+	list-style: none;
+}
+
+.wt-initials-list-item {
+	display: inline;
+}
+
+.wt-initials-list-item + .wt-initials-list-item::before {
+	content: '|';
+}
+
+.wt-initial {
+	padding: 0 0.25rem;
+}
+
+.wt-initial.active {
+	color: #f00;
+	font-weight: bold;
+}
+
+/*
+ * Media object list
+ *
+ * wt-list, wt-media-list
+ */
+
+/*
+ * Note object list
+ *
+ * wt-list, wt-note-list
+ */
+
+/*
+ * Source list
+ *
+ * wt-list, wt-source-list
+ */
+
+/*
+ * Repository list
+ *
+ * wt-list, wt-repository-list
+ */
+
+/*
+ * Branches list
+ *
+ * wt-branches-page
+ */
+
+/*
+ * Place hierarchy
+ *
+ * wt-place-hierarchy-page
+ */
+
+/*
+ * Calendar
+ *
+ * wt-calendar-page
+ */
+
+/*
+ * Reports
+ *
+ * wt-reports-page
+ */
+
+/*
+ * Search
+ *
+ * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ */
 
 #content #home-page {
     margin-left: 5px;
-}
-
-#content h2 {
-	margin-left: 10px;
-}
-
-[dir=rtl] #content #home-page {
-    margin-right: 5px;
-}
-
-[dir=rtl] #content h2 {
-	margin-right: 10px;
 }
 
 /* ====== Round Corners ======== */
@@ -55,20 +976,16 @@ main {
 	cursor: pointer;
 }
 
-input:required:valid,
-textarea:required:valid {
+input:required:valid {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
-input:required:invalid,
-textarea:required:invalid {
+input:required:invalid {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
-[dir=rtl] textarea:required:valid,
-[dir=rtl] input:required:invalid,
-[dir=rtl] textarea:required:invalid {
+[dir=rtl] input:required:invalid {
 	background-position: left top;
 }
 
@@ -91,85 +1008,11 @@ a:hover {
 	text-align: center;
 }
 
-dl {
-	margin: 0;
-}
-
-dt {
-	float: left;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-[dir=rtl] dt {
-	float: right;
-	margin-right: auto;
-	margin-left: 10px;
-}
-
-h2 {
-	color: #006;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-h4 {
-	color: #006;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-th {
-	font-weight: 100;
-}
-
-ul {
-	padding-left: 15px;
-	padding-right: 15px;
-	margin: 8px;
-}
-
-img {
-	border: 0;
-}
-
-legend img {
-	height: 20px;
-	vertical-align: middle;
-	width: 20px;
-}
-
-/* Some styles from bootstrap */
-.text-muted {
-	color: #777;
-}
-
-.small {
-	font-size: 12px;
-}
-
 img.block,
 #mycart img {
 	border: 0;
 	height: 25px;
 	vertical-align: middle;
-}
-
-input,
-button,
-textarea {
-	border-width: 1px;
-	border-color: #fff #555 #555 #fff;
-	font-size: 12px;
-}
-
-input,
-textarea {
-	padding: 0 3px;
-}
-
-textarea {
-	border-style: inset;
 }
 
 .topbottombar {
@@ -179,30 +1022,6 @@ textarea {
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
-}
-
-fieldset {
-	margin: 8px 8px 4px;
-	text-align: left;
-}
-
-[dir=rtl] fieldset {
-	text-align: right;
-}
-
-legend {
-	font-weight: bold;
-}
-
-select {
-	border: 1px solid #555;
-	font-size: 12px;
-	margin: 0 7px;
-	padding: 1px;
-}
-
-header form {
-	font-size: 12px;
 }
 
 #mycart a img {
@@ -783,13 +1602,11 @@ a:hover .nameZoom {
 
 /* ---Pending edits--- */
 .new {
-	border: solid blue 1px;
-	overflow: hidden;
+	outline: solid blue 1px;
 }
 
 .old {
-	border: solid red 1px;
-	overflow: hidden;
+	outline: solid red 1px;
 }
 
 .tag_cloud {
@@ -799,59 +1616,6 @@ a:hover .nameZoom {
 .tag_cloud a {
 	white-space: nowrap;
 }
-
-/* ---Autocomplete styles--- */
-.ui-autocomplete-input {
-	background-color: #eee8aa;
-}
-
-.ui-autocomplete {
-	padding: 0;
-	border: 1px solid #000;
-	background-color: #fff;
-	z-index: 99999;
-	list-style: none outside none;
-	margin: 0;
-	max-height: 200px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
-
-.ui-autocomplete li {
-	margin: 0;
-	padding: 2px 5px;
-	font-size: 12px;
-	cursor: default;
-	display: block;
-	/* if width will be 100% horizontal scrollbar will apear when scroll mode will be used */
-	/* width: 100%; */
-	font: menu;
-	/* it is very important, if line-height not setted or setted in relative units scroll will be broken in firefox */
-	line-height: 14px;
-	overflow: hidden;
-}
-
-.ui-autocomplete-loading {
-	background: #fff url(images/indicator.gif) right center no-repeat;
-}
-
-.ui-autocomplete li:nth-child(odd) {
-	background-color: #eee;
-}
-
-.ui-autocomplete a.ui-state-focus {
-	color: #f00;
-}
-
-.ui-sortable li {
-	list-style-type: none;
-}
-
-.ui-sortable .noprint {
-	display: none;
-}
-
-/* ---End of Autocomplete styles--- */
 
 .nowrap {
 	white-space: nowrap;
@@ -912,16 +1676,10 @@ a:hover .nameZoom {
 }
 
 #pending .indent {
-	padding: 0px;
+	padding: 0;
 }
 
 /* ======== Person box ======= */
-.gedcom_favorites_block,
-.user_favorites_block,
-.person_box_template {
-	overflow: visible !important;
-}
-
 /* Box styles are
 	0 compact view
 	1 normal view - small box
@@ -964,12 +1722,6 @@ a:hover .nameZoom {
 .person_box_template .inout {
 	clear: both;
 	display: none;
-}
-
-.person_box_template .noprint {
-	width: 25px;
-	height: 50px;
-	position: relative;
 }
 
 .person_box_template .chart_textbox {
@@ -1233,31 +1985,8 @@ a:hover .nameZoom {
 	text-align: right;
 }
 
-#register-form label input,
-#register-form label select,
-#register-form textarea {
-	width: 220px;
-	margin: 0 10px;
-	padding: 3px;
-}
-
-#register-form label select {
-	margin: 0 10px;
-	width: 228px;
-}
-
-#register-form textarea {
-	vertical-align: top;
-}
-
 #register-form div#registration-submit {
 	text-align: center;
-}
-
-.login_block_block #login-form,
-.login_block_block #new_passwd_form {
-	border: 0;
-	background: none;
 }
 
 [dir=rtl] #login-form label,
@@ -1313,8 +2042,6 @@ a:hover .nameZoom {
 	opacity: 0;
 	transition: visibility 0s ease .25s,opacity .25s ease;
 	z-index: 9999;
-	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
-	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
@@ -1414,48 +2141,9 @@ a:hover .nameZoom {
 }
 
 /* ======== List styles ====== */
-.source-list,
-.note-list,
-.repo-list,
-.media-list,
-.indi-list,
-.fam-list {
-	margin: 5px auto;
-	visibility: hidden;
-}
-
-.recent_changes_block,
-.upcoming_events_block,
-.todays_events_block,
-.todo_block {
-	width: 98%;
-}
-
 .surname-list,
 .givn-list {
 	margin: 5px auto;
-}
-
-.source-list table,
-.note-list table,
-.repo-list table,
-.media-list table,
-.indi-list table,
-.fam-list table {
-	width: 100%;
-}
-
-.source-list td,
-.note-list td,
-.repo-list td,
-.media-list td,
-.indi-list td,
-.fam-list td,
-.recent_changes_block td,
-.upcoming_events_block td,
-.surname-list td,
-.givn-list td {
-	padding: 2px 5px;
 }
 
 .surname-list td {
@@ -1474,11 +2162,6 @@ a:hover .nameZoom {
 .media-list th,
 .indi-list th,
 .fam-list th,
-.recent_changes_block th,
-.upcoming_events_block th,
-.todays_events_block th,
-.todo_block th,
-.yahrzeit_block th,
 .surname-list th,
 .givn-list th {
 	cursor: pointer;
@@ -1515,17 +2198,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-#source-tabs,
-#note-tabs,
-#repo-tabs,
-#media-tabs {
-	visibility: hidden;
-}
-
-#statistics_chart {
-	visibility: hidden;
-}
-
 #source-edit,
 #note-edit,
 #repo-edit,
@@ -1559,13 +2231,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-#search-result-tabs,
-#places-tabs {
-	margin: auto;
-	width: 98%;
-	visibility: hidden;
-}
-
 #search-result-tabs h3 {
 	text-align: center;
 }
@@ -1589,187 +2254,10 @@ a:hover .nameZoom {
 	margin: 0 1px 1px -2px;
 }
 
-/* ======== Block styles ===== */
-#index_main_blocks {
-	clear: none;
-	width: 66%;
-	float: left;
-}
-
-#index_small_blocks {
-	clear: none;
-	width: 33%;
-	float: right;
-}
-
-#index_full_blocks {
-	clear: none;
-	width: 100%;
-}
-
-[dir=rtl] #index_main_blocks {
-	float: right;
-}
-
-[dir=rtl] #index_small_blocks {
-	float: left;
-}
-
-.small_inner_block {
-	max-height: 200px;
-	overflow: auto;
-}
-
-.normal_inner_block {
-	overflow: auto;
-}
-
-.block {
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
-	margin-top: 10px;
-	padding: 3px;
-	vertical-align: top;
-}
-
-.blockcontent {
-	margin: 5px;
-	overflow: auto;
-}
-
-.blockcontent .list_table {
-	border-spacing: 1px;
-	border: solid #81a9cb 1px;
-	border-right: 0;
-}
-
-.blockcontent .list_value,
-.blockcontent .list_value_wrap {
-	border: 0;
-	border-top: solid #81a9cb 1px;
-	border-right: solid #81a9cb 1px;
-}
-
-.blockheader {
-	font-weight: bold;
-}
-
-/* end Block styles */
-
 #main_select,
 #available_select,
 #right_select {
 	min-width: 150px;
-}
-
-.user_welcome_block table,
-.gedcom_block_block table {
-	margin: auto;
-}
-
-.user_welcome_block td,
-.gedcom_block_block td {
-	width: 33%;
-	text-align: center;
-	vertical-align: top;
-}
-
-/* Random picture block */
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
-}
-
-/* ==== Favourites block ===== */
-.blockcontent .person_box_template .details2 {
-	min-height: 40px;
-}
-
-.blockcontent [class*='box-style2'] {
-	margin: 5px 0;
-}
-
-.add_fav_head {
-	font-weight: 900;
-	margin: 5px 0;
-}
-
-.add_fav_head i {
-	margin: 0 5px 1px;
-}
-
-.add_fav_ref label {
-	display: inline-block;
-	min-width: 100px;
-}
-
-.add_fav_ref input {
-	margin: 0 5px;
-}
-
-/* === Who is online block === */
-.logged_in_list {
-	margin: 5px 0 0;
-	padding: 0;
-	line-height: 20px;
-}
-
-/* Statistics block */
-.stat-table1 {
-	display: table;
-	float: left;
-	width:15%;
-	border-collapse:separate;
-	border-spacing:2px;
-	vertical-align: middle;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table1 {
-float: right;
-}
-
-.stat-table2 {
-	display: table;
-	float: left;
-	width:60%;
-	border-collapse:separate;
-	border-spacing:2px;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table2 {
-float: right;
-}
-
-.stat-row {
-	display: table-row;
-}
-.stat-cell {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	white-space: pre-wrap;
-}
-.left {text-align: left;}
-[dir=rtl] .left {text-align: right;}
-
-/* ==== Theme select block === */
-.theme_form ul {
-	margin: -10px auto;
-}
-
-.theme_form li {
-	visibility: hidden;
-}
-
-.theme_form li ul li {
-	display: inline-block;
-	padding: 10px;
-	visibility: visible;
 }
 
 /* ==== FAQ table styles ===== */
@@ -1811,36 +2299,7 @@ div.faq_body {
 	padding-top: 15px;
 }
 
-/* a container for the following three links */
-
-.editlink,
-.copylink,
-.deletelink {
-	float: left;
-}
-
-[dir=rtl] .editlink,
-[dir=rtl] .copylink,
-[dir=rtl] .deletelink {
-	float: right;
-}
-
-span.link_text {
-	display: none;
-}
-
 /* ======== Indi header ====== */
-.field .editlink,
-.field .deletelink,
-.field .copylink {
-	float: right;
-}
-
-[dir=rtl].field .editlink,
-[dir=rtl].field .deletelink {
-	float: left;
-}
-
 #indi_header {
 	overflow: hidden;
 	border-radius: 3px;
@@ -1939,8 +2398,8 @@ span.link_text {
 	float: right;
 }
 
-dd .editlink,
-dd .deletelink {
+#individual-names .wt-icon-edit,
+#individual-names .wt-icon-delete {
 	float: right;
 }
 
@@ -2020,13 +2479,13 @@ dd .deletelink {
 	float: left;
 }
 
-[dir=rtl] dd .editlink,
-[dir=rtl] dd .deletelink {
+[dir=rtl] #individual-names .wt-icon-edit,
+[dir=rtl] #individual-names .wt-icon-delete {
 	float: left;
 }
 
 .odometer {
-	font-family: courier, mono-space;
+	font-family: courier, monospace;
 	font-weight: bold;
 	background: #000;
 	color: #fff;
@@ -2035,10 +2494,7 @@ dd .deletelink {
 /* ======= General sprite ==== */
 .male_gender,
 .female_gender,
-.unknown_gender,
-.editicon,
-.copyicon,
-.deleteicon {
+.unknown_gender {
 	display: block;
 	background: url(images/indi_sprite.png) no-repeat;
 }
@@ -2059,24 +2515,6 @@ dd .deletelink {
 	background-position: -100px 4px;
 	width: 24px;
 	height: 30px;
-}
-
-.editicon {
-	background-position: -40px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.copyicon {
-	background-position: -70px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.deleteicon {
-	background-position: -100px -32px;
-	width: 24px;
-	height: 16px;
 }
 
 /* ======== Indi tabs ======== */
@@ -2159,47 +2597,6 @@ dd .deletelink {
 	width: 100%;
 }
 
-/* === jquery-ui.css changes === */
-.ui-state-highlight a {
-	font-weight: bold;
-}
-
-.ui-accordion .ui-accordion-content {
-	border: 0;
-	position: relative;
-	padding: 0 5px;
-	overflow: visible;
-}
-
-.ui-widget-content a {
-    color: #00f;
-}
-
-#sidebarAccordion .ui-accordion-header {
-	text-align: center;
-}
-
-.ui-widget-header {
-	padding: 3px;
-}
-
-[dir=rtl] .ui-tabs .ui-tabs-nav li {
-	float: right;
-}
-
-[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
-	right: 0.5em;
-}
-
-[dir=rtl] .ui-dialog-title {
-	float: right;
-}
-
-[dir=rtl] .ui-dialog-titlebar-close {
-	left: .3em;
-	right: auto;
-}
-
 /* === jQuery.datatable styling general over-rides === */
 .odd {
 	background-color: #e7eef3;
@@ -2237,24 +2634,6 @@ dd .deletelink {
 	padding: 4px;
 }
 
-.recent_changes_block .dataTables_info,
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info,
-.todo_block .dataTables_info,
-.yahrzeit_block .dataTables_info {
-	padding: 0;
-}
-
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info {
-	padding: 2px 0 0;
-}
-
-.upcoming_events_block button,
-.todays_events_block button {
-	margin: 0 20px;
-}
-
 .dataTables_length {
 	float: right;
 	font-weight: normal;
@@ -2268,10 +2647,6 @@ dd .deletelink {
 
 .dt-clear {
 	clear: both;
-}
-
-#loading {
-	text-align: center;
 }
 
 .DataTables_sort_wrapper {
@@ -2337,14 +2712,6 @@ dd .deletelink {
 	display: table-cell;
 }
 
-#indi_left .ui-tabs-panel {
-	padding: 0;
-}
-
-#indi_left .ui-tabs-nav {
-	margin: 0 2px;
-}
-
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
@@ -2373,7 +2740,7 @@ dd .deletelink {
 	overflow: hidden;
 }
 
-#separator:after {
+#separator::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -2386,18 +2753,18 @@ dd .deletelink {
 	border-top-right-radius: 3px;
 }
 
-[dir=rtl] #separator:after {
+[dir=rtl] #separator::after {
 	right: auto;
 	left: 0;
 }
 
-.separator-hidden:after,
-[dir=rtl] .separator-visible:after {
+.separator-hidden::after,
+[dir=rtl] .separator-visible::after {
 	background: #c3dfff url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
-.separator-visible:after,
-[dir=rtl] .separator-hidden:after {
+.separator-visible::after,
+[dir=rtl] .separator-hidden::after {
 	background: #c3dfff url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
@@ -2769,212 +3136,6 @@ dd .deletelink {
 	margin: 0 260px 0 0;
 }
 
-/* ===== Edit interface pop-ups ===== */
-#edit_interface-page h4 {
-	color: #555;
-	margin: 5px;
-}
-
-#edit_interface-page .optionbox span {
-	margin: 0 5px;
-}
-
-#edit_interface-page #LATI,
-#edit_interface-page #LONG,
-#edit_interface-page #SPFX,
-#edit_interface-page #NSFX,
-#edit_interface-page #NPFX {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 88px;
-}
-
-#edit_interface-page #GIVN,
-#edit_interface-page #SURN,
-#edit_interface-page #_MARNM {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 180px;
-}
-
-#edit_interface-page input[type="text"],
-#edit_interface-page #NAME_display {
-	line-height: 18px;
-	margin: 0 5px;
-	vertical-align: top;
-	width: 240px;
-}
-
-#edit_interface-page input[type="text"][id*="PAGE"],
-#edit_interface-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR"],
-#edit_interface-page input[type="text"][id*="REPO"],
-#edit_interface-page input[type="text"][id*="OBJE"],
-#edit_interface-page input[type="text"][id*="FAMC"],
-#edit_interface-page input[type="text"][id*="ASSO"],
-#edit_interface-page input[type="text"][id^="AGE"],
-#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 250px;
-}
-
-#edit_interface-page input[type="text"][id$="DATE"] {
-	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
-	width: 200px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
-	width: 250px;
-}
-
-#edit_interface-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#edit_interface-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#edit_interface-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#edit_interface-page textarea[id*="TEXT"],
-#edit_interface-page textarea[id*="PUBL"] {
-	height: 140px;
-}
-
-#edit_interface-page textarea[id^="newgedrec"] {
-	line-height: 18px;
-	width: 605px;
-}
-
-#edit_interface-page textarea#gedcom {
-	height: 364px;
-}
-
-#edit_interface-page textarea[id*="ADDR"],
-#edit_interface-page input[id*="ADDR"] {
-	height: 80px;
-	width: 300px;
-}
-
-#edit_interface-page #changefam {
-	padding: 5px;
-}
-
-#edit_interface-page #changefam table {
-	margin: 10px auto;
-	min-width: 400px;
-	max-width: 650px;
-}
-
-#edit_interface-page #changefam span {
-	margin: 0;
-}
-
-#edit_interface-page #changefam td {
-	padding: 5px;
-	white-space: normal;
-}
-
-#edit_interface-page #changefam td.child {
-	text-align: center;
-}
-
-#save-cancel {
-	position: fixed;
-	bottom: 0;
-	background-color: #d1d9ef;
-	width: 98%;
-	border: solid #81a9cb 1px;
-	margin: 0;
-}
-
-#save-cancel input {
-	padding: 2px 8px;
-}
-
-#save-cancel .save {
-	float: left;
-	margin: 5px;
-}
-
-#save-cancel .cancel {
-	float: right;
-	margin: 5px;
-}
-
-[dir=rtl] #save-cancel .save {
-	float: right;
-}
-
-[dir=rtl] #save-cancel .cancel {
-	float: left;
-}
-
-#edit_interface-page,
-#addmedia-page {
-	margin-bottom: 50px;
-}
-
-/* ===== Addmedia pop-ups ===== */
-#addmedia-page input[type="text"] {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 300px;
-}
-
-#addmedia-page .optionbox select {
-	margin: 0 5px;
-}
-
-#addmedia-page .optionbox p.sub{
-	margin: 0 5px;
-	font-size: 11px;
-}
-
-#addmedia-page input[type="text"][id*="PAGE"],
-#addmedia-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#addmedia-page input[type="text"][id*="SOUR"],
-#addmedia-page input[type="text"][id*="REPO"],
-#addmedia-page input[type="text"][id*="OBJE"],
-#addmedia-page input[type="text"][id*="FAMC"],
-#addmedia-page input[type="text"][id*="ASSO"],
-#addmedia-page input[type="text"][id^="AGE"],
-#addmedia-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 70px;
-}
-
-#addmedia-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#addmedia-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#addmedia-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#addmedia-page textarea[id*="TEXT"],
-#addmedia-page textarea[id*="PUBL"] {
-	height: 140px;
-}
-
 /* ===== Styling for the jquery.colorbox gallery ===== */
 #colorbox,
 #cboxOverlay,
@@ -3167,39 +3328,20 @@ dd .deletelink {
 	display:block;
 }
 
-#compact_chart,
-#fan_chart,
-.chart_common,
-#ancestry_booklet,
-#descendancy_booklet,
-#familybook_chart,
-#hourglass_chart {
-	margin: 20px;
-}
-
-/* styles for vertical lines in ancestry and descendancy charts */
-.chart_common li {
-	list-style: none;
-}
-
-.chart_common li > span.details1 {
-	white-space: nowrap;
-}
-
-.chart_common .generation {
+/* Ancestry chart */
+.wt-ancestors-chart-list {
 	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
 	padding: 0;
 	display: block;
 }
 
-[dir=rtl] .chart_common .generation {
+[dir=rtl] .wt-ancestors-chart-list {
 	margin: 0 15px 0 0;
-	background-position: right top
-;
+	background-position: right top;
 }
 
-.chart_common .generation > li {
+.wt-ancestors-chart-list-item {
 	margin: 5px 0;
 }
 
@@ -3283,22 +3425,6 @@ dd .deletelink {
 	text-align: center;
 }
 
-/*-- Hourglass ---- */
-#hourglass_chart img.line4 {
-	vertical-align: middle;
-}
-
-#hourglass_chart table,
-.charts_block table {
-	border-collapse: collapse;
-}
-
-#hourglass_chart td,
-.charts_block td {
-	padding: 0;
-	empty-cells: show;
-}
-
 /*-- Lifespan ---- */
 #lifespan-chart {
 	padding:    0 10px 10px;
@@ -3361,11 +3487,6 @@ dd .deletelink {
 	z-index: -1000;
 }
 
-#pedigree-page .shadow {
-	position: absolute;
-	white-space: nowrap;
-}
-
 #pedigree-page .layout0 .shadow > div,
 #pedigree-page .layout1 .shadow > div {
 	display: inline-block;
@@ -3381,6 +3502,16 @@ dd .deletelink {
 #childarrow,
 .ancestorarrow {
 	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pedigree_chart .person_box_template {
+	display: inline-block;
+}
+
+#pedigree_chart .shadow {
+	white-space: nowrap;
 }
 
 #pedigree-page #childarrow {
@@ -3434,19 +3565,6 @@ dd .deletelink {
 	background-image: url(images/add.png);
 }
 
-.icon-admin {
-	width: 25px;
-	height: 25px;
-	background-image: url(images/admin.png);
-	margin: 0 5px;
-}
-
-.icon-bing {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/bing.png);
-}
-
 .icon-button_addmedia {
 	width: 18px;
 	height: 16px;
@@ -3470,13 +3588,6 @@ dd .deletelink {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/addsource.png);
-}
-
-.icon-button_calendar {
-	width: 19px;
-	height: 15px;
-	background-image: url(images/buttons/calendar.png);
-	vertical-align: middle;
 }
 
 .icon-button_family {
@@ -3513,13 +3624,6 @@ dd .deletelink {
 	width: 11px;
 	height: 15px;
 	background-image: url(images/buttons/indi.png);
-}
-
-.icon-button_keyboard {
-	width: 30px;
-	height: 15px;
-	background-image: url(images/buttons/keyboard.png);
-	vertical-align: middle;
 }
 
 .icon-button_media {
@@ -3578,40 +3682,10 @@ dd .deletelink {
 	background-image: url(images/clippings.png);
 }
 
-.icon-darrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow.png);
-}
-
-a.icon-darrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow2.png);
-}
-
-.icon-ddarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow.png);
-}
-
-a.icon-ddarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow2.png);
-}
-
 .icon-edit_indi {
 	width: 25px;
 	height: 25px;
 	background-image: url(images/edit_indi.png);
-}
-
-.icon-email {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/email.png);
 }
 
 .icon-fam-list {
@@ -3620,60 +3694,16 @@ a.icon-ddarrow:hover {
 	background-image: url(images/cfamily.png);
 }
 
-.icon-googlemaps {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/googlemaps.png);
-}
-
-.icon-help {
-	cursor: help;
-	margin: 0 5px;
-	width: 15px;
-	height: 15px;
-	background-image: url(images/help.png);
-}
-
 .icon-indi-list {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/indis.png);
 }
 
-.icon-larrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow.png);
-}
-
-a.icon-larrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow2.png);
-}
-
-.icon-ldarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow.png);
-}
-
-a.icon-ldarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow2.png);
-}
-
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/indicator.gif);
-}
-
-.icon-loading-large {
-	width: 32px;
-	height: 32px;
-	background-image: url(images/loading.gif);
 }
 
 .icon-media {
@@ -3742,40 +3772,10 @@ a.icon-ldarrow:hover {
 	background-image: url(images/notes.png);
 }
 
-.icon-osm {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/osm.png);
-}
-
 .icon-plus {
 	width: 11px;
 	height: 11px;
 	background-image: url(images/plus.png);
-}
-
-.icon-rarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow.png);
-}
-
-a.icon-rarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow2.png);
-}
-
-.icon-rdarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow.png);
-}
-
-a.icon-rdarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow2.png);
 }
 
 .icon-reminder {
@@ -3868,47 +3868,10 @@ a.icon-rdarrow:hover {
 	background-image: url(images/source.png);
 }
 
-.icon-target {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/target.png);
-	vertical-align: middle;
-}
-
-.icon-uarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow.png);
-}
-
-a.icon-uarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow2.png);
-}
-
-.icon-udarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow.png);
-}
-
-a.icon-udarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow2.png);
-}
-
 .icon-warning {
 	width: 17px;
 	height: 17px;
 	background-image: url(images/warning.png);
-}
-
-.icon-wiki {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/w_button.png);
 }
 
 .icon-zoomin {
@@ -4083,283 +4046,6 @@ a.icon-udarrow:hover {
 .icon-mime-video-x-ms-wmv {
 	background-position: -50px -196px;
 }
-/* ====== End Icon styles ====== */
-
-/* ====== Theme Header ========= */
-header h1 {
-	clear: left;
-	float: left;
-	font-size: 24px;
-	font-weight: normal;
-	height: 20px;
-	margin: 10px 12px;
-}
-
-[dir=rtl] header h1 {
-	float: right;
-}
-
-.header-upper {
-	height: 40px;
-	color: #fff;
-	background: #039 url(images/cabeza.png) left top;
-}
-
-[dir=rtl] .header-upper {
-	background: url(images/cabeza_rtl.png) right top;
-}
-
-.header-search {
-	display: block;
-	float: right;
-	margin-top: 10px;
-	margin-right: 5px;
-}
-
-[dir=rtl] .header-search {
-	float: left;
-	padding-left: 10px;
-}
-
-/* Set stack level for top two header menu rows */
-.secondary-menu ul,
-.primary-menu ul {
-	z-index: 210;
-	max-height: 400px;
-	min-width: 140px;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-/* ====== Secondary menu ======= */
-.header-lower {
-	background: #84beff url(images/barra.png);
-	width: 100%;
-	color: #fff;
-	height: 40px;
-	position: relative;
-}
-
-.menu-theme,
-.menu-favorites {
-	float: left;
-}
-
-[dir=rtl] .menu-theme,
-[dir=rtl] .menu-favorites {
-	float: right;
-}
-
-.menu-language {
-	float: right;
-}
-
-[dir=rtl] .menu-language {
-	float: left;
-}
-
-.secondary-menu {
-	clear: both;
-	text-align: center;
-	margin: 0;
-	list-style: none;
-}
-
-.secondary-menu li {
-	display: inline-block;
-	position: relative;
-	white-space: nowrap;
-	padding: 12px 10px 0 5px;
-}
-
-.secondary-menu a {
-	color: #fff;
-	font-weight: bold;
-}
-
-.secondary-menu a:hover {
-	color: #f00;
-}
-
-.secondary-menu ul {
-	list-style: none;
-	display: none;
-	position: absolute;
-	top: 18px;
-	background-color: #fff;
-	border: thin solid #c3dfff;
-	padding: 1px;
-}
-
-.menu-language ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .menu-language ul {
-	left: 0;
-	right: auto;
-}
-
-.secondary-menu li li {
-	padding: 2px;
-	display: block;
-	text-align: left;
-}
-
-[dir=rtl] .secondary-menu li li {
-	text-align: right;
-}
-
-[dir=rtl] li li {
-	text-align: right;
-}
-
-.secondary-menu li li a {
-	color: #000;
-	font-weight: normal;
-	display: block;
-	padding: 3px;
-}
-
-.secondary-menu li li a:hover {
-	color: #f00;
-}
-
-.secondary-menu li:hover ul {
-	display: block;
-}
-
-.secondary-menu .active a {
-	color: #006;
-	font-weight: 900;
-}
-
-/* ====== Primary menu ========= */
-header nav {
-	border-bottom: 2px solid #0073cf;
-	float: left;
-	height: 40px;
-	margin-bottom: 14px;
-	padding: 10px 0;
-	position: relative;
-	width: 100%;
-	clear: both;
-}
-
-.primary-menu,
-.primary-menu ul {
-	margin: 0;
-	list-style-type: none;
-}
-
-.primary-menu {
-	margin: 0 auto;
-	display: table;
-}
-
-.primary-menu li {
-	float: left;
-	position: relative;
-}
-
-.primary-menu li li {
-	clear: both;
-}
-
-.primary-menu li:hover > ul {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 100%;
-	right: auto;
-	margin-top: 0;
-}
-
-.primary-menu > li:hover > ul {
-	left: 0;
-	right: auto;
-	top: 42px;
-}
-
-.primary-menu a {
-	display: block;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.primary-menu ul {
-	position: absolute;
-	display: none;
-	background: #fff;
-	border: thin solid #aaa;
-	padding: 0;
-}
-
-.primary-menu li a {
-	margin: auto;
-	padding-top: 22px;
-	width: 100%;
-}
-
-.primary-menu li li a {
-	display: block;
-	position: relative;
-	float: left;
-	font-size: 11px;
-	line-height: 1.5;
-	padding: 0 10px 1px 5px;
-}
-
-.primary-menu > li {
-	background-image: url(images/sprites-top-menu.png);
-	background-repeat: no-repeat;
-	min-width: 80px;
-	width: auto;
-	text-align: center;
-	height: 28px;
-	line-height: 28px;
-	text-indent: 0;
-}
-
-.primary-menu li li {
-	background-image: url(images/sprites-sub-menu.png);
-	background-repeat: no-repeat;
-	height: 23px;
-	left: auto;
-	line-height: 23px;
-	text-align: left;
-	text-indent: 26px;
-	margin-top:  2px;
-	width: 100%;
-}
-
-/* Reverse left and right on RTL pages */
-[dir=rtl] .primary-menu li {
-	float: right;
-}
-
-[dir=rtl] .primary-menu li:hover > ul {
-	right: 100%;
-	left: auto;
-}
-
-[dir=rtl] .primary-menu > li:hover > ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .primary-menu li li {
-	text-align: right;
-}
-
-[dir=rtl] .primary-menu li li a {
-	float: right;
-	padding: 1px 5px 1px 10px;
-}
-
-/* ====== End Theme Header ===== */
-
 /* ====== Theme Footer ========= */
 
 footer {
@@ -4380,699 +4066,8 @@ footer {
 	height: 21px;
 }
 
-.powered-by-webtrees:after {
+.powered-by-webtrees::after {
 	content: url(images/powered-by-webtrees.png);
-}
-
-/* ====== End Theme Footer ===== */
-
-/* ====== Theme Icons ========== */
-/* ***** Header icons **** */
-.menu-tree {
-	background-position:center -0px;
-}
-
-.menu-mymenu {
-	background-position:center -203px;
-}
-
-.menu-chart {
-	background-position:center -29px;
-}
-
-.menu-list {
-	background-position:center -58px;
-}
-
-.menu-report {
-	background-position:center -116px;
-}
-
-.menu-calendar {
-	background-position:center -87px;
-}
-
-.menu-search {
-	background-position:center -145px;
-}
-
-.menu-help {
-	background-position:center -174px;
-}
-
-.menu-clippings {
-	background-position:center -232px;
-}
-
-.menu-indi,
-.menu-record {
-	background-position:center -261px;
-}
-
-.menu-indi-orderfam {
-	background-position: left 0;
-}
-
-[dir=rtl] .menu-indi-orderfam {
-	background-position: right 0;
-}
-
-.menu-sour {
-	background-position:center -319px;
-}
-
-.menu-fam {
-	background-position:center -290px;
-}
-
-.menu-obje {
-	background-position: center -377px;
-}
-
-.menu-note {
-	background-position:center -348px;
-}
-
-.menu-repo {
-	background-position: center -406px;
-}
-
-.menu-story {
-	background-position: center -435px;
-}
-
-/* Header Sub-menu icons */
-.menu-admin {
-	background-position: left -644px;
-}
-
-[dir=rtl] .menu-admin {
-	background-position: right -644px;
-}
-
-.menu-branches {
-	background-position: left -414px;
-}
-
-[dir=rtl] .menu-branches {
-	background-position: right -414px;
-}
-
-.menu-calendar-day {
-	background-position: left -506px;
-}
-
-[dir=rtl] .menu-calendar-day {
-	background-position: right -506px;
-}
-
-.menu-calendar-month {
-	background-position: left -506px;
-}
-
-[dir=rtl] .menu-calendar-month {
-	background-position: right -506px;
-}
-
-.menu-calendar-year {
-	background-position: left -506px;
-}
-
-[dir=rtl] .menu-calendar-year {
-	background-position: right -506px;
-}
-
-.menu-chart-ancestry {
-	background-position: left -0px;
-}
-
-[dir=rtl] .menu-chart-ancestry {
-	background-position: right -0px;
-}
-
-.menu-chart-compact {
-	background-position: left -46px;
-}
-
-[dir=rtl] .menu-chart-compact {
-	background-position: right -46px;
-}
-
-.menu-chart-descendants {
-	background-position: left -69px;
-}
-
-[dir=rtl] .menu-chart-descendants {
-	background-position: right -69px;
-}
-
-.menu-chart-familybook {
-	background-position: left -92px;
-}
-
-[dir=rtl] .menu-chart-familybook {
-	background-position: right -92px;
-}
-
-.menu-chart-fanchart {
-	background-position: left -23px;
-}
-
-[dir=rtl] .menu-chart-fanchart {
-	background-position: right -23px;
-}
-
-.menu-chart-hourglass {
-	background-position: left -115px;
-}
-
-[dir=rtl] .menu-chart-hourglass {
-	background-position: right -115px;
-}
-
-.menu-chart-lifespan {
-	background-position: left -161px;
-}
-
-[dir=rtl] .menu-chart-lifespan {
-	background-position: right -161px;
-}
-
-.menu-chart-pedigree {
-	background-position: left -184px;
-}
-
-[dir=rtl] .menu-chart-pedigree {
-	background-position: right -184px;
-}
-
-.menu-chart-pedigree_map {
-	background-position: left -207px;
-}
-
-[dir=rtl] .menu-chart-pedigree_map {
-	background-position: right -207px;
-}
-
-.menu-chart-relationship {
-	background-position: left -230px;
-}
-
-[dir=rtl] .menu-chart-relationship {
-	background-position: right -230px;
-}
-
-.menu-chart-statistics {
-	background-position: left -253px;
-}
-
-[dir=rtl] .menu-chart-statistics {
-	background-position: right -253px;
-}
-
-.menu-chart-timeline {
-	background-position: left -276px;
-}
-
-[dir=rtl] .menu-chart-timeline {
-	background-position: right -276px;
-}
-
-.menu-chart-tree {
-	background-position: left -138px;
-}
-
-[dir=rtl] .menu-chart-tree {
-	background-position: right -138px;
-}
-
-.menu-clippingsadd {
-	background-position: left -621px;
-}
-
-[dir=rtl] .menu-clippingsadd {
-	background-position: right -621px;
-}
-
-.menu-clippingscart {
-	background-position: left -621px;
-}
-
-[dir=rtl] .menu-clippingscart {
-	background-position: right -621px;
-}
-
-.menu-fam-addchil {
-	background-position: left -759px;
-}
-
-[dir=rtl] .menu-fam-addchil {
-	background-position: right -759px;
-}
-
-.menu-fam-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-fam-addfav {
-	background-position: right -736px;
-}
-
-.menu-fam-change {
-	background-position: left -759px;
-}
-
-[dir=rtl] .menu-fam-change {
-	background-position: right -759px;
-}
-
-.menu-fam-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-fam-del {
-	background-position: right -713px;
-}
-
-.menu-fam-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-fam-editraw {
-	background-position: right -667px;
-}
-
-.menu-fam-orderchil {
-	background-position: left -759px;
-}
-
-[dir=rtl] .menu-fam-orderchil {
-	background-position: right -759px;
-}
-
-.menu-help-contents {
-	background-position: left -552px;
-}
-
-[dir=rtl] .menu-help-contents {
-	background-position: right -552px;
-}
-
-.menu-help-faq {
-	background-position: left -552px;
-}
-
-[dir=rtl] .menu-help-faq {
-	background-position: right -552px;
-}
-
-.menu-help-genealogy {
-	background-position: left -552px;
-}
-
-[dir=rtl] .menu-help-genealogy {
-	background-position: right -552px;
-}
-
-.menu-help-hide {
-	background-position: left -552px;
-}
-
-[dir=rtl] .menu-help-hide {
-	background-position: right -552px;
-}
-
-.menu-help-show {
-	background-position: left -552px;
-}
-
-[dir=rtl] .menu-help-show {
-	background-position: right -552px;
-}
-
-.menu-help-technical {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-help-technical {
-	background-position: right -598px;
-}
-
-.menu-help-wiki {
-	background-position: left -575px;
-}
-
-[dir=rtl] .menu-help-wiki {
-	background-position: right -575px;
-}
-
-.menu-indi-addfav,
-.menu-record-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-indi-addfav,
-[dir=rtl] .menu-record-addfav {
-	background-position: right -736px;
-}
-
-.menu-indi-editname {
-	background-position: left -690px;
-}
-
-[dir=rtl] .menu-indi-editname {
-	background-position: right -690px;
-}
-
-.menu-indi-addname {
-	background-position: left -690px;
-}
-
-[dir=rtl] .menu-indi-addname {
-	background-position: right -690px;
-}
-
-.menu-indi-del,
-.menu-record-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-indi-del,
-[dir=rtl] .record-indi-del {
-	background-position: right -713px;
-}
-
-.menu-indi-editraw,
-.menu-record-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-indi-editraw {
-	background-position: right -667px;
-}
-
-.menu-indi-editsex {
-	background-position: left -690px;
-}
-
-[dir=rtl] .menu-indi-editsex {
-	background-position: right -690px;
-}
-
-.menu-list-fam {
-	background-position: left -437px;
-}
-
-[dir=rtl] .menu-list-fam {
-	background-position: right -437px;
-}
-
-.menu-list-indi {
-	background-position: left -460px;
-}
-
-[dir=rtl] .menu-list-indi {
-	background-position: right -460px;
-}
-
-.menu-list-note {
-	background-position: left -368px;
-}
-
-[dir=rtl] .menu-list-note {
-	background-position: right -368px;
-}
-
-.menu-list-obje {
-	background-position: left -299px;
-}
-
-[dir=rtl] .menu-list-obje {
-	background-position: right -299px;
-}
-
-.menu-list-plac {
-	background-position: left -322px;
-}
-
-[dir=rtl] .menu-list-plac {
-	background-position: right -322px;
-}
-
-.menu-list-repo {
-	background-position: left -345px;
-}
-
-[dir=rtl] .menu-list-repo {
-	background-position: right -345px;
-}
-
-.menu-list-sour {
-	background-position: left -391px;
-}
-
-[dir=rtl] .menu-list-sour {
-	background-position: right -391px;
-}
-
-.menu-myaccount {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-myaccount {
-	background-position: right -598px;
-}
-
-.menu-mypage {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-mypage {
-	background-position: right -598px;
-}
-
-.menu-mypedigree {
-	background-position: left -828px;
-}
-
-[dir=rtl] .menu-mypedigree {
-	background-position: right -828px;
-}
-
-.menu-myrecord {
-	background-position: left -460px;
-}
-
-[dir=rtl] .menu-myrecord {
-	background-position: right -460px;
-}
-
-.menu-note-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-note-addfav {
-	background-position: right -736px;
-}
-
-.menu-note-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-note-del {
-	background-position: right -713px;
-}
-
-.menu-note-edit {
-	background-position: left -805px;
-}
-
-[dir=rtl] .menu-note-edit {
-	background-position: right -805px;
-}
-
-.menu-note-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-note-editraw {
-	background-position: right -667px;
-}
-
-.menu-obje-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-obje-addfav {
-	background-position: right -736px;
-}
-
-.menu-obje-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-obje-del {
-	background-position: right -713px;
-}
-
-.menu-obje-edit {
-	background-position: left -852px;
-}
-
-[dir=rtl] .menu-obje-edit {
-	background-position: right -852px;
-}
-
-.menu-obje-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-obje-editraw {
-	background-position: right -667px;
-}
-
-.menu-obje-link {
-	background-position: left -875px;
-}
-
-[dir=rtl] .menu-obje-link {
-	background-position: right -875px;
-}
-
-.menu-obje-link-fam {
-	background-position: left -437px;
-}
-
-[dir=rtl] .menu-obje-link-fam {
-	background-position: right -437px;
-}
-
-.menu-obje-link-indi {
-	background-position: left -460px;
-}
-
-[dir=rtl] .menu-obje-link-indi {
-	background-position: right -460px;
-}
-
-.menu-obje-link-sour {
-	background-position: left -391px;
-}
-
-[dir=rtl] .menu-obje-link-sour {
-	background-position: right -391px;
-}
-
-.menu-repo-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-repo-addfav {
-	background-position: right -736px;
-}
-
-.menu-repo-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-repo-del {
-	background-position: right -713px;
-}
-
-.menu-repo-edit {
-	background-position: left -897px;
-}
-
-[dir=rtl] .menu-repo-edit {
-	background-position: right -897px;
-}
-
-.menu-repo-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-repo-editraw {
-	background-position: right -667px;
-}
-
-.menu-report li {
-	background-position: left -483px;
-}
-
-[dir=rtl] .menu-report li {
-	background-position: right -483px;
-}
-
-.menu-search-advanced {
-	background-position: left -529px;
-}
-
-[dir=rtl] .menu-search-advanced {
-	background-position: right -529px;
-}
-
-.menu-search-general {
-	background-position: left -529px;
-}
-
-[dir=rtl] .menu-search-general {
-	background-position: right -529px;
-}
-
-.menu-search-replace {
-	background-position: left -529px;
-}
-
-[dir=rtl] .menu-search-replace {
-	background-position: right -529px;
-}
-
-.menu-search-soundex {
-	background-position: left -529px;
-}
-
-[dir=rtl] .menu-search-soundex {
-	background-position: right -529px;
-}
-
-.menu-sour-addfav {
-	background-position: left -736px;
-}
-
-[dir=rtl] .menu-sour-addfav {
-	background-position: right -736px;
-}
-
-.menu-sour-del {
-	background-position: left -713px;
-}
-
-[dir=rtl] .menu-sour-del {
-	background-position: right -713px;
-}
-
-.menu-sour-edit {
-	background-position: left -782px;
-}
-
-[dir=rtl] .menu-sour-edit {
-	background-position: right -782px;
-}
-
-.menu-sour-editraw {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-sour-editraw {
-	background-position: right -667px;
-}
-
-.menu-tree li {
-	background-position: left -667px;
-}
-
-[dir=rtl] .menu-tree li {
-	background-position: right -667px;
 }
 
 .icon-indis {
@@ -5151,144 +4146,4 @@ footer {
 .cookie-warning.hidden {
 	height: 0;
 	overflow: hidden;
-}
-
-@media print {
-	header,
-	footer,
-	form,
-	#sidebar,
-	#separator,
-	.editfacts,
-	.noprint {
-		display: none;
-	}
-
-	#header_accordion1 {
-		width: 500px;
-	}
-
-	#pedigree-page h2 {
-		margin: 0;
-	}
-
-	#pedigree_chart {
-		margin: 0 auto;
-	}
-
-	#familybook_chart h3 {
-		margin-bottom: 10px;
-	}
-
-	#lifespan-chart {
-		margin: 0;
-		border: 0;
-		padding: 0;
-	}
-}
-
-/* Mobile low and high resolution viewports */
-@media (max-width: 600px) {
-	.primary-menu {
-		display: block;
-		margin: 0 5px
-	}
-	.primary-menu > li {
-		width: 50px;
-		min-width: 40px;
-	}
-	/* Search */
-	#search-page-table {
-		width: auto;
-	}
-	#search-page-table .value {
-		margin: 0 0 0 30%;
-	}
-	[dir=rtl] #search-page-table .value {
-		margin: 0 30% 0 0;
-		float: right;
-	}
-	#search-page-table div #query {
-		width: 150px;
-	}
-	#search-page-table .value {
-		white-space: normal;
-    }
-	#search-page-table > input {
-		width: 20px;
-	}
-	#field_table {
-		width: 80%;
-		min-width: 380px;
-	}
-	.list_label, .list_value {
-		white-space: normal;
-	}
-	/* Phonetic Search */
-	#search-page-table .label {
-		width: 25%;
-	}
-	/* Login */
-	#register-form div, #verify-form div {
-		text-align: left;
-	}
-	#register-form, #verify-form {
-		width: 95%;
-	}
-	#login-text, #user-verify, #register-text, #user-verify {
-		min-width: auto;
-		width: 100%;
-	}
-}
-@media (max-width: 400px) {
-	/* Header */
-	.header-search {
-		display: none;
-	}
-	nav ul {
-		margin: 0;
-		padding: 0;
-	}
-	header h1 {
-		margin: 10px 12px 0 10px;
-	}
-	header nav {
-		height: 40px;
-    }
-	/* Front Page */
-	#index_main_blocks {
-		float: left;
-		width: 100%;
-	}
-	#index_small_blocks {
-		float: left;
-		width: 100%;
-	}
-	.stat-table1, .stat-table2{
-		width: 100%;
-	}
-	/* Indi Page */
-	#indi_left {
-		float: left;
-		width: 100%;
-		font-size: 10px;
-	}
-	#header_accordion1 {
-		font-size: 10px;
-	}
-	#main {
-		display: inline;
-	}
-	#separator {
-		display: none;
-	}
-	#sidebar {
-		float: left;
-		width: 100%;
-		display: inline;
-	}
-	/* Advanced Search */
-	#field_table {
-		min-width: 100%;
-	}
 }

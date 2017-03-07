@@ -15,17 +15,12 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Functions\FunctionsMedia;
 
-define('WT_SCRIPT_NAME', 'mediafirewall.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');

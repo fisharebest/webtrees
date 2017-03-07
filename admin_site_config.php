@@ -18,8 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
-define('WT_SCRIPT_NAME', 'admin_site_config.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
@@ -73,8 +72,8 @@ case 'login':
 		Site::setPreference('LOGIN_URL', Filter::post('LOGIN_URL'));
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
-		Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
-		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
+		Site::setPreference('USE_REGISTRATION_MODULE', Filter::postBool('USE_REGISTRATION_MODULE'));
+		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::postBool('SHOW_REGISTER_CAUTION'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
@@ -160,12 +159,10 @@ default:
 
 $controller->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle() ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -176,8 +173,8 @@ $controller->pageHeader();
 	<input type="hidden" name="action" value="site">
 
 	<!-- INDEX_DIRECTORY -->
-	<div class="form-group">
-		<label for="INDEX_DIRECTORY" class="col-sm-3 control-label">
+	<div class="row form-group">
+		<label for="INDEX_DIRECTORY" class="col-sm-3 col-form-label">
 			<?= /* I18N: A configuration setting */ I18N::translate('Data folder') ?>
 		</label>
 		<div class="col-sm-9">
@@ -198,8 +195,8 @@ $controller->pageHeader();
 	</div>
 
 	<!-- MEMORY_LIMIT -->
-	<div class="form-group">
-		<label for="MEMORY_LIMIT" class="col-sm-3 control-label">
+	<div class="row form-group">
+		<label for="MEMORY_LIMIT" class="col-sm-3 col-form-label">
 			<?= /* I18N: A configuration setting */ I18N::translate('Memory limit') ?>
 		</label>
 		<div class="col-sm-9">
@@ -213,102 +210,104 @@ $controller->pageHeader();
 	</div>
 
 	<!-- MAX_EXECUTION_TIME -->
-	<div class="form-group">
-		<label for="MAX_EXECUTION_TIME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('PHP time limit') ?>
+	<div class="row form-group">
+		<label for="MAX_EXECUTION_TIME" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('PHP time limit') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?php echo get_cfg_var('max_execution_time') ?>" maxlength="255">
+			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?= Filter::escapeHtml(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?= get_cfg_var('max_execution_time') ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo I18N::plural(
+				<?= I18N::plural(
 					'By default, your server allows scripts to run for %s second.',
 					'By default, your server allows scripts to run for %s seconds.',
 					get_cfg_var('max_execution_time'), I18N::number(get_cfg_var('max_execution_time')));
 				?>
-				<?php echo I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
+				<?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
+				<?= I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- TIMEZONE -->
-	<div class="form-group">
-		<label for="TIMEZONE" class="col-sm-3 control-label">
-			<?php echo I18N::translate('Time zone') ?>
+	<div class="row form-group">
+		<label for="TIMEZONE" class="col-sm-3 col-form-label">
+			<?= I18N::translate('Time zone') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('TIMEZONE', array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers()), null, Site::getPreference('TIMEZONE') ?: 'UTC', 'class="form-control"') ?>
+			<?= Bootstrap4::select(array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers()), Site::getPreference('TIMEZONE') ?: 'UTC', ['id' => 'TIMEZONE', 'name' => 'TIMEZONE']) ?>
 			<p class="small text-muted">
-				<?php echo I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
+				<?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- THEME_DIR -->
-	<div class="form-group">
-		<label for="THEME_DIR" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Default theme') ?>
+	<div class="row form-group">
+		<label for="THEME_DIR" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Default theme') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('THEME_DIR', Theme::themeNames(), null, Site::getPreference('THEME_DIR'), 'class="form-control"') ?>
+			<?= Bootstrap4::select(Theme::themeNames(), Site::getPreference('THEME_DIR'), ['id' => 'THEME_DIR', 'name' => 'THEME_DIR']) ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
+				<?= /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level.') ?>
+				<?= I18N::translate('Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- ALLOW_USER_THEMES -->
 	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Allow users to select their own theme') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::editFieldYesNo('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES'), 'class="radio-inline"') ?>
-			<p class="small text-muted">
-			</p>
+		<div clss="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= /* I18N: A configuration setting */ I18N::translate('Allow users to select their own theme') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('ALLOW_USER_THEMES', FunctionsEdit::optionsNoYes(), Site::getPreference('ALLOW_USER_THEMES'), true) ?>
+			</div>
 		</div>
 	</fieldset>
 
 	<!-- ALLOW_CHANGE_GEDCOM -->
 	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show list of family trees') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::editFieldYesNo('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM'), 'class="radio-inline"') ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show list of family trees” site configuration setting */ I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.') ?>
-			</p>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= /* I18N: A configuration setting */ I18N::translate('Show list of family trees') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('ALLOW_CHANGE_GEDCOM', FunctionsEdit::optionsNoYes(), Site::getPreference('ALLOW_CHANGE_GEDCOM'), true) ?>
+				<p class="small text-muted">
+					<?= /* I18N: Help text for the “Show list of family trees” site configuration setting */ I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.') ?>
+				</p>
+			</div>
 		</div>
 	</fieldset>
 
 	<!-- SESSION_TIME -->
-	<div class="form-group">
-		<label for="SESSION_TIME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Session timeout') ?>
+	<div class="row form-group">
+		<label for="SESSION_TIME" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Session timeout') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
+			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?= Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
-				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
+				<?= /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
+				<?= I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SERVER_URL -->
-	<div class="form-group">
-		<label for="SERVER_URL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Website URL') ?>
+	<div class="row form-group">
+		<label for="SERVER_URL" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Website URL') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('SERVER_URL', [WT_BASE_URL => WT_BASE_URL], '', Site::getPreference('SERVER_URL'), 'class="form-control"') ?>
+			<?= Bootstrap4::select(['' => '', WT_BASE_URL => WT_BASE_URL], Site::getPreference('SERVER_URL'), ['id' => 'SERVER_URL', 'name' => 'SERVER_URL']) ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one.') ?>
-				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
+				<?= /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one.') ?>
+				<?= I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -317,128 +316,130 @@ $controller->pageHeader();
 	<input type="hidden" name="action" value="email">
 
 	<!-- SMTP_ACTIVE -->
-	<div class="form-group">
-		<label for="SMTP_ACTIVE" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Messages') ?>
+	<div class="row form-group">
+		<label for="SMTP_ACTIVE" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Messages') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, Site::getPreference('SMTP_ACTIVE'), 'class="form-control"') ?>
+			<?= Bootstrap4::select(FunctionsEdit::optionsMailTransports(), Site::getPreference('SMTP_ACTIVE'), ['id' => 'SMTP_ACTIVE', 'name' => 'SMTP_ACTIVE']) ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
+				<?= /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_FROM_NAME -->
-	<div class="form-group">
-		<label for="SMTP_FROM_NAME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Sender name') ?>
+	<div class="row form-group">
+		<label for="SMTP_FROM_NAME" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Sender name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_FROM_NAME')) ?>" placeholder="no-reply@localhost" maxlength="255">
+			<input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= Filter::escapeHtml(Site::getPreference('SMTP_FROM_NAME')) ?>" placeholder="no-reply@localhost" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Sender name” site configuration setting */ I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
+				<?= /* I18N: Help text for the “Sender name” site configuration setting */ I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
 			</p>
 		</div>
 	</div>
 
-	<h2><?php echo I18N::translate('SMTP mail server') ?></h2>
+	<h2><?= I18N::translate('SMTP mail server') ?></h2>
 
 	<!-- SMTP_HOST -->
-	<div class="form-group">
-		<label for="SMTP_HOST" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Server name') ?>
+	<div class="row form-group">
+		<label for="SMTP_HOST" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Server name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= Filter::escapeHtml(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Server name” site configuration setting */ I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
+				<?= /* I18N: Help text for the “Server name” site configuration setting */ I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_PORT -->
-	<div class="form-group">
-		<label for="SMTP_PORT" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Port number') ?>
+	<div class="row form-group">
+		<label for="SMTP_PORT" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Port number') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_PORT')) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
+			<input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?= Filter::escapeHtml(Site::getPreference('SMTP_PORT')) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Port number" site configuration setting */ I18N::translate('By default, SMTP works on port 25.') ?>
+				<?= /* I18N: Help text for the "Port number" site configuration setting */ I18N::translate('By default, SMTP works on port 25.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_AUTH -->
 	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Use password') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::editFieldYesNo('SMTP_AUTH', Site::getPreference('SMTP_AUTH'), 'class="radio-inline"') ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use password” site configuration setting */ I18N::translate('Most SMTP servers require a password.') ?>
-			</p>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= /* I18N: A configuration setting */ I18N::translate('Use password') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('SMTP_AUTH', FunctionsEdit::optionsNoYes(), Site::getPreference('SMTP_AUTH'), true) ?>
+				<p class="small text-muted">
+					<?= /* I18N: Help text for the “Use password” site configuration setting */ I18N::translate('Most SMTP servers require a password.') ?>
+				</p>
+			</div>
 		</div>
 	</fieldset>
 
 	<!-- SMTP_AUTH_USER -->
-	<div class="form-group">
-		<label for="SMTP_AUTH_USER" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Username') ?>
+	<div class="row form-group">
+		<label for="SMTP_AUTH_USER" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Username') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
+			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?= Filter::escapeHtml(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The username required for authentication with the SMTP server.') ?>
+				<?= /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The username required for authentication with the SMTP server.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_AUTH_PASS -->
-	<div class="form-group">
-		<label for="SMTP_AUTH_PASS" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Password') ?>
+	<div class="row form-group">
+		<label for="SMTP_AUTH_PASS" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Password') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Password" site configuration setting */ I18N::translate('The password required for authentication with the SMTP server.') ?>
+				<?= /* I18N: Help text for the "Password" site configuration setting */ I18N::translate('The password required for authentication with the SMTP server.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_SSL -->
-	<div class="form-group">
-		<label for="SMTP_SSL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
+	<div class="row form-group">
+		<label for="SMTP_SSL" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('SMTP_SSL', $SMTP_SSL_OPTIONS, null, Site::getPreference('SMTP_SSL'), 'class="form-control"') ?>
+			<?= Bootstrap4::select(FunctionsEdit::optionsSslModes(), Site::getPreference('SMTP_SSL'), ['id' => 'SMTP_SSL', 'name' => 'SMTP_SSL']) ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Secure connection” site configuration setting */ I18N::translate('Most servers do not use secure connections.') ?>
+				<?= /* I18N: Help text for the “Secure connection” site configuration setting */ I18N::translate('Most servers do not use secure connections.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- SMTP_HELO -->
-	<div class="form-group">
-		<label for="SMTP_HELO" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Sending server name') ?>
+	<div class="row form-group">
+		<label for="SMTP_HELO" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Sending server name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_HELO')) ?>" placeholder="localhost" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+			<input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= Filter::escapeHtml(Site::getPreference('SMTP_HELO')) ?>" placeholder="localhost" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Sending server name" site configuration setting */ I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>
+				<?= /* I18N: Help text for the "Sending server name" site configuration setting */ I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>
 			</p>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
+	<div class="row form-group">
+		<div class="offset-sm-3 col-sm-9">
 			<p class="small text-muted">
-				<?php echo Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]') . '<br>' . I18N::translate('You must also enable “less secure applications” in your Google account.') . ' <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>', 'info', false) ?>
+				<?= Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]') . '<br>' . I18N::translate('You must also enable “less secure applications” in your Google account.') . ' <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>', 'info', false) ?>
 			</p>
 
 		</div>
@@ -448,67 +449,71 @@ $controller->pageHeader();
 	<input type="hidden" name="action" value="login">
 
 	<!-- LOGIN_URL -->
-	<div class="form-group">
-		<label for="LOGIN_URL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
+	<div class="row form-group">
+		<label for="LOGIN_URL" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
+			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?= Filter::escapeHtml(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
+				<?= /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- WELCOME_TEXT_AUTH_MODE -->
-	<div class="form-group">
-		<label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Welcome text on sign-in page') ?>
+	<div class="row form-group">
+		<label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Welcome text on sign-in page') ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::selectEditControl('WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, Site::getPreference('WELCOME_TEXT_AUTH_MODE'), 'class="form-control"') ?>
+			<?= Bootstrap4::select(FunctionsEdit::optionsRegistrationRules(), Site::getPreference('WELCOME_TEXT_AUTH_MODE'), ['id' => 'WELCOME_TEXT_AUTH_MODE', 'name' => 'WELCOME_TEXT_AUTH_MODE']) ?>
 			<p class="small text-muted">
 			</p>
 		</div>
 	</div>
 
 	<!-- LOGIN_URL -->
-	<div class="form-group">
-		<label for="WELCOME_TEXT_AUTH_MODE_4" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
+	<div class="row form-group">
+		<label for="WELCOME_TEXT_AUTH_MODE_4" class="col-sm-3 col-form-label">
+			<?= /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
 		</label>
 		<div class="col-sm-9">
-			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?php echo Filter::escapeHtml(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
+			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?= Filter::escapeHtml(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.') ?>
+				<?= /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.') ?>
 			</p>
 		</div>
 	</div>
 
 	<!-- USE_REGISTRATION_MODULE -->
 	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::editFieldYesNo('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE'), 'class="radio-inline"') ?>
-			<p class="small text-muted">
-				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
-				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
-				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
-			</p>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('USE_REGISTRATION_MODULE', FunctionsEdit::optionsNoYes(), Site::getPreference('USE_REGISTRATION_MODULE'), true) ?>
+				<p class="small text-muted">
+					<?= I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
+					<?= I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
+					<?= I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
+				</p>
+			</div>
 		</div>
 	</fieldset>
 
 	<!-- SHOW_REGISTER_CAUTION -->
 	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::editFieldYesNo('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION'), 'class="radio-inline"') ?>
-			<p class="small text-muted">
-			</p>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('SHOW_REGISTER_CAUTION', FunctionsEdit::optionsNoYes(), Site::getPreference('SHOW_REGISTER_CAUTION'), true) ?>
+				<p class="small text-muted">
+				</p>
+			</div>
 		</div>
 	</fieldset>
 
@@ -516,26 +521,26 @@ $controller->pageHeader();
 	<input type="hidden" name="action" value="tracking">
 
 		<p>
-			<?php echo I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.') ?>
+			<?= I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.') ?>
 		</p>
 
 		<h2><a href="https://www.bing.com/toolbox/webmaster/">Bing Webmaster Tools</a></h2>
 
 		<!-- BING_WEBMASTER_ID -->
-		<div class="form-group">
-			<label for="BING_WEBMASTER_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
+		<div class="row form-group">
+			<label for="BING_WEBMASTER_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
 				<span class="sr-only">Google Webmaster Tools</span>
 			</label>
 			<div class="col-sm-9">
 				<input
 					type="text" class="form-control"
-					id="BING_WEBMASTER_ID" name="BING_WEBMASTER_ID" <?php echo dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
-					value="<?php echo Filter::escapeHtml(Site::getPreference('BING_WEBMASTER_ID')) ?>"
+					id="BING_WEBMASTER_ID" name="BING_WEBMASTER_ID" <?= dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
+					value="<?= Filter::escapeHtml(Site::getPreference('BING_WEBMASTER_ID')) ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 					>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting */ I18N::translate('Site verification codes do not work when webtrees is installed in a subfolder.') ?>
+					<?= /* I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting */ I18N::translate('Site verification codes do not work when webtrees is installed in a subfolder.') ?>
 				</p>
 			</div>
 		</div>
@@ -543,20 +548,20 @@ $controller->pageHeader();
 		<h2><a href="https://www.google.com/webmasters/">Google Webmaster Tools</a></h2>
 
 		<!-- GOOGLE_WEBMASTER_ID -->
-		<div class="form-group">
-			<label for="GOOGLE_WEBMASTER_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
+		<div class="row form-group">
+			<label for="GOOGLE_WEBMASTER_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
 				<span class="sr-only">Google Webmaster Tools</span>
 			</label>
 			<div class="col-sm-9">
 				<input
 					type="text" class="form-control"
-					id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" <?php echo dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
-					value="<?php echo Filter::escapeHtml(Site::getPreference('GOOGLE_WEBMASTER_ID')) ?>"
+					id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" <?= dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
+					value="<?= Filter::escapeHtml(Site::getPreference('GOOGLE_WEBMASTER_ID')) ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 				>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting */ I18N::translate('Site verification codes do not work when webtrees is installed in a subfolder.') ?>
+					<?= /* I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting */ I18N::translate('Site verification codes do not work when webtrees is installed in a subfolder.') ?>
 				</p>
 			</div>
 		</div>
@@ -564,15 +569,15 @@ $controller->pageHeader();
 		<h2><a href="https://www.google.com/analytics/">Google Analytics</a></h2>
 
 		<!-- GOOGLE_ANALYTICS_ID -->
-		<div class="form-group">
-			<label for="GOOGLE_ANALYTICS_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
+		<div class="row form-group">
+			<label for="GOOGLE_ANALYTICS_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 				<span class="sr-only">Google Analytics</span>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="GOOGLE_ANALYTICS_ID" name="GOOGLE_ANALYTICS_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('GOOGLE_ANALYTICS_ID')) ?>" placeholder="UA-12345-6" maxlength="255" pattern="UA-[0-9]+-[0-9]+">
+				<input type="text" class="form-control" id="GOOGLE_ANALYTICS_ID" name="GOOGLE_ANALYTICS_ID" value="<?= Filter::escapeHtml(Site::getPreference('GOOGLE_ANALYTICS_ID')) ?>" placeholder="UA-12345-6" maxlength="255" pattern="UA-[0-9]+-[0-9]+">
 				<p class="small text-muted">
-					<?php echo I18N::translate('Tracking and analytics are not added to the control panel.') ?>
+					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
 			</div>
 		</div>
@@ -580,24 +585,24 @@ $controller->pageHeader();
 		<h2><a href="https://piwik.org/">Piwik</a></h2>
 
 		<!-- PIWIK_SITE_ID -->
-		<div class="form-group">
-			<label for="PIWIK_SITE_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
+		<div class="row form-group">
+			<label for="PIWIK_SITE_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_SITE_ID')) ?>" maxlength="255" pattern="[0-9]+">
+				<input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?= Filter::escapeHtml(Site::getPreference('PIWIK_SITE_ID')) ?>" maxlength="255" pattern="[0-9]+">
 			</div>
 		</div>
 
 		<!-- PIWIK_URL -->
-		<div class="form-group">
-			<label for="PIWIK_URL" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('URL') ?>
+		<div class="row form-group">
+			<label for="PIWIK_URL" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('URL') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')) ?>" placeholder="example.com/piwik" maxlength="255">
+				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?= Filter::escapeHtml(Site::getPreference('PIWIK_URL')) ?>" placeholder="example.com/piwik" maxlength="255">
 				<p class="small text-muted">
-					<?php echo I18N::translate('Tracking and analytics are not added to the control panel.') ?>
+					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
 			</div>
 		</div>
@@ -605,24 +610,24 @@ $controller->pageHeader();
 		<h2><a href="https://statcounter.com/">StatCounter</a></h2>
 
 		<!-- STATCOUNTER_PROJECT_ID -->
-		<div class="form-group">
-			<label for="STATCOUNTER_PROJECT_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
+		<div class="row form-group">
+			<label for="STATCOUNTER_PROJECT_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('STATCOUNTER_PROJECT_ID')) ?>" maxlength="255" pattern="[0-9]+">
+				<input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?= Filter::escapeHtml(Site::getPreference('STATCOUNTER_PROJECT_ID')) ?>" maxlength="255" pattern="[0-9]+">
 			</div>
 		</div>
 
 		<!-- STATCOUNTER_SECURITY_ID -->
-		<div class="form-group">
-			<label for="STATCOUNTER_SECURITY_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Security code') ?>
+		<div class="row form-group">
+			<label for="STATCOUNTER_SECURITY_ID" class="col-sm-3 col-form-label">
+				<?= /* I18N: A configuration setting */ I18N::translate('Security code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('STATCOUNTER_SECURITY_ID')) ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
+				<input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?= Filter::escapeHtml(Site::getPreference('STATCOUNTER_SECURITY_ID')) ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
 				<p class="small text-muted">
-					<?php echo I18N::translate('Tracking and analytics are not added to the control panel.') ?>
+					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
 			</div>
 		</div>
@@ -635,24 +640,26 @@ $controller->pageHeader();
 		</p>
 
 		<fieldset class="form-group">
-			<legend class="col-sm-3 control-label">
-				<?php echo /* I18N: A configuration setting */ I18N::translate('Language') ?>
-			</legend>
-			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;">
-				<?php foreach (I18N::installedLocales() as $installed_locale): ?>
-					<div class="checkbox">
-						<label title="<?php echo $installed_locale->languageTag() ?>">
-							<input type="checkbox" name="LANGUAGES[]" value="<?php echo $installed_locale->languageTag() ?>" <?php echo in_array($installed_locale->languageTag(), $language_tags) ? 'checked' : '' ?>>
-							<?php echo $installed_locale->endonym() ?>
-						</label>
-					</div>
-				<?php endforeach ?>
+			<div class="row">
+				<legend class="col-form-legend col-sm-3">
+					<?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
+				</legend>
+				<div class="col-sm-9" style="columns: 4 150px;">
+					<?php foreach (I18N::installedLocales() as $installed_locale): ?>
+						<div class="checkbox">
+							<label title="<?= $installed_locale->languageTag() ?>">
+								<input type="checkbox" name="LANGUAGES[]" value="<?= $installed_locale->languageTag() ?>"<?= in_array($installed_locale->languageTag(), $language_tags) ? ' checked' : '' ?>>
+								<?= $installed_locale->endonym() ?>
+							</label>
+						</div>
+					<?php endforeach ?>
+				</div>
 			</div>
 		</fieldset>
 
 	<?php endif ?>
-	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
+	<div class="row form-group">
+		<div class="offset-sm-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-check"></i>
 				<?= I18N::translate('save') ?>

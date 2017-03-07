@@ -48,7 +48,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 		$menu  = Theme::theme()->menuThemes();
 
 		if ($menu) {
-			$content = '<div class="center theme_form">' . $menu . '</div><br>';
+			$content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
 
 			if ($template) {
 				return Theme::theme()->formatBlock($id, $title, $class, $content);

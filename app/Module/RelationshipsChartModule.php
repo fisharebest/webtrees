@@ -16,10 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -159,45 +159,47 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 			->setPageTitle(I18N::translate('Chart preferences') . ' — ' . $this->getTitle())
 			->pageHeader();
 
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'         => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
-		<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+		<h1><?= $controller->getPageTitle() ?></h1>
 
 		<p>
-			<?php echo I18N::translate('Searching for all possible relationships can take a lot of time in complex trees.') ?>
+			<?= I18N::translate('Searching for all possible relationships can take a lot of time in complex trees.') ?>
 		</p>
 
 		<form method="post">
 			<?php foreach (Tree::getAll() as $tree): ?>
-				<h2><?php echo $tree->getTitleHtml() ?></h2>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="relationship-ancestors-<?php echo $tree->getTreeId() ?>">
-						<?php echo /* I18N: Configuration option */I18N::translate('Relationships'); ?>
+				<h2><?= $tree->getTitleHtml() ?></h2>
+				<div class="row form-group">
+					<label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->getTreeId() ?>">
+						<?= /* I18N: Configuration option */I18N::translate('Relationships') ?>
 					</label>
 					<div class="col-sm-9">
-						<?php echo FunctionsEdit::selectEditControl('relationship-ancestors-' . $tree->getTreeId(), $this->ancestorsOptions(), null, $tree->getPreference('RELATIONSHIP_ANCESTORS', self::DEFAULT_ANCESTORS), 'class="form-control"'); ?>
+						<?= Bootstrap4::select($this->ancestorsOptions(), $tree->getPreference('RELATIONSHIP_ANCESTORS', self::DEFAULT_ANCESTORS), ['id' => 'relationship-ancestors-' . $tree->getTreeId(), 'name' => 'relationship-ancestors-' . $tree->getTreeId()]) ?>
 					</div>
 				</div>
 
 				<fieldset class="form-group">
-					<legend class="control-label col-sm-3">
-						<?php echo /* I18N: Configuration option */I18N::translate('How much recursion to use when searching for relationships'); ?>
-					</legend>
-					<div class="col-sm-9">
-						<?php echo FunctionsEdit::radioButtons('relationship-recursion-' . $tree->getTreeId(), $this->recursionOptions(), $tree->getPreference('RELATIONSHIP_RECURSION', self::DEFAULT_RECURSION), 'class="radio-inline"'); ?>
+					<div class="row">
+						<legend class="col-form-legend col-sm-3">
+							<?= /* I18N: Configuration option */I18N::translate('How much recursion to use when searching for relationships') ?>
+						</legend>
+						<div class="col-sm-9">
+							<?= Bootstrap4::radioButtons('relationship-recursion-' . $tree->getTreeId(), $this->recursionOptions(), $tree->getPreference('RELATIONSHIP_RECURSION', self::DEFAULT_RECURSION), true) ?>
+						</div>
 					</div>
 				</fieldset>
-			<?php endforeach; ?>
+			<?php endforeach ?>
 
-			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9">
+			<div class="row form-group">
+				<div class="offset-sm-3 col-sm-9">
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('save'); ?>
+						<?= I18N::translate('save') ?>
 					</button>
 				</div>
 			</div>

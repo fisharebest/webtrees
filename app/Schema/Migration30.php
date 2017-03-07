@@ -76,7 +76,6 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'NOTE_FACTS_UNIQUE', '')," .
 			"(-1, 'NOTE_ID_PREFIX', 'N')," .
 			"(-1, 'NO_UPDATE_CHAN', '0')," .
-			"(-1, 'PEDIGREE_FULL_DETAILS', '1')," .
 			"(-1, 'PEDIGREE_LAYOUT', '1')," .
 			"(-1, 'PEDIGREE_ROOT_ID', '')," .
 			"(-1, 'PEDIGREE_SHOW_GENDER', '0')," .

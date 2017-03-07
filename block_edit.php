@@ -15,18 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 
-define('WT_SCRIPT_NAME', 'block_edit.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $block_id = Filter::getInteger('block_id');
 $block    = Database::prepare(
@@ -69,33 +64,22 @@ if (Module::getModuleByName('ckeditor')) {
 }
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+<h2><?= $controller->getPageTitle() ?></h2>
+<p><?= $block->getDescription() ?></p>
 
-<form name="block" method="post" action="?block_id=<?php echo $block_id; ?>">
+<form name="block" method="post" action="?block_id=<?= $block_id ?>">
 	<input type="hidden" name="save" value="1">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>">
-	<?php echo Filter::getCsrf(); ?>
-	<table class="facts_table">
-		<thead>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Description'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo $block->getDescription(); ?>
-				</td>
-			</tr>
-		</thead>
-		<tbody>
-			<?php echo $block->configureBlock($block_id); ?>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2" class="topbottombar">
-					<input type="submit" value="<?php echo I18N::translate('save'); ?>">
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<input type="hidden" name="ctype" value="<?= $ctype ?>">
+	<?= Filter::getCsrf() ?>
+	<?= $block->configureBlock($block_id) ?>
+	<div class="row form-group">
+		<div class="offset-sm-3 col-sm-9">
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
+				<?= I18N::translate('save') ?>
+			</button>
+			<a class="btn btn-link" href="index.php?ctype=<?= $ctype ?>&amp;ged=<?= $WT_TREE->getNameHtml() ?>"><?= I18N::translate('cancel') ?></a>
+		</div>
+	</div>
 </form>

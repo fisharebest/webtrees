@@ -104,7 +104,7 @@ class GedcomCodePedi {
 	 * @return string[]
 	 */
 	public static function getValues(GedcomRecord $record = null) {
-		$values = [];
+		$values = ['' => ''];
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
 		}

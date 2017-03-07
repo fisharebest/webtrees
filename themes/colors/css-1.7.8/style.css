@@ -13,34 +13,895 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* ======== Globals ========== */
+/* The colors theme */
 
-/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
-html {
-	overflow-y: scroll;
+/* Override Bootstrap formatting */
+.btn-link {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 
-body {
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+}
+
+/*
+ * Icons use FontAwesome by default, but have additional classes to
+ * allow them to be overridden
+ *
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-down.png);
+}
+
+a > .wt-icon-arrow-down:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-down-hover.png);
+}
+
+.wt-icon-arrow-end::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-right.png);
+}
+
+[dir=rtl] .wt-icon-arrow-end::before {
+	content: url(icons/arrow-left.png);
+}
+
+a > .wt-icon-arrow-end:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-right-hover.png);
+}
+
+[dir=rtl] a > .wt-icon-arrow-end:hover::before {
+	content: url(icons/arrow-left-hover.png);
+}
+
+.wt-icon-arrow-start::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-left.png);
+}
+
+[dir=rtl] .wt-icon-arrow-start::before {
+	content: url(icons/arrow-right.png);
+}
+
+a > .wt-icon-arrow-start:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-left-hover.png);
+}
+
+[dir=rtl] a > .wt-icon-arrow-start:hover::before {
+	content: url(icons/arrow-right-hover.png);
+}
+
+.wt-icon-arrow-up::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-up.png);
+}
+
+a > .wt-icon-arrow-up:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/arrow-up-hover.png);
+}
+
+.wt-icon-bing-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/bing-maps.png);
+}
+
+.wt-icon-calendar::before {
+	width: 19px;
+	height: 15px;
+	content: url(icons/calendar.png)
+}
+
+.wt-icon-coordinates::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/coordinates.png)
+}
+
+.wt-icon-copy::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/copy.png)
+}
+
+.wt-icon-delete::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/delete.png);
+}
+
+.wt-icon-edit::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/edit.png);
+}
+
+.wt-icon-family::before {
+	width: 14px;
+	height: 15px;
+	content: url(icons/family.png);
+}
+
+.wt-icon-help::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/help.png);
+}
+
+.wt-icon-google-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/google-maps.png);
+}
+
+.wt-icon-individual::before {
+	width: 11px;
+	height: 15px;
+	content: url(icons/individual.png);
+}
+
+.wt-icon-keyboard::before {
+	width: 30px;
+	height: 15px;
+	content: url(icons/keyboard.png);
+}
+
+.wt-icon-media::before {
+	width: 18px;
+	height: 16px;
+	content: url(icons/media.png);
+}
+
+.wt-icon-note::before {
+	width: 20px;
+	height: 20px;
+	content: url(icons/note.png);
+}
+
+.wt-icon-openstreetmap::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/openstreetmap.png);
+}
+
+.wt-icon-preferences::before {
+	width: 25px;
+	height: 25px;
+	content: url(icons/preferences.png);
+}
+
+.wt-icon-repository::before {
+	width: 15px;
+	height: 15px;
+	content: url(icons/repository.png);
+}
+
+.wt-icon-source::before {
+	width: 18px;
+	height: 16px;
+	content: url(icons/source.png);
+}
+
+.wt-icon-submitter::before {
+	width: 11px;
+	height: 15px;
+	content: url(icons/individual.png);
+}
+
+/*
+ * Pages have the following high-level structure:
+ *
+ * wt-global
+ * +---wt-header-wrapper
+ *     +---wt-header-container
+ *     |   +---wt-header-content
+ *     |       +---wt-accessibility-links
+ *     |       +---wt-site-logo
+ *     |       +---wt-site-title
+ *     |       +---wt-header-search
+ *     |       |   +---wt-header-search-form
+ *     |       |       +---wt-header-search-field
+ *     |       |       +---wt-header-search-button
+ *     |       +---wt-secondary-navigation
+ *     |       |   +---wt-secondary-menu
+ *     |       +---wt-primary-navigation
+ *     |           +---wt-primary-menu
+ *     +---wt-main-container
+ *     |   +---wt-main-content
+ *     |       +---wt-messages
+ *     |       +---wt-page-title
+ *     |       +---wt-page-options wt-page-options-xxxxx
+ *     |       +---wt-page-content
+ *     +---wt-footer-container
+ *         +---wt-footer-content
+ *             +---wt-contact-links
+ *             +---wt-powered-by-webtrees
+ *             +---wt-page-views
+ *             +---wt-cookie-warning
+ */
+
+.wt-global {
+	background: #fff; /* Override clouds */
 	color: #333;
-	background-color: #fff;
-	font: 12px tahoma, arial, helvetica, sans-serif;
-	margin: 0;
 }
 
-p {
-	margin: 12px 0;
+.wt-header-wrapper {
 }
 
-#content {
-	display: block;
-	clear: both;
-	margin: 0;
-	padding: 8px;
+.wt-header-wrapper .dropdown-item.active {
+	background-color: inherit;
+	color: inherit;
+	font-weight: bold;
 }
+
+.wt-header-container {
+}
+
+.wt-header-content {
+}
+
+.wt-accessibility-links {
+}
+
+.wt-site-logo {
+	display: none;
+}
+
+.wt-site-title {
+	order: 1;
+	flex: 1 1 fit-content;
+	font-size: 1.5rem;
+}
+
+.wt-header-search {
+	order: 3;
+	flex: 0 0 15rem;
+	padding-bottom: 0.5rem;
+}
+
+.wt-header-search-form {
+}
+
+.wt-secondary-navigation {
+	order: 2;
+	flex: 0 0 fit-content;
+	white-space: nowrap;
+}
+
+.wt-secondary-menu {
+}
+
+.wt-secondary-menu .nav-link {
+	display: inline-block;
+	padding: 0.5rem;
+	color: inherit; /* Inherit from wt-header-container */
+}
+
+.wt-secondary-menu .nav-item + .nav-item::before {
+	content: "|";
+}
+
+.wt-secondary-menu .dropdown-toggle:after {
+	display: none;
+}
+
+.wt-primary-navigation {
+	order: 4;
+	flex: 0 0 100%;
+}
+
+.wt-primary-menu {
+	/* Extend to full page width */
+	flex: 0 1 100vw;
+	/* Recalculate margins for content */
+	margin: 0 calc(50% - 50vw);
+	padding: 0 calc(50vw - 50%);
+}
+
+.wt-primary-menu .nav-item {
+	padding: 0 0.75rem;
+}
+
+.wt-primary-menu .nav-link {
+	/* All menu icons are 40px x 40px */
+	height: calc(40px + 1rem);
+	width: 40px;
+}
+
+.wt-primary-menu .nav-item::before {
+	/* The size of the menu icons */
+	width: 40px;
+	height: 40px;
+}
+
+.menu-tree .nav-link::before {
+	content: url(menu/tree.png);
+}
+
+.menu-tree .dropdown-item:not(:first-child)::before {
+	content: url(menu/tree-tree.png);
+}
+
+.menu-chart .nav-link::before {
+	content: url(menu/chart.png);
+}
+
+.menu-chart-ancestry::before {
+	content: url(menu/chart-ancestors.png);
+}
+
+.menu-chart-compact::before {
+	content: url(menu/chart-compact.png);
+}
+
+.menu-chart-descendants::before {
+	content: url(menu/chart-descendants.png);
+}
+
+.menu-chart-familybook::before {
+	content: url(menu/chart-family-book.png);
+}
+
+.menu-chart-fanchart::before {
+	content: url(menu/chart-fanchart.png);
+}
+
+.menu-chart-hourglass::before {
+	content: url(menu/chart-hourglass.png);
+}
+
+.menu-chart-lifespan::before {
+	content: url(menu/chart-lifespan.png);
+}
+
+.menu-chart-pedigree::before {
+	content: url(menu/chart-pedigree.png);
+}
+
+.menu-chart-pedigreemap::before {
+	content: url(menu/chart-pedigree-map.png);
+}
+
+.menu-chart-relationship::before {
+	content: url(menu/chart-relationship.png);
+}
+
+.menu-chart-statistics::before {
+	content: url(menu/chart-statistics.png);
+}
+
+.menu-chart-timeline::before {
+	content: url(menu/chart-timeline.png);
+}
+
+.menu-chart-tree::before {
+	content: url(menu/chart-tree.png);
+}
+
+.menu-list .nav-link::before {
+	content: url(menu/list.png);
+}
+
+.menu-branches::before {
+	content: url(menu/branches.png);
+}
+
+.menu-list-fam::before {
+	content: url(menu/list-fam.png);
+}
+
+.menu-list-indi::before {
+	content: url(menu/list-indi.png);
+}
+
+.menu-list-note::before {
+	content: url(menu/list-note.png);
+}
+
+.menu-list-obje::before {
+	content: url(menu/list-obje.png);
+}
+
+.menu-list-plac::before {
+	content: url(menu/list-plac.png);
+}
+
+.menu-list-repo::before {
+	content: url(menu/list-repo.png);
+}
+
+.menu-list-sour::before {
+	content: url(menu/list-sour.png);
+}
+
+.menu-calendar .nav-link::before {
+	content: url(menu/calendar.png);
+}
+
+.menu-calendar-day::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-calendar-month::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-calendar-year::before {
+	content: url(menu/calendar-calendar.png);
+}
+
+.menu-report .nav-link::before {
+	content: url(menu/report.png);
+}
+
+.menu-report .dropdown-item:not(:first-child)::before {
+	content: url(menu/report-report.png);
+}
+
+.menu-search .nav-link::before {
+	content: url(menu/search.png);
+}
+
+.menu-search .dropdown-item:not(:first-child)::before {
+	content: url(menu/search-search.png);
+}
+
+.menu-help .nav-link::before {
+	content: url(menu/help.png);
+}
+
+.menu-clippings .nav-link::before {
+	content: url(menu/clippings.png);
+}
+
+.menu-clippings-add::before {
+	content: url(menu/clippings-add.png);
+}
+
+.menu-clippings-cart::before {
+	content: url(menu/clippings-cart.png);
+}
+
+.menu-fam .nav-link::before {
+	content: url(menu/fam.png);
+}
+
+.menu-fam-change::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-addchil::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-orderchil::before {
+	content: url(menu/edit-fam.png);
+}
+
+.menu-fam-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-fam-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-fam-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-indi .nav-link::before {
+	content: url(menu/indi.png);
+}
+
+.menu-indi-addname::before {
+	content: url(menu/edit-indi.png);
+}
+
+.menu-indi-editsex::before {
+	content: url(menu/edit-indi.png);
+}
+
+.menu-indi-orderfam::before {
+	content: url(menu/edit-reorder.png);
+}
+
+.menu-indi-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-indi-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-indi-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-obje .nav-link::before {
+	content: url(menu/obje.png);
+}
+
+.menu-obje-edit::before {
+	content: url(menu/edit-obje.png);
+}
+
+.menu-obje-link::before {
+	content: url(menu/edit-links.png);
+}
+
+.menu-obje-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-obje-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-obje-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-note .nav-link::before {
+	content: url(menu/note.png);
+}
+
+.menu-note-edit::before {
+	content: url(menu/edit-note.png);
+}
+
+.menu-note-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-note-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-note-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-record .nav-link::before {
+	content: url(menu/indi.png);
+}
+
+.menu-record-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-record-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-repo .nav-link::before {
+	content: url(menu/repo.png);
+}
+
+.menu-repo-edit::before {
+	content: url(menu/edit-repo.png);
+}
+
+.menu-repo-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-repo-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-repo-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-sour .nav-link::before {
+	content: url(menu/sour.png);
+}
+
+.menu-sour-edit::before {
+	content: url(menu/edit-sour.png);
+}
+
+.menu-sour-del::before {
+	content: url(menu/edit-delete.png);
+}
+
+.menu-sour-addfav::before {
+	content: url(menu/edit-add-favorite.png);
+}
+
+.menu-sour-editraw::before {
+	content: url(menu/edit-gedcom.png);
+}
+
+.menu-story .nav-link::before {
+	content: url(menu/story.png);
+}
+
+.wt-main-container {
+}
+
+.wt-main {
+}
+
+.wt-messages {
+}
+
+.wt-page-title {
+	text-align: center;
+}
+
+.wt-page-options {
+	max-width: 50rem;
+	margin: 0 auto;
+}
+
+.wt-page-content {
+	margin-top: 1rem;
+}
+
+.wt-footer-container {
+}
+
+.wt-footer-content {
+}
+
+.wt-contact-links {
+}
+
+.wt-powered-by-webtrees {
+}
+
+.wt-page-views {
+}
+
+.wt-cookie-warning {
+}
+
+/*
+ * The home/my pages
+ *
+ * wt-home-page / wt-my-page
+ * +---wt-main-blocks
+ * |   +---wt-block, wt-block-AAA
+ * |   +---wt-block, wt-block-BBB
+ * |   +---wt-block, wt-block-CCC
+ * +---wt-side-blocks
+ *     +---wt-block, wt-block-XXX
+ *     +---wt-block, wt-block-YYY
+ *     +---wt-block, wt-block-ZZZ
+ *
+ * Each block as the structure
+ * wt-block, wt-block-XXX
+ * +---wt-block-header, wt-block-header-XXX
+ * +---wt-block-content, wt-block-content-XXX
+ */
+
+/*
+ * Pending changes page
+ *
+ * wt-pending-changes-page
+ */
+
+/*
+ * Edit genealogy data page
+ *
+ * wt-edit-page, wt-edit-XXXX-page
+ */
+
+/*
+ * Configure home/my page blocks page
+ *
+ * wt-edit-blocks-page
+ */
+
+/*
+ * Login page
+ *
+ * wt-login-page
+ */
+
+/*
+ * Ancestors chart
+ *
+ * wt-chart, wt-ancestors-chart
+ * +---wt-ancestors-chart-list
+ *     +---wt-ancestors-chart-list-item
+ */
+.wt-ancestors-chart-list {
+}
+
+/*
+ * Compact chart
+ *
+ * wt-chart, wt-compact-chart
+ */
+
+.wt-ancestors-chart-list-item {
+}
+
+/*
+ * Descendants chart
+ *
+ * wt-chart, wt-descendants-chart
+ * +---wt-descendants-chart-list
+ *     +---wt-descendants-chart-list-item
+ */
+.wt-descendants-chart-list {
+}
+
+.wt-descendants-chart-list-item {
+}
+
+/*
+ * Family book chart
+ *
+ * wt-chart, wt-family-book-chart
+ */
+
+/*
+ * Fan chart
+ *
+ * wt-chart, wt-fan-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-hourglass-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-interactive-tree
+ */
+
+/*
+ * Lifespans chart
+ *
+ * wt-chart, wt-lifespans-chart
+ */
+
+/*
+ * Pedigree chart
+ *
+ * wt-chart, wt-pedigree-chart
+ */
+
+/*
+ * Pedigree map
+ *
+ * wt-chart, wt-pedigree-map
+ */
+
+/*
+ * Relationships chart
+ *
+ * wt-chart, wt-relationships-chart
+ */
+
+/*
+ * Statistics chart
+ *
+ * wt-chart, wt-statistics-chart
+ */
+
+/*
+ * Timeline chart
+ *
+ * wt-chart, wt-timeline-chart
+ */
+
+/*
+ * Family list and individual list
+ *
+ * wt-page-options
+ * +---wt-initials-list
+ *     +---wt-initial-list-item
+ *         +---wt-initial
+ *         +---wt-initial, active
+ * wt-page-content
+ * +---wt-list, wt-{family,individual}-list
+ */
+
+/*
+ * Media object list
+ *
+ * wt-list, wt-media-list
+ */
+
+/*
+ * Note object list
+ *
+ * wt-list, wt-note-list
+ */
+
+/*
+ * Source list
+ *
+ * wt-list, wt-source-list
+ */
+
+/*
+ * Repository list
+ *
+ * wt-list, wt-repository-list
+ */
+
+/*
+ * Branches list
+ *
+ * wt-branches-page
+ */
+
+/*
+ * Place hierarchy
+ *
+ * wt-place-hierarchy-page
+ */
+
+/*
+ * Calendar
+ *
+ * wt-calendar-page
+ */
+
+/*
+ * Reports
+ *
+ * wt-reports-page
+ */
+
+/*
+ * Search
+ *
+ * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ */
 
 /* ====== Round Corners ======== */
 input,
-textarea,
 fieldset,
 .border1,
 .block,
@@ -66,9 +927,7 @@ fieldset,
 .primary-menu ul,
 .secondary-menu li ul,
 footer,
-#indi_main_blocks,
 #tabs,
-#save-cancel,
 .topbottombar {
 	border-radius: 3px;
 }
@@ -78,20 +937,16 @@ footer,
 	cursor: pointer;
 }
 
-input:required:valid,
-textarea:required:valid {
+input:required:valid {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
-input:required:invalid,
-textarea:required:invalid {
+input:required:invalid {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
-[dir=rtl] textarea:required:valid,
-[dir=rtl] input:required:invalid,
-[dir=rtl] textarea:required:invalid {
+[dir=rtl] input:required:invalid {
 	background-position: left top;
 }
 
@@ -113,46 +968,6 @@ a:hover {
 	clear: both;
 	text-align: center;
 }
-
-dl {
-	margin: 0;
-}
-
-dt {
-	float: left;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-[dir=rtl] dt {
-	float: right;
-	margin-right: auto;
-	margin-left: 10px;
-}
-
-h2 {
-	color: #333;
-	font-size: 18px;
-	font-weight: bold;
-	margin: 14px 0;
-}
-
-h4 {
-	color: #333;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-th {
-	font-weight: 100;
-}
-
-ul {
-	padding-left: 15px;
-	padding-right: 15px;
-	margin: 8px;
-}
-
 img {
 	border: 0;
 }
@@ -170,23 +985,6 @@ img.block,
 	vertical-align: middle;
 }
 
-input,
-button,
-textarea {
-	border-width: 1px;
-	border-color: #fff #494949 #494949 #fff;
-	font-size: 13px;
-}
-
-input,
-textarea {
-	padding: 3px;
-}
-
-textarea {
-	border-style: inset;
-}
-
 .topbottombar {
 	color: #fff;
 	font-size: 12px;
@@ -194,43 +992,6 @@ textarea {
 	padding: 4px;
 	text-align: center;
 	border: 1px solid #999;
-}
-
-fieldset {
-	margin: 8px 8px 4px;
-	text-align: left;
-}
-
-[dir=rtl] fieldset {
-	text-align: right;
-}
-
-legend {
-	font-weight: bold;
-}
-
-select {
-	border: 1px solid #ccc;
-	font-size: 12px;
-	margin: 0 7px;
-	padding: 1px;
-}
-
-header form {
-	font-size: 12px;
-}
-
-/* Some styles from bootstrap */
-.text-muted {
-	color: #777;
-}
-
-.small {
-	font-size: 12px;
-}
-
-#mycart a img {
-	height: 15px;
 }
 
 .button {
@@ -819,13 +1580,11 @@ a:hover .nameZoom {
 
 /* ---Pending edits--- */
 .new {
-	border: solid blue 1px;
-	overflow: hidden;
+	outline: solid blue 1px;
 }
 
 .old {
-	border: solid red 1px;
-	overflow: hidden;
+	outline: solid red 1px;
 }
 
 .tag_cloud {
@@ -835,59 +1594,6 @@ a:hover .nameZoom {
 .tag_cloud a {
 	white-space: nowrap;
 }
-
-/* ---Autocomplete styles--- */
-.ui-autocomplete-input {
-	background-color: #eea;
-}
-
-.ui-autocomplete {
-	padding: 0;
-	border: 1px solid #000;
-	background-color: #fff;
-	z-index: 99999;
-	list-style: none outside none;
-	margin: 0;
-	max-height: 200px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
-
-.ui-autocomplete li {
-	margin: 0;
-	padding: 2px 5px;
-	font-size: 12px;
-	cursor: default;
-	display: block;
-	/* if width will be 100% horizontal scrollbar will apear when scroll mode will be used */
-	/* width: 100%; */
-	font: menu;
-	/* it is very important, if line-height not setted or setted in relative units scroll will be broken in firefox */
-	line-height: 14px;
-	overflow: hidden;
-}
-
-.ui-autocomplete-loading {
-	background: #fff url(images/indicator.gif) right center no-repeat;
-}
-
-.ui-autocomplete li:nth-child(odd) {
-	background-color: #eee;
-}
-
-.ui-autocomplete a.ui-state-focus {
-	color: #f00;
-}
-
-.ui-sortable li {
-	list-style-type: none;
-}
-
-.ui-sortable .noprint {
-	display: none;
-}
-
-/* ---End of Autocomplete styles--- */
 
 .nowrap {
 	white-space: nowrap;
@@ -948,16 +1654,10 @@ a:hover .nameZoom {
 }
 
 #pending .indent {
-	padding: 0px;
+	padding: 0;
 }
 
 /* ======== Person box ======= */
-.gedcom_favorites_block,
-.user_favorites_block,
-.person_box_template {
-	overflow: visible !important;
-}
-
 /* Box styles are
 	0 compact view
 	1 normal view - small box
@@ -1000,12 +1700,6 @@ a:hover .nameZoom {
 .person_box_template .inout {
 	clear: both;
 	display: none;
-}
-
-.person_box_template .noprint {
-	width: 25px;
-	height: 50px;
-	position: relative;
 }
 
 .person_box_template .chart_textbox {
@@ -1270,8 +1964,7 @@ a:hover .nameZoom {
 }
 
 #register-form label input,
-#register-form label select,
-#register-form textarea {
+#register-form label select {
 	background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
@@ -1283,18 +1976,8 @@ a:hover .nameZoom {
 	width: 228px;
 }
 
-#register-form textarea {
-	vertical-align: top;
-}
-
 #register-form div#registration-submit {
 	text-align: center;
-}
-
-.login_block_block #login-form,
-.login_block_block #new_passwd_form {
-	border: 0;
-	background: none;
 }
 
 [dir=rtl] #login-form label,
@@ -1350,8 +2033,6 @@ a:hover .nameZoom {
 	opacity: 0;
 	transition: visibility 0s ease .25s,opacity .25s ease;
 	z-index: 9999;
-	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
-	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
@@ -1451,15 +2132,6 @@ a:hover .nameZoom {
 }
 
 /* ======== List styles ====== */
-.source-list,
-.note-list,
-.repo-list,
-.media-list,
-.indi-list,
-.fam-list {
-	margin: 5px auto;
-	visibility: hidden;
-}
 
 .surname-list,
 .givn-list {
@@ -1481,8 +2153,6 @@ a:hover .nameZoom {
 .media-list td,
 .indi-list td,
 .fam-list td,
-.recent_changes_block td,
-.upcoming_events_block td,
 .surname-list td,
 .givn-list td {
 	padding: 2px 5px;
@@ -1504,11 +2174,6 @@ a:hover .nameZoom {
 .media-list th,
 .indi-list th,
 .fam-list th,
-.recent_changes_block th,
-.upcoming_events_block th,
-.todays_events_block th,
-.todo_block th,
-.yahrzeit_block th,
 .surname-list th,
 .givn-list th {
 	cursor: pointer;
@@ -1545,17 +2210,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-#source-tabs,
-#note-tabs,
-#repo-tabs,
-#media-tabs {
-	visibility: hidden;
-}
-
-#statistics_chart {
-	visibility: hidden;
-}
-
 #source-edit,
 #note-edit,
 #repo-edit,
@@ -1589,13 +2243,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-#search-result-tabs,
-#places-tabs {
-	margin: auto;
-	width: 98%;
-	visibility: hidden;
-}
-
 #search-result-tabs h3 {
 	text-align: center;
 }
@@ -1619,142 +2266,10 @@ a:hover .nameZoom {
 	margin: 0 1px 1px -2px;
 }
 
-/* ======== Block styles ===== */
-#index_main_blocks {
-	clear: none;
-	width: 66%;
-	float: left;
-}
-
-#index_small_blocks {
-	clear: none;
-	width: 33%;
-	float: right;
-}
-
-#index_full_blocks {
-	clear: none;
-	width: 100%;
-}
-
-[dir=rtl] #index_main_blocks {
-	float: right;
-}
-
-[dir=rtl] #index_small_blocks {
-	float: left;
-}
-
-.small_inner_block {
-	max-height: 250px;
-	overflow: auto;
-}
-
-.normal_inner_block {
-	overflow: auto;
-}
-
-.block {
-	color: #000;
-	margin-bottom: 5px;
-	padding: 1px;
-	vertical-align: top;
-}
-
-.blockcontent {
-	border: solid #999 1px;
-	margin:  0 2px 10px 0;
-	overflow: auto;
-	padding: 5px;
-}
-
-.blockcontent .list_table {
-	border-spacing: 1px;
-	border: solid #999 1px;
-	border-right: 0;
-}
-
-.blockcontent .list_value,
-.blockcontent .list_value_wrap {
-	border: 0;
-	border-top: solid #999 1px;
-	border-right: solid #999 1px;
-}
-
-.blockheader {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	border-collapse: collapse;
-}
-
-.blockh1 {
-	background: url(images/left1B.png) no-repeat;
-	height: 24px;
-	width: 26px;
-	padding: 0;
-}
-
-.blockh2 {
-	background: url(images/left2.png) repeat-x;
-	font-size: 13px;
-	font-weight: bold;
-	padding: 0;
-}
-
-.blockh3 {
-	background: url(images/left3.png) no-repeat;
-	height: 24px;
-	width: 8px;
-	padding: 0;
-}
-
-.blockhc {
-	padding: 3px 3px 0;
-}
-
-.blockhc img {
-	padding-right: 3px;
-}
-
-.blockhc h2 {
-	margin: 0;
-}
-
-[dir=rtl] .blockh1 {
-	background-image: url(images/right1B.png);
-}
-
-[dir=rtl] .blockh3 {
-	background-image: url(images/right3.png);
-}
-
-[dir=rtl] .blockhc {
-	padding: 3px 0 0 3px;
-}
-
-[dir=rtl] .blockhc img {
-	padding-left: 3px;
-}
-
-/* end Block styles */
-
 #main_select,
 #available_select,
 #right_select {
 	min-width: 150px;
-}
-
-.user_welcome_block table,
-.gedcom_block_block table {
-	margin: auto;
-}
-
-.user_welcome_block td,
-.gedcom_block_block td {
-	width: 33%;
-	text-align: center;
-	vertical-align: top;
 }
 
 /* Random picture block */
@@ -1894,36 +2409,7 @@ div.faq_body {
 	padding-top: 15px;
 }
 
-/* a container for the following three links */
-
-.editlink,
-.copylink,
-.deletelink {
-	float: left;
-}
-
-[dir=rtl] .editlink,
-[dir=rtl] .copylink,
-[dir=rtl] .deletelink {
-	float: right;
-}
-
-span.link_text {
-	display: none;
-}
-
 /* ======== Indi header ====== */
-.field .editlink,
-.field .deletelink,
-.field .copylink {
-	float: right;
-}
-
-[dir=rtl].field .editlink,
-[dir=rtl].field .deletelink {
-	float: left;
-}
-
 #indi_header {
 	overflow: hidden;
 	margin: 0 0 5px;
@@ -2018,8 +2504,8 @@ span.link_text {
 	float: right;
 }
 
-dd .editlink,
-dd .deletelink {
+#individual-names .wt-icon-edit,
+#individual-names .wt-icon-delete {
 	float: right;
 }
 
@@ -2099,13 +2585,13 @@ dd .deletelink {
 	float: left;
 }
 
-[dir=rtl] dd .editlink,
-[dir=rtl] dd .deletelink {
+[dir=rtl] #individual-names .wt-icon-edit,
+[dir=rtl] #individual-names .wt-icon-delete {
 	float: left;
 }
 
 .odometer {
-	font-family: courier, mono-space;
+	font-family: courier, monospace;
 	font-weight: bold;
 	background: #000;
 	color: #fff;
@@ -2114,10 +2600,7 @@ dd .deletelink {
 /* ======= General sprite ==== */
 .male_gender,
 .female_gender,
-.unknown_gender,
-.editicon,
-.copyicon,
-.deleteicon {
+.unknown_gender {
 	display: block;
 	background: url(images/general_sprite.png) no-repeat left 0;
 }
@@ -2138,24 +2621,6 @@ dd .deletelink {
 	background-position: -100px 4px;
 	width: 24px;
 	height: 30px;
-}
-
-.editicon {
-	background-position: -40px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.copyicon {
-	background-position: -70px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.deleteicon {
-	background-position: -100px -32px;
-	width: 24px;
-	height: 16px;
 }
 
 /* ======== Indi tabs ======== */
@@ -2238,61 +2703,6 @@ dd .deletelink {
 	width: 100%;
 }
 
-/* === jquery-ui.css changes === */
-.ui-state-highlight a {
-	font-weight: bold;
-}
-
-.ui-accordion .ui-accordion-content {
-	border: 0;
-	position: relative;
-	padding: 0 5px;
-	overflow: visible;
-}
-
-.ui-tabs,
-.ui-tabs .ui-tabs-nav li a {
-	padding: 0;
-}
-
-#sidebarAccordion .ui-accordion-header {
-	text-align: center;
-}
-
-.ui-widget-header {
-	padding: 3px;
-}
-
-.ui-menu .ui-menu-item a {
-	font-size: 12px;
-}
-
-.ui-menu .ui-menu-item a.ui-state-hover,
-.ui-menu .ui-menu-item a.ui-state-active {
-	color: #f00;
-}
-
-.ui-helper-reset {
-	line-height: 1.5;
-}
-
-[dir=rtl] .ui-tabs .ui-tabs-nav li {
-	float: right;
-}
-
-[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
-	right: 0.5em;
-}
-
-[dir=rtl] .ui-dialog-title {
-	float: right;
-}
-
-[dir=rtl] .ui-dialog-titlebar-close {
-	left: .3em;
-	right: auto;
-}
-
 /* === jQuery.datatable styling general over-rides === */
 .odd {
 	background-color: #e7eef3;
@@ -2328,24 +2738,6 @@ dd .deletelink {
 	float: left;
 	font-weight: normal;
 	padding: 4px;
-}
-
-.recent_changes_block .dataTables_info,
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info,
-.todo_block .dataTables_info,
-.yahrzeit_block .dataTables_info {
-	padding: 0;
-}
-
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info {
-	padding: 2px 0 0;
-}
-
-.upcoming_events_block button,
-.todays_events_block button {
-	margin: 0 20px;
 }
 
 .dataTables_length {
@@ -2429,14 +2821,6 @@ dd .deletelink {
 
 #indi_left {
 	display: table-cell;
-}
-
-#indi_left .ui-tabs-panel {
-	padding: 0;
-}
-
-#indi_left .ui-tabs-nav {
-	margin: 0 2px;
 }
 
 #tabs {
@@ -2855,211 +3239,6 @@ dd .deletelink {
 	margin: 0 260px 0 0;
 }
 
-/* ===== Edit interface pop-ups ===== */
-#edit_interface-page h4 {
-	color: #555;
-	margin: 5px;
-}
-
-#edit_interface-page .optionbox span {
-	margin: 0 5px;
-}
-
-#edit_interface-page #LATI,
-#edit_interface-page #LONG,
-#edit_interface-page #SPFX,
-#edit_interface-page #NSFX,
-#edit_interface-page #NPFX {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 88px;
-}
-
-#edit_interface-page #GIVN,
-#edit_interface-page #SURN,
-#edit_interface-page #_MARNM {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 180px;
-}
-
-#edit_interface-page input[type="text"],
-#edit_interface-page #NAME_display {
-	line-height: 18px;
-	margin: 0 5px;
-	vertical-align: top;
-	width: 240px;
-}
-
-#edit_interface-page input[type="text"][id*="PAGE"],
-#edit_interface-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR"],
-#edit_interface-page input[type="text"][id*="REPO"],
-#edit_interface-page input[type="text"][id*="OBJE"],
-#edit_interface-page input[type="text"][id*="FAMC"],
-#edit_interface-page input[type="text"][id*="ASSO"],
-#edit_interface-page input[type="text"][id^="AGE"],
-#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 250px;
-}
-
-#edit_interface-page input[type="text"][id$="DATE"] {
-	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
-	width: 200px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
-	width: 250px;
-}
-
-#edit_interface-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#edit_interface-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#edit_interface-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#edit_interface-page textarea[id*="TEXT"],
-#edit_interface-page textarea[id*="PUBL"] {
-	height: 140px;
-}
-
-#edit_interface-page textarea[id^="newgedrec"] {
-	line-height: 18px;
-	width: 605px;
-}
-
-#edit_interface-page textarea#gedcom {
-	height: 364px;
-}
-
-#edit_interface-page textarea[id*="ADDR"],
-#edit_interface-page input[id*="ADDR"] {
-	height: 80px;
-	width: 300px;
-}
-
-#edit_interface-page #changefam {
-	padding: 5px;
-}
-
-#edit_interface-page #changefam table {
-	margin: 10px auto;
-	min-width: 400px;
-	max-width: 650px;
-}
-
-#edit_interface-page #changefam span {
-	margin: 0;
-}
-
-#edit_interface-page #changefam td {
-	padding: 5px;
-	white-space: normal;
-}
-
-#edit_interface-page #changefam td.child {
-	text-align: center;
-}
-
-#save-cancel {
-	position: fixed;
-	bottom: 0;
-	width: 98%;
-	border: solid #999 1px;
-	margin: 0;
-}
-
-#save-cancel input {
-	padding: 2px 8px;
-}
-
-#save-cancel .save {
-	float: left;
-	margin: 5px;
-}
-
-#save-cancel .cancel {
-	float: right;
-	margin: 5px;
-}
-
-[dir=rtl] #save-cancel .save {
-	float: right;
-}
-
-[dir=rtl] #save-cancel .cancel {
-	float: left;
-}
-
-#edit_interface-page,
-#addmedia-page {
-	margin-bottom: 50px;
-}
-
-/* ===== Addmedia pop-ups ===== */
-#addmedia-page input[type="text"] {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 350px;
-}
-
-#addmedia-page .optionbox select {
-	margin: 0 5px;
-}
-
-#addmedia-page .optionbox p.sub {
-	margin: 0 5px;
-	font-size: 11px;
-}
-
-#addmedia-page input[type="text"][id*="PAGE"],
-#addmedia-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#addmedia-page input[type="text"][id*="SOUR"],
-#addmedia-page input[type="text"][id*="REPO"],
-#addmedia-page input[type="text"][id*="OBJE"],
-#addmedia-page input[type="text"][id*="FAMC"],
-#addmedia-page input[type="text"][id*="ASSO"],
-#addmedia-page input[type="text"][id^="AGE"],
-#addmedia-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 70px;
-}
-
-#addmedia-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#addmedia-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#addmedia-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#addmedia-page textarea[id*="TEXT"],
-#addmedia-page textarea[id*="PUBL"] {
-	height: 140px;
-}
-
 /* ===== Styling for the jquery.colorbox gallery ===== */
 #colorbox,
 #cboxOverlay,
@@ -3252,39 +3431,20 @@ dd .deletelink {
 	display:block;
 }
 
-#compact_chart,
-#fan_chart,
-.chart_common,
-#ancestry_booklet,
-#descendancy_booklet,
-#familybook_chart,
-#hourglass_chart {
-	margin: 20px;
-}
-
-/* styles for vertical lines in ancestry and descendancy charts */
-.chart_common li {
-	list-style: none;
-}
-
-.chart_common li > span.details1 {
-	white-space: nowrap;
-}
-
-.chart_common .generation {
+/* Ancestry chart */
+.wt-ancestors-chart-list {
 	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
 	padding: 0;
 	display: block;
 }
 
-[dir=rtl] .chart_common .generation {
+[dir=rtl] .wt-ancestors-chart-list {
 	margin: 0 15px 0 0;
-	background-position: right top
-;
+	background-position: right top;
 }
 
-.chart_common .generation > li {
+.wt-ancestors-chart-list-item {
 	margin: 5px 0;
 }
 
@@ -3366,22 +3526,6 @@ dd .deletelink {
 
 #fan_chart_img {
 	text-align: center;
-}
-
-/*-- Hourglass ---- */
-#hourglass_chart img.line4 {
-	vertical-align: middle;
-}
-
-#hourglass_chart table,
-.charts_block table {
-	border-collapse: collapse;
-}
-
-#hourglass_chart td,
-.charts_block td {
-	padding: 0;
-	empty-cells: show;
 }
 
 /*-- Lifespan ---- */
@@ -3485,11 +3629,6 @@ dd .deletelink {
 	z-index: -1000;
 }
 
-#pedigree-page .shadow {
-	position: absolute;
-	white-space: nowrap;
-}
-
 #pedigree-page .layout0 .shadow > div,
 #pedigree-page .layout1 .shadow > div {
 	display: inline-block;
@@ -3505,6 +3644,16 @@ dd .deletelink {
 #childarrow,
 .ancestorarrow {
 	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pedigree_chart .person_box_template {
+	display: inline-block;
+}
+
+#pedigree_chart .shadow {
+	white-space: nowrap;
 }
 
 #pedigree-page #childarrow {
@@ -3558,18 +3707,6 @@ dd .deletelink {
 	background-image: url(images/add.png);
 }
 
-.icon-admin {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/admin.png);
-}
-
-.icon-bing {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/bing.png);
-}
-
 .icon-button_addmedia {
 	width: 18px;
 	height: 16px;
@@ -3593,13 +3730,6 @@ dd .deletelink {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/addsource.png);
-}
-
-.icon-button_calendar {
-	width: 19px;
-	height: 15px;
-	background-image: url(images/buttons/calendar.png);
-	vertical-align: middle;
 }
 
 .icon-button_family {
@@ -3630,13 +3760,6 @@ dd .deletelink {
 	width: 11px;
 	height: 15px;
 	background-image: url(images/buttons/indi.png);
-}
-
-.icon-button_keyboard {
-	width: 30px;
-	height: 15px;
-	background-image: url(images/buttons/keyboard.png);
-	vertical-align: middle;
 }
 
 .icon-button_media {
@@ -3695,40 +3818,10 @@ dd .deletelink {
 	background-image: url(images/clippings.png);
 }
 
-.icon-darrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow.png);
-}
-
-a.icon-darrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow2.png);
-}
-
-.icon-ddarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow.png);
-}
-
-a.icon-ddarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow2.png);
-}
-
 .icon-edit_indi {
 	width: 22px;
 	height: 22px;
 	background-image: url(images/edit_indi.png);
-}
-
-.icon-email {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/email.png);
 }
 
 .icon-fam-list {
@@ -3737,60 +3830,16 @@ a.icon-ddarrow:hover {
 	background-image: url(images/sfamily.png);
 }
 
-.icon-googlemaps {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/googlemaps.png);
-}
-
-.icon-help {
-	cursor: help;
-	margin: 0 5px;
-	width: 15px;
-	height: 15px;
-	background-image: url(images/help.png);
-}
-
 .icon-indi-list {
 	width: 32px;
 	height: 32px;
 	background-image: url(images/indis.png);
 }
 
-.icon-larrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow.png);
-}
-
-a.icon-larrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow2.png);
-}
-
-.icon-ldarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow.png);
-}
-
-a.icon-ldarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow2.png);
-}
-
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/indicator.gif);
-}
-
-.icon-loading-large {
-	width: 32px;
-	height: 32px;
-	background-image: url(images/loading.gif);
 }
 
 .icon-media {
@@ -3859,40 +3908,10 @@ a.icon-ldarrow:hover {
 	background-image: url(images/notes.png);
 }
 
-.icon-osm {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/osm.png);
-}
-
 .icon-plus {
 	width: 11px;
 	height: 11px;
 	background-image: url(images/plus.png);
-}
-
-.icon-rarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow.png);
-}
-
-a.icon-rarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow2.png);
-}
-
-.icon-rdarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow.png);
-}
-
-a.icon-rdarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow2.png);
 }
 
 .icon-reminder {
@@ -3985,47 +4004,10 @@ a.icon-rdarrow:hover {
 	background-image: url(images/source.png);
 }
 
-.icon-target {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/target.png);
-	vertical-align: middle;
-}
-
-.icon-uarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow.png);
-}
-
-a.icon-uarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow2.png);
-}
-
-.icon-udarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow.png);
-}
-
-a.icon-udarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow2.png);
-}
-
 .icon-warning {
 	width: 17px;
 	height: 17px;
 	background-image: url(images/warning.png);
-}
-
-.icon-wiki {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/w_button.png);
 }
 
 .icon-zoomin {
@@ -4202,273 +4184,6 @@ a.icon-udarrow:hover {
 }
 /* ====== End Icon styles ====== */
 
-/* ====== Theme Header ========= */
-header h1 {
-	clear: left;
-	float: left;
-	font-size: 24px;
-	font-weight: normal;
-	margin: 14px 5px 3px;
-}
-
-[dir=rtl] header h1 {
-	float: right;
-}
-
-/* Set stack level for top two header menu rows */
-.secondary-menu ul,
-.primary-menu ul {
- 	z-index: 210;
-}
-
-/* Title Line */
-header {
-	height: 98px;
-}
-
-/* ====== Secondary menu ======= */
-.secondary-menu {
-	float: right;
-	margin: 12px 10px 12px 0;
-	white-space: nowrap;
-	list-style: none;
-	padding: 1px;
-}
-
-.secondary-menu li {
-	display: inline;
-	position: relative;
-}
-
-.secondary-menu li:before {
-	content: " | ";
-}
-
-.secondary-menu  ul li:before,
-.secondary-menu li:first-child:before {
-	content: "";
-}
-
-.secondary-menu li:last-child:before {
-	content: "  ";
-}
-
-.secondary-menu ul {
-	position: absolute;
-	background-color: #eee;
-	border: thin solid #aaa;
-	display: none;
-	top: 6px;
-	left: 0;
-	list-style: none;
-	padding: 1px;
-}
-
-.secondary-menu ul li {
-	display: block;
-	text-align: left;
-}
-
-.secondary-menu ul li a {
-	background-color: #fff;
-	color: #333;
-	display: block;
-	padding: 5px;
-}
-
-.secondary-menu li ul {
-	left: auto;
-	right: 0px;
-}
-
-.secondary-menu li:hover ul {
-	display: block;
-}
-
-.secondary-menu ul li a:hover {
-	color: #000;
-}
-
-.secondary-menu .menu-pending a {
-	font-weight: 900;
-}
-
-/* set active theme to bold */
-.secondary-menu .active {
-	font-weight: 900;
-}
-
-[dir=rtl] .secondary-menu {
-	float: left;
-	margin: 12px 0 12px 10px;
-}
-
-[dir=rtl] .secondary-menu li ul {
-    left: 0;
-    right: auto;
-}
-
-[dir=rtl] .secondary-menu li ul li {
-	text-align: right;
-}
-
-[dir=rtl] .secondary-menu li:first-child,
-[dir=rtl] .secondary-menu li ul li {
-	border: 0;
-}
-
-
-.header-search {
-	display: inline;
-}
-
-.search-icon {
-	vertical-align: top;
-	padding: 0 3px;
-}
-
-/* ====== Primary menu ========= */
-
-header nav {
-	clear: both;
-	position: relative;
-}
-
-.primary-menu {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	height: 48px;
-}
-
-.primary-menu ul {
-	padding: 0;
-	margin: 0;
-	border: 1px solid #ddd;
-	list-style-type: none;
-	position: absolute;
-	visibility: hidden;
-	opacity: 0;
-	background-color: #fff;
-}
-
-.primary-menu li {
-	float: left;
-	position: relative;
-	display: block;
-	list-style: none;
-}
-
-.primary-menu li a {
-	display: block;
-}
-
-.primary-menu li > ul {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 100%;
-	right: auto;
-}
-
-.primary-menu > li > a {
-	color: transparent; /* Use class="sr-only" from bootstrap? */
-}
-
-.primary-menu > li > ul {
-	left: 0;
-	right: auto;
-	top: 40px;
-}
-
-.primary-menu a {
-	display: block;
-	text-decoration: none;
-	padding: 0 5px;
-	margin: 0;
-	white-space: nowrap;
-}
-
-.primary-menu ul li:hover a,
-.primary-menu li:hover li a {
-	background: none;
-	border: 0;
-}
-
-.primary-menu li:hover > ul {
-	visibility: visible;
-	opacity: 1;
-}
-
-.primary-menu > li > ul > li:first-child {
-	text-indent: 0;
-	min-width: 100px;
-	width: 100%;
-	background: none;
-	font-weight: bold;
-	white-space: nowrap;
-	font-size: 14px;
-	text-align: center;
-	height: 22px;
-	line-height: 1.5;
-	border-bottom: solid #ddd 1px;
-}
-
-.primary-menu > li {
-	background-image: url(images/sprites-top-menu.png);
-	background-repeat: no-repeat;
-	height: 40px;
-	line-height: 40px;
-	margin: 4px 9px 4px 7px;
-	text-indent: 32px;
-	width: 40px;
-}
-
-.primary-menu li ul li {
-	background-image: url(images/sprites-sub-menu.png);
-	background-repeat: no-repeat;
-	height: 28px;
-	left: auto;
-	line-height: 25px;
-	text-align: left;
-	text-indent: 22px;
-	width: 100%;
-}
-
-/* Reverse left and right on RTL pages */
-[dir=rtl] .primary-menu > li {
-	margin: 4px 7px 4px 9px;
-}
-
-[dir=rtl] .primary-menu li {
-	float: right;
-}
-
-[dir=rtl] .primary-menu li:hover > ul {
-	right: 100%;
-	left: auto;
-}
-
-[dir=rtl] .primary-menu > li:hover > ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .primary-menu li li {
-	text-align: right;
-}
-
-[dir=rtl] .primary-menu li li a {
-	display: block;
-	float: right;
-}
-
-[dir=rtl] .primary-menu > li > ul > li:first-child {
-	text-align: center;
-}
-
-/* ====== End Theme Header ===== */
-
 /* ====== Theme Footer ========= */
 
 footer {
@@ -4494,701 +4209,6 @@ footer {
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
-/* ***** Header icons **** */
-.menu-tree {
-	background-position:center 0;
-}
-
-.menu-mymenu {
-	background-position:center -287px;
-}
-
-.menu-chart {
-	background-position:center -41px;
-}
-
-.menu-list {
-	background-position: center -82px;
-}
-
-.menu-report {
-	background-position: center -164px;
-}
-
-.menu-calendar {
-	background-position: center -123px;
-}
-
-.menu-search {
-	background-position: center -205px;
-}
-
-.menu-help {
-	background-position: center -246px;
-}
-
-.menu-clippings {
-	background-position: center -328px;
-}
-
-.menu-indi,
-.menu-record {
-	background-position: center -369px;
-}
-
-.menu-indi-orderfam {
-	background-position: left 0; /* error */
-}
-
-[dir=rtl] .menu-indi-orderfam {
-	background-position: right 0; /* error */
-}
-
-.menu-sour {
-	background-position: center -451px;
-}
-
-.menu-fam {
-	background-position: center -410px;
-}
-
-.menu-obje {
-	background-position: center -533px;
-}
-
-.menu-note {
-	background-position: center -492px;
-}
-
-.menu-repo {
-	background-position: center -574px;
-}
-
-.menu-story {
-	background-position: center -615px;
-}
-
-/* Header Sub-menu icons */
-.menu-admin {
-	background-position: left -728px;
-}
-
-[dir=rtl] .menu-admin {
-	background-position: right -728px;
-}
-
-.menu-branches {
-	background-position: left -468px;
-}
-
-[dir=rtl] .menu-branches {
-	background-position: right -468px;
-}
-
-.menu-calendar-day {
-	background-position: left -572px;
-}
-
-[dir=rtl] .menu-calendar-day {
-	background-position: right -572px;
-}
-
-.menu-calendar-month {
-	background-position: left -572px;
-}
-
-[dir=rtl] .menu-calendar-month {
-	background-position: right -572px;
-}
-
-.menu-calendar-year {
-	background-position: left -572px;
-}
-
-[dir=rtl] .menu-calendar-year {
-	background-position: right -572px;
-}
-
-.menu-chart-ancestry {
-	background-position: left -208px;
-}
-
-[dir=rtl] .menu-chart-ancestry {
-	background-position: right -208px;
-}
-
-.menu-chart-compact {
-	background-position: left -52px;
-}
-
-[dir=rtl] .menu-chart-compact {
-	background-position: right -52px;
-}
-
-.menu-chart-descendants {
-	background-position: left -0px;
-}
-
-[dir=rtl] .menu-chart-descendants {
-	background-position: right -0px;
-}
-
-.menu-chart-familybook {
-	background-position: left -104px;
-}
-
-[dir=rtl] .menu-chart-familybook {
-	background-position: right -104px;
-}
-
-.menu-chart-fanchart {
-	background-position: left -26px;
-}
-
-[dir=rtl] .menu-chart-fanchart {
-	background-position: right -26px;
-}
-
-.menu-chart-hourglass {
-	background-position: left -130px;
-}
-
-[dir=rtl] .menu-chart-hourglass {
-	background-position: right -130px;
-}
-
-.menu-chart-lifespan {
-	background-position: left -182px;
-}
-
-[dir=rtl] .menu-chart-lifespan {
-	background-position: right -182px;
-}
-
-.menu-chart-pedigree {
-	background-position: left -208px;
-}
-
-[dir=rtl] .menu-chart-pedigree {
-	background-position: right -208px;
-}
-
-.menu-chart-pedigree_map {
-	background-position: left -234px;
-}
-
-[dir=rtl] .menu-chart-pedigree_map {
-	background-position: right -234px;
-}
-
-.menu-chart-relationship {
-	background-position: left -260px;
-}
-
-[dir=rtl] .menu-chart-relationship {
-	background-position: right -260px;
-}
-
-.menu-chart-statistics {
-	background-position: left -286px;
-}
-
-[dir=rtl] .menu-chart-statistics {
-	background-position: right -286px;
-}
-
-.menu-chart-timeline {
-	background-position: left -312px;
-}
-
-[dir=rtl] .menu-chart-timeline {
-	background-position: right -312px;
-}
-
-.menu-chart-tree {
-	background-position: left -156px;
-}
-
-[dir=rtl] .menu-chart-tree {
-	background-position: right -156px;
-}
-
-.menu-clippingsadd {
-	background-position: left -702px;
-}
-
-[dir=rtl] .menu-clippingsadd {
-	background-position: right -702px;
-}
-
-.menu-clippingscart {
-	background-position: left -702px;
-}
-
-[dir=rtl] .menu-clippingscart {
-	background-position: right -702px;
-}
-
-.menu-fam-addchil {
-	background-position: left -858px;
-}
-
-[dir=rtl] .menu-fam-addchil {
-	background-position: right -858px;
-}
-
-.menu-fam-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-fam-addfav {
-	background-position: right -832px;
-}
-
-.menu-fam-change {
-	background-position: left -858px;
-}
-
-[dir=rtl] .menu-fam-change {
-	background-position: right -858px;
-}
-
-.menu-fam-del {
-	background-position: left -936px;
-}
-
-[dir=rtl] .menu-fam-del {
-	background-position: right -936px;
-}
-
-.menu-fam-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-fam-editraw {
-	background-position: right -574px;
-}
-
-.menu-fam-orderchil {
-	background-position: left -858px;
-}
-
-[dir=rtl] .menu-fam-orderchil {
-	background-position: right -858px;
-}
-
-.menu-help-contents {
-	background-position: left -624px;
-}
-
-[dir=rtl] .menu-help-contents {
-	background-position: right -624px;
-}
-
-.menu-help-faq {
-	background-position: left -624px;
-}
-
-[dir=rtl] .menu-help-faq {
-	background-position: right -624px;
-}
-
-.menu-help-genealogy {
-	background-position: left -624px;
-}
-
-[dir=rtl] .menu-help-genealogy {
-	background-position: right -624px;
-}
-
-.menu-help-hide {
-	background-position: left -624px;
-}
-
-[dir=rtl] .menu-help-hide {
-	background-position: right -624px;
-}
-
-.menu-help-show {
-	background-position: left -624px;
-}
-
-[dir=rtl] .menu-help-show {
-	background-position: right -624px;
-}
-
-.menu-help-technical {
-	background-position: left -676px;
-}
-
-[dir=rtl] .menu-help-technical {
-	background-position: right -676px;
-}
-
-.menu-help-wiki {
-	background-position: left -650px;
-}
-
-[dir=rtl] .menu-help-wiki {
-	background-position: right -650px;
-}
-
-.menu-indi-addfav,
-.menu-record-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-indi-addfav,
-[dir=rtl] .menu-record-addfav {
-	background-position: right -832px;
-}
-
-.menu-indi-editname {
-	background-position: left -836px;
-}
-
-[dir=rtl] .menu-indi-editname {
-	background-position: right -836px;
-}
-
-.menu-indi-addname {
-	background-position: left -780px;
-}
-
-[dir=rtl] .menu-indi-addname {
-	background-position: right -780px;
-}
-
-.menu-indi-del,
-.menu-record-del {
-	background-position: left -806px;
-}
-
-[dir=rtl] .menu-indi-del {
-	background-position: right -806px;
-}
-
-.menu-indi-editraw,
-.menu-record-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-indi-editraw {
-	background-position: right -574px;
-}
-
-.menu-indi-editsex {
-	background-position: left -780px;
-}
-
-[dir=rtl] .menu-indi-editsex {
-	background-position: right -780px;
-}
-
-.menu-list-fam {
-	background-position: left -494px;
-}
-
-[dir=rtl] .menu-list-fam {
-	background-position: right -494px;
-}
-
-.menu-list-indi {
-	background-position: left -520px;
-}
-
-[dir=rtl] .menu-list-indi {
-	background-position: right -520px;
-}
-
-.menu-list-note {
-	background-position: left -416px;
-}
-
-[dir=rtl] .menu-list-note {
-	background-position: right -416px;
-}
-
-.menu-list-obje {
-	background-position: left -338px;
-}
-
-[dir=rtl] .menu-list-obje {
-	background-position: right -338px;
-}
-
-.menu-list-plac {
-	background-position: left -364px;
-}
-
-[dir=rtl] .menu-list-plac {
-	background-position: right -364px;
-}
-
-.menu-list-repo {
-	background-position: left -390px;
-}
-
-[dir=rtl] .menu-list-repo {
-	background-position: right -390px;
-}
-
-.menu-list-sour {
-	background-position: left -442px;
-}
-
-[dir=rtl] .menu-list-sour {
-	background-position: right -442px;
-}
-
-.menu-myaccount {
-	background-position: left -676px;
-}
-
-[dir=rtl] .menu-myaccount {
-	background-position: right -676px;
-}
-
-.menu-mypage {
-	background-position: left -676px;
-}
-
-[dir=rtl] .menu-mypage {
-	background-position: right -676px;
-}
-
-.menu-mypedigree {
-	background-position: left -208px;
-}
-
-[dir=rtl] .menu-mypedigree {
-	background-position: right -208px;
-}
-
-.menu-myrecord {
-	background-position: left -520px;
-}
-
-[dir=rtl] .menu-myrecord {
-	background-position: right -520px;
-}
-
-.menu-note-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-note-fav {
-	background-position: right -832px;
-}
-
-.menu-note-del {
-	background-position: left -806px;
-}
-
-[dir=rtl] .menu-note-del {
-	background-position: right -806px;
-}
-
-.menu-note-edit {
-	background-position: left -910px;
-}
-
-[dir=rtl] .menu-note-edit {
-	background-position: right -910px;
-}
-
-.menu-note-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-note-editraw {
-	background-position: right -574px;
-}
-
-.menu-obje-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-obje-addfav {
-	background-position: right -832px;
-}
-
-.menu-obje-del {
-	background-position: left -1040px;
-}
-
-[dir=rtl] .menu-obje-del {
-	background-position: right -1040px;
-}
-
-.menu-obje-edit {
-	background-position: left -962px;
-}
-
-[dir=rtl] .menu-obje-edit {
-	background-position: right -962px;
-}
-
-.menu-obje-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-obje-editraw {
-	background-position: right -574px;
-}
-
-.menu-obje-link {
-	background-position: left -988px;
-}
-
-[dir=rtl] .menu-obje-link {
-	background-position: right -988px;
-}
-
-.menu-obje-link-fam {
-	background-position: left -494px;
-}
-
-[dir=rtl] .menu-obje-link-fam {
-	background-position: right -494px;
-}
-
-.menu-obje-link-indi {
-	background-position: left -520px;
-}
-
-[dir=rtl] .menu-obje-link-indi {
-	background-position: right -520px;
-}
-
-.menu-obje-link-sour {
-	background-position: left -442px;
-}
-
-[dir=rtl] .menu-obje-link-sour {
-	background-position: right -442px;
-}
-
-.menu-repo-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-repo-addfav {
-	background-position: right -832px;
-}
-
-.menu-repo-del {
-	background-position: left -806px;
-}
-
-[dir=rtl] .menu-repo-del {
-	background-position: right -806px;
-}
-
-.menu-repo-edit {
-	background-position: left -1014px;
-}
-
-[dir=rtl] .menu-repo-edit {
-	background-position: right -1014px;
-}
-
-.menu-repo-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-repo-editraw {
-	background-position: right -574px;
-}
-
-.menu-report li {
-	background-position: left -546px;
-}
-
-[dir=rtl] .menu-report li {
-	background-position: right -546px;
-}
-
-.menu-search-advanced {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-search-advanced {
-	background-position: right -598px;
-}
-
-.menu-search-general {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-search-general {
-	background-position: right -598px;
-}
-
-.menu-search-replace {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-search-replace {
-	background-position: right -598px;
-}
-
-.menu-search-soundex {
-	background-position: left -598px;
-}
-
-[dir=rtl] .menu-search-soundex {
-	background-position: right -598px;
-}
-
-.menu-sour-addfav {
-	background-position: left -832px;
-}
-
-[dir=rtl] .menu-sour-addfav {
-	background-position: right -832px;
-}
-
-.menu-sour-del {
-	background-position: left -1066px;
-}
-
-[dir=rtl] .menu-sour-del {
-	background-position: right -1066px;
-}
-
-.menu-sour-edit {
-	background-position: left -884px;
-}
-
-[dir=rtl] .menu-sour-edit {
-	background-position: right -884px;
-}
-
-.menu-sour-editraw {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-sour-editraw {
-	background-position: right -574px;
-}
-
-.menu-story-sub {
-	background-position: left -1092px;
-}
-
-[dir=rtl] .menu-story-sub {
-	background-position: right -1040px;
-}
-
-.menu-tree li {
-	background-position: left -754px;
-}
-
-[dir=rtl] .menu-tree li {
-	background-position: right -754px;
-}
-
 .icon-indis {
 	width: 25px;
 	height: 25px;
@@ -5271,158 +4291,4 @@ footer {
 .cookie-warning.hidden {
 	height: 0;
 	overflow: hidden;
-}
-
-@media print {
-	header,
-	footer,
-	form,
-	#sidebar,
-	#separator,
-	.editfacts,
-	.noprint {
-		display: none;
-	}
-
-	#header_accordion1 {
-		width: 510px;
-	}
-
-	#pedigree-page h2 {
-		margin: 0;
-	}
-
-	#pedigree_chart {
-		margin: 0 auto;
-	}
-
-	#familybook_chart h3 {
-		margin-bottom: 10px;
-	}
-
-	#lifespan-chart {
-		margin: 0;
-		border: 0;
-		padding: 0;
-	}
-}
-
-/* Mobile low and high resolution viewports */
-@media (max-width: 600px) {
-	.header-search {
-		display: none;
-		}
-	.secondary-menu {
-		min-height: 26px;
-		min-width: 458px;
-		text-align: right;
-		margin: 12px 10px;
-		}
-	[dir="rtl"] .secondary-menu {
-		clear:both;
-		float: left;
-		text-align: left;
-		margin: 5px 10px;
-	}
-	/* Search */
-	#search-page-table div #query {
-		width: 150px;
-	}
-	#search-page-table {
-		width: auto;
-	}
-	#search-page-table .value {
-		white-space: normal;
-    }
-	#search-page-table > input {
-		width: 20px;
-	}
-	#field_table {
-		width: 80%;
-		min-width: 380px;
-	}
-	.list_label, .list_value {
-		white-space: normal;
-	}
-	/* Phonetic Search */
-	#search-page-table .label {
-		width: 25%;
-	}
-	/* Lists */
-	#place_hierarchy td {
-		white-space: normal;
-	}
-	/* Reports */
-	#reportengine-page table {
-		width: 100%;
-	}
-	/* Login */
-	#register-form div, #verify-form div {
-		text-align: left;
-	}
-	#register-form, #verify-form {
-		width: auto;
-	}
-	#login-text, #user-verify, #register-text, #user-verify {
-		min-width: auto;
-		width: 100%;
-	}
-}
-
-@media (max-width: 400px) {
-/* Header */
-	[dir=rtl] .secondary-menu {
-		text-align: left;
-		margin: 5px 10px;
-	}
-	.primary-menu {
-		height: 40px;
-	}
-	.primary-menu > li {
-		background-image: url("images/sprites-top2-menu.png");
-		margin: 0 0 0 7px;
-		width: 28px;
-	}
-	[dir=rtl] .primary-menu > li {
-		margin: 0 7px 0 0;
-	}
-	.primary-menu > li > ul {
-		top: 32px;
-	}
-/* Front Page */
-	#index_main_blocks {
-		float: left;
-		width: 100%;
-	}
-	#index_small_blocks {
-		float: left;
-		width: 100%;
-	}
-	.stat-table1, .stat-table2{
-		width: 100%;
-	}
-/* Indi Page */
-	#indi_left {
-		float: left;
-		width: 100%;
-		font-size: 10px;
-	}
-	#header_accordion1 {
-		font-size: 10px;
-	}
-	#main {
-		display: inline;
-	}
-	#separator {
-		display: none;
-	}
-	#sidebar {
-		float: left;
-		width: 100%;
-		display: inline;
-	}
-	/* Advanced Search */
-	#field_table {
-		min-width: 100%;
-	}
 }

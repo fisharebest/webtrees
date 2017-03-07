@@ -16,11 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -186,28 +186,27 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				->pageHeader();
 
 		echo $this->getJavascript();
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'       => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<h1><?= $controller->getPageTitle() ?></h1>
 
-		<form id="batch_update_form" class="form-horizontal" action="module.php" method="get">
+		<form id="batch_update_form" class="form-horizontal" action="module.php">
 			<input type="hidden" name="mod" value="batch_update">
 			<input type="hidden" name="mod_action" value="admin_batch_update">
 			<input type="hidden" name="xref"   value="' . $this->xref . '">
 			<input type="hidden" name="action" value=""><?php // will be set by javascript for next update  ?>
 			<input type="hidden" name="data"   value=""><?php // will be set by javascript for next update  ?>
-			<div class="form-group">
-				<label class="control-label col-sm-3"><?php echo I18N::translate('Family tree') ?></label>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label"><?= I18N::translate('Family tree') ?></label>
 				<div class="col-sm-9">
-		<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'class="form-control" onchange="reset_reload();"') ?>
+		<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged', 'onchange' => 'reset_reload();']) ?>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3"><?php echo I18N::translate('Batch update') ?></label>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label"><?= I18N::translate('Batch update') ?></label>
 				<div class="col-sm-9">
 					<select class="form-control" name="plugin" onchange="reset_reload();">
 						<?php if (!$this->plugin): ?>
@@ -242,15 +241,15 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 						<?php if ($this->curr_xref): ?>
 							<?php // Create an object, so we can get the latest version of the name. ?>
 								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE) ?>
-							<div class="form-group">
+							<div class="row form-group">
 								<?= self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) ?>
-					<?= self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
+								<?= self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
 							</div>
-							<div class="form-group">
+							<div class="row form-group">
 								<a class="lead" href="<?= $this->record->getHtmlUrl() ?>"><?= $this->record->getFullName() ?></a>
-					<?= $this->PLUGIN->getActionPreview($this->record) ?>
+								<?= $this->PLUGIN->getActionPreview($this->record) ?>
 							</div>
-							<div class="form-group">
+							<div class="row form-group">
 							<?= implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) ?>
 							</div>
 						<?php else: ?>

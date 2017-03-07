@@ -15,20 +15,15 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\IndividualController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'individual.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $pid    = Filter::get('pid', WT_REGEX_XREF);
 $record = Individual::getInstance($pid, $WT_TREE);
@@ -84,154 +79,103 @@ if ($controller->record && $controller->record->canShow()) {
 	return;
 }
 
-$controller->addInlineJavascript('
-var WT_INDIVIDUAL = (function () {
-
-	var instance,
-		jQseparator = jQuery("#separator"),
-		jQsidebar = jQuery ("#sidebar");
-
-	function init() {
-		jQuery ("#header_accordion1").accordion ({
-			active: 0,
-			heightStyle: "content",
-			collapsible: true
-		});
-
-		jQuery ("#tabs").tabs ({
-			// Remember the currently selected tab between pages.
-			active: sessionStorage.getItem("indi-tab"),
-			activate: function (event, ui) {
-				sessionStorage.setItem("indi-tab", jQuery(this).tabs("option", "active"));
-			},
-			// Only load each tab once
-			beforeLoad: function (event, ui) {
-				if (ui.tab.data ("loaded")) {
-					event.preventDefault ();
-					return;
-				}
-				jQuery (ui.panel.selector).append (\'<div class="loading-image"></div>\');
-				ui.jqXHR.success (function () {
-					ui.tab.data ("loaded", true);
-				});
-			}
-		});
-
-		if (jQsidebar.length) { // Have we got a sidebar ?
-			// toggle sidebar visibility
-			jQuery ("#main").on ("click", "#separator", function (e) {
-				e.preventDefault ();
-				jQsidebar.animate ({width: "toggle"}, {
-					duration: 300,
-					done: function () {
-						sessionStorage.setItem("hide-sb", jQsidebar.is(":hidden"));
-						jQseparator.toggleClass("separator-hidden separator-visible");
-					}
-				});
-			});
-
-			// Set initial sidebar state
-			if (sessionStorage.getItem("hide-sb") === "true") {
-				jQsidebar.hide ();
-				jQseparator.addClass("separator-hidden");
-			} else {
-				jQsidebar.show ();
-				jQseparator.addClass("separator-visible");
-			}
-		}
-	}
-
-	return {
-		getInstance: function () {
-			if (!instance) {
-				instance = init ();
-			}
-			return instance;
-		}
+// If this individual is linked to a user account, show the link
+$user_link = '';
+if (Auth::isAdmin()) {
+	$user = User::findByGenealogyRecord($controller->record);
+	if ($user) {
+		$user_link =  ' —  <a href="admin_users.php?filter=' . Filter::escapeHtml($user->getUserName()) . '">' . Filter::escapeHtml($user->getUserName()) . '</a>';
 	};
-}) ();
-WT_INDIVIDUAL.getInstance ();
-');
-
-// ===================================== header area
-echo
-	'<div id="main">', //overall page container
-	'<div id="indi_left">',
-	'<div id="indi_header">';
-if ($controller->record->canShow()) {
-	// Highlight image or silhouette
-	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
-	echo '<div id="header_accordion1">'; // contain accordions for names
-	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
-	$bdate = $controller->record->getBirthDate();
-	$ddate = $controller->record->getDeathDate();
-	echo '<span class="header_age">';
-	if ($bdate->isOK() && !$controller->record->isDead()) {
-		// If living display age
-		echo GedcomTag::getLabelValue('AGE', FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y'))))), $controller->record, 'span');
-	} elseif ($bdate->isOK() && $ddate->isOK()) {
-		// If dead, show age at death
-		echo GedcomTag::getLabelValue('AGE', FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate)), $controller->record, 'span');
-	}
-	echo '</span>';
-	// Display summary birth/death info.
-	echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
-
-	// Display gender icon
-	foreach ($controller->record->getFacts() as $fact) {
-		if ($fact->getTag() == 'SEX') {
-			$controller->printSexRecord($fact);
-		}
-	}
-	echo '</h3>'; // close first name accordion header
-
-	// Display name details
-	foreach ($controller->record->getFacts() as $fact) {
-		if ($fact->getTag() == 'NAME') {
-			$controller->printNameRecord($fact);
-		}
-	}
-
-	echo '</div>'; // close header_accordion1
 }
-echo '</div>'; // close #indi_header
-// ===================================== main content tabs
-foreach ($controller->tabs as $tab) {
+
+// What is (was) the age of the individual
+$bdate = $controller->record->getBirthDate();
+$ddate = $controller->record->getDeathDate();
+if ($bdate->isOK() && !$controller->record->isDead()) {
+	// If living display age
+	$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y'))))) . ')';
+} elseif ($bdate->isOK() && $ddate->isOK()) {
+	// If dead, show age at death
+	$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate)) . ')';
+} else {
+	$age = '';
+}
+
+// Allow tabs to insert Javascript, etc.
+// TODO: there's probably a cleaner way to do this.
+foreach ($controller->getTabs() as $tab) {
 	echo $tab->getPreLoadContent();
 }
-echo '<div id="tabs">';
-echo '<ul>';
-foreach ($controller->tabs as $tab) {
-	if ($tab->isGrayedOut()) {
-		$greyed_out = 'rela';
-	} else {
-		$greyed_out = '';
-	}
-	if ($tab->hasTabContent()) {
-		echo '<li class="' . $greyed_out . '"><a';
-		if ($tab->canLoadAjax()) {
-			// AJAX tabs load only when selected
-			echo ' href="' . $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName() . '"';
-			echo ' rel="nofollow"';
-		} else {
-			// Non-AJAX tabs load immediately
-			echo ' href="#', $tab->getName() . '"';
-		}
-		echo ' title="', $tab->getDescription(), '">', $tab->getTitle(), '</a></li>';
-	}
+
+$controller->addInlineJavascript('
+// If the URL contains a fragment, then activate the corresponding tab.
+// Use a prefix on the fragment, to prevent scrolling to the element.
+var target = window.location.hash.replace("tab-", "");
+var tab = $("#individual-tabs .nav-link[href=\'" + target + "\']");
+// If not, then activate the first tab.
+if (tab.length === 0) {
+	tab = $("#individual-tabs .nav-link:first");
 }
-echo '</ul>';
-foreach ($controller->tabs as $tab) {
-	if ($tab->hasTabContent()) {
-		if (!$tab->canLoadAjax()) {
-			echo '<div id="', $tab->getName(), '">', $tab->getTabContent(), '</div>';
-		}
-	}
-}
-echo
-	'</div>', // close #tabs
-	'</div>'; //close indi_left
-	if ($sidebar_html) {
-		echo '<div id="separator" style="cursor:pointer;"></div>' . $sidebar_html;
-	}
-	echo '</div>'; // close #main
+tab.tab("show");
+');
+
+?>
+
+<h2>
+	<?= $controller->record->getFullName() ?><?= $user_link ?>, <?= $controller->record->getLifeSpan() ?> <?= $age ?>
+</h2>
+
+<div class="row">
+	<div class="col-sm-8">
+		<div class="row">
+			<!-- Main image -->
+			<div class="col-sm-3">
+				<?= $controller->record->displayImage() ?>
+			</div>
+
+			<!-- Names -->
+			<div class="col-sm-9" id="individual-names" role="tablist">
+				<?php foreach ($controller->record->getFacts('NAME') as $n => $name_fact): ?>
+				<?= $controller->formatNameRecord($n, $name_fact) ?>
+				<?php endforeach ?>
+				<?php foreach ($controller->record->getFacts('SEX') as $n => $sex_fact): ?>
+				<?= $controller->formatSexRecord($sex_fact) ?>
+				<?php endforeach ?>
+
+				<?php if ($controller->record->canEdit()): ?>
+				<div class="card">
+					<div class="card-header" role="tab" id="name-header-add">
+						<div class="card-title mb-0">
+							<a href="edit_interface.php?action=addname&amp;xref=<?= $controller->record->getXref() ?>&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>">
+								<?= I18N::translate('Add a name') ?>
+							</a>
+						</div>
+					</div>
+				</div>
+				<?php endif ?>
+			</div>
+		</div>
+
+		<div id="individual-tabs">
+			<ul class="nav nav-tabs">
+				<?php foreach ($controller->getTabs() as $tab): ?>
+					<li class="nav-item">
+						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
+							<?= $tab->getTitle() ?>
+						</a>
+					</li>
+					<?php endforeach ?>
+			</ul>
+			<div class="tab-content">
+				<?php	foreach ($controller->getTabs() as $tab): ?>
+					<div id="<?= $tab->getName() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()): ?>
+						<?= $tab->getTabContent() ?>
+					<?php endif ?></div>
+				<?php endforeach ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<?= $sidebar_html ?>
+	</div>
+</div>

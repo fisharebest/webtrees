@@ -62,14 +62,14 @@ global $controller;
 	<table class="facts_table center">
 		<tr>
 			<td class="topbottombar">
-				<b><?php echo $controller->getPageTitle(); ?></b>
+				<b><?= $controller->getPageTitle() ?></b>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<table class="outer_nav">
 					<tr>
-						<th class="descriptionbox"><?php echo I18N::translate('Find an individual'); ?></th>
+						<th class="descriptionbox"><?= I18N::translate('Find an individual') ?></th>
 					</tr>
 					<tr>
 						<td id="srch" class="optionbox center">
@@ -78,7 +78,7 @@ global $controller;
 									var findInput = document.getElementById('personid');
 									var txt = findInput.value;
 									if (txt === "") {
-										alert("<?php echo I18N::translate('You must enter a name'); ?>");
+										alert("<?= I18N::translate('You must enter a name') ?>");
 									} else {
 										window.open("module.php?mod=GEDFact_assistant&mod_action=media_find&callback=paste_id&action=filter&type=indi&multiple=&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=600, width=450 ").focus();
 									}
@@ -86,7 +86,7 @@ global $controller;
 							</script>
 							<input id="personid" type="text" value="">
 							<a type="submit" onclick="findindi();">
-								<?php echo I18N::translate('Search'); ?>
+								<?= I18N::translate('Search') ?>
 							</a>
 						</td>
 					</tr>
@@ -96,7 +96,7 @@ global $controller;
 								<tr>
 									<td colspan=3 class="descriptionbox wrap">
 										<i class="headimg vmiddle icon-button_head"></i>
-										<?php echo I18N::translate('View this family'); ?>
+										<?= I18N::translate('View this family') ?>
 									</td>
 								</tr>
 								<?php
@@ -136,18 +136,18 @@ function print_navigator_family(Family $family, Individual $individual) {
 		?>
 		<tr class="fact_value">
 			<td class="facts_value" >
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
-					<?php echo $spouse === $individual ? '<b>' : ''; ?>
-					<?php echo $spouse->getFullName(); ?> <?php echo $spouse->getLifeSpan(); ?>
-					<?php echo $spouse === $individual ? '</b>' : ''; ?>
+				<a href="#" onclick="opener.insertRowToTable('<?= $spouse->getXref() ?>', '<?= Filter::escapeJs($spouse->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
+					<?= $spouse === $individual ? '<b>' : '' ?>
+					<?= $spouse->getFullName() ?> <?= $spouse->getLifeSpan() ?>
+					<?= $spouse === $individual ? '</b>' : '' ?>
 				</a>
 			</td>
 			<td class="facts_value">
 				<?php if ($individual !== $spouse): ?>
-					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>">
+					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?= $spouse->getXref() ?>&amp;gedcom=<?= $spouse->getTree()->getNameUrl() ?>">
 						<i class="headimg vmiddle icon-button_head"></i>
 					</a>
-				<?php endif; ?>
+				<?php endif ?>
 			</td>
 		<tr>
 	<?php
@@ -157,18 +157,18 @@ function print_navigator_family(Family $family, Individual $individual) {
 		?>
 		<tr>
 			<td class="facts_value">
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
-					<?php echo $child === $individual ? '<b>' : ''; ?>
-					<?php echo $child->getFullName(); ?> <?php echo $child->getLifeSpan(); ?>
-				<?php echo $child === $individual ? '</b>' : ''; ?>
+				<a href="#" onclick="opener.insertRowToTable('<?= $child->getXref() ?>', '<?= Filter::escapeJs($child->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
+					<?= $child === $individual ? '<b>' : '' ?>
+					<?= $child->getFullName() ?> <?= $child->getLifeSpan() ?>
+				<?= $child === $individual ? '</b>' : '' ?>
 				</a>
 			</td>
 			<td class="facts_value" >
 			<?php if ($individual !== $child): ?>
-					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo $child->getTree()->getNameUrl(); ?>">
+					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?= $child->getXref() ?>&amp;gedcom=<?= $child->getTree()->getNameUrl() ?>">
 						<i class="headimg vmiddle icon-button_head"></i>
 					</a>
-				<?php endif; ?>
+				<?php endif ?>
 			</td>
 		</tr>
 	<?php

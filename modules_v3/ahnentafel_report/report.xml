@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Includes 2010 work done by John Hawthornthwaite(hagershorn1) for an ancestry report in PhpGedView -->
 <Report>
 	<Title><var var="I18N::translate('Ancestors')" /></Title>

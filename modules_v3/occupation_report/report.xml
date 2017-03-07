@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Report>
 	<Title><var var="I18N::translate('Occupations')" /></Title>
 	<Description><var var="I18N::translate('A report of individuals who had a given occupation.')" /></Description>

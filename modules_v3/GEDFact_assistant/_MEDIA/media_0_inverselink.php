@@ -15,23 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global Tree $WT_TREE */
 global $WT_TREE;
-
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 $more_links  = Filter::get('more_links');
 $exist_links = Filter::get('exist_links');
 $gid         = Filter::get('gid', WT_REGEX_XREF);
 $update_CHAN = Filter::get('preserve_last_changed');
-
-$controller
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
 
 $paramok = true;
 if (!empty($linktoid)) {
@@ -43,7 +33,7 @@ if ($action == 'choose' && $paramok) {
 	?>
 	<script>
 	// Javascript variables
-	var id_empty = "<?php echo I18N::translate('When adding a link, the ID field cannot be empty.'); ?>";
+	var id_empty = "<?= I18N::translate('When adding a link, the ID field cannot be empty.') ?>";
 
 	function blankwin() {
 		if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
@@ -58,7 +48,7 @@ if ($action == 'choose' && $paramok) {
 	</script>
 
 	<?php
-	echo '<form class="medialink" name="link" method="get" action="inverselink.php">';
+	echo '<form class="medialink" name="link" action="inverselink.php">';
 	echo '<input type="hidden" name="action" value="update">';
 	if (!empty($mediaid)) {
 		echo '<input type="hidden" name="mediaid" value="', $mediaid, '">';
@@ -128,7 +118,7 @@ if ($action == 'choose' && $paramok) {
 
 			if ($record instanceof Individual) {
 				?>
-				<td><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
+				<td><a href="#" class="icon-button_family" name="family_'<?= $record->getXref() ?>'" onclick="openFamNav('<?= $record->getXref() ?>'); return false;"></a></td>
 				<?php
 			} elseif ($record instanceof Family) {
 				if ($record->getHusband()) {
@@ -139,7 +129,7 @@ if ($action == 'choose' && $paramok) {
 					$head = '';
 				}
 				?>
-				<td><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
+				<td><a href="#" class="icon-button_family" name="family_'<?= $record->getXref() ?>'" onclick="openFamNav('<?= $head ?>');"></a></td>
 				<?php
 			} else {
 				echo '<td></td>';
@@ -170,9 +160,6 @@ if ($action == 'choose' && $paramok) {
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
 	echo '<a href="#" class="icon-add" title="', I18N::translate('Add'), '" onclick="blankwin(); return false;"></a>';
-	echo ' ', FunctionsPrint::printFindIndividualLink('gid');
-	echo ' ', FunctionsPrint::printFindFamilyLink('gid');
-	echo ' ', FunctionsPrint::printFindSourceLink('gid');
 	echo '</td></tr></table>';
 	echo '<sub>' . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.') . '</sub>';
 	echo '<br><br>';
@@ -361,18 +348,18 @@ function addRowToTable(num, pid, nam, head)
 
 			// cell btn - remove img button
 			var cellbtn = row.insertCell(3);
-			var btnEl = jQuery('<a href="#" class="icon-remove"></a>');
+			var btnEl = $('<a href="#" class="icon-remove"></a>');
 			btnEl.on('click', function () {deleteCurrentRow(this)});
-			jQuery(cellbtn).append(btnEl);
+			$(cellbtn).append(btnEl);
 
 			// cell btn - family img button
 			var cellbtn2 = row.insertCell(4);
 			if (pid.match("I")=="I" || pid.match("i")=="i") {
-				var btn2El = jQuery('<a href="#" class="icon-button_family"></a>');
+				var btn2El = $('<a href="#" class="icon-button_family"></a>');
 				btn2El.on('click', function() {openFamNav(pid)});
-				jQuery(cellbtn2).append(btn2El);
+				$(cellbtn2).append(btn2El);
 			} else if (pid.match("F")=="F" || pid.match("f")=="f") {
-				var btn2El = jQuery('<a href="#" class="icon-button_family"></a>');
+				var btn2El = $('<a href="#" class="icon-button_family"></a>');
 				btn2El.on('click', function () {openFamNav(head)});
 				cellbtn2.appendChild(btn2El);
 			} else {
@@ -523,10 +510,10 @@ function shiftlinks() {
 					<thead>
 						<tr>
 							<th class="topbottombar" width="10"  style="font-weight:100;">#</th>
-							<th class="topbottombar" width="55"  style="font-weight:100;"><?php echo I18N::translate('Record'); ?></th>
-							<th class="topbottombar" width="370" style="font-weight:100;"><?php echo I18N::translate('Name'); ?></th>
-							<th class="topbottombar" width="20"  style="font-weight:100;"><?php echo I18N::translate('Remove'); ?></th>
-							<th class="topbottombar" width="20"  style="font-weight:100;"><?php echo I18N::translate('Family navigator'); ?></th>
+							<th class="topbottombar" width="55"  style="font-weight:100;"><?= I18N::translate('Record') ?></th>
+							<th class="topbottombar" width="370" style="font-weight:100;"><?= I18N::translate('Name') ?></th>
+							<th class="topbottombar" width="20"  style="font-weight:100;"><?= I18N::translate('Remove') ?></th>
+							<th class="topbottombar" width="20"  style="font-weight:100;"><?= I18N::translate('Family navigator') ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -538,7 +525,7 @@ function shiftlinks() {
 		// Admin Option CHAN log update override =======================
 		if (Auth::isAdmin()) {
 			echo '<tr><td class="descriptionbox wrap width25">';
-			echo GedcomTag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
+			echo I18N::translate('Last change'), '</td><td class="optionbox wrap">';
 			if ($WT_TREE->getPreference('NO_UPDATE_CHAN')) {
 				echo '<input type="checkbox" checked name="preserve_last_changed">';
 			} else {
@@ -551,10 +538,16 @@ function shiftlinks() {
 	</table>
 	<input type="hidden" name="more_links" value="No_Values">
 	<input type="hidden" name="exist_links" value="No_Values">
-	<p id="save-cancel">
-		<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>" onclick="shiftlinks();">
-		<input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
-	</p>
+	<div class="row form-group">
+		<div class="col-sm-9 offset-sm-3">
+			<button class="btn btn-primary" type="submit" onclick="shiftlinks();">
+				<?= /* I18N: A button label. */ I18N::translate('save') ?>
+			</button>
+			<a class="btn btn-secondary" href="" onclick="alert('todo!');">
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+			</a>
+		</div>
+	</div>
 </form>
 <?php
 } elseif ($action == 'update' && $paramok) {

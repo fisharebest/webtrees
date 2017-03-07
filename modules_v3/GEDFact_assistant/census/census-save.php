@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-/** @global Controller\SimpleController $controller */
+/** @global Controller\PageController $controller */
 global $controller;
 
 /** @global Tree $WT_TREE */
@@ -45,6 +45,4 @@ $controller
 	->pageHeader();
 ?>
 
-<div id="edit_interface-page">
-	<h4><?php echo $controller->getPageTitle() ?></h4>
-</div>
+<h2><?= $controller->getPageTitle() ?></h2>

@@ -27,9 +27,6 @@ class ChartController extends PageController {
 	/** @var Individual Who is chart about? */
 	public $root;
 
-	/** @var bool determines the detail shown in the personbox */
-	private $show_full;
-
 	/** @var string An error message, in case we cannot construct the chart */
 	public $error_message;
 
@@ -54,17 +51,9 @@ class ChartController extends PageController {
 			$this->error_message = I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 
-		// Extract parameter from form
-		$this->show_full = Filter::getInteger('show_full', 0, 1, $this->tree()->getPreference('PEDIGREE_FULL_DETAILS'));
-
 		$this->box = new \stdClass();
-		if ($this->showFull()) {
-			$this->box->width  = Theme::theme()->parameter('chart-box-x');
-			$this->box->height = Theme::theme()->parameter('chart-box-y');
-		} else {
-			$this->box->width  = Theme::theme()->parameter('compact-chart-box-x');
-			$this->box->height = Theme::theme()->parameter('compact-chart-box-y');
-		}
+		$this->box->width  = Theme::theme()->parameter('chart-box-x');
+		$this->box->height = Theme::theme()->parameter('chart-box-y');
 	}
 
 	/**
@@ -114,15 +103,6 @@ class ChartController extends PageController {
 		}
 
 		return $ancestors;
-	}
-
-	/**
-	 * Function showFull
-	 *
-	 * @return bool
-	 */
-	public function showFull() {
-		return $this->show_full;
 	}
 
 	/**

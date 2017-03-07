@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Rhumsaa\Uuid\Uuid;
-
 /**
  * System for generating menus.
  */
@@ -64,35 +62,33 @@ class Menu {
 	}
 
 	/**
-	 * Convert this menu to an HTML list, for easy rendering of
-	 * lists of menus/nulls.
+	 * Render this menu using Bootstrap4 markup
 	 *
 	 * @return string
 	 */
-	public function __toString() {
-		return $this->getMenuAsList();
-	}
-
-	/**
-	 * Render this menu using Bootstrap markup
-	 *
-	 * @return string
-	 */
-	public function bootstrap() {
+	public function bootstrap4() {
 		if ($this->submenus) {
 			$submenus = '';
 			foreach ($this->submenus as $submenu) {
-				$submenus .= $submenu->bootstrap();
+				$attrs = '';
+				foreach ($submenu->attrs as $key => $value) {
+					$attrs .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
+				}
+
+				$class = trim('dropdown-item ' . $submenu->class);
+				$submenus .= '<a class="' . $class . '" href="' . $submenu->link . '"' . $attrs . '>' . $submenu->label . '</a>';
 			}
 
+			$class = trim('nav-item dropdown ' . $this->class);
+
 			return
-				'<li class="' . $this->class . ' dropdown">' .
-				'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' .
+				'<li class="' . $class . '">' .
+				'<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' .
 				$this->label .
-				' <span class="caret"></span></a>' .
-				'<ul class="dropdown-menu" role="menu">' .
+				'<span class="caret"></span></a>' .
+				'<div class="dropdown-menu" role="menu">' .
 				$submenus .
-				'</ul>' .
+				'</div>' .
 				'</li>';
 		} else {
 			$attrs = '';
@@ -100,7 +96,9 @@ class Menu {
 				$attrs .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
 			}
 
-			return '<li class="' . $this->class . '"><a href="' . $this->link . '"' . $attrs . '>' . $this->label . '</a></li>';
+			$class = trim('nav-item ' . $this->class);
+
+			return '<li class="' . $class . '"><a class="nav-link" href="' . $this->link . '"' . $attrs . '>' . $this->label . '</a></li>';
 		}
 	}
 
@@ -214,40 +212,6 @@ class Menu {
 		$this->submenus[] = $menu;
 
 		return $this;
-	}
-
-	/**
-	 * Render this menu using javascript popups..
-	 *
-	 * @return string
-	 */
-	public function getMenu() {
-		$menu_id     = 'menu-' . Uuid::uuid4();
-		$sub_menu_id = 'sub-' . $menu_id;
-
-		$html = '<a href="' . $this->link . '"';
-		foreach ($this->attrs as $key => $value) {
-			$html .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
-		}
-		if (!empty($this->submenus)) {
-			$html .= ' onmouseover="show_submenu(\'' . $sub_menu_id . '\', \'' . $menu_id . '\');"';
-			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');"';
-		}
-		$html .= '>' . $this->label . '</a>';
-
-		if (!empty($this->submenus)) {
-			$html .= '<div id="' . $sub_menu_id . '" class="' . $this->submenuclass . '"';
-			$html .= ' style="position: absolute; visibility: hidden; z-index: 100; text-align: ' . (I18N::direction() === 'ltr' ? 'left' : 'right') . '"';
-			$html .= ' onmouseover="show_submenu(\'' . $this->parentmenu . '\'); show_submenu(\'' . $sub_menu_id . '\');"';
-			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');">';
-			foreach ($this->submenus as $submenu) {
-				$submenu->parentmenu = $sub_menu_id;
-				$html .= $submenu->getMenu();
-			}
-			$html .= '</div>';
-		}
-
-		return '<div id="' . $menu_id . '" class="' . $this->menuclass . '">' . $html . '</div>';
 	}
 
 	/**

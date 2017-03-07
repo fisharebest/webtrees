@@ -516,19 +516,4 @@ class LifespanController extends PageController {
 
 		return $caldate;
 	}
-
-	/**
-	 * Function getCalendarOptionList
-	 *
-	 * @return string
-	 */
-	public function getCalendarOptionList() {
-		$html = '';
-		foreach (Date::calendarNames() as $calendar => $name) {
-			$selected = $this->calendar === $calendar ? 'selected' : '';
-			$html .= sprintf('<option dir="auto" value="%s" %s>%s</option>', $calendar, $selected, $name);
-		}
-
-		return $html;
-	}
 }

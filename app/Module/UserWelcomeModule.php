@@ -48,19 +48,19 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 
 		$id      = $this->getName() . $block_id;
 		$class   = $this->getName() . '_block';
-		$title   = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealNameHtml()) . '</span>';
-		$content = '<table><tr>';
-		$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></td>';
+		$title   = /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', '<span dir="auto">' . Auth::user()->getRealNameHtml() . '</span>');
+		$content = '<div class="row">';
+		$content .= '<div class="col"><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></div>';
 
 		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
 		if ($gedcomid) {
 			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-				$content .= '<td><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></td>';
+				$content .= '<div class="col"><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></div>';
 			}
-			$content .= '<td><a href="individual.php?pid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></td>';
+			$content .= '<div class="col"><a href="individual.php?pid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></div>';
 		}
-		$content .= '</tr></table>';
+		$content .= '</div>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

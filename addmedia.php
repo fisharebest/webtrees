@@ -15,14 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
-use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -30,8 +23,10 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
-define('WT_SCRIPT_NAME', 'addmedia.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $NO_UPDATE_CHAN  = $WT_TREE->getPreference('NO_UPDATE_CHAN');
 $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
@@ -47,10 +42,8 @@ $glevels     = Filter::postArray('glevels', '[0-9]');
 $folder      = Filter::post('folder');
 $update_CHAN = !Filter::postBool('preserve_last_changed');
 
-$controller = new SimpleController;
+$controller = new PageController;
 $controller
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember($WT_TREE));
 
 $disp  = true;
@@ -428,9 +421,6 @@ if (!$linktoid && $action == 'create') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Enter an individual, family, or source ID');
 	echo '</td><td class="optionbox wrap"><input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" size="6" value="">';
-	echo ' ', FunctionsPrint::printFindIndividualLink('linktoid');
-	echo ' ', FunctionsPrint::printFindFamilyLink('linktoid');
-	echo ' ', FunctionsPrint::printFindSourceLink('linktoid');
 	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.'), '</p></td></tr>';
 }
 
@@ -711,9 +701,15 @@ FunctionsEdit::printAddLayer('NOTE', 1);
 FunctionsEdit::printAddLayer('SHARED_NOTE', 1);
 FunctionsEdit::printAddLayer('RESN', 1);
 ?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
+		<div class="row form-group">
+			<div class="col-sm-9 offset-sm-3">
+				<button class="btn btn-primary" type="submit">
+					<?= /* I18N: A button label. */ I18N::translate('save') ?>
+				</button>
+				<a class="btn btn-secondary" href="<?= $media->getHtmlUrl() ?>">
+					<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+				</a>
+			</div>
+		</div>
 	</form>
 </div>

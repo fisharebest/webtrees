@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
@@ -84,9 +85,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	 */
 	private function generateIndex() {
 		// Check the cache
-		$timestamp = $this->getSetting('sitemap.timestamp');
+		$timestamp = (int) $this->getPreference('sitemap.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
-			$data = $this->getSetting('sitemap.xml');
+			$data = $this->getPreference('sitemap.xml');
 		} else {
 			$data    = '';
 			$lastmod = '<lastmod>' . date('Y-m-d') . '</lastmod>';
@@ -134,8 +135,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			}
 			$data = '<' . '?xml version="1.0" encoding="UTF-8" ?' . '>' . PHP_EOL . '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL . $data . '</sitemapindex>' . PHP_EOL;
 			// Cache this data.
-			$this->setSetting('sitemap.xml', $data);
-			$this->setSetting('sitemap.timestamp', WT_TIMESTAMP);
+			$this->setPreference('sitemap.xml', $data);
+			$this->setPreference('sitemap.timestamp', WT_TIMESTAMP);
 		}
 		header('Content-Type: application/xml');
 		header('Content-Length: ' . strlen($data));
@@ -153,9 +154,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	private function generateFile($ged_id, $rec_type, $volume) {
 		$tree = Tree::findById($ged_id);
 		// Check the cache
-		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
+		$timestamp = (int) $this->getPreference('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !Auth::check()) {
-			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
+			$data = $this->getPreference('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$data    = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
 			$records = [];
@@ -259,8 +260,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			// Cache this data - but only for visitors, as we don’t want
 			// visitors to see data created by signed-in users.
 			if (!Auth::check()) {
-				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
-				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
+				$this->setPreference('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
+				$this->setPreference('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
 			}
 		}
 		header('Content-Type: application/xml');
@@ -291,13 +292,13 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 
 		$include_any = false;
 
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'         => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
-		<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+		<h1><?= $controller->getPageTitle() ?></h1>
 		<?php
 
 		echo

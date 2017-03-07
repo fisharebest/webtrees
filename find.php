@@ -15,19 +15,9 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\SimpleController;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Query\QueryMedia;
 
-define('WT_SCRIPT_NAME', 'find.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new SimpleController;
 
@@ -35,39 +25,11 @@ $type      = Filter::get('type');
 $filter    = Filter::get('filter');
 $action    = Filter::get('action');
 $callback  = Filter::get('callback', '[a-zA-Z0-9_]+', 'paste_id');
-$all       = Filter::getBool('all');
 $subclick  = Filter::get('subclick');
 $choose    = Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = Filter::get('tags');
 
-if ($subclick === 'all') {
-	$all = true;
-}
-
-$embed = substr($choose, 0, 1) === '1';
-
 switch ($type) {
-case 'indi':
-	$controller->setPageTitle(I18N::translate('Find an individual'));
-	break;
-case 'fam':
-	$controller->setPageTitle(I18N::translate('Find a family'));
-	break;
-case 'media':
-	$controller->setPageTitle(I18N::translate('Find a media object'));
-	break;
-case 'place':
-	$controller->setPageTitle(I18N::translate('Find a place'));
-	break;
-case 'repo':
-	$controller->setPageTitle(I18N::translate('Find a repository'));
-	break;
-case 'note':
-	$controller->setPageTitle(I18N::translate('Find a shared note'));
-	break;
-case 'source':
-	$controller->setPageTitle(I18N::translate('Find a source'));
-	break;
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	break;
@@ -108,23 +70,23 @@ echo '<script>';
 ?>
 	function pasteid(id, name, thumb) {
 		if (thumb) {
-			window.opener.<?php echo $callback; ?>(id, name, thumb);
-			<?php echo 'window.close();'; ?>
+			window.opener.<?= $callback ?>(id, name, thumb);
+			<?= 'window.close();' ?>
 		} else {
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
 				window.opener.insertRowToTable(id, name);
 			}
-			window.opener.<?php echo $callback; ?>(id);
+			window.opener.<?= $callback ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);
-			<?php echo 'window.close();'; ?>
+			<?= 'window.close();' ?>
 		}
 	}
 	function checknames(frm) {
 		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
 		else button = "";
 		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
+			alert("<?= I18N::translate('Please enter more than one character.') ?>");
 			frm.filter.focus();
 			return false;
 		}
@@ -138,132 +100,6 @@ echo '</script>';
 
 echo '<div id="find-page"><h2>', $controller->getPageTitle(), '</h2>';
 
-// Show indi and hide the rest
-if ($type == 'indi') {
-	echo '<div id="find-header">
-	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="' . $callback . '">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="indi">
-	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<input type="submit" value="', I18N::translate('search'), '">
-	</form></div>';
-}
-
-// Show fam and hide the rest
-if ($type == 'fam') {
-	echo '<div id="find-header">
-	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="' . $callback . '">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="fam">
-	<span>', I18N::translate('Name contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<input type="submit" value="', I18N::translate('search'), '">
-	</form></div>';
-}
-
-// Show media and hide the rest
-if ($type == 'media') {
-	echo '<div id="find-header">
-	<form name="filtermedia" method="get" action="find.php">
-	<input type="hidden" name="choose" value="', $choose, '">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="media">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', /* I18N: Label for search field */ I18N::translate('Media contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>',
-	'<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
-}
-
-// Show place and hide the rest
-if ($type == 'place') {
-	echo '<div id="find-header">
-	<form name="filterplace" method="get" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="place">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', /* I18N: Label for search field */ I18N::translate('Place contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
-}
-
-// Show repo and hide the rest
-if ($type == 'repo') {
-	echo '<div id="find-header">
-	<form name="filterrepo" method="get" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="repo">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', /* I18N: Label for search field */ I18N::translate('Repository contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
-	</td></tr></table>
-	</p></form></div>';
-}
-
-// Show Shared Notes and hide the rest
-if ($type == 'note') {
-	echo '<div id="find-header">
-	<form name="filternote" method="get" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="note">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', /* I18N: Label for search field */ I18N::translate('Shared note contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
-}
-
-// Show source and hide the rest
-if ($type == 'source') {
-	echo '<div id="find-header">
-	<form name="filtersource" method="get" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="source">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', /* I18N: Label for search field */ I18N::translate('Source contains'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
-}
-
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
 	$language_filter       = Filter::get('language_filter', null, Auth::user()->getPreference('default_language_filter'));
@@ -274,7 +110,7 @@ if ($type == 'specialchar') {
 	Auth::user()->setPreference('default_language_filter', $language_filter);
 	$action = 'filter';
 	echo '<div id="find-header">
-	<form name="filterspecialchar" method="get" action="find.php">
+	<form name="filterspecialchar" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
 	<input type="hidden" name="callback" value="' . $callback . '">
@@ -293,7 +129,7 @@ if ($type == 'specialchar') {
 // Show facts
 if ($type == 'factINDI' || $type == 'factFAM' || $type == 'factSOUR' || $type == 'factREPO' || $type == 'factNAME' || $type == 'factPLAC') {
 	echo '<div id="find-facts-header">
-	<form name="filterfacts" method="get" action="find.php"
+	<form name="filterfacts" action="find.php"
 	input type="hidden" name="type" value="facts">
 	<input type="hidden" name="tags" value="', $qs, '">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -311,7 +147,7 @@ if ($type == 'factINDI' || $type == 'factFAM' || $type == 'factSOUR' || $type ==
 		}
 	}
 
-	echo '<script>'; ?>
+	echo '<script>' ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
 		this.Id=id;
@@ -512,7 +348,7 @@ if ($type == 'factINDI' || $type == 'factFAM' || $type == 'factSOUR' || $type ==
 		window.close();
 		return false;
 	}
-	<?php echo '</script>';
+	<?= '</script>';
 	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th></th>
@@ -543,199 +379,6 @@ if ($type == 'factINDI' || $type == 'factFAM' || $type == 'factSOUR' || $type ==
 if ($action === 'filter') {
 	$filter       = trim($filter);
 	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
-
-	// Output Individual
-	if ($type === 'indi') {
-		echo '<div id="find-output">';
-		$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
-		if ($myindilist) {
-			echo '<ul>';
-			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			foreach ($myindilist as $indi) {
-				echo $indi->formatList('li', true);
-			}
-			echo '</ul>
-			<p>', I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Family
-	if ($type == 'fam') {
-		echo '<div id="find-output">';
-		// Get the famrecs with hits on names from the family table
-		// Get the famrecs with hits in the gedcom record from the family table
-		$myfamlist = array_unique(array_merge(
-			FunctionsDb::searchFamilyNames($filter_array, [$WT_TREE]),
-			FunctionsDb::searchFamilies($filter_array, [$WT_TREE])
-		));
-
-		if ($myfamlist) {
-			echo '<ul>';
-			usort($myfamlist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			foreach ($myfamlist as $family) {
-				echo $family->formatList('li', true);
-			}
-			echo '</ul>
-			<p>', I18N::translate('Total families: %s', count($myfamlist)), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Media
-	if ($type === 'media') {
-		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter, '');
-
-		echo '<div id="find-output">';
-
-		if ($medialist) {
-			foreach ($medialist as $media) {
-				echo '<div class="find-media-media">';
-				echo '<div class="find-media-thumb">', $media->displayImage(), '</div>';
-				echo '<div class="find-media-details">', $media->getFullName(), '</div>';
-				if (!$embed) {
-					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\');">', $media->getFilename(), '</a></p>';
-				} else {
-					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', Filter::escapeJs($media->getFilename()), '\');">', Filter::escapeHtml($media->getFilename()), '</a></p> ';
-				}
-				if ($media->fileExists()) {
-					$imgsize = $media->getImageAttributes();
-					echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-				}
-				echo '<ul>';
-				$found = false;
-				foreach ($media->linkedIndividuals('OBJE') as $indindividual) {
-					echo '<li>', $indindividual->getFullName(), '</li>';
-					$found = true;
-				}
-				foreach ($media->linkedFamilies('OBJE') as $family) {
-					echo '<li>', $family->getFullName(), '</li>';
-					$found = true;
-				}
-				foreach ($media->linkedSources('OBJE') as $source) {
-					echo '<li>', $source->getFullName(), '</li>';
-					$found = true;
-				}
-				foreach ($media->linkedNotes('OBJE') as $note) {
-					// Invalid GEDCOM - you cannot link a NOTE to an OBJE
-					echo '<li>', $note->getFullName(), '</li>';
-					$found = true;
-				}
-				foreach ($media->linkedRepositories('OBJE') as $repository) {
-					// Invalid GEDCOM - you cannot link a REPO to an OBJE
-					echo '<li>', $repository->getFullName(), '</li>';
-					$found = true;
-				}
-				if (!$found) {
-					echo '<li>', I18N::translate('This media object is not linked to any other record.'), '</li>';
-				}
-				echo '</ul>';
-				echo '</div>'; // close div="find-media-media"
-			}
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Places
-	if ($type == 'place') {
-		echo '<div id="find-output">';
-		if (!$filter || $all) {
-			$places = Place::allPlaces($WT_TREE);
-		} else {
-			$places = Place::findPlaces($filter, $WT_TREE);
-		}
-		if ($places) {
-			echo '<ul>';
-			foreach ($places as $place) {
-				echo '<li><a href="#" onclick="pasteid(\'', Filter::escapeJs($place->getGedcomName()), '\');">';
-				if (!$filter || $all) {
-					echo $place->getReverseName(); // When displaying all names, sort/display by the country, then region, etc.
-				} else {
-					echo $place->getFullName(); // When we’ve searched for a place, sort by this place
-				}
-				echo '</a></li>';
-			}
-			echo '</ul>
-			<p>', I18N::translate('Places found'), ' ', count($places), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Repositories
-	if ($type == 'repo') {
-		echo '<div id="find-output">';
-		if ($filter) {
-			$repo_list = FunctionsDb::searchRepositories($filter_array, [$WT_TREE]);
-		} else {
-			$repo_list = FunctionsDb::getRepositoryList($WT_TREE);
-		}
-		if ($repo_list) {
-			usort($repo_list, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			echo '<ul>';
-			foreach ($repo_list as $repo) {
-				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
-			}
-			echo '</ul>
-			<p>', I18N::translate('Repositories found'), ' ', count($repo_list), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Shared Notes
-	if ($type == 'note') {
-		echo '<div id="find-output">';
-		if ($filter) {
-			$mynotelist = FunctionsDb::searchNotes($filter_array, [$WT_TREE]);
-		} else {
-			$mynotelist = FunctionsDb::getNoteList($WT_TREE);
-		}
-		if ($mynotelist) {
-			usort($mynotelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			echo '<ul>';
-			foreach ($mynotelist as $note) {
-				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(), '</span></a></li>';
-			}
-			echo '</ul>
-			<p>', I18N::translate('Shared notes found'), ' ', count($mynotelist), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
-
-	// Output Sources
-	if ($type == 'source') {
-		echo '<div id="find-output">';
-		if ($filter) {
-			$mysourcelist = FunctionsDb::searchSources($filter_array, [$WT_TREE]);
-		} else {
-			$mysourcelist = FunctionsDb::getSourceList($WT_TREE);
-		}
-		if ($mysourcelist) {
-			usort($mysourcelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			echo '<ul>';
-			foreach ($mysourcelist as $source) {
-				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',
-					Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
-					$source->getFullName(), '</span></a></li>';
-			}
-			echo '</ul>
-			<p>', I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
-		} else {
-			echo '<p>', I18N::translate('No results found.'), '</p>';
-		}
-		echo '</div>';
-	}
 
 	// Output Special Characters
 	if ($type == 'specialchar') {

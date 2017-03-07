@@ -17,8 +17,8 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\BatchUpdateModule;
@@ -58,10 +58,10 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
 			'<div class="col-sm-9">' .
-			FunctionsEdit::radioButtons('chan', [0 => I18N::translate('no'), 1 => I18N::translate('yes')], ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
+			Bootstrap4::radioButtons('chan', [0 => I18N::translate('no'), 1 => I18N::translate('yes')], ($this->chan ? 1 : 0), true, ['onchange' => 'this.form.submit();']) .
 			'</div></div>';
 	}
 
@@ -112,7 +112,7 @@ class BatchUpdateBasePlugin {
 			}
 		}
 
-		return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines)) . '</pre>';
+		return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines), $record) . '</pre>';
 	}
 
 	/**
@@ -140,14 +140,15 @@ class BatchUpdateBasePlugin {
 	/**
 	 * Converted gedcom links into editable links
 	 *
-	 * @param string $gedrec
+	 * @param string       $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	public static function createEditLinks($gedrec) {
+	public static function createEditLinks($gedrec, GedcomRecord $record) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",
-			'<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',
+			'<a href="edit_interface.php?action=editraw&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref() .'">@\\1@</a>',
 			$gedrec
 		);
 	}

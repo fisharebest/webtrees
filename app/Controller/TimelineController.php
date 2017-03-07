@@ -73,8 +73,10 @@ class TimelineController extends PageController {
 
 		$this->baseyear = (int) date('Y');
 
-		$pids   = Filter::getArray('pids', WT_REGEX_XREF);
 		$remove = Filter::get('remove', WT_REGEX_XREF);
+		$newpid = Filter::get('newpid', WT_REGEX_XREF);
+		$pids   = Filter::getArray('pids', WT_REGEX_XREF);
+		$pids[] = $newpid;
 
 		foreach (array_unique(array_filter($pids)) as $pid) {
 			if ($pid !== $remove) {
@@ -148,7 +150,7 @@ class TimelineController extends PageController {
 	 * @param Fact $event
 	 */
 	public function printTimeFact(Fact $event) {
-		global $basexoffset, $baseyoffset, $factcount, $placements;
+		global $factcount, $placements;
 
 		$desc = $event->getValue();
 		// check if this is a family fact
@@ -158,8 +160,8 @@ class TimelineController extends PageController {
 		$year     = $date->y;
 		$month    = max(1, $date->m);
 		$day      = max(1, $date->d);
-		$xoffset  = $basexoffset + 22;
-		$yoffset  = $baseyoffset + (($year - $this->baseyear) * $this->scale) - ($this->scale);
+		$xoffset  = 0 + 22;
+		$yoffset  = 0 + (($year - $this->baseyear) * $this->scale) - ($this->scale);
 		$yoffset  = $yoffset + (($month / 12) * $this->scale);
 		$yoffset  = $yoffset + (($day / 30) * ($this->scale / 12));
 		$yoffset  = (int) ($yoffset);
@@ -259,7 +261,7 @@ class TimelineController extends PageController {
 			}
 		}
 		// Print the diagonal line
-		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
+		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
 		echo ' background-image: url(\'' . Theme::theme()->parameter($img) . '\');';
 		echo ' background-position: 0% ' . $ypos . ';">';
 		echo '</div>';

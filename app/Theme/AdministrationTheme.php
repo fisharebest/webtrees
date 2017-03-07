@@ -25,26 +25,23 @@ use Fisharebest\Webtrees\Tree;
  */
 class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	/**
+	 * Where are our CSS, JS and other assets?
+	 */
+	const THEME_DIR  = '_administration';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const STYLESHEET = self::ASSET_DIR . 'style.css';
+
+	/**
 	 * A list of CSS files to include for this page.
 	 *
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		$stylesheets   = parent::stylesheets();
-		$stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
-		$stylesheets[] = WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL;
-		$stylesheets[] = $this->assetUrl() . 'style.css';
-
-		return $stylesheets;
-	}
-
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return 'themes/_administration/css-1.7.5/';
+		return array_merge(parent::stylesheets(), [
+			WT_DATATABLES_BOOTSTRAP_CSS_URL,
+			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
+			self::STYLESHEET,
+		]);
 	}
 
 	/**
@@ -65,27 +62,6 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	}
 
 	/**
-	 * Create the contents of the <header> tag.
-	 *
-	 * @return string
-	 */
-	protected function headerContent() {
-		return
-			$this->accessibilityLinks() .
-			$this->secondaryMenuContainer($this->secondaryMenu());
-	}
-
-	/**
-	 * Allow themes to add extra scripts to the page footer.
-	 *
-	 * @return string
-	 */
-	public function hookFooterExtraJavascript() {
-		return
-			'<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>';
-	}
-
-	/**
 	 * Site administration functions.
 	 *
 	 * @return Menu
@@ -98,10 +74,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			new Menu(/* I18N: Menu entry */ I18N::translate('Languages'), 'admin_site_config.php?action=languages'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Tracking and analytics'), 'admin_site_config.php?action=tracking'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Website logs'), 'admin_site_logs.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Website access rules'), 'admin_site_access.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Clean up data folder'), 'admin_site_clean.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Server information'), 'admin_site_info.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('README documentation'), 'admin_site_readme.php'),
 		]);
 	}
 
@@ -226,25 +200,15 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string
 	 */
 	protected function primaryMenuContainer(array $menus) {
-		$html = '';
-		foreach ($menus as $menu) {
-			$html .= $menu->bootstrap();
-		}
-
 		return
-			'<nav class="navbar navbar-default">' .
-			'<div class="navbar-header">' .
-			'<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-navbar-collapse">' .
-			'<span class="sr-only">Toggle navigation</span>' .
-			'<span class="icon-bar"></span>' .
-			'<span class="icon-bar"></span>' .
-			'<span class="icon-bar"></span>' .
-			'</button>' .
+			'<nav class="navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">' .
+			'<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">' .
+			'<span class="navbar-toggler-icon"></span>' .
+			'</button> ' .
 			'<a class="navbar-brand" href="admin.php">' . I18N::translate('Control panel') . '</a>' .
-			'</div>' .
 			'<div class="collapse navbar-collapse" id="primary-navbar-collapse">' .
-			'<ul class="nav navbar-nav">' .
-			$html .
+			'<ul class="navbar-nav">' .
+			$this->primaryMenuContent($menus) .
 			'</ul>' .
 			'</div>' .
 			'</nav>';
@@ -262,37 +226,6 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			$this->menuLanguages(),
 			$this->menuLogout(),
 		]);
-	}
-
-	/**
-	 * Add markup to the secondary menu.
-	 *
-	 * @param Menu[] $menus
-	 *
-	 * @return string
-	 */
-	protected function secondaryMenuContainer(array $menus) {
-		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
-	}
-
-	/**
-	 * Format the secondary menu.
-	 *
-	 * @param Menu[] $menus
-	 *
-	 * @return string
-	 */
-	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function (Menu $menu) { return $menu->bootstrap(); }, $menus));
-	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return '_administration';
 	}
 
 	/**

@@ -16,9 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -84,7 +85,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
 		} else {
 			$title = '';
 		}
@@ -153,17 +154,25 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
+		?>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="num">
+				<?= /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
+			</label>
+			<div class="col-sm-9">
+				<input type="text" name="num" size="2" value="<?= $num ?>">
+			</div>
+		</div>
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')], null, $infoStyle, '');
-		echo '</td></tr>';
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="infoStyle">
+				<?= I18N::translate('Presentation style') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select(['list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+			</div>
+		</div>
+		<?php
 	}
 
 	/**

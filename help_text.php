@@ -15,11 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-define('WT_SCRIPT_NAME', 'help_text.php');
-require './includes/session.php';
-
-$help = Filter::get('help');
-switch ($help) {
+switch ($help_topic) {
 	//////////////////////////////////////////////////////////////////////////////
 	// This is a list of all known gedcom tags. We list them all here so that
 	// xgettext() may find them.
@@ -33,7 +29,7 @@ switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
 
 case 'DATE':
-	$title = GedcomTag::getLabel('DATE');
+	$title = I18N::translate('Date');
 	$dates = [
 		'1900'                                                       => new Date('1900'),
 		'JAN 1900'                                                   => new Date('JAN 1900'),
@@ -234,14 +230,14 @@ case 'NAME':
 	break;
 
 case 'SURN':
-	$title = GedcomTag::getLabel('SURN');
+	$title = I18N::translate('Surname');
 	$text  = '<p>' .
 		I18N::translate('The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma.') .
 		'</p>';
 	break;
 
 case 'OBJE':
-	$title = GedcomTag::getLabel('OBJE');
+	$title = I18N::translate('Media object');
 	$text  =
 		'<p>' .
 		I18N::translate('A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).') .
@@ -249,7 +245,7 @@ case 'OBJE':
 	break;
 
 case 'PLAC':
-	$title = GedcomTag::getLabel('PLAC');
+	$title = I18N::translate('Place');
 	$text  = I18N::translate('Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
 	break;
 
@@ -278,14 +274,6 @@ case '_HEB':
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
 	$text  = I18N::translate('This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
-	break;
-
-case 'edit_edit_raw':
-	$title = I18N::translate('Edit the raw GEDCOM');
-	$text  =
-		I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') .
-		'<br><br>' .
-		/* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="https://wiki.webtrees.net/w/images-en/Ged551-5.pdf">https://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
 	break;
 
 case 'edit_SOUR_EVEN':
@@ -321,7 +309,4 @@ default:
 	$text  = I18N::translate('The help text has not been written for this item.');
 	break;
 }
-// This file is called by a getJSON call so return the data
-// in correct format
-header('Content-Type: application/json');
-echo json_encode(['title' => $title, 'content' => $text]);
+

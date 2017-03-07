@@ -13,195 +13,441 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* ======== Globals ========== */
+/* The minimal theme */
 
-/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
-html {
-	overflow-y: scroll;
+/* Override Bootstrap formatting */
+.btn-link {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 
-body {
-	color: #555;
-	background-color: #fff;
-	font: 13px tahoma, arial, helvetica, sans-serif;
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
-main {
-	display: block;
-	clear: both;
+/*
+ * Icons use FontAwesome by default, but have additional classes to
+ * allow them to be overridden
+ *
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-bing-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/bing-maps.png);
 }
 
-/* ====== Round Corners ======== */
-
-/* ios on click workaround */
-.iconz {
-	cursor: pointer;
+.wt-icon-google-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/google-maps.png);
 }
 
-input:required:valid,
-textarea:required:valid {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
+.wt-icon-openstreetmap::before {
+	width: 16px;
+	height: 16px;
+	content: url(icons/openstreetmap.png);
 }
 
-input:required:invalid,
-textarea:required:invalid {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
+/*
+ * Pages have the following high-level structure:
+ *
+ * wt-global
+ * +---wt-header-wrapper
+ *     +---wt-header-container
+ *     |   +---wt-header-content
+ *     |       +---wt-accessibility-links
+ *     |       +---wt-site-logo
+ *     |       +---wt-site-title
+ *     |       +---wt-header-search
+ *     |       |   +---wt-header-search-form
+ *     |       |       +---wt-header-search-field
+ *     |       |       +---wt-header-search-button
+ *     |       +---wt-secondary-navigation
+ *     |       |   +---wt-secondary-menu
+ *     |       +---wt-primary-navigation
+ *     |           +---wt-primary-menu
+ *     +---wt-main-container
+ *     |   +---wt-main-content
+ *     |       +---wt-messages
+ *     |       +---wt-page-title
+ *     |       +---wt-page-options wt-page-options-xxxxx
+ *     |       +---wt-page-content
+ *     +---wt-footer-container
+ *         +---wt-footer-content
+ *             +---wt-contact-links
+ *             +---wt-powered-by-webtrees
+ *             +---wt-page-views
+ *             +---wt-cookie-warning
+ */
+
+.wt-global {
+	/* Avoid extremes of black and white.  It is better for users with dyslexia. */
+	color: #0a0a0a;
+	background-color: #f9f9f9;
 }
 
-input{
-	border: 1px solid #ccc;
-	font-size: 14px;
-	padding: 4px;
-	border-radius: 4px;
+.wt-header-container {
+	margin-top: 1rem;
 }
 
-[dir=rtl] input:required:valid,
-[dir=rtl] textarea:required:valid,
-[dir=rtl] input:required:invalid,
-[dir=rtl] textarea:required:invalid {
-	background-position: left top;
+.wt-header-content {
 }
 
-a {
-	color: #333;
-	text-decoration: none;
+.wt-accessibility-links {
 }
 
-a:hover,
-a:active {
-	color: #333;
-	text-decoration: underline;
+.wt-site-logo {
+	display: none;
 }
 
-a:link,
-a:visited {
-	color: #333;
+.wt-site-title {
+	order: 1;
+	flex: 1 1 fit-content;
+	font-size: 1.75rem;
 }
 
-:focus {
-	outline-style: none;
+.wt-header-search {
+	order: 3;
+	flex: 0 0 15rem;
 }
 
-.flash-messages {
-	clear: both;
+.wt-header-search-form {
+}
+
+.wt-secondary-navigation {
+	order: 2;
+	flex: 0 0 fit-content;
+	white-space: nowrap;
+}
+
+.wt-secondary-menu {
+}
+
+.wt-secondary-menu .nav-link {
+	padding: 0.5rem;
+}
+
+.wt-primary-navigation {
+	order: 4;
+	/* Extend to full page width */
+	flex: 0 1 100vw;
+	max-width: 100vw;
+	/* Recalculate margins for content */
+	margin: 0 calc(50% - 50vw);
+	padding: 0 calc(50vw - 50%);
+	border-bottom: 2px solid #aaa;
+}
+
+.wt-primary-menu {
+	justify-content: center;
+}
+
+.wt-primary-menu .nav-link {
+	padding: 0.5rem;
+}
+
+.wt-main-container {
+}
+
+.wt-main {
+}
+
+.wt-messages {
+}
+
+.wt-page-title {
 	text-align: center;
 }
 
-dl {
-	margin: 0;
+.wt-page-options {
+	max-width: 50rem;
+	margin: 0 auto;
 }
 
-dt {
-	float: left;
+.wt-page-content {
+	margin-top: 1rem;
+}
+
+.wt-footer-container {
+}
+
+.wt-footer-content {
+}
+
+.wt-contact-links {
+}
+
+.wt-powered-by-webtrees {
+}
+
+.wt-page-views {
+}
+
+.wt-cookie-warning {
+}
+
+/*
+ * The home/my pages
+ *
+ * wt-home-page / wt-my-page
+ * +---wt-main-blocks
+ * |   +---wt-block, wt-block-AAA
+ * |   +---wt-block, wt-block-BBB
+ * |   +---wt-block, wt-block-CCC
+ * +---wt-side-blocks
+ *     +---wt-block, wt-block-XXX
+ *     +---wt-block, wt-block-YYY
+ *     +---wt-block, wt-block-ZZZ
+ *
+ * Each block as the structure
+ * wt-block, wt-block-XXX
+ * +---wt-block-header, wt-block-header-XXX
+ * +---wt-block-content, wt-block-content-XXX
+ */
+
+/*
+ * Pending changes page
+ *
+ * wt-pending-changes-page
+ */
+
+/*
+ * Edit genealogy data page
+ *
+ * wt-edit-page, wt-edit-XXXX-page
+ */
+
+/*
+ * Configure home/my page blocks page
+ *
+ * wt-edit-blocks-page
+ */
+
+/*
+ * Login page
+ *
+ * wt-login-page
+ */
+
+/*
+ * Ancestors chart
+ *
+ * wt-chart, wt-ancestors-chart
+ * +---wt-ancestors-chart-list
+ *     +---wt-ancestors-chart-list-item
+ *         +---
+ *         +---wt-ancestors-chart-list
+ *         +---wt-ancestors-chart-list-item
+ *             +---...
+ */
+.wt-ancestors-chart-list {
+}
+
+.wt-ancestors-chart-list-item {
+}
+
+/*
+ * Compact chart
+ *
+ * wt-chart, wt-compact-chart
+ */
+
+.wt-ancestors-chart-list-item {
+}
+
+/*
+ * Descendants chart
+ *
+ * wt-chart, wt-descendants-chart
+ * +---wt-descendants-chart-list
+ *     +---wt-descendants-chart-list-item
+ */
+.wt-descendants-chart-list {
+}
+
+.wt-descendants-chart-list-item {
+}
+
+/*
+ * Family book chart
+ *
+ * wt-chart, wt-family-book-chart
+ */
+
+/*
+ * Fan chart
+ *
+ * wt-chart, wt-fan-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-hourglass-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-interactive-tree
+ */
+
+/*
+ * Lifespans chart
+ *
+ * wt-chart, wt-lifespans-chart
+ */
+
+/*
+ * Pedigree chart
+ *
+ * wt-chart, wt-pedigree-chart
+ */
+
+/*
+ * Pedigree map
+ *
+ * wt-chart, wt-pedigree-map
+ */
+
+/*
+ * Relationships chart
+ *
+ * wt-chart, wt-relationships-chart
+ */
+
+/*
+ * Statistics chart
+ *
+ * wt-chart, wt-statistics-chart
+ */
+
+/*
+ * Timeline chart
+ *
+ * wt-chart, wt-timeline-chart
+ */
+
+/*
+ * Family list and individual list
+ *
+ * wt-page-options
+ * +---wt-initials-list
+ *     +---wt-initial-list-item
+ *         +---wt-initial
+ *         +---wt-initial, active
+ * wt-page-content
+ * +---wt-list, wt-{family,individual}-list
+ */
+
+.wt-initials-list {
+	list-style: none;
+}
+
+.wt-initials-list-item {
+	display: inline;
+}
+
+.wt-initials-list-item + .wt-initials-list-item::before {
+	content: '|';
+}
+
+.wt-initial {
+	padding: 0 0.25rem;
+}
+
+.wt-initial.active {
+	color: #f00;
 	font-weight: bold;
-	margin-right: 10px;
 }
 
-[dir=rtl] dt {
-	float: right;
-	margin-right: auto;
-	margin-left: 10px;
-}
+/*
+ * Media object list
+ *
+ * wt-list, wt-media-list
+ */
 
-header {
-	color: #555;
-	text-align: center;
-}
+/*
+ * Note object list
+ *
+ * wt-list, wt-note-list
+ */
 
-#content {
-	margin: 5px 5px 12px 5px;
-}
+/*
+ * Source list
+ *
+ * wt-list, wt-source-list
+ */
 
-header,
-footer,
-.block {
-	background-color: #fff;
-	clear: none;
-}
+/*
+ * Repository list
+ *
+ * wt-list, wt-repository-list
+ */
 
-th {
-	font-weight: 100;
-}
+/*
+ * Branches list
+ *
+ * wt-branches-page
+ */
 
-ul {
-	padding-left: 15px;
-	padding-right: 15px;
-	margin: 8px;
-}
+/*
+ * Place hierarchy
+ *
+ * wt-place-hierarchy-page
+ */
 
-img {
-	border: 0;
-}
+/*
+ * Calendar
+ *
+ * wt-calendar-page
+ */
 
-legend img {
-	height: 20px;
-	vertical-align: middle;
-	width: 20px;
-}
+/*
+ * Reports
+ *
+ * wt-reports-page
+ */
 
-/* Some styles from bootstrap */
-.text-muted {
-	color: #777;
-}
+/*
+ * Search
+ *
+ * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ */
 
-.small {
-	font-size: 12px;
+/* Pending changes */
+.new {
+	outline: solid thin blue;
 }
-
-img.block,
-#mycart img {
-	border: 0;
-	height: 25px;
-	vertical-align: middle;
-}
-
-textarea {
-	border-style: inset;
-}
-
-.topbottombar {
-	background-color: #eee;
-	color: #555;
-	border: 1px solid #555;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 4px;
-	text-align: center;
-}
-
-fieldset {
-	margin: 8px 8px 4px;
-	text-align: left;
-}
-
-[dir=rtl] fieldset {
-	text-align: right;
-}
-
-legend {
-	font-weight: bold;
-}
-
-select {
-	font-size: 12px;
-	margin: 0 7px;
-	padding: 1px;
-}
-
-header form {
-	font-size: 12px;
-}
-
-#mycart a img {
-	height: 15px;
-}
-
-.button {
-	width: 60px;
-}
-
-.alpha_index {
-	color: #555;
+.old {
+	outline: solid thin red;
 }
 
 .person_box,
@@ -237,663 +483,6 @@ header form {
 .news_box:target,
 #gedcom_stats:target {
 	background-color: #ffc;
-}
-
-/* families tab person box */
-#relatives_content .person_box > .person_box,
-#relatives_content .person_boxF > .person_boxF,
-#relatives_content .person_boxNN > .person_boxNN {
-	border: 0;
-	min-height: 50px;
-}
-
-.center {
-	text-align: center;
-}
-
-table.center {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.list_table {
-	margin: 0 auto;
-}
-
-.list_label,
-.list_label_wrap {
-	border: 1px solid #555;
-	font-weight: bold;
-	text-align: center;
-}
-
-.list_value,
-.list_value_wrap {
-	background-color: #fff;
-	border: solid #555 1px;
-	vertical-align: top;
-}
-
-.list_label,
-.list_value {
-	white-space: nowrap;
-}
-
-.list_label_wrap,
-.list_value_wrap {
-	white-space: normal;
-}
-
-.facts_table {
-	width: 100%;
-}
-
-.facts_table .optionbox {
-	white-space: normal;
-}
-
-div.fact_SHARED_NOTE {
-	clear: both;
-}
-
-.facts_label {
-	background-color: #fff;
-	border: 1px solid #555;
-	padding: 4px;
-	width: 20%;
-	text-align: center;
-}
-
-.facts_label03 {
-	border: 1px solid #555;
-	padding: 4px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.facts_value {
-	background-color: #fff;
-	border: 1px solid #555;
-	padding: 4px;
-}
-
-.quickfacts a {
-	padding: 0 3px;
-	font-size: 9px;
-}
-
-.tabs_table {
-	width: 99%;
-}
-
-.name1, .name2 {
-	color: #555;
-}
-
-a:hover .name1, a:hover .name2 {
-	color: #555;
-	text-decoration: underline;
-}
-
-a:hover .nameZoom {
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.nameZoom {
-	color: #555;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.details_label {
-	font-weight: bold;
-}
-
-.name_head {
-	color: #555;
-	font-size: 16px;
-	font-weight: bold;
-	line-height: 2;
-	padding: 0 5px;
-}
-
-.date {
-	color: #666;
-	font-weight: bold;
-}
-
-.label {
-	font-weight: bold;
-}
-
-.error {
-	color: #d00;
-	font-weight: bold;
-}
-
-.largeError {
-	color: #d00;
-	font-weight: bold;
-}
-
-.warning {
-	color: #d00;
-	font-weight: bold;
-}
-
-.indent {
-	padding-left: 7px;
-}
-
-.image {
-	height: 150px;
-	padding: 5px;
-	margin: 2px;
-}
-
-.gender_image {
-	margin: 0 3px;
-	border: 0;
-	vertical-align: middle;
-}
-
-.thumbnail {
-	height: auto;
-	padding: 3px;
-}
-
-.icon {
-	border: 0;
-	padding: 0 5px;
-}
-
-.sublinks_cell {
-	background-color: #eee;
-}
-
-.submenu .icon {
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
-
-.subheaders {
-	font-weight: bold;
-	font-size: 15px;
-	margin-top: 15px;
-	vertical-align: bottom;
-}
-
-#family-table .subheaders:first-child {
-	width: 285px;
-}
-
-.age {
-	font-size: 9px;
-}
-
-.parentdeath {
-	border: solid #555 1px;
-	padding: 1px;
-}
-
-.source_citations {
-	display: none;
-}
-
-.selected-option {
-	background-color: #eee;
-	border: solid #555 1px;
-}
-
-.border1 {
-	border: solid #555 1px;
-}
-
-.menuitem {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem_hover {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem .icon, .menuitem_hover .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.submenu {
-	text-decoration: none;
-	font-size: 11px;
-	background-color: #fff;
-	border: solid #ccc 1px;
-	visibility: hidden;
-	position: absolute;
-	padding: 5px;
-}
-
-.submenuitem  {
-	vertical-align: middle;
-	font-size: 11px;
-	height: 20px;
-	text-decoration: none;
-	background-color: #fff;
-	padding: 1px;
-	white-space: nowrap;
-}
-
-.submenuitem_hover {
-	vertical-align: middle;
-	height: 20px;
-	font-size: 11px;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	white-space: nowrap;
-	padding: 1px;
-}
-
-.submenuitem a,
-.submenuitem_hover a {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.journal_box {
-	padding: 3pt;
-	border: thin solid #999;
-	overflow: visible;
-}
-
-.news_box {
-	background-color: #fff;
-	border-top: none;
-}
-
-.news_title {
-	font-weight: bold;
-	font-size: 14px;
-}
-
-.news_date {
-	margin-bottom: 12px;
-}
-
-.current_day {
-	font-weight: bold;
-	font-size: 16px;
-}
-
-.cal_day {
-	float: left;
-	font-weight: bold;
-}
-
-.rtl_cal_day {
-	direction: rtl;
-	float: right;
-	color: #00f;
-	font-weight: bold;
-}
-
-.helpcontent {
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.helpcontent dt {
-	clear: both;
-}
-
-#my-page h1 {
-	margin: 0.25em auto 0.6em;
-}
-
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
-.tvertline {
-	vertical-align: bottom;
-}
-
-.line1,
-.line2,
-.line3 {
-	vertical-align: middle;
-}
-
-.line5 {
-	vertical-align: top;
-}
-
-#childbox {
-	padding: 5px;
-	position: absolute;
-	display: none;
-	text-align: start;
-	white-space: nowrap;
-	top: 20px;
-	left: 0;
-}
-
-[dir=rtl] #childbox {
-	left: auto;
-	right: 0;
-}
-
-.layout3 #childbox {
-	top: auto;
-	bottom: 20px;
-}
-
-#childbox a.name1 {
-	display: block;
-	margin-left: 5px;
-}
-
-.person0 {
-	background-color: #eee;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.person1 {
-	background-color: #bfbfbf;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.person2 {
-	background-color: #999;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.person3 {
-	background-color: #dfdfdf;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.person4 {
-	background-color: #eee;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.person5 {
-	background-color: #fefefe;
-	border: outset #555 1px;
-	vertical-align: top;
-}
-
-.listlog {
-	line-height: 20pt;
-}
-
-.starredname {
-	text-decoration: underline;
-}
-
-.search_hit {
-	background-color: #ccc;
-}
-
-.search_item {
-	font-weight: 600;
-}
-
-.topbottombar,
-.descriptionbox {
-	font-weight: bold;
-	background-color: #fff;
-	border: solid #555 1px;
-	vertical-align: top;
-}
-
-.descriptionbox {
-	font-size: 14px;
-	background-color: #fff;
-	vertical-align: top;
-	padding: 3px;
-	border: solid #555 1px;
-}
-
-.optionbox {
-	background-color: #fff;
-	border: solid #555 1px;
-	color: #333;
-	vertical-align: top;
-	white-space: nowrap;
-	padding: 3px;
-}
-
-.vmiddle {
-	vertical-align: middle;
-}
-
-.red {
-	color: #f00;
-}
-
-.rela,
-.histo {
-	opacity: 0.8;
-}
-
-.width10 {
-	width: 10%;
-}
-
-.width20 {
-	width: 20%;
-}
-
-.width25 {
-	width: 25%;
-}
-
-.width30 {
-	width: 30%;
-}
-
-.width33 {
-	width: 33%;
-}
-
-.width40 {
-	width: 40%;
-}
-
-.width50 {
-	width: 50%;
-}
-
-.width60 {
-	width: 60%;
-}
-
-.width66 {
-	width: 66%;
-}
-
-.width70 {
-	width: 70%;
-}
-
-.width75 {
-	width: 75%;
-}
-
-.width80 {
-	width: 80%;
-}
-
-.width90 {
-	width: 90%;
-}
-
-.width100 {
-	width: 100%;
-}
-
-.font9 {
-	font-size: 9px;
-}
-
-.font11 {
-	font-size: 11px;
-}
-
-.messagebox {
-	background-color: #fff;
-	border: solid #555 1px;
-}
-
-/* ---Pending edits--- */
-.new {
-	border: solid blue 1px;
-	overflow: hidden;
-}
-
-.old {
-	border: solid red 1px;
-	overflow: hidden;
-}
-
-.tag_cloud {
-	text-align: center;
-}
-
-.tag_cloud a {
-	white-space: nowrap;
-}
-
-/* ---Autocomplete styles--- */
-.ui-autocomplete-input {
-	background-color: #eea;
-}
-
-.ui-autocomplete {
-	padding: 0;
-	border: 1px solid #555;
-	background-color: #fff;
-	z-index: 99999;
-	list-style: none outside none;
-	margin: 0;
-	max-height: 200px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
-
-.ui-autocomplete li {
-	margin: 0;
-	padding: 2px 5px;
-	font-size: 12px;
-	cursor: default;
-	display: block;
-	/* if width will be 100% horizontal scrollbar will apear when scroll mode will be used */
-	/* width: 100%; */
-	font: menu;
-	/* it is very important, if line-height not setted or setted in relative units scroll will be broken in firefox */
-	line-height: 14px;
-	overflow: hidden;
-}
-
-.ui-autocomplete-loading {
-	background: #fff url(images/indicator.gif) right center no-repeat;
-}
-
-.ui-autocomplete li:nth-child(odd) {
-	background-color: #eee;
-}
-
-.ui-autocomplete a.ui-state-focus {
-	background: #369;
-	color: #f00;
-}
-
-.ui-sortable li {
-	list-style-type: none;
-}
-
-.ui-sortable .noprint {
-	display: none;
-}
-
-/* ---End of Autocomplete styles--- */
-
-.nowrap {
-	white-space: nowrap;
-}
-
-.wrap {
-	white-space: normal;
-}
-
-.statistics-page {
-	text-align: center;
-}
-
-.center2 {
-	text-align: center;
-}
-
-.gchart {
-	border: solid #555 1px;
-}
-
-/* ---Find special characters--- */
-.largechars {
-	font-family: monospace;
-	font-size: 200%;
-}
-
-#facts_content dd {
-	float: left;
-	width: 70%;
-}
-
-.clearfloat {
-	clear: both;
-}
-
-/* this keeps the tag color the same when it is a link as when not */
-
-.place {
-	padding-top: 5px;
-}
-
-#pending h2 {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-#pending h3 {
-	text-align: center;
-	margin-top: 20px;
-}
-
-#pending .list_value {
-	padding: 3px;
-	text-align: center;
-	vertical-align: middle;
-	white-space: nowrap;
-}
-
-#pending .indent {
-	padding: 0px;
 }
 
 /* ======== Person box ======= */
@@ -1400,7 +989,6 @@ a:hover .nameZoom {
 .indi-list,
 .fam-list {
 	margin: 5px auto;
-	visibility: hidden;
 	width: 98%;
 }
 
@@ -1803,36 +1391,7 @@ div.faq_body {
 	padding-top: 15px;
 }
 
-/* a container for the following three links */
-
-.editlink,
-.copylink,
-.deletelink {
-	float: left;
-	padding: 0 5px 0 0;
-	font-weight: normal;
-}
-
-[dir=rtl] .editlink,
-[dir=rtl] .copylink,
-[dir=rtl] .deletelink {
-	float: right;
-	padding: 0 0 0 5px;
-}
-
-
 /* ======== Indi header ====== */
-.field .editlink,
-.field .deletelink,
-.field .copylink {
-	float: right;
-}
-
-[dir=rtl].field .editlink,
-[dir=rtl].field .deletelink {
-	float: left;
-}
-
 #indi_header {
 	overflow: hidden;
 	margin: 0 4px 5px;
@@ -1935,8 +1494,8 @@ div.faq_body {
 	float: right;
 }
 
-dd .editlink,
-dd .deletelink {
+#individual-names .wt-icon-edit,
+#individual-names .wt-icon-delete {
 	float: right;
 }
 
@@ -2017,13 +1576,13 @@ dd .deletelink {
 	float: left;
 }
 
-[dir=rtl] dd .editlink,
-[dir=rtl] dd .deletelink {
+[dir=rtl] #individual-names .wt-icon-edit,
+[dir=rtl] #individual-names .wt-icon-delete {
 	float: left;
 }
 
 .odometer {
-	font-family: courier, mono-space;
+	font-family: courier, monospace;
 	font-weight: bold;
 	background: #000;
 	color: #fff;
@@ -3175,39 +2734,20 @@ dd .deletelink {
 	display:block;
 }
 
-#compact_chart,
-#fan_chart,
-.chart_common,
-#ancestry_booklet,
-#descendancy_booklet,
-#familybook_chart,
-#hourglass_chart {
-	margin: 20px;
-}
-
-/* styles for vertical lines in ancestry and descendancy charts */
-.chart_common li {
-	list-style: none;
-}
-
-.chart_common li > span.details1 {
-	white-space: nowrap;
-}
-
-.chart_common .generation {
+/* Ancestry chart */
+.wt-ancestors-chart-list {
 	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
 	padding: 0;
 	display: block;
 }
 
-[dir=rtl] .chart_common .generation {
+[dir=rtl] .wt-ancestors-chart-list {
 	margin: 0 15px 0 0;
-	background-position: right top
-;
+	background-position: right top;
 }
 
-.chart_common .generation > li {
+.wt-ancestors-chart-list-item {
 	margin: 5px 0;
 }
 
@@ -3481,18 +3021,6 @@ dd .deletelink {
 	background-image: url(images/add.png);
 }
 
-.icon-admin {
-	width: 25px;
-	height: 25px;
-	background-image: url(images/admin.png);
-}
-
-.icon-bing {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/bing.png);
-}
-
 .icon-button_addmedia {
 	width: 18px;
 	height: 16px;
@@ -3516,13 +3044,6 @@ dd .deletelink {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/addsource.png);
-}
-
-.icon-button_calendar {
-	width: 19px;
-	height: 15px;
-	background-image: url(images/calendar.png);
-	vertical-align: middle;
 }
 
 .icon-button_family {
@@ -3554,13 +3075,6 @@ dd .deletelink {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/indi.png);
-}
-
-.icon-button_keyboard {
-	width: 30px;
-	height: 15px;
-	background-image: url(images/keyboard.png);
-	vertical-align: middle;
 }
 
 .icon-button_media {
@@ -3616,40 +3130,10 @@ dd .deletelink {
 	background-image: url(images/clippings.png);
 }
 
-.icon-darrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow.png);
-}
-
-a.icon-darrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/darrow2.png);
-}
-
-.icon-ddarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow.png);
-}
-
-a.icon-ddarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ddarrow2.png);
-}
-
 .icon-edit_indi {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/edit_sm.png);
-}
-
-.icon-email {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/email.png);
 }
 
 .icon-fam-list {
@@ -3658,48 +3142,10 @@ a.icon-ddarrow {
 	background-image: url(images/family.png);
 }
 
-.icon-googlemaps {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/googlemaps.png);
-}
-
-.icon-help {
-	cursor: help;
-	margin: 0 5px;
-	width: 15px;
-	height: 15px;
-	background-image: url(images/help.png);
-}
-
 .icon-indi-list {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/indis.png);
-}
-
-.icon-larrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow.png);
-}
-
-a.icon-larrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/larrow2.png);
-}
-
-.icon-ldarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow.png);
-}
-
-a.icon-ldarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/ldarrow2.png);
 }
 
 .icon-loading-small {
@@ -3780,40 +3226,10 @@ a.icon-ldarrow:hover {
 	background-image: url(images/notes.png);
 }
 
-.icon-osm {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/osm.png);
-}
-
 .icon-plus {
 	width: 11px;
 	height: 11px;
 	background-image: url(images/plus.png);
-}
-
-.icon-rarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow.png);
-}
-
-a.icon-rarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rarrow2.png);
-}
-
-.icon-rdarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow.png);
-}
-
-a.icon-rdarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/rdarrow2.png);
 }
 
 .icon-reminder {
@@ -3906,47 +3322,10 @@ a.icon-rdarrow:hover {
 	background-image: url(images/source.png);
 }
 
-.icon-target {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/target.png);
-	vertical-align: middle;
-}
-
-.icon-uarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow.png);
-}
-
-a.icon-uarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/uarrow2.png);
-}
-
-.icon-udarrow {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow.png);
-}
-
-a.icon-udarrow:hover {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/udarrow2.png);
-}
-
 .icon-warning {
 	width: 17px;
 	height: 17px;
 	background-image: url(images/warning.png);
-}
-
-.icon-wiki {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/w_button.png);
 }
 
 .icon-zoomin {

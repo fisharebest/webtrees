@@ -15,102 +15,77 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree   $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\FamilyBookController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'familybook.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new FamilyBookController;
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'family_book_chart'));
+
+// Only generate the content for interactive users (not search robots).
+if (Filter::getBool('ajax') && Session::has('initiated')) {
+	echo
+	'<div class="familybook_chart">' .
+	$controller->printFamilyBook($controller->root, $controller->descent) .
+	'</div>';
+	return;
+}
+
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'family_book_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->pageHeader();
 
 ?>
-<div id="familybook-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form method="get" name="people" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Individual'); ?>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show details'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-					</td>
-					<td rowspan="3" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-					<td class="optionbox">
-						<select name="generations">
-							<?php
-							for ($i = 2; $i <= $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'); $i++) {
-								echo '<option value="' . $i . '" ';
-								if ($i == $controller->generations) {
-									echo 'selected';
-								}
-								echo '>' . I18N::number($i) . '</option>';
-							}
-							?>
-						</select>
-					</td>
-					<td rowspan="2" class="descriptionbox">
-						<?php echo I18N::translate('Show spouses'); ?>
-					</td>
-					<td rowspan="2" class="optionbox">
-						<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Descendant generations'); ?>
-					</td>
-					<td class="optionbox">
-						<select name="descent">
-							<?php
-							for ($i = 0; $i <= 9; $i++) {
-								echo '<option value="' . $i . '" ';
-								if ($i === $controller->descent) {
-									echo 'selected';
-								}
-								echo '>' . I18N::number($i) . '</option>';
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	<div id="familybook_chart" style="z-index:1;">
-	<?php
-	if ($controller->root) {
-		$controller->printFamilyBook($controller->root, $controller->descent);
-	}
-	?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+
+<form class="wt-page-options wt-page-options-family-book-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+			<?= I18N::translate('Individual') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
+		</div>
 	</div>
-</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="generations">
+			<?= I18N::translate('Generations') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'))), $controller->generations, ['id' => 'generations', 'name' => 'generations']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="descent">
+			<?= I18N::translate('Descendant generations') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, 9)), $controller->descent, ['id' => 'descent', 'name' => 'descent']) ?>
+		</div>
+	</div>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+				<?= I18N::translate('Spouses') ?>
+			</legend>
+			<div class="col-sm-9 wt-page-options-value">
+				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), false, ['name' => 'show_spouse', 'checked' => (bool) $controller->show_spouse]) ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+		</div>
+	</div>
+</form>
+
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart"></div>

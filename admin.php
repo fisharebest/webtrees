@@ -15,19 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 
-define('WT_SCRIPT_NAME', 'admin.php');
+/** @global Tree $WT_TREE */
+global $WT_TREE;
 
-require './includes/session.php';
+require 'includes/session.php';
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted.
 // It was generated with the help of a command like this:
@@ -40,7 +34,6 @@ $old_files = [
 	// Removed in 1.0.4
 	// Removed in 1.0.5
 	// Removed in 1.0.6
-	WT_ROOT . 'includes/extras',
 	// Removed in 1.1.0
 	WT_ROOT . 'addremotelink.php',
 	WT_ROOT . 'addsearchlink.php',
@@ -50,9 +43,6 @@ $old_files = [
 	WT_ROOT . 'editgedcoms.php',
 	WT_ROOT . 'edit_merge.php',
 	WT_ROOT . 'genservice.php',
-	WT_ROOT . 'includes/classes',
-	WT_ROOT . 'includes/controllers',
-	WT_ROOT . 'includes/family_nav.php',
 	WT_ROOT . 'logs.php',
 	WT_ROOT . 'manageservers.php',
 	WT_ROOT . 'media.php',
@@ -116,7 +106,6 @@ $old_files = [
 	// Removed in 1.2.3
 	//WT_ROOT.'modules_v2', // Do not delete - users may have stored custom modules/data here
 	// Removed in 1.2.4
-	WT_ROOT . 'includes/cssparser.inc.php',
 	WT_ROOT . 'modules_v3/gedcom_favorites/help_text.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_MEDIA/media_3_find.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_MEDIA/media_3_search_add.php',
@@ -141,8 +130,6 @@ $old_files = [
 	WT_ROOT . 'themes/webtrees/modules.css',
 	WT_ROOT . 'themes/xenea/modules.css',
 	// Removed in 1.2.5
-	WT_ROOT . 'includes/media_reorder_count.php',
-	WT_ROOT . 'includes/media_tab_head.php',
 	WT_ROOT . 'modules_v3/clippings/index.php',
 	WT_ROOT . 'modules_v3/googlemap/css/googlemap_style.css',
 	WT_ROOT . 'modules_v3/googlemap/css/wt_v3_places_edit.css',
@@ -177,9 +164,6 @@ $old_files = [
 	WT_ROOT . 'export_gedcom.php',
 	WT_ROOT . 'gedcheck.php',
 	WT_ROOT . 'images',
-	WT_ROOT . 'includes/dmsounds_UTF8.php',
-	WT_ROOT . 'includes/grampsxml.rng',
-	WT_ROOT . 'includes/session_spider.php',
 	WT_ROOT . 'modules_v3/googlemap/admin_editconfig.php',
 	WT_ROOT . 'modules_v3/googlemap/admin_placecheck.php',
 	WT_ROOT . 'modules_v3/googlemap/flags.php',
@@ -193,7 +177,6 @@ $old_files = [
 	WT_ROOT . 'modules_v3/googlemap/wt_v3_pedigree_map.js.php',
 	WT_ROOT . 'modules_v3/lightbox/js/tip_balloon_RTL.js',
 	// Removed in 1.3.2
-	WT_ROOT . 'includes/set_gedcom_defaults.php',
 	WT_ROOT . 'modules_v3/address_report',
 	WT_ROOT . 'modules_v3/lightbox/functions/lb_horiz_sort.php',
 	WT_ROOT . 'modules_v3/random_media/help_text.php',
@@ -242,8 +225,6 @@ $old_files = [
 	WT_ROOT . 'themes/webtrees/jquery-ui-1.10.0',
 	WT_ROOT . 'themes/xenea/jquery-ui-1.10.0',
 	// Removed in 1.5.0
-	WT_ROOT . 'includes/media_reorder.php',
-	WT_ROOT . 'includes/old_messages.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_note_decode.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_asst_date.php',
 	WT_ROOT . 'modules_v3/googlemap/wt_v3_googlemap.js.php',
@@ -327,7 +308,6 @@ $old_files = [
 	WT_ROOT . 'themes/webtrees/css-1.5.3',
 	WT_ROOT . 'themes/xenea/css-1.5.3',
 	// Removed in 1.6.1
-	WT_ROOT . 'includes/authentication.php',
 	// Removed in 1.6.2
 	WT_ROOT . 'themes/_administration/css-1.6.0',
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
@@ -347,13 +327,6 @@ $old_files = [
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
-	WT_ROOT . 'includes/config_data.php',
-	WT_ROOT . 'includes/db_schema',
-	WT_ROOT . 'includes/fonts',
-	WT_ROOT . 'includes/functions',
-	WT_ROOT . 'includes/hitcount.php',
-	WT_ROOT . 'includes/reportheader.php',
-	WT_ROOT . 'includes/specialchars.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
@@ -418,7 +391,6 @@ $old_files = [
 	WT_ROOT . 'packages/jquery-2.1.3',
 	WT_ROOT . 'packages/moment-2.10.3',
 	// Removed in 1.7.3
-	WT_ROOT . 'includes/php_53_compatibility.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/census/date.js',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/census/dynamicoptionlist.js',
 	WT_ROOT . 'packages/jquery-cookie-1.4.1/jquery.cookie.js',
@@ -466,6 +438,31 @@ $old_files = [
 	WT_ROOT . 'themes/xenea/css-1.7.5',
 	// Removed in 1.7.9
 	WT_ROOT . 'assets/js-1.7.7',
+	// Removed in 1.8.0
+	WT_ROOT . 'admin_site_access.php',
+	WT_ROOT . 'admin_site_readme.php',
+	WT_ROOT . 'app/Controller/SimpleController.php',
+	WT_ROOT . 'assets/js-1.7.9',
+	WT_ROOT . 'includes',
+	WT_ROOT . 'packages/font-awesome-4.4.0',
+	WT_ROOT . 'packages/jquery-1.12.1',
+	WT_ROOT . 'packages/jquery-2.2.1',
+	WT_ROOT . 'packages/modernizr-2.8.3',
+	WT_ROOT . 'packages/respond-1.4.2',
+	WT_ROOT . 'themes/_administration/css-1.7.5',
+	WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/clouds/css-1.7.8',
+	WT_ROOT . 'themes/clouds/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/colors/css-1.7.8',
+	WT_ROOT . 'themes/colors/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/fab/css-1.7.8',
+	WT_ROOT . 'themes/fab/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/minimal/css-1.7.8',
+	WT_ROOT . 'themes/minimal/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/webtrees/css-1.7.8',
+	WT_ROOT . 'themes/webtrees/jquery-ui-1.11.2',
+	//WT_ROOT . 'themes/xenea/css-1.7.8',
+	WT_ROOT . 'themes/xenea/jquery-ui-1.11.2',
 ];
 
 // Delete old files (if we can).
@@ -583,20 +580,21 @@ if (
 	<?= I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.') ?>
 </p>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div id="accordion" role="tablist" aria-multiselectable="true">
 
 	<!-- SERVER WARNINGS -->
 	<?php if (!empty($server_warnings)): ?>
-		<div class="panel panel-danger">
-			<div class="panel-heading" role="tab" id="server-heading">
-				<h2 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#server-panel" aria-expanded="true" aria-controls="server-panel">
+		<div class="card">
+			<div class="card-header" role="tab" id="card-server-header">
+				<h2 class="mb-0">
+					<a data-toggle="collapse" data-parent="#accordion" href="#card-server-content" aria-expanded="true" aria-controls="card-server-content">
 						<?= I18N::translate('Server information') ?>
 					</a>
 				</h2>
 			</div>
-			<div id="server-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="server-heading">
-				<div class="panel-body">
+
+			<div id="card-server-content" class="collapse show" role="tabpanel" aria-labelledby="card-server-header">
+				<div class="card-block">
 					<?php foreach ($server_warnings as $server_warning): ?>
 						<p><?= $server_warning ?></p>
 					<?php endforeach ?>
@@ -606,16 +604,16 @@ if (
 	<?php endif ?>
 
 	<!-- WEBTREES VERSION -->
-	<div class="panel <?php echo Auth::isAdmin() && $update_available ? 'panel-danger' : 'panel-primary'; ?>">
-		<div class="panel-heading" role="tab" id="webtrees-version-heading">
-			<h2 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#webtrees-version-panel" aria-expanded="true" aria-controls="webtrees-version-panel">
-					<?php echo WT_WEBTREES, ' ', WT_VERSION; ?>
+	<div class="card <?= Auth::isAdmin() && $update_available ? 'card-outline-danger' : '' ?>">
+		<div class="card-header" role="tab" id="card-serever-version">
+			<h2 class="mb-0">
+				<a data-toggle="collapse" data-parent="#accordion" href="#card-version-content" aria-expanded="true" aria-controls="card-version-content">
+					<?= WT_WEBTREES ?> <?= WT_VERSION ?>
 				</a>
 			</h2>
 		</div>
-		<div id="webtrees-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="webtrees-version-heading">
-			<div class="panel-body">
+		<div id="card-version-content" class="collapse show" role="tabpanel" aria-labelledby="card-version-header">
+			<div class="card-block">
 				<p>
 					<?= /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
 				</p>
@@ -639,16 +637,16 @@ if (
 
 	<!-- USERS -->
 	<?php if (Auth::isAdmin()): ?>
-	<div class="panel <?php echo $unapproved || $unverified ? 'panel-danger' : 'panel-primary'; ?>">
-		<div class="panel-heading" role="tab" id="users-heading">
-			<h2 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#users-panel" aria-expanded="false" aria-controls="users-panel">
+	<div class="card <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
+		<div class="card-header" role="tab" id="card-users-header">
+			<h2 class="mb-0">
+				<a data-toggle="collapse" data-parent="#accordion" href="#card-users-content" aria-expanded="false" aria-controls="card-users-content">
 					<?= I18N::translate('Users') ?>
 				</a>
 			</h2>
 		</div>
-		<div id="users-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="users-heading">
-			<div class="panel-body">
+		<div id="card-users-content" class="collapse" role="tabpanel" aria-labelledby="card-users-header">
+			<div class="card-block">
 				<table class="table table-condensed">
 					<caption class="sr-only">
 						<?= I18N::translate('Users') ?>
@@ -750,16 +748,16 @@ if (
 	<?php endif ?>
 
 	<!-- FAMILY TREES -->
-	<div class="panel <?php echo array_sum($changes) ? 'panel-danger' : 'panel-primary'; ?>">
-		<div class="panel-heading" role="tab" id="trees-heading">
-			<h2 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#trees-panel" aria-expanded="false" aria-controls="trees-panel">
+	<div class="card <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
+		<div class="card-header" role="tab" id="card-trees-header">
+			<h2 class="mb-0">
+				<a data-toggle="collapse" data-parent="#accordion" href="#card-trees-content" aria-expanded="false" aria-controls="card-trees-content">
 					<?= I18N::translate('Family trees') ?>
 				</a>
 			</h2>
 		</div>
-		<div id="trees-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="trees-heading">
-			<div class="panel-body">
+		<div id="card-trees-content" class="collapse" role="tabpanel" aria-labelledby="card-trees-header">
+			<div class="card-block">
 				<table class="table table-condensed">
 					<caption class="sr-only">
 						<?= I18N::translate('Family trees') ?>
@@ -787,7 +785,7 @@ if (
 							</td>
 							<td class="text-right flip">
 								<?php if ($changes[$tree->getTreeId()]): ?>
-								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
+								<a href="edit_changes.php">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
 									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
@@ -882,16 +880,16 @@ if (
 
 	<!-- OLD FILES -->
 	<?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
-	<div class="panel panel-danger">
-		<div class="panel-heading" role="tab" id="old-files-heading">
-			<h2 class="panel-title">
-				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#old-files-panel" aria-expanded="false" aria-controls="old-files-panel">
+	<div class="card card-outline-danger">
+		<div class="card-header" role="tab" id="card-old-files-header">
+			<h2 class="mb-0">
+				<a data-toggle="collapse" data-parent="#accordion" href="#card-old-files-content" aria-expanded="false" aria-controls="card-old-files-content">
 					<?= I18N::translate('Old files found') ?>
 				</a>
 			</h2>
 		</div>
-		<div id="old-files-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="old-files-heading">
-			<div class="panel-body">
+		<div id="card-old-files-content" class="collapse" role="tabpanel" aria-labelledby="card-old-files-header">
+			<div class="card-block">
 				<p>
 					<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
 				</p>

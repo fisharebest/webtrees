@@ -17,79 +17,80 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
-define('WT_SCRIPT_NAME', 'hourglass.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new HourglassController;
-$controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'hourglass_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();')
-	->setupJavascript();
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'hourglass_chart'));
 
-?>
-<div id="hourglass-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form method="get" name="people" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Individual'); ?>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('pid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show details'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-					</td>
-					<td rowspan="3" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox" >
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show spouses'); ?>
-					</td>
-					<td class="optionbox">
-						<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-
+// Only generate the content for interactive users (not search robots).
+if (Filter::getBool('ajax') && Session::has('initiated')) {
+	?>
 	<div id="hourglass_chart" style="width:98%; z-index:1;">
 		<table>
 			<tr>
 				<td style="vertical-align:middle">
-					<?php $controller->printDescendency($controller->root, 1); ?>
+					<?php $controller->printDescendency($controller->root, 1) ?>
 				</td>
 				<td style="vertical-align:middle">
-					<?php $controller->printPersonPedigree($controller->root, 1); ?>
+					<?php $controller->printPersonPedigree($controller->root, 1) ?>
 				</td>
 			</tr>
 		</table>
 	</div>
-</div>
+	<script>
+		<?= $controller->setupJavascript() ?>
+	</script>
+	<?php
+
+	return;
+}
+
+$controller
+	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->pageHeader();
+
+?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+
+<form class="wt-page-options wt-page-options-hourglass-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+			<?= I18N::translate('Individual') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="generations">
+			<?= I18N::translate('Generations') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, $controller->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'))), $controller->generations, ['id' => 'generations', 'name' => 'generations']) ?>
+		</div>
+	</div>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+				<?= I18N::translate('Layout') ?>
+			</legend>
+			<div class="col-sm-9 wt-page-options-value">
+				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), true, ['id' => 'show spouse']) ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+		</div>
+	</div>
+</form>
+
+<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart"></div>
