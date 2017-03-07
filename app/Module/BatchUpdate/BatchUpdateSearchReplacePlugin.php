@@ -15,8 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -143,20 +143,20 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 		];
 
 		return
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Search text/pattern') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Search text/pattern') . '</label>' .
 			'<div class="col-sm-9">' .
 			'<input class="form-control" name="search" size="40" value="' . Filter::escapeHtml($this->search) .
 			'" onchange="this.form.submit();">' .
 			'</div></div>' .
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Replacement text') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Replacement text') . '</label>' .
 			'<div class="col-sm-9">' .
 			'<input class="form-control" name="replace" size="40" value="' . Filter::escapeHtml($this->replace) .
 			'" onchange="this.form.submit();"></td></tr>' .
 			'</div></div>' .
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Search method') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Search method') . '</label>' .
 			'<div class="col-sm-9">' .
 			'<select class="form-control" name="method" onchange="this.form.submit();">' .
 			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
@@ -166,10 +166,10 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'</select>' .
 			'<p class="small text-muted">' . $descriptions[$this->method] . '</p>' . $this->error .
 			'</div></div>' .
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Case insensitive') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Case insensitive') . '</label>' .
 			'<div class="col-sm-9">' .
-			FunctionsEdit::radioButtons('case', ['I' => I18N::translate('no'), 'i' => I18N::translate('yes')], ($this->case ? 'i' : 'I'), 'class="radio-inline" onchange="this.form.submit();"') .
+			Bootstrap4::radioButtons('case', ['I' => I18N::translate('no'), 'i' => I18N::translate('yes')], ($this->case ? 'i' : 'I'), true, ['onchange' => 'this.form.submit();']) .
 			'<p class="small text-muted">' . /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') . '</p>' .
 			'</div></div>' .
 			parent::getOptionsForm();

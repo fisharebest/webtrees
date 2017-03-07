@@ -15,314 +15,258 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'message.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
 
-// Some variables are initialised from GET (so we can set initial values in URLs),
-// but are submitted in POST so we can have long body text.
+require 'includes/session.php';
 
-$subject    = Filter::post('subject', null, Filter::get('subject'));
-$body       = Filter::post('body');
-$from_name  = Filter::post('from_name');
-$from_email = Filter::post('from_email');
-$action     = Filter::post('action', 'compose|send', 'compose');
-$to         = Filter::post('to', null, Filter::get('to'));
-$method     = Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
-$url        = Filter::postUrl('url', Filter::getUrl('url'));
+$controller = new PageController;
+$controller->setPageTitle(I18N::translate('webtrees message'));
 
-$to_user = User::findByUserName($to);
+// Send the message.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$to         = Filter::post('to', null, '');
+	$from_name  = Filter::post('from_name', null, '');
+	$from_email = Filter::postEmail('from_email');
+	$subject    = Filter::post('subject', null, '');
+	$body       = Filter::post('body', null, '');
+	$url        = Filter::postUrl('url', 'index.php');
 
-$controller = new SimpleController;
-$controller
-	->restrictAccess($to_user || Auth::isAdmin() && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
-	->setPageTitle(I18N::translate('webtrees message'));
+	// Only an administration can use the distribution lists.
+	$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
 
-$errors = '';
+	$recipients = recipients($to);
 
-// Is this message from a member or a visitor?
-if (Auth::check()) {
-	$from = Auth::user()->getUserName();
-} else {
-	// Visitors must provide a valid email address
-	if ($from_email && (!preg_match('/(.+)@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
-		$errors .= '<p class="ui-state-error">' . I18N::translate('Please enter a valid email address.') . '</p>';
-		$action = 'compose';
+	// Different validation for admin/user/visitor.
+	$errors = !Filter::checkCsrf();
+	if (Auth::check()) {
+		$from_name  = Auth::user()->getRealName();
+		$from_email = Auth::user()->getEmail();
+	} elseif ($from_name === '' || $from_email === '') {
+		$errors = true;
+	} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
+		FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
+		$errors = true;
+	} elseif (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
+		FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
+		$errors = true;
+	} elseif (empty($recipients)) {
+		$errors = true;
 	}
 
-	// Do not allow anonymous visitors to include links to external sites
-	if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
-		$errors .=
-			'<p class="ui-state-error">' . I18N::translate('You are not allowed to send messages that contain external links.') . '</p>' .
-			'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]) . '</p>' .
-			Log::addAuthenticationLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", subject="' . $subject . '", body="' . $body . '"');
-		$action = 'compose';
-	}
-	$from = $from_email;
-}
-
-// Ensure the user always visits this page twice - once to compose it and again to send it.
-// This makes it harder for spammers.
-switch ($action) {
-case 'compose':
-	Session::put('good_to_send', true);
-	break;
-case 'send':
-	// Only send messages if we've come straight from the compose page.
-	if (!Session::get('good_to_send')) {
-		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page. Spam attack?');
-		$action = 'compose';
-	}
-	if (!Filter::checkCsrf()) {
-		$action = 'compose';
-	}
-	Session::forget('good_to_send');
-	break;
-}
-
-switch ($action) {
-case 'compose':
-	$controller
-		->pageHeader()
-		->addInlineJavascript('
-		function checkForm(frm) {
-			if (frm.subject.value === "") {
-				alert("' . I18N::translate('Please enter a message subject.') . '");
-				document.messageform.subject.focus();
-				return false;
+	if ($errors) {
+		// Errors? Go back to the form.
+		header(
+			'Location: ' . WT_BASE_URL . 'message.php' .
+			'?to=' . Filter::escapeUrl($to) .
+			'&from_name=' . Filter::escapeUrl($from_name) .
+			'&from_email=' . Filter::escapeUrl($from_email) .
+			'&subject=' . Filter::escapeUrl($subject) .
+			'&body=' . Filter::escapeUrl($body) .
+			'&url=' . Filter::escapeUrl($url)
+		);
+	} else {
+		// No errors.  Send the message.
+		foreach ($recipients as $recipient) {
+			if (deliverMessage($WT_TREE, $from_email, $from_name, $recipient, $subject, $body, $url)) {
+				FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Filter::escapeHtml($to)), 'info');
+			} else {
+				FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
+				Log::addErrorLog('Unable to send a message. FROM:' . $from_email . ' TO:' . $recipient->getEmail());
 			}
-			if (frm.body.value === "") {
-				alert("' . I18N::translate('Please enter some message text before sending.') . '");
-				document.messageform.body.focus();
-				return false;
-			}
-			return true;
 		}
-	');
-	echo '<span class="subheaders">', I18N::translate('Send a message'), '</span>';
-	echo $errors;
 
-	if (!Auth::check()) {
-		echo '<br><br>', I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data.');
-	}
-	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
-	echo Filter::getCsrf();
-	echo '<table>';
-	if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') {
-		echo '<tr><td></td><td>', I18N::translate('This message will be sent to %s', '<b>' . $to_user->getRealNameHtml() . '</b>'), '</td></tr>';
-	}
-	if (!Auth::check()) {
-		echo '<tr style="vertical-align:top;"><td width="15%">', I18N::translate('Your name'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr style="vertical-align:top;"><td>', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
-	}
-	echo '<tr style="vertical-align:top;"><td>', I18N::translate('Subject'), '</td>';
-	echo '<td>';
-	echo '<input type="hidden" name="action" value="send">';
-	echo '<input type="hidden" name="to" value="', Filter::escapeHtml($to), '">';
-	echo '<input type="hidden" name="time" value="">';
-	echo '<input type="hidden" name="method" value="', $method, '">';
-	echo '<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">';
-	echo '<input type="text" name="subject" size="50" value="', Filter::escapeHtml($subject), '"><br></td></tr>';
-	echo '<tr style="vertical-align:top;"><td>', I18N::translate('Body'), '<br></td><td><textarea name="body" cols="50" rows="7">', Filter::escapeHtml($body), '</textarea><br></td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="', I18N::translate('Send'), '"></td></tr>';
-	echo '</table>';
-	echo '</form>';
-	if ($method === 'messaging2') {
-		echo I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
-	}
-	echo
-		'<br><br><br><br>',
-		'<p id="save-cancel">',
-		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
-		'</p>';
-	break;
-
-case 'send':
-	if ($from_email) {
-		$from = $from_email;
+		header('Location: ' . WT_BASE_URL . $url);
 	}
 
-	$toarray = [$to];
+	return;
+}
+
+$to         = Filter::get('to', null, '');
+$from_name  = Filter::get('from_name', null, '');
+$from_email = Filter::getEmail('from_email', '');
+$subject    = Filter::get('subject', null, '');
+$body       = Filter::get('body', null, '');
+$url        = Filter::getUrl('url', 'index.php');
+
+// Only an administration can use the distribution lists.
+$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
+$controller->pageHeader();
+
+$to_names = implode(I18N::$list_separator, array_map(function(User $user) { return $user->getRealName(); }, recipients($to)));
+
+?>
+<h2><?= I18N::translate('Send a message') ?></h2>
+
+<form method="post">
+	<?= Filter::getCsrf() ?>
+	<input type="hidden" name="url" value="<?= Filter::escapeHtml($url) ?>">
+
+	<div class="form-group row">
+		<div class="col-sm-3 col-form-label">
+			<?= I18N::translate('To') ?>
+		</div>
+		<div class="col-sm-9">
+			<input type="hidden" name="to" value="<?= Filter::escapeHtml($to) ?>">
+			<div class="form-control"><?= Filter::escapeHtml($to_names) ?></div>
+		</div>
+	</div>
+
+	<?php if (Auth::check()): ?>
+		<div class="form-group row">
+			<div class="col-sm-3 col-form-label">
+				<?= I18N::translate('From') ?>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-control"><?= Filter::escapeHtml(Auth::user()->getRealName()) ?></div>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="from-name">
+				<?= I18N::translate('Your name') ?>
+			</label>
+			<div class="col-sm-9">
+				<input class="form-control" id="from-name" type="text" name="from_name" value="<?= Filter::escapeHtml($from_name) ?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="from-email">
+				<?= I18N::translate('Email address') ?>
+			</label>
+			<div class="col-sm-9">
+				<input class="form-control" id="from-email" type="text" name="from_email" value="<?= Filter::escapeHtml($from_email) ?>" required>
+			</div>
+		</div>
+	<?php endif ?>
+
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label" for="subject">
+			<?= I18N::translate('Subject') ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" id="subject" type="text" name="subject" value="<?= Filter::escapeHtml($subject) ?>" required>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label" for="body">
+			<?= I18N::translate('Body') ?>
+		</label>
+		<div class="col-sm-9">
+			<textarea class="form-control" id="body" type="text" name="body" required><?= Filter::escapeHtml($body) ?></textarea>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-9 push-sm-3">
+			<button type="submit" class="btn btn-primary">
+				<?= I18N::translate('Send') ?>
+			</button>
+		</div>
+	</div>
+</form>
+
+<?php
+
+/**
+ * Convert a username (or mailing list name) into an array of recipients.
+ *
+ * @param $to
+ *
+ * @reutrn User[]
+ */
+function recipients($to) {
 	if ($to === 'all') {
-		$toarray = [];
-		foreach (User::all() as $user) {
-			$toarray[$user->getUserId()] = $user->getUserName();
-		}
+		$recipients =	User::all();
+	} elseif ($to === 'last_6mo') {
+		$recipients = array_filter(User::all(), function(User $user) {
+			return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;
+		});
+	} elseif ($to === 'never_logged') {
+		$recipients = array_filter(User::all(), function(User $user) {
+			return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
+		});
+	} else {
+		$recipients = array_filter([User::findByUserName($to)]);
 	}
-	if ($to === 'never_logged') {
-		$toarray = [];
-		foreach (User::all() as $user) {
-			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
-				$toarray[$user->getUserId()] = $user->getUserName();
-			}
-		}
-	}
-	if ($to === 'last_6mo') {
-		$toarray = [];
-		$sixmos  = 60 * 60 * 24 * 30 * 6; //-- timestamp for six months
-		foreach (User::all() as $user) {
-			if ($user->getPreference('sessiontime') > 0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
-				$toarray[$user->getUserId()] = $user->getUserName();
-			} elseif (!$user->getPreference('verified_by_admin') && (WT_TIMESTAMP - $user->getPreference('reg_timestamp') > $sixmos)) {
-				//-- not verified by registration past 6 months
-				$toarray[$user->getUserId()] = $user->getUserName();
-			}
-		}
-	}
-	$i = 0;
-	foreach ($toarray as $indexval => $to) {
-		$message         = [];
-		$message['to']   = $to;
-		$message['from'] = $from;
-		if (!empty($from_name)) {
-			$message['from_name']  = $from_name;
-			$message['from_email'] = $from_email;
-		}
-		$message['subject'] = $subject;
-		$message['body']    = nl2br($body, false);
-		$message['created'] = WT_TIMESTAMP;
-		$message['method']  = $method;
-		$message['url']     = $url;
-		if ($i > 0) {
-			$message['no_from'] = true;
-		}
-		if (addMessage($message)) {
-			FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Filter::escapeHtml($to)));
-		} else {
-			FlashMessages::addMessage(I18N::translate('The message was not sent.'));
-			Log::addErrorLog('Unable to send a message. FROM:' . $from . ' TO:' . $to . ' (failed to send)');
-		}
-		$i++;
-	}
-	$controller
-		->pageHeader()
-		->addInlineJavascript('window.opener.location.reload(); window.close();');
-	break;
+
+	return $recipients;
 }
 
 /**
- * Add a message to a user's inbox
+ * Add a message to a user's inbox, send it to them via email, or both.
  *
- * @param string[] $message
+ * @param Tree   $tree
+ * @param string $sender_name
+ * @param string $sender_email
+ * @param User   $recipient
+ * @param string $subject
+ * @param string $body
+ * @param string $url
  *
  * @return bool
  */
-function addMessage($message) {
-	global $WT_TREE;
-
+function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient, $subject, $body, $url) {
 	$success = true;
+	$hr      = '--------------------------------------------------';
+	$body    = nl2br($body, false);
+	$body_cc = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . $hr . Mail::EOL . $body;
 
-	$sender    = User::findByIdentifier($message['from']);
-	$recipient = User::findByIdentifier($message['to']);
+	I18N::init($recipient->getPreference('language', WT_LOCALE));
 
-	// Sender may not be a webtrees user
-	if ($sender) {
-		$sender_email     = $sender->getEmail();
-		$sender_real_name = $sender->getRealName();
-	} else {
-		$sender_email     = $message['from'];
-		$sender_real_name = $message['from_name'];
+	$body = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender_email) . Mail::EOL . Mail::EOL . $body;
+
+	if ($url !== 'index.php') {
+		$body .= Mail::EOL . $hr . Mail::EOL . I18N::translate('This message was sent while viewing the following URL: ') . $url . Mail::EOL;
+
 	}
 
-	// Send a copy of the copy message back to the sender.
-	if ($message['method'] !== 'messaging') {
-		// Switch to the sender’s language.
-		if ($sender) {
-			I18N::init($sender->getPreference('language'));
-		}
-
-		$copy_email = $message['body'];
-		if (!empty($message['url'])) {
-			$copy_email .=
-				Mail::EOL . Mail::EOL . '--------------------------------------' . Mail::EOL .
-				I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . Mail::EOL;
-		}
-
-		if ($sender) {
-			// Message from a signed-in user
-			$copy_email = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . Mail::EOL . $copy_email;
-		} else {
-			// Message from a visitor
-			$copy_email = I18N::translate('You sent the following message to a webtrees administrator:') . Mail::EOL . Mail::EOL . Mail::EOL . $copy_email;
-		}
-
-		$success = $success && Mail::send(
-			// “From:” header
-				$WT_TREE,
-				// “To:” header
-				$sender_email,
-				$sender_real_name,
-				// “Reply-To:” header
-				Site::getPreference('SMTP_FROM_NAME'),
-				$WT_TREE->getPreference('title'),
-				// Message body
-				I18N::translate('webtrees message') . ' - ' . $message['subject'],
-				$copy_email
-			);
-	}
-
-	// Switch to the recipient’s language.
-	I18N::init($recipient->getPreference('language'));
-	if (isset($message['from_name'])) {
-		$message['body'] =
-			I18N::translate('Your name') . ' ' . $message['from_name'] . Mail::EOL .
-			I18N::translate('Email address') . ' ' . $message['from_email'] . Mail::EOL . Mail::EOL .
-			$message['body'];
-	}
-
-	// Add another footer - unless we are an admin
-	if (!Auth::isAdmin()) {
-		if (!empty($message['url'])) {
-			$message['body'] .=
-				Mail::EOL . Mail::EOL .
-				'--------------------------------------' . Mail::EOL .
-				I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . Mail::EOL;
-		}
-	}
-
-	if (empty($message['created'])) {
-		$message['created'] = gmdate('D, d M Y H:i:s T');
-	}
-
-	if ($message['method'] !== 'messaging3' && $message['method'] !== 'mailto' && $message['method'] !== 'none') {
+	// Send via the internal messaging system.
+	if (in_array($recipient->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
 		Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute([
-				$message['from'],
+				Auth::check() ? Auth::user()->getEmail() : $sender_email,
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
-				$message['subject'],
-				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email. Perhaps create different messages
+				$subject,
+				str_replace('<br>', '', $body),
 			]);
 	}
-	if ($message['method'] !== 'messaging') {
-		if ($sender) {
-			$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender->getRealNameHtml());
-		} else {
-			if (!empty($message['from_name'])) {
-				$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $message['from_name']);
-			} else {
-				$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $message['from']);
-			}
-		}
-		$original_email .= Mail::EOL . Mail::EOL . $message['body'];
 
-		$success = $success && Mail::send(
-			// “From:” header
-				$WT_TREE,
-				// “To:” header
-				$recipient->getEmail(),
-				$recipient->getRealName(),
-				// “Reply-To:” header
-				$sender_email,
-				$sender_real_name,
-				// Message body
-				I18N::translate('webtrees message') . ' - ' . $message['subject'],
-				$original_email
-			);
+	// CC to the author via the internal messaging system.
+	if (Auth::check() && in_array(Auth::user()->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
+		Database::prepare(
+			"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
+		)->execute([
+			Auth::user()->getEmail(),
+			WT_CLIENT_IP,
+			$recipient->getUserId(),
+			$subject,
+			str_replace('<br>', '', $body_cc),
+		]);
 	}
 
-	I18N::init(WT_LOCALE); // restore language settings if needed
+	// Send via email
+	if (in_array($recipient->getPreference('contactmethod'), ['messaging2', 'messaging3', 'mailto', 'none'])) {
+		$success = $success && Mail::send(
+			// “From:” header
+			$tree,
+			// “To:” header
+			$sender_email,
+			$sender_name,
+			// “Reply-To:” header
+			Site::getPreference('SMTP_FROM_NAME'),
+			$tree->getPreference('title'),
+			// Message body
+			I18N::translate('webtrees message') . ' - ' . $subject,
+			$body
+		);
+	}
+
+	I18N::init(WT_LOCALE);
 
 	return $success;
 }

@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * @covers Fisharebest\Webtrees\Census\Census
+	 * @covers \Fisharebest\Webtrees\Census\Census
 	 */
 	public function testAllCensus() {
 		$censuses = Census::allCensusPlaces();

@@ -34,9 +34,6 @@ class PageController extends BaseController {
 	/** @var string <head><title> $page_title </title></head> */
 	private $page_title = WT_WEBTREES;
 
-	/** @var bool Is this a popup window? */
-	private $popup;
-
 	/**
 	 * What should this page show in the browser’s title bar?
 	 *
@@ -103,35 +100,15 @@ class PageController extends BaseController {
 	public function pageFooter() {
 		echo
 			Theme::theme()->footerContainer() .
-			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
-			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
+			'<script src="' . WT_JQUERY_JS_URL . '"></script>' .
+			'<script src="' . WT_TETHER_JS_URL . '"></script>' .
+			'<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>' .
+			'<script src="' . WT_DATATABLES_JS_URL . '"></script>' .
+			'<script src="' . WT_DATATABLES_BOOTSTRAP_JS_URL . '"></script>' .
+			'<script src="' . WT_SELECT2_JS_URL . '"></script>' .
 			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
-			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
-			'</body>' .
-			'</html>' . PHP_EOL .
-			'<!-- webtrees: ' . WT_VERSION . ' -->' .
-			'<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
-			'<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
-			'<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
-	}
-
-	/**
-	 * Print the page footer, using the theme
-	 * Note that popup windows are deprecated
-	 */
-	public function pageFooterPopupWindow() {
-		echo
-			Theme::theme()->footerContainerPopupWindow() .
-			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
-			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
-			$this->getJavascript() .
-			Theme::theme()->hookFooterExtraJavascript() .
-			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
 			'</body>' .
 			'</html>' . PHP_EOL .
 			'<!-- webtrees: ' . WT_VERSION . ' -->' .
@@ -143,15 +120,9 @@ class PageController extends BaseController {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @param bool $popup Is this a popup window
-	 *
 	 * @return $this
 	 */
-	public function pageHeader($popup = false) {
-		global $WT_TREE;
-
-		$this->popup = $popup;
-
+	public function pageHeader() {
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
@@ -160,24 +131,15 @@ class PageController extends BaseController {
 			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
 			var WT_SCRIPT_NAME = "' . Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
-			var WT_CSRF_TOKEN  = "' . Filter::escapeJs(Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 
 		Theme::theme()->sendHeaders();
 		echo Theme::theme()->doctype();
 		echo Theme::theme()->html();
 		echo Theme::theme()->head($this);
-
-		if ($this->popup) {
-			echo Theme::theme()->bodyHeaderPopupWindow();
-			// We've displayed the header - display the footer automatically
-			register_shutdown_function([$this, 'pageFooterPopupWindow'], $this->popup);
-
-		} else {
-			echo Theme::theme()->bodyHeader();
-			// We've displayed the header - display the footer automatically
-			register_shutdown_function([$this, 'pageFooter'], $this->popup);
-		}
+		echo Theme::theme()->bodyHeader();
+		// We've displayed the header - display the footer automatically
+		register_shutdown_function([$this, 'pageFooter']);
 
 		return $this;
 	}

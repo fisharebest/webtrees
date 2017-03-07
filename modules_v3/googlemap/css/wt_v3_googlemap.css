@@ -17,6 +17,13 @@
 	margin-top: 10px;
 }
 
+/* The map on the place hierarchy page */
+#gm-hierarchy-map {
+	width: 750px;
+	height: 350px;
+	border: solid thin gray;
+}
+
 .gm-pedigree-map {
 	margin: 20px;
 }

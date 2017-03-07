@@ -31,8 +31,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoSpouseFamiliesMale() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -49,8 +49,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoSpouseFamiliesFemale() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -67,8 +67,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyFactsMale() {
 		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -92,8 +92,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyFactsFemale() {
 		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -117,8 +117,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testSpouseDeadMale() {
 		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -142,8 +142,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testSpouseDeadFemale() {
 		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -167,8 +167,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyUnmarriedMale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -191,8 +191,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyUnmarriedFemale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -215,8 +215,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testChildMale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -239,8 +239,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testChildFemale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -263,8 +263,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testDivorcedMale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -287,8 +287,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testDivorcedFemale() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');

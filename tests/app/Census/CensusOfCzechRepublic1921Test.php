@@ -23,7 +23,7 @@ class CensusOfCzechRepublic1921Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfCzechRepublic1921;
@@ -35,8 +35,8 @@ class CensusOfCzechRepublic1921Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfCzechRepublic1921;

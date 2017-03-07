@@ -31,8 +31,8 @@ class User {
 	/** @var  string The email address of this user. */
 	private $email;
 
-	/** @var array Cached copy of the wt_user_setting table. */
-	private $preferences;
+	/** @var string[] Cached copy of the wt_user_setting table. */
+	private $preferences = [];
 
 	/** @var  User[] Only fetch users from the database once. */
 	private static $cache = [];
@@ -452,28 +452,27 @@ class User {
 	 * Since we'll fetch several settings for each user, and since there aren’t
 	 * that many of them, fetch them all in one database query
 	 *
-	 * @param string      $setting_name
-	 * @param string|null $default
+	 * @param string $setting_name
+	 * @param string $default
 	 *
-	 * @return string|null
+	 * @return string
 	 */
-	public function getPreference($setting_name, $default = null) {
-		if ($this->preferences === null) {
-			if ($this->user_id) {
-				$this->preferences = Database::prepare(
-					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
-				)->execute([$this->user_id])->fetchAssoc();
-			} else {
-				// Not logged in? We have no preferences.
-				$this->preferences = [];
-			}
+	public function getPreference($setting_name, $default = '') {
+		if (empty($this->preferences) && $this->user_id !== null) {
+			$this->preferences = Database::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value" .
+				" FROM `##user_setting`" .
+				" WHERE user_id = :user_id"
+			)->execute([
+				'user_id' => $this->user_id,
+			])->fetchAssoc();
 		}
 
-		if (array_key_exists($setting_name, $this->preferences)) {
-			return $this->preferences[$setting_name];
-		} else {
-			return $default;
+		if (!array_key_exists($setting_name, $this->preferences)) {
+			$this->preferences[$setting_name] = $default;
 		}
+
+		return $this->preferences[$setting_name];
 	}
 
 	/**
@@ -488,24 +487,8 @@ class User {
 		if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
 			Database::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute([$this->user_id, $setting_name, $setting_value]);
+
 			$this->preferences[$setting_name] = $setting_value;
-		}
-
-		return $this;
-	}
-
-	/**
-	 * Delete a setting for the user.
-	 *
-	 * @param string $setting_name
-	 *
-	 * @return User
-	 */
-	public function deletePreference($setting_name) {
-		if ($this->user_id && $this->getPreference($setting_name) !== null) {
-			Database::prepare("DELETE FROM `##user_setting` WHERE user_id = ? AND setting_name = ?")
-				->execute([$this->user_id, $setting_name]);
-			unset($this->preferences[$setting_name]);
 		}
 
 		return $this;

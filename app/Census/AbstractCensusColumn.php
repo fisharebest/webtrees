@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -55,28 +56,6 @@ class AbstractCensusColumn {
 	}
 
 	/**
-	 * Extract the country (last part) of a place name.
-	 *
-	 * @param string $place - e.g. "London, England"
-	 *
-	 * @return string - e.g. "England"
-	 */
-	protected function lastPartOfPlace($place) {
-		$place = explode(', ', $place);
-
-		return end($place);
-	}
-
-	/**
-	 * When did this census occur
-	 *
-	 * @return Date
-	 */
-	public function date() {
-		return new Date($this->census->censusDate());
-	}
-
-	/**
 	 * Find the father of an individual
 	 *
 	 * @param Individual $individual
@@ -111,6 +90,64 @@ class AbstractCensusColumn {
 	}
 
 	/**
+	 * Find the current spouse family of an individual
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Family|null
+	 */
+	public function spouseFamily(Individual $individual) {
+		// Exclude families that were created after this census date
+		$families = [];
+		foreach ($individual->getSpouseFamilies() as $family) {
+			if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
+				$families[] = $family;
+			}
+		}
+
+		if (empty($families)) {
+			return null;
+		} else {
+			usort($families, function (Family $x, Family $y) {
+				return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
+			});
+
+			return end($families);
+		}
+	}
+
+	/**
+	 * When did this census occur
+	 *
+	 * @return Date
+	 */
+	public function date() {
+		return new Date($this->census->censusDate());
+	}
+
+	/**
+	 * The full version of the column's name.
+	 *
+	 * @return string
+	 */
+	public function title() {
+		return $this->title;
+	}
+
+	/**
+	 * Extract the country (last part) of a place name.
+	 *
+	 * @param string $place - e.g. "London, England"
+	 *
+	 * @return string - e.g. "England"
+	 */
+	protected function lastPartOfPlace($place) {
+		$place = explode(', ', $place);
+
+		return end($place);
+	}
+
+	/**
 	 * Remove the country of a place name, where it is the same as the census place
 	 *
 	 * @param string $place - e.g. "London, England"
@@ -134,39 +171,5 @@ class AbstractCensusColumn {
 	 */
 	public function place() {
 		return $this->census->censusPlace();
-	}
-
-	/**
-	 * Find the current spouse family of an individual
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Family|null
-	 */
-	public function spouseFamily(Individual $individual) {
-		// Exclude families that were created after this census date
-		$families = [];
-		foreach ($individual->getSpouseFamilies() as $family) {
-			if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
-				$families[] = $family;
-			}
-		}
-
-		if (empty($families)) {
-			return null;
-		} else {
-			usort($families, function (Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
-
-			return end($families);
-		}
-	}
-
-	/**
-	 * The full version of the column's name.
-	 *
-	 * @return string
-	 */
-	public function title() {
-		return $this->title;
 	}
 }

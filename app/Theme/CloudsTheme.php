@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Theme;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Theme;
 
 /**
  * The clouds theme.
@@ -25,60 +24,10 @@ use Fisharebest\Webtrees\Theme;
 class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	/**
 	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
 	 */
-	public function assetUrl() {
-		return 'themes/clouds/css-1.7.8/';
-	}
-
-	/**
-	 * Add markup to a flash message.
-	 *
-	 * @param \stdClass $message
-	 *
-	 * @return string
-	 */
-	protected function flashMessageContainer(\stdClass $message) {
-		// This theme uses jQueryUI markup.
-		switch ($message->status) {
-		case 'danger':
-			return '<p class="ui-state-error">' . $message->text . '</p>';
-		default:
-			return '<p class="ui-state-highlight">' . $message->text . '</p>';
-		}
-	}
-
-	/**
-	 * Format the contents of a variable-height home-page block.
-	 *
-	 * @param string $id
-	 * @param string $title
-	 * @param string $class
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-	public function formatBlock($id, $title, $class, $content) {
-		return
-			'<div id="' . $id . '" class="block" >' .
-			'<table class="blockheader"><tr><td class="blockh1"></td><td class="blockh2">' .
-			'<div class="blockhc"><b>' . $title . '</b></div>' .
-			'</td><td class="blockh3"></td></tr></table>' .
-			'<div class="blockcontent normal_inner_block ' . $class . '">' . $content . '</div>' .
-			'</div>';
-	}
-
-	/**
-	 * Create a search field and submit button for the quick search form in the header.
-	 *
-	 * @return string
-	 */
-	protected function formQuickSearchFields() {
-		return
-			'<input type="search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
-			'<input class="search-icon" type="image" src="' . $this->assetUrl() . 'images/go.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
-	}
+	const THEME_DIR  = 'clouds';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	/**
 	 * Allow themes to add extra scripts to the page footer.
@@ -97,7 +46,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 			' transition: "none",' .
 			' slideshowStart: "' . I18N::translate('Play') . '",' .
 			' slideshowStop: "' . I18N::translate('Stop') . '",' .
-			' title: function() { return jQuery(this).data("title"); }' .
+			' title: function() { return $(this).data("title"); }' .
 			'});' .
 			'</script>';
 	}
@@ -133,21 +82,16 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string
 	 */
 	protected function primaryMenuContent(array $menus) {
-		$html = '';
+		return implode('', array_map(function (Menu $menu) {
+			if (!empty($menu->getSubmenus())) {
+				// Insert a dummy menu / label into the submenu
+				$submenus = $menu->getSubmenus();
+				array_unshift($submenus, new Menu($menu->getLabel(), null, null, [ 'onclick' => 'return false;']));
+				$menu->setSubmenus($submenus);
+			}
 
-		foreach ($menus as $menu) {
-			// Create an inert menu - to use as a label
-			$tmp = new Menu($menu->getLabel(), '');
-
-			// Insert the label into the submenu
-			$submenus = $menu->getSubmenus();
-			array_unshift($submenus, $tmp);
-			$menu->setSubmenus($submenus);
-
-			$html .= $menu->getMenuAsList();
-		}
-
-		return $html;
+			return $menu->bootstrap4();
+		}, $menus));
 	}
 
 	/**
@@ -156,19 +100,9 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return [
-			'themes/clouds/jquery-ui-1.11.2/jquery-ui.css',
-			$this->assetUrl() . 'style.css',
-		];
-	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return 'clouds';
+		return array_merge(parent::stylesheets(), [
+			self::STYLESHEET,
+		]);
 	}
 
 	/**

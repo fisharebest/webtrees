@@ -18,213 +18,11 @@
 // "rtl" on right-to-left pages.
 var textDirection = $('html').attr('dir');
 
-// Specifications for various types of popup edit window.
-var edit_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
-var indx_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollbars=1'; // module configuration
-var news_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_news.php
-var find_window_specs = 'width=550,height=600,left=75,top=50,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // message.php
-var chan_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_changes.php
-var mord_window_specs = 'width=500,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
-var assist_window_specs = 'width=800,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
-var gmap_window_specs = 'width=650,height=600,left=75,top=50,resizable=1,scrollbars=1'; // googlemap module place editing
-var fam_nav_specs = 'width=350,height=550,left=25,top=75,resizable=1,scrollbars=1'; // media_0_inverselink.php
-
-var pastefield, nameElement, remElement; // Elements to paste to
-
-// "rtl" on right-to-left pages.
-var textDirection = $('html').attr('dir');
-
-// Get a help message.
-function helpDialog (topic, module) {
-  $.getJSON('help_text.php?help=' + topic + '&mod=' + module, function (json) {
-    modalNotes(json.content, json.title);
-  });
-}
-
-// Create a modal dialog to display notes & help
-function modalNotes (content, title) {
-  $('<div title="' + title + '"></div>')
-    .html(content)
-    .dialog({
-      modal: true,
-      width: 500,
-      open: function () {
-        // Close the window when we click outside it.
-        var self = this;
-        $('.ui-widget-overlay').on('click', function () {
-          $(self).dialog('close');
-        });
-      }
-    });
-
-  return false;
-}
-
-function closePopupAndReloadParent (url) {
-  if (parent.opener) {
-    if (url) {
-      parent.opener.location = url;
-    } else {
-      parent.opener.location.reload();
-    }
-  }
-  window.close();
-}
-
 function expand_layer (sid) {
   $('#' + sid + '_img').toggleClass('icon-plus icon-minus');
   $('#' + sid).slideToggle('fast');
   $('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
   return false;
-}
-
-// Open the "edit interface" popup window
-function edit_interface (params, windowspecs, pastefield) {
-  var features = windowspecs || edit_window_specs;
-  window.pastefield = pastefield;
-  var url = 'edit_interface.php?' + $.param(params) + '&ged=' + WT_GEDCOM;
-  window.open(url, '_blank', features);
-  return false;
-}
-
-function edit_record (xref, fact_id) {
-  return edit_interface({
-    'action': 'edit',
-    'xref': xref,
-    'fact_id': fact_id
-  });
-}
-
-function add_fact (xref, fact) {
-  return edit_interface({
-    'action': 'add',
-    'xref': xref,
-    'fact': fact
-  });
-}
-
-function edit_raw (xref) {
-  return edit_interface({
-    'action': 'editraw',
-    'xref': xref
-  });
-}
-
-function edit_note (xref) {
-  return edit_interface({
-    'action': 'editnote',
-    'xref': xref
-  });
-}
-
-function add_record (xref, fact_field) {
-  var fact = $('#' + fact_field).val();
-  if (fact) {
-    if (fact === 'OBJE') {
-      window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
-    } else {
-      return add_fact(xref, fact);
-    }
-  }
-  return false;
-}
-
-function reorder_media (xref) {
-  return edit_interface({
-    'action': 'reorder_media',
-    'xref': xref
-  }, mord_window_specs);
-}
-
-function add_new_record (xref, fact) {
-  return edit_interface({
-    'action': 'add',
-    'xref': xref,
-    'fact': fact
-  });
-}
-
-// Add a child to an existing family
-function add_child_to_family (xref, gender) {
-  return edit_interface({
-    'action': 'add_child_to_family',
-    'gender': gender,
-    'xref': xref
-  });
-}
-
-// Add a child to an existing individual (creating a one-parent family)
-function add_child_to_individual (xref, gender) {
-  return edit_interface({
-    'action': 'add_child_to_individual',
-    'gender': gender,
-    'xref': xref
-  });
-}
-
-// Add a new parent to an existing individual (creating a one-parent family)
-function add_parent_to_individual (xref, gender) {
-  return edit_interface({
-    'action': 'add_parent_to_individual',
-    'xref': xref,
-    'gender': gender
-  });
-}
-
-// Add a spouse to an existing family
-function add_spouse_to_family (xref, famtag) {
-  return edit_interface({
-    'action': 'add_spouse_to_family',
-    'xref': xref,
-    'famtag': famtag
-  });
-}
-
-function add_unlinked_indi () {
-  return edit_interface({
-    'action': 'add_unlinked_indi'
-  });
-}
-
-// Add a spouse to an existing individual (creating a new family)
-function add_spouse_to_individual (xref, famtag) {
-  return edit_interface({
-    'action': 'add_spouse_to_individual',
-    'xref': xref,
-    'famtag': famtag
-  });
-}
-
-function linkspouse (xref, famtag) {
-  return edit_interface({
-    'action': 'linkspouse',
-    'xref': xref,
-    'famtag': famtag,
-    'famid': 'new'
-  });
-}
-
-function add_famc (xref) {
-  return edit_interface({
-    'action': 'addfamlink',
-    'xref': xref
-  });
-}
-
-function edit_name (xref, fact_id) {
-  return edit_interface({
-    'action': 'editname',
-    'xref': xref,
-    'fact_id': fact_id
-  });
-}
-
-function add_name (xref) {
-  return edit_interface({
-    'action': 'addname',
-    'xref': xref
-  });
 }
 
 // Accept the changes to a record - and reload the page
@@ -233,7 +31,6 @@ function accept_changes (xref) {
     action: 'accept-changes',
     xref: xref,
     ged: WT_GEDCOM,
-    csrf: $('meta[name=csrf]').attr('content')
   },
     function () {
       location.reload();
@@ -247,7 +44,6 @@ function reject_changes (xref) {
     action: 'reject-changes',
     xref: xref,
     ged: WT_GEDCOM,
-    csrf: $('meta[name=csrf]').attr('content')
   },
     function () {
       location.reload();
@@ -262,11 +58,10 @@ function delete_record (message, xref, gedcom) {
       action: 'delete-record',
       xref: xref,
       ged: typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-      csrf: $('meta[name=csrf]').attr('content')
     },
-      function () {
-        location.reload();
-      });
+    function () {
+      location.reload();
+    });
   }
   return false;
 }
@@ -279,7 +74,6 @@ function delete_fact (message, xref, fact_id) {
       xref: xref,
       fact_id: fact_id,
       ged: WT_GEDCOM,
-      csrf: $('meta[name=csrf]').attr('content')
     },
       function () {
         location.reload();
@@ -296,7 +90,6 @@ function unlink_media (message, source, target) {
       source: source,
       target: target,
       ged: WT_GEDCOM,
-      csrf: $('meta[name=csrf]').attr('content')
     },
       function () {
         location.reload();
@@ -312,7 +105,6 @@ function copy_fact (xref, fact_id) {
     xref: xref,
     fact_id: fact_id,
     ged: WT_GEDCOM,
-    csrf: $('meta[name=csrf]').attr('content')
   },
     function () {
       location.reload();
@@ -327,7 +119,6 @@ function paste_fact (xref, element) {
     xref: xref,
     fact_id: $(element).val(), // element is the <select> containing the option
     ged: WT_GEDCOM,
-    csrf: $('meta[name=csrf]').attr('content')
   },
     function () {
       location.reload();
@@ -341,7 +132,6 @@ function delete_user (message, user_id) {
     $.post('action.php', {
       action: 'delete-user',
       user_id: user_id,
-      csrf: $('meta[name=csrf]').attr('content')
     },
       function () {
         location.reload();
@@ -355,7 +145,6 @@ function masquerade (user_id) {
   $.post('action.php', {
     action: 'masquerade',
     user_id: user_id,
-    csrf: $('meta[name=csrf]').attr('content')
   },
     function () {
       location.reload();
@@ -363,67 +152,7 @@ function masquerade (user_id) {
   return false;
 }
 
-function reorder_children (xref) {
-  return edit_interface({
-    'action': 'reorder_children',
-    'xref': xref
-  });
-}
-
-function reorder_families (xref) {
-  return edit_interface({
-    'action': 'reorder_fams',
-    'xref': xref
-  });
-}
-
-function reply (username, subject) {
-  window.open('message.php?to=' + encodeURIComponent(username) + '&subject=' + encodeURIComponent(subject) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', mesg_window_specs);
-  return false;
-}
-
-function delete_message (id) {
-  window.open('message.php?action=delete&id=' + encodeURIComponent(id) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', mesg_window_specs);
-  return false;
-}
-
-function change_family_members (xref) {
-  return edit_interface({
-    'action': 'changefamily',
-    'xref': xref
-  });
-}
-
-function addnewsource (field) {
-  return edit_interface({
-    'action': 'addnewsource',
-    'xref': 'newsour'
-  }, null, field);
-}
-
-function addnewrepository (field) {
-  return edit_interface({
-    'action': 'addnewrepository',
-    'xref': 'newrepo'
-  }, null, field);
-}
-
-function addnewnote (field) {
-  return edit_interface({
-    'action': 'addnewnote',
-    'noteid': 'newnote'
-  }, null, field);
-}
-
-function addnewnote_assisted (field, xref, census) {
-  return edit_interface({
-    'action': 'addnewnote_assisted',
-    'noteid': 'newnote',
-    'xref': xref,
-    'census': census
-  }, assist_window_specs, field);
-}
-
+var pastefield;
 function addmedia_links (field, iid, iname) {
   pastefield = field;
   insertRowToTable(iid, iname);
@@ -704,11 +433,9 @@ function cal_setWeekStart (day) {
   }
 }
 
-function cal_toggleDate (dateDivId, dateFieldId) {
+function calendarWidget (dateDivId, dateFieldId) {
   var dateDiv = document.getElementById(dateDivId);
-  if (!dateDiv) {
-    return false;
-  }
+  var dateField = document.getElementById(dateFieldId);
 
   if (dateDiv.style.visibility === 'visible') {
     dateDiv.style.visibility = 'hidden';
@@ -716,11 +443,6 @@ function cal_toggleDate (dateDivId, dateFieldId) {
   }
   if (dateDiv.style.visibility === 'show') {
     dateDiv.style.visibility = 'hide';
-    return false;
-  }
-
-  var dateField = document.getElementById(dateFieldId);
-  if (!dateField) {
     return false;
   }
 
@@ -742,13 +464,14 @@ function cal_toggleDate (dateDivId, dateFieldId) {
     dateDiv.style.visibility = 'show';
     return false;
   }
+
   return false;
 }
 
 function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
   var i, j;
   var content = '<table border="1"><tr>';
-  content += '<td><select name="' + dateFieldId + '_daySelect" id="' + dateFieldId + '_daySelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+  content += '<td><select class="form-control" id="' + dateFieldId + '_daySelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
   for (i = 1; i < 32; i++) {
     content += '<option value="' + i + '"';
     if (date.getDate() === i) {
@@ -757,7 +480,7 @@ function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
     content += '>' + i + '</option>';
   }
   content += '</select></td>';
-  content += '<td><select name="' + dateFieldId + '_monSelect" id="' + dateFieldId + '_monSelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+  content += '<td><select class="form-control" id="' + dateFieldId + '_monSelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
   for (i = 1; i < 13; i++) {
     content += '<option value="' + i + '"';
     if (date.getMonth() + 1 === i) {
@@ -766,7 +489,7 @@ function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
     content += '>' + monthLabels[i] + '</option>';
   }
   content += '</select></td>';
-  content += '<td><input type="text" name="' + dateFieldId + '_yearInput" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
+  content += '<td><input class="form-control" type="text" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
   content += '<tr><td colspan="3">';
   content += '<table width="100%">';
   content += '<tr>';
@@ -863,60 +586,8 @@ function cal_updateCalendar (dateFieldId, dateDivId) {
 
 function cal_dateClicked (dateFieldId, dateDivId, year, month, day) {
   cal_setDateField(dateFieldId, year, month, day);
-  cal_toggleDate(dateDivId, dateFieldId);
+  calendarWidget(dateDivId, dateFieldId);
   return false;
-}
-
-function findWindow (ged, type, pastefield, queryParams) {
-  queryParams = queryParams || {};
-  queryParams.type = type;
-  queryParams.ged = typeof ged === 'undefined' ? WT_GEDCOM : ged;
-  window.pastefield = pastefield;
-  window.open('find.php?' + $.param(queryParams), '_blank', find_window_specs);
-  return false;
-}
-
-function findIndi (field, indiname, ged) {
-  window.nameElement = indiname;
-  return findWindow(ged, 'indi', field);
-}
-
-function findPlace (field, ged) {
-  return findWindow(ged, 'place', field);
-}
-
-function findFamily (field, ged) {
-  return findWindow(ged, 'fam', field);
-}
-
-function findMedia (field, choose, ged) {
-  return findWindow(ged, 'media', field, {
-    'choose': choose || '0all'
-  });
-}
-
-function findSource (field, sourcename, ged) {
-  window.nameElement = sourcename;
-  return findWindow(ged, 'source', field);
-}
-
-function findnote (field, notename, ged) {
-  window.nameElement = notename;
-  return findWindow(ged, 'note', field);
-}
-
-function findRepository (field, ged) {
-  return findWindow(ged, 'repo', field);
-}
-
-function findSpecialChar (field) {
-  return findWindow(undefined, 'specialchar', field);
-}
-
-function findFact (field_id, field_type) {
-  return findWindow(undefined, 'fact' + field_type, document.getElementById(field_id), {
-    'tags': document.getElementById(field_id).value
-  });
 }
 
 function openerpasteid (id) {
@@ -1136,51 +807,6 @@ function autocomplete (selector) {
   });
 }
 
-// Add LTR/RTL support for jQueryUI Accordions
-$.extend($.ui.accordion.prototype.options, {
-  icons: {
-    header: textDirection === 'rtl' ? 'ui-icon-triangle-1-w' : 'ui-icon-triangle-1-e',
-    activeHeader: 'ui-icon-triangle-1-s'
-  }
-});
-
-$.widget('ui.dialog', $.ui.dialog, {
-  /*! jQuery UI - v1.10.2 - 2013-12-12
-   *  http://bugs.jqueryui.com/ticket/9087#comment:27 - bugfix
-   *  http://bugs.jqueryui.com/ticket/4727#comment:23 - bugfix
-   *  allowInteraction fix to accommodate windowed editors
-   */
-  _allowInteraction: function (event) {
-    if (this._super(event)) {
-      return true;
-    }
-
-    // address interaction issues with general iframes with the dialog
-    if (event.target.ownerDocument !== this.document[0]) {
-      return true;
-    }
-
-    // address interaction issues with dialog window
-    if ($(event.target).closest('.cke_dialog').length) {
-      return true;
-    }
-
-    // address interaction issues with iframe based drop downs in IE
-    if ($(event.target).closest('.cke').length) {
-      return true;
-    }
-  },
-  /*! jQuery UI - v1.10.2 - 2013-10-28
-   *  http://dev.ckeditor.com/ticket/10269 - bugfix
-   *  moveToTop fix to accommodate windowed editors
-   */
-  _moveToTop: function (event, silent) {
-    if (!event || !this.options.modal) {
-      this._super(event, silent);
-    }
-  }
-});
-
 /* Show / Hide event data for boxes used on charts and elsewhere */
 $('body').on('click', '.iconz', function (e) {
   'use strict';
@@ -1232,32 +858,168 @@ $('body').on('click', '.iconz', function (e) {
   wrapper.find('.iconz').toggleClass('icon-zoomin icon-zoomout');
 });
 
-// Activate the langauge selection menu.
-$('.menu-language').on('click', 'li a', function () {
-  $.post('action.php', {
-    action: 'language',
-    language: $(this).data('language'),
-    csrf: $('meta[name=csrf]').attr('content')
-  }, function () {
-    location.reload();
+/**
+ * Insert text at the current cursor position in an input field.
+ *
+ * @param e The input element.
+ * @param t The text to insert.
+ */
+function insertTextAtCursor (e, t) {
+  var scrollTop = e.scrollTop;
+  var selectionStart = e.selectionStart;
+  var prefix = e.value.substring(0, selectionStart);
+  var suffix = e.value.substring(e.selectionEnd, e.value.length);
+  e.value = prefix + t + suffix;
+  e.selectionStart = selectionStart + t.length;
+  e.selectionEnd = e.selectionStart;
+  e.focus();
+  e.scrollTop = scrollTop;
+}
+
+// Initialisation
+$(function () {
+  // Send the CSRF token on all AJAX requests
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
+    }
+  });
+
+  // Bootstrap tabs - load content dynamically using AJAX
+  $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
+    $(this.getAttribute('href') + ':empty').load($(this).data('href'));
+  });
+
+  // Select2 - format entries in the select list
+  function templateOptionForSelect2(data) {
+    if (data.loading) {
+      // If we're waiting for the server, this will be a "waiting..." message
+     return data.text;
+    } else {
+      // The response from the server is already in HTML, so no need to format it here.
+      return data.text;
+    }
+  }
+
+  // Select2 - activate autocomplete fields
+  $('select.select2').select2({
+    // Do not escape.
+    escapeMarkup: function (x) { return x }
+    // Same formatting for both selections and rsult
+    //templateResult: templateOptionForSelect2,
+    //templateSelection: templateOptionForSelect2
+  });
+
+  // If we clear the select (using the "X" button), we need an empty
+  // value (rather than no value at all) for inputs with name="array[]"
+	$('select.select2').on('select2:unselect', function (evt) {
+    $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
+	});
+
+  // Datatables - locale aware sorting
+  $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
+    return x.localeCompare(y, document.documentElement.lang, {'sensitivity': 'base'});
+  };
+  $.fn.dataTableExt.oSort['text-desc'] = function (x, y) {
+    return y.localeCompare(x, document.documentElement.lang, {'sensitivity': 'base'});
+  };
+
+  // DataTables - start hidden to prevent FOUC.
+  $('table.datatables').each(function () { $(this).DataTable(); $(this).show(); });
+
+  // Create a new record while editing an existing one.
+  // Paste the XREF and description into the Select2 element.
+  $('.wt-modal-create-record').on('show.bs.modal', function (event) {
+    // Find the element ID that needs to be updated with the new value.
+    $('form', $(this)).data('element-id', $(event.relatedTarget).data('element-id'));
+    $('form .form-group input:first', $(this)).focus();
+  });
+
+  // Submit the modal form using AJAX, and paste the returned record ID/NAME into the parent form.
+  $('.wt-modal-create-record form').on('submit', function (event) {
+    event.preventDefault();
+    var elementId = $(this).data('element-id');
+    $.ajax({
+      url: 'action.php',
+      type: 'POST',
+      data: new FormData(this),
+      async: false,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        $('#' + elementId).select2().empty().append(new Option(data.text, data.id)).val(data.id).trigger('change');
+      },
+      failure: function (data) {
+        alert(data.error_message);
+      }
+    });
+    // Clear the form
+    this.reset();
+    // Close the modal
+    $(this).closest('.wt-modal-create-record').modal('hide');
+  });
+
+  // Activate the langauge selection menu.
+  $('.menu-language').on('click', '[data-language]', function () {
+    $.post('action.php', {
+      action: 'language',
+      language: $(this).data('language')
+    }, function () {
+      window.location.reload();
+    });
+
+    return false;
+  });
+
+  // Activate the theme selection menu.
+  $('.menu-theme').on('click', '[data-theme]', function () {
+    $.post('action.php', {
+      action: 'theme',
+      theme: $(this).data('theme')
+    }, function () {
+      window.location.reload();
+    });
+
+    return false;
+  });
+
+  // Activate the on-screen keyboard
+  var osk_focus_element;
+  $('.wt-osk-trigger').click(function () {
+    // When a user clicks the icon, set focus to the corresponding input
+    osk_focus_element = document.getElementById($(this).data('id'));
+    osk_focus_element.focus();
+    $('.wt-osk').show();
+
+  });
+  $(document).on('focusin', ':input', function () {
+    // When an element gains focus, remember it.
+    osk_focus_element = this;
+  });
+  $('.wt-osk-script-button').change(function() {
+    $('.wt-osk-script').prop('hidden', true);
+    $('.wt-osk-script-' + $(this).data('script')).prop('hidden', false);
+  });
+  $('.wt-osk-shift-button').click(function () {
+    document.querySelector('.wt-osk-keys').classList.toggle('shifted');
+  });
+  $('.wt-osk-keys').on('click', '.wt-osk-key', function() {
+    var key = $(this).contents().get(0).nodeValue;
+    var shift_state = $('.wt-osk-shift-button').hasClass('active');
+    var shift_key = $('sup', this)[0];
+    if (shift_state && shift_key !== undefined) {
+      key = shift_key.innerText;
+    }
+    if (osk_focus_element !== null) {
+      var cursorPos = osk_focus_element.selectionStart;
+      var v = osk_focus_element.value;
+      var textBefore = v.substring(0,  cursorPos);
+      var textAfter  = v.substring(cursorPos, v.length);
+      osk_focus_element.value= textBefore + key + textAfter;
+      if ($('.wt-osk-pin-button').hasClass('active') === false) {
+        $('.wt-osk').hide();
+      }
+    }
   });
 });
-
-// Activate the theme selection menu.
-$('.menu-theme').on('click', 'li a', function () {
-  $.post('action.php', {
-    action: 'theme',
-    theme: $(this).data('theme'),
-    csrf: $('meta[name=csrf]').attr('content')
-  }, function () {
-    location.reload();
-  });
-});
-
-// Locale-aware functions for sorting user-data.
-function textCompareAsc (x, y) {
-  return x.localeCompare(y, WT_LOCALE, {'sensitivity': 'base'});
-}
-function textCompareDesc (x, y) {
-  return y.localeCompare(x, WT_LOCALE, {'sensitivity': 'base'});
-}

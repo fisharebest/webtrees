@@ -124,12 +124,13 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		<?php
 		foreach ($family->getSpouses() as $spouse) {
 			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
-			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getParents($spouse)));
 			?>
 			<tr>
 				<td class="facts_label">
-					<?= $menu->getMenu() ?>
+					<ul class="nav">
+						<?= $menu->bootstrap4() ?>
+					</ul>
 				</td>
 				<td class="center <?= $controller->getPersonStyle($spouse) ?> nam">
 					<?php if ($spouse->canShow()): ?>
@@ -149,12 +150,13 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
 		foreach ($family->getChildren() as $child) {
 			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
-			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getFamily($child)));
 			?>
 			<tr>
 				<td class="facts_label">
-					<?= $menu->getMenu() ?>
+					<ul class="nav">
+						<?= $menu->bootstrap4() ?>
+					</ul>
 				</td>
 				<td class="center <?= $controller->getPersonStyle($child) ?> nam">
 					<?php if ($child->canShow()): ?>

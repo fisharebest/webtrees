@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -127,19 +126,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			</colgroup>
 			<tbody>
 				<tr>
-					<td colspan="2" class="descriptionbox noprint">
+					<td colspan="2" class="descriptionbox">
 						<?php if ($controller->record->getTree()->getPreference('SHOW_RELATIVES_EVENTS')) : ?>
 						<label>
 							<input id="show-relatives-facts" type="checkbox">
-							<?php echo I18N::translate('Events of close relatives'); ?>
+							<?= I18N::translate('Events of close relatives') ?>
 						</label>
-						<?php endif; ?>
+						<?php endif ?>
 						<?php if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) : ?>
 						<label>
 							<input id="show-historical-facts" type="checkbox">
-							<?php echo I18N::translate('Historical facts'); ?>
+							<?= I18N::translate('Historical facts') ?>
 						</label>
-						<?php endif; ?>
+						<?php endif ?>
 					</td>
 				</tr>
 				<?php
@@ -161,8 +160,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			</tbody>
 		</table>
 		<script>
-			persistent_toggle("show-relatives-facts", "tr.rela");
-			persistent_toggle("show-historical-facts", "tr.histo");
+			//persistent_toggle("show-relatives-facts", "tr.rela");
+			//persistent_toggle("show-historical-facts", "tr.histo");
 		</script>
 		<?php
 
@@ -176,7 +175,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
-		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
+		return false;
 	}
 
 	/** {@inheritdoc} */

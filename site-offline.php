@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-define('WT_SCRIPT_NAME', 'site-offline.php');
-
 // This script does not load session.php.
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php

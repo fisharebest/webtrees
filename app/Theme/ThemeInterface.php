@@ -27,25 +27,12 @@ use Fisharebest\Webtrees\User;
  */
 interface ThemeInterface {
 	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl();
-
-	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
 	 */
 	public function bodyHeader();
 
-	/**
-	 * Create the top of the <body> (for popup windows).
-	 *
-	 * @return string
-	 */
-	public function bodyHeaderPopupWindow();
 
 	/**
 	 * Create a contact link for a user.
@@ -69,14 +56,6 @@ interface ThemeInterface {
 	 * @return string
 	 */
 	public function footerContainer();
-
-	/**
-	 * Close the main content.
-	 * Note that popup windows are deprecated
-	 *
-	 * @return string
-	 */
-	public function footerContainerPopupWindow();
 
 	/**
 	 * Format the contents of a variable-height home-page block.

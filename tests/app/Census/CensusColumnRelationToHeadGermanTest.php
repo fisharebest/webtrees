@@ -30,8 +30,8 @@ class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNull() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -40,6 +40,6 @@ class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnRelationToHeadGerman($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
+		$this->assertSame('Haushaltungsvorstand', $column->generate($individual));
 	}
 }

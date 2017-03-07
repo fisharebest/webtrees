@@ -17,12 +17,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
@@ -57,9 +57,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (['days', 'infoStyle', 'block'] as $name) {
+		foreach (['days', 'infoStyle', 'calendar'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -71,7 +70,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = '<a class="fa fa-cog" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '">' . I18N::translate('Preferences') . '</a> ';
 		} else {
 			$title = '';
 		}
@@ -135,9 +134,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		default:
 			$table_id = Uuid::uuid4(); // table requires a unique ID
 			$controller
-				->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 				->addInlineJavascript('
-					jQuery("#' . $table_id . '").dataTable({
+					$("#' . $table_id . '").dataTable({
 						dom: \'t\',
 						' . I18N::datatablesI18N() . ',
 						autoWidth: false,
@@ -145,7 +143,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 						lengthChange: false,
 						filter: false,
 						info: true,
-						jQueryUI: true,
 						sorting: [[5,"asc"]],
 						columns: [
 							/* 0-name */ { dataSort: 1 },
@@ -157,8 +154,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 							/* 6-YART */ { visible: false }
 						]
 					});
-					jQuery("#' . $table_id . '").css("visibility", "visible");
-					jQuery(".loading-image").css("display", "none");
+					$("#' . $table_id . '").css("visibility", "visible");
+					$(".loading-image").css("display", "none");
 				');
 			$content = '';
 			$content .= '<div class="loading-image">&nbsp;</div>';
@@ -166,7 +163,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '<thead><tr>';
 			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
 			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
-			$content .= '<th>' . GedcomTag::getLabel('DEAT') . '</th>';
+			$content .= '<th>' . I18N::translate('Death') . '</th>';
 			$content .= '<th>DEAT</th>';
 			$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
 			$content .= '<th>' . GedcomTag::getLabel('_YART') . '</th>';
@@ -220,10 +217,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($block === '1') {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -255,40 +248,29 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', 'jewish'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
+		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="days">';
 		echo I18N::translate('Number of days to show');
-		echo '</td><td class="optionbox">';
+		echo '</label><div class="col-sm-9">';
 		echo '<input type="text" name="days" size="2" value="' . $days . '">';
 		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', 30, I18N::number(30)), '</em>';
-		echo '</td></tr>';
+		echo '</div></div>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
+		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="infoStyle">';
 		echo I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
-		echo '</td></tr>';
+		echo '</label><div class="col-sm-9">';
+		echo Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']);
+		echo '</div></div>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
+		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="calendar">';
 		echo I18N::translate('Calendar');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('calendar', [
-			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
-			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
-		], null, $calendar, '');
-		echo '</td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
+		echo '</label><div class="col-sm-9">';
+		echo Bootstrap4::select(['jewish'    => I18N::translate('Jewish'), 'gregorian' => I18N::translate('Gregorian')], $calendar, ['id' => 'calendar', 'name' => 'calendar']);
+		echo '</div></div>';
 	}
 }

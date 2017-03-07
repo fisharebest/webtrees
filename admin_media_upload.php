@@ -15,19 +15,14 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global Tree $WT_TREE */
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
-define('WT_SCRIPT_NAME', 'admin_media_upload.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 
@@ -175,11 +170,10 @@ if (empty($filesize)) {
 	$filesize = '2M';
 }
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 

@@ -30,8 +30,8 @@ class CensusColumnSexMZTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMZ
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testMale() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -45,8 +45,8 @@ class CensusColumnSexMZTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMZ
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testFeale() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -60,8 +60,8 @@ class CensusColumnSexMZTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMZ
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testUnknownSex() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

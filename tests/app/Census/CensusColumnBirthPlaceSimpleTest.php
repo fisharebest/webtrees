@@ -30,8 +30,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testForeignCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -46,8 +46,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testJustCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -62,8 +62,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownState() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -78,8 +78,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownStateAndTown() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

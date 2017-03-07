@@ -23,7 +23,7 @@ class CensusOfUnitedStates1790Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfUnitedStates1790;
@@ -35,8 +35,8 @@ class CensusOfUnitedStates1790Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfUnitedStates1790;

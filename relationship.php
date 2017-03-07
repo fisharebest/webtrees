@@ -15,39 +15,27 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\RelationshipController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 
-define('WT_SCRIPT_NAME', 'relationship.php');
-require './includes/session.php';
-
-$max_recursion  = $WT_TREE->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
-$ancestors_only = $WT_TREE->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
+require 'includes/session.php';
 
 $controller = new RelationshipController;
+$max_recursion  = (int) $controller->tree()->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+$ancestors_only = $controller->tree()->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
+
 $pid1       = Filter::get('pid1', WT_REGEX_XREF);
 $pid2       = Filter::get('pid2', WT_REGEX_XREF);
-$show_full  = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 $recursion  = Filter::getInteger('recursion', 0, $max_recursion, 0);
-$ancestors  = Filter::getInteger('ancestors', 0, 1, 0);
+$ancestors  = Filter::get('ancestors', '[01]', '0');
 
-$person1 = Individual::getInstance($pid1, $WT_TREE);
-$person2 = Individual::getInstance($pid2, $WT_TREE);
+$person1 = Individual::getInstance($pid1, $controller->tree());
+$person2 = Individual::getInstance($pid2, $controller->tree());
 
-$controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'relationships_chart'))
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'relationships_chart'));
 
 if ($person1 && $person2) {
 	$controller
@@ -62,98 +50,77 @@ if ($person1 && $person2) {
 }
 
 ?>
-<h2><?php echo $controller->getPageTitle() ?></h2>
-<form name="people" method="get" action="?">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
-	<table class="list_table">
-		<tbody>
-			<tr>
-				<td class="descriptionbox">
-					<label for="pid1">
-						<?php echo I18N::translate('Individual 1') ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid1') ?>
-				</td>
-				<td class="optionbox">
-					<label>
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $show_full) ?>
-						<?php echo I18N::translate('Show details') ?>
-					</label>
-				</td>
-				<td class="optionbox vmiddle" rowspan="2">
-					<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<label for="pid2">
-						<?php echo I18N::translate('Individual 2') ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid2') ?>
-					<br>
-					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
-				</td>
-				<td class="optionbox">
-					<?php if ($ancestors_only === '1'): ?>
-						<input type="hidden" name="ancestors" value="1">
-						<?php echo I18N::translate('Find relationships via ancestors') ?>
-					<?php else: ?>
-						<label>
-							<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find any relationship') ?>
-						</label>
-						<br>
-						<label>
-							<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find relationships via ancestors') ?>
-						</label>
-					<?php endif; ?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-					<hr>
+<form class="wt-page-options wt-page-options-relationships-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
-					<?php if ($max_recursion == 0): ?>
-						<?php echo I18N::translate('Find the closest relationships') ?>
-						<input type="hidden" name="recursion" value="0">
-					<?php else: ?>
-						<label>
-							<input type="radio" name="recursion" value="0" <?php echo $recursion == 0 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find the closest relationships') ?>
-						</label>
-						<br>
-						<label>
-							<input type="radio" name="recursion" value="<?php echo $max_recursion ?>" <?php echo $recursion > 0 ? 'checked' : '' ?>>
-							<?php if ($max_recursion == RelationshipsChartModule::UNLIMITED_RECURSION): ?>
-								<?php echo I18N::translate('Find all possible relationships') ?>
-							<?php else: ?>
-								<?php echo I18N::translate('Find other relationships') ?>
-							<?php endif; ?>
-						</label>
-					<?php endif; ?>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="pid1">
+			<?= I18N::translate('Individual 1') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($person1, ['id' => 'pid1', 'name' => 'pid1']) ?>
+			<a href="#" onclick="var x = $('#pid1').val(); $('#pid1').val($('#pid2').val()); $('#pid2').val(x); return false;"><?= /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="pid2">
+			<?= I18N::translate('Individual 2') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($person2, ['id' => 'pid2', 'name' => 'pid2']) ?>
+		</div>
+	</div>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+			</legend>
+			<div class="col-sm-9 wt-page-options-value">
+				<?php if ($ancestors_only === '1'): ?>
+					<input type="hidden" name="ancestors" value="1">
+					<?= I18N::translate('Find relationships via ancestors') ?>
+				<?php else: ?>
+					<?= Bootstrap4::radioButtons('ancestors', ['0' => I18N::translate('Find any relationship'), '1' => I18N::translate('Find relationships via ancestors')], $ancestors, false) ?>
+			<?php endif ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+			</legend>
+			<div class="col-sm-9 wt-page-options-value">
+				<?php if ($max_recursion === 0): ?>
+					<?= I18N::translate('Find the closest relationships') ?>
+					<input type="hidden" name="recursion" value="0">
+				<?php else: ?>
+					<?= Bootstrap4::radioButtons('recursion', ['0' => I18N::translate('Find the closest relationships'), $max_recursion => $max_recursion == RelationshipsChartModule::UNLIMITED_RECURSION ? I18N::translate('Find all possible relationships') : I18N::translate('Find other relationships')], $ancestors, false) ?>
+			<?php endif ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+		</div>
+	</div>
 </form>
 <?php
 
 if ($person1 && $person2) {
 	if (I18N::direction() === 'ltr') {
-		$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
 		$diagonal1        = Theme::theme()->parameter('image-dline');
 		$diagonal2        = Theme::theme()->parameter('image-dline2');
 	} else {
-		$horizontal_arrow = '<br><i class="icon-larrow"></i>';
 		$diagonal1        = Theme::theme()->parameter('image-dline2');
 		$diagonal2        = Theme::theme()->parameter('image-dline');
 	}
-	$up_arrow   = ' <i class="icon-uarrow"></i>';
-	$down_arrow = ' <i class="icon-darrow"></i>';
 
 	$num_paths = 0;
 	foreach ($paths as $path) {
@@ -185,18 +152,18 @@ if ($person1 && $person2) {
 				case 'bro':
 				case 'sis':
 				case 'sib':
-					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $controller->tree()), Individual::getInstance($path[$n + 1], $controller->tree())) . '</div><div style="height: 32px;">' . FontAwesome::decorativeIcon('arrow-end') . '</div></div>';
 					$x += 2;
 					break;
 				case 'son':
 				case 'dau':
 				case 'chi':
 					if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-						$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+						$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $controller->tree()), Individual::getInstance($path[$n + 1], $controller->tree())) . '</div><div style="height: 32px; text-align: start;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
 						$x += 2;
 					} else {
 						$table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $controller->tree()), Individual::getInstance($path[$n + 1], $controller->tree())) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
 					}
 					$y -= 2;
 					break;
@@ -204,11 +171,11 @@ if ($person1 && $person2) {
 				case 'mot':
 				case 'par':
 					if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-						$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+						$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $controller->tree()), Individual::getInstance($path[$n + 1], $controller->tree())) . '</div><div style="height: 32px; text-align: end;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
 						$x += 2;
 					} else {
 						$table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $controller->tree()), Individual::getInstance($path[$n + 1], $controller->tree())) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . FontAwesome::decorativeIcon('arrow-up') . '</div></div>';
 					}
 					$y += 2;
 					break;
@@ -217,9 +184,9 @@ if ($person1 && $person2) {
 				$min_y = min($min_y, $y);
 				$max_y = max($max_y, $y);
 			} else {
-				$individual = Individual::getInstance($xref, $WT_TREE);
+				$individual = Individual::getInstance($xref, $controller->tree());
 				ob_start();
-				FunctionsPrint::printPedigreePerson($individual, $show_full);
+				FunctionsPrint::printPedigreePerson($individual);
 				$table[$x][$y] = ob_get_clean();
 			}
 		}

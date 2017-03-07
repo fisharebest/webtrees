@@ -18,8 +18,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -124,14 +122,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			break;
 		}
 
-		$block = $this->getBlockSetting($block_id, 'block', '0');
-
-		foreach (['block'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
-
 		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : $WT_TREE->getTreeId());
 		if (!is_array($userfavs)) {
 			$userfavs = [];
@@ -140,12 +130,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = $this->getTitle();
-
-		if (Auth::check()) {
-			$controller
-				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-				->addInlineJavascript('autocomplete();');
-		}
 
 		$content = '';
 		if ($userfavs) {
@@ -211,12 +195,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="$(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); $(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
 			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid' . $uniqueID . '" size="5" value="">';
-			$content .= ' ' . FunctionsPrint::printFindIndividualLink('gid' . $uniqueID);
-			$content .= ' ' . FunctionsPrint::printFindFamilyLink('gid' . $uniqueID);
-			$content .= ' ' . FunctionsPrint::printFindSourceLink('gid' . $uniqueID);
-			$content .= ' ' . FunctionsPrint::printFindRepositoryLink('gid' . $uniqueID);
-			$content .= ' ' . FunctionsPrint::printFindNoteLink('gid' . $uniqueID);
-			$content .= ' ' . FunctionsPrint::printFindMediaLink('gid' . $uniqueID);
 			$content .= '</div>';
 			$content .= '<div class="add_fav_url">';
 			$content .= '<input type="radio" name="fav_category" value="url" onclick="$(\'#url, #favtitle\').removeAttr(\'disabled\'); $(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
@@ -230,10 +208,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		}
 
 		if ($template) {
-			if ($block === '1') {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -275,19 +249,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @param int $block_id
 	 */
-	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
-		}
-
-		$block = $this->getBlockSetting($block_id, 'block', '0');
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
-	}
+	public function configureBlock($block_id) {}
 
 	/**
 	 * Delete a favorite from the database

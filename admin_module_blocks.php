@@ -15,18 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 
-define('WT_SCRIPT_NAME', 'admin_module_blocks.php');
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
 require 'includes/session.php';
 
 $controller = new PageController;
@@ -54,12 +49,11 @@ if ($action === 'update_mods' && Filter::checkCsrf()) {
 
 $controller->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'         => I18N::translate('Control panel'),
+	'admin_modules.php' => I18N::translate('Module administration'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -94,7 +88,7 @@ $controller->pageHeader();
 										<?= $tree->getTitleHtml() ?>
 									</td>
 									<td>
-										<?php echo FunctionsEdit::editFieldAccessLevel('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'block')); ?>
+										<?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->getAccessLevel($tree, 'block'), ['name' => 'access-' . $module->getName() . '-' . $tree->getTreeId()]) ?>
 									</td>
 								</tr>
 							<?php endforeach ?>

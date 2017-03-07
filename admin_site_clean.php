@@ -16,10 +16,8 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
-use Rhumsaa\Uuid\Uuid;
 
-define('WT_SCRIPT_NAME', 'admin_site_clean.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $to_delete = Filter::postArray('to_delete');
 if ($to_delete && Filter::checkCsrf()) {
@@ -76,11 +74,10 @@ while (false !== ($entry = $dir->read())) {
 
 sort($entries);
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -98,10 +95,9 @@ sort($entries);
 				if (in_array($entry, $do_not_delete)) {
 					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Filter::escapeHtml($entry), '</li>';
 				} else {
-					$id = 'input-' . Uuid::uuid4();
 					echo '<li><i class="fa-li fa fa-trash-o"></i>';
-					echo '<label for="', $id, '">';
-					echo '<input type="checkbox" id="', $id, '" name="to_delete[]" value="', Filter::escapeHtml($entry), '"> ';
+					echo '<label>';
+					echo '<input type="checkbox" name="to_delete[]" value="', Filter::escapeHtml($entry), '"> ';
 					echo Filter::escapeHtml($entry);
 					echo '</label></li>';
 				}

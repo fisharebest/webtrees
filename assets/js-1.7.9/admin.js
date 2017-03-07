@@ -26,10 +26,10 @@ function setPrivacyFeedback (sel, who, access) {
   var formGroup = $(sel).closest('.form-group');
 
   if (access) {
-    $('.' + who, formGroup).addClass('label-success').removeClass('label-default');
+    $('.' + who, formGroup).addClass('badge-success').removeClass('badge-default');
     $('.' + who + ' i', formGroup).addClass('fa-check').removeClass('fa-times');
   } else {
-    $('.' + who, formGroup).addClass('label-default').removeClass('label-success');
+    $('.' + who, formGroup).addClass('badge-default').removeClass('badge-success');
     $('.' + who + ' i', formGroup).addClass('fa-times').removeClass('fa-check');
   }
 }
