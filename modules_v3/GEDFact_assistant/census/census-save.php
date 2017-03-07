@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-/** @global Controller\SimpleController $controller */
+/** @global Controller\PageController $controller */
 global $controller;
 
 /** @global Tree $WT_TREE */
@@ -40,11 +40,8 @@ if (empty($pid_array)) {
 
 $controller
 	->addInlineJavascript('window.opener.set_pid_array("' . $pid_array . '");')
-	->addInlineJavascript('openerpasteid("' . $xref . '");')
 	->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
 	->pageHeader();
 ?>
 
-<div id="edit_interface-page">
-	<h4><?php echo $controller->getPageTitle() ?></h4>
-</div>
+<h2><?= $controller->getPageTitle() ?></h2>

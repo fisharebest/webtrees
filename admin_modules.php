@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -27,7 +26,6 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 
-define('WT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
 
 $controller = new PageController;
@@ -44,17 +42,14 @@ uasort($modules, function (AbstractModule $x, AbstractModule $y) {
 
 if (Filter::post('action') === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {
-		$new_status = Filter::post('status-' . $module->getName(), '[01]');
-		if ($new_status !== null) {
-			$new_status = $new_status ? 'enabled' : 'disabled';
-			$old_status = $module_status[$module->getName()];
-			if ($new_status !== $old_status) {
-				Database::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute([$new_status, $module->getName()]);
-				if ($new_status === 'disabled') {
-					FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->getTitle()), 'success');
-				} else {
-					FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->getTitle()), 'success');
-				}
+		$new_status = Filter::postBool('status-' . $module->getName()) ? 'enabled' : 'disabled';
+		$old_status = $module_status[$module->getName()];
+		if ($new_status !== $old_status) {
+			Database::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute([$new_status, $module->getName()]);
+			if ($new_status === 'disabled') {
+				FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->getTitle()), 'success');
+			} else {
+				FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->getTitle()), 'success');
 			}
 		}
 	}
@@ -108,8 +103,6 @@ foreach ($module_status as $module_name => $status) {
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
 		function reindexMods(id) {
 			$("#" + id + " input").each(
@@ -136,11 +129,10 @@ $controller
 		});
 	');
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -156,20 +148,20 @@ $controller
 			<th><?= I18N::translate('Enabled') ?></th>
 			<th><?= I18N::translate('Module') ?></th>
 			<th><?= I18N::translate('Description') ?></th>
-			<th class="hidden-xs"><a href="admin_module_menus.php"><?= I18N::translate('Menus') ?></a></th>
-			<th class="hidden-xs"><a href="admin_module_tabs.php"><?= I18N::translate('Tabs') ?></a></th>
-			<th class="hidden-xs"><a href="admin_module_sidebar.php"><?= I18N::translate('Sidebars') ?></a></th>
-			<th class="hidden-xs"><a href="admin_module_blocks.php"><?= I18N::translate('Blocks') ?></a></th>
-			<th class="hidden-xs"><a href="admin_module_charts.php"><?= I18N::translate('Charts') ?></a></th>
-			<th class="hidden-xs"><a href="admin_module_reports.php"><?= I18N::translate('Reports') ?></a></th>
-			<th class="hidden"><?= I18N::translate('Themes') ?></th>
+			<th class="hidden-xs-down"><a href="admin_module_menus.php"><?= I18N::translate('Menus') ?></a></th>
+			<th class="hidden-xs-down"><a href="admin_module_tabs.php"><?= I18N::translate('Tabs') ?></a></th>
+			<th class="hidden-xs-down"><a href="admin_module_sidebar.php"><?= I18N::translate('Sidebars') ?></a></th>
+			<th class="hidden-xs-down"><a href="admin_module_blocks.php"><?= I18N::translate('Blocks') ?></a></th>
+			<th class="hidden-xs-down"><a href="admin_module_charts.php"><?= I18N::translate('Charts') ?></a></th>
+			<th class="hidden-xs-down"><a href="admin_module_reports.php"><?= I18N::translate('Reports') ?></a></th>
+			<th class="hidden-xl-down"><?= I18N::translate('Themes') ?></th>
 		</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($modules as $module_name => $module): ?>
 				<tr>
 					<td class="text-center">
-						<?php echo FunctionsEdit::twoStateCheckbox('status-' . $module->getName(), $module_status[$module_name] === 'enabled') ?>
+						<?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->getName(), 'checked' => $module_status[$module_name] === 'enabled']) ?>
 					</td>
 					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
@@ -199,28 +191,28 @@ $controller
 							<?php endif ?>
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleMenuInterface): ?>
 							<i class="fa fa-list-ul" title="<?= I18N::translate('Menu') ?>"></i>
 						<?php else: ?>
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleTabInterface): ?>
 							<i class="fa fa-folder" title="<?= I18N::translate('Tab') ?>"></i>
 						<?php else: ?>
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleSidebarInterface): ?>
 							<i class="fa fa-th-large" title="<?= I18N::translate('Sidebar') ?>"></i>
 						<?php else: ?>
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleBlockInterface): ?>
 							<?php if ($module->isUserBlock()): ?>
 								<i class="fa fa-user" title="<?= I18N::translate('My page') ?>"></i>
@@ -232,21 +224,21 @@ $controller
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleChartInterface): ?>
 							<i class="fa fa-share-alt" title="<?= I18N::translate('Chart') ?>"></i>
 						<?php else: ?>
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden-xs">
+					<td class="text-center text-muted hidden-xs-down">
 						<?php if ($module instanceof ModuleReportInterface): ?>
 							<i class="fa fa-file" title="<?= I18N::translate('Report') ?>"></i>
 						<?php else: ?>
 							-
 						<?php endif ?>
 					</td>
-					<td class="text-center text-muted hidden">
+					<td class="text-center text-muted hidden-xl-down">
 						<?php if ($module instanceof ModuleThemeInterface): ?>
 							<i class="fa fa-check" title="<?= I18N::translate('Theme') ?>"></i>
 						<?php else: ?>

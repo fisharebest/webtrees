@@ -106,8 +106,8 @@ class Filter {
 	/**
 	 * Format block-level text such as notes or transcripts, etc.
 	 *
-	 * @param string  $text
-	 * @param Tree $WT_TREE
+	 * @param string $text
+	 * @param Tree   $WT_TREE
 	 *
 	 * @return string
 	 */
@@ -171,11 +171,11 @@ class Filter {
 	 * @param string      $source
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
-	 * @return string|null
+	 * @return string
 	 */
-	private static function input($source, $variable, $regexp = null, $default = null) {
+	private static function input($source, $variable, $regexp = null, $default = '') {
 		if ($regexp) {
 			return filter_input(
 				$source,
@@ -210,11 +210,11 @@ class Filter {
 	 * @param string      $source
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
 	 * @return string[]
 	 */
-	private static function inputArray($source, $variable, $regexp = null, $default = null) {
+	private static function inputArray($source, $variable, $regexp = null, $default = '') {
 		if ($regexp) {
 			return filter_input_array($source, [
 				$variable => [
@@ -244,11 +244,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function get($variable, $regexp = null, $default = null) {
+	public static function get($variable, $regexp = null, $default = '') {
 		return self::input(INPUT_GET, $variable, $regexp, $default);
 	}
 
@@ -257,11 +257,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
 	 * @return string[]
 	 */
-	public static function getArray($variable, $regexp = null, $default = null) {
+	public static function getArray($variable, $regexp = null, $default = '') {
 		return self::inputArray(INPUT_GET, $variable, $regexp, $default);
 	}
 
@@ -293,24 +293,24 @@ class Filter {
 	/**
 	 * Validate email GET parameters
 	 *
-	 * @param string      $variable
-	 * @param string|null $default
+	 * @param string $variable
+	 * @param string $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function getEmail($variable, $default = null) {
+	public static function getEmail($variable, $default = '') {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
 	/**
 	 * Validate URL GET parameters
 	 *
-	 * @param string      $variable
-	 * @param string|null $default
+	 * @param string $variable
+	 * @param string $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function getUrl($variable, $default = null) {
+	public static function getUrl($variable, $default = '') {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
@@ -319,11 +319,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function post($variable, $regexp = null, $default = null) {
+	public static function post($variable, $regexp = null, $default = '') {
 		return self::input(INPUT_POST, $variable, $regexp, $default);
 	}
 
@@ -332,11 +332,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
 	 * @return string[]
 	 */
-	public static function postArray($variable, $regexp = null, $default = null) {
+	public static function postArray($variable, $regexp = null, $default = '') {
 		return self::inputArray(INPUT_POST, $variable, $regexp, $default);
 	}
 
@@ -368,24 +368,24 @@ class Filter {
 	/**
 	 * Validate email POST parameters
 	 *
-	 * @param string      $variable
-	 * @param string|null $default
+	 * @param string $variable
+	 * @param string $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function postEmail($variable, $default = null) {
+	public static function postEmail($variable, $default = '') {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
 	/**
 	 * Validate URL GET parameters
 	 *
-	 * @param string      $variable
-	 * @param string|null $default
+	 * @param string $variable
+	 * @param string $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function postUrl($variable, $default = null) {
+	public static function postUrl($variable, $default = '') {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
@@ -394,11 +394,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function cookie($variable, $regexp = null, $default = null) {
+	public static function cookie($variable, $regexp = null, $default = '') {
 		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
 	}
 
@@ -407,11 +407,11 @@ class Filter {
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
-	 * @param string|null $default
+	 * @param string      $default
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public static function server($variable, $regexp = null, $default = null) {
+	public static function server($variable, $regexp = null, $default = '') {
 		// On some servers, variables that are present in $_SERVER cannot be
 		// found via filter_input(INPUT_SERVER). Instead, they are found via
 		// filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
@@ -458,7 +458,7 @@ $_SERVER[$variable]))) {
 	 * @return bool
 	 */
 	public static function checkCsrf() {
-		if (self::post('csrf') !== self::getCsrfToken()) {
+		if (isset($_SERVER['HTTP_X_CSRF_TOKEN']) && $_SERVER['HTTP_X_CSRF_TOKEN'] !== self::getCsrfToken()) {
 			// Oops. Something is not quite right
 			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
 			FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'), 'error');

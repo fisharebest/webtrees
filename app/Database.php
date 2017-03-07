@@ -131,53 +131,37 @@ class Database {
 	 *
 	 * @param string   $query
 	 * @param int      $rows
-	 * @param float    $microtime
+	 * @param float    $microseconds
 	 * @param string[] $bind_variables
 	 */
-	public static function logQuery($query, $rows, $microtime, $bind_variables) {
-		if (WT_DEBUG_SQL) {
-			// Full logging
-			// Trace
-			$trace = debug_backtrace();
-			array_shift($trace);
-			array_shift($trace);
-			foreach ($trace as $n => $frame) {
-				if (isset($frame['file']) && isset($frame['line'])) {
-					$trace[$n] = basename($frame['file']) . ':' . $frame['line'] . ' ' . $frame['function'];
-				} else {
-					unset($trace[$n]);
-				}
-			}
-			$stack = '<abbr title="' . Filter::escapeHtml(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
-			// Bind variables
-			foreach ($bind_variables as $key => $value) {
-				if (is_null($value)) {
-					$value = 'NULL';
-				} elseif (!is_integer($value)) {
-					$value = '\'' . $value . '\'';
-				}
-				if (is_integer($key)) {
-					$query = preg_replace('/\?/', $value, $query, 1);
-				} else {
-					$query = str_replace(':' . $key, $value, $query);
-				}
-			}
-			// Highlight slow queries
-			$microtime *= 1000; // convert to milliseconds
-			if ($microtime > 1000) {
-				$microtime = sprintf('<span style="background-color: #ff0000;">%.3f</span>', $microtime);
-			} elseif ($microtime > 100) {
-				$microtime = sprintf('<span style="background-color: #ffa500;">%.3f</span>', $microtime);
-			} elseif ($microtime > 1) {
-				$microtime = sprintf('<span style="background-color: #ffff00;">%.3f</span>', $microtime);
+	public static function logQuery($query, $rows, $microseconds, $bind_variables) {
+		// Trace
+		$trace = debug_backtrace();
+		array_shift($trace);
+		array_shift($trace);
+		foreach ($trace as $n => $frame) {
+			if (isset($frame['file']) && isset($frame['line'])) {
+				$trace[$n] = basename($frame['file']) . ':' . $frame['line'] . ' ' . $frame['function'];
 			} else {
-				$microtime = sprintf('%.3f', $microtime);
+				unset($trace[$n]);
 			}
-			self::$log[] = "<tr><td>{$stack}</td><td>{$query}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
-		} else {
-			// Just log query count for statistics
-			self::$log[] = true;
 		}
+		$stack = '<abbr title="' . Filter::escapeHtml(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
+		// Bind variables
+		foreach ($bind_variables as $key => $value) {
+			if (is_null($value)) {
+				$value = 'NULL';
+			} elseif (!is_integer($value)) {
+				$value = '\'' . $value . '\'';
+			}
+			if (is_integer($key)) {
+				$query = preg_replace('/\?/', $value, $query, 1);
+			} else {
+				$query = str_replace(':' . $key, $value, $query);
+			}
+		}
+		$milliseconds = sprintf('%.3f', $microseconds * 1000);
+		self::$log[] = '<tr><td>' .$stack . '</td><td>' . $query . '</td><td>' . $rows . '</td><td>' . $milliseconds . '</td></tr>';
 	}
 
 	/**
@@ -306,7 +290,8 @@ class Database {
 				/** @var MigrationInterface $migration */
 				$migration = new $class;
 				$migration->upgrade();
-				Site::setPreference($schema_name, ++$current_version);
+				$current_version++;
+				Site::setPreference($schema_name, (string) $current_version);
 				$updates_applied = true;
 			}
 		} catch (PDOException $ex) {

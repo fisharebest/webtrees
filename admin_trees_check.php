@@ -15,17 +15,12 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'admin_trees_check.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -119,24 +114,23 @@ $RECORD_LINKS = [
 
 $errors = false;
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <ul class="list-group">
-	<li class="list-group-item"><strong><?php echo I18N::translate('Types of error'); ?></strong></li>
-	<li class="list-group-item list-group-item-danger"><?php echo  I18N::translate('This may cause a problem for webtrees.'); ?></li>
-	<li class="list-group-item list-group-item-warning"><?php echo  I18N::translate('This may cause a problem for other applications.'); ?></li>
-	<li class="list-group-item list-group-item-info"><?php echo  I18N::translate('This may be a mistake in your data.'); ?></li>
+	<li class="list-group-item"><strong><?= I18N::translate('Types of error') ?></strong></li>
+	<li class="list-group-item list-group-item-danger"><?=  I18N::translate('This may cause a problem for webtrees.') ?></li>
+	<li class="list-group-item list-group-item-warning"><?=  I18N::translate('This may cause a problem for other applications.') ?></li>
+	<li class="list-group-item list-group-item-info"><?=  I18N::translate('This may be a mistake in your data.') ?></li>
 </ul>
 
 <ul class="list-group">
-	<li class="list-group-item"><strong><?php echo I18N::translate('GEDCOM errors'); ?></strong></li>
+	<li class="list-group-item"><strong><?= I18N::translate('GEDCOM errors') ?></strong></li>
 
 <?php
 

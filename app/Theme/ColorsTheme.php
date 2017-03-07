@@ -26,47 +26,18 @@ use Fisharebest\Webtrees\Site;
  * The colors theme.
  */
 class ColorsTheme extends CloudsTheme implements ThemeInterface {
+	/**
+	 * Where are our CSS, JS and other assets?
+	 */
+	const THEME_DIR  = 'colors';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const STYLESHEET = self::ASSET_DIR . 'style.css';
+
 	/** @var string[] A list of color palettes */
 	protected $palettes;
 
 	/** @var string Which of the color palettes to use on this page */
 	protected $palette;
-
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return 'themes/colors/css-1.7.8/';
-	}
-
-	/**
-	 * Add markup to the secondary menu.
-	 *
-	 * @return string
-	 */
-	protected function formatSecondaryMenu() {
-		return
-			'<ul class="secondary-menu">' .
-			implode('', $this->secondaryMenu()) .
-			'<li>' .
-			$this->formQuickSearch() .
-			'</li>' .
-			'</ul>';
-	}
-
-	/**
-	 * Create the contents of the <header> tag.
-	 *
-	 * @return string
-	 */
-	protected function headerContent() {
-		return
-			//$this->accessibilityLinks() .
-			$this->formatTreeTitle() .
-			$this->formatSecondaryMenu();
-	}
 
 	/**
 	 * Create resources for the colors theme.
@@ -144,7 +115,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuPalette() {
-		if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
+		if ($this->tree !== null && Site::getPreference('ALLOW_USER_THEMES') === '1' && $this->tree->getPreference('ALLOW_THEME_DROPDOWN') === '1') {
 			$menu = new Menu(/* I18N: A colour scheme */
 				I18N::translate('Palette'), '#', 'menu-color');
 
@@ -171,20 +142,10 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return [
-			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
-			$this->assetUrl() . 'style.css',
-			$this->assetUrl() . 'palette/' . $this->palette . '.css',
-		];
-	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return 'colors';
+		return array_merge(parent::stylesheets(), [
+			'themes/colors/css-1.7.8/style.css',
+			'themes/colors/css-1.7.8/palette/' . $this->palette . '.css',
+		]);
 	}
 
 	/**

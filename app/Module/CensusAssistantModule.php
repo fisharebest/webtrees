@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -438,7 +437,7 @@ class CensusAssistantModule extends AbstractModule {
 			?>
 			<tr>
 				<td class="optionbox">
-					<?= $menu->getMenu() ?>
+					<?= $menu->bootstrap4() ?>
 				</td>
 				<td class="facts_value nowrap">
 					<a href="#" onclick="return appendCensusRow('<?= Filter::escapeJs(self::censusTableRow($census, $spouse, $head)) ?>');">
@@ -488,7 +487,7 @@ class CensusAssistantModule extends AbstractModule {
 			?>
 			<tr>
 				<td class="optionbox">
-					<?= $menu->getMenu() ?>
+					<?= $menu->bootstrap4() ?>
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="return appendCensusRow('<?= Filter::escapeJs(self::censusTableRow($census, $child, $head)) ?>');">

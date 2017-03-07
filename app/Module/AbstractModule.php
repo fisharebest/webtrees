@@ -149,9 +149,9 @@ abstract class AbstractModule {
 	 * @param string $setting_name
 	 * @param string $default
 	 *
-	 * @return string|null
+	 * @return string
 	 */
-	public function getSetting($setting_name, $default = null) {
+	public function getPreference($setting_name, $default = '') {
 		$this->loadAllSettings();
 
 		if (array_key_exists($setting_name, $this->settings)) {
@@ -169,28 +169,21 @@ abstract class AbstractModule {
 	 *
 	 * @param string $setting_name
 	 * @param string $setting_value
+	 *
+	 * @return $this
 	 */
-	public function setSetting($setting_name, $setting_value) {
+	public function setPreference($setting_name, $setting_value) {
 		$this->loadAllSettings();
 
-		if ($setting_value === null) {
-			Database::prepare(
-				"DELETE FROM `##module_setting` WHERE module_name = ? AND setting_name = ?"
-			)->execute([$this->getName(), $setting_name]);
-			unset($this->settings[$setting_name]);
-		} elseif (!array_key_exists($setting_name, $this->settings)) {
-			Database::prepare(
-				"INSERT INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)"
-			)->execute([$this->getName(), $setting_name, $setting_value]);
-			$this->settings[$setting_name] = $setting_value;
-		} elseif ($setting_value != $this->settings[$setting_name]) {
+		if ($setting_value !== $this->getPreference($setting_name)) {
 			Database::prepare(
 				"UPDATE `##module_setting` SET setting_value = ? WHERE module_name = ? AND setting_name = ?"
 			)->execute([$setting_value, $this->getName(), $setting_name]);
+
 			$this->settings[$setting_name] = $setting_value;
-		} else {
-			// Setting already exists, but with the same value - do nothing.
 		}
+
+		return $this;
 	}
 
 	/**

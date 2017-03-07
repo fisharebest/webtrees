@@ -74,20 +74,14 @@ class FamilyController extends GedcomRecordController {
 
 		if (Auth::isEditor($this->record->getTree())) {
 			// edit_fam / members
-			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change', [
-				'onclick' => 'return change_family_members("' . $this->record->getXref() . '");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), 'edit_interface.php?action=changefamily&ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-fam-change'));
 
 			// edit_fam / add child
-			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil', [
-				'onclick' => 'return add_child_to_family("' . $this->record->getXref() . '", "U");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), 'edit_interface.php?action=add_child_to_family&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref() . '&amp;gender=U', 'menu-fam-addchil'));
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), '#', 'menu-fam-orderchil', [
-					'onclick' => 'return reorder_children("' . $this->record->getXref() . '");',
-				]));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder_children&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref(), 'menu-fam-orderchil'));
 			}
 
 			// delete
@@ -98,9 +92,7 @@ class FamilyController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-fam-editraw', [
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-fam-editraw'));
 		}
 
 		return $menu;
@@ -146,13 +138,13 @@ class FamilyController extends GedcomRecordController {
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','NOTE');\">", I18N::translate('Add a note'), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=NOTE">', I18N::translate('Add a note'), '</a>';
 			echo '</td></tr>';
 
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Shared note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", I18N::translate('Add a shared note'), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SHARED_NOTE">', I18N::translate('Add a shared note'), '</a>';
 			echo '</td></tr>';
 
 			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
@@ -169,7 +161,7 @@ class FamilyController extends GedcomRecordController {
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Source');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SOUR');\">", I18N::translate('Add a source citation'), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SOUR">', I18N::translate('Add a source citation'), '</a>';
 			echo '</td></tr>';
 		}
 	}

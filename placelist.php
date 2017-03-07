@@ -15,18 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
-define('WT_SCRIPT_NAME', 'placelist.php');
-require './includes/session.php';
+require 'includes/session.php';
+
+/** @global Tree $WT_TREE */
+global $WT_TREE;
 
 $controller = new PageController;
 
@@ -38,7 +33,7 @@ $level = count($parent);
 
 if ($display == 'hierarchy') {
 	if ($level) {
-		$controller->setPageTitle(I18N::translate('Place hierarchy') . ' - <span dir="auto">' . Filter::escapeHtml(end($parent)) . '</span>');
+		$controller->setPageTitle(I18N::translate('Place hierarchy') . ' - <span dir="auto">' . Filter::escapeHtml($parent[$level - 1]) . '</span>');
 	} else {
 		$controller->setPageTitle(I18N::translate('Place hierarchy'));
 	}
@@ -108,7 +103,7 @@ case 'hierarchy':
 	}
 	echo '</h2>';
 
-	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
+	if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
 		$linklevels  = '';
 		$place_names = [];
 		for ($j = 0; $j < $level; $j++) {
@@ -144,7 +139,7 @@ case 'hierarchy':
 			$html .= '<td class="list_value"><ul>';
 			foreach ($column as $item) {
 				$html .= '<li><a href="' . $item->getURL() . '" class="list_item">' . $item->getPlaceName() . '</a></li>';
-				if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
+				if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
 					list($tmp)     = explode(', ', $item->getGedcomName(), 2);
 					$place_names[] = $tmp;
 				}
@@ -186,32 +181,43 @@ case 'hierarchy':
 		}
 		echo '<br>';
 
-		//-- display results
-		$controller
-			->addInlineJavascript('jQuery("#places-tabs").tabs();')
-			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
-			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
+		?>
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active<?= empty($myindilist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+					<?= I18N::translate('Individuals') ?>
+					<?= Bootstrap4::badgeCount($myindilist) ?>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link<?= empty($myfamlist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+					<?= I18N::translate('Families') ?>
+					<?= Bootstrap4::badgeCount($myfamlist) ?>
+				</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" role="tabpanel" id="individuals">
+				<?php if (empty($myindilist)): ?>
+					<p><?= I18N::translate('No results found.') ?></p>
+				<?php else: ?>
+					<?= FunctionsPrintLists::individualTable($myindilist) ?>
+				<?php endif ?>
+			</div>
 
-		echo '<div class="loading-image"></div>';
-		echo '<div id="places-tabs"><ul>';
-		if (!empty($myindilist)) {
-			echo '<li><a href="#places-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';
-		}
-		if (!empty($myfamlist)) {
-			echo '<li><a href="#places-fam"><span id="famsource">', I18N::translate('Families'), '</span></a></li>';
-		}
-		echo '</ul>';
-		if (!empty($myindilist)) {
-			echo '<div id="places-indi">', FunctionsPrintLists::individualTable($myindilist), '</div>';
-		}
-		if (!empty($myfamlist)) {
-			echo '<div id="places-fam">', FunctionsPrintLists::familyTable($myfamlist), '</div>';
-		}
-		echo '</div>'; // <div id="places-tabs">
+			<div class="tab-pane fade" role="tabpanel" id="families">
+				<?php if (empty($myfamlist)): ?>
+					<p><?= I18N::translate('No results found.') ?></p>
+				<?php else: ?>
+					<?= FunctionsPrintLists::familyTable($myfamlist) ?>
+				<?php endif ?>
+			</div>
+		</div>
+		<?php
 	}
 	echo '<h4><a href="placelist.php?display=list">', I18N::translate('Show all places in a list'), '</a></h4>';
 
-	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
+	if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
 		$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $place_names);
 	}
 	break;

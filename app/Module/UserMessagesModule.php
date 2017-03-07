@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
@@ -75,12 +74,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
-		$block = $this->getBlockSetting($block_id, 'block', '1');
-		foreach (['block'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
 		$messages = Database::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 			->execute([Auth::id()])
 			->fetchAll();
@@ -108,7 +101,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		}
 		if ($messages) {
 			$content .= '<table class="list_table"><tr>';
-			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
+			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
 			$content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
 			$content .= '<th class="list_label">' . I18N::translate('Date sent') . '</th>';
 			$content .= '<th class="list_label">' . I18N::translate('Email address') . '</th>';
@@ -134,9 +127,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}
 				if ($user) {
-					$content .= '<button type="button" onclick="reply(\'' . Filter::escapeJs($message->sender) . '\', \'' . Filter::escapeJs($message->subject) . '\'); return false;">' . I18N::translate('Reply') . '</button> ';
+					$content .= '<a class="btn btn-secondary" href="message.php?to=' . Filter::escapeUrl($message->sender) . '&amp;subject=' . Filter::escapeUrl($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() .'" title="' . I18N::translate('Reply') .'">' . I18N::translate('Reply') . '</a> ';
 				}
-				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {jQuery(\'#messageform :checkbox\').prop(\'checked\', false); jQuery(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
+				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}
 			$content .= '</table>';
 			$content .= '<p><button type="submit">' . I18N::translate('Delete selected messages') . '</button></p>';
@@ -144,10 +137,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</form>';
 
 		if ($template) {
-			if ($block === '1') {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -175,15 +164,5 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	 * @param int $block_id
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
-		}
-
-		$block = $this->getBlockSetting($block_id, 'block', '1');
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
 	}
 }

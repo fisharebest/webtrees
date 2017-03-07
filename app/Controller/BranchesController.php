@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Soundex;
@@ -50,7 +49,7 @@ class BranchesController extends PageController {
 	public function __construct() {
 		parent::__construct();
 
-		$this->surname     = Filter::get('surname', null, '');
+		$this->surname     = Filter::get('surname');
 		$this->soundex_std = Filter::getBool('soundex_std');
 		$this->soundex_dm  = Filter::getBool('soundex_dm');
 
@@ -207,7 +206,7 @@ class BranchesController extends PageController {
 		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa !== false) {
 			$sosa_class = 'search_hit';
-			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '" rel="nofollow">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {
 			$sosa_class = '';
 			$sosa_html  = '';
@@ -243,7 +242,7 @@ class BranchesController extends PageController {
 					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $spouse->getXref() . '" rel="nofollow"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
 					} else {
 						$sosa_class = '';
 						$sosa_html  = '';

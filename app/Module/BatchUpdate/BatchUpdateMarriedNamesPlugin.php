@@ -149,8 +149,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<div class="form-group">' .
-			'<label class="control-label col-sm-3">' . I18N::translate('Surname option') . '</label>' .
+			'<div class="row form-group">' .
+			'<label class="col-sm-3 col-form-label">' . I18N::translate('Surname option') . '</label>' .
 			'<div class="col-sm-9">' .
 			'<select class="form-control" name="surname" onchange="reset_reload();">' .
 			'<option value="replace" ' .

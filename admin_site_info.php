@@ -17,8 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'admin_site_info.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -34,12 +33,10 @@ phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
 preg_match('%<body>(.*)</body>%s', ob_get_clean(), $matches);
 $html = $matches[1];
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 

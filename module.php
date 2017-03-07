@@ -15,8 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-define('WT_SCRIPT_NAME', 'module.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $mod        = Filter::get('mod');
 $mod_action = Filter::get('mod_action');

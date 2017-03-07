@@ -107,18 +107,14 @@ class Place {
 	 * @return string
 	 */
 	public function getURL() {
-		if (Auth::isSearchEngine()) {
-			return '#';
-		} else {
-			$url = 'placelist.php';
-			foreach (array_reverse($this->gedcom_place) as $n => $place) {
-				$url .= $n ? '&amp;' : '?';
-				$url .= 'parent%5B%5D=' . rawurlencode($place);
-			}
-			$url .= '&amp;ged=' . $this->tree->getNameUrl();
-
-			return $url;
+		$url = 'placelist.php';
+		foreach (array_reverse($this->gedcom_place) as $n => $place) {
+			$url .= $n ? '&amp;' : '?';
+			$url .= 'parent%5B%5D=' . rawurlencode($place);
 		}
+		$url .= '&amp;ged=' . $this->tree->getNameUrl();
+
+		return $url;
 	}
 
 	/**
@@ -196,7 +192,7 @@ class Place {
 	}
 
 	/**
-	 * For the "view all" option of placelist.php and find.php
+	 * For the "view all" option of placelist.phpp
 	 *
 	 * @return string
 	 */

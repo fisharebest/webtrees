@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -104,34 +105,18 @@ class CompactController extends ChartController {
 	/**
 	 * Get an arrow, pointing to other generations.
 	 *
-	 * @param int    $n
-	 * @param string $arrow_dir
+	 * @param int    $sosa
+	 * @param string $class
 	 *
 	 * @return string
 	 */
-	public function sosaArrow($n, $arrow_dir) {
-		$indi = $this->treeid[$n];
+	public function sosaArrow($sosa, $class) {
+		$indi = $this->treeid[$sosa];
 
-		$arrow_dir = substr($arrow_dir, 0, 1);
-		if (I18N::direction() === 'rtl') {
-			if ($arrow_dir === 'l') {
-				$arrow_dir = 'r';
-			} elseif ($arrow_dir === 'r') {
-				$arrow_dir = 'l';
-			}
-		}
-
-		if ($indi) {
-			$title = I18N::translate('Compact tree of %s', $indi->getFullName());
-			$text  = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
-			if ($this->show_thumbs) {
-				$text .= '&amp;show_thumbs=' . $this->show_thumbs;
-			}
-			$text .= '"></a>';
+		if ($indi !== null) {
+			return FontAwesome::linkIcon($class, I18N::translate('Compact tree of %s', $indi->getFullName()), ['href' => $indi->getRawUrl()]);
 		} else {
-			$text = '<i class="icon-' . $arrow_dir . 'arrow"></i>';
+			return FontAwesome::decorativeIcon($class);
 		}
-
-		return $text;
 	}
 }

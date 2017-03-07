@@ -15,18 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'admin_trees_unconnected.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -74,34 +69,33 @@ foreach ($components as $key => $component) {
 	}
 }
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form class="form-inline">
-	<div class="form-group">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<label for="associates"><?php echo I18N::translate('Include associates') ?></label>
-		<input type="checkbox" value="1" id="associates" name="associates" <?php echo $associates ? 'checked' : ''; ?>>
+	<div class="row form-group">
+		<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+		<label for="associates"><?= I18N::translate('Include associates') ?></label>
+		<input type="checkbox" value="1" id="associates" name="associates" <?= $associates ? 'checked' : '' ?>>
 	</div>
 	<button type="submit">
-		<?php echo I18N::translate('update'); ?>
+		<?= I18N::translate('update') ?>
 	</button>
 </form>
 
-<p><?php echo I18N::translate('These groups of individuals are not related to %s.', $root->getFullName()) ?></p>
+<p><?= I18N::translate('These groups of individuals are not related to %s.', $root->getFullName()) ?></p>
 
 <?php foreach ($individual_groups as $group): ?>
-	<h2><?php echo I18N::plural('%s individual', '%s individuals', count($group), I18N::number(count($group))) ?></h2>
+	<h2><?= I18N::plural('%s individual', '%s individuals', count($group), I18N::number(count($group))) ?></h2>
 	<ul>
 		<?php foreach ($group as $individual): ?>
 			<li>
-				<a href="<?php echo $individual->getHtmlUrl() ?>"><?php echo $individual->getFullName() ?></a>
+				<a href="<?= $individual->getHtmlUrl() ?>"><?= $individual->getFullName() ?></a>
 			</li>
 		<?php endforeach ?>
 	</ul>

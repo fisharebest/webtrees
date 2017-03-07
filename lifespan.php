@@ -16,106 +16,18 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\LifespanController;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
-define('WT_SCRIPT_NAME', 'lifespan.php');
-require './includes/session.php';
-
-global $WT_TREE;
+require 'includes/session.php';
 
 $controller = new LifespanController;
-$controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'lifespans_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL);
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'lifespans_chart'));
 
-?>
-<div id="lifespan-page">
-	<h2><?php echo I18N::translate('Lifespans') ?></h2>
-
-	<form>
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<th class="descriptionbox" colspan="4">
-						<?php echo I18N::translate('Select individuals by place or date') ?>
-					</th>
-					<th class="descriptionbox" colspan="2">
-						<?php echo I18N::translate('Add individuals') ?>
-					</th>
-				</tr>
-				<tr>
-					<td class="optionbox">
-						<label for="place">
-							<?php echo GedcomTag::getLabel('PLAC') ?>
-						</label>
-					</td>
-					<td class="optionbox" colspan="3">
-						<input id="place" data-autocomplete-type="PLAC" type="text" size="30" name="place">
-					</td>
-					<td class="optionbox">
-						<label for="newpid">
-							<?php echo I18N::translate('Individual') ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input id="newpid" class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" name="newpid"><?php echo FunctionsPrint::printFindIndividualLink('newpid') ?>
-
-					</td>
-				</tr>
-				<tr>
-					<td class="optionbox">
-						<label for="beginYear">
-							<?php echo /* I18N: The earliest year in a range */ I18N::translate('Start year') ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input id="beginYear" type="text" name="beginYear" size="5">
-					</td>
-					<td class="optionbox">
-						<label for="endYear">
-							<?php echo /* I18N: The latest year in a range */ I18N::translate('End year') ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input id="endYear" type="text" name="endYear" size="5">
-					</td>
-					<td class="optionbox" colspan="2">
-						<label for="addFamily">
-							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-							<?php echo /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family') ?>
-						</label>
-					</td>
-				</tr>
-				<tr>
-					<td class="optionbox">
-						<label for="calendar">
-							<?php echo I18N::translate('Calendar') ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<select id="calendar" name="calendar">
-							<?php echo $controller->getCalendarOptionList() ?>
-						</select>
-					</td>
-					<td class="optionbox" colspan="2">
-						<label for="strictDate">
-							<input id="strictDate" type="checkbox" value="yes" name="strictDate">
-							<?php echo I18N::translate('Match calendar') ?>
-						</label>
-					</td>
-					<th class="descriptionbox" colspan="2">
-						<input id="clear" type="hidden" name="clear" value=0>
-						<input type="reset" value="<?php echo /* I18N: A button label. */ I18N::translate('reset') ?>">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
-					</th>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-
+// Only generate the content for interactive users (not search robots).
+if (Filter::getBool('ajax') && Session::has('initiated')) {
+	?>
 	<div id="lifespan-chart">
-		<h4><?php echo $controller->subtitle ?></h4>
+		<h4><?= $controller->subtitle ?></h4>
 		<div id="lifespan-scale">
 			<?php $controller->printTimeline() ?>
 		</div>
@@ -123,18 +35,85 @@ $controller
 			<?php $maxY = $controller->fillTimeline() ?>
 		</div>
 	</div>
-</div>
-<?php
-$controller
-	->addInlineJavascript("
-		autocomplete();
-		var scale = jQuery('#lifespan-scale'),
-			barHeight = jQuery('#lifespan-people').children().first().outerHeight();
-		jQuery('#lifespan-chart')
+	<script>
+		var scale = $('#lifespan-scale');
+		var barHeight = $('#lifespan-people').children().first().outerHeight();
+		$('#lifespan-chart')
 			.width(scale.width())
-			.height(Math.ceil(jQuery('h4').outerHeight() + scale.height() + barHeight + $maxY));
-		jQuery('form').on('reset', function() {
-			jQuery('#clear').val(1);
-			jQuery(this).submit();
+			.height(Math.ceil($('h4').outerHeight() + scale.height() + barHeight + <?= $maxY ?>));
+		$('form').on('reset', function() {
+			$('#clear').val(1);
+			$(this).submit();
 		});
-	");
+	</script>
+	<?php
+
+	return;
+}
+
+$controller
+	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->pageHeader();
+
+?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+
+<form class="wt-page-options wt-page-options-lifespan-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="newpid">
+			<?= I18N::translate('Add individuals') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual(null, ['id' => 'newpid', 'name' => 'newpid']) ?>
+			<?= Bootstrap4::checkbox(/* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family'), false, ['name' => 'addFamily']) ?>
+		</div>
+	</div>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+				<?= I18N::translate('Select individuals by place or date') ?>
+			</legend>
+			<div class="col-sm-9 wt-page-options-value">
+				<label for="place">
+					<?= I18N::translate('Place') ?>
+				</label>
+				<?= FunctionsEdit::formControlPlace('', ['id' => 'place', 'name' => 'place']) ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-form-label col-sm-3 wt-page-options-label"></div>
+			<div class="col-sm-3 wt-page-options-value">
+				<label for="beginYear">
+					<?= /* I18N: The earliest year in a range */ I18N::translate('Start year') ?>
+				</label>
+				<input class="form-control" type="text" name="beginYear" placeholder="<?= I18N::translate('Year') ?>">
+			</div>
+			<div class="col-sm-3 wt-page-options-value">
+				<label for="endYear">
+					<?= /* I18N: The latest year in a range */ I18N::translate('End year') ?>
+				</label>
+				<input class="form-control" type="text" name="endYear" placeholder="<?= I18N::translate('Year') ?>">
+			</div>
+			<div class="col-sm-3 wt-page-options-value">
+				<label for="calendar">
+					<?= I18N::translate('Calendar') ?>
+				</label>
+				<?= Bootstrap4::select(Date::calendarNames(), 'gregorian', ['id' => 'calendar', 'name' => 'calendar']) ?>
+				<?= Bootstrap4::checkbox(I18N::translate('Match calendar'), false, ['name' => 'strictDate']) ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input id="clear" type="hidden" name="clear" value="0">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+			<input class="btn btn-default" type="reset" value="<?= /* I18N: A button label. */ I18N::translate('reset') ?>">
+		</div>
+	</div>
+</form>
+
+<div class="wt-ajax-load wt-page-content wt-chart wt-lifespans-chart"></div>

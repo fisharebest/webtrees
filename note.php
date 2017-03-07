@@ -15,21 +15,16 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\NoteController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 
-define('WT_SCRIPT_NAME', 'note.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $record     = Note::getInstance(Filter::get('nid', WT_REGEX_XREF), $WT_TREE);
 $controller = new NoteController($record);
@@ -65,20 +60,11 @@ if ($controller->record && $controller->record->canShow()) {
 	return;
 }
 
-$controller->addInlineJavascript('
-	jQuery("#note-tabs")
-		.tabs({
-			create: function(e, ui){
-				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
-			}
-		});
-');
-
-$linked_fam  = $controller->record->linkedFamilies('NOTE');
-$linked_indi = $controller->record->linkedIndividuals('NOTE');
-$linked_note = [];
-$linked_obje = $controller->record->linkedMedia('NOTE');
-$linked_sour = $controller->record->linkedSources('NOTE');
+$families      = $controller->record->linkedFamilies('NOTE');
+$individuals   = $controller->record->linkedIndividuals('NOTE');
+$notes         = [];
+$media_objects = $controller->record->linkedMedia('NOTE');
+$sources       = $controller->record->linkedSources('NOTE');
 
 $facts = [];
 foreach ($controller->record->getFacts() as $fact) {
@@ -95,51 +81,51 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 }
 
 ?>
-<div id="note-details">
-	<h2>
-		<?php echo $controller->record->getFullName() ?>
-	</h2>
-	<div id="note-tabs">
-		<ul>
-			<li>
-				<a href="#note-edit">
-					<?php echo I18N::translate('Details') ?>
-				</a>
-			</li>
-			<?php if ($linked_indi): ?>
-			<li>
-				<a href="#linked-individuals">
-					<?php echo I18N::translate('Individuals') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_fam): ?>
-			<li>
-				<a href="#linked-families">
-					<?php echo I18N::translate('Families') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_obje): ?>
-			<li>
-				<a href="#linked-media">
-					<?php echo I18N::translate('Media objects') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_sour): ?>
-			<li>
-				<a href="#linked-sources"><?php echo I18N::translate('Sources') ?></a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_note): ?>
-			<li>
-				<a href="#linked-notes"><?php echo I18N::translate('Notes') ?></a>
-			</li>
-			<?php endif; ?>
-		</ul>
+<h2 class="wt-page-title">
+	<?= $controller->record->getFullName() ?>
+</h2>
 
-		<div id="note-edit">
+<div class="wt-page-content">
+	<ul class="nav nav-tabs" role="tablist">
+		<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" role="tab" href="#details">
+				<?= I18N::translate('Details') ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link<?= empty($individuals) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+				<?= I18N::translate('Individuals') ?>
+				<?= Bootstrap4::badgeCount($individuals) ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link<?= empty($families) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+				<?= I18N::translate('Families') ?>
+				<?= Bootstrap4::badgeCount($families) ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link<?= empty($media_objects) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
+				<?= I18N::translate('Media objects') ?>
+				<?= Bootstrap4::badgeCount($media_objects) ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link<?= empty($sources) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
+				<?= I18N::translate('Sources') ?>
+				<?= Bootstrap4::badgeCount($sources) ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link<?= empty($notes) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
+				<?= I18N::translate('Notes') ?>
+				<?= Bootstrap4::badgeCount($notes) ?>
+			</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active fade show" role="tabpanel" id="details">
 			<table class="facts_table">
 				<colgroup>
 					<col class="width20">
@@ -147,22 +133,14 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 				</colgroup>
 				<tr>
 					<td class="descriptionbox">
+						<?= I18N::translate('Shared note') ?>
 						<?php if (Auth::isEditor($controller->record->getTree())) { ?>
-							<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo I18N::translate('Edit'); ?>">
-							<i class="icon-note"></i> <?php echo I18N::translate('Shared note'); ?>
-							</a>
 							<div class="editfacts">
-								<div class="editlink">
-								<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo I18N::translate('Edit'); ?>">
-									<span class="link_text"><?php echo I18N::translate('Edit'); ?></span>
-								</a>
+								<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=editnote&ged=' . $controller->record->getTree()->getNameUrl() . '&xref=' . $controller->record->getXref()]) ?>
 							</div>
-						<?php } else { ?>
-						<i class="icon-note"></i>
-							<?php echo I18N::translate('Shared note'); ?>
 						<?php } ?>
 					</td>
-					<td class="optionbox wrap width80"><?php echo $text; ?></td>
+					<td class="optionbox wrap width80"><?= $text ?></td>
 				</tr>
 				<?php
 				foreach ($facts as $fact) {
@@ -176,34 +154,24 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 			</table>
 		</div>
 
-		<?php if ($linked_indi): ?>
-			<div id="linked-individuals">
-				<?php echo FunctionsPrintLists::individualTable($linked_indi) ?>
-			</div>
-		<?php endif; ?>
+		<div class="tab-pane fade" role="tabpanel" id="individuals">
+			<?= FunctionsPrintLists::individualTable($individuals) ?>
+		</div>
 
-		<?php if ($linked_fam): ?>
-			<div id="linked-families">
-				<?php echo FunctionsPrintLists::familyTable($linked_fam) ?>
-			</div>
-		<?php endif; ?>
+		<div class="tab-pane fade" role="tabpanel" id="families">
+			<?= FunctionsPrintLists::familyTable($families) ?>
+		</div>
 
-		<?php if ($linked_obje): ?>
-			<div id="linked-media">
-				<?php echo FunctionsPrintLists::mediaTable($linked_obje) ?>
-			</div>
-		<?php endif; ?>
+		<div class="tab-pane fade" role="tabpanel" id="media">
+			<?= FunctionsPrintLists::mediaTable($media_objects) ?>
+		</div>
 
-		<?php if ($linked_sour): ?>
-			<div id="linked-sources">
-				<?php echo FunctionsPrintLists::sourceTable($linked_sour) ?>
-			</div>
-		<?php endif; ?>
+		<div class="tab-pane fade" role="tabpanel" id="sources">
+			<?= FunctionsPrintLists::sourceTable($sources) ?>
+		</div>
 
-		<?php if ($linked_note): ?>
-			<div id="linked-notes">
-				<?php echo FunctionsPrintLists::noteTable($linked_note) ?>
-			</div>
-		<?php endif; ?>
+		<div class="tab-pane fade" role="tabpanel" id="notes">
+			<?= FunctionsPrintLists::noteTable($notes) ?>
+		</div>
 	</div>
 </div>

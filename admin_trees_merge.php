@@ -15,18 +15,12 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+use Fisharebest\Webtrees\Controller\PageController;
+
+/** @global Tree $WT_TREE */
 global $WT_TREE;
 
-use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-
-define('WT_SCRIPT_NAME', 'admin_trees_merge.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -34,14 +28,13 @@ $controller
 	->setPageTitle(I18N::translate('Merge family trees'))
 	->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <?php
 
@@ -191,10 +184,10 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 } else {
 	echo '<form method="post">';
 	echo '<input type="hidden" name="go" value="1">';
-	echo '<p>', I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
+	echo '<p class="form-inline">', I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
 		'Copy all the records from %1$s into %2$s.',
-		FunctionsEdit::selectEditControl('tree1_id', Tree::getIdList(), '', null),
-		FunctionsEdit::selectEditControl('tree2_id', Tree::getIdList(), '', null)
+		Bootstrap4::select(Tree::getIdList(), '', ['name' => 'tree1_id']),
+		Bootstrap4::select(Tree::getIdList(), '', ['name' => 'tree2_id'])
 	),
 	'</p>';
 

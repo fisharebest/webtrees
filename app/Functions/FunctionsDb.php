@@ -82,10 +82,8 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 		}
-		$list = array_filter($list, function (Source $x) { return $x->canShowName(); });
-		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
-		return $list;
+		return array_filter($list, function (Source $x) { return $x->canShowName(); });
 	}
 
 	/**
@@ -106,10 +104,8 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 		}
-		$list = array_filter($list, function (Repository $x) { return $x->canShowName(); });
-		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
-		return $list;
+		return array_filter($list, function (Repository $x) { return $x->canShowName(); });
 	}
 
 	/**
