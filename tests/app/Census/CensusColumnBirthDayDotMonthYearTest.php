@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ class CensusColumnBirthDayDotMonthYearTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown() {
 		Mockery::close();
 	}
-	
+
 	/**
 	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthDayDotMonthYearTest
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -36,20 +36,20 @@ class CensusColumnBirthDayDotMonthYearTest extends \PHPUnit_Framework_TestCase {
 	public function testGenerateColumn() {
 		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
 		$cal_date->shouldReceive('format')->andReturn('30. June 1832');
-		
+
 		$date = Mockery::mock('Fisharebest\Webtrees\Date');
 		$date->shouldReceive('minimumJulianDay')->andReturn($cal_date);
 		$date->shouldReceive('maximumJulianDay')->andReturn($cal_date);
 		$date->shouldReceive('minimumDate')->andReturn($cal_date);
-		
+
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn($date);
-		
+
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
-		
+
 		$column = new CensusColumnBirthDayDotMonthYear($census, '', '');
-		
+
 		$this->assertSame('30. June 1832', $column->generate($individual));
 	}
 }

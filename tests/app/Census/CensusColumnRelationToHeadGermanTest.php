@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,18 +28,18 @@ class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown() {
 		Mockery::close();
 	}
-	
+
 	/**
 	 * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNull() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		
+
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		
+
 		$column = new CensusColumnRelationToHeadGerman($census, '', '');
-		
+
 		$this->assertSame('', $column->generate($individual));
 	}
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,11 +27,11 @@ class CensusOfDeutschlandNL1867Test extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfDeutschlandNL1867;
-		
+
 		$this->assertSame('Mecklenburg-Schwerin (Nachtragsliste), Deutschland', $census->censusPlace());
 		$this->assertSame('03 DEC 1867', $census->censusDate());
 	}
-	
+
 	/**
 	 * Test the census columns
 	 *
@@ -41,7 +41,7 @@ class CensusOfDeutschlandNL1867Test extends \PHPUnit_Framework_TestCase {
 	public function testColumns() {
 		$census  = new CensusOfDeutschlandNL1867;
 		$columns = $census->columns();
-		
+
 		$this->assertCount(18, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnGivenNames', $columns[1]);
@@ -80,7 +80,7 @@ class CensusOfDeutschlandNL1867Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('16.', $columns[15]->abbreviation());
 		$this->assertSame('17.', $columns[16]->abbreviation());
 		$this->assertSame('18.Aufenthaltsort', $columns[17]->abbreviation());
-	
+
 		$this->assertSame('Ordnungs-Nummer.', $columns[0]->title());
 		$this->assertSame('I. Vor- und Familienname jeder Person. Vorname.', $columns[1]->title());
 		$this->assertSame('I. Vor- und Familienname jeder Person. Familienname.', $columns[2]->title());

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,11 +27,11 @@ class CensusOfDeutschland1819Test extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfDeutschland1819;
-		
+
 		$this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
 		$this->assertSame('AUG 1819', $census->censusDate());
 	}
-	
+
 	/**
 	 * Test the census columns
 	 *
@@ -41,7 +41,7 @@ class CensusOfDeutschland1819Test extends \PHPUnit_Framework_TestCase {
 	public function testColumns() {
 		$census  = new CensusOfDeutschland1819;
 		$columns = $census->columns();
-		
+
 		$this->assertCount(13, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[1]);
