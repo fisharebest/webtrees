@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-03-17 22:14+0000\n"
+"PO-Revision-Date: 2017-03-18 09:44+0000\n"
 "Last-Translator: Nenko Antonov <office@thedomainkiosk.com>\n"
 "Language-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/bg/>\n"
 "Language: bg\n"
@@ -394,7 +394,7 @@ msgstr[1] ""
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr "Следното съобщение е изпратено на Вашия GTrees акаунт от %s."
+msgstr "Това съобщение е изпратено от %s. Копие се пази във вашия акаунт на GTrees.net сървъра."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
@@ -6464,7 +6464,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr ""
+msgstr "Забравена парола"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -14409,7 +14409,7 @@ msgstr ""
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "Съобщението е изпратено от следната страница: "
 
 #: message.php:113
 #, php-format
@@ -15685,7 +15685,7 @@ msgstr ""
 #: login.php:390
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Благодарим Ви за регистрацията!<br><br>Ще получите съобщение на адрес <b>%s</b>. Моля, прочетете това съобщение и потвърдете Вашата регистрация, като следвате инструкциите в полученото съобщение. Ако Вашият акаунт не бъде потвърден до седем дни, направетана регистрация ще бъде отхвърлена автоматично. В този случай е възможно да направите нова регистрация.<br><br>След като изпълните инструкциите в изпратеното съобщение, администраторът на webtrees ще одобри регистрацията, преди да можете да влезете във Вашия потребителски акаунт.<br><br>Пазете Вашите потребителско име и парола. Те ще са Ви необходими, за да влезете във Вашия акаунт."
+msgstr "Благодарим Ви за регистрацията!<br><br>Ще получите съобщение на адрес <b>%s</b>. Моля, прочетете това съобщение и потвърдете Вашата регистрация, като следвате инструкциите. Ако Вашият акаунт не бъде потвърден до седем дни, направетана регистрация ще бъде отхвърлена автоматично. В този случай е възможно да направите нова регистрация.<br><br>След като изпълните инструкциите в изпратеното съобщение, администраторът на GTrees.net ще одобри или отхвърли регистрацията.<br><br>Пазете Вашите потребителско име и парола. Те ще са Ви необходими, за да влезете във Вашия акаунт."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
@@ -15740,7 +15740,7 @@ msgstr ""
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "Добре дошли на нашия сайт за генеалогия!"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -16109,11 +16109,11 @@ msgstr ""
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
-msgstr ""
+msgstr "Вие изпратихте следното съобщение на GTrees.net администратор:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr "Вие изпратихте следното съобщение на webtrees потребител:"
+msgstr "Вие изпратихте следното съобщение на GTrees.net потребител:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
@@ -16616,7 +16616,7 @@ msgstr "компактен списък"
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr ""
+msgstr "продължете"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
@@ -20057,7 +20057,7 @@ msgstr ""
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
-msgstr "Писмо от webtrees"
+msgstr "Писмо от GTrees.net"
 
 #: setup.php:276
 #, php-format
