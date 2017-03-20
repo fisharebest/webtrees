@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-03-20 21:27+0000\n"
+"PO-Revision-Date: 2017-03-20 21:28+0000\n"
 "Last-Translator: Paolo <janick@libero.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -11391,14 +11391,12 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Le espressioni regolari sono una tecnica di ricerca avanzata."
 
 #: edit_changes.php:186 edit_changes.php:206
-#, fuzzy
 msgid "Reject"
-msgstr "Annulla"
+msgstr "Respingi"
 
 #: edit_changes.php:216 edit_changes.php:236
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Annulla tutte le modifiche"
+msgstr "Respingi tutte le modifiche"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
