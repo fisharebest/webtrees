@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-03-20 21:28+0000\n"
+"PO-Revision-Date: 2017-03-20 21:58+0000\n"
 "Last-Translator: Paolo <janick@libero.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -489,7 +489,7 @@ msgstr "%s&nbsp;E.V."
 #: statisticsplot.php:732
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
@@ -720,22 +720,22 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Un grafico che mostra le relazioni tra due persone."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Un grafico che mostra ascendenti e discendenti di una persona, come un libro di famiglia."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Grafico che mostra gli ascendenti di una persona come un albero compatto."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Grafico che mostra gli antenati, formattato come albero."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -2306,7 +2306,6 @@ msgid "Author of last change"
 msgstr "Autore ultima modifica"
 
 #: admin_users.php:441
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Approva automaticamente le modifiche apportate da questo utente"
 
@@ -5464,7 +5463,7 @@ msgstr ""
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "Modifica questa persona e sostituisci i suoi dettagli con i propri"
+msgstr "Modifica questa persona e sostituisci i suoi dettagli con i tuoi."
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -6420,7 +6419,7 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Ad esempio, se si specifica una lunghezza di percorso pari a 2, la persona sarà in grado di vedere la propria nipote (figlio, figlio), la propria zia (genitore, sorella), la propria figliastra (coniuge, figlia), ma non il proprio cugino di primo grado (genitore, fratello, figlio)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
 msgstr "Per informazioni sulla genealogia contattare %s"
 
@@ -7036,12 +7035,12 @@ msgstr "Altezza"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "Ciao %s…."
+msgstr "Ciao %s…"
 
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Grazie per la registrazione, %s…"
+msgstr "Ciao %s, grazie per la registrazione."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -7251,7 +7250,6 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr "Se un visitatore del sito non ha specificato la lingua che preferisce nella configurazione del proprio browser, oppure se tale lingua non è supportata, verrà utilizzata questa lingua. In genere questa impostazione si applica ai motori di ricerca."
 
 #: admin_users.php:391
-#, fuzzy
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr "Se un amministratore crea un account utente, l’email di verifica non viene inviata e l’indirizzo email deve essere verificato manualmente."
 
@@ -8574,7 +8572,7 @@ msgstr "marzo"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown è un semplice sistema di formattazione, utilizzato su siti web come Wikipedia. Utilizza caratteri di punteggiatura discreti per creare intestazioni e sotto-intestazioni, per foramttare il testo in grassetto o corsivo, per creare elenchi, tabelle, …"
+msgstr "Markdown è un semplice sistema di formattazione utilizzato su siti web come Wikipedia. Utilizza caratteri di punteggiatura discreti per creare intestazioni e sotto-intestazioni, per foramttare il testo in grassetto o corsivo, per creare elenchi, tabelle, …"
 
 #. I18N: gedcom tag MARR
 #: app/Controller/BranchesController.php:259
@@ -10347,7 +10345,6 @@ msgid "Other folder… please type in"
 msgstr "Altra cartella … scrivere"
 
 #: admin_trees_config.php:2087
-#, fuzzy
 msgid "Other preferences"
 msgstr "Altre impostazioni"
 
@@ -11080,7 +11077,6 @@ msgstr "Limitazioni per la privacy - si applicano a record e fatti che non conte
 #: app/Module/GoogleMapsModule.php:778 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:846 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Confidenziale"
 
@@ -11919,7 +11915,6 @@ msgstr ""
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
-#, fuzzy
 msgid "Search and replace"
 msgstr "Trova e sostituisci"
 
@@ -12801,18 +12796,15 @@ msgstr "Sierra Leone"
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
-#, fuzzy
 msgid "Sign in"
 msgstr "Accedi"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
-#, fuzzy
 msgid "Sign out"
 msgstr "Esci"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:453
-#, fuzzy
 msgid "Sign-in URL"
 msgstr "Indirizzo per l’accesso"
 
@@ -12964,9 +12956,8 @@ msgid "Some pages can display the number of times that they have been visited."
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:404
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Alcuni nomi di luogo possono essere scritti con prefissi e suffissi opzionali. Ad esempio «Bergamo» o «Provincia di Bergamo». Se l’albero genealogico contiene nomi di luogo completi, ma il database geografico contiene i nomi di luogo brevi, allora è necessario specificare un elenco dei prefissi e suffissi da ignorare. Le opzioni multiple devono essere separate da punto e virgola. Esempi: «Provincia;Provincia di» or «Comune;Comune di;Com. di»."
+msgstr "Alcuni nomi di luogo possono essere scritti con prefissi e suffissi opzionali. Ad esempio «Bergamo» o «Provincia di Bergamo». Se l’albero genealogico contiene nomi di luogo completi ma il database geografico contiene i nomi di luogo brevi, allora è necessario specificare un elenco dei prefissi e suffissi da ignorare. Le opzioni multiple devono essere separate da punto e virgola. Esempi: «Provincia;Provincia di» o «Comune;Comune di;Com. di»."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
@@ -13934,9 +13925,8 @@ msgstr "Il cognome è racchiuso tre barre: <%s>Mario Paolo /Rossi/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
-#, fuzzy
 msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Offre agli utenti la possibilità di scegliere il proprio tema da un menu.<br><br>Anche se questa opzione è abilitata, il tema attualmente attivo potrebbe non prevedere tale menu. Per essere efficace questa opzione richiede che sia impostata anche l’opzione <b>Consenti agli utenti di selezionare il proprio tema</b>."
+msgstr "Il menu dei temi viene visualizzato solo se le impostazioni del sito consentono agli utenti di selezionare un tema."
 
 #: addmedia.php:360
 #, php-format
@@ -14068,7 +14058,6 @@ msgstr ""
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
-#, fuzzy
 msgid "There are no facts for this individual."
 msgstr "Non ci sono fatti per questa persona."
 
@@ -14161,9 +14150,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Questo account non è stato verificato. Verificare se la propria casella di posta elettronica contiene un messaggio di verifica."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Questo riquadro mostra ai redattori un elenco di record cambiamenti in sospeso che devono essere approvati da un moderatore. Esso invia ai moderatori email quotidiane qualora ci siano modifiche in sospeso."
+msgstr "Questo riquadro mostra ai redattori un elenco di modifiche in sospeso che devono essere approvate da un moderatore. Esso invia ai moderatori email quotidiane qualora ci siano modifiche in sospeso."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14333,9 +14321,8 @@ msgid "This is the initial value for the “show details” option on the charts
 msgstr "Questa è l’impostazione iniziale per l’opzione «mostra dettagli» dei grafici."
 
 #: admin.php:634 admin_site_upgrade.php:67
-#, fuzzy
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr "Questa è l’ultima versione di webtrees. Non è disponibile alcun aggiornamento."
+msgstr "Questa è l’ultima versione di webtrees. Non ci sono aggiornamenti disponibili."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14388,7 +14375,6 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr "Questa è la larghezza (in pixel) che il programma utilizzerà per la generazione automatica di miniature. Il valore predefinito è di 100."
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Questo è il proprio nome reale, come si desidera venga mostrato a video."
 
@@ -14600,7 +14586,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Questo archivio è stato modificato. È necessario verificare le modifiche e %1$s o %2$s."
 
 #: admin_users.php:552
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei redattori, con in aggiunta il permesso di approvare o rifiutare le modifiche apportate da altri utenti."
 
@@ -14609,7 +14594,6 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei gestori per tutti gli alberi genealogici, con in più il permesso di modificare le impostazioni e la configurazione del sito, degli utenti e dei moduli."
 
 #: admin_users.php:546
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei membri, oltre al permesso di aggiungere/modificare/cancellare i dati. Tutte le modifiche dovranno essere approvate da un moderatore, a meno che l’utente abbia abilitata l’opzione «accetta automaticamente i cambiamenti»."
 
@@ -15204,9 +15188,8 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr "Si è verificato un errore durante la connessione usando questi parametri. Il server ha segnalato l’errore seguente."
 
 #: admin_trees_config.php:674
-#, fuzzy
 msgid "Unable to find record with ID"
-msgstr "Impossibile trovare un record con questo ID"
+msgstr "Impossibile trovare un record con ID"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
@@ -15219,9 +15202,8 @@ msgstr "Fatti unici di famiglia"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
-#, fuzzy
 msgid "Unique identifier"
-msgstr "Identificativo univoco globale"
+msgstr "Identificativo univoco"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
@@ -15451,9 +15433,8 @@ msgid "User not verified by administrator."
 msgstr "Utente non verificato dall’amministratore."
 
 #: admin_trees_config.php:956
-#, fuzzy
 msgid "User preferences"
-msgstr "Opzioni relative agli utenti"
+msgstr "Opzioni utente"
 
 #: login.php:518 login.php:524 login.php:582 login.php:586
 msgid "User verification"
@@ -15637,14 +15618,13 @@ msgstr "Vista giornaliera"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4535 app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4582
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "Visualizza famiglia"
+msgstr "Visualizza questa famiglia"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
 #, fuzzy
 msgid "View this individual"
-msgstr "Visualizza persona"
+msgstr "Visualizza questa persona"
 
 #: calendar.php:296
 #, fuzzy
@@ -15805,9 +15785,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr ""
 
 #: admin_users.php:388
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Quando un utente registra un account, gli viene inviata al suo indirizzo di posta elettronica un’email contenente un collegamento a una pagina di verifica. Quando l’utente fa clic su tale collegamento, il sistema riconosce che l’indirizzo email è corretto, e l’opzione «email verificata» viene selezionata automaticamente."
+msgstr "Quando un utente registra un account, al suo indirizzo di posta elettronica viene inviata un’email contenente un collegamento a una pagina di verifica. Quando l’utente fa clic su tale collegamento, il sistema riconosce che l’indirizzo email è corretto, e l’opzione «email verificata» viene selezionata automaticamente."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16007,7 +15986,7 @@ msgstr ""
 #: admin_users.php:462 edituser.php:312
 #, fuzzy
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Questa casella controlla la propria visibilità agli altri utenti mentre si è collegati. Controlla inoltre la propria capacità di vedere gli altri utenti collegati e configurati per essere visibili.<br><br>Quando questa casella è selezionata, si sarà completamente invisibili agli altri, e non si sarà in grado di vedere quali utenti sono collegati. Quando questa casella è selezionata si verifica la situazione opposta: si diverrà visibili agli altri e si potranno vedere gli altri utenti collegati (almeno quelli configurati per essere visibili)."
+msgstr "Puoi scegliere se comparire nella lista degli utenti che risultano online; chi compare nella lista può anche vederla, chi non compare nella lista la vedr&agrave; vuota."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -16237,9 +16216,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "L’amministratore del proprio server fornirà i dettagli della connessione."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Il proprio account utente non ha attivata l’impostazione «approva automaticamente le modifiche». Sarà pertanto possibile modificare un solo record per volta."
+msgstr "Il tuo account utente non ha attivata l’impostazione «approva automaticamente le modifiche». &Egrave; possibile modificare un solo record per volta."
 
 #: admin.php:575
 #, php-format
@@ -16592,7 +16570,6 @@ msgstr "%s (calcolata)"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
-#, fuzzy
 msgid "cancel"
 msgstr "Annulla"
 
@@ -16758,7 +16735,6 @@ msgstr "morì il"
 #: admin_site_change.php:370 admin_site_logs.php:310
 #: app/Module/ClippingsCartModule.php:432
 #: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:3892
-#, fuzzy
 msgid "download"
 msgstr "scarica"
 
@@ -18813,7 +18789,6 @@ msgstr "nome per immigrazione"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:3853
-#, fuzzy
 msgid "import"
 msgstr "importa"
 
@@ -19586,7 +19561,6 @@ msgstr "accedi"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
-#, fuzzy
 msgid "sign out"
 msgstr "esci"
 
@@ -20068,7 +20042,6 @@ msgstr "Aggiorna"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:3871
-#, fuzzy
 msgid "upload"
 msgstr "carica"
 
@@ -20076,7 +20049,6 @@ msgstr "carica"
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:732 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
-#, fuzzy
 msgid "view"
 msgstr "visualizza"
 
