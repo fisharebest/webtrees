@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2016-03-10 07:40+0100\n"
-"Last-Translator: Josef Pavlik <josef@pavlik.it>\n"
-"Language-Team: Italian <http://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
+"PO-Revision-Date: 2017-03-20 21:27+0000\n"
+"Last-Translator: Paolo <janick@libero.it>\n"
+"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.10\n"
 "X-Language: it_IT\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -384,9 +384,9 @@ msgstr[1] "%s secondi fa"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Il messaggio seguente è stato inviato al proprio utente webtrees da %s"
+msgstr "%s ti ha inviato il seguente messaggio:"
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
@@ -976,9 +976,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Un report sui dati anagrafici per una determinata data o luogo."
 
 #: admin_users.php:523
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Un ruolo è un insieme di diritti di accesso, che permettono di visualizzare dati, di modificare le impostazioni di configurazione, ecc. I diritti di accesso vengono assegnati ai ruoli, e i ruoli sono assegnati agli utenti. Ciascun albero genealogico può assegnare accessi differenti a ciascun ruolo; inoltre gli utenti possono avere un ruolo diverso in ogni albero genealogico."
+msgstr "Un ruolo è un insieme di diritti di accesso che permettono di visualizzare dati, modificare le impostazioni di configurazione, ecc. I diritti di accesso vengono assegnati ai ruoli e i ruoli sono assegnati agli utenti. Ciascun albero genealogico può assegnare accessi differenti a ciascun ruolo; inoltre gli utenti possono avere un ruolo diverso in ogni albero genealogico."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1036,9 +1035,8 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:397
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Un utente non sarà in grado accedere fino a quando entrambe le opzioni «email verificata» e «approvato da un amministratore» non sono entrambe selezionate."
+msgstr "Un utente non sarà in grado accedere fino a quando entrambe le opzioni «email verificata» e «approvato da un amministratore» non saranno entrambe selezionate."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1141,7 +1139,6 @@ msgid "Accept"
 msgstr "Accetta"
 
 #: edit_changes.php:214 edit_changes.php:225
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Approvare tutte le modifiche"
 
@@ -1153,9 +1150,8 @@ msgid "Access level"
 msgstr "Livello di accesso"
 
 #: admin_users.php:520
-#, fuzzy
 msgid "Access to family trees"
-msgstr "Accesso all’albero di famiglia e impostazioni"
+msgstr "Accesso all’albero genealogico"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1383,9 +1379,8 @@ msgstr "Aggiungi una moglie utilizzando una persona esistente"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:462
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Aggiungi una domanda frequente"
+msgstr "Aggiungi una FAQ"
 
 #: app/Functions/FunctionsEdit.php:1104 app/Functions/FunctionsEdit.php:1108
 msgid "Add an associate"
@@ -1657,9 +1652,8 @@ msgid "Adult christening"
 msgstr "Battesimo da adulto"
 
 #: admin_trees_config.php:2027
-#, fuzzy
 msgid "Advanced fact preferences"
-msgstr "Impostazione dei fatti avanzati"
+msgstr "Impostazioni avanzate dei fatti"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
@@ -1897,9 +1891,8 @@ msgstr "Samoa americane"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:222
-#, fuzzy
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Una domanda frequente può essere mostrata per un solo albero genealogico o per tutti gli alberi genealogici."
+msgstr "Una FAQ può essere mostrata per un solo albero genealogico o per tutti gli alberi genealogici."
 
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5403,15 +5396,13 @@ msgstr ""
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Modifica opzioni"
+msgstr "Opzioni di modifica"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Modifica domanda frequente"
+msgstr "Modifica FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6398,9 +6389,8 @@ msgid "Folder name on server"
 msgstr "Nome della cartella sul server"
 
 #: login.php:342
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Cliccare sul seguente collegamento e completare i campi richiesti per confermare la richiesta ed il proprio indirizzo email."
+msgstr "Cliccare sul seguente collegamento e completare i campi richiesti per confermare la richiesta e il proprio indirizzo email."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6435,14 +6425,14 @@ msgid "For help with genealogy questions contact %s."
 msgstr "Per informazioni sulla genealogia contattare %s"
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Per informazioni tecniche e supporto contattare %s"
+msgstr "Per supporto tecnico e informazioni contattare %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Per informazioni tecniche o domande sulla genealogia contattare %s"
+msgstr "Per supporto tecnico o domande sulla genealogia contattare %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -7342,9 +7332,8 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Se si nasconde un riquadro vuoto, non sarà possibile modificarne la configurazione finché non diventerà nuovamente visibile (ovvero finché non conterrà qualcosa)."
 
 #: admin_site_config.php:192
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Se si seleziona una cartella differente è necessario spostare tutti i file (tranne config.ini.php, index.php e .htaccess) dalla cartella esistente alla nuova cartella."
+msgstr "Se si seleziona una cartella differente, è necessario spostare tutti i file (tranne config.ini.php, index.php e .htaccess) dalla cartella esistente alla nuova cartella."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
@@ -9953,9 +9942,8 @@ msgid "Norfolk Island"
 msgstr "Isola Norfolk"
 
 #: admin_users.php:444
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Di solito le modifiche apportate ad un albero di famiglia vanno approvate da un moderatore. Questa opzione consente all’utente di apportare modifiche senza bisogno dell’approvazione di un moderatore."
+msgstr "Di solito le modifiche apportate a un albero genealogico devono essere approvate da un moderatore. Questa opzione consente all’utente di apportare modifiche senza bisogno dell’approvazione di un moderatore."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -20232,7 +20220,7 @@ msgstr "«%s» è stato aggiunto ai preferiti personali."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" è stato eliminato."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
