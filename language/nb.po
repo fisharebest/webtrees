@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-12-27 09:24+0000\n"
-"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
+"PO-Revision-Date: 2017-03-21 19:45+0000\n"
+"Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1142,7 +1142,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Forkorte stedsnavn"
+msgstr "Forkort stedsnavn"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -12685,7 +12685,7 @@ msgstr "Vis personlisten"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr "Vis etternavnslisten"
+msgstr "Vis etternavnlisten"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -15842,7 +15842,7 @@ msgstr "Hustruens alder"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "Kones pikenavn blir nytt mellomnavn"
+msgstr "Hustrus pikenavn blir nytt mellomnavn"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
@@ -16275,19 +16275,19 @@ msgstr "legg til"
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr "adoptivnavn"
+msgstr "Adoptivnavn"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr "adoptivnavn"
+msgstr "Adoptivnavn"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr "adoptivnavn"
+msgstr "Adoptivnavn"
 
 #: app/Stats.php:2913
 msgid "adoption"
