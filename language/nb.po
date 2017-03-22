@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-03-21 19:45+0000\n"
-"Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
+"PO-Revision-Date: 2017-03-22 06:44+0000\n"
+"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -1120,7 +1120,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Forkort stedsnavn"
+msgstr "Forkorte stedsnavn"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:120
@@ -16281,19 +16281,19 @@ msgstr "legg til"
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr "Adoptivnavn"
+msgstr "adoptivnavn"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr "Adoptivnavn"
+msgstr "adoptivnavn"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr "Adoptivnavn"
+msgstr "adoptivnavn"
 
 #: app/Stats.php:2913
 msgid "adoption"
