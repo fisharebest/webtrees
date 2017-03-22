@@ -15,6 +15,9 @@
 
 'use strict';
 
+// "rtl" on right-to-left pages.
+var textDirection = $('html').attr('dir');
+
 // Specifications for various types of popup edit window.
 var edit_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
 var indx_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollbars=1'; // module configuration
@@ -1043,14 +1046,13 @@ function valid_lati_long (field, pos, neg) {
 // This is the default way for webtrees to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox (config) {
-  var dir = $('html').attr('dir');
   $.extend($.colorbox.settings, {
     // Don't scroll window with document
     fixed: true,
     // Simple I18N - the text will need to come from PHP
     current: '',
-    previous: dir === 'rtl' ? '\u25b6' : '\u25c0', // ▶ ◀
-    next: dir === 'rtl' ? '\u25c0' : '\u25b6', // ◀ ▶
+    previous: textDirection === 'rtl' ? '\u25b6' : '\u25c0', // ▶ ◀
+    next: textDirection === 'rtl' ? '\u25c0' : '\u25b6', // ◀ ▶
     slideshowStart: '\u25cb', // ○
     slideshowStop: '\u25cf', // ●
     close: '\u2715'  // ×
@@ -1235,7 +1237,7 @@ $('.menu-language').on('click', 'li a', function () {
   $.post('action.php', {
     action: 'language',
     language: $(this).data('language'),
-    csrf: WT_CSRF_TOKEN
+    csrf: $('meta[name=csrf]').attr('content')
   }, function () {
     location.reload();
   });
@@ -1246,7 +1248,7 @@ $('.menu-theme').on('click', 'li a', function () {
   $.post('action.php', {
     action: 'theme',
     theme: $(this).data('theme'),
-    csrf: WT_CSRF_TOKEN
+    csrf: $('meta[name=csrf]').attr('content')
   }, function () {
     location.reload();
   });
