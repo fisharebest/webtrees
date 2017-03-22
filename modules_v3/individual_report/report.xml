@@ -643,7 +643,7 @@
 		<if condition="$source_exist==1">
 			<Body>
 				<TextBox newline="1">
-					<Text style="pageheader"><var var="I18N::translate('Sources')"/><br /><br /></Text>
+					<Text style="pageheader"><br /><var var="I18N::translate('Sources')"/><br /><br /></Text>
 					<FootnoteTexts/>
 				</TextBox>
 			</Body>
