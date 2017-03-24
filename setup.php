@@ -90,11 +90,11 @@ header('Content-Type: text/html; charset=UTF-8');
 	</head>
 	<body>
 		<h1>
-			<?php echo I18N::translate('Setup wizard for webtrees'); ?>
+			<?= I18N::translate('Setup wizard for webtrees') ?>
 		</h1>
 <?php
 
-echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
+echo '<form name="config" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -237,7 +237,7 @@ foreach (User::all() as $tmp_user) {
 	<li class="active"><?php echo $controller->getPageTitle() ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle() ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
@@ -245,57 +245,57 @@ foreach (User::all() as $tmp_user) {
 	<div class="row">
 		<div class="form-group col-xs-6 col-sm-3">
 			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
+				<?= /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from) ?>" autocomplete="off">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Filter::escapeHtml($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-3">
 			<label for="to">
-				<?php echo /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
+				<?= /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to) ?>" autocomplete="off">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Filter::escapeHtml($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-2">
 			<label for="type">
-				<?php echo I18N::translate('Type') ?>
+				<?= I18N::translate('Type') ?>
 			</label>
 			<?php echo FunctionsEdit::selectEditControl('type', ['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'], null, $type, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-4">
 			<label for="ip">
-				<?php echo I18N::translate('IP address') ?>
+				<?= I18N::translate('IP address') ?>
 			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip) ?>">
+			<input class="form-control" type="text" id="ip" name="ip" value="<?= Filter::escapeHtml($ip) ?>">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-sm-4">
 			<label for="text">
-				<?php echo I18N::translate('Message') ?>
+				<?= I18N::translate('Message') ?>
 			</label>
-			<input class="form-control" type="text" id="text" name="text" value="<?php echo Filter::escapeHtml($text) ?>">
+			<input class="form-control" type="text" id="text" name="text" value="<?= Filter::escapeHtml($text) ?>">
 		</div>
 
 		<div class="form-group col-sm-4">
 			<label for="user">
-				<?php echo I18N::translate('User') ?>
+				<?= I18N::translate('User') ?>
 			</label>
 			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-sm-4">
 			<label for="gedc">
-				<?php echo I18N::translate('Family tree') ?>
+				<?= I18N::translate('Family tree') ?>
 			</label>
 			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
 		</div>
@@ -303,15 +303,15 @@ foreach (User::all() as $tmp_user) {
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo /* I18N: A button label. */ I18N::translate('search') ?>
+			<?= /* I18N: A button label. */ I18N::translate('search') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
+		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo /* I18N: A button label. */ I18N::translate('delete') ?>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= /* I18N: A button label. */ I18N::translate('delete') ?>
 		</button>
 	</div>
 </form>
@@ -319,17 +319,17 @@ foreach (User::all() as $tmp_user) {
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-logs">
 	<caption class="sr-only">
-		<?php echo $controller->getPageTitle() ?>
+		<?= $controller->getPageTitle() ?>
 	</caption>
 	<thead>
 		<tr>
 			<th></th>
-			<th><?php echo I18N::translate('Timestamp') ?></th>
-			<th><?php echo I18N::translate('Type') ?></th>
-			<th><?php echo I18N::translate('Message') ?></th>
-			<th><?php echo I18N::translate('IP address') ?></th>
-			<th><?php echo I18N::translate('User') ?></th>
-			<th><?php echo I18N::translate('Family tree') ?></th>
+			<th><?= I18N::translate('Timestamp') ?></th>
+			<th><?= I18N::translate('Type') ?></th>
+			<th><?= I18N::translate('Message') ?></th>
+			<th><?= I18N::translate('IP address') ?></th>
+			<th><?= I18N::translate('User') ?></th>
+			<th><?= I18N::translate('Family tree') ?></th>
 		</tr>
 	</thead>
 </table>

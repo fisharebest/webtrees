@@ -131,7 +131,7 @@ $controller->pageHeader();
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <?php
 
@@ -150,7 +150,7 @@ if (!$PGV_PATH) {
 	if (count($pgv_dirs) > 1) {
 		$html = I18N::translate('PhpGedView might be installed in one of these folders:');
 		foreach ($pgv_dirs as $pgv_dir) {
-			$html .= '<div onclick="jQuery(\'#PGV_PATH\').val(\'' . Filter::escapeHtml($pgv_dir) . '\')">' . Filter::escapeHtml($pgv_dir) . '</div>';
+			$html .= '<div onclick="$(\'#PGV_PATH\').val(\'' . Filter::escapeHtml($pgv_dir) . '\')">' . Filter::escapeHtml($pgv_dir) . '</div>';
 		}
 
 		echo Theme::theme()->htmlAlert($html, 'info', true);
@@ -160,7 +160,7 @@ if (!$PGV_PATH) {
 	<form class="form-horizontal" method="post">
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="PGV_PATH">
-				<?php echo I18N::translate('Where is your PhpGedView installation?'); ?>
+				<?= I18N::translate('Where is your PhpGedView installation?') ?>
 			</label>
 			<div class="col-sm-9">
 				<input
@@ -170,8 +170,8 @@ if (!$PGV_PATH) {
 					id="PGV_PATH"
 					name="PGV_PATH"
 					size="40"
-					placeholder="<?php echo I18N::translate('Installation folder'); ?>"
-					value="<?php echo count($pgv_dirs) === 1 ? Filter::escapeHtml($pgv_dirs[0]) : ''; ?>"
+					placeholder="<?= I18N::translate('Installation folder') ?>"
+					value="<?= count($pgv_dirs) === 1 ? Filter::escapeHtml($pgv_dirs[0]) : '' ?>"
 					required
 				>
 			</div>
@@ -180,7 +180,7 @@ if (!$PGV_PATH) {
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
 				<button type="submit" class="btn btn-primary">
-					<?php echo I18N::translate('continue'); ?>
+					<?= I18N::translate('continue') ?>
 				</button>
 			</div>
 		</div>

@@ -191,7 +191,7 @@ function checknames(frm) {
 						<?= I18N::translate('Entire record') ?>
 					</label>
 				</p>
-					<hr>
+				<hr>
 				<p>
 					<label>
 						<input <?= $controller->replaceNames ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replaceNames" type="checkbox">

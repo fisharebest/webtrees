@@ -577,10 +577,10 @@ if (
 }
 
 ?>
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <p>
-	<?php echo I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.'); ?>
+	<?= I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.') ?>
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -591,21 +591,19 @@ if (
 			<div class="panel-heading" role="tab" id="server-heading">
 				<h2 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" href="#server-panel" aria-expanded="true" aria-controls="server-panel">
-						<?php echo I18N::translate('Server information'); ?>
+						<?= I18N::translate('Server information') ?>
 					</a>
 				</h2>
 			</div>
 			<div id="server-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="server-heading">
 				<div class="panel-body">
 					<?php foreach ($server_warnings as $server_warning): ?>
-					<p>
-						<?php echo $server_warning; ?>
-					</p>
-					<?php endforeach; ?>
+						<p><?= $server_warning ?></p>
+					<?php endforeach ?>
 				</div>
 			</div>
 		</div>
-	<?php endif; ?>
+	<?php endif ?>
 
 	<!-- WEBTREES VERSION -->
 	<div class="panel <?php echo Auth::isAdmin() && $update_available ? 'panel-danger' : 'panel-primary'; ?>">
@@ -619,22 +617,22 @@ if (
 		<div id="webtrees-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="webtrees-version-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>'); ?>
+					<?= /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
 				</p>
 				<?php if (Auth::isAdmin()): ?>
 				<p>
 					<?php if ($latest_version === ''): ?>
-					<?php echo I18N::translate('No upgrade information is available.'); ?>
+					<?= I18N::translate('No upgrade information is available.') ?>
 					<?php elseif ($update_available): ?>
-					<?php echo I18N::translate('A new version of webtrees is available.'); ?>
+					<?= I18N::translate('A new version of webtrees is available.') ?>
 					<a href="admin_site_upgrade.php" class="error">
-						<?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)); ?>
+						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)) ?>
 					</a>
 					<?php else: ?>
-						<?php echo I18N::translate('This is the latest version of webtrees. No upgrade is available.'); ?>
-					<?php endif; ?>
+						<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
+					<?php endif ?>
 				</p>
-				<?php endif; ?>
+				<?php endif ?>
 			</div>
 		</div>
 	</div>
@@ -645,7 +643,7 @@ if (
 		<div class="panel-heading" role="tab" id="users-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#users-panel" aria-expanded="false" aria-controls="users-panel">
-					<?php echo I18N::translate('Users'); ?>
+					<?= I18N::translate('Users') ?>
 				</a>
 			</h2>
 		</div>
@@ -653,95 +651,95 @@ if (
 			<div class="panel-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
-						<?php echo I18N::translate('Users'); ?>
+						<?= I18N::translate('Users') ?>
 					</caption>
 					<tbody>
 						<tr>
 							<th class="col-xs-3">
-								<?php echo I18N::translate('Total number of users'); ?>
+								<?= I18N::translate('Total number of users') ?>
 							</th>
 							<td class="col-xs-9">
 								<a href="admin_users.php">
-									<?php echo I18N::number($total_users); ?>
+									<?= I18N::number($total_users) ?>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Administrators'); ?>
+								<?= I18N::translate('Administrators') ?>
 							</th>
 							<td>
 								<?php foreach ($administrators as $n => $user): ?>
-									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+									<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Managers'); ?>
+								<?= I18N::translate('Managers') ?>
 							</th>
 							<td>
 								<?php foreach ($managers as $n => $user): ?>
-									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+									<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Moderators'); ?>
+								<?= I18N::translate('Moderators') ?>
 							</th>
 							<td>
 								<?php foreach ($moderators as $n => $user): ?>
-									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+									<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
-						<tr class="<?php echo $unverified ? 'danger' : ''; ?>">
+						<tr class="<?= $unverified ? 'danger' : '' ?>">
 							<th>
-								<?php echo I18N::translate('Not verified by the user'); ?>
+								<?= I18N::translate('Not verified by the user') ?>
 							</th>
 							<td>
 								<?php foreach ($unverified as $n => $user): ?>
-									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+									<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
-						<tr class="<?php echo $unapproved ? 'danger' : ''; ?>">
+						<tr class="<?= $unapproved ? 'danger' : '' ?>">
 							<th>
-								<?php echo I18N::translate('Not approved by an administrator'); ?>
+								<?= I18N::translate('Not approved by an administrator') ?>
 							</th>
 							<td>
 								<?php foreach ($unapproved as $n => $user): ?>
-									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+									<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Users who are signed in'); ?>
+								<?= I18N::translate('Users who are signed in') ?>
 							</th>
 							<td>
 								<?php foreach ($logged_in as $n => $user): ?>
-								<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
-										<?php echo Filter::escapeHtml($user->real_name); ?>
+								<?= $n ? I18N::$list_separator : '' ?>
+									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+										<?= Filter::escapeHtml($user->real_name) ?>
 									</a>
-								<?php endforeach; ?>
+								<?php endforeach ?>
 							</td>
 						</tr>
 					</tbody>
@@ -749,14 +747,14 @@ if (
 			</div>
 		</div>
 	</div>
-	<?php endif; ?>
+	<?php endif ?>
 
 	<!-- FAMILY TREES -->
 	<div class="panel <?php echo array_sum($changes) ? 'panel-danger' : 'panel-primary'; ?>">
 		<div class="panel-heading" role="tab" id="trees-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#trees-panel" aria-expanded="false" aria-controls="trees-panel">
-					<?php echo I18N::translate('Family trees'); ?>
+					<?= I18N::translate('Family trees') ?>
 				</a>
 			</h2>
 		</div>
@@ -764,116 +762,116 @@ if (
 			<div class="panel-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
-						<?php echo I18N::translate('Family trees'); ?>
+						<?= I18N::translate('Family trees') ?>
 					</caption>
 					<thead>
 						<tr>
-							<th class="col-xs-5"><?php echo I18N::translate('Family tree'); ?></th>
-							<th class="col-xs-2 text-right flip"><?php echo I18N::translate('Pending changes'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Individuals'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Families'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Sources'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Repositories'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Media'); ?></th>
+							<th class="col-xs-5"><?= I18N::translate('Family tree') ?></th>
+							<th class="col-xs-2 text-right flip"><?= I18N::translate('Pending changes') ?></th>
+							<th class="col-xs-1 text-right flip"><?= I18N::translate('Individuals') ?></th>
+							<th class="col-xs-1 text-right flip"><?= I18N::translate('Families') ?></th>
+							<th class="col-xs-1 text-right flip"><?= I18N::translate('Sources') ?></th>
+							<th class="col-xs-1 text-right flip"><?= I18N::translate('Repositories') ?></th>
+							<th class="col-xs-1 text-right flip"><?= I18N::translate('Media') ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach (Tree::getAll() as $tree): ?>
-						<tr class="<?php echo $changes[$tree->getTreeId()] ? 'danger' : ''; ?>">
+						<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
 							<td>
-								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo $tree->getNameHtml(); ?>
+								<a href="index.php?ctype=gedcom&amp;ged=<?= $tree->getNameUrl() ?>">
+									<?= $tree->getNameHtml() ?>
 									-
-									<?php echo $tree->getTitleHtml(); ?>
+									<?= $tree->getTitleHtml() ?>
 								</a>
 							</td>
 							<td class="text-right flip">
 								<?php if ($changes[$tree->getTreeId()]): ?>
 								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
-									<?php echo I18N::number($changes[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Pending changes'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+									<?= I18N::number($changes[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 								-
-								<?php endif; ?>
+								<?php endif ?>
 							</td>
 							<td class="text-right flip">
 								<?php if ($individuals[$tree->getTreeId()]): ?>
-								<a href="indilist.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::number($individuals[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Individuals'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
+									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Individuals') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 									-
-								<?php endif; ?>
+								<?php endif ?>
 								</td>
 							<td class="text-right flip">
 								<?php if ($families[$tree->getTreeId()]): ?>
-								<a href="famlist.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::number($families[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Families'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
+									<?= I18N::number($families[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Families') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 								-
-								<?php endif; ?>
+								<?php endif ?>
 								</td>
 							<td class="text-right flip">
 								<?php if ($sources[$tree->getTreeId()]): ?>
-								<a href="sourcelist.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::number($sources[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+								<a href="sourcelist.php?ged=<?= $tree->getNameUrl() ?>">
+									<?= I18N::number($sources[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Sources') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 								-
-								<?php endif; ?>
+								<?php endif ?>
 							</td>
 							<td class="text-right flip">
 								<?php if ($repositories[$tree->getTreeId()]): ?>
-								<a href="repolist.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::number($repositories[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Repositories'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+								<a href="repolist.php?ged=<?= $tree->getNameUrl() ?>">
+									<?= I18N::number($repositories[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Repositories') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 									-
-								<?php endif; ?>
+								<?php endif ?>
 							</td>
 							<td class="text-right flip">
 								<?php if ($media[$tree->getTreeId()]): ?>
-								<a href="medialist.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::number($media[$tree->getTreeId()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Media objects'); ?> <?php echo $tree->getTitleHtml(); ?></span>
+								<a href="medialist.php?ged=<?= $tree->getNameUrl() ?>">
+									<?= I18N::number($media[$tree->getTreeId()]) ?>
+									<span class="sr-only"><?= I18N::translate('Media objects') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 								<?php else: ?>
 								-
-								<?php endif; ?>
+								<?php endif ?>
 							</td>
 						</tr>
-						<?php endforeach; ?>
+						<?php endforeach ?>
 					</tbody>
 					<tfoot>
 						<tr>
 							<td>
-								<?php echo I18N::translate('Total'); ?>
+								<?= I18N::translate('Total') ?>
 								-
-								<?php echo I18N::plural('%s family tree', '%s family trees', count(Tree::getAll()), I18N::number(count(Tree::getAll()))); ?>
+								<?= I18N::plural('%s family tree', '%s family trees', count(Tree::getAll()), I18N::number(count(Tree::getAll()))) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($changes)); ?>
+								<?= I18N::number(array_sum($changes)) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($individuals)); ?>
+								<?= I18N::number(array_sum($individuals)) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($families)); ?>
+								<?= I18N::number(array_sum($families)) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($sources)); ?>
+								<?= I18N::number(array_sum($sources)) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($repositories)); ?>
+								<?= I18N::number(array_sum($repositories)) ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo I18N::number(array_sum($media)); ?>
+								<?= I18N::number(array_sum($media)) ?>
 							</td>
 						</tr>
 					</tfoot>
@@ -888,23 +886,23 @@ if (
 		<div class="panel-heading" role="tab" id="old-files-heading">
 			<h2 class="panel-title">
 				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#old-files-panel" aria-expanded="false" aria-controls="old-files-panel">
-					<?php echo I18N::translate('Old files found'); ?>
+					<?= I18N::translate('Old files found') ?>
 				</a>
 			</h2>
 		</div>
 		<div id="old-files-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="old-files-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.'); ?>
+					<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>
-						<li dir="ltr"><code><?php echo Filter::escapeHtml($file_to_delete); ?></code></li>
+						<li dir="ltr"><code><?= Filter::escapeHtml($file_to_delete) ?></code></li>
 					<?php endforeach ?>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<?php endif; ?>
+	<?php endif ?>
 
 </div>

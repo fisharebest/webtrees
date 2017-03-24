@@ -242,10 +242,10 @@ $controller
 	->addExternalJavascript(WT_MOMENT_JS_URL)
 	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
 	->addInlineJavascript('
-		jQuery(".table-site-changes").dataTable( {
+		$(".table-site-changes").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
@@ -259,7 +259,7 @@ $controller
 			/* Family tree */ { }
 			]
 		});
-		jQuery("#from, #to").parent("div").datetimepicker({
+		$("#from, #to").parent("div").datetimepicker({
 			format: "YYYY-MM-DD",
 			minDate: "' . $earliest . '",
 			maxDate: "' . $latest . '",
@@ -290,7 +290,7 @@ foreach (User::all() as $tmp_user) {
 	<li class="active"><?php echo $controller->getPageTitle() ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle() ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
@@ -298,20 +298,20 @@ foreach (User::all() as $tmp_user) {
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
+				<?= /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Filter::escapeHtml($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="to">
-				<?php echo /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
+				<?= /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Filter::escapeHtml($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -325,37 +325,37 @@ foreach (User::all() as $tmp_user) {
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="xref">
-				<?php echo I18N::translate('Record') ?>
+				<?= I18N::translate('Record') ?>
 			</label>
-			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref) ?>">
+			<input class="form-control" type="text" id="xref" name="xref" value="<?= Filter::escapeHtml($xref) ?>">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="oldged">
-				<?php echo I18N::translate('Old data') ?>
+				<?= I18N::translate('Old data') ?>
 			</label>
-			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged) ?>">
+			<input class="form-control" type="text" id="oldged" name="oldged" value="<?= Filter::escapeHtml($oldged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="newged">
-				<?php echo I18N::translate('New data') ?>
+				<?= I18N::translate('New data') ?>
 			</label>
-			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged) ?>">
+			<input class="form-control" type="text" id="newged" name="newged" value="<?= Filter::escapeHtml($newged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="user">
-				<?php echo I18N::translate('User') ?>
+				<?= I18N::translate('User') ?>
 			</label>
 			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
-				<?php echo I18N::translate('Family tree') ?>
+				<?= I18N::translate('Family tree') ?>
 			</label>
 			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
 		</div>
@@ -363,15 +363,15 @@ foreach (User::all() as $tmp_user) {
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo I18N::translate('search') ?>
+			<?= I18N::translate('search') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
+		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo I18N::translate('delete') ?>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= I18N::translate('delete') ?>
 		</button>
 	</div>
 </form>
@@ -379,17 +379,17 @@ foreach (User::all() as $tmp_user) {
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-changes">
 	<caption class="sr-only">
-		<?php echo $controller->getPageTitle() ?>
+		<?= $controller->getPageTitle() ?>
 	</caption>
 	<thead>
 		<tr>
 			<th></th>
-			<th><?php echo I18N::translate('Timestamp') ?></th>
-			<th><?php echo I18N::translate('Status') ?></th>
-			<th><?php echo I18N::translate('Record') ?></th>
-			<th><?php echo I18N::translate('Data') ?></th>
-			<th><?php echo I18N::translate('User') ?></th>
-			<th><?php echo I18N::translate('Family tree') ?></th>
+			<th><?= I18N::translate('Timestamp') ?></th>
+			<th><?= I18N::translate('Status') ?></th>
+			<th><?= I18N::translate('Record') ?></th>
+			<th><?= I18N::translate('Data') ?></th>
+			<th><?= I18N::translate('User') ?></th>
+			<th><?= I18N::translate('Family tree') ?></th>
 		</tr>
 	</thead>
 </table>

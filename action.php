@@ -241,7 +241,7 @@ case 'reject-changes':
 case 'theme':
 	// Change the current theme
 	$theme = Filter::post('theme');
-	if (Site::getPreference('ALLOW_USER_THEMES') && array_key_exists($theme, Theme::themeNames())) {
+	if (Site::getPreference('ALLOW_USER_THEMES') === '1' && array_key_exists($theme, Theme::themeNames())) {
 		Session::put('theme_id', $theme);
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);

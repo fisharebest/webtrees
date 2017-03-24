@@ -146,7 +146,7 @@ case 'setup':
 
 	echo '<div id="reportengine-page">
 		<h2 class="center">', $report_array['title'], '</h2>
-		<form name="setupreport" method="get" action="reportengine.php">
+		<form name="setupreport">
 		<input type="hidden" name="action" value="run">
 		<input type="hidden" name="report" value="', Filter::escapeHtml($report), '">
 		<table class="facts_table width50">
@@ -267,19 +267,19 @@ case 'setup':
 	break;
 
 case 'run':
-	if (strstr($report, 'report_singlepage.xml') !== false) {
-		// This is a custom module?
-		new \ReportPedigree;
-		break;
-	}
+		if (strstr($report, 'report_singlepage.xml') !== false) {
+			// This is a custom module.
+			new \ReportPedigree;
+			break;
+		}
 
-	switch ($output) {
-	case 'HTML':
-		header('Content-type: text/html; charset=UTF-8');
-		new ReportParserGenerate($report, new ReportHtml, $vars);
-		break;
-	case 'PDF':
-		new ReportParserGenerate($report, new ReportPdf, $vars);
-		break;
+		switch ($output) {
+		case 'HTML':
+			header('Content-type: text/html; charset=UTF-8');
+			new ReportParserGenerate($report, new ReportHtml, $vars);
+			break;
+		case 'PDF':
+			new ReportParserGenerate($report, new ReportPdf, $vars);
+			break;
+		}
 	}
-}

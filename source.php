@@ -163,7 +163,7 @@ usort(
 					// new media
 					if ($controller->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 						echo '<tr><td class="descriptionbox">';
-						echo GedcomTag::getLabel('OBJE');
+						echo I18N::translate('Media object');
 						echo '</td><td class="optionbox">';
 						echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a media object'), '</a>';
 						echo FunctionsPrint::helpLink('OBJE');
