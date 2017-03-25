@@ -60,10 +60,10 @@ class AncestryController extends ChartController {
 	 * print a child ascendancy
 	 *
 	 * @param Individual $individual
-	 * @param int        $sosa  child sosa number
-	 * @param int        $depth the ascendancy depth to show
+	 * @param int        $sosa
+	 * @param int        $generations
 	 */
-	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
+	public function printChildAscendancy(Individual $individual, $sosa, $generations) {
 		echo '<li>';
 		echo '<table><tbody><tr><td>';
 		if ($sosa === 1) {
@@ -83,7 +83,7 @@ class AncestryController extends ChartController {
 
 		// Parents
 		$family = $individual->getPrimaryChildFamily();
-		if ($family && $depth > 0) {
+		if ($family && $generations > 0) {
 			// Marriage details
 			echo '<span class="details1">';
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
@@ -97,10 +97,10 @@ class AncestryController extends ChartController {
 			echo '</span>';
 			echo '<ul id="sosa_', $sosa, '" class="generation">';
 			if ($family->getHusband()) {
-				$this->printChildAscendancy($family->getHusband(), $sosa * 2, $depth - 1);
+				$this->printChildAscendancy($family->getHusband(), $sosa * 2, $generations - 1);
 			}
 			if ($family->getWife()) {
-				$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $depth - 1);
+				$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $generations - 1);
 			}
 			echo '</ul>';
 		}
