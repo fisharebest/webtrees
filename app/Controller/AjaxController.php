@@ -16,7 +16,7 @@
 namespace Fisharebest\Webtrees\Controller;
 
 /**
- * Base controller for all popup pages
+ * Base controller for all AJAX responses pages
  */
 class AjaxController extends BaseController {
 	/**

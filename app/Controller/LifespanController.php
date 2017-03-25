@@ -110,8 +110,6 @@ class LifespanController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
 
@@ -145,7 +143,7 @@ class LifespanController extends PageController {
 			$this->calendar  = $this->defaultCalendar;
 		} elseif ($this->place) {
 			// Get all individual & family records found for a place
-			$this->place_obj = new Place($this->place, $WT_TREE);
+			$this->place_obj = new Place($this->place, $this->tree());
 			$xrefs           = Database::prepare(
 				"SELECT DISTINCT `i_id` FROM `##placelinks`" .
 				" JOIN `##individuals` ON `pl_gid`=`i_id` AND `pl_file`=`i_file`" .
@@ -157,14 +155,14 @@ class LifespanController extends PageController {
 				" WHERE `f_file`=:tree_id" .
 				" AND `pl_p_id`=:place_id"
 			)->execute([
-				'tree_id'  => $WT_TREE->getTreeId(),
+				'tree_id'  => $this->tree()->getTreeId(),
 				'place_id' => $this->place_obj->getPlaceId(),
 			])->fetchOneColumn();
 		} else {
 			// Modify an existing list of records
 			$xrefs = Session::get(self::SESSION_DATA, []);
 			if ($newpid) {
-				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $WT_TREE), $addfam));
+				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $this->tree()), $addfam));
 				$xrefs = array_unique($xrefs);
 			} elseif (!$xrefs) {
 				$xrefs = $this->addFamily($this->getSignificantIndividual(), false);
@@ -198,7 +196,7 @@ class LifespanController extends PageController {
 			// Test each xref to see if the search criteria are met
 			foreach ($xrefs as $key => $xref) {
 				$valid  = false;
-				$person = Individual::getInstance($xref, $WT_TREE);
+				$person = Individual::getInstance($xref, $this->tree());
 				if ($person) {
 					if ($person->canShow()) {
 						foreach ($person->getFacts() as $fact) {
@@ -210,7 +208,7 @@ class LifespanController extends PageController {
 						}
 					}
 				} else {
-					$family = Family::getInstance($xref, $WT_TREE);
+					$family = Family::getInstance($xref, $this->tree());
 					if ($family && $family->canShow() && $this->checkFact($family->getMarriage())) {
 						$valid          = true;
 						$this->people[] = $family->getHusband();
@@ -281,7 +279,7 @@ class LifespanController extends PageController {
 		}
 
 		$maxyear = min($maxyear, $this->currentYear); // Limit maximum year to current year as we can't forecast the future
-		$minyear = min($minyear, $maxyear - $WT_TREE->getPreference('MAX_ALIVE_AGE')); // Set default minimum chart length
+		$minyear = min($minyear, $maxyear - $this->tree()->getPreference('MAX_ALIVE_AGE')); // Set default minimum chart length
 
 		$this->timelineMinYear = (int) floor($minyear / 10) * 10; // round down to start of the decade
 		$this->timelineMaxYear = (int) ceil($maxyear / 10) * 10; // round up to start of next decade

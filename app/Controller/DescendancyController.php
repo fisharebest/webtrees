@@ -48,13 +48,11 @@ class DescendancyController extends ChartController {
 	 * Create the descendancy controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
 		// Extract parameters from form
 		$this->chart_style = Filter::getInteger('chart_style', 0, 3, 0);
-		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->generations = Filter::getInteger('generations', 2, $this->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'), $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(

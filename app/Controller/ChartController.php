@@ -35,18 +35,15 @@ class ChartController extends PageController {
 
 	/** @var \stdClass personbox dimensions */
 	private $box;
+
 	/**
 	 * Create the chart controller
-	 *
-	 * @param int $show_full needed for use by charts module
 	 */
-	public function __construct($show_full = 1) {
-		global $WT_TREE;
-
+	public function __construct() {
 		parent::__construct();
 
 		$rootid     = Filter::get('rootid', WT_REGEX_XREF);
-		$this->root = Individual::getInstance($rootid, $WT_TREE);
+		$this->root = Individual::getInstance($rootid, $this->tree());
 		if (!$this->root) {
 			// Missing root individual? Show the chart for someone.
 			$this->root = $this->getSignificantIndividual();
@@ -58,11 +55,7 @@ class ChartController extends PageController {
 		}
 
 		// Extract parameter from form
-		if ($show_full) {
-			$this->show_full = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
-		} else {
-			$this->show_full = 0;
-		}
+		$this->show_full = Filter::getInteger('show_full', 0, 1, $this->tree()->getPreference('PEDIGREE_FULL_DETAILS'));
 
 		$this->box = new \stdClass();
 		if ($this->showFull()) {
