@@ -36,11 +36,9 @@ class FanchartController extends ChartController {
 	 * Create the controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
-		$default_generations = $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
+		$default_generations = $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
 		$this->fan_style   = Filter::getInteger('fan_style', 2, 4, 3);

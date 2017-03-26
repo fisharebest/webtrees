@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -163,7 +163,7 @@ usort(
 					// new media
 					if ($controller->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 						echo '<tr><td class="descriptionbox">';
-						echo GedcomTag::getLabel('OBJE');
+						echo I18N::translate('Media object');
 						echo '</td><td class="optionbox">';
 						echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a media object'), '</a>';
 						echo FunctionsPrint::helpLink('OBJE');

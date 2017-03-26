@@ -64,11 +64,9 @@ class PedigreeController extends ChartController {
 	 * Create a pedigree controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
-		$this->orientation = Filter::getInteger('orientation', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
-		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->orientation = Filter::getInteger('orientation', 0, 3, $this->tree()->getPreference('PEDIGREE_LAYOUT'));
+		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $this->tree()->getPreference('MAX_PEDIGREE_GENERATIONS'), $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 		$bxspacing         = Theme::theme()->parameter('chart-spacing-x');
 		$byspacing         = Theme::theme()->parameter('chart-spacing-y');
 		$curgen            = 1; // -- track which generation the algorithm is currently working on

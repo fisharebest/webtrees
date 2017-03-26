@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
-use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Base controller for all other controllers
@@ -36,10 +36,25 @@ class BaseController {
 	/** @var string[] Exteral JavaScript files to load. */
 	private $external_javascript = [];
 
+	/** @var Tree Create a page for which tree */
+	private $tree;
+
 	/**
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
+		$this->tree = $WT_TREE;
+	}
+
+	/**
+	 * Create a page for this tree.
+	 *
+	 * @return Tree
+	 */
+	public function tree() {
+		return $this->tree;
 	}
 
 	/**
@@ -129,9 +144,6 @@ class BaseController {
 	 * Print the page footer, using the theme
 	 */
 	public function pageFooter() {
-		if (WT_DEBUG_SQL) {
-			echo Database::getQueryLog();
-		}
 		echo $this->getJavascript();
 	}
 }

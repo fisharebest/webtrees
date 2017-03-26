@@ -48,8 +48,6 @@ class BranchesController extends PageController {
 	 * Create a branches list controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
 		$this->surname     = Filter::get('surname', null, '');
@@ -60,7 +58,7 @@ class BranchesController extends PageController {
 			$this->setPageTitle(/* I18N: %s is a surname */
 				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
-			$self = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
+			$self = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'gedcomid'), $this->tree());
 			if ($self) {
 				$this->loadAncestors($self, 1);
 			}
@@ -100,8 +98,6 @@ class BranchesController extends PageController {
 	 * Fetch all individuals with a matching surname
 	 */
 	private function loadIndividuals() {
-		global $WT_TREE;
-
 		$sql =
 			"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
@@ -109,7 +105,7 @@ class BranchesController extends PageController {
 			" WHERE n_file = ?" .
 			" AND n_type != ?" .
 			" AND (n_surn = ? OR n_surname = ?";
-		$args = [$WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname];
+		$args = [$this->tree()->getTreeId(), '_MARNM', $this->surname, $this->surname];
 		if ($this->soundex_std) {
 			$sdx = Soundex::russell($this->surname);
 			if ($sdx !== null) {
@@ -132,7 +128,7 @@ class BranchesController extends PageController {
 		$rows              = Database::prepare($sql)->execute($args)->fetchAll();
 		$this->individuals = [];
 		foreach ($rows as $row) {
-			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+			$this->individuals[] = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
 		}
 		// Sort by birth date, oldest first
 		usort($this->individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');

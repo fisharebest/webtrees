@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -167,10 +167,10 @@ $controller->pageHeader();
 	<li class="active"><?php echo $controller->getPageTitle() ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle() ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form method="post" class="form-horizontal">
-	<?php echo Filter::getCsrf() ?>
+	<?= Filter::getCsrf() ?>
 
 	<?php if (Filter::get('action') === 'site'): ?>
 	<input type="hidden" name="action" value="site">
@@ -178,21 +178,21 @@ $controller->pageHeader();
 	<!-- INDEX_DIRECTORY -->
 	<div class="form-group">
 		<label for="INDEX_DIRECTORY" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Data folder') ?>
+			<?= /* I18N: A configuration setting */ I18N::translate('Data folder') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?php echo Filter::escapeHtml(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
+			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= Filter::escapeHtml(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Data folder" site configuration setting */ I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>
+				<?= /* I18N: Help text for the "Data folder" site configuration setting */ I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo /* I18N: “Apache” is a software program. */ I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.') ?>
+				<?= /* I18N: “Apache” is a software program. */ I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder.') ?>
+				<?= I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/).') ?>
+				<?= I18N::translate('The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/).') ?>
 			</p>
 		</div>
 	</div>
@@ -200,14 +200,14 @@ $controller->pageHeader();
 	<!-- MEMORY_LIMIT -->
 	<div class="form-group">
 		<label for="MEMORY_LIMIT" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Memory limit') ?>
+			<?= /* I18N: A configuration setting */ I18N::translate('Memory limit') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?php echo Filter::escapeHtml(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?php echo get_cfg_var('memory_limit') ?>" maxlength="255">
+			<input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?= Filter::escapeHtml(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?= get_cfg_var('memory_limit') ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: %s is an amount of memory, such as 32MB */ I18N::translate('By default, your server allows scripts to use %s of memory.', get_cfg_var('memory_limit')) ?>
-				<?php echo I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
+				<?= /* I18N: %s is an amount of memory, such as 32MB */ I18N::translate('By default, your server allows scripts to use %s of memory.', get_cfg_var('memory_limit')) ?>
+				<?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
+				<?= I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -631,7 +631,7 @@ $controller->pageHeader();
 		<input type="hidden" name="action" value="languages">
 
 		<p>
-			<?php echo I18N::translate('Select the languages that will be shown in menus.') ?>
+			<?= I18N::translate('Select the languages that will be shown in menus.') ?>
 		</p>
 
 		<fieldset class="form-group">
@@ -655,7 +655,7 @@ $controller->pageHeader();
 		<div class="col-sm-offset-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-check"></i>
-				<?php echo I18N::translate('save') ?>
+				<?= I18N::translate('save') ?>
 			</button>
 		</div>
 	</div>

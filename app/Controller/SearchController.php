@@ -105,8 +105,6 @@ class SearchController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
 		// $action comes from GET (search) or POST (replace)
@@ -129,7 +127,7 @@ class SearchController extends PageController {
 		}
 
 		// Only editors can use search/replace
-		if ($this->action === 'replace' && !Auth::isEditor($WT_TREE)) {
+		if ($this->action === 'replace' && !Auth::isEditor($this->tree())) {
 			$this->action = 'general';
 		}
 
@@ -155,17 +153,17 @@ class SearchController extends PageController {
 		}
 
 		// Trees to search
-		if (Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
+		if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
 			foreach (Tree::getAll() as $search_tree) {
 				if (Filter::get('tree_' . $search_tree->getTreeId())) {
 					$this->search_trees[] = $search_tree;
 				}
 			}
 			if (!$this->search_trees) {
-				$this->search_trees[] = $WT_TREE;
+				$this->search_trees[] = $this->tree();
 			}
 		} else {
-			$this->search_trees[] = $WT_TREE;
+			$this->search_trees[] = $this->tree();
 		}
 
 		// If we want to show associated persons, build the list
@@ -174,7 +172,7 @@ class SearchController extends PageController {
 			// We can type in an XREF into the header search, and jump straight to it.
 			// Otherwise, the header search is the same as the general search
 			if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
-				$record = GedcomRecord::getInstance($this->query, $WT_TREE);
+				$record = GedcomRecord::getInstance($this->query, $this->tree());
 				if ($record && $record->canShowName()) {
 					header('Location: ' . WT_BASE_URL . $record->getRawUrl());
 					exit;
@@ -200,13 +198,13 @@ class SearchController extends PageController {
 			break;
 		case 'replace':
 			$this->setPageTitle(I18N::translate('Search and replace'));
-			$this->search_trees = [$WT_TREE];
+			$this->search_trees = [$this->tree()];
 			$this->srindi       = 'checked';
 			$this->srfams       = 'checked';
 			$this->srsour       = 'checked';
 			$this->srnote       = 'checked';
 			if (Filter::post('query')) {
-				$this->searchAndReplace($WT_TREE);
+				$this->searchAndReplace($this->tree());
 				header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
 				exit;
 			}

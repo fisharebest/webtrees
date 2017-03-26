@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -82,16 +82,16 @@ sort($entries);
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <p>
-	<?php echo I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon); ?>
+	<?= I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon) ?>
 </p>
 
 <form method="post">
-	<?php echo Filter::getCsrf(); ?>
+	<?= Filter::getCsrf() ?>
 	<fieldset>
-		<legend class="sr-only"><?php echo $controller->getPageTitle(); ?></legend>
+		<legend class="sr-only"><?= $controller->getPageTitle() ?></legend>
 		<ul class="fa-ul">
 			<?php
 			foreach ($entries as $entry) {
@@ -110,8 +110,9 @@ sort($entries);
 			?>
 		</ul>
 	</fieldset>
+
 	<button class="btn btn-danger" type="submit">
 		<i class="fa fa-trash-o"></i>
-		<?php echo /* I18N: A button label. */ I18N::translate('delete'); ?>
+		<?= /* I18N: A button label. */ I18N::translate('delete') ?>
 	</button>
 </form>

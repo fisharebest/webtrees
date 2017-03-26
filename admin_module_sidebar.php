@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ if ($action === 'update_mods' && Filter::checkCsrf()) {
 
 $controller
 	->addInlineJavascript('
-		jQuery("#module_table").sortable({
+		$("#module_table").sortable({
 			items: ".sortme",
 			forceHelperSize: true,
 			forcePlaceholderSize: true,
@@ -59,7 +59,7 @@ $controller
 			cursor: "move",
 			axis: "y",
 			update: function(event, ui) {
-				jQuery("input", jQuery(this)).each(
+				$("input", $(this)).each(
 					function (index, element) {
 						element.value = index + 1;
 					}
@@ -76,56 +76,56 @@ $controller
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form method="post">
 	<input type="hidden" name="action" value="update_mods">
-	<?php echo Filter::getCsrf(); ?>
+	<?= Filter::getCsrf() ?>
 	<table id="module_table" class="table table-bordered">
 		<thead>
 		<tr>
-			<th class="col-xs-1"><?php echo I18N::translate('Sidebar'); ?></th>
-			<th class="col-xs-5"><?php echo I18N::translate('Description'); ?></th>
-			<th class="col-xs-1"><?php echo I18N::translate('Order'); ?></th>
-			<th class="col-xs-5"><?php echo I18N::translate('Access level'); ?></th>
+			<th class="col-xs-1"><?= I18N::translate('Sidebar') ?></th>
+			<th class="col-xs-5"><?= I18N::translate('Description') ?></th>
+			<th class="col-xs-1"><?= I18N::translate('Order') ?></th>
+			<th class="col-xs-5"><?= I18N::translate('Access level') ?></th>
 		</tr>
 		</thead>
 		<tbody>
-		<?php $order = 0; ?>
+		<?php $order = 0 ?>
 		<?php foreach ($modules as $module): ?>
-			<?php $order++; ?>
+			<?php $order++ ?>
 			<tr class="sortme">
 				<td class="col-xs-1">
 					<?php if ($module instanceof ModuleConfigInterface): ?>
-					<a href="<?php echo $module->getConfigLink(); ?>"><?php echo $module->getTitle(); ?> <i class="fa fa-cogs"></i></a>
+					<a href="<?= $module->getConfigLink() ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
 					<?php else: ?>
-					<?php echo $module->getTitle(); ?>
-					<?php endif; ?>
+					<?= $module->getTitle() ?>
+					<?php endif ?>
 				</td>
-				<td class="col-xs-5"><?php echo $module->getDescription(); ?></td>
-				<td class="col-xs-1"><input type="text" size="3" value="<?php echo $order; ?>" name="order-<?php echo $module->getName(); ?>"></td>
+				<td class="col-xs-5"><?= $module->getDescription() ?></td>
+				<td class="col-xs-1"><input type="text" size="3" value="<?= $order ?>" name="order-<?= $module->getName() ?>"></td>
 				<td class="col-xs-5">
 					<table class="table">
 						<tbody>
 							<?php foreach (Tree::getAll() as $tree): ?>
 								<tr>
 									<td>
-										<?php echo $tree->getTitleHtml(); ?>
+										<?= $tree->getTitleHtml() ?>
 									</td>
 									<td>
 										<?php echo FunctionsEdit::editFieldAccessLevel('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'sidebar')); ?>
 									</td>
 								</tr>
-							<?php endforeach; ?>
+							<?php endforeach ?>
 						</tbody>
 					</table>
 				</td>
 			</tr>
-		<?php endforeach; ?>
+		<?php endforeach ?>
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit">
 		<i class="fa fa-check"></i>
-		<?php echo I18N::translate('save'); ?>
+		<?= I18N::translate('save') ?>
 	</button>
 </form>

@@ -49,7 +49,7 @@ class Config {
 	}
 
 	/**
-	 * Fact tags (as opposed to event tags), that don't normally have a value
+	 * Facts and events that don't normally have a value
 	 *
 	 * return string[]
 	 */

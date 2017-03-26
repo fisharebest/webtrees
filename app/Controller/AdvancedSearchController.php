@@ -85,8 +85,6 @@ class AdvancedSearchController extends SearchController {
 	 * @return string[]
 	 */
 	public function getOtherFields() {
-		global $WT_TREE;
-
 		$ofields = [
 			'ADDR', 'ADDR:CITY', 'ADDR:STAE', 'ADDR:CTRY', 'ADDR:POST',
 			'ADOP:DATE', 'ADOP:PLAC',
@@ -130,7 +128,7 @@ class AdvancedSearchController extends SearchController {
 			'_MILI',
 		];
 		// Allow (some of) the user-specified fields to be selected
-		preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('INDI_FACTS_ADD'), $facts);
+		preg_match_all('/(' . WT_REGEX_TAG . ')/', $this->tree()->getPreference('INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
 			if (
 				$fact !== 'BIRT' &&
@@ -261,8 +259,6 @@ class AdvancedSearchController extends SearchController {
 	 * Perform the search
 	 */
 	private function advancedSearch() {
-		global $WT_TREE;
-
 		$this->myindilist = [];
 		$fct              = count($this->fields);
 		if (!array_filter($this->values)) {
@@ -366,7 +362,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		// Add the where clause
 		$sql .= " WHERE ind.i_file=?";
-		$bind[] = $WT_TREE->getTreeId();
+		$bind[] = $this->tree()->getTreeId();
 		for ($i = 0; $i < $fct; $i++) {
 			$field = $this->fields[$i];
 			$value = $this->values[$i];
@@ -640,7 +636,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$rows = Database::prepare($sql)->execute($bind)->fetchAll();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+			$person = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($this->fields as $n => $field) {
 				if ($this->values[$n] && preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field, $match)) {

@@ -1,5 +1,5 @@
 # webtrees: online genealogy
-# Copyright (C) 2016 webtrees development team
+# Copyright (C) 2017 webtrees development team
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -88,7 +88,7 @@ clean:
 language/webtrees.pot: $(LANGUAGE_SRC)
 	# Modify the .XML report files so that xgettext can scan them
 	find modules*/ -name "*.xml" -exec cp -p {} {}.bak \;
-	sed -i -e 's~\(I18N::[^)]*[)]\)~<?php echo \1; ?>~g' modules*/*/*.xml
+	sed -i -e 's~\(I18N::[^)]*[)]\)~<?= \1 ?>~g' modules*/*/*.xml
 	echo $^ | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2 --keyword=noop:1
 	# Restore the .XML files
 	find modules*/ -name "*.xml" -exec mv {}.bak {} \;
