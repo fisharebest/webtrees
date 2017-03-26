@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Theme;
  * Controller for the familybook chart
  */
 class FamilyBookController extends ChartController {
-	/** @var int Whether to show spouse details */
+	/** @var string Whether to show spouse details '0' or '1' */
 	public $show_spouse;
 
 	/** @var int Number of descendancy generations to show */
@@ -44,14 +44,12 @@ class FamilyBookController extends ChartController {
 	 * Create a family-book controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
 		// Extract the request parameters
 		$this->show_spouse = Filter::get('show_spouse', '[01]', '0');
 		$this->descent     = Filter::getInteger('descent', 0, 9, 5);
-		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
+		$this->generations = Filter::getInteger('generations', 2, $this->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
 
 		$this->bhalfheight = $this->getBoxDimensions()->height / 2;
 		if ($this->root && $this->root->canShowName()) {
@@ -162,7 +160,7 @@ class FamilyBookController extends ChartController {
 
 		// Print the spouse
 		if ($generation === 1) {
-			if ($this->show_spouse) {
+			if ($this->show_spouse === '1') {
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
@@ -216,7 +214,7 @@ class FamilyBookController extends ChartController {
 			// Determine line height for two or more spouces
 			// And then adjust the vertical line for the root person only
 			$famcount = 0;
-			if ($this->show_spouse) {
+			if ($this->show_spouse === '1') {
 				// count number of spouses
 				$famcount += count($person->getSpouseFamilies());
 			}
@@ -317,12 +315,10 @@ class FamilyBookController extends ChartController {
 	 * @return int
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
-		global $WT_TREE;
-
 		if ($depth > $this->generations) {
 			return $depth;
 		}
-		$person = Individual::getInstance($pid, $WT_TREE);
+		$person = Individual::getInstance($pid, $this->tree());
 		if (is_null($person)) {
 			return $depth;
 		}

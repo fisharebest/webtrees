@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -90,11 +90,11 @@ header('Content-Type: text/html; charset=UTF-8');
 	</head>
 	<body>
 		<h1>
-			<?php echo I18N::translate('Setup wizard for webtrees'); ?>
+			<?= I18N::translate('Setup wizard for webtrees') ?>
 		</h1>
 <?php
 
-echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
+echo '<form name="config" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 ////////////////////////////////////////////////////////////////////////////////

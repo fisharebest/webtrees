@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -6083,7 +6083,7 @@ class Stats {
 				$datestamp = I18N::dateFormat();
 			}
 
-			return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
+			return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
@@ -6091,7 +6091,7 @@ class Stats {
 				$datestamp = str_replace('%', '', I18N::timeFormat());
 			}
 
-			return date($datestamp, $user->getPreference('reg_timestamp'));
+			return date($datestamp, (int) $user->getPreference('reg_timestamp'));
 		case 'loggedin':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$yes = $params[0];

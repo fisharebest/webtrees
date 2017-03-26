@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,11 +36,9 @@ class FanchartController extends ChartController {
 	 * Create the controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
-		$default_generations = $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
+		$default_generations = $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
 		$this->fan_style   = Filter::getInteger('fan_style', 2, 4, 3);

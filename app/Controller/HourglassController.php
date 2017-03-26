@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,13 +57,12 @@ class HourglassController extends ChartController {
 	 * @param bool   $loadJS
 	 */
 	public function __construct($rootid = '', $show_full = 1, $loadJS = true) {
-		global $WT_TREE;
 
 		parent::__construct($show_full);
 
 		// Extract parameters from
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1, 0);
-		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 3);
+		$this->generations = Filter::getInteger('generations', 2, $this->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'), 3);
 
 		$this->canLoadJS = $loadJS;
 

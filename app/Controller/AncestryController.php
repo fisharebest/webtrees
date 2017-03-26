@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ class AncestryController extends ChartController {
 	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var int Determines style of chart */
+	/** @var string Determines style of chart  '0', '1', '2' or '3' */
 	public $chart_style;
 
 	/** @var int Number of generations to display */
@@ -39,14 +39,12 @@ class AncestryController extends ChartController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
-		// Extract form parameters
+		// Request details
 		$this->show_cousins = Filter::getInteger('show_cousins', 0, 1);
 		$this->chart_style  = Filter::get('chart_style', '[0123]', '0');
-		$this->generations  = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->generations  = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $this->tree()->getPreference('MAX_PEDIGREE_GENERATIONS'), $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -62,10 +60,10 @@ class AncestryController extends ChartController {
 	 * print a child ascendancy
 	 *
 	 * @param Individual $individual
-	 * @param int        $sosa  child sosa number
-	 * @param int        $depth the ascendancy depth to show
+	 * @param int        $sosa
+	 * @param int        $generations
 	 */
-	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
+	public function printChildAscendancy(Individual $individual, $sosa, $generations) {
 		echo '<li>';
 		echo '<table><tbody><tr><td>';
 		if ($sosa === 1) {
@@ -85,7 +83,7 @@ class AncestryController extends ChartController {
 
 		// Parents
 		$family = $individual->getPrimaryChildFamily();
-		if ($family && $depth > 0) {
+		if ($family && $generations > 0) {
 			// Marriage details
 			echo '<span class="details1">';
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
@@ -97,13 +95,12 @@ class AncestryController extends ChartController {
 				}
 			}
 			echo '</span>';
-			// display parents recursively - or show empty boxes
 			echo '<ul id="sosa_', $sosa, '" class="generation">';
 			if ($family->getHusband()) {
-				$this->printChildAscendancy($family->getHusband(), $sosa * 2, $depth - 1);
+				$this->printChildAscendancy($family->getHusband(), $sosa * 2, $generations - 1);
 			}
 			if ($family->getWife()) {
-				$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $depth - 1);
+				$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $generations - 1);
 			}
 			echo '</ul>';
 		}

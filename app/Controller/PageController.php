@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -156,7 +156,7 @@ class PageController extends BaseController {
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
 			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
-			var WT_GEDCOM      = "' . Filter::escapeJs($WT_TREE ? $WT_TREE->getName() : '') . '";
+			var WT_GEDCOM      = "' . Filter::escapeJs($this->tree() ? $this->tree()->getName() : '') . '";
 			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
 			var WT_SCRIPT_NAME = "' . Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
@@ -189,30 +189,28 @@ class PageController extends BaseController {
 	 * @return Individual
 	 */
 	public function getSignificantIndividual() {
-		global $WT_TREE;
-
 		static $individual; // Only query the DB once.
 
-		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'rootid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
+		if (!$individual && $this->tree()->getUserPreference(Auth::user(), 'rootid')) {
+			$individual = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'rootid'), $this->tree());
 		}
-		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'gedcomid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
+		if (!$individual && $this->tree()->getUserPreference(Auth::user(), 'gedcomid')) {
+			$individual = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'gedcomid'), $this->tree());
 		}
 		if (!$individual) {
-			$individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
+			$individual = Individual::getInstance($this->tree()->getPreference('PEDIGREE_ROOT_ID'), $this->tree());
 		}
 		if (!$individual) {
 			$individual = Individual::getInstance(
 				Database::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
-				)->execute([$WT_TREE->getTreeId()])->fetchOne(),
-				$WT_TREE
+				)->execute([$this->tree()->getTreeId()])->fetchOne(),
+				$this->tree()
 			);
 		}
 		if (!$individual) {
 			// always return a record
-			$individual = new Individual('I', '0 @I@ INDI', null, $WT_TREE);
+			$individual = new Individual('I', '0 @I@ INDI', null, $this->tree());
 		}
 
 		return $individual;

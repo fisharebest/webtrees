@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,13 +48,11 @@ class DescendancyController extends ChartController {
 	 * Create the descendancy controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-
 		parent::__construct();
 
 		// Extract parameters from form
 		$this->chart_style = Filter::getInteger('chart_style', 0, 3, 0);
-		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->generations = Filter::getInteger('generations', 2, $this->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'), $this->tree()->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -166,7 +164,7 @@ class DescendancyController extends ChartController {
 		echo '<li>';
 		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '">';
 		echo '<span class="details1">';
-		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
+		echo '<a href="#" onclick="expand_layer(\'' . $uid . '\'); return false;" class="top"><i id="' . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';

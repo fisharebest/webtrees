@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -115,8 +115,6 @@ class RelationshipController extends PageController {
 	 * @return string[]
 	 */
 	public function oldStyleRelationshipPath(array $path) {
-		global $WT_TREE;
-
 		$spouse_codes  = ['M' => 'hus', 'F' => 'wif', 'U' => 'spo'];
 		$parent_codes  = ['M' => 'fat', 'F' => 'mot', 'U' => 'par'];
 		$child_codes   = ['M' => 'son', 'F' => 'dau', 'U' => 'chi'];
@@ -124,9 +122,9 @@ class RelationshipController extends PageController {
 		$relationships = [];
 
 		for ($i = 1; $i < count($path); $i += 2) {
-			$family = Family::getInstance($path[$i], $WT_TREE);
-			$prev   = Individual::getInstance($path[$i - 1], $WT_TREE);
-			$next   = Individual::getInstance($path[$i + 1], $WT_TREE);
+			$family = Family::getInstance($path[$i], $this->tree());
+			$prev   = Individual::getInstance($path[$i - 1], $this->tree());
+			$next   = Individual::getInstance($path[$i + 1], $this->tree());
 			if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->getXref() . '@/', $family->getGedcom(), $match)) {
 				$rel1 = $match[1];
 			} else {

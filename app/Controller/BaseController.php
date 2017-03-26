@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
-use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Base controller for all other controllers
@@ -36,10 +36,25 @@ class BaseController {
 	/** @var string[] Exteral JavaScript files to load. */
 	private $external_javascript = [];
 
+	/** @var Tree Create a page for which tree */
+	private $tree;
+
 	/**
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
+		$this->tree = $WT_TREE;
+	}
+
+	/**
+	 * Create a page for this tree.
+	 *
+	 * @return Tree
+	 */
+	public function tree() {
+		return $this->tree;
 	}
 
 	/**
@@ -129,9 +144,6 @@ class BaseController {
 	 * Print the page footer, using the theme
 	 */
 	public function pageFooter() {
-		if (WT_DEBUG_SQL) {
-			echo Database::getQueryLog();
-		}
 		echo $this->getJavascript();
 	}
 }

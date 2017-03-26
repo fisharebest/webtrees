@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -605,6 +605,7 @@ abstract class AbstractTheme {
 			'<!--[if IE 8]><script src="' . WT_MODERNIZR_JS_URL . '"></script><![endif]-->' .
 			'<!--[if IE 8]><script src="' . WT_RESPOND_JS_URL . '"></script><![endif]-->' .
 			$this->metaCharset() .
+			$this->metaCsrf() .
 			$this->title($title) .
 			$this->favicon() .
 			$this->metaViewport() .
@@ -1790,6 +1791,15 @@ abstract class AbstractTheme {
 	 */
 	protected function metaCharset() {
 		return '<meta charset="UTF-8">';
+	}
+
+	/**
+	 * Make the CSRF token available to Javascript.
+	 *
+	 * @return string
+	 */
+	protected function metaCsrf() {
+		return '<meta name="csrf" content="' . Filter::escapeHtml(Filter::getCsrfToken()) . '">';
 	}
 
 	/**

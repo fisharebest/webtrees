@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,10 +56,10 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 
 ?>
 <!DOCTYPE html>
-<html <?php echo I18N::htmlAttributes(); ?>>
+<html <?= I18N::htmlAttributes() ?>>
 	<head>
 		<meta charset="UTF-8">
-		<title><?php echo WT_WEBTREES; ?></title>
+		<title><?= WT_WEBTREES ?></title>
 		<meta name="robots" content="noindex,follow">
 		<style type="text/css">
 			body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
@@ -73,26 +73,26 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 		</style>
 	</head>
 	<body>
-		<h1><?php echo I18N::translate('This website is temporarily unavailable'); ?></h1>
+		<h1><?= I18N::translate('This website is temporarily unavailable') ?></h1>
 		<div class="content">
 			<p>
-				<?php echo I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'); ?>
+				<?= I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.') ?>
 			</p>
-			<?php echo $messages; ?>
-			<?php echo I18N::translate('If you are the website administrator, you should check that:'); ?>
+			<?= $messages ?>
+			<?= I18N::translate('If you are the website administrator, you should check that:') ?>
 			<ol>
 				<li>
-					<?php echo /* I18N: [you should check that:] ... */ I18N::translate('the database connection settings in the file “/data/config.ini.php” are still correct'); ?>
+					<?= /* I18N: [you should check that:] ... */ I18N::translate('the database connection settings in the file “/data/config.ini.php” are still correct') ?>
 				</li>
 				<li>
-					<?php echo /* I18N: [you should check that:] ... */ I18N::translate('the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them'); ?>
+					<?= /* I18N: [you should check that:] ... */ I18N::translate('the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them') ?>
 				</li>
 				<li>
-					<?php echo /* I18N: [you should check that:] ... */ I18N::translate('you can connect to the database using other applications, such as phpmyadmin'); ?>
+					<?= /* I18N: [you should check that:] ... */ I18N::translate('you can connect to the database using other applications, such as phpmyadmin') ?>
 				</li>
 			</ol>
 			<p class="good">
-				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="https://webtrees.net">webtrees.net</a>.'); ?>
+				<?= I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="https://webtrees.net">webtrees.net</a>.') ?>
 			</p>
 		</div>
 	</body>

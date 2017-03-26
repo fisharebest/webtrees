@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,19 +41,19 @@ $html = $matches[1];
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title">
-					<?php echo I18N::translate('PHP information'); ?>
+					<?= I18N::translate('PHP information') ?>
 				</h2>
 			</div>
 			<div class="panel-body" dir="ltr">
 				<div class="php-info">
-					<?php echo $html; ?>
+					<?= $html ?>
 				</div>
 			</div>
 		</div>
@@ -65,15 +65,15 @@ $html = $matches[1];
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title">
-					<?php echo I18N::translate('MySQL variables'); ?>
+					<?= I18N::translate('MySQL variables') ?>
 				</h2>
 			</div>
 			<div class="panel-body">
 				<dl>
 					<?php foreach ($variables as $variable => $value): ?>
-						<dt><?php echo Filter::escapeHtml($variable); ?></dt>
-						<dd><?php echo Filter::escapeHtml($value); ?></dd>
-					<?php endforeach; ?>
+						<dt><?= Filter::escapeHtml($variable) ?></dt>
+						<dd><?= Filter::escapeHtml($value) ?></dd>
+					<?php endforeach ?>
 				</dl>
 			</div>
 		</div>
