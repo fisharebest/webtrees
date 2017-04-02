@@ -512,6 +512,8 @@ class Media extends GedcomRecord {
 			return 'video/quicktime';
 		case 'mp3':
 			return 'audio/mpeg';
+		case 'mp4':
+			return 'video/mp4';
 		case 'ogv':
 			return 'video/ogg';
 		case 'pdf':
