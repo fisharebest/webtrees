@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-03-07 21:18+0000\n"
+"PO-Revision-Date: 2017-04-03 20:50+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nl/>\n"
 "Language: nl\n"
@@ -5221,7 +5221,7 @@ msgstr "Voorouders in rechte lijn"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr "Voorouders in directe lijn en hun gezinnen"
+msgstr "Voorouders in rechte lijn en hun gezinnen"
 
 #: admin_site_upgrade.php:137
 msgid "Disable these modules"
