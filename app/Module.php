@@ -135,7 +135,7 @@ class Module {
 					}
 				} catch (\Exception $ex) {
 					// The module has been deleted or is broken? Disable it.
-					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
+					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. " . $ex->getMessage());
 					Database::prepare(
 						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
 					)->execute([
@@ -413,6 +413,7 @@ class Module {
 				}
 			} catch (\Exception $ex) {
 				// Old or invalid module?
+				Log::addErrorLog($ex->getMessage());
 			}
 		}
 
