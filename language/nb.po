@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-03-22 06:44+0000\n"
+"PO-Revision-Date: 2017-04-08 05:54+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nb/>\n"
 "Language: nb\n"
@@ -5634,7 +5634,7 @@ msgstr "Endowment House"
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
 msgid "Engagement"
-msgstr "Forlovet"
+msgstr "Forlovelse"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
