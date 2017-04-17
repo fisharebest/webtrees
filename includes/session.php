@@ -385,7 +385,7 @@ session_set_save_handler(
 
 Session::start([
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
-	'cookie_path'    => parse_url(WT_BASE_URL, PHP_URL_PATH),
+	'cookie_path'    => Filter::escapeUrl(parse_url(WT_BASE_URL, PHP_URL_PATH)),
 ]);
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
