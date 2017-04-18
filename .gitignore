@@ -1,5 +1,6 @@
 /.vagrant
 /apidocs/
+phpunit.xml
 robots.txt
 /.sass-cache/
 /node_modules/
