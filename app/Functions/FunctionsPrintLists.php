@@ -323,10 +323,10 @@ class FunctionsPrintLists {
 			if (!$individual->canShowName()) {
 				continue;
 			}
-			if ($individual->isPendingAddtion()) {
-				$class = ' class="new"';
-			} elseif ($individual->isPendingDeletion()) {
+			if ($individual->isPendingDeletion()) {
 				$class = ' class="old"';
+			} elseif ($individual->isPendingAddtion()) {
+				$class = ' class="new"';
 			} else {
 				$class = '';
 			}
@@ -766,10 +766,10 @@ class FunctionsPrintLists {
 			if (!$family->canShow()) {
 				continue;
 			}
-			if ($family->isPendingAddtion()) {
-				$class = ' class="new"';
-			} elseif ($family->isPendingDeletion()) {
+			if ($family->isPendingDeletion()) {
 				$class = ' class="old"';
+			} elseif ($family->isPendingAddtion()) {
+				$class = ' class="new"';
 			} else {
 				$class = '';
 			}
@@ -1052,10 +1052,10 @@ class FunctionsPrintLists {
 			if (!$source->canShow()) {
 				continue;
 			}
-			if ($source->isPendingAddtion()) {
-				$class = ' class="new"';
-			} elseif ($source->isPendingDeletion()) {
+			if ($source->isPendingDeletion()) {
 				$class = ' class="old"';
+			} elseif ($source->isPendingAddtion()) {
+				$class = ' class="new"';
 			} else {
 				$class = '';
 			}
@@ -1177,10 +1177,10 @@ class FunctionsPrintLists {
 			if (!$note->canShow()) {
 				continue;
 			}
-			if ($note->isPendingAddtion()) {
-				$class = ' class="new"';
-			} elseif ($note->isPendingDeletion()) {
+			if ($note->isPendingDeletion()) {
 				$class = ' class="old"';
+			} elseif ($note->isPendingAddtion()) {
+				$class = ' class="new"';
 			} else {
 				$class = '';
 			}
@@ -1268,10 +1268,10 @@ class FunctionsPrintLists {
 			if (!$repository->canShow()) {
 				continue;
 			}
-			if ($repository->isPendingAddtion()) {
-				$class = ' class="new"';
-			} elseif ($repository->isPendingDeletion()) {
+			if ($repository->isPendingDeletion()) {
 				$class = ' class="old"';
+			} elseif ($repository->isPendingAddtion()) {
+				$class = ' class="new"';
 			} else {
 				$class = '';
 			}
@@ -1357,10 +1357,10 @@ class FunctionsPrintLists {
 		foreach ($media_objects as $media_object) {
 			if ($media_object->canShow()) {
 				$name = $media_object->getFullName();
-				if ($media_object->isPendingAddtion()) {
-					$class = ' class="new"';
-				} elseif ($media_object->isPendingDeletion()) {
+				if ($media_object->isPendingDeletion()) {
 					$class = ' class="old"';
+				} elseif ($media_object->isPendingAddtion()) {
+					$class = ' class="new"';
 				} else {
 					$class = '';
 				}
