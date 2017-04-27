@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-04-08 05:54+0000\n"
+"PO-Revision-Date: 2017-04-27 07:38+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nb/>\n"
 "Language: nb\n"
@@ -1019,7 +1019,7 @@ msgstr "Fane som viser en persons nærmeste familie."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "En fane som viser fakta og begivenheter knyttet til en person."
+msgstr "En fane som viser fakta og hendelser knyttet til en person."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -1825,7 +1825,7 @@ msgstr "Alle eksisterende PhpGedView-brukere må ha forskjellige epostadresser"
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr "Alle fakta og begivenheter"
+msgstr "Alle fakta og hendelser"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
@@ -1937,7 +1937,7 @@ msgstr "En alternativ måte å logge inn eller ut på."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "En forbindelse er en annen person som har vært involvert i faktumet/begivenheten, for eksempel en fadder eller en prest."
+msgstr "En forbindelse er en annen person som har vært involvert i faktumet/hendelsen, for eksempel en fadder eller en prest."
 
 #: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -2217,7 +2217,7 @@ msgstr "Forbindelser"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
-msgstr "Koble begivenheter til denne kilden"
+msgstr "Koble hendelser til denne kilden"
 
 #: search.php:107 search.php:266
 msgid "Associates"
@@ -4283,7 +4283,7 @@ msgstr "Egendefinert"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
-msgstr "Egendefinert begivenhet"
+msgstr "Egendefinert hendelse"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
@@ -4476,7 +4476,7 @@ msgstr "Innførelsesdato i original kilde"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Dato for begivenhet"
+msgstr "Dato for hendelse"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
@@ -4527,7 +4527,7 @@ msgstr "Tidsrom"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Tidsrom brukes for å angi at en begivenhet, f.eks. en fødsel, fant sted på et ukjent tidspunkt innenfor et mulig tidsrom."
+msgstr "Tidsrom brukes for å angi at en hendelse, f.eks. en fødsel, fant sted på et ukjent tidspunkt innenfor et mulig tidsrom."
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -5335,7 +5335,7 @@ msgstr "Duplikat. Brukernavnet er allerede i bruk. Vennligst velg et annet bruke
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Alle kilder registrerer bestemte begivenheter, vanligvis for et gitt tidsrom og et jurisdiksjonsområde. En Folketelling registrerer for eksempel folketellingsbegivenheter, og en kirkebok registrerer begivenheter som fødsel/dåp, bryllup og død/begravelse.<br><br>Velg fra listen over tilgjengelige begivenhetstyper hvilke begivenheter som registreres av denne kilden. Datoen bør angis som en tidsperiode, som for eksempel <i>FROM 1900 TO 1910</i>. Jurisdiksjonsområdet er navnet på den laveste myndighet som omfatter alle stedsnavnene som finnes i kilden. For eksempel vil «Tranøy, Troms, NOR» brukes som jurisdiksjonsområde for begivenheter som finner sted et eller annet sted i Tranøy sogn i Troms, mens jurisdiksjonsområdet vil være «Troms, NOR» hvis kilden registrerer begivenheter ikke bare fra Tranøy men også fra andre steder i Troms fylke."
+msgstr "Alle kilder registrerer bestemte hendelser, vanligvis for et gitt tidsrom og et jurisdiksjonsområde. En Folketelling registrerer for eksempel folketellingshendelser, og en kirkebok registrerer hendelser som fødsel/dåp, bryllup og død/begravelse.<br><br>Velg fra listen over tilgjengelige typer hvilke hendelser som registreres av denne kilden. Datoen bør angis som en tidsperiode, som for eksempel <i>FROM 1900 TO 1910</i>. Jurisdiksjonsområdet er navnet på den laveste myndighet som omfatter alle stedsnavnene som finnes i kilden. For eksempel vil «Tranøy, Troms, NOR» brukes som jurisdiksjonsområde for hendelser som finner sted et eller annet sted i Tranøy sogn i Troms, mens jurisdiksjonsområdet vil være «Troms, NOR» hvis kilden registrerer hendelser ikke bare fra Tranøy men også fra andre steder i Troms fylke."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5726,19 +5726,19 @@ msgstr "Europa"
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr "Begivenhet"
+msgstr "Hendelse"
 
 #: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
-msgstr "Begivenheter"
+msgstr "Hendelser"
 
 #: statistics.php:420
 msgid "Events in countries"
-msgstr "Begivenheter i land"
+msgstr "Hendelser i land"
 
 #: app/Module/IndividualFactsTabModule.php:134
 msgid "Events of close relatives"
-msgstr "Begivenheter for nære slektninger"
+msgstr "Hendelser for nære slektninger"
 
 #: admin_users.php:532
 msgid "Everybody has this role, including visitors to the website and search engines."
@@ -5896,7 +5896,7 @@ msgstr "Faktaikoner"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr "Fakta eller begivenhet"
+msgstr "Faktum eller hendelse"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5904,7 +5904,7 @@ msgstr "Fakta eller begivenhet"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "Fakta og begivenheter"
+msgstr "Fakta og hendelser"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
@@ -6278,7 +6278,7 @@ msgstr "Filter"
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
-msgstr "Finn fakta eller begivenheter"
+msgstr "Finn faktum eller hendelse"
 
 #: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
@@ -6322,7 +6322,7 @@ msgstr "Finn person"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Finn relasjon"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6335,7 +6335,7 @@ msgstr "Finn andre slekskap"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Finn slektskap via aner"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6343,7 +6343,7 @@ msgstr "Finn nærmeste slektskap"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Finn ikkerelaterte personer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -6357,7 +6357,7 @@ msgstr "Første altergang"
 
 #: statistics.php:370
 msgid "First event"
-msgstr "Første begivenhet"
+msgstr "Første hendelse"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:357
@@ -7310,7 +7310,7 @@ msgstr "Hvis etternavnet er ukjent, bruk to skråstreker uten noe imellom: <%s>N
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "En person med andre begivenheter enn Død, Begravelse eller Kremering som er inntruffet nyligere enn for dette antall år siden, antas å være «i live», Barns fødselsdatoer regnes også som begivenheter av denne typen."
+msgstr "En person med andre hendelser enn død, begravelse eller kremering som er inntruffet nyligere enn for dette antall år siden, antas å være «i live», Barns fødselsdatoer regnes også som hendelser av denne typen."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -8090,7 +8090,7 @@ msgstr "Siste påminnelse med epost ble sendt "
 
 #: statistics.php:371
 msgid "Last event"
-msgstr "Seneste begivenhet"
+msgstr "Seneste hendelse"
 
 #: admin_users.php:852
 msgid "Last signed in"
@@ -9810,28 +9810,28 @@ msgstr "Ingen feil funnet."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Ingen begivenheter neste %s dag."
-msgstr[1] "Ingen begivenheter neste %s dager."
+msgstr[0] "Ingen hendelse neste %s dag."
+msgstr[1] "Ingen hendelser neste %s dager."
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
 msgid "No events exist for today."
-msgstr "Ingen begivenheter finnes for i dag."
+msgstr "Ingen hendelser finnes for i dag."
 
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
 msgid "No events exist for tomorrow."
-msgstr "Ingen begivenheter finnes for i morgen."
+msgstr "Ingen hendelser finnes for i morgen."
 
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
 msgid "No events for living individuals exist for today."
-msgstr "Ingen begivenheter for levende personer finnes i dag."
+msgstr "Ingen hendelser for levende personer finnes i dag."
 
 #: app/Functions/FunctionsPrintLists.php:1724
 #: app/Functions/FunctionsPrintLists.php:1836
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Ingen begivenheter for levende personer finnes for i morgen."
+msgstr "Ingen hendelser for levende personer finnes for i morgen."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1727
@@ -9839,8 +9839,8 @@ msgstr "Ingen begivenheter for levende personer finnes for i morgen."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Ingen begivenheter for nålevende personer den nærmeste %s dag."
-msgstr[1] "Ingen begivenheter for nålevende personer de neste %s dagene."
+msgstr[0] "Ingen hendelser for nålevende personer den nærmeste %s dag."
+msgstr[1] "Ingen hendelser for nålevende personer de neste %s dagene."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -10808,7 +10808,7 @@ msgstr "Forlovelsessted"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr "Sted for begivenhet"
+msgstr "Sted for hendelse"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
@@ -10865,7 +10865,7 @@ msgstr "Steder i %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Stedsnavn bør innføres i overensstemmelse med genealogiske standarder: den mest spesifikke informasjonen om stedet skrives først, deretter arbeider man seg opp gjennom hierarkiet til det minst spesifikke nivået, med komma som skilletegn mellom nivåene. Navnene du bruker for å angi stedene bør representere de ulike nivåene i stats- eller kirkeadministrasjonen der sentrale registre føres og oppbevares, og hvilket nivå du innfører en bestemt informasjon på, bør samsvare med hvilket nivå informasjonen er innført på.<br><br>For eksempel, et sted som Brødstadbotn i Troms kunne føres inn som «Brøstadbotn, Dyrøy, Troms, NOR». Første del av stedsangivelsen, «Brøstadbotn», er stedet hvor begivenheten fant sted. Neste del, «Dyrøy», er kommunen. «Troms» er fylket, og «NOR» er landet. Det er viktig å angi alle nivåene, siden administrasjonen på hvert nivå kan føre relevante registre.<br><br>Hvis et nivå i stedsangivelsen er ukjent, bør dette angis med en tom plass mellom to kommaer. Hvis du for eksempel ikke vet hvilken kommune Brøstadbotn ligger i, bør det innføres som «Brøstadbotn, , Troms, NOR». Hvis du ikke vet mer enn at en person er født i Troms, vil stedsnavnet kunne innføres som «, , Troms, NOR».<br><br>Du kan bruke <b>Finn stedet</b> for å finne steder som allerede forekommer i databasen."
+msgstr "Stedsnavn bør innføres i overensstemmelse med genealogiske standarder: den mest spesifikke informasjonen om stedet skrives først, deretter arbeider man seg opp gjennom hierarkiet til det minst spesifikke nivået, med komma som skilletegn mellom nivåene. Navnene du bruker for å angi stedene bør representere de ulike nivåene i stats- eller kirkeadministrasjonen der sentrale registre føres og oppbevares, og hvilket nivå du innfører en bestemt informasjon på, bør samsvare med hvilket nivå informasjonen er innført på.<br><br>For eksempel, et sted som Brødstadbotn i Troms kunne føres inn som «Brøstadbotn, Dyrøy, Troms, NOR». Første del av stedsangivelsen, «Brøstadbotn», er stedet hvor hendelsen fant sted. Neste del, «Dyrøy», er kommunen. «Troms» er fylket, og «NOR» er landet. Det er viktig å angi alle nivåene, siden administrasjonen på hvert nivå kan føre relevante registre.<br><br>Hvis et nivå i stedsangivelsen er ukjent, bør dette angis med en tom plass mellom to kommaer. Hvis du for eksempel ikke vet hvilken kommune Brøstadbotn ligger i, bør det innføres som «Brøstadbotn, , Troms, NOR». Hvis du ikke vet mer enn at en person er født i Troms, vil stedsnavnet kunne innføres som «, , Troms, NOR».<br><br>Du kan bruke <b>Finn stedet</b> for å finne steder som allerede forekommer i databasen."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
@@ -11060,7 +11060,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Skriv ut grunnleggende begivenheter når tomt"
+msgstr "Skriv ut grunnleggende hendelser når tomt"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -11608,7 +11608,7 @@ msgstr "Forskningsoppgaver"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Forskningsoppgaver er en spesiell form for begivenheter som kan legges til personer i slektstreet for å angi hvor det trengs nærmere undersøkelse. De kan brukes som en påminnelse om å kontrollere fakta i mer pålitelige kilder, om å skaffe dokumenter eller bilder, for å bedømme motstridende opplysninger, osv."
+msgstr "Forskningsoppgaver er en spesiell form for hendelser som kan legges til personer i slektstreet for å angi hvor det trengs nærmere undersøkelse. De kan brukes som en påminnelse om å kontrollere fakta i mer pålitelige kilder, om å skaffe dokumenter eller bilder, for å bedømme motstridende opplysninger, osv."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -11989,7 +11989,7 @@ msgstr "Velg en dato"
 
 #: edit_interface.php:1245
 msgid "Select events"
-msgstr "Velg begivenheter"
+msgstr "Velg hendelser"
 
 #: app/Module/GoogleMapsModule.php:497
 msgid "Select flag"
@@ -12014,7 +12014,7 @@ msgstr "Velg det ønskede antalls-intervallet"
 
 #: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
-msgstr "Velg de fakta og begivenheter som skal beholdes fra bagge poster."
+msgstr "Velg de fakta og hendelser som skal beholdes fra bagge poster."
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
@@ -12571,7 +12571,7 @@ msgstr "Bare vise fødselsdager, dødsfall og vielse"
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Vis bare begivenheter for nålevende personer"
+msgstr "Vis bare hendelser for nålevende personer"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12584,7 +12584,7 @@ msgstr "Vis kun personer hvor kjønn er ukjent."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Vis bare personer, begivenheter eller alle"
+msgstr "Vis bare personer, hendelser, eller alle"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12672,7 +12672,7 @@ msgstr "Vis dato og tid for oppdatering"
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr "Vis begivenheter for nærmeste slektninger på personsider"
+msgstr "Vis hendelser for nærmeste slektninger på personsider"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
@@ -12690,7 +12690,7 @@ msgstr "Vis etternavnlisten"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Vis kart over steder og begivenheter med Google Maps™-tjenesten."
+msgstr "Vis kart over steder og hendelser med Google Maps™-tjenesten."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
@@ -12949,7 +12949,7 @@ msgstr "Visse stedsnavn kan skrives med valgfrie prefiks og suffiks, f.eks. «Bu
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Enkelte tema kan vise ikoner under \"Fakta og begivenheter\"."
+msgstr "Enkelte tema kan vise ikoner under \"Fakta og hendelser\"."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13019,7 +13019,7 @@ msgstr "Kilde"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Kildehenvisninger kan inkludere felter for å lagre informasjon om kvaliteten på dataene (primærkilde, sekundærkilde, osv.) og datoen begivenheten ble registrert i kilden. Hvis du ikke bruker disse feltene, kan du deaktivere dem så de ikke vises når du oppretter ny kilder."
+msgstr "Kildehenvisninger kan inkludere felter for å lagre informasjon om kvaliteten på dataene (primærkilde, sekundærkilde, osv.) og datoen hendelsen ble registrert i kilden. Hvis du ikke bruker disse feltene, kan du deaktivere dem så de ikke vises når du oppretter ny kilder."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13053,7 +13053,7 @@ msgstr "Kilder"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr "Kilder for begivenheter"
+msgstr "Kilder for hendelser"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
@@ -13688,13 +13688,13 @@ msgstr "Mappen kan angis fullt ut (f.eks. /home/user_name/webtrees_data/) eller 
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr "Følgende fakta og begivenheter ble funnet i begge poster."
+msgstr "Følgende fakta og hendelser ble funnet i begge poster."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Følgende fakta og begivenheter ble kun funnet i posten for %s."
+msgstr "Følgende fakta og hendelser ble kun funnet i posten for %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13894,7 +13894,7 @@ msgstr "Serverens tidsgrense ble nådd."
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "Slektstreets størrelse, tidligste og nyligste begivenheter, vanlige navn, osv."
+msgstr "Slektstreets størrelse, tidligste og nyligste hendelser, vanlige navn, osv."
 
 #: help_text.php:222
 #, php-format
@@ -14106,7 +14106,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Disse grupper av individer har ingen relasjon til %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14189,7 +14189,7 @@ msgstr "Dette slektstreet inneholder ingen bilder."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Dette slektstreet ble sist oppdatert #gedcomUpdated#. Det er til sammen #totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er #firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste begivenhet er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>HVis du har kommentarer eller spørsmål, kontakt #contactWebmaster#."
+msgstr "Dette slektstreet ble sist oppdatert #gedcomUpdated#. Det er til sammen #totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er #firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste hendelse er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>HVis du har kommentarer eller spørsmål, kontakt #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
@@ -14253,7 +14253,7 @@ msgstr "Denne informasjon er privat, og kan ikke vises."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Her kan du endre kalenderåret. Skriv inn et år i feltet og trykk <b>Enter</b> for å vise kalenderen for det året.<br><br><b>Avanserte funksjoner</b> for <b>Vis år</b><dl><dt><b>Mer enn ett år</b></dt><dd>Man kan søke etter datoer innenfor en lengre tidsperiode.<br><br>Tidsperioder er <u>inklusive</u>: de strekker seg fra 1. januar i det første året i perioden til 31. desember i det siste året. Her er noen eksempler på perioder<br><br><b>1992-5</b> for alle begivenheter fra 1992 til 1995.<br><b>1972-89</b> for alle begivenheter fra 1972 til 1989.<br><b>1610-759</b> for alle begivenheter fra 1610 to 1759.<br><b>1880-1905</b> for alle begivenheter fra 1880 til 1905.<br><b>880-1105</b> for alle begivenheter fra 880 to 1105.<br><br>For å se alle begivenheter i et bestemt tiår eller århundre, kan du erstatte de(n) siste sifferet i årstallet med <b>?</b>. For eksempel <b>197?</b> for alle begivenheter fra 1970 til 1979 eller <b>16??</b> for alle begivenheter på 1600-tallet.<br><br>Velger man en tidsperiode, skifter kalenderen til årsvisning.</dd></dl>"
+msgstr "Her kan du endre kalenderåret. Skriv inn et år i feltet og trykk <b>Enter</b> for å vise kalenderen for det året.<br><br><b>Avanserte funksjoner</b> for <b>Vis år</b><dl><dt><b>Mer enn ett år</b></dt><dd>Man kan søke etter datoer innenfor en lengre tidsperiode.<br><br>Tidsperioder er <u>inklusive</u>: de strekker seg fra 1. januar i det første året i perioden til 31. desember i det siste året. Her er noen eksempler på perioder<br><br><b>1992-5</b> for alle hendelser fra 1992 til 1995.<br><b>1972-89</b> for alle hendelser fra 1972 til 1989.<br><b>1610-759</b> for alle hendelser fra 1610 to 1759.<br><b>1880-1905</b> for alle hendelser fra 1880 til 1905.<br><b>880-1105</b> for alle hendelser fra 880 to 1105.<br><br>For å se alle hendelser i et bestemt tiår eller århundre, kan du erstatte de(n) siste sifferet i årstallet med <b>?</b>. For eksempel <b>197?</b> for alle hendelser fra 1970 til 1979 eller <b>16??</b> for alle hendelser på 1600-tallet.<br><br>Velger man en tidsperiode, skifter kalenderen til årsvisning.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
@@ -14792,7 +14792,7 @@ msgstr "For å fullføre oppdateringen må filene installeres manuelt."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "For å opprette nye forskningsoppgaver må først «forskningsoppgave» føyes til i listen over fakta og begivenheter i innstillingene for slektstreet."
+msgstr "For å opprette nye forskningsoppgaver må først «forskningsoppgave» føyes til i listen over fakta og hendelser i innstillingene for slektstreet."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -14930,7 +14930,7 @@ msgstr "Totalt antall skilsmisser"
 #: app/Module/HtmlBlockModule.php:203
 #: modules_v3/missing_facts_report/report.xml:602 statistics.php:367
 msgid "Total events"
-msgstr "Antall begivenheter"
+msgstr "Antall hendelser"
 
 #: app/Stats.php:5207 modules_v3/fact_sources/report.xml:248
 #: modules_v3/fact_sources/report.xml:252
@@ -15258,7 +15258,7 @@ msgstr "Pakke ut %s til en midlertidig mappe…"
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr "Kommende begivenheter"
+msgstr "Kommende hendelser"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
@@ -15358,7 +15358,7 @@ msgstr "Bruk passord"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Bruk sendmail til å sende meldinger"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15763,7 +15763,7 @@ msgstr "ID-feltet kan ikke stå tomt når det legges til en lenke."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Når nye nære slektninger innføres, kan kildesitater føyes til poster (personer og familier) eller til fakta og begivenheter (fødsel, vielse og død). Dette alternativet avgjør om poster eller fakta er forvalgt."
+msgstr "Når nye nære slektninger innføres, kan kildesitater føyes til poster (personer og familier) eller til fakta og hendelser (fødsel, vielse og død). Dette alternativet avgjør om poster eller fakta er forvalgt."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
