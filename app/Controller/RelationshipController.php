@@ -156,7 +156,7 @@ class RelationshipController extends PageController {
 	 * @param string $xref2
 	 * @param int    $tree_id
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function allAncestors($xref1, $xref2, $tree_id) {
 		$ancestors = [$xref1, $xref2];
