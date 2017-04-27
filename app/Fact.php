@@ -74,13 +74,13 @@ class Fact {
 	 * Get the value of level 1 data in the fact
 	 * Allow for multi-line values
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 	public function getValue() {
 		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
 			return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
 		} else {
-			return null;
+			return '';
 		}
 	}
 
@@ -117,13 +117,13 @@ class Fact {
 	 *
 	 * @param string $tag
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 	public function getAttribute($tag) {
 		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
 			return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
 		} else {
-			return null;
+			return '';
 		}
 	}
 
@@ -264,7 +264,7 @@ class Fact {
 		switch ($this->tag) {
 		case 'EVEN':
 		case 'FACT':
-			if ($this->getAttribute('TYPE')) {
+			if ($this->getAttribute('TYPE') !== '') {
 				// Custom FACT/EVEN - with a TYPE
 				return I18N::translate(Filter::escapeHtml($this->getAttribute('TYPE')));
 			}
@@ -547,11 +547,11 @@ class Fact {
 
 		// - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
 		// - Treat dated after BURI facts as BURI instead
-		if ($a->getAttribute('DATE') !== null && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
+		if ($a->getAttribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
 			$atag = 'BURI';
 		}
 
-		if ($b->getAttribute('DATE') !== null && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
+		if ($b->getAttribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
 			$btag = 'BURI';
 		}
 
@@ -559,11 +559,11 @@ class Fact {
 
 		// If facts are the same then put dated facts before non-dated facts
 		if ($ret == 0) {
-			if ($a->getAttribute('DATE') !== null && $b->getAttribute('DATE') === null) {
+			if ($a->getAttribute('DATE') !== '' && $b->getAttribute('DATE') === '') {
 				return -1;
 			}
 
-			if ($b->getAttribute('DATE') !== null && $a->getAttribute('DATE') === null) {
+			if ($b->getAttribute('DATE') !== '' && $a->getAttribute('DATE') === '') {
 				return 1;
 			}
 

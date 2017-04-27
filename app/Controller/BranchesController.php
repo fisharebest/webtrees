@@ -225,7 +225,7 @@ class BranchesController extends PageController {
 					break;
 				}
 			}
-			if ($pedi && $pedi != 'birth') {
+			if ($pedi !== '' && $pedi !== 'birth') {
 				$indi_html = '<span class="red">' . GedcomCodePedi::getValue($pedi, $individual) . '</span> ' . $indi_html;
 			}
 		}
