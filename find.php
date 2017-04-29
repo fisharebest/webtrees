@@ -110,7 +110,7 @@ if ($type == 'specialchar') {
 	Auth::user()->setPreference('default_language_filter', $language_filter);
 	$action = 'filter';
 	echo '<div id="find-header">
-	<form name="filterspecialchar" action="find.php">
+	<form name="filterspecialchar">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
 	<input type="hidden" name="callback" value="' . $callback . '">

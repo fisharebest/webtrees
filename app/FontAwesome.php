@@ -26,6 +26,7 @@ class FontAwesome extends Html {
 	const ICONS = [
 		// Application icons
 		'calendar'           => 'fa fa-calendar wt-icon-calendar',
+		'cancel'             => 'fa fa-close wt-icon-cancel',
 		'coordinates'        => 'fa fa-map-marker wt-icon-coordinates',
 		'copy'               => 'fa fa-copy wt-icon-copy',
 		'delete'             => 'fa fa-trash-o wt-icon-delete',
