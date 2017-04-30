@@ -198,7 +198,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	private function getRecentChanges(Tree $tree, $days) {
 		$sql =
 			"SELECT xref FROM `##change`" .
-			" WHERE new_gedcom IS NOT NULL AND change_time > DATE_SUB(NOW(), INTERVAL :days DAY) AND gedcom_id = :tree_id" .
+			" WHERE new_gedcom != '' AND change_time > DATE_SUB(NOW(), INTERVAL :days DAY) AND gedcom_id = :tree_id" .
 			" GROUP BY xref" .
 			" ORDER BY MAX(change_id) DESC";
 

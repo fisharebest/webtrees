@@ -349,7 +349,7 @@ class FunctionsPrintFacts {
 		echo '<br>';
 
 		$addr = $fact->getAttribute('ADDR');
-		if ($addr) {
+		if ($addr !== '') {
 			echo GedcomTag::getLabelValue('ADDR', $addr);
 		}
 

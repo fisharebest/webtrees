@@ -53,12 +53,12 @@ class HourglassController extends ChartController {
 	 * Create the hourglass controller.
 	 *
 	 * @param string $rootid
-	 * @param int    $show_full
+	 * @param bool   $show_full
 	 * @param bool   $loadJS
 	 */
-	public function __construct($rootid = '', $show_full = 1, $loadJS = true) {
+	public function __construct($rootid = '', $show_full = true, $loadJS = true) {
 
-		parent::__construct($show_full);
+		parent::__construct();
 
 		// Extract parameters from
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1, 0);
