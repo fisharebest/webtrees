@@ -97,7 +97,7 @@ echo '<div class="row">';
 
 if ($blocks['main']) {
 	if ($blocks['side']) {
-		echo '<div class="col-sm-8">';
+		echo '<div class="col-sm-8 wt-main-blocks">';
 	} else {
 		echo '<div class="col-sm-12">';
 	}
@@ -119,7 +119,7 @@ if ($blocks['main']) {
 }
 if ($blocks['side']) {
 	if ($blocks['main']) {
-		echo '<div class="col-sm-4">';
+		echo '<div class="col-sm-4 wt-side-blocks">';
 	} else {
 		echo '<div class="col-sm-12">';
 	}
