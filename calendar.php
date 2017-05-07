@@ -519,7 +519,7 @@ case 'month':
 				default:
 					break 2;
 				}
-				if (get_class($alt_date) !== get_class($cal_date)) {
+				if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
 					echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
 					// Just show the first conversion
 					break;
