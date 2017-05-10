@@ -409,7 +409,7 @@ class CalendarDate {
 	public static function compare(CalendarDate $d1, CalendarDate $d2) {
 		if ($d1->maxJD < $d2->minJD) {
 			return -1;
-		} elseif ($d2->minJD > $d1->maxJD) {
+		} elseif ($d2->maxJD < $d1->minJD) {
 			return 1;
 		} else {
 			return 0;
