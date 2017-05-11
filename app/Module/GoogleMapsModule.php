@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -282,19 +283,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		], $controller->getPageTitle());
 		?>
 
-		<ul class="nav nav-tabs nav-justified" role="tablist">
-			<li role="presentation" class="active">
-				<a href="#" role="tab">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a href="?mod=googlemap&amp;mod_action=admin_config" class="nav-link active">
 					<?= I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_places">
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_places">
 					<?= I18N::translate('Geographic data') ?>
 				</a>
 			</li>
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_placecheck">
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_placecheck">
 					<?= I18N::translate('Place check') ?>
 				</a>
 			</li>
@@ -1294,20 +1295,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		], $controller->getPageTitle());
 		?>
 
-		<ul class="nav nav-tabs nav-justified" role="tablist">
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_config" role="tab">
-					<?= I18N::translate('Google Maps™ preferences') ?>
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_config">
+			<?= I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_places">
-					<?= I18N::translate('Geographic data') ?>
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_places">
+			<?= I18N::translate('Geographic data') ?>
 				</a>
 			</li>
-			<li role="presentation" class="active">
-				<a href="#">
-					<?= I18N::translate('Place check') ?>
+			<li class="nav-item">
+				<a class="nav-link active" href="?mod=googlemap&amp;mod_action=admin_placecheck">
+			<?= I18N::translate('Place check') ?>
 				</a>
 			</li>
 		</ul>
@@ -3299,20 +3300,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		], $controller->getPageTitle());
 		?>
 
-		<ul class="nav nav-tabs nav-justified" role="tablist">
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_config" role="tab">
-					<?= I18N::translate('Google Maps™ preferences') ?>
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_config">
+			<?= I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
-			<li role="presentation" class="active">
-				<a href="#">
-					<?= I18N::translate('Geographic data') ?>
+			<li class="nav-item">
+				<a class="nav-link active" href="?mod=googlemap&amp;mod_action=admin_places">
+			<?= I18N::translate('Geographic data') ?>
 				</a>
 			</li>
-			<li role="presentation">
-				<a href="?mod=googlemap&amp;mod_action=admin_placecheck">
-					<?= I18N::translate('Place check') ?>
+			<li class="nav-item">
+				<a class="nav-link" href="?mod=googlemap&amp;mod_action=admin_placecheck">
+			<?= I18N::translate('Place check') ?>
 				</a>
 			</li>
 		</ul>
@@ -3454,7 +3455,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?= I18N::translate('A file on your computer') ?>
 				</label>
 				<div class="col-sm-8">
-					<div class="btn btn-default">
+					<div class="btn btn-primary">
 					<input id="placesfile" type="file" name="placesfile">
 					</div>
 				</div>
@@ -3763,10 +3764,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo ' - ';
 			}
 			?>
-			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '"><?= I18N::translate('Top level') ?></a>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_places&&amp;parent=0&&amp;inactive=<?= $inactive ?>"><?= I18N::translate('Top level') ?></a>
 		</p>
 
-		<form class="form-inline" name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '">
+		<form class="form-inline" name="active" method="post" action="module.php?mod=googlemap&&amp;mod_action=admin_places&&amp;parent=<?= $parent ?>&amp;inactive=<?= $inactive ?>">
 			<?= Bootstrap4::checkbox(I18N::translate('Show inactive places'), false, ['name' => 'inactive', 'onclick' => 'updateList(this.checked)']) ?>
 			<p class="small text-muted">
 				<?= I18N::translate('By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used.') ?>
@@ -3789,7 +3790,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<tr><td colspan="7">', I18N::translate('No places found'), '</td></tr>';
 		}
 		foreach ($placelist as $place) {
-			echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
+			echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&amp;parent=', $place['place_id'], '&inactive=', $inactive, '">';
 			if ($place['place'] != 'Unknown') {
 				echo Filter::escapeHtml($place['place']), '</a></td>';
 			} else {
@@ -3832,12 +3833,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<label class="form-control-static col-sm-4" for="parent_id">
 					<?= I18N::translate('Add a geographic location') ?>
 				</label>
-				<div class="col-sm-8">
-					<div class="col-sm-6">
-						<?= Bootstrap4::select(['0' => I18N::translate('Top level')] + $where_am_i, $parent, ['id' => 'parent_id', 'name' => 'parent_id']) ?>
-					</div>
-					<button type="submit" class="btn btn-default">
-						<i class="fa fa-plus"></i>
+				<div class="col-sm-6">
+			<?= Bootstrap4::select(['0' => I18N::translate('Top level')] + $where_am_i, $parent, ['id' => 'parent_id', 'name' => 'parent_id']) ?>
+				</div>
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary">
+						<?= FontAwesome::decorativeIcon('add') ?>
 						<?= /* I18N: A button label. */ I18N::translate('add') ?>
 					</button>
 				</div>
@@ -3852,12 +3853,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<label class="form-control-static col-sm-4" for="ged">
 					<?= I18N::translate('Import all places from a family tree') ?>
 				</label>
-				<div class="col-sm-8">
-					<div class="col-sm-6">
-						<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
-					</div>
-					<button type="submit" class="btn btn-default">
-						<i class="fa fa-upload"></i>
+				<div class="col-sm-6">
+					<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
+				</div>
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary">
+					  <?= FontAwesome::decorativeIcon('add') ?>
 						<?= /* I18N: A button label. */ I18N::translate('import') ?>
 					</button>
 				</div>
@@ -3872,13 +3873,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<label class="form-control-static col-sm-4">
 					<?= I18N::translate('Upload geographic data') ?>
 				</label>
-				<div class="col-sm-8">
-					<div class="col-sm-6">
-						<button type="submit" class="btn btn-default">
-							<i class="fa fa-upload"></i>
-							<?= /* I18N: A button label. */ I18N::translate('upload') ?>
-						</button>
-					</div>
+				<div class="col-sm-6">
+				</div>
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary">
+					  <?= FontAwesome::decorativeIcon('upload') ?>
+					  <?= /* I18N: A button label. */ I18N::translate('upload') ?>
+					</button>
 				</div>
 			</div>
 		</form>
@@ -3891,13 +3892,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<label class="form-control-static col-sm-4">
 					<?= I18N::translate('Download geographic data') ?>
 				</label>
-				<div class="col-sm-8">
-					<div class="col-sm-6">
-						<?= Bootstrap4::select(['0' => I18N::translate('All')] + $where_am_i, '0', ['id' => 'parent', 'name' => 'parent']) ?>
-					</div>
-					<button type="submit" class="btn btn-default">
-						<i class="fa fa-download"></i>
-						<?= /* I18N: A button label. */ I18N::translate('download') ?>
+				<div class="col-sm-6">
+					<?= Bootstrap4::select(['0' => I18N::translate('All')] + $where_am_i, '0', ['id' => 'parent', 'name' => 'parent']) ?>
+				</div>
+				<div class="col-sm-2">
+						<button type="submit" class="btn btn-primary">
+							<?= FontAwesome::decorativeIcon('download') ?>
+							<?= /* I18N: A button label. */ I18N::translate('download') ?>
 					</button>
 				</div>
 			</div>

@@ -25,11 +25,13 @@ class FontAwesome extends Html {
 	/** Which font-awesome icon to use for which action/entity */
 	const ICONS = [
 		// Application icons
+		'add'                => 'fa fa-plus wt-icon-add',
 		'calendar'           => 'fa fa-calendar wt-icon-calendar',
 		'cancel'             => 'fa fa-close wt-icon-cancel',
 		'coordinates'        => 'fa fa-map-marker wt-icon-coordinates',
 		'copy'               => 'fa fa-copy wt-icon-copy',
 		'delete'             => 'fa fa-trash-o wt-icon-delete',
+		'download'           => 'fa fa-download wt-icon-download',
 		'edit'               => 'fa fa-pencil wt-icon-edit',
 		'help'               => 'fa fa-info-circle wt-icon-help',
 		'email'              => 'fa fa-envelope-o wt-icon-email',
@@ -50,6 +52,7 @@ class FontAwesome extends Html {
 		'repository'         => 'fa fa-institution wt-icon-repository',
 		'source'             => 'fa fa-file-text-o wt-icon-source',
 		'submitter'          => 'fa fa-user-o wt-icon-submitter',
+		'upload'             => 'fa fa-upload wt-icon-upload',
 		// External sites and applications
 		'bing-maps'          => 'fa fa-icon-map-o wt-icon-bing-maps',
 		'google-maps'        => 'fa fa-icon-map-o wt-icon-google-maps',
