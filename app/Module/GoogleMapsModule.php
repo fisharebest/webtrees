@@ -1421,40 +1421,29 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				return false;
 			}
 		</script>
+
+		<table class="table table-bordered table-condensed table-hover">
+			<thead>
+				<tr>
+					<th colspan="<?= $max * 3 ?>"><?= I18N::translate('Geographic data') ?></th>
+				</tr>
+				<tr>
+					<?php for ($cols = 0; $cols < $max; ++$cols): ?>
+					<th><?= I18N::translate('Place') ?></th>
+					<th><?= I18N::translate('Latitude') ?></th>
+					<th><?= I18N::translate('Longitude') ?></th>
+					<?php endfor; ?>
+				</tr>
+			</thead>
 		<?php
 
-		//start to produce the display table
-		echo '<table class="table table-bordered table-condensed table-hover"><thead><tr>';
-		echo '<th rowspan="3">', I18N::translate('Place'), '</th>';
-		echo '<th colspan="', $max * 3, '">', I18N::translate('Geographic data'), '</th></tr>';
-		echo '<tr>';
-		for ($cols = 0; $cols < $max; ++$cols) {
-			if ($cols == 0) {
-				echo '<th colspan="3">', I18N::translate('Country'), '</th>';
-			} else {
-				echo '<th colspan="3">', I18N::translate('Level'), ' ', $cols + 1, '</th>';
-			}
-		}
-		echo '</tr><tr>';
-		for ($cols = 0; $cols < $max; ++$cols) {
-			echo '<th>', I18N::translate('Place'), '</th>';
-			echo '<th>', I18N::translate('Latitude'), '</th>';
-			echo '<th>', I18N::translate('Longitude'), '</th>';
-		}
-		echo '</tr></thead><tbody>';
-		$countrows = 0;
+		echo '<tbody>';
 		$matched   = [];
 		while ($x < $i) {
-			$placestr = '';
 			$levels   = explode(', ', $place_list[$x]);
 			$parts    = count($levels);
 			$levels   = array_reverse($levels);
-			$placestr .= '<a href="placelist.php?action=show';
-			foreach ($levels as $pindex => $ppart) {
-				$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
-			}
-			$placestr .= '">' . $place_list[$x] . '</a>';
-			$gedplace    = '<tr><td>' . $placestr . '</td>';
+			$gedplace    = '<tr>';
 			$z           = 0;
 			$id          = 0;
 			$level       = 0;
@@ -1543,16 +1532,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$z++;
 				}
 				echo '</tr>';
-				$countrows++;
 			}
 			$x++;
 		}
 		echo '</tbody>';
-		echo '<tfoot>';
-		echo '<tr>';
-		echo '<td colspan="', (1 + 3 * $max), '">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td>';
-		echo '</tr>';
-		echo '</tfoot>';
 		echo '</table>';
 	}
 
