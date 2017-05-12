@@ -1393,20 +1393,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$place_list = preg_grep('/' . $filter . '/', $place_list);
 
 		//sort the array, limit to unique values, and count them
-		usort($place_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
+		usort($place_list, function ($x, $y) {
+			return I18N::strcasecmp(
+				implode(', ', array_reverse(explode(', ', $x))),
+				implode(', ', array_reverse(explode(', ', $y)))
+			);
+		});
 		$i = count($place_list);
 
-		//calculate maximum no. of levels to display
-		$x   = 0;
+		// Calculate maximum number of levels to display
 		$max = 0;
-		while ($x < $i) {
-			$levels = explode(',', $place_list[$x]);
-			$parts  = count($levels);
-			if ($parts > $max) {
-				$max = $parts;
-			}
-			$x++; }
-		$x = 0;
+		foreach ($place_list as $place_name) {
+			$max = max($max, count(explode(',', $place_name)));
+		}
 
 		//scripts for edit, add and refresh
 		?>
@@ -1435,10 +1434,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?php endfor; ?>
 				</tr>
 			</thead>
+			<tbody>
 		<?php
 
-		echo '<tbody>';
 		$matched   = [];
+		$x = 0;
 		while ($x < $i) {
 			$levels   = explode(', ', $place_list[$x]);
 			$parts    = count($levels);
@@ -1535,8 +1535,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			$x++;
 		}
-		echo '</tbody>';
-		echo '</table>';
+		?>
+			</tbody>
+		</table>
+		<?php
 	}
 
 	/**
