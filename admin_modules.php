@@ -110,8 +110,7 @@ $controller
 					value.value = index+1;
 				});
 		}
-		$("#installed_table").dataTable( {
-			paging: false,
+		$(".table-module-administration").dataTable( {
 			' . I18N::datatablesI18N() . ',
 			sorting: [[ 1, "asc" ]],
 			columns : [
