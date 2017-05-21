@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: david@drury.me.uk\n"
+"POT-Creation-Date: 2015-01-14 22:03-0000\n"
+"PO-Revision-Date: 2015-01-14 22:04-0000\n"
+"Last-Translator: David Drury <david@drury.me.uk>\n"
+"Language-Team: David Drury <david@drury.me.uk>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Launchpad-Export-Date: 2012-12-06 18:38+0000\n"
+"X-Generator: Poedit 1.7.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\\..\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: help_text.php:31 module.php:199
+msgid "View archive"
+msgstr "Archiv ansehen"
+
+#: help_text.php:32
+msgid ""
+"To reduce the height of the News block, the administrator has hidden some "
+"articles. You can reveal these hidden articles by clicking the <strong>View "
+"archive</strong> link."
+msgstr ""
+"Um die Höhe der News-Block zu reduzieren, hat der Administrator einige "
+"Artikel versteckt. Sie können diese versteckten Artikel enthüllen, indem Sie "
+"auf den Link <strong>Archiv ansehen</strong>."
+
+#: help_text.php:35 module.php:293
+msgid "Limit"
+msgstr "Grenzwert"
+
+#: help_text.php:36
+msgid ""
+"Enter the limiting value here. If you have opted to limit the News article "
+"display according to age, any article older than the number of days entered "
+"here will be hidden from view. If you have opted to limit the News article "
+"display by number, only the specified number of recent articles, ordered by "
+"age, will be shown. The remaining articles will be hidden from view. Zeros "
+"entered here will disable the limit, causing all News articles to be shown."
+msgstr ""
+"Geben Sie hier den Grenzwert. Wenn Sie entschieden haben, um die News-"
+"Artikel-Anzeige nach Alter zu begrenzen, werden alle Artikel, die älter sind "
+"als die Anzahl der Tage, die hier eingegebene im Verborgenen. Wenn Sie "
+"entschieden haben, um die News-Artikel-Anzeige nach der Anzahl zu begrenzen, "
+"wird nur die angegebene Anzahl von aktuelle Artikel, geordnet nach Alter "
+"angezeigt. Die übrigen Artikel werden ausgeblendet werden. Nullen, die hier "
+"eingegebene sperrt das Limit, verursachen alle News-Artikel angezeigt werden."
+
+#: help_text.php:39 module.php:276
+msgid "Limit display by"
+msgstr "Limit-Anzeige von"
+
+#: help_text.php:40
+msgid ""
+"You can limit the number of News articles displayed, thereby reducing the "
+"height of the GEDCOM News block.<br><br>This option determines whether any "
+"limits should be applied or whether the limit should be according to the age "
+"of the article or according to the number of articles."
+msgstr ""
+"Sie können die Anzahl der dargestellten Notizen beschränken, so dass der "
+"GEDCOM Neuigkeiten Block nicht zu hoch wird.<br><br>Diese Option bestimmt ob "
+"überhaupt Beschränkungen belegt sind, oder, ob diese Beschränkungen das "
+"Alter oder die Anzahl der Notizen berücksichtigen."
+
+#: module.php:65
+msgid "Add an article"
+msgstr "Hinzufügen eines Artikels"
+
+#: module.php:66
+msgid "Edit this article"
+msgstr "Dieser Artikel bearbeiten"
+
+#: module.php:67
+msgid "Delete this article"
+msgstr "Löschen Sie in diesem Artikel"
+
+#: module.php:72
+msgid "News and Journal"
+msgstr "News und Journal"
+
+#: module.php:77
+msgid "Site and personal journal"
+msgstr "Website und persönliches Tagebuch"
+
+#: module.php:122
+#, php-format
+msgid "%%s using %s"
+msgstr "%%s mit %s"
+
+#: module.php:129
+msgid "Configure"
+msgstr ""
+
+#: module.php:188
+msgid "There are no articles available"
+msgstr "Es sind keine Artikel verfügbar"
+
+#: module.php:200
+msgid "Hide archive"
+msgstr "Archiv ausblenden"
+
+#: module.php:207
+msgid "Article last modified"
+msgstr "Artikel zuletzt"
+
+#: module.php:281
+msgid "No limit"
+msgstr ""
+
+#: module.php:283
+msgid "Age of item"
+msgstr ""
+
+#: module.php:285
+msgid "Number of items"
+msgstr ""
+
+#: module.php:287
+msgid "Add a scrollbar when block contents grow"
+msgstr ""
+
+#: module.php:337
+msgid "save"
+msgstr ""
