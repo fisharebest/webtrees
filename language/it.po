@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-05-20 16:10+0000\n"
+"PO-Revision-Date: 2017-05-22 21:23+0000\n"
 "Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/it/>\n"
 "Language: it\n"
@@ -759,7 +759,7 @@ msgstr ""
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Grafico che mostra i discendenti di una persona."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
@@ -1701,12 +1701,11 @@ msgstr "Africa"
 
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Dopo aver creato l'albero genealogico sarà possibile importare dati da un file GEDCOM."
 
 #: login.php:260
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Dopo aver effettuato l’accesso, selezionare il collegamento «Il mio account» sotto il menu «La mia pagina» e riempire i campi password per cambiarla."
+msgstr "Per cambiare la password effettuare l’accesso, selezionare il collegamento «Il mio account» sotto il menu «Le mie pagine» e riempire i campi password."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1834,7 +1833,7 @@ msgstr "Tutti gli utenti definiti in PhpGedView devono avere indirizzi email dif
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr ""
+msgstr "Fatti ed eventi"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
@@ -2161,9 +2160,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Si è certi di voler eliminare «%s»?"
 
 #: edit_changes.php:236
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Annullare tutte le modifiche apportate a questo albero genealogico?"
+msgstr "Confermi l'annullamento di tutte le modifiche apportate a questo albero genealogico?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -3985,7 +3983,7 @@ msgstr "Ripreso"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "Pannello di controllo"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
 #: app/Module/ClippingsCartModule.php:781
@@ -4318,7 +4316,7 @@ msgstr "Testo di benvenuto personalizzato"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "Personalizza questa pagina"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
@@ -9491,7 +9489,7 @@ msgstr "La mia pagina"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "Le mie pagine"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -11910,7 +11908,7 @@ msgstr "Sigillatura annullata (divorzio)"
 #: app/Theme/WebtreesTheme.php:58 app/Theme/WebtreesTheme.php:59
 #: app/Theme/XeneaTheme.php:57 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 msgid "Search"
-msgstr ""
+msgstr "Ricerca"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12716,9 +12714,8 @@ msgid "Show this block for which languages"
 msgstr "Per quali lingue va mostrato questo riquadro?"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Mostra le immagini evidenziate nei riquadri delle persone"
+msgstr "Mostra le immagini ridotte in grafici e gruppi."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -14522,8 +14519,8 @@ msgstr "Questa pagina permette di aggirare i moduli usuali, andando a modificare
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Questa pagina è stata vista %s volta."
+msgstr[1] "Questa pagina è stata vista %s volte."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
@@ -15615,7 +15612,6 @@ msgid "View this family"
 msgstr "Visualizza questa famiglia"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
 msgstr "Visualizza questa persona"
 
