@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
 "PO-Revision-Date: 2017-05-22 20:57+0000\n"
-"Last-Translator: Paolo <janick@libero.it>\n"
+"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -1812,7 +1812,7 @@ msgstr "Tutti gli utenti definiti in PhpGedView devono avere indirizzi email dif
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr ""
+msgstr "Fatti ed eventi"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
