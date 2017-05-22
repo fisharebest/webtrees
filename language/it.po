@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-05-22 20:57+0000\n"
-"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
+"PO-Revision-Date: 2017-05-22 20:59+0000\n"
+"Last-Translator: Paolo <janick@libero.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -2139,9 +2139,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Si è certi di voler eliminare «%s»?"
 
 #: edit_changes.php:236
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Annullare tutte le modifiche apportate a questo albero genealogico?"
+msgstr "Confermi l'annullamento di tutte le modifiche apportate a questo albero genealogico?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -12715,9 +12714,8 @@ msgid "Show this block for which languages"
 msgstr "Per quali lingue va mostrato questo riquadro?"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Mostra le immagini evidenziate nei riquadri delle persone"
+msgstr "Mostra le immagini ridotte in grafici e gruppi."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:225
