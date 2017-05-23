@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-05-22 21:23+0000\n"
+"PO-Revision-Date: 2017-05-23 19:22+0000\n"
 "Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/it/>\n"
 "Language: it\n"
@@ -1885,7 +1885,7 @@ msgstr "Consenti agli utenti di selezionare il proprio tema"
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Permette ai visitatori di richiedere un nuovo account"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -15958,7 +15958,7 @@ msgstr ""
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "È possibile richiedere un account utilizzando il collegamento qui sotto."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16108,7 +16108,7 @@ msgstr ""
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "L'accesso a questo sito web è consentito solo agli utenti autorizzati."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
