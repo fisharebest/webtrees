@@ -886,11 +886,17 @@ abstract class AbstractTheme {
 		}
 		// Show optional events (before death)
 		foreach ($opt_tags as $key => $tag) {
+			$events = array();
 			if (!preg_match('/^(' . WT_EVENTS_DEAT . ')$/', $tag)) {
-				$event = $individual->getFirstFact($tag);
-				if (!is_null($event)) {
-					$html .= $event->summary();
-					unset($opt_tags[$key]);
+				$events[] = $individual->getFirstFact($tag);
+				foreach ($individual->getSpouseFamilies() as $family) {
+					$events[] = $family->getFirstFact($tag);
+				}
+				foreach ($events as $event) {
+					if (!is_null($event)) {
+						$html .= $event->summary();
+						unset($opt_tags[$key]);
+					}
 				}
 			}
 		}
