@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-22 09:52+0000\n"
+"PO-Revision-Date: 2017-05-30 12:29+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
@@ -14659,7 +14659,7 @@ msgstr "Denne nettstaden er for augneblinken ikkje tilgjengeleg"
 
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Denne nettstaden nyttar informasjonskapslar (cookies) for å få kunnskap om korleis besøkjande nyttar nettstaden."
+msgstr "Denne nettstaden nyttar informasjonskapslar for å betre brukaropplevinga."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:199
@@ -16010,7 +16010,7 @@ msgstr "Du kan ikkje opprette ein regel som vil hindre deg i å få tilgang til 
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "Du kan ikkje logge inn fordi din nettlesar ikkje godtek infokapslar (cookies)."
+msgstr "Du kan ikkje logge inn fordi din nettlesar ikkje godtek informasjonskapslar (cookies)."
 
 #: includes/session.php:506
 msgid "You do not have permission to view this page."
