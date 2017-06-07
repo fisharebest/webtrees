@@ -123,9 +123,13 @@ case 'save':
 				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
 				if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
+					$tree->setUserPreference($user, 'RELATIONSHIP_ANCESTORS_DEPTH', Filter::postInteger('RELATIONSHIP_ANCESTORS_DEPTH' . $tree->getTreeId(), -1, 10, 0));
+					$tree->setUserPreference($user, 'RELATIONSHIP_DESCENDANTS_DEPTH', Filter::postInteger('RELATIONSHIP_DESCENDANTS_DEPTH' . $tree->getTreeId(), -1, 10, 0));
 				} else {
 					// Do not allow a path length to be set if the individual ID is not
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
+					$tree->setUserPreference($user, 'RELATIONSHIP_ANCESTORS_DEPTH', null);
+					$tree->setUserPreference($user, 'RELATIONSHIP_DESCENDANTS_DEPTH', null);
 				}
 			}
 		}
@@ -280,7 +284,7 @@ case 'edit':
 		->addInlineJavascript('
 			jQuery(".relpath").change(function() {
 				var fieldIDx = jQuery(this).attr("id");
-				var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
+				var idNum = fieldIDx.replace(/^RELATIONSHIP_(PATH_LENGTH|ANCESTORS_DEPTH|DESCENDANTS_DEPTH)/,"");
 				var newIDx = "gedcomid"+idNum;
 				if (jQuery("#"+newIDx).val() === "" && jQuery("#".fieldIDx).val() !== "0") {
 					alert("' . I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
@@ -633,13 +637,46 @@ case 'edit':
 						<?php echo FunctionsPrint::printFindIndividualLink('gedcomid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
-						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">
-							<?php for ($n = 0; $n <= 10; ++$n): ?>
-							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : ''; ?>>
-								<?php echo $n ? $n : I18N::translate('No'); ?>
-							</option>
-							<?php endfor; ?>
-						</select>
+						<table>
+							<thead>
+								<tr>
+									<td><?php echo I18N::translate('Relationship'); ?>&nbsp;</td>
+									<td><?php echo I18N::translate('Ancestors'); ?>&nbsp;</td>
+									<td><?php echo I18N::translate('Descendants'); ?>&nbsp;</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">
+											<?php for ($n = -1; $n <= 10; ++$n): ?>
+											<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : ''; ?>>
+												<?php echo ($n === -1 ? I18N::translate('None') : ($n ? $n : I18N::translate('All'))); ?>
+											</option>
+											<?php endfor; ?>
+										</select>&nbsp;
+									</td>
+									<td>
+										<select name="RELATIONSHIP_ANCESTORS_DEPTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_ANCESTORS_DEPTH<?php echo $tree->getTreeId(); ?>" class="relpath">
+											<?php for ($n = -1; $n <= 10; ++$n): ?>
+											<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_ANCESTORS_DEPTH') == $n ? 'selected' : ''; ?>>
+												<?php echo ($n === -1 ? I18N::translate('All') : ($n ? $n : I18N::translate('None'))); ?>
+											</option>
+											<?php endfor; ?>
+										</select>&nbsp;
+									</td>
+									<td>
+										<select name="RELATIONSHIP_DESCENDANTS_DEPTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_DESCENDANTS_DEPTH<?php echo $tree->getTreeId(); ?>" class="relpath">
+											<?php for ($n = -1; $n <= 10; ++$n): ?>
+											<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_DESCENDANTS_DEPTH') == $n ? 'selected' : ''; ?>>
+												<?php echo ($n === -1 ? I18N::translate('All') : ($n ? $n : I18N::translate('None'))); ?>
+											</option>
+											<?php endfor; ?>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</td>
 				</tr>
 				<?php endforeach; ?>
