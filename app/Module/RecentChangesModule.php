@@ -66,7 +66,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 		}
 
-		$records = $this->getRecentChanges($WT_TREE, WT_CLIENT_JD - $days);
+		$records = $this->getRecentChanges($WT_TREE, $days);
 
 		if (empty($records) && $hide_empty) {
 			return '';
@@ -191,17 +191,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	 * Find records that have changed since a given julian day
 	 *
 	 * @param Tree $tree Changes for which tree
-	 * @param int  $jd   Julian day
+	 * @param int  $days Number of days
 	 *
 	 * @return GedcomRecord[] List of records with changes
 	 */
-	private function getRecentChanges(Tree $tree, $jd) {
+	private function getRecentChanges(Tree $tree, $days) {
 		$sql =
-			"SELECT d_gid FROM `##dates`" .
-			" WHERE d_fact='CHAN' AND d_julianday1 >= :jd AND d_file = :tree_id";
+			"SELECT xref FROM `##change`" .
+			" WHERE new_gedcom != '' AND change_time > DATE_SUB(NOW(), INTERVAL :days DAY) AND gedcom_id = :tree_id" .
+			" GROUP BY xref" .
+			" ORDER BY MAX(change_id) DESC";
 
 		$vars = [
-			'jd'      => $jd,
+			'days'    => $days,
 			'tree_id' => $tree->getTreeId(),
 		];
 

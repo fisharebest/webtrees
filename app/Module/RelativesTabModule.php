@@ -301,7 +301,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			$saved_show_full = $show_full;
 		}
 		// We always want to see full details here
-		$show_full = 1;
+		$show_full = true;
 
 		ob_start();
 		?>

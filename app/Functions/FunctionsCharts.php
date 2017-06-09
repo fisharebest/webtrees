@@ -64,14 +64,14 @@ class FunctionsCharts {
 	/**
 	 * print the parents table for a family
 	 *
-	 * @param Family $family family gedcom ID
-	 * @param int $sosa child sosa number
-	 * @param string $label indi label (descendancy booklet)
-	 * @param string $parid parent ID (descendancy booklet)
-	 * @param string $gparid gd-parent ID (descendancy booklet)
-	 * @param int $show_full large or small box
+	 * @param Family $family    family gedcom ID
+	 * @param int    $sosa      child sosa number
+	 * @param string $label     indi label (descendancy booklet)
+	 * @param string $parid     parent ID (descendancy booklet)
+	 * @param string $gparid    gd-parent ID (descendancy booklet)
+	 * @param bool   $show_full large or small box
 	 */
-	public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = 1) {
+	public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = true) {
 
 		if ($show_full) {
 			$pbheight = Theme::theme()->parameter('chart-box-y') + 14;
@@ -273,14 +273,14 @@ class FunctionsCharts {
 	/**
 	 * print the children table for a family
 	 *
-	 * @param Family $family family
-	 * @param string $childid child ID
-	 * @param int $sosa child sosa number
-	 * @param string $label indi label (descendancy booklet)
-	 * @param int $show_cousins display cousins on chart
-	 * @param int $show_full large or small box
+	 * @param Family $family       family
+	 * @param string $childid      child ID
+	 * @param int    $sosa         child sosa number
+	 * @param string $label        indi label (descendancy booklet)
+	 * @param int    $show_cousins display cousins on chart
+	 * @param bool   $show_full    large or small box
 	 */
-	public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = 1) {
+	public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = true) {
 
 		if ($show_full) {
 			$bheight = Theme::theme()->parameter('chart-box-y');
@@ -416,16 +416,16 @@ class FunctionsCharts {
 	 * print a family with Sosa-Stradonitz numbering system
 	 * ($rootid=1, father=2, mother=3 ...)
 	 *
-	 * @param string $famid family gedcom ID
-	 * @param string $childid tree root ID
-	 * @param int $sosa starting sosa number
-	 * @param string $label indi label (descendancy booklet)
-	 * @param string $parid parent ID (descendancy booklet)
-	 * @param string $gparid gd-parent ID (descendancy booklet)
-	 * @param int $show_cousins display cousins on chart
-	 * @param int $show_full large or small box
+	 * @param string $famid        family gedcom ID
+	 * @param string $childid      tree root ID
+	 * @param int    $sosa         starting sosa number
+	 * @param string $label        indi label (descendancy booklet)
+	 * @param string $parid        parent ID (descendancy booklet)
+	 * @param string $gparid       gd-parent ID (descendancy booklet)
+	 * @param int    $show_cousins display cousins on chart
+	 * @param bool   $show_full    large or small box
 	 */
-	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = 1) {
+	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = true) {
 		global $WT_TREE;
 
 		echo '<hr>';
@@ -495,10 +495,10 @@ class FunctionsCharts {
 	/**
 	 * print cousins list
 	 *
-	 * @param string $famid family ID
-	 * @param int $show_full large or small box
+	 * @param string $famid     family ID
+	 * @param bool   $show_full large or small box
 	 */
-	public static function printCousins($famid, $show_full = 1) {
+	public static function printCousins($famid, $show_full = true) {
 		global $WT_TREE;
 
 		if ($show_full) {

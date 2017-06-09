@@ -208,7 +208,7 @@ class Stats {
 
 		$head = GedcomRecord::getInstance('HEAD', $this->tree);
 		$sour = $head->getFirstFact('SOUR');
-		if ($sour) {
+		if ($sour !== null) {
 			$source  = $sour->getValue();
 			$title   = $sour->getAttribute('NAME');
 			$version = $sour->getAttribute('VERS');

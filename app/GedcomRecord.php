@@ -1159,7 +1159,7 @@ class GedcomRecord {
 			return I18N::translate('Unknown');
 		} else {
 			$chan_user = $chan->getAttribute('_WT_USER');
-			if ($chan_user === null) {
+			if ($chan_user === '') {
 				return I18N::translate('Unknown');
 			} else {
 				return $chan_user;
@@ -1343,7 +1343,7 @@ class GedcomRecord {
 		$value = '@' . $xref . '@';
 
 		foreach ($this->getFacts() as $fact) {
-			if ($fact->getValue() == $value) {
+			if ($fact->getValue() === $value) {
 				$this->deleteFact($fact->getFactId(), $update_chan);
 			} elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
 				$gedcom = $fact->getGedcom();

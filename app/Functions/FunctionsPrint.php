@@ -45,26 +45,23 @@ class FunctionsPrint {
 	 *
 	 * find and print a given individuals information for a pedigree chart
 	 *
-	 * @param Individual $person The person to print
-	 * @param int $show_full The style to print the box in, 0 for smaller boxes, 1 for larger boxes
+	 * @param Individual $person    The person to print
+	 * @param bool       $show_full The style to print the box in, 0 for smaller boxes, 1 for larger boxes
 	 */
-	public static function printPedigreePerson(Individual $person = null, $show_full = 1) {
+	public static function printPedigreePerson(Individual $person = null, $show_full = true) {
 
-		switch ($show_full) {
-		case 0:
-			if ($person) {
-				echo Theme::theme()->individualBoxSmall($person);
-			} else {
-				echo Theme::theme()->individualBoxSmallEmpty();
-			}
-			break;
-		case 1:
-			if ($person) {
-				echo Theme::theme()->individualBox($person);
-			} else {
+		if ($show_full) {
+			if ($person === null) {
 				echo Theme::theme()->individualBoxEmpty();
+			} else {
+				echo Theme::theme()->individualBox($person);
 			}
-			break;
+		} else {
+			if ($person === null) {
+				echo Theme::theme()->individualBoxSmallEmpty();
+			} else {
+				echo Theme::theme()->individualBoxSmall($person);
+			}
 		}
 	}
 

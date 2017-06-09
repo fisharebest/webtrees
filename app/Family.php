@@ -279,20 +279,6 @@ class Family extends GedcomRecord {
 	}
 
 	/**
-	 * Get the type for this marriage
-	 *
-	 * @return string|null
-	 */
-	public function getMarriageType() {
-		$marriage = $this->getMarriage();
-		if ($marriage) {
-			return $marriage->getAttribute('TYPE');
-		} else {
-			return null;
-		}
-	}
-
-	/**
 	 * Get the marriage place
 	 *
 	 * @return Place

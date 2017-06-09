@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-11 12:31+0000\n"
+"PO-Revision-Date: 2017-05-07 06:00+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -2175,7 +2175,7 @@ msgstr "Opravdu chcete odstranit odkazy na tento mediální objekt?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Jste si jisti, že chcete odstranit tuto položku z vašich oblíbených?"
+msgstr "Jste si jisti, že chcete odstranit tuto položku ze svých oblíbených?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
@@ -6609,7 +6609,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:301 admin_site_logs.php:248
 msgid "From"
-msgstr "Z"
+msgstr "Od"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
