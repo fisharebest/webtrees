@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
 use Rhumsaa\Uuid\Uuid;
 
@@ -139,10 +138,7 @@ class FunctionsPrintLists {
 				});
 			');
 
-		$stats = new Stats($WT_TREE);
-
-		// Bad data can cause "longest life" to be huge, blowing memory limits
-		$max_age = min($WT_TREE->getPreference('MAX_ALIVE_AGE'), $stats->longestLifeAge()) + 1;
+		$max_age = (int) $WT_TREE->getPreference('MAX_ALIVE_AGE');
 
 		// Inititialise chart data
 		$deat_by_age = [];
@@ -572,8 +568,7 @@ class FunctionsPrintLists {
 				});
 		');
 
-		$stats   = new Stats($WT_TREE);
-		$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge()) + 1;
+		$max_age = (int) $WT_TREE->getPreference('MAX_ALIVE_AGE');
 
 		// init chart data
 		$marr_by_age = [];
