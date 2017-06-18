@@ -357,3 +357,9 @@ fieldset.row > legend, fieldset.row > div {
 	font-weight: bold;
 }
 
+/* Popups */
+.popup .nav-link {
+	display: inline;
+	vertical-align: top;
+	padding: 5px;
+}
