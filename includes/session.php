@@ -76,7 +76,6 @@ define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
 define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER', '-?\d+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
-define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
 // UTF8 representation of various characters
@@ -221,12 +220,12 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 }
 
 // What is the remote client's IP address
-if (Filter::server('HTTP_CLIENT_IP') !== null) {
+if (Filter::server('HTTP_CLIENT_IP') !== '') {
 	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
-} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
+} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== '') {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
+	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', null, '127.0.0.1'));
 }
 
 // Connect to the database
