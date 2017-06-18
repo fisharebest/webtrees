@@ -251,13 +251,6 @@ try {
 // Other user files can be stored elsewhere...
 define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
 
-// If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
-$SERVER_URL = Site::getPreference('SERVER_URL');
-if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
-	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
-	exit;
-}
-
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
 	$memory_limit = Site::getPreference('MEMORY_LIMIT');
