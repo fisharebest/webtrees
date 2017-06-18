@@ -37,7 +37,7 @@ if (
 	$block->gedcom_id && !Auth::isManager(Tree::findById($block->gedcom_id)) ||
 	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -46,7 +46,7 @@ $block = $blocks[$block->module_name];
 
 if (Filter::post('save')) {
 	$ctype = Filter::post('ctype', 'user', 'gedcom');
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
 	$block->configureBlock($block_id);
 
 	return;

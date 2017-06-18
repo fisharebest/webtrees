@@ -39,10 +39,10 @@ $show_marnm = Filter::get('show_marnm', 'no|yes');
 switch ($show_marnm) {
 case 'no':
 case 'yes':
-	Auth::user()->setPreference(WT_SCRIPT_NAME . '_show_marnm', $show_marnm);
+	Auth::user()->setPreference('famlist.php_show_marnm', $show_marnm);
 	break;
 default:
-	$show_marnm = Auth::user()->getPreference(WT_SCRIPT_NAME . '_show_marnm');
+	$show_marnm = Auth::user()->getPreference('famlist.php_show_marnm');
 }
 
 // Make sure selections are consistent.
@@ -174,14 +174,14 @@ if ($show === 'indi' || $show === 'surn') {
 		// Show the surname list
 		switch ($controller->tree()->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1':
-			echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $controller->tree());
+			echo FunctionsPrintLists::surnameList($surns, 3, true, 'famlist.php', $controller->tree());
 			break;
 		case 'style3':
-			echo FunctionsPrintLists::surnameTagCloud($surns, WT_SCRIPT_NAME, true, $controller->tree());
+			echo FunctionsPrintLists::surnameTagCloud($surns, 'famlist.php', true, $controller->tree());
 			break;
 		case 'style2':
 		default:
-			echo FunctionsPrintLists::surnameTable($surns, WT_SCRIPT_NAME, $controller->tree());
+			echo FunctionsPrintLists::surnameTable($surns, 'famlist.php', $controller->tree());
 			break;
 		}
 	} else {

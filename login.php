@@ -26,7 +26,7 @@ require 'includes/session.php';
 
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && $WT_TREE) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -133,7 +133,7 @@ case 'login':
 		}
 
 		// Redirect to the target URL
-		header('Location: ' . WT_BASE_URL . $url);
+		header('Location: ' . $url);
 
 		return;
 	} catch (\Exception $ex) {
@@ -260,14 +260,14 @@ case 'requestpw':
 	} else {
 		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Filter::escapeHtml($user_name)), 'danger');
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: login.php');
 
 	return;
 	break;
 
 case 'register':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}
@@ -500,7 +500,7 @@ case 'register':
 
 case 'userverify':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}
@@ -538,7 +538,7 @@ case 'userverify':
 
 case 'verify_hash':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}

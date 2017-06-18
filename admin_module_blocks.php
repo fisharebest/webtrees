@@ -42,7 +42,7 @@ if ($action === 'update_mods' && Filter::checkCsrf()) {
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_module_blocks.php');
 
 	return;
 }

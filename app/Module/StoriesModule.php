@@ -271,7 +271,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				<?php
 			}
 		} else {
-			header('Location: ' . WT_BASE_URL);
+			header('Location: index.php');
 		}
 	}
 
@@ -292,7 +292,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				"DELETE FROM `##block` WHERE block_id=?"
 			)->execute([$block_id]);
 		} else {
-			header('Location: ' . WT_BASE_URL);
+			header('Location: index.php');
 			exit;
 		}
 	}

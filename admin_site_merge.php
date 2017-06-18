@@ -166,7 +166,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		$record2_name
 	), 'success');
 
-	header('Location: ' . WT_BASE_URL . Filter::post('url', 'admin_trees_duplicates\.php', WT_SCRIPT_NAME));
+	header('Location: ' . Filter::post('url', 'admin_trees_duplicates\.php', 'admin_site_merge.php'));
 
 	return;
 }

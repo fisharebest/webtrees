@@ -99,7 +99,7 @@ case 'updateraw':
 	$fact_ids  = Filter::postArray('fact_id');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=editraw&xref=' . $xref);
+		header('Location: edit_interface.php?action=editraw&xref=' . $xref);
 		break;
 	}
 
@@ -125,7 +125,7 @@ case 'updateraw':
 
 	$record->updateRecord($gedcom, false);
 
-	header('Location: ' . $record->getAbsoluteLinkUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -145,7 +145,7 @@ case 'editrawfact':
 		}
 	}
 	if (!$edit_fact) {
-		header('Location: ' . $record->getAbsoluteLinkUrl());
+		header('Location: ' . $record->getRawUrl());
 		break;
 	}
 
@@ -202,7 +202,7 @@ case 'updaterawfact':
 	$keep_chan = Filter::postBool('keep_chan');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
+		header('Location: edit_interface.php?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
 		break;
 	}
 
@@ -221,7 +221,7 @@ case 'updaterawfact':
 		}
 	}
 
-	header('Location: ' . $record->getAbsoluteLinkUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -241,7 +241,7 @@ case 'edit':
 		}
 	}
 	if (!$edit_fact) {
-		header('Location: ' . $record->getAbsoluteLinkUrl());
+		header('Location: ' . $record->getRawUrl());
 		break;
 	}
 
@@ -398,7 +398,7 @@ case 'update':
 	if (!Filter::checkCsrf()) {
 		$prev_action = Filter::post('prev_action', 'add|edit|addname|editname');
 		$fact_type   = Filter::post('fact_type', WT_REGEX_TAG);
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
+		header('Location: edit_interface.php?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
 		break;
 	}
 
@@ -479,7 +479,7 @@ case 'update':
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -510,7 +510,7 @@ case 'add_child_to_family_action':
 
 	if (!Filter::checkCsrf()) {
 		$gender = Filter::get('gender', '[MFU]', 'U');
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
+		header('Location: edit_interface.php?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
 		break;
 	}
 
@@ -553,9 +553,9 @@ case 'add_child_to_family_action':
 	}
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $new_child->getAbsoluteLinkUrl());
+		header('Location: ' . $new_child->getRawUrl());
 	} else {
-		header('Location: ' . $family->getAbsoluteLinkUrl());
+		header('Location: ' . $family->getRawUrl());
 	}
 	break;
 
@@ -584,7 +584,7 @@ case 'add_child_to_individual_action':
 	$islink  = Filter::postArray('islink', '[01]');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_child_to_individual&xref=' . $xref);
+		header('Location: edit_interface.php?action=add_child_to_individual&xref=' . $xref);
 		break;
 	}
 
@@ -626,9 +626,9 @@ case 'add_child_to_individual_action':
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $child->getAbsoluteLinkUrl());
+		header('Location: ' . $child->getRawUrl());
 	} else {
-		header('Location: ' . $person->getAbsoluteLinkUrl());
+		header('Location: ' . $person->getRawUrl());
 	}
 	break;
 
@@ -664,7 +664,7 @@ case 'add_parent_to_individual_action':
 
 	if (!Filter::checkCsrf()) {
 		$gender = Filter::get('gender', '[MFU]', 'U');
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
+		header('Location: edit_interface.php?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
 		break;
 	}
 
@@ -706,9 +706,9 @@ case 'add_parent_to_individual_action':
 	}
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $parent->getAbsoluteLinkUrl());
+		header('Location: ' . $parent->getRawUrl());
 	} else {
-		header('Location: ' . $person->getAbsoluteLinkUrl());
+		header('Location: ' . $person->getRawUrl());
 	}
 	break;
 
@@ -731,7 +731,7 @@ case 'add_unlinked_indi_action':
 	$islink  = Filter::postArray('islink', '[01]');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_unlinked_indi');
+		header('Location: edit_interface.php?action=add_unlinked_indi');
 		break;
 	}
 
@@ -755,9 +755,9 @@ case 'add_unlinked_indi_action':
 	$new_indi = $controller->tree()->createRecord($gedrec);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $new_indi->getAbsoluteLinkUrl());
+		header('Location: ' . $new_indi->getRawUrl());
 	} else {
-		header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
+		header('Location: admin_trees_manage.php');
 	}
 	break;
 
@@ -792,7 +792,7 @@ case 'add_spouse_to_individual_action':
 	$islink  = Filter::postArray('islink', '[01]');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_spouse_to_individual&xref=' . $xref . '&sex=' . $sex);
+		header('Location: edit_interface.php?action=add_spouse_to_individual&xref=' . $xref . '&sex=' . $sex);
 
 		break;
 	}
@@ -840,9 +840,9 @@ case 'add_spouse_to_individual_action':
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $spouse->getAbsoluteLinkUrl());
+		header('Location: ' . $spouse->getRawUrl());
 	} else {
-		header('Location: ' . $person->getAbsoluteLinkUrl());
+		header('Location: ' . $person->getRawUrl());
 	}
 	break;
 
@@ -880,7 +880,7 @@ case 'add_spouse_to_family_action':
 
 	if (!Filter::checkCsrf()) {
 		$famtag = Filter::get('famtag', 'HUSB|WIFE');
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
+		header('Location: edit_interface.php?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
 
 		break;
 	}
@@ -925,9 +925,9 @@ case 'add_spouse_to_family_action':
 	$family->createFact(trim($famrec), true); // trim leading \n
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $spouse->getAbsoluteLinkUrl());
+		header('Location: ' . $spouse->getRawUrl());
 	} else {
-		header('Location: ' . $family->getAbsoluteLinkUrl());
+		header('Location: ' . $family->getRawUrl());
 	}
 	break;
 
@@ -995,7 +995,7 @@ case 'linkfamaction':
 	$PEDI   = Filter::post('PEDI');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=addfamlink&xref=' . $xref);
+		header('Location: edit_interface.php?action=addfamlink&xref=' . $xref);
 		break;
 	}
 
@@ -1028,7 +1028,7 @@ case 'linkfamaction':
 		$family->createFact('1 CHIL @' . $person->getXref() . '@', true);
 	}
 
-	header('Location: ' . $person->getAbsoluteLinkUrl());
+	header('Location: ' . $person->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1109,7 +1109,7 @@ case 'linkspouseaction':
 
 	if (!Filter::checkCsrf()) {
 		$famtag = Filter::get('famtag', 'HUSB|WIFE');
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
+		header('Location: edit_interface.php?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
 
 		break;
 	}
@@ -1151,7 +1151,7 @@ case 'linkspouseaction':
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
-	header('Location: ' . $person->getAbsoluteLinkUrl());
+	header('Location: ' . $person->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1240,7 +1240,7 @@ case 'addnewsource':
 
 case 'addsourceaction':
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=addnewsource&ged=' . $controller->tree()->getNameUrl());
+		header('Location: edit_interface.php?action=addnewsource&ged=' . $controller->tree()->getNameUrl());
 		break;
 	}
 
@@ -1297,7 +1297,7 @@ case 'addsourceaction':
 
 	$record = $controller->tree()->createRecord($newgedrec);
 
-	header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1347,7 +1347,7 @@ case 'addnewnote':
 
 case 'addnoteaction':
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=addnewnote');
+		header('Location: edit_interface.php?action=addnewnote');
 		break;
 	}
 
@@ -1434,7 +1434,7 @@ case 'editnoteaction':
 	$note      = Filter::post('NOTE');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=editnote&xref=' . $xref);
+		header('Location: edit_interface.php?action=editnote&xref=' . $xref);
 		break;
 	}
 
@@ -1452,7 +1452,7 @@ case 'editnoteaction':
 
 	$record->updateRecord($gedrec, !$keep_chan);
 
-	header('Location: ' . $record->getAbsoluteLinkUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1510,7 +1510,7 @@ case 'addnewrepository':
 
 case 'addrepoaction':
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=addnewrepository&ged=' . $controller->tree()->getNameUrl());
+		header('Location: edit_interface.php?action=addnewrepository&ged=' . $controller->tree()->getNameUrl());
 		break;
 	}
 
@@ -1549,7 +1549,7 @@ case 'addrepoaction':
 	}
 
 	$record = $controller->tree()->createRecord($gedrec);
-	header('Location: ' . $record->getAbsoluteLinkUrl());
+	header('Location: ' . $record->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1568,7 +1568,7 @@ case 'editname':
 		}
 	}
 	if (!$name_fact) {
-		header('Location: ' . $person->getAbsoluteLinkUrl());
+		header('Location: ' . $person->getRawUrl());
 		break;
 	}
 
@@ -1694,7 +1694,7 @@ case 'reorder_media_update':
 	$order1 = Filter::post('order1');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=reorder_media_&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder_media_&xref=' . $xref);
 		break;
 	}
 
@@ -1717,7 +1717,7 @@ case 'reorder_media_update':
 
 	$person->updateRecord(implode("\n", $facts), false);
 
-	header('Location: ' . $person->getAbsoluteLinkUrl());
+	header('Location: ' . $person->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1803,7 +1803,7 @@ case 'reorder_update':
 	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=reorder_children&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder_children&xref=' . $xref);
 		break;
 	}
 
@@ -1831,7 +1831,7 @@ case 'reorder_update':
 		$family->updateRecord(implode("\n", $gedcom), false);
 	}
 
-	header('Location: ' . $family->getAbsoluteLinkUrl());
+	header('Location: ' . $family->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1988,7 +1988,7 @@ case 'changefamily_update':
 	$keep_chan = Filter::postBool('keep_chan');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=changefamily&xref=' . $xref);
+		header('Location: edit_interface.php?action=changefamily&xref=' . $xref);
 		break;
 	}
 
@@ -2085,7 +2085,7 @@ case 'changefamily_update':
 		}
 	}
 
-	header('Location: ' . $family->getAbsoluteLinkUrl());
+	header('Location: ' . $family->getRawUrl());
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2152,7 +2152,7 @@ case 'reorder_fams_update':
 	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . 'edit_interface.php?action=reorder_fams&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder_fams&xref=' . $xref);
 		break;
 	}
 
@@ -2180,7 +2180,7 @@ case 'reorder_fams_update':
 		$person->updateRecord(implode("\n", $gedcom), false);
 	}
 
-	header('Location: ' . $person->getAbsoluteLinkUrl());
+	header('Location: ' . $person->getRawUrl());
 	break;
 }
 
@@ -2702,7 +2702,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
  */
 function check_record_access(GedcomRecord $record = null) {
 	if (!$record || !$record->canShow() || !$record->canEdit()) {
-		header('Location: ' . $record->getAbsoluteLinkUrl());
+		header('Location: ' . $record->getRawUrl());
 
 		exit;
 	}

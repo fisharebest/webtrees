@@ -97,7 +97,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		// Some actions ard admin-only.
 		if (strpos($mod_action, 'admin') === 0 && !Auth::isAdmin()) {
-			header('Location: ' . WT_BASE_URL);
+			header('Location: index.php');
 
 			return;
 		}
@@ -282,7 +282,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setPreference('GM_POSTFIX_9', Filter::post('GM_POSTFIX_9'));
 
 			FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
-			header('Location: ' . WT_BASE_URL . 'module.php?mod=googlemap&mod_action=admin_config');
+			header('Location: module.php?mod=googlemap&mod_action=admin_config');
 
 			return;
 		}
@@ -2238,7 +2238,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			FlashMessages::addMessage(I18N::translate('Location not removed: this location contains sub-locations'),'danger');
 		}
 
-		header('Location: ' . WT_BASE_URL . 'module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
+		header('Location: module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
 	}
 
 	/**
@@ -2419,7 +2419,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent_id = (int) Filter::post('parent_id');
 		$inactive  = (int) Filter::post('inactive');
 
-		header('Location: ' . WT_BASE_URL . 'module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
+		header('Location: module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
 	}
 
 	/**
@@ -2507,7 +2507,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			]);
 		}
 
-		header('Location: ' . WT_BASE_URL . 'module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
+		header('Location: module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
 	}
 
 	/**

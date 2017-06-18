@@ -26,7 +26,7 @@ require 'includes/session.php';
 
 // Need to be logged in
 if (!Auth::check()) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -90,7 +90,7 @@ if ($action !== '' && Filter::checkCsrf()) {
 		break;
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: edit_user.php');
 
 	return;
 }

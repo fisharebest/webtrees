@@ -26,4 +26,4 @@ if (Auth::id()) {
 	FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
 }
 
-header('Location: ' . WT_BASE_URL . 'index.php?ged=' . rawurlencode($gedcom));
+header('Location: index.php?ged=' . rawurlencode($gedcom));

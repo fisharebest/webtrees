@@ -52,7 +52,7 @@ case 'delete':
 		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
 		$tree->delete();
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_trees_manage.php');
 
 	return;
 case 'setdefault':
@@ -60,7 +60,7 @@ case 'setdefault':
 		Site::setPreference('DEFAULT_GEDCOM', Filter::post('ged'));
 		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $WT_TREE->getTitleHtml()), 'success');
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_trees_manage.php');
 
 	return;
 case 'new_tree':
@@ -75,7 +75,7 @@ case 'new_tree':
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Filter::escapeHtml($basename)), 'success');
 		}
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?ged=' . Filter::escapeUrl($basename));
+	header('Location: admin_trees_manage.php?ged=' . Filter::escapeUrl($basename));
 
 	return;
 case 'replace_upload':
@@ -99,7 +99,7 @@ case 'replace_upload':
 			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
 		}
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_trees_manage.php');
 
 	return;
 case 'replace_import':
@@ -120,7 +120,7 @@ case 'replace_import':
 			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
 		}
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_trees_manage.php');
 
 	return;
 
@@ -152,7 +152,7 @@ case 'synchronize':
 		}
 
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_trees_manage.php');
 
 	return;
 }

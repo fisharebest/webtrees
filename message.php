@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($errors) {
 		// Errors? Go back to the form.
 		header(
-			'Location: ' . WT_BASE_URL . 'message.php' .
+			'Location: message.php' .
 			'?to=' . Filter::escapeUrl($to) .
 			'&from_name=' . Filter::escapeUrl($from_name) .
 			'&from_email=' . Filter::escapeUrl($from_email) .
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			}
 		}
 
-		header('Location: ' . WT_BASE_URL . $url);
+		header('Location: ' . $url);
 	}
 
 	return;

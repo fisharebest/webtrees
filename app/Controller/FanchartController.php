@@ -365,7 +365,7 @@ class FanchartController extends ChartController {
 
 		switch ($what) {
 		case 'html':
-			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . strip_tags($this->getPageTitle()) . '" usemap="#fanmap"></div>';
+			return $html . $imagemap . '<div id="fan_chart_img"><img src="fanchart.php?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . strip_tags($this->getPageTitle()) . '" usemap="#fanmap"></div>';
 
 		case 'png':
 			imagestringup($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);

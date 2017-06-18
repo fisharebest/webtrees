@@ -340,15 +340,6 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Generate an absolute URL for this record, suitable for sitemap.xml, RSS feeds, etc.
-	 *
-	 * @return string
-	 */
-	public function getAbsoluteLinkUrl() {
-		return WT_BASE_URL . $this->getHtmlUrl();
-	}
-
-	/**
 	 * Generate a URL to this record.
 	 *
 	 * @param string $link

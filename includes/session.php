@@ -205,17 +205,17 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+		header('Location: site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: ' . WT_BASE_URL . 'site-offline.php');
+		header('Location: site-offline.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: ' . WT_BASE_URL . 'setup.php');
+	header('Location: setup.php');
 	exit;
 }
 
@@ -239,11 +239,11 @@ try {
 	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 	if ($updated) {
 		// updateSchema() might load custom modules - which we cannot load again.
-		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
+		header('Location: ' . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
 		exit;
 	}
 } catch (PDOException $ex) {
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
+	header('Location: site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
 	exit;
 }
 
@@ -353,14 +353,14 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 if (Site::getPreference('LOGIN_URL') !== '') {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
+	define('WT_LOGIN_URL', 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'action.php') {
 	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
-			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
+			header('Location: admin_trees_manage.php');
 		} else {
 			// We're not an administrator, so we can only log in if there is a tree.
 			if (Auth::id()) {

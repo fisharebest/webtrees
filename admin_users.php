@@ -127,7 +127,7 @@ case 'save':
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_users.php');
 
 	return;
 }
@@ -778,7 +778,7 @@ case 'cleanup2':
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_users.php');
 	break;
 default:
 	$controller

@@ -588,7 +588,7 @@ $controller
 	$("#media-table-' . $table_id . '").dataTable({
 		processing: true,
 		serverSide: true,
-		ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+		ajax: "admin_media.php?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 		' . I18N::datatablesI18N([5, 10, 20, 50, 100, 500, 1000, -1]) . ',
 		autoWidth:false,
 		pageLength: 10,
