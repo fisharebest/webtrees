@@ -106,7 +106,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
 					$record2_name
 			), 'info');
-			$gedcom = str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
+			$gedcom = str_replace('@' . $gid2 . '@', '@' . $gid1 . '@', $record->getGedcom());
 			$gedcom = preg_replace(
 				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
 				'$2',
