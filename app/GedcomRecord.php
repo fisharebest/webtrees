@@ -610,7 +610,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function getFallBackName() {
-		return $this->getXref();
+		return Filter::escapeHtml($this->getXref());
 	}
 
 	/**
