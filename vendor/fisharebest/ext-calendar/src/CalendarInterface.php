@@ -8,7 +8,7 @@ namespace Fisharebest\ExtCalendar;
  * Many of them are actually provided by the AbstractCalendar base class.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or

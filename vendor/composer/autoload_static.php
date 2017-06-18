@@ -8,9 +8,9 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
 {
     public static $files = array (
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        'b3134b0e457069f7362d2c9cf91628c7' => __DIR__ . '/..' . '/fisharebest/ext-calendar/src/shims.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        'b3134b0e457069f7362d2c9cf91628c7' => __DIR__ . '/..' . '/fisharebest/ext-calendar/src/shims.php',
     );
 
     public static $prefixLengthsPsr4 = array (

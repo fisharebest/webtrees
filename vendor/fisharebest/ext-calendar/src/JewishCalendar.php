@@ -10,7 +10,7 @@ use InvalidArgumentException;
  * Hebrew characters in the comments have UTF-8 encoding.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -187,7 +187,6 @@ class JewishCalendar implements CalendarInterface {
 		}
 	}
 
-
 	public function daysInWeek() {
 		return 7;
 	}
@@ -216,12 +215,12 @@ class JewishCalendar implements CalendarInterface {
 	 * @return integer
 	 */
 	protected function jdToY($julian_day) {
-		// Generate an approximate year - may be out by one either way.  Add one to it.
-		$year = (int) (($julian_day - 347998) / 365) + 1;
+		// Estimate the year, and underestimate it, it will be refined after
+		$year = max( (int) ((($julian_day - 347998) * 98496 ) / 35975351) - 1, 1);
 
-		// Adjust by subtracting years;
-		while ($this->yToJd($year) > $julian_day) {
-			$year--;
+		// Adjust by adding years;
+		while ($julian_day >= $this->yToJd($year + 1)) {
+			$year++;
 		}
 
 		return $year;

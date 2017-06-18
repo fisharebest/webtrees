@@ -1,11 +1,13 @@
 <?php
 namespace Fisharebest\ExtCalendar;
 
+use InvalidArgumentException;
+
 /**
  * Class ArabicCalendar - calculations for the Arabic (Hijri) calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -51,9 +53,9 @@ class ArabicCalendar implements CalendarInterface {
 	}
 
 	public function jdToYmd($julian_day) {
-		$year  = (int) ((30 * ($julian_day - 1948439) + 10646) / 10631);
-		$month = (int) ((11 * ($julian_day - $year * 354 - (int) ((3 + 11 * $year) / 30) - 1948085) + 330) / 325);
-		$day   = $julian_day - 29 * ($month - 1) - (int) ((6 * $month - 1) / 11) - $year * 354 - (int) ((3 + 11 * $year) / 30) - 1948084;
+		$year  = (int) ((30 * ($julian_day - 1948440) + 10646) / 10631);
+		$month = (int) ((11 * ($julian_day - $year * 354 - (int) ((3 + 11 * $year) / 30) - 1948086) + 330) / 325);
+		$day   = $julian_day - 29 * ($month - 1) - (int) ((6 * $month - 1) / 11) - $year * 354 - (int) ((3 + 11 * $year) / 30) - 1948085;
 
 		return array($year, $month, $day);
 	}
@@ -63,6 +65,29 @@ class ArabicCalendar implements CalendarInterface {
 	}
 
 	public function ymdToJd($year, $month, $day) {
-		return $day + 29 * ($month - 1) + (int) ((6 * $month - 1) / 11) + $year * 354 + (int) ((3 + 11 * $year) / 30) + 1948084;
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
+		return $day + 29 * ($month - 1) + (int) ((6 * $month - 1) / 11) + $year * 354 + (int) ((3 + 11 * $year) / 30) + 1948085;
+	}
+
+	/**
+	 * The algorithm used above require a mod() function that always returns a positive
+	 * modules.  The native PHP function returns a negative modulus for a negative dividend.
+	 *
+	 * @param number $dividend
+	 * @param number $divisor
+	 * @return number
+	 */
+	public static function mod($dividend, $divisor) {
+		if ($divisor === 0) return 0;
+
+		$modulus = $dividend % $divisor;
+		if($modulus < 0) {
+			$modulus += $divisor;
+		}
+
+		return $modulus;
 	}
 }
