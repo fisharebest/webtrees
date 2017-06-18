@@ -23,25 +23,25 @@ class CensusOfDeutschland1819Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDeutschland1819
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1819
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfDeutschland1819;
-		
+
 		$this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
 		$this->assertSame('AUG 1819', $census->censusDate());
 	}
-	
+
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDeutschland1819
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1819
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfDeutschland1819;
 		$columns = $census->columns();
-		
+
 		$this->assertCount(13, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[1]);

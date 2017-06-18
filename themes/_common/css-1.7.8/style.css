@@ -1,0 +1,359 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2017 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * Pages have the following high-level structure:
+ *
+ * wt-global
+ * +---wt-header-wrapper
+ *     +---wt-header-container
+ *     |   +---wt-header-content
+ *     |       +---wt-accessibility-links
+ *     |       +---wt-site-logo
+ *     |       +---wt-site-title
+ *     |       +---wt-header-search
+ *     |       |   +---wt-header-search-form
+ *     |       +---wt-secondary-navigation
+ *     |       |   +---wt-secondary-menu
+ *     |       +---wt-primary-navigation
+ *     |           +---wt-primary-menu
+ *     +---wt-main-container
+ *     |   +---wt-main-content
+ *     |       +---wt-messages
+ *     |       +---wt-page-title
+ *     |       +---wt-page-options wt-page-options-xxxxx
+ *     |       +---wt-page-content
+ *     +---wt-footer-container
+ *         +---wt-footer-content
+ *             +---wt-contact-links
+ *             +---wt-powered-by-webtrees
+ *             +---wt-page-views
+ *             +---wt-cookie-warning
+ */
+
+.wt-global {
+	/* Prevent redraws when dynamic content requires a scrollbar. */
+	overflow-y: scroll;
+	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.wt-header-wrapper {
+}
+
+.wt-header-container {
+}
+
+.wt-header-content {
+}
+
+.wt-accessibility-links {
+	/* When we focus on the links, they should appear without changing the layout. */
+	position: fixed;
+}
+
+.wt-site-logo {
+}
+
+.wt-site-title {
+}
+
+.wt-header-search {
+}
+
+.wt-header-search-form {
+}
+
+.wt-secondary-navigation {
+}
+
+.wt-secondary-menu {
+}
+
+.wt-primary-navigation {
+}
+
+.wt-primary-menu {
+}
+
+.wt-main-container {
+	/* Grow to fill content, to allow footer to stay at bottom of page. */
+	flex: 1;
+	/* Space between the header/footer and the main content. */
+	padding: 1rem 0;
+}
+
+.wt-main {
+}
+
+.wt-messages {
+}
+
+.wt-page-title {
+}
+
+.wt-page-options {
+}
+
+.wt-page-content {
+}
+
+.wt-footer-container {
+}
+
+.wt-footer-content {
+	text-align: center;
+}
+
+.wt-contact-links {
+}
+
+.wt-powered-by-webtrees {
+}
+
+.wt-page-views {
+}
+
+.wt-cookie-warning {
+}
+
+/*
+ * The home/my pages
+ *
+ * wt-home-page / wt-my-page
+ * +---wt-main-blocks
+ * |   +---wt-block, wt-block-AAA
+ * |   +---wt-block, wt-block-BBB
+ * |   +---wt-block, wt-block-CCC
+ * +---wt-side-blocks
+ *     +---wt-block, wt-block-XXX
+ *     +---wt-block, wt-block-YYY
+ *     +---wt-block, wt-block-ZZZ
+ *
+ * Each block as the structure
+ * wt-block, wt-block-XXX
+ * +---wt-block-header, wt-block-header-XXX
+ * +---wt-block-content, wt-block-content-XXX
+ */
+
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+}
+
+/*
+ * Ancestors chart
+ *
+ * wt-chart, wt-ancestors-chart
+ * +---wt-ancestors-chart-list
+ *     +---wt-ancestors-chart-list-item
+ */
+.wt-ancestors-chart-list {
+}
+
+/*
+ * Compact chart
+ *
+ * wt-chart, wt-compact-chart
+ */
+
+.wt-ancestors-chart-list-item {
+	list-style: none outside none;
+}
+
+/*
+ * Descendants chart
+ *
+ * wt-chart, wt-descendants-chart
+ * +---wt-descendants-chart-list
+ *     +---wt-descendants-chart-list-item
+ */
+.wt-descendants-chart-list {
+}
+
+.wt-descendants-chart-list-item {
+	list-style: none outside none;
+}
+
+/*
+ * Family book chart
+ *
+ * wt-chart, wt-family-book-chart
+ */
+
+/*
+ * Fan chart
+ *
+ * wt-chart, wt-fan-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-hourglass-chart
+ */
+
+/*
+ * Hourglass chart
+ *
+ * wt-chart, wt-interactive-tree
+ */
+
+/*
+ * Lifespans chart
+ *
+ * wt-chart, wt-lifespans-chart
+ */
+
+/*
+ * Pedigree chart
+ *
+ * wt-chart, wt-pedigree-chart
+ */
+
+/*
+ * Pedigree map
+ *
+ * wt-chart, wt-pedigree-map
+ */
+
+/*
+ * Relationships chart
+ *
+ * wt-chart, wt-relationships-chart
+ */
+
+/*
+ * Statistics chart
+ *
+ * wt-chart, wt-statistics-chart
+ */
+
+/*
+ * Timeline chart
+ *
+ * wt-chart, wt-timeline-chart
+ */
+
+/*
+ * Family list
+ *
+ * wt-list, wt-individual-list
+ * +---wt-initials, wt-surname-initials
+ *     +---wt-initial, wt-surname-initial
+ * +---wt-initials, wt-given-name-initials
+ *     +---wt-initial, wt-given-name-initial
+ */
+
+/*
+ * Individual list
+ *
+ * wt-list, wt-individual-list
+ * +---wt-initials, wt-surname-initials
+ *     +---wt-initial, wt-surname-initial
+ * +---wt-initials, wt-given-name-initials
+ *     +---wt-initial, wt-given-name-initial
+ */
+
+/*
+ * Media object list
+ *
+ * wt-list, wt-media-list
+ */
+
+/*
+ * Note object list
+ *
+ * wt-list, wt-note-list
+ */
+
+/*
+ * Source list
+ *
+ * wt-list, wt-source-list
+ */
+
+/*
+ * Repository list
+ *
+ * wt-list, wt-repository-list
+ */
+
+/*
+ * Branches list
+ *
+ * wt-branches-page
+ */
+
+/*
+ * Place hierarchy
+ *
+ * wt-place-hierarchy-page
+ */
+
+/*
+ * Calendar
+ *
+ * wt-calendar-page
+ */
+
+/*
+ * Reports
+ *
+ * wt-reports-page
+ */
+
+/*
+ * Search
+ *
+ * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ */
+
+/* Some menus (e.g. languages) can be longer than a page */
+.dropdown-menu {
+	max-height: 25rem;
+	overflow-x: hidden;
+}
+
+/* Census assistant */
+.wt-census-assistant-table .wt-census-assistant-field,
+.wt-census-assistant-form-control {
+	font-size: small;
+	padding: 0.1rem;
+}
+.wt-census-assistant-form-control:focus {
+	min-width: 12rem;
+}
+
+/* Temporary hack/workaround for https://github.com/twbs/bootstrap/issues/21666 */
+fieldset.row {
+	display: block;
+}
+fieldset.row > legend, fieldset.row > div {
+	display: inline-block;
+	float: left;
+}
+
+/* Forms */
+.col-form-label,
+.col-form-legend {
+	text-align: end;
+	font-weight: bold;
+}
+

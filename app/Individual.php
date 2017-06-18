@@ -538,18 +538,25 @@ class Individual extends GedcomRecord {
 
 	/**
 	 * Get the range of years in which a individual lived. e.g. “1870–”, “1870–1920”, “–1920”.
-	 * Provide the full date using a tooltip.
+	 * Provide the place and full date using a tooltip.
 	 * For consistent layout in charts, etc., show just a “–” when no dates are known.
 	 * Note that this is a (non-breaking) en-dash, and not a hyphen.
 	 *
 	 * @return string
 	 */
 	public function getLifeSpan() {
+		// Just the first part of the place name
+		$birth_place = preg_replace('/,.*/', '', $this->getBirthPlace());
+		$death_place = preg_replace('/,.*/', '', $this->getDeathPlace());
+		// Remove markup from dates
+		$birth_date = strip_tags($this->getBirthDate()->display());
+		$death_date = strip_tags($this->getDeathDate()->display());
+
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ I18N::translate(
 				'%1$s–%2$s',
-				'<span title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->minimumDate()->format('%Y') . '</span>',
-				'<span title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->minimumDate()->format('%Y') . '</span>'
+				'<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
+				'<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
 			);
 	}
 
@@ -882,7 +889,7 @@ class Individual extends GedcomRecord {
 		case 0:
 			return null;
 		case 1:
-			return reset($families);
+			return $families[0];
 		default:
 			// If there is more than one FAMC record, choose the preferred parents:
 			// a) records with '2 _PRIMARY'
@@ -905,7 +912,7 @@ class Individual extends GedcomRecord {
 			}
 
 			// d) any record
-			return reset($families);
+			return $families[0];
 		}
 	}
 

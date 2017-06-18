@@ -15,19 +15,14 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\FamilyController;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'family.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $record     = Family::getInstance(Filter::get('famid', WT_REGEX_XREF), $WT_TREE);
 $controller = new FamilyController($record);
@@ -69,18 +64,18 @@ if ($controller->record && $controller->record->canShow()) {
 
 ?>
 <div id="family-page">
-	<h2><?php echo $controller->record->getFullName(); ?></h2>
+	<h2><?= $controller->record->getFullName() ?></h2>
 
 	<table id="family-table">
 		<tr style="vertical-align:top;">
-			<td style="width: <?php echo Theme::theme()->parameter('chart-box-x') + 30; ?>px;"><!--//List of children//-->
-				<?php FunctionsCharts::printFamilyChildren($controller->record); ?>
+			<td style="width: <?= Theme::theme()->parameter('chart-box-x') + 30 ?>px;"><!--//List of children//-->
+				<?php FunctionsCharts::printFamilyChildren($controller->record) ?>
 			</td>
 			<td> <!--//parents pedigree chart and Family Details//-->
 				<table width="100%">
 					<tr>
-						<td class="subheaders"><?php echo I18N::translate('Parents'); ?></td>
-						<td class="subheaders"><?php echo I18N::translate('Grandparents'); ?></td>
+						<td class="subheaders"><?= I18N::translate('Parents') ?></td>
+						<td class="subheaders"><?= I18N::translate('Grandparents') ?></td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -88,12 +83,12 @@ if ($controller->record && $controller->record->canShow()) {
 							FunctionsCharts::printFamilyParents($controller->record);
 							if (Auth::isEditor($controller->record->getTree())) {
 								$husb = $controller->record->getHusband();
-								if (!$husb) {
-									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', I18N::translate('Add a father'), '</a><br>';
+								if ($husb !== null) {
+									echo '<a href="edit_interface.php?action=add_spouse_to_family&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=', $controller->record->getXref(), '&amp;famtag=HUSB">', I18N::translate('Add a father'), '</a><br>';
 								}
 								$wife = $controller->record->getWife();
-								if (!$wife) {
-									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', I18N::translate('Add a mother'), '</a><br>';
+								if ($wife !== null) {
+									echo '<a href="edit_interface.php?action=add_spouse_to_family&amp;ged=\' . $controller->record->getTree()->getNameHtml() . \'&amp;xref=\', $controller->record->getXref(), \'&amp;famtag=WIFE">', I18N::translate('Add a mother'), '</a><br>';
 								}
 							}
 							?>
@@ -101,7 +96,7 @@ if ($controller->record && $controller->record->canShow()) {
 					</tr>
 					<tr>
 						<td colspan="2">
-							<span class="subheaders"><?php echo I18N::translate('Family group information'); ?></span>
+							<span class="subheaders"><?= I18N::translate('Family group information') ?></span>
 							<?php
 							if ($controller->record->canShow()) {
 								echo '<table class="facts_table">';

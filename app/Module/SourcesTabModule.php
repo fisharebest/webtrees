@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -63,11 +62,11 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 		ob_start();
 		?>
 		<table class="facts_table">
-			<tr class="noprint">
+			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<label>
 						<input id="show-level-2-sources" type="checkbox">
-						<?php echo I18N::translate('Show all sources'); ?>
+						<?= I18N::translate('Show all sources') ?>
 					</label>
 				</td>
 			</tr>
@@ -86,13 +85,13 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			// New Source Link
 			if ($controller->record->canEdit()) {
 				?>
-				<tr class="noprint">
+				<tr>
 					<td class="facts_label">
-						<?php echo GedcomTag::getLabel('SOUR'); ?>
+						<?= I18N::translate('Source') ?>
 					</td>
 					<td class="facts_value">
-						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
-							<?php echo I18N::translate('Add a source citation'); ?>
+						<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SOUR">
+							<?= I18N::translate('Add a source citation') ?>
 						</a>
 					</td>
 				</tr>
@@ -101,7 +100,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 		</table>
 		<script>
-			persistent_toggle("show-level-2-sources", ".row_sour2");
+			//persistent_toggle("show-level-2-sources", ".row_sour2");
 		</script>
 		<?php
 
@@ -139,7 +138,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
-		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
+		return false;
 	}
 
 	/** {@inheritdoc} */

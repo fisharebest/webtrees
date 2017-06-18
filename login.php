@@ -19,15 +19,10 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Rhumsaa\Uuid\Uuid;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global Tree $WT_TREE */
 global $WT_TREE;
 
-define('WT_SCRIPT_NAME', 'login.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && $WT_TREE) {
@@ -151,10 +146,10 @@ default:
 		->setPageTitle(I18N::translate('Sign in'))
 		->pageHeader()
 		->addInlineJavascript('
-			jQuery("#new_passwd_form").hide();
-			jQuery("#passwd_click").click(function() {
-				jQuery("#new_passwd_form").slideToggle(100, function() {
-					jQuery("#new_passwd_username").focus()
+			$("#new_passwd_form").hide();
+			$("#passwd_click").click(function() {
+				$("#new_passwd_form").slideToggle(100, function() {
+					$("#new_passwd_username").focus()
 				});
 				return false;
 			});
@@ -165,7 +160,7 @@ default:
 
 	echo '<p class="center"><strong>' . I18N::translate('Welcome to this genealogy website') . '</strong></p>';
 
-	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
+	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE') === '1') {
 	case 1:
 		echo '<p>' . I18N::translate('Anyone with a user account can access this website.') . ' ' . I18N::translate('You can apply for an account using the link below.') . '</p>';
 		break;
@@ -209,7 +204,7 @@ default:
 			<div>
 				<a href="#" id="passwd_click">', I18N::translate('Forgot password?'), '</a>
 			</div>';
-			if (Site::getPreference('USE_REGISTRATION_MODULE')) {
+			if (Site::getPreference('USE_REGISTRATION_MODULE') === '1') {
 				echo '<div><a href="' . WT_LOGIN_URL . '?action=register">', I18N::translate('Request a new user account'), '</a></div>';
 			}
 		}
@@ -271,7 +266,7 @@ case 'requestpw':
 	break;
 
 case 'register':
-	if (!Site::getPreference('USE_REGISTRATION_MODULE')) {
+	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
 		header('Location: ' . WT_BASE_URL);
 
 		return;
@@ -402,100 +397,100 @@ case 'register':
 
 	?>
 	<div id="login-register-page">
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<h2><?= $controller->getPageTitle() ?></h2>
 
-		<?php if (Site::getPreference('SHOW_REGISTER_CAUTION')): ?>
+		<?php if (Site::getPreference('SHOW_REGISTER_CAUTION') === '1'): ?>
 		<div id="register-text">
-			<?php echo I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>'); ?>
+			<?= I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>') ?>
 		</div>
-		<?php endif; ?>
+		<?php endif ?>
 		<div id="register-box">
 			<form id="register-form" name="register-form" method="post" onsubmit="return checkform(this);" autocomplete="off">
 				<input type="hidden" name="action" value="register">
-				<h4><?php echo I18N::translate('All fields must be completed.'); ?></h4>
+				<h4><?= I18N::translate('All fields must be completed.') ?></h4>
 				<hr>
 
 				<div>
 					<label for="user_realname">
-						<?php echo I18N::translate('Real name'); ?>
-						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?php echo Filter::escapeHtml($user_realname); ?>" autofocus>
+						<?= I18N::translate('Real name') ?>
+						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?= Filter::escapeHtml($user_realname) ?>" autofocus>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+						<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
 					</p>
 				</div>
 
 				<div>
 					<label for="user_email">
-						<?php echo I18N::translate('Email address'); ?>
-						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo Filter::escapeHtml($user_email); ?>">
+						<?= I18N::translate('Email address') ?>
+						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?= Filter::escapeHtml($user_email) ?>">
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
+						<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
 					</p>
 				</div>
 
 				<div>
 					<label for="username">
-						<?php echo I18N::translate('Username'); ?>
-						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php Filter::escapeHtml($user_name); ?>">
+						<?= I18N::translate('Username') ?>
+						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php Filter::escapeHtml($user_name) ?>">
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
+						<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
 					</p>
 				</div>
 
 				<div>
 					<label for="user_password01">
-						<?php echo I18N::translate('Password'); ?>
+						<?= I18N::translate('Password') ?>
 						<input required
 							type="password"
 							id="user_password01" name="user_password01"
-							value="<?php echo Filter::escapeHtml($user_password01); ?>"
-							placeholder="<?php echo /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>"
-							pattern="<?php echo  WT_REGEX_PASSWORD; ?>"
+							value="<?= Filter::escapeHtml($user_password01) ?>"
+							placeholder="<?= /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)) ?>"
+							pattern="<?=  WT_REGEX_PASSWORD ?>"
 							onchange="form.user_password02.pattern = regex_quote(this.value);"
 						>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.'); ?>
+						<?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
 					</p>
 				</div>
 
 				<div>
 					<label for="user_password02">
-						<?php echo I18N::translate('Confirm password'); ?>
+						<?= I18N::translate('Confirm password') ?>
 						<input required
 							type="password"
 							id="user_password02" name="user_password02"
-							value="<?php echo Filter::escapeHtml($user_password02); ?>"
-							placeholder="<?php echo /* I18N: placeholder text for repeat-password field */ I18N::translate('Type the password again.'); ?>"
-							pattern="<?php echo WT_REGEX_PASSWORD; ?>"
+							value="<?= Filter::escapeHtml($user_password02) ?>"
+							placeholder="<?= /* I18N: placeholder text for repeat-password field */ I18N::translate('Type the password again.') ?>"
+							pattern="<?= WT_REGEX_PASSWORD ?>"
 						>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Type your password again, to make sure you have typed it correctly.'); ?>
+						<?= I18N::translate('Type your password again, to make sure you have typed it correctly.') ?>
 					</p>
 				</div>
 
 				<div>
 					<label for="user_comments">
-						<?php echo I18N::translate('Comments'); ?>
+						<?= I18N::translate('Comments') ?>
 						<textarea required
 							cols="50" rows="5"
 							id="user_comments" name="user_comments"
-							placeholder="<?php /* I18N: placeholder text for registration-comments field */ I18N::translate('Explain why you are requesting an account.'); ?>"
-						><?php echo Filter::escapeHtml($user_comments); ?></textarea>
+							placeholder="<?php /* I18N: placeholder text for registration-comments field */ I18N::translate('Explain why you are requesting an account.') ?>"
+						><?= Filter::escapeHtml($user_comments) ?></textarea>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.'); ?>
+						<?= I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.') ?>
 					</p>
 				</div>
 
 				<hr>
 
 				<div id="registration-submit">
-					<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+					<input type="submit" value="<?= I18N::translate('continue') ?>">
 				</div>
 			</form>
 		</div>
@@ -504,7 +499,7 @@ case 'register':
 	break;
 
 case 'userverify':
-	if (!Site::getPreference('USE_REGISTRATION_MODULE')) {
+	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
 		header('Location: ' . WT_BASE_URL);
 
 		return;
@@ -542,7 +537,7 @@ case 'userverify':
 	break;
 
 case 'verify_hash':
-	if (!Site::getPreference('USE_REGISTRATION_MODULE')) {
+	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
 		header('Location: ' . WT_BASE_URL);
 
 		return;
@@ -608,7 +603,7 @@ case 'verify_hash':
 		$user
 			->setPreference('verified', '1')
 			->setPreference('reg_timestamp', date('U'))
-			->deletePreference('reg_hashcode');
+			->setPreference('reg_hashcode', '');
 
 		Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 

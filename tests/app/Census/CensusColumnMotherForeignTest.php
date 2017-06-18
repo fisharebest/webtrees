@@ -30,8 +30,8 @@ class CensusColumnMotherForeignTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherForeign
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testSameCountry() {
 		$mother = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -52,8 +52,8 @@ class CensusColumnMotherForeignTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherForeign
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testDifferentCountry() {
 		$mother = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -74,8 +74,8 @@ class CensusColumnMotherForeignTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherForeign
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceNoParent() {
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -93,8 +93,8 @@ class CensusColumnMotherForeignTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherForeign
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceNoParentFamily() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

@@ -17,8 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\HourglassController;
 
-define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new HourglassController;
 

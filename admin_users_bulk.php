@@ -17,8 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 
-define('WT_SCRIPT_NAME', 'admin_users_bulk.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -26,28 +25,26 @@ $controller
 	->setPageTitle(I18N::translate('Send broadcast messages'))
 	->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'       => I18N::translate('Control panel'),
+	'admin_users.php' => I18N::translate('User administration'),
+], $controller->getPageTitle());
 ?>
 
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
-
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <p>
-	<a href="#" onclick="return message('all', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to all users'); ?>
+	<a href="message.php?to=all">
+		<?= I18N::translate('Send a message to all users') ?>
 	</a>
 </p>
 <p>
-	<a href="#" onclick="return message('never_logged', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have never signed in'); ?>
+	<a href="message.php?to=never_logged">
+		<?= I18N::translate('Send a message to users who have never signed in') ?>
 	</a>
 </p>
 <p>
-	<a href="#" onclick="return message('last_6mo', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have not signed in for 6 months'); ?>
+	<a href="message.php?to=last_6mo">
+		<?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
 	</a>
 </p>

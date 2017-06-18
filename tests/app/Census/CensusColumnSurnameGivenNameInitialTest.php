@@ -30,8 +30,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testOneGivenName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -47,8 +47,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testMultipleGivenNames() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

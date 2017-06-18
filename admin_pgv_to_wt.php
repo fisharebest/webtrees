@@ -19,15 +19,10 @@ use Fisharebest\Webtrees\Controller\PageController;
 use PDO;
 use PDOException;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global Tree $WT_TREE */
 global $WT_TREE;
 
-define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if ($WT_TREE || count(User::all()) > 1) {
@@ -124,12 +119,11 @@ if ($PGV_PATH) {
 
 $controller->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -158,8 +152,8 @@ if (!$PGV_PATH) {
 	?>
 
 	<form class="form-horizontal" method="post">
-		<div class="form-group">
-			<label class="control-label col-sm-3" for="PGV_PATH">
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label" for="PGV_PATH">
 				<?= I18N::translate('Where is your PhpGedView installation?') ?>
 			</label>
 			<div class="col-sm-9">
@@ -177,8 +171,8 @@ if (!$PGV_PATH) {
 			</div>
 		</div>
 
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-9">
+		<div class="row form-group">
+			<div class="offset-sm-3 col-sm-9">
 				<button type="submit" class="btn btn-primary">
 					<?= I18N::translate('continue') ?>
 				</button>
@@ -659,7 +653,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$NOTE_FACTS_QUICK             = '';
 	$NOTE_FACTS_UNIQUE            = '';
 	$NO_UPDATE_CHAN               = '';
-	$PEDIGREE_FULL_DETAILS        = '';
 	$PEDIGREE_LAYOUT              = '';
 	$PEDIGREE_ROOT_ID             = '';
 	$PEDIGREE_SHOW_GENDER         = '';
@@ -858,7 +851,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_UNIQUE', $NOTE_FACTS_UNIQUE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_ID_PREFIX', 'N']);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NO_UPDATE_CHAN', $NO_UPDATE_CHAN]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_LAYOUT', $PEDIGREE_LAYOUT]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_ROOT_ID', $PEDIGREE_ROOT_ID]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_SHOW_GENDER', $PEDIGREE_SHOW_GENDER]);

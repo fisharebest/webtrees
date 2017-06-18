@@ -24,58 +24,49 @@ class Site {
 	 *
 	 * @var array
 	 */
-	private static $settings = null;
+	private static $preferences = [];
 
 	/**
 	 * Get the site’s configuration settings
 	 *
 	 * @param string $setting_name
+	 * @param string $default
 	 *
-	 * @return string|null
+	 * @return string
 	 */
-	public static function getPreference($setting_name) {
+	public static function getPreference($setting_name, $default = '') {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
-		if (self::$settings === null) {
-			self::$settings = Database::prepare(
+		if (empty(self::$preferences)) {
+			self::$preferences = Database::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##site_setting`"
 			)->fetchAssoc();
 		}
 
-		// A setting that hasn't yet been set?
-		if (!array_key_exists($setting_name, self::$settings)) {
-			self::$settings[$setting_name] = null;
+		if (!array_key_exists($setting_name, self::$preferences)) {
+			self::$preferences[$setting_name] = $default;
 		}
 
-		return self::$settings[$setting_name];
+		return self::$preferences[$setting_name];
 	}
 
 	/**
 	 * Set the site’s configuration settings.
 	 *
-	 * @param string          $setting_name
-	 * @param string|int|bool $setting_value
+	 * @param string $setting_name
+	 * @param string $setting_value
 	 */
 	public static function setPreference($setting_name, $setting_value) {
-		// Only need to update the database if the setting has actually changed.
-		if (self::getPreference($setting_name) != $setting_value) {
-			if ($setting_value === null) {
-				Database::prepare(
-					"DELETE FROM `##site_setting` WHERE setting_name = :setting_name"
-				)->execute([
-					'setting_name' => $setting_name,
-				]);
-			} else {
-				Database::prepare(
-					"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
-					" VALUES (:setting_name, LEFT(:setting_value, 2000))"
-				)->execute([
-					'setting_name'  => $setting_name,
-					'setting_value' => $setting_value,
-				]);
-			}
+		if (self::getPreference($setting_name) !== $setting_value) {
+			Database::prepare(
+				"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
+				" VALUES (:setting_name, LEFT(:setting_value, 2000))"
+			)->execute([
+				'setting_name'  => $setting_name,
+				'setting_value' => $setting_value,
+			]);
 
-			self::$settings[$setting_name] = $setting_value;
+			self::$preferences[$setting_name] = $setting_value;
 
 			Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"');
 		}

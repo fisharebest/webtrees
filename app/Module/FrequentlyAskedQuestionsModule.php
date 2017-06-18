@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
@@ -156,22 +157,21 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			CkeditorModule::enableEditor($controller);
 		}
 
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'                                                       => I18N::translate('Control panel'),
+			'admin_modules.php'                                               => I18N::translate('Module administration'),
+			'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo I18N::translate('Frequently asked questions'); ?></a>
-			</li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
-		<h1><?php echo $controller->getPageTitle(); ?></h1>
 
-		<form name="faq" class="form-horizontal" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit_save">
-		<?php echo Filter::getCsrf(); ?>
-		<input type="hidden" name="block_id" value="<?php echo $block_id; ?>">
+		<h1><?= $controller->getPageTitle() ?></h1>
 
-		<div class="form-group">
-			<label for="header" class="col-sm-3 control-label">
+		<form name="faq" class="form-horizontal" method="post" action="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit_save">
+		<?= Filter::getCsrf() ?>
+		<input type="hidden" name="block_id" value="<?= $block_id ?>">
+
+		<div class="row form-group">
+			<label for="header" class="col-sm-3 col-form-label">
 				<?= I18N::translate('Question') ?>
 			</label>
 
@@ -181,8 +181,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="faqbody" class="col-sm-3 control-label">
+		<div class="row form-group">
+			<label for="faqbody" class="col-sm-3 col-form-label">
 				<?= I18N::translate('Answer') ?>
 			</label>
 
@@ -191,8 +191,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="xref" class="col-sm-3 control-label">
+		<div class="row form-group">
+			<label for="xref" class="col-sm-3 col-form-label">
 				<?= /* I18N: Label for a configuration option */ I18N::translate('Show this block for which languages') ?>
 			</label>
 
@@ -201,8 +201,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="block_order" class="col-sm-3 control-label">
+		<div class="row form-group">
+			<label for="block_order" class="col-sm-3 col-form-label">
 				<?= I18N::translate('Sort order') ?>
 			</label>
 
@@ -211,21 +211,21 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="gedcom_id" class="col-sm-3 control-label">
+		<div class="row form-group">
+			<label for="gedcom_id" class="col-sm-3 col-form-label">
 				<?= I18N::translate('Family tree') ?>
 			</label>
 
 			<div class="col-sm-9">
-				<?php echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), I18N::translate('All'), $gedcom_id, 'class="form-control"'); ?>
+				<?= Bootstrap4::select(['' => I18N::translate('All')] + Tree::getIdList(), $gedcom_id, ['id' => 'gedcom_id', 'name' => 'gedcom_id']) ?>
 				<p class="small text-muted">
 					<?= /* I18N: FAQ = “Frequently Asked Question” */ I18N::translate('An FAQ can be displayed on just one of the family trees, or on all the family trees.') ?>
 				</p>
 			</div>
 		</div>
 
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-9">
+		<div class="row form-group">
+			<div class="offset-sm-3 col-sm-9">
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-check"></i>
 					<?= I18N::translate('save') ?>
@@ -359,7 +359,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			'tree_id_2'   => $WT_TREE->getTreeId(),
 		])->fetchAll();
 
-		echo '<h2 class="center">', I18N::translate('Frequently asked questions');
+		echo '<h2 class="wt-page-title">', I18N::translate('Frequently asked questions');
 		if (Auth::isManager($WT_TREE)) {
 			echo ' — <a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('edit'), '</a>';
 		}
@@ -432,13 +432,13 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			'tree_id' => $WT_TREE->getTreeId(),
 		])->fetchOne();
 
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'         => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<h1><?= $controller->getPageTitle() ?></h1>
 		<p>
 			<?= /* I18N: FAQ = “Frequently Asked Question” */ I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.') ?>
 			<?= I18N::translate('You may use HTML to format the answer and to add links to other websites.') ?>
@@ -451,7 +451,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 				<input type="hidden" name="mod" value="<?=  $this->getName() ?>">
 				<input type="hidden" name="mod_action" value="admin_config">
-				<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+				<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
 				<input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
 			</form>
 		</p>

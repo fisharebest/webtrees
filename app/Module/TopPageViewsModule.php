@@ -16,9 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
@@ -69,7 +70,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
 		} else {
 			$title = '';
 		}
@@ -155,16 +156,16 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
+		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="num">';
 		echo /* I18N: ... to show in a list */ I18N::translate('Number of pages');
-		echo '</td><td class="optionbox">';
+		echo '</label><div class="col-sm-9">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
+		echo '</div></div>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
+		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="count_placement">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('count_placement', ['before' => I18N::translate('before'), 'after' => I18N::translate('after')], null, $count_placement, '');
-		echo '</td></tr>';
+		echo '</label><div class="col-sm-9">';
+		echo Bootstrap4::select(['before' => I18N::translate('before'), 'after' => I18N::translate('after')], $count_placement, ['id' => 'count_placement', 'name' => 'count_placement']);
+		echo '</div></div>';
 	}
 }

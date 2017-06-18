@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -506,43 +507,70 @@ class SearchController extends PageController {
 	 */
 	public function printResults() {
 		if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
-			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
-				$this->addInlineJavascript('$("#search-result-tabs").tabs();');
-				$this->addInlineJavascript('$("#search-result-tabs").css("visibility", "visible");');
-				$this->addInlineJavascript('$(".loading-image").css("display", "none");');
-				echo '<br>';
-				echo '<div class="loading-image"></div>';
-				echo '<div id="search-result-tabs"><ul>';
-				if (!empty($this->myindilist)) {
-					echo '<li><a href="#individual-results-tab">', I18N::translate('Individuals'), '</a></li>';
-				}
-				if (!empty($this->myfamlist)) {
-					echo '<li><a href="#families-results-tab">', I18N::translate('Families'), '</a></li>';
-				}
-				if (!empty($this->mysourcelist)) {
-					echo '<li><a href="#sources-results-tab">', I18N::translate('Sources'), '</a></li>';
-				}
-				if (!empty($this->mynotelist)) {
-					echo '<li><a href="#notes-results-tab">', I18N::translate('Notes'), '</a></li>';
-				}
-				echo '</ul>';
-				if (!empty($this->myindilist)) {
-					echo '<div id="individual-results-tab">', FunctionsPrintLists::individualTable($this->myindilist), '</div>';
-				}
-				if (!empty($this->myfamlist)) {
-					echo '<div id="families-results-tab">', FunctionsPrintLists::familyTable($this->myfamlist), '</div>';
-				}
-				if (!empty($this->mysourcelist)) {
-					echo '<div id="sources-results-tab">', FunctionsPrintLists::sourceTable($this->mysourcelist), '</div>';
-				}
-				if (!empty($this->mynotelist)) {
-					echo '<div id="notes-results-tab">', FunctionsPrintLists::noteTable($this->mynotelist), '</div>';
-				}
-				echo '</div>';
-			} else {
-				// One or more search terms were specified, but no results were found.
-				echo '<div class="warning center">' . I18N::translate('No results found.') . '</div>';
-			}
+			?>
+			<div class="wt-page-content">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active<?= empty($this->myindilist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+							<?= I18N::translate('Individuals') ?>
+							<?= Bootstrap4::badgeCount($this->myindilist) ?>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link<?= empty($this->myfamlist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+							<?= I18N::translate('Families') ?>
+							<?= Bootstrap4::badgeCount($this->myfamlist) ?>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link<?= empty($this->mysourcelist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
+							<?= I18N::translate('Sources') ?>
+							<?= Bootstrap4::badgeCount($this->mysourcelist) ?>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link<?= empty($this->mynotelist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
+							<?= I18N::translate('Notes') ?>
+							<?= Bootstrap4::badgeCount($this->mynotelist) ?>
+						</a>
+					</li>
+				</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane fade show active" role="tabpanel" id="individuals">
+						<?php if (empty($this->myindilist)): ?>
+							<p><?= I18N::translate('No results found.') ?></p>
+						<?php else: ?>
+							<?= FunctionsPrintLists::individualTable($this->myindilist) ?>
+						<?php endif ?>
+					</div>
+
+					<div class="tab-pane fade" role="tabpanel" id="families">
+						<?php if (empty($this->myfamlist)): ?>
+							<p><?= I18N::translate('No results found.') ?></p>
+						<?php else: ?>
+							<?= FunctionsPrintLists::familyTable($this->myfamlist) ?>
+						<?php endif ?>
+					</div>
+
+					<div class="tab-pane fade" role="tabpanel" id="sources">
+						<?php if (empty($this->mysourcelist)): ?>
+							<p><?= I18N::translate('No results found.') ?></p>
+						<?php else: ?>
+							<?= FunctionsPrintLists::sourceTable($this->mysourcelist) ?>
+						<?php endif ?>
+					</div>
+
+					<div class="tab-pane fade" role="tabpanel" id="notes">
+						<?php if (empty($this->mynotelist)): ?>
+							<p><?= I18N::translate('No results found.') ?></p>
+						<?php else: ?>
+							<?= FunctionsPrintLists::noteTable($this->mynotelist) ?>
+						<?php endif ?>
+					</div>
+				</div>
+			</div>
+			<?php
 		}
 	}
 }

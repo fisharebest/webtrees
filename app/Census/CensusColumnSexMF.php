@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
@@ -30,19 +31,19 @@ class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInte
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
+	 * @param Individual $individual
+	 * @param Individual $head
 	 *
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
 		switch ($individual->getSex()) {
-		case 'M':
-			return $this->male;
-		case 'F':
-			return $this->female;
-		default:
-			return '';
+			case 'M':
+				return $this->male;
+			case 'F':
+				return $this->female;
+			default:
+				return '';
 		}
 	}
 }

@@ -16,11 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -197,77 +197,72 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					$story_body = '';
 					$xref       = Filter::get('xref', WT_REGEX_XREF);
 				}
-				$controller
-					->pageHeader()
-					->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-					->addInlineJavascript('autocomplete();');
+				$controller->pageHeader();
 				if (Module::getModuleByName('ckeditor')) {
 					CkeditorModule::enableEditor($controller);
 				}
 
 				$individual = Individual::getInstance($xref, $WT_TREE);
 
+				echo Bootstrap4::breadcrumbs([
+					'admin.php'         => I18N::translate('Control panel'),
+					'admin_modules.php' => I18N::translate('Module administration'),
+					'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
+				], $controller->getPageTitle());
 				?>
-				<ol class="breadcrumb small">
-					<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-					<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-					<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
-					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-				</ol>
 
-				<h1><?php echo $controller->getPageTitle(); ?></h1>
+				<h1><?= $controller->getPageTitle() ?></h1>
 
-				<form class="form-horizontal" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit">
-					<?php echo Filter::getCsrf(); ?>
+				<form class="form-horizontal" method="post" action="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit">
+					<?= Filter::getCsrf() ?>
 					<input type="hidden" name="save" value="1">
-					<input type="hidden" name="block_id" value="<?php echo $block_id; ?>">
-					<input type="hidden" name="gedcom_id" value="<?php echo $WT_TREE->getTreeId(); ?>">
+					<input type="hidden" name="block_id" value="<?= $block_id ?>">
+					<input type="hidden" name="gedcom_id" value="<?= $WT_TREE->getTreeId() ?>">
 
-					<div class="form-group">
-						<label for="title" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Story title'); ?>
+					<div class="row form-group">
+						<label for="title" class="col-sm-3 col-form-label">
+							<?= I18N::translate('Story title') ?>
 						</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="title" id="title" value="<?php echo Filter::escapeHtml($title); ?>">
+							<input type="text" class="form-control" name="title" id="title" value="<?= Filter::escapeHtml($title) ?>">
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="story_body" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Story'); ?>
+					<div class="row form-group">
+						<label for="story_body" class="col-sm-3 col-form-label">
+							<?= I18N::translate('Story') ?>
 						</label>
 						<div class="col-sm-9">
-							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?php echo Filter::escapeHtml($story_body); ?></textarea>
+							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?= Filter::escapeHtml($story_body) ?></textarea>
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="xref" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Individual'); ?>
+					<div class="row form-group">
+						<label for="xref" class="col-sm-3 col-form-label">
+							<?= I18N::translate('Individual') ?>
 						</label>
 						<div class="col-sm-9">
-							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?php echo $xref; ?>">
-							<?php echo FunctionsPrint::printFindIndividualLink('xref'); ?>
+							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?= $xref ?>">
 							<?php if ($individual): ?>
-								<?php echo $individual->formatList('span'); ?>
-							<?php endif; ?>
+								<?= $individual->formatList('span') ?>
+							<?php endif ?>
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="xref" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Show this block for which languages'); ?>
+					<div class="row form-group">
+						<label for="xref" class="col-sm-3 col-form-label">
+							<?= I18N::translate('Show this block for which languages') ?>
 						</label>
 						<div class="col-sm-9">
-							<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+							<?= FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))) ?>
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-9">
+					<div class="row form-group">
+						<div class="offset-sm-3 col-sm-9">
 							<button type="submit" class="btn btn-primary">
 								<i class="fa fa-check"></i>
-								<?php echo I18N::translate('save'); ?>
+								<?= I18N::translate('save') ?>
 							</button>
 						</div>
 					</div>
@@ -313,10 +308,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 			->addInlineJavascript('
-				jQuery("#story_table").dataTable({
+				$("#story_table").dataTable({
 					' . I18N::datatablesI18N() . ',
 					autoWidth: false,
 					paging: true,
@@ -342,72 +335,71 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			" ORDER BY xref"
 		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
 
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'         => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-		</ol>
 
-		<h1><?php echo $controller->getPageTitle(); ?></h1>
+		<h1><?= $controller->getPageTitle() ?></h1>
 
 		<form class="form form-inline">
 			<label for="ged" class="sr-only">
-				<?php echo I18N::translate('Family tree'); ?>
+				<?= I18N::translate('Family tree') ?>
 			</label>
-			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
+			<input type="hidden" name="mod" value="<?=  $this->getName() ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
-			<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
-			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
+			<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
+			<input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
 		</form>
 
 		<p>
-			<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit" class="btn btn-default">
+			<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit" class="btn btn-default">
 				<i class="fa fa-plus"></i>
-				<?php echo I18N::translate('Add a story'); ?>
+				<?= I18N::translate('Add a story') ?>
 			</a>
 		</p>
 
 		<table class="table table-bordered table-condensed">
 			<thead>
 				<tr>
-					<th><?php echo I18N::translate('Story title'); ?></th>
-					<th><?php echo I18N::translate('Individual'); ?></th>
-					<th><?php echo I18N::translate('Edit'); ?></th>
-					<th><?php echo I18N::translate('Delete'); ?></th>
+					<th><?= I18N::translate('Story title') ?></th>
+					<th><?= I18N::translate('Individual') ?></th>
+					<th><?= I18N::translate('Edit') ?></th>
+					<th><?= I18N::translate('Delete') ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach ($stories as $story): ?>
 				<tr>
 					<td>
-						<?php echo Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title')); ?>
+						<?= Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title')) ?>
 					</td>
 					<td>
-						<?php $individual = Individual::getInstance($story->xref, $WT_TREE); ?>
+						<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
 						<?php if ($individual): ?>
-						<a href="<?php echo $individual->getHtmlUrl(); ?>#stories">
-							<?php echo $individual->getFullName(); ?>
+						<a href="<?= $individual->getHtmlUrl() ?>#tab-stories">
+							<?= $individual->getFullName() ?>
 						</a>
 						<?php else: ?>
-							<?php echo $story->xref; ?>
-						<?php endif; ?>
+							<?= $story->xref ?>
+						<?php endif ?>
 						</td>
 						<td>
-							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $story->block_id; ?>">
-								<i class="fa fa-pencil"></i> <?php echo I18N::translate('Edit'); ?>
+							<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit&amp;block_id=<?= $story->block_id ?>">
+								<i class="fa fa-pencil"></i> <?= I18N::translate('Edit') ?>
 							</a>
 						</td>
 						<td>
 							<a
-								href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $story->block_id; ?>"
-								onclick="return confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title'))); ?>');"
+								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>"
+								onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title'))) ?>');"
 							>
-								<i class="fa fa-trash"></i> <?php echo I18N::translate('Delete'); ?>
+								<i class="fa fa-trash"></i> <?= I18N::translate('Delete') ?>
 							</a>
 					</td>
 				</tr>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 			</tbody>
 		</table>
 		<?php
@@ -423,9 +415,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery("#story_table").dataTable({
+				$("#story_table").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
 					autoWidth: false,
@@ -434,7 +425,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					lengthChange: true,
 					filter: true,
 					info: true,
-					jQueryUI: true,
 					sorting: [[0,"asc"]],
 					columns: [
 						/* 0-name */ null,
@@ -451,7 +441,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			" ORDER BY xref"
 		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
 
-		echo '<h2 class="center">', I18N::translate('Stories'), '</h2>';
+		echo '<h2 class="wt-page-title">', I18N::translate('Stories'), '</h2>';
 		if (count($stories) > 0) {
 			echo '<table id="story_table" class="width100">';
 			echo '<thead><tr>
@@ -466,7 +456,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					if ($indi) {
 						if ($indi->canShow()) {
-							echo '<tr><td><a href="' . $indi->getHtmlUrl() . '#stories">' . $story_title . '</a></td><td><a href="' . $indi->getHtmlUrl() . '#stories">' . $indi->getFullName() . '</a></td></tr>';
+							echo '<tr><td><a href="' . $indi->getHtmlUrl() . '#tab-stories">' . $story_title . '</a></td><td><a href="' . $indi->getHtmlUrl() . '#tab-stories">' . $indi->getFullName() . '</a></td></tr>';
 						}
 					} else {
 						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';

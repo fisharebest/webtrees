@@ -23,7 +23,7 @@ class CensusOfDeutschlandTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDeutschland
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
 	 */
 	public function testPlace() {
 		$census = new CensusOfDeutschland;
@@ -34,7 +34,7 @@ class CensusOfDeutschlandTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census dates
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDeutschland
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
 	 */
 	public function testAllDates() {
 		$census  = new CensusOfDeutschland;

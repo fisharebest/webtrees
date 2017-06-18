@@ -45,7 +45,7 @@ class Tree {
 	private static $trees;
 
 	/** @var string[] Cached copy of the wt_gedcom_setting table. */
-	private $preferences;
+	private $preferences = [];
 
 	/** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
 	private $user_preferences = [];
@@ -176,13 +176,13 @@ class Tree {
 	/**
 	 * Get the tree’s configuration settings.
 	 *
-	 * @param string      $setting_name
-	 * @param string|null $default
+	 * @param string $setting_name
+	 * @param string $default
 	 *
-	 * @return string|null
+	 * @return string
 	 */
-	public function getPreference($setting_name, $default = null) {
-		if ($this->preferences === null) {
+	public function getPreference($setting_name, $default = '') {
+		if (empty($this->preferences)) {
 			$this->preferences = Database::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
 			)->execute([$this->tree_id])->fetchAssoc();
@@ -205,27 +205,17 @@ class Tree {
 	 */
 	public function setPreference($setting_name, $setting_value) {
 		if ($setting_value !== $this->getPreference($setting_name)) {
-			// Update the database
-			if ($setting_value === null) {
-				Database::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :tree_id AND setting_name = :setting_name"
-				)->execute([
-					'tree_id'      => $this->tree_id,
-					'setting_name' => $setting_name,
-				]);
-			} else {
-				Database::prepare(
-					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
-					" VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
-				)->execute([
-					'tree_id'       => $this->tree_id,
-					'setting_name'  => $setting_name,
-					'setting_value' => $setting_value,
-				]);
-			}
-			// Update our cache
+			Database::prepare(
+				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
+				" VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
+			)->execute([
+				'tree_id'       => $this->tree_id,
+				'setting_name'  => $setting_name,
+				'setting_value' => $setting_value,
+			]);
+
 			$this->preferences[$setting_name] = $setting_value;
-			// Audit log of changes
+
 			Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
 		}
 
@@ -745,7 +735,7 @@ class Tree {
 	 *
 	 * @throws \Exception
 	 *
-	 * @return GedcomRecord
+	 * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
 	 */
 	public function createRecord($gedcom) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {

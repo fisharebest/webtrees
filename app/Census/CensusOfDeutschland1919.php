@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -35,7 +36,7 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
 	 */
 	public function censusPlace() {
 		return 'Mecklenburg-Schwerin, Deutschland';
-	}	
+	}
 
 	/**
 	 * The columns of the census.

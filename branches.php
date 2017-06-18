@@ -15,53 +15,48 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\BranchesController;
 
-define('WT_SCRIPT_NAME', 'branches.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new BranchesController;
-$controller
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+$controller->pageHeader();
 
 ?>
-<div id="branches-page">
-	<h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="surnlist" id="surnlist" action="branches.php">
-		<table class="facts_table width50">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo GedcomTag::getLabel('SURN'); ?>
-					</td>
-					<td class="optionbox">
-						<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
-						<input type="hidden" name="ged" id="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-						<p>
-							<?php echo I18N::translate('Phonetic search'); ?>
-						</p>
-						<p>
-							<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php echo $controller->getSoundexStd() ? 'checked' : ''; ?>>
-							<label for="soundex_std"><?php echo I18N::translate('Russell'); ?></label>
-							<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php echo $controller->getSoundexDm() ? 'checked' : ''; ?>>
-							<label for="soundex_dm"><?php echo I18N::translate('Daitch-Mokotoff'); ?></label>
-						</p>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	<ol>
-		<?php echo $controller->getPatriarchsHtml(); ?>
-	</ol>
-</div>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+<form>
+	<input type="hidden" name="ged" id="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<div class="form-group row">
+		<label class="col-form-label col-sm-3" for="surname">
+			<?= I18N::translate('Surname') ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= Filter::escapeHtml($controller->getSurname()) ?>" dir="auto">
+		</div>
+	</div>
+
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= I18N::translate('Phonetic search') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::checkbox(I18N::translate('Russell'), true, ['name' => 'soundex_std', 'checked' => $controller->getSoundexStd()]) ?>
+				<?= Bootstrap4::checkbox(I18N::translate('Daitch-Mokotoff'), true, ['name' => 'soundex_dm', 'checked' => $controller->getSoundexDm()]) ?>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="offset-sm-3 col-sm-9">
+		<button type="submit" class="btn btn-primary">
+			<?= /* I18N: A button label. */ I18N::translate('view') ?>
+		</button>
+	</div>
+</form>
+
+<ol>
+	<?= $controller->getPatriarchsHtml() ?>
+</ol>

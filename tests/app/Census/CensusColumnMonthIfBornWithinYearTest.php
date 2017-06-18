@@ -31,8 +31,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testBornWithinYear() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -47,8 +47,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testBornOverYearBeforeTheCensus() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -63,8 +63,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testBornAfterTheCensus() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -81,8 +81,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoBirth() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

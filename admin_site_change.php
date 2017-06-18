@@ -17,18 +17,12 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global Tree $WT_TREE */
 global $WT_TREE;
 
-define('WT_SCRIPT_NAME', 'admin_site_change.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -213,7 +207,7 @@ case 'load_json':
 					function ($match) use ($gedc) {
 						$record = GedcomRecord::getInstance($match[1], Tree::findByName($gedc));
 
-						return $record ? '<a href="#" onclick="return edit_raw(\'' . $match[1] . '\');">' . $match[0] . '</a>' : $match[0];
+						return $record ? '<a href="' . $record->getHtmlUrl() . '">' . $match[0] . '</a>' : $match[0];
 					},
 					implode("\n", $diff_lines)
 				) .
@@ -237,8 +231,6 @@ case 'load_json':
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addExternalJavascript(WT_MOMENT_JS_URL)
 	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
 	->addInlineJavascript('
@@ -283,12 +275,11 @@ foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees') ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle() ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -318,9 +309,9 @@ foreach (User::all() as $tmp_user) {
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="type">
-				<?php echo I18N::translate('Status') ?>
+				<?= I18N::translate('Status') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', $statuses, '', $type, 'class="form-control"') ?>
+			<?= Bootstrap4::select($statuses, $type, ['id' => 'type', 'name' => 'type']) ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -350,14 +341,14 @@ foreach (User::all() as $tmp_user) {
 			<label for="user">
 				<?= I18N::translate('User') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
+			<?= Bootstrap4::select($users_array, $user, ['id' => 'user', 'name' => 'user']) ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
 				<?= I18N::translate('Family tree') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
+			<?= Bootstrap4::select(Tree::getNameList(), $gedc, ['id' => 'gedc', 'name' => 'gedc', 'disabled' => !Auth::isAdmin()]) ?>
 		</div>
 	</div>
 

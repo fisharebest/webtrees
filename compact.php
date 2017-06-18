@@ -15,154 +15,113 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\CompactController;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
-define('WT_SCRIPT_NAME', 'compact.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new CompactController;
-$controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'compact_tree_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'compact_tree_chart'));
 
-?>
-<div id="compact-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Individual'); ?>
-					</td>
-					<td class="optionbox vmiddle">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show images'); ?>
-					</td>
-					<td class="optionbox">
-						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked' : ''; ?>>
-					</td>
-				</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	</form>
-	<div id="compact_chart">
+// Only generate the content for interactive users (not search robots).
+if (Filter::getBool('ajax') && Session::has('initiated')) {
+	?>
+	<div class="compact-chart">
 		<table width="100%" style="text-align:center;">
 			<tr>
-				<?php echo $controller->sosaIndividual(16); ?>
+				<?= $controller->sosaIndividual(16) ?>
 				<td></td>
 				<td></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(18); ?>
+				<?= $controller->sosaIndividual(18) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(24); ?>
+				<?= $controller->sosaIndividual(24) ?>
 				<td></td>
 				<td></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(26); ?>
+				<?= $controller->sosaIndividual(26) ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosaArrow(16, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(16, 'arrow-up') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(18, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(18, 'arrow-up') ?></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(24, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(24, 'arrow-up') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(26, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(26, 'arrow-up') ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosaIndividual(8); ?>
-				<td><?php echo $controller->sosaArrow(8, 'left'); ?></td>
-				<?php echo $controller->sosaIndividual(4); ?>
-				<td><?php echo $controller->sosaArrow(9, 'right'); ?></td>
-				<?php echo $controller->sosaIndividual(9); ?>
+				<?= $controller->sosaIndividual(8) ?>
+				<td><?= $controller->sosaArrow(8, 'arrow-start') ?></td>
+				<?= $controller->sosaIndividual(4) ?>
+				<td><?= $controller->sosaArrow(9, 'arrow-end') ?></td>
+				<?= $controller->sosaIndividual(9) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(12); ?>
-				<td><?php echo $controller->sosaArrow(12, 'left'); ?></td>
-				<?php echo $controller->sosaIndividual(6); ?>
-				<td><?php  echo $controller->sosaArrow(13, 'right'); ?></td>
-				<?php echo $controller->sosaIndividual(13); ?>
+				<?= $controller->sosaIndividual(12) ?>
+				<td><?= $controller->sosaArrow(12, 'arrow-start') ?></td>
+				<?= $controller->sosaIndividual(6) ?>
+				<td><?php  echo $controller->sosaArrow(13, 'arrow-end') ?></td>
+				<?= $controller->sosaIndividual(13) ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosaArrow(17, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(17, 'arrow-down') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(19, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(19, 'arrow-down') ?></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(25, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(25, 'arrow-down') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(27, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(27, 'arrow-down') ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosaIndividual(17); ?>
+				<?= $controller->sosaIndividual(17) ?>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(4, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(4, 'arrow-up') ?></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(19); ?>
+				<?= $controller->sosaIndividual(19) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(25); ?>
+				<?= $controller->sosaIndividual(25) ?>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(6, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(6, 'arrow-up') ?></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(27); ?>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<?= $controller->sosaIndividual(27) ?>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(2); ?>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<?= $controller->sosaIndividual(2) ?>
 				<td></td>
 				<td colspan="3">
 					<table width="100%">
 						<tr>
-							<td width='25%'><?php echo $controller->sosaArrow(2, 'left'); ?></td>
-							<?php echo $controller->sosaIndividual(1); ?>
-							<td width='25%'><?php echo $controller->sosaArrow(3, 'right'); ?></td>
+							<td width='25%'><?= $controller->sosaArrow(2, 'arrow-start') ?></td>
+							<?= $controller->sosaIndividual(1) ?>
+							<td width='25%'><?= $controller->sosaArrow(3, 'arrow-end') ?></td>
 						</tr>
 					</table>
 				</td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(3); ?>
+				<?= $controller->sosaIndividual(3) ?>
 				<td></td>
 				<td></td>
 			</tr>
@@ -180,70 +139,101 @@ $controller
 				<td></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosaIndividual(20); ?>
+				<?= $controller->sosaIndividual(20) ?>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(5, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(5, 'arrow-down') ?></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(22); ?>
+				<?= $controller->sosaIndividual(22) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(28); ?>
+				<?= $controller->sosaIndividual(28) ?>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(7, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(7, 'arrow-down') ?></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(30); ?>
+				<?= $controller->sosaIndividual(30) ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosaArrow(20, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(20, 'arrow-up') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(22, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(22, 'arrow-up') ?></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(28, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(28, 'arrow-up') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(30, 'up'); ?></td>
+				<td><?= $controller->sosaArrow(30, 'arrow-up') ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosaIndividual(10); ?>
-				<td><?php echo $controller->sosaArrow(10, 'left'); ?></td>
-				<?php echo $controller->sosaIndividual(5); ?>
-				<td><?php echo $controller->sosaArrow(11, 'right'); ?></td>
-				<?php echo $controller->sosaIndividual(11); ?>
+				<?= $controller->sosaIndividual(10) ?>
+				<td><?= $controller->sosaArrow(10, 'arrow-start') ?></td>
+				<?= $controller->sosaIndividual(5) ?>
+				<td><?= $controller->sosaArrow(11, 'arrow-end') ?></td>
+				<?= $controller->sosaIndividual(11) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(14); ?>
-				<td><?php echo $controller->sosaArrow(14, 'left'); ?></td>
-				<?php echo $controller->sosaIndividual(7); ?>
-				<td><?php echo $controller->sosaArrow(15, 'right'); ?></td>
-				<?php echo $controller->sosaIndividual(15); ?>
+				<?= $controller->sosaIndividual(14) ?>
+				<td><?= $controller->sosaArrow(14, 'arrow-start') ?></td>
+				<?= $controller->sosaIndividual(7) ?>
+				<td><?= $controller->sosaArrow(15, 'arrow-end') ?></td>
+				<?= $controller->sosaIndividual(15) ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosaArrow(21, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(21, 'arrow-down') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(23, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(23, 'arrow-down') ?></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(29, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(29, 'arrow-down') ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $controller->sosaArrow(31, 'down'); ?></td>
+				<td><?= $controller->sosaArrow(31, 'arrow-down') ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosaIndividual(21); ?>
+				<?= $controller->sosaIndividual(21) ?>
 				<td></td>
 				<td></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(23); ?>
+				<?= $controller->sosaIndividual(23) ?>
 				<td></td>
-				<?php echo $controller->sosaIndividual(29); ?>
+				<?= $controller->sosaIndividual(29) ?>
 				<td></td>
 				<td></td>
 				<td></td>
-				<?php echo $controller->sosaIndividual(31); ?>
+				<?= $controller->sosaIndividual(31) ?>
 			</tr>
 		</table>
 	</div>
-</div>
+	<?php
+	return;
+}
+
+$controller
+	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->pageHeader();
+
+?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+
+<form class="wt-page-options wt-page-options-compact-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+			<?= I18N::translate('Individual') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+		</div>
+	</div>
+</form>
+
+<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart"></div>

@@ -30,8 +30,8 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownStateAndTown() {
 		$father = Mockery::mock('Fisharebest\Webtrees\Individual');

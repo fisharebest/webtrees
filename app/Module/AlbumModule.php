@@ -91,23 +91,22 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		$html = '<div id="' . $this->getName() . '_content">';
 		//Show Lightbox-Album header Links
 		if (Auth::isEditor($WT_TREE)) {
-			$html .= '<table class="facts_table"><tr class="noprint"><td class="descriptionbox rela">';
+			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a media object') . '" alt="' . I18N::translate('Add a media object') . '">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a media object') . '">';
 				$html .= I18N::translate('Add a media object');
 				$html .= '</a></span>';
 				// Link to an existing item
 				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . I18N::translate('Link to an existing media object') . '" alt="' . I18N::translate('Link to an existing media object') . '">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . I18N::translate('Link to an existing media object') . '">';
 				$html .= I18N::translate('Link to an existing media object');
 				$html .= '</a></span>';
 			}
 			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
-				// Popup Reorder Media
-				$html .= '<span><a href="#" onclick="reorder_media(\'' . $controller->record->getXref() . '\')">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '" alt="' . I18N::translate('Re-order media') . '">';
+				$html .= '<span><a href="edit_interface.php?action=reorder_media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '">';
 				$html .= I18N::translate('Re-order media');
 				$html .= '</a></span>';
 			}
@@ -196,11 +195,12 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			}
 			$html .= '<li class="album-list-item">';
 			$html .= '<div class="album-image">' . $media->displayImage() . '</div>';
-			$html .= '<div class="album-title">' . $menu->getMenu() . '</div>';
+			$html .= '<div class="album-title">' . $menu->bootstrap4() . '</div>';
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
 		$html .= '</td></tr></table>';
+		$html .= '</div>';
 
 		return $html;
 	}
@@ -256,7 +256,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	 * @return bool
 	 */
 	public function canLoadAjax() {
-		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
+		return false;
 	}
 
 	/**

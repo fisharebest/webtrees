@@ -17,14 +17,10 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\AdvancedSearchController;
 
-define('WT_SCRIPT_NAME', 'search_advanced.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new AdvancedSearchController;
-$controller
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();')
-	->pageHeader();
+$controller->pageHeader();
 
 echo '<script>';
 ?>
@@ -122,7 +118,7 @@ echo '<script>';
 echo '</script>';
 ?>
 <div id="search-page">
-<h2 class="center"><?= $controller->getPageTitle() ?></h2>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 <?php $controller->printResults() ?>
 <form name="searchform" onsubmit="return checknames(this);">
 <input type="hidden" name="action" value="<?= $controller->action ?>">

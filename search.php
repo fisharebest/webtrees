@@ -18,14 +18,10 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\SearchController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'search.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new SearchController;
-$controller
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+$controller->pageHeader();
 
 ?>
 <script>

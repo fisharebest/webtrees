@@ -31,8 +31,8 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testAgeMarried() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -54,15 +54,15 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoBirthDate() {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoMarriage() {
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -81,8 +81,8 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoSpouseFamily() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');

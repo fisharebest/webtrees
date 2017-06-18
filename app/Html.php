@@ -20,6 +20,36 @@ namespace Fisharebest\Webtrees;
  */
 class Html {
 	/**
+	 * Escape a string for inclusion within HTML.
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	protected static function escape($string) {
+		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+	}
+
+	/**
+	 * Convert an array of HTML attributes to an HTML string.
+	 *
+	 * @param array $attributes
+	 *
+	 * @return string
+	 */
+	public static function attributes(array $attributes) {
+		$html = [];
+		foreach ($attributes as $key => $value) {
+			if (is_string($value) || is_integer($value)) {
+				$html[] = self::escape($key) . '="' . self::escape($value) . '"';
+			} elseif ($value !== false) {
+				$html[] = self::escape($key);
+			}
+		}
+
+		return implode(' ', $html);
+	}
+	/**
 	 * Filenames are (almost?) always LTR, even on RTL systems.
 	 *
 	 * @param string $filename
@@ -27,6 +57,6 @@ class Html {
 	 * @return string
 	 */
 	public static function filename($filename) {
-		return '<samp class="filename" dir="ltr">' . Filter::escapeHtml($filename) . '</samp>';
+		return '<samp class="filename" dir="ltr">' . self::escape($filename) . '</samp>';
 	}
 }

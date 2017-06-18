@@ -15,73 +15,112 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 use PDO;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
+require 'includes/session.php';
 
-define('WT_SCRIPT_NAME', 'editnews.php');
-require './includes/session.php';
+$controller = new PageController;
 
-$controller = new SimpleController;
-$controller
-	->setPageTitle(I18N::translate('Add/edit a journal/news entry'))
-	->restrictAccess(Auth::isMember($WT_TREE))
-	->pageHeader();
+$ctype      = Filter::get('ctype', 'user|gedcom', 'user');
+$action     = Filter::get('action', 'delete', Filter::post('action', 'save'));
+$news_id    = Filter::getInteger('news_id', 0, PHP_INT_MAX, Filter::postInteger('news_id'));
 
-$action    = Filter::get('action', 'compose|save', 'compose');
-$news_id   = Filter::getInteger('news_id');
-$user_id   = Filter::get('user_id', WT_REGEX_INTEGER, Filter::post('user_id', WT_REGEX_INTEGER));
-$gedcom_id = Filter::get('gedcom_id', WT_REGEX_INTEGER, Filter::post('gedcom_id', WT_REGEX_INTEGER));
-$date      = Filter::postInteger('date', 0, PHP_INT_MAX, WT_TIMESTAMP);
-$title     = Filter::post('title');
-$text      = Filter::post('text');
+$news = Database::prepare("SELECT user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id = :news_id")->execute(['news_id' => $news_id])->fetchOneRow(PDO::FETCH_ASSOC);
+
+if (empty($news)) {
+	$news = [
+		'user_id'   => $ctype === 'user' ? Auth::id() : null,
+		'gedcom_id' => $ctype === 'gedcom' ? $controller->tree()->getTreeId() : null,
+		'date'      => WT_TIMESTAMP,
+		'subject'   => Filter::post('subject'),
+		'body'      => Filter::post('body'),
+	];
+}
+// If we can't edit this item, go back to the home/my page
+if ($ctype === 'user' && $news['user_id'] != Auth::id() || $ctype === 'gedcom' && !Auth::isManager($controller->tree())) {
+	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+
+	return;
+}
 
 switch ($action) {
-case 'compose':
-	if (Module::getModuleByName('ckeditor')) {
-		CkeditorModule::enableEditor($controller);
-	}
+case 'delete':
+	Database::prepare("DELETE FROM `##news` WHERE news_id = :news_id")->execute(['news_id'   => $news_id,]);
 
-	echo '<h3>' . I18N::translate('Add/edit a journal/news entry') . '</h3>';
-	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id=' . $news_id . '">';
-	if ($news_id) {
-		$news = Database::prepare("SELECT SQL_CACHE news_id AS id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id=?")->execute([$news_id])->fetchOneRow(PDO::FETCH_ASSOC);
-	} else {
-		$news              = [];
-		$news['user_id']   = $user_id;
-		$news['gedcom_id'] = $gedcom_id;
-		$news['date']      = WT_TIMESTAMP;
-		$news['subject']   = '';
-		$news['body']      = '';
-	}
-	echo '<input type="hidden" name="user_id" value="' . $news['user_id'] . '">';
-	echo '<input type="hidden" name="gedcom_id" value="' . $news['gedcom_id'] . '">';
-	echo '<input type="hidden" name="date" value="' . $news['date'] . '">';
-	echo '<table>';
-	echo '<tr><th style="text-align:start;">' . I18N::translate('Title') . '</th><tr>';
-	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="' . $news['subject'] . '"></td></tr>';
-	echo '<tr><th style="text-align:start;">' . I18N::translate('Content') . '</th></tr>';
-	echo '<tr><td>';
-	echo '<textarea name="text" class="html-edit" cols="80" rows="10" dir="auto">' . Filter::escapeHtml($news['body']) . '</textarea>';
-	echo '</td></tr>';
-	echo '<tr><td><input type="submit" value="' . I18N::translate('save') . '"></td></tr>';
-	echo '</table>';
-	echo '</form>';
-	break;
+	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+
+	return;
+
 case 'save':
-	if ($news_id) {
-		Database::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")->execute([$title, $text, $date, $news_id]);
+	if ($news_id > 0) {
+		Database::prepare(
+			"UPDATE `##news` SET subject = :subject, body = :body, updated = CURRENT_TIMESTAMP WHERE news_id = :news_id"
+		)->execute([
+			'subject' => Filter::post('subject'),
+			'body'    => Filter::post('body'),
+			'news_id' => $news_id,
+		]);
 	} else {
-		Database::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body, updated) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?, CURRENT_TIMESTAMP)")->execute([$user_id, $gedcom_id, $title, $text]);
+		Database::prepare(
+			"INSERT INTO `##news` (user_id, gedcom_id, subject, body, updated) VALUES (NULLIF(:user_id, ''), NULLIF(:gedcom_id, '') ,:subject ,:body, CURRENT_TIMESTAMP)"
+		)->execute([
+			'user_id'   => $news['user_id'],
+			'gedcom_id' => $news['gedcom_id'],
+			'subject'   => $news['subject'],
+			'body'      => $news['body'],
+		]);
 	}
 
-	$controller->addInlineJavascript('window.opener.location.reload();window.close();');
-	break;
+	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+
+	return;
 }
+
+$controller->setPageTitle(I18N::translate('Add/edit a journal/news entry'));
+$controller->pageHeader();
+
+if (Module::getModuleByName('ckeditor')) {
+	CkeditorModule::enableEditor($controller);
+}
+
+?>
+<h2><?= $controller->getPageTitle() ?></h2>
+
+<form method="post">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameUrl() ?>">
+	<input type="hidden" name="action" value="save">
+
+	<table>
+		<tr>
+			<th>
+				<label for="subject">
+					<?= I18N::translate('Title') ?>
+				</label>
+			</th>
+		<tr>
+		<tr>
+			<td>
+				<input type="text" id="subject" name="subject" size="50" dir="auto" autofocus value="<?= Filter::escapeHtml($news['subject']) ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="body">
+					<?= I18N::translate('Content') ?>
+				</label>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<textarea id="body" name="body" class="html-edit" cols="80" rows="10" dir="auto"><?= Filter::escapeHtml($news['body']) ?></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="<?= I18N::translate('save') ?>">
+			</td>
+		</tr>
+	</table>
+</form>

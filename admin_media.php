@@ -17,10 +17,8 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
-define('WT_SCRIPT_NAME', 'admin_media.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 // type of file/object to include
 $files = Filter::get('files', 'local|external|unused', 'local');
@@ -54,6 +52,7 @@ if ($delete_file) {
 	// Only delete valid (i.e. unused) media files
 	$media_folder = Filter::post('media_folder', null, ''); // MySQL needs an empty string, not NULL
 	$disk_files   = all_disk_files($media_folder, '', 'include', '');
+	// Check file exists? Maybe it was already deleted or renamed.
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
 		try {
@@ -72,8 +71,6 @@ if ($delete_file) {
 				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
 			}
 		}
-	} else {
-		// File no longer exists? Maybe it was already deleted or renamed.
 	}
 	$controller->pageHeader();
 
@@ -586,11 +583,9 @@ $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(I18N::translate('Manage media'))
-	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->pageHeader()
 	->addInlineJavascript('
-	jQuery("#media-table-' . $table_id . '").dataTable({
+	$("#media-table-' . $table_id . '").dataTable({
 		processing: true,
 		serverSide: true,
 		ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
@@ -608,11 +603,10 @@ $controller
 	});
 	');
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php' => I18N::translate('Control panel'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
@@ -645,17 +639,17 @@ $controller
 				<td>
 					<?php if ($files === 'local' || $files === 'unused'): ?>
 
-					<div dir="ltr">
+					<div dir="ltr" class="form-inline">
 						<?php if (count($media_folders) > 1): ?>
-						<?php echo WT_DATA_DIR, FunctionsEdit::selectEditControl('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
+						<?= WT_DATA_DIR . Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
 						<?php else: ?>
-						<?= WT_DATA_DIR, Filter::escapeHtml($media_folder) ?>
+						<?= WT_DATA_DIR . Filter::escapeHtml($media_folder) ?>
 						<input type="hidden" name="media_folder" value="<?= Filter::escapeHtml($media_folder) ?>">
 						<?php endif ?>
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
-					<?php echo FunctionsEdit::selectEditControl('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
+					<?= Bootstrap4::select($media_paths, $media_path, ['name' => 'media_path', 'onchange' => 'this.form.submit();']) ?>
 					<?php else: ?>
 					<?= Filter::escapeHtml($media_path) ?>
 					<input type="hidden" name="media_path" value="<?= Filter::escapeHtml($media_path) ?>">

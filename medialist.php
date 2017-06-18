@@ -15,22 +15,18 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree   $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\MediaController;
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
-define('WT_SCRIPT_NAME', 'medialist.php');
-require './includes/session.php';
+/**
+ * @global Tree   $WT_TREE
+ */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -77,10 +73,10 @@ $medialist = QueryMedia::mediaList(
 ?>
 <div id="medialist-page">
 
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+<h2><?= $controller->getPageTitle() ?></h2>
 
-<form action="medialist.php" method="get">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
+<form action="medialist.php">
+	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
 	<table class="list_table">
@@ -88,45 +84,45 @@ $medialist = QueryMedia::mediaList(
 			<tr>
 				<td class="descriptionbox wrap">
 					<label for="folder">
-						<?php echo I18N::translate('Folder'); ?>
+						<?= I18N::translate('Folder') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<?php echo FunctionsEdit::selectEditControl('folder', $folders, null, $folder); ?>
+					<?= Bootstrap4::select($folders, $folder, ['id' => 'folder', 'name' => 'folder']) ?>
 				</td>
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 				<td class="descriptionbox wrap">
 					<label for="sortby">
-						<?php echo I18N::translate('Sort order'); ?>
+						<?= I18N::translate('Sort order') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
 					<select name="sortby" id="sortby">
-						<option value="title" <?php echo $sortby === 'title' ? 'selected' : ''; ?>>
-							<?php echo /* I18N: An option in a list-box */ I18N::translate('sort by title'); ?>
+						<option value="title" <?= $sortby === 'title' ? 'selected' : '' ?>>
+							<?= /* I18N: An option in a list-box */ I18N::translate('sort by title') ?>
 						</option>
-						<option value="file" <?php echo $sortby === 'file' ? 'selected' : ''; ?>>
-							<?php echo /* I18N: An option in a list-box */ I18N::translate('sort by filename'); ?>
+						<option value="file" <?= $sortby === 'file' ? 'selected' : '' ?>>
+							<?= /* I18N: An option in a list-box */ I18N::translate('sort by filename') ?>
 						</option>
 					</select>
 				</td>
 				<?php else: ?>
 					<td class="descriptionbox wrap"></td>
 					<td class="optionbox wrap"></td>
-				<?php endif; ?>
+				<?php endif ?>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
 					<label for="subdirs">
-						<?php echo /* I18N: Label for check-box */ I18N::translate('Include subfolders'); ?>
+						<?= /* I18N: Label for check-box */ I18N::translate('Include subfolders') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
+					<input type="checkbox" id="subdirs" name="subdirs" <?= $currentdironly ? '' : 'checked' ?>>
 				</td>
 				<td class="descriptionbox wrap">
 					<label for="max">
-						<?php echo I18N::translate('Media objects per page'); ?>
+						<?= I18N::translate('Media objects per page') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
@@ -146,22 +142,22 @@ $medialist = QueryMedia::mediaList(
 			<tr>
 				<td class="descriptionbox wrap">
 					<label for="form-type">
-						<?php echo I18N::translate('Type'); ?>
+						<?= I18N::translate('Type') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
 					<select name="form_type" id="form-type">
 						<option value=""></option>
 						<?php foreach (GedcomTag::getFileFormTypes() as $value => $label): ?>
-							<option value="<?php echo $value; ?>" <?php echo $value === $form_type ? 'selected' : ''; ?>>
-								<?php echo $label; ?>
+							<option value="<?= $value ?>" <?= $value === $form_type ? 'selected' : '' ?>>
+								<?= $label ?>
 							</option>
-						<?php endforeach; ?>
+						<?php endforeach ?>
 					</select>
 				</td>
 				<td class="descriptionbox wrap">
 					<label for="columns">
-						<?php echo I18N::translate('Columns per page'); ?>
+						<?= I18N::translate('Columns per page') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
@@ -181,19 +177,19 @@ $medialist = QueryMedia::mediaList(
 			<tr>
 				<td class="descriptionbox wrap">
 					<label for="filter">
-						<?php echo I18N::translate('Search filters'); ?>
+						<?= I18N::translate('Search filters') ?>
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<input type="text" id="filter" name="filter" value="<?php echo Filter::escapeHtml($filter); ?>" size="14" dir="auto">
+					<input type="text" id="filter" name="filter" value="<?= Filter::escapeHtml($filter) ?>" size="14" dir="auto">
 				</td>
 				<td class="descriptionbox wrap"></td>
 				<td class="optionbox wrap">
 					<button type="submit" name="action" value="submit">
-						<?php echo /* I18N: A button label. */ I18N::translate('search'); ?>
+						<?= /* I18N: A button label. */ I18N::translate('search') ?>
 					</button>
 					<button type="submit" name="action" value="reset">
-						<?php echo /* I18N: A button label. */ I18N::translate('reset'); ?>
+						<?= /* I18N: A button label. */ I18N::translate('reset') ?>
 					</button>
 				</td>
 			</tr>

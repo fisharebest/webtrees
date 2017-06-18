@@ -23,57 +23,10 @@ use Fisharebest\Webtrees\I18N;
 class XeneaTheme extends AbstractTheme implements ThemeInterface {
 	/**
 	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
 	 */
-	public function assetUrl() {
-		return 'themes/xenea/css-1.7.8/';
-	}
-
-	/**
-	 * Add markup to a flash message.
-	 *
-	 * @param \stdClass $message
-	 *
-	 * @return string
-	 */
-	protected function flashMessageContainer(\stdClass $message) {
-		// This theme uses jQueryUI markup.
-		switch ($message->status) {
-		case 'danger':
-			return '<p class="ui-state-error">' . $message->text . '</p>';
-		default:
-			return '<p class="ui-state-highlight">' . $message->text . '</p>';
-		}
-	}
-
-	/**
-	 * Create a search field and submit button for the quick search form in the header.
-	 *
-	 * @return string
-	 */
-	protected function formQuickSearchFields() {
-		return
-			'<input type="search" name="query" size="12" placeholder="' . I18N::translate('Search') . '">' .
-			'<input type="submit" name="search" value="&gt;">';
-	}
-
-	/**
-	 * Create the contents of the <header> tag.
-	 *
-	 * @return string
-	 */
-	protected function headerContent() {
-		return
-			//$this->accessibilityLinks() .
-			'<div class="header-upper">' .
-			$this->formatTreeTitle() .
-			$this->formQuickSearch() .
-		'</div>' .
-		'<div class="header-lower">' .
-			$this->formatSecondaryMenu() .
-		'</div>';
-	}
+	const THEME_DIR  = 'xenea';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	/**
 	 * Allow themes to add extra scripts to the page footer.
@@ -92,7 +45,7 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
 			' transition: "none",' .
 			' slideshowStart: "' . I18N::translate('Play') . '",' .
 			' slideshowStop: "' . I18N::translate('Stop') . '",' .
-			' title: function() { return jQuery(this).data("title"); }' .
+			' title: function() { return $(this).data("title"); }' .
 			'});' .
 			'</script>';
 	}
@@ -125,19 +78,9 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return [
-			'themes/xenea/jquery-ui-1.11.2/jquery-ui.css',
-			$this->assetUrl() . 'style.css',
-		];
-	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return 'xenea';
+		return array_merge(parent::stylesheets(), [
+			self::STYLESHEET,
+		]);
 	}
 
 	/**

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:15+0000\n"
-"PO-Revision-Date: 2017-02-04 13:05+0000\n"
+"PO-Revision-Date: 2017-06-12 16:52+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -14086,7 +14086,7 @@ msgstr "Pole kasutajat kasutajanime või emailiga “%s”."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr "Faili üleslaadimisel juhtus viga."
+msgstr "Faili üleslaadimisel esines viga."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98

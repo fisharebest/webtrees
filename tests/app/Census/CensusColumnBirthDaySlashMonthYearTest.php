@@ -30,8 +30,8 @@ class CensusColumnBirthDaySlashMonthYearTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
 		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');

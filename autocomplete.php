@@ -16,22 +16,20 @@
 namespace Fisharebest\Webtrees;
 
 /**
- * Defined in session.php
- *
  * @global Tree   $WT_TREE
  */
 global $WT_TREE;
 
-define('WT_SCRIPT_NAME', 'autocomplete.php');
-require './includes/session.php';
-
-header('Content-Type: text/plain; charset=UTF-8');
+require 'includes/session.php';
 
 $term = Filter::get('term'); // we can search on '"><& etc.
 $type = Filter::get('field');
 
+
 switch ($type) {
 case 'ASSO': // Associates of an individuals, whose name contains the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
@@ -81,6 +79,8 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 	return;
 
 case 'CEME': // Cemetery fields, that contain the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
@@ -106,6 +106,8 @@ case 'CEME': // Cemetery fields, that contain the search term
 	return;
 
 case 'FAM': // Families, whose name contains the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_FAM_rows($WT_TREE, $term);
@@ -126,6 +128,8 @@ case 'FAM': // Families, whose name contains the search terms
 	return;
 
 case 'GIVN': // Given names, that start with the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	// Do not filter by privacy. Given names on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
@@ -143,6 +147,8 @@ case 'GIVN': // Given names, that start with the search term
 	return;
 
 case 'INDI': // Individuals, whose name contains the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
@@ -169,6 +175,8 @@ case 'INDI': // Individuals, whose name contains the search terms
 	return;
 
 case 'NOTE': // Notes which contain the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_NOTE_rows($WT_TREE, $term);
@@ -184,6 +192,8 @@ case 'NOTE': // Notes which contain the search terms
 	return;
 
 case 'OBJE':
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_OBJE_rows($WT_TREE, $term);
@@ -199,6 +209,8 @@ case 'OBJE':
 	return;
 
 case 'PLAC': // Place names (with hierarchy), that include the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	// Do not filter by privacy. Place names on their own do not identify individuals.
 	$data = [];
 	foreach (Place::findPlaces($term, $WT_TREE) as $place) {
@@ -237,6 +249,8 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 	return;
 
 case 'PLAC2': // Place names (without hierarchy), that include the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	// Do not filter by privacy. Place names on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
@@ -254,6 +268,8 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 	return;
 
 case 'REPO': // Repositories, that include the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_REPO_rows($WT_TREE, $term);
@@ -271,6 +287,8 @@ case 'REPO': // Repositories, that include the search terms
 	return;
 
 case 'REPO_NAME': // Repository names, that include the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_REPO_rows($WT_TREE, $term);
@@ -286,6 +304,8 @@ case 'REPO_NAME': // Repository names, that include the search terms
 	return;
 
 case 'SOUR': // Sources, that include the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_SOUR_rows($WT_TREE, $term);
@@ -303,6 +323,8 @@ case 'SOUR': // Sources, that include the search terms
 	return;
 
 case 'PAGE': // Citation details, for a given source, that contain the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	$sid  = Filter::get('extra', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
@@ -354,6 +376,8 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	return;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
@@ -378,6 +402,8 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 	return;
 
 case 'SURN': // Surnames, that start with the search term
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	// Do not filter by privacy. Surnames on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
@@ -395,6 +421,8 @@ case 'SURN': // Surnames, that start with the search term
 	return;
 
 case 'IFSRO':
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_INDI_rows($WT_TREE, $term);
@@ -460,6 +488,8 @@ case 'IFSRO':
 	return;
 
 case 'IFS':
+	header('Content-Type: text/plain; charset=UTF-8');
+
 	$data = [];
 	// Fetch all data, regardless of privacy
 	$rows = get_INDI_rows($WT_TREE, $term);

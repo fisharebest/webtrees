@@ -16,10 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
@@ -103,7 +104,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>' . $title;
+			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
 		}
 
 		$content = $html;
@@ -263,75 +264,78 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		$title          = $this->getBlockSetting($block_id, 'title');
 		$html           = $this->getBlockSetting($block_id, 'html');
-		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
+		$gedcom         = $this->getBlockSetting($block_id, 'gedcom', '__current__');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
-		echo '<tr><td class="descriptionbox wrap">',
-			GedcomTag::getLabel('TITL'),
-			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', Filter::escapeHtml($title), '"></td></tr>';
+		?>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label" for="title">
+				<?= I18N::translate('Title') ?>
+			</label>
+			<div class="col-sm-9">
+				<input class="form-control" type="text" id="title" name="title" value="<?= Filter::escapeHtml($title) ?>">
+			</div>
+		</div>
 
-		// templates
-		echo '<tr><td class="descriptionbox wrap">',
-			I18N::translate('Templates'),
-			'</td><td class="optionbox wrap">';
-		// The CK editor needs lots of help to load/save data :-(
-		if (Module::getModuleByName('ckeditor')) {
-			$ckeditor_onchange = 'CKEDITOR.instances.html.setData(document.block.html.value);';
-		} else {
-			$ckeditor_onchange = '';
-		}
-		echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;', $ckeditor_onchange, '">';
-		echo '<option value="', Filter::escapeHtml($html), '">', I18N::translate('Custom'), '</option>';
-		foreach ($templates as $title => $template) {
-			echo '<option value="', Filter::escapeHtml($template), '">', $title, '</option>';
-		}
-		echo '</select>';
-		if (!$html) {
-			echo '<p>', I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
-		}
-		echo '</td></tr>';
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label" for="template">
+				<?= I18N::translate('Templates') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select('template', [$html => I18N::translate('Custom')] + array_flip($templates), '', ['onchange' => 'this.form.html.value=this.options[this.selectedIndex].value; CKEDITOR.instances.html.setData(document.block.html.value);']) ?>
+				<p class="small text-muted">
+					<?= I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.') ?>
+				</p>
+			</div>
+		</div>
 
-		if (count(Tree::getAll()) > 1) {
-			if ($gedcom == '__current__') {$sel_current = 'selected'; } else {$sel_current = ''; }
-			if ($gedcom == '__default__') {$sel_default = 'selected'; } else {$sel_default = ''; }
-			echo '<tr><td class="descriptionbox wrap">',
-				I18N::translate('Family tree'),
-				'</td><td class="optionbox">',
-				'<select name="gedcom">',
-				'<option value="__current__" ', $sel_current, '>', I18N::translate('Current'), '</option>',
-				'<option value="__default__" ', $sel_default, '>', I18N::translate('Default'), '</option>';
-			foreach (Tree::getAll() as $tree) {
-				if ($tree->getName() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
-				echo '<option value="', $tree->getNameHtml(), '" ', $sel, '>', $tree->getTitleHtml(), '</option>';
-			}
-			echo '</select>';
-			echo '</td></tr>';
-		}
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label" for="gedcom">
+				<?= I18N::translate('Family tree') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select(['__current__' => I18N::translate('Current'), '__default__' => I18N::translate('Default')] + Tree::getNameList(), $gedcom, ['id' => 'gedcom', 'name' => 'gedcom']) ?>
+			</div>
+		</div>
 
-		// html
-		echo '<tr><td colspan="2" class="descriptionbox">',
-			I18N::translate('Content');
-		if (!$html) {
-			echo '<p>', I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
-		}
-		echo
-			'</td></tr><tr>',
-			'<td colspan="2" class="optionbox">';
-		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', Filter::escapeHtml($html), '</textarea>';
-		echo '</td></tr>';
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label" for="html">
+				<?= I18N::translate('Content') ?>
+			</label>
+			<div class="col-sm-9">
+				<p>
+					<?= I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.') ?>
+				</p>
+			</div>
+		</div>
 
-		echo '<tr><td class="descriptionbox wrap">';
-		echo I18N::translate('Show the date and time of update');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('show_timestamp', $show_timestamp);
-		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
-		echo '</td></tr>';
+		<div class="row form-group">
+			<textarea name="html" id="html" class="html-edit" rows="10"><?= Filter::escapeHtml($html) ?></textarea>
+		</div>
 
-		echo '<tr><td class="descriptionbox wrap">';
-		echo I18N::translate('Show this block for which languages');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editLanguageCheckboxes('lang', $languages);
-		echo '</td></tr>';
+		<fieldset class="form-group">
+			<div class="row">
+				<legend class="form-control-legend col-sm-3">
+					<?= I18N::translate('Show the date and time of update') ?>
+				</legend>
+				<div class="col-sm-9">
+					<?= Bootstrap4::radioButtons('timestamp', FunctionsEdit::optionsNoYes(), $show_timestamp, true) ?>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<div class="row">
+				<legend class="form-control-legend col-sm-3">
+					<?= I18N::translate('Show this block for which languages') ?>
+				</legend>
+				<div class="col-sm-9">
+					<?= FunctionsEdit::editLanguageCheckboxes('lang', $languages) ?>
+				</div>
+			</div>
+		</fieldset>
+
+		<?php
 	}
 }
