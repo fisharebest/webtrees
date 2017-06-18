@@ -1452,6 +1452,9 @@ class Stats {
 			}
 			break;
 		case 'year':
+			if ($row['d_year'] < 0) {
+				$row['d_year'] = abs($row['d_year']) . ' B.C.';
+			}
 			$date   = new Date($row['d_type'] . ' ' . $row['d_year']);
 			$result = $date->display();
 			break;
