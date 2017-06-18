@@ -16,12 +16,12 @@
 /* Bluelagoon Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #5ab5ee;
 	color: #fff;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #2385c2;
 }
 

@@ -16,12 +16,12 @@
 /* Tealtop Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #34775a;
 	color: #fff;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #52bf90;
 }
 

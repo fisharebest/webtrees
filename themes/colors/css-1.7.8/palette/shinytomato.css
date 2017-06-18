@@ -16,12 +16,12 @@
 /* Shinytomato Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #f21107;
 	color: #fff;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #a1443a;
 }
 

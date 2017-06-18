@@ -16,12 +16,12 @@
 /* Coffeeandcream Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #d4c7a7;
 	color: #553e2f;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #93724f;
 }
 

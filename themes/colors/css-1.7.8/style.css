@@ -261,6 +261,10 @@ a > .wt-icon-arrow-up:hover::before {
  *             +---wt-cookie-warning
  */
 
+.wt-block-header::before {
+	content: url(images/block-header-disk.png);
+}
+
 .wt-global {
 	background: #fff; /* Override clouds */
 	color: #333;
@@ -996,6 +1000,10 @@ img.block,
 
 .button {
 	width: 60px;
+}
+
+.btn-primary, .btn-primary:hover {
+	border: none;
 }
 
 .alpha_index {

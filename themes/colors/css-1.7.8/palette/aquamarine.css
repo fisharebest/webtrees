@@ -16,18 +16,12 @@
 /* Aquamarine Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #007e94;
 	color: #fff;
 }
 
-.wt-header-wrapper .dropdown-item.active {
-	background-color: inherit;
-	color: inherit;
-	font-weight: bold;
-}
-
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #085360;
 }
 
