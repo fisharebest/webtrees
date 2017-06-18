@@ -268,7 +268,6 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-header-wrapper {
 	background: #acf url(images/clouds.png) repeat-x;
-	background-size: cover;
 	border-bottom: thin solid #79c;
 }
 
@@ -2173,6 +2172,12 @@ background-color: #fff;
 
 .popup li .NAME {
 	padding: 0 5px;
+}
+
+.popup .nav-link {
+	display: inline;
+	vertical-align: top;
+	padding: 5px;
 }
 
 .itr:hover .popup {
