@@ -291,18 +291,6 @@ class Filter {
 	}
 
 	/**
-	 * Validate email GET parameters
-	 *
-	 * @param string $variable
-	 * @param string $default
-	 *
-	 * @return string
-	 */
-	public static function getEmail($variable, $default = '') {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
-	}
-
-	/**
 	 * Validate URL GET parameters
 	 *
 	 * @param string $variable
@@ -363,18 +351,6 @@ class Filter {
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
-	}
-
-	/**
-	 * Validate email POST parameters
-	 *
-	 * @param string $variable
-	 * @param string $default
-	 *
-	 * @return string
-	 */
-	public static function postEmail($variable, $default = '') {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
 	/**
