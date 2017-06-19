@@ -26,7 +26,7 @@ require 'includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if ($WT_TREE || count(User::all()) > 1) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }

@@ -40,7 +40,7 @@ class MediaController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&amp;ged=' . $this->record->getTree()->getNameHtml(), 'menu-obje-edit'));
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), 'edit_interface.php?action=media-edit&xref=' . $this->record->getXref() . '&amp;ged=' . $this->record->getTree()->getNameHtml(), 'menu-obje-edit'));
 
 			// main link displayed on page
 			if (Module::getModuleByName('GEDFact_assistant')) {

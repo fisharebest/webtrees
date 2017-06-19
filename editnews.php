@@ -40,7 +40,7 @@ if (empty($news)) {
 }
 // If we can't edit this item, go back to the home/my page
 if ($ctype === 'user' && $news['user_id'] != Auth::id() || $ctype === 'gedcom' && !Auth::isManager($controller->tree())) {
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
 
 	return;
 }
@@ -49,7 +49,7 @@ switch ($action) {
 case 'delete':
 	Database::prepare("DELETE FROM `##news` WHERE news_id = :news_id")->execute(['news_id'   => $news_id,]);
 
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
 
 	return;
 
@@ -73,7 +73,7 @@ case 'save':
 		]);
 	}
 
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
 
 	return;
 }

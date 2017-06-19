@@ -47,7 +47,7 @@ case 'save':
 		$user           = User::find($user_id);
 		$username       = Filter::post('username');
 		$real_name      = Filter::post('real_name');
-		$email          = Filter::postEmail('email');
+		$email          = Filter::post('email');
 		$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
 		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
 		$theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
@@ -127,7 +127,7 @@ case 'save':
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_users.php');
 
 	return;
 }
@@ -778,7 +778,7 @@ case 'cleanup2':
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_users.php');
 	break;
 default:
 	$controller

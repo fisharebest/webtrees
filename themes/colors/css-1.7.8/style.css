@@ -21,6 +21,17 @@
 	padding-right: 0.25rem;
 }
 
+.pagination, .page-link, .page-link:hover, .page-link:focus {
+	border-color: #e6e6e6;
+	color: #555;
+}
+
+.page-item.active .page-link {    
+	background-color: #e6e6e6; 
+	color: #555;
+	border-color: #ccc;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -261,6 +272,10 @@ a > .wt-icon-arrow-up:hover::before {
  *             +---wt-cookie-warning
  */
 
+.wt-block-header::before {
+	content: url(images/block-header-disk.png);
+}
+
 .wt-global {
 	background: #fff; /* Override clouds */
 	color: #333;
@@ -292,6 +307,7 @@ a > .wt-icon-arrow-up:hover::before {
 	order: 1;
 	flex: 1 1 fit-content;
 	font-size: 1.5rem;
+	padding: 0.75rem 0.75rem 0;
 }
 
 .wt-header-search {
@@ -900,38 +916,6 @@ a > .wt-icon-arrow-up:hover::before {
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* ====== Round Corners ======== */
-input,
-fieldset,
-.border1,
-.block,
-.descriptionbox,
-.facts_label,
-.facts_label03,
-.facts_value,
-.list_label,
-.list_label_wrap,
-.list_value,
-.list_value_wrap,
-.messagebox,
-.optionbox,
-.person_box,
-.person_boxF,
-.person_boxNN,
-.person0,
-.person1,
-.person2,
-.person3,
-.person4,
-.person5,
-.primary-menu ul,
-.secondary-menu li ul,
-footer,
-#tabs,
-.topbottombar {
-	border-radius: 3px;
-}
-
 /* ios on click workaround */
 .iconz {
 	cursor: pointer;
@@ -998,6 +982,10 @@ img.block,
 	width: 60px;
 }
 
+.btn-primary, .btn-primary:hover {
+	border: none;
+}
+
 .alpha_index {
 	color: #999;
 }
@@ -1008,19 +996,19 @@ hr {
 
 .person_box, .action_header {
 	background-color: #ddf;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
 .person_boxF, .action_headerF {
 	background-color: #fdd;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
 .person_boxNN {
 	background-color: #fff;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
@@ -1100,6 +1088,7 @@ div.fact_SHARED_NOTE {
 
 .facts_label {
 	background-color: #81a9cb;
+	border: 1px solid #ccc;
 	font-size: 12px;
 	padding: 4px;
 	width: 20%;
@@ -3069,16 +3058,12 @@ div.faq_body {
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
-	width: 150px;
 }
 
 #search-page-table .value {
 	background-color: #ecf5ff;
 	color: #333;
-	border-top: 1px solid #999;
-	margin: 0 0 0 30%;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {

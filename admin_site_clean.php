@@ -38,7 +38,7 @@ if ($to_delete && Filter::checkCsrf()) {
 		}
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_site_clean.php');
 
 	return;
 }

@@ -141,7 +141,7 @@ case 'privacy':
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
 	FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
-	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->getNameUrl());
+	header('Location: admin_trees_manage.php?ged=' . $WT_TREE->getNameUrl());
 
 	return;
 
@@ -263,7 +263,7 @@ case 'general':
 	}
 
 	FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
-	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
+	header('Location: admin_trees_manage.php');
 
 	return;
 }
@@ -289,7 +289,7 @@ case 'general':
 	$controller->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Preferences'));
 	break;
 default:
-	header('Location: ' . WT_BASE_URL . 'admin.php');
+	header('Location: admin.php');
 
 	return;
 }

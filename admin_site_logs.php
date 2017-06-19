@@ -186,7 +186,7 @@ $controller
 		$(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "admin_site_logs.php?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 10) . ',

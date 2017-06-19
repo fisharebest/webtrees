@@ -268,7 +268,6 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-header-wrapper {
 	background: #acf url(images/clouds.png) repeat-x;
-	background-size: cover;
 	border-bottom: thin solid #79c;
 }
 
@@ -290,13 +289,11 @@ a > .wt-icon-arrow-up:hover::before {
 	order: 1;
 	flex: 1 1 fit-content;
 	font-size: 1.5rem;
-	padding: 0.75rem 0.75rem 0;
 }
 
 .wt-header-search {
 	order: 3;
 	flex: 0 0 15rem;
-	padding-top: 0.5rem;
 }
 
 .wt-header-search-form {
@@ -352,7 +349,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-primary-menu .dropdown-item {
 	/* Space between icons and align with submenu icons */
-	padding: 0 0.5rem;
+	padding: 0;
 }
 
 .wt-primary-menu .dropdown-item::before {
@@ -1009,8 +1006,6 @@ input,
 fieldset,
 .border1,
 .block,
-.descriptionbox,
-.facts_label,
 .facts_label03,
 .facts_value,
 .list_label,
@@ -2175,6 +2170,12 @@ background-color: #fff;
 	padding: 0 5px;
 }
 
+.popup .nav-link {
+	display: inline;
+	vertical-align: top;
+	padding: 5px;
+}
+
 .itr:hover .popup {
 	visibility: visible;
 	opacity: 1;
@@ -3092,6 +3093,15 @@ div.faq_body {
 	color: #f00;
 }
 
+.nav .dropdown-item {
+background: #fff;
+color: black;
+}
+.nav .dropdown-item:focus, .nav .dropdown-item:hover {
+background: #f7f7f9;
+color: #ldlelf;
+}
+
 /* Sidebar*/
 #sb_content_descendancy {
 	margin-top: 0;
@@ -3226,15 +3236,12 @@ div.faq_body {
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
-	width: 150px;
 }
 
 #search-page-table .value {
 	background-color: #fff;
 	border-top: 1px solid #ccc;
-	margin: 0 0 0 170px;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {

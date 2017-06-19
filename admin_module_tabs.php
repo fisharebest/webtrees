@@ -43,7 +43,7 @@ if ($action === 'update_mods' && Filter::checkCsrf()) {
 		)->execute([$order, $module->getName()]);
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: admin_module_tabs.php');
 
 	return;
 }

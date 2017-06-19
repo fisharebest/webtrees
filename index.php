@@ -73,7 +73,7 @@ if ($action === 'ajax') {
 
 // Redirect search engines to the full URL
 if (Filter::get('ctype') !== $ctype || Filter::get('ged') !== $WT_TREE->getName()) {
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
 
 	return;
 }

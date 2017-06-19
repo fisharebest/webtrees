@@ -55,7 +55,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			if (Auth::isAdmin()) {
 				$this->delete();
 			}
-			header('Location: ' . WT_BASE_URL . 'module.php?mod=faq&mod_action=admin_config');
+			header('Location: module.php?mod=faq&mod_action=admin_config');
 			break;
 		case 'admin_edit':
 			$this->edit();
@@ -64,19 +64,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			if (Auth::isAdmin()) {
 				$this->editSave();
 			}
-			header('Location: ' . WT_BASE_URL . 'module.php?mod=faq&mod_action=admin_config');
+			header('Location: module.php?mod=faq&mod_action=admin_config');
 			break;
 		case 'admin_movedown':
 			if (Auth::isAdmin()) {
 				$this->movedown();
 			}
-			header('Location: ' . WT_BASE_URL . 'module.php?mod=faq&mod_action=admin_config');
+			header('Location: module.php?mod=faq&mod_action=admin_config');
 			break;
 		case 'admin_moveup':
 			if (Auth::isAdmin()) {
 				$this->moveup();
 			}
-			header('Location: ' . WT_BASE_URL . 'module.php?mod=faq&mod_action=admin_config');
+			header('Location: module.php?mod=faq&mod_action=admin_config');
 			break;
 		case 'show':
 			$this->show();

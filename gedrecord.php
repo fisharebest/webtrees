@@ -34,7 +34,7 @@ if (
 	$record instanceof Note ||
 	$record instanceof Media
 ) {
-	header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+	header('Location: ' . $record->getRawUrl());
 
 	return;
 }

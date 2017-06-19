@@ -16,12 +16,12 @@
 /* Ash Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #5d6779;
 	color: #fff;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #2a2b2d;
 }
 

@@ -24,5 +24,5 @@ $module     = Module::getModuleByName($mod);
 if ($module) {
 	$module->modAction($mod_action);
 } else {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 }

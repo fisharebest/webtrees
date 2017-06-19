@@ -59,7 +59,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$ged   = Filter::post('ged');
 		$ctype = Filter::post('ctype', 'user|gedcom', 'user');
 
-		header('Location: ' . WT_BASE_URL . 'index.php?ged=' . Filter::escapeUrl($ged) . '&ctype=' . $ctype);
+		header('Location: index.php?ged=' . Filter::escapeUrl($ged) . '&ctype=' . $ctype);
 	}
 
 	/**

@@ -99,7 +99,7 @@ case 'hierarchy':
 			echo ', <a href="', $parent_place->getURL(), '" dir="auto">', $parent_place->getPlaceName(), '</a>';
 			$parent_place = $parent_place->getParentPlace();
 		}
-		echo ', <a href="', WT_SCRIPT_NAME, '">', I18N::translate('Top level'), '</a>';
+		echo ', <a href="placelist.php">', I18N::translate('Top level'), '</a>';
 	}
 	echo '</h2>';
 

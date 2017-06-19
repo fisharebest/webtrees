@@ -327,8 +327,16 @@
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
-	max-height: 25rem;
+	max-height: 35rem;
 	overflow-x: hidden;
+}
+
+#search-page-table .value {
+	margin: 0 0 0 220px;
+}
+
+#search-page-table .label {
+	width: 220px;
 }
 
 /* Census assistant */
@@ -357,3 +365,9 @@ fieldset.row > legend, fieldset.row > div {
 	font-weight: bold;
 }
 
+/* Popups */
+.popup .nav-link {
+	display: inline;
+	vertical-align: top;
+	padding: 5px;
+}

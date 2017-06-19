@@ -16,12 +16,12 @@
 /* Belgianchocolate Palette */
 
 /* Header */
-.wt-header-wrapper {
+.wt-header-wrapper, .btn-primary {
 	background: #971702;
 	color: #fff;
 }
 
-.wt-primary-menu {
+.wt-primary-menu, .btn-primary:hover {
 	background: #311900;
 }
 

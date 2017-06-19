@@ -106,7 +106,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
 					$record2_name
 			), 'info');
-			$gedcom = str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
+			$gedcom = str_replace('@' . $gid2 . '@', '@' . $gid1 . '@', $record->getGedcom());
 			$gedcom = preg_replace(
 				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
 				'$2',
@@ -166,7 +166,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		$record2_name
 	), 'success');
 
-	header('Location: ' . WT_BASE_URL . Filter::post('url', 'admin_trees_duplicates\.php', WT_SCRIPT_NAME));
+	header('Location: ' . Filter::post('url', 'admin_trees_duplicates\.php', 'admin_site_merge.php'));
 
 	return;
 }

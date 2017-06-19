@@ -7,7 +7,7 @@ use InvalidArgumentException;
  * Class JulianCalendar - calculations for the Julian calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -84,6 +84,10 @@ class JulianCalendar implements CalendarInterface {
 	}
 
 	public function ymdToJd($year, $month, $day) {
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
 		if ($year < 0) {
 			// 1 BCE is 0, 2 BCE is -1, etc.
 			++$year;

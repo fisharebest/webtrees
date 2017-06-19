@@ -26,7 +26,7 @@ require 'includes/session.php';
 
 // Need to be logged in
 if (!Auth::check()) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -37,7 +37,7 @@ $username       = Filter::post('username');
 $real_name      = Filter::post('real-name');
 $password_1     = Filter::post('password-1', WT_REGEX_PASSWORD);
 $password_2     = Filter::post('password-2', WT_REGEX_PASSWORD);
-$email          = Filter::postEmail('email');
+$email          = Filter::post('email');
 $root_id        = Filter::post('root-id', WT_REGEX_XREF);
 $theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
 $language       = Filter::post('language', null, '');
@@ -90,7 +90,7 @@ if ($action !== '' && Filter::checkCsrf()) {
 		break;
 	}
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: edit_user.php');
 
 	return;
 }

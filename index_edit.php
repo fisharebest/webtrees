@@ -55,7 +55,7 @@ if (
 	$gedcom_id > 0 && !Auth::isManager(Tree::findById($gedcom_id)) ||
 	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
 ) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -128,11 +128,11 @@ if ($action === 'update') {
 		}
 	}
 	if ($user_id < 0 || $gedcom_id < 0 ) {
-		header('Location: ' . WT_BASE_URL . 'admin.php');
+		header('Location: admin.php');
 	} elseif ($user_id > 0) {
-		header('Location: ' . WT_BASE_URL . 'index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
+		header('Location: index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
 	} else {
-		header('Location: ' . WT_BASE_URL . 'index.php?ctype=gedcom&ged=' . $WT_TREE->getNameUrl());
+		header('Location: index.php?ctype=gedcom&ged=' . $WT_TREE->getNameUrl());
 	}
 
 	return;

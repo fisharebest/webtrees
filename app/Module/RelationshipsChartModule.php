@@ -220,7 +220,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 			FlashMessages::addMessage(I18N::translate('The preferences for the chart “%s” have been updated.', $this->getTitle()), 'success');
 		}
 
-		header('Location: ' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&mod_action=admin');
+		header('Location: module.php?mod=' . $this->getName() . '&mod_action=admin');
 	}
 
 	/**

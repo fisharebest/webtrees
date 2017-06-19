@@ -26,7 +26,7 @@ require 'includes/session.php';
 
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && $WT_TREE) {
-	header('Location: ' . WT_BASE_URL);
+	header('Location: index.php');
 
 	return;
 }
@@ -36,7 +36,7 @@ $controller = new PageController;
 $action          = Filter::post('action');
 $user_realname   = Filter::post('user_realname');
 $user_name       = Filter::post('user_name');
-$user_email      = Filter::postEmail('user_email');
+$user_email      = Filter::post('user_email');
 $user_password01 = Filter::post('user_password01', WT_REGEX_PASSWORD);
 $user_password02 = Filter::post('user_password02', WT_REGEX_PASSWORD);
 $user_comments   = Filter::post('user_comments');
@@ -133,7 +133,7 @@ case 'login':
 		}
 
 		// Redirect to the target URL
-		header('Location: ' . WT_BASE_URL . $url);
+		header('Location: ' . $url);
 
 		return;
 	} catch (\Exception $ex) {
@@ -260,14 +260,14 @@ case 'requestpw':
 	} else {
 		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Filter::escapeHtml($user_name)), 'danger');
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: login.php');
 
 	return;
 	break;
 
 case 'register':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}
@@ -500,7 +500,7 @@ case 'register':
 
 case 'userverify':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}
@@ -538,7 +538,7 @@ case 'userverify':
 
 case 'verify_hash':
 	if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-		header('Location: ' . WT_BASE_URL);
+		header('Location: index.php');
 
 		return;
 	}

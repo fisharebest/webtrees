@@ -76,7 +76,6 @@ define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
 define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER', '-?\d+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
-define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
 // UTF8 representation of various characters
@@ -206,27 +205,27 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+		header('Location: site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: ' . WT_BASE_URL . 'site-offline.php');
+		header('Location: site-offline.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: ' . WT_BASE_URL . 'setup.php');
+	header('Location: setup.php');
 	exit;
 }
 
 // What is the remote client's IP address
-if (Filter::server('HTTP_CLIENT_IP') !== null) {
+if (Filter::server('HTTP_CLIENT_IP') !== '') {
 	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
-} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
+} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== '') {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
+	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', null, '127.0.0.1'));
 }
 
 // Connect to the database
@@ -240,24 +239,17 @@ try {
 	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 	if ($updated) {
 		// updateSchema() might load custom modules - which we cannot load again.
-		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
+		header('Location: ' . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
 		exit;
 	}
 } catch (PDOException $ex) {
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
+	header('Location: site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
 	exit;
 }
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
 define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
-
-// If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
-$SERVER_URL = Site::getPreference('SERVER_URL');
-if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
-	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
-	exit;
-}
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
@@ -361,14 +353,14 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 if (Site::getPreference('LOGIN_URL') !== '') {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
+	define('WT_LOGIN_URL', 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'action.php') {
 	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
-			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
+			header('Location: admin_trees_manage.php');
 		} else {
 			// We're not an administrator, so we can only log in if there is a tree.
 			if (Auth::id()) {

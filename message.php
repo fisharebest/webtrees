@@ -29,7 +29,7 @@ $controller->setPageTitle(I18N::translate('webtrees message'));
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$to         = Filter::post('to', null, '');
 	$from_name  = Filter::post('from_name', null, '');
-	$from_email = Filter::postEmail('from_email');
+	$from_email = Filter::post('from_email');
 	$subject    = Filter::post('subject', null, '');
 	$body       = Filter::post('body', null, '');
 	$url        = Filter::postUrl('url', 'index.php');
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($errors) {
 		// Errors? Go back to the form.
 		header(
-			'Location: ' . WT_BASE_URL . 'message.php' .
+			'Location: message.php' .
 			'?to=' . Filter::escapeUrl($to) .
 			'&from_name=' . Filter::escapeUrl($from_name) .
 			'&from_email=' . Filter::escapeUrl($from_email) .
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			}
 		}
 
-		header('Location: ' . WT_BASE_URL . $url);
+		header('Location: ' . $url);
 	}
 
 	return;
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $to         = Filter::get('to', null, '');
 $from_name  = Filter::get('from_name', null, '');
-$from_email = Filter::getEmail('from_email', '');
+$from_email = Filter::get('from_email', '');
 $subject    = Filter::get('subject', null, '');
 $body       = Filter::get('body', null, '');
 $url        = Filter::getUrl('url', 'index.php');
