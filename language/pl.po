@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-12 13:35+0000\n"
+"PO-Revision-Date: 2017-06-19 09:00+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -3734,7 +3734,7 @@ msgstr "Obrzezujący"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Cytat"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4052,11 +4052,11 @@ msgstr "Utwórz"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Utwórz rodzinę"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Utwórz rodzinę z istniejących osób"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4088,11 +4088,11 @@ msgstr "Utwórz nowe źródło"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Utwórz osobę dostarczającą dane"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Utwórz unikalną nazwę pliku"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7800,7 +7800,7 @@ msgstr "Zachowaj obiekty multimedialne"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Trzymaj otwartą"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -11665,7 +11665,7 @@ msgstr "Salt Lake City, Utah, Stany Zjednoczone"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Taka sama jak nazwa wgrywanego pliku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13132,7 +13132,7 @@ msgstr "Tradycja przyjmowania nazwiska"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Nazwiska"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
