@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-16 21:01+0000\n"
+"PO-Revision-Date: 2017-06-19 07:10+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -13099,7 +13099,7 @@ msgstr "מסורת שם משפחה"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "שמות משפחה"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
