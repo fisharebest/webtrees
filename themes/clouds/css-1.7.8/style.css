@@ -1008,8 +1008,6 @@ input,
 fieldset,
 .border1,
 .block,
-.descriptionbox,
-.facts_label,
 .facts_label03,
 .facts_value,
 .list_label,
@@ -3095,6 +3093,15 @@ div.faq_body {
 .flyout3:hover {
 	cursor: pointer;
 	color: #f00;
+}
+
+.nav .dropdown-item {
+background: #fff;
+color: black;
+}
+.nav .dropdown-item:focus, .nav .dropdown-item:hover {
+background: #f7f7f9;
+color: #ldlelf;
 }
 
 /* Sidebar*/

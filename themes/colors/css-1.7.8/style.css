@@ -904,38 +904,6 @@ a > .wt-icon-arrow-up:hover::before {
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* ====== Round Corners ======== */
-input,
-fieldset,
-.border1,
-.block,
-.descriptionbox,
-.facts_label,
-.facts_label03,
-.facts_value,
-.list_label,
-.list_label_wrap,
-.list_value,
-.list_value_wrap,
-.messagebox,
-.optionbox,
-.person_box,
-.person_boxF,
-.person_boxNN,
-.person0,
-.person1,
-.person2,
-.person3,
-.person4,
-.person5,
-.primary-menu ul,
-.secondary-menu li ul,
-footer,
-#tabs,
-.topbottombar {
-	border-radius: 3px;
-}
-
 /* ios on click workaround */
 .iconz {
 	cursor: pointer;
@@ -1016,19 +984,19 @@ hr {
 
 .person_box, .action_header {
 	background-color: #ddf;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
 .person_boxF, .action_headerF {
 	background-color: #fdd;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
 .person_boxNN {
 	background-color: #fff;
-	border: 1px solid #aaa;
+	border: 1px solid #ccc;
 	padding: 3px;
 }
 
@@ -1108,6 +1076,7 @@ div.fact_SHARED_NOTE {
 
 .facts_label {
 	background-color: #81a9cb;
+	border: 1px solid #ccc;
 	font-size: 12px;
 	padding: 4px;
 	width: 20%;
