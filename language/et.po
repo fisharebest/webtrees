@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-12 16:52+0000\n"
+"PO-Revision-Date: 2017-06-19 21:28+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -3704,7 +3704,7 @@ msgstr "Ümberlõikaja"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Tsitaat"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4022,11 +4022,11 @@ msgstr "Loo"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Loo perekond"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Loo perekond eksisteerivatest isikutest"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4058,11 +4058,11 @@ msgstr "Loo uus allikas"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Loo esitaja"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Loo unikaalne failinimi"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7317,7 +7317,7 @@ msgstr "Sellel aastal …"
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "Sisalda lähedased"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7770,7 +7770,7 @@ msgstr "Hoia meediaobjekte"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Hoia avatud"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -8252,7 +8252,7 @@ msgstr "Pikim abielu"
 #. I18N: Two axes of a graph
 #: statistics.php:546 statisticsplot.php:1048
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Pikaealisus versus aeg"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:739 app/Functions/FunctionsPrint.php:429
@@ -11633,7 +11633,7 @@ msgstr "Salt Lake City, Utah, Ühendriigid"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Sama, mis üleslaetud fail"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13100,7 +13100,7 @@ msgstr "Perekonnanimede traditsioon"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Perekonnanimed"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -15095,7 +15095,7 @@ msgstr "Kasuta parooli"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Kasuta sendmaili sõnumite saatmiseks"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018
