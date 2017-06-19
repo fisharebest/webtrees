@@ -2155,27 +2155,23 @@ div.faq_body {
 
 #search-page-table {
 	background-color: #fff;
-	border: 1px solid #000;
+	border: 1px outset #ccc;
+	border-top: 0;
 	margin: 20px auto 0;
-	width: 590px;
+	width: 580px;
 }
 
 #search-page-table .label {
+	border-top: 1px solid #ccc;
 	float: left;
 	font-weight: bold;
-	padding: 5px;
-	width: 150px;
-}
-
-#search-page-table div #query {
-	width: 300px;
+	padding: 5px 10px 0;
 }
 
 #search-page-table .value {
 	background-color: #fff;
-	margin: 0 0 0 170px;
+	border-top: 1px solid #ccc;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {

@@ -289,13 +289,11 @@ a > .wt-icon-arrow-up:hover::before {
 	order: 1;
 	flex: 1 1 fit-content;
 	font-size: 1.5rem;
-	/* padding: 0.75rem 0.75rem 0; */
 }
 
 .wt-header-search {
 	order: 3;
 	flex: 0 0 15rem;
-	/* padding-top: 0.5rem; */
 }
 
 .wt-header-search-form {
@@ -3238,15 +3236,12 @@ color: #ldlelf;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
-	width: 150px;
 }
 
 #search-page-table .value {
 	background-color: #fff;
 	border-top: 1px solid #ccc;
-	margin: 0 0 0 170px;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {

@@ -331,6 +331,14 @@
 	overflow-x: hidden;
 }
 
+#search-page-table .value {
+	margin: 0 0 0 220px;
+}
+
+#search-page-table .label {
+	width: 230px;
+}
+
 /* Census assistant */
 .wt-census-assistant-table .wt-census-assistant-field,
 .wt-census-assistant-form-control {

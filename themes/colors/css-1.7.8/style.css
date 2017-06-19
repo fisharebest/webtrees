@@ -3047,16 +3047,12 @@ div.faq_body {
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
-	width: 150px;
 }
 
 #search-page-table .value {
 	background-color: #ecf5ff;
 	color: #333;
-	border-top: 1px solid #999;
-	margin: 0 0 0 30%;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {

@@ -2672,19 +2672,15 @@ div.faq_body {
 }
 
 #search-page-table .label {
-	border-top: 1px solid #ccc;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
-	width: 150px;
 }
 
 #search-page-table .value {
 	background-color: #ddd;
 	border: 1px solid #fff;
-	margin: 0 0 0 170px;
 	padding: 5px;
-	white-space: nowrap;
 }
 
 #search-page-table p {
