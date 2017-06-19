@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-19 14:55+0000\n"
+"PO-Revision-Date: 2017-06-19 14:57+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -15090,7 +15090,7 @@ msgstr "Passwort verwenden"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr "Sendmail zum Nachrichtenversand vewenden"
+msgstr "Zum Nachrichtenversand sendmail verwenden"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018
