@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-11 20:41+0000\n"
+"PO-Revision-Date: 2017-06-19 19:04+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -3703,7 +3703,7 @@ msgstr "Circumcisor"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Ressenya"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4021,11 +4021,11 @@ msgstr "Crea"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Crea una família"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Crea una família a partir de persones enregistrades"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4057,11 +4057,11 @@ msgstr "Crea una nova font"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Crea un peticionari"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Crea un nom d'arxiu únic"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7769,7 +7769,7 @@ msgstr "Conserva els objectes multimèdia"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Mantenir obert"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -11632,7 +11632,7 @@ msgstr "Salt Lake City, Utah, Estats Units"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Igual que l'arxiu carregat"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13099,7 +13099,7 @@ msgstr "Tradició dels cognoms"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Cognoms"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
