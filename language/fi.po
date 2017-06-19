@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-14 22:25+0000\n"
+"PO-Revision-Date: 2017-06-19 07:01+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -9216,7 +9216,7 @@ msgstr "Mordad"
 #: app/Date/JalaliDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr "toukokuu"
+msgstr "Mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:127
 msgid "More news articles"
