@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-14 22:30+0000\n"
+"PO-Revision-Date: 2017-06-19 07:06+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sv/>\n"
 "Language: sv\n"
@@ -3993,7 +3993,7 @@ msgstr "Cooköarna"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr "Cookies"
+msgstr "Kakor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
