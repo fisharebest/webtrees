@@ -21,6 +21,17 @@
 	padding-right: 0.25rem;
 }
 
+.pagination, .page-link, .page-link:hover, .page-link:focus {
+	border-color: #e6e6e6;
+	color: #555;
+}
+
+.page-item.active .page-link {    
+	background-color: #e6e6e6; 
+	color: #555;
+	border-color: #ccc;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
