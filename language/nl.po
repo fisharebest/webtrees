@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-15 20:33+0000\n"
+"PO-Revision-Date: 2017-06-19 22:16+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -3703,7 +3703,7 @@ msgstr "Besnijder"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Citaat"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4021,11 +4021,11 @@ msgstr "Creëer"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Een gezin aanmaken"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Een gezin aanmaken met bestaande personen"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4057,11 +4057,11 @@ msgstr "Maak een nieuwe bron aan"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Een inzender aanmaken"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Een unieke bestandsnaam aanmaken"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7316,7 +7316,7 @@ msgstr "In dit jaar…"
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "Inclusief gerelateerde personen"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7769,7 +7769,7 @@ msgstr "Media objects behouden"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Openhouden"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -8251,7 +8251,7 @@ msgstr "Langste huwelijk"
 #. I18N: Two axes of a graph
 #: statistics.php:546 statisticsplot.php:1048
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Levensduur versus tijd"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:739 app/Functions/FunctionsPrint.php:429
@@ -11632,7 +11632,7 @@ msgstr "Salt Lake City, Utah, Verenigde Staten"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Hetzelfde als het geuploade bestand"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13099,7 +13099,7 @@ msgstr "Achternaamtraditie"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Achternamen"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -15094,7 +15094,7 @@ msgstr "Wachtwoord gebruiken"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Gebruik sendmail om berichten te versturen"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018
