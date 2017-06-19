@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-06-12 16:52+0000\n"
+"PO-Revision-Date: 2017-06-19 21:28+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/et/>\n"
 "Language: et\n"
@@ -15363,7 +15363,7 @@ msgstr "Kasuta parooli"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr "Kasuta sendmail-i sõnumite saatmiseks"
+msgstr "Kasuta sendmaili sõnumite saatmiseks"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
