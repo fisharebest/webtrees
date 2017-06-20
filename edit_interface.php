@@ -529,14 +529,10 @@ switch ($action) {
 		// Other systems generate various structures for media objects...
 		// Extract them from wherever they might be
 		$FILE = '';
-		$FORM = '';
 		$TITL = '';
 		$TYPE = '';
 		if (preg_match('/^\d FILE (.+)/m', $edit_fact->getGedcom(), $match)) {
 			$FILE = $match[1];
-		}
-		if (preg_match('/^\d FORM (.+)/m', $edit_fact->getGedcom(), $match)) {
-			$FORM = $match[1];
 		}
 		if (preg_match('/^\d TITL (.+)/m', $edit_fact->getGedcom(), $match)) {
 			$TITL = $match[1];
@@ -581,15 +577,6 @@ switch ($action) {
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-3 col-form-label" for="FORM">
-					<?= I18N::translate('Format') ?>
-				</label>
-				<div class="col-sm-9">
-					<input type="text" id="FORM" name="FORM" class="form-control" value="<?= Filter::escapeHtml($FORM) ?>">
-				</div>
-			</div>
-
-			<div class="form-group row">
 				<label class="col-sm-3 col-form-label" for="TYPE">
 					<?= I18N::translate('Type') ?>
 				</label>
@@ -625,7 +612,6 @@ switch ($action) {
 		$keep_chan = Filter::postBool('keep_chan');
 		$FILE      = Filter::post('FILE');
 		$TITL      = Filter::post('TITL');
-		$FORM      = Filter::post('FORM');
 		$TYPE      = Filter::post('TYPE');
 
 		$FILE = str_replace('\\', '/', $FILE);
@@ -656,9 +642,7 @@ switch ($action) {
 			break;
 		}
 
-		if ($FORM === '') {
-			$FORM = strtolower(pathinfo($FILE, PATHINFO_EXTENSION));
-		}
+		$FORM = strtolower(pathinfo($FILE, PATHINFO_EXTENSION));
 		$FORM = strtr($FORM, ['jpg' => 'jpeg']);
 
 		$gedcom = '1 FILE ' . $FILE . "\n2 FORM " . $FORM;
