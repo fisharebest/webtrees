@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2017 webtrees development team
+ * Copy§right (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -780,6 +780,9 @@ class FunctionsEdit {
 			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
 			echo Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
+		} elseif ($fact === '_PRIM') {
+			echo Bootstrap4::select(['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')], $value, ['id' => $id, 'name' => $name]);
+			echo '<p class="small text-muted">', I18N::translate('Use this image for charts and on the individual’s page.'), '</p>';
 		} elseif ($fact === 'TYPE' && $level === '3') {
 			//-- Build the selector for the Media 'TYPE' Fact
 			echo '<select name="text[]"><option selected value="" ></option>';

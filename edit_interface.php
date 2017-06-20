@@ -17,7 +17,9 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
@@ -502,34 +504,41 @@ switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
 	case 'media-edit':
 		$xref = Filter::get('xref', WT_REGEX_XREF);
+		$fact_id = Filter::get('fact_id');
 
-		$media = Media::getInstance($xref, $controller->tree());
-		check_record_access($media);
+		$record = GedcomRecord::getInstance($xref, $controller->tree());
+		check_record_access($record);
+
+		// Find the fact to edit
+		$edit_fact = null;
+		foreach ($record->getFacts() as $fact) {
+			if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
+				$edit_fact = $fact;
+				break;
+			}
+		}
+		if (!$edit_fact) {
+			header('Location: ' . $record->getRawUrl());
+			break;
+		}
 
 		$controller
-			->setPageTitle($media->getFullName() . ' - ' . I18N::translate('edit'))
+			->setPageTitle($record->getFullName() . ' - ' . I18N::translate('edit'))
 			->pageHeader();
 
 		// Other systems generate various structures for media objects...
+		// Extract them from wherever they might be
 		$FILE = '';
-		$FORM = '';
 		$TITL = '';
 		$TYPE = '';
-		$PRIM = '';
-		if (preg_match('/\n\d FILE (.+)/', $media->getGedcom(), $match)) {
+		if (preg_match('/^\d FILE (.+)/m', $edit_fact->getGedcom(), $match)) {
 			$FILE = $match[1];
 		}
-		if (preg_match('/\n\d FORM (.+)/', $media->getGedcom(), $match)) {
-			$FORM = $match[1];
-		}
-		if (preg_match('/\n\d TITL (.+)/', $media->getGedcom(), $match)) {
+		if (preg_match('/^\d TITL (.+)/m', $edit_fact->getGedcom(), $match)) {
 			$TITL = $match[1];
 		}
-		if (preg_match('/\n\d TYPE (.+)/', $media->getGedcom(), $match)) {
+		if (preg_match('/^\d TYPE (.+)/m', $edit_fact->getGedcom(), $match)) {
 			$TYPE = $match[1];
-		}
-		if (preg_match('/\n\d _PRIM (.+)/', $media->getGedcom(), $match)) {
-			$PRIM = $match[1];
 		}
 
 		?>
@@ -537,11 +546,13 @@ switch ($action) {
 		<form method="post">
 			<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 			<input type="hidden" name="action" value="media-save">
+			<input type="hidden" name="xref" value="<?= $xref ?>">
+			<input type="hidden" name="fact_id" value="<?= $edit_fact->getFactId() ?>">
 			<?= Filter::getCsrf() ?>
 
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
-					<?= $media->displayImage() ?>
+					<?= $record->displayImage() ?>
 				</div>
 			</div>
 
@@ -566,15 +577,6 @@ switch ($action) {
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-3 col-form-label" for="FORM">
-					<?= I18N::translate('Format') ?>
-				</label>
-				<div class="col-sm-9">
-					<input type="text" id="TYPE" name="TYPE" class="form-control" value="<?= Filter::escapeHtml($FORM) ?>">
-				</div>
-			</div>
-
-			<div class="form-group row">
 				<label class="col-sm-3 col-form-label" for="TYPE">
 					<?= I18N::translate('Type') ?>
 				</label>
@@ -583,24 +585,7 @@ switch ($action) {
 				</div>
 			</div>
 
-			<div class="form-group row">
-				<label class="col-sm-3 col-form-label" for="PRIM">
-					<?= I18N::translate('Highlighted image') ?>
-				</label>
-				<div class="col-sm-9">
-					<?= Bootstrap4::select(['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')], $PRIM, ['id' => 'PRIM', 'name' => 'PRIM']) ?>
-					<p
-						class="small text-muted"><?= I18N::translate('Use this image for charts and on the individual’s page.') ?></p>
-				</div>
-			</div>
-
-			<?php foreach ($media->getFacts() as $fact): ?>
-				<?php if (!in_array($fact->getTag(), ['FILE', 'TITL', 'TYPE', 'FORM', '_PRIM', 'CHAN'])): ?>
-					<?php FunctionsEdit::createEditForm($fact); ?>
-				<?php endif; ?>
-			<?php endforeach; ?>
-
-			<?= keep_chan($media) ?>
+			<?= keep_chan($record) ?>
 
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
@@ -609,7 +594,7 @@ switch ($action) {
 						<?= /* I18N: A button label. */
 						I18N::translate('save') ?>
 					</button>
-					<a class="btn btn-secondary" href="<?= $media->getHtmlUrl() ?>">
+					<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
 						<?= FontAwesome::decorativeIcon('cancel') ?>
 						<?= /* I18N: A button label. */
 						I18N::translate('cancel') ?>
@@ -623,17 +608,137 @@ switch ($action) {
 
 	case 'media-save':
 		$xref      = Filter::post('xref', WT_REGEX_XREF);
+		$fact_id   = Filter::post('fact_id');
 		$keep_chan = Filter::postBool('keep_chan');
+		$FILE      = Filter::post('FILE');
+		$TITL      = Filter::post('TITL');
+		$TYPE      = Filter::post('TYPE');
 
+		$FILE = str_replace('\\', '/', $FILE);
 
-		if (!Filter::checkCsrf()) {
-			header('Location: edit_interface.php?action=media-edit&xref=' . $xref);
+		$record = GedcomRecord::getInstance($xref, $controller->tree());
+		check_record_access($record);
+
+		// Find the fact to edit
+		$edit_fact = null;
+		foreach ($record->getFacts() as $fact) {
+			if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
+				$edit_fact = $fact;
+				break;
+			}
+		}
+		if ($edit_fact === null) {
+			header('Location: ' . $record->getRawUrl());
 			break;
 		}
 
-		$media = Media::getInstance($xref, $controller->tree());
-		check_record_access($media);
+		// Find the old filename.  If this has changed, we need to move it.
+		// Other systems generate various structures for media objects...
+		// Extract them from wherever they might be
+		if (preg_match('/^\d FILE (.+)/m', $edit_fact->getGedcom(), $match)) {
+			$OLD_FILE = $match[1];
+		} else {
+			header('Location: ' . $record->getRawUrl());
+			break;
+		}
 
+		$FORM = strtolower(pathinfo($FILE, PATHINFO_EXTENSION));
+		$FORM = strtr($FORM, ['jpg' => 'jpeg']);
+
+		$gedcom = '1 FILE ' . $FILE . "\n2 FORM " . $FORM;
+		if ($TYPE !== '') {
+			$gedcom .= "\n3 TYPE " . $TYPE;
+		}
+		if ($TITL !== '') {
+			$gedcom .= "\n2 TITL " . $TITL;
+		}
+
+		$old_server_file  = $record->getServerFilename('main');
+		$old_server_thumb = $record->getServerFilename('thumb');
+		$old_external     = $record->isExternal();
+
+		$tmp_record = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $FILE, null, $record->getTree());
+
+		$new_server_file  = $tmp_record->getServerFilename('main');
+		$new_server_thumb = $tmp_record->getServerFilename('thumb');
+		$new_external     = $tmp_record->isExternal();
+
+		// External URLs cannot be renamed to local files, and vice versa.
+		if ($old_external !== $new_external) {
+			FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed.'), 'danger');
+
+			header('Location: ' . $record->getRawUrl());
+			break;
+		}
+
+		if (!$record->isExternal() && in_array('..', explode('/', $FILE))) {
+			FlashMessages::addMessage('Folder names are not allowed to include “../”', 'danger');
+
+			header('Location: ' . $record->getRawUrl());
+			break;
+		}
+
+		if (!$record->isExternal() && FunctionsDb::isMediaUsedInOtherTree($record->getFilename(), $record->getTree()->getTreeId())) {
+			FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed.'), 'danger');
+
+			header('Location: ' . $record->getRawUrl());
+			break;
+		}
+
+		// If we have renamed a local file, then also move the files on disk (if we can).
+		if ($OLD_FILE !== $FILE) {
+			// Managers can create new media paths (subfolders). Users must use existing folders.
+			foreach ([dirname($new_server_file), dirname($new_server_thumb)] as $dir) {
+				if (!is_dir($dir)) {
+					if (Auth::isManager($record->getTree()) && File::mkdir($dir)) {
+						FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($dir)), 'info');
+					} else {
+						FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename($dir)), 'danger');
+
+						header('Location: ' . $record->getRawUrl());
+					}
+				}
+			}
+
+			if (!file_exists($old_server_file)) {
+				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($OLD_FILE)), 'warning');
+			}
+			if (!file_exists($new_server_file) || sha1_file($old_server_file) === sha1_file($new_server_file)) {
+				try {
+					rename($old_server_file, $new_server_file);
+					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
+				} catch (\ErrorException $ex) {
+					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
+				}
+			}
+			if (!file_exists($new_server_file)) {
+				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($FILE)), 'warning');
+			}
+
+			if (!file_exists($old_server_thumb)) {
+				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($OLD_FILE)), 'warning');
+			}
+			if (!file_exists($new_server_thumb) || sha1_file($old_server_thumb) === sha1_file($new_server_thumb)) {
+				try {
+					rename($old_server_thumb, $new_server_thumb);
+					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
+				} catch (\ErrorException $ex) {
+					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
+				}
+			}
+			if (!file_exists($new_server_thumb)) {
+				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($FILE)), 'warning');
+			}
+		}
+
+		$record->updateFact($fact_id, $gedcom, !$keep_chan);
+
+		if ($OLD_FILE !== $FILE) {
+			// Accept the change, to avoid breaking links, etc.
+			FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
+		}
+
+		header('Location: ' . $record->getRawUrl());
 		break;
 
 	////////////////////////////////////////////////////////////////////////////////
