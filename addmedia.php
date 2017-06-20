@@ -33,7 +33,7 @@ $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 
 $pid         = Filter::get('pid', WT_REGEX_XREF, Filter::post('pid', WT_REGEX_XREF)); // edit this media object
 $linktoid    = Filter::get('linktoid', WT_REGEX_XREF, Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record
-$action      = Filter::get('action', null, Filter::post('action'));
+$action      = Filter::post('action');
 $filename    = Filter::get('filename', null, Filter::post('filename'));
 $text        = Filter::postArray('text');
 $tag         = Filter::postArray('tag', WT_REGEX_TAG);
@@ -51,7 +51,7 @@ $media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
 }
-if ($action == 'update' || $action == 'create') {
+if ($action == 'create') {
 	if ($linktoid) {
 		$disp = GedcomRecord::getInstance($linktoid, $WT_TREE)->canShow();
 	}
@@ -65,8 +65,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 	return;
 }
 
-// There is a lot of common code in the create and update cases…
-// …and also in the admin_media_upload.php script
+// There is a lot of common code in the admin_media_upload.php script
 
 switch ($action) {
 case 'create': // Save the information from the “showcreateform” action
@@ -225,178 +224,9 @@ case 'create': // Save the information from the “showcreateform” action
 
 	return;
 
-case 'update': // Save the information from the “editmedia” action
-	$controller->setPageTitle(I18N::translate('Edit the media object'));
-
-	// Validate the media folder
-	$folderName = str_replace('\\', '/', $folder);
-	$folderName = trim($folderName, '/');
-	if ($folderName == '.') {
-		$folderName = '';
-	}
-	if ($folderName) {
-		$folderName .= '/';
-		// Not allowed to use “../”
-		if (strpos('/' . $folderName, '/../') !== false) {
-			FlashMessages::addMessage('Folder names are not allowed to include “../”');
-			break;
-		}
-	}
-
-	// Make sure the media folder exists
-	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-		if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)));
-		} else {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
-			break;
-		}
-	}
-
-	// Managers can create new media paths (subfolders). Users must use existing folders.
-	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-		if (Auth::isManager($WT_TREE)) {
-			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
-			} else {
-				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)), 'danger');
-				break;
-			}
-		} else {
-			// Regular users should not have seen this option - so no need for an error message.
-			break;
-		}
-	}
-
-	// The media folder exists. Now create a thumbnail folder to match it.
-	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-		if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)), 'danger');
-			break;
-		}
-	}
-
-	// Validate the media path and filename
-	if (preg_match('/^https?:\/\//i', $filename, $match)) {
-		// External media needs no further validation
-		$fileName   = $filename;
-		$folderName = '';
-		unset($_FILES['mediafile'], $_FILES['thumbnail']);
-	} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
-		// Local media files cannot contain certain special characters
-		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-		break;
-	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
-		// Do not allow obvious script files.
-		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-		break;
-	} elseif (!$filename) {
-		FlashMessages::addMessage(I18N::translate('No media file was provided.'));
-		break;
-	} else {
-		$fileName = $filename;
-	}
-
-	$oldFilename = $media->getFilename();
-	$newFilename = $folderName . $fileName;
-
-	// Cannot rename local to external or vice-versa
-	if (Functions::isFileExternal($oldFilename) != Functions::isFileExternal($filename)) {
-		FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
-		break;
-	}
-
-	$messages  = false;
-	$move_file = false;
-
-	// Move files on disk (if we can) to reflect the change to the GEDCOM data
-	if (!$media->isExternal()) {
-		$oldServerFile  = $media->getServerFilename('main');
-		$oldServerThumb = $media->getServerFilename('thumb');
-
-		$newmedia       = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
-		$newServerFile  = $newmedia->getServerFilename('main');
-		$newServerThumb = $newmedia->getServerFilename('thumb');
-
-		// We could be either renaming an existing file, or updating a record (with no valid file) to point to a new file
-		if ($oldServerFile !== $newServerFile) {
-			//-- check if the file is used in more than one gedcom
-			//-- do not allow it to be moved or renamed if it is
-			if (!$media->isExternal() && FunctionsDb::isMediaUsedInOtherTree($media->getFilename(), $WT_TREE->getTreeId())) {
-				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed.'));
-				break;
-			}
-
-			$move_file = true;
-			if (!file_exists($newServerFile) || md5_file($oldServerFile) === md5_file($newServerFile)) {
-				try {
-					rename($oldServerFile, $newServerFile);
-					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
-				} catch (\ErrorException $ex) {
-					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
-				}
-				$messages = true;
-			}
-			if (!file_exists($newServerFile)) {
-				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($newFilename)));
-				$messages = true;
-			}
-		}
-		if ($oldServerThumb != $newServerThumb) {
-			$move_file = true;
-			if (!file_exists($newServerThumb) || md5_file($oldServerFile) == md5_file($newServerThumb)) {
-				try {
-					rename($oldServerThumb, $newServerThumb);
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
-				} catch (\ErrorException $ex) {
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
-				}
-				$messages = true;
-			}
-			if (!file_exists($newServerThumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($newFilename)));
-				$messages = true;
-			}
-		}
-	}
-
-	// Insert the 1 FILE xxx record into the arrays used by function FunctionsEdit::handle_updatesges()
-	$glevels = array_merge(['1'], $glevels);
-	$tag     = array_merge(['FILE'], $tag);
-	$islink  = array_merge([0], $islink);
-	$text    = array_merge([$newFilename], $text);
-
-	$record = GedcomRecord::getInstance($pid, $WT_TREE);
-	$newrec = '0 @' . $pid . "@ OBJE\n";
-	$newrec = FunctionsEdit::handleUpdates($newrec);
-	$record->updateRecord($newrec, $update_CHAN);
-
-	if ($move_file) {
-		// We've moved a file. Therefore we must approve the change, as rejecting
-		// the change will create broken references.
-		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
-	}
-
-	if ($pid && $linktoid) {
-		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
-		$record->createFact('1 OBJE @' . $pid . '@', true);
-		Log::addEditLog('Media ID ' . $pid . ' successfully added to ' . $linktoid);
-	}
-	$controller->pageHeader();
-	if ($messages) {
-		echo '<button onclick="closePopupAndReloadParent();">', I18N::translate('close'), '</button>';
-	} else {
-		$controller->addInlineJavascript('closePopupAndReloadParent();');
-	}
-
-	return;
 case 'showmediaform':
 	$controller->setPageTitle(I18N::translate('Create a media object'));
 	$action = 'create';
-	break;
-case 'editmedia':
-	$controller->setPageTitle(I18N::translate('Edit the media object'));
-	$action = 'update';
 	break;
 default:
 	throw new \Exception('Bad $action (' . $action . ') in addmedia.php');
@@ -406,7 +236,7 @@ $controller->pageHeader();
 
 echo '<div id="addmedia-page">'; //container for media edit pop-up
 echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">';
-echo '<input type="hidden" name="action" value="', $action, '">';
+echo '<input type="hidden" name="action" value="create">';
 echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 echo '<input type="hidden" name="pid" value="', $pid, '">';
 if ($linktoid) {
@@ -416,7 +246,7 @@ echo '<table class="facts_table">';
 echo '<tr><td class="topbottombar" colspan="2">';
 echo $controller->getPageTitle(), FunctionsPrint::helpLink('OBJE');
 echo '</td></tr>';
-if (!$linktoid && $action == 'create') {
+if (!$linktoid) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Enter an individual, family, or source ID');
 	echo '</td><td class="optionbox wrap"><input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" size="6" value="">';
@@ -501,7 +331,7 @@ if (!$isExternal) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Folder name on server'), '</td><td class="optionbox wrap">';
 	//-- don’t let regular users change the location of media items
-	if ($action !== 'update' || Auth::isManager($WT_TREE)) {
+	if (Auth::isManager($WT_TREE)) {
 		$mediaFolders = QueryMedia::folderList();
 		echo '<select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option ';
@@ -682,17 +512,6 @@ if (!empty($gedrec)) {
 		FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
 		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
-}
-if (Auth::isAdmin() && $action === 'update') {
-	echo '<tr><td class="descriptionbox wrap width25">';
-	echo I18N::translate('Last change'), '</td><td class="optionbox wrap">';
-	if ($NO_UPDATE_CHAN) {
-		echo '<input type="checkbox" checked name="preserve_last_changed">';
-	} else {
-		echo '<input type="checkbox" name="preserve_last_changed">';
-	}
-	echo I18N::translate('Keep the existing “last change” information'), '<br>';
-	echo '</td></tr>';
 }
 echo '</table>';
 FunctionsEdit::printAddLayer('SOUR', 1);
