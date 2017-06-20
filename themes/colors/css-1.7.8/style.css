@@ -2223,7 +2223,7 @@ a:hover .nameZoom {
 }
 
 .loading-image {
-	background: transparent url(images/loading.gif) 50% 50% no-repeat;
+	background: transparent url(images/loading-32x32.gif) 50% 50% no-repeat;
 	height: 50px;
 	margin: 50px;
 }
