@@ -142,7 +142,6 @@ case 'create-media-object':
 		break;
 	}
 
-
 	$gedcom = "0 @new@ OBJE\n1 FILE " . $folder . $file . "\n2 FORM " .  $format;
 	if ($type !== '') {
 		$gedcom .= "\n3 TYPE " . $type;

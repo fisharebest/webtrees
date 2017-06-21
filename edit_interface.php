@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 
 use ErrorException;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -558,7 +559,7 @@ switch ($action) {
 
 		?>
 		<h2><?= $controller->getPageTitle() ?></h2>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 			<input type="hidden" name="action" value="media-save">
 			<input type="hidden" name="xref" value="<?= $xref ?>">
@@ -568,6 +569,15 @@ switch ($action) {
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
 					<?= $record->displayImage() ?>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-3" for="file">
+					<?= I18N::translate('Replace this file') ?>
+				</label>
+				<div class="col-sm-9">
+					<input type="file" class="form-control" id="file" name="file">
 				</div>
 			</div>
 
@@ -582,7 +592,7 @@ switch ($action) {
 
 			<div class="form-group row">
 				<label class="col-sm-3 col-form-label" for="FILE">
-					<?= I18N::translate('Filename') ?>
+					<?= I18N::translate('Filename on server') ?>
 				</label>
 				<div class="col-sm-9">
 					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>" required>
@@ -675,6 +685,21 @@ switch ($action) {
 		$old_server_file  = $record->getServerFilename('main');
 		$old_server_thumb = $record->getServerFilename('thumb');
 		$old_external     = $record->isExternal();
+
+		// Replacement file?
+		if (!empty($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+			if (move_uploaded_file($_FILES['file']['tmp_name'], $old_server_file)) {
+				File::delete($old_server_thumb);
+				$old_external = false;
+			} else {
+				FlashMessages::addMessage(
+					I18N::translate('There was an error uploading your file.') .
+					'<br>' .
+					Functions::fileUploadErrorText($_FILES['file']['error'])
+				);
+				break;
+			}
+		}
 
 		$tmp_record = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $FILE, null, $record->getTree());
 
