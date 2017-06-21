@@ -111,9 +111,7 @@ case 'create-media-object':
 	// The filename
 	$file = $_FILES['file']['name'];
 	$format = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-	if ($format === 'jpg') {
-		$format = 'jpeg';
-	}
+	$format = strtr($format, ['jpg' => 'jpeg']);
 
 	// The folder
 	$folder = trim($folder, '/');

@@ -16,6 +16,7 @@
 
 namespace Fisharebest\Webtrees;
 
+use ErrorException;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -541,6 +542,20 @@ switch ($action) {
 			$TYPE = $match[1];
 		}
 
+		$auto_file = '';
+		$old_file  = $record->getServerFilename('main');
+		if (file_exists($old_file)) {
+			$old_base   = strtolower(pathinfo($old_file, PATHINFO_BASENAME));
+			$old_format = strtolower(pathinfo($old_file, PATHINFO_EXTENSION));
+			$old_format = strtr($old_format, ['jpg' => 'jpeg']);
+
+			$sha1 = sha1_file($old_file);
+			if ($old_base !== $sha1 . '.' . $old_format) {
+				$auto_file = $sha1 . '.' . $old_format;
+			}
+		}
+
+
 		?>
 		<h2><?= $controller->getPageTitle() ?></h2>
 		<form method="post">
@@ -561,18 +576,22 @@ switch ($action) {
 					<?= I18N::translate('Title') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Filter::escapeHtml($TITL) ?>"
-					       required>
+					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Filter::escapeHtml($TITL) ?>" required>
 				</div>
-			</div>
+ 			</div>
 
 			<div class="form-group row">
 				<label class="col-sm-3 col-form-label" for="FILE">
 					<?= I18N::translate('Filename') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>"
-					       required>
+					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>" required>
+
+					<?php if ($auto_file !== ''): ?>
+					<a href="#" class="btn btn-link" title="<?= Filter::escapeHtml($auto_file) ?>" onclick="document.querySelector('#FILE').value='<?= Filter::escapeHtml($auto_file) ?>'; document.querySelector('#FILE').focus(); return false;">
+						<?= I18N::translate('Create a unique filename') ?>
+					</a>
+					<?php endif ?>
 				</div>
 			</div>
 
@@ -671,7 +690,7 @@ switch ($action) {
 			break;
 		}
 
-		if (!$record->isExternal() && in_array('..', explode('/', $FILE))) {
+		if (!$record->isExternal() && strpos($FILE, '../') !== false) {
 			FlashMessages::addMessage('Folder names are not allowed to include “../”', 'danger');
 
 			header('Location: ' . $record->getRawUrl());
@@ -707,7 +726,7 @@ switch ($action) {
 				try {
 					rename($old_server_file, $new_server_file);
 					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
-				} catch (\ErrorException $ex) {
+				} catch (ErrorException $ex) {
 					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
 				}
 			}
@@ -715,19 +734,11 @@ switch ($action) {
 				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($FILE)), 'warning');
 			}
 
-			if (!file_exists($old_server_thumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($OLD_FILE)), 'warning');
-			}
 			if (!file_exists($new_server_thumb) || sha1_file($old_server_thumb) === sha1_file($new_server_thumb)) {
 				try {
 					rename($old_server_thumb, $new_server_thumb);
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
-				} catch (\ErrorException $ex) {
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
+				} catch (ErrorException $ex) {
 				}
-			}
-			if (!file_exists($new_server_thumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($FILE)), 'warning');
 			}
 		}
 
