@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-11 17:38+0000\n"
+"PO-Revision-Date: 2017-06-21 07:20+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/hu/>\n"
 "Language: hu\n"
@@ -15363,7 +15363,7 @@ msgstr "Jelszó használata"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr "A sendmail használata üzenetküldéshez"
+msgstr "Üzenet küldése sendmail használatával"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
