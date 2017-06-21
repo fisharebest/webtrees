@@ -1210,28 +1210,30 @@ switch ($action) {
 			<input type="hidden" name="action" value="linkfamaction">
 			<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 			<?= Filter::getCsrf() ?>
-			<table class="facts_table">
-				<tr>
-					<td class="facts_label">
-						<?= I18N::translate('Family') ?>
-					</td>
-					<td class="facts_value">
-						<input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">
-					</td>
-				</tr>
-				<tr>
-					<td class="facts_label">
-						<?= I18N::translate('Pedigree') ?>
-					</td>
-					<td class="facts_value">
-						<?= Bootstrap4::select(GedcomCodePedi::getValues($person), '', ['id' => 'PEDI', 'name' => 'PEDI']) ?>
-						<p class="small text-muted">
-							<?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
-						</p>
-					</td>
-				</tr>
-				<?= keep_chan($person) ?>
-			</table>
+
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label" for="famid">
+					<?= I18N::translate('Family') ?>
+				</label>
+				<div class="col-sm-9">
+					<?= FunctionsEdit::formControlFamily(null, $attributes = ['id' => 'famid', 'name' => 'famid']) ?>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label" for="PEDI">
+					<?= I18N::translate('Pedigree') ?>
+				</label>
+				<div class="col-sm-9">
+					<?= Bootstrap4::select(GedcomCodePedi::getValues($person), '', ['id' => 'PEDI', 'name' => 'PEDI']) ?>
+					<p class="small text-muted">
+						<?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
+					</p>
+				</div>
+			</div>
+
+			<?= keep_chan($person) ?>
+
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
 					<button class="btn btn-primary" type="submit">
