@@ -17,32 +17,32 @@
 namespace Fisharebest\Webtrees\Census;
 
 /**
- * Test harness for the class CensusOfCzechRepublic1880
+ * Test harness for the class CensusOfCzechRepublic1900
  */
-class CensusOfCzechRepublic1880Test extends \PHPUnit_Framework_TestCase {
+class CensusOfCzechRepublic1900Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900
 	 */
 	public function testPlaceAndDate() {
-		$census = new CensusOfCzechRepublic1880;
+		$census = new CensusOfCzechRepublic1900;
 
 		$this->assertSame('Česko', $census->censusPlace());
-		$this->assertSame('31 DEC 1880', $census->censusDate());
+		$this->assertSame('31 DEC 1900', $census->censusDate());
 	}
 
 	/**
 	 * Test the census columns
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
-		$census  = new CensusOfCzechRepublic1880;
+		$census  = new CensusOfCzechRepublic1900;
 		$columns = $census->columns();
 
-		$this->assertCount(13, $columns);
+		$this->assertCount(14, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMZ', $columns[2]);
@@ -56,6 +56,7 @@ class CensusOfCzechRepublic1880Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[11]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[12]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[13]);
 
 		$this->assertSame('Jméno', $columns[0]->abbreviation());
 		$this->assertSame('Vztah', $columns[1]->abbreviation());
@@ -70,6 +71,7 @@ class CensusOfCzechRepublic1880Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Postavení', $columns[10]->abbreviation());
 		$this->assertSame('Gramotnost', $columns[11]->abbreviation());
 		$this->assertSame('Druh pobytu', $columns[12]->abbreviation());
+		$this->assertSame('Od roku', $columns[13]->abbreviation());
 
 		$this->assertSame('', $columns[0]->title());
 		$this->assertSame('', $columns[1]->title());
@@ -84,5 +86,6 @@ class CensusOfCzechRepublic1880Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Postavení v zaměstnání', $columns[10]->title());
 		$this->assertSame('Znalost čtení a psaní', $columns[11]->title());
 		$this->assertSame('Pobyt dočasný nebo trvalý', $columns[12]->title());
+		$this->assertSame('Počátek pobytu', $columns[13]->title());
 	}
 }

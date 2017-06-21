@@ -17,29 +17,29 @@
 namespace Fisharebest\Webtrees\Census;
 
 /**
- * Test harness for the class CensusOfCzechRepublic1880
+ * Test harness for the class CensusOfCzechRepublic1890
  */
-class CensusOfCzechRepublic1880Test extends \PHPUnit_Framework_TestCase {
+class CensusOfCzechRepublic1890Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890
 	 */
 	public function testPlaceAndDate() {
-		$census = new CensusOfCzechRepublic1880;
+		$census = new CensusOfCzechRepublic1890;
 
 		$this->assertSame('Česko', $census->censusPlace());
-		$this->assertSame('31 DEC 1880', $census->censusDate());
+		$this->assertSame('31 DEC 1890', $census->censusDate());
 	}
 
 	/**
 	 * Test the census columns
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
-		$census  = new CensusOfCzechRepublic1880;
+		$census  = new CensusOfCzechRepublic1890;
 		$columns = $census->columns();
 
 		$this->assertCount(13, $columns);
