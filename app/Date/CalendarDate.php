@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
  * midday.
  */
 class CalendarDate {
-	/** @var int[] Convert GEDCOM month names to month numbers  */
+	/** @var int[] Convert GEDCOM month names to month numbers */
 	public static $MONTH_ABBREV = ['' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12];
 
 	/** @var string[] Convert numbers to/from roman numerals */
@@ -41,13 +41,13 @@ class CalendarDate {
 	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
-	/** @var int Year number  */
+	/** @var int Year number */
 	public $y;
 
-	/** @var int Month number  */
+	/** @var int Month number */
 	public $m;
 
-	/** @var int Day number  */
+	/** @var int Day number */
 	public $d;
 
 	/** @var int Earliest Julian day number (start of month/year for imprecise dates) */
@@ -95,13 +95,24 @@ class CalendarDate {
 			return;
 		}
 
+		$this->minJD = $date->minJD;
+		$this->maxJD = $date->maxJD;
+
 		// Construct from an equivalent xxxxDate object
 		if (get_class($this) == get_class($date)) {
-			$this->y     = $date->y;
-			$this->m     = $date->m;
-			$this->d     = $date->d;
-			$this->minJD = $date->minJD;
-			$this->maxJD = $date->maxJD;
+			$this->y = $date->y;
+			$this->m = $date->m;
+			$this->d = $date->d;
+
+			return;
+		}
+
+		// Not all dates can be converted
+		if (!$this->inValidRange()) {
+			$this->jd = 0;
+			$this->y  = 0;
+			$this->m  = 0;
+			$this->d  = 0;
 
 			return;
 		}
@@ -338,13 +349,13 @@ class CalendarDate {
 
 		if ($translated_day_names === null) {
 			$translated_day_names = [
-				0  => I18N::translate('Monday'),
-				1  => I18N::translate('Tuesday'),
-				2  => I18N::translate('Wednesday'),
-				3  => I18N::translate('Thursday'),
-				4  => I18N::translate('Friday'),
-				5  => I18N::translate('Saturday'),
-				6  => I18N::translate('Sunday'),
+				0 => I18N::translate('Monday'),
+				1 => I18N::translate('Tuesday'),
+				2 => I18N::translate('Wednesday'),
+				3 => I18N::translate('Thursday'),
+				4 => I18N::translate('Friday'),
+				5 => I18N::translate('Saturday'),
+				6 => I18N::translate('Sunday'),
 			];
 		}
 
@@ -424,7 +435,7 @@ class CalendarDate {
 	 * @todo JewishDate needs to redefine this to cope with leap months
 	 *
 	 * @param bool $full             true=gedcom style, false=just years
-	 * @param int $jd                date for calculation
+	 * @param int  $jd               date for calculation
 	 * @param bool $warn_on_negative show a warning triangle for negative ages
 	 *
 	 * @return string
@@ -780,7 +791,6 @@ class CalendarDate {
 
 	/**
 	 * Generate the %y format for a date.
-	 *
 	 * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
 	 * which have a 3-digit form of 4-digit years.
 	 *
