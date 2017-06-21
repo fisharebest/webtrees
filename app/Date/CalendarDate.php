@@ -109,10 +109,9 @@ class CalendarDate {
 
 		// Not all dates can be converted
 		if (!$this->inValidRange()) {
-			$this->jd = 0;
-			$this->y  = 0;
-			$this->m  = 0;
-			$this->d  = 0;
+			$this->y = 0;
+			$this->m = 0;
+			$this->d = 0;
 
 			return;
 		}
