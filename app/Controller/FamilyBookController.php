@@ -117,7 +117,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdbot">',
-							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h - 1, '"></td>';
+							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h -4, '"></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
 							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2);
@@ -126,7 +126,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdtop">',
-							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '"></td>';
+							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h -2, '"></td>';
 						} else {
 							echo '<td class="tdbot"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
 							'<img class="spacer"  width="3" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
@@ -251,7 +251,7 @@ class FamilyBookController extends ChartController {
 					$lh = $savlh;
 				}
 			}
-			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh - 1, '"></td>',
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh -4, '"></td>',
 			'<td>',
 			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
@@ -276,7 +276,7 @@ class FamilyBookController extends ChartController {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh + 1, '"></td>',
+			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh-2, '"></td>',
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
