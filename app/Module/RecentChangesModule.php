@@ -185,7 +185,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$records = [];
 		foreach ($xrefs as $xref) {
 			$record = GedcomRecord::getInstance($xref, $tree);
-			if ($record->canShow()) {
+			if ($record && $record->canShow()) {
 				$records[] = $record;
 			}
 		}
