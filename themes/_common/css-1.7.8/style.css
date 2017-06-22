@@ -177,6 +177,10 @@
 	list-style: none outside none;
 }
 
+.wt-ancestors-chart .person_box_template {
+	line-height: 1.0;
+}
+
 /*
  * Descendants chart
  *
