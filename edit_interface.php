@@ -16,7 +16,9 @@
 
 namespace Fisharebest\Webtrees;
 
+use ErrorException;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -541,9 +543,23 @@ switch ($action) {
 			$TYPE = $match[1];
 		}
 
+		$auto_file = '';
+		$old_file  = $record->getServerFilename('main');
+		if (file_exists($old_file)) {
+			$old_base   = strtolower(pathinfo($old_file, PATHINFO_BASENAME));
+			$old_format = strtolower(pathinfo($old_file, PATHINFO_EXTENSION));
+			$old_format = strtr($old_format, ['jpg' => 'jpeg']);
+
+			$sha1 = sha1_file($old_file);
+			if ($old_base !== $sha1 . '.' . $old_format) {
+				$auto_file = $sha1 . '.' . $old_format;
+			}
+		}
+
+
 		?>
 		<h2><?= $controller->getPageTitle() ?></h2>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 			<input type="hidden" name="action" value="media-save">
 			<input type="hidden" name="xref" value="<?= $xref ?>">
@@ -557,22 +573,44 @@ switch ($action) {
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-3 col-form-label" for="TITL">
-					<?= I18N::translate('Title') ?>
+				<label class="col-form-label col-sm-3" for="file">
+					<?= I18N::translate('Media file to upload') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Filter::escapeHtml($TITL) ?>"
-					       required>
+					<input type="file" class="form-control" id="file" name="file">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-3 col-form-label" for="FILE">
-					<?= I18N::translate('Filename') ?>
+				<label class="col-form-label col-sm-3" for="thumbnail">
+					<?= I18N::translate('Thumbnail to upload') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>"
-					       required>
+					<input type="file" class="form-control" id="thumbnail" name="thumbnail">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label" for="TITL">
+					<?= I18N::translate('Title') ?>
+				</label>
+				<div class="col-sm-9">
+					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Filter::escapeHtml($TITL) ?>" required>
+				</div>
+ 			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label" for="FILE">
+					<?= I18N::translate('Filename on server') ?>
+				</label>
+				<div class="col-sm-9">
+					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>" required>
+
+					<?php if ($auto_file !== ''): ?>
+					<a href="#" class="btn btn-link" title="<?= Filter::escapeHtml($auto_file) ?>" onclick="document.querySelector('#FILE').value='<?= Filter::escapeHtml($auto_file) ?>'; document.querySelector('#FILE').focus(); return false;">
+						<?= I18N::translate('Create a unique filename') ?>
+					</a>
+					<?php endif ?>
 				</div>
 			</div>
 
@@ -657,6 +695,31 @@ switch ($action) {
 		$old_server_thumb = $record->getServerFilename('thumb');
 		$old_external     = $record->isExternal();
 
+		// Replacement files?
+		if (!empty($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+			if (move_uploaded_file($_FILES['file']['tmp_name'], $old_server_file)) {
+				File::delete($old_server_thumb);
+				$old_external = false;
+			} else {
+				FlashMessages::addMessage(
+					I18N::translate('There was an error uploading your file.') .
+					'<br>' .
+					Functions::fileUploadErrorText($_FILES['file']['error'])
+				);
+			}
+		}
+
+		// Replacement files?
+		if (!empty($_FILES['thumbnail']) && is_uploaded_file($_FILES['thumbnail']['tmp_name'])) {
+			if (!move_uploaded_file($_FILES['thumbnail']['tmp_name'], $old_server_thumb)) {
+				FlashMessages::addMessage(
+					I18N::translate('There was an error uploading your file.') .
+					'<br>' .
+					Functions::fileUploadErrorText($_FILES['thumbnail']['error'])
+				);
+			}
+		}
+
 		$tmp_record = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $FILE, null, $record->getTree());
 
 		$new_server_file  = $tmp_record->getServerFilename('main');
@@ -671,7 +734,7 @@ switch ($action) {
 			break;
 		}
 
-		if (!$record->isExternal() && in_array('..', explode('/', $FILE))) {
+		if (!$record->isExternal() && strpos($FILE, '../') !== false) {
 			FlashMessages::addMessage('Folder names are not allowed to include “../”', 'danger');
 
 			header('Location: ' . $record->getRawUrl());
@@ -707,7 +770,7 @@ switch ($action) {
 				try {
 					rename($old_server_file, $new_server_file);
 					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
-				} catch (\ErrorException $ex) {
+				} catch (ErrorException $ex) {
 					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
 				}
 			}
@@ -715,19 +778,11 @@ switch ($action) {
 				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($FILE)), 'warning');
 			}
 
-			if (!file_exists($old_server_thumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($OLD_FILE)), 'warning');
-			}
 			if (!file_exists($new_server_thumb) || sha1_file($old_server_thumb) === sha1_file($new_server_thumb)) {
 				try {
 					rename($old_server_thumb, $new_server_thumb);
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
-				} catch (\ErrorException $ex) {
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
+				} catch (ErrorException $ex) {
 				}
-			}
-			if (!file_exists($new_server_thumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($FILE)), 'warning');
 			}
 		}
 
@@ -1210,28 +1265,30 @@ switch ($action) {
 			<input type="hidden" name="action" value="linkfamaction">
 			<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 			<?= Filter::getCsrf() ?>
-			<table class="facts_table">
-				<tr>
-					<td class="facts_label">
-						<?= I18N::translate('Family') ?>
-					</td>
-					<td class="facts_value">
-						<input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">
-					</td>
-				</tr>
-				<tr>
-					<td class="facts_label">
-						<?= I18N::translate('Pedigree') ?>
-					</td>
-					<td class="facts_value">
-						<?= Bootstrap4::select(GedcomCodePedi::getValues($person), '', ['id' => 'PEDI', 'name' => 'PEDI']) ?>
-						<p class="small text-muted">
-							<?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
-						</p>
-					</td>
-				</tr>
-				<?= keep_chan($person) ?>
-			</table>
+
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label" for="famid">
+					<?= I18N::translate('Family') ?>
+				</label>
+				<div class="col-sm-9">
+					<?= FunctionsEdit::formControlFamily(null, $attributes = ['id' => 'famid', 'name' => 'famid']) ?>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label" for="PEDI">
+					<?= I18N::translate('Pedigree') ?>
+				</label>
+				<div class="col-sm-9">
+					<?= Bootstrap4::select(GedcomCodePedi::getValues($person), '', ['id' => 'PEDI', 'name' => 'PEDI']) ?>
+					<p class="small text-muted">
+						<?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
+					</p>
+				</div>
+			</div>
+
+			<?= keep_chan($person) ?>
+
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
 					<button class="btn btn-primary" type="submit">

@@ -17,41 +17,41 @@
 namespace Fisharebest\Webtrees\Census;
 
 /**
- * Test harness for the class CensusOfCzechRepublic1921
+ * Test harness for the class CensusOfCzechRepublic1910
  */
-class CensusOfCzechRepublic1921Test extends \PHPUnit_Framework_TestCase {
+class CensusOfCzechRepublic1910Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910
 	 */
 	public function testPlaceAndDate() {
-		$census = new CensusOfCzechRepublic1921;
+		$census = new CensusOfCzechRepublic1910;
 
 		$this->assertSame('Česko', $census->censusPlace());
-		$this->assertSame('15 FEB 1921', $census->censusDate());
+		$this->assertSame('31 DEC 1910', $census->censusDate());
 	}
 
 	/**
 	 * Test the census columns
 	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
-		$census  = new CensusOfCzechRepublic1921;
+		$census  = new CensusOfCzechRepublic1910;
 		$columns = $census->columns();
 
 		$this->assertCount(14, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMZ', $columns[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYear', $columns[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYear', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnReligion', $columns[6]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnReligion', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[8]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[10]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[11]);
@@ -61,31 +61,31 @@ class CensusOfCzechRepublic1921Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Jméno', $columns[0]->abbreviation());
 		$this->assertSame('Vztah', $columns[1]->abbreviation());
 		$this->assertSame('Pohlaví', $columns[2]->abbreviation());
-		$this->assertSame('Stav', $columns[3]->abbreviation());
-		$this->assertSame('Narození', $columns[4]->abbreviation());
-		$this->assertSame('Místo', $columns[5]->abbreviation());
-		$this->assertSame('Přísluší', $columns[6]->abbreviation());
-		$this->assertSame('Národnost', $columns[7]->abbreviation());
-		$this->assertSame('Vyznání', $columns[8]->abbreviation());
+		$this->assertSame('Narození', $columns[3]->abbreviation());
+		$this->assertSame('Rodiště', $columns[4]->abbreviation());
+		$this->assertSame('Přísluší', $columns[5]->abbreviation());
+		$this->assertSame('Vyznání', $columns[6]->abbreviation());
+		$this->assertSame('Stav', $columns[7]->abbreviation());
+		$this->assertSame('Jazyk', $columns[8]->abbreviation());
 		$this->assertSame('Gramotnost', $columns[9]->abbreviation());
 		$this->assertSame('Povolání', $columns[10]->abbreviation());
 		$this->assertSame('Postavení', $columns[11]->abbreviation());
-		$this->assertSame('Podnik', $columns[12]->abbreviation());
-		$this->assertSame('', $columns[13]->abbreviation());
+		$this->assertSame('Druh pobytu', $columns[12]->abbreviation());
+		$this->assertSame('Od roku', $columns[13]->abbreviation());
 
 		$this->assertSame('', $columns[0]->title());
 		$this->assertSame('', $columns[1]->title());
 		$this->assertSame('', $columns[2]->title());
-		$this->assertSame('Rodinný stav', $columns[3]->title());
-		$this->assertSame('Datum narození', $columns[4]->title());
-		$this->assertSame('Místo narození', $columns[5]->title());
-		$this->assertSame('Domovské právo', $columns[6]->title());
-		$this->assertSame('Mateřský jazyk', $columns[7]->title());
-		$this->assertSame('', $columns[8]->title());
+		$this->assertSame('Datum narození', $columns[3]->title());
+		$this->assertSame('Místo narození', $columns[4]->title());
+		$this->assertSame('Domovské právo', $columns[5]->title());
+		$this->assertSame('Vyznání náoženské', $columns[6]->title());
+		$this->assertSame('Rodinný stav', $columns[7]->title());
+		$this->assertSame('Řeč obcovací', $columns[8]->title());
 		$this->assertSame('Znalost čtení a psaní', $columns[9]->title());
-		$this->assertSame('', $columns[10]->title());
+		$this->assertSame('Obor povolání', $columns[10]->title());
 		$this->assertSame('Postavení v zaměstnání', $columns[11]->title());
-		$this->assertSame('', $columns[12]->title());
-		$this->assertSame('', $columns[13]->title());
+		$this->assertSame('Pobyt dočasný nebo trvalý', $columns[12]->title());
+		$this->assertSame('Počátek pobytu', $columns[13]->title());
 	}
 }

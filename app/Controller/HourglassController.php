@@ -109,7 +109,7 @@ class HourglassController extends ChartController {
 			echo '</td><td></tr></table>';
 		}
 		foreach ($person->getChildFamilies() as $family) {
-			echo '<table class="hourglassChart">';
+			echo '<table cellspacing="0" cellpadding="0" border="0"  class="hourglassChart">';
 			echo '<tr>';
 			echo '<td style="vertical-align:bottom"><img class="line3 pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
 			echo '<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
@@ -206,7 +206,7 @@ class HourglassController extends ChartController {
 			}
 			$lastGenSecondFam = true;
 		}
-		echo "<table id='table_$pid' class='hourglassChart' style='float:$tablealign'>";
+		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" id='table_$pid' class='hourglassChart' style='float:$tablealign'>";
 		echo '<tr>';
 		echo "<td style='text-align:$tablealign'>";
 		$numkids  = 0;
@@ -224,7 +224,7 @@ class HourglassController extends ChartController {
 
 			$ct = count($children);
 			if ($ct > 0) {
-				echo "<table style='position: relative; top: auto; float: $tablealign;'>";
+				echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style='position: relative; top: auto; float: $tablealign;'>";
 				for ($i = 0; $i < $ct; $i++) {
 					$person2 = $children[$i];
 					$chil    = $person2->getXref();
@@ -278,7 +278,7 @@ class HourglassController extends ChartController {
 			}
 		}
 
-		echo '<table id="table2_' . $pid . '"><tr><td>';
+		echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td>';
 		FunctionsPrint::printPedigreePerson($person);
 		echo '</td><td><img class="line2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
@@ -312,7 +312,7 @@ class HourglassController extends ChartController {
 					echo '<div class="center" id="childarrow" style="position:absolute; width:', $this->getBoxDimensions()->width, 'px;">';
 					echo '<a href="#" class="icon-darrow"></a>';
 					echo '<div id="childbox">';
-					echo '<table class="person_box"><tr><td>';
+					echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {
 						echo "<span class='name1'>" . I18N::translate('Family') . '</span>';
@@ -408,12 +408,12 @@ class HourglassController extends ChartController {
 				function sizeLines() {
 					$('.tvertline').each(function(i,e) {
 						var pid = e.id.split('_').pop();
-						e.style.height = Math.abs($('#table_' + pid)[0].offsetHeight - ($('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5)) + 'px';
+						e.style.height = Math.abs($('#table_' + pid)[0].offsetHeight - ($('#table2_' + pid)[0].offsetTop + {$this->bhalfheight})) + 'px';
 					});
 
 					$('.bvertline').each(function(i,e) {
 						var pid = e.id.split('_').pop();
-						e.style.height = $('#table_' + pid)[0].offsetTop + $('#table2_' + pid)[0].offsetTop + {$this->bhalfheight}+5 + 'px';
+						e.style.height = $('#table_' + pid)[0].offsetTop + $('#table2_' + pid)[0].offsetTop + {$this->bhalfheight} + 'px';
 					});
 
 					$('.pvline').each(function(i,e) {

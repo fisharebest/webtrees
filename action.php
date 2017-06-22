@@ -111,9 +111,7 @@ case 'create-media-object':
 	// The filename
 	$file = $_FILES['file']['name'];
 	$format = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-	if ($format === 'jpg') {
-		$format = 'jpeg';
-	}
+	$format = strtr($format, ['jpg' => 'jpeg']);
 
 	// The folder
 	$folder = trim($folder, '/');
@@ -143,7 +141,6 @@ case 'create-media-object':
 		);
 		break;
 	}
-
 
 	$gedcom = "0 @new@ OBJE\n1 FILE " . $folder . $file . "\n2 FORM " .  $format;
 	if ($type !== '') {

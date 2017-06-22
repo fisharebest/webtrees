@@ -234,6 +234,16 @@ class FunctionsPrintFacts {
 		case 'FILE':
 			if (Auth::isEditor($fact->getParent()->getTree())) {
 				echo '<div class="field">', Filter::escapeHtml($fact->getValue()), '</div>';
+				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists()) {
+					// The file size
+					echo GedcomTag::getLabelValue('__FILE_SIZE__', $fact->getParent()->getFilesize());
+					// The image size
+					$imgsize = $fact->getParent()->getImageAttributes();
+					if (!empty($imgsize['WxH'])) {
+						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+					}
+				}
+
 			}
 			break;
 		case 'RESN':

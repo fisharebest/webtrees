@@ -65,9 +65,6 @@ if ($action === 'ajax') {
 		echo $active_blocks[$module_name]->getBlock($block_id);
 	}
 
-	// Activate components on the page
-	echo '<script>initialize();</script>';
-
 	return;
 }
 

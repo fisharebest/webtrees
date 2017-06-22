@@ -283,7 +283,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				<?= I18N::translate('Templates') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select('template', [$html => I18N::translate('Custom')] + array_flip($templates), '', ['onchange' => 'this.form.html.value=this.options[this.selectedIndex].value; CKEDITOR.instances.html.setData(document.block.html.value);']) ?>
+				<?= Bootstrap4::select([$html => I18N::translate('Custom')] + array_flip($templates), '', ['onchange' => 'this.form.html.value=this.options[this.selectedIndex].value; CKEDITOR.instances.html.setData(document.block.html.value);', 'id' => 'template']) ?>
 				<p class="small text-muted">
 					<?= I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.') ?>
 				</p>

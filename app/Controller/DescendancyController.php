@@ -173,7 +173,7 @@ class DescendancyController extends ChartController {
 
 		// print spouse
 		$spouse = $family->getSpouse($person);
-		echo '<ul id="' . $uid . '">';
+		echo '<ul class="generations" id="' . $uid . '">';
 		echo '<li>';
 		echo '<table><tr><td>';
 		FunctionsPrint::printPedigreePerson($spouse);
