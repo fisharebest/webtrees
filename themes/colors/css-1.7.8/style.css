@@ -3332,6 +3332,10 @@ div.faq_body {
 	margin: 5px 0;
 }
 
+.chart_common li {
+	list-style: outside none none;
+}
+
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;

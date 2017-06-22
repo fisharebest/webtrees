@@ -3369,6 +3369,17 @@ div.faq_body {
 	margin: 5px 0;
 }
 
+.chart_common li {
+	list-style: outside none none;
+}
+
+.generations {
+	background: transparent url("images/vline.png") repeat-y scroll left top;
+	display: block;
+	margin: 0 0 0 15px;
+	padding: 0;
+}
+
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;
