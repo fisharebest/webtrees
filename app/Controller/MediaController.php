@@ -79,22 +79,7 @@ class MediaController extends GedcomRecordController {
 	 * @return Fact[]
 	 */
 	public function getFacts() {
-		$facts = $this->record->getFacts();
-
-		// Add some dummy facts to show additional information
-		if ($this->record->fileExists()) {
-			// get height and width of image, when available
-			$imgsize = $this->record->getImageAttributes();
-			if (!empty($imgsize['WxH'])) {
-				$facts[] = new Fact('1 __IMAGE_SIZE__ ' . $imgsize['WxH'], $this->record, 0);
-			}
-			//Prints the file size
-			$facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
-		}
-
-		Functions::sortFacts($facts);
-
-		return $facts;
+		return $this->record->getFacts(null, true);
 	}
 
 	/**
