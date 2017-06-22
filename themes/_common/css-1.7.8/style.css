@@ -230,7 +230,9 @@
  *
  * wt-chart, wt-pedigree-chart
  */
-
+.wt-pedigree-chart .person_box_template {
+	line-height: 1.0;
+}
 /*
  * Pedigree map
  *
@@ -242,6 +244,11 @@
  *
  * wt-chart, wt-relationships-chart
  */
+#relationship-page .person_box_template {
+	line-height: 1.0;
+}
+.vline-text, .hline-text {	font-size: 0.7rem;
+}
 
 /*
  * Statistics chart
