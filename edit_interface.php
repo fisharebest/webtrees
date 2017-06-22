@@ -574,10 +574,19 @@ switch ($action) {
 
 			<div class="form-group row">
 				<label class="col-form-label col-sm-3" for="file">
-					<?= I18N::translate('Replace this file') ?>
+					<?= I18N::translate('Media file to upload') ?>
 				</label>
 				<div class="col-sm-9">
 					<input type="file" class="form-control" id="file" name="file">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-3" for="thumbnail">
+					<?= I18N::translate('Thumbnail to upload') ?>
+				</label>
+				<div class="col-sm-9">
+					<input type="file" class="form-control" id="thumbnail" name="thumbnail">
 				</div>
 			</div>
 
@@ -686,7 +695,7 @@ switch ($action) {
 		$old_server_thumb = $record->getServerFilename('thumb');
 		$old_external     = $record->isExternal();
 
-		// Replacement file?
+		// Replacement files?
 		if (!empty($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $old_server_file)) {
 				File::delete($old_server_thumb);
@@ -697,7 +706,17 @@ switch ($action) {
 					'<br>' .
 					Functions::fileUploadErrorText($_FILES['file']['error'])
 				);
-				break;
+			}
+		}
+
+		// Replacement files?
+		if (!empty($_FILES['thumbnail']) && is_uploaded_file($_FILES['thumbnail']['tmp_name'])) {
+			if (!move_uploaded_file($_FILES['thumbnail']['tmp_name'], $old_server_thumb)) {
+				FlashMessages::addMessage(
+					I18N::translate('There was an error uploading your file.') .
+					'<br>' .
+					Functions::fileUploadErrorText($_FILES['thumbnail']['error'])
+				);
 			}
 		}
 
