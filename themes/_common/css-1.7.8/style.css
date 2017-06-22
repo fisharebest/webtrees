@@ -210,7 +210,9 @@
  *
  * wt-chart, wt-hourglass-chart
  */
-
+.hourglassChart .person_box_template {
+	line-height: 1.0;
+}
 /*
  * Hourglass chart
  *
