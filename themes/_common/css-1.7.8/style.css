@@ -191,7 +191,7 @@
 	list-style: none outside none;
 }
 
-#descendancy_chart .person_box_template {
+#descendancy_chart .person_box_template, .wt-descendants-chart .person_box_template {
 	line-height: 1.0;
 }
 
