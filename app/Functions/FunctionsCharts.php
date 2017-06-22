@@ -461,13 +461,13 @@ class FunctionsCharts {
 		if ($kids) {
 			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
 			if ($kids > 1) {
-				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight + 9) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
+				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids -1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
 			}
 			$ctkids = count($fchildren);
 			$i      = 1;
 			foreach ($fchildren as $fchil) {
 				if ($i == 1) {
-					echo '<td><img width="10px" height="3px" style="vertical-align:top"';
+					echo '<td><img width="10px" height="3px" style="vertical-align:middle"';
 				} else {
 					echo '<td><img width="10px" height="3px"';
 				}
