@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-06-19 22:16+0000\n"
+"PO-Revision-Date: 2017-06-23 21:28+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nl/>\n"
 "Language: nl\n"
@@ -4926,12 +4926,12 @@ msgstr "Standaard kaartsoort"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1211
 msgid "Default pedigree chart layout"
-msgstr "Standaard layout voor stamboomdiagram"
+msgstr "Standaard layout voor kwartierstaat diagram"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1224
 msgid "Default pedigree generations"
-msgstr "Standaard aantal generaties voor stamboomdiagram"
+msgstr "Standaard aantal generaties in kwartierstaat"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:250 admin_trees_config.php:973
@@ -8877,7 +8877,7 @@ msgstr "Maximum aantal achternamen op persoonslijst"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
 msgid "Maximum pedigree generations"
-msgstr "Maximum aantal generaties voor stamboomdiagram"
+msgstr "Maximum aantal generaties in kwartierstaat"
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
@@ -9488,7 +9488,7 @@ msgstr "Mijn pagina's"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
-msgstr "Mijn stamboom"
+msgstr "Mijn kwartierstaat"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:113
@@ -10553,32 +10553,32 @@ msgstr "Payson, Utah, Verenigde Staten"
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Stamboom"
+msgstr "Kwartierstaat"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Stamboom"
+msgstr "Kwartierstaat"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr "Stamboomkaart"
+msgstr "Grafische kwartierstaat"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Stamboomkaart van %s"
+msgstr "Grafische kwartierstaat van %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr "Stamboom van %s"
+msgstr "Kwartierstaat van %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Stamboom van %s"
+msgstr "Kwartierstaat van %s"
 
 #. I18N: Name of a module
 #: admin.php:775 admin.php:797 admin_site_upgrade.php:100
@@ -12190,7 +12190,7 @@ msgstr "Stel de standaard blokken in voor nieuwe gebruikers"
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "Stelt het aantal generaties in dat standaard afgebeeld moet worden in de Parentelen (nakomelingen), Kwartierstaten (voorouders) en Stambomen."
+msgstr "Stelt het aantal generaties in dat standaard afgebeeld moet worden in de parentelen (nakomelingen) en kwartierstaten (voorouders)."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1277
@@ -12200,7 +12200,7 @@ msgstr "Stelt het maximum aantal generaties in, dat in het parenteel wordt getoo
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1257
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr "Stelt het maximum aantal generaties in, dat in de stamboom wordt getoond."
+msgstr "Stel het maximum aantal generaties in dat wordt getoond in een kwartierstaat."
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
@@ -14481,7 +14481,7 @@ msgstr "Deze optie bepaalt of u al dan niet het geslachtpictogram op de diagramm
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1216
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Deze optie bepaalt of de stamboom staand of liggend moet worden weergegeven."
+msgstr "Deze optie bepaalt of de kwartierstaat staand of liggend moet worden weergegeven."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
@@ -14491,7 +14491,7 @@ msgstr "Deze optie maakt het makkelijk voor gebruikers om afbeeldingen te downlo
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Deze optie bepaalt de zichtbaarheid van records met privérelaties. Dit betekent dat u lege “privé”-kaders ziet in een stamboom en op andere overzichten met privépersonen."
+msgstr "Deze optie bepaalt de zichtbaarheid van records met privérelaties. Dit betekent dat u lege “privé”-kaders ziet in een kwartierstaat en op andere overzichten met privépersonen."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
@@ -14598,7 +14598,7 @@ msgstr "De geheugenlimiet van deze server is %sMB en de tijdslimiet van de proce
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Dit is een door een komma of spatie gescheiden lijst met feiten/gebeurtenissen, anders dan geboorte en overlijden, die u wilt tonen in diagrammen zoals het stamboom-diagram. Deze lijst vereist dat u feitlabels (tags) gebruikt zoals gedefinieerd in de GEDCOM 5.5.1 standaard. Als u bijvoorbeeld het beroep in een persoons-vak wilt tonen, dan voert u hier ‘OCCU’ in."
+msgstr "Dit is een door een komma of spatie gescheiden lijst met feiten/gebeurtenissen, anders dan geboorte en overlijden, die u wilt tonen in diagrammen zoals de kwartierstaat. Deze lijst vereist dat u feitlabels (tags) gebruikt zoals gedefinieerd in de GEDCOM 5.5.1 standaard. Als u bijvoorbeeld het beroep in een persoons-vak wilt tonen, dan voert u hier ‘OCCU’ in."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
