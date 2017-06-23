@@ -1158,10 +1158,14 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1, .name2 {
+.name1 {
 	font-weight: bold;
 	font-size: 12px;
 }
+
+.name2 {
+	font-size: 16px;
+	}
 
 a:hover .name1, a:hover .name2 {
 	color: #f00;
