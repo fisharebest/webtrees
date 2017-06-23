@@ -453,7 +453,8 @@
 .person_box,
 .person_boxF,
 .person_boxNN {
-	margin: 1px 0;
+	margin: 0;
+	border: 1px solid #ccc;
 }
 
 .person_box_template .details0,
@@ -508,11 +509,14 @@
 .box-style0-expanded,
 .box-style1-expanded {
 	width: 300px !important;
+	height: auto !important;
+	line-height: 1.5em!important;
 }
 
 .person_box_template {
 	height: auto;
 	white-space: normal;
+	overflow: hidden !important; 
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {

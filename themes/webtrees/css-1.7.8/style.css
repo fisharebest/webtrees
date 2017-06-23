@@ -1155,11 +1155,14 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1, .name2 {
-	color: #555;
+.name1 {
 	font-weight: bold;
 	font-size: 12px;
 }
+
+.name2 {
+	font-size: 16px;
+	}
 
 a:hover .name1, a:hover .name2 {
 	color: #f00;
@@ -1704,11 +1707,14 @@ td.descriptionbox a {
 .box-style0-expanded,
 .box-style1-expanded {
 	width: 300px !important;
+	height: auto !important;
+	line-height: 1.5em!important;
 }
 
 .person_box_template {
 	height: auto;
 	white-space: normal;
+	overflow: hidden !important; 
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
