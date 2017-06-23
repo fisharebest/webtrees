@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-19 07:10+0000\n"
+"PO-Revision-Date: 2017-06-23 13:24+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -3703,7 +3703,7 @@ msgstr "מוהל"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "ציטוט"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4021,11 +4021,11 @@ msgstr "צור"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "צור משפחה"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "צור משפחה מאנשים קיימים"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4057,11 +4057,11 @@ msgstr "צור מקור"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "צור מוסר"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "צור שם קובץ ייחודי"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7769,7 +7769,7 @@ msgstr "שמור ישויות מדיה"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "שמור פתוח"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -11632,7 +11632,7 @@ msgstr "סולט לייק סיטי, יוטה, ארצות הברית"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "זהה לקובץ שמועלה"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
