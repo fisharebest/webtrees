@@ -2265,6 +2265,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$lines = file($_FILES['placesfile']['tmp_name']);
 		} elseif (!empty($_REQUEST['localfile'])) {
 			$lines = file(WT_MODULES_DIR . 'googlemap/extra' . $_REQUEST['localfile']);
+		} else {
+			FlashMessages::addMessage(I18N::translate('No file was received. Please try again.'), 'danger');
+			$lines = [];
 		}
 		// Strip BYTE-ORDER-MARK, if present
 		if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
