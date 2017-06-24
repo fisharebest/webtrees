@@ -281,14 +281,14 @@ echo Bootstrap4::breadcrumbs([
 			<label for="user">
 				<?= I18N::translate('User') ?>
 			</label>
-			<?= Bootstrap4::select($users_array, $user, ['id' => 'user', 'name' => 'user']) ?>
+			<?= Bootstrap4::select(['' => ''] + $users_array, $user, ['id' => 'user', 'name' => 'user']) ?>
 		</div>
 
 		<div class="form-group col-sm-4">
 			<label for="gedc">
 				<?= I18N::translate('Family tree') ?>
 			</label>
-			<?= Bootstrap4::select(Tree::getNameList(), $gedc, ['id' => 'gedc', 'name' => 'gedc', 'disabled' => !Auth::isAdmin()]) ?>
+			<?= Bootstrap4::select(['' => ''] + Tree::getNameList(), $gedc, ['id' => 'gedc', 'name' => 'gedc', 'disabled' => !Auth::isAdmin()]) ?>
 		</div>
 	</div>
 
