@@ -1231,11 +1231,14 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1,
-.name2 {
+.name1 {
 	font-weight: bold;
 	font-size: 12px;
 }
+
+.name2 {
+	font-size: 16px;
+	}
 
 a:hover .name1, a:hover .name2 {
 	color: #f00;
@@ -1329,7 +1332,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
-	padding: 0 5px
+	padding: 0 5px;
 }
 
 .sublinks_cell {
@@ -2081,7 +2084,7 @@ a:hover .nameZoom {
 
 #register-form label input,
 #register-form label select {
-background-color: #fff;
+	background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
 	padding: 3px;
@@ -2142,7 +2145,7 @@ background-color: #fff;
 
 .popup {
 	position: absolute;
-	top: 20px;
+	top: 21px;
 	right: 0;
 	left: auto;
 	visibility: hidden;
@@ -2984,8 +2987,8 @@ div.faq_body {
 #tabs {
 	background-color: #fff;
 	width: 100%;
-	padding-top: 0.2em;
 	overflow: visible;
+	padding-top: 0.2em;
 }
 
 [dir=rtl] #tabs {
@@ -3712,7 +3715,7 @@ color: #ldlelf;
 	display: inline-block;
 }
 
-#pedigree-page .shadow {
+#pedigree_chart .shadow {
 	white-space: nowrap;
 }
 
