@@ -15,19 +15,14 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use PclZip;
 
-define('WT_SCRIPT_NAME', 'admin_trees_download.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 $controller = new PageController;
 $controller
@@ -97,26 +92,25 @@ if ($action === 'download') {
 
 $controller->pageHeader();
 
+echo Bootstrap4::breadcrumbs([
+	'admin.php'              => I18N::translate('Control panel'),
+	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+], $controller->getPageTitle());
 ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?= $controller->getPageTitle() ?></h1>
 
 <form class="form form-horizontal" method="post" action="admin_trees_export.php">
-	<?php echo Filter::getCsrf(); ?>
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+	<?= Filter::getCsrf() ?>
+	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 
-	<div class="form-group">
-		<label for="submit-export" class="col-sm-3 control-label">
-			<?php echo I18N::translate('A file on the server'); ?>
+	<div class="row form-group">
+		<label for="submit-export" class="col-sm-3 col-form-label">
+			<?= I18N::translate('A file on the server') ?>
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
+				<?= /* I18N: A button label. */ I18N::translate('continue') ?>
 			</button>
 		</div>
 	</div>
@@ -126,82 +120,84 @@ $controller->pageHeader();
 
 <form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Export preferences'); ?>
-		</legend>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= I18N::translate('Export preferences') ?>
+			</legend>
+			<!-- ZIP FILES -->
+			<div class="col-sm-9">
+				<label>
+					<input type="checkbox" name="zip" value="yes">
+					<?= I18N::translate('Compress the GEDCOM file') ?>
+				</label>
+				<p class="small muted">
+					<?= I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.') ?>
+				</p>
 
-		<!-- ZIP FILES -->
-		<div class="col-sm-9">
-			<label>
-				<input type="checkbox" name="zip" value="yes">
-				<?php echo I18N::translate('Compress the GEDCOM file'); ?>
-			</label>
-			<p class="small muted">
-				<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
-			</p>
+			<!-- CONVERT TO ISO8859-1 -->
+				<label>
+					<input type="checkbox" name="convert" value="yes">
+					<?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
+				</label>
+				<p class="small muted">
+					<?= I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.') ?>
+				</p>
 
-		<!-- CONVERT TO ISO8859-1 -->
-			<label>
-				<input type="checkbox" name="convert" value="yes">
-				<?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
-			</label>
-			<p class="small muted">
-				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
-			</p>
-
-			<!-- GEDCOM_MEDIA_PATH -->
-			<?php if ($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')): ?>
-			<label>
-				<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
-				<?php echo /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames'); ?>
-			</label>
-			<p>
-				<?php echo /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>'); ?>
-			</p>
-			<?php endif; ?>
+				<!-- GEDCOM_MEDIA_PATH -->
+				<?php if ($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')): ?>
+				<label>
+					<input type="checkbox" name="conv_path" value="<?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
+					<?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
+				</label>
+				<p>
+					<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
+				</p>
+				<?php endif ?>
+			</div>
 		</div>
 	</fieldset>
 
 	<!-- PRIVACY OPTIONS -->
 	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Apply privacy settings'); ?>
-		</legend>
-
-		<div class="col-sm-9">
-			<label>
-				<input type="radio" name="privatize_export" value="none" checked>
-				<?php echo I18N::translate('None'); ?>
-			</label>
-			<br>
-			<label>
-				<input type="radio" name="privatize_export" value="gedadmin">
-				<?php echo I18N::translate('Manager'); ?>
-			</label>
-			<br>
-			<label>
-				<input type="radio" name="privatize_export" value="user">
-				<?php echo I18N::translate('Member'); ?>
-			</label>
-			<br>
-			<label>
-				<input type="radio" name="privatize_export" value="visitor">
-				<?php echo I18N::translate('Visitor'); ?>
-			</label>
+		<div class="row">
+			<legend class="col-form-legend col-sm-3">
+				<?= I18N::translate('Apply privacy settings') ?>
+			</legend>
+			<div class="col-sm-9">
+				<label>
+					<input type="radio" name="privatize_export" value="none" checked>
+					<?= I18N::translate('None') ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="privatize_export" value="gedadmin">
+					<?= I18N::translate('Manager') ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="privatize_export" value="user">
+					<?= I18N::translate('Member') ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="privatize_export" value="visitor">
+					<?= I18N::translate('Visitor') ?>
+				</label>
+			</div>
 		</div>
 	</fieldset>
 
-	<div class="form-group">
-		<label for="submit-export" class="col-sm-3 control-label">
-			<?php echo I18N::translate('A file on your computer'); ?>
+	<div class="row form-group">
+		<label for="submit-export" class="col-sm-3 col-form-label">
+			<?= I18N::translate('A file on your computer') ?>
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
+				<?= /* I18N: A button label. */ I18N::translate('continue') ?>
 			</button>
 		</div>
 	</div>

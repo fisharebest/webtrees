@@ -16,7 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
@@ -51,9 +53,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (['filter', 'infoStyle', 'sortStyle', 'block'] as $name) {
+		foreach (['filter', 'infoStyle', 'sortStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -64,7 +65,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
 		} else {
 			$title = '';
 		}
@@ -89,10 +90,6 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($block === '1') {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -124,39 +121,39 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('filter', $filter);
-		echo '</td></tr>';
+		?>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="filter">
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('filter', FunctionsEdit::optionsNoYes(), $filter, true) ?>
+			</div>
+		</div>
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
-		echo '</td></tr>';
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="infoStyle">
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+			</div>
+		</div>
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Sort order');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', [
-			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
-		], null, $sortStyle, '');
-		echo '</td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="sortStyle">
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select(['alpha' => /* I18N: An option in a list-box */ I18N::translate('sort by name'), 'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date')], $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
+			</div>
+		</div>
+		<?php
 	}
 }

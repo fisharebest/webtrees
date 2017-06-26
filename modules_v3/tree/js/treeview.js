@@ -16,10 +16,10 @@
 function TreeViewHandler(treeview_instance) {
 	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
 
-	this.treeview = jQuery("#" + treeview_instance + "_in");
-	this.loadingImage = jQuery("#" + treeview_instance + "_loading");
-	this.toolbox = jQuery("#tv_tools");
-	this.buttons = jQuery(".tv_button:first", this.toolbox);
+	this.treeview = $("#" + treeview_instance + "_in");
+	this.loadingImage = $("#" + treeview_instance + "_loading");
+	this.toolbox = $("#tv_tools");
+	this.buttons = $(".tv_button:first", this.toolbox);
 	this.zoom = 100; // in percent
 	this.boxWidth = 180; // default family box width
 	this.boxExpandedWidth = 250; // default expanded family box width
@@ -57,13 +57,13 @@ function TreeViewHandler(treeview_instance) {
 		};
 	});
 	tv.toolbox.find("#tvbOpen").each(function (index, tvbOpen) {
-		var b = jQuery(tvbOpen, tv.toolbox);
+		var b = $(tvbOpen, tv.toolbox);
 		tvbOpen.onclick = function () {
 			b.addClass("tvPressed");
 			tv.setLoading();
 			var e = jQuery.Event("click");
 			tv.treeview.find(".tv_box:not(.boxExpanded)").each(function (index, box) {
-				var pos = jQuery(box, tv.treeview).offset();
+				var pos = $(box, tv.treeview).offset();
 				if (pos.left >= tv.leftMin && pos.left <= tv.leftMax && pos.top >= tv.topMin && pos.top <= tv.topMax) {
 					tv.expandBox(box, e);
 				}
@@ -73,12 +73,12 @@ function TreeViewHandler(treeview_instance) {
 		};
 	});
 	tv.toolbox.find("#tvbClose").each(function (index, tvbClose) {
-		var b = jQuery(tvbClose, tv.toolbox);
+		var b = $(tvbClose, tv.toolbox);
 		tvbClose.onclick = function () {
 			b.addClass("tvPressed");
 			tv.setLoading();
 			tv.treeview.find(".tv_box.boxExpanded").each(function (index, box) {
-				jQuery(box).css("display", "none").removeClass("boxExpanded").parent().find(".tv_box.collapsedContent").css("display", "block");
+				$(box).css("display", "none").removeClass("boxExpanded").parent().find(".tv_box.collapsedContent").css("display", "block");
 			});
 			b.removeClass("tvPressed");
 			tv.setComplete();
@@ -116,7 +116,7 @@ TreeViewHandler.prototype.getSize = function () {
 	tv.topMin = offset.top;
 	tv.topMax = tv.topMin + container.innerHeight();
 	/*
-	 var frm = jQuery("#tvTreeBorder");
+	 var frm = $("#tvTreeBorder");
 	 tv.treeview.css("width", frm.width());
 	 tv.treeview.css("height", frm.height());*/
 };
@@ -135,7 +135,7 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
 	// check which td with datafld attribute are within the container bounding box
 	// and therefore need to be dynamically loaded
 	tv.treeview.find("td[abbr]").each(function (index, el) {
-		el = jQuery(el, tv.treeview);
+		el = $(el, tv.treeview);
 		var pos = el.offset();
 		if (pos.left >= tv.leftMin && pos.left <= tv.leftMax && pos.top >= tv.topMin && pos.top <= tv.topMax) {
 			to_load.push(el.attr("abbr"));
@@ -152,7 +152,7 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
 			data: "q=" + to_load.join(";"),
 			success: function (ret) {
 				var nb = elts.length;
-				var root_element = jQuery(".rootPerson", this.treeview);
+				var root_element = $(".rootPerson", this.treeview);
 				var l = root_element.offset().left;
 				for (var i = 0; i < nb; i++) {
 					elts[i].removeAttr("abbr").html(ret[i]);
@@ -202,7 +202,7 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
  */
 TreeViewHandler.prototype.compact = function () {
 	var tv = this;
-	var b = jQuery("#tvbCompact", tv.toolbox);
+	var b = $("#tvbCompact", tv.toolbox);
 	tv.setLoading();
 	if (tv.auto_box_width) {
 		var w = tv.boxWidth * (tv.zoom / 100) + "px";
@@ -240,7 +240,7 @@ TreeViewHandler.prototype.centerOnRoot = function () {
 		return false;
 	}
 	var tvc_height = tvc.innerHeight() / 2;
-	var root_person = jQuery(".rootPerson", this.treeview);
+	var root_person = $(".rootPerson", this.treeview);
 	this.treeview.offset({
 		left: tvc.offset().left + this.treeview.offset().left + tvc_width - root_person.offset().left - root_person.outerWidth() / 2,
 		top: tvc.offset().top + this.treeview.offset().top + tvc_height - root_person.offset().top - root_person.outerHeight() / 2
@@ -261,12 +261,12 @@ TreeViewHandler.prototype.centerOnRoot = function () {
  * called ONLY for elements which have NOT the class tv_link to avoid unuseful requests to the server
  */
 TreeViewHandler.prototype.expandBox = function (box, event) {
-	var t = jQuery(event.target);
+	var t = $(event.target);
 	if (t.hasClass("tv_link")) {
 		return false;
 	}
 
-	var box = jQuery(box, this.treeview);
+	var box = $(box, this.treeview);
 	var bc = box.parent(); // bc is Box Container
 	var pid = box.attr("abbr");
 	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)

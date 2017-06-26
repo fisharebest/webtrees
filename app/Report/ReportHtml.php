@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -208,7 +208,7 @@ class ReportHtml extends ReportBase {
 	 * Run the report.
 	 */
 	public function run() {
-		$controller = new SimpleController;
+		$controller = new PageController;
 		$controller
 			->setPageTitle($this->title)
 			->pageHeader();

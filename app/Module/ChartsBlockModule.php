@@ -16,8 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
@@ -54,11 +56,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		$details = $this->getBlockSetting($block_id, 'details', '0');
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		foreach (['details', 'type', 'pid', 'block'] as $name) {
+		foreach (['type', 'pid'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -74,7 +75,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
 		} else {
 			$title = '';
 		}
@@ -84,12 +85,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			switch ($type) {
 			case 'pedigree':
 				$title .= I18N::translate('Pedigree of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
+				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				$content .= '<td>';
 				ob_start();
-				FunctionsPrint::printPedigreePerson($person, $details);
+				FunctionsPrint::printPedigreePerson($person);
 				$content .= ob_get_clean();
 				$content .= '</td>';
 				$content .= '<td>';
@@ -101,7 +102,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				break;
 			case 'descendants':
 				$title .= I18N::translate('Descendants of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
+				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				ob_start();
 				$chartController->printDescendency($person, 1, false);
@@ -109,7 +110,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				break;
 			case 'hourglass':
 				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
+				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				$content .= '<td>';
@@ -172,12 +173,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'details', Filter::postBool('details'));
 			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
 			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
 		}
 
-		$details = $this->getBlockSetting($block_id, 'details', '0');
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
@@ -189,43 +188,25 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		];
 		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-		$controller
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addInlineJavascript('autocomplete();');
-	?>
-		<tr>
-			<td class="descriptionbox wrap width33">
+		?>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="type">
 				<?= I18N::translate('Chart type') ?>
-			</td>
-			<td class="optionbox">
-				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap width33">
-				<?= I18N::translate('Show details') ?>
-			</td>
-		<td class="optionbox">
-			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap width33">
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select($charts, $type, ['id' => 'type', 'name' => 'type']) ?>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="pid">
 				<label for="pid">
 					<?= I18N::translate('Individual') ?>
 				</label>
-			</td>
-			<td class="optionbox">
-				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?= $pid ?>" size="5">
-				<?php
-				echo FunctionsPrint::printFindIndividualLink('pid');
-				$root = Individual::getInstance($pid, $WT_TREE);
-				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';
-				}
-				?>
-			</td>
-		</tr>
+			</label>
+			<div class="col-sm-9">
+				<?= FunctionsEdit::formControlIndividual(Individual::getInstance($pid, $WT_TREE), ['id' => 'pid', 'name' => 'pid']) ?>
+			</div>
+		</div>
 		<?php
 	}
 }

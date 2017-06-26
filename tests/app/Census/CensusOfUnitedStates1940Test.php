@@ -23,7 +23,7 @@ class CensusOfUnitedStates1940Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1940
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1940
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfUnitedStates1940;
@@ -35,8 +35,8 @@ class CensusOfUnitedStates1940Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1940
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1940
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfUnitedStates1940;

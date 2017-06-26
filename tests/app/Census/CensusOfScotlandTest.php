@@ -23,7 +23,7 @@ class CensusOfScotlandTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfScotland
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
 	 */
 	public function testPlace() {
 		$census = new CensusOfScotland;
@@ -34,7 +34,7 @@ class CensusOfScotlandTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census dates
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfScotland
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
 	 */
 	public function testAllDates() {
 		$census  = new CensusOfScotland;

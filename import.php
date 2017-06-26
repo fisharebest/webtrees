@@ -19,8 +19,7 @@ use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use PDOException;
 
-define('WT_SCRIPT_NAME', 'import.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 // Don't use ged=XX as we want to be able to run without changing the current gedcom.
 // This will let us load several gedcoms together, or to edit one while loading another.
@@ -60,8 +59,8 @@ if ($row->import_offset == $row->import_total) {
 	// Finished? Show the maintenance links, similar to admin_trees_manage.php
 	Database::commit();
 	$controller->addInlineJavascript(
-		'jQuery("#import' . $gedcom_id . '").addClass("hidden");' .
-		'jQuery("#actions' . $gedcom_id . '").removeClass("hidden");'
+		'$("#import' . $gedcom_id . '").addClass("hidden");' .
+		'$("#actions' . $gedcom_id . '").removeClass("hidden");'
 	);
 
 	return;
@@ -71,16 +70,16 @@ if ($row->import_offset == $row->import_total) {
 $progress = $row->import_offset / $row->import_total;
 
 ?>
-<div class="progress" id="progress<?php echo $gedcom_id; ?>">
+<div class="progress" id="progress<?= $gedcom_id ?>">
 	<div
 		class="progress-bar"
 		role="progressbar"
-		aria-valuenow="<?php echo $progress * 100; ?>"
+		aria-valuenow="<?= $progress * 100 ?>"
 		aria-valuemin="0"
 		aria-valuemax="100"
-		style="width: <?php echo $progress * 100; ?>%; min-width: 40px;"
+		style="width: <?= $progress * 100 ?>%; min-width: 40px;"
 	>
-		<?php echo I18N::percentage($progress, 1); ?>
+		<?= I18N::percentage($progress, 1) ?>
 	</div>
 </div>
 <?php
@@ -112,7 +111,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		if (substr($data->chunk_data, 0, 6) != '0 HEAD') {
 			Database::rollBack();
 			echo I18N::translate('Invalid GEDCOM file - no header record found.');
-			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
+			$controller->addInlineJavascript('$("#actions' . $gedcom_id . '").removeClass("hidden");');
 
 			return;
 		}
@@ -146,7 +145,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			break;
 		case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
-				'jQuery("#import' . $gedcom_id . '").parent().prepend("<div class=\"bg-info\">' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */
+				'$("#import' . $gedcom_id . '").parent().prepend("<div class=\"bg-info\">' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */
 					I18N::translate('This GEDCOM file is encoded using %1$s. Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '</div>");'
 				);
 			// no break;
@@ -191,7 +190,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		default:
 			Database::rollBack();
 			echo '<span class="error">', I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
-			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
+			$controller->addInlineJavascript('$("#actions' . $gedcom_id . '").removeClass("hidden");');
 
 			return;
 		}
@@ -222,11 +221,11 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		if ($ex->getCode() === '40001') {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
-			$controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
+			$controller->addInlineJavascript('$("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
 		} else {
 			// A fatal error. Nothing we can do?
 			echo '<span class="error">', $ex->getMessage(), '</span>';
-			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
+			$controller->addInlineJavascript('$("#actions' . $gedcom_id . '").removeClass("hidden");');
 		}
 
 		return;
@@ -237,4 +236,4 @@ Database::commit();
 
 // Reload.....
 // Use uniqid() to prevent jQuery caching the previous response.
-$controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
+$controller->addInlineJavascript('$("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');

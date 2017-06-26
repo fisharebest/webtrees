@@ -82,7 +82,7 @@ class FamilyBookController extends ChartController {
 			return 0;
 		}
 
-		echo '<table><tr><td>';
+		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
 		$numkids = 0;
 
 		// Load children
@@ -101,7 +101,7 @@ class FamilyBookController extends ChartController {
 		if ($generation < $this->dgenerations) {
 			if (!empty($children)) {
 				// real people
-				echo '<table>';
+				echo '<table cellspacing="0" cellpadding="0" border="0" >';
 				foreach ($children as $i => $child) {
 					echo '<tr><td>';
 					$kids = $this->printDescendency($child, $generation + 1);
@@ -117,7 +117,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdbot">',
-							'<img class="tvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '"></td>';
+							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h -4, '"></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
 							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2);
@@ -126,10 +126,10 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdtop">',
-							'<img class="bvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '"></td>';
+							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h -2, '"></td>';
 						} else {
-							echo '<td style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
-							'<img class="spacer" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
+							echo '<td class="tdbot"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
+							'<img class="spacer"  width="3" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
 						}
 					}
 					echo '</tr>';
@@ -137,7 +137,7 @@ class FamilyBookController extends ChartController {
 				echo '</table>';
 			} else {
 				// Hidden/empty boxes - to preserve the layout
-				echo '<table><tr><td>';
+				echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
 				$numkids += $this->printDescendency(null, $generation + 1);
 				echo '</td></tr></table>';
 			}
@@ -148,9 +148,9 @@ class FamilyBookController extends ChartController {
 		if ($numkids === 0) {
 			$numkids = 1;
 		}
-		echo '<table><tr><td>';
+		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
 		if ($person) {
-			FunctionsPrint::printPedigreePerson($person, $this->showFull());
+			FunctionsPrint::printPedigreePerson($person);
 			echo '</td><td>',
 			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
 		} else {
@@ -164,7 +164,7 @@ class FamilyBookController extends ChartController {
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
-					FunctionsPrint::printPedigreePerson($spouse, $this->showFull());
+					FunctionsPrint::printPedigreePerson($spouse);
 					$numkids += 0.95;
 					echo '</td><td>';
 				}
@@ -195,7 +195,7 @@ class FamilyBookController extends ChartController {
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		if (count($person->getChildFamilies()) == 0) {
-			echo '<table>';
+			echo '<table cellspacing="0" cellpadding="0" border="0" >';
 			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
 
 			//-- recursively get the father’s family
@@ -210,7 +210,7 @@ class FamilyBookController extends ChartController {
 
 		// Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
-			echo '<table><tr><td class="tdbot">';
+			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="tdbot">';
 			// Determine line height for two or more spouces
 			// And then adjust the vertical line for the root person only
 			$famcount = 0;
@@ -251,13 +251,13 @@ class FamilyBookController extends ChartController {
 					$lh = $savlh;
 				}
 			}
-			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" height="', $lh - 1, '"></td>',
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh -4, '"></td>',
 			'<td>',
 			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
-			FunctionsPrint::printPedigreePerson($family->getHusband(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getHusband());
 			echo '</td>';
 			if ($family->getHusband()) {
 				echo '<td>';
@@ -267,7 +267,7 @@ class FamilyBookController extends ChartController {
 			} else {
 				echo '<td>';
 				if ($genoffset > $count) {
-					echo '<table>';
+					echo '<table cellspacing="0" cellpadding="0" border="0" >';
 					for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
 						$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
 						echo '</tr>';
@@ -276,11 +276,11 @@ class FamilyBookController extends ChartController {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" height="', $lh + 1, '"></td>',
+			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh-2, '"></td>',
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
-			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getWife());
 			echo '</td>';
 			if ($family->getWife()) {
 				echo '<td>';
@@ -290,7 +290,7 @@ class FamilyBookController extends ChartController {
 			} else {
 				echo '<td>';
 				if ($count < $genoffset - 1) {
-					echo '<table>';
+					echo '<table cellspacing="0" cellpadding="0" border="0" >';
 					for ($i = 1; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 1; $i++) {
 						$this->printEmptyBox();
 						echo '</tr>';
@@ -347,7 +347,7 @@ class FamilyBookController extends ChartController {
 	 */
 
 	private function printEmptyBox() {
-		echo $this->showFull() ? Theme::theme()->individualBoxEmpty() : Theme::theme()->individualBoxSmallEmpty();
+		echo Theme::theme()->individualBoxEmpty();
 	}
 
 	/**

@@ -15,38 +15,23 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
-use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 
-define('WT_SCRIPT_NAME', 'edit_changes.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
 
-$controller = new SimpleController;
+require 'includes/session.php';
+
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isModerator($WT_TREE))
 	->setPageTitle(I18N::translate('Pending changes'))
-	->pageHeader()
-	->addInlineJavascript('
-		function show_diff(diffurl) {
-			window.opener.location = diffurl;
-			return false;
-		}
-	');
+	->pageHeader();
 
 $action    = Filter::get('action');
 $change_id = Filter::getInteger('change_id');
-$index     = Filter::get('index');
-$ged       = Filter::getInteger('ged');
-
-echo '<div id="pending"><h2>', I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
 case 'undo':
@@ -66,7 +51,7 @@ case 'accept':
 	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
 	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
 	// Accept a change, and all previous changes to the same record
-	$changes = Database::prepare(
+	$all_changes = Database::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
 		" FROM  `##change` c" .
 		" JOIN  `##gedcom` g USING (gedcom_id)" .
@@ -76,7 +61,7 @@ case 'accept':
 		" AND   change_id <= ?" .
 		" ORDER BY change_id"
 	)->execute([$gedcom_id, $xref, $change_id])->fetchAll();
-	foreach ($changes as $change) {
+	foreach ($all_changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
 			FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
@@ -96,14 +81,14 @@ case 'undoall':
 	)->execute([$WT_TREE->getTreeId()]);
 	break;
 case 'acceptall':
-	$changes = Database::prepare(
+	$all_changes = Database::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
 		" FROM `##change` c" .
 		" JOIN `##gedcom` g USING (gedcom_id)" .
 		" WHERE c.status='pending' AND gedcom_id=?" .
 		" ORDER BY change_id"
 	)->execute([$WT_TREE->getTreeId()])->fetchAll();
-	foreach ($changes as $change) {
+	foreach ($all_changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
 			FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
@@ -117,136 +102,112 @@ case 'acceptall':
 	break;
 }
 
-$changed_gedcoms = Database::prepare(
-	"SELECT g.gedcom_name" .
+$rows = Database::prepare(
+	"SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
 	" FROM `##change` c" .
+	" JOIN `##user`   u USING (user_id)" .
 	" JOIN `##gedcom` g USING (gedcom_id)" .
 	" WHERE c.status='pending'" .
-	" GROUP BY g.gedcom_name"
-)->fetchOneColumn();
-
-if (!empty($changed_gedcoms)) {
-	$changes = Database::prepare(
-		"SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
-		" FROM `##change` c" .
-		" JOIN `##user`   u USING (user_id)" .
-		" JOIN `##gedcom` g USING (gedcom_id)" .
-		" WHERE c.status='pending'" .
-		" ORDER BY gedcom_id, c.xref, c.change_id"
-	)
+	" ORDER BY gedcom_id, c.xref, c.change_id"
+)
 	->execute(['offset' => WT_TIMESTAMP_OFFSET])
 	->fetchAll();
 
-	$output         = '<br><br><table class="list_table">';
-	$prev_xref      = null;
-	$prev_gedcom_id = null;
-	foreach ($changes as $change) {
-		$tree = Tree::findById($change->gedcom_id);
-		preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
+$all_changes = [];
+foreach ($rows as $row) {
+	$tree = Tree::findById($row->gedcom_id);
+	preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
-
-		switch ($match[1]) {
-		case 'INDI':
-			$record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		case 'FAM':
-			$record = new Family($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		case 'SOUR':
-			$record = new Source($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		case 'REPO':
-			$record = new Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		case 'OBJE':
-			$record = new Media($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		case 'NOTE':
-			$record = new Note($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		default:
-			$record = new GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-			break;
-		}
-		if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {
-			if ($prev_xref) {
-				$output .= '</table></td></tr>';
-			}
-			$prev_xref      = $change->xref;
-			$prev_gedcom_id = $change->gedcom_id;
-			$output .= '<tr><td class="list_value">';
-			$output .= '<b><a href="#" onclick="return show_diff(\'' . $record->getHtmlUrl() . '\');"> ' . $record->getFullName() . '</a></b>';
-			$output .= '<div class="indent">';
-			$output .= '<table class="list_table"><tr>';
-			$output .= '<td class="list_label">' . I18N::translate('Accept') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('Changes') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('User') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('Date') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('Family tree') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('Reject') . '</td>';
-			$output .= '</tr>';
-		}
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;change_id=' . $change->change_id . '">' . I18N::translate('Accept') . '</a></td>';
-		$output .= '<td class="list_value">';
-		foreach ($record->getFacts() as $fact) {
-			if ($fact->getTag() != 'CHAN') {
-				if ($fact->isPendingAddition()) {
-					$output .= '<div class="new" title="' . strip_tags($fact->summary()) . '">' . $fact->getLabel() . '</div>';
-				} elseif ($fact->isPendingDeletion()) {
-					$output .= '<div class="old" title="' . strip_tags($fact->summary()) . '">' . $fact->getLabel() . '</div>';
-				}
-			}
-		}
-		echo '</td>';
-		$output .= '<td class="list_value"><a href="#" onclick="return reply(\'' . $change->user_name . '\', \'' . I18N::translate('Moderate pending changes') . '\')" title="' . I18N::translate('Send a message') . '">';
-		$output .= Filter::escapeHtml($change->real_name);
-		$output .= ' - ' . Filter::escapeHtml($change->user_name) . '</a></td>';
-		$output .= '<td class="list_value">' . FunctionsDate::formatTimestamp($change->change_timestamp) . '</td>';
-		$output .= '<td class="list_value">' . $change->gedcom_name . '</td>';
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;change_id=' . $change->change_id . '">' . I18N::translate('Reject') . '</a></td>';
-		$output .= '</tr>';
+	switch ($match[1]) {
+	case 'INDI':
+		$row->record = new Individual($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	case 'FAM':
+		$row->record = new Family($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	case 'SOUR':
+		$row->record = new Source($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	case 'REPO':
+		$row->record = new Repository($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	case 'OBJE':
+		$row->record = new Media($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	case 'NOTE':
+		$row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
+	default:
+		$row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+		break;
 	}
-	$output .= '</table></td></tr></td></tr></table>';
-
-	//-- Now for the global Action bar:
-	$output2 = '<br><table class="list_table">';
-	// Row 1 column 1: title "Accept all"
-	$output2 .= '<tr><td class="list_label">' . I18N::translate('Accept all changes') . '</td>';
-	// Row 1 column 2: title "Undo all"
-	$output2 .= '<td class="list_label">' . I18N::translate('Reject all changes') . '</td></tr>';
-
-	// Row 2 column 1: action "Accept all"
-	$output2 .= '<tr><td class="list_value">';
-	$count = 0;
-	foreach ($changed_gedcoms as $gedcom_name) {
-		if ($count != 0) {
-			$output2 .= '<br>';
-		}
-		$output2 .= $gedcom_name . ' — ' . '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . I18N::translate('Accept all changes') . '</a>';
-		$count++;
-	}
-	$output2 .= '</td>';
-	// Row 2 column 2: action "Undo all"
-	$output2 .= '<td class="list_value">';
-	$count = 0;
-	foreach ($changed_gedcoms as $gedcom_name) {
-		if ($count != 0) {
-			$output2 .= '<br>';
-		}
-		$output2 .= $gedcom_name . ' — ' . '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to reject all the changes to this family tree?') . '\');">' . I18N::translate('Reject all changes') . '</a>';
-		$count++;
-	}
-	$output2 .= '</td></tr></table>';
-
-	echo
-		$output2, $output, $output2,
-		'<br><br><br><br>',
-		'<p id="save-cancel">',
-		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="closePopupAndReloadParent();">',
-		'</p>';
-} else {
-	// No pending changes - refresh the parent window and close this one
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	$all_changes[$row->gedcom_id][$row->xref][] = $row;
 }
 
-echo '</div>';
+?>
+
+<h2><?= $controller->getPageTitle() ?></h2>
+
+<?php if (empty($all_changes)): ?>
+<p><?= I18N::translate('There are no pending changes.') ?></p>
+<?php endif ?>
+
+<?php foreach ($all_changes as $gedcom_name => $gedcom_changes): ?>
+
+<h3>
+	<?= Tree::findById($gedcom_name)->getTitleHtml() ?>
+	—
+	<a href="edit_changes.php?action=acceptall&amp;ged=<?= Filter::escapeHtml($gedcom_name) ?>">
+		<?= I18N::translate('Accept all changes') ?>
+	</a>
+	—
+	<a href="edit_changes.php?action=undoall&amp;ged=<?= Filter::escapeHtml($gedcom_name) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
+		<?= I18N::translate('Reject all changes') ?>
+	</a>
+</h3>
+
+<?php foreach ($gedcom_changes as $xref => $record_changes): ?>
+<h4><?= $record_changes[0]->record->getFullName() ?></h4>
+<table class="table">
+	<thead>
+		<tr>
+			<th><?= I18N::translate('Accept') ?></th>
+			<th><?= I18N::translate('Changes') ?></th>
+			<th><?= I18N::translate('User') ?></th>
+			<th><?= I18N::translate('Date') ?></th>
+			<th><?= I18N::translate('Reject') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($record_changes as $record_change): ?>
+		<tr>
+			<td>
+				<a href="edit_changes.php?action=accept&amp;change_id=<?= $record_change->change_id ?>"><?= I18N::translate('Accept') ?></a>
+			</td>
+			<td>
+				<?php foreach ($record_change->record->getFacts() as $fact): ?>
+					<?php if ($fact->getTag() !== 'CHAN' && $fact->isPendingAddition()): ?>
+						<div class="new" title="<?= strip_tags($fact->summary()) ?>"><?= $fact->getLabel() ?></div>
+					<?php elseif ($fact->getTag() !== 'CHAN' && $fact->isPendingDeletion()): ?>
+						<div class="old" title="<?= strip_tags($fact->summary()) ?>"><?= $fact->getLabel() ?></div>
+					<?php endif ?>
+				<?php endforeach ?>
+			</td>
+			<td>
+				<a href="message.php?to=<?= Filter::escapeUrl($record_change->user_name) ?>&amp;subject=<?= Filter::escapeUrl(I18N::translate('Moderate pending changes')) ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>" title="<?= I18N::translate('Send a message') ?>">
+					<?= Filter::escapeHtml($record_change->real_name)?> - <?= Filter::escapeHtml($record_change->user_name) ?>
+				</a>
+			</td>
+			<td>
+				<?= FunctionsDate::formatTimestamp($record_change->change_timestamp) ?>
+			</td>
+			<td>
+				<a href="edit_changes.php?action=undo&amp;change_id=<?= $record_change->change_id ?>"><?= I18N::translate('Reject') ?></a>
+			</td>
+		</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>
+<?php endforeach ?>
+<?php endforeach ?>
+

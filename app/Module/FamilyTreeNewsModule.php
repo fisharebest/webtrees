@@ -40,7 +40,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		parent::__construct($directory);
 
 		// Create/update the database tables.
-		// NOTE: if we want to set any module-settings, we'll need to move this.
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 	}
 
@@ -73,15 +72,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
-
-		switch (Filter::get('action')) {
-		case 'deletenews':
-			$news_id = Filter::get('news_id');
-			if ($news_id) {
-				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute([$news_id]);
-			}
-			break;
-		}
 
 		$more_news = Filter::getInteger('more_news');
 		$limit     = 5 * (1 + $more_news);
@@ -119,15 +109,15 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			$content .= $article->body;
 			if (Auth::isManager($WT_TREE)) {
 				$content .= '<hr>';
-				$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $article->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a>';
+				$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=gedcom&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('Edit') . '</a>';
 				$content .= ' | ';
-				$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $article->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
+				$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=gedcom&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
 
 		if (Auth::isManager($WT_TREE)) {
-			$content .= '<a href="#" onclick="window.open(\'editnews.php?gedcom_id=' . $WT_TREE->getTreeId() . '\', \'_blank\', news_window_specs); return false;">' . I18N::translate('Add a news article') . '</a>';
+			$content .= '<p><a href="editnews.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('Add a news article') . '</a></p>';
 		}
 
 		if ($count > $limit) {

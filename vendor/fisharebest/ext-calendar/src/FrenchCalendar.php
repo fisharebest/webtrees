@@ -7,7 +7,7 @@ use InvalidArgumentException;
  * Class FrenchCalendar - calculations for the French Republican calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -75,6 +75,10 @@ class FrenchCalendar implements CalendarInterface {
 	}
 
 	public function ymdToJd($year, $month, $day) {
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
 		return 2375444 + $day + $month * 30 + $year * 365 + (int) ($year / 4);
 	}
 }

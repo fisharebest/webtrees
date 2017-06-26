@@ -27,6 +27,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -112,7 +113,7 @@ class I18N {
 	public static function activeLocales() {
 		$code_list = Site::getPreference('LANGUAGES');
 
-		if (empty($code_list)) {
+		if ($code_list === '') {
 			$codes = self::DEFAULT_LOCALES;
 		} else {
 			$codes = explode(',', $code_list);
@@ -167,20 +168,8 @@ class I18N {
 	 *
 	 * @return string
 	 */
-	public static function datatablesI18N(array $lengths = null) {
-		if ($lengths === null) {
-			$lengths = [10, 20, 30, 50, 100, -1];
-		}
-
-		$length_menu = '';
-		foreach ($lengths as $length) {
-			$length_menu .=
-				'<option value="' . $length . '">' .
-				($length === -1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)) .
-				'</option>';
-		}
-		$length_menu = '<select>' . $length_menu . '</select>';
-		$length_menu = /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
+	public static function datatablesI18N(array $lengths = [10, 20, 30, 50, 100, -1]) {
+		$length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), 10);
 
 		return
 			'"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
@@ -195,7 +184,7 @@ class I18N {
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
 			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-			' "lengthMenu":     "' . Filter::escapeJs($length_menu) . '",' .
+			' "lengthMenu":     "' . Filter::escapeJs(/* I18N: %s is a number of records per page */ self::translate('Display %s', $length_options)) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
 			' "processing":     "' . self::translate('Loading…') . '",' .
 			' "search":         "' . self::translate('Filter') . '",' .
@@ -310,16 +299,16 @@ class I18N {
 	/**
 	 * Initialise the translation adapter with a locale setting.
 	 *
-	 * @param string|null $code Use this locale/language code, or choose one automatically
+	 * @param string $code Use this locale/language code, or choose one automatically
 	 *
 	 * @return string $string
 	 */
-	public static function init($code = null) {
+	public static function init($code = '') {
 		global $WT_TREE;
 
 		mb_internal_encoding('UTF-8');
 
-		if ($code !== null) {
+		if ($code !== '') {
 			// Create the specified locale
 			self::$locale = Locale::create($code);
 		} else {

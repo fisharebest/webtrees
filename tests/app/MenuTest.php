@@ -119,15 +119,6 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test the string cast.
-	 */
-	public function testStringCast() {
-		$menu = new Menu('Test!');
-
-		$this->assertSame((string) $menu, $menu->getMenuAsList());
-	}
-
-	/**
 	 * Test the list rendering for a simple link.
 	 */
 	public function testFormatAsList() {

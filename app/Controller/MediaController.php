@@ -40,10 +40,6 @@ class MediaController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), '#', 'menu-obje-edit', [
-				'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '", "_blank", edit_window_specs)',
-			]));
-
 			// main link displayed on page
 			if (Module::getModuleByName('GEDFact_assistant')) {
 				$menu->addSubmenu(new Menu(I18N::translate('Manage the links'), '#', 'menu-obje-link', [
@@ -71,9 +67,7 @@ class MediaController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-obje-editraw', [
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-obje-editraw'));
 		}
 
 		return $menu;
@@ -85,22 +79,7 @@ class MediaController extends GedcomRecordController {
 	 * @return Fact[]
 	 */
 	public function getFacts() {
-		$facts = $this->record->getFacts();
-
-		// Add some dummy facts to show additional information
-		if ($this->record->fileExists()) {
-			// get height and width of image, when available
-			$imgsize = $this->record->getImageAttributes();
-			if (!empty($imgsize['WxH'])) {
-				$facts[] = new Fact('1 __IMAGE_SIZE__ ' . $imgsize['WxH'], $this->record, 0);
-			}
-			//Prints the file size
-			$facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
-		}
-
-		Functions::sortFacts($facts);
-
-		return $facts;
+		return $this->record->getFacts(null, true);
 	}
 
 	/**

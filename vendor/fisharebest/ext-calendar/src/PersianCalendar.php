@@ -1,11 +1,15 @@
 <?php
 namespace Fisharebest\ExtCalendar;
 
+use InvalidArgumentException;
+
 /**
  * Class PersianCalendar - calculations for the Persian (Jalali) calendar.
  *
+ * Algorithms for Julian days based on https://www.fourmilab.ch/documents/calendar/
+ *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -56,13 +60,13 @@ class PersianCalendar implements CalendarInterface {
 	}
 
 	public function jdStart() {
-		return 1948320; // 1 Farvardīn 0001 AP, 19 MAR 0622 AD
+		return 1948321; // 1 Farvardīn 0001 AP, 19 MAR 0622 AD
 	}
 
 	public function jdToYmd($julian_day) {
-		$depoch = $julian_day - 2121447;
-		$cycle  = (int) ($depoch / 1029983);
-		$cyear  = $depoch % 1029983;
+		$depoch = $julian_day - 2121446; // 1 Farvardīn 475
+		$cycle  = (int) floor($depoch / 1029983);
+		$cyear  = $this->mod($depoch, 1029983);
 		if ($cyear == 1029982) {
 			$ycycle = 2820;
 		} else {
@@ -73,11 +77,11 @@ class PersianCalendar implements CalendarInterface {
 		$year = $ycycle + (2820 * $cycle) + 474;
 
 		// If we allowed negative years, we would deal with them here.
-		$yday  = ($julian_day - $this->ymdToJd($year, 1, 1)) + 1;
+		$yday  = $julian_day - $this->ymdToJd($year, 1, 1) + 1;
 		$month = ($yday <= 186) ? ceil($yday / 31) : ceil(($yday - 6) / 30);
-		$day   = ($julian_day - $this->ymdToJd($year, $month, 1)) + 1;
+		$day   = $julian_day - $this->ymdToJd($year, $month, 1) + 1;
 
-		return array($year, (int) $month, (int) $day);
+		return array((int) $year, (int) $month, (int) $day);
 	}
 
 	public function monthsInYear() {
@@ -85,15 +89,39 @@ class PersianCalendar implements CalendarInterface {
 	}
 
 	public function ymdToJd($year, $month, $day) {
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
 		$epbase = $year - (($year >= 0) ? 474 : 473);
-		$epyear = 474 + $epbase % 2820;
+		$epyear = 474 + $this->mod($epbase, 2820);
 
 		return
 			$day +
 			(($month <= 7) ? (($month - 1) * 31) : ((($month - 1) * 30) + 6)) +
 			(int) ((($epyear * 682) - 110) / 2816) +
 			($epyear - 1) * 365 +
-			(int) ($epbase / 2820) * 1029983 +
-			$this->jdStart();
+			(int) (floor($epbase / 2820)) * 1029983 +
+			$this->jdStart() - 1;
+	}
+
+	/**
+	 * The PHP modulus function returns a negative modulus for a negative dividend.
+	 * This algorithm requires a "traditional" modulus function where the modulus is
+	 * always positive.
+	 *
+	 * @param number $dividend
+	 * @param number $divisor
+	 * @return number
+	 */
+	public function mod($dividend, $divisor) {
+		if ($divisor === 0) return 0;
+
+		$modulus = $dividend % $divisor;
+		if($modulus < 0) {
+			$modulus += $divisor;
+		}
+
+		return $modulus;
 	}
 }

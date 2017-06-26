@@ -53,7 +53,7 @@ class TreeView {
 		$html = '
 			<a name="tv_content"></a>
 			<div id="' . $this->name . '_out" class="tv_out">
-				<div id="tv_tools" class="noprint">
+				<div id="tv_tools">
 					<ul>
 						<li id="tvbCompact" class="tv_button">
 							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . I18N::translate('Use compact layout') . '" title="' . I18N::translate('Use compact layout') . '">

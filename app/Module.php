@@ -157,7 +157,7 @@ class Module {
 	 * @param Tree   $tree
 	 * @param string $component The type of module, such as "tab", "report" or "menu"
 	 *
-	 * @return AbstractModule[]
+	 * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]
 	 */
 	private static function getActiveModulesByComponent(Tree $tree, $component) {
 		$module_names = Database::prepare(

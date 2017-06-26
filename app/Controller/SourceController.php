@@ -39,14 +39,10 @@ class SourceController extends GedcomRecordController {
 			$fact = $this->record->getFirstFact('TITL');
 			if ($fact) {
 				// Edit existing name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', [
-					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-				]));
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), 'edit_interface.php?action=edit&amp;xref=' . $this->record->getXref() . '&amp;fact_id=' . $fact->getFactId() . '&amp;ged=' . $this->record->getTree()->getNameHtml(), 'menu-sour-edit'));
 			} else {
 				// Add new name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', [
-					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "TITL");',
-				]));
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), 'edit_interface.php?action=add&amp;fact=TITL&amp;xref=' . $this->record->getXref() . '&amp;ged=' . $this->record->getTree()->getNameHtml(), 'menu-sour-edit'));
 			}
 
 			// delete
@@ -57,9 +53,7 @@ class SourceController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-sour-editraw', [
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-sour-editraw'));
 		}
 
 		return $menu;

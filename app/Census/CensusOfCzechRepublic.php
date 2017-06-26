@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -27,6 +28,9 @@ class CensusOfCzechRepublic extends Census implements CensusPlaceInterface {
 	public function allCensusDates() {
 		return [
 			new CensusOfCzechRepublic1880(),
+			new CensusOfCzechRepublic1890(),
+			new CensusOfCzechRepublic1900(),
+			new CensusOfCzechRepublic1910(),
 			new CensusOfCzechRepublic1921(),
 		];
 	}

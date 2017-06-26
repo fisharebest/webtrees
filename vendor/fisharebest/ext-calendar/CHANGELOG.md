@@ -1,6 +1,12 @@
 CHANGE LOG
 ==========
 
+## 2.3.0 (2017-05-07)
+ - Test against PHP 7.1
+ - Use civil instead of astronomical calendar for Arabic (jon48)
+ - Fix bugs in Hebrew calendar (jon48)
+ - PHP bug 67976 now fixed, so we need to emulate it.
+
 ## 2.2.1 (2015-12-11)
  - HHVM tests failing
 

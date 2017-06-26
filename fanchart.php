@@ -17,33 +17,23 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\FanchartController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'fanchart.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new FanchartController;
-global $WT_TREE;
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'fan_chart'));
 
-if (Filter::getBool('img')) {
-	header('Content-Type: image/png');
-	echo $controller->generateFanChart('png');
-
-	return;
-}
-
-$controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'fan_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('
-		autocomplete();
-		var WT_FANCHART = (function() {
-			jQuery("area")
+// Only generate the content for interactive users (not search robots).
+if (Filter::getBool('ajax') && Session::has('initiated')) {
+	echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
+	echo '
+		<script>
+		(function() {
+			$("area")
 				.click(function (e) {
 					e.stopPropagation();
 					e.preventDefault();
-					var target = jQuery(this.hash);
+					var target = $(this.hash);
 					target
 						// position the menu centered immediately above the mouse click position and
 						// make sure it doesn’t end up off the screen
@@ -54,77 +44,84 @@ $controller
 						.toggle()
 						.siblings(".fan_chart_menu").hide();
 				});
-			jQuery(".fan_chart_menu")
+			$(".fan_chart_menu")
 				.on("click", "a", function(e) {
 					e.stopPropagation();
 				});
-			jQuery("#fan_chart")
+			$("#fan_chart")
 				.click(function(e) {
-					jQuery(".fan_chart_menu").hide();
+					$(".fan_chart_menu").hide();
 				});
 			return "' . strip_tags($controller->root->getFullName()) . '";
 		})();
-	');
-
-?>
-<div id="page-fan">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<label for="rootid">
-							<?php echo I18N::translate('Individual'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<label for="fan_style">
-							<?php echo I18N::translate('Layout'); ?>
-							</label>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::selectEditControl('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
-					</td>
-					<td rowspan="2" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<label for="generations">
-							<?php echo I18N::translate('Generations'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, 9); ?>
-					</td>
-					<td class="descriptionbox">
-						<label for="fan_width">
-							<?php echo I18N::translate('Zoom'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input type="text" size="3" id="fan_width" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-<?php
-
-if ($controller->error_message) {
-	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+		</script>
+	';
 
 	return;
 }
 
-if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
+if (Filter::getBool('img') && Session::has('initiated')) {
+	header('Content-Type: image/png');
+	echo $controller->generateFanChart('png');
+
+	return;
 }
-echo '</div>';
+
+$controller
+	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->pageHeader();
+
+?>
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
+
+<form class="wt-page-options wt-page-options-fan-chart hidden-print">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+			<?= I18N::translate('Individual') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= FunctionsEdit::formControlIndividual($controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label">
+			<?= I18N::translate('Layout') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select($controller->getFanStyles(), $controller->fan_style, ['id' => 'fan_style', 'name' => 'fan_style']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="generations">
+			<?= I18N::translate('Generations') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, 9)), $controller->generations, ['id' => 'generations', 'name' => 'generations']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="fan_width">
+			<?= I18N::translate('Zoom') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<div class="input-group">
+				<input class="form-control" type="text" size="3" id="fan_width" name="fan_width" value="<?= $controller->fan_width ?>">
+				<span class="input-group-addon">%</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-sm-3 wt-page-options-label"></div>
+		<div class="col-sm-9 wt-page-options-value">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+		</div>
+	</div>
+</form>
+
+<div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart"></div>

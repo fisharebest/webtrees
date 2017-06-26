@@ -23,7 +23,7 @@ class CensusOfFrance1836Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1836
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfFrance1836
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfFrance1836;
@@ -35,8 +35,8 @@ class CensusOfFrance1836Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1836
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusOfFrance1836
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfFrance1836;

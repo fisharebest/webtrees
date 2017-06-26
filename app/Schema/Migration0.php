@@ -370,8 +370,6 @@ class Migration0 implements MigrationInterface {
 		Site::setPreference('SMTP_HOST', 'localhost');
 		Site::setPreference('SMTP_PORT', '25');
 		Site::setPreference('SMTP_AUTH', '1');
-		Site::setPreference('SMTP_AUTH_USER', '');
-		Site::setPreference('SMTP_AUTH_PASS', '');
 		Site::setPreference('SMTP_SSL', 'none');
 		Site::setPreference('SMTP_HELO', $_SERVER['SERVER_NAME']);
 		Site::setPreference('SMTP_FROM_NAME', $_SERVER['SERVER_NAME']);

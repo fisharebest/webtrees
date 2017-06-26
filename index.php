@@ -15,20 +15,15 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 
-define('WT_SCRIPT_NAME', 'index.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
+
+require 'includes/session.php';
 
 // The only option for action is "ajax"
 $action = Filter::get('action');
@@ -75,7 +70,7 @@ if ($action === 'ajax') {
 
 // Redirect search engines to the full URL
 if (Filter::get('ctype') !== $ctype || Filter::get('ged') !== $WT_TREE->getName()) {
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
+	header('Location: index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
 
 	return;
 }
@@ -92,28 +87,28 @@ $controller
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
 
 if ($ctype === 'user') {
-	echo '<div id="my-page">';
-	echo '<h2 class="center">', I18N::translate('My page'), '</h2>';
-} else {
-	echo '<div id="home-page">';
+	echo '<h2 class="text-center">', $controller->getPageTitle(), '</h2>';
 }
+
+echo '<div class="row">';
+
 if ($blocks['main']) {
 	if ($blocks['side']) {
-		echo '<div id="index_main_blocks">';
+		echo '<div class="col-sm-8 wt-main-blocks">';
 	} else {
-		echo '<div id="index_full_blocks">';
+		echo '<div class="col-sm-12 wt-main-blocks">';
 	}
 	foreach ($blocks['main'] as $block_id => $module_name) {
 		if (array_key_exists($module_name, $active_blocks)) {
-			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
-				// Load the block directly
-				echo $active_blocks[$module_name]->getBlock($block_id);
-			} else {
+			if ($active_blocks[$module_name]->loadAjax()) {
 				// Load the block asynchronously
 				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
-					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+					'$("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
+			} else {
+				// Load the block directly
+				echo $active_blocks[$module_name]->getBlock($block_id);
 			}
 		}
 	}
@@ -121,21 +116,21 @@ if ($blocks['main']) {
 }
 if ($blocks['side']) {
 	if ($blocks['main']) {
-		echo '<div id="index_small_blocks">';
+		echo '<div class="col-sm-4 wt-side-blocks">';
 	} else {
-		echo '<div id="index_full_blocks">';
+		echo '<div class="col-sm-12 wt-side-blocks">';
 	}
 	foreach ($blocks['side'] as $block_id => $module_name) {
 		if (array_key_exists($module_name, $active_blocks)) {
-			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
-				// Load the block directly
-				echo $active_blocks[$module_name]->getBlock($block_id);
-			} else {
+			if ($active_blocks[$module_name]->loadAjax()) {
 				// Load the block asynchronously
 				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
-					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+					'$("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
+			} else {
+				// Load the block directly
+				echo $active_blocks[$module_name]->getBlock($block_id);
 			}
 		}
 	}

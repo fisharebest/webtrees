@@ -67,11 +67,11 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 				<col class="width20">
 				<col class="width80">
 			</colgroup>
-			<tr class="noprint">
+			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<label>
 						<input id="show-level-2-notes" type="checkbox">
-						<?php echo I18N::translate('Show all notes'); ?>
+						<?= I18N::translate('Show all notes') ?>
 					</label>
 				</td>
 			</tr>
@@ -93,23 +93,23 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		// New note link
 		if ($controller->record->canEdit()) {
 			?>
-			<tr class="noprint">
+			<tr>
 				<td class="facts_label">
-					<?php echo GedcomTag::getLabel('NOTE'); ?>
+					<?= GedcomTag::getLabel('NOTE') ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
-						<?php echo I18N::translate('Add a note'); ?>
+					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=NOTE">
+						<?= I18N::translate('Add a note') ?>
 					</a>
 				</td>
 			</tr>
-			<tr class="noprint">
+			<tr>
 				<td class="facts_label">
-					<?php echo GedcomTag::getLabel('SHARED_NOTE'); ?>
+					<?= GedcomTag::getLabel('SHARED_NOTE') ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">
-						<?php echo I18N::translate('Add a shared note'); ?>
+					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SHARED_NOTE">
+						<?= I18N::translate('Add a shared note') ?>
 					</a>
 				</td>
 			</tr>
@@ -118,7 +118,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		?>
 		</table>
 		<script>
-			persistent_toggle("show-level-2-notes", ".row_note2");
+			//persistent_toggle("show-level-2-notes", ".row_note2");
 		</script>
 		<?php
 
@@ -156,7 +156,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
-		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
+		return false;
 	}
 
 	/** {@inheritdoc} */

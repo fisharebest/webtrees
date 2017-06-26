@@ -15,21 +15,15 @@
  */
 namespace Fisharebest\Webtrees;
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 
-define('WT_SCRIPT_NAME', 'action.php');
-require './includes/session.php';
+/** @global Tree $WT_TREE */
+global $WT_TREE;
 
-header('Content-type: text/html; charset=UTF-8');
+require 'includes/session.php';
 
 if (!Filter::checkCsrf()) {
 	http_response_code(406);
@@ -37,7 +31,7 @@ if (!Filter::checkCsrf()) {
 	return;
 }
 
-switch (Filter::post('action')) {
+switch (Filter::post('action', null, Filter::get('action'))) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
@@ -94,6 +88,144 @@ case 'copy-fact':
 			}
 		}
 	}
+	break;
+
+case 'create-media-object':
+	$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+
+	// Create a media object, and return parameters needed by Select2
+	header('Content-type: application/json');
+	$filename   = 'eek.jpg';
+	$auto   = Filter::post('auto');
+	$folder = Filter::post('folder');
+	$note   = Filter::post('note');
+	$type   = Filter::post('type');
+	$title  = Filter::post('title');
+
+	// No file uploaded?
+	if (empty($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) {
+		http_response_code(406);
+		break;
+	}
+
+	// The filename
+	$file = $_FILES['file']['name'];
+	$format = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+	$format = strtr($format, ['jpg' => 'jpeg']);
+
+	// The folder
+	$folder = trim($folder, '/');
+
+	// If the folder is invalid, or doesn't exist and can't be created, then use the root folder
+	if (strpos($folder, '..') !== false || !File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder)) {
+		$folder = '';
+	}
+
+	// Generate a unique name for the file?
+	if ($auto === '1' || file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder . $file)) {
+		$folder = '';
+		$file   = sha1($_FILES['file']['tmp_name']) . $format;
+	}
+
+	if ($folder !== '') {
+		$folder .= '/';
+	}
+
+	if (move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $MEDIA_DIRECTORY . $folder . $file)) {
+		Log::addMediaLog('Media file ' . $_FILES['file']['name'] . ' uploaded');
+	} else {
+		FlashMessages::addMessage(
+			I18N::translate('There was an error uploading your file.') .
+			'<br>' .
+			Functions::fileUploadErrorText($_FILES['mediafile']['error'])
+		);
+		break;
+	}
+
+	$gedcom = "0 @new@ OBJE\n1 FILE " . $folder . $file . "\n2 FORM " .  $format;
+	if ($type !== '') {
+		$gedcom .= "\n3 TYPE " . $type;
+	}
+	if ($title !== '') {
+		$gedcom .= "\n2 TITL " . $title;
+	}
+	if ($note !== '') {
+		$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+	}
+	$media_object = $WT_TREE->createRecord($gedcom);
+	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
+	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
+	echo json_encode(['id' => $media_object->getXref(), 'text' => Select2::mediaObjectValue($media_object)]);
+	break;
+
+case 'create-note-object':
+	// Create a note, and return parameters needed by Select2
+	header('Content-type: application/json');
+	$note        = Filter::post('note');
+	$gedcom      = "0 @new@ NOTE " . str_replace("\n", "\n1 CONT ", $note);
+	$note_object = $WT_TREE->createRecord($gedcom);
+	echo json_encode(['id' => $note_object->getXref(), 'text' => Select2::noteValue($note_object)]);
+	break;
+
+case 'create-repository':
+	// Create a repository, and return parameters needed by Select2
+	header('Content-type: application/json');
+	$repository_name = Filter::post('repository_name');
+	$gedcom = "0 @new@ REPO\n1 NAME " . $repository_name;
+	$repository = $WT_TREE->createRecord($gedcom);
+	echo json_encode(['id' => $repository->getXref(), 'text' => Select2::repositoryValue($repository)]);
+	break;
+
+case 'create-source':
+	// Create a source, and return parameters needed by Select2
+	header('Content-type: application/json');
+	$TITL = Filter::post('TITL');
+	$ABBR = Filter::post('ABBR');
+	$AUTH = Filter::post('AUTH');
+	$PUBL = Filter::post('PUBL');
+	$TEXT = Filter::post('TEXT');
+	$REPO = Filter::post('REPO', WT_REGEX_XREF);
+	$CALN = Filter::post('CALN');
+	$gedcom = '0 @new@ SOUR';
+	if ($TITL !== '') {
+		$gedcom .= "\n1 TITL " . $TITL;
+	}
+	if ($ABBR !== '') {
+		$gedcom .= "\n1 ABBR " . $ABBR;
+	}
+	if ($AUTH !== '') {
+		$gedcom .= "\n1 AUTH " . $AUTH;
+	}
+	if ($PUBL !== '') {
+		$gedcom .= "\n1 PUBL " . $PUBL;
+	}
+	if ($TEXT !== '') {
+		$gedcom .= "\n1 TEXT " . str_replace("\n", "\n2 CONT ", $TEXT);
+	}
+	if ($REPO !== '') {
+		$gedcom .= "\n1 REPO @" . $REPO . '@';
+		if ($CALN !== '') {
+			$gedcom .= "\n2 CALN " . $CALN;
+		}
+	}
+	$source = $WT_TREE->createRecord($gedcom);
+	echo json_encode(['id' => $source->getXref(), 'text' => Select2::sourceValue($source)]);
+	break;
+
+case 'create-submitter':
+	// Create a submitter, and return parameters needed by Select2
+	header('Content-type: application/json');
+	$gedcom = '0 @new@ SUBM';
+	$submitter_name = Filter::post('submitter_name', null, '');
+	if ($submitter_name !== '') {
+		$gedcom .= "\n1 NAME " . $submitter_name;
+	}
+	$submitter_address = Filter::post('submitter_address', null, '');
+	if ($submitter_address !== '') {
+		$gedcom .= "\n1 ADDR " . $submitter_address;
+	}
+	$submitter = $WT_TREE->createRecord($gedcom);
+	echo json_encode(['id' => $submitter->getXref(), 'text' => Select2::submitterValue($submitter)]);
 	break;
 
 case 'paste-fact':
@@ -236,6 +368,62 @@ case 'reject-changes':
 	} else {
 		http_response_code(406);
 	}
+	break;
+
+case 'select2-family':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::familySearch($WT_TREE, $page, $query));
+	break;
+
+case 'select2-flag':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::flagSearch($page, $query));
+	break;
+
+case 'select2-individual':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::individualSearch($WT_TREE, $page, $query));
+	break;
+
+case 'select2-media':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::mediaObjectSearch($WT_TREE, $page, $query));
+	break;
+
+case 'select2-note':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::noteSearch($WT_TREE, $page, $query));
+	break;
+
+case 'select2-place':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::placeSearch($WT_TREE, $page, $query, true));
+	break;
+
+case 'select2-repository':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::repositorySearch($WT_TREE, $page, $query));
+	break;
+
+case 'select2-source':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::sourceSearch($WT_TREE, $page, $query));
 	break;
 
 case 'theme':

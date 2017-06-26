@@ -23,75 +23,10 @@ use Fisharebest\Webtrees\I18N;
 class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	/**
 	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
 	 */
-	public function assetUrl() {
-		return 'themes/minimal/css-1.7.8/';
-	}
-
-	/**
-	 * Add markup to a flash message.
-	 *
-	 * @param \stdClass $message
-	 *
-	 * @return string
-	 */
-	protected function flashMessageContainer(\stdClass $message) {
-		// This theme uses jQueryUI markup.
-		switch ($message->status) {
-		case 'danger':
-			return '<p class="ui-state-error">' . $message->text . '</p>';
-		default:
-			return '<p class="ui-state-highlight">' . $message->text . '</p>';
-		}
-	}
-
-	/**
-	 * Create a search field and submit button for the quick search form in the header.
-	 *
-	 * @return string
-	 */
-	protected function formQuickSearchFields() {
-		return
-			'<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
-	}
-
-	/**
-	 * Add markup to the secondary menu.
-	 *
-	 * @return string
-	 */
-	protected function formatSecondaryMenu() {
-		return
-			'<ul class="secondary-menu">' .
-			implode('', $this->secondaryMenu()) .
-			'<li>' .
-			$this->formQuickSearch() .
-			'</li>' .
-			'</ul>';
-	}
-
-	/**
-	 * Create the contents of the <header> tag.
-	 *
-	 * @return string
-	 */
-	protected function headerContent() {
-		return
-			//$this->accessibilityLinks() .
-			$this->formatTreeTitle() .
-			$this->formatSecondaryMenu();
-	}
-
-	/**
-	 * A small "powered by webtrees" logo for the footer.
-	 *
-	 * @return string
-	 */
-	protected function logoPoweredBy() {
-		return '<a href="' . WT_WEBTREES_URL . '" class="powered-by-webtrees" title="' . WT_WEBTREES_URL . '">' . WT_WEBTREES . '</a>';
-	}
+	const THEME_DIR  = 'minimal';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	/**
 	 * Allow themes to add extra scripts to the page footer.
@@ -110,7 +45,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 			' transition: "none",' .
 			' slideshowStart: "' . I18N::translate('Play') . '",' .
 			' slideshowStop: "' . I18N::translate('Stop') . '",' .
-			' title: function() { return jQuery(this).data("title"); }' .
+			' title: function() { return $(this).data("title"); }' .
 			'});' .
 			'</script>';
 	}
@@ -143,19 +78,9 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return [
-			'themes/minimal/jquery-ui-1.11.2/jquery-ui.css',
-			$this->assetUrl() . 'style.css',
-		];
-	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return 'minimal';
+		return array_merge(parent::stylesheets(), [
+			self::STYLESHEET,
+		]);
 	}
 
 	/**

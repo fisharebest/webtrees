@@ -15,8 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-define('WT_SCRIPT_NAME', 'logout.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 // The current tree (if any).
 $gedcom = Session::get('GEDCOM', '');
@@ -27,4 +26,4 @@ if (Auth::id()) {
 	FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
 }
 
-header('Location: ' . WT_BASE_URL . 'index.php?ged=' . rawurlencode($gedcom));
+header('Location: index.php?ged=' . rawurlencode($gedcom));

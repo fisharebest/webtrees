@@ -16,20 +16,20 @@
 /* Belgianchocolate Palette */
 
 /* Header */
-header {
+.wt-header-wrapper, .btn-primary {
 	background: #971702;
 	color: #fff;
 }
 
-.title {
-	text-decoration: none;
-	color: #fff;
+.wt-primary-menu, .btn-primary:hover {
+	background: #311900;
 }
 
 /* Tbls and menus  */
+.wt-page-options-label,
 .descriptionbox, .descriptionbox a, .facts_label03,
 .topbottombar, .topbottombar a, .topbottombar h2,
-.facts_label, .facts_label a, .facts_label h2, .facts_label .date,
+.facts_label, .facts_label a, .facts_label h2, .facts_label .date, .facts_table .descriptionbox a,
 .list_label, .list_label a, #search-page-table, #edituser-table,
 #lightbox_content span a, #lightbox_content span a:hover,
 #separator:after, #family_nav,
@@ -42,16 +42,11 @@ header {
 	background: none repeat scroll 0 0 #af2604;
 }
 
-/* Top Menu  */
-.primary-menu {
-	background: #311900;
-
-}
-
 /* Base */
+.wt-page-options-value,
 #indi_header h3,
-.blockcontent, #search, #search-page-table .value, #edituser-table .value,
-.secondary-menu ul li a:hover, .ui-widget-header, #save-cancel,
+.wt-block-content, #search, #search-page-table .value, #edituser-table .value,
+.secondary-menu ul li a:hover, .ui-widget-header,
 .optionbox, #indi_header .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
 #login-form, #new_passwd_form, #register-form, .facts_value  {

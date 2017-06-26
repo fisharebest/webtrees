@@ -51,16 +51,15 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		$id        = $this->getName() . $block_id;
 		$class     = $this->getName() . '_block';
 		$title     = $WT_TREE->getTitleHtml();
-		$content   = '<table><tr>';
+		$content   = '<div class="row">';
 		if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-			$content .= '<td><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></td>';
+			$content .= '<div class="col"><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></div>';
 		}
-		$content .= '<td><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></td>';
-		if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
-			$content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></td>';
+		$content .= '<div class="col"><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></div>';
+		if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
+			$content .= '<div class="col"><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></div>';
 		}
-		$content .= '</tr>';
-		$content .= '</table>';
+		$content .= '</div>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

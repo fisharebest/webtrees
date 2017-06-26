@@ -16,10 +16,10 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
 
 /**
  * Controller for the individual page
@@ -39,9 +39,6 @@ class IndividualController extends GedcomRecordController {
 
 	/** @var int Count of names. */
 	public $total_names = 0;
-
-	/** ModuleTabInterface[] List of tabs to show */
-	public $tabs;
 
 	/**
 	 * Startup activity
@@ -54,7 +51,6 @@ class IndividualController extends GedcomRecordController {
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
 			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifeSpan());
-			$this->tabs = Module::getActiveTabs($this->record->getTree());
 		}
 	}
 
@@ -92,176 +88,177 @@ class IndividualController extends GedcomRecordController {
 	}
 
 	/**
+	 * Which tabs should we show on this individual's page.
+	 * We don't show empty tabs.
+	 *
+	 * @return ModuleTabInterface[]
+	 */
+	public function getTabs() {
+		$active_tabs = Module::getActiveTabs($this->record->getTree());
+
+		return array_filter($active_tabs, function(ModuleTabInterface $tab) { return $tab->hasTabContent(); });
+	}
+
+	/**
 	 * Handle AJAX requests - to generate the tab content
 	 */
 	public function ajaxRequest() {
-		// Search engines should not make AJAX requests
-		if (Auth::isSearchEngine()) {
-			http_response_code(403);
-			exit;
-		}
+		header('Content-Type: text/html; charset=UTF-8');
 
-		// Initialise tabs
-		$tab = Filter::get('module');
+		$tab  = Filter::get('module');
+		$tabs = $this->getTabs();
 
-		// A request for a non-existant tab?
-		if (array_key_exists($tab, $this->tabs)) {
-			$mod = $this->tabs[$tab];
-		} else {
+		if (!array_key_exists($tab, $tabs)) {
 			http_response_code(404);
-			exit;
-		}
-
-		header('Content-Type: text/html; charset=UTF-8'); // AJAX calls do not have the meta tag headers and need this set
-		header('X-Robots-Tag: noindex,follow'); // AJAX pages should not show up in search results, any links can be followed though
-
-		echo $mod->getTabContent();
-
-		if (WT_DEBUG_SQL) {
-			echo Database::getQueryLog();
+		} else {
+			echo $tabs[$tab]->getTabContent();
 		}
 	}
 
 	/**
-	 * print information for a name record
+	 * Format a name record
 	 *
-	 * @param Fact $event the event object
+	 * @param int  $primary
+	 * @param Fact $fact
+	 *
+	 * @return string
 	 */
-	public function printNameRecord(Fact $event) {
-		$factrec = $event->getGedcom();
+	public function formatNameRecord($n, Fact $fact) {
+		$individual = $fact->getParent();
 
-		// Create a dummy record, so we can extract the formatted NAME value from the event.
+		// Create a dummy record, so we can extract the formatted NAME value from it.
 		$dummy = new Individual(
 			'xref',
-			"0 @xref@ INDI\n1 DEAT Y\n" . $factrec,
+			"0 @xref@ INDI\n1 DEAT Y\n" . $fact->getGedcom(),
 			null,
-			$event->getParent()->getTree()
+			$individual->getTree()
 		);
-		$all_names    = $dummy->getAllNames();
-		$primary_name = $all_names[0];
+		$dummy->setPrimaryName(0); // Make sure we use the name from "1 NAME"
 
-		$this->name_count++;
-		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } // Other names accordion element
-		echo '<div class="indi_name_details';
-		if ($event->isPendingDeletion()) {
-			echo ' old';
-		}
-		if ($event->isPendingAddition()) {
-			echo ' new';
-		}
-		echo '">';
+		$container_class = 'card';
+		$content_class   = 'collapse';
+		$aria            = 'false';
 
-		echo '<div class="name1">';
+		if ($n === 0) {
+			$content_class = 'collapse show';
+			$aria  = 'true';
+		}
+		if ($fact->isPendingDeletion()) {
+			$container_class .= ' old';
+		} elseif ($fact->isPendingAddition()) {
+			$container_class .= ' new';
+		}
+
+		ob_start();
 		echo '<dl><dt class="label">', I18N::translate('Name'), '</dt>';
-		$dummy->setPrimaryName(0);
-		echo '<dd class="field">', $dummy->getFullName();
-		if ($this->name_count == 1) {
-			if (Auth::isAdmin()) {
-				$user = User::findByGenealogyRecord($this->record);
-				if ($user) {
-					echo '<span> - <a class="warning" href="admin_users.php?filter=' . Filter::escapeHtml($user->getUserName()) . '">' . Filter::escapeHtml($user->getUserName()) . '</a></span>';
+		echo '<dd class="field">', $dummy->getFullName(), '</dd>';
+		$ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->getGedcom(), $nmatch, PREG_SET_ORDER);
+		for ($i = 0; $i < $ct; $i++) {
+			$tag = $nmatch[$i][1];
+			if ($tag != 'SOUR' && $tag != 'NOTE' && $tag != 'SPFX') {
+				echo '<dt class="label">', GedcomTag::getLabel($tag, $this->record), '</dt>';
+				echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
+				if (isset($nmatch[$i][2])) {
+					$name = Filter::escapeHtml($nmatch[$i][2]);
+					$name = str_replace('/', '', $name);
+					$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
+					switch ($tag) {
+					case 'TYPE':
+						echo GedcomCodeName::getValue($name, $this->record);
+						break;
+					case 'SURN':
+						// The SURN field is not necessarily the surname.
+						// Where it is not a substring of the real surname, show it after the real surname.
+						$surname = Filter::escapeHtml($dummy->getAllNames()[0]['surname']);
+						if (strpos($dummy->getAllNames()[0]['surname'], str_replace(',', ' ', $nmatch[$i][2])) !== false) {
+							echo '<span dir="auto">' . $surname . '</span>';
+						} else {
+							echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
+						}
+						break;
+					default:
+						echo '<span dir="auto">' . $name . '</span>';
+						break;
+					}
 				}
+				echo '</dd>';
+				echo '</dl>';
 			}
 		}
-		if ($this->record->canEdit() && !$event->isPendingDeletion()) {
-			echo "<div class=\"deletelink noprint\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('" . I18N::translate('Are you sure you want to delete this fact?') . "', '" . $this->record->getXref() . "', '" . $event->getFactId() . "');\" title=\"" . I18N::translate('Delete this name') . '"><span class="link_text">' . I18N::translate('Delete this name') . '</span></a></div>';
-			echo "<div class=\"editlink noprint\"><a href=\"#\" class=\"editicon\" onclick=\"edit_name('" . $this->record->getXref() . "', '" . $event->getFactId() . "'); return false;\" title=\"" . I18N::translate('Edit the name') . '"><span class="link_text">' . I18N::translate('Edit the name') . '</span></a></div>';
+		if (preg_match("/\n2 SOUR/", $fact->getGedcom())) {
+			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($fact->getGedcom(), 2), '</div>';
 		}
-		echo '</dd>';
-		echo '</dl>';
-		echo '</div>';
-		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
-		for ($i = 0; $i < $ct; $i++) {
-			echo '<div>';
-				$fact = $nmatch[$i][1];
-				if ($fact != 'SOUR' && $fact != 'NOTE' && $fact != 'SPFX') {
-					echo '<dl><dt class="label">', GedcomTag::getLabel($fact, $this->record), '</dt>';
-					echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
-					if (isset($nmatch[$i][2])) {
-							$name = Filter::escapeHtml($nmatch[$i][2]);
-							$name = str_replace('/', '', $name);
-							$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
-							switch ($fact) {
-							case 'TYPE':
-								echo GedcomCodeName::getValue($name, $this->record);
-								break;
-							case 'SURN':
-								// The SURN field is not necessarily the surname.
-								// Where it is not a substring of the real surname, show it after the real surname.
-								$surname = Filter::escapeHtml($primary_name['surname']);
-								if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2])) !== false) {
-									echo '<span dir="auto">' . $surname . '</span>';
-								} else {
-									echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
-								}
-								break;
-							default:
-								echo '<span dir="auto">' . $name . '</span>';
-								break;
-							}
-						}
-					echo '</dd>';
-					echo '</dl>';
-				}
-			echo '</div>';
+		if (preg_match("/\n2 NOTE/", $fact->getGedcom())) {
+			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($fact->getGedcom(), 2), '</div>';
 		}
-		if (preg_match("/\n2 SOUR/", $factrec)) {
-			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($factrec, 2), '</div>';
+		$content = ob_get_clean();
+
+		if ($this->record->canEdit() && !$fact->isPendingDeletion()) {
+			$edit_links =
+				FontAwesome::linkIcon('delete', I18N::translate('Delete this name'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $this->record->getXref() . '", "' . $fact->getFactId() . '");']) .
+				FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=editname&xref=' . $this->record->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $this->record->getTree()->getNameHtml()]);
+		} else {
+			$edit_links = '';
 		}
-		if (preg_match("/\n2 NOTE/", $factrec)) {
-			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($factrec, 2), '</div>';
-		}
-		echo '</div>';
+
+		return '
+			<div class="' . $container_class . '">
+        <div class="card-header" role="tab" id="name-header-' . $n . '">
+		        <a data-toggle="collapse" data-parent="#individual-names" href="#name-content-' . $n . '" aria-expanded="' . $aria . '" aria-controls="name-content-' . $n . '">' . $dummy->getFullName() . '</a>
+		      ' . $edit_links . '
+        </div>
+		    <div id="name-content-' . $n . '" class="' . $content_class . '" role="tabpanel" aria-labelledby="name-header-' . $n . '">
+		      <div class="card-block">' . $content . '</div>
+        </div>
+      </div>';
 	}
 
 	/**
 	 * print information for a sex record
 	 *
 	 * @param Fact $event the Event object
+	 *
+	 * @return string
 	 */
-	public function printSexRecord(Fact $event) {
-		$sex = $event->getValue();
-		if (empty($sex)) {
-			$sex = 'U';
-		}
-		echo '<span id="sex" class="';
-		if ($event->isPendingDeletion()) {
-			echo 'old ';
-		}
-		if ($event->isPendingAddition()) {
-			echo 'new ';
-		}
-		switch ($sex) {
+	public function formatSexRecord(Fact $fact) {
+		$individual = $fact->getParent();
+
+		switch ($fact->getValue()) {
 		case 'M':
-			echo 'male_gender"';
-			if ($event->canEdit()) {
-				echo ' title="', I18N::translate('Male'), ' - ', I18N::translate('Edit'), '"';
-				echo ' onclick="edit_record(\'' . $this->record->getXref() . '\', \'' . $event->getFactId() . '\'); return false;">';
-			 } else {
-				echo ' title="', I18N::translate('Male'), '">';
-			 }
+			$sex = I18N::translate('Male');
 			break;
 		case 'F':
-			echo 'female_gender"';
-			if ($event->canEdit()) {
-				echo ' title="', I18N::translate('Female'), ' - ', I18N::translate('Edit'), '"';
-				echo ' onclick="edit_record(\'' . $this->record->getXref() . '\', \'' . $event->getFactId() . '\'); return false;">';
-			 } else {
-				echo ' title="', I18N::translate('Female'), '">';
-			 }
+			$sex = I18N::translate('Female');
 			break;
 		default:
-			echo 'unknown_gender"';
-			if ($event->canEdit()) {
-				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), ' - ', I18N::translate('Edit'), '"';
-				echo ' onclick="edit_record(\'' . $this->record->getXref() . '\', \'' . $event->getFactId() . '\'); return false;">';
-			 } else {
-				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), '">';
-			 }
+			$sex = I18N::translateContext('unknown gender', 'Unknown');
 			break;
 		}
-		echo '</span>';
+
+		$container_class = 'card';
+		if ($fact->isPendingDeletion()) {
+			$container_class .= ' old';
+		} elseif ($fact->isPendingAddition()) {
+			$container_class .= ' new';
+		}
+
+		if ($individual->canEdit() && !$fact->isPendingDeletion()) {
+			$edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $individual->getTree()->getNameHtml() ]);
+
+		} else {
+			$edit_links = '';
+		}
+
+	return '
+		<div class="' . $container_class . '">
+			<div class="card-header" role="tab" id="name-header-add">
+				<div class="card-title mb-0">
+					<b>' . I18N::translate('Gender') . '</b> ' .  $sex . $edit_links . '
+				</div>
+			</div>
+		</div>';
 	}
+
 	/**
 	 * get edit menu
 	 */
@@ -273,30 +270,20 @@ class IndividualController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Add a name'), '#', 'menu-indi-addname', [
-				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
-			]));
-
 			$has_sex_record = false;
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag() === 'SEX' && $fact->canEdit()) {
-					$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', [
-						'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-					]));
+					$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), 'edit_interface.php?action=edit&amp;xref=' . $this->record->getXref() . '&amp;fact_id=' . $fact->getFactId() . '&amp;ged=' . $this->record->getTree()->getNameHtml(), 'menu-indi-editsex'));
 					$has_sex_record = true;
 					break;
 				}
 			}
 			if (!$has_sex_record) {
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', [
-					'onclick' => 'return add_new_record("' . $this->record->getXref() . '", "SEX");',
-				]));
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), 'edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SEX', 'menu-indi-editsex'));
 			}
 
 			if (count($this->record->getSpouseFamilies()) > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), '#', 'menu-indi-orderfam', [
-					'onclick' => 'return reorder_families("' . $this->record->getXref() . '");',
-				]));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder_fams&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-orderfam'));
 			}
 
 			// delete
@@ -307,9 +294,7 @@ class IndividualController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-indi-editraw', [
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			]));
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-editraw'));
 		}
 
 		return $menu;
@@ -365,34 +350,27 @@ class IndividualController extends GedcomRecordController {
 	 * @return string
 	 */
 	public function getSideBarContent() {
-		global $controller;
-
-		$html   = '';
-		$active = 0;
-		$n      = 0;
-		foreach (Module::getActiveSidebars($this->record->getTree()) as $mod) {
-			if ($mod->hasSidebarContent()) {
-				$html .= '<h3 id="' . $mod->getName() . '"><a href="#">' . $mod->getTitle() . '</a></h3>';
-				$html .= '<div id="sb_content_' . $mod->getName() . '">' . $mod->getSidebarContent() . '</div>';
-				// The family navigator should be opened by default
-				if ($mod->getName() == 'family_nav') {
-					$active = $n;
-				}
-				++$n;
+		$html = '';
+		foreach (Module::getActiveSidebars($this->record->getTree()) as $module) {
+			if ($module->hasSidebarContent()) {
+				$class = $module->getName() === 'family_nav' ? 'collapse show' : 'collapse';
+				$aria  = $module->getName() === 'family_nav' ? 'true' : 'false';
+				$html .= '
+				<div class="card">
+          <div class="card-header" role="tab" id="sidebar-header-' . $module->getName() . '">
+			      <div class="card-title mb-0">
+			        <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-content-' . $module->getName() . '" aria-expanded="' . $aria . '" aria-controls="sidebar-content-' . $module->getName() . '">' . $module->getTitle() . '</a>
+			      </div>
+	        </div>
+			    <div id="sidebar-content-' . $module->getName() . '" class="' . $class . '" role="tabpanel" aria-labelledby="sidebar-header-' . $module->getName() . '">
+			      <div class="card-block">' . $module->getSidebarContent() . '</div>
+          </div>
+        </div>';
 			}
 		}
 
 		if ($html) {
-			$controller
-				->addInlineJavascript('
-				jQuery("#sidebarAccordion").accordion({
-					active:' . $active . ',
-					heightStyle: "content",
-					collapsible: true,
-				});
-			');
-
-			return '<div id="sidebar"><div id="sidebarAccordion">' . $html . '</div></div>';
+			return '<div id="sidebar" role="tablist">' . $html . '</div>';
 		} else {
 			return '';
 		}

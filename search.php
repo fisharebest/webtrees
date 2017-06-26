@@ -18,14 +18,10 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\SearchController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
-define('WT_SCRIPT_NAME', 'search.php');
-require './includes/session.php';
+require 'includes/session.php';
 
 $controller = new SearchController;
-$controller
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+$controller->pageHeader();
 
 ?>
 <script>
@@ -76,7 +72,7 @@ function checknames(frm) {
 				<?= I18N::translate('Search for') ?>
 			</label>
 			<div class="value">
-				<input id="query" type="text" name="query" value="<?= Filter::escapeHtml($controller->query) ?>" size="40" autofocus>
+				<input id="query" type="text" name="query" value="<?= Filter::escapeHtml($controller->query) ?>" size="30" autofocus>
 				<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
 			</div>
 			<div class="label">
@@ -263,12 +259,14 @@ function checknames(frm) {
 					<?= I18N::translate('Daitch-Mokotoff') ?>
 				</label>
 			</div>
-			<label class="label" for="showasso">
+			<div class="label" for="showasso">
 				<?= I18N::translate('Associates') ?>
-			</label>
+			</div>
 			<div class="value">
+				<label>
 				<input type="checkbox" name="showasso" id="showasso" value="on" <?= $controller->showasso === 'on' ? 'checked' : '' ?>>
 				<?= I18N::translate('Show related individuals/families') ?>
+				</label>
 			</div>
 			<?php if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1'): ?>
 				<?php if (count(Tree::getAll()) > 3): ?>

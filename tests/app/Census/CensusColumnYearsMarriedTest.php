@@ -31,8 +31,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoSpouseFamily() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -47,8 +47,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoMarriage() {
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -66,8 +66,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testUndatedMarriage() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -88,8 +88,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testMarriageAfterCensus() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
@@ -110,8 +110,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
+	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testMarriageBeforeCensus() {
 		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');

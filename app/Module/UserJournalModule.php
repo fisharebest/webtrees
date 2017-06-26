@@ -68,15 +68,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
-		switch (Filter::get('action')) {
-		case 'deletenews':
-			$news_id = Filter::getInteger('news_id');
-			if ($news_id) {
-				Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute([$news_id]);
-			}
-			break;
-		}
-
 		$articles = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
 		)->execute([
@@ -101,13 +92,13 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 				$article->body = nl2br($article->body, false);
 			}
 			$content .= $article->body;
-			$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $article->news_id . ', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Edit') . '</a>';
+			$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('Edit') . '</a>';
 			$content .= ' | ';
-			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $article->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
+			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
 			$content .= '</div><br>';
 		}
 
-		$content .= '<p><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a></p>';
+		$content .= '<p><a href="editnews.php?ctype=user&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('Add a journal entry') . '</a></p>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

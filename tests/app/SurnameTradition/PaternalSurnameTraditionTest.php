@@ -34,7 +34,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test whether married surnames are used
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testMarriedSurnames() {
 		$this->assertSame(true, $this->surname_tradition->hasMarriedNames());
@@ -43,7 +43,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test whether surnames are used
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testSurnames() {
 		$this->assertSame(true, $this->surname_tradition->hasSurnames());
@@ -52,7 +52,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new son names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
@@ -64,7 +64,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new daughter names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
@@ -76,7 +76,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
@@ -88,7 +88,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewChildNamesWithSpfx() {
 		$this->assertSame(
@@ -100,7 +100,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewChildNamesWithMultipleSpfx() {
 		$this->assertSame(
@@ -112,7 +112,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewChildNamesWithDutchSpfx() {
 		$this->assertSame(
@@ -128,7 +128,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewChildNamesWithMultipleDutchSpfx() {
 		$this->assertSame(
@@ -144,7 +144,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new father names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
@@ -156,7 +156,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new mother names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
@@ -168,7 +168,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new parent names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
@@ -180,7 +180,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new husband names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
@@ -192,7 +192,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new wife names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
@@ -204,7 +204,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new wife names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewWifeNamesWithSpfx() {
 		$this->assertSame(
@@ -216,7 +216,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new spouse names
 	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(

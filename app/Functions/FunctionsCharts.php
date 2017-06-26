@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -28,35 +29,26 @@ class FunctionsCharts {
 	/**
 	 * print a table cell with sosa number
 	 *
-	 * @param int $sosa
-	 * @param string $pid optional pid
-	 * @param string $arrowDirection direction of link arrow
+	 * @param int    $sosa
+	 * @param string $pid  optional pid
+	 * @param string $icon which arrow to use
 	 */
-	public static function printSosaNumber($sosa, $pid = '', $arrowDirection = 'up') {
-		if (substr($sosa, -1, 1) == '.') {
+	public static function printSosaNumber($sosa, $pid = '', $icon = '') {
+		if (substr($sosa, -1, 1) === '.') {
 			$personLabel = substr($sosa, 0, -1);
 		} else {
 			$personLabel = $sosa;
 		}
-		if ($arrowDirection == 'blank') {
+		if ($icon == '') {
 			$visibility = 'hidden';
 		} else {
 			$visibility = 'normal';
 		}
 		echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
 		echo $personLabel;
-		if ($sosa != '1' && $pid != '') {
-			if ($arrowDirection == 'left') {
-				$dir = 0;
-			} elseif ($arrowDirection == 'right') {
-				$dir = 1;
-			} elseif ($arrowDirection == 'down') {
-				$dir = 3;
-			} else {
-				$dir = 2; // either 'blank' or 'up'
-			}
+		if ($sosa != '1' && $pid !== '') {
 			echo '<br>';
-			self::printUrlArrow('#' . $pid, $pid, $dir);
+			echo FontAwesome::linkIcon($icon, $pid, ['href' => '#' . $pid]);
 		}
 		echo '</td>';
 	}
@@ -69,15 +61,10 @@ class FunctionsCharts {
 	 * @param string $label     indi label (descendancy booklet)
 	 * @param string $parid     parent ID (descendancy booklet)
 	 * @param string $gparid    gd-parent ID (descendancy booklet)
-	 * @param bool   $show_full large or small box
 	 */
-	public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = true) {
+	public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '') {
 
-		if ($show_full) {
-			$pbheight = Theme::theme()->parameter('chart-box-y') + 14;
-		} else {
-			$pbheight = Theme::theme()->parameter('compact-chart-box-y') + 14;
-		}
+		$pbheight = Theme::theme()->parameter('chart-box-y') + 14;
 
 		$husb = $family->getHusband();
 		if ($husb) {
@@ -100,16 +87,16 @@ class FunctionsCharts {
 		 * husband side
 		 */
 		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
-		echo '<table border="0"><tr>';
+		echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 
 		if ($parid) {
 			if ($husb->getXref() == $parid) {
-				self::printSosaNumber($label);
+				self::printSosaNumber($label, '', 'arrow-up');
 			} else {
-				self::printSosaNumber($label, '', 'blank');
+				self::printSosaNumber($label, '', 'arrow-up');
 			}
 		} elseif ($sosa) {
-			self::printSosaNumber($sosa * 2);
+			self::printSosaNumber($sosa * 2, '', 'arrow-up');
 		}
 		if ($husb->isPendingAddtion()) {
 			echo '<td class="facts_value new">';
@@ -118,60 +105,60 @@ class FunctionsCharts {
 		} else {
 			echo '<td>';
 		}
-		FunctionsPrint::printPedigreePerson($husb, $show_full);
+		FunctionsPrint::printPedigreePerson($husb);
 		echo '</td></tr></table>';
 		echo '</td>';
 		// husband’s parents
 		$hfam = $husb->getPrimaryChildFamily();
 		if ($hfam) {
 			// remove the|| test for $sosa
-			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight + 9) . '"></td>';
-			echo '<td><img class="line5" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
+			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight -14 ) . '"></td>';
+			echo '<td><img class="rap" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// husband’s father
 			if ($hfam && $hfam->getHusband()) {
-				echo '<table border="0"><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				if ($sosa > 0) {
-					self::printSosaNumber($sosa * 4, $hfam->getHusband()->getXref(), 'down');
+					self::printSosaNumber($sosa * 4, $hfam->getHusband()->getXref(), 'arrow-down');
 				}
 				if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
-					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.');
+					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
 				}
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getHusband());
 				echo '</td></tr></table>';
 			} elseif ($hfam && !$hfam->getHusband()) {
 				// Empty box for grandfather
-				echo '<table border="0"><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getHusband());
 				echo '</td></tr></table>';
 			}
 			echo '</td>';
 		}
 		if ($hfam && ($sosa != -1)) {
 			echo '<td rowspan="2">';
-			self::printUrlArrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+			echo FontAwesome::linkIcon('arrow-end', $hfam->getXref(), ['href' => ($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref())]);
 			echo '</td>';
 		}
 		if ($hfam) {
 			// husband’s mother
 			echo '</tr><tr><td><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			if ($hfam && $hfam->getWife()) {
-				echo '<table border=\'0\'><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				if ($sosa > 0) {
-					self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->getXref(), 'down');
+					self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->getXref(), 'arrow-down');
 				}
 				if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
-					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.');
+					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
 				}
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getWife());
 				echo '</td></tr></table>';
 			} elseif ($hfam && !$hfam->getWife()) {
 				// Empty box for grandmother
-				echo '<table border="0"><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getWife());
 				echo '</td></tr></table>';
 			}
 			echo '</td>';
@@ -192,15 +179,15 @@ class FunctionsCharts {
 		 * wife side
 		 */
 		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
-		echo '<table><tr>';
+		echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 		if ($parid) {
 			if ($wife->getXref() == $parid) {
-				self::printSosaNumber($label);
+				self::printSosaNumber($label, '', 'arrow-up');
 			} else {
-				self::printSosaNumber($label, '', 'blank');
+				self::printSosaNumber($label, '', 'arrow-up');
 			}
 		} elseif ($sosa) {
-			self::printSosaNumber($sosa * 2 + 1);
+			self::printSosaNumber($sosa * 2 + 1, '', 'arrow-up');
 		}
 		if ($wife->isPendingAddtion()) {
 			echo '<td class="facts_value new">';
@@ -209,60 +196,61 @@ class FunctionsCharts {
 		} else {
 			echo '<td>';
 		}
-		FunctionsPrint::printPedigreePerson($wife, $show_full);
+		FunctionsPrint::printPedigreePerson($wife);
 		echo '</td></tr></table>';
 		echo '</td>';
 		// wife’s parents
 		$hfam = $wife->getPrimaryChildFamily();
 
 		if ($hfam) {
-			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight + 9) . '"></td>';
-			echo '<td><img class="line5" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
+			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight -14 ) . '"></td>';
+			echo '<td><img class="rapS" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// wife’s father
 			if ($hfam && $hfam->getHusband()) {
-				echo '<table><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				if ($sosa > 0) {
-					self::printSosaNumber($sosa * 4 + 2, $hfam->getHusband()->getXref(), 'down');
+					self::printSosaNumber($sosa * 4 + 2, $hfam->getHusband()->getXref(), 'arrow-down');
 				}
 				if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
-					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.');
+					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
 				}
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getHusband());
 				echo '</td></tr></table>';
 			} elseif ($hfam && !$hfam->getHusband()) {
 				// Empty box for grandfather
-				echo '<table border="0"><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getHusband());
 				echo '</td></tr></table>';
 			}
 			echo '</td>';
 		}
 		if ($hfam && ($sosa != -1)) {
 			echo '<td rowspan="2">';
-			self::printUrlArrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+			echo FontAwesome::linkIcon('arrow-end', $hfam->getXref(), ['href' => ($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref())]);
+
 			echo '</td>';
 		}
 		if ($hfam) {
 			// wife’s mother
 			echo '</tr><tr><td><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			if ($hfam && $hfam->getWife()) {
-				echo '<table><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				if ($sosa > 0) {
-					self::printSosaNumber($sosa * 4 + 3, $hfam->getWife()->getXref(), 'down');
+					self::printSosaNumber($sosa * 4 + 3, $hfam->getWife()->getXref(), 'arrow-down');
 				}
 				if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
-					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.');
+					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', 'arrow-up');
 				}
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getWife());
 				echo '</td></tr></table>';
 			} elseif ($hfam && !$hfam->getWife()) {
 				// Empty box for grandmother
-				echo '<table border="0"><tr>';
+				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 				echo '<td>';
-				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
+				FunctionsPrint::printPedigreePerson($hfam->getWife());
 				echo '</td></tr></table>';
 			}
 			echo '</td>';
@@ -278,22 +266,16 @@ class FunctionsCharts {
 	 * @param int    $sosa         child sosa number
 	 * @param string $label        indi label (descendancy booklet)
 	 * @param int    $show_cousins display cousins on chart
-	 * @param bool   $show_full    large or small box
 	 */
-	public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = true) {
-
-		if ($show_full) {
-			$bheight = Theme::theme()->parameter('chart-box-y');
-		} else {
-			$bheight = Theme::theme()->parameter('compact-chart-box-y');
-		}
+	public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0) {
+		$bheight = Theme::theme()->parameter('chart-box-y');
 
 		$pbheight = $bheight + 14;
 
 		$children = $family->getChildren();
 		$numchil  = count($children);
 
-		echo '<table border="0" cellpadding="0" cellspacing="2"><tr>';
+		echo '<table border="0" cellpadding="0" cellspacing="0"><tr>';
 		if ($sosa > 0) {
 			echo '<td></td>';
 		}
@@ -307,9 +289,9 @@ class FunctionsCharts {
 
 		if ($sosa == 0 && Auth::isEditor($family->getTree())) {
 			echo '<br>';
-			echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . I18N::translate('Add a child to this family') . '</a>';
-			echo ' <a class="icon-sex_m_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'M\');" title="', I18N::translate('son'), '"></a>';
-			echo ' <a class="icon-sex_f_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'F\');" title="', I18N::translate('daughter'), '"></a>';
+			echo '<a href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() .'&amp;xref=' . $family->getXref() . '&amp;gender=U">' . I18N::translate('Add a child to this family') . '</a>';
+			echo ' <a class="icon-sex_m_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() .'&amp;xref=' . $family->getXref() . '&amp;gender=M" title="', I18N::translate('son'), '"></a>';
+			echo ' <a class="icon-sex_f_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() .'&amp;xref=' . $family->getXref() . '&amp;gender=F" title="', I18N::translate('daughter'), '"></a>';
 			echo '<br><br>';
 		}
 		echo '</td>';
@@ -324,11 +306,11 @@ class FunctionsCharts {
 				echo '<tr>';
 				if ($sosa != 0) {
 					if ($child->getXref() == $childid) {
-						self::printSosaNumber($sosa, $childid);
+						self::printSosaNumber($sosa, $childid, 'arrow-up');
 					} elseif (empty($label)) {
-						self::printSosaNumber('');
+						self::printSosaNumber('', '', 'arrow-up');
 					} else {
-						self::printSosaNumber($label . ($nchi++) . '.');
+						self::printSosaNumber($label . ($nchi++) . '.', '', 'arrow-up');
 					}
 				}
 				if ($child->isPendingAddtion()) {
@@ -338,7 +320,7 @@ class FunctionsCharts {
 				} else {
 					echo '<td>';
 				}
-				FunctionsPrint::printPedigreePerson($child, $show_full);
+				FunctionsPrint::printPedigreePerson($child);
 				echo '</td>';
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
@@ -364,7 +346,7 @@ class FunctionsCharts {
 							}
 
 							if ($f == $maxfam) {
-								echo '<img height="' . ((($bheight / 2)) + $PBadj) . 'px"';
+								echo '<img height="' . ((($bheight / 2)) ) . 'px"';
 							} else {
 								echo '<img height="' . $pbheight . 'px"';
 							}
@@ -384,7 +366,7 @@ class FunctionsCharts {
 								echo '–', $div->getDate()->minimumDate()->format('%Y');
 							}
 						}
-						echo '<br><img width="100%" class="line5" height="3" src="' . Theme::theme()->parameter('image-hline') . '" alt="">';
+						echo '<br><img width="100%" class="line5" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
 						echo '</td>';
 						// spouse information
 						echo '<td style="vertical-align: center;';
@@ -393,11 +375,11 @@ class FunctionsCharts {
 						} else {
 							echo '">';
 						}
-						FunctionsPrint::printPedigreePerson($spouse, $show_full);
+						FunctionsPrint::printPedigreePerson($spouse);
 						echo '</td>';
 						// cousins
 						if ($show_cousins) {
-							self::printCousins($famid_child, $show_full);
+							self::printCousins($famid_child);
 						}
 					}
 				}
@@ -423,9 +405,8 @@ class FunctionsCharts {
 	 * @param string $parid        parent ID (descendancy booklet)
 	 * @param string $gparid       gd-parent ID (descendancy booklet)
 	 * @param int    $show_cousins display cousins on chart
-	 * @param bool   $show_full    large or small box
 	 */
-	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = true) {
+	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0) {
 		global $WT_TREE;
 
 		echo '<hr>';
@@ -433,41 +414,12 @@ class FunctionsCharts {
 		if (!empty($famid)) {
 			echo '<a name="', $famid, '"></a>';
 		}
-		self::printFamilyParents(Family::getInstance($famid, $WT_TREE), $sosa, $label, $parid, $gparid, $show_full);
+		self::printFamilyParents(Family::getInstance($famid, $WT_TREE), $sosa, $label, $parid, $gparid);
 		echo '<br>';
-		echo '<table><tr><td>';
-		self::printFamilyChildren(Family::getInstance($famid, $WT_TREE), $childid, $sosa, $label, $show_cousins, $show_full);
+		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td>';
+		self::printFamilyChildren(Family::getInstance($famid, $WT_TREE), $childid, $sosa, $label, $show_cousins);
 		echo '</td></tr></table>';
 		echo '<br>';
-	}
-
-	/**
-	 * print an arrow to a new url
-	 *
-	 * @param string $url target url
-	 * @param string $label arrow label
-	 * @param int $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
-	 */
-	public static function printUrlArrow($url, $label, $dir = 2) {
-		if ($url === '') {
-			return;
-		}
-
-		// arrow direction
-		$adir = $dir;
-		if (I18N::direction() === 'rtl' && $dir === 0) {
-			$adir = 1;
-		}
-		if (I18N::direction() === 'rtl' && $dir === 1) {
-			$adir = 0;
-		}
-
-		// arrow style     0         1         2         3
-		$array_style = ['icon-larrow', 'icon-rarrow', 'icon-uarrow', 'icon-darrow'];
-		$astyle      = $array_style[$adir];
-
-		// Labels include people’s names, which may contain markup
-		echo '<a href="' . $url . '" title="' . strip_tags($label) . '" class="' . $astyle . '"></a>';
 	}
 
 	/**
@@ -495,34 +447,27 @@ class FunctionsCharts {
 	/**
 	 * print cousins list
 	 *
-	 * @param string $famid     family ID
-	 * @param bool   $show_full large or small box
+	 * @param string $famid family ID
 	 */
-	public static function printCousins($famid, $show_full = true) {
+	public static function printCousins($famid) {
 		global $WT_TREE;
 
-		if ($show_full) {
-			$bheight = Theme::theme()->parameter('chart-box-y');
-		} else {
-			$bheight = Theme::theme()->parameter('compact-chart-box-y');
-		}
-
+		$bheight   = Theme::theme()->parameter('chart-box-y');
 		$family    = Family::getInstance($famid, $WT_TREE);
 		$fchildren = $family->getChildren();
-
-		$kids = count($fchildren);
+		$kids      = count($fchildren);
 
 		echo '<td>';
 		if ($kids) {
 			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
 			if ($kids > 1) {
-				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight + 9) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
+				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids -1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
 			}
 			$ctkids = count($fchildren);
 			$i      = 1;
 			foreach ($fchildren as $fchil) {
 				if ($i == 1) {
-					echo '<td><img width="10px" height="3px" style="vertical-align:top"';
+					echo '<td><img width="10px" height="3px" style="vertical-align:middle"';
 				} else {
 					echo '<td><img width="10px" height="3px"';
 				}
@@ -532,7 +477,7 @@ class FunctionsCharts {
 					echo ' style="padding-left: 2px;"';
 				}
 				echo ' src="', Theme::theme()->parameter('image-hline'), '"></td><td>';
-				FunctionsPrint::printPedigreePerson($fchil, $show_full);
+				FunctionsPrint::printPedigreePerson($fchil);
 				echo '</td></tr>';
 				if ($i < $ctkids) {
 					echo '<tr>';

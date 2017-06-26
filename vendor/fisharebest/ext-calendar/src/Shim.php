@@ -9,7 +9,7 @@ use InvalidArgumentException;
  * @link      http://php.net/manual/en/book.calendar.php
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -140,12 +140,14 @@ class Shim {
 	 * This bug relates to the number of days in the month 13 of year 14 in
 	 * the French calendar.
 	 *
+	 * It was fixed in PHP 5.6.25 and 7.0.10
+	 *
 	 * @link https://bugs.php.net/bug.php?id=67976
 	 *
 	 * @return boolean
 	 */
 	public static function shouldEmulateBug67976() {
-		return true;
+		return version_compare(PHP_VERSION, '5.6.25', '<') || version_compare(PHP_VERSION, '7.0.0', '>=') && version_compare(PHP_VERSION, '7.0.10', '<') ;
 	}
 
 	/**
@@ -241,7 +243,15 @@ class Shim {
 		case CAL_JEWISH:
 			$months = self::jdMonthNameJewishMonths($julian_day);
 
-			return self::calFromJdCalendar($julian_day, self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846), $months, $months);
+			$cal = self::calFromJdCalendar($julian_day, self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846), $months, $months);
+
+			if (($julian_day < 347998 || $julian_day > 324542846) && !self::shouldEmulateBug67976()) {
+				$cal['dow'] = null;
+				$cal['dayname'] = '';
+				$cal['abbrevdayname'] = '';
+			}
+
+			return $cal;
 
 		case CAL_JULIAN:
 			return self::calFromJdCalendar($julian_day, self::jdToJulian($julian_day), self::$MONTH_NAMES, self::$MONTH_NAMES_SHORT);

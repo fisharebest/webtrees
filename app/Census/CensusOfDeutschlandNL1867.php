@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -27,7 +28,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
 	public function censusDate() {
 		return '03 DEC 1867';
 	}
-	
+
 	/**
 	 * Where did this census occur, in GEDCOM format.
 	 *
@@ -35,7 +36,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
 	 */
 	public function censusPlace() {
 		return 'Mecklenburg-Schwerin (Nachtragsliste), Deutschland';
-	}	
+	}
 
 	/**
 	 * The columns of the census.

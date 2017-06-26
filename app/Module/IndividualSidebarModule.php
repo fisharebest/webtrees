@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
@@ -63,7 +62,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		return !Auth::isSearchEngine();
+		return true;
 	}
 
 	/** {@inheritdoc} */
@@ -100,23 +99,23 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 			var loadedNames = new Array();
 
 			function isearchQ() {
-				var query = jQuery("#sb_indi_name").val();
+				var query = $("#sb_indi_name").val();
 				if (query.length>1) {
-					jQuery("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
+					$("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
 				}
 			}
 
 			var timerid = null;
-			jQuery("#sb_indi_name").keyup(function(e) {
+			$("#sb_indi_name").keyup(function(e) {
 				if (timerid) window.clearTimeout(timerid);
 				timerid = window.setTimeout("isearchQ()", 500);
 			});
-			jQuery("#sb_content_individuals").on("click", ".sb_indi_letter", function() {
-				jQuery("#sb_indi_content").load(this.href);
+			$("#sb_content_individuals").on("click", ".sb_indi_letter", function() {
+				$("#sb_indi_content").load(this.href);
 				return false;
 			});
-			jQuery("#sb_content_individuals").on("click", ".sb_indi_surname", function() {
-				var element = jQuery(this);
+			$("#sb_content_individuals").on("click", ".sb_indi_surname", function() {
+				var element = $(this);
 				var surname = element.data("surname");
 				var alpha   = element.data("alpha");
 
@@ -125,7 +124,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
-					    jQuery("div.name_tree_div", element.closest("li"))
+					    $("div.name_tree_div", element.closest("li"))
 					    .html(html)
 					    .show("fast")
 					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
@@ -134,12 +133,12 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 					});
 				} else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
-					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					$("div.name_tree_div", $(this).closest("li"))
 					.show()
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 				} else {
 					loadedNames[surname]=1;
-					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					$("div.name_tree_div", $(this).closest("li"))
 					.hide("fast")
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
