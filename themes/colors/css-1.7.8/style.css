@@ -1042,8 +1042,8 @@ table.center {
 .list_label,
 .list_label_wrap {
 	color: #fff;
-	font-size: 12px;
 	background-color: #81a9cb;
+	border: 1px solid #ddd;
 	font-weight: bold;
 	text-align: center;
 }
@@ -1051,8 +1051,7 @@ table.center {
 .list_value,
 .list_value_wrap {
 	background-color: #edf7f9;
-	font-size: 12px;
-	border: solid #999 1px;
+	border: solid #ddd 1px;
 	vertical-align: top;
 }
 
@@ -1097,9 +1096,8 @@ div.fact_SHARED_NOTE {
 
 .facts_label03 {
 	color: #fff;
-	border: 1px solid #999;
+	border: 1px solid #ddd;
 	background-color: #81a9cb;
-	font-size: 12px;
 	padding: 4px;
 	text-align: center;
 	font-weight: bold;
@@ -3053,7 +3051,7 @@ div.faq_body {
 }
 
 #search-page-table {
-	border: 1px solid #999;
+	border: 1px solid #ddd;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
@@ -4185,4 +4183,3 @@ footer {
 	height: 0;
 	overflow: hidden;
 }
-span {column-gap: 0;}

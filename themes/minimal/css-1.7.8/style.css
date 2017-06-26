@@ -578,6 +578,8 @@
 	float: right;
 }
 
+#relatives_content
+
 #branches-page table,
 #medialist-page .list_table,
 #medialist-page .list_table_controls {
@@ -2152,6 +2154,7 @@ div.faq_body {
 }
 
 /* ===== search.php ===== */
+
 #search-page h2 {
 	margin: 20px;
 	text-align: center;
@@ -2159,14 +2162,20 @@ div.faq_body {
 
 #search-page-table {
 	background-color: #fff;
-	border: 1px outset #ccc;
-	border-top: 0;
+	border: 2px solid #999;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
+#search-page #field_table {
+	background-color: #fff;
+	border: 2px solid #999;
+	width: 30%;
+	min-width: 500px;
+}
+
 #search-page-table .label {
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #999;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2174,12 +2183,29 @@ div.faq_body {
 
 #search-page-table .value {
 	background-color: #fff;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #999;
 	padding: 5px;
 }
 
 #search-page-table p {
 	margin: 0;
+}
+
+#search-page .list_table {
+	margin: 0 auto;
+}
+
+#search-page .list_label, #search-page list_label_wrap {
+	border: 1px solid #999;
+	font-weight: bold;
+	text-align: center;
+}
+#search-page .list_label, #search-page .list_value {
+	white-space: nowrap;
+}
+
+#search-page .center {
+	text-align: center;
 }
 
 [dir=rtl] #search-page-table .label {
@@ -2908,12 +2934,6 @@ div.faq_body {
 	top: 0;
 	left: 0;
 }
-
-#field_table {
-	width: 30%;
-	min-width: 500px;
-}
-
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {

@@ -1157,7 +1157,6 @@ table.center {
 .list_label,
 .list_label_wrap {
 	color: #fff;
-	font-size: 12px;
 	border: 1px solid #999;
 	font-weight: bold;
 	text-align: center;
@@ -1166,7 +1165,6 @@ table.center {
 .list_value,
 .list_value_wrap {
 	background-color: #edf7f9;
-	font-size: 12px;
 	border: solid #999 1px;
 	vertical-align: top;
 }
@@ -3237,7 +3235,7 @@ color: #ldlelf;
 }
 
 #search-page-table .label {
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #ddd;
 	color: #fff;
 	float: left;
 	font-weight: bold;
@@ -3260,6 +3258,10 @@ color: #ldlelf;
 
 [dir=rtl] #search-page-table .value {
 	margin: 0 170px 0 0;
+}
+
+#field_table .list_label, #field_table .facts_label03 {
+	color: #fff;
 }
 
 /*  edituser.php  */
