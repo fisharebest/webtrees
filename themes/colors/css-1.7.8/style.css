@@ -2012,7 +2012,7 @@ a:hover .nameZoom {
 
 /* styles for popup menus */
 .itr {
-	position: relative;
+	position: absolute;
 	line-height: 1.5;
 }
 
