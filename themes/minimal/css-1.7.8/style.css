@@ -578,8 +578,11 @@
 	float: right;
 }
 
-#relatives_content
+.list_table {
+	margin: 0 auto;
+}
 
+#relatives_content
 #branches-page table,
 #medialist-page .list_table,
 #medialist-page .list_table_controls {
@@ -2162,20 +2165,17 @@ div.faq_body {
 
 #search-page-table {
 	background-color: #fff;
-	border: 2px solid #999;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
 #search-page #field_table {
 	background-color: #fff;
-	border: 2px solid #999;
 	width: 30%;
 	min-width: 500px;
 }
 
 #search-page-table .label {
-	border-top: 1px solid #999;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2183,7 +2183,6 @@ div.faq_body {
 
 #search-page-table .value {
 	background-color: #fff;
-	border-top: 1px solid #999;
 	padding: 5px;
 }
 
@@ -2196,7 +2195,6 @@ div.faq_body {
 }
 
 #search-page .list_label, #search-page list_label_wrap {
-	border: 1px solid #999;
 	font-weight: bold;
 	text-align: center;
 }
