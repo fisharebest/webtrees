@@ -13,22 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Template for a custom theme */
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-}
-
-/*
- * Icons use FontAwesome by default, but have additional classes to
- * allow them to be overridden
- *
- * .wt-icon-preferences
- */
-
 /*
  * Pages have the following high-level structure:
  *
@@ -59,6 +43,94 @@
  *             +---wt-cookie-warning
  */
 
+.wt-global {
+	/* Prevent redraws when dynamic content requires a scrollbar. */
+	overflow-y: scroll;
+	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.wt-header-wrapper {
+}
+
+.wt-header-container {
+}
+
+.wt-header-content {
+}
+
+.wt-accessibility-links {
+	/* When we focus on the links, they should appear without changing the layout. */
+	position: fixed;
+}
+
+.wt-site-logo {
+}
+
+.wt-site-title {
+}
+
+.wt-header-search {
+}
+
+.wt-header-search-form {
+}
+
+.wt-secondary-navigation {
+}
+
+.wt-secondary-menu {
+}
+
+.wt-primary-navigation {
+}
+
+.wt-primary-menu {
+}
+
+.wt-main-container {
+	/* Grow to fill content, to allow footer to stay at bottom of page. */
+	flex: 1;
+	/* Space between the header/footer and the main content. */
+	padding: 1rem 0;
+}
+
+.wt-main {
+}
+
+.wt-messages {
+}
+
+.wt-page-title {
+}
+
+.wt-page-options {
+}
+
+.wt-page-content {
+}
+
+.wt-footer-container {
+}
+
+.wt-footer-content {
+	text-align: center;
+}
+
+.wt-contact-links {
+}
+
+.wt-powered-by-webtrees {
+}
+
+.wt-page-views {
+}
+
+.wt-cookie-warning {
+}
+
 /*
  * The home/my pages
  *
@@ -79,28 +151,11 @@
  */
 
 /*
- * Pending changes page
- *
- * wt-pending-changes-page
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
  */
-
-/*
- * Edit genealogy data page
- *
- * wt-edit-page, wt-edit-XXXX-page
- */
-
-/*
- * Configure home/my page blocks page
- *
- * wt-edit-blocks-page
- */
-
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-ajax-load:empty {
+}
 
 /*
  * Ancestors chart
@@ -109,12 +164,22 @@
  * +---wt-ancestors-chart-list
  *     +---wt-ancestors-chart-list-item
  */
+.wt-ancestors-chart-list {
+}
 
 /*
  * Compact chart
  *
  * wt-chart, wt-compact-chart
  */
+
+.wt-ancestors-chart-list-item {
+	list-style: none outside none;
+}
+
+.wt-ancestors-chart .person_box_template {
+	line-height: 1.0;
+}
 
 /*
  * Descendants chart
@@ -123,13 +188,25 @@
  * +---wt-descendants-chart-list
  *     +---wt-descendants-chart-list-item
  */
+.wt-descendants-chart-list {
+}
+
+.wt-descendants-chart-list-item {
+	list-style: none outside none;
+}
+
+#descendancy_chart .person_box_template, .wt-descendants-chart .person_box_template {
+	line-height: 1.0;
+}
 
 /*
  * Family book chart
  *
  * wt-chart, wt-family-book-chart
  */
-
+ .wt-family-book-chart .person_box_template {
+	line-height: 1.0;
+}
 /*
  * Fan chart
  *
@@ -141,7 +218,9 @@
  *
  * wt-chart, wt-hourglass-chart
  */
-
+.hourglassChart .person_box_template {
+	line-height: 1.0;
+}
 /*
  * Hourglass chart
  *
@@ -159,7 +238,9 @@
  *
  * wt-chart, wt-pedigree-chart
  */
-
+.wt-pedigree-chart .person_box_template {
+	line-height: 1.0;
+}
 /*
  * Pedigree map
  *
@@ -171,6 +252,11 @@
  *
  * wt-chart, wt-relationships-chart
  */
+#relationship-page .person_box_template {
+	line-height: 1.0;
+}
+.vline-text, .hline-text {	font-size: 0.7rem;
+}
 
 /*
  * Statistics chart
@@ -193,7 +279,9 @@
  * +---wt-initials, wt-given-name-initials
  *     +---wt-initial, wt-given-name-initial
  */
-
+.text-muted {
+	color: #999!important;  /* for all lists */
+}
 /*
  * Individual list
  *
@@ -239,6 +327,13 @@
  *
  * wt-place-hierarchy-page
  */
+ 
+ #place_hierarchy ul {
+	margin-right: 15px;
+}
+[dir=rtl] #place_hierarchy ul {
+	margin-left: 15px;
+}
 
 /*
  * Calendar
@@ -258,6 +353,49 @@
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
+/* Some menus (e.g. languages) can be longer than a page */
+.dropdown-menu {
+	max-height: 35rem;
+	overflow-x: hidden;
+}
 
+#search-page-table .value {
+	margin: 0 0 0 220px;
+}
 
+#search-page-table .label {
+	width: 220px;
+}
 
+/* Census assistant */
+.wt-census-assistant-table .wt-census-assistant-field,
+.wt-census-assistant-form-control {
+	font-size: small;
+	padding: 0.1rem;
+}
+.wt-census-assistant-form-control:focus {
+	min-width: 12rem;
+}
+
+/* Temporary hack/workaround for https://github.com/twbs/bootstrap/issues/21666 */
+fieldset.row {
+	display: block;
+}
+fieldset.row > legend, fieldset.row > div {
+	display: inline-block;
+	float: left;
+}
+
+/* Forms */
+.col-form-label,
+.col-form-legend {
+	text-align: end;
+	font-weight: bold;
+}
+
+/* Popups */
+.popup .nav-link {
+	display: inline;
+	vertical-align: top;
+	padding: 5px;
+}
