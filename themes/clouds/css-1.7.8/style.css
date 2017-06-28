@@ -1101,6 +1101,10 @@ img.block,
 	width: 60px;
 }
 
+button:focus {
+	 outline: 0;    
+}
+
 .alpha_index {
 	color: #006;
 }
