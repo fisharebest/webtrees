@@ -124,9 +124,8 @@ case 'create-media-object':
 	// Generate a unique name for the file?
 	if ($auto === '1' || file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder . $file)) {
 		$folder = '';
-		$file   = sha1($_FILES['file']['tmp_name']) . $format;
+		$file   = sha1($_FILES['file']['tmp_name']) . '.' . $format;
 	}
-
 	if ($folder !== '') {
 		$folder .= '/';
 	}

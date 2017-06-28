@@ -205,8 +205,6 @@ case 'general':
 	$WT_TREE->setPreference('REPO_FACTS_QUICK', implode(',', Filter::postArray('REPO_FACTS_QUICK')));
 	$WT_TREE->setPreference('REPO_FACTS_UNIQUE', implode(',', Filter::postArray('REPO_FACTS_UNIQUE')));
 	$WT_TREE->setPreference('REPO_ID_PREFIX', Filter::post('REPO_ID_PREFIX'));
-	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE', Filter::postBool('SAVE_WATERMARK_IMAGE'));
-	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB', Filter::postBool('SAVE_WATERMARK_THUMB'));
 	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
 	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
 	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
@@ -228,7 +226,6 @@ case 'general':
 	$WT_TREE->setPreference('SURNAME_LIST_STYLE', Filter::post('SURNAME_LIST_STYLE'));
 	$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
 	$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
-	$WT_TREE->setPreference('THUMBNAIL_WIDTH', Filter::post('THUMBNAIL_WIDTH'));
 	$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
 	$WT_TREE->setPreference('WATERMARK_THUMB', Filter::postBool('WATERMARK_THUMB'));
 	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
@@ -1021,32 +1018,6 @@ echo Bootstrap4::breadcrumbs([
 		</div>
 	</fieldset>
 
-	<!-- THUMBNAIL_WIDTH -->
-	<div class="row form-group">
-		<label class="col-sm-3 col-form-label" for="THUMBNAIL_WIDTH">
-			<?= /* I18N: A configuration setting */ I18N::translate('Width of generated thumbnails') ?>
-		</label>
-		<div class="col-sm-9">
-			<div class="input-group">
-				<input
-					class="form-control"
-					id="THUMBNAIL_WIDTH"
-					maxlength="4"
-					name="THUMBNAIL_WIDTH"
-					required
-					type="text"
-					value="<?= Filter::escapeHtml($WT_TREE->getPreference('THUMBNAIL_WIDTH')) ?>"
-					>
-				<span class="input-group-addon">
-					<?= /* Image sizes are measured in pixels */ I18N::translate('pixels') ?>
-				</span>
-			</div>
-			<p class="small text-muted">
-				<?= /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100.') ?>
-			</p>
-		</div>
-	</div>
-
 	<h3><?= I18N::translate('Watermarks') ?></h3>
 
 	<!-- WATERMARK_THUMB -->
@@ -1060,33 +1031,6 @@ echo Bootstrap4::breadcrumbs([
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Add watermarks to thumbnails” configuration setting */ I18N::translate('A watermark is text that is added to an image, to discourage others from copying it without permission.') ?>
 				</p>
-			</div>
-		</div>
-	</fieldset>
-
-	<!-- SAVE_WATERMARK_IMAGE -->
-	<fieldset class="form-group">
-		<div class="row">
-			<legend class="col-form-legend col-sm-3">
-				<?= /* I18N: A configuration setting */ I18N::translate('Store watermarked full size images on server') ?>
-			</legend>
-			<div class="col-sm-9">
-				<?= Bootstrap4::radioButtons('SAVE_WATERMARK_IMAGE', FunctionsEdit::optionsNoYes(), $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), true) ?>
-				<p class="small text-muted">
-					<?= /* I18N: Help text for the “Store watermarked full size images on server” configuration setting */ I18N::translate('Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server.') ?>
-				</p>
-			</div>
-		</div>
-	</fieldset>
-
-	<!-- SAVE_WATERMARK_THUMB -->
-	<fieldset class="form-group">
-		<div class="row">
-			<legend class="col-form-legend col-sm-3">
-				<?= /* I18N: A configuration setting */ I18N::translate('Store watermarked thumbnails on server') ?>
-			</legend>
-			<div class="col-sm-9">
-				<?= Bootstrap4::radioButtons('SAVE_WATERMARK_THUMB', FunctionsEdit::optionsNoYes(), $WT_TREE->getPreference('SAVE_WATERMARK_THUMB'), true) ?>
 			</div>
 		</div>
 	</fieldset>

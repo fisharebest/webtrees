@@ -369,7 +369,7 @@ class TreeView {
 	 */
 	private function getThumbnail(Individual $individual) {
 		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-			return $individual->displayImage();
+			return $individual->displayImage(40, 50, 'crop', []);
 		} else {
 			return '';
 		}

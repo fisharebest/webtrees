@@ -259,7 +259,8 @@ class ReportPdf extends ReportBase {
 	 * @return ReportPdfImage
 	 */
 	public function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
-		return new ReportPdfImage($mediaobject->getServerFilename('thumb'), $x, $y, $w, $h, $align, $ln);
+		$url = $mediaobject->imageUrl($w, $h, '');
+		return new ReportPdfImage($url, $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**

@@ -259,7 +259,7 @@ if ($action === 'submit') {
 			}
 
 			echo '<table><tr><td class="media-image">';
-			echo $mediaobject->displayImage();
+			echo $mediaobject->displayImage(100,100, 'contain', []);
 			echo '</td><td class="media-col list_value_wrap">';
 			if (Auth::isEditor($WT_TREE)) {
 				echo MediaController::getMediaListMenu($mediaobject);

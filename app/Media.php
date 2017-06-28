@@ -15,9 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Exception;
-use Fisharebest\Webtrees\Functions\FunctionsMedia;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use League\Glide\Urls\UrlBuilderFactory;
 
 /**
  * A GEDCOM media (OBJE) object.
@@ -141,7 +140,6 @@ class Media extends GedcomRecord {
 	 */
 	public function getServerFilename($which = 'main') {
 		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
-		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
@@ -161,81 +159,13 @@ class Media extends GedcomRecord {
 			if (file_exists($user_thumb)) {
 				return $user_thumb;
 			}
-			// Does the folder exist for this thumbnail?
-			if (!is_dir(dirname($file)) && !File::mkdir(dirname($file))) {
-				Log::addMediaLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref());
 
-				return $file;
-			}
 			// Is there a corresponding main image?
 			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 			if (!file_exists($main_file)) {
 				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
 
 				return $file;
-			}
-			// Try to create a thumbnail automatically
-
-			try {
-				$imgsize = getimagesize($main_file);
-				// Image small enough to be its own thumbnail?
-				if ($imgsize[0] > 0 && $imgsize[0] <= $THUMBNAIL_WIDTH) {
-					try {
-						copy($main_file, $file);
-						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
-					} catch (\ErrorException $ex) {
-						Log::addMediaLog('Thumbnail could not be created for ' . $main_file . ' (copy of main image)');
-					}
-				} else {
-					if (FunctionsMedia::hasMemoryForImage($main_file)) {
-						try {
-							switch ($imgsize['mime']) {
-							case 'image/png':
-								$main_image = imagecreatefrompng($main_file);
-								break;
-							case 'image/gif':
-								$main_image = imagecreatefromgif($main_file);
-								break;
-							case 'image/jpeg':
-								$main_image = imagecreatefromjpeg($main_file);
-								break;
-							default:
-								return $file; // Nothing else we can do :-(
-							}
-							if ($main_image) {
-								// How big should the thumbnail be?
-								$width       = $THUMBNAIL_WIDTH;
-								$height      = round($imgsize[1] * ($width / $imgsize[0]));
-								$thumb_image = imagecreatetruecolor($width, $height);
-								// Create a transparent background, instead of the default black one
-								imagesavealpha($thumb_image, true);
-								imagefill($thumb_image, 0, 0, imagecolorallocatealpha($thumb_image, 0, 0, 0, 127));
-								// Shrink the image
-								imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
-								switch ($imgsize['mime']) {
-								case 'image/png':
-									imagepng($thumb_image, $file);
-									break;
-								case 'image/gif':
-									imagegif($thumb_image, $file);
-									break;
-								case 'image/jpeg':
-									imagejpeg($thumb_image, $file);
-									break;
-								}
-								imagedestroy($main_image);
-								imagedestroy($thumb_image);
-								Log::addMediaLog('Thumbnail created for ' . $main_file);
-							}
-						} catch (\ErrorException $ex) {
-							Log::addMediaLog('Failed to create thumbnail for ' . $main_file . ' (' . $ex . ')');
-						}
-					} else {
-						Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);
-					}
-				}
-			} catch (\ErrorException $ex) {
-				// Not an image, or not a valid image?
 			}
 
 			return $file;
@@ -274,7 +204,8 @@ class Media extends GedcomRecord {
 		// Round up to the nearest KB.
 		$size = (int) (($size + 1023) / 1024);
 
-		return /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
+		return /* I18N: size of file in KB */
+			I18N::translate('%s KB', I18N::number($size));
 	}
 
 	/**
@@ -362,8 +293,6 @@ class Media extends GedcomRecord {
 	 * @return array
 	 */
 	public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0) {
-		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
-
 		$var = $which . 'imagesize';
 		if (!empty($this->$var)) {
 			return $this->$var;
@@ -382,14 +311,10 @@ class Media extends GedcomRecord {
 					$imageTypes      = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
 					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
 					// this is for display purposes, always show non-adjusted info
-					$imgsize['WxH']   =
-						/* I18N: image dimensions, width × height */
+					$imgsize['WxH']
+						                = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
 					$imgsize['imgWH'] = ' width="' . $imgsize['adjW'] . '" height="' . $imgsize['adjH'] . '" ';
-					if (($which == 'thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH)) {
-						// don’t let large images break the dislay
-						$imgsize['imgWH'] = ' width="' . $THUMBNAIL_WIDTH . '" ';
-					}
 				}
 			} catch (\ErrorException $ex) {
 				// Not an image, or not a valid image?
@@ -407,10 +332,6 @@ class Media extends GedcomRecord {
 			$imgsize['mime']  = '';
 			$imgsize['WxH']   = '';
 			$imgsize['imgWH'] = '';
-			if ($this->isExternal()) {
-				// don’t let large external images break the dislay
-				$imgsize['imgWH'] = ' width="' . $THUMBNAIL_WIDTH . '" ';
-			}
 		}
 
 		if (empty($imgsize['mime'])) {
@@ -457,15 +378,45 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getHtmlUrlDirect($which = 'main', $download = false) {
-		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
-		// The extension is there so that image viewers (e.g. colorbox) can do something sensible
-		$thumbstr    = ($which == 'thumb') ? '&amp;thumb=1' : '';
-		$downloadstr = ($download) ? '&dl=1' : '';
+		return $this->imageUrl(0, 0, '');
+	}
 
-		return
-			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . $this->tree->getNameUrl() .
-			'&amp;cb=' . $this->getEtag($which);
+	/**
+	 * @param int      $width      max width in pixels
+	 * @param int      $height     max height in pixels
+	 * @param string   $fit        "crop" or ""
+	 *
+	 * @return string
+	 */
+	public function imageUrl($width, $height, $fit) {
+		// Sign the URL, to protect against mass-resize attacks.
+		$glide_key = Site::getPreference('glide-key');
+		if (empty($glide_key)) {
+			$glide_key = bin2hex(random_bytes(128));
+			Site::setPreference('glide-key', $glide_key);
+		}
+
+		if (Auth::accessLevel($this->getTree()) > $this->getTree()->getPreference('SHOW_NO_WATERMARK')) {
+			$mark = 'watermark.png';
+		} else {
+			$mark = '';
+		}
+
+		$url = UrlBuilderFactory::create(WT_BASE_URL, $glide_key)
+			->getUrl('mediafirewall.php', [
+				'mid'       => $this->getXref(),
+				'ged'       => $this->tree->getName(),
+				'w'         => $width,
+				'h'         => $height,
+				'fit'       => $fit,
+				'mark'      => $mark,
+				'markh'     => '100h',
+				'markw'     => '100w',
+				'markalpha' => 25,
+				'or'        => 0, // Intervention uses exif_read_data() which is very buggy.
+			]);
+
+		return $url;
 	}
 
 	/**
@@ -546,37 +497,42 @@ class Media extends GedcomRecord {
 	/**
 	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
 	 *
+	 * @param int      $width      Pixels
+	 * @param int      $height     Pixels
+	 * @param string   $fit        "crop" or "contain"
+	 * @param string[] $attributes Additional HTML attributes
+	 *
 	 * @return string
 	 */
-	public function displayImage() {
+	public function displayImage($width, $height, $fit, $attributes = []) {
 		// Default image for external, missing or corrupt images.
-		$image =
-			'<i' .
-			' dir="' . 'auto' . '"' . // For the tool-tip
-			' class="' . 'icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
+		$image
+			= '<i' .
+			' dir="auto"' . // For the tool-tip
+			' class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
 			' title="' . strip_tags($this->getFullName()) . '"' .
 			'></i>';
 
 		// Use a thumbnail image.
 		if (!$this->isExternal()) {
-			try {
-				$imgsize = getimagesize($this->getServerFilename('thumb'));
-				$image   =
-					'<img' .
-					' dir="' . 'auto' . '"' . // For the tool-tip
-					' src="' . $this->getHtmlUrlDirect('thumb') . '"' .
-					' alt="' . strip_tags($this->getFullName()) . '"' .
-					' title="' . strip_tags($this->getFullName()) . '"' .
-					' ' . $imgsize[3] . // height="yyy" width="xxx"
-					'>';
-			} catch (Exception $ex) {
-				// Image file unreadable or Corrupt.
+			// Generate multiple images for displays with higher pixel densities.
+			$srcset = [];
+			foreach ([2,3,4] as $x) {
+				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
 			}
+
+			$image = '<img ' . Html::attributes($attributes + [
+				'dir'      => 'auto',
+				'src'      => $this->imageUrl($width, $height, $fit),
+				'srcset'   => implode(',', $srcset),
+				'alt'      => strip_tags($this->getFullName()),
+				'title'    => strip_tags($this->getFullName()),
+			]) . '>';
 		}
 
 		return
 			'<a' .
-			' class="' . 'gallery' . '"' .
+			' class="gallery"' .
 			' href="' . $this->getHtmlUrlDirect('main') . '"' .
 			' type="' . $this->mimeType() . '"' .
 			' data-obje-url="' . $this->getHtmlUrl() . '"' .

@@ -563,6 +563,11 @@ class FunctionsPrint {
 			$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
+		case 'OBJE':
+			$addfacts = ['NOTE'];
+			$uniquefacts = ['_PRIM'];
+			$quickfacts = [];
+			break;
 		default:
 			return;
 		}
