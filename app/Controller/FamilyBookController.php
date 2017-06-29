@@ -276,7 +276,7 @@ class FamilyBookController extends ChartController {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh-2, '"></td>',
+			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
@@ -366,7 +366,7 @@ class FamilyBookController extends ChartController {
 			'<h3>',
 			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
 			'</h3>',
-			'<table class="t0"><tr><td class="tdmid">';
+			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="tdmid">';
 			$this->dgenerations = $this->generations;
 			$this->printDescendency($person, 1);
 			echo '</td><td class="tdmid">';

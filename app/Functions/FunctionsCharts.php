@@ -113,7 +113,7 @@ class FunctionsCharts {
 		if ($hfam) {
 			// remove the|| test for $sosa
 			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight -14 ) . '"></td>';
-			echo '<td><img class="rap" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
+			echo '<td><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// husband’s father
 			if ($hfam && $hfam->getHusband()) {
 				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -201,10 +201,9 @@ class FunctionsCharts {
 		echo '</td>';
 		// wife’s parents
 		$hfam = $wife->getPrimaryChildFamily();
-
 		if ($hfam) {
 			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight -14 ) . '"></td>';
-			echo '<td><img class="rapS" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
+			echo '<td><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// wife’s father
 			if ($hfam && $hfam->getHusband()) {
 				echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -365,8 +364,9 @@ class FunctionsCharts {
 							if ($div) {
 								echo '–', $div->getDate()->minimumDate()->format('%Y');
 							}
+							echo '<img class="line5" width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
+						} else { echo '<img width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
 						}
-						echo '<br><img width="100%" class="line5" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
 						echo '</td>';
 						// spouse information
 						echo '<td style="vertical-align: center;';
