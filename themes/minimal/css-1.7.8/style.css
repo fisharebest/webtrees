@@ -2901,6 +2901,10 @@ div.faq_body {
 	text-align: center;
 }
 
+#childbox {
+	display: none;
+}
+
 #pedigree-page #childarrow {
 	position: relative;
 }
