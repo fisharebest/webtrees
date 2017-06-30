@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2016-06-22 00:10+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2017-06-30 15:09+0000\n"
+"Last-Translator: Rusdiarso diDit <rusdiarso.didit@gmail.com>\n"
 "Language-Team: English (United States) <https://translate.webtrees.net/projects/webtrees/webtrees/en-US/>\n"
 "Language: en-US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -19733,7 +19733,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "west"
-msgstr ""
+msgstr "barat"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1870
 #: edit_interface.php:1902
@@ -19778,7 +19778,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "saudara kandung lebih muda"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
@@ -19801,13 +19801,13 @@ msgstr ""
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "sudah ditambahkan ke favorit."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:41
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "sudah dihapus."
 
 #: app/Functions/FunctionsPrint.php:107 app/Note.php:107
 msgid "…"
