@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-06-30 15:09+0000\n"
-"Last-Translator: Rusdiarso diDit <rusdiarso.didit@gmail.com>\n"
+"PO-Revision-Date: 2017-07-01 16:10+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: English (United States) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/en-US/>\n"
 "Language: en-US\n"
 "MIME-Version: 1.0\n"
@@ -20091,6 +20091,7 @@ msgid "webtrees’ database must be on the same server as PhpGedView’s"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3373
+#, fuzzy
 msgid "west"
 msgstr "barat"
 
@@ -20135,6 +20136,7 @@ msgid "younger brother"
 msgstr ""
 
 #: app/Functions/Functions.php:795
+#, fuzzy
 msgid "younger sibling"
 msgstr "saudara kandung lebih muda"
 
@@ -20157,13 +20159,13 @@ msgstr ""
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
-#, php-format
+#, fuzzy, php-format
 msgid "“%s” has been added to your favorites."
 msgstr "sudah ditambahkan ke favorit."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:47
-#, php-format
+#, fuzzy, php-format
 msgid "“%s” has been deleted."
 msgstr "sudah dihapus."
 
