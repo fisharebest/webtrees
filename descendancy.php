@@ -47,6 +47,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 		echo '<div id="descendancy-list">', FunctionsPrintLists::familyTable($descendants), '</div>';
 		break;
 	}
+	echo $controller->getJavascript();
 
 	return;
 }
