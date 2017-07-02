@@ -232,11 +232,13 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
-/*
- * Pending changes page
- *
- * wt-pending-changes-page
- */
+.wt-block {
+	border: solid #000 1px;
+}
+
+.wt-block-header {
+	background-color: #fff;
+}
 
 /*
  * Edit genealogy data page
@@ -250,11 +252,18 @@
  * wt-edit-blocks-page
  */
 
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-block-content .list_table {
+	border-spacing: 1px;
+	border: solid #000 1px;
+	border-right: 0;
+}
+
+.wt-block-content .list_value,
+.wt-block-content .list_value_wrap {
+	border: 0;
+	border-top: solid #000 1px;
+	border-right: solid #000 1px;
+}
 
 /*
  * Ancestors chart
@@ -442,7 +451,8 @@
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* Pending changes */
+/* ios on click workaround */
+/* ---Pending edits--- */
 .new {
 	outline: solid thin blue;
 }
@@ -485,6 +495,22 @@
 #gedcom_stats:target {
 	background-color: #ffc;
 }
+
+.center {
+	text-align: center;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+.list_value,
+.list_value_wrap {
+	border: solid #000 1px;
+	vertical-align: top;
+}
+
+/* ---Find special characters--- */
 
 /* ======== Person box ======= */
 .gedcom_favorites_block,
@@ -580,6 +606,13 @@
 
 .list_table {
 	margin: 0 auto;
+	width: 100%;
+}
+
+.facts_value {
+
+	border: solid #000 1px;
+	padding: 4px;
 }
 
 #relatives_content
@@ -1336,6 +1369,7 @@ float: right;
 
 .stat-row {
 	display: table-row;
+	border: 1px solid #000;
 }
 .stat-cell {
 	display: table-cell;
@@ -1526,7 +1560,7 @@ div.faq_body {
 	clear: both;
 }
 
-/* ===== markdown formatting ===== */
+/* markdown formatting ===== */
 
 .markdown {
 	/* Tables and pre-formatted text can break the layout. */
@@ -1637,6 +1671,10 @@ div.faq_body {
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
+}
+
+.facts_table {
+	background-color: #fff;
 }
 
 .facts_table .field em {
@@ -1942,7 +1980,7 @@ div.faq_body {
 	overflow: hidden;
 }
 
-#separator:after {
+#separator::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1955,17 +1993,17 @@ div.faq_body {
 	border-top-right-radius: 3px;
 }
 
-[dir=rtl] #separator:after {
+[dir=rtl] #separator::after {
 	right: auto;
 	left: 0;
 }
 
-.separator-hidden:after,
+.separator-hidden::after,
 [dir=rtl] .separator-visible:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
-.separator-visible:after,
+.separator-visible::after,
 [dir=rtl] .separator-hidden:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
 }
@@ -2157,7 +2195,6 @@ div.faq_body {
 }
 
 /* ===== search.php ===== */
-
 #search-page h2 {
 	margin: 20px;
 	text-align: center;
@@ -2254,6 +2291,8 @@ div.faq_body {
 [dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
+
+/* ===== Styling for the jquery.colorbox gallery ===== */
 
 /* ===== Edit interface pop-ups ===== */
 #edit_interface-page h4 {
@@ -2650,6 +2689,7 @@ div.faq_body {
 }
 
 /* ====== Charts Styles ======== */
+
 #people label {
 	display:block;
 }
@@ -2922,6 +2962,68 @@ div.faq_body {
 
 .line5 {
 	vertical-align: top;
+}
+
+
+.optionbox, .descriptionbox {
+	border: solid #000 1px;
+	padding: 3px;
+}
+
+.width10 {
+	width: 10%;
+}
+
+.width20 {
+	width: 20%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width33 {
+	width: 33%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width66 {
+	width: 66%;
+}
+
+.width70 {
+	width: 70%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width90 {
+	width: 90%;
+}
+
+.width100 {
+	width: 100%;
 }
 
 #childbox {
@@ -3853,4 +3955,8 @@ footer {
 		min-width: auto;
 		width: 100%;
 	}
+}
+.facts_label {
+	border: 1px solid #000;
+	padding: 4px;
 }
