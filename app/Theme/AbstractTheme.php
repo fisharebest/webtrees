@@ -300,7 +300,7 @@ abstract class AbstractTheme {
 	public function bodyHeader() {
 		return
 			'<body class="wt-global">' .
-			'<header class="wt-header-wrapper">' .
+			'<header class="wt-header-wrapper hidden-print">' .
 			'<div class="container wt-header-container">' .
 			'<div class="row wt-header-content">' .
 			$this->headerContent() .

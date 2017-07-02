@@ -16,6 +16,10 @@
 /* The colors theme */
 
 /* Override Bootstrap formatting */
+h2::first-letter {
+    margin-top: 0;
+}
+
 .btn-link {
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
