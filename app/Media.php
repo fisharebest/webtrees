@@ -514,21 +514,25 @@ class Media extends GedcomRecord {
 			'></i>';
 
 		// Use a thumbnail image.
-		if (!$this->isExternal()) {
+		if ($this->isExternal()) {
+			$src    = $this->getFilename();
+			$srcset = [];
+		} else {
 			// Generate multiple images for displays with higher pixel densities.
+			$src    = $this->imageUrl($width, $height, $fit);
 			$srcset = [];
 			foreach ([2,3,4] as $x) {
 				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
 			}
-
-			$image = '<img ' . Html::attributes($attributes + [
-				'dir'      => 'auto',
-				'src'      => $this->imageUrl($width, $height, $fit),
-				'srcset'   => implode(',', $srcset),
-				'alt'      => strip_tags($this->getFullName()),
-				'title'    => strip_tags($this->getFullName()),
-			]) . '>';
 		}
+
+		$image = '<img ' . Html::attributes($attributes + [
+			'dir'      => 'auto',
+			'src'      => $src,
+			'srcset'   => implode(',', $srcset),
+			'alt'      => strip_tags($this->getFullName()),
+			'title'    => strip_tags($this->getFullName()),
+		]) . '>';
 
 		return
 			'<a' .
