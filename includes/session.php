@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees;
 
 use DateTime;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use PDOException;
 
 /**
@@ -250,6 +252,11 @@ try {
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
 define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
+
+// Some broken servers block access to their own temp folder using open_basedir...
+$data_dir = new Filesystem(new Local(WT_DATA_DIR));
+$data_dir->createDir('tmp');
+putenv('TMPDIR=' . WT_DATA_DIR . 'tmp');
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {

@@ -664,8 +664,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$REPO_FACTS_UNIQUE            = '';
 	$REPO_ID_PREFIX               = '';
 	$REQUIRE_AUTHENTICATION       = '';
-	$SAVE_WATERMARK_IMAGE         = '';
-	$SAVE_WATERMARK_THUMB         = '';
 	$SHOW_AGE_DIFF                = '';
 	$SHOW_COUNTER                 = '';
 	$SHOW_DEAD_PEOPLE             = '';
@@ -690,7 +688,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$SURNAME_LIST_STYLE           = '';
 	$SURNAME_TRADITION            = '';
 	$THEME_DIR                    = '';
-	$THUMBNAIL_WIDTH              = '';
 	$USE_RELATIONSHIP_PRIVACY     = '';
 	$USE_RIN                      = '';
 	$WATERMARK_THUMB              = '';
@@ -862,8 +859,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_UNIQUE', $REPO_FACTS_UNIQUE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_ID_PREFIX', $REPO_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_COUNTER', $SHOW_COUNTER]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_DEAD_PEOPLE', $SHOW_DEAD_PEOPLE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES]);
@@ -915,7 +910,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'webtrees']);
 		break;
 	}
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THUMBNAIL_WIDTH', $THUMBNAIL_WIDTH]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB]);
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);

@@ -16,6 +16,10 @@
 /* The colors theme */
 
 /* Override Bootstrap formatting */
+h2::first-letter {
+    margin-top: 0;
+}
+
 .btn-link {
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
@@ -30,6 +34,9 @@
 	background-color: #e6e6e6; 
 	color: #555;
 	border-color: #ccc;
+}
+.form-control:focus {
+	border-color: #999;
 }
 
 /*
@@ -952,6 +959,7 @@ a:hover {
 	clear: both;
 	text-align: center;
 }
+
 img {
 	border: 0;
 }
@@ -1042,8 +1050,8 @@ table.center {
 .list_label,
 .list_label_wrap {
 	color: #fff;
-	font-size: 12px;
 	background-color: #81a9cb;
+	border: 1px solid #ddd;
 	font-weight: bold;
 	text-align: center;
 }
@@ -1051,8 +1059,7 @@ table.center {
 .list_value,
 .list_value_wrap {
 	background-color: #edf7f9;
-	font-size: 12px;
-	border: solid #999 1px;
+	border: solid #ddd 1px;
 	vertical-align: top;
 }
 
@@ -1064,10 +1071,6 @@ table.center {
 .list_label_wrap,
 .list_value_wrap {
 	white-space: normal;
-}
-
-.list_item {
-	font-size: 12px;
 }
 
 .facts_table {
@@ -1089,7 +1092,6 @@ div.fact_SHARED_NOTE {
 .facts_label {
 	background-color: #81a9cb;
 	border: 1px solid #ccc;
-	font-size: 12px;
 	padding: 4px;
 	width: 20%;
 	text-align: center;
@@ -1097,9 +1099,8 @@ div.fact_SHARED_NOTE {
 
 .facts_label03 {
 	color: #fff;
-	border: 1px solid #999;
+	border: 1px solid #ddd;
 	background-color: #81a9cb;
-	font-size: 12px;
 	padding: 4px;
 	text-align: center;
 	font-weight: bold;
@@ -1107,7 +1108,6 @@ div.fact_SHARED_NOTE {
 
 .facts_value {
 	background-color: #edf7fd;
-	font-size: 12px;
 	border: solid #999 1px;
 	padding: 4px;
 }
@@ -1331,7 +1331,6 @@ a:hover .nameZoom {
 
 .news_title {
 	font-weight: bold;
-	font-size: 14px;
 }
 
 .news_date {
@@ -2014,7 +2013,7 @@ a:hover .nameZoom {
 
 /* styles for popup menus */
 .itr {
-	position: relative;
+	position: absolute;
 	line-height: 1.5;
 }
 
@@ -2126,7 +2125,6 @@ a:hover .nameZoom {
 }
 
 /* ======== List styles ====== */
-
 .surname-list,
 .givn-list {
 	margin: 5px auto;
@@ -2147,6 +2145,8 @@ a:hover .nameZoom {
 .media-list td,
 .indi-list td,
 .fam-list td,
+.recent_changes_block td,
+.upcoming_events_block td,
 .surname-list td,
 .givn-list td {
 	padding: 2px 5px;
@@ -2168,6 +2168,11 @@ a:hover .nameZoom {
 .media-list th,
 .indi-list th,
 .fam-list th,
+.recent_changes_block th,
+.upcoming_events_block th,
+.todays_events_block th,
+.todo_block th,
+.yahrzeit_block th,
 .surname-list th,
 .givn-list th {
 	cursor: pointer;
@@ -2843,7 +2848,7 @@ div.faq_body {
 	overflow: hidden;
 }
 
-#separator:after {
+#separator::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -2856,18 +2861,18 @@ div.faq_body {
 	border-top-right-radius: 3px;
 }
 
-[dir=rtl] #separator:after {
+[dir=rtl] #separator::after {
 	right: auto;
 	left: 0;
 }
 
 .separator-hidden:after,
-[dir=rtl] .separator-visible:after {
+[dir=rtl] .separator-visible::after {
 	background: url(images/general_sprite.png) no-repeat -26px 100px;
 }
 
 .separator-visible:after,
-[dir=rtl] .separator-hidden:after {
+[dir=rtl] .separator-hidden::after {
 	background: url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
@@ -3053,7 +3058,7 @@ div.faq_body {
 }
 
 #search-page-table {
-	border: 1px solid #999;
+	border: 1px solid #ddd;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
@@ -3341,6 +3346,13 @@ div.faq_body {
 	list-style: outside none none;
 }
 
+.generations {
+	background: transparent url("images/vline.png") repeat-y scroll left top;
+	display: block;
+	margin: 0 0 0 15px;
+	padding: 0;
+}
+
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;
@@ -3422,45 +3434,6 @@ div.faq_body {
 }
 
 /*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
-}
-
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         97px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
 #lifespan-chart {
 	padding:    0 10px 10px;
 	margin:     0 auto;
@@ -4168,12 +4141,6 @@ footer {
 	background-image: url(images/user_add.png);
 }
 
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees.png);
-}
-
 .cookie-warning {
 	background: #aaa;
 	color: #fff;
@@ -4185,4 +4152,3 @@ footer {
 	height: 0;
 	overflow: hidden;
 }
-span {column-gap: 0;}

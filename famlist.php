@@ -211,20 +211,20 @@ if ($show === 'indi' || $show === 'surn') {
 					echo '<li class="wt-initials-list-item">';
 					if ($count > 0) {
 						if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-							$list[] = '<a class="warning" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
+							echo '<a class="wt-initial active" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
 						} else {
-							$list[] = '<a href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
+							echo '<a class="wt-initial" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
 						}
 					} else {
-						$list[] = $controller->givenNameInitial($givn_initial);
+						echo $controller->givenNameInitial($givn_initial);
 					}
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
 				if (Session::has('initiated')) {
 					if ($show_all_firstnames === 'yes') {
-						$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
+						echo '<span class="warning">' . I18N::translate('All') . '</span>';
 					} else {
-						$list[] = '<a href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
+						echo '<a href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
 					}
 				}
 				echo '</ul>';

@@ -1083,16 +1083,17 @@ table.center {
 
 .list_label,
 .list_label_wrap {
-	color: #fff;
+	color: #006;
 	font-size: 12px;
-	background-color: #81a9cb;
+	background-color: #c3dfff;
+	border: solid #81a9cb 1px;
 	font-weight: bold;
 	text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-	background-color: #edf7f9;
+	background-color: #edf7fd;
 	font-size: 12px;
 	border: solid #81a9cb 1px;
 	vertical-align: top;
@@ -1106,10 +1107,6 @@ table.center {
 .list_label_wrap,
 .list_value_wrap {
 	white-space: normal;
-}
-
-.list_item {
-	font-size: 12px;
 }
 
 .facts_table {
@@ -1134,8 +1131,9 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_label03 {
-	color: #fff;
-	background-color: #81a9cb;
+	color: #006;
+	background-color: #c3dfff;
+	border: solid #81a9cb 1px;
 	font-size: 12px;
 	padding: 4px;
 	text-align: center;
@@ -2036,7 +2034,7 @@ a:hover .nameZoom {
 
 /* styles for popup menus */
 .itr {
-	position: relative;
+	position: absolute;
 	line-height: 1.5;
 }
 
@@ -2998,7 +2996,7 @@ div.faq_body {
 }
 
 #search-page-table {
-	background-color: #81a9cb;
+	background-color: #c3dfff;
 	border: 1px outset #ccc;
 	border-top: 0;
 	margin: 20px auto 0;
@@ -3007,14 +3005,14 @@ div.faq_body {
 
 #search-page-table .label {
 	border-top: 1px solid #ccc;
-	color: #fff;
+	color: #006;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
 }
 
 #search-page-table .value {
-	background-color: #edf7f9;
+	background-color: #edf7fd;
 	border-top: 1px solid #ccc;
 	padding: 5px;
 }

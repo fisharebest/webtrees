@@ -190,7 +190,7 @@ class FamilyBookController extends ChartController {
 
 		$genoffset = $this->generations; // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($this->bhalfheight + 4) * pow(2, ($genoffset - $count - 1));
+		$lh = ($this->bhalfheight) * pow(2, ($genoffset - $count - 1));
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
@@ -246,12 +246,12 @@ class FamilyBookController extends ChartController {
 						}
 					}
 				}
-				$lh = (($famcount - 1) * ($this->getBoxDimensions()->height + 8) - ($linefactor));
+				$lh = (($famcount - 1) * ($this->getBoxDimensions()->height) - ($linefactor));
 				if ($genoffset > 5) {
 					$lh = $savlh;
 				}
 			}
-			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh -4, '"></td>',
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
 			'<td>',
 			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
@@ -276,7 +276,7 @@ class FamilyBookController extends ChartController {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh-2, '"></td>',
+			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
@@ -366,7 +366,7 @@ class FamilyBookController extends ChartController {
 			'<h3>',
 			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
 			'</h3>',
-			'<table class="t0"><tr><td class="tdmid">';
+			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="tdmid">';
 			$this->dgenerations = $this->generations;
 			$this->printDescendency($person, 1);
 			echo '</td><td class="tdmid">';

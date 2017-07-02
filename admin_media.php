@@ -169,7 +169,7 @@ case 'load_json':
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
-				$media->displayImage(),
+				$media->displayImage(150, 150, '', []),
 				mediaObjectInfo($media),
 			];
 		}
@@ -233,7 +233,7 @@ case 'load_json':
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = [
 				GedcomTag::getLabelValue('URL', $row->m_filename),
-				$media->displayImage(),
+				$media->displayImage(150, 150, '', []),
 				mediaObjectInfo($media),
 			];
 		}
@@ -479,31 +479,25 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 	$html .= '<dd>' . Filter::escapeHtml($file) . '</dd>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
-	if ($file && file_exists($full_path)) {
+	try {
+		$size = filesize($full_path);
+		$size = (int) (($size + 1023) / 1024); // Round up to next KB
+		$size = /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
+		$html .= '<dt>' . I18N::translate('File size') . '</dt>';
+		$html .= '<dd>' . $size . '</dd>';
+
 		try {
-			$size = filesize($full_path);
-			$size = (int) (($size + 1023) / 1024); // Round up to next KB
-			$size = /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
-			$html .= '<dt>' . I18N::translate('File size') . '</dt>';
-			$html .= '<dd>' . $size . '</dd>';
-
-			try {
-				$imgsize = getimagesize($full_path);
-				$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
-				$html .= '<dd>' . /* I18N: image dimensions, width × height */
-					I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
-			} catch (\ErrorException $ex) {
-				// Not an image, or not a valid image?
-			}
-
-			$html .= '</dl>';
+			$imgsize = getimagesize($full_path);
+			$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
+			$html .= '<dd>' . /* I18N: image dimensions, width × height */
+				I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
 		} catch (\ErrorException $ex) {
-			$html .= '</dl>';
-			$html .= '<div class="alert alert-danger">' . I18N::translate('This media file exists, but cannot be accessed.') . '</div>';
+			// Not an image, or not a valid image?
 		}
-	} else {
+
 		$html .= '</dl>';
-		$html .= '<div class="alert alert-danger">' . I18N::translate('This media file does not exist.') . '</div>';
+	} catch (\ErrorException $ex) {
+		// Not a file?  Not an image?
 	}
 
 	return $html;
@@ -521,21 +515,8 @@ function mediaObjectInfo(Media $media) {
 	$gedcom = $media->getTree()->getName();
 
 	$html =
-		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
-		'<li><a href="#" onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs);"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li>' .
-		'<li><a href="#" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'person\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to an individual') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'family\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a family') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';
-
-	if (Module::getModuleByName('GEDFact_assistant')) {
-		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage the links') . '</a></li>';
-	}
-
-	$html .=
-		'</ul></div> ' .
 		'<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' .
-		'<div><i>' . Filter::escapeHtml($media->getNote()) . '</i></div>';
+		'<br><i>' . Filter::escapeHtml($media->getNote()) . '</i></br>';
 
 	$html .= '<br>';
 

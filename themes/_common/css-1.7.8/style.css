@@ -279,7 +279,9 @@
  * +---wt-initials, wt-given-name-initials
  *     +---wt-initial, wt-given-name-initial
  */
-
+.text-muted {
+	color: #999!important;  /* for all lists */
+}
 /*
  * Individual list
  *

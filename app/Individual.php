@@ -443,15 +443,20 @@ class Individual extends GedcomRecord {
 	 * Display the prefered image for this individual.
 	 * Use an icon if no image is available.
 	 *
+	 * @param int      $width      Pixels
+	 * @param int      $height     Pixels
+	 * @param string   $fit        "crop" or "contain"
+	 * @param string[] $attributes Additional HTML attributes
+	 *
 	 * @return string
 	 */
-	public function displayImage() {
+	public function displayImage($width, $height, $fit, $attributes) {
 		$media = $this->findHighlightedMedia();
-		if ($media && $this->canShow()) {
-			// Thumbnail exists - use it.
-			return $media->displayImage();
+		if ($media !== null) {
+			// Image exists - use it.
+			return $media->displayImage($width, $height, $fit, $attributes);
 		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {
-			// No thumbnail exists - use an icon
+			// No image exists - use an icon
 			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
 		} else {
 			return '';

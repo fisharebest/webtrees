@@ -232,11 +232,13 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
-/*
- * Pending changes page
- *
- * wt-pending-changes-page
- */
+.wt-block {
+	border: solid #000 1px;
+}
+
+.wt-block-header {
+	background-color: #fff;
+}
 
 /*
  * Edit genealogy data page
@@ -250,11 +252,18 @@
  * wt-edit-blocks-page
  */
 
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-block-content .list_table {
+	border-spacing: 1px;
+	border: solid #000 1px;
+	border-right: 0;
+}
+
+.wt-block-content .list_value,
+.wt-block-content .list_value_wrap {
+	border: 0;
+	border-top: solid #000 1px;
+	border-right: solid #000 1px;
+}
 
 /*
  * Ancestors chart
@@ -442,7 +451,8 @@
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* Pending changes */
+/* ios on click workaround */
+/* ---Pending edits--- */
 .new {
 	outline: solid thin blue;
 }
@@ -485,6 +495,22 @@
 #gedcom_stats:target {
 	background-color: #ffc;
 }
+
+.center {
+	text-align: center;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+.list_value,
+.list_value_wrap {
+	border: solid #000 1px;
+	vertical-align: top;
+}
+
+/* ---Find special characters--- */
 
 /* ======== Person box ======= */
 .gedcom_favorites_block,
@@ -578,6 +604,18 @@
 	float: right;
 }
 
+.list_table {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.facts_value {
+
+	border: solid #000 1px;
+	padding: 4px;
+}
+
+#relatives_content
 #branches-page table,
 #medialist-page .list_table,
 #medialist-page .list_table_controls {
@@ -872,7 +910,7 @@
 
 /* styles for popup menus */
 .itr {
-	position: relative;
+	position: absolute;
 	line-height: 1.5;
 }
 
@@ -1331,6 +1369,7 @@ float: right;
 
 .stat-row {
 	display: table-row;
+	border: 1px solid #000;
 }
 .stat-cell {
 	display: table-cell;
@@ -1521,7 +1560,7 @@ div.faq_body {
 	clear: both;
 }
 
-/* ===== markdown formatting ===== */
+/* markdown formatting ===== */
 
 .markdown {
 	/* Tables and pre-formatted text can break the layout. */
@@ -1632,6 +1671,10 @@ div.faq_body {
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
+}
+
+.facts_table {
+	background-color: #fff;
 }
 
 .facts_table .field em {
@@ -1937,7 +1980,7 @@ div.faq_body {
 	overflow: hidden;
 }
 
-#separator:after {
+#separator::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1950,17 +1993,17 @@ div.faq_body {
 	border-top-right-radius: 3px;
 }
 
-[dir=rtl] #separator:after {
+[dir=rtl] #separator::after {
 	right: auto;
 	left: 0;
 }
 
-.separator-hidden:after,
+.separator-hidden::after,
 [dir=rtl] .separator-visible:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
-.separator-visible:after,
+.separator-visible::after,
 [dir=rtl] .separator-hidden:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
 }
@@ -2159,14 +2202,17 @@ div.faq_body {
 
 #search-page-table {
 	background-color: #fff;
-	border: 1px outset #ccc;
-	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
+#search-page #field_table {
+	background-color: #fff;
+	width: 30%;
+	min-width: 500px;
+}
+
 #search-page-table .label {
-	border-top: 1px solid #ccc;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2174,12 +2220,27 @@ div.faq_body {
 
 #search-page-table .value {
 	background-color: #fff;
-	border-top: 1px solid #ccc;
 	padding: 5px;
 }
 
 #search-page-table p {
 	margin: 0;
+}
+
+#search-page .list_table {
+	margin: 0 auto;
+}
+
+#search-page .list_label, #search-page list_label_wrap {
+	font-weight: bold;
+	text-align: center;
+}
+#search-page .list_label, #search-page .list_value {
+	white-space: nowrap;
+}
+
+#search-page .center {
+	text-align: center;
 }
 
 [dir=rtl] #search-page-table .label {
@@ -2230,6 +2291,8 @@ div.faq_body {
 [dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
+
+/* ===== Styling for the jquery.colorbox gallery ===== */
 
 /* ===== Edit interface pop-ups ===== */
 #edit_interface-page h4 {
@@ -2626,6 +2689,7 @@ div.faq_body {
 }
 
 /* ====== Charts Styles ======== */
+
 #people label {
 	display:block;
 }
@@ -2877,6 +2941,95 @@ div.faq_body {
 	text-align: center;
 }
 
+.tdtop {
+	vertical-align: top;
+}
+
+.tdmid {
+	vertical-align: middle;
+}
+
+.tdbot,
+.tvertline {
+	vertical-align: bottom;
+}
+
+.line1,
+.line2,
+.line3 {
+	vertical-align: middle;
+}
+
+.line5 {
+	vertical-align: top;
+}
+
+
+.optionbox, .descriptionbox {
+	border: solid #000 1px;
+	padding: 3px;
+}
+
+.width10 {
+	width: 10%;
+}
+
+.width20 {
+	width: 20%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width33 {
+	width: 33%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width66 {
+	width: 66%;
+}
+
+.width70 {
+	width: 70%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width90 {
+	width: 90%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+#childbox {
+	display: none;
+}
+
 #pedigree-page #childarrow {
 	position: relative;
 }
@@ -2908,12 +3061,6 @@ div.faq_body {
 	top: 0;
 	left: 0;
 }
-
-#field_table {
-	width: 30%;
-	min-width: 500px;
-}
-
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -3672,140 +3819,4 @@ footer {
 .cookie-warning.hidden {
 	height: 0;
 	overflow: hidden;
-}
-
-@media print {
-	header,
-	footer,
-	form,
-	#sidebar,
-	#separator,
-	.editfacts,
-	.noprint {
-		display: none;
-	}
-
-	#header_accordion1 {
-		width: 510px;
-	}
-
-	#pedigree-page h2 {
-		margin: 0;
-	}
-
-	#pedigree_chart {
-		margin: 0 auto;
-	}
-
-	#familybook_chart h3 {
-		margin-bottom: 10px;
-	}
-
-	#lifespan-chart {
-		margin: 0;
-		border: 0;
-		padding: 0;
-	}
-}
-
-/* Mobile low resolution viewport */
-@media (max-width: 600px) {
-	/* Advanced Search */
-	.list_label, .list_value {
-		white-space: normal;
-	}
-	#field_table {
-		width: 80%;
-		min-width: 380px;
-	}
-	#search-page-table {
-		width: auto;
-	}
-	#search-page-table div #query {
-		width: 200px;
-	}
-	/* Phonetic Search */
-	#search-page-table .label {
-		width: 25%;
-	}
-}
-@media (max-width: 480px) {
-	/* Front Page */
-	#index_main_blocks {
-		float: left;
-		width: 100%;
-	}
-	#index_small_blocks {
-		float: left;
-		width: 100%;
-	}
-	.stat-table1, .stat-table2{
-		width: 100%;
-	}
-	header h1 {
-		width: 100%;
-		text-align: left;
-	}
-	[dir=rtl] header h1 {
-		text-align: right;
-	}
-	.header-search {
-		display: none;
-	}
-	/* Indi Page */
-	#indi_left {
-		float: left;
-		width: 100%;
-		font-size: 10px;
-	}
-	#header_accordion1 {
-		font-size: 10px;
-	}
-	#main {
-		display: inline;
-	}
-	#separator {
-		display: none;
-	}
-	#sidebar {
-		float: left;
-		width: 100%;
-		display: inline;
-	}
-	/* Search */
-	#search-page-table .value {
-		margin: 0 0 0 30%;
-	}
-	[dir=rtl] #search-page-table .value {
-		margin: 0 30% 0 0;
-		float: right;
-	}
-	#search-page-table div #query {
-		width: 150px;
-	}
-	#search-page-table .value {
-		white-space: normal;
-    }
-	#search-page-table > input {
-		width: 20px;
-	}
-	/* Lists */
-	#place_hierarchy td {
-		white-space: normal;
-	}
-	/* Reports */
-	#reportengine-page table {
-		width: 100%;
-	}
-	/* Login */
-	#register-form div, #verify-form div {
-		text-align: left;
-	}
-	#register-form, #verify-form {
-		width: auto;
-	}
-	#login-text, #user-verify, #register-text, #user-verify {
-		min-width: auto;
-		width: 100%;
-	}
 }

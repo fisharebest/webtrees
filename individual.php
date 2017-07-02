@@ -130,7 +130,7 @@ tab.tab("show");
 		<div class="row">
 			<!-- Main image -->
 			<div class="col-sm-3">
-				<?= $controller->record->displayImage() ?>
+				<?= $controller->record->displayImage(200, 280, 'crop', ['class' => 'img-thumbnail']) ?>
 			</div>
 
 			<!-- Names -->

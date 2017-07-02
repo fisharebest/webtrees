@@ -1481,7 +1481,7 @@ class FunctionsEdit {
 		$add_date    = true;
 
 		// List of tags we would expect at the next level
-		// NB add_missing_subtags() already takes care of the simple cases
+		// NB insertMissingSubtags() already takes care of the simple cases
 		// where a level 1 tag is missing a level 2 tag. Here we only need to
 		// handle the more complicated cases.
 		$expected_subtags = [
@@ -1673,7 +1673,7 @@ class FunctionsEdit {
 			}
 		}
 		// Do something (anything!) with unrecognized custom tags
-		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_TODO') {
+		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
 			foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
 				if (!in_array($tag, $tags)) {
 					self::addSimpleTag('2 ' . $tag);

@@ -300,7 +300,7 @@ abstract class AbstractTheme {
 	public function bodyHeader() {
 		return
 			'<body class="wt-global">' .
-			'<header class="wt-header-wrapper">' .
+			'<header class="wt-header-wrapper hidden-print">' .
 			'<div class="container wt-header-container">' .
 			'<div class="row wt-header-content">' .
 			$this->headerContent() .
@@ -821,7 +821,7 @@ abstract class AbstractTheme {
 	public function individualBox(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->canShow() && $individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-			$thumbnail = $individual->displayImage();
+			$thumbnail = $individual->displayImage(40, 50, 'crop', []);
 		} else {
 			$thumbnail = '';
 		}
@@ -873,7 +873,7 @@ abstract class AbstractTheme {
 	public function individualBoxLarge(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-			$thumbnail = $individual->displayImage();
+			$thumbnail = $individual->displayImage(40, 50, 'crop', []);
 		} else {
 			$thumbnail = '';
 		}
@@ -916,7 +916,7 @@ abstract class AbstractTheme {
 	public function individualBoxSmall(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), ['person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U']);
 		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-			$thumbnail = $individual->displayImage();
+			$thumbnail = $individual->displayImage(40, 50, 'crop', []);
 		} else {
 			$thumbnail = '';
 		}

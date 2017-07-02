@@ -194,7 +194,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				}
 			}
 			$html .= '<li class="album-list-item">';
-			$html .= '<div class="album-image">' . $media->displayImage() . '</div>';
+			$html .= '<div class="album-image">' . $media->displayImage(100, 100, 'contain', []) . '</div>';
 			$html .= '<div class="album-title">' . $menu->bootstrap4() . '</div>';
 			$html .= '</li>';
 		}

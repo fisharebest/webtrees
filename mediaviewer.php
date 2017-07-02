@@ -103,39 +103,23 @@ $facts       = $controller->getFacts();
 		</li>
 	</ul>
 
-	<div class="tab-content">
+	<div class="tab-content mt-4">
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
-			<table class="facts_table">
-			<tr>
-				<td style="text-align:center; width:150px;">
-				<?php
-					// When we have a pending edit, $controller->record shows the *old* data.
-					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
-					// Perhaps check both, and use RED/BLUE boxes.
-					$tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
-					echo $tmp->displayImage();
-					if (!$tmp->isExternal()) {
-						if ($tmp->fileExists('main')) {
-							if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
-								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
-							}
-						} else {
-							echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
-						}
-					}
-				?>
-					</td>
-					<td>
-						<table class="facts_table">
-							<?php
-							foreach ($facts as $fact) {
-								FunctionsPrintFacts::printFact($fact, $controller->record);
-							}
-							?>
-						</table>
-					</td>
-				</tr>
-			</table>
+			<div class="row">
+				<div class="col-sm-4">
+					<?= $controller->record->displayImage(400, 600, '', ['class' => 'img-thumbnail']) ?>
+				</div>
+				<div class="col-sm-8">
+					<table class="facts_table">
+						<?php foreach ($facts as $fact): ?>
+							<?php FunctionsPrintFacts::printFact($fact, $controller->record) ?>
+						<?php endforeach ?>
+						<?php if ($controller->record->canEdit()): ?>
+							<?php FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'OBJE') ?>
+						<?php endif ?>
+					</table>
+				</div>
+			</div>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="individuals">

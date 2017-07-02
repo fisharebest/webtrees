@@ -49,49 +49,30 @@ class FunctionsMedia {
 	}
 
 	/**
-	 * Determine whether there is enough memory to load a particular image.
+	 * Send a dummy image, where one could not be found or created.
 	 *
-	 * @param string $serverFilename
-	 *
-	 * @return bool
+	 * @param int $status HTTP status code, such as 404 for "Not found"
 	 */
-	public static function hasMemoryForImage($serverFilename) {
-		// find out how much total memory this script can access
-		$memoryAvailable = self::sizeToBytes(ini_get('memory_limit'));
-		// if memory is unlimited, it will return -1 and we don’t need to worry about it
-		if ($memoryAvailable == -1) {
-			return true;
-		}
+	public static function outputHttpStatusAsImage($status, $message) {
+		$width      = 100;
+		$height     = 50;
+		$image      = imagecreatetruecolor($width, $height);
+		$foreground = imagecolorallocate($image, 255, 0, 0);
+		$background = imagecolorallocate($image, 255, 255, 255);
 
-		// find out how much memory we are already using
-		$memoryUsed = memory_get_usage();
+		// Draw a border
+		imagefilledrectangle($image, 0, 0, $width, $height, $foreground);
+		imagefilledrectangle($image, 1, 1, $width - 2, $height - 2, $background);
 
-		try {
-			$imgsize = getimagesize($serverFilename);
-		} catch (\ErrorException $ex) {
-			// Not an image, or not a valid image?
-			$imgsize = false;
-		}
+		// Draw text
+		imagestring($image, 5, 5, 5, (string) $status, $foreground);
+		imagestring($image, 5, 5, 25, $message, $foreground);
 
-		// find out how much memory this image needs for processing, probably only works for jpegs
-		// from comments on http://www.php.net/imagecreatefromjpeg
-		if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
-			$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + pow(2, 16)) * 1.65);
-			$memorySpare  = $memoryAvailable - $memoryUsed - $memoryNeeded;
-			if ($memorySpare > 0) {
-				// we have enough memory to load this file
-				return true;
-			} else {
-				// not enough memory to load this file
-				$image_info = sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename) / 1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
-				Log::addMediaLog('Cannot create thumbnail ' . $serverFilename . ' (' . $image_info . ') memory avail: ' . $memoryAvailable . ' used: ' . $memoryUsed . ' needed: ' . $memoryNeeded . ' spare: ' . $memorySpare);
 
-				return false;
-			}
-		} else {
-			// assume there is enough memory
-			// TODO find out how to check memory needs for gif and png
-			return true;
-		}
+		http_response_code(404);
+		header('Content-Type: image/png');
+		imagepng($image);
+		imagedestroy($image);
 	}
+
 }

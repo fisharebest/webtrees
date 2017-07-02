@@ -233,7 +233,17 @@ class FunctionsPrintFacts {
 			break;
 		case 'FILE':
 			if (Auth::isEditor($fact->getParent()->getTree())) {
-				echo '<div class="field">', Filter::escapeHtml($fact->getValue()), '</div>';
+				echo '<div class="field">', Filter::escapeHtml($fact->getValue());
+
+				if ($fact->getParent()->fileExists('main') && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
+					echo ' — <a href="' . $fact->getParent()->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a>';
+				}
+				echo '</div>';
+
+				if (!$fact->getParent()->fileExists('main')) {
+					echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
+				}
+
 				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists()) {
 					// The file size
 					echo GedcomTag::getLabelValue('__FILE_SIZE__', $fact->getParent()->getFilesize());
@@ -673,7 +683,7 @@ class FunctionsPrintFacts {
 						echo '<br class="media-separator" style="clear:both;">';
 					}
 					echo '<div class="media-display"><div class="media-display-image">';
-					echo $media->displayImage();
+					echo $media->displayImage(100, 100, 'contain', []);
 					echo '</div>';
 					echo '<div class="media-display-title">';
 					echo '<a href="', $media->getHtmlUrl(), '">', $media->getFullName(), '</a>';
@@ -1160,7 +1170,7 @@ class FunctionsPrintFacts {
 				echo '<td class="optionbox ', $styleadd, ' wrap">';
 				if ($media) {
 					echo '<span class="field">';
-					echo $media->displayImage();
+					echo $media->displayImage(100, 100, 'contain', []);
 					echo '<a href="' . $media->getHtmlUrl() . '">';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {

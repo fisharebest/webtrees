@@ -81,7 +81,7 @@ if ($action == 'choose' && $paramok) {
 			->execute([$mediaid, $WT_TREE->getTreeId()])
 			->fetchOne();
 		$media = Media::getInstance($mediaid, $WT_TREE);
-		echo $media->displayImage();
+		echo $media->displayImage(100, 100, 'contain', []);
 		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', I18N::translate('Links'), '</td>';
