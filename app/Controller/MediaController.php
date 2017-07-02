@@ -81,40 +81,4 @@ class MediaController extends GedcomRecordController {
 	public function getFacts() {
 		return $this->record->getFacts(null, true);
 	}
-
-	/**
-	 * Edit menu items used in media list
-	 *
-	 * @param Media $mediaobject
-	 *
-	 * @return string
-	 */
-	public static function getMediaListMenu(Media $mediaobject) {
-		$html = '';
-
-		$menu = new Menu(I18N::translate('Edit the details'), '#', 'lb-image_edit', [
-			'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '", "_blank", edit_window_specs);',
-		]);
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
-
-		$menu = new Menu(I18N::translate('Manage the links'), '#', 'lb-image_link', [
-			'onclick' => 'return false;',
-		], [
-			new Menu(I18N::translate('Link this media object to an individual'), '#', '', [
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","person");',
-			]),
-			new Menu(I18N::translate('Link this media object to a family'), '#', '', [
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","family");',
-			]),
-			new Menu(I18N::translate('Link this media object to a source'), '#', '', [
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","source");',
-			]),
-		]);
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
-
-		$menu = new Menu(I18N::translate('View the details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
-
-		return '<div class="lightbox-menu">' . $html . '</div>';
-	}
 }

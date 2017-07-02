@@ -103,7 +103,7 @@ $facts       = $controller->getFacts();
 		</li>
 	</ul>
 
-	<div class="tab-content">
+	<div class="tab-content mt-4">
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
 			<div class="row">
 				<div class="col-sm-4">

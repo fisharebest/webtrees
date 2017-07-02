@@ -97,7 +97,7 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="sortby" id="sortby">
+					<select name="sortby" id="sortby" class="form-control">
 						<option value="title" <?= $sortby === 'title' ? 'selected' : '' ?>>
 							<?= /* I18N: An option in a list-box */ I18N::translate('sort by title') ?>
 						</option>
@@ -113,12 +113,14 @@ $medialist = QueryMedia::mediaList(
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
-					<label for="subdirs">
-						<?= /* I18N: Label for check-box */ I18N::translate('Include subfolders') ?>
-					</label>
 				</td>
 				<td class="optionbox wrap">
-					<input type="checkbox" id="subdirs" name="subdirs" <?= $currentdironly ? '' : 'checked' ?>>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input type="checkbox" class="form-check-inupt" name="subdirs" <?= $currentdironly ? '' : 'checked' ?>>
+							<?= /* I18N: Label for check-box */ I18N::translate('Include subfolders') ?>
+						</label>
+					</div>
 				</td>
 				<td class="descriptionbox wrap">
 					<label for="max">
@@ -126,7 +128,7 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="max" id="max">
+					<select name="max" id="max" class="form-control">
 						<?php
 						foreach (['10', '20', '30', '40', '50', '75', '100', '125', '150', '200'] as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
@@ -146,7 +148,7 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="form_type" id="form-type">
+					<select name="form_type" id="form-type" class="form-control">
 						<option value=""></option>
 						<?php foreach (GedcomTag::getFileFormTypes() as $value => $label): ?>
 							<option value="<?= $value ?>" <?= $value === $form_type ? 'selected' : '' ?>>
@@ -161,7 +163,7 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="columns" id="columns">
+					<select name="columns" id="columns" class="form-control">
 						<?php
 						foreach (['1', '2'] as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
@@ -181,14 +183,14 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<input type="text" id="filter" name="filter" value="<?= Filter::escapeHtml($filter) ?>" size="14" dir="auto">
+					<input type="text" id="filter" name="filter" value="<?= Filter::escapeHtml($filter) ?>" size="14" class="form-control" dir="auto">
 				</td>
 				<td class="descriptionbox wrap"></td>
 				<td class="optionbox wrap">
-					<button type="submit" name="action" value="submit">
+					<button type="submit" name="action" value="submit" class="btn btn-primary">
 						<?= /* I18N: A button label. */ I18N::translate('search') ?>
 					</button>
-					<button type="submit" name="action" value="reset">
+					<button type="submit" name="action" value="reset" class="btn btn-default">
 						<?= /* I18N: A button label. */ I18N::translate('reset') ?>
 					</button>
 				</td>
@@ -261,9 +263,7 @@ if ($action === 'submit') {
 			echo '<table><tr><td class="media-image">';
 			echo $mediaobject->displayImage(100,100, 'contain', []);
 			echo '</td><td class="media-col list_value_wrap">';
-			if (Auth::isEditor($WT_TREE)) {
-				echo MediaController::getMediaListMenu($mediaobject);
-			}
+
 			// If sorting by title, highlight the title. If sorting by filename, highlight the filename
 			if ($sortby === 'title') {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
