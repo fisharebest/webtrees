@@ -488,7 +488,6 @@ $stats = new Stats($WT_TREE);
 			}
 		}
 		function statsModalDialog() {
-			alert('use bootstrap modal');
 			var form = $('#own-stats-form');
 			jQuery.get(form.attr('action'), form.serialize(), function (response) {
 				$(response).dialog({
