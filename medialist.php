@@ -34,10 +34,6 @@ $controller
 	->pageHeader();
 
 $action = Filter::get('action');
-$sortby = Filter::get('sortby', 'file|title', 'title');
-if (!Auth::isEditor($WT_TREE)) {
-	$sortby = 'title';
-}
 $page           = Filter::getInteger('page');
 $max            = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
 $folder         = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
@@ -48,7 +44,6 @@ $currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
 if ($action === 'reset') {
-	$sortby         = 'title';
 	$max            = '20';
 	$folder         = '';
 	$currentdironly = true;
@@ -63,7 +58,7 @@ $folders = QueryMedia::folderList();
 $medialist = QueryMedia::mediaList(
 	$folder,
 	$currentdironly ? 'exclude' : 'include',
-	$sortby,
+	'title',
 	$filter,
 	$form_type
 );
@@ -101,15 +96,9 @@ $medialist = QueryMedia::mediaList(
 			<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), $form_type, ['id' => 'form-type', 'name' => 'form_type']) ?>
 		</div>
 
-		<label class="col-sm-3 col-form-label wt-page-options-label" for="sortby">
-			<?php if (Auth::isEditor($WT_TREE)): ?>
-				<?= I18N::translate('Sort order') ?>
-			<?php endif ?>
-		</label>
+		<div class="col-sm-3 col-form-label wt-page-options-label">
+		</div>
 		<div class="col-sm-3 wt-page-options-value">
-			<?php if (Auth::isEditor($WT_TREE)): ?>
-				<?= Bootstrap4::select(['title' => /* I18N: An option in a list-box */ I18N::translate('sort by title'), 'file' => /* I18N: An option in a list-box */ I18N::translate('sort by filename')], $sortby, ['id' => 'sortby', 'name' => 'sortby']) ?>
-			<?php endif ?>
 		</div>
 	</div>
 
@@ -139,7 +128,6 @@ if ($action === 'submit') {
 	$url = 'medialist.php?action=submit' .
 		'&amp;ged=' . $WT_TREE->getNameHtml() .
 		'&amp;folder=' . Filter::escapeUrl($folder) .
-		'&amp;sortby=' . Filter::escapeUrl($sortby) .
 		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .
 		'&amp;filter=' . Filter::escapeUrl($filter) .
 		'&amp;form_type=' . Filter::escapeUrl($form_type) .
@@ -184,12 +172,7 @@ if ($action === 'submit') {
 				<div class="card mb-4 list_value_wrap">
 					<div class="card-block">
 						<h4 class="card-title">
-							<?php if ($sortby === 'title'): ?>
-								<a href="<?= $media->getHtmlUrl() ?>"><?= $media->getFullName() ?></a>
-							<?php else: ?>
-								<a href="<?= $media->getHtmlUrl() ?>"><?= Filter::escapeHtml(basename($media->getFilename())) ?></a>
-								<?= GedcomTag::getLabelValue('TITL', $media->getFullName()) ?>
-							<?php endif ?>
+							<a href="<?= $media->getHtmlUrl() ?>"><?= $media->getFullName() ?></a>
 						</h4>
 
 						<?= $media->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
