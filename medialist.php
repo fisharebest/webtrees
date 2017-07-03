@@ -182,18 +182,18 @@ if ($action === 'submit') {
 						<p class="card-text">
 							<?php
 							// Show file details
+							$mediatype = $media->getMediaType();
+							if ($mediatype) {
+								echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+							}
 							if ($media->isExternal()) {
 								echo GedcomTag::getLabelValue('URL', $media->getFilename());
 							} else {
 								if ($media->fileExists()) {
-									if (Auth::isEditor($WT_TREE)) {
-										echo GedcomTag::getLabelValue('FILE', $media->getFilename());
-										$mediatype = $media->getMediaType();
-										if ($mediatype) {
-											echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-										}
-									}
 									if ($details === '1') {
+										if (Auth::isEditor($WT_TREE)) {
+											echo GedcomTag::getLabelValue('FILE', $media->getFilename());
+										}
 										echo GedcomTag::getLabelValue('FORM', $media->mimeType());
 										echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
 										$imgsize = $media->getImageAttributes();
