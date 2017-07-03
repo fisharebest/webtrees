@@ -38,15 +38,16 @@ $page           = Filter::getInteger('page');
 $max            = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
 $folder         = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
 $filter         = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
-$subdirs        = Filter::get('subdirs', 'on');
+$subdirs        = Filter::get('subdirs', '1');
+$details        = Filter::get('details', '1');
 $form_type      = Filter::get('form_type', implode('|', array_keys(GedcomTag::getFileFormTypes())));
-$currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
 if ($action === 'reset') {
 	$max            = '20';
 	$folder         = '';
-	$currentdironly = true;
+	$subdirs        = '';
+	$details        = '';
 	$filter         = '';
 	$form_type      = '';
 }
@@ -57,7 +58,7 @@ $folders = QueryMedia::folderList();
 // A list of all media objects matching the search criteria
 $medialist = QueryMedia::mediaList(
 	$folder,
-	$currentdironly ? 'exclude' : 'include',
+	$subdirs === '1' ? 'include' : 'exclude',
 	'title',
 	$filter,
 	$form_type
@@ -77,7 +78,7 @@ $medialist = QueryMedia::mediaList(
 		</label>
 		<div class="col-sm-3 wt-page-options-value">
 			<?= Bootstrap4::select($folders, $folder, ['id' => 'folder', 'name' => 'folder']) ?>
-			<?= Bootstrap4::checkbox(/* I18N: Label for check-box */ I18N::translate('Include subfolders'), true, ['name' => 'subdirs', 'checked' => ! $currentdironly]) ?>
+			<?= Bootstrap4::checkbox(/* I18N: Label for check-box */ I18N::translate('Include subfolders'), true, ['name' => 'subdirs', 'checked' => ($subdirs === '1')]) ?>
 		</div>
 
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="max">
@@ -99,6 +100,7 @@ $medialist = QueryMedia::mediaList(
 		<div class="col-sm-3 col-form-label wt-page-options-label">
 		</div>
 		<div class="col-sm-3 wt-page-options-value">
+			<?= Bootstrap4::checkbox(I18N::translate('Details'), true, ['name' => 'details', 'checked' => ($details === '1')]) ?>
 		</div>
 	</div>
 
@@ -191,11 +193,13 @@ if ($action === 'submit') {
 											echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
 										}
 									}
-									echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-									echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
-									$imgsize = $media->getImageAttributes();
-									if ($imgsize['WxH']) {
-										echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+									if ($details === '1') {
+										echo GedcomTag::getLabelValue('FORM', $media->mimeType());
+										echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
+										$imgsize = $media->getImageAttributes();
+										if ($imgsize['WxH']) {
+											echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+										}
 									}
 								} else {
 									echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
