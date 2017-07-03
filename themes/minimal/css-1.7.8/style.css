@@ -1241,6 +1241,11 @@ float: right;
 float: right;
 }
 
+.facts_label {
+    border: 1px solid #000;
+    padding: 4px;
+}
+
 .stat-row {
 	display: table-row;
 	border: 1px solid #000;
@@ -2902,6 +2907,34 @@ div.faq_body {
 
 #childbox {
 	display: none;
+}
+
+.person0, .person1, .person2, .person3, .person4, .person5 {
+	border:outset #555 1px;
+	vertical-align:top;
+}
+.person0{
+	background-color:#eee;
+}
+
+.person1{
+	background-color:#bfbfbf;
+}
+
+.person2{
+	background-color:#999;
+}
+
+.person3{
+	background-color:#dfdfdf;
+}
+
+.person4{
+	background-color:#eee;
+}
+
+.person5{
+	background-color:#fefefe;
 }
 
 #pedigree-page #childarrow {
