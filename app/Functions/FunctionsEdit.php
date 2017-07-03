@@ -162,6 +162,8 @@ class FunctionsEdit {
 	/**
 	 * A list of integers (e.g. for an edit control).
 	 *
+	 * @param int[] $integers
+	 *
 	 * @return string[]
 	 */
 	public static function numericOptions($integers) {

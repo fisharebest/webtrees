@@ -1216,7 +1216,7 @@ a:hover .nameZoom {
 .person_box_template {
 	height: auto;
 	white-space: normal;
-	overflow: hidden !important; 
+	overflow: hidden !important;
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -1270,129 +1270,6 @@ a:hover .nameZoom {
 
 [dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
-}
-
-#branches-page table,
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
-	margin: 0 auto;
-}
-
-#medialist-page form .list_table {
-	width: 75%;
-}
-
-#medialist-page div .list_table,
-#medialist-page .media-col,
-#medialist-page .media-col1,
-#medialist-page .list_value_wrap,
-#medialist-page div .list_table_controls {
-	width: 100%;
-}
-
-#medialist-page .optionbox,
-#medialist-page .descriptionbox {
-	width: 25%;
-}
-
-#medialist-page .media-col2 {
-	width: 50%;
-}
-
-#medialist-page .media-col {
-	padding-left: 5px;
-	border: none;
-}
-
-[dir=rtl] #medialist-page .media-col {
-	padding-left: 0;
-	padding-right: 5px;
-}
-
-#medialist-page .media-image {
-	vertical-align:top;
-	white-space:normal;
-}
-
-#medialist-page p {
-	text-align: center;
-}
-
-.list_table_controls td {
-	min-width: 40px;
-	text-align: center;
-}
-/* ======== medialist.php ==== */
-.makeMenu li ul {
-	border: thin solid #AAA;
-	position: absolute;
-	margin:0;
-}
-
-.makeMenu, .makeMenu li ul {
-	padding: 1px;
-}
-
-.makeMenu li {
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-}
-
-.lb-menu {
-	display: inline-block;
-	margin: 0;
-	list-style: none;
-}
-
-.lb-menu ul {
-	display: block;
-	list-style-type: none;
-	margin: 0;
-}
-
-.lb-menu > li {
-	font-weight: normal;
-	float: left;
-	top: 0;
-}
-
-.lb-menu li:first-child {
-	padding-left: 0;
-}
-
-.lb-menu > li ul {
-	display: none;
-}
-
-.lb-menu > li:hover ul {
-	display: block;
-	top: 36px;
-}
-
-.lb-menu a {
-	display: block;
-}
-
-.lb-menu li a {
-	padding: 0 10px 1px 5px;
-}
-
-.lb-menu li li a {
-	background-color: #fff;
-	padding: 5px 10px 5px 5px;
-}
-
-.lb-menu li {
-	border: 0;
-}
-
-[dir=rtl] .lb-menu > li {
-	float: right;
-}
-
-.lb-image_edit, .lb-image_link {
-	padding-right: 5px;
 }
 
 /* login.php */
@@ -1765,7 +1642,6 @@ a:hover .nameZoom {
 #repo-details h2,
 #repolist-page h2,
 #media-details h2,
-#medialist-page h2,
 #statistics-page h2 {
 	margin-bottom: 20px;
 	text-align: center;
