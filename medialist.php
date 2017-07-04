@@ -109,7 +109,7 @@ $medialist = QueryMedia::mediaList(
 			<?= I18N::translate('Search filters') ?>
 		</label>
 		<div class="col-sm-3 wt-page-options-value">
-			<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), $form_type, ['id' => 'form-type', 'name' => 'form_type']) ?>
+			<input type="text" class="form-control" name="filter" id="filter" value="<?= Filter::escapeHtml($filter) ?>">
 		</div>
 
 		<div class="col-sm-3 col-form-label wt-page-options-label">
