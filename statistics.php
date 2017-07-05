@@ -526,39 +526,22 @@ $stats = new Stats($WT_TREE);
 					<?= Bootstrap4::radioButtons('x-as', ['2' => I18N::translate('Birth by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
 					<?= Bootstrap4::radioButtons('x-as', ['4' => I18N::translate('Marriage by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
 					<?= Bootstrap4::radioButtons('x-as', ['3' => I18N::translate('Death by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+
 					<div id="x_years" style="display:none;">
 						<label for="x-axis-boundaries-ages">
 							<?= I18N::translate('Select the desired age interval') ?>
 						</label>
 						<br>
-						<select id="x-axis-boundaries-ages" name="x-axis-boundaries-ages">
-							<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected>
-								<?= I18N::plural('interval %s year', 'interval %s years', 10, I18N::number(10)) ?>
-							</option>
-							<option value="5,20,40,60,75,80,85,90">
-								<?= I18N::plural('interval %s year', 'interval %s years', 20, I18N::number(20)) ?>
-							</option>
-							<option value="10,25,50,75,100">
-								<?= I18N::plural('interval %s year', 'interval %s years', 25, I18N::number(25)) ?>
-							</option>
-						</select>
-						<br>
+						<?= Bootstrap4::select(['1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)), '5,20,40,60,75,80,85,90' => I18N::plural('%s year', '%s years', 20, I18N::number(20)), '10,25,50,75,100' => I18N::plural('%s year', '%s years', 25, I18N::number(25)),],'1,5,10,20,30,40,50,60,70,80,90,100', ['id' => 'x-axis-boundaries-ages', 'name' => 'x-axis-boundaries-ages']) ?>
 					</div>
+
 					<div id="x_years_m" style="display:none;">
 						<label for="x-axis-boundaries-ages_m">
 							<?= I18N::translate('Select the desired age interval') ?>
 						</label>
-						<br>
-						<select id="x-axis-boundaries-ages_m" name="x-axis-boundaries-ages_m">
-							<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected>
-								<?= I18N::plural('interval %s year', 'interval %s years', 2, I18N::number(2)) ?>
-							</option>
-							<option value="20,25,30,35,40,45,50">
-								<?= I18N::plural('interval %s year', 'interval %s years', 5, I18N::number(5)) ?>
-							</option>
-						</select>
-						<br>
+						<?= Bootstrap4::select(['16,18,20,22,24,26,28,30,32,35,40,50' => I18N::plural('%s year', '%s years', 2, I18N::number(2)), '20,25,30,35,40,45,50' => I18N::plural('%s year', '%s years', 5, I18N::number(5))], '16,18,20,22,24,26,28,30,32,35,40,50', ['id' => 'x-axis-boundaries-ages_m', 'name' => 'x-axis-boundaries-ages_m']) ?>
 					</div>
+
 					<div id="x_months" style="display:none;">
 						<label for="x-axis-boundaries-months">
 							<?php I18N::translate('Select the desired age interval') ?>
