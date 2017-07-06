@@ -18,6 +18,7 @@
 /* Header */
 .wt-header-wrapper, .btn-primary {
 	background: #767647;
+	border: 0;
 	color: #fff;
 }
 
@@ -26,7 +27,7 @@
 }
 
 /* Tbls and menus  */
-.wt-page-options-label,
+.wt-page-options-label, 
 .descriptionbox, .descriptionbox a, .facts_label03,
 .topbottombar, .topbottombar a, .topbottombar h2,
 .facts_label, .facts_label a, .facts_label h2, .facts_label .date, .facts_table .descriptionbox a,
@@ -35,7 +36,7 @@
 #separator:after, #family_nav,
 .ui-state-active a:link, .ui-state-active a:visited {
 	background-color: #cca;
-	color: #333;
+	color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {
@@ -44,7 +45,7 @@
 
 /* Base */
 .wt-page-options-value,
-#indi_header h3,
+#indi_header h3, 
 .wt-block-content, #search, #search-page-table .value, #edituser-table .value,
 .secondary-menu ul li a:hover, .ui-widget-header,
 .optionbox, #indi_header .ui-state-active a:link,

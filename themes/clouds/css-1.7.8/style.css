@@ -774,7 +774,7 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-block-header {
 	background: url(images/block-header-background.png);
 	background-size: auto 100%;
-	padding: 0.25rem 0.75rem
+	padding: 0.25rem 0.75rem;
 }
 
 .wt-block-header::before {
@@ -1031,8 +1031,7 @@ fieldset,
 .secondary-menu li ul,
 footer,
 #indi_main_blocks,
-#tabs,
-.topbottombar {
+#tabs{
 	border-radius: 3px;
 }
 
@@ -4135,7 +4134,7 @@ color: #ldlelf;
 .list_value_wrap,
 .news_box,
 .submenuitem_hover {
-	background: #fff;
+	background: inherit;
 }
 
 #topMenu {

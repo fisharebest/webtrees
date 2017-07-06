@@ -23,6 +23,16 @@ h2::first-letter {
 .btn-link {
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
+	color: #333;
+}
+
+.btn.focus, .btn:focus {
+	box-shadow: none;
+}
+
+.btn-link:hover, .btn-link:focus {
+	color: #f00;
+	text-decoration: none;
 }
 
 .pagination, .page-link, .page-link:hover, .page-link:focus {
@@ -983,15 +993,15 @@ img.block,
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
-	border: 1px solid #999;
 }
 
 .button {
 	width: 60px;
 }
 
-.btn-primary, .btn-primary:hover {
-	border: none;
+.btn-primary.focus, .btn-primary:focus {
+	box-shadow:none;
+	border: 0;
 }
 
 .alpha_index {
@@ -1470,10 +1480,16 @@ a:hover .nameZoom {
 
 .optionbox {
 	font-size: 12px;
-	border: solid #999 1px;
+	border: 1px solid #999;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
+}
+
+.optionbox .list_value {
+	background-color: #fff;
+	border: 1px solid #999;
+	border-radius: 3px;
 }
 
 .vmiddle {
@@ -3415,6 +3431,7 @@ div.faq_body {
 #field_table {
 	width: 30%;
 	min-width: 500px;
+	border: 1px solid #ddd;
 }
 
 /* ====== Common Icons ========= */
