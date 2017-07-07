@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Log;
-
 /**
  * Class FunctionsMedia - common functions
  */
