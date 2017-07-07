@@ -240,7 +240,7 @@ class FunctionsCharts {
 					self::printSosaNumber($sosa * 4 + 3, $hfam->getWife()->getXref(), 'arrow-down');
 				}
 				if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
-					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', 'arrow-up');
+					self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
 				}
 				echo '<td>';
 				FunctionsPrint::printPedigreePerson($hfam->getWife());
