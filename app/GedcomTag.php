@@ -1408,6 +1408,8 @@ class GedcomTag {
 	/**
 	 * Get a list of facts, for use in the "fact picker" edit control
 	 *
+	 * @param string $fact_type
+	 *
 	 * @return string[]
 	 */
 	public static function getPicklistFacts($fact_type) {

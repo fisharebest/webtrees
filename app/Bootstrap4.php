@@ -25,6 +25,8 @@ class Bootstrap4 extends Html {
 	 * Generate a badge containing a count of items.
 	 *
 	 * @param array $items
+	 *
+	 * @return string
 	 */
 	public static function badgeCount(array $items) {
 		if (empty($items)) {

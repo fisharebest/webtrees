@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
+use stdclass;
+
 /**
  * Provide an interface to the wt_user table.
  */
@@ -281,9 +283,9 @@ class User {
 	/**
 	 * Create a new user object from a row in the database.
 	 *
-	 * @param \stdclass $user A row from the wt_user table
+	 * @param stdclass $user A row from the wt_user table
 	 */
-	public function __construct(\stdClass $user) {
+	public function __construct(stdClass $user) {
 		$this->user_id   = $user->user_id;
 		$this->user_name = $user->user_name;
 		$this->real_name = $user->real_name;

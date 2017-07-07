@@ -83,8 +83,7 @@ class CensusAssistantModule extends AbstractModule {
     }
 
     /**
-     * @param Individual      $individual
-     * @param CensusInterface $census
+     * @param Individual $individual
      */
     public function createCensusAssistant(Individual $individual) {
         ?>
@@ -247,12 +246,14 @@ class CensusAssistantModule extends AbstractModule {
         <?php
     }
 
-    /**
-     * @param Individual $individual
-     * @param string     $newged
-     *
-     * @return string
-     */
+	/**
+	 * @param Individual $individual
+	 * @param string     $fact_id
+	 * @param string     $newged
+	 * @param bool       $keep_chan
+	 *
+	 * @return string
+	 */
     public function updateCensusAssistant(Individual $individual, $fact_id, $newged, $keep_chan) {
         $ca_title       = Filter::post('ca_title');
         $ca_place       = Filter::post('ca_place');

@@ -176,7 +176,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
  *
  * @param $to
  *
- * @reutrn User[]
+ * @return User[]
  */
 function recipients($to) {
 	if ($to === 'all') {

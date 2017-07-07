@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use stdClass;
 
 /**
  * Common functions for all themes.
@@ -433,11 +434,11 @@ abstract class AbstractTheme {
 	/**
 	 * Add markup to a flash message.
 	 *
-	 * @param \stdClass $message
+	 * @param stdClass $message
 	 *
 	 * @return string
 	 */
-	protected function flashMessageContainer(\stdClass $message) {
+	protected function flashMessageContainer(stdClass $message) {
 		return $this->htmlAlert($message->text, $message->status, true);
 	}
 
@@ -446,7 +447,7 @@ abstract class AbstractTheme {
 	 * on one request, and displayed on another. If there are many messages,
 	 * the container may need a max-height and scroll-bar.
 	 *
-	 * @param \stdClass[] $messages
+	 * @param stdClass[] $messages
 	 *
 	 * @return string
 	 */

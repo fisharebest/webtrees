@@ -118,7 +118,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * Format a name record
 	 *
-	 * @param int  $primary
+	 * @param int  $n
 	 * @param Fact $fact
 	 *
 	 * @return string
@@ -216,7 +216,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * print information for a sex record
 	 *
-	 * @param Fact $event the Event object
+	 * @param Fact $fact
 	 *
 	 * @return string
 	 */

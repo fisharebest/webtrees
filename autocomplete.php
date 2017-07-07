@@ -20,6 +20,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use stdClass;
+
 require 'includes/session.php';
 
 $term = Filter::get('term'); // we can search on '"><& etc.
@@ -534,7 +536,7 @@ case 'IFS':
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_FAM_rows(Tree $tree, $term) {
 	return Database::prepare(
@@ -558,7 +560,7 @@ function get_FAM_rows(Tree $tree, $term) {
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_INDI_rows(Tree $tree, $term) {
 	return Database::prepare(
@@ -579,7 +581,7 @@ function get_INDI_rows(Tree $tree, $term) {
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_NOTE_rows(Tree $tree, $term) {
 	return Database::prepare(
@@ -601,7 +603,7 @@ function get_NOTE_rows(Tree $tree, $term) {
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_OBJE_rows(Tree $tree, $term) {
 	return Database::prepare(
@@ -623,7 +625,7 @@ function get_OBJE_rows(Tree $tree, $term) {
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_REPO_rows(Tree $tree, $term) {
 	return Database::prepare(
@@ -645,7 +647,7 @@ function get_REPO_rows(Tree $tree, $term) {
  * @param Tree   $tree
  * @param string $term
  *
- * @return \stdClass[]
+ * @return stdClass[]
  */
 function get_SOUR_rows(Tree $tree, $term) {
 	return Database::prepare(

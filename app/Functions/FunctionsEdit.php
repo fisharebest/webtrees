@@ -194,6 +194,8 @@ class FunctionsEdit {
 	/**
 	 * A list of GEDCOM relationships (e.g. for an edit control).
 	 *
+	 * @param string $relationship
+	 *
 	 * @return string[]
 	 */
 	public static function optionsRelationships($relationship) {
@@ -909,8 +911,10 @@ class FunctionsEdit {
 	 * Genearate a <select> element, with the dates/places of all known censuses
 	 *
 	 *
-	 * @param string $locale - Sort the censuses for this locale
-	 * @param string $xref   - The individual for whom we are adding a census
+	 * @param string $locale Sort the censuses for this locale
+	 * @param string $xref   The individual for whom we are adding a census
+	 *
+	 * @return string
 	 */
 	public static function censusDateSelector($locale, $xref) {
 		global $controller;
