@@ -350,17 +350,16 @@ class CensusAssistantModule extends AbstractModule {
 			}
 
 			function checknames(frm) {
+				var button = '';
 				if (document.forms[0].subclick) {
 					button = document.forms[0].subclick.value;
-				} else {
-					button = '';
 				}
 				if (frm.filter.value.length < 2 && button !== 'all') {
 					alert('<?= I18N::translate('Please enter more than one character.') ?>');
 					frm.filter.focus();
 					return false;
 				}
-				if (button == 'all') {
+				if (button === 'all') {
 					frm.filter.value = '';
 				}
 				return true;
