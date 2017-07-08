@@ -292,16 +292,19 @@ echo Bootstrap4::breadcrumbs([
 		</div>
 	</div>
 
-	<div class="row text-center">
+	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
-			<?= /* I18N: A button label. */ I18N::translate('search') ?>
+			<?= FontAwesome::decorativeIcon('search') ?>
+ 			<?= /* I18N: A button label. */ I18N::translate('search') ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= FontAwesome::decorativeIcon('download') ?>
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= FontAwesome::decorativeIcon('delete') ?>
 			<?= /* I18N: A button label. */ I18N::translate('delete') ?>
 		</button>
 	</div>
