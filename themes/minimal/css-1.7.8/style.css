@@ -20,6 +20,14 @@
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
 }
+.table-given-name {
+    overflow-x: hidden;
+}
+
+.container-fluid {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
