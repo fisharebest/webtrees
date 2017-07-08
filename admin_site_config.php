@@ -258,7 +258,7 @@ echo Bootstrap4::breadcrumbs([
 
 	<!-- ALLOW_USER_THEMES -->
 	<fieldset class="form-group">
-		<div clss="row">
+		<div class="row">
 			<legend class="col-form-legend col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Allow users to select their own theme') ?>
 			</legend>
