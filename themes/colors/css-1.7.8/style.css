@@ -23,6 +23,16 @@ h2::first-letter {
 .btn-link {
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
+	color: #333;
+}
+
+.btn.focus, .btn:focus {
+	box-shadow: none;
+}
+
+.btn-link:hover, .btn-link:focus {
+	color: #f00;
+	text-decoration: none;
 }
 
 .pagination, .page-link, .page-link:hover, .page-link:focus {
@@ -30,8 +40,8 @@ h2::first-letter {
 	color: #555;
 }
 
-.page-item.active .page-link {    
-	background-color: #e6e6e6; 
+.page-item.active .page-link {
+	background-color: #e6e6e6;
 	color: #555;
 	border-color: #ccc;
 }
@@ -983,15 +993,15 @@ img.block,
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
-	border: 1px solid #999;
 }
 
 .button {
 	width: 60px;
 }
 
-.btn-primary, .btn-primary:hover {
-	border: none;
+.btn-primary.focus, .btn-primary:focus {
+	box-shadow:none;
+	border: 0;
 }
 
 .alpha_index {
@@ -1380,16 +1390,6 @@ a:hover .nameZoom {
 	vertical-align: bottom;
 }
 
-.line1,
-.line2,
-.line3 {
-	vertical-align: middle;
-}
-
-.line5 {
-	vertical-align: top;
-}
-
 #childbox {
 	padding: 5px;
 	position: absolute;
@@ -1480,10 +1480,16 @@ a:hover .nameZoom {
 
 .optionbox {
 	font-size: 12px;
-	border: solid #999 1px;
+	border: 1px solid #999;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
+}
+
+.optionbox .list_value {
+	background-color: #fff;
+	border: 1px solid #999;
+	border-radius: 3px;
 }
 
 .vmiddle {
@@ -1671,7 +1677,7 @@ a:hover .nameZoom {
 .person_box_template {
 	height: auto;
 	white-space: normal;
-	overflow: hidden !important; 
+	overflow: hidden !important;
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -1720,137 +1726,6 @@ a:hover .nameZoom {
 
 [dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
-}
-
-#branches-page table,
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
-	margin: 0 auto;
-}
-
-#medialist-page form .list_table {
-	width: 75%;
-}
-
-#medialist-page div .list_table,
-#medialist-page .media-col,
-#medialist-page .media-col1,
-#medialist-page .list_value_wrap,
-#medialist-page div .list_table_controls {
-	width: 100%;
-}
-
-#medialist-page .optionbox,
-#medialist-page .descriptionbox {
-	width: 25%;
-}
-
-#medialist-page .media-col2 {
-	width: 50%;
-}
-
-#medialist-page .media-col {
-	padding-left: 5px;
-	border: none;
-}
-
-[dir=rtl] #medialist-page .media-col {
-	padding-left: 0;
-	padding-right: 5px;
-}
-
-#medialist-page .media-image {
-	vertical-align:top;
-	white-space:normal;
-}
-
-#medialist-page p {
-	text-align: center;
-}
-
-.list_table_controls td {
-	min-width: 40px;
-	text-align: center;
-}
-
-/* ======== medialist.php ==== */
-.makeMenu li ul {
-	border: thin solid #AAA;
-	position: absolute;
-	margin:0;
-}
-
-.makeMenu, .makeMenu li ul {
-	padding: 1px;
-}
-
-.makeMenu li {
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-}
-
-.lb-menu {
-	display: inline-block;
-	margin: 0;
-}
-
-.lb-menu ul {
-	display: block;
-	list-style-type: none;
-	margin: 0;
-}
-
-.lb-menu > li {
-	font-weight: normal;
-	float: left;
-	top: 0;
-}
-
-.lb-menu li:first-child {
-	padding-left: 0;
-}
-
-.lb-menu > li ul {
-	display: none;
-}
-
-.lb-menu > li:hover ul {
-	display: block;
-	top: 36px;
-}
-
-.lb-menu a {
-	display: block;
-}
-
-.lb-menu li a {
-	padding: 24px 10px 1px 5px;
-}
-
-.lb-menu li li a {
-	background-color: #fff;
-	padding: 5px 10px 5px 5px;
-}
-
-.lb-menu li {
-	border: 0;
-}
-
-[dir=rtl] .lb-menu > li {
-	float: right;
-}
-
-.list_value_wrap .lb-image_edit {
-	background: url(images/image_edit.png) no-repeat 50% 20%;
-}
-
-.list_value_wrap .lb-image_link {
-	background: url(images/image_link.png) no-repeat 50% 20%;
-}
-
-.list_value_wrap .lb-image_view {
-	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
 /* login.php */
@@ -2203,7 +2078,6 @@ a:hover .nameZoom {
 #repo-details h2,
 #repolist-page h2,
 #media-details h2,
-#medialist-page h2,
 #statistics-page h2 {
 	margin-bottom: 20px;
 	text-align: center;
@@ -3557,6 +3431,7 @@ div.faq_body {
 #field_table {
 	width: 30%;
 	min-width: 500px;
+	border: 1px solid #ddd;
 }
 
 /* ====== Common Icons ========= */

@@ -152,7 +152,7 @@ class FamilyBookController extends ChartController {
 		if ($person) {
 			FunctionsPrint::printPedigreePerson($person);
 			echo '</td><td>',
-			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
+			'<img class="linef1" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
 		} else {
 			echo '<div style="width:', $this->getBoxDimensions()->width + 19, 'px; height:', $this->getBoxDimensions()->height + 8, 'px;"></div>',
 			'</td><td>';
@@ -253,7 +253,7 @@ class FamilyBookController extends ChartController {
 			}
 			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
 			'<td>',
-			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
+			'<img class="linef2" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
@@ -277,7 +277,7 @@ class FamilyBookController extends ChartController {
 			}
 			echo '</tr><tr>',
 			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
-			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
+			'<td><img class="linef3" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
 			FunctionsPrint::printPedigreePerson($family->getWife());

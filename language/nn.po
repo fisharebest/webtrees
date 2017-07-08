@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-20 06:06+0000\n"
+"PO-Revision-Date: 2017-07-04 20:58+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
@@ -11598,7 +11598,7 @@ msgstr "Safar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:60
 msgid "Sage"
-msgstr "Malurt"
+msgstr "Salvie"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6850

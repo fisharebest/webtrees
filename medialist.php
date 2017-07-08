@@ -15,8 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\MediaController;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Query\QueryMedia;
@@ -34,26 +34,20 @@ $controller
 	->pageHeader();
 
 $action = Filter::get('action');
-$sortby = Filter::get('sortby', 'file|title', 'title');
-if (!Auth::isEditor($WT_TREE)) {
-	$sortby = 'title';
-}
 $page           = Filter::getInteger('page');
 $max            = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
 $folder         = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
 $filter         = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
-$columns        = Filter::getInteger('columns', 1, 2, 2);
-$subdirs        = Filter::get('subdirs', 'on');
+$subdirs        = Filter::get('subdirs', '1');
+$details        = Filter::get('details', '1');
 $form_type      = Filter::get('form_type', implode('|', array_keys(GedcomTag::getFileFormTypes())));
-$currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
 if ($action === 'reset') {
-	$sortby         = 'title';
 	$max            = '20';
 	$folder         = '';
-	$columns        = '2';
-	$currentdironly = true;
+	$subdirs        = '';
+	$details        = '';
 	$filter         = '';
 	$form_type      = '';
 }
@@ -64,139 +58,71 @@ $folders = QueryMedia::folderList();
 // A list of all media objects matching the search criteria
 $medialist = QueryMedia::mediaList(
 	$folder,
-	$currentdironly ? 'exclude' : 'include',
-	$sortby,
+	$subdirs === '1' ? 'include' : 'exclude',
+	'title',
 	$filter,
 	$form_type
 );
 
 ?>
-<div id="medialist-page">
+<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<h2><?= $controller->getPageTitle() ?></h2>
-
-<form action="medialist.php">
+<form class="wt-page-options wt-page-options-media-list hidden-print">
 	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
-	<table class="list_table">
-		<tbody>
-			<tr>
-				<td class="descriptionbox wrap">
-					<label for="folder">
-						<?= I18N::translate('Folder') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<?= Bootstrap4::select($folders, $folder, ['id' => 'folder', 'name' => 'folder']) ?>
-				</td>
-				<?php if (Auth::isEditor($WT_TREE)): ?>
-				<td class="descriptionbox wrap">
-					<label for="sortby">
-						<?= I18N::translate('Sort order') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<select name="sortby" id="sortby" class="form-control">
-						<option value="title" <?= $sortby === 'title' ? 'selected' : '' ?>>
-							<?= /* I18N: An option in a list-box */ I18N::translate('sort by title') ?>
-						</option>
-						<option value="file" <?= $sortby === 'file' ? 'selected' : '' ?>>
-							<?= /* I18N: An option in a list-box */ I18N::translate('sort by filename') ?>
-						</option>
-					</select>
-				</td>
-				<?php else: ?>
-					<td class="descriptionbox wrap"></td>
-					<td class="optionbox wrap"></td>
-				<?php endif ?>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap">
-				</td>
-				<td class="optionbox wrap">
-					<div class="form-check form-check-inline">
-						<label class="form-check-label">
-							<input type="checkbox" class="form-check-inupt" name="subdirs" <?= $currentdironly ? '' : 'checked' ?>>
-							<?= /* I18N: Label for check-box */ I18N::translate('Include subfolders') ?>
-						</label>
-					</div>
-				</td>
-				<td class="descriptionbox wrap">
-					<label for="max">
-						<?= I18N::translate('Media objects per page') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<select name="max" id="max" class="form-control">
-						<?php
-						foreach (['10', '20', '30', '40', '50', '75', '100', '125', '150', '200'] as $selectEntry) {
-							echo '<option value="', $selectEntry, '" ';
-							if ($selectEntry == $max) {
-								echo 'selected';
-							}
-							echo '>', $selectEntry, '</option>';
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap">
-					<label for="form-type">
-						<?= I18N::translate('Type') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<select name="form_type" id="form-type" class="form-control">
-						<option value=""></option>
-						<?php foreach (GedcomTag::getFileFormTypes() as $value => $label): ?>
-							<option value="<?= $value ?>" <?= $value === $form_type ? 'selected' : '' ?>>
-								<?= $label ?>
-							</option>
-						<?php endforeach ?>
-					</select>
-				</td>
-				<td class="descriptionbox wrap">
-					<label for="columns">
-						<?= I18N::translate('Columns per page') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<select name="columns" id="columns" class="form-control">
-						<?php
-						foreach (['1', '2'] as $selectEntry) {
-							echo '<option value="', $selectEntry, '" ';
-							if ($selectEntry == $columns) {
-								echo 'selected';
-							}
-							echo '>', $selectEntry, '</option>';
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap">
-					<label for="filter">
-						<?= I18N::translate('Search filters') ?>
-					</label>
-				</td>
-				<td class="optionbox wrap">
-					<input type="text" id="filter" name="filter" value="<?= Filter::escapeHtml($filter) ?>" size="14" class="form-control" dir="auto">
-				</td>
-				<td class="descriptionbox wrap"></td>
-				<td class="optionbox wrap">
-					<button type="submit" name="action" value="submit" class="btn btn-primary">
-						<?= /* I18N: A button label. */ I18N::translate('search') ?>
-					</button>
-					<button type="submit" name="action" value="reset" class="btn btn-default">
-						<?= /* I18N: A button label. */ I18N::translate('reset') ?>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="folder">
+			<?= I18N::translate('Folder') ?>
+		</label>
+		<div class="col-sm-3 wt-page-options-value">
+			<?= Bootstrap4::select($folders, $folder, ['id' => 'folder', 'name' => 'folder']) ?>
+			<?= Bootstrap4::checkbox(/* I18N: Label for check-box */ I18N::translate('Include subfolders'), true, ['name' => 'subdirs', 'checked' => ($subdirs === '1')]) ?>
+		</div>
+
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="max">
+			<?= I18N::translate('Media objects per page') ?>
+		</label>
+		<div class="col-sm-3 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions([10, 20, 30, 40, 50, 75, 100, 150, 200]), $max, ['id' => 'max', 'name' => 'max']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="form-type">
+			<?= I18N::translate('Type') ?>
+		</label>
+		<div class="col-sm-3 wt-page-options-value">
+			<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), $form_type, ['id' => 'form-type', 'name' => 'form_type']) ?>
+		</div>
+
+		<div class="col-sm-3 col-form-label wt-page-options-label">
+		</div>
+		<div class="col-sm-3 wt-page-options-value">
+			<?= Bootstrap4::checkbox(I18N::translate('Details'), true, ['name' => 'details', 'checked' => ($details === '1')]) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="filter">
+			<?= I18N::translate('Search filters') ?>
+		</label>
+		<div class="col-sm-3 wt-page-options-value">
+			<input type="text" class="form-control" name="filter" id="filter" value="<?= Filter::escapeHtml($filter) ?>">
+		</div>
+
+		<div class="col-sm-3 col-form-label wt-page-options-label">
+		</div>
+		<div class="col-sm-3 wt-page-options-value">
+			<button type="submit" name="action" value="submit" class="btn btn-primary">
+				<?= /* I18N: A button label. */ I18N::translate('search') ?>
+			</button>
+			<button type="submit" name="action" value="reset" class="btn btn-default">
+				<?= /* I18N: A button label. */ I18N::translate('reset') ?>
+			</button>
+		</div>
+	</div>
 </form>
 
 <?php
@@ -204,128 +130,126 @@ if ($action === 'submit') {
 	$url = 'medialist.php?action=submit' .
 		'&amp;ged=' . $WT_TREE->getNameHtml() .
 		'&amp;folder=' . Filter::escapeUrl($folder) .
-		'&amp;sortby=' . Filter::escapeUrl($sortby) .
 		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .
 		'&amp;filter=' . Filter::escapeUrl($filter) .
 		'&amp;form_type=' . Filter::escapeUrl($form_type) .
-		'&amp;columns=' . Filter::escapeUrl($columns) .
 		'&amp;max=' . Filter::escapeUrl($max);
 
 	$count = count($medialist);
 	$pages = (int) (($count + $max - 1) / $max);
 	$page  = max(min($page, $pages), 1);
 
-	if ($page === $pages && $count % $max !== 0) {
-		// Last page may have    fewer than $max pages
-		$number_on_page = $count % $max;
-	} else {
-		$number_on_page = $max;
-	}
+	?>
+	<p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
 
-	if (I18N::direction() === 'ltr') {
-		$icons = ['first' => 'ldarrow', 'previous' => 'larrow', 'next' => 'rarrow', 'last' => 'rdarrow'];
-	} else {
-		$icons = ['first' => 'rdarrow', 'previous' => 'rarrow', 'next' => 'larrow', 'last' => 'ldarrow'];
-	}
+	<div class="row text-center">
+		<div class="col">
+			<?php if ($page > 1): ?>
+				<a href="<?= $url ?>&amp;page=1"><?= I18N::translate('first') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?php if ($page > 1): ?>
+				<a href="<?= $url ?>&amp;page=<?= $page -1 ?>"><?= I18N::translate('previous') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?= I18N::translate('Page %s of %s', $page, $pages) ?>
+		</div>
+		<div class="col">
+			<?php if ($page < $pages): ?>
+				<a href="<?= $url ?>&amp;page=<?= $page + 1 ?>"><?= I18N::translate('next') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?php if ($page < $pages): ?>
+				<a href="<?= $url ?>&amp;page=<?= $pages ?>"><?= I18N::translate('last') ?></a>
+			<?php endif ?>
+		</div>
+	</div>
 
-	echo '<div><p>', I18N::translate('Media objects found'), ' ', $count, '</p>';
+	<div class="card-deck row mb-4 mt-4">
+		<?php foreach (array_slice($medialist, ($page - 1) * $max, $max) as $media): ?>
+			<div class="col=xs-12 col-sm-6 col-lg-4">
+				<div class="card mb-4 list_value_wrap">
+					<div class="card-block">
+						<h4 class="card-title">
+							<a href="<?= $media->getHtmlUrl() ?>"><?= $media->getFullName() ?></a>
+						</h4>
 
-	if ($count > 0) {
-		echo '<table class="list_table">';
-		// Display controls twice - at the top and bottom of the table
-		foreach (['thead', 'tfoot'] as $tsection) {
-			echo '<', $tsection, '><tr><td colspan="2">';
-			echo '<table class="list_table_controls"><tr><td>';
-			if ($page > 1) {
-				echo '<a href="', $url, '&amp;page=1" class="icon-', $icons['first'], '"></a>';
-				echo '<a href="', $url, '&amp;page=', $page - 1, '" class="icon-', $icons['previous'], '"></a>';
-			}
-			echo '</td><td>', I18N::translate('Page %s of %s', $page, $pages), '</td><td>';
-			if ($page < $pages) {
-				echo '<a href="', $url, '&amp;page=', $page + 1, '" class="icon-', $icons['next'], '"></a>';
-				echo '<a href="', $url, '&amp;page=', $pages, '" class="icon-', $icons['last'], '"></a>';
-			}
-			echo '</td></tr></table>';
-			echo '</td></tr></', $tsection, '>';
-		}
+						<?= $media->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
 
-		echo '<tbody><tr>';
-		for ($i = 0, $n = 0; $i < $number_on_page; ++$i) {
-			$mediaobject = $medialist[($page - 1) * $max + $i];
+						<p class="card-text">
+							<?php
+							// Show file details
+							$mediatype = $media->getMediaType();
+							if ($mediatype) {
+								echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+							}
+							if ($media->isExternal()) {
+								echo GedcomTag::getLabelValue('URL', $media->getFilename());
+							} else {
+								if ($media->fileExists()) {
+									if ($details === '1') {
+										if (Auth::isEditor($WT_TREE)) {
+											echo GedcomTag::getLabelValue('FILE', $media->getFilename());
+										}
+										echo GedcomTag::getLabelValue('FORM', $media->mimeType());
+										echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
+										$imgsize = $media->getImageAttributes();
+										if ($imgsize['WxH']) {
+											echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+										}
+									}
+								} else {
+									echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
+								}
+							}
+							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
+							echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
+							echo '<hr>';
+							foreach ($media->linkedIndividuals('OBJE') as $individual) {
+								echo '<a href="' . $individual->getHtmlUrl() . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
+							}
+							foreach ($media->linkedFamilies('OBJE') as $family) {
+								echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
+							}
+							foreach ($media->linkedSources('OBJE') as $source) {
+								echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
+							}
+							?>
+						</p>
+					</div>
+				</div>
+			</div>
+		<?php endforeach ?>
+	</div>
 
-			if ($columns === 1) {
-				echo '<td class="media-col1 list_value_wrap">';
-			}
-			if ($columns === 2) {
-				echo '<td class="media-col2 list_value_wrap">';
-			}
-
-			echo '<table><tr><td class="media-image">';
-			echo $mediaobject->displayImage(100,100, 'contain', []);
-			echo '</td><td class="media-col list_value_wrap">';
-
-			// If sorting by title, highlight the title. If sorting by filename, highlight the filename
-			if ($sortby === 'title') {
-				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
-				echo $mediaobject->getFullName();
-				echo '</a></b></p>';
-			} else {
-				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
-				echo basename($mediaobject->getFilename());
-				echo '</a></b></p>';
-				echo GedcomTag::getLabelValue('TITL', $mediaobject->getFullName());
-			}
-			// Show file details
-			if ($mediaobject->isExternal()) {
-				echo GedcomTag::getLabelValue('URL', $mediaobject->getFilename());
-			} else {
-				if ($mediaobject->fileExists()) {
-					if (Auth::isEditor($WT_TREE)) {
-						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
-						$mediatype = $mediaobject->getMediaType();
-						if ($mediatype) {
-						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-						}
-					}
-					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());
-					echo GedcomTag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
-					$imgsize = $mediaobject->getImageAttributes();
-					if ($imgsize['WxH']) {
-						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-					}
-				} else {
-					echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
-				}
-			}
-			echo '<br>';
-			echo '<div>';
-			echo FunctionsPrintFacts::printFactSources($mediaobject->getGedcom(), 1);
-			echo FunctionsPrint::printFactNotes($mediaobject->getGedcom(), 1);
-			echo '</div>';
-			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View this individual') . ' — ' . $individual->getFullName() . '</a><br>';
-			}
-			foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
-				echo '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View this family') . ' — ' . $family->getFullName() . '</a><br>';
-			}
-			foreach ($mediaobject->linkedSources('OBJE') as $source) {
-				echo '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View this source') . ' — ' . $source->getFullName() . '</a><br>';
-			}
-			echo '</td></tr></table>';
-			echo '</td>';
-			if ((++$n) % $columns == 0 && $n < $count) {
-				echo '</tr><tr>';
-			}
-		} // end media loop
-
-		// An odd number of media objects in two columns requires an empty cell
-		if ($columns == 2 && $n % 2 == 1) {
-			echo '<td></td>';
-		}
-
-		echo '</tr></tbody>';
-		echo '</table>';
-	}
-	echo '</div>';
+	<div class="row class=text-center">
+		<div class="col">
+			<?php if ($page > 1): ?>
+				<a href="<?= $url ?>&amp;page=1"><?= I18N::translate('first') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?php if ($page > 1): ?>
+				<a href="<?= $url ?>&amp;page=<?= $page -1 ?>"><?= I18N::translate('previous') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?= I18N::translate('Page %s of %s', $page, $pages) ?>
+		</div>
+		<div class="col">
+			<?php if ($page < $pages): ?>
+				<a href="<?= $url ?>&amp;page=<?= $page + 1 ?>"><?= I18N::translate('next') ?></a>
+			<?php endif ?>
+		</div>
+		<div class="col">
+			<?php if ($page < $pages): ?>
+				<a href="<?= $url ?>&amp;page=<?= $pages ?>"><?= I18N::translate('last') ?></a>
+			<?php endif ?>
+		</div>
+	</div>
+<?php
 }
-echo '</div>';
+

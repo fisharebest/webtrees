@@ -157,6 +157,40 @@
 .wt-ajax-load:empty {
 }
 
+/* 
+ *  These selectors control how the short horizontal lines are positioned in the Charts
+ *  Optimized for Win10 and FF, Chrome and Edge browsers
+ *  	Ancestors
+ *  	Descendants
+ *  	amily book
+ *  	Hourglass chart
+ * 
+ * */
+
+/* Ascentors */
+.wt-ancestors-chart .linea1 {margin-bottom: 4px;}
+.wt-ancestors-chart .linea2 {margin-bottom: 7px;}
+.wt-ancestors-chart .linea3 {margin-bottom: 4px;}
+.wt-ancestors-chart .linea4 {margin-bottom: 7px;}
+.wt-ancestors-chart .linea5 {vertical-align: top;}
+
+/* Descendants */
+.wt-descendants-chart .lined1 {margin-bottom: 4px;}
+.wt-descendants-chart .lined2 {margin-bottom: 7px;}
+.wt-descendants-chart .lined3 {margin-bottom: 4px;}
+.wt-descendants-chart .lined4 {margin-bottom: 7px;}
+.wt-descendants-chart .linea5 {vertical-align: top;}
+
+/* Family book */
+.linef1 {margin-bottom: 3px;}
+.linef2 {margin-bottom: 3px;}
+.linef3 {margin-bottom: 7px;}
+
+/* Hourglass */
+.lineh1 {margin-bottom: 4px;}
+.lineh2 {margin-bottom: 4px;}
+.lineh3 {margin-bottom: 7px;}
+
 /*
  * Ancestors chart
  *

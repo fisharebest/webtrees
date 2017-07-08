@@ -209,7 +209,7 @@ cache can be cleared simply by going to ``Administration`` ->
 ``Cleanup data directory`` and deleting the cache.
 
 If you have any problems or questions, help is available on the
-[webtrees forum](https://webtrees.net/forums).
+[webtrees forum](https://www.webtrees.net/index.php/en/forum).
 
 
 ### Gedcom (family tree) files

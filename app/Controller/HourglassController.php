@@ -112,7 +112,7 @@ class HourglassController extends ChartController {
 			echo '<table cellspacing="0" cellpadding="0" border="0"  class="hourglassChart">';
 			echo '<tr>';
 			echo '<td style="vertical-align:bottom"><img class="line3 pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
-			echo '<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
+			echo '<td><img class="lineh2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
 			echo '<td>';
 			//-- print the father box
 			FunctionsPrint::printPedigreePerson($family->getHusband());
@@ -144,7 +144,7 @@ class HourglassController extends ChartController {
 			echo
 			'</tr><tr>',
 			"<td style='vertical-align:top'><img class='pvline' src='" . Theme::theme()->parameter('image-vline') . "' width='3' alt=''></td>",
-				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
+				'<td><img class="lineh3" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
 			'<td>';
 			//-- print the mother box
 			FunctionsPrint::printPedigreePerson($family->getWife());
@@ -280,7 +280,7 @@ class HourglassController extends ChartController {
 
 		echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td>';
 		FunctionsPrint::printPedigreePerson($person);
-		echo '</td><td><img class="line2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
+		echo '</td><td><img class="lineh1" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
