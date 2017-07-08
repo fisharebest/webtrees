@@ -34,9 +34,6 @@ class Menu {
 	/** @var Menu[] An optional list of sub-menus. */
 	private $submenus;
 
-	/** @var string Used internally to create javascript menus */
-	private $parentmenu;
-
 	/** @var string Used to format javascript menus */
 	private $submenuclass;
 

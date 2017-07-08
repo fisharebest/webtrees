@@ -196,12 +196,12 @@ class FamilyBookController extends ChartController {
 		//This allows vertical line spacing to be consistent
 		if (count($person->getChildFamilies()) == 0) {
 			echo '<table cellspacing="0" cellpadding="0" border="0" >';
-			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+			$this->printEmptyBox();
 
 			//-- recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr>';
-			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+			$this->printEmptyBox();
 
 			//-- recursively get the mother’s family
 			$this->printPersonPedigree($person, $count + 1);

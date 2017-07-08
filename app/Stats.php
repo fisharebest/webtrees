@@ -6392,30 +6392,6 @@ class Stats {
 	}
 
 	/**
-	 * Callback function to compare totals.
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	private function nameTotalSort($a, $b) {
-		return $a['match'] - $b['match'];
-	}
-
-	/**
-	 * Callback function to compare totals.
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	private function nameTotalReverseSort($a, $b) {
-		return $b['match'] - $a['match'];
-	}
-
-	/**
 	 * Run an SQL query and cache the result.
 	 *
 	 * @param string $sql
