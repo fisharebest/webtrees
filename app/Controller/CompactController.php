@@ -64,7 +64,7 @@ class CompactController extends ChartController {
 			$addname = $indi->getAddName();
 
 			if ($this->show_thumbs && $indi->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-				$html = $indi->displayImage();
+				$html = $indi->displayImage(40, 50, 'crop', []);
 			} else {
 				$html = '';
 			}

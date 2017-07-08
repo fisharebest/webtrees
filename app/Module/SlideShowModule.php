@@ -159,7 +159,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			}
 			$content .= '<div class="center" id="random_picture_content' . $block_id . '">';
 			$content .= '<table id="random_picture_box"><tr><td class="details1">';
-			$content .= $random_media->displayImage();
+			$content .= $random_media->displayImage(200, 200, '', []);
 
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';

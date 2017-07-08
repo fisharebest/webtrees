@@ -232,11 +232,13 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
-/*
- * Pending changes page
- *
- * wt-pending-changes-page
- */
+.wt-block {
+	border: solid #000 1px;
+}
+
+.wt-block-header {
+	background-color: #fff;
+}
 
 /*
  * Edit genealogy data page
@@ -250,11 +252,18 @@
  * wt-edit-blocks-page
  */
 
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-block-content .list_table {
+	border-spacing: 1px;
+	border: solid #000 1px;
+	border-right: 0;
+}
+
+.wt-block-content .list_value,
+.wt-block-content .list_value_wrap {
+	border: 0;
+	border-top: solid #000 1px;
+	border-right: solid #000 1px;
+}
 
 /*
  * Ancestors chart
@@ -442,7 +451,8 @@
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* Pending changes */
+/* ios on click workaround */
+/* ---Pending edits--- */
 .new {
 	outline: solid thin blue;
 }
@@ -486,6 +496,22 @@
 	background-color: #ffc;
 }
 
+.center {
+	text-align: center;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+.list_value,
+.list_value_wrap {
+	border: solid #000 1px;
+	vertical-align: top;
+}
+
+/* ---Find special characters--- */
+
 /* ======== Person box ======= */
 .gedcom_favorites_block,
 .user_favorites_block,
@@ -516,7 +542,7 @@
 .person_box_template {
 	height: auto;
 	white-space: normal;
-	overflow: hidden !important; 
+	overflow: hidden !important;
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -578,130 +604,15 @@
 	float: right;
 }
 
-#relatives_content
-
-#branches-page table,
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
+.list_table {
 	margin: 0 auto;
-}
-
-#medialist-page form .list_table {
-	width: 75%;
-}
-
-#medialist-page div .list_table,
-#medialist-page .media-col,
-#medialist-page .media-col1,
-#medialist-page .list_value_wrap,
-#medialist-page div .list_table_controls {
 	width: 100%;
 }
 
-#medialist-page .optionbox,
-#medialist-page .descriptionbox {
-	width: 25%;
-}
+.facts_value {
 
-#medialist-page .media-col2 {
-	width: 50%;
-}
-
-#medialist-page .media-col {
-	padding-left: 5px;
-	border: none;
-}
-
-[dir=rtl] #medialist-page .media-col {
-	padding-left: 0;
-	padding-right: 5px;
-}
-
-#medialist-page .media-image {
-	vertical-align:top;
-	white-space:normal;
-}
-
-#medialist-page p {
-	text-align: center;
-}
-
-.list_table_controls td {
-	min-width: 40px;
-	text-align: center;
-}
-
-/* ======== medialist.php ==== */
-.makeMenu li ul {
-	border: thin solid #AAA;
-	position: absolute;
-	margin:0;
-}
-
-.makeMenu, .makeMenu li ul {
-	padding: 1px;
-}
-
-.makeMenu li {
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-}
-
-.lb-menu {
-	display: inline-block;
-	margin: 0;
-	list-style: none;
-}
-
-.lb-menu ul {
-	display: block;
-	list-style-type: none;
-	margin: 0;
-}
-
-.lb-menu > li {
-	font-weight: normal;
-	float: left;
-	top: 0;
-}
-
-.lb-menu li:first-child {
-	padding-left: 0;
-}
-
-.lb-menu > li ul {
-	display: none;
-}
-
-.lb-menu > li:hover ul {
-	display: block;
-	top: 36px;
-}
-
-.lb-menu a {
-	display: block;
-}
-
-.lb-menu li a {
-	padding: 0px 10px 1px 5px;
-}
-
-.lb-menu li li a {
-	background-color: #fff;
-	padding: 5px 10px 5px 5px;
-}
-
-.lb-menu li {
-	border: 0;
-}
-
-[dir=rtl] .lb-menu > li {
-	float: right;
-}
-
-.lb-image_edit, .lb-image_link {
-	padding-right: 5px;
+	border: solid #000 1px;
+	padding: 4px;
 }
 
 /* login.php */
@@ -874,7 +785,7 @@
 
 /* styles for popup menus */
 .itr {
-	position: relative;
+	position: absolute;
 	line-height: 1.5;
 }
 
@@ -1088,7 +999,6 @@
 #repo-details h2,
 #repolist-page h2,
 #media-details h2,
-#medialist-page h2,
 #statistics-page h2 {
 	margin-bottom: 20px;
 	text-align: center;
@@ -1331,8 +1241,14 @@ float: right;
 float: right;
 }
 
+.facts_label {
+    border: 1px solid #000;
+    padding: 4px;
+}
+
 .stat-row {
 	display: table-row;
+	border: 1px solid #000;
 }
 .stat-cell {
 	display: table-cell;
@@ -1523,7 +1439,7 @@ div.faq_body {
 	clear: both;
 }
 
-/* ===== markdown formatting ===== */
+/* markdown formatting ===== */
 
 .markdown {
 	/* Tables and pre-formatted text can break the layout. */
@@ -1634,6 +1550,10 @@ div.faq_body {
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
+}
+
+.facts_table {
+	background-color: #fff;
 }
 
 .facts_table .field em {
@@ -1939,7 +1859,7 @@ div.faq_body {
 	overflow: hidden;
 }
 
-#separator:after {
+#separator::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1952,17 +1872,17 @@ div.faq_body {
 	border-top-right-radius: 3px;
 }
 
-[dir=rtl] #separator:after {
+[dir=rtl] #separator::after {
 	right: auto;
 	left: 0;
 }
 
-.separator-hidden:after,
+.separator-hidden::after,
 [dir=rtl] .separator-visible:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
-.separator-visible:after,
+.separator-visible::after,
 [dir=rtl] .separator-hidden:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
 }
@@ -2154,7 +2074,6 @@ div.faq_body {
 }
 
 /* ===== search.php ===== */
-
 #search-page h2 {
 	margin: 20px;
 	text-align: center;
@@ -2162,20 +2081,17 @@ div.faq_body {
 
 #search-page-table {
 	background-color: #fff;
-	border: 2px solid #999;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
 #search-page #field_table {
 	background-color: #fff;
-	border: 2px solid #999;
 	width: 30%;
 	min-width: 500px;
 }
 
 #search-page-table .label {
-	border-top: 1px solid #999;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2183,7 +2099,6 @@ div.faq_body {
 
 #search-page-table .value {
 	background-color: #fff;
-	border-top: 1px solid #999;
 	padding: 5px;
 }
 
@@ -2196,7 +2111,6 @@ div.faq_body {
 }
 
 #search-page .list_label, #search-page list_label_wrap {
-	border: 1px solid #999;
 	font-weight: bold;
 	text-align: center;
 }
@@ -2256,6 +2170,8 @@ div.faq_body {
 [dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
+
+/* ===== Styling for the jquery.colorbox gallery ===== */
 
 /* ===== Edit interface pop-ups ===== */
 #edit_interface-page h4 {
@@ -2652,6 +2568,7 @@ div.faq_body {
 }
 
 /* ====== Charts Styles ======== */
+
 #people label {
 	display:block;
 }
@@ -2901,6 +2818,112 @@ div.faq_body {
 #childarrow,
 .ancestorarrow {
 	text-align: center;
+}
+
+.tdtop {
+	vertical-align: top;
+}
+
+.tdmid {
+	vertical-align: middle;
+}
+
+.tdbot,
+.tvertline {
+	vertical-align: bottom;
+}
+
+.optionbox, .descriptionbox {
+	border: solid #000 1px;
+	padding: 3px;
+}
+
+.width10 {
+	width: 10%;
+}
+
+.width20 {
+	width: 20%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width33 {
+	width: 33%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width66 {
+	width: 66%;
+}
+
+.width70 {
+	width: 70%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width90 {
+	width: 90%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+#childbox {
+	display: none;
+}
+
+.person0, .person1, .person2, .person3, .person4, .person5 {
+	border:outset #555 1px;
+	vertical-align:top;
+}
+.person0{
+	background-color:#eee;
+}
+
+.person1{
+	background-color:#bfbfbf;
+}
+
+.person2{
+	background-color:#999;
+}
+
+.person3{
+	background-color:#dfdfdf;
+}
+
+.person4{
+	background-color:#eee;
+}
+
+.person5{
+	background-color:#fefefe;
 }
 
 #pedigree-page #childarrow {
@@ -3692,140 +3715,4 @@ footer {
 .cookie-warning.hidden {
 	height: 0;
 	overflow: hidden;
-}
-
-@media print {
-	header,
-	footer,
-	form,
-	#sidebar,
-	#separator,
-	.editfacts,
-	.noprint {
-		display: none;
-	}
-
-	#header_accordion1 {
-		width: 510px;
-	}
-
-	#pedigree-page h2 {
-		margin: 0;
-	}
-
-	#pedigree_chart {
-		margin: 0 auto;
-	}
-
-	#familybook_chart h3 {
-		margin-bottom: 10px;
-	}
-
-	#lifespan-chart {
-		margin: 0;
-		border: 0;
-		padding: 0;
-	}
-}
-
-/* Mobile low resolution viewport */
-@media (max-width: 600px) {
-	/* Advanced Search */
-	.list_label, .list_value {
-		white-space: normal;
-	}
-	#field_table {
-		width: 80%;
-		min-width: 380px;
-	}
-	#search-page-table {
-		width: auto;
-	}
-	#search-page-table div #query {
-		width: 200px;
-	}
-	/* Phonetic Search */
-	#search-page-table .label {
-		width: 25%;
-	}
-}
-@media (max-width: 480px) {
-	/* Front Page */
-	#index_main_blocks {
-		float: left;
-		width: 100%;
-	}
-	#index_small_blocks {
-		float: left;
-		width: 100%;
-	}
-	.stat-table1, .stat-table2{
-		width: 100%;
-	}
-	header h1 {
-		width: 100%;
-		text-align: left;
-	}
-	[dir=rtl] header h1 {
-		text-align: right;
-	}
-	.header-search {
-		display: none;
-	}
-	/* Indi Page */
-	#indi_left {
-		float: left;
-		width: 100%;
-		font-size: 10px;
-	}
-	#header_accordion1 {
-		font-size: 10px;
-	}
-	#main {
-		display: inline;
-	}
-	#separator {
-		display: none;
-	}
-	#sidebar {
-		float: left;
-		width: 100%;
-		display: inline;
-	}
-	/* Search */
-	#search-page-table .value {
-		margin: 0 0 0 30%;
-	}
-	[dir=rtl] #search-page-table .value {
-		margin: 0 30% 0 0;
-		float: right;
-	}
-	#search-page-table div #query {
-		width: 150px;
-	}
-	#search-page-table .value {
-		white-space: normal;
-    }
-	#search-page-table > input {
-		width: 20px;
-	}
-	/* Lists */
-	#place_hierarchy td {
-		white-space: normal;
-	}
-	/* Reports */
-	#reportengine-page table {
-		width: 100%;
-	}
-	/* Login */
-	#register-form div, #verify-form div {
-		text-align: left;
-	}
-	#register-form, #verify-form {
-		width: auto;
-	}
-	#login-text, #user-verify, #register-text, #user-verify {
-		min-width: auto;
-		width: 100%;
-	}
 }

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-11 12:48+0000\n"
+"PO-Revision-Date: 2017-06-26 07:10+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -3699,7 +3699,7 @@ msgstr "Sünnetçi"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Alıntı"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4017,11 +4017,11 @@ msgstr "Oluştur"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Bir aile oluştur"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Mevcut bireylerden bir aile oluştur"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4053,11 +4053,11 @@ msgstr "Yeni bir kaynak ekle"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Gönderen oluştur"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Benzersiz bir dosya adı oluştur"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7312,7 +7312,7 @@ msgstr "Bu Yıl içinde…"
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "İştirakçileri dahil edin"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7765,7 +7765,7 @@ msgstr "Medya ögelerini koru"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Açık tut"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -8247,7 +8247,7 @@ msgstr "En uzun evlilik"
 #. I18N: Two axes of a graph
 #: statistics.php:546 statisticsplot.php:1048
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Zamana göre ömür grafiği"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:739 app/Functions/FunctionsPrint.php:429
@@ -11628,7 +11628,7 @@ msgstr "Salt Lake City, Utah, ABD"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Yüklenen dosya ile aynı"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13095,7 +13095,7 @@ msgstr "Soyadı geleneği"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Soyadları"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -15090,7 +15090,7 @@ msgstr "Şifre kullan"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Mesaj göndermek için sendmail kullan"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018

@@ -36,12 +36,13 @@ function TreeViewHandler(treeview_instance) {
 	}
 
 	// Define the draggables
-	tv.treeview.draggable({
-		cursor: "move",
-		stop: function () {
-			tv.updateTree();
-		}
-	});
+	// TODO: we no longer use jQueryUI/draggable.  Need another solution
+	//tv.treeview.draggable({
+	//	cursor: "move",
+	//	stop: function () {
+	//		tv.updateTree();
+	//	}
+	//});
 
 	// Add click handlers to buttons
 	tv.toolbox.find("#tvbCompact").each(function (index, tvCompact) {

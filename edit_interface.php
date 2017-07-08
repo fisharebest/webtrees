@@ -568,7 +568,7 @@ switch ($action) {
 
 			<div class="row form-group">
 				<div class="col-sm-9 offset-sm-3">
-					<?= $record->displayImage() ?>
+					<?= $record->displayImage(400, 200, '', []) ?>
 				</div>
 			</div>
 
@@ -751,7 +751,7 @@ switch ($action) {
 		// If we have renamed a local file, then also move the files on disk (if we can).
 		if ($OLD_FILE !== $FILE) {
 			// Managers can create new media paths (subfolders). Users must use existing folders.
-			foreach ([dirname($new_server_file), dirname($new_server_thumb)] as $dir) {
+			foreach ([dirname($new_server_file)] as $dir) {
 				if (!is_dir($dir)) {
 					if (Auth::isManager($record->getTree()) && File::mkdir($dir)) {
 						FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($dir)), 'info');
@@ -2041,7 +2041,7 @@ switch ($action) {
 						<table class="pic">
 							<tr>
 								<td>
-									<?= $obje->displayImage() ?>
+									<?= $obje->displayImage(40, 50, 'crop', []) ?>
 								</td>
 								<td>
 									<?= $obje->getFullName() ?>

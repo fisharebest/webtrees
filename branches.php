@@ -27,33 +27,38 @@ $controller->pageHeader();
 
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
-<form>
+
+<form class="wt-page-options wt-page-options-branches hidden-print">
 	<input type="hidden" name="ged" id="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 	<div class="form-group row">
-		<label class="col-form-label col-sm-3" for="surname">
+		<label class="col-form-label col-sm-3 wt-page-options-label" for="surname">
 			<?= I18N::translate('Surname') ?>
 		</label>
-		<div class="col-sm-9">
+		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= Filter::escapeHtml($controller->getSurname()) ?>" dir="auto">
 		</div>
 	</div>
 
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-legend col-sm-3 wt-page-options-label">
 				<?= I18N::translate('Phonetic search') ?>
 			</legend>
-			<div class="col-sm-9">
+			<div class="col-sm-9 wt-page-options-value">
 				<?= Bootstrap4::checkbox(I18N::translate('Russell'), true, ['name' => 'soundex_std', 'checked' => $controller->getSoundexStd()]) ?>
 				<?= Bootstrap4::checkbox(I18N::translate('Daitch-Mokotoff'), true, ['name' => 'soundex_dm', 'checked' => $controller->getSoundexDm()]) ?>
 			</div>
 		</div>
 	</fieldset>
 
-	<div class="offset-sm-3 col-sm-9">
-		<button type="submit" class="btn btn-primary">
-			<?= /* I18N: A button label. */ I18N::translate('view') ?>
-		</button>
+	<div class="form-group row">
+		<div class="col-sm-3 wt-page-options-label">
+		</div>
+		<div class="col-sm-9 wt-page-options-value">
+			<button type="submit" class="btn btn-primary">
+				<?= /* I18N: A button label. */ I18N::translate('view') ?>
+			</button>
+		</div>
 	</div>
 </form>
 

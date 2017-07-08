@@ -860,7 +860,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 							// get thumbnail image
 							if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-								$image = $person->displayImage();
+								$image = $person->displayImage(40, 50, 'crop', []);
 							} else {
 								$image = '';
 							}

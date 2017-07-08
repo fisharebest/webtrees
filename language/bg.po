@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-03-18 09:44+0000\n"
-"Last-Translator: Nenko Antonov <office@thedomainkiosk.com>\n"
+"PO-Revision-Date: 2017-07-03 14:22+0000\n"
+"Last-Translator: Philip <philip@speedguide.net>\n"
 "Language-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -45,13 +45,13 @@ msgstr " в "
 #: app/Module/FrequentlyAskedQuestionsModule.php:471
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "№%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s има %3$s връзка с %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -69,7 +69,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1374
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:253
@@ -81,27 +81,27 @@ msgstr "%1$s KB изтеглени за %2$s секунди."
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s не съществува."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s не съществува. %2$s ли имахте пред вид?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:198
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s няма линк обратно към %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:310 admin_site_upgrade.php:394
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s файл беше получен за %2$s секунди."
+msgstr[1] "%1$s файлове бяха получени за %2$s секунди."
 
 #: app/Module/GoogleMapsModule.php:542
 #, php-format
@@ -122,98 +122,98 @@ msgstr[1] "%1$s лица без географски координати на �
 #: admin_trees_check.php:186
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s е%2$s, но %3$s се очаква."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:494 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s x %2$s пиксела"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:557 statisticsplot.php:746
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s-%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "На %1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:720
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:161
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6916
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s преди новата ера"
 
 #. I18N: size of file in KB
 #: admin_media.php:486 app/Media.php:277
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s КБ"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s и нейните предци"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s и неговите предци"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:289
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s и тези които ги цитират."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s и техните деца"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:125
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s и техните потомци"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5881
 #, php-format
@@ -234,8 +234,8 @@ msgstr[1] "%s деца"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ден"
+msgstr[1] "%s дни"
 
 #: app/I18N.php:700
 #, php-format
@@ -248,15 +248,15 @@ msgstr[1] "преди %s дни"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s семейство е подновено."
+msgstr[1] "%s семейства са подновени."
 
 #: admin.php:854
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s родословно дърво"
+msgstr[1] "%s родословни дървета"
 
 #: app/Stats.php:5253 app/Stats.php:5257
 #, php-format
@@ -269,8 +269,8 @@ msgstr[1] "%s внуци"
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "преди %s час"
+msgstr[1] "преди %s часа"
 
 #: admin_trees_unconnected.php:94 app/Controller/LifespanController.php:254
 #, php-format
@@ -331,8 +331,8 @@ msgstr[1] "Имате %s съобщения"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "преди %s минута"
+msgstr[1] "преди %s минути"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:259
@@ -340,22 +340,22 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s месец"
+msgstr[1] "%s месеца"
 
 #: app/I18N.php:696
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "преди %s месец"
+msgstr[1] "преди %s месеца"
 
 #: app/Controller/SearchController.php:431
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s бележка бе подновена."
+msgstr[1] "%s бележки бяха подновени."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -373,8 +373,8 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "преди %s секунда"
+msgstr[1] "преди %s секунди"
 
 #. I18N: %s is a person's name
 #: message.php:220
@@ -393,8 +393,8 @@ msgstr[1] "%s потребители"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s източник бе подновен."
+msgstr[1] "%s източника бяха подновени."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -425,8 +425,8 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s седмица"
+msgstr[1] "%s седмици"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:253
 #: app/Module/RelativesTabModule.php:83
@@ -452,86 +452,86 @@ msgstr "%s годишен юбилей"
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x братовчед"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x братовчед"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x братовчед"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;преди новата ера"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;новата ера"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:728
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, нейните предци и техните семейства"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, нейните родители, братя и сестри"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, нейните съпрузи и деца"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, нейните съпрузи и потомци"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, неговите предци и техните семейства"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, неговите родители, братя и сестри"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, неговите съпруги и деца"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, неговите съпруги и потомци"
 
 #: admin_media_upload.php:234 app/Functions/FunctionsPrint.php:587
 #: app/Module/UserMessagesModule.php:95
@@ -542,26 +542,26 @@ msgstr "&lt;изберете&gt;"
 #: app/I18N.php:282 app/I18N.php:286
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(възраст %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:276
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(възраст по-малко от %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:279
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(възраст над %s)"
 
 #. I18N: %s is a number
 #. I18N: %s is a placeholder for a number
 #: app/Datatables.php:57 app/I18N.php:186
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(филтрирано от %s общо записи)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:247
@@ -571,17 +571,17 @@ msgstr "(детство)"
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:244
 msgid "(in infancy)"
-msgstr ""
+msgstr "(в ранно детство)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:241
 msgid "(stillborn)"
-msgstr ""
+msgstr "(мъртвородено)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:391
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6943
 msgctxt "CENTURY"
@@ -2848,7 +2848,7 @@ msgstr "Благословия"
 
 #: admin_module_blocks.php:66
 msgid "Block"
-msgstr ""
+msgstr "Модул"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:30 admin_modules.php:154
@@ -2859,7 +2859,7 @@ msgstr "Модули"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:50
 msgid "Blue Lagoon"
-msgstr ""
+msgstr "Синя Лагуна"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:51
@@ -2867,23 +2867,24 @@ msgid "Blue Marine"
 msgstr ""
 
 #: message.php:156
+#, fuzzy
 msgid "Body"
-msgstr "Съобщение:"
+msgstr "Тяло"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bogota, Colombia"
-msgstr ""
+msgstr "Богота, Колумбия"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
-msgstr ""
+msgstr "Боис, Айдахо, САЩ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
 msgid "Bolivia"
-msgstr ""
+msgstr "Боливия"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1501
@@ -5460,7 +5461,7 @@ msgstr ""
 #: app/GedcomTag.php:1147 app/Module/UserMessagesModule.php:107
 #: edituser.php:233 login.php:320 login.php:425 message.php:137 setup.php:440
 msgid "Email address"
-msgstr "Email:"
+msgstr "Електронна поща"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:812
@@ -6345,7 +6346,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:205
 msgid "Forgot password?"
-msgstr "Забравена парола"
+msgstr "Забравена парола?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:361 help_text.php:132 help_text.php:144 help_text.php:155
@@ -13016,7 +13017,7 @@ msgstr "Заглавие на история"
 
 #: app/Module/UserMessagesModule.php:105 message.php:147
 msgid "Subject"
-msgstr "Относно:"
+msgstr "Предмет"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:552
@@ -13045,7 +13046,7 @@ msgstr ""
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:628
 msgid "Sun"
-msgstr ""
+msgstr "Неделя"
 
 #: app/Date/CalendarDate.php:347
 msgid "Sunday"
@@ -15452,7 +15453,7 @@ msgstr ""
 
 #: login.php:161
 msgid "Welcome to this genealogy website"
-msgstr "Добре дошли на нашия сайт за генеалогия!"
+msgstr "Добре дошли на нашия сайт за генеалогия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -15845,7 +15846,7 @@ msgstr "Вашата количка с избрани записи е празн
 
 #: message.php:129 setup.php:425
 msgid "Your name"
-msgstr "Имена:"
+msgstr "Имена"
 
 #. I18N: %s is a server name/URL
 #: login.php:345
@@ -19594,45 +19595,45 @@ msgstr ""
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
-msgstr ""
+msgstr "близнак"
 
 #: app/Functions/Functions.php:793
 msgid "twin sibling"
-msgstr ""
+msgstr "близнаци"
 
 #: app/Functions/Functions.php:776
 msgid "twin sister"
-msgstr ""
+msgstr "близначка"
 
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Functions/Functions.php:890
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Functions/Functions.php:1244
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "чичо"
 
 #: app/Module/FamilyNavigatorModule.php:190
 #: app/Module/GoogleMapsModule.php:1704 app/Module/GoogleMapsModule.php:1745
@@ -19648,17 +19649,17 @@ msgstr "неизвестно"
 
 #: app/Module/RelationshipsChartModule.php:148
 msgid "unlimited"
-msgstr ""
+msgstr "неограничен"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "ненадеждни данни"
 
 #. I18N: A button label.
 #: admin_trees_places.php:102 admin_trees_unconnected.php:87
 msgid "update"
-msgstr "Актуализиране"
+msgstr "актуализиране"
 
 #. I18N: A button label.
 #: admin_media_upload.php:257 app/Module/GoogleMapsModule.php:3319
@@ -19676,7 +19677,7 @@ msgstr "покажи"
 #: admin_trees_config.php:388 admin_trees_config.php:430
 #: admin_trees_config.php:450
 msgid "visitors"
-msgstr ""
+msgstr "посетители"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
@@ -19702,7 +19703,7 @@ msgstr ""
 
 #: message.php:26 message.php:264
 msgid "webtrees message"
-msgstr "Писмо от GTrees.net"
+msgstr "Писмо от webtrees"
 
 #: setup.php:273
 #, php-format
@@ -19743,7 +19744,7 @@ msgstr "съпруга"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:92
 msgid "xenea"
-msgstr ""
+msgstr "хенеа"
 
 #: timeline.php:132
 msgid "years"
@@ -19770,19 +19771,19 @@ msgstr "да"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:89
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "може да се свържеш с базата данни чрез други програми, като phpmyadmin"
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr ""
+msgstr "по-млад брат"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "по-млад брат/сестра"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
-msgstr ""
+msgstr "по-млада сестра"
 
 #: search_advanced.php:103 search_advanced.php:107 search_advanced.php:111
 #: search_advanced.php:165 search_advanced.php:166 search_advanced.php:167
@@ -19795,7 +19796,7 @@ msgstr[1] "±%s години"
 #: app/Individual.php:1225
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "\"%s\""
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
@@ -19807,7 +19808,7 @@ msgstr "“%s” е добавен към вашите отметки."
 #: action.php:41
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" беше изтрит."
 
 #: app/Functions/FunctionsPrint.php:107 app/Note.php:107
 msgid "…"
@@ -19819,7 +19820,7 @@ msgstr "…"
 #: autocomplete.php:500 famlist.php:85 indilist.php:85
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:559 app/Family.php:339
 #: app/Family.php:355 app/Individual.php:1220 app/Individual.php:1310
@@ -19829,7 +19830,7 @@ msgstr ""
 #: famlist.php:74 famlist.php:96 indilist.php:74 indilist.php:96
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid " per gender"
 #~ msgstr " по пол"

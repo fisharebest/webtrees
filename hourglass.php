@@ -80,7 +80,7 @@ $controller
 				<?= I18N::translate('Layout') ?>
 			</legend>
 			<div class="col-sm-9 wt-page-options-value">
-				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), true, ['id' => 'show spouse']) ?>
+				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), true, ['name' => 'show_spouse']) ?>
 			</div>
 		</div>
 	</fieldset>

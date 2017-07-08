@@ -26,6 +26,7 @@ $controller->restrictAccess(Module::isActiveChart($controller->tree(), 'ancestor
 // Only generate the content for interactive users (not search robots).
 if (Filter::getBool('ajax') && Session::has('initiated')) {
 	echo $controller->getChart();
+	echo $controller->getJavascript();
 
 	return;
 }
