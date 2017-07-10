@@ -1199,6 +1199,7 @@ table.center {
 .list_label,
 .list_value {
 	white-space: nowrap;
+	padding: 4px;
 }
 
 .list_label_wrap,
@@ -1579,10 +1580,6 @@ a:hover .nameZoom {
 .listlog {
 	line-height: 20pt;
 	color: #555;
-}
-
-.formField {
-	font-size: 12px;
 }
 
 .starredname {
@@ -1975,6 +1972,10 @@ a:hover .nameZoom {
 
 #register-form div#registration-submit {
 	text-align: center;
+}
+
+#register-form #user_comments {
+	width: 350px;
 }
 
 [dir=rtl] #login-form label,

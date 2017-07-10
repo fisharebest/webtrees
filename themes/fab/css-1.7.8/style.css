@@ -1402,6 +1402,10 @@ a:hover .nameZoom {
 	background: none;
 }
 
+#register-form #user_comments {
+	width: 350px;
+}
+
 [dir=rtl] #login-form label,
 [dir=rtl] #new_passwd_form label,
 [dir=rtl] #register-form label,

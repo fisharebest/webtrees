@@ -1106,6 +1106,7 @@ table.center {
 	font-size: 12px;
 	border: solid #81a9cb 1px;
 	vertical-align: top;
+	padding: 4px;
 }
 
 .list_label,
@@ -1486,10 +1487,6 @@ a:hover .nameZoom {
 	line-height: 20pt;
 }
 
-.formField {
-	font-size: 12px;
-}
-
 .starredname {
 	text-decoration: underline;
 }
@@ -1861,6 +1858,10 @@ a:hover .nameZoom {
 
 #register-form div#registration-submit {
 	text-align: center;
+}
+
+#register-form #user_comments {
+	width: 350px;
 }
 
 [dir=rtl] #login-form label,

@@ -516,6 +516,7 @@
 .list_value_wrap {
 	border: solid #000 1px;
 	vertical-align: top;
+	padding: 4px;
 }
 
 /* ---Find special characters--- */
@@ -614,7 +615,6 @@
 
 .list_table {
 	margin: 0 auto;
-	width: 100%;
 }
 
 .facts_value {
@@ -751,6 +751,10 @@
 .login_block_block #new_passwd_form {
 	border: 0;
 	background: none;
+}
+
+#register-form #user_comments {
+	width: 350px;
 }
 
 [dir=rtl] #login-form label,
