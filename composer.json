@@ -29,7 +29,7 @@
 		"fisharebest/localization": "1.*",
 		"michelf/php-markdown": "1.*",
 		"pclzip/pclzip": "2.*",
-		"ramsey/uuid": "2.*",
+		"ramsey/uuid": "~3.6",
 		"swiftmailer/swiftmailer": "~5.0",
 		"tecnickcom/tcpdf": "6.*",
 		"league/glide": "^1.2"

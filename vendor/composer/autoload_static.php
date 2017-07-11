@@ -17,7 +17,7 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
     public static $prefixLengthsPsr4 = array (
         'R' => 
         array (
-            'Rhumsaa\\Uuid\\' => 13,
+            'Ramsey\\Uuid\\' => 12,
         ),
         'P' => 
         array (
@@ -46,7 +46,7 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
     );
 
     public static $prefixDirsPsr4 = array (
-        'Rhumsaa\\Uuid\\' => 
+        'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
