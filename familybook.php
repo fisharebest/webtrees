@@ -33,7 +33,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 }
 
 $controller
-	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
 	->pageHeader();
 
 ?>

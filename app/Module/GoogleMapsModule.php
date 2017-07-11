@@ -986,7 +986,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 		/* prepending the module css in the page head allows the theme to over-ride it*/
 		->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
-		->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+		->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
 		->pageHeader();
 ?>
 
