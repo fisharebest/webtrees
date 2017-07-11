@@ -25,9 +25,14 @@ h2::first-letter {
 }
 
 .btn-link {
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
+	padding: 0 .25rem;
 	color: #333;
+}
+
+.card-header .btn-link {
+	font-size: 0;
+	line-height: 0;
+	border: 0;
 }
 
 .btn.focus, .btn:focus {
