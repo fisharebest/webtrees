@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Theme;
