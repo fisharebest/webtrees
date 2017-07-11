@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Theme;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsPrint - common functions

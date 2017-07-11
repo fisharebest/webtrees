@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsEdit - common functions for editing

@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsPrintFacts - common functions

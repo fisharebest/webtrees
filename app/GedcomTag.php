@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Static GEDCOM data for tags
