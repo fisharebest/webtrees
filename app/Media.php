@@ -540,8 +540,8 @@ class Media extends GedcomRecord {
 			' href="' . $this->getHtmlUrlDirect('main') . '"' .
 			' type="' . $this->mimeType() . '"' .
 			' data-obje-url="' . $this->getHtmlUrl() . '"' .
-			' data-obje-note="' . Filter::escapeHtml($this->getNote()) . '"' .
-			' data-title="' . Filter::escapeHtml($this->getFullName()) . '"' .
+			' data-obje-note="' . Html::escape($this->getNote()) . '"' .
+			' data-title="' . Html::escape($this->getFullName()) . '"' .
 			'>' . $image . '</a>';
 	}
 

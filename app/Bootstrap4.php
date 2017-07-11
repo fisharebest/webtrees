@@ -81,7 +81,7 @@ class Bootstrap4 extends Html {
 		return
 			'<div class="' . $class . '">' .
 			'<label class="form-check-label">' .
-			'<input ' . $input_attributes . '> ' . Filter::escapeHtml($label) .
+			'<input ' . $input_attributes . '> ' . Html::escape($label) .
 			'</label>' .
 			'</div>';
 	}
@@ -122,7 +122,7 @@ class Bootstrap4 extends Html {
 			$html .=
 				'<div class="' . $class . '">' .
 				'<label class="form-check-label">' .
-				'<input ' . $input_attributes . '> ' . Filter::escapeHtml($label) .
+				'<input ' . $input_attributes . '> ' . Html::escape($label) .
 				'</label>' .
 				'</div>';
 		}
@@ -147,7 +147,7 @@ class Bootstrap4 extends Html {
 				'selected' => (string) $value === (string) $selected,
 			]);
 
-			$html .= '<option ' . $option_attributes . '>' . Filter::escapeHtml($option) . '</option>';
+			$html .= '<option ' . $option_attributes . '>' . Html::escape($option) . '</option>';
 		}
 
 		if (empty($attributes['class'])) {
@@ -178,7 +178,7 @@ class Bootstrap4 extends Html {
 				'selected' => in_array((string) $value, $selected),
 			]);
 
-			$html .= '<option ' . $option_attributes . '>' . Filter::escapeHtml($option) . '</option>';
+			$html .= '<option ' . $option_attributes . '>' . Html::escape($option) . '</option>';
 		}
 
 		if (empty($attributes['class'])) {

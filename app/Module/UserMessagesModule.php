@@ -94,7 +94,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '<select id="touser" name="touser">';
 			$content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
 			foreach ($users as $user) {
-				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Filter::escapeHtml($user->getUserName()), Filter::escapeHtml($user->getRealName()));
+				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Html::escape($user->getUserName()), Html::escape($user->getRealName()));
 			}
 			$content .= '</select>';
 			$content .= '<input type="button" value="' . I18N::translate('Send') . '" onclick="return message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\');"><br><br>';
@@ -109,7 +109,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			foreach ($messages as $message) {
 				$content .= '<tr>';
 				$content .= '<td class="list_value_wrap"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
-				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Filter::escapeHtml($message->subject) . '</b></a></td>';
+				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Html::escape($message->subject) . '</b></a></td>';
 				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
@@ -117,7 +117,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$content .= $user->getRealNameHtml();
 					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
-					$content .= '<a href="mailto:' . Filter::escapeHtml($message->sender) . '">' . Filter::escapeHtml($message->sender) . '</a>';
+					$content .= '<a href="mailto:' . Html::escape($message->sender) . '">' . Html::escape($message->sender) . '</a>';
 				}
 				$content .= '</td>';
 				$content .= '</tr>';

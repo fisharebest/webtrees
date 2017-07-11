@@ -269,7 +269,7 @@ class FamilyBookController extends ChartController {
 				if ($genoffset > $count) {
 					echo '<table cellspacing="0" cellpadding="0" border="0" >';
 					for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
-						$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+						$this->printEmptyBox();
 						echo '</tr>';
 					}
 					echo '</table>';

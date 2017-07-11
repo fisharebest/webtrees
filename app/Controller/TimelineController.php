@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -232,7 +233,7 @@ class TimelineController extends PageController {
 				echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
 			}
 		}
-		echo ' ' . Filter::escapeHtml($desc);
+		echo ' ' . Html::escape($desc);
 		if (!$event->getPlace()->isEmpty()) {
 			echo ' — ' . $event->getPlace()->getShortName();
 		}

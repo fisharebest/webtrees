@@ -275,19 +275,19 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 		'<fieldset><legend>', I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
 		I18N::translate('Server name'), '</td><td>',
-		'<input type="text" name="dbhost" value="', Filter::escapeHtml($_POST['dbhost']), '" dir="ltr" required></td><td>',
+		'<input type="text" name="dbhost" value="', Html::escape($_POST['dbhost']), '" dir="ltr" required></td><td>',
 		I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Port number'), '</td><td>',
-		'<input type="text" name="dbport" value="', Filter::escapeHtml($_POST['dbport']), '" required></td><td>',
+		'<input type="text" name="dbport" value="', Html::escape($_POST['dbport']), '" required></td><td>',
 		I18N::translate('Most sites are configured to use the default value of 3306.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Database user account'), '</td><td>',
-		'<input type="text" name="dbuser" value="', Filter::escapeHtml($_POST['dbuser']), '" autofocus required></td><td>',
+		'<input type="text" name="dbuser" value="', Html::escape($_POST['dbuser']), '" autofocus required></td><td>',
 		I18N::translate('This is case sensitive.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Database password'), '</td><td>',
-		'<input type="password" name="dbpass" value="', Filter::escapeHtml($_POST['dbpass']), '" required></td><td>',
+		'<input type="password" name="dbpass" value="', Html::escape($_POST['dbpass']), '" required></td><td>',
 		I18N::translate('This is case sensitive.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
@@ -299,10 +299,10 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 	return;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbhost" value="', Filter::escapeHtml($_POST['dbhost']), '">';
-	echo '<input type="hidden" name="dbport" value="', Filter::escapeHtml($_POST['dbport']), '">';
-	echo '<input type="hidden" name="dbuser" value="', Filter::escapeHtml($_POST['dbuser']), '">';
-	echo '<input type="hidden" name="dbpass" value="', Filter::escapeHtml($_POST['dbpass']), '">';
+	echo '<input type="hidden" name="dbhost" value="', Html::escape($_POST['dbhost']), '">';
+	echo '<input type="hidden" name="dbport" value="', Html::escape($_POST['dbport']), '">';
+	echo '<input type="hidden" name="dbuser" value="', Html::escape($_POST['dbuser']), '">';
+	echo '<input type="hidden" name="dbpass" value="', Html::escape($_POST['dbpass']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -370,11 +370,11 @@ if (!$dbname_ok) {
 		'<fieldset><legend>', I18N::translate('Database name'), '</legend>',
 		'<table border="0"><tr><td>',
 		I18N::translate('Database name'), '</td><td>',
-		'<input type="text" name="dbname" value="', Filter::escapeHtml($_POST['dbname']), '" autofocus required></td><td>',
+		'<input type="text" name="dbname" value="', Html::escape($_POST['dbname']), '" autofocus required></td><td>',
 		I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Table prefix'), '</td><td>',
-		'<input type="text" name="tblpfx" value="', Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
+		'<input type="text" name="tblpfx" value="', Html::escape($_POST['tblpfx']), '"></td><td>',
 		I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want.'),
 		'</td></tr></table>',
 		'</fieldset>',
@@ -385,8 +385,8 @@ if (!$dbname_ok) {
 	return;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbname" value="', Filter::escapeHtml($_POST['dbname']), '">';
-	echo '<input type="hidden" name="tblpfx" value="', Filter::escapeHtml($_POST['tblpfx']), '">';
+	echo '<input type="hidden" name="dbname" value="', Html::escape($_POST['dbname']), '">';
+	echo '<input type="hidden" name="tblpfx" value="', Html::escape($_POST['tblpfx']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -423,22 +423,22 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<fieldset><legend>', I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		I18N::translate('Your name'), '</td><td>',
-		'<input type="text" name="wtname" value="', Filter::escapeHtml($_POST['wtname']), '" autofocus required></td><td>',
+		'<input type="text" name="wtname" value="', Html::escape($_POST['wtname']), '" autofocus required></td><td>',
 		I18N::translate('This is your real name, as you would like it displayed on screen.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Username'), '</td><td>',
-		'<input type="text" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '" required></td><td>',
+		'<input type="text" name="wtuser" value="', Html::escape($_POST['wtuser']), '" required></td><td>',
 		I18N::translate('You will use this to sign in to webtrees.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Password'), '</td><td>',
-		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '" required></td><td>',
+		'<input type="password" name="wtpass" value="', Html::escape($_POST['wtpass']), '" required></td><td>',
 		I18N::translate('This must be at least six characters long. It is case-sensitive.'),
 		'</td></tr><tr><td></td><td>',
-		'<input type="password" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '" required></td><td>',
+		'<input type="password" name="wtpass2" value="', Html::escape($_POST['wtpass2']), '" required></td><td>',
 		I18N::translate('Type your password again, to make sure you have typed it correctly.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Email address'), '</td><td>',
-		'<input type="email" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '" required></td><td>',
+		'<input type="email" name="wtemail" value="', Html::escape($_POST['wtemail']), '" required></td><td>',
 		I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
@@ -450,11 +450,11 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 	return;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="wtname"  value="', Filter::escapeHtml($_POST['wtname']), '">';
-	echo '<input type="hidden" name="wtuser"  value="', Filter::escapeHtml($_POST['wtuser']), '">';
-	echo '<input type="hidden" name="wtpass"  value="', Filter::escapeHtml($_POST['wtpass']), '">';
-	echo '<input type="hidden" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '">';
-	echo '<input type="hidden" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '">';
+	echo '<input type="hidden" name="wtname"  value="', Html::escape($_POST['wtname']), '">';
+	echo '<input type="hidden" name="wtuser"  value="', Html::escape($_POST['wtuser']), '">';
+	echo '<input type="hidden" name="wtpass"  value="', Html::escape($_POST['wtpass']), '">';
+	echo '<input type="hidden" name="wtpass2" value="', Html::escape($_POST['wtpass2']), '">';
+	echo '<input type="hidden" name="wtemail" value="', Html::escape($_POST['wtemail']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////

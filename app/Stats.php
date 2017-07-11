@@ -5900,9 +5900,9 @@ class Stats {
 		if (Auth::check()) {
 			foreach ($loggedusers as $user) {
 				if ($type == 'list') {
-					$content .= '<li>' . Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName());
+					$content .= '<li>' . Html::escape($user->getRealName()) . ' - ' . Html::escape($user->getUserName());
 				} else {
-					$content .= Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName());
+					$content .= Html::escape($user->getRealName()) . ' - ' . Html::escape($user->getUserName());
 				}
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					if ($type == 'list') {
@@ -6011,10 +6011,10 @@ class Stats {
 	 */
 	public function userName($params = []) {
 		if (Auth::check()) {
-			return Filter::escapeHtml(Auth::user()->getUserName());
+			return Html::escape(Auth::user()->getUserName());
 		} elseif (isset($params[0]) && $params[0] != '') {
 			// if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-			return Filter::escapeHtml($params[0]);
+			return Html::escape($params[0]);
 		} else {
 			return '';
 		}
@@ -6051,7 +6051,7 @@ class Stats {
 		case 'userid':
 			return $user->getUserId();
 		case 'username':
-			return Filter::escapeHtml($user->getUserName());
+			return Html::escape($user->getUserName());
 		case 'fullname':
 			return $user->getRealNameHtml();
 		case 'regdate':

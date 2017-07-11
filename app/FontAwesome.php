@@ -38,6 +38,7 @@ class FontAwesome extends Html {
 		'keyboard'           => 'fa fa-keyboard-o wt-icon-keyboard',
 		'pin'                => 'fa fa-thumb-tack wt-icon-pin',
 		'preferences'        => 'fa fa-wrench wt-icon-preferences',
+		'search'             => 'fa fa-search wt-icon-search',
 		'save'               => 'fa fa-check wt-icon-save',
 		'warning'            => 'fa fa-warning wt-icon-warning',
 		// Arrows (start/end variants require fontawesome-rtl library)

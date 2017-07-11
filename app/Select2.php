@@ -222,7 +222,14 @@ class Select2 extends Html {
 	 * @return string
 	 */
 	public static function individualValue(Individual $individual) {
-		return $individual->getFullName() . ', ' . $individual->getLifeSpan();
+		$image = $individual->findHighlightedMedia();
+		if ($image instanceof Media) {
+			$html = $image->displayImage(30, 40, 'crop', []) . ' ';
+		} else {
+			$html = '';
+		}
+
+		return $html . $individual->getFullName() . ', ' . $individual->getLifeSpan();
 	}
 
 	/**
@@ -291,7 +298,7 @@ class Select2 extends Html {
 	 * @return string
 	 */
 	public static function mediaObjectValue(Media $media) {
-		return $media->getFullName() . ', ' . basename($media->getFilename());
+		return $media->displayImage(30, 40, 'crop', []) . ' ' . $media->getFullName() . ', ' . basename($media->getFilename());
 	}
 
 	/**

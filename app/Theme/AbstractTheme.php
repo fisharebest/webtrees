@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\HitCounter;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -327,9 +328,9 @@ abstract class AbstractTheme {
 		case 'none':
 			return '';
 		case 'mailto':
-			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+			return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 		default:
-			return '<a href="message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Filter::escapeHtml(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+			return '<a href="message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
@@ -1879,7 +1880,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function metaCsrf() {
-		return '<meta name="csrf" content="' . Filter::escapeHtml(Filter::getCsrfToken()) . '">';
+		return '<meta name="csrf" content="' . Html::escape(Filter::getCsrfToken()) . '">';
 	}
 
 	/**
@@ -2181,6 +2182,6 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function title($title) {
-		return '<title>' . Filter::escapeHtml($title) . '</title>';
+		return '<title>' . Html::escape($title) . '</title>';
 	}
 }

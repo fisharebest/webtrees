@@ -72,7 +72,7 @@ function checknames(frm) {
 				<?= I18N::translate('Search for') ?>
 			</label>
 			<div class="value">
-				<input id="query" type="text" name="query" value="<?= Filter::escapeHtml($controller->query) ?>" size="30" autofocus>
+				<input id="query" type="text" name="query" value="<?= Html::escape($controller->query) ?>" size="30" autofocus>
 				<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
 			</div>
 			<div class="label">
@@ -152,13 +152,13 @@ function checknames(frm) {
 				<?= I18N::translate('Search for') ?>
 			</div>
 			<div class="value">
-				<input name="query" value="<?= Filter::escapeHtml($controller->query) ?>" type="text" autofocus>
+				<input name="query" value="<?= Html::escape($controller->query) ?>" type="text" autofocus>
 			</div>
 			<div class="label">
 				<?= I18N::translate('Replace with') ?>
 			</div>
 			<div class="value">
-				<input name="replace" value="<?= Filter::escapeHtml($controller->replace) ?>" type="text">
+				<input name="replace" value="<?= Html::escape($controller->replace) ?>" type="text">
 			</div>
 			<script>
 				function checkAll(box) {
@@ -226,25 +226,25 @@ function checknames(frm) {
 				<?= I18N::translate('Given name') ?>
 			</label>
 			<div class="value">
-				<input type="text" data-autocomplete-type="GIVN" name="firstname" id="firstname" value="<?= Filter::escapeHtml($controller->firstname) ?>" autofocus>
+				<input type="text" data-autocomplete-type="GIVN" name="firstname" id="firstname" value="<?= Html::escape($controller->firstname) ?>" autofocus>
 			</div>
 			<label class="label" for="lastname">
 				<?= I18N::translate('Surname') ?>
 			</label>
 			<div class="value">
-				<input type="text" data-autocomplete-type="SURN" name="lastname" id="lastname" value="<?= Filter::escapeHtml($controller->lastname) ?>">
+				<input type="text" data-autocomplete-type="SURN" name="lastname" id="lastname" value="<?= Html::escape($controller->lastname) ?>">
 			</div>
 			<label class="label" for="place">
 				<?= I18N::translate('Place') ?>
 			</label>
 			<div class="value">
-				<input type="text"  data-autocomplete-type="PLAC2" name="place" id="place" value="<?= Filter::escapeHtml($controller->place) ?>">
+				<input type="text"  data-autocomplete-type="PLAC2" name="place" id="place" value="<?= Html::escape($controller->place) ?>">
 			</div>
 			<label class="label" for="year">
 				<?= I18N::translate('Year') ?>
 			</label>
 			<div class="value"
-				><input type="text" name="year" id="year" value="<?= Filter::escapeHtml($controller->year) ?>">
+				><input type="text" name="year" id="year" value="<?= Html::escape($controller->year) ?>">
 			</div>
 			<div class="label">
 				<?= I18N::translate('Phonetic algorithm') ?>

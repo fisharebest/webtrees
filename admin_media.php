@@ -308,7 +308,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Html::escape($media_tree) . '<p>';
 				}
 			}
 
@@ -476,7 +476,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 function mediaFileInfo($media_folder, $media_path, $file) {
 	$html = '<dl>';
 	$html .= '<dt>' . I18N::translate('Filename') . '</dt>';
-	$html .= '<dd>' . Filter::escapeHtml($file) . '</dd>';
+	$html .= '<dd>' . Html::escape($file) . '</dd>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	try {
@@ -516,7 +516,7 @@ function mediaObjectInfo(Media $media) {
 
 	$html =
 		'<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' .
-		'<br><i>' . Filter::escapeHtml($media->getNote()) . '</i></br>';
+		'<br><i>' . Html::escape($media->getNote()) . '</i></br>';
 
 	$html .= '<br>';
 
@@ -624,16 +624,16 @@ echo Bootstrap4::breadcrumbs([
 						<?php if (count($media_folders) > 1): ?>
 						<?= WT_DATA_DIR . Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
 						<?php else: ?>
-						<?= WT_DATA_DIR . Filter::escapeHtml($media_folder) ?>
-						<input type="hidden" name="media_folder" value="<?= Filter::escapeHtml($media_folder) ?>">
+						<?= WT_DATA_DIR . Html::escape($media_folder) ?>
+						<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
 						<?php endif ?>
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
 					<?= Bootstrap4::select($media_paths, $media_path, ['name' => 'media_path', 'onchange' => 'this.form.submit();']) ?>
 					<?php else: ?>
-					<?= Filter::escapeHtml($media_path) ?>
-					<input type="hidden" name="media_path" value="<?= Filter::escapeHtml($media_path) ?>">
+					<?= Html::escape($media_path) ?>
+					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
 					<?php endif ?>
 
 					<label>
@@ -649,8 +649,8 @@ echo Bootstrap4::breadcrumbs([
 					<?php elseif ($files === 'external'): ?>
 
 					<?= I18N::translate('External media files have a URL instead of a filename.') ?>
-					<input type="hidden" name="media_folder" value="<?= Filter::escapeHtml($media_folder) ?>">
-					<input type="hidden" name="media_path" value="<?= Filter::escapeHtml($media_path) ?>">
+					<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
+					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
 
 					<?php endif ?>
 				</td>

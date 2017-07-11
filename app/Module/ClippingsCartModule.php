@@ -416,8 +416,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 									<?= I18N::translate('Add the GEDCOM media path to filenames') ?>
 								</td>
 								<td class="optionbox">
-									<input type="checkbox" name="conv_path" value="<?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
-									<span dir="auto"><?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?></span>
+									<input type="checkbox" name="conv_path" value="<?= Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
+									<span dir="auto"><?= Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?></span>
 								</td>
 							</tr>
 
@@ -775,8 +775,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		<tr>
 		<td class="descriptionbox width50 wrap">' . I18N::translate('Add the GEDCOM media path to filenames') . '</td>
 		<td class="optionbox">
-		<input type="checkbox" name="conv_path" value="' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '">
-		<span dir="auto">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</span></td>
+		<input type="checkbox" name="conv_path" value="' . Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '">
+		<span dir="auto">' . Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</span></td>
 		</tr>
 
 		<input type="hidden" name="conv_path" value="' . $clip_ctrl->conv_path . '">

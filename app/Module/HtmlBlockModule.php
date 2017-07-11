@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
@@ -273,7 +274,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				<?= I18N::translate('Title') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="title" name="title" value="<?= Filter::escapeHtml($title) ?>">
+				<input class="form-control" type="text" id="title" name="title" value="<?= Html::escape($title) ?>">
 			</div>
 		</div>
 
@@ -310,7 +311,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		</div>
 
 		<div class="row form-group">
-			<textarea name="html" id="html" class="html-edit" rows="10"><?= Filter::escapeHtml($html) ?></textarea>
+			<textarea name="html" id="html" class="html-edit" rows="10"><?= Html::escape($html) ?></textarea>
 		</div>
 
 		<fieldset class="form-group">

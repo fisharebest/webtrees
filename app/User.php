@@ -382,7 +382,7 @@ class User {
 	 * @return string
 	 */
 	public function getRealNameHtml() {
-		return '<span dir="auto">' . Filter::escapeHtml($this->real_name) . '</span>';
+		return '<span dir="auto">' . Html::escape($this->real_name) . '</span>';
 	}
 
 	/**

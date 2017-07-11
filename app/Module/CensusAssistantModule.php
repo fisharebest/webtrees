@@ -386,7 +386,7 @@ class CensusAssistantModule extends AbstractModule {
 			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
-				$nam = Filter::escapeHtml($indi->getFullName());
+				$nam = Html::escape($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
 					'" . $indi->getXref() . "' ,
 					'" . $nam . "' ,
@@ -469,11 +469,11 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
-			$title     = Filter::escapeHtml($match[1]);
-			$preamble  = Filter::escapeHtml($match[2]);
-			$header    = Filter::escapeHtml($match[3]);
-			$data      = Filter::escapeHtml($match[4]);
-			$postamble = Filter::escapeHtml($match[5]);
+			$title     = Html::escape($match[1]);
+			$preamble  = Html::escape($match[2]);
+			$header    = Html::escape($match[3]);
+			$data      = Html::escape($match[4]);
+			$postamble = Html::escape($match[5]);
 
 			// Get the column headers for the census to which this note refers
 			// requires the fact place & date to match the specific census

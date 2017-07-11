@@ -324,7 +324,7 @@ class FunctionsPrintLists {
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($individual);
 
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($individual->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -344,7 +344,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// SOSA
 			$html .= '<td class="center" data-sort="' . $key . '">';
@@ -759,7 +759,7 @@ class FunctionsPrintLists {
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($husb);
 
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($husb->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -783,7 +783,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// Husband age
 			$mdate = $family->getMarriageDate();
@@ -802,7 +802,7 @@ class FunctionsPrintLists {
 			// Wife name(s)
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($wife);
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($wife->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -826,7 +826,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// Wife age
 			$mdate = $family->getMarriageDate();
@@ -1008,7 +1008,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Source name(s)
-			$html .= '<td data-sort="' . Filter::escapeHtml($source->getSortName()) . '">';
+			$html .= '<td data-sort="' . Html::escape($source->getSortName()) . '">';
 			foreach ($source->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1027,7 +1027,7 @@ class FunctionsPrintLists {
 			} else {
 				$author = '';
 			}
-			$html .= '<td data-sort="' . Filter::escapeHtml($author) . '">' . $author . '</td>';
+			$html .= '<td data-sort="' . Html::escape($author) . '">' . $author . '</td>';
 			$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1101,7 +1101,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Count of linked notes
-			$html .= '<td data-sort="' . Filter::escapeHtml($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
+			$html .= '<td data-sort="' . Html::escape($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
 			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1162,7 +1162,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Repository name(s)
-			$html .= '<td data-sort="' . Filter::escapeHtml($repository->getSortName()) . '">';
+			$html .= '<td data-sort="' . Html::escape($repository->getSortName()) . '">';
 			foreach ($repository->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1246,7 +1246,7 @@ class FunctionsPrintLists {
 				// Media object thumbnail
 				$html .= '<td>' . $media_object->displayImage(100, 100, 'contain', []) . '</td>';
 				// Media object name(s)
-				$html .= '<td data-sort="' . Filter::escapeHtml($media_object->getSortName()) . '">';
+				$html .= '<td data-sort="' . Html::escape($media_object->getSortName()) . '">';
 				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';
 				if (Auth::isEditor($media_object->getTree())) {
 					$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
@@ -1308,14 +1308,14 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr>';
 			// Surname
-			$html .= '<td data-sort="' . Filter::escapeHtml($surn) . '">';
+			$html .= '<td data-sort="' . Html::escape($surn) . '">';
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn => $indis) {
 				if ($spfxsurn) {
-					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($spfxsurn) . '</a><br>';
+					$html .= '<a href="' . $url . '" dir="auto">' . Html::escape($spfxsurn) . '</a><br>';
 				} else {
 					// No surname, but a value from "2 SURN"? A common workaround for toponyms, etc.
-					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($surn) . '</a><br>';
+					$html .= '<a href="' . $url . '" dir="auto">' . Html::escape($surn) . '</a><br>';
 				}
 			}
 			$html .= '</td>';
@@ -1415,7 +1415,7 @@ class FunctionsPrintLists {
 					$first_spfxsurn = $spfxsurn;
 				}
 			}
-			$subhtml = '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
+			$subhtml = '<a href="' . $url . '" dir="auto">' . Html::escape(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
 
 			if ($totals) {
 				$subtotal = 0;
@@ -1538,7 +1538,7 @@ class FunctionsPrintLists {
 			foreach ($filtered_events as $n => $fact) {
 				$record = $fact->getParent();
 				$html .= '<tr>';
-				$html .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '">';
+				$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
 				$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 				if ($record instanceof Individual) {
 					$html .= $record->getSexImage();

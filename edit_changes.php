@@ -157,11 +157,11 @@ foreach ($rows as $row) {
 <h3>
 	<?= Tree::findById($gedcom_name)->getTitleHtml() ?>
 	—
-	<a href="edit_changes.php?action=acceptall&amp;ged=<?= Filter::escapeHtml($gedcom_name) ?>">
+	<a href="edit_changes.php?action=acceptall&amp;ged=<?= Html::escape($gedcom_name) ?>">
 		<?= I18N::translate('Accept all changes') ?>
 	</a>
 	—
-	<a href="edit_changes.php?action=undoall&amp;ged=<?= Filter::escapeHtml($gedcom_name) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
+	<a href="edit_changes.php?action=undoall&amp;ged=<?= Html::escape($gedcom_name) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
 		<?= I18N::translate('Reject all changes') ?>
 	</a>
 </h3>
@@ -195,7 +195,7 @@ foreach ($rows as $row) {
 			</td>
 			<td>
 				<a href="message.php?to=<?= Filter::escapeUrl($record_change->user_name) ?>&amp;subject=<?= Filter::escapeUrl(I18N::translate('Moderate pending changes')) ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>" title="<?= I18N::translate('Send a message') ?>">
-					<?= Filter::escapeHtml($record_change->real_name)?> - <?= Filter::escapeHtml($record_change->user_name) ?>
+					<?= Html::escape($record_change->real_name)?> - <?= Html::escape($record_change->user_name) ?>
 				</a>
 			</td>
 			<td>

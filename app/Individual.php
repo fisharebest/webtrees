@@ -1225,7 +1225,7 @@ class Individual extends GedcomRecord {
 		$full = str_replace('@N.N.', I18N::translateContext('Unknown surname', '…'), $full);
 		$full = str_replace('@P.N.', I18N::translateContext('Unknown given name', '…'), $full);
 		// Format for display
-		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', Filter::escapeHtml($full)) . '</span>';
+		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', Html::escape($full)) . '</span>';
 		// Localise quotation marks around the nickname
 		$full = preg_replace_callback('/&quot;([^&]*)&quot;/', function ($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 

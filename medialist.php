@@ -109,7 +109,7 @@ $medialist = QueryMedia::mediaList(
 			<?= I18N::translate('Search filters') ?>
 		</label>
 		<div class="col-sm-3 wt-page-options-value">
-			<input type="text" class="form-control" name="filter" id="filter" value="<?= Filter::escapeHtml($filter) ?>">
+			<input type="text" class="form-control" name="filter" id="filter" value="<?= Html::escape($filter) ?>">
 		</div>
 
 		<div class="col-sm-3 col-form-label wt-page-options-label">

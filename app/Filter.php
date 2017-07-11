@@ -38,12 +38,7 @@ class Filter {
 	 * @return string
 	 */
 	public static function escapeHtml($string) {
-		if (defined('ENT_SUBSTITUTE')) {
-			// PHP5.4 allows us to substitute invalid UTF8 sequences
-			return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-		} else {
-			return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-		}
+		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 	}
 
 	/**

@@ -115,12 +115,12 @@ case 'choose':
 		<h2 class="wt-page-title">', I18N::translate('Choose a report to run'), '</h2>
 		<form name="choosereport" action="reportengine.php">
 		<input type="hidden" name="action" value="setup">
-		<input type="hidden" name="output" value="', Filter::escapeHtml($output), '">
+		<input type="hidden" name="output" value="', Html::escape($output), '">
 		<table class="facts_table width40">
 		<tr><td class="descriptionbox wrap width33 vmiddle">', I18N::translate('Report'), '</td>
 		<td class="optionbox"><select name="report">';
 	foreach ($reports as $file => $report) {
-		echo '<option value="', Filter::escapeHtml($file), '">', Filter::escapeHtml($report), '</option>';
+		echo '<option value="', Html::escape($file), '">', Html::escape($report), '</option>';
 	}
 	echo '</select></td></tr>
 		<tr><td class="topbottombar" colspan="2"><input type="submit" value="', I18N::translate('continue'), '"></td></tr>
@@ -141,7 +141,7 @@ case 'setup':
 		<h2 class="wt-page-title">', $report_array['title'], '</h2>
 		<form name="setupreport" action="reportengine.php">
 		<input type="hidden" name="action" value="run">
-		<input type="hidden" name="report" value="', Filter::escapeHtml($report), '">
+		<input type="hidden" name="report" value="', Html::escape($report), '">
 		<table class="facts_table width50">
 		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['description'], '</td></tr>';
 
@@ -150,7 +150,7 @@ case 'setup':
 	}
 	foreach ($report_array['inputs'] as $input) {
 		echo '<tr><td class="descriptionbox wrap">';
-		echo '<input type="hidden" name="varnames[]" value="', Filter::escapeHtml($input['name']), '">';
+		echo '<input type="hidden" name="varnames[]" value="', Html::escape($input['name']), '">';
 		echo I18N::translate($input['value']), '</td><td class="optionbox">';
 		if (!isset($input['type'])) {
 			$input['type'] = 'text';
@@ -195,15 +195,15 @@ case 'setup':
 				break;
 			}
 
-			echo ' type="text" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="', Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
+			echo ' type="text" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="', Html::escape($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type'] == 'checkbox') {
-			echo '<input type="checkbox" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="1" ';
+			echo '<input type="checkbox" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="1" ';
 			echo $input['default'] == '1' ? 'checked' : '';
 			echo '>';
 		}
 		if ($input['type'] == 'select') {
-			echo '<select name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '_var">';
+			echo '<select name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
 			foreach ($options as $option) {
 				$opt = explode('=>', $option);
@@ -215,20 +215,20 @@ case 'setup':
 				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translateContext($match[1], $match[2]);
 				}
-				echo '<option value="', Filter::escapeHtml($value), '" ';
+				echo '<option value="', Html::escape($value), '" ';
 				if ($opt[0] == $input['default']) {
 					echo 'selected';
 				}
-				echo '>', Filter::escapeHtml($display), '</option>';
+				echo '>', Html::escape($display), '</option>';
 			}
 			echo '</select>';
 		}
 		if (isset($input['lookup'])) {
-			echo '<input type="hidden" name="type[', Filter::escapeHtml($input['name']), ']" value="', Filter::escapeHtml($input['lookup']), '">';
+			echo '<input type="hidden" name="type[', Html::escape($input['name']), ']" value="', Html::escape($input['lookup']), '">';
 			if ($input['lookup'] == 'INDI') {
 			} elseif ($input['lookup'] == 'DATE') {
 				echo FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return calendarWidget("div_' . Filter::escapeJs($input['name']) . '", "' . Filter::escapeJs($input['name']) . '");']);
-				echo '<div id="div_', Filter::escapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
+				echo '<div id="div_', Html::escape($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
 			}
 		}
 		echo '</td></tr>';

@@ -150,11 +150,11 @@ echo Bootstrap4::breadcrumbs([
 				<!-- GEDCOM_MEDIA_PATH -->
 				<?php if ($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')): ?>
 				<label>
-					<input type="checkbox" name="conv_path" value="<?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
+					<input type="checkbox" name="conv_path" value="<?= Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
 					<?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
 				</label>
 				<p>
-					<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
+					<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
 				</p>
 				<?php endif ?>
 			</div>

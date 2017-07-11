@@ -147,7 +147,7 @@ echo '</script>';
 			$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
 			$currentField       = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
-				<input type="text" id="value<?= $i ?>" name="values[<?= $i ?>]" value="<?= Filter::escapeHtml($controller->getValue($i)) ?>"<?= substr($controller->getField($i), -4) == 'PLAC' ? 'data-autocomplete-type="PLAC"' : '' ?>>
+				<input type="text" id="value<?= $i ?>" name="values[<?= $i ?>]" value="<?= Html::escape($controller->getValue($i)) ?>"<?= substr($controller->getField($i), -4) == 'PLAC' ? 'data-autocomplete-type="PLAC"' : '' ?>>
 			<?php if (preg_match('/^NAME:/', $currentFieldSearch) > 0) { ?>
 				<select name="fields[<?= $i ?>]">
 					<option value="<?= $currentField ?>:EXACT" <?php if (preg_match('/:EXACT$/', $currentFieldSearch) > 0) echo 'selected' ?>><?= I18N::translate('Exact') ?></option>

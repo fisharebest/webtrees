@@ -68,7 +68,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				->execute([$mediaid, $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($title) {
-				echo '<b>', Filter::escapeHtml($title), '</b>';
+				echo '<b>', Html::escape($title), '</b>';
 			} else {
 				echo '<b>', $mediaid, '</b>';
 			}

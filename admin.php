@@ -624,7 +624,7 @@ if (
 					<?php elseif ($update_available): ?>
 					<?= I18N::translate('A new version of webtrees is available.') ?>
 					<a href="admin_site_upgrade.php" class="error">
-						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)) ?>
+						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
 					</a>
 					<?php else: ?>
 						<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
@@ -670,7 +670,7 @@ if (
 								<?php foreach ($administrators as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -683,7 +683,7 @@ if (
 								<?php foreach ($managers as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -696,7 +696,7 @@ if (
 								<?php foreach ($moderators as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -709,7 +709,7 @@ if (
 								<?php foreach ($unverified as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -722,7 +722,7 @@ if (
 								<?php foreach ($unapproved as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -735,7 +735,7 @@ if (
 								<?php foreach ($logged_in as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -895,7 +895,7 @@ if (
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>
-						<li dir="ltr"><code><?= Filter::escapeHtml($file_to_delete) ?></code></li>
+						<li dir="ltr"><code><?= Html::escape($file_to_delete) ?></code></li>
 					<?php endforeach ?>
 				</ul>
 			</div>

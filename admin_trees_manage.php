@@ -69,10 +69,10 @@ case 'new_tree':
 
 	if (Filter::checkCsrf() && $basename && $tree_title) {
 		if (Tree::findByName($basename)) {
-			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Filter::escapeHtml($basename)), 'danger');
+			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Html::escape($basename)), 'danger');
 		} else {
 			Tree::create($basename, $tree_title);
-			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Filter::escapeHtml($basename)), 'success');
+			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Html::escape($basename)), 'success');
 		}
 	}
 	header('Location: admin_trees_manage.php?ged=' . Filter::escapeUrl($basename));
@@ -140,7 +140,7 @@ case 'synchronize':
 			if ($tree->getPreference('filemtime') != $filemtime) {
 				$tree->importGedcomFile($gedcom_file, $basename);
 				$tree->setPreference('filemtime', $filemtime);
-				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Filter::escapeHtml($basename)), 'success');
+				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Html::escape($basename)), 'success');
 			}
 		}
 
@@ -192,9 +192,9 @@ case 'importform':
 	<p>
 		<?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', $tree->getTitleHtml()) ?>
 	</p>
-	<form class="form form-horizontal" name="gedcomimportform" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= Filter::escapeHtml(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+	<form class="form form-horizontal" name="gedcomimportform" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= Html::escape(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
 		<input type="hidden" name="gedcom_id" value="<?= $tree->getTreeId() ?>">
-		<input type="hidden" id="gedcom_filename" value="<?= Filter::escapeHtml($gedcom_filename) ?>">
+		<input type="hidden" id="gedcom_filename" value="<?= Html::escape($gedcom_filename) ?>">
 		<?= Filter::getCsrf() ?>
 
 		<fieldset class="form-group">
@@ -241,11 +241,11 @@ case 'importform':
 								echo '<option value=""></option>';
 								sort($files);
 								foreach ($files as $gedcom_file) {
-									echo '<option value="', Filter::escapeHtml($gedcom_file), '" ';
+									echo '<option value="', Html::escape($gedcom_file), '" ';
 									if ($gedcom_file === $gedcom_filename) {
 										echo ' selected';
 									}
-									echo'>', Filter::escapeHtml($gedcom_file), '</option>';
+									echo'>', Html::escape($gedcom_file), '</option>';
 								}
 								if (empty($files)) {
 									echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
@@ -291,7 +291,7 @@ case 'importform':
 						maxlength="255"
 						name="GEDCOM_MEDIA_PATH"
 						type="text"
-						value="<?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>"
+						value="<?= Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>"
 						>
 					<p class="small text-muted">
 						<?= /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed.') ?>

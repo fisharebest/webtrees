@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Controller;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -541,7 +542,7 @@ class IndividualListController extends PageController {
 			return I18N::translateContext('Unknown given name', '…');
 			break;
 		default:
-			return Filter::escapeHtml($initial);
+			return Html::escape($initial);
 			break;
 		}
 	}
@@ -562,7 +563,7 @@ class IndividualListController extends PageController {
 			return I18N::translate('None');
 			break;
 		default:
-			return Filter::escapeHtml($initial);
+			return Html::escape($initial);
 			break;
 		}
 	}

@@ -155,11 +155,11 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
-		$datum[2] = Filter::escapeHtml($datum[2]);
-		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
-		$datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
-		$datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
-		$datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
+		$datum[2] = Html::escape($datum[2]);
+		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
+		$datum[4] = '<span dir="auto">' . Html::escape($datum[4]) . '</span>';
+		$datum[5] = '<span dir="auto">' . Html::escape($datum[5]) . '</span>';
+		$datum[6] = '<span dir="auto">' . Html::escape($datum[6]) . '</span>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -239,7 +239,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Filter::escapeHtml($from) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Html::escape($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -249,7 +249,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Filter::escapeHtml($to) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Html::escape($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -265,7 +265,7 @@ echo Bootstrap4::breadcrumbs([
 			<label for="ip">
 				<?= I18N::translate('IP address') ?>
 			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?= Filter::escapeHtml($ip) ?>">
+			<input class="form-control" type="text" id="ip" name="ip" value="<?= Html::escape($ip) ?>">
 		</div>
 	</div>
 
@@ -274,7 +274,7 @@ echo Bootstrap4::breadcrumbs([
 			<label for="text">
 				<?= I18N::translate('Message') ?>
 			</label>
-			<input class="form-control" type="text" id="text" name="text" value="<?= Filter::escapeHtml($text) ?>">
+			<input class="form-control" type="text" id="text" name="text" value="<?= Html::escape($text) ?>">
 		</div>
 
 		<div class="form-group col-sm-4">

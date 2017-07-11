@@ -146,7 +146,7 @@ class Database {
 				unset($trace[$n]);
 			}
 		}
-		$stack = '<abbr title="' . Filter::escapeHtml(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
+		$stack = '<abbr title="' . Html::escape(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
 		// Bind variables
 		foreach ($bind_variables as $key => $value) {
 			if (is_null($value)) {

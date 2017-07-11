@@ -72,7 +72,7 @@ switch ($action) {
 							</div>
 							<input type="hidden" name="fact_id[]" value="<?= $fact->getFactId() ?>">
 							<textarea name="fact[]" dir="ltr" rows="<?= preg_match_all('/\n/', $fact->getGedcom()) ?>"
-							          style="width:100%;"><?= Filter::escapeHtml($fact->getGedcom()) ?></textarea>
+							          style="width:100%;"><?= Html::escape($fact->getGedcom()) ?></textarea>
 						</li>
 					<?php } ?>
 				<?php } ?>
@@ -186,7 +186,7 @@ switch ($action) {
 				</label>
 				<div class="col-sm-9">
 					<textarea autofocus class="form-control" rows="<?= $rows ?>" name="gedcom" id="gedcom"
-					          dir="ltr"><?= Filter::escapeHtml($edit_fact->getGedcom()) ?></textarea>
+					          dir="ltr"><?= Html::escape($edit_fact->getGedcom()) ?></textarea>
 				</div>
 			</div>
 			<?= keep_chan($record) ?>
@@ -595,7 +595,7 @@ switch ($action) {
 					<?= I18N::translate('Title') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Filter::escapeHtml($TITL) ?>" required>
+					<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Html::escape($TITL) ?>" required>
 				</div>
  			</div>
 
@@ -604,10 +604,10 @@ switch ($action) {
 					<?= I18N::translate('Filename on server') ?>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Filter::escapeHtml($FILE) ?>" required>
+					<input type="text" id="FILE" name="FILE" class="form-control" value="<?= Html::escape($FILE) ?>" required>
 
 					<?php if ($auto_file !== ''): ?>
-					<a href="#" class="btn btn-link" title="<?= Filter::escapeHtml($auto_file) ?>" onclick="document.querySelector('#FILE').value='<?= Filter::escapeHtml($auto_file) ?>'; document.querySelector('#FILE').focus(); return false;">
+					<a href="#" class="btn btn-link" title="<?= Html::escape($auto_file) ?>" onclick="document.querySelector('#FILE').value='<?= Html::escape($auto_file) ?>'; document.querySelector('#FILE').focus(); return false;">
 						<?= I18N::translate('Create a unique filename') ?>
 					</a>
 					<?php endif ?>
@@ -1757,7 +1757,7 @@ switch ($action) {
 				<tr>
 					<td class="descriptionbox wrap width25"><?= I18N::translate('Shared note') ?></td>
 					<td class="optionbox wrap">
-						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= Filter::escapeHtml($note->getNote()) ?></textarea>
+						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= Html::escape($note->getNote()) ?></textarea>
 						<br>
 						<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
 					</td>
@@ -2613,7 +2613,7 @@ function keep_chan(GedcomRecord $record = null) {
 		if ($record) {
 			$details
 				= GedcomTag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				GedcomTag::getLabelValue('_WT_USER', Filter::escapeHtml($record->lastChangeUser()));
+				GedcomTag::getLabelValue('_WT_USER', Html::escape($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}

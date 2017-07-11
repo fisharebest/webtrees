@@ -141,7 +141,7 @@ if ($custom_modules) {
 	if ($modules_action != 'ignore') {
 		echo '<br>', I18N::translate('No custom modules are enabled.'), $icon_success;
 	}
-	echo '<input type="hidden" name="modules" value="', Filter::escapeHtml($modules_action), '">';
+	echo '<input type="hidden" name="modules" value="', Html::escape($modules_action), '">';
 }
 
 echo '</li>';
@@ -205,7 +205,7 @@ if ($custom_themes) {
 	if ($themes_action != 'ignore') {
 		echo '<br>', I18N::translate('No custom themes are enabled.'), $icon_success;
 	}
-	echo '<input type="hidden" name="themes" value="', Filter::escapeHtml($themes_action), '">';
+	echo '<input type="hidden" name="themes" value="', Html::escape($themes_action), '">';
 }
 
 echo '</li>';

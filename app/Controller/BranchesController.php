@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Soundex;
@@ -55,7 +56,7 @@ class BranchesController extends PageController {
 
 		if ($this->surname !== '') {
 			$this->setPageTitle(/* I18N: %s is a surname */
-				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
+				I18N::translate('Branches of the %s family', Html::escape($this->surname)));
 			$this->loadIndividuals();
 			$self = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'gedcomid'), $this->tree());
 			if ($self) {

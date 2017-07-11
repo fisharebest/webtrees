@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -391,9 +392,9 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	public static function createSubmitButton($text, $xref, $action = '', $data = '') {
 		return
 			'<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
-			'this.form.xref.value=\'' . Filter::escapeHtml($xref) . '\';' .
-			'this.form.action.value=\'' . Filter::escapeHtml($action) . '\';' .
-			'this.form.data.value=\'' . Filter::escapeHtml($data) . '\';' .
+			'this.form.xref.value=\'' . Html::escape($xref) . '\';' .
+			'this.form.action.value=\'' . Html::escape($action) . '\';' .
+			'this.form.data.value=\'' . Html::escape($data) . '\';' .
 			'return true;"' .
 			($xref ? '' : ' disabled') . '>';
 	}

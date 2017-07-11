@@ -62,8 +62,8 @@ echo Bootstrap4::breadcrumbs([
 		<div class="panel-body">
 			<dl>
 				<?php foreach ($variables as $variable => $value): ?>
-					<dt><?= Filter::escapeHtml($variable) ?></dt>
-					<dd><?= Filter::escapeHtml($value) ?></dd>
+					<dt><?= Html::escape($variable) ?></dt>
+					<dd><?= Html::escape($value) ?></dd>
 				<?php endforeach ?>
 			</dl>
 		</div>

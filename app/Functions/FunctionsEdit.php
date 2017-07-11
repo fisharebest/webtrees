@@ -41,6 +41,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -683,11 +684,11 @@ class FunctionsEdit {
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="updatewholename()">';
 		} elseif ($fact === 'GIVN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
 		} elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
 		} elseif ($fact === 'ADOP') {
 			echo Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
@@ -705,7 +706,7 @@ class FunctionsEdit {
 			}
 		} elseif ($fact === 'DATE') {
 			echo '<div class="input-group">';
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_date(this)">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_date(this)">';
 			echo self::inputAddonCalendar($id);
 			echo self::inputAddonHelp('DATE');
 			echo '</div>';
@@ -718,9 +719,9 @@ class FunctionsEdit {
 				self::formControlFamily(Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
 		} elseif ($fact === 'LONG') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
 		} elseif ($fact === 'NOTE' && $islink) {
 			echo
 				'<div class="input-group">' .
@@ -734,7 +735,7 @@ class FunctionsEdit {
 				self::formControlMediaObject(Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
 		} elseif ($fact === 'PEDI') {
 			echo Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
@@ -781,7 +782,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'TEMP') {
 			echo Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'TIME') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
 			echo Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === '_PRIM') {
@@ -792,7 +793,7 @@ class FunctionsEdit {
 			echo '<select name="text[]"><option selected value="" ></option>';
 			$selectedValue = strtolower($value);
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-				echo '<option selected value="', Filter::escapeHtml($value), '" >', Filter::escapeHtml($value), '</option>';
+				echo '<option selected value="', Html::escape($value), '" >', Html::escape($value), '</option>';
 			}
 			foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 				echo '<option value="', $typeName, '" ';
@@ -805,17 +806,17 @@ class FunctionsEdit {
 		} elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
 				echo '<div class="input-group">';
-				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Filter::escapeHtml($value), '</textarea>';
+				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Html::escape($value), '</textarea>';
 				echo self::inputAddonKeyboard($id);
 				echo '</div>';
 			} else {
 				// If using GEDFact-assistant window
-				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '">';
+				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '">';
 			}
 		} else {
 			// Populated in javascript from sub-tags
-			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
-			echo '<span id="', $id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
+			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Html::escape($value), '" class="', $fact, '">';
+			echo '<span id="', $id, '_display" dir="auto">', Html::escape($value), '</span>';
 			echo ' <a href="#edit_name" onclick="convertHidden(\'', $id, '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list

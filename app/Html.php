@@ -26,7 +26,7 @@ class Html {
 	 *
 	 * @return string
 	 */
-	protected static function escape($string) {
+	public static function escape($string) {
 		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 	}
 

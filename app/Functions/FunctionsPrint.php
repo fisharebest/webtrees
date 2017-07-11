@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
@@ -517,7 +518,7 @@ class FunctionsPrint {
 						echo '<td class="optionbox wrap"><form name="newFromClipboard" onsubmit="return false;">';
 						echo '<select id="newClipboardFact">';
 					}
-					echo '<option value="', Filter::escapeHtml($fact_id), '">', GedcomTag::getLabel($fact['fact']);
+					echo '<option value="', Html::escape($fact_id), '">', GedcomTag::getLabel($fact['fact']);
 					// TODO use the event class to store/parse the clipboard events
 					if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
 						$tmp = new Date($match[1]);

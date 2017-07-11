@@ -182,10 +182,10 @@ default:
 		}
 	echo '<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">';
+		<input type="hidden" name="url" value="', Html::escape($url), '">';
 		echo '<div>
 			<label for="username">', I18N::translate('Username'),
-			'<input type="text" id="username" name="username" value="', Filter::escapeHtml($username), '" class="formField" autofocus>
+			'<input type="text" id="username" name="username" value="', Html::escape($username), '" class="formField" autofocus>
 			</label>
 		</div>
 		<div>
@@ -250,15 +250,15 @@ case 'requestpw':
 			I18N::translate('Lost password request'),
 			I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 			I18N::translate('A new password has been requested for your username.') . Mail::EOL . Mail::EOL .
-			I18N::translate('Username') . ': ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+			I18N::translate('Username') . ': ' . Html::escape($user->getUserName()) . Mail::EOL .
 			I18N::translate('Password') . ': ' . $user_new_pw . Mail::EOL . Mail::EOL .
 			I18N::translate('After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
 			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
 
-		FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', Filter::escapeHtml($user_name)), 'success');
+		FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', Html::escape($user_name)), 'success');
 	} else {
-		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Filter::escapeHtml($user_name)), 'danger');
+		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Html::escape($user_name)), 'danger');
 	}
 	header('Location: login.php');
 
@@ -315,10 +315,10 @@ case 'register':
 				I18N::translate('Hello administrator…') . Mail::EOL . Mail::EOL .
 				/* I18N: %s is a server name/URL */
 				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
-				I18N::translate('Username') . ' ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+				I18N::translate('Username') . ' ' . Html::escape($user->getUserName()) . Mail::EOL .
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
-				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
-				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
+				I18N::translate('Email address') . ' ' . Html::escape($user->getEmail()) . Mail::EOL .
+				I18N::translate('Comments') . ' ' . Html::escape($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an email with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
 				I18N::translate('You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account.');
 
@@ -337,9 +337,9 @@ case 'register':
 				I18N::translate('Follow this link to verify your email address.') .
 				Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
-				WT_LOGIN_URL . '?user_name=' . Filter::escapeHtml($user->getUserName()) . '&amp;user_hashcode=' . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
+				WT_LOGIN_URL . '?user_name=' . Html::escape($user->getUserName()) . '&amp;user_hashcode=' . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
 				'</a>' . Mail::EOL . Mail::EOL .
-				I18N::translate('Username') . ' - ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+				I18N::translate('Username') . ' - ' . Html::escape($user->getUserName()) . Mail::EOL .
 				I18N::translate('Comments') . ' - ' . $user->getPreference('comment') . Mail::EOL .
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);
@@ -413,7 +413,7 @@ case 'register':
 				<div>
 					<label for="user_realname">
 						<?= I18N::translate('Real name') ?>
-						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?= Filter::escapeHtml($user_realname) ?>" autofocus>
+						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?= Html::escape($user_realname) ?>" autofocus>
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
@@ -423,7 +423,7 @@ case 'register':
 				<div>
 					<label for="user_email">
 						<?= I18N::translate('Email address') ?>
-						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?= Filter::escapeHtml($user_email) ?>">
+						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?= Html::escape($user_email) ?>">
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
@@ -433,7 +433,7 @@ case 'register':
 				<div>
 					<label for="username">
 						<?= I18N::translate('Username') ?>
-						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php Filter::escapeHtml($user_name) ?>">
+						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php Html::escape($user_name) ?>">
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
@@ -446,7 +446,7 @@ case 'register':
 						<input required
 							type="password"
 							id="user_password01" name="user_password01"
-							value="<?= Filter::escapeHtml($user_password01) ?>"
+							value="<?= Html::escape($user_password01) ?>"
 							placeholder="<?= /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)) ?>"
 							pattern="<?=  WT_REGEX_PASSWORD ?>"
 							onchange="form.user_password02.pattern = regex_quote(this.value);"
@@ -463,7 +463,7 @@ case 'register':
 						<input required
 							type="password"
 							id="user_password02" name="user_password02"
-							value="<?= Filter::escapeHtml($user_password02) ?>"
+							value="<?= Html::escape($user_password02) ?>"
 							placeholder="<?= /* I18N: placeholder text for repeat-password field */ I18N::translate('Type the password again.') ?>"
 							pattern="<?= WT_REGEX_PASSWORD ?>"
 						>
@@ -480,7 +480,7 @@ case 'register':
 							cols="50" rows="5"
 							id="user_comments" name="user_comments"
 							placeholder="<?php /* I18N: placeholder text for registration-comments field */ I18N::translate('Explain why you are requesting an account.') ?>"
-						><?= Filter::escapeHtml($user_comments) ?></textarea>
+						><?= Html::escape($user_comments) ?></textarea>
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.') ?>
@@ -555,8 +555,8 @@ case 'verify_hash':
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ I18N::translate(
 			'A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).',
 			$user->getRealNameHtml(),
-			Filter::escapeHtml($user->getUserName()),
-			Filter::escapeHtml($user->getEmail())
+			Html::escape($user->getUserName()),
+			Html::escape($user->getEmail())
 		) .
 		Mail::EOL . Mail::EOL .
 		I18N::translate('You need to review the account details.') .

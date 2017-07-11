@@ -85,7 +85,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 				} else {
 					$content .= $user->getRealNameHtml();
 				}
-				$content .= ' - ' . Filter::escapeHtml($user->getUserName());
+				$content .= ' - ' . Html::escape($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&ged=' . $WT_TREE->getNameUrl()]);
 				}

@@ -144,7 +144,7 @@ if (!$PGV_PATH) {
 	if (count($pgv_dirs) > 1) {
 		$html = I18N::translate('PhpGedView might be installed in one of these folders:');
 		foreach ($pgv_dirs as $pgv_dir) {
-			$html .= '<div onclick="$(\'#PGV_PATH\').val(\'' . Filter::escapeHtml($pgv_dir) . '\')">' . Filter::escapeHtml($pgv_dir) . '</div>';
+			$html .= '<div onclick="$(\'#PGV_PATH\').val(\'' . Html::escape($pgv_dir) . '\')">' . Html::escape($pgv_dir) . '</div>';
 		}
 
 		echo Theme::theme()->htmlAlert($html, 'info', true);
@@ -165,7 +165,7 @@ if (!$PGV_PATH) {
 					name="PGV_PATH"
 					size="40"
 					placeholder="<?= I18N::translate('Installation folder') ?>"
-					value="<?= count($pgv_dirs) === 1 ? Filter::escapeHtml($pgv_dirs[0]) : '' ?>"
+					value="<?= count($pgv_dirs) === 1 ? Html::escape($pgv_dirs[0]) : '' ?>"
 					required
 				>
 			</div>

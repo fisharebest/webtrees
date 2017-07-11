@@ -38,7 +38,7 @@ header('Content-Type: text/html; charset=UTF-8');
 $messages = '';
 if (Filter::get('message')) {
 	$messages .=
-		'<blockquote>' . Filter::escapeHtml(Filter::get('message')) . '</blockquote>';
+		'<blockquote>' . Html::escape(Filter::get('message')) . '</blockquote>';
 }
 
 // If we can't connect to the database at all, give the reason why
