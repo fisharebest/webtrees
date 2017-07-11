@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
