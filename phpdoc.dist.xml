@@ -13,7 +13,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
-<phpdoc>
+<phpdocumentor>
 	<title>webtrees API documentation</title>
 	<parser>
 		<target>apidocs</target>
@@ -22,9 +22,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 		<target>apidocs</target>
 	</transformer>
 	<transformations>
-		<!--
-		<template name="responsive"/>
-		-->
+		<template name="abstract"/>
 	</transformations>
 	<files>
 		<directory>.</directory>
@@ -34,4 +32,4 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 		<ignore>themes/_custom/*</ignore>
 		<ignore>vendor/*</ignore>
 	</files>
-</phpdoc>
+</phpdocumentor>

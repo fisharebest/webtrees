@@ -37,7 +37,6 @@
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "*",
 		"mockery/mockery": "*",
-		"phpdocumentor/phpdocumentor": "*",
 		"phpunit/phpunit": "*",
 		"satooshi/php-coveralls": "~1.0"
 	},
