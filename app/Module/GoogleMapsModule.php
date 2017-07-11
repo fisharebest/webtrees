@@ -1891,7 +1891,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$thislevel      = $level - 1;
 				$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
 
-				$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
+				$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place->pl_id, $thislinklevels);
 			}
 		}
 
@@ -2268,7 +2268,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$lines = file(WT_MODULES_DIR . 'googlemap/extra' . $_REQUEST['localfile']);
 		} else {
 			FlashMessages::addMessage(I18N::translate('No file was received. Please try again.'), 'danger');
-			$lines = [];
+			$lines = [''];
 		}
 		// Strip BYTE-ORDER-MARK, if present
 		if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
