@@ -126,14 +126,12 @@ class FunctionsPrintLists {
 				.on("click", "button[data-filter-column]", function() {
 					var btn = $(this);
 					// De-activate the other buttons in this button group
-					btn.siblings().removeClass("ui-state-active");
+					btn.siblings().removeClass("active");
 					// Apply (or clear) this filter
 					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
-					if (btn.hasClass("ui-state-active")) {
-						btn.removeClass("ui-state-active");
+					if (btn.hasClass("active")) {
 						col.search("").draw();
 					} else {
-						btn.addClass("ui-state-active");
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
@@ -159,110 +157,99 @@ class FunctionsPrintLists {
 					<thead>
 						<tr>
 							<th colspan="16">
-								<div class="btn-toolbar">
-									<div class="btn-group">
+								<div class="btn-toolbar d-flex justify-content-between mb-2" role="toolbar">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="M"
 											title="' . I18N::translate('Show only males.') . '"
-											type="button"
 										>
 										  ' . Individual::sexImage('M', 'large') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="F"
 											title="' . I18N::translate('Show only females.') . '"
-											type="button"
 										>
 											' . Individual::sexImage('F', 'large') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="U"
 											title="' . I18N::translate('Show only individuals for whom the gender is not known.') . '"
-											type="button"
 										>
 											' . Individual::sexImage('U', 'large') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="N"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
-											type="button"
 										>
 											' . I18N::translate('Alive') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="Y"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
-											type="button"
 										>
 											' . I18N::translate('Dead') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals who died more than 100 years ago.') . '"
-											type="button"
 										>
 											' . I18N::translate('Death') . '&gt;100
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals who died within the last 100 years.') . '"
-											type="button"
 										>
 											' . I18N::translate('Death') . '&lt;=100
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals born more than 100 years ago.') . '"
-											type="button"
 										>
 											' . I18N::translate('Birth') . '&gt;100
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals born within the last 100 years.') . '"
-											type="button"
 										>
 											' . I18N::translate('Birth') . '&lt;=100
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="15"
 											data-filter-value="R"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
-											type="button"
 										>
 											' . I18N::translate('Roots') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="15"
 											data-filter-value="L"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
-											type="button"
 										>
 											' . I18N::translate('Leaves') . '
 										</button>
@@ -294,10 +281,10 @@ class FunctionsPrintLists {
 							<th colspan="16">
 								<div class="btn-toolbar">
 									<div class="btn-group">
-										<button type="button" class="ui-state-default btn-toggle-parents">
+										<button class="ui-state-default btn-toggle-parents">
 											' . I18N::translate('Show parents') . '
 										</button>
-										<button type="button" class="ui-state-default btn-toggle-statistics">
+										<button class="ui-state-default btn-toggle-statistics">
 											' . I18N::translate('Show statistics charts') . '
 										</button>
 									</div>
@@ -556,14 +543,12 @@ class FunctionsPrintLists {
 				.on("click", "button[data-filter-column]", function() {
 					var btn = $(this);
 					// De-activate the other buttons in this button group
-					btn.siblings().removeClass("ui-state-active");
+					btn.siblings().removeClass("active");
 					// Apply (or clear) this filter
 					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
-					if (btn.hasClass("ui-state-active")) {
-						btn.removeClass("ui-state-active");
+					if (btn.hasClass("active")) {
 						col.search("").draw();
 					} else {
-						btn.addClass("ui-state-active");
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
@@ -589,107 +574,96 @@ class FunctionsPrintLists {
 					<thead>
 						<tr>
 							<th colspan="14">
-								<div class="btn-toolbar">
-									<div class="btn-group">
+								<div class="btn-toolbar d-flex justify-content-between mb-2">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="N"
-											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
 										>
 											' . I18N::translate('Both alive') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="W"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
 										>
 											' . I18N::translate('Widower') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="H"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
 										>
 											' . I18N::translate('Widow') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="Y"
-											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 										>
 											' . I18N::translate('Both dead') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="R"
-											class="ui-state-default"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
 										>
 											' . I18N::translate('Roots') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="L"
-											class="ui-state-default"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
 										>
 											' . I18N::translate('Leaves') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="U"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
 										>
 											' . I18N::translate('Marriage') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="YES"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
 										>
 											' . I18N::translate('Marriage') . '&gt;100
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="Y100"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
 										>
 											' . I18N::translate('Marriage') . '&lt;=100
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="D"
-											class="ui-state-default"
 											title="' . I18N::translate('Show divorced couples.') . '"
 										>
 											' . I18N::translate('Divorce') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="M"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where either partner married more than once.') . '"
 										>
 											' . I18N::translate('Multiple marriages') . '
@@ -720,10 +694,10 @@ class FunctionsPrintLists {
 							<th colspan="14">
 								<div class="btn-toolbar">
 									<div class="btn-group">
-										<button type="button" class="ui-state-default btn-toggle-parents">
+										<button class="ui-state-default btn-toggle-parents">
 											' . I18N::translate('Show parents') . '
 										</button>
-										<button type="button" class="ui-state-default btn-toggle-statistics">
+										<button class="ui-state-default btn-toggle-statistics">
 											' . I18N::translate('Show statistics charts') . '
 										</button>
 									</div>

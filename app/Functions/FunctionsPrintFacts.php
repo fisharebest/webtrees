@@ -242,7 +242,7 @@ class FunctionsPrintFacts {
 				echo '</div>';
 
 				if (!$fact->getParent()->fileExists('main')) {
-					echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
+					echo '<p class="alert alert-danger">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
 				}
 
 				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists()) {
@@ -724,7 +724,7 @@ class FunctionsPrintFacts {
 					echo '</div>'; //close div "media-display"
 				}
 			} elseif ($WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
-				echo '<p class="ui-state-error">', $media_id, '</p>';
+				echo '<p class="alert alert-danger">', $media_id, '</p>';
 			}
 			$objectNum++;
 		}

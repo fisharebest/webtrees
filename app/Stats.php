@@ -5555,7 +5555,7 @@ class Stats {
 			case 'table':
 				$lookup = ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All')];
 
-				return '<table ' . Datatables::givenNameTableAttributes() . '><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Individuals') . '</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
+				return '<table ' . Datatables::givenNameTableAttributes() . '><thead><tr><th colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Individuals') . '</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
 			case 'list':
 				return '<ul>' . implode('', $common) . '</ul>';
 			case 'nolist':

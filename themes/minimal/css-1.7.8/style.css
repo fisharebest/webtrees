@@ -1632,68 +1632,6 @@ div.faq_body {
 	width: 100%;
 }
 
-/* === jquery-ui.css changes === */
-.ui-state-highlight a {
-	font-weight: bold;
-}
-
-.ui-tabs .ui-tabs-panel {
-	border-radius: 4px;
-	padding: 4px;
-}
-
-.ui-widget {
-    font-size: 14px;
-}
-
-.ui-accordion .ui-accordion-header .ui-icon {
-	position: absolute;
-	left: 6px;
-	top: 50%;
-	margin-top: -8px;
-}
-
-.ui-accordion .ui-accordion-content {
-	padding: 12px 1px;
-	border-top: 0;
-	margin-top: 1px;
-	position: relative;
-	top: 1px;
-	margin-bottom: 2px;
-	overflow: visible;
-	display: none;
-}
-
-.ui-accordion .ui-accordion-content-active {
-	display: block;
-}
-
-.ui-accordion .ui-accordion-header a {
-	padding: 6px;
-}
-
-[dir=rtl] .ui-tabs {
-	direction: rtl;
-}
-
-[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
-	float: right;
-}
-
-[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
-	right: 6px;
-}
-
-[dir=rtl] .ui-dialog-title {
-	float: right;
-}
-
-[dir=rtl] .ui-dialog-titlebar-close {
-	left: .3em;
-	right: auto;
-}
-
 /* === jQuery.datatable styling general over-rides === */
 .odd {
 	background-color: #dcdcdc;
@@ -2562,21 +2500,6 @@ div.faq_body {
 
 .story_edit {
 	padding: 12px;
-}
-
-.btn-group {
-	display: inline-block;
-	margin: 0 4px;
-}
-
-.btn-group button:first-child,
-[dir=rtl] .btn-group button:last-child {
-	border-radius: 3px 0 0 3px;
-}
-
-.btn-group button:last-child,
-[dir=rtl] .btn-group button:first-child {
-	border-radius: 0 3px 3px 0;
 }
 
 /* ====== Charts Styles ======== */

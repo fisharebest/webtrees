@@ -202,7 +202,7 @@ if ($action === 'submit') {
 										}
 									}
 								} else {
-									echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
+									echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
 								}
 							}
 							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
