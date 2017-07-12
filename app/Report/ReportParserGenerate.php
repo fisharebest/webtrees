@@ -1616,7 +1616,7 @@ class ReportParserGenerate extends ReportParserBase {
 		$person      = Individual::getInstance($id, $WT_TREE);
 		$mediaobject = $person->findHighlightedMedia();
 		if ($mediaobject) {
-			$attributes = $mediaobject->getImageAttributes('thumb');
+			$attributes = $mediaobject->getImageAttributes();
 			if (in_array(
 					$attributes['ext'],
 					[
@@ -1637,7 +1637,7 @@ class ReportParserGenerate extends ReportParserBase {
 						'WBMP',
 						'XBM',
 					]
-				) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
+				) && $mediaobject->canShow() && $mediaobject->fileExists('main')
 			) {
 				if ($width > 0 && $height == 0) {
 					$perc   = $width / $attributes['adjW'];
@@ -1716,7 +1716,8 @@ class ReportParserGenerate extends ReportParserBase {
 			$match = [];
 			if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
 				$mediaobject = Media::getInstance($match[1], $WT_TREE);
-				$attributes  = $mediaobject->getImageAttributes('thumb');
+				$attributes  = $mediaobject->getImageAttributes();
+
 				if (in_array(
 						$attributes['ext'],
 						[
@@ -1737,7 +1738,7 @@ class ReportParserGenerate extends ReportParserBase {
 							'WBMP',
 							'XBM',
 						]
-					) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
+					) && $mediaobject->canShow() && $mediaobject->fileExists('main')
 				) {
 					if ($width > 0 && $height == 0) {
 						$perc   = $width / $attributes['adjW'];

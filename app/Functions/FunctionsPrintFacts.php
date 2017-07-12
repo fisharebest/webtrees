@@ -237,7 +237,7 @@ class FunctionsPrintFacts {
 				echo '<div class="field">', Html::escape($fact->getValue());
 
 				if ($fact->getParent()->fileExists('main') && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
-					echo ' — <a href="' . $fact->getParent()->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a>';
+					echo ' — <a href="' . $fact->getParent()->getHtmlUrlDirect() . '">' . I18N::translate('Download file') . '</a>';
 				}
 				echo '</div>';
 
@@ -1185,7 +1185,7 @@ class FunctionsPrintFacts {
 					echo '</span>';
 
 					echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-					$imgsize = $media->getImageAttributes('main');
+					$imgsize = $media->getImageAttributes();
 					if (!empty($imgsize['WxH'])) {
 						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}
