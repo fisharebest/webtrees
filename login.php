@@ -376,9 +376,10 @@ case 'register':
 				$mail1_body
 			);
 			$mail1_method = $webmaster->getPreference('contact_method');
-			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
+			if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+				$mail1_body_text = html_entity_decode(strip_tags($mail1_body), ENT_QUOTES, 'UTF-8');
 				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute([$user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
+					->execute([$user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, $mail1_body_text]);
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
@@ -595,9 +596,10 @@ case 'verify_hash':
 			$mail1_body
 		);
 		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
-		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
+		if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+			$mail1_body_text = html_entity_decode(strip_tags($mail1_body), ENT_QUOTES, 'UTF-8');
 			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-				->execute([$user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
+				->execute([$user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, $mail1_body_text]);
 		}
 
 		$user

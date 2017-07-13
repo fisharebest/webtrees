@@ -513,7 +513,9 @@ class I18N {
 	 */
 	public static function reverseText($text) {
 		// Remove HTML markup - we can't display it and it is LTR.
-		$text = Filter::unescapeHtml($text);
+		$text = strip_tags($text);
+		// Remove HTML entities.
+		$text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
 
 		// LTR text doesn't need reversing
 		if (self::scriptDirection(self::textScript($text)) === 'ltr') {

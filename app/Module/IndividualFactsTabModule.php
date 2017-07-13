@@ -472,10 +472,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 				$histo = [];
 				require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 				foreach ($histo as $hist) {
-					// Earlier versions of the WIKI encouraged people to use HTML entities,
-					// rather than UTF8 encoding.
-					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
-
 					$fact  = new Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && Date::compare($birt_date, $sdate) <= 0 && Date::compare($sdate, $deat_date) <= 0) {

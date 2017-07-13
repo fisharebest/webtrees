@@ -88,17 +88,6 @@ class Filter {
 	}
 
 	/**
-	 * Unescape an HTML string, giving just the literal text
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function unescapeHtml($string) {
-		return html_entity_decode(strip_tags($string), ENT_QUOTES, 'UTF-8');
-	}
-
-	/**
 	 * Format block-level text such as notes or transcripts, etc.
 	 *
 	 * @param string $text

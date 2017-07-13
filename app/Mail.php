@@ -41,11 +41,11 @@ class Mail {
 	 * @param string $replyto_email
 	 * @param string $replyto_name
 	 * @param string $subject
-	 * @param string $message
+	 * @param string $message_html
 	 *
 	 * @return bool
 	 */
-	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
+	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message_html) {
 		try {
 			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
 			// is outside the open_basedir list.  Therefore we must set one explicitly.
@@ -53,13 +53,15 @@ class Mail {
 
 			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
 
+			$message_text = html_entity_decode(strip_tags($message_html), ENT_QUOTES, 'UTF-8');
+
 			$mail = Swift_Message::newInstance()
 				->setSubject($subject)
 				->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
 				->setTo($to_email, $to_name)
 				->setReplyTo($replyto_email, $replyto_name)
-				->setBody($message, 'text/html')
-				->addPart(Filter::unescapeHtml($message), 'text/plain');
+				->setBody($message_html, 'text/html')
+				->addPart($message_text, 'text/plain');
 
 			Swift_Mailer::newInstance(self::transport())->send($mail);
 		} catch (Exception $ex) {

@@ -99,7 +99,8 @@ class Note extends GedcomRecord {
 			switch ($this->getTree()->getPreference('FORMAT_TEXT')) {
 			case 'markdown':
 				$text = Filter::markdown($text);
-				$text = Filter::unescapeHtml($text);
+				$text = strip_tags($text);
+				$text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
 				break;
 			}
 
