@@ -222,9 +222,6 @@ class Media extends GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param int $addWidth  amount to add to width
-	 * @param int $addHeight amount to add to height
-	 *
 	 * @return array
 	 */
 	public function getImageAttributes() {
@@ -234,17 +231,11 @@ class Media extends GedcomRecord {
 				$imgsize = getimagesize($this->getServerFilename());
 				if (is_array($imgsize) && !empty($imgsize['0'])) {
 					// this is an image
-					$imgsize[0]      = $imgsize[0] + 0;
-					$imgsize[1]      = $imgsize[1] + 0;
-					$imgsize['adjW'] = $imgsize[0] + 0; // adjusted width
-					$imgsize['adjH'] = $imgsize[1] + 0; // adjusted height
 					$imageTypes      = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
 					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
 					// this is for display purposes, always show non-adjusted info
-					$imgsize['WxH']
-						                = /* I18N: image dimensions, width × height */
+					$imgsize['WxH']  = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-					$imgsize['imgWH'] = ' width="' . $imgsize['adjW'] . '" height="' . $imgsize['adjH'] . '" ';
 				}
 			} catch (\ErrorException $ex) {
 				// Not an image, or not a valid image?
@@ -256,12 +247,9 @@ class Media extends GedcomRecord {
 			// this is not an image, OR the file doesn’t exist OR it is a url
 			$imgsize[0]       = 0;
 			$imgsize[1]       = 0;
-			$imgsize['adjW']  = 0;
-			$imgsize['adjH']  = 0;
 			$imgsize['ext']   = '';
 			$imgsize['mime']  = '';
 			$imgsize['WxH']   = '';
-			$imgsize['imgWH'] = '';
 		}
 
 		if (empty($imgsize['mime'])) {
