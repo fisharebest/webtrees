@@ -222,8 +222,8 @@ class Media extends GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param int    $addWidth  amount to add to width
-	 * @param int    $addHeight amount to add to height
+	 * @param int $addWidth  amount to add to width
+	 * @param int $addHeight amount to add to height
 	 *
 	 * @return array
 	 */
@@ -299,9 +299,11 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * @param int      $width      max width in pixels
-	 * @param int      $height     max height in pixels
-	 * @param string   $fit        "crop" or ""
+	 * Generate a URL for an image.
+	 *
+	 * @param int    $width  Maximum width in pixels
+	 * @param int    $height Maximum height in pixels
+	 * @param string $fit    "crop" or "contain"
 	 *
 	 * @return string
 	 */
@@ -438,18 +440,18 @@ class Media extends GedcomRecord {
 			// Generate multiple images for displays with higher pixel densities.
 			$src    = $this->imageUrl($width, $height, $fit);
 			$srcset = [];
-			foreach ([2,3,4] as $x) {
+			foreach ([2, 3, 4] as $x) {
 				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
 			}
 		}
 
 		$image = '<img ' . Html::attributes($attributes + [
-			'dir'      => 'auto',
-			'src'      => $src,
-			'srcset'   => implode(',', $srcset),
-			'alt'      => strip_tags($this->getFullName()),
-			'title'    => strip_tags($this->getFullName()),
-		]) . '>';
+					'dir'    => 'auto',
+					'src'    => $src,
+					'srcset' => implode(',', $srcset),
+					'alt'    => strip_tags($this->getFullName()),
+					'title'  => strip_tags($this->getFullName()),
+				]) . '>';
 
 		return
 			'<a' .
