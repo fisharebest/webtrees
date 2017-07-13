@@ -203,7 +203,7 @@ case 'OBJE':
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($media->canShowName()) {
-			$data[] = ['value' => $row->xref, 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName()];
+			$data[] = ['value' => $row->xref, 'label' => '<img src="' . $media->imageUrl(25, 25, 'crop') . '" width="25" height="25"> ' . $media->getFullName()];
 		}
 	}
 	echo json_encode($data);
@@ -459,7 +459,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($media->canShowName()) {
-			$data[] = ['value' => $media->getXref(), 'label' => '<img src="' . $media->getHtmlUrlDirect() . '" width="25"> ' . $media->getFullName()];
+			$data[] = ['value' => $media->getXref(), 'label' => '<img src="' . $media->imageUrl(25, 25, 'crop') . '" width="25" height="25"> ' . $media->getFullName()];
 		}
 	}
 	// Fetch all data, regardless of privacy

@@ -237,7 +237,7 @@ class FunctionsPrintFacts {
 				echo '<div class="field">', Html::escape($fact->getValue());
 
 				if ($fact->getParent()->fileExists('main') && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
-					echo ' — <a href="' . $fact->getParent()->getHtmlUrlDirect() . '">' . I18N::translate('Download file') . '</a>';
+					echo ' — <a href="' . $fact->getParent()->imageUrl(0, 0, '') . '">' . I18N::translate('Download file') . '</a>';
 				}
 				echo '</div>';
 

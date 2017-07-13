@@ -1271,7 +1271,7 @@ switch ($action) {
 					<?= I18N::translate('Family') ?>
 				</label>
 				<div class="col-sm-9">
-					<?= FunctionsEdit::formControlFamily(null, $attributes = ['id' => 'famid', 'name' => 'famid']) ?>
+					<?= FunctionsEdit::formControlFamily(null, ['id' => 'famid', 'name' => 'famid']) ?>
 				</div>
 			</div>
 

@@ -399,7 +399,7 @@ class ReportHtml extends ReportBase {
 	 * @return ReportHtmlImage
 	 */
 	public function createImageFromObject(Media $mediaobject, $x, $y, $w, $h, $align, $ln) {
-		return new ReportHtmlImage($mediaobject->getHtmlUrlDirect(), $x, $y, $w, $h, $align, $ln);
+		return new ReportHtmlImage($mediaobject->imageUrl($x, $y, ''), $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**

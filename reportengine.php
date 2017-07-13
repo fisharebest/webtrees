@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
@@ -162,40 +163,22 @@ case 'setup':
 			$input['lookup'] = '';
 		}
 
-		if ($input['type'] == 'text') {
-			echo '<input';
+		$attributes = [
+			'id'   => 'vars[' . $input['name'] . ']',
+			'name' => 'vars[' . $input['name'] . ']',
+		];
 
-			switch ($input['lookup']) {
-			case 'INDI':
-				echo ' data-autocomplete-type="INDI"';
-				if (!empty($pid)) {
-					$input['default'] = $pid;
-				} else {
-					$input['default'] = $controller->getSignificantIndividual()->getXref();
-				}
-				break;
-			case 'FAM':
-				echo ' data-autocomplete-type="FAM"';
-				if (!empty($famid)) {
-					$input['default'] = $famid;
-				} else {
-					$input['default'] = $controller->getSignificantFamily()->getXref();
-				}
-				break;
-			case 'SOUR':
-				echo ' data-autocomplete-type="SOUR"';
-				if (!empty($sid)) {
-					$input['default'] = $sid;
-				}
-				break;
-			case 'DATE':
-				if (isset($input['default'])) {
-					$input['default'] = strtoupper($input['default']);
-				}
-				break;
-			}
-
-			echo ' type="text" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="', Html::escape($input['default']), '" style="direction: ltr;">';
+		if ($input['lookup'] === 'INDI') {
+			$individual = Individual::getInstance($pid, $WT_TREE) ?: $controller->getSignificantIndividual();
+			echo FunctionsEdit::formControlIndividual($individual, $attributes);
+		} elseif ($input['lookup'] === 'FAM') {
+			$family = Family::getInstance($pid, $WT_TREE) ?: $controller->getSignificantFamily();
+			echo FunctionsEdit::formControlFamily($family, $attributes);
+		} elseif ($input['lookup'] === 'SOUR') {
+			$source = Source::getInstance($pid, $WT_TREE);
+			echo FunctionsEdit::formControlSource($source, $attributes);
+		} elseif ($input['type'] == 'text') {
+			echo '<input type="text" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="', Html::escape($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type'] == 'checkbox') {
 			echo '<input type="checkbox" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="1" ';
@@ -203,25 +186,18 @@ case 'setup':
 			echo '>';
 		}
 		if ($input['type'] == 'select') {
-			echo '<select name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '_var">';
-			$options = preg_split('/[|]+/', $input['options']);
-			foreach ($options as $option) {
-				$opt = explode('=>', $option);
-				list($value, $display) = $opt;
-				if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $display, $match)) {
-					$display = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
-				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
-					$display = I18N::translate($match[1]);
-				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
-					$display = I18N::translateContext($match[1], $match[2]);
+			$options = [];
+			foreach (preg_split('/[|]+/', $input['options']) as $option) {
+				list($key, $value) = explode('=>', $option);
+				if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
+					$options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
+				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
+					$options[$key] = I18N::translate($match[1]);
+				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
+					$options[$key] = I18N::translateContext($match[1], $match[2]);
 				}
-				echo '<option value="', Html::escape($value), '" ';
-				if ($opt[0] == $input['default']) {
-					echo 'selected';
-				}
-				echo '>', Html::escape($display), '</option>';
 			}
-			echo '</select>';
+			echo Bootstrap4::select($options, $input['default'], $attributes);
 		}
 		if (isset($input['lookup'])) {
 			echo '<input type="hidden" name="type[', Html::escape($input['name']), ']" value="', Html::escape($input['lookup']), '">';

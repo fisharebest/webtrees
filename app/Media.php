@@ -299,15 +299,6 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * Generate a URL directly to the media file
-	 *
-	 * @return string
-	 */
-	public function getHtmlUrlDirect() {
-		return $this->imageUrl(0, 0, '');
-	}
-
-	/**
 	 * @param int      $width      max width in pixels
 	 * @param int      $height     max height in pixels
 	 * @param string   $fit        "crop" or ""
@@ -463,7 +454,7 @@ class Media extends GedcomRecord {
 		return
 			'<a' .
 			' class="gallery"' .
-			' href="' . $this->getHtmlUrlDirect() . '"' .
+			' href="' . $this->imageUrl(0, 0, '') . '"' .
 			' type="' . $this->mimeType() . '"' .
 			' data-obje-url="' . $this->getHtmlUrl() . '"' .
 			' data-obje-note="' . Html::escape($this->getNote()) . '"' .
