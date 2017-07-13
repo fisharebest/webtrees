@@ -201,8 +201,7 @@ case 'setup':
 		}
 		if (isset($input['lookup'])) {
 			echo '<input type="hidden" name="type[', Html::escape($input['name']), ']" value="', Html::escape($input['lookup']), '">';
-			if ($input['lookup'] == 'INDI') {
-			} elseif ($input['lookup'] == 'DATE') {
+			if ($input['lookup'] == 'DATE') {
 				echo FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return calendarWidget("div_' . Filter::escapeJs($input['name']) . '", "' . Filter::escapeJs($input['name']) . '");']);
 				echo '<div id="div_', Html::escape($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
 			}

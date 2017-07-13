@@ -417,7 +417,7 @@ echo Bootstrap4::breadcrumbs([
 									<input type="hidden" name="gedcom_id" value="<?= $tree->getTreeId() ?>">
 									<?= Filter::getCsrf() ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($tree->getTitle())) ?>')" type="submit">
+									<button class="sr-only" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>')" type="submit">
 										<?= I18N::translate('Delete') ?>
 									</button>
 								</form>

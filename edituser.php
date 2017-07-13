@@ -300,7 +300,7 @@ function checkform(frm) {
 	<?= Filter::getCsrf() ?>
 	<div class="row form-group">
 		<div class="col-sm-9 offset-sm-3">
-			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Auth::user()->getUserName())) ?>');">
+			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape(Auth::user()->getUserName())) ?>');">
 		</div>
 	</div>
 </form>
