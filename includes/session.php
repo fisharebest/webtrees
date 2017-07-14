@@ -36,7 +36,7 @@ define('WT_VERSION', '1.8.0-dev');
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
-define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
+define('WT_STATIC_URL', (string) getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
 define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
 define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');

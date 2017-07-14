@@ -50,7 +50,7 @@ $delete_file = Filter::post('delete');
 if ($delete_file) {
 	$controller = new AjaxController;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = Filter::post('media_folder', null, ''); // MySQL needs an empty string, not NULL
+	$media_folder = Filter::post('media_folder');
 	$disk_files   = all_disk_files($media_folder, '', 'include', '');
 	// Check file exists? Maybe it was already deleted or renamed.
 	if (in_array($delete_file, $disk_files)) {
@@ -312,9 +312,8 @@ case 'load_json':
 				}
 			}
 
-			$conf        = I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file));
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Html::escape($media_path . $unused_file) . '\',media_folder:\'' . Html::escape($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+				'<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file)) . '" data-file="' . Html::escape($media_path . $unused_file) . '" data-folder="' . Html::escape($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,

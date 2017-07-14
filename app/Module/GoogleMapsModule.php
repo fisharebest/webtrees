@@ -2596,7 +2596,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		var map;
 		var marker;
 		var zoom;
-		var pl_name = '<?= Filter::escapeJs($record->pl_place) ?>';
+		var pl_name = <?= json_encode($record->pl_place) ?>;
 			var latlng = new google.maps.LatLng(<?= $latitude ?>, <?= $longitude ?>);
 		var pl_zoom = <?= $record->pl_zoom ?>;
 		var polygon1;
