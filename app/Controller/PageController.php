@@ -125,11 +125,11 @@ class PageController extends BaseController {
 	public function pageHeader() {
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
-			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
-			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
-			var WT_GEDCOM      = "' . Filter::escapeJs($this->tree() ? $this->tree()->getName() : '') . '";
-			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
-			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
+			var WT_STATIC_URL  = ' . json_encode(WT_STATIC_URL) . ';
+			var WT_MODULES_DIR = ' . json_encode(WT_MODULES_DIR) . ';
+			var WT_GEDCOM      = ' . json_encode($this->tree() ? $this->tree()->getName() : '') . ';
+			var textDirection  = ' . json_encode(I18N::direction()) . ';
+			var WT_LOCALE      = ' . json_encode(WT_LOCALE) . ';
 		', self::JS_PRIORITY_HIGH);
 
 		Theme::theme()->sendHeaders();

@@ -203,7 +203,7 @@ case 'load_json':
 
 		if ($user_id != Auth::id()) {
 			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
-				I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" onclick="delete_user(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($user_name)) . '\', \'' . Filter::escapeJs($user_id) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
+				I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . Filter::escapeJs($user_id) . ');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
@@ -795,7 +795,7 @@ default:
 					"type": "POST"
 				},
 				search: {
-					search: "' . Filter::escapeJs(Filter::get('filter')) . '"
+					search: ' . json_encode(Filter::get('filter')) . '
 				},
 				autoWidth: false,
 				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',

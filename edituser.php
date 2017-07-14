@@ -291,7 +291,7 @@ function checkform(frm) {
 		<div class="col-sm-9 offset-sm-3">
 			<input class="btn btn-primary" type="submit" value="<?= I18N::translate('save') ?>">
 		</div>
-	<div class="row form-group">
+	</div>
 </form>
 
 <?php if (!Auth::user()->getPreference('canadmin')): ?>
@@ -300,7 +300,7 @@ function checkform(frm) {
 	<?= Filter::getCsrf() ?>
 	<div class="row form-group">
 		<div class="col-sm-9 offset-sm-3">
-			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape(Auth::user()->getUserName())) ?>');">
+			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape(Auth::user()->getUserName())) ?>" onclick="return confirm(this.dataset.confirm);">
 		</div>
 	</div>
 </form>

@@ -406,7 +406,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($tree->getTitle())) ?>')) { document.delete_form<?= $tree->getTreeId() ?>.submit(); } return false;">
+								<a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $tree->getTreeId() ?>.submit(); } return false;">
 									<?= I18N::translate('Delete') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -417,7 +417,7 @@ echo Bootstrap4::breadcrumbs([
 									<input type="hidden" name="gedcom_id" value="<?= $tree->getTreeId() ?>">
 									<?= Filter::getCsrf() ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>')" type="submit">
+									<button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
 										<?= I18N::translate('Delete') ?>
 									</button>
 								</form>

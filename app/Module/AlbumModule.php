@@ -113,93 +113,16 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			$html .= '</td></tr></table>';
 		}
 
-		// Used when sorting media on album tab page
-		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<div class="facts_value">';
 		$html .= '<ul class="album-list">';
 		foreach ($this->getMedia() as $media) {
-			//View Edit Menu ----------------------------------
-
-			//Get media item Notes
-			$haystack = $media->getGedcom();
-			$needle   = '1 NOTE';
-			$before   = substr($haystack, 0, strpos($haystack, $needle));
-			$after    = substr(strstr($haystack, $needle), strlen($needle));
-			$notes    = FunctionsPrint::printFactNotes($before . $needle . $after, 1, true);
-
-			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$menu = new Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
-			$menu->addClass('', 'submenu');
-
-			// View Notes
-			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new Menu(I18N::translate('View the notes'), '#', '', [
-					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View the notes') . '"); return false;',
-				]);
-				$submenu->addClass('submenuitem');
-				$menu->addSubmenu($submenu);
-			}
-			//View Details
-			$submenu = new Menu(I18N::translate('View the details'), $media->getHtmlUrl());
-			$submenu->addClass('submenuitem');
-			$menu->addSubmenu($submenu);
-
-			//View Sources
-			foreach ($media->getFacts('SOUR') as $source_fact) {
-				$source = $source_fact->getTarget();
-				if ($source && $source->canShow()) {
-					$submenu = new Menu(I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
-					$submenu->addClass('submenuitem');
-					$menu->addSubmenu($submenu);
-				}
-			}
-
-			if (Auth::isEditor($media->getTree())) {
-				// Edit Media
-				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', [
-					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
-				]);
-				$submenu->addClass('submenuitem');
-				$menu->addSubmenu($submenu);
-				if (Auth::isAdmin()) {
-					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', [
-							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-					} else {
-						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","person");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-
-						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","family");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-
-						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","source");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-					}
-					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', [
-						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
-					]);
-					$submenu->addClass('submenuitem');
-					$menu->addSubmenu($submenu);
-				}
-			}
 			$html .= '<li class="album-list-item">';
 			$html .= '<div class="album-image">' . $media->displayImage(100, 100, 'contain', []) . '</div>';
-			$html .= '<div class="album-title">' . $menu->bootstrap4() . '</div>';
+			$html .= '<div class="album-title"><a href="' . $media->getXref() . '">' . $media->getFullName() . '</div>';
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
-		$html .= '</td></tr></table>';
+		$html .= '</div>';
 		$html .= '</div>';
 
 		return $html;

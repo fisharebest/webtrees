@@ -184,7 +184,7 @@ class I18N {
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
 			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-			' "lengthMenu":     "' . Filter::escapeJs(/* I18N: %s is a number of records per page */ self::translate('Display %s', $length_options)) . '",' .
+			' "lengthMenu":     "' . /* I18N: %s is a number of records per page */ self::translate('Display %s', addslashes($length_options)) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
 			' "processing":     "' . self::translate('Loading…') . '",' .
 			' "search":         "' . self::translate('Filter') . '",' .
