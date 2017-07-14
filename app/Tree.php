@@ -125,7 +125,7 @@ class Tree {
 	 * @return string
 	 */
 	public function getNameUrl() {
-		return Filter::escapeUrl($this->name);
+		return rawurlencode($this->name);
 	}
 
 	/**

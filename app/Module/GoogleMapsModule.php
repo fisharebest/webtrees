@@ -870,8 +870,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$event .= '<strong>' . $relationship . '</strong>';
 
 							$birth = $person->getFirstFact('BIRT');
-							$data  = Filter::escapeJs($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
-							$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
+							$data  = addslashes($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
+							$data .= $birth ? addslashes($birth->summary()) : '';
 							$data .= '</div>';
 
 							$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -909,7 +909,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 									?>
 									var point = new google.maps.LatLng(<?= $lat[$i] ?>, <?= $lon[$i] ?>);
-									var marker = createMarker(point, "<?= Filter::escapeJs($name) ?>", "<?= $data ?>", "<div class=\"gm-info-window\"><?= $data ?></div>", "<?= $marker_number ?>");
+									var marker = createMarker(point, "<?= addslashes($name) ?>", "<?= $data ?>", "<div class=\"gm-info-window\"><?= $data ?></div>", "<?= $marker_number ?>");
 									<?php
 									// Construct the polygon lines
 									$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
@@ -1492,7 +1492,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function getPlaceLocationId($place) {
-		$par      = explode(',', strip_tags($place));
+		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
@@ -1736,7 +1736,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
 			echo '&amp;parent[', $level, ']=';
 			if ($place2->pl_place !== 'Unknown') {
-				echo Filter::escapeJs($place2->pl_place);
+				echo rawurlencode($place2->pl_place);
 			}
 			echo '\"><br>';
 			if ($place2->pl_icon !== null && $place2->pl_icon !== '') {
@@ -1745,12 +1745,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($place2->pl_place === 'Unknown') {
 				echo I18N::translate('unknown');
 			} else {
-				echo Filter::escapeJs($place2->pl_place);
+				echo Html::escape($place2->pl_place);
 			}
 			echo '</a>';
 			$parent[$level] = $place2->pl_place;
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '</div>", icon_url, "', Filter::escapeJs($place2->pl_place), '");';
+			echo '</div>", icon_url, "', Html::escape($place2->pl_place), '");';
 		}
 	}
 
@@ -1838,7 +1838,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						url:    "https://maps.google.com/mapfiles/marker.png",
 						size:   new google.maps.Size(20, 34),
 						origin: new google.maps.Point(0,0),
-						anchor: new google.maps.Point(9, 34)						
+						anchor: new google.maps.Point(9, 34)
 					};
 				}
 				var posn = new google.maps.LatLng(0,0);

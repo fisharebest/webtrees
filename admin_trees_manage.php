@@ -75,7 +75,7 @@ case 'new_tree':
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Html::escape($basename)), 'success');
 		}
 	}
-	header('Location: admin_trees_manage.php?ged=' . Filter::escapeUrl($basename));
+	header('Location: admin_trees_manage.php?ged=' . rawurlencode($basename));
 
 	return;
 case 'replace_upload':

@@ -129,7 +129,7 @@ case 'login':
 				'user_id' => Auth::user()->getUserId(),
 				'tree_id' => $WT_TREE->getTreeId(),
 			])->fetchOne();
-			$url .= '&ged=' . Filter::escapeUrl($tree);
+			$url .= '&ged=' . rawurlencode($tree);
 		}
 
 		// Redirect to the target URL
@@ -336,7 +336,7 @@ case 'register':
 				Mail::EOL . Mail::EOL .
 				I18N::translate('Follow this link to verify your email address.') .
 				Mail::EOL . Mail::EOL .
-				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
+				'<a href="' . WT_LOGIN_URL . '?user_name=' . rawurlencode($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
 				WT_LOGIN_URL . '?user_name=' . Html::escape($user->getUserName()) . '&amp;user_hashcode=' . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
 				'</a>' . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . ' - ' . Html::escape($user->getUserName()) . Mail::EOL .

@@ -128,12 +128,12 @@ $medialist = QueryMedia::mediaList(
 <?php
 if ($action === 'submit') {
 	$url = 'medialist.php?action=submit' .
-		'&amp;ged=' . $WT_TREE->getNameHtml() .
-		'&amp;folder=' . Filter::escapeUrl($folder) .
-		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .
-		'&amp;filter=' . Filter::escapeUrl($filter) .
-		'&amp;form_type=' . Filter::escapeUrl($form_type) .
-		'&amp;max=' . Filter::escapeUrl($max);
+		'&amp;ged=' . rawurlencode($WT_TREE->getName()) .
+		'&amp;folder=' . rawurlencode($folder) .
+		'&amp;subdirs=' . rawurlencode($subdirs) .
+		'&amp;filter=' . rawurlencode($filter) .
+		'&amp;form_type=' . rawurlencode($form_type) .
+		'&amp;max=' . rawurlencode($max);
 
 	$count = count($medialist);
 	$pages = (int) (($count + $max - 1) / $max);

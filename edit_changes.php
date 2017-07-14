@@ -194,7 +194,7 @@ foreach ($rows as $row) {
 				<?php endforeach ?>
 			</td>
 			<td>
-				<a href="message.php?to=<?= Filter::escapeUrl($record_change->user_name) ?>&amp;subject=<?= Filter::escapeUrl(I18N::translate('Moderate pending changes')) ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>" title="<?= I18N::translate('Send a message') ?>">
+				<a href="message.php?to=<?= rawurlencode($record_change->user_name) ?>&amp;subject=<?= rawurlencode(I18N::translate('Moderate pending changes')) ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>" title="<?= I18N::translate('Send a message') ?>">
 					<?= Html::escape($record_change->real_name)?> - <?= Html::escape($record_change->user_name) ?>
 				</a>
 			</td>

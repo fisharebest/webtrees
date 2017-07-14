@@ -5908,7 +5908,7 @@ class Stats {
 					if ($type == 'list') {
 						$content .= '<br>';
 					}
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . Filter::escapeUrl($user->getUserName())]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . rawurlencode($user->getUserName())]);
 				}
 				if ($type == 'list') {
 					$content .= '</li>';

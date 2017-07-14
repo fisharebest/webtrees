@@ -31,45 +31,6 @@ class Filter {
 	const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
 	/**
-	 * Escape a string for use in HTML
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function escapeHtml($string) {
-		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-	}
-
-	/**
-	 * Escape a string for use in a URL
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function escapeUrl($string) {
-		return rawurlencode($string);
-	}
-
-	/**
-	 * Escape a string for use in Javascript
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function escapeJs($string) {
-		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function ($x) {
-			if (strlen($x[0]) === 1) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', 'UTF-8'))));
-			} else {
-				return $x[0];
-			}
-		}, $string);
-	}
-
-	/**
 	 * Escape a string for use in a SQL "LIKE" clause
 	 *
 	 * @param string $string
@@ -117,7 +78,7 @@ class Filter {
 			function ($m) {
 				return '<a href="' . $m[0] . '">' . $m[0] . '</a>';
 			},
-			self::escapeHtml($text)
+			Html::escape($text)
 		);
 	}
 

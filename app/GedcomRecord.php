@@ -347,7 +347,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	private function getLinkUrl($separator) {
-		return static::URL_PREFIX . Filter::escapeUrl($this->getXref()) . $separator . 'ged=' . Filter::escapeUrl($this->tree->getName());
+		return static::URL_PREFIX . rawurlencode($this->getXref()) . $separator . 'ged=' . rawurlencode($this->tree->getName());
 	}
 
 	/**

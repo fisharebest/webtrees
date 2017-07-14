@@ -60,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		// Errors? Go back to the form.
 		header(
 			'Location: message.php' .
-			'?to=' . Filter::escapeUrl($to) .
-			'&from_name=' . Filter::escapeUrl($from_name) .
-			'&from_email=' . Filter::escapeUrl($from_email) .
-			'&subject=' . Filter::escapeUrl($subject) .
-			'&body=' . Filter::escapeUrl($body) .
-			'&url=' . Filter::escapeUrl($url)
+			'?to=' . rawurlencode($to) .
+			'&from_name=' . rawurlencode($from_name) .
+			'&from_email=' . rawurlencode($from_email) .
+			'&subject=' . rawurlencode($subject) .
+			'&body=' . rawurlencode($body) .
+			'&url=' . rawurlencode($url)
 		);
 	} else {
 		// No errors.  Send the message.

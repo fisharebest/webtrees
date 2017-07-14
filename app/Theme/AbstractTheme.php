@@ -330,7 +330,7 @@ abstract class AbstractTheme {
 		case 'mailto':
 			return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 		default:
-			return '<a href="message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+			return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
