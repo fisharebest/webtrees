@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-07-11 21:00+0000\n"
+"PO-Revision-Date: 2017-07-14 20:49+0000\n"
 "Last-Translator: Elvedin Zlatarac <elvedin.zlatarac@gmail.com>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees/bs/>\n"
 "Language: bs\n"
@@ -49,7 +49,7 @@ msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:222
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s ima %3$s link na %4$s."
 
@@ -131,56 +131,56 @@ msgstr "%1$s je %2$s a %3$s je očekivano."
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:494 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:557 statisticsplot.php:746
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:720
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:161
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j. %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6916
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s p.n.e"
 
 #. I18N: size of file in KB
 #: admin_media.php:486 app/Media.php:277
@@ -192,31 +192,31 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s i njezini preci"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s i njegovi preci"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:289
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s i povezani pojedinci."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s i njihova djeca"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:125
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s i njihovi potomci"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5881
 #, php-format
@@ -230,18 +230,18 @@ msgstr[2] "%s anonimnih prijavljenih korisnika"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dijete"
+msgstr[1] "%s djeteta"
+msgstr[2] "%s djece"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:267
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dan"
+msgstr[1] "%s dana"
+msgstr[2] "%s dana"
 
 #: app/I18N.php:700
 #, php-format
