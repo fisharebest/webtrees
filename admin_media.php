@@ -105,9 +105,9 @@ case 'load_json':
 		$ARGS1 = [
 			'media_path_1' => $media_path,
 			'media_folder' => $media_folder,
-			'media_path_2' => Filter::escapeLike($media_path),
-			'search_1'     => Filter::escapeLike($search),
-			'search_2'     => Filter::escapeLike($search),
+			'media_path_2' => Database::escapeLike($media_path),
+			'search_1'     => Database::escapeLike($search),
+			'search_2'     => Database::escapeLike($search),
 		];
 		// Unfiltered rows
 		$SELECT2 =
@@ -125,9 +125,9 @@ case 'load_json':
 
 		if ($subfolders == 'exclude') {
 			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS1['media_path_4'] = Filter::escapeLike($media_path);
+			$ARGS1['media_path_4'] = Database::escapeLike($media_path);
 			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS2['media_path_4'] = Filter::escapeLike($media_path);
+			$ARGS2['media_path_4'] = Database::escapeLike($media_path);
 		}
 
 		$order = Filter::getArray('order');
@@ -183,8 +183,8 @@ case 'load_json':
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = [
-			'search_1' => Filter::escapeLike($search),
-			'search_2' => Filter::escapeLike($search),
+			'search_1' => Database::escapeLike($search),
+			'search_2' => Database::escapeLike($search),
 		];
 		// Unfiltered rows
 		$SELECT2 =
@@ -300,7 +300,7 @@ case 'load_json':
 			$exists_pending = Database::prepare(
 				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
 			)->execute([
-				'unused_file' => Filter::escapeLike($unused_file),
+				'unused_file' => Database::escapeLike($unused_file),
 			])->fetchOne();
 
 			// Form to create new media object in each tree
@@ -457,9 +457,9 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	)->execute([
 		'media_path_1' => $media_path,
 		'media_folder' => $media_folder,
-		'media_path_2' => Filter::escapeLike($media_path),
-		'filter_1'     => Filter::escapeLike($filter),
-		'filter_2'     => Filter::escapeLike($filter),
+		'media_path_2' => Database::escapeLike($media_path),
+		'filter_1'     => Database::escapeLike($filter),
+		'filter_2'     => Database::escapeLike($filter),
 	])->fetchOneColumn();
 }
 

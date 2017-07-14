@@ -31,24 +31,6 @@ class Filter {
 	const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
 	/**
-	 * Escape a string for use in a SQL "LIKE" clause
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function escapeLike($string) {
-		return strtr(
-			$string,
-			[
-				'\\' => '\\\\',
-				'%'  => '\%',
-				'_'  => '\_',
-			]
-		);
-	}
-
-	/**
 	 * Format block-level text such as notes or transcripts, etc.
 	 *
 	 * @param string $text

@@ -303,4 +303,22 @@ class Database {
 
 		return $updates_applied;
 	}
+
+	/**
+	 * Escape a string for use in a SQL "LIKE" clause
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function escapeLike($string) {
+		return strtr(
+			$string,
+			[
+				'\\' => '\\\\',
+				'%'  => '\%',
+				'_'  => '\_',
+			]
+		);
+	}
 }
