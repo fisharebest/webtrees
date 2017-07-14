@@ -34,33 +34,29 @@ define('WT_VERSION', '1.8.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
-
-// Resources have version numbers in the URL, so that they can be cached indefinitely.
-define('WT_STATIC_URL', (string) getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
-
 define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
-define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
-define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
+define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
+define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
 define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js');
-define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
-define('WT_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/jquery.dataTables.min.js');
-define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
-define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/dataTables.bootstrap4.min.js');
-define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
-define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-3.1.1/jquery.min.js');
-define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.11.2/moment-with-locales.min.js');
-define('WT_SELECT2_JS_URL', WT_STATIC_URL . 'packages/select2-4.0.3/js/select2.min.js');
-define('WT_SELECT2_CSS_URL', WT_STATIC_URL . 'packages/select2-4.0.3/css/select2.min.css');
-define('WT_TETHER_JS_URL', WT_STATIC_URL . 'packages/tether-1.4.0/tether.min.js');
+define('WT_BOOTSTRAP_RTL_CSS_URL', 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
+define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.15/jquery.dataTables.min.js');
+define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
+define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.js');
+define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
+define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
+define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
+define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
+define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
+define('WT_TETHER_JS_URL', 'packages/tether-1.4.0/tether.min.js');
 // Note: these have been patched.
-define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.9/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.9/jquery.wheelzoom-2.0.0.js');
-define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
+define('WT_JQUERY_COLORBOX_URL', 'assets/js-1.7.9/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-1.7.9/jquery.wheelzoom-2.0.0.js');
+define('WT_CKEDITOR_BASE_URL', 'packages/ckeditor-4.5.2-custom/');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.9/admin.js');
-define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.9/webtrees.js');
-define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.9/font-awesome-rtl.css');
+define('WT_ADMIN_JS_URL', 'assets/js-1.7.9/admin.js');
+define('WT_WEBTREES_JS_URL', 'assets/js-1.7.9/webtrees.js');
+define('WT_FONT_AWESOME_RTL_CSS_URL', 'assets/js-1.7.9/font-awesome-rtl.css');
 
 // Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes

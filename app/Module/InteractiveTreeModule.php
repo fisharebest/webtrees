@@ -179,7 +179,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 * @return string
 	 */
 	public function css() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+		return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
 
 	/**
@@ -188,6 +188,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 * @return string
 	 */
 	public function js() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+		return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
 }

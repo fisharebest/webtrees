@@ -771,10 +771,9 @@ abstract class AbstractTheme {
 	 */
 	public function icon(Fact $fact) {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
-		$dir  = substr(self::ASSET_DIR, strlen(WT_STATIC_URL));
-		if (file_exists($dir . $icon)) {
+		if (file_exists(self::ASSET_DIR . $icon)) {
 			return '<img src="' . self::ASSET_DIR . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
-		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
+		} elseif (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
 			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
 		} else {
