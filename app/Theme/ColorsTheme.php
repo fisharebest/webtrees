@@ -30,7 +30,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * Where are our CSS, JS and other assets?
 	 */
 	const THEME_DIR  = 'colors';
-	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
 	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	/** @var string[] A list of color palettes */
@@ -143,8 +143,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 */
 	protected function stylesheets() {
 		return array_merge(parent::stylesheets(), [
-			'themes/colors/css-1.7.8/style.css',
-			'themes/colors/css-1.7.8/palette/' . $this->palette . '.css',
+			'themes/colors/css-2.0.0/style.css',
+			'themes/colors/css-2.0.0/palette/' . $this->palette . '.css',
 		]);
 	}
 
