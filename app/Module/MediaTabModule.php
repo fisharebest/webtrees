@@ -82,13 +82,8 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 					<?= I18N::translate('Media object') ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?= $controller->record->getXref() ?>&amp;ged=<?= $controller->record->getTree()->getNameUrl() ?>', '_blank', edit_window_specs); return false;">
+					<a href="edit_interface.php?action=add-media-link&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
 						<?= I18N::translate('Add a media object') ?>
-					</a>
-					<?= FunctionsPrint::helpLink('OBJE') ?>
-					<br>
-					<a href="#" onclick="window.open('inverselink.php?linktoid=<?= $controller->record->getXref() ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>&amp;linkto=person', '_blank', find_window_specs); return false;">
-						<?= I18N::translate('Link to an existing media object') ?>
 					</a>
 				</td>
 			</tr>

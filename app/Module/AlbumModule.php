@@ -94,16 +94,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a media object') . '">';
-				$html .= I18N::translate('Add a media object');
-				$html .= '</a></span>';
-				// Link to an existing item
-				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . I18N::translate('Link to an existing media object') . '">';
-				$html .= I18N::translate('Link to an existing media object');
-				$html .= '</a></span>';
+				$html .= '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
 			}
+
 			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
 				$html .= '<span><a href="edit_interface.php?action=reorder_media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
 				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '">';

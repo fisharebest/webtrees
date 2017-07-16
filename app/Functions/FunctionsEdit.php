@@ -1700,15 +1700,15 @@ class FunctionsEdit {
 	}
 
 	/**
-	 * Simple forms to create the essential fields of new records.
+	 * Simple form to create the essential fields of new records.
 	 *
 	 * @param Tree $tree
 	 *
 	 * @return string
 	 */
-	public static function createRecordFormModals(Tree $tree) {
+	public static function createFamilyModal(Tree $tree) {
+		ob_start();
 		?>
-
 		<!-- Form to create a new family -->
 		<div class="modal wt-modal-create-record" id="modal-create-family">
 			<form id="form-create-family"><!-- This form is posted using jQuery -->
@@ -1751,8 +1751,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new media object -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createMediaModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-media-object">
 			<form id="form-create-media-object"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1840,8 +1853,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new note object -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createNoteModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-note-object">
 			<form id="form-create-note-object"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1877,8 +1903,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new repository -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createRepositoryModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-repository">
 			<form id="form-create-repository"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1914,8 +1953,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new source -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createSourceModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-source">
 			<form id="form-create-source"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1997,8 +2049,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new submitter -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createSubmitterModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-submitter">
 			<form id="form-create-submitter"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -2040,8 +2105,19 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- On screen keyboard -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Ceate an on-screen-keyboard to allow unusual characters to be created.
+	 *
+	 * @return string
+	 */
+	public static function createOnScreenKeyboardModal() {
+		ob_start();
+		?>
 		<div class="card wt-osk">
 			<div class="card-header">
 				<div class="card-title">
@@ -2344,5 +2420,7 @@ class FunctionsEdit {
 			</div>
 		</div>
 		<?php
+
+		return ob_get_clean();
 	}
 }
