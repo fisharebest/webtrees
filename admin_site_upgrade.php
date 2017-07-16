@@ -19,6 +19,7 @@ use Exception;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use GuzzleHttp\Client;
 use PclZip;
 
 require 'includes/session.php';
@@ -245,10 +246,17 @@ $zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
 $zip_stream = fopen($zip_file, 'w');
 reset_timeout();
 $start_time = microtime(true);
-File::fetchUrl($download_url, $zip_stream);
-$end_time   = microtime(true);
-$zip_size   = filesize($zip_file);
+
+$client   = new Client();
+$response = $client->get($download_url);
+$stream   = $response->getBody();
+while (!$stream->eof()) {
+	fwrite($zip_stream, $stream->read(8192));
+}
+$stream->close();
 fclose($zip_stream);
+$zip_size = filesize($zip_file);
+$end_time = microtime(true);
 
 echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ I18N::translate('%1$s KB were downloaded in %2$s seconds.', I18N::number($zip_size / 1024), I18N::number($end_time - $start_time, 2));
 if ($zip_size) {
