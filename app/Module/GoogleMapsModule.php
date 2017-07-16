@@ -1246,11 +1246,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$facts = array_merge($facts, $family->getFacts());
 			// Add birth of children from this family to the facts array
 			foreach ($family->getChildren() as $child) {
-				$birth_fact = $child->getFirstFact('BIRT');
-				// Exclude children without birthplaces
-				// facts without places
-				if ($birth_fact !== null && $birth_fact->getPlace() !== null) {
-					$facts[] = $birth_fact;
+				foreach ($child->getFacts(WT_EVENTS_BIRT, true) as $fact) {
+					if ($fact->getPlace() !== null) {
+						$facts[] = $fact;
+						break;
+					}
 				}
 			}
 		}
