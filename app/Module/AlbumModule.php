@@ -111,7 +111,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		foreach ($this->getMedia() as $media) {
 			$html .= '<li class="album-list-item">';
 			$html .= '<div class="album-image">' . $media->displayImage(100, 100, 'contain', []) . '</div>';
-			$html .= '<div class="album-title"><a href="' . $media->getXref() . '">' . $media->getFullName() . '</div>';
+			$html .= '<div class="album-title"><a href="' . $media->getXref() . '">' . $media->getFullName() . '</a></div>';
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
