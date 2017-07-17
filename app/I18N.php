@@ -314,7 +314,7 @@ class I18N {
 		} else {
 			// Negotiate a locale, but if we can't then use a failsafe
 			self::$locale = new LocaleEnUs;
-			if (Session::has('locale')) {
+			if (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
 				// Previously used
 				self::$locale = Locale::create(Session::get('locale'));
 			} else {
