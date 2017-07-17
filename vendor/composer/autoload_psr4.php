@@ -9,6 +9,7 @@ return array(
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'League\\Glide\\' => array($vendorDir . '/league/glide/src'),
+    'League\\Flysystem\\ZipArchive\\' => array($vendorDir . '/league/flysystem-ziparchive/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),

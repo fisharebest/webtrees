@@ -20,17 +20,19 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use GuzzleHttp\Client;
-use PclZip;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 
 require 'includes/session.php';
 
 // Check for updates
 $latest_version_txt = Functions::fetchLatestVersion();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
+	list($latest_version, , $download_url) = explode('|', $latest_version_txt);
 } else {
 	// Cannot determine the latest version
-	list($latest_version, $earliest_version, $download_url) = explode('|', '||');
+	list($latest_version, , $download_url) = explode('|', '||');
 }
 
 $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
@@ -166,8 +168,8 @@ foreach (Theme::themeNames() as $theme_id => $theme_name) {
 	default:
 		$theme_used = Database::prepare(
 			"SELECT EXISTS (SELECT 1 FROM `##site_setting`   WHERE setting_name='THEME_DIR' AND setting_value=?)" .
-			" OR    EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
-			" OR    EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
+			" OR EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
+			" OR EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
 		)->execute([$theme_id, $theme_id, $theme_id])->fetchOne();
 		if ($theme_used) {
 			switch ($themes_action) {
@@ -218,7 +220,6 @@ echo '</li>';
 echo '<li>', /* I18N: The system is about to… */ I18N::translate('Export all the family trees to GEDCOM files…');
 
 foreach (Tree::getAll() as $tree) {
-	reset_timeout();
 	$filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
 
 	try {
@@ -235,16 +236,25 @@ foreach (Tree::getAll() as $tree) {
 
 echo '</li>';
 
+// The wiki tells people how to customize webtrees by modifying various files.
+// Create a backup of these, just in case the user forgot!
+try {
+	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
+	copy('app/GedcomTag.php', WT_DATA_DIR . 'GedcomTag' . date('-Y-m-d') . '.php');
+} catch (\ErrorException $ex) {
+	// No problem if we cannot do this.
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Download a .ZIP file containing the new code
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<li>', /* I18N: The system is about to…; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url));
 
-$zip_file   = WT_DATA_DIR . basename($download_url);
-$zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
-$zip_stream = fopen($zip_file, 'w');
-reset_timeout();
+$zip_file   = basename($download_url);
+$zip_dir    = basename($download_url, '.zip');
+$zip_stream = fopen(WT_DATA_DIR . $zip_file, 'w');
+
 $start_time = microtime(true);
 
 $client   = new Client();
@@ -255,7 +265,8 @@ while (!$stream->eof()) {
 }
 $stream->close();
 fclose($zip_stream);
-$zip_size = filesize($zip_file);
+$zip_size = filesize(WT_DATA_DIR . $zip_file);
+
 $end_time = microtime(true);
 
 echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ I18N::translate('%1$s KB were downloaded in %2$s seconds.', I18N::number($zip_size / 1024), I18N::number($end_time - $start_time, 2));
@@ -268,8 +279,12 @@ if ($zip_size) {
 		echo '<br>', /* I18N: http://en.wikipedia.org/wiki/Https */ I18N::translate('This server does not support secure downloads using HTTPS.');
 	}
 }
-
 echo '</li>';
+
+// Mount the various filesystems
+$zip_filesystem  = new Filesystem(new ZipArchiveAdapter(WT_DATA_DIR . $zip_file, null, 'webtrees'));
+$data_filesystem = new Filesystem(new Local(WT_DATA_DIR));
+$app_filesystem  = new Filesystem(new Local(__DIR__));
 
 ////////////////////////////////////////////////////////////////////////////////
 // Unzip the file - this checks we have enough free disk space, that the .zip
@@ -278,89 +293,38 @@ echo '</li>';
 
 echo '<li>', /* I18N: The system is about to…; %s is a .ZIP file. */ I18N::translate('Unzip %s to a temporary folder…', Html::filename(basename($download_url)));
 
-File::delete($zip_dir);
-File::mkdir($zip_dir);
+try {
+	$count      = 0;
+	$start_time = microtime(true);
 
-$archive = new PclZip($zip_file);
-
-$res = $archive->properties();
-if (!is_array($res) || $res['status'] != 'ok') {
-	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
-	echo '<br>', $archive->errorInfo(true);
-	echo '</li></ul></form>';
-
-	return;
-}
-
-$num_files = $res['nb'];
-
-reset_timeout();
-$start_time = microtime(true);
-$res        = $archive->extract(
-	\PCLZIP_OPT_PATH, $zip_dir,
-	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
-	\PCLZIP_OPT_REPLACE_NEWER
-);
-$end_time = microtime(true);
-
-if (is_array($res)) {
-	foreach ($res as $result) {
-		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
-		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
-			echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
-			echo '<pre>', $result['status'], '</pre>';
-			echo '<pre>', $result['filename'], '</pre>';
-			echo '</li></ul></form>';
-
-			return;
+	foreach ($zip_filesystem->listContents('/', true) as $file) {
+		if ($file['type'] === 'file') {
+			$data_filesystem->put($zip_dir . '/' . $file['path'], $zip_filesystem->get($file['path']));
+			$count++;
 		}
 	}
-	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
-} else {
+
+	$end_time = microtime(true);
+
+	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, I18N::number($end_time - $start_time, 2)), $icon_success;
+
+	echo '</li>';
+} catch (Exception $ex) {
 	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
-	echo '<pre>', $archive->errorInfo(true), '</pre>';
+	echo '<br>', $ex->getMessage();
 	echo '</li></ul></form>';
 
 	return;
 }
 
-echo '</li>';
-
 ////////////////////////////////////////////////////////////////////////////////
-// This is it - take the site offline first
-////////////////////////////////////////////////////////////////////////////////
-
-echo '<li>', /* I18N: The system is about to… */ I18N::translate('Check file permissions…');
-
-reset_timeout();
-$iterator = new \RecursiveDirectoryIterator($zip_dir);
-$iterator->setFlags(\RecursiveDirectoryIterator::SKIP_DOTS);
-foreach (new \RecursiveIteratorIterator($iterator) as $file) {
-	$file = WT_ROOT . substr($file, strlen($zip_dir) + 1);
-	if (file_exists($file) && (!is_readable($file) || !is_writable($file))) {
-		echo '<br>', I18N::translate('The file %s could not be updated.', Html::filename($file)), $icon_failure;
-		echo '</li></ul>';
-		echo '<p class="error">', I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';
-		echo '<p>', I18N::translate('The new files are currently located in the folder %s.', Html::filename($zip_dir)), '</p>';
-		echo '<p>', I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', Html::filename(WT_ROOT)), '</p>';
-		echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors.', Html::filename($lock_file)), '</p>';
-
-		return;
-	}
-}
-
-echo '<br>', I18N::translate('All files have read and write permission.'), $icon_success;
-
-echo '</li>';
-
-////////////////////////////////////////////////////////////////////////////////
-// This is it - take the site offline first
+// Take the site offline first
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<li>', I18N::translate('Place the website offline, by creating the file %s…', $lock_file);
 
 try {
-	file_put_contents($lock_file, $lock_file_text);
+	$data_filesystem->put($lock_file, $lock_file_text);
 	echo '<br>', I18N::translate('The file %s has been created.', Html::filename($lock_file)), $icon_success;
 } catch (\ErrorException $ex) {
 	echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($lock_file)), $icon_failure;
@@ -374,35 +338,28 @@ echo '</li>';
 
 echo '<li>', /* I18N: The system is about to… */ I18N::translate('Copy files…');
 
-// The wiki tells people how to customize webtrees by modifying various files.
-// Create a backup of these, just in case the user forgot!
 try {
-	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
-	copy('app/GedcomTag.php', WT_DATA_DIR . 'GedcomTag' . date('-Y-m-d') . '.php');
-} catch (\ErrorException $ex) {
-	// No problem if we cannot do this.
-}
+	$count      = 0;
+	$start_time = microtime(true);
 
-reset_timeout();
-$start_time = microtime(true);
-$res        = $archive->extract(
-	\PCLZIP_OPT_PATH, WT_ROOT,
-	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
-	\PCLZIP_OPT_REPLACE_NEWER
-);
-$end_time = microtime(true);
-
-if (is_array($res)) {
-	foreach ($res as $result) {
-		// Note that most of the folders will already exist, so it is not an error if we cannot create them
-		if ($result['status'] != 'ok' && !substr($result['filename'], -1) == '/') {
-			echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($result['filename'])), $icon_failure;
+	foreach ($zip_filesystem->listContents('/', true) as $file) {
+		if ($file['type'] === 'file') {
+			$app_filesystem->put($file['path'], $data_filesystem->get($zip_dir . '/' . $file['path']));
+			$data_filesystem->delete($zip_dir . '/' . $file['path']);
+			$count++;
 		}
 	}
-	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
-} else {
-	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
+
+	$end_time = microtime(true);
+
+	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, I18N::number($end_time - $start_time, 2)), $icon_success;
+} Catch (Exception $ex) {
+	echo '<br>', I18N::translate('The file %s could not be updated.', Html::filename($file['path'])), $icon_failure;
 	echo '</li></ul></form>';
+	echo '<p class="error">', I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';
+	echo '<p>', I18N::translate('The new files are currently located in the folder %s.', Html::filename(WT_DATA_DIR . $zip_dir)), '</p>';
+	echo '<p>', I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', Html::filename(WT_ROOT)), '</p>';
+	echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors.', Html::filename($lock_file)), '</p>';
 
 	return;
 }
@@ -415,7 +372,7 @@ echo '</li>';
 
 echo '<li>', I18N::translate('Place the website online, by deleting the file %s…', Html::filename($lock_file));
 
-if (File::delete($lock_file)) {
+if ($data_filesystem->delete($lock_file)) {
 	echo '<br>', I18N::translate('The file %s has been deleted.', Html::filename($lock_file)), $icon_success;
 } else {
 	echo '<br>', I18N::translate('The file %s could not be deleted.', Html::filename($lock_file)), $icon_failure;
@@ -429,38 +386,26 @@ echo '</li>';
 
 echo '<li>', /* I18N: The system is about to… */ I18N::translate('Delete temporary files…');
 
-reset_timeout();
-if (File::delete($zip_dir)) {
-	echo '<br>', I18N::translate('The folder %s has been deleted.', Html::filename($zip_dir)), $icon_success;
+if ($data_filesystem->deleteDir($zip_dir)) {
+	echo '<br>', I18N::translate('The folder %s has been deleted.', Html::filename(WT_DATA_DIR . $zip_dir)), $icon_success;
 } else {
-	echo '<br>', I18N::translate('The folder %s could not be deleted.', Html::filename($zip_dir)), $icon_failure;
+	echo '<br>', I18N::translate('The folder %s could not be deleted.', Html::filename(WT_DATA_DIR . $zip_dir)), $icon_failure;
 }
 
-if (File::delete($zip_file)) {
-	echo '<br>', I18N::translate('The file %s has been deleted.', Html::filename($zip_file)), $icon_success;
+if ($data_filesystem->deleteDir('cache')) {
+	echo '<br>', I18N::translate('The folder %s has been deleted.', Html::filename(WT_DATA_DIR . 'cache')), $icon_success;
 } else {
-	echo '<br>', I18N::translate('The file %s could not be deleted.', Html::filename($zip_file)), $icon_failure;
+	echo '<br>', I18N::translate('The folder %s could not be deleted.', Html::filename(WT_DATA_DIR . 'cache')), $icon_failure;
+}
+
+if ($data_filesystem->delete($zip_file)) {
+	echo '<br>', I18N::translate('The file %s has been deleted.', Html::filename(WT_DATA_DIR . $zip_file)), $icon_success;
+} else {
+	echo '<br>', I18N::translate('The file %s could not be deleted.', Html::filename(WT_DATA_DIR . $zip_file)), $icon_failure;
 }
 
 echo '</li>';
 echo '</ul>';
-
-// We have updated the language files.
-foreach (glob(WT_DATA_DIR . 'cache/language-*') as $file) {
-	File::delete($file);
-}
+echo '</form>';
 
 echo '<p>', I18N::translate('The upgrade is complete.'), '</p>';
-
-/**
- * Reset the time limit, as timeouts in this script could leave the upgrade incomplete.
- */
-function reset_timeout() {
-	if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-		try {
-			set_time_limit(ini_get('max_execution_time'));
-		} catch (Exception $ex) {
-			// "set_time_limt(): Cannot set max execution time limit due to system policy"
-		}
-	}
-}

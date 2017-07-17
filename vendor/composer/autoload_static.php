@@ -28,6 +28,7 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         'L' => 
         array (
             'League\\Glide\\' => 13,
+            'League\\Flysystem\\ZipArchive\\' => 28,
             'League\\Flysystem\\' => 17,
         ),
         'I' => 
@@ -61,6 +62,10 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         'League\\Glide\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/glide/src',
+        ),
+        'League\\Flysystem\\ZipArchive\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/flysystem-ziparchive/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -120,7 +125,6 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
     public static $classMap = array (
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
-        'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',

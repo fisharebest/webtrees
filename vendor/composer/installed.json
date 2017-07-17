@@ -1,44 +1,5 @@
 [
     {
-        "name": "pclzip/pclzip",
-        "version": "2.8.2",
-        "version_normalized": "2.8.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ivanlanin/pclzip.git",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "shasum": ""
-        },
-        "time": "2014-06-05T11:42:24+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "pclzip.lib.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "Vincent Blavet"
-            }
-        ],
-        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
-        "homepage": "http://www.phpconcept.net/pclzip",
-        "keywords": [
-            "php",
-            "zip"
-        ]
-    },
-    {
         "name": "fisharebest/localization",
         "version": "1.10.0",
         "version_normalized": "1.10.0.0",
@@ -1021,5 +982,54 @@
             "rest",
             "web service"
         ]
+    },
+    {
+        "name": "league/flysystem-ziparchive",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/flysystem-ziparchive.git",
+            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/flysystem-ziparchive/zipball/c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
+            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
+            "shasum": ""
+        },
+        "require": {
+            "ext-zip": "*",
+            "league/flysystem": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-12-20T08:36:16+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Flysystem\\ZipArchive\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
+            }
+        ],
+        "description": "Flysystem adapter for ZipArchive's"
     }
 ]
