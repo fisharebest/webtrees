@@ -201,12 +201,12 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function primaryMenuContainer(array $menus) {
 		return
-			'<nav class="navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">' .
-			'<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">' .
+			'<nav class="navbar navbar-toggleable-md navbar-light bg-faded">' .
+			'<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#primary-navbar" aria-controls="primary-navbar" aria-expanded="false" aria-label="Toggle navigation">' .
 			'<span class="navbar-toggler-icon"></span>' .
 			'</button> ' .
+			'<div class="collapse navbar-collapse" id="primary-navbar">' .
 			'<a class="navbar-brand" href="admin.php">' . I18N::translate('Control panel') . '</a>' .
-			'<div class="collapse navbar-collapse" id="primary-navbar-collapse">' .
 			'<ul class="navbar-nav">' .
 			$this->primaryMenuContent($menus) .
 			'</ul>' .
