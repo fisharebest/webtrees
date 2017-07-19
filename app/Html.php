@@ -53,9 +53,9 @@ class Html {
 	/**
 	 * Encode a URL.
 	 *
-	 * @param string   $script
+	 * @param string   $path
 	 * @param string[] $data
-	 * @param string   $arg_separator
+	 * @param string   $arg_separator "&" or "&amps"
 	 *
 	 * @return string
 	 */
