@@ -49,6 +49,20 @@ class Html {
 
 		return implode(' ', $html);
 	}
+
+	/**
+	 * Encode a URL.
+	 *
+	 * @param string   $script
+	 * @param string[] $data
+	 * @param string   $arg_separator
+	 *
+	 * @return string
+	 */
+	public static function url($path, array $data, $arg_separator) {
+		return rawurlencode($path) . '?' . http_build_query($data, '', $arg_separator, PHP_QUERY_RFC3986);
+	}
+
 	/**
 	 * Filenames are (almost?) always LTR, even on RTL systems.
 	 *
