@@ -287,6 +287,10 @@ class IndividualController extends GedcomRecordController {
 				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder-spouses&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-orderfam'));
 			}
 
+			if (count($this->record->getFacts('NAME')) > 1 || count($this->record->getFacts('TITL')) > 1) {
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order names'), 'edit_interface.php?action=reorder-names&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-ordername'));
+			}
+
 			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', [
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . '", "' . $this->record->getXref() . '");',

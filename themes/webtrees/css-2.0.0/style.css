@@ -570,6 +570,10 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(menu/edit-reorder.png);
 }
 
+.menu-indi-ordername::before {
+	content: url(menu/edit-reorder.png);
+}
+
 .menu-indi-del::before {
 	content: url(menu/edit-delete.png);
 }

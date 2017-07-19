@@ -16,13 +16,8 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Theme;
 
 /**
  * Class AlbumModule
