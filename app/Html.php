@@ -55,7 +55,7 @@ class Html {
 	 *
 	 * @param string   $path
 	 * @param string[] $data
-	 * @param string   $arg_separator "&" or "&amps"
+	 * @param string   $arg_separator "&" or "&amp;"
 	 *
 	 * @return string
 	 */
