@@ -47,6 +47,7 @@ define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
 define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
 define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
 define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
+define('WT_SORTABLE_JS_URL', 'packages/rubaxa-sortable-1.4.0/Sortable.min.js');
 define('WT_TETHER_JS_URL', 'packages/tether-1.4.0/tether.min.js');
 // Note: these have been patched.
 define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.5.14.js');

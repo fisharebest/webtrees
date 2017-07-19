@@ -23,6 +23,15 @@
 }
 
 /*
+ * Drag and drop sortable lists
+ */
+.wt-sortable-list {
+}
+
+.wt-sortable-item {
+}
+
+/*
  * Icons use FontAwesome by default, but have additional classes to
  * allow them to be overridden
  *

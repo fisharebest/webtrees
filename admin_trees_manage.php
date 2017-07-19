@@ -652,13 +652,14 @@ echo Bootstrap4::breadcrumbs([
 							<?= I18N::translate('URL') ?>
 						</label>
 						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon">
+							<div class="input-group" dir="ltr">
+								<span class="input-group-addon" dir="ltr">
 									<?= WT_BASE_URL ?>?ged=
 								</span>
 								<input
 									class="form-control"
 									id="tree_name"
+									dir="ltr"
 									maxlength="31"
 									name="tree_name"
 									pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"

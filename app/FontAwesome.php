@@ -32,6 +32,7 @@ class FontAwesome extends Html {
 		'copy'               => 'fa fa-copy wt-icon-copy',
 		'delete'             => 'fa fa-trash-o wt-icon-delete',
 		'download'           => 'fa fa-download wt-icon-download',
+		'drag-handle'        => 'fa fa-bars wt-icon-drag-handle',
 		'edit'               => 'fa fa-pencil wt-icon-edit',
 		'help'               => 'fa fa-info-circle wt-icon-help',
 		'email'              => 'fa fa-envelope-o wt-icon-email',
@@ -40,6 +41,7 @@ class FontAwesome extends Html {
 		'preferences'        => 'fa fa-wrench wt-icon-preferences',
 		'search'             => 'fa fa-search wt-icon-search',
 		'save'               => 'fa fa-check wt-icon-save',
+		'sort'               => 'fa fa-sort wt-icon-sort',
 		'warning'            => 'fa fa-warning wt-icon-warning',
 		// Arrows (start/end variants require fontawesome-rtl library)
 		'arrow-down'         => 'fa fa-arrow-down wt-icon-arrow-down',

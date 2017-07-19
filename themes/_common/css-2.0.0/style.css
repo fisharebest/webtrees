@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
  /* Override Bootstrap formatting */
  .row .select2-selection--single {
 	height: auto;
@@ -162,14 +162,24 @@
 .wt-ajax-load:empty {
 }
 
-/* 
+/*
+ * Drag and drop sortable lists
+ */
+.wt-sortable-list {
+}
+
+.wt-sortable-item {
+	cursor: move;
+}
+
+/*
  *  These selectors control how the short horizontal lines are positioned in the Charts
  *  Optimized for Win10 and FF, Chrome and Edge browsers
  *  	Ancestors
  *  	Descendants
  *  	amily book
  *  	Hourglass chart
- * 
+ *
  * */
 
 /* Ascentors */
@@ -366,7 +376,7 @@
  *
  * wt-place-hierarchy-page
  */
- 
+
  #place_hierarchy ul {
 	margin-right: 15px;
 }

@@ -284,7 +284,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			<tr>
 				<td class="facts_label">
 					<?php if (count($family->getChildren()) > 1): ?>
-					<a href="edit_interface.php?action=reorder_children&amp;ged=<?= $family->getTree()->getNameHtml() ?>&amp;xref=<?= $family->getXref() ?>">
+					<a href="edit_interface.php?action=reorder-children&amp;ged=<?= $family->getTree()->getNameHtml() ?>&amp;xref=<?= $family->getXref() ?>">
 						<i class="icon-media-shuffle"></i> <?= I18N::translate('Re-order children') ?>
 					</a>
 					<?php endif; ?>
@@ -372,7 +372,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			if (count($families) > 1) { ?>
 			<tr>
 				<td class="facts_value">
-					<a href="edit_interface.php?action=reorder_fams&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
+					<a href="edit_interface.php?action=reorder-spouses&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
 					<?= I18N::translate('Re-order families') ?>
 					</a>
 				</td>

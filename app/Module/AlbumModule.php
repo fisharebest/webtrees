@@ -98,8 +98,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			}
 
 			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
-				$html .= '<span><a href="edit_interface.php?action=reorder_media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '">';
+				$html .= '<span><a href="edit_interface.php?action=reorder-media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
 				$html .= I18N::translate('Re-order media');
 				$html .= '</a></span>';
 			}

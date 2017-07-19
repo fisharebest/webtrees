@@ -66,8 +66,8 @@ case 'editraw':
 		<ul id="raw-gedcom-list">
 			<li><textarea class="form-control" readonly
 			              rows="1"><?= '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE ?></textarea></li>
-			<?php foreach ($record->getFacts() as $fact) { ?>
-				<?php if (!$fact->isPendingDeletion()) { ?>
+			<?php foreach ($record->getFacts() as $fact): ?>
+				<?php if (!$fact->isPendingDeletion()): ?>
 					<li>
 						<div style="cursor:move;">
 							<?= $fact->summary() ?>
@@ -76,8 +76,8 @@ case 'editraw':
 						<textarea name="fact[]" dir="ltr" rows="<?= preg_match_all('/\n/', $fact->getGedcom()) ?>"
 						          style="width:100%;"><?= Html::escape($fact->getGedcom()) ?></textarea>
 					</li>
-				<?php } ?>
-			<?php } ?>
+				<?php endif ?>
+			<?php endforeach ?>
 			<li>
 				<div style="cursor:move;">
 					<b><i><?= I18N::translate('Add a fact') ?></i></b>
@@ -2119,153 +2119,19 @@ case 'addname':
 	print_indi_form('update', $individual, null, null, '', $individual->getSex());
 	break;
 
-case 'reorder_media':
+case 'reorder-media':
 	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of media objects
+	// Change the order of media objects within an individual record
 	//////////////////////////////////////////////////////////////////////////////
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref, $controller->tree());
-	check_record_access($person);
+	$individual = Individual::getInstance($xref, $controller->tree());
+	check_record_access($individual);
 
 	$controller
-		->setPageTitle(I18N::translate('Re-order media'))
-		->pageHeader()
-		->addInlineJavascript('
-			$("#reorder_media_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
-
-			//-- update the order numbers after drag-n-drop sorting is complete
-			$("#reorder_media_list").bind("sortupdate", function(event, ui) {
-					$("#"+$(this).attr("id")+" input").each(
-						function (index, value) {
-							value.value = index+1;
-						}
-					);
-				});
-		');
-
-	// Get the current sort order
-	$sort_obje = [];
-	foreach ($person->getFacts('_WT_OBJE_SORT') as $fact) {
-		$media = $fact->getTarget();
-		if ($media && $media->canShow()) {
-			$sort_obje[] = $media;
-		}
-	}
-
-	// Add other media objects from the individual and any spouse-families
-	$record_list = [$person];
-	foreach ($person->getSpouseFamilies() as $family) {
-		$record_list[] = $family;
-	}
-	foreach ($record_list as $record) {
-		if ($record->canShow()) {
-			foreach ($record->getFacts() as $fact) {
-				if (!$fact->isPendingDeletion()) {
-					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
-					foreach ($matches[1] as $match) {
-						$media = Media::getInstance($match, $controller->tree());
-						if (!in_array($media, $sort_obje)) {
-							$sort_obje[] = $media;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	?>
-	<h2><?= I18N::translate('Re-order media') ?></h2>
-
-	<form name="reorder_form" method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="reorder_media_update">
-		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<?= Filter::getCsrf() ?>
-		<ul id="reorder_media_list">
-			<?php foreach ($sort_obje as $n => $obje) { ?>
-				<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;"
-				    id="li_<?= $obje->getXref() ?>">
-					<table class="pic">
-						<tr>
-							<td>
-								<?= $obje->displayImage(40, 50, 'crop', []) ?>
-							</td>
-							<td>
-								<?= $obje->getFullName() ?>
-							</td>
-						</tr>
-					</table>
-					<input type="hidden" name="order1[<?= $obje->getXref() ?>]" value="<?= $n ?>">
-				</li>
-			<?php } ?>
-		</ul>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'reorder_media_update':
-	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of media objects
-	//////////////////////////////////////////////////////////////////////////////
-	$xref   = Filter::post('xref', WT_REGEX_XREF);
-	$order1 = Filter::post('order1');
-
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=reorder_media_&xref=' . $xref);
-		break;
-	}
-
-	$person = Individual::getInstance($xref, $controller->tree());
-	check_record_access($person);
-
-	// Delete any existing _WT_OBJE_SORT records
-	$facts = ['0 @' . $person->getXref() . '@ INDI'];
-	foreach ($person->getFacts() as $fact) {
-		if ($fact->getTag() !== '_WT_OBJE_SORT') {
-			$facts[] = $fact->getGedcom();
-		}
-	}
-	if (is_array($order1)) {
-		// Add new _WT_OBJE_SORT records
-		foreach ($order1 as $xref => $n) {
-			$facts[] = '1 _WT_OBJE_SORT @' . $xref . '@';
-		}
-	}
-
-	$person->updateRecord(implode("\n", $facts), false);
-
-	header('Location: ' . $person->getRawUrl());
-	break;
-
-case 'reorder_children':
-	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of children within a family record
-	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::post('xref', WT_REGEX_XREF, Filter::get('xref', WT_REGEX_XREF));
-	$option   = Filter::post('option');
-
-	$family = Family::getInstance($xref, $controller->tree());
-	check_record_access($family);
-
-	$controller
-		->addInlineJavascript('$("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
-		->addInlineJavascript('$("#reorder_list").bind("sortupdate", function(event, ui) { $("#"+$(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
-		->setPageTitle(I18N::translate('Re-order children'))
+		->addExternalJavascript(WT_SORTABLE_JS_URL)
+		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
+		->setPageTitle($individual->getFullName() . ' — ' . I18N::translate('Re-order media'))
 		->pageHeader();
 
 	?>
@@ -2273,102 +2139,178 @@ case 'reorder_children':
 
 	<form name="reorder_form" method="post">
 		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="reorder_update">
+		<input type="hidden" name="action" value="reorder-media-save">
 		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<input type="hidden" name="option" value="bybirth">
 		<?= Filter::getCsrf() ?>
-		<ul id="reorder_list">
-			<?php
-			// reorder children in modified families
-			$ids = [];
-			foreach ($family->getChildren() as $child) {
-				$ids[] = $child->getXref();
-			}
-			$children = [];
-			foreach ($family->getChildren() as $k => $child) {
-				$bdate = $child->getEstimatedBirthDate();
-				if ($bdate->isOK()) {
-					$sortkey = $bdate->julianDay();
-				} else {
-					$sortkey = 1e8; // birth date missing => sort last
-				}
-				$children[$child->getXref()] = $sortkey;
-			}
-			if ($option === 'bybirth') {
-				asort($children);
-			}
-			$i = 0;
-			foreach ($children as $id => $child) {
-				echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
-				if (!in_array($id, $ids)) {
-					echo ' class="facts_value new"';
-				}
-				echo ' id="li_', $id, '">';
-				echo Theme::theme()->individualBoxLarge(Individual::getInstance($id, $controller->tree()));
-				echo '<input type="hidden" name="order[', $id, ']" value="', $i, '">';
-				echo '</li>';
-				$i++;
-			}
-			?>
-		</ul>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<button class="btn btn-secondary" type="submit"
-				        onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();">
-					<?= /* I18N: A button label. */
-					I18N::translate('sort by date of birth') ?>
-				</button>
-				<a class="btn btn-secondary" href="<?= $family->getHtmlUrl() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
+		<div class="wt-sortable-list">
+			<?php foreach ($individual->getFacts('OBJE') as $obje): ?>
+				<div class="card mb-2 wt-sortable-item">
+					<input type="hidden" name="order[]" value="<?= $obje->getTarget()->getXref() ?>">
+					<h3 class="card-header">
+						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
+						<?= $obje->getTarget()->getFullName() ?>
+					</h3>
+					<div class="card-block">
+						<?= $obje->getTarget()->displayImage(100, 100, "contain") ?>
+					</div>
+				</div>
+			<?php endforeach ?>
 		</div>
+
+		<p class="text-center">
+			<button class="btn btn-primary" type="submit">
+				<?= FontAwesome::decorativeIcon('save') ?>
+				<?= /* I18N: A button label. */
+				I18N::translate('save') ?>
+			</button>
+			<a class="btn btn-secondary" href="<?= $individual->getHtmlUrl() ?>">
+				<?= FontAwesome::decorativeIcon('cancel') ?>
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+			</a>
+		</p>
 	</form>
 	<?php
 	break;
 
-case 'reorder_update':
+case 'reorder-media-save':
 	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of children within a family record
+	// Change the order of media objects within an individual record
 	//////////////////////////////////////////////////////////////////////////////
 	$xref  = Filter::post('xref', WT_REGEX_XREF);
 	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=reorder_children&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder-spouses&xref=' . $xref);
+		break;
+	}
+
+	$individual = Individual::getInstance($xref, $controller->tree());
+	check_record_access($individual);
+
+	$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+	$sort_facts  = [];
+	$keep_facts  = [];
+
+	// Split facts into CHIL and other
+	foreach ($individual->getFacts() as $fact) {
+		if ($fact->getTag() === 'OBJE') {
+			$sort_facts[trim($fact->getValue(), '@')] = $fact->getGedcom();
+		} else {
+			$keep_facts[] = $fact->getGedcom();
+		}
+	}
+
+	// Sort the facts
+	$order = (array) $order;
+	uksort($sort_facts, function ($x, $y) use ($order) {
+		return array_search($x, $order) - array_search($y, $order);
+	});
+
+	// Merge the facts
+	$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+
+	$individual->updateRecord($gedcom, false);
+
+	header('Location: ' . $individual->getRawUrl());
+	break;
+
+case 'reorder-children':
+	//////////////////////////////////////////////////////////////////////////////
+	// Change the order of children within a family record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref = Filter::get('xref', WT_REGEX_XREF);
+
+	$family = Family::getInstance($xref, $controller->tree());
+	check_record_access($family);
+
+	$controller
+		->addExternalJavascript(WT_SORTABLE_JS_URL)
+		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
+		->addInlineJavascript('$("#btn-default-order").on("click", function() { $(".wt-sortable-list li").sort(function(x, y) { return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate); }).appendTo(".wt-sortable-list"); });')
+		->setPageTitle($family->getFullName() . ' — ' . I18N::translate('Re-order children'))
+		->pageHeader();
+
+	?>
+	<h2><?= $controller->getPageTitle() ?></h2>
+
+	<form name="reorder_form" method="post">
+		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="action" value="reorder-children-save">
+		<input type="hidden" name="xref" value="<?= $xref ?>">
+		<?= Filter::getCsrf() ?>
+		<div class="wt-sortable-list">
+			<?php foreach ($family->getChildren() as $child): ?>
+				<div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $child->getBirthDate()->julianDay() ?>">
+					<input type="hidden" name="order[]" value="<?= $child->getXref() ?>">
+					<h3 class="card-header">
+						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
+						<?= $child->getFullName() ?>
+					</h3>
+					<div class="card-block">
+						<?= $child->formatFirstMajorFact(WT_EVENTS_BIRT, 2) ?>
+						<?= $child->formatFirstMajorFact(WT_EVENTS_DEAT, 2) ?>
+					</div>
+				</div>
+			<?php endforeach ?>
+		</div>
+
+		<p class="text-center">
+			<button class="btn btn-primary" type="submit">
+				<?= FontAwesome::decorativeIcon('save') ?>
+				<?= /* I18N: A button label. */
+				I18N::translate('save') ?>
+			</button>
+			<button class="btn btn-secondary" id="btn-default-order" type="button">
+				<?= FontAwesome::decorativeIcon('sort') ?>
+				<?= /* I18N: A button label. */ I18N::translate('sort by date of birth') ?>
+			</button>
+			<a class="btn btn-secondary" href="<?= $family->getHtmlUrl() ?>">
+				<?= FontAwesome::decorativeIcon('cancel') ?>
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+			</a>
+		</p>
+	</form>
+	<?php
+	break;
+
+case 'reorder-children-save':
+	//////////////////////////////////////////////////////////////////////////////
+	// Change the order of FAMC records within a FAM record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref  = Filter::post('xref', WT_REGEX_XREF);
+	$order = Filter::post('order');
+
+	if (!Filter::checkCsrf()) {
+		header('Location: edit_interface.php?action=reorder-spouses&xref=' . $xref);
 		break;
 	}
 
 	$family = Family::getInstance($xref, $controller->tree());
 	check_record_access($family);
 
-	if (is_array($order)) {
-		$gedcom = ['0 @' . $family->getXref() . '@ FAM'];
-		$facts  = $family->getFacts();
+	$dummy_facts = ['0 @' . $family->getXref() . '@ FAM'];
+	$sort_facts  = [];
+	$keep_facts  = [];
 
-		// Move children to the end of the record
-		foreach ($order as $child => $num) {
-			foreach ($facts as $n => $fact) {
-				if ($fact->getValue() === '@' . $child . '@') {
-					$facts[] = $fact;
-					unset($facts[$n]);
-					break;
-				}
-			}
+	// Split facts into CHIL and other
+	foreach ($family->getFacts() as $fact) {
+		if ($fact->getTag() === 'CHIL') {
+			$sort_facts[trim($fact->getValue(), '@')] = $fact->getGedcom();
+		} else {
+			$keep_facts[] = $fact->getGedcom();
 		}
-		foreach ($facts as $fact) {
-			$gedcom[] = $fact->getGedcom();
-		}
-
-		$family->updateRecord(implode("\n", $gedcom), false);
 	}
+
+	// Sort the facts
+	$order = (array) $order;
+	uksort($sort_facts, function ($x, $y) use ($order) {
+		return array_search($x, $order) - array_search($y, $order);
+	});
+
+	// Merge the facts
+	$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+
+	$family->updateRecord($gedcom, false);
 
 	header('Location: ' . $family->getRawUrl());
 	break;
@@ -2656,70 +2598,66 @@ case 'changefamily_update':
 	header('Location: ' . $family->getRawUrl());
 	break;
 
-case 'reorder_fams':
+case 'reorder-spouses':
 	//////////////////////////////////////////////////////////////////////////////
 	// Change the order of FAMS records within an INDI record
 	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::post('xref', WT_REGEX_XREF, Filter::get('xref', WT_REGEX_XREF));
-	$option   = Filter::post('option');
+	$xref = Filter::get('xref', WT_REGEX_XREF);
 
 	$person = Individual::getInstance($xref, $controller->tree());
 	check_record_access($person);
 
 	$controller
-		->addInlineJavascript('$("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
-		//-- update the order numbers after drag-n-drop sorting is complete
-		->addInlineJavascript('$("#reorder_list").bind("sortupdate", function(event, ui) { $("#"+$(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
-		->setPageTitle(I18N::translate('Re-order families'))
+		->addExternalJavascript(WT_SORTABLE_JS_URL)
+		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
+		->addInlineJavascript('$("#btn-default-order").on("click", function() { $(".wt-sortable-list li").sort(function(x, y) { return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate); }).appendTo(".wt-sortable-list"); });')
+		->setPageTitle($person->getFullName() . ' — ' . I18N::translate('Re-order families'))
 		->pageHeader();
-
-	$fams = $person->getSpouseFamilies();
-	if ($option === 'bymarriage') {
-		usort($fams, '\Fisharebest\Webtrees\Family::compareMarrDate');
-	}
 
 	?>
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form name="reorder_form" method="post">
 		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="reorder_fams_update">
+		<input type="hidden" name="action" value="reorder-spouses-save">
 		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<input type="hidden" name="option" value="bymarriage">
 		<?= Filter::getCsrf() ?>
-		<ul id="reorder_list">
-			<?php foreach ($fams as $n => $family) { ?>
-				<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?= $family->getXref() ?>">
-					<div class="name2"><?= $family->getFullName() ?></div>
-					<?= $family->formatFirstMajorFact(WT_EVENTS_MARR, 2) ?>
-					<input type="hidden" name="order[<?= $family->getXref() ?>]" value="<?= $n ?>">
-				</li>
-			<?php } ?>
-		</ul>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<button class="btn btn-secondary" type="submit"
-				        onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
-					<?= /* I18N: A button label. */
-					I18N::translate('sort by date of marriage') ?>
-				</button>
-				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
+		<div class="wt-sortable-list">
+			<?php foreach ($person->getSpouseFamilies() as $family): ?>
+				<div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $family->getMarriageDate()->julianDay() ?>">
+					<input type="hidden" name="order[]" value="<?= $family->getXref() ?>">
+					<h3 class="card-header">
+						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
+						<?= $family->getFullName() ?>
+					</h3>
+					<div class="card-block">
+						<?= $family->formatFirstMajorFact(WT_EVENTS_MARR, 2) ?>
+						<?= $family->formatFirstMajorFact(WT_EVENTS_DIV, 2) ?>
+					</div>
+				</div>
+			<?php endforeach ?>
 		</div>
+
+		<p class="text-center">
+			<button class="btn btn-primary" type="submit">
+				<?= FontAwesome::decorativeIcon('save') ?>
+				<?= /* I18N: A button label. */
+				I18N::translate('save') ?>
+			</button>
+			<button class="btn btn-secondary" id="btn-default-order" type="button">
+				<?= FontAwesome::decorativeIcon('sort') ?>
+				<?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
+			</button>
+			<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+				<?= FontAwesome::decorativeIcon('cancel') ?>
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+			</a>
+		</p>
 	</form>
 	<?php
 	break;
 
-case 'reorder_fams_update':
+case 'reorder-spouses-save':
 	//////////////////////////////////////////////////////////////////////////////
 	// Change the order of FAMS records within an INDI record
 	//////////////////////////////////////////////////////////////////////////////
@@ -2727,35 +2665,38 @@ case 'reorder_fams_update':
 	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=reorder_fams&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder-spouses&xref=' . $xref);
 		break;
 	}
 
-	$person = Individual::getInstance($xref, $controller->tree());
-	check_record_access($person);
+	$individual = Individual::getInstance($xref, $controller->tree());
+	check_record_access($individual);
 
-	if (is_array($order)) {
-		$gedcom = ['0 @' . $person->getXref() . '@ INDI'];
-		$facts  = $person->getFacts();
+	$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+	$sort_facts  = [];
+	$keep_facts  = [];
 
-		// Move families to the end of the record
-		foreach ($order as $family => $num) {
-			foreach ($facts as $n => $fact) {
-				if ($fact->getValue() === '@' . $family . '@') {
-					$facts[] = $fact;
-					unset($facts[$n]);
-					break;
-				}
-			}
+	// Split facts into FAMS and other
+	foreach ($individual->getFacts() as $fact) {
+		if ($fact->getTag() === 'FAMS') {
+			$sort_facts[trim($fact->getValue(), '@')] = $fact->getGedcom();
+		} else {
+			$keep_facts[] = $fact->getGedcom();
 		}
-		foreach ($facts as $fact) {
-			$gedcom[] = $fact->getGedcom();
-		}
-
-		$person->updateRecord(implode("\n", $gedcom), false);
 	}
 
-	header('Location: ' . $person->getRawUrl());
+	// Sort the facts
+	$order = (array) $order;
+	uksort($sort_facts, function ($x, $y) use ($order) {
+		return array_search($x, $order) - array_search($y, $order);
+	});
+
+	// Merge the facts
+	$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+
+	$individual->updateRecord($gedcom, false);
+
+	header('Location: ' . $individual->getRawUrl());
 	break;
 }
 

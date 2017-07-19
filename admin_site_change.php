@@ -45,6 +45,7 @@ $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 $statuses = [
+	''         => '',
 	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
 	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
 	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
@@ -270,7 +271,7 @@ $controller
 		});
 	');
 
-$users_array = [];
+$users_array = ['' => ''];
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
