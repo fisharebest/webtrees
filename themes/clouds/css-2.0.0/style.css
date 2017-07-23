@@ -294,6 +294,10 @@ a > .wt-icon-arrow-up:hover::before {
 	border-bottom: thin solid #79c;
 }
 
+.wt-header-wrapper .dropdown-item.active {
+	font-weight: bold;
+}
+
 .wt-header-container {
 	margin-top: 0.5rem;
 }
@@ -377,7 +381,12 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-primary-menu .dropdown-item {
 	/* Space between icons and align with submenu icons */
-	padding: 0;
+	padding: 0 5px 0 0;
+}
+
+[dir=rtl] .wt-primary-menu .dropdown-item {
+	/* Space between icons and align with submenu icons */
+	padding: 0 0 0 5px;
 }
 
 .wt-primary-menu .dropdown-item::before {
@@ -385,9 +394,10 @@ a > .wt-icon-arrow-up:hover::before {
 	height: 22px;
 	width: 22px;
 	/* Align icons and text */
-	vertical-align: top;
+	vertical-align: text-top;
 	/* Space between icon and text */
 	padding: 0 .25rem;
+	line-height: 1.8;
 }
 
 .wt-primary-menu .nav-item::before {
