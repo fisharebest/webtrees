@@ -41,6 +41,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -52,7 +53,7 @@ use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -193,6 +194,8 @@ class FunctionsEdit {
 
 	/**
 	 * A list of GEDCOM relationships (e.g. for an edit control).
+	 *
+	 * @param string $relationship
 	 *
 	 * @return string[]
 	 */
@@ -681,11 +684,11 @@ class FunctionsEdit {
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="updatewholename()">';
 		} elseif ($fact === 'GIVN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
 		} elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
 		} elseif ($fact === 'ADOP') {
 			echo Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
@@ -703,7 +706,7 @@ class FunctionsEdit {
 			}
 		} elseif ($fact === 'DATE') {
 			echo '<div class="input-group">';
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_date(this)">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_date(this)">';
 			echo self::inputAddonCalendar($id);
 			echo self::inputAddonHelp('DATE');
 			echo '</div>';
@@ -716,9 +719,9 @@ class FunctionsEdit {
 				self::formControlFamily(Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
 		} elseif ($fact === 'LONG') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
 		} elseif ($fact === 'NOTE' && $islink) {
 			echo
 				'<div class="input-group">' .
@@ -732,7 +735,7 @@ class FunctionsEdit {
 				self::formControlMediaObject(Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
 		} elseif ($fact === 'PEDI') {
 			echo Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
@@ -779,7 +782,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'TEMP') {
 			echo Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'TIME') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
 			echo Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === '_PRIM') {
@@ -790,7 +793,7 @@ class FunctionsEdit {
 			echo '<select name="text[]"><option selected value="" ></option>';
 			$selectedValue = strtolower($value);
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-				echo '<option selected value="', Filter::escapeHtml($value), '" >', Filter::escapeHtml($value), '</option>';
+				echo '<option selected value="', Html::escape($value), '" >', Html::escape($value), '</option>';
 			}
 			foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 				echo '<option value="', $typeName, '" ';
@@ -803,17 +806,17 @@ class FunctionsEdit {
 		} elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
 				echo '<div class="input-group">';
-				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Filter::escapeHtml($value), '</textarea>';
+				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Html::escape($value), '</textarea>';
 				echo self::inputAddonKeyboard($id);
 				echo '</div>';
 			} else {
 				// If using GEDFact-assistant window
-				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '">';
+				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '">';
 			}
 		} else {
 			// Populated in javascript from sub-tags
-			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
-			echo '<span id="', $id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
+			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Html::escape($value), '" class="', $fact, '">';
+			echo '<span id="', $id, '_display" dir="auto">', Html::escape($value), '</span>';
 			echo ' <a href="#edit_name" onclick="convertHidden(\'', $id, '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list
@@ -909,8 +912,10 @@ class FunctionsEdit {
 	 * Genearate a <select> element, with the dates/places of all known censuses
 	 *
 	 *
-	 * @param string $locale - Sort the censuses for this locale
-	 * @param string $xref   - The individual for whom we are adding a census
+	 * @param string $locale Sort the censuses for this locale
+	 * @param string $xref   The individual for whom we are adding a census
+	 *
+	 * @return string
 	 */
 	public static function censusDateSelector($locale, $xref) {
 		global $controller;
@@ -1695,15 +1700,15 @@ class FunctionsEdit {
 	}
 
 	/**
-	 * Simple forms to create the essential fields of new records.
+	 * Simple form to create the essential fields of new records.
 	 *
 	 * @param Tree $tree
 	 *
 	 * @return string
 	 */
-	public static function createRecordFormModals(Tree $tree) {
+	public static function createFamilyModal(Tree $tree) {
+		ob_start();
 		?>
-
 		<!-- Form to create a new family -->
 		<div class="modal wt-modal-create-record" id="modal-create-family">
 			<form id="form-create-family"><!-- This form is posted using jQuery -->
@@ -1746,8 +1751,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new media object -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createMediaModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-media-object">
 			<form id="form-create-media-object"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1835,8 +1853,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new note object -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createNoteModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-note-object">
 			<form id="form-create-note-object"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1872,8 +1903,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new repository -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createRepositoryModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-repository">
 			<form id="form-create-repository"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1909,8 +1953,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new source -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createSourceModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-source">
 			<form id="form-create-source"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -1992,8 +2049,21 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- Form to create a new submitter -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Simple form to create the essential fields of new records.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string
+	 */
+	public static function createSubmitterModal(Tree $tree) {
+		ob_start();
+		?>
 		<div class="modal wt-modal-create-record" id="modal-create-submitter">
 			<form id="form-create-submitter"><!-- This form is posted using jQuery -->
 				<?= Filter::getCsrf() ?>
@@ -2035,8 +2105,19 @@ class FunctionsEdit {
 				</div>
 			</form>
 		</div>
+		<?php
 
-		<!-- On screen keyboard -->
+		return ob_get_clean();
+	}
+
+	/**
+	 * Ceate an on-screen-keyboard to allow unusual characters to be created.
+	 *
+	 * @return string
+	 */
+	public static function createOnScreenKeyboardModal() {
+		ob_start();
+		?>
 		<div class="card wt-osk">
 			<div class="card-header">
 				<div class="card-title">
@@ -2339,5 +2420,7 @@ class FunctionsEdit {
 			</div>
 		</div>
 		<?php
+
+		return ob_get_clean();
 	}
 }

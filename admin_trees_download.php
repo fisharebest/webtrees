@@ -17,73 +17,101 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
-use PclZip;
-
-/** @global Tree $WT_TREE */
-global $WT_TREE;
+use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 
 require 'includes/session.php';
 
 $controller = new PageController;
 $controller
-	->setPageTitle(I18N::translate($WT_TREE->getTitleHtml()) . ' — ' . I18N::translate('Export a GEDCOM file'))
-	->restrictAccess(Auth::isManager($WT_TREE));
+	->setPageTitle(I18N::translate($controller->tree()->getTitleHtml()) . ' — ' . I18N::translate('Export a GEDCOM file'))
+	->restrictAccess(Auth::isManager($controller->tree()));
 
 // Validate user parameters
 $action           = Filter::get('action', 'download');
-$convert          = Filter::get('convert', 'yes|no', 'no');
-$zip              = Filter::get('zip', 'yes|no', 'no');
-$conv_path        = Filter::get('conv_path');
+$convert          = Filter::get('convert');
+$zip              = Filter::get('zip');
+$media            = Filter::get('media');
+$media_path       = Filter::get('media-path');
 $privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
 if ($action === 'download') {
+	switch ($privatize_export) {
+	default:
+	case 'gedadmin':
+		$access_level = Auth::PRIV_NONE;
+		break;
+	case 'user':
+		$access_level = Auth::PRIV_USER;
+		break;
+	case 'visitor':
+		$access_level = Auth::PRIV_PRIVATE;
+		break;
+	case 'none':
+		$access_level = Auth::PRIV_HIDE;
+		break;
+	}
+
 	$exportOptions = [
 		'privatize' => $privatize_export,
-		'toANSI'    => $convert,
-		'path'      => $conv_path,
+		'toANSI'    => $convert === 'on' ? 'yes' : 'no',
+		'path'      => $media_path,
 	];
 
 	// What to call the downloaded file
-	$download_filename = $WT_TREE->getName();
+	$download_filename = $controller->tree()->getName();
 	if (strtolower(substr($download_filename, -4, 4)) != '.ged') {
 		$download_filename .= '.ged';
 	}
 
-	if ($zip === 'yes') {
-		$temp_dir = WT_DATA_DIR . 'tmp-' . $WT_TREE->getName() . '-' . date('YmdHis') . '/';
-		$zip_file = $download_filename . '.zip';
+	if ($zip === 'on' || $media === 'on') {
+		// Export the GEDCOM to an in-memory stream.
+		$tmp_stream = tmpfile();
+		FunctionsExport::exportGedcom($controller->tree(), $tmp_stream, $exportOptions);
+		rewind($tmp_stream);
 
-		if (!File::mkdir($temp_dir)) {
-			echo 'Error : Could not create temporary path!';
+		// Create a new/empty .ZIP file
+		$temp_zip_file = tempnam('', 'webtrees-zip-');
+		$zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
+		$zip_filesystem->writeStream($download_filename, $tmp_stream);
 
-			return;
+		if ($media === 'on') {
+			$rows = Database::prepare(
+				"SELECT m_id, m_gedcom FROM `##media` WHERE m_file = :tree_id AND m_filename NOT LIKE '%://%'"
+			)->execute([
+				'tree_id' => $controller->tree()->getTreeId(),
+			])->fetchAll();
+
+			$path = $controller->tree()->getPreference('MEDIA_DIRECTORY');
+			foreach ($rows as $row) {
+				$record = Media::getInstance($row->m_id, $controller->tree(), $row->m_gedcom);
+				if ($record->canShow($access_level) && file_exists($record->getServerFilename())) {
+					$fp = fopen($record->getServerFilename(), 'r');
+					$zip_filesystem->writeStream($path . $record->getFilename(), $fp);
+					fclose($fp);
+				}
+			}
 		}
 
-		// Create the unzipped GEDCOM on disk, so we can ZIP it.
-		$stream = fopen($temp_dir . $download_filename, 'w');
-		FunctionsExport::exportGedcom($WT_TREE, $stream, $exportOptions);
-		fclose($stream);
-
-		// Create a ZIP file containing the GEDCOM file.
-		$comment = 'Created by ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . date('r') . '.';
-		$archive = new PclZip($temp_dir . $zip_file);
-		$v_list  = $archive->add($temp_dir . $download_filename, \PCLZIP_OPT_COMMENT, $comment, \PCLZIP_OPT_REMOVE_PATH, $temp_dir);
-		if ($v_list == 0) {
-			echo 'Error : ' . $archive->errorInfo(true);
-		} else {
-			header('Content-Type: application/zip');
-			header('Content-Disposition: attachment; filename="' . $zip_file . '"');
-			header('Content-length: ' . filesize($temp_dir . $zip_file));
-			readfile($temp_dir . $zip_file);
-			File::delete($temp_dir);
+		// The ZipArchiveAdapter may or may not close the stream.
+		if (is_resource($tmp_stream)) {
+			fclose($tmp_stream);
 		}
+
+		// Need to force-close the filesystem
+		$zip_filesystem = null;
+
+		header('Content-Type: application/zip');
+		header('Content-Disposition: attachment; filename="' . $download_filename . '.zip"');
+		header('Content-length: ' . filesize($temp_zip_file));
+		readfile($temp_zip_file);
+		unlink($temp_zip_file);
 	} else {
 		header('Content-Type: text/plain; charset=UTF-8');
 		header('Content-Disposition: attachment; filename="' . $download_filename . '"');
 		// Stream the GEDCOM file straight to the browser.
-		// We could open "php://compress.zlib" to create a .gz file or "php://compress.bzip2" to create a .bz2 file
 		$stream = fopen('php://output', 'w');
-		FunctionsExport::exportGedcom($WT_TREE, $stream, $exportOptions);
+		FunctionsExport::exportGedcom($controller->tree(), $stream, $exportOptions);
 		fclose($stream);
 	}
 
@@ -102,7 +130,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form form-horizontal" method="post" action="admin_trees_export.php">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
 	<div class="row form-group">
 		<label for="submit-export" class="col-sm-3 col-form-label">
@@ -120,7 +148,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
-	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
@@ -128,35 +156,43 @@ echo Bootstrap4::breadcrumbs([
 			<legend class="col-form-legend col-sm-3">
 				<?= I18N::translate('Export preferences') ?>
 			</legend>
-			<!-- ZIP FILES -->
 			<div class="col-sm-9">
-				<label>
-					<input type="checkbox" name="zip" value="yes">
-					<?= I18N::translate('Compress the GEDCOM file') ?>
-				</label>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" name="zip">
+						<?= I18N::translate('Compress the GEDCOM file') ?>
+					</label>
+				</div>
 				<p class="small muted">
 					<?= I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.') ?>
 				</p>
 
-			<!-- CONVERT TO ISO8859-1 -->
-				<label>
-					<input type="checkbox" name="convert" value="yes">
-					<?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
-				</label>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" name="media">
+						<?= I18N::translate('Include media (automatically zips files) ') ?>
+					</label>
+				</div>
+
+				<?php if ($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')): ?>
+					<label>
+						<input type="checkbox" name="media-path" value="<?= Html::escape($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) ?>">
+						<?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
+					</label>
+					<p>
+						<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Html::escape($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
+					</p>
+				<?php endif ?>
+
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" name="convert">
+						<?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
+					</label>
+				</div>
 				<p class="small muted">
 					<?= I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.') ?>
 				</p>
-
-				<!-- GEDCOM_MEDIA_PATH -->
-				<?php if ($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')): ?>
-				<label>
-					<input type="checkbox" name="conv_path" value="<?= Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>">
-					<?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
-				</label>
-				<p>
-					<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
-				</p>
-				<?php endif ?>
 			</div>
 		</div>
 	</fieldset>
@@ -168,25 +204,30 @@ echo Bootstrap4::breadcrumbs([
 				<?= I18N::translate('Apply privacy settings') ?>
 			</legend>
 			<div class="col-sm-9">
-				<label>
-					<input type="radio" name="privatize_export" value="none" checked>
-					<?= I18N::translate('None') ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="privatize_export" value="gedadmin">
-					<?= I18N::translate('Manager') ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="privatize_export" value="user">
-					<?= I18N::translate('Member') ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="privatize_export" value="visitor">
-					<?= I18N::translate('Visitor') ?>
-				</label>
+				<div class="form-check form-check-inline">
+					<label>
+						<input type="radio" name="privatize_export" value="none" checked>
+						<?= I18N::translate('None') ?>
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label>
+						<input type="radio" name="privatize_export" value="gedadmin">
+						<?= I18N::translate('Manager') ?>
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label>
+						<input type="radio" name="privatize_export" value="user">
+						<?= I18N::translate('Member') ?>
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label>
+						<input type="radio" name="privatize_export" value="visitor">
+						<?= I18N::translate('Visitor') ?>
+					</label>
+				</div>
 			</div>
 		</div>
 	</fieldset>
@@ -201,6 +242,4 @@ echo Bootstrap4::breadcrumbs([
 			</button>
 		</div>
 	</div>
-</form>
-
 </form>

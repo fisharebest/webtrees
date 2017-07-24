@@ -26,8 +26,8 @@ class Html {
 	 *
 	 * @return string
 	 */
-	protected static function escape($string) {
-		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+	public static function escape($string) {
+		return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5 | ENT_SUBSTITUTE, 'UTF-8');
 	}
 
 	/**
@@ -49,6 +49,20 @@ class Html {
 
 		return implode(' ', $html);
 	}
+
+	/**
+	 * Encode a URL.
+	 *
+	 * @param string   $path
+	 * @param string[] $data
+	 * @param string   $arg_separator "&" or "&amp;"
+	 *
+	 * @return string
+	 */
+	public static function url($path, array $data, $arg_separator) {
+		return rawurlencode($path) . '?' . http_build_query($data, '', $arg_separator, PHP_QUERY_RFC3986);
+	}
+
 	/**
 	 * Filenames are (almost?) always LTR, even on RTL systems.
 	 *

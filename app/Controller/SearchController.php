@@ -206,7 +206,7 @@ class SearchController extends PageController {
 			$this->srnote       = 'checked';
 			if (Filter::post('query')) {
 				$this->searchAndReplace($this->tree());
-				header('Location: search.php?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
+				header('Location: search.php?action=replace&query=' . rawurlencode($this->query) . '&replace=' . rawurlencode($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
 				exit;
 			}
 		}

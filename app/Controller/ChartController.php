@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
+use stdClass;
 
 /**
  * Base controller for all chart pages
@@ -30,7 +31,7 @@ class ChartController extends PageController {
 	/** @var string An error message, in case we cannot construct the chart */
 	public $error_message;
 
-	/** @var \stdClass personbox dimensions */
+	/** @var stdClass personbox dimensions */
 	private $box;
 
 	/**
@@ -51,7 +52,7 @@ class ChartController extends PageController {
 			$this->error_message = I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 
-		$this->box = new \stdClass();
+		$this->box = new stdClass();
 		$this->box->width  = Theme::theme()->parameter('chart-box-x');
 		$this->box->height = Theme::theme()->parameter('chart-box-y');
 	}
@@ -108,7 +109,7 @@ class ChartController extends PageController {
 	/**
 	 * Function boxDimensions
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
 	public function getBoxDimensions() {
 		return $this->box;

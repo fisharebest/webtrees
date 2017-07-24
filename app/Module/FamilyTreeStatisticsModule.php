@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -327,7 +328,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 							pattern="[1-9][0-9]*"
 							required
 							type="text"
-							value="<?= Filter::escapeHtml($number_of_surnames) ?>"
+							value="<?= Html::escape($number_of_surnames) ?>"
 						>
 					</label>
 				</div>

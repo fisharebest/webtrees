@@ -261,7 +261,7 @@ $controller->pageHeader();
   }
   var block_descr = { advice1: "&nbsp;"};
   <?php foreach ($all_blocks as $block_name => $block): ?>
-    block_descr["<?= $block_name ?>"] = "<?= Filter::escapeJs($block->getDescription()) ?>";
+    block_descr[<?= json_encode($block_name) ?>] = <?= json_encode($block->getDescription()) ?>;
   <?php endforeach ?>
 </script>
 

@@ -347,7 +347,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 }
 
 $controller
-	->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
 	->pageHeader();
 
 ?>
@@ -399,7 +399,7 @@ $controller
 						<a href="<?= $indi->getHtmlUrl() ?>"> <?= $indi->getFullName() ?><br>
 							<?= $indi->getAddName() ?><br>
 						</a>
-						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Filter::escapeHtml($pid) ?>">
+						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Html::escape($pid) ?>">
 						<a href="timeline.php?<?= $controller->pidlinks ?>&amp;scale=<?= $controller->scale ?>&amp;remove=<?= $pid ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 							<span class="details1"><?= I18N::translate('Remove individual') ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
@@ -414,7 +414,7 @@ $controller
 					} else {
 						echo '<div class="error">', I18N::translate('This information is private and cannot be shown.'), '</div>';
 						?>
-						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Filter::escapeHtml($pid) ?>">
+						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Html::escape($pid) ?>">
 						<br>
 						<a href="timeline.php?<?= $controller->pidlinks ?>&amp;scale=<?= $controller->scale ?>&amp;remove=<?= $pid ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 							<span class="details1"><?= I18N::translate('Remove individual') ?></span></a>

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -118,7 +119,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * Format a name record
 	 *
-	 * @param int  $primary
+	 * @param int  $n
 	 * @param Fact $fact
 	 *
 	 * @return string
@@ -159,7 +160,7 @@ class IndividualController extends GedcomRecordController {
 				echo '<dt class="label">', GedcomTag::getLabel($tag, $this->record), '</dt>';
 				echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
 				if (isset($nmatch[$i][2])) {
-					$name = Filter::escapeHtml($nmatch[$i][2]);
+					$name = Html::escape($nmatch[$i][2]);
 					$name = str_replace('/', '', $name);
 					$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 					switch ($tag) {
@@ -169,7 +170,7 @@ class IndividualController extends GedcomRecordController {
 					case 'SURN':
 						// The SURN field is not necessarily the surname.
 						// Where it is not a substring of the real surname, show it after the real surname.
-						$surname = Filter::escapeHtml($dummy->getAllNames()[0]['surname']);
+						$surname = Html::escape($dummy->getAllNames()[0]['surname']);
 						if (strpos($dummy->getAllNames()[0]['surname'], str_replace(',', ' ', $nmatch[$i][2])) !== false) {
 							echo '<span dir="auto">' . $surname . '</span>';
 						} else {
@@ -216,7 +217,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * print information for a sex record
 	 *
-	 * @param Fact $event the Event object
+	 * @param Fact $fact
 	 *
 	 * @return string
 	 */
@@ -283,12 +284,16 @@ class IndividualController extends GedcomRecordController {
 			}
 
 			if (count($this->record->getSpouseFamilies()) > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder_fams&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-orderfam'));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder-spouses&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-orderfam'));
+			}
+
+			if (count($this->record->getFacts('NAME')) > 1 || count($this->record->getFacts('TITL')) > 1) {
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order names'), 'edit_interface.php?action=reorder-names&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-ordername'));
 			}
 
 			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . '", "' . $this->record->getXref() . '");',
 			]));
 		}
 

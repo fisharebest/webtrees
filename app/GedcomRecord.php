@@ -347,7 +347,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	private function getLinkUrl($separator) {
-		return static::URL_PREFIX . Filter::escapeUrl($this->getXref()) . $separator . 'ged=' . Filter::escapeUrl($this->tree->getName());
+		return static::URL_PREFIX . rawurlencode($this->getXref()) . $separator . 'ged=' . rawurlencode($this->tree->getName());
 	}
 
 	/**
@@ -534,7 +534,7 @@ class GedcomRecord {
 		$this->_getAllNames[] = [
 			'type'   => $type,
 			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
-			'full'   => '<span dir="auto">' . Filter::escapeHtml($value) . '</span>', // This is used for display
+			'full'   => '<span dir="auto">' . Html::escape($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
 		];
 	}
@@ -610,7 +610,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function getFallBackName() {
-		return Filter::escapeHtml($this->getXref());
+		return Html::escape($this->getXref());
 	}
 
 	/**
@@ -631,7 +631,7 @@ class GedcomRecord {
 			// ...except when the language/name use different character sets
 			if (count($this->getAllNames()) > 1) {
 				foreach ($this->getAllNames() as $n => $name) {
-					if ($name['type'] !== '_MARNM' && I18N::textScript($name['sort']) === $language_script) {
+					if (I18N::textScript($name['sort']) === $language_script) {
 						$this->_getPrimaryName = $n;
 						break;
 					}

@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\User;
-use PclZip;
+use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 
 /**
  * The clippings cart.
@@ -45,9 +46,6 @@ class ClippingsCartController {
 
 	/** @var string Whether to include media files for media objects */
 	private $IncludeMedia;
-
-	/** @var string The media path (if any) to prefix to the filenames */
-	public $conv_path;
 
 	/** @var string The privacy level to apply to the download */
 	private $privatize_export;
@@ -83,9 +81,6 @@ class ClippingsCartController {
 		$this->action           = Filter::get('action');
 		$this->id               = Filter::get('id');
 		$convert                = Filter::get('convert', 'yes|no', 'no');
-		$this->Zip              = Filter::get('Zip');
-		$this->IncludeMedia     = Filter::get('IncludeMedia');
-		$this->conv_path        = Filter::get('conv_path');
 		$this->privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin', 'visitor');
 		$this->level1           = Filter::getInteger('level1');
 		$this->level2           = Filter::getInteger('level2');
@@ -166,9 +161,16 @@ class ClippingsCartController {
 		} elseif ($this->action === 'empty') {
 			$this->cart[$WT_TREE->getTreeId()] = [];
 		} elseif ($this->action === 'download') {
-			$media      = [];
-			$mediacount = 0;
-			$filetext   = FunctionsExport::gedcomHeader($WT_TREE);
+			// Create a new/empty .ZIP file
+			$temp_zip_file = tempnam('', 'webtrees-zip-');
+			$zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
+
+			// Media file prefix
+			$path = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+
+			// GEDCOM file header
+			$filetext = FunctionsExport::gedcomHeader($WT_TREE);
+
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
@@ -184,10 +186,6 @@ class ClippingsCartController {
 			if ($subm) {
 				$filetext .= $subm . "\n";
 			}
-			if ($convert === 'yes') {
-				$filetext = str_replace('UTF-8', 'ANSI', $filetext);
-				$filetext = utf8_decode($filetext);
-			}
 
 			switch ($this->privatize_export) {
 			case 'gedadmin':
@@ -200,6 +198,7 @@ class ClippingsCartController {
 				$access_level = Auth::PRIV_PRIVATE;
 				break;
 			case 'none':
+			default:
 				$access_level = Auth::PRIV_HIDE;
 				break;
 			}
@@ -228,17 +227,12 @@ class ClippingsCartController {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
-					$record      = FunctionsExport::convertMediaPath($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert === 'yes') {
 						$record = utf8_decode($record);
 					}
 					switch ($object::RECORD_TYPE) {
 					case 'INDI':
-						$filetext .= $record . "\n";
-						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
-						break;
 					case 'FAM':
 						$filetext .= $record . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
@@ -248,96 +242,53 @@ class ClippingsCartController {
 						$filetext .= $record . "\n";
 						$filetext .= '1 NOTE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
 						break;
-					default:
-						// This autoloads the PclZip library, so we can use its constants.
-						new PclZip('');
-
-						$ft              = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
-						$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-						for ($k = 0; $k < $ft; $k++) {
-							// Skip external files and non-existant files
-							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
-								$media[$mediacount] = [
-									\PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
-									\PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
-								];
-								$mediacount++;
-							}
+					case 'OBJE':
+						// Add the file to the archive
+						if (file_exists($object->getServerFilename())) {
+							$fp = fopen($object->getServerFilename(), 'r');
+							$zip_filesystem->writeStream($path . $object->getFilename(), $fp);
+							fclose($fp);
 						}
-						$filetext .= trim($record) . "\n";
+						$filetext .= $record . "\n";
+						break;
+					default:
+						$filetext .= $record . "\n";
 						break;
 					}
 				}
 			}
 
-			if ($this->IncludeMedia === 'yes') {
-				$this->media_list = $media;
-			} else {
-				$this->media_list = [];
-			}
+			// Create a source, to indicate the source of the data.
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
-			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
-				$user = User::find($user_id);
-				$filetext .= '1 AUTH ' . $user->getRealName() . "\n";
+			$author = User::find($WT_TREE->getPreference('CONTACT_EMAIL'));
+			if ($author !== null) {
+				$filetext .= '1 AUTH ' . $author->getRealName() . "\n";
 			}
 			$filetext .= "0 TRLR\n";
-			//-- make sure the preferred line endings are used
-			$filetext            = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
-			$this->download_data = $filetext;
-			$this->downloadClipping();
+
+			// Make sure the preferred line endings are used
+			$filetext = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
+
+			if ($convert === 'yes') {
+				$filetext = str_replace('UTF-8', 'ANSI', $filetext);
+				$filetext = utf8_decode($filetext);
+			}
+
+			// Finally add the GEDCOM file to the .ZIP file.
+			$zip_filesystem->write('clippings.ged', $filetext);
+
+			// Need to force-close the filesystem
+			$zip_filesystem = null;
+
+			header('Content-Type: application/zip');
+			header('Content-Disposition: attachment; filename="clippings.zip"');
+			header('Content-length: ' . filesize($temp_zip_file));
+			readfile($temp_zip_file);
+			unlink($temp_zip_file);
+
+			exit;
 		}
 		Session::put('cart', $this->cart);
-	}
-
-	/**
-	 * Loads everything in the clippings cart into a zip file.
-	 */
-	private function zipCart() {
-		$tempFileName = 'clipping' . rand() . '.ged';
-		$fp           = fopen(WT_DATA_DIR . $tempFileName, 'wb');
-		if ($fp) {
-			flock($fp, LOCK_EX);
-			fwrite($fp, $this->download_data);
-			flock($fp, LOCK_UN);
-			fclose($fp);
-			$zipName = 'clippings' . rand(0, 1500) . '.zip';
-			$fname   = WT_DATA_DIR . $zipName;
-			$comment = 'Created by ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . date('d M Y') . '.';
-			$archive = new PclZip($fname);
-			// add the ged file to the root of the zip file (strip off the data folder)
-			$this->media_list[] = [\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName];
-			$v_list             = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
-			if ($v_list == 0) {
-				echo 'Error : ' . $archive->errorInfo(true) . '</td></tr>';
-			} else {
-				$openedFile          = fopen($fname, 'rb');
-				$this->download_data = fread($openedFile, filesize($fname));
-				fclose($openedFile);
-				unlink($fname);
-			}
-			unlink(WT_DATA_DIR . $tempFileName);
-		} else {
-			echo I18N::translate('The file %s could not be created.', WT_DATA_DIR . $tempFileName) . ' ' . I18N::translate('Check the access rights on this folder.') . '<br><br>';
-		}
-	}
-
-	/**
-	 * Brings up the download dialog box and allows the user to download the file
-	 * based on the options he or she selected.
-	 */
-	public function downloadClipping() {
-		if ($this->IncludeMedia === 'yes' || $this->Zip === 'yes') {
-			header('Content-Type: application/zip');
-			header('Content-Disposition: attachment; filename="clipping.zip"');
-			$this->zipCart();
-		} else {
-			header('Content-Type: text/plain');
-			header('Content-Disposition: attachment; filename="clipping.ged"');
-		}
-
-		header('Content-length: ' . strlen($this->download_data));
-		echo $this->download_data;
-		exit;
 	}
 
 	/**

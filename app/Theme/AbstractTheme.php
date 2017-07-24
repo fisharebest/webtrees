@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\HitCounter;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -48,6 +49,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use stdClass;
 
 /**
  * Common functions for all themes.
@@ -57,7 +59,7 @@ abstract class AbstractTheme {
 	 * Where are our CSS, JS and other assets?
 	 */
 	const THEME_DIR  = '_common';
-	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-1.7.8/';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
 	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	// Icons are created using <i class="..."></i>
@@ -326,9 +328,9 @@ abstract class AbstractTheme {
 		case 'none':
 			return '';
 		case 'mailto':
-			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+			return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 		default:
-			return '<a href="message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Filter::escapeHtml(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+			return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
@@ -433,11 +435,11 @@ abstract class AbstractTheme {
 	/**
 	 * Add markup to a flash message.
 	 *
-	 * @param \stdClass $message
+	 * @param stdClass $message
 	 *
 	 * @return string
 	 */
-	protected function flashMessageContainer(\stdClass $message) {
+	protected function flashMessageContainer(stdClass $message) {
 		return $this->htmlAlert($message->text, $message->status, true);
 	}
 
@@ -446,7 +448,7 @@ abstract class AbstractTheme {
 	 * on one request, and displayed on another. If there are many messages,
 	 * the container may need a max-height and scroll-bar.
 	 *
-	 * @param \stdClass[] $messages
+	 * @param stdClass[] $messages
 	 *
 	 * @return string
 	 */
@@ -656,7 +658,7 @@ abstract class AbstractTheme {
 	 */
 	protected function headContents(PageController $controller) {
 		// The title often includes the names of records, which may include HTML markup.
-		$title = Filter::unescapeHtml($controller->getPageTitle());
+		$title = strip_tags($controller->getPageTitle());
 
 		// If an extra (site) title is specified, append it.
 		if ($this->tree && $this->tree->getPreference('META_TITLE')) {
@@ -769,10 +771,9 @@ abstract class AbstractTheme {
 	 */
 	public function icon(Fact $fact) {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
-		$dir  = substr(self::ASSET_DIR, strlen(WT_STATIC_URL));
-		if (file_exists($dir . $icon)) {
+		if (file_exists(self::ASSET_DIR . $icon)) {
 			return '<img src="' . self::ASSET_DIR . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
-		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
+		} elseif (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
 			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
 		} else {
@@ -1878,7 +1879,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function metaCsrf() {
-		return '<meta name="csrf" content="' . Filter::escapeHtml(Filter::getCsrfToken()) . '">';
+		return '<meta name="csrf" content="' . Html::escape(Filter::getCsrfToken()) . '">';
 	}
 
 	/**
@@ -2180,6 +2181,6 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function title($title) {
-		return '<title>' . Filter::escapeHtml($title) . '</title>';
+		return '<title>' . Html::escape($title) . '</title>';
 	}
 }

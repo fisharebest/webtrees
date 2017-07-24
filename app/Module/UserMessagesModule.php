@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
@@ -59,7 +60,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$ged   = Filter::post('ged');
 		$ctype = Filter::post('ctype', 'user|gedcom', 'user');
 
-		header('Location: index.php?ged=' . Filter::escapeUrl($ged) . '&ctype=' . $ctype);
+		header('Location: index.php?ged=' . rawurlencode($ged) . '&ctype=' . $ctype);
 	}
 
 	/**
@@ -94,7 +95,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '<select id="touser" name="touser">';
 			$content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
 			foreach ($users as $user) {
-				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Filter::escapeHtml($user->getUserName()), Filter::escapeHtml($user->getRealName()));
+				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Html::escape($user->getUserName()), Html::escape($user->getRealName()));
 			}
 			$content .= '</select>';
 			$content .= '<input type="button" value="' . I18N::translate('Send') . '" onclick="return message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\');"><br><br>';
@@ -109,7 +110,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			foreach ($messages as $message) {
 				$content .= '<tr>';
 				$content .= '<td class="list_value_wrap"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
-				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Filter::escapeHtml($message->subject) . '</b></a></td>';
+				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Html::escape($message->subject) . '</b></a></td>';
 				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
@@ -117,7 +118,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$content .= $user->getRealNameHtml();
 					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
-					$content .= '<a href="mailto:' . Filter::escapeHtml($message->sender) . '">' . Filter::escapeHtml($message->sender) . '</a>';
+					$content .= '<a href="mailto:' . Html::escape($message->sender) . '">' . Html::escape($message->sender) . '</a>';
 				}
 				$content .= '</td>';
 				$content .= '</tr>';
@@ -127,7 +128,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}
 				if ($user) {
-					$content .= '<a class="btn btn-secondary" href="message.php?to=' . Filter::escapeUrl($message->sender) . '&amp;subject=' . Filter::escapeUrl($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() .'" title="' . I18N::translate('Reply') .'">' . I18N::translate('Reply') . '</a> ';
+					$content .= '<a class="btn btn-secondary" href="message.php?to=' . rawurlencode($message->sender) . '&amp;subject=' . rawurlencode($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() .'" title="' . I18N::translate('Reply') .'">' . I18N::translate('Reply') . '</a> ';
 				}
 				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}

@@ -217,7 +217,7 @@ echo Bootstrap4::breadcrumbs([
 							<input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
 						</td>
 						<td>
-							<div class="gedcom-data" dir="ltr"><?= Filter::escapeHtml($fact->getGedcom()) ?></div>
+							<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
 							<?php if ($fact->getTarget()): ?>
 							<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 								<?= $fact->getTarget()->getFullName() ?>
@@ -264,7 +264,7 @@ echo Bootstrap4::breadcrumbs([
 										<input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
 									</td>
 									<td>
-										<div class="gedcom-data" dir="ltr"><?= Filter::escapeHtml($fact->getGedcom()) ?></div>
+										<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
 										<?php if ($fact->getTarget()): ?>
 											<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 												<?= $fact->getTarget()->getFullName() ?>
@@ -310,7 +310,7 @@ echo Bootstrap4::breadcrumbs([
 										<input type="checkbox" name="keep2[]" value="<?= $fact->getFactId() ?>" checked>
 									</td>
 									<td>
-										<div class="gedcom-data" dir="ltr"><?= Filter::escapeHtml($fact->getGedcom()) ?></div>
+										<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
 										<?php if ($fact->getTarget()): ?>
 											<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 												<?= $fact->getTarget()->getFullName() ?>

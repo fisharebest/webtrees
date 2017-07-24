@@ -116,7 +116,7 @@ class Tree {
 	 * @return string
 	 */
 	public function getNameHtml() {
-		return Filter::escapeHtml($this->name);
+		return Html::escape($this->name);
 	}
 
 	/**
@@ -125,7 +125,7 @@ class Tree {
 	 * @return string
 	 */
 	public function getNameUrl() {
-		return Filter::escapeUrl($this->name);
+		return rawurlencode($this->name);
 	}
 
 	/**
@@ -143,7 +143,7 @@ class Tree {
 	 * @return string
 	 */
 	public function getTitleHtml() {
-		return '<span dir="auto">' . Filter::escapeHtml($this->title) . '</span>';
+		return '<span dir="auto">' . Html::escape($this->title) . '</span>';
 	}
 
 	/**

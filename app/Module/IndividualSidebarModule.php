@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -185,7 +186,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		$surnames = QueryName::surnames($tree, '', $alpha, true, false);
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
-			$out .= '<li class="sb_indi_surname_li"><a href="#" data-surname="' . Filter::escapeHtml($surname) . '" data-alpha="' . Filter::escapeHtml($alpha) . '" class="sb_indi_surname">' . Filter::escapeHtml($surname) . '</a>';
+			$out .= '<li class="sb_indi_surname_li"><a href="#" data-surname="' . Html::escape($surname) . '" data-alpha="' . Html::escape($alpha) . '" class="sb_indi_surname">' . Html::escape($surname) . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}

@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
@@ -156,7 +157,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $controller;
 
 		$controller->addInlineJavascript("
-		$('head').append('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
+		$('head').append('<link type=\"text/css\" href =\"" . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
 		");
 
 		ob_start();
@@ -408,7 +409,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?= I18N::translate('Use Google Maps™ for the place hierarchy') ?>
 					</legend>
 					<div class="col-sm-9">
-						<?= Bootstrap4::radioButtons('GM_PLACE_HIERARCHY', [I18N::translate('no'), I18N::translate('yes')], $this->getPreference('GM_PLACE_HIERARCHY'), true) ?>
+						<?= Bootstrap4::radioButtons('GM_PLACE_HIERARCHY', [I18N::translate('no'), I18N::translate('yes')], $this->getPreference('GM_PLACE_HIERARCHY', '0'), true) ?>
 					</div>
 				</div>
 			</fieldset>
@@ -577,193 +578,193 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// === Create an associative array of GIcons()
 					var gicons = [];
 					gicons["1"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon1.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon1.png"
 					};
 					gicons["2"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon2.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon2.png"
 					};
 					gicons["2L"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon2L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon2L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["2R"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon2R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon2R.png",
 						size:  new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["2Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
+						url: WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
 						size:  new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["2Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon2Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon2Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["3"]   = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon3.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon3.png"
 					};
 					gicons["3L"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon3L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon3L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["3R"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon3R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon3R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["3Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon3Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon3Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["3Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon3Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon3Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["4"]   = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon4.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon4.png"
 					};
 					gicons["4L"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon4L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon4L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["4R"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon4R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon4R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["4Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon4Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon4Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["4Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon4Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon4Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["5"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon5.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon5.png"
 					};
 					gicons["5L"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon5L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon5L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["5R"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon5R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon5R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["5Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon5Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon5Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["5Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon5Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon5Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["6"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon6.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon6.png"
 					};
 					gicons["6L"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon6L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon6L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["6R"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon6R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon6R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["6Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon6Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon6Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["6Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon6Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon6Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["7"]   = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon7.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon7.png"
 					};
 					gicons["7L"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon7L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon7L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["7R"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon7R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon7R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["7Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon7Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon7Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["7Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon7Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon7Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["8"]   = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon8.png"
+						url: WT_MODULES_DIR + "googlemap/images/icon8.png"
 					};
 					gicons["8L"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon8L.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon8L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["8R"]  = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon8R.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon8R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["8Ls"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon8Ls.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon8Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["8Rs"] = {
-						url: WT_STATIC_URL + WT_MODULES_DIR + "googlemap/images/icon8Rs.png",
+						url: WT_MODULES_DIR + "googlemap/images/icon8Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
@@ -865,12 +866,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								$image = '';
 							}
 
-							$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
+							$event = '<img src="' . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
 							$event .= '<strong>' . $relationship . '</strong>';
 
 							$birth = $person->getFirstFact('BIRT');
-							$data  = Filter::escapeJs($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
-							$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
+							$data  = addslashes($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
+							$data .= $birth ? addslashes($birth->summary()) : '';
 							$data .= '</div>';
 
 							$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -908,7 +909,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 									?>
 									var point = new google.maps.LatLng(<?= $lat[$i] ?>, <?= $lon[$i] ?>);
-									var marker = createMarker(point, "<?= Filter::escapeJs($name) ?>", "<?= $data ?>", "<div class=\"gm-info-window\"><?= $data ?></div>", "<?= $marker_number ?>");
+									var marker = createMarker(point, "<?= addslashes($name) ?>", "<?= $data ?>", "<div class=\"gm-info-window\"><?= $data ?></div>", "<?= $marker_number ?>");
 									<?php
 									// Construct the polygon lines
 									$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
@@ -984,8 +985,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	$controller
 		->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 		/* prepending the module css in the page head allows the theme to over-ride it*/
-		->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
-		->addInlineJavascript('$(".wt-page-content").load(document.location + "&ajax=1");')
+		->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
+		->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
 		->pageHeader();
 ?>
 
@@ -1245,11 +1246,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$facts = array_merge($facts, $family->getFacts());
 			// Add birth of children from this family to the facts array
 			foreach ($family->getChildren() as $child) {
-				$birth_fact = $child->getFirstFact('BIRT');
-				// Exclude children without birthplaces
-				// facts without places
-				if ($birth_fact !== null && $birth_fact->getPlace() !== null) {
-					$facts[] = $birth_fact;
+				foreach ($child->getFacts(WT_EVENTS_BIRT, true) as $fact) {
+					if ($fact->getPlace() !== null) {
+						$facts[] = $fact;
+						break;
+					}
 				}
 			}
 		}
@@ -1323,7 +1324,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
 				echo '<td class="', $event['class'], '">';
 				if ($event['info']) {
-					echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
+					echo '<div><span class="field">', Html::escape($event['info']), '</span></div>';
 				}
 				if ($event['name']) {
 					echo '<div>', $event['name'], '</div>';
@@ -1375,7 +1376,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// Use flag icon (if defined) instead of regular marker icon
 					if (marker_icon) {
 						var icon_image = {
-							url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
+							url:    WT_MODULES_DIR + 'googlemap/' + marker_icon,
 							size:   new google.maps.Size(25, 15),
 							origin: new google.maps.Point(0, 0),
 							anchor: new google.maps.Point(12, 15)
@@ -1491,7 +1492,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function getPlaceLocationId($place) {
-		$par      = explode(',', strip_tags($place));
+		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
@@ -1688,7 +1689,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function printGoogleMapMarkers(stdClass $place2, $level, $parent, $levelm, $linklevels) {
 		echo 'var icon_url = null;';
 		if (!$place2->pl_lati || !$place2->pl_long) {
-			echo 'var icon_url ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png";';
+			echo 'var icon_url ="' . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png";';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 
@@ -1698,7 +1699,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo addslashes($place2->pl_place), '\"><br>';
 			}
 			if ($place2->pl_icon !== null && $place2->pl_icon !== '') {
-				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '\">&nbsp;&nbsp;';
+				echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '\">&nbsp;&nbsp;';
 			}
 			if ($place2->pl_place == 'Unknown') {
 				echo I18N::translate('unknown');
@@ -1729,27 +1730,27 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			if ($place2->pl_icon !== null && $place2->pl_icon !== '' && $this->getPreference('GM_PH_MARKER') === 'G_FLAG') {
-				echo 'icon_url = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '";';
+				echo 'icon_url = "', WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '";';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
 			echo '&amp;parent[', $level, ']=';
 			if ($place2->pl_place !== 'Unknown') {
-				echo Filter::escapeJs($place2->pl_place);
+				echo rawurlencode($place2->pl_place);
 			}
 			echo '\"><br>';
 			if ($place2->pl_icon !== null && $place2->pl_icon !== '') {
-				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '\">&nbsp;&nbsp;';
+				echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2->pl_icon, '\">&nbsp;&nbsp;';
 			}
 			if ($place2->pl_place === 'Unknown') {
 				echo I18N::translate('unknown');
 			} else {
-				echo Filter::escapeJs($place2->pl_place);
+				echo Html::escape($place2->pl_place);
 			}
 			echo '</a>';
 			$parent[$level] = $place2->pl_place;
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '</div>", icon_url, "', Filter::escapeJs($place2->pl_place), '");';
+			echo '</div>", icon_url, "', Html::escape($place2->pl_place), '");';
 		}
 	}
 
@@ -1766,7 +1767,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $plzoom, $controller;
 
 		$controller->addInlineJavascript('
-			$("head").append(\'<link rel="stylesheet" type="text/css" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" />\');
+			$("head").append(\'<link rel="stylesheet" type="text/css" href="' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" />\');
 			var numMarkers = "' . $numfound . '";
 			var mapLevel   = "' . $level . '";
 			var placezoom  = "' . $plzoom . '";
@@ -1817,7 +1818,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function createMarker(point, html, icon, name) {
 				// Choose icon ============
 				if (icon && ' . $level . '<=3) {
-					if (icon != "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
+					if (icon != "' . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
 						var iconImage = {
 							url:    icon,
 							size:   new google.maps.Size(25, 15),
@@ -1837,7 +1838,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						url:    "https://maps.google.com/mapfiles/marker.png",
 						size:   new google.maps.Size(20, 34),
 						origin: new google.maps.Point(0,0),
-						anchor: new google.maps.Point(9, 34)						
+						anchor: new google.maps.Point(9, 34)
 					};
 				}
 				var posn = new google.maps.LatLng(0,0);
@@ -1890,7 +1891,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$thislevel      = $level - 1;
 				$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
 
-				$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
+				$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place->pl_id, $thislinklevels);
 			}
 		}
 
@@ -2157,7 +2158,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php
 						foreach ($placefiles as $p => $placefile) {
 							unset($placefiles[$p]);
-							$p = Filter::escapeHtml($placefile);
+							$p = Html::escape($placefile);
 							if (substr($placefile, 0, 1) == '/') {
 								$placefiles[$p] = substr($placefile, 1);
 							} else {
@@ -2267,7 +2268,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$lines = file(WT_MODULES_DIR . 'googlemap/extra' . $_REQUEST['localfile']);
 		} else {
 			FlashMessages::addMessage(I18N::translate('No file was received. Please try again.'), 'danger');
-			$lines = [];
+			$lines = [''];
 		}
 		// Strip BYTE-ORDER-MARK, if present
 		if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
@@ -2526,7 +2527,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller = new PageController;
 		$controller
 			->setPageTitle(I18N::translate('Geographic data'))
-			->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
+			->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
 			->pageHeader();
 
 		// Find (or create) the record we are editing.
@@ -2585,7 +2586,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($place_id === 0 ? $parent_id : $place_id);
 		foreach ($hierarchy as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Filter::escapeHtml($name)];
+				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, $place_id === 0 ? I18N::translate('Add') : I18N::translate('Edit'));
 
@@ -2595,7 +2596,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		var map;
 		var marker;
 		var zoom;
-		var pl_name = '<?= Filter::escapeJs($record->pl_place) ?>';
+		var pl_name = <?= json_encode($record->pl_place) ?>;
 			var latlng = new google.maps.LatLng(<?= $latitude ?>, <?= $longitude ?>);
 		var pl_zoom = <?= $record->pl_zoom ?>;
 		var polygon1;
@@ -2780,7 +2781,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<?php
 			if ($level < 3 && $record->pl_icon != '') {
 				echo 'var image = {
-						"url"    : WT_STATIC_URL + WT_MODULES_DIR + "googlemap/" + "' . $record->pl_icon . '",
+						"url"    : WT_MODULES_DIR + "googlemap/" + "' . $record->pl_icon . '",
 						"size"   : new google.maps.Size(25, 15),
 						"origin" : new google.maps.Point(0, 0),
 						"anchor" : new google.maps.Point(12, 15)
@@ -2865,7 +2866,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		function createMarker(i, point, name) {
 			 var image = {
-				 url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/marker_yellow.png',
+				 url:    WT_MODULES_DIR + 'googlemap/images/marker_yellow.png',
 				 size:   new google.maps.Size(20, 34),
 				 origin: new google.maps.Point(0, 0),
 				 anchor: new google.maps.Point(10, 34)
@@ -2982,7 +2983,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?= I18N::translate('Place') ?>
 				</label>
 				<div class="col-sm-6">
-					<input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?= Filter::escapeHtml($record->pl_place) ?>" class="form-control" required>
+					<input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?= Html::escape($record->pl_place) ?>" class="form-control" required>
 
 					<label for="new_pl_name">
 						<a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">
@@ -3091,7 +3092,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($parent_id);
 		foreach (array_slice($hierarchy, 0, -1, true) as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Filter::escapeHtml($name)];
+				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, end($hierarchy));
 
@@ -3193,7 +3194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$highestIndex++;
 							Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom) VALUES (?, ?, ?, ?, ?)")
 								->execute([$highestIndex, $parent_id, $i, $escparent, $default_zoom_level[$i]]);
-							echo Filter::escapeHtml($escparent), '<br>';
+							echo Html::escape($escparent), '<br>';
 							$parent_id = $highestIndex;
 						} else {
 							$parent_id = $row->pl_id;
@@ -3204,12 +3205,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$highestIndex++;
 							Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
 								->execute([$highestIndex, $parent_id, $i, $escparent, $place['long'], $place['lati'], $default_zoom_level[$i]]);
-							echo Filter::escapeHtml($escparent), '<br>';
+							echo Html::escape($escparent), '<br>';
 						} else {
 							if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati'] != '0' && $place['long'] != '0') {
 								Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
 									->execute([$place['lati'], $place['long'], $row->pl_id]);
-								echo Filter::escapeHtml($escparent), '<br>';
+								echo Html::escape($escparent), '<br>';
 							}
 						}
 					}
@@ -3253,7 +3254,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php if ($place['place'] === 'Unknown'): ?>
 									<?= I18N::translate('unknown') ?>
 								<?php else: ?>
-									<?= Filter::escapeHtml($place['place']) ?>
+									<?= Html::escape($place['place']) ?>
 								<?php endif ?>
 								<?php if ($place['missing'] > 0): ?>
 								<span class="badge badge-pill badge-warning">
@@ -3277,9 +3278,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</td>
 						<td>
 								<?php if ($place['icon']): ?>
-									<img src="<?= WT_STATIC_URL ?><?= WT_MODULES_DIR ?>googlemap/places/flags/<?= Filter::escapeHtml($place['icon']) ?>" width="25" height="15" title="<?= Filter::escapeHtml($place['icon']) ?>" alt="<?= I18N::translate('Flag') ?>">
+									<img src="<?= WT_MODULES_DIR ?>googlemap/places/flags/<?= Html::escape($place['icon']) ?>" width="25" height="15" title="<?= Html::escape($place['icon']) ?>" alt="<?= I18N::translate('Flag') ?>">
 								<?php else: ?>
-									<img src="<?= WT_STATIC_URL ?><?= WT_MODULES_DIR ?>googlemap/images/mm_20_red.png">
+									<img src="<?= WT_MODULES_DIR ?>googlemap/images/mm_20_red.png">
 								<?php endif ?>
 						</td>
 						<td>

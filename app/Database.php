@@ -146,7 +146,7 @@ class Database {
 				unset($trace[$n]);
 			}
 		}
-		$stack = '<abbr title="' . Filter::escapeHtml(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
+		$stack = '<abbr title="' . Html::escape(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
 		// Bind variables
 		foreach ($bind_variables as $key => $value) {
 			if (is_null($value)) {
@@ -302,5 +302,23 @@ class Database {
 		}
 
 		return $updates_applied;
+	}
+
+	/**
+	 * Escape a string for use in a SQL "LIKE" clause
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function escapeLike($string) {
+		return strtr(
+			$string,
+			[
+				'\\' => '\\\\',
+				'%'  => '\%',
+				'_'  => '\_',
+			]
+		);
 	}
 }

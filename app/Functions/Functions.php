@@ -18,10 +18,11 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Class Functions - common functions
@@ -32,28 +33,38 @@ class Functions {
 	 * Fetching the remote file can be slow, so check infrequently, and cache the result.
 	 * Pass the current versions of webtrees, PHP and MySQL, as the response
 	 * may be different for each. The server logs are used to generate
-	 * installation statistics which can be found at http://svn.webtrees.net/statistics.html
+	 * installation statistics which can be found at http://dev.webtrees.net/statistics.html
 	 *
-	 * @return null|string
+	 * @return string
 	 */
 	public static function fetchLatestVersion() {
 		$last_update_timestamp = Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
-		if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
-			$row                = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-			$params             = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
-			$latest_version_txt = File::fetchUrl('https://dev.webtrees.net/build/latest-version.txt' . $params);
-			if ($latest_version_txt) {
-				Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
-				Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
 
-				return $latest_version_txt;
-			} else {
-				// Cannot connect to server - use cached version (if we have one)
-				return Site::getPreference('LATEST_WT_VERSION');
+		if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
+			$row           = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+			$mysql_version = $row->value;
+
+			try {
+				$client = new Client([
+					'timeout' => 3.0,
+				]);
+
+				$response = $client->get('https://dev.webtrees.net/build/latest-version.txt', ['query' => [
+					'w' => WT_VERSION,
+					'p' => PHP_VERSION,
+					'm' => $mysql_version,
+					'o' => DIRECTORY_SEPARATOR === '/' ? 'u' : 'w',
+				]]);
+
+				if ($response->getStatusCode() == 200) {
+					Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
+					Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+				}
+			} catch (RequestException $ex) {
 			}
-		} else {
-			return Site::getPreference('LATEST_WT_VERSION');
 		}
+
+		return Site::getPreference('LATEST_WT_VERSION');
 	}
 
 	/**

@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2015-03-16 12:47+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Bosnian <http://translate.webtrees.net/projects/webtrees/webtrees/bs/>\n"
+"PO-Revision-Date: 2017-07-17 14:25+0000\n"
+"Last-Translator: Elvedin Zlatarac <elvedin.zlatarac@gmail.com>\n"
+"Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees/bs/>\n"
 "Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -51,19 +51,19 @@ msgstr "#%s"
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ima %3$s link na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s puta uklonjen uzlazno"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s puta uklonjen silazno"
 
 #: app/Controller/IndividualController.php:176 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1374
@@ -75,34 +75,34 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:253
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB je skinuto u %2$s sekundi."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ne postoji."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ne postoji. Da li ste mislili %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:198
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s nema vezu natrag na %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:310 admin_site_upgrade.php:394
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Datoteka %1$s je raspakirana u %2$s sekundi."
+msgstr[1] "Datoteka %1$s je raspakirana u %2$s sekunde."
+msgstr[2] "Datoteka %1$s je raspakirana u %2$s sekundi."
 
 #: app/Module/GoogleMapsModule.php:542
 #, php-format
@@ -125,62 +125,62 @@ msgstr[2] "%1$s osoba nema kordinate mjesta rođenja na mapi: %2$s."
 #: admin_trees_check.php:186
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s je %2$s a %3$s je očekivano."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:494 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:557 statisticsplot.php:746
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:720
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:161
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j. %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6916
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s p.n.e"
 
 #. I18N: size of file in KB
 #: admin_media.php:486 app/Media.php:277
@@ -192,31 +192,31 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s i njezini preci"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s i njegovi preci"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:289
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s i povezani pojedinci."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s i njihova djeca"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:125
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s i njihovi potomci"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5881
 #, php-format
@@ -230,58 +230,58 @@ msgstr[2] "%s anonimnih prijavljenih korisnika"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dijete"
+msgstr[1] "%s djeteta"
+msgstr[2] "%s djece"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:267
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dan"
+msgstr[1] "%s dana"
+msgstr[2] "%s dana"
 
 #: app/I18N.php:700
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s dan"
+msgstr[1] "Prije %s dana"
+msgstr[2] "Prije %s dana"
 
 #: app/Controller/SearchController.php:377
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s porodica je ažurirana."
+msgstr[1] "%s porodica je ažurirano."
+msgstr[2] "%s porodica je ažurirano."
 
 #: admin.php:854
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s porodično stablo"
+msgstr[1] "%s porodičnih stabla"
+msgstr[2] "%s porodična stabla"
 
 #: app/Stats.php:5253 app/Stats.php:5257
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s unuk"
+msgstr[1] "%s unuka"
+msgstr[2] "%s unuka"
 
 #: app/I18N.php:704
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s sat"
+msgstr[1] "Prije %s sata"
+msgstr[2] "Prije %s sati"
 
 #: admin_trees_unconnected.php:94 app/Controller/LifespanController.php:254
 #, php-format
@@ -295,9 +295,9 @@ msgstr[2] "%s osoba"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba je ažurirana."
+msgstr[1] "%s osobe su ažurirane."
+msgstr[2] "%s osoba je ažurirano."
 
 #: app/Module/GoogleMapsModule.php:549
 #, php-format
@@ -311,31 +311,31 @@ msgstr[2] "%s osoba su privatne."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "s osoba sa događajima između %s i %s"
+msgstr[1] "%s osobe sa događajima između %s i %s"
+msgstr[2] "%s osoba sa događajima između %s i %s"
 
 #: app/Controller/LifespanController.php:240
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba sa događajima u %s"
+msgstr[1] "%s osobe sa događajima u %s"
+msgstr[2] "%s osoba sa događajima u %s"
 
 #: app/Controller/LifespanController.php:233
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba sa događajima u %s između %s i %s"
+msgstr[1] "%s osobe sa događajima u %s između %s i %s"
+msgstr[2] "%s osoba sa događajima u %s između %s i %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s je isključen na ovom serveru. Ne možete instalirati webtrees dok je isključen. Zamolite vašeg server administratora da ga uključi."
 
 #: app/Module/UserMessagesModule.php:84
 #, php-format
@@ -349,9 +349,9 @@ msgstr[2] "%s poruka"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s minute"
+msgstr[1] "Prije %s minute"
+msgstr[2] "Prije %s minuta"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:259
@@ -367,37 +367,37 @@ msgstr[2] "%s mjeseci"
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s mjesec"
+msgstr[1] "Prije %s mjeseca"
+msgstr[2] "Prije %s mjeseci"
 
 #: app/Controller/SearchController.php:431
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s bilješka je ažurirana."
+msgstr[1] "%s bilješke su ažurirane."
+msgstr[2] "%s bilješki je ažurirano."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
-#, php-format
+#, fuzzy, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s jednom uklonjen u rastućem nizu"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s jednom uklonjen u opadajućem nizu"
 
 #: app/I18N.php:710
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s sekundu"
+msgstr[1] "Prije %s sekunde"
+msgstr[2] "Prije %s sekundi"
 
 #. I18N: %s is a person's name
 #: message.php:220
@@ -417,42 +417,42 @@ msgstr[2] "%s prijavljenih korisnika"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s izvor je ažuriran."
+msgstr[1] "%s izvora su ažurirana."
+msgstr[2] "%s izvora je ažurirano."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
-#, php-format
+#, fuzzy, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s tri puta uklonjen u rastućem nizu"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s tri puta uklonjen u opadajućem nizu"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
-#, php-format
+#, fuzzy, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s dva puta uklonjen u rastućem nizu"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s dva puta uklonjen u opadajućem nizu"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:263
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s sedmice"
+msgstr[1] "%s sedmica"
+msgstr[2] "%s sedmica"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:253
 #: app/Module/RelativesTabModule.php:83
@@ -467,9 +467,9 @@ msgstr[2] "%s godina"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s godine"
+msgstr[1] "Prije %s godine"
+msgstr[2] "Prije %s godina"
 
 #: app/Functions/FunctionsPrintLists.php:1657 app/Module/YahrzeitModule.php:128
 #: calendar.php:607
@@ -499,67 +499,67 @@ msgstr "%s × rođak"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;p.n.e"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;n.e"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:728
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, njezini preci i njihove porodice"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, njezini roditelji, braća i sestre"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, njezini supružnici i djeca"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, njezini supružnici i potomci"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, njegovi preci i njihove porodice"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, njegovi roditelji, braća i sestre"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, njegove supruge i djeca"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, njegove supruge i potomci"
 
 #: admin_media_upload.php:234 app/Functions/FunctionsPrint.php:587
 #: app/Module/UserMessagesModule.php:95
@@ -608,8 +608,9 @@ msgstr "(mrtvorođeno)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:391
+#, fuzzy
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6943
 msgctxt "CENTURY"
@@ -634,12 +635,12 @@ msgstr "13."
 #: app/Stats.php:6935
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14."
 
 #: app/Stats.php:6933
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15."
 
 #: app/Stats.php:6931
 msgctxt "CENTURY"
@@ -718,7 +719,7 @@ msgstr "9."
 
 #: admin_trees_manage.php:723
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr ""
+msgstr "<b>Važna napomena:</b> Čarobnjak za prijenos nije u stanju premiještati medijske stavke. Vi trebate postaviti i premjestiti ili kopirati vašu medija konfiguraciju i objekte nakon što čarobnjak prijenosa završi."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:55 admin_users.php:40 edituser.php:251
@@ -727,53 +728,53 @@ msgstr "<osnovna tema>"
 
 #: login.php:404
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
+msgstr "<div class=\"largeError\">Obavijest:</div><div class=\"error\">Ispunjavanjem i slanjem ovog obrasca, slažete se:<ul><li>da ćete zaštititi privatnost živih osoba prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, opisati sa kime ste u rodu ili nam dati informacije o nekome tko bi trebao biti prikazan na ovim stranicama.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:521
 #: app/GedcomTag.php:1404
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Grafikon sa prikazom odnosa između dvije osobe."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Grafikon predaka i potomaka u obliku porodične knjige."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Grafikon predaka u obliku kompaktnog stabla."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Grafikon predaka formatiran kao stablo."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Grafikon predaka osobe."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Grafikon potomaka osobe."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Grafikon životnog vijeka osobe."
 
 #: edit_interface.php:970
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "Dijete može imati više od jednog para roditelja. Odnos između djeteta i roditelja može biti biološki, pravni ili baziran na lokalnoj kulturi i tradiciji. Ako porijeklo nije navedeno, tada se podrazumijeva biološki odnos."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -781,22 +782,22 @@ msgstr "Najčešća greška je imati višestruke veze na isti zapis, na primjer,
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Server baze podataka može spremiti više odvojenih baza podataka. Vi trebate odabrati postojeću bazu (kreiranu od vašeg server administratora) ili kreirati novu (ako vaš korisnički račun to dopušta)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Kružni dijagram predaka osobe."
 
 #: admin_trees_download.php:109 admin_trees_manage.php:220
 #: app/Module/GoogleMapsModule.php:2150
 msgid "A file on the server"
-msgstr ""
+msgstr "Datoteka na serveru"
 
 #: admin_trees_download.php:196 admin_trees_manage.php:209
 #: app/Module/GoogleMapsModule.php:2140
 msgid "A file on your computer"
-msgstr ""
+msgstr "Datoteka na vašem računaru"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
@@ -811,7 +812,7 @@ msgstr "Pozdravna poruka za posjetioce sitea."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:44
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr ""
+msgstr "Lista promjena koja treba biti pregledana od strane moderatora i email obavjesti."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:40
@@ -861,30 +862,30 @@ msgstr "Spisak stranica koje su bile pregledane najveći broj puta."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Popis korisnika i posjetioca koji su trenutno online."
 
 #: help_text.php:243
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "Medijski objekt je zapis u obiteljskom stablu koji sadrži informacije o medijskoj datoteci. Te informacije mogu uključivati: naslov, bilješku o pravu kopiranja, prepis, ograničenja vezana za privatnost, itd. Medijska datoteka, kao što je fotografija, video, može biti spremljena lokalno (na ovom webserveru) ili udaljeno na nekom drugom webserveru."
 
 #: login.php:259
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr ""
+msgstr "Nova lozinka je kreirana i poslana e-malom %s. Svoju lozinku možete promijeniti nakon prijave."
 
 #: login.php:252
 msgid "A new password has been requested for your username."
-msgstr ""
+msgstr "Zatražena je nova lozinka za vaše korisničko ime."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:556
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "Novi korisnik (%1$s) je zatražio račun (%2$s) i potvrdio email adresu (%3$s)."
 
 #: admin.php:625 admin_site_upgrade.php:77 login.php:111
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Dostupna je nova verzija webtreesa."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -895,7 +896,7 @@ msgstr "Privatno područje za zapis zabilješki i vođenje dnevnika."
 #: login.php:317
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Registrovan je potencijalni korisnik preko webtrees na %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -923,7 +924,7 @@ msgstr "Izvještaj o detaljima osobe."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Izvještaj o činjenicama koje su podržane danim izvorom."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -934,7 +935,7 @@ msgstr "Izvještaj sa članovima porodice i detaljima."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Izvještaj o osobama koje su umrle u naznačenom vremenu ili mjestu."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
@@ -979,7 +980,7 @@ msgstr "Izvještaj o osobama koje su usko povezane sa osobom."
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Izvještaj o informacijama priloženim od strane izvora."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
@@ -995,7 +996,7 @@ msgstr "Izvještaj o bitnim zapisima za dati datum ili mjesto."
 
 #: admin_users.php:516
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Uloga je skup pristupnih prava koja daju prava za pregled podataka, izmjenu postavki itd. Pristupna prava se dodjeljuju ulogama, a uloge su pridružene korisnicima. Svako porodično stablo može pridružiti različit pristup za svaku ulogu a korisnici mogu imati različite uloge u svakom porodičnom stablu."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1045,26 +1046,26 @@ msgstr "Jezičak prikazuje zabilješke zakačene na osobu."
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:38
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Kartica koja prikazuje izvore vezane za pojedinca."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Vremenska linija sa prikazom pojedinčnih događaja.."
 
 #: admin_users.php:390
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr ""
+msgstr "Korisnik se neće moći prijaviti sve dok oboje \"email verifikovan\" i \"odobren od strane administratora\" ne budu selektovani."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1061
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Vodeni žig je tekst dodan na sliku, da obeshrabri druge od kopiranja bez dozvole."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:100
 msgid "A.M."
-msgstr ""
+msgstr "Prije podne"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1105,12 +1106,12 @@ msgstr "A4"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:318
 msgid "API key"
-msgstr ""
+msgstr "API ključ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Aba, Nigeria"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
@@ -1145,7 +1146,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1471 admin_trees_config.php:1473
 #: admin_trees_config.php:1477
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Skraćena imena mjesta"
 
 #. I18N: gedcom tag ABBR
 #: app/Functions/FunctionsEdit.php:1940 app/GedcomTag.php:120
@@ -1158,7 +1159,6 @@ msgid "Accept"
 msgstr "Prihvati"
 
 #: edit_changes.php:161
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Odobri sve promjene"
 
@@ -1171,16 +1171,16 @@ msgstr "Razina pristupa"
 
 #: admin_users.php:513
 msgid "Access to family trees"
-msgstr ""
+msgstr "Pristup porodičnim stablima"
 
 #: admin_users.php:368
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Odobrenje računa i potvrda emaila"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
-msgstr ""
+msgstr "Accra, Ghana"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1204,7 +1204,7 @@ msgstr "Adar"
 #: app/Date/JewishDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
@@ -1252,7 +1252,7 @@ msgstr "Adar II"
 #: app/Date/JewishDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: app/Module/CensusAssistantModule.php:135
 #: app/Module/GoogleMapsModule.php:2587 index_edit.php:318 index_edit.php:330
@@ -1271,7 +1271,7 @@ msgstr "Dodaj novog brata ili sestru"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr ""
+msgstr "Dodaj dijete"
 
 #: app/Module/RelativesTabModule.php:413 edit_interface.php:572
 msgid "Add a child to create a one-parent family"
@@ -1279,11 +1279,11 @@ msgstr "Dodaj dijete i započni porodicu sa samo jednim roditeljem"
 
 #: app/Controller/FamilyController.php:80 app/Functions/FunctionsCharts.php:292
 msgid "Add a child to this family"
-msgstr ""
+msgstr "Dodaj dijete ovoj porodici"
 
 #: edit_interface.php:73
 msgid "Add a fact"
-msgstr ""
+msgstr "Dodaj činjenicu"
 
 #: app/Module/RelativesTabModule.php:332 edit_interface.php:649 family.php:87
 msgid "Add a father"
@@ -1336,7 +1336,7 @@ msgstr "Dodaj novu zabilješku"
 
 #: app/Functions/FunctionsEdit.php:1028
 msgid "Add a restriction"
-msgstr ""
+msgstr "Dodaj ograničenje"
 
 #: app/Controller/FamilyController.php:147 app/Functions/FunctionsEdit.php:1016
 #: app/Module/NotesTabModule.php:112
@@ -1379,17 +1379,16 @@ msgstr "Dodaj suprugu koristeći postojeću osobu"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:147
 #: app/Module/FrequentlyAskedQuestionsModule.php:462
-#, fuzzy
 msgid "Add an FAQ"
 msgstr "Dodaj stavku najčešćih pitanja i odgovora"
 
 #: app/Functions/FunctionsEdit.php:1003
 msgid "Add an associate"
-msgstr ""
+msgstr "Dodaj novog saradnika"
 
 #: app/Functions/FunctionsPrint.php:516
 msgid "Add from clipboard"
-msgstr ""
+msgstr "Dodaj iz clipboard-a"
 
 #: lifespan.php:65
 msgid "Add individuals"
@@ -1413,7 +1412,7 @@ msgstr "Dodaj nedostajuće vjenčana imena"
 
 #: search_advanced.php:276
 msgid "Add more fields"
-msgstr ""
+msgstr "Dodaj još polja"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
@@ -1422,18 +1421,18 @@ msgstr "Dodaj narativne priče za osobe u porodičnom stablu."
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Dodaj razmake gdje su dugačke linije razlomljene"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:154 app/Module/ClippingsCartModule.php:416
 #: app/Module/ClippingsCartModule.php:776
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Dodaj GEDCOM medijsku putanju do imena datoteka"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:866
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "Dodaj u TITLE header tag"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:65 app/Theme/AbstractTheme.php:1448
@@ -1447,21 +1446,21 @@ msgstr "Dodaj u favorite"
 #: app/Module/ClippingsCartModule.php:440
 #: app/Module/ClippingsCartModule.php:553
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Dodaj u isječke"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:665
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Dodaj jedinstvene indentifikatore"
 
 #: admin_trees_manage.php:530
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Dodaj nepovezane zapise"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1056
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "Dodaj vodeni žig na sličicu"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:42
@@ -1474,7 +1473,6 @@ msgstr "Dodaj/uredi unos za dnevnik/novosti"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "Adresa"
 
@@ -1489,7 +1487,7 @@ msgstr "Adresna linija 2"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr ""
+msgstr "Adelaide, Australia"
 
 #: admin_users.php:507 admin_users.php:556
 msgid "Administrator"
@@ -1501,7 +1499,7 @@ msgstr "Administratorski account"
 
 #: admin_users.php:488
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Administratorski komentar o korisniku"
 
 #: admin.php:667
 msgid "Administrators"
@@ -1524,17 +1522,17 @@ msgstr "Posvojen"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Posvojeni od oba roditelja"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Posvojena od oba roditelja"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Posvojen od oba roditelja"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:644
@@ -1621,7 +1619,7 @@ msgstr "Posvojenje unuka"
 
 #: app/GedcomTag.php:622
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "Posvojenje polubrata"
 
 #: app/GedcomTag.php:626
 msgid "Adoption of a half-sibling"
@@ -1650,15 +1648,15 @@ msgstr "Krštenje odraslih"
 
 #: admin_trees_config.php:1776
 msgid "Advanced fact preferences"
-msgstr ""
+msgstr "Napredne postavke za činjenice"
 
 #: admin_trees_config.php:1781
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Napredne činjenice imena"
 
 #: admin_trees_config.php:1794
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Napredne činjenice imena mjesta"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1822
@@ -1672,15 +1670,15 @@ msgstr "Avganistan"
 
 #: statistics.php:703
 msgid "Africa"
-msgstr ""
+msgstr "Afrika"
 
 #: admin_trees_manage.php:682
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Nakon kreiranja porodičnog stabla, biti ćete u mogućnost učitati podatke iz GEDCOM datoteke."
 
 #: login.php:255
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr ""
+msgstr "Za promjenu lozinke, nakon prijave odaberite link \"Moj račun\" u meniju \"Moje stranice\" i popunite polje za lozinku."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1701,7 +1699,7 @@ msgstr "Dob u godini rođenja djeteta"
 
 #: admin_trees_config.php:364
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Starost kod koje pretpostavljamo da je osoba mrtva"
 
 #: statistics.php:351
 msgid "Age between husband and wife"
@@ -1731,7 +1729,7 @@ msgstr "Dob u godini stupanja u brak"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1268
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Dob roditelja u odnosu na datum rođenja djeteta"
 
 #: app/Functions/FunctionsPrintLists.php:492
 msgid "Age related to death year"
@@ -1740,7 +1738,7 @@ msgstr "Dob u odnosu na smrt"
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:138
 msgid "Agency"
-msgstr ""
+msgstr "Ustanova"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6651
@@ -1761,7 +1759,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr ""
+msgstr "Albuquerque, Novi Meksiko, S.A.D."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -1775,7 +1773,7 @@ msgstr "Alias"
 
 #: app/Functions/FunctionsPrintLists.php:199
 msgid "Alive"
-msgstr ""
+msgstr "Živi"
 
 #: app/Functions/FunctionsEdit.php:171
 #: app/Module/FrequentlyAskedQuestionsModule.php:220
@@ -1798,27 +1796,27 @@ msgstr "Sve"
 
 #: admin_trees_manage.php:716
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Sve promjene u PhpGedView-u moraju biti prihvaćene"
 
 #: admin_trees_manage.php:719
 msgid "All existing PhpGedView users must have distinct email addresses"
-msgstr ""
+msgstr "Svi postojeći PhpGedView korisnici moraju imati jedinstvene adrese e-pošte"
 
 #: admin_trees_config.php:526
 msgid "All facts and events"
-msgstr ""
+msgstr "Sve činjenice i događaji"
 
 #: admin_trees_config.php:1645
 msgid "All family facts"
-msgstr ""
+msgstr "Sve činjenice porodice"
 
 #: login.php:410
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Sva polja moraju biti popunjena."
 
 #: admin_site_upgrade.php:344
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Sve datoteke imaju dozvolu za čitanje i pisanje."
 
 #: admin_trees_config.php:1591
 msgid "All individual facts"

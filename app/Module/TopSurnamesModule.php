@@ -178,8 +178,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Sort (lists of counts of similar) surname by total count.
 	 *
-	 * @param string[] $a
-	 * @param string[] $b
+	 * @param string[][] $a
+	 * @param string[][] $b
 	 *
 	 * @return int
 	 */

@@ -73,6 +73,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	/**
 	 * Return a menu item for this chart.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
@@ -86,6 +88,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @param Individual $individual
 	 *
 	 * @return Menu|null
 	 */
@@ -175,7 +179,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 * @return string
 	 */
 	public function css() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+		return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
 
 	/**
@@ -184,6 +188,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 * @return string
 	 */
 	public function js() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+		return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
 }

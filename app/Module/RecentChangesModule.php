@@ -23,11 +23,12 @@ use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class RecentChangesModule
@@ -230,7 +231,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			if ($timestamp !== '') {
 				if ($show_user) {
 					$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-						I18N::translate('Changed on %1$s by %2$s', $timestamp, Filter::escapeHtml($record->lastChangeUser()));
+						I18N::translate('Changed on %1$s by %2$s', $timestamp, Html::escape($record->lastChangeUser()));
 				} else {
 					$html .= /* I18N: [a record was] Changed on <date/time> */
 						I18N::translate('Changed on %1$s', $timestamp);
@@ -323,7 +324,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 				break;
 			}
 			$html .= '</td>';
-			$html .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '">';
+			$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
 			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 			$addname = $record->getAddName();
 			if ($addname) {
@@ -331,7 +332,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			$html .= '</td>';
 			$html .= '<td data-sort="' . $record->lastChangeTimestamp(true) . '">' . $record->lastChangeTimestamp() . '</td>';
-			$html .= '<td>' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
+			$html .= '<td>' . Html::escape($record->lastChangeUser()) . '</td>';
 			$html .= '</tr>';
 		}
 
