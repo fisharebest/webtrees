@@ -16,7 +16,6 @@
 	"require": {
 		"ext-gd": "*",
 		"ext-iconv": "*",
-		"ext-mbstring": "*",
 		"ext-pcre": "*",
 		"ext-pdo": "*",
 		"ext-pdo_mysql": "*",
@@ -30,10 +29,15 @@
 		"guzzlehttp/guzzle": "~6.0",
 		"league/flysystem": "~1.0",
 		"league/flysystem-ziparchive": "~1.0",
-		"league/glide": "^1.2",
+		"league/glide": "~1.2",
 		"michelf/php-markdown": "1.*",
 		"ramsey/uuid": "~3.6",
 		"swiftmailer/swiftmailer": "~5.0",
+		"symfony/http-foundation": "~3.2",
+		"symfony/polyfill-mbstring": "~1.4",
+		"symfony/polyfill-php70": "~1.4",
+		"symfony/polyfill-php71": "~1.4",
+		"symfony/polyfill-php72": "~1.4",
 		"tecnickcom/tcpdf": "~6.2"
 	},
 	"require-dev": {
