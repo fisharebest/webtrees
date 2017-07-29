@@ -475,7 +475,7 @@ abstract class AbstractTheme {
 			'</div>' .
 			'</main>' .
 			'<footer class="wt-footer-container">' .
-			'<div class="wt-footer-content container">' . $this->footerContent() . '</div>' .
+			'<div class="wt-footer-content container hidden-print">' . $this->footerContent() . '</div>' .
 			'</footer>';
 	}
 

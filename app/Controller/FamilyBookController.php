@@ -371,7 +371,7 @@ class FamilyBookController extends ChartController {
 			$this->printDescendency($person, 1);
 			echo '</td><td class="tdmid">';
 			$this->printPersonPedigree($person, 1);
-			echo '</td></tr></table><br><br><hr style="page-break-after:always;"><br><br>';
+			echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
 			foreach ($families as $family) {
 				foreach ($family->getChildren() as $child) {
 					$this->printFamilyBook($child, $descent_steps - 1);

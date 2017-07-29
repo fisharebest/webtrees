@@ -408,9 +408,8 @@ class FunctionsCharts {
 	 */
 	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0) {
 		global $WT_TREE;
-
 		echo '<hr>';
-		echo '<p style="page-break-before: always;">';
+		echo '<p class="family-break">';
 		if (!empty($famid)) {
 			echo '<a name="', $famid, '"></a>';
 		}
