@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-07-16 20:01+0000\n"
+"PO-Revision-Date: 2017-07-30 20:48+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nl/>\n"
 "Language: nl\n"
@@ -5065,7 +5065,7 @@ msgstr "Afstammelingen"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Intersse in nakomelingen"
+msgstr "Interesse in nakomelingen"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
