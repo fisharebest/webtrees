@@ -124,9 +124,10 @@ date_default_timezone_set('UTC');
 // Calculate the base URL, so we can generate absolute URLs.
 $request = Request::createFromGlobals();
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
+
 // Remove any PHP script name
-$base_uri = preg_replace('/\/?[^\/]+\.php$/', '', $request_uri);
-define('WT_BASE_URL', $base_uri . '/');
+$base_uri = preg_replace('/[^\/]+$/', '', $request_uri);
+define('WT_BASE_URL', $base_uri);
 
 // What is the name of the requested script.
 define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
