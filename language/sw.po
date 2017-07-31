@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-09-14 03:35+0000\n"
+"PO-Revision-Date: 2017-07-31 14:56+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
-"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
+"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sw/>\n"
 "Language: sw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -20114,7 +20114,7 @@ msgstr "wiki ya webtrees"
 
 #: admin_trees_manage.php:718
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "hifadhi data ya webtrees lazima iwe kwenye seva sawa kama PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3373
 msgid "west"
@@ -20154,7 +20154,7 @@ msgstr "ndiyo"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:91
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "Unaweza kuunganisha kwenye hifadhi data kutumia programu zingine, kama vile phpmyadmin"
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
@@ -20162,7 +20162,7 @@ msgstr "kaka mdogo"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "ndugu mdogo"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
@@ -20179,7 +20179,7 @@ msgstr[1] "miaka ±%s"
 #: app/Individual.php:1218
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
@@ -20191,11 +20191,11 @@ msgstr "%s imekuwa ongezwa kwa vipendwa vyako."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” Imefutwa."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
@@ -20203,7 +20203,7 @@ msgstr ""
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
@@ -20212,4 +20212,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
