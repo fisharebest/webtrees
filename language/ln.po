@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-05-03 13:42+0000\n"
+"PO-Revision-Date: 2017-07-31 22:05+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -161,7 +161,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s ya %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:720
@@ -324,15 +324,15 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "nkandá %s"
+msgstr[1] "nkandá %s"
 
 #: app/I18N.php:708
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "monúti %s elekí"
+msgstr[1] "Minúti %s milekí"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:259
@@ -340,15 +340,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "sánzá %s"
+msgstr[1] "basánzá %s"
 
 #: app/I18N.php:696
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "sánzá %s eleki"
+msgstr[1] "basánzá %s eleki"
 
 #: app/Controller/SearchController.php:431
 #, php-format
@@ -380,14 +380,14 @@ msgstr[1] ""
 #: message.php:220
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s atindeli yɔ̌ kandá óyo."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5891
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ayíngelí na káti"
+msgstr[1] "%s bayíngelí na káti"
 
 #: app/Controller/SearchController.php:410
 #, php-format
@@ -425,29 +425,29 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mpɔ́sɔ %s"
+msgstr[1] "mpɔ́sɔ %s"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:253
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mobú %s"
+msgstr[1] "mibú %s"
 
 #: app/I18N.php:692
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mbúla %s eleki"
+msgstr[1] "mibú %s mileki"
 
 #: app/Functions/FunctionsPrintLists.php:1657 app/Module/YahrzeitModule.php:128
 #: calendar.php:607
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s mbúla ya mbótama"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -19607,48 +19607,48 @@ msgstr ""
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Functions/Functions.php:890
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Functions/Functions.php:1244
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "nɔ́kɔ́"
 
 #: app/Module/FamilyNavigatorModule.php:190
 #: app/Module/GoogleMapsModule.php:1704 app/Module/GoogleMapsModule.php:1745
 #: app/Module/GoogleMapsModule.php:3251 app/Place.php:137
 msgid "unknown"
-msgstr ""
+msgstr "eyebání tɛ́"
 
 #: app/Module/FamilyNavigatorModule.php:232
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "eyebání tɛ́"
 
 #: app/Module/RelationshipsChartModule.php:148
 msgid "unlimited"
-msgstr ""
+msgstr "ezalí na nsúka tɛ́"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -19658,41 +19658,41 @@ msgstr ""
 #. I18N: A button label.
 #: admin_trees_places.php:102 admin_trees_unconnected.php:87
 msgid "update"
-msgstr ""
+msgstr "kotiya ya sika"
 
 #. I18N: A button label.
 #: admin_media_upload.php:257 app/Module/GoogleMapsModule.php:3319
 msgid "upload"
-msgstr ""
+msgstr "kotiya nkasa"
 
 #. I18N: A button label.
 #: ancestry.php:76 app/Module/GoogleMapsModule.php:1021 branches.php:55
 #: compact.php:234 descendancy.php:96 familybook.php:86 fanchart.php:122
 #: hourglass.php:91 lifespan.php:113 pedigree.php:217 relationship.php:110
 msgid "view"
-msgstr ""
+msgstr "kotála"
 
 #: admin_trees_config.php:324 admin_trees_config.php:348
 #: admin_trees_config.php:388 admin_trees_config.php:430
 #: admin_trees_config.php:450
 msgid "visitors"
-msgstr ""
+msgstr "bapaya"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "abótámí"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:102
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "abótámí"
 
 #: app/Theme/WebtreesTheme.php:92
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:105
@@ -19702,7 +19702,7 @@ msgstr ""
 
 #: message.php:26 message.php:264
 msgid "webtrees message"
-msgstr ""
+msgstr "nkandá ya webtrees"
 
 #: setup.php:273
 #, php-format
@@ -19717,7 +19717,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:799
 msgid "webtrees reply address"
-msgstr ""
+msgstr "adrɛsi ya eyano ya webtrees"
 
 #: app/Functions/FunctionsEdit.php:130
 msgid "webtrees sends emails with no storage"
@@ -19733,7 +19733,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "west"
-msgstr ""
+msgstr "Wɛsti"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1870
 #: edit_interface.php:1902
@@ -19765,7 +19765,7 @@ msgstr "mibú"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "ɛ́ɛ́"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:89
@@ -19774,15 +19774,15 @@ msgstr ""
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr ""
+msgstr "ndeko ya lɛ́ki"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "ndeko ya lɛ́ki"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
-msgstr ""
+msgstr "lɛ́ki ya mwǎsí"
 
 #: search_advanced.php:103 search_advanced.php:107 search_advanced.php:111
 #: search_advanced.php:165 search_advanced.php:166 search_advanced.php:167
@@ -19801,17 +19801,17 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "“%s” abakisami kati ya malúli ma ngáí."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:41
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” ezímisami."
 
 #: app/Functions/FunctionsPrint.php:107 app/Note.php:107
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:541 app/Family.php:339
 #: app/Family.php:355 app/Individual.php:1221 app/Individual.php:1310
@@ -19819,7 +19819,7 @@ msgstr ""
 #: autocomplete.php:500 famlist.php:85 indilist.php:85
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:559 app/Family.php:339
 #: app/Family.php:355 app/Individual.php:1220 app/Individual.php:1310
@@ -19829,7 +19829,7 @@ msgstr ""
 #: famlist.php:74 famlist.php:96 indilist.php:74 indilist.php:96
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid " per gender"
 #~ msgstr " na emoto"
