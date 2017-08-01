@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-07-31 14:56+0000\n"
+"PO-Revision-Date: 2017-08-01 18:39+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sw/>\n"
 "Language: sw\n"
@@ -14089,8 +14089,8 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kumekuwa hakuna mabadiliko ndani ya siku %s iliyopita."
+msgstr[1] "Kumekuwa hakuna mabadiliko ndani ya siku %s zilizopita."
 
 #: login.php:266
 #, php-format
