@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-07-31 22:05+0000\n"
+"PO-Revision-Date: 2017-08-02 01:01+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -65,7 +65,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s ezalí na %3$s ekangisi na %4$s."
+msgstr "%1$s %2$s ezalí na ekangisi %3$s na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -107,7 +107,7 @@ msgstr ""
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s ezalí na ekangisi na %2$s tɛ́."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
@@ -221,13 +221,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:121
 #, php-format
 msgid "%s and their children"
-msgstr "%s na bǎna na yě"
+msgstr "%s na bǎna na bangó"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s na bakitani na yě"
+msgstr "%s na bakitani na bangó"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
@@ -270,7 +270,7 @@ msgstr[1] ""
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "Nzeté ya libóta %s"
-msgstr[1] "Nzeté ya libóta %s"
+msgstr[1] "Nzeté ya mabóta %s"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
@@ -311,22 +311,22 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "moto %s na milulu katikáti ya %s na %s"
+msgstr[1] "bato %s na milulu katikáti ya %s na %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "moto %s na milulu o kátii ya %s"
+msgstr[1] "bato %s na milulu o káti ya %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "moto %s na milulu katikáti ya %s na %s mpé %s"
+msgstr[1] "bato %s na milulu katikáti ya %s na %s mpé %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -368,8 +368,8 @@ msgstr[1] "basánzá %s eleki"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "nkomá %s ya sika etíyamí"
+msgstr[1] "nkomá %s ya sika etíyamí"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -497,55 +497,55 @@ msgstr ""
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, bankɔ́kɔ na yě na mabótá na bangó"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, babóti na yě na bankána na bangó"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "\"%s, balóngani na bǎna na yě"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, balóngani na bakitani na yě"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, bankɔ́kɔ na mabótá na bangó"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, babóti nayě na bankána na bangó"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, balóngani na bǎna na yě"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, balóngani na bakitani na yě"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
@@ -556,19 +556,19 @@ msgstr ""
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(na mbúla %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(mbúla mokɛ́ koleka %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:326
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(mbúla mingi koleka %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:230
@@ -579,127 +579,127 @@ msgstr ""
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:294
 msgid "(in childhood)"
-msgstr ""
+msgstr "(na bomwǎna)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:291
 msgid "(in infancy)"
-msgstr ""
+msgstr "(na bomwǎna)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:288
 msgid "(stillborn)"
-msgstr ""
+msgstr "(akufí na kobótama)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:443
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ya 10"
 
 #: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ya 11"
 
 #: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ya 12"
 
 #: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "ya 13"
 
 #: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "ya 14"
 
 #: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "ya 15"
 
 #: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "ya 16"
 
 #: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "ya 17"
 
 #: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "ya 18"
 
 #: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "ya 19"
 
 #: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "ya 1"
 
 #: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "ya 20"
 
 #: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "ya 21"
 
 #: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "ya 2"
 
 #: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "ya 3"
 
 #: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "ya 4"
 
 #: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "ya 5"
 
 #: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "ya 6"
 
 #: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "ya 7"
 
 #: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "ya 8"
 
 #: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "ya 9"
 
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -1071,7 +1071,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1089,25 +1089,25 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: app/I18N.php:441
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr ""
+msgstr "AFABƐ́_ikɛ=abcdefghijklmnopqrstuvwxyz"
 
 #: app/I18N.php:439
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr ""
+msgstr "AFABƐ́_inɛ́nɛ=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "fungóla ya API"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Aba, Nizeria"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
@@ -1147,15 +1147,15 @@ msgstr ""
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
 msgid "Abbreviation"
-msgstr ""
+msgstr "Na bokúsé"
 
 #: edit_changes.php:181 edit_changes.php:189
 msgid "Accept"
-msgstr ""
+msgstr "Kondima"
 
 #: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
-msgstr ""
+msgstr "Kondima mabóngoli mansɔ"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -1175,84 +1175,84 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
-msgstr ""
+msgstr "Accra, Ghana"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adare"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adare"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:179
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adare"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adare"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adare I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:216
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adare I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adare I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adare I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adare II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adare II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adare II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adare II"
 
 #: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
-msgstr ""
+msgstr "Kobakisa"
 
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
@@ -1265,19 +1265,19 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "Kobakisa ndeko mobálii to ndeko mwǎsí"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr ""
+msgstr "Kobakisa mwǎna"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "Bakisá mwǎna mpó na kotónga libóta ya mobóti mɔ̌kɔ́"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr ""
+msgstr "Bakisá mwǎna na libóta oyo"
 
 #: edit_interface.php:81
 msgid "Add a fact"
@@ -1285,7 +1285,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:92
 msgid "Add a father"
-msgstr ""
+msgstr "Bakisá tatá"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
@@ -1298,11 +1298,11 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr ""
+msgstr "Bakísá molóngani mobáli"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "Bakísá molóngani mobáli o káti ya libóta oyo"
 
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
 #: edit_interface.php:1156
@@ -1321,15 +1321,15 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
 msgid "Add a mother"
-msgstr ""
+msgstr "Bakísá mamá"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr ""
+msgstr "Bakísá nkómbó"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
-msgstr ""
+msgstr "Bakísá ekakoli ya sika"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
@@ -1338,7 +1338,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
-msgstr ""
+msgstr "Bakísá epekisami"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1356,7 +1356,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr ""
+msgstr "Bakísá mwǎna mobáli tǒ mwǎna mwǎsí"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
@@ -1365,26 +1365,26 @@ msgstr ""
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr ""
+msgstr "Bakísá molóngani"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "Bakísá lisapo"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr ""
+msgstr "Bakísá mosáleli"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr ""
+msgstr "Bakísá mwǎsí"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "Bakísá mwǎsí na libóta oyo"
 
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
 #: edit_interface.php:1158
@@ -1395,7 +1395,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr ""
+msgstr "Bakísá FAQ"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
@@ -1411,11 +1411,11 @@ msgstr ""
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr ""
+msgstr "Bakísá bato"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr ""
+msgstr "Bakísá bikangisi"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
@@ -1722,7 +1722,7 @@ msgstr ""
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr ""
+msgstr "Mibú o kati ya bankána"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
@@ -2856,7 +2856,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1083
 msgid "Birth of a sibling"
-msgstr ""
+msgstr "Mbótama ya nkána"
 
 #: app/GedcomTag.php:1081
 msgid "Birth of a sister"
@@ -4813,7 +4813,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
-msgstr ""
+msgstr "Liwâ ya nkána"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
@@ -6876,7 +6876,7 @@ msgstr ""
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
-msgstr ""
+msgstr "mobú monɛ́nɛ koleka o kati ya bankána"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -8760,7 +8760,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1638
 msgid "Marriage of a sibling"
-msgstr ""
+msgstr "Libála ya nkána"
 
 #: app/GedcomTag.php:1636
 msgid "Marriage of a sister"
@@ -10515,7 +10515,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr ""
+msgstr "Babóti na bankána"
 
 #: app/Functions/FunctionsPrint.php:280
 msgid "Parent’s age"
@@ -12758,12 +12758,12 @@ msgstr ""
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "Nkána"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "Bankána"
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
@@ -16744,7 +16744,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr ""
+msgstr "nkána ya mokóló"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
@@ -19527,21 +19527,21 @@ msgstr ""
 
 #: app/Functions/Functions.php:802
 msgid "sibling"
-msgstr ""
+msgstr "nkána"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:202
 msgid "sign in"
-msgstr ""
+msgstr "kótá"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
 msgid "sign out"
-msgstr ""
+msgstr "bimá"
 
 #: app/Functions/Functions.php:785
 msgid "sister"
-msgstr ""
+msgstr "ndeko mwǎsí"
 
 #: app/Functions/Functions.php:812
 msgctxt "brother’s wife"
@@ -19585,27 +19585,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:565
 msgid "sixth cousin"
-msgstr ""
+msgstr "ndeko ya 6"
 
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "ndeko ya 6"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "ndeko ya 6"
 
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
 #: edit_interface.php:1999
 msgid "son"
-msgstr ""
+msgstr "mwǎna mobáli"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr ""
+msgstr "mwǎna mobáli ya"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
@@ -19699,122 +19699,122 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3362
 msgid "south"
-msgstr ""
+msgstr "súdi"
 
 #: app/Functions/Functions.php:745 edit_interface.php:1930
 #: edit_interface.php:1940 edit_interface.php:1965 edit_interface.php:1976
 msgid "spouse"
-msgstr ""
+msgstr "molóngani"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "bokilo ndeko mobáli"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "bokilo ndeko mobáli"
 
 #: app/Functions/Functions.php:1250
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "bokilo ndeko mobáli"
 
 #: app/Functions/Functions.php:856
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "bokilo mwǎna"
 
 #: app/Functions/Functions.php:936
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "bokilo mwǎna"
 
 #: app/Functions/Functions.php:954
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "bokilo mwǎna"
 
 #: app/Functions/Functions.php:858
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:938
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:956
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:878 app/Module/FamilyNavigatorModule.php:224
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "papá bokilo"
 
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "mamá bokilo"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "babokilo"
 
 #: app/Functions/Functions.php:1138
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "ndeko bokilo"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "ndeko bokilo"
 
 #: app/Functions/Functions.php:1246
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "ndeko bokilo"
 
 #: app/Functions/Functions.php:1140
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1248
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "bokilo mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:868
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "bokilo mwǎna mobáli"
 
 #: app/Functions/Functions.php:946
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "bokilo mwǎna mobáli"
 
 #: app/Functions/Functions.php:966
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "bokilo mwǎna mobáli"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:48 app/Module/OnThisDayModule.php:144
@@ -19832,18 +19832,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
-msgstr ""
+msgstr "ndeko ya 10"
 
 #: app/Functions/Functions.php:538
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "ndeko ya 10"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:497
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "ndeko ya 10"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:85
@@ -19858,55 +19858,55 @@ msgstr ""
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr ""
+msgstr "bangó mɔ̌kɔ́"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
 #, php-format
 msgid "third %s"
-msgstr ""
+msgstr "%s ya 3"
 
 #: app/Functions/Functions.php:624
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "%s ya 3"
 
 #: app/Functions/Functions.php:609
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "%s ya 3"
 
 #: app/Functions/Functions.php:559
 msgid "third cousin"
-msgstr ""
+msgstr "ndeko ya 3"
 
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "ndeko ya 3"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:476
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "ndeko ya 3"
 
 #: app/Functions/Functions.php:579
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "ndeko ya 13"
 
 #: app/Functions/Functions.php:544
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "ndeko ya 13"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:506
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "ndeko ya13"
 
 #: admin_trees_config.php:550
 msgid "this record does not exist"
@@ -19930,12 +19930,12 @@ msgstr ""
 
 #: app/Functions/Functions.php:577
 msgid "twelfth cousin"
-msgstr ""
+msgstr "ndeko ya 12"
 
 #: app/Functions/Functions.php:542
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "ndeko ya 12"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:503
@@ -19945,15 +19945,15 @@ msgstr ""
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
-msgstr ""
+msgstr "lipása mobáli"
 
 #: app/Functions/Functions.php:793
 msgid "twin sibling"
-msgstr ""
+msgstr "nkána lipása"
 
 #: app/Functions/Functions.php:776
 msgid "twin sister"
-msgstr ""
+msgstr "lipása ya mwǎsí"
 
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
@@ -20132,11 +20132,11 @@ msgstr ""
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr "ndeko ya lɛ́ki"
+msgstr "lɛ́ki mobáli"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr "ndeko ya lɛ́ki"
+msgstr "nkána ya lɛ́ki"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
@@ -20159,7 +20159,7 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” abakisami kati ya malúli ma ngáí."
+msgstr "“%s” abakisamí o kati ya malúli ma ngáí."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:47
