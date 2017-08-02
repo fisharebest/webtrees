@@ -186,7 +186,7 @@ class FunctionsPrint {
 		require 'help_text.php';
 
 		return
-			FontAwesome::linkIcon('help', I18N::translate('Help'), ['class' => 'btn btn-link', 'data-toggle' => 'modal', 'href' => '#', 'data-target' => '#wt-help-modal']) . '
+			FontAwesome::linkIcon('help', I18N::translate('Help'), ['data-toggle' => 'modal', 'href' => '#', 'data-target' => '#wt-help-modal']) . '
 			<div class="modal fade" id="wt-help-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -650,7 +650,7 @@ class FunctionsPrint {
 	 * @return string
 	 */
 	public static function printSpecialCharacterLink($element_id) {
-		return FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'findSpecialChar(document.getElementById("' . $element_id . '")); if (window.updatewholename) { updatewholename(); } return false;']);
+		return FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['href' => '#', 'onclick' => 'findSpecialChar(document.getElementById("' . $element_id . '")); if (window.updatewholename) { updatewholename(); } return false;']);
 	}
 
 	/**

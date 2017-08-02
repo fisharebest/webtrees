@@ -502,7 +502,7 @@ class FunctionsEdit {
 	public static function inputAddonCalendar($id) {
 		return
 			'<span class="input-group-addon">' .
-			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
+			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
 			'</span>';
 	}
 
@@ -516,7 +516,7 @@ class FunctionsEdit {
 	public static function inputAddonKeyboard($id) {
 		return
 			'<span class="input-group-addon">' .
-			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'btn btn-link wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
+			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
 			'</span>';
 	}
 
