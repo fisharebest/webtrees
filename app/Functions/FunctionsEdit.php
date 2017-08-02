@@ -53,6 +53,7 @@ use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -309,7 +310,7 @@ class FunctionsEdit {
 
 		if ($family !== null) {
 			$value   = $family->getXref();
-			$options = [$value => Select2::familyValue($family)];
+			$options = [$value => View::make('select/family', ['family' => $family])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::familyConfig() + $attributes);
@@ -349,7 +350,7 @@ class FunctionsEdit {
 
 		if ($individual !== null) {
 			$value   = $individual->getXref();
-			$options = [$value => Select2::individualValue($individual)];
+			$options = [$value => View::make('select/individual', ['individual' => $individual])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::individualConfig() + $attributes);
@@ -369,7 +370,7 @@ class FunctionsEdit {
 
 		if ($media !== null) {
 			$value   = $media->getXref();
-			$options = [$value => Select2::mediaObjectValue($media)];
+			$options = [$value => View::make('select/media', ['media' => $media])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::mediaObjectConfig() + $attributes);
@@ -389,7 +390,7 @@ class FunctionsEdit {
 
 		if ($note !== null) {
 			$value   = $note->getXref();
-			$options = [$value => Select2::noteValue($note)];
+			$options = [$value => View::make('select/note', ['note' => $note])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::noteConfig() + $attributes);
@@ -428,7 +429,7 @@ class FunctionsEdit {
 
 		if ($repository !== null) {
 			$value   = $repository->getXref();
-			$options = [$value => Select2::repositoryValue($repository)];
+			$options = [$value => View::make('select/repository', ['repository' => $repository])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::repositoryConfig() + $attributes);
@@ -448,7 +449,7 @@ class FunctionsEdit {
 
 		if ($source !== null) {
 			$value   = $source->getXref();
-			$options = [$value => Select2::sourceValue($source)];
+			$options = [$value => View::make('select/source', ['source' => $source])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::sourceConfig() + $attributes);
@@ -468,7 +469,7 @@ class FunctionsEdit {
 
 		if ($submitter !== null) {
 			$value   = $submitter->getXref();
-			$options = [$value => Select2::submitterValue($submitter)];
+			$options = [$value => View::make('select/submitter', ['submitter' => $submitter])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::submitterConfig() + $attributes);
