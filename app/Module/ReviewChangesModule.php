@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class ReviewChangesModule
@@ -85,9 +86,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 									$tree,
 									$user,
 									I18N::translate('Pending changes'),
-									I18N::translate('There are pending changes for you to moderate.') .
-									Mail::EOL . Mail::EOL .
-									'<a href="index.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'index.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
+									View::make('emails/pending-changes-text', ['tree' => $tree, 'user' => $user]),
+									View::make('emails/pending-changes-html', ['tree' => $tree, 'user' => $user])
 								);
 								I18N::init(WT_LOCALE);
 							}

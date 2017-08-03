@@ -341,7 +341,7 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 if (Site::getPreference('LOGIN_URL') !== '') {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', 'login.php');
+	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere

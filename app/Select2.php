@@ -112,7 +112,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/family', ['family' => $family]),
+						'text' => View::make('selects/family', ['family' => $family]),
 					];
 				}
 			}
@@ -238,7 +238,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/individual', ['individual' => $individual]),
+						'text' => View::make('selects/individual', ['individual' => $individual]),
 					];
 				}
 			}
@@ -296,7 +296,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/media', ['media' => $media]),
+						'text' => View::make('selects/media', ['media' => $media]),
 					];
 				}
 			}
@@ -354,7 +354,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/note', ['note' => $note]),
+						'text' => View::make('selects/note', ['note' => $note]),
 					];
 				}
 			}
@@ -505,7 +505,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/repository', ['repository' => $repository]),
+						'text' => View::make('selects/repository', ['repository' => $repository]),
 					];
 				}
 			}
@@ -563,7 +563,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/source', ['source' => $source]),
+						'text' => View::make('selects/source', ['source' => $source]),
 					];
 				}
 			}
@@ -621,7 +621,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('select/submitter', ['submitter' => $submitter]),
+						'text' => View::make('selects/submitter', ['submitter' => $submitter]),
 					];
 				}
 			}
