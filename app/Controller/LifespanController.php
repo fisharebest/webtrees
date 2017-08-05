@@ -197,22 +197,25 @@ class LifespanController extends PageController {
 			foreach ($xrefs as $key => $xref) {
 				$valid  = false;
 				$person = Individual::getInstance($xref, $this->tree());
-				if ($person) {
-					if ($person->canShow()) {
-						foreach ($person->getFacts() as $fact) {
-							if ($this->checkFact($fact)) {
-								$this->people[] = $person;
-								$valid          = true;
-								break;
-							}
+				if ($person !== null && $person->canShow()) {
+					foreach ($person->getFacts() as $fact) {
+						if ($this->checkFact($fact)) {
+							$this->people[] = $person;
+							$valid          = true;
+							break;
 						}
 					}
 				} else {
 					$family = Family::getInstance($xref, $this->tree());
-					if ($family && $family->canShow() && $this->checkFact($family->getMarriage())) {
-						$valid          = true;
-						$this->people[] = $family->getHusband();
-						$this->people[] = $family->getWife();
+					if ($family !== null && $family->canShow()) {
+						foreach ($family->getFacts() as $fact) {
+							if ($this->checkFact($fact)) {
+								$valid          = true;
+								$this->people[] = $family->getHusband();
+								$this->people[] = $family->getWife();
+								break;
+							}
+						}
 					}
 				}
 				if (!$valid) {
