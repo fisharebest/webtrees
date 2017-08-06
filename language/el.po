@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2016-05-28 21:16+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2017-08-06 22:52+0300\n"
+"Last-Translator: gr translat <dixex@amail.club>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -55,7 +55,7 @@ msgstr ""
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s έχει %3$s συνδέσεις με το %4$s."
+msgstr "%1$s %2$s έχει ένα(ν) %3$s σύνδεσμο με το %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -139,27 +139,27 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:494 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pixels"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:557 statisticsplot.php:746
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
@@ -170,54 +170,54 @@ msgstr ""
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:720
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:161
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6916
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:486 app/Media.php:277
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s και οι πρόγονοι της"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s και οι πρόγονοι του"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:289
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s και τα άτομα που αναφέρονται σ'αυτό."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s και τα τέκνα τους."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:125
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s και οι απόγονοι τους."
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5881
 #, php-format
@@ -230,16 +230,16 @@ msgstr[1] "%s ανώνυμοι χρήστες συνδεδεμένοι"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s τέκνο"
+msgstr[1] "%s τέκνα"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:267
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ημέρα"
+msgstr[1] "%s ημέρες"
 
 #: app/I18N.php:700
 #, php-format
@@ -252,22 +252,22 @@ msgstr[1] "Πρίν %s ημέρες"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "η οικογένεια %s έχει επικαιροποιηθεί."
+msgstr[1] "οι οικογένεις %s έχουν επικαιροποιηθεί."
 
 #: admin.php:854
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s οικογενειακό δένδρο"
+msgstr[1] "%s οικεγενειακά δένδρα"
 
 #: app/Stats.php:5253 app/Stats.php:5257
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s εγγόνι"
+msgstr[1] "%s grandchildren"
 
 #: app/I18N.php:704
 #, php-format
@@ -335,8 +335,8 @@ msgstr[1] "%s μηνύματα"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s λεπτό πριν"
+msgstr[1] "%s λεπτά πρίν"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:259
@@ -358,8 +358,8 @@ msgstr[1] "Πριν %s μήνες"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "η %s σημείωση έχει ανανεωθεί."
+msgstr[1] "οι %s σημειώσεις έχουν ανανεωθεί."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -382,9 +382,9 @@ msgstr[1] "Πρίν %s δευτερόλεπτα"
 
 #. I18N: %s is a person's name
 #: message.php:220
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Το ακόλουθο μήνυμα έχει σταλθεί στον webtrees λογαριασμό σας από %s"
+msgstr "ο/η %s σας έστειλε το ακόλουθο μήνυμα."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5891
 #, php-format
@@ -451,7 +451,7 @@ msgstr[1] "Πρίν %s χρόνια"
 #: calendar.php:607
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s Επέτειος"
+msgstr "Επέτειος %s ετών"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -475,72 +475,72 @@ msgstr "%s × ξάδερφος"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;ΠΚΧ"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;ΜΚΧ"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:728
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, πρόγονοι της και οι οικογένεις τους"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, γονείς και αδέλφια της"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, σύζηγοι και τέκνα της"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, σύζηγοι και απογόνοι της"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, πρόγονοι του και οι οικογένεις τους"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, γονείς και αδέλφια του"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, σύζηγοι και τέκνα του"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, σύζηγοι και απογόνοι του"
 
 #: admin_media_upload.php:234 app/Functions/FunctionsPrint.php:587
 #: app/Module/UserMessagesModule.php:95
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;επιλογή&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:282 app/I18N.php:286
@@ -590,107 +590,107 @@ msgstr ""
 #: app/Stats.php:6943
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10ος"
 
 #: app/Stats.php:6941
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11ος"
 
 #: app/Stats.php:6939
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12ος"
 
 #: app/Stats.php:6937
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13ος"
 
 #: app/Stats.php:6935
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14ος"
 
 #: app/Stats.php:6933
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15ος"
 
 #: app/Stats.php:6931
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16ος"
 
 #: app/Stats.php:6929
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17ος"
 
 #: app/Stats.php:6927
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18ος"
 
 #: app/Stats.php:6925
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19ος"
 
 #: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1ος"
 
 #: app/Stats.php:6923
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20ος"
 
 #: app/Stats.php:6921
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21ος"
 
 #: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2ος"
 
 #: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3ος"
 
 #: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4ος"
 
 #: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5ος"
 
 #: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6ος"
 
 #: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7ος"
 
 #: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8ος"
 
 #: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9ος"
 
 #: admin_trees_manage.php:723
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -812,7 +812,7 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:38
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Λίστα με επετείους που συνέβησαν σαν σήμερα."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:46
@@ -822,12 +822,12 @@ msgstr "Λίστα επετείων στο προσεχές μέλλον."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:37
 msgid "A list of the most popular given names."
-msgstr "Λίστα με τα πιο δημοφιλή ονόματα."
+msgstr "Λίστα με τα δημοφιλέστερα πρώτα ονόματα."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:47
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Λίστα με τα δημοφιλέστερα επώνυμα."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:46
@@ -1058,7 +1058,7 @@ msgstr "Π.Μ."
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1076,7 +1076,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:318
@@ -1086,7 +1086,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Αμπα, Νιγηρία"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
@@ -1134,21 +1134,19 @@ msgid "Accept"
 msgstr "Αποδοχή"
 
 #: edit_changes.php:161
-#, fuzzy
 msgid "Accept all changes"
-msgstr "Έγκριση όλων των αλλαγών"
+msgstr "Αποδοχή όλων των αλλαγών"
 
 #: admin_module_blocks.php:68 admin_module_charts.php:65
 #: admin_module_menus.php:88 admin_module_reports.php:65
 #: admin_module_sidebar.php:88 admin_module_tabs.php:88
 #: admin_trees_config.php:495
 msgid "Access level"
-msgstr "Επίπεδα Πρόσβασης"
+msgstr "Επίπεδο Πρόσβασης"
 
 #: admin_users.php:513
-#, fuzzy
 msgid "Access to family trees"
-msgstr "Πρόσβαση σε γεν. δέντρα και ρυθμίσεις"
+msgstr "Πρόσβαση σε γενεαλ. δέντρα"
 
 #: admin_users.php:368
 msgid "Account approval and email verification"
@@ -1248,32 +1246,32 @@ msgstr "Προσθήκη αδερφού ή αδερφής"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Προσθήκη νέου παιδιού"
+msgstr "Προσθήκη νέου τέκνου"
 
 #: app/Module/RelativesTabModule.php:413 edit_interface.php:572
 msgid "Add a child to create a one-parent family"
-msgstr "Προσθέστε ένα παιδί να δημιουργήσετε μια μονογονεική οικογένεια"
+msgstr "Προσθέστε ένα τέκνο  να δημιουργήσετε μια μονογονεική οικογένεια"
 
 #: app/Controller/FamilyController.php:80 app/Functions/FunctionsCharts.php:292
 msgid "Add a child to this family"
-msgstr "Προσθήκη παιδιού στην οικογένεια αυτή"
+msgstr "Προσθήκη τέκνου στην οικογένεια αυτή"
 
 #: edit_interface.php:73
 msgid "Add a fact"
-msgstr ""
+msgstr "Προσθήκη γεγονότος"
 
 #: app/Module/RelativesTabModule.php:332 edit_interface.php:649 family.php:87
 msgid "Add a father"
-msgstr "Προσθήκη νέου πατέρα"
+msgstr "Προσθήκη πατέρα"
 
 #: app/Module/FamilyTreeFavoritesModule.php:187
 msgid "Add a favorite"
-msgstr "Προσθήκη νέου αγαπημένου"
+msgstr "Προσθήκη αγαπημένου"
 
 #: app/Module/RelativesTabModule.php:401 edit_interface.php:778
 #: edit_interface.php:863
 msgid "Add a husband"
-msgstr "Προσθήκη νέου συζύγου"
+msgstr "Προσθήκη συζύγου"
 
 #: app/Module/RelativesTabModule.php:156
 msgid "Add a husband to this family"
@@ -1296,11 +1294,11 @@ msgstr "Προσθήκη πολυμέσου"
 
 #: app/Module/RelativesTabModule.php:339 edit_interface.php:646 family.php:91
 msgid "Add a mother"
-msgstr "Προσθήκη νέας μητέρας"
+msgstr "Προσθήκη μητέρας"
 
 #: edit_interface.php:1590 individual.php:150
 msgid "Add a name"
-msgstr "Προσθήκη Νέου Ονόματος"
+msgstr "Προσθήκη Ονόματος"
 
 #: app/Module/FamilyTreeNewsModule.php:120
 msgid "Add a news article"
@@ -1309,20 +1307,20 @@ msgstr "Προσθήκη άρθρου νέων"
 #: app/Controller/FamilyController.php:141 app/Functions/FunctionsEdit.php:1011
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Προσθήκη νέου Σημειώματος/Σχολίου"
+msgstr "Προσθήκη Σημειώματος/Σχολίου"
 
 #: app/Functions/FunctionsEdit.php:1028
 msgid "Add a restriction"
-msgstr ""
+msgstr "Προσθήκη περιορισμού"
 
 #: app/Controller/FamilyController.php:147 app/Functions/FunctionsEdit.php:1016
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr "Προσθήκη νέας κοινορ. σημείωσης"
+msgstr "Προσθήκη κοινόχρηστης σημείωσης"
 
 #: app/Module/RelativesTabModule.php:279
 msgid "Add a son or daughter"
-msgstr "Προσθήκη νέου γιού ή κόρης"
+msgstr "Προσθήκη γιού ή κόρης"
 
 #: app/Controller/FamilyController.php:164 app/Functions/FunctionsEdit.php:988
 #: app/Module/SourcesTabModule.php:94
@@ -1337,16 +1335,16 @@ msgstr "Προσθήκη αφήγησης"
 #. I18N: Menu entry
 #: admin_users.php:260 app/Theme/AdministrationTheme.php:138
 msgid "Add a user"
-msgstr "Προσθήκη νέου χρήστη"
+msgstr "Προσθήκη χρήστη"
 
 #: app/Module/RelativesTabModule.php:389 edit_interface.php:775
 #: edit_interface.php:860
 msgid "Add a wife"
-msgstr "Προσθήκη νέας συζύγου"
+msgstr "Προσθήκη συζύγου"
 
 #: app/Module/RelativesTabModule.php:194
 msgid "Add a wife to this family"
-msgstr "Προσθήκη Συζύγου-Γυναίκας σε αυτή την οικογένεια"
+msgstr "Προσθήκη συζύγου (γυναίκας) σε αυτή την οικογένεια"
 
 #: app/Module/RelativesTabModule.php:394 edit_interface.php:1048
 #: edit_interface.php:1125
@@ -1362,7 +1360,7 @@ msgstr "Προσθήκη συχνής ερώτησης"
 
 #: app/Functions/FunctionsEdit.php:1003
 msgid "Add an associate"
-msgstr ""
+msgstr "Προσθήκη συνεργάτη"
 
 #: app/Functions/FunctionsPrint.php:516
 msgid "Add from clipboard"
@@ -1378,11 +1376,11 @@ msgstr "Προσθήκη συνδέσμων"
 
 #: app/Module/RelativesTabModule.php:234
 msgid "Add marriage details"
-msgstr "Προσθήκη λεπτ. γάμου"
+msgstr "Προσθήκη λεπτομερειών γάμου"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
-msgstr "Συμπλήρωση ελειπών εγγραφών θανάτων"
+msgstr "Συμπλήρωση ελλειπών εγγραφών θανάτων"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
@@ -1410,12 +1408,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:866
 msgid "Add to TITLE header tag"
-msgstr "Προσθήκη σε TITLE header tag"
+msgstr "Προσθήκη ΤΙΤΛΟΥ σε ετικέτα κεφαλίδας"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:65 app/Theme/AbstractTheme.php:1448
 msgid "Add to favorites"
-msgstr ""
+msgstr "Προσθήκη στα αγαπημένα"
 
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:148
@@ -1451,22 +1449,21 @@ msgstr "Προσθήκη/Επεξεργασία καταχώρησης Ημερ�
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "Διεύθυνση"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
-msgstr ""
+msgstr "Διεύθυνση Γραμμή 1"
 
 #: app/GedcomTag.php:126
 msgid "Address line 2"
-msgstr ""
+msgstr "Διεύθυνση Γραμμή 1"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr ""
+msgstr "Αδελαΐδα, Αυστραλία"
 
 #: admin_users.php:507 admin_users.php:556
 msgid "Administrator"
@@ -1487,65 +1484,65 @@ msgstr "Διαχειριστές"
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "υιοθετημένη"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "υιοθετημένος"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "υιοθετημένο"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Υιοθετήθηκε και από τους δύο γονείς"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Υιοθετημένη και από τους δύο γονείς"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Υιοθετημένος και από τους δύο γονείς"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:644
 msgid "Adopted by father"
-msgstr "Υιοθεσία από πατέρα"
+msgstr "Υιοθετήθηκε από τον πατέρα"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:642
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Υιοθετημένη από τον πατέρα"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:640
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Υιοθετημένος απο τον πατέρα"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:653
 msgid "Adopted by mother"
-msgstr "Υιοθεσία από μητέρα"
+msgstr "Υιοθετήθηκε από την μητέρα"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:651
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "υιοθετημένη απο την μητέρα"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:649
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "υιοθετημένος απο την μητέρα"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:128
@@ -1554,15 +1551,15 @@ msgstr "Υιοθεσία"
 
 #: app/GedcomTag.php:631
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "Υιοθεσία αδελφού"
 
 #: app/GedcomTag.php:590
 msgid "Adoption of a child"
-msgstr "Υιοθεσία παιδιού"
+msgstr "Υιοθεσία τέκνου"
 
 #: app/GedcomTag.php:588
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "Υιοθεσία θυγατέρας"
 
 #: app/GedcomTag.php:599 app/GedcomTag.php:608 app/GedcomTag.php:617
 msgid "Adoption of a grandchild"
@@ -1570,55 +1567,55 @@ msgstr "Υιοθεσία εγγονιού"
 
 #: app/GedcomTag.php:597
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Υιοθεσία εγγονιού"
 
 #: app/GedcomTag.php:606
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Υιοθεσία εγγονής"
 
 #: app/GedcomTag.php:615
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Υιοθεσία εγγονής"
 
 #: app/GedcomTag.php:595
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Υιοθεσία εγγονού"
 
 #: app/GedcomTag.php:604
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Υιοθεσία εγγονού"
 
 #: app/GedcomTag.php:613
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Υιοθεσία εγγονού"
 
 #: app/GedcomTag.php:622
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "Υιοθεσία ετεροθαλή αδελφού"
 
 #: app/GedcomTag.php:626
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Υιοθεσία ετεροθαλών"
 
 #: app/GedcomTag.php:624
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "Υιοθεσία ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:635
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Υιοθεσία αδελφιών"
 
 #: app/GedcomTag.php:633
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "Υιοθεσία αδελφής"
 
 #: app/GedcomTag.php:586
 msgid "Adoption of a son"
-msgstr ""
+msgstr "Υιοθεσία υιού"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:227
@@ -1626,27 +1623,26 @@ msgid "Adult christening"
 msgstr "Βάπτιση ενήλικα"
 
 #: admin_trees_config.php:1776
-#, fuzzy
 msgid "Advanced fact preferences"
-msgstr "Εκτεταμένες ρυθμίσεις γεγονότων"
+msgstr "Προτιμήσεις γεγονότων για προχωρημένους"
 
 #: admin_trees_config.php:1781
 msgid "Advanced name facts"
-msgstr "Εκτεταμένα γεγονότα ονομάτων"
+msgstr "Προτιμήσεις γεγονότων σχετικά με ονόματα για προχωρημένους"
 
 #: admin_trees_config.php:1794
 msgid "Advanced place name facts"
-msgstr "Εκτετ. γεγονότα ονόματος τόπων"
+msgstr "Προτιμήσεις γεγονότων σχετικά με τοποθεσίες για προχωρημένους"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1822
 msgid "Advanced search"
-msgstr "Προχωρημένη αναζήτηση"
+msgstr "Αναζήτηση για προχωρημένους"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6648
 msgid "Afghanistan"
-msgstr ""
+msgstr "Αφγανιστάν"
 
 #: statistics.php:703
 msgid "Africa"
@@ -1724,12 +1720,12 @@ msgstr "Υπηρεσία"
 #. I18N: Name of a country or state
 #: app/Stats.php:6651
 msgid "Aland Islands"
-msgstr ""
+msgstr "νήσοι Ώλαντ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6652
 msgid "Albania"
-msgstr "Albanien"
+msgstr "Αλβανία"
 
 #. I18N: gedcom tag _ALBUM
 #. I18N: Name of a module
@@ -1745,12 +1741,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
 msgid "Algeria"
-msgstr "Algerien"
+msgstr "Αλγερία"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:140
 msgid "Alias"
-msgstr "Ψευδόνυμο"
+msgstr "Ψευδώνυμο"
 
 #: app/Functions/FunctionsPrintLists.php:199
 msgid "Alive"
@@ -1859,7 +1855,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6657
 msgid "American Samoa"
-msgstr "Amerikanisch-Samoa"
+msgstr "Αμερικανική Σαμόα"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:222
@@ -1961,17 +1957,17 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
-msgstr ""
+msgstr "Άνκορεϊτζ, Αλάσκα, Ηνωμένες Πολιτείες Αμερικής"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6653
 msgid "Andorra"
-msgstr ""
+msgstr "Ανδόρα"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6649
 msgid "Angola"
-msgstr ""
+msgstr "Ανγκόλα "
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6650
@@ -2001,7 +1997,7 @@ msgstr "Απάντηση"
 #. I18N: Name of a country or state
 #: app/Stats.php:6658
 msgid "Antarctica"
-msgstr "Antarktis"
+msgstr "Ανταρκτική"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6660
@@ -2055,7 +2051,7 @@ msgstr "Εγκρίνεται απο τον Διαχειριστή"
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Απρ"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
@@ -2127,7 +2123,7 @@ msgstr "Είστε σίγουροι ότι θέλετε να αφαιρέσετ�
 #. I18N: Name of a country or state
 #: app/Stats.php:6655
 msgid "Argentina"
-msgstr "Argentinien"
+msgstr "Αργεντινή"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -2150,12 +2146,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6656
 msgid "Armenia"
-msgstr "Armenien"
+msgstr "Αρμενία"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6647
 msgid "Aruba"
-msgstr ""
+msgstr "Αρούμπα"
 
 #: app/Module/HtmlBlockModule.php:308
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
@@ -2192,12 +2188,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
 msgid "At sea"
-msgstr "Auf See"
+msgstr "Στην θάλασσα"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Atlanta, Georgia, United States"
-msgstr ""
+msgstr "Ατλάντα, Γεωργία, ΗΠΑ"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2235,7 +2231,7 @@ msgstr "Ήχος"
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Αυγ"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
@@ -2260,39 +2256,38 @@ msgstr "Αύγουστος"
 #. I18N: Name of a country or state
 #: app/Stats.php:6661
 msgid "Australia"
-msgstr "Australien"
+msgstr "Αυστραλία"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6662
 msgid "Austria"
-msgstr "Österreich"
+msgstr "Αυστρία"
 
 #. I18N: gedcom tag AUTH
 #: app/Functions/FunctionsEdit.php:1948
 #: app/Functions/FunctionsPrintLists.php:988 app/GedcomTag.php:150
 #: edit_interface.php:1186
 msgid "Author"
-msgstr "Συγγραφέας"
+msgstr "Συντάκτης"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:215
 msgid "Author of last change"
-msgstr ""
+msgstr "Συντάκτης τελευταίας αλλαγής"
 
 #: admin_users.php:434
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Αυτόματη έγκριση αλλαγών αυτού του χρήστη"
+msgstr "Αυτόματη αποδοχή αλλαγών που έγιναν απ' αυτό το χρήστη"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1437
 msgid "Automatically expand notes"
-msgstr "Αυτόματη ξεδίπλωση σημειώσεων"
+msgstr "Αυτόματη ξεδίπλωμα σημειώσεων"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1453
 msgid "Automatically expand sources"
-msgstr "Αυτόματη ξεδίπλωση πηγών"
+msgstr "Αυτόματη ξεδίπλωμα πηγών"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2384,12 +2379,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6663
 msgid "Azerbaijan"
-msgstr "Aserbaidschan"
+msgstr "Αζερμπαϊτζάν"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6664
 msgid "Azores"
-msgstr "Azoren"
+msgstr "Αζόρες"
 
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2399,7 +2394,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6673
 msgid "Bahamas"
-msgstr ""
+msgstr "Μπαχάμες"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:97
@@ -2433,7 +2428,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6670
 msgid "Bangladesh"
-msgstr "Bangladesch"
+msgstr "Μπαγκλαντές"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:158 calendar.php:258
@@ -2443,15 +2438,15 @@ msgstr "Βάπτιση"
 
 #: app/GedcomTag.php:717
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Βάπτιση αδελφού"
 
 #: app/GedcomTag.php:676
 msgid "Baptism of a child"
-msgstr "Βάπτιση παιδιού"
+msgstr "Βάπτιση τέκνου"
 
 #: app/GedcomTag.php:674
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Βάπτιση θυγατέρας"
 
 #: app/GedcomTag.php:685 app/GedcomTag.php:694 app/GedcomTag.php:703
 msgid "Baptism of a grandchild"
@@ -2459,43 +2454,43 @@ msgstr "Βάπτιση εγγονιού"
 
 #: app/GedcomTag.php:683
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:692
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:701
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:681
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:690
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:699
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:708
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "Βάπτιση ετεροθαλή αδελφού"
 
 #: app/GedcomTag.php:712
 msgid "Baptism of a half-sibling"
-msgstr "Βάπτιση ετεροθαλούς αδερφιού"
+msgstr "Βάπτιση ετεροθαλούς αδελφιού"
 
 #: app/GedcomTag.php:710
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "Βάπτιση ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:721
 msgid "Baptism of a sibling"
@@ -2503,16 +2498,16 @@ msgstr "Βάπτιση αδερφιού"
 
 #: app/GedcomTag.php:719
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Βάπτιση αδελφής"
 
 #: app/GedcomTag.php:672
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Βάπτιση υιού"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:164 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "Εβραϊκή περιτομή"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6681
@@ -2543,7 +2538,7 @@ msgstr "Ξεκινάει με"
 #. I18N: Name of a country or state
 #: app/Stats.php:6676
 msgid "Belarus"
-msgstr ""
+msgstr "Λευκορωσία"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:49
@@ -2553,7 +2548,7 @@ msgstr "Βελγική σοκολάτα"
 #. I18N: Name of a country or state
 #: app/Stats.php:6666
 msgid "Belgium"
-msgstr "Belgien"
+msgstr "Βέλγιο"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
@@ -2573,7 +2568,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:357
 msgid "Bern, Switzerland"
-msgstr ""
+msgstr "Βέρνη, Ελβετία"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
@@ -2738,17 +2733,17 @@ msgstr "Γέννηση"
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Γέννηση"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Γέννηση"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Γέννηση"
 
 #: app/Stats.php:1657 statistics.php:571
 msgid "Birth by country"
@@ -2764,15 +2759,15 @@ msgstr "Ημ/νία γεννήσεως από"
 
 #: app/GedcomTag.php:773
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Γέννηση αδελφού"
 
 #: app/GedcomTag.php:732 app/Module/GoogleMapsModule.php:1278
 msgid "Birth of a child"
-msgstr "Γέννηση παιδιού"
+msgstr "Γέννηση τέκνου"
 
 #: app/GedcomTag.php:730 app/Module/GoogleMapsModule.php:1278
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "Γέννηση θυγατέρας"
 
 #: app/GedcomTag.php:741 app/GedcomTag.php:750 app/GedcomTag.php:759
 msgid "Birth of a grandchild"
@@ -2780,31 +2775,31 @@ msgstr "Γέννηση εγγονιού"
 
 #: app/GedcomTag.php:739
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Γέννηση εγγονής"
 
 #: app/GedcomTag.php:748
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Γέννηση εγγονής"
 
 #: app/GedcomTag.php:757
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Γέννηση εγγονής"
 
 #: app/GedcomTag.php:737
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Γέννηση εγγονού"
 
 #: app/GedcomTag.php:746
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Γέννηση εγγονού"
 
 #: app/GedcomTag.php:755
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Γέννηση εγγονού"
 
 #: app/GedcomTag.php:764
 msgid "Birth of a half-brother"
@@ -2832,11 +2827,11 @@ msgstr ""
 
 #: statistics.php:424
 msgid "Birth places"
-msgstr "Τόποι γεννησεων"
+msgstr "Τοποθεσιά γεννήσεων"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr ""
+msgstr "Η τοποθεσία γέννησης περιέχει"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:29 modules_v3/birth_report/report.xml:3
@@ -2856,7 +2851,7 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:182
 msgid "Blessing"
-msgstr "Ευλογία"
+msgstr "Ευλογολογία"
 
 #: admin_module_blocks.php:66
 msgid "Block"
@@ -2895,7 +2890,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
 msgid "Bolivia"
-msgstr "Bolivien"
+msgstr "Βολιβία"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1501
@@ -2927,7 +2922,7 @@ msgstr "Και οι δύο εν ζωή"
 
 #: app/Functions/FunctionsPrintLists.php:627
 msgid "Both dead"
-msgstr ""
+msgstr "Και οι δυο απεβίωσαν"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -2958,11 +2953,11 @@ msgstr "Κλάδοι της οικογένειας %s"
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
 msgid "Brazil"
-msgstr "Brasilien"
+msgstr "Βραζιλία"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
-msgstr "Παρανυφάκι"
+msgstr "Παράνυμφος"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
@@ -3013,7 +3008,7 @@ msgstr "Britisches Territorium im Indischen Ozean"
 #. I18N: Name of a country or state
 #: app/Stats.php:6892
 msgid "British Virgin Islands"
-msgstr "Britische Jungferninseln"
+msgstr "Βρετανικοί Παρθένοι νήσοι"
 
 #: modules_v3/individual_ext_report/report.xml:319
 #: modules_v3/individual_report/report.xml:316
@@ -3057,7 +3052,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6671
 msgid "Bulgaria"
-msgstr "Bulgarien"
+msgstr "Βουλγαρία"
 
 #. I18N: gedcom tag BURI
 #: app/GedcomTag.php:190 calendar.php:270
@@ -3070,15 +3065,15 @@ msgstr "Ταφή"
 
 #: app/GedcomTag.php:869
 msgid "Burial of a brother"
-msgstr ""
+msgstr "Ταφή αδελφού"
 
 #: app/GedcomTag.php:792
 msgid "Burial of a child"
-msgstr "Ταφή παιδιού"
+msgstr "Ταφή τέκνου"
 
 #: app/GedcomTag.php:790
 msgid "Burial of a daughter"
-msgstr ""
+msgstr "Ταφή θυγατέρας"
 
 #: app/GedcomTag.php:860
 msgid "Burial of a father"
@@ -3090,59 +3085,59 @@ msgstr "Ταφή εγγονιού"
 
 #: app/GedcomTag.php:799
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Ταφή εγγονής"
 
 #: app/GedcomTag.php:808
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Ταφή εγγονής"
 
 #: app/GedcomTag.php:817
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Ταφή εγγονής"
 
 #: app/GedcomTag.php:824
 msgid "Burial of a grandfather"
-msgstr ""
+msgstr "Ταφή παππού"
 
 #: app/GedcomTag.php:826
 msgid "Burial of a grandmother"
-msgstr ""
+msgstr "Ταφή γιαγίας"
 
 #: app/GedcomTag.php:828
 msgid "Burial of a grandparent"
-msgstr ""
+msgstr "Ταφη παππούδων"
 
 #: app/GedcomTag.php:797
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Ταφή εγγονού"
 
 #: app/GedcomTag.php:806
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Ταφή εγγονού"
 
 #: app/GedcomTag.php:815
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Ταφή εγγονού"
 
 #: app/GedcomTag.php:851
 msgid "Burial of a half-brother"
-msgstr ""
+msgstr "Ταφή ετεροθαλούς αδελφού"
 
 #: app/GedcomTag.php:855
 msgid "Burial of a half-sibling"
-msgstr "Ταφή ετεροθαλούς αδερφιού"
+msgstr "Ταφή ετεροθαλούς αδελφιού"
 
 #: app/GedcomTag.php:853
 msgid "Burial of a half-sister"
-msgstr ""
+msgstr "Ταφή ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:878
 msgid "Burial of a husband"
-msgstr ""
+msgstr "Ταφή σύζυγου"
 
 #: app/GedcomTag.php:842
 msgid "Burial of a maternal grandfather"
@@ -3253,12 +3248,12 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:362 app/Datatables.php:60
 msgid "Calculating…"
-msgstr ""
+msgstr "Υπολογισμός..."
 
 #: app/Module/YahrzeitModule.php:271 app/Theme/AbstractTheme.php:1142
 #: lifespan.php:101
 msgid "Calendar"
-msgstr ""
+msgstr "Ημερολόγιο"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:631 admin_trees_config.php:633
@@ -3275,7 +3270,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:1968 app/GedcomTag.php:196
 #: edit_interface.php:1192
 msgid "Call number"
-msgstr ""
+msgstr "Καλέστε το τηλέφωνο"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6769
@@ -3285,7 +3280,7 @@ msgstr "Kambodscha"
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Cameroon"
-msgstr "Kamerun"
+msgstr "Καμερούν"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
@@ -3295,7 +3290,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
 msgid "Canada"
-msgstr "Kanada"
+msgstr "Καναδάς"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6699
@@ -3333,7 +3328,7 @@ msgstr "Κατηγορίες"
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:200
 msgid "Cause"
-msgstr ""
+msgstr "Αιτία"
 
 #: app/GedcomTag.php:268
 msgid "Cause of death"
@@ -3354,7 +3349,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6704
 msgid "Cayman Islands"
-msgstr "Kaimaninseln"
+msgstr "νήσοι Κεϊμαν"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
@@ -3389,7 +3384,7 @@ msgstr "Ημ/νία απογραφής"
 
 #: app/GedcomTag.php:208
 msgid "Census place"
-msgstr ""
+msgstr "Τοποθεσία απογραφής"
 
 #: app/Module/CensusAssistantModule.php:181
 msgid "Census transcript"
@@ -3398,7 +3393,7 @@ msgstr "Έκθεση απογραφής"
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
 msgid "Central African Republic"
-msgstr "Zentralafrikanische Republik"
+msgstr "Κεντρική Αφρικανική Δημοκρατία"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1505
@@ -3408,11 +3403,11 @@ msgstr "Πιστοποιητικό"
 #. I18N: Name of a country or state
 #: app/Stats.php:6869
 msgid "Chad"
-msgstr "Tschad"
+msgstr "Τσάντ"
 
 #: app/Controller/FamilyController.php:77 edit_interface.php:1847
 msgid "Change family members"
-msgstr "Αλλαγή των Μελών της Οικογένειας"
+msgstr "Αλλαγή μελών οικογένειας"
 
 #: app/Module/GoogleMapsModule.php:2898
 msgid "Change flag"
@@ -3451,7 +3446,7 @@ msgstr "Αλλαγές"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:80
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Αλλαγές την τελευταία ημέρα"
@@ -3534,7 +3529,7 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:219
 msgid "Child"
-msgstr "Παιδί"
+msgstr "Τέκνο"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:480
@@ -3545,23 +3540,23 @@ msgstr ""
 #: app/Module/InteractiveTree/TreeView.php:352
 #, php-format
 msgid "Child of %s"
-msgstr "Παιδί των %s"
+msgstr "Τέκνο των %s"
 
 #: app/Functions/FunctionsPrintLists.php:279
 #: app/Functions/FunctionsPrintLists.php:710
 #: modules_v3/family_group_report/report.xml:761
 #: modules_v3/relative_ext_report/report.xml:115 statisticsplot.php:968
 msgid "Children"
-msgstr "Παιδιά"
+msgstr "Τέκνα"
 
 #: statistics.php:314
 msgid "Children in family"
-msgstr ""
+msgstr "Τέκνα στην οικογένεια"
 
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:483
 msgid "Children of "
-msgstr ""
+msgstr "τέκνα του"
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
@@ -3595,12 +3590,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
 msgid "Chile"
-msgstr ""
+msgstr "Χιλή"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6691
 msgid "China"
-msgstr ""
+msgstr "Κίνα"
 
 #: reportengine.php:111 reportengine.php:115
 msgid "Choose a report to run"
@@ -3610,7 +3605,7 @@ msgstr "Επιλογή αναφοράς"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Choose relatives"
-msgstr ""
+msgstr "Επιλογή συγγενών"
 
 #: addmedia.php:449 admin_media_upload.php:207
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
@@ -3634,15 +3629,15 @@ msgstr "Βάπτιση"
 
 #: app/GedcomTag.php:932
 msgid "Christening of a brother"
-msgstr ""
+msgstr "Βάφτιση αδελφού"
 
 #: app/GedcomTag.php:891
 msgid "Christening of a child"
-msgstr "Βάφτιση παιδιού"
+msgstr "Βάφτιση τέκνου"
 
 #: app/GedcomTag.php:889
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "Βάπτιση θυγατέρας"
 
 #: app/GedcomTag.php:900 app/GedcomTag.php:909 app/GedcomTag.php:918
 msgid "Christening of a grandchild"
@@ -3650,43 +3645,43 @@ msgstr "Βάφτιση εγγονιού"
 
 #: app/GedcomTag.php:898
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:907
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:916
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Βάπτιση εγγονής"
 
 #: app/GedcomTag.php:896
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:905
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:914
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Βάπτιση εγγονού"
 
 #: app/GedcomTag.php:923
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "Βάπτιση ετεροθαλή αδελφού"
 
 #: app/GedcomTag.php:927
 msgid "Christening of a half-sibling"
-msgstr "Βάφτιση ετεροθαλούς αδερφιού"
+msgstr "Βάφτιση ετεροθαλούς αδελφιού"
 
 #: app/GedcomTag.php:925
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "Βάπτιση ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:936
 msgid "Christening of a sibling"
@@ -3694,7 +3689,7 @@ msgstr "Βάφτιση αδερφιού"
 
 #: app/GedcomTag.php:934
 msgid "Christening of a sister"
-msgstr ""
+msgstr "Βάπτιση αδελφής"
 
 #: app/GedcomTag.php:887
 msgid "Christening of a son"
@@ -3703,7 +3698,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6703
 msgid "Christmas Island"
-msgstr "Weihnachtsinsel"
+msgstr "νήσος Χριστουγέννων"
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
@@ -3711,7 +3706,7 @@ msgstr "Διενεργών περιτομές"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Αναφορά"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -3719,7 +3714,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr "Λεπτομέρειες παραπομπής"
+msgstr "Λεπτομέρειες αναφοράς"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:229
@@ -3742,23 +3737,23 @@ msgstr "Πολιτικός γάμος"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr "Πολιτικός ληξίαρχος"
+msgstr "Πολιτικό ληξιαρχείο"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Πολιτικό ληξιαρχείο"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Πολιτικό ληξιαρχείο"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
 #: admin_site_clean.php:49 app/Theme/AdministrationTheme.php:77
 msgid "Clean up data folder"
-msgstr "Καθαρισμός καταλόγου δεδομένων"
+msgstr "Καθαρισμός φακέλου δεδομένων"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -3798,7 +3793,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6697
 msgid "Colombia"
-msgstr "Kolumbien"
+msgstr "Κολομβία"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:137
@@ -3852,14 +3847,14 @@ msgstr "Komoren"
 #: app/Controller/CompactController.php:47
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "Σύντομο δέντρο"
+msgstr "Συμπίεση δέντρου"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:44
 #: app/Controller/CompactController.php:117
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Σύντομο δέντρο: %s"
+msgstr "Συμπίεση δέντρου: %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -3936,7 +3931,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:208 app/Module/StoriesModule.php:339
 #: app/Theme/AbstractTheme.php:1396 app/Theme/AdministrationTheme.php:208
 msgid "Control panel"
-msgstr ""
+msgstr "Πίνακας Ελέγχου"
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:407
 #: app/Module/ClippingsCartModule.php:772
@@ -3946,34 +3941,34 @@ msgstr "Θέλετε να μετατρέψετε αυτό το GEDCOM από UTF
 #. I18N: Name of a country or state
 #: app/Stats.php:6696
 msgid "Cook Islands"
-msgstr "Cookinseln"
+msgstr "νήσοι Κούκ"
 
 #: app/Theme/AbstractTheme.php:403
 msgid "Cookies"
-msgstr ""
+msgstr "Cookies"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Copenhagen, Denmark"
-msgstr ""
+msgstr "Κοπενγχάγη, Δανία"
 
 #: app/Functions/FunctionsPrintFacts.php:178
 #: app/Functions/FunctionsPrintFacts.php:782
 #: app/Functions/FunctionsPrintFacts.php:996
 #: app/Functions/FunctionsPrintFacts.php:1139
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:188
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Αντιγραφή όλων των καταχωρήσεων από το %1$s στο %2$s."
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:367
 msgid "Copy files…"
-msgstr ""
+msgstr "Αντιγραφή αρχείων..."
 
 #: admin_site_upgrade.php:337
 #, php-format
@@ -3983,7 +3978,7 @@ msgstr ""
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:247
 msgid "Copyright"
-msgstr "Πνευματική ιδιοκτησία"
+msgstr "Πνευματικά δικαιώματα"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
@@ -4025,15 +4020,15 @@ msgstr "Περιφέρεια"
 
 #: admin_media.php:311
 msgid "Create"
-msgstr ""
+msgstr "Δημιουργία"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Δημιουργία οικογένειας"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Δημιουργια οικογένειας απο υπάρχοντα άτομα"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4133,29 +4128,29 @@ msgstr ""
 
 #: app/GedcomTag.php:979
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Αποτέφρωση παππού"
 
 #: app/GedcomTag.php:981
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "Αποτέφρωση γιαγιάς"
 
 #: app/GedcomTag.php:952
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Αποτέφρωση εγγονού"
 
 #: app/GedcomTag.php:961
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Αποτέφρωση εγγονού"
 
 #: app/GedcomTag.php:970
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Αποτέφρωση εγγονού"
 
 #: app/GedcomTag.php:1006
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "Αποτέφρωση ετεροθαλούς αδελφού"
 
 #: app/GedcomTag.php:1010
 msgid "Cremation of a half-sibling"
@@ -4163,11 +4158,11 @@ msgstr "Αποτέφρωση ετεροθαλούς αδερφιού"
 
 #: app/GedcomTag.php:1008
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "Αποτέφρωση ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:1033
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "Αποτέφρωση του συζύγου"
 
 #: app/GedcomTag.php:997
 msgid "Cremation of a maternal grandfather"
@@ -4183,7 +4178,7 @@ msgstr "Αποτέφρωση μητέρας"
 
 #: app/GedcomTag.php:1019
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "Αποτέφρωση γονέα"
 
 #: app/GedcomTag.php:988
 msgid "Cremation of a paternal grandfather"
@@ -4195,15 +4190,15 @@ msgstr ""
 
 #: app/GedcomTag.php:1028
 msgid "Cremation of a sibling"
-msgstr "Αποτέφρωση αδερφιού"
+msgstr "Αποτέφρωση αδελφιού"
 
 #: app/GedcomTag.php:1026
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "Αποτέφρωση αδελφής"
 
 #: app/GedcomTag.php:943
 msgid "Cremation of a son"
-msgstr ""
+msgstr "Αποτέφρωση υιού"
 
 #: app/GedcomTag.php:1037
 msgid "Cremation of a spouse"
@@ -4211,17 +4206,17 @@ msgstr "Αποτέφρωση συζύγου"
 
 #: app/GedcomTag.php:1035
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "Αποτέφρωση της συζύγου"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6749
 msgid "Croatia"
-msgstr "Kroatien"
+msgstr "Κροατία"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6701
 msgid "Cuba"
-msgstr "Kuba"
+msgstr "Κούβα"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
@@ -4264,12 +4259,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6705
 msgid "Cyprus"
-msgstr "Zypern"
+msgstr "Κύπρος"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
 msgid "Czech Republic"
-msgstr "Tschechische Republik"
+msgstr "Τσεχική Δημοκρατία"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1145
@@ -4669,7 +4664,7 @@ msgstr "Ημ/νία θανάτου απο"
 
 #: app/GedcomTag.php:1125
 msgid "Death of a brother"
-msgstr ""
+msgstr "Θάνατος αδελφού"
 
 #: app/GedcomTag.php:1048
 msgid "Death of a child"
@@ -4677,7 +4672,7 @@ msgstr "Θάνατος παιδιού"
 
 #: app/GedcomTag.php:1046
 msgid "Death of a daughter"
-msgstr ""
+msgstr "Θάνατος θυγατέρας"
 
 #: app/GedcomTag.php:1116
 msgid "Death of a father"
@@ -4693,17 +4688,17 @@ msgstr "Θάνατος εγγονιού"
 
 #: app/GedcomTag.php:1055
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Θάνατος εγγονής"
 
 #: app/GedcomTag.php:1064
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Θάνατος εγγονής"
 
 #: app/GedcomTag.php:1073
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Θάνατος εγγονής"
 
 #: app/GedcomTag.php:1080
 msgid "Death of a grandfather"
@@ -4813,7 +4808,7 @@ msgstr "Θάνατοι ανα αιώνα"
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Δεκ"
 
 #: app/Functions/FunctionsPrintLists.php:484
 #: app/Functions/FunctionsPrintLists.php:949
@@ -5015,7 +5010,7 @@ msgstr "Ενδιαφέροντα απογόνων"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr ""
+msgstr "Απόγονοι του"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:61
@@ -5039,7 +5034,7 @@ msgstr "Περιγραφή META tag"
 
 #: app/Module/CensusAssistantModule.php:506
 msgid "Description unavailable"
-msgstr ""
+msgstr "Μη διαθέσιμη περιγραφή"
 
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:279
@@ -5349,7 +5344,6 @@ msgstr ""
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:137
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "Επεξεργασία συχνής ερώτησης"
 
@@ -5431,7 +5425,7 @@ msgstr "Εκπαίδευση"
 #. I18N: Name of a country or state
 #: app/Stats.php:6714
 msgid "Egypt"
-msgstr "Ägypten"
+msgstr "Αίγυπτος"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
@@ -5500,12 +5494,12 @@ msgstr "Εργαζόμενος"
 #: app/GedcomCode/GedcomCodeRela.php:105
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr ""
+msgstr "Εργαζόμενη"
 
 #: app/GedcomCode/GedcomCodeRela.php:103
 msgctxt "MALE"
 msgid "Employee"
-msgstr ""
+msgstr "Εργαζόμενος"
 
 #: app/GedcomCode/GedcomCodeRela.php:116 app/GedcomTag.php:457
 #: app/GedcomTag.php:512
@@ -5515,12 +5509,12 @@ msgstr "Εργοδότης"
 #: app/GedcomCode/GedcomCodeRela.php:114
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr ""
+msgstr "Εργοδότρια"
 
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "Εργοδότης"
 
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:706
@@ -5558,7 +5552,7 @@ msgstr "Αρραβώνας"
 #. I18N: Name of a country or state
 #: app/Stats.php:6715
 msgid "England"
-msgstr ""
+msgstr "Αγγλία"
 
 #: addmedia.php:421 app/Module/FamilyTreeFavoritesModule.php:196
 msgid "Enter an individual, family, or source ID"
@@ -5580,12 +5574,12 @@ msgstr "Πλήρης εγγραφή"
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Equatorial Guinea"
-msgstr "Äquatorialguinea"
+msgstr "Ισημερινλη Γουϊνεα"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6716
 msgid "Eritrea"
-msgstr ""
+msgstr "Ερυθραία"
 
 #: import.php:192
 #, php-format
@@ -5629,12 +5623,12 @@ msgstr "Κατα προσέγγιση ημ/νίες για γέννηση και
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
 msgid "Estonia"
-msgstr "Estland"
+msgstr "Εσθονία"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
 msgid "Ethiopia"
-msgstr "Äthiopien"
+msgstr "Αιθιοπία"
 
 #: statistics.php:688
 msgid "Europe"
@@ -5710,7 +5704,7 @@ msgstr ""
 
 #: admin_trees_download.php:129
 msgid "Export preferences"
-msgstr ""
+msgstr "Εξαγωγή προτιμήσεων"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the 	last YY years
 #: admin_trees_config.php:406
@@ -6306,9 +6300,8 @@ msgid "Folder name on server"
 msgstr "Όνομα φακέλου στον server"
 
 #: login.php:337
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Please click on the link below and fill in the requested data to verify your Account and Email address."
+msgstr "Πατήστε στον σύνδεσμο για να πιστοποιήσετε την διεύθυνση email σας"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6338,19 +6331,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:354
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
 msgstr "Για βοήθεια με γενεαλογικές ερωτήσεις, παρακαλώ επικοινωνήστε με %s"
 
 #: app/Theme/AbstractTheme.php:365
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
 msgstr "Για τεχνική υποστήριξη και πληροφορίες επικοινωνήστε με %s"
 
 #: app/Theme/AbstractTheme.php:343
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Για τεχνική υποστήριξη ή γενεαλογικές ερωτήσεις, παρακαλώ επικοινωνήστε με τον(ην) %s"
+msgstr "Για τεχνική υποστήριξη ή γενεαλογικές ερωτήσεις παρακαλώ επικοινωνήστε με τον(ην) %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:280
@@ -6743,7 +6736,7 @@ msgstr "Google Maps™"
 #: app/Module/GoogleMapsModule.php:199 app/Module/GoogleMapsModule.php:208
 #: app/Module/GoogleMapsModule.php:298 app/Module/GoogleMapsModule.php:530
 msgid "Google Maps™ preferences"
-msgstr "Επιλογές Google Maps™"
+msgstr "Προτιμήσεις Google Maps™"
 
 #: app/Module/GoogleMapsModule.php:322
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
@@ -6769,7 +6762,7 @@ msgstr "Μεγαλύτερη ηλικία μεταξύ αδερφών"
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
 msgid "Greece"
-msgstr "Griechenland"
+msgstr "Ελλάδα"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:54
@@ -6779,7 +6772,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
 msgid "Greenland"
-msgstr "Grönland"
+msgstr "Γροιλανδία"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:273
@@ -6912,11 +6905,11 @@ msgstr "Ενταφιάσθηκε"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
-msgstr ""
+msgstr "βαπτίστηκε"
 
 #: modules_v3/ahnentafel_report/report.xml:314
 msgid "He was cremated"
-msgstr ""
+msgstr "αποτεφρώθηκε"
 
 #: app/Module/CensusAssistantModule.php:140
 #: app/Module/CensusAssistantModule.php:141
@@ -6956,11 +6949,11 @@ msgstr "Γεια σου %s …"
 #: login.php:384
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Γειά σου %s …<br>Ευχαριστώ για την αίτηση εγγραφής."
+msgstr "Γειά σου %s …<br>Ευχαριστούμε για το αίτημα εγγραφής."
 
 #: login.php:315 login.php:553
 msgid "Hello administrator…"
-msgstr "Γεια σου διαχειριστή …"
+msgstr "Γεια σου διαχειριστή…"
 
 #: app/Functions/FunctionsPrint.php:189 help_text.php:308
 msgid "Help"
@@ -6969,7 +6962,7 @@ msgstr "Βοήθεια"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Helsinki, Finland"
-msgstr ""
+msgstr "Ελσινκι, Φιλανδία"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6987,7 +6980,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -7063,18 +7056,18 @@ msgstr "Ολοκαύτωμα"
 #. I18N: Name of a module
 #: admin_modules.php:221 app/Module/WelcomeBlockModule.php:30
 msgid "Home page"
-msgstr "Σελίδα καλωσορίσματος"
+msgstr "Αρχική σελίδα"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
 msgid "Honduras"
-msgstr ""
+msgstr "Ονδούρα"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
 #: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6746
 msgid "Hong Kong"
-msgstr ""
+msgstr "Χονγκ Κονγκ"
 
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:186 app/Module/HourglassChartModule.php:33
@@ -7105,7 +7098,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
 msgid "Hungary"
-msgstr "Ungarn"
+msgstr "Ουγγαρία"
 
 #. I18N: gedcom tag HUSB
 #: app/Functions/FunctionsEdit.php:1726 app/Functions/FunctionsPrint.php:382
@@ -7135,12 +7128,12 @@ msgstr "Διεύθυνση IP"
 #. I18N: Name of a country or state
 #: app/Stats.php:6759
 msgid "Iceland"
-msgstr "Island"
+msgstr "Ισλανδία"
 
 #: app/SurnameTradition.php:87
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr ""
+msgstr "Ισλανδική"
 
 #: app/Module/GoogleMapsModule.php:2471 app/Module/GoogleMapsModule.php:3238
 msgid "Icon"
@@ -7283,7 +7276,7 @@ msgstr "Εισαγωγή"
 
 #: admin_trees_manage.php:173
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Ειδαγωγή αρχείου GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:3335
 msgid "Import all places from a family tree"
@@ -7291,7 +7284,7 @@ msgstr "Εισαγωγή όλων των τοποθεσιών απο ενα οι
 
 #: admin_trees_manage.php:267
 msgid "Import preferences"
-msgstr ""
+msgstr "Προτιμήσεις εισαγωγής"
 
 #: admin_trees_config.php:788 admin_trees_merge.php:79
 #: admin_trees_renumber.php:260
@@ -7351,7 +7344,7 @@ msgstr "Να συμπεριληφθεί η άμεση οικογένειά το�
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "India"
-msgstr "Indien"
+msgstr "Ινδία"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -7471,7 +7464,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:167
 msgid "Installation folder"
-msgstr "Κατάλογος εγκατάστασης"
+msgstr "Φάκελος εγκατάστασης"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:187 app/Module/InteractiveTreeModule.php:32
@@ -7488,28 +7481,28 @@ msgstr "Διαδραστικό δέντρο: %s"
 
 #: app/Functions/FunctionsEdit.php:128
 msgid "Internal messaging"
-msgstr ""
+msgstr "Εσωτερικά μηνύματα"
 
 #: app/Functions/FunctionsEdit.php:129
 msgid "Internal messaging with emails"
-msgstr "Εσωτερική Επικοινωνία μέσω Ηλεκτρονικού Ταχυδρομείου"
+msgstr "Εσωτερική μηνύματα μέσω Ηλεκτρονικού Ταχυδρομείου"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1201
 msgid "Interred"
-msgstr "Ταφή"
+msgstr "ενταφιάστηκε"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1199
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr ""
+msgstr "ενταφιάστηκε"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1197
 msgctxt "MALE"
 msgid "Interred"
-msgstr ""
+msgstr "ενταφιάστηκε"
 
 #: import.php:113
 msgid "Invalid GEDCOM file - no header record found."
@@ -7526,27 +7519,27 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6757
 msgid "Iran"
-msgstr ""
+msgstr "Ιράν"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6758
 msgid "Iraq"
-msgstr "Irak"
+msgstr "Ιράκ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6756
 msgid "Ireland"
-msgstr "Irland"
+msgstr "Ιρλανδία"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
 msgid "Isle of Man"
-msgstr "Insel Man"
+msgstr "νήσος του Μάν"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6760
 msgid "Israel"
-msgstr ""
+msgstr "Ισραήλ"
 
 #: admin_site_upgrade.php:75 admin_site_upgrade.php:79
 msgid "It can take several minutes to download and install the upgrade. Be patient."
@@ -7555,7 +7548,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6761
 msgid "Italy"
-msgstr "Italien"
+msgstr "Ιταλία"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
@@ -7589,12 +7582,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6762
 msgid "Jamaica"
-msgstr "Jamaika"
+msgstr "Τζαμάϊκα"
 
 #: app/Date/CalendarDate.php:311
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "Ιαν"
 
 #: app/Date/CalendarDate.php:211
 msgctxt "GENITIVE"
@@ -7619,7 +7612,7 @@ msgstr "Ιανουάριος"
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
 msgid "Japan"
-msgstr ""
+msgstr "Ιαπωνία"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:273 help_text.php:168
@@ -7639,7 +7632,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6764
 msgid "Jordan"
-msgstr "Jordanien"
+msgstr "Ιορδανία"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:205
@@ -7654,7 +7647,7 @@ msgstr "Χρονικό"
 #: app/Date/CalendarDate.php:317
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "Ιουλ"
 
 #. I18N: The julian calendar
 #: app/Date.php:199 help_text.php:163
@@ -7762,7 +7755,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6766
 msgid "Kazakhstan"
-msgstr "Kasachstan"
+msgstr "Καζακστάν"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:95
 msgid "Keep"
@@ -7770,7 +7763,7 @@ msgstr "Διατήρηση"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:116
 msgid "Keep link in list"
-msgstr "Διατήρηση Συνδέσμου στην λίστα"
+msgstr "Διατήρηση συνδέσμου στην λίστα"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:272
@@ -7791,7 +7784,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
 msgid "Kenya"
-msgstr "Kenia"
+msgstr "Κένυα"
 
 #: app/Module/HtmlBlockModule.php:157
 msgid "Keyword examples"
@@ -7868,7 +7861,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6772
 msgid "Korea"
-msgstr ""
+msgstr "Κορέα"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
@@ -8025,7 +8018,7 @@ msgstr "Γεωγραφικό Πλάτος"
 #. I18N: Name of a country or state
 #: app/Stats.php:6784
 msgid "Latvia"
-msgstr "Lettland"
+msgstr "Λεττονία"
 
 #: ancestry.php:64 descendancy.php:85 fanchart.php:91 hourglass.php:80
 #: pedigree.php:207
@@ -8049,7 +8042,7 @@ msgstr "Φύλλα"
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
 msgid "Lebanon"
-msgstr "Libanon"
+msgstr "Λίβανος"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8114,7 +8107,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
 msgid "Libya"
-msgstr "Libyen"
+msgstr "Λιβύη"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
@@ -8134,7 +8127,7 @@ msgstr "Χρονοδιαγράμματα ζωής"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:215
 msgid "Lima, Peru"
-msgstr ""
+msgstr "Λίμα, Περού"
 
 #. I18N: You need to:
 #: login.php:570
@@ -9001,7 +8994,7 @@ msgstr "Μήνυμα"
 #. I18N: Name of a module
 #: admin_site_config.php:306 app/Module/UserMessagesModule.php:32
 msgid "Messages"
-msgstr "Μυνήματα"
+msgstr "Μηνύματα"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
@@ -11842,16 +11835,16 @@ msgstr "Επιλογή ημερομηνίας"
 
 #: edit_interface.php:1201
 msgid "Select events"
-msgstr "Επιλέξτε Γεγονότα"
+msgstr "Επιλογή γεγονότων"
 
 #: lifespan.php:76
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Επιλογή ατόμων ανά τοποθεσία ή ημερομηνία"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:42
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr ""
+msgstr "Επιλογή αρχείων από το οικογ. δένδρο και αποθήκευση τους σε αρχείο GEDCOM."
 
 #: statistics.php:587 statistics.php:605 statistics.php:620
 msgid "Select the desired age interval"
@@ -11899,7 +11892,7 @@ msgstr "Αποστολή μηνύματος"
 
 #: admin_users_bulk.php:38
 msgid "Send a message to all users"
-msgstr "Αποστολή μυνήματος σε όλους τους χρήστες"
+msgstr "Αποστολή μηνύματος σε όλους τους χρήστες"
 
 #: admin_users_bulk.php:43
 msgid "Send a message to users who have never signed in"
@@ -11912,12 +11905,12 @@ msgstr "Αποστολή μηνύματος σε χρήστες που δεν σ
 #. I18N: Menu entry
 #: admin_users_bulk.php:25 app/Theme/AdministrationTheme.php:139
 msgid "Send broadcast messages"
-msgstr "Αποστολή μαζικών μυνημάτων"
+msgstr "Αποστολή μαζικών μηνυμάτων"
 
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:181
 msgid "Send out reminder emails"
-msgstr "Αποστολή υπενθυμιστικών email;"
+msgstr "Αποστολή email υπενθύμισης;"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:319
@@ -15076,11 +15069,11 @@ msgstr "Χρήση Google Maps™ για ιεραρχία τοποθεσιών"
 
 #: admin_site_config.php:115 app/Functions/FunctionsEdit.php:251
 msgid "Use PHP mail to send messages"
-msgstr "Χρήση PHP mail για αποστολή μυνημάτων"
+msgstr "Χρήση PHP mail για αποστολή μηνυμάτων"
 
 #: admin_site_config.php:117 app/Functions/FunctionsEdit.php:252
 msgid "Use SMTP to send messages"
-msgstr "Χρήση SMTP για αποστολή μυνημάτων"
+msgstr "Χρήση SMTP για αποστολή μηνυμάτων"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
