@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-05 23:07+0000\n"
+"PO-Revision-Date: 2017-08-06 23:53+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -276,8 +276,8 @@ msgstr[1] "Nzeté ya mabótá %s"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "nkɔ́kɔ %s"
-msgstr[1] "bankɔ́kɔ %s"
+msgstr[0] "nkɔ́kɔ mwǎna %s"
+msgstr[1] "bankɔ́kɔ bǎna %s"
 
 #: app/I18N.php:806
 #, php-format
@@ -466,20 +466,20 @@ msgstr "%s mbúla ya mbótama"
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "mwǎna nkána x %s"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "mwǎna nkána x %s"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "mwǎna nkána x %s"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
@@ -733,7 +733,7 @@ msgstr "Liyémi likotálisa mokangano o káti ya bato bábalé."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Liyémi lya bankɔ́kɔ mpé bakitani ya moto mɔ̌kɔ́, na loléngé lya búku ya libótá."
+msgstr "Liyémi lya bankɔ́kɔ mpé bakitani ba moto mɔ̌kɔ́, na loléngé lya búku ya libótá."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
@@ -1606,7 +1606,7 @@ msgstr "Bobɔ́kɔli bwa mwǎna mwǎsí"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
@@ -1624,17 +1624,17 @@ msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:881
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:890
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:899
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-brother"
@@ -1983,14 +1983,14 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr "Bankɔ́kɔ ya "
+msgstr "Bankɔ́kɔ ba "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
 #: app/Controller/AncestryController.php:80
 #, php-format
 msgid "Ancestors of %s"
-msgstr "Bankɔ́kɔ ya %s"
+msgstr "Bankɔ́kɔ ba %s"
 
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
@@ -3151,17 +3151,17 @@ msgstr "Likundí lya nkɔ́kɔ"
 
 #: app/GedcomTag.php:1105
 msgid "Burial of a grandson"
-msgstr "Likundí lya nkɔ́kɔ mwǎna"
+msgstr "Likundí lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1114
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Likundí lya nkɔ́kɔ mwǎna"
+msgstr "Likundí lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1123
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Likundí lya nkɔ́kɔ mwǎna"
+msgstr "Likundí lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
@@ -3189,7 +3189,7 @@ msgstr "Likundí lya nkɔ́kɔ-mwǎsí na bomamá"
 
 #: app/GedcomTag.php:1154
 msgid "Burial of a maternal grandparent"
-msgstr "Likundí lya bankɔ́kɔ na bomamá"
+msgstr "Likundí lya nkɔ́kɔ na bomamá"
 
 #: app/GedcomTag.php:1170
 msgid "Burial of a mother"
@@ -3371,7 +3371,7 @@ msgstr ""
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr ""
+msgstr "Ntína ya liwâ"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
@@ -3688,7 +3688,7 @@ msgstr "Batisimo ya mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1208 app/GedcomTag.php:1217 app/GedcomTag.php:1226
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "Batisimo ya nkɔ́kɔ mwǎna"
 
 #: app/GedcomTag.php:1206
 msgid "Christening of a granddaughter"
@@ -3706,17 +3706,17 @@ msgstr "Batisimo ya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1204
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Batisimo ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1213
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Batisimo ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1222
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Batisimo ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
@@ -4156,11 +4156,11 @@ msgstr "Botumbi bwa ebembe ya tatá"
 
 #: app/GedcomTag.php:1293 app/GedcomTag.php:1302 app/GedcomTag.php:1311
 msgid "Cremation of a grand-parent"
-msgstr ""
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ"
 
 #: app/GedcomTag.php:1266 app/GedcomTag.php:1275 app/GedcomTag.php:1284
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ mwǎna"
 
 #: app/GedcomTag.php:1264
 msgid "Cremation of a granddaughter"
@@ -4178,25 +4178,25 @@ msgstr "Litumbi lya ebembe ya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1289
 msgid "Cremation of a grandfather"
-msgstr "Botumbi ebembe bwa nkɔ́kɔ-mobáli"
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ-mobáli"
 
 #: app/GedcomTag.php:1291
 msgid "Cremation of a grandmother"
-msgstr "Litumbi ebembe lya nkɔ́kɔ-mwǎsí"
+msgstr "Litumbi lya ebembe lya nkɔ́kɔ-mwǎsí"
 
 #: app/GedcomTag.php:1262
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1271
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1280
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-brother"
@@ -4216,11 +4216,11 @@ msgstr ""
 
 #: app/GedcomTag.php:1307
 msgid "Cremation of a maternal grandfather"
-msgstr "Botumbi ebembe bwa nkɔ́kɔ-mobáli na bomamá"
+msgstr "Litumbi lya ebembe ya nkɔ́kɔ-mobáli na bomamá"
 
 #: app/GedcomTag.php:1309
 msgid "Cremation of a maternal grandmother"
-msgstr "Litumbi ebembe lya nkɔ́kɔ-mwǎsí na bomamá"
+msgstr "Litumbi lya ebembe lya nkɔ́kɔ-mwǎsí na bomamá"
 
 #: app/GedcomTag.php:1327
 msgid "Cremation of a mother"
@@ -4232,7 +4232,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1298
 msgid "Cremation of a paternal grandfather"
-msgstr "Botumbi ebembe bwa nkɔ́kɔ-mobáli na botatá"
+msgstr "Litumbi lya ebembe lya nkɔ́kɔ-mobáli na botatá"
 
 #: app/GedcomTag.php:1300
 msgid "Cremation of a paternal grandmother"
@@ -4456,7 +4456,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr ""
+msgstr "Dáti ya liwâ"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
@@ -4697,83 +4697,83 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr ""
+msgstr "Liwâ"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr ""
+msgstr "Kúfa na mbóka na mbóka"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr ""
+msgstr "Mobú mwa liwâ kobanda na nsúka"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr ""
+msgstr "Mobú mwa liwâ kobanda na ebandeli"
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
-msgstr ""
+msgstr "Liwâ lya ndeko mobáli"
 
 #: app/GedcomTag.php:1360
 msgid "Death of a child"
-msgstr ""
+msgstr "Liwâ lya mwǎna"
 
 #: app/GedcomTag.php:1358
 msgid "Death of a daughter"
-msgstr "Nkúfa ya mwǎna mwǎsí"
+msgstr "Liwâ lya mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1428
 msgid "Death of a father"
-msgstr "Nkúfa ya tatá"
+msgstr "Liwâ lya tatá"
 
 #: app/GedcomTag.php:1396 app/GedcomTag.php:1405 app/GedcomTag.php:1414
 msgid "Death of a grand-parent"
-msgstr ""
+msgstr "Liwâ lya nkɔ́kɔ"
 
 #: app/GedcomTag.php:1369 app/GedcomTag.php:1378 app/GedcomTag.php:1387
 msgid "Death of a grandchild"
-msgstr ""
+msgstr "Liwâ lya nkɔ́kɔ mwǎna"
 
 #: app/GedcomTag.php:1367
 msgid "Death of a granddaughter"
-msgstr "Nkúfa ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1376
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Nkúfa ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1385
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Nkúfa ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1392
 msgid "Death of a grandfather"
-msgstr "Nkúfa ya nkɔ́kɔ-mobáli"
+msgstr "Liwâ lya nkɔ́kɔ-mobáli"
 
 #: app/GedcomTag.php:1394
 msgid "Death of a grandmother"
-msgstr "Nkúfa ya nkɔ́kɔ-mwǎsí"
+msgstr "Liwâ lya nkɔ́kɔ-mwǎsí"
 
 #: app/GedcomTag.php:1365
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1374
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1383
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Liwâ lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1419
 msgid "Death of a half-brother"
-msgstr ""
+msgstr "Liwâ lya ndeko mobáli"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
@@ -4781,78 +4781,78 @@ msgstr "Liwâ ya nkána"
 
 #: app/GedcomTag.php:1421
 msgid "Death of a half-sister"
-msgstr ""
+msgstr "Liwâ lya ndeko mwǎsi"
 
 #: app/GedcomTag.php:1446
 msgid "Death of a husband"
-msgstr ""
+msgstr "Liwâ lya mobáli"
 
 #: app/GedcomTag.php:1410
 msgid "Death of a maternal grandfather"
-msgstr "Nkúfa ya nkɔ́kɔ-mobáli na bomamá"
+msgstr "Liwâ lya nkɔ́kɔ-mobáli na bomamá"
 
 #: app/GedcomTag.php:1412
 msgid "Death of a maternal grandmother"
-msgstr "Nkúfa ya nkɔ́kɔ-mwǎsí na bomamá"
+msgstr "Liwâ lya nkɔ́kɔ-mwǎsí na bomamá"
 
 #: app/GedcomTag.php:1430
 msgid "Death of a mother"
-msgstr "Nkúfa ya mamá"
+msgstr "Liwâ lya mamá"
 
 #: app/GedcomTag.php:1432
 msgid "Death of a parent"
-msgstr ""
+msgstr "Liwâ lya mobóti"
 
 #: app/GedcomTag.php:1401
 msgid "Death of a paternal grandfather"
-msgstr "Nkúfa ya nkɔ́kɔ-mobáli na botatá"
+msgstr "Liwâ lya nkɔ́kɔ-mobáli na botatá"
 
 #: app/GedcomTag.php:1403
 msgid "Death of a paternal grandmother"
-msgstr "Nkúfa ya nkɔ́kɔ-mwǎsí na botatá"
+msgstr "Liwâ lya nkɔ́kɔ-mwǎsí na botatá"
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
-msgstr "Liwâ ya nkána"
+msgstr "Liwâ lya nkána"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
-msgstr ""
+msgstr "Liwâ lya ndeko mwǎsi"
 
 #: app/GedcomTag.php:1356
 msgid "Death of a son"
-msgstr ""
+msgstr "Liwâ lya mwǎna"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
-msgstr ""
+msgstr "Liwâ lya molóngani"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
-msgstr ""
+msgstr "Liwâ lya mwǎsi"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1459
 msgid "Death of one spouse"
-msgstr ""
+msgstr "Liwâ lya molóngani mɔ̌kɔ́"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
-msgstr "Esíká ya nkúfa ezalí na"
+msgstr "Esíká ya liwâ lizalí na"
 
 #: statistics.php:412
 msgid "Death places"
-msgstr "Bisíká bya nkúfa"
+msgstr "Bisíká bya liwâ"
 
 #. I18N: Name of a module/report
 #: app/Module/DeathReportModule.php:29 modules_v3/death_report/report.xml:3
 #: modules_v3/death_report/report.xml:32
 msgid "Deaths"
-msgstr ""
+msgstr "Mawâ"
 
 #: app/Stats.php:2046 statistics.php:122
 msgid "Deaths by century"
-msgstr ""
+msgstr "Mawâ na mibú nkámá na nkámá"
 
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for December"
@@ -4866,7 +4866,7 @@ msgstr "Mbótama na mibú zómi"
 
 #: app/Functions/FunctionsPrintLists.php:497
 msgid "Decade of death"
-msgstr ""
+msgstr "Liwâ na mibú zómi"
 
 #: app/Functions/FunctionsPrintLists.php:969
 msgid "Decade of marriage"
@@ -5065,14 +5065,14 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr "Bakitani ya "
+msgstr "Bakitani ba "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
 #: app/Module/ChartsBlockModule.php:103
 #, php-format
 msgid "Descendants of %s"
-msgstr "Bakitani ya %s"
+msgstr "Bakitani ba %s"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:74 admin_module_charts.php:67
@@ -5353,13 +5353,13 @@ msgstr "Mobú mwa mbótama ya libósó"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr ""
+msgstr "Liwâ lya yambo"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
 #: app/Module/HtmlBlockModule.php:226
 msgid "Earliest death year"
-msgstr ""
+msgstr "Mobú mwa liwâ lya yambo"
 
 #: statistics.php:232
 msgid "Earliest divorce"
@@ -6311,7 +6311,7 @@ msgstr ""
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Koluka mikangano mínsɔ"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6339,7 +6339,7 @@ msgstr "Koluka mikangano epayi ya bankɔ́kɔ"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Loluka mikangano mya pɛnɛpɛnɛ"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
@@ -6868,11 +6868,11 @@ msgstr ""
 
 #: family.php:83
 msgid "Grandparents"
-msgstr ""
+msgstr "Bankɔ́kɔ"
 
 #: statistics.php:163
 msgid "Greatest age at death"
-msgstr ""
+msgstr "Mobú monɛ́nɛ na ntángo ya liwâ"
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
@@ -8071,7 +8071,7 @@ msgstr "Mabótá minɛ́nɛ"
 
 #: statistics.php:319
 msgid "Largest number of grandchildren"
-msgstr ""
+msgstr "Bǎna ebelé kolúta"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:225
@@ -8094,7 +8094,7 @@ msgstr "Molúlú mwa nsúka"
 
 #: admin_users.php:852
 msgid "Last signed in"
-msgstr ""
+msgstr "Moyíngeli mwa nsúka"
 
 #: statistics.php:137
 msgid "Latest birth"
@@ -8108,13 +8108,13 @@ msgstr "Mobú mwa mbótama ya nsúka"
 
 #: statistics.php:138
 msgid "Latest death"
-msgstr ""
+msgstr "Liwâ lya nsúka"
 
 #: app/Module/FamilyTreeStatisticsModule.php:163
 #: app/Module/FamilyTreeStatisticsModule.php:362
 #: app/Module/HtmlBlockModule.php:231
 msgid "Latest death year"
-msgstr ""
+msgstr "Mobú mwa liwâ lya nsúka"
 
 #: statistics.php:240
 msgid "Latest divorce"
@@ -8706,7 +8706,7 @@ msgstr "Libála lya tatá"
 
 #: app/GedcomTag.php:1587 app/GedcomTag.php:1596 app/GedcomTag.php:1605
 msgid "Marriage of a grandchild"
-msgstr "Libàla ya nkɔ́kɔ mwǎna"
+msgstr "Libàla lya nkɔ́kɔ mwǎna"
 
 #: app/GedcomTag.php:1585
 msgid "Marriage of a granddaughter"
@@ -8724,17 +8724,17 @@ msgstr "Libàla lya nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:1583
 msgid "Marriage of a grandson"
-msgstr "Libàla ya nkɔ́kɔ mwǎna mobáli"
+msgstr "Libàla lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1592
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr "Libàla ya nkɔ́kɔ mwǎna mobáli"
+msgstr "Libàla lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1601
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "Libàla ya nkɔ́kɔ mwǎna mobáli"
+msgstr "Libàla lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1610
 msgid "Marriage of a half-brother"
@@ -9276,7 +9276,7 @@ msgstr "Sánzá ya mbótama ya mwǎna ya libósó na mokangano"
 
 #: statistics.php:515 statisticsplot.php:924
 msgid "Month of death"
-msgstr ""
+msgstr "Sánzá ya liwâ"
 
 #: statistics.php:525 statisticsplot.php:1082
 msgid "Month of first marriage"
@@ -10796,7 +10796,7 @@ msgstr ""
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr "Esíká ya nkúfa"
+msgstr "Esíká ya liwâ"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
@@ -11313,7 +11313,7 @@ msgstr ""
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Mibú mya pɛnɛpɛnɛ (&lt; 100)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
@@ -12482,7 +12482,7 @@ msgstr "Kotálisa balóngani óyo dáti ya libála eyébání tɛ́."
 
 #: ancestry.php:75
 msgid "Show cousins"
-msgstr "Kotálisa bandeko<br>(Bǎna ya bankána)"
+msgstr "Kotála bǎna ya bankána"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
@@ -12565,7 +12565,7 @@ msgstr ""
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Kotálisa sé mbótama, kúfa mpé mabála"
+msgstr "Kotálisa sé mbótama, mawâ mpé mabála"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
@@ -12784,16 +12784,16 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
 msgid "Sign in"
-msgstr ""
+msgstr "Kɔ́tá"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
-msgstr "Kobima"
+msgstr "Bimá"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:453
 msgid "Sign-in URL"
-msgstr ""
+msgstr "URL ya koyíngela"
 
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
@@ -14013,7 +14013,7 @@ msgstr ""
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
 msgid "Theme"
-msgstr ""
+msgstr "Mobímbí"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
@@ -14027,7 +14027,7 @@ msgstr ""
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "Mibímbí"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14184,7 +14184,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Libótá liye lizalí na bilílí bya kotálisa tɛ́."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14919,7 +14919,7 @@ msgstr ""
 
 #: statistics.php:114
 msgid "Total deaths"
-msgstr ""
+msgstr "Mawâ mánsɔ"
 
 #: statistics.php:216
 msgid "Total divorces"
@@ -15441,7 +15441,7 @@ msgstr ""
 
 #: admin.php:739
 msgid "Users who are signed in"
-msgstr ""
+msgstr "Basaleli bayíngelí"
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
@@ -15581,7 +15581,7 @@ msgstr ""
 
 #: calendar.php:292
 msgid "View this day"
-msgstr ""
+msgstr "Kotála mokɔlɔ moye"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15599,7 +15599,7 @@ msgstr "Kotála moto óyo"
 
 #: calendar.php:296
 msgid "View this month"
-msgstr ""
+msgstr "Kotála sánzá eye"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View this source"
@@ -15607,7 +15607,7 @@ msgstr "Kotála ebandela eye"
 
 #: calendar.php:300
 msgid "View this year"
-msgstr ""
+msgstr "Kotála mobú moye"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15731,16 +15731,16 @@ msgstr ""
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Boyéi bolámu %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Nkomá ya boyambi na lonkásá la boyíngeli"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "Boyéi bolámu na etando ya nzeté ya libótá liye"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -15799,7 +15799,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "Náni azali o káti ya etando"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
@@ -15932,7 +15932,7 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:64
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "Omiyíngelí lokóla %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
@@ -16003,7 +16003,7 @@ msgstr ""
 
 #: includes/session.php:506
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Ozalí na ndingisa tɛ́ ya kotála lonkásá loye."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
@@ -16023,7 +16023,7 @@ msgstr ""
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr ""
+msgstr "Obimí."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16305,7 +16305,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:375
 msgid "after death"
-msgstr ""
+msgstr "nsíma ya liwâ"
 
 #: statisticsplot.php:1133 statisticsplot.php:1183 statisticsplot.php:1233
 #: statisticsplot.php:1283
@@ -16668,7 +16668,7 @@ msgstr "Babóti ba sɛmɛ́ki mwǎsí"
 
 #: app/Stats.php:2911
 msgid "death"
-msgstr ""
+msgstr "liwâ"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3359 app/Module/GoogleMapsModule.php:3370
@@ -16725,18 +16725,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 8"
 
 #: app/Functions/Functions.php:534
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 8"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:491
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 8"
 
 #: app/Functions/Functions.php:763
 msgid "elder brother"
@@ -16752,18 +16752,18 @@ msgstr "yayá ya mwǎsí"
 
 #: app/Functions/Functions.php:575
 msgid "eleventh cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 11"
 
 #: app/Functions/Functions.php:540
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr "ndeko ya 11<br>(mnǎna ya nkána)"
+msgstr "mwǎna nkána ya 11"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:500
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr "ndeko ya 11<br>(mnǎna ya nkána)"
+msgstr "mwǎna nkána ya 11"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
@@ -16839,18 +16839,18 @@ msgstr "Tatá bokiló"
 
 #: app/Functions/Functions.php:583
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 15"
 
 #: app/Functions/Functions.php:548
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 15"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:512
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 15"
 
 #. I18N: A Spanish relationship name, such as fifth great-nephew
 #: app/Functions/Functions.php:643
@@ -16872,18 +16872,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:563
 msgid "fifth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 5"
 
 #: app/Functions/Functions.php:528
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 5"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 5"
 
 #. I18N: a program feature
 #: setup.php:146
@@ -16922,78 +16922,78 @@ msgstr ""
 
 #: app/Functions/Functions.php:555
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:470
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1090
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1136
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1148
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1150
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1152
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1198
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1200
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1204
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 1"
 
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s brother’s child"
@@ -17117,18 +17117,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:581
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 14"
 
 #: app/Functions/Functions.php:546
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 14"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:509
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 14"
 
 #. I18N: A Spanish relationship name, such as fourth great-nephew
 #: app/Functions/Functions.php:641
@@ -17150,18 +17150,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:561
 msgid "fourth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 4"
 
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 4"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:479
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 4"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:728 statistics.php:731 statistics.php:734 statistics.php:737
@@ -17201,17 +17201,17 @@ msgstr ""
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:826
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:926
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:816
 msgctxt "child’s daughter"
@@ -17231,17 +17231,17 @@ msgstr "nkɔ́kɔ mwǎna mwǎsí"
 #: app/Functions/Functions.php:1046
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "mobáli ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mobáli wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1068
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "mobáli ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mobáli wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1348
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "mobáli ya nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mobáli wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
@@ -17256,37 +17256,37 @@ msgstr "nkɔ́kɔ-mwǎsí"
 #: app/Functions/Functions.php:900
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "nkɔ́kɔ"
 
 #: app/Functions/Functions.php:820
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:832
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:930
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "mwǎsi wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "mwǎsi wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1358
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "mwǎsi wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1639 app/Functions/Functions.php:1654
 #: app/Functions/Functions.php:1667
@@ -17303,12 +17303,12 @@ msgstr ""
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "mwǎna wa ×%s  nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×%s"
+msgstr "mwǎna wa ×%s  nkɔ́kɔ mwǎna mwǎsí"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1912 app/Functions/Functions.php:1922
@@ -17316,27 +17316,27 @@ msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×%s"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "nkɔ́kɔ-mobáli mokóló ×%s"
+msgstr "nkóló ya ×%s nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
 #: app/Functions/Functions.php:1956
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "nkɔ́kɔ-mwǎsí mokóló ×%s"
+msgstr "nkóló ya ×%s nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1936 app/Functions/Functions.php:1946
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "nkóló ya ×%s nkɔ́kɔ"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "mwǎna wa ×%s nkɔ́kɔ mwǎna mobáli"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
@@ -17442,27 +17442,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:1994
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "mwǎna wa ×4 nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1992
 msgid "great ×4 granddaughter"
-msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×4"
+msgstr "mwǎna wa ×4 nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×4 grandfather"
-msgstr "nkɔ́kɔ-mobáli mokóló ×4"
+msgstr "nkóló ya ×4 nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×4 grandmother"
-msgstr "nkɔ́kɔ-mwǎsí mokóló ×4"
+msgstr "nkóló ya ×4 nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "nkóló ya ×4 nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1990
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "mwǎna wa ×4 nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) brother’s great-great-great-grandson"
@@ -17534,27 +17534,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:2004
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "mwǎna wa ×5 nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:2002
 msgid "great ×5 granddaughter"
-msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×5"
+msgstr "mwǎna wa ×5 nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1879
 msgid "great ×5 grandfather"
-msgstr "nkɔ́kɔ-mobáli mokóló ×5"
+msgstr "nkóló ya ×5 nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1881
 msgid "great ×5 grandmother"
-msgstr "nkɔ́kɔ-mwǎsí mokóló ×5"
+msgstr "nkóló ya ×5 nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1883
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "nkóló ya ×5 nkɔ́kɔ"
 
 #: app/Functions/Functions.php:2000
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "mwǎna wa ×5 nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1764
 msgctxt "(a man’s) brother’s great ×4 grandson"
@@ -17626,27 +17626,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:2014
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "mwǎna wa ×6 nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:2012
 msgid "great ×6 granddaughter"
-msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×6"
+msgstr "mwǎna wa ×6 nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1888
 msgid "great ×6 grandfather"
-msgstr "nkɔ́kɔ-mobáli mokóló ×6"
+msgstr "nkóló ya x6 nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1890
 msgid "great ×6 grandmother"
-msgstr "nkɔ́kɔ-mwǎsí mokóló ×6"
+msgstr "nkóló ya x6 nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1892
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "nkóló ya x6 nkɔ́kɔ"
 
 #: app/Functions/Functions.php:2010
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "mwǎna wa ×6 nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1602
 msgctxt "great ×5 grandfather’s brother"
@@ -17673,27 +17673,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:2024
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "mwǎna wa ×7 nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:2022
 msgid "great ×7 granddaughter"
-msgstr "nkɔ́kɔ mwǎna mwǎsí mokóló ×7"
+msgstr "mwǎna wa ×7 nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1897
 msgid "great ×7 grandfather"
-msgstr "nkɔ́kɔ-mobáli mokóló ×7"
+msgstr "nkóló ya x7 nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1899
 msgid "great ×7 grandmother"
-msgstr "nkɔ́kɔ-mwǎsí mokóló ×7"
+msgstr "nkóló ya x7 nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1901
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "nkóló ya ×7 nkɔ́kɔ"
 
 #: app/Functions/Functions.php:2020
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "mwǎna wa ×7 nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1617
 msgctxt "great ×6 grandfather’s brother"
@@ -17893,272 +17893,272 @@ msgstr ""
 #: app/Functions/Functions.php:1036
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1042
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1050
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1058
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1064
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1078
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1338
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1344
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1352
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1038
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1044
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1052
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1060
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1066
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1080
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1340
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1346
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1354
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1096
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1108
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1120
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1188
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1210
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1222
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1234
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr "nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1098
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1110
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1122
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1224
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1236
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr "nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1100
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1112
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1124
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1180
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1192
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1214
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1226
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1238
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1040
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1048
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1054
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1062
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1070
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1082
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1342
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1350
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1356
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1549
 msgid "great-great-aunt"
@@ -18170,27 +18170,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:1974
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "mwǎna-mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1972
 msgid "great-great-granddaughter"
-msgstr "nkóló nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna-mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1852
 msgid "great-great-grandfather"
-msgstr "nkóló nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló-nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1854
 msgid "great-great-grandmother"
-msgstr "nkóló nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló-nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1856
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "nkóló-nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1970
 msgid "great-great-grandson"
-msgstr ""
+msgstr "mwǎna-mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1564
 msgid "great-great-great-aunt"
@@ -18202,27 +18202,27 @@ msgstr ""
 
 #: app/Functions/Functions.php:1984
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "mwǎna-mwǎna-mwǎna wa nkɔ́kɔ mwǎna"
 
 #: app/Functions/Functions.php:1982
 msgid "great-great-great-granddaughter"
-msgstr "nkóló nkóló nkóló nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna-mwǎna-mwǎna wa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/Functions/Functions.php:1861
 msgid "great-great-great-grandfather"
-msgstr "nkóló nkóló nkóló nkɔ́kɔ-mobáli"
+msgstr "nkóló-nkóló-nkóló ya nkɔ́kɔ-mobáli"
 
 #: app/Functions/Functions.php:1863
 msgid "great-great-great-grandmother"
-msgstr "nkóló nkóló nkóló nkɔ́kɔ-mwǎsí"
+msgstr "nkóló-nkóló-nkóló ya nkɔ́kɔ-mwǎsí"
 
 #: app/Functions/Functions.php:1865
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "nkóló-nkóló-nkóló ya nkɔ́kɔ"
 
 #: app/Functions/Functions.php:1980
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "mwǎna-mwǎna-mwǎna wa nkɔ́kɔ mwǎna mobáli"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) brother’s great-great-grandson"
@@ -18891,7 +18891,7 @@ msgstr "nkɔ́kɔ-mwǎsí na bomamá"
 #: app/Functions/Functions.php:882
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "nkɔ́kɔ na bomámá"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
@@ -19055,18 +19055,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:571
 msgid "ninth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 9"
 
 #: app/Functions/Functions.php:536
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 9"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:494
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 9"
 
 #: admin_trees_config.php:74 admin_users.php:241 admin_users.php:242
 #: app/Functions/FunctionsEdit.php:134
@@ -19131,7 +19131,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:373
 msgid "on the date of death"
-msgstr ""
+msgstr "na dáti ya liwâ"
 
 #: statistics.php:708
 msgid "overall"
@@ -19178,7 +19178,7 @@ msgstr "nkɔ́kɔ-mwǎsí na botatá"
 #: app/Functions/Functions.php:844
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "nkɔ́kɔ na botatá"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
@@ -19334,153 +19334,153 @@ msgstr ""
 
 #: app/Functions/Functions.php:557
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1477
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1479
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1489
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1491
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1487
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1483
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1499
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1495
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1511
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1507
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1503
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1517
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1513
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1515
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1529
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1525
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1527
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1523
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1519
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 2"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
@@ -19503,18 +19503,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:567
 msgid "seventh cousin"
-msgstr "ndeko ya 7<br>(mnǎna ya nkána)"
+msgstr "mwǎna nkána ya 7"
 
 #: app/Functions/Functions.php:532
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr "ndeko ya 7<br>(mnǎna ya nkána)"
+msgstr "mwǎna nkána ya 7"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:488
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr "ndeko ya 7<br>(mnǎna ya nkána)"
+msgstr "mwǎna nkána ya 7"
 
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
 #: app/Module/GoogleMapsModule.php:342 app/Module/StoriesModule.php:361
@@ -19585,18 +19585,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:565
 msgid "sixth cousin"
-msgstr "ndeko ya 6"
+msgstr "mwǎna nkána ya 6"
 
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "ndeko ya 6"
+msgstr "mwǎna nkána ya 6"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr "ndeko ya 6"
+msgstr "mwǎna nkána ya 6"
 
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
 #: edit_interface.php:1999
@@ -19657,7 +19657,7 @@ msgstr "kopɔnɔ na dáti ya mbótama"
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "kopɔnɔ na dáti ya liwâ"
 
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
@@ -19832,18 +19832,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
-msgstr "ndeko ya 10"
+msgstr "mwǎna nkána ya 10"
 
 #: app/Functions/Functions.php:538
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr "ndeko ya 10"
+msgstr "mwǎna nkána ya 10"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:497
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr "ndeko ya 10"
+msgstr "mwǎna nkána ya 10"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:85
@@ -19880,33 +19880,33 @@ msgstr "%s ya 3"
 
 #: app/Functions/Functions.php:559
 msgid "third cousin"
-msgstr "ndeko ya 3"
+msgstr "mwǎna nkána ya 3"
 
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "ndeko ya 3"
+msgstr "mwǎna nkána ya 3"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:476
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "ndeko ya 3"
+msgstr "mwǎna nkána ya 3"
 
 #: app/Functions/Functions.php:579
 msgid "thirteenth cousin"
-msgstr "ndeko ya 13"
+msgstr "mwǎna nkána ya 13"
 
 #: app/Functions/Functions.php:544
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr "ndeko ya 13"
+msgstr "mwǎna nkána ya 13"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:506
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr "ndeko ya13"
+msgstr "mwǎna nkána ya 13"
 
 #: admin_trees_config.php:550
 msgid "this record does not exist"
@@ -19930,18 +19930,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:577
 msgid "twelfth cousin"
-msgstr "ndeko ya 12"
+msgstr "mwǎna nkána ya 12"
 
 #: app/Functions/Functions.php:542
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr "ndeko ya 12"
+msgstr "mwǎna nkána ya 12"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:503
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "mwǎna nkána ya 12"
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
