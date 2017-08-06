@@ -1469,9 +1469,9 @@ class GedcomTag {
 		case 'NAME':
 			$tags = [
 				// Facts subordinate to NAME
-				'NICK', 'FONE', 'ROMN',
+				'FONE', 'ROMN',
 				// non standard tags
-				'_HEB', '_AKA',
+				'_HEB', '_AKA', '_MARNM',
 			];
 			break;
 		default:

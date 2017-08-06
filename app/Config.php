@@ -196,17 +196,6 @@ class Config {
 	}
 
 	/**
-	 * Name fields
-	 *
-	 * @return string[]
-	 */
-	public static function standardNameFacts() {
-		return [
-			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
-		];
-	}
-
-	/**
 	 * A list of facts/events that generally have two associates
 	 * (two witnesses, two godparents, etc.)
 	 *
