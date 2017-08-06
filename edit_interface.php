@@ -347,12 +347,13 @@ case 'edit':
 
 	</form>
 	<?php
-	echo FunctionsEdit::createFamilyModal($controller->tree());
-	echo FunctionsEdit::createMediaModal($controller->tree());
-	echo FunctionsEdit::createNoteModal($controller->tree());
-	echo FunctionsEdit::createRepositoryModal($controller->tree());
-	echo FunctionsEdit::createSourceModal($controller->tree());
-	echo FunctionsEdit::createOnScreenKeyboardModal();
+	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-media', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
+	echo View::make('modals/on-screen-keyboard');
 	break;
 
 case 'add':
@@ -420,13 +421,13 @@ case 'add':
 	</div>
 	</form>
 	<?php
-	echo FunctionsEdit::createFamilyModal($controller->tree());
-	echo FunctionsEdit::createMediaModal($controller->tree());
-	echo FunctionsEdit::createNoteModal($controller->tree());
-	echo FunctionsEdit::createRepositoryModal($controller->tree());
-	echo FunctionsEdit::createSourceModal($controller->tree());
-	echo FunctionsEdit::createSubmitterModal($controller->tree());
-	echo FunctionsEdit::createOnScreenKeyboardModal();
+	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-media', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
+	echo View::make('modals/on-screen-keyboard');
 
 	break;
 
@@ -2051,7 +2052,7 @@ case 'add-media-link':
 			</div>
 		</div>
 	</form>
-	<?= FunctionsEdit::createMediaModal($controller->tree()) ?>
+	<?= View::make('modals/create-media', ['tree' => $controller->tree()]) ?>
 	<?php
 	break;
 
