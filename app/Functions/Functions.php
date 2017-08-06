@@ -704,56 +704,56 @@ class Functions {
 			if ($person1 && $person2) {
 				foreach ($person1->getSpouseFamilies() as $family) {
 					if ($person2 === $family->getSpouse($person1)) {
-						if ($family->getFacts('_NMR')) {
+						if ($family->getFacts('MARR')) {
 							if ($family->getFacts(WT_EVENTS_DIV)) {
-								return I18N::translateContext('MALE', 'ex-partner');
+								return I18N::translate('ex-husband');
 							} else {
-								return I18N::translateContext('MALE', 'partner');
+								return I18N::translate('husband');
 							}
 						} elseif ($family->getFacts(WT_EVENTS_DIV)) {
-							return I18N::translate('ex-husband');
+							return I18N::translateContext('MALE', 'ex-partner');
 						}
 					}
 				}
 			}
 
-			return I18N::translate('husband');
+			return I18N::translateContext('MALE', 'partner');
 		case 'wif':
 			if ($person1 && $person2) {
 				foreach ($person1->getSpouseFamilies() as $family) {
 					if ($person2 === $family->getSpouse($person1)) {
-						if ($family->getFacts('_NMR')) {
+						if ($family->getFacts('MARR')) {
 							if ($family->getFacts(WT_EVENTS_DIV)) {
-								return I18N::translateContext('FEMALE', 'ex-partner');
+								return I18N::translate('ex-wife');
 							} else {
-								return I18N::translateContext('FEMALE', 'partner');
+								return I18N::translate('wife');
 							}
 						} elseif ($family->getFacts(WT_EVENTS_DIV)) {
-							return I18N::translate('ex-wife');
+							return I18N::translateContext('FEMALE', 'ex-partner');
 						}
 					}
 				}
 			}
 
-			return I18N::translate('wife');
+			return I18N::translateContext('FEMALE', 'partner');
 		case 'spo':
 			if ($person1 && $person2) {
 				foreach ($person1->getSpouseFamilies() as $family) {
 					if ($person2 === $family->getSpouse($person1)) {
-						if ($family->getFacts('_NMR')) {
+						if ($family->getFacts('MARR')) {
 							if ($family->getFacts(WT_EVENTS_DIV)) {
-								return I18N::translate('ex-partner');
+								return I18N::translate('ex-spouse');
 							} else {
-								return I18N::translate('partner');
+								return I18N::translate('spouse');
 							}
 						} elseif ($family->getFacts(WT_EVENTS_DIV)) {
-							return I18N::translate('ex-spouse');
+							return I18N::translate('ex-partner');
 						}
 					}
 				}
 			}
 
-			return I18N::translate('spouse');
+			return I18N::translate('partner');
 		case 'son':
 			return I18N::translate('son');
 		case 'dau':

@@ -36,7 +36,7 @@ class CensusColumnConditionUs extends CensusColumnConditionEnglish {
 	protected $divorce  = 'D';
 	protected $divorcee = 'D';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = 'W';
 	protected $widow   = 'W';
 }
