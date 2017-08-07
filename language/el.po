@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-07 11:45+0300\n"
+"PO-Revision-Date: 2017-08-07 20:32+0300\n"
 "Last-Translator: gr translat <dixex@amail.club>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -116,11 +116,12 @@ msgstr ""
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
+#: admin_site_upgrade.php:310 admin_site_upgrade.php:394
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "το αρχείο %1$s εξάχθηκε σε %2$s δευτερόλεπτα."
+msgstr[1] "τα αρχεία %1$s εξάχθηκαν σε %2$s δευτερόλεπτα."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -134,20 +135,20 @@ msgstr[1] ""
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s το άτομο δεν έχει γεωγραφικές συντεταγμένες τόπου γέννησης: %2$s."
+msgstr[0] "Ο/Η %1$s δεν έχει γεωγραφικές συντεταγμένες του τόπου γέννησης του/της: %2$s."
 msgstr[1] "%1$s των ατόμων δεν έχουν γεωγραφικές συντεταγμένες τόπου γέννησης: %2$s.: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
-#: admin_trees_check.php:192
+#: admin_trees_check.php:192 admin_trees_check.php:186
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s είναι %2$s αλλά αναμένεται %3$s ."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
@@ -197,7 +198,7 @@ msgstr "%j %F %Y"
 #: app/Stats.php:6940 app/Stats.php:6916
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s ΠΚΧ"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277 admin_media.php:486
@@ -308,11 +309,12 @@ msgstr[0] "%s ατόμου"
 msgstr[1] "%s ατόμων"
 
 #: app/Controller/SearchController.php:349
+#: app/Controller/SearchController.php:348
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ο/Η %s έχει επικαιροποιηθεί."
+msgstr[1] "Οι %s έχουν επικαιροποιηθεί."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
@@ -603,24 +605,24 @@ msgid "(filtered from %s total entries)"
 msgstr "(φιλτραρισμένο από %s συνολικές καταχωρήσεις)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
-#: app/I18N.php:294
+#: app/I18N.php:294 app/I18N.php:247
 msgid "(in childhood)"
-msgstr ""
+msgstr "(στην παιδική ηλικία)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
-#: app/I18N.php:291
+#: app/I18N.php:291 app/I18N.php:244
 msgid "(in infancy)"
-msgstr ""
+msgstr "(στην βρεφική ηλικιά)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
-#: app/I18N.php:288
+#: app/I18N.php:288 app/I18N.php:241
 msgid "(stillborn)"
-msgstr ""
+msgstr "(θνησιγενές)"
 
 #. I18N: This punctuation is used to separate lists of items
-#: app/I18N.php:443
+#: app/I18N.php:443 app/I18N.php:391
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6967 app/Stats.php:6943
 msgctxt "CENTURY"
@@ -755,37 +757,37 @@ msgstr ""
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Ένα γράφημα που εμφανίζει σχέσεις μεταξύ δύο ατόμων."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Ένα γράφημα των προγόνων και των απογόνων ενός ατόμου, ως οικογενειακό βιβλίο."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Ένα γράφημα των προγόνων ενός ατόμου, ως ένα συμπαγές δέντρο."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Ένα γράφημα των προγόνων ενός ατόμου, διαμορφωμένο ως δέντρο."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Ένα γράφημα των προγόνων ενός ατόμου."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Ένα γράφημα των απογόνων ενός ατόμου."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Ένα γράφημα όλης της διάρκειας ζωής των επιλεγόμενων ατόμων."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -802,22 +804,24 @@ msgstr ""
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Ένα διάγραμμα βεντάλιας των προγόνων ενός ατόμου."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
-#: app/Module/GoogleMapsModule.php:3651
+#: app/Module/GoogleMapsModule.php:3651 admin_trees_download.php:109
+#: admin_trees_manage.php:220 app/Module/GoogleMapsModule.php:2150
 msgid "A file on the server"
-msgstr ""
+msgstr "Ένα αρχείο στον διακομιστή"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
-#: app/Module/GoogleMapsModule.php:3639
+#: app/Module/GoogleMapsModule.php:3639 admin_trees_download.php:196
+#: admin_trees_manage.php:209 app/Module/GoogleMapsModule.php:2140
 msgid "A file on your computer"
-msgstr ""
+msgstr "Ένα αρχείο στον υπολογιστή σας"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Ένα μήνυμα χαιρετισμού και χρήσιμοι σύνδεσμοι για έναν χρήστη."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
@@ -884,14 +888,14 @@ msgstr ""
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
 
-#: login.php:264
+#: login.php:264 login.php:259
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr ""
+msgstr "Δημιουργήθηκε ένα νέο συνθηματικό και αποστάλθηκε με email στο% s. Μπορείτε να το αλλάξετε αφου συνδεθείτε."
 
 #: login.php:257 login.php:252
 msgid "A new password has been requested for your username."
-msgstr "Έχει γίνει αίτηση νέου κωδικού για το όνομα χρήστη σας."
+msgstr "Έχει γίνει αίτημα νέου συνθηματικού για το όνομα χρήστη σας."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:561
@@ -899,9 +903,10 @@ msgstr "Έχει γίνει αίτηση νέου κωδικού για το ό�
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
 
-#: admin.php:632 admin_site_upgrade.php:79 login.php:116
+#: admin.php:632 admin_site_upgrade.php:79 login.php:116 admin.php:625
+#: admin_site_upgrade.php:77 login.php:111
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Μια νέα έκδοση του webtrees είναι διαθέσιμη."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -1345,7 +1350,7 @@ msgstr "Προσθήκη συζύγου"
 
 #: app/Module/RelativesTabModule.php:154 app/Module/RelativesTabModule.php:156
 msgid "Add a husband to this family"
-msgstr "Προσθήκη Συζύγου-Άνδρα σε αυτή την οικογένεια"
+msgstr "Προσθήκη συζύγου (άνδρα) σ' αυτή την οικογένεια"
 
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
 #: edit_interface.php:1156 app/Module/RelativesTabModule.php:406
@@ -1498,9 +1503,9 @@ msgstr "Προσθήκη περισσότερων πεδίων"
 msgid "Add narrative stories to individuals in the family tree."
 msgstr ""
 
-#: admin_trees_manage.php:282
+#: admin_trees_manage.php:282 admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Προσθήκη κενών όπου έχει γίνει αναδίπλωση λέξεων για μεγάλες γραμμές."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
@@ -1711,7 +1716,7 @@ msgstr "Υιοθεσία ετεροθαλή αδελφού"
 
 #: app/GedcomTag.php:912 app/GedcomTag.php:626
 msgid "Adoption of a half-sibling"
-msgstr "Υιοθεσία ετεροθαλών"
+msgstr "Υιοθεσία ετεροθαλών αδελφιού"
 
 #: app/GedcomTag.php:910 app/GedcomTag.php:624
 msgid "Adoption of a half-sister"
@@ -1786,27 +1791,27 @@ msgstr "Ηλικία"
 
 #: statistics.php:283 statistics.php:293
 msgid "Age at birth of child"
-msgstr "Ηλικία κατα τη γέννηση του παιδιού"
+msgstr "Ηλικία κατα τη γέννηση του τέκνου"
 
 #: admin_trees_config.php:403 admin_trees_config.php:364
 msgid "Age at which to assume an individual is dead"
 msgstr "Ηλικία στην οποία υποθέτουμε οτι καποιος εχει απεβιώσει"
 
-#: statistics.php:338
+#: statistics.php:338 statistics.php:351
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Ηλικιακή διαφορά μεταξύ αντρόγυνου"
 
-#: statistics.php:330
+#: statistics.php:330 statistics.php:343
 msgid "Age between siblings"
-msgstr ""
+msgstr "Ηλικιακή διαφορά μεταξύ αδελφιών"
 
-#: statistics.php:339
+#: statistics.php:339 statistics.php:352
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Ηλικιακή διαφορά μεταξύ αντρόγυνου"
 
 #: statistics.php:327 statistics.php:339
 msgid "Age difference"
-msgstr "Διαφορά ηλικίας"
+msgstr "Ηλικιακή διαφορά"
 
 #: statistics.php:550 statisticsplot.php:1282 statistics.php:556
 #: statisticsplot.php:1132
@@ -1972,19 +1977,19 @@ msgstr ""
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967 app/GedcomTag.php:663
 msgid "Also known as"
-msgstr "Γνωστός και ως"
+msgstr "Επίσης γνωστός ως"
 
 #. I18N: gedcom tag _AKA
-#: app/GedcomTag.php:963
+#: app/GedcomTag.php:963 app/GedcomTag.php:661
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Επίσης γνωστή ως"
 
 #. I18N: gedcom tag _AKA
-#: app/GedcomTag.php:959
+#: app/GedcomTag.php:959 app/GedcomTag.php:659
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Επίσης γνωστός ως"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6681 app/Stats.php:6657
@@ -2007,9 +2012,9 @@ msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr ""
 
 #. I18N: Description of the “Charts” module
-#: app/Module/ChartsBlockModule.php:39
+#: app/Module/ChartsBlockModule.php:39 app/Module/ChartsBlockModule.php:41
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "Ένας εναλλακτικός τρόπος εμφάνισης των γραφημάτων."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
@@ -2019,12 +2024,12 @@ msgstr ""
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "Ένας εναλλακτικός τρόπος για να επιλεγεί ένα νέο θέμα."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr ""
+msgstr "Ένας εναλλακτικός τρόπος για είσοδο και αποσύνδεση."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2094,7 +2099,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
-msgstr "Άνκορεϊτζ, Αλάσκα, Ηνωμένες Πολιτείες Αμερικής"
+msgstr "Άνκορεϊτζ, Αλάσκα, ΗΠΑ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677 app/Stats.php:6653
@@ -2186,11 +2191,11 @@ msgstr ""
 
 #: admin_users.php:854 admin_users.php:843
 msgid "Approved"
-msgstr "Εγκεκριμένη"
+msgstr "Εγκρίθηκε"
 
 #: admin_users.php:385 admin_users.php:378
 msgid "Approved by administrator"
-msgstr "Εγκρίνεται απο τον Διαχειριστή"
+msgstr "Εγκρίθηκε απο τον Διαχειριστή"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
@@ -2369,12 +2374,12 @@ msgstr "Ακόλουθος"
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Ακόλουθος"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Ακόλουθος"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
@@ -2779,9 +2784,9 @@ msgstr ""
 msgid "Binary data object"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:470
+#: app/Functions/FunctionsPrint.php:470 app/Functions/FunctionsPrint.php:435
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
@@ -2989,29 +2994,30 @@ msgctxt "son’s son"
 msgid "Birth of a grandson"
 msgstr "Γέννηση εγγονού"
 
-#: app/GedcomTag.php:1070
+#: app/GedcomTag.php:1070 app/GedcomTag.php:764
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Γέννηση ετεροθαλούς αδελφού"
 
 #: app/GedcomTag.php:1074 app/GedcomTag.php:768
 msgid "Birth of a half-sibling"
 msgstr "Γέννηση ετεροθαλούς αδερφιού"
 
-#: app/GedcomTag.php:1072
+#: app/GedcomTag.php:1072 app/GedcomTag.php:766
 msgid "Birth of a half-sister"
-msgstr ""
+msgstr "Γέννηση ετεροθαλούς αδελφής"
 
 #: app/GedcomTag.php:1083 app/GedcomTag.php:777
 msgid "Birth of a sibling"
 msgstr "Γέννηση αδελφιού"
 
-#: app/GedcomTag.php:1081
+#: app/GedcomTag.php:1081 app/GedcomTag.php:775
 msgid "Birth of a sister"
-msgstr ""
+msgstr "Γέννηση αδελφής"
 
 #: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1818
+#: app/GedcomTag.php:728 app/Module/GoogleMapsModule.php:1278
 msgid "Birth of a son"
-msgstr ""
+msgstr "Γέννηση υιού"
 
 #: statistics.php:411 statistics.php:424
 msgid "Birth places"
@@ -3039,7 +3045,7 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214 app/GedcomTag.php:182
 msgid "Blessing"
-msgstr "Ευλογολογία"
+msgstr "Ευχολόγια"
 
 #: admin_module_blocks.php:73 admin_module_blocks.php:66
 msgid "Block"
@@ -11491,7 +11497,7 @@ msgstr "Τόπος γεννήσεως"
 
 #: app/GedcomTag.php:218 app/GedcomTag.php:186
 msgid "Place of blessing"
-msgstr "Τόπος ευλογολογίας"
+msgstr "Τόπος ευχολόγιου"
 
 #: app/GedcomTag.php:1092
 msgid "Place of brit milah"
