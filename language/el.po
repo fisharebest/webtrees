@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-07 20:32+0300\n"
+"PO-Revision-Date: 2017-08-07 17:44+0000\n"
 "Last-Translator: gr translat <dixex@amail.club>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -1649,7 +1649,7 @@ msgstr "Αφρική"
 
 #: admin_trees_manage.php:682
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Μετά την δημιουργία οικογενειακού δένδρου, θα μπορείτε να εισάγετε δεδομένα από ένα αρχείο GEDCOM."
 
 #: login.php:255
 #, fuzzy
