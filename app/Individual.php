@@ -1202,18 +1202,11 @@ class Individual extends GedcomRecord {
 			$full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
 		}
 
-		// GEDCOM nicknames should be specificied in a NICK field, or in the
-		// NAME filed, surrounded by ASCII quotes (or both).
+		// GEDCOM 5.5.1 nicknames should be specificied in a NICK field
+		// GEDCOM 5.5   nicknames should be specified in the NAME field, surrounded by quotes
 		if ($NICK && strpos($full, '"' . $NICK . '"') === false) {
-			// A NICK field is present, but not included in the NAME.
-			$pos = strpos($full, '/');
-			if ($pos === false) {
-				// No surname - just append it
-				$full .= ' "' . $NICK . '"';
-			} else {
-				// Insert before surname
-				$full = substr($full, 0, $pos) . '"' . $NICK . '" ' . substr($full, $pos);
-			}
+			// A NICK field is present, but not included in the NAME.  Show it at the end.
+			$full .= ' "' . $NICK . '"';
 		}
 
 		// Remove slashes - they don’t get displayed
