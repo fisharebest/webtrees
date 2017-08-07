@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-07 17:34+0000\n"
+"PO-Revision-Date: 2017-08-07 22:29+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -380,7 +380,7 @@ msgstr[1] ""
 #: message.php:220
 #, php-format
 msgid "%s sent you the following message."
-msgstr "%s atindeli yɔ̌ nkomá óyo."
+msgstr "%s atindeli yɔ̌ nkomá eye."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5891
 #, php-format
@@ -542,19 +542,19 @@ msgstr "&lt;pɔná&gt;"
 #: app/I18N.php:282 app/I18N.php:286
 #, php-format
 msgid "(aged %s)"
-msgstr "(na mbúla %s)"
+msgstr "(na mbúla  ya %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:276
 #, php-format
 msgid "(aged less than %s)"
-msgstr "(mbúla mokɛ́ koleka %s)"
+msgstr "(mbúla mokɛ́ kolúta %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:279
 #, php-format
 msgid "(aged more than %s)"
-msgstr "(mbúla mingi koleka %s)"
+msgstr "(mbúla mingi kolúta %s)"
 
 #. I18N: %s is a number
 #. I18N: %s is a placeholder for a number
@@ -1238,7 +1238,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:281
 msgid "Add a brother or sister"
-msgstr "Kobakisa ndeko mobálii to ndeko mwǎsí"
+msgstr "Kobakisa ndeko mobáli tǒ ndeko mwǎsí"
 
 #: edit_interface.php:496
 msgid "Add a child"
@@ -1250,7 +1250,7 @@ msgstr "Bakisá mwǎna mpó na kotónga libótá ya mobóti mɔ̌kɔ́"
 
 #: app/Controller/FamilyController.php:80 app/Functions/FunctionsCharts.php:292
 msgid "Add a child to this family"
-msgstr "Bakisá mwǎna na libótá óyo"
+msgstr "Bakisá mwǎna na libótá liye"
 
 #: edit_interface.php:73
 msgid "Add a fact"
@@ -1271,7 +1271,7 @@ msgstr "Bakísá molóngani mobáli"
 
 #: app/Module/RelativesTabModule.php:156
 msgid "Add a husband to this family"
-msgstr "Bakísá molóngani mobáli o káti ya libótá óyo"
+msgstr "Kobakisa molóngani mobáli o káti ya libótá liye"
 
 #: app/Module/RelativesTabModule.php:406 edit_interface.php:1045
 #: edit_interface.php:1123
@@ -1303,7 +1303,7 @@ msgstr "Bakísá ekakoli ya sika"
 #: app/Controller/FamilyController.php:141 app/Functions/FunctionsEdit.php:1011
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Bakísá nkomá"
+msgstr "Kobakísa nkomá"
 
 #: app/Functions/FunctionsEdit.php:1028
 msgid "Add a restriction"
@@ -1312,7 +1312,7 @@ msgstr "Bakísá epekisami"
 #: app/Controller/FamilyController.php:147 app/Functions/FunctionsEdit.php:1016
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr ""
+msgstr "Kobakisa nkomá ya kokabolama"
 
 #: app/Module/RelativesTabModule.php:279
 msgid "Add a son or daughter"
@@ -1371,7 +1371,7 @@ msgstr "Bakísá bikangisi"
 
 #: app/Module/RelativesTabModule.php:234
 msgid "Add marriage details"
-msgstr "Bakísá ndimbola ya libàla"
+msgstr "Kobakisa ndimbola ya libàla"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1662,7 +1662,7 @@ msgstr ""
 #: app/Stats.php:2584 app/Stats.php:3925 app/Stats.php:3927 autocomplete.php:70
 #: timeline.php:301
 msgid "Age"
-msgstr ""
+msgstr "Mbúla"
 
 #: statistics.php:293
 msgid "Age at birth of child"
@@ -1674,7 +1674,7 @@ msgstr ""
 
 #: statistics.php:351
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Mbúla o ntéi ya mobáli na mwǎsí"
 
 #: statistics.php:343
 msgid "Age between siblings"
@@ -1682,20 +1682,20 @@ msgstr "Mibú o kati ya bankána"
 
 #: statistics.php:352
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Mbúla o ntéi ya mwǎsí na mobáli"
 
 #: statistics.php:339
 msgid "Age difference"
-msgstr ""
+msgstr "Bokɛsɛni bwa mbúla"
 
 #: statistics.php:556 statisticsplot.php:1132
 msgid "Age in year of first marriage"
-msgstr "Mibú o kati ya mbúla ya libála lya yambo"
+msgstr "Mbúla o kati ya mobú mwa libála lya yambo"
 
 #: app/Functions/FunctionsPrintLists.php:953 statistics.php:269
 #: statistics.php:551 statisticsplot.php:1090
 msgid "Age in year of marriage"
-msgstr "Mibú o kati ya mbúla ya libála"
+msgstr "Mbúla o kati ya mobú mwa libála"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1268
@@ -1744,7 +1744,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:199
 msgid "Alive"
-msgstr ""
+msgstr "Na bomɔi"
 
 #: app/Functions/FunctionsEdit.php:171
 #: app/Module/FrequentlyAskedQuestionsModule.php:220
@@ -2911,11 +2911,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:600
 msgid "Both alive"
-msgstr ""
+msgstr "Bábalé na bomɔi"
 
 #: app/Functions/FunctionsPrintLists.php:627
 msgid "Both dead"
-msgstr ""
+msgstr "Bábalé bawâ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -3364,24 +3364,24 @@ msgstr ""
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:204
 msgid "Census"
-msgstr ""
+msgstr "Etángo"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:41
 msgid "Census assistant"
-msgstr ""
+msgstr "Lisálisi lya etángo"
 
 #: app/Functions/FunctionsEdit.php:960 app/GedcomTag.php:206
 msgid "Census date"
-msgstr ""
+msgstr "Dáti lya etángo"
 
 #: app/GedcomTag.php:208
 msgid "Census place"
-msgstr ""
+msgstr "Esíká ya etángo"
 
 #: app/Module/CensusAssistantModule.php:181
 msgid "Census transcript"
-msgstr ""
+msgstr "Nkomá ya etángo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
@@ -4040,7 +4040,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:723 app/Functions/FunctionsEdit.php:1850
 #: edit_interface.php:1308
 msgid "Create a shared note"
-msgstr ""
+msgstr "Kokela nkomá ya kokabolama"
 
 #: app/Module/CensusAssistantModule.php:94
 msgid "Create a shared note using the census assistant"
@@ -4451,7 +4451,7 @@ msgstr ""
 
 #: app/GedcomTag.php:504
 msgid "Date of residence"
-msgstr ""
+msgstr "Dáti ya bofándi"
 
 #: help_text.php:155
 msgid "Date period"
@@ -4514,7 +4514,7 @@ msgstr "Mokɔlɔ:"
 #: app/Functions/FunctionsPrintLists.php:208 app/Stats.php:1068
 #: app/Stats.php:1070
 msgid "Dead"
-msgstr ""
+msgstr "Akúfá"
 
 #. I18N: gedcom tag DEAT
 #: app/Functions/FunctionsPrintLists.php:217
@@ -5301,7 +5301,7 @@ msgstr "Bokabwani bwa libósó"
 
 #: statistics.php:239
 msgid "Earliest marriage"
-msgstr "Libála ya libóso"
+msgstr "Libála lya yambo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6713
@@ -5328,7 +5328,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:368 app/Module/StoriesModule.php:390
 #: app/Module/UserJournalModule.php:95 note.php:139
 msgid "Edit"
-msgstr ""
+msgstr "Kobɔngisa"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1584
@@ -5338,7 +5338,7 @@ msgstr ""
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:137
 msgid "Edit the FAQ"
-msgstr ""
+msgstr "Kobɔngisa FAQ"
 
 #: app/Controller/MediaController.php:112
 msgid "Edit the details"
@@ -5348,7 +5348,7 @@ msgstr ""
 #: app/Controller/IndividualController.php:276
 #: app/Controller/IndividualController.php:282
 msgid "Edit the gender"
-msgstr ""
+msgstr "Kobɔngisa emoto"
 
 #: addmedia.php:229 addmedia.php:398 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:158
@@ -5362,7 +5362,7 @@ msgstr "Kobóngisa nkómbó"
 
 #: app/Controller/NoteController.php:39
 msgid "Edit the note"
-msgstr ""
+msgstr "Kobongisa nkomá"
 
 #: app/Controller/FamilyController.php:95
 #: app/Controller/GedcomRecordController.php:109
@@ -5381,20 +5381,20 @@ msgstr ""
 
 #: edit_interface.php:1393
 msgid "Edit the shared note"
-msgstr ""
+msgstr "Kobongisa nkomá ya kokabolama"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:45
 msgid "Edit the source"
-msgstr ""
+msgstr "Kobɔngisa ebandela"
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
-msgstr ""
+msgstr "Kobɔngisa lisapo"
 
 #: admin_users.php:268
 msgid "Edit the user"
-msgstr ""
+msgstr "Kobɔngisa mosáleli"
 
 #: app/Tree.php:484
 msgid "Edit this individual and replace their details with your own."
@@ -5403,7 +5403,7 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:536
 msgid "Editor"
-msgstr ""
+msgstr "Mobɔngisi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
@@ -6220,7 +6220,7 @@ msgstr "Koluka mikangano epayi ya bankɔ́kɔ"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
-msgstr "Loluka mikangano mya pɛnɛpɛnɛ"
+msgstr "Koluka mikangano mya pɛnɛpɛnɛ"
 
 #: admin_trees_manage.php:499 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
@@ -6746,11 +6746,11 @@ msgstr "Bankɔ́kɔ"
 
 #: statistics.php:168
 msgid "Greatest age at death"
-msgstr "Mobú monɛ́nɛ na ntángo ya liwâ"
+msgstr "Mbúla monɛ́nɛ na ntángo ya liwâ"
 
 #: statistics.php:344
 msgid "Greatest age between siblings"
-msgstr "mobú monɛ́nɛ koleka o kati ya bankána"
+msgstr "Mbúla monɛ́nɛ kolúta o kati ya bankána"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
@@ -6977,7 +6977,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
-msgstr ""
+msgstr "Lotómo la yě ezalákí"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
@@ -7030,7 +7030,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
-msgstr ""
+msgstr "Lotómo la yě ezalákí"
 
 #: app/Module/IndividualFactsTabModule.php:139
 msgid "Historical facts"
@@ -7049,7 +7049,7 @@ msgstr ""
 #. I18N: Name of a module
 #: admin_modules.php:221 app/Module/WelcomeBlockModule.php:30
 msgid "Home page"
-msgstr ""
+msgstr "Lonkásá lwa yambo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
@@ -7112,7 +7112,7 @@ msgstr ""
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
-msgstr ""
+msgstr "Mbúla ya mobáli"
 
 #: admin_site_logs.php:266 admin_site_logs.php:321
 msgid "IP address"
@@ -7999,7 +7999,7 @@ msgstr "Bokabwani bwa nsúka"
 
 #: statistics.php:247
 msgid "Latest marriage"
-msgstr "Libála ya nsúka"
+msgstr "Libála lya nsúka"
 
 #. I18N: gedcom tag LATI
 #: app/Functions/FunctionsEdit.php:739 app/Functions/FunctionsPrint.php:423
@@ -8062,7 +8062,7 @@ msgstr ""
 
 #: statistics.php:256
 msgid "Length of marriage"
-msgstr "Bowúmeli ya libála"
+msgstr "Boúmeli bwa libála"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
@@ -8242,7 +8242,7 @@ msgstr ""
 
 #: statistics.php:260
 msgid "Longest marriage"
-msgstr "Libála óyo ewúmelí mingi koleka"
+msgstr "Libála liye liwúmelí mingi"
 
 #. I18N: Two axes of a graph
 #: statistics.php:546 statisticsplot.php:1048
@@ -8373,7 +8373,7 @@ msgstr ""
 #: admin_trees_merge.php:33 admin_trees_places.php:84
 #: admin_trees_unconnected.php:74 app/Theme/AdministrationTheme.php:101
 msgid "Manage family trees"
-msgstr "Kobbɔngisa nzeté ya libótá"
+msgstr "Kobɔngisa nzeté ya libótá"
 
 #. I18N: Menu entry
 #: admin_media.php:585 app/Theme/AdministrationTheme.php:152
@@ -8542,12 +8542,12 @@ msgstr "Ekangeli ya libála"
 
 #: app/Stats.php:1689 statistics.php:576
 msgid "Marriage by country"
-msgstr "Libála ya mbóka na mbóka"
+msgstr "Libála lya mbóka na mbóka"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:401
 msgid "Marriage contract"
-msgstr "Kɔntalá ya libála"
+msgstr "Kɔntalá lya libála"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
@@ -8565,7 +8565,7 @@ msgstr "Ezalela na nsúka ya libála"
 #. I18N: gedcom tag _MARI
 #: app/GedcomTag.php:1206
 msgid "Marriage intention"
-msgstr "Mokáno ya libála"
+msgstr "Mokáno mwa libála"
 
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:403
@@ -8574,11 +8574,11 @@ msgstr ""
 
 #: app/GedcomTag.php:1272
 msgid "Marriage of a brother"
-msgstr "Libála ya ndeko mobáli"
+msgstr "Libála lya ndeko mobáli"
 
 #: app/GedcomTag.php:1220
 msgid "Marriage of a child"
-msgstr "Libála ya mwǎna"
+msgstr "Libála lya mwǎna"
 
 #: app/GedcomTag.php:1218
 msgid "Marriage of a daughter"
@@ -8623,15 +8623,15 @@ msgstr "Libàla lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1254
 msgid "Marriage of a half-brother"
-msgstr "Libàla ya ndeko mobáli"
+msgstr "Libàla lya ndeko mobáli"
 
 #: app/GedcomTag.php:1258
 msgid "Marriage of a half-sibling"
-msgstr "Libála ya nkána"
+msgstr "Libála lya nkána"
 
 #: app/GedcomTag.php:1256
 msgid "Marriage of a half-sister"
-msgstr "Libàla ya ndeko mwǎsí"
+msgstr "Libàla lya ndeko mwǎsí"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1265
@@ -8641,28 +8641,28 @@ msgstr "Libála lya mamá"
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1267
 msgid "Marriage of a parent"
-msgstr "Libála ya mobóti"
+msgstr "Libála lya mobóti"
 
 #: app/GedcomTag.php:1276
 msgid "Marriage of a sibling"
-msgstr "Libála ya nkána"
+msgstr "Libála lya nkána"
 
 #: app/GedcomTag.php:1274
 msgid "Marriage of a sister"
-msgstr "Libála ya ndeko mwǎsí"
+msgstr "Libála lya ndeko mwǎsí"
 
 #: app/GedcomTag.php:1216
 msgid "Marriage of a son"
-msgstr "Libála ya mwǎna mobáli"
+msgstr "Libála lya mwǎna mobáli"
 
 #. I18N: ...to each other
 #: app/GedcomTag.php:1223
 msgid "Marriage of parents"
-msgstr "Libála ya babóti"
+msgstr "Libála lya babóti"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage place contains"
-msgstr "Esíká ya libála ezali na"
+msgstr "Esíká ya libála lizali na"
 
 #: statistics.php:432
 msgid "Marriage places"
@@ -8701,7 +8701,7 @@ msgstr "Nkómbó ya libála"
 
 #: app/GedcomTag.php:1212
 msgid "Married surname"
-msgstr "Nkómbó ya libótá"
+msgstr "Nkómbó ya libála"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
@@ -8753,7 +8753,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1124
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "Mitángo mínsɔ mya nkómbó ya libótá o káti ya molɔngɔ́ mwa bato"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1212
@@ -9220,7 +9220,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:127
 msgid "More news articles"
-msgstr ""
+msgstr "Bikakoli misúsu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6787
@@ -9254,7 +9254,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:37
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Nkásá biye bitálaní mingi"
 
 #: modules_v3/bdm_report/report.xml:120
 #: modules_v3/family_group_report/report.xml:474
@@ -9284,7 +9284,7 @@ msgstr "Libótá lya mamá na %s"
 #. I18N: A step-family.
 #: app/Individual.php:1023
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Libála lya mamá na moto ayébaní tɛ́"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
@@ -9405,13 +9405,13 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:43
 #: modules_v3/relative_ext_report/report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "Nkómbó"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:424
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Nkómbó"
 
 #: app/GedcomTag.php:431
 msgid "Name in Hebrew"
@@ -9420,17 +9420,17 @@ msgstr ""
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:449
 msgid "Name prefix"
-msgstr ""
+msgstr "Libandi lya nkómbó"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:451
 msgid "Name suffix"
-msgstr ""
+msgstr "Esúkya ya nkómbó"
 
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10 search.php:194 statistics.php:196
 msgid "Names"
-msgstr ""
+msgstr "Nkómbó"
 
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1297
@@ -9550,7 +9550,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:52
 msgid "News"
-msgstr ""
+msgstr "Nsango"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1523
@@ -9563,7 +9563,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:130
 msgid "Next image"
-msgstr ""
+msgstr "Elílí elándí"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6814
@@ -9893,7 +9893,7 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1101
 #: modules_v3/occupation_report/report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "Nkomá"
 
 #: help_text.php:257
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -9911,7 +9911,7 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:226 note.php:121 source.php:125
 #: statistics.php:368
 msgid "Notes"
-msgstr ""
+msgstr "Nkomá"
 
 #: admin_users.php:765
 msgid "Nothing found to cleanup"
@@ -9981,7 +9981,7 @@ msgstr "Motángo mwa Nkómbó ikɛ́"
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:445
 msgid "Number of marriages"
-msgstr "Mitángo ya mabála"
+msgstr "Motángo mwa mabála"
 
 #: admin_users.php:671
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
@@ -9990,7 +9990,7 @@ msgstr ""
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:160
 msgid "Number of pages"
-msgstr ""
+msgstr "Motángo mwa nkásá"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:321
@@ -10026,14 +10026,14 @@ msgstr ""
 #: app/GedcomTag.php:455 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "Lotómo"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:37
 msgid "Occupations"
-msgstr ""
+msgstr "Ntómo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6835
@@ -10314,12 +10314,12 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "Page"
-msgstr ""
+msgstr "Lonkásá"
 
 #: medialist.php:241
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Lonkásá %s káti na %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10401,7 +10401,7 @@ msgstr "Babóti na bankána"
 
 #: app/Functions/FunctionsPrint.php:245
 msgid "Parent’s age"
-msgstr ""
+msgstr "Mbúla ya babóti"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:388 admin_users.php:331
@@ -10711,7 +10711,7 @@ msgstr "Esíká ya kokúlisa"
 
 #: app/GedcomTag.php:506
 msgid "Place of residence"
-msgstr ""
+msgstr "Esíká ya bofándi"
 
 #: admin_site_upgrade.php:352
 #, php-format
@@ -11154,7 +11154,7 @@ msgstr ""
 #: admin_users.php:305 admin_users.php:835 edituser.php:144 login.php:319
 #: login.php:415
 msgid "Real name"
-msgstr ""
+msgstr "Nkómbó ya sɔ̂lɔ́"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:46 modules_v3/change_report/report.xml:92
@@ -11446,7 +11446,7 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:208 login.php:275
 msgid "Request a new user account"
-msgstr "Mosáleli mwa nsika"
+msgstr "Mosáleli mwa sika"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1344 app/Module/ResearchTaskModule.php:95
@@ -11469,7 +11469,7 @@ msgstr ""
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:502
 msgid "Residence"
-msgstr ""
+msgstr "Bofándi"
 
 #: index_edit.php:365
 msgid "Restore the default block layout"
@@ -12090,12 +12090,12 @@ msgstr ""
 #: app/GedcomTag.php:528 edit_interface.php:1323 edit_interface.php:1406
 #: inverselink.php:129 note.php:136
 msgid "Shared note"
-msgstr ""
+msgstr "Nkomá ya kokabolama"
 
 #: app/Functions/FunctionsPrintLists.php:992 app/Theme/AbstractTheme.php:1603
 #: notelist.php:28 notelist.php:32 search.php:99
 msgid "Shared notes"
-msgstr ""
+msgstr "Nkomá ya kokabolama"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
@@ -12218,7 +12218,7 @@ msgstr ""
 
 #: statistics.php:261
 msgid "Shortest marriage"
-msgstr "Bowúmeli ya libála ya mokúsé"
+msgstr "Boúmeli bwa libála lya mokúsé"
 
 #: calendar.php:216
 msgid "Show"
@@ -12270,11 +12270,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:607
 msgid "Show couples where only the female partner is dead."
-msgstr ""
+msgstr "Kotálisa balóngani baóyo sé mwǎsí akúfá."
 
 #: app/Functions/FunctionsPrintLists.php:616
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "Kotálisa balóngani baóyo sé mobáli akúfá."
 
 #: app/Functions/FunctionsPrintLists.php:665
 msgid "Show couples who married more than 100 years ago."
@@ -12321,12 +12321,12 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:196
 #: app/Functions/FunctionsPrintLists.php:598
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr ""
+msgstr "Kotálisa bato baye bazalí na bomɔi tǒ balóngani bábalé bazalí na bomɔi."
 
 #: app/Functions/FunctionsPrintLists.php:205
 #: app/Functions/FunctionsPrintLists.php:625
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr ""
+msgstr "Kotálisa bato baóyo bakúfá tǒ balóngani bábalé bakúfá."
 
 #: app/Functions/FunctionsPrintLists.php:214
 msgid "Show individuals who died more than 100 years ago."
@@ -12356,11 +12356,11 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr ""
+msgstr "Kotálisa nkomá"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr ""
+msgstr "Kotálisa ntómo"
 
 #: app/Module/UpcomingAnniversariesModule.php:163
 msgid "Show only births, deaths, and marriages"
@@ -12430,7 +12430,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "Kotêlisa bisíká bya bofándi"
 
 #: app/Module/SlideShowModule.php:286
 msgid "Show slide show controls"
@@ -12880,15 +12880,15 @@ msgstr ""
 
 #: app/GedcomTag.php:333
 msgid "Spouse census date"
-msgstr ""
+msgstr "Dáti ya etángo ya molóngani"
 
 #: app/GedcomTag.php:335
 msgid "Spouse census place"
-msgstr ""
+msgstr "Esíká ya etángo ya molóngani"
 
 #: app/GedcomTag.php:343
 msgid "Spouse note"
-msgstr ""
+msgstr "Nkomá ya molóngani"
 
 #: app/Functions/FunctionsPrintLists.php:1287 familybook.php:75
 msgid "Spouses"
@@ -14619,7 +14619,7 @@ msgstr[1] "Nkómbó ikɛ́ %s kolúta"
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
 msgstr[0] "Nkómbó ya libótá %s ya kolúta"
-msgstr[1] "Nkómbó ya libótá %s ya kolúta"
+msgstr[1] "Nkómbó ya mabótá %s ya kolúta"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:72
@@ -14664,7 +14664,7 @@ msgstr "Mbótama nyɔ́nsɔ"
 
 #: statistics.php:92
 msgid "Total dead"
-msgstr ""
+msgstr "Bawéi bánsɔ"
 
 #: statistics.php:117
 msgid "Total deaths"
@@ -14729,7 +14729,7 @@ msgstr "Mibáli bánsɔ"
 
 #: statistics.php:223
 msgid "Total marriages"
-msgstr "Mitángo ya mabála mánsɔ"
+msgstr "Mabála mánsɔ"
 
 #: admin.php:657
 msgid "Total number of users"
@@ -14749,7 +14749,7 @@ msgstr "Nkómbó ya libótá línsɔ"
 #: app/Module/FamilyTreeStatisticsModule.php:298
 #: app/Module/HtmlBlockModule.php:208
 msgid "Total users"
-msgstr ""
+msgstr "Basáleli bánsɔ"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
@@ -15151,7 +15151,7 @@ msgstr ""
 #: edituser.php:132 login.php:187 login.php:253 login.php:318 login.php:342
 #: login.php:435 login.php:521 setup.php:429
 msgid "Username"
-msgstr ""
+msgstr "Nkómbó ya mosaleli"
 
 #: app/Module/LoginBlockModule.php:101 login.php:219
 msgid "Username or email address"
@@ -15300,7 +15300,7 @@ msgstr ""
 
 #: app/Module/AlbumModule.php:135 app/Module/AlbumModule.php:136
 msgid "View the notes"
-msgstr ""
+msgstr "Kotála nkomá"
 
 #: calendar.php:287
 msgid "View this day"
@@ -15543,7 +15543,7 @@ msgstr ""
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr ""
+msgstr "Mbúla ya mwǎsí"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
@@ -15551,7 +15551,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Nkómbó ya mwǎsí embóngwání na nkómbó ya mobáli"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15741,7 +15741,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:81
 msgid "You must enter a name"
-msgstr ""
+msgstr "Esengeli otíya nkómbó"
 
 #: setup.php:418
 msgid "You must enter all the administrator account fields."
@@ -15845,7 +15845,7 @@ msgstr ""
 
 #: message.php:129 setup.php:425
 msgid "Your name"
-msgstr ""
+msgstr "Nkómbó ya yɔ̌"
 
 #. I18N: %s is a server name/URL
 #: login.php:345
@@ -15951,19 +15951,19 @@ msgstr "bakísá"
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr ""
+msgstr "nkómbó ya bobɔ́kɔli"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "nkómbó ya bobɔ́kɔli"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "nkómbó ya bobɔ́kɔli"
 
 #: app/Stats.php:2912
 msgid "adoption"
@@ -16223,7 +16223,7 @@ msgstr ""
 
 #: app/Stats.php:2914
 msgid "census added"
-msgstr ""
+msgstr "etángo ebakísámí"
 
 #: app/Stats.php:2584 app/Stats.php:3925 app/Stats.php:3927 app/Stats.php:4939
 #: app/Stats.php:4941 app/Stats.php:4943 app/Stats.php:5189
@@ -16385,7 +16385,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:364
 #: app/Module/GoogleMapsModule.php:310
 msgid "edit"
-msgstr ""
+msgstr "Bɔngisá"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
