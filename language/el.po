@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-08 10:58+0000\n"
+"PO-Revision-Date: 2017-08-09 00:32+0300\n"
 "Last-Translator: gr translat <dixex@amail.club>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/el/>\n"
+"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -61,6 +61,9 @@ msgstr " ανά χρονική περίοδο"
 #: app/Functions/FunctionsPrintFacts.php:213
 #: app/Functions/FunctionsPrintFacts.php:218
 #: app/Module/FrequentlyAskedQuestionsModule.php:472
+#: app/Functions/FunctionsPrintFacts.php:189
+#: app/Functions/FunctionsPrintFacts.php:194
+#: app/Module/FrequentlyAskedQuestionsModule.php:471
 #, php-format
 msgid "#%s"
 msgstr "#%s"
@@ -85,12 +88,14 @@ msgstr ""
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
+#: app/Controller/IndividualController.php:176
+#: app/Functions/FunctionsPrintLists.php:1374
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
-#: admin_site_upgrade.php:255
+#: admin_site_upgrade.php:255 admin_site_upgrade.php:253
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
 msgstr "%1$s KB μεταφορτώθηκαν σε %2$s δευτερόλεπτα."
@@ -316,7 +321,7 @@ msgid_plural "%s individuals have been updated."
 msgstr[0] "Ο/Η %s έχει επικαιροποιηθεί."
 msgstr[1] "Οι %s έχουν επικαιροποιηθεί."
 
-#: app/Module/GoogleMapsModule.php:845
+#: app/Module/GoogleMapsModule.php:845 app/Module/GoogleMapsModule.php:549
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
@@ -345,7 +350,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. I18N: %s is a PHP function/module/setting
-#: setup.php:122
+#: setup.php:122 setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
 msgstr "%s είναι απενεργοποιημένο σ' αυτόν τον διακομιστή. Δεν μπορείτε να εγκαταστήσετε το webtrees μέχρι να ενεργοποιηθεί. Παρακαλώ ζητήστε από τον διαχειριστή του διακομιστή σας να το ενεργοποιήσει."
@@ -421,6 +426,7 @@ msgstr[0] "%s συνδεδεμένος χρήστης"
 msgstr[1] "%s συνδεδεμένοι χρήστες"
 
 #: app/Controller/SearchController.php:411
+#: app/Controller/SearchController.php:410
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
@@ -580,19 +586,19 @@ msgid "&lt;select&gt;"
 msgstr "&lt;επιλογή&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-#: app/I18N.php:329 app/I18N.php:333
+#: app/I18N.php:329 app/I18N.php:333 app/I18N.php:282 app/I18N.php:286
 #, php-format
 msgid "(aged %s)"
 msgstr "( %s ετών)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
-#: app/I18N.php:323
+#: app/I18N.php:323 app/I18N.php:276
 #, php-format
 msgid "(aged less than %s)"
 msgstr "(λιγότερο από %s ετών)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
-#: app/I18N.php:326
+#: app/I18N.php:326 app/I18N.php:279
 #, php-format
 msgid "(aged more than %s)"
 msgstr "(περισσότερο από %s ετών)"
@@ -789,7 +795,7 @@ msgstr "Ένα γράφημα των απογόνων ενός ατόμου."
 msgid "A chart of individuals’ lifespans."
 msgstr "Ένα γράφημα όλης της διάρκειας ζωής των επιλεγόμενων ατόμων."
 
-#: edit_interface.php:1011
+#: edit_interface.php:1011 edit_interface.php:970
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr "Ένα παιδί μπορεί να έχει περισσότερα από ένα ζεύγος γονέων. Η σχέση μεταξύ του παιδιού και των γονέων μπορεί να είναι βιολογική, νομική ή βασισμένη στην τοπική κουλτούρα και παράδοση. Εάν δεν έχει οριστεί γενεαλογία, τότε θα θεωρηθεί βιολογική σχέση."
 
@@ -797,7 +803,7 @@ msgstr "Ένα παιδί μπορεί να έχει περισσότερα απ
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr "Ένα συνηθισμένο σφάλμα είναι να υπάρχουν πολλαπλοί σύνδεσμοι στην ίδια εγγραφή, για παράδειγμα, η καταχώρηση του ίδιου τέκνου περισσότερες από μία φορές σε μια οικογενειακή εγγραφή."
 
-#: setup.php:372
+#: setup.php:372 setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr "Ένας διακομιστής βάσης δεδομένων μπορεί να αποθηκεύσει πολλές ξεχωριστές βάσεις δεδομένων. Πρέπει να επιλέξετε μια υπάρχουσα βάση δεδομένων (που δημιουργήθηκε από το διαχειριστή του διακομιστή σας) ή να δημιουργήσετε μια νέα (εάν ο λογαριασμός χρήστη σας στην βάση δεδομένων σας έχει επαρκή δικαιώματα)."
 
@@ -829,12 +835,13 @@ msgid "A greeting message for site visitors."
 msgstr "Μήνυμα καλοσωρίσματος για τους επισκέπτες."
 
 #. I18N: Description of the “Pending changes” module
-#: app/Module/ReviewChangesModule.php:42
+#: app/Module/ReviewChangesModule.php:42 app/Module/ReviewChangesModule.php:44
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Μια λίστα αλλαγών που πρέπει να αναθεωρηθούν από έναν συντονιστή και ειδοποιήσεις μέσω ηλεκτρονικού ταχυδρομείου."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
+#: app/Module/FrequentlyAskedQuestionsModule.php:40
 msgid "A list of frequently asked questions and answers."
 msgstr "Μια λίστα με συχνές ερωτήσεις και απαντήσεις τους."
 
@@ -996,7 +1003,7 @@ msgstr ""
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Μια αναφορά των ατόμων που έχουν στενή συγγένεια με ένα άτομο."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -1545,7 +1552,7 @@ msgstr "Προσθήκη ασύνδετων εγγραφών"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100 admin_trees_config.php:1056
 msgid "Add watermarks to thumbnails"
-msgstr "Προσθ. υδατογραφήματος στις μικρογραφίες"
+msgstr "Προσθήκη υδατογραφήματος στις μικρογραφίες"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41 app/Module/HtmlBlockModule.php:42
@@ -1765,7 +1772,7 @@ msgstr "Αφγανιστάν"
 msgid "Africa"
 msgstr "Αφρική"
 
-#: admin_trees_manage.php:691
+#: admin_trees_manage.php:691 admin_trees_manage.php:682
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr "Μετά την δημιουργία οικογενειακού δένδρου, θα μπορείτε να εισάγετε δεδομένα από ένα αρχείο GEDCOM."
 
@@ -1925,9 +1932,9 @@ msgstr ""
 msgid "All family facts"
 msgstr ""
 
-#: login.php:415
+#: login.php:415 login.php:410
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Όλα τα πεδία είναι υποχρεωτικό να συμπληρωθούν."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -1970,9 +1977,9 @@ msgid "Allow users to select their own theme"
 msgstr "Εμφάνιση επιλογέα θέματος στους χρήστες"
 
 #. I18N: A configuration setting
-#: admin_site_config.php:491
+#: admin_site_config.php:491 admin_site_config.php:478
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Να επιτρέπεται στους επισκέπτες να αιτηθούν λογαριασμό νέου χρήστη"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967 app/GedcomTag.php:663
@@ -2460,7 +2467,7 @@ msgstr "Αυτόματη ξεδίπλωμα σημειώσεων"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489 admin_trees_config.php:1453
 msgid "Automatically expand sources"
-msgstr "Αυτόματη ξεδίπλωμα πηγών"
+msgstr "Αυτόματο ξεδίπλωμα πηγών"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2521,7 +2528,7 @@ msgstr "Μέση ηλικία σε σχέση με τον αιώνα θανάτ�
 #: app/Module/FamilyTreeStatisticsModule.php:306
 #: app/Module/HtmlBlockModule.php:252 app/Stats.php:4946 statistics.php:318
 msgid "Average number of children per family"
-msgstr "Μέσος όρος παιδιών ανά οικογένεια"
+msgstr "Μέσος όρος τέκνων ανά οικογένεια"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:627 admin_trees_manage.php:680
@@ -4075,7 +4082,7 @@ msgstr "Komoren"
 #: app/Module/CompactTreeChartModule.php:33
 #: app/Controller/CompactController.php:47
 msgid "Compact tree"
-msgstr "Συμπίεση δέντρου"
+msgstr "Σύμπτυξη δέντρου"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
@@ -4507,12 +4514,12 @@ msgstr "Τρέχον"
 
 #: app/Module/HtmlBlockModule.php:285 app/Module/HtmlBlockModule.php:286
 msgid "Custom"
-msgstr "Προσαρμογή"
+msgstr "Εξατομίκευση"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 #: app/Functions/FunctionsPrint.php:593 calendar.php:276
 msgid "Custom event"
-msgstr "Προσαρμοσμένο συμβάν"
+msgstr "Εξατομικευμένο συμβάν"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
@@ -4527,17 +4534,19 @@ msgid "Custom tags"
 msgstr "Προσαρμοσμένες Ετικέτες"
 
 #: admin_site_upgrade.php:187 admin_site_upgrade.php:190
+#: admin_site_upgrade.php:185 admin_site_upgrade.php:188
 msgid "Custom theme"
-msgstr ""
+msgstr "Εξατομικευμένο θέμα"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:478 admin_site_config.php:464
 msgid "Custom welcome text"
-msgstr "Κείμενο καλοσωρίσματος απο τον χρήστη"
+msgstr "Εξατομικευμένο καλοσώρισμα χρήστη"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
+#: app/Theme/AbstractTheme.php:1159 app/Theme/AbstractTheme.php:1161
 msgid "Customize this page"
-msgstr ""
+msgstr "Εξατομίκευση παρούσας σελίδας"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729 app/Stats.php:6705
@@ -5169,12 +5178,12 @@ msgstr "Προεπιλεγμένος τύπος χάρτη"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1211 admin_trees_config.php:1177
 msgid "Default pedigree chart layout"
-msgstr "Προεπιλ. μορφή γενεαλογικού διαγράμματος"
+msgstr "Προεπιλεγμένη μορφή γενεαλογικού διαγράμματος"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1224 admin_trees_config.php:1191
 msgid "Default pedigree generations"
-msgstr "Προεπιλ. γενεαλογ. γενιές"
+msgstr "Προεπιλεγμένος αριθμός γενεών"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:250 admin_trees_config.php:973
@@ -5495,21 +5504,21 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr ""
+msgstr "Άμεσοι πρόγονοι"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "Άμεσοι πρόγονοι και οι οικογένειες τους"
 
-#: admin_site_upgrade.php:137
+#: admin_site_upgrade.php:137 admin_site_upgrade.php:135
 msgid "Disable these modules"
-msgstr ""
+msgstr "Απενεργοποίηση αυτών των δομοστοιχείων"
 
-#: admin_site_upgrade.php:201
+#: admin_site_upgrade.php:201 admin_site_upgrade.php:199
 msgid "Disable these themes"
-msgstr ""
+msgstr "Απενεργοποίηση αυτών των θεμάτων"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #. I18N: %s is a number of records per page
@@ -6055,16 +6064,16 @@ msgstr "Ευρώπη"
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55 app/GedcomTag.php:313
 msgid "Event"
-msgstr "Γεγονός"
+msgstr "Συμβάν"
 
 #: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 #: app/Module/GoogleMapsModule.php:1456 statistics.php:111
 msgid "Events"
-msgstr "Γεγονότα"
+msgstr "Συμβάντα"
 
 #: statistics.php:420 statistics.php:433
 msgid "Events in countries"
-msgstr "Γεγονότα σε χώρες"
+msgstr "Συμβάντα σε χώρες"
 
 #: app/Module/IndividualFactsTabModule.php:134
 #: app/Module/IndividualFactsTabModule.php:133
@@ -6345,14 +6354,14 @@ msgstr "Οικογένεια ως σύζυγος"
 #: app/Module/FamilyBookChartModule.php:33
 #: app/Controller/FamilyBookController.php:61
 msgid "Family book"
-msgstr "Οικογεν. βιβλίο"
+msgstr "Οικογενειακό βιβλίο"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/FamilyBookController.php:60
 #: app/Controller/FamilyBookController.php:58
 #, php-format
 msgid "Family book of %s"
-msgstr "Οικογεν. βιβλίο: %s"
+msgstr "Οικογενειακό βιβλίο: %s"
 
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452 app/GedcomTag.php:329
@@ -6607,7 +6616,7 @@ msgstr "Φεβρουάριος"
 #: statisticsplot.php:983 statisticsplot.php:1033 statisticsplot.php:1075
 #: statisticsplot.php:1117 statisticsplot.php:1201
 msgid "Female"
-msgstr "Θηλυκό"
+msgstr "Θηλύς"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -6624,7 +6633,7 @@ msgstr "Θηλυκό"
 #: app/Stats.php:2598 app/Stats.php:3941 calendar.php:243 calendar.php:431
 #: statistics.php:156 statistics.php:173 statistics.php:187
 msgid "Females"
-msgstr "Θηλυκά"
+msgstr "Θήλεις"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746 app/Stats.php:6722
@@ -7065,7 +7074,7 @@ msgstr "Κηδεία"
 #: admin_trees_check.php:139 admin_trees_config.php:1588
 #: admin_trees_check.php:133 admin_trees_config.php:1558
 msgid "GEDCOM errors"
-msgstr "Μηνύματα λάθους σε GEDCOM"
+msgstr "Μηνύματα σφαλμάτων σε GEDCOM"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
@@ -7850,9 +7859,9 @@ msgstr ""
 msgid "Image dimensions"
 msgstr "Διαστάσεις εικόνας"
 
-#: admin_trees_config.php:1136
+#: admin_trees_config.php:1136 admin_trees_config.php:1097
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Εικόνες χωρίς υδατογράφημα"
 
 #. I18N: gedcom tag IMMI
 #: app/GedcomTag.php:524 app/GedcomTag.php:375
@@ -8402,7 +8411,7 @@ msgstr ""
 #: addmedia.php:694 admin_trees_config.php:1855 edit_interface.php:2210
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:534
 msgid "Keep the existing “last change” information"
-msgstr "Διατήρησε τις παρούσες πληροφορίες για τις \"τελευταίες αλλαγές\""
+msgstr "Διατήρηση των πληροφοριών της παρούσας \"τελευταίας αλλαγής\""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791 app/Stats.php:6767
@@ -8519,7 +8528,7 @@ msgstr "LDS Προίκα"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324 admin_trees_config.php:1283
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Εμφ. κωδικών διάταξης LDS σε κουτιά διαγραμμάτων"
+msgstr "Εμφάνιση κωδικών διάταξης LDS σε θηκόγραμμα"
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:784
@@ -9005,7 +9014,7 @@ msgstr "Μαλδίβες"
 #: statisticsplot.php:982 statisticsplot.php:1032 statisticsplot.php:1074
 #: statisticsplot.php:1116 statisticsplot.php:1200
 msgid "Male"
-msgstr "Άρσενικό"
+msgstr "Άρρεν"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:108
@@ -9022,7 +9031,7 @@ msgstr "Άρσενικό"
 #: app/Stats.php:3941 calendar.php:239 calendar.php:430 statistics.php:155
 #: statistics.php:172 statistics.php:186
 msgid "Males"
-msgstr "Αρσενικά"
+msgstr "Άρρενες"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
@@ -9435,7 +9444,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1265 admin_trees_config.php:1232
 msgid "Maximum descendancy generations"
-msgstr "Μεγ. αρ. γενεών απογόνων"
+msgstr "Μέγιστος αριθμός γενεών απογόνων"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1163 admin_trees_config.php:1124
@@ -9445,7 +9454,7 @@ msgstr "Μεγ. αρ. επωνύμων στην λίστα ατόμων"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245 admin_trees_config.php:1212
 msgid "Maximum pedigree generations"
-msgstr "Μέγιστες γεν. γενιές"
+msgstr "Μέγιστος αριθμός γενεών"
 
 #: admin_media_upload.php:188 admin_media_upload.php:182
 msgid "Maximum upload size: "
@@ -9800,9 +9809,9 @@ msgstr ""
 msgid "Moderator"
 msgstr "Επιμελητής"
 
-#: admin.php:700
+#: admin.php:700 admin.php:693
 msgid "Moderators"
-msgstr ""
+msgstr "Συντονιστές"
 
 #: admin_modules.php:157 admin_modules.php:149
 msgid "Module"
@@ -10123,7 +10132,7 @@ msgstr "Το γεν. μου διάγραμμα"
 #: admin_pgv_to_wt.php:113 admin_pgv_to_wt.php:108
 #, php-format
 msgid "MySQL gave the error: %s"
-msgstr "Η MySQL έδωσε το λάθος: %s"
+msgstr "Η MySQL έδωσε το σφάλμα: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
@@ -11049,9 +11058,9 @@ msgstr "Άλλα γεγονότα για εμφάνιση στο διάγραμ�
 msgid "Other folder… please type in"
 msgstr "Άλλος κατάλογος.. παρακαλώ εισάγετε"
 
-#: admin_trees_config.php:2087
+#: admin_trees_config.php:2087 admin_trees_config.php:1804
 msgid "Other preferences"
-msgstr ""
+msgstr "Άλλες προτιμήσεις"
 
 #: statistics.php:73 statistics.php:56
 msgid "Others"
@@ -11256,7 +11265,7 @@ msgstr ""
 #: app/Controller/PedigreeController.php:85
 #: app/Module/ChartsBlockModule.php:184 edit_interface.php:965
 msgid "Pedigree"
-msgstr "Γενεαλογικό Διάγραμμα"
+msgstr "Γενεαλογικό διάγραμμα"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
@@ -11275,7 +11284,7 @@ msgstr "Γενεαλογικός χάρτης: %s"
 #: app/Module/ChartsBlockModule.php:86 app/Module/ChartsBlockModule.php:87
 #, php-format
 msgid "Pedigree of %s"
-msgstr "Γενεαλογικό Διάγραμμα: %s"
+msgstr "Γενεαλογικό διάγραμμα: %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
@@ -11688,7 +11697,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 #: admin_trees_config.php:40 pedigree.php:210
 msgid "Portrait"
-msgstr "Κατακόρυφα"
+msgstr "Κατακόρυφη"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6857 app/Stats.php:6833
@@ -12499,7 +12508,7 @@ msgstr "Εκλατινισμένος τίτλος"
 #: app/Functions/FunctionsPrintLists.php:257
 #: app/Functions/FunctionsPrintLists.php:638
 msgid "Roots"
-msgstr "Ρίζες"
+msgstr "Γενάρχες"
 
 #. I18N: A configuration setting
 #. I18N: noun
@@ -12816,7 +12825,7 @@ msgstr "Επιλογή ατόμων ανά τοποθεσία ή ημερομη�
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43 app/Module/ClippingsCartModule.php:42
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Επιλογή αρχείων από το οικογ. δένδρο και αποθήκευση τους σε αρχείο GEDCOM."
+msgstr "Επιλογή αρχείων από το οικογενειακό δένδρο και αποθήκευση τους σε αρχείο GEDCOM."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
@@ -12971,8 +12980,9 @@ msgstr ""
 
 #. I18N: Menu entry
 #: admin.php:597 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
+#: admin.php:591 admin_site_info.php:25 app/Theme/AdministrationTheme.php:78
 msgid "Server information"
-msgstr ""
+msgstr "Πληροφορίες διακομιστή"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280 admin_site_config.php:334
@@ -13005,7 +13015,7 @@ msgstr "Ορισμός προεπιλεγμένων τομέων για νεα �
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 #: app/Theme/AdministrationTheme.php:141 index_edit.php:34
 msgid "Set the default blocks for new users"
-msgstr "Ορισμός προεπιλεγμένων τομέων για νέους χρήστες"
+msgstr "Ορισμός προεπιλεγμένων κουμπιών για νέους χρήστες"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237 admin_trees_config.php:1204
@@ -13244,7 +13254,7 @@ msgstr "Εμφάνιση συνδέσμου λήψης στην έκθεση π�
 #. I18N: A configuration setting
 #: admin_site_config.php:506 admin_site_config.php:495
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Εμφάνιση \"Δικαιωμάτων Χρήσης\" σε αιτήματα νέων χρηστών"
+msgstr "Εμφάνιση \"Αποδοχή όρων χρήσης\" στα αιτήματα νέων χρηστών"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -13252,7 +13262,7 @@ msgstr "Εμφάνιση όλων των σημειώσεων"
 
 #: placelist.php:212 placelist.php:218
 msgid "Show all places in a list"
-msgstr "Εμφάνιση όλων των τόπων σε κατάλογο"
+msgstr "Εμφάνιση όλων των τοποθεσιών σε κατάλογο"
 
 #: app/Module/SourcesTabModule.php:70 app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
@@ -13292,7 +13302,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:626
 #: app/Functions/FunctionsPrintLists.php:607
 msgid "Show couples where only the female partner is dead."
-msgstr "Εμφάνιση ζευγαριών όπου μόνο η θηλυκή σύντροφος απεβίωσε."
+msgstr "Εμφάνιση ζευγαριών όπου μόνο η σύντροφος (γυναίκα) απεβίωσε."
 
 #: app/Functions/FunctionsPrintLists.php:635
 #: app/Functions/FunctionsPrintLists.php:616
@@ -13322,7 +13332,7 @@ msgstr "Εμφάνιση ξαδερφιών"
 #: app/Module/FamilyTreeStatisticsModule.php:296
 #: app/Module/FamilyTreeStatisticsModule.php:280
 msgid "Show date of last update"
-msgstr "Εμφ. ημ/νίας τελευταίας ενημέρωσης;"
+msgstr "Εμφάνιση ημερομηνίας τελευταίας ενημέρωσης;"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384 admin_trees_config.php:345
@@ -13345,7 +13355,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3951 app/Module/GoogleMapsModule.php:3223
 msgid "Show inactive places"
-msgstr "Εμφ. ανενεργών τοποθεσιών"
+msgstr "Εμφάνιση ανενεργών τοποθεσιών"
 
 #: app/Functions/FunctionsPrintLists.php:244
 #: app/Functions/FunctionsPrintLists.php:234
@@ -13405,7 +13415,7 @@ msgstr "Εμφάνιση σημειώσεων"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Εμφ. επαγγελμάτων;"
+msgstr "Εμφάνιση επαγγελμάτων;"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 #: app/Module/UpcomingAnniversariesModule.php:163
@@ -13422,7 +13432,7 @@ msgstr "Εμφάνιση συμβάντων από ζωντανά άτομα μ�
 #: app/Functions/FunctionsPrintLists.php:186
 #: app/Functions/FunctionsPrintLists.php:176
 msgid "Show only females."
-msgstr "Εμφάνιση μόνο θηλυκών."
+msgstr "Εμφάνιση μόνο θηλέων."
 
 #: app/Functions/FunctionsPrintLists.php:195
 #: app/Functions/FunctionsPrintLists.php:185
@@ -13462,7 +13472,7 @@ msgstr "Εμφάνιση φωτογραφιών"
 
 #: placelist.php:81 placelist.php:76
 msgid "Show places in hierarchy"
-msgstr "Εμφάνιση τοποθεσιών σε ιεραρχία"
+msgstr "Εμφάνιση καταλόγου τοποθεσιών"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:484 admin_trees_config.php:447
@@ -13475,15 +13485,15 @@ msgstr "Εμφάνιση συγγενικών ατόμων/οικογενειώ�
 
 #: app/Module/ResearchTaskModule.php:209 app/Module/ResearchTaskModule.php:167
 msgid "Show research tasks that are assigned to other users"
-msgstr "Εμφ. εργασιών έρευνας άλλων χρηστών"
+msgstr "Εμφάνιση εργασιών έρευνας άλλων χρηστών"
 
 #: app/Module/ResearchTaskModule.php:215 app/Module/ResearchTaskModule.php:173
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Εμφ. εργασιών έρευνας που δεν έχουν υπεύθυνο"
+msgstr "Εμφάνιση εργασιών έρευνας που δεν έχουν υπεύθυνο"
 
 #: app/Module/ResearchTaskModule.php:221 app/Module/ResearchTaskModule.php:179
 msgid "Show research tasks that have a date in the future"
-msgstr "Εμφ. εργασιών έρευνας που έχουν ημ/νία στο μέλλον"
+msgstr "Εμφάνιση εργασιών έρευνας με μελλοντική ημερομηνία"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -13492,7 +13502,7 @@ msgstr "Εμφάνιση κατοικιών"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409 app/Module/SlideShowModule.php:286
 msgid "Show slide show controls"
-msgstr "Εμφ. πλήκτρων στην προβολή φωτ/φιών"
+msgstr "Εμφάνιση διαχείρισης ροής στην προβολή φωτογραφιών"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -13525,7 +13535,7 @@ msgstr ""
 
 #: admin_trees_config.php:1368 admin_trees_config.php:1329
 msgid "Show the events of close relatives on the individual page"
-msgstr "Εμφ. γεγονότων στενών συγγενών στην σελίδα ατόμου"
+msgstr "Εμφάνιση συμβάντων στενών συγγενών στην σελίδα του ατόμου"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
@@ -13575,7 +13585,7 @@ msgstr "Εμφάνιση μικρογραφιών σε διαγράμματα κ
 #: app/Functions/FunctionsPrintFacts.php:811
 #: app/Functions/FunctionsPrintFacts.php:1069
 msgid "Show to managers"
-msgstr "Εμφ. στους συντονιστές"
+msgstr "Εμφάνιση στους συντονιστές"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -13592,7 +13602,7 @@ msgstr "Εμφ. στους συντονιστές"
 #: app/Functions/FunctionsPrintFacts.php:808
 #: app/Functions/FunctionsPrintFacts.php:1066
 msgid "Show to members"
-msgstr "Εμφ. στα μέλη"
+msgstr "Εμφάνιση στα μέλη"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -13609,7 +13619,7 @@ msgstr "Εμφ. στα μέλη"
 #: app/Functions/FunctionsPrintFacts.php:805
 #: app/Functions/FunctionsPrintFacts.php:1063
 msgid "Show to visitors"
-msgstr "Εμφ. στους επισκέπτες"
+msgstr "Εμφάνιση στους επισκέπτες"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
@@ -13623,7 +13633,7 @@ msgstr "Εμφάνιση «φύλλων», ζευγαριών ή ατόμων. �
 #: app/Functions/FunctionsPrintLists.php:254
 #: app/Functions/FunctionsPrintLists.php:636
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Εμφάνιση «ριζών», ζευγάρια ή άτομα. Αυτά τα άτομα μπορούν επίσης να αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν γονείς καταχωρημένους στην βάση δεδομένων."
+msgstr "Εμφάνιση «γενάρχων», ζευγάρια ή άτομα. Αυτά τα άτομα μπορούν επίσης να αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν καταχωρημένους γονείς στην βάση δεδομένων."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229 app/Datatables.php:55
@@ -14137,12 +14147,12 @@ msgstr "Διακοπή"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113 admin_trees_config.php:1071
 msgid "Store watermarked full size images on server"
-msgstr "Αποθ. υδατογραφημένων πλήρων εικόνων στον server;"
+msgstr "Αποθήκευση υδατογραφημένων πλήρων εικόνων στον διακομιστή;"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126 admin_trees_config.php:1086
 msgid "Store watermarked thumbnails on server"
-msgstr "Αποθηκευση υδατογρ. μικρογραφιών στον server;"
+msgstr "Αποθηκευση υδατογραφημένων μικρογραφιών στον διακομιστή;"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -14246,7 +14256,7 @@ msgstr "Πρόθεμα επωνύμου"
 
 #: admin_trees_config.php:2092 admin_trees_config.php:1810
 msgid "Surname tradition"
-msgstr "Παραδοσιακό επωνύμου"
+msgstr "Παραδοσιακή απόκτηση επωνύμου"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -15130,9 +15140,9 @@ msgid_plural "This family tree has %s records which use the same “XREF” as a
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/SlideShowModule.php:192
+#: app/Module/SlideShowModule.php:192 app/Module/SlideShowModule.php:182
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Αυτή η οικογένεια δεν εχει να παρουσίασει εικόνες."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -15146,7 +15156,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:166
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Αυτό το οικ. δέντρο ενημερώθηκε την %s."
+msgstr "Αυτό το οικογενειακό δέντρο ενημερώθηκε το %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -15309,7 +15319,7 @@ msgstr ""
 
 #: admin_trees_check.php:135 admin_trees_check.php:129
 msgid "This may be a mistake in your data."
-msgstr "Αυτό μπορεί να είναι λάθος στα δεδομένα σας."
+msgstr "Αυτό μπορεί να είναι σφάλμα στα δεδομένα σας."
 
 #: admin_trees_check.php:134 admin_trees_check.php:128
 msgid "This may cause a problem for other applications."
@@ -15748,7 +15758,7 @@ msgstr "Τίτλος στα εβραϊκά"
 #: admin_site_change.php:311 admin_site_logs.php:258 admin_site_change.php:302
 #: admin_site_logs.php:249 message.php:109
 msgid "To"
-msgstr "Στο"
+msgstr "Έως"
 
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15921,7 +15931,7 @@ msgstr "Σύνολο οικογενειών: %s"
 
 #: statistics.php:94 statistics.php:90
 msgid "Total females"
-msgstr "Σύνολο θηλυκά"
+msgstr "Σύνολο θηλέων"
 
 #: statistics.php:193 statistics.php:201
 msgid "Total given names"
@@ -15998,8 +16008,9 @@ msgstr "Σύνολο χρηστών"
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
+#: admin_site_config.php:148 app/Theme/AdministrationTheme.php:75
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Παρακολούθηση και αναλύση site"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -16090,7 +16101,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:452 app/Module/GoogleMapsModule.php:419
 msgid "Type of place markers in the place hierarchy"
-msgstr "Τύπος σημαδιών στην ιεραρχία τοποθεσιών"
+msgstr "Τύπος σημάνσεων στην ιεραρχία τοποθεσιών"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:354 login.php:472 admin_users.php:347 login.php:467
@@ -16368,7 +16379,7 @@ msgstr "Χρήση σιλουετών"
 
 #: admin_trees_config.php:1534 admin_trees_config.php:1499
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Χρήση βάσης δεδομένων GeoNames για την αυτόματη συμπλήρωση τόπων"
+msgstr "Χρήση βάσης δεδομένων GeoNames για την αυτόματη συμπλήρωση τοποθεσιών"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16632,14 +16643,14 @@ msgid "Villa Hermosa, Mexico"
 msgstr ""
 
 #. I18N: A configuration setting
-#: admin_users.php:453
+#: admin_users.php:453 admin_users.php:446 edituser.php:280
 msgid "Visible online"
-msgstr ""
+msgstr "Ορατός όταν συνδεδεμένος"
 
 #. I18N: A configuration setting
 #: admin_users.php:459 edituser.php:306 admin_users.php:452 edituser.php:283
 msgid "Visible to other users when online"
-msgstr "Εμφ. σε άλλους χρήστες οταν είναι συνδεδεμένος"
+msgstr "Ορατό σε άλλους χρήστες οταν είναι συνδεδεμένοι"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
@@ -16729,8 +16740,9 @@ msgstr "Κανόνες Πρόσβασης Ιστοσελίδας"
 
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
+#: admin_site_logs.php:29 app/Theme/AdministrationTheme.php:76
 msgid "Website logs"
-msgstr ""
+msgstr "Καταγραφή συνδέσεων"
 
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
@@ -17761,9 +17773,10 @@ msgstr "μοίρες"
 
 #. I18N: A button label.
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
-#: admin_users.php:772
+#: admin_users.php:772 admin_site_change.php:365 admin_site_clean.php:112
+#: admin_site_logs.php:305 admin_users.php:763
 msgid "delete"
-msgstr ""
+msgstr "διαγραφή"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -17987,10 +18000,10 @@ msgstr "δυνατότητα ανεβάσματος αρχείων"
 msgid "first"
 msgstr "πρώτη"
 
-#: admin_trees_config.php:1519
+#: admin_trees_config.php:1519 admin_trees_config.php:1484
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "πρώτα"
 
 #. I18N: A Spanish relationship name, such as first great-nephew
 #: app/Functions/Functions.php:635
@@ -19907,10 +19920,10 @@ msgstr ""
 msgid "last"
 msgstr "τελευταία"
 
-#: admin_trees_config.php:1520
+#: admin_trees_config.php:1520 admin_trees_config.php:1485
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "τελευταία"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:152 inverselink.php:140
@@ -20785,7 +20798,7 @@ msgstr "γαμπρός/νύφη"
 #: modules_v3/change_report/report.xml:7 app/Module/OnThisDayModule.php:154
 #: app/Module/UpcomingAnniversariesModule.php:184
 msgid "sort by date"
-msgstr "ταξιν. ανα ημ/νία"
+msgstr "ταξινόμηση ανά ημερομηνία"
 
 #. I18N: A button label.
 #: edit_interface.php:1847 modules_v3/bdm_report/report.xml:11
@@ -20795,19 +20808,19 @@ msgstr "ταξιν. ανα ημ/νία"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7 edit_interface.php:1789
 msgid "sort by date of birth"
-msgstr "ταξινόμηση ανα ημ/νια γεννήσεως"
+msgstr "ταξινόμηση ανά ημερομηνία γεννήσης"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "ταξινόμηση ανά ημερομηνία θανάτου"
 
 #. I18N: A button label.
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
 #: edit_interface.php:2138
 msgid "sort by date of marriage"
-msgstr "ταξινόμηση ανα ημ-νια γάμου"
+msgstr "ταξινόμηση ανά ημερομηνία γάμου"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
@@ -20840,7 +20853,7 @@ msgstr "Ταξιν. ανα όνομα αρχείου"
 #: app/Module/OnThisDayModule.php:154 app/Module/RecentChangesModule.php:150
 #: app/Module/UpcomingAnniversariesModule.php:184
 msgid "sort by name"
-msgstr "ταξιν. ανα όνομα"
+msgstr "ταξινόμηση ανά όνομα"
 
 #. I18N: An option in a list-box
 #: medialist.php:106 medialist.php:102
