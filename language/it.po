@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-05-24 22:53+0000\n"
-"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
+"PO-Revision-Date: 2017-08-10 14:47+0000\n"
+"Last-Translator: Luca <luca74@email.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -77,13 +77,13 @@ msgstr "%1$s %2$s ha un collegamento %3$s a %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s times removed ascending"
+msgstr ""
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s times removed descending"
+msgstr ""
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -379,15 +379,15 @@ msgstr[1] "%s note sono state aggiornate."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
-#, php-format
+#, fuzzy, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s del genitore"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
-#, php-format
+#, fuzzy, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "figlio/a del %s"
 
 #: app/I18N.php:812
 #, php-format
@@ -1485,7 +1485,7 @@ msgstr "Aggiungi record scollegati"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "Aggiungi una filigrana alle miniature?"
+msgstr "Aggiungi una filigrana alle miniature"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -2922,7 +2922,7 @@ msgstr "Blue marine"
 
 #: message.php:127
 msgid "Body"
-msgstr "Messaggio:"
+msgstr "Messaggio"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
@@ -3368,7 +3368,7 @@ msgstr "Casta"
 
 #: statistics.php:703
 msgid "Categories"
-msgstr "Categorie:"
+msgstr "Categorie"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -4541,7 +4541,7 @@ msgstr "Data registrazione"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "Data inviato:"
+msgstr "Data inviato"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:709
@@ -7040,7 +7040,7 @@ msgstr "Egli venne cremato"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #: modules_v3/GEDFact_assistant/census/census-edit.php:71
 msgid "Head of household"
-msgstr "Capo-famiglia:"
+msgstr "Capo-famiglia"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:512
@@ -7477,7 +7477,7 @@ msgstr "Includi sotto-cartelle"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Includere i familiari più prossimi della persona?"
+msgstr "Includere i familiari più prossimi della persona"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -10095,7 +10095,7 @@ msgstr "Numero di famiglie senza figli"
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr "Numero di generazioni:"
+msgstr "Numero di generazioni"
 
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
@@ -11066,7 +11066,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Inserisci eventi essenziali quanto vuoto?"
+msgstr "Inserisci eventi essenziali quanto vuoto"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -11829,7 +11829,7 @@ msgstr "Santiago, Cile"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Santo Domingo, Dominican Republic"
-msgstr "Santo Domingo, Repubblica Dominicana."
+msgstr "Santo Domingo, Repubblica Dominicana"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:347
@@ -12074,7 +12074,7 @@ msgstr "Invia messaggi globali"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Inviare email di promemoria?"
+msgstr "Inviare email di promemoria"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12446,7 +12446,7 @@ msgstr "Mostra tutti i tag"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Mostra un cursore per l’età?"
+msgstr "Mostra un cursore per l’età"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12455,12 +12455,12 @@ msgstr "Mostra dettagli grafico per impostazione predefinita"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Mostra figli degli antenati?"
+msgstr "Mostra figli degli antenati"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Conteggi località prima o dopo il nome?"
+msgstr "Conteggi località prima o dopo il nome"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
@@ -12493,7 +12493,7 @@ msgstr "Mostra cugini"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Mostra la data dell’ultimo aggiornamento?"
+msgstr "Mostra la data dell’ultimo aggiornamento"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12563,21 +12563,21 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Mostra le note?"
+msgstr "Mostra le note"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Mostra occupazioni?"
+msgstr "Mostra occupazioni"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Mostra solo nascite, decessi e matrimoni?"
+msgstr "Mostra solo nascite, decessi e matrimoni"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Visualizza solo gli eventi di persone in vita?"
+msgstr "Visualizza solo gli eventi di persone in vita"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12590,7 +12590,7 @@ msgstr "Mostra solo le persone di cui il genere non è noto."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Mostra solo persone, eventi o tutto?"
+msgstr "Mostra solo persone, eventi o tutto"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12613,7 +12613,7 @@ msgstr "Mostra aggiornamenti in sospeso"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Mostra le foto?"
+msgstr "Mostra le foto"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12642,12 +12642,12 @@ msgstr "Mostra le attività di ricerca con una data futura"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Mostra luoghi di residenza?"
+msgstr "Mostra i luoghi di residenza"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Mostra i controlli della presentazione?"
+msgstr "Mostra i controlli della presentazione"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12655,7 +12655,7 @@ msgstr "Mostra i controlli della presentazione?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Mostra le fonti?"
+msgstr "Mostra le fonti"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12707,7 +12707,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Per quali lingue va mostrato questo riquadro?"
+msgstr "Per quali lingue va mostrato questo riquadro"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
@@ -13160,7 +13160,7 @@ msgstr "Inizia dai genitori"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "Avviare la presentazione al caricamento della pagina?"
+msgstr "Avviare la presentazione al caricamento della pagina"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13222,12 +13222,12 @@ msgstr "Ferma"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr "Salva sul server le immagini originali filigranate?"
+msgstr "Salva sul server le immagini originali filigranate"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr "Salva sul server le miniature filigranate?"
+msgstr "Salva sul server le miniature filigranate"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13250,7 +13250,7 @@ msgstr "Suddivisione"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "Oggetto:"
+msgstr "Oggetto"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
@@ -15542,7 +15542,7 @@ msgstr "Veracruz, Messico"
 
 #: login.php:534
 msgid "Verification code"
-msgstr "Codice di verifica:"
+msgstr "Codice di verifica"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15795,12 +15795,12 @@ msgstr "Dove è installato PhpGedView?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Quali alberi genealogici andrebbero inseriti nelle sitemap?"
+msgstr "Quali alberi genealogici andrebbero inseriti nelle sitemap"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr "Chi può caricare nuovi file multimediali?"
+msgstr "Chi può caricare nuovi file multimediali"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -16078,7 +16078,7 @@ msgstr "È necessario ricreare la numerazione dei record di uno degli alberi gen
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "È necessario selezionare una persona e un tipo di grafico nelle opzioni di configurazioni di questo riquadro."
+msgstr "È necessario selezionare una persona e un tipo di grafico nelle opzioni di configurazioni di questo riquadro"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
