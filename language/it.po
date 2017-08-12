@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-10 14:47+0000\n"
+"PO-Revision-Date: 2017-08-12 15:49+0000\n"
 "Last-Translator: Luca <luca74@email.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -1736,7 +1736,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, New Mexico, Stati Uniti d'America"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -1951,12 +1951,12 @@ msgstr "Antenati di %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:134
 msgid "Ancestral file number"
-msgstr "Ancestral file number"
+msgstr "Numero in Ancestral File"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, Stati Uniti d'America"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6653
@@ -2159,7 +2159,7 @@ msgstr "Così come è possibile usare la barra degli strumenti per applicare la 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:48
 msgid "Ash"
-msgstr "Ash"
+msgstr "Cenere"
 
 #: statistics.php:697
 msgid "Asia"
@@ -2192,7 +2192,7 @@ msgstr "In mare"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, Stati Uniti d'America"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2527,7 +2527,7 @@ msgstr "Aggiornamenti sequenziali"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Stati Uniti d'America"
 
 #: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
 #: search_advanced.php:252 search_advanced.php:267
@@ -2571,7 +2571,7 @@ msgstr "Berna, Svizzera"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
-msgstr "Best man"
+msgstr "Testimone"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6683
@@ -2586,7 +2586,7 @@ msgstr "Bibliografia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, Stati Uniti d'America"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:188
@@ -2600,7 +2600,7 @@ msgstr "Bing Mappe™"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Stati Uniti d'America"
 
 #. I18N: gedcom tag BIRT
 #: app/Functions/FunctionsPrintLists.php:237
@@ -2884,7 +2884,7 @@ msgstr "Bogotà, Colombia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Stati Uniti d'America"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
@@ -2913,7 +2913,7 @@ msgstr "Bosnia-Erzegovina"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Stati Uniti d'America"
 
 #: app/Functions/FunctionsPrintLists.php:600
 msgid "Both alive"
@@ -2931,7 +2931,7 @@ msgstr "Botswana"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Stati Uniti d'America"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6684
