@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-09 00:32+0300\n"
+"PO-Revision-Date: 2017-08-12 13:22+0300\n"
 "Last-Translator: gr translat <dixex@amail.club>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -749,7 +749,7 @@ msgstr "Ένα γράφημα όλης της διάρκειας ζωής των
 
 #: edit_interface.php:970
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Ένα παιδί μπορεί να έχει περισσότερα από ένα ζεύγος γονέων. Η σχέση μεταξύ του παιδιού και των γονέων μπορεί να είναι βιολογική, νομική ή βασισμένη στην τοπική κουλτούρα και παράδοση. Εάν δεν έχει οριστεί γενεαλογία, τότε θα θεωρηθεί βιολογική σχέση."
+msgstr "Ένα παιδί μπορεί να έχει περισσότερα από ένα ζεύγος γονέων. Η σχέση μεταξύ του τέκνου και των γονέων μπορεί να είναι βιολογική, νομική ή βασισμένη στην τοπική κουλτούρα και παράδοση. Εάν δεν έχει οριστεί γενεαλογία, τότε θα θεωρηθεί βιολογική σχέση."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -1250,11 +1250,11 @@ msgstr "Προσθήκη νέου τέκνου"
 
 #: app/Module/RelativesTabModule.php:413 edit_interface.php:572
 msgid "Add a child to create a one-parent family"
-msgstr "Προσθέστε ένα τέκνο  να δημιουργήσετε μια μονογονεική οικογένεια"
+msgstr "Προσθήκη τέκνου για την δημιουργία μονογονεικής οικογένειας"
 
 #: app/Controller/FamilyController.php:80 app/Functions/FunctionsCharts.php:292
 msgid "Add a child to this family"
-msgstr "Προσθήκη τέκνου στην οικογένεια αυτή"
+msgstr "Προσθήκη τέκνου σ'αυτήν την οικογένεια"
 
 #: edit_interface.php:73
 msgid "Add a fact"
@@ -1298,7 +1298,7 @@ msgstr "Προσθήκη μητέρας"
 
 #: edit_interface.php:1590 individual.php:150
 msgid "Add a name"
-msgstr "Προσθήκη Ονόματος"
+msgstr "Προσθήκη ονόματος"
 
 #: app/Module/FamilyTreeNewsModule.php:120
 msgid "Add a news article"
@@ -1307,7 +1307,7 @@ msgstr "Προσθήκη άρθρου νέων"
 #: app/Controller/FamilyController.php:141 app/Functions/FunctionsEdit.php:1011
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Προσθήκη Σημειώματος/Σχολίου"
+msgstr "Προσθήκη σημειώματος/σχολίου"
 
 #: app/Functions/FunctionsEdit.php:1028
 msgid "Add a restriction"
@@ -1671,7 +1671,7 @@ msgstr "Ηλικία"
 
 #: statistics.php:293
 msgid "Age at birth of child"
-msgstr "Ηλικία κατα τη γέννηση του τέκνου"
+msgstr "Ηλικία κατά τη γέννηση του τέκνου"
 
 #: admin_trees_config.php:364
 msgid "Age at which to assume an individual is dead"
@@ -1705,7 +1705,7 @@ msgstr "Ηλικία στο έτος του γάμου"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1268
 msgid "Age of parents next to child’s birthdate"
-msgstr "Ηλικία γονέων δίπλα στην ημ/νία γεννήσεως παιδιού"
+msgstr "Ηλικία γονέων δίπλα στην ημερομηνία γεννήσεως τέκνου"
 
 #: app/Functions/FunctionsPrintLists.php:492
 msgid "Age related to death year"
@@ -4092,7 +4092,7 @@ msgstr ""
 
 #: app/GedcomTag.php:947
 msgid "Cremation of a child"
-msgstr "Αποτέφρωση παιδιού"
+msgstr "Αποτέφρωση τέκνου"
 
 #: app/GedcomTag.php:945
 msgid "Cremation of a daughter"
@@ -4666,7 +4666,7 @@ msgstr "Θάνατος αδελφού"
 
 #: app/GedcomTag.php:1048
 msgid "Death of a child"
-msgstr "Θάνατος παιδιού"
+msgstr "Θάνατος τέκνου"
 
 #: app/GedcomTag.php:1046
 msgid "Death of a daughter"
@@ -4867,12 +4867,12 @@ msgstr "Προεπιλεγμένο άτομο"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1177
 msgid "Default pedigree chart layout"
-msgstr "Προεπιλεγμένη μορφή γενεαλογικού διαγράμματος"
+msgstr "Προεπιλεγμένη μορφή οριζοντίου γενεαλογικού διαγράμματος"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1191
 msgid "Default pedigree generations"
-msgstr "Προεπιλεγμένος αριθμός γενεών"
+msgstr "Προεπιλεγμένος αριθμός γενεών οριζοντίου δένδρου"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:246 admin_trees_config.php:922
@@ -6004,7 +6004,7 @@ msgstr "Οικογένεια με σύζυγο"
 #: app/Module/FamilyTreeStatisticsModule.php:305
 #: app/Module/HtmlBlockModule.php:247
 msgid "Family with the most children"
-msgstr "Οικογένεια με τα περισσότερα παιδιά"
+msgstr "Οικογένεια με τα περισσότερα τέκνα"
 
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:486
@@ -6225,7 +6225,7 @@ msgstr "Εύρεση σχέσεων μέσω προγόνων"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
-msgstr "Ευρέση κοντινότερων σχέσεων"
+msgstr "Εύρεση κοντινότερων σχέσεων"
 
 #: admin_trees_manage.php:499 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
@@ -6248,7 +6248,7 @@ msgstr "Πρώτο γεγονός"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:349
 msgid "First record"
-msgstr ""
+msgstr "Πρώτη εγγραφή"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -8583,7 +8583,7 @@ msgstr "Γάμος αδελφού"
 
 #: app/GedcomTag.php:1220
 msgid "Marriage of a child"
-msgstr "Γάμος παιδιού"
+msgstr "Γάμος τέκνου"
 
 #: app/GedcomTag.php:1218
 msgid "Marriage of a daughter"
@@ -8763,7 +8763,7 @@ msgstr "Μεγ. αρ. επωνύμων στην λίστα ατόμων"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1212
 msgid "Maximum pedigree generations"
-msgstr "Μέγιστος αριθμός γενεών"
+msgstr "Μέγιστος αριθμός γενεών οριζοντίου δένδρου"
 
 #: admin_media_upload.php:182
 msgid "Maximum upload size: "
@@ -9161,7 +9161,7 @@ msgstr "Μήνας γέννησης"
 
 #: app/Stats.php:4734 statistics.php:541 statisticsplot.php:956
 msgid "Month of birth of first child in a relation"
-msgstr "Μήνας γέννησης του πρώτου παιδιού με συσχέτιση"
+msgstr "Μήνας γέννησης του πρώτου τέκνου σε μια σχέση"
 
 #: statistics.php:526 statisticsplot.php:860
 msgid "Month of death"
@@ -9373,7 +9373,7 @@ msgstr "Οι σελίδες μου"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1742
 msgid "My pedigree"
-msgstr "Το γεν. μου διάγραμμα"
+msgstr "Το γενεαλογικό μου οριζόντιο διάγραμμα"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:108
@@ -9960,7 +9960,7 @@ msgstr ""
 #: app/GedcomTag.php:441 app/Stats.php:4939 app/Stats.php:4941
 #: app/Stats.php:4943 statistics.php:561 statisticsplot.php:1174
 msgid "Number of children"
-msgstr "Αριθμός παιδιών"
+msgstr "Αριθμός τέκνων"
 
 #: app/Module/RecentChangesModule.php:134
 #: app/Module/UpcomingAnniversariesModule.php:144
@@ -9970,7 +9970,7 @@ msgstr "Αριθμός ημερών για εμφάνιση"
 
 #: app/Stats.php:5208 statistics.php:319
 msgid "Number of families without children"
-msgstr "Αρ. οικογενειών χωρίς παιδιά"
+msgstr "Αριθμός άτεκνων οικογενειών"
 
 #: app/Module/ClippingsCartModule.php:208
 #: app/Module/ClippingsCartModule.php:227
@@ -10436,32 +10436,32 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Γενεαλογικό διάγραμμα"
+msgstr "Οριζόντιο γενεαλογικό διάγραμμα"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Γενεαλογικό διάγραμμα"
+msgstr "Οριζόντιο γενεαλογικό διάγραμμα"
 
 #: app/Module/GoogleMapsModule.php:234
 msgid "Pedigree map"
-msgstr "Γενεαλογικός χάρτης"
+msgstr "Οριζόντιος γενεαλογικός χάρτης"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:985
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Γενεαλογικός χάρτης: %s"
+msgstr "Οριζόντιος γενεαλογικός χάρτης: %s"
 
 #: app/Module/ChartsBlockModule.php:87
 #, php-format
 msgid "Pedigree of %s"
-msgstr "Γενεαλογικό διάγραμμα: %s"
+msgstr "Οριζόντιο γενεαλογικό διάγραμμα: %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:82
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Γενεαλογικό δένδρο: %s"
+msgstr "Οριζόντιο γενεαλογικό δένδρο: %s"
 
 #. I18N: Name of a module
 #: admin.php:768 admin.php:790 admin_site_upgrade.php:98
@@ -11142,7 +11142,7 @@ msgstr ""
 #: app/Controller/FamilyController.php:84 app/Module/RelativesTabModule.php:288
 #: edit_interface.php:1736
 msgid "Re-order children"
-msgstr "Αναταξινόμηση παιδιών"
+msgstr "Αναταξινόμηση τέκνων"
 
 #: app/Controller/IndividualController.php:286
 #: app/Module/RelativesTabModule.php:376 edit_interface.php:2105
@@ -12538,7 +12538,7 @@ msgstr "Εμφάνιση στους επισκέπτες"
 #: app/Functions/FunctionsPrintLists.php:263
 #: app/Functions/FunctionsPrintLists.php:645
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Εμφάνιση «φύλλων», ζευγαριών ή ατόμων. Αυτά είναι άτομα που είναι ζωντανά αλλά δεν έχουν καταχωρημένα παιδιά στην βάση δεδομένων."
+msgstr "Εμφάνιση «φύλλων», ζευγαριών ή ατόμων. Αυτά είναι άτομα που είναι ζωντανά αλλά δεν έχουν καταχωρημένα τέκνα στην βάση δεδομένων."
 
 #: app/Functions/FunctionsPrintLists.php:254
 #: app/Functions/FunctionsPrintLists.php:636
@@ -18448,7 +18448,7 @@ msgstr "μεσοδιάστημα ένα παιδί"
 
 #: statistics.php:649
 msgid "interval two children"
-msgstr "μεσοδιάστημα δύο παιδιά"
+msgstr "μεσοδιάστημα δύο τέκνα"
 
 #: search.php:118 search.php:276
 msgid "invert selection"
@@ -19298,7 +19298,7 @@ msgstr "γαμπρός/νύφη"
 #: app/Module/UpcomingAnniversariesModule.php:184
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "ταξινόμηση ανά ημερομηνία"
+msgstr "Ταξινόμηση ανά ημερομηνία"
 
 #. I18N: A button label.
 #: edit_interface.php:1789 modules_v3/bdm_report/report.xml:11
@@ -19308,33 +19308,33 @@ msgstr "ταξινόμηση ανά ημερομηνία"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr "ταξινόμηση ανά ημερομηνία γεννήσης"
+msgstr "Ταξινόμηση ανά ημερομηνία γεννήσης"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "ταξινόμηση ανά ημερομηνία θανάτου"
+msgstr "Ταξινόμηση ανά ημερομηνία θανάτου"
 
 #. I18N: A button label.
 #: edit_interface.php:2138 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "ταξινόμηση ανά ημερομηνία γάμου"
+msgstr "Ταξινόμηση ανά ημερομηνία γάμου"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:152
 msgid "sort by date, newest first"
-msgstr "Ταξιν. ανα ημ/νία, νεότερο πρώτα"
+msgstr "Ταξινόμηση ανά ημερομηνία, νεότερο πρώτα"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:151
 msgid "sort by date, oldest first"
-msgstr "Ταξιν. ανα ημ/νία, παλαιότερο πρώτα"
+msgstr "Ταξινόμηση ανά ημερομηνία, παλαιότερο πρώτα"
 
 #. I18N: An option in a list-box
 #: medialist.php:105
 msgid "sort by filename"
-msgstr "Ταξιν. ανα όνομα αρχείου"
+msgstr "Ταξινόμηση ανά όνομα αρχείου"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:154 app/Module/RecentChangesModule.php:150
@@ -19348,12 +19348,12 @@ msgstr "Ταξιν. ανα όνομα αρχείου"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr "ταξινόμηση ανά όνομα"
+msgstr "Ταξινόμηση ανά όνομα"
 
 #. I18N: An option in a list-box
 #: medialist.php:102
 msgid "sort by title"
-msgstr "Ταξιν. ανα τίτλο"
+msgstr "Ταξινόμηση ανά τίτλο"
 
 #: app/Module/GoogleMapsModule.php:3017
 msgid "south"
