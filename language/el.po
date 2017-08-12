@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-12 13:22+0300\n"
+"PO-Revision-Date: 2017-08-12 15:30+0300\n"
 "Last-Translator: gr translat <dixex@amail.club>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " αλλά οι λεπτομέρειές είναι άγνωστες"
+msgstr " αλλά οι λεπτομέρειες είναι άγνωστες"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -12355,7 +12355,7 @@ msgstr "Εμφάνιση ατόμων εν ζωή"
 #. I18N: A configuration setting
 #: admin_trees_config.php:427
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Εμφάνιση ονομάτων μυστικών ατόμων"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13341,35 +13341,35 @@ msgstr "Ημ/νία και ώρα τελευταίας ενημέρωσης"
 
 #: family.php:106
 msgid "The details of this family are private."
-msgstr ""
+msgstr "Οι λεπτομέρειες αυτής της οικογένειας είναι μυστικές."
 
 #: individual.php:71
 msgid "The details of this individual are private."
-msgstr ""
+msgstr "Οι λεπτομέρειες αυτού του ατόμου είναι μυστικές."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:229 admin_trees_export.php:36
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Το Οικογενειακό Δένδρο εξήχθη στο %s."
+msgstr "Το οικογενειακό δένδρο εξήχθη στο %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:72
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Το οικογενειακό δένδρο “%s” υπάρχει ήδη."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:75
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Το οικογενειακό δένδρο “%s” δημιουργήθηκε."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:52 admin_trees_manage.php:149
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Το οικογενειακό δένδρο “%s” διαγράφηκε."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:61
@@ -13379,57 +13379,57 @@ msgstr ""
 
 #: admin_trees_merge.php:182
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Τα οικογενειακά δένδρα συγχωνεύτηκαν επιτυχώς."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:279
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "Η οικογένεια “%s” διαγράφηκε γιατί εχει μόνο μέλος."
 
 #: addmedia.php:171 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "Το αρχείο %s υπάρχει ήδη. Χρησιμοποιήστε άλλο όνομα αρχείου."
 
 #: admin_site_upgrade.php:231 admin_site_upgrade.php:358
 #: admin_site_upgrade.php:391 admin_trees_export.php:39
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Το αρχείο %s δεν ήταν δυνατόν να δημιουργηθεί."
 
 #: admin_media.php:62 admin_media.php:71 admin_site_clean.php:36
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Το αρχείο %s δεν ήταν δυνατόν να διαγραφεί."
 
 #: admin_site_upgrade.php:333
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Το αρχείο %s δεν ήταν δυνατόν να ανανεωθεί."
 
 #: admin_site_upgrade.php:356
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "Το αρχείο %s δημιουργήθηκε."
 
 #: admin_media.php:60 admin_media.php:69 admin_site_clean.php:30
 #: admin_site_upgrade.php:411 admin_site_upgrade.php:432
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Το αρχείο %s διαγράφηκε."
 
 #: admin_media_upload.php:136 admin_media_upload.php:154
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Το αρχείο %s ανανεώθηκε."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Το αρχείο ανανεώθηκε τμηματικά. Παρακαλώ δοκιμάστε ξανά."
 
 #. I18N: %s is a filename
 #: medialist.php:297 mediaviewer.php:123
@@ -13440,7 +13440,7 @@ msgstr "Το αρχείο «%s» δεν υπάρχει."
 #: admin_site_clean.php:34 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Ο φάκελος %s δεν ήταν δυνατόν να διαγραφεί."
 
 #: addmedia.php:95 addmedia.php:106 addmedia.php:118 addmedia.php:251
 #: addmedia.php:262 addmedia.php:274 admin_media_upload.php:61
@@ -13448,19 +13448,19 @@ msgstr ""
 #: admin_trees_config.php:251
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "Ο κατάλογος %s δεν υπάρχει, και δεν μπορεί να δημιουργηθεί."
+msgstr "Ο φάκελος %s δεν υπάρχει, και δεν μπορεί να δημιουργηθεί."
 
 #: addmedia.php:93 addmedia.php:104 addmedia.php:249 addmedia.php:260
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:249
 #, php-format
 msgid "The folder %s has been created."
-msgstr "Ο κατάλογος %s δημιουργήθηκε."
+msgstr "Ο φάκελος %s δημιουργήθηκε."
 
 #: admin_site_clean.php:28 admin_site_upgrade.php:426
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Ο φάκελος %s διαγράφηκε."
 
 #: admin_site_config.php:191
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
