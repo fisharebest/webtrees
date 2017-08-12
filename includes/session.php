@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * We set the following globals
@@ -121,32 +122,15 @@ require WT_ROOT . 'vendor/autoload.php';
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
-$https    = strtolower(Filter::server('HTTPS'));
-$protocol = ($https === '' || $https === 'off') ? 'http' : 'https';
-$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
+$request = Request::createFromGlobals();
+$request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
-$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
-$host = Filter::server('SERVER_NAME', null, $host);
-
-$port = Filter::server('SERVER_PORT', null, '80');
-$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
-
-// Ignore the default port.
-if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
-	$port = '';
-} else {
-	$port = ':' . $port;
-}
+// Remove any PHP script name
+$base_uri = preg_replace('/[^\/]+$/', '', $request_uri);
+define('WT_BASE_URL', $base_uri);
 
 // What is the name of the requested script.
 define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
-
-// REDIRECT_URL should be set when Apache is following a RedirectRule
-// PHP_SELF may have trailing path: /path/to/script.php/FOO/BAR
-$path = Filter::server('REDIRECT_URL', null, Filter::server('PHP_SELF'));
-$path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
-
-define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -357,7 +341,7 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 if (Site::getPreference('LOGIN_URL') !== '') {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', 'login.php');
+	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere

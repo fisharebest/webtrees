@@ -72,17 +72,6 @@ class Select2 extends Html {
 	}
 
 	/**
-	 * Format a family name for display in a Select2 control.
-	 *
-	 * @param Family $family
-	 *
-	 * @return string
-	 */
-	public static function familyValue(Family $family) {
-		return $family->getFullName();
-	}
-
-	/**
 	 * Look up a family.
 	 *
 	 * @param Tree   $tree  Search this tree.
@@ -123,7 +112,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::familyValue($family),
+						'text' => View::make('selects/family', ['family' => $family]),
 					];
 				}
 			}
@@ -215,24 +204,6 @@ class Select2 extends Html {
 	}
 
 	/**
-	 * Format an individual name for display in a Select2 control.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public static function individualValue(Individual $individual) {
-		$image = $individual->findHighlightedMedia();
-		if ($image instanceof Media) {
-			$html = $image->displayImage(30, 40, 'crop', []) . ' ';
-		} else {
-			$html = '';
-		}
-
-		return $html . $individual->getFullName() . ', ' . $individual->getLifeSpan();
-	}
-
-	/**
 	 * Look up an individual.
 	 *
 	 * @param Tree   $tree  Search this tree.
@@ -245,7 +216,7 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_full" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_num" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
@@ -253,6 +224,7 @@ class Select2 extends Html {
 
 		while (is_object($row = $cursor->fetch())) {
 			$individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			$individual->setPrimaryName($row->n_num);
 			// Filter for privacy
 			if ($individual !== null && $individual->canShowName()) {
 				if ($offset > 0) {
@@ -266,7 +238,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => str_replace(['@N.N.', '@P.N.'], [I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')], $row->n_full) . ', ' . $individual->getLifeSpan(),
+						'text' => View::make('selects/individual', ['individual' => $individual]),
 					];
 				}
 			}
@@ -288,17 +260,6 @@ class Select2 extends Html {
 	 */
 	public static function mediaObjectConfig() {
 		return self::commonConfig() + ['data-ajax--url' => self::URL_OBJE];
-	}
-
-	/**
-	 * Format a media object name for display in a Select2 control.
-	 *
-	 * @param Media $media
-	 *
-	 * @return string
-	 */
-	public static function mediaObjectValue(Media $media) {
-		return $media->displayImage(30, 40, 'crop', []) . ' ' . $media->getFullName() . ', ' . basename($media->getFilename());
 	}
 
 	/**
@@ -335,7 +296,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::mediaObjectValue($media),
+						'text' => View::make('selects/media', ['media' => $media]),
 					];
 				}
 			}
@@ -357,17 +318,6 @@ class Select2 extends Html {
 	 */
 	public static function noteConfig() {
 		return self::commonConfig() + ['data-ajax--url' => self::URL_NOTE];
-	}
-
-	/**
-	 * Format a note name for display in a Select2 control.
-	 *
-	 * @param Note $note
-	 *
-	 * @return string
-	 */
-	public static function noteValue(Note $note) {
-		return $note->getFullName();
 	}
 
 	/**
@@ -404,7 +354,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::noteValue($note),
+						'text' => View::make('selects/note', ['note' => $note]),
 					];
 				}
 			}
@@ -429,18 +379,7 @@ class Select2 extends Html {
 	}
 
 	/**
-	 * Format a note name for display in a Select2 control.
-	 *
-	 * @param Note $note
-	 *
-	 * @return string
-	 */
-	public static function placeValue(Note $note) {
-		return $note->getFullName();
-	}
-
-	/**
-	 * Look up a note.
+	 * Look up a place name.
 	 *
 	 * @param Tree   $tree   Search this tree.
 	 * @param int    $page   Skip this number of pages.  Starts with zero.
@@ -533,17 +472,6 @@ class Select2 extends Html {
 	}
 
 	/**
-	 * Format a repository name for display in a Select2 control.
-	 *
-	 * @param Repository $repository
-	 *
-	 * @return string
-	 */
-	public static function repositoryValue(Repository $repository) {
-		return $repository->getFullName();
-	}
-
-	/**
 	 * Look up a repository.
 	 *
 	 * @param Tree   $tree  Search this tree.
@@ -577,7 +505,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::repositoryValue($repository),
+						'text' => View::make('selects/repository', ['repository' => $repository]),
 					];
 				}
 			}
@@ -599,17 +527,6 @@ class Select2 extends Html {
 	 */
 	public static function sourceConfig() {
 		return self::commonConfig() + ['data-ajax--url' => self::URL_SOUR];
-	}
-
-	/**
-	 * Format a source name for display in a Select2 control.
-	 *
-	 * @param Source $source
-	 *
-	 * @return string
-	 */
-	public static function sourceValue(Source $source) {
-		return $source->getFullName();
 	}
 
 	/**
@@ -646,7 +563,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::sourceValue($source),
+						'text' => View::make('selects/source', ['source' => $source]),
 					];
 				}
 			}
@@ -668,17 +585,6 @@ class Select2 extends Html {
 	 */
 	public static function submitterConfig() {
 		return self::commonConfig() + ['data-ajax--url' => self::URL_SUBM];
-	}
-
-	/**
-	 * Format a family name for display in a Select2 control.
-	 *
-	 * @param GedcomRecord $submitter
-	 *
-	 * @return string
-	 */
-	public static function submitterValue(GedcomRecord $submitter) {
-		return $submitter->getFullName();
 	}
 
 	/**
@@ -715,7 +621,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => self::submitterValue($submitter),
+						'text' => View::make('selects/submitter', ['submitter' => $submitter]),
 					];
 				}
 			}

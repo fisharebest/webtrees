@@ -210,19 +210,30 @@ function recipients($to) {
  * @return bool
  */
 function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient, $subject, $body, $url) {
+	// Create a dummy user, so we can send messages from the tree.
+	$from = new User(
+		(object) [
+			'user_id'   => null,
+			'user_name' => '',
+			'real_name' => $tree->getTitle(),
+			'email'     => $tree->getPreference('WEBTREES_EMAIL'),
+		]
+	);
+
+	// Create a dummy user, so we can reply to visitors.
+	$sender = new User(
+		(object) [
+			'user_id'   => null,
+			'user_name' => '',
+			'real_name' => $sender_name,
+			'email'     => $sender_email,
+		]
+	);
+
 	$success = true;
-	$hr      = '--------------------------------------------------';
-	$body    = nl2br($body, false);
-	$body_cc = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . $hr . Mail::EOL . $body;
 
-	I18N::init($recipient->getPreference('language', WT_LOCALE));
-
-	$body = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender_email) . Mail::EOL . Mail::EOL . $body;
-
-	if ($url !== 'index.php') {
-		$body .= Mail::EOL . $hr . Mail::EOL . I18N::translate('This message was sent while viewing the following URL: ') . $url . Mail::EOL;
-
-	}
+	// Switch to the recipient's language
+	I18N::init($recipient->getPreference('language'));
 
 	// Send via the internal messaging system.
 	if (in_array($recipient->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
@@ -232,11 +243,25 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$subject,
-				str_replace('<br>', '', $body),
+				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
 			]);
 	}
 
-	// CC to the author via the internal messaging system.
+	// Send via email
+	if (in_array($recipient->getPreference('contactmethod'), ['messaging2', 'messaging3', 'mailto', 'none'])) {
+		$success = $success && Mail::send(
+				$from,
+				$recipient,
+				$sender,
+				I18N::translate('webtrees message') . ' - ' . $subject,
+				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
+				View::make('emails/message-user-html', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
+			);
+	}
+
+	I18N::init(WT_LOCALE);
+
+	// Copy the message back to the user
 	if (Auth::check() && in_array(Auth::user()->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
 		Database::prepare(
 			"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
@@ -245,28 +270,9 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 			WT_CLIENT_IP,
 			$recipient->getUserId(),
 			$subject,
-			str_replace('<br>', '', $body_cc),
+			View::make('emails/message-copy-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
 		]);
 	}
-
-	// Send via email
-	if (in_array($recipient->getPreference('contactmethod'), ['messaging2', 'messaging3', 'mailto', 'none'])) {
-		$success = $success && Mail::send(
-			// “From:” header
-			$tree,
-			// “To:” header
-			$sender_email,
-			$sender_name,
-			// “Reply-To:” header
-			Site::getPreference('SMTP_FROM_NAME'),
-			$tree->getPreference('title'),
-			// Message body
-			I18N::translate('webtrees message') . ' - ' . $subject,
-			$body
-		);
-	}
-
-	I18N::init(WT_LOCALE);
 
 	return $success;
 }

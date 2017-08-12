@@ -253,7 +253,7 @@ class BranchesController extends PageController {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
-					} elseif ($family->getFirstFact('_NMR')) {
+					} else {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
 					}
 					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;

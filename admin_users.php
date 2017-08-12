@@ -90,11 +90,24 @@ case 'save':
 			// Approving for the first time? Send a confirmation email
 			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
 				I18N::init($user->getPreference('language'));
-				Mail::systemMessage(
-					$WT_TREE,
+
+				// Create a dummy user, so we can send messages from the tree.
+				$sender = new User(
+					(object) [
+						'user_id'   => null,
+						'user_name' => '',
+						'real_name' => $WT_TREE->getTitle(),
+						'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+					]
+				);
+
+				Mail::send(
+					$sender,
 					$user,
+					$sender,
 					I18N::translate('Approval of account at %s', WT_BASE_URL),
-					I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
+					View::make('emails/approve-user-text', ['user' => $user]),
+					View::make('emails/approve-user-html', ['user' => $user])
 				);
 			}
 

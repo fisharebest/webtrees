@@ -36,7 +36,7 @@ class CensusColumnConditionFrenchFemme extends AbstractCensusColumnCondition {
 	protected $divorce  = '';
 	protected $divorcee = '1';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '';
 	protected $widow   = '';
 }

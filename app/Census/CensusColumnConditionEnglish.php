@@ -32,7 +32,7 @@ class CensusColumnConditionEnglish extends AbstractCensusColumnCondition {
 	protected $divorce  = 'Div';
 	protected $divorcee = 'Div';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = 'Wid';
 	protected $widow   = 'Wid';
 }

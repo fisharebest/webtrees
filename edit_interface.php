@@ -347,12 +347,13 @@ case 'edit':
 
 	</form>
 	<?php
-	echo FunctionsEdit::createFamilyModal($controller->tree());
-	echo FunctionsEdit::createMediaModal($controller->tree());
-	echo FunctionsEdit::createNoteModal($controller->tree());
-	echo FunctionsEdit::createRepositoryModal($controller->tree());
-	echo FunctionsEdit::createSourceModal($controller->tree());
-	echo FunctionsEdit::createOnScreenKeyboardModal();
+	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-media', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
+	echo View::make('modals/on-screen-keyboard');
 	break;
 
 case 'add':
@@ -420,13 +421,13 @@ case 'add':
 	</div>
 	</form>
 	<?php
-	echo FunctionsEdit::createFamilyModal($controller->tree());
-	echo FunctionsEdit::createMediaModal($controller->tree());
-	echo FunctionsEdit::createNoteModal($controller->tree());
-	echo FunctionsEdit::createRepositoryModal($controller->tree());
-	echo FunctionsEdit::createSourceModal($controller->tree());
-	echo FunctionsEdit::createSubmitterModal($controller->tree());
-	echo FunctionsEdit::createOnScreenKeyboardModal();
+	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-media', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
+	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
+	echo View::make('modals/on-screen-keyboard');
 
 	break;
 
@@ -493,7 +494,8 @@ case 'update':
 		preg_match_all('/[_0-9A-Z]+/', $controller->tree()->getPreference('ADVANCED_NAME_FACTS'), $match);
 		$name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
 		foreach ($name_facts as $name_fact) {
-			if (!empty($_POST[$name_fact])) {
+			// Ignore advanced facts that duplicate standard facts.
+			if (!in_array($name_fact, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX']) && !empty($_POST[$name_fact])) {
 				$newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
 			}
 		}
@@ -2050,7 +2052,7 @@ case 'add-media-link':
 			</div>
 		</div>
 	</form>
-	<?= FunctionsEdit::createMediaModal($controller->tree()) ?>
+	<?= View::make('modals/create-media', ['tree' => $controller->tree()]) ?>
 	<?php
 	break;
 
@@ -2850,48 +2852,46 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// Different cultures do surnames differently
 	$surname_tradition = SurnameTradition::create($controller->tree()->getPreference('SURNAME_TRADITION'));
 
-	$name_fields = [];
-	if ($name_fact) {
+	if ($name_fact !== null) {
 		// Editing an existing name
 		$name_fact_id = $name_fact->getFactId();
-		$name_type    = $name_fact->getAttribute('TYPE');
 		$namerec      = $name_fact->getGedcom();
-		foreach (Config::standardNameFacts() as $tag) {
-			if ($tag === 'NAME') {
-				$name_fields[$tag] = $name_fact->getValue();
-			} else {
-				$name_fields[$tag] = $name_fact->getAttribute($tag);
-			}
-		}
-		// Populate any missing 2 XXXX fields from the 1 NAME field
+		$name_fields  = [
+			'NAME' => $name_fact->getValue(),
+			'TYPE' => $name_fact->getAttribute('TYPE'),
+			'NPFX' => $name_fact->getAttribute('NPFX'),
+			'GIVN' => $name_fact->getAttribute('GIVN'),
+			'NICK' => $name_fact->getAttribute('NICK'),
+			'SPFX' => $name_fact->getAttribute('SPFX'),
+			'SURN' => $name_fact->getAttribute('SURN'),
+			'NSFX' => $name_fact->getAttribute('NSFX'),
+		];
+
+		// Populate any missing subfields from the NAME field
 		$npfx_accept = implode('|', Config::namePrefixes());
 		if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
-			if (empty($name_fields['NPFX'])) {
-				$name_fields['NPFX'] = $name_bits[1];
-			}
-			if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
-				$name_fields['SPFX'] = trim($name_bits[7]);
-				// For names with two surnames, there will be four slashes.
-				// Turn them into a list
-				$name_fields['SURN'] = preg_replace('~/[^/]*/~', ',', $name_bits[9]);
-			}
-			if (empty($name_fields['GIVN'])) {
-				$name_fields['GIVN'] = $name_bits[4];
-			}
-			if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
-				$name_fields['NICK'] = $name_bits[6];
-			}
+			$name_fields['NPFX'] = $name_fields['NPFX'] ?: $name_bits[1];
+			$name_fields['GIVN'] = $name_fields['GIVN'] ?: $name_bits[4];
+			$name_fields['NICK'] = $name_fields['NICK'] ?: $name_bits[6];
+			$name_fields['SPFX'] = $name_fields['SPFX'] ?: trim($name_bits[7]);
+			$name_fields['SURN'] = $name_fields['SURN'] ?: preg_replace('~/[^/]*/~', ',', $name_bits[9]);
+			$name_fields['NSFX'] = $name_fields['NSFX'] ?: $name_bits[10];
 		}
-
 	} else {
 		// Creating a new name
 		$name_fact_id = null;
-		$name_type    = null;
 		$namerec      = null;
-		// Populate the standard NAME field and subfields
-		foreach (Config::standardNameFacts() as $tag) {
-			$name_fields[$tag] = '';
-		}
+		$name_fields  = [
+			'NAME' => '',
+			'TYPE' => '',
+			'NPFX' => '',
+			'GIVN' => '',
+			'NICK' => '',
+			'SPFX' => '',
+			'SURN' => '',
+			'NSFX' => '',
+		];
+
 		// Inherit surname from parents, spouse or child
 		if ($family) {
 			$father = $family->getHusband();
@@ -2972,20 +2972,15 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// When adding a new child, specify the pedigree
 		FunctionsEdit::addSimpleTag('0 PEDI');
 		break;
-	case 'update':
-		// When adding/editing a name, specify the type
-		FunctionsEdit::addSimpleTag('0 TYPE ' . $name_type, '', '', null, $person);
-		break;
 	}
-
-	// First - new/existing standard name fields
+	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
 		}
 	}
 
-	// Second - new/existing advanced name fields
+	// Second - advanced name fields
 	if ($surname_tradition->hasMarriedNames() || preg_match('/\n2 _MARNM /', $namerec)) {
 		$adv_name_fields = ['_MARNM' => ''];
 	} else {
@@ -2993,7 +2988,10 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		foreach ($match[1] as $tag) {
-			$adv_name_fields[$tag] = '';
+			// Ignore advanced facts that duplicate standard facts
+			if (!in_array($tag, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'])) {
+				$adv_name_fields[$tag] = '';
+			}
 		}
 	}
 

@@ -1773,14 +1773,6 @@ div.faq_body {
 	display: table-cell;
 }
 
-#indi_left .ui-tabs-panel {
-	padding: 0;
-}
-
-#indi_left .ui-tabs-nav {
-	margin: 0 2px;
-}
-
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;

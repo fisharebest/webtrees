@@ -36,7 +36,7 @@ class CensusColumnConditionFrenchGarcon extends AbstractCensusColumnCondition {
 	protected $divorce  = '';
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '';
 	protected $widow   = '';
 }

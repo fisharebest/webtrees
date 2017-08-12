@@ -20,9 +20,6 @@ namespace Fisharebest\Webtrees;
  * although most of it can be altered to customise local installations.
  */
 class Config {
-	/** Font used to watermark images */
-	const FONT_DEJAVU_SANS_TTF = 'packages/dejavu-fonts-ttf-2.35/ttf/DejaVuSans.ttf';
-
 	/**
 	 * NPFX tags - name prefixes
 	 *
@@ -195,17 +192,6 @@ class Config {
 			'RELI'     => [
 				'CHR', 'CHRA', 'BAPM', 'MARR', 'BURI',
 			],
-		];
-	}
-
-	/**
-	 * Name fields
-	 *
-	 * @return string[]
-	 */
-	public static function standardNameFacts() {
-		return [
-			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
 		];
 	}
 
