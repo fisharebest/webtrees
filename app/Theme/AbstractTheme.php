@@ -49,8 +49,8 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use stdClass;
 use Symfony\Component\HttpFoundation\Request;
+use stdClass;
 
 /**
  * Common functions for all themes.
