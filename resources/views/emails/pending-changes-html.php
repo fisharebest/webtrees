@@ -9,7 +9,7 @@
 
 <ul>
 	<li>
-		<a href="<?= Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()], '&amp;') ?>">
+		<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()])) ?>">
 			<?= Html::escape($tree->getTitle()) ?>
 		</a>
 	</li>

@@ -5,6 +5,6 @@
 
 <?= I18N::translate('Follow this link to verify your email address.') ?>
 
-<?= Html::url(WT_LOGIN_URL, ['username' => $user->getUserName(), 'user_hashcode' => $user->getPreference('reg_hashcode'), 'action' => 'userverify', 'ged' => $tree->getName()], '&') ?>
+<?= Html::url(WT_LOGIN_URL, ['username' => $user->getUserName(), 'user_hashcode' => $user->getPreference('reg_hashcode'), 'action' => 'userverify', 'ged' => $tree->getName()]) ?>
 
 <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>

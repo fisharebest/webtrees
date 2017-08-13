@@ -15,7 +15,7 @@
 </dl>
 
 <p>
-	<a href="<?= Html::url(WT_BASE_URL . 'login.php', ['username' => $user->getUserName(), 'url' => 'edituser.php'], '&amp;') ?>">
+	<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'login.php', ['username' => $user->getUserName(), 'url' => 'edituser.php'])) ?>">
 		<?= I18N::translate('Sign in') ?>
 	</a>
 </p>

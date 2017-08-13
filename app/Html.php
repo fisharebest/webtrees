@@ -55,14 +55,13 @@ class Html {
 	 *
 	 * @param string   $path
 	 * @param string[] $data
-	 * @param string   $arg_separator "&" or "&amp;"
 	 *
 	 * @return string
 	 */
-	public static function url($path, array $data, $arg_separator = '&amp;') {
+	public static function url($path, array $data) {
 		$path = strtr($path, ' ', '%20');
 
-		return $path . '?' . http_build_query($data, '', $arg_separator, PHP_QUERY_RFC3986);
+		return $path . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
 	}
 
 	/**
