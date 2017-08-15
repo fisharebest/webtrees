@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-10 22:04+0000\n"
+"PO-Revision-Date: 2017-08-15 12:57+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -16644,27 +16644,27 @@ msgstr "mwǎna mwǎsí ya"
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr "Sɛmɛ́ki mwǎsí"
+msgstr "mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Functions/Functions.php:932
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr "Sɛmɛ́ki mwǎsí"
+msgstr "mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Functions/Functions.php:1360
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "tatá ya sɛmɛ́ki mwǎsí"
+msgstr "tatá wa mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Functions/Functions.php:1362
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "mamá wa sɛmɛ́ki mwǎna mwǎsí"
+msgstr "mamá wa mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "Babóti ba sɛmɛ́ki mwǎsí"
+msgstr "Babóti ba mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -18986,17 +18986,17 @@ msgstr "mwǎna nkána mobáli"
 #: app/Functions/Functions.php:1002
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "mobáli wa mwǎna wa nkána"
+msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
 
 #: app/Functions/Functions.php:1262
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "mobáli wa mwǎna wa nkána"
+msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
 
 #: app/Functions/Functions.php:1304
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "mobáli wa mwǎna wa nkána"
+msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
 
 #: app/Functions/Functions.php:806
 msgctxt "brother’s child"
@@ -19026,32 +19026,32 @@ msgstr "óy'elándí"
 #: app/Functions/Functions.php:808
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "mwǎna nkána mobáli"
 
 #: app/Functions/Functions.php:912
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "mwǎna nkána mwǎsí"
 
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "mwǎna nkána mwǎsí"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
 
 #: app/Functions/Functions.php:1272
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
 
 #: app/Functions/Functions.php:1336
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
 
 #: app/Functions/Functions.php:571
 msgid "ninth cousin"
@@ -19610,32 +19610,32 @@ msgstr "mwǎna mobáli ya"
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "mwǎna sɛmɛ́ki mobáli"
 
 #: app/Functions/Functions.php:830
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "mwǎna sɛmɛ́ki mobáli"
 
 #: app/Functions/Functions.php:1072
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "Tatá ya sɛmɛ́ki mobáli"
+msgstr "Tatá wa mwǎna sɛmɛ́ki mobáli"
 
 #: app/Functions/Functions.php:1074
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "mamá wa sɛmɛ́ki mwǎna mobáli"
+msgstr "mamá wa mwǎna sɛmɛ́ki mobáli"
 
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "babóti ba mwǎna sɛmɛ́ki mobáli"
 
 #: app/Functions/Functions.php:822
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr "sɛmɛ́ki mobáli/sɛmɛ́ki mwǎsí"
+msgstr "mwǎna sɛmɛ́ki mobáli/mwǎna sɛmɛ́ki mwǎsí"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:152
