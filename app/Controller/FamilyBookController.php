@@ -196,12 +196,12 @@ class FamilyBookController extends ChartController {
 		//This allows vertical line spacing to be consistent
 		if (count($person->getChildFamilies()) == 0) {
 			echo '<table cellspacing="0" cellpadding="0" border="0" >';
-			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+			$this->printEmptyBox();
 
 			//-- recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr>';
-			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+			$this->printEmptyBox();
 
 			//-- recursively get the mother’s family
 			$this->printPersonPedigree($person, $count + 1);
@@ -269,7 +269,7 @@ class FamilyBookController extends ChartController {
 				if ($genoffset > $count) {
 					echo '<table cellspacing="0" cellpadding="0" border="0" >';
 					for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
-						$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
+						$this->printEmptyBox();
 						echo '</tr>';
 					}
 					echo '</table>';
@@ -371,7 +371,7 @@ class FamilyBookController extends ChartController {
 			$this->printDescendency($person, 1);
 			echo '</td><td class="tdmid">';
 			$this->printPersonPedigree($person, 1);
-			echo '</td></tr></table><br><br><hr style="page-break-after:always;"><br><br>';
+			echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
 			foreach ($families as $family) {
 				foreach ($family->getChildren() as $child) {
 					$this->printFamilyBook($child, $descent_steps - 1);

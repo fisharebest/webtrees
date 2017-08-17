@@ -106,12 +106,12 @@ class QueryMedia {
 		switch ($subfolders) {
 		case 'include':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
-			$args[] = Filter::escapeLike($folder);
+			$args[] = Database::escapeLike($folder);
 			break;
 		case 'exclude':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
-			$args[] = Filter::escapeLike($folder);
-			$args[] = Filter::escapeLike($folder);
+			$args[] = Database::escapeLike($folder);
+			$args[] = Database::escapeLike($folder);
 			break;
 		default:
 			throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
@@ -120,8 +120,8 @@ class QueryMedia {
 		// Apply search terms
 		if ($filter) {
 			$sql .= " AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
-			$args[] = Filter::escapeLike($filter);
-			$args[] = Filter::escapeLike($filter);
+			$args[] = Database::escapeLike($filter);
+			$args[] = Database::escapeLike($filter);
 		}
 
 		if ($form_type) {

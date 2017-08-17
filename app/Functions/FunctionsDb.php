@@ -151,7 +151,7 @@ class FunctionsDb {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 			$sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND i_file IN (";
@@ -201,7 +201,7 @@ class FunctionsDb {
 		foreach ($query as $n => $q) {
 			$sql .= " AND n_full COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND i_file IN (";
@@ -365,7 +365,7 @@ class FunctionsDb {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 			$sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND f_file IN (";
@@ -426,9 +426,9 @@ class FunctionsDb {
 		foreach ($query as $n => $q) {
 			$sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
 			$args['husb_collate_' . $n] = I18N::collation();
-			$args['husb_query_' . $n]   = Filter::escapeLike($q);
+			$args['husb_query_' . $n]   = Database::escapeLike($q);
 			$args['wife_collate_' . $n] = I18N::collation();
-			$args['wife_query_' . $n]   = Filter::escapeLike($q);
+			$args['wife_query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND f_file IN (";
@@ -478,7 +478,7 @@ class FunctionsDb {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 			$sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND s_file IN (";
@@ -533,7 +533,7 @@ class FunctionsDb {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 			$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND o_file IN (";
@@ -588,7 +588,7 @@ class FunctionsDb {
 			$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 			$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 			$args['collate_' . $n] = I18N::collation();
-			$args['query_' . $n]   = Filter::escapeLike($q);
+			$args['query_' . $n]   = Database::escapeLike($q);
 		}
 
 		$sql .= " AND o_file IN (";

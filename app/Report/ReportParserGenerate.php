@@ -1616,7 +1616,7 @@ class ReportParserGenerate extends ReportParserBase {
 		$person      = Individual::getInstance($id, $WT_TREE);
 		$mediaobject = $person->findHighlightedMedia();
 		if ($mediaobject) {
-			$attributes = $mediaobject->getImageAttributes('thumb');
+			$attributes = $mediaobject->getImageAttributes();
 			if (in_array(
 					$attributes['ext'],
 					[
@@ -1637,17 +1637,17 @@ class ReportParserGenerate extends ReportParserBase {
 						'WBMP',
 						'XBM',
 					]
-				) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
+				) && $mediaobject->canShow() && $mediaobject->fileExists('main')
 			) {
 				if ($width > 0 && $height == 0) {
-					$perc   = $width / $attributes['adjW'];
-					$height = round($attributes['adjH'] * $perc);
+					$perc   = $width / $attributes[0];
+					$height = round($attributes[1] * $perc);
 				} elseif ($height > 0 && $width == 0) {
-					$perc  = $height / $attributes['adjH'];
-					$width = round($attributes['adjW'] * $perc);
+					$perc  = $height / $attributes[1];
+					$width = round($attributes[0] * $perc);
 				} else {
-					$width  = $attributes['adjW'];
-					$height = $attributes['adjH'];
+					$width  = $attributes[0];
+					$height = $attributes[1];
 				}
 				$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
 				$this->wt_report->addElement($image);
@@ -1716,7 +1716,8 @@ class ReportParserGenerate extends ReportParserBase {
 			$match = [];
 			if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
 				$mediaobject = Media::getInstance($match[1], $WT_TREE);
-				$attributes  = $mediaobject->getImageAttributes('thumb');
+				$attributes  = $mediaobject->getImageAttributes();
+
 				if (in_array(
 						$attributes['ext'],
 						[
@@ -1737,17 +1738,17 @@ class ReportParserGenerate extends ReportParserBase {
 							'WBMP',
 							'XBM',
 						]
-					) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
+					) && $mediaobject->canShow() && $mediaobject->fileExists('main')
 				) {
 					if ($width > 0 && $height == 0) {
-						$perc   = $width / $attributes['adjW'];
-						$height = round($attributes['adjH'] * $perc);
+						$perc   = $width / $attributes[0];
+						$height = round($attributes[1] * $perc);
 					} elseif ($height > 0 && $width == 0) {
-						$perc  = $height / $attributes['adjH'];
-						$width = round($attributes['adjW'] * $perc);
+						$perc  = $height / $attributes[1];
+						$width = round($attributes[0] * $perc);
 					} else {
-						$width  = $attributes['adjW'];
-						$height = $attributes['adjH'];
+						$width  = $attributes[0];
+						$height = $attributes[1];
 					}
 					$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
 					$this->wt_report->addElement($image);

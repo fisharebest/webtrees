@@ -134,53 +134,27 @@ class Media extends GedcomRecord {
 	 * Get the filename on the server - for those (very few!) functions which actually
 	 * need the filename, such as mediafirewall.php and the PDF reports.
 	 *
-	 * @param string $which
-	 *
 	 * @return string
 	 */
-	public function getServerFilename($which = 'main') {
+	public function getServerFilename() {
 		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
 			return $this->file;
-		} elseif ($which == 'main') {
+		} else {
 			// Main image
 			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
-		} else {
-			// Thumbnail
-			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
-			// Does the thumbnail exist?
-			if (file_exists($file)) {
-				return $file;
-			}
-			// Does a user-generated thumbnail exist?
-			$user_thumb = preg_replace('/\.[a-z0-9]{3,5}$/i', '.png', $file);
-			if (file_exists($user_thumb)) {
-				return $user_thumb;
-			}
-
-			// Is there a corresponding main image?
-			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
-			if (!file_exists($main_file)) {
-				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
-
-				return $file;
-			}
-
-			return $file;
 		}
 	}
 
 	/**
 	 * check if the file exists on this server
 	 *
-	 * @param string $which specify either 'main' or 'thumb'
-	 *
 	 * @return bool
 	 */
-	public function fileExists($which = 'main') {
-		return file_exists($this->getServerFilename($which));
+	public function fileExists() {
+		return file_exists($this->getServerFilename());
 	}
 
 	/**
@@ -195,12 +169,10 @@ class Media extends GedcomRecord {
 	/**
 	 * get the media file size in KB
 	 *
-	 * @param string $which specify either 'main' or 'thumb'
-	 *
 	 * @return string
 	 */
-	public function getFilesize($which = 'main') {
-		$size = $this->getFilesizeraw($which);
+	public function getFilesize() {
+		$size = $this->getFilesizeraw();
 		// Round up to the nearest KB.
 		$size = (int) (($size + 1023) / 1024);
 
@@ -211,50 +183,14 @@ class Media extends GedcomRecord {
 	/**
 	 * get the media file size, unformatted
 	 *
-	 * @param string $which specify either 'main' or 'thumb'
-	 *
 	 * @return int
 	 */
-	public function getFilesizeraw($which = 'main') {
+	public function getFilesizeraw() {
 		try {
-			return filesize($this->getServerFilename($which));
+			return filesize($this->getServerFilename());
 		} catch (\ErrorException $ex) {
 			return 0;
 		}
-	}
-
-	/**
-	 * get filemtime for the media file
-	 *
-	 * @param string $which specify either 'main' or 'thumb'
-	 *
-	 * @return int
-	 */
-	public function getFiletime($which = 'main') {
-		try {
-			return filemtime($this->getServerFilename($which));
-		} catch (\ErrorException $ex) {
-			return 0;
-		}
-	}
-
-	/**
-	 * Generate an etag specific to this media item and the current user
-	 *
-	 * @param string $which - specify either 'main' or 'thumb'
-	 *
-	 * @return string
-	 */
-	public function getEtag($which = 'main') {
-		if ($this->isExternal()) {
-			// etag not really defined for external media
-
-			return '';
-		}
-		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . $this->tree->getName() . Auth::accessLevel($this->tree) . $this->tree->getPreference('SHOW_NO_WATERMARK');
-		$etag_string = dechex(crc32($etag_string));
-
-		return $etag_string;
 	}
 
 	/**
@@ -286,35 +222,20 @@ class Media extends GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param string $which     specify either 'main' or 'thumb'
-	 * @param int    $addWidth  amount to add to width
-	 * @param int    $addHeight amount to add to height
-	 *
 	 * @return array
 	 */
-	public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0) {
-		$var = $which . 'imagesize';
-		if (!empty($this->$var)) {
-			return $this->$var;
-		}
+	public function getImageAttributes() {
 		$imgsize = [];
-		if ($this->fileExists($which)) {
-
+		if ($this->fileExists()) {
 			try {
-				$imgsize = getimagesize($this->getServerFilename($which));
+				$imgsize = getimagesize($this->getServerFilename());
 				if (is_array($imgsize) && !empty($imgsize['0'])) {
 					// this is an image
-					$imgsize[0]      = $imgsize[0] + 0;
-					$imgsize[1]      = $imgsize[1] + 0;
-					$imgsize['adjW'] = $imgsize[0] + $addWidth; // adjusted width
-					$imgsize['adjH'] = $imgsize[1] + $addHeight; // adjusted height
 					$imageTypes      = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
 					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
 					// this is for display purposes, always show non-adjusted info
-					$imgsize['WxH']
-						                = /* I18N: image dimensions, width × height */
+					$imgsize['WxH']  = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-					$imgsize['imgWH'] = ' width="' . $imgsize['adjW'] . '" height="' . $imgsize['adjH'] . '" ';
 				}
 			} catch (\ErrorException $ex) {
 				// Not an image, or not a valid image?
@@ -326,12 +247,9 @@ class Media extends GedcomRecord {
 			// this is not an image, OR the file doesn’t exist OR it is a url
 			$imgsize[0]       = 0;
 			$imgsize[1]       = 0;
-			$imgsize['adjW']  = 0;
-			$imgsize['adjH']  = 0;
 			$imgsize['ext']   = '';
 			$imgsize['mime']  = '';
 			$imgsize['WxH']   = '';
-			$imgsize['imgWH'] = '';
 		}
 
 		if (empty($imgsize['mime'])) {
@@ -355,7 +273,7 @@ class Media extends GedcomRecord {
 			if (empty($mime[$imgsize['ext']])) {
 				// if we don’t know what the mimetype is, use something ambiguous
 				$imgsize['mime'] = 'application/octet-stream';
-				if ($this->fileExists($which)) {
+				if ($this->fileExists()) {
 					// alert the admin if we cannot determine the mime type of an existing file
 					// as the media firewall will be unable to serve this file properly
 					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->file . '<');
@@ -364,27 +282,16 @@ class Media extends GedcomRecord {
 				$imgsize['mime'] = $mime[$imgsize['ext']];
 			}
 		}
-		$this->$var = $imgsize;
 
-		return $this->$var;
+		return $imgsize;
 	}
 
 	/**
-	 * Generate a URL directly to the media file
+	 * Generate a URL for an image.
 	 *
-	 * @param string $which
-	 * @param bool   $download
-	 *
-	 * @return string
-	 */
-	public function getHtmlUrlDirect($which = 'main', $download = false) {
-		return $this->imageUrl(0, 0, '');
-	}
-
-	/**
-	 * @param int      $width      max width in pixels
-	 * @param int      $height     max height in pixels
-	 * @param string   $fit        "crop" or ""
+	 * @param int    $width  Maximum width in pixels
+	 * @param int    $height Maximum height in pixels
+	 * @param string $fit    "crop" or "contain"
 	 *
 	 * @return string
 	 */
@@ -521,28 +428,20 @@ class Media extends GedcomRecord {
 			// Generate multiple images for displays with higher pixel densities.
 			$src    = $this->imageUrl($width, $height, $fit);
 			$srcset = [];
-			foreach ([2,3,4] as $x) {
+			foreach ([2, 3, 4] as $x) {
 				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
 			}
 		}
 
 		$image = '<img ' . Html::attributes($attributes + [
-			'dir'      => 'auto',
-			'src'      => $src,
-			'srcset'   => implode(',', $srcset),
-			'alt'      => strip_tags($this->getFullName()),
-			'title'    => strip_tags($this->getFullName()),
-		]) . '>';
+					'dir'    => 'auto',
+					'src'    => $src,
+					'srcset' => implode(',', $srcset),
+					'alt'    => strip_tags($this->getFullName()),
+					'title'  => strip_tags($this->getFullName()),
+				]) . '>';
 
-		return
-			'<a' .
-			' class="gallery"' .
-			' href="' . $this->getHtmlUrlDirect('main') . '"' .
-			' type="' . $this->mimeType() . '"' .
-			' data-obje-url="' . $this->getHtmlUrl() . '"' .
-			' data-obje-note="' . Filter::escapeHtml($this->getNote()) . '"' .
-			' data-title="' . Filter::escapeHtml($this->getFullName()) . '"' .
-			'>' . $image . '</a>';
+		return '<a class="gallery" href="' . Html::escape($this->imageUrl(0, 0, '')) . '">' . $image . '</a>';
 	}
 
 	/**

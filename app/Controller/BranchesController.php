@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Soundex;
@@ -55,7 +56,7 @@ class BranchesController extends PageController {
 
 		if ($this->surname !== '') {
 			$this->setPageTitle(/* I18N: %s is a surname */
-				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
+				I18N::translate('Branches of the %s family', Html::escape($this->surname)));
 			$this->loadIndividuals();
 			$self = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'gedcomid'), $this->tree());
 			if ($self) {
@@ -252,7 +253,7 @@ class BranchesController extends PageController {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
-					} elseif ($family->getFirstFact('_NMR')) {
+					} else {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
 					}
 					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;

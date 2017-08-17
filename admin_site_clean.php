@@ -25,15 +25,15 @@ if ($to_delete && Filter::checkCsrf()) {
 		$is_dir = is_dir(WT_DATA_DIR . $path);
 		if (File::delete(WT_DATA_DIR . $path)) {
 			if ($is_dir) {
-				FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Filter::escapeHtml($path)), 'success');
+				FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Html::escape($path)), 'success');
 			} else {
-				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Filter::escapeHtml($path)), 'success');
+				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::escape($path)), 'success');
 			}
 		} else {
 			if ($is_dir) {
-				FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
+				FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Html::escape($path)), 'danger');
 			} else {
-				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
+				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::escape($path)), 'danger');
 			}
 		}
 	}
@@ -93,12 +93,12 @@ echo Bootstrap4::breadcrumbs([
 			<?php
 			foreach ($entries as $entry) {
 				if (in_array($entry, $do_not_delete)) {
-					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Filter::escapeHtml($entry), '</li>';
+					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Html::escape($entry), '</li>';
 				} else {
 					echo '<li><i class="fa-li fa fa-trash-o"></i>';
 					echo '<label>';
-					echo '<input type="checkbox" name="to_delete[]" value="', Filter::escapeHtml($entry), '"> ';
-					echo Filter::escapeHtml($entry);
+					echo '<input type="checkbox" name="to_delete[]" value="', Html::escape($entry), '"> ';
+					echo Html::escape($entry);
 					echo '</label></li>';
 				}
 			}

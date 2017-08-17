@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Log;
-
 /**
  * Class FunctionsMedia - common functions
  */
@@ -51,7 +49,8 @@ class FunctionsMedia {
 	/**
 	 * Send a dummy image, where one could not be found or created.
 	 *
-	 * @param int $status HTTP status code, such as 404 for "Not found"
+	 * @param int    $status HTTP status code, such as 404 for "Not found"
+	 * @param string $message
 	 */
 	public static function outputHttpStatusAsImage($status, $message) {
 		$width      = 100;

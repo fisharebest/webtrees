@@ -57,7 +57,7 @@ if ($show_all === 'yes') {
 	} elseif ($falpha) {
 		$alpha   = '';
 		$surname = '';
-		$legend  = I18N::translate('All') . ', ' . Filter::escapeHtml($falpha) . '…';
+		$legend  = I18N::translate('All') . ', ' . Html::escape($falpha) . '…';
 		$url     = '?show_all=yes&amp;ged=' . $controller->tree()->getNameUrl();
 		$show    = 'indi';
 	} else {
@@ -86,7 +86,7 @@ if ($show_all === 'yes') {
 		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
 		break;
 	default:
-		$legend .= ', ' . Filter::escapeHtml($falpha) . '…';
+		$legend .= ', ' . Html::escape($falpha) . '…';
 		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
 		break;
 	}
@@ -103,7 +103,7 @@ if ($show_all === 'yes') {
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha) {
 	$show_all = 'no';
-	$legend   = Filter::escapeHtml($alpha) . '…';
+	$legend   = Html::escape($alpha) . '…';
 	$url      = '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
 	$show     = Filter::get('show', 'surn|indi', 'surn');
 } else {

@@ -90,11 +90,24 @@ case 'save':
 			// Approving for the first time? Send a confirmation email
 			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
 				I18N::init($user->getPreference('language'));
-				Mail::systemMessage(
-					$WT_TREE,
+
+				// Create a dummy user, so we can send messages from the tree.
+				$sender = new User(
+					(object) [
+						'user_id'   => null,
+						'user_name' => '',
+						'real_name' => $WT_TREE->getTitle(),
+						'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+					]
+				);
+
+				Mail::send(
+					$sender,
 					$user,
+					$sender,
 					I18N::translate('Approval of account at %s', WT_BASE_URL),
-					I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
+					View::make('emails/approve-user-text', ['user' => $user]),
+					View::make('emails/approve-user-html', ['user' => $user])
 				);
 			}
 
@@ -202,8 +215,7 @@ case 'load_json':
 		$user_name = $datum[2];
 
 		if ($user_id != Auth::id()) {
-			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
-				I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" onclick="delete_user(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($user_name)) . '\', \'' . Filter::escapeJs($user_id) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
+			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */ I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
@@ -212,13 +224,13 @@ case 'load_json':
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[3] is the real name
-		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
+		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
+			$datum[4] = '<a href="#" onclick="return message(\'' . Html::escape($datum[2]) . '\', \'\', \'\');">' . Html::escape($datum[4]) . '</i></a>';
 		}
 		// $datum[2] is the username
-		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
+		$datum[2] = '<span dir="auto">' . Html::escape($datum[2]) . '</span>';
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
 			$datum[5] = $installed_languages[$datum[5]];
@@ -305,7 +317,7 @@ case 'edit':
 				<?= I18N::translate('Real name') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= Filter::escapeHtml($user->getRealName()) ?>" dir="auto">
+				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= Html::escape($user->getRealName()) ?>" dir="auto">
 				<p class="small text-muted">
 					<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
 				</p>
@@ -318,7 +330,7 @@ case 'edit':
 				<?= I18N::translate('Username') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= Filter::escapeHtml($user->getUserName()) ?>" dir="auto">
+				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= Html::escape($user->getUserName()) ?>" dir="auto">
 				<p class="small text-muted">
 					<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
 				</p>
@@ -354,7 +366,7 @@ case 'edit':
 				<?= I18N::translate('Email address') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= Filter::escapeHtml($user->getEmail()) ?>">
+				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= Html::escape($user->getEmail()) ?>">
 				<p class="small text-muted">
 					<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
 				</p>
@@ -488,7 +500,7 @@ case 'edit':
 				<?= I18N::translate('Administrator comments on user') ?>
 			</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?= Filter::escapeHtml($user->getPreference('comment')) ?></textarea>
+				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?= Html::escape($user->getPreference('comment')) ?></textarea>
 			</div>
 		</div>
 
@@ -616,12 +628,12 @@ case 'edit':
 					<td>
 						<input
 							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?= Filter::escapeHtml($tree->getName()) ?>"
+							data-autocomplete-ged="<?= Html::escape($tree->getName()) ?>"
 							type="text"
 							size="12"
 							name="gedcomid<?= $tree->getTreeId() ?>"
 							id="gedcomid<?= $tree->getTreeId() ?>"
-							value="<?= Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')) ?>"
+							value="<?= Html::escape($tree->getUserPreference($user, 'gedcomid')) ?>"
 						>
 					</td>
 					<td>
@@ -693,7 +705,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Filter::escapeHtml($user->getUserName()) ?>
+						<?= Html::escape($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -717,7 +729,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Filter::escapeHtml($user->getUserName()) ?>
+						<?= Html::escape($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -741,7 +753,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Filter::escapeHtml($user->getUserName()) ?>
+						<?= Html::escape($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -774,7 +786,7 @@ case 'cleanup2':
 		if (Filter::post('del_' . $user->getUserId()) == '1') {
 			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
 			$user->delete();
-			I18N::translate('The user %s has been deleted.', Filter::escapeHtml($user->getUserName()));
+			I18N::translate('The user %s has been deleted.', Html::escape($user->getUserName()));
 		}
 	}
 
@@ -795,7 +807,7 @@ default:
 					"type": "POST"
 				},
 				search: {
-					search: "' . Filter::escapeJs(Filter::get('filter')) . '"
+					search: ' . json_encode(Filter::get('filter')) . '
 				},
 				autoWidth: false,
 				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',

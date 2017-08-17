@@ -109,7 +109,7 @@ $medialist = QueryMedia::mediaList(
 			<?= I18N::translate('Search filters') ?>
 		</label>
 		<div class="col-sm-3 wt-page-options-value">
-			<input type="text" class="form-control" name="filter" id="filter" value="<?= Filter::escapeHtml($filter) ?>">
+			<input type="text" class="form-control" name="filter" id="filter" value="<?= Html::escape($filter) ?>">
 		</div>
 
 		<div class="col-sm-3 col-form-label wt-page-options-label">
@@ -128,12 +128,12 @@ $medialist = QueryMedia::mediaList(
 <?php
 if ($action === 'submit') {
 	$url = 'medialist.php?action=submit' .
-		'&amp;ged=' . $WT_TREE->getNameHtml() .
-		'&amp;folder=' . Filter::escapeUrl($folder) .
-		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .
-		'&amp;filter=' . Filter::escapeUrl($filter) .
-		'&amp;form_type=' . Filter::escapeUrl($form_type) .
-		'&amp;max=' . Filter::escapeUrl($max);
+		'&amp;ged=' . rawurlencode($WT_TREE->getName()) .
+		'&amp;folder=' . rawurlencode($folder) .
+		'&amp;subdirs=' . rawurlencode($subdirs) .
+		'&amp;filter=' . rawurlencode($filter) .
+		'&amp;form_type=' . rawurlencode($form_type) .
+		'&amp;max=' . rawurlencode($max);
 
 	$count = count($medialist);
 	$pages = (int) (($count + $max - 1) / $max);
@@ -202,7 +202,7 @@ if ($action === 'submit') {
 										}
 									}
 								} else {
-									echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
+									echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
 								}
 							}
 							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);

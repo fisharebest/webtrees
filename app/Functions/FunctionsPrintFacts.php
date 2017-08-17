@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -36,7 +37,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsPrintFacts - common functions
@@ -140,7 +141,7 @@ class FunctionsPrintFacts {
 				$type  = ''; // Do not print this again
 			} elseif ($type) {
 				// We don't have a translation for $type - but a custom translation might exist.
-				$label = I18N::translate(Filter::escapeHtml($type));
+				$label = I18N::translate(Html::escape($type));
 				$type  = ''; // Do not print this again
 			} else {
 				// An unspecified fact/event
@@ -221,7 +222,7 @@ class FunctionsPrintFacts {
 			echo $fact->getValue();
 			break;
 		case 'AFN':
-			echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', Filter::escapeUrl($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
+			echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
 			break;
 		case 'ASSO':
 			// we handle this later, in format_asso_rela_record()
@@ -229,19 +230,19 @@ class FunctionsPrintFacts {
 		case 'EMAIL':
 		case 'EMAI':
 		case '_EMAIL':
-			echo '<div class="field"><a href="mailto:', Filter::escapeHtml($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
+			echo '<div class="field"><a href="mailto:', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
 			break;
 		case 'FILE':
 			if (Auth::isEditor($fact->getParent()->getTree())) {
-				echo '<div class="field">', Filter::escapeHtml($fact->getValue());
+				echo '<div class="field">', Html::escape($fact->getValue());
 
 				if ($fact->getParent()->fileExists('main') && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
-					echo ' — <a href="' . $fact->getParent()->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a>';
+					echo ' — <a href="' . $fact->getParent()->imageUrl(0, 0, '') . '">' . I18N::translate('Download file') . '</a>';
 				}
 				echo '</div>';
 
 				if (!$fact->getParent()->fileExists('main')) {
-					echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
+					echo '<p class="alert alert-danger">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
 				}
 
 				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists()) {
@@ -274,7 +275,7 @@ class FunctionsPrintFacts {
 			echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
 			break;
 			default:
-			echo Filter::escapeHtml($fact->getValue());
+			echo Html::escape($fact->getValue());
 			break;
 			}
 				echo '</div>';
@@ -286,16 +287,16 @@ class FunctionsPrintFacts {
 			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
 				self::printRepositoryRecord($match[1]);
 			} else {
-				echo '<div class="error">', Filter::escapeHtml($fact->getValue()), '</div>';
+				echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
 			}
 			break;
 		case 'URL':
 		case '_URL':
 		case 'WWW':
-			echo '<div class="field"><a href="', Filter::escapeHtml($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
+			echo '<div class="field"><a href="', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
 			break;
 		case 'TEXT': // 0 SOUR / 1 TEXT
-			echo '<div class="field">', nl2br(Filter::escapeHtml($fact->getValue()), false), '</div>';
+			echo '<div class="field">', nl2br(Html::escape($fact->getValue()), false), '</div>';
 			break;
 		default:
 			// Display the value for all other facts/events
@@ -316,10 +317,10 @@ class FunctionsPrintFacts {
 			if ($target) {
 				echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
 			} else {
-				echo '<div class="error">', Filter::escapeHtml($fact->getValue()), '</div>';
+				echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
 			}
 			} else {
-			echo '<div class="field"><span dir="auto">', Filter::escapeHtml($fact->getValue()), '</span></div>';
+			echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
 			}
 			break;
 			}
@@ -337,7 +338,7 @@ class FunctionsPrintFacts {
 				// Allow (custom) translations for other types
 				$type = I18N::translate($type);
 			}
-			echo GedcomTag::getLabelValue('TYPE', Filter::escapeHtml($type));
+			echo GedcomTag::getLabelValue('TYPE', Html::escape($type));
 		}
 
 		// Print the date of this fact/event
@@ -423,7 +424,7 @@ class FunctionsPrintFacts {
 				if ($user) {
 					echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
 				} else {
-					echo GedcomTag::getLabelValue('_WT_USER', Filter::escapeHtml($match[2]));
+					echo GedcomTag::getLabelValue('_WT_USER', Html::escape($match[2]));
 				}
 				break;
 			case 'RESN':
@@ -443,7 +444,7 @@ class FunctionsPrintFacts {
 				echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'));
 				break;
 				default:
-				echo GedcomTag::getLabelValue('RESN', Filter::escapeHtml($match[2]));
+				echo GedcomTag::getLabelValue('RESN', Html::escape($match[2]));
 				break;
 				}
 					break;
@@ -459,7 +460,7 @@ class FunctionsPrintFacts {
 			case 'URL':
 			case '_URL':
 			case 'WWW':
-				$link = '<a href="' . Filter::escapeHtml($match[2]) . '">' . Filter::escapeHtml($match[2]) . '</a>';
+				$link = '<a href="' . Html::escape($match[2]) . '">' . Html::escape($match[2]) . '</a>';
 				echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 				break;
 			default:
@@ -471,11 +472,11 @@ class FunctionsPrintFacts {
 							$link = '<a href="' . $linked_record->getHtmlUrl() . '">' . $linked_record->getFullName() . '</a>';
 							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 						} else {
-							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Filter::escapeHtml($match[2]));
+							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
 						}
 					} else {
 						// Non links
-						echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Filter::escapeHtml($match[2]));
+						echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
 					}
 				}
 				break;
@@ -596,7 +597,7 @@ class FunctionsPrintFacts {
 		$ct = preg_match_all('/' . $level . ' SOUR (.*)((?:\n\d CONT.*)*)/', $factrec, $match, PREG_SET_ORDER);
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
-				$source = Filter::escapeHtml($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
+				$source = Html::escape($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
 				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
 			}
 		}
@@ -723,7 +724,7 @@ class FunctionsPrintFacts {
 					echo '</div>'; //close div "media-display"
 				}
 			} elseif ($WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
-				echo '<p class="ui-state-error">', $media_id, '</p>';
+				echo '<p class="alert alert-danger">', $media_id, '</p>';
 			}
 			$objectNum++;
 		}
@@ -889,9 +890,9 @@ class FunctionsPrintFacts {
 		}
 
 		if ($textSOUR['EVEN']) {
-			$html .= GedcomTag::getLabelValue('EVEN', Filter::escapeHtml($textSOUR['EVEN']));
+			$html .= GedcomTag::getLabelValue('EVEN', Html::escape($textSOUR['EVEN']));
 			if ($textSOUR['ROLE']) {
-				$html .= GedcomTag::getLabelValue('ROLE', Filter::escapeHtml($textSOUR['ROLE']));
+				$html .= GedcomTag::getLabelValue('ROLE', Html::escape($textSOUR['ROLE']));
 			}
 		}
 
@@ -1184,7 +1185,7 @@ class FunctionsPrintFacts {
 					echo '</span>';
 
 					echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-					$imgsize = $media->getImageAttributes('main');
+					$imgsize = $media->getImageAttributes();
 					if (!empty($imgsize['WxH'])) {
 						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}

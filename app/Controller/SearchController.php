@@ -206,7 +206,7 @@ class SearchController extends PageController {
 			$this->srnote       = 'checked';
 			if (Filter::post('query')) {
 				$this->searchAndReplace($this->tree());
-				header('Location: search.php?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
+				header('Location: search.php?action=replace&query=' . rawurlencode($this->query) . '&replace=' . rawurlencode($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
 				exit;
 			}
 		}
@@ -313,8 +313,7 @@ class SearchController extends PageController {
 		$query = preg_quote($this->query, '/');
 
 		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
-		$name_tags       = array_unique(array_merge(Config::standardNameFacts(), $adv_name_tags));
-		$name_tags[]     = '_MARNM';
+		$name_tags       = array_unique(array_merge(['NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM', '_AKA'], $adv_name_tags));
 		$records_updated = 0;
 		foreach ($this->myindilist as $id => $record) {
 			$old_record = $record->getGedcom();

@@ -6,12 +6,20 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Rhumsaa\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
+    'Symfony\\Polyfill\\Php71\\' => array($vendorDir . '/symfony/polyfill-php71'),
+    'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'League\\Glide\\' => array($vendorDir . '/league/glide/src'),
+    'League\\Flysystem\\ZipArchive\\' => array($vendorDir . '/league/flysystem-ziparchive/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Fisharebest\\Webtrees\\' => array($baseDir . '/app'),
     'Fisharebest\\Localization\\' => array($vendorDir . '/fisharebest/localization/src'),
     'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),

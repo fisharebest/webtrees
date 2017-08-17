@@ -657,7 +657,7 @@ class AdvancedSearchController extends SearchController {
 			uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo FunctionsPrintLists::individualTable($this->myindilist);
 		} elseif (array_filter($this->values)) {
-			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
+			echo '<p class="alert alert-info">', I18N::translate('No results found.'), '</p>';
 		}
 	}
 }

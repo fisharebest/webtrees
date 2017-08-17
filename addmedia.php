@@ -17,9 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
@@ -312,7 +310,7 @@ if ($gedfile === 'FILE') {
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
 	if (Auth::isManager($WT_TREE)) {
-		echo '<input name="filename" type="text" value="' . Filter::escapeHtml($fileName) . '" size="40"';
+		echo '<input name="filename" type="text" value="' . Html::escape($fileName) . '" size="40"';
 		if ($isExternal) {
 			echo '>';
 		} else {
@@ -320,7 +318,7 @@ if ($gedfile === 'FILE') {
 		}
 	} else {
 		echo $fileName;
-		echo '<input name="filename" type="hidden" value="' . Filter::escapeHtml($fileName) . '" size="40">';
+		echo '<input name="filename" type="hidden" value="' . Html::escape($fileName) . '" size="40">';
 	}
 	echo '</td>';
 	echo '</tr>';
@@ -359,7 +357,7 @@ if (!$isExternal) {
 			echo '<p class="small text-muted">', I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
 		}
 	} else {
-		echo '<input name="folder" type="hidden" value="', Filter::escapeHtml($folder), '">';
+		echo '<input name="folder" type="hidden" value="', Html::escape($folder), '">';
 	}
 	echo '<p class="small text-muted">', I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'), '</p>'; echo '</td></tr>';
 } else {

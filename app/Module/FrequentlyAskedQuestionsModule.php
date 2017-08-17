@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
@@ -177,7 +178,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 			<div class="col-sm-9">
 				<input type="text" class="form-control" name="header" id="header"
-				       value="<?= Filter::escapeHtml($header) ?>">
+				       value="<?= Html::escape($header) ?>">
 			</div>
 		</div>
 
@@ -187,7 +188,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			</label>
 
 			<div class="col-sm-9">
-				<textarea name="faqbody" id="faqbody" class="form-control html-edit" rows="10"><?= Filter::escapeHtml($faqbody) ?></textarea>
+				<textarea name="faqbody" id="faqbody" class="form-control html-edit" rows="10"><?= Html::escape($faqbody) ?></textarea>
 			</div>
 		</div>
 
@@ -491,7 +492,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			echo '</td><td>';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '"><i class="fa fa-pencil"></i> ', I18N::translate('Edit'), '</a>';
 			echo '</td><td>';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($faq->header)), '\');"><i class="fa fa-trash"></i> ', I18N::translate('Delete'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', I18N::translate('Are you sure you want to delete “%s”?', Html::escape($faq->header)), '\');"><i class="fa fa-trash"></i> ', I18N::translate('Delete'), '</a>';
 			echo '</td></tr>';
 			// NOTE: Print the title text of the current item
 			echo '<tr><td colspan="5">';

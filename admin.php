@@ -436,14 +436,11 @@ $old_files = [
 	WT_ROOT . 'themes/minimal/css-1.7.5',
 	WT_ROOT . 'themes/webtrees/css-1.7.5',
 	WT_ROOT . 'themes/xenea/css-1.7.5',
-	// Removed in 1.7.9
-	WT_ROOT . 'assets/js-1.7.7',
-	// Removed in 1.8.0
+	// Removed in 2.0.0
 	WT_ROOT . 'admin_site_access.php',
 	WT_ROOT . 'admin_site_readme.php',
 	WT_ROOT . 'app/Controller/SimpleController.php',
-	//WT_ROOT . 'assets/js-1.7.9',
-	//WT_ROOT . 'includes',
+	WT_ROOT . 'assets/js-1.7.7',
 	WT_ROOT . 'packages/font-awesome-4.4.0',
 	WT_ROOT . 'packages/jquery-1.12.1',
 	WT_ROOT . 'packages/jquery-2.2.1',
@@ -451,17 +448,17 @@ $old_files = [
 	WT_ROOT . 'packages/respond-1.4.2',
 	WT_ROOT . 'themes/_administration/css-1.7.5',
 	WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/clouds/css-1.7.8',
+	WT_ROOT . 'themes/clouds/css-1.7.8',
 	WT_ROOT . 'themes/clouds/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/colors/css-1.7.8',
+	WT_ROOT . 'themes/colors/css-1.7.8',
 	WT_ROOT . 'themes/colors/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/fab/css-1.7.8',
+	WT_ROOT . 'themes/fab/css-1.7.8',
 	WT_ROOT . 'themes/fab/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/minimal/css-1.7.8',
+	WT_ROOT . 'themes/minimal/css-1.7.8',
 	WT_ROOT . 'themes/minimal/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/webtrees/css-1.7.8',
+	WT_ROOT . 'themes/webtrees/css-1.7.8',
 	WT_ROOT . 'themes/webtrees/jquery-ui-1.11.2',
-	//WT_ROOT . 'themes/xenea/css-1.7.8',
+	WT_ROOT . 'themes/xenea/css-1.7.8',
 	WT_ROOT . 'themes/xenea/jquery-ui-1.11.2',
 ];
 
@@ -624,7 +621,7 @@ if (
 					<?php elseif ($update_available): ?>
 					<?= I18N::translate('A new version of webtrees is available.') ?>
 					<a href="admin_site_upgrade.php" class="error">
-						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)) ?>
+						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
 					</a>
 					<?php else: ?>
 						<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
@@ -670,7 +667,7 @@ if (
 								<?php foreach ($administrators as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -683,7 +680,7 @@ if (
 								<?php foreach ($managers as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -696,7 +693,7 @@ if (
 								<?php foreach ($moderators as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -709,7 +706,7 @@ if (
 								<?php foreach ($unverified as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -722,7 +719,7 @@ if (
 								<?php foreach ($unapproved as $n => $user): ?>
 									<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -735,7 +732,7 @@ if (
 								<?php foreach ($logged_in as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
 									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Filter::escapeHtml($user->real_name) ?>
+										<?= Html::escape($user->real_name) ?>
 									</a>
 								<?php endforeach ?>
 							</td>
@@ -895,7 +892,7 @@ if (
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>
-						<li dir="ltr"><code><?= Filter::escapeHtml($file_to_delete) ?></code></li>
+						<li dir="ltr"><code><?= Html::escape($file_to_delete) ?></code></li>
 					<?php endforeach ?>
 				</ul>
 			</div>

@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
@@ -5556,7 +5555,7 @@ class Stats {
 			case 'table':
 				$lookup = ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All')];
 
-				return '<table ' . Datatables::givenNameTableAttributes() . '><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Individuals') . '</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
+				return '<table ' . Datatables::givenNameTableAttributes() . '><thead><tr><th colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Individuals') . '</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
 			case 'list':
 				return '<ul>' . implode('', $common) . '</ul>';
 			case 'nolist':
@@ -5901,15 +5900,15 @@ class Stats {
 		if (Auth::check()) {
 			foreach ($loggedusers as $user) {
 				if ($type == 'list') {
-					$content .= '<li>' . Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName());
+					$content .= '<li>' . Html::escape($user->getRealName()) . ' - ' . Html::escape($user->getUserName());
 				} else {
-					$content .= Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName());
+					$content .= Html::escape($user->getRealName()) . ' - ' . Html::escape($user->getUserName());
 				}
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					if ($type == 'list') {
 						$content .= '<br>';
 					}
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . Filter::escapeUrl($user->getUserName())]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . rawurlencode($user->getUserName())]);
 				}
 				if ($type == 'list') {
 					$content .= '</li>';
@@ -6012,10 +6011,10 @@ class Stats {
 	 */
 	public function userName($params = []) {
 		if (Auth::check()) {
-			return Filter::escapeHtml(Auth::user()->getUserName());
+			return Html::escape(Auth::user()->getUserName());
 		} elseif (isset($params[0]) && $params[0] != '') {
 			// if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-			return Filter::escapeHtml($params[0]);
+			return Html::escape($params[0]);
 		} else {
 			return '';
 		}
@@ -6052,7 +6051,7 @@ class Stats {
 		case 'userid':
 			return $user->getUserId();
 		case 'username':
-			return Filter::escapeHtml($user->getUserName());
+			return Html::escape($user->getUserName());
 		case 'fullname':
 			return $user->getRealNameHtml();
 		case 'regdate':
@@ -6390,30 +6389,6 @@ class Stats {
 		}
 
 		return $encoding;
-	}
-
-	/**
-	 * Callback function to compare totals.
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	private function nameTotalSort($a, $b) {
-		return $a['match'] - $b['match'];
-	}
-
-	/**
-	 * Callback function to compare totals.
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	private function nameTotalReverseSort($a, $b) {
-		return $b['match'] - $a['match'];
 	}
 
 	/**

@@ -50,7 +50,7 @@ $delete_file = Filter::post('delete');
 if ($delete_file) {
 	$controller = new AjaxController;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = Filter::post('media_folder', null, ''); // MySQL needs an empty string, not NULL
+	$media_folder = Filter::post('media_folder');
 	$disk_files   = all_disk_files($media_folder, '', 'include', '');
 	// Check file exists? Maybe it was already deleted or renamed.
 	if (in_array($delete_file, $disk_files)) {
@@ -105,9 +105,9 @@ case 'load_json':
 		$ARGS1 = [
 			'media_path_1' => $media_path,
 			'media_folder' => $media_folder,
-			'media_path_2' => Filter::escapeLike($media_path),
-			'search_1'     => Filter::escapeLike($search),
-			'search_2'     => Filter::escapeLike($search),
+			'media_path_2' => Database::escapeLike($media_path),
+			'search_1'     => Database::escapeLike($search),
+			'search_2'     => Database::escapeLike($search),
 		];
 		// Unfiltered rows
 		$SELECT2 =
@@ -125,9 +125,9 @@ case 'load_json':
 
 		if ($subfolders == 'exclude') {
 			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS1['media_path_4'] = Filter::escapeLike($media_path);
+			$ARGS1['media_path_4'] = Database::escapeLike($media_path);
 			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS2['media_path_4'] = Filter::escapeLike($media_path);
+			$ARGS2['media_path_4'] = Database::escapeLike($media_path);
 		}
 
 		$order = Filter::getArray('order');
@@ -183,8 +183,8 @@ case 'load_json':
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = [
-			'search_1' => Filter::escapeLike($search),
-			'search_2' => Filter::escapeLike($search),
+			'search_1' => Database::escapeLike($search),
+			'search_2' => Database::escapeLike($search),
 		];
 		// Unfiltered rows
 		$SELECT2 =
@@ -300,7 +300,7 @@ case 'load_json':
 			$exists_pending = Database::prepare(
 				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
 			)->execute([
-				'unused_file' => Filter::escapeLike($unused_file),
+				'unused_file' => Database::escapeLike($unused_file),
 			])->fetchOne();
 
 			// Form to create new media object in each tree
@@ -308,13 +308,12 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="'  . Html::escape($unused_file) .'" data-tree="' . Html::escape($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . Html::escape($media_tree) . '<p>';
 				}
 			}
 
-			$conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+				'<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file)) . '" data-file="' . Html::escape($media_path . $unused_file) . '" data-folder="' . Html::escape($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
@@ -458,9 +457,9 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	)->execute([
 		'media_path_1' => $media_path,
 		'media_folder' => $media_folder,
-		'media_path_2' => Filter::escapeLike($media_path),
-		'filter_1'     => Filter::escapeLike($filter),
-		'filter_2'     => Filter::escapeLike($filter),
+		'media_path_2' => Database::escapeLike($media_path),
+		'filter_1'     => Database::escapeLike($filter),
+		'filter_2'     => Database::escapeLike($filter),
 	])->fetchOneColumn();
 }
 
@@ -476,7 +475,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 function mediaFileInfo($media_folder, $media_path, $file) {
 	$html = '<dl>';
 	$html .= '<dt>' . I18N::translate('Filename') . '</dt>';
-	$html .= '<dd>' . Filter::escapeHtml($file) . '</dd>';
+	$html .= '<dd>' . Html::escape($file) . '</dd>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	try {
@@ -516,7 +515,7 @@ function mediaObjectInfo(Media $media) {
 
 	$html =
 		'<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' .
-		'<br><i>' . Filter::escapeHtml($media->getNote()) . '</i></br>';
+		'<br><i>' . Html::escape($media->getNote()) . '</i></br>';
 
 	$html .= '<br>';
 
@@ -624,16 +623,16 @@ echo Bootstrap4::breadcrumbs([
 						<?php if (count($media_folders) > 1): ?>
 						<?= WT_DATA_DIR . Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
 						<?php else: ?>
-						<?= WT_DATA_DIR . Filter::escapeHtml($media_folder) ?>
-						<input type="hidden" name="media_folder" value="<?= Filter::escapeHtml($media_folder) ?>">
+						<?= WT_DATA_DIR . Html::escape($media_folder) ?>
+						<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
 						<?php endif ?>
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
 					<?= Bootstrap4::select($media_paths, $media_path, ['name' => 'media_path', 'onchange' => 'this.form.submit();']) ?>
 					<?php else: ?>
-					<?= Filter::escapeHtml($media_path) ?>
-					<input type="hidden" name="media_path" value="<?= Filter::escapeHtml($media_path) ?>">
+					<?= Html::escape($media_path) ?>
+					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
 					<?php endif ?>
 
 					<label>
@@ -649,8 +648,8 @@ echo Bootstrap4::breadcrumbs([
 					<?php elseif ($files === 'external'): ?>
 
 					<?= I18N::translate('External media files have a URL instead of a filename.') ?>
-					<input type="hidden" name="media_folder" value="<?= Filter::escapeHtml($media_folder) ?>">
-					<input type="hidden" name="media_path" value="<?= Filter::escapeHtml($media_path) ?>">
+					<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
+					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
 
 					<?php endif ?>
 				</td>
@@ -671,3 +670,4 @@ echo Bootstrap4::breadcrumbs([
 	<tbody>
 	</tbody>
 </table>
+<?= View::make('modals/create-media-from-file') ?>

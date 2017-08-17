@@ -25,6 +25,8 @@ class Bootstrap4 extends Html {
 	 * Generate a badge containing a count of items.
 	 *
 	 * @param array $items
+	 *
+	 * @return string
 	 */
 	public static function badgeCount(array $items) {
 		if (empty($items)) {
@@ -79,7 +81,7 @@ class Bootstrap4 extends Html {
 		return
 			'<div class="' . $class . '">' .
 			'<label class="form-check-label">' .
-			'<input ' . $input_attributes . '> ' . Filter::escapeHtml($label) .
+			'<input ' . $input_attributes . '> ' . self::escape($label) .
 			'</label>' .
 			'</div>';
 	}
@@ -120,7 +122,7 @@ class Bootstrap4 extends Html {
 			$html .=
 				'<div class="' . $class . '">' .
 				'<label class="form-check-label">' .
-				'<input ' . $input_attributes . '> ' . Filter::escapeHtml($label) .
+				'<input ' . $input_attributes . '> ' . self::escape($label) .
 				'</label>' .
 				'</div>';
 		}
@@ -145,7 +147,7 @@ class Bootstrap4 extends Html {
 				'selected' => (string) $value === (string) $selected,
 			]);
 
-			$html .= '<option ' . $option_attributes . '>' . Filter::escapeHtml($option) . '</option>';
+			$html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
 		}
 
 		if (empty($attributes['class'])) {
@@ -176,7 +178,7 @@ class Bootstrap4 extends Html {
 				'selected' => in_array((string) $value, $selected),
 			]);
 
-			$html .= '<option ' . $option_attributes . '>' . Filter::escapeHtml($option) . '</option>';
+			$html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
 		}
 
 		if (empty($attributes['class'])) {

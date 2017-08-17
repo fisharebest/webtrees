@@ -29,8 +29,6 @@ use Swift_Transport;
  * Send mail messages.
  */
 class Mail {
-	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
-
 	/**
 	 * Send an external email message
 	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
@@ -41,27 +39,30 @@ class Mail {
 	 * @param string $replyto_email
 	 * @param string $replyto_name
 	 * @param string $subject
-	 * @param string $message
+	 * @param string $message_text
+	 * @param string $message_html
 	 *
 	 * @return bool
 	 */
-	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
+	public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html) {
 		try {
 			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
 			// is outside the open_basedir list.  Therefore we must set one explicitly.
 			File::mkdir(WT_DATA_DIR . 'tmp');
-
 			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
 
-			$mail = Swift_Message::newInstance()
-				->setSubject($subject)
-				->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
-				->setTo($to_email, $to_name)
-				->setReplyTo($replyto_email, $replyto_name)
-				->setBody($message, 'text/html')
-				->addPart(Filter::unescapeHtml($message), 'text/plain');
+			$message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
+			$message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 
-			Swift_Mailer::newInstance(self::transport())->send($mail);
+			$message = Swift_Message::newInstance()
+				->setSubject($subject)
+				->setFrom($from->getEmail(), $from->getRealName())
+				->setTo($to->getEmail(), $to->getRealName())
+				->setReplyTo($reply_to->getEmail(), $reply_to->getRealName())
+				->setBody($message_html, 'text/html')
+				->addPart($message_text, 'text/plain');
+
+			Swift_Mailer::newInstance(self::transport())->send($message);
 		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
@@ -77,17 +78,19 @@ class Mail {
 	 * @param Tree   $tree
 	 * @param User   $user
 	 * @param string $subject
-	 * @param string $message
+	 * @param string $message_text
+	 * @param string $message_html
 	 *
 	 * @return bool
 	 */
-	public static function systemMessage(Tree $tree, User $user, $subject, $message) {
+	public static function systemMessage(Tree $tree, User $user, $subject, $message_text, $message_html) {
 		return self::send(
 			$tree,
 			$user->getEmail(), $user->getRealName(),
 			Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'),
 			$subject,
-			$message
+			$message_text,
+			$message_html
 		);
 	}
 

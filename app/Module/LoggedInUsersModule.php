@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -85,9 +86,9 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 				} else {
 					$content .= $user->getRealNameHtml();
 				}
-				$content .= ' - ' . Filter::escapeHtml($user->getUserName());
+				$content .= ' - ' . Html::escape($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . Filter::escapeUrl($user->getUserName()) . '&ged=' . $WT_TREE->getNameUrl()]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . rawurlencode($user->getUserName()) . '&ged=' . $WT_TREE->getNameUrl()]);
 				}
 				$content .= '</div>';
 			}

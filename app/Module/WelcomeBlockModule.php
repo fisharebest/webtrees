@@ -51,7 +51,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		$id        = $this->getName() . $block_id;
 		$class     = $this->getName() . '_block';
 		$title     = $WT_TREE->getTitleHtml();
-		$content   = '<div class="row">';
+		$content   = '<div class="row text-center">';
 		if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
 			$content .= '<div class="col"><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></div>';
 		}

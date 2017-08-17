@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -103,7 +104,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 					if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 						$content .= '<tr>';
 						$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
-						$content .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+						$content .= '<td data-sort="' . Html::escape($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
 						$content .= '<td>' . $user_name . '</td>';
 						$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
 						$content .= '</tr>';

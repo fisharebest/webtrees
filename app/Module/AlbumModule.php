@@ -16,13 +16,8 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Theme;
 
 /**
  * Class AlbumModule
@@ -94,112 +89,27 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a media object') . '">';
-				$html .= I18N::translate('Add a media object');
-				$html .= '</a></span>';
-				// Link to an existing item
-				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . I18N::translate('Link to an existing media object') . '">';
-				$html .= I18N::translate('Link to an existing media object');
-				$html .= '</a></span>';
+				$html .= '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
 			}
+
 			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
-				$html .= '<span><a href="edit_interface.php?action=reorder_media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '">';
+				$html .= '<span><a href="edit_interface.php?action=reorder-media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
 				$html .= I18N::translate('Re-order media');
 				$html .= '</a></span>';
 			}
 			$html .= '</td></tr></table>';
 		}
 
-		// Used when sorting media on album tab page
-		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<div class="facts_value">';
 		$html .= '<ul class="album-list">';
 		foreach ($this->getMedia() as $media) {
-			//View Edit Menu ----------------------------------
-
-			//Get media item Notes
-			$haystack = $media->getGedcom();
-			$needle   = '1 NOTE';
-			$before   = substr($haystack, 0, strpos($haystack, $needle));
-			$after    = substr(strstr($haystack, $needle), strlen($needle));
-			$notes    = FunctionsPrint::printFactNotes($before . $needle . $after, 1, true);
-
-			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$menu = new Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
-			$menu->addClass('', 'submenu');
-
-			// View Notes
-			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new Menu(I18N::translate('View the notes'), '#', '', [
-					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View the notes') . '"); return false;',
-				]);
-				$submenu->addClass('submenuitem');
-				$menu->addSubmenu($submenu);
-			}
-			//View Details
-			$submenu = new Menu(I18N::translate('View the details'), $media->getHtmlUrl());
-			$submenu->addClass('submenuitem');
-			$menu->addSubmenu($submenu);
-
-			//View Sources
-			foreach ($media->getFacts('SOUR') as $source_fact) {
-				$source = $source_fact->getTarget();
-				if ($source && $source->canShow()) {
-					$submenu = new Menu(I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
-					$submenu->addClass('submenuitem');
-					$menu->addSubmenu($submenu);
-				}
-			}
-
-			if (Auth::isEditor($media->getTree())) {
-				// Edit Media
-				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', [
-					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
-				]);
-				$submenu->addClass('submenuitem');
-				$menu->addSubmenu($submenu);
-				if (Auth::isAdmin()) {
-					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', [
-							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-					} else {
-						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","person");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-
-						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","family");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-
-						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', [
-							'onclick' => 'return ilinkitem("' . $media->getXref() . '","source");',
-						]);
-						$submenu->addClass('submenuitem');
-						$menu->addSubmenu($submenu);
-					}
-					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', [
-						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
-					]);
-					$submenu->addClass('submenuitem');
-					$menu->addSubmenu($submenu);
-				}
-			}
 			$html .= '<li class="album-list-item">';
 			$html .= '<div class="album-image">' . $media->displayImage(100, 100, 'contain', []) . '</div>';
-			$html .= '<div class="album-title">' . $menu->bootstrap4() . '</div>';
+			$html .= '<div class="album-title"><a href="' . $media->getXref() . '">' . $media->getFullName() . '</a></div>';
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
-		$html .= '</td></tr></table>';
+		$html .= '</div>';
 		$html .= '</div>';
 
 		return $html;

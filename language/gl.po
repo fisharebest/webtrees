@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2016-04-19 11:42+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2017-08-14 11:04+0000\n"
+"Last-Translator: Alberto Barros <bertobarros@hotmail.com>\n"
 "Language-Team: Galician <https://translate.webtrees.net/projects/webtrees/webtrees/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " pero os detalles son descoñecidos"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -37,7 +37,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:423
 #: modules_v3/descendancy_report/report.xml:454
 msgid " in "
-msgstr ""
+msgstr " en "
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:189
@@ -51,7 +51,7 @@ msgstr "#%s"
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ten un %3$s ligazón a %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -81,7 +81,7 @@ msgstr ""
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s non existen."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:158

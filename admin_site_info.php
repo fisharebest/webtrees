@@ -40,39 +40,32 @@ echo Bootstrap4::breadcrumbs([
 
 <h1><?= $controller->getPageTitle() ?></h1>
 
-<div class="row">
-	<div class="col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title">
-					<?= I18N::translate('PHP information') ?>
-				</h2>
-			</div>
-			<div class="panel-body" dir="ltr">
-				<div class="php-info">
-					<?= $html ?>
-				</div>
-			</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2 class="panel-title">
+			<?= I18N::translate('PHP information') ?>
+		</h2>
+	</div>
+	<div class="panel-body" dir="ltr">
+		<div class="php-info">
+			<?= $html ?>
 		</div>
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title">
-					<?= I18N::translate('MySQL variables') ?>
-				</h2>
-			</div>
-			<div class="panel-body">
-				<dl>
-					<?php foreach ($variables as $variable => $value): ?>
-						<dt><?= Filter::escapeHtml($variable) ?></dt>
-						<dd><?= Filter::escapeHtml($value) ?></dd>
-					<?php endforeach ?>
-				</dl>
-			</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<?= I18N::translate('MySQL variables') ?>
+			</h2>
+		</div>
+		<div class="panel-body">
+			<dl>
+				<?php foreach ($variables as $variable => $value): ?>
+					<dt><?= Html::escape($variable) ?></dt>
+					<dd><?= Html::escape($value) ?></dd>
+				<?php endforeach ?>
+			</dl>
 		</div>
 	</div>
 </div>

@@ -68,7 +68,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 		$family = $this->spouseFamily($individual);
 		$sex    = $individual->getSex();
 
-		if ($family === null || count($family->getFacts('_NMR')) > 0) {
+		if ($family === null || count($family->getFacts('MARR')) === 0) {
 			if ($this->isChild($individual)) {
 				return $this->conditionChild($sex);
 			} else {

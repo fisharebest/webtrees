@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-23 21:28+0000\n"
+"PO-Revision-Date: 2017-07-30 20:48+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -5003,7 +5003,7 @@ msgstr "Afstammelingen"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:277
 msgid "Descendants interest"
-msgstr "Intersse in nakomelingen"
+msgstr "Interesse in nakomelingen"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -10149,7 +10149,7 @@ msgstr "Alleen managers kunnen wijzigen"
 
 #: site-unavailable.php:77
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Oeps! De webserver in niet in staat om contact te maken met de database server. Die zou bezig kunnen zijn, ge-update kunnen worden, of simpelweg kapot. Probeer <a href=\"index.php\">probeer opnieuw</a> na een paar minuten, of neem contact op met de beheerder van de website."
+msgstr "Oeps! De webserver in niet in staat om contact te maken met de database server. Die zou bezig kunnen zijn, geupdate kunnen worden, of simpelweg kapot. <a href=\"index.php\">Probeer opnieuw</a> na een paar minuten, of neem contact op met de beheerder van de website."
 
 #: setup.php:210
 msgid "Oops! webtrees was unable to create files in this folder."

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -33,7 +34,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net
@@ -125,14 +126,12 @@ class FunctionsPrintLists {
 				.on("click", "button[data-filter-column]", function() {
 					var btn = $(this);
 					// De-activate the other buttons in this button group
-					btn.siblings().removeClass("ui-state-active");
+					btn.siblings().removeClass("active");
 					// Apply (or clear) this filter
 					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
-					if (btn.hasClass("ui-state-active")) {
-						btn.removeClass("ui-state-active");
+					if (btn.hasClass("active")) {
 						col.search("").draw();
 					} else {
-						btn.addClass("ui-state-active");
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
@@ -158,110 +157,99 @@ class FunctionsPrintLists {
 					<thead>
 						<tr>
 							<th colspan="16">
-								<div class="btn-toolbar">
-									<div class="btn-group">
+								<div class="btn-toolbar d-flex justify-content-between mb-2" role="toolbar">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="M"
 											title="' . I18N::translate('Show only males.') . '"
-											type="button"
 										>
 										  ' . Individual::sexImage('M', 'large') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="F"
 											title="' . I18N::translate('Show only females.') . '"
-											type="button"
 										>
 											' . Individual::sexImage('F', 'large') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="U"
 											title="' . I18N::translate('Show only individuals for whom the gender is not known.') . '"
-											type="button"
 										>
 											' . Individual::sexImage('U', 'large') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="N"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
-											type="button"
 										>
 											' . I18N::translate('Alive') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="Y"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
-											type="button"
 										>
 											' . I18N::translate('Dead') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals who died more than 100 years ago.') . '"
-											type="button"
 										>
 											' . I18N::translate('Death') . '&gt;100
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="14"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals who died within the last 100 years.') . '"
-											type="button"
 										>
 											' . I18N::translate('Death') . '&lt;=100
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals born more than 100 years ago.') . '"
-											type="button"
 										>
 											' . I18N::translate('Birth') . '&gt;100
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals born within the last 100 years.') . '"
-											type="button"
 										>
 											' . I18N::translate('Birth') . '&lt;=100
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="15"
 											data-filter-value="R"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
-											type="button"
 										>
 											' . I18N::translate('Roots') . '
 										</button>
 										<button
-											class="ui-state-default"
+											class="btn btn-secondary"
 											data-filter-column="15"
 											data-filter-value="L"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
-											type="button"
 										>
 											' . I18N::translate('Leaves') . '
 										</button>
@@ -293,10 +281,10 @@ class FunctionsPrintLists {
 							<th colspan="16">
 								<div class="btn-toolbar">
 									<div class="btn-group">
-										<button type="button" class="ui-state-default btn-toggle-parents">
+										<button class="ui-state-default btn-toggle-parents">
 											' . I18N::translate('Show parents') . '
 										</button>
-										<button type="button" class="ui-state-default btn-toggle-statistics">
+										<button class="ui-state-default btn-toggle-statistics">
 											' . I18N::translate('Show statistics charts') . '
 										</button>
 									</div>
@@ -324,7 +312,7 @@ class FunctionsPrintLists {
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($individual);
 
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($individual->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -344,7 +332,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// SOSA
 			$html .= '<td class="center" data-sort="' . $key . '">';
@@ -555,14 +543,12 @@ class FunctionsPrintLists {
 				.on("click", "button[data-filter-column]", function() {
 					var btn = $(this);
 					// De-activate the other buttons in this button group
-					btn.siblings().removeClass("ui-state-active");
+					btn.siblings().removeClass("active");
 					// Apply (or clear) this filter
 					var col = $("#' . $table_id . '").DataTable().column(btn.data("filter-column"));
-					if (btn.hasClass("ui-state-active")) {
-						btn.removeClass("ui-state-active");
+					if (btn.hasClass("active")) {
 						col.search("").draw();
 					} else {
-						btn.addClass("ui-state-active");
 						col.search(btn.data("filter-value")).draw();
 					}
 				});
@@ -588,107 +574,96 @@ class FunctionsPrintLists {
 					<thead>
 						<tr>
 							<th colspan="14">
-								<div class="btn-toolbar">
-									<div class="btn-group">
+								<div class="btn-toolbar d-flex justify-content-between mb-2">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="N"
-											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
 										>
 											' . I18N::translate('Both alive') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="W"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
 										>
 											' . I18N::translate('Widower') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="H"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
 										>
 											' . I18N::translate('Widow') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="12"
 											data-filter-value="Y"
-											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 										>
 											' . I18N::translate('Both dead') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="R"
-											class="ui-state-default"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
 										>
 											' . I18N::translate('Roots') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="13"
 											data-filter-value="L"
-											class="ui-state-default"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
 										>
 											' . I18N::translate('Leaves') . '
 										</button>
 									</div>
-									<div class="btn-group">
+									<div class="btn-group" data-toggle="buttons">
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="U"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
 										>
 											' . I18N::translate('Marriage') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="YES"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
 										>
 											' . I18N::translate('Marriage') . '&gt;100
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="Y100"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
 										>
 											' . I18N::translate('Marriage') . '&lt;=100
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="D"
-											class="ui-state-default"
 											title="' . I18N::translate('Show divorced couples.') . '"
 										>
 											' . I18N::translate('Divorce') . '
 										</button>
 										<button
-											type="button"
+											class="btn btn-secondary"
 											data-filter-column="11"
 											data-filter-value="M"
-											class="ui-state-default"
 											title="' . I18N::translate('Show couples where either partner married more than once.') . '"
 										>
 											' . I18N::translate('Multiple marriages') . '
@@ -719,10 +694,10 @@ class FunctionsPrintLists {
 							<th colspan="14">
 								<div class="btn-toolbar">
 									<div class="btn-group">
-										<button type="button" class="ui-state-default btn-toggle-parents">
+										<button class="ui-state-default btn-toggle-parents">
 											' . I18N::translate('Show parents') . '
 										</button>
-										<button type="button" class="ui-state-default btn-toggle-statistics">
+										<button class="ui-state-default btn-toggle-statistics">
 											' . I18N::translate('Show statistics charts') . '
 										</button>
 									</div>
@@ -759,7 +734,7 @@ class FunctionsPrintLists {
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($husb);
 
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($husb->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -783,7 +758,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// Husband age
 			$mdate = $family->getMarriageDate();
@@ -802,7 +777,7 @@ class FunctionsPrintLists {
 			// Wife name(s)
 			// Extract Given names and Surnames for sorting
 			list($surn_givn, $givn_surn) = self::sortableNames($wife);
-			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			$html .= '<td colspan="2" data-sort="' . Html::escape($givn_surn) . '">';
 			foreach ($wife->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -826,7 +801,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 
 			// Hidden column for sortable name
-			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+			$html .= '<td hidden data-sort="' . Html::escape($surn_givn) . '"></td>';
 
 			// Wife age
 			$mdate = $family->getMarriageDate();
@@ -1008,7 +983,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Source name(s)
-			$html .= '<td data-sort="' . Filter::escapeHtml($source->getSortName()) . '">';
+			$html .= '<td data-sort="' . Html::escape($source->getSortName()) . '">';
 			foreach ($source->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1027,7 +1002,7 @@ class FunctionsPrintLists {
 			} else {
 				$author = '';
 			}
-			$html .= '<td data-sort="' . Filter::escapeHtml($author) . '">' . $author . '</td>';
+			$html .= '<td data-sort="' . Html::escape($author) . '">' . $author . '</td>';
 			$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1044,7 +1019,7 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $source->lastChangeTimestamp(true) . '">' . $source->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . '", "' . $source->getXref() . '");']) . '</td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName())) . '", "' . $source->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table>';
@@ -1101,7 +1076,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Count of linked notes
-			$html .= '<td data-sort="' . Filter::escapeHtml($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
+			$html .= '<td data-sort="' . Html::escape($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
 			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1118,7 +1093,7 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $note->lastChangeTimestamp(true) . '">' . $note->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . '", "' . $note->getXref() . '");']) . '</td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName())) . '", "' . $note->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table>';
@@ -1162,7 +1137,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Repository name(s)
-			$html .= '<td data-sort="' . Filter::escapeHtml($repository->getSortName()) . '">';
+			$html .= '<td data-sort="' . Html::escape($repository->getSortName()) . '">';
 			foreach ($repository->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1181,7 +1156,7 @@ class FunctionsPrintLists {
 			// Last change
 			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
 			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . '", "' . $repository->getXref() . '");']) . '</td>';
+			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repository->getFullName())) . '", "' . $repository->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';
@@ -1246,7 +1221,7 @@ class FunctionsPrintLists {
 				// Media object thumbnail
 				$html .= '<td>' . $media_object->displayImage(100, 100, 'contain', []) . '</td>';
 				// Media object name(s)
-				$html .= '<td data-sort="' . Filter::escapeHtml($media_object->getSortName()) . '">';
+				$html .= '<td data-sort="' . Html::escape($media_object->getSortName()) . '">';
 				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';
 				if (Auth::isEditor($media_object->getTree())) {
 					$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
@@ -1308,14 +1283,14 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr>';
 			// Surname
-			$html .= '<td data-sort="' . Filter::escapeHtml($surn) . '">';
+			$html .= '<td data-sort="' . Html::escape($surn) . '">';
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn => $indis) {
 				if ($spfxsurn) {
-					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($spfxsurn) . '</a><br>';
+					$html .= '<a href="' . $url . '" dir="auto">' . Html::escape($spfxsurn) . '</a><br>';
 				} else {
 					// No surname, but a value from "2 SURN"? A common workaround for toponyms, etc.
-					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($surn) . '</a><br>';
+					$html .= '<a href="' . $url . '" dir="auto">' . Html::escape($surn) . '</a><br>';
 				}
 			}
 			$html .= '</td>';
@@ -1369,7 +1344,7 @@ class FunctionsPrintLists {
 				} else {
 					$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
 				}
-				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?surname=' . Filter::escapeUrl($surn) . '&amp;ged=' . $tree->getNameUrl() . '">';
+				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $tree->getNameUrl() . '">';
 				if ($totals) {
 					$html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis)));
 				} else {
@@ -1415,7 +1390,7 @@ class FunctionsPrintLists {
 					$first_spfxsurn = $spfxsurn;
 				}
 			}
-			$subhtml = '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
+			$subhtml = '<a href="' . $url . '" dir="auto">' . Html::escape(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
 
 			if ($totals) {
 				$subtotal = 0;
@@ -1538,7 +1513,7 @@ class FunctionsPrintLists {
 			foreach ($filtered_events as $n => $fact) {
 				$record = $fact->getParent();
 				$html .= '<tr>';
-				$html .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '">';
+				$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
 				$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 				if ($record instanceof Individual) {
 					$html .= $record->getSexImage();

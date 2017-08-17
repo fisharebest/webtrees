@@ -41,6 +41,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -52,7 +53,8 @@ use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Rhumsaa\Uuid\Uuid;
+use Fisharebest\Webtrees\View;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -194,6 +196,8 @@ class FunctionsEdit {
 	/**
 	 * A list of GEDCOM relationships (e.g. for an edit control).
 	 *
+	 * @param string $relationship
+	 *
 	 * @return string[]
 	 */
 	public static function optionsRelationships($relationship) {
@@ -306,7 +310,7 @@ class FunctionsEdit {
 
 		if ($family !== null) {
 			$value   = $family->getXref();
-			$options = [$value => Select2::familyValue($family)];
+			$options = [$value => View::make('selects/family', ['family' => $family])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::familyConfig() + $attributes);
@@ -346,7 +350,7 @@ class FunctionsEdit {
 
 		if ($individual !== null) {
 			$value   = $individual->getXref();
-			$options = [$value => Select2::individualValue($individual)];
+			$options = [$value => View::make('selects/individual', ['individual' => $individual])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::individualConfig() + $attributes);
@@ -366,7 +370,7 @@ class FunctionsEdit {
 
 		if ($media !== null) {
 			$value   = $media->getXref();
-			$options = [$value => Select2::mediaObjectValue($media)];
+			$options = [$value => View::make('selects/media', ['media' => $media])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::mediaObjectConfig() + $attributes);
@@ -386,7 +390,7 @@ class FunctionsEdit {
 
 		if ($note !== null) {
 			$value   = $note->getXref();
-			$options = [$value => Select2::noteValue($note)];
+			$options = [$value => View::make('selects/note', ['note' => $note])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::noteConfig() + $attributes);
@@ -425,7 +429,7 @@ class FunctionsEdit {
 
 		if ($repository !== null) {
 			$value   = $repository->getXref();
-			$options = [$value => Select2::repositoryValue($repository)];
+			$options = [$value => View::make('selects/repository', ['repository' => $repository])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::repositoryConfig() + $attributes);
@@ -445,7 +449,7 @@ class FunctionsEdit {
 
 		if ($source !== null) {
 			$value   = $source->getXref();
-			$options = [$value => Select2::sourceValue($source)];
+			$options = [$value => View::make('selects/source', ['source' => $source])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::sourceConfig() + $attributes);
@@ -465,7 +469,7 @@ class FunctionsEdit {
 
 		if ($submitter !== null) {
 			$value   = $submitter->getXref();
-			$options = [$value => Select2::submitterValue($submitter)];
+			$options = [$value => View::make('selects/submitter', ['submitter' => $submitter])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::submitterConfig() + $attributes);
@@ -499,7 +503,7 @@ class FunctionsEdit {
 	public static function inputAddonCalendar($id) {
 		return
 			'<span class="input-group-addon">' .
-			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
+			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
 			'</span>';
 	}
 
@@ -513,7 +517,7 @@ class FunctionsEdit {
 	public static function inputAddonKeyboard($id) {
 		return
 			'<span class="input-group-addon">' .
-			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'btn btn-link wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
+			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
 			'</span>';
 	}
 
@@ -681,11 +685,11 @@ class FunctionsEdit {
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="updatewholename()">';
 		} elseif ($fact === 'GIVN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
 		} elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
 		} elseif ($fact === 'ADOP') {
 			echo Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
@@ -703,7 +707,7 @@ class FunctionsEdit {
 			}
 		} elseif ($fact === 'DATE') {
 			echo '<div class="input-group">';
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_date(this)">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_date(this)">';
 			echo self::inputAddonCalendar($id);
 			echo self::inputAddonHelp('DATE');
 			echo '</div>';
@@ -716,9 +720,9 @@ class FunctionsEdit {
 				self::formControlFamily(Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
 		} elseif ($fact === 'LONG') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
 		} elseif ($fact === 'NOTE' && $islink) {
 			echo
 				'<div class="input-group">' .
@@ -732,7 +736,7 @@ class FunctionsEdit {
 				self::formControlMediaObject(Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
 		} elseif ($fact === 'PEDI') {
 			echo Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
@@ -779,7 +783,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'TEMP') {
 			echo Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'TIME') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
+			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
 			echo Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === '_PRIM') {
@@ -790,7 +794,7 @@ class FunctionsEdit {
 			echo '<select name="text[]"><option selected value="" ></option>';
 			$selectedValue = strtolower($value);
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-				echo '<option selected value="', Filter::escapeHtml($value), '" >', Filter::escapeHtml($value), '</option>';
+				echo '<option selected value="', Html::escape($value), '" >', Html::escape($value), '</option>';
 			}
 			foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 				echo '<option value="', $typeName, '" ';
@@ -803,17 +807,17 @@ class FunctionsEdit {
 		} elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
 				echo '<div class="input-group">';
-				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Filter::escapeHtml($value), '</textarea>';
+				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Html::escape($value), '</textarea>';
 				echo self::inputAddonKeyboard($id);
 				echo '</div>';
 			} else {
 				// If using GEDFact-assistant window
-				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Filter::escapeHtml($value), '">';
+				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '">';
 			}
 		} else {
 			// Populated in javascript from sub-tags
-			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
-			echo '<span id="', $id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
+			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Html::escape($value), '" class="', $fact, '">';
+			echo '<span id="', $id, '_display" dir="auto">', Html::escape($value), '</span>';
 			echo ' <a href="#edit_name" onclick="convertHidden(\'', $id, '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list
@@ -909,8 +913,10 @@ class FunctionsEdit {
 	 * Genearate a <select> element, with the dates/places of all known censuses
 	 *
 	 *
-	 * @param string $locale - Sort the censuses for this locale
-	 * @param string $xref   - The individual for whom we are adding a census
+	 * @param string $locale Sort the censuses for this locale
+	 * @param string $xref   The individual for whom we are adding a census
+	 *
+	 * @return string
 	 */
 	public static function censusDateSelector($locale, $xref) {
 		global $controller;
@@ -1692,652 +1698,5 @@ class FunctionsEdit {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Simple forms to create the essential fields of new records.
-	 *
-	 * @param Tree $tree
-	 *
-	 * @return string
-	 */
-	public static function createRecordFormModals(Tree $tree) {
-		?>
-
-		<!-- Form to create a new family -->
-		<div class="modal wt-modal-create-record" id="modal-create-family">
-			<form id="form-create-family"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-family">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a family from existing individuals') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label class="col-form-label" for="husband">
-									<?= I18N::translate('Husband') ?>
-								</label>
-								<?= self::formControlIndividual(null, ['id' => 'husband', 'name' => 'husband']) ?>
-							</div>
-							<div class="form-group">
-								<label class="col-form-label" for="wife">
-									<?= I18N::translate('Wife') ?>
-								</label>
-								<?= self::formControlIndividual(null, ['id' => 'wife', 'name' => 'wife']) ?>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Form to create a new media object -->
-		<div class="modal wt-modal-create-record" id="modal-create-media-object">
-			<form id="form-create-media-object"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-media-object">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a media object') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="file">
-									<?= I18N::translate('Media file to upload') ?>
-								</label>
-								<div class="col-sm-10">
-									<input type="file" class="form-control" id="file" name="file">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="type">
-									<?= I18N::translate('Filename on server') ?>
-								</label>
-								<div class="col-sm-10">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input class="form-check-input" type="radio" name="auto" value="0" checked>
-											<span class="input-group">
-												<input class="form-control" type="text" placeholder="<?= I18N::translate('Folder name on server') ?>">
-												<span class="input-group-addon">/</span>
-												<input class="form-control" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>">
-											</span>
-										</label>
-									</div>
-									<p class="small text-muted">
-										<?= I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') ?>
-									</p>
-									<div class="form-check">
-										<label class="form-check-label">
-											<input class="form-check-input" type="radio" name="auto" value="1">
-											<?= I18N::translate('Create a unique filename') ?>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="title">
-									<?= I18N::translate('Title') ?>
-								</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name="title" id="title">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="type">
-									<?= I18N::translate('Media type') ?>
-								</label>
-								<div class="col-sm-10">
-									<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), '') ?>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="note">
-									<?= I18N::translate('Note') ?>
-								</label>
-								<div class="col-sm-10">
-									<textarea class="form-control" id="note" name="note"></textarea>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Form to create a new note object -->
-		<div class="modal wt-modal-create-record" id="modal-create-note-object">
-			<form id="form-create-note-object"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-note-object">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a shared note') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label class="col-form-label" for="note">
-									<?= GedcomTag::getLabel('NOTE') ?>
-								</label>
-								<textarea class="form-control" id="note" name="note"></textarea>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Form to create a new repository -->
-		<div class="modal wt-modal-create-record" id="modal-create-repository">
-			<form id="form-create-repository"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-repository">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a repository') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label class="col-form-label" for="repository-name">
-									<?= GedcomTag::getLabel('REPO:NAME') ?>
-								</label>
-								<input class="form-control" type="text" id="repository-name" name="repository_name" required>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Form to create a new source -->
-		<div class="modal wt-modal-create-record" id="modal-create-source">
-			<form id="form-create-source"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-source">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a source') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="source-title">
-									<?= I18N::translate('Title') ?>
-								</label>
-								<div class="col-sm-10">
-									<input class="form-control" type="text" id="source-title" name="TITL" required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="source-abbreviation">
-									<?= I18N::translate('Abbreviation') ?>
-								</label>
-								<div class="col-sm-10">
-									<input class="form-control" type="text" id="source-abbreviation" name="ABBR">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="source-author">
-									<?= I18N::translate('Author') ?>
-								</label>
-								<div class="col-sm-4">
-									<input class="form-control" type="text" id="source-author" name="AUTH">
-								</div>
-								<label class="col-form-label col-sm-2" for="source-publication">
-									<?= I18N::translate('Publication') ?>
-								</label>
-								<div class="col-sm-4">
-									<input class="form-control" type="text" id="source-publication" name="PUBL">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="source-repository">
-									<?= I18N::translate('Repository') ?>
-								</label>
-								<div class="col-sm-4">
-									<?= self::formControlRepository(null, ['id' => 'source-repository', 'name' => 'REPO']) ?>
-								</div>
-								<label class="col-form-label col-sm-2" for="source-call-number">
-									<?= I18N::translate('Call number') ?>
-								</label>
-								<div class="col-sm-4">
-									<input class="form-control" type="text" id="source-call-number" name="CALN">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-sm-2" for="source-text">
-									<?= I18N::translate('Text') ?>
-								</label>
-								<div class="col-sm-10">
-									<textarea class="form-control" rows="2" id="source-text" name="TEXT"></textarea>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Form to create a new submitter -->
-		<div class="modal wt-modal-create-record" id="modal-create-submitter">
-			<form id="form-create-submitter"><!-- This form is posted using jQuery -->
-				<?= Filter::getCsrf() ?>
-				<input type="hidden" name="action" value="create-submitter">
-				<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title"><?= I18N::translate('Create a submitter') ?></h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label class="col-form-label" for="submitter-name">
-									<?= GedcomTag::getLabel('SUBM:NAME') ?>
-								</label>
-								<input class="form-control" type="text" id="submitter-name" name="submitter_name" required>
-							</div>
-							<div class="form-group">
-								<label class="col-form-label" for="submitter-address">
-									<?= GedcomTag::getLabel('SUBM:ADDR') ?>
-								</label>
-								<input class="form-control" type="text" id="submitter-address" name="submitter_address">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">
-								<?= FontAwesome::decorativeIcon('save') ?>
-								<?= I18N::translate('save') ?>
-							</button>
-							<button type="button" class="btn btn-text" data-dismiss="modal">
-								<?= FontAwesome::decorativeIcon('cancel') ?>
-								<?= I18N::translate('cancel') ?>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- On screen keyboard -->
-		<div class="card wt-osk">
-			<div class="card-header">
-				<div class="card-title">
-					<button type="button" class="btn btn-primary">&times;</button>
-
-					<button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false"><?= FontAwesome::semanticIcon('pin', I18N::translate('Keep open')) ?></button>
-
-					<button type="button" class="btn btn-secondary wt-osk-shift-button" data-toggle="button" aria-pressed="false">a &harr; A</button>
-
-					<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-secondary active" dir="ltr">
-							<input type="radio" class="wt-osk-script-button" checked autocomplete="off" data-script="latn"> Abcd
-						</label>
-						<label class="btn btn-secondary" dir="ltr">
-							<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="cyrl"> &Acy;&bcy;&gcy;&dcy;
-						</label>
-						<label class="btn btn-secondary" dir="ltr">
-							<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="grek"> &Alpha;&beta;&gamma;&delta;
-						</label>
-						<label class="btn btn-secondary" dir="rtl">
-							<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="arab"> &#x627;&#x628;&#x629;&#x62a;
-						</label>
-						<label class="btn btn-secondary" dir="rtl">
-							<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="hebr"> &#x5d0;&#x5d1;&#x5d2;&#x5d3;
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="card-block wt-osk-keys">
-				<!-- Quotation marks -->
-				<div class="wt-osk-group">
-					<span class="wt-osk-key">&lsquo;<sup class="wt-osk-key-shift">&ldquo;</sup></span>
-					<span class="wt-osk-key">&rsquo;<sup class="wt-osk-key-shift">&rdquo;</sup></span>
-					<span class="wt-osk-key">&lsaquo;<sup class="wt-osk-key-shift">&ldquo;</sup></span>
-					<span class="wt-osk-key">&rsaquo;<sup class="wt-osk-key-shift">&raquo;</sup></span>
-					<span class="wt-osk-key">&sbquo;<sup class="wt-osk-key-shift">&bdquo;</sup></span>
-					<span class="wt-osk-key">&prime;<sup class="wt-osk-key-shift">&Prime;</sup></span>
-				</div>
-				<!-- Symbols and punctuation -->
-				<div class="wt-osk-group">
-					<span class="wt-osk-key">&copy;</span>
-					<span class="wt-osk-key">&deg;</span>
-					<span class="wt-osk-key">&hellip;</span>
-					<span class="wt-osk-key">&middot;<sup class="wt-osk-key-shift">&bullet;</sup></span>
-					<span class="wt-osk-key">&ndash;<sup class="wt-osk-key-shift">&mdash;</sup></span>
-					<span class="wt-osk-key">&dagger;<sup class="wt-osk-key-shift">&ddagger;</sup></span>
-					<span class="wt-osk-key">&sect;<sup class="wt-osk-key-shift">&para;</sup></span>
-					<span class="wt-osk-key">&iquest;<sup class="wt-osk-key-shift">&iexcl;</sup></span>
-				</div>
-				<!-- Letter A with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&agrave;<sup class="wt-osk-key-shift">&Agrave;</sup></span>
-					<span class="wt-osk-key">&aacute;<sup class="wt-osk-key-shift">&Aacute;</sup></span>
-					<span class="wt-osk-key">&acirc;<sup class="wt-osk-key-shift">&Acirc;</sup></span>
-					<span class="wt-osk-key">&atilde;<sup class="wt-osk-key-shift">&Atilde;</sup></span>
-					<span class="wt-osk-key">&aring;<sup class="wt-osk-key-shift">&Aring;</sup></span>
-					<span class="wt-osk-key">&aogon;<sup class="wt-osk-key-shift">&Aogon;</sup></span>
-					<span class="wt-osk-key">&aelig;<sup class="wt-osk-key-shift">&AElig;</sup></span>
-					<span class="wt-osk-key">&ordf;</span>
-				</div>
-				<!-- Letter C with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&ccedil;<sup class="wt-osk-key-shift">&Ccedil;</sup></span>
-					<span class="wt-osk-key">&ccaron;<sup class="wt-osk-key-shift">&Ccaron;</sup></span>
-				</div>
-				<!-- Letter D with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&Dcaron;<sup class="wt-osk-key-shift">&Dcaron;</sup></span>
-				</div>
-				<!-- Letter E with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&egrave;<sup class="wt-osk-key-shift">&Egrave;</sup></span>
-					<span class="wt-osk-key">&eacute;<sup class="wt-osk-key-shift">&Eacute;</sup></span>
-					<span class="wt-osk-key">&ecirc;<sup class="wt-osk-key-shift">&Ecirc;</sup></span>
-					<span class="wt-osk-key">&euml;<sup class="wt-osk-key-shift">&Euml;</sup></span>
-					<span class="wt-osk-key">&eogon;<sup class="wt-osk-key-shift">&Eogon;</sup></span>
-				</div>
-				<!-- Letter G with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&gbreve;<sup class="wt-osk-key-shift">&Gbreve;</sup></span>
-				</div>
-				<!-- Letter I with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&igrave;<sup class="wt-osk-key-shift">&Igrave;</sup></span>
-					<span class="wt-osk-key">&iacute;<sup class="wt-osk-key-shift">&Iacute;</sup></span>
-					<span class="wt-osk-key">&icirc;<sup class="wt-osk-key-shift">&Icirc;</sup></span>
-					<span class="wt-osk-key">&iuml;<sup class="wt-osk-key-shift">&Iuml;</sup></span>
-					<span class="wt-osk-key">&iogon;<sup class="wt-osk-key-shift">&Iogon;</sup></span>
-					<span class="wt-osk-key">&inodot;<sup class="wt-osk-key-shift">&Idot;</sup></span>
-					<span class="wt-osk-key">&ijlig;<sup class="wt-osk-key-shift">&IJlig;</sup></span>
-				</div>
-				<!-- Letter L with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&lcaron;<sup class="wt-osk-key-shift">&Lcaron;</sup></span>
-					<span class="wt-osk-key">&lacute;<sup class="wt-osk-key-shift">&Lacute;</sup></span>
-					<span class="wt-osk-key">&lstrok;<sup class="wt-osk-key-shift">&Lstrok;</sup></span>
-				</div>
-				<!-- Letter N with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&napos;</span>
-					<span class="wt-osk-key">&ntilde;<sup class="wt-osk-key-shift">&Ntilde;</sup></span>
-					<span class="wt-osk-key">&ncaron;<sup class="wt-osk-key-shift">&Ncaron;</sup></span>
-				</div>
-				<!-- Letter O with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&ograve;<sup class="wt-osk-key-shift">&Ograve;</sup></span>
-					<span class="wt-osk-key">&oacute;<sup class="wt-osk-key-shift">&Oacute;</sup></span>
-					<span class="wt-osk-key">&ocirc;<sup class="wt-osk-key-shift">&Ocirc;</sup></span>
-					<span class="wt-osk-key">&otilde;<sup class="wt-osk-key-shift">&Otilde;</sup></span>
-					<span class="wt-osk-key">&ouml;<sup class="wt-osk-key-shift">&Ouml;</sup></span>
-					<span class="wt-osk-key">&oslash;<sup class="wt-osk-key-shift">&Oslash;</sup></span>
-					<span class="wt-osk-key">&oelig;<sup class="wt-osk-key-shift">&OElig;</sup></span>
-					<span class="wt-osk-key">&ordm;</span>
-				</div>
-				<!-- Letter T with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&tcaron;<sup class="wt-osk-key-shift">&Tcaron;</sup></span>
-				</div>
-				<!-- Letter R with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&racute;<sup class="wt-osk-key-shift">&Racute;</sup></span>
-					<span class="wt-osk-key">&rcaron;<sup class="wt-osk-key-shift">&Rcaron;</sup></span>
-				</div>
-				<!-- Letter S with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&scaron;<sup class="wt-osk-key-shift">&Scaron;</sup></span>
-					<span class="wt-osk-key">&scedil;<sup class="wt-osk-key-shift">&Scedil;</sup></span>
-					<span class="wt-osk-key">&#x17F;</sup></span>
-				</div>
-				<!-- Letter U with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&ugrave;<sup class="wt-osk-key-shift">&Ugrave;</sup></span>
-					<span class="wt-osk-key">&uacute;<sup class="wt-osk-key-shift">&Uacute;</sup></span>
-					<span class="wt-osk-key">&ucirc;<sup class="wt-osk-key-shift">&Ucirc;</sup></span>
-					<span class="wt-osk-key">&utilde;<sup class="wt-osk-key-shift">&Utilde;</sup></span>
-					<span class="wt-osk-key">&umacr;<sup class="wt-osk-key-shift">&Umacr;</sup></span>
-					<span class="wt-osk-key">&uogon;<sup class="wt-osk-key-shift">&Uogon;</sup></span>
-				</div>
-				<!-- Letter Y with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&yacute;<sup class="wt-osk-key-shift">&Yacute;</sup></span>
-				</div>
-				<!-- Letter Z with diacritic -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&zdot;<sup class="wt-osk-key-shift">&Zdot;</sup></span>
-					<span class="wt-osk-key">&zcaron;<sup class="wt-osk-key-shift">&Zcaron;</sup></span>
-				</div>
-				<!-- Esszet, Eth and Thorn -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
-					<span class="wt-osk-key">&szlig;<sup class="wt-osk-key-shift">&#7838;</sup></span>
-					<span class="wt-osk-key">&eth;<sup class="wt-osk-key-shift">&ETH;</sup></span>
-					<span class="wt-osk-key">&thorn;<sup class="wt-osk-key-shift">&THORN;</sup></span>
-				</div>
-				<!-- Extra Cyrillic characters -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-cyrl" dir="ltr" hidden>
-					<span class="wt-osk-key">&iocy;<sup class="wt-osk-key-shift">&IOcy;</sup></span>
-					<span class="wt-osk-key">&djcy;<sup class="wt-osk-key-shift">&DJcy;</sup></span>
-					<span class="wt-osk-key">&gjcy;<sup class="wt-osk-key-shift">&GJcy;</sup></span>
-					<span class="wt-osk-key">&jukcy;<sup class="wt-osk-key-shift">&Jukcy;</sup></span>
-					<span class="wt-osk-key">&dscy;<sup class="wt-osk-key-shift">&DScy;</sup></span>
-					<span class="wt-osk-key">&iukcy;<sup class="wt-osk-key-shift">&Iukcy;</sup></span>
-					<span class="wt-osk-key">&yicy;<sup class="wt-osk-key-shift">&YIcy;</sup></span>
-					<span class="wt-osk-key">&jsercy;<sup class="wt-osk-key-shift">&Jsercy;</sup></span>
-					<span class="wt-osk-key">&ljcy;<sup class="wt-osk-key-shift">&LJcy;</sup></span>
-					<span class="wt-osk-key">&njcy;<sup class="wt-osk-key-shift">&NJcy;</sup></span>
-					<span class="wt-osk-key">&tshcy;<sup class="wt-osk-key-shift">&TSHcy;</sup></span>
-					<span class="wt-osk-key">&kjcy;<sup class="wt-osk-key-shift">&KJcy;</sup></span>
-					<span class="wt-osk-key">&ubrcy;<sup class="wt-osk-key-shift">&Ubrcy;</sup></span>
-					<span class="wt-osk-key">&dzcy;<sup class="wt-osk-key-shift">&DZcy;</sup></span>
-				</div>
-				<!-- Cyrillic alphabet -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-cyrl" dir="ltr" hidden>
-					<span class="wt-osk-key">&acy;<sup class="wt-osk-key-shift">&Acy;</sup></span>
-					<span class="wt-osk-key">&bcy;<sup class="wt-osk-key-shift">&Bcy;</sup></span>
-					<span class="wt-osk-key">&gcy;<sup class="wt-osk-key-shift">&Gcy;</sup></span>
-					<span class="wt-osk-key">&dcy;<sup class="wt-osk-key-shift">&Dcy;</sup></span>
-					<span class="wt-osk-key">&iecy;<sup class="wt-osk-key-shift">&IEcy;</sup></span>
-					<span class="wt-osk-key">&zhcy;<sup class="wt-osk-key-shift">&ZHcy;</sup></span>
-					<span class="wt-osk-key">&zcy;<sup class="wt-osk-key-shift">&Zcy;</sup></span>
-					<span class="wt-osk-key">&icy;<sup class="wt-osk-key-shift">&Icy;</sup></span>
-					<span class="wt-osk-key">&jcy;<sup class="wt-osk-key-shift">&Jcy;</sup></span>
-					<span class="wt-osk-key">&kcy;<sup class="wt-osk-key-shift">&Kcy;</sup></span>
-					<span class="wt-osk-key">&lcy;<sup class="wt-osk-key-shift">&Lcy;</sup></span>
-					<span class="wt-osk-key">&mcy;<sup class="wt-osk-key-shift">&Mcy;</sup></span>
-					<span class="wt-osk-key">&ncy;<sup class="wt-osk-key-shift">&Ncy;</sup></span>
-					<span class="wt-osk-key">&ocy;<sup class="wt-osk-key-shift">&Ocy;</sup></span>
-					<span class="wt-osk-key">&pcy;<sup class="wt-osk-key-shift">&Pcy;</sup></span>
-					<span class="wt-osk-key">&scy;<sup class="wt-osk-key-shift">&Scy;</sup></span>
-					<span class="wt-osk-key">&tcy;<sup class="wt-osk-key-shift">&Tcy;</sup></span>
-					<span class="wt-osk-key">&ucy;<sup class="wt-osk-key-shift">&Ucy;</sup></span>
-					<span class="wt-osk-key">&ucy;<sup class="wt-osk-key-shift">&Ucy;</sup></span>
-					<span class="wt-osk-key">&fcy;<sup class="wt-osk-key-shift">&Fcy;</sup></span>
-					<span class="wt-osk-key">&khcy;<sup class="wt-osk-key-shift">&KHcy;</sup></span>
-					<span class="wt-osk-key">&tscy;<sup class="wt-osk-key-shift">&TScy;</sup></span>
-					<span class="wt-osk-key">&chcy;<sup class="wt-osk-key-shift">&CHcy;</sup></span>
-					<span class="wt-osk-key">&shcy;<sup class="wt-osk-key-shift">&SHcy;</sup></span>
-					<span class="wt-osk-key">&shchcy;<sup class="wt-osk-key-shift">&SHCHcy;</sup></span>
-					<span class="wt-osk-key">&hardcy;<sup class="wt-osk-key-shift">&HARDcy;</sup></span>
-					<span class="wt-osk-key">&ycy;<sup class="wt-osk-key-shift">&Ycy;</sup></span>
-					<span class="wt-osk-key">&softcy;<sup class="wt-osk-key-shift">&SOFTcy;</sup></span>
-					<span class="wt-osk-key">&ecy;<sup class="wt-osk-key-shift">&Ecy;</sup></span>
-					<span class="wt-osk-key">&yucy;<sup class="wt-osk-key-shift">&YUcy;</sup></span>
-					<span class="wt-osk-key">&yacy;<sup class="wt-osk-key-shift">&YAcy;</sup></span>
-				</div>
-				<!-- Greek alphabet -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-grek" dir="ltr" hidden>
-					<span class="wt-osk-key">&alpha;<sup class="wt-osk-key-shift">&Alpha;</sup></span>
-					<span class="wt-osk-key">&beta;<sup class="wt-osk-key-shift">&Beta;</sup></span>
-					<span class="wt-osk-key">&gamma;<sup class="wt-osk-key-shift">&Gamma;</sup></span>
-					<span class="wt-osk-key">&delta;<sup class="wt-osk-key-shift">&Delta;</sup></span>
-					<span class="wt-osk-key">&epsilon;<sup class="wt-osk-key-shift">&Epsilon;</sup></span>
-					<span class="wt-osk-key">&zeta;<sup class="wt-osk-key-shift">&Zeta;</sup></span>
-					<span class="wt-osk-key">&eta;<sup class="wt-osk-key-shift">&eta;</sup></span>
-					<span class="wt-osk-key">&theta;<sup class="wt-osk-key-shift">&Theta;</sup></span>
-					<span class="wt-osk-key">&iota;<sup class="wt-osk-key-shift">&Iota;</sup></span>
-					<span class="wt-osk-key">&kappa;<sup class="wt-osk-key-shift">&Kappa;</sup></span>
-					<span class="wt-osk-key">&lambda;<sup class="wt-osk-key-shift">&Lambda;</sup></span>
-					<span class="wt-osk-key">&mu;<sup class="wt-osk-key-shift">&Mu;</sup></span>
-					<span class="wt-osk-key">&nu;<sup class="wt-osk-key-shift">&Nu;</sup></span>
-					<span class="wt-osk-key">&xi;<sup class="wt-osk-key-shift">&Xi;</sup></span>
-					<span class="wt-osk-key">&omicron;<sup class="wt-osk-key-shift">&Omicron;</sup></span>
-					<span class="wt-osk-key">&pi;<sup class="wt-osk-key-shift">&Pi;</sup></span>
-					<span class="wt-osk-key">&rho;<sup class="wt-osk-key-shift">&Rho;</sup></span>
-					<span class="wt-osk-key">&sigma;<sup class="wt-osk-key-shift">&Sigma;</sup></span>
-					<span class="wt-osk-key">&tau;<sup class="wt-osk-key-shift">&Tau;</sup></span>
-					<span class="wt-osk-key">&upsilon;<sup class="wt-osk-key-shift">&Upsilon;</sup></span>
-					<span class="wt-osk-key">&phi;<sup class="wt-osk-key-shift">&Phi;</sup></span>
-					<span class="wt-osk-key">&chi;<sup class="wt-osk-key-shift">&chi;</sup></span>
-					<span class="wt-osk-key">&psi;<sup class="wt-osk-key-shift">&Psi;</sup></span>
-					<span class="wt-osk-key">&omega;<sup class="wt-osk-key-shift">&Omega;</sup></span>
-				</div>
-				<!-- Arabic alphabet -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-arab" dir="rtl" hidden>
-					<span class="wt-osk-key">ا</span>
-					<span class="wt-osk-key">ب</span>
-					<span class="wt-osk-key">ت</span>
-					<span class="wt-osk-key">ثج</span>
-					<span class="wt-osk-key">ح</span>
-					<span class="wt-osk-key">خ</span>
-					<span class="wt-osk-key">د</span>
-					<span class="wt-osk-key">ذ</span>
-					<span class="wt-osk-key">ر</span>
-					<span class="wt-osk-key">ز</span>
-					<span class="wt-osk-key">س</span>
-					<span class="wt-osk-key">ش</span>
-					<span class="wt-osk-key">ص</span>
-					<span class="wt-osk-key">ض</span>
-					<span class="wt-osk-key">ط</span>
-					<span class="wt-osk-key">ظ</span>
-					<span class="wt-osk-key">ع</span>
-					<span class="wt-osk-key">غ</span>
-					<span class="wt-osk-key">ف</span>
-					<span class="wt-osk-key">ق</span>
-					<span class="wt-osk-key">ك</span>
-					<span class="wt-osk-key">ل</span>
-					<span class="wt-osk-key">من</span>
-					<span class="wt-osk-key">ه</span>
-					<span class="wt-osk-key">و</span>
-					<span class="wt-osk-key">ي</span>
-					<span class="wt-osk-key">آ</span>
-					<span class="wt-osk-key">ة</span>
-					<span class="wt-osk-key">ى</span>
-					<span class="wt-osk-key">ی</span>
-				</div>
-				<!-- Hebrew alphabet -->
-				<div class="wt-osk-group wt-osk-script wt-osk-script-hebr" dir="rtl" hidden>
-					<span class="wt-osk-key">&#x5d0;</span>
-					<span class="wt-osk-key">&#x5d1;</span>
-					<span class="wt-osk-key">&#x5d2;</span>
-					<span class="wt-osk-key">&#x5d3;</span>
-					<span class="wt-osk-key">&#x5d4;</span>
-					<span class="wt-osk-key">&#x5d5;</span>
-					<span class="wt-osk-key">&#x5d6;</span>
-					<span class="wt-osk-key">&#x5d7;</span>
-					<span class="wt-osk-key">&#x5d8;</span>
-					<span class="wt-osk-key">&#x5d9;</span>
-					<span class="wt-osk-key">&#x5da;</span>
-					<span class="wt-osk-key">&#x5db;</span>
-					<span class="wt-osk-key">&#x5dc;</span>
-					<span class="wt-osk-key">&#x5dd;</span>
-					<span class="wt-osk-key">&#x5de;</span>
-					<span class="wt-osk-key">&#x5df;</span>
-					<span class="wt-osk-key">&#x5e0;</span>
-					<span class="wt-osk-key">&#x5e1;</span>
-					<span class="wt-osk-key">&#x5e2;</span>
-					<span class="wt-osk-key">&#x5e3;</span>
-					<span class="wt-osk-key">&#x5e4;</span>
-					<span class="wt-osk-key">&#x5e5;</span>
-					<span class="wt-osk-key">&#x5e6;</span>
-					<span class="wt-osk-key">&#x5e7;</span>
-					<span class="wt-osk-key">&#x5e8;</span>
-					<span class="wt-osk-key">&#x5e9;</span>
-					<span class="wt-osk-key">&#x5ea;</span>
-					<span class="wt-osk-key">&#x5f0;</span>
-					<span class="wt-osk-key">&#x5f1;</span>
-					<span class="wt-osk-key">&#x5f2;</span>
-					<span class="wt-osk-key">&#x5f3;</span>
-					<span class="wt-osk-key">&#x5f4;</span>
-				</div>
-			</div>
-		</div>
-		<?php
 	}
 }

@@ -154,7 +154,37 @@ case 'create-media-object':
 	$media_object = $WT_TREE->createRecord($gedcom);
 	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
 	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
-	echo json_encode(['id' => $media_object->getXref(), 'text' => Select2::mediaObjectValue($media_object)]);
+	echo json_encode(['id' => $media_object->getXref(), 'text' => View::make('selects/media', ['media' => $media_object])]);
+	break;
+
+case 'create-media-object-from-file':
+	$file  = Filter::post('file');
+	$type  = Filter::post('type');
+	$title = Filter::post('title');
+	$note  = Filter::post('note');
+
+	if (preg_match('/\.([a-zA-Z0-9]+)$/', $file, $match)) {
+		$format = ' ' . $match[1];
+	} else {
+		$format = '';
+	}
+
+	$gedcom = "0 @new@ OBJE\n1 FILE " . $file . "\n2 FORM " .  $format;
+
+	if ($type !== '') {
+		$gedcom .= "\n3 TYPE " . $type;
+	}
+
+	if ($title !== '') {
+		$gedcom .= "\n2 TITL " . $title;
+	}
+	if ($note !== '') {
+		$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+	}
+	$media_object = $WT_TREE->createRecord($gedcom);
+	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
+	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
+	header('Location: admin_media.php?files=unused');
 	break;
 
 case 'create-note-object':
@@ -163,7 +193,7 @@ case 'create-note-object':
 	$note        = Filter::post('note');
 	$gedcom      = "0 @new@ NOTE " . str_replace("\n", "\n1 CONT ", $note);
 	$note_object = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $note_object->getXref(), 'text' => Select2::noteValue($note_object)]);
+	echo json_encode(['id' => $note_object->getXref(), 'text' => View::make('selects/note', ['note' => $note_object])]);
 	break;
 
 case 'create-repository':
@@ -172,7 +202,7 @@ case 'create-repository':
 	$repository_name = Filter::post('repository_name');
 	$gedcom = "0 @new@ REPO\n1 NAME " . $repository_name;
 	$repository = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $repository->getXref(), 'text' => Select2::repositoryValue($repository)]);
+	echo json_encode(['id' => $repository->getXref(), 'text' => View::make('selects/repository', ['repository' => $repository])]);
 	break;
 
 case 'create-source':
@@ -208,7 +238,7 @@ case 'create-source':
 		}
 	}
 	$source = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $source->getXref(), 'text' => Select2::sourceValue($source)]);
+	echo json_encode(['id' => $source->getXref(), 'text' => View::make('selects/source', ['source' => $source])]);
 	break;
 
 case 'create-submitter':
@@ -224,7 +254,7 @@ case 'create-submitter':
 		$gedcom .= "\n1 ADDR " . $submitter_address;
 	}
 	$submitter = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $submitter->getXref(), 'text' => Select2::submitterValue($submitter)]);
+	echo json_encode(['id' => $submitter->getXref(), 'text' => View::make('selects/submitter', ['submitter' => $submitter])]);
 	break;
 
 case 'paste-fact':

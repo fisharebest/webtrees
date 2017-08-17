@@ -60,18 +60,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		// Errors? Go back to the form.
 		header(
 			'Location: message.php' .
-			'?to=' . Filter::escapeUrl($to) .
-			'&from_name=' . Filter::escapeUrl($from_name) .
-			'&from_email=' . Filter::escapeUrl($from_email) .
-			'&subject=' . Filter::escapeUrl($subject) .
-			'&body=' . Filter::escapeUrl($body) .
-			'&url=' . Filter::escapeUrl($url)
+			'?to=' . rawurlencode($to) .
+			'&from_name=' . rawurlencode($from_name) .
+			'&from_email=' . rawurlencode($from_email) .
+			'&subject=' . rawurlencode($subject) .
+			'&body=' . rawurlencode($body) .
+			'&url=' . rawurlencode($url)
 		);
 	} else {
 		// No errors.  Send the message.
 		foreach ($recipients as $recipient) {
 			if (deliverMessage($WT_TREE, $from_email, $from_name, $recipient, $subject, $body, $url)) {
-				FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Filter::escapeHtml($to)), 'info');
+				FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Html::escape($to)), 'info');
 			} else {
 				FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
 				Log::addErrorLog('Unable to send a message. FROM:' . $from_email . ' TO:' . $recipient->getEmail());
@@ -102,15 +102,15 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 
 <form method="post">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="url" value="<?= Filter::escapeHtml($url) ?>">
+	<input type="hidden" name="url" value="<?= Html::escape($url) ?>">
 
 	<div class="form-group row">
 		<div class="col-sm-3 col-form-label">
 			<?= I18N::translate('To') ?>
 		</div>
 		<div class="col-sm-9">
-			<input type="hidden" name="to" value="<?= Filter::escapeHtml($to) ?>">
-			<div class="form-control"><?= Filter::escapeHtml($to_names) ?></div>
+			<input type="hidden" name="to" value="<?= Html::escape($to) ?>">
+			<div class="form-control"><?= Html::escape($to_names) ?></div>
 		</div>
 	</div>
 
@@ -120,7 +120,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 				<?= I18N::translate('From') ?>
 			</div>
 			<div class="col-sm-9">
-				<div class="form-control"><?= Filter::escapeHtml(Auth::user()->getRealName()) ?></div>
+				<div class="form-control"><?= Html::escape(Auth::user()->getRealName()) ?></div>
 			</div>
 		</div>
 	<?php else: ?>
@@ -129,7 +129,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 				<?= I18N::translate('Your name') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" id="from-name" type="text" name="from_name" value="<?= Filter::escapeHtml($from_name) ?>" required>
+				<input class="form-control" id="from-name" type="text" name="from_name" value="<?= Html::escape($from_name) ?>" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -137,7 +137,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 				<?= I18N::translate('Email address') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" id="from-email" type="text" name="from_email" value="<?= Filter::escapeHtml($from_email) ?>" required>
+				<input class="form-control" id="from-email" type="text" name="from_email" value="<?= Html::escape($from_email) ?>" required>
 			</div>
 		</div>
 	<?php endif ?>
@@ -147,7 +147,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 			<?= I18N::translate('Subject') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="subject" type="text" name="subject" value="<?= Filter::escapeHtml($subject) ?>" required>
+			<input class="form-control" id="subject" type="text" name="subject" value="<?= Html::escape($subject) ?>" required>
 		</div>
 	</div>
 
@@ -156,7 +156,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
 			<?= I18N::translate('Body') ?>
 		</label>
 		<div class="col-sm-9">
-			<textarea class="form-control" id="body" type="text" name="body" required><?= Filter::escapeHtml($body) ?></textarea>
+			<textarea class="form-control" id="body" type="text" name="body" required><?= Html::escape($body) ?></textarea>
 		</div>
 	</div>
 
@@ -176,7 +176,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
  *
  * @param $to
  *
- * @reutrn User[]
+ * @return User[]
  */
 function recipients($to) {
 	if ($to === 'all') {
@@ -210,19 +210,30 @@ function recipients($to) {
  * @return bool
  */
 function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient, $subject, $body, $url) {
+	// Create a dummy user, so we can send messages from the tree.
+	$from = new User(
+		(object) [
+			'user_id'   => null,
+			'user_name' => '',
+			'real_name' => $tree->getTitle(),
+			'email'     => $tree->getPreference('WEBTREES_EMAIL'),
+		]
+	);
+
+	// Create a dummy user, so we can reply to visitors.
+	$sender = new User(
+		(object) [
+			'user_id'   => null,
+			'user_name' => '',
+			'real_name' => $sender_name,
+			'email'     => $sender_email,
+		]
+	);
+
 	$success = true;
-	$hr      = '--------------------------------------------------';
-	$body    = nl2br($body, false);
-	$body_cc = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . $hr . Mail::EOL . $body;
 
-	I18N::init($recipient->getPreference('language', WT_LOCALE));
-
-	$body = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender_email) . Mail::EOL . Mail::EOL . $body;
-
-	if ($url !== 'index.php') {
-		$body .= Mail::EOL . $hr . Mail::EOL . I18N::translate('This message was sent while viewing the following URL: ') . $url . Mail::EOL;
-
-	}
+	// Switch to the recipient's language
+	I18N::init($recipient->getPreference('language'));
 
 	// Send via the internal messaging system.
 	if (in_array($recipient->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
@@ -232,11 +243,25 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$subject,
-				str_replace('<br>', '', $body),
+				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
 			]);
 	}
 
-	// CC to the author via the internal messaging system.
+	// Send via email
+	if (in_array($recipient->getPreference('contactmethod'), ['messaging2', 'messaging3', 'mailto', 'none'])) {
+		$success = $success && Mail::send(
+				$from,
+				$recipient,
+				$sender,
+				I18N::translate('webtrees message') . ' - ' . $subject,
+				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
+				View::make('emails/message-user-html', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
+			);
+	}
+
+	I18N::init(WT_LOCALE);
+
+	// Copy the message back to the user
 	if (Auth::check() && in_array(Auth::user()->getPreference('contactmethod'), ['messaging', 'messaging2', 'mailto', 'none'])) {
 		Database::prepare(
 			"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
@@ -245,28 +270,9 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 			WT_CLIENT_IP,
 			$recipient->getUserId(),
 			$subject,
-			str_replace('<br>', '', $body_cc),
+			View::make('emails/message-copy-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
 		]);
 	}
-
-	// Send via email
-	if (in_array($recipient->getPreference('contactmethod'), ['messaging2', 'messaging3', 'mailto', 'none'])) {
-		$success = $success && Mail::send(
-			// “From:” header
-			$tree,
-			// “To:” header
-			$sender_email,
-			$sender_name,
-			// “Reply-To:” header
-			Site::getPreference('SMTP_FROM_NAME'),
-			$tree->getPreference('title'),
-			// Message body
-			I18N::translate('webtrees message') . ' - ' . $subject,
-			$body
-		);
-	}
-
-	I18N::init(WT_LOCALE);
 
 	return $success;
 }

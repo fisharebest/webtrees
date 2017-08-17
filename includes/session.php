@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * We set the following globals
@@ -30,37 +31,34 @@ global $WT_TREE;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.8.0-dev');
+define('WT_VERSION', '2.0.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
-
-// Resources have version numbers in the URL, so that they can be cached indefinitely.
-define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
-
 define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
-define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
-define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
+define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
+define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
 define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js');
-define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
-define('WT_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/jquery.dataTables.min.js');
-define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
-define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.15/dataTables.bootstrap4.min.js');
-define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
-define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-3.1.1/jquery.min.js');
-define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.11.2/moment-with-locales.min.js');
-define('WT_SELECT2_JS_URL', WT_STATIC_URL . 'packages/select2-4.0.3/js/select2.min.js');
-define('WT_SELECT2_CSS_URL', WT_STATIC_URL . 'packages/select2-4.0.3/css/select2.min.css');
-define('WT_TETHER_JS_URL', WT_STATIC_URL . 'packages/tether-1.4.0/tether.min.js');
+define('WT_BOOTSTRAP_RTL_CSS_URL', 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
+define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.15/jquery.dataTables.min.js');
+define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
+define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.js');
+define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
+define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
+define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
+define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
+define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
+define('WT_SORTABLE_JS_URL', 'packages/rubaxa-sortable-1.4.0/Sortable.min.js');
+define('WT_TETHER_JS_URL', 'packages/tether-1.4.0/tether.min.js');
 // Note: these have been patched.
-define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.9/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.9/jquery.wheelzoom-2.0.0.js');
-define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
+define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-2.0.0.js');
+define('WT_CKEDITOR_BASE_URL', 'packages/ckeditor-4.5.2-custom/');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.9/admin.js');
-define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.9/webtrees.js');
-define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.9/font-awesome-rtl.css');
+define('WT_ADMIN_JS_URL', 'assets/js-2.0.0/admin.js');
+define('WT_WEBTREES_JS_URL', 'assets/js-2.0.0/webtrees.js');
+define('WT_FONT_AWESOME_RTL_CSS_URL', 'assets/js-2.0.0/font-awesome-rtl.css');
 
 // Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -124,32 +122,15 @@ require WT_ROOT . 'vendor/autoload.php';
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
-$https    = strtolower(Filter::server('HTTPS'));
-$protocol = ($https === '' || $https === 'off') ? 'http' : 'https';
-$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
+$request = Request::createFromGlobals();
+$request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
-$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
-$host = Filter::server('SERVER_NAME', null, $host);
-
-$port = Filter::server('SERVER_PORT', null, '80');
-$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
-
-// Ignore the default port.
-if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
-	$port = '';
-} else {
-	$port = ':' . $port;
-}
+// Remove any PHP script name
+$base_uri = preg_replace('/[^\/]+$/', '', $request_uri);
+define('WT_BASE_URL', $base_uri);
 
 // What is the name of the requested script.
 define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
-
-// REDIRECT_URL should be set when Apache is following a RedirectRule
-// PHP_SELF may have trailing path: /path/to/script.php/FOO/BAR
-$path = Filter::server('REDIRECT_URL', null, Filter::server('PHP_SELF'));
-$path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
-
-define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -360,7 +341,7 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 if (Site::getPreference('LOGIN_URL') !== '') {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', 'login.php');
+	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere

@@ -79,9 +79,9 @@ class FamilyController extends GedcomRecordController {
 			// edit_fam / add child
 			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), 'edit_interface.php?action=add_child_to_family&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref() . '&amp;gender=U', 'menu-fam-addchil'));
 
-			// edit_fam / reorder_children
+			// edit_fam / reorder-children
 			if ($this->record->getNumberOfChildren() > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder_children&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref(), 'menu-fam-orderchil'));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder-children&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref(), 'menu-fam-orderchil'));
 			}
 
 			// delete
@@ -151,10 +151,7 @@ class FamilyController extends GedcomRecordController {
 				echo '<tr><td class="descriptionbox">';
 				echo I18N::translate('Media object');
 				echo '</td><td class="optionbox">';
-				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=" . $this->record->getXref() . "', '_blank', edit_window_specs); return false;\">", I18N::translate('Add a media object'), '</a>';
-				echo FunctionsPrint::helpLink('OBJE');
-				echo '<br>';
-				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=" . $this->record->getXref() . "&amp;linkto=family', '_blank', find_window_specs); return false;\">", I18N::translate('Link to an existing media object'), '</a>';
+				echo  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
 				echo '</td></tr>';
 			}
 

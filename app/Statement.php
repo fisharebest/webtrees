@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 use PDOStatement;
+use stdClass;
 
 /**
  * Extend PHP's native PDOStatement class.
@@ -105,7 +106,7 @@ class Statement {
 	 *
 	 * @param int $fetch_style
 	 *
-	 * @return \stdClass|array|false
+	 * @return stdClass|array|false
 	 */
 	public function fetch($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
@@ -122,7 +123,7 @@ class Statement {
 	 *
 	 * @param int $fetch_style
 	 *
-	 * @return \stdClass[]|string[][]
+	 * @return stdClass[]|string[][]
 	 */
 	public function fetchAll($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
@@ -142,7 +143,7 @@ class Statement {
 	 *
 	 * @param int $fetch_style
 	 *
-	 * @return \stdClass|array|null
+	 * @return stdClass|array|null
 	 */
 	public function fetchOneRow($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {

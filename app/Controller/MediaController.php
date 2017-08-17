@@ -18,9 +18,7 @@ namespace Fisharebest\Webtrees\Controller;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 
@@ -61,7 +59,7 @@ class MediaController extends GedcomRecordController {
 
 			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-obje-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . '", "' . $this->record->getXref() . '");',
 			]));
 		}
 

@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Static GEDCOM data for tags
@@ -1383,7 +1383,7 @@ class GedcomTag {
 			}
 
 			// Still no translation? Highlight this as an error
-			return '<span class="error" title="' . I18N::translate('Unrecognized GEDCOM code') . '">' . Filter::escapeHtml($tag) . '</span>';
+			return '<span class="error" title="' . I18N::translate('Unrecognized GEDCOM code') . '">' . Html::escape($tag) . '</span>';
 		}
 	}
 
@@ -1407,6 +1407,8 @@ class GedcomTag {
 
 	/**
 	 * Get a list of facts, for use in the "fact picker" edit control
+	 *
+	 * @param string $fact_type
 	 *
 	 * @return string[]
 	 */
@@ -1467,9 +1469,9 @@ class GedcomTag {
 		case 'NAME':
 			$tags = [
 				// Facts subordinate to NAME
-				'NICK', 'FONE', 'ROMN',
+				'FONE', 'ROMN',
 				// non standard tags
-				'_HEB', '_AKA',
+				'_HEB', '_AKA', '_MARNM',
 			];
 			break;
 		default:

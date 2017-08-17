@@ -45,6 +45,7 @@ $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 $statuses = [
+	''         => '',
 	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
 	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
 	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
@@ -270,7 +271,7 @@ $controller
 		});
 	');
 
-$users_array = [];
+$users_array = ['' => ''];
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
@@ -292,7 +293,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Filter::escapeHtml($from) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Html::escape($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -302,7 +303,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Filter::escapeHtml($to) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Html::escape($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -318,7 +319,7 @@ echo Bootstrap4::breadcrumbs([
 			<label for="xref">
 				<?= I18N::translate('Record') ?>
 			</label>
-			<input class="form-control" type="text" id="xref" name="xref" value="<?= Filter::escapeHtml($xref) ?>">
+			<input class="form-control" type="text" id="xref" name="xref" value="<?= Html::escape($xref) ?>">
 		</div>
 	</div>
 
@@ -327,14 +328,14 @@ echo Bootstrap4::breadcrumbs([
 			<label for="oldged">
 				<?= I18N::translate('Old data') ?>
 			</label>
-			<input class="form-control" type="text" id="oldged" name="oldged" value="<?= Filter::escapeHtml($oldged) ?>">
+			<input class="form-control" type="text" id="oldged" name="oldged" value="<?= Html::escape($oldged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="newged">
 				<?= I18N::translate('New data') ?>
 			</label>
-			<input class="form-control" type="text" id="newged" name="newged" value="<?= Filter::escapeHtml($newged) ?>">
+			<input class="form-control" type="text" id="newged" name="newged" value="<?= Html::escape($newged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">

@@ -33,7 +33,7 @@ $level = count($parent);
 
 if ($display == 'hierarchy') {
 	if ($level) {
-		$controller->setPageTitle(I18N::translate('Place hierarchy') . ' - <span dir="auto">' . Filter::escapeHtml($parent[$level - 1]) . '</span>');
+		$controller->setPageTitle(I18N::translate('Place hierarchy') . ' - <span dir="auto">' . Html::escape($parent[$level - 1]) . '</span>');
 	} else {
 		$controller->setPageTitle(I18N::translate('Place hierarchy'));
 	}

@@ -184,7 +184,7 @@ class I18N {
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
 			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-			' "lengthMenu":     "' . Filter::escapeJs(/* I18N: %s is a number of records per page */ self::translate('Display %s', $length_options)) . '",' .
+			' "lengthMenu":     "' . /* I18N: %s is a number of records per page */ self::translate('Display %s', addslashes($length_options)) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
 			' "processing":     "' . self::translate('Loading…') . '",' .
 			' "search":         "' . self::translate('Filter') . '",' .
@@ -314,7 +314,7 @@ class I18N {
 		} else {
 			// Negotiate a locale, but if we can't then use a failsafe
 			self::$locale = new LocaleEnUs;
-			if (Session::has('locale')) {
+			if (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
 				// Previously used
 				self::$locale = Locale::create(Session::get('locale'));
 			} else {
@@ -513,7 +513,9 @@ class I18N {
 	 */
 	public static function reverseText($text) {
 		// Remove HTML markup - we can't display it and it is LTR.
-		$text = Filter::unescapeHtml($text);
+		$text = strip_tags($text);
+		// Remove HTML entities.
+		$text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
 
 		// LTR text doesn't need reversing
 		if (self::scriptDirection(self::textScript($text)) === 'ltr') {
