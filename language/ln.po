@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-17 22:48+0000\n"
+"PO-Revision-Date: 2017-08-19 22:34+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -37,7 +37,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:423
 #: modules_v3/descendancy_report/report.xml:454
 msgid " in "
-msgstr " káti ya "
+msgstr " káti na "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
@@ -59,7 +59,7 @@ msgstr " na eténi ya ngonga"
 #: app/Module/FrequentlyAskedQuestionsModule.php:472
 #, php-format
 msgid "#%s"
-msgstr "#%s"
+msgstr "n°%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
@@ -1872,7 +1872,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:266
 msgid "Allow users to select their own theme"
-msgstr "Kopesa basaleli ndingisa bapɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
+msgstr "Kopesa basáleli ndingisa bapɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:491
@@ -2940,7 +2940,7 @@ msgstr "Búku"
 
 #: ancestry.php:71 descendancy.php:62
 msgid "Booklet"
-msgstr ""
+msgstr "Búku"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:63
@@ -5991,7 +5991,7 @@ msgstr "Búku ya libótá"
 #: app/Controller/FamilyBookController.php:60
 #, php-format
 msgid "Family book of %s"
-msgstr "Búku ya libótá ya %s"
+msgstr "Búku ya libótá lya %s"
 
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452
@@ -8137,7 +8137,7 @@ msgstr ""
 
 #: ancestry.php:59 descendancy.php:55 fanchart.php:88 pedigree.php:163
 msgid "Layout"
-msgstr ""
+msgstr "Etálisi"
 
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
@@ -12050,7 +12050,7 @@ msgstr "Kotínda nkomá"
 
 #: admin_users_bulk.php:41
 msgid "Send a message to all users"
-msgstr "Kotínda nkomá epayi ya basaleli bánsɔ"
+msgstr "Kotínda nkomá epayi ya basáleli bánsɔ"
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never signed in"
@@ -14985,7 +14985,7 @@ msgstr "Mabála mánsɔ"
 
 #: admin.php:664
 msgid "Total number of users"
-msgstr ""
+msgstr "Mitángo mínsɔ mya basáleli"
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
@@ -15424,7 +15424,7 @@ msgstr ""
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
 #: login.php:440 login.php:526 setup.php:432
 msgid "Username"
-msgstr "Nkómbó ya mosaleli"
+msgstr "Nkómbó ya mosáleli"
 
 #: app/Module/LoginBlockModule.php:101 login.php:224
 msgid "Username or email address"
@@ -15437,11 +15437,11 @@ msgstr ""
 #. I18N: Menu entry
 #: admin.php:651 admin.php:659 app/Theme/AdministrationTheme.php:162
 msgid "Users"
-msgstr ""
+msgstr "Basáleli"
 
 #: admin.php:739
 msgid "Users who are signed in"
-msgstr "Basaleli bayíngelí"
+msgstr "Basáleli bayíngelí"
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
@@ -19218,7 +19218,7 @@ msgstr ""
 
 #: statistics.php:625
 msgid "quarters after marriage"
-msgstr "mobú yɔ́kɔ́ ya ínei na nsima ya libála"
+msgstr "mobú yɔ́kɔ́ ya ínei na sima ya libála"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
