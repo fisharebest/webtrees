@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-19 22:34+0000\n"
+"PO-Revision-Date: 2017-08-20 23:43+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -18738,7 +18738,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa libwá"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr ""
+msgstr "tɛ́"
 
 #. I18N: None of the other options
 #: admin_site_config.php:109 admin_trees_config.php:45
@@ -18746,12 +18746,12 @@ msgstr ""
 #: app/Module/FamilyNavigatorModule.php:262
 #: app/Module/RelationshipsChartModule.php:144
 msgid "none"
-msgstr "tɛ́"
+msgstr "elɔ́kɔ tɛ́"
 
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr "tɛ́"
+msgstr "elɔ́kɔ tɛ́"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:87
@@ -18781,7 +18781,7 @@ msgstr "mitángo"
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "of"
-msgstr ""
+msgstr "ya"
 
 #: app/Functions/FunctionsPrint.php:338
 msgid "on the date of death"
@@ -18798,7 +18798,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:691
 msgid "parent"
-msgstr ""
+msgstr "mobóbi"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
@@ -18872,7 +18872,7 @@ msgstr ""
 
 #: statistics.php:631
 msgid "quarters after marriage"
-msgstr "mobú yɔ́kɔ́ ya ínei na sima ya libála"
+msgstr "mobú yɔ́kɔ́ ya ínei na nsima ya libála"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
@@ -18953,7 +18953,7 @@ msgstr ""
 #: edituser.php:292 index_edit.php:372
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "save"
-msgstr ""
+msgstr "bátelá"
 
 #. I18N: A button label.
 #: admin_site_change.php:357 admin_site_logs.php:297 medialist.php:189
@@ -18965,19 +18965,19 @@ msgstr "luká"
 #: app/Functions/Functions.php:637
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "%s ya 2"
 
 #: app/Functions/Functions.php:622
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "%s ya 2"
 
 #: app/Functions/Functions.php:607
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "%s ya 2"
 
 #: app/Functions/Functions.php:557
 msgid "second cousin"
@@ -19179,7 +19179,7 @@ msgstr "nkána"
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:197
 msgid "sign in"
-msgstr "Kɔ́tá"
+msgstr "kɔ́tá"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
@@ -19569,7 +19569,7 @@ msgstr ""
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:111 app/Functions/FunctionsEdit.php:265
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
