@@ -203,13 +203,7 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 }
 
 // What is the remote client's IP address
-if (Filter::server('HTTP_CLIENT_IP') !== '') {
-	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
-} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== '') {
-	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
-} else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', null, '127.0.0.1'));
-}
+define('WT_CLIENT_IP', $request->getClientIp());
 
 // Connect to the database
 try {
@@ -222,11 +216,11 @@ try {
 	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 	if ($updated) {
 		// updateSchema() might load custom modules - which we cannot load again.
-		header('Location: ' . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
+		header('Location: ' . $request->getRequestUri());
 		exit;
 	}
 } catch (PDOException $ex) {
-	header('Location: site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
+	header('Location: ' . Html::url('site-unavailable.php', ['message' => $ex->getMessage()]));
 	exit;
 }
 
@@ -357,7 +351,7 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 					I18N::translate('This user account does not have access to any tree.')
 				);
 			}
-			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
+			header('Location: ' . Html::url(WT_LOGIN_URL, ['url' => $request->getRequestUri()]));
 
 		}
 		exit;
