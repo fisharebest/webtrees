@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-20 23:43+0000\n"
+"PO-Revision-Date: 2017-08-21 23:28+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1719,7 +1719,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6652
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #. I18N: gedcom tag _ALBUM
 #. I18N: Name of a module
@@ -1955,7 +1955,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6653
 msgid "Andorra"
-msgstr ""
+msgstr "Andora"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6649
@@ -2254,7 +2254,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6662
 msgid "Austria"
-msgstr ""
+msgstr "Otrish"
 
 #. I18N: gedcom tag AUTH
 #: app/Functions/FunctionsEdit.php:1948
@@ -2372,7 +2372,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6663
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6664
@@ -2541,7 +2541,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6666
 msgid "Belgium"
-msgstr ""
+msgstr "Bɛ́lɛzika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
@@ -2902,7 +2902,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6674
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia na Erzegovina"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
@@ -3045,7 +3045,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6671
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
 #: app/GedcomTag.php:190 calendar.php:270
@@ -3273,7 +3273,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Cameroon"
-msgstr ""
+msgstr "Kamerun"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
@@ -4204,7 +4204,7 @@ msgstr "Botumbi ebembe ya mwǎsí"
 #. I18N: Name of a country or state
 #: app/Stats.php:6749
 msgid "Croatia"
-msgstr ""
+msgstr "Kroasia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6701
@@ -4252,7 +4252,7 @@ msgstr "Kobɔngisa lonkásá loye"
 #. I18N: Name of a country or state
 #: app/Stats.php:6705
 msgid "Cyprus"
-msgstr ""
+msgstr "Sipre"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
@@ -4961,7 +4961,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6694
 msgid "Democratic Republic of the Congo"
-msgstr ""
+msgstr "Republíki ya Kongó Demokratíki"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6710
@@ -5526,7 +5526,7 @@ msgstr ""
 #. I18N: The latest year in a range
 #: lifespan.php:95
 msgid "End year"
-msgstr ""
+msgstr "Mobú mwa nsúka"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -6393,7 +6393,7 @@ msgstr "Mamá mobɔ́kɔli"
 #. I18N: Name of a country or state
 #: app/Stats.php:6725
 msgid "France"
-msgstr ""
+msgstr "Falansia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:165
@@ -6408,7 +6408,7 @@ msgstr ""
 #. I18N: The French calendar
 #: app/Date.php:200 help_text.php:194
 msgid "French"
-msgstr ""
+msgstr "Ya lifalasɛ́"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6743
@@ -6632,7 +6632,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6707
 msgid "Germany"
-msgstr ""
+msgstr "Alémani"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:94
@@ -6666,7 +6666,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
@@ -7054,7 +7054,7 @@ msgstr "Lonkásá lwa yambo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
@@ -7332,12 +7332,12 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: lifespan.php:69
 msgid "Include the individual’s immediate family"
-msgstr ""
+msgstr "Tíyá mabótá ma nzínganzínga na bato"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -7522,7 +7522,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6756
 msgid "Ireland"
-msgstr ""
+msgstr "Irlandi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
@@ -7610,7 +7610,7 @@ msgstr ""
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:273 help_text.php:168
 msgid "Jewish"
-msgstr ""
+msgstr "Ya boyúda"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:203
@@ -7777,7 +7777,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #: app/Module/HtmlBlockModule.php:157
 msgid "Keyword examples"
@@ -7927,7 +7927,7 @@ msgstr "Nkótá"
 #. I18N: Name of a country or state
 #: app/Stats.php:6774
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #: setup.php:177
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
@@ -8105,7 +8105,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 #: statistics.php:150
 msgid "Lifespan"
@@ -8178,7 +8178,7 @@ msgstr "Milɔ́ngɔ́"
 #. I18N: Name of a country or state
 #: app/Stats.php:6782
 msgid "Lithuania"
-msgstr ""
+msgstr "Litaue"
 
 #: app/SurnameTradition.php:95
 msgctxt "Surname tradition"
@@ -8325,7 +8325,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6807
@@ -8358,12 +8358,12 @@ msgstr "Mibáli"
 #. I18N: Name of a country or state
 #: app/Stats.php:6795
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6796
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #. I18N: Menu entry
 #: admin_pgv_to_wt.php:124 admin_site_change.php:280 admin_site_merge.php:178
@@ -8743,7 +8743,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
 msgid "Mauritius"
-msgstr ""
+msgstr "Morisi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1232
@@ -8852,7 +8852,7 @@ msgstr "Elɔ́kɔ ya bopanzi nsango"
 #: gedrecord.php:107 medialist.php:33 note.php:109 source.php:119
 #: statistics.php:366 statistics.php:392 statistics.php:396
 msgid "Media objects"
-msgstr "Bilɔ́kɔ ya bopanzi nsango"
+msgstr "Bilɔ́kɔ bya bopanzi nsango"
 
 #: medialist.php:229
 msgid "Media objects found"
@@ -9118,7 +9118,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6788
 msgid "Monaco"
-msgstr ""
+msgstr "Monaco"
 
 #: app/Date/CalendarDate.php:341
 msgid "Monday"
@@ -9132,7 +9132,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6800
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:249
@@ -9225,7 +9225,7 @@ msgstr "Bikakoli misúsu"
 #. I18N: Name of a country or state
 #: app/Stats.php:6787
 msgid "Morocco"
-msgstr ""
+msgstr "Marɔkɛ"
 
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:366
@@ -9440,7 +9440,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6809
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
@@ -9483,7 +9483,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
 msgid "Nepal"
-msgstr ""
+msgstr "Nepáli"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6817
@@ -9568,7 +9568,7 @@ msgstr "Elílí elándí"
 #. I18N: Name of a country or state
 #: app/Stats.php:6814
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nikalagwa"
 
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:443
@@ -9578,12 +9578,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
 msgid "Niger"
-msgstr ""
+msgstr "Nizer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6813
 msgid "Nigeria"
-msgstr ""
+msgstr "Nizeria"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:143
@@ -9837,7 +9837,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6815
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Irlandi ya Nor"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6799
@@ -10346,7 +10346,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistáni"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6828
@@ -10366,7 +10366,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6824
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
@@ -10812,7 +10812,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6833
 msgid "Portugal"
-msgstr ""
+msgstr "Pulutugal"
 
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
@@ -11437,7 +11437,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6695
 msgid "Republic of the Congo"
-msgstr ""
+msgstr "Republíki ya Kongó"
 
 #: app/Module/LoginBlockModule.php:99 login.php:217
 msgid "Request a new password"
@@ -11556,7 +11556,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6841
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: admin_site_config.php:329
 msgid "SMTP mail server"
@@ -11653,7 +11653,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6855
 msgid "San Marino"
-msgstr ""
+msgstr "Santu Marino"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
@@ -11701,7 +11701,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
 msgid "Scotland"
-msgstr ""
+msgstr "Ekósi"
 
 #. I18N: gedcom tag _SCBK
 #: app/GedcomTag.php:1334
@@ -11918,7 +11918,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
 msgid "Senegal"
-msgstr ""
+msgstr "Senegale"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:335
@@ -11963,7 +11963,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
@@ -12569,7 +12569,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
@@ -12903,7 +12903,7 @@ msgstr "Balóngani na bǎna"
 #. I18N: Name of a country or state
 #: app/Stats.php:6780
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -12936,7 +12936,7 @@ msgstr ""
 #. I18N: The earliest year in a range
 #: lifespan.php:89
 msgid "Start year"
-msgstr ""
+msgstr "Mobú mwa ebandeli"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
@@ -13135,7 +13135,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
 msgid "Switzerland"
-msgstr ""
+msgstr "Swisi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
@@ -15365,7 +15365,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6897
 msgid "Wales"
-msgstr ""
+msgstr "Ekólo Wali"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6896
