@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-21 23:28+0000\n"
+"PO-Revision-Date: 2017-08-22 22:40+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -71,13 +71,13 @@ msgstr "%1$s %2$s ezalí na ekangisi %3$s na %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s na bolongoli %2$s o likoló"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s na bolongoli %2$s na nsé"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -375,7 +375,7 @@ msgstr[1] "nkomá %s ya sika etíyamí."
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s na bolongoli mɔ̌kɔ́ na nsé"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
@@ -414,25 +414,25 @@ msgstr[1] ""
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s na bolongoli misáto na nsé"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s na bolongoli mɔ̌kɔ́ na nsé"
+msgstr "%s na bolongoli misáto na nsé"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s na bolongoli mibalé o likoló"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s na bolongoli mɔ̌kɔ́ na nsé"
+msgstr "%s na bolongoli mibalé na nsé"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:310
@@ -461,7 +461,7 @@ msgstr[1] "mbúla %s mileki"
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s mbúla ya mbótama"
+msgstr "%s mobú mwa mbótama"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -1506,7 +1506,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr ""
+msgstr "Adelaide, Ostralía"
 
 #: admin_users.php:514 admin_users.php:563
 msgid "Administrator"
@@ -1514,7 +1514,7 @@ msgstr ""
 
 #: setup.php:424 setup.php:426
 msgid "Administrator account"
-msgstr ""
+msgstr "Kɔ́nti ya moyángeli"
 
 #: admin_users.php:495
 msgid "Administrator comments on user"
@@ -1783,7 +1783,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
 msgid "Algeria"
-msgstr ""
+msgstr "Aljeria"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
@@ -1877,7 +1877,7 @@ msgstr "Kopesa basáleli ndingisa bapɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr "Kondima bapaya basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
+msgstr "Kondima batáli  basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -2010,7 +2010,7 @@ msgstr "Andora"
 #. I18N: Name of a country or state
 #: app/Stats.php:6673
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6674
@@ -2299,12 +2299,12 @@ msgstr "Augústo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
 msgid "Australia"
-msgstr ""
+msgstr "Ostralía"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
 msgid "Austria"
-msgstr "Otrish"
+msgstr "Otríshi"
 
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
@@ -2603,7 +2603,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6691
 msgid "Benin"
-msgstr ""
+msgstr "Bénin"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6702
@@ -2613,7 +2613,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:357
 msgid "Bern, Switzerland"
-msgstr ""
+msgstr "Bern, Swísi"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
@@ -2968,7 +2968,7 @@ msgstr "Bábalé bawâ"
 #. I18N: Name of a country or state
 #: app/Stats.php:6709
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
@@ -2994,7 +2994,7 @@ msgstr "Bitúka bya libótá %s"
 #. I18N: Name of a country or state
 #: app/Stats.php:6704
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
@@ -3008,7 +3008,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Brisbane, Australia"
-msgstr ""
+msgstr "Brisbane, Ostralía"
 
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1088
@@ -3238,12 +3238,12 @@ msgstr "Esíká ya likundí ezalí na"
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
@@ -3314,7 +3314,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
 msgid "Cambodia"
-msgstr ""
+msgstr "Kamboji"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3329,12 +3329,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6711
 msgid "Canada"
-msgstr ""
+msgstr "Kanadá"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6723
 msgid "Cape Verde"
-msgstr ""
+msgstr "Cap-Vert"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:127
@@ -3392,8 +3392,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
+#, fuzzy
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Filipinas"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3432,7 +3433,7 @@ msgstr "Nkomá ya etángo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6710
 msgid "Central African Republic"
-msgstr ""
+msgstr "Santrafríka"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1916
@@ -3442,7 +3443,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6893
 msgid "Chad"
-msgstr ""
+msgstr "Tshadi"
 
 #: edit_interface.php:1953 edit_interface.php:1989 edit_interface.php:2016
 msgid "Change"
@@ -3576,18 +3577,18 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
 msgid "Child"
-msgstr ""
+msgstr "Mwǎna"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:480
 msgid "Child of "
-msgstr ""
+msgstr "Mwǎna wa "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:352
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Mwǎna wa %s"
 
 #: app/Functions/FunctionsPrintLists.php:289
 #: app/Functions/FunctionsPrintLists.php:729
@@ -3680,7 +3681,7 @@ msgstr "Batisimo ya ndeko mobáli"
 
 #: app/GedcomTag.php:1199
 msgid "Christening of a child"
-msgstr ""
+msgstr "Batisimo ya mwǎna"
 
 #: app/GedcomTag.php:1197
 msgid "Christening of a daughter"
@@ -3884,7 +3885,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
 msgid "Comoros"
-msgstr ""
+msgstr "Komori"
 
 #. I18N: Name of a module/chart
 #: app/Controller/CompactController.php:46
@@ -3980,7 +3981,7 @@ msgstr ""
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
 #: app/Module/ClippingsCartModule.php:781
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "Kobóngola útá UTF-8 kín'o ISO-8859-1"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
@@ -4047,7 +4048,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6716
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Kotdivuar"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
@@ -5014,7 +5015,7 @@ msgstr "Kozímisa nkómbó eye"
 
 #: edituser.php:321
 msgid "Delete your account"
-msgstr ""
+msgstr "Koboma kɔ́nti óyo"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
@@ -5260,7 +5261,7 @@ msgstr "Bokabwani na káti ya bonkámá"
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Djibouti"
-msgstr ""
+msgstr "Djibuti"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
@@ -5499,7 +5500,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Egypt"
-msgstr ""
+msgstr "Ejipte"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6878
@@ -5639,7 +5640,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
 msgid "England"
-msgstr ""
+msgstr "Ingɛlɛ́tɛlɛ"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
@@ -5661,12 +5662,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6762
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Gine-Ekwatorial"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6740
 msgid "Eritrea"
-msgstr ""
+msgstr "Elitré"
 
 #: import.php:193
 #, php-format
@@ -5715,7 +5716,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6744
 msgid "Ethiopia"
-msgstr ""
+msgstr "Etiopi"
 
 #: statistics.php:682
 msgid "Europe"
@@ -6656,12 +6657,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6752
 msgid "Gabon"
-msgstr ""
+msgstr "Gabɔ́"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6760
 msgid "Gambia"
-msgstr ""
+msgstr "Gambie"
 
 #. I18N: gedcom tag SEX
 #: app/GedcomTag.php:770 modules_v3/family_group_report/report.xml:844
@@ -6881,7 +6882,7 @@ msgstr "Mbúla monɛ́nɛ kolúta o kati ya bankána"
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
 msgid "Greece"
-msgstr ""
+msgstr "Gresi"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
@@ -6955,12 +6956,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6758
 msgid "Guinea"
-msgstr ""
+msgstr "Gine"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6761
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Gine-Bisau"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6769
@@ -7741,7 +7742,7 @@ msgstr "Yanwáli"
 #. I18N: Name of a country or state
 #: app/Stats.php:6789
 msgid "Japan"
-msgstr ""
+msgstr "Zapɔ́"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
@@ -7909,7 +7910,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
 msgid "Kenya"
-msgstr "Kenya"
+msgstr "Kénya"
 
 #: app/Module/HtmlBlockModule.php:156
 msgid "Keyword examples"
@@ -8188,7 +8189,7 @@ msgstr "Boúmeli bwa libála"
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesoto"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8221,7 +8222,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6801
 msgid "Libya"
-msgstr ""
+msgstr "Libîya"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
@@ -8246,7 +8247,7 @@ msgstr ""
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Kokangisa kɔ́nti ya mosáleli na moto."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -8331,7 +8332,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "Esíká elongwé tɛ́: Esíká eye ezalí na bisíká bikɛ́ na káti"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8398,12 +8399,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6807
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luksamburg"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6809
 msgid "Macau"
-msgstr ""
+msgstr "Makau"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6818
@@ -8413,12 +8414,13 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6814
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagasikari"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:227
+#, fuzzy
 msgid "Madrid, Spain"
-msgstr ""
+msgstr "Madrid, Espania"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1928
@@ -8528,7 +8530,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Manila, Philippines"
-msgstr ""
+msgstr "Manila, Filipinas"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:235
@@ -8853,7 +8855,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6826
 msgid "Mauritania"
-msgstr ""
+msgstr "Moritani"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6829
@@ -9428,7 +9430,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambíki"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:90
@@ -9461,7 +9463,7 @@ msgstr "Mabála ebelé"
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1599
 #: edituser.php:111
 msgid "My account"
-msgstr ""
+msgstr "Kɔnti na ngáí"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:165
@@ -9609,7 +9611,7 @@ msgstr "Nepáli"
 #. I18N: Name of a country or state
 #: app/Stats.php:6841
 msgid "Netherlands"
-msgstr ""
+msgstr "Holanda"
 
 #: admin_users.php:239
 msgid "Never"
@@ -9927,7 +9929,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "None"
-msgstr "Tɛ́"
+msgstr "Elɔ́kɔ tɛ́"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
@@ -10208,11 +10210,11 @@ msgstr ""
 
 #: pedigree.php:182
 msgid "Oldest at bottom"
-msgstr ""
+msgstr "Ya kala na nsúka"
 
 #: pedigree.php:182
 msgid "Oldest at top"
-msgstr ""
+msgstr "Ya kala na likoló"
 
 #: statistics.php:294
 msgid "Oldest father"
@@ -10224,7 +10226,7 @@ msgstr "Mwǎsí mokóló"
 
 #: statistics.php:176
 msgid "Oldest living individuals"
-msgstr "Bato na bomɔi ya molaí míngi"
+msgstr "Bato na bomɔi bolaí"
 
 #: statistics.php:271
 msgid "Oldest male"
@@ -10242,7 +10244,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
 msgid "Oman"
-msgstr ""
+msgstr "Omani"
 
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
@@ -10610,7 +10612,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6851
 msgid "Philippines"
-msgstr ""
+msgstr "Filipinas"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
@@ -10961,7 +10963,7 @@ msgstr "Pulutugal"
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Ya pulutugal"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:696
@@ -11489,11 +11491,11 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
 msgid "Remove"
-msgstr ""
+msgstr "Kolongola"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Kolongola bikangeli bikokání"
 
 #: app/Module/GoogleMapsModule.php:539 app/Module/GoogleMapsModule.php:542
 #: app/Module/GoogleMapsModule.php:545 app/Module/GoogleMapsModule.php:3397
@@ -11515,7 +11517,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr ""
+msgstr "Kolongola esiká eye?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11833,7 +11835,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Santu Tome mpé Príncipe"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
@@ -12225,7 +12227,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Seychelles"
-msgstr ""
+msgstr "Seyshel"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -12737,7 +12739,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:830
 #: app/Functions/FunctionsPrintFacts.php:1096
 msgid "Show to visitors"
-msgstr ""
+msgstr "Komɔ́nisa batáli"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
@@ -12930,7 +12932,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6880
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
@@ -13058,11 +13060,11 @@ msgstr "Bibandela bya milúlú"
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
 msgid "South Africa"
-msgstr ""
+msgstr "Sidafríka"
 
 #: statistics.php:688
 msgid "South America"
-msgstr ""
+msgstr "Ameríka ya Sidi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
@@ -13072,12 +13074,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6882
 msgid "South Sudan"
-msgstr ""
+msgstr "Sudani ya sidi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Spain"
-msgstr ""
+msgstr "Espania"
 
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
@@ -13264,7 +13266,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
 msgid "Sudan"
-msgstr ""
+msgstr "Sudani"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Suffixes"
@@ -13344,7 +13346,7 @@ msgstr "Kobóngola bato"
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
@@ -13435,7 +13437,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6906
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
@@ -13595,7 +13597,7 @@ msgstr ""
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Libótá “%s” likotálisama epayi ya batáli na ntango ya boyéi bwa bangó mbala ya liboso na etando eye."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -14712,7 +14714,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6899
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Timor ya monyɛlɛ"
 
 #: app/Date/JalaliDate.php:186
 msgctxt "Abbreviation for Persian month: Tir"
@@ -14833,7 +14835,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6894
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6897
@@ -14842,8 +14844,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:371
+#, fuzzy
 msgid "Tokyo, Japan"
-msgstr ""
+msgstr "Tokyo, Zapɔ́"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
@@ -15057,7 +15060,7 @@ msgstr "Misálá míbalé"
 #. I18N: Name of a country or state
 #: app/Stats.php:6902
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6903
@@ -15149,7 +15152,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6907
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6908
@@ -15560,7 +15563,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6918
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnami"
 
 #: app/Functions/FunctionsPrintFacts.php:1028
 #: app/Functions/FunctionsPrintFacts.php:1060
@@ -15631,7 +15634,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:769
 #: app/Module/ClippingsCartModule.php:776
 msgid "Visitor"
-msgstr ""
+msgstr "Motáli"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:254
@@ -15745,7 +15748,7 @@ msgstr "Boyéi bolámu na etando ya nzeté ya libótá liye"
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
 msgid "Western Sahara"
-msgstr ""
+msgstr "Sahara ya Limbɛ"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2136
@@ -16197,7 +16200,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6926
@@ -16639,7 +16642,7 @@ msgstr "mwǎna mwǎsí"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr "mwǎna mwǎsí ya"
+msgstr "mwǎna mwǎsí wa"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
@@ -16790,7 +16793,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr "Mobáli ya kala"
+msgstr "Mobáli wa kala"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -16812,7 +16815,7 @@ msgstr "Molóngani mwa kala"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
-msgstr "mwǎsí ya kala"
+msgstr "mwǎsí wa kala"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -17140,13 +17143,13 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr "%s ya 4"
+msgstr "%s wa minei"
 
 #: app/Functions/Functions.php:611
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr "%s ya 4"
+msgstr "%s wa minei"
 
 #: app/Functions/Functions.php:561
 msgid "fourth cousin"
@@ -19318,19 +19321,19 @@ msgstr "luká"
 #: app/Functions/Functions.php:637
 #, php-format
 msgid "second %s"
-msgstr "%s ya 2"
+msgstr "%s wa mibalé"
 
 #: app/Functions/Functions.php:622
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr "%s ya 2"
+msgstr "%s wa mibalé"
 
 #: app/Functions/Functions.php:607
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr "%s ya 2"
+msgstr "%s wa mibalé"
 
 #: app/Functions/Functions.php:557
 msgid "second cousin"
@@ -19605,7 +19608,7 @@ msgstr "mwǎna mobáli"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr "mwǎna mobáli ya"
+msgstr "mwǎna mobáli wa"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
@@ -19864,19 +19867,19 @@ msgstr "bangó mɔ̌kɔ́"
 #: app/Functions/Functions.php:639
 #, php-format
 msgid "third %s"
-msgstr "%s ya 3"
+msgstr "%s wa misáto"
 
 #: app/Functions/Functions.php:624
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr "%s ya 3"
+msgstr "%s wa misáto"
 
 #: app/Functions/Functions.php:609
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr "%s ya 3"
+msgstr "%s wa misáto"
 
 #: app/Functions/Functions.php:559
 msgid "third cousin"
@@ -20031,7 +20034,7 @@ msgstr "tálá"
 #: admin_trees_config.php:427 admin_trees_config.php:467
 #: admin_trees_config.php:487
 msgid "visitors"
-msgstr "bapaya"
+msgstr "batáli"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
