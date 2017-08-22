@@ -18,6 +18,11 @@
 	height: auto;
 }
 
+/* Kack for fixing bootstrap print problem */
+h2::first-letter {
+    margin-top: 0;
+}
+
 /*
  * Pages have the following high-level structure:
  *

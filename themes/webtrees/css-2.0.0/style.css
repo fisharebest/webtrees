@@ -30,6 +30,10 @@
     padding-right: 5px;
 }
 
+table {
+	border-collapse: separate;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -1511,6 +1515,7 @@ a:hover .nameZoom {
 	color: #fff;
 	font-size: 12px;
 	background-color: #81a9cb;
+	border: solid #81a9cb 1px;
 	vertical-align: top;
 	padding: 3px;
 }

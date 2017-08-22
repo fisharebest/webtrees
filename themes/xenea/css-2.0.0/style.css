@@ -30,6 +30,10 @@
     padding-right: 5px;
 }
 
+table {
+	border-collapse: separate;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.

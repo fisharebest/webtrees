@@ -16,9 +16,6 @@
 /* The colors theme */
 
 /* Override Bootstrap formatting */
-h2::first-letter {
-    margin-top: 0;
-}
 
 .table-given-name {
     overflow-x: hidden;
@@ -62,6 +59,10 @@ h2::first-letter {
 .container-fluid {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+table {
+	border-collapse: separate;
 }
 
 /*
