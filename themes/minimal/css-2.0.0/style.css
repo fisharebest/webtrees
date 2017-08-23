@@ -627,6 +627,11 @@ table {
 	padding: 4px;
 }
 
+.quickfacts a {
+	font-size: .75rem;
+	padding: 0 3px;
+}
+
 /* login.php */
 #login-register-page h2,
 #login-page .confirm {
