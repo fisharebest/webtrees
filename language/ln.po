@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-24 00:07+0000\n"
+"PO-Revision-Date: 2017-08-24 21:06+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -6662,7 +6662,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:324
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Kozwa fungóla ya API epái na Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
@@ -6725,7 +6725,7 @@ msgstr ""
 #: app/Functions/FunctionsPrint.php:434 app/Module/GoogleMapsModule.php:81
 #: app/Module/GoogleMapsModule.php:257
 msgid "Google Maps™"
-msgstr ""
+msgstr "Google Maps™"
 
 #: app/Module/GoogleMapsModule.php:199 app/Module/GoogleMapsModule.php:208
 #: app/Module/GoogleMapsModule.php:298 app/Module/GoogleMapsModule.php:530
@@ -9575,7 +9575,7 @@ msgstr "Nikalagwa"
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:443
 msgid "Nickname"
-msgstr ""
+msgstr "Nkómbó ya lisano"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
@@ -15048,7 +15048,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:408
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Kosálela Google Maps™ mpɔ̂ na molɔngɔ́ nwa bisíká"
 
 #: admin_site_config.php:115 app/Functions/FunctionsEdit.php:251
 msgid "Use PHP mail to send messages"
