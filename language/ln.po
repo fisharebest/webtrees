@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-24 00:07+0000\n"
+"PO-Revision-Date: 2017-08-24 21:06+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -6781,7 +6781,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Kozwa fungóla ya API epái na Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6756
@@ -6843,7 +6843,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:3477 app/Module/GoogleMapsModule.php:4325
 #: app/Module/GoogleMapsModule.php:4340
 msgid "Google Maps™"
-msgstr ""
+msgstr "Google Maps™"
 
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:184
 #: app/Module/GoogleMapsModule.php:284 app/Module/GoogleMapsModule.php:299
@@ -6856,7 +6856,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2082
 #: app/Module/GoogleMapsModule.php:4328
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:311
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
@@ -9696,7 +9696,7 @@ msgstr "Nikalagwa"
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:630
 msgid "Nickname"
-msgstr ""
+msgstr "Nkómbó ya lisano"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6835
@@ -15316,7 +15316,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Kosálela Google Maps™ mpɔ̂ na molɔngɔ́ nwa bisíká"
 
 #: admin_site_config.php:117
 msgid "Use PHP mail to send messages"
