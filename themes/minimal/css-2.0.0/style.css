@@ -2771,6 +2771,7 @@ div.faq_body {
 
 .optionbox, .descriptionbox {
 	border: solid #000 1px;
+	vertical-align: top;
 	padding: 3px;
 }
 
