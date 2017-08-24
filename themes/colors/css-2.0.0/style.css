@@ -1489,14 +1489,16 @@ a:hover .nameZoom {
 }
 
 .descriptionbox {
-	font-size: 12px;
+	font-size: 1rem;
+	color: #333;
 	border: 1px solid #999;
 	vertical-align: top;
 	padding: 3px;
 }
 
 .optionbox {
-	font-size: 12px;
+	font-size: 1rem;
+	color: #333;
 	border: 1px solid #999;
 	vertical-align: top;
 	white-space: nowrap;
@@ -3288,7 +3290,7 @@ div.faq_body {
 }
 
 #familybook_chart h3 {
-	color: #006;
+	color: #333;
 	font-size: 16px;
 	text-align: center;
 }
