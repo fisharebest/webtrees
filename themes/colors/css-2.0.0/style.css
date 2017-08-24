@@ -65,21 +65,6 @@ table {
 	border-collapse: separate;
 }
 
-@media (max-width:1025px)  {
-	body {
-		font-size: 14px;
-	}
-
-	.col-sm-8,.col-sm-4 {
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-
-	#individual-tabs .nav-link {
-		padding: .5em;
-	}
-}
-
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -1125,10 +1110,6 @@ table.center {
 
 .facts_table {
 	width: 100%;
-}
-
-.facts_table .optionbox {
-	white-space: normal;
 }
 
 .facts_table .optionbox {
