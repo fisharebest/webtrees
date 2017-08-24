@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-22 22:40+0000\n"
+"PO-Revision-Date: 2017-08-24 00:07+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1234,7 +1234,7 @@ msgstr "Bakísá"
 #: app/Module/ClippingsCartModule.php:715
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Bakísá %s na kitunga"
 
 #: app/Module/RelativesTabModule.php:281
 msgid "Add a brother or sister"
@@ -1331,7 +1331,7 @@ msgstr "Kobakisa lisapo"
 #. I18N: Menu entry
 #: admin_users.php:260 app/Theme/AdministrationTheme.php:138
 msgid "Add a user"
-msgstr "Bakísá mosáleli"
+msgstr "Kobakisa mosáleli"
 
 #: app/Module/RelativesTabModule.php:389 edit_interface.php:775
 #: edit_interface.php:860
@@ -1417,7 +1417,7 @@ msgstr "Bakísá káti ya bopɔni"
 #: app/Module/ClippingsCartModule.php:440
 #: app/Module/ClippingsCartModule.php:553
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Kobakisa na kitunga"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:665
@@ -1462,11 +1462,11 @@ msgstr "Adelaide, Ostralía"
 
 #: admin_users.php:507 admin_users.php:556
 msgid "Administrator"
-msgstr ""
+msgstr "Mokambi"
 
 #: setup.php:421 setup.php:423
 msgid "Administrator account"
-msgstr "Kɔ́nti ya moyángeli"
+msgstr "Kɔ́nti ya mokambi"
 
 #: admin_users.php:488
 msgid "Administrator comments on user"
@@ -1474,7 +1474,7 @@ msgstr ""
 
 #: admin.php:667
 msgid "Administrators"
-msgstr ""
+msgstr "Bakambi"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
@@ -2039,7 +2039,7 @@ msgstr ""
 
 #: admin_users.php:378
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Endimámí epayi ya mokambi"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
@@ -3757,7 +3757,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:36
 msgid "Clippings cart"
-msgstr ""
+msgstr "Kitunga ya biténi"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1507
@@ -5513,7 +5513,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:706
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Kitunga ezali na elɔ́kɔ tɛ́"
 
 #: admin_modules.php:148
 msgid "Enabled"
@@ -5945,7 +5945,7 @@ msgstr "Nzeté ya libótá"
 
 #: app/Module/ClippingsCartModule.php:87 app/Module/ClippingsCartModule.php:470
 msgid "Family tree clippings cart"
-msgstr ""
+msgstr "Kitunga ya biténi bya nzeté ya libótá"
 
 #: admin_trees_config.php:553 admin_trees_manage.php:636
 msgid "Family tree title"
@@ -9077,11 +9077,11 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:36 admin_users.php:542
 msgid "Moderator"
-msgstr ""
+msgstr "Mondimi"
 
 #: admin.php:693
 msgid "Moderators"
-msgstr ""
+msgstr "Bandimi"
 
 #: admin_modules.php:149
 msgid "Module"
@@ -9857,7 +9857,7 @@ msgstr ""
 
 #: admin.php:719
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Endimámí epayi ya mokambi tɛ́"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1299
@@ -12509,7 +12509,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:811
 #: app/Functions/FunctionsPrintFacts.php:1069
 msgid "Show to managers"
-msgstr "Kotálisa bayángeli"
+msgstr "Kotálisa epayi ya bayángeli"
 
 #: admin_trees_config.php:329 admin_trees_config.php:394
 #: admin_trees_config.php:970 app/Functions/FunctionsEdit.php:92
@@ -15844,7 +15844,7 @@ msgstr "Mamá elɛngɛ́ kolúta"
 #: app/Module/ClippingsCartModule.php:338
 #: app/Module/ClippingsCartModule.php:669
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Kitunga na yɔ̌ ezali na elɔ́kɔ tɛ́."
 
 #: message.php:129 setup.php:425
 msgid "Your name"
