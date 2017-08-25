@@ -331,6 +331,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-block-content {
 	overflow: auto;
+	position: relative;
 }
 
 .wt-accessibility-links {

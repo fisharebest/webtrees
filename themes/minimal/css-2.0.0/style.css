@@ -254,6 +254,7 @@ table {
 
 .wt-block-content {
 	overflow: auto;
+	position: relative;
 }
 
 /*
