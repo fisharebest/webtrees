@@ -788,7 +788,6 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-block-content {
 	margin: 5px;
 	overflow: auto;
-	position: relative;
 }
 
 .wt-block-content .list_table {

@@ -288,6 +288,10 @@ h2::first-letter {
 .hourglassChart .person_box_template {
 	line-height: 1.0;
 }
+
+.card-block .hourglassChart {
+	position: relative;
+}
 /*
  * Hourglass chart
  *
