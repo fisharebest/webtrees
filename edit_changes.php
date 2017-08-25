@@ -32,12 +32,13 @@ $controller
 
 $action    = Filter::get('action');
 $change_id = Filter::getInteger('change_id');
+$url       = Filter::get('url', null, 'index.php');
 
 switch ($action) {
-case 'undo':
+case 'reject':
 	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
 	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
-	// Undo a change, and subsequent changes to the same record
+	// Reject a change, and subsequent changes to the same record
 	Database::prepare(
 		"UPDATE `##change`" .
 		" SET   status     = 'rejected'" .
@@ -73,7 +74,7 @@ case 'accept':
 		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
-case 'undoall':
+case 'rejectall':
 	Database::prepare(
 		"UPDATE `##change`" .
 		" SET status='rejected'" .
@@ -141,6 +142,26 @@ foreach ($rows as $row) {
 		$row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
 		break;
 	}
+
+	$row->accept_url  = Html::url('edit_changes.php', [
+		'action'    => 'accept',
+		'change_id' => $row->change_id,
+		'ged'       => $row->gedcom_name,
+		'url'       => $url,
+	]);
+	$row->reject_url  = Html::url('edit_changes.php', [
+		'action'    => 'reject',
+		'change_id' => $row->change_id,
+		'ged'       => $row->gedcom_name,
+		'url'       => $url,
+	]);
+	$row->message_url = Html::url('message.php', [
+			'to'      => $row->user_name,
+			'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($row->record->getFullName()),
+			'body'    => WT_BASE_URL . $row->record->getRawUrl(),
+			'ged'     => $row->gedcom_name]
+	);
+
 	$all_changes[$row->gedcom_id][$row->xref][] = $row;
 }
 
@@ -149,7 +170,14 @@ foreach ($rows as $row) {
 <h2><?= $controller->getPageTitle() ?></h2>
 
 <?php if (empty($all_changes)): ?>
-<p><?= I18N::translate('There are no pending changes.') ?></p>
+<p>
+	<?= I18N::translate('There are no pending changes.') ?>
+</p>
+<p>
+	<a class="btn btn-primary" href="<?= Html::escape($url) ?>">
+		<?= I18N::translate('continue') ?>
+	</a>
+</p>
 <?php endif ?>
 
 <?php foreach ($all_changes as $gedcom_name => $gedcom_changes): ?>
@@ -157,19 +185,24 @@ foreach ($rows as $row) {
 <h3>
 	<?= Tree::findById($gedcom_name)->getTitleHtml() ?>
 	—
-	<a href="edit_changes.php?action=acceptall&amp;ged=<?= Html::escape($gedcom_name) ?>">
+	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'acceptall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>">
 		<?= I18N::translate('Accept all changes') ?>
 	</a>
 	—
-	<a href="edit_changes.php?action=undoall&amp;ged=<?= Html::escape($gedcom_name) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
+	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'rejectall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
 		<?= I18N::translate('Reject all changes') ?>
 	</a>
 </h3>
 
 <?php foreach ($gedcom_changes as $xref => $record_changes): ?>
-<h4><?= $record_changes[0]->record->getFullName() ?></h4>
-<table class="table">
-	<thead>
+
+<table class="table table-bordered table-sm">
+	<thead class="thead-default">
+		<tr>
+			<th colspan="5">
+				<a href="<?= Html::escape($record_changes[0]->record->getRawUrl()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
+			</th>
+		</tr>
 		<tr>
 			<th><?= I18N::translate('Accept') ?></th>
 			<th><?= I18N::translate('Changes') ?></th>
@@ -182,7 +215,7 @@ foreach ($rows as $row) {
 		<?php foreach ($record_changes as $record_change): ?>
 		<tr>
 			<td>
-				<a href="edit_changes.php?action=accept&amp;change_id=<?= $record_change->change_id ?>"><?= I18N::translate('Accept') ?></a>
+				<a href="<?= html::escape($record_change->accept_url) ?>"><?= I18N::translate('Accept') ?></a>
 			</td>
 			<td>
 				<?php foreach ($record_change->record->getFacts() as $fact): ?>
@@ -194,7 +227,7 @@ foreach ($rows as $row) {
 				<?php endforeach ?>
 			</td>
 			<td>
-				<a href="message.php?to=<?= rawurlencode($record_change->user_name) ?>&amp;subject=<?= rawurlencode(I18N::translate('Moderate pending changes')) ?>&amp;ged=<?= $WT_TREE->getNameUrl() ?>" title="<?= I18N::translate('Send a message') ?>">
+				<a href="<?= Html::escape($record_change->message_url) ?>" title="<?= I18N::translate('Send a message') ?>">
 					<?= Html::escape($record_change->real_name)?> - <?= Html::escape($record_change->user_name) ?>
 				</a>
 			</td>
@@ -202,7 +235,7 @@ foreach ($rows as $row) {
 				<?= FunctionsDate::formatTimestamp($record_change->change_timestamp) ?>
 			</td>
 			<td>
-				<a href="edit_changes.php?action=undo&amp;change_id=<?= $record_change->change_id ?>"><?= I18N::translate('Reject') ?></a>
+				<a href="<?= html::escape($record_change->reject_url) ?>"><?= I18N::translate('Reject') ?></a>
 			</td>
 		</tr>
 		<?php endforeach ?>

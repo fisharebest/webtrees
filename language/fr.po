@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-26 06:53+0000\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2017-08-12 06:52+0000\n"
+"Last-Translator: Nathalie <nvedovotto@gmail.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -822,12 +822,12 @@ msgstr "Liste des prochains anniversaires."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:37
 msgid "A list of the most popular given names."
-msgstr "Une liste des prénoms les plus populaires."
+msgstr "Une liste des prénoms les plus fréquents."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:47
 msgid "A list of the most popular surnames."
-msgstr "Une liste des noms de famille les plus populaires."
+msgstr "Une liste des noms de famille les plus fréquents."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:46
@@ -14614,7 +14614,7 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Les %s prénoms les plus populaires"
+msgstr[0] "Les %s prénoms les plus fréquents"
 msgstr[1] "Les %s prénoms les plus populaires"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14622,8 +14622,8 @@ msgstr[1] "Les %s prénoms les plus populaires"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Le %s nom de famille le plus populaire"
-msgstr[1] "Les %s noms de familles les plus populaires"
+msgstr[0] "Le %s nom de famille le plus fréquent"
+msgstr[1] "Les %s noms de familles les plus fréquents"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:72
@@ -14642,7 +14642,7 @@ msgstr "[sommaire]"
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:95
 msgid "Top surname"
-msgstr "Le nom de famille le plus populaire"
+msgstr "Le nom de famille le plus fréquent"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:38 statistics.php:208

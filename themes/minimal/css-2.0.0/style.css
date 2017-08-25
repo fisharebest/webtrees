@@ -29,6 +29,10 @@
     padding-right: 5px;
 }
 
+table {
+	border-collapse: separate;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -246,6 +250,10 @@
 
 .wt-block-header {
 	background-color: #fff;
+}
+
+.wt-block-content {
+	overflow: auto;
 }
 
 /*
@@ -621,6 +629,11 @@
 
 	border: solid #000 1px;
 	padding: 4px;
+}
+
+.quickfacts a {
+	font-size: .75rem;
+	padding: 0 3px;
 }
 
 /* login.php */
@@ -2762,6 +2775,7 @@ div.faq_body {
 
 .optionbox, .descriptionbox {
 	border: solid #000 1px;
+	vertical-align: top;
 	padding: 3px;
 }
 

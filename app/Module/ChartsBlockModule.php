@@ -88,7 +88,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-				$content .= '<td>';
+				$content .= '<td class="myCharts">';
 				ob_start();
 				FunctionsPrint::printPedigreePerson($person);
 				$content .= ob_get_clean();

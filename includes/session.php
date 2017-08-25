@@ -125,8 +125,8 @@ date_default_timezone_set('UTC');
 $request = Request::createFromGlobals();
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
-// Remove any PHP script name
-$base_uri = preg_replace('/[^\/]+$/', '', $request_uri);
+// Remove any PHP script name and parameters.
+$base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
 define('WT_BASE_URL', $base_uri);
 
 // What is the name of the requested script.

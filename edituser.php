@@ -90,7 +90,7 @@ if ($action !== '' && Filter::checkCsrf()) {
 		break;
 	}
 
-	header('Location: edit_user.php');
+	header('Location: edituser.php');
 
 	return;
 }

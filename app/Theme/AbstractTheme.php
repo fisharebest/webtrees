@@ -49,6 +49,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpFoundation\Request;
 use stdClass;
 
 /**
@@ -109,6 +110,9 @@ abstract class AbstractTheme {
 		'help'    => 'fa fa-info-circle',
 		'search'  => 'fa fa-search',
 	];
+
+	/** @var  Request */
+	protected $request;
 
 	/** @var Tree */
 	protected $tree;
@@ -1110,6 +1114,7 @@ abstract class AbstractTheme {
 	 * @param Tree|null $tree The current tree (if there is one).
 	 */
 	final public function init(Tree $tree = null) {
+		$this->request  = Request::createFromGlobals();
 		$this->tree     = $tree;
 		$this->tree_url = $tree ? 'ged=' . $tree->getNameUrl() : '';
 
@@ -1756,7 +1761,14 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$menu = new Menu(I18N::translate('Pending changes'), 'edit_changes.php', 'menu-pending');
+			$url = Html::url('edit_changes.php', [
+				'ged' => $this->tree ? $this->tree->getName() : '',
+				'url' => $this->request->getRequestUri()
+			]);
+
+			$url = Html::escape($url);
+
+			$menu = new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
 
 			return $menu;
 		} else {

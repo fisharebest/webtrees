@@ -16,9 +16,6 @@
 /* The colors theme */
 
 /* Override Bootstrap formatting */
-h2::first-letter {
-    margin-top: 0;
-}
 
 .table-given-name {
     overflow-x: hidden;
@@ -62,6 +59,10 @@ h2::first-letter {
 .container-fluid {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+table {
+	border-collapse: separate;
 }
 
 /*
@@ -1115,10 +1116,6 @@ table.center {
 	white-space: normal;
 }
 
-.facts_table .optionbox {
-	white-space: normal;
-}
-
 div.fact_SHARED_NOTE {
 	clear: both;
 }
@@ -1492,14 +1489,16 @@ a:hover .nameZoom {
 }
 
 .descriptionbox {
-	font-size: 12px;
+	font-size: 1rem;
+	color: #333;
 	border: 1px solid #999;
 	vertical-align: top;
 	padding: 3px;
 }
 
 .optionbox {
-	font-size: 12px;
+	font-size: 1rem;
+	color: #333;
 	border: 1px solid #999;
 	vertical-align: top;
 	white-space: nowrap;
@@ -3291,7 +3290,7 @@ div.faq_body {
 }
 
 #familybook_chart h3 {
-	color: #006;
+	color: #333;
 	font-size: 16px;
 	text-align: center;
 }

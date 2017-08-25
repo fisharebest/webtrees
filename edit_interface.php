@@ -1405,7 +1405,7 @@ case 'linkspouse':
 	// Link and individual to an existing individual as a spouse
 	//////////////////////////////////////////////////////////////////////////////
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
-	$xref     = Filter::get('xref', WT_REGEX_XREF);
+	$xref   = Filter::get('xref', WT_REGEX_XREF);
 
 	$person = Individual::getInstance($xref, $controller->tree());
 	check_record_access($person);
@@ -1430,38 +1430,28 @@ case 'linkspouse':
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<input type="hidden" name="famtag" value="<?= $famtag ?>">
 		<?= Filter::getCsrf() ?>
-		<table class="facts_table">
-			<tr>
-				<td class="facts_label">
-					<?= $label ?>
-				</td>
-				<td class="facts_value">
-					<input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">
-				</td>
-			</tr>
-			<?php FunctionsEdit::addSimpleTag('0 MARR Y') ?>
-			<?php FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
-			<?php FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
-			<?= keep_chan($person) ?>
-		</table>
-		<?php FunctionsEdit::printAddLayer('SOUR') ?>
-		<?php FunctionsEdit::printAddLayer('OBJE') ?>
-		<?php FunctionsEdit::printAddLayer('NOTE') ?>
-		<?php FunctionsEdit::printAddLayer('SHARED_NOTE') ?>
-		<?php FunctionsEdit::printAddLayer('ASSO') ?>
-		<?php FunctionsEdit::printAddLayer('ASSO2') ?>
-		<?php FunctionsEdit::printAddLayer('RESN') ?>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="spouse">
+				<?= $label ?>
+			</label>
+			<div class="col-sm-9">
+				<?= FunctionsEdit::formControlIndividual(null, ['id' => 'spouse', 'name' => 'spid']) ?>
+			</div>
+		</div>
+
+		<?php FunctionsEdit::addSimpleTag('0 MARR Y') ?>
+		<?php FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
+		<?php FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
+
 		<div class="row form-group">
 			<div class="col-sm-9 offset-sm-3">
 				<button class="btn btn-primary" type="submit">
 					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
+					<?= /* I18N: A button label. */ I18N::translate('save') ?>
 				</button>
 				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
+					<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 				</a>
 			</div>
 		</div>
