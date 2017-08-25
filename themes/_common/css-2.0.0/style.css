@@ -186,6 +186,11 @@ h2::first-letter {
  *  	Hourglass chart
  *
  * */
+/* My Page Charts */
+
+.myCharts {
+	position: relative;
+}
 
 /* Ascentors */
 .wt-ancestors-chart .linea1 {margin-bottom: 4px;}
@@ -289,9 +294,6 @@ h2::first-letter {
 	line-height: 1.0;
 }
 
-.card-block .hourglassChart {
-	position: relative;
-}
 /*
  * Hourglass chart
  *
