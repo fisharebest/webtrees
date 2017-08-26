@@ -85,7 +85,7 @@ echo Bootstrap4::breadcrumbs([
 										<?= $tree->getTitleHtml() ?>
 									</td>
 									<td>
-										<?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->getAccessLevel($tree, 'block'), ['name' => 'access-' . $module->getName() . '-' . $tree->getTreeId()]) ?>
+										<?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->getAccessLevel($tree, 'report'), ['name' => 'access-' . $module->getName() . '-' . $tree->getTreeId()]) ?>
 									</td>
 								</tr>
 							<?php endforeach ?>
