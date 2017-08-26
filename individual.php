@@ -157,7 +157,7 @@ tab.tab("show");
 		</div>
 
 		<div id="individual-tabs">
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs flex-wrap">
 				<?php foreach ($controller->getTabs() as $tab): ?>
 					<li class="nav-item">
 						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
