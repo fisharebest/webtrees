@@ -172,6 +172,19 @@ class FunctionsPrintFacts {
 			echo Theme::theme()->icon($fact), ' ';
 		}
 
+		switch ($fact->getTag()) {
+		case '_BIRT_CHIL':
+			$children[$fact->getParent()->getXref()] = true;
+			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($children));
+			break;
+		case '_BIRT_GCHI':
+		case '_BIRT_GCH1':
+		case '_BIRT_GCH2':
+			$grandchildren[$fact->getParent()->getXref()] = true;
+			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($grandchildren));
+			break;
+		}
+
 		if ($fact->getFactId() != 'histo' && $fact->canEdit()) {
 			?>
 			<?= $label ?>
@@ -187,20 +200,6 @@ class FunctionsPrintFacts {
 		<?php
 		} else {
 			echo $label;
-		}
-
-		switch ($fact->getTag()) {
-		case '_BIRT_CHIL':
-			$children[$fact->getParent()->getXref()] = true;
-			echo '<br>', /* I18N: Abbreviation for "number %s" */
-			I18N::translate('#%s', count($children));
-			break;
-		case '_BIRT_GCHI':
-		case '_BIRT_GCH1':
-		case '_BIRT_GCH2':
-			$grandchildren[$fact->getParent()->getXref()] = true;
-			echo '<br>', I18N::translate('#%s', count($grandchildren));
-			break;
 		}
 
 		echo '</td><td class="optionbox ', $styleadd, ' wrap">';
