@@ -82,9 +82,20 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 						foreach (Tree::getAll() as $tree) {
 							if ($tree->hasPendingEdit() && Auth::isManager($tree, $user)) {
 								I18N::init($user->getPreference('language'));
-								Mail::systemMessage(
-									$tree,
+
+								$sender = new User(
+									(object) [
+										'user_id'   => null,
+										'user_name' => '',
+										'real_name' => $WT_TREE->getTitle(),
+										'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+									]
+								);
+
+								Mail::send(
+									$sender,
 									$user,
+									$sender,
 									I18N::translate('Pending changes'),
 									View::make('emails/pending-changes-text', ['tree' => $tree, 'user' => $user]),
 									View::make('emails/pending-changes-html', ['tree' => $tree, 'user' => $user])
