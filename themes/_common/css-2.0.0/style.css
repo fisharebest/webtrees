@@ -18,7 +18,7 @@
 	height: auto;
 }
 
-/* Kack for fixing bootstrap print problem */
+/* Hack for fixing bootstrap print problem */
 h2::first-letter {
     margin-top: 0;
 }
@@ -141,6 +141,11 @@ h2::first-letter {
 .wt-cookie-warning {
 }
 
+.wt-block-content-charts-block {
+    display: flex;
+    flex-flow: row-reverse;
+}
+
 /*
  * The home/my pages
  *
@@ -229,7 +234,6 @@ h2::first-letter {
 .wt-ancestors-chart .family-break { 
 	page-break-before: always;
 }
-
 
 /*
  * Compact chart
