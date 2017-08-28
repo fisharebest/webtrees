@@ -138,8 +138,9 @@
 }
 
 .wt-block-content-charts-block {
-    display: flex;
-    flex-flow: row-reverse;
+	display: flex;
+    flex-flow: column-reverse;
+    overflow: auto;
 }
 
 /*
