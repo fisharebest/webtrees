@@ -59,7 +59,7 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-descendants-chart hidden-print">
+<form class="wt-page-options wt-page-options-descendants-chart d-print-none">
 	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
 	<div class="row form-group">

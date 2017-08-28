@@ -993,7 +993,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	<div id="pedigreemap-page">
 		<h2><?= $controller->getPageTitle() ?></h2>
 
-		<form class="wt-page-options wt-page-options-pedigree-map hidden-print">
+		<form class="wt-page-options wt-page-options-pedigree-map d-print-none">
 			<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">

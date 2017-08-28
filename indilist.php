@@ -121,7 +121,7 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= I18N::translate('Individuals') ?></h2>
 
-<div class="wt-page-options wt-page-options-individual-list hidden-print">
+<div class="wt-page-options wt-page-options-individual-list d-print-none">
 	<ul class="wt-initials-list">
 
 	<?php

@@ -52,7 +52,7 @@ if ($person1 && $person2) {
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-relationships-chart hidden-print">
+<form class="wt-page-options wt-page-options-relationships-chart d-print-none">
 	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
 	<div class="row form-group">
