@@ -18,6 +18,16 @@
 	height: auto;
 }
 
+.card-block {
+	padding: 1.25rem;
+}
+
+.table-responsive {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+}
+
 /*
  * Pages have the following high-level structure:
  *
