@@ -35,10 +35,10 @@ define('WT_VERSION', '2.0.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
-define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
+define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
 define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
 define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
-define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js');
+define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js');
 define('WT_BOOTSTRAP_RTL_CSS_URL', 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
 define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.15/jquery.dataTables.min.js');
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
@@ -46,10 +46,10 @@ define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.15/dataTables
 define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
 define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
 define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
-define('WT_POPPER_JS_URL', 'packages/popper-1.11.0/popper.min.js');
 define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
 define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
 define('WT_SORTABLE_JS_URL', 'packages/rubaxa-sortable-1.4.0/Sortable.min.js');
+define('WT_TETHER_JS_URL', 'packages/tether-1.4.0/tether.min.js');
 // Note: these have been patched.
 define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-2.0.0.js');
