@@ -330,7 +330,6 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .wt-block-content {
-	overflow: auto;
 }
 
 .wt-accessibility-links {

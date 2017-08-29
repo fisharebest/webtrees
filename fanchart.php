@@ -74,7 +74,7 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-fan-chart hidden-print">
+<form class="wt-page-options wt-page-options-fan-chart d-print-none">
 	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 
 	<div class="row form-group">

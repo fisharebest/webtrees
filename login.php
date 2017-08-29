@@ -243,9 +243,19 @@ case 'requestpw':
 		$user->setPassword($user_new_pw);
 		Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
 
-		Mail::systemMessage(
-			$WT_TREE,
+		$sender = new User(
+			(object) [
+				'user_id'   => null,
+				'user_name' => '',
+				'real_name' => $WT_TREE->getTitle(),
+				'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+			]
+		);
+
+		Mail::send(
+			$sender,
 			$user,
+			$sender,
 			I18N::translate('Lost password request'),
 			View::make('emails/password-reset-text', ['user' => $user, 'new_password' => $user_new_pw]),
 			View::make('emails/password-reset-html', ['user' => $user, 'new_password' => $user_new_pw])

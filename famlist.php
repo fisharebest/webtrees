@@ -121,7 +121,7 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= I18N::translate('Families') ?></h2>
 
-<div class="wt-page-options wt-page-options-family-list hidden-print">
+<div class="wt-page-options wt-page-options-family-list d-print-none">
 	<ul class="wt-initials-list">
 
 	<?php

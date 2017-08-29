@@ -67,7 +67,7 @@ $medialist = QueryMedia::mediaList(
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-media-list hidden-print">
+<form class="wt-page-options wt-page-options-media-list d-print-none">
 	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">

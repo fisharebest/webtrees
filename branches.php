@@ -28,7 +28,7 @@ $controller->pageHeader();
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-branches hidden-print">
+<form class="wt-page-options wt-page-options-branches d-print-none">
 	<input type="hidden" name="ged" id="ged" value="<?= $WT_TREE->getNameHtml() ?>">
 	<div class="form-group row">
 		<label class="col-form-label col-sm-3 wt-page-options-label" for="surname">

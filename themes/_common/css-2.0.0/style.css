@@ -18,9 +18,14 @@
 	height: auto;
 }
 
-/* Kack for fixing bootstrap print problem */
-h2::first-letter {
-    margin-top: 0;
+.card-block {
+	padding: 1.25rem;
+}
+
+.table-responsive {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
 }
 
 /*
@@ -92,6 +97,7 @@ h2::first-letter {
 }
 
 .wt-secondary-menu {
+	flex-wrap: nowrap;
 }
 
 .wt-primary-navigation {
@@ -139,6 +145,12 @@ h2::first-letter {
 }
 
 .wt-cookie-warning {
+}
+
+.wt-block-content-charts-block {
+	display: flex;
+    flex-flow: column-reverse;
+    overflow: auto;
 }
 
 /*
@@ -229,7 +241,6 @@ h2::first-letter {
 .wt-ancestors-chart .family-break { 
 	page-break-before: always;
 }
-
 
 /*
  * Compact chart
