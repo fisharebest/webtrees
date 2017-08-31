@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-08-30 22:15+0000\n"
+"PO-Revision-Date: 2017-08-31 23:16+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -3392,7 +3392,6 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
-#, fuzzy
 msgid "Cebu City, Philippines"
 msgstr "Cebu City, Filipinas"
 
@@ -6344,7 +6343,7 @@ msgstr "Koluka mikangano mya pɛnɛpɛnɛ"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr "Koluka moto óyo azalí na mokangano tɛ́"
+msgstr "Koluka bato bazalí na mikangano tɛ́"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -8418,7 +8417,6 @@ msgstr "Madagasikari"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:227
-#, fuzzy
 msgid "Madrid, Spain"
 msgstr "Madrid, Espania"
 
@@ -11536,7 +11534,7 @@ msgstr ""
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
-msgstr ""
+msgstr "Kokitinya na"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 msgid "Replacement text"
@@ -11907,7 +11905,7 @@ msgstr "Koluka"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
 msgid "Search and replace"
-msgstr "Koluka mpé kobóngola"
+msgstr "Koluka mpé  kokitinya"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
@@ -14844,7 +14842,6 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:371
-#, fuzzy
 msgid "Tokyo, Japan"
 msgstr "Tokyo, Zapɔ́"
 
@@ -18792,25 +18789,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "mikɔlɔ mya kobakisa"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "mikɔlɔ mya kobakisa"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "mikɔlɔ mya kobakisa"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "mikɔlɔ mya kobakisa"
 
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
@@ -18825,7 +18822,7 @@ msgstr "nsúka"
 #. I18N: A button label (a verb).
 #: inverselink.php:152
 msgid "link"
-msgstr ""
+msgstr "kangisá"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:144
@@ -18839,7 +18836,7 @@ msgstr "molɔ́ngɔ́"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "nkómbó ya bonzéngá"
 
 #: admin_trees_config.php:469
 msgid "managers"
@@ -18848,7 +18845,7 @@ msgstr "bayángeli"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr ",bokitisi"
 
 #: app/Stats.php:2912
 msgid "marriage"
@@ -18857,12 +18854,12 @@ msgstr "libála"
 #: modules_v3/descendancy_report/report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "abálá"
 
 #: modules_v3/descendancy_report/report.xml:176
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "abálá"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
@@ -18903,7 +18900,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:361
 msgid "maximum"
-msgstr ""
+msgstr "ya nsúka"
 
 #: app/Module/RecentChangesModule.php:149
 #: app/Module/UpcomingAnniversariesModule.php:150
@@ -18911,8 +18908,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "nsúka mokɔlɔ %s"
+msgstr[1] "nsúka mikɔlɔ %s"
 
 #: admin_trees_config.php:364 admin_trees_config.php:388
 #: admin_trees_config.php:428 admin_trees_config.php:468
@@ -18928,11 +18925,11 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:167
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: app/Module/GoogleMapsModule.php:355
 msgid "minimum"
-msgstr ""
+msgstr "ya mokɛ́"
 
 #: statisticsplot.php:875 statisticsplot.php:925 statisticsplot.php:979
 #: statisticsplot.php:1029 statisticsplot.php:1083
@@ -18974,47 +18971,47 @@ msgstr "mamá/tatá bokiló"
 #: app/Functions/Functions.php:810
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "mwǎna nkána mobáli"
+msgstr "mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:914
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "mwǎna nkána mobáli"
+msgstr "mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:924
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "mwǎna nkána mobáli"
+msgstr "mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:1002
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
+msgstr "sɛmɛ́ki mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:1262
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
+msgstr "sɛmɛ́ki mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:1304
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "sɛmɛ́ki mwǎna wa nkána mobáli"
+msgstr "sɛmɛ́ki mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:806
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "mwǎna nkána mobáli/mwǎsí"
+msgstr "mwǎna-nkána mobáli/mwǎsí"
 
 #: app/Functions/Functions.php:910
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "mwǎna nkána mobáli/mwǎsí"
+msgstr "mwǎna-nkána mobáli/mwǎsí"
 
 #: app/Functions/Functions.php:918
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "mwǎna nkána mobáli/mwǎsí"
+msgstr "mwǎna-nkána mobáli/mwǎsí"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
@@ -19029,32 +19026,32 @@ msgstr "óy'elándí"
 #: app/Functions/Functions.php:808
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "mwǎna nkána mobáli"
+msgstr "mwǎna-nkána mobáli"
 
 #: app/Functions/Functions.php:912
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr "mwǎna nkána mwǎsí"
+msgstr "mwǎna-nkána mwǎsí"
 
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr "mwǎna nkána mwǎsí"
+msgstr "mwǎna-nkána mwǎsí"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
+msgstr "sɛmɛ́ki mwǎna-nkána mwǎsí"
 
 #: app/Functions/Functions.php:1272
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
+msgstr "sɛmɛ́ki mwǎna-nkána mwǎsí"
 
 #: app/Functions/Functions.php:1336
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr "sɛmɛ́ki mwǎna nkána mwǎsí"
+msgstr "sɛmɛ́ki mwǎna-nkána mwǎsí"
 
 #: app/Functions/Functions.php:571
 msgid "ninth cousin"
@@ -19102,7 +19099,7 @@ msgstr "elɔ́kɔ tɛ́"
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:87
 msgid "noon"
-msgstr ""
+msgstr "nzánga"
 
 #: app/Module/GoogleMapsModule.php:3361
 msgid "north"
@@ -19166,7 +19163,7 @@ msgstr ""
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "ya botatá"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
@@ -19236,18 +19233,18 @@ msgstr ""
 #: note.php:53 repo.php:52 source.php:52
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "kobóya"
 
 #: family.php:41 gedrecord.php:54 individual.php:55 mediaviewer.php:42
 #: note.php:43 repo.php:42 source.php:42
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "kobóya"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "ebóyámí"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
@@ -19269,7 +19266,7 @@ msgstr ""
 #. I18N: A button label.
 #: search.php:217
 msgid "replace"
-msgstr ""
+msgstr "kitinyá"
 
 #. I18N: a program feature
 #: setup.php:136 setup.php:137
@@ -19315,7 +19312,7 @@ msgstr "bátelá"
 #: medialist.php:193 modules_v3/GEDFact_assistant/census/census-edit.php:110
 #: search.php:143 search.php:185 search.php:300 search_advanced.php:288
 msgid "search"
-msgstr "luká"
+msgstr "boluki"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:637
@@ -19502,7 +19499,7 @@ msgstr "Kopɔnɔ elɔ́kɔ tɛ́"
 
 #: app/Functions/Functions.php:684
 msgid "self"
-msgstr ""
+msgstr "yě"
 
 #: app/Functions/Functions.php:567
 msgid "seventh cousin"
@@ -19522,7 +19519,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa nsambo"
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
 #: app/Module/GoogleMapsModule.php:342 app/Module/StoriesModule.php:361
 msgid "show"
-msgstr ""
+msgstr "tálá"
 
 #: statistics.php:765
 msgid "show the chart"
@@ -19717,17 +19714,17 @@ msgstr "ssl"
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr "ndeko ikɛ́ mobáli"
+msgstr "ndeko-ikɛ́ mobáli"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr "ndeko ikɛ́ mobáli"
+msgstr "ndeko-ikɛ́ mobáli"
 
 #: app/Functions/Functions.php:1250
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr "ndeko ikɛ́ mobáli"
+msgstr "ndeko-ikɛ́ mobáli"
 
 #: app/Functions/Functions.php:856
 msgctxt "husband’s child"
@@ -19929,7 +19926,7 @@ msgstr "tls"
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "na %s"
 
 #: app/Functions/Functions.php:577
 msgid "twelfth cousin"
@@ -19948,7 +19945,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi na míbalé"
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
-msgstr "lipása mobáli"
+msgstr "ndeko lipása mobáli"
 
 #: app/Functions/Functions.php:793
 msgid "twin sibling"
@@ -20016,12 +20013,12 @@ msgstr ""
 #. I18N: A button label.
 #: admin_trees_places.php:109
 msgid "update"
-msgstr "kotiya ya sika"
+msgstr "Tiyá ya sika"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4062
 msgid "upload"
-msgstr "kotiya nkásá"
+msgstr ""
 
 #. I18N: A button label.
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:738 branches.php:49
