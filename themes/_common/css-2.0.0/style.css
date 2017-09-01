@@ -13,6 +13,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+ .wt-page-options {
+    flex: 1 1 0;
+    padding: 1rem 0;
+
+ }
+ /* list options 
+.wt-initials-list {
+	display: inline!important;
+}
+*/
  /* Override Bootstrap formatting */
  .row .select2-selection--single {
 	height: auto;
@@ -24,8 +34,39 @@
 
 .table-responsive {
     display: block;
-    overflow-x: auto;
+    overflow: auto;
     width: 100%;
+}
+
+/* Mobile device enhancements */
+/* -- home page scrolling */
+
+.nav {
+	display: flex;
+    flex-wrap: wrap;
+}
+.wt-main-container .row {
+	flex-wrap: wrap;
+	margin: 0;
+}
+
+.wt-side-blocks .card {
+	display: flex;
+	overflow: auto;
+}
+
+.wt-main-container .row .wt-block-content {
+	padding: .25rem;
+}
+
+.wt-side-blocks .dataTables_wrapper div[class*='col']  {
+	padding: 0;
+}
+
+/* -- chart page scrolling */
+.wt-chart {
+	position: relative;
+	padding: .25rem;
 }
 
 /*
@@ -147,12 +188,6 @@
 .wt-cookie-warning {
 }
 
-.wt-block-content-charts-block {
-	display: flex;
-    flex-flow: column-reverse;
-    overflow: auto;
-}
-
 /*
  * The home/my pages
  *
@@ -171,6 +206,17 @@
  * +---wt-block-header, wt-block-header-XXX
  * +---wt-block-content, wt-block-content-XXX
  */
+
+ /* my page chart enhancements */
+.wt-block-content-charts-block {
+	display: flex;
+    flex-flow: column-reverse;
+    overflow: auto;
+}
+
+.wt-block-content-todays-events-block {
+	padding: .25rem;
+}
 
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
@@ -545,4 +591,9 @@ fieldset.row > legend, fieldset.row > div {
 	#individual-tabs .nav-link {
 		padding: .5em;
 	}
+	
+.col-form-label,
+.col-form-legend {
+	text-align: center;
+}
 }
