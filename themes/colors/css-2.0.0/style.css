@@ -13,6 +13,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+.wt-page-options p   {padding: 0 5px;}
+
 /* The colors theme */
 
 /* Override Bootstrap formatting */
@@ -63,6 +65,16 @@
 
 table {
 	border-collapse: separate;
+}
+
+/* fit primary and secondary menus on mobile devices */
+@media (max-width: 500px) {
+	.wt-primary-menu .nav-item {
+    padding: 0 0.45rem!important;
+    }
+    .wt-secondary-menu .nav-link {
+	padding: 0.25rem!important;
+	}
 }
 
 /*
