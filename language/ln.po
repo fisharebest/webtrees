@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-31 23:16+0000\n"
+"PO-Revision-Date: 2017-09-02 22:31+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " kasi makákoli mazalí tɛ́"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -412,13 +412,13 @@ msgstr "%s na bolongoli misáto na nsé"
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s na bolongoli mibalé o likoló"
+msgstr "%s na bolongoli míbalé o likoló"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s na bolongoli mibalé na nsé"
+msgstr "%s na bolongoli míbalé na nsé"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:263
@@ -828,12 +828,12 @@ msgstr "Molɔ́ngɔ́ mwa nkómbó ya libótá kolúta."
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:46
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Molɔngɔ́ mwa nkásá iye etálámí mbala mingi kolúta."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Molɔngɔ́ mwa basáleli mpé batáli baye bazali na etando."
 
 #: help_text.php:243
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -895,7 +895,7 @@ msgstr "Mbándo ya  moto mɔ̌kɔ́, na loléngé lya likákoli."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Mbándo ya makambo masímbámí na ebandela mɔ̌kɔ́."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -951,7 +951,7 @@ msgstr "Mbándo ya bato baye bazalí na mokangano na moto mɔ̌kɔ́."
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Mbándo ya nsango epésámí na ebandela."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
@@ -997,7 +997,7 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Etánda ikotálisa mikangano mya pɛnɛ na moto."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:40
@@ -1007,17 +1007,17 @@ msgstr "Etánda ikotálisa makambo mpé milúlú mya moto."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Etánda ikotálisa bilɔ́kɔ bya bopanzi nsango ya moto."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Etánda ikotálisa nkomá ya moto."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:38
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Etánda ikotálisa bibandela bya moto."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1036,7 +1036,7 @@ msgstr ""
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:100
 msgid "A.M."
-msgstr ""
+msgstr "Ntɔ́ngɔ́"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -5482,17 +5482,17 @@ msgstr "Botíki ekólo"
 
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Employee"
-msgstr ""
+msgstr "Mosáli"
 
 #: app/GedcomCode/GedcomCodeRela.php:105
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr ""
+msgstr "Mosáli"
 
 #: app/GedcomCode/GedcomCodeRela.php:103
 msgctxt "MALE"
 msgid "Employee"
-msgstr ""
+msgstr "Mosáli"
 
 #: app/GedcomCode/GedcomCodeRela.php:116 app/GedcomTag.php:457
 #: app/GedcomTag.php:512
@@ -10264,7 +10264,7 @@ msgstr ""
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:106
 msgid "P.M."
-msgstr ""
+msgstr "Mpókwa"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
@@ -11836,11 +11836,11 @@ msgstr ""
 
 #: statistics.php:587 statistics.php:605 statistics.php:620
 msgid "Select the desired age interval"
-msgstr "Kopɔnɔ káti ya dáti mibalé"
+msgstr "Kopɔnɔ káti ya dáti míbalé"
 
 #: statistics.php:641
 msgid "Select the desired count interval"
-msgstr "Kopɔnɔ káti ya mitángo mibalé"
+msgstr "Kopɔnɔ káti ya mitángo míbalé"
 
 #: admin_site_merge.php:192
 msgid "Select the facts and events to keep from both records."
@@ -13153,7 +13153,7 @@ msgstr ""
 
 #: admin_module_tabs.php:85 admin_modules.php:203
 msgid "Tab"
-msgstr ""
+msgstr "Etánda"
 
 #: setup.php:376
 msgid "Table prefix"
@@ -18794,7 +18794,7 @@ msgstr "mobimba"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:90
 msgid "p.m."
-msgstr ""
+msgstr "mpókwa"
 
 #: app/Functions/Functions.php:691
 msgid "parent"
@@ -18965,169 +18965,169 @@ msgstr "boluki"
 #: app/Functions/Functions.php:637
 #, php-format
 msgid "second %s"
-msgstr "%s wa mibalé"
+msgstr "%s wa míbalé"
 
 #: app/Functions/Functions.php:622
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr "%s wa mibalé"
+msgstr "%s wa míbalé"
 
 #: app/Functions/Functions.php:607
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr "%s wa mibalé"
+msgstr "%s wa míbalé"
 
 #: app/Functions/Functions.php:557
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1477
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1479
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1489
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1491
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1487
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1483
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1499
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1495
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1511
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1507
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1503
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1517
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1513
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1515
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1529
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1525
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1527
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1523
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1519
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr "mwǎna-nɔ́kɔ́ wa mibalé"
+msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
