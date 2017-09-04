@@ -101,7 +101,7 @@ class PageController extends BaseController {
 		echo
 			Theme::theme()->footerContainer() .
 			'<script src="' . WT_JQUERY_JS_URL . '"></script>' .
-			'<script src="' . WT_POPPER_JS_URL . '"></script>' .
+			'<script src="' . WT_TETHER_JS_URL . '"></script>' .
 			'<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>' .
 			'<script src="' . WT_DATATABLES_JS_URL . '"></script>' .
 			'<script src="' . WT_DATATABLES_BOOTSTRAP_JS_URL . '"></script>' .
