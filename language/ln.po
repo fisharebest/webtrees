@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-02 22:31+0000\n"
+"PO-Revision-Date: 2017-09-04 15:06+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -2637,7 +2637,7 @@ msgstr ""
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
 msgid "Binary data object"
-msgstr ""
+msgstr "elɔ́kɔ ya epɛ́sɛli \"Binary\""
 
 #: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
@@ -3796,7 +3796,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Kokɔ́mbɔ etúka ya bipɛ́sɛli"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -4126,7 +4126,7 @@ msgstr "Kokela liyémi lya yɔ̌ mɔ̌kɔ́"
 
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Kokela, kotíya ya sika mpé kozíma nzeté ya libótá mpɔ̂ na kásá-kásá nyɔ́nsɔ ya GEDCOM na káti etúka ya epɛ́sɛli."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4343,12 +4343,12 @@ msgstr ""
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:390 app/GedcomTag.php:342
 msgid "Data"
-msgstr ""
+msgstr "Epɛ́sɛli"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:181
 msgid "Data folder"
-msgstr ""
+msgstr "Etúka ya epɛ́sɛli"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -5764,7 +5764,7 @@ msgstr "Kolongola bato baye bazálí na nkómbó ya libála lya %s"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "Kolongola bitúka bya káti"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -6405,7 +6405,7 @@ msgstr ""
 
 #: medialist.php:91
 msgid "Folder"
-msgstr ""
+msgstr "Etúka"
 
 #: addmedia.php:513 admin_media_upload.php:234
 msgid "Folder name on server"
