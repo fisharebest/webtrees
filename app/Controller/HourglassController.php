@@ -97,23 +97,23 @@ class HourglassController extends ChartController {
 		//This allows vertical line spacing to be consistent
 		//
 		if (count($person->getChildFamilies()) == 0) {
-			echo '<table><tr><td>' . $this->printEmptyBox() . '</td>';
-			echo '<td>';
+			echo '<table><tr><td> ' . $this->printEmptyBox() . '</td>';
+			echo '<td> ';
 			// Recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td></tr>';
-			echo '<tr><td>' . $this->printEmptyBox() . '</td>';
-			echo '<td>';
+			echo '<tr><td> ' . $this->printEmptyBox() . '</td>';
+			echo '<td> ';
 			// Recursively get the mother’s family
 			$this->printPersonPedigree($person, $count + 1);
-			echo '</td><td></tr></table>';
+			echo '</td><td> </tr></table>';
 		}
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table cellspacing="0" cellpadding="0" border="0"  class="hourglassChart">';
 			echo '<tr>';
 			echo '<td style="vertical-align:bottom"><img class="line3 pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
-			echo '<td><img class="lineh2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
-			echo '<td>';
+			echo '<td> <img class="lineh2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
+			echo '<td class="myCharts"> ';
 			//-- print the father box
 			FunctionsPrint::printPedigreePerson($family->getHusband());
 			echo '</td>';
@@ -129,7 +129,7 @@ class HourglassController extends ChartController {
 				$this->printPersonPedigree($family->getHusband(), $count + 1);
 				echo '</td>';
 			} else {
-				echo '<td>';
+				echo '<td> ';
 				if ($count < $genoffset - 1) {
 					echo '<table>';
 					for ($i = $count; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 2; $i++) {
@@ -144,8 +144,8 @@ class HourglassController extends ChartController {
 			echo
 			'</tr><tr>',
 			"<td style='vertical-align:top'><img class='pvline' src='" . Theme::theme()->parameter('image-vline') . "' width='3' alt=''></td>",
-				'<td><img class="lineh3" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
-			'<td>';
+				'<td> <img class="lineh3" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
+			'<td class="myCharts"> ';
 			//-- print the mother box
 			FunctionsPrint::printPedigreePerson($family->getWife());
 			echo '</td>';
@@ -252,7 +252,7 @@ class HourglassController extends ChartController {
 				echo '</table>';
 			}
 			echo '</td>';
-			echo '<td width="', $this->getBoxDimensions()->width, '">';
+			echo '<td class="myCharts" width="', $this->getBoxDimensions()->width, '">';
 		}
 
 		// Print the descendency expansion arrow
@@ -278,9 +278,9 @@ class HourglassController extends ChartController {
 			}
 		}
 
-		echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td>';
+		echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td> ';
 		FunctionsPrint::printPedigreePerson($person);
-		echo '</td><td><img class="lineh1" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
+		echo '</td><td> <img class="lineh1" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
@@ -288,7 +288,7 @@ class HourglassController extends ChartController {
 				echo "</td></tr><tr><td style='text-align:$otablealign'>";
 				FunctionsPrint::printPedigreePerson($family->getSpouse($person));
 				$numkids++;
-				echo '</td><td></td>';
+				echo '</td><td> </td>';
 			}
 			//-- add offset divs to make things line up better
 			if ($count == $this->dgenerations) {
@@ -312,7 +312,7 @@ class HourglassController extends ChartController {
 					echo '<div class="center" id="childarrow" style="position:absolute; width:', $this->getBoxDimensions()->width, 'px;">';
 					echo '<a href="#" class="icon-darrow"></a>';
 					echo '<div id="childbox">';
-					echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td>';
+					echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';
 
 					foreach ($famids as $family) {
 						echo "<span class='name1'>" . I18N::translate('Family') . '</span>';

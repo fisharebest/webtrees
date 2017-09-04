@@ -34,7 +34,7 @@
 								<label class="form-check-label">
 									<input class="form-check-input" type="radio" name="auto" value="0" checked>
 									<span class="input-group">
-												<input class="form-control" type="text" placeholder="<?= I18N::translate('Folder name on server') ?>">
+												<input class="form-control" type="text" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder">
 												<span class="input-group-addon">/</span>
 												<input class="form-control" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>">
 											</span>

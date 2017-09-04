@@ -130,7 +130,12 @@ class BranchesController extends PageController {
 		foreach ($rows as $row) {
 			$this->individuals[] = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
 		}
+
 		// Sort by birth date, oldest first
+		foreach ($this->individuals as $individual) {
+			// Workaround: PHP 5.6 triggers PHP warning "Array was modified by the user comparison function".
+			$individual->getEstimatedBirthDate();
+		}
 		usort($this->individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');
 	}
 

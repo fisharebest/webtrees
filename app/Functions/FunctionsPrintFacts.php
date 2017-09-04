@@ -56,7 +56,8 @@ class FunctionsPrintFacts {
 	 * @param GedcomRecord $record
 	 */
 	public static function printFact(Fact $fact, GedcomRecord $record) {
-		static $n_chil = 0, $n_gchi = 0;
+		// Keep a track of children and grandchildren, so we can display their birth order "#1", "#2", etc.
+		static $children = [], $grandchildren = [];
 
 		$parent = $fact->getParent();
 
@@ -171,6 +172,19 @@ class FunctionsPrintFacts {
 			echo Theme::theme()->icon($fact), ' ';
 		}
 
+		switch ($fact->getTag()) {
+		case '_BIRT_CHIL':
+			$children[$fact->getParent()->getXref()] = true;
+			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($children));
+			break;
+		case '_BIRT_GCHI':
+		case '_BIRT_GCH1':
+		case '_BIRT_GCH2':
+			$grandchildren[$fact->getParent()->getXref()] = true;
+			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($grandchildren));
+			break;
+		}
+
 		if ($fact->getFactId() != 'histo' && $fact->canEdit()) {
 			?>
 			<?= $label ?>
@@ -186,18 +200,6 @@ class FunctionsPrintFacts {
 		<?php
 		} else {
 			echo $label;
-		}
-
-		switch ($fact->getTag()) {
-		case '_BIRT_CHIL':
-			echo '<br>', /* I18N: Abbreviation for "number %s" */
-			I18N::translate('#%s', ++$n_chil);
-			break;
-		case '_BIRT_GCHI':
-		case '_BIRT_GCH1':
-		case '_BIRT_GCH2':
-			echo '<br>', I18N::translate('#%s', ++$n_gchi);
-			break;
 		}
 
 		echo '</td><td class="optionbox ', $styleadd, ' wrap">';

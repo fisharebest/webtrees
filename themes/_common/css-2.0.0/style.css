@@ -13,9 +13,60 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+ .wt-page-options {
+    flex: 1 1 0;
+    padding: 1rem 0;
+
+ }
+ /* list options 
+.wt-initials-list {
+	display: inline!important;
+}
+*/
  /* Override Bootstrap formatting */
  .row .select2-selection--single {
 	height: auto;
+}
+
+.card-block {
+	padding: 1.25rem;
+}
+
+.table-responsive {
+    display: block;
+    overflow: auto;
+    width: 100%;
+}
+
+/* Mobile device enhancements */
+/* -- home page scrolling */
+
+.nav {
+	display: flex;
+    flex-wrap: wrap;
+}
+.wt-main-container .row {
+	flex-wrap: wrap;
+	margin: 0;
+}
+
+.wt-side-blocks .card {
+	display: flex;
+	overflow: auto;
+}
+
+.wt-main-container .row .wt-block-content {
+	padding: .25rem;
+}
+
+.wt-side-blocks .dataTables_wrapper div[class*='col']  {
+	padding: 0;
+}
+
+/* -- chart page scrolling */
+.wt-chart {
+	position: relative;
+	padding: .25rem;
 }
 
 /*
@@ -87,6 +138,7 @@
 }
 
 .wt-secondary-menu {
+	flex-wrap: nowrap;
 }
 
 .wt-primary-navigation {
@@ -155,6 +207,17 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
+ /* my page chart enhancements */
+.wt-block-content-charts-block {
+	display: flex;
+    flex-flow: column-reverse;
+    overflow: auto;
+}
+
+.wt-block-content-todays-events-block {
+	padding: .25rem;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -181,6 +244,11 @@
  *  	Hourglass chart
  *
  * */
+/* My Page Charts */
+
+.myCharts {
+	position: relative;
+}
 
 /* Ascentors */
 .wt-ancestors-chart .linea1 {margin-bottom: 4px;}
@@ -219,7 +287,6 @@
 .wt-ancestors-chart .family-break { 
 	page-break-before: always;
 }
-
 
 /*
  * Compact chart
@@ -283,6 +350,7 @@
 .hourglassChart .person_box_template {
 	line-height: 1.0;
 }
+
 /*
  * Hourglass chart
  *
@@ -460,4 +528,72 @@ fieldset.row > legend, fieldset.row > div {
 	display: inline;
 	vertical-align: top;
 	padding: 5px;
+}
+
+/*
+ * On-screen keyboard, for entering characters that are not on the keyboard
+ */
+.wt-osk {
+	position: fixed;
+	z-index: 1000;
+	top: 1rem;
+	display: none;
+}
+.wt-osk-keys {
+	background: #eee;
+	padding: 0.25rem;
+	font-size: larger;
+}
+.wt-osk-group {
+	display: inline-block;
+	margin: 0.25rem;
+	padding: 0.25rem 0;
+}
+.wt-osk-key {
+	background: #ddd;
+	border-radius: .25rem;
+	padding: 0.25rem;
+	cursor: pointer;
+}
+.wt-osk-key-shift {
+	color: #aaa;
+	font-size: smaller;
+}
+.wt-osk-keys.shifted .wt-osk-key {
+	color: #aaa;
+}
+.wt-osk-keys.shifted .wt-osk-key-shift {
+	color: #555;
+}
+
+/*
+ * Google Maps
+ */
+
+.gm-events .optionbox  {
+	font-size: .75em;
+}
+
+.gm-events *[class^='person_box'] {
+	font-size: .813em;
+}
+
+@media (max-width:1025px)  {
+	body {
+		font-size: 14px;
+	}
+
+	.col-sm-8,.col-sm-4 {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	#individual-tabs .nav-link {
+		padding: .5em;
+	}
+	
+.col-form-label,
+.col-form-legend {
+	text-align: center;
+}
 }

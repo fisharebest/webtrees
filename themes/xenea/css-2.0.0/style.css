@@ -30,6 +30,10 @@
     padding-right: 5px;
 }
 
+table {
+	border-collapse: separate;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -783,7 +787,6 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-block-content {
 	margin: 5px;
-	overflow: auto;
 }
 
 .wt-block-content .list_table {

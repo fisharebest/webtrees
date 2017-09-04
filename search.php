@@ -61,215 +61,245 @@ function checknames(frm) {
 
 <div id="search-page">
 <h2><?= $controller->getPageTitle() ?></h2>
-
 <?php if ($controller->action === 'general'): ?>
-
-	<form name="searchform" onsubmit="return checknames(this);">
+	<form class="wt-page-options wt-page-options-ancestors-chart hidden-print" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="general">
 		<input type="hidden" name="isPostBack" value="true">
-		<div id="search-page-table">
-			<label class="label" for="query">
-				<?= I18N::translate('Search for') ?>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label" for="query">
+			<?= I18N::translate('Search for') ?>
 			</label>
-			<div class="value">
+			<div class="col-sm-9 wt-page-options-value">
 				<input id="query" type="text" name="query" value="<?= Html::escape($controller->query) ?>" size="30" autofocus>
-				<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
+			<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
 			</div>
-			<div class="label">
-				<?= I18N::translate('Records') ?>
+		</div>
+		<fieldset class="form-group">
+			<div class="row"> 
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Records') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input" checked value="checked" name="srindi" type="checkbox">
+						<?= I18N::translate('Individuals') ?>
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input"  value="checked" name="srfams" type="checkbox">
+						<?= I18N::translate('Families') ?>
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input" value="checked" name="srsour" type="checkbox">
+						<?= I18N::translate('Sources') ?>
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input" value="checked" name="srnote" type="checkbox">
+						<?= I18N::translate('Shared notes') ?>
+						</label>
+					</div>
+				</div>
 			</div>
-			<div class="value">
-				<label>
-					<input type="checkbox" <?= $controller->srindi ?> value="checked" name="srindi">
-					<?= I18N::translate('Individuals') ?>
-				</label>
-				<br>
-				<label>
-					<input type="checkbox" <?= $controller->srfams ?> value="checked" name="srfams">
-					<?= I18N::translate('Families') ?>
-				</label>
-				<br>
-				<label>
-					<input type="checkbox" <?= $controller->srsour ?> value="checked" name="srsour">
-					<?= I18N::translate('Sources') ?>
-				</label>
-				<br>
-				<label>
-					<input type="checkbox" <?= $controller->srnote ?> value="checked" name="srnote">
-					<?= I18N::translate('Shared notes') ?>
-				</label>
-			</div>
-			<div class="label">
-				<?= I18N::translate('Associates') ?>
-			</div>
-			<div class="value">
-				<input type="checkbox" id="showasso" name="showasso" value="on" <?= $controller->showasso === 'on' ? 'checked' : '' ?>>
+		</fieldset>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label">
+			<?= I18N::translate('Associates') ?>
+			</label>
+			<div class="col-sm-9 wt-page-options-value">
+				<input id="showasso" name="showasso" value="1" type="checkbox">
 				<label for="showasso">
-					<?= I18N::translate('Show related individuals/families') ?>
+				<?= I18N::translate('Show related individuals/families') ?>
 				</label>
 			</div>
+		</div>
 			<?php if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1'): ?>
 			<?php if (count(Tree::getAll()) > 3): ?>
-			<div class="label"></div>
-			<div class="value">
-				<input type="button" value="<?= /* I18N: select all (of the family trees) */ I18N::translate('select all') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
-				<input type="button" value="<?= /* I18N: select none (of the family trees) */ I18N::translate('select none') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', false);});return false;">
-				<?php if (count(Tree::getAll()) > 10): ?>
-				<input type="button" value="<?= I18N::translate('invert selection') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
-				<?php endif ?>
+				<div class="label"></div>
+				<div class="value">
+					<input type="button" value="<?= /* I18N: select all (of the family trees) */ I18N::translate('select all') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
+					<input type="button" value="<?= /* I18N: select none (of the family trees) */ I18N::translate('select none') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', false);});return false;">
+					<?php if (count(Tree::getAll()) > 10): ?>
+						<input type="button" value="<?= I18N::translate('invert selection') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
+					<?php endif ?>
 				</div>
 			<?php endif ?>
-			<div class="label">
-				<?= I18N::translate('Family trees') ?>
+		<fieldset class="form-group">
+			<div class="row">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Family trees') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<div class="form-check form-check-inline">
+						<?php foreach (Tree::getAll() as $tree): ?>
+						<label class="form-check-label">
+							<input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
+							<?= $tree->getTitleHtml() ?>
+						</label>
+						<br>
+						<?php endforeach ?>
+					</div>
+				</div>
 			</div>
-			<div id="search_trees" class="value">
-				<?php foreach (Tree::getAll() as $tree): ?>
-				<p>
-					<label>
-						<input type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
-						<?= $tree->getTitleHtml() ?>
-					</label>
-				</p>
-				<?php endforeach ?>
-			</div>
-			<?php endif ?>
-
-			<div class="label"></div>
-			<div class="value">
-				<input type="submit" value="<?= /* I18N: A button label. */ I18N::translate('search') ?>">
+		<?php endif ?>
+		</fieldset>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label"></label>
+			<div class="col-sm-9 wt-page-options-value">
+				<input type="submit" value="<?=  /* I18N: A button label. */ I18N::translate('search') ?>">
 			</div>
 		</div>
 	</form>
 
 <?php endif ?>
 <?php if ($controller->action === 'replace'): ?>
-
-	<form method="post" name="searchform" onsubmit="return checknames(this);">
+	<form class="wt-page-options wt-page-options-ancestors-chart hidden-print" method="post" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="replace">
 		<input type="hidden" name="isPostBack" value="true">
-		<div id="search-page-table">
-			<div class="label">
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label">
 				<?= I18N::translate('Search for') ?>
-			</div>
-			<div class="value">
+			</label>
+			<div class="col-sm-9 wt-page-options-value">
 				<input name="query" value="<?= Html::escape($controller->query) ?>" type="text" autofocus>
 			</div>
-			<div class="label">
+		</div>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label">
 				<?= I18N::translate('Replace with') ?>
-			</div>
-			<div class="value">
+			</label>
+			<div class="col-sm-9 wt-page-options-value">
 				<input name="replace" value="<?= Html::escape($controller->replace) ?>" type="text">
 			</div>
+		</div>
 			<script>
-				function checkAll(box) {
-					if (box.checked) {
-						box.form.replaceNames.disabled = true;
-						box.form.replacePlaces.disabled = true;
-						box.form.replacePlacesWord.disabled = true;
-						box.form.replaceNames.checked = false;
-						box.form.replacePlaces.checked = false;
-						box.form.replacePlacesWord.checked = false;
-					} else {
-						box.form.replaceNames.disabled = false;
-						box.form.replacePlaces.disabled = false;
-						box.form.replacePlacesWord.disabled = false;
-						box.form.replaceNames.checked = true;
-					}
+			function checkAll(box) {
+				if (box.checked) {
+					box.form.replaceNames.disabled = true;
+					box.form.replacePlaces.disabled = true;
+					box.form.replacePlacesWord.disabled = true;
+					box.form.replaceNames.checked = false;
+					box.form.replacePlaces.checked = false;
+					box.form.replacePlacesWord.checked = false;
+				} else {
+					box.form.replaceNames.disabled = false;
+					box.form.replacePlaces.disabled = false;
+					box.form.replacePlacesWord.disabled = false;
+					box.form.replaceNames.checked = true;
 				}
+			}
 			</script>
-			<div class="label">
-				<?= /* I18N: A button label. */ I18N::translate('search') ?>
-			</div>
-			<div class="value">
-				<p>
-					<label>
-						<input <?= $controller->replaceAll ?> onclick="checkAll(this);" value="checked" name="replaceAll" type="checkbox">
-						<?= I18N::translate('Entire record') ?>
-					</label>
-				</p>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label">
+			<?= /* I18N: A button label. */ I18N::translate('Search') ?>
+			</label>
+			<div class="col-sm-9 wt-page-options-value">
+				<input <?= $controller->replaceAll ?> onclick="checkAll(this);" value="checked" name="replaceAll" type="checkbox">
+				<label>
+					<?= I18N::translate('Entire record') ?>
+				</label>
 				<hr>
-				<p>
+				<div class="form-check form-check-inline">
 					<label>
 						<input <?= $controller->replaceNames ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replaceNames" type="checkbox">
 						<?= I18N::translate('Names') ?>
 					</label>
-				</p>
-				<p>
+					<br>
 					<label>
 						<input <?= $controller->replacePlaces ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replacePlaces" type="checkbox">
 						<?= I18N::translate('Places') ?>
 					</label>
-				</p>
-				<p>
+					<br>
 					<label>
-					<input <?= $controller->replacePlacesWord ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replacePlacesWord" type="checkbox">
+						<input <?= $controller->replacePlacesWord ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replacePlacesWord" type="checkbox">
 						<?= I18N::translate('Whole words only') ?>
 					</label>
-				</p>
+				</div>
 			</div>
-
-			<div class="label"></div>
-			<div class="value">
+		</div>
+			<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label"></label>
+				<div class="col-sm-9 wt-page-options-value">
 				<input type="submit" value="<?= /* I18N: A button label. */ I18N::translate('replace') ?>">
 			</div>
 		</div>
 	</form>
-
 <?php endif ?>
 <?php if ($controller->action === 'soundex'): ?>
-
-	<form name="searchform" onsubmit="return checknames(this);">
+	<form class="wt-page-options wt-page-options-ancestors-chart hidden-print" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="soundex">
 		<input type="hidden" name="isPostBack" value="true">
-		<div id="search-page-table">
-			<label class="label" for="firstname">
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label" for="firstname">
 				<?= I18N::translate('Given name') ?>
 			</label>
-			<div class="value">
+			<div class="col-sm-9 wt-page-options-value">
 				<input type="text" data-autocomplete-type="GIVN" name="firstname" id="firstname" value="<?= Html::escape($controller->firstname) ?>" autofocus>
 			</div>
-			<label class="label" for="lastname">
+		</div>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label"  for="lastname">
 				<?= I18N::translate('Surname') ?>
 			</label>
-			<div class="value">
+			<div class="col-sm-9 wt-page-options-value">
 				<input type="text" data-autocomplete-type="SURN" name="lastname" id="lastname" value="<?= Html::escape($controller->lastname) ?>">
 			</div>
-			<label class="label" for="place">
+		</div>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label" for="place">
 				<?= I18N::translate('Place') ?>
 			</label>
-			<div class="value">
+			<div class="col-sm-9 wt-page-options-value">
 				<input type="text"  data-autocomplete-type="PLAC2" name="place" id="place" value="<?= Html::escape($controller->place) ?>">
 			</div>
-			<label class="label" for="year">
+		</div>
+		<div class="row form-group">
+			<label class="col-sm-3 col-form-label wt-page-options-label" for="year">
 				<?= I18N::translate('Year') ?>
 			</label>
-			<div class="value"
-				><input type="text" name="year" id="year" value="<?= Html::escape($controller->year) ?>">
+			<div class="col-sm-9 wt-page-options-value">
+				<input type="text" name="year" id="year" value="<?= Html::escape($controller->year) ?>">
 			</div>
-			<div class="label">
+		</div>
+		<fieldset class="form-group">
+			<div class="row"> 
+				<label class="col-sm-3 col-form-label wt-page-options-label">
 				<?= I18N::translate('Phonetic algorithm') ?>
-			</div>
-			<div class="value">
-				<label>
-					<input type="radio" name="soundex" value="Russell" <?= $controller->soundex === 'Russell' ? 'checked' : '' ?>>
-					<?= I18N::translate('Russell') ?>
 				</label>
-				<label>
-					<input type="radio" name="soundex" value="DaitchM" <?= $controller->soundex === 'DaitchM' || $controller->soundex === '' ? 'checked' : '' ?>>
-					<?= I18N::translate('Daitch-Mokotoff') ?>
-				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="soundex" value="Russell" <?= $controller->soundex === 'Russell' ? 'checked' : '' ?>>
+						<?= I18N::translate('Russell') ?>
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="soundex" value="DaitchM" <?= $controller->soundex === 'DaitchM' || $controller->soundex === '' ? 'checked' : '' ?>>
+						<?= I18N::translate('Daitch-Mokotoff') ?>
+						</label>
+					</div>
+				</div>
 			</div>
-			<div class="label" for="showasso">
+		</fieldset>
+		<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
 				<?= I18N::translate('Associates') ?>
-			</div>
-			<div class="value">
-				<label>
-				<input type="checkbox" name="showasso" id="showasso" value="on" <?= $controller->showasso === 'on' ? 'checked' : '' ?>>
-				<?= I18N::translate('Show related individuals/families') ?>
 				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input id="showasso" name="showasso" value="1" type="checkbox">
+					<label for="showasso">
+					<?= I18N::translate('Show related individuals/families') ?>
+					</label>
+				</div>
 			</div>
 			<?php if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1'): ?>
-				<?php if (count(Tree::getAll()) > 3): ?>
+			<?php if (count(Tree::getAll()) > 3): ?>
 					<div class="label"></div>
 					<div class="value">
 						<input type="button" value="<?= /* I18N: select all (of the family trees) */ I18N::translate('select all') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
@@ -279,30 +309,32 @@ function checknames(frm) {
 						<?php endif ?>
 					</div>
 				<?php endif ?>
-				<div class="label">
-					<?= I18N::translate('Family trees') ?>
-				</div>
-				<div id="search_trees" class="value">
-					<?php foreach (Tree::getAll() as $tree): ?>
-						<p>
-							<label>
-							<input type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
+			<fieldset class="form-group">
+				<div class="row">
+					<label class="col-sm-3 col-form-label wt-page-options-label">
+						<?= I18N::translate('Family trees') ?>
+					</label>
+					<div class="col-sm-9 wt-page-options-value">
+						<div class="form-check form-check-inline">
+							<?php foreach (Tree::getAll() as $tree): ?>
+							<label class="form-check-label">
+								<input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
 								<?= $tree->getTitleHtml() ?>
 							</label>
-						</p>
-					<?php endforeach ?>
+							<br>
+							<?php endforeach ?>
+						</div>
+					</div>
 				</div>
 			<?php endif ?>
-
-			<div class="label"></div>
-			<div class="value">
-				<input type="submit" value="<?=  /* I18N: A button label. */ I18N::translate('search') ?>">
+			</fieldset>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label"></label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input type="submit" value="<?=  /* I18N: A button label. */ I18N::translate('search') ?>">
+				</div>
 			</div>
-		</div>
 	</form>
-
 <?php endif ?>
-
 <?php $controller->printResults() ?>
-
 </div>

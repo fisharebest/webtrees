@@ -306,7 +306,7 @@ abstract class AbstractTheme {
 	public function bodyHeader() {
 		return
 			'<body class="wt-global">' .
-			'<header class="wt-header-wrapper hidden-print">' .
+			'<header class="wt-header-wrapper d-print-none">' .
 			'<div class="container wt-header-container">' .
 			'<div class="row wt-header-content">' .
 			$this->headerContent() .
@@ -479,7 +479,7 @@ abstract class AbstractTheme {
 			'</div>' .
 			'</main>' .
 			'<footer class="wt-footer-container">' .
-			'<div class="wt-footer-content container hidden-print">' . $this->footerContent() . '</div>' .
+			'<div class="wt-footer-content container d-print-none">' . $this->footerContent() . '</div>' .
 			'</footer>';
 	}
 

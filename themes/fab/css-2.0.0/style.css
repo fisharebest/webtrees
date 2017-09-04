@@ -29,6 +29,11 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+
+table {
+	border-collapse: separate;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -130,9 +135,7 @@
 }
 
 .wt-block-content {
-	overflow: auto;
 }
-
 
 .wt-accessibility-links {
 }
@@ -699,6 +702,8 @@ div.fact_SHARED_NOTE {
 .tabs_table {
 	width: 99%;
 }
+
+
 
 .name1, .name2 {
 	color: #555;

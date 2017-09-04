@@ -58,7 +58,7 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
 
-<form class="wt-page-options wt-page-options-lifespan-chart hidden-print">
+<form class="wt-page-options wt-page-options-lifespan-chart d-print-none">
 	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="newpid">

@@ -1405,7 +1405,7 @@ case 'linkspouse':
 	// Link and individual to an existing individual as a spouse
 	//////////////////////////////////////////////////////////////////////////////
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
-	$xref     = Filter::get('xref', WT_REGEX_XREF);
+	$xref   = Filter::get('xref', WT_REGEX_XREF);
 
 	$person = Individual::getInstance($xref, $controller->tree());
 	check_record_access($person);
@@ -1447,13 +1447,11 @@ case 'linkspouse':
 			<div class="col-sm-9 offset-sm-3">
 				<button class="btn btn-primary" type="submit">
 					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
+					<?= /* I18N: A button label. */ I18N::translate('save') ?>
 				</button>
 				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
+					<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 				</a>
 			</div>
 		</div>

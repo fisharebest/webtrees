@@ -33,11 +33,9 @@ class Mail {
 	 * Send an external email message
 	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
 	 *
-	 * @param Tree   $tree
-	 * @param string $to_email
-	 * @param string $to_name
-	 * @param string $replyto_email
-	 * @param string $replyto_name
+	 * @param User   $from
+	 * @param User   $to
+	 * @param User   $reply_to
 	 * @param string $subject
 	 * @param string $message_text
 	 * @param string $message_html
@@ -70,28 +68,6 @@ class Mail {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Send an automated system message (such as a password reminder) from a tree to a user.
-	 *
-	 * @param Tree   $tree
-	 * @param User   $user
-	 * @param string $subject
-	 * @param string $message_text
-	 * @param string $message_html
-	 *
-	 * @return bool
-	 */
-	public static function systemMessage(Tree $tree, User $user, $subject, $message_text, $message_html) {
-		return self::send(
-			$tree,
-			$user->getEmail(), $user->getRealName(),
-			Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'),
-			$subject,
-			$message_text,
-			$message_html
-		);
 	}
 
 	/**
