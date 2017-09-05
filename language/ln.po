@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-04 15:06+0000\n"
+"PO-Revision-Date: 2017-09-05 21:39+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -75,7 +75,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:253
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s  ezwamí na seconde %2$s."
+msgstr "KB %1$s  ezwamakí na segonde %2$s."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
@@ -87,7 +87,7 @@ msgstr "%1$s ezalí tɛ́."
 #: admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s ezalí tɛ́. Okanisáksí %2$s?"
+msgstr "%1$s ezalí tɛ́. Okanisí %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:198
@@ -100,8 +100,8 @@ msgstr "%1$s ezalí na ekangisi na %2$s tɛ́."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "kásá-kásá %1$s ebimisamáksí na segonde %2$s."
+msgstr[1] "bakásá-kásá %1$s ebimisamáksí na segonde %2$s."
 
 #: app/Module/GoogleMapsModule.php:542
 #, php-format
@@ -373,8 +373,8 @@ msgstr "%s na bolongoli mɔ̌kɔ́ na nsé"
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "segonde %s elekí"
+msgstr[1] "basegonde %s elekí"
 
 #. I18N: %s is a person's name
 #: message.php:220
@@ -763,12 +763,12 @@ msgstr "Liyémi lya bankɔ́kɔ bwa moto mɔ̌kɔ́, na loléngé lya nzínga."
 #: admin_trees_download.php:109 admin_trees_manage.php:220
 #: app/Module/GoogleMapsModule.php:2150
 msgid "A file on the server"
-msgstr ""
+msgstr "Kásá-kásá káti na esálela mokaboli"
 
 #: admin_trees_download.php:196 admin_trees_manage.php:209
 #: app/Module/GoogleMapsModule.php:2140
 msgid "A file on your computer"
-msgstr ""
+msgstr "Kásá-kásá káti na esálela na yɔ̌"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
@@ -808,12 +808,12 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:38
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama mikosálema lɛlɔ́."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:46
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama mizalí koyâ.."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:37
