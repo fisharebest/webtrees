@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-05 21:39+0000\n"
+"PO-Revision-Date: 2017-09-06 20:37+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -114,8 +114,8 @@ msgstr "%1$s ezalí na ekangisi na %2$s tɛ́."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "kásá-kásá %1$s ebimisamáksí na segonde %2$s."
-msgstr[1] "bakásá-kásá %1$s ebimisamáksí na segonde %2$s."
+msgstr[0] "kásá-kásá %1$s ebimisamákí na segonde %2$s."
+msgstr[1] "bakásá-kásá %1$s ebimisamákí na segonde %2$s."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
