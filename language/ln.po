@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-06 20:37+0000\n"
+"PO-Revision-Date: 2017-09-07 22:20+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -9157,13 +9157,14 @@ msgid "Micronesia"
 msgstr ""
 
 #: statistics.php:694
+#, fuzzy
 msgid "Middle East"
-msgstr ""
+msgstr "Monyɛlɛ mwa káti"
 
 #. I18N: time format “%A” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:97
 msgid "Midnight"
-msgstr ""
+msgstr "Bozékétáné"
 
 #. I18N: gedcom tag _MILI
 #: app/GedcomTag.php:1659
@@ -9937,7 +9938,7 @@ msgstr ""
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:103
 msgid "Noon"
-msgstr ""
+msgstr "Nzánga"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6836
@@ -10382,7 +10383,7 @@ msgstr ""
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:106
 msgid "P.M."
-msgstr "Mpókwa"
+msgstr "Nsima nzánga"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
@@ -16707,7 +16708,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
-msgstr ""
+msgstr "monyɛlɛ"
 
 #. I18N: A button label.
 #: admin_trees_config.php:1353 admin_trees_config.php:1634
@@ -18920,7 +18921,7 @@ msgstr ""
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:81
 msgid "midnight"
-msgstr ""
+msgstr "bozékétáné"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:167
@@ -19103,7 +19104,7 @@ msgstr "nzánga"
 
 #: app/Module/GoogleMapsModule.php:3361
 msgid "north"
-msgstr ""
+msgstr "nɔrdi"
 
 #: statistics.php:752 statisticsplot.php:876 statisticsplot.php:926
 #: statisticsplot.php:980 statisticsplot.php:1030 statisticsplot.php:1084
@@ -19140,7 +19141,7 @@ msgstr "mobimba"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:90
 msgid "p.m."
-msgstr "mpókwa"
+msgstr "nsima nzánga"
 
 #: app/Functions/Functions.php:691
 msgid "parent"
@@ -19699,7 +19700,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3362
 msgid "south"
-msgstr "súdi"
+msgstr "ngɛlɛ"
 
 #: app/Functions/Functions.php:745 edit_interface.php:1930
 #: edit_interface.php:1940 edit_interface.php:1965 edit_interface.php:1976
@@ -20092,7 +20093,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3373
 msgid "west"
-msgstr "Wɛsti"
+msgstr "Eloli"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1929
 #: edit_interface.php:1964
