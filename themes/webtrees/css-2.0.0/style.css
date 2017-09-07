@@ -320,7 +320,8 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 calc(100% - 272px);
+	white-space: nowrap;
+	margin-bottom: 15px;
 }
 
 .wt-secondary-menu {
