@@ -36,10 +36,11 @@ $controller->pageHeader();
 	 * add a row to the table of fields
 	 */
 	function addFields() {
-		var tbl         = document.getElementById('field_table').tBodies[0];
-		var trow        = document.createElement('tr');
-		var label       = document.createElement('td');
-		label.className = 'list_label';
+		var tbl         = document.getElementById('div-holder');
+		var trow        = document.createElement('dir');
+		trow.className      = 'row form-group';
+		var label       = document.createElement('div');
+		label.className = 'col-sm-3-add col-form-label wt-page-options-label';
 		var sel         = document.createElement('select');
 		sel.name        = 'fields[' + numfields + ']';
 		sel.rownum      = numfields;
@@ -57,9 +58,9 @@ $controller->pageHeader();
 		label.appendChild(sel);
 		trow.appendChild(label);
 		// create the new value cell
-		var val       = document.createElement('td');
+		var val       = document.createElement('div');
 		val.id        = 'vcell' + numfields;
-		val.className = 'list_value';
+		val.className = 'col-sm-9-add wt-page-options-value';
 
 		var inp      = document.createElement('input');
 		inp.name     = 'values[' + numfields + ']';
@@ -113,39 +114,34 @@ $controller->pageHeader();
 	}
 </script>
 
-<div id="search-page">
+<div id="advanced-search-page">
 	<h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
-
-	<?php $controller->printResults() ?>
-
-	<form name="searchform" onsubmit="return checknames(this);">
+	<form class="wt-page-options wt-page-options-ancestors-chart hidden-print" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="<?= $controller->action ?>">
 		<input type="hidden" name="isPostBack" value="true">
-
-		<div class="table-holder">
-			<table id="field_table" class="list_table" border="0">
-				<?php
+			<div id="div-holder">
+			<?php
 				$fct = count($controller->fields);
-				for ($i = 0; $i < $fct; $i++) {
-					if (strpos($controller->getField($i), 'FAMC:HUSB:NAME') === 0) {
+					for ($i = 0; $i < $fct; $i++) {
+						if (strpos($controller->getField($i), 'FAMC:HUSB:NAME') === 0) {
 						continue;
-					}
-					if (strpos($controller->getField($i), 'FAMC:WIFE:NAME') === 0) {
+						}
+						if (strpos($controller->getField($i), 'FAMC:WIFE:NAME') === 0) {
 						continue;
-					}
+						}
+						?>
+					<div class="row form-group">
+						<label class="col-sm-3 col-form-label wt-page-options-label">
+						<?= $controller->getLabel($controller->getField($i)) ?>
+						</label>
+					<?php
+					$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
+					$currentField       = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 					?>
-					<tr>
-						<td class="list_label">
-							<?= $controller->getLabel($controller->getField($i)) ?>
-						</td>
-						<td id="vcell<?= $i ?>" class="list_value">
-							<?php
-							$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
-							$currentField       = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
-							?>
-							<input type="text" id="value<?= $i ?>" name="values[<?= $i ?>]"
-							       value="<?= Html::escape($controller->getValue($i)) ?>"<?= substr($controller->getField($i), -4) == 'PLAC' ? 'data-autocomplete-type="PLAC"' : '' ?>>
-							<?php if (preg_match('/^NAME:/', $currentFieldSearch) > 0) { ?>
+						<div class="col-sm-9 wt-page-options-value">
+						<input type="text" id="value<?= $i ?>" name="values[<?= $i ?>]"
+						value="<?= Html::escape($controller->getValue($i)) ?>"<?= substr($controller->getField($i), -4) == 'PLAC' ? ' data-autocomplete-type="PLAC"' : '' ?>>
+						<?php if (preg_match('/^NAME:/', $currentFieldSearch) > 0) { ?>
 								<select name="fields[<?= $i ?>]">
 									<option value="<?= $currentField ?>:EXACT" <?php if (preg_match('/:EXACT$/', $currentFieldSearch) > 0) echo 'selected' ?>>
 										<?= I18N::translate('Exact') ?>
@@ -179,7 +175,7 @@ $controller->pageHeader();
 									</option>
 								</select>
 							<?php } ?>
-						</td>
+						</div>
 						<?php
 						//-- relative fields
 						if ($i == 0 && $fct > 4) {
@@ -209,20 +205,20 @@ $controller->pageHeader();
 							}
 							?>
 						<?php } ?>
-					</tr>
-				<?php } ?>
-				<!--  father -->
-				<tr>
-					<td colspan="2" class="facts_label03" style="text-align:center;">
-						<?= I18N::translate('Father') ?>
-					</td>
-				</tr>
-				<tr>
-					<td class="list_label">
-						<?= I18N::translate('Given names') ?>
-					</td>
-					<td class="list_value">
-						<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:' . $fatherGivnOption)) ?>">
+					</div>
+			<?php } ?>
+			<!--  father -->
+			<div class="row form-group">
+				<div class="width100 center details_label form-label wt-page-options-label">
+			<?= I18N::translate('Father') ?>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Given names') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:' . $fatherGivnOption)) ?>">
 						<select name="fields[<?= $j ?>]">
 							<option value="FAMC:HUSB:NAME:GIVN:EXACT" <?php if ($fatherGivnOption == 'EXACT') echo 'selected' ?>>
 								<?= I18N::translate('Exact') ?>
@@ -237,15 +233,15 @@ $controller->pageHeader();
 								<?= I18N::translate('Sounds like') ?>
 							</option>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<?php $j++ ?>
-					<td class="list_label">
-						<?= I18N::translate('Surname') ?>
-					</td>
-					<td class="list_value">
-						<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:' . $fatherSurnOption)) ?>">
+				</div>
+			</div>
+			<?php $j++ ?>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Surname') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:' . $fatherSurnOption)) ?>">
 						<select name="fields[<?= $j ?>]">
 							<option value="FAMC:HUSB:NAME:SURN:EXACT" <?php if ($fatherSurnOption == 'EXACT') echo 'selected' ?>>
 								<?= I18N::translate('Exact') ?>
@@ -260,21 +256,21 @@ $controller->pageHeader();
 								<?= I18N::translate('Sounds like') ?>
 							</option>
 						</select>
-					</td>
-				</tr>
-				<!--  mother -->
-				<?php $j++ ?>
-				<tr>
-					<td colspan="2" class="facts_label03" style="text-align:center;">
-						<?= I18N::translate('Mother') ?>
-					</td>
-				</tr>
-				<tr>
-					<td class="list_label">
-						<?= I18N::translate('Given names') ?>
-					</td>
-					<td class="list_value">
-						<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:' . $motherGivnOption)) ?>">
+				</div>
+			</div>
+			<!--  mother -->
+			<?php $j++ ?>
+			<div class="row form-group">
+				<div class="width100 center details_label form-label wt-page-options-label">
+			<?= I18N::translate('Mother') ?>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Given names') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:' . $motherGivnOption)) ?>">
 						<select name="fields[<?= $j ?>]">
 							<option value="FAMC:WIFE:NAME:GIVN:EXACT" <?php if ($motherGivnOption == 'EXACT') echo 'selected' ?>>
 								<?= I18N::translate('Exact') ?>
@@ -289,46 +285,46 @@ $controller->pageHeader();
 								<?= I18N::translate('Sounds like') ?>
 							</option>
 						</select>
-					</td>
-					<?php $j++ ?>
-				</tr>
-				<tr>
-					<td class="list_label">
-						<?= I18N::translate('Surname') ?>
-					</td>
-					<td class="list_value">
-						<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:' . $motherSurnOption)) ?>">
+					</div>
+				</div>
+				<?php $j++ ?>
+			<div class="row form-group">
+				<label class="col-sm-3 col-form-label wt-page-options-label">
+					<?= I18N::translate('Surname') ?>
+				</label>
+				<div class="col-sm-9 wt-page-options-value">
+					<input type="text" name="values[<?= $j ?>]" value="<?= $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:' . $motherGivnOption)) ?>">
 						<select name="fields[<?= $j ?>]">
-							<option value="FAMC:WIFE:NAME:SURN:EXACT" <?php if ($motherSurnOption == 'EXACT') echo 'selected' ?>>
+							<option value="FAMC:WIFE:NAME:GIVN:EXACT" <?php if ($motherGivnOption == 'EXACT') echo 'selected' ?>>
 								<?= I18N::translate('Exact') ?>
 							</option>
-							<option value="FAMC:WIFE:NAME:SURN:BEGINS" <?php if ($motherSurnOption == 'BEGINS') echo 'selected' ?>>
+							<option value="FAMC:WIFE:NAME:GIVN:BEGINS" <?php if ($motherGivnOption == 'BEGINS') echo 'selected' ?>>
 								<?= I18N::translate('Begins with') ?>
 							</option>
-							<option value="FAMC:WIFE:NAME:SURN:CONTAINS" <?php if ($motherSurnOption == 'CONTAINS') echo 'selected' ?>>
+							<option value="FAMC:WIFE:NAME:GIVN:CONTAINS" <?php if ($motherGivnOption == 'CONTAINS') echo 'selected' ?>>
 								<?= I18N::translate('Contains') ?>
 							</option>
-							<option value="FAMC:WIFE:NAME:SURN:SDX" <?php if ($motherSurnOption == 'SDX') echo 'selected' ?>>
+							<option value="FAMC:WIFE:NAME:GIVN:SDX" <?php if ($motherGivnOption == 'SDX') echo 'selected' ?>>
 								<?= I18N::translate('Sounds like') ?>
 							</option>
 						</select>
-					</td>
-					<?php $j++ ?>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="center" style="margin-top:10px;">
+				</div>
+			</div>
+			<?php $j++ ?>
+			<div>
+				<div>
+					<div class="center" style="margin-top:10px;">
 							<a href="#" onclick="addFields();"><?= I18N::translate('Add more fields') ?></a>
-						</div>
-					</td>
-				</tr>
-				<?php $j++ ?>
-				<!--/tr-->
-			</table>
+					</div>
+				</div>
+			</div>
+			<?php $j++ ?>
 		</div>
 		<div class="center" style="margin-top:10px;">
 			<p><input type="submit" value="<?= /* I18N: A button label. */
 				I18N::translate('search') ?>"></p>
 		</div>
+
 	</form>
-</div>
+		</div> <!-- Close of div-holder -->
+		<?php $controller->printResults() ?>

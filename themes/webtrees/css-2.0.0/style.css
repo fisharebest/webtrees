@@ -728,7 +728,6 @@ a > .wt-icon-arrow-up:hover::before {
 	color: #fff;
 	background-color: #81a9cb;
 	font-weight: bold;
-	text-align: center;
 	border-left: 2px solid transparent;
 	border-right: 2px solid transparent;
 }
@@ -2961,46 +2960,6 @@ div.faq_body {
 
 [dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
-}
-
-/* ===== search.php ===== */
-#search-page h2 {
-	margin: 20px;
-	text-align: center;
-}
-
-#search-page-table {
-	background-color: #81a9cb;
-	border: 1px outset #ccc;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 580px;
-}
-
-#search-page-table .label {
-	border-top: 1px solid #ccc;
-	color: #fff;
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-}
-
-#search-page-table .value {
-	background-color: #edf7f9;
-	border-top: 1px solid #ccc;
-	padding: 5px;
-}
-
-#search-page-table p {
-	margin: 0;
-}
-
-[dir=rtl] #search-page-table .label {
-	float: right;
-}
-
-[dir=rtl] #search-page-table .value {
-	margin: 0 170px 0 0;
 }
 
 /*  edituser.php  */

@@ -13,11 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
- .wt-page-options {
-    flex: 1 1 0;
-    padding: 1rem 0;
-
- }
  /* list options 
 .wt-initials-list {
 	display: inline!important;
@@ -164,9 +159,15 @@
 }
 
 .wt-page-options {
+	flex: 1 1 0;
+	padding: 1rem 0;
 }
 
 .wt-page-content {
+}
+
+.wt-page-options-label {
+	text-align: center;
 }
 
 .wt-footer-container {
@@ -216,6 +217,16 @@
 
 .wt-block-content-todays-events-block {
 	padding: .25rem;
+}
+
+ /* advanced search enhancements */
+.col-sm-3-add {
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+.col-sm-9-add{
+	flex: 0 0 50%;
+	max-width: 50%;
 }
 
 /*
@@ -482,19 +493,20 @@
  *
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
+#div-holder .row {
+	padding: 0;
+}
+.wt-page-options-value > input {
+	width: 300px;
+}
+.wt-page-options-size > input {
+	width: 0px;
+}
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
 	max-height: 35rem;
 	overflow-x: hidden;
-}
-
-#search-page-table .value {
-	margin: 0 0 0 220px;
-}
-
-#search-page-table .label {
-	width: 220px;
 }
 
 /* Census assistant */
@@ -519,7 +531,6 @@ fieldset.row > legend, fieldset.row > div {
 /* Forms */
 .col-form-label,
 .col-form-legend {
-	text-align: end;
 	font-weight: bold;
 }
 

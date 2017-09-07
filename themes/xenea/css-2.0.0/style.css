@@ -2865,46 +2865,6 @@ div.faq_body {
 	float: left;
 }
 
-/* ===== search.php ===== */
-#search-page h2 {
-	margin: 20px;
-	text-align: center;
-}
-
-#search-page-table {
-	background-color: #c3dfff;
-	border: 1px outset #ccc;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 580px;
-}
-
-#search-page-table .label {
-	border-top: 1px solid #ccc;
-	color: #006;
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-}
-
-#search-page-table .value {
-	background-color: #edf7fd;
-	border-top: 1px solid #ccc;
-	padding: 5px;
-}
-
-#search-page-table p {
-	margin: 0;
-}
-
-[dir=rtl] #search-page-table .label {
-	float: right;
-}
-
-[dir=rtl] #search-page-table .value {
-	margin: 0 170px 0 0;
-}
-
 /*  edituser.php  */
 #edituser-page h2,
 #edituser_submit {

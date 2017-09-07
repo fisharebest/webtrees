@@ -70,7 +70,7 @@ function checknames(frm) {
 			<?= I18N::translate('Search for') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<input id="query" type="text" name="query" value="<?= Html::escape($controller->query) ?>" size="30" autofocus>
+				<input id="query" type="text" name="query" value="<?= Html::escape($controller->query) ?>" autofocus>
 			<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
 			</div>
 		</div>
@@ -111,7 +111,7 @@ function checknames(frm) {
 			<label class="col-sm-3 col-form-label wt-page-options-label">
 			<?= I18N::translate('Associates') ?>
 			</label>
-			<div class="col-sm-9 wt-page-options-value">
+			<div class="col-sm-9 wt-page-options-value wt-page-options-size">
 				<input id="showasso" name="showasso" value="1" type="checkbox">
 				<label for="showasso">
 				<?= I18N::translate('Show related individuals/families') ?>
@@ -291,7 +291,7 @@ function checknames(frm) {
 				<label class="col-sm-3 col-form-label wt-page-options-label">
 				<?= I18N::translate('Associates') ?>
 				</label>
-				<div class="col-sm-9 wt-page-options-value">
+				<div class="col-sm-9 wt-page-options-value wt-page-options-size">
 					<input id="showasso" name="showasso" value="1" type="checkbox">
 					<label for="showasso">
 					<?= I18N::translate('Show related individuals/families') ?>
