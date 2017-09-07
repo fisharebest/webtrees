@@ -170,13 +170,14 @@ if ($action === 'submit') {
 
 	<div class="card-deck row mb-4 mt-4">
 		<?php foreach (array_slice($medialist, ($page - 1) * $max, $max) as $media): ?>
-			<div class="col=xs-12 col-sm-6 col-lg-4">
-				<div class="card mb-4 list_value_wrap">
-					<div class="card-block">
+			<div class="col-xs-12 col-sm-6 col-lg-4 d-flex">
+				<div class="card mb-4">
+					<div class="card-header">
 						<h4 class="card-title">
 							<a href="<?= $media->getHtmlUrl() ?>"><?= $media->getFullName() ?></a>
 						</h4>
-
+					</div>
+					<div class="card-body">
 						<?= $media->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
 
 						<p class="card-text">
@@ -207,25 +208,28 @@ if ($action === 'submit') {
 							}
 							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
 							echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
-							echo '<hr>';
-							foreach ($media->linkedIndividuals('OBJE') as $individual) {
-								echo '<a href="' . $individual->getHtmlUrl() . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
-							}
-							foreach ($media->linkedFamilies('OBJE') as $family) {
-								echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
-							}
-							foreach ($media->linkedSources('OBJE') as $source) {
-								echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
-							}
 							?>
 						</p>
+					</div>
+					<div class="card-footer">
+						<?php
+						foreach ($media->linkedIndividuals('OBJE') as $individual) {
+							echo '<a href="' . $individual->getHtmlUrl() . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
+						}
+						foreach ($media->linkedFamilies('OBJE') as $family) {
+							echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
+						}
+						foreach ($media->linkedSources('OBJE') as $source) {
+							echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
+						}
+						?>
 					</div>
 				</div>
 			</div>
 		<?php endforeach ?>
 	</div>
 
-	<div class="row class=text-center">
+	<div class="row text-center">
 		<div class="col">
 			<?php if ($page > 1): ?>
 				<a href="<?= $url ?>&amp;page=1"><?= I18N::translate('first') ?></a>
