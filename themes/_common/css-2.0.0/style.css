@@ -503,6 +503,10 @@
 	width: 0px;
 }
 
+.wt-page-options-replace > input {
+	width: auto;
+}
+
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
 	max-height: 35rem;

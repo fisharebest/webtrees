@@ -198,13 +198,13 @@ function checknames(frm) {
 			<label class="col-sm-3 col-form-label wt-page-options-label">
 			<?= /* I18N: A button label. */ I18N::translate('Search') ?>
 			</label>
-			<div class="col-sm-9 wt-page-options-value">
+			<div class="col-sm-9 wt-page-options-value wt-page-options-replace ">
 				<input <?= $controller->replaceAll ?> onclick="checkAll(this);" value="checked" name="replaceAll" type="checkbox">
 				<label>
 					<?= I18N::translate('Entire record') ?>
 				</label>
 				<hr>
-				<div class="form-check form-check-inline">
+				<div class="form-check form-check-inline wt-page-options-size ">
 					<label>
 						<input <?= $controller->replaceNames ?> <?= $controller->replaceAll ? 'disabled' : '' ?> value="checked" name="replaceNames" type="checkbox">
 						<?= I18N::translate('Names') ?>
