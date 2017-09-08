@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-07 22:20+0000\n"
+"PO-Revision-Date: 2017-09-08 23:25+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -11233,7 +11233,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Likomi lya momɛsɛno"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
