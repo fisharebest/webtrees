@@ -38,7 +38,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 		if ($controller->orientation === $controller::OLDEST_AT_TOP || $controller->orientation === $controller::OLDEST_AT_BOTTOM) {
 			$flex_direction = ' flex-column';
 		}
-		printf('<div id="sosa_%s" class="shadow d-flex align-items-center'. $flex_direction . '" style="%s:%spx; top:%spx; position:absolute;">', $i + 1, $posn, $node['x'], $node['y']);
+		printf('<div id="sosa_%s" class="shadow d-flex align-items-center' . $flex_direction . '" style="%s:%spx; top:%spx; position:absolute;">', $i + 1, $posn, $node['x'], $node['y']);
 
 		if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 			if ($i >= $lastgenStart) {
