@@ -520,19 +520,19 @@
 }
 
 /* Clipping cart */
-#clipping-cart h2 {
+.clipping-cart h2 {
 	margin: 20px;
 	text-align: center;
  }
-#clipping-cart .wt-page-options {
+.clipping-cart .wt-page-options {
 	max-width: 25rem;
 }
 
-#clipping-cart .topbottombar, #clipping-cart .optionbox, .add-to .topbottombar {
+.clipping-cart .topbottombar, .clipping-cart .optionbox, .add-to .topbottombar {
 	font-size: 1rem;
 }
 
-#clipping-cart .add-to {
+.clipping-cart .add-to {
 	text-align: left;
 }
 

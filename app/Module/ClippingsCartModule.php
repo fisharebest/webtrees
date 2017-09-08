@@ -83,7 +83,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			echo '<script>';
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
 			echo '</script>';
-			echo '<div id="clipping-cart">';
+			echo '<div class="clipping-cart">';
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
@@ -447,7 +447,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					</form>
 				</div>
 				<?php } ?>
-				<div id="clipping-cart">
+				<div class="clipping-cart">
 				<h2>
 					<?= I18N::translate('Family tree clippings cart') ?>
 				</h2>
@@ -501,7 +501,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 						}
 						?>
 				</table>
-				</div>
+			</div>
 				<?php
 			}
 			break;
