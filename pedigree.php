@@ -34,7 +34,11 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	//Output the chart
 	foreach ($controller->nodes as $i => $node) {
 		// -- draw the box
-		printf('<div id="sosa_%s" class="shadow" style="%s:%spx; top:%spx; position:absolute;">', $i + 1, $posn, $node['x'], $node['y']);
+		$flex_direction = '';
+		if ($controller->orientation === $controller::OLDEST_AT_TOP || $controller->orientation === $controller::OLDEST_AT_BOTTOM) {
+			$flex_direction = ' flex-column';
+		}
+		printf('<div id="sosa_%s" class="shadow d-flex align-items-center'. $flex_direction . '" style="%s:%spx; top:%spx; position:absolute;">', $i + 1, $posn, $node['x'], $node['y']);
 
 		if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 			if ($i >= $lastgenStart) {
