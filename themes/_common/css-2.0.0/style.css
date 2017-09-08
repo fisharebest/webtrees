@@ -219,6 +219,10 @@
 	padding: .25rem;
 }
 
+[dir=rtl] .wt-block-content-charts-block {
+    flex-flow: row;
+}
+
  /* advanced search enhancements */
 .col-sm-3-add {
 	flex: 0 0 50%;
