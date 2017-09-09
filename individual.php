@@ -119,6 +119,14 @@ if (tab.length === 0) {
 tab.tab("show");
 ');
 
+$individual_media = [];
+foreach ($controller->record->getFacts() as $fact) {
+	$media = $fact->getTarget();
+	if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
+		$individual_media[] = $media;
+	}
+}
+
 ?>
 
 <h2>
@@ -128,9 +136,25 @@ tab.tab("show");
 <div class="row">
 	<div class="col-sm-8">
 		<div class="row">
-			<!-- Main image -->
+			<!-- Individual images -->
 			<div class="col-sm-3">
-				<?= $controller->record->displayImage(200, 280, 'crop', ['class' => 'img-thumbnail']) ?>
+				<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div class="carousel-inner">
+						<?php foreach ($individual_media as $n => $media): ?>
+							<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
+								<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail d-block w-100']) ?>
+							</div>
+						<?php endforeach ?>
+					</div>
+					<a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only"><?= I18N::translate('previous') ?></span>
+					</a>
+					<a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only"><?= I18N::translate('next') ?></span>
+					</a>
+				</div>
 
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
