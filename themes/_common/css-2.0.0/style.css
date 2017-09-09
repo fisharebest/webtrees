@@ -223,16 +223,6 @@
     flex-flow: row;
 }
 
- /* advanced search enhancements */
-.col-sm-3-add {
-	flex: 0 0 50%;
-	max-width: 50%;
-}
-.col-sm-9-add{
-	flex: 0 0 50%;
-	max-width: 50%;
-}
-
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -497,25 +487,6 @@
  *
  * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
-/* ===== search.php ===== */
- #search-page h2 {
-	margin: 20px;
-	text-align: center;
- }
- 
-#div-holder .row {
-	padding: 0;
-}
-.wt-page-options-value > input {
-	width: 300px;
-}
-.wt-page-options-size > input {
-	width: 0px;
-}
-
-.wt-page-options-replace > input {
-	width: auto;
-}
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
@@ -633,7 +604,7 @@ fieldset.row > legend, fieldset.row > div {
 	#individual-tabs .nav-link {
 		padding: .5em;
 	}
-	
+
 .col-form-label,
 .col-form-legend {
 	text-align: center;
