@@ -132,12 +132,19 @@ tab.tab("show");
 			<div class="col-sm-3">
 				<?= $controller->record->displayImage(200, 280, 'crop', ['class' => 'img-thumbnail']) ?>
 
-				<?php if (Auth::isEditor($WT_TREE) && $WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
-					<a href="edit_interface.php?action=add-media-link&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
-						<?= I18N::translate('Add a media object') ?>
-					</a>
-				<?php endif ?>
+				<?php if (Auth::isEditor($WT_TREE)): ?>
+					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
+						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+							<?= I18N::translate('Re-order media') ?>
+						</a></div>
+					<?php endif ?>
 
+					<?php if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
+						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+							<?= I18N::translate('Add a media object') ?>
+						</a></div>
+					<?php endif ?>
+				<?php endif ?>
 			</div>
 
 			<!-- Names -->
@@ -153,9 +160,20 @@ tab.tab("show");
 				<div class="card">
 					<div class="card-header" role="tab" id="name-header-add">
 						<div class="card-title mb-0">
-							<a href="edit_interface.php?action=addname&amp;xref=<?= $controller->record->getXref() ?>&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>">
+							<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 								<?= I18N::translate('Add a name') ?>
 							</a>
+							<?php if (count($controller->record->getFacts('NAME')) > 1): ?>
+								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+									<?= I18N::translate('Re-order names') ?>
+								</a>
+							<?php endif ?>
+
+							<?php if (count($controller->record->getFacts('SEX')) === 0): ?>
+								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+									<?= I18N::translate('Edit the gender') ?>
+								</a>
+							<?php endif ?>
 						</div>
 					</div>
 				</div>
