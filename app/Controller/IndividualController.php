@@ -284,11 +284,15 @@ class IndividualController extends GedcomRecordController {
 			}
 
 			if (count($this->record->getSpouseFamilies()) > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder-spouses&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-orderfam'));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), 'edit_interface.php?action=reorder-spouses&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-reorder-families'));
 			}
 
 			if (count($this->record->getFacts('NAME')) > 1 || count($this->record->getFacts('TITL')) > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order names'), 'edit_interface.php?action=reorder-names&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-ordername'));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order names'), 'edit_interface.php?action=reorder-names&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-reorder-names'));
+			}
+
+			if (count($this->record->getFacts('OBJE')) > 1) {
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order media'), 'edit_interface.php?action=reorder-media&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-indi-reorder-media'));
 			}
 
 			// delete

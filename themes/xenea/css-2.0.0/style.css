@@ -578,11 +578,15 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(menu/edit-indi.png);
 }
 
-.menu-indi-orderfam::before {
+.menu-indi-reorder-families::before {
 	content: url(menu/edit-reorder.png);
 }
 
-.menu-indi-ordername::before {
+.menu-indi-reorder-media::before {
+	content: url(menu/edit-reorder.png);
+}
+
+.menu-indi-reorder-names::before {
 	content: url(menu/edit-reorder.png);
 }
 
