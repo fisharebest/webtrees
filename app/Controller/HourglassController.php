@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -310,7 +311,7 @@ class HourglassController extends ChartController {
 				}
 				if ($num > 0) {
 					echo '<div class="center" id="childarrow" style="position:absolute; width:', $this->getBoxDimensions()->width, 'px;">';
-					echo '<a href="#" class="icon-darrow"></a>';
+					echo FontAwesome::linkIcon('arrow-down', I18N::translate('Family'), ['href' => '#', 'id' => 'spouse-child-links']);
 					echo '<div id="childbox">';
 					echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';
 
@@ -422,7 +423,7 @@ class HourglassController extends ChartController {
 					});
 				}
 
-				$('#childarrow').on('click', '.icon-darrow', function(e) {
+				$('#spouse-child-links').on('click', function(e) {
 					e.preventDefault();
 					$('#childbox').slideToggle('fast');
 				})
