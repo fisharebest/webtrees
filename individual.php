@@ -131,6 +131,13 @@ tab.tab("show");
 			<!-- Main image -->
 			<div class="col-sm-3">
 				<?= $controller->record->displayImage(200, 280, 'crop', ['class' => 'img-thumbnail']) ?>
+
+				<?php if (Auth::isEditor($WT_TREE) && $WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
+					<a href="edit_interface.php?action=add-media-link&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
+						<?= I18N::translate('Add a media object') ?>
+					</a>
+				<?php endif ?>
+
 			</div>
 
 			<!-- Names -->
