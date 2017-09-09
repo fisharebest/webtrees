@@ -381,59 +381,15 @@ class Individual extends GedcomRecord {
 
 	/**
 	 * Find the highlighted media object for an individual
-	 * 1. Ignore all media objects that are not displayable because of Privacy rules
-	 * 2. Ignore all media objects with the Highlight option set to "N"
-	 * 3. Pick the first media object that matches these criteria, in order of preference:
-	 *    (a) Level 1 object with the Highlight option set to "Y"
-	 *    (b) Level 1 object with the Highlight option missing or set to other than "Y" or "N"
-	 *    (c) Level 2 or higher object with the Highlight option set to "Y"
 	 *
 	 * @return null|Media
 	 */
 	public function findHighlightedMedia() {
-		$objectA = null;
-		$objectB = null;
-		$objectC = null;
-
-		// Iterate over all of the media items for the individual
-		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches, PREG_SET_ORDER);
-		foreach ($matches as $match) {
-			$media = Media::getInstance($match[2], $this->tree);
-			if (!$media || !$media->canShow() || $media->isExternal()) {
-				continue;
+		foreach ($this->getFacts('OBJE') as $fact) {
+			$media = $fact->getTarget();
+			if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
+				return $media;
 			}
-			$level = $match[1];
-			$prim  = $media->isPrimary();
-			if ($prim == 'N') {
-				continue;
-			}
-			if ($level == 1) {
-				if ($prim == 'Y') {
-					if (empty($objectA)) {
-						$objectA = $media;
-					}
-				} else {
-					if (empty($objectB)) {
-						$objectB = $media;
-					}
-				}
-			} else {
-				if ($prim == 'Y') {
-					if (empty($objectC)) {
-						$objectC = $media;
-					}
-				}
-			}
-		}
-
-		if ($objectA) {
-			return $objectA;
-		}
-		if ($objectB) {
-			return $objectB;
-		}
-		if ($objectC) {
-			return $objectC;
 		}
 
 		return null;
