@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-08 23:25+0000\n"
+"PO-Revision-Date: 2017-09-09 20:36+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1398,7 +1398,7 @@ msgstr ""
 #: admin_trees_download.php:154 app/Module/ClippingsCartModule.php:416
 #: app/Module/ClippingsCartModule.php:776
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Bakisá nzelá ya elɔ́kɔ ya bopanzi nsango GEDCOM na nkómbó ya kásá-kásá"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:866
@@ -1644,8 +1644,9 @@ msgid "Africa"
 msgstr "Afrika"
 
 #: admin_trees_manage.php:682
+#, fuzzy
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyengisa epɛ́sɛli útá na kásá-kásá ya GEDCOM."
 
 #: login.php:255
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -1787,7 +1788,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:344
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "bakása-kásá ínsɔ ezalí na ndingisa mpɔ̂ na kotánga mpé kokoma."
 
 #: admin_trees_config.php:1591
 msgid "All individual facts"
@@ -1901,7 +1902,7 @@ msgstr ""
 #: admin_site_upgrade.php:280 admin_site_upgrade.php:302
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Mbéba ekomí na ntángo ya bofungoli kásá-kásá."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
@@ -1945,7 +1946,7 @@ msgstr "Bankɔ́kɔ ba %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:134
 msgid "Ancestral file number"
-msgstr ""
+msgstr "Motángo mwa kásá-kásá ya bankɔ́kɔ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -3477,7 +3478,7 @@ msgstr "Mayémi"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:325
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Kotála ndingisa ya kásá-kásá…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:112
@@ -3861,7 +3862,7 @@ msgstr ""
 
 #: admin_trees_download.php:135
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Kominiola kásá-kásá ya GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:235
@@ -3961,12 +3962,12 @@ msgstr ""
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:367
 msgid "Copy files…"
-msgstr ""
+msgstr "Koákisa kásá-kásá…"
 
 #: admin_site_upgrade.php:337
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Koákisa bakásá-kásá iye na etúka %s, kokitanisa na eye ezalí na nkómbó mɔ̌kɔ́."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:247
