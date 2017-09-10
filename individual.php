@@ -141,13 +141,13 @@ foreach ($controller->record->getFacts() as $fact) {
 				<?php if (empty($individual_media)): ?>
 					<i class="wt-silhouette wt-silhouette-<?= $controller->record->getSex() ?>"></i>
 				<?php elseif (count($individual_media) === 1): ?>
-					<?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid']) ?>
+					<?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
 				<?php else: ?>
 					<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
 						<div class="carousel-inner">
 							<?php foreach ($individual_media as $n => $media): ?>
 								<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-									<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid']) ?>
+									<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
 								</div>
 							<?php endforeach ?>
 						</div>
