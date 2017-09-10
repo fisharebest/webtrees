@@ -600,7 +600,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UPLOAD/IMPORT -->
 							<li>
 								<i class="fa fa-li fa-upload"></i>
-								<a href="?action=importform&amp;gedcom_id=<?= $tree->getTreeId() ?>">
+								<a href="?action=importform&amp;gedcom_id=<?= $tree->getTreeId() ?>&amp;ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Import') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
