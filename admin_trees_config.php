@@ -469,7 +469,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= Bootstrap4::select($all_tags, '', ['name' => 'tag_type[]']) ?>
 			</td>
 			<td>
-				<?= Bootstrap4::select(FunctionsEdit::optionsRestrictions(true), 'privacy', ['name' => 'resn[]']) ?>
+				<?= Bootstrap4::select(FunctionsEdit::optionsRestrictions(false), 'privacy', ['name' => 'resn[]']) ?>
 			</td>
 			<td>
 			</td>
