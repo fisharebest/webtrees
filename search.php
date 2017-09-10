@@ -148,8 +148,8 @@ function checknames(frm) {
 							<?php if (count(Tree::getAll()) > 10): ?>
 								<input type="button" value="<?= I18N::translate('invert selection') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
 							<?php endif ?>
-							<?php endif ?>
 						</div>
+						<?php endif ?>
 					</div>
 				</div>
 			</div>
@@ -344,8 +344,8 @@ function checknames(frm) {
 								<?php if (count(Tree::getAll()) > 10): ?>
 									<input type="button" value="<?= I18N::translate('invert selection') ?>" onclick="$('#search_trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
 								<?php endif ?>
-								<?php endif ?>
 							</div>
+							<?php endif ?>
 						</div>
 					</div>
 				</div>
