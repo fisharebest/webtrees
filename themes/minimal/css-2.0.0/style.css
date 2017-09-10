@@ -2748,7 +2748,28 @@ div.faq_body {
 }
 
 #childbox {
+	padding: 5px;
+	position: absolute;
 	display: none;
+	text-align: start;
+	white-space: nowrap;
+	top: 20px;
+	left: 0;
+}
+
+[dir=rtl] #childbox {
+	left: auto;
+	right: 0;
+}
+
+.layout3 #childbox {
+	top: auto;
+	bottom: 20px;
+}
+
+#childbox a.name1 {
+	display: block;
+	margin-left: 5px;
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {
