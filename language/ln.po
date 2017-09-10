@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-09 20:36+0000\n"
+"PO-Revision-Date: 2017-09-10 18:14+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1644,7 +1644,6 @@ msgid "Africa"
 msgstr "Afrika"
 
 #: admin_trees_manage.php:682
-#, fuzzy
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyengisa epɛ́sɛli útá na kásá-kásá ya GEDCOM."
 
@@ -4941,7 +4940,7 @@ msgstr "Kozímisa nkomá épɔnɔmí"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:422
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Kozíma kásá-kásá ya sékô tɛ̂…"
 
 #: admin_modules.php:98
 msgid "Delete the preferences for this module."
@@ -5203,7 +5202,7 @@ msgstr "Djibuti"
 
 #: addmedia.php:462 addmedia.php:489 admin_media_upload.php:218
 msgid "Do not change to keep original filename."
-msgstr ""
+msgstr "Kobóngola tɛ́ mpɔ̂ na kobátela nkómbó ya kásá-kásá ya kala."
 
 #: app/Module/GoogleMapsModule.php:2190
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -5248,7 +5247,7 @@ msgstr ""
 
 #: mediaviewer.php:120
 msgid "Download file"
-msgstr ""
+msgstr "Kotíyola kásá-kásá"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
@@ -5689,12 +5688,12 @@ msgstr ""
 
 #: admin_trees_download.php:29
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Komɛmɛ kásá-kásá ya GEDCOM"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:217
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "Komɛmɛ nzeté ya mabótá mánsɔ epái na kásá-kásá ya GEDCOM…"
 
 #: admin_trees_download.php:129
 msgid "Export preferences"
@@ -5708,11 +5707,11 @@ msgstr ""
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:631
 msgid "External files"
-msgstr ""
+msgstr "Bakásá-kásá ya libándá"
 
 #: admin_media.php:670
 msgid "External media files have a URL instead of a filename."
-msgstr ""
+msgstr "Bakásá-kásá ya bopanzi nsango ya libándá bizalí na URL na esíka ya nkómbó ya kásá-kásá."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
@@ -5904,7 +5903,7 @@ msgstr "Búku ya libótá lya %s"
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:329
 msgid "Family file"
-msgstr ""
+msgstr "Kásá-kásá ya libótá"
 
 #: family.php:99
 msgid "Family group information"
@@ -6142,31 +6141,31 @@ msgstr ""
 
 #: admin_media.php:487 app/GedcomTag.php:1374
 msgid "File size"
-msgstr ""
+msgstr "Bonɛ́nɛ bwa kásá-kásá"
 
 #: app/Functions/Functions.php:69
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "Kásá-kásá etómbisámí na nkónzo"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:478 app/GedcomTag.php:357
 msgid "Filename"
-msgstr ""
+msgstr "Nkómbó ya kásá-kásá"
 
 #: addmedia.php:461 addmedia.php:481 admin_media_upload.php:213
 #: app/Functions/FunctionsEdit.php:1777
 msgid "Filename on server"
-msgstr ""
+msgstr "Nkómbó ya kásá-kásá na káti ya esálela mokaboli"
 
 #: addmedia.php:154 addmedia.php:287 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "Nkómbó ya kásá-kásá bisengeli kozala na monkomá “%s” tɛ́."
 
 #: addmedia.php:158 addmedia.php:291 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "Nkómbó ya kásá-kásá bisengeli kozala na esúkya “%s” tɛ́."
 
 #: admin.php:894
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -6532,7 +6531,7 @@ msgstr ""
 #. I18N: gedcom tag _GEDF
 #: admin_trees_manage.php:587 app/GedcomTag.php:363 app/GedcomTag.php:1181
 msgid "GEDCOM file"
-msgstr ""
+msgstr "kásá-kásá ya GEDCOM"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
@@ -6567,7 +6566,7 @@ msgstr ""
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:452
 msgid "Genealogy data"
-msgstr ""
+msgstr "Epɛ́sɛli ya molɔngɔ́ mwa libtótá"
 
 #: admin_trees_config.php:548 admin_trees_config.php:1537
 msgid "General"
@@ -7185,7 +7184,7 @@ msgstr ""
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:957
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr ""
+msgstr "Sɔ́kí nzeté ya mabótá mábalé ekosálela etúka ya elɔ́kɔ ya bopanzi nsango mɔ̌kɔ́, bakokoka kokabolana kásá-kásá ya bopanzi nsango. Sɔ́kí bakosálela bitúka bya bilɔ́kɔ bya bopanzi nsango bikɛsɛ́ní, bakásá-kásá na bangó ekobómbama bisíká bikɛsɛ́ní."
 
 #: admin_trees_config.php:335
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7219,7 +7218,7 @@ msgstr ""
 #: addmedia.php:534 admin_media_upload.php:248
 #: app/Functions/FunctionsEdit.php:1791
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Sɔ́kí ozalí na motángo monɛ́nɛ mwa bakásá-kásá ya bopanzi nsango, okokí koyángela yangó na bitúka mpé bitúka bya káti."
 
 #: admin_trees_manage.php:275
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7227,12 +7226,12 @@ msgstr ""
 
 #: admin_site_config.php:188
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr ""
+msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, esengeli olekisa bakásá-kásá ínsɔ (longola sé config.ini.php, index.php, and .htaccess) útá etúka ezalí kín’o etúka ya sika."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:956
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr ""
+msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, esengeli olekisa mpé bakásá-kásá ya bopanzi nsango ínsɔ útá etúka ezalí kín’o etúka ya sika."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:396
@@ -7266,19 +7265,19 @@ msgstr ""
 
 #: admin_trees_manage.php:604
 msgid "Import"
-msgstr ""
+msgstr "Koyengisa"
 
 #: admin_trees_manage.php:173
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Koyengisa kásá-kásá ya GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:3335
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Koyengisa bisíká bínsɔ útá nzeté ya libótá"
 
 #: admin_trees_manage.php:267
 msgid "Import preferences"
-msgstr ""
+msgstr "Koyengisa malúli"
 
 #: admin_trees_config.php:788 admin_trees_merge.php:79
 #: admin_trees_renumber.php:260
@@ -8811,22 +8810,22 @@ msgstr "Bopanzi nsango"
 
 #: admin_media.php:685 admin_media_upload.php:194
 msgid "Media file"
-msgstr ""
+msgstr "Kásá-kásá ya bopanzi nsango"
 
 #: addmedia.php:444 admin_media_upload.php:196
 #: app/Functions/FunctionsEdit.php:1769
 msgid "Media file to upload"
-msgstr ""
+msgstr "Kásá-kásá ya bopanzi nsango ya kotómbisa"
 
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:157
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Nkómbó ya bakásá-kásá ya bopanzi nsango ekobakisama na libandi %s."
 
 #: admin_media.php:617 admin_trees_config.php:962
 msgid "Media files"
-msgstr ""
+msgstr "Bakásá-kásá ya bopanzi nsango"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:937
@@ -9530,7 +9529,7 @@ msgstr ""
 
 #: admin_site_change.php:335
 msgid "New data"
-msgstr ""
+msgstr "Epɛ́sɛli ya sika"
 
 #. I18N: %s is a server name/URL
 #: login.php:325
@@ -9646,11 +9645,11 @@ msgstr ""
 
 #: admin_trees_manage.php:99 admin_trees_manage.php:120
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Kásá-kásá GEDCOM ezwámí tɛ́."
 
 #: admin_trees_manage.php:251
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Kásá-kásá GEDCOM ezkútámí tɛ́."
 
 #: app/Module/GoogleMapsModule.php:553
 msgid "No ancestors in the database."
@@ -9730,7 +9729,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "Kásá-kásá ezwamí tɛ́. Bandelá lisúsu."
 
 #: relationship.php:209
 msgid "No link between the two individuals could be found."
@@ -10084,11 +10083,11 @@ msgstr ""
 
 #: admin_site_change.php:328
 msgid "Old data"
-msgstr ""
+msgstr "Epɛ́sɛli ya kala"
 
 #: admin.php:887
 msgid "Old files found"
-msgstr ""
+msgstr "Kásá-kásá ya kala ekútámí"
 
 #: pedigree.php:210
 msgid "Oldest at bottom"
@@ -10151,7 +10150,7 @@ msgstr ""
 
 #: setup.php:210
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Webtrees ekokákí kokela Kásá-kásá káti na etúka eye tɛ́."
 
 #: app/Functions/FunctionsPrint.php:436
 msgid "OpenStreetMap™"
@@ -10271,7 +10270,7 @@ msgstr "Nsima nzánga"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr ""
+msgstr "PHP ekángí Kásá-kásá likoló na esúkya na yangó."
 
 #: setup.php:137
 #, php-format
@@ -11372,7 +11371,7 @@ msgstr "Kolongola ekangeli na molɔ́ngɔ́"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:285
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Kolongola nzéla ya elɔ́kɔ ya bopanzi nsango GEDCOM na nkómbó ya kásá-kásá"
 
 #: app/Module/GoogleMapsModule.php:3287
 msgid "Remove this location?"
@@ -11813,7 +11812,7 @@ msgstr "Kopɔnɔ"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:203
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Kopɔnɔ kásá-kásá GEDCOM ya koyengisa"
 
 #: index_edit.php:271
 msgid "Select a block and use the arrows to move it."
@@ -13146,7 +13145,7 @@ msgstr ""
 
 #: admin_trees_manage.php:742
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Kokokanisa nzeté ya mabótá na bakásá-kásá GEDCOM"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6867
@@ -13286,7 +13285,7 @@ msgstr ""
 #: admin_trees_manage.php:143
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Kásá-kásá GEDCOM “%s” eyengisámí."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13386,52 +13385,52 @@ msgstr "Libótá “%s” lizímisami mpó na etikali moto sé mɔ̌kɔ́."
 #: addmedia.php:171 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "Kásá-kásá %s ezali. Sálelá nkómbó ya kásá-kásá isúsu."
 
 #: admin_site_upgrade.php:231 admin_site_upgrade.php:358
 #: admin_site_upgrade.php:391 admin_trees_export.php:39
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Kásá-kásá %s ekokí kokelama tɛ́."
 
 #: admin_media.php:62 admin_media.php:71 admin_site_clean.php:36
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Kásá-kásá %s ekokí kozímama tɛ́."
 
 #: admin_site_upgrade.php:333
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Kásá-kásá ya sika %s ekokí kotíyama tɛ́."
 
 #: admin_site_upgrade.php:356
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "Kásá-kásá %s ekelemákí."
 
 #: admin_media.php:60 admin_media.php:69 admin_site_clean.php:30
 #: admin_site_upgrade.php:411 admin_site_upgrade.php:432
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Kásá-kásá %s ezímamákí tɛ́."
 
 #: admin_media_upload.php:136 admin_media_upload.php:154
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Kásá-kásá %s ya sika etíyamákí."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Kásá-kásá sé ndambo etómbisámí. Bandelá lisúsu."
 
 #. I18N: %s is a filename
 #: medialist.php:297 mediaviewer.php:123
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "Kásá-kásá %s ezalí tɛ́."
 
 #: admin_site_clean.php:34 admin_site_upgrade.php:428
 #, php-format
@@ -14109,7 +14108,7 @@ msgstr ""
 
 #: admin_trees_check.php:129
 msgid "This may be a mistake in your data."
-msgstr ""
+msgstr "Oyo ekokí kozala libúngá na káti ya bipɛ́sɛli na yɔ̌."
 
 #: admin_trees_check.php:128
 msgid "This may cause a problem for other applications."
@@ -14981,7 +14980,7 @@ msgstr ""
 
 #: admin_media.php:636
 msgid "Unused files"
-msgstr ""
+msgstr "Bakásá-kásá ezali kosálelama tɛ́"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
 #: admin_site_upgrade.php:271
@@ -15034,11 +15033,11 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_media_upload.php:32 app/Theme/AdministrationTheme.php:153
 msgid "Upload media files"
-msgstr ""
+msgstr "Kotómbisa bakásá-kásá ya bopanzi nsango"
 
 #: admin_media_upload.php:181
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr ""
+msgstr "Kotómbisa bakásá-kásá ya bopanzi nsango mɔ̌kɔ́ tǒ bayíké útá esálela na yɔ̌ ya ndako. Bakásá-kásá ekokí kozala bilílí, loláká tǒ ndéngé isúsu."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
@@ -15504,7 +15503,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:967
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Náni akokí kotómbisa bakásá-kásá ya bopanzi nsango"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15719,7 +15718,7 @@ msgstr ""
 
 #: admin_trees_manage.php:195
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "Opɔní kásá-kásá GEDCOM mɔ̌kɔ́ na nkómbó ekɛsɛ́ní. Ezali malámu?"
 
 #: logout.php:26
 msgid "You have signed out."
@@ -15886,7 +15885,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:362
 #: app/Module/ClippingsCartModule.php:746
 msgid "Zip file(s)"
-msgstr ""
+msgstr "Bakásá-kásá ya Zip"
 
 #: fanchart.php:109
 msgid "Zoom"
@@ -16554,7 +16553,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa mítáno"
 #. I18N: a program feature
 #: setup.php:143
 msgid "file upload capability"
-msgstr ""
+msgstr "Bokoki bwa botómbisi"
 
 #. I18N: A button label, first page
 #: admin_trees_config.php:1474 app/Datatables.php:49 app/I18N.php:178
@@ -18419,7 +18418,7 @@ msgstr ""
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:3343
 msgid "import"
-msgstr ""
+msgstr "Yengisá"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -19327,7 +19326,7 @@ msgstr "kopɔnɔ na dáti, ya nsúka libosó"
 #. I18N: An option in a list-box
 #: medialist.php:105
 msgid "sort by filename"
-msgstr ""
+msgstr "kopɔnɔ na nkómbó ya kásá-kásá"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:154 app/Module/RecentChangesModule.php:150
