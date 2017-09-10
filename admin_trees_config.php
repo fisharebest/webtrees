@@ -54,6 +54,13 @@ $source_types = [
 
 $THEME_OPTIONS = ['' => I18N::translate('<default theme>')] + Theme::themeNames();
 
+$PRIVACY_CONSTANTS = array(
+	'none'         => I18N::translate('Show to visitors'),
+	'privacy'      => I18N::translate('Show to members'),
+	'confidential' => I18N::translate('Show to managers'),
+	'hidden'       => I18N::translate('Hide from everyone'),
+);
+
 $tags = array_unique(array_merge(
 	explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD')), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE')),
@@ -469,7 +476,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= Bootstrap4::select($all_tags, '', ['name' => 'tag_type[]']) ?>
 			</td>
 			<td>
-				<?= Bootstrap4::select(FunctionsEdit::optionsRestrictions(false), 'privacy', ['name' => 'resn[]']) ?>
+				<?= Bootstrap4::select($PRIVACY_CONSTANTS, 'privacy', ['name' => 'resn[]']) ?>
 			</td>
 			<td>
 			</td>
