@@ -38,13 +38,6 @@ class HourglassController extends ChartController {
 	/** @var int Half height of personbox. */
 	public $bhalfheight;
 
-	/** @var string An arrow that points to the start of the line */
-	private $left_arrow;
-
-	/** @var string An arrow that points to the end of the line. */
-	private $right_arrow;
-
-	const LINK        = "<a class='%s' href='%s' data-parms='%s-%s'></a>";
 	const SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;generations=%s' class='name1'>%s</a>";
 
 	/**
@@ -58,15 +51,6 @@ class HourglassController extends ChartController {
 		// Extract parameters from
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1, 0);
 		$this->generations = Filter::getInteger('generations', 2, $this->tree()->getPreference('MAX_DESCENDANCY_GENERATIONS'), 3);
-
-		//-- flip the arrows for RTL languages
-		if (I18N::direction() === 'ltr') {
-			$this->left_arrow  = 'icon-larrow';
-			$this->right_arrow = 'icon-rarrow';
-		} else {
-			$this->left_arrow  = 'icon-rarrow';
-			$this->right_arrow = 'icon-larrow';
-		}
 
 		$this->bhalfheight = (int) ($this->getBoxDimensions()->height / 2);
 
@@ -124,7 +108,12 @@ class HourglassController extends ChartController {
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count == $this->generations - 1 && $family->getHusband()->getChildFamilies()) {
-					printf(self::LINK, $this->right_arrow, $ARID, 'asc', $this->show_spouse);
+					echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [
+						'href'           => '#',
+						'data-direction' => 'asc',
+						'data-xref'      => $ARID,
+						'data-spouses'   => $this->show_spouse,
+					]);
 				}
 				//-- recursively get the father’s family
 				$this->printPersonPedigree($family->getHusband(), $count + 1);
@@ -156,7 +145,12 @@ class HourglassController extends ChartController {
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count == $this->generations - 1 && $family->getWife()->getChildFamilies()) {
-					printf(self::LINK, $this->right_arrow, $ARID, 'asc', $this->show_spouse);
+					echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [
+						'href'           => '#',
+						'data-direction' => 'asc',
+						'data-xref'      => $ARID,
+						'data-spouses'   => $this->show_spouse,
+					]);
 				}
 				//-- recursively print the mother’s family
 				$this->printPersonPedigree($family->getWife(), $count + 1);
@@ -270,7 +264,13 @@ class HourglassController extends ChartController {
 			if ($kcount == 0) {
 				echo "</td><td style='width:", $this->getBoxDimensions()->width, "px'>";
 			} else {
-				printf(self::LINK, $this->left_arrow, $pid, 'desc', $this->show_spouse);
+				echo FontAwesome::linkIcon('arrow-start', I18N::translate('Children'), [
+					'href'           => '#',
+					'data-direction' => 'desc',
+					'data-xref'      => $pid,
+					'data-spouses'   => $this->show_spouse,
+				]);
+
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					echo str_repeat('<br><br><br>', count($families));
@@ -427,13 +427,15 @@ class HourglassController extends ChartController {
 					e.preventDefault();
 					$('#childbox').slideToggle('fast');
 				})
-				$('.hourglassChart').on('click', '.icon-larrow, .icon-rarrow', function(e){
+				$('.hourglassChart').on('click', '.wt-icon-arrow-start, .wt-icon-arrow-end', function (e) {
 					e.preventDefault();
 					e.stopPropagation();
-					var self = $(this),
-						parms = self.data('parms').split('-'),
-						id = self.attr('href');
-					$('#td_'+id).load('hourglass_ajax.php?rootid='+ id +'&generations=1&type='+parms[0]+'&show_spouse='+(parseInt(parms[1]) ? 1:0), function(){
+
+					var direction = this.parentNode.dataset.direction;
+					var xref      = this.parentNode.dataset.xref;
+					var spouses   = this.parentNode.dataset.spouses;
+					
+					$('#td_' + xref).load('hourglass_ajax.php?rootid='+ xref +'&generations=1&type=' + direction + '&show_spouse=' + spouses, function() {
 						sizeLines();
 					});
 				});
