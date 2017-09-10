@@ -72,7 +72,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 		(function() {
 			$("#childarrow").on("click", ".menuselect", function(e) {
 				e.preventDefault();
-				$("#childbox").slideToggle("fast");
+				$("#childbox-pedigree").slideToggle("fast");
 			});
 	
 			$("#pedigree_chart")

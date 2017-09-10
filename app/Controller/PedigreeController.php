@@ -257,7 +257,7 @@ class PedigreeController extends ChartController {
 		$families = $this->root->getSpouseFamilies();
 		$html     = '';
 		if (!empty($families)) {
-			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox">', $this->arrows->menu);
+			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox-pedigree">', $this->arrows->menu);
 
 			foreach ($families as $family) {
 				$html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
@@ -285,7 +285,7 @@ class PedigreeController extends ChartController {
 				}
 			}
 			$html .=
-				'</div>' . // #childbox
+				'</div>' . // #childbox-pedigree
 				'</div>'; // #childarrow
 		}
 

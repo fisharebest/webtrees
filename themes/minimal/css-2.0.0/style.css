@@ -2667,37 +2667,10 @@ div.faq_body {
 }
 
 /*-- Pedigree ---- */
-#pedigree_chart {
-	position: relative;
-	margin: 20px auto;
-}
-
 #pedigree_canvas {
 	color:   #555;
-	z-index: -1000;
 }
 
-#pedigree-page .shadow {
-	position: absolute;
-	white-space: nowrap;
-}
-
-#pedigree-page .layout0 .shadow > div,
-#pedigree-page .layout1 .shadow > div {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-#pedigree-page .spacer {
-	background-image: url(images/spacer.png);
-	height:           20px;
-	width:            1px;
-}
-
-#childarrow,
-.ancestorarrow {
-	text-align: center;
-}
 
 .tdtop {
 	vertical-align: top;
