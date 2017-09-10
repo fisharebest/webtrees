@@ -3665,22 +3665,21 @@ div.faq_body {
 	background-image: url(images/silhouette_unknown_small.png);
 }
 
-#indi_mainimage .icon-silhouette-F {
-	width: 99px;
-	height: 106px;
-	background-image: url(images/silhouette_female.png);
+.wt-silhoutte {
+	width: 200px;
+	height: 260px;
 }
 
-#indi_mainimage .icon-silhouette-M {
-	width: 99px;
-	height: 99px;
-	background-image: url(images/silhouette_male.png);
+.wt-silhoutte::before {
+	content: url(images/silhouette_unknown.png);
 }
 
-#indi_mainimage .icon-silhouette-U {
-	width: 100px;
-	height: 97px;
-	background-image: url(images/silhouette_unknown.png);
+.wt-silhoutte-F::before {
+	content: url(images/silhouette_female.png);
+}
+
+.wt-silhouette-M::before {
+	content: url(images/silhouette_male.png);
 }
 
 [class^="icon-mime-"],

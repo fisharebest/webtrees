@@ -138,23 +138,30 @@ foreach ($controller->record->getFacts() as $fact) {
 		<div class="row">
 			<!-- Individual images -->
 			<div class="col-sm-3">
-				<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
-					<div class="carousel-inner">
-						<?php foreach ($individual_media as $n => $media): ?>
-							<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-								<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail d-block w-100']) ?>
-							</div>
-						<?php endforeach ?>
+				<?php if (empty($individual_media)): ?>
+					<i class="wt-silhouette wt-silhouette-<?= $controller->record->getSex() ?>"></i>
+				<?php elseif (count($individual_media) === 1): ?>
+					<?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid']) ?>
+				<?php else: ?>
+					<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+						<div class="carousel-inner">
+							<?php foreach ($individual_media as $n => $media): ?>
+								<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
+									<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid']) ?>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only"><?= I18N::translate('previous') ?></span>
+						</a>
+						<a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only"><?= I18N::translate('next') ?></span>
+						</a>
 					</div>
-					<a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only"><?= I18N::translate('previous') ?></span>
-					</a>
-					<a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only"><?= I18N::translate('next') ?></span>
-					</a>
-				</div>
+
+				<?php endif ?>
 
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
