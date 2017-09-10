@@ -119,6 +119,14 @@ if (tab.length === 0) {
 tab.tab("show");
 ');
 
+$individual_media = [];
+foreach ($controller->record->getFacts() as $fact) {
+	$media = $fact->getTarget();
+	if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
+		$individual_media[] = $media;
+	}
+}
+
 ?>
 
 <h2>
@@ -128,9 +136,46 @@ tab.tab("show");
 <div class="row">
 	<div class="col-sm-8">
 		<div class="row">
-			<!-- Main image -->
+			<!-- Individual images -->
 			<div class="col-sm-3">
-				<?= $controller->record->displayImage(200, 280, 'crop', ['class' => 'img-thumbnail']) ?>
+				<?php if (empty($individual_media)): ?>
+					<i class="wt-silhouette wt-silhouette-<?= $controller->record->getSex() ?>"></i>
+				<?php elseif (count($individual_media) === 1): ?>
+					<?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+				<?php else: ?>
+					<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+						<div class="carousel-inner">
+							<?php foreach ($individual_media as $n => $media): ?>
+								<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
+									<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only"><?= I18N::translate('previous') ?></span>
+						</a>
+						<a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only"><?= I18N::translate('next') ?></span>
+						</a>
+					</div>
+
+				<?php endif ?>
+
+				<?php if (Auth::isEditor($WT_TREE)): ?>
+					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
+						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+							<?= I18N::translate('Re-order media') ?>
+						</a></div>
+					<?php endif ?>
+
+					<?php if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
+						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+							<?= I18N::translate('Add a media object') ?>
+						</a></div>
+					<?php endif ?>
+				<?php endif ?>
 			</div>
 
 			<!-- Names -->
@@ -146,9 +191,20 @@ tab.tab("show");
 				<div class="card">
 					<div class="card-header" role="tab" id="name-header-add">
 						<div class="card-title mb-0">
-							<a href="edit_interface.php?action=addname&amp;xref=<?= $controller->record->getXref() ?>&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>">
+							<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 								<?= I18N::translate('Add a name') ?>
 							</a>
+							<?php if (count($controller->record->getFacts('NAME')) > 1): ?>
+								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+									<?= I18N::translate('Re-order names') ?>
+								</a>
+							<?php endif ?>
+
+							<?php if (count($controller->record->getFacts('SEX')) === 0): ?>
+								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+									<?= I18N::translate('Edit the gender') ?>
+								</a>
+							<?php endif ?>
 						</div>
 					</div>
 				</div>

@@ -1199,14 +1199,6 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
 					}
 
-					switch ($media->isPrimary()) {
-					case 'Y':
-						echo GedcomTag::getLabelValue('_PRIM', I18N::translate('yes'));
-						break;
-					case 'N':
-						echo GedcomTag::getLabelValue('_PRIM', I18N::translate('no'));
-						break;
-					}
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
 					echo self::printFactSources($media->getGedcom(), 1);
 				} else {

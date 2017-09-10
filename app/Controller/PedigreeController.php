@@ -102,20 +102,20 @@ class PedigreeController extends ChartController {
 		case self::PORTRAIT:
 			//drop through
 		case self::LANDSCAPE:
-			$this->arrows->prevGen = I18N::direction() === 'rtl' ? 'icon-larrow' : 'icon-rarrow';
-			$this->arrows->menu    = I18N::direction() === 'rtl' ? 'icon-rarrow' : 'icon-larrow';
+			$this->arrows->prevGen = 'fa fa-arrow-end wt-icon-arrow-end';
+			$this->arrows->menu    = 'fa fa-arrow-start wt-icon-arrow-start';
 			$addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
 			$addoffset['y']        = 0;
 			break;
 		case self::OLDEST_AT_TOP:
-			$this->arrows->prevGen = 'icon-uarrow';
-			$this->arrows->menu    = 'icon-darrow';
+			$this->arrows->prevGen = 'fa fa-arrow-up wt-icon-arrow-up';
+			$this->arrows->menu    = 'fa fa-arrow-down wt-icon-arrow-down';
 			$addoffset['x']        = 0;
 			$addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
 			break;
 		case self::OLDEST_AT_BOTTOM:
-			$this->arrows->prevGen = 'icon-darrow';
-			$this->arrows->menu    = 'icon-uarrow';
+			$this->arrows->prevGen = 'fa fa-arrow-down wt-icon-arrow-down';
+			$this->arrows->menu    = 'fa fa-arrow-up wt-icon-arrow-up';
 			$addoffset['x']        = 0;
 			$addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
 			break;
@@ -257,7 +257,7 @@ class PedigreeController extends ChartController {
 		$families = $this->root->getSpouseFamilies();
 		$html     = '';
 		if (!empty($families)) {
-			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox">', $this->arrows->menu);
+			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox-pedigree">', $this->arrows->menu);
 
 			foreach ($families as $family) {
 				$html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
@@ -285,7 +285,7 @@ class PedigreeController extends ChartController {
 				}
 			}
 			$html .=
-				'</div>' . // #childbox
+				'</div>' . // #childbox-pedigree
 				'</div>'; // #childarrow
 		}
 

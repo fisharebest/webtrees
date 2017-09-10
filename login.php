@@ -159,7 +159,7 @@ default:
 
 	echo '<p class="center"><strong>' . I18N::translate('Welcome to this genealogy website') . '</strong></p>';
 
-	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE') === '1') {
+	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
 		echo '<p>' . I18N::translate('Anyone with a user account can access this website.') . ' ' . I18N::translate('You can apply for an account using the link below.') . '</p>';
 		break;

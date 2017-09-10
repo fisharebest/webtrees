@@ -207,19 +207,6 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * Is this object marked as a highlighted image?
-	 *
-	 * @return string
-	 */
-	public function isPrimary() {
-		if (preg_match('/\n\d _PRIM ([YN])/', $this->getGedcom(), $match)) {
-			return $match[1];
-		} else {
-			return '';
-		}
-	}
-
-	/**
 	 * get image properties
 	 *
 	 * @return array

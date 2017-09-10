@@ -83,6 +83,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			echo '<script>';
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
 			echo '</script>';
+			echo '<div class="clipping-cart">';
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
@@ -91,13 +92,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			if ($clip_ctrl->action == 'add') {
 				$record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
 				if ($clip_ctrl->type === 'FAM') { ?>
-					<form action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
 						<input type="hidden" name="id" value="<?= $clip_ctrl->id ?>">
 						<input type="hidden" name="type" value="<?= $clip_ctrl->type ?>">
 						<input type="hidden" name="action" value="add1">
-						<table>
+						<table class="add-to center">
 							<thead>
 								<tr>
 									<td class="topbottombar">
@@ -135,14 +136,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tfoot>
 						</table>
 					</form>
+				</div>
 				<?php } elseif ($clip_ctrl->type === 'INDI') { ?>
-					<form action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
 						<input type="hidden" name="id" value="<?= $clip_ctrl->id ?>">
 						<input type="hidden" name="type" value="<?= $clip_ctrl->type ?>">
 						<input type="hidden" name="action" value="add1">
-						<table>
+						<table class="add-to center">
 							<thead>
 								<tr>
 									<td class="topbottombar">
@@ -258,14 +260,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tfoot>
 						</table>
 					</form>
+				</div>
 				<?php } elseif ($clip_ctrl->type === 'SOUR') { ?>
-					<form action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
 						<input type="hidden" name="id" value="<?= $clip_ctrl->id ?>">
 						<input type="hidden" name="type" value="<?= $clip_ctrl->type ?>">
 						<input type="hidden" name="action" value="add1">
-						<table>
+						<table class="add-to center">
 							<thead>
 								<tr>
 									<td class="topbottombar">
@@ -301,17 +304,20 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tfoot>
 						</table>
 					</form>
+				</div>
 				<?php }
 			}
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
+					echo '<div class="center">';
 					echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
+					echo '</div>';
 					?>
-					<form name="addin" action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" name="addin" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
-						<table>
+						<table class="add-to center">
 							<thead>
 								<tr>
 									<td colspan="2" class="topbottombar">
@@ -332,23 +338,25 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tbody>
 						</table>
 					</form>
+				</div>
 					<?php
 				}
-
+				echo '<div class="center">';
 				// -- end new lines
 				echo I18N::translate('Your clippings cart is empty.');
+				echo '</div>';
 			} else {
 				// Keep track of the INDI from the parent page, otherwise it will
 				// get lost after ajax updates
 				$pid = Filter::get('pid', WT_REGEX_XREF);
 
 				if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
-					<form action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
 						<input type="hidden" name="action" value="download">
 						<input type="hidden" name="pid" value="<?= $pid ?>">
-						<table>
+						<table class="add-to center">
 							<tr>
 								<td colspan="2" class="topbottombar">
 									<h2><?= I18N::translate('Download') ?></h2>
@@ -401,12 +409,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tr>
 						</table>
 					</form>
+				</div>
 					<br>
 
-					<form name="addin" action="module.php">
+					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" name="addin" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
-						<table>
+						<table class="add-to center">
 							<thead>
 								<tr>
 									<td colspan="2" class="topbottombar" style="text-align:center; ">
@@ -436,13 +445,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							</tfoot>
 						</table>
 					</form>
-
+				</div>
 				<?php } ?>
-
+				<div class="clipping-cart">
 				<h2>
 					<?= I18N::translate('Family tree clippings cart') ?>
 				</h2>
-				<table id="mycart" class="sortable list_table width100">
+				<table id="mycart" class="sortable list_table width50">
 					<thead>
 						<tr>
 							<th class="list_label"><?= I18N::translate('Record') ?></th>
@@ -492,6 +501,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 						}
 						?>
 				</table>
+			</div>
 				<?php
 			}
 			break;
@@ -708,7 +718,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				$("#sb_clippings_content").load(link);
 			}';
 		$out .= '</script>';
-		$out .= '<form action="module.php">
+		$out .= '<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 		<input type="hidden" name="mod" value="clippings">
 		<input type="hidden" name="mod_action" value="index">
 		<input type="hidden" name="pid" value="' . $pid . '">

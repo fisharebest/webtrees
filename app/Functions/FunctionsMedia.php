@@ -54,18 +54,18 @@ class FunctionsMedia {
 	 */
 	public static function outputHttpStatusAsImage($status, $message) {
 		$width      = 100;
-		$height     = 50;
+		$height     = 100;
 		$image      = imagecreatetruecolor($width, $height);
 		$foreground = imagecolorallocate($image, 255, 0, 0);
-		$background = imagecolorallocate($image, 255, 255, 255);
+		$background = imagecolorallocate($image, 224, 224, 224);
 
 		// Draw a border
 		imagefilledrectangle($image, 0, 0, $width, $height, $foreground);
 		imagefilledrectangle($image, 1, 1, $width - 2, $height - 2, $background);
 
 		// Draw text
-		imagestring($image, 5, 5, 5, (string) $status, $foreground);
-		imagestring($image, 5, 5, 25, $message, $foreground);
+		imagestring($image, 5, 5, 30, (string) $status, $foreground);
+		imagestring($image, 5, 5, 50, $message, $foreground);
 
 
 		http_response_code(404);

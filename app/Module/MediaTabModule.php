@@ -74,21 +74,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 		if (!$this->getFactsWithMedia()) {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no media objects for this individual.'), '</td></tr>';
 		}
-		// New media link
-		if ($controller->record->canEdit() && $WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->record->getTree())) {
-			?>
-			<tr>
-				<td class="facts_label">
-					<?= I18N::translate('Media object') ?>
-				</td>
-				<td class="facts_value">
-					<a href="edit_interface.php?action=add-media-link&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>">
-						<?= I18N::translate('Add a media object') ?>
-					</a>
-				</td>
-			</tr>
-		<?php
-		}
 		?>
 		</table>
 		<?php

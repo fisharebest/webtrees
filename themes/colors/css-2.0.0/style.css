@@ -607,14 +607,6 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(menu/edit-indi.png);
 }
 
-.menu-indi-orderfam::before {
-	content: url(menu/edit-reorder.png);
-}
-
-.menu-indi-ordername::before {
-	content: url(menu/edit-reorder.png);
-}
-
 .menu-indi-del::before {
 	content: url(menu/edit-delete.png);
 }
@@ -2907,10 +2899,6 @@ div.faq_body {
 }
 
 /* Clippings */
-#sb_content_clippings {
-	margin-top: 2px;
-}
-
 #sb_clippings_content ul {
 	padding: 0;
 	margin: 0;
@@ -2957,43 +2945,6 @@ div.faq_body {
 
 [dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
-}
-
-/* ===== search.php ===== */
-#search-page h2 {
-	margin: 20px;
-	text-align: center;
-}
-
-#search-page-table {
-	border: 1px solid #ddd;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 580px;
-}
-
-#search-page-table .label {
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-}
-
-#search-page-table .value {
-	background-color: #ecf5ff;
-	color: #333;
-	padding: 5px;
-}
-
-#search-page-table p {
-	margin: 0;
-}
-
-[dir=rtl] #search-page-table .label {
-	float: right;
-}
-
-[dir=rtl] #search-page-table .value {
-	margin: 0 30% 0 0;
 }
 
 /*  edituser.php  */
@@ -3378,66 +3329,9 @@ div.faq_body {
 }
 
 /*-- Pedigree ---- */
-#pedigree_chart {
-	position: relative;
-	margin: 20px auto;
-}
 
 #pedigree_canvas {
 	color:   #81a9cb;
-	z-index: -1000;
-}
-
-#pedigree-page .layout0 .shadow > div,
-#pedigree-page .layout1 .shadow > div {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-#pedigree-page .spacer {
-	background-image: url(images/spacer.png);
-	height:           20px;
-	width:            1px;
-}
-
-#childarrow,
-.ancestorarrow {
-	text-align: center;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-#pedigree_chart .person_box_template {
-	display: inline-block;
-}
-
-#pedigree_chart .shadow {
-	white-space: nowrap;
-}
-
-#pedigree-page #childarrow {
-	position: relative;
-}
-
-#pedigree-page #childbox {
-	border:           1px solid;
-	background-color: #fff;
-}
-
-.pedigree_form {
-	width: 45px;
-}
-
-#pedigree-page table.list_table {
-	margin: 0 auto;
-	width:  500px;
-}
-
-.pedigree_chart_table {
-	border:          0;
-	border-collapse: collapse;
-	padding:         0;
-	width:           100%;
 }
 
 /*-- timeline  --*/
@@ -3801,22 +3695,21 @@ div.faq_body {
 	background-image: url(images/silhouette_unknown_small.png);
 }
 
-#indi_mainimage .icon-silhouette-F {
-	width: 99px;
-	height: 106px;
-	background-image: url(images/silhouette_female.png);
+.wt-silhoutte {
+	width: 200px;
+	height: 260px;
 }
 
-#indi_mainimage .icon-silhouette-M {
-	width: 99px;
-	height: 99px;
-	background-image: url(images/silhouette_male.png);
+.wt-silhoutte::before {
+	content: url(images/silhouette_unknown.png);
 }
 
-#indi_mainimage .icon-silhouette-U {
-	width: 100px;
-	height: 97px;
-	background-image: url(images/silhouette_unknown.png);
+.wt-silhoutte-F::before {
+	content: url(images/silhouette_female.png);
+}
+
+.wt-silhouette-M::before {
+	content: url(images/silhouette_male.png);
 }
 
 [class^="icon-mime-"],

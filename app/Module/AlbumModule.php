@@ -84,22 +84,6 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		global $WT_TREE, $controller;
 
 		$html = '<div id="' . $this->getName() . '_content">';
-		//Show Lightbox-Album header Links
-		if (Auth::isEditor($WT_TREE)) {
-			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
-			// Add a media object
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				$html .= '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
-			}
-
-			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
-				$html .= '<span><a href="edit_interface.php?action=reorder-media&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">';
-				$html .= I18N::translate('Re-order media');
-				$html .= '</a></span>';
-			}
-			$html .= '</td></tr></table>';
-		}
-
 		$html .= '<div class="facts_value">';
 		$html .= '<ul class="album-list">';
 		foreach ($this->getMedia() as $media) {

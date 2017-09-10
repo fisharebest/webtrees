@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-04 15:06+0000\n"
+"PO-Revision-Date: 2017-09-09 20:36+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -75,7 +75,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:253
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s  ezwamí na seconde %2$s."
+msgstr "KB %1$s  ezwamakí na segonde %2$s."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
@@ -87,7 +87,7 @@ msgstr "%1$s ezalí tɛ́."
 #: admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s ezalí tɛ́. Okanisáksí %2$s?"
+msgstr "%1$s ezalí tɛ́. Okanisí %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:198
@@ -100,8 +100,8 @@ msgstr "%1$s ezalí na ekangisi na %2$s tɛ́."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "kásá-kásá %1$s ebimisamákí na segonde %2$s."
+msgstr[1] "bakásá-kásá %1$s ebimisamákí na segonde %2$s."
 
 #: app/Module/GoogleMapsModule.php:542
 #, php-format
@@ -373,8 +373,8 @@ msgstr "%s na bolongoli mɔ̌kɔ́ na nsé"
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "segonde %s elekí"
+msgstr[1] "basegonde %s elekí"
 
 #. I18N: %s is a person's name
 #: message.php:220
@@ -763,12 +763,12 @@ msgstr "Liyémi lya bankɔ́kɔ bwa moto mɔ̌kɔ́, na loléngé lya nzínga."
 #: admin_trees_download.php:109 admin_trees_manage.php:220
 #: app/Module/GoogleMapsModule.php:2150
 msgid "A file on the server"
-msgstr ""
+msgstr "Kásá-kásá káti na esálela mokaboli"
 
 #: admin_trees_download.php:196 admin_trees_manage.php:209
 #: app/Module/GoogleMapsModule.php:2140
 msgid "A file on your computer"
-msgstr ""
+msgstr "Kásá-kásá káti na esálela na yɔ̌"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
@@ -808,12 +808,12 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:38
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama mikosálema lɛlɔ́."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:46
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama mizalí koyâ.."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:37
@@ -1398,7 +1398,7 @@ msgstr ""
 #: admin_trees_download.php:154 app/Module/ClippingsCartModule.php:416
 #: app/Module/ClippingsCartModule.php:776
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Bakisá nzelá ya elɔ́kɔ ya bopanzi nsango GEDCOM na nkómbó ya kásá-kásá"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:866
@@ -1644,8 +1644,9 @@ msgid "Africa"
 msgstr "Afrika"
 
 #: admin_trees_manage.php:682
+#, fuzzy
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyengisa epɛ́sɛli útá na kásá-kásá ya GEDCOM."
 
 #: login.php:255
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -1787,7 +1788,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:344
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "bakása-kásá ínsɔ ezalí na ndingisa mpɔ̂ na kotánga mpé kokoma."
 
 #: admin_trees_config.php:1591
 msgid "All individual facts"
@@ -1901,7 +1902,7 @@ msgstr ""
 #: admin_site_upgrade.php:280 admin_site_upgrade.php:302
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Mbéba ekomí na ntángo ya bofungoli kásá-kásá."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
@@ -1945,7 +1946,7 @@ msgstr "Bankɔ́kɔ ba %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:134
 msgid "Ancestral file number"
-msgstr ""
+msgstr "Motángo mwa kásá-kásá ya bankɔ́kɔ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -3477,7 +3478,7 @@ msgstr "Mayémi"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:325
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Kotála ndingisa ya kásá-kásá…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:112
@@ -3861,7 +3862,7 @@ msgstr ""
 
 #: admin_trees_download.php:135
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Kominiola kásá-kásá ya GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:235
@@ -3961,12 +3962,12 @@ msgstr ""
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:367
 msgid "Copy files…"
-msgstr ""
+msgstr "Koákisa kásá-kásá…"
 
 #: admin_site_upgrade.php:337
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Koákisa bakásá-kásá iye na etúka %s, kokitanisa na eye ezalí na nkómbó mɔ̌kɔ́."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:247
@@ -9039,13 +9040,14 @@ msgid "Micronesia"
 msgstr ""
 
 #: statistics.php:700
+#, fuzzy
 msgid "Middle East"
-msgstr ""
+msgstr "Monyɛlɛ mwa káti"
 
 #. I18N: time format “%A” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:97
 msgid "Midnight"
-msgstr ""
+msgstr "Bozékétáné"
 
 #. I18N: gedcom tag _MILI
 #: app/GedcomTag.php:1287
@@ -9818,7 +9820,7 @@ msgstr ""
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:103
 msgid "Noon"
-msgstr ""
+msgstr "Nzánga"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
@@ -10264,7 +10266,7 @@ msgstr ""
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:106
 msgid "P.M."
-msgstr "Mpókwa"
+msgstr "Nsima nzánga"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
@@ -11232,7 +11234,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Likomi lya momɛsɛno"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
@@ -16378,7 +16380,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3031
 msgid "east"
-msgstr ""
+msgstr "monyɛlɛ"
 
 #. I18N: A button label.
 #: admin_trees_config.php:1313
@@ -18580,7 +18582,7 @@ msgstr ""
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:81
 msgid "midnight"
-msgstr ""
+msgstr "bozékétáné"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:92
@@ -18760,7 +18762,7 @@ msgstr "nzánga"
 
 #: app/Module/GoogleMapsModule.php:3014
 msgid "north"
-msgstr ""
+msgstr "nɔrdi"
 
 #: statistics.php:758 statisticsplot.php:816 statisticsplot.php:862
 #: statisticsplot.php:912 statisticsplot.php:958 statisticsplot.php:1008
@@ -18794,7 +18796,7 @@ msgstr "mobimba"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:90
 msgid "p.m."
-msgstr "mpókwa"
+msgstr "nsima nzánga"
 
 #: app/Functions/Functions.php:691
 msgid "parent"
@@ -19348,7 +19350,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3017
 msgid "south"
-msgstr "súdi"
+msgstr "ngɛlɛ"
 
 #: app/Functions/Functions.php:745 edit_interface.php:1871
 #: edit_interface.php:1881 edit_interface.php:1903 edit_interface.php:1914
@@ -19733,7 +19735,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "west"
-msgstr "Wɛsti"
+msgstr "Eloli"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1870
 #: edit_interface.php:1902
