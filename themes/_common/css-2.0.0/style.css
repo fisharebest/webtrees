@@ -170,6 +170,10 @@
 	text-align: center;
 }
 
+.wt-page-options-value {
+	padding: 0.25rem 0.75rem;
+}
+
 .wt-footer-container {
 }
 

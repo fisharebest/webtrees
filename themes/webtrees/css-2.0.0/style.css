@@ -727,7 +727,6 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-page-options-value {
 	background-color: #edf7f9;
 	border: solid #81a9cb 1px;
-	padding: 0.25rem 0.75rem;
 }
 
 .wt-page-content {
