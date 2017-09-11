@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-10 18:14+0000\n"
+"PO-Revision-Date: 2017-09-11 22:09+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -318,7 +318,7 @@ msgstr[1] "bato %s na milúlú katikáti ya %s na %s mpé %s"
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s ekangámí na káti ya esálela mokaboli eye. Okoki kofándisa webtrees tɛ́ kín'ó ekolamuka. Sɛ́ngá na mokambi wa esálela mokaboli na yɔ̌ alamusa yangó."
 
 #: app/Module/UserMessagesModule.php:84
 #, php-format
@@ -559,9 +559,9 @@ msgstr "(mbúla mingi kolúta %s)"
 #. I18N: %s is a number
 #. I18N: %s is a placeholder for a number
 #: app/Datatables.php:57 app/I18N.php:186
-#, php-format
+#, fuzzy, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(ekɔngɔlámí útá mitángo mya makótisi %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:247
@@ -783,7 +783,7 @@ msgstr "Liloba lya boyéi bolámu mpɔ̂ na batáli."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:44
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr ""
+msgstr "Molɔngɔ́ mwa mabóngoli bisengélí kotálama epái ya mondimi mpé biyébisi bya nkomá."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:40
@@ -1321,7 +1321,7 @@ msgstr "Kobakisa mwǎna mobáli tǒ mwǎna mwǎsí"
 #: app/Controller/FamilyController.php:164 app/Functions/FunctionsEdit.php:988
 #: app/Module/SourcesTabModule.php:94
 msgid "Add a source citation"
-msgstr ""
+msgstr "Bakísá ebandela ya lisapo"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:359
@@ -1470,7 +1470,7 @@ msgstr "Kɔ́nti ya mokambi"
 
 #: admin_users.php:488
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Ndimbola ya mokambi likoló na mosáleli"
 
 #: admin.php:667
 msgid "Administrators"
@@ -1479,138 +1479,138 @@ msgstr "Bakambi"
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr "Babɔ́kɔ́lí yě na babóti bábalé"
+msgstr "Abɔ́kɔ́lɛlɛmí na babóti bábalé"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "Babɔ́kɔ́lí yě na babóti bábalé"
+msgstr "Abɔ́kɔ́lɛlɛmí na babóti bábalé"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "Babɔ́kɔ́lí yě na babóti bábalé"
+msgstr "Abɔ́kɔ́lɛlɛmí na babóti bábalé"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:644
 msgid "Adopted by father"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí na tatá"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:642
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí na tatá"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:640
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Abɔ́kɔ́lɛlɛmí na tatá"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:653
 msgid "Adopted by mother"
-msgstr "Abɔ́kɔlɔmí na mamá"
+msgstr "Abɔ́kɔ́lɛlɛmí na mamá"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:651
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr "Abɔ́kɔlɔmí na mamá"
+msgstr "Abɔ́kɔ́lɛlɛmí na mamá"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:649
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr "Abɔ́kɔlɔmí na mamá"
+msgstr "Abɔ́kɔ́lɛlɛmí na mamá"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:128
 msgid "Adoption"
-msgstr ""
+msgstr "Bobɔ́kɔlɛli"
 
 #: app/GedcomTag.php:631
 msgid "Adoption of a brother"
-msgstr "Bobɔ́kɔli bwa ndeko mobáli"
+msgstr "Bobɔ́kɔlɛli bwa ndeko mobáli"
 
 #: app/GedcomTag.php:590
 msgid "Adoption of a child"
-msgstr ""
+msgstr "Bobɔ́kɔlɛli bwa mwǎna"
 
 #: app/GedcomTag.php:588
 msgid "Adoption of a daughter"
-msgstr "Bobɔ́kɔli bwa mwǎna mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa mwǎna mwǎsí"
 
 #: app/GedcomTag.php:599 app/GedcomTag.php:608 app/GedcomTag.php:617
 msgid "Adoption of a grandchild"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ-mwǎna"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ-mwǎna"
 
 #: app/GedcomTag.php:597
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:606
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:615
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:595
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:604
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:613
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:622
 msgid "Adoption of a half-brother"
-msgstr "Bobɔ́kɔli bwa ndeko ikɛ́ mobáli"
+msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́ mobáli"
 
 #: app/GedcomTag.php:626
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́"
 
 #: app/GedcomTag.php:624
 msgid "Adoption of a half-sister"
-msgstr "Bobɔ́kɔli bwa ndeko ikɛ́ mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́ mwǎsí"
 
 #: app/GedcomTag.php:635
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Bobɔ́kɔlɛli bwa ndeko"
 
 #: app/GedcomTag.php:633
 msgid "Adoption of a sister"
-msgstr "Bobɔ́kɔli bwa ndeko mwǎsí"
+msgstr "Bobɔ́kɔlɛli bwa ndeko mwǎsí"
 
 #: app/GedcomTag.php:586
 msgid "Adoption of a son"
-msgstr ""
+msgstr "Bobɔ́kɔlɛli bwa mwǎna mobáli"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:227
@@ -3707,7 +3707,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "Makákoli bya lisapo"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:229
@@ -4347,7 +4347,7 @@ msgstr ""
 
 #: app/GedcomTag.php:130
 msgid "Date of adoption"
-msgstr ""
+msgstr "Dáti ya bobɔ́kɔlɛli"
 
 #: app/GedcomTag.php:160 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
@@ -9039,7 +9039,6 @@ msgid "Micronesia"
 msgstr ""
 
 #: statistics.php:700
-#, fuzzy
 msgid "Middle East"
 msgstr "Monyɛlɛ mwa káti"
 
@@ -9067,7 +9066,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:3
 #: modules_v3/missing_facts_report/report.xml:52
 msgid "Missing data"
-msgstr ""
+msgstr "Epɛ́sɛli ezángí"
 
 #: edit_changes.php:197
 msgid "Moderate pending changes"
@@ -10624,7 +10623,7 @@ msgstr ""
 
 #: app/GedcomTag.php:132
 msgid "Place of adoption"
-msgstr ""
+msgstr "Esíká ya bobɔ́kɔlɛli"
 
 #: app/GedcomTag.php:162 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
@@ -13811,7 +13810,7 @@ msgstr ""
 
 #: app/Module/SourcesTabModule.php:82
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "Ebandela ya masapo ma moto óyo ezalí tɛ́."
 
 #: app/Module/ReviewChangesModule.php:88 app/Module/ReviewChangesModule.php:112
 #: app/Theme/AbstractTheme.php:2037
@@ -14108,7 +14107,7 @@ msgstr ""
 
 #: admin_trees_check.php:129
 msgid "This may be a mistake in your data."
-msgstr "Oyo ekokí kozala libúngá na káti ya bipɛ́sɛli na yɔ̌."
+msgstr "Oyo ekokí kozala libúngá na káti ya epɛ́sɛli na yɔ̌."
 
 #: admin_trees_check.php:128
 msgid "This may cause a problem for other applications."
@@ -15081,7 +15080,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1825
 msgid "Use full source citations"
-msgstr ""
+msgstr "Kosálela ebandela ya masapo mobimba"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:361
@@ -15493,7 +15492,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:157
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "Bofándisi bwa PhpGedView ya yɔ̌ ezlí wápi?"
 
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:309
@@ -15516,11 +15515,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:618
 msgid "Widow"
-msgstr ""
+msgstr "Mozéngé mwǎsí"
 
 #: app/Functions/FunctionsPrintLists.php:609
 msgid "Widower"
-msgstr ""
+msgstr "Mozéngé mobáli"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1027
@@ -15968,7 +15967,7 @@ msgstr "nkómbó ya bobɔ́kɔli"
 
 #: app/Stats.php:2912
 msgid "adoption"
-msgstr ""
+msgstr "bobɔ́kɔlɛli"
 
 #: app/Module/TopPageViewsModule.php:168
 msgid "after"
@@ -19722,7 +19721,7 @@ msgstr "adrɛsi ya eyano ya webtrees"
 
 #: app/Functions/FunctionsEdit.php:130
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees atindí nkomá ezangí bobómbi"
 
 #: admin_trees_download.php:147
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
