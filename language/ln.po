@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-11 22:09+0000\n"
+"PO-Revision-Date: 2017-09-13 23:19+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " kasi makákoli mazalí tɛ́"
+msgstr " kasi makákoli mayébaní tɛ́"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -762,7 +762,7 @@ msgstr "Liyémi lya bomɔi bwa moto mɔ̌kɔ́."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "Mwǎna akokí kozala na míngi koleka limbalé lya babóti. Mokangano káti na mwǎna na babóti ekokí kozala ya makilá mɔ̌kɔ́, ya lɛ́ta tǒ na ntína ya bizaleli bya bonkɔ́kɔ.Sɔ́kí libótá liyébání tɛ́, mokangano mwa makilá mɔ̌kɔ́ ndé ekopɔnama."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -19312,7 +19312,7 @@ msgstr "bátelá"
 #: medialist.php:193 modules_v3/GEDFact_assistant/census/census-edit.php:110
 #: search.php:143 search.php:185 search.php:300 search_advanced.php:288
 msgid "search"
-msgstr "boluki"
+msgstr "luká"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:637
