@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-13 23:19+0000\n"
+"PO-Revision-Date: 2017-09-14 22:23+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -762,7 +762,7 @@ msgstr "Liyémi lya bomɔi bwa moto mɔ̌kɔ́."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Mwǎna akokí kozala na míngi koleka limbalé lya babóti. Mokangano káti na mwǎna na babóti ekokí kozala ya makilá mɔ̌kɔ́, ya lɛ́ta tǒ na ntína ya bizaleli bya bonkɔ́kɔ.Sɔ́kí libótá liyébání tɛ́, mokangano mwa makilá mɔ̌kɔ́ ndé ekopɔnama."
+msgstr "Mwǎna akokí kozala na míngi koleka limbalé lya babóti. Mokangano káti na mwǎna na babóti ekokí kozala ya makilá mɔ̌kɔ́, ya lɛ́ta tǒ na ntína ya bizaleli bya bonkɔ́kɔ.Sɔ́kí libótá litíyámí tɛ́, mokangano mwa makilá mɔ̌kɔ́ ndé ekopɔnama."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -810,7 +810,7 @@ msgstr "Molɔngɔ́ mwa mitúna na biyáno bisɛ́ngámí kolúta."
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Molɔngɔ́ mwa bokɔ́tisi boye botíyamí sika."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
@@ -820,7 +820,7 @@ msgstr "Molɔngɔ́ mwa misálá mpé bisálela biye bikangisámí na nzeté ya 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Molɔngɔ́ mwa milúlu mya bowéí bwa boyúda mikoyá."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -918,7 +918,7 @@ msgstr "Mbándo ya makambo masímbámí na ebandela mɔ̌kɔ́."
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Mbándo ya bayi libótá na makákoli ma bangó."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
@@ -951,7 +951,7 @@ msgstr "Mbándo ya bato babálámí na ntángo tǒ esíká liyébání."
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Mbándo ya mabóngoli ma sika mpé makozela."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
@@ -980,7 +980,7 @@ msgstr "Mbándo ya bozangi nsango ya moto mɔ̌kɔ́ na mikangano na yě."
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Mbándo ya bokɔ́tisi bwa bomɔi mpɔ̂ na dáti tǒ esíká epésámí."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1423,7 +1423,7 @@ msgstr "Kobakisa ndimbola ya libàla"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
-msgstr ""
+msgstr "Bakísá bokɔ́tisi bwa liwâ bozángí"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
@@ -1474,7 +1474,7 @@ msgstr ""
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Bakísá bokɔ́tisi bozángí ekangisi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
@@ -1663,7 +1663,7 @@ msgstr "Bobɔ́kɔlɛli bwa mwǎna mobáli"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr ""
+msgstr "Batisimo ya mokóló"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -1849,7 +1849,7 @@ msgstr "Bato bánsɔ"
 
 #: admin_trees_config.php:554
 msgid "All records"
-msgstr ""
+msgstr "Bokɔ́tisi bɔ́nsɔ"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
@@ -5656,7 +5656,7 @@ msgstr ""
 
 #: search.php:191
 msgid "Entire record"
-msgstr ""
+msgstr "Bokɔ́tisi mobimba"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6762
@@ -6362,7 +6362,7 @@ msgstr "Molúlú mwa yambo"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:357
 msgid "First record"
-msgstr ""
+msgstr "Bokɔ́tisi bwa yambo"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -7531,7 +7531,7 @@ msgstr "Nkásá ya moto"
 
 #: admin_users.php:581 edituser.php:181
 msgid "Individual record"
-msgstr ""
+msgstr "Bokɔ́tisi bwa moto"
 
 #: app/Module/FamilyTreeStatisticsModule.php:170
 #: app/Module/FamilyTreeStatisticsModule.php:376
@@ -9470,7 +9470,7 @@ msgstr "Libótá lya ngáí"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
-msgstr ""
+msgstr "Bokɔ́tisi bwa ngáí"
 
 #. I18N: Name of a module
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
@@ -9885,7 +9885,7 @@ msgstr ""
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
-msgstr ""
+msgstr "Bokɔ́tisi bwa kotálisa bozalí tɛ́"
 
 #: app/Controller/AdvancedSearchController.php:664
 #: app/Controller/SearchController.php:546
@@ -11327,7 +11327,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
-msgstr ""
+msgstr "Bokɔ́tisi"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
@@ -11341,7 +11341,7 @@ msgstr ""
 
 #: search.php:83 statistics.php:350
 msgid "Records"
-msgstr ""
+msgstr "Bokɔ́tisi"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
@@ -11952,7 +11952,7 @@ msgstr ""
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "Bokɔ́tisi bwa míbalé"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
@@ -13870,7 +13870,7 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr "Makomi mabómbami káti na clipboard."
+msgstr "Bokɔ́tisi bobómbami káti na clipboard."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -16275,19 +16275,19 @@ msgstr "bakísá"
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr "nkómbó ya bobɔ́kɔli"
+msgstr "nkómbó ya bobɔ́kɔleli"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr "nkómbó ya bobɔ́kɔli"
+msgstr "nkómbó ya bobɔ́kɔleli"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr "nkómbó ya bobɔ́kɔli"
+msgstr "nkómbó ya bobɔ́kɔleli"
 
 #: app/Stats.php:2913
 msgid "adoption"
@@ -18662,7 +18662,7 @@ msgstr "nkóló nɔ́kɔ́"
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr ""
+msgstr "nzínga ya ndámbo"
 
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
@@ -19915,7 +19915,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:68
 msgid "three-quarter circle"
-msgstr ""
+msgstr "ísáto ya ínei ya nzínga"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
