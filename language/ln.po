@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-16 00:18+0000\n"
+"PO-Revision-Date: 2017-09-16 10:58+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -895,7 +895,7 @@ msgstr "Mbándo ya  moto mɔ̌kɔ́, na loléngé lya likákoli."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Mbándo ya makambo masímbámí na ebandela mɔ̌kɔ́."
+msgstr "Mbándo ya bikelá bisímbámí na ebandela mɔ̌kɔ́ epésámí."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -1002,7 +1002,7 @@ msgstr "Etánda ikotálisa mikangano mya pɛnɛ na moto."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:40
 msgid "A tab showing the facts and events of an individual."
-msgstr "Etánda ikotálisa makambo mpé milúlú mya moto."
+msgstr "Etánda ikotálisa bikelá mpé milúlú mya moto."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:39
@@ -1254,7 +1254,7 @@ msgstr "Bakisá mwǎna na libótá liye"
 
 #: edit_interface.php:73
 msgid "Add a fact"
-msgstr "Kobakisa likambo"
+msgstr "Kobakisa ekelá"
 
 #: app/Module/RelativesTabModule.php:332 edit_interface.php:649 family.php:87
 msgid "Add a father"
@@ -1775,11 +1775,11 @@ msgstr ""
 
 #: admin_trees_config.php:526
 msgid "All facts and events"
-msgstr "Makambo na milúlú mínsɔ"
+msgstr "Bikelá mpé milúlú mínsɔ"
 
 #: admin_trees_config.php:1645
 msgid "All family facts"
-msgstr ""
+msgstr "BIkelá bínsɔ bya libótá"
 
 #: login.php:410
 msgid "All fields must be completed."
@@ -1791,7 +1791,7 @@ msgstr "bakása-kásá ínsɔ ezalí na ndingisa mpɔ̂ na kotánga mpé kokoma.
 
 #: admin_trees_config.php:1591
 msgid "All individual facts"
-msgstr "Makambo mánsɔ matálí bato"
+msgstr "BIkelá bínsɔ bya bato"
 
 #: calendar.php:223 calendar.php:234 calendar.php:433
 msgid "All individuals"
@@ -1803,11 +1803,11 @@ msgstr "Bokɔ́tisi bɔ́nsɔ"
 
 #: admin_trees_config.php:1740
 msgid "All repository facts"
-msgstr ""
+msgstr "Bbikelá bínsɔ bya ebómbelo"
 
 #: admin_trees_config.php:1699
 msgid "All source facts"
-msgstr "Bibandela bya milúlú mínsɔ"
+msgstr "Bikelá bínsɔ bya ebandela"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -2077,7 +2077,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:997
 #: app/Functions/FunctionsPrintFacts.php:1140
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "Olingí kozíma ekelá eye?"
 
 #: app/Module/UserMessagesModule.php:89 app/Module/UserMessagesModule.php:132
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
@@ -5741,59 +5741,59 @@ msgstr ""
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:321
 msgid "Fact"
-msgstr ""
+msgstr "Ekelá"
 
 #: app/GedcomTag.php:1151
 msgid "Fact 1"
-msgstr ""
+msgstr "Ekelá ya 1"
 
 #: app/GedcomTag.php:1169
 msgid "Fact 10"
-msgstr ""
+msgstr "Ekelá ya 10"
 
 #: app/GedcomTag.php:1171
 msgid "Fact 11"
-msgstr ""
+msgstr "Ekelá ya 11"
 
 #: app/GedcomTag.php:1173
 msgid "Fact 12"
-msgstr ""
+msgstr "Ekelá ya 12"
 
 #: app/GedcomTag.php:1175
 msgid "Fact 13"
-msgstr ""
+msgstr "Ekelá ya 13"
 
 #: app/GedcomTag.php:1153
 msgid "Fact 2"
-msgstr ""
+msgstr "Ekelá ya 2"
 
 #: app/GedcomTag.php:1155
 msgid "Fact 3"
-msgstr ""
+msgstr "Ekelá ya 3"
 
 #: app/GedcomTag.php:1157
 msgid "Fact 4"
-msgstr ""
+msgstr "Ekelá ya 4"
 
 #: app/GedcomTag.php:1159
 msgid "Fact 5"
-msgstr ""
+msgstr "Ekelá ya 5"
 
 #: app/GedcomTag.php:1161
 msgid "Fact 6"
-msgstr ""
+msgstr "Ekelá ya 6"
 
 #: app/GedcomTag.php:1163
 msgid "Fact 7"
-msgstr ""
+msgstr "Ekelá ya 7"
 
 #: app/GedcomTag.php:1165
 msgid "Fact 8"
-msgstr ""
+msgstr "Ekelá ya 8"
 
 #: app/GedcomTag.php:1167
 msgid "Fact 9"
-msgstr ""
+msgstr "Ekelá ya 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1422
@@ -5802,7 +5802,7 @@ msgstr ""
 
 #: admin_trees_config.php:492 app/Functions/FunctionsPrint.php:579
 msgid "Fact or event"
-msgstr "Likambo tǒ molúlú"
+msgstr "Ekelá tǒ molúlú"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:35
@@ -5810,7 +5810,7 @@ msgstr "Likambo tǒ molúlú"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "Makambo mpé milúlú"
+msgstr "Ekelá mpé milúlú"
 
 #: admin_trees_config.php:1640
 msgid "Facts for family records"
@@ -5822,11 +5822,11 @@ msgstr "Bikelá mpɔ̂ na bokɔ́tisi bwa moto"
 
 #: admin_trees_config.php:1671
 msgid "Facts for new families"
-msgstr ""
+msgstr "Bikelá mpɔ̂ na mabótá ma sika"
 
 #: admin_trees_config.php:1617
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "Bikelá mpɔ̂ na bato ba sika"
 
 #: admin_trees_config.php:1735
 msgid "Facts for repository records"
@@ -6182,7 +6182,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:675
 msgid "Find a fact or event"
-msgstr "Koluka likambo tǒ molúlú"
+msgstr "Koluka ekelá tǒ molúlú"
 
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
@@ -7034,7 +7034,7 @@ msgstr "Lotómo la yě ezalákí"
 
 #: app/Module/IndividualFactsTabModule.php:139
 msgid "Historical facts"
-msgstr ""
+msgstr "Bikelá bya kala"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1573
@@ -9723,7 +9723,7 @@ msgstr[1] "Milúlú mya bato mizalí tɛ́ na mikɔlɔ %s milandí."
 
 #: app/Controller/FamilyController.php:132
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "Ekalá ezalí tɛ́ mpɔ̂ na libótá liye."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -9740,7 +9740,7 @@ msgstr ""
 
 #: admin_site_merge.php:233 admin_site_merge.php:280 admin_site_merge.php:326
 msgid "No matching facts found"
-msgstr ""
+msgstr "Ekelà ya loléngé mɔ̌kɔ́ ekútamí tɛ́"
 
 #: addmedia.php:161 addmedia.php:294 admin_media_upload.php:121
 msgid "No media file was provided."
@@ -10225,7 +10225,7 @@ msgstr "Mosúsu"
 
 #: admin_trees_config.php:1297
 msgid "Other facts to show in charts"
-msgstr "Makambo masúsu ya kotálisa na mayémi"
+msgstr "Bikelá bisúsu ya kotálisa na mayémi"
 
 #: addmedia.php:513 admin_media_upload.php:236
 msgid "Other folder… please type in"
