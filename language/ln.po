@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-16 10:58+0000\n"
+"PO-Revision-Date: 2017-09-17 19:27+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -749,7 +749,7 @@ msgstr "Mwǎna akokí kozala na míngi koleka limbalé lya babóti. Mokangano k�
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr ""
+msgstr "Mbéba ya momɛsɛnɔ ezalí kozala na bikangeli míngi na bokɔ́tisi mɔ̌kɔ́, na ndakisa komɔ́nisa o molɔngɔ́ mwǎna mɔ̌kɔ́ mbala mɔ̌kɔ́ koleka na káti ya bokɔ́tisi bwa libótá."
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -1767,7 +1767,7 @@ msgstr "Nyɔ́nsɔ"
 
 #: admin_trees_manage.php:716
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Mabóngoli mánsɔ na káti ya PhpGedView esengélí endimama"
 
 #: admin_trees_manage.php:719
 msgid "All existing PhpGedView users must have distinct email addresses"
@@ -1791,7 +1791,7 @@ msgstr "bakása-kásá ínsɔ ezalí na ndingisa mpɔ̂ na kotánga mpé kokoma.
 
 #: admin_trees_config.php:1591
 msgid "All individual facts"
-msgstr "BIkelá bínsɔ bya bato"
+msgstr "BIkelá bínsɔ bya moto"
 
 #: calendar.php:223 calendar.php:234 calendar.php:433
 msgid "All individuals"
@@ -1832,19 +1832,19 @@ msgstr "Kondima batáli  basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:663
 msgid "Also known as"
-msgstr ""
+msgstr "Eyébaní mpé lokóla"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:661
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Eyébaní mpé lokóla"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:659
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Eyébaní mpé lokóla"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6657
@@ -1985,7 +1985,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
-msgstr ""
+msgstr "Eyano"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6658
@@ -2031,11 +2031,11 @@ msgstr ""
 #: admin_users.php:96
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "Bondimami bwa kɔ́nti na %s"
 
 #: admin_users.php:843
 msgid "Approved"
-msgstr ""
+msgstr "Endimámí"
 
 #: admin_users.php:378
 msgid "Approved by administrator"
@@ -2044,7 +2044,7 @@ msgstr "Endimámí epayi ya mokambi"
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
@@ -4447,7 +4447,7 @@ msgstr ""
 
 #: app/GedcomTag.php:465
 msgid "Date of ordination"
-msgstr ""
+msgstr "Dáti ya bokúli"
 
 #: app/GedcomTag.php:504
 msgid "Date of residence"
@@ -4455,11 +4455,11 @@ msgstr "Dáti ya bofándi"
 
 #: help_text.php:155
 msgid "Date period"
-msgstr ""
+msgstr "Eleko ya dáti"
 
 #: help_text.php:153
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr ""
+msgstr "Bileko bya dáti bisálelámí mpɔ̂ na kolakisa ekelá, lokóla mosálá molandelámí na eleko ya ntángo."
 
 #: help_text.php:144 statistics.php:729
 msgid "Date range"
@@ -4467,15 +4467,15 @@ msgstr "Molɔngɔ́ mwa dáti"
 
 #: help_text.php:142
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr ""
+msgstr "Milɔngɔ́ mya dáti misálelámí mpɔ̂ na kolakisa elúlú, lokóla mbótama ekomákí na dáti eyébaní tɛ́ na káti ya eleko mɔ̌kɔ́."
 
 #: admin_users.php:839
 msgid "Date registered"
-msgstr ""
+msgstr "Dáti ekomísamí"
 
 #: app/Module/UserMessagesModule.php:106
 msgid "Date sent"
-msgstr ""
+msgstr "Dáti etíndamí"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:652
@@ -10995,19 +10995,19 @@ msgstr ""
 
 #: admin_trees_config.php:1684
 msgid "Quick family facts"
-msgstr ""
+msgstr "Bikelá bya libótá lya mbángo"
 
 #: admin_trees_config.php:1630
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Bikelá bya moto ya mbángo"
 
 #: admin_trees_config.php:1766
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Bikelá bya ebombelo ya mbángo"
 
 #: admin_trees_config.php:1725
 msgid "Quick source facts"
-msgstr ""
+msgstr "Bikelá bya ebandela ya mbángo"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11844,7 +11844,7 @@ msgstr "Kopɔnɔ káti ya mitángo míbalé"
 
 #: admin_site_merge.php:192
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Kopɔnɔ bikelá mpé milúlú mya kobátela útá bokɔ́tisi boye míbalé."
 
 #: admin_site_config.php:624
 msgid "Select the languages that will be shown in menus."
@@ -11853,7 +11853,7 @@ msgstr ""
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:344
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Kopɔnɔ bokɔ́tisi míbalé ya kosangisa."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -13462,13 +13462,13 @@ msgstr ""
 
 #: admin_site_merge.php:197
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Bikelá mpé milúlú milandí mikútamákí káti na bokɔ́tisi míbalé."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:244 admin_site_merge.php:290
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Bikelá mpé milúlú milandí mikútamákí sé káti na bokɔ́tisi %s."
 
 #: setup.php:171
 msgid "The following list shows typical requirements."
@@ -14839,7 +14839,7 @@ msgstr "Loléngé lwa molúlú"
 
 #: app/GedcomTag.php:323
 msgid "Type of fact"
-msgstr ""
+msgstr "Loléngé la ekelá"
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "Type of place markers in the place hierarchy"
@@ -14904,7 +14904,7 @@ msgstr ""
 
 #: admin_trees_config.php:1658
 msgid "Unique family facts"
-msgstr ""
+msgstr "Bikelá sé mɔ̌kɔ́ bya libótá"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
@@ -14918,11 +14918,11 @@ msgstr ""
 
 #: admin_trees_config.php:1604
 msgid "Unique individual facts"
-msgstr ""
+msgstr "Bikelá sé mɔ̌kɔ́ bya moto"
 
 #: admin_trees_config.php:1753
 msgid "Unique repository facts"
-msgstr ""
+msgstr "Bikelá sé mɔ̌kɔ́ bya ebombelo"
 
 #: admin_trees_config.php:1712
 msgid "Unique source facts"
@@ -16480,7 +16480,7 @@ msgstr "mwǎsí wa kala"
 
 #: admin_trees_config.php:51 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr ""
+msgstr "Bikelá"
 
 #: app/Functions/Functions.php:689
 msgid "father"
