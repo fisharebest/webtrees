@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-17 19:27+0000\n"
+"PO-Revision-Date: 2017-09-18 22:52+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -902,7 +902,7 @@ msgstr "Mbándo ya bankɔ́kɔ bwa moto mɔ̌kɔ́, na loléngé lya lisoló."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Mbándo ya bakitani bwa moto mɔ̌kɔ́, na loléngé lya lisoló."
+msgstr "Mbándo ya bakitani bwa moto mɔ̌kɔ́, na loléngé lya lisapo."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
@@ -2127,7 +2127,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1026
 #: app/Functions/FunctionsPrintFacts.php:1174
 msgid "Are you sure you want to delete this fact?"
-msgstr "Olingí kozíma ekelá eye?"
+msgstr "Ya sɔ̂lɔ́ olingí kozíma ekelá eye?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
@@ -2149,15 +2149,15 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Ya sɔ̂lɔ́ olingí kozíma “%s”?"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr ""
+msgstr "Ya sɔ̂lɔ́ olingí kobóya mabóngoli ma nzeté ya libótá liye?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Ya sɔ̂lɔ́ olingí kolongola ekangeli na elɔ́kɔ ya bopanzi nsango eye?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -5018,7 +5018,7 @@ msgstr "Koboma kɔ́nti óyo"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "Kozíma libótá ekolongola ekangeli ya bato káti na bangó kasi ekotíka bato na esíká bazálí. Ya sɔ̂lɔ́ oliní kozíma libótá liye?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -6450,7 +6450,7 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr ""
+msgstr "Mpɔ̂ na mitúna mitálí mayɛ́lɛ ma mosálá mpé nsango komelá %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
