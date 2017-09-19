@@ -50,6 +50,10 @@
 	overflow: auto;
 }
 
+.wt-side-blocks .wt-block-theme-select-block {
+	overflow: visible;
+}
+
 .wt-main-container .row .wt-block-content {
 	padding: .25rem;
 }
