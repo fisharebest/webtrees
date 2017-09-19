@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-18 22:52+0000\n"
+"PO-Revision-Date: 2017-09-19 23:12+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -51,7 +51,7 @@ msgstr "n°%s"
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s ezalí na ekangisi %3$s na %4$s."
+msgstr "%1$s %2$s ezalí na ekangeli %3$s na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -93,7 +93,7 @@ msgstr "%1$s ezalí tɛ́. Okanisí %2$s?"
 #: admin_trees_check.php:198
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s ezalí na ekangisi na %2$s tɛ́."
+msgstr "%1$s ezalí na ekangeli na %2$s tɛ́."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:310 admin_site_upgrade.php:394
@@ -773,7 +773,7 @@ msgstr "Kásá-kásá káti na esálela na yɔ̌"
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr "Liloba lya boyéi bolámu mpé bikangisi bya ntína mpɔ̂ na mosáleli."
+msgstr "Liloba lya boyéi bolámu mpé ekangeli bya ntína mpɔ̂ na mosáleli."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
@@ -1007,7 +1007,7 @@ msgstr "Etánda ikotálisa bikelá mpé milúlú mya moto."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Etánda ikotálisa bilɔ́kɔ bya bopanzi nsango ya moto."
+msgstr "Etánda ikotálisa bilɔ́kɔ bya bopanzi nsango bikangisámí na moto."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1017,7 +1017,7 @@ msgstr "Etánda ikotálisa nkomá ya moto."
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:38
 msgid "A tab showing the sources linked to an individual."
-msgstr "Etánda ikotálisa bibandela bya moto."
+msgstr "Etánda ikotálisa bibandela bikangisámí na moto."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1367,7 +1367,7 @@ msgstr "Bakísá bato"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:150
 msgid "Add links"
-msgstr "Bakísá bikangisi"
+msgstr "Bakísá bikangeli"
 
 #: app/Module/RelativesTabModule.php:234
 msgid "Add marriage details"
@@ -1426,7 +1426,7 @@ msgstr ""
 
 #: admin_trees_manage.php:530
 msgid "Add unlinked records"
-msgstr "Bakísá bokɔ́tisi bozángí ekangisi"
+msgstr "Bakísá bokɔ́tisi bozángí ekangeli"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1056
@@ -1873,7 +1873,7 @@ msgstr "Loléngé losúsu la kotálisa liyémi."
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:47
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr ""
+msgstr "Nzela isúsu ya kokɔ́tisa nkomá ya etángo mpé kokangisa yangó na bato."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -2224,7 +2224,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Aug"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
@@ -4801,7 +4801,7 @@ msgstr "Bowéí na káti ya bonkámá"
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Dɛs"
 
 #: app/Functions/FunctionsPrintLists.php:484
 #: app/Functions/FunctionsPrintLists.php:949
@@ -5558,7 +5558,7 @@ msgstr ""
 #: addmedia.php:423
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:164
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr ""
+msgstr "Kokɔ́tisa tǒ koluka ID ya moto, libótá tǒ ebandela óyo ekokangisama na elɔ́kɔ ya bopanzi nsango eye."
 
 #: search.php:187
 msgid "Entire record"
@@ -6094,7 +6094,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:312
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 #: app/Date/CalendarDate.php:212
 msgctxt "GENITIVE"
@@ -7580,7 +7580,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:311
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "Yan"
 
 #: app/Date/CalendarDate.php:211
 msgctxt "GENITIVE"
@@ -7640,7 +7640,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:317
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "Yúl"
 
 #. I18N: The julian calendar
 #: app/Date.php:199 help_text.php:163
@@ -7718,7 +7718,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:316
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "Yun"
 
 #: app/Date/CalendarDate.php:216
 msgctxt "GENITIVE"
@@ -8129,12 +8129,12 @@ msgstr "Kokangisa kɔ́nti ya mosáleli na moto."
 
 #: app/Module/RelativesTabModule.php:383 edit_interface.php:944
 msgid "Link this individual to an existing family as a child"
-msgstr "Kosangisa moto óyo lokola mwǎna na libótá liyébaní"
+msgstr "Kosangisa moto óyo lokola mwǎna o káti ya  libótá liyébaní"
 
 #: admin_media.php:528 app/Controller/MediaController.php:55
 #: app/Controller/MediaController.php:123 app/Module/AlbumModule.php:177
 msgid "Link this media object to a family"
-msgstr "Kokangisa elɔ́kɔ ya bopanzi nsango na libótá lyɔ̌kɔ́"
+msgstr "Kokangisa elɔ́kɔ ya bopanzi nsango na libótá"
 
 #: admin_media.php:529 app/Controller/MediaController.php:59
 #: app/Controller/MediaController.php:126 app/Module/AlbumModule.php:183
@@ -8148,7 +8148,7 @@ msgstr "Kokangisa elɔ́kɔ ya bopanzi nsango na moto"
 
 #: admin_users.php:587
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Kokangisa mosáleli óyo na moto o káti na nzeté ya libótá."
 
 #: app/Controller/FamilyController.php:157 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:425
@@ -8156,7 +8156,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:63
 #: source.php:149
 msgid "Link to an existing media object"
-msgstr "Kokangisa na elɔ́kɔ ya bopanzi nsango"
+msgstr "Kokangisa na elɔ́kɔ ya bopanzi nsango eyébání"
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1040
@@ -8165,7 +8165,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
 msgid "Links"
-msgstr ""
+msgstr "Bikangeli"
 
 #: ancestry.php:67 descendancy.php:88
 msgid "List"
@@ -8383,7 +8383,7 @@ msgstr "Koyángela elɔ́kɔ ya bopanzi nsango"
 #: admin_media.php:532 app/Controller/MediaController.php:47
 #: app/Controller/MediaController.php:117 app/Module/AlbumModule.php:165
 msgid "Manage the links"
-msgstr ""
+msgstr "Koyángela bikangeli"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:178 admin_users.php:37 admin_users.php:550
@@ -8440,7 +8440,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:313
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
 #: app/Date/CalendarDate.php:213
 msgctxt "GENITIVE"
@@ -9497,19 +9497,19 @@ msgstr ""
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1307
 msgid "Never married"
-msgstr ""
+msgstr "Abálá tɛ́"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1305
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr ""
+msgstr "Abálá tɛ́"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1303
 msgctxt "MALE"
 msgid "Never married"
-msgstr ""
+msgstr "Abálá tɛ́"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6810
@@ -9732,7 +9732,7 @@ msgstr "Kásá-kásá ezwamí tɛ́. Bandelá lisúsu."
 
 #: relationship.php:209
 msgid "No link between the two individuals could be found."
-msgstr ""
+msgstr "Bikangeli káti ya bato baye babálé bikókí kozwáma tɛ́."
 
 #: app/Module/GoogleMapsModule.php:206
 msgid "No map data exists for this individual"
@@ -9924,7 +9924,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Nov"
 
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
@@ -10043,7 +10043,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:320
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Ɔkɔ"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
@@ -11928,7 +11928,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:319
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Sɛt"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1336
@@ -13507,7 +13507,7 @@ msgstr "Ekangeli útá “%1$s” kínó “%2$s” ezímisámí."
 #: admin_site_merge.php:105
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Ekangeli útá “%1$s” kínó “%2$s” etíyámí."
 
 #: addmedia.php:305 addmedia.php:336
 #, php-format
@@ -14155,7 +14155,7 @@ msgstr ""
 
 #: admin_media.php:567
 msgid "This media object is not linked to any other record."
-msgstr ""
+msgstr "Elɔ́kɔ ya bopanzi nsango eye ekangisámí na bokɔ́tisi mosúsu tɛ́."
 
 #: message.php:223
 msgid "This message was sent while viewing the following URL: "
@@ -14372,7 +14372,7 @@ msgstr ""
 
 #: admin_trees_check.php:174 admin_trees_check.php:179
 msgid "This type of link is not allowed here."
-msgstr ""
+msgstr "Loléngé la ekangeli eye endimámí áwa tɛ́."
 
 #: includes/session.php:369
 msgid "This user account does not have access to any tree."
@@ -14971,7 +14971,7 @@ msgstr "Eyébání tɛ́"
 
 #: app/Module/AlbumModule.php:189
 msgid "Unlink the media object"
-msgstr ""
+msgstr "Kolongola ekangeli ya elɔ́kɔ ya bopanzi nsango"
 
 #: app/GedcomTag.php:1386
 msgid "Unrecognized GEDCOM code"
@@ -15633,7 +15633,7 @@ msgstr ""
 
 #: login.php:287 message.php:53
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Ozalí na ndingisa ya kotínda nkánda iye izalí na bikangeli bya libánda tɛ́."
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
@@ -18505,7 +18505,7 @@ msgstr "bayángeli"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:46
 msgid "markdown"
-msgstr ",bokitisi"
+msgstr "bokitisi"
 
 #: app/Stats.php:2911
 msgid "marriage"
