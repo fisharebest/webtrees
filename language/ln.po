@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-19 23:12+0000\n"
+"PO-Revision-Date: 2017-09-20 21:16+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -7772,7 +7772,7 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2210
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:534
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Kobátela nsango ya \"libóngoli lya nsúka\" lizalí"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
@@ -9897,7 +9897,7 @@ msgstr "Nkomá"
 
 #: help_text.php:257
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "Yébá éte sɔki kɔ́nti ya mosáleli ekangisámí na bokɔ́tisi mɔ̌kɔ́, mosáleli wâná akokoka komóna bokɔ́tisi wâná."
 
 #: admin_users.php:594
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10288,7 +10288,7 @@ msgstr ""
 
 #: admin_site_info.php:48
 msgid "PHP information"
-msgstr ""
+msgstr "Nsango ya PHP"
 
 #: setup.php:146
 #, php-format
@@ -10977,7 +10977,7 @@ msgstr ""
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:492
 msgid "Quality of data"
-msgstr ""
+msgstr "Libɔngí la epɛ́sɛli"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
@@ -11802,7 +11802,7 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Tálá %s mpɔ̂ na nsango boíké."
 
 #: admin_site_merge.php:206 admin_site_merge.php:253 admin_site_merge.php:299
 msgid "Select"
@@ -11982,7 +11982,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin.php:591 admin_site_info.php:25 app/Theme/AdministrationTheme.php:78
 msgid "Server information"
-msgstr ""
+msgstr "Nsango ya esálela mokaboli"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:334 setup.php:277
@@ -12041,7 +12041,7 @@ msgstr ""
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1548
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr ""
+msgstr "Botíyi boye na <b>Ɛ́ɛ́</b> ekotíya bikangeli na bato, bibandela mpé mabótá mpɔ̂ na kotíkela basáleli babimisa lininísa llisúsu lizálí na bipɛ́sɛli bya kásá-kásá ya GEDCOM."
 
 #: setup.php:90
 msgid "Setup wizard for webtrees"
@@ -12727,7 +12727,7 @@ msgstr ""
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1578
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Nkásá ebelé ekokí kolakisa motángo mwa mbala iye itálámákí."
 
 #: app/Module/GoogleMapsModule.php:397
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -12742,13 +12742,13 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:526
 #: modules_v3/individual_report/report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "Mwǎna mobáli"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:346
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "Mwǎna mobáli wa %s"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
@@ -12770,7 +12770,7 @@ msgstr ""
 #: app/Controller/BranchesController.php:245
 #: app/Functions/FunctionsPrintLists.php:275
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
 #: search_advanced.php:254 search_advanced.php:269
