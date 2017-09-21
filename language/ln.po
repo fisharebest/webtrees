@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-20 21:16+0000\n"
+"PO-Revision-Date: 2017-09-21 22:18+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -957,7 +957,7 @@ msgstr "Mbándo ya nsango epésámí na ebandela."
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Mbándo ya bozangi nsango ya moto mɔ̌kɔ́ na mikangano na yě."
+msgstr "Mbándo ya bozángi nsango ya moto mɔ̌kɔ́ na mikangano na yě."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
@@ -15914,30 +15914,30 @@ msgstr ""
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
 msgid "a.m."
-msgstr ""
+msgstr "a.m."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "likoló na %s"
 
 #: family.php:45 gedrecord.php:58 individual.php:59 mediaviewer.php:46
 #: note.php:47 repo.php:46 source.php:46
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "ndimá"
 
 #: family.php:35 gedrecord.php:48 individual.php:49 mediaviewer.php:36
 #: note.php:37 repo.php:36 source.php:36
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "ndimá"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:48
 msgid "accepted"
-msgstr ""
+msgstr "endimámí"
 
 #. I18N: A button label.
 #: admin_trees_config.php:500 app/Functions/FunctionsPrint.php:534
@@ -15971,13 +15971,13 @@ msgstr "bobɔ́kɔlɛli"
 
 #: app/Module/TopPageViewsModule.php:168
 msgid "after"
-msgstr ""
+msgstr "nsima"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "nsima ya %s"
 
 #: app/Functions/FunctionsPrint.php:340
 msgid "after death"
@@ -15991,23 +15991,23 @@ msgstr "mbúla"
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr ""
+msgstr "ayébání mpé lokóla"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "ayébání mpé lokóla"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "ayébání mpé lokóla"
 
 #: app/Functions/FunctionsEdit.php:784
 msgid "always"
-msgstr ""
+msgstr "ntángo ínsɔ"
 
 #: app/Controller/AncestryController.php:83 app/Stats.php:4532
 #: app/Stats.php:4558 app/Stats.php:4569 app/Stats.php:4579 app/Stats.php:5888
@@ -16019,7 +16019,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:433
 #: modules_v3/descendancy_report/report.xml:486
 msgid "and"
-msgstr ""
+msgstr "mpé"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
@@ -16068,23 +16068,23 @@ msgstr "tatá-mwǎsi/nɔ́kɔ́"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:386
 msgid "back to top"
-msgstr ""
+msgstr "bozóngi ebandeli"
 
 #: app/Module/TopPageViewsModule.php:168
 msgid "before"
-msgstr ""
+msgstr "libosó"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "libosó ya %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "káti na %s mpé %s"
 
 #: app/Stats.php:2909
 msgid "birth"
@@ -16111,7 +16111,7 @@ msgstr "nkómbó ya mbótama"
 #: admin_trees_config.php:412
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "abótámí na káti ya mibú %1$s milekí tǒ akúfí na káti ya mibú %2$s milekí"
 
 #: app/Functions/Functions.php:768
 msgid "brother"
@@ -16197,13 +16197,13 @@ msgstr "likundí"
 
 #: app/GedcomTag.php:1321
 msgid "by"
-msgstr ""
+msgstr "na"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "%s etángámí"
 
 #. I18N: A button label.
 #: addmedia.php:711 admin_trees_config.php:1876
@@ -16219,7 +16219,7 @@ msgstr ""
 #: edit_interface.php:2523 index_edit.php:382
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:549
 msgid "cancel"
-msgstr ""
+msgstr "longolá"
 
 #: app/Stats.php:2914
 msgid "census added"
@@ -16250,7 +16250,7 @@ msgstr "bobóngoli bwa nkómbó"
 #: app/Functions/Functions.php:751 edit_interface.php:1936
 #: edit_interface.php:1955
 msgid "child"
-msgstr ""
+msgstr "mwǎna"
 
 #: statisticsplot.php:1175
 msgid "children"
@@ -16269,12 +16269,12 @@ msgstr "kangá"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:114
 msgid "clouds"
-msgstr ""
+msgstr "mapata"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:157
 msgid "colors"
-msgstr ""
+msgstr "lángi"
 
 #: app/Module/TopSurnamesModule.php:172
 msgid "compact list"
@@ -16297,7 +16297,7 @@ msgstr "Landelá"
 #. I18N: A button label.
 #: admin_trees_manage.php:679
 msgid "create"
-msgstr ""
+msgstr "kelá"
 
 #. I18N: a program feature
 #: setup.php:132
@@ -16361,20 +16361,20 @@ msgstr "zímisá"
 #: modules_v3/descendancy_report/report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "akúfá"
 
 #: modules_v3/descendancy_report/report.xml:134
 #: modules_v3/descendancy_report/report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "akúfá"
 
 #. I18N: A button label.
 #: admin_site_change.php:361 admin_site_logs.php:301
 #: app/Module/ClippingsCartModule.php:426
 #: app/Module/ClippingsCartModule.php:788 app/Module/GoogleMapsModule.php:3314
 msgid "download"
-msgstr ""
+msgstr "tiyolisá"
 
 #: app/Module/GoogleMapsModule.php:3031
 msgid "east"
@@ -16520,19 +16520,19 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi na mítáno"
 #: app/Functions/Functions.php:643
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "%s ya mitáno"
 
 #: app/Functions/Functions.php:628
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "%s ya mitáno"
 
 #: app/Functions/Functions.php:613
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "%s ya mitáno"
 
 #: app/Functions/Functions.php:563
 msgid "fifth cousin"
@@ -16798,7 +16798,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi na mínei"
 #: app/Functions/Functions.php:641
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "%s ya mínei"
 
 #: app/Functions/Functions.php:626
 #, php-format
@@ -18385,7 +18385,7 @@ msgstr "yě mɔ̌kɔ́"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:780
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm tǒ hh:mm:ss"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
@@ -18430,8 +18430,8 @@ msgstr ""
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ntáká mobú %s"
+msgstr[1] "ntáká mibú %s"
 
 #: statistics.php:646
 msgid "interval one child"
@@ -18443,7 +18443,7 @@ msgstr "ntáká bǎna bábalé"
 
 #: search.php:118 search.php:276
 msgid "invert selection"
-msgstr ""
+msgstr "bóngolá bopɔni"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
@@ -18842,7 +18842,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:50
 msgid "pending"
-msgstr ""
+msgstr "ezalí kozela"
 
 #: statistics.php:763 statisticsplot.php:829 statisticsplot.php:875
 #: statisticsplot.php:925 statisticsplot.php:971 statisticsplot.php:1021
@@ -18853,12 +18853,12 @@ msgstr "ya mokámá"
 
 #: admin_trees_config.php:1041
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #. I18N: A button label.
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr ""
+msgstr "bomɔ́ni yambo"
 
 #. I18N: A button label, previous page
 #: app/Datatables.php:52 app/I18N.php:181 app/Module/BatchUpdateModule.php:245
@@ -18881,7 +18881,7 @@ msgstr ""
 
 #: admin_trees_config.php:52 modules_v3/fact_sources/report.xml:6
 msgid "records"
-msgstr ""
+msgstr "bokɔ́tisi"
 
 #: family.php:46 gedrecord.php:59 individual.php:60 mediaviewer.php:47
 #: note.php:48 repo.php:47 source.php:47
@@ -18903,19 +18903,19 @@ msgstr "ebóyámí"
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "nkómbó ya bonzámbe"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "nkómbó ya bonzámbe"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "nkómbó ya bonzámbe"
 
 #. I18N: A button label.
 #: search.php:213
@@ -18930,7 +18930,7 @@ msgstr ""
 #. I18N: A button label.
 #: lifespan.php:114 medialist.php:192 timeline.php:431
 msgid "reset"
-msgstr ""
+msgstr "bandiselá"
 
 #. I18N: A button label.
 #: addmedia.php:707 admin_module_blocks.php:104 admin_module_charts.php:101
@@ -19559,7 +19559,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi na mísáto"
 
 #: admin_trees_config.php:513
 msgid "this record does not exist"
-msgstr ""
+msgstr "bokɔ́tisi boye bozálí tɛ́"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:66
@@ -19663,7 +19663,7 @@ msgstr "Tiyá ya sika"
 #. I18N: A button label.
 #: admin_media_upload.php:257 app/Module/GoogleMapsModule.php:3319
 msgid "upload"
-msgstr ""
+msgstr "tómbisá"
 
 #. I18N: A button label.
 #: ancestry.php:76 app/Module/GoogleMapsModule.php:1021 branches.php:55
