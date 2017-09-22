@@ -141,7 +141,7 @@ table {
 
 .wt-site-title {
 	order: 1;
-	flex: 1 1 fit-content;
+	flex: 1 1 0;
 	font-size: 1.75rem;
 }
 
@@ -155,7 +155,7 @@ table {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 fit-content;
+	flex: 0 0 0;
 	white-space: nowrap;
 }
 
@@ -824,7 +824,6 @@ table {
 	transition: visibility 0s ease .25s,opacity .25s ease;
 	z-index: 9999;
 	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
-	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 

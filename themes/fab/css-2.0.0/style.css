@@ -146,7 +146,7 @@ table {
 
 .wt-site-title {
 	order: 1;
-	flex: 1 1 fit-content;
+	flex: 1 1 0;
 	font-size: 1.5rem;
 	color: #888;
 }
@@ -161,7 +161,7 @@ table {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 fit-content;
+	flex: 0 0 0;
 	white-space: nowrap;
 }
 
@@ -184,6 +184,7 @@ table {
 .wt-primary-navigation {
 	order: 4;
 	flex: 0 0 100%;
+	background-color: #eee;
 }
 
 .wt-primary-menu {
