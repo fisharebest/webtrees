@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-21 22:18+0000\n"
+"PO-Revision-Date: 2017-09-22 22:01+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -2081,7 +2081,7 @@ msgstr "Ya sɔ̂lɔ́ olingí kozíma ekelá eye?"
 
 #: app/Module/UserMessagesModule.php:89 app/Module/UserMessagesModule.php:132
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "Ya sɔ̂lɔ́ olingí kozíma nkomá eye? Ekokoka kozwama nsima tɛ́."
 
 #: admin_media.php:315 admin_media.php:526 admin_trees_manage.php:409
 #: admin_trees_manage.php:420 admin_users.php:206
@@ -10538,7 +10538,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:145
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView ekokoka kofandisama o káti ya mɔ̌kɔ́ ya bitúka biye:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:713
@@ -12227,7 +12227,7 @@ msgstr "Kotálisa"
 #. I18N: A configuration setting
 #: admin_trees_config.php:981
 msgid "Show a download link in the media viewer"
-msgstr ""
+msgstr "Kotálisa ekangeli ya botíyolisi na káti ya emɔ́niseli ya bopanzi nsango"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:495
@@ -13903,21 +13903,21 @@ msgstr ""
 
 #: family.php:58
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Libótá liye lizalí tɛ́ tǒ ozalí na ndingisa ya kotála lyangó tɛ́."
 
 #: family.php:39
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Libótá liye lizímamákí. Ekonsengela bozímisi etálama lisúsu epái ya mondimi."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:34
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Libótá liye lizímamákí. Esengélí otála lisúsu bozímisi mpé bôngó %1$s tǒ %2$s yangó."
 
 #: family.php:49
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Libótá liye lizímamákí. Esengélí mabóngoli matálama lisúsu epái ya mondimi."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:44
@@ -15649,12 +15649,12 @@ msgstr ""
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:251 admin_trees_config.php:927 edituser.php:260
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "Okokí kobóngola bomɔ́nɔni bwa webtrees na kosáleláká \"mibímbi\". Mobímbí mɔ́nsɔ mozalí na loléngé ekɛsɛ́ní, emɔ́niseli, liyemi lya lángi, etc..."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:789
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "Okokí kopɔnɔ libandi liye likosálelama na ntángo XREF ya sika ekelamí."
 
 #: admin_users.php:455 edituser.php:285
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
@@ -15705,7 +15705,7 @@ msgstr ""
 
 #: admin_site_merge.php:47
 msgid "You entered the same IDs. You cannot merge the same records."
-msgstr ""
+msgstr "Okɔ́tisí ba ID ya ndenge yɔ̌kɔ́. Okokí kosangisa bokɔ́tisi ya loléngé lyɔ̌kɔ́ tɛ́."
 
 #: login.php:610
 msgid "You have confirmed your request to become a registered user."
@@ -15721,11 +15721,11 @@ msgstr "Opɔní kásá-kásá GEDCOM mɔ̌kɔ́ na nkómbó ekɛsɛ́ní. Ezali 
 
 #: logout.php:26
 msgid "You have signed out."
-msgstr "Obimí."
+msgstr "Omibimísí."
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr ""
+msgstr "Okokí kotíya URL ebandí na “http://”."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15737,7 +15737,7 @@ msgstr ""
 
 #: setup.php:212
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Esengelí obóngola óyo libosó ya kolandela."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:81
 msgid "You must enter a name"
@@ -15769,11 +15769,11 @@ msgstr ""
 
 #: admin_trees_manage.php:318
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Esengelí okela nzeté ya libótá."
 
 #: login.php:562
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Esengelí otála lisúsu makákoli ma kɔnti."
 
 #: setup.php:422
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -15790,7 +15790,7 @@ msgstr ""
 
 #: message.php:216
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "Otíndí nkánda elandí epái ya basáleli ya webtrees:"
 
 #: admin_site_upgrade.php:97
 msgid "You should accept or reject all pending changes before upgrading."
@@ -15808,7 +15808,7 @@ msgstr ""
 #: login.php:288 message.php:53
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "Esengelí ozíma “%1$s” útá “%2$s” mpé obandela lisúsu."
 
 #: admin_users.php:387
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15820,7 +15820,7 @@ msgstr ""
 
 #: setup.php:431
 msgid "You will use this to sign in to webtrees."
-msgstr ""
+msgstr "Okosálela óyo mpɔ̂ na kokɔ́tɔ na káti ya webtrees."
 
 #: statistics.php:297
 msgid "Youngest father"
@@ -18560,7 +18560,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:346
 msgid "maximum"
-msgstr "ya nsúka"
+msgstr "míngi"
 
 #: app/Module/RecentChangesModule.php:137
 #: app/Module/UpcomingAnniversariesModule.php:148
@@ -18585,11 +18585,11 @@ msgstr "bozékétáné"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:92
 msgid "minimal"
-msgstr "minimal"
+msgstr "ya mokɛ́"
 
 #: app/Module/GoogleMapsModule.php:340
 msgid "minimum"
-msgstr "ya mokɛ́"
+msgstr "mokɛ́"
 
 #: statistics.php:625
 msgid "months after marriage"
@@ -19477,7 +19477,7 @@ msgstr ""
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:36 app/Module/TopSurnamesModule.php:172
 msgid "tag cloud"
-msgstr ""
+msgstr "elembo lipata"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
@@ -19790,7 +19790,7 @@ msgstr "lɛ́ki mwǎsí"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "mbúla ±%s"
-msgstr[1] "mbúla ±%s"
+msgstr[1] "mibú ±%s"
 
 #: app/Individual.php:1225
 #, php-format
