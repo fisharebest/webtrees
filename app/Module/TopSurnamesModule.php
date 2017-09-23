@@ -127,7 +127,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function loadAjax() {
-		return true;
+		return false;
 	}
 
 	/** {@inheritdoc} */
