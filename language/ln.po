@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-22 22:01+0000\n"
+"PO-Revision-Date: 2017-09-23 23:38+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -2111,7 +2111,7 @@ msgstr "Ya sɔ̂lɔ́ olingí kolongola ekangeli na elɔ́kɔ ya bopanzi nsango 
 
 #: app/Module/FamilyTreeFavoritesModule.php:140
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr ""
+msgstr "Ya sɔ̂lɔ́ olingí kolongola ekákoli eye na molɔngɔ́ mwa malúli ma yɔ̌?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6655
@@ -5680,7 +5680,7 @@ msgstr ""
 #. I18N: placeholder text for registration-comments field
 #: login.php:482
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "Limbolá mpɔ̂ na níni ozalí kosɛ́ngɛ kɔnti."
 
 #: admin_trees_manage.php:594
 msgid "Export"
@@ -7209,7 +7209,7 @@ msgstr ""
 
 #: login.php:344
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr ""
+msgstr "Sɔ́kí osɛ́ngákí kɔnti tɛ́, okokí sé kozíma nkomá eye."
 
 #: app/Module/GoogleMapsModule.php:3226
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
@@ -13831,7 +13831,7 @@ msgstr ""
 
 #: action.php:140 addmedia.php:178 admin_media_upload.php:140
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "Mbeba ezalákí na botómbisi bwa kásá-kásá na yɔ̌."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
@@ -13923,7 +13923,7 @@ msgstr "Libótá liye lizímamákí. Esengélí mabóngoli matálama lisúsu ep�
 #: family.php:44
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Libótá liye libongisamákí. Esengélí otála lisúsu mabóngoli mpé bôngó %1$s tǒ %2$s yangó."
 
 #: app/Functions/FunctionsCharts.php:391 app/Functions/FunctionsCharts.php:491
 msgid "This family remained childless"
@@ -13944,6 +13944,8 @@ msgstr "Libótá liye lizalí na bilílí bya kotálisa tɛ́."
 #: app/Module/HtmlBlockModule.php:161
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
+"Nzeté ya libótá liye etíyamákí mbala ya nsúka na #gedcomUpdated#. Nkómbó #totalSurnames# izalí na nzeté ya libótá liye. Molúlu mwa yambo mokɔ́tisamákí ezalí #firstEventType# ya #firstEventName# na káti ya #firstEventYear#. Molúlu mwa nsúka \n"
+" ezalí #lastEventType# ya #lastEventName# na kátí ya #lastEventYear#.<br><br> Sɔ́kí ozalí na ndimbola tǒ bozóngisi túná #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:100
@@ -13973,7 +13975,7 @@ msgstr ""
 #: app/Controller/AncestryController.php:123
 #: app/Controller/ChartController.php:51 individual.php:75
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Moto óyo azalí tɛ́ tǒ ozalí na ndingisa ya kotála yě tɛ́."
 
 #: individual.php:53
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
@@ -13983,7 +13985,7 @@ msgstr ""
 #: individual.php:48
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Moto óyo azímamákí. Esengelí otála lisúsu bozímisi mpé bôngó %1$s tǒ %2$s yangó."
 
 #: individual.php:63
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
@@ -13993,7 +13995,7 @@ msgstr ""
 #: individual.php:58
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Moto óyo abongisamákí. Esengelí otála lisúsu mabóngoli mpé bôngó %1$s tǒ %2$s mangó."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:622 edituser.php:179
@@ -14032,7 +14034,7 @@ msgstr ""
 
 #: edituser.php:167
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "Óyo ezalí ekangeli kín’o bokɔ́tisi bwa yɔ̌-mɛ́í na káti ya nzeté ya libótá. Sɔ́kí óyo azalí moto wa sɔ̂lɔ́ tɛ́, túná na mokambi."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1288
