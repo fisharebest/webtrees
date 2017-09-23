@@ -40,9 +40,9 @@ define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', 'packages/bootstrap-datetimepicker
 define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
 define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js');
 define('WT_BOOTSTRAP_RTL_CSS_URL', 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
-define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.15/jquery.dataTables.min.js');
-define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.css');
-define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.15/dataTables.bootstrap4.min.js');
+define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.16/jquery.dataTables.min.js');
+define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.css');
+define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.js');
 define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
 define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
 define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
