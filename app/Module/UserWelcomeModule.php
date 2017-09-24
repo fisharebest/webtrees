@@ -16,9 +16,12 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class UserWelcomeModule
@@ -46,24 +49,42 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE;
 
-		$id      = $this->getName() . $block_id;
-		$class   = $this->getName() . '_block';
-		$title   = /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', '<span dir="auto">' . Auth::user()->getRealNameHtml() . '</span>');
-		$content = '<div class="row">';
-		$content .= '<div class="col"><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></div>';
-
 		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+
+		$individual = Individual::getInstance($gedcomid, $WT_TREE);
+
+		$links = [];
 
 		if ($gedcomid) {
 			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-				$content .= '<div class="col"><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></div>';
+				$links[] = [
+					'url'   => Html::url('pedigree.php', ['rootid' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
+					'title' => I18N::translate('Default chart'),
+					'icon'  => 'icon-pedigree',
+				];
 			}
-			$content .= '<div class="col"><a href="individual.php?pid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></div>';
+
+			$links[] = [
+				'url'   => $individual->getRawUrl(),
+				'title' => I18N::translate('My individual record'),
+				'icon'  => 'icon-indis',
+			];
 		}
-		$content .= '</div>';
+
+		$links[] = [
+			'url'   => Html::url('edituser.php', []),
+			'title' => I18N::translate('My account'),
+			'icon'  => 'icon-mypage',
+		];
+		$content = View::make('blocks/welcome', ['links' => $links]);
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'class'   => str_replace('_', '-', $this->getName()) . '-block',
+				'id'      => $this->getName() . $block_id,
+				'title'   => /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealName()),
+				'content' => $content,
+			]);
 		} else {
 			return $content;
 		}
