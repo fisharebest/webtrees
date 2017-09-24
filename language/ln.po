@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-23 23:38+0000\n"
+"PO-Revision-Date: 2017-09-24 12:49+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -101,7 +101,7 @@ msgstr "%1$s ezalí tɛ́."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s ezalí tɛ́. Okanisí %2$s?"
+msgstr "%1$s ezalí tɛ́. Okanísí %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -707,7 +707,7 @@ msgstr ""
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr ""
+msgstr "<b>Yébá:</b> Nsango ya bato na bomɔi ekopésama sé na mabótá mpé na baninga ba nzinganzinga. Okotúnama mpɔ̂ na koyéba mokangano na yɔ̌ libosó ya kozwa boíké bwa nsango ya bato. Mbala míngi nsango ya bato bakúfá ikokí kotíkala sé ya bangó mɔ̌kɔ́. Sɔ́kí bôngó, ezalí mpɔ̂ nsango ya moto óyo izwamí míngi tɛ́. <br><br>Libosó ya kotúna, oyéba éte ozali koluka moto wa sɔ̂lɔ́ na boluki dáti, bisíká mpé mikangano mya nzinganzinga. Sɔ́kí ozalí kotínda mabóngoli ma bipɛ́sɛli bya mabótá, tíyá bibandela epáí wapi ozwákí epɛ́sɛli."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -20161,7 +20161,7 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” abakisamí o kati ya bopɔni bwa ngáí."
+msgstr "“%s” abakisámí o káti ya bopɔni bwa ngáí."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:47
