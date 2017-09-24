@@ -49,19 +49,27 @@ class View {
 		extract($this->data);
 
 		ob_start();
-		require WT_ROOT . 'resources/views/' . $this->name . '.php';
+		require $this->getFilenameForView($this->name);
+
 		return ob_get_clean();
 	}
 
 	/**
-	 * Check whether a view exists.
+	 * Allow a theme to override the default views.
 	 *
 	 * @param string $view_name
 	 *
-	 * @return bool
+	 * @return string
 	 */
-	public static function exists($view_name) {
-		return file_exists(WT_ROOT . 'resources/views/' . $view_name . '.php');
+	public static function getFilenameForView($view_name) {
+		$view_file  = $view_name . '.php';
+		$theme_view = WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views/' . $view_file;
+
+		if (file_exists($theme_view)) {
+			return $theme_view;
+		} else {
+			return WT_ROOT . 'resources/views/' . $view_file;
+		}
 	}
 
 	/**
