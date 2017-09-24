@@ -80,10 +80,11 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 
 		if ($template) {
 			return View::make('blocks/template', [
-				'class'   => str_replace('_', '-', $this->getName()) . '-block',
-				'id'      => $this->getName() . $block_id,
-				'title'   => $individual->getTree()->getTitle(),
-				'content' => $content,
+				'block'     => str_replace('_', '-', $this->getName()),
+				'id'        => $block_id,
+				'admin_url' => '',
+				'title'     => $individual->getTree()->getTitle(),
+				'content'   => $content,
 			]);
 		} else {
 			return $content;

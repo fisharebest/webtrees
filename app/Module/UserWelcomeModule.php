@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -29,12 +28,14 @@ use Fisharebest\Webtrees\View;
 class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('My page');
+		return /* I18N: Name of a module */
+			I18N::translate('My page');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “My page” module */ I18N::translate('A greeting message and useful links for a user.');
+		return /* I18N: Description of the “My page” module */
+			I18N::translate('A greeting message and useful links for a user.');
 	}
 
 	/**
@@ -80,10 +81,11 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 
 		if ($template) {
 			return View::make('blocks/template', [
-				'class'   => str_replace('_', '-', $this->getName()) . '-block',
-				'id'      => $this->getName() . $block_id,
-				'title'   => /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealName()),
-				'content' => $content,
+				'block'     => str_replace('_', '-', $this->getName()),
+				'id'        => $block_id,
+				'admin_url' => '',
+				'title'     => /* I18N: A %s is the user’s name */I18N::translate('Welcome %s', Auth::user()->getRealName()),
+				'content'   => $content,
 			]);
 		} else {
 			return $content;
