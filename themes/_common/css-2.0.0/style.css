@@ -82,6 +82,20 @@
 .wt-site-title {
 }
 
+.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.wt-initials-list {
+	width: auto;
+	padding: 0 5px;
+	display: flex;
+    flex-wrap: wrap;
+}
+
 .wt-header-search {
 }
 
@@ -115,11 +129,6 @@
 }
 
 .wt-page-title {
-}
-
-.wt-page-options {
-	flex: 1 1 0;
-	padding: 1rem 0;
 }
 
 .wt-page-content {
