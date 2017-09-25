@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class TopSurnamesModule
@@ -119,7 +120,13 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

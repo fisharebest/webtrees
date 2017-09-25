@@ -9,7 +9,7 @@
 		<?php endif ?>
 		<?= Html::escape($title) ?>
 	</div>
-	<div class="card-block wt-block-content wt-block-content-<?= Html::escape($block) ?>">
+	<div class="card-body wt-block-content wt-block-content-<?= Html::escape($block) ?>">
 		<?= $content ?>
 	</div>
 </div>

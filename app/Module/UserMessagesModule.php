@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class UserMessagesModule
@@ -138,7 +139,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</form>';
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}
