@@ -81,11 +81,11 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 
 		if ($template) {
 			return View::make('blocks/template', [
-				'block'     => str_replace('_', '-', $this->getName()),
-				'id'        => $block_id,
-				'admin_url' => '',
-				'title'     => /* I18N: A %s is the user’s name */I18N::translate('Welcome %s', Auth::user()->getRealName()),
-				'content'   => $content,
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => /* I18N: A %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealName()),
+				'content'    => $content,
 			]);
 		} else {
 			return $content;
