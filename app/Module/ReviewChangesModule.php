@@ -19,14 +19,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
@@ -109,15 +107,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 		}
 		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
-			$id    = $this->getName() . $block_id;
-			$class = $this->getName() . '_block';
-			if ($ctype === 'user' || Auth::isManager($WT_TREE)) {
-				$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
-			} else {
-				$title = '';
-			}
-			$title .= $this->getTitle();
-
 			$content = '';
 			if (Auth::isModerator($WT_TREE)) {
 				$content .= '<a href="edit_changes.php">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
@@ -143,10 +132,16 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			$content .= '</ul>';
 
 			if ($template) {
+				if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+					$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				} else {
+					$config_url = '';
+				}
+
 				return View::make('blocks/template', [
 					'block'      => str_replace('_', '-', $this->getName()),
 					'id'         => $block_id,
-					'config_url' => '',
+					'config_url' => $config_url,
 					'title'      => $this->getTitle(),
 					'content'    => $content,
 				]);

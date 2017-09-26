@@ -18,10 +18,9 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -61,21 +60,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
 		$stats = new Stats($WT_TREE);
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
-		} else {
-			$title = '';
-		}
-		if ($num == 1) {
-			// I18N: i.e. most popular given name.
-			$title .= I18N::translate('Top given name');
-		} else {
-			// I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
-			$title .= I18N::plural('Top %s given name', 'Top %s given names', $num, I18N::number($num));
-		}
-
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
 		switch ($infoStyle) {
@@ -109,11 +93,25 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$content .= '</div>';
 
 		if ($template) {
+			if ($num == 1) {
+				// I18N: i.e. most popular given name.
+				$title = I18N::translate('Top given name');
+			} else {
+				// I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
+				$title = I18N::plural('Top %s given name', 'Top %s given names', $num, I18N::number($num));
+			}
+
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
 			return View::make('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
-				'config_url' => '',
-				'title'      => $this->getTitle(),
+				'config_url' => $config_url,
+				'title'      => $title,
 				'content'    => $content,
 			]);
 		} else {
