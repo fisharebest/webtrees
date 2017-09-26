@@ -82,7 +82,7 @@
 .wt-site-title {
 }
 
-.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
+.wt-page-options-individual-list, .wt-page-options-family-list {
 	padding: 1rem 0;
 	display: flex;
 	flex-direction: column;
@@ -636,5 +636,18 @@ fieldset.row > legend, fieldset.row > div {
 .col-form-label,
 .col-form-legend {
 	text-align: center;
+	}
 }
+
+@media (max-width: 500px) {
+	.wt-page-options-individual-list, .wt-page-options-family-list {
+    align-items: left;
+	}
+	.wt-main-container .row {
+	flex-wrap: wrap;
+	margin: 0;
+	}
+	.wt-initials-list {
+    font-size: 18px;
+	}
 }
