@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Datatables; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
