@@ -177,7 +177,7 @@
  */
 
  /* my page chart enhancements */
-.wt-block-content-charts-block {
+.wt-block-content-charts {
 	display: flex;
     flex-flow: column-reverse;
     overflow: auto;
