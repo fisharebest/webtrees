@@ -82,7 +82,7 @@
 .wt-site-title {
 }
 
-.wt-page-options-individual-list, .wt-page-options-family-list {
+.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
 	padding: 1rem 0;
 	display: flex;
 	flex-direction: column;
@@ -640,7 +640,7 @@ fieldset.row > legend, fieldset.row > div {
 }
 
 @media (max-width: 500px) {
-	.wt-page-options-individual-list, .wt-page-options-family-list {
+	.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
     align-items: left;
 	}
 	.wt-main-container .row {
