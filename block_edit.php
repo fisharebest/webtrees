@@ -24,35 +24,41 @@ global $WT_TREE;
 require 'includes/session.php';
 
 $block_id = Filter::getInteger('block_id');
-$block    = Database::prepare(
-	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
-)->execute([$block_id])->fetchOneRow();
+
+$block_info = Database::prepare(
+	"SELECT SQL_CACHE * FROM `##block` WHERE block_id = :block_id"
+)->execute([
+	'block_id' => $block_id,
+])->fetchOneRow();
+
+// A non-existant block?
+if ($block_info === null) {
+	header('Location: ' . Html::url('index.php', []));
+}
+
+$ctype = $block_info !== null && $block_info->user_id !== null ? 'user' : 'gedcom';
 
 // Check access. (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
 $blocks = Module::getActiveBlocks($WT_TREE);
 if (
-	!$block ||
-	!array_key_exists($block->module_name, $blocks) ||
-	$block->gedcom_id && !Auth::isManager(Tree::findById($block->gedcom_id)) ||
-	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
+	!array_key_exists($block_info->module_name, $blocks) ||
+	$block_info->gedcom_id && !Auth::isManager(Tree::findById($block_info->gedcom_id)) ||
+	$block_info->user_id && $block_info->user_id != Auth::id() && !Auth::isAdmin()
 ) {
-	header('Location: index.php');
+	header('Location: ' . Html::url('index.php', ['ctype' => $ctype, 'ged' => $WT_TREE->getName()]));
 
 	return;
 }
 
-$block = $blocks[$block->module_name];
+$block = $blocks[$block_info->module_name];
 
 if (Filter::post('save')) {
-	$ctype = Filter::post('ctype', 'user', 'gedcom');
-	header('Location: index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
+	header('Location: ' . Html::url('index.php', ['ctype' => $ctype, 'ged' => $WT_TREE->getName()]));
 	$block->configureBlock($block_id);
 
 	return;
 }
-
-$ctype = Filter::get('ctype', 'user', 'gedcom');
 
 $controller = new PageController;
 $controller
@@ -70,7 +76,6 @@ if (Module::getModuleByName('ckeditor')) {
 <form name="block" method="post" action="?block_id=<?= $block_id ?>">
 	<input type="hidden" name="save" value="1">
 	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
-	<input type="hidden" name="ctype" value="<?= $ctype ?>">
 	<?= Filter::getCsrf() ?>
 	<?= $block->configureBlock($block_id) ?>
 	<div class="row form-group">

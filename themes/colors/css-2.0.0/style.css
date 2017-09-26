@@ -353,7 +353,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-site-title {
 	order: 1;
-	flex: 1 1 fit-content;
+	flex: 1 1 0;
 	font-size: 1.5rem;
 	padding: 0.75rem 0.75rem 0;
 }
@@ -369,7 +369,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 fit-content;
+	flex: 0 0 0;
 	white-space: nowrap;
 }
 
@@ -735,6 +735,10 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-page-options {
 	max-width: 50rem;
 	margin: 0 auto;
+}
+
+.wt-page-options-value {
+    color: #333;
 }
 
 .wt-page-content {
@@ -1209,7 +1213,7 @@ a:hover .nameZoom {
 }
 
 .date {
-	color: #337;
+	color: #333;
 }
 
 .label {

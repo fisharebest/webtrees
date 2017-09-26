@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -66,15 +67,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 
 		$startjd = WT_CLIENT_JD;
 		$endjd   = WT_CLIENT_JD + $days - 1;
-
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="fa fa-cog" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '">' . I18N::translate('Preferences') . '</a> ';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
 
 		$content = '';
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
@@ -217,7 +209,19 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => $config_url,
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

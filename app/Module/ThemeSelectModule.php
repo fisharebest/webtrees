@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class ThemeSelectModule
@@ -42,16 +43,19 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = $this->getTitle();
 		$menu  = Theme::theme()->menuThemes();
 
 		if ($menu) {
 			$content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
 
 			if ($template) {
-				return Theme::theme()->formatBlock($id, $title, $class, $content);
+				return View::make('blocks/template', [
+					'block'      => str_replace('_', '-', $this->getName()),
+					'id'         => $block_id,
+					'config_url' => '',
+					'title'      => $this->getTitle(),
+					'content'    => $content,
+				]);
 			} else {
 				return $content;
 			}

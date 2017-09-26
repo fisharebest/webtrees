@@ -18,15 +18,14 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class HtmlBlockModule
@@ -34,12 +33,14 @@ use Fisharebest\Webtrees\Tree;
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('HTML');
+		return /* I18N: Name of a module */
+			I18N::translate('HTML');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “HTML” module */ I18N::translate('Add your own text and graphics.');
+		return /* I18N: Description of the “HTML” module */
+			I18N::translate('Add your own text and graphics.');
 	}
 
 	/**
@@ -55,7 +56,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		global $ctype, $WT_TREE;
 
 		$title          = $this->getBlockSetting($block_id, 'title');
-		$html           = $this->getBlockSetting($block_id, 'html');
+		$content        = $this->getBlockSetting($block_id, 'html');
 		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = $this->getBlockSetting($block_id, 'languages');
@@ -93,28 +94,27 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		/*
 		* Retrieve text, process embedded variables
 		*/
-		if (strpos($title, '#') !== false || strpos($html, '#') !== false) {
-			$title = $stats->embedTags($title);
-			$html  = $stats->embedTags($html);
-		}
-
-		/*
-		* Start Of Output
-		*/
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ' . $title;
-		}
-
-		$content = $html;
+		$title   = $stats->embedTags($title);
+		$content = $stats->embedTags($content);
 
 		if ($show_timestamp) {
 			$content .= '<br>' . FunctionsDate::formatTimestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => $config_url,
+				'title'      => $title,
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}
@@ -155,13 +155,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		$templates = [
 			I18N::translate('Keyword examples') =>
-			'#getAllTagsTable#',
+				'#getAllTagsTable#',
 
 			I18N::translate('Narrative description') =>
-			/* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
+			/* I18N: do not translate the #keywords# */
+				I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
 
 			I18N::translate('Statistics') =>
-			'<div class="gedcom_stats">
+				'<div class="gedcom_stats">
 				<span style="font-weight: bold;"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
 				' . I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 				<table id="keywords">
@@ -320,7 +321,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 					<?= I18N::translate('Show the date and time of update') ?>
 				</legend>
 				<div class="col-sm-9">
-					<?= Bootstrap4::radioButtons('timestamp', FunctionsEdit::optionsNoYes(), $show_timestamp, true) ?>
+					<?= Bootstrap4::radioButtons('show_timestamp', FunctionsEdit::optionsNoYes(), $show_timestamp, true) ?>
 				</div>
 			</div>
 		</fieldset>

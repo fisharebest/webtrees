@@ -35,35 +35,41 @@ function TreeViewHandler(treeview_instance) {
 		tv.compact();
 	}
 
-	// Define the draggables
-	// TODO: we no longer use jQueryUI/draggable.  Need another solution
-	//tv.treeview.draggable({
-	//	cursor: "move",
-	//	stop: function () {
-	//		tv.updateTree();
-	//	}
-	//});
+	///////////////////////////////////////////////
+	// Based on https://codepen.io/chriscoyier/pen/zdsty
+	(function($) {
+		$.fn.drags = function(opt) {
+			var $el = this;
 
-	function drag_start(event) {
-		var style = window.getComputedStyle(event.target, null);
-		event.dataTransfer.setData("text/plain",
-			(parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));
-	}
-	function drag_over(event) {
-		event.preventDefault();
-		return false;
-	}
-	function drop(event) {
-		var offset    = event.dataTransfer.getData("text/plain").split(',');
-		var dm        = document.getElementById('dragme');
-		dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-		dm.style.top  = (event.clientY + parseInt(offset[1], 10)) + 'px';
-		event.preventDefault();
+			return $el.css('cursor', 'move').on("mousedown", function(e) {
+				var $drag = $(this);
+				var drg_h = $drag.outerHeight();
+				var drg_w = $drag.outerWidth();
+				var pos_y = $drag.offset().top + drg_h - e.pageY;
+				var pos_x = $drag.offset().left + drg_w - e.pageX;
 
-		tv.updateTree();
+				$drag
+					.addClass('draggable')
+					.parents()
+					.on("mousemove", function(e) {
+						$('.draggable').offset({
+							top:e.pageY + pos_y - drg_h,
+							left:e.pageX + pos_x - drg_w
+						}).on("mouseup", function() {
+							$(this).removeClass('draggable');
+						});
+					});
+				e.preventDefault();
+			}).on("mouseup", function() {
+				$(this).removeClass('draggable');
+				tv.updateTree();
+			});
 
-		return false;
-	}
+		}
+	})(jQuery);
+
+	tv.treeview.drags();
+	///////////////////////////////////////////////
 
 	// Add click handlers to buttons
 	tv.toolbox.find("#tvbCompact").each(function (index, tvCompact) {

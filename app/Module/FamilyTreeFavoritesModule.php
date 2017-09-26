@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 use PDO;
 use Ramsey\Uuid\Uuid;
 
@@ -79,7 +80,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
-		global $ctype, $controller, $WT_TREE;
+		global $ctype, $WT_TREE;
 
 		$action = Filter::get('action');
 		switch ($action) {
@@ -126,10 +127,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		if (!is_array($userfavs)) {
 			$userfavs = [];
 		}
-
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = $this->getTitle();
 
 		$content = '';
 		if ($userfavs) {
@@ -208,7 +205,14 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			//return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

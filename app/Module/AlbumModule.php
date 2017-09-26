@@ -81,8 +81,6 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	 * @return string
 	 */
 	public function getTabContent() {
-		global $WT_TREE, $controller;
-
 		$html = '<div id="' . $this->getName() . '_content">';
 		$html .= '<div class="facts_value">';
 		$html .= '<ul class="album-list">';

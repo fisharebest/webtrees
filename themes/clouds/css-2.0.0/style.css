@@ -319,7 +319,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-site-title {
 	order: 1;
-	flex: 1 1 fit-content;
+	flex: 1 1 0;
 	font-size: 1.5rem;
 }
 
@@ -333,7 +333,7 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 fit-content;
+	flex: 0 0 0;
 	white-space: nowrap;
 }
 
@@ -2988,12 +2988,11 @@ div.faq_body {
 }
 
 .nav .dropdown-item {
-background: #fff;
-color: black;
+	background: #fff;
+	color: black;
 }
 .nav .dropdown-item:focus, .nav .dropdown-item:hover {
-background: #f7f7f9;
-color: #ldlelf;
+	background-color: #f7f7f9;
 }
 
 /* Sidebar*/

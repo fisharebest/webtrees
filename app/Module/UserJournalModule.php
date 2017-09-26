@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class UserJournalModule
@@ -75,9 +75,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			'user_id' => Auth::id(),
 		])->fetchAll();
 
-		$id      = $this->getName() . $block_id;
-		$class   = $this->getName() . '_block';
-		$title   = $this->getTitle();
 		$content = '';
 
 		if (empty($articles)) {
@@ -101,7 +98,13 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		$content .= '<p><a href="editnews.php?ctype=user&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('Add a journal entry') . '</a></p>';
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

@@ -13,7 +13,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /* list options 
+ /* list options
 .wt-initials-list {
 	display: inline!important;
 }
@@ -21,47 +21,6 @@
  /* Override Bootstrap formatting */
  .row .select2-selection--single {
 	height: auto;
-}
-
-.card-block {
-	padding: 1.25rem;
-}
-
-.table-responsive {
-    display: block;
-    overflow: auto;
-    width: 100%;
-}
-
-/* Mobile device enhancements */
-/* -- home page scrolling */
-
-.nav {
-	display: flex;
-    flex-wrap: wrap;
-}
-.wt-main-container .row {
-	flex-wrap: wrap;
-	margin: 0;
-}
-
-.wt-side-blocks .card {
-	display: flex;
-	overflow: auto;
-}
-
-.wt-main-container .row .wt-block-content {
-	padding: .25rem;
-}
-
-.wt-side-blocks .dataTables_wrapper div[class*='col']  {
-	padding: 0;
-}
-
-/* -- chart page scrolling */
-.wt-chart {
-	position: relative;
-	padding: .25rem;
 }
 
 /*
@@ -123,6 +82,20 @@
 .wt-site-title {
 }
 
+.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.wt-initials-list {
+	width: auto;
+	padding: 0 5px;
+	display: flex;
+    flex-wrap: wrap;
+}
+
 .wt-header-search {
 }
 
@@ -156,11 +129,6 @@
 }
 
 .wt-page-title {
-}
-
-.wt-page-options {
-	flex: 1 1 0;
-	padding: 1rem 0;
 }
 
 .wt-page-content {
@@ -289,7 +257,7 @@
 .wt-ancestors-chart-list {
 }
 
-.wt-ancestors-chart .family-break { 
+.wt-ancestors-chart .family-break {
 	page-break-before: always;
 }
 
@@ -325,7 +293,7 @@
 	line-height: 1.0;
 }
 
-.wt-descendants-chart .family-break { 
+.wt-descendants-chart .family-break {
 	page-break-before: always;
 }
 
@@ -386,7 +354,7 @@
 #pedigree_canvas {
 	z-index: -1000;
 }
- 
+
 .wt-pedigree-chart .person_box_template {
 	line-height: 1.0;
 }

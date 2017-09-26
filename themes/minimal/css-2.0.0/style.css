@@ -141,7 +141,7 @@ table {
 
 .wt-site-title {
 	order: 1;
-	flex: 1 1 fit-content;
+	flex: 1 1 0;
 	font-size: 1.75rem;
 }
 
@@ -155,7 +155,7 @@ table {
 
 .wt-secondary-navigation {
 	order: 2;
-	flex: 0 0 fit-content;
+	flex: 0 0 0;
 	white-space: nowrap;
 }
 
@@ -824,7 +824,6 @@ table {
 	transition: visibility 0s ease .25s,opacity .25s ease;
 	z-index: 9999;
 	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
-	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
@@ -2748,7 +2747,28 @@ div.faq_body {
 }
 
 #childbox {
+	padding: 5px;
+	position: absolute;
 	display: none;
+	text-align: start;
+	white-space: nowrap;
+	top: 20px;
+	left: 0;
+}
+
+[dir=rtl] #childbox {
+	left: auto;
+	right: 0;
+}
+
+.layout3 #childbox {
+	top: auto;
+	bottom: 20px;
+}
+
+#childbox a.name1 {
+	display: block;
+	margin-left: 5px;
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {

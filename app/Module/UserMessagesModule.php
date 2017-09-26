@@ -21,8 +21,8 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class UserMessagesModule
@@ -80,9 +80,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			->fetchAll();
 
 		$count = count($messages);
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = I18N::plural('%s message', '%s messages', $count, I18N::number($count));
 		$users = array_filter(User::all(), function (User $user) {
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
@@ -109,7 +106,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '</tr>';
 			foreach ($messages as $message) {
 				$content .= '<tr>';
-				$content .= '<td class="list_value_wrap"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
+				$content .= '<td class="list_value_wrap center"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
 				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Html::escape($message->subject) . '</b></a></td>';
 				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
@@ -138,7 +135,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</form>';
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

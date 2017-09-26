@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -69,20 +69,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
 		$records = $this->getRecentChanges($WT_TREE, $days);
 
-		// Print block header
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
-		} else {
-			$title = '';
-		}
-		$title .= /* I18N: title for list of recent changes */ I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, I18N::number($days));
-
 		$content = '';
 		// Print block content
-		if (count($records) == 0) {
+		if (empty($records)) {
 			$content .= I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
 		} else {
 			switch ($infoStyle) {
@@ -96,7 +85,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => $config_url,
+				'title'      => I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, I18N::number($days)),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

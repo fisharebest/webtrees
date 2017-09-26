@@ -19,10 +19,10 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class TopPageViewsModule
@@ -67,16 +67,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			}
 		}
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
-
-		$content = '';
 		// load the lines from the file
 		$top10 = Database::prepare(
 			"SELECT page_parameter, page_count" .
@@ -88,7 +78,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'limit'   => (int) $num,
 		])->fetchAssoc();
 
-		$content .= '<table>';
+		$content = '<table>';
 		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
@@ -106,7 +96,19 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</table>';
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => $config_url,
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

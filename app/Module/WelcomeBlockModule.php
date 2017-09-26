@@ -16,10 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class WelcomeBlockModule
@@ -27,12 +28,14 @@ use Fisharebest\Webtrees\Theme;
 class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Home page');
+		return /* I18N: Name of a module */
+			I18N::translate('Home page');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Home page” module */ I18N::translate('A greeting message for site visitors.');
+		return /* I18N: Description of the “Home page” module */
+			I18N::translate('A greeting message for site visitors.');
 	}
 
 	/**
@@ -45,24 +48,44 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
-		global $controller, $WT_TREE;
+		global $controller;
 
-		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$id        = $this->getName() . $block_id;
-		$class     = $this->getName() . '_block';
-		$title     = $WT_TREE->getTitleHtml();
-		$content   = '<div class="row text-center">';
-		if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-			$content .= '<div class="col"><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></div>';
+		$individual = $controller->getSignificantIndividual();
+
+		$links = [];
+
+		if (Module::isActiveChart($individual->getTree(), 'pedigree_chart')) {
+			$links[] = [
+				'url'   => Html::url('pedigree.php', ['rootid' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
+				'title' => I18N::translate('Default chart'),
+				'icon'  => 'icon-pedigree',
+			];
 		}
-		$content .= '<div class="col"><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></div>';
+
+		$links[] = [
+			'url'   => $individual->getRawUrl(),
+			'title' => I18N::translate('Default individual'),
+			'icon'  => 'icon-indis',
+		];
+
 		if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
-			$content .= '<div class="col"><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></div>';
+			$links[] = [
+				'url'   => Html::url(WT_LOGIN_URL, ['action' => 'register']),
+				'title' => I18N::translate('Request a new user account'),
+				'icon'  => 'icon-user_add',
+			];
 		}
-		$content .= '</div>';
+
+		$content = View::make('blocks/welcome', ['links' => $links]);
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => '',
+				'title'      => $individual->getTree()->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}

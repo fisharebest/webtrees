@@ -1162,7 +1162,6 @@ class FunctionsPrintFacts {
 				} elseif ($can_edit) {
 					echo GedcomTag::getLabel($factname, $parent);
 					echo '<div class="editfacts">';
-					echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '"); return false;']);
 					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . $parent->getXref() . '", "' . $fact->getFactId() . '");']);
 					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $parent->getXref() . '", "' . $fact->getFactId() . '");']);
 					echo '</div>';

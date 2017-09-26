@@ -441,6 +441,7 @@ $old_files = [
 	WT_ROOT . 'admin_site_readme.php',
 	WT_ROOT . 'app/Controller/SimpleController.php',
 	WT_ROOT . 'assets/js-1.7.7',
+	WT_ROOT . 'packages/datatables-1.10.15',
 	WT_ROOT . 'packages/font-awesome-4.4.0',
 	WT_ROOT . 'packages/jquery-1.12.1',
 	WT_ROOT . 'packages/jquery-2.2.1',

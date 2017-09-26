@@ -20,12 +20,11 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Datatables;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class ResearchTaskModule
@@ -68,15 +67,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			}
 		}
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = FontAwesome::linkIcon('preferences', I18N::translate('Preferences'), ['class' => 'btn btn-link', 'href' => 'block_edit.php?block_id=' . $block_id . '&ged=' . $WT_TREE->getNameHtml() . '&ctype=' . $ctype]) . ' ';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
-
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 
 		$xrefs = Database::prepare(
@@ -87,6 +77,22 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			'jd'      => $end_jd,
 		])->fetchOneColumn();
 
+		$records = array_map(function($xref) use ($WT_TREE) {
+			return GedcomRecord::getInstance($xref, $WT_TREE);
+		}, $xrefs);
+
+		$tasks = [];
+
+		foreach ($records as $record) {
+			foreach ($record->getFacts('_TODO') as $task) {
+				$user_name = $task->getAttribute('_WT_USER');
+
+				if ($user_name === Auth::user()->getUserName() || empty($user_name) && $show_unassigned || !empty($user_name) && $show_other) {
+					$tasks[] = $task;
+				}
+			}
+		}
+
 		$content = '';
 		$content .= '<table ' . Datatables::researchTaskTableAttributes() . '>';
 		$content .= '<thead><tr>';
@@ -96,30 +102,34 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<th>' . I18N::translate('Research task') . '</th>';
 		$content .= '</tr></thead><tbody>';
 
-		foreach ($xrefs as $xref) {
-			$record = GedcomRecord::getInstance($xref, $WT_TREE);
-			if ($record->canShow()) {
-				foreach ($record->getFacts('_TODO') as $fact) {
-					$user_name = $fact->getAttribute('_WT_USER');
-					if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
-						$content .= '<tr>';
-						$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
-						$content .= '<td data-sort="' . Html::escape($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-						$content .= '<td>' . $user_name . '</td>';
-						$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
-						$content .= '</tr>';
-					}
-				}
-			}
+		foreach ($tasks as $task) {
+			$content .= '<tr>';
+			$content .= '<td data-sort="' . $task->getDate()->julianDay() . '">' . $task->getDate()->display() . '</td>';
+			$content .= '<td data-sort="' . Html::escape($task->getParent()->getSortName()) . '"><a href="' . $task->getParent()->getHtmlUrl() . '">' . $task->getParent()->getFullName() . '</a></td>';
+			$content .= '<td>' . $task->getAttribute('_WT_USER') . '</td>';
+			$content .= '<td dir="auto">' . $task->getValue() . '</td>';
+			$content .= '</tr>';
 		}
 
 		$content .= '</tbody></table>';
-		if (empty($xrefs)) {
+		if (empty($records)) {
 			$content .= '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
 		}
 
 		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} else {
+				$config_url = '';
+			}
+
+			return View::make('blocks/template', [
+				'block'      => str_replace('_', '-', $this->getName()),
+				'id'         => $block_id,
+				'config_url' => $config_url,
+				'title'      => $this->getTitle(),
+				'content'    => $content,
+			]);
 		} else {
 			return $content;
 		}
