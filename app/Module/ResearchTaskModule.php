@@ -77,6 +77,22 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			'jd'      => $end_jd,
 		])->fetchOneColumn();
 
+		$records = array_map(function($xref) use ($WT_TREE) {
+			return GedcomRecord::getInstance($xref, $WT_TREE);
+		}, $xrefs);
+
+		$tasks = [];
+
+		foreach ($records as $record) {
+			foreach ($record->getFacts('_TODO') as $task) {
+				$user_name = $task->getAttribute('_WT_USER');
+
+				if ($user_name === Auth::user()->getUserName() || empty($user_name) && $show_unassigned || !empty($user_name) && $show_other) {
+					$tasks[] = $task;
+				}
+			}
+		}
+
 		$content = '';
 		$content .= '<table ' . Datatables::researchTaskTableAttributes() . '>';
 		$content .= '<thead><tr>';
@@ -86,25 +102,17 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<th>' . I18N::translate('Research task') . '</th>';
 		$content .= '</tr></thead><tbody>';
 
-		foreach ($xrefs as $xref) {
-			$record = GedcomRecord::getInstance($xref, $WT_TREE);
-			if ($record->canShow()) {
-				foreach ($record->getFacts('_TODO') as $fact) {
-					$user_name = $fact->getAttribute('_WT_USER');
-					if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
-						$content .= '<tr>';
-						$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
-						$content .= '<td data-sort="' . Html::escape($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-						$content .= '<td>' . $user_name . '</td>';
-						$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
-						$content .= '</tr>';
-					}
-				}
-			}
+		foreach ($tasks as $task) {
+			$content .= '<tr>';
+			$content .= '<td data-sort="' . $task->getDate()->julianDay() . '">' . $task->getDate()->display() . '</td>';
+			$content .= '<td data-sort="' . Html::escape($task->getParent()->getSortName()) . '"><a href="' . $task->getParent()->getHtmlUrl() . '">' . $task->getParent()->getFullName() . '</a></td>';
+			$content .= '<td>' . $task->getAttribute('_WT_USER') . '</td>';
+			$content .= '<td dir="auto">' . $task->getValue() . '</td>';
+			$content .= '</tr>';
 		}
 
 		$content .= '</tbody></table>';
-		if (empty($xrefs)) {
+		if (empty($records)) {
 			$content .= '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
 		}
 

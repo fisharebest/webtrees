@@ -218,7 +218,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			return View::make('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
-				'config_url' => '',
+				'config_url' => $config_url,
 				'title'      => $this->getTitle(),
 				'content'    => $content,
 			]);

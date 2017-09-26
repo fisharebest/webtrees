@@ -67,7 +67,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			}
 		}
 
-		$content = '';
 		// load the lines from the file
 		$top10 = Database::prepare(
 			"SELECT page_parameter, page_count" .
@@ -79,7 +78,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'limit'   => (int) $num,
 		])->fetchAssoc();
 
-		$content .= '<table>';
+		$content = '<table>';
 		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {

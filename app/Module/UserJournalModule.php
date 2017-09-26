@@ -75,9 +75,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			'user_id' => Auth::id(),
 		])->fetchAll();
 
-		$id      = $this->getName() . $block_id;
-		$class   = $this->getName() . '_block';
-		$title   = $this->getTitle();
 		$content = '';
 
 		if (empty($articles)) {

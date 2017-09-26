@@ -80,9 +80,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			->fetchAll();
 
 		$count = count($messages);
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = I18N::plural('%s message', '%s messages', $count, I18N::number($count));
 		$users = array_filter(User::all(), function (User $user) {
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
@@ -142,7 +139,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',
-				'title'      => $this->getTitle(),
+				'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),
 				'content'    => $content,
 			]);
 		} else {

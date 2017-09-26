@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
@@ -113,7 +114,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			if ($sendmail === '1') {
 				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';
-				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . '<br><br>';
+				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . '<br><br>';
 			}
 			$content .= '<ul>';
 			$changes = Database::prepare(
