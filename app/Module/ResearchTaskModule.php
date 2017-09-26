@@ -93,27 +93,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			}
 		}
 
-		$content = '';
-		$content .= '<table ' . Datatables::researchTaskTableAttributes() . '>';
-		$content .= '<thead><tr>';
-		$content .= '<th>' . I18N::translate('Date') . '</th>';
-		$content .= '<th>' . I18N::translate('Record') . '</th>';
-		$content .= '<th>' . I18N::translate('Username') . '</th>';
-		$content .= '<th>' . I18N::translate('Research task') . '</th>';
-		$content .= '</tr></thead><tbody>';
-
-		foreach ($tasks as $task) {
-			$content .= '<tr>';
-			$content .= '<td data-sort="' . $task->getDate()->julianDay() . '">' . $task->getDate()->display() . '</td>';
-			$content .= '<td data-sort="' . Html::escape($task->getParent()->getSortName()) . '"><a href="' . $task->getParent()->getHtmlUrl() . '">' . $task->getParent()->getFullName() . '</a></td>';
-			$content .= '<td>' . $task->getAttribute('_WT_USER') . '</td>';
-			$content .= '<td dir="auto">' . $task->getValue() . '</td>';
-			$content .= '</tr>';
-		}
-
-		$content .= '</tbody></table>';
 		if (empty($records)) {
-			$content .= '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
+			$content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
+		} else {
+			$content = View::make('blocks/research-tasks', ['tasks' => $tasks]);
 		}
 
 		if ($template) {
