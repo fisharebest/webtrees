@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-26 22:11+0000\n"
+"PO-Revision-Date: 2017-09-27 22:32+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -461,7 +461,7 @@ msgstr[1] "mbúla %s mileki"
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr "mbúla %s útá mbótama"
+msgstr "mbúla %s ya bokundoli"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -884,7 +884,7 @@ msgstr ""
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Mosáleli mɔ̌kɔ́ amikomísí na %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -1277,7 +1277,7 @@ msgstr "Kobakisá mwǎna mpó na kotónga libótá ya mobóti mɔ̌kɔ́"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr "Bakisá mwǎna na libótá liye"
+msgstr "Kobakisa mwǎna na libótá liye"
 
 #: edit_interface.php:81
 msgid "Add a fact"
@@ -1329,7 +1329,7 @@ msgstr "Kobakisa nkómbó"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
-msgstr "Bakísá ekakoli ya sika"
+msgstr "Bakísá ekákoli ya sika"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
@@ -1590,75 +1590,75 @@ msgstr "Abɔ́kɔlɔmí na mamá"
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr "Bobɔ́kɔlɛli"
+msgstr "Bobɔ́kɔli"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a brother"
-msgstr "Bobɔ́kɔlɛli bwa ndeko mobáli"
+msgstr "Bobɔ́kɔli bwa ndeko mobáli"
 
 #: app/GedcomTag.php:876
 msgid "Adoption of a child"
-msgstr "Bobɔ́kɔlɛli bwa mwǎna"
+msgstr "Bobɔ́kɔli bwa mwǎna"
 
 #: app/GedcomTag.php:874
 msgid "Adoption of a daughter"
-msgstr "Bobɔ́kɔlɛli bwa mwǎna mwǎsí"
+msgstr "Bobɔ́kɔli bwa mwǎna mwǎsí"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ-mwǎna"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ-mwǎna"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:892
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:901
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mwǎsí"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mwǎsí"
 
 #: app/GedcomTag.php:881
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:890
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:899
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Bobɔ́kɔlɛli bwa nkɔ́kɔ mwǎna mobáli"
+msgstr "Bobɔ́kɔli bwa nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-brother"
-msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́ mobáli"
+msgstr "Bobɔ́kɔli bwa ndeko-ikɛ́ mobáli"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́"
+msgstr "Bobɔ́kɔli bwa ndeko-ikɛ́"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
-msgstr "Bobɔ́kɔlɛli bwa ndeko-ikɛ́ mwǎsí"
+msgstr "Bobɔ́kɔli bwa ndeko-ikɛ́ mwǎsí"
 
 #: app/GedcomTag.php:921
 msgid "Adoption of a sibling"
-msgstr "Bobɔ́kɔlɛli bwa ndeko"
+msgstr "Bobɔ́kɔli bwa ndeko"
 
 #: app/GedcomTag.php:919
 msgid "Adoption of a sister"
-msgstr "Bobɔ́kɔlɛli bwa ndeko mwǎsí"
+msgstr "Bobɔ́kɔli bwa ndeko mwǎsí"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a son"
-msgstr "Bobɔ́kɔlɛli bwa mwǎna mobáli"
+msgstr "Bobɔ́kɔli bwa mwǎna mobáli"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
@@ -2309,7 +2309,7 @@ msgstr "Otríshi"
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
 msgid "Author"
-msgstr ""
+msgstr "Mokomi"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
@@ -2334,25 +2334,25 @@ msgstr ""
 #: app/Date/JewishDate.php:147
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:185
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:109
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: index_edit.php:301
 msgid "Available blocks"
@@ -2391,31 +2391,31 @@ msgstr ""
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:95
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
@@ -2430,7 +2430,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6697
@@ -2441,30 +2441,30 @@ msgstr ""
 #: app/Date/JalaliDate.php:97
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6696
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrain"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6694
@@ -2547,7 +2547,7 @@ msgstr "Batisimo ya mwǎna mobáli"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6705
@@ -2557,7 +2557,7 @@ msgstr ""
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
@@ -2641,7 +2641,7 @@ msgstr "elɔ́kɔ ya epɛ́sɛli \"Binary\""
 
 #: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
@@ -2892,7 +2892,7 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
 msgid "Blessing"
-msgstr ""
+msgstr "Lipamboli"
 
 #: admin_module_blocks.php:73
 msgid "Block"
@@ -2916,7 +2916,7 @@ msgstr ""
 
 #: message.php:127
 msgid "Body"
-msgstr ""
+msgstr "Nzóto"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
@@ -2940,7 +2940,7 @@ msgstr "Búku"
 
 #: ancestry.php:71 descendancy.php:62
 msgid "Booklet"
-msgstr "Búku"
+msgstr "Búku ikɛ́"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:63
@@ -3060,25 +3060,25 @@ msgstr "Ndeko mobáli"
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
@@ -3165,15 +3165,15 @@ msgstr "Likundí lya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
-msgstr "Likundí lya ndeko ikɛ́ mobáli"
+msgstr "Likundí lya ndeko-ikɛ́ mobáli"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "Likundi lya nkána ikɛ́"
+msgstr "Likundi lya nkána-ikɛ́"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
-msgstr "Likundí lya ndeko ikɛ́ mwǎsí"
+msgstr "Likundí lya ndeko-ikɛ́ mwǎsí"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
@@ -3247,17 +3247,17 @@ msgstr "Burundi"
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
-msgstr ""
+msgstr "Mosómbi"
 
 #: app/GedcomCode/GedcomCodeRela.php:84
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Mosómbi"
 
 #: app/GedcomCode/GedcomCodeRela.php:82
 msgctxt "MALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Mosómbi"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:368
@@ -3284,11 +3284,11 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
-msgstr ""
+msgstr "Botángi…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
@@ -3375,7 +3375,7 @@ msgstr "Ntína ya liwâ"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Kébá! Óyo ekokí kozwa ngonga molaí. Zalá na bompíkílíkí."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3405,7 +3405,7 @@ msgstr "Nkunda"
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
 msgid "Cemetery"
-msgstr ""
+msgstr "Nkunda"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
@@ -3506,7 +3506,7 @@ msgstr ""
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
 msgid "Character set"
-msgstr ""
+msgstr "Lingómbá lya monkomá"
 
 #: admin_module_charts.php:66 admin_modules.php:237
 msgid "Chart"
@@ -3545,7 +3545,7 @@ msgstr ""
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr ""
+msgstr "Kotála mbéba"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
@@ -5479,7 +5479,7 @@ msgstr "Kobɔngisa mosáleli"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr ""
+msgstr "Bongisá moto óyo mpé kitinyá makákoli maye na yɔ̌ mɔ̌kɔ́."
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -15854,7 +15854,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Nkómbó ya mwǎsí embóngwání na nkómbó ya mobáli"
+msgstr "Nkómbó ya mwǎsí ekitinyámí na nkómbó ya mobáli"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -19024,7 +19024,7 @@ msgstr "mwǎna-nkána mobáli/mwǎsí"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
 msgid "never"
-msgstr ""
+msgstr "mokɔlɔ mɔ̌kɔ́ tɛ́"
 
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
@@ -19831,7 +19831,7 @@ msgstr "bokilo mwǎna mobáli"
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "table"
-msgstr ""
+msgstr "etánda"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
