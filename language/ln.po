@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-27 22:32+0000\n"
+"PO-Revision-Date: 2017-09-28 22:52+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -3717,7 +3717,7 @@ msgstr ""
 #. I18N: gedcom tag CITY
 #: app/GedcomTag.php:231 app/Module/GoogleMapsModule.php:2451
 msgid "City"
-msgstr ""
+msgstr "Engumba"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:133
@@ -6317,7 +6317,7 @@ msgstr ""
 #: admin_trees_manage.php:298
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr ""
+msgstr "Na ndakisa, sɔ́kí kásá-kásá ya GEDCOM ezalí na %1$s mpé webtrees ezalí kozela ékúta %2$s na káti ya etúka, bôngó okosengéla kolongola %3$s."
 
 #: admin_users.php:593
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7184,7 +7184,7 @@ msgstr ""
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:957
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Sɔ́kí nzeté ya mabótá mábalé ekosálela etúka ya elɔ́kɔ ya bopanzi nsango mɔ̌kɔ́, bakokoka kokabolana kásá-kásá ya bopanzi nsango. Sɔ́kí bakosálela bitúka bya bilɔ́kɔ bya bopanzi nsango bikɛsɛ́ní, bakásá-kásá na bangó ekobómbama bisíká bikɛsɛ́ní."
+msgstr "Sɔ́kí nzeté ya mabótá íbalé ikosálela etúka ya elɔ́kɔ ya bopanzi nsango mɔ̌kɔ́, bôngó bakokoka kokabolana kásá-kásá ya bopanzi nsango. Sɔ́kí bakosálela bitúka bya bilɔ́kɔ bya bopanzi nsango bikɛsɛ́ní, bôngó bakásá-kásá na bangó ekobátelama bisíká bikɛsɛ́ní."
 
 #: admin_trees_config.php:335
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7218,7 +7218,7 @@ msgstr ""
 #: addmedia.php:534 admin_media_upload.php:248
 #: app/Functions/FunctionsEdit.php:1791
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Sɔ́kí ozalí na motángo monɛ́nɛ mwa bakásá-kásá ya bopanzi nsango, okokí koyángela yangó na bitúka mpé bitúka bya káti."
+msgstr "Sɔ́kí ozalí na motángo monɛ́nɛ mwa bakásá-kásá ya bopanzi nsango, bôngó okokí koyángela yangó na bitúka mpé bitúka bya káti."
 
 #: admin_trees_manage.php:275
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7226,12 +7226,12 @@ msgstr ""
 
 #: admin_site_config.php:188
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, esengeli olekisa bakásá-kásá ínsɔ (longola sé config.ini.php, index.php, and .htaccess) útá etúka ezalí kín’o etúka ya sika."
+msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, osengélí kolekisa bakásá-kásá ínsɔ (longola sé config.ini.php, index.php, and .htaccess) útá etúka ezalí kín’o etúka ya sika."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:956
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, esengeli olekisa mpé bakásá-kásá ya bopanzi nsango ínsɔ útá etúka ezalí kín’o etúka ya sika."
+msgstr "Sɔ́kí opɔní etúka ekɛsɛ́ní, osengélí kolekisa mpé bakásá-kásá ya bopanzi nsango ínsɔ útá etúka ezalí kín’o etúka ya sika."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:396
@@ -13295,7 +13295,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "Etúka ya ngonga ikɛ́ ya PHP ezangí."
 
 #: admin_trees_manage.php:706
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
@@ -13435,7 +13435,7 @@ msgstr "Kásá-kásá %s ezalí tɛ́."
 #: admin_site_clean.php:34 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Etúka %s ekokí kozímisama tɛ́."
 
 #: addmedia.php:95 addmedia.php:106 addmedia.php:118 addmedia.php:251
 #: addmedia.php:262 addmedia.php:274 admin_media_upload.php:61
@@ -13443,23 +13443,23 @@ msgstr ""
 #: admin_trees_config.php:251
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "Ebómbelo %s ezalí tɛ́, mpé ekoki kokelama tɛ́."
+msgstr "Etúka %s ezalí tɛ́, mpé ekoki kokelama tɛ́."
 
 #: addmedia.php:93 addmedia.php:104 addmedia.php:249 addmedia.php:260
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:249
 #, php-format
 msgid "The folder %s has been created."
-msgstr "Ebómbelo %s ekelámí."
+msgstr "Etúka %s ekelámákí."
 
 #: admin_site_clean.php:28 admin_site_upgrade.php:426
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Etúka %s ezímisamákí."
 
 #: admin_site_config.php:191
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "Etúka ekokí kokomama na mobimba (ndakisa /home/user_name/webtrees_data/) tǒ na bokangisi na etúka ya bofándisi (ndakisa ../../webtrees_data/)."
 
 #: admin_site_merge.php:197
 msgid "The following facts and events were found in both records."
@@ -13579,7 +13579,7 @@ msgstr ""
 #: admin_site_upgrade.php:336
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Bakásá-kásá ya sika ezalí sik'áwa na etúka %s."
 
 #: admin_site_config.php:483
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -13967,7 +13967,7 @@ msgstr ""
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:955
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "Etúka eye ekosálelama mpɔ̂ na kobómba bakásá-kásá ya bopanzi nsango ya nzeté ya libótá liye."
 
 #: app/Filter.php:440
 msgid "This form has expired. Try again."
@@ -18876,7 +18876,7 @@ msgstr "óy'elekí"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "elembetele ya yambo"
 
 #: statistics.php:631
 msgid "quarters after marriage"
@@ -18885,7 +18885,7 @@ msgstr "mobú yɔ́kɔ́ ya ínei na nsima ya libála"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "elembetele na ntembe"
 
 #: admin_trees_config.php:52 modules_v3/fact_sources/report.xml:6
 msgid "records"
@@ -19140,7 +19140,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa míbalé"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "elembetele ya míbálé"
 
 #. I18N: select all (of the family trees)
 #: search.php:115 search.php:273
@@ -19661,7 +19661,7 @@ msgstr "ezalí na nsúka tɛ́"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "elembetele na ntína tɛ́"
 
 #. I18N: A button label.
 #: admin_trees_places.php:102 admin_trees_unconnected.php:87
