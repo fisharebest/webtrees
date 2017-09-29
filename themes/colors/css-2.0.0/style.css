@@ -13,8 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-.wt-page-options p   {padding: 0 5px;}
-
 /* The colors theme */
 
 /* Override Bootstrap formatting */
@@ -730,11 +728,6 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-page-title {
 	text-align: center;
-}
-
-.wt-page-options {
-	max-width: 50rem;
-	margin: 0 auto;
 }
 
 .wt-page-options-value {

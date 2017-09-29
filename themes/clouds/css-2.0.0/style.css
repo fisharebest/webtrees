@@ -36,11 +36,6 @@
 	padding-right: 5px;
 }
 
-.container-fluid {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
 table {
 	border-collapse: separate;
 }
@@ -729,11 +724,6 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-page-title {
 	text-align: center;
-}
-
-.wt-page-options {
-	max-width: 50rem;
-	margin: 0 auto;
 }
 
 .wt-page-options .form-group {

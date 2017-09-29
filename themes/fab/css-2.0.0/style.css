@@ -218,11 +218,6 @@ table {
 	text-align: center;
 }
 
-.wt-page-options {
-	max-width: 50rem;
-	margin: 0 auto;
-}
-
 .wt-page-options .form-group {
     margin-bottom: 0;
 }
@@ -432,10 +427,6 @@ table {
  * wt-page-content
  * +---wt-list, wt-{family,individual}-list
  */
-
-.wt-initials-list {
-	list-style: none;
-}
 
 .wt-initials-list-item {
 	display: inline;
