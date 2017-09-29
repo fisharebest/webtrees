@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-09-08 15:19+0000\n"
+"PO-Revision-Date: 2017-09-29 02:45+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nl/>\n"
 "Language: nl\n"
@@ -9474,7 +9474,7 @@ msgstr "Mijn stamboom"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
-msgstr "Mijn persoonsrecord"
+msgstr "Mijn persoons&shy;record"
 
 #. I18N: Name of a module
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
@@ -11598,7 +11598,7 @@ msgstr "Vraag nieuw wachtwoord aan"
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
 msgid "Request a new user account"
-msgstr "Vraag een nieuw gebruikersaccount aan"
+msgstr "Vraag een nieuw gebruikers&shy;account aan"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
