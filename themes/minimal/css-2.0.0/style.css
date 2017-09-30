@@ -1231,51 +1231,10 @@ table {
 	line-height: 20px;
 }
 
-/* Statistics block */
-.stat-table1 {
-	display: table;
-	float: left;
-	width:15%;
-	border-collapse:separate;
-	border-spacing:2px;
-	vertical-align: middle;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table1 {
-float: right;
-}
-
-.stat-table2 {
-	display: table;
-	float: left;
-	width:60%;
-	border-collapse:separate;
-	border-spacing:2px;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table2 {
-float: right;
-}
-
 .facts_label {
     border: 1px solid #000;
     padding: 4px;
 }
-
-.stat-row {
-	display: table-row;
-	border: 1px solid #000;
-}
-.stat-cell {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	white-space: pre-wrap;
-}
-.left {text-align: left;}
-[dir=rtl] .left {text-align: right;}
 
 /* ==== Theme select block === */
 .theme_form ul {
