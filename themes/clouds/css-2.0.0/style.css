@@ -1029,7 +1029,6 @@ input,
 fieldset,
 .border1,
 .block,
-.facts_label03,
 .facts_value,
 .list_label,
 .list_label_wrap,
@@ -1224,12 +1223,6 @@ div.fact_SHARED_NOTE {
 	padding: 4px;
 	width: 20%;
 	text-align: center;
-}
-
-.facts_label03 {
-	padding: 4px;
-	text-align: center;
-	font-weight: bold;
 }
 
 .facts_value {
@@ -3977,7 +3970,6 @@ div.faq_body {
 .facts_label,
 .facts_label a,
 .facts_label .date,
-.facts_label03,
 .facts_table h2,
 .facts_table .descriptionbox a {
 	background-color: #95b8e0;

@@ -370,7 +370,7 @@ class CensusAssistantModule extends AbstractModule {
 		<?php
 		echo '<div>';
 		echo '<table class="list_table width90" border="0">';
-		echo '<tr><td style="padding: 10px;" class="facts_label03 width90">'; // start column for find text header
+		echo '<tr><td style="padding: 10px;" class="width90">'; // start column for find text header
 		echo $controller->getPageTitle();
 		echo '</td>';
 		echo '</tr>';
