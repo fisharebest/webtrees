@@ -105,32 +105,20 @@ if (!empty($report)) {
 	}
 }
 
-//-- choose a report to run
 switch ($action) {
 case 'choose':
 	$controller
 		->setPageTitle(I18N::translate('Choose a report to run'))
 		->pageHeader();
 
-	echo '<div id="reportengine-page">
-		<h2 class="wt-page-title">', I18N::translate('Choose a report to run'), '</h2>
-		<form name="choosereport" action="reportengine.php">
-		<input type="hidden" name="action" value="setup">
-		<input type="hidden" name="output" value="', Html::escape($output), '">
-		<table class="facts_table width40">
-		<tr><td class="descriptionbox wrap width33 vmiddle">', I18N::translate('Report'), '</td>
-		<td class="optionbox"><select name="report">';
-	foreach ($reports as $file => $report) {
-		echo '<option value="', Html::escape($file), '">', Html::escape($report), '</option>';
-	}
-	echo '</select></td></tr>
-		<tr><td class="topbottombar" colspan="2"><input type="submit" value="', I18N::translate('continue'), '"></td></tr>
-		</table></form></div>';
+	echo View::make('report-select', [
+		'reports' => $reports,
+	]);
+
 	break;
 
 case 'setup':
-	$report_setup = new ReportParserSetup($report);
-	$report_array = $report_setup->reportProperties();
+	$report_array = (new ReportParserSetup($report))->reportProperties();
 
 	$controller
 		->setPageTitle($report_array['title'])
@@ -138,93 +126,89 @@ case 'setup':
 
 	FunctionsPrint::initializeCalendarPopup();
 
-	echo '<div id="reportengine-page">
-		<h2 class="wt-page-title">', $report_array['title'], '</h2>
-		<form name="setupreport" action="reportengine.php">
-		<input type="hidden" name="action" value="run">
-		<input type="hidden" name="report" value="', Html::escape($report), '">
-		<table class="facts_table width50">
-		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['description'], '</td></tr>';
+	$inputs = [];
 
-	if (!isset($report_array['inputs'])) {
-		$report_array['inputs'] = [];
-	}
-	foreach ($report_array['inputs'] as $input) {
-		echo '<tr><td class="descriptionbox wrap">';
-		echo '<input type="hidden" name="varnames[]" value="', Html::escape($input['name']), '">';
-		echo I18N::translate($input['value']), '</td><td class="optionbox">';
-		if (!isset($input['type'])) {
-			$input['type'] = 'text';
-		}
-		if (!isset($input['default'])) {
-			$input['default'] = '';
-		}
-		if (!isset($input['lookup'])) {
-			$input['lookup'] = '';
-		}
+	foreach ($report_array['inputs'] ?? [] as $n => $input) {
+		$input += [
+			'type'    => 'text',
+			'default' => '',
+			'lookup'  => '',
+			'extra'   => '',
+		];
 
 		$attributes = [
-			'id'   => 'vars[' . $input['name'] . ']',
+			'id'   => 'input-' . $n,
 			'name' => 'vars[' . $input['name'] . ']',
 		];
 
-		if ($input['lookup'] === 'INDI') {
-			$individual = Individual::getInstance($pid, $WT_TREE) ?: $controller->getSignificantIndividual();
-			echo FunctionsEdit::formControlIndividual($individual, $attributes);
-		} elseif ($input['lookup'] === 'FAM') {
-			$family = Family::getInstance($pid, $WT_TREE) ?: $controller->getSignificantFamily();
-			echo FunctionsEdit::formControlFamily($family, $attributes);
-		} elseif ($input['lookup'] === 'SOUR') {
-			$source = Source::getInstance($pid, $WT_TREE);
-			echo FunctionsEdit::formControlSource($source, $attributes);
-		} elseif ($input['type'] == 'text') {
-			echo '<input type="text" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="', Html::escape($input['default']), '" style="direction: ltr;">';
-		}
-		if ($input['type'] == 'checkbox') {
-			echo '<input type="checkbox" name="vars[', Html::escape($input['name']), ']" id="', Html::escape($input['name']), '" value="1" ';
-			echo $input['default'] == '1' ? 'checked' : '';
-			echo '>';
-		}
-		if ($input['type'] == 'select') {
-			$options = [];
-			foreach (preg_split('/[|]+/', $input['options']) as $option) {
-				list($key, $value) = explode('=>', $option);
-				if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
-					$options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
-				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-					$options[$key] = I18N::translate($match[1]);
-				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-					$options[$key] = I18N::translateContext($match[1], $match[2]);
+		switch ($input['lookup']) {
+		case 'INDI':
+			$individual       = Individual::getInstance($pid, $WT_TREE) ?: $controller->getSignificantIndividual();
+			$input['control'] = FunctionsEdit::formControlIndividual($individual, $attributes);
+			break;
+		case 'FAM':
+			$family           = Family::getInstance($pid, $WT_TREE) ?: $controller->getSignificantFamily();
+			$input['control'] = FunctionsEdit::formControlFamily($family, $attributes);
+			break;
+		case 'SOUR':
+			$source           = Source::getInstance($pid, $WT_TREE);
+			$input['control'] = FunctionsEdit::formControlSource($source, $attributes);
+			break;
+		case 'DATE':
+			$attributes += [
+				'type'  => 'text',
+				'value' => $input['default'],
+			];
+			$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+			$input['extra'] = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
+				'class' => 'btn btn-link',
+				'href' => '#',
+				'onclick' => 'return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");',
+			]) . '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
+			break;
+		default:
+			switch ($input['type']) {
+			case 'text':
+				$attributes += [
+					'type'  => 'text',
+					'value' => $input['default'],
+				];
+				$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+				break;
+			case 'checkbox':
+				$attributes += [
+					'type'    => 'checkbox',
+					'checked' => (bool) $input['default'],
+				];
+				$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+				break;
+			case 'select':
+				$options = [];
+				foreach (preg_split('/[|]+/', $input['options']) as $option) {
+					list($key, $value) = explode('=>', $option);
+					if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
+						$options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
+					} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
+						$options[$key] = I18N::translate($match[1]);
+					} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
+						$options[$key] = I18N::translateContext($match[1], $match[2]);
+					}
 				}
-			}
-			echo Bootstrap4::select($options, $input['default'], $attributes);
-		}
-		if (isset($input['lookup'])) {
-			echo '<input type="hidden" name="type[', Html::escape($input['name']), ']" value="', Html::escape($input['lookup']), '">';
-			if ($input['lookup'] == 'DATE') {
-				echo FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return calendarWidget("div_' . $input['name'] . '", "' . $input['name'] . '");']);
-				echo '<div id="div_', Html::escape($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
+				$input['control'] = Bootstrap4::select($options, $input['default'], $attributes);
+				break;
 			}
 		}
-		echo '</td></tr>';
+
+		$inputs[] = $input;
 	}
-	echo '<tr>
-		<td colspan="2" class="optionbox">
-		<div class="report-type">
-		<div>
-		<label for="PDF"><i class="icon-mime-application-pdf"></i></label>
-		<p><input type="radio" name="output" value="PDF" id="PDF" checked></p>
-		</div>
-		<div>
-		<label for="HTML"><i class="icon-mime-text-html"></i></label>
-		<p><input type="radio" name="output" id="HTML" value="HTML"></p>
-		</div>
-		</div>
-		</td>
-		</tr>
-		<tr><td class="topbottombar" colspan="2">
-		<input type="submit" value="', I18N::translate('continue'), '">
-		</td></tr></table></form></div>';
+
+	echo View::make('report-setup', [
+		'title'       => $report_array['title'],
+		'description' => $report_array['description'],
+		'inputs'      => $inputs,
+		'report'      => $report,
+	]);
+
 	break;
 
 case 'run':

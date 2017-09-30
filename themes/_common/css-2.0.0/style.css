@@ -606,14 +606,6 @@ fieldset.row > legend, fieldset.row > div {
  * Google Maps
  */
 
-.gm-events .optionbox  {
-	font-size: .75em;
-}
-
-.gm-events *[class^='person_box'] {
-	font-size: .813em;
-}
-
 @media (max-width:1025px)  {
 	body {
 		font-size: 14px;

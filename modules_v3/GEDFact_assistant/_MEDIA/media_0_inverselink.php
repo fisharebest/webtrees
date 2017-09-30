@@ -58,11 +58,11 @@ if ($action == 'choose' && $paramok) {
 	}
 	echo '<input type="hidden" name="linkto" value="', $linkto, '">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
-	echo '<table class="facts_table center">';
+	echo '<table class="table wt-facts-table">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo I18N::translate('Link to an existing media object');
-	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', I18N::translate('Media'), '</td>';
-	echo '<td class="optionbox wrap">';
+	echo '</td></tr><tr><th>', I18N::translate('Media'), '</th>';
+	echo '<td>';
 	if (!empty($mediaid)) {
 		//-- Get the title of this existing Media item
 		$title =

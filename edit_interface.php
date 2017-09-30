@@ -1532,64 +1532,64 @@ case 'addnewsource':
 		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
 		<input type="hidden" name="action" value="addsourceaction">
 		<?= Filter::getCsrf() ?>
-		<table class="facts_table">
+		<table class="table wt-facts-table">
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Title') ?></td>
-				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL"
+				<th scope="row"><?= I18N::translate('Title') ?></td>
+				<td><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL"
 				                                  required> <?= FunctionsPrint::printSpecialCharacterLink('TITL') ?></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Abbreviation') ?></td>
-				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR"
+				<th scope="row"><?= I18N::translate('Abbreviation') ?></td>
+				<td><input type="text" name="ABBR" id="ABBR"
 				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('ABBR') ?>
 				</td>
 			</tr>
 			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 				<tr>
-					<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('_HEB') ?></td>
-					<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60">
+					<th scope="row"><?= GedcomTag::getLabel('_HEB') ?></th>
+					<td><input type="text" name="_HEB" id="_HEB" value="" size="60">
 						<?= FunctionsPrint::printSpecialCharacterLink('_HEB') ?></td>
 				</tr>
 			<?php } ?>
 			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 				<tr>
-					<td class="descriptionbox wrap width25">
-						<?= GedcomTag::getLabel('ROMN') ?></td>
-					<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value=""
+					<th scope="row">
+						<?= GedcomTag::getLabel('ROMN') ?></th>
+					<td><input type="text" name="ROMN" id="ROMN" value=""
 					                                  size="60"> <?= FunctionsPrint::printSpecialCharacterLink('ROMN') ?></td>
 				</tr>
 			<?php } ?>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Author') ?></td>
-				<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40"
+				<th scope="row"><?= I18N::translate('Author') ?></th>
+				<td><input type="text" name="AUTH" id="AUTH" value="" size="40"
 				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('AUTH') ?>
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('PUBL') ?></td>
-				<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5"
+				<th scope="row"><?= GedcomTag::getLabel('PUBL') ?></th>
+				<td><textarea name="PUBL" id="PUBL" rows="5"
 				                                     cols="60"></textarea><br><?= FunctionsPrint::printSpecialCharacterLink('PUBL') ?>
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Repository') ?></td>
-				<td class="optionbox wrap"><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value=""
+				<th scope="row"><?= I18N::translate('Repository') ?></th>
+				<td><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value=""
 				                                  size="10"></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Call number') ?></td>
-				<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td>
+				<th scope="row"><?= I18N::translate('Call number') ?></th>
+				<td><input type="text" name="CALN" id="CALN" value=""></td>
 			</tr>
 			<?= keep_chan() ?>
 		</table>
 		<a href="#" onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
 			<?= I18N::translate('Associate events with this source') ?></a>
 		<div id="events" style="display: none;">
-			<table class="facts_table">
+			<table class="table wt-facts-table">
 				<tr>
 					<td
-						class="descriptionbox wrap width25"><?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?></td>
-					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
+						class="descriptionbox wrap width25"><?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?></th>
+					<td><select name="EVEN[]" multiple="multiple" size="5">
 							<?php
 							$parts = explode(',', $controller->tree()->getPreference('INDI_FACTS_ADD'));
 							foreach ($parts as $key) {
@@ -1714,12 +1714,12 @@ case 'addnewnote':
 		<input type="hidden" name="noteid" value="newnote">
 		<?= Filter::getCsrf() ?>
 		<?php
-		echo '<table class="facts_table">';
+		echo '<table class="table wt-facts-table">';
 		echo '<tr>';
-		echo '<td class="descriptionbox nowrap">';
+		echo '<th scope="row">';
 		echo I18N::translate('Shared note');
-		echo '</td>';
-		echo '<td class="optionbox wrap"><textarea name="NOTE" id="NOTE" rows="10" required></textarea>';
+		echo '</th>';
+		echo '<td><textarea name="NOTE" id="NOTE" rows="10" required></textarea>';
 		echo FunctionsPrint::printSpecialCharacterLink('NOTE');
 		echo '</td>';
 		echo '</tr>';
@@ -1805,10 +1805,10 @@ case 'editnote':
 		<input type="hidden" name="action" value="editnoteaction">
 		<input type="hidden" name="xref" value="<?= $xref ?>">
 		<?= Filter::getCsrf() ?>
-		<table class="facts_table">
+		<table class="table wt-facts-table">
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Shared note') ?></td>
-				<td class="optionbox wrap">
+				<th scope="row"><?= I18N::translate('Shared note') ?></th>
+				<td>
 					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= Html::escape($note->getNote()) ?></textarea>
 					<br>
 					<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
@@ -1880,46 +1880,46 @@ case 'addnewrepository':
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="xref" value="newrepo">
 		<?= Filter::getCsrf() ?>
-		<table class="facts_table">
+		<table class="table wt-facts-table">
 			<tr>
-				<td class="descriptionbox wrap width25"><?= I18N::translate('Repository name') ?></td>
-				<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" required
+				<th scope="row"><?= I18N::translate('Repository name') ?></th>
+				<td><input type="text" name="REPO_NAME" id="REPO_NAME" required
 				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('REPO_NAME') ?>
 				</td>
 			</tr>
 			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
 				<tr>
-					<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('_HEB') ?></td>
-					<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40"
+					<th scope="row"><?= GedcomTag::getLabel('_HEB') ?></th>
+					<td><input type="text" name="_HEB" id="_HEB" value="" size="40"
 					                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('_HEB') ?>
 					</td>
 				</tr>
 			<?php } ?>
 			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
 				<tr>
-					<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('ROMN') ?></td>
-					<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40"
+					<th scope="row"><?= GedcomTag::getLabel('ROMN') ?></th>
+					<td><input type="text" name="ROMN" id="ROMN" value="" size="40"
 					                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('ROMN') ?>
 					</td>
 				</tr>
 			<?php } ?>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('ADDR') ?></td>
-				<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5"
+				<th scope="row"><?= GedcomTag::getLabel('ADDR') ?></th>
+				<td><textarea name="ADDR" id="ADDR" rows="5"
 				                                     cols="60"></textarea><?= FunctionsPrint::printSpecialCharacterLink('ADDR') ?>
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('PHON') ?></td>
-				<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"></td>
+				<th scope="row"><?= GedcomTag::getLabel('PHON') ?></th>
+				<td><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('EMAIL') ?></td>
-				<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td>
+				<th scope="row"><?= GedcomTag::getLabel('EMAIL') ?></th>
+				<td><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width25"><?= GedcomTag::getLabel('WWW') ?></td>
-				<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"></td>
+				<th scope="row"><?= GedcomTag::getLabel('WWW') ?></th>
+				<td><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"></td>
 			</tr>
 		</table>
 
@@ -2954,7 +2954,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
 	echo '<input type="hidden" name="gender" value="', $gender, '">';
 	echo Filter::getCsrf();
-	echo '<table class="facts_table">';
+	echo '<table class="table wt-facts-table">';
 
 	switch ($nextaction) {
 	case 'add_child_to_family_action':
@@ -3054,7 +3054,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	// If we are adding a new individual, add the basic details
 	if ($nextaction !== 'update') {
-		echo '</table><br><table class="facts_table">';
+		echo '</table><br><table class="table wt-facts-table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
 			FunctionsEdit::addSimpleTag('0 SEX M');

@@ -240,7 +240,7 @@ echo '<input type="hidden" name="pid" value="', $pid, '">';
 if ($linktoid) {
 	echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 }
-echo '<table class="facts_table">';
+echo '<table class="table wt-facts-table">';
 echo '<tr><td class="topbottombar" colspan="2">';
 echo $controller->getPageTitle(), FunctionsPrint::helpLink('OBJE');
 echo '</td></tr>';

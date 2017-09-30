@@ -110,7 +110,7 @@ $facts       = $controller->getFacts();
 					<?= $controller->record->displayImage(400, 600, '', ['class' => 'img-thumbnail']) ?>
 				</div>
 				<div class="col-sm-8">
-					<table class="facts_table">
+					<table class="table wt-facts-table">
 						<?php foreach ($facts as $fact): ?>
 							<?php FunctionsPrintFacts::printFact($fact, $controller->record) ?>
 						<?php endforeach ?>

@@ -140,12 +140,12 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 		<input type="hidden" name="filtersx" value="<?= $filtersx ?>">
 		<input type="hidden" name="filterof" value="<?= $filterof ?>">
 
-		<table class="facts_table width100">
+		<table class="table-sm wt-page-options w-100" role="presentation">
 			<tr>
-				<td class="descriptionbox vmiddle">
+				<th class="wt-page-options-label">
 					<?= I18N::translate('Day') ?>
-				</td>
-				<td colspan="3" class="optionbox">
+				</th>
+				<td class="wt-page-options-value" colspan="3">
 					<?php
 					for ($d = 1; $d <= $days_in_month; $d++) {
 						// Format the day number using the calendar
@@ -165,10 +165,10 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox">
+				<th class="wt-page-options-label">
 					<?= I18N::translate('Month') ?>
-				</td>
-				<td class="optionbox" colspan="3">
+				</th>
+				<td class="wt-page-options-value" colspan="3">
 					<?php
 					for ($n = 1, $months_in_year = $cal_date->monthsInYear(); $n <= $months_in_year; ++$n) {
 						$month_name = $cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
@@ -194,10 +194,10 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox vmiddle">
+				<th class="wt-page-options-label">
 					<label for="year"><?= I18N::translate('Year') ?></label>
-				</td>
-				<td class="optionbox vmiddle">
+				</th>
+				<td class="wt-page-options-value">
 					<a href="?cal=<?= $cal ?>&amp;day=<?= $cal_date->d ?>&amp;month=<?= $cal_month ?>&amp;year=<?= $cal_date->y === 1 ? -1 : $cal_date->y - 1 ?>&amp;filterev=<?= $filterev ?>&amp;filterof=<?= $filterof ?>&amp;filtersx=<?= $filtersx ?>&amp;view=<?= $view ?>">
 						-1
 					</a>
@@ -212,11 +212,11 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 					<?= FunctionsPrint::helpLink('annivers_year_select') ?>
 				</td>
 
-				<td class="descriptionbox vmiddle">
+				<th class="wt-page-options-label">
 					<?= I18N::translate('Show') ?>
-				</td>
+				</th>
 
-				<td class="optionbox vmiddle">
+				<td class="wt-page-options-value">
 					<?php if (!$WT_TREE->getPreference('HIDE_LIVE_PEOPLE') || Auth::check()): ?>
 						<select class="list_value" name="filterof" onchange="document.dateform.submit();">
 							<option value="all" <?= $filterof === 'all' ? 'selected' : '' ?>>

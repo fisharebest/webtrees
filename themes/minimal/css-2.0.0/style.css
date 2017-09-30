@@ -619,12 +619,6 @@ table {
 	margin: 0 auto;
 }
 
-.facts_value {
-
-	border: solid #000 1px;
-	padding: 4px;
-}
-
 .quickfacts a {
 	font-size: .75rem;
 	padding: 0 3px;
@@ -1231,9 +1225,20 @@ table {
 	line-height: 20px;
 }
 
-.facts_label {
-    border: 1px solid #000;
-    padding: 4px;
+/* Table of genealogical facts */
+
+.wt-facts-table caption {
+	caption-side: top;
+}
+
+.wt-facts-table th {
+	border: 1px solid #000;
+	font-weight: normal;
+	min-width: 20%;
+}
+
+.wt-facts-table td {
+	border: solid #000 1px;
 }
 
 /* ==== Theme select block === */
@@ -1523,25 +1528,6 @@ div.faq_body {
 	clear: both;
 }
 
-#note-edit .facts_table,
-#notes_content .facts_table,
-#personal_facts_content .facts_table {
-	table-layout: fixed;
-}
-
-.facts_table {
-	background-color: #fff;
-}
-
-.facts_table .field em {
-	margin-top: 0;
-	padding-left: 5px;
-}
-
-.facts_table .field img {
-	vertical-align: middle;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -1558,10 +1544,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-[dir=rtl] .facts_table .field em {
-	padding-right: 5px;
 }
 
 /* ======== Album tab =========*/
@@ -1821,10 +1803,6 @@ div.faq_body {
 .nav_content {
 	width: 100%;
 	padding: 0;
-}
-
-.nav_content .facts_label {
-	width: 75px;
 }
 
 #sb_family_nav_content .clist {

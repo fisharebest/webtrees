@@ -1121,29 +1121,37 @@ table.center {
 	white-space: normal;
 }
 
-.facts_table {
-	width: 100%;
-}
-
-.facts_table .optionbox {
-	white-space: normal;
-}
-
 div.fact_SHARED_NOTE {
 	clear: both;
 }
 
-.facts_label {
-	background-color: #81a9cb;
-	padding: 4px;
-	width: 20%;
-	text-align: center;
+/* Table of genealogical facts */
+
+.wt-facts-table caption {
+	caption-side: top;
 }
 
-.facts_value {
+.wt-facts-table th {
+	background-color: #81a9cb;
+	border: solid #81a9cb 1px;
+	text-align: center;
+	font-weight: normal;
+	min-width: 20%;
+}
+
+.wt-facts-table td {
 	background-color: #edf7fd;
 	border: solid #81a9cb 1px;
-	padding: 4px;
+}
+
+.wt-facts-table .wt-gender-M td {
+	background-color: #edf7fd;
+	border-color: #81a9cb;
+}
+
+.wt-facts-table .wt-gender-F td {
+	background-color: #e9daf1;
+	border-color: #ff2080;
 }
 
 .quickfacts a {
@@ -2478,21 +2486,6 @@ div.faq_body {
 	clear: both;
 }
 
-#note-edit .facts_table,
-#notes_content .facts_table,
-#personal_facts_content .facts_table {
-	table-layout: fixed;
-}
-
-.facts_table .field em {
-	margin-top: 0;
-	padding-left: 5px;
-}
-
-.facts_table .field img {
-	vertical-align: middle;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2509,10 +2502,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-[dir=rtl] .facts_table .field em {
-	padding-right: 5px;
 }
 
 /* ======== Album tab =========*/
@@ -2739,10 +2728,6 @@ div.faq_body {
 .nav_content {
 	width: 100%;
 	padding: 0;
-}
-
-.nav_content .facts_label {
-	width: 75px;
 }
 
 #sb_family_nav_content .clist {

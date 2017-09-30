@@ -61,9 +61,9 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
-		<table class="facts_table">
+		<table class="table wt-facts-table">
 			<tr>
-				<td colspan="2" class="descriptionbox rela">
+				<td colspan="2" class="rela">
 					<label>
 						<input id="show-level-2-sources" type="checkbox">
 						<?= I18N::translate('Show all sources') ?>
@@ -79,17 +79,17 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 				}
 			}
 			if (!$this->getFactsWithSources()) {
-				echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
+				echo '<tr><td colspan="2">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
 			}
 
 			// New Source Link
 			if ($controller->record->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label">
+					<th>
 						<?= I18N::translate('Source') ?>
-					</td>
-					<td class="facts_value">
+					</th>
+					<td>
 						<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SOUR">
 							<?= I18N::translate('Add a source citation') ?>
 						</a>

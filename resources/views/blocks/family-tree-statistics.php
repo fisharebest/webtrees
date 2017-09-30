@@ -8,26 +8,26 @@
 
 <div class="row">
 	<div class="col col-sm-4">
-		<table class="table">
+		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
 			</caption>
 			<tbody>
 			<?php if ($stat_indi): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Individuals') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalIndividuals() ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Males') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalSexMales() ?>
 						<br>
 						<?= $stats->totalSexMalesPercentage() ?>
@@ -35,10 +35,10 @@
 				</tr>
 
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Females') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalSexFemales() ?>
 						<br>
 						<?= $stats->totalSexFemalesPercentage() ?>
@@ -48,10 +48,10 @@
 
 			<?php if ($stat_surname): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Surnames') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalSurnames() ?>
 					</td>
 				</tr>
@@ -59,10 +59,10 @@
 
 			<?php if ($stat_fam): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Families') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalFamilies() ?>
 					</td>
 				</tr>
@@ -71,10 +71,10 @@
 
 			<?php if ($stat_sour): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Sources') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalSources() ?>
 					</td>
 				</tr>
@@ -82,10 +82,10 @@
 
 			<?php if ($stat_media): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Media objects') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalMedia() ?>
 					</td>
 				</tr>
@@ -93,10 +93,10 @@
 
 			<?php if ($stat_repo): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Repositories') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalRepositories() ?>
 					</td>
 				</tr>
@@ -104,10 +104,10 @@
 
 			<?php if ($stat_events): ?>
 				<tr>
-					<th scope="row" class="facts_label">
-						<?= I18N::translate('Total events') ?>
+					<th scope="row">
+						<?= I18N::translate('Events') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalEvents() ?>
 					</td>
 				</tr>
@@ -115,10 +115,10 @@
 
 			<?php if ($stat_users): ?>
 				<tr>
-					<th scope="row" class="facts_label">
-						<?= I18N::translate('Total users') ?>
+					<th scope="row">
+						<?= I18N::translate('Users') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->totalUsers() ?>
 					</td>
 				</tr>
@@ -128,17 +128,18 @@
 	</div>
 
 	<div class="col col-md-8">
-		<table class="table">
+		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
 			</caption>
+
 			<tbody>
 			<?php if ($stat_first_birth): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Earliest birth') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->firstBirth() ?>
 					</td>
 				</tr>
@@ -146,10 +147,10 @@
 
 			<?php if ($stat_last_birth): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Latest birth') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->lastBirth() ?>
 					</td>
 				</tr>
@@ -157,10 +158,10 @@
 
 			<?php if ($stat_first_death): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Earliest death') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->firstDeath() ?>
 					</td>
 				</tr>
@@ -168,10 +169,10 @@
 
 			<?php if ($stat_last_death): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Latest death') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->lastDeath() ?>
 					</td>
 				</tr>
@@ -179,10 +180,10 @@
 
 			<?php if ($stat_long_life): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Individual who lived the longest') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->longestLife() ?>
 					</td>
 				</tr>
@@ -190,10 +191,10 @@
 
 			<?php if ($stat_avg_life): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Average age at death') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->averageLifespan() ?>
 						<br>
 						<?= I18N::translate('Males') ?>:&nbsp;<?= $stats->averageLifespanMale() ?>
@@ -205,10 +206,10 @@
 
 			<?php if ($stat_most_chil): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Family with the most children') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= I18N::plural('%s child', '%s children', $stats->largestFamilySize(), I18N::number($stats->largestFamilySize())) ?>
 						<br>
 						<?= $stats->largestFamily() ?>
@@ -218,10 +219,10 @@
 
 			<?php if ($stat_avg_chil): ?>
 				<tr>
-					<th scope="row" class="facts_label">
+					<th scope="row">
 						<?= I18N::translate('Average number of children per family') ?>
 					</th>
-					<td class="facts_value">
+					<td>
 						<?= $stats->averageChildren() ?>
 					</td>
 				</tr>
