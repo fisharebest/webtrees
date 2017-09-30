@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-28 22:52+0000\n"
+"PO-Revision-Date: 2017-09-30 19:32+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -19509,8 +19509,9 @@ msgstr ""
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:86
+#, fuzzy
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr ""
+msgstr "Bitúka “/data” mpé “/data/config.ini.php” bizalí na ndingisa ya bokɔ́ti óyo ekopésa webserver etánga byangó"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
