@@ -182,7 +182,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 								</tr>
 								<tr>
 									<th scope="row">' . I18N::translate('Total surnames') . '</th>
-									<td>#totalSurnames#/td>
+									<td>#totalSurnames#</td>
 								</tr>
 								<tr>
 									<th scope="row">' . I18N::translate('Families') . '</th>
