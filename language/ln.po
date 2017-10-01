@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-09-30 19:32+0000\n"
+"PO-Revision-Date: 2017-10-01 13:41+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -753,7 +753,7 @@ msgstr "Mbéba ya momɛsɛnɔ ezalí kozala na bikangeli míngi na bokɔ́tisi m
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Esálela mokaboli ya database ekokí kobátela ba database ebelé ya kokabwana. Osengélí kopɔnɔ database ezalí (eye ekelamí na mokambi mwa esálela mokaboli wa yɔ̌) tǒ kelá mɔ̌kɔ́ ya sika (sɔ́ki kɔ́nti na yɔ̌ ya mosáleli ya database ezalí na ndingisa ya kokoka)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
@@ -856,7 +856,7 @@ msgstr ""
 
 #: admin.php:625 admin_site_upgrade.php:77 login.php:111
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Webtrees ya sika ezalí."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -1915,7 +1915,7 @@ msgstr ""
 
 #: setup.php:504
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Mbéba yɔ̌kɔ́ ya mbálákátá ya database ekomí."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -3879,7 +3879,7 @@ msgstr ""
 
 #: setup.php:272
 msgid "Connection to database server"
-msgstr ""
+msgstr "Bokangisi na esálela mokaboli ya database"
 
 #: admin_trees_config.php:794
 msgid "Contact information"
@@ -4291,15 +4291,15 @@ msgstr "Etúka ya epɛ́sɛli"
 
 #: setup.php:368
 msgid "Database and table names"
-msgstr ""
+msgstr "Database mpé nkómbó ya bitánda"
 
 #: setup.php:275
 msgid "Database connection"
-msgstr ""
+msgstr "Bokangisi bwa database"
 
 #: setup.php:370 setup.php:372
 msgid "Database name"
-msgstr ""
+msgstr "Nkómbó ya database"
 
 #: setup.php:289
 msgid "Database password"
@@ -4307,7 +4307,7 @@ msgstr ""
 
 #: setup.php:285
 msgid "Database user account"
-msgstr ""
+msgstr "Kɔ́nti ya mosáleli ya database"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:264 app/Module/ResearchTaskModule.php:92
@@ -8161,7 +8161,7 @@ msgstr "Kokangisa na elɔ́kɔ ya bopanzi nsango eyébání"
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1040
 msgid "Linked database ID"
-msgstr ""
+msgstr "ID ya database ekangisámí"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
 msgid "Links"
@@ -8889,7 +8889,6 @@ msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr ""
 
 #: app/Date/JalaliDate.php:189
-#, fuzzy
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
@@ -9653,7 +9652,7 @@ msgstr "Kásá-kásá GEDCOM ezkútámí tɛ́."
 
 #: app/Module/GoogleMapsModule.php:553
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "Bankɔ́kɔ bazalí káti na database tɛ́."
 
 #: app/Functions/FunctionsEdit.php:118
 msgid "No calendar conversion"
@@ -10549,7 +10548,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:86
 msgid "PhpGedView must use the same database as webtrees."
-msgstr ""
+msgstr "Esengélí PhpGedView esálela database mɔ̌kɔ́ na webtrees."
 
 #: admin_pgv_to_wt.php:37 admin_trees_manage.php:699 admin_trees_manage.php:727
 msgid "PhpGedView to webtrees transfer wizard"
@@ -12533,12 +12532,12 @@ msgstr "Kolakisa na batáli"
 #: app/Functions/FunctionsPrintLists.php:263
 #: app/Functions/FunctionsPrintLists.php:645
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "Kotálisa \"bankásá\" bambálé tǒ bato. Baóyo bazalí bato na bomɔi kasi bazangí bǎna bakɔ́tisámí káti na database."
 
 #: app/Functions/FunctionsPrintLists.php:254
 #: app/Functions/FunctionsPrintLists.php:636
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "Kotálisa \"misisá\" bambálé tǒ bato. Baóyo bazalí bato bakokí kobengama mpé “patriarchs”. Ezalí bato bazangí babóti bakɔ́tisámí káti na database."
 
 #. I18N: %s are placeholders for numbers
 #: app/Datatables.php:55 app/Datatables.php:56 app/I18N.php:184
@@ -13328,7 +13327,7 @@ msgstr ""
 
 #: site-unavailable.php:50
 msgid "The database reported the following error message:"
-msgstr ""
+msgstr "Database ezongisí nkomá ya mbéba elandí:"
 
 #: admin_trees_config.php:1161
 msgid "The date and time of the last update"
@@ -13892,7 +13891,7 @@ msgstr ""
 #: setup.php:255
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr ""
+msgstr "Database eye ekotámbola sé na MySQL loléngé %s. Okokí kofándisa webtrees áwa tɛ́."
 
 #: admin_users.php:359 edituser.php:238 login.php:429 setup.php:442
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
@@ -14463,35 +14462,30 @@ msgid "Timor-Leste"
 msgstr "Timor ya monyɛlɛ"
 
 #: app/Date/JalaliDate.php:186
-#, fuzzy
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:90
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:154
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:122
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:58
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
@@ -19509,7 +19503,6 @@ msgstr ""
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:86
-#, fuzzy
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "Bitúka “/data” mpé “/data/config.ini.php” bizalí na ndingisa ya bokɔ́ti óyo ekopésa webserver etánga byangó"
 
@@ -19707,7 +19700,7 @@ msgstr "webtrees"
 #: admin_pgv_to_wt.php:105
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtrees ekokí kokangisama tɛ́ na database ya PhpGedView: %s."
 
 #: message.php:26 message.php:264
 msgid "webtrees message"
@@ -19716,7 +19709,7 @@ msgstr "nkomá ya webtrees"
 #: setup.php:273
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees esɛ́ngi database MySQL, loléngé %s tǒ ya sika."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:311
@@ -19738,7 +19731,7 @@ msgstr ""
 
 #: admin_trees_manage.php:710
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "Esengélí database ya webtrees ezala na káti ya esálela mokaboli mɔ̌kɔ́ na PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "west"
