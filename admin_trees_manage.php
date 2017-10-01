@@ -350,7 +350,7 @@ echo Bootstrap4::breadcrumbs([
 				</h2>
 			</div>
 			<div id="card-tree-content-<?= $tree->getTreeId() ?>" class="collapse<?= $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $tree->getTreeId() ?>">
-				<div class="card-block">
+				<div class="card-body">
 					<?php
 					$importing = Database::prepare(
 						"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
@@ -627,7 +627,7 @@ echo Bootstrap4::breadcrumbs([
 			</h2>
 		</div>
 		<div id="card-tree-create-content" class="collapse<?= empty(Tree::getAll()) ? ' show' : '' ?>" role="tabpanel" aria-labelledby="card-tree-create-header">
-			<div class="card-block">
+			<div class="card-body">
 				<form class="form-horizontal" method="post">
 					<?= Filter::getCsrf() ?>
 					<input type="hidden" name="action" value="new_tree">
@@ -702,7 +702,7 @@ echo Bootstrap4::breadcrumbs([
 			</h2>
 		</div>
 		<div id="card-pgv-wizard-content" class="collapse show" role="tabpanel" aria-labelledby="card-pgv-wizard-header">
-			<div class="card-block">
+			<div class="card-body">
 				<p>
 					<?= I18N::translate('The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:') ?>
 				</p>

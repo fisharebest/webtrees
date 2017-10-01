@@ -513,7 +513,7 @@ abstract class AbstractTheme {
 		return
 			'<div class="card mb-4 wt-block wt-block-' . $class . '" id="' . $id . '">' .
 			'<div class="card-header wt-block-header wt-block-header-' . $class . '">' . $title . '</div>' .
-			'<div class="card-block wt-block-content wt-block-content-' . $class . '">' . $content . '</div>' .
+			'<div class="card-body wt-block-content wt-block-content-' . $class . '">' . $content . '</div>' .
 			'</div>';
 	}
 

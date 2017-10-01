@@ -2425,7 +2425,7 @@ case 'reorder-media':
 						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
 						<?= $fact->getTarget()->getFullName() ?>
 					</h3>
-					<div class="card-block">
+					<div class="card-body">
 						<?= $fact->getTarget()->displayImage(100, 100, "contain") ?>
 					</div>
 				</div>
@@ -2520,7 +2520,7 @@ case 'reorder-names':
 						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
 						<?= $fact->getValue() ?>
 					</h3>
-					<div class="card-block">
+					<div class="card-body">
 						<?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->getAttribute('TYPE'), $fact->getParent())) ?>
 					</div>
 				</div>
@@ -2616,7 +2616,7 @@ case 'reorder-children':
 						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
 						<?= $fact->getTarget()->getFullName() ?>
 					</h3>
-					<div class="card-block">
+					<div class="card-body">
 						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_BIRT, 2) ?>
 						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_DEAT, 2) ?>
 					</div>
@@ -2717,7 +2717,7 @@ case 'reorder-spouses':
 						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
 						<?= $fact->getTarget()->getFullName() ?>
 					</h3>
-					<div class="card-block">
+					<div class="card-body">
 						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_MARR, 2) ?>
 						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_DIV, 2) ?>
 					</div>

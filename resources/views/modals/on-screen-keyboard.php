@@ -28,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="card-block wt-osk-keys">
+	<div class="card-body wt-osk-keys">
 		<!-- Quotation marks -->
 		<div class="wt-osk-group">
 			<span class="wt-osk-key">&lsquo;<sup class="wt-osk-key-shift">&ldquo;</sup></span>

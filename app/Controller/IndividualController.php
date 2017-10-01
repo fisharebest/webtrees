@@ -209,7 +209,7 @@ class IndividualController extends GedcomRecordController {
 		      ' . $edit_links . '
         </div>
 		    <div id="name-content-' . $n . '" class="' . $content_class . '" role="tabpanel" aria-labelledby="name-header-' . $n . '">
-		      <div class="card-block">' . $content . '</div>
+		      <div class="card-body">' . $content . '</div>
         </div>
       </div>';
 	}
@@ -348,7 +348,7 @@ class IndividualController extends GedcomRecordController {
 			      </div>
 	        </div>
 			    <div id="sidebar-content-' . $module->getName() . '" class="' . $class . '" role="tabpanel" aria-labelledby="sidebar-header-' . $module->getName() . '">
-			      <div class="card-block">' . $module->getSidebarContent() . '</div>
+			      <div class="card-body">' . $module->getSidebarContent() . '</div>
           </div>
         </div>';
 			}
