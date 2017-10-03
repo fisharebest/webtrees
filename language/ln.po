@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-01 13:41+0000\n"
+"PO-Revision-Date: 2017-10-03 22:57+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -1693,7 +1693,7 @@ msgstr "Afrika"
 
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyengisa epɛ́sɛli útá na kásá-kásá ya GEDCOM."
+msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyéisa epɛ́sɛli útá na kásá-kásá ya GEDCOM."
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -1933,7 +1933,7 @@ msgstr "Loléngé losúsu la kopɔnɔ mobímbí mwa sika."
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr ""
+msgstr "Nzelá isúsu ya komiyíngela mpé komibimisa."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2014,8 +2014,9 @@ msgstr "Angola"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6674
+#, fuzzy
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguila"
 
 #: app/Functions/FunctionsPrintLists.php:287
 #: app/Functions/FunctionsPrintLists.php:291
@@ -2039,13 +2040,15 @@ msgstr "Eyano"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6682
+#, fuzzy
 msgid "Antarctica"
-msgstr ""
+msgstr "Antartika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6684
+#, fuzzy
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua mpé Barbuda"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
@@ -2053,8 +2056,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
+#, fuzzy
 msgid "Apia, Samoa"
-msgstr ""
+msgstr "Apia, Samoa"
 
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:86
@@ -2118,8 +2122,9 @@ msgstr "Apríli"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
+#, fuzzy
 msgid "Aqua Marine"
-msgstr ""
+msgstr "Aqua Marine"
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2165,8 +2170,9 @@ msgstr "Ya sɔ̂lɔ́ olingí kolongola ekákoli eye na molɔngɔ́ mwa malúli 
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
+#, fuzzy
 msgid "Argentina"
-msgstr ""
+msgstr "Argentina"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -2182,9 +2188,10 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
+#, fuzzy
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
@@ -2193,8 +2200,9 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6671
+#, fuzzy
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
@@ -2203,7 +2211,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
 msgid "Ash"
-msgstr ""
+msgstr "Ash"
 
 #: statistics.php:691
 msgid "Asia"
@@ -2314,7 +2322,7 @@ msgstr "Mokomi"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr "Mokomi wa lonkásá lya nsúka"
+msgstr "Mokomi mwa mabóngoli ma nsúka"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
@@ -2844,15 +2852,15 @@ msgstr "Mbótama ya nkɔ́kɔ mwǎna mobáli"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-brother"
-msgstr "Mbótama ya ndeko ikɛ́ mobáli"
+msgstr "Mbótama ya ndeko-ikɛ́ mobáli"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Mbótama ya nkána ikɛ́"
+msgstr "Mbótama ya nkána-ikɛ́"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
-msgstr "Mbótama ya nkeko ikɛ́ mwǎsí"
+msgstr "Mbótama ya nkeko-ikɛ́ mwǎsí"
 
 #: app/GedcomTag.php:1083
 msgid "Birth of a sibling"
@@ -3367,7 +3375,7 @@ msgstr ""
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
 msgid "Cause"
-msgstr ""
+msgstr "Ntína"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
@@ -3514,7 +3522,7 @@ msgstr "Liyémi"
 
 #: app/Module/RelationshipsChartModule.php:159
 msgid "Chart preferences"
-msgstr ""
+msgstr "Malúli ma liyémi"
 
 #: app/Module/ChartsBlockModule.php:198 statistics.php:505 statistics.php:651
 msgid "Chart type"
@@ -3664,7 +3672,7 @@ msgstr ""
 
 #: addmedia.php:522
 msgid "Choose: "
-msgstr ""
+msgstr "Kopɔnɔ: "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:278 modules_v3/family_group_report/report.xml:206
@@ -3672,7 +3680,7 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr ""
+msgstr "Batisimo"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
@@ -3826,12 +3834,12 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "Coffee and Cream"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr ""
+msgstr "Mokɔlɔ mpíɔ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
@@ -3890,14 +3898,14 @@ msgstr "Komori"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "Nzeté ya mokúsé"
+msgstr "Nzeté mokúsé"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Nzeté ya mokúsé ya %s"
+msgstr "Nzeté mokúsé ya %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -3942,7 +3950,7 @@ msgstr ""
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
 msgid "Contains"
-msgstr ""
+msgstr "Ezalí na"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
@@ -4002,13 +4010,13 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1025
 #: app/Functions/FunctionsPrintFacts.php:1173
 msgid "Copy"
-msgstr ""
+msgstr "Koákisa"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Koákisa bokɔ́tisi bɔ́nsɔ útá %1$s káti na %2$s."
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
@@ -4027,8 +4035,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
+#, fuzzy
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Cordoba, Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -4055,18 +4064,18 @@ msgstr ""
 
 #: app/Stats.php:5579
 msgid "Count"
-msgstr ""
+msgstr "Motángo"
 
 #: app/Module/GoogleMapsModule.php:610
 msgid "Countries"
-msgstr ""
+msgstr "Mbóka"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:382
 #: app/Module/GoogleMapsModule.php:398 app/Module/GoogleMapsModule.php:1331
 #: app/Module/GoogleMapsModule.php:1436 app/Module/GoogleMapsModule.php:3444
 msgid "Country"
-msgstr ""
+msgstr "Mbóka"
 
 #: statisticsplot.php:914 statisticsplot.php:964 statisticsplot.php:1018
 #: statisticsplot.php:1068 statisticsplot.php:1122 statisticsplot.php:1172
@@ -4081,7 +4090,7 @@ msgstr ""
 
 #: admin_media.php:314
 msgid "Create"
-msgstr ""
+msgstr "Kokela"
 
 #: admin_trees_manage.php:634
 msgid "Create a family tree"
@@ -4094,7 +4103,7 @@ msgstr "Kokela elɔ́kɔ ya bopanzi nsango"
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
-msgstr ""
+msgstr "Kokela ebómbelo"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
 #: edit_interface.php:1384
@@ -4118,7 +4127,7 @@ msgstr ""
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr "Kotíya moto"
+msgstr "Kokela moto"
 
 #: statistics.php:497
 msgid "Create your own chart"
@@ -5412,7 +5421,7 @@ msgstr ""
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
 msgid "Edit preferences"
-msgstr ""
+msgstr "Kobongisa malúli"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5791,7 +5800,7 @@ msgstr "Komɛmɛ nzeté ya mabótá mánsɔ epái na kásá-kásá ya GEDCOM…"
 
 #: admin_trees_download.php:134
 msgid "Export preferences"
-msgstr ""
+msgstr "Komɛmɛ malúli"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
@@ -7404,19 +7413,19 @@ msgstr ""
 
 #: admin_trees_manage.php:614
 msgid "Import"
-msgstr "Koyengisa"
+msgstr "Koyéisa"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
-msgstr "Koyengisa kásá-kásá ya GEDCOM"
+msgstr "Koyéisa kásá-kásá ya GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4036
 msgid "Import all places from a family tree"
-msgstr "Koyengisa bisíká bínsɔ útá nzeté ya libótá"
+msgstr "Koyéisa bisíká bínsɔ útá nzeté ya libótá"
 
 #: admin_trees_manage.php:270
 msgid "Import preferences"
-msgstr "Koyengisa malúli"
+msgstr "Koyéisa malúli"
 
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
@@ -8432,7 +8441,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:250
 msgid "Mailto link"
-msgstr "Ekangeli ya botíndí mokandá epáí ya"
+msgstr "Ekangisi epáí ya"
 
 #: index_edit.php:298
 msgid "Main section blocks"
@@ -11977,7 +11986,7 @@ msgstr "Kopɔnɔ"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
-msgstr "Kopɔnɔ kásá-kásá GEDCOM ya koyengisa"
+msgstr "Kopɔnɔ kásá-kásá GEDCOM ya koyéisa"
 
 #: index_edit.php:284 index_edit.php:367
 msgid "Select a block and use the arrows to move it."
@@ -13510,7 +13519,7 @@ msgstr ""
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Kásá-kásá GEDCOM “%s” eyengisámí."
+msgstr "Kásá-kásá GEDCOM “%s” eyéisámí."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13571,7 +13580,7 @@ msgstr ""
 #: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "Nzeté ya libótá emɛmamákí na %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
@@ -16540,7 +16549,7 @@ msgstr "%s etángámí"
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
 msgid "cancel"
-msgstr "longolá"
+msgstr "zóngelá"
 
 #: app/Stats.php:2915
 msgid "census added"
@@ -18759,7 +18768,7 @@ msgstr ""
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4044
 msgid "import"
-msgstr "Yengisá"
+msgstr "Yéisá"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
