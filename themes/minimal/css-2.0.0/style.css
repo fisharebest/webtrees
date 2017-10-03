@@ -1740,52 +1740,6 @@ div.faq_body {
 	vertical-align: top;
 }
 
-#separator {
-	display: table-cell;
-	width: 2.5em;
-	position: relative;
-	background-color: transparent;
-	overflow: hidden;
-}
-
-#separator::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: auto;
-	width: 10px;
-	height: 99999px;
-	content: "";
-	border: 1px solid #888;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-}
-
-[dir=rtl] #separator::after {
-	right: auto;
-	left: 0;
-}
-
-.separator-hidden::after,
-[dir=rtl] .separator-visible:after {
-	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
-}
-
-.separator-visible::after,
-[dir=rtl] .separator-hidden:after {
-	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
-}
-
-#sidebarAccordion {
-	width: auto;
-}
-
-#sidebarAccordion h3 {
-	text-align: center;
-	background-color: #ddd;
-	border: 1px solid #888;
-}
-
 /* Sidebar content items */
 /* Family navigator */
 #sb_content_family_nav {
@@ -1952,47 +1906,6 @@ div.faq_body {
 
 [dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
-}
-
-/*  edituser.php  */
-#edituser-page h2,
-#edituser_submit {
-	margin: 20px;
-	text-align: center;
-}
-
-#edituser-table {
-	border: 1px solid #000;
-	margin: 20px auto 0;
-	width: 800px;
-}
-
-#edituser-table .label {
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-	width: 240px;
-}
-
-#edituser-table .value {
-	margin: 0 0 0 260px;
-	padding: 5px;
-}
-
-#edituser-table .label span {
-	margin: 0 10px;
-}
-
-#edituser-table select {
-	margin: 0;
-}
-
-[dir=rtl] #edituser-table .label {
-	float: right;
-}
-
-[dir=rtl] #edituser-table .value {
-	margin: 0 260px 0 0;
 }
 
 /* ===== Styling for the jquery.colorbox gallery ===== */

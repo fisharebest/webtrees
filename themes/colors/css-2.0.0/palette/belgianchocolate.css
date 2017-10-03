@@ -30,10 +30,8 @@
 .wt-page-options-label,
 .wt-facts-table th,
 .descriptionbox, .descriptionbox a,
-.topbottombar, .topbottombar a, .topbottombar h2,
-.list_label, .list_label a, #search-page-table, #edituser-table,
-#lightbox_content span a, #lightbox_content span a:hover,
-#separator:after, #family_nav {
+.topbottombar, .topbottombar a,
+.list_label, .list_label a {
 	background-color: #af2604;
 	color: #fff;
 }
@@ -44,14 +42,12 @@
 
 /* Base */
 .wt-page-options-value,
-#indi_header h3,
 .wt-block-content,
 .wt-facts-table td,
-#search, #search-page-table .value, #edituser-table .value,
-.secondary-menu ul li a:hover, .ui-widget-header,
-.optionbox, #indi_header .ui-state-active a:link,
+.ui-widget-header,
+.optionbox, .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
-#login-form, #new_passwd_form, #register-form {
+#login-form, #new_passwd_form, #register-form  {
 	background: #f6edd5;
 }
 

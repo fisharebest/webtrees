@@ -2821,42 +2821,6 @@ div.faq_body {
 	vertical-align: top;
 }
 
-#separator {
-	display: table-cell;
-	width: 2.5em;
-	position: relative;
-	background-color: transparent;
-	overflow: hidden;
-}
-
-#separator::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: auto;
-	width: 10px;
-	height: 99999px;
-	content: "";
-	border: 1px solid #8fbcff;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-}
-
-[dir=rtl] #separator::after {
-	right: auto;
-	left: 0;
-}
-
-.separator-hidden:after,
-[dir=rtl] .separator-visible::after {
-	background: #acf url(images/general_sprite.png) no-repeat -26px 100px;
-}
-
-.separator-visible:after,
-[dir=rtl] .separator-hidden::after {
-	background: #acf url(images/general_sprite.png) no-repeat -1px 100px;
-}
-
 /* Sidebar content items */
 /* Family navigator */
 #sb_content_family_nav {
@@ -3032,50 +2996,7 @@ div.faq_body {
 	float: left;
 }
 
-/*  edituser.php  */
-#edituser-page h2,
-#edituser_submit {
-	margin: 20px;
-	text-align: center;
-}
-
-#edituser-table {
-	background-color: #95b8e0;
-	border: 1px outset #ccc;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 800px;
-}
-
-#edituser-table .label {
-	border-top: 1px solid #ccc;
-	color: #fff;
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-	width: 240px;
-}
-
-#edituser-table .value {
-	background-color: #fff;
-	border-top: 1px solid #ccc;
-	margin: 0 0 0 260px;
-	padding: 5px;
-}
-
-#edituser-table .label span {
-	margin: 0 10px;
-}
-
-#edituser-table select {
-	margin: 0;
-}
-
-[dir=rtl] #edituser-table .label {
-	float: right;
-}
-
-[dir=rtl] #edituser-table .value {
+ituser-table .value {
 	margin: 0 260px 0 0;
 }
 
