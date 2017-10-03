@@ -313,7 +313,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
-		<table class="table table-sm wt-facts-table" rolw="presentation">
+		<table class="table table-sm wt-facts-table" role="presentation">
 			<tbody>
 				<tr>
 					<td>
