@@ -111,11 +111,11 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				if (famtimerid) window.clearTimeout(famtimerid);
 				famtimerid = window.setTimeout("fsearchQ()", 500);
 			});
-			$("#sb_content_families").on("click", ".sb_fam_letter", function() {
+			$("#sidebar-content-families").on("click", ".sb_fam_letter", function() {
 				$("#sb_fam_content").load(this.href);
 				return false;
 			});
-			$("#sb_content_families").on("click", ".sb_fam_surname", function() {
+			$("#sidebar-content-families").on("click", ".sb_fam_surname", function() {
 				var element = $(this);
 				var surname = element.data("surname");
 				var alpha   = element.data("alpha");

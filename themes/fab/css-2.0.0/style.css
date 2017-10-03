@@ -2378,8 +2378,8 @@ div.faq_body {
 }
 
 /* Individuals and Families */
-#sb_content_individuals,
-#sb_content_families {
+#sidebar-content-individuals,
+#sidebar-content-families {
 	margin-top: 5px;
 }
 
