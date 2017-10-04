@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-03 22:57+0000\n"
+"PO-Revision-Date: 2017-10-04 22:01+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -4904,7 +4904,7 @@ msgstr "Dɛsɛ́mbɛ"
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -6316,7 +6316,7 @@ msgstr "Koluka ebandela"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
-msgstr "Koluka monkomá"
+msgstr "Koluka monkomá gudi"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
@@ -9345,7 +9345,7 @@ msgstr "Mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr "Bikakoli misúsu"
+msgstr "Bikákoli bya nsango misúsu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
@@ -9878,7 +9878,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:109
 msgid "No news articles have been submitted."
-msgstr "Bikakoli bya sika bitíyamí tɛ́."
+msgstr "Bikákoli bya nsango bitíyamí tɛ́."
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
@@ -14260,7 +14260,7 @@ msgstr ""
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
 #: app/Stats.php:4586 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr ""
+msgstr "Nsango ya moto-mɛ́i ekokí kalakisama tɛ́."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -15814,7 +15814,7 @@ msgstr "Náni azali o káti ya etando"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
-msgstr ""
+msgstr "Ndoba mibimba káka"
 
 #: app/Functions/FunctionsPrintLists.php:637
 msgid "Widow"
