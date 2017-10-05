@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-10-04 22:01+0000\n"
+"PO-Revision-Date: 2017-10-05 22:02+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -7020,7 +7020,7 @@ msgstr "Heshvan"
 #: admin_trees_config.php:455 admin_trees_config.php:970
 #: app/Functions/FunctionsEdit.php:94
 msgid "Hide from everyone"
-msgstr "Kobómba mpɔ̂ na moto nyɔ́nsɔ"
+msgstr "Kobómbela bato bánsɔ"
 
 #: app/Stats.php:1736
 msgid "Highest population"
