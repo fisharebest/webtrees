@@ -388,6 +388,10 @@ a > .wt-icon-arrow-up:hover::before {
 	display: none;
 }
 
+.wt-secondary-menu .menu-color .dropdown-menu {
+	max-height: 60rem;
+}
+
 .wt-primary-navigation {
 	order: 4;
 	flex: 0 0 100%;
