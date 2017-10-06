@@ -44,68 +44,16 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
-		global $controller;
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$controller->addInlineJavascript('
-			$("#new_passwd").hide();
-			$("#passwd_click").click(function() {
-				$("#new_passwd").slideToggle(200);
-				$("#register-link").slideToggle(200);
-				$("#new_passwd_username").focus();
-
-				return false;
-			});
-		');
-
 		if (Auth::check()) {
 			$title   = I18N::translate('Sign out');
-			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br>' . I18N::translate('You are signed in as %s.', '<a href="edituser.php" class="name2">' . Auth::user()->getRealNameHtml() . '</a>') . '<br><br>';
-			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign out') . '">';
-
-			$content .= '<br><br></form></div>';
+			$content = View::make('blocks/sign-out', [
+				'user' => Auth::user(),
+				]);
 		} else {
 			$title   = I18N::translate('Sign in');
-			$content = '<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="' . WT_LOGIN_URL . '">
-				<input type="hidden" name="action" value="login">';
-			$content .= '<div>
-				<label for="username">' . I18N::translate('Username') .
-					'<input type="text" id="username" name="username" class="formField">
-				</label>
-				</div>
-				<div>
-					<label for="password">' . I18N::translate('Password') .
-						'<input type="password" id="password" name="password" class="formField">
-					</label>
-				</div>
-				<div>
-					<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign in') . '">
-				</div>
-				<div>
-					<a href="#" id="passwd_click">' . I18N::translate('Forgot password?') . '</a>
-				</div>';
-			if (Site::getPreference('USE_REGISTRATION_MODULE') === '1') {
-				$content .= '<div id="register-link"><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request a new user account') . '</a></div>';
-			}
-		$content .= '</form>'; // close "login-form"
-
-		// hidden New Password block
-		$content .= '<div id="new_passwd">
-			<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
-			<input type="hidden" name="time" value="">
-			<input type="hidden" name="action" value="requestpw">
-			<h4>' . I18N::translate('Request a new password') . '</h4>
-			<div>
-				<label for="new_passwd_username">' . I18N::translate('Username or email address') .
-					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
-				</label>
-			</div>
-			<div><input type="submit" value="' . I18N::translate('continue') . '"></div>
-			</form>
-		</div>'; //"new_passwd"
-		$content .= '</div>'; //"login-box"
+			$content = View::make('blocks/sign-in', [
+				'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE')
+			]);
 		}
 
 		if ($template) {
@@ -113,7 +61,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',
-				'title'      => $this->getTitle(),
+				'title'      => $title,
 				'content'    => $content,
 			]);
 		} else {

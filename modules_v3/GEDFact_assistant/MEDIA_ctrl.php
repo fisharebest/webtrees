@@ -35,10 +35,6 @@ global $controller;
 		border: 3px #808080 outset;
 	}
 
-	#media-links table.facts_table {
-		width: 270px;
-	}
-
 	/* top Search box */
 	input[type='text'] {
 		background: #fff;
@@ -59,7 +55,7 @@ global $controller;
 	}
 </style>
 <div id="media-links">
-	<table class="facts_table center">
+	<table class="center">
 		<tr>
 			<td class="topbottombar">
 				<b><?= $controller->getPageTitle() ?></b>
@@ -134,15 +130,15 @@ global $controller;
 function print_navigator_family(Family $family, Individual $individual) {
 	foreach ($family->getSpouses() as $spouse) {
 		?>
-		<tr class="fact_value">
-			<td class="facts_value" >
+		<tr>
+			<td>
 				<a href="#" onclick="opener.insertRowToTable('<?= $spouse->getXref() ?>', '<?= Html::escape($spouse->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?= $spouse === $individual ? '<b>' : '' ?>
 					<?= $spouse->getFullName() ?> <?= $spouse->getLifeSpan() ?>
 					<?= $spouse === $individual ? '</b>' : '' ?>
 				</a>
 			</td>
-			<td class="facts_value">
+			<td>
 				<?php if ($individual !== $spouse): ?>
 					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?= $spouse->getXref() ?>&amp;gedcom=<?= $spouse->getTree()->getNameUrl() ?>">
 						<i class="headimg vmiddle icon-button_head"></i>
@@ -156,14 +152,14 @@ function print_navigator_family(Family $family, Individual $individual) {
 	foreach ($family->getChildren() as $child) {
 		?>
 		<tr>
-			<td class="facts_value">
+			<td>
 				<a href="#" onclick="opener.insertRowToTable('<?= $child->getXref() ?>', '<?= Html::escape($child->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?= $child === $individual ? '<b>' : '' ?>
 					<?= $child->getFullName() ?> <?= $child->getLifeSpan() ?>
 				<?= $child === $individual ? '</b>' : '' ?>
 				</a>
 			</td>
-			<td class="facts_value" >
+			<td>
 			<?php if ($individual !== $child): ?>
 					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?= $child->getXref() ?>&amp;gedcom=<?= $child->getTree()->getNameUrl() ?>">
 						<i class="headimg vmiddle icon-button_head"></i>

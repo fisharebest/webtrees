@@ -130,7 +130,7 @@ usort(
 
 	<div class="tab-content">
 		<div class="tab-pane fade show active" role="tabpanel" id="details">
-			<table class="facts_table">
+			<table class="table wt-facts-table">
 				<?php
 				foreach ($facts as $fact) {
 					FunctionsPrintFacts::printFact($fact, $controller->record);

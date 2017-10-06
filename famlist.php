@@ -121,8 +121,8 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= I18N::translate('Families') ?></h2>
 
-<div class="wt-page-options wt-page-options-family-list d-print-none">
-	<ul class="wt-initials-list">
+<div class="d-flex flex-column wt-page-options wt-page-options-family-list d-print-none">
+	<ul class="d-flex flex-wrap wt-initials-list">
 
 	<?php
 foreach ($controller->surnameAlpha($show_marnm === 'yes', true) as $letter => $count) {
@@ -206,7 +206,7 @@ if ($show === 'indi' || $show === 'surn') {
 				// Don't show the list until we have some filter criteria
 				$show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
 				$list = [];
-				echo '<ul class="wt-initials-list">';
+				echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
 				foreach ($givn_initials as $givn_initial => $count) {
 					echo '<li class="wt-initials-list-item">';
 					if ($count > 0) {

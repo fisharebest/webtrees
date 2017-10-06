@@ -592,7 +592,7 @@ if (
 			</div>
 
 			<div id="card-server-content" class="collapse show" role="tabpanel" aria-labelledby="card-server-header">
-				<div class="card-block">
+				<div class="card-body">
 					<?php foreach ($server_warnings as $server_warning): ?>
 						<p><?= $server_warning ?></p>
 					<?php endforeach ?>
@@ -611,7 +611,7 @@ if (
 			</h2>
 		</div>
 		<div id="card-version-content" class="collapse show" role="tabpanel" aria-labelledby="card-version-header">
-			<div class="card-block">
+			<div class="card-body">
 				<p>
 					<?= /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
 				</p>
@@ -644,7 +644,7 @@ if (
 			</h2>
 		</div>
 		<div id="card-users-content" class="collapse" role="tabpanel" aria-labelledby="card-users-header">
-			<div class="card-block">
+			<div class="card-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
 						<?= I18N::translate('Users') ?>
@@ -755,7 +755,7 @@ if (
 			</h2>
 		</div>
 		<div id="card-trees-content" class="collapse" role="tabpanel" aria-labelledby="card-trees-header">
-			<div class="card-block">
+			<div class="card-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
 						<?= I18N::translate('Family trees') ?>
@@ -887,7 +887,7 @@ if (
 			</h2>
 		</div>
 		<div id="card-old-files-content" class="collapse" role="tabpanel" aria-labelledby="card-old-files-header">
-			<div class="card-block">
+			<div class="card-body">
 				<p>
 					<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
 				</p>

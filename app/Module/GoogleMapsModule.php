@@ -190,7 +190,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$mapdata = '';
 		}
 		if ($mapdata) {
-			$html = '<div id="' . $this->getName() . '_content" class="facts_table">';
+			$html = '<div id="' . $this->getName() . '_content">';
 			$html .= '<div class="gm-wrapper">';
 			$html .= '<div class="gm-map"></div>';
 			$html .= $mapdata;
@@ -204,7 +204,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$html .= '<script>loadMap();</script>';
 			$html .= '</div>';
 		} else {
-			$html = '<div class="facts_value">' . I18N::translate('No map data exists for this individual') . '</div>';
+			$html = '<div>' . I18N::translate('No map data exists for this individual') . '</div>';
 			if (Auth::isAdmin()) {
 				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
 			}
@@ -1277,13 +1277,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// Childs birth
 					$name   = '<a href="' . $parent->getHtmlUrl() . '">' . $parent->getFullName() . '</a>';
 					$label  = strtr($parent->getSex(), ['F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')]);
-					$class  = 'person_box' . strtr($parent->getSex(), ['F' => 'F', 'M' => '', 'U' => 'NN']);
+					$class  = 'wt-gender-' . $parent->getSex();
 					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 				} else {
 					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
 					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>' : '';
 					$label  = $fact->getLabel();
-					$class  = 'optionbox';
+					$class  = '';
 					if ($fact->getValue() && $spouse) {
 						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getValue() . '</div><strong>' . $name . '</strong>' . $fact->getDate()->display(true) . '</div>';
 					} elseif ($spouse) {
@@ -1315,14 +1315,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div class="gm-events"><table class="facts_table">';
+			echo '<div class="gm-events">';
+			echo '<table class="wt-facts-table">';
+			echo '<caption class="sr-only">' . I18N::translate('Facts and events') .'</caption>';
+			echo '<tbody>';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
-				echo '<tr>';
-				echo '<td class="facts_label">';
-				echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
-				echo '<td class="', $event['class'], '">';
+				echo '<tr class="', $event['class'], '">';
+				echo '<th scope="row">';
+				echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">';
+				echo $event['fact_label'];
+				echo '</a>';
+				echo '</th>';
+				echo '<td>';
 				if ($event['info']) {
 					echo '<div><span class="field">', Html::escape($event['info']), '</span></div>';
 				}
@@ -1337,7 +1343,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo '</tr>';
 			}
 
-			echo '</table></div>';
+			echo '</tbody>';
+			echo '</table>';
+			echo '</div>';
 			?>
 
 			<script>

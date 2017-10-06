@@ -119,14 +119,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 		ob_start();
 		?>
-		<table class="facts_table">
-			<colgroup>
-				<col class="width20">
-				<col class="width80">
-			</colgroup>
+		<table class="table wt-facts-table">
 			<tbody>
 				<tr>
-					<td colspan="2" class="descriptionbox">
+					<td colspan="2">
 						<?php if ($controller->record->getTree()->getPreference('SHOW_RELATIVES_EVENTS')) : ?>
 						<label>
 							<input id="show-relatives-facts" type="checkbox">
@@ -144,7 +140,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 				<?php
 
 		if (!$indifacts) {
-			echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
+			echo '<tr><td colspan="2">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
 		}
 
 		foreach ($indifacts as $fact) {

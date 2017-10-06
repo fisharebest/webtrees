@@ -512,9 +512,9 @@ class FunctionsPrint {
 				if ($fact['type'] == $type || $fact['type'] == 'all') {
 					if ($newRow) {
 						$newRow = false;
-						echo '<tr><td class="descriptionbox">';
-						echo I18N::translate('Add from clipboard'), '</td>';
-						echo '<td class="optionbox wrap"><form name="newFromClipboard" onsubmit="return false;">';
+						echo '<tr><th scope="row">';
+						echo I18N::translate('Add from clipboard'), '</th>';
+						echo '<td><form name="newFromClipboard" onsubmit="return false;">';
 						echo '<select id="newClipboardFact">';
 					}
 					echo '<option value="', Html::escape($fact_id), '">', GedcomTag::getLabel($fact['fact']);
@@ -580,10 +580,10 @@ class FunctionsPrint {
 		uasort($translated_addfacts, function ($x, $y) {
 			return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
 		});
-		echo '<tr><td class="descriptionbox">';
+		echo '<tr><th scope="row">';
 		echo I18N::translate('Fact or event');
-		echo '</td>';
-		echo '<td class="optionbox wrap">';
+		echo '</th>';
+		echo '<td>';
 		echo '<form action="edit_interface.php">';
 		echo '<input type="hidden" name="action" value="add">';
 		echo '<input type="hidden" name="xref" value="' . $id . '">';

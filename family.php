@@ -99,7 +99,7 @@ if ($controller->record && $controller->record->canShow()) {
 							<span class="subheaders"><?= I18N::translate('Family group information') ?></span>
 							<?php
 							if ($controller->record->canShow()) {
-								echo '<table class="facts_table">';
+								echo '<table class="table wt-facts-table">';
 								$controller->printFamilyFacts();
 								echo '</table>';
 							} else {

@@ -124,7 +124,7 @@ $facts         = $controller->record->getFacts();
 
 	<div class="tab-content">
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
-			<table class="facts_table">
+			<table class="table wt-facts-table">
 				<?php foreach ($facts as $fact): ?>
 					<?php FunctionsPrintFacts::printFact($fact, $controller->record) ?>
 				<?php endforeach ?>

@@ -135,29 +135,29 @@ class FamilyController extends GedcomRecordController {
 		if (Auth::isEditor($this->record->getTree())) {
 			FunctionsPrint::printAddNewFact($this->record->getXref(), $indifacts, 'FAM');
 
-			echo '<tr><td class="descriptionbox">';
+			echo '<tr><th scope="row">';
 			echo I18N::translate('Note');
-			echo '</td><td class="optionbox">';
+			echo '</th><td>';
 			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=NOTE">', I18N::translate('Add a note'), '</a>';
 			echo '</td></tr>';
 
-			echo '<tr><td class="descriptionbox">';
+			echo '<tr><th scope="row">';
 			echo I18N::translate('Shared note');
-			echo '</td><td class="optionbox">';
+			echo '</th><td class="optionbox">';
 			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SHARED_NOTE">', I18N::translate('Add a shared note'), '</a>';
 			echo '</td></tr>';
 
 			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
-				echo '<tr><td class="descriptionbox">';
+				echo '<tr><th scope="row">';
 				echo I18N::translate('Media object');
-				echo '</td><td class="optionbox">';
+				echo '</th><td class="optionbox">';
 				echo  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
 				echo '</td></tr>';
 			}
 
-			echo '<tr><td class="descriptionbox">';
+			echo '<tr><th scope="row">';
 			echo I18N::translate('Source');
-			echo '</td><td class="optionbox">';
+			echo '</th><td>';
 			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SOUR">', I18N::translate('Add a source citation'), '</a>';
 			echo '</td></tr>';
 		}

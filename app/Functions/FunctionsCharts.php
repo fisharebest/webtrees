@@ -99,9 +99,9 @@ class FunctionsCharts {
 			self::printSosaNumber($sosa * 2, '', 'arrow-up');
 		}
 		if ($husb->isPendingAddtion()) {
-			echo '<td class="facts_value new">';
+			echo '<td class="new">';
 		} elseif ($husb->isPendingDeletion()) {
-			echo '<td class="facts_value old">';
+			echo '<td class="old">';
 		} else {
 			echo '<td>';
 		}
@@ -190,9 +190,9 @@ class FunctionsCharts {
 			self::printSosaNumber($sosa * 2 + 1, '', 'arrow-up');
 		}
 		if ($wife->isPendingAddtion()) {
-			echo '<td class="facts_value new">';
+			echo '<td class="new">';
 		} elseif ($wife->isPendingDeletion()) {
-			echo '<td class="facts_value old">';
+			echo '<td class="old">';
 		} else {
 			echo '<td>';
 		}

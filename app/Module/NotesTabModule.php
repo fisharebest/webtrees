@@ -62,11 +62,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
-		<table class="facts_table">
-			<colgroup>
-				<col class="width20">
-				<col class="width80">
-			</colgroup>
+		<table class="table wt-facts-table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<label>
@@ -87,27 +83,27 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 			}
 		}
 		if (!$this->getFactsWithNotes()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no notes for this individual.'), '</td></tr>';
+			echo '<tr><td colspan="2">', I18N::translate('There are no notes for this individual.'), '</td></tr>';
 		}
 
 		// New note link
 		if ($controller->record->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label">
+				<th scope="row">
 					<?= GedcomTag::getLabel('NOTE') ?>
-				</td>
-				<td class="facts_value">
+				</th>
+				<td>
 					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=NOTE">
 						<?= I18N::translate('Add a note') ?>
 					</a>
 				</td>
 			</tr>
 			<tr>
-				<td class="facts_label">
+				<th scope="row">
 					<?= GedcomTag::getLabel('SHARED_NOTE') ?>
-				</td>
-				<td class="facts_value">
+				</th>
+				<td>
 					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SHARED_NOTE">
 						<?= I18N::translate('Add a shared note') ?>
 					</a>

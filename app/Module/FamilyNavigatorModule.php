@@ -77,7 +77,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
 		?>
 		<div id="sb_family_nav_content">
-			<table class="nav_content">
+			<div class="nav_content">
 
 		<?php
 		//-- parent families -------------------------------------------------------------
@@ -97,7 +97,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 			$this->drawFamily($family, $family->getFullName());
 		}
 		?>
-			</table>
+			</div>
 		</div>
 		<?php
 
@@ -114,65 +114,69 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		global $controller;
 
 		?>
-		<tr>
-			<td class="center" colspan="2">
-				<a class="famnav_title" href="<?= $family->getHtmlUrl() ?>">
-					<?= $title ?>
-				</a>
-			</td>
-		</tr>
-		<?php
-		foreach ($family->getSpouses() as $spouse) {
-			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
-			$menu->addSubmenu(new Menu($this->getParents($spouse)));
-			?>
-			<tr>
-				<td class="facts_label">
-					<ul class="nav">
-						<?= $menu->bootstrap4() ?>
-					</ul>
-				</td>
-				<td class="center <?= $controller->getPersonStyle($spouse) ?> nam">
-					<?php if ($spouse->canShow()): ?>
-					<a class="famnav_link" href="<?= $spouse->getHtmlUrl() ?>">
-						<?= $spouse->getFullName() ?>
-					</a>
-					<div class="font9">
-						<?= $spouse->getLifeSpan() ?>
-					</div>
-					<?php else: ?>
-						<?= $spouse->getFullName() ?>
-					<?php endif ?>
-				</td>
-			</tr>
-		<?php
-		}
+		<table class="table table-sm wt-facts-table">
+		<caption class="text-center">
+			<a class="famnav_title" href="<?= $family->getHtmlUrl() ?>">
+				<?= $title ?>
+			</a>
+		</caption>
+		<tbody>
+			<?php
+				foreach ($family->getSpouses() as $spouse) {
+					$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
+					$menu->addSubmenu(new Menu($this->getParents($spouse)));
+					?>
+					<tr class="text-center wt-parent wt-gender-<?= $spouse->getSex() ?>">
+						<th scope="row">
+							<ul class="nav">
+								<?= $menu->bootstrap4() ?>
+							</ul>
+						</th>
+						<td>
+							<?php if ($spouse->canShow()): ?>
+							<a class="famnav_link" href="<?= $spouse->getHtmlUrl() ?>">
+								<?= $spouse->getFullName() ?>
+							</a>
+							<div class="small">
+								<?= $spouse->getLifeSpan() ?>
+							</div>
+							<?php else: ?>
+								<?= $spouse->getFullName() ?>
+							<?php endif ?>
+						</td>
+					</tr>
+				<?php
+				}
 
-		foreach ($family->getChildren() as $child) {
-			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
-			$menu->addSubmenu(new Menu($this->getFamily($child)));
-			?>
-			<tr>
-				<td class="facts_label">
-					<ul class="nav">
-						<?= $menu->bootstrap4() ?>
-					</ul>
-				</td>
-				<td class="center <?= $controller->getPersonStyle($child) ?> nam">
-					<?php if ($child->canShow()): ?>
-					<a class="famnav_link" href="<?= $child->getHtmlUrl() ?>">
-						<?= $child->getFullName() ?>
-					</a>
-					<div class="font9">
-						<?= $child->getLifeSpan() ?>
-					</div>
-					<?php else: ?>
-						<?= $child->getFullName() ?>
-					<?php endif ?>
-				</td>
-			</tr>
+				foreach ($family->getChildren() as $child) {
+					$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
+					$menu->addSubmenu(new Menu($this->getFamily($child)));
+					?>
+					<tr class="text-center wt-child wt-gender-<?= $child->getSex() ?>">
+						<th scope="row">
+							<ul class="nav">
+								<?= $menu->bootstrap4() ?>
+							</ul>
+						</th>
+						<td>
+							<?php if ($child->canShow()): ?>
+							<a class="famnav_link" href="<?= $child->getHtmlUrl() ?>">
+								<?= $child->getFullName() ?>
+							</a>
+							<div class="small">
+								<?= $child->getLifeSpan() ?>
+							</div>
+							<?php else: ?>
+								<?= $child->getFullName() ?>
+							<?php endif ?>
+						</td>
+					</tr>
+				<?php
+				}
+				?>
+			</tbody>
+		</table>
 		<?php
-		}
 	}
 
 	/**

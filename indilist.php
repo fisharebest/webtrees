@@ -121,8 +121,8 @@ $controller
 ?>
 <h2 class="wt-page-title"><?= I18N::translate('Individuals') ?></h2>
 
-<div class="wt-page-options wt-page-options-individual-list d-print-none">
-	<ul class="wt-initials-list">
+<div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
+	<ul class="d-flex flex-wrap wt-initials-list">
 
 	<?php
 foreach ($controller->surnameAlpha($show_marnm === 'yes', false) as $letter => $count) {
@@ -206,7 +206,7 @@ if ($show === 'indi' || $show === 'surn') {
 				// Don't show the list until we have some filter criteria
 				$show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
 				$list = [];
-				echo '<ul class="wt-initials-list">';
+				echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
 				foreach ($givn_initials as $givn_initial => $count) {
 					echo '<li class="wt-initials-list-item">';
 					if ($count > 0) {
@@ -216,17 +216,20 @@ if ($show === 'indi' || $show === 'surn') {
 							echo '<a class="wt-initial" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
 						}
 					} else {
-						echo $controller->givenNameInitial($givn_initial);
+						echo '<span class="wt-initial text-muted">' . $controller->givenNameInitial($givn_initial) . '</span>';
 					}
+				echo '</li>';
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
 				if (Session::has('initiated')) {
+					echo '<li class="wt-initials-list-item">';
 					if ($show_all_firstnames === 'yes') {
 						echo '<span class="warning">' . I18N::translate('All') . '</span>';
 					} else {
-						echo '<a href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
+						echo '<a class="wt-initial" href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
 					}
 				}
+				echo '</li>';
 				echo '</ul>';
 				echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
 			}

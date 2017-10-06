@@ -126,11 +126,7 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 
 	<div class="tab-content">
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
-			<table class="facts_table">
-				<colgroup>
-					<col class="width20">
-					<col class="width80">
-				</colgroup>
+			<table class="table wt-facts-table">
 				<tr>
 					<td class="descriptionbox">
 						<?= I18N::translate('Shared note') ?>

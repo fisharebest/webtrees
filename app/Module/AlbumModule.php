@@ -82,7 +82,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	 */
 	public function getTabContent() {
 		$html = '<div id="' . $this->getName() . '_content">';
-		$html .= '<div class="facts_value">';
+		$html .= '<div>';
 		$html .= '<ul class="album-list">';
 		foreach ($this->getMedia() as $media) {
 			$html .= '<li class="album-list-item">';

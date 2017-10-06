@@ -41,7 +41,7 @@ class Datatables {
 	 *
 	 * @return string[]
 	 */
-	private static function languageAttributes(array $lengths = [10, 25, 100, -1]) {
+	public static function languageAttributes(array $lengths = [10, 25, 100, -1]) {
 		$length_menu = FunctionsEdit::numericOptions($lengths);
 
 		$language = [
@@ -114,23 +114,6 @@ class Datatables {
 				'data-columns'   => '[null, null, null, null, null, null, null]',
 				'data-state-save' => 'true',
 			] + self::defaultAttributes() + self::languageAttributes());
-	}
-
-	/**
-	 * Generate the HTML attributes for a table of research tasks.
-	 *
-	 * @return string
-	 */
-	public static function researchTaskTableAttributes() {
-		return Html::attributes([
-			'class'          => 'table table-bordered table-sm table-responsive datatables table-research-task',
-			//'data-columns'   => '[{ type: "num" }, { type: "text" }, { type: "text" }, { type: "text" }]',
-			'data-columns'   => '[null, null, null, null]',
-			'data-info'      => 'false',
-			'data-paging'    => 'false',
-			'data-searching' => 'false',
-			'data-state-save' => 'true',
-		] + self::languageAttributes());
 	}
 
 	/**

@@ -966,7 +966,6 @@ class FunctionsPrintLists {
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
 		$html .= '<th>' . I18N::translate('Shared notes') . '</th>';
 		$html .= '<th>' . I18N::translate('Last change') . '</th>';
-		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
 
@@ -1018,8 +1017,6 @@ class FunctionsPrintLists {
 			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $source->lastChangeTimestamp(true) . '">' . $source->lastChangeTimestamp() . '</td>';
-			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName())) . '", "' . $source->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table>';
@@ -1059,7 +1056,6 @@ class FunctionsPrintLists {
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
 		$html .= '<th>' . I18N::translate('Last change') . '</th>';
-		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
 
@@ -1092,8 +1088,6 @@ class FunctionsPrintLists {
 			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $note->lastChangeTimestamp(true) . '">' . $note->lastChangeTimestamp() . '</td>';
-			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName())) . '", "' . $note->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table>';
@@ -1120,7 +1114,6 @@ class FunctionsPrintLists {
 		$html .= '<table ' . Datatables::repositoryTableAttributes() . '><thead><tr>';		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
 		$html .= '<th>' . I18N::translate('Last change') . '</th>';
-		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
 
@@ -1155,8 +1148,6 @@ class FunctionsPrintLists {
 			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
-			// Delete
-			$html .= '<td>' . FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repository->getFullName())) . '", "' . $repository->getXref() . '");']) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';

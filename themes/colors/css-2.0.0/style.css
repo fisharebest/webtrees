@@ -13,8 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-.wt-page-options p   {padding: 0 5px;}
-
 /* The colors theme */
 
 /* Override Bootstrap formatting */
@@ -732,11 +730,6 @@ a > .wt-icon-arrow-up:hover::before {
 	text-align: center;
 }
 
-.wt-page-options {
-	max-width: 50rem;
-	margin: 0 auto;
-}
-
 .wt-page-options-value {
     color: #333;
 }
@@ -1115,44 +1108,38 @@ table.center {
 	white-space: normal;
 }
 
-.facts_table {
-	width: 100%;
-}
-
-.facts_table .optionbox {
-	white-space: normal;
-}
-
 div.fact_SHARED_NOTE {
 	clear: both;
 }
 
-.facts_label {
-	background-color: #81a9cb;
+/* Table of genealogical facts */
+
+.wt-facts-table {
+	border-collapse: separate;
+}
+
+.wt-facts-table caption {
+	caption-side: top;
+}
+
+.wt-facts-table th {
 	border: 1px solid #ccc;
-	padding: 4px;
-	width: 20%;
+	border-radius: 3px;
 	text-align: center;
+	min-width: 20%;
 }
 
-.facts_label03 {
-	color: #fff;
-	border: 1px solid #ddd;
-	background-color: #81a9cb;
-	padding: 4px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.facts_value {
-	background-color: #edf7fd;
+.wt-facts-table td {
 	border: solid #999 1px;
-	padding: 4px;
+	border-radius: 3px;
 }
 
-.facts_label .submenu a {
-	background: #fff;
-	color: #000;
+.wt-facts-table .wt-gender-M td {
+	background-color: #ddf;
+}
+
+.wt-facts-table .wt-gender-F td {
+	background-color: #fdd;
 }
 
 .quickfacts a {
@@ -2218,46 +2205,6 @@ a:hover .nameZoom {
 	line-height: 20px;
 }
 
-/* Statistics block */
-.stat-table1 {
-	display: table;
-	float: left;
-	width:15%;
-	border-collapse:separate;
-	border-spacing:2px;
-	vertical-align: middle;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table1 {
-float: right;
-}
-
-.stat-table2 {
-	display: table;
-	float: left;
-	width:60%;
-	border-collapse:separate;
-	border-spacing:2px;
-	margin-bottom: 5px;
-}
-
-[dir=rtl] .stat-table2 {
-float: right;
-}
-
-.stat-row {
-	display: table-row;
-}
-.stat-cell {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	white-space: pre-wrap;
-}
-.left {text-align: left;}
-[dir=rtl] .left {text-align: right;}
-
 /* ==== Theme select block === */
 .theme_form ul {
 	margin: -10px auto;
@@ -2536,21 +2483,6 @@ div.faq_body {
 	clear: both;
 }
 
-#note-edit .facts_table,
-#notes_content .facts_table,
-#personal_facts_content .facts_table {
-	table-layout: fixed;
-}
-
-.facts_table .field em {
-	margin-top: 0;
-	padding-left: 5px;
-}
-
-.facts_table .field img {
-	vertical-align: middle;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2567,10 +2499,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-[dir=rtl] .facts_table .field em {
-	padding-right: 5px;
 }
 
 /* ======== Album tab =========*/
@@ -2744,42 +2672,6 @@ div.faq_body {
 	vertical-align: top;
 }
 
-#separator {
-	display: table-cell;
-	width: 2.5em;
-	position: relative;
-	background-color: transparent;
-	overflow: hidden;
-}
-
-#separator::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: auto;
-	width: 10px;
-	height: 99999px;
-	content: "";
-	border: 1px solid #999;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-}
-
-[dir=rtl] #separator::after {
-	right: auto;
-	left: 0;
-}
-
-.separator-hidden:after,
-[dir=rtl] .separator-visible::after {
-	background: url(images/general_sprite.png) no-repeat -26px 100px;
-}
-
-.separator-visible:after,
-[dir=rtl] .separator-hidden::after {
-	background: url(images/general_sprite.png) no-repeat -1px 100px;
-}
-
 /* Sidebar content items */
 /* Family navigator */
 #sb_content_family_nav {
@@ -2797,10 +2689,6 @@ div.faq_body {
 .nav_content {
 	width: 100%;
 	padding: 0;
-}
-
-.nav_content .facts_label {
-	width: 75px;
 }
 
 #sb_family_nav_content .clist {
@@ -2881,8 +2769,8 @@ div.faq_body {
 }
 
 /* Individuals and Families */
-#sb_content_individuals,
-#sb_content_families {
+#sidebar-content-individuals,
+#sidebar-content-families {
 	margin-top: 2px;
 }
 
@@ -2949,51 +2837,6 @@ div.faq_body {
 
 [dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
-}
-
-/*  edituser.php  */
-#edituser-page h2,
-#edituser_submit {
-	margin: 20px;
-	text-align: center;
-}
-
-#edituser-table {
-	border: 1px solid #999;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 800px;
-}
-
-#edituser-table .label {
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-	width: 240px;
-}
-
-#edituser-table .value {
-	background-color: #ecf5ff;
-	border-top: 1px solid #999;
-	color: #333;
-	margin: 0 0 0 260px;
-	padding: 5px;
-}
-
-#edituser-table .label span {
-	margin: 0 10px;
-}
-
-#edituser-table select {
-	margin: 0;
-}
-
-[dir=rtl] #edituser-table .label {
-	float: right;
-}
-
-[dir=rtl] #edituser-table .value {
-	margin: 0 260px 0 0;
 }
 
 /* ===== Styling for the jquery.colorbox gallery ===== */

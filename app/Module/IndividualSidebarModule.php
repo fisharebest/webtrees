@@ -111,11 +111,11 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				if (timerid) window.clearTimeout(timerid);
 				timerid = window.setTimeout("isearchQ()", 500);
 			});
-			$("#sb_content_individuals").on("click", ".sb_indi_letter", function() {
+			$("#sidebar-content-individuals").on("click", ".sb_indi_letter", function() {
 				$("#sb_indi_content").load(this.href);
 				return false;
 			});
-			$("#sb_content_individuals").on("click", ".sb_indi_surname", function() {
+			$("#sidebar-content-individuals").on("click", ".sb_indi_surname", function() {
 				var element = $(this);
 				var surname = element.data("surname");
 				var alpha   = element.data("alpha");

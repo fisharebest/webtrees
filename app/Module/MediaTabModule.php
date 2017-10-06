@@ -58,7 +58,8 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function getTabContent() {
 		ob_start();
-		echo '<table class="facts_table">';
+		echo '<table class="table wt-facts-table">';
+		echo '<tbody>';
 		foreach ($this->getFactsWithMedia() as $fact) {
 			if ($fact->getTag() == 'OBJE') {
 				FunctionsPrintFacts::printMainMedia($fact, 1);
@@ -68,12 +69,14 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 				}
 			}
 		}
-		if (!$this->getFactsWithMedia()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no media objects for this individual.'), '</td></tr>';
-		}
 		?>
+		</tbody>
 		</table>
 		<?php
+		if (!$this->getFactsWithMedia()) {
+			echo '<p>', I18N::translate('There are no media objects for this individual.'), '</p>';
+		}
+
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 

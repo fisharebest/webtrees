@@ -166,7 +166,7 @@ class FunctionsPrintFacts {
 		}
 
 		echo '<tr class="', $styleadd, '">';
-		echo '<td class="descriptionbox width20">';
+		echo '<th scope="rpw">';
 
 		if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 			echo Theme::theme()->icon($fact), ' ';
@@ -202,7 +202,8 @@ class FunctionsPrintFacts {
 			echo $label;
 		}
 
-		echo '</td><td class="optionbox ', $styleadd, ' wrap">';
+		echo '</th>';
+		echo '<td class="', $styleadd, '">';
 
 		// Event from another record?
 		if ($parent !== $record) {
@@ -775,11 +776,11 @@ class FunctionsPrintFacts {
 				} else {
 					echo '<tr>';
 				}
-				echo '<td class="descriptionbox';
+				echo '<th';
 				if ($level > 1) {
 					echo ' rela';
 				}
-				echo ' ', $styleadd, ' width20">';
+				echo ' ', $styleadd, '">';
 				$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 				$factwords = explode(' ', $factlines[0]); // 1 BIRT Y
 				$factname  = $factwords[1]; // BIRT
@@ -812,8 +813,8 @@ class FunctionsPrintFacts {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-				echo '</td>';
-				echo '<td class="optionbox ', $styleadd, ' wrap">';
+				echo '</th>';
+				echo '<td class="', $styleadd, '">';
 				if ($source) {
 					echo '<a href="', $source->getHtmlUrl(), '">', $source->getFullName(), '</a>';
 					// PUBL
