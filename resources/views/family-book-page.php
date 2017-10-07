@@ -56,4 +56,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>

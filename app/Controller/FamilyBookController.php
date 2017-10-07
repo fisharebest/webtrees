@@ -116,7 +116,7 @@ class FamilyBookController extends ChartController {
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
 							}
-							echo '<td class="tdbot">',
+							echo '<td class="align-bottom">',
 							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h -4, '"></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
@@ -125,10 +125,10 @@ class FamilyBookController extends ChartController {
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
 							}
-							echo '<td class="tdtop">',
+							echo '<td class="align-top">',
 							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h -2, '"></td>';
 						} else {
-							echo '<td class="tdbot"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
+							echo '<td class="align-bottomm"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
 							'<img class="spacer"  width="3" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
 						}
 					}
@@ -210,7 +210,7 @@ class FamilyBookController extends ChartController {
 
 		// Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
-			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="tdbot">';
+			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-bottom">';
 			// Determine line height for two or more spouces
 			// And then adjust the vertical line for the root person only
 			$famcount = 0;
@@ -276,7 +276,7 @@ class FamilyBookController extends ChartController {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
+			'<td class="align-top"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
 			'<td><img class="linef3" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
@@ -357,19 +357,20 @@ class FamilyBookController extends ChartController {
 	 * @param int    $descent_steps
 	 */
 	public function printFamilyBook(Individual $person, $descent_steps) {
-		if ($descent_steps == 0 || !$person->canShowName()) {
+		if ($descent_steps == 0) {
 			return;
 		}
+
 		$families = $person->getSpouseFamilies();
-		if (!empty($families)) {
+		if (1 || !empty($families)) {
 			echo
 			'<h3>',
-			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
+			/* I18N: %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
 			'</h3>',
-			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="tdmid">';
+			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
 			$this->dgenerations = $this->generations;
 			$this->printDescendency($person, 1);
-			echo '</td><td class="tdmid">';
+			echo '</td><td class="align-middle">';
 			$this->printPersonPedigree($person, 1);
 			echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
 			foreach ($families as $family) {

@@ -22,14 +22,7 @@ require 'includes/session.php';
 $controller = new ChartController;
 $controller
 	->restrictAccess(Module::isActiveChart($controller->tree(), 'compact_tree_chart'))
-	->setPageTitle(I18N::translate('Compact tree'));
-
-if ($controller->root !== null && $controller->root->canShowName()) {
-	$controller->setPageTitle(
-	/* I18N: %s is an individual’s name */
-		I18N::translate('Compact tree of %s', $controller->root->getFullName())
-	);
-}
+	->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Compact tree of %s', $controller->root->getFullName()));
 
 // Only generate the content for interactive users (not search robots).
 if (Filter::getBool('ajax') && Session::has('initiated')) {
@@ -41,13 +34,16 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	return;
 }
 
-$controller
-	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-	->pageHeader();
+$ajax_url = Html::url('compact.php', [
+	'rootid' => $controller->root->getXref(),
+	'ged'    => $controller->root->getTree()->getName(),
+	'ajax'   => 1,
+]);
 
-echo View::make(
-	'compact-chart-page', [
-		'title'      => $controller->getPageTitle(),
-		'individual' => $controller->root,
-	]
-);
+$controller->pageHeader();
+
+echo View::make('compact-chart-page', [
+	'title'      => $controller->getPageTitle(),
+	'individual' => $controller->root,
+		'ajax_url' => $ajax_url,
+]);

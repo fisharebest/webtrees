@@ -1403,15 +1403,6 @@ a:hover .nameZoom {
 	margin: 0.25em auto 0.6em;
 }
 
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
 .tvertline {
 	vertical-align: bottom;
 }

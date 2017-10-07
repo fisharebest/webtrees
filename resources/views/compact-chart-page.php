@@ -26,4 +26,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>

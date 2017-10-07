@@ -885,6 +885,11 @@ $(function () {
     }
   });
 
+  // Page elements that load via AJAX
+  $("[data-ajax-url]").each(function () {
+    $(this).load($(this).data('ajaxUrl'));
+	});
+
   // Bootstrap tabs - load content dynamically using AJAX
   $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
     $(this.getAttribute('href') + ':empty').load($(this).data('href'));
