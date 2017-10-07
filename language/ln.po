@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-05 22:02+0000\n"
+"PO-Revision-Date: 2017-10-07 21:26+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -6282,7 +6282,7 @@ msgstr ""
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
-msgstr ""
+msgstr "Kokɔngɔlɔ"
 
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
@@ -11914,7 +11914,7 @@ msgstr "Koluka"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
 msgid "Search and replace"
-msgstr "Koluka mpé  kokitinya"
+msgstr "Koluka mpé kokitinya"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
@@ -11923,11 +11923,11 @@ msgstr ""
 
 #: includes/session.php:504
 msgid "Search engine"
-msgstr ""
+msgstr "Masíni ya boluki"
 
 #: medialist.php:184
 msgid "Search filters"
-msgstr ""
+msgstr "Bikɔngɔlele bya boluki"
 
 #: admin_trees_places.php:103 search.php:76 search.php:156
 msgid "Search for"
@@ -11935,7 +11935,7 @@ msgstr "Koluka"
 
 #: app/Module/GoogleMapsModule.php:3351
 msgid "Search globally"
-msgstr "Boluki mobimba"
+msgstr "Boluki bwa mobimba"
 
 #: app/Module/GoogleMapsModule.php:3353
 msgid "Search locally"
