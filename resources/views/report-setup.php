@@ -5,7 +5,7 @@
 	<?= $title ?>
 </h2>
 
-<form action="reportengine.php" class="wt-page-options d-print-none">
+<form action="reportengine.php" class="wt-page-options wt-page-options-report-setup">
 	<input type="hidden" name="action" value="run">
 	<input type="hidden" name="report" value="<?= Html::escape($report) ?>">
 
