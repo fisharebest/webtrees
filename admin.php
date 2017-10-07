@@ -439,6 +439,7 @@ $old_files = [
 	// Removed in 2.0.0
 	WT_ROOT . 'admin_site_access.php',
 	WT_ROOT . 'admin_site_readme.php',
+	WT_ROOT . 'app/Controller/CompactController.php',
 	WT_ROOT . 'app/Controller/SimpleController.php',
 	WT_ROOT . 'assets/js-1.7.7',
 	WT_ROOT . 'packages/datatables-1.10.15',
