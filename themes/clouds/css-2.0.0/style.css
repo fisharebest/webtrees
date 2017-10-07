@@ -2233,12 +2233,6 @@ a:hover .nameZoom {
 	margin-bottom: 2px;
 }
 
-.loading-image {
-	background: transparent url(images/loading-32x32.gif) 50% 50% no-repeat;
-	height: 50px;
-	margin: 50px;
-}
-
 .list-charts {
 	text-align: center;
 }

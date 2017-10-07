@@ -885,7 +885,8 @@ $(function () {
     }
   });
 
-  // Page elements that load via AJAX
+  // Page elements that load automaticaly via AJAX.
+  // This prevents bad robots from crawling resource-intensive pages.
   $("[data-ajax-url]").each(function () {
     $(this).load($(this).data('ajaxUrl'));
 	});

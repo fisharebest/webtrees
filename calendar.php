@@ -538,13 +538,24 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	return;
 }
 
-$controller
-	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-	->pageHeader();
+$ajax_url = Html::url('calendar.php', [
+	'ged'      => $WT_TREE->getName(),
+	'cal'      => $cal,
+	'day'      => $day,
+	'month'    => $month,
+	'year'     => $year,
+	'view'     => $view,
+	'filterev' => $filterev,
+	'filterof' => $filterof,
+	'filtersx' => $filtersx,
+	'ajax'     => 1,
+]);
+
+$controller->pageHeader();
 
 ?>
-<div class="wt-ajax-load wt-page-content"></div>
-<?php
+	<div class="wt-ajax-load wt-page-content" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>
+	<?php
 
 /**
  * Filter a list of anniversaries
@@ -629,7 +640,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 	$html = '';
 
 	foreach ($list as $id => $facts) {
-		$tmp = GedcomRecord::getInstance($id, $WT_TREE);
+		$tmp  = GedcomRecord::getInstance($id, $WT_TREE);
 		$html .= $tag1 . '<a href="' . $tmp->getHtmlUrl() . '">' . $tmp->getFullName() . '</a> ';
 		if ($show_sex_symbols && $tmp instanceof Individual) {
 			switch ($tmp->getSex()) {

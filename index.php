@@ -26,7 +26,7 @@ global $WT_TREE;
 require 'includes/session.php';
 
 // The only option for action is "ajax"
-$action = Filter::get('action');
+$ajax = (bool) Filter::get('ajax');
 
 // The default view depends on whether we are logged in
 if (Auth::check()) {
@@ -48,7 +48,7 @@ $active_blocks = Module::getActiveBlocks($WT_TREE);
 Functions::fetchLatestVersion();
 
 // We generate individual blocks using AJAX
-if ($action === 'ajax') {
+if ($ajax) {
 	$controller = new AjaxController;
 	$controller->pageHeader();
 
@@ -102,10 +102,8 @@ if ($blocks['main']) {
 		if (array_key_exists($module_name, $active_blocks)) {
 			if ($active_blocks[$module_name]->loadAjax()) {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
-				$controller->addInlineJavascript(
-					'$("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-				);
+				$ajax_url = Html::url('index.php', ['ctype' => $ctype, 'block_id' => $block_id, 'ajax' => 1]);
+				echo '<div class="wt-ajax-load" data-ajax-url="' . Html::escape($ajax_url) . '"></div>';
 			} else {
 				// Load the block directly
 				echo $active_blocks[$module_name]->getBlock($block_id);
@@ -124,10 +122,8 @@ if ($blocks['side']) {
 		if (array_key_exists($module_name, $active_blocks)) {
 			if ($active_blocks[$module_name]->loadAjax()) {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
-				$controller->addInlineJavascript(
-					'$("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-				);
+				$ajax_url = Html::url('index.php', ['ctype' => $ctype, 'block_id' => $block_id, 'ajax' => 1]);
+				echo '<div class="wt-ajax-load" data-ajax-url="' . Html::escape($ajax_url) . '"></div>';
 			} else {
 				// Load the block directly
 				echo $active_blocks[$module_name]->getBlock($block_id);
