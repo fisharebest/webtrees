@@ -63,15 +63,16 @@ try {
 	}
 
 	// Setup Glide server
-	$data_dir   = new Filesystem(new Local(WT_DATA_DIR));
+	// Caution - $media_dir may contain relative paths: ../../
+	$source_dir = new Filesystem(new Local(WT_DATA_DIR . $media_dir));
+	$cache_dir  = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_dir)));
 	$assets_dir = new Filesystem(new Local( 'assets'));
+
 	$server     = ServerFactory::create([
-		'driver'             => $driver,
-		'source'             => $data_dir,
-		'source_path_prefix' => $media_dir,
-		'cache'              => $data_dir,
-		'cache_path_prefix'  => 'thumbnail-cache/' . $media_dir,
-		'watermarks'         => $assets_dir,
+		'driver'     => $driver,
+		'source'     => $source_dir,
+		'cache'      => $cache_dir,
+		'watermarks' => $assets_dir,
 	]);
 
 	// Generate and send the image
