@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-16 21:01+0000\n"
+"PO-Revision-Date: 2017-10-09 12:04+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/he/>\n"
 "Language: he\n"
@@ -8313,7 +8313,7 @@ msgstr "ליטאית"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
-msgstr "חי"
+msgstr "חיים"
 
 #: calendar.php:231
 msgid "Living individuals"
