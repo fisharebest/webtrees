@@ -52,7 +52,7 @@ class FontAwesome extends Html {
 		'family'             => 'fa fa-users wt-icon-family',
 		'individual'         => 'fa fa-user wt-icon-individual',
 		'note'               => 'fa fa-sticky-note-o wt-icon-note',
-		'media'              => 'fa fa-file-imate-o wt-icon-media',
+		'media'              => 'fa fa-file-image-o wt-icon-media',
 		'repository'         => 'fa fa-institution wt-icon-repository',
 		'source'             => 'fa fa-file-text-o wt-icon-source',
 		'submitter'          => 'fa fa-user-o wt-icon-submitter',
