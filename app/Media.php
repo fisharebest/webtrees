@@ -425,7 +425,6 @@ class Media extends GedcomRecord {
 					'src'    => $src,
 					'srcset' => implode(',', $srcset),
 					'alt'    => strip_tags($this->getFullName()),
-					'title'  => strip_tags($this->getFullName()),
 				]) . '>';
 
 		$attributes = Html::attributes([
