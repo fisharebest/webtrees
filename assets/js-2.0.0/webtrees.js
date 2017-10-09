@@ -734,11 +734,6 @@ function activate_colorbox (config) {
 
   // Trigger an event when we click on an (any) image
   $('body').on('click', 'a.gallery', function () {
-    // Remove colorbox from hidden media (e.g. on other tabs)
-    // (not needed unless we add :visible to our selectors - which may not
-    // work on all browsers?)
-    // $.colorbox.remove();
-
     // Enable colorbox for images
     $('a[type^=image].gallery').colorbox({
       photo: true,
@@ -749,7 +744,11 @@ function activate_colorbox (config) {
       slideshowAuto: false,
       // Add wheelzoom to the displayed image
       onComplete: function () {
-        $('.cboxPhoto').wheelzoom();
+        // Disable click on image triggering next image
+        // https://github.com/jackmoore/colorbox/issues/668
+        $('.cboxPhoto').unbind('click');
+
+        wheelzoom(document.querySelectorAll('.cboxPhoto'));
       }
     });
 

@@ -51,8 +51,8 @@ define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
 define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
 define('WT_SORTABLE_JS_URL', 'packages/rubaxa-sortable-1.4.0/Sortable.min.js');
 // Note: these have been patched.
-define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-2.0.0.js');
+define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.6.4.js');
+define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-3.1.2.js');
 define('WT_CKEDITOR_BASE_URL', 'packages/ckeditor-4.5.2-custom/');
 
 // Location of our own scripts

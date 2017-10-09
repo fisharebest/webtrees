@@ -428,7 +428,13 @@ class Media extends GedcomRecord {
 					'title'  => strip_tags($this->getFullName()),
 				]) . '>';
 
-		return '<a class="gallery" href="' . Html::escape($this->imageUrl(0, 0, '')) . '">' . $image . '</a>';
+		$attributes = Html::attributes([
+			'class' => 'gallery',
+			'type'  => $this->mimeType(),
+			'href'  => $this->imageUrl(0, 0, ''),
+		]);
+
+		return '<a ' . $attributes . '>' . $image . '</a>';
 	}
 
 	/**
