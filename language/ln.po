@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-07 21:26+0000\n"
+"PO-Revision-Date: 2017-10-09 20:23+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -233,8 +233,8 @@ msgstr "%s na bakitani na bangó"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s mosáleli ayébání tɛ̂"
-msgstr[1] "%s basáleli bayébání tɛ̂"
+msgstr[0] "mosáleli %s ayébání tɛ̂"
+msgstr[1] "basáleli %s bayébání tɛ̂"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -989,27 +989,27 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr ""
+msgstr "Yenda ya mopanzí ekolakisa molɔngɔ́ o afabɛ́ ya mabótá mánsɔ na nzeté ya libótá."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "Yenda ya mopanzí ekolakisa molɔngɔ́ o afabɛ́ ya bato bánsɔ na nzeté ya libótá."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "Yenda ya mopanzí ekolakisa mabótá ma nzinganzinga na moto."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "Yenda ya mopanzí ekolakisa bozangi nsango ya libótá ya moto."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Yenda ya mopanzí ekolakisa bakitani ba moto."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
