@@ -1,13 +1,13 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?php if ($show_last_update): ?>
-	<p>
+	<p class="card-text">
 		<?= I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) ?>
 	</p>
 <?php endif ?>
 
 <div class="row">
-	<div class="col col-sm-4">
+	<div class="col-sm-4">
 		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
@@ -127,7 +127,7 @@
 		</table>
 	</div>
 
-	<div class="col col-md-8">
+	<div class="col-sm-8">
 		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
