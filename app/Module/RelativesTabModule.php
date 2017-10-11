@@ -137,9 +137,11 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				} elseif ($fact->isPendingDeletion()) {
 					$row_class .= ' old';
 				}
+				$icon = $controller->record === $person ? '<i class="icon-selected"></i>' : '';
 				?>
 					<tr class="<?= $row_class ?>">
 						<th scope="row">
+							<?= $icon ?>
 							<?= Functions::getCloseRelationshipName($controller->record, $person) ?>
 						</th>
 						<td class="border-0 p-0">
@@ -174,10 +176,12 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				} elseif ($fact->isPendingDeletion()) {
 					$row_class .= ' old';
 				}
-				?>
+				$icon = $controller->record === $person ? '<i class="icon-selected"></i>' : '';
+        ?>
 				<tr class="<?= $row_class ?>">
 					<th scope="row">
-						<?= Functions::getCloseRelationshipName($controller->record, $person) ?>
+					<?= $icon ?>
+					<?= Functions::getCloseRelationshipName($controller->record, $person) ?>
 					</th>
 					<td class="border-0 p-0">
 						<?= Theme::theme()->individualBoxLarge($person) ?>
@@ -260,9 +264,11 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 						break;
 					}
 				}
+				$icon = $controller->record === $person ? '<i class="icon-selected"></i>' : '';
 				?>
 				<tr class="<?= $row_class ?>">
 					<th scope="row">
+						<?= $icon ?>
 						<?= self::ageDifference($prev, $next, $child_number) ?>
 						<?= Functions::getCloseRelationshipName($controller->record, $person) ?>
 					</th>

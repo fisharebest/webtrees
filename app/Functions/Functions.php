@@ -249,24 +249,6 @@ class Functions {
 	 */
 	public static function getCloseRelationshipName(Individual $individual1, Individual $individual2) {
 		if ($individual1 === $individual2) {
-			$label = '<i class="icon-selected"></i> ' . self::reflexivePronoun($individual1);
-		} else {
-			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
-		}
-
-		return $label;
-	}
-
-	/**
-	 * For facts on the individual/family pages.
-	 *
-	 * @param Individual $individual1
-	 * @param Individual $individual2
-	 *
-	 * @return string
-	 */
-	public static function getAssociateRelationshipName(Individual $individual1, Individual $individual2) {
-		if ($individual1 === $individual2) {
 			$label = self::reflexivePronoun($individual1);
 		} else {
 			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));

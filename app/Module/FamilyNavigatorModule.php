@@ -123,7 +123,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		<tbody>
 			<?php
 				foreach ($family->getSpouses() as $spouse) {
-					$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
+					$icon = $controller->record === $spouse ? '<i class="icon-selected"></i>' : '';
+					$menu = new Menu($icon . Functions::getCloseRelationshipName($controller->record, $spouse));
 					$menu->addSubmenu(new Menu($this->getParents($spouse)));
 					?>
 					<tr class="text-center wt-parent wt-gender-<?= $spouse->getSex() ?>">
@@ -149,7 +150,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 				}
 
 				foreach ($family->getChildren() as $child) {
-					$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
+          $icon = $controller->record === $child ? '<i class="icon-selected"></i>' : '';
+          $menu = new Menu($icon . Functions::getCloseRelationshipName($controller->record, $child));
 					$menu->addSubmenu(new Menu($this->getFamily($child)));
 					?>
 					<tr class="text-center wt-child wt-gender-<?= $child->getSex() ?>">
