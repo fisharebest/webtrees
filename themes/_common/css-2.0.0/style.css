@@ -114,8 +114,7 @@
 	/* Grow to fill content, to allow footer to stay at bottom of page. */
 	flex: 1;
 	/* Space between the header/footer and the main content. */
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding: 1rem 0;
 }
 
 .wt-main {
@@ -185,6 +184,13 @@
 
 [dir=rtl] .wt-block-content-charts-block {
     flex-flow: row;
+}
+
+.wt-block-todo-block .table-responsive,
+.wt-block-upcoming-events-block .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
 }
 
 /*
@@ -612,6 +618,11 @@ fieldset.row > legend, fieldset.row > div {
 		font-size: 14px;
 	}
 
+	.col-sm-8,.col-sm-4 {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
 	#individual-tabs .nav-link {
 		padding: .5em;
 	}
@@ -626,7 +637,10 @@ fieldset.row > legend, fieldset.row > div {
 	.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
     align-items: left;
 	}
-
+	.wt-main-container .row {
+	flex-wrap: wrap;
+	margin: 0;
+	}
 	.wt-initials-list {
     font-size: 18px;
 	}

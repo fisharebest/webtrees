@@ -83,7 +83,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			break;
 		case 'table': // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
 			$params = [1, $num, 'rcount'];
-			$content .= '<table style="margin:auto;">
+			$content .= '<table style="margin:auto;" class="table-responsive">
 						<tr>
 						<td>' . $stats->commonGivenFemaleTable($params) . '</td>
 						<td>' . $stats->commonGivenMaleTable($params) . '</td>';
