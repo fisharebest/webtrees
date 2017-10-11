@@ -28,7 +28,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	?>
 	<div id="lifespan-chart">
 		<h4><?= $controller->subtitle ?></h4>
-		<div id="lifespan-scale">
+		<div id="lifespan-scale" class="text-nowrap">
 			<?php $controller->printTimeline() ?>
 		</div>
 		<div id="lifespan-people">
@@ -51,9 +51,12 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	return;
 }
 
-$controller
-	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-	->pageHeader();
+$ajax_url = Html::url('lifespan.php', [
+	'ged'  => $controller->tree()->getName(),
+	'ajax' => 1,
+]);
+
+$controller->pageHeader();
 
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
@@ -116,4 +119,4 @@ $controller
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-lifespans-chart"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-lifespans-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>
