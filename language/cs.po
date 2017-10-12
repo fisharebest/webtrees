@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-14 08:30+0000\n"
-"Last-Translator: Josef Moravec <josef.moravec@gmail.com>\n"
+"PO-Revision-Date: 2017-10-12 08:26+0000\n"
+"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -4090,11 +4090,11 @@ msgstr "Vytvořit nový pramen"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Vytvořit předkladatele"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Vytvořit jedinečné jméno souboru"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -7802,7 +7802,7 @@ msgstr "Zachovat objekty médií"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Ponechat otevřené"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -11667,7 +11667,7 @@ msgstr "Salt Lake City, Utah, USA"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Stejný jako nahraný soubor"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
