@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-09 20:23+0000\n"
+"PO-Revision-Date: 2017-10-12 21:19+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -863,7 +863,7 @@ msgstr ""
 
 #: login.php:257
 msgid "A new password has been requested for your username."
-msgstr ""
+msgstr "Loloba lwa bolekisi la sika losɛ́ngámí mpɔ̂ na nkómbó ya yɔ̌ ya mosáleli."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:561
@@ -3928,7 +3928,7 @@ msgstr ""
 
 #: admin_users.php:351 edituser.php:226 login.php:467
 msgid "Confirm password"
-msgstr ""
+msgstr "Kondima loloba lwa bolekisi"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
@@ -8388,7 +8388,7 @@ msgstr ""
 
 #: login.php:255
 msgid "Lost password request"
-msgstr ""
+msgstr "Bosɛ́ngi bwa loloba lwa bolekisi ebúngí"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
@@ -10535,7 +10535,7 @@ msgstr "Mbúla ya babóti"
 #: app/Module/LoginBlockModule.php:79 edituser.php:213 login.php:197
 #: login.php:259 login.php:450 login.php:530 setup.php:436
 msgid "Password"
-msgstr ""
+msgstr "Loloba lwa bolekisi"
 
 #: admin_users.php:343 edituser.php:219 login.php:461
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
@@ -10543,7 +10543,7 @@ msgstr ""
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
-msgstr ""
+msgstr "ndoba ya bolekisi isengelí kozala na minkomá mokɛ́ kolela 6."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
@@ -11598,7 +11598,7 @@ msgstr "Republíki ya Kongó"
 
 #: app/Module/LoginBlockModule.php:99 login.php:222
 msgid "Request a new password"
-msgstr ""
+msgstr "Sɛ́ngá loloba lwa bolekisi la sika"
 
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
@@ -13829,7 +13829,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "loloba ya bolekisi losengelí kozala na minkomá mokɛ́ kolela 6."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -13838,7 +13838,7 @@ msgstr ""
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
-msgstr ""
+msgstr "Ndoba ya bolekisi ikokání tɛ́."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13967,7 +13967,7 @@ msgstr ""
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Nkómbó ya mosáleli tǒ loloba lwa bolekisi ezalí mabé."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
