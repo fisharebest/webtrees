@@ -1493,7 +1493,7 @@ class FunctionsPrintLists {
 		}
 
 		if (!empty($filtered_events)) {
-			$html .= '<table id="' . $table_id . '" class="table-responsive width100">';
+			$html .= '<table id="' . $table_id . '" class="width100">';
 			$html .= '<thead><tr>';
 			$html .= '<th>' . I18N::translate('Record') . '</th>';
 			$html .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';

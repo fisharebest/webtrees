@@ -172,6 +172,10 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
+.wt-block-content {
+	overflow: auto;
+}
+
  /* my page chart enhancements */
 .wt-block-content-charts {
 	display: flex;
@@ -187,14 +191,9 @@
     flex-flow: row;
 }
 
-.wt-block-todo-block .table-responsive,
-.wt-block-upcoming-events-block .table-responsive,
-.wt-block-content-todays-events .table-responsive,
-.wt-block-content-yahrzeit .table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-}
+
+
+
 
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.

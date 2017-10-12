@@ -92,7 +92,7 @@ class Datatables {
 	 */
 	public static function givenNameTableAttributes() {
 		return Html::attributes([
-			'class'          => 'table table-bordered table-sm table-responsive datatables table-given-name',
+			'class'          => 'table table-bordered table-sm datatables table-given-name',
 			//'data-columns'   => '[{ type: "text" }, { type: "num" }]',
 			'data-columns'   => '[null, null]',
 			'data-info'      => 'false',

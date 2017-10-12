@@ -291,7 +291,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 				});
 			');
 
-		$html .= '<table id="' . $table_id . '" class="table-responsive width100">';
+		$html .= '<table id="' . $table_id . '" class="width100">';
 		$html .= '<thead><tr>';
 		$html .= '<th></th>';
 		$html .= '<th>' . I18N::translate('Record') . '</th>';

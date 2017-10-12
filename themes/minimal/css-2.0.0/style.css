@@ -1115,10 +1115,6 @@ table {
 	overflow: auto;
 }
 
-.normal_inner_block {
-	overflow: auto;
-}
-
 .block {
 	background-color: #fff;
 	color: #555;
