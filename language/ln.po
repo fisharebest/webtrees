@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-12 21:19+0000\n"
+"PO-Revision-Date: 2017-10-13 07:32+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -1853,7 +1853,7 @@ msgstr "Bokɔ́tisi bɔ́nsɔ"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "Bbikelá bínsɔ bya ebómbelo"
+msgstr "Bikelá bínsɔ bya ebómbelo"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
@@ -19229,7 +19229,7 @@ msgstr "elembetele ya yambo"
 
 #: statistics.php:625
 msgid "quarters after marriage"
-msgstr "mobú yɔ́kɔ́ ya ínei na nsima ya libála"
+msgstr "yɔ́kɔ́ ya ínei ya mobú na nsima ya libála"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
