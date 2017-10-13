@@ -20,9 +20,8 @@ use Fisharebest\Webtrees\Controller\FamilyBookController;
 require 'includes/session.php';
 
 $controller = new FamilyBookController;
-$controller
-	->restrictAccess(Module::isActiveChart($controller->tree(), 'family_book_chart'))
-	->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Family book of %s', $controller->root->getFullName()));
+$controller->restrictAccess(Module::isActiveChart($controller->tree(), 'family_book_chart'))->setPageTitle(/* I18N: %s is an individual’s name */
+	I18N::translate('Family book of %s', $controller->root->getFullName()));
 
 // Only generate the content for interactive users (not search robots).
 if (Filter::getBool('ajax') && Session::has('initiated')) {
@@ -32,9 +31,12 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 }
 
 $ajax_url = Html::url('familybook.php', [
-	'rootid' => $controller->root->getXref(),
-	'ged'    => $controller->root->getTree()->getName(),
-	'ajax'   => 1,
+	'rootid'      => $controller->root->getXref(),
+	'ged'         => $controller->root->getTree()->getName(),
+	'descent'     => $controller->descent,
+	'generations' => $controller->generations,
+	'show_spouse' => $controller->show_spouse,
+	'ajax'        => 1,
 ]);
 
 $controller->pageHeader();
