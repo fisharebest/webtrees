@@ -54,7 +54,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 
 $ajax_url = Html::url('descendancy.php', [
 	'ged'         => $controller->tree()->getName(),
-	'root_id'     => $controller->root->getXref(),
+	'rootid'      => $controller->root->getXref(),
 	'chart_style' => $controller->chart_style,
 	'generations' => $controller->generations,
 	'ajax'        => 1,
