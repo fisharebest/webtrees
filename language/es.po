@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-16 08:05+0000\n"
+"PO-Revision-Date: 2017-10-13 08:42+0000\n"
 "Last-Translator: Alejandro Cavazos <alexcavazos67@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
 "Language: es\n"
@@ -56,7 +56,7 @@ msgstr "#%s"
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s contiene un enlace %3$s a %4$s."
+msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -86,7 +86,7 @@ msgstr "%1$s KB fueron descargados en %2$s segundos."
 #: admin_site_merge.php:39 admin_site_merge.php:43 admin_trees_check.php:165
 #, php-format
 msgid "%1$s does not exist."
-msgstr "El %1$s no existe."
+msgstr "%1$s no existe."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:158
@@ -112,16 +112,16 @@ msgstr[1] "%1$s archivos se extrajeron en %2$s segundos."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s persona mostrada de un total normal de %2$s, perteneciente a %3$s generaciones."
-msgstr[1] "%1$s personas mostradas de un total normal de %2$s, pertenecientes a %3$s generaciones."
+msgstr[0] "%1$s Individuo mostrado de un total normal de %2$s, de %3$s generaciones."
+msgstr[1] "%1$s individuos mostrados de un total normal de %2$s, de %3$s generaciones."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:556
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s persona no tiene coordenadas de mapa para el lugar de nacimiento: %2$s."
-msgstr[1] "%1$s personas no tienen coordenadas de mapa para el lugar de nacimiento: %2$s."
+msgstr[0] "%1$s individuo no tiene coordenadas de mapa para el lugar de nacimiento: %2$s."
+msgstr[1] "%1$s individuos no tienen coordenadas de mapa para el lugar de nacimiento: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:186
@@ -3704,7 +3704,7 @@ msgstr "Circuncidador"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Cita"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4022,11 +4022,11 @@ msgstr "Crear"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Crear una familia"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Crear una familia usando individuos existentes"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4058,11 +4058,11 @@ msgstr "Crear una nueva fuente"
 
 #: app/Functions/FunctionsEdit.php:774 app/Functions/FunctionsEdit.php:2007
 msgid "Create a submitter"
-msgstr ""
+msgstr "Crear un remitente"
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Crear un nombre de archivo único"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -6199,7 +6199,7 @@ msgstr "Buscar un carácter especial"
 
 #: relationship.php:101
 msgid "Find all possible relationships"
-msgstr "Encuentra todas las relaciones posibles"
+msgstr "Buscar todas las relaciones posibles"
 
 #: app/Module/CensusAssistantModule.php:323
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6208,7 +6208,7 @@ msgstr "Buscar una persona"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:86
 msgid "Find any relationship"
-msgstr "Hallar cualquier relación"
+msgstr "Buscar cualquier relación"
 
 #: admin_trees_duplicates.php:28 admin_trees_manage.php:459
 msgid "Find duplicates"
@@ -6221,7 +6221,7 @@ msgstr "Buscar otras relaciones"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:84
 #: relationship.php:86
 msgid "Find relationships via ancestors"
-msgstr "Hallar realción por medio de ancestros"
+msgstr "Buscar relaciones por ancestros"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
@@ -6229,7 +6229,7 @@ msgstr "Encuentra las relaciones más cercanas"
 
 #: admin_trees_manage.php:499 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
-msgstr "Hallar individuos no relacionados"
+msgstr "Buscar individuos sin relaciones"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
@@ -7317,7 +7317,7 @@ msgstr "En este año…"
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "Incluir asociados"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7770,7 +7770,7 @@ msgstr "Mantenga objetos multimedia"
 
 #: app/Functions/FunctionsEdit.php:2047
 msgid "Keep open"
-msgstr ""
+msgstr "Mantener abierto"
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:1855
@@ -8252,7 +8252,7 @@ msgstr "Matrimonio más duradero"
 #. I18N: Two axes of a graph
 #: statistics.php:546 statisticsplot.php:1048
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Longevidad versus tiempo"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:739 app/Functions/FunctionsPrint.php:429
@@ -11633,7 +11633,7 @@ msgstr "Salt Lake City, Utah, Estados Unidos"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Igual que el archivo subido"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -13100,7 +13100,7 @@ msgstr "Tradición de apellidos"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Apellidos"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -13865,7 +13865,7 @@ msgstr "termidor"
 #: admin_trees_unconnected.php:91
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "Estos grupos de individuos no están relacionados con %s."
+msgstr "Este grupo de individuos no está relacionado con %s."
 
 #: admin.php:580
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15095,7 +15095,7 @@ msgstr "Utilizar una contraseña"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Usar sendmail para enviar mensajes"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018
