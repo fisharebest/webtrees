@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-06-16 08:05+0000\n"
+"PO-Revision-Date: 2017-10-13 08:30+0000\n"
 "Last-Translator: Alejandro Cavazos <alexcavazos67@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/es/>\n"
 "Language: es\n"
@@ -70,7 +70,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s contiene un enlace %3$s a %4$s."
+msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -100,7 +100,7 @@ msgstr "%1$s KB fueron descargados en %2$s segundos."
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "El %1$s no existe."
+msgstr "%1$s no existe."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -126,16 +126,16 @@ msgstr[1] "%1$s archivos se extrajeron en %2$s segundos."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s persona mostrada de un total normal de %2$s, perteneciente a %3$s generaciones."
-msgstr[1] "%1$s personas mostradas de un total normal de %2$s, pertenecientes a %3$s generaciones."
+msgstr[0] "%1$s Individuo mostrado de un total normal de %2$s, de %3$s generaciones."
+msgstr[1] "%1$s individuos mostrados de un total normal de %2$s, de %3$s generaciones."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s persona no tiene coordenadas de mapa para el lugar de nacimiento: %2$s."
-msgstr[1] "%1$s personas no tienen coordenadas de mapa para el lugar de nacimiento: %2$s."
+msgstr[0] "%1$s individuo no tiene coordenadas de mapa para el lugar de nacimiento: %2$s."
+msgstr[1] "%1$s individuos no tienen coordenadas de mapa para el lugar de nacimiento: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -6316,7 +6316,7 @@ msgstr "Buscar un carácter especial"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr "Encuentra todas las relaciones posibles"
+msgstr "Buscar todas las relaciones posibles"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6327,7 +6327,7 @@ msgstr "Buscar una persona"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Buscar cualquier relación"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6340,7 +6340,7 @@ msgstr "Buscar otras relaciones"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Buscar relaciones por ancestros"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6348,7 +6348,7 @@ msgstr "Encuentra las relaciones más cercanas"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Buscar individuos sin relaciones"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -14111,7 +14111,7 @@ msgstr "termidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Este grupo de individuos no está relacionado con %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15363,7 +15363,7 @@ msgstr "Utilizar una contraseña"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Usar sendmail para enviar mensajes"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
