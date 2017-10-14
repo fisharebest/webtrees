@@ -109,7 +109,8 @@ class FontAwesome extends Html {
 	 * @return string
 	 */
 	public static function linkIcon($icon, $title, $attributes = []) {
-		$attributes['aria-label'] = strip_tags($title);
+		$title = strip_tags($title);
+		$attributes['aria-label'] = $title;
 
 		return '<a ' . self::attributes($attributes) . '>' . self::decorativeIcon($icon, ['title' => $title]) . '</a>';
 	}
