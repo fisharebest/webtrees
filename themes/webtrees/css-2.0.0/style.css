@@ -2488,39 +2488,6 @@ div.faq_body {
 	float: right;
 }
 
-/* ======== Album tab =========*/
-.album-list {
-	list-style-type: none;
-}
-
-.album-list-item {
-	display: inline-block;
-	text-align: center;
-	padding: 0 12px;
-	height: 112px;
-	width: 120px;
-}
-
-.album-list-item a img {
-	max-height: 78px;
-	max-width: 100px;
-	height: auto;
-	width: auto;
-}
-
-.album-list-item a:hover div {
-	outline: thin solid #bdb071;
-}
-
-.album-image {
-	margin: auto;
-}
-
-.album-title {
-	padding-top: 4px;
-	width: 100%;
-}
-
 /* === jQuery.datatable styling general over-rides === */
 .odd {
 	background-color: #e7eef3;
