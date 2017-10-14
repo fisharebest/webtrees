@@ -919,7 +919,7 @@ case 'add_child_to_individual':
 		->setPageTitle($person->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family'))
 		->pageHeader();
 
-	print_indi_form('add_child_to_individual_action', $person, null, null, 'CHIL', $person->getSex());
+	print_indi_form('add_child_to_individual_action', $person, null, null, 'CHIL', 'U');
 	break;
 
 case 'add_child_to_individual_action':
