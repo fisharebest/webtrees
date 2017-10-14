@@ -1439,9 +1439,9 @@ case 'linkspouse':
 			</div>
 		</div>
 
-		<?php FunctionsEdit::addSimpleTag('0 MARR Y') ?>
-		<?php FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
-		<?php FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag('0 MARR Y') ?>
+		<?= FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
 
 		<div class="row form-group">
 			<div class="col-sm-9 offset-sm-3">
@@ -1606,11 +1606,9 @@ case 'addnewsource':
 							?>
 						</select></td>
 				</tr>
-				<?php
-				FunctionsEdit::addSimpleTag('0 DATE', 'EVEN');
-				FunctionsEdit::addSimpleTag('0 PLAC', 'EVEN');
-				FunctionsEdit::addSimpleTag('0 AGNC');
-				?>
+				<?= FunctionsEdit::addSimpleTag('0 DATE', 'EVEN') ?>
+				<?= FunctionsEdit::addSimpleTag('0 PLAC', 'EVEN') ?>
+				<?= FunctionsEdit::addSimpleTag('0 AGNC') ?>
 			</table>
 		</div>
 
@@ -2960,13 +2958,13 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	case 'add_child_to_family_action':
 	case 'add_child_to_individual_action':
 		// When adding a new child, specify the pedigree
-		FunctionsEdit::addSimpleTag('0 PEDI');
+		echo FunctionsEdit::addSimpleTag('0 PEDI');
 		break;
 	}
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
 		}
 	}
 
@@ -2989,18 +2987,18 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// Edit existing tags, grouped together
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
-				FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+				echo FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 				if ($tag === '_MARNM') {
 					preg_match_all('/\/([^\/]*)\//', $value, $matches);
-					FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+					echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
 				}
 			}
 		}
 		// Allow a new tag to be entered
 		if (!array_key_exists($tag, $name_fields)) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 			if ($tag === '_MARNM') {
-				FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
+				echo FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
 			}
 		}
 	}
@@ -3008,10 +3006,10 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// Third - new/existing custom name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) === 0) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
 			if ($tag === '_MARNM') {
 				preg_match_all('/\/([^\/]*)\//', $value, $matches);
-				FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+				echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
 			}
 		}
 	}
@@ -3038,7 +3036,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					$text .= "\n" . $cmatch[1];
 					$i++;
 				}
-				FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
+				echo FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
 			}
 			$tags[] = $type;
 			$i++;
@@ -3057,17 +3055,17 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		echo '</table><br><table class="table wt-facts-table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
-			FunctionsEdit::addSimpleTag('0 SEX M');
+			echo FunctionsEdit::addSimpleTag('0 SEX M');
 		} elseif ($famtag === 'WIFE' || $gender === 'F') {
-			FunctionsEdit::addSimpleTag('0 SEX F');
+			echo FunctionsEdit::addSimpleTag('0 SEX F');
 		} else {
-			FunctionsEdit::addSimpleTag('0 SEX U');
+			echo FunctionsEdit::addSimpleTag('0 SEX U');
 		}
 		$bdm = 'BD';
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
@@ -3076,14 +3074,14 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			$bdm .= 'M';
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}

@@ -283,7 +283,7 @@ if ($gedfile == 'FILE') {
 $isExternal = Functions::isFileExternal($gedfile);
 if ($gedfile === 'FILE') {
 	if (Auth::isManager($WT_TREE)) {
-		FunctionsEdit::addSimpleTag(
+		echo FunctionsEdit::addSimpleTag(
 			'1 FILE',
 			'',
 			I18N::translate('Filename on server'),
@@ -370,23 +370,7 @@ if (preg_match('/\n(2 FORM .*)/', $gedrec, $match)) {
 } else {
 	$gedform = '2 FORM';
 }
-$formid = FunctionsEdit::addSimpleTag($gedform);
-
-// automatically set the format field from the filename
-$controller->addInlineJavascript('
-	function updateFormat(filename) {
-		var extsearch=/\.([a-zA-Z]{3,4})$/;
-		if (extsearch.exec(filename)) {
-			ext = RegExp.$1.toLowerCase();
-			if (ext=="jpg") ext="jpeg";
-			if (ext=="tif") ext="tiff";
-		} else {
-			ext = "";
-		}
-		formfield = document.getElementById("' . $formid . '");
-		formfield.value = ext;
-	}
-');
+echo FunctionsEdit::addSimpleTag($gedform);
 
 // 1 FILE / 2 FORM / 3 TYPE
 if (preg_match('/\n(3 TYPE .*)/', $gedrec, $match)) {
@@ -394,7 +378,7 @@ if (preg_match('/\n(3 TYPE .*)/', $gedrec, $match)) {
 } else {
 	$gedtype = '3 TYPE photo'; // default to ‘Photo’
 }
-FunctionsEdit::addSimpleTag($gedtype);
+echo FunctionsEdit::addSimpleTag($gedtype);
 
 // 1 FILE / 2 TITL
 if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
@@ -402,7 +386,7 @@ if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
 } else {
 	$gedtitl = '2 TITL';
 }
-FunctionsEdit::addSimpleTag($gedtitl);
+echo FunctionsEdit::addSimpleTag($gedtitl);
 
 // 1 FILE / 2 TITL / 3 _HEB
 if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) {
@@ -411,7 +395,7 @@ if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) {
 	} else {
 		$gedtitl = '3 _HEB';
 	}
-	FunctionsEdit::addSimpleTag($gedtitl);
+	echo FunctionsEdit::addSimpleTag($gedtitl);
 }
 
 // 1 FILE / 2 TITL / 3 ROMN
@@ -421,7 +405,7 @@ if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) {
 	} else {
 		$gedtitl = '3 ROMN';
 	}
-	FunctionsEdit::addSimpleTag($gedtitl);
+	echo FunctionsEdit::addSimpleTag($gedtitl);
 }
 
 // 1 _PRIM
@@ -430,7 +414,7 @@ if (preg_match('/\n(1 _PRIM .*)/', $gedrec, $match)) {
 } else {
 	$gedprim = '1 _PRIM';
 }
-FunctionsEdit::addSimpleTag($gedprim);
+echo FunctionsEdit::addSimpleTag($gedprim);
 
 //-- print out editing fields for any other data in the media record
 $sourceLevel = 0;
@@ -456,11 +440,11 @@ if (!empty($gedrec)) {
 			}
 			if ($sourceSOUR !== '' && $subLevel <= $sourceLevel) {
 				// Get rid of all saved Source data
-				FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
-				FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
-				FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-				FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
-				FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
+				echo FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
+				echo FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+				echo FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+				echo FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
+				echo FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
 
@@ -497,18 +481,18 @@ if (!empty($gedrec)) {
 
 			// Output anything that isn’t part of a source reference
 			if (!empty($fact) && $fact !== 'CONC' && $fact !== 'CONT' && $fact !== 'DATA') {
-				FunctionsEdit::addSimpleTag($subLevel . ' ' . $fact . ' ' . $event);
+				echo FunctionsEdit::addSimpleTag($subLevel . ' ' . $fact . ' ' . $event);
 			}
 		}
 	}
 
 	if ($sourceSOUR !== '') {
 		// Get rid of all saved Source data
-		FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
-		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
-		FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-		FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
-		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
+		echo FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
+		echo FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+		echo FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+		echo FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
+		echo FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 echo '</table>';
