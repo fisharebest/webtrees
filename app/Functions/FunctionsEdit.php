@@ -51,7 +51,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
@@ -994,48 +993,44 @@ class FunctionsEdit {
 
 		switch ($tag) {
 		case 'SOUR':
-			echo '<h3>', I18N::translate('Add a source citation'), '</h3>';
-			echo self::addSimpleTag($level . ' SOUR @');
-			echo self::addSimpleTag(($level + 1) . ' PAGE');
-			echo self::addSimpleTag(($level + 1) . ' DATA');
-			echo self::addSimpleTag(($level + 2) . ' TEXT');
-			if ($WT_TREE->getPreference('FULL_SOURCES')) {
-				echo self::addSimpleTag(($level + 2) . ' DATE', '', GedcomTag::getLabel('DATA:DATE'));
-				echo self::addSimpleTag(($level + 1) . ' QUAY');
-			}
-			echo self::addSimpleTag(($level + 1) . ' OBJE');
-			echo self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
+			echo View::make('cards/add-source-citation', [
+				'level'          => $level,
+				'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
+			]);
 			break;
 
 		case 'ASSO':
 		case 'ASSO2':
-			echo '<h3>', I18N::translate('Add an associate'), '</h3>';
-			echo self::addSimpleTag($level . ' _ASSO @');
-			echo self::addSimpleTag(($level + 1) . ' RELA');
-			echo self::addSimpleTag(($level + 1) . ' NOTE');
-			echo self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
+			echo View::make('cards/add-associate', [
+				'level' => $level,
+			]);
 			break;
 
 		case 'NOTE':
-			echo '<h3>', I18N::translate('Add a note'), '</h3>';
-			echo self::addSimpleTag($level . ' NOTE');
+			echo View::make('cards/add-note', [
+				'level' => $level,
+			]);
 			break;
 
 		case 'SHARED_NOTE':
-			echo '<h3>', I18N::translate('Add a shared note'), '</h3>';
-			echo self::addSimpleTag($level . ' SHARED_NOTE', $parent_tag);
+			echo View::make('cards/add-shared-note', [
+				'level'      => $level,
+				'parent_tag' => $parent_tag,
+			]);
 			break;
 
 		case 'OBJE':
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				echo '<h3>', I18N::translate('Add a media object'), '</h3>';
-				echo self::addSimpleTag($level . ' OBJE');
+				echo View::make('cards/add-media-object', [
+					'level' => $level,
+				]);
 			}
 			break;
 
 		case 'RESN':
-			echo '<h3>', I18N::translate('Add a restriction'), '</h3>';
-			echo self::addSimpleTag($level . ' RESN');
+			echo View::make('cards/add-restriction', [
+				'level' => $level,
+			]);
 			break;
 		}
 	}
