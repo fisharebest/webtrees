@@ -1042,8 +1042,8 @@ a:hover .nameZoom {
 	color: #f00;
 }
 
-.rela,
-.histo {
+.wt-relation-fact,
+.wt-historic-fact {
 	opacity: 0.8;
 }
 

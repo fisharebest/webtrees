@@ -113,17 +113,17 @@ class FunctionsPrintFacts {
 
 		// Event of close relative
 		if (preg_match('/^_[A-Z_]{3,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
-			$styleadd = trim($styleadd . ' rela');
+			$styleadd = trim($styleadd . ' wt-relation-fact collapse');
 		}
 
 		// Event of close associates
 		if ($fact->getFactId() == 'asso') {
-			$styleadd = trim($styleadd . ' rela');
+			$styleadd = trim($styleadd . ' wt-relation-fact collapse');
 		}
 
 		// historical facts
 		if ($fact->getFactId() == 'histo') {
-			$styleadd = trim($styleadd . ' histo');
+			$styleadd = trim($styleadd . ' wt-historic-fact collapse');
 		}
 
 		// Does this fact have a type?
