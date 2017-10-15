@@ -3107,27 +3107,25 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		<div class="col-sm-9 offset-sm-3">
 			<button class="btn btn-primary" type="submit">
 				<?= FontAwesome::decorativeIcon('save') ?>
-				<?= /* I18N: A button label. */
-				I18N::translate('save') ?>
+				<?= /* I18N: A button label. */ I18N::translate('save') ?>
 			</button>
 			<?php if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)): ?>
 
 				<button class="btn btn-primary" type="submit" name="goto" value="<?= $xref ?>">
-					<?= /* I18N: A button label. */
-					I18N::translate('go to new individual') ?>
+					<?= FontAwesome::decorativeIcon('save') ?>
+					<?= /* I18N: A button label. */ I18N::translate('go to new individual') ?>
 				</button>
-			<?php endif; ?>
-			<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+			<?php endif ?>
+			<a class="btn btn-secondary" href="<?= Html::escape($person ? $person->getRawUrl() : $family->getRawUrl()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
-				<?= /* I18N: A button label. */
-				I18N::translate('cancel') ?>
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
 			<?php if ($name_fact !== null && (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD'))): ?>
 				<a class="btn btn-link"
 				   href="edit_interface.php?action=editrawfact&amp;xref=<?= $xref ?>&amp;fact_id=<?= $name_fact->getFactId() ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
-			<?php endif; ?>
+			<?php endif ?>
 		</div>
 	</div>
 	</form>
