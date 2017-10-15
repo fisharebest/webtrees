@@ -139,7 +139,7 @@ class Datatables {
 		return Html::attributes([
 			'class'          => 'table table-bordered table-sm table-responsive datatables table-source',
 			//'data-columns'   => '[{ type: "text" }, { type: "text" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-			'data-columns'   => '[null, null, null, null, null, null, null, null]',
+			'data-columns'   => '[null, null, null, null, null, null, null]',
 			'data-state-save' => 'true',
 		] + self::languageAttributes());
 	}
