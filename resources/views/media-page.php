@@ -2,6 +2,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintLists; ?>
+<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -59,7 +60,7 @@
 									<?= I18N::translate('Source') ?>
 								</th>
 								<td>
-									<a href="edit_interface.php?action=add&amp;ged=<?= $media->getTree()->getNameHtml() ?>&amp;xref=<?= $media->getXref() ?>&amp;fact=SOUR">
+									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SOUR'])) ?>">
 										<?= I18N::translate('Add a source citation') ?>
 									</a>
 								</td>
@@ -69,7 +70,7 @@
 									<?= I18N::translate('Shared note') ?>
 								</th>
 								<td>
-									<a href="edit_interface.php?action=add&amp;ged=<?= $media->getTree()->getNameHtml() ?>&amp;xref=<?= $media->getXref() ?>&amp;fact=SHARED_NOTE">
+									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
 										<?= I18N::translate('Add a shared note') ?>
 									</a>
 								</td>
@@ -79,7 +80,7 @@
 									<?= I18N::translate('Restriction') ?>
 								</th>
 								<td>
-									<a href="edit_interface.php?action=add&amp;ged=<?= $media->getTree()->getNameHtml() ?>&amp;xref=<?= $media->getXref() ?>&amp;fact=RESN">
+									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'RESN'])) ?>">
 										<?= I18N::translate('Add a restriction') ?>
 									</a>
 								</td>
