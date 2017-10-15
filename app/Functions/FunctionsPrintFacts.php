@@ -166,7 +166,7 @@ class FunctionsPrintFacts {
 		}
 
 		echo '<tr class="', $styleadd, '">';
-		echo '<th scope="rpw">';
+		echo '<th scope="row">';
 
 		if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 			echo Theme::theme()->icon($fact), ' ';
@@ -1007,9 +1007,9 @@ class FunctionsPrintFacts {
 			}
 
 			if ($level >= 2) {
-				echo '<tr class="row_note2"><td class="descriptionbox rela ', $styleadd, ' width20">';
+				echo '<tr class="row_note2"><th scope="row" class="rela ', $styleadd, ' width20">';
 			} else {
-				echo '<tr><td class="descriptionbox ', $styleadd, ' width20">';
+				echo '<tr><th scope="row" class="', $styleadd, ' width20">';
 			}
 			if ($can_edit) {
 				if ($level < 2) {
@@ -1057,7 +1057,7 @@ class FunctionsPrintFacts {
 					}
 				}
 			}
-			echo '</td>';
+			echo '</th>';
 			if ($note) {
 				// Note objects
 				if (Module::getModuleByName('GEDFact_assistant')) {
@@ -1137,16 +1137,12 @@ class FunctionsPrintFacts {
 			$media = Media::getInstance($xref, $fact->getParent()->getTree());
 			// Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
 			if (!$media || $media->canShow()) {
+				echo '<tr>';
+				echo '<th scope="row" class="';
 				if ($level > 1) {
-					echo '<tr class="row_obje2">';
-				} else {
-					echo '<tr>';
+					echo 'rela ';
 				}
-				echo '<td class="descriptionbox';
-				if ($level > 1) {
-					echo ' rela';
-				}
-				echo ' ', $styleadd, ' width20">';
+				echo $styleadd, '">';
 				preg_match("/^\d (\w*)/", $factrec, $factname);
 				$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 				$factwords = explode(' ', $factlines[0]); // 1 BIRT Y
@@ -1169,8 +1165,8 @@ class FunctionsPrintFacts {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-				echo '</td>';
-				echo '<td class="optionbox ', $styleadd, ' wrap">';
+				echo '</th>';
+				echo '<td class="', $styleadd, '">';
 				if ($media) {
 					echo '<span class="field">';
 					echo $media->displayImage(100, 100, 'contain', []);

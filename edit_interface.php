@@ -1587,9 +1587,13 @@ case 'addnewsource':
 		<div id="events" style="display: none;">
 			<table class="table wt-facts-table">
 				<tr>
-					<td
-						class="descriptionbox wrap width25"><?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?></th>
-					<td><select name="EVEN[]" multiple="multiple" size="5">
+					<th scope="row">
+						<label for="source-events">
+							<?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?>
+						</label>
+					</th>
+					<td>
+						<select id="source-events" name="EVEN[]" multiple="multiple" size="5">
 							<?php
 							$parts = explode(',', $controller->tree()->getPreference('INDI_FACTS_ADD'));
 							foreach ($parts as $key) {
