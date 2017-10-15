@@ -621,7 +621,7 @@ case 'media-edit':
 				<?= I18N::translate('Title') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Html::escape($TITL) ?>" required>
+				<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Html::escape($TITL) ?>">
 			</div>
 		</div>
 
