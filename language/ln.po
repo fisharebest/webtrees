@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-13 07:32+0000\n"
+"PO-Revision-Date: 2017-10-15 17:28+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -859,7 +859,7 @@ msgstr ""
 #: login.php:264
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr ""
+msgstr "Loloba lwa bolekisi lokelamí mpé lotíndámí epái ya %s. Okokí kobóngola loloba lwa bolekisi loye na sima ya boyíngeli bwa yɔ̌."
 
 #: login.php:257
 msgid "A new password has been requested for your username."
@@ -3748,7 +3748,7 @@ msgstr "Batisimo ya ndeko mwǎsí"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a son"
-msgstr ""
+msgstr "Batisimo ya mwǎna mobáli"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
@@ -3809,7 +3809,7 @@ msgstr "Kokɔ́mbɔ etúka ya bipɛ́sɛli"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "Ekɔ́mbwamí kasi esilí naíno tɛ́"
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:37
@@ -3873,11 +3873,11 @@ msgstr ""
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "Ndimbola"
 
 #: login.php:326 login.php:348 login.php:483
 msgid "Comments"
-msgstr ""
+msgstr "Ndimbola"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
@@ -3924,7 +3924,7 @@ msgstr "Kominiola kásá-kásá ya GEDCOM"
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "Bokangisi"
 
 #: admin_users.php:351 edituser.php:226 login.php:467
 msgid "Confirm password"
@@ -3933,7 +3933,7 @@ msgstr "Kondima loloba lwa bolekisi"
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "Bondimi"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -3941,11 +3941,11 @@ msgstr "Bokangisi na esálela mokaboli ya database"
 
 #: admin_trees_config.php:847
 msgid "Contact information"
-msgstr ""
+msgstr "Nsango mpɔ̂ na kokomela"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "Loléngé la kokomela"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
@@ -4114,7 +4114,7 @@ msgstr "Kokela nkomá ya kokabolama"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "Kokela nkomá ya kokabola na bosáleli bosungi bwa census"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
 #: edit_interface.php:1279
@@ -6473,7 +6473,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr ""
+msgstr "Bobósani loloba lwa bolekisi?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -10543,7 +10543,7 @@ msgstr ""
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
-msgstr "ndoba ya bolekisi isengelí kozala na minkomá mokɛ́ kolela 6."
+msgstr "Ndoba ya bolekisi isengelí kozala na minkomá mokɛ́ kolela 6."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
@@ -13829,7 +13829,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr "loloba ya bolekisi losengelí kozala na minkomá mokɛ́ kolela 6."
+msgstr "Loloba ya bolekisi losengélí kozala na minkomá mokɛ́ kolela 6."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -15364,7 +15364,7 @@ msgstr "Kosálela ebandela ya masapo mobimba"
 #. I18N: A configuration setting
 #: admin_site_config.php:376
 msgid "Use password"
-msgstr ""
+msgstr "Kosálela loloba lwa bolekisi"
 
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
@@ -16111,7 +16111,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:1153
 msgid "You need to sign in again, using your PhpGedView username and password."
-msgstr ""
+msgstr "Osengéli koyíngela lisúsu, na bosáleli nkómbó ya mosáleli mpé loloba lwa bolekisi ya PhpGedView."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:458
@@ -16213,7 +16213,7 @@ msgstr "Zambia"
 #. I18N: Name of a country or state
 #: app/Stats.php:6926
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: app/Module/ClippingsCartModule.php:368
 #: app/Module/ClippingsCartModule.php:755
@@ -16641,7 +16641,7 @@ msgstr ""
 
 #: statistics.php:718
 msgid "date periods"
-msgstr "dáti ya eleko"
+msgstr "bileko bya dáti"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
 #: edit_interface.php:2000
@@ -16675,7 +16675,7 @@ msgstr "mamá wa mwǎna sɛmɛ́ki mwǎsí"
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "Babóti ba mwǎna sɛmɛ́ki mwǎsí"
+msgstr "babóti ba mwǎna sɛmɛ́ki mwǎsí"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -16732,7 +16732,7 @@ msgstr "monyɛlɛ"
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr "Bɔngisá"
+msgstr "bɔngisá"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -16779,19 +16779,19 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi na mɔ̌kɔ́"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "esíká ya bofándi bwa moto"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "esíká ya bofándi bwa moto"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "esíká ya bofándi bwa moto"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -16801,7 +16801,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr "Mobáli wa kala"
+msgstr "mobáli wa kala"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -16819,7 +16819,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:739
 msgid "ex-spouse"
-msgstr "Molóngani mwa kala"
+msgstr "molóngani mwa kala"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
@@ -16827,7 +16827,7 @@ msgstr "mwǎsí wa kala"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr "Bikelá"
+msgstr "bikelá"
 
 #: app/Functions/Functions.php:689
 msgid "father"
@@ -16836,17 +16836,17 @@ msgstr "tatá"
 #: app/Functions/Functions.php:860
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr "Tatá bokiló"
+msgstr "tatá bokiló"
 
 #: app/Functions/Functions.php:940
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr "Tatá bokiló"
+msgstr "tatá bokiló"
 
 #: app/Functions/Functions.php:958
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr "Tatá bokiló"
+msgstr "tatá bokiló"
 
 #: app/Functions/Functions.php:583
 msgid "fifteenth cousin"
@@ -18751,24 +18751,24 @@ msgstr "mobáli"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
 msgid "immigration name"
-msgstr ""
+msgstr "nkómbó ya bokɔ́ti mbóka"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "nkómbó ya bokɔ́ti mbóka"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "nkómbó ya bokɔ́ti mbóka"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4044
 msgid "import"
-msgstr "Yéisá"
+msgstr "yéisá"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
