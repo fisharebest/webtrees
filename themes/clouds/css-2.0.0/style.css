@@ -594,11 +594,11 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-indi-addname::before {
-	content: url(menu/add-name.png);
+	content: url(menu/edit-indi.png);
 }
 
 .menu-indi-editsex::before {
-	content: url(menu/edit-sex.png);
+	content: url(menu/edit-indi.png);
 }
 
 .menu-indi-del::before {
@@ -674,7 +674,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-repo-edit::before {
-	content: url(menu/edit-repository.png);
+	content: url(menu/edit-repo.png);
 }
 
 .menu-repo-del::before {
@@ -694,7 +694,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-sour-edit::before {
-	content: url(menu/edit-source.png);
+	content: url(menu/edit-sour.png);
 }
 
 .menu-sour-del::before {
