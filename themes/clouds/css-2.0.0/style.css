@@ -566,11 +566,11 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-fam-change::before {
-	content: url(menu/fam-change.png);
+	content: url(menu/edit-fam.png);
 }
 
 .menu-fam-addchil::before {
-	content: url(menu/fam-addchil.png);
+	content: url(menu/edit-fam.png);
 }
 
 .menu-fam-orderchil::before {
