@@ -13,20 +13,13 @@ namespace Symfony\Polyfill\Php72;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
+ * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @internal
  */
 final class Php72
 {
-    public static function stream_isatty($stream)
-    {
-        return function_exists('posix_isatty') && @posix_isatty($stream);
-    }
-
-    public static function sapi_windows_vt100_support()
-    {
-        return false;
-    }
+    private static $hashMask;
 
     public static function utf8_encode($s)
     {
@@ -69,5 +62,58 @@ final class Php72
         }
 
         return substr($s, 0, $j);
+    }
+
+    public static function php_os_family()
+    {
+        if ('\\' === DIRECTORY_SEPARATOR) {
+            return 'Windows';
+        }
+
+        $map = array(
+            'Darwin' => 'Darwin',
+            'DragonFly' => 'BSD',
+            'FreeBSD' => 'BSD',
+            'NetBSD' => 'BSD',
+            'OpenBSD' => 'BSD',
+            'Linux' => 'Linux',
+            'SunOS' => 'Solaris',
+        );
+
+        return isset($map[PHP_OS]) ? $map[PHP_OS] : 'Unknown';
+    }
+
+    public static function spl_object_id($object)
+    {
+        if (null === self::$hashMask) {
+            self::initHashMask();
+        }
+        if (null === $hash = spl_object_hash($object)) {
+            return;
+        }
+
+        return self::$hashMask ^ hexdec(substr($hash, 16 - \PHP_INT_SIZE, \PHP_INT_SIZE));
+    }
+
+    private static function initHashMask()
+    {
+        $obj = (object) array();
+        self::$hashMask = -1;
+
+        // check if we are nested in an output buffering handler to prevent a fatal error with ob_start() below
+        $obFuncs = array('ob_clean', 'ob_end_clean', 'ob_flush', 'ob_end_flush', 'ob_get_contents', 'ob_get_flush');
+        foreach (debug_backtrace(\PHP_VERSION_ID >= 50400 ? DEBUG_BACKTRACE_IGNORE_ARGS : false) as $frame) {
+            if (isset($frame['function'][0]) && !isset($frame['class']) && 'o' === $frame['function'][0] && in_array($frame['function'], $obFuncs)) {
+                $frame['line'] = 0;
+                break;
+            }
+        }
+        if (!empty($frame['line'])) {
+            ob_start();
+            debug_zval_dump($obj);
+            self::$hashMask = (int) substr(ob_get_clean(), 17);
+        }
+
+        self::$hashMask ^= hexdec(substr(spl_object_hash($obj), 16 - \PHP_INT_SIZE, \PHP_INT_SIZE));
     }
 }

@@ -11,10 +11,15 @@ General purpose algorithms in PHP
 
 * Dijkstra
 * Myers’ diff
+* Connected/unconnected components of a graph
 
 ## Installation
 
-Use [composer](https://getcomposer.org), and add `"fisharebest/algorithm": "*"` to the dependencies in your `composer.json`.
+Install using composer.
+
+```
+composer require fisharebest/algorithm
+```
 
 
 ## Dijkstra
@@ -41,8 +46,6 @@ graphs, where links can be one-way only or have different costs in each directio
 Sample code for the above graph.
 
 ``` php
-use Fisharebest\Algorithm\Dijkstra;
-
 $graph = array(
   'A' => array('B' => 9, 'D' => 14, 'F' => 7),
   'B' => array('A' => 9, 'C' => 11, 'D' => 2, 'F' => 10),
@@ -53,24 +56,24 @@ $graph = array(
   'G' => array(),
 );
 
-$dijkstra = new Dijkstra($graph);
+$algorithm = new \Fisharebest\Algorithm\Dijkstra($graph);
 
 // There can be zero, one or more shortest (i.e. same total cost) paths.
 
 // No shortest path.
-$path = $dijkstra->shortestPaths('A', 'G'); // array()
+$path = $algorithm->shortestPaths('A', 'G'); // array()
 
 // Exactly one shortest path.
-$path = $dijkstra->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
+$path = $algorithm->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
 
 // Multiple solutions with the same shortest path.
-$path = $dijkstra->shortestPaths('E', 'F'); // array(array('E', 'D', 'B', 'F'), array('E', 'C', 'F'))
+$path = $algorithm->shortestPaths('E', 'F'); // array(array('E', 'D', 'B', 'F'), array('E', 'C', 'F'))
 
 // To find next-shortest paths, exclude one or intermediate nodes from the shortest path.
-$path = $dijkstra->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
-$path = $dijkstra->shortestPaths('A', 'E', array('B')); // array(array('A', 'B', 'D', 'E'))
-$path = $dijkstra->shortestPaths('A', 'E', array('D')); // array(array('A', 'B', 'C', 'E'))
-$path = $dijkstra->shortestPaths('A', 'E', array('B', 'D')); // array(array('A', 'F', 'C', 'E'))
+$path = $algorithm->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
+$path = $algorithm->shortestPaths('A', 'E', array('B')); // array(array('A', 'B', 'D', 'E'))
+$path = $algorithm->shortestPaths('A', 'E', array('D')); // array(array('A', 'B', 'C', 'E'))
+$path = $algorithm->shortestPaths('A', 'E', array('B', 'D')); // array(array('A', 'F', 'C', 'E'))
 ```
 
 ## Myers’ diff
@@ -86,19 +89,86 @@ The output can be interpreted as either:
 just one sequence).
 
 ``` php
-		$x = array('a', 'b', 'c', 'a', 'b', 'b', 'a');
-		$y = array('c', 'b', 'a', 'b', 'a', 'c');
-		$algorithm = new MyersDiff;
-		$diff = $algorithm->calculate($x, $y);
-		// array(
-		//  array('a', MyersDiff::DELETE),   i.e. 'a' occurs only in $x
-		//  array('b', MyersDiff::DELETE),   i.e. 'b' occurs only in $x
-		//  array('c', MyersDiff::KEEP),     i.e. 'c' occurs both $x and $y
-		//  array('b', MyersDiff::INSERT),   i.e. 'b' occurs only in $y
-		//  array('a', MyersDiff::KEEP),     i.e. 'a' occurs in both $x and $y
-		//  array('b', MyersDiff::KEEP),     i.e. 'b' occurs in both $x and $y
-		//  array('b', MyersDiff::DELETE),   i.e. 'b' occurs only in $x
-		//  array('a', MyersDiff::KEEP),     i.e. 'a' occurs in both $x and $y
-		//  array('c', MyersDiff::INSERT),   i.e. 'c' occurs only in $y
-		// );
+$x = array('a', 'b', 'c', 'a', 'b', 'b', 'a');
+$y = array('c', 'b', 'a', 'b', 'a', 'c');
+$algorithm = new MyersDiff;
+$diff = $algorithm->calculate($x, $y);
+// array(
+//  array('a', MyersDiff::DELETE),   i.e. 'a' occurs only in $x
+//  array('b', MyersDiff::DELETE),   i.e. 'b' occurs only in $x
+//  array('c', MyersDiff::KEEP),     i.e. 'c' occurs both $x and $y
+//  array('b', MyersDiff::INSERT),   i.e. 'b' occurs only in $y
+//  array('a', MyersDiff::KEEP),     i.e. 'a' occurs in both $x and $y
+//  array('b', MyersDiff::KEEP),     i.e. 'b' occurs in both $x and $y
+//  array('b', MyersDiff::DELETE),   i.e. 'b' occurs only in $x
+//  array('a', MyersDiff::KEEP),     i.e. 'a' occurs in both $x and $y
+//  array('c', MyersDiff::INSERT),   i.e. 'c' occurs only in $y
+// );
 ```
+## Connected components
+
+A depth-first search of a graph to find isolated groups of nodes.
+
+```
+    D    E
+   / \    \
+  /   \    \
+ A-----B   C
+  \   /
+   \ /
+    F
+```
+
+Sample code for the above graph
+
+```php
+$graph = array(
+	'A' => array('B' => 1, 'D' => 1, 'F' => 1),
+	'B' => array('A' => 1, 'D' => 1, 'F' => 1),
+	'C' => array('E' => 1),
+	'D' => array('A' => 1, 'B' => 1),
+	'E' => array('C' => 1),
+	'F' => array('A' => 1, 'B' => 1),
+);
+
+$algorithm  = new \Fisharebest\Algorithm\ConnectedComponent($graph);
+$components = $algorithm->findConnectedComponents());
+// array(
+//  1 => array('A', 'B', 'D', 'F'),
+//  2 => array('C', 'E'),
+// );
+```
+## Connected components
+
+A depth-first search of a graph to find isolated groups of nodes.
+
+```
+    D    E
+   / \    \
+  /   \    \
+ A-----B   C
+  \   /
+   \ /
+    F
+```
+
+Sample code for the above graph
+
+```php
+$graph = array(
+	'A' => array('B' => 1, 'D' => 1, 'F' => 1),
+	'B' => array('A' => 1, 'D' => 1, 'F' => 1),
+	'C' => array('E' => 1),
+	'D' => array('A' => 1, 'B' => 1),
+	'E' => array('C' => 1),
+	'F' => array('A' => 1, 'B' => 1),
+);
+
+$algorithm  = new \Fisharebest\Algorithm\ConnectedComponent($graph);
+$components = $algorithm->findConnectedComponents());
+// array(
+//  1 => array('A', 'B', 'D', 'F'),
+//  2 => array('C', 'E'),
+// );
+```
+

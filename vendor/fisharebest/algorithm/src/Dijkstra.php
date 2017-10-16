@@ -81,8 +81,13 @@ class Dijkstra {
 	 */
 	protected function extractPaths($target) {
 		$paths = array(array($target));
-		while (list($key, $path) = each($paths)) {
-			if ($this->previous[$path[0]]) {
+
+		while (current($paths) !== false) {
+			$key  = key($paths);
+			$path = current($paths);
+			next($paths);
+
+			if (!empty($this->previous[$path[0]])) {
 				foreach ($this->previous[$path[0]] as $previous) {
 					$copy = $path;
 					array_unshift($copy, $previous);
