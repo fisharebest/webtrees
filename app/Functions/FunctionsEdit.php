@@ -796,7 +796,7 @@ class FunctionsEdit {
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
 				$html .= '<option selected value="' . Html::escape($value) . '" >' . Html::escape($value) . '</option>';
 			}
-			foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
+			foreach (['' => ''] + GedcomTag::getFileFormTypes() + [$value => $value] as $typeName => $typeValue) {
 				$html .= '<option value="' . $typeName . '" ';
 				if ($selectedValue === $typeName) {
 					$html .= 'selected';

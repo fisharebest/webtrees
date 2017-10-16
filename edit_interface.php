@@ -646,7 +646,7 @@ case 'media-edit':
 				<?= I18N::translate('Type') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select(GedcomTag::getFileFormTypes(), $TYPE, ['id' => 'TYPE', 'name' => 'TYPE']) ?>
+				<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes() + [$TYPE => $TYPE], $TYPE, ['id' => 'TYPE', 'name' => 'TYPE']) ?>
 			</div>
 		</div>
 
