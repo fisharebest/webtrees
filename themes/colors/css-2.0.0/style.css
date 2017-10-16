@@ -630,7 +630,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-obje-link::before {
-	content: url(menu/edit-links.png);
+	content: url(menu/edit-link.png);
 }
 
 .menu-obje-del::before {
