@@ -15,9 +15,11 @@
  */
 namespace Fisharebest\Webtrees;
 
-use HTMLPurifier;
-use HTMLPurifier_Config;
-use Michelf\MarkdownExtra;
+use League\CommonMark\Converter;
+use League\CommonMark\DocParser;
+use League\CommonMark\Environment;
+use League\CommonMark\HtmlRenderer;
+use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
  * Filter input and escape output.
@@ -41,7 +43,7 @@ class Filter {
 	public static function formatText($text, Tree $WT_TREE) {
 		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 		case 'markdown':
-			return '<div class="markdown" dir="auto">' . self::markdown($text) . '</div>';
+			return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
 		default:
 			return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
 		}
@@ -68,28 +70,19 @@ class Filter {
 	 * Format a block of text, using "Markdown".
 	 *
 	 * @param string $text
+	 * @param Tree   tree
 	 *
 	 * @return string
 	 */
-	public static function markdown($text) {
-		$parser                       = new MarkdownExtra;
-		$parser->empty_element_suffix = '>';
-		$parser->no_markup            = true;
-		$text                         = $parser->transform($text);
+	public static function markdown($text, Tree $tree) {
+		$environment = Environment::createCommonMarkEnvironment();
+		$environment->mergeConfig(['html_input' => 'escape']);
+		$environment->addExtension(new TableExtension());
+		$environment->addInlineParser(new MarkdownXrefParser($tree));
 
-		// HTMLPurifier needs somewhere to write temporary files
-		$HTML_PURIFIER_CACHE_DIR = WT_DATA_DIR . 'html_purifier_cache';
+		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-		if (!is_dir($HTML_PURIFIER_CACHE_DIR)) {
-			mkdir($HTML_PURIFIER_CACHE_DIR);
-		}
-
-		$config = HTMLPurifier_Config::createDefault();
-		$config->set('Cache.SerializerPath', $HTML_PURIFIER_CACHE_DIR);
-		$purifier = new HTMLPurifier($config);
-		$text     = $purifier->purify($text);
-
-		return $text;
+		return $converter->convertToHtml($text);
 	}
 
 	/**
