@@ -55,27 +55,10 @@ class Filter {
 	}
 
 	/**
-	 * Escape a string for use in HTML, and additionally convert URLs to links.
-	 *
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public static function oldexpandUrls($text) {
-		return preg_replace_callback(
-			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
-			function ($m) {
-				return '<a href="' . $m[0] . '">' . $m[0] . '</a>';
-			},
-			Html::escape($text)
-		);
-	}
-
-	/**
 	 * Format a block of text, expanding URLs and XREFs.
 	 *
 	 * @param string $text
-	 * @param Tree   tree
+	 * @param        Tree   tree
 	 *
 	 * @return string
 	 */
@@ -86,7 +69,7 @@ class Filter {
 		// Create a minimal commonmark processor - just add support for autolinks.
 		$environment = new Environment;
 		$environment->mergeConfig([
-			'renderer' => [
+			'renderer'           => [
 				'block_separator' => "\n",
 				'inner_separator' => "\n",
 				'soft_break'      => "\n",
@@ -95,13 +78,13 @@ class Filter {
 			'allow_unsafe_links' => true,
 		]);
 
-		$environment->mergeConfig(['html_input' => Environment::HTML_INPUT_ESCAPE]);
-		$environment->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer);
-		$environment->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer);
-		$environment->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer);
-		$environment->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer);
-		$environment->addInlineParser(new AutolinkParser);
-		$environment->addInlineParser(new MarkdownXrefParser($tree));
+		$environment
+			->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer)
+			->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer)
+			->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer)
+			->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer)
+			->addInlineParser(new AutolinkParser)
+			->addInlineParser(new MarkdownXrefParser($tree));
 
 		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
@@ -112,7 +95,7 @@ class Filter {
 	 * Format a block of text, using "Markdown".
 	 *
 	 * @param string $text
-	 * @param Tree   tree
+	 * @param Tree   $tree
 	 *
 	 * @return string
 	 */
@@ -139,28 +122,18 @@ class Filter {
 	 */
 	private static function input($source, $variable, $regexp = null, $default = '') {
 		if ($regexp) {
-			return filter_input(
-				$source,
-				$variable,
-				FILTER_VALIDATE_REGEXP,
-				[
-					'options' => [
-						'regexp'  => '/^(' . $regexp . ')$/u',
-						'default' => $default,
-					],
-				]
-			);
+			return filter_input($source, $variable, FILTER_VALIDATE_REGEXP, [
+				'options' => [
+					'regexp'  => '/^(' . $regexp . ')$/u',
+					'default' => $default,
+				],
+			]);
 		} else {
-			$tmp = filter_input(
-				$source,
-				$variable,
-				FILTER_CALLBACK,
-				[
-					'options' => function ($x) {
-						return mb_check_encoding($x, 'UTF-8') ? $x : false;
-					},
-				]
-			);
+			$tmp = filter_input($source, $variable, FILTER_CALLBACK, [
+				'options' => function ($x) {
+					return mb_check_encoding($x, 'UTF-8') ? $x : false;
+				},
+			]);
 
 			return ($tmp === null || $tmp === false) ? $default : $tmp;
 		}
@@ -249,7 +222,13 @@ class Filter {
 	 * @return int
 	 */
 	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, [
+			'options' => [
+				'min_range' => $min,
+				'max_range' => $max,
+				'default'   => $default,
+			],
+		]);
 	}
 
 	/**
@@ -312,7 +291,13 @@ class Filter {
 	 * @return int
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, [
+			'options' => [
+				'min_range' => $min,
+				'max_range' => $max,
+				'default'   => $default,
+			],
+		]);
 	}
 
 	/**
@@ -354,8 +339,7 @@ class Filter {
 		// found via filter_input(INPUT_SERVER). Instead, they are found via
 		// filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
 		// we must use the superglobal directly.
-		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/',
-$_SERVER[$variable]))) {
+		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/', $_SERVER[$variable]))) {
 			return $_SERVER[$variable];
 		} else {
 			return $default;
