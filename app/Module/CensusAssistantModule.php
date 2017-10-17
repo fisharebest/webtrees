@@ -139,20 +139,31 @@ class CensusAssistantModule extends AbstractModule {
 	 * @return string
 	 */
 	private function createNoteText(CensusInterface $census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes) {
-		$text = $ca_title . "\n" . $ca_citation . "\n" . $ca_place . "\n\n.start_formatted_area.\n\n";
+		$text = $ca_title . "\n" . $ca_citation . "\n" . $ca_place . "\n\n";
 
 		foreach ($census->columns() as $n => $column) {
-			if ($n > 0) {
+			if ($n === 0) {
+				$text .= "\n";
+			} else {
 				$text .= '|';
 			}
-			$text .= '.b.' . $column->abbreviation();
+			$text .= $column->abbreviation();
+		}
+
+		foreach ($census->columns() as $n => $column) {
+			if ($n === 0) {
+				$text .= "\n";
+			} else {
+				$text .= '|';
+			}
+			$text .= '-----';
 		}
 
 		foreach ($ca_individuals as $xref => $columns) {
 			$text .= "\n" . implode('|', $columns);
 		}
 
-		return $text . "\n.end_formatted_area.\n\n" . $ca_notes;
+		return $text . "\n\n" . $ca_notes;
 	}
 
 	/**
