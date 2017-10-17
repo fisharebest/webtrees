@@ -73,12 +73,7 @@ foreach ($controller->record->getFacts() as $fact) {
 	}
 }
 
-// Legacy formatting, created by the census assistant
-if (Module::getModuleByName('GEDFact_assistant')) {
-	$text = CensusAssistantModule::formatCensusNote($controller->record);
-} else {
-	$text = Filter::formatText($controller->record->getNote(), $controller->record->getTree());
-}
+$text = Filter::formatText($controller->record->getNote(), $controller->record->getTree());
 
 ?>
 <h2 class="wt-page-title">

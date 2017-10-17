@@ -1060,12 +1060,7 @@ class FunctionsPrintFacts {
 			echo '</th>';
 			if ($note) {
 				// Note objects
-				if (Module::getModuleByName('GEDFact_assistant')) {
-					// If Census assistant installed, allow it to format the note
-					$text = CensusAssistantModule::formatCensusNote($note);
-				} else {
-					$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
-				}
+				$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 			} else {
 				// Inline notes
 				$nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
