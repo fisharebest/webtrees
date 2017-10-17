@@ -23,6 +23,8 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\ServerFactory;
+use League\Glide\Signatures\SignatureFactory;
+use League\Glide\Signatures\SignatureException;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -75,10 +77,17 @@ try {
 		'watermarks' => $assets_dir,
 	]);
 
+
+	// Validate HTTP signature
+	$glide_key = Site::getPreference('glide-key');
+	SignatureFactory::create($glide_key)->validateRequest('mediafirewall.php', $_GET);
+
 	// Generate and send the image
 	$error_reporting = error_reporting(0);
 	$server->outputImage($media_file, $_GET);
 	error_reporting($error_reporting);
+} catch (SignatureException $e) {
+	FunctionsMedia::outputHttpStatusAsImage(403, 'Not allowed');
 } catch (FileNotFoundException $ex) {
 	FunctionsMedia::outputHttpStatusAsImage(404, 'Not found');
 } catch (NotReadableException $ex) {
