@@ -15,10 +15,15 @@
  */
 namespace Fisharebest\Webtrees;
 
+use League\CommonMark\Block\Renderer\DocumentRenderer;
+use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
+use League\CommonMark\Inline\Parser\AutolinkParser;
+use League\CommonMark\Inline\Renderer\LinkRenderer;
+use League\CommonMark\Inline\Renderer\TextRenderer;
 use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
@@ -45,7 +50,7 @@ class Filter {
 		case 'markdown':
 			return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
 		default:
-			return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
+			return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
 		}
 	}
 
@@ -56,7 +61,7 @@ class Filter {
 	 *
 	 * @return string
 	 */
-	public static function expandUrls($text) {
+	public static function oldexpandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
 			function ($m) {
@@ -64,6 +69,43 @@ class Filter {
 			},
 			Html::escape($text)
 		);
+	}
+
+	/**
+	 * Format a block of text, expanding URLs and XREFs.
+	 *
+	 * @param string $text
+	 * @param Tree   tree
+	 *
+	 * @return string
+	 */
+	public static function expandUrls($text, Tree $tree) {
+		// If it looks like a URL, turn it into a markdown autolink.
+		$text = preg_replace('/' . addcslashes(self::URL_REGEX, '/') . '/', '<$0>', $text);
+
+		// Create a minimal commonmark processor - just add support for autolinks.
+		$environment = new Environment;
+		$environment->mergeConfig([
+			'renderer' => [
+				'block_separator' => "\n",
+				'inner_separator' => "\n",
+				'soft_break'      => "\n",
+			],
+			'html_input'         => Environment::HTML_INPUT_ESCAPE,
+			'allow_unsafe_links' => true,
+		]);
+
+		$environment->mergeConfig(['html_input' => Environment::HTML_INPUT_ESCAPE]);
+		$environment->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer);
+		$environment->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer);
+		$environment->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer);
+		$environment->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer);
+		$environment->addInlineParser(new AutolinkParser);
+		$environment->addInlineParser(new MarkdownXrefParser($tree));
+
+		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
+
+		return $converter->convertToHtml($text);
 	}
 
 	/**

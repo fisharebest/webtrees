@@ -64,7 +64,9 @@ class MarkdownXrefParser extends AbstractInlineParser {
 			return false;
 		}
 
-		$record = GedcomRecord::getInstance(trim($handle, '@'), $this->tree);
+		$xref = trim($handle, '@');
+
+		$record = GedcomRecord::getInstance($xref, $this->tree);
 
 		if ($record === null) {
 			// Linked record does not exist?
@@ -74,8 +76,9 @@ class MarkdownXrefParser extends AbstractInlineParser {
 		}
 
 		$url  = $record->getRawUrl();
-		$text = strip_tags($record->getFullName());
-		$context->getContainer()->appendChild(new Link($url, $text));
+		$label = $handle;
+		$title = strip_tags($record->getFullName());
+		$context->getContainer()->appendChild(new Link($url, $label, $title));
 
 		return true;
 	}

@@ -284,7 +284,7 @@ class FunctionsPrintFacts {
 				echo '</div>';
 				break;
 		case 'PUBL': // Publication details might contain URLs.
-			echo '<div class="field">', Filter::expandUrls($fact->getValue()), '</div>';
+			echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
 			break;
 		case 'REPO':
 			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
@@ -452,7 +452,7 @@ class FunctionsPrintFacts {
 				}
 					break;
 			case 'CALN':
-				echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2]));
+				echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $record->getTree()));
 				break;
 			case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
 				echo GedcomTag::getLabelValue('FORM', $match[2]);
@@ -889,7 +889,7 @@ class FunctionsPrintFacts {
 		$html = '';
 
 		if ($textSOUR['PAGE']) {
-			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE']));
+			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $WT_TREE));
 		}
 
 		if ($textSOUR['EVEN']) {
