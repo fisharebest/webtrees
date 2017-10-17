@@ -681,7 +681,7 @@ class FunctionsEdit {
 				$census_assistant = Module::getModuleByName('GEDFact_assistant');
 				$record = Individual::getInstance($xref, $WT_TREE);
 				if ($census_assistant !== null && $record instanceof Individual) {
-					$census_assistant->createCensusAssistant($record);
+					$html .= $census_assistant->createCensusAssistant($record);
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
@@ -796,7 +796,7 @@ class FunctionsEdit {
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
 				$html .= '<option selected value="' . Html::escape($value) . '" >' . Html::escape($value) . '</option>';
 			}
-			foreach (['' => ''] + GedcomTag::getFileFormTypes() + [$value => $value] as $typeName => $typeValue) {
+			foreach (['' => ''] + GedcomTag::getFileFormTypes() + [] as $typeName => $typeValue) {
 				$html .= '<option value="' . $typeName . '" ';
 				if ($selectedValue === $typeName) {
 					$html .= 'selected';
