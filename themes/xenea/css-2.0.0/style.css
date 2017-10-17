@@ -2103,6 +2103,15 @@ a:hover .nameZoom {
 	min-width: 150px;
 }
 
+/* Random picture block */
+#random_picture {
+	text-align: center;
+}
+
+#random_picture_box {
+	width: 100%;
+}
+
 /* ==== FAQ table styles ===== */
 table.faq {
 	background-color: #e0e0e0;

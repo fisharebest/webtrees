@@ -2924,6 +2924,18 @@ div.faq_body {
 	background-image: url(images/media.png);
 }
 
+.icon-media-next {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rdarrow.png);
+}
+
+.icon-media-play {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rarrow.png);
+}
+
 .icon-media-shuffle {
 	width: 10px;
 	height: 10px;
