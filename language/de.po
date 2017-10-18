@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-10-18 09:20+0000\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"PO-Revision-Date: 2017-10-18 12:18+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -3054,139 +3054,139 @@ msgstr "Bulgarien"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Beerdigung"
+msgstr "Bestattung"
 
 #: app/GedcomTag.php:869
 msgid "Burial of a brother"
-msgstr "Beerdigung eines Bruders"
+msgstr "Bestattung eines Bruders"
 
 #: app/GedcomTag.php:792
 msgid "Burial of a child"
-msgstr "Beerdigung eines Kindes"
+msgstr "Bestattung eines Kindes"
 
 #: app/GedcomTag.php:790
 msgid "Burial of a daughter"
-msgstr "Beerdigung einer Tochter"
+msgstr "Bestattung einer Tochter"
 
 #: app/GedcomTag.php:860
 msgid "Burial of a father"
-msgstr "Beerdigung eines Vaters"
+msgstr "Bestattung eines Vaters"
 
 #: app/GedcomTag.php:801 app/GedcomTag.php:810 app/GedcomTag.php:819
 msgid "Burial of a grandchild"
-msgstr "Beerdigung eines Enkels"
+msgstr "Bestattung eines Enkels"
 
 #: app/GedcomTag.php:799
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:808
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:817
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:824
 msgid "Burial of a grandfather"
-msgstr "Beerdigung eines Großvaters"
+msgstr "Bestattung eines Großvaters"
 
 #: app/GedcomTag.php:826
 msgid "Burial of a grandmother"
-msgstr "Beerdigung einer Großmutter"
+msgstr "Bestattung einer Großmutter"
 
 #: app/GedcomTag.php:828
 msgid "Burial of a grandparent"
-msgstr "Beerdigung eines Großelternteils"
+msgstr "Bestattung eines Großelternteils"
 
 #: app/GedcomTag.php:797
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:806
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:815
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:851
 msgid "Burial of a half-brother"
-msgstr "Beerdigung eines Halbbruders"
+msgstr "Bestattung eines Halbbruders"
 
 #: app/GedcomTag.php:855
 msgid "Burial of a half-sibling"
-msgstr "Beerdigung eines Halbgeschwisters"
+msgstr "Bestattung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:853
 msgid "Burial of a half-sister"
-msgstr "Beerdigung einer Halbschwester"
+msgstr "Bestattung einer Halbschwester"
 
 #: app/GedcomTag.php:878
 msgid "Burial of a husband"
-msgstr "Beerdigung eines Ehemanns"
+msgstr "Bestattung eines Ehemanns"
 
 #: app/GedcomTag.php:842
 msgid "Burial of a maternal grandfather"
-msgstr "Beerdigung eines mütterlichen Großvaters"
+msgstr "Bestattung eines mütterlichen Großvaters"
 
 #: app/GedcomTag.php:844
 msgid "Burial of a maternal grandmother"
-msgstr "Beerdigung einer mütterlichen Großmutter"
+msgstr "Bestattung einer mütterlichen Großmutter"
 
 #: app/GedcomTag.php:846
 msgid "Burial of a maternal grandparent"
-msgstr "Beerdigung eines mütterlichen Großelternteils"
+msgstr "Bestattung eines mütterlichen Großelternteils"
 
 #: app/GedcomTag.php:862
 msgid "Burial of a mother"
-msgstr "Beerdigung einer Mutter"
+msgstr "Bestattung einer Mutter"
 
 #: app/GedcomTag.php:864
 msgid "Burial of a parent"
-msgstr "Beerdigung eines Elternteils"
+msgstr "Bestattung eines Elternteils"
 
 #: app/GedcomTag.php:833
 msgid "Burial of a paternal grandfather"
-msgstr "Beerdigung eines väterlichen Großvaters"
+msgstr "Bestattung eines väterlichen Großvaters"
 
 #: app/GedcomTag.php:835
 msgid "Burial of a paternal grandmother"
-msgstr "Beerdigung einer väterlichen Großmutter"
+msgstr "Bestattung einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:837
 msgid "Burial of a paternal grandparent"
-msgstr "Beerdigung eines väterlichen Großelternteils"
+msgstr "Bestattung eines väterlichen Großelternteils"
 
 #: app/GedcomTag.php:873
 msgid "Burial of a sibling"
-msgstr "Beerdigung eines Geschwisters"
+msgstr "Bestattung eines Geschwisters"
 
 #: app/GedcomTag.php:871
 msgid "Burial of a sister"
-msgstr "Beerdigung einer Schwester"
+msgstr "Bestattung einer Schwester"
 
 #: app/GedcomTag.php:788
 msgid "Burial of a son"
-msgstr "Beerdigung eines Sohns"
+msgstr "Bestattung eines Sohns"
 
 #: app/GedcomTag.php:882
 msgid "Burial of a spouse"
-msgstr "Beerdigung eines Ehepartners"
+msgstr "Bestattung eines Ehepartners"
 
 #: app/GedcomTag.php:880
 msgid "Burial of a wife"
-msgstr "Beerdigung einer Ehefrau"
+msgstr "Bestattung einer Ehefrau"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr "Beerdigungsort enthält"
+msgstr "Bestattungsort enthält"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6669
@@ -4378,7 +4378,7 @@ msgstr "Datum der Brit Mila"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr "Begräbnisdatum"
+msgstr "Bestattungsdatum"
 
 #: app/GedcomTag.php:223 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
@@ -6520,7 +6520,7 @@ msgstr "Fukuoka, Japan"
 #. I18N: gedcom tag _FNRL
 #: app/GedcomTag.php:1177
 msgid "Funeral"
-msgstr "Bestattung"
+msgstr "Begräbnis"
 
 #. I18N: A configuration setting
 #: admin_trees_check.php:133 admin_trees_config.php:1558
@@ -6894,7 +6894,7 @@ msgstr "Er wurde geboren"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
-msgstr "Er wurde beerdigt"
+msgstr "Er wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
@@ -10652,7 +10652,7 @@ msgstr "Ort der Brit Mila"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr "Begräbnisort"
+msgstr "Bestattungsort"
 
 #: app/GedcomTag.php:225 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
@@ -12168,7 +12168,7 @@ msgstr "Sie wurde geboren"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr "Sie wurde beerdigt"
+msgstr "Sie wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
@@ -15697,7 +15697,7 @@ msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Gegebenheiten 
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
 
 #: login.php:70
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16193,7 +16193,7 @@ msgstr "Aufzählungsliste"
 
 #: app/Stats.php:2913
 msgid "burial"
-msgstr "Beerdigung"
+msgstr "Bestattung"
 
 #: app/GedcomTag.php:1321
 msgid "by"
