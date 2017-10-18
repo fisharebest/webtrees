@@ -64,7 +64,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		?>
 		<table class="table wt-facts-table">
 			<tr>
-				<td colspan="2" class="descriptionbox rela">
+				<td colspan="2">
 					<label>
 						<input id="show-level-2-notes" type="checkbox">
 						<?= I18N::translate('Show all notes') ?>
