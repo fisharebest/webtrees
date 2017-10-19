@@ -2278,15 +2278,6 @@ a:hover .nameZoom {
 	vertical-align: top;
 }
 
-/* Random picture block */
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
-}
-
 /* ==== Favourites block ===== */
 .blockcontent .person_box_template .details2 {
 	min-height: 40px;

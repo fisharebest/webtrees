@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -109,69 +108,16 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($random_media) {
-			$content = '<div id="random_picture_container' . $block_id . '">';
-			if ($controls) {
-				if ($start) {
-					$icon_class = 'icon-media-stop';
-				} else {
-					$icon_class = 'icon-media-play';
-				}
-				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id . '"><br>';
-				$content .= '<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="' . $icon_class . '" title="' . I18N::translate('Play') . '/' . I18N::translate('Stop') . '"></a>';
-				$content .= '<a href="#" onclick="$(\'#block_' . $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . I18N::translate('Next image') . '" class="icon-media-next"></a>';
-				$content .= '</div><script>
-					var play = false;
-						function togglePlay() {
-							if (play) {
-								play = false;
-								$("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
-							}
-							else {
-								play = true;
-								playSlideShow();
-								$("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
-							}
-						}
-
-						function playSlideShow() {
-							if (play) {
-								window.setTimeout("reload_image()", 6000);
-							}
-						}
-						function reload_image() {
-							if (play) {
-								$("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '&start=1");
-							}
-						}
-					</script>';
-			}
-			if ($start) {
-				$content .= '<script>togglePlay();</script>';
-			}
-			$content .= '<div class="center" id="random_picture_content' . $block_id . '">';
-			$content .= '<table id="random_picture_box"><tr><td class="details1">';
-			$content .= $random_media->displayImage(200, 200, '', []);
-
-			$content .= '<br>';
-			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
-			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View this individual') . ' — ' . $individual->getFullName() . '</a><br>';
-			}
-			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View this family') . ' — ' . $family->getFullName() . '</a><br>';
-			}
-			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View this source') . ' — ' . $source->getFullName() . '</a><br>';
-			}
-			$content .= '<br><div class="indent">';
-			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), '1', false);
-			$content .= '</div>';
-			$content .= '</td></tr></table>';
-			$content .= '</div>'; // random_picture_content
-			$content .= '</div>'; // random_picture_container
+			$content = View::make('blocks/slide-show', [
+				'block_id'            => $block_id,
+				'media'               => $random_media,
+				'show_controls'       => $controls,
+				'start_automatically' => $start,
+			]);
 		} else {
 			$content = I18N::translate('This family tree has no images to display.');
 		}
+
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
