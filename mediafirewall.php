@@ -77,10 +77,9 @@ try {
 		'watermarks' => $assets_dir,
 	]);
 
-
 	// Validate HTTP signature
 	$glide_key = Site::getPreference('glide-key');
-	SignatureFactory::create($glide_key)->validateRequest('mediafirewall.php', $_GET);
+	SignatureFactory::create($glide_key)->validateRequest(parse_url(WT_BASE_URL . 'mediafirewall.php', PHP_URL_PATH), $_GET);
 
 	// Generate and send the image
 	$error_reporting = error_reporting(0);
