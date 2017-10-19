@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-18 12:18+0000\n"
+"PO-Revision-Date: 2017-10-19 05:29+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
@@ -11617,7 +11617,7 @@ msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags â
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
 msgid "Residence"
-msgstr "Wohnsitz"
+msgstr "Wohnort"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
