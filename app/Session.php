@@ -26,14 +26,14 @@ class Session {
 	 */
 	public static function start(array $config = []) {
 		$default_config = [
-			'use_cookies'     => 1,
+			'use_cookies'     => '1',
 			'name'            => 'WT_SESSION',
-			'cookie_lifetime' => 0,
-			'gc_maxlifetime'  => 7200,
-			'gc_probability'  => 1,
-			'gc_divisor'      => 100,
+			'cookie_lifetime' => '0',
+			'gc_maxlifetime'  => '7200',
+			'gc_probability'  => '1',
+			'gc_divisor'      => '100',
 			'cookie_path'     => '',
-			'cookie_httponly' => true,
+			'cookie_httponly' => '1',
 		];
 		session_register_shutdown();
 		foreach ($config + $default_config as $key => $value) {
