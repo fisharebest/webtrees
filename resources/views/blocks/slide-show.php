@@ -59,6 +59,7 @@
 	function slideShowReload() {
 		if (play) {
 			var block = $("#block-<?= $block_id ?>").parent();
+			clearTimeout(timeout);
 			block.load(block.data('ajaxUrl') + '&start=' + (play ? '1' : '0'));
 		}
 
@@ -74,7 +75,7 @@
 
 	$(".wt-icon-media-stop").on('click', function () {
 		$(".wt-icon-media-stop").parent().attr('hidden', true);
-		$(".wt-icon-media-play").parent().attr('hidden', false);
+		$(".wt-icon-media-play").attr('hidden', false);
 		play = false;
 		return false;
 	});
@@ -84,5 +85,5 @@
 		return slideShowReload();
 	});
 
-	window.setTimeout(slideShowReload, 6000);
+	var timeout = setTimeout(slideShowReload, 6000);
 </script>
