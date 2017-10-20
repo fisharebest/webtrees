@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-18 22:06+0000\n"
+"PO-Revision-Date: 2017-10-20 21:02+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -703,7 +703,7 @@ msgstr "ya 9"
 
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr ""
+msgstr "<b>Nkomá ya motúya:</b> Mosálisi mwa bolekisi ekokí kosálisa yɔ̌ tɛ́ na bolongoli biténi bya bilɔ́kɔ bya bopanzi nsango. Osengélí kotíya mpé kolekisa tǒ koákisa na bokabwani bobɔngisi bwa elɔ́kɔ ya bopanzi nsango mpé bilɔ́kɔ bya yɔ̌ na nsima esúkeli ya bolekisi."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
