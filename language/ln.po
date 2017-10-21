@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-20 21:02+0000\n"
+"PO-Revision-Date: 2017-10-21 23:18+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -556,7 +556,7 @@ msgstr "&lt;pɔná&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(na mbúla  ya %s)"
+msgstr "(na mbúla ya %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -1317,7 +1317,7 @@ msgstr ""
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
-msgstr "Kobakisa bilɔ́kɔ bya bopanzi nsango"
+msgstr "Kobakisa elɔ́kɔ ya bopanzi nsango"
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
 msgid "Add a mother"
@@ -1714,7 +1714,7 @@ msgstr "Mbúla na ntángo ya libóta lya mwǎna"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Mbúla ya bondimi éte moto akúfí"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -1960,8 +1960,9 @@ msgstr "Liyémi \"hourglass\" lya bankɔ́kɔ na bakitani ba moto."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
+#, fuzzy
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Nzeté interactive, ekolakisa bankɔ́kɔ mpé bakitani bánsɔ bwa moto."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -1979,7 +1980,7 @@ msgstr "Bankɔ́kɔ"
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Bokébi mpɔ̂ na bankɔ́kɔ"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
@@ -2032,7 +2033,7 @@ msgstr "Manáka ya mbótama"
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr ""
+msgstr "Kolongola"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
@@ -2075,12 +2076,12 @@ msgstr ""
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Kotíya malúli maye na nzeté ya mabótá mánsɔ"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2161
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Kotíya malúli maye na nzeté ya mabótá ma sika"
 
 #: admin_users.php:100
 #, php-format
@@ -2238,7 +2239,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6869
 msgid "At sea"
-msgstr ""
+msgstr "Na mbú"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
