@@ -550,6 +550,9 @@ $media = Database::prepare(
 $repositories = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(o_id) AS count FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id"
 )->fetchAssoc();
+$notes = Database::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(o_id) AS count FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE' GROUP BY gedcom_id"
+)->fetchAssoc();
 $changes = Database::prepare(
 	"SELECT SQL_CACHE g.gedcom_id, COUNT(change_id) AS count FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id"
 )->fetchAssoc();
@@ -559,348 +562,42 @@ $changes = Database::prepare(
 $server_warnings = [];
 if (
 	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2018-12-31' ||
-	PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2018-12-03'
+	PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2018-12-03' ||
+	PHP_VERSION_ID < 70200 && date('Y-m-d') >= '2019-12-01'
 ) {
 	$server_warnings[] =
 		I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
 		'<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 } elseif (
 	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
-	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
+	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03' ||
+	PHP_VERSION_ID < 70200 && date('Y-m-d') >= '2018-12-01'
 ) {
 	$server_warnings[] =
 		I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) .
 		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 }
 
-?>
-<h1><?= $controller->getPageTitle() ?></h1>
-
-<p>
-	<?= I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.') ?>
-</p>
-
-<div id="accordion" role="tablist" aria-multiselectable="true">
-
-	<!-- SERVER WARNINGS -->
-	<?php if (!empty($server_warnings)): ?>
-		<div class="card">
-			<div class="card-header" role="tab" id="card-server-header">
-				<h2 class="mb-0">
-					<a data-toggle="collapse" data-parent="#accordion" href="#card-server-content" aria-expanded="true" aria-controls="card-server-content">
-						<?= I18N::translate('Server information') ?>
-					</a>
-				</h2>
-			</div>
-
-			<div id="card-server-content" class="collapse show" role="tabpanel" aria-labelledby="card-server-header">
-				<div class="card-body">
-					<?php foreach ($server_warnings as $server_warning): ?>
-						<p><?= $server_warning ?></p>
-					<?php endforeach ?>
-				</div>
-			</div>
-		</div>
-	<?php endif ?>
-
-	<!-- WEBTREES VERSION -->
-	<div class="card <?= Auth::isAdmin() && $update_available ? 'card-outline-danger' : '' ?>">
-		<div class="card-header" role="tab" id="card-serever-version">
-			<h2 class="mb-0">
-				<a data-toggle="collapse" data-parent="#accordion" href="#card-version-content" aria-expanded="true" aria-controls="card-version-content">
-					<?= WT_WEBTREES ?> <?= WT_VERSION ?>
-				</a>
-			</h2>
-		</div>
-		<div id="card-version-content" class="collapse show" role="tabpanel" aria-labelledby="card-version-header">
-			<div class="card-body">
-				<p>
-					<?= /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
-				</p>
-				<?php if (Auth::isAdmin()): ?>
-				<p>
-					<?php if ($latest_version === ''): ?>
-					<?= I18N::translate('No upgrade information is available.') ?>
-					<?php elseif ($update_available): ?>
-					<?= I18N::translate('A new version of webtrees is available.') ?>
-					<a href="admin_site_upgrade.php" class="error">
-						<?= /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
-					</a>
-					<?php else: ?>
-						<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
-					<?php endif ?>
-				</p>
-				<?php endif ?>
-			</div>
-		</div>
-	</div>
-
-	<!-- USERS -->
-	<?php if (Auth::isAdmin()): ?>
-	<div class="card <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
-		<div class="card-header" role="tab" id="card-users-header">
-			<h2 class="mb-0">
-				<a data-toggle="collapse" data-parent="#accordion" href="#card-users-content" aria-expanded="false" aria-controls="card-users-content">
-					<?= I18N::translate('Users') ?>
-				</a>
-			</h2>
-		</div>
-		<div id="card-users-content" class="collapse" role="tabpanel" aria-labelledby="card-users-header">
-			<div class="card-body">
-				<table class="table table-condensed">
-					<caption class="sr-only">
-						<?= I18N::translate('Users') ?>
-					</caption>
-					<tbody>
-						<tr>
-							<th class="col-xs-3">
-								<?= I18N::translate('Total number of users') ?>
-							</th>
-							<td class="col-xs-9">
-								<a href="admin_users.php">
-									<?= I18N::number($total_users) ?>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?= I18N::translate('Administrators') ?>
-							</th>
-							<td>
-								<?php foreach ($administrators as $n => $user): ?>
-									<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?= I18N::translate('Managers') ?>
-							</th>
-							<td>
-								<?php foreach ($managers as $n => $user): ?>
-									<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?= I18N::translate('Moderators') ?>
-							</th>
-							<td>
-								<?php foreach ($moderators as $n => $user): ?>
-									<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-						<tr class="<?= $unverified ? 'danger' : '' ?>">
-							<th>
-								<?= I18N::translate('Not verified by the user') ?>
-							</th>
-							<td>
-								<?php foreach ($unverified as $n => $user): ?>
-									<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-						<tr class="<?= $unapproved ? 'danger' : '' ?>">
-							<th>
-								<?= I18N::translate('Not approved by an administrator') ?>
-							</th>
-							<td>
-								<?php foreach ($unapproved as $n => $user): ?>
-									<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?= I18N::translate('Users who are signed in') ?>
-							</th>
-							<td>
-								<?php foreach ($logged_in as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-									<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-										<?= Html::escape($user->real_name) ?>
-									</a>
-								<?php endforeach ?>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<?php endif ?>
-
-	<!-- FAMILY TREES -->
-	<div class="card <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
-		<div class="card-header" role="tab" id="card-trees-header">
-			<h2 class="mb-0">
-				<a data-toggle="collapse" data-parent="#accordion" href="#card-trees-content" aria-expanded="false" aria-controls="card-trees-content">
-					<?= I18N::translate('Family trees') ?>
-				</a>
-			</h2>
-		</div>
-		<div id="card-trees-content" class="collapse" role="tabpanel" aria-labelledby="card-trees-header">
-			<div class="card-body">
-				<table class="table table-condensed">
-					<caption class="sr-only">
-						<?= I18N::translate('Family trees') ?>
-					</caption>
-					<thead>
-						<tr>
-							<th class="col-xs-5"><?= I18N::translate('Family tree') ?></th>
-							<th class="col-xs-2 text-right flip"><?= I18N::translate('Pending changes') ?></th>
-							<th class="col-xs-1 text-right flip"><?= I18N::translate('Individuals') ?></th>
-							<th class="col-xs-1 text-right flip"><?= I18N::translate('Families') ?></th>
-							<th class="col-xs-1 text-right flip"><?= I18N::translate('Sources') ?></th>
-							<th class="col-xs-1 text-right flip"><?= I18N::translate('Repositories') ?></th>
-							<th class="col-xs-1 text-right flip"><?= I18N::translate('Media') ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach (Tree::getAll() as $tree): ?>
-						<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
-							<td>
-								<a href="index.php?ctype=gedcom&amp;ged=<?= $tree->getNameUrl() ?>">
-									<?= $tree->getNameHtml() ?>
-									-
-									<?= $tree->getTitleHtml() ?>
-								</a>
-							</td>
-							<td class="text-right flip">
-								<?php if ($changes[$tree->getTreeId()]): ?>
-								<a href="edit_changes.php">
-									<?= I18N::number($changes[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-								-
-								<?php endif ?>
-							</td>
-							<td class="text-right flip">
-								<?php if ($individuals[$tree->getTreeId()]): ?>
-								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
-									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Individuals') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-									-
-								<?php endif ?>
-								</td>
-							<td class="text-right flip">
-								<?php if ($families[$tree->getTreeId()]): ?>
-								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
-									<?= I18N::number($families[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Families') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-								-
-								<?php endif ?>
-								</td>
-							<td class="text-right flip">
-								<?php if ($sources[$tree->getTreeId()]): ?>
-								<a href="sourcelist.php?ged=<?= $tree->getNameUrl() ?>">
-									<?= I18N::number($sources[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Sources') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-								-
-								<?php endif ?>
-							</td>
-							<td class="text-right flip">
-								<?php if ($repositories[$tree->getTreeId()]): ?>
-								<a href="repolist.php?ged=<?= $tree->getNameUrl() ?>">
-									<?= I18N::number($repositories[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Repositories') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-									-
-								<?php endif ?>
-							</td>
-							<td class="text-right flip">
-								<?php if ($media[$tree->getTreeId()]): ?>
-								<a href="medialist.php?ged=<?= $tree->getNameUrl() ?>">
-									<?= I18N::number($media[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Media objects') ?> <?= $tree->getTitleHtml() ?></span>
-								</a>
-								<?php else: ?>
-								-
-								<?php endif ?>
-							</td>
-						</tr>
-						<?php endforeach ?>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td>
-								<?= I18N::translate('Total') ?>
-								-
-								<?= I18N::plural('%s family tree', '%s family trees', count(Tree::getAll()), I18N::number(count(Tree::getAll()))) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($changes)) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($individuals)) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($families)) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($sources)) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($repositories)) ?>
-							</td>
-							<td class="text-right flip">
-								<?= I18N::number(array_sum($media)) ?>
-							</td>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-		</div>
-	</div>
-
-	<!-- OLD FILES -->
-	<?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
-	<div class="card card-outline-danger">
-		<div class="card-header" role="tab" id="card-old-files-header">
-			<h2 class="mb-0">
-				<a data-toggle="collapse" data-parent="#accordion" href="#card-old-files-content" aria-expanded="false" aria-controls="card-old-files-content">
-					<?= I18N::translate('Old files found') ?>
-				</a>
-			</h2>
-		</div>
-		<div id="card-old-files-content" class="collapse" role="tabpanel" aria-labelledby="card-old-files-header">
-			<div class="card-body">
-				<p>
-					<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
-				</p>
-				<ul class="list-unstyled">
-					<?php foreach ($files_to_delete as $file_to_delete): ?>
-						<li dir="ltr"><code><?= Html::escape($file_to_delete) ?></code></li>
-					<?php endforeach ?>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<?php endif ?>
-
-</div>
+echo View::make('admin/dashboard', [
+	'title'            => $controller->getPageTitle(),
+	'server_warnings'  => $server_warnings,
+	'update_avilable'  => $update_available,
+	'latest_version'   => $latest_version,
+	'update_available' => $update_available,
+	'unapproved'       => $unapproved,
+	'unverified'       => $unverified,
+	'total_users'      => $total_users,
+	'administrators'   => $administrators,
+	'managers'         => $managers,
+	'moderators'       => $moderators,
+	'logged_in'        => $logged_in,
+	'changes'          => $changes,
+	'all_trees'        => Tree::getAll(),
+	'individuals'      => $individuals,
+	'families'         => $families,
+	'sources'          => $sources,
+	'media'            => $media,
+	'repositories'     => $repositories,
+	'notes'            => $notes,
+	'files_to_delete'  => $files_to_delete,
+]);
