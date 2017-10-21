@@ -591,7 +591,7 @@ echo Bootstrap4::breadcrumbs([
 <h1><?= $controller->getPageTitle() ?></h1>
 
 <form>
-	<table class="table table-bordered table-condensed">
+	<table class="table table-bordered table-sm">
 		<thead>
 			<tr>
 				<th><?= I18N::translate('Media files') ?></th>
@@ -659,7 +659,7 @@ echo Bootstrap4::breadcrumbs([
 </form>
 <br>
 <br>
-<table class="table table-bordered table-condensed" id="media-table-<?= $table_id ?>">
+<table class="table table-bordered table-sm" id="media-table-<?= $table_id ?>">
 	<thead>
 		<tr>
 			<th><?= I18N::translate('Media file') ?></th>

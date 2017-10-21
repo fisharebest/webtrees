@@ -3240,7 +3240,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		</form>
 
 		<div class="gm_plac_edit">
-			<table class="table table-bordered table-condensed table-hover">
+			<table class="table table-bordered table-sm table-hover">
 				<thead>
 					<tr>
 						<th><?= I18N::translate('Place') ?></th>

@@ -483,7 +483,7 @@ echo Bootstrap4::breadcrumbs([
 		</tr>
 	</script>
 
-	<table class="table table-bordered table-condensed table-hover" id="default-resn">
+	<table class="table table-bordered table-sm table-hover" id="default-resn">
 		<caption class="sr-only">
 			<?= I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag') ?>
 		</caption>

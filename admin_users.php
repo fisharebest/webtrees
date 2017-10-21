@@ -573,7 +573,7 @@ case 'edit':
 			</div>
 		</div>
 
-		<table class="table table-bordered table-condensed table-responsive">
+		<table class="table table-bordered table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>
@@ -838,7 +838,7 @@ default:
 
 	<h1><?= $controller->getPageTitle() ?></h1>
 
-	<table class="table table-condensed table-bordered table-user-list">
+	<table class="table table-sm table-bordered table-user-list">
 		<thead>
 			<tr>
 				<th><?= I18N::translate('Edit') ?></th>

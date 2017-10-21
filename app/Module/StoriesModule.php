@@ -361,7 +361,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			</a>
 		</p>
 
-		<table class="table table-bordered table-condensed">
+		<table class="table table-bordered table-sm">
 			<thead>
 				<tr>
 					<th><?= I18N::translate('Story title') ?></th>

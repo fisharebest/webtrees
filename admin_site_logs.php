@@ -311,7 +311,7 @@ echo Bootstrap4::breadcrumbs([
 </form>
 
 <?php if ($action): ?>
-<table class="table table-bordered table-condensed table-hover table-site-logs">
+<table class="table table-bordered table-sm table-hover table-site-logs">
 	<caption class="sr-only">
 		<?= $controller->getPageTitle() ?>
 	</caption>

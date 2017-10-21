@@ -2,11 +2,7 @@
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<h1><?= $title ?></h1>
-
-<p>
-	<?= I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.') ?>
-</p>
+<h1><?= I18N::translate('Control panel') ?></h1>
 
 <!-- SERVER WARNINGS -->
 <?php if (!empty($server_warnings)): ?>
@@ -53,114 +49,6 @@
 	</div>
 </div>
 
-<!-- USERS -->
-<?php if (Auth::isAdmin()): ?>
-	<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
-		<div class="card-header" role="tab" id="card-users-header">
-			<h2 class="mb-0">
-				<?= I18N::translate('Users') ?>
-			</h2>
-		</div>
-		<div class="card-body">
-			<table class="table table-condensed">
-				<caption class="sr-only">
-					<?= I18N::translate('Users') ?>
-				</caption>
-				<tbody>
-				<tr>
-					<th class="col-xs-3">
-						<?= I18N::translate('Total number of users') ?>
-					</th>
-					<td class="col-xs-9">
-						<a href="admin_users.php">
-							<?= I18N::number($total_users) ?>
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?= I18N::translate('Administrators') ?>
-					</th>
-					<td>
-						<?php foreach ($administrators as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?= I18N::translate('Managers') ?>
-					</th>
-					<td>
-						<?php foreach ($managers as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?= I18N::translate('Moderators') ?>
-					</th>
-					<td>
-						<?php foreach ($moderators as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				<tr class="<?= $unverified ? 'danger' : '' ?>">
-					<th>
-						<?= I18N::translate('Not verified by the user') ?>
-					</th>
-					<td>
-						<?php foreach ($unverified as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				<tr class="<?= $unapproved ? 'danger' : '' ?>">
-					<th>
-						<?= I18N::translate('Not approved by an administrator') ?>
-					</th>
-					<td>
-						<?php foreach ($unapproved as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?= I18N::translate('Users who are signed in') ?>
-					</th>
-					<td>
-						<?php foreach ($logged_in as $n => $user): ?>
-							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-								<?= Html::escape($user->real_name) ?>
-							</a>
-						<?php endforeach ?>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-<?php endif ?>
-
 <!-- FAMILY TREES -->
 <div class="card mb-4 <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
 	<div class="card-header" role="tab" id="card-trees-header">
@@ -169,7 +57,7 @@
 		</h2>
 	</div>
 	<div class="card-body">
-		<table class="table table-condensed">
+		<table class="table table-responsive table-sm">
 			<caption class="sr-only">
 				<?= I18N::translate('Family trees') ?>
 			</caption>
@@ -301,6 +189,114 @@
 		</table>
 	</div>
 </div>
+
+<!-- USERS -->
+<?php if (Auth::isAdmin()): ?>
+	<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
+		<div class="card-header" role="tab" id="card-users-header">
+			<h2 class="mb-0">
+				<?= I18N::translate('Users') ?>
+			</h2>
+		</div>
+		<div class="card-body">
+			<table class="table table-responsive table-sm">
+				<caption class="sr-only">
+					<?= I18N::translate('Users') ?>
+				</caption>
+				<tbody>
+				<tr>
+					<th class="col-xs-3">
+						<?= I18N::translate('Total number of users') ?>
+					</th>
+					<td class="col-xs-9">
+						<a href="admin_users.php">
+							<?= I18N::number($total_users) ?>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?= I18N::translate('Administrators') ?>
+					</th>
+					<td>
+						<?php foreach ($administrators as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?= I18N::translate('Managers') ?>
+					</th>
+					<td>
+						<?php foreach ($managers as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?= I18N::translate('Moderators') ?>
+					</th>
+					<td>
+						<?php foreach ($moderators as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				<tr class="<?= $unverified ? 'danger' : '' ?>">
+					<th>
+						<?= I18N::translate('Not verified by the user') ?>
+					</th>
+					<td>
+						<?php foreach ($unverified as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				<tr class="<?= $unapproved ? 'danger' : '' ?>">
+					<th>
+						<?= I18N::translate('Not approved by an administrator') ?>
+					</th>
+					<td>
+						<?php foreach ($unapproved as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?= I18N::translate('Users who are signed in') ?>
+					</th>
+					<td>
+						<?php foreach ($logged_in as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
+								<?= Html::escape($user->real_name) ?>
+							</a>
+						<?php endforeach ?>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+<?php endif ?>
 
 <!-- OLD FILES -->
 <?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
