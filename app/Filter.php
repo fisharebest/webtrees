@@ -15,6 +15,9 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
+use Fisharebest\Webtrees\CommonMark\XrefExtension;
+use Fisharebest\Webtrees\CommonMark\XrefParser;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\Converter;
@@ -50,7 +53,7 @@ class Filter {
 		case 'markdown':
 			return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
 		default:
-			return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
+			return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
 		}
 	}
 
@@ -83,8 +86,10 @@ class Filter {
 			->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer)
 			->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer)
 			->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer)
-			->addInlineParser(new AutolinkParser)
-			->addInlineParser(new MarkdownXrefParser($tree));
+			->addInlineParser(new AutolinkParser);
+
+		$environment->addExtension(new CensusTableExtension);
+		$environment->addExtension(new XrefExtension($tree));
 
 		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
@@ -102,8 +107,9 @@ class Filter {
 	public static function markdown($text, Tree $tree) {
 		$environment = Environment::createCommonMarkEnvironment();
 		$environment->mergeConfig(['html_input' => 'escape']);
-		$environment->addExtension(new TableExtension());
-		$environment->addInlineParser(new MarkdownXrefParser($tree));
+		$environment->addExtension(new TableExtension);
+		$environment->addExtension(new CensusTableExtension);
+		$environment->addExtension(new XrefExtension($tree));
 
 		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 

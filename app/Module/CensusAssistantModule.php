@@ -145,7 +145,7 @@ class CensusAssistantModule extends AbstractModule {
 			if ($n === 0) {
 				$text .= "\n";
 			} else {
-				$text .= '|';
+				$text .= ' | ';
 			}
 			$text .= $column->abbreviation();
 		}
@@ -154,13 +154,13 @@ class CensusAssistantModule extends AbstractModule {
 			if ($n === 0) {
 				$text .= "\n";
 			} else {
-				$text .= '|';
+				$text .= ' | ';
 			}
 			$text .= '-----';
 		}
 
 		foreach ($ca_individuals as $xref => $columns) {
-			$text .= "\n" . implode('|', $columns);
+			$text .= "\n" . implode(' | ', $columns);
 		}
 
 		return $text . "\n\n" . $ca_notes;

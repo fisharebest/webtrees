@@ -13,8 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\CommonMark;
 
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Parser\AbstractInlineParser;
 use League\CommonMark\InlineParserContext;
@@ -22,7 +24,7 @@ use League\CommonMark\InlineParserContext;
 /**
  * Convert XREFs within markdown text to links
  */
-class MarkdownXrefParser extends AbstractInlineParser {
+class XrefParser extends AbstractInlineParser {
 	/** @var Tree - match XREFs in this tree */
 	private $tree;
 
