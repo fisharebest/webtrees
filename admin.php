@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -528,12 +530,6 @@ $unapproved = Database::prepare(
 	" ORDER BY real_name"
 )->fetchAll();
 
-// Users currently logged in
-$logged_in = Database::prepare(
-	"SELECT SQL_NO_CACHE DISTINCT user_id, real_name FROM `##user` JOIN `##session` USING (user_id)" .
-	" ORDER BY real_name"
-)->fetchAll();
-
 // Count of records
 $individuals = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(i_id) AS count FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id"
@@ -578,6 +574,11 @@ if (
 		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 }
 
+$config_modules = array_filter(
+	Module::getInstalledModules(true),
+	function (AbstractModule $module) { return $module instanceof ModuleConfigInterface; }
+);
+
 echo View::make('admin/dashboard', [
 	'title'            => $controller->getPageTitle(),
 	'server_warnings'  => $server_warnings,
@@ -590,7 +591,6 @@ echo View::make('admin/dashboard', [
 	'administrators'   => $administrators,
 	'managers'         => $managers,
 	'moderators'       => $moderators,
-	'logged_in'        => $logged_in,
 	'changes'          => $changes,
 	'all_trees'        => Tree::getAll(),
 	'individuals'      => $individuals,
@@ -600,4 +600,5 @@ echo View::make('admin/dashboard', [
 	'repositories'     => $repositories,
 	'notes'            => $notes,
 	'files_to_delete'  => $files_to_delete,
+	'config_modules'   => $config_modules,
 ]);

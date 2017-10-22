@@ -144,7 +144,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function getConfigLink() {
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
-		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+		return Html::url('module.php', [
+			'mod'        => $this->getName(),
+			'mod_action' => 'admin_config',
+		]);
 	}
 
 	/** {@inheritdoc} */

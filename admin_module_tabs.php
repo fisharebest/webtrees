@@ -95,7 +95,7 @@ echo Bootstrap4::breadcrumbs([
 			<tr class="sortme">
 				<td class="col-xs-1">
 					<?php if ($module instanceof ModuleConfigInterface): ?>
-					<a href="<?= $module->getConfigLink() ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
+					<a href="<?= Html::escape($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
 					<?php else: ?>
 					<?= $module->getTitle() ?>
 					<?php endif ?>

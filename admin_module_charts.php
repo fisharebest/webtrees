@@ -70,7 +70,7 @@ echo Bootstrap4::breadcrumbs([
 			<tr>
 				<td class="col-xs-2">
 					<?php if ($module instanceof ModuleConfigInterface): ?>
-						<a href="<?= $module->getConfigLink() ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
+						<a href="<?= Html::escape($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
 					<?php else: ?>
 						<?= $module->getTitle() ?>
 					<?php endif ?>

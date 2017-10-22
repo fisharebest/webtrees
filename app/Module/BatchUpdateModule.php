@@ -435,7 +435,9 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 * @return string
 	 */
 	public function getConfigLink() {
-		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
+		return Html::url('module.php', [
+			'mod'        => $this->getName(),
+			'mod_action' => 'admin_batch_update',
+		]);
 	}
-
 }

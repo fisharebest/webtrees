@@ -165,7 +165,7 @@ echo Bootstrap4::breadcrumbs([
 					</td>
 					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
-							<a href="<?= $module->getConfigLink() ?>">
+							<a href="<?= Html::escape($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?> <i class="fa fa-cogs"></i>
 							</a>
 						<?php else: ?>
