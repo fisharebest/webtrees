@@ -337,7 +337,7 @@
 				</ul>
 			</div>
 			<div class="col-md-6">
-				<?= I18N::translate('Edit preferences') ?>
+				<?= I18N::translate('Preferences') ?>
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
