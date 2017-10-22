@@ -171,7 +171,8 @@ class IndividualController extends GedcomRecordController {
 						// The SURN field is not necessarily the surname.
 						// Where it is not a substring of the real surname, show it after the real surname.
 						$surname = Html::escape($dummy->getAllNames()[0]['surname']);
-						if (strpos($dummy->getAllNames()[0]['surname'], str_replace(',', ' ', $nmatch[$i][2])) !== false) {
+						$surns   = preg_replace('/, */', ' ', $nmatch[$i][2]);
+						if (strpos($dummy->getAllNames()[0]['surname'], $surns) !== false) {
 							echo '<span dir="auto">' . $surname . '</span>';
 						} else {
 							echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
