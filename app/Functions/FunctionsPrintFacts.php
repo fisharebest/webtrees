@@ -1165,7 +1165,7 @@ class FunctionsPrintFacts {
 				if ($media) {
 					echo '<span class="field">';
 					echo $media->displayImage(100, 100, 'contain', []);
-					echo '<a href="' . $media->getHtmlUrl() . '">';
+					echo '<a href="' . $media->getHtmlUrl() . '"> ';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {
 						if ($name['type'] != 'TITL') {
