@@ -88,7 +88,6 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'REPO_ID_PREFIX', 'R')," .
 			"(-1, 'REQUIRE_AUTHENTICATION', '0')," .
 			"(-1, 'SAVE_WATERMARK_IMAGE', '0')," .
-			"(-1, 'SAVE_WATERMARK_THUMB', '0')," .
 			"(-1, 'SHOW_AGE_DIFF', '0')," .
 			"(-1, 'SHOW_COUNTER', '1')," .
 			"(-1, 'SHOW_DEAD_PEOPLE', :SHOW_DEAD_PEOPLE)," .
@@ -116,7 +115,6 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'THUMBNAIL_WIDTH', '100')," .
 			"(-1, 'USE_RIN', '0')," .
 			"(-1, 'USE_SILHOUETTE', '1')," .
-			"(-1, 'WATERMARK_THUMB', '0')," .
 			"(-1, 'WEBTREES_EMAIL', :WEBTREES_EMAIL)," .
 			"(-1, 'WORD_WRAPPED_NOTES', '0')"
 		)->execute([
