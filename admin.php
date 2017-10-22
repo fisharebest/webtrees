@@ -575,7 +575,7 @@ if (
 }
 
 $config_modules = array_filter(
-	Module::getInstalledModules(true),
+	Module::getInstalledModules('enabled'),
 	function (AbstractModule $module) { return $module instanceof ModuleConfigInterface; }
 );
 
