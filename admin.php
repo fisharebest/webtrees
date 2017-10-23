@@ -575,9 +575,12 @@ if (
 }
 
 $config_modules = array_filter(
-	Module::getInstalledModules('enabled'),
+	Module::getInstalledModules('disabled'),
 	function (AbstractModule $module) { return $module instanceof ModuleConfigInterface; }
 );
+$enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
+
+$config_modules = array_filter($config_modules, function(AbstractModule $module) use ($enabled_modules) { return in_array($module->getName(), $enabled_modules); });
 
 echo View::make('admin/dashboard', [
 	'title'            => $controller->getPageTitle(),
