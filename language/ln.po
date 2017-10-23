@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-22 19:03+0000\n"
+"PO-Revision-Date: 2017-10-23 21:27+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -4334,7 +4334,7 @@ msgstr ""
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
 msgid "DNA markers"
-msgstr "Bilembo bya ADN"
+msgstr "Elakisa ya ADN"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
@@ -7392,7 +7392,7 @@ msgstr ""
 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "Sɔ́kí ozalí kosálela mɔ̌kɔ́ ya bolandeli mpé misálá ya lisɔsɔli elandí, webtrees akokí kobakisa yangó mɔ̌kɔ́ nkomá ya bolandeli."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -15037,7 +15037,7 @@ msgstr "Basáleli bánsɔ"
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Bolandeli mpé masɔsɔli"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -15125,7 +15125,7 @@ msgstr "Loléngé la ekelá"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
-msgstr "Loléngé la bilembo bya esiká na káti ya molɔngɔ́ mwa bisiká"
+msgstr "Loléngé la bilakisa bya esiká na káti ya molɔngɔ́ mwa bisiká"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:354 login.php:472
@@ -15464,7 +15464,7 @@ msgstr "Basáleli bamiyíngelí"
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Kɔ́nti ya mosáleli esálelámí tɛ́ kala míngi: "
 
 #: app/Module/GoogleMapsModule.php:599
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
@@ -15482,8 +15482,9 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
+#, fuzzy
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
@@ -15499,25 +15500,25 @@ msgstr "Vaticani"
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6915
@@ -15528,25 +15529,25 @@ msgstr "Venezwela"
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:381
