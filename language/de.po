@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-19 05:29+0000\n"
+"PO-Revision-Date: 2017-10-24 17:54+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
@@ -2269,7 +2269,7 @@ msgstr "anwesend"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Audio"
-msgstr "Ton"
+msgstr "Tonaufnahme"
 
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
@@ -3656,7 +3656,7 @@ msgstr "Anzuzeigende Verwandschaften"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Wählen Sie das Vorschaubild, das Sie hochladen möchten. Obwohl Vorschaubilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Sprachaufnahme gemacht hat."
+msgstr "Wählen Sie das Vorschaubild, das Sie hochladen möchten. Obwohl Vorschaubilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Tonaufnahme gemacht hat."
 
 #: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
@@ -4511,7 +4511,7 @@ msgstr "Datum der Weihe"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr "Datum des Aufenthalts"
+msgstr "Datum des Wohnsitzes"
 
 #: help_text.php:159
 msgid "Date period"
@@ -10838,7 +10838,7 @@ msgstr "Ort der Weihe"
 
 #: app/GedcomTag.php:736
 msgid "Place of residence"
-msgstr "Wohnort"
+msgstr "Ort des Wohnsitzes"
 
 #: admin_site_upgrade.php:354
 #, php-format
@@ -11617,7 +11617,7 @@ msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags �
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
 msgid "Residence"
-msgstr "Wohnort"
+msgstr "Wohnsitz"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
@@ -12636,7 +12636,7 @@ msgstr "Zeige Forschungsaufgaben mit einem Datum in der Zukunft"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Wohnorte anzeigen"
+msgstr "Wohnsitze anzeigen"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -15304,7 +15304,7 @@ msgstr "Multimediadateien hochladen"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Audio oder andere Formate sein."
+msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6910
