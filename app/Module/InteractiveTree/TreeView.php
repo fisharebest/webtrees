@@ -16,9 +16,9 @@
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class TreeView
@@ -27,51 +27,29 @@ class TreeView {
 	/** @var string HTML element name */
 	private $name;
 
-	/** @var string Show all partners */
-	private $all_partners;
-
 	/**
 	 * Treeview Constructor
 	 *
 	 * @param string $name the name of the TreeView object’s instance
 	 */
 	public function __construct($name = 'tree') {
-		$this->name         = $name;
-		$this->all_partners = Filter::cookie('allPartners', 'true|false', 'true');
+		$this->name = $name;
 	}
 
 	/**
 	 * Draw the viewport which creates the draggable/zoomable framework
 	 * Size is set by the container, as the viewport can scale itself automatically
 	 *
-	 * @param Individual $root_person  the id of the root person
+	 * @param Individual $individual  Draw the chart for this individual
 	 * @param int        $generations number of generations to draw
 	 *
 	 * @return string[]  HTML and Javascript
 	 */
-	public function drawViewport(Individual $root_person, $generations) {
-		$html = '
-			<a name="tv_content"></a>
-			<div id="' . $this->name . '_out" class="tv_out">
-				<div id="tv_tools">
-					<ul>
-						<li id="tvbCompact" class="tv_button">
-							<img src="' . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . I18N::translate('Use compact layout') . '" title="' . I18N::translate('Use compact layout') . '">
-						</li>
-						<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '">
-							<a class="icon-sfamily" href="#" title="' . I18N::translate('Show all spouses and ancestors') . '"></a>
-						</li>
-						<li class="tv_button" id="' . $this->name . '_loading">
-							<i class="icon-loading-small"></i>
-						</li>
-					</ul>
-				</div>
-				<h2 id="tree-title">' . I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
-				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
-					' . $this->drawPerson($root_person, $generations, 0, null, null, true) . '
-				</div>
-			</div>
-		';
+	public function drawViewport(Individual $individual, $generations) {
+		$html = View::make('interactive-tree-chart', [
+			'name'       => $this->name,
+			'individual' => $this->drawPerson($individual, $generations, 0, null, null, true),
+		]);
 
 		return [$html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");'];
 	}
@@ -265,19 +243,14 @@ class TreeView {
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
-					if ($spouse === $partner || $this->all_partners === 'true') {
-						$spouse_parents = $spouse->getPrimaryChildFamily();
-						if ($spouse_parents && $spouse_parents->getHusband()) {
-							$fop[] = [$spouse_parents->getHusband(), $spouse_parents];
-						} elseif ($spouse_parents && $spouse_parents->getWife()) {
-							$fop[] = [$spouse_parents->getWife(), $spouse_parents];
-						}
-						$html .= $this->drawPersonName($spouse, $dashed);
-						if ($this->all_partners !== 'true') {
-							break; // we can stop here the foreach loop
-						}
-						$dashed = 'dashed';
+					$spouse_parents = $spouse->getPrimaryChildFamily();
+					if ($spouse_parents && $spouse_parents->getHusband()) {
+						$fop[] = [$spouse_parents->getHusband(), $spouse_parents];
+					} elseif ($spouse_parents && $spouse_parents->getWife()) {
+						$fop[] = [$spouse_parents->getWife(), $spouse_parents];
 					}
+					$html .= $this->drawPersonName($spouse, $dashed);
+					$dashed = 'dashed';
 				}
 			}
 		}
@@ -334,26 +307,22 @@ class TreeView {
 	 * @return string
 	 */
 	private function drawPersonName(Individual $individual, $dashed = '') {
-		if ($this->all_partners === 'true') {
-			$family = $individual->getPrimaryChildFamily();
-			if ($family) {
-				$family_name = strip_tags($family->getFullName());
-			} else {
-				$family_name = I18N::translateContext('unknown family', 'unknown');
-			}
-			switch ($individual->getSex()) {
-			case 'M':
-				$title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
-				break;
-			case 'F':
-				$title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
-				break;
-			default:
-				$title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
-				break;
-			}
+		$family = $individual->getPrimaryChildFamily();
+		if ($family) {
+			$family_name = strip_tags($family->getFullName());
 		} else {
-			$title = '';
+			$family_name = I18N::translateContext('unknown family', 'unknown');
+		}
+		switch ($individual->getSex()) {
+		case 'M':
+			$title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
+			break;
+		case 'F':
+			$title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
+			break;
+		default:
+			$title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
+			break;
 		}
 		$sex = $individual->getSex();
 

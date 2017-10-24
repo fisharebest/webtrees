@@ -45,5 +45,5 @@ $controller->pageHeader();
 echo View::make('compact-chart-page', [
 	'title'      => $controller->getPageTitle(),
 	'individual' => $controller->root,
-		'ajax_url' => $ajax_url,
+	'ajax_url'   => $ajax_url,
 ]);
