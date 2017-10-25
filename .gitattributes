@@ -6,7 +6,6 @@
 .php_cs           export-ignore
 .travis.yml       export-ignore
 Makefile          export-ignore
-Vagrantfile       export-ignore
 build/            export-ignore
 js/*.patch        export-ignore
 packages/**/*.map export-ignore
