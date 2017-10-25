@@ -602,7 +602,7 @@ class FunctionsEdit {
 		case 'MAP':
 			// These GEDCOM tags should have no data, just child tags.
 			if ($value === '') {
-				$row_class .= ' hidden-xs-up';
+				$row_class .= ' d-none';
 			}
 			break;
 		case 'LATI':
