@@ -840,7 +840,7 @@ class FunctionsEdit {
 				$html .= '>' . GedcomTag::getLabel('MARR_' . strtoupper($key)) . '</option>';
 			}
 			$html .= '</select>';
-		} elseif ($fact === 'TYPE' && $level === 0) {
+		} elseif ($fact === 'TYPE' && $level === '0') {
 			// NAME TYPE : hide text field and show a selection list
 			$html .= Bootstrap4::select(GedcomCodeName::getValues($person), $value, ['id' => $id, 'name' => $name, 'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"']);
 			$html .= '<script>document.getElementById("' . $id . '").style.display="none";</script>';
