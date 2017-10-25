@@ -246,10 +246,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?= I18N::translate('Individual') ?>
 						</label>
 						<div class="col-sm-9">
-							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?= $xref ?>">
-							<?php if ($individual): ?>
-								<?= $individual->formatList('span') ?>
-							<?php endif ?>
+							<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
 						</div>
 					</div>
 
