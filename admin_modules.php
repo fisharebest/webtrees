@@ -104,12 +104,6 @@ foreach ($module_status as $module_name => $status) {
 $controller
 	->pageHeader()
 	->addInlineJavascript('
-		function reindexMods(id) {
-			$("#" + id + " input").each(
-				function (index, value) {
-					value.value = index+1;
-				});
-		}
 		$(".table-module-administration").dataTable( {
 				paging: false,
 				' . I18N::datatablesI18N() . ',
