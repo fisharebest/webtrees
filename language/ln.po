@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-24 21:17+0000\n"
+"PO-Revision-Date: 2017-10-26 21:57+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -14384,15 +14384,15 @@ msgstr ""
 
 #: admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr ""
+msgstr "Oyo ekokí kosála likambo na webtrees."
 
 #: admin_media.php:509
 msgid "This media file does not exist."
-msgstr ""
+msgstr "Kásakása ya bopanzi nsango eye ezalí tɛ́."
 
 #: admin_media.php:505
 msgid "This media file exists, but cannot be accessed."
-msgstr ""
+msgstr "Kásakása ya bopanzi nsango eye ezalí, kasi ekokí kozwama tɛ́."
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
