@@ -1,6 +1,4 @@
 <?php use Fisharebest\Webtrees\View; ?>
-<?php
-?>
 
 <table class="text-center w-100 h-100" role="presentation">
 	<tr>
