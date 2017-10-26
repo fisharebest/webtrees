@@ -215,13 +215,13 @@ case 'load_json':
 		$user_name = $datum[2];
 
 		if ($user_id != Auth::id()) {
-			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */ I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
+			$admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */ I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></div>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
 		}
 
-		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
+		$datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
 		// $datum[1] is the user ID
 		// $datum[3] is the real name
 		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
