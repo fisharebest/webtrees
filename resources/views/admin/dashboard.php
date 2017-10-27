@@ -56,10 +56,13 @@
 	<div class="card-header" role="tab" id="card-trees-header">
 		<h2 class="mb-0">
 			<?= I18N::translate('Family trees') ?>
+			<a href="admin_trees_manage.php" class="badge badge-primary">
+				<?= \Fisharebest\Webtrees\FontAwesome::decorativeIcon('preferences') ?>
+			</a>
 		</h2>
 	</div>
 	<div class="card-body">
-		<table class="table table-responsive table-sm">
+		<table class="table table-sm">
 			<caption class="sr-only">
 				<?= I18N::translate('Family trees') ?>
 			</caption>
@@ -67,12 +70,12 @@
 				<tr>
 					<th><?= I18N::translate('Family tree') ?></th>
 					<th><?= I18N::translate('Pending changes') ?></th>
-					<th><?= I18N::translate('Individuals') ?></th>
-					<th><?= I18N::translate('Families') ?></th>
-					<th><?= I18N::translate('Sources') ?></th>
-					<th><?= I18N::translate('Repositories') ?></th>
-					<th><?= I18N::translate('Media') ?></th>
-					<th><?= I18N::translate('Notes') ?></th>
+					<th class="d-none d-sm-table-cell"><?= I18N::translate('Individuals') ?></th>
+					<th class="d-none d-lg-table-cell"><?= I18N::translate('Families') ?></th>
+					<th class="d-none d-sm-table-cell"><?= I18N::translate('Sources') ?></th>
+					<th class="d-none d-lg-table-cell"><?= I18N::translate('Repositories') ?></th>
+					<th class="d-none d-sm-table-cell"><?= I18N::translate('Media') ?></th>
+					<th class="d-none d-lg-table-cell"><?= I18N::translate('Notes') ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -85,7 +88,7 @@
 								<?= Html::escape($tree->getTitle()) ?>
 							</a>
 						</td>
-						<td class="text-right flip">
+						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
 								<a href="<?= Html::escape(Html::url('edit_changes.php', [
 									'ged' => $tree->getName(),
@@ -98,7 +101,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($individuals[$tree->getTreeId()]): ?>
 								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
@@ -108,7 +111,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($families[$tree->getTreeId()]): ?>
 								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($families[$tree->getTreeId()]) ?>
@@ -118,7 +121,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($sources[$tree->getTreeId()]): ?>
 								<a href="sourcelist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($sources[$tree->getTreeId()]) ?>
@@ -128,7 +131,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($repositories[$tree->getTreeId()]): ?>
 								<a href="repolist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($repositories[$tree->getTreeId()]) ?>
@@ -138,7 +141,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($media[$tree->getTreeId()]): ?>
 								<a href="medialist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
@@ -148,7 +151,7 @@
 								-
 							<?php endif ?>
 						</td>
-						<td class="text-right flip">
+						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($notes[$tree->getTreeId()]): ?>
 								<a href="notelist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
@@ -168,25 +171,25 @@
 						-
 						<?= I18N::plural('%s family tree', '%s family trees', count($all_trees), I18N::number(count($all_trees))) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="text-right">
 						<?= I18N::number(array_sum($changes)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-sm-table-cell text-right">
 						<?= I18N::number(array_sum($individuals)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-lg-table-cell text-right">
 						<?= I18N::number(array_sum($families)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-sm-table-cell text-right">
 						<?= I18N::number(array_sum($sources)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-lg-table-cell text-right">
 						<?= I18N::number(array_sum($repositories)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-sm-table-cell text-right">
 						<?= I18N::number(array_sum($media)) ?>
 					</td>
-					<td class="text-right flip">
+					<td class="d-none d-lg-table-cell text-right">
 						<?= I18N::number(array_sum($notes)) ?>
 					</td>
 				</tr>
@@ -299,7 +302,7 @@
 	</div>
 	<div class="card-body">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-sm-6">
 				<a href="admin_modules.php">
 					<?= I18N::translate('Module administration') ?>
 				</a>
@@ -336,7 +339,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="col-md-6">
+			<div class="col-sm-6">
 				<?= I18N::translate('Preferences') ?>
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
