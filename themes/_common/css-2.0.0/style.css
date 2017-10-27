@@ -13,6 +13,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* Bootstrap4-beta2 provides text-nowrap, but not text-wrap.  We need to wrap long buttons */
+.text-wrap {
+	white-space: normal !important;
+}
+
  /* list options
 .wt-initials-list {
 	display: inline!important;
