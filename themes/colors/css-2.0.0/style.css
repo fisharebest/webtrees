@@ -283,6 +283,10 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(icons/individual.png);
 }
 
+i[class*="wt-icon-media"] {
+	opacity: 0.5;
+}
+
 /*
  * Pages have the following high-level structure:
  *
