@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
+<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
@@ -57,7 +58,7 @@
 		<h2 class="mb-0">
 			<?= I18N::translate('Family trees') ?>
 			<a href="admin_trees_manage.php" class="badge badge-primary">
-				<?= \Fisharebest\Webtrees\FontAwesome::decorativeIcon('preferences') ?>
+				<?= FontAwesome::decorativeIcon('preferences') ?>
 			</a>
 		</h2>
 	</div>
@@ -306,33 +307,39 @@
 				<a href="admin_modules.php">
 					<?= I18N::translate('Module administration') ?>
 				</a>
-				<ul>
+				<ul class="fa-ul">
 					<li>
+						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
 						<a href="admin_module_menus.php">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
+						<?= FontAwesome::decorativeIcon('tab', ['class' => 'fa-li']) ?>
 						<a href="admin_module_tabs.php">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
+						<?= FontAwesome::decorativeIcon('block', ['class' => 'fa-li']) ?>
 						<a href="admin_module_blocks.php">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
+						<?= FontAwesome::decorativeIcon('sidebar', ['class' => 'fa-li']) ?>
 						<a href="admin_module_sidebar.php">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
+						<?= FontAwesome::decorativeIcon('chart', ['class' => 'fa-li']) ?>
 						<a href="admin_module_charts.php">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
+						<?= FontAwesome::decorativeIcon('report', ['class' => 'fa-li']) ?>
 						<a href="admin_module_repots.php">
 							<?= I18N::translate('Reports') ?>
 						</a>
@@ -344,7 +351,7 @@
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
-							<i class="fa-li fa fa-cogs"></i>
+							<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
 							<a href="<?= Html::escape($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?>
 							</a>

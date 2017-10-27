@@ -55,7 +55,7 @@ class FontAwesome extends Html {
 		'chart'         => 'fa fa-share-alt wt-icon-chart',
 		'menu'          => 'fa fa-list-ul wt-icon-menu',
 		'report'        => 'fa fa-file wt-icon-report',
-		'sidebar'       => 'fa fa-th-large wt-icon-sidebar',
+		'sidebar'       => 'fa fa-pause wt-icon-sidebar',
 		'tab'           => 'fa fa-folder wt-icon-tab',
 		'theme'         => 'fa fa-paint-brush wt-icon-theme',
 		// GEDCOM records
