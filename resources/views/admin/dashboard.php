@@ -15,7 +15,7 @@
 
 		<div class="card-body">
 			<?php foreach ($server_warnings as $server_warning): ?>
-				<p><?= $server_warning ?></p>
+				<div class="alert alert-warning"><?= $server_warning ?></div>
 			<?php endforeach ?>
 		</div>
 	</div>
@@ -69,13 +69,13 @@
 			<thead>
 				<tr>
 					<th><?= I18N::translate('Family tree') ?></th>
-					<th><?= I18N::translate('Pending changes') ?></th>
-					<th class="d-none d-sm-table-cell"><?= I18N::translate('Individuals') ?></th>
-					<th class="d-none d-lg-table-cell"><?= I18N::translate('Families') ?></th>
-					<th class="d-none d-sm-table-cell"><?= I18N::translate('Sources') ?></th>
-					<th class="d-none d-lg-table-cell"><?= I18N::translate('Repositories') ?></th>
-					<th class="d-none d-sm-table-cell"><?= I18N::translate('Media') ?></th>
-					<th class="d-none d-lg-table-cell"><?= I18N::translate('Notes') ?></th>
+					<th class="text-right"><?= I18N::translate('Pending changes') ?></th>
+					<th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Individuals') ?></th>
+					<th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Families') ?></th>
+					<th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Sources') ?></th>
+					<th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Repositories') ?></th>
+					<th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Media') ?></th>
+					<th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Notes') ?></th>
 				</tr>
 			</thead>
 			<tbody>

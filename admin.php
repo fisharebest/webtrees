@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Controller\AdminController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -475,7 +475,7 @@ foreach ($old_files as $file) {
 	}
 }
 
-$controller = new PageController;
+$controller = new AdminController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Control panel') . ' — ' . /* I18N: A summary of the system status */ I18N::translate('Dashboard'))
@@ -553,27 +553,6 @@ $changes = Database::prepare(
 	"SELECT SQL_CACHE g.gedcom_id, COUNT(change_id) AS count FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id"
 )->fetchAssoc();
 
-// Server warnings
-// Note that security support for 5.6 ends after security support for 7.0
-$server_warnings = [];
-if (
-	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2018-12-31' ||
-	PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2018-12-03' ||
-	PHP_VERSION_ID < 70200 && date('Y-m-d') >= '2019-12-01'
-) {
-	$server_warnings[] =
-		I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
-		'<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
-} elseif (
-	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
-	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03' ||
-	PHP_VERSION_ID < 70200 && date('Y-m-d') >= '2018-12-01'
-) {
-	$server_warnings[] =
-		I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) .
-		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
-}
-
 $config_modules = array_filter(
 	Module::getInstalledModules('disabled'),
 	function (AbstractModule $module) { return $module instanceof ModuleConfigInterface; }
@@ -584,8 +563,7 @@ $config_modules = array_filter($config_modules, function(AbstractModule $module)
 
 echo View::make('admin/dashboard', [
 	'title'            => $controller->getPageTitle(),
-	'server_warnings'  => $server_warnings,
-	'update_avilable'  => $update_available,
+	'server_warnings'  => $controller->serverWarnings(),
 	'latest_version'   => $latest_version,
 	'update_available' => $update_available,
 	'unapproved'       => $unapproved,
