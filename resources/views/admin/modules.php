@@ -34,7 +34,7 @@
 <form method="post">
 	<input type="hidden" name="action" value="update_mods">
 	<?= Filter::getCsrf() ?>
-	<table class="table table-bordered table-hover table-sm table-module-administration" data-paging="false" x-data-order="[[0, &quot;asc&quot;]]">
+	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true"">
 		<caption class="sr-only">
 			<?= I18N::translate('Module administration') ?>
 		</caption>
@@ -46,7 +46,7 @@
 				<th>
 					<?= I18N::translate('Enabled') ?>
 				</th>
-				<th class="d-none d-sm-table-cell">
+				<th class="d-none d-sm-table-cell" data-orderable="false">
 					<?= I18N::translate('Description') ?>
 				</th>
 				<th class="d-none d-sm-table-cell">
