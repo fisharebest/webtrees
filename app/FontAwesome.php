@@ -48,6 +48,16 @@ class FontAwesome extends Html {
 		'arrow-end'     => 'fa fa-arrow-end wt-icon-arrow-end',
 		'arrow-start'   => 'fa fa-arrow-start wt-icon-arrow-start',
 		'arrow-up'      => 'fa fa-arrow-up wt-icon-arrow-up',
+		// Modules
+		'block'         => 'fa fa-th-list wt-icon-block',
+		'block-user'    => 'fa fa-user wt-icon-block-user',
+		'block-tree'    => 'fa fa-tree wt-icon-block-tree',
+		'chart'         => 'fa fa-share-alt wt-icon-chart',
+		'menu'          => 'fa fa-list-ul wt-icon-menu',
+		'report'        => 'fa fa-file wt-icon-report',
+		'sidebar'       => 'fa fa-th-large wt-icon-sidebar',
+		'tab'           => 'fa fa-folder wt-icon-tab',
+		'theme'         => 'fa fa-paint-brush wt-icon-theme',
 		// GEDCOM records
 		'family'        => 'fa fa-users wt-icon-family',
 		'individual'    => 'fa fa-user wt-icon-individual',
