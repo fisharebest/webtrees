@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-26 21:57+0000\n"
+"PO-Revision-Date: 2017-10-28 21:57+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -10412,7 +10412,7 @@ msgstr ""
 #: setup.php:129
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Ebéndisi PHP “%s” ekúfí. Okokí kofándisa webtrees tɛ́ kín'o yangó ekolamusama. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
@@ -13518,7 +13518,7 @@ msgstr ""
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "Mokala mwa <b>nkómbó</b> ezalí na nkómbó mibimba ya bato, ndenge ikákolámákí tǒ ikɔ́tisámákí. Óyo ezalí loléngé nkómbó ekolakisama na etálelo. Ekosálela nkomá ya molɔngɔ́ mwa mabótá ilongobání mpɔ̂ na koyéba biteni bya nkómbó bikɛsɛní."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -14277,22 +14277,22 @@ msgstr ""
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na nkómbó kobakisa/kobɔngisa ya etúno . Sɔ́kí ozalí kosálela afabɛ́ non-Latin lokóla Hebrew, Greek, Cyrillic tǒ Arabic, osengélí kobakisa bwéta lokóla _HEB, ROMN, FONE, etc. mpɔ̂ na kopésa yɔ̌ ndingisa ya kobómba nkómbó na afabɛ́ ikɛsɛ́ní."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi bwa libótá lya sika. Na ndakisa sɔ́kí LIBA ezalí na molɔngɔ́, kasi mikala mya dáti mpé esiká ya libála mikolakisama na etúno."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi bwa libótá lya sika. Na ndakisa sɔ́kí MBOT ezalí na molɔngɔ́, kasi mikala mya dáti mpé esiká ya mbótama mikolakisama na etúno."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi tǒ bobɔngisi nkómbó ya bisiká . Sɔ́kí ozalí kosálela afabɛ́ non-Latin lokóla Hebrew, Greek, Cyrillic tǒ Arabic, osengélí kobakisa bwéta lokóla _HEB, ROMN, FONE, etc. mpɔ̂ na kopésa yɔ̌ ndingisa ya kobómba nkómbó ya bisiká na afabɛ́ ikɛsɛ́ní."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14323,7 +14323,7 @@ msgstr ""
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na mabótá. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya libótá\""
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
