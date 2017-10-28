@@ -8,7 +8,7 @@
 <!-- SERVER WARNINGS -->
 <?php if (!empty($server_warnings)): ?>
 	<div class="card">
-		<div class="card-header" role="tab" id="card-server-header">
+		<div class="card-header">
 			<h2 class="mb-0">
 				<?= I18N::translate('Server information') ?>
 			</h2>
@@ -23,10 +23,13 @@
 <?php endif ?>
 
 <!-- WEBTREES VERSION -->
-<div class="card mb-4 <?= Auth::isAdmin() && $update_available ? 'card-outline-danger' : '' ?>">
-	<div class="card-header" role="tab" id="card-serever-version">
+<div class="card mb-4">
+	<div class="card-header">
 		<h2 class="mb-0">
-			<?= WT_WEBTREES ?> <?= WT_VERSION ?>
+			<?= WT_WEBTREES ?>
+			<span class="badge badge-secondary">
+				<?= WT_VERSION ?>
+			</span>
 		</h2>
 	</div>
 	<div class="card-body">
@@ -38,7 +41,7 @@
 			<p>
 				<?php if ($latest_version === ''): ?>
 					<?= I18N::translate('No upgrade information is available.') ?>
-				<?php elseif ($update_available): ?>
+				<?php elseif (version_compare(WT_VERSION, $latest_version) < 0): ?>
 					<?= I18N::translate('A new version of webtrees is available.') ?>
 					<a href="admin_site_upgrade.php" class="error">
 						<?= /* I18N: %s is a version number */
@@ -54,12 +57,12 @@
 
 <!-- FAMILY TREES -->
 <div class="card mb-4 <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
-	<div class="card-header" role="tab" id="card-trees-header">
+	<div class="card-header">
 		<h2 class="mb-0">
 			<?= I18N::translate('Family trees') ?>
-			<a href="admin_trees_manage.php" class="badge badge-primary">
-				<?= FontAwesome::decorativeIcon('preferences') ?>
-			</a>
+			<span class="badge badge-secondary">
+					<?= I18N::number(count($all_trees)) ?>
+				</span>
 		</h2>
 	</div>
 	<div class="card-body">
@@ -169,8 +172,6 @@
 				<tr>
 					<td>
 						<?= I18N::translate('Total') ?>
-						-
-						<?= I18N::plural('%s family tree', '%s family trees', count($all_trees), I18N::number(count($all_trees))) ?>
 					</td>
 					<td class="text-right">
 						<?= I18N::number(array_sum($changes)) ?>
@@ -202,9 +203,12 @@
 <!-- USERS -->
 <?php if (Auth::isAdmin()): ?>
 	<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
-		<div class="card-header" role="tab" id="card-users-header">
+		<div class="card-header">
 			<h2 class="mb-0">
 				<?= I18N::translate('Users') ?>
+				<span class="badge badge-secondary">
+					<?= I18N::number(count($all_users)) ?>
+				</span>
 			</h2>
 		</div>
 		<div class="card-body">
@@ -214,24 +218,14 @@
 				</caption>
 				<tbody>
 					<tr>
-						<th class="col-xs-3">
-							<?= I18N::translate('Total number of users') ?>
-						</th>
-						<td class="col-xs-9">
-							<a href="admin_users.php">
-								<?= I18N::number($total_users) ?>
-							</a>
-						</td>
-					</tr>
-					<tr>
 						<th>
 							<?= I18N::translate('Administrators') ?>
 						</th>
 						<td>
 							<?php foreach ($administrators as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-									<?= Html::escape($user->real_name) ?>
+								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
 						</td>
@@ -243,8 +237,8 @@
 						<td>
 							<?php foreach ($managers as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-									<?= Html::escape($user->real_name) ?>
+								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
 						</td>
@@ -256,8 +250,8 @@
 						<td>
 							<?php foreach ($moderators as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-									<?= Html::escape($user->real_name) ?>
+								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
 						</td>
@@ -269,8 +263,8 @@
 						<td>
 							<?php foreach ($unverified as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-									<?= Html::escape($user->real_name) ?>
+								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
 						</td>
@@ -282,8 +276,8 @@
 						<td>
 							<?php foreach ($unapproved as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->user_id ?>" dir="auto">
-									<?= Html::escape($user->real_name) ?>
+								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
 						</td>
@@ -296,17 +290,17 @@
 
 <!-- MODULES -->
 <div class="card mb-4">
-	<div class="card-header" role="tab" id="card-old-files-header">
+	<div class="card-header">
 		<h2 class="mb-0">
 			<?= I18N::translate('Modules') ?>
+			<span class="badge badge-secondary">
+				<?= I18N::number(count($all_modules)) ?>
+			</span>
 		</h2>
 	</div>
 	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-6">
-				<a href="admin_modules.php">
-					<?= I18N::translate('Module administration') ?>
-				</a>
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
@@ -347,7 +341,6 @@
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<?= I18N::translate('Preferences') ?>
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
@@ -366,7 +359,7 @@
 <!-- OLD FILES -->
 <?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
 	<div class="card mb-4 card-outline-danger">
-		<div class="card-header" role="tab" id="card-old-files-header">
+		<div class="card-header">
 			<h2 class="mb-0">
 				<?= I18N::translate('Old files found') ?>
 			</h2>

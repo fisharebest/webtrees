@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
@@ -157,7 +158,7 @@ class Module {
 	 * @param Tree   $tree
 	 * @param string $component The type of module, such as "tab", "report" or "menu"
 	 *
-	 * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]
+	 * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
 	 */
 	private static function getActiveModulesByComponent(Tree $tree, $component) {
 		$module_names = Database::prepare(
@@ -261,6 +262,27 @@ class Module {
 	 */
 	public static function isActiveChart(Tree $tree, $module) {
 		return array_key_exists($module, self::getActiveModulesByComponent($tree, 'chart'));
+	}
+
+	/**
+	 * Get a list of module names which have configuration options.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return ModuleConfigInterface[]
+	 */
+	public static function configurableModules() {
+		$modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module) {
+				return $module instanceof ModuleConfigInterface;
+			}
+		);
+
+		// Exclude disabled modules
+		$enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
+
+		return array_filter($modules, function(AbstractModule $module) use ($enabled_modules) {
+			return in_array($module->getName(), $enabled_modules);
+		});
 	}
 
 	/**

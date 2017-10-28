@@ -252,7 +252,7 @@ case 'load_json':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal    = User::count();
+	$recordsTotal    = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
