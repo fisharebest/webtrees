@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-28 21:57+0000\n"
+"PO-Revision-Date: 2017-10-29 13:37+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -10382,17 +10382,17 @@ msgstr "Mayémi ma moto"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "Nkóló"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr ""
+msgstr "Nkóló"
 
 #: app/GedcomCode/GedcomCodeRela.php:208
 msgctxt "MALE"
 msgid "Owner"
-msgstr ""
+msgstr "Nkóló"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:106
@@ -10402,12 +10402,12 @@ msgstr "Nsima nzánga"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP ekángí Kásá-kásá likoló na esúkya na yangó."
+msgstr "PHP ekángí Kásá-kásá likoló na ebéndisi na yangó."
 
 #: setup.php:140
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Ebéndisi PHP “%1$s” ekúfí. Na bozángi bwangó, bisála bilandí bikosála tɛ́: %2$s. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
 
 #: setup.php:129
 #, php-format
@@ -10417,7 +10417,7 @@ msgstr "Ebéndisi PHP “%s” ekúfí. Okokí kofándisa webtrees tɛ́ kín'o 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
 msgid "PHP failed to write to disk."
-msgstr ""
+msgstr "PHP elóngí kokoma na pálaki tɛ́."
 
 #: admin_site_info.php:51
 msgid "PHP information"
@@ -10426,12 +10426,12 @@ msgstr "Nsango ya PHP"
 #: setup.php:149
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Bizalela bya PHP “%1$s” ekúfí. Na bozángi byangó, bisála bilandí bikosála tɛ́: %2$s. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:218
 msgid "PHP time limit"
-msgstr ""
+msgstr "Ndelo ya ntángo ya PHP"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -10452,7 +10452,7 @@ msgstr "Lonkásá"
 #: medialist.php:245
 #, php-format
 msgid "Page %s of %s"
-msgstr "Lonkásá %s káti na %s"
+msgstr "Lonkásá %s ya %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10474,7 +10474,7 @@ msgstr "Monɛ́nɛ mwa lonkásá"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1942
 msgid "Painting"
-msgstr ""
+msgstr "Lángi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
@@ -14314,7 +14314,7 @@ msgstr ""
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
 msgid "This is the initial value for the “show details” option on the charts."
-msgstr ""
+msgstr "Óyo ezalí motúya mwa yambo mpɔ̂ na bopɔni bwa mayémi \"kolakisa bikákoli\"."
 
 #: admin.php:637 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14323,42 +14323,42 @@ msgstr ""
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na mabótá. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya libótá\""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na mabótá. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya libótá\"."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bato. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya moto\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bibómbelo. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya ebómbelo\"."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bibandela. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya ebandela\"."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na mabótá. Na ndakisa sɔ́kí LIBA ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi LIBA koleka mɔ̌kɔ́ tɛ́ na libótá. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya libótá\"."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bato. Na ndakisa sɔ́kí MBOT ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi MBOT koleka mɔ̌kɔ́ tɛ́ na moto. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya moto\"."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bibómbelo. Na ndakisa sɔ́kí NKOM ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi NKOM koleka mɔ̌kɔ́ tɛ́ na ebómbelo. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya ebómbelo\"."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr ""
+msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bibandela. Na ndakisa sɔ́kí TITL ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi TITL koleka mɔ̌kɔ́ tɛ́ na ebandela. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya edandela\"."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
