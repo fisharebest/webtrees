@@ -473,7 +473,7 @@ class AdminController extends PageController {
 			->setPageTitle(I18N::translate('Control panel'))
 			->pageHeader();
 
-		echo View::make('admin/dashboard', [
+		echo View::make('admin/control-panel', [
 			'title'           => $this->getPageTitle(),
 			'server_warnings' => $this->serverWarnings(),
 			'latest_version'  => $this->latestVersion(),

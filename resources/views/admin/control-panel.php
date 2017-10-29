@@ -212,78 +212,23 @@
 			</h2>
 		</div>
 		<div class="card-body">
-			<table class="table table-responsive table-sm">
-				<caption class="sr-only">
-					<?= I18N::translate('Users') ?>
-				</caption>
-				<tbody>
-					<tr>
-						<th>
-							<?= I18N::translate('Administrators') ?>
-						</th>
-						<td>
-							<?php foreach ($administrators as $n => $user): ?>
+			<dl class="row">
+				<?php foreach([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list): ?>
+					<?php if (!empty($list)): ?>
+						<dt class="col-sm-3">
+							<?= $label ?>
+						</dt>
+						<dd class="col-sm-9">
+							<?php foreach ($list as $n => $user): ?>
 								<?= $n ? I18N::$list_separator : '' ?>
 								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
 									<?= Html::escape($user->getRealName()) ?>
 								</a>
 							<?php endforeach ?>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<?= I18N::translate('Managers') ?>
-						</th>
-						<td>
-							<?php foreach ($managers as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-									<?= Html::escape($user->getRealName()) ?>
-								</a>
-							<?php endforeach ?>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<?= I18N::translate('Moderators') ?>
-						</th>
-						<td>
-							<?php foreach ($moderators as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-									<?= Html::escape($user->getRealName()) ?>
-								</a>
-							<?php endforeach ?>
-						</td>
-					</tr>
-					<tr class="<?= $unverified ? 'danger' : '' ?>">
-						<th>
-							<?= I18N::translate('Not verified by the user') ?>
-						</th>
-						<td>
-							<?php foreach ($unverified as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-									<?= Html::escape($user->getRealName()) ?>
-								</a>
-							<?php endforeach ?>
-						</td>
-					</tr>
-					<tr class="<?= $unapproved ? 'danger' : '' ?>">
-						<th>
-							<?= I18N::translate('Not approved by an administrator') ?>
-						</th>
-						<td>
-							<?php foreach ($unapproved as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-									<?= Html::escape($user->getRealName()) ?>
-								</a>
-							<?php endforeach ?>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+						</dd>
+					<?php endif ?>
+				<?php endforeach ?>
+			</dl>
 		</div>
 	</div>
 <?php endif ?>
