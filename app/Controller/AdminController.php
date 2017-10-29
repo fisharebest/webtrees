@@ -499,6 +499,27 @@ class AdminController extends PageController {
 	}
 
 	/**
+	 * SHow the administrator a list of modules.
+	 */
+	public function modules() {
+		$this
+			->restrictAccess(Auth::isManager($this->tree()))
+			->setPageTitle(I18N::translate('Module administration'))
+			->pageHeader()
+			->addInlineJavascript('$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});');
+
+		$module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+
+		echo View::make('admin/modules', [
+			'title'             => $this->getPageTitle(),
+			'modules'           => Module::getInstalledModules('disabled'),
+			'module_status'     => $module_status,
+			'deleted_modules'   => $this->deletedModuleNames(),
+			'core_module_names' => Module::getCoreModuleNames(),
+		]);
+	}
+
+	/**
 	 * Generate a list of module names which exist in the database but not on disk.
 	 *
 	 * @return string[]

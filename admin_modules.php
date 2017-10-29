@@ -21,8 +21,7 @@ require 'includes/session.php';
 
 $controller = new AdminController;
 $controller
-	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('Module administration'));
+	->restrictAccess(Auth::isAdmin());
 
 $modules       = Module::getInstalledModules('disabled');
 $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
@@ -72,16 +71,4 @@ if (Filter::post('action') === 'delete' && Filter::checkCsrf()) {
 	return;
 }
 
-$controller
-	->pageHeader()
-	->addInlineJavascript('
-		$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});
-	');
-
-echo View::make('admin/modules', [
-	'title'             => $controller->getPageTitle(),
-	'modules'           => $modules,
-	'module_status'     => $module_status,
-	'deleted_modules'   => $controller->deletedModuleNames(),
-	'core_module_names' => Module::getCoreModuleNames(),
-]);
+$controller->modules();
