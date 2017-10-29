@@ -16,8 +16,45 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\AdminController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 require 'includes/session.php';
 
+// The HTTP request.
+$request = Request::createFromGlobals();
+$method  = $request->getMethod();
+$route   = $request->get('route');
+
+// POST request - check the CSRF token.
+if ($method === 'POST' && !Filter::checkCsrf()) {
+	$referer_url = $request->headers->get('referer', 'index.php');
+
+	return (new RedirectResponse($referer_url))->prepare($request)->send();
+}
+
 $controller = new AdminController;
-$controller->dashboard();
+
+// Route the request to a controller action.
+if (Auth::isManager($controller->tree())) {
+	switch ($method . ':' . $route) {
+	case '':
+	}
+}
+
+if (Auth::isAdmin()) {
+	switch ($method . ':' . $route) {
+	default:
+	case 'GET:control-panel':
+		return $controller->controlPanel();
+
+	case 'GET:control-panel-manager':
+		return $controller->controlPanelManager();
+
+	case 'GET:modules':
+
+	}
+}
+
+// No route matched?
+return (new RedirectResponse('index.php'))->prepare($request)->send();

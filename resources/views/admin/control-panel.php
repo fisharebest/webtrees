@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -37,21 +36,19 @@
 			<?= /* I18N: %s is a URL/link to the project website */
 			I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
 		</p>
-		<?php if (Auth::isAdmin()): ?>
-			<p>
-				<?php if ($latest_version === ''): ?>
-					<?= I18N::translate('No upgrade information is available.') ?>
-				<?php elseif (version_compare(WT_VERSION, $latest_version) < 0): ?>
-					<?= I18N::translate('A new version of webtrees is available.') ?>
-					<a href="admin_site_upgrade.php" class="error">
-						<?= /* I18N: %s is a version number */
-						I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
-					</a>
-				<?php else: ?>
-					<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
-				<?php endif ?>
-			</p>
-		<?php endif ?>
+		<p>
+			<?php if ($latest_version === ''): ?>
+				<?= I18N::translate('No upgrade information is available.') ?>
+			<?php elseif (version_compare(WT_VERSION, $latest_version) < 0): ?>
+				<?= I18N::translate('A new version of webtrees is available.') ?>
+				<a href="admin_site_upgrade.php" class="error">
+					<?= /* I18N: %s is a version number */
+					I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
+				</a>
+			<?php else: ?>
+				<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
+			<?php endif ?>
+		</p>
 	</div>
 </div>
 
@@ -201,37 +198,35 @@
 </div>
 
 <!-- USERS -->
-<?php if (Auth::isAdmin()): ?>
-	<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
-		<div class="card-header">
-			<h2 class="mb-0">
-				<?= I18N::translate('Users') ?>
-				<span class="badge badge-secondary">
+<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
+	<div class="card-header">
+		<h2 class="mb-0">
+			<?= I18N::translate('Users') ?>
+			<span class="badge badge-secondary">
 					<?= I18N::number(count($all_users)) ?>
 				</span>
-			</h2>
-		</div>
-		<div class="card-body">
-			<dl class="row">
-				<?php foreach([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list): ?>
-					<?php if (!empty($list)): ?>
-						<dt class="col-sm-3">
-							<?= $label ?>
-						</dt>
-						<dd class="col-sm-9">
-							<?php foreach ($list as $n => $user): ?>
-								<?= $n ? I18N::$list_separator : '' ?>
-								<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-									<?= Html::escape($user->getRealName()) ?>
-								</a>
-							<?php endforeach ?>
-						</dd>
-					<?php endif ?>
-				<?php endforeach ?>
-			</dl>
-		</div>
+		</h2>
 	</div>
-<?php endif ?>
+	<div class="card-body">
+		<dl class="row">
+			<?php foreach([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list): ?>
+				<?php if (!empty($list)): ?>
+					<dt class="col-sm-3">
+						<?= $label ?>
+					</dt>
+					<dd class="col-sm-9">
+						<?php foreach ($list as $n => $user): ?>
+							<?= $n ? I18N::$list_separator : '' ?>
+							<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+								<?= Html::escape($user->getRealName()) ?>
+							</a>
+						<?php endforeach ?>
+					</dd>
+				<?php endif ?>
+			<?php endforeach ?>
+		</dl>
+	</div>
+</div>
 
 <!-- MODULES -->
 <div class="card mb-4">
@@ -239,8 +234,8 @@
 		<h2 class="mb-0">
 			<?= I18N::translate('Modules') ?>
 			<span class="badge badge-secondary">
-				<?= I18N::number(count($all_modules)) ?>
-			</span>
+					<?= I18N::number(count($all_modules)) ?>
+				</span>
 		</h2>
 	</div>
 	<div class="card-body">
@@ -302,7 +297,7 @@
 </div>
 
 <!-- OLD FILES -->
-<?php if (Auth::isAdmin() && !empty($files_to_delete)): ?>
+<?php if (!empty($files_to_delete)): ?>
 	<div class="card mb-4 card-outline-danger">
 		<div class="card-header">
 			<h2 class="mb-0">

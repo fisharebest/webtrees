@@ -465,9 +465,9 @@ class AdminController extends PageController {
 	];
 
 	/**
-	 * The dashboard shows a summary of the site and links to admin functions.
+	 * The control panel shows a summary of the site and links to admin functions.
 	 */
-	public function dashboard() {
+	public function controlPanel() {
 		$this
 			->restrictAccess(Auth::isManager($this->tree()))
 			->setPageTitle(I18N::translate('Control panel'))
@@ -495,6 +495,29 @@ class AdminController extends PageController {
 			'all_modules'     => Module::getInstalledModules('disabled'),
 			'deleted_modules' => $this->deletedModuleNames(),
 			'config_modules'  => Module::configurableModules(),
+		]);
+	}
+
+	/**
+	 * Managers see a restricted version of the contol panel.
+	 */
+	public function controlPanelManager() {
+		$this
+			->setPageTitle(I18N::translate('Control panel'))
+			->pageHeader();
+
+		$all_trees = array_filter(Tree::getAll(), function (Tree $tree) { return Auth::isManager($tree); });
+
+		echo View::make('admin/control-panel-manager', [
+			'title'           => $this->getPageTitle(),
+			'all_trees'       => $all_trees,
+			'changes'         => $this->totalChanges(),
+			'individuals'     => $this->totalIndividuals(),
+			'families'        => $this->totalFamilies(),
+			'sources'         => $this->totalSources(),
+			'media'           => $this->totalMediaObjects(),
+			'repositories'    => $this->totalRepositories(),
+			'notes'           => $this->totalNotes(),
 		]);
 	}
 
