@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-10-29 13:37+0000\n"
+"PO-Revision-Date: 2017-10-30 19:53+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1392,7 +1392,7 @@ msgstr "Kobakisa lisapo lya bato o káti ya nzeté ya libótá."
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Kobakisa ntáká esiká mokɔlɔ́tɔ moláí esúkisámí"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:154 app/Module/ClippingsCartModule.php:416
@@ -13547,7 +13547,7 @@ msgstr ""
 
 #: admin_media_upload.php:219
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
+msgstr "Kásá-kásá ya bopanzi nsango ozalí kotómbisa ekokí, mpé ekosengéla kobêngama na nkómbó na esálela mokaboli ya kokɛsɛ́nɛ na óyo ya esálela ya ndáko ya yɔ̌. Óyo ezalí mpɔ̂ mbala míngi nkómbó ya kásá-kásá na esálela ya ndáko ezalí na ntína mpɔ̂ na yɔ̌ kasi na ntína mokɛ́ koleka mpɔ̂ na batáli ya website eye. Okanisa mpé likokí mpɔ̂ na yɔ̌ tǒ moto mosúsu ya komeka kotómbisa kásá-kásá ikɛsɛ́ní ibêngamí na nkómbó “granny.jpg“.<br><br>Na mokala moye, okotíya nkómbó ya sika ya kásá-kásá ozalí kotómbisa. Nkómbó otíyé ekosálelama mpé mpɔ̂ na nkómbó ya elílí, eye ekokí kotómbisama na bokabwani tǒ komikelama yangó mɔ̌kɔ́. Ozali na ntína ya kotíya ebéndisi (jpg, gif, pdf, doc, etc.) ya kásá-kásá tɛ́. <br><br>Tíká mpámba mokala moye mpɔ̂ na kobómba nkómbó ya yambo ya kásá-kásá eye otómbisákí útá esálela ya ndáko ya yɔ̌."
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14113,7 +14113,7 @@ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakok�
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:339
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr ""
+msgstr "Óyo ezalí nkómbó ya esálela mokaboli SMTP. “localhost” elingí koloba éte mosóko mwa mail ezalí kosála na esálela mɔ̌kɔ́ lokóla esálela mokaboli web ya yɔ̌."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1045
@@ -14122,7 +14122,7 @@ msgstr ""
 
 #: admin_users.php:310 edituser.php:149 login.php:419 setup.php:427
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Óyo ezalí nkómbó na yɔ̌ ya sɔ̂lɔ́, loléngé olingí elakisama na etálelo."
 
 #: admin_trees_check.php:129
 msgid "This may be a mistake in your data."
