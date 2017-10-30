@@ -177,10 +177,6 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
-.wt-block-content {
-	overflow: auto;
-}
-
  /* my page chart enhancements */
 .wt-block-content-charts {
 	display: flex;
@@ -195,10 +191,6 @@
 [dir=rtl] .wt-block-content-charts-block {
     flex-flow: row;
 }
-
-
-
-
 
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
