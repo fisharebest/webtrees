@@ -617,7 +617,67 @@ class Functions {
 			}
 		}
 	}
-
+	
+	/**
+	 * A variation on cousin_name(), for constructs such as “great-nephew of sixth degree”
+	 * Currently used only by German relationship names.
+	 *
+	 * @param int $n
+	 * @param string $sex
+	 * @param string $relation
+	 *
+	 * @return string
+	 */
+	public static function cousinName3($n, $sex, $relation) {
+		switch ($sex) {
+			case 'M':
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('MALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('MALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('MALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('MALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('MALE', '%s of fifth degree', $relation);
+					default:
+						return I18N::translateContext('MALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+			case 'F':
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('FEMALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('FEMALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('FEMALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('FEMALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('FEMALE', '%s of fifth degree', $relation);
+					default: // I18N: A Spanish relationship name, such as third great-nephew
+						return I18N::translateContext('FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+			default:
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('MALE/FEMALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('MALE/FEMALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('MALE/FEMALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('MALE/FEMALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('MALE/FEMALE', '%s of fifth degree', $relation);
+					default: // I18N: A Spanish relationship name, such as third great-nephew
+						return I18N::translateContext('MALE/FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+		}
+	}
+	
 	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
 	protected static $relationshipsCache = [];
 
@@ -1611,6 +1671,7 @@ class Functions {
 				default:
 				return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 4));
 				}
+				case 'de':
 				case 'pl':
 					switch ($sex2) {
 					case 'M':
@@ -1761,6 +1822,7 @@ class Functions {
 				//
 				// Need to find out which languages use which rules.
 				switch (WT_LOCALE) {
+				case 'de':
 				case 'pl': // Source: Lukasz Wilenski
 				switch ($sex2) {
 				case 'M':
@@ -2066,6 +2128,24 @@ class Functions {
 					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 					}
 					}
+			case 'de':
+				// Source: Richard Cissee. https://de.wikipedia.org/wiki/Verwandtschaftsbeziehung
+				if ($down == $up) {
+					return self::cousinName($cousin, $sex2);
+				} elseif ($down < $up) {
+					$relevantAscent = substr($ascent, $cousin*3);
+					switch ($sex2) {							
+					case 'M':
+					return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'bro', null, null));
+					case 'F':
+					return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sis', null, null));
+					default:
+					return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sib', null, null));
+					}
+				} else {
+					$relevantDescent = substr($descent, $cousin*3);
+					return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $relevantDescent, null, null));
+				}	
 			case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 			case 'en_GB':
 			case 'en_US':
@@ -2120,12 +2200,37 @@ class Functions {
 		$path1        = substr($path, 0, 3);
 		$path2        = substr($path, 3);
 		while ($path2) {
-			$tmp = I18N::translate(
-			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
-				'%1$s’s %2$s',
-				self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
-				self::getRelationshipNameFromPath($path2, null, null)
-			);
+			switch (WT_LOCALE) {					
+				case 'de':
+					//For relationship names where the first part ends with 's' (such as 'Tante 2. Grades'),
+					//we have to construct the relationship name in a different way than usual.
+					//This is grammatically still somewhat dubious, 
+					//but proper construction of the genitive case would be even more complicated. 				
+					$sub = self::getRelationshipNameFromPath($path1, null, null);
+					if (substr($sub, -1) === 's') {
+						$tmp = I18N::translate(
+							// I18N: A complex relationship, such as “third-cousin’s great-uncle”. First part ends with “s”
+							'%1$s’ %2$s',
+							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+							self::getRelationshipNameFromPath($path2, null, null)
+						);					
+					} else {
+						$tmp = I18N::translate(
+							// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+							'%1$s’s %2$s',
+							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+							self::getRelationshipNameFromPath($path2, null, null)
+						);
+					}
+					break;
+				default:
+					$tmp = I18N::translate(
+						// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+						'%1$s’s %2$s',
+						self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+						self::getRelationshipNameFromPath($path2, null, null)
+					);
+			}
 			if (!$relationship || strlen($tmp) < strlen($relationship)) {
 				$relationship = $tmp;
 			}
