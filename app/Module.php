@@ -24,11 +24,39 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use League\Flysystem\Exception;
 
 /**
  * Functions for managing and maintaining modules.
  */
 class Module {
+	/** @var AbstractModule[] */
+	private static $modules = [];
+
+	/**
+	 * Load a module from a file.  Since third-party modules may declare classes or functions,
+	 * we must only load each file once.
+	 *
+	 * @param string $file
+	 *
+	 * @return AbstractModule|null
+	 */
+	private static function loadModule($file) {
+		if (!array_key_exists($file, self::$modules)) {
+			self::$modules[$file] = null;
+			try {
+				$module = require $file;
+				if ($module instanceof AbstractModule) {
+					self::$modules[$file] = $module;
+				}
+			} catch (Exception $ex) {
+				Log::addErrorLog($ex->getMessage());
+			}
+		}
+
+		return self::$modules[$file];
+	}
+
 	/**
 	 * Get a list of all core modules.  We need to identify
 	 * third-party during upgrade and on the module admin page.
@@ -128,7 +156,7 @@ class Module {
 			$modules = [];
 			foreach ($module_names as $module_name) {
 				try {
-					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
+					$module = self::loadModule(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php');
 					if ($module instanceof AbstractModule) {
 						$modules[$module->getName()] = $module;
 					} else {
@@ -267,8 +295,6 @@ class Module {
 	/**
 	 * Get a list of module names which have configuration options.
 	 *
-	 * @param Tree $tree
-	 *
 	 * @return ModuleConfigInterface[]
 	 */
 	public static function configurableModules() {
@@ -371,7 +397,7 @@ class Module {
 
 		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
 			try {
-				$module = include $file;
+				$module = self::loadModule($file);
 				if ($module instanceof AbstractModule) {
 					$modules[$module->getName()] = $module;
 					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute([
