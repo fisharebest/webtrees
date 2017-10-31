@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-30 19:53+0000\n"
+"PO-Revision-Date: 2017-10-31 22:30+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -19164,21 +19164,21 @@ msgstr "nsima nzánga"
 
 #: app/Functions/Functions.php:691
 msgid "parent"
-msgstr "mobóbi"
+msgstr "mobóti"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
-msgstr ""
+msgstr "moníngá"
 
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "moníngá mwǎsí"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "moníngá mobáli"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19868,7 +19868,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa zómi"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:85
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr ""
+msgstr "Bisálisela bya bokangisi bwa sandúku ya bipɛ́sɛli na kása-kása “/data/config.ini.php” ezalí ntángo ínsɔ sémba"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:88
@@ -20023,7 +20023,7 @@ msgstr "eyebání tɛ́"
 
 #: app/Module/RelationshipsChartModule.php:148
 msgid "unlimited"
-msgstr "ezalí na nsúka tɛ́"
+msgstr "na nsúka tɛ́"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -20148,7 +20148,7 @@ msgstr "ɛ́ɛ́"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:91
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "Okokí kokangisa sandúku ya bipɛ́sɛli na bosáleli bisálisela, lokóla phpmyadmin"
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
