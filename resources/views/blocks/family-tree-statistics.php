@@ -43,7 +43,7 @@
 						<br>
 						<?= $stats->totalSexFemalesPercentage() ?>
 					</td>
-				</    >
+				</tr>
 			<?php endif ?>
 
 			<?php if ($stat_surname): ?>
