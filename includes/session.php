@@ -21,6 +21,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
 use Symfony\Component\HttpFoundation\Request;
+use Throwable;
 
 /**
  * We set the following globals
@@ -137,7 +138,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	throw new \ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 });
 
-set_exception_handler(function ($ex) {
+set_exception_handler(function (Throwable $ex) {
 	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
 	foreach ($ex->getTrace() as $level => $frame) {
