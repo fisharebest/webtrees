@@ -249,24 +249,6 @@ class Functions {
 	 */
 	public static function getCloseRelationshipName(Individual $individual1, Individual $individual2) {
 		if ($individual1 === $individual2) {
-			$label = '<i class="icon-selected"></i> ' . self::reflexivePronoun($individual1);
-		} else {
-			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
-		}
-
-		return $label;
-	}
-
-	/**
-	 * For facts on the individual/family pages.
-	 *
-	 * @param Individual $individual1
-	 * @param Individual $individual2
-	 *
-	 * @return string
-	 */
-	public static function getAssociateRelationshipName(Individual $individual1, Individual $individual2) {
-		if ($individual1 === $individual2) {
 			$label = self::reflexivePronoun($individual1);
 		} else {
 			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
@@ -294,16 +276,18 @@ class Functions {
 	}
 
 	/**
-	 * Get relationship between two individuals in the gedcom
+	 * Get relationship between two individuals in the gedcom.  This function
+	 * takes account of pending changes, so we can display names of newly added
+	 * relations.
 	 *
-	 * @param Individual $person1 The person to compute the relationship from
-	 * @param Individual $person2 The person to compute the relatiohip to
-	 * @param int $maxlength The maximum length of path
+	 * @param Individual $individual1 The person to compute the relationship from
+	 * @param Individual $individual2 The person to compute the relatiohip to
+	 * @param int        $maxlength   The maximum length of path
 	 *
 	 * @return array|bool An array of nodes on the relationship path, or false if no path found
 	 */
-	public static function getRelationship(Individual $person1, Individual $person2, $maxlength = 4) {
-		if ($person1 === $person2) {
+	public static function getRelationship(Individual $individual1, Individual $individual2, $maxlength = 4) {
+		if ($individual1 === $individual2) {
 			return false;
 		}
 
@@ -312,119 +296,95 @@ class Functions {
 		$child_codes   = ['M' => 'son', 'F' => 'dau', 'U' => 'chi'];
 		$sibling_codes = ['M' => 'bro', 'F' => 'sis', 'U' => 'sib'];
 
-		//-- current path nodes
-		$p1nodes = [];
-		//-- ids visited
-		$visited = [];
-
-		//-- set up first node for person1
-		$node1 = [
-			'path'      => [$person1],
-			'length'    => 0,
-			'indi'      => $person1,
-			'relations' => ['self'],
+		// Only examine each individual once
+		$visited= [
+			$individual1->getXref() => true,
 		];
-		$p1nodes[] = $node1;
 
-		$visited[$person1->getXref()] = true;
+		// Build paths out from the first individual
+		$paths = [[
+			'path'      => [$individual1],
+			'relations' => ['self'],
+		]];
 
-		$found = false;
-		while (!$found) {
-			//-- search the node list for the shortest path length
-			$shortest = -1;
-			foreach ($p1nodes as $index => $node) {
-				if ($shortest == -1) {
-					$shortest = $index;
-				} else {
-					$node1 = $p1nodes[$shortest];
-					if ($node1['length'] > $node['length']) {
-						$shortest = $index;
-					}
-				}
-			}
-			if ($shortest === -1) {
-				return false;
-			}
-			$node = $p1nodes[$shortest];
-			if ($maxlength == 0 || count($node['path']) <= $maxlength) {
-				$indi = $node['indi'];
-				//-- check all parents and siblings of this node
+		// Loop over paths of length 1, 2, 3, ...
+		while (!empty($paths) && $maxlength >= 0) {
+			$maxlength--;
+
+			foreach ($paths as $i => $path) {
+				// Try each new relation from the end of the path
+				$indi = $path['path'][count($path['path']) - 1];
+
+				// Parents and siblings
 				foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
 					$visited[$family->getXref()] = true;
 					foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 						if (!isset($visited[$spouse->getXref()])) {
-							$node1 = $node;
-							$node1['length']++;
-							$node1['path'][]      = $spouse;
-							$node1['indi']        = $spouse;
-							$node1['relations'][] = $parent_codes[$spouse->getSex()];
-							$p1nodes[]            = $node1;
-							if ($spouse === $person2) {
-								$found   = true;
-								$resnode = $node1;
+							$new_path = $path;
+							$new_path['path'][]      = $family;
+							$new_path['path'][]      = $spouse;
+							$new_path['relations'][] = $parent_codes[$spouse->getSex()];
+							if ($spouse === $individual2) {
+								return $new_path;
 							} else {
+								$paths[]                     = $new_path;
 								$visited[$spouse->getXref()] = true;
 							}
 						}
 					}
 					foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
-							$node1 = $node;
-							$node1['length']++;
-							$node1['path'][]      = $child;
-							$node1['indi']        = $child;
-							$node1['relations'][] = $sibling_codes[$child->getSex()];
-							$p1nodes[]            = $node1;
-							if ($child === $person2) {
-								$found   = true;
-								$resnode = $node1;
+							$new_path = $path;
+							$new_path['path'][]      = $family;
+							$new_path['path'][]      = $child;
+							$new_path['relations'][] = $sibling_codes[$child->getSex()];
+							if ($child === $individual2) {
+								return $new_path;
 							} else {
+								$paths[]                    = $new_path;
 								$visited[$child->getXref()] = true;
 							}
 						}
 					}
 				}
-				//-- check all spouses and children of this node
+
+				// Spouses and children
 				foreach ($indi->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
 					$visited[$family->getXref()] = true;
 					foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
-						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
-							$node1 = $node;
-							$node1['length']++;
-							$node1['path'][]      = $spouse;
-							$node1['indi']        = $spouse;
-							$node1['relations'][] = $spouse_codes[$spouse->getSex()];
-							$p1nodes[]            = $node1;
-							if ($spouse === $person2) {
-								$found   = true;
-								$resnode = $node1;
+						if (!isset($visited[$spouse->getXref()])) {
+							$new_path = $path;
+							$new_path['path'][]      = $family;
+							$new_path['path'][]      = $spouse;
+							$new_path['relations'][] = $spouse_codes[$spouse->getSex()];
+							if ($spouse === $individual2) {
+								return $new_path;
 							} else {
+								$paths[]                     = $new_path;
 								$visited[$spouse->getXref()] = true;
 							}
 						}
 					}
 					foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
-							$node1 = $node;
-							$node1['length']++;
-							$node1['path'][]      = $child;
-							$node1['indi']        = $child;
-							$node1['relations'][] = $child_codes[$child->getSex()];
-							$p1nodes[]            = $node1;
-							if ($child === $person2) {
-								$found   = true;
-								$resnode = $node1;
+							$new_path = $path;
+							$new_path['path'][]      = $family;
+							$new_path['path'][]      = $child;
+							$new_path['relations'][] = $child_codes[$child->getSex()];
+							if ($child === $individual2) {
+								return $new_path;
 							} else {
+								$paths[]                    = $new_path;
 								$visited[$child->getXref()] = true;
 							}
 						}
 					}
 				}
+				unset($paths[$i]);
 			}
-			unset($p1nodes[$shortest]);
 		}
 
-		return $resnode;
+		return false;
 	}
 
 	/**

@@ -937,15 +937,6 @@ a:hover .nameZoom {
 	margin: 0.25em auto 0.6em;
 }
 
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
 .tvertline {
 	vertical-align: bottom;
 }
@@ -1051,8 +1042,8 @@ a:hover .nameZoom {
 	color: #f00;
 }
 
-.rela,
-.histo {
+.wt-relation-fact,
+.wt-historic-fact {
 	opacity: 0.8;
 }
 
@@ -1691,12 +1682,6 @@ a:hover .nameZoom {
 	margin-bottom: 2px;
 }
 
-.loading-image {
-	background: transparent url(images/loading-32x32.gif) 50% 50% no-repeat;
-	height: 50px;
-	margin: 50px;
-}
-
 .list-charts {
 	text-align: center;
 }
@@ -1740,15 +1725,6 @@ a:hover .nameZoom {
 	width: 33%;
 	text-align: center;
 	vertical-align: top;
-}
-
-/* Random picture block */
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
 }
 
 /* ==== Favourites block ===== */
@@ -2086,39 +2062,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-/* ======== Album tab =========*/
-.album-list {
-	list-style-type: none;
-}
-
-.album-list-item {
-	display: inline-block;
-	text-align: center;
-	padding: 0 12px;
-	height: 112px;
-	width: 120px;
-}
-
-.album-list-item a img {
-	max-height: 78px;
-	max-width: 100px;
-	height: auto;
-	width: auto;
-}
-
-.album-list-item a:hover div {
-	outline: thin solid #bdb071;
-}
-
-.album-image {
-	margin: auto;
-}
-
-.album-title {
-	padding-top: 4px;
-	width: 100%;
 }
 
 /* === jQuery.datatable styling general over-rides === */
@@ -2970,6 +2913,18 @@ div.faq_body {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/media.png);
+}
+
+.icon-media-next {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rdarrow.png);
+}
+
+.icon-media-play {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rarrow.png);
 }
 
 .icon-media-shuffle {

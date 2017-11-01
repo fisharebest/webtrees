@@ -18,16 +18,45 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use League\Flysystem\Exception;
 
 /**
  * Functions for managing and maintaining modules.
  */
 class Module {
+	/** @var AbstractModule[] */
+	private static $modules = [];
+
+	/**
+	 * Load a module from a file.  Since third-party modules may declare classes or functions,
+	 * we must only load each file once.
+	 *
+	 * @param string $file
+	 *
+	 * @return AbstractModule|null
+	 */
+	private static function loadModule($file) {
+		if (!array_key_exists($file, self::$modules)) {
+			self::$modules[$file] = null;
+			try {
+				$module = require $file;
+				if ($module instanceof AbstractModule) {
+					self::$modules[$file] = $module;
+				}
+			} catch (Exception $ex) {
+				Log::addErrorLog($ex->getMessage());
+			}
+		}
+
+		return self::$modules[$file];
+	}
+
 	/**
 	 * Get a list of all core modules.  We need to identify
 	 * third-party during upgrade and on the module admin page.
@@ -127,7 +156,7 @@ class Module {
 			$modules = [];
 			foreach ($module_names as $module_name) {
 				try {
-					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
+					$module = self::loadModule(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php');
 					if ($module instanceof AbstractModule) {
 						$modules[$module->getName()] = $module;
 					} else {
@@ -157,7 +186,7 @@ class Module {
 	 * @param Tree   $tree
 	 * @param string $component The type of module, such as "tab", "report" or "menu"
 	 *
-	 * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]
+	 * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
 	 */
 	private static function getActiveModulesByComponent(Tree $tree, $component) {
 		$module_names = Database::prepare(
@@ -264,6 +293,25 @@ class Module {
 	}
 
 	/**
+	 * Get a list of module names which have configuration options.
+	 *
+	 * @return ModuleConfigInterface[]
+	 */
+	public static function configurableModules() {
+		$modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module) {
+				return $module instanceof ModuleConfigInterface;
+			}
+		);
+
+		// Exclude disabled modules
+		$enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
+
+		return array_filter($modules, function(AbstractModule $module) use ($enabled_modules) {
+			return in_array($module->getName(), $enabled_modules);
+		});
+	}
+
+	/**
 	 * Get a list of modules which (a) provide a menu and (b) we have permission to see.
 	 *
 	 * @param Tree $tree
@@ -349,7 +397,7 @@ class Module {
 
 		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
 			try {
-				$module = include $file;
+				$module = self::loadModule($file);
 				if ($module instanceof AbstractModule) {
 					$modules[$module->getName()] = $module;
 					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute([

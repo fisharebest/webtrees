@@ -15,9 +15,19 @@
  */
 namespace Fisharebest\Webtrees;
 
-use HTMLPurifier;
-use HTMLPurifier_Config;
-use Michelf\MarkdownExtra;
+use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
+use Fisharebest\Webtrees\CommonMark\XrefExtension;
+use Fisharebest\Webtrees\CommonMark\XrefParser;
+use League\CommonMark\Block\Renderer\DocumentRenderer;
+use League\CommonMark\Block\Renderer\ParagraphRenderer;
+use League\CommonMark\Converter;
+use League\CommonMark\DocParser;
+use League\CommonMark\Environment;
+use League\CommonMark\HtmlRenderer;
+use League\CommonMark\Inline\Parser\AutolinkParser;
+use League\CommonMark\Inline\Renderer\LinkRenderer;
+use League\CommonMark\Inline\Renderer\TextRenderer;
+use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
  * Filter input and escape output.
@@ -41,55 +51,69 @@ class Filter {
 	public static function formatText($text, Tree $WT_TREE) {
 		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 		case 'markdown':
-			return '<div class="markdown" dir="auto">' . self::markdown($text) . '</div>';
+			return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
 		default:
-			return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
+			return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
 		}
 	}
 
 	/**
-	 * Escape a string for use in HTML, and additionally convert URLs to links.
+	 * Format a block of text, expanding URLs and XREFs.
 	 *
 	 * @param string $text
+	 * @param        Tree   tree
 	 *
 	 * @return string
 	 */
-	public static function expandUrls($text) {
-		return preg_replace_callback(
-			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
-			function ($m) {
-				return '<a href="' . $m[0] . '">' . $m[0] . '</a>';
-			},
-			Html::escape($text)
-		);
+	public static function expandUrls($text, Tree $tree) {
+		// If it looks like a URL, turn it into a markdown autolink.
+		$text = preg_replace('/' . addcslashes(self::URL_REGEX, '/') . '/', '<$0>', $text);
+
+		// Create a minimal commonmark processor - just add support for autolinks.
+		$environment = new Environment;
+		$environment->mergeConfig([
+			'renderer'           => [
+				'block_separator' => "\n",
+				'inner_separator' => "\n",
+				'soft_break'      => "\n",
+			],
+			'html_input'         => Environment::HTML_INPUT_ESCAPE,
+			'allow_unsafe_links' => true,
+		]);
+
+		$environment
+			->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer)
+			->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer)
+			->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer)
+			->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer)
+			->addInlineParser(new AutolinkParser);
+
+		$environment->addExtension(new CensusTableExtension);
+		$environment->addExtension(new XrefExtension($tree));
+
+		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
+
+		return $converter->convertToHtml($text);
 	}
 
 	/**
 	 * Format a block of text, using "Markdown".
 	 *
 	 * @param string $text
+	 * @param Tree   $tree
 	 *
 	 * @return string
 	 */
-	public static function markdown($text) {
-		$parser                       = new MarkdownExtra;
-		$parser->empty_element_suffix = '>';
-		$parser->no_markup            = true;
-		$text                         = $parser->transform($text);
+	public static function markdown($text, Tree $tree) {
+		$environment = Environment::createCommonMarkEnvironment();
+		$environment->mergeConfig(['html_input' => 'escape']);
+		$environment->addExtension(new TableExtension);
+		$environment->addExtension(new CensusTableExtension);
+		$environment->addExtension(new XrefExtension($tree));
 
-		// HTMLPurifier needs somewhere to write temporary files
-		$HTML_PURIFIER_CACHE_DIR = WT_DATA_DIR . 'html_purifier_cache';
+		$converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-		if (!is_dir($HTML_PURIFIER_CACHE_DIR)) {
-			mkdir($HTML_PURIFIER_CACHE_DIR);
-		}
-
-		$config = HTMLPurifier_Config::createDefault();
-		$config->set('Cache.SerializerPath', $HTML_PURIFIER_CACHE_DIR);
-		$purifier = new HTMLPurifier($config);
-		$text     = $purifier->purify($text);
-
-		return $text;
+		return $converter->convertToHtml($text);
 	}
 
 	/**
@@ -104,28 +128,18 @@ class Filter {
 	 */
 	private static function input($source, $variable, $regexp = null, $default = '') {
 		if ($regexp) {
-			return filter_input(
-				$source,
-				$variable,
-				FILTER_VALIDATE_REGEXP,
-				[
-					'options' => [
-						'regexp'  => '/^(' . $regexp . ')$/u',
-						'default' => $default,
-					],
-				]
-			);
+			return filter_input($source, $variable, FILTER_VALIDATE_REGEXP, [
+				'options' => [
+					'regexp'  => '/^(' . $regexp . ')$/u',
+					'default' => $default,
+				],
+			]);
 		} else {
-			$tmp = filter_input(
-				$source,
-				$variable,
-				FILTER_CALLBACK,
-				[
-					'options' => function ($x) {
-						return mb_check_encoding($x, 'UTF-8') ? $x : false;
-					},
-				]
-			);
+			$tmp = filter_input($source, $variable, FILTER_CALLBACK, [
+				'options' => function ($x) {
+					return mb_check_encoding($x, 'UTF-8') ? $x : false;
+				},
+			]);
 
 			return ($tmp === null || $tmp === false) ? $default : $tmp;
 		}
@@ -214,7 +228,13 @@ class Filter {
 	 * @return int
 	 */
 	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, [
+			'options' => [
+				'min_range' => $min,
+				'max_range' => $max,
+				'default'   => $default,
+			],
+		]);
 	}
 
 	/**
@@ -277,7 +297,13 @@ class Filter {
 	 * @return int
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, [
+			'options' => [
+				'min_range' => $min,
+				'max_range' => $max,
+				'default'   => $default,
+			],
+		]);
 	}
 
 	/**
@@ -319,8 +345,7 @@ class Filter {
 		// found via filter_input(INPUT_SERVER). Instead, they are found via
 		// filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
 		// we must use the superglobal directly.
-		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/',
-$_SERVER[$variable]))) {
+		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/', $_SERVER[$variable]))) {
 			return $_SERVER[$variable];
 		} else {
 			return $default;

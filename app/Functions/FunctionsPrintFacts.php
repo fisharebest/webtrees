@@ -113,17 +113,17 @@ class FunctionsPrintFacts {
 
 		// Event of close relative
 		if (preg_match('/^_[A-Z_]{3,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
-			$styleadd = trim($styleadd . ' rela');
+			$styleadd = trim($styleadd . ' wt-relation-fact collapse');
 		}
 
 		// Event of close associates
 		if ($fact->getFactId() == 'asso') {
-			$styleadd = trim($styleadd . ' rela');
+			$styleadd = trim($styleadd . ' wt-relation-fact collapse');
 		}
 
 		// historical facts
 		if ($fact->getFactId() == 'histo') {
-			$styleadd = trim($styleadd . ' histo');
+			$styleadd = trim($styleadd . ' wt-historic-fact collapse');
 		}
 
 		// Does this fact have a type?
@@ -166,7 +166,7 @@ class FunctionsPrintFacts {
 		}
 
 		echo '<tr class="', $styleadd, '">';
-		echo '<th scope="rpw">';
+		echo '<th scope="row">';
 
 		if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 			echo Theme::theme()->icon($fact), ' ';
@@ -284,7 +284,7 @@ class FunctionsPrintFacts {
 				echo '</div>';
 				break;
 		case 'PUBL': // Publication details might contain URLs.
-			echo '<div class="field">', Filter::expandUrls($fact->getValue()), '</div>';
+			echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
 			break;
 		case 'REPO':
 			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
@@ -452,7 +452,7 @@ class FunctionsPrintFacts {
 				}
 					break;
 			case 'CALN':
-				echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2]));
+				echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $record->getTree()));
 				break;
 			case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
 				echo GedcomTag::getLabelValue('FORM', $match[2]);
@@ -531,7 +531,7 @@ class FunctionsPrintFacts {
 
 				$values = ['<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>'];
 				foreach ($associates as $associate) {
-					$relationship_name = Functions::getAssociateRelationshipName($associate, $person);
+					$relationship_name = Functions::getCloseRelationshipName($associate, $person);
 					if (!$relationship_name) {
 						$relationship_name = GedcomTag::getLabel('RELA');
 					}
@@ -889,7 +889,7 @@ class FunctionsPrintFacts {
 		$html = '';
 
 		if ($textSOUR['PAGE']) {
-			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE']));
+			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $WT_TREE));
 		}
 
 		if ($textSOUR['EVEN']) {
@@ -1007,9 +1007,9 @@ class FunctionsPrintFacts {
 			}
 
 			if ($level >= 2) {
-				echo '<tr class="row_note2"><td class="descriptionbox rela ', $styleadd, ' width20">';
+				echo '<tr class="row_note2"><th scope="row" class="rela ', $styleadd, ' width20">';
 			} else {
-				echo '<tr><td class="descriptionbox ', $styleadd, ' width20">';
+				echo '<tr><th scope="row" class="', $styleadd, ' width20">';
 			}
 			if ($can_edit) {
 				if ($level < 2) {
@@ -1057,15 +1057,10 @@ class FunctionsPrintFacts {
 					}
 				}
 			}
-			echo '</td>';
+			echo '</th>';
 			if ($note) {
 				// Note objects
-				if (Module::getModuleByName('GEDFact_assistant')) {
-					// If Census assistant installed, allow it to format the note
-					$text = CensusAssistantModule::formatCensusNote($note);
-				} else {
-					$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
-				}
+				$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 			} else {
 				// Inline notes
 				$nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
@@ -1137,16 +1132,12 @@ class FunctionsPrintFacts {
 			$media = Media::getInstance($xref, $fact->getParent()->getTree());
 			// Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
 			if (!$media || $media->canShow()) {
+				echo '<tr>';
+				echo '<th scope="row" class="';
 				if ($level > 1) {
-					echo '<tr class="row_obje2">';
-				} else {
-					echo '<tr>';
+					echo 'rela ';
 				}
-				echo '<td class="descriptionbox';
-				if ($level > 1) {
-					echo ' rela';
-				}
-				echo ' ', $styleadd, ' width20">';
+				echo $styleadd, '">';
 				preg_match("/^\d (\w*)/", $factrec, $factname);
 				$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 				$factwords = explode(' ', $factlines[0]); // 1 BIRT Y
@@ -1169,12 +1160,12 @@ class FunctionsPrintFacts {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-				echo '</td>';
-				echo '<td class="optionbox ', $styleadd, ' wrap">';
+				echo '</th>';
+				echo '<td class="', $styleadd, '">';
 				if ($media) {
 					echo '<span class="field">';
 					echo $media->displayImage(100, 100, 'contain', []);
-					echo '<a href="' . $media->getHtmlUrl() . '">';
+					echo '<a href="' . $media->getHtmlUrl() . '"> ';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {
 						if ($name['type'] != 'TITL') {

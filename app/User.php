@@ -40,6 +40,69 @@ class User {
 	private static $cache = [];
 
 	/**
+	 * Create a new user object from a row in the database.
+	 *
+	 * @param stdclass $user A row from the wt_user table
+	 */
+	public function __construct(stdClass $user) {
+		$this->user_id   = $user->user_id;
+		$this->user_name = $user->user_name;
+		$this->real_name = $user->real_name;
+		$this->email     = $user->email;
+	}
+
+	/**
+	 * Create a new user.
+	 *
+	 * The calling code needs to check for duplicates identifiers before calling
+	 * this function.
+	 *
+	 * @param string $user_name
+	 * @param string $real_name
+	 * @param string $email
+	 * @param string $password
+	 *
+	 * @return User
+	 */
+	public static function create($user_name, $real_name, $email, $password) {
+		Database::prepare(
+			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
+		)->execute([
+			'user_name' => $user_name,
+			'real_name' => $real_name,
+			'email'     => $email,
+			'password'  => password_hash($password, PASSWORD_DEFAULT),
+		]);
+
+		// Set default blocks for this user
+		$user = self::findByIdentifier($user_name);
+		Database::prepare(
+			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
+			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
+		)->execute(['user_id' => $user->getUserId()]);
+
+		return $user;
+	}
+
+	/**
+	 * Delete a user
+	 */
+	public function delete() {
+		// Don't delete the logs.
+		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute([$this->user_id]);
+		// Take over the user’s pending changes. (What else could we do with them?)
+		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute([$this->user_id]);
+		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute([Auth::id(), $this->user_id]);
+		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
+	}
+
+	/**
 	 * Find the user with a specified user_id.
 	 *
 	 * @param int|null $user_id
@@ -59,23 +122,6 @@ class User {
 		}
 
 		return self::$cache[$user_id];
-	}
-
-	/**
-	 * Find the user with a specified user_name.
-	 *
-	 * @param string $user_name
-	 *
-	 * @return User|null
-	 */
-	public static function findByUserName($user_name) {
-		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
-		)->execute([
-			'user_name' => $user_name,
-		])->fetchOne();
-
-		return self::find($user_id);
 	}
 
 	/**
@@ -117,7 +163,7 @@ class User {
 	 *
 	 * @return User|null
 	 */
-	public static function findByGenealogyRecord(Individual $individual) {
+	public static function findByIndividual(Individual $individual) {
 		$user_id = Database::prepare(
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .
@@ -125,6 +171,23 @@ class User {
 		)->execute([
 			'tree_id' => $individual->getTree()->getTreeId(),
 			'xref'    => $individual->getXref(),
+		])->fetchOne();
+
+		return self::find($user_id);
+	}
+
+	/**
+	 * Find the user with a specified user_name.
+	 *
+	 * @param string $user_name
+	 *
+	 * @return User|null
+	 */
+	public static function findByUserName($user_name) {
+		$user_id = Database::prepare(
+			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
+		)->execute([
+			'user_name' => $user_name,
 		])->fetchOne();
 
 		return self::find($user_id);
@@ -147,71 +210,19 @@ class User {
 	}
 
 	/**
-	 * Create a new user.
-	 *
-	 * The calling code needs to check for duplicates identifiers before calling
-	 * this function.
-	 *
-	 * @param string $user_name
-	 * @param string $real_name
-	 * @param string $email
-	 * @param string $password
-	 *
-	 * @return User
-	 */
-	public static function create($user_name, $real_name, $email, $password) {
-		Database::prepare(
-			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
-		)->execute([
-			'user_name' => $user_name,
-			'real_name' => $real_name,
-			'email'     => $email,
-			'password'  => password_hash($password, PASSWORD_DEFAULT),
-		]);
-
-		// Set default blocks for this user
-		$user = self::findByIdentifier($user_name);
-		Database::prepare(
-			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
-			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
-		)->execute(['user_id' => $user->getUserId()]);
-
-		return $user;
-	}
-
-	/**
-	 * Get a count of all users.
-	 *
-	 * @return int
-	 */
-	public static function count() {
-		return (int) Database::prepare(
-			"SELECT SQL_CACHE COUNT(*)" .
-			" FROM `##user`" .
-			" WHERE user_id > 0"
-		)->fetchOne();
-	}
-
-	/**
 	 * Get a list of all users.
 	 *
 	 * @return User[]
 	 */
 	public static function all() {
-		$users = [];
-
 		$rows = Database::prepare(
 			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" WHERE user_id > 0" .
-			" ORDER BY user_name"
+			" ORDER BY real_name"
 		)->fetchAll();
 
-		foreach ($rows as $row) {
-			$users[] = new self($row);
-		}
-
-		return $users;
+		return array_map(function($row) { return new static($row); }, $rows);
 	}
 
 	/**
@@ -219,95 +230,16 @@ class User {
 	 *
 	 * @return User[]
 	 */
-	public static function allAdmins() {
+	public static function administrators() {
 		$rows = Database::prepare(
 			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##user_setting` USING (user_id)" .
-			" WHERE user_id > 0" .
-			"   AND setting_name = 'canadmin'" .
-			"   AND setting_value = '1'"
+			" WHERE user_id > 0 AND setting_name = 'canadmin' AND setting_value = '1'" .
+			" ORDER BY real_name"
 		)->fetchAll();
 
-		$users = [];
-		foreach ($rows as $row) {
-			$users[] = new self($row);
-		}
-
-		return $users;
-	}
-
-	/**
-	 * Get a list of all verified uses.
-	 *
-	 * @return User[]
-	 */
-	public static function allVerified() {
-		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
-			" FROM `##user`" .
-			" JOIN `##user_setting` USING (user_id)" .
-			" WHERE user_id > 0" .
-			"   AND setting_name = 'verified'" .
-			"   AND setting_value = '1'"
-		)->fetchAll();
-
-		$users = [];
-		foreach ($rows as $row) {
-			$users[] = new self($row);
-		}
-
-		return $users;
-	}
-
-	/**
-	 * Get a list of all users who are currently logged in.
-	 *
-	 * @return User[]
-	 */
-	public static function allLoggedIn() {
-		$rows = Database::prepare(
-			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
-			" FROM `##user`" .
-			" JOIN `##session` USING (user_id)"
-		)->fetchAll();
-
-		$users = [];
-		foreach ($rows as $row) {
-			$users[] = new self($row);
-		}
-
-		return $users;
-	}
-
-	/**
-	 * Create a new user object from a row in the database.
-	 *
-	 * @param stdclass $user A row from the wt_user table
-	 */
-	public function __construct(stdClass $user) {
-		$this->user_id   = $user->user_id;
-		$this->user_name = $user->user_name;
-		$this->real_name = $user->real_name;
-		$this->email     = $user->email;
-	}
-
-	/**
-	 * Delete a user
-	 */
-	public function delete() {
-		// Don't delete the logs.
-		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute([$this->user_id]);
-		// Take over the user’s pending changes. (What else could we do with them?)
-		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute([$this->user_id]);
-		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute([Auth::id(), $this->user_id]);
-		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
+		return array_map(function($row) { return new static($row); }, $rows);
 	}
 
 	/** Validate a supplied password
@@ -329,6 +261,87 @@ class User {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Get a list of all managers.
+	 *
+	 * @return User[]
+	 */
+	public static function managers() {
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
+			" WHERE setting_name = 'canedit' AND setting_value='admin'" .
+			" GROUP BY user_id, real_name" .
+			" ORDER BY real_name"
+		)->fetchAll();
+
+		return array_map(function($row) { return new static($row); }, $rows);
+	}
+
+	/**
+	 * Get a list of all moderators.
+	 *
+	 * @return User[]
+	 */
+	public static function moderators() {
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
+			" WHERE setting_name = 'canedit' AND setting_value='accept'" .
+			" GROUP BY user_id, real_name" .
+			" ORDER BY real_name"
+		)->fetchAll();
+
+		return array_map(function($row) { return new static($row); }, $rows);
+	}
+
+	/**
+	 * Get a list of all verified users.
+	 *
+	 * @return User[]
+	 */
+	public static function unapproved() {
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user` JOIN `##user_setting` USING (user_id)" .
+			" WHERE setting_name = 'verified_by_admin' AND setting_value = '0'" .
+			" ORDER BY real_name"
+		)->fetchAll();
+
+		return array_map(function($row) { return new static($row); }, $rows);
+	}
+
+	/**
+	 * Get a list of all verified users.
+	 *
+	 * @return User[]
+	 */
+	public static function unverified() {
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user` JOIN `##user_setting` USING (user_id)" .
+			" WHERE setting_name = 'verified' AND setting_value = '0'" .
+			" ORDER BY real_name"
+		)->fetchAll();
+
+		return array_map(function($row) { return new static($row); }, $rows);
+	}
+
+	/**
+	 * Get a list of all users who are currently logged in.
+	 *
+	 * @return User[]
+	 */
+	public static function allLoggedIn() {
+		$rows = Database::prepare(
+			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" JOIN `##session` USING (user_id)"
+		)->fetchAll();
+
+		return array_map(function($row) { return new static($row); }, $rows);
 	}
 
 	/**

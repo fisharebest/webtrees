@@ -621,7 +621,7 @@ case 'media-edit':
 				<?= I18N::translate('Title') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Html::escape($TITL) ?>" required>
+				<input type="text" id="TITL" name="TITL" class="form-control" value="<?= Html::escape($TITL) ?>">
 			</div>
 		</div>
 
@@ -646,7 +646,7 @@ case 'media-edit':
 				<?= I18N::translate('Type') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select(GedcomTag::getFileFormTypes(), $TYPE, ['id' => 'TYPE', 'name' => 'TYPE']) ?>
+				<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes() + [$TYPE => $TYPE], $TYPE, ['id' => 'TYPE', 'name' => 'TYPE']) ?>
 			</div>
 		</div>
 
@@ -919,7 +919,7 @@ case 'add_child_to_individual':
 		->setPageTitle($person->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family'))
 		->pageHeader();
 
-	print_indi_form('add_child_to_individual_action', $person, null, null, 'CHIL', $person->getSex());
+	print_indi_form('add_child_to_individual_action', $person, null, null, 'CHIL', 'U');
 	break;
 
 case 'add_child_to_individual_action':
@@ -1439,9 +1439,9 @@ case 'linkspouse':
 			</div>
 		</div>
 
-		<?php FunctionsEdit::addSimpleTag('0 MARR Y') ?>
-		<?php FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
-		<?php FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag('0 MARR Y') ?>
+		<?= FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
 
 		<div class="row form-group">
 			<div class="col-sm-9 offset-sm-3">
@@ -1587,9 +1587,13 @@ case 'addnewsource':
 		<div id="events" style="display: none;">
 			<table class="table wt-facts-table">
 				<tr>
-					<td
-						class="descriptionbox wrap width25"><?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?></th>
-					<td><select name="EVEN[]" multiple="multiple" size="5">
+					<th scope="row">
+						<label for="source-events">
+							<?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?>
+						</label>
+					</th>
+					<td>
+						<select id="source-events" name="EVEN[]" multiple="multiple" size="5">
 							<?php
 							$parts = explode(',', $controller->tree()->getPreference('INDI_FACTS_ADD'));
 							foreach ($parts as $key) {
@@ -1606,11 +1610,9 @@ case 'addnewsource':
 							?>
 						</select></td>
 				</tr>
-				<?php
-				FunctionsEdit::addSimpleTag('0 DATE', 'EVEN');
-				FunctionsEdit::addSimpleTag('0 PLAC', 'EVEN');
-				FunctionsEdit::addSimpleTag('0 AGNC');
-				?>
+				<?= FunctionsEdit::addSimpleTag('0 DATE', 'EVEN') ?>
+				<?= FunctionsEdit::addSimpleTag('0 PLAC', 'EVEN') ?>
+				<?= FunctionsEdit::addSimpleTag('0 AGNC') ?>
 			</table>
 		</div>
 
@@ -2960,13 +2962,13 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	case 'add_child_to_family_action':
 	case 'add_child_to_individual_action':
 		// When adding a new child, specify the pedigree
-		FunctionsEdit::addSimpleTag('0 PEDI');
+		echo FunctionsEdit::addSimpleTag('0 PEDI');
 		break;
 	}
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
 		}
 	}
 
@@ -2989,18 +2991,18 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// Edit existing tags, grouped together
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
-				FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+				echo FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 				if ($tag === '_MARNM') {
 					preg_match_all('/\/([^\/]*)\//', $value, $matches);
-					FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+					echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
 				}
 			}
 		}
 		// Allow a new tag to be entered
 		if (!array_key_exists($tag, $name_fields)) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 			if ($tag === '_MARNM') {
-				FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
+				echo FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
 			}
 		}
 	}
@@ -3008,10 +3010,10 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// Third - new/existing custom name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) === 0) {
-			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
 			if ($tag === '_MARNM') {
 				preg_match_all('/\/([^\/]*)\//', $value, $matches);
-				FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+				echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
 			}
 		}
 	}
@@ -3038,7 +3040,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					$text .= "\n" . $cmatch[1];
 					$i++;
 				}
-				FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
+				echo FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
 			}
 			$tags[] = $type;
 			$i++;
@@ -3057,17 +3059,17 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		echo '</table><br><table class="table wt-facts-table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
-			FunctionsEdit::addSimpleTag('0 SEX M');
+			echo FunctionsEdit::addSimpleTag('0 SEX M');
 		} elseif ($famtag === 'WIFE' || $gender === 'F') {
-			FunctionsEdit::addSimpleTag('0 SEX F');
+			echo FunctionsEdit::addSimpleTag('0 SEX F');
 		} else {
-			FunctionsEdit::addSimpleTag('0 SEX U');
+			echo FunctionsEdit::addSimpleTag('0 SEX U');
 		}
 		$bdm = 'BD';
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
@@ -3076,14 +3078,14 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			$bdm .= 'M';
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					echo FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
@@ -3109,27 +3111,25 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		<div class="col-sm-9 offset-sm-3">
 			<button class="btn btn-primary" type="submit">
 				<?= FontAwesome::decorativeIcon('save') ?>
-				<?= /* I18N: A button label. */
-				I18N::translate('save') ?>
+				<?= /* I18N: A button label. */ I18N::translate('save') ?>
 			</button>
 			<?php if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)): ?>
 
 				<button class="btn btn-primary" type="submit" name="goto" value="<?= $xref ?>">
-					<?= /* I18N: A button label. */
-					I18N::translate('go to new individual') ?>
+					<?= FontAwesome::decorativeIcon('save') ?>
+					<?= /* I18N: A button label. */ I18N::translate('go to new individual') ?>
 				</button>
-			<?php endif; ?>
-			<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+			<?php endif ?>
+			<a class="btn btn-secondary" href="<?= Html::escape($person ? $person->getRawUrl() : $family->getRawUrl()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
-				<?= /* I18N: A button label. */
-				I18N::translate('cancel') ?>
+				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
 			<?php if ($name_fact !== null && (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD'))): ?>
 				<a class="btn btn-link"
 				   href="edit_interface.php?action=editrawfact&amp;xref=<?= $xref ?>&amp;fact_id=<?= $name_fact->getFactId() ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
-			<?php endif; ?>
+			<?php endif ?>
 		</div>
 	</div>
 	</form>

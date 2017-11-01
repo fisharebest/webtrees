@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-06-19 14:57+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2017-10-31 20:23+0000\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -963,7 +963,7 @@ msgstr "Ein Bericht der fehlenden Informationen betreffend einer Person und ihre
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Bericht von Lebensdaten für ein bestimmtes Datum oder einen Ort."
+msgstr "Ein Bericht von Lebensdaten für ein bestimmtes Datum oder einen bestimmten Ort."
 
 #: admin_users.php:516
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1615,7 +1615,7 @@ msgstr "Adoption eines Sohns"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:227
 msgid "Adult christening"
-msgstr "Erwachsenen Taufe"
+msgstr "Erwachsenentaufe"
 
 #: admin_trees_config.php:1776
 msgid "Advanced fact preferences"
@@ -2219,7 +2219,7 @@ msgstr "anwesend"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1499
 msgid "Audio"
-msgstr "Ton"
+msgstr "Tonaufnahme"
 
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
@@ -2744,11 +2744,11 @@ msgstr "Geburten pro Land"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr "Ende Geburtsdatums-Bereich"
+msgstr "bis Geburtsdatum"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr "Beginn Geburtsdatums-Bereich"
+msgstr "von Geburtsdatum"
 
 #: app/GedcomTag.php:773
 msgid "Birth of a brother"
@@ -3054,139 +3054,139 @@ msgstr "Bulgarien"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Beerdigung"
+msgstr "Bestattung"
 
 #: app/GedcomTag.php:869
 msgid "Burial of a brother"
-msgstr "Beerdigung eines Bruders"
+msgstr "Bestattung eines Bruders"
 
 #: app/GedcomTag.php:792
 msgid "Burial of a child"
-msgstr "Beerdigung eines Kindes"
+msgstr "Bestattung eines Kindes"
 
 #: app/GedcomTag.php:790
 msgid "Burial of a daughter"
-msgstr "Beerdigung einer Tochter"
+msgstr "Bestattung einer Tochter"
 
 #: app/GedcomTag.php:860
 msgid "Burial of a father"
-msgstr "Beerdigung eines Vaters"
+msgstr "Bestattung eines Vaters"
 
 #: app/GedcomTag.php:801 app/GedcomTag.php:810 app/GedcomTag.php:819
 msgid "Burial of a grandchild"
-msgstr "Beerdigung eines Enkels"
+msgstr "Bestattung eines Enkels"
 
 #: app/GedcomTag.php:799
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:808
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:817
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Bestattung einer Enkeltochter"
 
 #: app/GedcomTag.php:824
 msgid "Burial of a grandfather"
-msgstr "Beerdigung eines Großvaters"
+msgstr "Bestattung eines Großvaters"
 
 #: app/GedcomTag.php:826
 msgid "Burial of a grandmother"
-msgstr "Beerdigung einer Großmutter"
+msgstr "Bestattung einer Großmutter"
 
 #: app/GedcomTag.php:828
 msgid "Burial of a grandparent"
-msgstr "Beerdigung eines Großelternteils"
+msgstr "Bestattung eines Großelternteils"
 
 #: app/GedcomTag.php:797
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:806
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:815
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Bestattung eines Enkelsohns"
 
 #: app/GedcomTag.php:851
 msgid "Burial of a half-brother"
-msgstr "Beerdigung eines Halbbruders"
+msgstr "Bestattung eines Halbbruders"
 
 #: app/GedcomTag.php:855
 msgid "Burial of a half-sibling"
-msgstr "Beerdigung eines Halbgeschwisters"
+msgstr "Bestattung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:853
 msgid "Burial of a half-sister"
-msgstr "Beerdigung einer Halbschwester"
+msgstr "Bestattung einer Halbschwester"
 
 #: app/GedcomTag.php:878
 msgid "Burial of a husband"
-msgstr "Beerdigung eines Ehemanns"
+msgstr "Bestattung eines Ehemanns"
 
 #: app/GedcomTag.php:842
 msgid "Burial of a maternal grandfather"
-msgstr "Beerdigung eines mütterlichen Großvaters"
+msgstr "Bestattung eines mütterlichen Großvaters"
 
 #: app/GedcomTag.php:844
 msgid "Burial of a maternal grandmother"
-msgstr "Beerdigung einer mütterlichen Großmutter"
+msgstr "Bestattung einer mütterlichen Großmutter"
 
 #: app/GedcomTag.php:846
 msgid "Burial of a maternal grandparent"
-msgstr "Beerdigung eines mütterlichen Großelternteils"
+msgstr "Bestattung eines mütterlichen Großelternteils"
 
 #: app/GedcomTag.php:862
 msgid "Burial of a mother"
-msgstr "Beerdigung einer Mutter"
+msgstr "Bestattung einer Mutter"
 
 #: app/GedcomTag.php:864
 msgid "Burial of a parent"
-msgstr "Beerdigung eines Elternteils"
+msgstr "Bestattung eines Elternteils"
 
 #: app/GedcomTag.php:833
 msgid "Burial of a paternal grandfather"
-msgstr "Beerdigung eines väterlichen Großvaters"
+msgstr "Bestattung eines väterlichen Großvaters"
 
 #: app/GedcomTag.php:835
 msgid "Burial of a paternal grandmother"
-msgstr "Beerdigung einer väterlichen Großmutter"
+msgstr "Bestattung einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:837
 msgid "Burial of a paternal grandparent"
-msgstr "Beerdigung eines väterlichen Großelternteils"
+msgstr "Bestattung eines väterlichen Großelternteils"
 
 #: app/GedcomTag.php:873
 msgid "Burial of a sibling"
-msgstr "Beerdigung eines Geschwisters"
+msgstr "Bestattung eines Geschwisters"
 
 #: app/GedcomTag.php:871
 msgid "Burial of a sister"
-msgstr "Beerdigung einer Schwester"
+msgstr "Bestattung einer Schwester"
 
 #: app/GedcomTag.php:788
 msgid "Burial of a son"
-msgstr "Beerdigung eines Sohns"
+msgstr "Bestattung eines Sohns"
 
 #: app/GedcomTag.php:882
 msgid "Burial of a spouse"
-msgstr "Beerdigung eines Ehepartners"
+msgstr "Bestattung eines Ehepartners"
 
 #: app/GedcomTag.php:880
 msgid "Burial of a wife"
-msgstr "Beerdigung einer Ehefrau"
+msgstr "Bestattung einer Ehefrau"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr "Beerdigungsort enthält"
+msgstr "Bestattungsort enthält"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6669
@@ -3373,11 +3373,11 @@ msgstr "Volkszählungsassistent"
 
 #: app/Functions/FunctionsEdit.php:960 app/GedcomTag.php:206
 msgid "Census date"
-msgstr "Census Datum"
+msgstr "Volkszählungsdatum"
 
 #: app/GedcomTag.php:208
 msgid "Census place"
-msgstr "Census Ort"
+msgstr "Volkszählungsort"
 
 #: app/Module/CensusAssistantModule.php:181
 msgid "Census transcript"
@@ -3602,7 +3602,7 @@ msgstr "Anzuzeigende Verwandschaften"
 
 #: addmedia.php:449 admin_media_upload.php:207
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Wählen Sie das Vorschaubild, das Sie hochladen möchten. Obwohl Vorschaubilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Sprachaufnahme gemacht hat."
+msgstr "Wählen Sie das Vorschaubild, das Sie hochladen möchten. Obwohl Vorschaubilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Tonaufnahme gemacht hat."
 
 #: admin_site_config.php:129 app/Functions/FunctionsEdit.php:218
 msgid "Choose user defined welcome text typed below"
@@ -4333,33 +4333,33 @@ msgstr "Datum der HLT-Taufe"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:532
 msgid "Date of LDS child sealing"
-msgstr "Datum der HLT Siegelung eines Kindes"
+msgstr "Datum der HLT-Siegelung eines Kindes"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:303
 msgid "Date of LDS endowment"
-msgstr "Datum der HLT Begabung"
+msgstr "Datum der HLT-Begabung"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:345
 msgid "Date of LDS spouse sealing"
-msgstr "Datum der HLT Siegelung an den Ehepartner"
+msgstr "Datum der HLT-Siegelung an den Ehepartner"
 
 #: app/GedcomTag.php:130
 msgid "Date of adoption"
-msgstr "Datum der Adoption"
+msgstr "Adoptionsdatum"
 
 #: app/GedcomTag.php:160 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
-msgstr "Datum der Taufe"
+msgstr "Taufdatum"
 
 #: app/GedcomTag.php:166 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Bar Mitzvah Datum"
+msgstr "Bar Mitzvah-Datum"
 
 #: app/GedcomTag.php:172 modules_v3/missing_facts_report/report.xml:253
 msgid "Date of bat mitzvah"
-msgstr "Bat Mitzvah Datum"
+msgstr "Bat Mitzvah-Datum"
 
 #: app/GedcomTag.php:178 modules_v3/fact_sources/report.xml:68
 #: modules_v3/fact_sources/report.xml:272
@@ -4370,15 +4370,15 @@ msgstr "Geburtsdatum"
 
 #: app/GedcomTag.php:184
 msgid "Date of blessing"
-msgstr "Datum der Segnung"
+msgstr "Segnungsdatum"
 
 #: app/GedcomTag.php:782
 msgid "Date of brit milah"
-msgstr "Datum der Brit Mila"
+msgstr "Brit Mila-Datum"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr "Begräbnisdatum"
+msgstr "Bestattungsdatum"
 
 #: app/GedcomTag.php:223 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
@@ -4390,7 +4390,7 @@ msgstr "Konfirmationsdatum"
 
 #: app/GedcomTag.php:253
 msgid "Date of cremation"
-msgstr "Datum der Einäscherung"
+msgstr "Einäscherungsdatum"
 
 #: app/GedcomTag.php:270 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
@@ -4404,7 +4404,7 @@ msgstr "Scheidungsdatum"
 
 #: app/GedcomTag.php:297
 msgid "Date of emigration"
-msgstr "Datum der Auswanderung"
+msgstr "Auswanderungsdatum"
 
 #: app/GedcomTag.php:309 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
@@ -4416,15 +4416,15 @@ msgstr "Datum des Eintrages in der ursprünglichen Quelle"
 
 #: app/GedcomTag.php:315
 msgid "Date of event"
-msgstr "Datum des Ereignisses"
+msgstr "Ereignisdatum"
 
 #: app/GedcomTag.php:353 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
-msgstr "Datum Erstkommunion"
+msgstr "Erstkommunionsdatum"
 
 #: app/GedcomTag.php:377
 msgid "Date of immigration"
-msgstr "Datum der Einwanderung"
+msgstr "Einwanderungsdatum"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:213
@@ -4439,19 +4439,19 @@ msgstr "Heiratsdatum"
 
 #: app/GedcomTag.php:397 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
-msgstr "Datum der Aufgebote"
+msgstr "Aufgebotsdatum"
 
 #: app/GedcomTag.php:437
 msgid "Date of naturalization"
-msgstr "Datum der Einbürgerung"
+msgstr "Einbürgerungsdatum"
 
 #: app/GedcomTag.php:465
 msgid "Date of ordination"
-msgstr "Datum der Weihe"
+msgstr "Weihedatum"
 
 #: app/GedcomTag.php:504
 msgid "Date of residence"
-msgstr "Datum des Aufenthalts"
+msgstr "Wohnsitzdatum"
 
 #: help_text.php:155
 msgid "Date period"
@@ -4471,7 +4471,7 @@ msgstr "Zeitspannen werden benutzt, um anzuzeigen, dass ein Ereignis, wie eine G
 
 #: admin_users.php:839
 msgid "Date registered"
-msgstr "Datum der Registrierung"
+msgstr "Registrierungsdatum"
 
 #: app/Module/UserMessagesModule.php:106
 msgid "Date sent"
@@ -4649,11 +4649,11 @@ msgstr "Tode pro Land"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr "Ende Sterbedatums-Bereich"
+msgstr "bis Sterbedatum"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "Beginn Sterbedatums-Bereich"
+msgstr "von Sterbedatum"
 
 #: app/GedcomTag.php:1125
 msgid "Death of a brother"
@@ -4792,7 +4792,7 @@ msgstr "Sterbeorte"
 #: app/Module/DeathReportModule.php:29 modules_v3/death_report/report.xml:3
 #: modules_v3/death_report/report.xml:32
 msgid "Deaths"
-msgstr "Todesfälle"
+msgstr "Sterbefälle"
 
 #: app/Stats.php:2045 statistics.php:125
 msgid "Deaths by century"
@@ -5530,7 +5530,7 @@ msgstr "Endjahr"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr "Ende des Änderungsdatumbereiches"
+msgstr "bis Änderungsdatum"
 
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
@@ -5881,7 +5881,7 @@ msgstr "Familie"
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:327
 msgid "Family as a child"
-msgstr "Familie (als Kind)"
+msgstr "Familie als Kind"
 
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:331
@@ -6520,7 +6520,7 @@ msgstr "Fukuoka, Japan"
 #. I18N: gedcom tag _FNRL
 #: app/GedcomTag.php:1177
 msgid "Funeral"
-msgstr "Bestattung"
+msgstr "Begräbnis"
 
 #. I18N: A configuration setting
 #: admin_trees_check.php:133 admin_trees_config.php:1558
@@ -6894,7 +6894,7 @@ msgstr "Er wurde geboren"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
-msgstr "Er wurde beerdigt"
+msgstr "Er wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
@@ -7981,17 +7981,17 @@ msgstr "Letztes Geburtsdatum"
 #: app/Module/FamilyTreeStatisticsModule.php:300
 #: app/Module/HtmlBlockModule.php:222
 msgid "Latest birth year"
-msgstr "Letztes Geburtsdatum"
+msgstr "Letztes Geburtsjahr"
 
 #: statistics.php:141
 msgid "Latest death"
-msgstr "Letztes Todesdatum"
+msgstr "Letztes Sterbedatum"
 
 #: app/Module/FamilyTreeStatisticsModule.php:154
 #: app/Module/FamilyTreeStatisticsModule.php:302
 #: app/Module/HtmlBlockModule.php:232
 msgid "Latest death year"
-msgstr "Letztes Sterbedatum"
+msgstr "Letztes Sterbejahr"
 
 #: statistics.php:248
 msgid "Latest divorce"
@@ -10609,33 +10609,33 @@ msgstr "Ort der HLT-Taufe"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:534
 msgid "Place of LDS child sealing"
-msgstr "Ort der HLT Siegelung eines Kindes"
+msgstr "Ort der HLT-Siegelung eines Kindes"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:305
 msgid "Place of LDS endowment"
-msgstr "Ort der HLT Begabung"
+msgstr "Ort der HLT-Begabung"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:347
 msgid "Place of LDS spouse sealing"
-msgstr "Ort der HLT Siegelung an den Ehepartner"
+msgstr "Ort der HLT-Siegelung an den Ehepartner"
 
 #: app/GedcomTag.php:132
 msgid "Place of adoption"
-msgstr "Ort der Adoption"
+msgstr "Adoptionsort"
 
 #: app/GedcomTag.php:162 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr "Ort der Taufe"
+msgstr "Taufort"
 
 #: app/GedcomTag.php:168 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr "Ort: Bar mitzvah"
+msgstr "Bar Mitzvah-Ort"
 
 #: app/GedcomTag.php:174 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr "Ort: Bat mitzvah"
+msgstr "Bat Mitzvah-Ort"
 
 #: app/GedcomTag.php:180 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
@@ -10644,27 +10644,27 @@ msgstr "Geburtsort"
 
 #: app/GedcomTag.php:186
 msgid "Place of blessing"
-msgstr "Ort der Segnung"
+msgstr "Segnungsort"
 
 #: app/GedcomTag.php:784
 msgid "Place of brit milah"
-msgstr "Ort der Brit Mila"
+msgstr "Brit Mila-Ort"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr "Begräbnisort"
+msgstr "Bestattungsort"
 
 #: app/GedcomTag.php:225 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr "Ort der Taufe"
+msgstr "Taufort"
 
 #: app/GedcomTag.php:243 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr "Ort der Konfirmation"
+msgstr "Konfirmationsort"
 
 #: app/GedcomTag.php:255
 msgid "Place of cremation"
-msgstr "Ort der Einäscherung"
+msgstr "Einäscherungsort"
 
 #: app/GedcomTag.php:272 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
@@ -10673,45 +10673,45 @@ msgstr "Sterbeort"
 
 #: app/GedcomTag.php:299
 msgid "Place of emigration"
-msgstr "Ort der Auswanderung"
+msgstr "Auswanderungsort"
 
 #: app/GedcomTag.php:311 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr "Ort der Verlobung"
+msgstr "Verlobungsort"
 
 #: app/GedcomTag.php:317
 msgid "Place of event"
-msgstr "Ort des Ereignisses"
+msgstr "Ereignisort"
 
 #: app/GedcomTag.php:355 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr "Ort der Erstkommunion"
+msgstr "Erstkommunionsort"
 
 #: app/GedcomTag.php:379
 msgid "Place of immigration"
-msgstr "Ort der Einwanderung"
+msgstr "Einwanderungsort"
 
 #: app/GedcomTag.php:341 app/GedcomTag.php:409
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr "Ort der Heirat"
+msgstr "Heiratsort"
 
 #: app/GedcomTag.php:399 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr "Ort der Aufgebote"
+msgstr "Aufgebotsort"
 
 #: app/GedcomTag.php:439
 msgid "Place of naturalization"
-msgstr "Ort der Einbürgerung"
+msgstr "Einbürgerungsort"
 
 #: app/GedcomTag.php:467
 msgid "Place of ordination"
-msgstr "Ort der Weihe"
+msgstr "Weiheort"
 
 #: app/GedcomTag.php:506
 msgid "Place of residence"
-msgstr "Wohnort"
+msgstr "Wohnsitzort"
 
 #: admin_site_upgrade.php:352
 #, php-format
@@ -10734,7 +10734,7 @@ msgstr "Orte in %s"
 
 #: help_text.php:249
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als „Salt Lake City, Salt Lake, Utah, USA“ eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, „Salt Lake City“, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, „Salt Lake“, ist der Kreis. „Utah“ ist das Bundesland und „USA“ das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: „Salt Lake City, , Utah, USA“. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben „ , , Utah, USA“.<br><br>Sie können die Verknüpfung <b>Orte suchen</ b> verwenden, um Orte zu finden, die bereits in der Datenbank vorhanden sind."
+msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als „Salt Lake City, Salt Lake, Utah, USA“ eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, „Salt Lake City“, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, „Salt Lake“, ist der Kreis. „Utah“ ist das Bundesland und „USA“ das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: „Salt Lake City, , Utah, USA“. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben „ , , Utah, USA“.<br><br>Sie können die Verknüpfung <b>Orte suchen</b> verwenden, um Orte zu finden, die bereits in der Datenbank vorhanden sind."
 
 #: app/Module/SlideShowModule.php:129 app/Theme/CloudsTheme.php:47
 #: app/Theme/FabTheme.php:72 app/Theme/MinimalTheme.php:46
@@ -10744,7 +10744,7 @@ msgstr "Start"
 
 #: search.php:51
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr "Bitte geben Sie einen Namen oder einen Ort zusätzlich zur Jahresangabe ein"
+msgstr "Bitte geben Sie einen Namen oder Ort zusätzlich zur Jahresangabe ein"
 
 #: message.php:50
 msgid "Please enter a valid email address."
@@ -11469,7 +11469,7 @@ msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags �
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:502
 msgid "Residence"
-msgstr "Wohnort"
+msgstr "Wohnsitz"
 
 #: index_edit.php:365
 msgid "Restore the default block layout"
@@ -12168,7 +12168,7 @@ msgstr "Sie wurde geboren"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr "Sie wurde beerdigt"
+msgstr "Sie wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
@@ -12240,7 +12240,7 @@ msgstr "Zeige alle Notizen"
 
 #: placelist.php:218
 msgid "Show all places in a list"
-msgstr "Alle Orte in einer Liste zeigen"
+msgstr "Alle Orte in einer Liste anzeigen"
 
 #: app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
@@ -12286,7 +12286,7 @@ msgstr "Paare zeigen, die innerhalb der letzten 100 Jahren heirateten."
 
 #: app/Functions/FunctionsPrintLists.php:656
 msgid "Show couples with an unknown marriage date."
-msgstr "Paare zeigen, von denen das Ehedatum unbekannt ist."
+msgstr "Paare mit unbekanntem Heiratsdatum anzeigen."
 
 #: ancestry.php:68
 msgid "Show cousins"
@@ -12295,7 +12295,7 @@ msgstr "Cousins und Cousinen zeigen"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:280
 msgid "Show date of last update"
-msgstr "Das Datum der letzen Aktualisierung anzeigen"
+msgstr "Datum der letzten Aktualisierung anzeigen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:345
@@ -12308,7 +12308,7 @@ msgstr "Zeige geschiedene Paare."
 
 #: app/Module/GoogleMapsModule.php:3223
 msgid "Show inactive places"
-msgstr "Zeige aktuell nicht genutzte Orte"
+msgstr "Nicht verwendete Orte anzeigen"
 
 #: app/Functions/FunctionsPrintLists.php:234
 msgid "Show individuals born more than 100 years ago."
@@ -12405,7 +12405,7 @@ msgstr "Fotos anzeigen"
 
 #: placelist.php:76
 msgid "Show places in hierarchy"
-msgstr "Ortshierarchie zeigen"
+msgstr "Ortshierarchie anzeigen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:447
@@ -12426,11 +12426,11 @@ msgstr "Zeige Forschungsaufgaben die keinem anderen Benutzer zugeordnet sind"
 
 #: app/Module/ResearchTaskModule.php:179
 msgid "Show research tasks that have a date in the future"
-msgstr "Zeige Forschungsaufgaben mit einem Datum in der Zukunft"
+msgstr "Forschungsaufgaben mit einem Datum in der Zukunft anzeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Wohnorte anzeigen"
+msgstr "Wohnsitze anzeigen"
 
 #: app/Module/SlideShowModule.php:286
 msgid "Show slide show controls"
@@ -12461,7 +12461,7 @@ msgstr "Zeige die %1$s %2$s Teile des Ortsnamens."
 
 #: app/Module/HtmlBlockModule.php:320
 msgid "Show the date and time of update"
-msgstr "Zeige das Datum und die Zeit der Aktualisierung"
+msgstr "Datum und Zeit der Aktualisierung anzeigen"
 
 #: admin_trees_config.php:1329
 msgid "Show the events of close relatives on the individual page"
@@ -12880,11 +12880,11 @@ msgstr "Partner/in"
 
 #: app/GedcomTag.php:333
 msgid "Spouse census date"
-msgstr "Volkszählung-Ehepartner Datum"
+msgstr "Volkszählungsdatum als Ehepartner"
 
 #: app/GedcomTag.php:335
 msgid "Spouse census place"
-msgstr "Volkszählung-Ehepartner Ort"
+msgstr "Volkszählungsort als Ehepartner"
 
 #: app/GedcomTag.php:343
 msgid "Spouse note"
@@ -12940,7 +12940,7 @@ msgstr "Startjahr"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr "Beginn des Änderungsdatumbereiches"
+msgstr "von Änderungsdatum"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:2445
@@ -13331,7 +13331,7 @@ msgstr "Die Datenbank meldete die folgende Fehlermeldung:"
 
 #: admin_trees_config.php:1161
 msgid "The date and time of the last update"
-msgstr "Das Datum und die Uhrzeit der letzten Aktualisierung"
+msgstr "Datum und Zeit der letzten Aktualisierung"
 
 #: family.php:106
 msgid "The details of this family are private."
@@ -14018,7 +14018,7 @@ msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1676
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Hochzeitsdatum und Hochzeitsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Heiratsdatum und Heiratsort auf dem Formular angezeigt."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1622
@@ -14252,7 +14252,7 @@ msgstr[1] "Diese Seite wurde bisher %s mal angesehen."
 
 #: app/Module/GoogleMapsModule.php:1711
 msgid "This place has no coordinates"
-msgstr "Dieser Ort ist ohne Koordinaten"
+msgstr "Dieser Ort hat keine Koordinaten"
 
 #: help_text.php:295
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15036,7 +15036,7 @@ msgstr "Multimediadateien hochladen"
 
 #: admin_media_upload.php:181
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Audio oder andere Formate sein."
+msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
@@ -15104,7 +15104,7 @@ msgstr "Silhouetten verwenden"
 
 #: admin_trees_config.php:1499
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Verwendung der GeoNames-Datenbank zur Auto-Vervollständigung von Orten"
+msgstr "GeoNames-Datenbank zur Auto-Vervollständigung von Orten verwenden"
 
 #: login.php:486
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -15697,7 +15697,7 @@ msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Gegebenheiten 
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
 
 #: login.php:70
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16193,7 +16193,7 @@ msgstr "Aufzählungsliste"
 
 #: app/Stats.php:2913
 msgid "burial"
-msgstr "Beerdigung"
+msgstr "Bestattung"
 
 #: app/GedcomTag.php:1321
 msgid "by"
@@ -19289,7 +19289,7 @@ msgstr "Schwiegerkind"
 #: app/Module/UpcomingAnniversariesModule.php:184
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "nach Datum sortieren"
+msgstr "sortiert nach Datum"
 
 #. I18N: A button label.
 #: edit_interface.php:1789 modules_v3/bdm_report/report.xml:11
@@ -19299,18 +19299,18 @@ msgstr "nach Datum sortieren"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr "Sortierung nach Geburtsdatum"
+msgstr "sortiert nach Geburtsdatum"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "Sortierung nach Todesdatum"
+msgstr "sortiert nach Sterbedatum"
 
 #. I18N: A button label.
 #: edit_interface.php:2138 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "Sortierung nach Heiratsdatum"
+msgstr "sortiert nach Heiratsdatum"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:152

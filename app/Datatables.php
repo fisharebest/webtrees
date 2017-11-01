@@ -92,7 +92,7 @@ class Datatables {
 	 */
 	public static function givenNameTableAttributes() {
 		return Html::attributes([
-			'class'          => 'table table-bordered table-sm table-responsive datatables table-given-name',
+			'class'          => 'table table-bordered table-sm datatables table-given-name',
 			//'data-columns'   => '[{ type: "text" }, { type: "num" }]',
 			'data-columns'   => '[null, null]',
 			'data-info'      => 'false',
@@ -111,7 +111,7 @@ class Datatables {
 		return Html::attributes([
 				'class'          => 'table table-bordered table-sm table-responsive datatables table-note',
 				//'data-columns'   => '[{ type: "text" }, { type: "text" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-				'data-columns'   => '[null, null, null, null, null, null, null]',
+				'data-columns'   => '[null, null, null, null, null, null]',
 				'data-state-save' => 'true',
 			] + self::defaultAttributes() + self::languageAttributes());
 	}
@@ -125,7 +125,7 @@ class Datatables {
 		return Html::attributes([
 			'class'          => 'table table-bordered table-sm table-responsive datatables table-repository',
 			//'data-columns'   => '[{ type: "text" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-			'data-columns'   => '[null, null, null, null]',
+			'data-columns'   => '[null, null, null]',
 			'data-state-save' => 'true',
 		] + self::languageAttributes());
 	}
@@ -139,7 +139,7 @@ class Datatables {
 		return Html::attributes([
 			'class'          => 'table table-bordered table-sm table-responsive datatables table-source',
 			//'data-columns'   => '[{ type: "text" }, { type: "text" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-			'data-columns'   => '[null, null, null, null, null, null, null, null]',
+			'data-columns'   => '[null, null, null, null, null, null, null]',
 			'data-state-save' => 'true',
 		] + self::languageAttributes());
 	}

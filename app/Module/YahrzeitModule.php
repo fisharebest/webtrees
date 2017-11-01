@@ -147,10 +147,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 						]
 					});
 					$("#' . $table_id . '").css("visibility", "visible");
-					$(".loading-image").css("display", "none");
 				');
 			$content = '';
-			$content .= '<div class="loading-image">&nbsp;</div>';
 			$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
 			$content .= '<thead><tr>';
 			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';

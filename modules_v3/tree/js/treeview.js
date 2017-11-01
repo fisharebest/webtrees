@@ -48,21 +48,21 @@ function TreeViewHandler(treeview_instance) {
 				var pos_y = $drag.offset().top + drg_h - e.pageY;
 				var pos_x = $drag.offset().left + drg_w - e.pageX;
 
-				$drag
-					.addClass('draggable')
-					.parents()
+				$drag.addClass('draggable');
+
+				$(document)
 					.on("mousemove", function(e) {
 						$('.draggable').offset({
 							top:e.pageY + pos_y - drg_h,
 							left:e.pageX + pos_x - drg_w
 						}).on("mouseup", function() {
-							$(this).removeClass('draggable');
+							$drag.removeClass('draggable');
 						});
+					}).on("mouseup", function() {
+						$drag.removeClass('draggable');
+						tv.updateTree();
 					});
 				e.preventDefault();
-			}).on("mouseup", function() {
-				$(this).removeClass('draggable');
-				tv.updateTree();
 			});
 
 		}

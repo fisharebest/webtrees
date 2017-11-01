@@ -216,16 +216,19 @@ if ($show === 'indi' || $show === 'surn') {
 							echo '<a class="wt-initial" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $controller->givenNameInitial($givn_initial) . '</a>';
 						}
 					} else {
-						echo $controller->givenNameInitial($givn_initial);
+						echo '<span class="wt-initial text-muted">' . $controller->givenNameInitial($givn_initial) . '</span>';
 					}
+					echo '</li>';
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
 				if (Session::has('initiated')) {
+					echo '<li class="wt-initials-list-item">';
 					if ($show_all_firstnames === 'yes') {
-						echo '<span class="warning">' . I18N::translate('All') . '</span>';
+						echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
 					} else {
-						echo '<a href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
+						echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="?show_all=yes' . '&amp;ged=' . $controller->tree()->getNameUrl() . '">' . I18N::translate('All') . '</a>';
 					}
+					echo '</li>';
 				}
 				echo '</ul>';
 				echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';

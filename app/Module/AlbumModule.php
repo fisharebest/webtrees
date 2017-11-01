@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class AlbumModule
@@ -81,20 +82,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	 * @return string
 	 */
 	public function getTabContent() {
-		$html = '<div id="' . $this->getName() . '_content">';
-		$html .= '<div>';
-		$html .= '<ul class="album-list">';
-		foreach ($this->getMedia() as $media) {
-			$html .= '<li class="album-list-item">';
-			$html .= '<div class="album-image">' . $media->displayImage(100, 100, 'contain', []) . '</div>';
-			$html .= '<div class="album-title"><a href="' . $media->getXref() . '">' . $media->getFullName() . '</a></div>';
-			$html .= '</li>';
-		}
-		$html .= '</ul>';
-		$html .= '</div>';
-		$html .= '</div>';
-
-		return $html;
+		return View::make('tabs/album', [
+			'media_list' => $this->getMedia()
+		]);
 	}
 
 	/**

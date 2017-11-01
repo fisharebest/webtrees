@@ -369,7 +369,7 @@ echo Bootstrap4::breadcrumbs([
 </form>
 
 <?php if ($action): ?>
-<table class="table table-bordered table-condensed table-hover table-site-changes">
+<table class="table table-bordered table-sm table-hover table-site-changes">
 	<caption class="sr-only">
 		<?= $controller->getPageTitle() ?>
 	</caption>

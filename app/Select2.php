@@ -89,10 +89,11 @@ class Select2 extends Html {
 			" FROM `##families`" .
 			" JOIN `##name` AS husb_name ON f_husb = husb_name.n_id AND f_file = husb_name.n_file" .
 			" JOIN `##name` AS wife_name ON f_wife = wife_name.n_id AND f_file = wife_name.n_file" .
-			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND f_file = :tree_id" .
+			" WHERE (CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR f_id = :xref) AND f_file = :tree_id" .
 			" AND husb_name.n_type <> '_MARNM' AND wife_name.n_type <> '_MARNM'" .
 			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -216,8 +217,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_num" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_num" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR i_id = :xref) AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -275,8 +277,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT m_id AS xref, m_gedcom AS gedcom, n_full" . " FROM `##media`" . " JOIN `##name` ON m_id = n_id AND m_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND m_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT m_id AS xref, m_gedcom AS gedcom, n_full" . " FROM `##media`" . " JOIN `##name` ON m_id = n_id AND m_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR m_id = :xref) AND m_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -333,8 +336,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND o_file = :tree_id AND o_type='NOTE'" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type='NOTE'" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -484,8 +488,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE o_type = 'REPO' AND n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND o_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'REPO'" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -542,8 +547,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT s_id AS xref, s_gedcom AS gedcom, n_full" . " FROM `##sources`" . " JOIN `##name` ON s_id = n_id AND s_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND s_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT s_id AS xref, s_gedcom AS gedcom, n_full" . " FROM `##sources`" . " JOIN `##name` ON s_id = n_id AND s_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR s_id = :xref) AND s_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);
@@ -600,8 +606,9 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_full" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'SUBM'" . " ORDER BY n_full COLLATE :collation")->execute([
 			'query'     => $query,
+			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
 		]);

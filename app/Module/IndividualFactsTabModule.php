@@ -125,13 +125,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 					<td colspan="2">
 						<?php if ($controller->record->getTree()->getPreference('SHOW_RELATIVES_EVENTS')) : ?>
 						<label>
-							<input id="show-relatives-facts" type="checkbox">
+							<input id="show-relatives-facts" type="checkbox" data-toggle="collapse" data-target=".wt-relation-fact">
 							<?= I18N::translate('Events of close relatives') ?>
 						</label>
 						<?php endif ?>
 						<?php if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) : ?>
 						<label>
-							<input id="show-historical-facts" type="checkbox">
+							<input id="show-historical-facts" type="checkbox" data-toggle="collapse" data-target=".wt-historic-fact">
 							<?= I18N::translate('Historical facts') ?>
 						</label>
 						<?php endif ?>

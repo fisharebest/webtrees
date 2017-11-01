@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-08-12 15:49+0000\n"
-"Last-Translator: Luca <luca74@email.it>\n"
+"PO-Revision-Date: 2017-10-08 22:07+0000\n"
+"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -4845,7 +4845,7 @@ msgstr "dicembre"
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr "Decidi"
+msgstr "Decade"
 
 #: app/Module/HtmlBlockModule.php:298
 msgid "Default"
@@ -5263,7 +5263,7 @@ msgstr ""
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr "Duodi"
+msgstr "Duodì"
 
 #: admin_users.php:69 edituser.php:55 login.php:284
 msgid "Duplicate email address. A user with that email already exists."
@@ -9819,7 +9819,7 @@ msgstr "Nessuno"
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr "Nonidi"
+msgstr "Nonidì"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:103
@@ -10054,7 +10054,7 @@ msgstr "ott"
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr "Octidi"
+msgstr "Octidì"
 
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
@@ -10918,7 +10918,7 @@ msgstr "Sacerdote"
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr "Primidi"
+msgstr "Primidì"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
@@ -10988,7 +10988,7 @@ msgstr "Qualità dei dati"
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr "Quartidi"
+msgstr "Quartidì"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
@@ -11018,7 +11018,7 @@ msgstr "Fatti associabili velocemente alle fonti"
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr "Quintidi"
+msgstr "Quintidì"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:126 app/Module/UserMessagesModule.php:127
@@ -11964,7 +11964,7 @@ msgstr "settembre"
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr "Septidi"
+msgstr "Settidì"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
@@ -12056,7 +12056,7 @@ msgstr "Configurazione guidata di webtrees"
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr "Sextidi"
+msgstr "Sestidì"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
@@ -14776,7 +14776,7 @@ msgstr "Terminatore"
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:199
 msgid "Tridi"
-msgstr "Tridi"
+msgstr "Tridì"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877

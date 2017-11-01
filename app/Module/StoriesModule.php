@@ -70,7 +70,10 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
-		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+		return Html::url('module.php', [
+			'mod'        => $this->getName(),
+			'mod_action' => 'admin_config',
+		]);
 	}
 
 	/** {@inheritdoc} */
@@ -243,10 +246,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?= I18N::translate('Individual') ?>
 						</label>
 						<div class="col-sm-9">
-							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?= $xref ?>">
-							<?php if ($individual): ?>
-								<?= $individual->formatList('span') ?>
-							<?php endif ?>
+							<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
 						</div>
 					</div>
 
@@ -361,7 +361,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			</a>
 		</p>
 
-		<table class="table table-bordered table-condensed">
+		<table class="table table-bordered table-sm">
 			<thead>
 				<tr>
 					<th><?= I18N::translate('Story title') ?></th>

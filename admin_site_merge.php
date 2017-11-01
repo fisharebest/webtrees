@@ -199,7 +199,7 @@ echo Bootstrap4::breadcrumbs([
 		</div>
 		<div class="panel-body">
 			<?php if (!empty($facts)): ?>
-			<table class="table table-bordered table-condensed">
+			<table class="table table-bordered table-sm">
 				<thead>
 					<tr>
 						<th>
@@ -246,7 +246,7 @@ echo Bootstrap4::breadcrumbs([
 				</div>
 				<div class="panel-body">
 					<?php if (!empty($facts1)): ?>
-						<table class="table table-bordered table-condensed">
+						<table class="table table-bordered table-sm">
 							<thead>
 							<tr>
 								<th>
@@ -292,7 +292,7 @@ echo Bootstrap4::breadcrumbs([
 				</div>
 				<div class="panel-body">
 					<?php if (!empty($facts2)): ?>
-						<table class="table table-bordered table-condensed">
+						<table class="table table-bordered table-sm">
 							<thead>
 							<tr>
 								<th>

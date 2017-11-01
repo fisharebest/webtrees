@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\View;
 
 /**
  * Class InteractiveTreeModule
@@ -127,7 +128,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		case 'treeview':
 			$controller = new ChartController;
 			$tv         = new TreeView('tv');
-			ob_start();
 
 			$person = $controller->getSignificantIndividual();
 
@@ -145,7 +145,15 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 						$("head").append(\'<link rel="stylesheet" type="text/css" href="' . $this->css() . '">\');
 					}
 				');
-			echo $html;
+
+			echo View::make('interactive-tree-page', [
+				'title'      => $controller->getPageTitle(),
+				'individual' => $controller->root,
+				'html'       => $html,
+				//'css'        => $this->css(),
+				//'js'         => $this->js(),
+			]);
+
 			break;
 
 		case 'getDetails':

@@ -60,37 +60,25 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
 		$stats = new Stats($WT_TREE);
 
-		$content = '<div class="normal_inner_block">';
-		//Select List or Table
 		switch ($infoStyle) {
-		case 'list': // Output style 1:  Simple list style. Better suited to left side of page.
-			if (I18N::direction() === 'ltr') {
-				$padding = 'padding-left: 15px';
-			} else {
-				$padding = 'padding-right: 15px';
-			}
-			$params = [1, $num, 'rcount'];
-			// List Female names
-			$totals = $stats->commonGivenFemaleTotals($params);
-			if ($totals) {
-				$content .= '<b>' . I18N::translate('Females') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
-			}
-			// List Male names
-			$totals = $stats->commonGivenMaleTotals($params);
-			if ($totals) {
-				$content .= '<b>' . I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
-			}
+		case 'list':
+			$males   = $stats->commonGivenMaleTotals([1, $num, 'rcount']);
+			$females = $stats->commonGivenFemaleTotals([1, $num, 'rcount']);
+			$content = View::make('blocks/top-given-names-list', [
+				'males'   => $males,
+				'females' => $females,
+			]);
 			break;
-		case 'table': // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
-			$params = [1, $num, 'rcount'];
-			$content .= '<table style="margin:auto;">
-						<tr>
-						<td>' . $stats->commonGivenFemaleTable($params) . '</td>
-						<td>' . $stats->commonGivenMaleTable($params) . '</td>';
-			$content .= '</tr></table>';
+		default:
+		case 'table':
+			$males   = $stats->commonGivenMaleTable([1, $num, 'rcount']);
+			$females = $stats->commonGivenFemaleTable([1, $num, 'rcount']);
+			$content = View::make('blocks/top-given-names-table', [
+				'males'   => $males,
+				'females' => $females,
+			]);
 			break;
 		}
-		$content .= '</div>';
 
 		if ($template) {
 			if ($num == 1) {

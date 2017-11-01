@@ -689,8 +689,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$SURNAME_TRADITION            = '';
 	$THEME_DIR                    = '';
 	$USE_RELATIONSHIP_PRIVACY     = '';
-	$USE_RIN                      = '';
-	$WATERMARK_THUMB              = '';
 	$WEBMASTER_EMAIL              = '';
 	$WORD_WRAPPED_NOTES           = '';
 
@@ -911,7 +909,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		break;
 	}
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB]);
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);
 	if ($user) {
 		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);

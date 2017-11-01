@@ -51,7 +51,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
@@ -603,7 +602,7 @@ class FunctionsEdit {
 		case 'MAP':
 			// These GEDCOM tags should have no data, just child tags.
 			if ($value === '') {
-				$row_class .= ' hidden-xs-up';
+				$row_class .= ' d-none';
 			}
 			break;
 		case 'LATI':
@@ -616,16 +615,17 @@ class FunctionsEdit {
 			break;
 		}
 
-		echo '<div class="' . $row_class . '">';
-		echo '<label class="col-sm-3 col-form-label" for="' . $id . '">';
+		$html = '';
+		$html .= '<div class="' . $row_class . '">';
+		$html .= '<label class="col-sm-3 col-form-label" for="' . $id . '">';
 
 		// tag name
 		if ($label) {
-			echo $label;
+			$html .= $label;
 		} elseif ($upperlevel) {
-			echo GedcomTag::getLabel($upperlevel . ':' . $fact);
+			$html .= GedcomTag::getLabel($upperlevel . ':' . $fact);
 		} else {
-			echo GedcomTag::getLabel($fact);
+			$html .= GedcomTag::getLabel($fact);
 		}
 
 		// If using GEDFact-assistant window
@@ -636,26 +636,26 @@ class FunctionsEdit {
 			switch ($fact) {
 			case 'NAME':
 				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
-					echo FunctionsPrint::helpLink($fact);
+					$html .= FunctionsPrint::helpLink($fact);
 				}
 				break;
 			case 'ROMN':
 			case 'SURN':
 			case '_HEB':
-				echo FunctionsPrint::helpLink($fact);
+				$html .= FunctionsPrint::helpLink($fact);
 				break;
 			}
 		}
 		// tag level
 		if ($level !== '0') {
-			echo '<input type="hidden" name="glevels[]" value="', $level, '">';
-			echo '<input type="hidden" name="islink[]" value="', $islink, '">';
-			echo '<input type="hidden" name="tag[]" value="', $fact, '">';
+			$html .= '<input type="hidden" name="glevels[]" value="' . $level . '">';
+			$html .= '<input type="hidden" name="islink[]" value="' . $islink . '">';
+			$html .= '<input type="hidden" name="tag[]" value="' . $fact . '">';
 		}
-		echo '</label>';
+		$html .= '</label>';
 
 		// value
-		echo '<div class="col-sm-9">';
+		$html .= '<div class="col-sm-9">';
 
 		// Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
 		if ($fact === 'HUSB' || $fact === 'WIFE') {
@@ -665,185 +665,185 @@ class FunctionsEdit {
 				if ($spouse_link) {
 					$spouse = $spouse_link->getTarget();
 					if ($spouse) {
-						echo $spouse->getFullName();
+						$html .= $spouse->getFullName();
 					}
 				}
 			}
 		}
 
 		if (in_array($fact, Config::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
-			echo '<input type="hidden" id="', $id, '" name="', $name, '" value="', $value, '">';
+			$html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
 			if ($fact === 'CENS' && $value === 'Y') {
-				echo self::censusDateSelector(WT_LOCALE, $xref);
+				$html .= self::censusDateSelector(WT_LOCALE, $xref);
 
 				/** @var CensusAssistantModule $census_assistant */
 				$census_assistant = Module::getModuleByName('GEDFact_assistant');
 				$record = Individual::getInstance($xref, $WT_TREE);
 				if ($census_assistant !== null && $record instanceof Individual) {
-					$census_assistant->createCensusAssistant($record);
+					$html .= $census_assistant->createCensusAssistant($record);
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="updatewholename()">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="updatewholename()">';
 		} elseif ($fact === 'GIVN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
 		} elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
 		} elseif ($fact === 'ADOP') {
-			echo Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
-			echo self::formControlIndividual(Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]);
+			$html .= self::formControlIndividual(Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ASSO' || $fact === '_ASSO') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" onclick="createNewRecord(' . $id . ')" title="' . I18N::translate('Create an individual') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlIndividual(Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 			if ($level === '1') {
-				echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
+				$html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
 			} else {
-				echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.') . '</p>';
+				$html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.') . '</p>';
 			}
 		} elseif ($fact === 'DATE') {
-			echo '<div class="input-group">';
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_date(this)">';
-			echo self::inputAddonCalendar($id);
-			echo self::inputAddonHelp('DATE');
-			echo '</div>';
-			echo '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
-			echo 	'<p class="text-muted">' . (new Date($value))->display() . '</p>';
+			$html .= '<div class="input-group">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" onchange="valid_date(this)">';
+			$html .= self::inputAddonCalendar($id);
+			$html .= self::inputAddonHelp('DATE');
+			$html .= '</div>';
+			$html .= '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
+			$html .= 	'<p class="text-muted">' . (new Date($value))->display() . '</p>';
 		} elseif ($fact === 'FAMC') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlFamily(Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
 		} elseif ($fact === 'LONG') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="valid_lati_long(this, \'E\', \'W\')">';
 		} elseif ($fact === 'NOTE' && $islink) {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-note-object" data-element-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlNote(Note::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'OBJE') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-media-object" data-element-id="' . $id . '" title="' . I18N::translate('Create a media object') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlMediaObject(Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
 		} elseif ($fact === 'PEDI') {
-			echo Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
-			echo '<div class="input-group">';
-			echo self::formControlPlace($value, ['id' => $id, 'name' => $name]);
-			echo '<span class="input-group-addon">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span>';
-			echo self::inputAddonHelp('PLAC');
-			echo '</div>';
+			$html .= '<div class="input-group">';
+			$html .= self::formControlPlace($value, ['id' => $id, 'name' => $name]);
+			$html .= '<span class="input-group-addon">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span>';
+			$html .= self::inputAddonHelp('PLAC');
+			$html .= '</div>';
 			if (Module::getModuleByName('places_assistant')) {
 				\PlacesAssistantModule::setup_place_subfields($id);
 				\PlacesAssistantModule::print_place_subfields($id);
 			}
 		} elseif ($fact === 'QUAY') {
-			echo Bootstrap4::select(GedcomCodeQuay::getValues(), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(GedcomCodeQuay::getValues(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'RELA') {
-			echo Bootstrap4::select(FunctionsEdit::optionsRelationships($value), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(FunctionsEdit::optionsRelationships($value), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'REPO') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-repository" data-element-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fa fa-plus"></i></button></span>' . self::formControlRepository(Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'RESN') {
-			echo '<div class="input-group">';
-			echo Bootstrap4::select(FunctionsEdit::optionsRestrictions(true), $value, ['id' => $id, 'name' => $name]);
-			echo self::inputAddonHelp('RESN');
-			echo '</span>';
-			echo '</div>';
+			$html .= '<div class="input-group">';
+			$html .= Bootstrap4::select(FunctionsEdit::optionsRestrictions(true), $value, ['id' => $id, 'name' => $name]);
+			$html .= self::inputAddonHelp('RESN');
+			$html .= '</span>';
+			$html .= '</div>';
 		} elseif ($fact === 'SEX') {
-			echo Bootstrap4::radioButtons($name, ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], $value, true);
+			$html .= Bootstrap4::radioButtons($name, ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], $value, true);
 		} elseif ($fact === 'SOUR') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-source" data-element-id="' . $id . '" title="' . I18N::translate('Create a source') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlSource(Source::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'STAT') {
-			echo Bootstrap4::select(GedcomCodeStat::statusNames($upperlevel), $value);
+			$html .= Bootstrap4::select(GedcomCodeStat::statusNames($upperlevel), $value);
 		} elseif ($fact === 'SUBM') {
-			echo
+			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-submitter" data-element-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlSubmitter(GedcomRecord::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'TEMP') {
-			echo Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'TIME') {
-			echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
-			echo Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
+			$html .= Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === '_PRIM') {
-			echo Bootstrap4::select(['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')], $value, ['id' => $id, 'name' => $name]);
-			echo '<p class="small text-muted">', I18N::translate('Use this image for charts and on the individual’s page.'), '</p>';
+			$html .= Bootstrap4::select(['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')], $value, ['id' => $id, 'name' => $name]);
+			$html .= '<p class="small text-muted">' . I18N::translate('Use this image for charts and on the individual’s page.') . '</p>';
 		} elseif ($fact === 'TYPE' && $level === '3') {
 			//-- Build the selector for the Media 'TYPE' Fact
-			echo '<select name="text[]"><option selected value="" ></option>';
+			$html .= '<select name="text[]"><option selected value="" ></option>';
 			$selectedValue = strtolower($value);
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-				echo '<option selected value="', Html::escape($value), '" >', Html::escape($value), '</option>';
+				$html .= '<option selected value="' . Html::escape($value) . '" >' . Html::escape($value) . '</option>';
 			}
-			foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
-				echo '<option value="', $typeName, '" ';
+			foreach (['' => ''] + GedcomTag::getFileFormTypes() + [] as $typeName => $typeValue) {
+				$html .= '<option value="' . $typeName . '" ';
 				if ($selectedValue === $typeName) {
-					echo 'selected';
+					$html .= 'selected';
 				}
-				echo '>', $typeValue, '</option>';
+				$html .= '>' . $typeValue . '</option>';
 			}
-			echo '</select>';
+			$html .= '</select>';
 		} elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
-				echo '<div class="input-group">';
-				echo '<textarea class="form-control" id="', $id, '" name="', $name, '" dir="auto">', Html::escape($value), '</textarea>';
-				echo self::inputAddonKeyboard($id);
-				echo '</div>';
+				$html .= '<div class="input-group">';
+				$html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" dir="auto">' . Html::escape($value) . '</textarea>';
+				$html .= self::inputAddonKeyboard($id);
+				$html .= '</div>';
 			} else {
 				// If using GEDFact-assistant window
-				echo '<input class="form-control" type="text" id="', $id, '" name="', $name, '" value="', Html::escape($value), '">';
+				$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '">';
 			}
 		} else {
 			// Populated in javascript from sub-tags
-			echo '<input type="hidden" id="', $id, '" name="', $name, '" oninput="updateTextName(\'', $id, '\')" value="', Html::escape($value), '" class="', $fact, '">';
-			echo '<span id="', $id, '_display" dir="auto">', Html::escape($value), '</span>';
-			echo ' <a href="#edit_name" onclick="convertHidden(\'', $id, '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
+			$html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" oninput="updateTextName(\'' . $id . '\')" value="' . Html::escape($value) . '" class="' . $fact . '">';
+			$html .= '<span id="' . $id . '_display" dir="auto">' . Html::escape($value) . '</span>';
+			$html .= ' <a href="#edit_name" onclick="convertHidden(\'' . $id . '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list
 		if ($fact === 'TYPE' && $level === '2' && $tags[0] === 'MARR') {
-			echo '<script>';
-			echo 'document.getElementById(\'', $id, '\').style.display=\'none\'';
-			echo '</script>';
-			echo '<select id="', $id, '_sel" oninput="document.getElementById(\'', $id, '\').value=this.value" >';
+			$html .= '<script>';
+			$html .= 'document.getElementById(\'' . $id . '\').style.display=\'none\'';
+			$html .= '</script>';
+			$html .= '<select id="' . $id . '_sel" oninput="document.getElementById(\'' . $id . '\').value=this.value" >';
 			foreach (['Unknown', 'Civil', 'Religious', 'Partners'] as $key) {
 				if ($key === 'Unknown') {
-					echo '<option value="" ';
+					$html .= '<option value="" ';
 				} else {
-					echo '<option value="', $key, '" ';
+					$html .= '<option value="' . $key . '" ';
 				}
 				$a = strtolower($key);
 				$b = strtolower($value);
 				if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
-					echo 'selected';
+					$html .= 'selected';
 				}
-				echo '>', GedcomTag::getLabel('MARR_' . strtoupper($key)), '</option>';
+				$html .= '>' . GedcomTag::getLabel('MARR_' . strtoupper($key)) . '</option>';
 			}
-			echo '</select>';
-		} elseif ($fact === 'TYPE' && $level === 0) {
+			$html .= '</select>';
+		} elseif ($fact === 'TYPE' && $level === '0') {
 			// NAME TYPE : hide text field and show a selection list
-			echo Bootstrap4::select(GedcomCodeName::getValues($person), $value, ['id' => $id, 'name' => $name, 'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"']);
-			echo '<script>document.getElementById("', $id, '").style.display="none";</script>';
+			$html .= Bootstrap4::select(GedcomCodeName::getValues($person), $value, ['id' => $id, 'name' => $name, 'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"']);
+			$html .= '<script>document.getElementById("' . $id . '").style.display="none";</script>';
 		}
 
 		// popup links
@@ -851,7 +851,7 @@ class FunctionsEdit {
 		case 'SOUR':
 			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 			if ($level === '1') {
-				echo '<br>';
+				$html .= '<br>';
 				switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
 				case '2': // records
 				$level1_checked = 'checked';
@@ -868,11 +868,11 @@ class FunctionsEdit {
 				break;
 				}
 					if (strpos($bdm, 'B') !== false) {
-						echo ' <label><input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">', I18N::translate('Individual'), '</label>';
+						$html .= ' <label><input type="checkbox" name="SOUR_INDI" ' . $level1_checked . ' value="1">' . I18N::translate('Individual') . '</label>';
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
 								if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									echo ' <label><input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
+									$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '" ' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
 								}
 							}
 						}
@@ -881,16 +881,16 @@ class FunctionsEdit {
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
 								if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									echo ' <label><input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
+									$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
 								}
 							}
 						}
 					}
 					if (strpos($bdm, 'M') !== false) {
-						echo ' <label><input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">', I18N::translate('Family'), '</label>';
+						$html .= ' <label><input type="checkbox" name="SOUR_FAM" ' . $level1_checked . ' value="1">' . I18N::translate('Family') . '</label>';
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
-								echo ' <label><input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
+								$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
 							}
 						}
 					}
@@ -898,15 +898,15 @@ class FunctionsEdit {
 				break;
 		}
 
-		echo '<div id="' . $id . '_description">';
+		$html .= '<div id="' . $id . '_description">';
 
 		// pastable values
 		if ($fact === 'FORM' && $upperlevel === 'OBJE') {
 			FunctionsPrint::printAutoPasteLink($id, Config::fileFormats());
 		}
-		echo '</div>', $extra, '</div></div>';
+		$html .= '</div>' . $extra . '</div></div>';
 
-		return $id;
+		return $html;
 	}
 
 	/**
@@ -993,48 +993,44 @@ class FunctionsEdit {
 
 		switch ($tag) {
 		case 'SOUR':
-			echo '<h3>', I18N::translate('Add a source citation'), '</h3>';
-			self::addSimpleTag($level . ' SOUR @');
-			self::addSimpleTag(($level + 1) . ' PAGE');
-			self::addSimpleTag(($level + 1) . ' DATA');
-			self::addSimpleTag(($level + 2) . ' TEXT');
-			if ($WT_TREE->getPreference('FULL_SOURCES')) {
-				self::addSimpleTag(($level + 2) . ' DATE', '', GedcomTag::getLabel('DATA:DATE'));
-				self::addSimpleTag(($level + 1) . ' QUAY');
-			}
-			self::addSimpleTag(($level + 1) . ' OBJE');
-			self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
+			echo View::make('cards/add-source-citation', [
+				'level'          => $level,
+				'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
+			]);
 			break;
 
 		case 'ASSO':
 		case 'ASSO2':
-			echo '<h3>', I18N::translate('Add an associate'), '</h3>';
-			self::addSimpleTag($level . ' _ASSO @');
-			self::addSimpleTag(($level + 1) . ' RELA');
-			self::addSimpleTag(($level + 1) . ' NOTE');
-			self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
+			echo View::make('cards/add-associate', [
+				'level' => $level,
+			]);
 			break;
 
 		case 'NOTE':
-			echo '<h3>', I18N::translate('Add a note'), '</h3>';
-			self::addSimpleTag($level . ' NOTE');
+			echo View::make('cards/add-note', [
+				'level' => $level,
+			]);
 			break;
 
 		case 'SHARED_NOTE':
-			echo '<h3>', I18N::translate('Add a shared note'), '</h3>';
-			self::addSimpleTag($level . ' SHARED_NOTE', $parent_tag);
+			echo View::make('cards/add-shared-note', [
+				'level'      => $level,
+				'parent_tag' => $parent_tag,
+			]);
 			break;
 
 		case 'OBJE':
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				echo '<h3>', I18N::translate('Add a media object'), '</h3>';
-				self::addSimpleTag($level . ' OBJE');
+				echo View::make('cards/add-media-object', [
+					'level' => $level,
+				]);
 			}
 			break;
 
 		case 'RESN':
-			echo '<h3>', I18N::translate('Add a restriction'), '</h3>';
-			self::addSimpleTag($level . ' RESN');
+			echo View::make('cards/add-restriction', [
+				'level' => $level,
+			]);
 			break;
 		}
 	}
@@ -1049,26 +1045,26 @@ class FunctionsEdit {
 
 		// For new individuals, these facts default to "Y"
 		if ($fact === 'MARR') {
-			self::addSimpleTag('0 ' . $fact . ' Y');
+			echo self::addSimpleTag('0 ' . $fact . ' Y');
 		} else {
-			self::addSimpleTag('0 ' . $fact);
+			echo self::addSimpleTag('0 ' . $fact);
 		}
 
 		if (!in_array($fact, Config::nonDateFacts())) {
-			self::addSimpleTag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
+			echo self::addSimpleTag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
 		}
 
 		if (!in_array($fact, Config::nonPlaceFacts())) {
-			self::addSimpleTag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
+			echo self::addSimpleTag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
-					self::addSimpleTag('0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
+					echo self::addSimpleTag('0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
 				}
 			}
-			self::addSimpleTag('0 MAP', $fact);
-			self::addSimpleTag('0 LATI', $fact);
-			self::addSimpleTag('0 LONG', $fact);
+			echo self::addSimpleTag('0 MAP', $fact);
+			echo self::addSimpleTag('0 LATI', $fact);
+			echo self::addSimpleTag('0 LONG', $fact);
 		}
 	}
 
@@ -1432,7 +1428,7 @@ class FunctionsEdit {
 		// handle  MARRiage TYPE
 		if (substr($fact, 0, 5) === 'MARR_') {
 			$tags[0] = 'MARR';
-			self::addSimpleTag('1 MARR');
+			echo self::addSimpleTag('1 MARR');
 			self::insertMissingSubtags($fact);
 		} else {
 			$tags[0] = $fact;
@@ -1444,18 +1440,18 @@ class FunctionsEdit {
 				$fact .= ' @';
 			}
 			if (in_array($fact, Config::emptyFacts())) {
-				self::addSimpleTag('1 ' . $fact . ' Y');
+				echo self::addSimpleTag('1 ' . $fact . ' Y');
 			} else {
-				self::addSimpleTag('1 ' . $fact);
+				echo self::addSimpleTag('1 ' . $fact);
 			}
 			self::insertMissingSubtags($tags[0]);
 			//-- handle the special SOURce case for level 1 sources [ 1759246 ]
 			if ($fact === 'SOUR') {
-				self::addSimpleTag('2 PAGE');
-				self::addSimpleTag('3 TEXT');
+				echo self::addSimpleTag('2 PAGE');
+				echo self::addSimpleTag('3 TEXT');
 				if ($WT_TREE->getPreference('FULL_SOURCES')) {
-					self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
-					self::addSimpleTag('2 QUAY');
+					echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
+					echo self::addSimpleTag('2 QUAY');
 				}
 			}
 		}
@@ -1544,17 +1540,17 @@ class FunctionsEdit {
 				$tags[]    = $type;
 				$subrecord = $level . ' ' . $type . ' ' . $text;
 				if ($inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $record));
 				} elseif (!$inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 					if ($level === '2') {
 						// We already have a date - no need to add one.
 						$add_date = false;
 					}
 				} elseif ($type === 'STAT') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 				} else {
-					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $record));
 				}
 			}
 
@@ -1570,10 +1566,10 @@ class FunctionsEdit {
 			if (!empty($expected_subtags[$type])) {
 				foreach ($expected_subtags[$type] as $subtag) {
 					if (!in_array($subtag, $subtags)) {
-						self::addSimpleTag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
+						echo self::addSimpleTag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
 						if (!empty($expected_subtags[$subtag])) {
 							foreach ($expected_subtags[$subtag] as $subsubtag) {
-								self::addSimpleTag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
+								echo self::addSimpleTag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
 							}
 						}
 					}
@@ -1624,76 +1620,76 @@ class FunctionsEdit {
 			}
 			if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 				if ($key === 'TYPE') {
-					self::addSimpleTag('2 TYPE ' . $type_val, $level1tag);
+					echo self::addSimpleTag('2 TYPE ' . $type_val, $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === 'DATE') {
-					self::addSimpleTag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
+					echo self::addSimpleTag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
-					self::addSimpleTag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
+					echo self::addSimpleTag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
 				} elseif ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
-					self::addSimpleTag('2 ' . $key, $level1tag);
+					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				} elseif ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
-					self::addSimpleTag('2 ' . $key, $level1tag);
+					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				} elseif ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
-					self::addSimpleTag('2 ' . $key, $level1tag);
+					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				}
 				// Add level 3/4 tags as appropriate
 				switch ($key) {
 				case 'PLAC':
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 						foreach ($match[1] as $tag) {
-							self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+							echo self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
 						}
 					}
-					self::addSimpleTag('3 MAP');
-					self::addSimpleTag('4 LATI');
-					self::addSimpleTag('4 LONG');
+					echo self::addSimpleTag('3 MAP');
+					echo self::addSimpleTag('4 LATI');
+					echo self::addSimpleTag('4 LONG');
 					break;
 				case 'FILE':
-					self::addSimpleTag('3 FORM');
+					echo self::addSimpleTag('3 FORM');
 					break;
 				case 'EVEN':
-					self::addSimpleTag('3 DATE');
-					self::addSimpleTag('3 PLAC');
+					echo self::addSimpleTag('3 DATE');
+					echo self::addSimpleTag('3 PLAC');
 					break;
 				case 'STAT':
 					if (GedcomCodeTemp::isTagLDS($level1tag)) {
-						self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
+						echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 					}
 					break;
 				case 'DATE':
 					// TIME is NOT a valid 5.5.1 tag
 					if (in_array($level1tag, Config::dateAndTime())) {
-						self::addSimpleTag('3 TIME');
+						echo self::addSimpleTag('3 TIME');
 					}
 					break;
 				case 'HUSB':
 				case 'WIFE':
-					self::addSimpleTag('3 AGE');
+					echo self::addSimpleTag('3 AGE');
 					break;
 				case 'FAMC':
 					if ($level1tag === 'ADOP') {
-						self::addSimpleTag('3 ADOP BOTH');
+						echo self::addSimpleTag('3 ADOP BOTH');
 					}
 					break;
 				}
 			} elseif ($key === 'DATE' && $add_date) {
-				self::addSimpleTag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));
+				echo self::addSimpleTag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));
 			}
 		}
 		// Do something (anything!) with unrecognized custom tags
 		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
 			foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
 				if (!in_array($tag, $tags)) {
-					self::addSimpleTag('2 ' . $tag);
+					echo self::addSimpleTag('2 ' . $tag);
 					if ($tag === 'PLAC') {
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 							foreach ($match[1] as $ptag) {
-								self::addSimpleTag('3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
+								echo self::addSimpleTag('3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
 							}
 						}
-						self::addSimpleTag('3 MAP');
-						self::addSimpleTag('4 LATI');
-						self::addSimpleTag('4 LONG');
+						echo self::addSimpleTag('3 MAP');
+						echo self::addSimpleTag('4 LATI');
+						echo self::addSimpleTag('4 LONG');
 					}
 				}
 			}

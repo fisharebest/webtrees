@@ -50,13 +50,11 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE;
 
-		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
-
+		$gedcomid   = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 		$individual = Individual::getInstance($gedcomid, $WT_TREE);
+		$links      = [];
 
-		$links = [];
-
-		if ($gedcomid) {
+		if ($individual) {
 			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
 				$links[] = [
 					'url'   => Html::url('pedigree.php', ['rootid' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),

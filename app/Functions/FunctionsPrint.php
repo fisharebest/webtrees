@@ -74,12 +74,7 @@ class FunctionsPrint {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
 			$note  = Note::getInstance($match[1], $WT_TREE);
 			$label = 'SHARED_NOTE';
-			// If Census assistant installed, allow it to format the note
-			if (Module::getModuleByName('GEDFact_assistant')) {
-				$html = CensusAssistantModule::formatCensusNote($note);
-			} else {
-				$html = Filter::formatText($note->getNote(), $WT_TREE);
-			}
+			$html = Filter::formatText($note->getNote(), $WT_TREE);
 		} else {
 			$note  = null;
 			$label = 'NOTE';
@@ -142,7 +137,7 @@ class FunctionsPrint {
 			if (!isset($match[$j][1])) {
 				$match[$j][1] = '';
 			}
-			if (!preg_match('/@(.*)@/', $match[$j][1], $nmatch)) {
+			if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
 				$data .= self::printNoteRecord($match[$j][1], $nlevel, $nrec, $textOnly);
 			} else {
 				$note = Note::getInstance($nmatch[1], $WT_TREE);

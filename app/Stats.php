@@ -1095,7 +1095,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalAdmins() {
-		return I18N::number(count(User::allAdmins()));
+		return I18N::number(count(User::administrators()));
 	}
 
 	/**
@@ -1104,7 +1104,7 @@ class Stats {
 	 * @return string
 	 */
 	public function totalNonAdmins() {
-		return I18N::number(count(User::all()) - count(User::allAdmins()));
+		return I18N::number(count(User::all()) - count(User::administrators()));
 	}
 
 	/**

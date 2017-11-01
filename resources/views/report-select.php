@@ -5,7 +5,7 @@
 	<?= I18N::translate('Choose a report to run') ?>
 </h2>
 
-<form action="reportengine.php" class="wt-page-options d-print-none">
+<form action="reportengine.php" class="wt-page-options wt-page-options-report-select">
 	<input type="hidden" name="action" value="setup">
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="report">

@@ -11,16 +11,19 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'b3134b0e457069f7362d2c9cf91628c7' => __DIR__ . '/..' . '/fisharebest/ext-calendar/src/shims.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'e277be14c90068cf94faed2c43dbe6d8' => __DIR__ . '/..' . '/symfony/polyfill-php71/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Webuni\\CommonMark\\TableExtension\\' => 33,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php72\\' => 23,
@@ -42,6 +45,7 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
             'League\\Glide\\' => 13,
             'League\\Flysystem\\ZipArchive\\' => 28,
             'League\\Flysystem\\' => 17,
+            'League\\CommonMark\\' => 18,
         ),
         'I' => 
         array (
@@ -63,6 +67,10 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
     );
 
     public static $prefixDirsPsr4 = array (
+        'Webuni\\CommonMark\\TableExtension\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webuni/commonmark-table-extension/src',
+        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -103,6 +111,10 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'League\\CommonMark\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/commonmark/src',
+        ),
         'Intervention\\Image\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
@@ -137,23 +149,6 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'M' => 
-        array (
-            'Michelf' => 
-            array (
-                0 => __DIR__ . '/..' . '/michelf/php-markdown',
-            ),
-        ),
-        'H' => 
-        array (
-            'HTMLPurifier' => 
-            array (
-                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
@@ -163,6 +158,7 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'ParseError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
+        'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
         'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
@@ -182,7 +178,6 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022::$classMap;
 
         }, null, ClassLoader::class);

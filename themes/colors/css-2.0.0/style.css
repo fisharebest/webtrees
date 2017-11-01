@@ -283,6 +283,10 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(icons/individual.png);
 }
 
+i[class*="wt-icon-media"] {
+	opacity: 0.5;
+}
+
 /*
  * Pages have the following high-level structure:
  *
@@ -386,6 +390,10 @@ a > .wt-icon-arrow-up:hover::before {
 
 .wt-secondary-menu .dropdown-toggle:after {
 	display: none;
+}
+
+.wt-secondary-menu .menu-color .dropdown-menu {
+	max-height: 60rem;
 }
 
 .wt-primary-navigation {
@@ -626,7 +634,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-obje-link::before {
-	content: url(menu/edit-links.png);
+	content: url(menu/edit-link.png);
 }
 
 .menu-obje-del::before {
@@ -1392,15 +1400,6 @@ a:hover .nameZoom {
 	margin: 0.25em auto 0.6em;
 }
 
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
 .tvertline {
 	vertical-align: bottom;
 }
@@ -1513,8 +1512,8 @@ a:hover .nameZoom {
 	color: #f00;
 }
 
-.rela,
-.histo {
+.wt-relation-fact,
+.wt-historic-fact {
 	opacity: 0.8;
 }
 
@@ -2123,12 +2122,6 @@ a:hover .nameZoom {
 	margin-bottom: 2px;
 }
 
-.loading-image {
-	background: transparent url(images/loading-32x32.gif) 50% 50% no-repeat;
-	height: 50px;
-	margin: 50px;
-}
-
 .list-charts {
 	text-align: center;
 }
@@ -2160,15 +2153,6 @@ a:hover .nameZoom {
 #available_select,
 #right_select {
 	min-width: 150px;
-}
-
-/* Random picture block */
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
 }
 
 /* ==== Favourites block ===== */
@@ -2499,39 +2483,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-/* ======== Album tab =========*/
-.album-list {
-	list-style-type: none;
-}
-
-.album-list-item {
-	display: inline-block;
-	text-align: center;
-	padding: 0 12px;
-	height: 112px;
-	width: 120px;
-}
-
-.album-list-item a img {
-	max-height: 78px;
-	max-width: 100px;
-	height: auto;
-	width: auto;
-}
-
-.album-list-item a:hover div {
-	outline: thin solid #bdb071;
-}
-
-.album-image {
-	margin: auto;
-}
-
-.album-title {
-	padding-top: 4px;
-	width: 100%;
 }
 
 /* === jQuery.datatable styling general over-rides === */

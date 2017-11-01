@@ -23,6 +23,8 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\ServerFactory;
+use League\Glide\Signatures\SignatureFactory;
+use League\Glide\Signatures\SignatureException;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -63,21 +65,28 @@ try {
 	}
 
 	// Setup Glide server
-	$data_dir   = new Filesystem(new Local(WT_DATA_DIR));
+	// Caution - $media_dir may contain relative paths: ../../
+	$source_dir = new Filesystem(new Local(WT_DATA_DIR . $media_dir));
+	$cache_dir  = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_dir)));
 	$assets_dir = new Filesystem(new Local( 'assets'));
+
 	$server     = ServerFactory::create([
-		'driver'             => $driver,
-		'source'             => $data_dir,
-		'source_path_prefix' => $media_dir,
-		'cache'              => $data_dir,
-		'cache_path_prefix'  => 'thumbnail-cache/' . $media_dir,
-		'watermarks'         => $assets_dir,
+		'driver'     => $driver,
+		'source'     => $source_dir,
+		'cache'      => $cache_dir,
+		'watermarks' => $assets_dir,
 	]);
+
+	// Validate HTTP signature
+	$glide_key = Site::getPreference('glide-key');
+	SignatureFactory::create($glide_key)->validateRequest(parse_url(WT_BASE_URL . 'mediafirewall.php', PHP_URL_PATH), $_GET);
 
 	// Generate and send the image
 	$error_reporting = error_reporting(0);
 	$server->outputImage($media_file, $_GET);
 	error_reporting($error_reporting);
+} catch (SignatureException $e) {
+	FunctionsMedia::outputHttpStatusAsImage(403, 'Not allowed');
 } catch (FileNotFoundException $ex) {
 	FunctionsMedia::outputHttpStatusAsImage(404, 'Not found');
 } catch (NotReadableException $ex) {

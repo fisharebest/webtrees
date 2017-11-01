@@ -120,7 +120,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '</td>';
 				$content .= '</tr>';
 				$content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
-				$content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body) . '</div><br>';
+				$content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $WT_TREE) . '</div><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ I18N::translate('RE: ')) !== 0) {
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}

@@ -144,7 +144,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
-				'title'      => $title,
+				'title'      => strip_tags($title),
 				'content'    => $content,
 			]);
 		} else {

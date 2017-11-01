@@ -218,18 +218,18 @@ if ($show === 'indi' || $show === 'surn') {
 					} else {
 						echo '<span class="wt-initial text-muted">' . $controller->givenNameInitial($givn_initial) . '</span>';
 					}
-				echo '</li>';
+					echo '</li>';
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
 				if (Session::has('initiated')) {
 					echo '<li class="wt-initials-list-item">';
 					if ($show_all_firstnames === 'yes') {
-						echo '<span class="warning">' . I18N::translate('All') . '</span>';
+						echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
 					} else {
 						echo '<a class="wt-initial" href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
 					}
+					echo '</li>';
 				}
-				echo '</li>';
 				echo '</ul>';
 				echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
 			}

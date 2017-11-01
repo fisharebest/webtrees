@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -157,7 +158,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			'<i class="plusminus ' . $icon . '"></i>' .
 			$person->getSexImage() . $person->getFullName() . $lifespan .
 			'</a>' .
-			'<a class="icon-button_indi" href="' . $person->getHtmlUrl() . '"></a>' .
+			FontAwesome::linkIcon('individual', $person->getFullName(), ['href' => $person->getRawUrl()]) .
 			'<div>' . $spouses . '</div>' .
 			'</li>';
 	}
@@ -175,7 +176,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {
 			$spouse_name = $spouse->getSexImage() . $spouse->getFullName();
-			$spouse_link = '<a class="icon-button_indi" href="' . $spouse->getHtmlUrl() . '"></a>';
+			$spouse_link = FontAwesome::linkIcon('individual', $spouse->getFullName(), ['href' => $person->getRawUrl()]);
+;
 		} else {
 			$spouse_name = '';
 			$spouse_link = '';
@@ -188,7 +190,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			'<li class="sb_desc_indi_li">' .
 			'<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' . $spouse_name . $marr . '</a>' .
 			$spouse_link .
-			'<a href="' . $family->getHtmlUrl() . '" class="icon-button_family"></a>' .
+			FontAwesome::linkIcon('family', $family->getFullName(), ['href' => $family->getRawUrl()]) .
 		 '<div>' . $this->loadChildren($family, $generations) . '</div>' .
 			'</li>';
 	}

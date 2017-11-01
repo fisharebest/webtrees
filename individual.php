@@ -82,7 +82,7 @@ if ($controller->record && $controller->record->canShow()) {
 // If this individual is linked to a user account, show the link
 $user_link = '';
 if (Auth::isAdmin()) {
-	$user = User::findByGenealogyRecord($controller->record);
+	$user = User::findByIndividual($controller->record);
 	if ($user) {
 		$user_link =  ' —  <a href="admin_users.php?filter=' . Html::escape($user->getUserName()) . '">' . Html::escape($user->getUserName()) . '</a>';
 	};

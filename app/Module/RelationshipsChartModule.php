@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -229,6 +230,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	 * @return string
 	 */
 	public function getConfigLink() {
-		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin';
+		return Html::url('module.php', [
+			'mod'        => $this->getName(),
+			'mod_action' => 'admin',
+		]);
 	}
 }

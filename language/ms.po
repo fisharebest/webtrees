@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-02-10 06:27+0000\n"
-"Last-Translator: Nik Ramzi Al-Samadi bin Abdul <nikramzixk@gmail.com>\n"
+"PO-Revision-Date: 2017-10-18 21:08+0000\n"
+"Last-Translator: Kilik Alexander <kilikgantit@gmail.com>\n"
 "Language-Team: Malay <https://translate.webtrees.net/projects/webtrees/webtrees/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
@@ -12540,6 +12540,7 @@ msgstr "Bar tepi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
+#, fuzzy
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
@@ -12675,8 +12676,9 @@ msgstr "Sistem kecil (500 individu): 16-32 MB, 10-20 saat"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
+#, fuzzy
 msgid "Snowflake, Arizona, United States"
-msgstr "Lokasi Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, United States"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:542

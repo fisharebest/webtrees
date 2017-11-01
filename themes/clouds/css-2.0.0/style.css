@@ -566,11 +566,11 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-fam-change::before {
-	content: url(menu/fam-change.png);
+	content: url(menu/edit-fam.png);
 }
 
 .menu-fam-addchil::before {
-	content: url(menu/fam-addchil.png);
+	content: url(menu/edit-fam.png);
 }
 
 .menu-fam-orderchil::before {
@@ -594,11 +594,11 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-indi-addname::before {
-	content: url(menu/add-name.png);
+	content: url(menu/edit-indi.png);
 }
 
 .menu-indi-editsex::before {
-	content: url(menu/edit-sex.png);
+	content: url(menu/edit-indi.png);
 }
 
 .menu-indi-del::before {
@@ -674,7 +674,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-repo-edit::before {
-	content: url(menu/edit-repository.png);
+	content: url(menu/edit-repo.png);
 }
 
 .menu-repo-del::before {
@@ -694,7 +694,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .menu-sour-edit::before {
-	content: url(menu/edit-source.png);
+	content: url(menu/edit-sour.png);
 }
 
 .menu-sour-del::before {
@@ -1503,15 +1503,6 @@ a:hover .nameZoom {
 	margin: 0.25em auto 0.6em;
 }
 
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
 .tvertline {
 	vertical-align: bottom;
 }
@@ -1619,8 +1610,8 @@ a:hover .nameZoom {
 	color: #f00;
 }
 
-.rela,
-.histo {
+.wt-relation-fact,
+.wt-historic-fact {
 	opacity: 0.8;
 }
 
@@ -2242,12 +2233,6 @@ a:hover .nameZoom {
 	margin-bottom: 2px;
 }
 
-.loading-image {
-	background: transparent url(images/loading-32x32.gif) 50% 50% no-repeat;
-	height: 50px;
-	margin: 50px;
-}
-
 .list-charts {
 	text-align: center;
 }
@@ -2291,15 +2276,6 @@ a:hover .nameZoom {
 	width: 33%;
 	text-align: center;
 	vertical-align: top;
-}
-
-/* Random picture block */
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
 }
 
 /* ==== Favourites block ===== */
@@ -2630,39 +2606,6 @@ div.faq_body {
 
 [dir=rtl] .media-display-title {
 	float: right;
-}
-
-/* ======== Album tab =========*/
-.album-list {
-	list-style-type: none;
-}
-
-.album-list-item {
-	display: inline-block;
-	text-align: center;
-	padding: 0 12px;
-	height: 112px;
-	width: 120px;
-}
-
-.album-list-item a img {
-	max-height: 78px;
-	max-width: 100px;
-	height: auto;
-	width: auto;
-}
-
-.album-list-item a:hover div {
-	outline: thin solid #bdb071;
-}
-
-.album-image {
-	margin: auto;
-}
-
-.album-title {
-	padding-top: 4px;
-	width: 100%;
 }
 
 /* === jQuery.datatable styling general over-rides === */

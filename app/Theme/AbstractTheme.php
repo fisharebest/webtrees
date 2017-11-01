@@ -591,7 +591,7 @@ abstract class AbstractTheme {
 		return
 			'<div class="input-group">' .
 			'<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
-			'<input type="search" class="form-control form-control-sm wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
+			'<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
 			'<span class="input-group-btn">' .
 			'<button type="submit" class="btn btn-primary wt-header-search-button"><i class="fa fa-search"></i></button>' .
 			'</span>' .

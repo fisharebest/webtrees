@@ -234,7 +234,6 @@ case 'general':
 	$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
 	$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
 	$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
-	$WT_TREE->setPreference('WATERMARK_THUMB', Filter::postBool('WATERMARK_THUMB'));
 	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
 	$WT_TREE->setPreference('WEBTREES_EMAIL', Filter::post('WEBTREES_EMAIL'));
 	$WT_TREE->setPreference('title', Filter::post('title'));
@@ -483,7 +482,7 @@ echo Bootstrap4::breadcrumbs([
 		</tr>
 	</script>
 
-	<table class="table table-bordered table-condensed table-hover" id="default-resn">
+	<table class="table table-bordered table-sm table-hover" id="default-resn">
 		<caption class="sr-only">
 			<?= I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag') ?>
 		</caption>
@@ -1026,21 +1025,6 @@ echo Bootstrap4::breadcrumbs([
 	</fieldset>
 
 	<h3><?= I18N::translate('Watermarks') ?></h3>
-
-	<!-- WATERMARK_THUMB -->
-	<fieldset class="form-group">
-		<div class="row">
-			<legend class="col-form-legend col-sm-3">
-				<?= /* I18N: A configuration setting */ I18N::translate('Add watermarks to thumbnails') ?>
-			</legend>
-			<div class="col-sm-9">
-				<?= Bootstrap4::radioButtons('WATERMARK_THUMB', FunctionsEdit::optionsNoYes(), $WT_TREE->getPreference('WATERMARK_THUMB'), true) ?>
-				<p class="small text-muted">
-					<?= /* I18N: Help text for the “Add watermarks to thumbnails” configuration setting */ I18N::translate('A watermark is text that is added to an image, to discourage others from copying it without permission.') ?>
-				</p>
-			</div>
-		</div>
-	</fieldset>
 
 	<!-- SHOW_NO_WATERMARK -->
 	<div class="row form-group">

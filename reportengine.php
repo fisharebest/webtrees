@@ -94,7 +94,7 @@ foreach ($varnames as $name) {
 $reports = [];
 foreach (Module::getActiveReports($WT_TREE) as $rep) {
 	$menu = $rep->getReportMenu();
-	if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
+	if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.xml)/', $menu->getLink(), $match)) {
 		$reports[$match[1]] = $menu->getLabel();
 	}
 }

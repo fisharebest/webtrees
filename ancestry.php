@@ -31,9 +31,16 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 	return;
 }
 
-$controller
-	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-	->pageHeader();
+$ajax_url = Html::url('ancestry.php', [
+	'rootid'               => $controller->root->getXref(),
+	'ged'                  => $controller->root->getTree()->getName(),
+	'PEDIGREE_GENERATIONS' => $controller->generations,
+	'chart_style'          => $controller->chart_style,
+	'show_cousins'         => $controller->show_cousins,
+	'ajax'                 => 1,
+]);
+
+$controller->pageHeader();
 
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
@@ -74,9 +81,10 @@ $controller
 	<div class="row form-group">
 		<div class="col-form-label col-sm-3 wt-page-options-label"></div>
 		<div class="col-sm-9 wt-page-options-value">
-			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
+			I18N::translate('view') ?>">
 		</div>
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>

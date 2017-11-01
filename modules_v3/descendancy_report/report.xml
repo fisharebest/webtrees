@@ -554,7 +554,7 @@
 													</Footnote>
 													<SetVar name="source_exist" value="1" />
 												</RepeatTag>
-												<Text style="label1"> </Text> <!-- @@ -->
+												<Text style="label1"> </Text>
 											</if>
 											<Gedcom id="BIRT">
 												<Text style="label1"> <var var="I18N::translate('Birth')" />: <GedcomValue tag="DATE" level="2"/>  <GedcomValue tag="PLAC" level="2"/></Text>
