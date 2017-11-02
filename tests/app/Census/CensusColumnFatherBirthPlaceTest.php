@@ -38,8 +38,11 @@ class CensusColumnFatherBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 */
 	private function getPlaceMock($place)
 	{
+		$placeParts = explode(', ', $place);
+
 		$placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
 		$placeMock->shouldReceive('getGedcomName')->andReturn($place);
+		$placeMock->shouldReceive('lastPart')->andReturn(end($placeParts));
 
 		return $placeMock;
 	}

@@ -44,6 +44,18 @@ class Place {
 	}
 
 	/**
+	 * Extract the country (last part) of a place name.
+	 *
+	 * @param string $place - e.g. "London, England"
+	 *
+	 * @return string - e.g. "England"
+	 */
+	public function lastPart()
+	{
+		return end($this->gedcom_place);
+	}
+
+	/**
 	 * Get the identifier for a place.
 	 *
 	 * @return int
