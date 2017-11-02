@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-31 22:30+0000\n"
+"PO-Revision-Date: 2017-11-02 19:12+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -233,8 +233,8 @@ msgstr "%s na bakitani na bangó"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "mosáleli %s ayébání tɛ̂"
-msgstr[1] "basáleli %s bayébání tɛ̂"
+msgstr[0] "mosáleli %s akɔ́ti ayébání tɛ̂"
+msgstr[1] "basáleli %s bakɔ́ti bayébání tɛ̂"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -707,7 +707,7 @@ msgstr "<b>Nkomá ya motúya:</b> Mosálisi mwa bolekisi ekokí kosálisa yɔ̌ 
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Yébá:</b> Nsango ya bato na bomɔi ekopésama sé na mabótá mpé na baninga ba nzinganzinga. Okotúnama mpɔ̂ na koyéba mokangano na yɔ̌ libosó ya kozwa boíké bwa nsango ya bato. Mbala míngi nsango ya bato bakúfá ikokí kotíkala sé ya bangó mɔ̌kɔ́. Sɔ́kí bôngó, ezalí mpɔ̂ nsango ya moto óyo izwamí míngi tɛ́. <br><br>Libosó ya kotúna, oyéba éte ozali koluka moto wa sɔ̂lɔ́ na boluki dáti, bisíká mpé mikangano mya nzinganzinga. Sɔ́kí ozalí kotínda mabóngoli ma bipɛ́sɛli bya mabótá, tíyá bibandela epáí wapi ozwákí epɛ́sɛli."
+msgstr "<b>Yébá:</b> Nsango ya bato na bomɔi ekopésama sé na mabótá mpé na baninga ba nzinganzinga. Okotúnama mpɔ̂ na koyéba mokangano mwa yɔ̌ libosó ya kozwa boíké bwa nsango ya bato. Mbala míngi nsango ya bato bakúfá ikokí kotíkala sé ya bangó mɔ̌kɔ́. Sɔ́kí bôngó, ezalí mpɔ̂ nsango ya moto óyo izwamí míngi tɛ́. <br><br>Libosó ya kotúna, oyéba éte ozali koluka moto wa sɔ̂lɔ́ na boluki dáti, bisíká mpé mikangano mya nzinganzinga. Sɔ́kí ozalí kotínda mabóngoli ma bipɛ́sɛli bya mabótá, tíyá bibandela epáí wapi ozwákí epɛ́sɛli."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -790,7 +790,7 @@ msgstr "Kásá-kásá káti na esálela na yɔ̌"
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr "Liloba lya boyéi bolámu mpé ekangeli bya ntína mpɔ̂ na mosáleli."
+msgstr "Liloba lya boyéi bolámu mpé ekangeli ya ntína mpɔ̂ na mosáleli."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
@@ -800,37 +800,37 @@ msgstr "Liloba lya boyéi bolámu mpɔ̂ na batáli."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Molɔngɔ́ mwa mabóngoli maye masengélí etálama lisúsu na mondimi, mpé biyébisi bya nkandá."
+msgstr "Molɔngɔ́ mwa mabóngoli moye mosengélí kotálama lisúsu na mondimi, mpé biyébisi bya nkandá."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "Molɔngɔ́ mwa mitúna na biyáno bisɛ́ngámí kolúta."
+msgstr "Molɔngɔ́ mwa mitúna mpé biyáno mosɛ́ngámí kolúta."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr "Molɔngɔ́ mwa bokɔ́tisi boye botíyamí sika."
+msgstr "Molɔngɔ́ mwa bokɔ́tisi moye motíyámí sika."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Molɔngɔ́ mwa misálá mpé bisálela biye bikangisámí na nzeté ya libótá."
+msgstr "Molɔngɔ́ mwa misálá mpé bisálela moye mokangisámí na nzeté ya libótá."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Molɔngɔ́ mwa milúlu mya bowéí bwa boyúda mikoyá."
+msgstr "Molɔngɔ́ mwa milúlu mya bowéí bwa boyúda miye mikoyá."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "Molɔngɔ́ mwa milúlu mya mbótama mikosálema lɛlɔ́."
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama miye mikosálema lɛlɔ́."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Molɔngɔ́ mwa milúlu mya mbótama mizalí koyâ.."
+msgstr "Molɔngɔ́ mwa milúlu mya mbótama miye mizalí koyâ."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
@@ -859,7 +859,7 @@ msgstr ""
 #: login.php:264
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr "Loloba lwa bolekisi lokelamí mpé nkandá etíndámí epái ya %s. Okokí kobóngola loloba lwa bolekisi loye na nsima ya boyíngeli bwa yɔ̌."
+msgstr "Loloba lwa bolekisi lokelamí mpé nkandá etíndámí epái ya %s. Okokí kobóngola loloba lwa bolekisi loye na nsima boyíngeli bwa yɔ̌."
 
 #: login.php:257
 msgid "A new password has been requested for your username."
@@ -1293,7 +1293,7 @@ msgstr "Bakísá bopɔni"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
-msgstr "Kobakisa etando"
+msgstr "Kobakisa esíká ya mambí ma mabelé"
 
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:810
 #: edit_interface.php:900
@@ -4999,7 +4999,7 @@ msgstr "Kozímisa"
 
 #: app/Module/GoogleMapsModule.php:3677
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "Kozíma epɛ́sɛli ya mambí ma mabelé nyɔ́nsɔ ezalí libosó ya boyíngisi kásá-kásá."
 
 #. I18N: Menu entry
 #: admin_users.php:664 app/Theme/AdministrationTheme.php:166
@@ -5313,13 +5313,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:719
 #: app/Module/ClippingsCartModule.php:754
 msgid "Download"
-msgstr ""
+msgstr "Kotíyola"
 
 #. I18N: The system is about to…; %s is a URL.
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Kotíyola %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5327,7 +5327,7 @@ msgstr "Kotíyola kásá-kásá"
 
 #: app/Module/GoogleMapsModule.php:4075
 msgid "Download geographic data"
-msgstr ""
+msgstr "Kotíyola epɛ́sɛli ya mambí ma mabelé"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
@@ -5337,7 +5337,7 @@ msgstr ""
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
@@ -5436,7 +5436,7 @@ msgstr "Kobɔngisa FAQ"
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
 msgid "Edit the details"
-msgstr ""
+msgstr "Kobɔngisa bikákoli"
 
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
@@ -5471,7 +5471,7 @@ msgstr ""
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
 msgid "Edit the repository"
-msgstr ""
+msgstr "Kobɔngisa ebómbelo"
 
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
@@ -5528,7 +5528,7 @@ msgstr ""
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2342
 msgid "Elevation"
-msgstr ""
+msgstr "Botómboli"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -5638,7 +5638,7 @@ msgstr "Mobú mwa nsúka"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr ""
+msgstr "Molɔngɔ́ mwa nsúka ya mabóngoli ma dáti"
 
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
@@ -6746,7 +6746,7 @@ msgstr ""
 
 #: statistics.php:674
 msgid "Geographic area"
-msgstr ""
+msgstr "Etando ya mambí ma mabelé"
 
 #: app/Module/GoogleMapsModule.php:175 app/Module/GoogleMapsModule.php:289
 #: app/Module/GoogleMapsModule.php:826 app/Module/GoogleMapsModule.php:1309
@@ -6755,7 +6755,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:3495 app/Module/GoogleMapsModule.php:3507
 #: app/Module/GoogleMapsModule.php:3719 app/Module/GoogleMapsModule.php:3886
 msgid "Geographic data"
-msgstr ""
+msgstr "Epɛ́sɛli ya mambí ma mabelé"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
@@ -12960,7 +12960,7 @@ msgstr "Nkásá ebelé ekokí kolakisa motángo mwa mbala iye itálámákí."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Nkómbó ya bisiká mɔ̌kɔ́ ikokí kokomama na mabandi mpé bisúkya. Na ndakisa “Orange” mpɔ̂ na “Orange County”. Sɔ́kí nzeté ya libótá ezalí na nkómbó ya bisiká ya mibimba, kasi sandúku ya bipɛ́sɛli ya bilɔ́kɔ bya mabelé ezalí na nkómbó ya bisiká ya mikúsé, osengélí bôngó kopɔnɔ molɔngɔ́ mwa mabandi mpé bisúkya ekolongolama. Esengélí mitúya ebelé ekabwama na mpútu-nkoma. Na ndakisa “County;County of” tǒ “Township;Twp;Twp.”."
+msgstr "Nkómbó ya bisiká mɔ̌kɔ́ ikokí kokomama na mabandi mpé bisúkya. Na ndakisa “Orange” mpɔ̂ na “Orange County”. Sɔ́kí nzeté ya libótá ezalí na nkómbó ya bisiká ya mibimba, kasi sandúku ya bipɛ́sɛli bya mambí ma mabelé ezalí na nkómbó ya bisiká ya mikúsé, osengélí bôngó kopɔnɔ molɔngɔ́ mwa mabandi mpé bisúkya ekolongolama. Esengélí mitúya ebelé ekabwama na mpútu-nkoma. Na ndakisa “County;County of” tǒ “Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
@@ -15314,7 +15314,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3630 app/Module/GoogleMapsModule.php:4056
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Kotómba epɛ́sɛli ya mambí ma mabelé"
 
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
@@ -20096,7 +20096,7 @@ msgstr "adrɛsi ya eyano ya webtrees"
 
 #: app/Functions/FunctionsEdit.php:249
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees atindí nkomá ezangí bobómbi"
+msgstr "webtrees etindí nkandá izangí bobómbi"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
