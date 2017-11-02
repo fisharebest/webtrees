@@ -307,7 +307,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of all marriage places - for the family lists.
 	 *
-	 * @return string[]
+	 * @return array|Place[]
 	 */
 	public function getAllMarriagePlaces() {
 		foreach (explode('|', WT_EVENTS_MARR) as $event) {

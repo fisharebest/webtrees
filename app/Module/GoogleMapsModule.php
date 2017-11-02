@@ -493,11 +493,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					if ($name == I18N::translate('Private')) {
 						$priv++;
 					}
-					$place = $person->getBirthPlace();
+					$place = $person->getBirthPlace()->getGedcomName();
 					if (empty($place)) {
 						$latlongval[$i] = null;
 					} else {
-						$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
+						$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace()->getGedcomName());
 					}
 					if ($latlongval[$i]) {
 						$lat[$i] = strtr($latlongval[$i]->pl_lati, ['N' => '', 'S' => '-', ',' => '.']);
@@ -877,7 +877,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$data .= $birth ? addslashes($birth->summary()) : '';
 							$data .= '</div>';
 
-							$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
+							$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace()->getGedcomName());
 							if ($latlongval[$i]) {
 								$lat[$i] = (float) strtr($latlongval[$i]->pl_lati, ['N' => '', 'S' => '-', ',' => '.']);
 								$lon[$i] = (float) strtr($latlongval[$i]->pl_long, ['E' => '', 'W' => '-', ',' => '.']);

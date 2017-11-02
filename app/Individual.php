@@ -437,7 +437,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get the place of birth
 	 *
-	 * @return string
+	 * @return Place
 	 */
 	public function getBirthPlace() {
 		foreach ($this->getAllBirthPlaces() as $place) {
@@ -446,7 +446,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return '';
+		return new Place(null, $this->tree);
 	}
 
 	/**
@@ -476,7 +476,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get the place of death
 	 *
-	 * @return string
+	 * @return Place
 	 */
 	public function getDeathPlace() {
 		foreach ($this->getAllDeathPlaces() as $place) {
@@ -485,7 +485,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return '';
+		return new Place(null, $this->tree);
 	}
 
 	/**
@@ -507,8 +507,8 @@ class Individual extends GedcomRecord {
 	 */
 	public function getLifeSpan() {
 		// Just the first part of the place name
-		$birth_place = preg_replace('/,.*/', '', $this->getBirthPlace());
-		$death_place = preg_replace('/,.*/', '', $this->getDeathPlace());
+		$birth_place = $this->getBirthPlace()->getShortName();
+		$death_place = $this->getDeathPlace()->getShortName();
 		// Remove markup from dates
 		$birth_date = strip_tags($this->getBirthDate()->display());
 		$death_date = strip_tags($this->getDeathDate()->display());
@@ -540,7 +540,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Gat all the birth places - for the individual lists.
 	 *
-	 * @return string[]
+	 * @return array|Place[]
 	 */
 	public function getAllBirthPlaces() {
 		foreach (explode('|', WT_EVENTS_BIRT) as $event) {
@@ -572,7 +572,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get all the death places - for the individual lists.
 	 *
-	 * @return string[]
+	 * @return array|Place[]
 	 */
 	public function getAllDeathPlaces() {
 		foreach (explode('|', WT_EVENTS_DEAT) as $event) {

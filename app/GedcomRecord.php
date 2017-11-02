@@ -1039,14 +1039,14 @@ class GedcomRecord {
 	 *
 	 * @param string $event_type
 	 *
-	 * @return array
+	 * @return array|Place[]
 	 */
 	public function getAllEventPlaces($event_type) {
 		$places = [];
 		foreach ($this->getFacts($event_type) as $event) {
 			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
 				foreach ($ged_places[1] as $ged_place) {
-					$places[] = $ged_place;
+					$places[] = new Place($ged_place, $this->tree);
 				}
 			}
 		}
