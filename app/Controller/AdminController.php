@@ -506,7 +506,9 @@ class AdminController extends PageController {
 			->setPageTitle(I18N::translate('Control panel'))
 			->pageHeader();
 
-		$all_trees = array_filter(Tree::getAll(), function (Tree $tree) { return Auth::isManager($tree); });
+		$all_trees = array_filter(Tree::getAll(), function (Tree $tree) {
+			return Auth::isManager($tree);
+		});
 
 		echo View::make('admin/control-panel-manager', [
 			'title'        => $this->getPageTitle(),

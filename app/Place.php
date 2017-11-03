@@ -47,8 +47,7 @@ class Place {
 	 *
 	 * @return string - e.g. "England"
 	 */
-	public function lastPart()
-	{
+	public function lastPart() {
 		return end($this->gedcom_place);
 	}
 

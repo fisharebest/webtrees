@@ -259,7 +259,9 @@ case 'load_json':
 
 		// Filter unused files
 		if ($search) {
-			$unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
+			$unused_files = array_filter($unused_files, function ($x) use ($search) {
+				return strpos($x, $search) !== false;
+			});
 		}
 		$recordsFiltered = count($unused_files);
 

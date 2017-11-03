@@ -353,7 +353,6 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 				);
 			}
 			header('Location: ' . Html::url(WT_LOGIN_URL, ['url' => $request->getRequestUri()]));
-
 		}
 		exit;
 	}

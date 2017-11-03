@@ -257,7 +257,6 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}
 				}
-
 			}
 			break;
 		case 'RESN':
@@ -316,14 +315,14 @@ class FunctionsPrintFacts {
 			break;
 			default:
 			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-			$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
-			if ($target) {
-				echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+				$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
+				if ($target) {
+					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+				} else {
+					echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
+				}
 			} else {
-				echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
-			}
-			} else {
-			echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
+				echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
 			}
 			break;
 			}

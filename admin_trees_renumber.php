@@ -253,9 +253,6 @@ if (Filter::get('action') === 'renumber') {
 			break;
 		}
 	}
-	if ($xrefs) {
-
-	}
 } else {
 	echo '<p>', I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>';
 	echo '<p>', I18N::translate('You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree.'), '</p>';

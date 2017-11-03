@@ -642,7 +642,7 @@ class AdvancedSearchController extends SearchController {
 				if ($this->values[$n] && preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field, $match)) {
 					if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($this->values[$n], '/') . '/i', $person->getGedcom())) {
 						continue 2;
-				 }
+					}
 				}
 			}
 			$this->myindilist[] = $person;

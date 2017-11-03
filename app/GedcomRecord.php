@@ -425,7 +425,7 @@ class GedcomRecord {
 			$access_level = Auth::accessLevel($this->tree);
 		}
 
-// CACHING: this function can take three different parameters,
+		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
 		case Auth::PRIV_PRIVATE: // visitor
@@ -533,7 +533,9 @@ class GedcomRecord {
 	protected function addName($type, $value, $gedcom) {
 		$this->_getAllNames[] = [
 			'type'   => $type,
-			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
+			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) {
+				return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
+			}, $value),
 			'full'   => '<span dir="auto">' . Html::escape($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
 		];
@@ -1086,7 +1088,7 @@ class GedcomRecord {
 			$access_level = Auth::accessLevel($this->tree);
 		}
 
-			$facts = [];
+		$facts = [];
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter === null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {

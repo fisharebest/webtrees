@@ -5439,7 +5439,6 @@ class Stats {
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= $this->arrayToExtendedEncoding([$per]);
 			$chl[] = $top_name . ' - ' . I18N::number($count_per);
-
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
 		$chd .= $this->arrayToExtendedEncoding([$per]);

@@ -867,34 +867,34 @@ class FunctionsEdit {
 				$level2_checked = '';
 				break;
 				}
-					if (strpos($bdm, 'B') !== false) {
-						$html .= ' <label><input type="checkbox" name="SOUR_INDI" ' . $level1_checked . ' value="1">' . I18N::translate('Individual') . '</label>';
-						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-							foreach ($matches[1] as $match) {
-								if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '" ' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
-								}
+				if (strpos($bdm, 'B') !== false) {
+					$html .= ' <label><input type="checkbox" name="SOUR_INDI" ' . $level1_checked . ' value="1">' . I18N::translate('Individual') . '</label>';
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+						foreach ($matches[1] as $match) {
+							if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
+								$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '" ' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
 							}
 						}
 					}
-					if (strpos($bdm, 'D') !== false) {
-						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-							foreach ($matches[1] as $match) {
-								if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
-								}
-							}
-						}
-					}
-					if (strpos($bdm, 'M') !== false) {
-						$html .= ' <label><input type="checkbox" name="SOUR_FAM" ' . $level1_checked . ' value="1">' . I18N::translate('Family') . '</label>';
-						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
-							foreach ($matches[1] as $match) {
+				}
+				if (strpos($bdm, 'D') !== false) {
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+						foreach ($matches[1] as $match) {
+							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 								$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
 							}
 						}
 					}
 				}
+				if (strpos($bdm, 'M') !== false) {
+					$html .= ' <label><input type="checkbox" name="SOUR_FAM" ' . $level1_checked . ' value="1">' . I18N::translate('Family') . '</label>';
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+						foreach ($matches[1] as $match) {
+							$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
+						}
+					}
+				}
+			}
 				break;
 		}
 

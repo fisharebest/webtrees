@@ -89,7 +89,6 @@ class Tree {
 				$this->fact_privacy[$row->tag_type] = (int) $row->resn;
 			}
 		}
-
 	}
 
 	/**

@@ -136,7 +136,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		$controller = new PageController;
 		$controller->restrictAccess(Auth::isAdmin());
 
-			$block_id = Filter::getInteger('block_id');
+		$block_id = Filter::getInteger('block_id');
 		if ($block_id) {
 			$controller->setPageTitle(/* I18N: FAQ = “Frequently Asked Question” */ I18N::translate('Edit the FAQ'));
 			$header      = $this->getBlockSetting($block_id, 'header');
@@ -541,6 +541,5 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		} else {
 			return null;
 		}
-
 	}
 }

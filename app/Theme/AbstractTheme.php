@@ -619,7 +619,9 @@ abstract class AbstractTheme {
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="nav wt-secondary-menu">' .
-			implode('', array_map(function (Menu $menu) { return $this->formatSecondaryMenuItem($menu); }, $this->secondaryMenu())) .
+			implode('', array_map(function (Menu $menu) {
+				return $this->formatSecondaryMenuItem($menu);
+			}, $this->secondaryMenu())) .
 			'</ul>';
 	}
 
@@ -838,7 +840,9 @@ abstract class AbstractTheme {
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) { return $menu->bootstrap4(); }, $this->individualBoxMenu($individual))) . '</ul>' .
+				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) {
+					return $menu->bootstrap4();
+				}, $this->individualBoxMenu($individual))) . '</ul>' .
 				'</div>' .
 				'</div>' .
 				'</div>';
@@ -888,7 +892,9 @@ abstract class AbstractTheme {
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) { return $menu->bootstrap4(); }, $this->individualBoxMenu($individual))) . '</ul>' .
+				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) {
+					return $menu->bootstrap4();
+				}, $this->individualBoxMenu($individual))) . '</ul>' .
 				'</div>' .
 				'</div>' .
 				'</div>';

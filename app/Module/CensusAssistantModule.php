@@ -202,8 +202,8 @@ class CensusAssistantModule extends AbstractModule {
 						window.opener.pastename(name);
 					}
 					<?php if (!$multiple) {
-					echo 'window.close();';
-				} ?>
+						echo 'window.close();';
+					} ?>
 				}
 			}
 

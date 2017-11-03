@@ -37,7 +37,9 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="nav wt-secondary-menu justify-content-end">' .
-			implode('', array_map(function (Menu $menu) { return $menu->bootstrap4(); }, $this->secondaryMenu())) .
+			implode('', array_map(function (Menu $menu) {
+				return $menu->bootstrap4();
+			}, $this->secondaryMenu())) .
 			'<li>' .
 			$this->formQuickSearch() .
 			'</li>' .

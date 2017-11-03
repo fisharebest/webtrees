@@ -222,7 +222,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**
@@ -239,7 +241,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/** Validate a supplied password
@@ -277,7 +281,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**
@@ -294,7 +300,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**
@@ -310,7 +318,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**
@@ -326,7 +336,9 @@ class User {
 			" ORDER BY real_name"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**
@@ -341,7 +353,9 @@ class User {
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
 
-		return array_map(function($row) { return new static($row); }, $rows);
+		return array_map(function($row) {
+			return new static($row);
+		}, $rows);
 	}
 
 	/**

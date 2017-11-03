@@ -77,7 +77,6 @@ class FamilyBookController extends ChartController {
 	 * @return int
 	 */
 	private function printDescendency(Individual $person = null, $generation) {
-
 		if ($generation > $this->dgenerations) {
 			return 0;
 		}

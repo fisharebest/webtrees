@@ -462,7 +462,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller = new ChartController();
 		$controller->restrictAccess(Module::isActiveChart($WT_TREE, 'googlemap'));
 
-	// Limit this to match available number of icons.
+		// Limit this to match available number of icons.
 		// 8 generations equals 255 individuals
 		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 		$MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
@@ -985,12 +985,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			return;
 		}
 
-	$controller
-		->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
-		/* prepending the module css in the page head allows the theme to over-ride it*/
-		->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
-		->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-		->pageHeader();
+		$controller
+			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
+			/* prepending the module css in the page head allows the theme to over-ride it*/
+			->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
+			->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
+			->pageHeader();
 ?>
 
 	<div id="pedigreemap-page">
@@ -2597,7 +2597,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($place_id === 0 ? $parent_id : $place_id);
 		foreach ($hierarchy as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
+			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, $place_id === 0 ? I18N::translate('Add') : I18N::translate('Edit'));
 
@@ -3103,7 +3103,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($parent_id);
 		foreach (array_slice($hierarchy, 0, -1, true) as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
+			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, end($hierarchy));
 

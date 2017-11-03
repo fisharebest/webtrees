@@ -235,7 +235,6 @@ class Functions {
 			$j++;
 			$k++;
 		}
-
 	}
 
 	/**
@@ -1510,11 +1509,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great-grandfather’s brother', 'great-great-uncle');
+					return I18N::translateContext('great-grandfather’s brother', 'great-great-uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great-grandmother’s brother', 'great-great-uncle');
+					return I18N::translateContext('great-grandmother’s brother', 'great-great-uncle');
 				} else {
-				return I18N::translateContext('great-grandparent’s brother', 'great-great-uncle');
+					return I18N::translateContext('great-grandparent’s brother', 'great-great-uncle');
 				}
 				case 'F':
 				return I18N::translate('great-great-aunt');
@@ -1525,11 +1524,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great-great-grandfather’s brother', 'great-great-great-uncle');
+					return I18N::translateContext('great-great-grandfather’s brother', 'great-great-great-uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great-great-grandmother’s brother', 'great-great-great-uncle');
+					return I18N::translateContext('great-great-grandmother’s brother', 'great-great-great-uncle');
 				} else {
-				return I18N::translateContext('great-great-grandparent’s brother', 'great-great-great-uncle');
+					return I18N::translateContext('great-great-grandparent’s brother', 'great-great-great-uncle');
 				}
 				case 'F':
 				return I18N::translate('great-great-great-aunt');
@@ -1540,11 +1539,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great-great-great-grandfather’s brother', 'great ×4 uncle');
+					return I18N::translateContext('great-great-great-grandfather’s brother', 'great ×4 uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great-great-great-grandmother’s brother', 'great ×4 uncle');
+					return I18N::translateContext('great-great-great-grandmother’s brother', 'great ×4 uncle');
 				} else {
-				return I18N::translateContext('great-great-great-grandparent’s brother', 'great ×4 uncle');
+					return I18N::translateContext('great-great-great-grandparent’s brother', 'great ×4 uncle');
 				}
 				case 'F':
 				return I18N::translate('great ×4 aunt');
@@ -1555,11 +1554,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great ×4 grandfather’s brother', 'great ×5 uncle');
+					return I18N::translateContext('great ×4 grandfather’s brother', 'great ×5 uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great ×4 grandmother’s brother', 'great ×5 uncle');
+					return I18N::translateContext('great ×4 grandmother’s brother', 'great ×5 uncle');
 				} else {
-				return I18N::translateContext('great ×4 grandparent’s brother', 'great ×5 uncle');
+					return I18N::translateContext('great ×4 grandparent’s brother', 'great ×5 uncle');
 				}
 				case 'F':
 				return I18N::translate('great ×5 aunt');
@@ -1570,11 +1569,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great ×5 grandfather’s brother', 'great ×6 uncle');
+					return I18N::translateContext('great ×5 grandfather’s brother', 'great ×6 uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great ×5 grandmother’s brother', 'great ×6 uncle');
+					return I18N::translateContext('great ×5 grandmother’s brother', 'great ×6 uncle');
 				} else {
-				return I18N::translateContext('great ×5 grandparent’s brother', 'great ×6 uncle');
+					return I18N::translateContext('great ×5 grandparent’s brother', 'great ×6 uncle');
 				}
 				case 'F':
 				return I18N::translate('great ×6 aunt');
@@ -1585,11 +1584,11 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($bef_last === 'fat') {
-				return I18N::translateContext('great ×6 grandfather’s brother', 'great ×7 uncle');
+					return I18N::translateContext('great ×6 grandfather’s brother', 'great ×7 uncle');
 				} elseif ($bef_last === 'mot') {
-				return I18N::translateContext('great ×6 grandmother’s brother', 'great ×7 uncle');
+					return I18N::translateContext('great ×6 grandmother’s brother', 'great ×7 uncle');
 				} else {
-				return I18N::translateContext('great ×6 grandparent’s brother', 'great ×7 uncle');
+					return I18N::translateContext('great ×6 grandparent’s brother', 'great ×7 uncle');
 				}
 				case 'F':
 				return I18N::translate('great ×7 aunt');
@@ -1615,11 +1614,11 @@ class Functions {
 					switch ($sex2) {
 					case 'M':
 					if ($bef_last === 'fat') {
-					return I18N::translateContext('great ×(%s-1) grandfather’s brother', 'great ×%s uncle', I18N::number($up - 2));
+						return I18N::translateContext('great ×(%s-1) grandfather’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					} elseif ($bef_last === 'mot') {
-					return I18N::translateContext('great ×(%s-1) grandmother’s brother', 'great ×%s uncle', I18N::number($up - 2));
+						return I18N::translateContext('great ×(%s-1) grandmother’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					} else {
-					return I18N::translateContext('great ×(%s-1) grandparent’s brother', 'great ×%s uncle', I18N::number($up - 2));
+						return I18N::translateContext('great ×(%s-1) grandparent’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					}
 					case 'F':
 					return I18N::translate('great ×%s aunt', I18N::number($up - 2));
@@ -1651,108 +1650,108 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-grandson', 'great-great-nephew');
+					return I18N::translateContext('(a man’s) brother’s great-grandson', 'great-great-nephew');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-grandson', 'great-great-nephew');
+					return I18N::translateContext('(a man’s) sister’s great-grandson', 'great-great-nephew');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-nephew', 'great-great-nephew');
+					return I18N::translateContext('(a woman’s) great-great-nephew', 'great-great-nephew');
 				}
 				case 'F':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-granddaughter', 'great-great-niece');
+					return I18N::translateContext('(a man’s) brother’s great-granddaughter', 'great-great-niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-granddaughter', 'great-great-niece');
+					return I18N::translateContext('(a man’s) sister’s great-granddaughter', 'great-great-niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-niece', 'great-great-niece');
+					return I18N::translateContext('(a woman’s) great-great-niece', 'great-great-niece');
 				}
 				default:
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-grandchild', 'great-great-nephew/niece');
+					return I18N::translateContext('(a man’s) brother’s great-grandchild', 'great-great-nephew/niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-grandchild', 'great-great-nephew/niece');
+					return I18N::translateContext('(a man’s) sister’s great-grandchild', 'great-great-nephew/niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-nephew/niece', 'great-great-nephew/niece');
+					return I18N::translateContext('(a woman’s) great-great-nephew/niece', 'great-great-nephew/niece');
 				}
 				}
 			case 5:
 				switch ($sex2) {
 				case 'M':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-grandson', 'great-great-great-nephew');
+					return I18N::translateContext('(a man’s) brother’s great-great-grandson', 'great-great-great-nephew');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-grandson', 'great-great-great-nephew');
+					return I18N::translateContext('(a man’s) sister’s great-great-grandson', 'great-great-great-nephew');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-great-nephew', 'great-great-great-nephew');
+					return I18N::translateContext('(a woman’s) great-great-great-nephew', 'great-great-great-nephew');
 				}
 				case 'F':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-granddaughter', 'great-great-great-niece');
+					return I18N::translateContext('(a man’s) brother’s great-great-granddaughter', 'great-great-great-niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-granddaughter', 'great-great-great-niece');
+					return I18N::translateContext('(a man’s) sister’s great-great-granddaughter', 'great-great-great-niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-great-niece', 'great-great-great-niece');
+					return I18N::translateContext('(a woman’s) great-great-great-niece', 'great-great-great-niece');
 				}
 				default:
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-grandchild', 'great-great-great-nephew/niece');
+					return I18N::translateContext('(a man’s) brother’s great-great-grandchild', 'great-great-great-nephew/niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-grandchild', 'great-great-great-nephew/niece');
+					return I18N::translateContext('(a man’s) sister’s great-great-grandchild', 'great-great-great-nephew/niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great-great-great-nephew/niece', 'great-great-great-nephew/niece');
+					return I18N::translateContext('(a woman’s) great-great-great-nephew/niece', 'great-great-great-nephew/niece');
 				}
 				}
 			case 6:
 				switch ($sex2) {
 				case 'M':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-great-grandson', 'great ×4 nephew');
+					return I18N::translateContext('(a man’s) brother’s great-great-great-grandson', 'great ×4 nephew');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-great-grandson', 'great ×4 nephew');
+					return I18N::translateContext('(a man’s) sister’s great-great-great-grandson', 'great ×4 nephew');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×4 nephew', 'great ×4 nephew');
+					return I18N::translateContext('(a woman’s) great ×4 nephew', 'great ×4 nephew');
 				}
 				case 'F':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-great-granddaughter', 'great ×4 niece');
+					return I18N::translateContext('(a man’s) brother’s great-great-great-granddaughter', 'great ×4 niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-great-granddaughter', 'great ×4 niece');
+					return I18N::translateContext('(a man’s) sister’s great-great-great-granddaughter', 'great ×4 niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×4 niece', 'great ×4 niece');
+					return I18N::translateContext('(a woman’s) great ×4 niece', 'great ×4 niece');
 				}
 				default:
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great-great-great-grandchild', 'great ×4 nephew/niece');
+					return I18N::translateContext('(a man’s) brother’s great-great-great-grandchild', 'great ×4 nephew/niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great-great-great-grandchild', 'great ×4 nephew/niece');
+					return I18N::translateContext('(a man’s) sister’s great-great-great-grandchild', 'great ×4 nephew/niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×4 nephew/niece', 'great ×4 nephew/niece');
+					return I18N::translateContext('(a woman’s) great ×4 nephew/niece', 'great ×4 nephew/niece');
 				}
 				}
 			case 7:
 				switch ($sex2) {
 				case 'M':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×4 grandson', 'great ×5 nephew');
+					return I18N::translateContext('(a man’s) brother’s great ×4 grandson', 'great ×5 nephew');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×4 grandson', 'great ×5 nephew');
+					return I18N::translateContext('(a man’s) sister’s great ×4 grandson', 'great ×5 nephew');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×5 nephew', 'great ×5 nephew');
+					return I18N::translateContext('(a woman’s) great ×5 nephew', 'great ×5 nephew');
 				}
 				case 'F':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×4 granddaughter', 'great ×5 niece');
+					return I18N::translateContext('(a man’s) brother’s great ×4 granddaughter', 'great ×5 niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×4 granddaughter', 'great ×5 niece');
+					return I18N::translateContext('(a man’s) sister’s great ×4 granddaughter', 'great ×5 niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×5 niece', 'great ×5 niece');
+					return I18N::translateContext('(a woman’s) great ×5 niece', 'great ×5 niece');
 				}
 				default:
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×4 grandchild', 'great ×5 nephew/niece');
+					return I18N::translateContext('(a man’s) brother’s great ×4 grandchild', 'great ×5 nephew/niece');
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×4 grandchild', 'great ×5 nephew/niece');
+					return I18N::translateContext('(a man’s) sister’s great ×4 grandchild', 'great ×5 nephew/niece');
 				} else {
-				return I18N::translateContext('(a woman’s) great ×5 nephew/niece', 'great ×5 nephew/niece');
+					return I18N::translateContext('(a woman’s) great ×5 nephew/niece', 'great ×5 nephew/niece');
 				}
 				}
 			default:
@@ -1765,27 +1764,27 @@ class Functions {
 				switch ($sex2) {
 				case 'M':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
 				} else {
-				return I18N::translateContext('(a woman’s) great ×%s nephew', 'great ×%s nephew', I18N::number($down - 3));
+					return I18N::translateContext('(a woman’s) great ×%s nephew', 'great ×%s nephew', I18N::number($down - 3));
 				}
 				case 'F':
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) brother’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) sister’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
 				} else {
-				return I18N::translateContext('(a woman’s) great ×%s niece', 'great ×%s niece', I18N::number($down - 3));
+					return I18N::translateContext('(a woman’s) great ×%s niece', 'great ×%s niece', I18N::number($down - 3));
 				}
 				default:
 				if ($first === 'bro' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
 				} elseif ($first === 'sis' && $sex1 === 'M') {
-				return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
+					return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
 				} else {
-				return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
+					return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
 				}
 				}
 				case 'he': // Source: Meliza Amity
@@ -2065,7 +2064,7 @@ class Functions {
 					default:
 					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 					}
-					}
+				}
 			case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 			case 'en_GB':
 			case 'en_US':
@@ -2075,35 +2074,35 @@ class Functions {
 				return self::cousinName($cousin, $sex2);
 				case 1:
 				if ($up > $down) {
-				/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-				return I18N::translate('%s once removed ascending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+					return I18N::translate('%s once removed ascending', self::cousinName($cousin, $sex2));
 				} else {
-				/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-				return I18N::translate('%s once removed descending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+					return I18N::translate('%s once removed descending', self::cousinName($cousin, $sex2));
 				}
 				case 2:
 				if ($up > $down) {
-				/* I18N: %s=“fifth cousin”, etc. */
-				return I18N::translate('%s twice removed ascending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. */
+					return I18N::translate('%s twice removed ascending', self::cousinName($cousin, $sex2));
 				} else {
-				/* I18N: %s=“fifth cousin”, etc. */
-				return I18N::translate('%s twice removed descending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. */
+					return I18N::translate('%s twice removed descending', self::cousinName($cousin, $sex2));
 				}
 				case 3:
 				if ($up > $down) {
-				/* I18N: %s=“fifth cousin”, etc. */
-				return I18N::translate('%s three times removed ascending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. */
+					return I18N::translate('%s three times removed ascending', self::cousinName($cousin, $sex2));
 				} else {
-				/* I18N: %s=“fifth cousin”, etc. */
-				return I18N::translate('%s three times removed descending', self::cousinName($cousin, $sex2));
+					/* I18N: %s=“fifth cousin”, etc. */
+					return I18N::translate('%s three times removed descending', self::cousinName($cousin, $sex2));
 				}
 				default:
 				if ($up > $down) {
-				/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-				return I18N::translate('%1$s %2$s times removed ascending', self::cousinName($cousin, $sex2), I18N::number($removed));
+					/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
+					return I18N::translate('%1$s %2$s times removed ascending', self::cousinName($cousin, $sex2), I18N::number($removed));
 				} else {
-				/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-				return I18N::translate('%1$s %2$s times removed descending', self::cousinName($cousin, $sex2), I18N::number($removed));
+					/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
+					return I18N::translate('%1$s %2$s times removed descending', self::cousinName($cousin, $sex2), I18N::number($removed));
 				}
 				}
 			}

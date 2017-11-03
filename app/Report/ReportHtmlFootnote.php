@@ -38,7 +38,6 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 * @param ReportHtml $html
 	 */
 	public function renderFootnote($html) {
-
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
 		}

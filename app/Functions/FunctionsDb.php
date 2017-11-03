@@ -83,7 +83,9 @@ class FunctionsDb {
 			$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 		}
 
-		return array_filter($list, function (Source $x) { return $x->canShowName(); });
+		return array_filter($list, function (Source $x) {
+			return $x->canShowName();
+		});
 	}
 
 	/**
@@ -105,7 +107,9 @@ class FunctionsDb {
 			$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 		}
 
-		return array_filter($list, function (Repository $x) { return $x->canShowName(); });
+		return array_filter($list, function (Repository $x) {
+			return $x->canShowName();
+		});
 	}
 
 	/**
@@ -126,7 +130,9 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 		}
-		$list = array_filter($list, function (Note $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Note $x) {
+			return $x->canShowName();
+		});
 		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
@@ -180,7 +186,9 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
-		$list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Individual $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -227,7 +235,9 @@ class FunctionsDb {
 				}
 			}
 		}
-		$list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Individual $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -341,7 +351,9 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		}
-		$list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Individual $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -396,7 +408,9 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
-		$list = array_filter($list, function (Family $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Family $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -509,7 +523,9 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
-		$list = array_filter($list, function (Source $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Source $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -564,7 +580,9 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
-		$list = array_filter($list, function (Note $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Note $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}
@@ -619,7 +637,9 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
-		$list = array_filter($list, function (Repository $x) { return $x->canShowName(); });
+		$list = array_filter($list, function (Repository $x) {
+			return $x->canShowName();
+		});
 
 		return $list;
 	}

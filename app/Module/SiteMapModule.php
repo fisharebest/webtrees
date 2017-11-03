@@ -336,7 +336,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 				'<li><a href="https://www.bing.com/webmaster/ping.aspx?siteMap=' . $site_map_url2 . '">Bing</a></li>',
 				'<li><a href="https://www.google.com/webmasters/tools/ping?sitemap=' . $site_map_url2 . '">Google</a></li>',
 				'</ul>';
-
 		}
 	}
 

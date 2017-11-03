@@ -95,7 +95,9 @@ $url        = Filter::getUrl('url', 'index.php');
 $controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
 $controller->pageHeader();
 
-$to_names = implode(I18N::$list_separator, array_map(function(User $user) { return $user->getRealName(); }, recipients($to)));
+$to_names = implode(I18N::$list_separator, array_map(function(User $user) {
+	return $user->getRealName();
+}, recipients($to)));
 
 ?>
 <h2><?= I18N::translate('Send a message') ?></h2>

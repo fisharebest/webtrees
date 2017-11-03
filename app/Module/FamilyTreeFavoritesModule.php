@@ -253,7 +253,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @param int $block_id
 	 */
-	public function configureBlock($block_id) {}
+	public function configureBlock($block_id) {
+	}
 
 	/**
 	 * Delete a favorite from the database

@@ -270,5 +270,4 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
 		return sprintf(self::TTL, I18N::translate('Family')) . $html;
 	}
-
 }

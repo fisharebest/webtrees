@@ -209,7 +209,7 @@
 	</div>
 	<div class="card-body">
 		<dl class="row">
-			<?php foreach([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list): ?>
+			<?php foreach ([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list): ?>
 				<?php if (!empty($list)): ?>
 					<dt class="col-sm-3">
 						<?= $label ?>

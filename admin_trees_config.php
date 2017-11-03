@@ -95,7 +95,9 @@ foreach ($resns as $resn) {
 		$resn->tag_label = '';
 	}
 }
-usort($resns, function (\stdClass $x, \stdClass $y) { return I18N::strcasecmp($x->tag_label, $y->tag_label); });
+usort($resns, function (\stdClass $x, \stdClass $y) {
+	return I18N::strcasecmp($x->tag_label, $y->tag_label);
+});
 
 // We have two fields in one
 $CALENDAR_FORMATS = explode('_and_', $WT_TREE->getPreference('CALENDAR_FORMAT') . '_and_');

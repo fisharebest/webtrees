@@ -1216,7 +1216,6 @@ class ReportParserGenerate extends ReportParserBase {
 
 		// Check if there is anything to repeat
 		if (count($this->repeats) > 0) {
-
 			$line       = xml_get_current_line_number($this->parser) - 1;
 			$lineoffset = 0;
 			foreach ($this->repeats_stack as $rep) {
@@ -1392,7 +1391,6 @@ class ReportParserGenerate extends ReportParserBase {
 			} elseif ($id === 'generation') {
 				$value = '"' . $this->generation . '"';
 			} else {
-
 				$temp  = explode(' ', trim($this->gedrec));
 				$level = $temp[0];
 				if ($level == 0) {
@@ -2004,7 +2002,6 @@ class ReportParserGenerate extends ReportParserBase {
 							}
 						}
 						unset($attrs[$attr]); // This filter has been fully processed
-
 					} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 						$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=f_file)";
 						$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";

@@ -184,31 +184,30 @@ if ($action === 'submit') {
 							<?php
 							// Show file details
 							$mediatype = $media->getMediaType();
-							if ($mediatype) {
-								echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-							}
-							if ($media->isExternal()) {
-								echo GedcomTag::getLabelValue('URL', $media->getFilename());
-							} else {
-								if ($media->fileExists()) {
-									if ($details === '1') {
-										if (Auth::isEditor($WT_TREE)) {
-											echo GedcomTag::getLabelValue('FILE', $media->getFilename());
-										}
-										echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-										echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
-										$imgsize = $media->getImageAttributes();
-										if ($imgsize['WxH']) {
-											echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-										}
-									}
-								} else {
-									echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
-								}
-							}
-							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
-							echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
-							?>
+	if ($mediatype) {
+		echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+	}
+	if ($media->isExternal()) {
+		echo GedcomTag::getLabelValue('URL', $media->getFilename());
+	} else {
+		if ($media->fileExists()) {
+			if ($details === '1') {
+				if (Auth::isEditor($WT_TREE)) {
+					echo GedcomTag::getLabelValue('FILE', $media->getFilename());
+				}
+				echo GedcomTag::getLabelValue('FORM', $media->mimeType());
+				echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
+				$imgsize = $media->getImageAttributes();
+				if ($imgsize['WxH']) {
+					echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+				}
+			}
+		} else {
+			echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
+		}
+	}
+	echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
+	echo FunctionsPrint::printFactNotes($media->getGedcom(), 1); ?>
 						</p>
 					</div>
 					<div class="card-footer">
@@ -216,13 +215,12 @@ if ($action === 'submit') {
 						foreach ($media->linkedIndividuals('OBJE') as $individual) {
 							echo '<a href="' . $individual->getHtmlUrl() . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
 						}
-						foreach ($media->linkedFamilies('OBJE') as $family) {
-							echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
-						}
-						foreach ($media->linkedSources('OBJE') as $source) {
-							echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
-						}
-						?>
+	foreach ($media->linkedFamilies('OBJE') as $family) {
+		echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
+	}
+	foreach ($media->linkedSources('OBJE') as $source) {
+		echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
+	} ?>
 					</div>
 				</div>
 			</div>

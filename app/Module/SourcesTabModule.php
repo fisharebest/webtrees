@@ -78,13 +78,13 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 					FunctionsPrintFacts::printMainSources($fact, 2);
 				}
 			}
-			if (!$this->getFactsWithSources()) {
-				echo '<tr><td colspan="2">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
-			}
+		if (!$this->getFactsWithSources()) {
+			echo '<tr><td colspan="2">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
+		}
 
-			// New Source Link
-			if ($controller->record->canEdit()) {
-				?>
+		// New Source Link
+		if ($controller->record->canEdit()) {
+			?>
 				<tr>
 					<th>
 						<?= I18N::translate('Source') ?>

@@ -81,7 +81,6 @@ class Migration37 implements MigrationInterface {
 			if ($n % 500 === 499) {
 				Database::exec("COMMIT");
 				Database::exec("START TRANSACTION");
-
 			}
 		}
 

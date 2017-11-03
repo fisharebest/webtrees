@@ -150,7 +150,6 @@ case 'synchronize':
 				$tree->delete();
 			}
 		}
-
 	}
 	header('Location: admin_trees_manage.php');
 

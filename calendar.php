@@ -298,22 +298,21 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 				<td class="topbottombar width50">
 					<?php
 					$n = 0;
-					foreach (Date::calendarNames() as $newcal => $cal_name) {
-						$tmp = $cal_date->convertToCalendar($newcal);
-						if ($tmp->inValidRange()) {
-							if ($n++) {
-								echo ' | ';
-							}
-							if (get_class($tmp) === get_class($cal_date)) {
-								echo '<span class="error">', $cal_name, '</span>';
-							} else {
-								$newcalesc = urlencode($tmp->format('%@'));
-								$tmpmonth  = $tmp->format('%O');
-								echo '<a href="?cal=', $newcalesc, '&amp;day=', $tmp->d, '&amp;month=', $tmpmonth, '&amp;year=', $tmp->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $cal_name, '</a>';
-							}
-						}
-					}
-					?>
+	foreach (Date::calendarNames() as $newcal => $cal_name) {
+		$tmp = $cal_date->convertToCalendar($newcal);
+		if ($tmp->inValidRange()) {
+			if ($n++) {
+				echo ' | ';
+			}
+			if (get_class($tmp) === get_class($cal_date)) {
+				echo '<span class="error">', $cal_name, '</span>';
+			} else {
+				$newcalesc = urlencode($tmp->format('%@'));
+				$tmpmonth  = $tmp->format('%O');
+				echo '<a href="?cal=', $newcalesc, '&amp;day=', $tmp->d, '&amp;month=', $tmpmonth, '&amp;year=', $tmp->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $cal_name, '</a>';
+			}
+		}
+	} ?>
 				</td>
 			</tr>
 		</table>
@@ -358,7 +357,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 		break;
 	}
 
-// Group the facts by family/individual
+	// Group the facts by family/individual
 	$indis     = [];
 	$fams      = [];
 	$cal_facts = [];

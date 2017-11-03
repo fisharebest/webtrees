@@ -76,7 +76,6 @@ class Theme {
 	 * @return ThemeInterface
 	 */
 	public static function theme(ThemeInterface $theme = null) {
-
 		if ($theme) {
 			self::$theme = $theme;
 		} elseif (!self::$theme) {

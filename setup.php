@@ -185,7 +185,6 @@ if (!isset($_POST['lang'])) {
 		'</p>';
 	if (!$errors) {
 		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: A button label. */ I18N::translate('continue'), '">';
-
 	}
 	echo '</form></body></html>';
 

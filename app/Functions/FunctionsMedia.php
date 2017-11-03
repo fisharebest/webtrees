@@ -73,5 +73,4 @@ class FunctionsMedia {
 		imagepng($image);
 		imagedestroy($image);
 	}
-
 }

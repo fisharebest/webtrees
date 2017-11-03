@@ -177,7 +177,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		if ($spouse) {
 			$spouse_name = $spouse->getSexImage() . $spouse->getFullName();
 			$spouse_link = FontAwesome::linkIcon('individual', $spouse->getFullName(), ['href' => $person->getRawUrl()]);
-;
 		} else {
 			$spouse_name = '';
 			$spouse_link = '';

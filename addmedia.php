@@ -359,7 +359,8 @@ if (!$isExternal) {
 	} else {
 		echo '<input name="folder" type="hidden" value="', Html::escape($folder), '">';
 	}
-	echo '<p class="small text-muted">', I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'), '</p>'; echo '</td></tr>';
+	echo '<p class="small text-muted">', I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'), '</p>';
+	echo '</td></tr>';
 } else {
 	echo '<input name="folder" type="hidden" value="">';
 }

@@ -27,7 +27,6 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	 * @return bool|int
 	 */
 	public function render($renderer) {
-
 		$newelements      = [];
 		$lastelement      = '';
 		$footnote_element = [];

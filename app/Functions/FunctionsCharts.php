@@ -63,7 +63,6 @@ class FunctionsCharts {
 	 * @param string $gparid    gd-parent ID (descendancy booklet)
 	 */
 	public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '') {
-
 		$pbheight = Theme::theme()->parameter('chart-box-y') + 14;
 
 		$husb = $family->getHusband();
@@ -365,7 +364,8 @@ class FunctionsCharts {
 								echo '–', $div->getDate()->minimumDate()->format('%Y');
 							}
 							echo '<img class="linea5 lined5 " width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
-						} else { echo '<img width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
+						} else {
+							echo '<img width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
 						}
 						echo '</td>';
 						// spouse information

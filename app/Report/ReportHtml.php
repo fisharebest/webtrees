@@ -736,5 +736,4 @@ class ReportHtml extends ReportBase {
 		$htmlcode = str_replace(["\n", '> ', ' <'], ['<br>', '>&nbsp;', '&nbsp;<'], $htmlcode);
 		echo $htmlcode;
 	}
-
 }

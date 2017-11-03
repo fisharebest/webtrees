@@ -36,8 +36,7 @@ class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return \Fisharebest\Webtrees\Place
 	 */
-	private function getPlaceMock($place)
-	{
+	private function getPlaceMock($place) {
 		$placeParts = explode(', ', $place);
 
 		$placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');

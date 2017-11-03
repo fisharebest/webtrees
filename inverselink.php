@@ -144,7 +144,6 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $mediaid . '@', true);
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
-
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', I18N::translate('close'), '</button>';
 }

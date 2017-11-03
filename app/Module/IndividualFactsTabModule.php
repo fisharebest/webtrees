@@ -197,7 +197,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			$deat_date = $individual->getEstimatedDeathDate();
 
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
-
 				$fact_date = $fact->getDate();
 				if ($fact_date->isOK() && Date::compare($birt_date, $fact_date) <= 0 && Date::compare($fact_date, $deat_date) <= 0) {
 					// Convert the event to a close relatives event.

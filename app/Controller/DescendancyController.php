@@ -74,7 +74,6 @@ class DescendancyController extends ChartController {
 	 * @param string     $gpid
 	 */
 	public function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '') {
-
 		if ($depth < 2) {
 			return;
 		}

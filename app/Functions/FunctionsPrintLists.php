@@ -1108,7 +1108,8 @@ class FunctionsPrintLists {
 		)->fetchAssoc();
 
 		$html = '';
-		$html .= '<table ' . Datatables::repositoryTableAttributes() . '><thead><tr>';		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
+		$html .= '<table ' . Datatables::repositoryTableAttributes() . '><thead><tr>';
+		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
 		$html .= '<th>' . I18N::translate('Last change') . '</th>';
 		$html .= '</tr></thead>';
@@ -1388,7 +1389,6 @@ class FunctionsPrintLists {
 				$subhtml .= '&nbsp;(' . I18N::number($subtotal) . ')';
 			}
 			$html[] = $subhtml;
-
 		}
 		switch ($style) {
 		case 1:

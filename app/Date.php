@@ -112,28 +112,28 @@ class Date {
 			$m = $match[2];
 			$y = $match[3];
 		} elseif (preg_match('/^(\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)$/', $date, $match)) {
-				// A date with just a year
-				$d = '';
-				$m = '';
+			// A date with just a year
+			$d = '';
+			$m = '';
+			$y = $match[1];
+		} else {
+			// An invalid date - do the best we can.
+			$d = '';
+			$m = '';
+			$y = '';
+			// Look for a 3/4 digit year anywhere in the date
+			if (preg_match('/\b(\d{3,4})\b/', $date, $match)) {
 				$y = $match[1];
-			} else {
-				// An invalid date - do the best we can.
-				$d = '';
-				$m = '';
-				$y = '';
-				// Look for a 3/4 digit year anywhere in the date
-				if (preg_match('/\b(\d{3,4})\b/', $date, $match)) {
-					$y = $match[1];
-				}
-				// Look for a month anywhere in the date
-				if (preg_match('/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)/', $date, $match)) {
-					$m = $match[1];
-					// Look for a day number anywhere in the date
-					if (preg_match('/\b(\d\d?)\b/', $date, $match)) {
-						$d = $match[1];
-					}
+			}
+			// Look for a month anywhere in the date
+			if (preg_match('/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)/', $date, $match)) {
+				$m = $match[1];
+				// Look for a day number anywhere in the date
+				if (preg_match('/\b(\d\d?)\b/', $date, $match)) {
+					$d = $match[1];
 				}
 			}
+		}
 
 		// Unambiguous dates - override calendar escape
 		if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {

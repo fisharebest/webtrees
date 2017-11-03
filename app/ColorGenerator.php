@@ -95,5 +95,4 @@ class ColorGenerator {
 			$this->lightness,
 			$this->alpha);
 	}
-
 }

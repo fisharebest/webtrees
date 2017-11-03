@@ -83,5 +83,4 @@ class ReportHtmlImage extends ReportBaseImage {
 	public function getHeight($html) {
 		return $this->height + ($html->cPadding * 2);
 	}
-
 }

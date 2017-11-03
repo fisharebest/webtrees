@@ -97,7 +97,9 @@ class IndividualController extends GedcomRecordController {
 	public function getTabs() {
 		$active_tabs = Module::getActiveTabs($this->record->getTree());
 
-		return array_filter($active_tabs, function(ModuleTabInterface $tab) { return $tab->hasTabContent(); });
+		return array_filter($active_tabs, function(ModuleTabInterface $tab) {
+			return $tab->hasTabContent();
+		});
 	}
 
 	/**
@@ -246,12 +248,11 @@ class IndividualController extends GedcomRecordController {
 
 		if ($individual->canEdit() && !$fact->isPendingDeletion()) {
 			$edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $individual->getTree()->getNameHtml() ]);
-
 		} else {
 			$edit_links = '';
 		}
 
-	return '
+		return '
 		<div class="' . $container_class . '">
 			<div class="card-header" role="tab" id="name-header-add">
 				<div class="card-title mb-0">

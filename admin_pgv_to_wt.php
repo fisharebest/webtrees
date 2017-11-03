@@ -106,7 +106,7 @@ if ($PGV_PATH) {
 					'<br>' .
 					/* I18N: %s is an error message */
 					I18N::translate('MySQL gave the error: %s', $ex->getMessage()), 'danger');
-					$PGV_PATH = null;
+				$PGV_PATH = null;
 			}
 		}
 	}
@@ -379,7 +379,6 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		" SELECT user_id, gedcom_id, setting_name, setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}user_gedcom_setting`" .
 		" JOIN `##user` USING (user_id)"
 	)->execute();
-
 } else {
 	// Copied from PhpGedView's db_schema_11_12
 	if (file_exists($INDEX_DIRECTORY . 'gedcoms.php')) {
@@ -738,7 +737,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 				}
 			}
 		}
-
 	} else {
 		echo '<p>Could not read privacy file ', $privacy, '</p>';
 	}

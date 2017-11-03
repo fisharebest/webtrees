@@ -299,9 +299,8 @@ class Module {
 	 */
 	public static function configurableModules() {
 		$modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module) {
-				return $module instanceof ModuleConfigInterface;
-			}
-		);
+			return $module instanceof ModuleConfigInterface;
+		});
 
 		// Exclude disabled modules
 		$enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
