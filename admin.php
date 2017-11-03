@@ -26,33 +26,60 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
-// POST request - check the CSRF token.
+// POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
 	$referer_url = $request->headers->get('referer', 'index.php');
 
 	return (new RedirectResponse($referer_url))->prepare($request)->send();
 }
 
-$controller = new AdminController;
-
-// Route the request to a controller action.
-if (Auth::isManager($controller->tree())) {
+if (Auth::isAdmin()) {
+	// Admin routes.
 	switch ($method . ':' . $route) {
-	case '':
+	default:
+	case 'GET:blocks':
+		return ($controller = new AdminController)->blocks();
+
+	case 'GET:charts':
+		return ($controller = new AdminController)->charts();
+
+	case 'GET:control-panel':
+		return ($controller = new AdminController)->controlPanel();
+
+	case 'GET:control-panel-manager':
+		return ($controller = new AdminController)->controlPanelManager();
+
+	case 'POST:delete-module-settings':
+		return ($controller = new AdminController)->deleteModuleSettings($request);
+
+	case 'GET:menus':
+		return ($controller = new AdminController)->menus();
+
+	case 'GET:modules':
+		return ($controller = new AdminController)->modules();
+
+	case 'GET:reports':
+		return ($controller = new AdminController)->reports();
+
+	case 'GET:sidebars':
+		return ($controller = new AdminController)->sidebars();
+
+	case 'GET:tabs':
+		return ($controller = new AdminController)->tabs();
+
+	case 'POST:update-module-access':
+		return ($controller = new AdminController)->updateModuleAccess($request);
+
+	case 'POST:update-module-status':
+		return ($controller = new AdminController)->updateModuleStatus($request);
 	}
 }
 
-if (Auth::isAdmin()) {
+if (Auth::isManager(($controller = new AdminController)->tree())) {
+	// Manager routes.
 	switch ($method . ':' . $route) {
-	default:
-	case 'GET:control-panel':
-		return $controller->controlPanel();
-
 	case 'GET:control-panel-manager':
-		return $controller->controlPanelManager();
-
-	case 'GET:modules':
-
+		return ($controller = new AdminController)->controlPanelManager();
 	}
 }
 

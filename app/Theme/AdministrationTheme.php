@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Theme;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
@@ -153,13 +154,13 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function menuAdminModules() {
 		return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', [], [
-			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), 'admin_modules.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), 'admin_module_menus.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), 'admin_module_tabs.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), 'admin_module_blocks.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), 'admin_module_sidebar.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), 'admin_module_charts.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), 'admin_module_reports.php'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), Html::url('admin.php', ['route' => 'modules'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), Html::url('admin.php', ['route' => 'menus'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), Html::url('admin.php', ['route' => 'tabs'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), Html::url('admin.php', ['route' => 'blocks'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), Html::url('admin.php', ['route' => 'sidebars'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), Html::url('admin.php', ['route' => 'charts'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), Html::url('admin.php', ['route' => 'reports'])),
 		]);
 	}
 

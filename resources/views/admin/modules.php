@@ -19,9 +19,9 @@
 
 <?php foreach ($deleted_modules as $module_name): ?>
 	<div class="alert alert-warning" role="alert">
-		<form class="form-inline" method="POST">
+		<form action="admin.php" class="form-inline" method="POST">
 			<?= Filter::getCsrf() ?>
-			<input type="hidden" name="action" value="delete">
+			<input type="hidden" name="route" value="delete-module-settings">
 			<input type="hidden" name="module_name" value="<?= $module_name ?>">
 			<?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
 			<button type="submit" class="btn btn-secondary text-wrap">
@@ -31,8 +31,8 @@
 	</div>
 <?php endforeach ?>
 
-<form method="post">
-	<input type="hidden" name="action" value="update_mods">
+<form action="admin.php" method="POST">
+	<input type="hidden" name="route" value="update-module-status">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true">
 		<caption class="sr-only">

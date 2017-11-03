@@ -18,12 +18,16 @@ namespace Fisharebest\Webtrees\Controller;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller for the administration pages
@@ -436,6 +440,13 @@ class AdminController extends PageController {
 		WT_ROOT . 'themes/webtrees/css-1.7.5',
 		WT_ROOT . 'themes/xenea/css-1.7.5',
 		// Removed in 2.0.0
+		WT_ROOT . 'admin_module_blocks.php',
+		WT_ROOT . 'admin_module_charts.php',
+		WT_ROOT . 'admin_module_menus.php',
+		WT_ROOT . 'admin_module_reports.php',
+		WT_ROOT . 'admin_module_sidebar.php',
+		WT_ROOT . 'admin_module_tabs.php',
+		WT_ROOT . 'admin_modules.php',
 		WT_ROOT . 'admin_site_access.php',
 		WT_ROOT . 'admin_site_readme.php',
 		WT_ROOT . 'app/Controller/CompactController.php',
@@ -465,11 +476,24 @@ class AdminController extends PageController {
 	];
 
 	/**
+	 * Show the admin page for blocks.
+	 */
+	public function blocks() {
+		$this->components('block', I18N::translate('Block'), I18N::translate('Blocks'));
+	}
+
+	/**
+	 * Show the admin page for charts.
+	 */
+	public function charts() {
+		$this->components('chart', I18N::translate('Chart'), I18N::translate('Charts'));
+	}
+
+	/**
 	 * The control panel shows a summary of the site and links to admin functions.
 	 */
 	public function controlPanel() {
 		$this
-			->restrictAccess(Auth::isManager($this->tree()))
 			->setPageTitle(I18N::translate('Control panel'))
 			->pageHeader();
 
@@ -524,11 +548,10 @@ class AdminController extends PageController {
 	}
 
 	/**
-	 * SHow the administrator a list of modules.
+	 * Show the administrator a list of modules.
 	 */
 	public function modules() {
 		$this
-			->restrictAccess(Auth::isManager($this->tree()))
 			->setPageTitle(I18N::translate('Module administration'))
 			->pageHeader()
 			->addInlineJavascript('$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});');
@@ -542,6 +565,154 @@ class AdminController extends PageController {
 			'deleted_modules'   => $this->deletedModuleNames(),
 			'core_module_names' => Module::getCoreModuleNames(),
 		]);
+	}
+
+	/**
+	 * Delete the database settings for a deleted module.
+	 *
+	 * @param Request $request
+	 */
+	public function deleteModuleSettings(Request $request) {
+		$module_name = $request->get('module_name');
+
+		Database::prepare(
+			"DELETE `##block_setting`" .
+			" FROM `##block_setting`" .
+			" JOIN `##block` USING (block_id)" .
+			" JOIN `##module` USING (module_name)" .
+			" WHERE module_name=?"
+		)->execute([$module_name]);
+		Database::prepare(
+			"DELETE `##block`" .
+			" FROM `##block`" .
+			" JOIN `##module` USING (module_name)" .
+			" WHERE module_name=?"
+		)->execute([$module_name]);
+		Database::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute([$module_name]);
+		Database::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute([$module_name]);
+		Database::prepare("DELETE FROM `##module` WHERE module_name=?")->execute([$module_name]);
+
+		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
+
+		$url      = Html::url('admin.php', ['route' => 'modules']);
+		$response = new RedirectResponse($url);
+		$response->prepare($request)->send();
+	}
+
+	/**
+	 * Show the admin page for menus.
+	 */
+	public function menus() {
+		$this->components('menu', I18N::translate('Menu'), I18N::translate('Menus'));
+	}
+
+	/**
+	 * Show the admin page for reports.
+	 */
+	public function reports() {
+		$this->components('report', I18N::translate('Report'), I18N::translate('Reports'));
+	}
+
+	/**
+	 * Show the admin page for sidebars.
+	 */
+	public function sidebars() {
+		$this->components('sidebar', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
+	}
+
+	/**
+	 * Show the admin page for tabs.
+	 */
+	public function tabs() {
+		$this->components('tab', I18N::translate('Tab'), I18N::translate('Tabs'));
+	}
+
+	/**
+	 * Update the access levels of the modules.
+	 *
+	 * @param Request $request
+	 */
+	public function updateModuleAccess(Request $request) {
+		$component = $request->get('component');
+		$modules   = Module::getAllModulesByComponent($component);
+
+		foreach ($modules as $module) {
+			foreach (Tree::getAll() as $tree) {
+				$key          = 'access-' . $module->getName() . '-' . $tree->getTreeId();
+				$access_level = (int) $request->get($key, $module->defaultAccessLevel());
+
+				Database::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
+					" VALUES (:module_name, :tree_id, :component, :access_level)"
+				)->execute([
+					'module_name'  => $module->getName(),
+					'tree_id'      => $tree->getTreeId(),
+					'component'    => $component,
+					'access_level' => $access_level,
+				]);
+			}
+		}
+
+		$url      = Html::url('admin.php', ['route' => $component]);
+		$response = new RedirectResponse($url);
+		$response->prepare($request)->send();
+	}
+
+	/**
+	 * Update the enabled/disabled status of the modules.
+	 *
+	 * @param Request $request
+	 */
+	public function updateModuleStatus(Request $request) {
+		$modules       = Module::getInstalledModules('disabled');
+		$module_status = Database::prepare(
+			"SELECT module_name, status FROM `##module`"
+		)->fetchAssoc();
+
+		foreach ($modules as $module) {
+			$new_status = (bool) $request->get('status-' . $module->getName())  ? 'enabled' : 'disabled';
+			$old_status = $module_status[$module->getName()];
+
+			if ($new_status !== $old_status) {
+				Database::prepare(
+					"UPDATE `##module` SET status = :status WHERE module_name = :module_name"
+				)->execute([
+					'status'      => $new_status,
+					'module_name' => $module->getName(),
+					]);
+
+				if ($new_status === 'enabled') {
+					FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->getTitle()), 'success');
+				} else {
+					FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->getTitle()), 'success');
+				}
+			}
+		}
+
+		$url      = Html::url('admin.php', ['route' => 'modules']);
+		$response = new RedirectResponse($url);
+		$response->prepare($request)->send();
+	}
+
+	/**
+	 * Show the admin page for blocks, charts, menus, reports, sidebars, tabs, etc..
+	 *
+	 * @param string $component
+	 * @param string $component_title
+	 * @param string $page_title
+	 */
+	private function components($component, $component_title, $page_title) {
+		$this
+			->setPageTitle($page_title)
+			->pageHeader();
+
+		echo View::make('admin/module-components', [
+				'component'       => $component,
+				'component_title' => $component_title,
+				'modules'         => Module::getAllModulesByComponent($component),
+				'page_title'      => $page_title,
+			]
+		);
 	}
 
 	/**
