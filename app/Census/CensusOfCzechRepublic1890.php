@@ -34,7 +34,7 @@ class CensusOfCzechRepublic1890 extends CensusOfCzechRepublic implements CensusI
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Jméno', ''),
 			new CensusColumnRelationToHead($this, 'Vztah', ''),
 			new CensusColumnSexMZ($this, 'Pohlaví', ''),
@@ -48,6 +48,6 @@ class CensusOfCzechRepublic1890 extends CensusOfCzechRepublic implements CensusI
 			new CensusColumnNull($this, 'Postavení', 'Postavení v zaměstnání'),
 			new CensusColumnNull($this, 'Gramotnost', 'Znalost čtení a psaní'),
 			new CensusColumnNull($this, 'Druh pobytu', 'Pobyt dočasný nebo trvalý'),
-		);
+		];
 	}
 }
