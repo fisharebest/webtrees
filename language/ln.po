@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-02 19:12+0000\n"
+"PO-Revision-Date: 2017-11-03 22:43+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -5287,7 +5287,7 @@ msgstr ""
 
 #: help_text.php:302
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr ""
+msgstr "Kɔ́nti nyɔ́nsɔ ezalí na bopɔni \"kondima mabóngoli\". Sɔ́kɔ́ yangó epɔnámí, mabóngoli mansɔ masálémí na mosáleli moye makobátelama ya nɔkí-nɔkí. Bakambi ebelé bakopɔnɔ yangó mpɔ̂ na kɔ́nti ya basáleli na bangó."
 
 #: statistics.php:132
 msgid "Earliest birth"
@@ -14056,7 +14056,7 @@ msgstr "Óyo ezalí ekangeli kín’o bokɔ́tisi bwa yɔ̌-mɛ́í na káti ya 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1288
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr ""
+msgstr "Óyo ezalí ekákoli ya bokúli bwa bato <abbr title=\"Eklézya ya Yésu Kristu ya baSántu ya Mikɔlɔ mya Nsúka\">SMN</abbr>. “&nbsp;B&nbsp;” batisimo. “&nbsp;L&nbsp;”  likabo. “&nbsp;B&nbsp;” bolóngani. “&nbsp;B&nbsp;” bondimi mwǎna na babóti."
 
 #: setup.php:287 setup.php:291
 msgid "This is case sensitive."
@@ -14118,7 +14118,7 @@ msgstr "Óyo ezalí nkómbó ya esálela mokaboli SMTP. “localhost” elingí 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1045
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-msgstr ""
+msgstr "Óyo ezalí bonɛ́nɛ (na pixels) boye esálisela ekosálela ntángo ya bokeli bilílí. Motúya mwa yambo ezalí 100."
 
 #: admin_users.php:310 edituser.php:149 login.php:419 setup.php:427
 msgid "This is your real name, as you would like it displayed on screen."
@@ -15806,7 +15806,7 @@ msgstr "Osengéli koyíngela lisúsu, na bosáleli nkómbó ya mosáleli mpé lo
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:444
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
+msgstr "Osengélí kokɔ́tisa sé  URL ya bokangisi sɔ́kí olingí kokɛndɛ na website tǒ na esíká ekɛsɛ́ní ntángo basáleli ba yɔ̌ bazalí koyíngela. Óyo ezalí na ntína míngi sɔ́kí osengélí koleka útá http kín’o https ntángo basáleli ba yɔ̌ bazalí koyíngela. Tiyá URL mobimba tíí <i>login.php</i>. Na ndakisa, https://www.yourserver.com/webtrees/login.php."
 
 #: message.php:216
 msgid "You sent the following message to a webtrees user:"
