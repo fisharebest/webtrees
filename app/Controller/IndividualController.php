@@ -255,7 +255,7 @@ class IndividualController extends GedcomRecordController {
 		<div class="' . $container_class . '">
 			<div class="card-header" role="tab" id="name-header-add">
 				<div class="card-title mb-0">
-					<b>' . I18N::translate('Gender') . '</b> ' .  $sex . $edit_links . '
+					<b>' . I18N::translate('Gender') . '</b> ' . $sex . $edit_links . '
 				</div>
 			</div>
 		</div>';

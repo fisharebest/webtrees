@@ -76,7 +76,7 @@ if (Filter::getBool('ajax') && Session::has('initiated')) {
 			});
 	
 			$("#pedigree_chart")
-				.width('  . $controller->chartsize['x'] . ')
+				.width(' . $controller->chartsize['x'] . ')
 				.height(' . $controller->chartsize['y'] . ');
 	
 			// Set variables

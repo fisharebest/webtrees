@@ -1320,7 +1320,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Create the normal googlemap sidebar of events and children
 			echo '<div class="gm-events">';
 			echo '<table class="wt-facts-table">';
-			echo '<caption class="sr-only">' . I18N::translate('Facts and events') .'</caption>';
+			echo '<caption class="sr-only">' . I18N::translate('Facts and events') . '</caption>';
 			echo '<tbody>';
 
 			foreach ($events as $event) {
@@ -2597,7 +2597,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($place_id === 0 ? $parent_id : $place_id);
 		foreach ($hierarchy as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Html::escape($name)];
+				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, $place_id === 0 ? I18N::translate('Add') : I18N::translate('Edit'));
 
@@ -3103,7 +3103,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($parent_id);
 		foreach (array_slice($hierarchy, 0, -1, true) as $id => $name) {
-				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id .'&inactive=' . $inactive => Html::escape($name)];
+				$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, end($hierarchy));
 

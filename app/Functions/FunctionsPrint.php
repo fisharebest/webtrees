@@ -187,7 +187,7 @@ class FunctionsPrint {
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h3 class="modal-title" id="wt-modal-title">' . $title . '</h3>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="'. I18N::translate('close') .'">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="' . I18N::translate('close') . '">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>

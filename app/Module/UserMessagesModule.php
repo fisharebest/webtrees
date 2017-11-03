@@ -125,7 +125,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}
 				if ($user) {
-					$content .= '<a class="btn btn-secondary" href="message.php?to=' . rawurlencode($message->sender) . '&amp;subject=' . rawurlencode($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() .'" title="' . I18N::translate('Reply') .'">' . I18N::translate('Reply') . '</a> ';
+					$content .= '<a class="btn btn-secondary" href="message.php?to=' . rawurlencode($message->sender) . '&amp;subject=' . rawurlencode($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
 				}
 				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}

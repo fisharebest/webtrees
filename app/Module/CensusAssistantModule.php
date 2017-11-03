@@ -251,7 +251,7 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getSex() . "' ,
 					'" . $indi->getBirthYear() . "' ,
 					'" . (1901 - $indi->getBirthYear()) . "' ,
-					'" . $indi->getBirthPlace()->getGedcomName(). "'); return false;\">
+					'" . $indi->getBirthPlace()->getGedcomName() . "'); return false;\">
 					<b>" . $indi->getFullName() . '</b>&nbsp;&nbsp;&nbsp;';
 
 				$born = I18N::translate('Birth');

@@ -77,11 +77,11 @@ class FamilyController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), 'edit_interface.php?action=changefamily&ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-fam-change'));
 
 			// edit_fam / add child
-			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), 'edit_interface.php?action=add_child_to_family&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref() . '&amp;gender=U', 'menu-fam-addchil'));
+			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), 'edit_interface.php?action=add_child_to_family&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;gender=U', 'menu-fam-addchil'));
 
 			// edit_fam / reorder-children
 			if ($this->record->getNumberOfChildren() > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder-children&amp;ged=' . $this->record->getTree()->getNameHtml() .'&amp;xref=' . $this->record->getXref(), 'menu-fam-orderchil'));
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder-children&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref(), 'menu-fam-orderchil'));
 			}
 
 			// delete

@@ -308,7 +308,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="'  . Html::escape($unused_file) .'" data-tree="' . Html::escape($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . Html::escape($media_tree) . '<p>';
+						'<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . Html::escape($unused_file) . '" data-tree="' . Html::escape($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . Html::escape($media_tree) . '<p>';
 				}
 			}
 

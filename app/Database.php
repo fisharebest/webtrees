@@ -161,7 +161,7 @@ class Database {
 			}
 		}
 		$milliseconds = sprintf('%.3f', $microseconds * 1000);
-		self::$log[] = '<tr><td>' .$stack . '</td><td>' . $query . '</td><td>' . $rows . '</td><td>' . $milliseconds . '</td></tr>';
+		self::$log[] = '<tr><td>' . $stack . '</td><td>' . $query . '</td><td>' . $rows . '</td><td>' . $milliseconds . '</td></tr>';
 	}
 
 	/**
