@@ -594,7 +594,7 @@ class AdminController extends PageController {
 
 		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-		$url      = Html::url('admin.php', ['route' => 'modules']);
+		$url      = Html::url('admin.php', ['route' => 'admin-modules']);
 		$response = new RedirectResponse($url);
 		$response->prepare($request)->send();
 	}
@@ -653,7 +653,7 @@ class AdminController extends PageController {
 			}
 		}
 
-		$route    = $component . 's';
+		$route    = 'admin-' . $component . 's';
 		$url      = Html::url('admin.php', ['route' => $route]);
 		$response = new RedirectResponse($url);
 		$response->prepare($request)->send();
@@ -690,7 +690,7 @@ class AdminController extends PageController {
 			}
 		}
 
-		$url      = Html::url('admin.php', ['route' => 'modules']);
+		$url      = Html::url('admin.php', ['route' => 'admin-modules']);
 		$response = new RedirectResponse($url);
 		$response->prepare($request)->send();
 	}

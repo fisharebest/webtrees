@@ -294,8 +294,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 		$include_any = false;
 
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'                                    => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'modules']) => I18N::translate('Module administration'),
+			'admin.php'                                          => I18N::translate('Control panel'),
+			Html::url('admin.php', ['route' => 'admin-modules']) => I18N::translate('Module administration'),
 		], $controller->getPageTitle());
 		?>
 

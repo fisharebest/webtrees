@@ -154,13 +154,13 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function menuAdminModules() {
 		return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', [], [
-			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), Html::url('admin.php', ['route' => 'modules'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), Html::url('admin.php', ['route' => 'menus'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), Html::url('admin.php', ['route' => 'tabs'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), Html::url('admin.php', ['route' => 'blocks'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), Html::url('admin.php', ['route' => 'sidebars'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), Html::url('admin.php', ['route' => 'charts'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), Html::url('admin.php', ['route' => 'reports'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), Html::url('admin.php', ['route' => 'admin-modules'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), Html::url('admin.php', ['route' => 'admin-menus'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), Html::url('admin.php', ['route' => 'admin-tabs'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), Html::url('admin.php', ['route' => 'admin-blocks'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), Html::url('admin.php', ['route' => 'admin-sidebars'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), Html::url('admin.php', ['route' => 'admin-charts'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), Html::url('admin.php', ['route' => 'admin-reports'])),
 		]);
 	}
 

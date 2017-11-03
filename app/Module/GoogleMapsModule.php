@@ -294,8 +294,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller->pageHeader();
 
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'         => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'modules']) => I18N::translate('Module administration'),
+			'admin.php'               => I18N::translate('Control panel'),
+			Html::url('admin.php', ['route' => 'admin-modules']) => I18N::translate('Module administration'),
 		], $controller->getPageTitle());
 		?>
 
@@ -2131,7 +2131,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		echo Bootstrap4::breadcrumbs([
 			'admin.php'                                        => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'modules'])                                => I18N::translate('Module administration'),
+			Html::url('admin.php', ['route' => 'admin-modules'])                                => I18N::translate('Module administration'),
 			$this->getConfigLink()                             => $this->getTitle(),
 			'module.php?mod=googlemap&mod_action=admin_places' => I18N::translate('Geographic data'),
 		], $controller->getPageTitle());
@@ -2589,8 +2589,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent_url = 'module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive;
 
 		$breadcrumbs = [
-			'admin.php'            => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'modules'])    => I18N::translate('Module administration'),
+			'admin.php'                  => I18N::translate('Control panel'),
+			Html::url('admin.php', ['route' => 'admin-modules'])    => I18N::translate('Module administration'),
 			$this->getConfigLink() => $this->getTitle(),
 		];
 		$hierarchy =
@@ -3096,7 +3096,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$breadcrumbs = [
 			'admin.php'            => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'modules'])    => I18N::translate('Module administration'),
+			Html::url('admin.php', ['route' => 'admin-modules'])    => I18N::translate('Module administration'),
 			$this->getConfigLink() => $this->getTitle(),
 		];
 		$hierarchy =
