@@ -50,32 +50,32 @@
 					<?= I18N::translate('Description') ?>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_menus.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'menus'])) ?>">
 						<?= I18N::translate('Menus') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_tabs.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'tabs'])) ?>">
 						<?= I18N::translate('Tabs') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_sidebar.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'sidebars'])) ?>">
 						<?= I18N::translate('Sidebars') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_blocks.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'blocks'])) ?>">
 						<?= I18N::translate('Blocks') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_charts.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'charts'])) ?>">
 						<?= I18N::translate('Charts') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin_module_reports.php', [])) ?>">
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'reports'])) ?>">
 						<?= I18N::translate('Reports') ?>
 					</a>
 				</th>

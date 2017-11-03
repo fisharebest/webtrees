@@ -479,14 +479,14 @@ class AdminController extends PageController {
 	 * Show the admin page for blocks.
 	 */
 	public function blocks() {
-		$this->components('block', I18N::translate('Block'), I18N::translate('Blocks'));
+		$this->components('block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
 	}
 
 	/**
 	 * Show the admin page for charts.
 	 */
 	public function charts() {
-		$this->components('chart', I18N::translate('Chart'), I18N::translate('Charts'));
+		$this->components('chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
 	}
 
 	/**
@@ -603,28 +603,28 @@ class AdminController extends PageController {
 	 * Show the admin page for menus.
 	 */
 	public function menus() {
-		$this->components('menu', I18N::translate('Menu'), I18N::translate('Menus'));
+		$this->components('menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
 	}
 
 	/**
 	 * Show the admin page for reports.
 	 */
 	public function reports() {
-		$this->components('report', I18N::translate('Report'), I18N::translate('Reports'));
+		$this->components('report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
 	}
 
 	/**
 	 * Show the admin page for sidebars.
 	 */
 	public function sidebars() {
-		$this->components('sidebar', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
+		$this->components('sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
 	}
 
 	/**
 	 * Show the admin page for tabs.
 	 */
 	public function tabs() {
-		$this->components('tab', I18N::translate('Tab'), I18N::translate('Tabs'));
+		$this->components('tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
 	}
 
 	/**
@@ -653,7 +653,8 @@ class AdminController extends PageController {
 			}
 		}
 
-		$url      = Html::url('admin.php', ['route' => $component]);
+		$route    = $component . 's';
+		$url      = Html::url('admin.php', ['route' => $route]);
 		$response = new RedirectResponse($url);
 		$response->prepare($request)->send();
 	}
@@ -698,10 +699,11 @@ class AdminController extends PageController {
 	 * Show the admin page for blocks, charts, menus, reports, sidebars, tabs, etc..
 	 *
 	 * @param string $component
+	 * @param string $route
 	 * @param string $component_title
 	 * @param string $page_title
 	 */
-	private function components($component, $component_title, $page_title) {
+	private function components($component, $route, $component_title, $page_title) {
 		$this
 			->setPageTitle($page_title)
 			->pageHeader();
@@ -711,6 +713,7 @@ class AdminController extends PageController {
 				'component_title' => $component_title,
 				'modules'         => Module::getAllModulesByComponent($component),
 				'page_title'      => $page_title,
+				'route'           => $route,
 			]
 		);
 	}
