@@ -30,19 +30,30 @@ return PhpCsFixer\Config::create()
 	->setFinder($finder)
 	->setRiskyAllowed(true)
 	->setRules([
-		'@Symfony'                                  => true,
-		'array_syntax'                              => ['syntax' => 'short'],
-		'binary_operator_spaces'                    => ['align_double_arrow' => true, 'align_equals' => true],
-		'class_definition'                          => false,
-		'combine_consecutive_unsets'                => true,
-		'concat_space'                              => ['spacing' => 'one'],
-		'dir_constant'                              => true,
-		'ereg_to_preg'                              => true,
-		'linebreak_after_opening_tag'               => true,
-		'modernize_types_casting'                   => true,
-		'new_with_braces'                           => false,
-		'no_blank_lines_before_namespace'           => true,
-		'no_multiline_whitespace_before_semicolons' => true,
-		'ordered_imports'                           => true,
-		'single_blank_line_before_namespace'        => false,
+		// Mostly use PSR-2 ...
+		//'@PSR2'                  => true,
+		// ... exceptions
+		//'braces' => [
+		//'position_after_functions_and_oop_constructs' => 'same',
+		//],
+		// ... additions
+
+		'binary_operator_spaces' => [
+			'operators' => [
+		    '===' => 'align_single_space_minimal',
+		    '!==' => 'align_single_space_minimal',
+		    '=='  => 'align_single_space_minimal',
+		    '!='  => 'align_single_space_minimal',
+		    '='   => 'align_single_space_minimal',
+		    '=>'  => 'align_single_space_minimal',
+			],
+		],
+
+		'array_syntax' => [
+			'syntax' => 'short',
+		],
+
+		'concat_space' => [
+			'spacing' => 'one',
+		],
 	]);
