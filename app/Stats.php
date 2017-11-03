@@ -898,8 +898,8 @@ class Stats {
 	 * @return string
 	 */
 	public function chartSex($params = []) {
-		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+		$WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -1032,8 +1032,8 @@ class Stats {
 	 * @return string
 	 */
 	public function chartMortality($params = []) {
-		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+		$WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -4450,13 +4450,9 @@ class Stats {
 			$family = Family::getInstance($rows[$c]['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] =
-						'<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
-						I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
 				} else {
-					$top10[] =
-						'<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
-						I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
 				}
 			}
 		}
@@ -5250,13 +5246,9 @@ class Stats {
 			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] =
-						'<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
-						I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
 				} else {
-					$top10[] =
-						'<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
-						I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
 				}
 			}
 		}

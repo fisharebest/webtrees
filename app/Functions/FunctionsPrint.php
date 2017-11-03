@@ -74,7 +74,7 @@ class FunctionsPrint {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
 			$note  = Note::getInstance($match[1], $WT_TREE);
 			$label = 'SHARED_NOTE';
-			$html = Filter::formatText($note->getNote(), $WT_TREE);
+			$html  = Filter::formatText($note->getNote(), $WT_TREE);
 		} else {
 			$note  = null;
 			$label = 'NOTE';
@@ -177,7 +177,7 @@ class FunctionsPrint {
 	 */
 	public static function helpLink($help_topic) {
 		$title = '';
-		$text = '';
+		$text  = '';
 		require 'help_text.php';
 
 		return
@@ -559,9 +559,9 @@ class FunctionsPrint {
 			$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 			break;
 		case 'OBJE':
-			$addfacts = ['NOTE'];
+			$addfacts    = ['NOTE'];
 			$uniquefacts = ['_PRIM'];
-			$quickfacts = [];
+			$quickfacts  = [];
 			break;
 		default:
 			return;

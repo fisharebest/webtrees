@@ -37,7 +37,7 @@ class CensusOfCzechRepublicTest extends \PHPUnit_Framework_TestCase {
 	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
 	 */
 	public function testAllDates() {
-		$census  = new CensusOfCzechRepublic;
+		$census = new CensusOfCzechRepublic;
 
 		$census_dates = $census->allCensusDates();
 

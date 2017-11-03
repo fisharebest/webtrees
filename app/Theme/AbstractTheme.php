@@ -106,9 +106,9 @@ abstract class AbstractTheme {
 	  'mime-text-html'       => '',
 
 		// Other icons
-		'mail'    => 'fa fa-envelope-o',
-		'help'    => 'fa fa-info-circle',
-		'search'  => 'fa fa-search',
+		'mail'   => 'fa fa-envelope-o',
+		'help'   => 'fa fa-info-circle',
+		'search' => 'fa fa-search',
 	];
 
 	/** @var  Request */
@@ -669,8 +669,7 @@ abstract class AbstractTheme {
 			$title .= ' – ' . $this->tree->getPreference('META_TITLE');
 		}
 
-		$html =
-			$this->metaCharset() .
+		$html = $this->metaCharset() .
 			$this->metaCsrf() .
 			$this->title($title) .
 			$this->favicon() .
@@ -834,11 +833,9 @@ abstract class AbstractTheme {
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
 		if ($individual->canShow()) {
-			$content =
-				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+			$content = '<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
-			$icons   =
-				'<div class="icons">' .
+			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
 				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) { return $menu->bootstrap4(); }, $this->individualBoxMenu($individual))) . '</ul>' .
@@ -886,11 +883,9 @@ abstract class AbstractTheme {
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
 		if ($individual->canShow()) {
-			$content =
-				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+			$content = '<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
-			$icons   =
-				'<div class="icons">' .
+			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
 				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) { return $menu->bootstrap4(); }, $this->individualBoxMenu($individual))) . '</ul>' .

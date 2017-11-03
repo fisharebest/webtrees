@@ -129,8 +129,8 @@ if (!isset($_POST['lang'])) {
 	}
 	// Recommended extensions
 	foreach ([
-		'gd'        => /* I18N: a program feature */ I18N::translate('creating thumbnails of images'),
-		'xml'       => /* I18N: a program feature */ I18N::translate('reporting'),
+		'gd' => /* I18N: a program feature */ I18N::translate('creating thumbnails of images'),
+		'xml' => /* I18N: a program feature */ I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ I18N::translate('reporting'),
 	] as $extension => $features) {
 		if (!extension_loaded($extension)) {

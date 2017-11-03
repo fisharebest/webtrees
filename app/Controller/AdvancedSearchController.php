@@ -28,10 +28,10 @@ use Fisharebest\Webtrees\Soundex;
  */
 class AdvancedSearchController extends SearchController {
 	/** @var string[] Fields to search */
-	public $fields    = [];
+	public $fields = [];
 
 	/** @var string[] Field values to search */
-	public $values    = [];
+	public $values = [];
 
 	/** @var int[] Range of days either side of target date */
 	public $plusminus = [];
@@ -270,14 +270,14 @@ class AdvancedSearchController extends SearchController {
 		$bind = [];
 
 		// Join the following tables
-		$father_name     = false;
-		$mother_name     = false;
-		$spouse_family   = false;
-		$indi_name       = false;
-		$indi_date       = false;
-		$fam_date        = false;
-		$indi_plac       = false;
-		$fam_plac        = false;
+		$father_name   = false;
+		$mother_name   = false;
+		$spouse_family = false;
+		$indi_name     = false;
+		$indi_date     = false;
+		$fam_date      = false;
+		$indi_plac     = false;
+		$fam_plac      = false;
 		foreach ($this->fields as $n => $field) {
 			if ($this->values[$n]) {
 				if (substr($field, 0, 14) == 'FAMC:HUSB:NAME') {

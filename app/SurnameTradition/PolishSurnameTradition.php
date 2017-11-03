@@ -80,7 +80,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
 			]);
 		} else {
 			return [
-				'NAME'   => '//',
+				'NAME' => '//',
 			];
 		}
 	}

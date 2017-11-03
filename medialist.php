@@ -33,23 +33,23 @@ $controller
 	->setPageTitle(I18N::translate('Media objects'))
 	->pageHeader();
 
-$action = Filter::get('action');
-$page           = Filter::getInteger('page');
-$max            = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
-$folder         = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
-$filter         = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
-$subdirs        = Filter::get('subdirs', '1');
-$details        = Filter::get('details', '1');
-$form_type      = Filter::get('form_type', implode('|', array_keys(GedcomTag::getFileFormTypes())));
+$action    = Filter::get('action');
+$page      = Filter::getInteger('page');
+$max       = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
+$folder    = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
+$filter    = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
+$subdirs   = Filter::get('subdirs', '1');
+$details   = Filter::get('details', '1');
+$form_type = Filter::get('form_type', implode('|', array_keys(GedcomTag::getFileFormTypes())));
 
 // reset all variables
 if ($action === 'reset') {
-	$max            = '20';
-	$folder         = '';
-	$subdirs        = '';
-	$details        = '';
-	$filter         = '';
-	$form_type      = '';
+	$max       = '20';
+	$folder    = '';
+	$subdirs   = '';
+	$details   = '';
+	$filter    = '';
+	$form_type = '';
 }
 
 // A list of all subfolders used by this tree
@@ -150,7 +150,7 @@ if ($action === 'submit') {
 		</div>
 		<div class="col">
 			<?php if ($page > 1): ?>
-				<a href="<?= $url ?>&amp;page=<?= $page -1 ?>"><?= I18N::translate('previous') ?></a>
+				<a href="<?= $url ?>&amp;page=<?= $page - 1 ?>"><?= I18N::translate('previous') ?></a>
 			<?php endif ?>
 		</div>
 		<div class="col">
@@ -237,7 +237,7 @@ if ($action === 'submit') {
 		</div>
 		<div class="col">
 			<?php if ($page > 1): ?>
-				<a href="<?= $url ?>&amp;page=<?= $page -1 ?>"><?= I18N::translate('previous') ?></a>
+				<a href="<?= $url ?>&amp;page=<?= $page - 1 ?>"><?= I18N::translate('previous') ?></a>
 			<?php endif ?>
 		</div>
 		<div class="col">

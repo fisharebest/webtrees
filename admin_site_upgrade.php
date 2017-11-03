@@ -38,17 +38,17 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
 
 // Show a friendly message while the site is being upgraded
-$lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
-$lock_file_text      = I18N::translate('This website is being upgraded. Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
+$lock_file      = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
+$lock_file_text = I18N::translate('This website is being upgraded. Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
 
 // Success/failure indicators
-$icon_success        = '<i class="icon-yes"></i>';
-$icon_failure        = '<i class="icon-failure"></i>';
+$icon_success = '<i class="icon-yes"></i>';
+$icon_failure = '<i class="icon-failure"></i>';
 
 // Need confirmation for various actions
-$continue            = Filter::post('continue', '1') && Filter::checkCsrf();
-$modules_action      = Filter::post('modules', 'ignore|disable');
-$themes_action       = Filter::post('themes', 'ignore|disable');
+$continue       = Filter::post('continue', '1') && Filter::checkCsrf();
+$modules_action = Filter::post('modules', 'ignore|disable');
+$themes_action  = Filter::post('themes', 'ignore|disable');
 
 $controller = new PageController;
 $controller

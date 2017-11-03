@@ -79,13 +79,13 @@ foreach (array_keys($records) as $key) {
 
 // LOOK FOR BROKEN LINKS
 $XREF_LINKS = [
-	'NOTE'          => 'NOTE',
-	'SOUR'          => 'SOUR',
-	'REPO'          => 'REPO',
-	'OBJE'          => 'OBJE',
-	'SUBM'          => 'SUBM',
-	'FAMC'          => 'FAM',
-	'FAMS'          => 'FAM',
+	'NOTE' => 'NOTE',
+	'SOUR' => 'SOUR',
+	'REPO' => 'REPO',
+	'OBJE' => 'OBJE',
+	'SUBM' => 'SUBM',
+	'FAMC' => 'FAM',
+	'FAMS' => 'FAM',
 	//'ADOP'=>'FAM', // Need to handle this case specially. We may have both ADOP and FAMC links to the same FAM, but only store one.
 	'HUSB'          => 'INDI',
 	'WIFE'          => 'INDI',

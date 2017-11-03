@@ -144,7 +144,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			$block_order = Database::prepare(
 				"SELECT block_order FROM `##block` WHERE block_id = :block_id"
 			)->execute(['block_id' => $block_id])->fetchOne();
-			$gedcom_id   = Database::prepare(
+			$gedcom_id = Database::prepare(
 				"SELECT gedcom_id FROM `##block` WHERE block_id = :block_id"
 			)->execute(['block_id' => $block_id])->fetchOne();
 		} else {
@@ -154,7 +154,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			$block_order = Database::prepare(
 				"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name = :module_name"
 			)->execute(['module_name' => $this->getName()])->fetchOne();
-			$gedcom_id   = $WT_TREE->getTreeId();
+			$gedcom_id = $WT_TREE->getTreeId();
 		}
 		$controller->pageHeader();
 		if (Module::getModuleByName('ckeditor')) {

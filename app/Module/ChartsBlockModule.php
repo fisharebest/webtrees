@@ -56,8 +56,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
+		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		foreach (['type', 'pid'] as $name) {
 			if (array_key_exists($name, $cfg)) {
@@ -78,7 +78,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$content = '';
 			switch ($type) {
 			case 'pedigree':
-				$title = I18N::translate('Pedigree of %s', $person->getFullName());
+				$title           = I18N::translate('Pedigree of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -95,7 +95,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= '</tr></table>';
 				break;
 			case 'descendants':
-				$title = I18N::translate('Descendants of %s', $person->getFullName());
+				$title           = I18N::translate('Descendants of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				ob_start();
@@ -103,7 +103,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= ob_get_clean();
 				break;
 			case 'hourglass':
-				$title = I18N::translate('Hourglass chart of %s', $person->getFullName());
+				$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref());
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -121,8 +121,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				break;
 			case 'treenav':
 				$title = I18N::translate('Interactive tree of %s', $person->getFullName());
-				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-				$tv  = new TreeView;
+				$mod   = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+				$tv    = new TreeView;
 				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 				$content .= '<script src="' . $mod->js() . '"></script>';
 				list($html, $js) = $tv->drawViewport($person, 2);
@@ -183,8 +183,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
 		}
 
-		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
+		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$charts = [
 			'pedigree'    => I18N::translate('Pedigree'),

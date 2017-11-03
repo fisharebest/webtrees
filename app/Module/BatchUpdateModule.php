@@ -188,7 +188,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 
 		echo $this->getJavascript();
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'       => I18N::translate('Control panel'),
+			'admin.php'         => I18N::translate('Control panel'),
 			'admin_modules.php' => I18N::translate('Module administration'),
 		], $controller->getPageTitle());
 		?>
@@ -337,8 +337,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				break;
 			}
 		}
-		$this->all_xrefs =
-			Database::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
+		$this->all_xrefs = Database::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
 				->execute($vars)
 				->fetchAssoc();
 	}

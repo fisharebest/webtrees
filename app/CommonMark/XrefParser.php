@@ -77,7 +77,7 @@ class XrefParser extends AbstractInlineParser {
 			return false;
 		}
 
-		$url  = $record->getRawUrl();
+		$url   = $record->getRawUrl();
 		$label = $handle;
 		$title = strip_tags($record->getFullName());
 		$context->getContainer()->appendChild(new Link($url, $label, $title));

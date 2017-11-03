@@ -154,15 +154,11 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$templates = [
-			I18N::translate('Keyword examples') =>
-				'#getAllTagsTable#',
+			I18N::translate('Keyword examples') => '#getAllTagsTable#',
 
-			I18N::translate('Narrative description') =>
-			/* I18N: do not translate the #keywords# */
-				I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
+			I18N::translate('Narrative description') => /* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
 
-			I18N::translate('Statistics') =>
-				'<div class="gedcom_stats">
+			I18N::translate('Statistics') => '<div class="gedcom_stats">
 				<span style="font-weight: bold;"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
 				' . I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 					<div class="row">

@@ -72,7 +72,7 @@ class Filter {
 		// Create a minimal commonmark processor - just add support for autolinks.
 		$environment = new Environment;
 		$environment->mergeConfig([
-			'renderer'           => [
+			'renderer' => [
 				'block_separator' => "\n",
 				'inner_separator' => "\n",
 				'soft_break'      => "\n",

@@ -146,8 +146,8 @@ case 'editrawfact':
 	//////////////////////////////////////////////////////////////////////////////
 	// Edit a GEDCOM fact
 	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::get('xref', WT_REGEX_XREF);
-	$fact_id  = Filter::get('fact_id');
+	$xref    = Filter::get('xref', WT_REGEX_XREF);
+	$fact_id = Filter::get('fact_id');
 
 	$record = GedcomRecord::getInstance($xref, $controller->tree());
 	check_record_access($record);
@@ -250,8 +250,8 @@ case 'edit':
 	//////////////////////////////////////////////////////////////////////////////
 	// Edit a fact
 	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::get('xref', WT_REGEX_XREF);
-	$fact_id  = Filter::get('fact_id');
+	$xref    = Filter::get('xref', WT_REGEX_XREF);
+	$fact_id = Filter::get('fact_id');
 
 	$record = GedcomRecord::getInstance($xref, $controller->tree());
 	check_record_access($record);
@@ -361,7 +361,7 @@ case 'add':
 	// Add a new fact
 	//////////////////////////////////////////////////////////////////////////////
 	$xref = Filter::get('xref', WT_REGEX_XREF);
-	$fact     = Filter::get('fact', WT_REGEX_TAG);
+	$fact = Filter::get('fact', WT_REGEX_TAG);
 
 	$record = GedcomRecord::getInstance($xref, $controller->tree());
 	check_record_access($record);
@@ -467,7 +467,7 @@ case 'update':
 
 	$newged = '';
 	if (!empty($_POST['NAME'])) {
-		$newged     .= "\n1 NAME " . $_POST['NAME'];
+		$newged .= "\n1 NAME " . $_POST['NAME'];
 		$name_facts = ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'];
 		foreach ($name_facts as $name_fact) {
 			if (!empty($_POST[$name_fact])) {
@@ -531,8 +531,8 @@ case 'media-edit':
 	//////////////////////////////////////////////////////////////////////////////
 	// Edit a media object
 	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::get('xref', WT_REGEX_XREF);
-	$fact_id  = Filter::get('fact_id');
+	$xref    = Filter::get('xref', WT_REGEX_XREF);
+	$fact_id = Filter::get('fact_id');
 
 	$record = GedcomRecord::getInstance($xref, $controller->tree());
 	check_record_access($record);
@@ -1651,7 +1651,7 @@ case 'addsourceaction':
 	$TITL = Filter::post('TITL');
 	if ($TITL) {
 		$newgedrec .= "\n1 TITL " . $TITL;
-		$_HEB      = Filter::post('_HEB');
+		$_HEB = Filter::post('_HEB');
 		if ($_HEB) {
 			$newgedrec .= "\n2 _HEB " . $_HEB;
 		}
@@ -1671,7 +1671,7 @@ case 'addsourceaction':
 	$REPO = Filter::post('REPO', WT_REGEX_XREF);
 	if ($REPO) {
 		$newgedrec .= "\n1 REPO @" . $REPO . '@';
-		$CALN      = Filter::post('CALN');
+		$CALN = Filter::post('CALN');
 		if ($CALN) {
 			$newgedrec .= "\n2 CALN " . $CALN;
 		}
@@ -1956,7 +1956,7 @@ case 'addrepoaction':
 	$REPO_NAME = Filter::post('REPO_NAME');
 	if ($REPO_NAME) {
 		$gedrec .= "\n1 NAME " . $REPO_NAME;
-		$_HEB   = Filter::post('_HEB');
+		$_HEB = Filter::post('_HEB');
 		if ($_HEB) {
 			$gedrec .= "\n2 _HEB " . $_HEB;
 		}
@@ -2058,7 +2058,7 @@ case 'save-media-link':
 	}
 	$xref       = Filter::post('xref', WT_REGEX_XREF);
 	$media_xref = Filter::post('media-xref', WT_REGEX_XREF);
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
+	$record     = GedcomRecord::getInstance($xref, $controller->tree());
 	check_record_access($record);
 
 	$gedcom = '1 OBJE @' . $media_xref . '@';

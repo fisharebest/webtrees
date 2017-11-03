@@ -403,7 +403,7 @@ class Select2 extends Html {
 			if ($place_name === $query) {
 				$found = true;
 			}
-			$results[]  = [
+			$results[] = [
 				'id'   => $place_name,
 				'text' => $place_name,
 			];
@@ -438,7 +438,7 @@ class Select2 extends Html {
 					if ($place_name === $query) {
 						$found = true;
 					}
-					$results[]  = [
+					$results[] = [
 						'id'   => $place_name,
 						'text' => $place_name,
 					];

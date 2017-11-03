@@ -52,7 +52,7 @@ class ChartController extends PageController {
 			$this->error_message = I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 
-		$this->box = new stdClass();
+		$this->box         = new stdClass();
 		$this->box->width  = Theme::theme()->parameter('chart-box-x');
 		$this->box->height = Theme::theme()->parameter('chart-box-y');
 	}

@@ -1107,9 +1107,9 @@ case '19':
 	$male_female     = false;
 	$z_boundaries[0] = 100000;
 	if ($z_axis === 300) {
-		$zgiven          = false;
-		$legend[0]       = 'all';
-		$zmax            = 1;
+		$zgiven    = false;
+		$legend[0] = 'all';
+		$zmax      = 1;
 	} elseif ($z_axis === 301) {
 		$male_female = true;
 		$zgiven      = true;

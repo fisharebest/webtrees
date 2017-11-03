@@ -37,7 +37,7 @@ class CensusOfEnglandTest extends \PHPUnit_Framework_TestCase {
 	 * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
 	 */
 	public function testAllDates() {
-		$census  = new CensusOfEngland;
+		$census = new CensusOfEngland;
 
 		$census_dates = $census->allCensusDates();
 

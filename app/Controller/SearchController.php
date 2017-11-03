@@ -132,16 +132,16 @@ class SearchController extends PageController {
 			$this->action = 'general';
 		}
 
-		$this->srindi            = Filter::get('srindi', 'checked', '');
-		$this->srfams            = Filter::get('srfams', 'checked', '');
-		$this->srsour            = Filter::get('srsour', 'checked', '');
-		$this->srnote            = Filter::get('srnote', 'checked', '');
-		$this->soundex           = Filter::get('soundex', 'DaitchM|Russell', 'DaitchM');
-		$this->showasso          = Filter::get('showasso');
-		$this->firstname         = Filter::get('firstname');
-		$this->lastname          = Filter::get('lastname');
-		$this->place             = Filter::get('place');
-		$this->year              = Filter::get('year');
+		$this->srindi    = Filter::get('srindi', 'checked', '');
+		$this->srfams    = Filter::get('srfams', 'checked', '');
+		$this->srsour    = Filter::get('srsour', 'checked', '');
+		$this->srnote    = Filter::get('srnote', 'checked', '');
+		$this->soundex   = Filter::get('soundex', 'DaitchM|Russell', 'DaitchM');
+		$this->showasso  = Filter::get('showasso');
+		$this->firstname = Filter::get('firstname');
+		$this->lastname  = Filter::get('lastname');
+		$this->place     = Filter::get('place');
+		$this->year      = Filter::get('year');
 
 		// If no record types specified, search individuals
 		if (!$this->srfams && !$this->srsour && !$this->srnote) {

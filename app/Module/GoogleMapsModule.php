@@ -1203,14 +1203,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$result = [
 				'index'   => 'ID' . $match1[1] . $match2[1],
 				'mapdata' => [
-					'class'        => 'optionbox',
-					'place'        => $fact->getPlace()->getFullName(),
-					'tooltip'      => $fact->getPlace()->getGedcomName(),
-					'lat'          => strtr($match1[1], ['N' => '', 'S' => '-', ',' => '.']),
-					'lng'          => strtr($match2[1], ['E' => '', 'W' => '-', ',' => '.']),
-					'pl_icon'      => '',
-					'pl_zoom'      => '0',
-					'events'       => '',
+					'class'   => 'optionbox',
+					'place'   => $fact->getPlace()->getFullName(),
+					'tooltip' => $fact->getPlace()->getGedcomName(),
+					'lat'     => strtr($match1[1], ['N' => '', 'S' => '-', ',' => '.']),
+					'lng'     => strtr($match2[1], ['E' => '', 'W' => '-', ',' => '.']),
+					'pl_icon' => '',
+					'pl_zoom' => '0',
+					'events'  => '',
 				],
 			];
 		} else {
@@ -1219,14 +1219,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$result = [
 					'index'   => 'ID' . $place_location->pl_lati . $place_location->pl_long,
 					'mapdata' => [
-						'class'        => 'optionbox',
-						'place'        => $fact->getPlace()->getFullName(),
-						'tooltip'      => $fact->getPlace()->getGedcomName(),
-						'lat'          => strtr($place_location->pl_lati, ['N' => '', 'S' => '-', ',' => '.']),
-						'lng'          => strtr($place_location->pl_long, ['E' => '', 'W' => '-', ',' => '.']),
-						'pl_icon'      => $place_location->pl_icon,
-						'pl_zoom'      => $place_location->pl_zoom,
-						'events'       => '',
+						'class'   => 'optionbox',
+						'place'   => $fact->getPlace()->getFullName(),
+						'tooltip' => $fact->getPlace()->getGedcomName(),
+						'lat'     => strtr($place_location->pl_lati, ['N' => '', 'S' => '-', ',' => '.']),
+						'lng'     => strtr($place_location->pl_long, ['E' => '', 'W' => '-', ',' => '.']),
+						'pl_icon' => $place_location->pl_icon,
+						'pl_zoom' => $place_location->pl_zoom,
+						'events'  => '',
 					],
 				];
 			}
@@ -2130,9 +2130,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->pageHeader();
 
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'            => I18N::translate('Control panel'),
-			'admin_modules.php'    => I18N::translate('Module administration'),
-			$this->getConfigLink() => $this->getTitle(),
+			'admin.php'                                        => I18N::translate('Control panel'),
+			'admin_modules.php'                                => I18N::translate('Module administration'),
+			$this->getConfigLink()                             => $this->getTitle(),
 			'module.php?mod=googlemap&mod_action=admin_places' => I18N::translate('Geographic data'),
 		], $controller->getPageTitle());
 

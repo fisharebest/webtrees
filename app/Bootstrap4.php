@@ -73,9 +73,9 @@ class Bootstrap4 extends Html {
 		}
 
 		$input_attributes = self::attributes([
-				'class'   => 'form-check-input',
-				'type'    => 'checkbox',
-				'value'   => '1',
+				'class' => 'form-check-input',
+				'type'  => 'checkbox',
+				'value' => '1',
 			] + $attributes);
 
 		return

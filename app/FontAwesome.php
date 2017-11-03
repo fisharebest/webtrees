@@ -25,56 +25,56 @@ class FontAwesome extends Html {
 	/** Which font-awesome icon to use for which action/entity */
 	const ICONS = [
 		// Application icons
-		'add'           => 'fa fa-plus wt-icon-add',
-		'calendar'      => 'fa fa-calendar wt-icon-calendar',
-		'cancel'        => 'fa fa-close wt-icon-cancel',
-		'coordinates'   => 'fa fa-map-marker wt-icon-coordinates',
-		'copy'          => 'fa fa-copy wt-icon-copy',
-		'delete'        => 'fa fa-trash-o wt-icon-delete',
-		'download'      => 'fa fa-download wt-icon-download',
-		'drag-handle'   => 'fa fa-bars wt-icon-drag-handle',
-		'edit'          => 'fa fa-pencil wt-icon-edit',
-		'help'          => 'fa fa-info-circle wt-icon-help',
-		'email'         => 'fa fa-envelope-o wt-icon-email',
-		'keyboard'      => 'fa fa-keyboard-o wt-icon-keyboard',
-		'pin'           => 'fa fa-thumb-tack wt-icon-pin',
-		'preferences'   => 'fa fa-wrench wt-icon-preferences',
-		'search'        => 'fa fa-search wt-icon-search',
-		'save'          => 'fa fa-check wt-icon-save',
-		'sort'          => 'fa fa-sort wt-icon-sort',
-		'warning'       => 'fa fa-warning wt-icon-warning',
+		'add'         => 'fa fa-plus wt-icon-add',
+		'calendar'    => 'fa fa-calendar wt-icon-calendar',
+		'cancel'      => 'fa fa-close wt-icon-cancel',
+		'coordinates' => 'fa fa-map-marker wt-icon-coordinates',
+		'copy'        => 'fa fa-copy wt-icon-copy',
+		'delete'      => 'fa fa-trash-o wt-icon-delete',
+		'download'    => 'fa fa-download wt-icon-download',
+		'drag-handle' => 'fa fa-bars wt-icon-drag-handle',
+		'edit'        => 'fa fa-pencil wt-icon-edit',
+		'help'        => 'fa fa-info-circle wt-icon-help',
+		'email'       => 'fa fa-envelope-o wt-icon-email',
+		'keyboard'    => 'fa fa-keyboard-o wt-icon-keyboard',
+		'pin'         => 'fa fa-thumb-tack wt-icon-pin',
+		'preferences' => 'fa fa-wrench wt-icon-preferences',
+		'search'      => 'fa fa-search wt-icon-search',
+		'save'        => 'fa fa-check wt-icon-save',
+		'sort'        => 'fa fa-sort wt-icon-sort',
+		'warning'     => 'fa fa-warning wt-icon-warning',
 		// Arrows (start/end variants require fontawesome-rtl library)
-		'arrow-down'    => 'fa fa-arrow-down wt-icon-arrow-down',
-		'arrow-end'     => 'fa fa-arrow-end wt-icon-arrow-end',
-		'arrow-start'   => 'fa fa-arrow-start wt-icon-arrow-start',
-		'arrow-up'      => 'fa fa-arrow-up wt-icon-arrow-up',
+		'arrow-down'  => 'fa fa-arrow-down wt-icon-arrow-down',
+		'arrow-end'   => 'fa fa-arrow-end wt-icon-arrow-end',
+		'arrow-start' => 'fa fa-arrow-start wt-icon-arrow-start',
+		'arrow-up'    => 'fa fa-arrow-up wt-icon-arrow-up',
 		// Modules
-		'block'         => 'fa fa-th-list wt-icon-block',
-		'block-user'    => 'fa fa-user wt-icon-block-user',
-		'block-tree'    => 'fa fa-tree wt-icon-block-tree',
-		'chart'         => 'fa fa-share-alt wt-icon-chart',
-		'menu'          => 'fa fa-list-ul wt-icon-menu',
-		'report'        => 'fa fa-file wt-icon-report',
-		'sidebar'       => 'fa fa-pause wt-icon-sidebar',
-		'tab'           => 'fa fa-folder wt-icon-tab',
-		'theme'         => 'fa fa-paint-brush wt-icon-theme',
+		'block'      => 'fa fa-th-list wt-icon-block',
+		'block-user' => 'fa fa-user wt-icon-block-user',
+		'block-tree' => 'fa fa-tree wt-icon-block-tree',
+		'chart'      => 'fa fa-share-alt wt-icon-chart',
+		'menu'       => 'fa fa-list-ul wt-icon-menu',
+		'report'     => 'fa fa-file wt-icon-report',
+		'sidebar'    => 'fa fa-pause wt-icon-sidebar',
+		'tab'        => 'fa fa-folder wt-icon-tab',
+		'theme'      => 'fa fa-paint-brush wt-icon-theme',
 		// GEDCOM records
-		'family'        => 'fa fa-users wt-icon-family',
-		'individual'    => 'fa fa-user wt-icon-individual',
-		'note'          => 'fa fa-sticky-note-o wt-icon-note',
-		'media'         => 'fa fa-file-image-o wt-icon-media',
-		'repository'    => 'fa fa-institution wt-icon-repository',
-		'source'        => 'fa fa-file-text-o wt-icon-source',
-		'submitter'     => 'fa fa-user-o wt-icon-submitter',
-		'upload'        => 'fa fa-upload wt-icon-upload',
+		'family'     => 'fa fa-users wt-icon-family',
+		'individual' => 'fa fa-user wt-icon-individual',
+		'note'       => 'fa fa-sticky-note-o wt-icon-note',
+		'media'      => 'fa fa-file-image-o wt-icon-media',
+		'repository' => 'fa fa-institution wt-icon-repository',
+		'source'     => 'fa fa-file-text-o wt-icon-source',
+		'submitter'  => 'fa fa-user-o wt-icon-submitter',
+		'upload'     => 'fa fa-upload wt-icon-upload',
 		// External sites and applications
 		'bing-maps'     => 'fa fa-icon-map-o wt-icon-bing-maps',
 		'google-maps'   => 'fa fa-icon-map-o wt-icon-google-maps',
 		'openstreetmap' => 'fa fa-icon-map-o wt-icon-openstreetmap',
 		// Slideshow
-		'media-play'    => 'fa fa-play wt-icon-media-play',
-		'media-stop'    => 'fa fa-stop wt-icon-media-stop',
-		'media-next'    => 'fa fa-step-forward wt-icon-media-next',
+		'media-play' => 'fa fa-play wt-icon-media-play',
+		'media-stop' => 'fa fa-stop wt-icon-media-stop',
+		'media-next' => 'fa fa-step-forward wt-icon-media-next',
 	];
 
 	/**
@@ -123,7 +123,7 @@ class FontAwesome extends Html {
 	 * @return string
 	 */
 	public static function linkIcon($icon, $title, $attributes = []) {
-		$title = strip_tags($title);
+		$title                    = strip_tags($title);
 		$attributes['aria-label'] = $title;
 
 		return '<a ' . self::attributes($attributes) . '>' . self::decorativeIcon($icon, ['title' => $title]) . '</a>';

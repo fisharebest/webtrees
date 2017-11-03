@@ -354,9 +354,9 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML <pageHeaderEndHandler>
 	 */
 	private function pageHeaderEndHandler() {
-		$this->print_data        = array_pop($this->print_data_stack);
-		$this->current_element   = $this->wt_report;
-		$this->wt_report         = array_pop($this->wt_report_stack);
+		$this->print_data      = array_pop($this->print_data_stack);
+		$this->current_element = $this->wt_report;
+		$this->wt_report       = array_pop($this->wt_report_stack);
 		$this->wt_report->addElement($this->current_element);
 	}
 
@@ -1187,8 +1187,8 @@ class ReportParserGenerate extends ReportParserBase {
 		if (empty($attrs['diff']) && !empty($id)) {
 			$facts = $record->getFacts();
 			Functions::sortFacts($facts);
-			$this->repeats  = [];
-			$nonfacts       = explode(',', $tag);
+			$this->repeats = [];
+			$nonfacts      = explode(',', $tag);
 			foreach ($facts as $event) {
 				if (!in_array($event->getTag(), $nonfacts)) {
 					$this->repeats[] = $event->getGedcom();

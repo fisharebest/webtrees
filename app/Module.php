@@ -236,7 +236,7 @@ class Module {
 			" FROM `##module`" .
 			" ORDER BY CASE :component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
 		)->execute([
-			'component'    => $component,
+			'component' => $component,
 		])->fetchOneColumn();
 
 		$array = [];

@@ -23,9 +23,9 @@ require 'includes/session.php';
 
 $controller = new PageController;
 
-$ctype      = Filter::get('ctype', 'user|gedcom', 'user');
-$action     = Filter::get('action', 'delete', Filter::post('action', 'save'));
-$news_id    = Filter::getInteger('news_id', 0, PHP_INT_MAX, Filter::postInteger('news_id'));
+$ctype   = Filter::get('ctype', 'user|gedcom', 'user');
+$action  = Filter::get('action', 'delete', Filter::post('action', 'save'));
+$news_id = Filter::getInteger('news_id', 0, PHP_INT_MAX, Filter::postInteger('news_id'));
 
 $news = Database::prepare("SELECT user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id = :news_id")->execute(['news_id' => $news_id])->fetchOneRow(PDO::FETCH_ASSOC);
 
@@ -47,7 +47,7 @@ if ($ctype === 'user' && $news['user_id'] != Auth::id() || $ctype === 'gedcom' &
 
 switch ($action) {
 case 'delete':
-	Database::prepare("DELETE FROM `##news` WHERE news_id = :news_id")->execute(['news_id'   => $news_id,]);
+	Database::prepare("DELETE FROM `##news` WHERE news_id = :news_id")->execute(['news_id' => $news_id,]);
 
 	header('Location: index.php?ctype=' . $ctype . '&ged=' . $controller->tree()->getNameUrl());
 

@@ -320,8 +320,8 @@ class FunctionsPrintLists {
 					$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $individual)) . '"';
 				}
 				if ($num == $individual->getPrimaryName()) {
-					$class             = ' class="name2"';
-					$sex_image         = $individual->getSexImage();
+					$class     = ' class="name2"';
+					$sex_image = $individual->getSexImage();
 				} else {
 					$class     = '';
 					$sex_image = '';
@@ -740,8 +740,8 @@ class FunctionsPrintLists {
 					$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $husb)) . '"';
 				}
 				if ($num == $husb->getPrimaryName()) {
-					$class             = ' class="name2"';
-					$sex_image         = $husb->getSexImage();
+					$class     = ' class="name2"';
+					$sex_image = $husb->getSexImage();
 				} else {
 					$class     = '';
 					$sex_image = '';
@@ -783,8 +783,8 @@ class FunctionsPrintLists {
 					$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $wife)) . '"';
 				}
 				if ($num == $wife->getPrimaryName()) {
-					$class             = ' class="name2"';
-					$sex_image         = $wife->getSexImage();
+					$class     = ' class="name2"';
+					$sex_image = $wife->getSexImage();
 				} else {
 					$class     = '';
 					$sex_image = '';
@@ -1045,7 +1045,7 @@ class FunctionsPrintLists {
 			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
 		)->fetchAssoc();
 
-		$html     = '';
+		$html = '';
 		$html .= '<table ' . Datatables::noteTableAttributes() . '><thead><tr>';
 		$html .= '<th>' . I18N::translate('Title') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';

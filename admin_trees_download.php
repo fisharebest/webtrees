@@ -71,7 +71,7 @@ if ($action === 'download') {
 		rewind($tmp_stream);
 
 		// Create a new/empty .ZIP file
-		$temp_zip_file = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
+		$temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
 		$zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
 		$zip_filesystem->writeStream($download_filename, $tmp_stream);
 

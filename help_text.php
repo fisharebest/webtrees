@@ -31,39 +31,39 @@ switch ($help_topic) {
 case 'DATE':
 	$title = I18N::translate('Date');
 	$dates = [
-		'1900'                                                       => new Date('1900'),
-		'JAN 1900'                                                   => new Date('JAN 1900'),
-		'FEB 1900'                                                   => new Date('FEB 1900'),
-		'MAR 1900'                                                   => new Date('MAR 1900'),
-		'APR 1900'                                                   => new Date('APR 1900'),
-		'MAY 1900'                                                   => new Date('MAY 1900'),
-		'JUN 1900'                                                   => new Date('JUN 1900'),
-		'JUL 1900'                                                   => new Date('JUL 1900'),
-		'AUG 1900'                                                   => new Date('AUG 1900'),
-		'SEP 1900'                                                   => new Date('SEP 1900'),
-		'OCT 1900'                                                   => new Date('OCT 1900'),
-		'NOV 1900'                                                   => new Date('NOV 1900'),
-		'DEC 1900'                                                   => new Date('DEC 1900'),
-		'11 DEC 1913'                                                => new Date('11 DEC 1913'),
-		'01 FEB 2003'                                                => new Date('01 FEB 2003'),
-		'ABT 1900'                                                   => new Date('ABT 1900'),
-		'EST 1900'                                                   => new Date('EST 1900'),
-		'CAL 1900'                                                   => new Date('CAL 1900'),
-		'INT 1900 (...)'                                             => new Date('INT 1900 (...)'),
-		'@#DJULIAN@ 44 B.C.'                                         => new Date('@#DJULIAN@ 44 B.C.'),
-		'@#DJULIAN@ 14 JAN 1700'                                     => new Date('@#DJULIAN@ 14 JAN 1700'),
-		'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'   => new Date('BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'),
-		'@#DJULIAN@ 20 FEB 1742/43'                                  => new Date('@#DJULIAN@ 20 FEB 1742/43'),
-		'FROM 1900 TO 1910'                                          => new Date('FROM 1900 TO 1910'),
-		'FROM 1900'                                                  => new Date('FROM 1900'),
-		'TO 1910'                                                    => new Date('TO 1910'),
-		'BET 1900 AND 1910'                                          => new Date('BET 1900 AND 1910'),
-		'BET JAN 1900 AND MAR 1900'                                  => new Date('BET JAN 1900 AND MAR 1900'),
-		'BET APR 1900 AND JUN 1900'                                  => new Date('BET APR 1900 AND JUN 1900'),
-		'BET JUL 1900 AND SEP 1900'                                  => new Date('BET JUL 1900 AND SEP 1900'),
-		'BET OCT 1900 AND DEC 1900'                                  => new Date('BET OCT 1900 AND DEC 1900'),
-		'AFT 1900'                                                   => new Date('AFT 1900'),
-		'BEF 1910'                                                   => new Date('BEF 1910'),
+		'1900'                                                     => new Date('1900'),
+		'JAN 1900'                                                 => new Date('JAN 1900'),
+		'FEB 1900'                                                 => new Date('FEB 1900'),
+		'MAR 1900'                                                 => new Date('MAR 1900'),
+		'APR 1900'                                                 => new Date('APR 1900'),
+		'MAY 1900'                                                 => new Date('MAY 1900'),
+		'JUN 1900'                                                 => new Date('JUN 1900'),
+		'JUL 1900'                                                 => new Date('JUL 1900'),
+		'AUG 1900'                                                 => new Date('AUG 1900'),
+		'SEP 1900'                                                 => new Date('SEP 1900'),
+		'OCT 1900'                                                 => new Date('OCT 1900'),
+		'NOV 1900'                                                 => new Date('NOV 1900'),
+		'DEC 1900'                                                 => new Date('DEC 1900'),
+		'11 DEC 1913'                                              => new Date('11 DEC 1913'),
+		'01 FEB 2003'                                              => new Date('01 FEB 2003'),
+		'ABT 1900'                                                 => new Date('ABT 1900'),
+		'EST 1900'                                                 => new Date('EST 1900'),
+		'CAL 1900'                                                 => new Date('CAL 1900'),
+		'INT 1900 (...)'                                           => new Date('INT 1900 (...)'),
+		'@#DJULIAN@ 44 B.C.'                                       => new Date('@#DJULIAN@ 44 B.C.'),
+		'@#DJULIAN@ 14 JAN 1700'                                   => new Date('@#DJULIAN@ 14 JAN 1700'),
+		'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752' => new Date('BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'),
+		'@#DJULIAN@ 20 FEB 1742/43'                                => new Date('@#DJULIAN@ 20 FEB 1742/43'),
+		'FROM 1900 TO 1910'                                        => new Date('FROM 1900 TO 1910'),
+		'FROM 1900'                                                => new Date('FROM 1900'),
+		'TO 1910'                                                  => new Date('TO 1910'),
+		'BET 1900 AND 1910'                                        => new Date('BET 1900 AND 1910'),
+		'BET JAN 1900 AND MAR 1900'                                => new Date('BET JAN 1900 AND MAR 1900'),
+		'BET APR 1900 AND JUN 1900'                                => new Date('BET APR 1900 AND JUN 1900'),
+		'BET JUL 1900 AND SEP 1900'                                => new Date('BET JUL 1900 AND SEP 1900'),
+		'BET OCT 1900 AND DEC 1900'                                => new Date('BET OCT 1900 AND DEC 1900'),
+		'AFT 1900'                                                 => new Date('AFT 1900'),
+		'BEF 1910'                                                 => new Date('BEF 1910'),
 		// Hijri dates
 		'@#DHIJRI@ 1497'                                    => new Date('@#DHIJRI@ 1497'),
 		'@#DHIJRI@ MUHAR 1497'                              => new Date('@#DHIJRI@ MUHAR 1497'),
@@ -251,10 +251,7 @@ case 'PLAC':
 
 case 'RESN':
 	$title = GedcomTag::getLabel('RESN');
-	$text  =
-		I18N::translate('Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it.') .
-		'<br><br>' .
-		I18N::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
+	$text  = I18N::translate('Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it.') . '<br><br>' . I18N::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
 	break;
 
 case 'ROMN':
@@ -288,10 +285,7 @@ case 'google_chart_surname':
 
 case 'pending_changes':
 	$title = I18N::translate('Pending changes');
-	$text  =
-		'<p>' .
-		I18N::translate('When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted.') .
-		'</p><p>' .
+	$text  = '<p>' . I18N::translate('When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted.') . '</p><p>' .
 		I18N::translate('This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc.') .
 		'</p><p>' .
 		I18N::translate('Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results.') .

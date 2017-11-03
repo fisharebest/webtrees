@@ -509,15 +509,15 @@ class AdminController extends PageController {
 		$all_trees = array_filter(Tree::getAll(), function (Tree $tree) { return Auth::isManager($tree); });
 
 		echo View::make('admin/control-panel-manager', [
-			'title'           => $this->getPageTitle(),
-			'all_trees'       => $all_trees,
-			'changes'         => $this->totalChanges(),
-			'individuals'     => $this->totalIndividuals(),
-			'families'        => $this->totalFamilies(),
-			'sources'         => $this->totalSources(),
-			'media'           => $this->totalMediaObjects(),
-			'repositories'    => $this->totalRepositories(),
-			'notes'           => $this->totalNotes(),
+			'title'        => $this->getPageTitle(),
+			'all_trees'    => $all_trees,
+			'changes'      => $this->totalChanges(),
+			'individuals'  => $this->totalIndividuals(),
+			'families'     => $this->totalFamilies(),
+			'sources'      => $this->totalSources(),
+			'media'        => $this->totalMediaObjects(),
+			'repositories' => $this->totalRepositories(),
+			'notes'        => $this->totalNotes(),
 		]);
 	}
 
@@ -600,8 +600,7 @@ class AdminController extends PageController {
 		$warings           = [];
 
 		if ($php_major_version === 70 && $today >= '201-12-03' || $php_major_version === 71 && $today >= '2019-12-01') {
-			$warings[] =
-				I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
+			$warings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
 				' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
 		} elseif ($php_major_version === 70 && $today >= '2017-12-03' || $php_major_version === 71 && $today >= '2018-12-01') {
 			$warings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';

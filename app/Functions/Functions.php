@@ -297,7 +297,7 @@ class Functions {
 		$sibling_codes = ['M' => 'bro', 'F' => 'sis', 'U' => 'sib'];
 
 		// Only examine each individual once
-		$visited= [
+		$visited = [
 			$individual1->getXref() => true,
 		];
 
@@ -320,7 +320,7 @@ class Functions {
 					$visited[$family->getXref()] = true;
 					foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 						if (!isset($visited[$spouse->getXref()])) {
-							$new_path = $path;
+							$new_path                = $path;
 							$new_path['path'][]      = $family;
 							$new_path['path'][]      = $spouse;
 							$new_path['relations'][] = $parent_codes[$spouse->getSex()];
@@ -334,7 +334,7 @@ class Functions {
 					}
 					foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
-							$new_path = $path;
+							$new_path                = $path;
 							$new_path['path'][]      = $family;
 							$new_path['path'][]      = $child;
 							$new_path['relations'][] = $sibling_codes[$child->getSex()];
@@ -353,7 +353,7 @@ class Functions {
 					$visited[$family->getXref()] = true;
 					foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 						if (!isset($visited[$spouse->getXref()])) {
-							$new_path = $path;
+							$new_path                = $path;
 							$new_path['path'][]      = $family;
 							$new_path['path'][]      = $spouse;
 							$new_path['relations'][] = $spouse_codes[$spouse->getSex()];
@@ -367,7 +367,7 @@ class Functions {
 					}
 					foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
-							$new_path = $path;
+							$new_path                = $path;
 							$new_path['path'][]      = $family;
 							$new_path['path'][]      = $child;
 							$new_path['relations'][] = $child_codes[$child->getSex()];

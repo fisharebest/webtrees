@@ -272,7 +272,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="calendar">';
 		echo I18N::translate('Calendar');
 		echo '</label><div class="col-sm-9">';
-		echo Bootstrap4::select(['jewish'    => I18N::translate('Jewish'), 'gregorian' => I18N::translate('Gregorian')], $calendar, ['id' => 'calendar', 'name' => 'calendar']);
+		echo Bootstrap4::select(['jewish' => I18N::translate('Jewish'), 'gregorian' => I18N::translate('Gregorian')], $calendar, ['id' => 'calendar', 'name' => 'calendar']);
 		echo '</div></div>';
 	}
 }

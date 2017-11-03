@@ -229,7 +229,7 @@ default:
 
 case 'requestpw':
 	$username = Filter::post('new_passwd_username');
-	$user      = User::findByIdentifier($username);
+	$user     = User::findByIdentifier($username);
 
 	if ($user) {
 		$passchars   = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

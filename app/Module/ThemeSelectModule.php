@@ -43,7 +43,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []) {
-		$menu  = Theme::theme()->menuThemes();
+		$menu = Theme::theme()->menuThemes();
 
 		if ($menu) {
 			$content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';

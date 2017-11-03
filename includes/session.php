@@ -123,7 +123,7 @@ require WT_ROOT . 'vendor/autoload.php';
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
-$request = Request::createFromGlobals();
+$request     = Request::createFromGlobals();
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
 // Remove any PHP script name and parameters.

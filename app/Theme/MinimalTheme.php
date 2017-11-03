@@ -59,10 +59,10 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	public function parameter($parameter_name) {
 		$parameters = [
-			'chart-background-f'             => 'dddddd',
-			'chart-background-m'             => 'cccccc',
-			'distribution-chart-low-values'  => 'cccccc',
-			'distribution-chart-no-values'   => 'ffffff',
+			'chart-background-f'            => 'dddddd',
+			'chart-background-m'            => 'cccccc',
+			'distribution-chart-low-values' => 'cccccc',
+			'distribution-chart-no-values'  => 'ffffff',
 		];
 
 		if (array_key_exists($parameter_name, $parameters)) {

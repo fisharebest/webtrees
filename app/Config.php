@@ -104,92 +104,92 @@ class Config {
 	 */
 	public static function levelTwoTags() {
 		return [
-			'_HEB'     => [
+			'_HEB' => [
 				'NAME', 'TITL',
 			],
-			'ROMN'     => [
+			'ROMN' => [
 				'NAME', 'TITL',
 			],
-			'TYPE'     => [
+			'TYPE' => [
 				'EVEN', 'FACT', 'GRAD', 'IDNO', 'MARR', 'ORDN', 'SSN',
 			],
-			'AGNC'     => [
+			'AGNC' => [
 				'EDUC', 'GRAD', 'OCCU', 'ORDN', 'RETI',
 			],
-			'CALN'     => [
+			'CALN' => [
 				'REPO',
 			],
-			'CEME'     => [// CEME is NOT a valid 5.5.1 tag
+			'CEME' => [// CEME is NOT a valid 5.5.1 tag
 				//'BURI',
 			],
-			'RELA'     => [
+			'RELA' => [
 				'ASSO', '_ASSO',
 			],
-			'DATE'     => [
+			'DATE' => [
 				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
 				'CENS', 'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'DSCR', 'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI',
 				'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB',
 				'PROP', 'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'WILL', '_TODO',
 			],
-			'AGE'      => [
+			'AGE' => [
 				'CENS', 'DEAT',
 			],
-			'TEMP'     => [
+			'TEMP' => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
 			],
-			'PLAC'     => [
+			'PLAC' => [
 				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
 				'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI', 'MARB',
 				'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB', 'PROP',
 				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'WILL',
 			],
-			'STAT'     => [
+			'STAT' => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
 			],
-			'ADDR'     => [
+			'ADDR' => [
 				'BAPM', 'BIRT', 'BURI', 'CENS', 'CHR', 'CHRA', 'CONF', 'CREM', 'DEAT',
 				'EDUC', 'EVEN', 'GRAD', 'MARR', 'OCCU', 'ORDN', 'PROP', 'RESI',
 			],
-			'CAUS'     => [
+			'CAUS' => [
 				'DEAT',
 			],
-			'PHON'     => [
+			'PHON' => [
 				'OCCU', 'RESI',
 			],
-			'FAX'      => [
+			'FAX' => [
 				'OCCU', 'RESI',
 			],
-			'WWW'      => [
+			'WWW' => [
 				'OCCU', 'RESI',
 			],
-			'EMAIL'    => [
+			'EMAIL' => [
 				'OCCU', 'RESI',
 			],
-			'HUSB'     => [
+			'HUSB' => [
 				'MARR',
 			],
-			'WIFE'     => [
+			'WIFE' => [
 				'MARR',
 			],
-			'FAMC'     => [
+			'FAMC' => [
 				'ADOP', 'SLGC',
 			],
-			'FILE'     => [
+			'FILE' => [
 				'OBJE',
 			],
-			'_PRIM'    => [
+			'_PRIM' => [
 				'OBJE',
 			],
-			'EVEN'     => [
+			'EVEN' => [
 				'DATA',
 			],
 			'_WT_USER' => [
 				'_TODO',
 			],
 			// See https://bugs.launchpad.net/webtrees/+bug/1082666
-			'RELI'     => [
+			'RELI' => [
 				'CHR', 'CHRA', 'BAPM', 'MARR', 'BURI',
 			],
 		];

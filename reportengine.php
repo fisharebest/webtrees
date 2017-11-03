@@ -160,9 +160,9 @@ case 'setup':
 				'value' => $input['default'],
 			];
 			$input['control'] = '<input ' . Html::attributes($attributes) . '>';
-			$input['extra'] = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
-				'class' => 'btn btn-link',
-				'href' => '#',
+			$input['extra']   = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
+				'class'   => 'btn btn-link',
+				'href'    => '#',
 				'onclick' => 'return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");',
 			]) . '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 			break;

@@ -117,7 +117,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="align-bottom">',
-							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h -4, '"></td>';
+							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h - 4, '"></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
 							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2);
@@ -126,7 +126,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="align-top">',
-							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h -2, '"></td>';
+							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h - 2, '"></td>';
 						} else {
 							echo '<td class="align-bottomm"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
 							'<img class="spacer"  width="3" src="', Theme::theme()->parameter('image-spacer'), '"></td>';

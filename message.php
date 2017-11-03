@@ -180,7 +180,7 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) { retu
  */
 function recipients($to) {
 	if ($to === 'all') {
-		$recipients =	User::all();
+		$recipients = User::all();
 	} elseif ($to === 'last_6mo') {
 		$recipients = array_filter(User::all(), function(User $user) {
 			return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;

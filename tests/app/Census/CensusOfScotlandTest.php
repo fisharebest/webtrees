@@ -37,7 +37,7 @@ class CensusOfScotlandTest extends \PHPUnit_Framework_TestCase {
 	 * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
 	 */
 	public function testAllDates() {
-		$census  = new CensusOfScotland;
+		$census = new CensusOfScotland;
 
 		$census_dates = $census->allCensusDates();
 

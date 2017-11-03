@@ -640,7 +640,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 	$html = '';
 
 	foreach ($list as $id => $facts) {
-		$tmp  = GedcomRecord::getInstance($id, $WT_TREE);
+		$tmp = GedcomRecord::getInstance($id, $WT_TREE);
 		$html .= $tag1 . '<a href="' . $tmp->getHtmlUrl() . '">' . $tmp->getFullName() . '</a> ';
 		if ($show_sex_symbols && $tmp instanceof Individual) {
 			switch ($tmp->getSex()) {

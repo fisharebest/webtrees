@@ -26,7 +26,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 * Where are our CSS, JS and other assets?
 	 */
 	const THEME_DIR  = 'fab';
-	const ASSET_DIR = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
 	const STYLESHEET = self::ASSET_DIR . 'style.css';
 
 	/**

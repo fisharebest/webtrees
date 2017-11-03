@@ -12,8 +12,8 @@
 	<?= I18N::translate('You need to review the account details.') ?>
 </p>
 
-<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'admin_users.php', ['action' => 'edit', 'user_id' =>  $user->getUserId()])) ?>">
-	<?= Html::escape(Html::url(WT_BASE_URL . 'admin_users.php', ['action' => 'edit', 'user_id' =>  $user->getUserId()])) ?>
+<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'admin_users.php', ['action' => 'edit', 'user_id' => $user->getUserId()])) ?>">
+	<?= Html::escape(Html::url(WT_BASE_URL . 'admin_users.php', ['action' => 'edit', 'user_id' => $user->getUserId()])) ?>
 </a>
 
 <ul>

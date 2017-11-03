@@ -209,8 +209,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				$individual = Individual::getInstance($xref, $WT_TREE);
 
 				echo Bootstrap4::breadcrumbs([
-					'admin.php'         => I18N::translate('Control panel'),
-					'admin_modules.php' => I18N::translate('Module administration'),
+					'admin.php'                                                       => I18N::translate('Control panel'),
+					'admin_modules.php'                                               => I18N::translate('Module administration'),
 					'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
 				], $controller->getPageTitle());
 				?>

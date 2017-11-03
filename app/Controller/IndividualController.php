@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Module\ModuleTabInterface;
  */
 class IndividualController extends GedcomRecordController {
 	/** @var int Count of names */
-	public $name_count  = 0;
+	public $name_count = 0;
 
 	/** @var int Count of names. */
 	public $total_names = 0;
@@ -142,7 +142,7 @@ class IndividualController extends GedcomRecordController {
 
 		if ($n === 0) {
 			$content_class = 'collapse show';
-			$aria  = 'true';
+			$aria          = 'true';
 		}
 		if ($fact->isPendingDeletion()) {
 			$container_class .= ' old';

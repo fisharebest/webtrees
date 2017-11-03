@@ -143,13 +143,13 @@ foreach ($rows as $row) {
 		break;
 	}
 
-	$row->accept_url  = Html::url('edit_changes.php', [
+	$row->accept_url = Html::url('edit_changes.php', [
 		'action'    => 'accept',
 		'change_id' => $row->change_id,
 		'ged'       => $row->gedcom_name,
 		'url'       => $url,
 	]);
-	$row->reject_url  = Html::url('edit_changes.php', [
+	$row->reject_url = Html::url('edit_changes.php', [
 		'action'    => 'reject',
 		'change_id' => $row->change_id,
 		'ged'       => $row->gedcom_name,

@@ -218,10 +218,10 @@ class Media extends GedcomRecord {
 				$imgsize = getimagesize($this->getServerFilename());
 				if (is_array($imgsize) && !empty($imgsize['0'])) {
 					// this is an image
-					$imageTypes      = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
-					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
+					$imageTypes     = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
+					$imgsize['ext'] = $imageTypes[0 + $imgsize[2]];
 					// this is for display purposes, always show non-adjusted info
-					$imgsize['WxH']  = /* I18N: image dimensions, width × height */
+					$imgsize['WxH'] = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
 				}
 			} catch (\ErrorException $ex) {
@@ -232,11 +232,11 @@ class Media extends GedcomRecord {
 
 		if (!is_array($imgsize) || empty($imgsize['0'])) {
 			// this is not an image, OR the file doesn’t exist OR it is a url
-			$imgsize[0]       = 0;
-			$imgsize[1]       = 0;
-			$imgsize['ext']   = '';
-			$imgsize['mime']  = '';
-			$imgsize['WxH']   = '';
+			$imgsize[0]      = 0;
+			$imgsize[1]      = 0;
+			$imgsize['ext']  = '';
+			$imgsize['mime'] = '';
+			$imgsize['WxH']  = '';
 		}
 
 		if (empty($imgsize['mime'])) {

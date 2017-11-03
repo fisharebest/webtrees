@@ -50,16 +50,16 @@ class LifespanController extends PageController {
 	const SESSION_DATA    = 'lifespan_data';
 
 	/** @var string|null Chart parameter */
-	public $place     = null;
+	public $place = null;
 
 	/** @var int|null Chart parameter */
 	public $beginYear = null;
 
 	/** @var int|null Chart parameter */
-	public $endYear   = null;
+	public $endYear = null;
 
 	/** @var string Chart parameter */
-	public $subtitle  = '&nbsp;';
+	public $subtitle = '&nbsp;';
 
 	/** @var Individual[] A list of individuals to display. */
 	private $people = [];

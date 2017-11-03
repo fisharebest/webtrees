@@ -95,12 +95,12 @@ case 'create-media-object':
 
 	// Create a media object, and return parameters needed by Select2
 	header('Content-type: application/json');
-	$filename   = 'eek.jpg';
-	$auto   = Filter::post('auto');
-	$folder = Filter::post('folder');
-	$note   = Filter::post('note');
-	$type   = Filter::post('type');
-	$title  = Filter::post('title');
+	$filename = 'eek.jpg';
+	$auto     = Filter::post('auto');
+	$folder   = Filter::post('folder');
+	$note     = Filter::post('note');
+	$type     = Filter::post('type');
+	$title    = Filter::post('title');
 
 	// No file uploaded?
 	if (empty($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) {
@@ -109,7 +109,7 @@ case 'create-media-object':
 	}
 
 	// The filename
-	$file = $_FILES['file']['name'];
+	$file   = $_FILES['file']['name'];
 	$format = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 	$format = strtr($format, ['jpg' => 'jpeg']);
 
@@ -200,21 +200,21 @@ case 'create-repository':
 	// Create a repository, and return parameters needed by Select2
 	header('Content-type: application/json');
 	$repository_name = Filter::post('repository_name');
-	$gedcom = "0 @new@ REPO\n1 NAME " . $repository_name;
-	$repository = $WT_TREE->createRecord($gedcom);
+	$gedcom          = "0 @new@ REPO\n1 NAME " . $repository_name;
+	$repository      = $WT_TREE->createRecord($gedcom);
 	echo json_encode(['id' => $repository->getXref(), 'text' => View::make('selects/repository', ['repository' => $repository])]);
 	break;
 
 case 'create-source':
 	// Create a source, and return parameters needed by Select2
 	header('Content-type: application/json');
-	$TITL = Filter::post('TITL');
-	$ABBR = Filter::post('ABBR');
-	$AUTH = Filter::post('AUTH');
-	$PUBL = Filter::post('PUBL');
-	$TEXT = Filter::post('TEXT');
-	$REPO = Filter::post('REPO', WT_REGEX_XREF);
-	$CALN = Filter::post('CALN');
+	$TITL   = Filter::post('TITL');
+	$ABBR   = Filter::post('ABBR');
+	$AUTH   = Filter::post('AUTH');
+	$PUBL   = Filter::post('PUBL');
+	$TEXT   = Filter::post('TEXT');
+	$REPO   = Filter::post('REPO', WT_REGEX_XREF);
+	$CALN   = Filter::post('CALN');
 	$gedcom = '0 @new@ SOUR';
 	if ($TITL !== '') {
 		$gedcom .= "\n1 TITL " . $TITL;
@@ -244,7 +244,7 @@ case 'create-source':
 case 'create-submitter':
 	// Create a submitter, and return parameters needed by Select2
 	header('Content-type: application/json');
-	$gedcom = '0 @new@ SUBM';
+	$gedcom         = '0 @new@ SUBM';
 	$submitter_name = Filter::post('submitter_name', null, '');
 	if ($submitter_name !== '') {
 		$gedcom .= "\n1 NAME " . $submitter_name;

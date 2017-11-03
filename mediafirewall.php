@@ -70,7 +70,7 @@ try {
 	$cache_dir  = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_dir)));
 	$assets_dir = new Filesystem(new Local( 'assets'));
 
-	$server     = ServerFactory::create([
+	$server = ServerFactory::create([
 		'driver'     => $driver,
 		'source'     => $source_dir,
 		'cache'      => $cache_dir,

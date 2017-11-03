@@ -373,13 +373,13 @@ class CalendarDate {
 
 		if ($translated_day_names === null) {
 			$translated_day_names = [
-				0  => /* I18N: abbreviation for Monday */ I18N::translate('Mon'),
-				1  => /* I18N: abbreviation for Tuesday */ I18N::translate('Tue'),
-				2  => /* I18N: abbreviation for Wednesday */ I18N::translate('Wed'),
-				3  => /* I18N: abbreviation for Thursday */ I18N::translate('Thu'),
-				4  => /* I18N: abbreviation for Friday */ I18N::translate('Fri'),
-				5  => /* I18N: abbreviation for Saturday */ I18N::translate('Sat'),
-				6  => /* I18N: abbreviation for Sunday */ I18N::translate('Sun'),
+				0 => /* I18N: abbreviation for Monday */ I18N::translate('Mon'),
+				1 => /* I18N: abbreviation for Tuesday */ I18N::translate('Tue'),
+				2 => /* I18N: abbreviation for Wednesday */ I18N::translate('Wed'),
+				3 => /* I18N: abbreviation for Thursday */ I18N::translate('Thu'),
+				4 => /* I18N: abbreviation for Friday */ I18N::translate('Fri'),
+				5 => /* I18N: abbreviation for Saturday */ I18N::translate('Sat'),
+				6 => /* I18N: abbreviation for Sunday */ I18N::translate('Sun'),
 			];
 		}
 

@@ -56,10 +56,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
-		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
-		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
-		$show_user  = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
+		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
+		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
+		$show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
 		foreach (['days', 'infoStyle', 'sortStyle', 'show_user'] as $name) {
 			if (array_key_exists($name, $cfg)) {
@@ -127,10 +127,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			$this->setBlockSetting($block_id, 'show_user', Filter::postBool('show_user'));
 		}
 
-		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
-		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
-		$show_user  = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
+		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
+		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
+		$show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
 		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="days">';
 		echo I18N::translate('Number of days to show');

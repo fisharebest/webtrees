@@ -539,12 +539,12 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	)->execute();
 	echo '<p>pgv_users => wt_user_gedcom_setting…</p>';
 
-	$user_gedcom_settings =
-		Database::prepare(
-			"SELECT user_id, u_gedcomid, u_rootid, u_canedit" .
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
-			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
-		)->fetchAll();
+	$user_gedcom_settings = Database::prepare(
+		"SELECT user_id, u_gedcomid, u_rootid, u_canedit" .
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
+		" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
+	)->fetchAll();
+
 	foreach ($user_gedcom_settings as $setting) {
 		try {
 			$array = unserialize($setting->u_gedcomid);

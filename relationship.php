@@ -23,14 +23,14 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 
 require 'includes/session.php';
 
-$controller = new RelationshipController;
+$controller     = new RelationshipController;
 $max_recursion  = (int) $controller->tree()->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
 $ancestors_only = $controller->tree()->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
 
-$pid1       = Filter::get('pid1', WT_REGEX_XREF);
-$pid2       = Filter::get('pid2', WT_REGEX_XREF);
-$recursion  = Filter::getInteger('recursion', 0, $max_recursion, 0);
-$ancestors  = Filter::get('ancestors', '[01]', '0');
+$pid1      = Filter::get('pid1', WT_REGEX_XREF);
+$pid2      = Filter::get('pid2', WT_REGEX_XREF);
+$recursion = Filter::getInteger('recursion', 0, $max_recursion, 0);
+$ancestors = Filter::get('ancestors', '[01]', '0');
 
 $person1 = Individual::getInstance($pid1, $controller->tree());
 $person2 = Individual::getInstance($pid2, $controller->tree());
@@ -115,11 +115,11 @@ if ($person1 && $person2) {
 
 if ($person1 && $person2) {
 	if (I18N::direction() === 'ltr') {
-		$diagonal1        = Theme::theme()->parameter('image-dline');
-		$diagonal2        = Theme::theme()->parameter('image-dline2');
+		$diagonal1 = Theme::theme()->parameter('image-dline');
+		$diagonal2 = Theme::theme()->parameter('image-dline2');
 	} else {
-		$diagonal1        = Theme::theme()->parameter('image-dline2');
-		$diagonal2        = Theme::theme()->parameter('image-dline');
+		$diagonal1 = Theme::theme()->parameter('image-dline2');
+		$diagonal2 = Theme::theme()->parameter('image-dline');
 	}
 
 	$num_paths = 0;
@@ -136,8 +136,8 @@ if ($person1 && $person2) {
 		// Use a table/grid for layout.
 		$table = [];
 		// Current position in the grid.
-		$x     = 0;
-		$y     = 0;
+		$x = 0;
+		$y = 0;
 		// Extent of the grid.
 		$min_y = 0;
 		$max_y = 0;

@@ -679,7 +679,7 @@ class FunctionsEdit {
 
 				/** @var CensusAssistantModule $census_assistant */
 				$census_assistant = Module::getModuleByName('GEDFact_assistant');
-				$record = Individual::getInstance($xref, $WT_TREE);
+				$record           = Individual::getInstance($xref, $WT_TREE);
 				if ($census_assistant !== null && $record instanceof Individual) {
 					$html .= $census_assistant->createCensusAssistant($record);
 				}
@@ -712,7 +712,7 @@ class FunctionsEdit {
 			$html .= self::inputAddonHelp('DATE');
 			$html .= '</div>';
 			$html .= '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
-			$html .= 	'<p class="text-muted">' . (new Date($value))->display() . '</p>';
+			$html .= '<p class="text-muted">' . (new Date($value))->display() . '</p>';
 		} elseif ($fact === 'FAMC') {
 			$html .=
 				'<div class="input-group">' .
