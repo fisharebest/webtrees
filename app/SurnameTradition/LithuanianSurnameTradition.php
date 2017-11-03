@@ -39,10 +39,10 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
 
 	/** @var string[] Inflect a surname for males */
 	protected $inflect_male = [
-		'aitė\b'  => 'as',
-		'ytė\b'   => 'is',
-		'iūtė\b ' => 'ius',
-		'utė\b'   => 'us',
+		'aitė\b' => 'as',
+		'ytė\b'  => 'is',
+		'iūtė\b' => 'ius',
+		'utė\b'  => 'us',
 	];
 
 	/**
