@@ -30,12 +30,27 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Get place mock.
+	 *
+	 * @param string $place Gedcom Place
+	 *
+	 * @return \Fisharebest\Webtrees\Place
+	 */
+	private function getPlaceMock($place)
+	{
+		$placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
+		$placeMock->shouldReceive('getGedcomName')->andReturn($place);
+
+		return $placeMock;
+	}
+
+	/**
 	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlace
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('Westminster, London, England');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Westminster, London, England'));
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -51,7 +66,7 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testPlaceAndCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('England');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('England'));
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -67,7 +82,7 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testDifferentCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('Paris, France');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Paris, France'));
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');

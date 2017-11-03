@@ -31,12 +31,27 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Get place mock.
+	 *
+	 * @param string $place Gedcom Place
+	 *
+	 * @return \Fisharebest\Webtrees\Place
+	 */
+	private function getPlaceMock($place)
+	{
+		$placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
+		$placeMock->shouldReceive('getGedcomName')->andReturn($place);
+
+		return $placeMock;
+	}
+
+	/**
 	 * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoBirthPlace() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock(''));
 		$individual->shouldReceive('getFacts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
@@ -53,7 +68,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testPlaceCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('Australia');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Australia'));
 		$individual->shouldReceive('getFacts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
@@ -70,7 +85,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testBritish() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 		$individual->shouldReceive('getFacts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
@@ -101,7 +116,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 		$fact2->shouldReceive('getDate')->andReturn(new Date('1865'));
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
+		$individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 		$individual->shouldReceive('getFacts')->with('IMMI|EMIG|NATU', true)->andReturn([
 			$fact1,
 			$fact2,

@@ -165,7 +165,7 @@ class FunctionsPrintLists {
 											data-filter-value="M"
 											title="' . I18N::translate('Show only males.') . '"
 										>
-										  ' . Individual::sexImage('M', 'large') . '
+										' . Individual::sexImage('M', 'large') . '
 										</button>
 										<button
 											class="btn btn-secondary"
@@ -364,12 +364,11 @@ class FunctionsPrintLists {
 			// Birth place
 			$html .= '<td>';
 			foreach ($individual->getAllBirthPlaces() as $n => $birth_place) {
-				$tmp = new Place($birth_place, $individual->getTree());
 				if ($n > 0) {
 					$html .= '<br>';
 				}
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= $tmp->getShortName() . '</a>';
+				$html .= '<a href="' . $birth_place->getURL() . '" title="' . strip_tags($birth_place->getFullName()) . '">';
+				$html .= $birth_place->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 
@@ -413,12 +412,11 @@ class FunctionsPrintLists {
 			// Death place
 			$html .= '<td>';
 			foreach ($individual->getAllDeathPlaces() as $n => $death_place) {
-				$tmp = new Place($death_place, $individual->getTree());
 				if ($n > 0) {
 					$html .= '<br>';
 				}
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= $tmp->getShortName() . '</a>';
+				$html .= '<a href="' . $death_place->getURL() . '" title="' . strip_tags($death_place->getFullName()) . '">';
+				$html .= $death_place->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 
@@ -526,7 +524,7 @@ class FunctionsPrintLists {
 					sorting: [[1, "asc"]],
 					displayLength: 20,
 					pagingType: "full_numbers"
-			   });
+			});
 
 				$("#' . $table_id . '")
 				/* Hide/show parents */
@@ -844,12 +842,11 @@ class FunctionsPrintLists {
 			// Marriage place
 			$html .= '<td>';
 			foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) {
-				$tmp = new Place($marriage_place, $family->getTree());
 				if ($n) {
 					$html .= '<br>';
 				}
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= $tmp->getShortName() . '</a>';
+				$html .= '<a href="' . $marriage_place->getURL() . '" title="' . strip_tags($marriage_place->getFullName()) . '">';
+				$html .= $marriage_place->getShortName() . '</a>';
 			}
 			$html .= '</td>';
 

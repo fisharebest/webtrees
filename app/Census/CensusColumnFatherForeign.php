@@ -33,7 +33,7 @@ class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusCo
 	public function generate(Individual $individual, Individual $head = null) {
 		$father = $this->father($individual);
 
-		if ($father && $this->lastPartOfPlace($father->getBirthPlace()) !== $this->place()) {
+		if ($father && $this->lastPartOfPlace($father->getBirthPlace()->getGedcomName()) !== $this->place()) {
 			return 'Y';
 		} else {
 			return '';

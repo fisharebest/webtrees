@@ -251,11 +251,11 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getSex() . "' ,
 					'" . $indi->getBirthYear() . "' ,
 					'" . (1901 - $indi->getBirthYear()) . "' ,
-					'" . $indi->getBirthPlace() . "'); return false;\">
+					'" . $indi->getBirthPlace()->getGedcomName(). "'); return false;\">
 					<b>" . $indi->getFullName() . '</b>&nbsp;&nbsp;&nbsp;';
 
 				$born = I18N::translate('Birth');
-				echo '</span><br><span class="list_item">', $born, ' ', $indi->getBirthYear(), '&nbsp;&nbsp;&nbsp;', $indi->getBirthPlace(), '</span></a></li>';
+				echo '</span><br><span class="list_item">', $born, ' ', $indi->getBirthYear(), '&nbsp;&nbsp;&nbsp;', $indi->getBirthPlace()->getGedcomName(), '</span></a></li>';
 				echo '<hr>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
