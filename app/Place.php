@@ -222,7 +222,7 @@ class Place {
 	 *
 	 * @param Tree $tree
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public static function allPlaces(Tree $tree) {
 		$places = [];
@@ -258,7 +258,7 @@ class Place {
 	 * @param string  $filter
 	 * @param Tree    $tree
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public static function findPlaces($filter, Tree $tree) {
 		$places = [];

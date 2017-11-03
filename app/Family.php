@@ -307,12 +307,13 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of all marriage places - for the family lists.
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public function getAllMarriagePlaces() {
 		foreach (explode('|', WT_EVENTS_MARR) as $event) {
-			if ($array = $this->getAllEventPlaces($event)) {
-				return $array;
+			$places = $this->getAllEventPlaces($event);
+			if (!empty($places)) {
+				return $places;
 			}
 		}
 

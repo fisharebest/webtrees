@@ -540,13 +540,13 @@ class Individual extends GedcomRecord {
 	/**
 	 * Gat all the birth places - for the individual lists.
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public function getAllBirthPlaces() {
 		foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-			$tmp = $this->getAllEventPlaces($event);
-			if ($tmp) {
-				return $tmp;
+			$places = $this->getAllEventPlaces($event);
+			if (!empty($places)) {
+				return $places;
 			}
 		}
 
@@ -572,13 +572,13 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get all the death places - for the individual lists.
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public function getAllDeathPlaces() {
 		foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-			$tmp = $this->getAllEventPlaces($event);
-			if ($tmp) {
-				return $tmp;
+			$places = $this->getAllEventPlaces($event);
+			if (!empty($places)) {
+				return $places;
 			}
 		}
 

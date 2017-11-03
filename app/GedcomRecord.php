@@ -1039,7 +1039,7 @@ class GedcomRecord {
 	 *
 	 * @param string $event_type
 	 *
-	 * @return array|Place[]
+	 * @return Place[]
 	 */
 	public function getAllEventPlaces($event_type) {
 		$places = [];
