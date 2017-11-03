@@ -446,7 +446,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return new Place(null, $this->tree);
+		return new Place('', $this->tree);
 	}
 
 	/**
@@ -485,7 +485,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 
-		return new Place(null, $this->tree);
+		return new Place('', $this->tree);
 	}
 
 	/**

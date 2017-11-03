@@ -34,11 +34,10 @@ class Place {
 	 * @param Tree   $tree
 	 */
 	public function __construct($gedcom_place, Tree $tree) {
-		if ($gedcom_place) {
-			$this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
-		} else {
-			// Empty => "Top level"
+		if ($gedcom_place === '') {
 			$this->gedcom_place = [];
+		} else {
+			$this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
 		}
 		$this->tree = $tree;
 	}
