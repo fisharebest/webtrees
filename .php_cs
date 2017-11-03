@@ -31,21 +31,22 @@ return PhpCsFixer\Config::create()
 	->setRiskyAllowed(true)
 	->setRules([
 		// Mostly use PSR-2 ...
-		//'@PSR2'                  => true,
-		// ... exceptions
-		//'braces' => [
-		//'position_after_functions_and_oop_constructs' => 'same',
-		//],
-		// ... additions
+		'@PSR2' => true,
 
+		// ... exceptions
+		'braces' => [
+			'position_after_functions_and_oop_constructs' => 'same',
+		],
+
+		// ... additions
 		'binary_operator_spaces' => [
 			'operators' => [
-		    '===' => 'align_single_space_minimal',
-		    '!==' => 'align_single_space_minimal',
-		    '=='  => 'align_single_space_minimal',
-		    '!='  => 'align_single_space_minimal',
-		    '='   => 'align_single_space_minimal',
-		    '=>'  => 'align_single_space_minimal',
+				'===' => 'align_single_space_minimal',
+				'!==' => 'align_single_space_minimal',
+				'=='  => 'align_single_space_minimal',
+				'!='  => 'align_single_space_minimal',
+				'='   => 'align_single_space_minimal',
+				'=>'  => 'align_single_space_minimal',
 			],
 		],
 

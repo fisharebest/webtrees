@@ -1,3 +1,4 @@
+.php_cs.cache
 /apidocs/
 robots.txt
 phpunit.xml
