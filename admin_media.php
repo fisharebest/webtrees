@@ -314,8 +314,7 @@ case 'load_json':
 				}
 			}
 
-			$delete_link =
-				'<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file)) . '" data-file="' . Html::escape($media_path . $unused_file) . '" data-folder="' . Html::escape($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+			$delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file)) . '" data-file="' . Html::escape($media_path . $unused_file) . '" data-folder="' . Html::escape($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
@@ -512,14 +511,7 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  * @return string HTML
  */
 function mediaObjectInfo(Media $media) {
-	$xref   = $media->getXref();
-	$gedcom = $media->getTree()->getName();
-
-	$html =
-		'<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' .
-		'<br><i>' . Html::escape($media->getNote()) . '</i></br>';
-
-	$html .= '<br>';
+	$html = '<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . Html::escape($media->getNote()) . '</i></br><br>';
 
 	$linked = [];
 	foreach ($media->linkedIndividuals('OBJE') as $link) {
