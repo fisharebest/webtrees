@@ -15,27 +15,27 @@
 	<input type="hidden" name="route" value="update-module-access">
 	<input type="hidden" name="component" value="<?= Html::escape($component) ?>">
 	<?= Filter::getCsrf() ?>
-	<table class="table table-bordered">
+	<table class="table table-bordered" class="row">
 		<thead>
 			<tr>
-				<th class="col-xs-2"><?= $component_title ?></th>
-				<th class="col-xs-5"><?= I18N::translate('Description') ?></th>
-				<th class="col-xs-5"><?= I18N::translate('Access level') ?></th>
+				<th class="col-sm-2"><?= $component_title ?></th>
+				<th class="col-sm-4"><?= I18N::translate('Description') ?></th>
+				<th class="col-sm-6"><?= I18N::translate('Access level') ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($modules as $module_name => $module): ?>
 				<tr>
-					<td class="col-xs-2">
+					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
 							<a href="<?= Html::escape($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>
 						<?php endif ?>
 					</td>
-					<td class="col-xs-5"><?= $module->getDescription() ?></td>
-					<td class="col-xs-5">
-						<table class="table">
+					<td><?= $module->getDescription() ?></td>
+					<td>
+						<table class="table table-sm">
 							<tbody>
 								<?php foreach (Tree::getAll() as $tree): ?>
 									<tr>

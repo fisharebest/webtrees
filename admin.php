@@ -36,6 +36,12 @@ if ($method === 'POST' && !Filter::checkCsrf()) {
 if (Auth::isAdmin()) {
 	// Admin routes.
 	switch ($method . ':' . $route) {
+	default:
+	case 'GET:':
+		$url = Html::url('admin.php', ['route' => 'admin-control-panel']);
+
+		return (new RedirectResponse($url))->prepare($request)->send();
+
 	case 'GET:admin-modules':
 		return ($controller = new AdminController)->modules();
 
@@ -57,7 +63,6 @@ if (Auth::isAdmin()) {
 	case 'GET:admin-tabs':
 		return ($controller = new AdminController)->tabs();
 
-	default:
 	case 'GET:admin-control-panel':
 		return ($controller = new AdminController)->controlPanel();
 
