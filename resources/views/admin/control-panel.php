@@ -244,37 +244,37 @@
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
-						<a href="admin_module_menus.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-menus'])) ?>">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('tab', ['class' => 'fa-li']) ?>
-						<a href="admin_module_tabs.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-tabs'])) ?>">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('block', ['class' => 'fa-li']) ?>
-						<a href="admin_module_blocks.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-blocks'])) ?>">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('sidebar', ['class' => 'fa-li']) ?>
-						<a href="admin_module_sidebar.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-sidebars'])) ?>">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('chart', ['class' => 'fa-li']) ?>
-						<a href="admin_module_charts.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-charts'])) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('report', ['class' => 'fa-li']) ?>
-						<a href="admin_module_repots.php">
+						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-reports'])) ?>">
 							<?= I18N::translate('Reports') ?>
 						</a>
 					</li>
