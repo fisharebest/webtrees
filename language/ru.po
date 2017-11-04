@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-01-31 12:30+0000\n"
+"PO-Revision-Date: 2017-11-04 10:56+0000\n"
 "Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
@@ -1468,7 +1468,7 @@ msgstr "Добавить несвязанные записи"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1056
 msgid "Add watermarks to thumbnails"
-msgstr "Добавить водяной знак на миниатюры?"
+msgstr "Добавлять водяной знак на миниатюры"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:42
@@ -2464,7 +2464,7 @@ msgstr "Бангладеш"
 #: app/GedcomTag.php:158 calendar.php:258
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr "Крешение"
+msgstr "Крещение"
 
 #: app/GedcomTag.php:717
 msgid "Baptism of a brother"
@@ -3738,7 +3738,7 @@ msgstr "Совершающий обрезание"
 
 #: app/Module/CensusAssistantModule.php:113
 msgid "Citation"
-msgstr ""
+msgstr "Цитирование"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -4056,11 +4056,11 @@ msgstr "Создать"
 
 #: app/Functions/FunctionsEdit.php:713
 msgid "Create a family"
-msgstr ""
+msgstr "Создать семью"
 
 #: app/Functions/FunctionsEdit.php:1718
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Создать семью из существующих персон"
 
 #: admin_trees_manage.php:625
 msgid "Create a family tree"
@@ -4096,7 +4096,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:1796
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Создать уникальное имя файла"
 
 #: app/Functions/FunctionsEdit.php:694 edit_interface.php:721
 msgid "Create an individual"
@@ -6263,7 +6263,7 @@ msgstr "Найти близкие отношения"
 
 #: admin_trees_manage.php:499 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Найти не связанные персоны"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
@@ -7371,7 +7371,7 @@ msgstr "Включая вложенные папки"
 #. I18N: Label for a configuration option
 #: lifespan.php:69
 msgid "Include the individual’s immediate family"
-msgstr "Включая ближайших родственников персоны?"
+msgstr "Включать ближайших родственников персоны"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
@@ -10957,7 +10957,7 @@ msgstr "Примиди"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Отображать основные события если нет сведений?"
+msgstr "Отображать основные события если нет сведений"
 
 #: admin_trees_config.php:274 admin_trees_manage.php:390
 msgid "Privacy"
@@ -11669,7 +11669,7 @@ msgstr "Солт-Лейк-Сити, Юта"
 
 #: app/Functions/FunctionsEdit.php:1786
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Как у загруженного файла"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
@@ -11939,7 +11939,7 @@ msgstr "Массовая рассылка сообщений"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:181
 msgid "Send out reminder emails"
-msgstr "Посылать напоминания электронной почтой?"
+msgstr "Посылать напоминания электронной почтой"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:319
@@ -12298,7 +12298,7 @@ msgstr "Показать курсор возраста?"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Показать детей предков?"
+msgstr "Показать детей предков"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:166
@@ -12336,7 +12336,7 @@ msgstr "Показывать кузенов"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:280
 msgid "Show date of last update"
-msgstr "Показывать дату последнего обновления?"
+msgstr "Показывать дату последнего обновления"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:345
@@ -12397,21 +12397,21 @@ msgstr "Показывать имена скрытых персон"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Показать примечания?"
+msgstr "Показывать примечания"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Показать профессии?"
+msgstr "Показывать профессии"
 
 #: app/Module/UpcomingAnniversariesModule.php:163
 msgid "Show only births, deaths, and marriages"
-msgstr "Показывать только дни рождений, смертей, бракосочетаний?"
+msgstr "Показывать только дни рождений, смертей, бракосочетаний"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:133
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Показывать только события для ныне живущих?"
+msgstr "Показывать только события для ныне живущих"
 
 #: app/Functions/FunctionsPrintLists.php:176
 msgid "Show only females."
@@ -12442,7 +12442,7 @@ msgstr "Показать внесённые изменения"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Показывать фото?"
+msgstr "Показать фото"
 
 #: placelist.php:76
 msgid "Show places in hierarchy"
@@ -12471,11 +12471,11 @@ msgstr "Показывать задания с датой в будущем"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Показать место жительства?"
+msgstr "Показать место жительства"
 
 #: app/Module/SlideShowModule.php:286
 msgid "Show slide show controls"
-msgstr "Показывать элементы контроля слайд-шоу?"
+msgstr "Показать элементы управления слайд-шоу"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12483,7 +12483,7 @@ msgstr "Показывать элементы контроля слайд-шоу
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Показать источники?"
+msgstr "Показать источники"
 
 #: familybook.php:78 hourglass.php:83
 msgid "Show spouses"
@@ -12972,7 +12972,7 @@ msgstr "Перейти на родителей"
 
 #: app/Module/SlideShowModule.php:295
 msgid "Start slide show on page load"
-msgstr "Включить слайд-шоу при загрузке страницы?"
+msgstr "Запустить слайд-шоу при загрузке страницы"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:89
@@ -13034,12 +13034,12 @@ msgstr "Стоп"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1071
 msgid "Store watermarked full size images on server"
-msgstr "Сохранять картинки с водяными знаками на сервере?"
+msgstr "Сохранять картинки с водяными знаками на сервере"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1086
 msgid "Store watermarked thumbnails on server"
-msgstr "Сохранять миниатюры с водяными знаками на сервере?"
+msgstr "Сохранять миниатюры с водяными знаками на сервере"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:444
@@ -13136,7 +13136,7 @@ msgstr "Традиция наследования фамилии"
 
 #: app/Module/FamilyTreeStatisticsModule.php:315
 msgid "Surnames"
-msgstr ""
+msgstr "Фамилии"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -13579,12 +13579,12 @@ msgstr "Требования к процессору и памяти завис�
 
 #: message.php:76
 msgid "The message was not sent."
-msgstr "Сообщение не было послано"
+msgstr "Сообщение не отправлено."
 
 #: message.php:74
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Сообщение послано в адрес пользователя %s"
+msgstr "Сообщение отправлено пользователю %s."
 
 #: admin_modules.php:50
 #, php-format
@@ -13903,7 +13903,7 @@ msgstr "Термидор"
 #: admin_trees_unconnected.php:91
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "Эти группы лиц не связаны с %s."
+msgstr "Эти группы персон не связаны с %s."
 
 #: admin.php:580
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15140,7 +15140,7 @@ msgstr "Использовать пароль"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Использовать sendmail для отправки сообщений"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1018
@@ -15803,7 +15803,7 @@ msgstr "Необходимо перенумеровать записи в одн
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Вы должны выбрать персону и тип графика в настройках блока."
+msgstr "Вы должны выбрать персону и тип графика в настройках блока"
 
 #: admin_users.php:280
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
