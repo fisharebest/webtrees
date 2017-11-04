@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<h1><?= I18N::translate('Control panel') ?></h1>
+<h1><?= $title ?></h1>
 
 <!-- WEBTREES VERSION -->
 <div class="card mb-4">

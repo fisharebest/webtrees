@@ -2,41 +2,28 @@
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<h1><?= I18N::translate('Control panel') ?></h1>
+<h1><?= $title ?></h1>
 
-<!-- SERVER WARNINGS -->
-<?php if (!empty($server_warnings)): ?>
-	<div class="card">
-		<div class="card-header">
-			<h2 class="mb-0">
-				<?= I18N::translate('Server information') ?>
-			</h2>
-		</div>
-
-		<div class="card-body">
-			<?php foreach ($server_warnings as $server_warning): ?>
-				<div class="alert alert-warning"><?= $server_warning ?></div>
-			<?php endforeach ?>
-		</div>
-	</div>
-<?php endif ?>
-
-<!-- WEBTREES VERSION -->
+<!-- WEBSITE / WEBTREES -->
 <div class="card mb-4">
 	<div class="card-header">
 		<h2 class="mb-0">
-			<?= WT_WEBTREES ?>
+			<?= I18N::translate('Website') ?>
 			<span class="badge badge-secondary">
 				<?= WT_VERSION ?>
 			</span>
 		</h2>
 	</div>
 	<div class="card-body">
-		<p>
+		<?php foreach ($server_warnings as $server_warning): ?>
+			<p class="alert alert-warning"><?= $server_warning ?></p>
+		<?php endforeach ?>
+
+		<p class="card-text">
 			<?= /* I18N: %s is a URL/link to the project website */
 			I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
 		</p>
-		<p>
+		<p class="card-text ">
 			<?php if ($latest_version === ''): ?>
 				<?= I18N::translate('No upgrade information is available.') ?>
 			<?php elseif (version_compare(WT_VERSION, $latest_version) < 0): ?>
@@ -48,6 +35,42 @@
 			<?php else: ?>
 				<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
 			<?php endif ?>
+		</p>
+
+		<p class="card-text">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-config-site'])) ?>">
+				<?= I18N::translate('Website preferences') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-config-email'])) ?>">
+				<?= I18N::translate('Sending email') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-logs'])) ?>">
+				<?= I18N::translate('Sign-in and registration') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-languages'])) ?>">
+				<?= I18N::translate('Languages') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-analytics'])) ?>">
+				<?= I18N::translate('Tracking and analytics') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-site-logs'])) ?>">
+				<?= I18N::translate('Website logs') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-clean-data'])) ?>">
+				<?= I18N::translate('Clean up data folder') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-server-information'])) ?>">
+				<?= I18N::translate('Server information') ?>
+			</a>
+<!--
+		new Menu(/* I18N: Menu entry */ I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Sign-in and registration'), 'admin_site_config.php?action=login'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Languages'), 'admin_site_config.php?action=languages'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Tracking and analytics'), 'admin_site_config.php?action=tracking'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Website logs'), 'admin_site_logs.php'),
+		new Menu(/* I18N: Menu entry */ I18N::translate('Clean up data folder'), 'admin_site_clean.php'),
+-->
 		</p>
 	</div>
 </div>
@@ -241,6 +264,11 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-6">
+				<p>
+					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-modules'])) ?>">
+						<?= I18N::translate('Module administration') ?>
+					</a>
+				</p>
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
@@ -281,6 +309,9 @@
 				</ul>
 			</div>
 			<div class="col-sm-6">
+				<p>
+					<?= I18N::translate('Preferences') ?>
+				</p>
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>

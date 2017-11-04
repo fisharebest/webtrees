@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
+use DirectoryIterator;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
@@ -445,9 +446,11 @@ class AdminController extends PageController {
 		WT_ROOT . 'admin_module_menus.php',
 		WT_ROOT . 'admin_module_reports.php',
 		WT_ROOT . 'admin_module_sidebar.php',
+		WT_ROOT . 'admin_module_site_clean.php',
 		WT_ROOT . 'admin_module_tabs.php',
 		WT_ROOT . 'admin_modules.php',
 		WT_ROOT . 'admin_site_access.php',
+		WT_ROOT . 'admin_site_info.php',
 		WT_ROOT . 'admin_site_readme.php',
 		WT_ROOT . 'app/Controller/CompactController.php',
 		WT_ROOT . 'app/Controller/SimpleController.php',
@@ -487,6 +490,74 @@ class AdminController extends PageController {
 	 */
 	public function charts() {
 		$this->components('chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
+	}
+
+	/**
+	 * Show old user files in the data folder.
+	 */
+	public function cleanData() {
+		$protected = ['.htaccess', '.gitignore', 'index.php', 'config.ini.php'];
+
+		// If we are storing the media in the data folder (this is the default), then don’t delete it.
+		foreach (Tree::getAll() as $tree) {
+			$MEDIA_DIRECTORY = $tree->getPreference('MEDIA_DIRECTORY');
+			list($folder) = explode('/', $MEDIA_DIRECTORY);
+
+			if ($folder !== '..') {
+				$protected[] = $folder;
+			}
+		}
+
+		$entries = [];
+
+		foreach (new DirectoryIterator(WT_DATA_DIR) as $file) {
+			$entries[] = $file->getFilename();
+		}
+		$entries = array_diff($entries, ['.', '..']);
+		//sort($entries);
+
+		$this
+			->setPageTitle(I18N::translate('Clean-up data folder'))
+			->pageHeader();
+
+		echo View::make('admin/clean-data', [
+			'title'     => $this->getPageTitle(),
+			'entries'   => $entries,
+			'protected' => $protected,
+		]);
+	}
+
+	/**
+	 * Delete old user files in the data folder.
+	 *
+	 * @param Request $request
+	 */
+	public function cleanDataAction(Request $request) {
+		$to_delete = (array) $request->get('to_delete');
+		$to_delete = array_filter($to_delete);
+
+		foreach ($to_delete as $path) {
+			// Show different feedback message for files and folders.
+			$is_dir = is_dir(WT_DATA_DIR . $path);
+
+			if (File::delete(WT_DATA_DIR . $path)) {
+				if ($is_dir) {
+					FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Html::escape($path)), 'success');
+				} else {
+					FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::escape($path)), 'success');
+				}
+			} else {
+				if ($is_dir) {
+					FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Html::escape($path)), 'danger');
+				} else {
+					FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::escape($path)), 'danger');
+				}
+			}
+		}
+
+		$url      = Html::url('admin.php', ['route' => 'admin-control-panel']);
+		$response = new RedirectResponse($url);
+		$response->prepare($request)->send();
 	}
 
 	/**
@@ -611,6 +682,32 @@ class AdminController extends PageController {
 	 */
 	public function reports() {
 		$this->components('report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
+	}
+
+	/**
+	 * Show the server information page.
+	 */
+	public function serverInformation() {
+		$mysql_variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
+		$mysql_variables = array_map(function ($text) {
+			return str_replace(',', ', ', $text);
+		}, $mysql_variables);
+
+		ob_start();
+		phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
+		$phpinfo = ob_get_clean();
+		preg_match('%<body>(.*)</body>%s', $phpinfo, $matches);
+		$phpinfo = $matches[1];
+
+		$this
+			->setPageTitle(I18N::translate('Server information'))
+			->pageHeader();
+
+		echo View::make('admin/server-information', [
+			'title'           => $this->getPageTitle(),
+			'phpinfo'         => $phpinfo,
+			'mysql_variables' => $mysql_variables,
+		]);
 	}
 
 	/**

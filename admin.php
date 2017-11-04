@@ -33,8 +33,8 @@ if ($method === 'POST' && !Filter::checkCsrf()) {
 	return (new RedirectResponse($referer_url))->prepare($request)->send();
 }
 
+// Admin routes.
 if (Auth::isAdmin()) {
-	// Admin routes.
 	switch ($method . ':' . $route) {
 	default:
 	case 'GET:':
@@ -51,11 +51,20 @@ if (Auth::isAdmin()) {
 	case 'GET:admin-charts':
 		return ($controller = new AdminController)->charts();
 
+	case 'GET:admin-clean-data':
+		return ($controller = new AdminController)->cleanData();
+
+	case 'POST:admin-clean-data':
+		return ($controller = new AdminController)->cleanDataAction($request);
+
 	case 'GET:admin-menus':
 		return ($controller = new AdminController)->menus();
 
 	case 'GET:admin-reports':
 		return ($controller = new AdminController)->reports();
+
+	case 'GET:admin-server-information':
+		return ($controller = new AdminController)->serverInformation();
 
 	case 'GET:admin-sidebars':
 		return ($controller = new AdminController)->sidebars();
@@ -80,8 +89,8 @@ if (Auth::isAdmin()) {
 	}
 }
 
+// Manager routes.
 if (Auth::isManager(($controller = new AdminController)->tree())) {
-	// Manager routes.
 	switch ($method . ':' . $route) {
 	case 'GET:admin-control-panel-manager':
 		return ($controller = new AdminController)->controlPanelManager();
