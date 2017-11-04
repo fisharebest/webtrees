@@ -45,7 +45,7 @@ class Module {
 		if (!array_key_exists($file, self::$modules)) {
 			self::$modules[$file] = null;
 			try {
-				$module = require $file;
+				$module = include $file;
 				if ($module instanceof AbstractModule) {
 					self::$modules[$file] = $module;
 				}
