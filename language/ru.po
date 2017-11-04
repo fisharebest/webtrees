@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-01-31 12:30+0000\n"
+"PO-Revision-Date: 2017-11-04 10:42+0000\n"
 "Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ru/>\n"
 "Language: ru\n"
@@ -2511,7 +2511,7 @@ msgstr "Бангладеш"
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr "Крешение"
+msgstr "Крещение"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
@@ -6361,7 +6361,7 @@ msgstr "Найти запись о человеке"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Найти любые отношения"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6374,7 +6374,7 @@ msgstr "Найти другие отношения"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Найти отношения через предков"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6382,7 +6382,7 @@ msgstr "Найти близкие отношения"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Найти не связанные персоны"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -14149,7 +14149,7 @@ msgstr "Термидор"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Эти группы персон не связаны с %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -15408,7 +15408,7 @@ msgstr "Использовать пароль"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Использовать sendmail для отправки сообщений"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
