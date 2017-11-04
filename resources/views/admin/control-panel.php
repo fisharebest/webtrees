@@ -359,7 +359,7 @@
 			</h2>
 		</div>
 		<div class="card-body">
-			<p class="card-text">
+			<p>
 				<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
 			</p>
 			<ul class="list-unstyled">

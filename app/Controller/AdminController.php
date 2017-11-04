@@ -919,7 +919,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of pending changes in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalChanges() {
 		return Database::prepare(
@@ -933,7 +933,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of families in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalFamilies() {
 		return Database::prepare(
@@ -947,7 +947,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of individuals in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalIndividuals() {
 		return Database::prepare(
@@ -961,7 +961,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of media objects in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalMediaObjects() {
 		return Database::prepare(
@@ -975,7 +975,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of notes in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalNotes() {
 		return Database::prepare(
@@ -990,7 +990,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of repositorie in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalRepositories() {
 		return Database::prepare(
@@ -1004,7 +1004,7 @@ class AdminController extends PageController {
 	/**
 	 * Count the number of sources in each tree.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function totalSources() {
 		return Database::prepare(
