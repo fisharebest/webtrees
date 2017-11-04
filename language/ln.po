@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-03 22:43+0000\n"
+"PO-Revision-Date: 2017-11-04 20:04+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -699,7 +699,7 @@ msgstr "<mobímbí mwa yambo>"
 
 #: login.php:404
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
+msgstr "<div class=\"largeError\">Nkomá:</div><div class=\"error\">Na bokokisi mpé botíndi etúno eye, ondímí:<ul><li>kobátela maye matáli bato na bomɔi o molɔngɔ́ na site na biso;</li><li>mpé na ntáká ya nkomá ya nsé, mpɔ̂ na kolimbola náni azalí na mokangano na yɔ̌, tǒ mpɔ̂ na kopɛ́sɛ bísó nsango ya moto asengéli kozala o molɔngɔ́ na website na bísó.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:521
