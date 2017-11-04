@@ -26,6 +26,9 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
+// Default route
+$response = new RedirectResponse('index.php');
+
 // POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
 	$referer_url = $request->headers->get('referer', 'index.php');
@@ -38,54 +41,69 @@ if (Auth::isAdmin()) {
 	switch ($method . ':' . $route) {
 	default:
 	case 'GET:':
-		$url = Html::url('admin.php', ['route' => 'admin-control-panel']);
-
-		return (new RedirectResponse($url))->prepare($request)->send();
+		$url      = Html::url('admin.php', ['route' => 'admin-control-panel']);
+		$response = new RedirectResponse($url);
+		break;
 
 	case 'GET:admin-modules':
-		return ($controller = new AdminController)->modules();
+		$response = ($controller = new AdminController)->modules();
+		break;
 
 	case 'GET:admin-blocks':
-		return ($controller = new AdminController)->blocks();
+		$response = ($controller = new AdminController)->blocks();
+		break;
 
 	case 'GET:admin-charts':
-		return ($controller = new AdminController)->charts();
+		$response = ($controller = new AdminController)->charts();
+		break;
 
 	case 'GET:admin-clean-data':
-		return ($controller = new AdminController)->cleanData();
+		$response = ($controller = new AdminController)->cleanData();
+		break;
 
 	case 'POST:admin-clean-data':
-		return ($controller = new AdminController)->cleanDataAction($request);
+		$response = ($controller = new AdminController)->cleanDataAction($request);
+		break;
 
 	case 'GET:admin-menus':
-		return ($controller = new AdminController)->menus();
+		$response = ($controller = new AdminController)->menus();
+		break;
 
 	case 'GET:admin-reports':
-		return ($controller = new AdminController)->reports();
+		$response = ($controller = new AdminController)->reports();
+		break;
 
 	case 'GET:admin-server-information':
-		return ($controller = new AdminController)->serverInformation();
+		$response = ($controller = new AdminController)->serverInformation();
+		break;
 
 	case 'GET:admin-sidebars':
-		return ($controller = new AdminController)->sidebars();
+		$response = ($controller = new AdminController)->sidebars();
+		break;
 
 	case 'GET:admin-tabs':
-		return ($controller = new AdminController)->tabs();
+		$response = ($controller = new AdminController)->tabs();
+		break;
 
 	case 'GET:admin-control-panel':
-		return ($controller = new AdminController)->controlPanel();
+		$response = ($controller = new AdminController)->controlPanel();
+		break;
 
 	case 'GET:admin-control-panel-manager':
-		return ($controller = new AdminController)->controlPanelManager();
+		$response = ($controller = new AdminController)->controlPanelManager();
+		break;
 
 	case 'POST:delete-module-settings':
-		return ($controller = new AdminController)->deleteModuleSettings($request);
+		$response = ($controller = new AdminController)->deleteModuleSettings($request);
+		break;
 
 	case 'POST:update-module-access':
-		return ($controller = new AdminController)->updateModuleAccess($request);
+		$response = ($controller = new AdminController)->updateModuleAccess($request);
+		break;
 
 	case 'POST:update-module-status':
-		return ($controller = new AdminController)->updateModuleStatus($request);
+		$response = ($controller = new AdminController)->updateModuleStatus($request);
+		break;
 	}
 }
 
@@ -93,9 +111,9 @@ if (Auth::isAdmin()) {
 if (Auth::isManager(($controller = new AdminController)->tree())) {
 	switch ($method . ':' . $route) {
 	case 'GET:admin-control-panel-manager':
-		return ($controller = new AdminController)->controlPanelManager();
+		$response = ($controller = new AdminController)->controlPanelManager();
+		break;
 	}
 }
 
-// No route matched?
-return (new RedirectResponse('index.php'))->prepare($request)->send();
+$response->prepare($request)->send();

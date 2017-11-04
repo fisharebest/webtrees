@@ -38,22 +38,22 @@
 		</p>
 
 		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-config-site'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
 				<?= I18N::translate('Website preferences') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-config-email'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
 				<?= I18N::translate('Sending email') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-logs'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
 				<?= I18N::translate('Sign-in and registration') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-languages'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
 				<?= I18N::translate('Languages') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-analytics'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
 				<?= I18N::translate('Tracking and analytics') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-site-logs'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_logs.php', [])) ?>">
 				<?= I18N::translate('Website logs') ?>
 			</a>
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-clean-data'])) ?>">
@@ -62,15 +62,6 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-server-information'])) ?>">
 				<?= I18N::translate('Server information') ?>
 			</a>
-<!--
-		new Menu(/* I18N: Menu entry */ I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Sign-in and registration'), 'admin_site_config.php?action=login'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Languages'), 'admin_site_config.php?action=languages'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Tracking and analytics'), 'admin_site_config.php?action=tracking'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Website logs'), 'admin_site_logs.php'),
-		new Menu(/* I18N: Menu entry */ I18N::translate('Clean up data folder'), 'admin_site_clean.php'),
--->
 		</p>
 	</div>
 </div>
@@ -217,6 +208,20 @@
 				</tr>
 			</tfoot>
 		</table>
+
+		<p class="card-text">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_trees_manage.php', [])) ?>">
+				<?= I18N::translate('Manage family trees') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('index_edit.php', ['gedcom_id' => '-1'])) ?>">
+				<?= I18N::translate('Set the default blocks for new family trees') ?>
+			</a>
+			<?php if (count($all_trees) > 1): ?>
+				<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_trees_merge.php', [])) ?>">
+					<?= I18N::translate('Merge family trees') ?>
+				</a>
+			<?php endif ?>
+		</p>
 	</div>
 </div>
 
@@ -248,6 +253,24 @@
 				<?php endif ?>
 			<?php endforeach ?>
 		</dl>
+
+		<p class="card-text">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', [])) ?>">
+				<?= I18N::translate('User administration') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
+				<?= I18N::translate('Add a user') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users_bulk.php', [])) ?>">
+				<?= I18N::translate('Send broadcast messages') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
+				<?= I18N::translate('Delete inactive users') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('index_edit.php', ['user_id' => '-1'])) ?>">
+				<?= I18N::translate('Set the default blocks for new users') ?>
+			</a>
+		</p>
 	</div>
 </div>
 
@@ -264,8 +287,8 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-6">
-				<p>
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-modules'])) ?>">
+				<p class="card-text">
+					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-modules'])) ?>">
 						<?= I18N::translate('Module administration') ?>
 					</a>
 				</p>
@@ -309,7 +332,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<p>
+				<p class="card-text">
 					<?= I18N::translate('Preferences') ?>
 				</p>
 				<ul class="fa-ul">
@@ -336,7 +359,7 @@
 			</h2>
 		</div>
 		<div class="card-body">
-			<p>
+			<p class="card-text">
 				<?= I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.') ?>
 			</p>
 			<ul class="list-unstyled">

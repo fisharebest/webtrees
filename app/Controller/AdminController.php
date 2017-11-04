@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for the administration pages
@@ -480,22 +481,28 @@ class AdminController extends PageController {
 
 	/**
 	 * Show the admin page for blocks.
+	 *
+	 * @return Response
 	 */
-	public function blocks() {
-		$this->components('block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
+	public function blocks(): Response {
+		return $this->components('block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
 	}
 
 	/**
 	 * Show the admin page for charts.
+	 *
+	 * @return Response
 	 */
-	public function charts() {
-		$this->components('chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
+	public function charts(): Response {
+		return $this->components('chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
 	}
 
 	/**
 	 * Show old user files in the data folder.
+	 *
+	 * @return Response
 	 */
-	public function cleanData() {
+	public function cleanData(): Response {
 		$protected = ['.htaccess', '.gitignore', 'index.php', 'config.ini.php'];
 
 		// If we are storing the media in the data folder (this is the default), then don’t delete it.
@@ -514,14 +521,9 @@ class AdminController extends PageController {
 			$entries[] = $file->getFilename();
 		}
 		$entries = array_diff($entries, ['.', '..']);
-		//sort($entries);
 
-		$this
-			->setPageTitle(I18N::translate('Clean-up data folder'))
-			->pageHeader();
-
-		echo View::make('admin/clean-data', [
-			'title'     => $this->getPageTitle(),
+		return $this->viewResponse('admin/clean-data', [
+			'title'     => I18N::translate('Clean-up data folder'),
 			'entries'   => $entries,
 			'protected' => $protected,
 		]);
@@ -531,8 +533,10 @@ class AdminController extends PageController {
 	 * Delete old user files in the data folder.
 	 *
 	 * @param Request $request
+	 *
+	 * @return RedirectResponse
 	 */
-	public function cleanDataAction(Request $request) {
+	public function cleanDataAction(Request $request): RedirectResponse {
 		$to_delete = (array) $request->get('to_delete');
 		$to_delete = array_filter($to_delete);
 
@@ -555,21 +559,17 @@ class AdminController extends PageController {
 			}
 		}
 
-		$url      = Html::url('admin.php', ['route' => 'admin-control-panel']);
-		$response = new RedirectResponse($url);
-		$response->prepare($request)->send();
+		return $this->redirectResponse('admin.php', ['route' => 'admin-control-panel']);
 	}
 
 	/**
 	 * The control panel shows a summary of the site and links to admin functions.
+	 *
+	 * @return Response
 	 */
-	public function controlPanel() {
-		$this
-			->setPageTitle(I18N::translate('Control panel'))
-			->pageHeader();
-
-		echo View::make('admin/control-panel', [
-			'title'           => $this->getPageTitle(),
+	public function controlPanel(): Response {
+		return $this->viewResponse('admin/control-panel', [
+			'title'           => I18N::translate('Control panel'),
 			'server_warnings' => $this->serverWarnings(),
 			'latest_version'  => $this->latestVersion(),
 			'all_users'       => User::all(),
@@ -595,18 +595,16 @@ class AdminController extends PageController {
 
 	/**
 	 * Managers see a restricted version of the contol panel.
+	 *
+	 * @return Response
 	 */
-	public function controlPanelManager() {
-		$this
-			->setPageTitle(I18N::translate('Control panel'))
-			->pageHeader();
-
+	public function controlPanelManager(): Response {
 		$all_trees = array_filter(Tree::getAll(), function (Tree $tree) {
 			return Auth::isManager($tree);
 		});
 
-		echo View::make('admin/control-panel-manager', [
-			'title'        => $this->getPageTitle(),
+		return $this->viewResponse('admin/control-panel-manager', [
+			'title'        => I18N::translate('Control panel'),
 			'all_trees'    => $all_trees,
 			'changes'      => $this->totalChanges(),
 			'individuals'  => $this->totalIndividuals(),
@@ -620,21 +618,20 @@ class AdminController extends PageController {
 
 	/**
 	 * Show the administrator a list of modules.
+	 *
+	 * @return Response
 	 */
-	public function modules() {
-		$this
-			->setPageTitle(I18N::translate('Module administration'))
-			->pageHeader()
-			->addInlineJavascript('$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});');
-
+	public function modules(): Response {
+		$javascript = '$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});';
 		$module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
-		echo View::make('admin/modules', [
-			'title'             => $this->getPageTitle(),
+		return $this->viewResponse('admin/modules', [
+			'title'             => I18N::translate('Module administration'),
 			'modules'           => Module::getInstalledModules('disabled'),
 			'module_status'     => $module_status,
 			'deleted_modules'   => $this->deletedModuleNames(),
 			'core_module_names' => Module::getCoreModuleNames(),
+			'javascript'        => $javascript,
 		]);
 	}
 
@@ -642,8 +639,10 @@ class AdminController extends PageController {
 	 * Delete the database settings for a deleted module.
 	 *
 	 * @param Request $request
+	 *
+	 * @return RedirectResponse
 	 */
-	public function deleteModuleSettings(Request $request) {
+	public function deleteModuleSettings(Request $request): RedirectResponse {
 		$module_name = $request->get('module_name');
 
 		Database::prepare(
@@ -665,29 +664,33 @@ class AdminController extends PageController {
 
 		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-		$url      = Html::url('admin.php', ['route' => 'admin-modules']);
-		$response = new RedirectResponse($url);
-		$response->prepare($request)->send();
+		return $this->redirectResponse('admin.php', ['route' => 'admin-modules']);
 	}
 
 	/**
 	 * Show the admin page for menus.
+	 *
+	 * @return Response
 	 */
-	public function menus() {
-		$this->components('menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
+	public function menus(): Response {
+		return $this->components('menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
 	}
 
 	/**
 	 * Show the admin page for reports.
+	 *
+	 * @return Response
 	 */
-	public function reports() {
-		$this->components('report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
+	public function reports(): Response {
+		return $this->components('report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
 	}
 
 	/**
 	 * Show the server information page.
+	 *
+	 * @return Response
 	 */
-	public function serverInformation() {
+	public function serverInformation(): Response {
 		$mysql_variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
 		$mysql_variables = array_map(function ($text) {
 			return str_replace(',', ', ', $text);
@@ -699,12 +702,8 @@ class AdminController extends PageController {
 		preg_match('%<body>(.*)</body>%s', $phpinfo, $matches);
 		$phpinfo = $matches[1];
 
-		$this
-			->setPageTitle(I18N::translate('Server information'))
-			->pageHeader();
-
-		echo View::make('admin/server-information', [
-			'title'           => $this->getPageTitle(),
+		return $this->viewResponse('admin/server-information', [
+			'title'           => I18N::translate('Server information'),
 			'phpinfo'         => $phpinfo,
 			'mysql_variables' => $mysql_variables,
 		]);
@@ -712,24 +711,30 @@ class AdminController extends PageController {
 
 	/**
 	 * Show the admin page for sidebars.
+	 *
+	 * @return Response
 	 */
-	public function sidebars() {
-		$this->components('sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
+	public function sidebars(): Response {
+		return $this->components('sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
 	}
 
 	/**
 	 * Show the admin page for tabs.
+	 *
+	 * @return Response
 	 */
-	public function tabs() {
-		$this->components('tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
+	public function tabs(): Response {
+		return $this->components('tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
 	}
 
 	/**
 	 * Update the access levels of the modules.
 	 *
 	 * @param Request $request
+	 *
+	 * @return RedirectResponse
 	 */
-	public function updateModuleAccess(Request $request) {
+	public function updateModuleAccess(Request $request): RedirectResponse {
 		$component = $request->get('component');
 		$modules   = Module::getAllModulesByComponent($component);
 
@@ -750,18 +755,17 @@ class AdminController extends PageController {
 			}
 		}
 
-		$route    = 'admin-' . $component . 's';
-		$url      = Html::url('admin.php', ['route' => $route]);
-		$response = new RedirectResponse($url);
-		$response->prepare($request)->send();
+		return $this->redirectResponse('admin.php', ['route' => 'admin-' . $component . 's']);
 	}
 
 	/**
 	 * Update the enabled/disabled status of the modules.
 	 *
 	 * @param Request $request
+	 *
+	 * @return RedirectResponse
 	 */
-	public function updateModuleStatus(Request $request) {
+	public function updateModuleStatus(Request $request): RedirectResponse {
 		$modules       = Module::getInstalledModules('disabled');
 		$module_status = Database::prepare(
 			"SELECT module_name, status FROM `##module`"
@@ -787,9 +791,41 @@ class AdminController extends PageController {
 			}
 		}
 
-		$url      = Html::url('admin.php', ['route' => 'admin-modules']);
-		$response = new RedirectResponse($url);
-		$response->prepare($request)->send();
+		return $this->redirectResponse('admin.php', ['route' => 'admin-modules']);
+	}
+
+	/**
+	 * Create a response object from a view.
+	 *
+	 * @param string   $path
+	 * @param string[] $data
+	 *
+	 * @return RedirectResponse
+	 */
+	protected function redirectResponse($path, $data): RedirectResponse {
+		$url = Html::url($path, $data);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * Create a response object from a view.
+	 *
+	 * @param string   $name
+	 * @param string[] $data
+	 *
+	 * @return Response
+	 */
+	protected function viewResponse($name, $data): Response {
+		$html = View::make('layouts/administration', [
+			'content'    => View::make($name, $data),
+			'javascript' => $data['javascript'] ?? '',
+			'title'      => strip_tags($data['title'] ?? ''),
+			'common_url' => 'themes/_common/css-2.0.0/',
+			'theme_url'  => 'themes/_administration/css-2.0.0/',
+		]);
+
+		return new Response($html);
 	}
 
 	/**
@@ -799,17 +835,15 @@ class AdminController extends PageController {
 	 * @param string $route
 	 * @param string $component_title
 	 * @param string $page_title
+	 *
+	 * @return Response
 	 */
-	private function components($component, $route, $component_title, $page_title) {
-		$this
-			->setPageTitle($page_title)
-			->pageHeader();
-
-		echo View::make('admin/module-components', [
+	private function components($component, $route, $component_title, $title): Response {
+		return $this->viewResponse('admin/module-components', [
 				'component'       => $component,
 				'component_title' => $component_title,
 				'modules'         => Module::getAllModulesByComponent($component),
-				'page_title'      => $page_title,
+				'title'           => $title,
 				'route'           => $route,
 			]
 		);
