@@ -284,7 +284,7 @@ class SetupController extends BaseController {
 	/**
 	 * @param Request $request
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	private function extractParameters(Request $request): array {
 		return [
