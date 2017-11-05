@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 
 require 'includes/session.php';
 
@@ -570,7 +572,7 @@ case 'media-edit':
 	}
 
 	$auto_file = '';
-	$old_file  = $record->getServerFilename('main');
+	$old_file  = $record->getServerFilename();
 	if (file_exists($old_file)) {
 		$old_base   = strtolower(pathinfo($old_file, PATHINFO_BASENAME));
 		$old_format = strtolower(pathinfo($old_file, PATHINFO_EXTENSION));
@@ -721,8 +723,8 @@ case 'media-save':
 		$gedcom .= "\n2 TITL " . $TITL;
 	}
 
-	$old_server_file  = $record->getServerFilename('main');
-	$old_server_thumb = $record->getServerFilename('thumb');
+	$old_server_file  = $record->getServerFilename();
+	$old_server_thumb = $record->getThumbnailDirectory();
 	$old_external     = $record->isExternal();
 
 	// Replacement files?
@@ -752,8 +754,8 @@ case 'media-save':
 
 	$tmp_record = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $FILE, null, $record->getTree());
 
-	$new_server_file  = $tmp_record->getServerFilename('main');
-	$new_server_thumb = $tmp_record->getServerFilename('thumb');
+	$new_server_file  = $tmp_record->getServerFilename();
+	$new_server_thumb = $tmp_record->getThumbnailDirectory();
 	$new_external     = $tmp_record->isExternal();
 
 	// External URLs cannot be renamed to local files, and vice versa.
@@ -796,6 +798,7 @@ case 'media-save':
 		if (!file_exists($old_server_file)) {
 			FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($OLD_FILE)), 'warning');
 		}
+
 		if (!file_exists($new_server_file) || sha1_file($old_server_file) === sha1_file($new_server_file)) {
 			try {
 				rename($old_server_file, $new_server_file);
@@ -804,13 +807,15 @@ case 'media-save':
 				FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
 			}
 		}
+
 		if (!file_exists($new_server_file)) {
 			FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($FILE)), 'warning');
 		}
 
 		if (!file_exists($new_server_thumb) || sha1_file($old_server_thumb) === sha1_file($new_server_thumb)) {
 			try {
-				rename($old_server_thumb, $new_server_thumb);
+				$thumbnailFilesystem = new Filesystem(new Local($old_server_thumb));
+				$thumbnailFilesystem->rename($record->getFilename(), $tmp_record->getFilename());
 			} catch (ErrorException $ex) {
 			}
 		}

@@ -149,6 +149,15 @@ class Media extends GedcomRecord {
 	}
 
 	/**
+	 * Get the thumbnail directory on the server.
+	 *
+	 * @return string
+	 */
+	public function getThumbnailDirectory() {
+		return WT_DATA_DIR . 'thumbnail-cache/' . md5($this->tree->getPreference('MEDIA_DIRECTORY'));
+	}
+
+	/**
 	 * check if the file exists on this server
 	 *
 	 * @return bool
