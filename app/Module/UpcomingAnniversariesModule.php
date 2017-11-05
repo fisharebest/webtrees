@@ -18,8 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDB;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
@@ -58,8 +58,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
-		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '0');
+		$filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
+		$onlyBDM   = (bool) $this->getBlockSetting($block_id, 'onlyBDM', '0');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 
@@ -69,22 +69,36 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 			}
 		}
 
-		$startjd = WT_CLIENT_JD + 1;
-		$endjd   = WT_CLIENT_JD + $days;
+        $startjd = WT_CLIENT_JD + 1;
+        $endjd   = WT_CLIENT_JD + $days;
+        $tags    = $onlyBDM ? 'BIRT MARR DEAT' : '';
+        $summary = '';
 
-		$content = '';
-		switch ($infoStyle) {
-			case 'list':
-				// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
-				$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
-				break;
-			case 'table':
-				// Style 2: New format, tables, big text, etc. Not too good on right side of page
-				ob_start();
-				$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
-				$content .= ob_get_clean();
-				break;
+		$facts = FunctionsDB::getEventsList($startjd, $endjd, $tags, $filter, $sortStyle, $WT_TREE);
+
+		if (count($facts) === 0) {
+			if ($filter) {
+                if ($endjd == $startjd) {
+                    $summary = I18N::translate('No events for living individuals exist for tomorrow.');
+                } else {
+                    // I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
+                    $summary = I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+                }
+			} else {
+                if ($endjd == $startjd) {
+                    $summary = I18N::translate('No events exist for tomorrow.');
+                } else {
+                    // I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
+                    $summary = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+                }
+			}
 		}
+
+		$content = view('blocks/events-' . $infoStyle, [
+				'facts'   => $facts,
+				'summary' => $summary,
+			]
+		);
 
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {

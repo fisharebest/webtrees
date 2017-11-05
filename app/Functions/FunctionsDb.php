@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Note;
@@ -953,20 +954,61 @@ class FunctionsDb {
 	/**
 	 * Get the list of current and upcoming events, sorted by anniversary date
 	 *
-	 * @param int $jd1
-	 * @param int $jd2
-	 * @param string $events
-	 * @param Tree $tree
+	 * @param int     $jd1
+	 * @param int     $jd2
+	 * @param string  $events
+	 * @param Boolean $only_living
+	 * @param string  $sort_by
+	 * @param Tree    $tree
 	 *
 	 * @return Fact[]
 	 */
-	public static function getEventsList($jd1, $jd2, $events, Tree $tree) {
+	public static function getEventsList($jd1, $jd2, $events, $only_living = false, $sort_by = 'anniv', Tree $tree) {
 		$found_facts = [];
+		$facts       = [];
 		for ($jd = $jd1; $jd <= $jd2; ++$jd) {
 			$found_facts = array_merge($found_facts, self::getAnniversaryEvents($jd, $events, $tree));
 		}
 
-		return $found_facts;
+		foreach ($found_facts as $fact) {
+			$record = $fact->getParent();
+			// only living people ?
+			if ($only_living) {
+				if ($record instanceof Individual && $record->isDead()) {
+					continue;
+				}
+				if ($record instanceof Family) {
+					$husb = $record->getHusband();
+					if (is_null($husb) || $husb->isDead()) {
+						continue;
+					}
+					$wife = $record->getWife();
+					if (is_null($wife) || $wife->isDead()) {
+						continue;
+					}
+				}
+			}
+			$facts[] = $fact;
+		}
+
+		switch ($sort_by) {
+			case 'anniv':
+				uasort($facts,
+					function (Fact $x, Fact $y) {
+						return Fact::compareDate($y, $x);
+					}
+				);
+				break;
+			case 'alpha':
+				uasort($facts,
+					function (Fact $x, Fact $y) {
+						return GedcomRecord::compare($x->getParent(), $y->getParent());
+					}
+				);
+				break;
+		}
+
+		return $facts;
 	}
 
 	/**

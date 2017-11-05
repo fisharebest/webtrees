@@ -13,13 +13,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDB;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
@@ -49,35 +50,44 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
-		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
+		$onlyBDM   = (bool) $this->getBlockSetting($block_id, 'onlyBDM', '0');
 
-		foreach (['filter', 'infoStyle', 'sortStyle'] as $name) {
+		foreach (['filter', 'infoStyle', 'onlyBDM', 'sortStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
 		}
 
-		$todayjd = WT_CLIENT_JD;
+		$summary = '';
 
-		$content = '';
-
-		// If we are only showing living individuals, then we don't need to search for DEAT events.
-		$tags = $filter ? 'BIRT MARR' : 'BIRT MARR DEAT';
-
-		switch ($infoStyle) {
-			case 'list':
-				// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
-				$content .= FunctionsPrintLists::eventsList($todayjd, $todayjd, $tags, $filter, $sortStyle);
-				break;
-			case 'table':
-				// Style 2: New format, tables, big text, etc. Not too good on right side of page
-				ob_start();
-				$content .= FunctionsPrintLists::eventsTable($todayjd, $todayjd, $tags, $filter, $sortStyle);
-				$content .= ob_get_clean();
-				break;
+		if ($onlyBDM) {
+			$tags = $filter ? 'BIRT|MARR' : 'BIRT|MARR|DEAT';
+		} else {
+			$tags = WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV;
+			// If we are only showing living individuals, then we don't need to search for DEAT events.
+			if (!$filter) {
+				$tags .= '|' . WT_EVENTS_DEAT;
+			}
 		}
+
+		$facts = FunctionsDB::getEventsList(WT_CLIENT_JD, WT_CLIENT_JD, $tags, $filter, $sortStyle, $WT_TREE);
+
+		if (count($facts) === 0) {
+			if ($filter) {
+				$summary = I18N::translate('No events for living individuals exist for today.');
+			} else {
+				$summary = I18N::translate('No events exist for today.');
+			}
+		}
+
+		$content = view('blocks/events-' . $infoStyle, [
+				'facts'   => $facts,
+				'summary' => $summary,
+			]
+		);
 
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
@@ -87,12 +97,13 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			}
 
 			return view('blocks/template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => $this->getTitle(),
-				'content'    => $content,
-			]);
+					'block'      => str_replace('_', '-', $this->getName()),
+					'id'         => $block_id,
+					'config_url' => $config_url,
+					'title'      => $this->getTitle(),
+					'content'    => $content,
+				]
+			);
 		} else {
 			return $content;
 		}
@@ -125,11 +136,13 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			$this->setBlockSetting($block_id, 'onlyBDM', Filter::postBool('onlyBDM'));
 		}
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '0');
 
 		?>
 		<div class="form-group row">
@@ -142,11 +155,24 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		</div>
 
 		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="onlyBDM">
+				<?= I18N::translate('Show only births, deaths, and marriages') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::radioButtons('onlyBDM', FunctionsEdit::optionsNoYes(), $onlyBDM, true) ?>
+			</div>
+		</div>
+
+		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="infoStyle">
 				<?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+				<?= Bootstrap4::select(['list'  => I18N::translate('list'),
+										'table' => I18N::translate('table')],
+										$infoStyle,
+										['id' => 'infoStyle', 'name' => 'infoStyle']
+								) ?>
 			</div>
 		</div>
 
@@ -155,7 +181,11 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 				<?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select(['alpha' => /* I18N: An option in a list-box */ I18N::translate('sort by name'), 'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date')], $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
+				<?= Bootstrap4::select(['alpha' => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
+				                        'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date')],
+										$sortStyle,
+										['id' => 'sortStyle', 'name' => 'sortStyle']
+								) ?>
 			</div>
 		</div>
 		<?php
