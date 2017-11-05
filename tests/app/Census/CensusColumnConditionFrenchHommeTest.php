@@ -263,7 +263,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('MARR')->andReturn($fact);
+		$family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
 		$family->shouldReceive('getFacts')->with('DIV')->andReturn([$fact]);
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -287,7 +287,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 
 		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('MARR')->andReturn($fact);
+		$family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
 		$family->shouldReceive('getFacts')->with('DIV')->andReturn([$fact]);
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
