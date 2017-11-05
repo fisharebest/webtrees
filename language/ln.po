@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-11-04 20:04+0000\n"
+"PO-Revision-Date: 2017-11-05 19:29+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -716,7 +716,7 @@ msgstr "<mobímbí mwa yambo>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Nkomá:</div><div class=\"error\">Na bokokisi mpé botíndi etúno eye, ondímí:<ul><li>kobátela maye matáli bato na bomɔi o molɔngɔ́ na site na biso;</li><li>mpé na ntáká ya nkomá ya nsé, mpɔ̂ na kolimbola náni azalí na mokangano na yɔ̌, tǒ mpɔ̂ na kopɛ́sɛ bísó nsango ya moto asengéli kozala o molɔngɔ́ na website na bísó.</li></ul></div>"
+msgstr "<div class=\"largeError\">Nkomá:</div><div class=\"error\">Na bokokisi mpé botíndi etúno eye, ondímí:<ul><li>kobátela maye matáli bato na bomɔi o molɔngɔ́ na site na biso;</li><li>mpé na ntáká ya nkomá ya nsé, mpɔ̂ na kolimbola náni azalí na mokangano na yɔ̌, tǒ mpɔ̂ na kopɛ́sɛ bísó nsango ya moto esengéli kozala o molɔngɔ́ na website na bísó.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -854,7 +854,7 @@ msgstr "Molɔngɔ́ mwa basáleli mpé batáli baye bazali na etando."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "Elɔ́kɔ ya bopanzi nsango ezalí bokɔ́tisi na nzeté ya libótá boye ezalí na nsango ya kásá-kásá ya bopanzi nsango. Nsango eye ekokí kozala na mokonza, nkomá ya copyright, nkomá, bokáti ndelo bwa maye matálí bato, etc. Kásá-kásá ya bopanzi nsango, lokóla elílí tǒ video, ekokí kobátelama na ndáko (na webserver eye) tǒ mosíká (na webserver ekɛsɛ́ní)."
 
 #: login.php:264
 #, php-format
@@ -1043,7 +1043,7 @@ msgstr "Mokɔlɔ́tɔ mwa ntángo ekotálisa milúlú mya moto."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr ""
+msgstr "Mosáleli akokoka kokɔ́tɔ tɛ́ kín'o \"nkandá etálámí\" mpé \"endimámí na mokambi\" ekopɔnama yangó míbálé."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1170,7 +1170,7 @@ msgstr "Kokɔ́tɔ na nzeté ya libótá"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Kɔ́nti endimámí mpé nkandá etálámí"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -1273,7 +1273,7 @@ msgstr "Kobakisa mwǎna"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Kobakisa mwǎna mpó na kotónga libótá ya mobóti mɔ̌kɔ́"
+msgstr "Kobakisa mwǎna mpɔ̂ na kotónga libótá ya mobóti mɔ̌kɔ́"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -1389,7 +1389,7 @@ msgstr "Kobakisa mwǎsí na libótá liye"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
 #: edit_interface.php:1158
 msgid "Add a wife using an existing individual"
-msgstr "Kobakisa mwǎsí na bozwí moto ayébaní"
+msgstr "Kobakisa mwǎsí na bozwí moto ayébání"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
@@ -1431,7 +1431,7 @@ msgstr "Bakísá nkómbó ya libála lizángí"
 
 #: search_advanced.php:280
 msgid "Add more fields"
-msgstr ""
+msgstr "Kobakisa mikala ebelé"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
@@ -1697,7 +1697,7 @@ msgstr "Na nsima bokeli nzeté ya libótá, okokoka koyéisa epɛ́sɛli útá n
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr ""
+msgstr "Na nsima ya bokɔ́ti bwa yɔ̌, pɔná ekangeli \"kɔ́nti ya ngáí\" na nsé ya mobímbí \"Nkásá ya ngáí\" mpé kokísá mikala mya ndoba ya bolekisi mpɔ̂ na kobóngola loloba lwa bolekisi lwa yɔ̌."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1777,8 +1777,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
+#, fuzzy
 msgid "Albuquerque, New Mexico, United States"
-msgstr ""
+msgstr "Albuquerque, New Mexico, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
@@ -1833,7 +1834,7 @@ msgstr "BIkelá bínsɔ bya libótá"
 
 #: login.php:415
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Esengélí mikala mínsɔ mikokisama."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -2000,8 +2001,9 @@ msgstr "Motángo mwa kásá-kásá ya bankɔ́kɔ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
+#, fuzzy
 msgid "Anchorage, Alaska, United States"
-msgstr ""
+msgstr "Anchorage, Alaska, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
@@ -2243,8 +2245,9 @@ msgstr "Na mbú"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
+#, fuzzy
 msgid "Atlanta, Georgia, United States"
-msgstr ""
+msgstr "Atlanta, Georgia, Lisangá lya Amerika"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2575,8 +2578,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
+#, fuzzy
 msgid "Baton Rouge, Louisiana, United States"
-msgstr ""
+msgstr "Baton Rouge, Louisiana, Lisangá lya Amerika"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2340
@@ -2639,8 +2643,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
+#, fuzzy
 msgid "Billings, Montana, United States"
-msgstr ""
+msgstr "Billings, Montana, Lisangá lya Amerika"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2653,8 +2658,9 @@ msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
+#, fuzzy
 msgid "Birmingham, Alabama, United States"
-msgstr ""
+msgstr "Birmingham, Alabama, Lisangá lya Amerika"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2894,8 +2900,9 @@ msgstr "Mbótama na káti ya bonkámá"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
+#, fuzzy
 msgid "Bismarck, North Dakota, United States"
-msgstr ""
+msgstr "Bismarck, North Dakota, Lisangá lya Amerika"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2933,8 +2940,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
+#, fuzzy
 msgid "Boise, Idaho, United States"
-msgstr ""
+msgstr "Boise, Idaho, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6703
@@ -2962,8 +2970,9 @@ msgstr "Bosnia na Erzegovina"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
+#, fuzzy
 msgid "Boston, Massachusetts, United States"
-msgstr ""
+msgstr "Boston, Massachusetts, Lisangá lya Amerika"
 
 #: app/Functions/FunctionsPrintLists.php:619
 msgid "Both alive"
@@ -2980,8 +2989,9 @@ msgstr "Botswana"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
+#, fuzzy
 msgid "Bountiful, Utah, United States"
-msgstr ""
+msgstr "Bountiful, Utah, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6708
@@ -3010,8 +3020,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
+#, fuzzy
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3579,8 +3590,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
+#, fuzzy
 msgid "Chicago, Illinois, United States"
-msgstr ""
+msgstr "Chicago, Illinois, Lisangá lya Amerika"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
@@ -3854,18 +3866,19 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:147
+#, fuzzy
 msgid "Columbia River, Washington, United States"
-msgstr ""
+msgstr "Columbia River, Washington, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Columbia, South Carolina, United States"
-msgstr ""
+msgstr "Columbia, South Carolina, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Columbus, Ohio, United States"
-msgstr ""
+msgstr "Columbus, Ohio, Lisangá lya Amerika"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4343,8 +4356,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
+#, fuzzy
 msgid "Dallas, Texas, United States"
-msgstr ""
+msgstr "Dallas, Texas, Lisangá lya Amerika"
 
 #. I18N: A summary of the system status
 #: admin.php:482
@@ -5044,7 +5058,7 @@ msgstr "Danemark"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Denver, Colorado, United States"
-msgstr ""
+msgstr "Denver, Colorado, Lisangá lya Amerika"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5122,8 +5136,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
+#, fuzzy
 msgid "Detroit, Michigan, United States"
-msgstr ""
+msgstr "Detroit, Michigan, Lisangá lya Amerika"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5331,8 +5346,9 @@ msgstr "Kotíyola epɛ́sɛli ya mambí ma mabelé"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
+#, fuzzy
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Draper, Utah, Lisangá lya Ameríka"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
@@ -5345,7 +5361,7 @@ msgstr ""
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr ""
+msgstr "Nkómbó ya basáleli ikokaní. Mosáleli na nkómbó ya mosáleli eye azalí. Bolimbisi pɔná nkómbó ya mosáleli esúsu."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5386,7 +5402,7 @@ msgstr "Libála lya yambo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6737
 msgid "Ecuador"
-msgstr ""
+msgstr "Ekwatéli"
 
 #. I18N: Name of a module/menu
 #: admin_media.php:528 admin_site_access.php:193 admin_site_access.php:359
@@ -5421,12 +5437,12 @@ msgstr "Kobɔngisa"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Kobɔngisa mobéko mwa boyíngeli"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
 msgid "Edit preferences"
-msgstr "Kobongisa malúli"
+msgstr "Kobɔngisa malúli"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5446,16 +5462,16 @@ msgstr "Kobɔngisa emoto"
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
 msgid "Edit the media object"
-msgstr "Kobongisa elɔ́kɔ ya bopanzi nsango"
+msgstr "Kobɔngisa elɔ́kɔ ya bopanzi nsango"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
 msgid "Edit the name"
-msgstr "Kobóngisa nkómbó"
+msgstr "Kobɔngisa nkómbó"
 
 #: app/Controller/NoteController.php:39
 msgid "Edit the note"
-msgstr "Kobongisa nkomá"
+msgstr "Kobɔngisa nkomá"
 
 #: app/Controller/FamilyController.php:101
 #: app/Controller/GedcomRecordController.php:109
@@ -5476,7 +5492,7 @@ msgstr "Kobɔngisa ebómbelo"
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
-msgstr "Kobongisa nkomá ya kokabolama"
+msgstr "Kobɔngisa nkomá ya kokabolama"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -6493,8 +6509,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
+#, fuzzy
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Fort Lauderdale, Florida, Lisangá lya Amerika"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -6567,8 +6584,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
+#, fuzzy
 msgid "Fresno, California, United States"
-msgstr ""
+msgstr "Fresno, California, Lisangá lya Amerika"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
@@ -6808,13 +6826,15 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
+#, fuzzy
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "Gila Valley, Arizona, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:175
+#, fuzzy
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "Gilbert, Arizona, Lisangá lya Amerika"
 
 #: search.php:230
 msgid "Given name"
@@ -7008,8 +7028,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:187
+#, fuzzy
 msgid "Hartford, Connecticut, United States"
-msgstr ""
+msgstr "Hartford, Connecticut, Lisangá lya Amerika"
 
 #: modules_v3/descendancy_report/report.xml:428
 msgid "He "
@@ -7222,8 +7243,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:197
+#, fuzzy
 msgid "Houston, Texas, United States"
-msgstr ""
+msgstr "Houston, Texas, Lisangá lya Amerika"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
@@ -7279,8 +7301,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
+#, fuzzy
 msgid "Idaho Falls, Idaho, United States"
-msgstr ""
+msgstr "Idaho Falls, Idaho, Lisangá lya Amerika"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
@@ -7495,7 +7518,7 @@ msgstr "India"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "Indianapolis, Indiana, Lisangá lya Amerika"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7779,8 +7802,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:205
+#, fuzzy
 msgid "Jordan River, Utah, United States"
-msgstr ""
+msgstr "Jordan River, Utah, Lisangá lya Amerika"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7892,8 +7916,9 @@ msgstr "Yuni"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
+#, fuzzy
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Kansas City, Missouri, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -7994,8 +8019,9 @@ msgstr "Kislev"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:209
+#, fuzzy
 msgid "Kona, Hawaii, United States"
-msgstr ""
+msgstr "Kona, Hawaii, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6796
@@ -8048,8 +8074,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:189
+#, fuzzy
 msgid "Laie, Hawaii, United States"
-msgstr ""
+msgstr "Laie, Hawaii, Lisangá lya Amerika"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8090,7 +8117,7 @@ msgstr "Bankɔ́kɔ-bǎna ebelé kolúta"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Las Vegas, Nevada, United States"
-msgstr ""
+msgstr "Las Vegas, Nevada, Lisangá lya Amerika"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8363,8 +8390,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:217
+#, fuzzy
 msgid "Logan, Utah, United States"
-msgstr ""
+msgstr "Logan, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:219
@@ -8388,8 +8416,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:213
+#, fuzzy
 msgid "Los Angeles, California, United States"
-msgstr ""
+msgstr "Los Angeles, California, Lisangá lya Amerika"
 
 #: login.php:255
 msgid "Lost password request"
@@ -8397,8 +8426,9 @@ msgstr "Bosɛ́ngi bwa loloba lwa bolekisi ebúngí"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
+#, fuzzy
 msgid "Louisville, Kentucky, United States"
-msgstr ""
+msgstr "Louisville, Kentucky, Lisangá lya Amerika"
 
 #: app/Stats.php:1738
 msgid "Lowest population"
@@ -8406,8 +8436,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:223
+#, fuzzy
 msgid "Lubbock, Texas, United States"
-msgstr ""
+msgstr "Lubbock, Texas, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6807
@@ -8536,8 +8567,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
+#, fuzzy
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Manhattan, New York, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -8546,8 +8578,9 @@ msgstr "Manila, Filipinas"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:235
+#, fuzzy
 msgid "Manti, Utah, United States"
-msgstr ""
+msgstr "Manti, Utah, Lisangá lya Amerika"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1930
@@ -8925,8 +8958,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
+#, fuzzy
 msgid "Medford, Oregon, United States"
-msgstr ""
+msgstr "Medford, Oregon, Lisangá lya Amerika"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9071,8 +9105,9 @@ msgstr "Ndelo ya etando"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:241
+#, fuzzy
 msgid "Memphis, Tennessee, United States"
-msgstr ""
+msgstr "Memphis, Tennessee, Lisangá lya Amerika"
 
 #: admin_module_menus.php:87 admin_modules.php:204
 msgid "Menu"
@@ -9109,8 +9144,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:95
+#, fuzzy
 msgid "Mesa, Arizona, United States"
-msgstr ""
+msgstr "Mesa, Arizona, Lisangá lya Amerika"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9307,8 +9343,9 @@ msgstr "Sánzá:"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:251
+#, fuzzy
 msgid "Monticello, Utah, United States"
-msgstr ""
+msgstr "Monticello, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
@@ -9419,8 +9456,9 @@ msgstr "Libála lya mamá na moto ayébaní tɛ́"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
+#, fuzzy
 msgid "Mount Timpanogos, Utah, United States"
-msgstr ""
+msgstr "Mount Timpanogos, Utah, Lisangá lya Amerika"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
@@ -9588,8 +9626,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:257
+#, fuzzy
 msgid "Nashville, Tennessee, United States"
-msgstr ""
+msgstr "Nashville, Tennessee, Lisangá lya Amerika"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
@@ -9608,13 +9647,15 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:259
+#, fuzzy
 msgid "Nauvoo (new), Illinois, United States"
-msgstr ""
+msgstr "Nauvoo (new), Illinois, Lisangá lya Amerika"
 
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
+#, fuzzy
 msgid "Nauvoo (original), Illinois, United States"
-msgstr ""
+msgstr "Nauvoo (original), Illinois, ULisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
@@ -9654,8 +9695,9 @@ msgstr ""
 
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
+#, fuzzy
 msgid "New York, New York, United States"
-msgstr ""
+msgstr "New York, New York, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -9680,8 +9722,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
+#, fuzzy
 msgid "Newport Beach, California, United States"
-msgstr ""
+msgstr "Newport Beach, California, Lisangá lya Amerika"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:53
@@ -10147,8 +10190,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:271
+#, fuzzy
 msgid "Oakland, California, United States"
-msgstr ""
+msgstr "Oakland, California, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
@@ -10205,13 +10249,15 @@ msgstr "Ɔkɔtɔbɛ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
+#, fuzzy
 msgid "Ogden, Utah, United States"
-msgstr ""
+msgstr "Ogden, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
+#, fuzzy
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr ""
+msgstr "Oklahoma City, Oklahoma, Lisangá lya Amerika"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10274,7 +10320,7 @@ msgstr "Na mokɔlɔ moye…"
 #: app/Functions/FunctionsPrintFacts.php:839
 #: app/Functions/FunctionsPrintFacts.php:1105
 msgid "Only managers can edit"
-msgstr "Sé moyángeli akokí kobongisa"
+msgstr "Sé moyángeli akokí kobɔngisa"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10294,8 +10340,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
+#, fuzzy
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "Oquirrh Mountain, Utah, Lisangá lya Amerika"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10348,8 +10395,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:281
+#, fuzzy
 msgid "Orlando, Florida, United States"
-msgstr ""
+msgstr "Orlando, Florida, Lisangá lya Amerika"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
@@ -10493,8 +10541,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
+#, fuzzy
 msgid "Palmyra, New York, United States"
-msgstr ""
+msgstr "Palmyra, New York, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
@@ -10553,8 +10602,9 @@ msgstr "Ndoba ya bolekisi isengelí kozala na minkomá mokɛ́ kolela 6."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
+#, fuzzy
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "Payson, Utah, Lisangá lya Amerika"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10630,8 +10680,9 @@ msgstr "Filipinas"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
+#, fuzzy
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "Phoenix, Arizona, Lisangá lya Amerika"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10955,8 +11006,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
+#, fuzzy
 msgid "Portland, Oregon, United States"
-msgstr ""
+msgstr "Portland, Oregon, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
@@ -11111,13 +11163,15 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
+#, fuzzy
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Provo City Center, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
+#, fuzzy
 msgid "Provo, Utah, United States"
-msgstr ""
+msgstr "Provo, Utah, Lisangá lya Amerika"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:708
@@ -11267,8 +11321,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
+#, fuzzy
 msgid "Raleigh, North Carolina, United States"
-msgstr ""
+msgstr "Raleigh, North Carolina, Lisangá lya Amerika"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11365,8 +11420,9 @@ msgstr "bokɔ́tisi bozalí loléngé lyɔ̌kɔ́ tɛ́. Okokí kosangisa bokɔ�
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:313
+#, fuzzy
 msgid "Redlands, California, United States"
-msgstr ""
+msgstr "Redlands, California, Lisangá lya Amerika"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:716
@@ -11536,7 +11592,7 @@ msgstr "Kolongola esiká eye?"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Reno, Nevada, United States"
-msgstr ""
+msgstr "Reno, Nevada, Lisangá lya Amerika"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
@@ -11655,7 +11711,7 @@ msgstr ""
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Bosúkisi bokokí kobakisama na bokɔ́tisi mpé/tǒ na bikelá. Bokopekisa baóyo bakokí komɔ́nɔ epɛ́sɛli mpé kobongisa yangó."
+msgstr "Bosúkisi bokokí kobakisama na bokɔ́tisi mpé/tǒ na bikelá. Bokopekisa baóyo bakokí komɔ́nɔ epɛ́sɛli mpé kobɔngisa yangó."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -11677,8 +11733,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
+#, fuzzy
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Rexburg, Idaho, Lisangá lya Amerika"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -11739,8 +11796,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
+#, fuzzy
 msgid "Sacramento, California, United States"
-msgstr ""
+msgstr "Sacramento, California, Lisangá lya Amerika"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11799,7 +11857,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
 msgid "Salt Lake City, Utah, United States"
-msgstr ""
+msgstr "Salt Lake City, Utah, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6922
@@ -11808,13 +11866,15 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
+#, fuzzy
 msgid "San Antonio, Texas, United States"
-msgstr ""
+msgstr "San Antonio, Texas, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
+#, fuzzy
 msgid "San Diego, California, United States"
-msgstr ""
+msgstr "San Diego, California, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
@@ -11962,8 +12022,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
+#, fuzzy
 msgid "Seattle, Washington, United States"
-msgstr ""
+msgstr "Seattle, Washington, Lisangá lya Amerika"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
@@ -12930,8 +12991,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
+#, fuzzy
 msgid "Snowflake, Arizona, United States"
-msgstr ""
+msgstr "Snowflake, Arizona, Lisangá lya Amerika"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
@@ -13102,8 +13164,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
+#, fuzzy
 msgid "Spokane, Washington, United States"
-msgstr ""
+msgstr "Spokane, Washington, Lisangá lya Amerika"
 
 #: modules_v3/bdm_report/report.xml:169
 #: modules_v3/individual_ext_report/report.xml:202
@@ -13140,18 +13203,21 @@ msgstr "Sri Lanka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
+#, fuzzy
 msgid "St. George, Utah, United States"
-msgstr ""
+msgstr "St. George, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:343
+#, fuzzy
 msgid "St. Louis, Missouri, United States"
-msgstr ""
+msgstr "St. Louis, Missouri, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:349
+#, fuzzy
 msgid "St. Paul, Minnesota, United States"
-msgstr ""
+msgstr "St. Paul, Minnesota, Lisangá lya Amerika"
 
 #: app/Module/GoogleMapsModule.php:457
 msgid "Standard"
@@ -13486,25 +13552,25 @@ msgstr ""
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: gedcom tag TEXT
 #: app/GedcomTag.php:826
@@ -15105,8 +15171,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
+#, fuzzy
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Twin Falls, Idaho, Lisangá lya Amerika"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:268 admin_site_logs.php:328
@@ -15227,7 +15294,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6911 statistics.php:685
 msgid "United States"
-msgstr ""
+msgstr "Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
@@ -15564,8 +15631,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
+#, fuzzy
 msgid "Vernal, Utah, United States"
-msgstr ""
+msgstr "Vernal, Utah, Lisangá lya Amerika"
 
 #. I18N: gedcom tag VERS
 #: admin_modules.php:193 app/GedcomTag.php:856
@@ -15685,8 +15753,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
+#, fuzzy
 msgid "Washington, District of Columbia, United States"
-msgstr ""
+msgstr "Washington, District of Columbia, Lisangá lya Amerika"
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
@@ -15879,8 +15948,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
+#, fuzzy
 msgid "Winter Quarters, Nebraska, United States"
-msgstr ""
+msgstr "Winter Quarters, Nebraska, Lisangá lya Amerika"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
