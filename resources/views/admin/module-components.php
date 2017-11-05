@@ -12,7 +12,7 @@
 <h1><?= $page_title ?></h1>
 
 <form action="admin.php" method="post">
-	<input type="hidden" name="route" value="update-module-access">
+	<input type="hidden" name="route" value="admin-update-module-access">
 	<input type="hidden" name="component" value="<?= Html::escape($component) ?>">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered" class="row">

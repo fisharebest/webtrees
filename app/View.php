@@ -63,13 +63,13 @@ class View {
 	 */
 	public static function getFilenameForView($view_name) {
 		$view_file  = $view_name . '.php';
-		$theme_view = WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views/' . $view_file;
+		//$theme_view = WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views/' . $view_file;
 
-		if (file_exists($theme_view)) {
-			return $theme_view;
-		} else {
+		//if (file_exists($theme_view)) {
+		//	return $theme_view;
+		//} else {
 			return WT_ROOT . 'resources/views/' . $view_file;
-		}
+		//}
 	}
 
 	/**

@@ -280,8 +280,8 @@
 		<h2 class="mb-0">
 			<?= I18N::translate('Modules') ?>
 			<span class="badge badge-secondary">
-					<?= I18N::number(count($all_modules)) ?>
-				</span>
+				<?= I18N::number(count($all_modules)) ?>
+			</span>
 		</h2>
 	</div>
 	<div class="card-body">

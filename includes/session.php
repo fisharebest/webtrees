@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Throwable;
 
@@ -199,7 +200,9 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: setup.php');
+	$url      = Html::url('setup.php', ['route' => 'setup']);
+	$response = new RedirectResponse($url);
+	$response->send();
 	exit;
 }
 

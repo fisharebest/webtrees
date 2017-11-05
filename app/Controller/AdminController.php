@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +33,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the administration pages
  */
-class AdminController extends PageController {
+class AdminController extends BaseController {
 	// This is a list of old files and directories, from earlier versions of webtrees.
 	// git diff 1.7.9..master --name-status | grep ^D
 	const OLD_FILES = [
@@ -797,20 +796,6 @@ class AdminController extends PageController {
 	/**
 	 * Create a response object from a view.
 	 *
-	 * @param string   $path
-	 * @param string[] $data
-	 *
-	 * @return RedirectResponse
-	 */
-	protected function redirectResponse($path, $data): RedirectResponse {
-		$url = Html::url($path, $data);
-
-		return new RedirectResponse($url);
-	}
-
-	/**
-	 * Create a response object from a view.
-	 *
 	 * @param string   $name
 	 * @param string[] $data
 	 *
@@ -904,16 +889,16 @@ class AdminController extends PageController {
 		$php_support_url   = 'https://secure.php.net/supported-versions.php';
 		$php_major_version = explode('.', PHP_VERSION)[0];
 		$today             = date('Y-m-d');
-		$warings           = [];
+		$warnings           = [];
 
 		if ($php_major_version === 70 && $today >= '201-12-03' || $php_major_version === 71 && $today >= '2019-12-01') {
-			$warings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
+			$warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
 				' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
 		} elseif ($php_major_version === 70 && $today >= '2017-12-03' || $php_major_version === 71 && $today >= '2018-12-01') {
-			$warings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
+			$warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
 		}
 
-		return $warings;
+		return $warnings;
 	}
 
 	/**

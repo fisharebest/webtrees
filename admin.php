@@ -27,11 +27,11 @@ $method  = $request->getMethod();
 $route   = $request->get('route');
 
 // Default route
-$response = new RedirectResponse('index.php');
+$response = new RedirectResponse(Html::url('index.php', []));
 
 // POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
-	$referer_url = $request->headers->get('referer', 'index.php');
+	$referer_url = $request->headers->get('referer', Html::url('index.php', []));
 
 	return (new RedirectResponse($referer_url))->prepare($request)->send();
 }
@@ -93,15 +93,15 @@ if (Auth::isAdmin()) {
 		$response = ($controller = new AdminController)->controlPanelManager();
 		break;
 
-	case 'POST:delete-module-settings':
+	case 'POST:admin-delete-module-settings':
 		$response = ($controller = new AdminController)->deleteModuleSettings($request);
 		break;
 
-	case 'POST:update-module-access':
+	case 'POST:admin-update-module-access':
 		$response = ($controller = new AdminController)->updateModuleAccess($request);
 		break;
 
-	case 'POST:update-module-status':
+	case 'POST:admin-update-module-status':
 		$response = ($controller = new AdminController)->updateModuleStatus($request);
 		break;
 	}
