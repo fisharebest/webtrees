@@ -53,8 +53,9 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', 'bdm');
 
-		foreach (['filter', 'infoStyle', 'sortStyle'] as $name) {
+		foreach (['filter', 'infoStyle', 'onlyBDM', 'sortStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -64,8 +65,17 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 
 		$content = '';
 
-		// If we are only showing living individuals, then we don't need to search for DEAT events.
-		$tags = $filter ? 'BIRT MARR' : 'BIRT MARR DEAT';
+		switch ($onlyBDM) {
+			case 'ext':
+				$tags = WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV;
+				// If we are only showing living individuals, then we don't need to search for DEAT events.
+				if ($filter !== '1') {
+					$tags .= '|' . WT_EVENTS_DEAT;
+				}
+				break;
+			default:
+				$tags = $filter ? 'BIRT|MARR' : 'BIRT|MARR|DEAT';
+		}
 
 		switch ($infoStyle) {
 		case 'list':
@@ -124,11 +134,13 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			$this->setBlockSetting($block_id, 'onlyBDM', Filter::post('onlyBDM', 'bdm|ext', 'bdm'));
 		}
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', 'bdm');
 
 		?>
 		<div class="form-group row">
@@ -146,6 +158,15 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			</label>
 			<div class="col-sm-9">
 				<?= Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="onlyBDM">
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Events to Show') ?>
+			</label>
+			<div class="col-sm-9">
+				<?= Bootstrap4::select(['bdm' => /* I18N: An option in a list-box */ I18N::translate('only birth, death and marriage'), 'ext' => /* I18N: An option in a list-box */ I18N::translate('include baptism, burial and divorce')], $onlyBDM, ['id' => 'onlyBDM', 'name' => 'onlyBDM']) ?>
 			</div>
 		</div>
 
