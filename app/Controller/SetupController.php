@@ -223,7 +223,6 @@ class SetupController extends BaseController {
 	}
 
 	/**
-	 * @param string $lang
 	 * @param string $dbhost
 	 * @param string $dbport
 	 * @param string $dbuser
