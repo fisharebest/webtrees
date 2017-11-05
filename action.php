@@ -95,7 +95,7 @@ case 'create-media-object':
 
 	// Create a media object, and return parameters needed by Select2
 	header('Content-type: application/json');
-	$filename = 'eek.jpg';
+
 	$auto     = Filter::post('auto');
 	$folder   = Filter::post('folder');
 	$note     = Filter::post('note');
@@ -110,7 +110,7 @@ case 'create-media-object':
 
 	// The filename
 	$file   = $_FILES['file']['name'];
-	$format = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+	$format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 	$format = strtr($format, ['jpg' => 'jpeg']);
 
 	// The folder
