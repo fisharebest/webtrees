@@ -10,9 +10,9 @@
 
 		<title><?= $title ?></title>
 
-		<link rel="icon" type="image/png" href="<?= Html::escape($theme_url) ?>favicon.png">
-		<link rel="icon" type="image/png" href="<?= Html::escape($theme_url) ?>favicon192.png" sizes="192x192">
-		<link rel="apple-touch-icon" sizes="180x180" href="<?= Html::escape($theme_url) ?>favicon180.png">
+		<link rel="icon" type="image/png" href="<?= Html::escape($common_url) ?>favicon.png">
+		<link rel="icon" type="image/png" href="<?= Html::escape($common_url) ?>favicon192.png" sizes="192x192">
+		<link rel="apple-touch-icon" sizes="180x180" href="<?= Html::escape($common_url) ?>favicon180.png">
 
 		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_BOOTSTRAP_CSS_URL) ?>">
 		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_FONT_AWESOME_CSS_URL) ?>">
