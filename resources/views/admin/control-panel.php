@@ -349,6 +349,28 @@
 	</div>
 </div>
 
+<!-- MEDIA -->
+<div class="card mb-4">
+	<div class="card-header">
+		<h2 class="mb-0">
+			<?= I18N::translate('Media') ?>
+			<span class="badge badge-secondary">
+				<?= WT_VERSION ?>
+			</span>
+		</h2>
+	</div>
+	<div class="card-body">
+		<p class="card-text">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media.php', [])) ?>">
+				<?= I18N::translate('Manage media') ?>
+			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media_upload.php', [])) ?>">
+				<?= I18N::translate('Upload media files') ?>
+			</a>
+		</p>
+	</div>
+</div>
+
 <!-- OLD FILES -->
 <?php if (!empty($files_to_delete)): ?>
 	<div class="card mb-4 card-outline-danger">
