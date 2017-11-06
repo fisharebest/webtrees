@@ -99,7 +99,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		}
 		if ($messages) {
 			$content .= '<table class="list_table"><tr>';
-			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
+			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
 			$content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
 			$content .= '<th class="list_label">' . I18N::translate('Date sent') . '</th>';
 			$content .= '<th class="list_label">' . I18N::translate('Email address') . '</th>';
