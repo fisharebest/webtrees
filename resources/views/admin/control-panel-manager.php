@@ -39,6 +39,7 @@
 			<thead>
 				<tr>
 					<th><?= I18N::translate('Family tree') ?></th>
+					<th><span class="sr-only"><?= I18N::translate('Manage family trees') ?></span></th>
 					<th class="text-right"><?= I18N::translate('Pending changes') ?></th>
 					<th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Individuals') ?></th>
 					<th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Families') ?></th>
@@ -51,12 +52,15 @@
 			<tbody>
 				<?php foreach ($all_trees as $tree): ?>
 					<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
-						<td>
+						<th scope="row">
 							<a href="index.php?ctype=gedcom&amp;ged=<?= $tree->getNameUrl() ?>">
 								<?= Html::escape($tree->getName()) ?>
 								-
 								<?= Html::escape($tree->getTitle()) ?>
 							</a>
+						</th>
+						<td>
+							<?= FontAwesome::linkIcon('preferences', I18N::translate('Manage family trees'), ['href' => Html::url('admin_trees_manage.php', ['ged' => $tree->getName()])]) ?>
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
@@ -75,7 +79,6 @@
 							<?php if ($individuals[$tree->getTreeId()]): ?>
 								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Individuals') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -85,7 +88,6 @@
 							<?php if ($families[$tree->getTreeId()]): ?>
 								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($families[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Families') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -95,7 +97,6 @@
 							<?php if ($sources[$tree->getTreeId()]): ?>
 								<a href="sourcelist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($sources[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Sources') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -105,7 +106,6 @@
 							<?php if ($repositories[$tree->getTreeId()]): ?>
 								<a href="repolist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($repositories[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Repositories') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -115,7 +115,6 @@
 							<?php if ($media[$tree->getTreeId()]): ?>
 								<a href="medialist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Media objects') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -125,7 +124,6 @@
 							<?php if ($notes[$tree->getTreeId()]): ?>
 								<a href="notelist.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Notes') ?> <?= $tree->getTitleHtml() ?></span>
 								</a>
 							<?php else: ?>
 								-
