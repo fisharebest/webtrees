@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-11-05 19:29+0000\n"
+"PO-Revision-Date: 2017-11-06 21:32+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -1399,7 +1399,7 @@ msgstr "Bakísá FAQ"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
-msgstr ""
+msgstr "Kobakisa mosangani"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
@@ -1451,7 +1451,7 @@ msgstr "Bakisá nzelá ya elɔ́kɔ ya bopanzi nsango GEDCOM na nkómbó ya kás
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "Kobakisa na bwéta TITLE"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1484,7 +1484,7 @@ msgstr ""
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Kobakisa nkomá mpé mayémi ya yɔ̌ mɔ̌kɔ́."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
@@ -1883,24 +1883,25 @@ msgstr "Kondima batáli  basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
 msgid "Also known as"
-msgstr "Eyébaní mpé lokóla"
+msgstr "Ayébaní mpé lokóla"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr "Eyébaní mpé lokóla"
+msgstr "Ayébaní mpé lokóla"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "MALE"
 msgid "Also known as"
-msgstr "Eyébaní mpé lokóla"
+msgstr "Ayébaní mpé lokóla"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6681
+#, fuzzy
 msgid "American Samoa"
-msgstr ""
+msgstr "Samoa y'Amerika"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
@@ -1947,7 +1948,7 @@ msgstr ""
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Mobímbí mwa bobóngoli bato, mabótá, bibandela, etc."
 
 #: admin_site_upgrade.php:282 admin_site_upgrade.php:304
 #: admin_site_upgrade.php:314 admin_site_upgrade.php:398
@@ -2035,7 +2036,7 @@ msgstr "Manáka ya mbótama"
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr "Kolongola"
+msgstr "kozóngela"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
@@ -2055,7 +2056,7 @@ msgstr "Antigua mpé Barbuda"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Moto nyɔ́nsɔ azalí na kɔ́nti ya mosáleli akokí kokɔ́tɔ na website eye."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2197,8 +2198,9 @@ msgstr "Arial"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
+#, fuzzy
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6671
@@ -2223,7 +2225,7 @@ msgstr "Azia"
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:166 app/GedcomTag.php:972
 msgid "Associate"
-msgstr ""
+msgstr "Mosangani"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
@@ -2231,7 +2233,7 @@ msgstr "Kokangisa milúlú na ebandela eye"
 
 #: search.php:107 search.php:266
 msgid "Associates"
-msgstr "Na mikangano"
+msgstr "Basangani"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
@@ -2251,17 +2253,17 @@ msgstr "Atlanta, Georgia, Lisangá lya Amerika"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr ""
+msgstr "Ntómá"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Ntómá mwǎsí"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Ntómá mobáli"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
@@ -2325,7 +2327,7 @@ msgstr "Mokomi"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr "Mokomi mwa mabóngoli ma nsúka"
+msgstr "Mokomi mwa Libóngoli lya nsúka"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
