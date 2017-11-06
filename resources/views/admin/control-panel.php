@@ -367,6 +367,9 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media_upload.php', [])) ?>">
 				<?= I18N::translate('Upload media files') ?>
 			</a>
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-fix-level-0-media'])) ?>">
+				<?= I18N::translate('MEDIA FIXUP') ?>
+			</a>
 		</p>
 	</div>
 </div>

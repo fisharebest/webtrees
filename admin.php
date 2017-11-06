@@ -65,6 +65,14 @@ if (Auth::isAdmin()) {
 		$response = ($controller = new AdminController)->cleanDataAction($request);
 		break;
 
+	case 'GET:admin-fix-level-0-media':
+		$response = ($controller = new AdminController)->fixLevel0Media();
+		break;
+
+	case 'GET:admin-fix-level-0-media-data':
+		$response = ($controller = new AdminController)->fixLevel0MediaData($request);
+		break;
+
 	case 'GET:admin-menus':
 		$response = ($controller = new AdminController)->menus();
 		break;
