@@ -185,8 +185,6 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
 				for (var i = 0; i < nb; i++) {
 					elts[i].removeAttr("abbr").html(ret[i]);
 				}
-				// repositionning
-				tv.treeview.offset({left: tv.treeview.offset().left - root_element.offset().left + l});
 				// we now ajust the draggable treeview size to its content size
 				tv.getSize();
 			},
@@ -262,6 +260,7 @@ TreeViewHandler.prototype.compact = function () {
  */
 TreeViewHandler.prototype.centerOnRoot = function () {
 	this.loadingImage.css("display", "block");
+	var tv = this;
 	var tvc = this.container;
 	var tvc_width = tvc.innerWidth() / 2;
 	if (isNaN(tvc_width)) {
@@ -269,13 +268,9 @@ TreeViewHandler.prototype.centerOnRoot = function () {
 	}
 	var tvc_height = tvc.innerHeight() / 2;
 	var root_person = $(".rootPerson", this.treeview);
-	this.treeview.offset({
-		left: tvc.offset().left + this.treeview.offset().left + tvc_width - root_person.offset().left - root_person.outerWidth() / 2,
-		top: tvc.offset().top + this.treeview.offset().top + tvc_height - root_person.offset().top - root_person.outerHeight() / 2
-	});
 
 	if (!this.updating) {
-		this.updateTree(true);
+		tv.setComplete();
 	}
 	return false;
 };
