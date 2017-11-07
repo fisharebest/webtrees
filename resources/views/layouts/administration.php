@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\Filter; ?>
+<?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>
@@ -57,6 +58,16 @@
 		</header>
 
 		<div id="content"></div>
+
+		<?php foreach (FlashMessages::getMessages() as $message): ?>
+			<div class="alert alert-<?= $message->status ?> alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<?= $message->text ?>
+			</div>
+		<?php endforeach ?>
+
 		<?= $content ?>
 
 		<script src="<?= Html::escape(WT_JQUERY_JS_URL) ?>"></script>

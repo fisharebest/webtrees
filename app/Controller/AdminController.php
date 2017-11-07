@@ -640,19 +640,44 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function fixLevel0Media(): Response {
-		$records = Database::prepare(
-			"SELECT m.* from `##media` AS m" .
-			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
-			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
-			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')"
-		)->execute([
-
-		])->fetchAll();
-
 		return $this->viewResponse('admin/fix-level-0-media', [
 			'title'   => I18N::translate('MEDIA FIXUP'),
-			'records' => $records,
 		]);
+	}
+
+	/**
+	 * Move a link to a media object from a level 0 record to a level 1 record.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function fixLevel0MediaAction(Request $request): Response {
+		$fact_id   = $request->get('fact_id');
+		$indi_xref = $request->get('indi_xref');
+		$obje_xref = $request->get('obje_xref');
+		$tree_id   = $request->get('tree_id');
+
+		$tree = Tree::findById($tree_id);
+		if ($tree !== null) {
+			$individual = Individual::getInstance($indi_xref, $tree);
+			$media      = Media::getInstance($obje_xref, $tree);
+			if ($individual !== null && $media !== null) {
+				foreach ($individual->getFacts() as $fact1) {
+					if ($fact1->getFactId() === $fact_id) {
+						$individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
+						foreach ($individual->getFacts('OBJE') as $fact2) {
+							if ($fact2->getTarget() === $media) {
+								$individual->deleteFact($fact2->getFactId(), false);
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
+
+		return new Response;
 	}
 
 	/**
@@ -664,7 +689,7 @@ class AdminController extends BaseController {
 	 * @return JsonResponse
 	 */
 	public function fixLevel0MediaData(Request $request): JsonResponse {
-		$ignore_facts = ['FAMC', 'FAMS', 'NAME', 'SEX', 'CHAN', 'NOTE', 'OBJE', 'SOUR'];
+		$ignore_facts = ['FAMC', 'FAMS', 'NAME', 'SEX', 'CHAN', 'NOTE', 'OBJE', 'SOUR', 'RESN'];
 
 		$start  = (int) $request->get('start', 0);
 		$length = (int) $request->get('length', 20);
@@ -678,7 +703,9 @@ class AdminController extends BaseController {
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id";
 
+		// Only records where the media object is at level 1
 		$where = " WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
+
 		$args  = [];
 		if ($search) {
 			$where .= " AND (m_title LIKE CONCAT('%', :search1, '%') OR (m_filename LIKE CONCAT('%', :search2, '%')";
@@ -690,22 +717,48 @@ class AdminController extends BaseController {
 		$args['limit']  = $length;
 		$args['offset'] = $start;
 
+		// Need a consistent order
+		$order_by = " ORDER BY i.i_file, i.i_id, m.m_id";
+
 		$data = Database::prepare(
-			$select1 . $where . $limit
+			$select1 . $where . $order_by . $limit
 		)->execute(
 			$args
 		)->fetchAll();
 
+		// Turn each row from the query into a row for the table
 		$data = array_map(function ($datum) use ($ignore_facts) {
 			$tree       = Tree::findById($datum->m_file);
 			$media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
 			$individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
+
 			$facts      = $individual->getFacts(null, true);
-			$facts      = array_filter($facts, function (Fact $fact) use ($ignore_facts) { return !in_array($fact->getTag(), $ignore_facts); });
-			$facts = array_map(function (Fact $fact) {
-				$year = $fact->getDate()->display(false, '%Y');
-				return '<a class="btn btn-primary btn-sm mb-2" href="#" data-confirm="TODO - move the link" onclick="return confirm(this.dataset.confirm) && false;">' . $fact->getLabel() . ' ' . $year . '</a>';
+			$facts      = array_filter($facts, function (Fact $fact) use ($ignore_facts) { return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts); });
+
+			// The link to the media object may have been deleted in a pending change.
+			$deleted = true;
+			foreach ($individual->getFacts('OBJE') as $fact) {
+				if ($fact->getTarget() === $media && !$fact->isPendingDeletion()) {
+					$deleted = false;
+				}
+			}
+			if ($deleted) {
+				$facts = [];
+			}
+
+			$facts = array_map(function (Fact $fact) use ($individual, $media, $tree) {
+				return View::make('admin/fix-level-0-media-action', [
+					'fact'       => $fact,
+					'individual' => $individual,
+					'media'      => $media,
+					'tree'       => $tree,
+					]);
 			}, $facts);
+
+			$citations = ['foo'];
+			foreach ($individual->getFacts() as $fact) {
+//				if (preg_match())
+			}
 
 			return [
 				$tree->getName(),
@@ -713,6 +766,7 @@ class AdminController extends BaseController {
 				'<a href="' . Html::escape($media->getRawUrl()) . '">' . $media->getFullName() . '</a>',
 				'<a href="' . Html::escape($individual->getRawUrl()) . '">' . $individual->getFullName() . '</a>',
 				implode(' ', $facts),
+				implode(' ', $citations),
 			];
 		}, $data);
 
