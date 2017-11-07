@@ -323,7 +323,6 @@ class FunctionsCharts {
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
 					$famids = $child->getSpouseFamilies();
-
 					$maxfam = count($famids) - 1;
 					for ($f = 0; $f <= $maxfam; $f++) {
 						$famid_child = $famids[$f]->getXref();
@@ -331,20 +330,18 @@ class FunctionsCharts {
 						if ($f > 0) {
 							echo '</tr><tr><td></td>';
 							echo '<td style="text-align:end; vertical-align: top;">';
-
 							//find out how many cousins there are to establish vertical line on second families
 							$fchildren = $famids[$f]->getChildren();
 							$kids      = count($fchildren);
 							$Pheader   = ($bheight - 1) * $kids;
 							$PBadj     = 6; // default
-							if ($show_cousins > 0) {
-								if ($kids) {
-									$PBadj = max(0, $Pheader / 2 + $kids * 4.5);
-								}
-							}
 
-							if ($f == $maxfam) {
-								echo '<img height="' . ((($bheight / 2)) ) . 'px"';
+							if ($show_cousins) {
+								if ($kids > 0) 		{
+									echo '<img height="' . ((($kids *80/2)) ) . 'px"';
+								} else {
+									echo '<img height="' . ($pbheight -14) / 2 . 'px"';
+								}
 							} else {
 								if ($f == $maxfam) {
 									echo '<img height="' . ((($bheight / 2)) ) . 'px"';
