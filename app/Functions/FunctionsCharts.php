@@ -346,7 +346,11 @@ class FunctionsCharts {
 							if ($f == $maxfam) {
 								echo '<img height="' . ((($bheight / 2)) ) . 'px"';
 							} else {
-								echo '<img height="' . $pbheight . 'px"';
+								if ($f == $maxfam) {
+									echo '<img height="' . ((($bheight / 2)) ) . 'px"';
+								} else {
+									echo '<img height="' . $pbheight . 'px"';
+								}
 							}
 							echo ' width="3" src="' . Theme::theme()->parameter('image-vline') . '">';
 							echo '</td>';
