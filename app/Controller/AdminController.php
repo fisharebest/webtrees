@@ -16,12 +16,14 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use DirectoryIterator;
+use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -30,10 +32,12 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Controller for the administration pages
@@ -634,6 +638,250 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Show the edit history for a tree.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function changesLog(Request $request): Response {
+		$tree_list = [];
+		foreach (Tree::getAll() as $tree) {
+			if (Auth::isManager($tree)) {
+				$tree_list[$tree->getName()] = $tree->getTitle();
+			}
+		}
+
+		$user_list = ['' => ''];
+		foreach (User::all() as $tmp_user) {
+			$user_list[$tmp_user->getUserName()] = $tmp_user->getUserName();
+		}
+
+		// First and last change in the database.
+		$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->fetchOne();
+		$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->fetchOne();
+
+		$action = $request->get('action');
+		$gedc   = $request->get('gedc');
+		$from   = $request->get('from', $earliest);
+		$to     = $request->get('to', $latest);
+		$type   = $request->get('type');
+		$oldged = $request->get('oldged');
+		$newged = $request->get('newged');
+		$xref   = $request->get('xref');
+		$user   = $request->get('user');
+		$search = $request->get('search');
+		$search = $search['value'] ?? null;
+
+		if (!in_array($gedc, $tree_list)) {
+			$gedc = '';
+		}
+
+		$statuses = [
+			''         => '',
+			'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
+			'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
+			'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
+		];
+
+		return $this->viewResponse('admin/changes-log', [
+			'action'    => $action,
+			'earliest'  => $earliest,
+			'from'      => $from,
+			'gedc'      => $gedc,
+			'latest'    => $latest,
+			'newged'    => $newged,
+			'oldged'    => $oldged,
+			'search'    => $search,
+			'statuses'  => $statuses,
+			'title'     => I18N::translate('Changes log'),
+			'to'        => $to,
+			'tree_list' => $tree_list,
+			'type'      => $type,
+			'user'      => $user,
+			'user_list' => $user_list,
+			'xref'      => $xref,
+		]);
+	}
+
+	/**
+	 * Show the edit history for a tree.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function changesLogData(Request $request): Response {
+		list($select, , $where, $args1) = $this->changesQuery($request);
+		list($order_by, $limit, $args2) = $this->dataTablesPagination($request);
+
+		$rows = Database::prepare(
+			$select . $where . $order_by . $limit
+		)->execute(array_merge($args1, $args2))->fetchAll();
+
+		// Total filtered/unfiltered rows
+		$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
+
+		$data      = [];
+		$algorithm = new MyersDiff;
+
+		foreach ($rows as $row) {
+			$old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+			$new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+
+			$differences = $algorithm->calculate($old_lines, $new_lines);
+			$diff_lines  = [];
+
+			foreach ($differences as $difference) {
+				switch ($difference[1]) {
+				case MyersDiff::DELETE:
+					$diff_lines[] = '<del>' . $difference[0] . '</del>';
+					break;
+				case MyersDiff::INSERT:
+					$diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+					break;
+				default:
+					$diff_lines[] = $difference[0];
+				}
+			}
+
+			// Only convert valid xrefs to links
+			$tree   = Tree::findByName($row->gedcom_name);
+			$record = GedcomRecord::getInstance($row->xref, $tree);
+			$data[] = [
+				$row->change_id,
+				$row->change_time,
+				I18N::translate($row->status),
+				$record ? '<a href="' . $record->getHtmlUrl() . '">' . $record->getXref() . '</a>' : $row->xref,
+				'<div class="gedcom-data" dir="ltr">' .
+				preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
+					function ($match) use ($tree) {
+						$record = GedcomRecord::getInstance($match[1], $tree);
+
+						return $record ? '<a href="' . $record->getHtmlUrl() . '">' . $match[0] . '</a>' : $match[0];
+					},
+					implode("\n", $diff_lines)
+				) .
+				'</div>',
+				$row->user_name,
+				$row->gedcom_name,
+			];
+		}
+
+		// See http://www.datatables.net/usage/server-side
+		return new JsonResponse([
+			'draw'            => (int) $request->get('draw'),
+			'recordsTotal'    => $recordsTotal,
+			'recordsFiltered' => $recordsFiltered,
+			'data'            => $data,
+		]);
+	}
+
+	/**
+	 * Show the edit history for a tree.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function changesLogDownload(Request $request): Response {
+		list($select, , $where, $args) = $this->changesQuery($request);
+
+		$rows = Database::prepare($select . $where)->execute($args)->fetchAll();
+
+		// Convert to CSV
+		$rows = array_map(function (stdClass $row) {
+			return implode(',', [
+				'"' . $row->change_time . '"',
+				'"' . $row->status . '"',
+				'"' . $row->xref . '"',
+				'"' . strtr($row->old_gedcom, '"', '""') . '"',
+				'"' . strtr($row->new_gedcom, '"', '""') . '"',
+				'"' . strtr($row->user_name, '"', '""') . '"',
+				'"' . strtr($row->gedcom_name, '"', '""') . '"',
+			]);
+		}, $rows);
+
+		$response    = new Response(implode("\n", $rows));
+		$disposition = $response->headers->makeDisposition(
+			ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'changes.csv'
+		);
+		$response->headers->set('Content-Disposition', $disposition);
+		$response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
+
+		return $response;
+	}
+
+	/**
+	 * Generate a WHERe clause for filtering the changes log.
+	 *
+	 * @param Request $request
+	 *
+	 * @return array
+	 *
+	 */
+	private function changesQuery(Request $request): array {
+		$from   = $request->get('from', '');
+		$to     = $request->get('to', '');
+		$type   = $request->get('type', '');
+		$oldged = $request->get('oldged', '');
+		$newged = $request->get('newged', '');
+		$xref   = $request->get('xref', '');
+		$user   = $request->get('user', '');
+		$gedc   = $request->get('gedc', '');
+		$search = $request->get('search', '');
+		$search = $search['value'] ?? '';
+
+		$where = ' WHERE 1';
+		$args  = [];
+		if ($search !== '') {
+			$where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
+			$args['search_1'] = $search;
+			$args['search_2'] = $search;
+		}
+		if ($from !== '') {
+			$where .= " AND change_time >= :from";
+			$args['from'] = $from;
+		}
+		if ($to !== '') {
+			$where .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
+			$args['to'] = $to;
+		}
+		if ($type !== '') {
+			$where .= ' AND status = :status';
+			$args['status'] = $type;
+		}
+		if ($oldged !== '') {
+			$where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
+			$args['old_ged'] = $oldged;
+		}
+		if ($newged !== '') {
+			$where .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
+			$args['new_ged'] = $newged;
+		}
+		if ($xref !== '') {
+			$where .= " AND xref = :xref";
+			$args['xref'] = $xref;
+		}
+		if ($user !== '') {
+			$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
+			$args['user'] = $user;
+		}
+		if ($gedc !== '') {
+			$where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+			$args['gedc'] = $gedc;
+		}
+
+		$select = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
+		$delete = 'DELETE `##change` FROM `##change`';
+
+		$join = ' LEFT JOIN `##user` USING (user_id) JOIN `##gedcom` USING (gedcom_id)';
+
+		return [$select . $join, $delete . $join, $where, $args];
+	}
+
+	/**
 	 * If media objects are wronly linked to top-level records, reattach them
 	 * to facts/events.
 	 *
@@ -641,7 +889,7 @@ class AdminController extends BaseController {
 	 */
 	public function fixLevel0Media(): Response {
 		return $this->viewResponse('admin/fix-level-0-media', [
-			'title'   => I18N::translate('MEDIA FIXUP'),
+			'title' => I18N::translate('MEDIA FIXUP'),
 		]);
 	}
 
@@ -755,18 +1003,12 @@ class AdminController extends BaseController {
 					]);
 			}, $facts);
 
-			$citations = ['foo'];
-			foreach ($individual->getFacts() as $fact) {
-//				if (preg_match())
-			}
-
 			return [
 				$tree->getName(),
 				$media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
 				'<a href="' . Html::escape($media->getRawUrl()) . '">' . $media->getFullName() . '</a>',
 				'<a href="' . Html::escape($individual->getRawUrl()) . '">' . $individual->getFullName() . '</a>',
 				implode(' ', $facts),
-				implode(' ', $citations),
 			];
 		}, $data);
 
@@ -788,7 +1030,7 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function modules(): Response {
-		$javascript    = '$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});';
+		$javascript    = '<script>$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});</script>';
 		$module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
 		return $this->viewResponse('admin/modules', [
@@ -980,6 +1222,52 @@ class AdminController extends BaseController {
 				'title'           => $title,
 				'route'           => $route,
 			]);
+	}
+
+	/**
+	 * Conver request parameters into paging/sorting for datatables
+	 *
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	private function dataTablesPagination(Request $request): array {
+		$start  = (int) $request->get('start', '0');
+		$length = (int) $request->get('length', '0');
+		$order  = $request->get('order', []);
+		$args   = [];
+
+		if (is_array($order) && !empty($order)) {
+			$order_by = ' ORDER BY ';
+			foreach ($order as $key => $value) {
+				if ($key > 0) {
+					$order_by .= ',';
+				}
+				// Datatables numbers columns 0, 1, 2
+				// MySQL numbers columns 1, 2, 3
+				switch ($value['dir']) {
+				case 'asc':
+					$order_by .= (1 + $value['column']) . ' ASC ';
+					break;
+				case 'desc':
+					$order_by .= (1 + $value['column']) . ' DESC ';
+					break;
+				}
+			}
+		} else {
+			$order_by = '';
+		}
+
+		if ($length) {
+			Auth::user()->setPreference('admin_site_change_page_size', $length);
+			$limit          = ' LIMIT :limit OFFSET :offset';
+			$args['limit']  = $length;
+			$args['offset'] = $start;
+		} else {
+			$limit = "";
+		}
+
+		return [$order_by, $limit, $args];
 	}
 
 	/**

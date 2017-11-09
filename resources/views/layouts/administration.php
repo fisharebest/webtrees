@@ -78,6 +78,7 @@
 		<script src="<?= Html::escape(WT_SELECT2_JS_URL) ?>"></script>
 		<script src="<?= Html::escape(WT_WEBTREES_JS_URL) ?>"></script>
 		<script src="<?= Html::escape(WT_ADMIN_JS_URL) ?>"></script>
-		<script><?= $javascript ?></script>
+
+		<?= $javascript ?>
 	</body>
 </html>

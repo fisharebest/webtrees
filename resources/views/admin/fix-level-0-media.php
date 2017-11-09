@@ -1,10 +1,6 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\I18N;
-
-?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\Html; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= Bootstrap4::breadcrumbs([Html::url('admin.php', ['route' => 'admin-control-panel']) => I18N::translate('Control panel')], $title) ?>
 
@@ -25,7 +21,6 @@ use Fisharebest\Webtrees\I18N;
 			<th data-sortable="false"><?= I18N::translate('Title') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Individual') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Facts and events') ?></th>
-			<th data-sortable="false"><?= I18N::translate('Sources') ?></th>
 		</tr>
 	</thead>
 </table>

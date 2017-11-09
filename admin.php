@@ -125,6 +125,18 @@ if (Auth::isManager(($controller = new AdminController)->tree())) {
 	case 'GET:admin-control-panel-manager':
 		$response = ($controller = new AdminController)->controlPanelManager();
 		break;
+
+	case 'GET:admin-changes-log':
+		$response = ($controller = new AdminController)->changesLog($request);
+		break;
+
+	case 'GET:admin-changes-log-data':
+		$response = ($controller = new AdminController)->changesLogData($request);
+		break;
+
+	case 'GET:admin-changes-log-download':
+		$response = ($controller = new AdminController)->changesLogDownload($request);
+		break;
 	}
 }
 

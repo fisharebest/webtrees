@@ -3,7 +3,7 @@
 
 <button
 	class="btn btn-primary btn-small mb-1 wt-fix-button"
-	data-confirm="<?= I18N::translate('Move the media object from the individual to the fact.') ?>"
+	data-confirm="<?= I18N::translate('Move the media object?') ?>"
 	data-fact-id="<?= Html::escape($fact->getFactId()) ?>"
 	data-tree-id="<?= Html::escape($tree->getTreeId()) ?>"
 	data-individual-xref="<?= Html::escape($individual->getXref()) ?>"
