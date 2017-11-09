@@ -94,6 +94,7 @@
 .wt-initials-list {
 	width: auto;
 	padding: 0 5px;
+	font-size: 20px;
 }
 
 .wt-header-search {
@@ -630,9 +631,5 @@ fieldset.row > legend, fieldset.row > div {
 @media (max-width: 500px) {
 	.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
     align-items: left;
-	}
-
-	.wt-initials-list {
-    font-size: 18px;
 	}
 }
