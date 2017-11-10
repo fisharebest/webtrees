@@ -2595,6 +2595,11 @@ div.faq_body {
 	padding: 0;
 }
 
+[dir="rtl"] .generations {
+	margin: 0 15px 0 0;
+	background-position: right top;
+}
+
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;
