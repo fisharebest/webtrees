@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -70,23 +71,27 @@
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="gedc">
+			<label for="ged">
 				<?= I18N::translate('Family tree') ?>
 			</label>
-			<?= Bootstrap4::select($tree_list, $gedc, ['id' => 'gedc', 'name' => 'gedc']) ?>
+			<?= Bootstrap4::select($tree_list, $ged, ['id' => 'ged', 'name' => 'ged']) ?>
+<?= $ged ?>
 		</div>
 	</div>
 
-	<div class="row text-center">
+	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
+			<?= FontAwesome::decorativeIcon('search') ?>
 			<?= I18N::translate('search') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+		<button type="submit" class="btn btn-secondary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= FontAwesome::decorativeIcon('download') ?>
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+		<button type="submit" class="btn btn-danger" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<?= FontAwesome::decorativeIcon('delete') ?>
 			<?= I18N::translate('delete') ?>
 		</button>
 	</div>
@@ -95,7 +100,7 @@
 <?php if ($action === 'show'): ?>
 	<table
 		class="table table-bordered table-sm table-hover table-site-changes datatables"
-		data-ajax="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-changes-log-data', 'from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $gedc, 'user' => $user])) ?>"
+		data-ajax="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-changes-log-data', 'from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'user' => $user])) ?>"
 		data-server-side="true"
 		data-sorting="<?= Html::escape('[[ 0, "desc" ]]') ?>"
 	>
@@ -116,4 +121,24 @@
 	</table>
 <?php endif ?>
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  $("#from, #to").parent("div").datetimepicker({
+    format: "YYYY-MM-DD",
+    minDate: <?= json_encode($earliest) ?>,
+    maxDate: <?= json_encode($latest) ?>,
+    locale: <?= json_encode(WT_LOCALE) ?>,
+    useCurrent: false,
+    icons: {
+      time: "fa fa-clock-o",
+      date: "fa fa-calendar",
+      up: "fa fa-arrow-up",
+      down: "fa fa-arrow-down",
+      previous: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'right' : 'left' ?>",
+      next: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'left' : 'right' ?>",
+      today: "fa fa-trash-o",
+      clear: "fa fa-trash-o"
+    }
+  });
+});
+</script>

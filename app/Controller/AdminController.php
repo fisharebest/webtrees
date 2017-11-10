@@ -662,7 +662,7 @@ class AdminController extends BaseController {
 		$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->fetchOne();
 
 		$action = $request->get('action');
-		$gedc   = $request->get('gedc');
+		$ged    = $request->get('ged');
 		$from   = $request->get('from', $earliest);
 		$to     = $request->get('to', $latest);
 		$type   = $request->get('type');
@@ -673,8 +673,8 @@ class AdminController extends BaseController {
 		$search = $request->get('search');
 		$search = $search['value'] ?? null;
 
-		if (!in_array($gedc, $tree_list)) {
-			$gedc = '';
+		if (!array_key_exists($ged, $tree_list)) {
+			$ged = reset($tree_list);
 		}
 
 		$statuses = [
@@ -688,7 +688,7 @@ class AdminController extends BaseController {
 			'action'    => $action,
 			'earliest'  => $earliest,
 			'from'      => $from,
-			'gedc'      => $gedc,
+			'ged'       => $ged,
 			'latest'    => $latest,
 			'newged'    => $newged,
 			'oldged'    => $oldged,
@@ -829,7 +829,7 @@ class AdminController extends BaseController {
 		$newged = $request->get('newged', '');
 		$xref   = $request->get('xref', '');
 		$user   = $request->get('user', '');
-		$gedc   = $request->get('gedc', '');
+		$ged    = $request->get('ged', '');
 		$search = $request->get('search', '');
 		$search = $search['value'] ?? '';
 
@@ -868,9 +868,9 @@ class AdminController extends BaseController {
 			$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
 			$args['user'] = $user;
 		}
-		if ($gedc !== '') {
-			$where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
-			$args['gedc'] = $gedc;
+		if ($ged !== '') {
+			$where .= " AND gedcom_name LIKE CONCAT('%', :ged, '%')";
+			$args['ged'] = $ged;
 		}
 
 		$select = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";

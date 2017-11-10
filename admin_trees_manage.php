@@ -514,7 +514,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- CHANGES -->
 							<li>
 								<i class="fa fa-li fa-th-list"></i>
-								<a href="admin_site_change.php?gedc=<?= $tree->getNameUrl() ?>">
+								<a href="<?= Html::url('admin.php', ['route' => 'admin-changes-log', 'ged' => $tree->getName()]) ?>">
 									<?= I18N::translate('Changes log') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
