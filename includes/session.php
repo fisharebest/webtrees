@@ -249,56 +249,15 @@ if (!ini_get('safe_mode')) {
 	}
 }
 
-// Store our session data in the database.
-session_set_save_handler(
-	// open
-	function () {
-		return true;
-	},
-	// close
-	function () {
-		return true;
-	},
-	// read
-	function ($id) {
-		return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute([$id])->fetchOne();
-	},
-	// write
-	function ($id, $data) {
-		// Only update the session table once per minute, unless the session data has actually changed.
-		Database::prepare(
-			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
-			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
-			" ON DUPLICATE KEY UPDATE" .
-			" user_id      = VALUES(user_id)," .
-			" ip_address   = VALUES(ip_address)," .
-			" session_data = VALUES(session_data)," .
-			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute([$id, (int) Auth::id(), WT_CLIENT_IP, $data]);
-
-		return true;
-	},
-	// destroy
-	function ($id) {
-		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute([$id]);
-
-		return true;
-	},
-	// gc
-	function ($maxlifetime) {
-		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute([$maxlifetime]);
-
-		return true;
-	}
-);
-
+// Sessions
+Session::setSaveHandler();
 Session::start([
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
 	'cookie_path'    => implode('/', array_map('rawurlencode', explode('/', parse_url(WT_BASE_URL, PHP_URL_PATH)))),
 ]);
 
+// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 if (!Session::get('initiated')) {
-	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 	Session::regenerate(true);
 	Session::put('initiated', true);
 }

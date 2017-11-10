@@ -115,4 +115,125 @@ class Session {
 	public static function setId($id) {
 		session_id($id);
 	}
+
+	/**
+	 * Initialise our session save handler
+	 */
+	public static function setSaveHandler() {
+		session_set_save_handler(
+			function (): bool {
+				return Session::open();
+			},
+			function ():bool {
+				return Session::close();
+			},
+			function (string $id): string {
+				return Session::read($id);
+			},
+			function (string $id, string $data): bool {
+				return Session::write($id, $data);
+			},
+			function (string $id): bool {
+				return Session::destroy($id);
+			},
+			function (int $maxlifetime):bool {
+				return Session::gc($maxlifetime);
+			}
+		);
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @return bool
+	 */
+	private static function close() {
+		return true;
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @param string $id
+	 *
+	 * @return bool
+	 */
+	private static function destroy(string $id) {
+		Database::prepare(
+			"DELETE FROM `##session` WHERE session_id = :session_id"
+		)->execute([
+			'session_id' => $id
+		]);
+
+		return true;
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @param int $maxlifetime
+	 *
+	 * @return bool
+	 */
+	private static function gc(int $maxlifetime) {
+		Database::prepare(
+			"DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL :maxlifetime SECOND)"
+		)->execute([
+			'maxlifetime' => $maxlifetime
+		]);
+
+		return true;
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @return bool
+	 */
+	private static function open() {
+		return true;
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @param string $id
+	 *
+	 * @return string
+	 */
+	private static function read(string $id): string {
+		return (string) Database::prepare(
+			"SELECT session_data FROM `##session` WHERE session_id = :session_id"
+		)->execute([
+			'session_id' => $id
+		])->fetchOne();
+	}
+
+	/**
+	 * For session_set_save_handler()
+	 *
+	 * @param string $id
+	 * @param string $data
+	 *
+	 * @return bool
+	 */
+	private static function write(string $id, string $data): bool {
+		// Only update the session table once per minute, unless the session data has actually changed.
+		Database::prepare(
+			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
+			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
+			" ON DUPLICATE KEY UPDATE" .
+			" user_id      = VALUES(user_id)," .
+			" ip_address   = VALUES(ip_address)," .
+			" session_data = VALUES(session_data)," .
+			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
+		)->execute([
+			$id,
+			(int) Auth::id(),
+			WT_CLIENT_IP,
+			$data]
+		);
+
+		return true;
+	}
 }
