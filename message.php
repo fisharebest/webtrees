@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Symfony\Component\HttpFoundation\Request;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -232,6 +233,8 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 		]
 	);
 
+	$request = Request::createFromGlobals();
+
 	$success = true;
 
 	// Switch to the recipient's language
@@ -242,7 +245,7 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 		Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute([
 				Auth::check() ? Auth::user()->getEmail() : $sender_email,
-				WT_CLIENT_IP,
+				$request->getClientIp(),
 				$recipient->getUserId(),
 				$subject,
 				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
@@ -269,7 +272,7 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 			"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
 		)->execute([
 			Auth::user()->getEmail(),
-			WT_CLIENT_IP,
+			$request->getClientIp(),
 			$recipient->getUserId(),
 			$subject,
 			View::make('emails/message-copy-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])

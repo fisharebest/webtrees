@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\HttpFoundation\Request;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -30,6 +31,8 @@ if (Auth::check() && $WT_TREE) {
 
 	return;
 }
+
+$request = Request::createFromGlobals();
 
 $controller = new PageController;
 
@@ -351,7 +354,7 @@ case 'register':
 					"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
 				)->execute([
 					$user->getEmail(),
-					WT_CLIENT_IP,
+					$request->getClientIp(),
 					$webmaster->getUserId(),
 					/* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', $WT_TREE->getTitle()),
 					View::make('emails/register-notify-text', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments]),
@@ -525,7 +528,7 @@ case 'userverify':
 				"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
 			)->execute([
 				$username,
-				WT_CLIENT_IP,
+				$request->getClientIp(),
 				$webmaster->getUserId(),
 				/* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle()),
 				View::make('emails/verify-notify-text', ['user' => $user])

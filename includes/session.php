@@ -206,9 +206,6 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	exit;
 }
 
-// What is the remote client's IP address
-define('WT_CLIENT_IP', $request->getClientIp());
-
 // Connect to the database
 try {
 	Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);

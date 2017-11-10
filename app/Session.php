@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Session handling
  */
@@ -218,21 +220,23 @@ class Session {
 	 * @return bool
 	 */
 	private static function write(string $id, string $data): bool {
+		$request = Request::createFromGlobals();
+
 		// Only update the session table once per minute, unless the session data has actually changed.
 		Database::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
-			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
+			" VALUES (:session_id, :user_id, :ip_address, :data, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
 			" ON DUPLICATE KEY UPDATE" .
 			" user_id      = VALUES(user_id)," .
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
 		)->execute([
-			$id,
-			(int) Auth::id(),
-			WT_CLIENT_IP,
-			$data]
-		);
+			'session_id' => $id,
+			'user_id'    => (int) Auth::id(),
+			'ip_address' => $request->getClientIp(),
+			'data'       => $data,
+		]);
 
 		return true;
 	}

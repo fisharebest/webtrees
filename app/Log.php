@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Record webtrees events in the database
  */
@@ -42,12 +44,14 @@ class Log {
 			$tree = $WT_TREE;
 		}
 
+		$request = Request::createFromGlobals();
+
 		Database::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 		)->execute([
 					$log_type,
 					$message,
-					WT_CLIENT_IP,
+					$request->getClientIp(),
 					Auth::id(),
 					$tree ? $tree->getTreeId() : null,
 		]);
