@@ -16,12 +16,14 @@
 namespace Fisharebest\Webtrees;
 
 use DateTime;
+use ErrorException;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
@@ -136,7 +138,7 @@ define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	throw new \ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+	throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 });
 
 set_exception_handler(function (Throwable $ex) {
@@ -187,12 +189,6 @@ set_exception_handler(function (Throwable $ex) {
 
 // Load our configuration file, so we can connect to the database
 if (file_exists(WT_ROOT . 'data/config.ini.php')) {
-	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
-	// Invalid/unreadable config file?
-	if (!is_array($dbconfig)) {
-		header('Location: site-unavailable.php');
-		exit;
-	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT . 'data/offline.txt')) {
 		header('Location: site-offline.php');
@@ -208,20 +204,38 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 
 // Connect to the database
 try {
+	// Read the connection settings
+	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
 	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
 	unset($dbconfig);
+
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	// Update the database schema
-	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
-	if ($updated) {
-		// updateSchema() might load custom modules - which we cannot load again.
-		header('Location: ' . $request->getRequestUri());
-		exit;
-	}
+
+	// Update the database schema, if necessary.
+	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
-	header('Location: ' . Html::url('site-unavailable.php', ['message' => $ex->getMessage()]));
+	define('WT_DATA_DIR', 'data/');
+	I18N::init();
+	if ($ex->getCode() === 1045) {
+		// Error during connection?
+		$content = View::make('errors/database-connection', ['error' => $ex->getMessage()]);
+	} else {
+		// Error in a migration script?
+		$content = View::make('errors/database-error', ['error' => $ex->getMessage()]);
+	}
+	$html     = View::make('layouts/error', ['content' => $content]);
+	$response = new Response($html, 503);
+	$response->prepare($request)->send();
+	exit;
+} catch (ErrorException $ex) {
+	define('WT_DATA_DIR', 'data/');
+	I18N::init();
+	$content = View::make('errors/database-connection', ['error' => $ex->getMessage()]);
+	$html     = View::make('layouts/error', ['content' => $content]);
+	$response = new Response($html, 503);
+	$response->prepare($request)->send();
 	exit;
 }
 

@@ -476,6 +476,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'packages/jquery-2.2.1',
 			WT_ROOT . 'packages/modernizr-2.8.3',
 			WT_ROOT . 'packages/respond-1.4.2',
+			WT_ROOT . 'site-unavailable.php',
 			WT_ROOT . 'themes/_administration/css-1.7.5',
 			WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',
 			WT_ROOT . 'themes/clouds/css-1.7.8',
