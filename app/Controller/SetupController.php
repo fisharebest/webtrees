@@ -16,6 +16,8 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Exception;
+use Fisharebest\Localization\Locale;
+use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -49,6 +51,10 @@ class SetupController extends BaseController {
 		$errors   = $this->serverErrors();
 		$warnings = $this->serverWarnings();
 		$data     = $this->extractParameters($request);
+
+		if ($data['lang'] === '') {
+			$data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs)->languageTag();
+		}
 
 		$db_conn_error = $this->checkDatabaseConnection($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass']);
 
