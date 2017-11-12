@@ -9,7 +9,6 @@ return array(
     'Webuni\\CommonMark\\TableExtension\\' => array($vendorDir . '/webuni/commonmark-table-extension/src'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
     'Symfony\\Polyfill\\Php71\\' => array($vendorDir . '/symfony/polyfill-php71'),
-    'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),

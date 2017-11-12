@@ -54,8 +54,6 @@ class NativeSessionStorageTest extends TestCase
     }
 
     /**
-     * @param array $options
-     *
      * @return NativeSessionStorage
      */
     protected function getStorage(array $options = array())
@@ -243,5 +241,25 @@ class NativeSessionStorageTest extends TestCase
         $storage->start();
         $this->assertSame($id, $storage->getId(), 'Same session ID after restarting');
         $this->assertSame(7, $storage->getBag('attributes')->get('lucky'), 'Data still available');
+    }
+
+    public function testCanCreateNativeSessionStorageWhenSessionAlreadyStarted()
+    {
+        session_start();
+        $this->getStorage();
+
+        // Assert no exception has been thrown by `getStorage()`
+        $this->addToAssertionCount(1);
+    }
+
+    public function testSetSessionOptionsOnceSessionStartedIsIgnored()
+    {
+        session_start();
+        $this->getStorage(array(
+            'name' => 'something-else',
+        ));
+
+        // Assert no exception has been thrown by `getStorage()`
+        $this->addToAssertionCount(1);
     }
 }
