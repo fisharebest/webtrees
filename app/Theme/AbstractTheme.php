@@ -1400,7 +1400,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuControlPanel() {
 		if (Auth::isManager($this->tree)) {
-			return new Menu(I18N::translate('Control panel'), 'admin.php', 'menu-admin');
+			return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
 		} else {
 			return null;
 		}

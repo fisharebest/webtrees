@@ -224,7 +224,7 @@ foreach (User::all() as $tmp_user) {
 }
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php' => I18N::translate('Control panel'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
 ], $controller->getPageTitle());
 ?>
 

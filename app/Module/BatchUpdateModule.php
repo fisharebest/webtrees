@@ -188,8 +188,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 
 		echo $this->getJavascript();
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'                                          => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'admin-modules']) => I18N::translate('Module administration'),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
 		], $controller->getPageTitle());
 		?>
 		<h1><?= $controller->getPageTitle() ?></h1>

@@ -66,7 +66,7 @@
 							<?php if ($changes[$tree->getTreeId()]): ?>
 								<a href="<?= Html::escape(Html::url('edit_changes.php', [
 									'ged' => $tree->getName(),
-									'url' => 'admin.php',
+									'url' => route('admin-control-panel'),
 								])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
 									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= Html::escape($tree->getTitle()) ?></span>

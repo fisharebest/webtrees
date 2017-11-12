@@ -299,7 +299,7 @@ case 'edit':
 		');
 
 	echo Bootstrap4::breadcrumbs([
-		'admin.php'       => I18N::translate('Control panel'),
+		route('admin-control-panel')       => I18N::translate('Control panel'),
 		'admin_users.php' => I18N::translate('User administration'),
 	], $controller->getPageTitle());
 	?>
@@ -669,7 +669,7 @@ case 'cleanup':
 		->pageHeader();
 
 	echo Bootstrap4::breadcrumbs([
-		'admin.php'       => I18N::translate('Control panel'),
+		route('admin-control-panel')       => I18N::translate('Control panel'),
 		'admin_users.php' => I18N::translate('User administration'),
 	], $controller->getPageTitle());
 	?>
@@ -832,7 +832,7 @@ default:
 		->pageHeader();
 
 	echo Bootstrap4::breadcrumbs([
-		'admin.php' => I18N::translate('Control panel'),
+		route('admin-control-panel') => I18N::translate('Control panel'),
 	], $controller->getPageTitle());
 	?>
 

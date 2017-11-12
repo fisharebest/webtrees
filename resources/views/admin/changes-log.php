@@ -4,12 +4,11 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => ['admin.php' => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
+<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<form class="form" name="logs" action="admin.php">
-	<input type="hidden" name="route" value="admin-changes-log">
+<form class="form" name="logs" action="<?= Html::escape(route('admin-changes-log')) ?>">
 	<input type="hidden" name="action" value="show">
 
 	<div class="row">
@@ -100,7 +99,7 @@
 <?php if ($action === 'show'): ?>
 	<table
 		class="table table-bordered table-sm table-hover table-site-changes datatables"
-		data-ajax="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-changes-log-data', 'from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'user' => $user])) ?>"
+		data-ajax="<?= route('admin-changes-log-data', ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'user' => $user]) ?>"
 		data-server-side="true"
 		data-sorting="<?= Html::escape('[[ 0, "desc" ]]') ?>"
 	>

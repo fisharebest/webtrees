@@ -128,7 +128,7 @@ if ($action === 'update') {
 		}
 	}
 	if ($user_id < 0 || $gedcom_id < 0 ) {
-		header('Location: admin.php');
+		header('Location: ' + route('admin-control-panel'));
 	} elseif ($user_id > 0) {
 		header('Location: index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
 	} else {
@@ -372,7 +372,7 @@ $controller->pageHeader();
 						<?= I18N::translate('save') ?>
 					</button>
 					<?php if ($user_id < 0 || $gedcom_id < 0 ): ?>
-						<a class="btn btn-secondary" href="admin.php">
+						<a class="btn btn-secondary" href="<?= Html::escape(route('admin-control-panel')) ?>">
 					<?php elseif ($user_id > 0): ?>
 						<a class="btn btn-secondary" href="index.php?ctype=user&amp;ged=<?= $WT_TREE->getNameHtml() ?>">
 					<?php else: ?>

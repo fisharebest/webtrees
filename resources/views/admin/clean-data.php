@@ -3,7 +3,7 @@
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?= Bootstrap4::breadcrumbs([Html::url('admin.php', ['route' => 'admin-control-panel']) => I18N::translate('Control panel')], $title) ?>
+<?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
 
 <h1><?= $title ?></h1>
 

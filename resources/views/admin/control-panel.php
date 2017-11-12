@@ -56,10 +56,10 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_logs.php', [])) ?>">
 				<?= I18N::translate('Website logs') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-clean-data'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-clean-data')) ?>">
 				<?= I18N::translate('Clean up data folder') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-server-information'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-server-information')) ?>">
 				<?= I18N::translate('Server information') ?>
 			</a>
 		</p>
@@ -111,7 +111,7 @@
 							<?php if ($changes[$tree->getTreeId()]): ?>
 								<a href="<?= Html::escape(Html::url('edit_changes.php', [
 									'ged' => $tree->getName(),
-									'url' => 'admin.php',
+									'url' => route('admin-control-panel'),
 								])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
 									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= Html::escape($tree->getTitle()) ?></span>
@@ -287,44 +287,44 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<p class="card-text">
-					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-modules'])) ?>">
+					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-modules')) ?>">
 						<?= I18N::translate('Module administration') ?>
 					</a>
 				</p>
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-menus'])) ?>">
+						<a href="<?= Html::escape(route('admin-menus')) ?>">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('tab', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-tabs'])) ?>">
+						<a href="<?= Html::escape(route('admin-tabs')) ?>">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('block', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-blocks'])) ?>">
+						<a href="<?= Html::escape(route('admin-blocks')) ?>">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('sidebar', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-sidebars'])) ?>">
+						<a href="<?= Html::escape(route('admin-sidebars')) ?>">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('chart', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-charts'])) ?>">
+						<a href="<?= Html::escape(route('admin-charts')) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('report', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-reports'])) ?>">
+						<a href="<?= Html::escape(route('admin-reports')) ?>">
 							<?= I18N::translate('Reports') ?>
 						</a>
 					</li>
@@ -367,7 +367,7 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media_upload.php', [])) ?>">
 				<?= I18N::translate('Upload media files') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-fix-level-0-media'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-fix-level-0-media')) ?>">
 				<?= I18N::translate('MEDIA FIXUP') ?>
 			</a>
 		</p>

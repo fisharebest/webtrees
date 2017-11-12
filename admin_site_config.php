@@ -44,7 +44,7 @@ case 'site':
 		Site::setPreference('TIMEZONE', Filter::post('TIMEZONE'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 
@@ -63,7 +63,7 @@ case 'email':
 		}
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 case 'login':
@@ -75,7 +75,7 @@ case 'login':
 		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::postBool('SHOW_REGISTER_CAUTION'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 
@@ -90,7 +90,7 @@ case 'tracking':
 		Site::setPreference('STATCOUNTER_SECURITY_ID', Filter::post('STATCOUNTER_SECURITY_ID'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 
@@ -99,7 +99,7 @@ case 'languages':
 		Site::setPreference('LANGUAGES', implode(',', Filter::postArray('LANGUAGES')));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 }
@@ -151,7 +151,7 @@ case 'languages':
 	$controller->setPageTitle(I18N::translate('Languages'));
 	break;
 default:
-	header('Location: admin.php');
+	header('Location: ' + route('admin-control-panel'));
 
 	return;
 }
@@ -159,7 +159,7 @@ default:
 $controller->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php' => I18N::translate('Control panel'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
 ], $controller->getPageTitle());
 ?>
 

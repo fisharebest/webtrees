@@ -154,13 +154,13 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function menuAdminModules() {
 		return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', [], [
-			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), Html::url('admin.php', ['route' => 'admin-modules'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), Html::url('admin.php', ['route' => 'admin-menus'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), Html::url('admin.php', ['route' => 'admin-tabs'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), Html::url('admin.php', ['route' => 'admin-blocks'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), Html::url('admin.php', ['route' => 'admin-sidebars'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), Html::url('admin.php', ['route' => 'admin-charts'])),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), Html::url('admin.php', ['route' => 'admin-reports'])),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), route('admin-modules')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), route('admin-menus')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), route('admin-tabs')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), route('admin-blocks')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), route('admin-sidebars')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), route('admin-charts')),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), route('admin-reports')),
 		]);
 	}
 
@@ -195,7 +195,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	protected function primaryMenuContainer(array $menus) {
 		return
 			'<nav class="col navbar navbar-expand-md navbar-light bg-light">' .
-			'<a class="navbar-brand" href="admin.php">' . I18N::translate('Control panel') . '</a>' .
+			'<a class="navbar-brand" href="' . Html::escape(route('admin-control-panel')) . '">' . I18N::translate('Control panel') . '</a>' .
 			'<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#primary-navbar" aria-controls="primary-navbar" aria-expanded="false" aria-label="Toggle navigation">' .
 			'<span class="navbar-toggler-icon"></span>' .
 			'</button> ' .

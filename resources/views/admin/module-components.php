@@ -7,11 +7,11 @@
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => ['admin.php' => I18N::translate('Control panel'), Html::url('admin.php', ['route' => 'admin-modules']) => I18N::translate('Modules'), $page_title]]) ?>
+<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), $title]]) ?>
 
-<h1><?= $page_title ?></h1>
+<h1><?= $title ?></h1>
 
-<form action="admin.php" method="post">
+<form action="<?= Html::escape(route('admin-control-panel')) ?>" method="post">
 	<input type="hidden" name="route" value="admin-update-module-access">
 	<input type="hidden" name="component" value="<?= Html::escape($component) ?>">
 	<?= Filter::getCsrf() ?>

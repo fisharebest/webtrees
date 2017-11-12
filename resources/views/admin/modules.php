@@ -13,13 +13,13 @@
 <?php use Fisharebest\Webtrees\Module\ModuleTabInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => ['admin.php' => I18N::translate('Control panel'), $title]]) ?>
+<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <?php foreach ($deleted_modules as $module_name): ?>
 	<div class="alert alert-warning" role="alert">
-		<form action="admin.php" class="form-inline" method="POST">
+		<form action="<?= Html::escape(route('admin-control-panel')) ?>" class="form-inline" method="POST">
 			<?= Filter::getCsrf() ?>
 			<input type="hidden" name="route" value="admin-delete-module-settings">
 			<input type="hidden" name="module_name" value="<?= $module_name ?>">
@@ -31,7 +31,7 @@
 	</div>
 <?php endforeach ?>
 
-<form action="admin.php" method="POST">
+<form action="<?= Html::escape(route('admin-control-panel')) ?>" method="POST">
 	<input type="hidden" name="route" value="admin-update-module-status">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true">
@@ -50,32 +50,32 @@
 					<?= I18N::translate('Description') ?>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-menus'])) ?>">
+					<a href="<?= Html::escape(route('admin-menus')) ?>">
 						<?= I18N::translate('Menus') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-tabs'])) ?>">
+					<a href="<?= Html::escape(route('admin-tabs')) ?>">
 						<?= I18N::translate('Tabs') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-sidebars'])) ?>">
+					<a href="<?= Html::escape(route('admin-sidebars')) ?>">
 						<?= I18N::translate('Sidebars') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-blocks'])) ?>">
+					<a href="<?= Html::escape(route('admin-blocks')) ?>">
 						<?= I18N::translate('Blocks') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-charts'])) ?>">
+					<a href="<?= Html::escape(route('admin-charts')) ?>">
 						<?= I18N::translate('Charts') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(Html::url('admin.php', ['route' => 'admin-reports'])) ?>">
+					<a href="<?= Html::escape(route('admin-reports')) ?>">
 						<?= I18N::translate('Reports') ?>
 					</a>
 				</th>

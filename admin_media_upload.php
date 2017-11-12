@@ -171,7 +171,7 @@ if (empty($filesize)) {
 }
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php' => I18N::translate('Control panel'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
 ], $controller->getPageTitle());
 ?>
 

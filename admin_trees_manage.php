@@ -173,7 +173,7 @@ case 'importform':
 		->pageHeader();
 
 	echo Bootstrap4::breadcrumbs([
-		'admin.php'              => I18N::translate('Control panel'),
+		route('admin-control-panel')              => I18N::translate('Control panel'),
 		'admin_trees_manage.php' => I18N::translate('Manage family trees'),
 	], $controller->getPageTitle());
 	?>
@@ -330,7 +330,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 
 // List the gedcoms available to this user
 echo Bootstrap4::breadcrumbs([
-	'admin.php' => I18N::translate('Control panel'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
 ], $controller->getPageTitle());
 ?>
 
@@ -514,7 +514,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- CHANGES -->
 							<li>
 								<i class="fa fa-li fa-th-list"></i>
-								<a href="<?= Html::url('admin.php', ['route' => 'admin-changes-log', 'ged' => $tree->getName()]) ?>">
+								<a href="<?= route('admin-changes-log', ['ged' => $tree->getName()]) ?>">
 									<?= I18N::translate('Changes log') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>

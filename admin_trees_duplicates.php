@@ -140,7 +140,7 @@ $all_duplicates = [
 ];
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php'              => I18N::translate('Control panel'),
+	route('admin-control-panel')              => I18N::translate('Control panel'),
 	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
 ], $controller->getPageTitle());
 ?>

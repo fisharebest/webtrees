@@ -19,11 +19,28 @@ use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Symfony\Component\HttpFoundation\Request;
+
+require 'includes/session.php';
+
+// Extract the route from the the HTTP request.
+$request = Request::createFromGlobals();
+$route   = $request->get('route', '');
+
+if ($route === '') {
+	// Legacy URLs:
+	// index.php?ctype=gedcom
+	// index.php?ctype=user
+} else {
+	// Route the request to its controller action.
+	$response = require 'routes/web.php';
+
+	// Send the response back to the browser.
+	return $response->prepare($request)->send();
+}
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
-
-require 'includes/session.php';
 
 // The only option for action is "ajax"
 $ajax = (bool) Filter::get('ajax');

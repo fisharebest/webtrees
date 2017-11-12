@@ -294,8 +294,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller->pageHeader();
 
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'               => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'admin-modules']) => I18N::translate('Module administration'),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
 		], $controller->getPageTitle());
 		?>
 
@@ -2130,8 +2130,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->pageHeader();
 
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'                                        => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'admin-modules'])                                => I18N::translate('Module administration'),
+			route('admin-control-panel')                         => I18N::translate('Control panel'),
+			route('admin-modules')                               => I18N::translate('Module administration'),
 			$this->getConfigLink()                             => $this->getTitle(),
 			'module.php?mod=googlemap&mod_action=admin_places' => I18N::translate('Geographic data'),
 		], $controller->getPageTitle());
@@ -2589,9 +2589,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent_url = 'module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive;
 
 		$breadcrumbs = [
-			'admin.php'                  => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'admin-modules'])    => I18N::translate('Module administration'),
-			$this->getConfigLink() => $this->getTitle(),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
+			$this->getConfigLink()     => $this->getTitle(),
 		];
 		$hierarchy =
 			[0 => I18N::translate('Geographic data')] +
@@ -3095,9 +3095,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->pageHeader();
 
 		$breadcrumbs = [
-			'admin.php'            => I18N::translate('Control panel'),
-			Html::url('admin.php', ['route' => 'admin-modules'])    => I18N::translate('Module administration'),
-			$this->getConfigLink() => $this->getTitle(),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
+			$this->getConfigLink()     => $this->getTitle(),
 		];
 		$hierarchy =
 			[0 => I18N::translate('Geographic data')] +

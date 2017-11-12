@@ -6,7 +6,10 @@
 	"autoload": {
 		"psr-4": {
 			"Fisharebest\\Webtrees\\": "app/"
-		}
+		},
+		"files": [
+			"app/Helpers/functions.php"
+		]
 	},
 	"config": {
 		"platform": {

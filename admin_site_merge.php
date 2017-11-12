@@ -174,7 +174,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 $controller->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php'              => I18N::translate('Control panel'),
+	route('admin-control-panel')              => I18N::translate('Control panel'),
 	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
 ], $controller->getPageTitle());
 ?>

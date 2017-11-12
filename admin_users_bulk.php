@@ -26,7 +26,7 @@ $controller
 	->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
-	'admin.php'       => I18N::translate('Control panel'),
+	route('admin-control-panel')       => I18N::translate('Control panel'),
 	'admin_users.php' => I18N::translate('User administration'),
 ], $controller->getPageTitle());
 ?>
