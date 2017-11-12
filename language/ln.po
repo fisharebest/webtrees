@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-11-06 21:32+0000\n"
+"PO-Revision-Date: 2017-11-12 18:14+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -1479,7 +1479,7 @@ msgstr "Bakísá bokɔ́tisi bozángí ekangeli"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "Kobakisa bilembo na bilili"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1667,15 +1667,15 @@ msgstr "Batisimo ya mokóló"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
-msgstr ""
+msgstr "Malúli ma bikelá ya míngi koleka"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Nkómbó ya bikelá ya míngi koleka"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Nkómbó ya bisiká bya bikelá ya míngi koleka"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
@@ -1762,8 +1762,9 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6675
+#, fuzzy
 msgid "Aland Islands"
-msgstr ""
+msgstr "Bisanga bya Aland"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6676
