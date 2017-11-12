@@ -25,7 +25,7 @@
 
 	<?php if ($db_conn_error): ?>
 		<p class="alert alert-danger">
-			<?= $db_error ?>
+			<?= $db_conn_error ?>
 		</p>
 	<?php endif ?>
 

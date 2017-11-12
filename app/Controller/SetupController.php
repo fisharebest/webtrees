@@ -56,11 +56,23 @@ class SetupController extends BaseController {
 			$data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs)->languageTag();
 		}
 
-		$db_conn_error = $this->checkDatabaseConnection($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass']);
+		if ($data['dbuser'] !== '') {
+			$db_conn_error = $this->checkDatabaseConnection($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass']);
+		} else {
+			$db_conn_error = '';
+		}
 
-		$db_name_error = $this->checkDatabaseName($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx']);
+		if ($data['dbname'] !== '') {
+			$db_name_error = $this->checkDatabaseName($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx']);
+		} else {
+			$db_name_error = '';
+		}
 
-		$wt_user_error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
+		if ($data['wtname'] !== '') {
+			$wt_user_error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
+		} else {
+			$wt_user_error = '';
+		}
 
 		$data['cpu_limit']     = $this->maxExecutionTime();
 		$data['db_conn_error'] = $db_conn_error;
