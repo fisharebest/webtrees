@@ -157,7 +157,7 @@ class DescendancyController extends ChartController {
 	 * @param int        $depth the descendancy depth to show
 	 */
 	private function printFamilyDescendancy(Individual $person, Family $family, $depth) {
-		$uid = Uuid::uuid4(); // create a unique ID
+		$uid = Uuid::uuid4()->toString(); // create a unique ID
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', 19, '">';
