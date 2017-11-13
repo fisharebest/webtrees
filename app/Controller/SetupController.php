@@ -44,7 +44,7 @@ class SetupController extends BaseController {
 	public function setup(Request $request): Response {
 		// Config file exists?  Our work is done.
 		if (file_exists(WT_DATA_DIR . self::WT_CONFIG_FILE)) {
-			return new RedirectResponse('index.php', []);
+			return new RedirectResponse(Html::url('index.php', []));
 		}
 
 		$step     = (int) $request->get('step', '1');
@@ -115,11 +115,10 @@ class SetupController extends BaseController {
 			$error = $this->createConfigFile($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx'], $data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
 
 			if ($error === '') {
-				return (new RedirectResponse(Html::url('index.php', [])));
+				return new RedirectResponse(Html::url('index.php', []));
 			} else {
 				return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
 			}
-
 		}
 	}
 
