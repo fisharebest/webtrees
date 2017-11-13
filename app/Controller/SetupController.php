@@ -44,7 +44,7 @@ class SetupController extends BaseController {
 	public function setup(Request $request): Response {
 		// Config file exists?  Our work is done.
 		if (file_exists(WT_DATA_DIR . self::WT_CONFIG_FILE)) {
-			return $this->redirectResponse('index.php', []);
+			return new RedirectResponse('index.php', []);
 		}
 
 		$step     = (int) $request->get('step', '1');

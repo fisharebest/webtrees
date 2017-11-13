@@ -150,18 +150,4 @@ class BaseController {
 	public function pageFooter() {
 		echo $this->getJavascript();
 	}
-
-	/**
-	 * Create a response object from a view.
-	 *
-	 * @param string   $path
-	 * @param string[] $data
-	 *
-	 * @return RedirectResponse
-	 */
-	protected function redirectResponse($path, $data): RedirectResponse {
-		$url = Html::url($path, $data);
-
-		return new RedirectResponse($url);
-	}
 }

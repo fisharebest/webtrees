@@ -581,7 +581,7 @@ class AdminController extends BaseController {
 			}
 		}
 
-		return $this->redirectResponse(route('admin-control-panel'));
+		return new RedirectResponse(route('admin-control-panel'));
 	}
 
 	/**
@@ -1062,7 +1062,7 @@ class AdminController extends BaseController {
 
 		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-		return $this->redirectResponse(route('admin-modules'));
+		return new RedirectResponse(route('admin-modules'));
 	}
 
 	/**
@@ -1150,7 +1150,7 @@ class AdminController extends BaseController {
 			}
 		}
 
-		return $this->redirectResponse(route('admin-' . $component . 's'));
+		return new RedirectResponse(route('admin-' . $component . 's'));
 	}
 
 	/**
@@ -1182,7 +1182,7 @@ class AdminController extends BaseController {
 			}
 		}
 
-		return $this->redirectResponse(route('admin-modules'));
+		return new RedirectResponse(route('admin-modules'));
 	}
 
 	/**
