@@ -306,8 +306,8 @@ class SetupController extends BaseController {
 	private function extractParameters(Request $request): array {
 		return [
 			'lang'    => $request->get('lang', ''),
-			'dbhost'  => $request->get('dbhost', ''),
-			'dbport'  => $request->get('dbport', ''),
+			'dbhost'  => $request->get('dbhost', 'localhost'),
+			'dbport'  => $request->get('dbport', '3306'),
 			'dbuser'  => $request->get('dbuser', ''),
 			'dbpass'  => $request->get('dbpass', ''),
 			'dbname'  => $request->get('dbname', ''),
