@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-12 18:14+0000\n"
+"PO-Revision-Date: 2017-11-13 23:37+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1623,11 +1623,11 @@ msgstr "Malúli ma bikelá ya míngi koleka"
 
 #: admin_trees_config.php:1781
 msgid "Advanced name facts"
-msgstr "Nkómbó ya bikelá ya míngi koleka"
+msgstr "Bikelá bya nkómbó ya míngi koleka"
 
 #: admin_trees_config.php:1794
 msgid "Advanced place name facts"
-msgstr "Nkómbó ya bisiká bya bikelá ya míngi koleka"
+msgstr "Bikelá bya nkómbó ya bisiká ya míngi koleka"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1822
@@ -1894,7 +1894,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:698
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "Mosangani azalí moto mosúsu na mokangano na moto óyo, lokóla moninga tǒ mosáli."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -2189,7 +2189,7 @@ msgstr "Basangani"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Asuncion, Paraguay"
-msgstr ""
+msgstr "Asuncion, Palagway"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -2435,7 +2435,7 @@ msgstr "Bahrain"
 #. I18N: Name of a country or state
 #: app/Stats.php:6670
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bángaladɛ́si"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:158 calendar.php:258
@@ -2519,7 +2519,7 @@ msgstr "Bar mitzvah"
 #. I18N: Name of a country or state
 #: app/Stats.php:6681
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:170 modules_v3/missing_facts_report/report.xml:18
@@ -2541,17 +2541,17 @@ msgstr "Baton Rouge, Louisiana, Lisangá lya Amerika"
 #: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
 #: search_advanced.php:252 search_advanced.php:267
 msgid "Begins with"
-msgstr ""
+msgstr "Ebandí na"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6676
 msgid "Belarus"
-msgstr ""
+msgstr "Bielorusia"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:49
 msgid "Belgian Chocolate"
-msgstr ""
+msgstr "Shokolá ya Bɛ́ljika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6666
@@ -2561,7 +2561,7 @@ msgstr "Bɛ́lɛzika"
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6667
@@ -2571,7 +2571,7 @@ msgstr "Bénin"
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermuda"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:357
@@ -2585,7 +2585,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6683
 msgid "Bhutan"
-msgstr ""
+msgstr "Butáni"
 
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:724
@@ -2891,7 +2891,7 @@ msgstr "Nzóto"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bogota, Colombia"
-msgstr ""
+msgstr "Bogota, Kolombi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
@@ -2902,7 +2902,7 @@ msgstr "Boise, Idaho, Lisangá lya Amerika"
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1501
@@ -2950,8 +2950,9 @@ msgstr "Bountiful, Utah, Lisangá lya Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6684
+#, fuzzy
 msgid "Bouvet Island"
-msgstr ""
+msgstr "Esanga Bouvet"
 
 #. I18N: Branches of a family tree
 #: app/Controller/BranchesController.php:65 app/Theme/AbstractTheme.php:1563
@@ -3278,8 +3279,9 @@ msgstr "Libóngoli lya manáka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
+#, fuzzy
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberta, Kanadá"
 
 #. I18N: gedcom tag CALN
 #: app/Functions/FunctionsEdit.php:1968 app/GedcomTag.php:196
@@ -3299,8 +3301,9 @@ msgstr "Kamerun"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
+#, fuzzy
 msgid "Campinas, Brazil"
-msgstr ""
+msgstr "Campinas, Brazil"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
@@ -3325,8 +3328,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
+#, fuzzy
 msgid "Cardston, Alberta, Canada"
-msgstr ""
+msgstr "Cardston, Alberta, Kanadá"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:170
 msgid "Case insensitive"
@@ -5440,8 +5444,9 @@ msgstr "Mobɔngisi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
+#, fuzzy
 msgid "Edmonton, Alberta, Canada"
-msgstr ""
+msgstr "Edmonton, Alberta, Kanadá"
 
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:287
@@ -6895,8 +6900,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
+#, fuzzy
 msgid "Halifax, Nova Scotia, Canada"
-msgstr ""
+msgstr "Halifax, Nova Scotia, Kanadá"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:269
@@ -9236,8 +9242,9 @@ msgstr "Monticello, Utah, Lisangá lya Amerika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
+#, fuzzy
 msgid "Montreal, Quebec, Canada"
-msgstr ""
+msgstr "Montreal, Quebec, Kanadá"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
@@ -10814,7 +10821,7 @@ msgstr ""
 
 #: search.php:51
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "Bolímbisi tíyá nkómbó-ikɛ́, nkómbó ya libótá tǒ esíká na bobakisi na mobú"
 
 #: message.php:50
 msgid "Please enter a valid email address."
@@ -11284,8 +11291,9 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
+#, fuzzy
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Kanadá"
 
 #: app/GedcomTag.php:413 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
@@ -14735,8 +14743,9 @@ msgstr "Nkómbó ya libótá lya kolúta"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
+#, fuzzy
 msgid "Toronto, Ontario, Canada"
-msgstr ""
+msgstr "Toronto, Ontario, Kanadá"
 
 #: admin.php:852
 msgid "Total"
@@ -15271,7 +15280,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vancouver, British Columbia, Kanadá"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6895
@@ -15639,7 +15648,7 @@ msgstr "Mbúla ya mwǎsí"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Nkómbó ya bonzéngá ya mwǎsí ekomí nkómbó-ikɛ́ ya sika"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
