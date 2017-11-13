@@ -58,18 +58,6 @@ interface ThemeInterface {
 	public function footerContainer();
 
 	/**
-	 * Format the contents of a variable-height home-page block.
-	 *
-	 * @param string $id
-	 * @param string $title
-	 * @param string $class
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-	public function formatBlock($id, $title, $class, $content);
-
-	/**
 	 * Create the <head> tag.
 	 *
 	 * @param PageController $controller The current controller

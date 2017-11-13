@@ -497,27 +497,6 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Format the contents of a variable-height home-page block.
-	 *
-	 * @param string $id
-	 * @param string $title
-	 * @param string $class
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-	public function formatBlock($id, $title, $class, $content) {
-		// Prefer underscores in CSS classes
-		$class = str_replace('_', '-', $class);
-
-		return
-			'<div class="card mb-4 wt-block wt-block-' . $class . '" id="' . $id . '">' .
-			'<div class="card-header wt-block-header wt-block-header-' . $class . '">' . $title . '</div>' .
-			'<div class="card-body wt-block-content wt-block-content-' . $class . '">' . $content . '</div>' .
-			'</div>';
-	}
-
-	/**
 	 * Add markup to the contact links.
 	 *
 	 * @return string

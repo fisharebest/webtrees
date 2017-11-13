@@ -205,7 +205,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		}
 
 		if ($template) {
-			//return Theme::theme()->formatBlock($id, $title, $class, $content);
 			return View::make('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
