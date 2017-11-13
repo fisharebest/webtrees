@@ -976,7 +976,7 @@ class AdminController extends BaseController {
 		)->fetchAll();
 
 		// Turn each row from the query into a row for the table
-		$data = array_map(function ($datum) use ($ignore_facts) {
+		$data = array_map(function (stdClass $datum) use ($ignore_facts) {
 			$tree       = Tree::findById($datum->m_file);
 			$media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
 			$individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
