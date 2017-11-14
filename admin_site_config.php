@@ -44,7 +44,7 @@ case 'site':
 		Site::setPreference('TIMEZONE', Filter::post('TIMEZONE'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
-	header('Location: ' + route('admin-control-panel'));
+	header('Location: ' . route('admin-control-panel'));
 
 	return;
 
