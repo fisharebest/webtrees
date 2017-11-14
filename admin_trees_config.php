@@ -294,7 +294,7 @@ case 'general':
 	$controller->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Preferences'));
 	break;
 default:
-	header('Location: ' + route('admin-control-panel'));
+	header('Location: ' . route('admin-control-panel'));
 
 	return;
 }

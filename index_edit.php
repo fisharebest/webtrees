@@ -128,7 +128,7 @@ if ($action === 'update') {
 		}
 	}
 	if ($user_id < 0 || $gedcom_id < 0 ) {
-		header('Location: ' + route('admin-control-panel'));
+		header('Location: ' . route('admin-control-panel'));
 	} elseif ($user_id > 0) {
 		header('Location: index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
 	} else {
