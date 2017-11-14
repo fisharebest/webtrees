@@ -6,14 +6,7 @@
 	<?= $theme_head ?>
 	<?= $theme_body_header ?>
 
-	<div class="alert alert-danger">
-		<div class="d-sm-none">XS</div>
-		<div class="d-none d-sm-block d-md-none">SM</div>
-		<div class="d-none d-md-block d-lg-none">MD</div>
-		<div class="d-none d-lg-block d-xl-none">LG</div>
-		<div class="d-none d-xl-block">XL</div>
-	</div>
-			<?= $content ?>
+		<?= $content ?>
 
 		<?= $theme_footer_container ?>
 
