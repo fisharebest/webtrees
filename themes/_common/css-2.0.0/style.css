@@ -178,6 +178,13 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
+ /* fix problem with upcoming events on right side of screen */
+.wt-block .table-responsive,  .wt-block .table-responsive-upcoming-events {
+	display: block;
+	width: 100%;
+	overflow-x: auto!important;
+}
+
  /* my page chart enhancements */
 .wt-block-content-charts {
 	display: flex;
