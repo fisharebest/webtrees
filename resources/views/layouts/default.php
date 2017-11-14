@@ -6,6 +6,13 @@
 	<?= $theme_head ?>
 	<?= $theme_body_header ?>
 
+	<div class="alert alert-danger">
+		<div class="d-sm-none">XS</div>
+		<div class="d-none d-sm-block d-md-none">SM</div>
+		<div class="d-none d-md-block d-lg-none">MD</div>
+		<div class="d-none d-lg-block d-xl-none">LG</div>
+		<div class="d-none d-xl-block">XL</div>
+	</div>
 			<?= $content ?>
 
 		<?= $theme_footer_container ?>
@@ -28,7 +35,7 @@
 
 	</body>
 </html>
-<!-- webtrees: <?= WT_VERSION ?> -->' .
+<!-- webtrees: <?= WT_VERSION ?> -->
 <!-- Execution time: <?= I18N::number(microtime(true) - WT_START_TIME, 3) ?> seconds -->
 <!-- Memory: <?= I18N::number(memory_get_peak_usage(true) / 1024) ?> KB -->
 <!-- SQL queries: <?= I18N::number(Database::getQueryCount()) ?> -->
