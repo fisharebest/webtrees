@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,6 +43,8 @@ class BaseController {
 
 	/** @var Tree Create a page for which tree */
 	private $tree;
+
+	protected $layout = 'layouts/default';
 
 	/**
 	 * Startup activity
@@ -149,5 +152,29 @@ class BaseController {
 	 */
 	public function pageFooter() {
 		echo $this->getJavascript();
+	}
+
+	/**
+	 * Create a response object from a view.
+	 *
+	 * @param string   $name
+	 * @param string[] $data
+	 *
+	 * @return Response
+	 */
+	protected function viewResponse($name, $data): Response {
+		$theme = Theme::theme();
+
+
+$html = View::make($this->layout, [
+			'content'                => View::make($name, $data),
+			'tree'                   => $this->tree(),
+			'theme_head'             => $theme->head($this),
+			'theme_body_header'      => $theme->bodyHeader(),
+			'theme_footer_container' => $theme->footerContainer(),
+			'javascript'             => $this->getJavascript() . $theme->hookFooterExtraJavascript(),
+		]);
+
+		return new Response($html);
 	}
 }

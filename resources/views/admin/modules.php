@@ -206,3 +206,9 @@
 		<i class="fa fa-check"></i>
 		<?= I18N::translate('save') ?></button>
 </form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    $(".table-module-administration").dataTable(<?= json_encode(I18N::datatablesI18N()) ?>);
+  }
+</script>

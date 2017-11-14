@@ -45,8 +45,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 class AdminController extends BaseController {
 	// This is a list of old files and directories, from earlier versions of webtrees.
 	// git diff 1.7.9..master --name-status | grep ^D
-	const OLD_FILES
-		= [
+	const OLD_FILES = [
 			// Removed in 1.0.2
 			WT_ROOT . 'language/en.mo',
 			// Removed in 1.0.3
@@ -492,6 +491,8 @@ class AdminController extends BaseController {
 			WT_ROOT . 'themes/xenea/css-1.7.8',
 			WT_ROOT . 'themes/xenea/jquery-ui-1.11.2',
 		];
+
+	protected $layout = 'layouts/administration';
 
 	/**
 	 * Show the admin page for blocks.
@@ -1031,7 +1032,6 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function modules(): Response {
-		$javascript    = '<script>$(".table-module-administration").dataTable({' . I18N::datatablesI18N() . '});</script>';
 		$module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
 		return $this->viewResponse('admin/modules', [
@@ -1040,7 +1040,6 @@ class AdminController extends BaseController {
 			'module_status'     => $module_status,
 			'deleted_modules'   => $this->deletedModuleNames(),
 			'core_module_names' => Module::getCoreModuleNames(),
-			'javascript'        => $javascript,
 		]);
 	}
 
@@ -1194,10 +1193,9 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	protected function viewResponse($name, $data): Response {
-		$html = View::make('layouts/administration', [
+		$html = View::make($this->layout, [
 			'content'    => View::make($name, $data),
-			'javascript' => $data['javascript'] ?? '',
-			'title'      => strip_tags($data['title'] ?? ''),
+			'title'      => strip_tags($data['title']),
 			'common_url' => 'themes/_common/css-2.0.0/',
 			'theme_url'  => 'themes/_administration/css-2.0.0/',
 		]);

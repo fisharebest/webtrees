@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
@@ -74,7 +75,8 @@ class HomePageController extends PageController {
 			return $active_blocks[$module_name];
 		}, $side_blocks);
 
-		$content = View::make('home-page', [
+		return $this->viewResponse('home-page', [
+			'title'       => Html::escape($this->tree()->getTitle()),
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks
 		]);

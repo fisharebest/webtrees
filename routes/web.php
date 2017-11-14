@@ -38,7 +38,6 @@ if ($method === 'POST' && !Filter::checkCsrf()) {
 // Admin routes.
 if (Auth::isAdmin()) {
 	switch ($method . ':' . $route) {
-	default:
 	case 'GET:admin-blocks':
 		return ($controller = new AdminController)->blocks();
 
