@@ -1,6 +1,4 @@
 <?php use Fisharebest\Webtrees\Database; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
-<?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>

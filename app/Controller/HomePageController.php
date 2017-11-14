@@ -16,23 +16,9 @@
 namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Config;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

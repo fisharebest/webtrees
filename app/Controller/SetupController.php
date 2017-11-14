@@ -424,8 +424,8 @@ class SetupController extends BaseController {
 	/**
 	 * Create a response object from a view.
 	 *
-	 * @param string   $name
-	 * @param string[] $data
+	 * @param string  $name
+	 * @param mixed[] $data
 	 *
 	 * @return Response
 	 */

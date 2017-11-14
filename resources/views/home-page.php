@@ -1,9 +1,4 @@
 <?php use Fisharebest\Webtrees\Html; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-
-<h2 class="wt-page-title">
-	HOME PAGE
-</h2>
 
 <div class="row">
 	<?php if (empty($main_blocks) || empty($side_blocks)): ?>

@@ -15,11 +15,9 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -157,8 +155,8 @@ class BaseController {
 	/**
 	 * Create a response object from a view.
 	 *
-	 * @param string   $name
-	 * @param string[] $data
+	 * @param string  $name
+	 * @param mixed[] $data
 	 *
 	 * @return Response
 	 */
