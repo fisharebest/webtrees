@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-11-13 23:37+0000\n"
+"PO-Revision-Date: 2017-11-14 22:54+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ln/>\n"
 "Language: ln\n"
@@ -770,7 +770,7 @@ msgstr "Mbéba ya momɛsɛnɔ ezalí kozala na bikangeli míngi na bokɔ́tisi m
 
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "Esálela mokaboli ya sandúku ya bipɛ́sɛli ekokí kobátela ba sandúku ya bipɛ́sɛli ebelé ya kokabwana. Osengélí kopɔnɔ sandúku ya bipɛ́sɛli ezalí (eye ekelamí na mokambi mwa esálela mokaboli wa yɔ̌) tǒ kelá mɔ̌kɔ́ ya sika (sɔ́ki kɔ́nti na yɔ̌ ya mosáleli ya database ezalí na ndingisa ya kokoka)."
+msgstr "Esálela mokaboli ya sandúku ya bipɛ́sɛli ekokí kobátela ba sandúku ya bipɛ́sɛli ebelé ya kokabwana. Osengélí kopɔnɔ sandúku ya bipɛ́sɛli ezalí (eye ekelamí na mokambi mwa esálela mokaboli wa yɔ̌) tǒ kelá mɔ̌kɔ́ ya sika (sɔ́ki kɔ́nti na yɔ̌ ya mosáleli ya sandúku ya bipɛ́sɛli ezalí na ndingisa ya kokoka)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
@@ -1874,7 +1874,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:266
 msgid "Allow users to select their own theme"
-msgstr "Kopesa basáleli ndingisa bapɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
+msgstr "Kopesa basáleli ndingisa ya kopɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:491
@@ -1940,11 +1940,11 @@ msgstr "Nzelá isúsu ya komiyíngela mpé komibimisa."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "Mosangani ezalí moto mosúsu óyo azalakí na ekelá tǒ molúlú moye, lokóla motátoli tǒ sángó."
 
 #: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "Mosangani azalí moto mosúsu na mokangano na moto óyo, lokóla moninga tǒ mosáli."
+msgstr "Mosangani ezalí moto mosúsu óyo azalí na mokangano na moto óyo, lokóla moninga tǒ mosáli."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -15975,7 +15975,7 @@ msgstr "Ezángí bibandela"
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1763
 msgid "Witness"
-msgstr ""
+msgstr "Motátoli"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
