@@ -64,6 +64,8 @@
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+	/* Any wide content will have its own horizontal scrollbar */
+	overflow-x: hidden;
 }
 
 .wt-header-wrapper {
@@ -213,6 +215,12 @@
 
 .wt-sortable-item {
 	cursor: move;
+}
+
+/* Some charts are wider than the page. */
+.wt-chart {
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 /*
