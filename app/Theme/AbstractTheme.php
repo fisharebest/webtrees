@@ -1141,10 +1141,10 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChangeBlocks() {
-		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('ctype', 'gedcom|user', 'user') === 'user') {
-			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?user_id=' . Auth::id(), 'menu-change-blocks');
-		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree)) {
-			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?gedcom_id=' . $this->tree->getTreeId(), 'menu-change-blocks');
+		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('route') === 'user-page') {
+			return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
+		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree) && Filter::get('route') === 'tree-page') {
+			return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
 		} else {
 			return null;
 		}
@@ -1450,7 +1450,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuHomePage() {
 		if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
-			return new Menu(I18N::translate('Family tree'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
+			return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->getName()]), 'menu-tree');
 		} else {
 			$submenus = [];
 			foreach (Tree::getAll() as $tree) {
@@ -1459,7 +1459,7 @@ abstract class AbstractTheme {
 				} else {
 					$active = '';
 				}
-				$submenus[] = new Menu($tree->getTitleHtml(), 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(), $active . 'menu-tree-' . $tree->getTreeId());
+				$submenus[] = new Menu($tree->getTitleHtml(), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->getTreeId());
 			}
 
 			return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
@@ -1690,7 +1690,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuMyPage() {
-		return new Menu(I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
+		return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $this->tree->getName()]), 'menu-mypage');
 	}
 
 	/**

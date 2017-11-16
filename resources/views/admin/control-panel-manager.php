@@ -53,7 +53,7 @@
 				<?php foreach ($all_trees as $tree): ?>
 					<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
 						<th scope="row">
-							<a href="index.php?ctype=gedcom&amp;ged=<?= $tree->getNameUrl() ?>">
+							<a href="<?= Html::escape(route('tree-page', ['ged' => $tree->getName()])) ?>">
 								<?= Html::escape($tree->getName()) ?>
 								-
 								<?= Html::escape($tree->getTitle()) ?>

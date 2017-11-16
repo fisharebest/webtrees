@@ -750,7 +750,7 @@ a > .wt-icon-arrow-up:hover::before {
 /*
  * The home/my pages
  *
- * wt-home-page / wt-my-page
+ * wt-home-page / wt-user-page
  * +---wt-main-blocks
  * |   +---wt-block, wt-block-AAA
  * |   +---wt-block, wt-block-BBB
@@ -1398,7 +1398,7 @@ a:hover .nameZoom {
 	clear: both;
 }
 
-#my-page h1 {
+#user-page h1 {
 	margin: 0.25em auto 0.6em;
 }
 

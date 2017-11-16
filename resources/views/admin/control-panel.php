@@ -98,7 +98,7 @@
 				<?php foreach ($all_trees as $tree): ?>
 					<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
 						<th scope="row">
-							<a href="index.php?ctype=gedcom&amp;ged=<?= $tree->getNameUrl() ?>">
+							<a href="<?= Html::escape(route('tree-page', ['ged' => $tree->getName()])) ?>">
 								<?= Html::escape($tree->getName()) ?>
 								-
 								<?= Html::escape($tree->getTitle()) ?>
@@ -212,7 +212,7 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_trees_manage.php', [])) ?>">
 				<?= I18N::translate('Manage family trees') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('index_edit.php', ['gedcom_id' => '-1'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('tree-page-default-edit')) ?>">
 				<?= I18N::translate('Set the default blocks for new family trees') ?>
 			</a>
 			<?php if (count($all_trees) > 1): ?>
@@ -266,7 +266,7 @@
 			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
 				<?= I18N::translate('Delete inactive users') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('index_edit.php', ['user_id' => '-1'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('user-page-default-edit')) ?>">
 				<?= I18N::translate('Set the default blocks for new users') ?>
 			</a>
 		</p>

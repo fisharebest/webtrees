@@ -163,8 +163,7 @@ class BaseController {
 	protected function viewResponse($name, $data): Response {
 		$theme = Theme::theme();
 
-
-$html = View::make($this->layout, [
+		$html = View::make($this->layout, [
 			'content'                => View::make($name, $data),
 			'tree'                   => $this->tree(),
 			'theme_head'             => $theme->head($this),

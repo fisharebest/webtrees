@@ -114,7 +114,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function menuAdminTreesSetDefault() {
 		if (Auth::isAdmin() && count(Tree::getAll()) > 1) {
-			return new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
+			return new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new family trees'), route('tree-page-default-edit'));
 		} else {
 			return null;
 		}
@@ -131,7 +131,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			new Menu(/* I18N: Menu entry */ I18N::translate('Add a user'), 'admin_users.php?action=edit'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new users'), 'index_edit.php?user_id=-1'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new users'), route('user-page-default-edit')),
 		]);
 	}
 

@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\AdminController;
@@ -25,14 +27,17 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
-// Most requests are for a specific tree
-$tree = $WT_TREE;
+// Most requests are for a specific tree.
+$all_tree_names    = Tree::getNameList();
+$default_tree_name = Site::getPreference('DEFAULT_GEDCOM', current($all_tree_names));
+$tree_name         = $request->get('ged', $default_tree_name);
+$tree              = Tree::findByName($tree_name);
 
 // POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
-	$referer_url = $request->headers->get('referer', Html::url('index.php', []));
+	$referer = $request->headers->get('referer', route('tree-page'));
 
-	return (new RedirectResponse($referer_url))->prepare($request)->send();
+	return new RedirectResponse($referer);
 }
 
 // Admin routes.
@@ -88,6 +93,24 @@ if (Auth::isAdmin()) {
 
 	case 'POST:admin-update-module-status':
 		return ($controller = new AdminController)->updateModuleStatus($request);
+
+	case 'GET:tree-page-default-edit':
+		return ($controller = new HomePageController)->treePageDefaultEdit();
+
+	case 'POST:tree-page-default-update':
+		return ($controller = new HomePageController)->treePageDefaultUpdate($request);
+
+	case 'GET:user-page-default-edit':
+		return ($controller = new HomePageController)->userPageDefaultEdit();
+
+	case 'POST:user-page-default-update':
+		return ($controller = new HomePageController)->userPageDefaultUpdate($request);
+
+	case 'GET:user-page-user-edit':
+		return ($controller = new HomePageController)->userPageUserEdit($request);
+
+	case 'POST:user-page-user-update':
+		return ($controller = new HomePageController)->userPageUserUpdate($request);
 	}
 }
 
@@ -106,35 +129,52 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 	case 'GET:admin-changes-log-download':
 		return ($controller = new AdminController)->changesLogDownload($request);
 
-	case 'GET:home-page-edit':
-		return ($controller = new HomePageController)->treePageEdit($request);
+	case 'GET:tree-page-edit':
+		return ($controller = new HomePageController)->treePageEdit($tree);
 
-	case 'GET:home-page-update':
-		return ($controller = new HomePageController)->treePageUpdate($request);
+	case 'POST:tree-page-update':
+		return ($controller = new HomePageController)->treePageUpdate($request, $tree);
 	}
 }
 
 // Member routes.
 if ($tree instanceof Tree && Auth::isMember($tree) && $tree->getPreference('imported') === '1') {
 	switch ($method . ':' . $route) {
-	case 'GET:my-page':
-		return ($controller = new HomePageController)->userPage();
+	case 'GET:user-page':
+		return ($controller = new HomePageController)->userPage($tree, Auth::user());
 
-	case 'GET:my-page-edit':
-		return ($controller = new HomePageController)->userPageEdit($request);
+	case 'GET:user-page-block':
+		return ($controller = new HomePageController)->userPageBlock($request, $tree, Auth::user());
 
-	case 'GET:my-page-update':
-		return ($controller = new HomePageController)->userPageUpdate($request);
+	case 'GET:user-page-edit':
+		return ($controller = new HomePageController)->userPageEdit($tree, Auth::user());
+
+	case 'POST:user-page-update':
+		return ($controller = new HomePageController)->userPageUpdate($request, $tree, Auth::user());
 	}
 }
 
 // Public routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	switch ($method . ':' . $route) {
-	case 'GET:home-page':
-		return ($controller = new HomePageController)->treePage();
+	case 'GET:tree-page':
+		return ($controller = new HomePageController)->treePage($tree);
+
+	case 'GET:tree-page-block':
+		return ($controller = new HomePageController)->treePageBlock($request, $tree);
+
+	default:
+		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+	}
+} else {
+	if (Auth::check()) {
+		// No current tree? Import/create one.
+		return new RedirectResponse(route('admin-trees-manage', ['ged' => $tree->getName()]));
+	} else {
+		// Log in and try again
+		$referer = $request->headers->get('referer');
+
+		return new RedirectResponse(route('login', ['url' => $referer]));
 	}
 }
 
-// Default
-return new RedirectResponse(Html::url('index.php', []));

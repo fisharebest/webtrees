@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Controller;
 
 use DirectoryIterator;
@@ -469,6 +471,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'app/Controller/SimpleController.php',
 			WT_ROOT . 'assets/js-1.7.7',
 			WT_ROOT . 'data/html_purifier_cache',
+			WT_ROOT . 'index_edit.php',
 			WT_ROOT . 'packages/datatables-1.10.15',
 			WT_ROOT . 'packages/font-awesome-4.4.0',
 			WT_ROOT . 'packages/jquery-1.12.1',

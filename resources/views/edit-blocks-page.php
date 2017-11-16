@@ -1,146 +1,6 @@
-<?php
-/**
- * webtrees: online genealogy
- * Copyright (C) 2017 webtrees development team
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-namespace Fisharebest\Webtrees;
-
-use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
-
-/** @global Tree $WT_TREE */
-global $WT_TREE;
-
-require 'includes/session.php';
-
-$controller = new PageController;
-
-// Only one of $user_id and $gedcom_id should be set
-$user_id   = Filter::get('user_id', WT_REGEX_INTEGER, Filter::post('user_id', WT_REGEX_INTEGER));
-$gedcom_id = Filter::get('gedcom_id', WT_REGEX_INTEGER, Filter::post('gedcom_id', WT_REGEX_INTEGER));
-if ($user_id) {
-	$gedcom_id = null;
-	if ($user_id < 0) {
-		$controller->setPageTitle(I18N::translate('Set the default blocks for new users'));
-		$can_reset = false;
-	} else {
-		$controller->setPageTitle(I18N::translate('Change the “My page” blocks'));
-		$can_reset = true;
-	}
-} else {
-	if ($gedcom_id < 0) {
-		$controller->setPageTitle(I18N::translate('Set the default blocks for new family trees'));
-		$can_reset = false;
-	} else {
-		$controller->setPageTitle(I18N::translate('Change the “Home page” blocks'));
-		$can_reset = true;
-	}
-}
-
-// Only an admin can edit the "default" page
-// Only managers can edit the "home page"
-// Only a user or an admin can edit a user’s "my page"
-if (
-	$gedcom_id < 0 && !Auth::isAdmin() ||
-	$gedcom_id > 0 && !Auth::isManager(Tree::findById($gedcom_id)) ||
-	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
-) {
-	header('Location: index.php');
-
-	return;
-}
-
-$action = Filter::get('action');
-
-if ($can_reset && Filter::post('default') === '1') {
-	if ($user_id) {
-		$defaults = FunctionsDb::getUserBlocks(-1);
-	} else {
-		$defaults = FunctionsDb::getTreeBlocks(-1);
-	}
-	$main  = $defaults['main'];
-	$right = $defaults['side'];
-} else {
-	if (isset($_REQUEST['main'])) {
-		$main = $_REQUEST['main'];
-	} else {
-		$main = [];
-	}
-
-	if (isset($_REQUEST['side'])) {
-		$side = $_REQUEST['side'];
-	} else {
-		$side = [];
-	}
-}
-
-$all_blocks = [];
-foreach (Module::getActiveBlocks($WT_TREE) as $name => $block) {
-	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
-		$all_blocks[$name] = $block;
-	}
-}
-
-if ($user_id) {
-	$blocks = FunctionsDb::getUserBlocks($user_id);
-} else {
-	$blocks = FunctionsDb::getTreeBlocks($gedcom_id);
-}
-
-if ($action === 'update') {
-	foreach (['main', 'side'] as $location) {
-		if ($location === 'main') {
-			$new_blocks = $main;
-		} else {
-			$new_blocks = $side;
-		}
-		foreach ($new_blocks as $order => $block_name) {
-			if (is_numeric($block_name)) {
-				// existing block
-				Database::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute([$order, $block_name]);
-				// existing block moved location
-				Database::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute([$location, $block_name]);
-			} else {
-				// new block
-				if ($user_id) {
-					Database::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute([$user_id, $location, $order, $block_name]);
-				} else {
-					Database::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute([$gedcom_id, $location, $order, $block_name]);
-				}
-			}
-		}
-		// deleted blocks
-		foreach ($blocks[$location] as $block_id => $block_name) {
-			if (!in_array($block_id, $main) && !in_array($block_id, $side)) {
-				Database::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute([$block_id]);
-				Database::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute([$block_id]);
-			}
-		}
-	}
-	if ($user_id < 0 || $gedcom_id < 0 ) {
-		header('Location: ' . route('admin-control-panel'));
-	} elseif ($user_id > 0) {
-		header('Location: index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
-	} else {
-		header('Location: index.php?ctype=gedcom&ged=' . $WT_TREE->getNameUrl());
-	}
-
-	return;
-}
-
-$controller->pageHeader();
-
-?>
+<?php use Fisharebest\Webtrees\FontAwesome; ?>
+<?php use Fisharebest\Webtrees\Html; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <script>
   /**
@@ -260,20 +120,18 @@ $controller->pageHeader();
     }
   }
   var block_descr = { advice1: "&nbsp;"};
-  <?php foreach ($all_blocks as $block_name => $block): ?>
-    block_descr[<?= json_encode($block_name) ?>] = <?= json_encode($block->getDescription()) ?>;
-  <?php endforeach ?>
+	<?php foreach ($all_blocks as $block_name => $block): ?>
+  block_descr[<?= json_encode($block_name) ?>] = <?= json_encode($block->getDescription()) ?>;
+	<?php endforeach ?>
 </script>
 
-<h2><?= $controller->getPageTitle() ?></h2>
+<h2><?= $title ?></h2>
 
 <p>
 	<?= I18N::translate('Select a block and use the arrows to move it.') ?>
 </p>
 
-<form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options();" >
-	<input type="hidden" name="user_id"   value="<?= $user_id ?>">
-	<input type="hidden" name="gedcom_id" value="<?= $gedcom_id ?>">
+<form name="config_setup" method="post" action="<?= Html::escape($url_save) ?>" onsubmit="select_options();" >
 	<table border="1" id="change_blocks">
 		<thead>
 			<tr>
@@ -301,15 +159,15 @@ $controller->pageHeader();
 					<br>
 					<?= FontAwesome::linkIcon('arrow-end', I18N::translate('Move right'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "side_select");']) ?>
 					<br>
-						<?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "available_select");']) ?>
+					<?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "available_select");']) ?>
 					<br>
 					<?= FontAwesome::linkIcon('arrow-down', I18N::translate('Move down'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_down_block("main_select");']) ?>
 				</td>
 				<td class="optionbox center">
 					<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description('main_select');">
-						<?php foreach ($blocks['main'] as $block_id => $block_name): ?>
+						<?php foreach ($main_blocks as $block_id => $block): ?>
 							<option value="<?= $block_id ?>">
-								<?= $all_blocks[$block_name]->getTitle() ?>
+								<?= $all_blocks[$block->getName()]->getTitle() ?>
 							</option>
 						<?php endforeach ?>
 					</select>
@@ -318,7 +176,7 @@ $controller->pageHeader();
 					<?= FontAwesome::linkIcon('arrow-start', I18N::translate('Add'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("available_select", "main_select");']) ?>
 				</td>
 				<td class="optionbox center">
-					<select id="available_select" name="available[]" size="10" onchange="show_description('available_select');">
+					<select multiple id="available_select" size="10" onchange="show_description('available_select');">
 						<?php foreach ($all_blocks as $block_name => $block): ?>
 							<option value="<?= $block_name ?>">
 								<?= $block->getTitle() ?>
@@ -331,9 +189,9 @@ $controller->pageHeader();
 				</td>
 				<td class="optionbox center">
 					<select multiple="multiple" id="side_select" name="side[]" size="10" onchange="show_description('side_select');">
-						<?php foreach ($blocks['side'] as $block_id => $block_name): ?>
+						<?php foreach ($side_blocks as $block_id => $block): ?>
 							<option value="<?= $block_id ?>">
-								<?= $all_blocks[$block_name]->getTitle() ?>
+								<?= $all_blocks[$block->getName()]->getTitle() ?>
 							</option>
 						<?php endforeach ?>
 					</select>
@@ -359,25 +217,19 @@ $controller->pageHeader();
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="4">
-				<?php if ($can_reset): ?>
-					<label>
-						<input type="checkbox" name="default" value="1">
-						<?= I18N::translate('Restore the default block layout') ?>
-					</label>
-				<?php endif ?>
+					<?php if ($can_reset): ?>
+						<label>
+							<input type="checkbox" name="default">
+							<?= I18N::translate('Restore the default block layout') ?>
+						</label>
+					<?php endif ?>
 				</td>
 				<td class="topbottombar" colspan="3">
 					<button type="submit" class="btn btn-primary">
 						<?= FontAwesome::decorativeIcon('save') ?>
 						<?= I18N::translate('save') ?>
 					</button>
-					<?php if ($user_id < 0 || $gedcom_id < 0 ): ?>
-						<a class="btn btn-secondary" href="<?= Html::escape(route('admin-control-panel')) ?>">
-					<?php elseif ($user_id > 0): ?>
-						<a class="btn btn-secondary" href="index.php?ctype=user&amp;ged=<?= $WT_TREE->getNameHtml() ?>">
-					<?php else: ?>
-						<a class="btn btn-secondary" href="index.php?ctype=gedcom&amp;ged=<?= $WT_TREE->getNameHtml() ?>">
-					<?php endif ?>
+					<a class="btn btn-secondary" href="<?= Html::escape($url_cancel) ?>">
 						<?= FontAwesome::decorativeIcon('cancel') ?>
 						<?= I18N::translate('cancel') ?>
 					</a>
@@ -386,3 +238,4 @@ $controller->pageHeader();
 		</tfoot>
 	</table>
 </form>
+

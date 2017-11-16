@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 use stdclass;
@@ -21,7 +23,7 @@ use stdclass;
  * Provide an interface to the wt_user table.
  */
 class User {
-	/** @var  string The primary key of this user. */
+	/** @var  int The primary key of this user. */
 	private $user_id;
 
 	/** @var  string The login name of this user. */
@@ -45,7 +47,7 @@ class User {
 	 * @param stdclass $user A row from the wt_user table
 	 */
 	public function __construct(stdClass $user) {
-		$this->user_id   = $user->user_id;
+		$this->user_id   = (int) $user->user_id;
 		$this->user_name = $user->user_name;
 		$this->real_name = $user->real_name;
 		$this->email     = $user->email;
@@ -361,9 +363,9 @@ class User {
 	/**
 	 * Get the numeric ID for this user.
 	 *
-	 * @return string
+	 * @return int
 	 */
-	public function getUserId() {
+	public function getUserId(): int {
 		return $this->user_id;
 	}
 
@@ -487,7 +489,7 @@ class User {
 	 * @return string
 	 */
 	public function getPreference($setting_name, $default = '') {
-		if (empty($this->preferences) && $this->user_id !== null) {
+		if (empty($this->preferences) && $this->user_id !== 0) {
 			$this->preferences = Database::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value" .
 				" FROM `##user_setting`" .
@@ -513,7 +515,7 @@ class User {
 	 * @return User
 	 */
 	public function setPreference($setting_name, $setting_value) {
-		if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
+		if ($this->user_id !== 0 && $this->getPreference($setting_name) !== $setting_value) {
 			Database::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute([$this->user_id, $setting_name, $setting_value]);
 

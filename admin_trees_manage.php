@@ -395,7 +395,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- HOME PAGE BLOCKS-->
 							<li>
 								<i class="fa fa-li fa-th-large"></i>
-								<a href="index_edit.php?gedcom_id=<?= $tree->getTreeId() ?>">
+								<a href="<?= Html::escape(route('tree-page-edit', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Change the “Home page” blocks') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
