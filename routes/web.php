@@ -35,11 +35,15 @@ if ($method === 'POST' && !Filter::checkCsrf()) {
 }
 
 // Most requests will need the current tree and user.
-$all_tree_names    = array_keys(Tree::getNameList());
-$first_tree_name   = current($all_tree_names) ?? '';
-$default_tree_name = Site::getPreference('DEFAULT_GEDCOM') ?: $first_tree_name;
-$tree_name         = $request->get('ged', $default_tree_name);
-$tree              = Tree::findByName($tree_name);
+$all_tree_names     = array_keys(Tree::getNameList());
+$first_tree_name    = current($all_tree_names) ?? '';
+$previous_tree_name = Session::get('GEDCOM', $first_tree_name);
+$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
+$tree_name          = $request->get('ged', $default_tree_name);
+$tree               = Tree::findByName($tree_name);
+if ($previous_tree_name !== $tree_name) {
+	Session::put('GEDCOM', $tree_name);
+}
 
 $request->attributes->set('tree', $tree);
 $request->attributes->set('user', AUth::user());

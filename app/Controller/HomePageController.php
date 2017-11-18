@@ -68,7 +68,6 @@ class HomePageController extends PageController {
 	public function treePageBlock(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
-
 		$block_id = (int) $request->get('block_id');
 
 		$block = Database::prepare(
