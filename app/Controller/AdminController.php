@@ -472,6 +472,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'assets/js-1.7.7',
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'index_edit.php',
+			WT_ROOT . 'packages/bootstrap-rtl-3.3.4',
 			WT_ROOT . 'packages/datatables-1.10.15',
 			WT_ROOT . 'packages/font-awesome-4.4.0',
 			WT_ROOT . 'packages/jquery-1.12.1',

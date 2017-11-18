@@ -18,11 +18,6 @@
 	white-space: normal !important;
 }
 
-/* bootstrap-rtl isn't up-to-date with bootstrap4-beta2 */
-[dir=rtl] body {
-	text-align: right;
-}
-
  /* Override Bootstrap formatting */
  .row .select2-selection--single {
 }
