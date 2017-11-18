@@ -35,9 +35,9 @@ if ($method === 'POST' && !Filter::checkCsrf()) {
 }
 
 // Most requests will need the current tree and user.
-$all_tree_names    = Tree::getNameList();
+$all_tree_names    = array_keys(Tree::getNameList());
 $first_tree_name   = current($all_tree_names) ?? '';
-$default_tree_name = Site::getPreference('DEFAULT_GEDCOM', $first_tree_name);
+$default_tree_name = Site::getPreference('DEFAULT_GEDCOM') ?: $first_tree_name;
 $tree_name         = $request->get('ged', $default_tree_name);
 $tree              = Tree::findByName($tree_name);
 
@@ -173,7 +173,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 } else {
 	if (Auth::check()) {
 		// No current tree? Import/create one.
-		return new RedirectResponse(route('admin-trees-manage', ['ged' => $tree->getName()]));
+		return new RedirectResponse(Html::url('admin_trees_manage.php', []));
 	} else {
 		// Log in and try again
 		$referer = $request->headers->get('referer');
