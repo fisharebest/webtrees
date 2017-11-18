@@ -579,11 +579,11 @@ class FunctionsPrint {
 		echo I18N::translate('Fact or event');
 		echo '</th>';
 		echo '<td>';
-		echo '<form action="edit_interface.php">';
+		echo '<form action="edit_interface.php" onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
 		echo '<input type="hidden" name="action" value="add">';
 		echo '<input type="hidden" name="xref" value="' . $id . '">';
 		echo '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
-		echo '<select name="fact">';
+		echo '<select id="add-fact" name="fact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
 			echo '<option value="', $fact, '">', $fact_name, '</option>';
