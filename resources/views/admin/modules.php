@@ -31,7 +31,7 @@
 	</div>
 <?php endforeach ?>
 
-<form action="<?= Html::escape(route('admin-control-panel')) ?>" method="POST">
+<form action="<?= Html::escape(route('admin-update-module-status')) ?>" method="POST">
 	<input type="hidden" name="route" value="admin-update-module-status">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true">
