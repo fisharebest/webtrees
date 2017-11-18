@@ -27,21 +27,22 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
-// Most requests will need the current tree and user.
-$all_tree_names    = Tree::getNameList();
-$default_tree_name = Site::getPreference('DEFAULT_GEDCOM', current($all_tree_names));
-$tree_name         = $request->get('ged', $default_tree_name);
-$tree              = Tree::findByName($tree_name);
-
-$request->attributes->set('tree', $tree);
-$request->attributes->set('user', AUth::user());
-
 // POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
 	$referer = $request->headers->get('referer', route('tree-page'));
 
 	return new RedirectResponse($referer);
 }
+
+// Most requests will need the current tree and user.
+$all_tree_names    = Tree::getNameList();
+$first_tree_name   = current($all_tree_names) ?? '';
+$default_tree_name = Site::getPreference('DEFAULT_GEDCOM', $first_tree_name);
+$tree_name         = $request->get('ged', $default_tree_name);
+$tree              = Tree::findByName($tree_name);
+
+$request->attributes->set('tree', $tree);
+$request->attributes->set('user', AUth::user());
 
 // Admin routes.
 if (Auth::isAdmin()) {
