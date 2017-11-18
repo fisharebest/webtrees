@@ -33,10 +33,14 @@ $block_info = Database::prepare(
 
 // A non-existant block?
 if ($block_info === null) {
-	header('Location: ' . Html::url('index.php', []));
+	header('Location: ' . route('tree-page', ['ged' => $WT_TREE->getName()]));
 }
 
-$ctype = $block_info !== null && $block_info->user_id !== null ? 'user' : 'gedcom';
+if ($block_info->user_id !== null) {
+	$url = route('user-page', ['ged' => $WT_TREE->getName()]);
+} else {
+	$url = route('tree-page', ['ged' => $WT_TREE->getName()]);
+}
 
 // Check access. (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
@@ -46,7 +50,7 @@ if (
 	$block_info->gedcom_id && !Auth::isManager(Tree::findById($block_info->gedcom_id)) ||
 	$block_info->user_id && $block_info->user_id != Auth::id() && !Auth::isAdmin()
 ) {
-	header('Location: ' . Html::url('index.php', ['ctype' => $ctype, 'ged' => $WT_TREE->getName()]));
+	header('Location: ' . $url);
 
 	return;
 }
@@ -54,7 +58,7 @@ if (
 $block = $blocks[$block_info->module_name];
 
 if (Filter::post('save')) {
-	header('Location: ' . Html::url('index.php', ['ctype' => $ctype, 'ged' => $WT_TREE->getName()]));
+	header('Location: ' . $url);
 	$block->configureBlock($block_id);
 
 	return;
@@ -84,7 +88,7 @@ if (Module::getModuleByName('ckeditor')) {
 				<?= FontAwesome::decorativeIcon('save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="index.php?ctype=<?= $ctype ?>&amp;ged=<?= $WT_TREE->getNameHtml() ?>">
+			<a class="btn btn-secondary" href="<?= Html::escape($url) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>
