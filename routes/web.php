@@ -27,11 +27,14 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
-// Most requests are for a specific tree.
+// Most requests will need the current tree and user.
 $all_tree_names    = Tree::getNameList();
 $default_tree_name = Site::getPreference('DEFAULT_GEDCOM', current($all_tree_names));
 $tree_name         = $request->get('ged', $default_tree_name);
 $tree              = Tree::findByName($tree_name);
+
+$request->attributes->set('tree', $tree);
+$request->attributes->set('user', AUth::user());
 
 // POST request? Check the CSRF token.
 if ($method === 'POST' && !Filter::checkCsrf()) {
@@ -130,10 +133,10 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 		return ($controller = new AdminController)->changesLogDownload($request);
 
 	case 'GET:tree-page-edit':
-		return ($controller = new HomePageController)->treePageEdit($tree);
+		return ($controller = new HomePageController)->treePageEdit($request);
 
 	case 'POST:tree-page-update':
-		return ($controller = new HomePageController)->treePageUpdate($request, $tree);
+		return ($controller = new HomePageController)->treePageUpdate($request);
 	}
 }
 
@@ -141,16 +144,16 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 if ($tree instanceof Tree && Auth::isMember($tree) && $tree->getPreference('imported') === '1') {
 	switch ($method . ':' . $route) {
 	case 'GET:user-page':
-		return ($controller = new HomePageController)->userPage($tree, Auth::user());
+		return ($controller = new HomePageController)->userPage($request);
 
 	case 'GET:user-page-block':
-		return ($controller = new HomePageController)->userPageBlock($request, $tree, Auth::user());
+		return ($controller = new HomePageController)->userPageBlock($request);
 
 	case 'GET:user-page-edit':
-		return ($controller = new HomePageController)->userPageEdit($tree, Auth::user());
+		return ($controller = new HomePageController)->userPageEdit($request);
 
 	case 'POST:user-page-update':
-		return ($controller = new HomePageController)->userPageUpdate($request, $tree, Auth::user());
+		return ($controller = new HomePageController)->userPageUpdate($request);
 	}
 }
 
@@ -158,10 +161,10 @@ if ($tree instanceof Tree && Auth::isMember($tree) && $tree->getPreference('impo
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	switch ($method . ':' . $route) {
 	case 'GET:tree-page':
-		return ($controller = new HomePageController)->treePage($tree);
+		return ($controller = new HomePageController)->treePage($request);
 
 	case 'GET:tree-page-block':
-		return ($controller = new HomePageController)->treePageBlock($request, $tree);
+		return ($controller = new HomePageController)->treePageBlock($request);
 
 	default:
 		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));

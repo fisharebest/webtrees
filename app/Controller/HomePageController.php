@@ -36,11 +36,14 @@ class HomePageController extends PageController {
 	/**
 	 * Show a tree's page.
 	 *
-	 * @param Tree $tree
+	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function treePage(Tree $tree): Response {
+	public function treePage(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$tree_id      = $tree->getTreeId();
 		$access_level = Auth::accessLevel($tree);
 		$main_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'main');
@@ -59,11 +62,13 @@ class HomePageController extends PageController {
 	 * Load block asynchronously.
 	 *
 	 * @param Request $request
-	 * @param Tree    $tree
 	 *
 	 * @return Response
 	 */
-	public function treePageBlock(Request $request, Tree $tree): Response {
+	public function treePageBlock(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$block_id = (int) $request->get('block_id');
 
 		$block = Database::prepare(
@@ -133,11 +138,14 @@ class HomePageController extends PageController {
 	/**
 	 * Show a form to edit the blocks on a tree's page.
 	 *
-	 * @param Tree $tree
+	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function treePageEdit(Tree $tree): Response {
+	public function treePageEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$main_blocks = $this->getBlocksForTreePage($tree->getTreeId(), Auth::accessLevel($tree), 'main');
 		$side_blocks = $this->getBlocksForTreePage($tree->getTreeId(), Auth::accessLevel($tree), 'side');
 		$all_blocks  = $this->getAvailableTreeBlocks();
@@ -160,11 +168,13 @@ class HomePageController extends PageController {
 	 * Save updated blocks on a tree's page.
 	 *
 	 * @param Request $request
-	 * @param Tree    $tree
 	 *
 	 * @return RedirectResponse
 	 */
-	public function treePageUpdate(Request $request, Tree $tree): RedirectResponse {
+	public function treePageUpdate(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$defaults = (bool) $request->get('defaults');
 
 		if ($defaults) {
@@ -183,12 +193,17 @@ class HomePageController extends PageController {
 	/**
 	 * Show a users's page.
 	 *
-	 * @param Tree $tree
-	 * @param User $user
+	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function userPage(Tree $tree, User $user) {
+	public function userPage(Request $request) {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
 		$tree_id      = $tree->getTreeId();
 		$user_id      = $user->getUserId();
 		$access_level = Auth::accessLevel($tree, $user);
@@ -208,12 +223,16 @@ class HomePageController extends PageController {
 	 * Load block asynchronously.
 	 *
 	 * @param Request $request
-	 * @param Tree    $tree
-	 * @param User    $user
 	 *
 	 * @return Response
 	 */
-	public function userPageBlock(Request $request, Tree $tree, User $user): Response {
+	public function userPageBlock(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
 		$block_id = (int) $request->get('block_id');
 
 		$block = Database::prepare(
@@ -283,12 +302,17 @@ class HomePageController extends PageController {
 	/**
 	 * Show a form to edit the blocks on the user's page.
 	 *
-	 * @param Tree $tree
-	 * @param User $user
+	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function userPageEdit(Tree $tree, User $user): Response {
+	public function userPageEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
 		$main_blocks = $this->getBlocksForUserPage($tree->getTreeId(), $user->getUserId(), Auth::accessLevel($tree, $user), 'main');
 		$side_blocks = $this->getBlocksForUserPage($tree->getTreeId(), $user->getUserId(), Auth::accessLevel($tree, $user), 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
@@ -311,12 +335,16 @@ class HomePageController extends PageController {
 	 * Save the updted blocks on a user's page.
 	 *
 	 * @param Request $request
-	 * @param Tree    $tree
-	 * @param User    $user
 	 *
 	 * @return RedirectResponse
 	 */
-	public function userPageUpdate(Request $request, Tree $tree, User $user): RedirectResponse {
+	public function userPageUpdate(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
 		$defaults = (bool) $request->get('defaults');
 
 		if ($defaults) {
