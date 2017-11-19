@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
@@ -26,6 +27,8 @@
 		<?php if (I18N::direction() === 'rtl'): ?>
 			<link rel="stylesheet" type="text/css" href="<?= WT_BOOTSTRAP_RTL_CSS_URL ?>">
 		<?php endif ?>
+
+		<?= DebugBar::renderHead() ?>
 	</head>
 	<body class="container wt-global">
 		<header>
@@ -78,5 +81,7 @@
 		<script src="<?= Html::escape(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL) ?>"></script>
 		<script src="<?= Html::escape(WT_WEBTREES_JS_URL) ?>"></script>
 		<script src="<?= Html::escape(WT_ADMIN_JS_URL) ?>"></script>
+
+		<?= DebugBar::render() ?>
 	</body>
 </html>

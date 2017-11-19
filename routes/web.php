@@ -17,172 +17,66 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\AdminController;
-use Fisharebest\Webtrees\Controller\HomePageController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-
-// The HTTP request.
-$request = Request::createFromGlobals();
-$method  = $request->getMethod();
-$route   = $request->get('route');
-
-// POST request? Check the CSRF token.
-if ($method === 'POST' && !Filter::checkCsrf()) {
-	$referer = $request->headers->get('referer', route('tree-page'));
-
-	return new RedirectResponse($referer);
-}
-
-// Most requests will need the current tree and user.
-$all_tree_names     = array_keys(Tree::getNameList());
-$first_tree_name    = current($all_tree_names) ?? '';
-$previous_tree_name = Session::get('GEDCOM', $first_tree_name);
-$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
-$tree_name          = $request->get('ged', $default_tree_name);
-$tree               = Tree::findByName($tree_name);
-if ($previous_tree_name !== $tree_name) {
-	Session::put('GEDCOM', $tree_name);
-}
-
-$request->attributes->set('tree', $tree);
-$request->attributes->set('user', AUth::user());
+$routes = [];
 
 // Admin routes.
 if (Auth::isAdmin()) {
-	switch ($method . ':' . $route) {
-	case 'GET:admin-blocks':
-		return ($controller = new AdminController)->blocks();
-
-	case 'GET:admin-charts':
-		return ($controller = new AdminController)->charts();
-
-	case 'GET:admin-clean-data':
-		return ($controller = new AdminController)->cleanData();
-
-	case 'POST:admin-clean-data':
-		return ($controller = new AdminController)->cleanDataAction($request);
-
-	case 'GET:admin-control-panel':
-		return ($controller = new AdminController)->controlPanel();
-
-	case 'POST:admin-delete-module-settings':
-		return ($controller = new AdminController)->deleteModuleSettings($request);
-
-	case 'GET:admin-fix-level-0-media':
-		return ($controller = new AdminController)->fixLevel0Media();
-
-	case 'POST:admin-fix-level-0-media-action':
-		return ($controller = new AdminController)->fixLevel0MediaAction($request);
-
-	case 'GET:admin-fix-level-0-media-data':
-		return ($controller = new AdminController)->fixLevel0MediaData($request);
-
-	case 'GET:admin-menus':
-		return ($controller = new AdminController)->menus();
-
-	case 'GET:admin-modules':
-		return ($controller = new AdminController)->modules();
-
-	case 'GET:admin-reports':
-		return ($controller = new AdminController)->reports();
-
-	case 'GET:admin-server-information':
-		return ($controller = new AdminController)->serverInformation();
-
-	case 'GET:admin-sidebars':
-		return ($controller = new AdminController)->sidebars();
-
-	case 'GET:admin-tabs':
-		return ($controller = new AdminController)->tabs();
-
-	case 'POST:admin-update-module-access':
-		return ($controller = new AdminController)->updateModuleAccess($request);
-
-	case 'POST:admin-update-module-status':
-		return ($controller = new AdminController)->updateModuleStatus($request);
-
-	case 'GET:tree-page-default-edit':
-		return ($controller = new HomePageController)->treePageDefaultEdit();
-
-	case 'POST:tree-page-default-update':
-		return ($controller = new HomePageController)->treePageDefaultUpdate($request);
-
-	case 'GET:user-page-default-edit':
-		return ($controller = new HomePageController)->userPageDefaultEdit();
-
-	case 'POST:user-page-default-update':
-		return ($controller = new HomePageController)->userPageDefaultUpdate($request);
-
-	case 'GET:user-page-user-edit':
-		return ($controller = new HomePageController)->userPageUserEdit($request);
-
-	case 'POST:user-page-user-update':
-		return ($controller = new HomePageController)->userPageUserUpdate($request);
-	}
+	$routes += [
+		'GET:admin-blocks'                    => 'AdminController@blocks',
+		'GET:admin-charts'                    => 'AdminController@charts',
+		'GET:admin-clean-data'                => 'AdminController@cleanData',
+		'POST:admin-clean-data'               => 'AdminController@cleanDataAction',
+		'GET:admin-control-panel'             => 'AdminController@controlPanel',
+		'POST:admin-delete-module-settings'   => 'AdminController@deleteModuleSettings',
+		'GET:admin-fix-level-0-media'         => 'AdminController@fixLevel0Media',
+		'POST:admin-fix-level-0-media-action' => 'AdminController@fixLevel0MediaAction',
+		'GET:admin-fix-level-0-media-data'    => 'AdminController@fixLevel0MediaData',
+		'GET:admin-menus'                     => 'AdminController@menus',
+		'GET:admin-modules'                   => 'AdminController@modules',
+		'GET:admin-reports'                   => 'AdminController@reports',
+		'GET:admin-server-information'        => 'AdminController@serverInformation',
+		'GET:admin-sidebars'                  => 'AdminController@sidebars',
+		'GET:admin-tabs'                      => 'AdminController@tabs',
+		'POST:admin-update-module-access'     => 'AdminController@updateModuleAccess',
+		'POST:admin-update-module-status'     => 'AdminController@updateModuleStatus',
+		'GET:tree-page-default-edit'          => 'HomePageController@treePageDefaultEdit',
+		'POST:tree-page-default-update'       => 'HomePageController@treePageDefaultUpdate',
+		'GET:user-page-default-edit'          => 'HomePageController@userPageDefaultEdit',
+		'POST:user-page-default-update'       => 'HomePageController@userPageDefaultUpdate',
+		'GET:user-page-user-edit'             => 'HomePageController@userPageUserEdit',
+		'POST:user-page-user-update'          => 'HomePageController@userPageUserUpdate',
+	];
 }
 
 // Manager routes.
 if ($tree instanceof Tree && Auth::isManager($tree)) {
-	switch ($method . ':' . $route) {
-	case 'GET:admin-control-panel-manager':
-		return ($controller = new AdminController)->controlPanelManager();
-
-	case 'GET:admin-changes-log':
-		return ($controller = new AdminController)->changesLog($request);
-
-	case 'GET:admin-changes-log-data':
-		return ($controller = new AdminController)->changesLogData($request);
-
-	case 'GET:admin-changes-log-download':
-		return ($controller = new AdminController)->changesLogDownload($request);
-
-	case 'GET:tree-page-edit':
-		return ($controller = new HomePageController)->treePageEdit($request);
-
-	case 'POST:tree-page-update':
-		return ($controller = new HomePageController)->treePageUpdate($request);
-	}
+	$routes += [
+		'GET:admin-control-panel-manager' => 'AdminController@controlPanelManager',
+		'GET:admin-changes-log'           => 'AdminController@changesLog',
+		'GET:admin-changes-log-data'      => 'AdminController@changesLogData',
+		'GET:admin-changes-log-download'  => 'AdminController@changesLogDownload',
+		'GET:tree-page-edit'              => 'HomePageController@treePageEdit',
+		'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
+	];
 }
 
 // Member routes.
-if ($tree instanceof Tree && Auth::isMember($tree) && $tree->getPreference('imported') === '1') {
-	switch ($method . ':' . $route) {
-	case 'GET:user-page':
-		return ($controller = new HomePageController)->userPage($request);
-
-	case 'GET:user-page-block':
-		return ($controller = new HomePageController)->userPageBlock($request);
-
-	case 'GET:user-page-edit':
-		return ($controller = new HomePageController)->userPageEdit($request);
-
-	case 'POST:user-page-update':
-		return ($controller = new HomePageController)->userPageUpdate($request);
-	}
+if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
+	$routes += [
+		'GET:user-page'         => 'HomePageController@userPage',
+		'GET:user-page-block'   => 'HomePageController@userPageBlock',
+		'GET:user-page-edit'    => 'HomePageController@userPageEdit',
+		'POST:user-page-update' => 'HomePageController@userPageUpdate',
+	];
 }
 
 // Public routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-	switch ($method . ':' . $route) {
-	case 'GET:tree-page':
-		return ($controller = new HomePageController)->treePage($request);
-
-	case 'GET:tree-page-block':
-		return ($controller = new HomePageController)->treePageBlock($request);
-
-	default:
-		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
-	}
-} else {
-	if (Auth::check()) {
-		// No current tree? Import/create one.
-		return new RedirectResponse(Html::url('admin_trees_manage.php', []));
-	} else {
-		// Log in and try again
-		$referer = $request->headers->get('referer');
-
-		return new RedirectResponse(route('login', ['url' => $referer]));
-	}
+	$routes += [
+		'GET:'                => 'HomePageController@treePage',
+		'GET:tree-page'       => 'HomePageController@treePage',
+		'GET:tree-page-block' => 'HomePageController@treePageBlock',
+	];
 }
 
+return $routes;

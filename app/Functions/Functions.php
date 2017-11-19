@@ -61,6 +61,8 @@ class Functions {
 					Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
 				}
 			} catch (RequestException $ex) {
+				DebugBar::addThrowable($ex);
+
 			}
 		}
 

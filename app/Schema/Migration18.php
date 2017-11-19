@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use PDOException;
 
 /**
@@ -39,6 +40,8 @@ class Migration18 implements MigrationInterface {
 				" ADD UNIQUE KEY ux1 (p_parent_id, p_file, p_place)" // placelist.php
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already done?
 		}
 	}

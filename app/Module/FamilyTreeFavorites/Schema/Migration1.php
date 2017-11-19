@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
@@ -41,6 +42,8 @@ class Migration1 implements MigrationInterface {
 				" ADD KEY news_ix1 (gedcom_id, user_id)"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -53,6 +56,8 @@ class Migration1 implements MigrationInterface {
 				" SET f.gedcom_id=g.gedcom_id, f.user_id=u.user_id"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -62,6 +67,8 @@ class Migration1 implements MigrationInterface {
 				"DELETE FROM `##favorites` WHERE user_id IS NULL AND gedcom_id IS NULL"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -71,6 +78,8 @@ class Migration1 implements MigrationInterface {
 				"ALTER TABLE `##favorites` DROP fv_username, DROP fv_file"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -80,6 +89,8 @@ class Migration1 implements MigrationInterface {
 				"RENAME TABLE `##favorites` TO `##favorite`"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 	}

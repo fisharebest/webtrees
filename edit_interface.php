@@ -801,6 +801,8 @@ case 'media-save':
 				rename($old_server_file, $new_server_file);
 				FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'info');
 			} catch (ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($OLD_FILE), Html::filename($FILE)), 'danger');
 			}
 		}
@@ -812,6 +814,8 @@ case 'media-save':
 			try {
 				rename($old_server_thumb, $new_server_thumb);
 			} catch (ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 			}
 		}
 	}

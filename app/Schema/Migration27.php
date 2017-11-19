@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use PDOException;
 
 /**
@@ -37,6 +38,8 @@ class Migration27 implements MigrationInterface {
 			// Indexes created by schema update 17-18
 			Database::exec("ALTER TABLE `##site_access_rule` DROP INDEX ix4, DROP INDEX ix5, DROP INDEX ix6");
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already done?
 		}
 
@@ -54,6 +57,8 @@ class Migration27 implements MigrationInterface {
 				" ADD        INDEX `##site_access_rule_ix2` (rule)"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already done?
 		}
 	}

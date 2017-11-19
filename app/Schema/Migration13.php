@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use PDOException;
 
 /**
@@ -30,6 +31,8 @@ class Migration13 implements MigrationInterface {
 		try {
 			Database::exec("ALTER TABLE `##individuals` DROP i_isdead");
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already done this?
 		}
 	}

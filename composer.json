@@ -45,6 +45,7 @@
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "*",
+		"maximebf/debugbar": "*",
 		"mockery/mockery": "*",
 		"phpunit/phpunit": "*",
 		"satooshi/php-coveralls": "*"

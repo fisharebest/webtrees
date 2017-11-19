@@ -6526,6 +6526,8 @@ class Stats {
 				->execute([Auth::id()])
 				->fetchOne();
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// The module may not be installed, so the table may not exist.
 			$number = 0;
 		}
@@ -6544,6 +6546,8 @@ class Stats {
 				->execute([$this->tree->getTreeId()])
 				->fetchOne();
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// The module may not be installed, so the table may not exist.
 			$number = 0;
 		}

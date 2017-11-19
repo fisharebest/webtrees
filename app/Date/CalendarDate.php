@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Date;
 
+use DebugBar\DebugBar;
 use FishareBest\ExtCalendar\CalendarInterface;
 use FishareBest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\I18N;
@@ -534,6 +535,8 @@ class CalendarDate {
 		try {
 			return $this->calendar->daysInMonth($this->y, $this->m);
 		} catch (\InvalidArgumentException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// calendar.php calls this with "DD MMM" dates, for which we cannot calculate
 			// the length of a month. Should we validate this before calling this function?
 			return 0;

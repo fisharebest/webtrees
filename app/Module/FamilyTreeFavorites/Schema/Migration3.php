@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
@@ -30,6 +31,8 @@ class Migration3 implements MigrationInterface {
 		try {
 			Database::exec("ALTER TABLE `##favorite` CHANGE note note VARCHAR(1000) NULL");
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 	}

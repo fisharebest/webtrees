@@ -230,6 +230,8 @@ foreach (Tree::getAll() as $tree) {
 		rename($filename . '.tmp', $filename);
 		echo '<br>', I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), $icon_success;
 	} catch (\ErrorException $ex) {
+		DebugBar::addThrowable($ex);
+
 		echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($filename)), $icon_failure;
 	}
 }
@@ -242,6 +244,8 @@ try {
 	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
 	copy('app/GedcomTag.php', WT_DATA_DIR . 'GedcomTag' . date('-Y-m-d') . '.php');
 } catch (\ErrorException $ex) {
+	DebugBar::addThrowable($ex);
+
 	// No problem if we cannot do this.
 }
 
@@ -310,6 +314,8 @@ try {
 
 	echo '</li>';
 } catch (Exception $ex) {
+	DebugBar::addThrowable($ex);
+
 	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '<br>', $ex->getMessage();
 	echo '</li></ul></form>';
@@ -327,6 +333,8 @@ try {
 	$data_filesystem->put($lock_file, $lock_file_text);
 	echo '<br>', I18N::translate('The file %s has been created.', Html::filename($lock_file)), $icon_success;
 } catch (\ErrorException $ex) {
+	DebugBar::addThrowable($ex);
+
 	echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($lock_file)), $icon_failure;
 }
 
@@ -353,7 +361,9 @@ try {
 	$end_time = microtime(true);
 
 	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, I18N::number($end_time - $start_time, 2)), $icon_success;
-} Catch (Exception $ex) {
+} catch (Exception $ex) {
+	DebugBar::addThrowable($ex);
+
 	echo '<br>', I18N::translate('The file %s could not be updated.', Html::filename($file['path'])), $icon_failure;
 	echo '</li></ul></form>';
 	echo '<p class="error">', I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';

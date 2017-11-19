@@ -100,6 +100,8 @@ if ($PGV_PATH) {
 					$PGV_PATH = null;
 				}
 			} catch (PDOException $ex) {
+				DebugBar::addThrowable($ex);
+
 				FlashMessages::addMessage(
 					/* I18N: %s is a database name/identifier */
 					I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
@@ -308,6 +310,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			" AND us3.setting_name='email'"
 		)->execute();
 	} catch (PDOException $ex) {
+		DebugBar::addThrowable($ex);
+
 		// Ignore duplicates
 	}
 
@@ -391,6 +395,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					Database::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
 						->execute([$array['id'], $array['gedcom']]);
 				} catch (PDOException $ex) {
+					DebugBar::addThrowable($ex);
+
 					// Ignore duplicates
 				}
 				// insert gedcom
@@ -400,6 +406,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 							Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
 								->execute([$array['id'], $key, $value]);
 						} catch (PDOException $ex) {
+							DebugBar::addThrowable($ex);
+
 							// Ignore duplicates
 						}
 					}
@@ -418,6 +426,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM `{$DBNAME}`.`{$TBLPREFIX}users`"
 		)->execute();
 	} catch (PDOException $ex) {
+		DebugBar::addThrowable($ex);
+
 		// This could only fail if;
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
@@ -524,6 +534,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
 		)->execute();
 	} catch (PDOException $ex) {
+		DebugBar::addThrowable($ex);
+
 		// This could only fail if;
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
@@ -556,6 +568,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				}
 			}
 		} catch (\ErrorException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Invalid serialized data?
 		}
 
@@ -570,6 +584,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				}
 			}
 		} catch (\ErrorException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Invalid serialized data?
 		}
 
@@ -584,6 +600,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 				}
 			}
 		} catch (\ErrorException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Invalid serialized data?
 		}
 	}
@@ -992,6 +1010,8 @@ if ($PGV_SCHEMA_VERSION >= 13) {
 					try {
 						$statement->execute([$GED_DATA['id'], $page_name, $page_parameter, $match[3]]);
 					} catch (PDOException $ex) {
+						DebugBar::addThrowable($ex);
+
 						// Primary key violation? Ignore?
 					}
 				}
@@ -1032,6 +1052,8 @@ try {
 		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)"
 	)->execute();
 } catch (PDOException $ex) {
+	DebugBar::addThrowable($ex);
+
 	// This table will only exist if the favorites module is installed in WT
 }
 
@@ -1048,6 +1070,8 @@ try {
 		" LEFT JOIN `##user` u ON (n.n_username=u.user_name)"
 	)->execute();
 } catch (PDOException $ex) {
+	DebugBar::addThrowable($ex);
+
 	// This table will only exist if the news/blog module is installed in WT
 }
 
@@ -1084,6 +1108,8 @@ try {
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
 	)->execute();
 } catch (PDOException $ex) {
+	DebugBar::addThrowable($ex);
+
 	// This table will only exist if the gm module is installed in PhpGedView/WT
 }
 

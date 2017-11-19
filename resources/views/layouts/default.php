@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\Database; ?>
+<?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>
@@ -26,6 +27,8 @@
 		<script src="<?= Html::escape(WT_SELECT2_JS_URL) ?>"></script>
 		<script src="<?= Html::escape(WT_WEBTREES_JS_URL) ?>"></script>
 
+		<?= DebugBar::renderHead() ?>
+		<?= DebugBar::render() ?>
 	</body>
 </html>
 <!-- webtrees: <?= WT_VERSION ?> -->

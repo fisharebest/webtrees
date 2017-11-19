@@ -139,6 +139,8 @@ case 'login':
 
 		return;
 	} catch (\Exception $ex) {
+		DebugBar::addThrowable($ex);
+
 		$message = $ex->getMessage();
 	}
 	// No break;

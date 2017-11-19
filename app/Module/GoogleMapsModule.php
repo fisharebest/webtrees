@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\ChartController;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -2110,8 +2111,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$placefiles[] = '/' . $file->getFilename();
 				}
 			}
-		} catch (\Exception $e) {
-			Log::addErrorLog(basename($e->getFile()) . ' - line: ' . $e->getLine() . ' - ' . $e->getMessage());
+		} catch (\Exception $ex) {
+		DebugBar::addThrowable($ex);
+		
+			Log::addErrorLog(basename($ex->getFile()) . ' - line: ' . $ex->getLine() . ' - ' . $ex->getMessage());
 		}
 
 		return $placefiles;
@@ -2247,6 +2250,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				'place_id' => $place_id,
 			]);
 		} catch (\Exception $ex) {
+		DebugBar::addThrowable($ex);
+		
 			FlashMessages::addMessage(I18N::translate('Location not removed: this location contains sub-locations'),'danger');
 		}
 

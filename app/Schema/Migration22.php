@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 
 /**
@@ -79,6 +80,8 @@ class Migration22 implements MigrationInterface {
 					try {
 						rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
 					} catch (\ErrorException $ex) {
+						DebugBar::addThrowable($ex);
+
 						// Cannot move the folder?
 					}
 					File::delete($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');

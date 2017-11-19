@@ -125,6 +125,8 @@ class I18N {
 				try {
 					$locales[] = Locale::create($code);
 				} catch (\Exception $ex) {
+					DebugBar::addThrowable($ex);
+
 					// No such locale exists?
 				}
 			}
@@ -325,6 +327,7 @@ class I18N {
 						$default_locale = Locale::create($WT_TREE->getPreference('LANGUAGE'));
 					}
 				} catch (\Exception $ex) {
+					DebugBar::addThrowable($ex);
 				}
 				self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
 			}
@@ -379,6 +382,8 @@ class I18N {
 				File::mkdir($cache_dir);
 				file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
 			} catch (Exception $ex) {
+				DebugBar::addThrowable($ex);
+
 				// During setup, we may not have been able to create it.
 			}
 		} else {
@@ -399,6 +404,8 @@ class I18N {
 				self::$collator->setStrength(Collator::SECONDARY);
 			}
 		} catch (Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			// PHP-INTL is not installed?  We'll use a fallback later.
 		}
 
@@ -416,6 +423,8 @@ class I18N {
 			try {
 				$locales[] = Locale::create(basename($file, '.mo'));
 			} catch (\Exception $ex) {
+				DebugBar::addThrowable($ex);
+
 				// Not a recognised locale
 			}
 		}

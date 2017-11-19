@@ -38,12 +38,16 @@ class File {
 			try {
 				rmdir($path);
 			} catch (\ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				// Continue, in case there are other files/folders that we can delete.
 			}
 		} else {
 			try {
 				unlink($path);
 			} catch (\ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				// Continue, in case there are other files/folders that we can delete.
 			}
 		}
@@ -70,6 +74,8 @@ class File {
 
 				return true;
 			} catch (\ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				return false;
 			}
 		}

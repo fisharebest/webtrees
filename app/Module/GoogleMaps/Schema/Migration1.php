@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\GoogleMaps\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
@@ -38,6 +39,8 @@ class Migration1 implements MigrationInterface {
 				")"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already done this?
 		}
 	}

@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -917,7 +918,9 @@ class FunctionsImport {
 						)->execute([
 							$xref, $match[2], $match[1], $ged_id,
 						]);
-					} catch (PDOException $e) {
+					} catch (PDOException $ex) {
+						DebugBar::addThrowable($ex);
+
 						// We could display a warning here....
 					}
 				}

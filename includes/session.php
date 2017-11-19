@@ -122,6 +122,14 @@ if (WT_DEBUG) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
+// Initialise the DebugBar for development.
+// Use `composer install --dev` on a development build to enable.
+// Note that you may need to increase the size of the fcgi buffers on nginx.
+// e.g. add these lines to your fastcgi_params file:
+// fastcgi_buffers 16 16m;
+// fastcgi_buffer_size 32m;
+DebugBar::init(WT_DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
+
 // PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
 
@@ -216,6 +224,8 @@ try {
 	// Update the database schema, if necessary.
 	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
+	DebugBar::addThrowable($ex);
+
 	define('WT_DATA_DIR', 'data/');
 	I18N::init();
 	if ($ex->getCode() === 1045) {
@@ -230,6 +240,8 @@ try {
 	$response->prepare($request)->send();
 	exit;
 } catch (ErrorException $ex) {
+	DebugBar::addThrowable($ex);
+
 	define('WT_DATA_DIR', 'data/');
 	I18N::init();
 	$content = View::make('errors/database-connection', ['error' => $ex->getMessage()]);

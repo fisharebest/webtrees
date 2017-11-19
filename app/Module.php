@@ -50,6 +50,8 @@ class Module {
 					self::$modules[$file] = $module;
 				}
 			} catch (Exception $ex) {
+				DebugBar::addThrowable($ex);
+
 				Log::addErrorLog($ex->getMessage());
 			}
 		}
@@ -163,6 +165,8 @@ class Module {
 						throw new \Exception;
 					}
 				} catch (\Exception $ex) {
+					DebugBar::addThrowable($ex);
+
 					// The module has been deleted or is broken? Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. " . $ex->getMessage());
 					Database::prepare(
@@ -459,6 +463,8 @@ class Module {
 					}
 				}
 			} catch (\Exception $ex) {
+				DebugBar::addThrowable($ex);
+
 				// Old or invalid module?
 				Log::addErrorLog($ex->getMessage());
 			}

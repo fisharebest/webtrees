@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -124,6 +125,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			try {
 				preg_match('/' . $this->search . '/', null);
 			} catch (\ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				$this->error = '<div class="alert alert-danger">' . /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';
 			}
 			break;

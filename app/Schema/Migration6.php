@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use PDOException;
 
 /**
@@ -33,6 +34,8 @@ class Migration6 implements MigrationInterface {
 				"DROP TABLE `##remotelinks`"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// already been done?
 		}
 
@@ -41,6 +44,8 @@ class Migration6 implements MigrationInterface {
 				"ALTER TABLE `##sources` DROP INDEX ix2"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// already been done?
 		}
 
@@ -49,6 +54,8 @@ class Migration6 implements MigrationInterface {
 				"ALTER TABLE `##sources` DROP COLUMN s_dbid"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// already been done?
 		}
 	}

@@ -17,22 +17,6 @@
 use Fisharebest\Webtrees\Html;
 
 /**
- * Dump the passed variables and end the script.
- *
- * @param  mixed
- *
- * @return void
- */
-function dd(...$args)
-{
-	foreach ($args as $x) {
-		var_dump($x);
-	}
-
-	die(1);
-}
-
-/**
  * Generate a URL for a named route.
  *
  * @param string $route

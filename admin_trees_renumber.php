@@ -244,6 +244,8 @@ if (Filter::get('action') === 'renumber') {
 				"UPDATE `##favorite` SET xref = ? WHERE xref = ? AND gedcom_id = ?"
 			)->execute([$new_xref, $old_xref, $WT_TREE->getTreeId()]);
 		} catch (\Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Perhaps the favorites module was not installed?
 		}
 

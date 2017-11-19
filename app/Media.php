@@ -189,6 +189,8 @@ class Media extends GedcomRecord {
 		try {
 			return filesize($this->getServerFilename());
 		} catch (\ErrorException $ex) {
+			DebugBar::addThrowable($ex);
+
 			return 0;
 		}
 	}
@@ -225,6 +227,8 @@ class Media extends GedcomRecord {
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
 				}
 			} catch (\ErrorException $ex) {
+				DebugBar::addThrowable($ex);
+
 				// Not an image, or not a valid image?
 				$imgsize = false;
 			}

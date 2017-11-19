@@ -29,18 +29,8 @@ class Database {
 	/** @var PDO Native PHP database driver */
 	private static $pdo;
 
-	/** @var array Keep a log of all the SQL statements that we execute */
-	private static $log;
-
 	/** @var Statement[] Cache of prepared statements */
 	private static $prepared = [];
-
-	/**
-	 * Prevent instantiation via new Database
-	 */
-	private function __construct() {
-		self::$log = [];
-	}
 
 	/**
 	 * Begin a transaction.
@@ -96,6 +86,9 @@ class Database {
 				PDO::ATTR_AUTOCOMMIT         => true,
 			]
 		);
+
+		self::$pdo = DebugBar::initPDO(self::$pdo);
+
 		self::$pdo->exec("SET NAMES UTF8");
 		self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
@@ -127,62 +120,14 @@ class Database {
 	}
 
 	/**
-	 * Log the details of a query, for debugging and analysis.
-	 *
-	 * @param string   $query
-	 * @param int      $rows
-	 * @param float    $microseconds
-	 * @param string[] $bind_variables
-	 */
-	public static function logQuery($query, $rows, $microseconds, $bind_variables) {
-		// Trace
-		$trace = debug_backtrace();
-		array_shift($trace);
-		array_shift($trace);
-		foreach ($trace as $n => $frame) {
-			if (isset($frame['file']) && isset($frame['line'])) {
-				$trace[$n] = basename($frame['file']) . ':' . $frame['line'] . ' ' . $frame['function'];
-			} else {
-				unset($trace[$n]);
-			}
-		}
-		$stack = '<abbr title="' . Html::escape(implode(' / ', $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
-		// Bind variables
-		foreach ($bind_variables as $key => $value) {
-			if (is_null($value)) {
-				$value = 'NULL';
-			} elseif (!is_integer($value)) {
-				$value = '\'' . $value . '\'';
-			}
-			if (is_integer($key)) {
-				$query = preg_replace('/\?/', $value, $query, 1);
-			} else {
-				$query = str_replace(':' . $key, $value, $query);
-			}
-		}
-		$milliseconds = sprintf('%.3f', $microseconds * 1000);
-		self::$log[]  = '<tr><td>' . $stack . '</td><td>' . $query . '</td><td>' . $rows . '</td><td>' . $milliseconds . '</td></tr>';
-	}
-
-	/**
 	 * Determine the number of queries executed, for the page statistics.
+	 *
+	 * @deprecated
 	 *
 	 * @return int
 	 */
 	public static function getQueryCount() {
-		return count(self::$log);
-	}
-
-	/**
-	 * Convert the query log into an HTML table.
-	 *
-	 * @return string
-	 */
-	public static function getQueryLog() {
-		$html      = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
-		self::$log = [];
-
-		return $html;
+		return 0;
 	}
 
 	/**
@@ -221,13 +166,9 @@ class Database {
 	 * @return int The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
-		$sql   = str_replace('##', WT_TBLPREFIX, $sql);
-		$start = microtime(true);
-		$rows  = self::$pdo->exec($sql);
-		$end   = microtime(true);
-		self::logQuery($sql, $rows, $end - $start, []);
+		$sql = str_replace('##', WT_TBLPREFIX, $sql);
 
-		return $rows;
+		return self::$pdo->exec($sql);
 	}
 
 	/**
@@ -277,6 +218,8 @@ class Database {
 		try {
 			$current_version = (int) Site::getPreference($schema_name);
 		} catch (PDOException $e) {
+			DebugBar::addThrowable($ex);
+
 			// During initial installation, the site_preference table won’t exist.
 			$current_version = 0;
 		}

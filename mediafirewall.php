@@ -85,17 +85,27 @@ try {
 	$error_reporting = error_reporting(0);
 	$server->outputImage($media_file, $_GET);
 	error_reporting($error_reporting);
-} catch (SignatureException $e) {
+} catch (SignatureException $ex) {
+	DebugBar::addThrowable($ex);
+
 	FunctionsMedia::outputHttpStatusAsImage(403, 'Not allowed');
 } catch (FileNotFoundException $ex) {
+	DebugBar::addThrowable($ex);
+
 	FunctionsMedia::outputHttpStatusAsImage(404, 'Not found');
 } catch (NotReadableException $ex) {
+	DebugBar::addThrowable($ex);
+
 	FunctionsMedia::outputHttpStatusAsImage(500, 'Error');
 	Log::addMediaLog("Unable to read image from " . $media_file . "\n" . $ex->getMessage());
 } catch (NotSupportedException $ex) {
+	DebugBar::addThrowable($ex);
+
 	FunctionsMedia::outputHttpStatusAsImage(500, 'Error');
 	Log::addMediaLog("Install php-gd or php-imagick to create thumbnails.\n" . $ex->getMessage());
 } catch (ErrorException $ex) {
+	DebugBar::addThrowable($ex);
+
 	FunctionsMedia::outputHttpStatusAsImage(500, 'Error');
 	Log::addMediaLog("Unsable to create thumbnail from " . $media_file . "\n" . $ex->getMessage());
 }

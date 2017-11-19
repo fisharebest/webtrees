@@ -344,6 +344,8 @@ case 'language':
 		// Remember our selection
 		Auth::user()->setPreference('language', $language);
 	} catch (\Exception $ex) {
+		DebugBar::addThrowable($ex);
+
 		// Request for a non-existant language.
 		http_response_code(406);
 	}

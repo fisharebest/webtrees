@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
@@ -41,6 +42,8 @@ class Migration2 implements MigrationInterface {
 				" ADD FOREIGN KEY `##favorite_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 	}

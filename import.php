@@ -217,6 +217,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			"UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id=?"
 		)->execute([$data->gedcom_chunk_id]);
 	} catch (PDOException $ex) {
+		DebugBar::addThrowable($ex);
+
 		Database::rollBack();
 		if ($ex->getCode() === '40001') {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"

@@ -62,6 +62,8 @@ class Mail {
 
 			Swift_Mailer::newInstance(self::transport())->send($message);
 		} catch (Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
 			return false;

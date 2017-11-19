@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\FamilyTreeNews\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
@@ -36,6 +37,8 @@ class Migration1 implements MigrationInterface {
 				" ADD KEY news_ix2 (gedcom_id, updated)"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -48,6 +51,8 @@ class Migration1 implements MigrationInterface {
 				" SET n.gedcom_id=g.gedcom_id, n.user_id=u.user_id, updated=FROM_UNIXTIME(n_date)"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -57,6 +62,8 @@ class Migration1 implements MigrationInterface {
 				"DELETE FROM `##news` WHERE user_id IS NULL AND gedcom_id IS NULL"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 
@@ -70,6 +77,8 @@ class Migration1 implements MigrationInterface {
 				" CHANGE n_text body TEXT COLLATE utf8_unicode_ci"
 			);
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Already updated?
 		}
 	}

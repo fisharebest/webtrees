@@ -263,6 +263,8 @@ case 'general':
 			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([$gedcom, $WT_TREE->getTreeId()]);
 			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([$gedcom, $WT_TREE->getName()]);
 		} catch (\Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			// Probably a duplicate name.
 		}
 	}

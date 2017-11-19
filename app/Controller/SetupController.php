@@ -21,6 +21,7 @@ use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
@@ -161,6 +162,8 @@ class SetupController extends BaseController {
 			Database::createInstance($dbhost, $dbport, '', $buser, $dbpass);
 			Database::disconnect();
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . Html::escape($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
 		}
 
@@ -198,6 +201,8 @@ class SetupController extends BaseController {
 			Database::exec("USE `{$dbname}`");
 			Database::disconnect();
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . Html::escape($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
 		}
 
@@ -218,6 +223,8 @@ class SetupController extends BaseController {
 			$text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
 			unlink(WT_DATA_DIR . 'test.txt');
 		} catch (Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			return false;
 		}
 
@@ -235,6 +242,8 @@ class SetupController extends BaseController {
 		try {
 			I18N::init($request->get('lang'));
 		} catch (Exception $ex) {
+			DebugBar::addThrowable($ex);
+
 			return false;
 		}
 
@@ -296,6 +305,8 @@ class SetupController extends BaseController {
 			// Done - start using webtrees!
 			return '';
 		} catch (PDOException $ex) {
+			DebugBar::addThrowable($ex);
+
 			return $ex->getMessage();
 		}
 	}
