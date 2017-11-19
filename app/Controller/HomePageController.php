@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
@@ -90,6 +91,9 @@ class HomePageController extends PageController {
 		$controller = $this;
 
 		$html = $module->getBlock($block_id, true);
+
+		// Use HTTP headers and some jQuery to add debug to the current page.
+		DebugBar::sendDataInHeaders();
 
 		return new Response($html);
 	}
@@ -254,6 +258,9 @@ class HomePageController extends PageController {
 		$controller = $this;
 
 		$html = $module->getBlock($block_id, true);
+
+		// Use HTTP headers and some jQuery to add debug to the current page.
+		DebugBar::sendDataInHeaders();
 
 		return new Response($html);
 	}
