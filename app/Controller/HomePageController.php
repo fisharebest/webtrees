@@ -536,7 +536,7 @@ class HomePageController extends PageController {
 	 * @param array $main_blocks
 	 * @param array $side_blocks
 	 */
-	private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks): void {
+	private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks) {
 		$existing_block_ids = Database::prepare(
 			"SELECT block_id FROM `##block` WHERE gedcom_id = :tree_id"
 		)->execute([
@@ -600,7 +600,7 @@ class HomePageController extends PageController {
 	 * @param array $main_blocks
 	 * @param array $side_blocks
 	 */
-	private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks): void {
+	private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks) {
 		$existing_block_ids = Database::prepare(
 			"SELECT block_id FROM `##block` WHERE user_id = :user_id"
 		)->execute([

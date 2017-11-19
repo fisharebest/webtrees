@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Html;
  *
  * @return void
  */
-function dd(...$args): void
+function dd(...$args)
 {
 	foreach ($args as $x) {
 		var_dump($x);
