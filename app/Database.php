@@ -217,7 +217,7 @@ class Database {
 	public static function updateSchema($namespace, $schema_name, $target_version) {
 		try {
 			$current_version = (int) Site::getPreference($schema_name);
-		} catch (PDOException $e) {
+		} catch (PDOException $ex) {
 			DebugBar::addThrowable($ex);
 
 			// During initial installation, the site_preference table won’t exist.
