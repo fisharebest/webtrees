@@ -961,6 +961,7 @@ class AdminController extends BaseController {
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
 		$where = '';
+		$args  = [];
 
 		if ($search !== '') {
 			$where .= " AND (m_titl LIKE CONCAT('%', :search1, '%') OR m_filename LIKE CONCAT('%', :search2, '%'))";
