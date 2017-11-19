@@ -947,22 +947,23 @@ class AdminController extends BaseController {
 
 		$start  = (int) $request->get('start', 0);
 		$length = (int) $request->get('length', 20);
-		$search = $request->get('search', '');
+		$search = $request->get('search', []);
+		$search = $search['value'] ?? '';
 
 		$select1 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
-			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id";
+			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
+			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
 		$select2 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
-			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id";
+			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
+			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
-		// Only records where the media object is at level 1
-		$where = " WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
+		$where = '';
 
-		$args  = [];
-		if ($search) {
-			$where .= " AND (m_title LIKE CONCAT('%', :search1, '%') OR (m_filename LIKE CONCAT('%', :search2, '%')";
+		if ($search !== '') {
+			$where .= " AND (m_titl LIKE CONCAT('%', :search1, '%') OR m_filename LIKE CONCAT('%', :search2, '%'))";
 			$args['search1'] = $search;
 			$args['search2'] = $search;
 		}
@@ -979,6 +980,10 @@ class AdminController extends BaseController {
 		)->execute(
 			$args
 		)->fetchAll();
+
+		// Total filtered/unfiltered rows
+		$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = (int) Database::prepare($select2)->fetchOne();
 
 		// Turn each row from the query into a row for the table
 		$data = array_map(function (stdClass $datum) use ($ignore_facts) {
@@ -1017,10 +1022,6 @@ class AdminController extends BaseController {
 				implode(' ', $facts),
 			];
 		}, $data);
-
-		// Total filtered/unfiltered rows
-		$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-		$recordsTotal    = (int) Database::prepare($select2)->fetchOne();
 
 		return new JsonResponse([
 			'draw'            => (int) $request->get('draw'),
