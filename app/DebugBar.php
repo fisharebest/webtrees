@@ -48,7 +48,7 @@ class DebugBar {
 	public static function init(bool $enable = true) {
 		if ($enable) {
 			self::$debugbar = new StandardDebugBar;
-			self::$renderer = self::$debugbar->getJavascriptRenderer();
+			self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
 
 			// We can't use WT_DATA_DIR as it does not exist yet
 			$storage_dir = 'data/debugbar';
