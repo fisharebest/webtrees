@@ -21,6 +21,7 @@ use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
 use DebugBar\Storage\FileStorage;
+use Fisharebest\Webtrees\DebugBar\ViewCollector;
 use PDO;
 use Throwable;
 
@@ -48,6 +49,8 @@ class DebugBar {
 	public static function init(bool $enable = true) {
 		if ($enable) {
 			self::$debugbar = new StandardDebugBar;
+			self::$debugbar->addCollector(new ViewCollector);
+
 			self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
 
 			// We can't use WT_DATA_DIR as it does not exist yet
@@ -181,6 +184,17 @@ class DebugBar {
 	public static function addThrowable(Throwable $throwable) {
 		if (self::$debugbar !== null) {
 			self::$debugbar['exceptions']->addThrowable($throwable);
+		}
+	}
+
+	/**
+	 * Log an exception/throwable
+	 *
+	 * @param Throwable $throwable
+	 */
+	public static function addView(string $view, array $data) {
+		if (self::$debugbar !== null) {
+			self::$debugbar['views']->addView($view, $data);
 		}
 	}
 }

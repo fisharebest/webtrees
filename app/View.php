@@ -83,6 +83,8 @@ class View {
 	public static function make($name, $data = []) {
 		$view = new static($name, $data);
 
+		DebugBar::addView($name, $data);
+
 		return $view->render();
 	}
 }
