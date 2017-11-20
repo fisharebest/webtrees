@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-14 22:54+0000\n"
+"PO-Revision-Date: 2017-11-20 21:55+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -2017,15 +2017,16 @@ msgstr "Apia, Samoa"
 
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:86
+#, fuzzy
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Kotíya mabóngoli na bipɛ́sɛli bya libótá na yɔ̌."
 
 #: admin_trees_download.php:168 app/Module/ClippingsCartModule.php:377
 #: app/Module/ClippingsCartModule.php:396
 #: app/Module/ClippingsCartModule.php:755
 #: app/Module/ClippingsCartModule.php:764
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "Kotíya bisalela bya moto yě mɔ̌kɔ́"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:1883
@@ -2077,9 +2078,8 @@ msgstr "Apríli"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:47
-#, fuzzy
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr "Máyi bulé"
 
 #: app/Controller/IndividualController.php:198
 #: app/Functions/FunctionsPrintFacts.php:179
@@ -2125,7 +2125,6 @@ msgstr "Ya sɔ̂lɔ́ olingí kolongola ekákoli eye na molɔngɔ́ mwa malúli 
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6655
-#, fuzzy
 msgid "Argentina"
 msgstr "Argentina"
 
@@ -2284,17 +2283,17 @@ msgstr "Mokomi mwa Libóngoli lya nsúka"
 
 #: admin_users.php:434
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "Kondima mabóngoli masálemí na mosáleli"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1437
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "Kofungola nkomá"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1453
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "Kofungla bibandela"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2876,13 +2875,14 @@ msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:50
+#, fuzzy
 msgid "Blue Lagoon"
-msgstr ""
+msgstr "Bulé Lagoon"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:51
 msgid "Blue Marine"
-msgstr ""
+msgstr "Bulé Mbú"
 
 #: message.php:156
 msgid "Body"
@@ -3023,8 +3023,9 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6892
+#, fuzzy
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Bisanga bya British Virgin"
 
 #: modules_v3/individual_ext_report/report.xml:319
 #: modules_v3/individual_report/report.xml:316
