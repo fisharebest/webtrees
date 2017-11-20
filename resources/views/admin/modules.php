@@ -90,7 +90,7 @@
 		<tbody>
 			<?php foreach ($modules as $module_name => $module): ?>
 				<tr>
-					<th scope="row" data-sort="<?= $module->getTitle() ?>">
+					<th scope="row" data-sort="<?= $module->getTitle() ?>" dir="auto">
 						<?php if ($module instanceof ModuleConfigInterface): ?>
 							<a href="<?= Html::escape($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?> <i class="fa fa-cogs"></i>
