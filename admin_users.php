@@ -626,15 +626,7 @@ case 'edit':
 						</select>
 					</td>
 					<td>
-						<input
-							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?= Html::escape($tree->getName()) ?>"
-							type="text"
-							size="12"
-							name="gedcomid<?= $tree->getTreeId() ?>"
-							id="gedcomid<?= $tree->getTreeId() ?>"
-							value="<?= Html::escape($tree->getUserPreference($user, 'gedcomid')) ?>"
-						>
+						<?= FunctionsEdit::formControlIndividual(Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId(), 'data-ajax--data--ged' => $tree->getName()]) ?>
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" class="relpath">
