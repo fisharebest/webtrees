@@ -159,7 +159,14 @@ class SetupController extends BaseController {
 	 */
 	private function checkDatabaseConnection($dbhost, $dbport, $buser, $dbpass): string {
 		try {
-			Database::createInstance($dbhost, $dbport, '', $buser, $dbpass);
+			Database::createInstance([
+				'dbhost' => $dbhost,
+				'dbport' => $dbport,
+				'dbname' => '',
+				'dbuser' => $buser,
+				'dbpass' => $dbpass,
+				'tblpfx' => '',
+			]);
 			Database::disconnect();
 		} catch (PDOException $ex) {
 			DebugBar::addThrowable($ex);
@@ -196,7 +203,14 @@ class SetupController extends BaseController {
 
 		try {
 			define('WT_TBLPREFIX', $tblpfx);
-			Database::createInstance($dbhost, $dbport, '', $dbuser, $dbpass);
+			Database::createInstance([
+				'dbhost' => $dbhost,
+				'dbport' => $dbport,
+				'dbname' => '',
+				'dbuser' => $dbuser,
+				'dbpass' => $dbpass,
+				'tblpfx' => '',
+			]);
 			Database::exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
 			Database::exec("USE `{$dbname}`");
 			Database::disconnect();
@@ -268,7 +282,14 @@ class SetupController extends BaseController {
 
 		try {
 			// Create/update the database tables.
-			Database::createInstance($dbhost, $dbport, $dbname, $dbuser, $dbpass);
+			Database::createInstance([
+				'dbhost' => $dbhost,
+				'dbport' => $dbport,
+				'dbname' => $dbname,
+				'dbuser' => $dbuser,
+				'dbpass' => $dbpass,
+				'tblpfx' => $tblpfx,
+			]);
 			Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', 30);
 
 			// If we are re-installing, then this user may already exist.

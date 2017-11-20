@@ -26,16 +26,12 @@ use Throwable;
 // Bootstrap the application
 require 'includes/session.php';
 
-DebugBar::startMeasure('request');
+DebugBar::startMeasure('routing');
 
 // The HTTP request.
 $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
-
-DebugBar::stopMeasure('request');
-
-DebugBar::startMeasure('find tree/user');
 
 // Most requests will need the current tree and user.
 $all_tree_names     = array_keys(Tree::getNameList());
@@ -49,20 +45,25 @@ Session::put('GEDCOM', $tree_name);
 $request->attributes->set('tree', $tree);
 $request->attributes->set('user', AUth::user());
 
-DebugBar::stopMeasure('find tree/user');
-
-DebugBar::startMeasure('routing');
-
 // Load the routing table.
 $routes = require 'routes/web.php';
 
 // Find the action for the selected route
 $controller_action = $routes[$method . ':' . $route] ?? null;
 
-// No access to this route?  Do something else.
+// No access to this route?  Go somewhere else.
 if ($controller_action === null) {
-	if (!Auth::check()) {
+	if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
+		$response = new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+	} elseif (!Auth::check()) {
+		// Probably need to log in to see this page?
+		$response = new RedirectResponse(Html::url('login.php', ['url' => $request->getRequestUri()]));
+	} elseif (Auth::isAdmin()) {
+		// No tree or tree not imported?
+		$response = new RedirectResponse(Html::url('admin_trees_manage.php', []));
 	}
+
+	return $response->prepare($request)->send();
 }
 
 DebugBar::stopMeasure('routing');

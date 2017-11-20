@@ -8,13 +8,14 @@
  * (at your option) any later version.
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTASET NAMES 'utf8' COLLATE 'utf8_unicode_ci'LITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDO;
 use PDOException;
@@ -31,6 +32,9 @@ class Database {
 
 	/** @var Statement[] Cache of prepared statements */
 	private static $prepared = [];
+
+	/** @var string Prefix allows multiple instances in one database */
+	private static $table_prefix = '';
 
 	/**
 	 * Begin a transaction.
@@ -60,25 +64,24 @@ class Database {
 	/**
 	 * Implement the singleton pattern, using a static accessor.
 	 *
-	 * @param string $DBHOST
-	 * @param string $DBPORT
-	 * @param string $DBNAME
-	 * @param string $DBUSER
-	 * @param string $DBPASS
+	 * @param string[] $config
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
-	public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS) {
+	public static function createInstance(array $config) {
 		if (self::$pdo instanceof PDO) {
-			throw new \Exception('Database::createInstance() can only be called once.');
+			throw new Exception('Database::createInstance() can only be called once.');
 		}
+
+		self::$table_prefix = $config['tblpfx'];
+
 		// Create the underlying PDO object
 		self::$pdo = new PDO(
-			(substr($DBHOST, 0, 1) === '/' ?
-				"mysql:unix_socket={$DBHOST};dbname={$DBNAME}" :
-				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
+			(substr($config['dbhost'], 0, 1) === '/' ?
+				"mysql:unix_socket={$config['dbhost']};dbname={$config['dbname']}" :
+				"mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
 			),
-			$DBUSER, $DBPASS,
+			$config['dbuser'], $config['dbpass'],
 			[
 				PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
@@ -89,7 +92,7 @@ class Database {
 
 		self::$pdo = DebugBar::initPDO(self::$pdo);
 
-		self::$pdo->exec("SET NAMES UTF8");
+		self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
 		self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
 		self::$instance = new self;
@@ -98,7 +101,7 @@ class Database {
 	/**
 	 * We don't access $instance directly, only via query(), exec() and prepare()
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @return Database
 	 */
@@ -106,7 +109,7 @@ class Database {
 		if (self::$pdo instanceof PDO) {
 			return self::$instance;
 		} else {
-			throw new \Exception('createInstance() must be called before getInstance().');
+			throw new Exception('createInstance() must be called before getInstance().');
 		}
 	}
 
@@ -166,7 +169,7 @@ class Database {
 	 * @return int The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
-		$sql = str_replace('##', WT_TBLPREFIX, $sql);
+		$sql = str_replace('##', self::$table_prefix, $sql);
 
 		return self::$pdo->exec($sql);
 	}
@@ -176,15 +179,15 @@ class Database {
 	 *
 	 * @param $sql
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @return Statement
 	 */
 	public static function prepare($sql) {
 		if (!self::$pdo instanceof PDO) {
-			throw new \Exception('No Connection Established');
+			throw new Exception('No Connection Established');
 		}
-		$sql = str_replace('##', WT_TBLPREFIX, $sql);
+		$sql = str_replace('##', self::$table_prefix, $sql);
 
 		$hash = md5($sql);
 		if (!array_key_exists($hash, self::$prepared)) {

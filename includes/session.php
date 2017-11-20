@@ -195,6 +195,8 @@ set_exception_handler(function (Throwable $ex) {
 	Log::addErrorLog($message);
 });
 
+DebugBar::startMeasure('init database');
+
 // Load our configuration file, so we can connect to the database
 if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	// Down for maintenance?
@@ -212,14 +214,8 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 
 // Connect to the database
 try {
-	// Read the connection settings
-	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
-	Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
-	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
-	unset($dbconfig);
-
-	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
-	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
+	// Read the connection settings and create the database
+	Database::createInstance(parse_ini_file(WT_ROOT . 'data/config.ini.php'));
 
 	// Update the database schema, if necessary.
 	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
@@ -239,7 +235,7 @@ try {
 	$response = new Response($html, 503);
 	$response->prepare($request)->send();
 	exit;
-} catch (ErrorException $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	define('WT_DATA_DIR', 'data/');
@@ -250,6 +246,8 @@ try {
 	$response->prepare($request)->send();
 	exit;
 }
+
+DebugBar::stopMeasure('init database');
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
@@ -285,6 +283,8 @@ if (!Session::get('initiated')) {
 	Session::put('initiated', true);
 }
 
+DebugBar::startMeasure('init tree');
+
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
 foreach ([Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')] as $tree_name) {
 	$WT_TREE = Tree::findByName($tree_name);
@@ -300,9 +300,15 @@ if (!$WT_TREE) {
 	}
 }
 
+DebugBar::stopMeasure('init tree');
+
+DebugBar::startMeasure('init i18n');
+
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
 Session::put('locale', WT_LOCALE);
+
+DebugBar::stopMeasure('init i18n');
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
@@ -351,6 +357,8 @@ if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 	Session::put('activity_time', WT_TIMESTAMP);
 }
 
+DebugBar::startMeasure('init theme');
+
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
@@ -381,3 +389,6 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 		}
 	}
 }
+
+DebugBar::stopMeasure('init theme');
+
