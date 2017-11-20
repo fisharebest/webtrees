@@ -464,7 +464,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- MERGE -->
 							<li>
 								<i class="fa fa-li fa-code-fork"></i>
-								<a href="admin_site_merge.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= Html::escape(route('merge-records', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Merge records') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>

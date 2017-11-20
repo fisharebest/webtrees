@@ -164,7 +164,7 @@ echo Bootstrap4::breadcrumbs([
 		<?php endforeach ?>
 		<?php if (count($duplicates) === 2): ?>
 		—
-		<a href="admin_site_merge.php?ged=<?= $WT_TREE->getNameHtml() ?>&amp;gid1=<?= $duplicates[0]->getXref() ?>&amp;gid2=<?= $duplicates[1]->getXref() ?>&amp;url=admin_trees_duplicates.php">
+		<a href="<?= Html::escape(route('merge-records', ['ged' => $WT_TREE->getName(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
 			<?= I18N::translate('Merge') ?>
 		</a>
 		<?php endif ?>

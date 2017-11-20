@@ -57,6 +57,8 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 		'GET:admin-changes-log-download'  => 'AdminController@changesLogDownload',
 		'GET:tree-page-edit'              => 'HomePageController@treePageEdit',
 		'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
+		'GET:merge-records'               => 'AdminController@mergeRecords',
+		'POST:merge-records'              => 'AdminController@mergeRecordsAction',
 	];
 }
 

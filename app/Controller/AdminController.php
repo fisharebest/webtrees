@@ -22,15 +22,20 @@ use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
@@ -466,6 +471,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'admin_site_access.php',
 			WT_ROOT . 'admin_site_clean.php',
 			WT_ROOT . 'admin_site_info.php',
+			WT_ROOT . 'admin_site_merge.php',
 			WT_ROOT . 'admin_site_readme.php',
 			WT_ROOT . 'app/Controller/CompactController.php',
 			WT_ROOT . 'app/Controller/SimpleController.php',
@@ -1030,6 +1036,214 @@ class AdminController extends BaseController {
 			'recordsFiltered' => $recordsFiltered,
 			'data'            => $data,
 		]);
+	}
+
+	/**
+	 * Merge two genealogy records.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function mergeRecords(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+		$title = I18N::translate('Merge records') . ' — ' . Html::escape($tree->getTitle());
+
+		$xref1 = $request->get('xref1', '');
+		$xref2 = $request->get('xref2', '');
+
+		$record1 = GedcomRecord::getInstance($xref1, $tree);
+		$record2 = GedcomRecord::getInstance($xref2, $tree);
+
+		if ($xref1 !== '' && $record1 === null) {
+			$xref1 = '';
+		}
+
+		if ($xref2 !== '' && $record2 === null) {
+			$xref2 = '';
+		}
+
+		if ($record1 === $record2) {
+			$xref2 = '';
+		}
+
+		if ($record1 !== null && $record2 && $record1::RECORD_TYPE !== $record2::RECORD_TYPE) {
+			$xref2 = '';
+		}
+
+		if ($xref1 === '' || $xref2 === '') {
+			return $this->viewResponse('admin/merge-records-step-1', [
+				'individual1' => $record1 instanceof Individual ? $record1 : null,
+				'individual2' => $record2 instanceof Individual ? $record2 : null,
+				'family1'     => $record1 instanceof Family ? $record1 : null,
+				'family2'     => $record2 instanceof Family ? $record2 : null,
+				'source1'     => $record1 instanceof Source ? $record1 : null,
+				'source2'     => $record2 instanceof Source ? $record2 : null,
+				'repository1' => $record1 instanceof Repository ? $record1 : null,
+				'repository2' => $record2 instanceof Repository ? $record2 : null,
+				'media1'      => $record1 instanceof Media ? $record1 : null,
+				'media2'      => $record2 instanceof Media ? $record2 : null,
+				'note1'       => $record1 instanceof Note ? $record1 : null,
+				'note2'       => $record2 instanceof Note ? $record2 : null,
+				'title'       => $title,
+				'tree'        => $tree,
+			]);
+		}
+
+		// Facts found both records
+		$facts = [];
+		// Facts found in only one record
+		$facts1 = [];
+		$facts2 = [];
+
+		foreach ($record1->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+				$facts1[$fact->getFactId()] = $fact;
+			}
+		}
+
+		foreach ($record2->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+				$facts2[$fact->getFactId()] = $fact;
+			}
+		}
+
+		foreach ($facts1 as $id1 => $fact1) {
+			foreach ($facts2 as $id2 => $fact2) {
+				if ($fact1->getFactId() === $fact2->getFactId()) {
+					$facts[] = $fact1;
+					unset($facts1[$id1]);
+					unset($facts2[$id2]);
+				}
+			}
+		}
+
+		return $this->viewResponse('admin/merge-records-step-2', [
+			'facts'   => $facts,
+			'facts1'  => $facts1,
+			'facts2'  => $facts2,
+			'record1' => $record1,
+			'record2' => $record2,
+			'title'   => $title,
+			'tree'    => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function mergeRecordsAction(Request $request): Response {
+		$tree  = $request->attributes->get('tree');
+		$xref1 = $request->get('xref1', '');
+		$xref2 = $request->get('xref2', '');
+		$keep1 = $request->get('keep1', []);
+		$keep2 = $request->get('keep2', []);
+
+		$record1 = GedcomRecord::getInstance($xref1, $tree);
+		$record2 = GedcomRecord::getInstance($xref2, $tree);
+
+		// Facts found both records
+		$facts = [];
+		// Facts found in only one record
+		$facts1 = [];
+		$facts2 = [];
+
+		foreach ($record1->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+				$facts1[$fact->getFactId()] = $fact;
+			}
+		}
+
+		foreach ($record2->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+				$facts2[$fact->getFactId()] = $fact;
+			}
+		}
+
+		// If we are not auto-accepting, then we can show a link to the pending deletion
+		if (Auth::user()->getPreference('auto_accept')) {
+			$record2_name = $record2->getFullName();
+		} else {
+			$record2_name = '<a class="alert-link" href="' . $record2->getHtmlUrl() . '">' . $record2->getFullName() . '</a>';
+		}
+
+		// Update records that link to the one we will be removing.
+		$ids = FunctionsDb::fetchAllLinks($xref2, $tree->getTreeId());
+
+		foreach ($ids as $id) {
+			$record = GedcomRecord::getInstance($id, $tree);
+			if (!$record->isPendingDeletion()) {
+				FlashMessages::addMessage(I18N::translate(
+				/* I18N: The placeholders are the names of individuals, sources, etc. */
+					'The link from “%1$s” to “%2$s” has been updated.',
+					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
+					$record2_name
+				), 'info');
+				$gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->getGedcom());
+				$gedcom = preg_replace(
+					'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+					'$2',
+					$gedcom
+				);
+				$record->updateRecord($gedcom, true);
+			}
+		}
+
+		// Update any linked user-accounts
+		Database::prepare(
+			"UPDATE `##user_gedcom_setting`" .
+			" SET setting_value=?" .
+			" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
+		)->execute([$xref2, $tree->getTreeId(), $xref1]);
+
+		// Merge hit counters
+		$hits = Database::prepare(
+			"SELECT page_name, SUM(page_count)" .
+			" FROM `##hit_counter`" .
+			" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
+			" GROUP BY page_name"
+		)->execute([$tree->getTreeId(), $xref1, $xref2])->fetchAssoc();
+
+		foreach ($hits as $page_name => $page_count) {
+			Database::prepare(
+				"UPDATE `##hit_counter` SET page_count=?" .
+				" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+			)->execute([$page_count, $tree->getTreeId(), $page_name, $xref1]);
+		}
+
+		Database::prepare(
+			"DELETE FROM `##hit_counter`" .
+			" WHERE gedcom_id=? AND page_parameter=?"
+		)->execute([$tree->getTreeId(), $xref2]);
+
+		$gedcom = '0 @' . $record1->getXref() . '@ ' . $record1::RECORD_TYPE;
+		foreach ($facts as $fact_id => $fact) {
+			$gedcom .= "\n" . $fact->getGedcom();
+		}
+		foreach ($facts1 as $fact_id => $fact) {
+			if (in_array($fact_id, $keep1)) {
+				$gedcom .= "\n" . $fact->getGedcom();
+			}
+		}
+		foreach ($facts2 as $fact_id => $fact) {
+			if (in_array($fact_id, $keep2)) {
+				$gedcom .= "\n" . $fact->getGedcom();
+			}
+		}
+
+		$record1->updateRecord($gedcom, true);
+		$record2->deleteRecord();
+		FunctionsDb::updateFavorites($xref2, $xref1, $tree);
+		FlashMessages::addMessage(I18N::translate(
+		/* I18N: Records are individuals, sources, etc. */
+			'The records “%1$s” and “%2$s” have been merged.',
+			'<a class="alert-link" href="' . $record1->getHtmlUrl() . '">' . $record1->getFullName() . '</a>',
+			$record2_name
+		), 'success');
+
+		return new RedirectResponse(route('merge-records', ['ged' => $tree->getName()]));
 	}
 
 	/**
