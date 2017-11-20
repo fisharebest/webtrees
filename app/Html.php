@@ -53,8 +53,8 @@ class Html {
 	/**
 	 * Encode a URL.
 	 *
-	 * @param string   $path
-	 * @param string[] $data
+	 * @param string $path
+	 * @param array  $data
 	 *
 	 * @return string
 	 */
