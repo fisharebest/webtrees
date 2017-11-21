@@ -375,7 +375,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
-								<a href="admin_trees_config.php?action=general&amp;ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= Html::escape(route('tree-preferences', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Preferences') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -385,7 +385,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- PRIVACY -->
 							<li>
 								<i class="fa fa-li fa-lock"></i>
-								<a href="admin_trees_config.php?action=privacy&amp;ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= Html::escape(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Privacy') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>

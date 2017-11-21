@@ -59,6 +59,10 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 		'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
 		'GET:merge-records'               => 'AdminController@mergeRecords',
 		'POST:merge-records'              => 'AdminController@mergeRecordsAction',
+		'GET:tree-preferences'            => 'AdminController@treePreferencesEdit',
+		'POST:tree-preferences'           => 'AdminController@treePreferencesUpdate',
+		'GET:tree-privacy'                => 'AdminController@treePrivacyEdit',
+		'POST:tree-privacy'               => 'AdminController@treePrivacyUpdate',
 	];
 }
 

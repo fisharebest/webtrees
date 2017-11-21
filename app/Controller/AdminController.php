@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -826,71 +827,48 @@ class AdminController extends BaseController {
 	}
 
 	/**
-	 * Generate a WHERe clause for filtering the changes log.
+	 * Delete the database settings for a deleted module.
 	 *
 	 * @param Request $request
 	 *
-	 * @return array
-	 *
+	 * @return RedirectResponse
 	 */
-	private function changesQuery(Request $request): array {
-		$from   = $request->get('from', '');
-		$to     = $request->get('to', '');
-		$type   = $request->get('type', '');
-		$oldged = $request->get('oldged', '');
-		$newged = $request->get('newged', '');
-		$xref   = $request->get('xref', '');
-		$user   = $request->get('user', '');
-		$ged    = $request->get('ged', '');
-		$search = $request->get('search', '');
-		$search = $search['value'] ?? '';
+	public function deleteModuleSettings(Request $request): RedirectResponse {
+		$module_name = $request->get('module_name');
 
-		$where = ' WHERE 1';
-		$args  = [];
-		if ($search !== '') {
-			$where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
-			$args['search_1'] = $search;
-			$args['search_2'] = $search;
-		}
-		if ($from !== '') {
-			$where .= " AND change_time >= :from";
-			$args['from'] = $from;
-		}
-		if ($to !== '') {
-			$where .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
-			$args['to'] = $to;
-		}
-		if ($type !== '') {
-			$where .= ' AND status = :status';
-			$args['status'] = $type;
-		}
-		if ($oldged !== '') {
-			$where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
-			$args['old_ged'] = $oldged;
-		}
-		if ($newged !== '') {
-			$where .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
-			$args['new_ged'] = $newged;
-		}
-		if ($xref !== '') {
-			$where .= " AND xref = :xref";
-			$args['xref'] = $xref;
-		}
-		if ($user !== '') {
-			$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
-			$args['user'] = $user;
-		}
-		if ($ged !== '') {
-			$where .= " AND gedcom_name LIKE CONCAT('%', :ged, '%')";
-			$args['ged'] = $ged;
-		}
+		Database::prepare(
+			"DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) JOIN `##module` USING (module_name) WHERE module_name = :module_name"
+		)->execute([
+			'module_name' => $module_name,
+		]);
 
-		$select = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
-		$delete = 'DELETE `##change` FROM `##change`';
+		Database::prepare(
+			"DELETE `##block` FROM `##block` JOIN `##module` USING (module_name) WHERE module_name = :module_name"
+		)->execute([
+			'module_name' => $module_name,
+		]);
 
-		$join = ' LEFT JOIN `##user` USING (user_id) JOIN `##gedcom` USING (gedcom_id)';
+		Database::prepare(
+			"DELETE FROM `##module_setting` WHERE module_name = :module_name"
+		)->execute([
+			'module_name' => $module_name,
+		]);
 
-		return [$select . $join, $delete . $join, $where, $args];
+		Database::prepare(
+			"DELETE FROM `##module_privacy` WHERE module_name = :module_name"
+		)->execute([
+			'module_name' => $module_name,
+		]);
+
+		Database::prepare(
+			"DELETE FROM `##module` WHERE module_name = :module_name"
+		)->execute([
+			'module_name' => $module_name,
+		]);
+
+		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
+
+		return new RedirectResponse(route('admin-modules'));
 	}
 
 	/**
@@ -1046,6 +1024,7 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function mergeRecords(Request $request): Response {
+		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 		$title = I18N::translate('Merge records') . ' — ' . Html::escape($tree->getTitle());
 
@@ -1135,6 +1114,7 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function mergeRecordsAction(Request $request): Response {
+		/** @var Tree $tree */
 		$tree  = $request->attributes->get('tree');
 		$xref1 = $request->get('xref1', '');
 		$xref2 = $request->get('xref2', '');
@@ -1264,27 +1244,6 @@ class AdminController extends BaseController {
 	}
 
 	/**
-	 * Delete the database settings for a deleted module.
-	 *
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function deleteModuleSettings(Request $request): RedirectResponse {
-		$module_name = $request->get('module_name');
-
-		Database::prepare("DELETE `##block_setting`" . " FROM `##block_setting`" . " JOIN `##block` USING (block_id)" . " JOIN `##module` USING (module_name)" . " WHERE module_name=?")->execute([$module_name]);
-		Database::prepare("DELETE `##block`" . " FROM `##block`" . " JOIN `##module` USING (module_name)" . " WHERE module_name=?")->execute([$module_name]);
-		Database::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute([$module_name]);
-		Database::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute([$module_name]);
-		Database::prepare("DELETE FROM `##module` WHERE module_name=?")->execute([$module_name]);
-
-		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
-
-		return new RedirectResponse(route('admin-modules'));
-	}
-
-	/**
 	 * Show the admin page for menus.
 	 *
 	 * @return Response
@@ -1342,6 +1301,109 @@ class AdminController extends BaseController {
 	 */
 	public function tabs(): Response {
 		return $this->components('tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function treePrivacyEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree                 = $request->attributes->get('tree');
+		$title                = Html::escape($tree->getName()) . ' — ' . I18N::translate('Privacy');
+		$all_tags             = $this->tagsForPrivacy($tree);
+		$privacy_constants    = $this->privacyConstants();
+		$privacy_restrictions = $this->privacyRestrictions($tree);
+
+		return $this->viewResponse('admin/tree-privacy', [
+			'all_tags'             => $all_tags,
+			'count_trees'          => count(Tree::getAll()),
+			'privacy_constants'    => $privacy_constants,
+			'privacy_restrictions' => $privacy_restrictions,
+			'title'                => $title,
+			'tree'                 => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function treePrivacyUpdate(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		foreach ((array) $request->get('delete') as $default_resn_id) {
+			Database::prepare(
+				"DELETE FROM `##default_resn` WHERE default_resn_id = :default_resn_id"
+			)->execute([
+				'default_resn_id' => $default_resn_id,
+			]);
+		}
+
+		$xrefs     = (array) $request->get('xref');
+		$tag_types = (array) $request->get('tag_type');
+		$resns     = (array) $request->get('resn');
+
+		foreach ($xrefs as $n => $xref) {
+			$tag_type = (string) $tag_types[$n];
+			$resn     = (string) $resns[$n];
+
+			if ($tag_type !== '' || $xref !== '') {
+				// Delete any existing data
+				if ($xref === '') {
+					Database::prepare(
+						"DELETE FROM `##default_resn` WHERE gedcom_id = :tree_id AND tag_type = :tag_type AND xref IS NULL"
+					)->execute([
+						'tree_id'  => $tree->getTreeId(),
+						'tag_type' => $tag_type,
+						]);
+				}
+				if ($tag_type === '') {
+					Database::prepare(
+						"DELETE FROM `##default_resn` WHERE gedcom_id = ? AND xref = ? AND tag_type IS NULL"
+					)->execute([
+						'tree_id' => $tree->getTreeId(),
+						'xref'    => $xref,
+					]);
+				}
+
+				// Add (or update) the new data
+				Database::prepare(
+					"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
+					" VALUES (:tree_id, NULLIF(:xref, ''), NULLIF(:tag_type, ''), :resn)"
+				)->execute([
+					'tree_id'  => $tree->getTreeId(),
+					'xref'     => $xref,
+					'tag_type' => $tag_type,
+					'resn'     => $resn,
+				]);
+			}
+		}
+
+		$tree->setPreference('HIDE_LIVE_PEOPLE', $request->get('HIDE_LIVE_PEOPLE'));
+		$tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', $request->get('KEEP_ALIVE_YEARS_BIRTH', '0'));
+		$tree->setPreference('KEEP_ALIVE_YEARS_DEATH', $request->get('KEEP_ALIVE_YEARS_DEATH', '0'));
+		$tree->setPreference('MAX_ALIVE_AGE', $request->get('MAX_ALIVE_AGE','100'));
+		$tree->setPreference('REQUIRE_AUTHENTICATION', $request->get('REQUIRE_AUTHENTICATION'));
+		$tree->setPreference('SHOW_DEAD_PEOPLE', $request->get('SHOW_DEAD_PEOPLE'));
+		$tree->setPreference('SHOW_LIVING_NAMES', $request->get('SHOW_LIVING_NAMES'));
+		$tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $request->get('SHOW_PRIVATE_RELATIONSHIPS'));
+
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', Html::escape($tree->getTitle()), 'success'));
+
+		// Coming soon...
+		if ((bool) $request->get('all_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', Html::escape($tree->getTitle())), 'success');
+		}
+		if ((bool) $request->get('new_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', Html::escape($tree->getTitle())), 'success');
+		}
+
+
+		return new RedirectResponse(Html::url('admin_trees_manage.php', ['ged' => $tree->getName()]));
 	}
 
 	/**
@@ -1421,6 +1483,74 @@ class AdminController extends BaseController {
 		]);
 
 		return new Response($html);
+	}
+
+	/**
+	 * Generate a WHERe clause for filtering the changes log.
+	 *
+	 * @param Request $request
+	 *
+	 * @return array
+	 *
+	 */
+	private function changesQuery(Request $request): array {
+		$from   = $request->get('from', '');
+		$to     = $request->get('to', '');
+		$type   = $request->get('type', '');
+		$oldged = $request->get('oldged', '');
+		$newged = $request->get('newged', '');
+		$xref   = $request->get('xref', '');
+		$user   = $request->get('user', '');
+		$ged    = $request->get('ged', '');
+		$search = $request->get('search', '');
+		$search = $search['value'] ?? '';
+
+		$where = ' WHERE 1';
+		$args  = [];
+		if ($search !== '') {
+			$where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
+			$args['search_1'] = $search;
+			$args['search_2'] = $search;
+		}
+		if ($from !== '') {
+			$where .= " AND change_time >= :from";
+			$args['from'] = $from;
+		}
+		if ($to !== '') {
+			$where .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
+			$args['to'] = $to;
+		}
+		if ($type !== '') {
+			$where .= ' AND status = :status';
+			$args['status'] = $type;
+		}
+		if ($oldged !== '') {
+			$where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
+			$args['old_ged'] = $oldged;
+		}
+		if ($newged !== '') {
+			$where .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
+			$args['new_ged'] = $newged;
+		}
+		if ($xref !== '') {
+			$where .= " AND xref = :xref";
+			$args['xref'] = $xref;
+		}
+		if ($user !== '') {
+			$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
+			$args['user'] = $user;
+		}
+		if ($ged !== '') {
+			$where .= " AND gedcom_name LIKE CONCAT('%', :ged, '%')";
+			$args['ged'] = $ged;
+		}
+
+		$select = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
+		$delete = 'DELETE `##change` FROM `##change`';
+
+		$join = ' LEFT JOIN `##user` USING (user_id) JOIN `##gedcom` USING (gedcom_id)';
+
+		return [$select . $join, $delete . $join, $where, $args];
 	}
 
 	/**
@@ -1536,6 +1666,54 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Names of our privacy levels
+	 *
+	 * @return array
+	 */
+	private function privacyConstants(): array {
+		return [
+			'none'         => I18N::translate('Show to visitors'),
+			'privacy'      => I18N::translate('Show to members'),
+			'confidential' => I18N::translate('Show to managers'),
+			'hidden'       => I18N::translate('Hide from everyone'),
+		];
+
+	}
+
+	/**
+	 * The current privacy restrictions for a tree.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return array
+	 */
+	private function privacyRestrictions(Tree $tree): array {
+		$restrictions = Database::prepare(
+			"SELECT default_resn_id, tag_type, xref, resn" .
+			" FROM `##default_resn`" .
+			" LEFT JOIN `##name` ON (gedcom_id = n_file AND xref = n_id AND n_num = 0)" .
+			" WHERE gedcom_id = :tree_id"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		foreach ($restrictions as $resn) {
+			$resn->record = GedcomRecord::getInstance($resn->xref, $tree);
+			if ($resn->tag_type) {
+				$resn->tag_label = GedcomTag::getLabel($resn->tag_type);
+			} else {
+				$resn->tag_label = '';
+			}
+		}
+
+		usort($restrictions, function (stdClass $x, stdClass $y) {
+			return I18N::strcasecmp($x->tag_label, $y->tag_label);
+		});
+
+		return $restrictions;
+	}
+
+	/**
 	 * Generate a list of potential problems with the server.
 	 *
 	 * @return string[]
@@ -1553,6 +1731,40 @@ class AdminController extends BaseController {
 		}
 
 		return $warnings;
+	}
+
+	/**
+	 * Generate a list of potential problems with the server.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string[]
+	 */
+	private function tagsForPrivacy(Tree $tree): array {
+		$tags = array_unique(array_merge(
+			explode(',', $tree->getPreference('INDI_FACTS_ADD')),
+			explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('FAM_FACTS_ADD')),
+			explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('NOTE_FACTS_ADD')),
+			explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('SOUR_FACTS_ADD')),
+			explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('REPO_FACTS_ADD')),
+			explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
+			['SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN']
+		));
+
+		$all_tags = [];
+		foreach ($tags as $tag) {
+			if ($tag) {
+				$all_tags[$tag] = GedcomTag::getLabel($tag);
+			}
+		}
+
+		uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
+
+		return $all_tags;
 	}
 
 	/**
