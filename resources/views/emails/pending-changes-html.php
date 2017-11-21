@@ -1,6 +1,6 @@
 <?php namespace Fisharebest\Webtrees; ?>
 <p>
-	<?= Html::escape(I18N::translate('Hello %s…', $user->getRealName())) ?>
+	<?= e(I18N::translate('Hello %s…', $user->getRealName())) ?>
 </p>
 
 <p>
@@ -9,8 +9,8 @@
 
 <ul>
 	<li>
-		<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()])) ?>">
-			<?= Html::escape($tree->getTitle()) ?>
+		<a href="<?= e(Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()])) ?>">
+			<?= e($tree->getTitle()) ?>
 		</a>
 	</li>
 </ul>

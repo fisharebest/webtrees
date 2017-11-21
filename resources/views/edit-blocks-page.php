@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <script>
@@ -131,7 +130,7 @@
 	<?= I18N::translate('Select a block and use the arrows to move it.') ?>
 </p>
 
-<form name="config_setup" method="post" action="<?= Html::escape($url_save) ?>" onsubmit="select_options();" >
+<form name="config_setup" method="post" action="<?= e($url_save) ?>" onsubmit="select_options();" >
 	<table border="1" id="change_blocks">
 		<thead>
 			<tr>
@@ -229,7 +228,7 @@
 						<?= FontAwesome::decorativeIcon('save') ?>
 						<?= I18N::translate('save') ?>
 					</button>
-					<a class="btn btn-secondary" href="<?= Html::escape($url_cancel) ?>">
+					<a class="btn btn-secondary" href="<?= e($url_cancel) ?>">
 						<?= FontAwesome::decorativeIcon('cancel') ?>
 						<?= I18N::translate('cancel') ?>
 					</a>

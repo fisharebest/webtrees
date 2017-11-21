@@ -1,19 +1,18 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form method="POST" autocomplete="off">
 	<input name="route" type="hidden" value="setup">
-	<input name="lang" type="hidden" value="<?= Html::escape($lang) ?>">
-	<input name="dbhost" type="hidden" value="<?= Html::escape($dbhost) ?>">
-	<input name="dbport" type="hidden" value="<?= Html::escape($dbport) ?>">
-	<input name="dbuser" type="hidden" value="<?= Html::escape($dbuser) ?>">
-	<input name="dbpass" type="hidden" value="<?= Html::escape($dbpass) ?>">
-	<input name="dbname" type="hidden" value="<?= Html::escape($dbname) ?>">
-	<input name="tblpfx" type="hidden" value="<?= Html::escape($tblpfx) ?>">
-	<input name="wtname" type="hidden" value="<?= Html::escape($wtname) ?>">
-	<input name="wtuser" type="hidden" value="<?= Html::escape($wtuser) ?>">
-	<input name="wtpass" type="hidden" value="<?= Html::escape($wtpass) ?>">
-	<input name="wtemail" type="hidden" value="<?= Html::escape($wtemail) ?>">
+	<input name="lang" type="hidden" value="<?= e($lang) ?>">
+	<input name="dbhost" type="hidden" value="<?= e($dbhost) ?>">
+	<input name="dbport" type="hidden" value="<?= e($dbport) ?>">
+	<input name="dbuser" type="hidden" value="<?= e($dbuser) ?>">
+	<input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
+	<input name="dbname" type="hidden" value="<?= e($dbname) ?>">
+	<input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
+	<input name="wtname" type="hidden" value="<?= e($wtname) ?>">
+	<input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
+	<input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
+	<input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
 
 	<h2><?= I18N::translate('Checking server configuration') ?></h2>
 

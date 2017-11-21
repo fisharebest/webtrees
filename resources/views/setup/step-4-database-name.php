@@ -1,17 +1,16 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form method="POST" autocomplete="off">
 	<input name="route" type="hidden" value="setup">
-	<input name="lang" type="hidden" value="<?= Html::escape($lang) ?>">
-	<input name="dbhost" type="hidden" value="<?= Html::escape($dbhost) ?>">
-	<input name="dbport" type="hidden" value="<?= Html::escape($dbport) ?>">
-	<input name="dbuser" type="hidden" value="<?= Html::escape($dbuser) ?>">
-	<input name="dbpass" type="hidden" value="<?= Html::escape($dbpass) ?>">
-	<input name="wtname" type="hidden" value="<?= Html::escape($wtname) ?>">
-	<input name="wtuser" type="hidden" value="<?= Html::escape($wtuser) ?>">
-	<input name="wtpass" type="hidden" value="<?= Html::escape($wtpass) ?>">
-	<input name="wtemail" type="hidden" value="<?= Html::escape($wtemail) ?>">
+	<input name="lang" type="hidden" value="<?= e($lang) ?>">
+	<input name="dbhost" type="hidden" value="<?= e($dbhost) ?>">
+	<input name="dbport" type="hidden" value="<?= e($dbport) ?>">
+	<input name="dbuser" type="hidden" value="<?= e($dbuser) ?>">
+	<input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
+	<input name="wtname" type="hidden" value="<?= e($wtname) ?>">
+	<input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
+	<input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
+	<input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
 
 	<h2>
 		<?= I18N::translate('Database and table names') ?>
@@ -32,7 +31,7 @@
 			<?= I18N::translate('Database name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="^[^`]+$" required type="text" value="<?= Html::escape($dbname) ?>">
+			<input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="^[^`]+$" required type="text" value="<?= e($dbname) ?>">
 			<p class="small text-muted">
 				<?= I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.') ?>
 			</p>
@@ -44,7 +43,7 @@
 			<?= I18N::translate('Table prefix') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" dir="ltr" id="tblpfx" name="tblpfx" pattern="^[^`]*$" type="text" value="<?= Html::escape($tblpfx) ?>">
+			<input class="form-control" dir="ltr" id="tblpfx" name="tblpfx" pattern="^[^`]*$" type="text" value="<?= e($tblpfx) ?>">
 			<p class="small text-muted">
 				<?= I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want.') ?>
 			</p>

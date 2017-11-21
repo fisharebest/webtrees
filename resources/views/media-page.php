@@ -60,7 +60,7 @@
 									<?= I18N::translate('Source') ?>
 								</th>
 								<td>
-									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SOUR'])) ?>">
+									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SOUR'])) ?>">
 										<?= I18N::translate('Add a source citation') ?>
 									</a>
 								</td>
@@ -70,7 +70,7 @@
 									<?= I18N::translate('Shared note') ?>
 								</th>
 								<td>
-									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
 										<?= I18N::translate('Add a shared note') ?>
 									</a>
 								</td>
@@ -80,7 +80,7 @@
 									<?= I18N::translate('Restriction') ?>
 								</th>
 								<td>
-									<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'RESN'])) ?>">
+									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact' => 'RESN'])) ?>">
 										<?= I18N::translate('Add a restriction') ?>
 									</a>
 								</td>

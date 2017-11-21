@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="content">
@@ -7,7 +6,7 @@
 	</p>
 
 	<blockquote>
-		<?= Html::escape($error) ?>
+		<?= e($error) ?>
 	</blockquote>
 
 	<?= I18N::translate('If you are the website administrator, you should check that:') ?>

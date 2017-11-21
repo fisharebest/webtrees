@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
-
 <nav class="wt-breadcrumbs" aria-label="breadcrumb" role="navigation">
 	<ol class="breadcrumb">
 		<?php foreach ($links as $url => $label): ?>
@@ -9,7 +7,7 @@
 				</li>
 			<?php else: ?>
 				<li class="breadcrumb-item">
-					<a href="<?= Html::escape($url) ?>">
+					<a href="<?= e($url) ?>">
 						<?= $label ?>
 					</a>
 				</li>

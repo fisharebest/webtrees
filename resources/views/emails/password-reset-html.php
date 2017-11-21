@@ -1,6 +1,6 @@
 <?php namespace Fisharebest\Webtrees; ?>
 <p>
-	<?= Html::escape(I18N::translate('Hello %s…', $user->getRealName())) ?>
+	<?= e(I18N::translate('Hello %s…', $user->getRealName())) ?>
 </p>
 
 <p>
@@ -9,13 +9,13 @@
 
 <dl>
 	<dt><?= I18N::translate('Username') ?></dt>
-	<dd><?= Html::escape($user->getUserName())?></dd>
+	<dd><?= e($user->getUserName())?></dd>
 	<dt><?= I18N::translate('Password') ?></dt>
-	<dd><?= Html::escape($new_password) ?></dd>
+	<dd><?= e($new_password) ?></dd>
 </dl>
 
 <p>
-	<a href="<?= Html::escape(Html::url(WT_BASE_URL . 'login.php', ['username' => $user->getUserName(), 'url' => 'edituser.php'])) ?>">
+	<a href="<?= e(Html::url(WT_BASE_URL . 'login.php', ['username' => $user->getUserName(), 'url' => 'edituser.php'])) ?>">
 		<?= I18N::translate('Sign in') ?>
 	</a>
 </p>

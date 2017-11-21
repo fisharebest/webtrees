@@ -1,8 +1,7 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <p>
-<?= I18N::translate('You are signed in as %s.', Html::escape($user->getUserName())) ?>
+<?= I18N::translate('You are signed in as %s.', e($user->getUserName())) ?>
 </p>
 
 <form method="POST" action="logout.php">

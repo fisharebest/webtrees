@@ -30,7 +30,7 @@
 				<?= I18N::translate('A new version of webtrees is available.') ?>
 				<a href="admin_site_upgrade.php" class="error">
 					<?= /* I18N: %s is a version number */
-					I18N::translate('Upgrade to webtrees %s.', Html::escape($latest_version)) ?>
+					I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
 				</a>
 			<?php else: ?>
 				<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
@@ -38,28 +38,28 @@
 		</p>
 
 		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
 				<?= I18N::translate('Website preferences') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
 				<?= I18N::translate('Sending email') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
 				<?= I18N::translate('Sign-in and registration') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
 				<?= I18N::translate('Languages') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
 				<?= I18N::translate('Tracking and analytics') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_site_logs.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_logs.php', [])) ?>">
 				<?= I18N::translate('Website logs') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-clean-data')) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-clean-data')) ?>">
 				<?= I18N::translate('Clean up data folder') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-server-information')) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-server-information')) ?>">
 				<?= I18N::translate('Server information') ?>
 			</a>
 		</p>
@@ -98,10 +98,10 @@
 				<?php foreach ($all_trees as $tree): ?>
 					<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
 						<th scope="row">
-							<a href="<?= Html::escape(route('tree-page', ['ged' => $tree->getName()])) ?>">
-								<?= Html::escape($tree->getName()) ?>
+							<a href="<?= e(route('tree-page', ['ged' => $tree->getName()])) ?>">
+								<?= e($tree->getName()) ?>
 								-
-								<?= Html::escape($tree->getTitle()) ?>
+								<?= e($tree->getTitle()) ?>
 							</a>
 						</th>
 						<td>
@@ -109,12 +109,12 @@
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
-								<a href="<?= Html::escape(Html::url('edit_changes.php', [
+								<a href="<?= e(Html::url('edit_changes.php', [
 									'ged' => $tree->getName(),
 									'url' => route('admin-control-panel'),
 								])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= Html::escape($tree->getTitle()) ?></span>
+									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->getTitle()) ?></span>
 								</a>
 							<?php else: ?>
 								-
@@ -209,14 +209,14 @@
 		</table>
 
 		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_trees_manage.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_trees_manage.php', [])) ?>">
 				<?= I18N::translate('Manage family trees') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('tree-page-default-edit')) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('tree-page-default-edit')) ?>">
 				<?= I18N::translate('Set the default blocks for new family trees') ?>
 			</a>
 			<?php if (count($all_trees) > 1): ?>
-				<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_trees_merge.php', [])) ?>">
+				<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_trees_merge.php', [])) ?>">
 					<?= I18N::translate('Merge family trees') ?>
 				</a>
 			<?php endif ?>
@@ -245,7 +245,7 @@
 						<?php foreach ($list as $n => $user): ?>
 							<?= $n ? I18N::$list_separator : '' ?>
 							<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
-								<?= Html::escape($user->getRealName()) ?>
+								<?= e($user->getRealName()) ?>
 							</a>
 						<?php endforeach ?>
 					</dd>
@@ -254,19 +254,19 @@
 		</dl>
 
 		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', [])) ?>">
 				<?= I18N::translate('User administration') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
 				<?= I18N::translate('Add a user') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users_bulk.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users_bulk.php', [])) ?>">
 				<?= I18N::translate('Send broadcast messages') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
 				<?= I18N::translate('Delete inactive users') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('user-page-default-edit')) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('user-page-default-edit')) ?>">
 				<?= I18N::translate('Set the default blocks for new users') ?>
 			</a>
 		</p>
@@ -287,44 +287,44 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<p class="card-text">
-					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-modules')) ?>">
+					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-modules')) ?>">
 						<?= I18N::translate('Module administration') ?>
 					</a>
 				</p>
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-menus')) ?>">
+						<a href="<?= e(route('admin-menus')) ?>">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('tab', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-tabs')) ?>">
+						<a href="<?= e(route('admin-tabs')) ?>">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('block', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-blocks')) ?>">
+						<a href="<?= e(route('admin-blocks')) ?>">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('sidebar', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-sidebars')) ?>">
+						<a href="<?= e(route('admin-sidebars')) ?>">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('chart', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-charts')) ?>">
+						<a href="<?= e(route('admin-charts')) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
 						<?= FontAwesome::decorativeIcon('report', ['class' => 'fa-li']) ?>
-						<a href="<?= Html::escape(route('admin-reports')) ?>">
+						<a href="<?= e(route('admin-reports')) ?>">
 							<?= I18N::translate('Reports') ?>
 						</a>
 					</li>
@@ -338,7 +338,7 @@
 					<?php foreach ($config_modules as $module): ?>
 						<li>
 							<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
-							<a href="<?= Html::escape($module->getConfigLink()) ?>">
+							<a href="<?= e($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?>
 							</a>
 						</li>
@@ -361,13 +361,13 @@
 	</div>
 	<div class="card-body">
 		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_media.php', [])) ?>">
 				<?= I18N::translate('Manage media') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(Html::url('admin_media_upload.php', [])) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_media_upload.php', [])) ?>">
 				<?= I18N::translate('Upload media files') ?>
 			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= Html::escape(route('admin-fix-level-0-media')) ?>">
+			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-fix-level-0-media')) ?>">
 				<?= I18N::translate('MEDIA FIXUP') ?>
 			</a>
 		</p>
@@ -388,7 +388,7 @@
 			</p>
 			<ul class="list-unstyled">
 				<?php foreach ($files_to_delete as $file_to_delete): ?>
-					<li dir="ltr"><code><?= Html::escape($file_to_delete) ?></code></li>
+					<li dir="ltr"><code><?= e($file_to_delete) ?></code></li>
 				<?php endforeach ?>
 			</ul>
 		</div>

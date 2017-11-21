@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Filter; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
@@ -18,12 +17,12 @@
 		<?php
 		foreach ($entries as $entry) {
 			if (in_array($entry, $protected)) {
-				echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Html::escape($entry), '</li>';
+				echo '<li><i class="fa-li fa fa-ban text-danger"></i>', e($entry), '</li>';
 			} else {
 				echo '<li><i class="fa-li fa fa-trash-o"></i>';
 				echo '<label>';
-				echo '<input type="checkbox" name="to_delete[]" value="', Html::escape($entry), '"> ';
-				echo Html::escape($entry);
+				echo '<input type="checkbox" name="to_delete[]" value="', e($entry), '"> ';
+				echo e($entry);
 				echo '</label></li>';
 			}
 		}

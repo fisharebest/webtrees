@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
@@ -19,7 +18,7 @@
 
 <?php foreach ($deleted_modules as $module_name): ?>
 	<div class="alert alert-warning" role="alert">
-		<form action="<?= Html::escape(route('admin-control-panel')) ?>" class="form-inline" method="POST">
+		<form action="<?= e(route('admin-control-panel')) ?>" class="form-inline" method="POST">
 			<?= Filter::getCsrf() ?>
 			<input type="hidden" name="route" value="admin-delete-module-settings">
 			<input type="hidden" name="module_name" value="<?= $module_name ?>">
@@ -31,7 +30,7 @@
 	</div>
 <?php endforeach ?>
 
-<form action="<?= Html::escape(route('admin-update-module-status')) ?>" method="POST">
+<form action="<?= e(route('admin-update-module-status')) ?>" method="POST">
 	<input type="hidden" name="route" value="admin-update-module-status">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true">
@@ -50,32 +49,32 @@
 					<?= I18N::translate('Description') ?>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-menus')) ?>">
+					<a href="<?= e(route('admin-menus')) ?>">
 						<?= I18N::translate('Menus') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-tabs')) ?>">
+					<a href="<?= e(route('admin-tabs')) ?>">
 						<?= I18N::translate('Tabs') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-sidebars')) ?>">
+					<a href="<?= e(route('admin-sidebars')) ?>">
 						<?= I18N::translate('Sidebars') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-blocks')) ?>">
+					<a href="<?= e(route('admin-blocks')) ?>">
 						<?= I18N::translate('Blocks') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-charts')) ?>">
+					<a href="<?= e(route('admin-charts')) ?>">
 						<?= I18N::translate('Charts') ?>
 					</a>
 				</th>
 				<th class="d-none d-sm-table-cell">
-					<a href="<?= Html::escape(route('admin-reports')) ?>">
+					<a href="<?= e(route('admin-reports')) ?>">
 						<?= I18N::translate('Reports') ?>
 					</a>
 				</th>
@@ -92,7 +91,7 @@
 				<tr>
 					<th scope="row" data-sort="<?= $module->getTitle() ?>" dir="auto">
 						<?php if ($module instanceof ModuleConfigInterface): ?>
-							<a href="<?= Html::escape($module->getConfigLink()) ?>">
+							<a href="<?= e($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?> <i class="fa fa-cogs"></i>
 							</a>
 						<?php else: ?>

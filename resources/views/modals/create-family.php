@@ -1,13 +1,12 @@
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <div class="modal wt-modal-create-record" id="modal-create-family">
 	<form id="form-create-family"><!-- This form is posted using jQuery -->
 		<?= Filter::getCsrf() ?>
 		<input type="hidden" name="action" value="create-family">
-		<input type="hidden" name="ged" value="<?= Html::escape($tree->getName()) ?>">
+		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

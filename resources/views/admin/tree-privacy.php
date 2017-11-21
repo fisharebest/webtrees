@@ -2,7 +2,6 @@
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -13,7 +12,7 @@
 
 <form method="POST">
 	<input type="hidden" name="route" value="tree-privacy">
-	<input type="hidden" name="ged" value="<?= Html::escape($tree->getName()) ?>">
+	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 	<?= Filter::getCsrf() ?>
 
 	<!-- REQUIRE_AUTHENTICATION -->
@@ -72,7 +71,7 @@
 				maxlength="5"
 				name="MAX_ALIVE_AGE"
 				type="text"
-				value="<?= Html::escape($tree->getPreference('MAX_ALIVE_AGE')) ?>"
+				value="<?= e($tree->getPreference('MAX_ALIVE_AGE')) ?>"
 			>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose.') ?>

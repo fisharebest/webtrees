@@ -9,13 +9,13 @@
 
 <dl>
 	<dt><?= I18N::translate('Username') ?></dt>
-	<dd><?= Html::escape($user->getUserName()) ?></dd>
+	<dd><?= e($user->getUserName()) ?></dd>
 	<dt><?= I18N::translate('Real name') ?></dt>
-	<dd><?= Html::escape($user->getRealName()) ?></dd>
+	<dd><?= e($user->getRealName()) ?></dd>
 	<dt><?= I18N::translate('Email address') ?></dt>
-	<dd><?= Html::escape($user->getEmail()) ?></dd>
+	<dd><?= e($user->getEmail()) ?></dd>
 	<dt><?= I18N::translate('Comments') ?></dt>
-	<dd><?= Html::escape($comments) ?></dd>
+	<dd><?= e($comments) ?></dd>
 </dl>
 
 <p>

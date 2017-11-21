@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -7,7 +6,7 @@
 
 <form action="reportengine.php" class="wt-page-options wt-page-options-report-setup">
 	<input type="hidden" name="action" value="run">
-	<input type="hidden" name="report" value="<?= Html::escape($report) ?>">
+	<input type="hidden" name="report" value="<?= e($report) ?>">
 
 	<div class="row form-group">
 		<div class="col-sm-3 col-form-label wt-page-options-label">
@@ -19,7 +18,7 @@
 	</div>
 
 	<?php foreach ($inputs as $n => $input): ?>
-		<input type="hidden" name="varnames[]" value="<?= Html::escape($input['name']) ?>">
+		<input type="hidden" name="varnames[]" value="<?= e($input['name']) ?>">
 		<div class="row form-group">
 			<label class="col-sm-3 col-form-label wt-page-options-label" for="input-<?= $n ?>">
 				<?= I18N::translate($input['value']) ?>

@@ -1,6 +1,4 @@
 <?php use Fisharebest\Webtrees\Filter; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -8,7 +6,7 @@
 
 <h1><?= $title ?></h1>
 
-<form action="<?= Html::escape(route('merge-records', ['ged' => $tree->getName(), 'xref1' => $record1->getXref(), 'xref2' => $record2->getXref()])) ?>" method="POST">
+<form action="<?= e(route('merge-records', ['ged' => $tree->getName(), 'xref1' => $record1->getXref(), 'xref2' => $record2->getXref()])) ?>" method="POST">
 	<?= Filter::getCsrf() ?>
 	<p>
 		<?= I18N::translate('Select the facts and events to keep from both records.') ?>
@@ -39,7 +37,7 @@
 									<input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
 								</td>
 								<td>
-									<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
+									<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 									<?php if ($fact->getTarget()): ?>
 										<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 											<?= $fact->getTarget()->getFullName() ?>
@@ -63,7 +61,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2 class="card-title">
-						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . Html::escape($record1->getRawUrl()) . '">' . $record1->getFullName()) . '</a>' ?>
+						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record1->getRawUrl()) . '">' . $record1->getFullName()) . '</a>' ?>
 					</h2>
 				</div>
 				<div class="card-body">
@@ -86,7 +84,7 @@
 											<input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
 										</td>
 										<td>
-											<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
+											<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 											<?php if ($fact->getTarget()): ?>
 												<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 													<?= $fact->getTarget()->getFullName() ?>
@@ -109,7 +107,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2 class="card-title">
-						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . Html::escape($record2->getRawUrl()) . '">' . $record2->getFullName()) . '</a>' ?>
+						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record2->getRawUrl()) . '">' . $record2->getFullName()) . '</a>' ?>
 					</h2>
 				</div>
 				<div class="card-body">
@@ -132,7 +130,7 @@
 											<input type="checkbox" name="keep2[]" value="<?= $fact->getFactId() ?>" checked>
 										</td>
 										<td>
-											<div class="gedcom-data" dir="ltr"><?= Html::escape($fact->getGedcom()) ?></div>
+											<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 											<?php if ($fact->getTarget()): ?>
 												<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
 													<?= $fact->getTarget()->getFullName() ?>

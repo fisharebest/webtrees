@@ -13,8 +13,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
 
 use Fisharebest\Webtrees\Html;
+
+/**
+ * Escape a string for inclusion within HTML.
+ *
+ * @param $text
+ *
+ * @return string
+ */
+function e(string $text): string {
+	return Html::escape($text);
+}
 
 /**
  * Generate a URL for a named route.

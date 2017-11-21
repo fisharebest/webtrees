@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <p>
@@ -6,7 +5,7 @@
 </p>
 
 <pre>
-	<?= Html::escape($error) ?>
+	<?= e($error) ?>
 </pre>
 
 <p>

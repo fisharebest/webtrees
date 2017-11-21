@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -14,8 +13,8 @@
 		<div class="col-sm-9 wt-page-options-value">
 			<select class="form-control" id="report" name="report">
 				<?php foreach ($reports as $file => $report): ?>
-					<option value="<?= Html::escape($file) ?>">
-						<?= Html::escape($report) ?>
+					<option value="<?= e($file) ?>">
+						<?= e($report) ?>
 					</option>
 				<?php endforeach ?>
 			</select>

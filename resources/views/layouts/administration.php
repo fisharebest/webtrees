@@ -1,28 +1,27 @@
 <?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>
 <html <?= I18N::htmlAttributes() ?>>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="csrf" content="<?= Html::escape(Filter::getCsrfToken()) ?>">
+		<meta name="csrf" content="<?= e(Filter::getCsrfToken()) ?>">
 
 		<title><?= $title ?></title>
 
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_BOOTSTRAP_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_FONT_AWESOME_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_FONT_AWESOME_RTL_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_DATATABLES_BOOTSTRAP_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_SELECT2_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_DATATABLES_BOOTSTRAP_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape(WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL) ?>">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape($common_url) ?>style.css">
-		<link rel="stylesheet" type="text/css" href="<?= Html::escape($theme_url) ?>style.css">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_BOOTSTRAP_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_FONT_AWESOME_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_FONT_AWESOME_RTL_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_DATATABLES_BOOTSTRAP_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_SELECT2_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_DATATABLES_BOOTSTRAP_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e($common_url) ?>style.css">
+		<link rel="stylesheet" type="text/css" href="<?= e($theme_url) ?>style.css">
 
 		<?php if (I18N::direction() === 'rtl'): ?>
 			<link rel="stylesheet" type="text/css" href="<?= WT_BOOTSTRAP_RTL_CSS_URL ?>">
@@ -71,16 +70,16 @@
 
 		<?= $content ?>
 
-		<script src="<?= Html::escape(WT_JQUERY_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_POPPER_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_BOOTSTRAP_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_DATATABLES_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_DATATABLES_BOOTSTRAP_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_SELECT2_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_MOMENT_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_WEBTREES_JS_URL) ?>"></script>
-		<script src="<?= Html::escape(WT_ADMIN_JS_URL) ?>"></script>
+		<script src="<?= e(WT_JQUERY_JS_URL) ?>"></script>
+		<script src="<?= e(WT_POPPER_JS_URL) ?>"></script>
+		<script src="<?= e(WT_BOOTSTRAP_JS_URL) ?>"></script>
+		<script src="<?= e(WT_DATATABLES_JS_URL) ?>"></script>
+		<script src="<?= e(WT_DATATABLES_BOOTSTRAP_JS_URL) ?>"></script>
+		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
+		<script src="<?= e(WT_MOMENT_JS_URL) ?>"></script>
+		<script src="<?= e(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL) ?>"></script>
+		<script src="<?= e(WT_WEBTREES_JS_URL) ?>"></script>
+		<script src="<?= e(WT_ADMIN_JS_URL) ?>"></script>
 
 		<?= DebugBar::render() ?>
 	</body>

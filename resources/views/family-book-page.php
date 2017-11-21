@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -8,7 +7,7 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-family-book-chart d-print-none">
-	<input type="hidden" name="ged" value="<?= Html::escape($individual->getTree()->getName()) ?>">
+	<input type="hidden" name="ged" value="<?= e($individual->getTree()->getName()) ?>">
 
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
@@ -56,4 +55,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>

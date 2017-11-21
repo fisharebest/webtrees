@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
@@ -20,7 +19,7 @@
 </h2>
 <dl>
 	<?php foreach ($mysql_variables as $variable => $value): ?>
-		<dt><?= Html::escape($variable) ?></dt>
-		<dd><?= Html::escape($value) ?></dd>
+		<dt><?= e($variable) ?></dt>
+		<dd><?= e($value) ?></dd>
 	<?php endforeach ?>
 </dl>

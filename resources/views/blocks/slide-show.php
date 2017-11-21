@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="text-center slide-show-container">
@@ -28,7 +27,7 @@
 	<ul class="slide-show-links">
 		<?php foreach ($media->linkedIndividuals('OBJE') as $individual): ?>
 			<?= I18N::translate('Individual') ?> —
-			<a href="<?= Html::escape($individual->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($individual->getRawUrl()) ?>" class="slide-show-link">
 				<?= $individual->getFullName() ?>
 			</a>
 			<br>
@@ -36,7 +35,7 @@
 
 		<?php foreach ($media->linkedFamilies('OBJE') as $family): ?>
 			<?= I18N::translate('View this family') ?> —
-			<a href="<?= Html::escape($family->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($family->getRawUrl()) ?>" class="slide-show-link">
 				<?= $family->getFullName() ?>
 			</a>
 			<br>
@@ -44,7 +43,7 @@
 
 		<?php foreach ($media->linkedSources('OBJE') as $source): ?>
 			<?= I18N::translate('View this source') ?> —
-			<a href="<?= Html::escape($source->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($source->getRawUrl()) ?>" class="slide-show-link">
 				<?= $source->getFullName() ?>
 			</a>
 			<br>

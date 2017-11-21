@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -10,7 +9,7 @@
 
 <form>
 	<input type="hidden" name="route" value="merge-records">
-	<input type="hidden" name="ged" value="<?= Html::escape($tree->getName()) ?>">
+	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label" for="record-type">
 			<?= I18N::translate('Select two records to merge.') ?>

@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -8,7 +7,7 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form" name="logs" action="<?= Html::escape(route('admin-changes-log')) ?>">
+<form class="form" name="logs" action="<?= e(route('admin-changes-log')) ?>">
 	<input type="hidden" name="action" value="show">
 
 	<div class="row">
@@ -17,7 +16,7 @@
 				<?= /* I18N: From date1 (To date2) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Html::escape($from) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= e($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -27,7 +26,7 @@
 				<?= /* I18N: (From date1) To date2 */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Html::escape($to) ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= e($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -43,7 +42,7 @@
 			<label for="xref">
 				<?= I18N::translate('Record') ?>
 			</label>
-			<input class="form-control" type="text" id="xref" name="xref" value="<?= Html::escape($xref) ?>">
+			<input class="form-control" type="text" id="xref" name="xref" value="<?= e($xref) ?>">
 		</div>
 	</div>
 
@@ -52,14 +51,14 @@
 			<label for="oldged">
 				<?= I18N::translate('Old data') ?>
 			</label>
-			<input class="form-control" type="text" id="oldged" name="oldged" value="<?= Html::escape($oldged) ?>">
+			<input class="form-control" type="text" id="oldged" name="oldged" value="<?= e($oldged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="newged">
 				<?= I18N::translate('New data') ?>
 			</label>
-			<input class="form-control" type="text" id="newged" name="newged" value="<?= Html::escape($newged) ?>">
+			<input class="form-control" type="text" id="newged" name="newged" value="<?= e($newged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -101,7 +100,7 @@
 		class="table table-bordered table-sm table-hover table-site-changes datatables"
 		data-ajax="<?= route('admin-changes-log-data', ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'user' => $user]) ?>"
 		data-server-side="true"
-		data-sorting="<?= Html::escape('[[ 0, "desc" ]]') ?>"
+		data-sorting="<?= e('[[ 0, "desc" ]]') ?>"
 	>
 		<caption class="sr-only">
 			<?= $title ?>

@@ -1,15 +1,14 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form method="POST" autocomplete="off">
 	<input name="route" type="hidden" value="setup">
-	<input name="lang" type="hidden" value="<?= Html::escape($lang) ?>">
-	<input name="dbname" type="hidden" value="<?= Html::escape($dbname) ?>">
-	<input name="tblpfx" type="hidden" value="<?= Html::escape($tblpfx) ?>">
-	<input name="wtname" type="hidden" value="<?= Html::escape($wtname) ?>">
-	<input name="wtuser" type="hidden" value="<?= Html::escape($wtuser) ?>">
-	<input name="wtpass" type="hidden" value="<?= Html::escape($wtpass) ?>">
-	<input name="wtemail" type="hidden" value="<?= Html::escape($wtemail) ?>">
+	<input name="lang" type="hidden" value="<?= e($lang) ?>">
+	<input name="dbname" type="hidden" value="<?= e($dbname) ?>">
+	<input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
+	<input name="wtname" type="hidden" value="<?= e($wtname) ?>">
+	<input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
+	<input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
+	<input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
 
 	<h2><?= I18N::translate('Connection to database server') ?></h2>
 
@@ -34,7 +33,7 @@
 			<?= I18N::translate('Server name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= Html::escape($dbhost) ?>" dir="ltr" required>
+			<input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost) ?>" dir="ltr" required>
 			<p class="small text-muted">
 				<?= I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.') ?>
 			</p>
@@ -46,7 +45,7 @@
 			<?= I18N::translate('Port number') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= Html::escape($dbport) ?>" dir="ltr" required>
+			<input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport) ?>" dir="ltr" required>
 			<p class="small text-muted">
 				<?= I18N::translate('Most sites are configured to use the default value of 3306.') ?>
 			</p>
@@ -58,7 +57,7 @@
 			<?= I18N::translate('Database user account') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="dbuser" name="dbuser" type="text" value="<?= Html::escape($dbuser) ?>" dir="ltr" required>
+			<input class="form-control" id="dbuser" name="dbuser" type="text" value="<?= e($dbuser) ?>" dir="ltr" required>
 			<p class="small text-muted">
 				<?= I18N::translate('This is case sensitive.') ?>
 			</p>
@@ -70,7 +69,7 @@
 			<?= I18N::translate('Database password') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="dbpass" name="dbpass" type="password" value="<?= Html::escape($dbpass) ?>" dir="ltr">
+			<input class="form-control" id="dbpass" name="dbpass" type="password" value="<?= e($dbpass) ?>" dir="ltr">
 			<p class="small text-muted">
 				<?= I18N::translate('This is case sensitive.') ?>
 			</p>

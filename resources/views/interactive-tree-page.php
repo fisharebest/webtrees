@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -9,7 +8,7 @@
 <form class="wt-page-options wt-page-options-compact-chart d-print-none">
 	<input type="hidden" name="mod" value="tree">
 	<input type="hidden" name="mod_action" value="treeview">
-	<input type="hidden" name="ged" value="<?= Html::escape($individual->getTree()->getName()) ?>">
+	<input type="hidden" name="ged" value="<?= e($individual->getTree()->getName()) ?>">
 
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">

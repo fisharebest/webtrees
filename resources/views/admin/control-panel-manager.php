@@ -53,10 +53,10 @@
 				<?php foreach ($all_trees as $tree): ?>
 					<tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">
 						<th scope="row">
-							<a href="<?= Html::escape(route('tree-page', ['ged' => $tree->getName()])) ?>">
-								<?= Html::escape($tree->getName()) ?>
+							<a href="<?= e(route('tree-page', ['ged' => $tree->getName()])) ?>">
+								<?= e($tree->getName()) ?>
 								-
-								<?= Html::escape($tree->getTitle()) ?>
+								<?= e($tree->getTitle()) ?>
 							</a>
 						</th>
 						<td>
@@ -64,12 +64,12 @@
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
-								<a href="<?= Html::escape(Html::url('edit_changes.php', [
+								<a href="<?= e(Html::url('edit_changes.php', [
 									'ged' => $tree->getName(),
 									'url' => route('admin-control-panel'),
 								])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
-									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= Html::escape($tree->getTitle()) ?></span>
+									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->getTitle()) ?></span>
 								</a>
 							<?php else: ?>
 								-

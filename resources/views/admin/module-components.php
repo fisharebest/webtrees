@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -11,9 +10,9 @@
 
 <h1><?= $title ?></h1>
 
-<form action="<?= Html::escape(route('admin-control-panel')) ?>" method="post">
+<form action="<?= e(route('admin-control-panel')) ?>" method="post">
 	<input type="hidden" name="route" value="admin-update-module-access">
-	<input type="hidden" name="component" value="<?= Html::escape($component) ?>">
+	<input type="hidden" name="component" value="<?= e($component) ?>">
 	<?= Filter::getCsrf() ?>
 	<table class="table table-bordered" class="row">
 		<thead>
@@ -28,7 +27,7 @@
 				<tr>
 					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
-							<a href="<?= Html::escape($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
+							<a href="<?= e($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>
 						<?php endif ?>
