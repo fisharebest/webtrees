@@ -587,7 +587,7 @@ class Tree {
 		]);
 
 		$buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this));
-		while ($row = $stmt->fetch()) {
+		while (($row = $stmt->fetch()) !== false) {
 			$buffer .= FunctionsExport::reformatRecord($row->gedcom);
 			if (strlen($buffer) > 65535) {
 				fwrite($stream, $buffer);
@@ -650,82 +650,56 @@ class Tree {
 	/**
 	 * Generate a new XREF, unique across all family trees
 	 *
-	 * @param string $type
-	 *
 	 * @return string
 	 */
-	public function getNewXref($type = 'INDI') {
-		/** @var string[] Which tree preference is used for which record type */
-		static $type_to_preference = [
-			'INDI' => 'GEDCOM_ID_PREFIX',
-			'FAM'  => 'FAM_ID_PREFIX',
-			'OBJE' => 'MEDIA_ID_PREFIX',
-			'NOTE' => 'NOTE_ID_PREFIX',
-			'SOUR' => 'SOURCE_ID_PREFIX',
-			'REPO' => 'REPO_ID_PREFIX',
-		];
-
-		if (array_key_exists($type, $type_to_preference)) {
-			$prefix = $this->getPreference($type_to_preference[$type]);
-		} else {
-			// Use the first non-underscore character
-			$prefix = substr(trim($type, '_'), 0, 1);
-		}
+	public function getNewXref() {
+		$prefix = 'X';
 
 		$increment = 1.0;
 		do {
 			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence. See
 			// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
 			$statement = Database::prepare(
-				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + :increment) WHERE record_type = :record_type AND gedcom_id = :tree_id"
+				"UPDATE `##site_setting` SET setting_value = LAST_INSERT_ID(setting_value + :increment) WHERE setting_name = 'next_xref'"
 			);
 			$statement->execute([
 				'increment'   => (int) $increment,
-				'record_type' => $type,
-				'tree_id'     => $this->tree_id,
 			]);
 
 			if ($statement->rowCount() === 0) {
 				// First time we've used this record type.
-				Database::prepare(
-					"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:tree_id, :record_type, 1)"
-				)->execute([
-					'record_type' => $type,
-					'tree_id'     => $this->tree_id,
-				]);
+				Site::setPreference('next_xref', '1');
 				$num = 1;
 			} else {
 				$num = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
 			}
 
+			$xref = $prefix . $num;
+
 			// Records may already exist with this sequence number.
 			$already_used = Database::prepare(
-				"SELECT i_id FROM `##individuals` WHERE i_id = :i_id" .
-				" UNION ALL " .
-				"SELECT f_id FROM `##families` WHERE f_id = :f_id" .
-				" UNION ALL " .
-				"SELECT s_id FROM `##sources` WHERE s_id = :s_id" .
-				" UNION ALL " .
-				"SELECT m_id FROM `##media` WHERE m_id = :m_id" .
-				" UNION ALL " .
-				"SELECT o_id FROM `##other` WHERE o_id = :o_id" .
-				" UNION ALL " .
-				"SELECT xref FROM `##change` WHERE xref = :xref"
+				"SELECT" .
+				" EXISTS (SELECT 1 FROM `##individuals` WHERE i_id = :i_id) OR" .
+				" EXISTS (SELECT 1 FROM `##families` WHERE f_id = :f_id) OR" .
+				" EXISTS (SELECT 1 FROM `##sources` WHERE s_id = :s_id) OR" .
+				" EXISTS (SELECT 1 FROM `##media` WHERE m_id = :m_id) OR" .
+				" EXISTS (SELECT 1 FROM `##other` WHERE o_id = :o_id) OR" .
+				" EXISTS (SELECT 1 FROM `##change` WHERE xref = :xref)"
 			)->execute([
-				'i_id' => $prefix . $num,
-				'f_id' => $prefix . $num,
-				's_id' => $prefix . $num,
-				'm_id' => $prefix . $num,
-				'o_id' => $prefix . $num,
-				'xref' => $prefix . $num,
+				'i_id' => $xref,
+				'f_id' => $xref,
+				's_id' => $xref,
+				'm_id' => $xref,
+				'o_id' => $xref,
+				'xref' => $xref,
 			])->fetchOne();
 
 			// This exponential increment allows us to scan over large blocks of
 			// existing data in a reasonable time.
 			$increment *= 1.01;
-		} while ($already_used);
+		} while ($already_used !== '0');
 
-		return $prefix . $num;
+		return $xref;
 	}
 
 	/**
@@ -751,7 +725,7 @@ class Tree {
 
 		// webtrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
 		if (!preg_match('/\d/', $xref)) {
-			$xref   = $this->getNewXref($type);
+			$xref   = $this->getNewXref();
 			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
 		}
 

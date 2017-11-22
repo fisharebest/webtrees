@@ -136,10 +136,8 @@ case 'general':
 	$WT_TREE->setPreference('FAM_FACTS_ADD', implode(',', Filter::postArray('FAM_FACTS_ADD')));
 	$WT_TREE->setPreference('FAM_FACTS_QUICK', implode(',', Filter::postArray('FAM_FACTS_QUICK')));
 	$WT_TREE->setPreference('FAM_FACTS_UNIQUE', implode(',', Filter::postArray('FAM_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('FAM_ID_PREFIX', Filter::post('FAM_ID_PREFIX'));
 	$WT_TREE->setPreference('FULL_SOURCES', Filter::postBool('FULL_SOURCES'));
 	$WT_TREE->setPreference('FORMAT_TEXT', Filter::post('FORMAT_TEXT'));
-	$WT_TREE->setPreference('GEDCOM_ID_PREFIX', Filter::post('GEDCOM_ID_PREFIX'));
 	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH', Filter::post('GEDCOM_MEDIA_PATH'));
 	$WT_TREE->setPreference('GENERATE_UIDS', Filter::postBool('GENERATE_UIDS'));
 	$WT_TREE->setPreference('GEONAMES_ACCOUNT', Filter::post('GEONAMES_ACCOUNT'));
@@ -150,11 +148,9 @@ case 'general':
 	$WT_TREE->setPreference('LANGUAGE', Filter::post('LANGUAGE'));
 	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS', Filter::post('MAX_DESCENDANCY_GENERATIONS'));
 	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS', Filter::post('MAX_PEDIGREE_GENERATIONS'));
-	$WT_TREE->setPreference('MEDIA_ID_PREFIX', Filter::post('MEDIA_ID_PREFIX'));
 	$WT_TREE->setPreference('MEDIA_UPLOAD', Filter::post('MEDIA_UPLOAD'));
 	$WT_TREE->setPreference('META_DESCRIPTION', Filter::post('META_DESCRIPTION'));
 	$WT_TREE->setPreference('META_TITLE', Filter::post('META_TITLE'));
-	$WT_TREE->setPreference('NOTE_ID_PREFIX', Filter::post('NOTE_ID_PREFIX'));
 	$WT_TREE->setPreference('NO_UPDATE_CHAN', Filter::postBool('NO_UPDATE_CHAN'));
 	$WT_TREE->setPreference('PEDIGREE_LAYOUT', Filter::postBool('PEDIGREE_LAYOUT'));
 	$WT_TREE->setPreference('PEDIGREE_ROOT_ID', Filter::post('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
@@ -165,7 +161,6 @@ case 'general':
 	$WT_TREE->setPreference('REPO_FACTS_ADD', implode(',', Filter::postArray('REPO_FACTS_ADD')));
 	$WT_TREE->setPreference('REPO_FACTS_QUICK', implode(',', Filter::postArray('REPO_FACTS_QUICK')));
 	$WT_TREE->setPreference('REPO_FACTS_UNIQUE', implode(',', Filter::postArray('REPO_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('REPO_ID_PREFIX', Filter::post('REPO_ID_PREFIX'));
 	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
 	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
 	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
@@ -179,7 +174,6 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
 	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
-	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD', implode(',', Filter::postArray('SOUR_FACTS_ADD')));
 	$WT_TREE->setPreference('SOUR_FACTS_QUICK', implode(',', Filter::postArray('SOUR_FACTS_QUICK')));
 	$WT_TREE->setPreference('SOUR_FACTS_UNIQUE', implode(',', Filter::postArray('SOUR_FACTS_UNIQUE')));
@@ -382,124 +376,6 @@ echo Bootstrap4::breadcrumbs([
 					<?= /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.') ?>
 				</p>
 			</div>
-		</div>
-	</fieldset>
-
-	<!-- XXXXX_ID_PREFIX -->
-	<fieldset class="form-group">
-		<div class="row>"
-			<legend class="col-form-legend col-sm-3">
-				<?= /* I18N: A configuration setting. The first letter(s) in a GEDCOM identifier. */ I18N::translate('XREF prefixes') ?>
-			</legend>
-			<div class="col-sm-9">
-			<div class="row">
-				<!-- GEDCOM_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="GEDCOM_ID_PREFIX">
-							<?= I18N::translate('Individual') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="GEDCOM_ID_PREFIX"
-							maxlength="10"
-							name="GEDCOM_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('GEDCOM_ID_PREFIX') ?>"
-							>
-					</div>
-				</div>
-				<!-- FAM_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="FAM_ID_PREFIX">
-							<?= I18N::translate('Family') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="FAM_ID_PREFIX"
-							maxlength="10"
-							name="FAM_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('FAM_ID_PREFIX') ?>"
-							>
-					</div>
-				</div>
-				<!-- SOURCE_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="SOURCE_ID_PREFIX">
-							<?= I18N::translate('Source') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="SOURCE_ID_PREFIX"
-							maxlength="10"
-							name="SOURCE_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('SOURCE_ID_PREFIX') ?>"
-							>
-					</div>
-				</div>
-				<!-- REPO_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="REPO_ID_PREFIX">
-							<?= I18N::translate('Repository') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="REPO_ID_PREFIX"
-							maxlength="10"
-							name="REPO_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('REPO_ID_PREFIX') ?>"
-							>
-					</div>
-				</div>
-				<!-- MEDIA_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="MEDIA_ID_PREFIX">
-							<?= I18N::translate('Media object') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="MEDIA_ID_PREFIX"
-							maxlength="10"
-							name="MEDIA_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('MEDIA_ID_PREFIX') ?>"
-							>
-					</div>
-				</div>
-				<!-- NOTE_ID_PREFIX -->
-				<div class="col-sm-6 col-md-4">
-					<div class="input-group">
-						<label class="input-group-addon" for="NOTE_ID_PREFIX">
-							<?= I18N::translate('Note') ?>
-						</label>
-						<input
-							class="form-control"
-							dir="ltr"
-							id="NOTE_ID_PREFIX"
-							maxlength="10"
-							name="NOTE_ID_PREFIX"
-							type="text"
-							value="<?= $WT_TREE->getPreference('NOTE_ID_PREFIX') ?>"
-						>
-					</div>
-				</div>
-			</div>
-			<p class="small text-muted">
-				<?= I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ?>
-				<?= /* I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14. */ I18N::translate('You can choose the prefix that will be used whenever new XREFs are created.') ?>
-			</p>
 		</div>
 	</fieldset>
 

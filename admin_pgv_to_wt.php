@@ -648,9 +648,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$FAM_FACTS_ADD                = '';
 	$FAM_FACTS_QUICK              = '';
 	$FAM_FACTS_UNIQUE             = '';
-	$FAM_ID_PREFIX                = '';
 	$FULL_SOURCES                 = '';
-	$GEDCOM_ID_PREFIX             = '';
 	$GENERATE_UIDS                = '';
 	$HIDE_GEDCOM_ERRORS           = '';
 	$HIDE_LIVE_PEOPLE             = '';
@@ -662,7 +660,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$MAX_DESCENDANCY_GENERATIONS  = '';
 	$MAX_PEDIGREE_GENERATIONS     = '';
 	$MAX_RELATION_PATH_LENGTH     = '';
-	$MEDIA_ID_PREFIX              = '';
 	$META_DESCRIPTION             = '';
 	$META_TITLE                   = '';
 	$MULTI_MEDIA                  = '';
@@ -679,7 +676,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$REPO_FACTS_ADD               = '';
 	$REPO_FACTS_QUICK             = '';
 	$REPO_FACTS_UNIQUE            = '';
-	$REPO_ID_PREFIX               = '';
 	$REQUIRE_AUTHENTICATION       = '';
 	$SHOW_AGE_DIFF                = '';
 	$SHOW_COUNTER                 = '';
@@ -697,7 +693,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$SHOW_PEDIGREE_PLACES         = '';
 	$SHOW_PRIVATE_RELATIONSHIPS   = '';
 	$SHOW_RELATIVES_EVENTS        = '';
-	$SOURCE_ID_PREFIX             = '';
 	$SOUR_FACTS_ADD               = '';
 	$SOUR_FACTS_QUICK             = '';
 	$SOUR_FACTS_UNIQUE            = '';
@@ -774,9 +769,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_ADD', $FAM_FACTS_ADD]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_QUICK', $FAM_FACTS_QUICK]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_FACTS_UNIQUE', $FAM_FACTS_UNIQUE]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FAM_ID_PREFIX', $FAM_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'FULL_SOURCES', $FULL_SOURCES]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'GEDCOM_ID_PREFIX', $GEDCOM_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'GENERATE_UIDS', $GENERATE_UIDS]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'HIDE_GEDCOM_ERRORS', $HIDE_GEDCOM_ERRORS]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE]);
@@ -853,14 +846,12 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_PEDIGREE_GENERATIONS', $MAX_PEDIGREE_GENERATIONS]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_RELATION_PATH_LENGTH', $MAX_RELATION_PATH_LENGTH]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_DIRECTORY', 'media/']);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_ID_PREFIX', $MEDIA_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'META_DESCRIPTION', $META_DESCRIPTION]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'META_TITLE', $META_TITLE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MEDIA_UPLOAD', $MULTI_MEDIA]); // see schema v12-13
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_ADD', $NOTE_FACTS_ADD]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_QUICK', $NOTE_FACTS_QUICK]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_FACTS_UNIQUE', $NOTE_FACTS_UNIQUE]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NOTE_ID_PREFIX', 'N']);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'NO_UPDATE_CHAN', $NO_UPDATE_CHAN]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_LAYOUT', $PEDIGREE_LAYOUT]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'PEDIGREE_ROOT_ID', $PEDIGREE_ROOT_ID]);
@@ -871,7 +862,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_ADD', $REPO_FACTS_ADD]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_QUICK', $REPO_FACTS_QUICK]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_FACTS_UNIQUE', $REPO_FACTS_UNIQUE]);
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REPO_ID_PREFIX', $REPO_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_COUNTER', $SHOW_COUNTER]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_DEAD_PEOPLE', $SHOW_DEAD_PEOPLE]);
@@ -895,7 +885,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0]))]);
 
-	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOURCE_ID_PREFIX', $SOURCE_ID_PREFIX]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_ADD', $SOUR_FACTS_ADD]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_QUICK', $SOUR_FACTS_QUICK]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SOUR_FACTS_UNIQUE', $SOUR_FACTS_UNIQUE]);
