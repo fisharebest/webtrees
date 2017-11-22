@@ -167,6 +167,32 @@
 	<script id="new-resn-template" type="text/html">
 		<tr>
 			<td>
+				<select class="form-control" id="record-type">
+					<option value="individual"><?= I18N::translate('Individual') ?></option>
+					<option value="family"><?= I18N::translate('Family') ?></option>
+					<option value="source"><?= I18N::translate('Source') ?></option>
+					<option value="repository"><?= I18N::translate('Repository') ?></option>
+					<option value="note"><?= I18N::translate('Note') ?></option>
+					<option value="media"><?= I18N::translate('Media object') ?></option>
+				</select>
+				<span class="select-record select-individual">
+					<?= FunctionsEdit::formControlIndividual(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+				</span>
+				<span class="select-record select-family d-none">
+					<?= FunctionsEdit::formControlFamily(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+				</span>
+				<span class="select-record select-source d-none">
+					<?= FunctionsEdit::formControlSource(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+				</span>
+				<span class="select-record select-repository d-none">
+					<?= FunctionsEdit::formControlRepository(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+				</span>
+				<span class="select-record select-note d-none">
+					<?= FunctionsEdit::formControlNote(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+				</span>
+				<span class="select-record select-media d-none">
+					<?= FunctionsEdit::formControlMediaObject(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+				</span>
 				<input data-autocomplete-type="IFSRO" id="xref" maxlength="20" name="xref[]" type="text">
 			</td>
 			<td>
@@ -248,7 +274,7 @@
 				<?= FontAwesome::decorativeIcon('save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="admin_trees_manage.php">
+			<a class="btn btn-secondary" href="<?= e(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>
