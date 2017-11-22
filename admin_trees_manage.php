@@ -375,7 +375,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
-								<a href="<?= Html::escape(route('tree-preferences', ['ged' => $tree->getName()])) ?>">
+								<a href="<?= Html::escape(Html::url('admin_trees_config.php', ['ged' => $tree->getName(), 'action' => 'general'])) ?>">
 									<?= I18N::translate('Preferences') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
