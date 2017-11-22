@@ -55,8 +55,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
-		$title          = $this->getBlockSetting($block_id, 'title');
-		$content        = $this->getBlockSetting($block_id, 'html');
+		$title          = $this->getBlockSetting($block_id, 'title', '');
+		$content        = $this->getBlockSetting($block_id, 'html', '');
 		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = $this->getBlockSetting($block_id, 'languages');
@@ -97,7 +97,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$title   = $stats->embedTags($title);
 		$content = $stats->embedTags($content);
 
-		if ($show_timestamp) {
+		if ($show_timestamp === '1') {
 			$content .= '<br>' . FunctionsDate::formatTimestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 

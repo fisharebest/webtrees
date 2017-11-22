@@ -51,6 +51,12 @@ class HomePageController extends PageController {
 		$side_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'side');
 		$title        = Html::escape($tree->getTitle());
 
+		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
+		global $WT_TREE, $ctype, $controller;
+		$WT_TREE    = $tree;
+		$ctype      = 'gedcom';
+		$controller = $this;
+
 		return $this->viewResponse('tree-page', [
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
@@ -214,6 +220,12 @@ class HomePageController extends PageController {
 		$side_blocks  = $this->getBlocksForUserPage($tree_id, $user_id, $access_level, 'side');
 		$title        = I18N::translate('My page');
 
+		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
+		global $WT_TREE, $ctype, $controller;
+		$WT_TREE    = $tree;
+		$ctype      = 'user';
+		$controller = $this;
+
 		return $this->viewResponse('user-page', [
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
@@ -254,7 +266,7 @@ class HomePageController extends PageController {
 		// @TODO - ModuleBlockInterface::getBlock() relies on these globals :-(
 		global $WT_TREE, $ctype, $controller;
 		$WT_TREE    = $tree;
-		$ctype      = 'gedcom';
+		$ctype      = 'user';
 		$controller = $this;
 
 		$html = $module->getBlock($block_id, true);
