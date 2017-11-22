@@ -227,7 +227,7 @@ case 'load_json':
 		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="#" onclick="return message(\'' . Html::escape($datum[2]) . '\', \'\', \'\');">' . Html::escape($datum[4]) . '</i></a>';
+			$datum[4] = '<a href="' . Html::escape(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . Html::escape($datum[4]) . '</a>';
 		}
 		// $datum[2] is the username
 		$datum[2] = '<span dir="auto">' . Html::escape($datum[2]) . '</span>';

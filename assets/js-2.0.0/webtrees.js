@@ -638,11 +638,6 @@ function ilinkitem (mediaid, type, ged) {
   return false;
 }
 
-function message (username, method, url) {
-  window.open('message.php?to=' + encodeURIComponent(username) + '&method=' + encodeURIComponent(method) + '&url=' + encodeURIComponent(url), '_blank', mesg_window_specs);
-  return false;
-}
-
 /**
  * Persistant checkbox options to hide/show extra data.
 

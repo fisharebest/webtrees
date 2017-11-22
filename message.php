@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$from_email = Filter::post('from_email');
 	$subject    = Filter::post('subject', null, '');
 	$body       = Filter::post('body', null, '');
-	$url        = Filter::postUrl('url', 'index.php');
+	$url        = Filter::post('url', null, 'index.php');
 
 	// Only an administration can use the distribution lists.
 	$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
@@ -90,7 +90,7 @@ $from_name  = Filter::get('from_name', null, '');
 $from_email = Filter::get('from_email', '');
 $subject    = Filter::get('subject', null, '');
 $body       = Filter::get('body', null, '');
-$url        = Filter::getUrl('url', 'index.php');
+$url        = Filter::get('url', null, 'index.php');
 
 // Only an administration can use the distribution lists.
 $controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
@@ -168,6 +168,9 @@ $to_names = implode(I18N::$list_separator, array_map(function(User $user) {
 			<button type="submit" class="btn btn-primary">
 				<?= I18N::translate('Send') ?>
 			</button>
+			<a class="btn btn-link" href="<?= Html::escape($url) ?>">
+				<?= I18N::translate('cancel') ?>
+			</a>
 		</div>
 	</div>
 </form>

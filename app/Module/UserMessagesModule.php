@@ -84,19 +84,25 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 
-		$content = '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\');">';
-		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
-		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
+		$content = '';
 		if ($users) {
-			$content .= '<label for="touser">' . I18N::translate('Send a message') . '</label>';
-			$content .= '<select id="touser" name="touser">';
+			$url = route('user-page', ['ged' => $WT_TREE->getName()]);
+			$content .= '<form action="message.php" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
+			$content .= '<input type="hidden" name="ged" value="' . Html::escape($WT_TREE->getName()) .  '">';
+			$content .= '<input type="hidden" name="url" value="' . Html::escape($url) .  '">';
+			$content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
+			$content .= '<select id="to" name="to">';
 			$content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
 			foreach ($users as $user) {
 				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Html::escape($user->getUserName()), Html::escape($user->getRealName()));
 			}
 			$content .= '</select>';
-			$content .= '<input type="button" value="' . I18N::translate('Send') . '" onclick="return message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\');"><br><br>';
+			$content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
+			$content .= '</form>';
 		}
+		$content .= '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\');">';
+		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
+		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
 		if ($messages) {
 			$content .= '<table class="list_table"><tr>';
 			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
