@@ -1019,7 +1019,7 @@ class FunctionsImport {
 		])->fetchOne();
 
 		if (!$xref) {
-			$xref = $tree->getNewXref('OBJE');
+			$xref = $tree->getNewXref();
 			// renumber the lines
 			$gedrec = preg_replace_callback('/\n(\d+)/', function ($m) use ($level) {
 				return "\n" . ($m[1] - $level);
