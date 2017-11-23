@@ -37,7 +37,7 @@ class Migration11 implements MigrationInterface {
 
 		try {
 			Database::exec("ALTER TABLE `##name` DROP n_list");
-		} catch (PDOException $x) {
+		} catch (PDOException $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Already done?
