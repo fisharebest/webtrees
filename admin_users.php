@@ -222,16 +222,15 @@ case 'load_json':
 		}
 
 		$datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . Html::escape(route('user-page-user-edit', ['user_id' => $user_id])) . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
-		// $datum[1] is the user ID
-		// $datum[3] is the real name
+		// The real name
 		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
 			$datum[4] = '<a href="' . Html::escape(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . Html::escape($datum[4]) . '</a>';
 		}
-		// $datum[2] is the username
+		// The username
 		$datum[2] = '<span dir="auto">' . Html::escape($datum[2]) . '</span>';
-		// $datum[5] is the langauge
+		// The langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
 			$datum[5] = $installed_languages[$datum[5]];
 		}
@@ -240,7 +239,7 @@ case 'load_json':
 		if (date('U') - $datum[6] > 604800 && !$datum[10]) {
 			$datum[7] = '<span class="red">' . $datum[7] . '</span>';
 		}
-		// $datum[8] is the sortable last-login timestamp
+		// $The sortable last-login timestamp
 		if ($datum[8]) {
 			$datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
 		} else {

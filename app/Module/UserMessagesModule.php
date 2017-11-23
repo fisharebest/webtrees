@@ -85,7 +85,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		});
 
 		$content = '';
-		if ($users) {
+		if (!empty($users)) {
 			$url = route('user-page', ['ged' => $WT_TREE->getName()]);
 			$content .= '<form action="message.php" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
 			$content .= '<input type="hidden" name="ged" value="' . Html::escape($WT_TREE->getName()) .  '">';
@@ -103,7 +103,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\');">';
 		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
 		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
-		if ($messages) {
+		if (!empty($messages)) {
 			$content .= '<table class="list_table"><tr>';
 			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
 			$content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
