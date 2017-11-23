@@ -72,7 +72,7 @@ DebugBar::startMeasure('create controller');
 
 // Create the controller
 list($controller_name, $action) = explode('@', $controller_action);
-$controller_class = __NAMESPACE__ . '\\Controller\\' . $controller_name;
+$controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
 $controller = new $controller_class;
 
 DebugBar::stopMeasure('create controller');

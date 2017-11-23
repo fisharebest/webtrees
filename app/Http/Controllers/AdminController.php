@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Controller;
+namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DirectoryIterator;
 use Fisharebest\Algorithm\MyersDiff;

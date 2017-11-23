@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Controller;
+namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -33,7 +33,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the user/tree's home page.
  */
-class HomePageController extends PageController {
+class HomePageController extends BaseController {
 	/**
 	 * Show a tree's page.
 	 *
