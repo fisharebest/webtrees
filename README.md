@@ -90,7 +90,7 @@ To install **webtrees**, you need:
       * Small systems (500 individuals): 16–32 MB, 10–20 seconds
       * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
       * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
-* MySQL 5.0.13 or later. Note that **webtrees** can share a single database
+* MySQL/MariaDB 5.0.13 or later. Note that **webtrees** can share a single database
   with other applications, by choosing a unique table prefix during configuration.
   If the number of databases is not restricted, you can set up a database purely
   for use by **webtrees** and create a separate user and password for only
@@ -98,14 +98,15 @@ To install **webtrees**, you need:
 * Internet browser compatibility. **webtrees** supports the use of most
   current browsers such as Edge, Firefox, Chrome, and Safari.
   We will do our best to support others such as Opera and Internet Explorer, though
-  not their earlier versions, in particular versions of Internet Explorer prior to IE11
-  do not work with **webtrees**. We strongly recommend anyone using these obsolete browsers to upgrade
-  as soon as possible. We are also aware that IE  provides poor RTL language support generally,
-  so cannot recommend it for sites requiring RTL languages.
+  not their earlier versions, in particular versions of Internet Explorer prior
+  to IE11 do not work with **webtrees**. We strongly recommend anyone using these
+  obsolete browsers to upgrade as soon as possible. We are also aware that IE
+  provides poor RTL language support generally, so cannot recommend it for sites
+  requiring RTL languages.
 * To view sites that contain both left-to-right and right-to-left text (e.g.
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
-  or Internet Explorer (11 and lower) support this.
+  or Internet Explorer support this.
 * HTML Frames. Note that **webtrees** uses cookies to track login sessions. Sites
   that make **webtrees** pages available inside an HTML Frame will encounter
   problems with login for versions of Internet Explorer prior to version 10. IE users
@@ -115,7 +116,7 @@ To install **webtrees**, you need:
 ### Installation
 
 Installing **webtrees** is really easy. All you need is a webserver with PHP and
-MySQL. Almost every web hosting service provides these, but be sure to confirm
+MySQL/MariaDB. Almost every web hosting service provides these, but be sure to confirm
 that those supplied meet or exceed the minimum system requirements.
 
 1. Download latest stable version from [webtrees.net](https://webtrees.net/)
