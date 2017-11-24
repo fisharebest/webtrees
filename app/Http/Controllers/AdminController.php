@@ -462,6 +462,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'themes/webtrees/css-1.7.5',
 			WT_ROOT . 'themes/xenea/css-1.7.5',
 			// Removed in 2.0.0
+			WT_ROOT . 'addmedia.php',
 			WT_ROOT . 'admin_module_blocks.php',
 			WT_ROOT . 'admin_module_charts.php',
 			WT_ROOT . 'admin_module_menus.php',

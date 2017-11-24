@@ -562,7 +562,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED MEDIA OBJECT -->
 							<li>
 								<i class="fa fa-li fa-photo"></i>
-								<a href="addmedia.php?action=showmediaform">
+								<a href="#">
 									<?= I18N::translate('Media object') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
