@@ -79,8 +79,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 // Editor routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
 	$routes += [
-		'GET:add-media-file'  => 'MediaController@addMediaFile',
-		'POST:add-media-file' => 'MediaController@addMediaFileUpdate',
+		'GET:add-media-file'  => 'EditController@addMediaFile',
+		'POST:add-media-file' => 'EditController@addMediaFileAction',
 	];
 }
 

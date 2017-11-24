@@ -1,0 +1,240 @@
+<?php
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2017 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\Controllers;
+
+use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\File;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Controller for edit forms and responses.
+ */
+class EditController extends BaseController {
+	/**
+	 * Add a media file to an existing media object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addMediaFile(Request $request): Response {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+		$xref  = $request->get('xref');
+		$media = Media::getInstance($xref, $tree);
+
+		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+			return new Response(View::make('modals/error', [
+				'title' => I18N::translate('Add a media file to this media object'),
+				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
+			]));
+		}
+
+		return new Response(View::make('modals/add-media-file', [
+			'max_upload_size' => $this->maxUploadFilesize(),
+			'media'           => $media,
+			'media_types'     => $this->mediaTypes(),
+		]));
+	}
+
+	/**
+	 * Add a media file to an existing media object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addMediaFileAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+		$xref  = $request->get('xref');
+		$media = Media::getInstance($xref, $tree);
+
+		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+			return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+		}
+
+		$file = $this->uploadFile($request);
+
+		if ($file === '') {
+			FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
+			return new RedirectResponse($media->getRawUrl());
+		}
+
+		$title = $request->get('title');
+		$type  = $request->get('type');
+
+		$gedcom = '1 FILE ' . $file;
+		if ($type !== '') {
+			$gedcom .= "\n2 FORM\n3 TYPE " . $type;
+		}
+		if ($title !== '') {
+			$gedcom .= "\n2 TITL " . $title;
+		}
+
+		$media->createFact($gedcom, true);
+
+		// Accept the changes, to keep the filesystem in sync with the GEDCOM data.
+		FunctionsImport::acceptAllChanges($media->getxref(), $tree->getTreeId());
+
+		return new RedirectResponse($media->getRawUrl());
+	}
+
+	/**
+	 *
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function createMediaFile(Request $request): Response {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+		$note  = $request->get('note');
+
+		$file = $this->uploadFile($request);
+
+		if ($file === '') {
+			return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
+		}
+
+		$title = $request->get('title');
+		$type  = $request->get('type');
+
+		$gedcom = "0 @new@ OBJE\n1 FILE " . $file;
+		if ($type !== '') {
+			$gedcom .= "\n2 FORM\n3 TYPE " . $type;
+		}
+		if ($title !== '') {
+			$gedcom .= "\n2 TITL " . $title;
+		}
+		if ($note !== '') {
+			$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+		}
+
+		$media_object = $tree->createRecord($gedcom);
+
+		// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
+		FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
+
+		return new JsonResponse(['id' => $media_object->getXref(), 'text' => strip_tags(View::make('selects/media', ['media' => $media_object]))]);
+	}
+
+	/**
+	 * What is the largest file a user may upload?
+	 */
+	private function maxUploadFilesize(): string {
+		$bytes = UploadedFile::getMaxFilesize();
+		$kb    = (int) ($bytes / 1024);
+
+		return I18N::translate('%s KB', I18N::number($kb));
+	}
+
+	/**
+	 * A list of key/value options for media types.
+	 *
+	 * @param string $current
+	 *
+	 * @return array
+	 */
+	private function mediaTypes($current = ''): array {
+		$media_types = GedcomTag::getFileFormTypes();
+
+		$media_types = ['' => ''] + [$current => $current] + $media_types;
+
+		return $media_types;
+	}
+
+	/**
+	 * Store an uploaded file (or URL), either to be added to a media object
+	 * or to create a media object.
+	 *
+	 * @return string The value to be stored in the 'FILE' field of the media object.
+	 */
+	private function uploadFile(Request $request): string {
+		/** @var Tree $tree */
+		$tree          = $request->attributes->get('tree');
+		$file_location = $request->get('file_location');
+
+		switch ($file_location) {
+		case 'url':
+			$remote = $request->get('remote');
+
+			if (preg_match('/^https?:\/\//', $remote)) {
+				return $remote;
+			} else {
+				return '';
+			}
+
+		case 'upload':
+		default:
+			$media_folder = $tree->getPreference('MEDIA_DIRECTORY');
+			$folder       = $request->get('folder');
+			$auto         = $request->get('auto');
+
+			$uploaded_file = $request->files->get('file');
+			if ($uploaded_file === null) {
+				return '';
+			}
+
+			// The filename
+			$file      = $uploaded_file->getClientOriginalName();
+			$extension = $uploaded_file->guessExtension();
+
+			// The folder
+			$folder = str_replace('\\', '/', $folder);
+			$folder = trim($folder, '/') . '/';
+
+			if (strpos($folder, '../') !== false || !File::mkdir(WT_DATA_DIR . $media_folder . $folder)) {
+				return '';
+			}
+
+			// Generate a unique name for the file?
+			if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
+				$folder = '';
+				$file = sha1_file($uploaded_file->getPathname()) . '.' . $extension;
+			}
+
+			try {
+				//if ($uploaded_file->isValid()) {
+				//	$uploaded_file->move(WT_DATA_DIR . $media_folder . $folder, $file);
+				if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+					move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $media_folder . $folder . $file);
+
+					return $folder . $file;
+				}
+			} catch (FileException $ex) {
+				DebugBar::addThrowable($ex);
+			}
+
+			return '';
+		}
+	}
+}

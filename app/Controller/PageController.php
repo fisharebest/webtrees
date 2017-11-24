@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
@@ -108,6 +109,8 @@ class PageController extends BaseController {
 			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
+			//DebugBar::renderHead() .
+			//DebugBar::render() .
 			'</body>' .
 			'</html>' . PHP_EOL .
 			'<!-- webtrees: ' . WT_VERSION . ' -->' .

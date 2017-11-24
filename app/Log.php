@@ -44,7 +44,8 @@ class Log {
 			$tree = $WT_TREE;
 		}
 
-		$request = Request::createFromGlobals();
+		//$request = Request::createFromGlobals();
+		$request = Request::create('', '', [], [], [], $_SERVER);
 
 		Database::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
