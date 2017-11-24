@@ -4,6 +4,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintLists; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <h2 class="wt-page-title">
 	<?= $media->getFullName() ?>
@@ -85,6 +86,16 @@
 									</a>
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">
+									<?= I18N::translate('Media file') ?>
+								</th>
+								<td>
+									<a href="#" data-href="<?= e(route('add-media-file', ['ged' => $media->getTree()->getName(), 'xref' => $media->getXref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<?= I18N::translate('Add a media file') ?>
+									</a>
+								</td>
+							</tr>
 						<?php endif ?>
 					</table>
 				</div>
@@ -108,3 +119,5 @@
 		</div>
 	</div>
 </div>
+
+<?= View::make('modals/ajax') ?>

@@ -19,6 +19,8 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Http\Controllers\EditController;
+use Symfony\Component\HttpFoundation\Request;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -91,70 +93,11 @@ case 'copy-fact':
 	break;
 
 case 'create-media-object':
-	$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-
-	// Create a media object, and return parameters needed by Select2
-	header('Content-type: application/json');
-
-	$auto     = Filter::post('auto');
-	$folder   = Filter::post('folder');
-	$note     = Filter::post('note');
-	$type     = Filter::post('type');
-	$title    = Filter::post('title');
-
-	// No file uploaded?
-	if (empty($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) {
-		http_response_code(406);
-		break;
-	}
-
-	// The filename
-	$file   = $_FILES['file']['name'];
-	$format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-	$format = strtr($format, ['jpg' => 'jpeg']);
-
-	// The folder
-	$folder = trim($folder, '/');
-
-	// If the folder is invalid, or doesn't exist and can't be created, then use the root folder
-	if (strpos($folder, '..') !== false || !File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder)) {
-		$folder = '';
-	}
-
-	// Generate a unique name for the file?
-	if ($auto === '1' || file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder . $file)) {
-		$folder = '';
-		$file   = sha1($_FILES['file']['tmp_name']) . '.' . $format;
-	}
-	if ($folder !== '') {
-		$folder .= '/';
-	}
-
-	if (move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $MEDIA_DIRECTORY . $folder . $file)) {
-		Log::addMediaLog('Media file ' . $_FILES['file']['name'] . ' uploaded');
-	} else {
-		FlashMessages::addMessage(
-			I18N::translate('There was an error uploading your file.') .
-			'<br>' .
-			Functions::fileUploadErrorText($_FILES['mediafile']['error'])
-		);
-		break;
-	}
-
-	$gedcom = "0 @new@ OBJE\n1 FILE " . $folder . $file . "\n2 FORM " . $format;
-	if ($type !== '') {
-		$gedcom .= "\n3 TYPE " . $type;
-	}
-	if ($title !== '') {
-		$gedcom .= "\n2 TITL " . $title;
-	}
-	if ($note !== '') {
-		$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
-	}
-	$media_object = $WT_TREE->createRecord($gedcom);
-	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
-	echo json_encode(['id' => $media_object->getXref(), 'text' => View::make('selects/media', ['media' => $media_object])]);
+	$request         = Request::createFromGlobals();
+	$request->attributes->set('tree', $WT_TREE);
+	$edit_controller = new EditController;
+	$response        = $edit_controller->createMediaFile($request);
+	$response->prepare($request)->send();
 	break;
 
 case 'create-media-object-from-file':

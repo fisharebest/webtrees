@@ -15,7 +15,17 @@
  */
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
+
+/**
+ * Generate a CSRF token form field.
+ *
+ * @return string
+ */
+function csrf_field() {
+	return '<input type="hidden" name="csrf" value="' . e(Filter::getCsrfToken()) . '">';
+}
 
 /**
  * Escape a string for inclusion within HTML.
