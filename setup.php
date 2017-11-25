@@ -16,7 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use ErrorException;
-use Fisharebest\Webtrees\Controller\SetupController;
+use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
