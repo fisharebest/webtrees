@@ -49,7 +49,7 @@ use Fisharebest\Webtrees\I18N; ?>
 				<span class="input-group">
 					<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text">
 					<span class="input-group-addon">/</span>
-					<input class="form-control" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>">
+					<input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>">
 				</span>
 			</label>
 		</div>

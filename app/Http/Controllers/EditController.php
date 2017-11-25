@@ -212,8 +212,9 @@ class EditController extends BaseController {
 		case 'upload':
 		default:
 			$media_folder = $tree->getPreference('MEDIA_DIRECTORY');
-			$folder       = $request->get('folder');
-			$auto         = $request->get('auto');
+			$folder       = $request->get('folder', '');
+			$auto         = $request->get('auto', '0');
+			$new_file     = $request->get('new_file', '');
 
 			$uploaded_file = $request->files->get('file');
 			if ($uploaded_file === null) {
@@ -221,21 +222,30 @@ class EditController extends BaseController {
 			}
 
 			// The filename
-			$file      = $uploaded_file->getClientOriginalName();
-			$extension = $uploaded_file->guessExtension();
+			$new_file = str_replace('\\', '/', $new_file);
+			if ($new_file !== '' && strpos($new_file, '/') === false) {
+				$file = $new_file;
+			} else {
+				$file = $uploaded_file->getClientOriginalName();
+			}
 
 			// The folder
 			$folder = str_replace('\\', '/', $folder);
-			$folder = trim($folder, '/') . '/';
+			$folder = trim($folder, '/');
+			if ($folder !== '') {
+				$folder .= '/';
+			}
 
+			// Invalid path?
 			if (strpos($folder, '../') !== false || !File::mkdir(WT_DATA_DIR . $media_folder . $folder)) {
-				return '';
+				$auto = '1';
 			}
 
 			// Generate a unique name for the file?
 			if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
-				$folder = '';
-				$file = sha1_file($uploaded_file->getPathname()) . '.' . $extension;
+				$folder    = '';
+				$extension = $uploaded_file->guessExtension();
+				$file      = sha1_file($uploaded_file->getPathname()) . '.' . $extension;
 			}
 
 			try {
