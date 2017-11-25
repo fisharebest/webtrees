@@ -191,6 +191,9 @@ class FunctionsPrintFacts {
 			<div class="editfacts">
 				<?php if ($fact->getTag() === 'FILE' && $fact->getParent() instanceof Media): ?>
 					<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=media-edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $parent->getTree()->getNameHtml()]) ?>
+					<?php if (count($fact->getParent()->getFacts('FILE')) > 1): ?>
+						<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
+					<?php endif ?>
 				<?php else: ?>
 					<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $parent->getTree()->getNameHtml()]) ?>
 					<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
