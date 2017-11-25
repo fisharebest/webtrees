@@ -242,12 +242,12 @@ class FunctionsPrintFacts {
 			if (Auth::isEditor($fact->getParent()->getTree())) {
 				echo '<div class="field">', Html::escape($fact->getValue());
 
-				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists('main') && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
+				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists() && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
 					echo ' — <a href="' . $fact->getParent()->imageUrl(0, 0, '') . '">' . I18N::translate('Download file') . '</a>';
 				}
 				echo '</div>';
 
-				if ($fact->getParent() instanceof Media && !$fact->getParent()->fileExists('main')) {
+				if ($fact->getParent() instanceof Media && !$fact->getParent()->fileExists()) {
 					echo '<p class="alert alert-danger">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
 				}
 

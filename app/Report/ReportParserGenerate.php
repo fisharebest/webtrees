@@ -1635,7 +1635,7 @@ class ReportParserGenerate extends ReportParserBase {
 						'WBMP',
 						'XBM',
 					]
-				) && $mediaobject->canShow() && $mediaobject->fileExists('main')
+				) && $mediaobject->canShow() && $mediaobject->fileExists()
 			) {
 				if ($width > 0 && $height == 0) {
 					$perc   = $width / $attributes[0];
@@ -1736,7 +1736,7 @@ class ReportParserGenerate extends ReportParserBase {
 							'WBMP',
 							'XBM',
 						]
-					) && $mediaobject->canShow() && $mediaobject->fileExists('main')
+					) && $mediaobject->canShow() && $mediaobject->fileExists()
 				) {
 					if ($width > 0 && $height == 0) {
 						$perc   = $width / $attributes[0];
