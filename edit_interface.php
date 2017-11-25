@@ -348,7 +348,7 @@ case 'edit':
 	</form>
 	<?php
 	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???']);
+	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]);
 	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
 	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
 	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
@@ -422,7 +422,7 @@ case 'add':
 	</form>
 	<?php
 	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???']);
+	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]);
 	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
 	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
 	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
@@ -2048,7 +2048,7 @@ case 'add-media-link':
 			</div>
 		</div>
 	</form>
-	<?= View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???']) ?>
+	<?= View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]) ?>
 	<?php
 	break;
 

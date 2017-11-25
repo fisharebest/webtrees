@@ -13,7 +13,7 @@
 					<?= View::make('modals/header', ['title' => I18N::translate('Create a media object')]) ?>
 
 				<div class="modal-body">
-					<?= View::make('modals/media-file-fields', ['max_upload_size' => $max_upload_size]) ?>
+					<?= View::make('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files]) ?>
 
 					<div class="form-group row">
 						<label class="col-form-label col-sm-2" for="note">
