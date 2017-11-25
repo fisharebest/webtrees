@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
@@ -26,6 +27,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -61,6 +64,7 @@ class EditController extends BaseController {
 			'max_upload_size' => $this->maxUploadFilesize(),
 			'media'           => $media,
 			'media_types'     => $this->mediaTypes(),
+			'unused_files'    => $this->unusedFiles($tree),
 		]));
 	}
 
@@ -69,7 +73,7 @@ class EditController extends BaseController {
 	 *
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function addMediaFileAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
@@ -176,6 +180,8 @@ class EditController extends BaseController {
 	 * Store an uploaded file (or URL), either to be added to a media object
 	 * or to create a media object.
 	 *
+	 * @param Request $request
+	 *
 	 * @return string The value to be stored in the 'FILE' field of the media object.
 	 */
 	private function uploadFile(Request $request): string {
@@ -192,6 +198,16 @@ class EditController extends BaseController {
 			} else {
 				return '';
 			}
+
+		case 'unused':
+			$unused = $request->get('unused');
+			$unused = str_replace('\\', '/', $unused);
+
+			if (strpos($unused, '../') !== false) {
+				return '';
+			}
+
+			return $unused;
 
 		case 'upload':
 		default:
@@ -236,5 +252,40 @@ class EditController extends BaseController {
 
 			return '';
 		}
+	}
+
+	/**
+	 * A list of media files not already linked to a media object.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return array
+	 */
+	private function unusedFiles(Tree $tree): array {
+		$used_files = Database::prepare(
+			"SELECT m_filename FROM `##media`" .
+			" WHERE m_file = :tree_id" .
+			" AND m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%'"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchOneColumn();
+
+		$disk_files = [];
+		$media_dir  = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', 'media/');
+		$iter       = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($media_dir));
+
+		foreach ($iter as $file) {
+			if ($file->isFile()) {
+				$filename = substr($file->getPathname(), strlen($media_dir));
+				// Older versions of webtrees used a couple of special folders.
+				if (strpos($filename, 'thumbs/') !== 0 && strpos($filename, 'watermarks/') !== 0) {
+					$disk_files[] = $filename;
+				}
+			}
+		}
+
+		$unused_files = array_diff($disk_files, $used_files);
+
+		return array_combine($unused_files, $unused_files);
 	}
 }

@@ -13,6 +13,11 @@ use Fisharebest\Webtrees\I18N; ?>
 			<option value="upload">
 				<?= I18N::translate('A file on your computer') ?>
 			</option>
+			<?php if (!empty($unused_files)): ?>
+			<option value="unused">
+				<?= I18N::translate('A file on the server') ?>
+			</option>
+			<?php endif ?>
 			<option value="url">
 				<?= I18N::translate('A URL') ?>
 			</option>
@@ -57,6 +62,17 @@ use Fisharebest\Webtrees\I18N; ?>
 				<?= I18N::translate('Create a unique filename') ?>
 			</label>
 		</div>
+	</div>
+</div>
+
+<div class="form-group row file-location file-location-unused d-none">
+	<label class="col-form-label col-sm-2" for="unused">
+		<?= I18N::translate('A file on the server') ?>
+	</label>
+	<div class="col-sm-10">
+		<?= Bootstrap4::select($unused_files, '', ['id' => 'unused', 'name' => 'unused']) ?>
+		<small class="text-muted">
+		</small>
 	</div>
 </div>
 

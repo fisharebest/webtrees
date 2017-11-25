@@ -7,7 +7,7 @@
 	<?= View::make('modals/header', ['title' => I18N::translate('Add a media file')]) ?>
 
 	<div class="modal-body">
-		<?= View::make('modals/media-file-fields', ['max_upload_size' => $max_upload_size]) ?>
+		<?= View::make('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files]) ?>
 	</div>
 
 	<?= View::make('modals/footer-save-cancel') ?>
