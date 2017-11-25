@@ -2943,7 +2943,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '',  null, $person);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '', null, $person);
 		}
 	}
 
