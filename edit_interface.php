@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 
 require 'includes/session.php';
@@ -608,15 +609,6 @@ case 'media-edit':
 		</div>
 
 		<div class="form-group row">
-			<label class="col-form-label col-sm-3" for="thumbnail">
-				<?= I18N::translate('Thumbnail to upload') ?>
-			</label>
-			<div class="col-sm-9">
-				<input type="file" class="form-control" id="thumbnail" name="thumbnail">
-			</div>
-		</div>
-
-		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="TITL">
 				<?= I18N::translate('Title') ?>
 			</label>
@@ -739,22 +731,10 @@ case 'media-save':
 		}
 	}
 
-	// Replacement files?
-	if (!empty($_FILES['thumbnail']) && is_uploaded_file($_FILES['thumbnail']['tmp_name'])) {
-		if (!move_uploaded_file($_FILES['thumbnail']['tmp_name'], $old_server_thumb)) {
-			FlashMessages::addMessage(
-				I18N::translate('There was an error uploading your file.') .
-				'<br>' .
-				Functions::fileUploadErrorText($_FILES['thumbnail']['error'])
-			);
-		}
-	}
-
 	$tmp_record = new Media('xxx', "0 @xxx@ OBJE\n1 FILE " . $FILE, null, $record->getTree());
 
-	$new_server_file  = $tmp_record->getServerFilename('main');
-	$new_server_thumb = $tmp_record->getServerFilename('thumb');
-	$new_external     = $tmp_record->isExternal();
+	$new_server_file = $tmp_record->getServerFilename('main');
+	$new_external    = $tmp_record->isExternal();
 
 	// External URLs cannot be renamed to local files, and vice versa.
 	if ($old_external !== $new_external) {
@@ -808,15 +788,6 @@ case 'media-save':
 		}
 		if (!file_exists($new_server_file)) {
 			FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($FILE)), 'warning');
-		}
-
-		if (!file_exists($new_server_thumb) || sha1_file($old_server_thumb) === sha1_file($new_server_thumb)) {
-			try {
-				rename($old_server_thumb, $new_server_thumb);
-			} catch (ErrorException $ex) {
-				DebugBar::addThrowable($ex);
-
-			}
 		}
 	}
 

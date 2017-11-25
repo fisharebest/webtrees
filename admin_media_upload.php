@@ -35,7 +35,7 @@ $action = Filter::post('action');
 
 if ($action == 'upload') {
 	for ($i = 1; $i < 6; $i++) {
-		if (!empty($_FILES['mediafile' . $i]['name']) || !empty($_FILES['thumbnail' . $i]['name'])) {
+		if (!empty($_FILES['mediafile' . $i]['name'])) {
 			$folder = Filter::post('folder' . $i);
 
 			// Validate the media folder
@@ -86,19 +86,6 @@ if ($action == 'upload') {
 				}
 			}
 
-			// A thumbnail file with no main image?
-			if (!empty($_FILES['thumbnail' . $i]['name']) && empty($_FILES['mediafile' . $i]['name'])) {
-				// Assume the user used the wrong field, and treat this as a main image
-				$_FILES['mediafile' . $i] = $_FILES['thumbnail' . $i];
-				unset($_FILES['thumbnail' . $i]);
-			}
-
-			// Thumbnail files must contain images.
-			if (!empty($_FILES['thumbnail' . $i]['name']) && !preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'])) {
-				FlashMessages::addMessage(I18N::translate('Thumbnail files must contain images.'));
-				break;
-			}
-
 			// User-specified filename?
 			$filename = Filter::post('filename' . $i);
 			// Use the name of the uploaded file?
@@ -144,17 +131,6 @@ if ($action == 'upload') {
 					$filename = '';
 					break;
 				}
-
-				// Now copy the (optional thumbnail)
-				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'], $match)) {
-					$extension      = $match[1];
-					$thumbFile      = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
-					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . $thumbFile;
-					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
-						FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($serverFileName)));
-						Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
-					}
-				}
 			}
 		}
 	}
@@ -197,15 +173,6 @@ for ($i = 1; $i < 6; $i++) {
 	echo '</td>';
 	echo '<td>';
 	echo '<input name="mediafile', $i, '" type="file" size="40">';
-	echo '</td></tr>';
-	echo '<tr><td>';
-	echo I18N::translate('Thumbnail to upload');
-	echo '</td>';
-	echo '<td>';
-	echo '<input name="thumbnail', $i, '" type="file" size="40">';
-	if ($i === 1) {
-		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
-	}
 	echo '</td></tr>';
 
 	if (Auth::isManager($WT_TREE)) {
