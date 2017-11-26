@@ -28,16 +28,9 @@ class Migration6 implements MigrationInterface {
 	 */
 	public function upgrade() {
 		// Remove tables/columns relating to remote linking
-
-		try {
-			Database::exec(
-				"DROP TABLE `##remotelinks`"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
-
-			// already been done?
-		}
+		Database::exec(
+			"DROP TABLE IF EXISTS `##remotelinks`"
+		);
 
 		try {
 			Database::exec(

@@ -936,11 +936,13 @@ class AdminController extends BaseController {
 		$search = $search['value'] ?? '';
 
 		$select1 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
+			" JOIN `##media_file USING (m_id, m_file)`" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
 		$select2 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
+			" JOIN `##media_file USING (m_id, m_file)`" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
@@ -949,7 +951,8 @@ class AdminController extends BaseController {
 		$args  = [];
 
 		if ($search !== '') {
-			$where .= " AND (m_titl LIKE CONCAT('%', :search1, '%') OR m_filename LIKE CONCAT('%', :search2, '%'))";
+			// @TODO MediaFile
+			$where .= " AND (multimedia_file_refn LIKE CONCAT('%', :search1, '%') OR multimedia_file_refn LIKE CONCAT('%', :search2, '%'))";
 			$args['search1'] = $search;
 			$args['search2'] = $search;
 		}

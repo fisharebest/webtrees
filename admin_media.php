@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
 
+// @TODO MediaFile
 require 'includes/session.php';
 
 // type of file/object to include

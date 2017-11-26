@@ -77,7 +77,7 @@ if ($action === 'download') {
 
 		if ($media === 'on') {
 			$rows = Database::prepare(
-				"SELECT m_id, m_gedcom FROM `##media` WHERE m_file = :tree_id AND m_filename NOT LIKE '%://%'"
+				"SELECT m_id, m_gedcom FROM `##media` WHERE m_file = :tree_id"
 			)->execute([
 				'tree_id' => $controller->tree()->getTreeId(),
 			])->fetchAll();
@@ -85,6 +85,7 @@ if ($action === 'download') {
 			$path = $controller->tree()->getPreference('MEDIA_DIRECTORY');
 			foreach ($rows as $row) {
 				$record = Media::getInstance($row->m_id, $controller->tree(), $row->m_gedcom);
+				// @TODO MediaFile
 				if ($record->canShow($access_level) && file_exists($record->getServerFilename())) {
 					$fp = fopen($record->getServerFilename(), 'r');
 					$zip_filesystem->writeStream($path . $record->getFilename(), $fp);

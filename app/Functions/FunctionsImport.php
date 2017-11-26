@@ -734,10 +734,26 @@ class FunctionsImport {
 		case 'OBJE':
 			$record = new Media($xref, $gedrec, null, $tree);
 			Database::prepare(
-				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, LEFT(?, 6), LEFT(?, 60), LEFT(?, 255), left(?, 512), ?, ?)"
+				"INSERT INTO `##media` (m_id, m_file, m_gedcom) VALUES (:m_id, :m_file, :m_gedcom)"
 			)->execute([
-				$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree_id, $gedrec,
+				'm_id'     => $xref,
+				'm_file'   => $tree_id,
+				'm_gedcom' => $gedrec,
 			]);
+
+			foreach ($record->mediaFiles() as $media_file) {
+				Database::prepare(
+					"INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title) VALUES (:m_id, :m_file, LEFT(:multimedia_file_refn, 512), LEFT(:multimedia_format, 4), LEFT(:source_media_type, 15), LEFT(:descriptive_title, 248))"
+				)->execute([
+					'm_id'                 => $xref,
+					'm_file'               => $tree_id,
+					'multimedia_file_refn' => $media_file->filename(),
+					'multimedia_format'    => $media_file->format(),
+					'source_media_type'    => $media_file->type(),
+					'descriptive_title'    => $media_file->title(),
+				]);
+			}
+
 			// Update the cross-reference/index tables.
 			self::updateLinks($xref, $tree_id, $gedrec);
 			self::updateNames($xref, $tree_id, $record);
@@ -1013,9 +1029,12 @@ class FunctionsImport {
 
 		// Have we already created a media object with the same title/filename?
 		$xref = Database::prepare(
-			"SELECT m_id FROM `##media` WHERE m_filename = ? AND m_titl = ? AND m_file = ?"
+			"SELECT m_id FROM `##media_file`" .
+			" WHERE multimedia_file_refn = :filename AND descriptive_title = :title AND m_file = :tree_id"
 		)->execute([
-			$file, $titl, $tree->getTreeId(),
+			'filename' => $file,
+			'title'    => $titl,
+			'tree_id'  => $tree->getTreeId(),
 		])->fetchOne();
 
 		if (!$xref) {
@@ -1032,11 +1051,29 @@ class FunctionsImport {
 			$gedrec = preg_replace('/\n1 FORM (.+)\n1 TITL (.+)\n1 FILE (.+)/', "\n1 FILE $3\n2 FORM $1\n2 TITL $2", $gedrec);
 			// Create new record
 			$record = new Media($xref, $gedrec, null, $tree);
+
 			Database::prepare(
-				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
+				"INSERT INTO `##media` (m_id, m_file, m_gedcom) VALUES (:m_id, :m_file, :m_gedcom)"
 			)->execute([
-				$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree->getTreeId(), $gedrec,
+				'm_id'     => $xref,
+				'm_file'   => $tree->getTreeId(),
+				'm_gedcom' => $gedrec,
 			]);
+
+			foreach ($record->mediaFiles() as $media_file) {
+				Database::prepare(
+					"INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title) VALUES (:m_id, :m_file, LEFT(:multimedia_file_refn, 512), LEFT(:multimedia_format, 4), LEFT(:source_media_type, 15), LEFT(:descriptive_title, 248))"
+				)->execute([
+					'm_id'                 => $xref,
+					'm_file'               => $tree->getTreeId(),
+					'multimedia_file_refn' => $media_file->filename(),
+					'multimedia_format'    => $media_file->format(),
+					'source_media_type'    => $media_file->type(),
+					'descriptive_title'    => $media_file->title(),
+				]);
+			}
+
+
 		}
 
 		return "\n" . $level . ' OBJE @' . $xref . '@';

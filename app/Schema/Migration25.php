@@ -30,10 +30,7 @@ class Migration25 implements MigrationInterface {
 			"DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
 		);
 
-		// Modern versions of Internet Explorer use a different user-agent string
-		Database::exec(
-			"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
-			" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')"
-		);
+		// Originally, this inserted entries into wt_site_access_rule,
+		// however this table now gets deleted in Migration37.
 	}
 }

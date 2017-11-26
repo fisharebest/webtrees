@@ -33,11 +33,8 @@ class Migration29 implements MigrationInterface {
 		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
 		Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
 
-		// https://bugs.launchpad.net/webtrees/+bug/1405672
-		Database::exec(
-			"UPDATE `##site_access_rule` SET user_agent_pattern = 'Mozilla/5.0 (% Konqueror/%'" .
-			" WHERE user_agent_pattern='Mozilla/5.0 (compatible; Konqueror/%'"
-		);
+		// Originally, this updated entries into wt_site_access_rule,
+		// however this table now gets deleted in Migration37.
 
 		// Embedded variables are based on function names - which were renamed for PSR2
 		Database::exec(

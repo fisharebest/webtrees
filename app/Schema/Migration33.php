@@ -25,9 +25,7 @@ class Migration33 implements MigrationInterface {
 	 * Upgrade to to the next version
 	 */
 	public function upgrade() {
-		Database::exec(
-			"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
-			" ('Mozilla/5.0 (Mobile; Windows Phone 8.1; % Microsoft; %', 'allow', 'Windows Phone 8.1')"
-		);
+		// Originally, this inserted entries into wt_site_access_rule,
+		// however this table now gets deleted in Migration37.
 	}
 }

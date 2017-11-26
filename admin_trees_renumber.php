@@ -68,6 +68,7 @@ if (Filter::get('action') === 'renumber') {
 			" `##families` WRITE," .
 			" `##sources` WRITE," .
 			" `##media` WRITE," .
+			" `##media_file` WRITE," .
 			" `##other` WRITE," .
 			" `##name` WRITE," .
 			" `##placelinks` WRITE," .
@@ -182,6 +183,9 @@ if (Filter::get('action') === 'renumber') {
 			Database::prepare(
 				"UPDATE `##media` SET m_id = ?, m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_id = ? AND m_file = ?"
 			)->execute([$new_xref, "0 @$old_xref@ OBJE\n", "0 @$new_xref@ OBJE\n", $old_xref, $WT_TREE->getTreeId()]);
+			Database::prepare(
+				"UPDATE `##media_file` SET m_id = ? WHERE m_id = ? AND m_file = ?"
+			)->execute([$new_xref, $old_xref, $WT_TREE->getTreeId()]);
 			Database::prepare(
 				"UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'OBJE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
 			)->execute([$old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()]);

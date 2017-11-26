@@ -60,9 +60,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
 		$all_media = Database::prepare(
 			"SELECT m_id FROM `##media`" .
+			" JOIN `##media_file` USING (m_file, m_id)" .
 			" WHERE m_file = ?" .
-			" AND m_ext  IN ('jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp')" .
-			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
+			" AND multimedia_format  IN ('jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp')" .
+			" AND source_media_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute([
 			$WT_TREE->getTreeId(),
 			$this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,

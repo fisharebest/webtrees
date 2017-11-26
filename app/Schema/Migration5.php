@@ -19,18 +19,15 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Upgrade the database schema from version 5 to version 5.
+ * Upgrade the database schema from version 5 to version 6.
  */
 class Migration5 implements MigrationInterface {
 	/**
 	 * Upgrade to to the next version
 	 */
 	public function upgrade() {
-		// - changes to the values for the gedcom setting SHOW_RELATIVES_EVENTS
-
-		$settings = Database::prepare(
-			"SELECT gedcom_id, setting_value FROM `##gedcom_setting` WHERE setting_name='SHOW_RELATIVES_EVENTS'"
-		)->fetchAssoc();
+		// Changes to the values for the gedcom setting SHOW_RELATIVES_EVENTS
+		$settings = Database::prepare("SELECT gedcom_id, setting_value FROM `##gedcom_setting` WHERE setting_name='SHOW_RELATIVES_EVENTS'")->fetchAssoc();
 
 		foreach ($settings as $gedcom_id => $setting) {
 			// Delete old settings
@@ -42,7 +39,14 @@ class Migration5 implements MigrationInterface {
 			// Remove duplicates
 			preg_match_all('/[_A-Z]+/', $setting, $match);
 			// And save
-			Tree::findById($gedcom_id)->setPreference('SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
+			Database::prepare(
+				"UPDATE `##gedcom_setting`" .
+				" SET setting_value = :setting_value" .
+				" WHERE gedcom_id = :tree_id AND setting_name = 'SHOW_RELATIVES_EVENTS'"
+			)->execute([
+				'tree_id'       => $gedcom_id,
+				'setting_value' => implode(',', array_unique($match[0])),
+			]);
 		}
 	}
 }

@@ -75,11 +75,6 @@ if ($action == 'choose' && $paramok) {
 			echo '<b>', $mediaid, '</b>';
 		}
 		echo '<table><tr><td>';
-		//-- Get the filename of this existing Media item
-		$filename =
-			Database::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
-			->execute([$mediaid, $WT_TREE->getTreeId()])
-			->fetchOne();
 		$media = Media::getInstance($mediaid, $WT_TREE);
 		echo $media->displayImage(100, 100, 'contain', []);
 		echo '</td></tr></table>';

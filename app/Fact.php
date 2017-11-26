@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use InvalidArgumentException;
 
 /**
  * A GEDCOM fact or event object.
@@ -53,11 +54,11 @@ class Fact {
 	 * We need the parent object (to check privacy) and a (pseudo) fact ID to
 	 * identify the fact within the record.
 	 *
-	 * @param string          $gedcom
+	 * @param string       $gedcom
 	 * @param GedcomRecord $parent
-	 * @param string          $fact_id
+	 * @param string       $fact_id
 	 *
-	 * @throws \InvalidArgumentException
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct($gedcom, GedcomRecord $parent, $fact_id) {
 		if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
@@ -66,7 +67,7 @@ class Fact {
 			$this->fact_id = $fact_id;
 			$this->tag     = $match[1];
 		} else {
-			throw new \InvalidArgumentException('Invalid GEDCOM data passed to Fact::_construct(' . $gedcom . ')');
+			throw new InvalidArgumentException('Invalid GEDCOM data passed to Fact::_construct(' . $gedcom . ')');
 		}
 	}
 
