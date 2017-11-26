@@ -193,7 +193,7 @@ class EditController extends BaseController {
 		case 'url':
 			$remote = $request->get('remote');
 
-			if (preg_match('/^https?:\/\//', $remote)) {
+			if (strpos($remote, '://') !== false) {
 				return $remote;
 			} else {
 				return '';
@@ -273,9 +273,9 @@ class EditController extends BaseController {
 	 */
 	private function unusedFiles(Tree $tree): array {
 		$used_files = Database::prepare(
-			"SELECT m_filename FROM `##media`" .
+			"SELECT multimedia_file_refn FROM `##media_file`" .
 			" WHERE m_file = :tree_id" .
-			" AND m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%'"
+			" AND multimedia_file_refn NOT LIKE 'http://%' AND multimedia_file_refn NOT LIKE 'https://%'"
 		)->execute([
 			'tree_id' => $tree->getTreeId(),
 		])->fetchOneColumn();

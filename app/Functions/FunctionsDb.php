@@ -980,9 +980,13 @@ class FunctionsDb {
 	 */
 	public static function isMediaUsedInOtherTree($file_name, $ged_id) {
 		return
-			(bool) Database::prepare("SELECT COUNT(*) FROM `##media` WHERE m_filename LIKE ? AND m_file<>?")
-				->execute(["%{$file_name}", $ged_id])
-				->fetchOne();
+			(bool) Database::prepare(
+				"SELECT COUNT(*) FROM `##media_file`" .
+				" WHERE multimedia_file_refn LIKE :search AND m_file <> :tree_id"
+			)->execute([
+				'search'  => '%' . $file_name,
+				'tree_id' => $ged_id,
+			])->fetchOne();
 	}
 
 	/**

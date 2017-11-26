@@ -19,119 +19,87 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use League\Glide\Urls\UrlBuilderFactory;
 
 /**
- * A GEDCOM media (OBJE) object.
+ * A GEDCOM media file.  A media object can contain many media files,
+ * such as scans of both sides of a document, the transcript of an audio
+ * recording, etc.
  */
-class Media extends GedcomRecord {
-	const RECORD_TYPE = 'OBJE';
-	const URL_PREFIX  = 'mediaviewer.php?mid=';
+class MediaFile {
+	/** @var string The filename */
+	private $multimedia_file_refn = '';
+
+	/** @var string The file extension; jpeg, txt, mp4, etc. */
+	private $multimedia_format = '';
+
+	/** @var string The type of document; newspaper, microfiche, etc. */
+  private $source_media_type = '';
+	/** @var string The filename */
+
+	/** @var string The name of the document */
+  private $descriptive_title = '';
+
+  /** @var Media $media The media object to which this file belongs */
+  private $media;
 
 	/**
-	 * Each object type may have its own special rules, and re-implement this function.
+	 * Create a MediaFile from raw GEDCOM data.
 	 *
-	 * @param int $access_level
-	 *
-	 * @return bool
+	 * @param string $gedcom
+	 * @param Media  $media
 	 */
-	protected function canShowByType($access_level) {
-		// Hide media objects if they are attached to private records
-		$linked_ids = Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
-		)->execute([
-			$this->xref, $this->tree->getTreeId(),
-		])->fetchOneColumn();
-		foreach ($linked_ids as $linked_id) {
-			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
-			if ($linked_record && !$linked_record->canShow($access_level)) {
-				return false;
-			}
+	public function __construct($gedcom, Media $media) {
+		$this->media = $media;
+
+		if (preg_match('/^\d FILE (.+)/m', $gedcom, $match)) {
+			$this->multimedia_file_refn = $match[1];
 		}
 
-		// ... otherwise apply default behaviour
-		return parent::canShowByType($access_level);
-	}
-
-	/**
-	 * Fetch data from the database
-	 *
-	 * @param string $xref
-	 * @param int    $tree_id
-	 *
-	 * @return null|string
-	 */
-	protected static function fetchGedcomRecord($xref, $tree_id) {
-		return Database::prepare(
-			"SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
-		)->execute([
-			'xref'    => $xref,
-			'tree_id' => $tree_id,
-		])->fetchOne();
-	}
-
-	/**
-	 * Get the media files for this media object
-	 *
-	 * @return MediaFile[]
-	 */
-	public function mediaFiles(): array {
-		$media_files = [];
-
-		foreach ($this->getFacts('FILE') as $fact) {
-			$media_files[] = new MediaFile($fact->getGedcom(), $this);
+		if (preg_match('/^\d FORM (.+)/m', $gedcom, $match)) {
+			$this->multimedia_format = $match[1];
 		}
 
-		return $media_files;
-	}
-
-	/**
-	 * The prefered media file to be shown for this media object
-	 *
-	 * @return MediaFile|null
-	 */
-	public function mediaFile() {
-		foreach ($this->mediaFiles() as $media_file) {
-			if (in_array($media_file->extension(), ['jpeg', 'png', 'gif'])) {
-				return $media_file;
-			}
+		if (preg_match('/^\d TYPE (.+)/m', $gedcom, $match)) {
+			$this->source_media_type = $match[1];
 		}
 
-		return null;
-	}
-
-	/**
-	 * Get the first note attached to this media object
-	 *
-	 * @return null|string
-	 */
-	public function getNote() {
-		$note = $this->getFirstFact('NOTE');
-		if ($note) {
-			$text = $note->getValue();
-			if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $text)) {
-				$text = $note->getTarget()->getNote();
-			}
-
-			return $text;
-		} else {
-			return '';
+		if (preg_match('/^\d TITL (.+)/m', $gedcom, $match)) {
+			$this->descriptive_title = $match[1];
 		}
 	}
 
 	/**
-	 * Get the main media filename
+	 * Get the filename
 	 *
 	 * @return string
 	 */
-	public function getFilename() {
-		return $this->file;
+	public function filename() {
+		return $$this->multimedia_file_refn;
 	}
 
 	/**
-	 * Get the media's title (name)
+	 * Get the format
 	 *
 	 * @return string
 	 */
-	public function getTitle() {
-		return $this->title;
+	public function format() {
+		return $this->multimedia_format;
+	}
+
+	/**
+	 * Get the type
+	 *
+	 * @return string
+	 */
+	public function type() {
+		return $this->source_media_type;
+	}
+
+	/**
+	 * Get the title
+	 *
+	 * @return string
+	 */
+	public function title() {
+		return $this->descriptive_title;
 	}
 
 	/**
@@ -141,7 +109,7 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getServerFilename() {
-		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
+		$MEDIA_DIRECTORY = $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
@@ -442,41 +410,5 @@ class Media extends GedcomRecord {
 		]);
 
 		return '<a ' . $attributes . '>' . $image . '</a>';
-	}
-
-	/**
-	 * If this object has no name, what do we call it?
-	 *
-	 * @return string
-	 */
-	public function getFallBackName() {
-		if ($this->canShow()) {
-			return basename($this->file);
-		} else {
-			return $this->getXref();
-		}
-	}
-
-	/**
-	 * Extract names from the GEDCOM record.
-	 */
-	public function extractNames() {
-		// Earlier gedcom versions had level 1 titles
-		// Later gedcom versions had level 2 titles
-		$this->extractNamesFromFacts(2, 'TITL', $this->getFacts('FILE'));
-		$this->extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
-	}
-
-	/**
-	 * This function should be redefined in derived classes to show any major
-	 * identifying characteristics of this record.
-	 *
-	 * @return string
-	 */
-	public function formatListDetails() {
-		ob_start();
-		FunctionsPrintFacts::printMediaLinks('1 OBJE @' . $this->getXref() . '@', 1);
-
-		return ob_get_clean();
 	}
 }

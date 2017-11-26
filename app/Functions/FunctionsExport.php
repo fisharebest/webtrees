@@ -152,7 +152,7 @@ class FunctionsExport {
 		if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 			$old_file_name = $match[1];
 			// Don’t modify external links
-			if (!preg_match('~^(https?|ftp):~', $old_file_name)) {
+			if (strpos($old_file_name, '://') === false) {
 				// Adding a windows path? Convert the slashes.
 				if (strpos($path, '\\') !== false) {
 					$new_file_name = preg_replace('~/+~', '\\', $old_file_name);

@@ -32,14 +32,16 @@ class QueryMedia {
 		global $WT_TREE;
 
 		$folders = Database::prepare(
-			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
-			" FROM  `##media`" .
+			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
+			" FROM  `##media_file`" .
 			" WHERE m_file = ?" .
-			" AND   m_filename NOT LIKE 'http://%'" .
-			" AND   m_filename NOT LIKE 'https://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'https://%'" .
 			" GROUP BY 1" .
 			" ORDER BY 1"
-		)->execute([$WT_TREE->getTreeId()])->fetchOneColumn();
+		)->execute([
+			$WT_TREE->getTreeId(),
+		])->fetchOneColumn();
 
 		if (!$folders || reset($folders) != '') {
 			array_unshift($folders, '');
@@ -55,10 +57,10 @@ class QueryMedia {
 	 */
 	public static function folderListAll() {
 		$folders = Database::prepare(
-			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
-			" FROM  `##media`" .
-			" WHERE m_filename NOT LIKE 'http://%'" .
-			" AND   m_filename NOT LIKE 'https://%'" .
+			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
+			" FROM  `##media_file`" .
+			" WHERE multimedia_file_refn NOT LIKE 'http://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'https://%'" .
 			" GROUP BY 1" .
 			" ORDER BY 1"
 		)->execute()->fetchOneColumn();
@@ -90,14 +92,15 @@ class QueryMedia {
 		$sql =
 			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
-			" WHERE m_file=?";
+			" JOIN `##media_file` USING (m_id, m_file)" .
+			" WHERE m_file = ?";
 		$args = [
 			$WT_TREE->getTreeId(),
 		];
 
 		// Only show external files when we are looking at the root folder
 		if ($folder == '') {
-			$sql_external = " OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%'";
+			$sql_external = " OR multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%'";
 		} else {
 			$sql_external = "";
 		}
@@ -105,11 +108,11 @@ class QueryMedia {
 		// Include / exclude subfolders (but always include external)
 		switch ($subfolders) {
 		case 'include':
-			$sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
+			$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
 			$args[] = Database::escapeLike($folder);
 			break;
 		case 'exclude':
-			$sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
+			$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
 			$args[] = Database::escapeLike($folder);
 			$args[] = Database::escapeLike($folder);
 			break;
@@ -119,22 +122,22 @@ class QueryMedia {
 
 		// Apply search terms
 		if ($filter) {
-			$sql .= " AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			$sql .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
 			$args[] = Database::escapeLike($filter);
 			$args[] = Database::escapeLike($filter);
 		}
 
 		if ($form_type) {
-			$sql .= " AND (m_gedcom LIKE CONCAT('%\n3 TYPE ', ?, '%'))";
+			$sql .= " AND source_media_type = ?";
 			$args[] = $form_type;
 		}
 
 		switch ($sort) {
 		case 'file':
-			$sql .= " ORDER BY m_filename";
+			$sql .= " ORDER BY multimedia_file_refn";
 			break;
 		case 'title':
-			$sql .= " ORDER BY m_titl";
+			$sql .= " ORDER BY descriptive_title";
 			break;
 		default:
 			throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');

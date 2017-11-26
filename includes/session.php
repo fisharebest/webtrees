@@ -72,7 +72,7 @@ define('WT_THEMES_DIR', 'themes/');
 define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 37);
+define('WT_SCHEMA_VERSION', 38);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
