@@ -928,13 +928,11 @@ class GedcomRecord {
 			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" JOIN `##link` ON m_file = l_file AND m_id = l_from" .
-			" WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref" .
-			" ORDER BY m_titl COLLATE :collation"
+			" WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref"
 		)->execute([
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
 			'xref'      => $this->xref,
-			'collation' => I18N::collation(),
 		])->fetchAll();
 
 		$list = [];

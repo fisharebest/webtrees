@@ -83,11 +83,11 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * The prefered media file to be shown for this media object
+	 * Get the first media file that contains an image.
 	 *
 	 * @return MediaFile|null
 	 */
-	public function mediaFile() {
+	public function firstImageFile() {
 		foreach ($this->mediaFiles() as $media_file) {
 			if (in_array($media_file->extension(), ['jpeg', 'png', 'gif'])) {
 				return $media_file;
@@ -122,7 +122,13 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getFilename() {
-		return $this->file;
+		$media_file = $this->firstImageFile();
+
+		if ($media_file === null) {
+			return '';
+		} else {
+			return $media_file->filename();
+		}
 	}
 
 	/**
@@ -141,14 +147,12 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getServerFilename() {
-		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
+		$media_file = $this->firstImageFile();
 
-		if ($this->isExternal() || !$this->file) {
-			// External image, or (in the case of corrupt GEDCOM data) no image at all
-			return $this->file;
+		if ($media_file === null) {
+			return '';
 		} else {
-			// Main image
-			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			return $media_file->filename();
 		}
 	}
 
@@ -413,6 +417,13 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function displayImage($width, $height, $fit, $attributes = []) {
+		$media_file = $this->firstImageFile();
+
+		if ($media_file !== null) {
+			return $media_file->displayImage($width, $height, $fit, $attributes);
+		}
+
+		return 'EEK!!!';
 		// Default image for external, missing or corrupt images.
 		$image
 			= '<i' .
@@ -451,28 +462,23 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * If this object has no name, what do we call it?
-	 *
-	 * @return string
-	 */
-	public function getFallBackName() {
-		if ($this->canShow()) {
-			foreach ($this->mediaFiles() as $media_file) {
-				return $media_file->filename();
-			}
-		}
-
-		return $this->getXref();
-	}
-
-	/**
 	 * Extract names from the GEDCOM record.
 	 */
 	public function extractNames() {
-		// Earlier gedcom versions had level 1 titles
-		// Later gedcom versions had level 2 titles
-		$this->extractNamesFromFacts(2, 'TITL', $this->getFacts('FILE'));
-		$this->extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
+		$names = [];
+		foreach ($this->mediaFiles() as $media_file) {
+			$names[] = $media_file->title();
+			$names[] = $media_file->filename();
+		}
+		$names = array_filter(array_unique($names));
+
+		if (empty($names)) {
+			$names[] = $this->getFallBackName();
+		}
+
+		foreach ($names as $name) {
+			$this->addName(static::RECORD_TYPE, $name, null);
+		}
 	}
 
 	/**
