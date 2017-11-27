@@ -57,5 +57,5 @@ echo View::make('media-page', [
 	'families'    => $controller->record->linkedFamilies('OBJE'),
 	'sources'     => $controller->record->linkedSources('OBJE'),
 	'notes'       => $controller->record->linkedNotes('OBJE'),
-	'facts'       => $controller->getFacts(),
+	'facts'       => array_filter($controller->getFacts(), function(Fact $fact) { return $fact->getTag() !== 'FILE'; }),
 ]);

@@ -40,6 +40,9 @@ class MediaFile {
   /** @var Media $media The media object to which this file belongs */
   private $media;
 
+  /** @var string */
+  private $fact_id;
+
 	/**
 	 * Create a MediaFile from raw GEDCOM data.
 	 *
@@ -47,7 +50,8 @@ class MediaFile {
 	 * @param Media  $media
 	 */
 	public function __construct($gedcom, Media $media) {
-		$this->media = $media;
+		$this->media   = $media;
+		$this->fact_id = md5($gedcom);
 
 		if (preg_match('/^\d FILE (.+)/m', $gedcom, $match)) {
 			$this->multimedia_file_refn = $match[1];
@@ -67,7 +71,7 @@ class MediaFile {
 	}
 
 	/**
-	 * Get the filename
+	 * Get the filename.
 	 *
 	 * @return string
 	 */
@@ -76,7 +80,7 @@ class MediaFile {
 	}
 
 	/**
-	 * Get the format
+	 * Get the format.
 	 *
 	 * @return string
 	 */
@@ -85,7 +89,7 @@ class MediaFile {
 	}
 
 	/**
-	 * Get the type
+	 * Get the type.
 	 *
 	 * @return string
 	 */
@@ -94,13 +98,105 @@ class MediaFile {
 	}
 
 	/**
-	 * Get the title
+	 * Get the title.
 	 *
 	 * @return string
 	 */
 	public function title(): string {
 		return $this->descriptive_title;
 	}
+
+	/**
+	 * Get the fact ID.
+	 *
+	 * @return string
+	 */
+	public function factId(): string {
+		return $this->fact_id;
+	}
+
+	/**
+	 * A list of image attributes
+	 *
+	 * @return string[]
+	 */
+	public function attributes(): array {
+		$attributes = [];
+
+		if (!$this->isExternal()) {
+			$file = $this->folder() . $this->multimedia_file_refn;
+
+			if (file_exists($file)) {
+				$attributes[] = '';
+			}
+		}
+	}
+
+	/**
+	 * Where is the file stored on disk?
+	 */
+	private function folder(): string {
+		return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
+	}
+
+	/**
+	 * Is the media file actually a URL?
+	 */
+	private function isExternal(): bool {
+		return strpos($this->multimedia_file_refn, '://') !== false;
+	}
+
+	/**
+	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
+	 *
+	 * @param int      $width      Pixels
+	 * @param int      $height     Pixels
+	 * @param string   $fit        "crop" or "contain"
+	 * @param string[] $attributes Additional HTML attributes
+	 *
+	 * @return string
+	 */
+	public function displayImage($width, $height, $fit, $attributes = []) {
+		// Default image for external, missing or corrupt images.
+		$image
+			= '<i' .
+			' dir="auto"' . // For the tool-tip
+			' class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
+			' title="' . strip_tags($this->media->getFullName()) . '"' .
+			'></i>';
+
+		// Use a thumbnail image.
+		if ($this->isExternal()) {
+			$src    = $this->multimedia_file_refn;
+			$srcset = [];
+		} else {
+			// Generate multiple images for displays with higher pixel densities.
+			$src    = $this->imageUrl($width, $height, $fit);
+			$srcset = [];
+			foreach ([2, 3, 4] as $x) {
+				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
+			}
+		}
+
+		$image = '<img ' . Html::attributes($attributes + [
+					'dir'    => 'auto',
+					'src'    => $src,
+					'srcset' => implode(',', $srcset),
+					'alt'    => strip_tags($this->media->getFullName()),
+				]) . '>';
+
+		$attributes = Html::attributes([
+			'class' => 'gallery',
+			'type'  => $this->mimeType(),
+			'href'  => $this->imageUrl(0, 0, ''),
+		]);
+
+		return '<a ' . $attributes . '>' . $image . '</a>';
+	}
+
+
+
+	///////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Get the filename on the server - for those (very few!) functions which actually
@@ -111,12 +207,12 @@ class MediaFile {
 	public function getServerFilename() {
 		$MEDIA_DIRECTORY = $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
 
-		if ($this->isExternal() || !$this->file) {
+		if ($this->isExternal() || !$this->multimedia_file_refn) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
-			return $this->file;
+			return $this->multimedia_file_refn;
 		} else {
 			// Main image
-			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
 		}
 	}
 
@@ -127,15 +223,6 @@ class MediaFile {
 	 */
 	public function fileExists() {
 		return file_exists($this->getServerFilename());
-	}
-
-	/**
-	 * Determine if the file is an external url
-	 *
-	 * @return bool
-	 */
-	public function isExternal() {
-		return strpos($this->file, '://') !== false;
 	}
 
 	/**
@@ -266,7 +353,7 @@ class MediaFile {
 			Site::setPreference('glide-key', $glide_key);
 		}
 
-		if (Auth::accessLevel($this->getTree()) > $this->getTree()->getPreference('SHOW_NO_WATERMARK')) {
+		if (Auth::accessLevel($this->media->getTree()) > $this->media->getTree()->getPreference('SHOW_NO_WATERMARK')) {
 			$mark = 'watermark.png';
 		} else {
 			$mark = '';
@@ -274,8 +361,8 @@ class MediaFile {
 
 		$url = UrlBuilderFactory::create(WT_BASE_URL, $glide_key)
 			->getUrl('mediafirewall.php', [
-				'mid'       => $this->getXref(),
-				'ged'       => $this->tree->getName(),
+				'mid'       => $this->media->getXref(),
+				'ged'       => $this->media->getTree()->getName(),
 				'w'         => $width,
 				'h'         => $height,
 				'fit'       => $fit,
@@ -362,53 +449,5 @@ class MediaFile {
 		default:
 			return 'application/octet-stream';
 		}
-	}
-
-	/**
-	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
-	 *
-	 * @param int      $width      Pixels
-	 * @param int      $height     Pixels
-	 * @param string   $fit        "crop" or "contain"
-	 * @param string[] $attributes Additional HTML attributes
-	 *
-	 * @return string
-	 */
-	public function displayImage($width, $height, $fit, $attributes = []) {
-		// Default image for external, missing or corrupt images.
-		$image
-			= '<i' .
-			' dir="auto"' . // For the tool-tip
-			' class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
-			' title="' . strip_tags($this->getFullName()) . '"' .
-			'></i>';
-
-		// Use a thumbnail image.
-		if ($this->isExternal()) {
-			$src    = $this->getFilename();
-			$srcset = [];
-		} else {
-			// Generate multiple images for displays with higher pixel densities.
-			$src    = $this->imageUrl($width, $height, $fit);
-			$srcset = [];
-			foreach ([2, 3, 4] as $x) {
-				$srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
-			}
-		}
-
-		$image = '<img ' . Html::attributes($attributes + [
-					'dir'    => 'auto',
-					'src'    => $src,
-					'srcset' => implode(',', $srcset),
-					'alt'    => strip_tags($this->getFullName()),
-				]) . '>';
-
-		$attributes = Html::attributes([
-			'class' => 'gallery',
-			'type'  => $this->mimeType(),
-			'href'  => $this->imageUrl(0, 0, ''),
-		]);
-
-		return '<a ' . $attributes . '>' . $image . '</a>';
 	}
 }

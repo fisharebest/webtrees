@@ -189,16 +189,9 @@ class FunctionsPrintFacts {
 			?>
 			<?= $label ?>
 			<div class="editfacts">
-				<?php if ($fact->getTag() === 'FILE' && $fact->getParent() instanceof Media): ?>
-					<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=media-edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $parent->getTree()->getNameHtml()]) ?>
-					<?php if (count($fact->getParent()->getFacts('FILE')) > 1): ?>
-						<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
-					<?php endif ?>
-				<?php else: ?>
-					<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $parent->getTree()->getNameHtml()]) ?>
-					<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
-					<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
-				<?php endif ?>
+				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $parent->getTree()->getNameHtml()]) ?>
+				<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
+				<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $parent->getXref() . '", "' . $fact->getFactId() . '");']) ?>
 			</div>
 		<?php
 		} else {
@@ -237,30 +230,6 @@ class FunctionsPrintFacts {
 		case 'EMAI':
 		case '_EMAIL':
 			echo '<div class="field"><a href="mailto:', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
-			break;
-		case 'FILE':
-			if (Auth::isEditor($fact->getParent()->getTree())) {
-				echo '<div class="field">', Html::escape($fact->getValue());
-
-				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists() && $fact->getParent()->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($fact->getParent()->getTree())) {
-					echo ' — <a href="' . $fact->getParent()->imageUrl(0, 0, '') . '">' . I18N::translate('Download file') . '</a>';
-				}
-				echo '</div>';
-
-				if ($fact->getParent() instanceof Media && !$fact->getParent()->fileExists()) {
-					echo '<p class="alert alert-danger">' . I18N::translate('The file “%s” does not exist.', $fact->getParent()->getFilename()) . '</p>';
-				}
-
-				if ($fact->getParent() instanceof Media && $fact->getParent()->fileExists()) {
-					// The file size
-					echo GedcomTag::getLabelValue('__FILE_SIZE__', $fact->getParent()->getFilesize());
-					// The image size
-					$imgsize = $fact->getParent()->getImageAttributes();
-					if (!empty($imgsize['WxH'])) {
-						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-					}
-				}
-			}
 			break;
 		case 'RESN':
 			echo '<div class="field">';
