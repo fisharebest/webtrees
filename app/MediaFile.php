@@ -295,7 +295,7 @@ class MediaFile {
 	 * @return string
 	 */
 	public function extension() {
-		if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->file, $match)) {
+		if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->multimedia_file_refn, $match)) {
 			return strtolower($match[1]);
 		} else {
 			return '';
