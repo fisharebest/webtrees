@@ -167,7 +167,13 @@ class Media extends GedcomRecord {
 	 * @return bool
 	 */
 	public function isExternal() {
-		return strpos($this->file, '://') !== false;
+		foreach ($this->mediaFiles() as $media_file) {
+			if (strpos($media_file->filename(), '://') !== false) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -327,11 +333,11 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function extension() {
-		if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->file, $match)) {
-			return strtolower($match[1]);
-		} else {
-			return '';
+		foreach ($this->mediaFiles() as $media_file) {
+			return $media_file->extension();
 		}
+
+		return '';
 	}
 
 	/**
