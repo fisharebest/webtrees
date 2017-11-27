@@ -406,7 +406,7 @@ class Date {
 	 *
 	 * @return Date
 	 */
-	public function addYears($years, $qualifier = '') {
+	public function addYears(int $years, string $qualifier = '') {
 		$tmp = clone $this;
 		$tmp->date1->y += $years;
 		$tmp->date1->m = 0;

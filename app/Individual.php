@@ -290,7 +290,7 @@ class Individual extends GedcomRecord {
 	 * @return bool
 	 */
 	public function isDead() {
-		$MAX_ALIVE_AGE = $this->tree->getPreference('MAX_ALIVE_AGE');
+		$MAX_ALIVE_AGE = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
 
 		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
 		if (preg_match('/\n1 (?:' . WT_EVENTS_DEAT . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
@@ -685,7 +685,8 @@ class Individual extends GedcomRecord {
 			}
 			if ($this->_getEstimatedDeathDate === null) {
 				if ($this->getEstimatedBirthDate()->minimumJulianDay()) {
-					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->addYears($this->tree->getPreference('MAX_ALIVE_AGE'), 'BEF');
+					$max_alive_age                = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
+					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->addYears($max_alive_age, 'BEF');
 				} else {
 					$this->_getEstimatedDeathDate = new Date(''); // always return a date object
 				}
