@@ -73,7 +73,6 @@ if (Filter::get('action') === 'renumber') {
 			" `##name` WRITE," .
 			" `##placelinks` WRITE," .
 			" `##change` WRITE," .
-			" `##next_id` WRITE," .
 			" `##dates` WRITE," .
 			" `##default_resn` WRITE," .
 			" `##hit_counter` WRITE," .

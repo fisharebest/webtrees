@@ -550,7 +550,6 @@ class Tree {
 		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute([$this->tree_id]);
 		Database::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute([$this->tree_id]);
 		Database::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute([$this->tree_id]);
-		Database::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute([$this->tree_id]);
 		Database::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute([$this->tree_id]);
 		Database::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute([$this->tree_id]);
 		Database::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute([$this->tree_id]);
