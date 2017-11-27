@@ -451,10 +451,12 @@ class Media extends GedcomRecord {
 	 */
 	public function getFallBackName() {
 		if ($this->canShow()) {
-			return basename($this->file);
-		} else {
-			return $this->getXref();
+			foreach ($this->mediaFiles() as $media_file) {
+				return $media_file->filename();
+			}
 		}
+
+		return $this->getXref();
 	}
 
 	/**
