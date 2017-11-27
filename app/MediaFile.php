@@ -71,8 +71,8 @@ class MediaFile {
 	 *
 	 * @return string
 	 */
-	public function filename() {
-		return $$this->multimedia_file_refn;
+	public function filename(): string {
+		return $this->multimedia_file_refn;
 	}
 
 	/**
@@ -80,7 +80,7 @@ class MediaFile {
 	 *
 	 * @return string
 	 */
-	public function format() {
+	public function format(): string {
 		return $this->multimedia_format;
 	}
 
@@ -89,7 +89,7 @@ class MediaFile {
 	 *
 	 * @return string
 	 */
-	public function type() {
+	public function type(): string {
 		return $this->source_media_type;
 	}
 
@@ -98,7 +98,7 @@ class MediaFile {
 	 *
 	 * @return string
 	 */
-	public function title() {
+	public function title(): string {
 		return $this->descriptive_title;
 	}
 
