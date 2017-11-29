@@ -77,6 +77,7 @@ if (Filter::get('action') === 'renumber') {
 			" `##default_resn` WRITE," .
 			" `##hit_counter` WRITE," .
 			" `##link` WRITE," .
+			" `##site_setting` WRITE," .
 			" `##user_gedcom_setting` WRITE"
 		);
 		$new_xref = $WT_TREE->getNewXref($type);
