@@ -110,6 +110,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			" `##sources` AS sources2 READ," .
 			" `##media` WRITE," .
 			" `##media` AS media2 READ," .
+			" `##media_file` WRITE," .
+			" `##media_file` AS media_file2 READ," .
 			" `##other` WRITE," .
 			" `##other` AS other2 READ," .
 			" `##name` WRITE," .
@@ -145,7 +147,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		)->execute([$tree2_id, $tree1_id]);
 		Database::prepare(
 			"INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title)" .
-			" SELECT m_id, ?, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title FROM `##media_file` AS mediafile2 WHERE m_file = ?"
+			" SELECT m_id, ?, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title FROM `##media_file` AS media_file2 WHERE m_file = ?"
 		)->execute([$tree2_id, $tree1_id]);
 		Database::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom)" .
