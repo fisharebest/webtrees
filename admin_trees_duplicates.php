@@ -114,8 +114,9 @@ $families = array_map(
 $media = Database::prepare(
 	"SELECT GROUP_CONCAT(m_id) AS xrefs " .
 	" FROM `##media`" .
-	" WHERE m_file = :tree_id AND m_titl <> ''" .
-	" GROUP BY m_titl" .
+	" JOIN `##media_file` USING (m_id, m_file)" .
+	" WHERE m_file = :tree_id AND descriptive_title <> ''" .
+	" GROUP BY descriptive_title" .
 	" HAVING COUNT(m_id) > 1"
 )->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
