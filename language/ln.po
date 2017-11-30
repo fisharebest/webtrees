@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-23 22:44+0000\n"
+"PO-Revision-Date: 2017-11-30 23:04+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -15662,7 +15662,7 @@ msgstr ""
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:580
 msgid "Will"
-msgstr ""
+msgstr "Libula"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
@@ -15726,7 +15726,7 @@ msgstr "Mobú:"
 #. I18N: Name of a country or state
 #: app/Stats.php:6899
 msgid "Yemen"
-msgstr ""
+msgstr "Yeméni"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:335
