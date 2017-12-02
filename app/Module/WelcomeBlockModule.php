@@ -47,7 +47,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $controller;
 
 		$individual = $controller->getSignificantIndividual();
@@ -92,17 +92,17 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return false;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return false;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -110,7 +110,9 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 	}
 }

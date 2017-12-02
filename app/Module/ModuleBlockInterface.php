@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Module;
 
 /**
@@ -28,7 +30,7 @@ interface ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []);
+	public function getBlock($block_id, $template = true, $cfg = []): string;
 
 	/**
 	 * Should this block load asynchronously using AJAX?
@@ -38,26 +40,28 @@ interface ModuleBlockInterface {
 	 *
 	 * @return bool
 	 */
-	public function loadAjax();
+	public function loadAjax(): bool;
 
 	/**
 	 * Can this block be shown on the user’s home page?
 	 *
 	 * @return bool
 	 */
-	public function isUserBlock();
+	public function isUserBlock(): bool;
 
 	/**
 	 * Can this block be shown on the tree’s home page?
 	 *
 	 * @return bool
 	 */
-	public function isGedcomBlock();
+	public function isGedcomBlock(): bool;
 
 	/**
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id);
+	public function configureBlock($block_id): void;
 }

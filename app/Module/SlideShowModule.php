@@ -49,7 +49,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
@@ -141,17 +141,17 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -159,8 +159,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
 			$this->setBlockSetting($block_id, 'controls', Filter::postBool('controls'));

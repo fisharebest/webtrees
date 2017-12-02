@@ -39,7 +39,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	 *
 	 * @return bool
 	 */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
@@ -48,7 +48,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	 *
 	 * @return bool
 	 */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return false;
 	}
 

@@ -53,7 +53,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -104,22 +104,22 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));

@@ -55,7 +55,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
@@ -107,17 +107,17 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -125,8 +125,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
