@@ -16,7 +16,7 @@
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 
 /**
  * Class ReportPdf
@@ -248,20 +248,18 @@ class ReportPdf extends ReportBase {
 	/**
 	 * Create a new image object from Media Object - ReportPdf
 	 *
-	 * @param Media  $mediaobject
-	 * @param mixed  $x
-	 * @param mixed  $y
-	 * @param int    $w           Image width
-	 * @param int    $h           Image height
-	 * @param string $align       L:left, C:center, R:right or empty to use x/y
-	 * @param string $ln          T:same line, N:next line
+	 * @param MediaFile $mediafile
+	 * @param mixed     $x
+	 * @param mixed     $y
+	 * @param int       $w     Image width
+	 * @param int       $h     Image height
+	 * @param string    $align L:left, C:center, R:right or empty to use x/y
+	 * @param string    $ln    T:same line, N:next line
 	 *
 	 * @return ReportPdfImage
 	 */
-	public function createImageFromObject(Media $mediaobject, $x, $y, $w, $h, $align, $ln) {
-		$filename = $mediaobject->getServerFilename();
-
-		return new ReportPdfImage($filename, $x, $y, $w, $h, $align, $ln);
+	public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln) {
+		return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**

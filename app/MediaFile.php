@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use ErrorException;
 use League\Glide\Urls\UrlBuilderFactory;
 
 /**
@@ -116,37 +116,6 @@ class MediaFile {
 	}
 
 	/**
-	 * A list of image attributes
-	 *
-	 * @return string[]
-	 */
-	public function attributes(): array {
-		$attributes = [];
-
-		if (!$this->isExternal()) {
-			$file = $this->folder() . $this->multimedia_file_refn;
-
-			if (file_exists($file)) {
-				$attributes[] = '';
-			}
-		}
-	}
-
-	/**
-	 * Where is the file stored on disk?
-	 */
-	private function folder(): string {
-		return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
-	}
-
-	/**
-	 * Is the media file actually a URL?
-	 */
-	private function isExternal(): bool {
-		return strpos($this->multimedia_file_refn, '://') !== false;
-	}
-
-	/**
 	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
 	 *
 	 * @param int      $width      Pixels
@@ -157,15 +126,6 @@ class MediaFile {
 	 * @return string
 	 */
 	public function displayImage($width, $height, $fit, $attributes = []) {
-		// Default image for external, missing or corrupt images.
-		$image
-			= '<i' .
-			' dir="auto"' . // For the tool-tip
-			' class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"' .
-			' title="' . strip_tags($this->media->getFullName()) . '"' .
-			'></i>';
-
-		// Use a thumbnail image.
 		if ($this->isExternal()) {
 			$src    = $this->multimedia_file_refn;
 			$srcset = [];
@@ -194,7 +154,84 @@ class MediaFile {
 		return '<a ' . $attributes . '>' . $image . '</a>';
 	}
 
+	/**
+	 * A list of image attributes
+	 *
+	 * @return string[]
+	 */
+	public function attributes(): array {
+		$attributes = [];
 
+		if (!$this->isExternal() || $this->fileExists()) {
+			$file = $this->folder() . $this->multimedia_file_refn;
+
+			$attributes['__FILE_SIZE__'] = $this->fileSizeKB();
+
+			$imgsize = getimagesize($file);
+			if (is_array($imgsize) && !empty($imgsize['0'])) {
+				$attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
+			}
+		}
+
+		return $attributes;
+	}
+
+	/**
+	 * check if the file exists on this server
+	 *
+	 * @return bool
+	 */
+	public function fileExists() {
+		return file_exists($this->folder() . $this->multimedia_file_refn);
+	}
+
+	/**
+	 * Where is the file stored on disk?
+	 */
+	private function folder(): string {
+		return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
+	}
+
+	/**
+	 * Is the media file actually a URL?
+	 */
+	public function isExternal(): bool {
+		return strpos($this->multimedia_file_refn, '://') !== false;
+	}
+
+	/**
+	 * Is the media file an image?
+	 */
+	public function isImage(): bool {
+		return in_array($this->extension(), ['jpeg', 'jpg', 'gif', 'png']);
+	}
+
+	/**
+	 * A user-friendly view of the file size
+	 *
+	 * @return int
+	 */
+	private function fileSizeBytes(): int {
+		try {
+			return filesize($this->folder() . $this->multimedia_file_refn);
+		} catch (ErrorException $ex) {
+			DebugBar::addThrowable($ex);
+
+			return 0;
+		}
+	}
+
+	/**
+	 * get the media file size in KB
+	 *
+	 * @return string
+	 */
+	public function fileSizeKB() {
+		$size = $this->filesizeBytes();
+		$size = (int) (($size + 1023) / 1024);
+
+		return /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
+	}
 
 	///////////////////////////////////////////////////////////////////////////
 
@@ -217,57 +254,6 @@ class MediaFile {
 	}
 
 	/**
-	 * check if the file exists on this server
-	 *
-	 * @return bool
-	 */
-	public function fileExists() {
-		return file_exists($this->getServerFilename());
-	}
-
-	/**
-	 * get the media file size in KB
-	 *
-	 * @return string
-	 */
-	public function getFilesize() {
-		$size = $this->getFilesizeraw();
-		// Round up to the nearest KB.
-		$size = (int) (($size + 1023) / 1024);
-
-		return /* I18N: size of file in KB */
-			I18N::translate('%s KB', I18N::number($size));
-	}
-
-	/**
-	 * get the media file size, unformatted
-	 *
-	 * @return int
-	 */
-	public function getFilesizeraw() {
-		try {
-			return filesize($this->getServerFilename());
-		} catch (\ErrorException $ex) {
-			DebugBar::addThrowable($ex);
-
-			return 0;
-		}
-	}
-
-	/**
-	 * Deprecated? This does not need to be a function here.
-	 *
-	 * @return string
-	 */
-	public function getMediaType() {
-		if (preg_match('/\n\d TYPE (.+)/', $this->gedcom, $match)) {
-			return strtolower($match[1]);
-		} else {
-			return '';
-		}
-	}
-
-	/**
 	 * get image properties
 	 *
 	 * @return array
@@ -285,7 +271,7 @@ class MediaFile {
 					$imgsize['WxH'] = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
 				}
-			} catch (\ErrorException $ex) {
+			} catch (ErrorException $ex) {
 				DebugBar::addThrowable($ex);
 
 				// Not an image, or not a valid image?
@@ -305,7 +291,7 @@ class MediaFile {
 		if (empty($imgsize['mime'])) {
 			// this is not an image, OR the file doesn’t exist OR it is a url
 			// set file type equal to the file extension - can’t use parse_url because this may not be a full url
-			$exp            = explode('?', $this->file);
+			$exp            = explode('?', $this->multimedia_file_refn);
 			$imgsize['ext'] = strtoupper(pathinfo($exp[0], PATHINFO_EXTENSION));
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
 			$mime = [
@@ -326,7 +312,7 @@ class MediaFile {
 				if ($this->fileExists()) {
 					// alert the admin if we cannot determine the mime type of an existing file
 					// as the media firewall will be unable to serve this file properly
-					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->file . '<');
+					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->multimedia_file_refn . '<');
 				}
 			} else {
 				$imgsize['mime'] = $mime[$imgsize['ext']];
@@ -359,19 +345,22 @@ class MediaFile {
 			$mark = '';
 		}
 
-		$url = UrlBuilderFactory::create(WT_BASE_URL, $glide_key)
-			->getUrl('mediafirewall.php', [
-				'mid'       => $this->media->getXref(),
-				'ged'       => $this->media->getTree()->getName(),
-				'w'         => $width,
-				'h'         => $height,
-				'fit'       => $fit,
-				'mark'      => $mark,
-				'markh'     => '100h',
-				'markw'     => '100w',
-				'markalpha' => 25,
-				'or'        => 0, // Intervention uses exif_read_data() which is very buggy.
-			]);
+		$url_builder = UrlBuilderFactory::create(WT_BASE_URL, $glide_key);
+
+		$url = $url_builder->getUrl('index.php', [
+			'route'     => 'media-thumbnail',
+			'xref'      => $this->media->getXref(),
+			'ged'       => $this->media->getTree()->getName(),
+			'fact_id'   => $this->fact_id,
+			'w'         => $width,
+			'h'         => $height,
+			'fit'       => $fit,
+			'mark'      => $mark,
+			'markh'     => '100h',
+			'markw'     => '100w',
+			'markalpha' => 25,
+			'or'        => 0, // Intervention uses exif_read_data() which is very buggy.
+		]);
 
 		return $url;
 	}

@@ -45,6 +45,7 @@ if (Auth::isAdmin()) {
 		'POST:user-page-default-update'       => 'HomePageController@userPageDefaultUpdate',
 		'GET:user-page-user-edit'             => 'HomePageController@userPageUserEdit',
 		'POST:user-page-user-update'          => 'HomePageController@userPageUserUpdate',
+		'GET:unused-media-thumbnail'          => 'MediaController@unusedMediaThumbnail',
 	];
 }
 
@@ -89,6 +90,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	$routes += [
 		'GET:tree-page'       => 'HomePageController@treePage',
 		'GET:tree-page-block' => 'HomePageController@treePageBlock',
+		'GET:media-thumbnail' => 'MediaController@mediaThumbnail',
 	];
 }
 

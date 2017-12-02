@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use ErrorException;
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
 
@@ -59,7 +60,7 @@ if ($delete_file) {
 		try {
 			unlink($tmp);
 			FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
-		} catch (\ErrorException $ex) {
+		} catch (ErrorException $ex) {
 			DebugBar::addThrowable($ex);
 
 			FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -70,7 +71,7 @@ if ($delete_file) {
 			try {
 				unlink($tmp);
 				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
-			} catch (\ErrorException $ex) {
+			} catch (ErrorException $ex) {
 				DebugBar::addThrowable($ex);
 
 				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -97,14 +98,14 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 			" JOIN  `##gedcom` USING (gedcom_id)" .
 			" WHERE setting_value = :media_folder" .
 			" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
 			" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
-			"  OR   m_titl LIKE CONCAT('%', :search_2, '%'))" .
+			"  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
 			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS1 = [
@@ -183,10 +184,11 @@ case 'load_json':
 	case 'external':
 		// Filtered rows
 		$SELECT1 =
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
-			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
-			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
+			" FROM  `##media_file` USING (m_id, m_file)" .
+			" WHERE (multimedia_file_refn LIKE 'http://%' OR m_filename LIKE 'https://%')" .
+			" AND   (multimedia_file_refn LIKE CONCAT('%', :search_1, '%') OR descriptive_title LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = [
 			'search_1' => Database::escapeLike($search),
 			'search_2' => Database::escapeLike($search),
@@ -282,27 +284,13 @@ case 'load_json':
 
 		$data = [];
 		foreach ($unused_files as $unused_file) {
-			$full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
-			$thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
-			if (!file_exists($thumb_path)) {
-				$thumb_path = $full_path;
-			}
-
-			try {
-				$imgsize = getimagesize($thumb_path);
-				// We can’t create a URL (not in public_html) or use the media firewall (no such object)
-				// so just the base64-encoded image inline.
-				if ($imgsize === false) {
-					// not an image
-					$img = '-';
-				} else {
-					$img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
-				}
-			} catch (\ErrorException $ex) {
-				DebugBar::addThrowable($ex);
-
-				// Not an image, or not a valid image?
+			$imgsize = getimagesize(WT_DATA_DIR . $media_folder . $media_path . $unused_file);
+			// We can’t create a URL (not in public_html) or use the media firewall (no such object)
+			if ($imgsize === false) {
 				$img = '-';
+			} else {
+				$url = route('unused-media-thumbnail', ['folder' => $media_folder, 'file' => $media_path . $unused_file]);
+				$img = '<img src="' . e($url) . '">';
 			}
 
 			// Is there a pending record for this file?
@@ -371,12 +359,13 @@ function all_media_folders() {
  */
 function media_paths($media_folder) {
 	$media_paths = Database::prepare(
-		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
+		"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
 		" FROM  `##media`" .
+		" JOIN  `##media_file` USING (m_file, m_id)" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" WHERE setting_value = :media_folder" .
-		" AND   m_filename NOT LIKE 'http://%'" .
-		" AND   m_filename NOT LIKE 'https://%'" .
+		" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+		" AND   multimedia_file_refn NOT LIKE 'https://%'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
 	)->execute([
@@ -452,16 +441,17 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
  */
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return Database::prepare(
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, 'OBJE' AS type, descriptive_title, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, multimedia_file_refn" .
 		" FROM  `##media`" .
+		" JOIN  `##media_file` USING (m_file, m_id)" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" JOIN  `##gedcom`         USING (gedcom_id)" .
 		" WHERE setting_value = :media_folder" .
-		" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
-		" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
-		"  OR   m_titl LIKE CONCAT('%', :filter_2, '%'))" .
-		" AND   m_filename NOT LIKE 'http://%'" .
-		" AND   m_filename NOT LIKE 'https://%'"
+		" AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
+		" AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
+		"  OR   descriptive_title LIKE CONCAT('%', :filter_2, '%'))" .
+		" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+		" AND   multimedia_file_refn NOT LIKE 'https://%'"
 	)->execute([
 		'media_path_1' => $media_path,
 		'media_folder' => $media_folder,
@@ -498,14 +488,14 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 			$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
 			$html .= '<dd>' . /* I18N: image dimensions, width × height */
 				I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
-		} catch (\ErrorException $ex) {
+		} catch (ErrorException $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Not an image, or not a valid image?
 		}
 
 		$html .= '</dl>';
-	} catch (\ErrorException $ex) {
+	} catch (ErrorException $ex) {
 		DebugBar::addThrowable($ex);
 
 		// Not a file?  Not an image?

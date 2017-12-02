@@ -178,7 +178,9 @@ if ($action === 'submit') {
 						</h4>
 					</div>
 					<div class="card-body">
-						<?= $media->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
+						<?php foreach ($media->mediaFiles() as $media_file): ?>
+						<?= $media_file->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
+						<?php endforeach ?>
 
 						<p class="card-text">
 							<?php
@@ -192,6 +194,7 @@ if ($action === 'submit') {
 	} else {
 		if ($media->fileExists()) {
 			if ($details === '1') {
+				// @TODO media file
 				if (Auth::isEditor($WT_TREE)) {
 					echo GedcomTag::getLabelValue('FILE', $media->getFilename());
 				}

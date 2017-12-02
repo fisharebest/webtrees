@@ -1612,31 +1612,10 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$person      = Individual::getInstance($id, $WT_TREE);
-		$mediaobject = $person->findHighlightedMedia();
-		if ($mediaobject) {
-			$attributes = $mediaobject->getImageAttributes();
-			if (in_array(
-					$attributes['ext'],
-					[
-						'GIF',
-						'JPG',
-						'PNG',
-						'SWF',
-						'PSD',
-						'BMP',
-						'TIFF',
-						'TIFF',
-						'JPC',
-						'JP2',
-						'JPX',
-						'JB2',
-						'SWC',
-						'IFF',
-						'WBMP',
-						'XBM',
-					]
-				) && $mediaobject->canShow() && $mediaobject->fileExists()
-			) {
+		$media_file = $person->findHighlightedMediaFile();
+		if ($media_file) {
+			$attributes = $media_file->getImageAttributes();
+			if ($media_file->fileExists()) {
 				if ($width > 0 && $height == 0) {
 					$perc   = $width / $attributes[0];
 					$height = round($attributes[1] * $perc);
@@ -1647,7 +1626,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$width  = $attributes[0];
 					$height = $attributes[1];
 				}
-				$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
+				$image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
 				$this->wt_report->addElement($image);
 			}
 		}
@@ -1714,30 +1693,10 @@ class ReportParserGenerate extends ReportParserBase {
 			$match = [];
 			if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
 				$mediaobject = Media::getInstance($match[1], $WT_TREE);
-				$attributes  = $mediaobject->getImageAttributes();
+				$media_file  = $mediaobject->firstImageFile();
 
-				if (in_array(
-						$attributes['ext'],
-						[
-							'GIF',
-							'JPG',
-							'PNG',
-							'SWF',
-							'PSD',
-							'BMP',
-							'TIFF',
-							'TIFF',
-							'JPC',
-							'JP2',
-							'JPX',
-							'JB2',
-							'SWC',
-							'IFF',
-							'WBMP',
-							'XBM',
-						]
-					) && $mediaobject->canShow() && $mediaobject->fileExists()
-				) {
+				if ($media_file !== null && $media_file->fileExists()) {
+					$attributes  = $media_file->getImageAttributes();
 					if ($width > 0 && $height == 0) {
 						$perc   = $width / $attributes[0];
 						$height = round($attributes[1] * $perc);
@@ -1748,7 +1707,7 @@ class ReportParserGenerate extends ReportParserBase {
 						$width  = $attributes[0];
 						$height = $attributes[1];
 					}
-					$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
+					$image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
 					$this->wt_report->addElement($image);
 				}
 			}

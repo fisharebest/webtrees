@@ -658,7 +658,9 @@ class FunctionsPrintFacts {
 						echo '<br class="media-separator" style="clear:both;">';
 					}
 					echo '<div class="media-display"><div class="media-display-image">';
-					echo $media->displayImage(100, 100, 'contain', []);
+					foreach ($media->mediaFiles() as $media_file) {
+						echo $media_file->displayImage(100, 100, 'contain', []);
+					}
 					echo '</div>';
 					echo '<div class="media-display-title">';
 					echo '<a href="', $media->getHtmlUrl(), '">', $media->getFullName(), '</a>';
@@ -1135,7 +1137,9 @@ class FunctionsPrintFacts {
 				echo '<td class="', $styleadd, '">';
 				if ($media) {
 					echo '<span class="field">';
-					echo $media->displayImage(100, 100, 'contain', []);
+					foreach ($media->mediaFiles() as $media_file) {
+						echo $media_file->displayImage(100, 100, 'contain', []);
+					}
 					echo '<a href="' . $media->getHtmlUrl() . '"> ';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {
@@ -1148,18 +1152,19 @@ class FunctionsPrintFacts {
 					echo '</a>';
 					echo '</span>';
 
-					echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-					$imgsize = $media->getImageAttributes();
-					if (!empty($imgsize['WxH'])) {
-						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-					}
-					if ($media->getFilesizeraw() > 0) {
-						echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
-					}
-					$mediatype = $media->getMediaType();
-					if ($mediatype) {
-						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-					}
+					// @TODO - now that we have multiple images/object, what do we show here?
+					//echo GedcomTag::getLabelValue('FORM', $media->mimeType());
+					//$imgsize = $media->getImageAttributes();
+					//if (!empty($imgsize['WxH'])) {
+					//	echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+					//}
+					//if ($media->getFilesizeraw() > 0) {
+					//	echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
+					//}
+					//$mediatype = $media->getMediaType();
+					//if ($mediatype) {
+					//	echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+					//}
 
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
 					echo self::printFactSources($media->getGedcom(), 1);
