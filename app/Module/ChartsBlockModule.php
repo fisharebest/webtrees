@@ -172,7 +172,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @param int $block_id
 	 *
-	 * @return bool
+	 * @return void
 	 */
 	public function configureBlock($block_id): void {
 		global $WT_TREE, $controller;
