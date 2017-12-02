@@ -79,7 +79,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$action = Filter::get('action');
@@ -225,7 +225,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return bool
 	 */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return false;
 	}
 
@@ -234,7 +234,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return bool
 	 */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return false;
 	}
 
@@ -243,7 +243,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return bool
 	 */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -251,8 +251,10 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 	}
 
 	/**

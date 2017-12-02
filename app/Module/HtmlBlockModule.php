@@ -52,7 +52,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$title          = $this->getBlockSetting($block_id, 'title', '');
@@ -121,17 +121,17 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return false;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -139,8 +139,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		global $WT_TREE;
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {

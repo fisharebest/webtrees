@@ -55,7 +55,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
@@ -122,7 +122,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return bool
 	 */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return true;
 	}
 
@@ -131,7 +131,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return bool
 	 */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return false;
 	}
 
@@ -140,7 +140,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return bool
 	 */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -148,8 +148,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));

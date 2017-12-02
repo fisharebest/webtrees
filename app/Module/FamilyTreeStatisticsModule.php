@@ -54,7 +54,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []) {
+	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $WT_TREE, $ctype;
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
@@ -141,17 +141,17 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	}
 
 	/** {@inheritdoc} */
-	public function loadAjax() {
+	public function loadAjax(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isUserBlock() {
+	public function isUserBlock(): bool {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGedcomBlock() {
+	public function isGedcomBlock(): bool {
 		return true;
 	}
 
@@ -159,8 +159,10 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	 * An HTML form to edit block settings
 	 *
 	 * @param int $block_id
+	 *
+	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock($block_id): void {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
 			$this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));
