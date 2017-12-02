@@ -387,9 +387,9 @@ class Individual extends GedcomRecord {
 	public function findHighlightedMediaFile() {
 		foreach ($this->getFacts('OBJE') as $fact) {
 			$media = $fact->getTarget();
-			if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
+			if ($media instanceof Media) {
 				foreach ($media->mediaFiles() as $media_file) {
-					if ($media_file->isImage()) {
+					if ($media_file->isImage() && !$media_file->isExternal()) {
 						return $media_file;
 					}
 				}
