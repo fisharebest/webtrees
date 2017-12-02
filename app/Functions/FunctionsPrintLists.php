@@ -1536,7 +1536,7 @@ class FunctionsPrintLists {
 					if ($endjd === $startjd) {
 						$html .= I18N::translate('No events exist for tomorrow.');
 					} else {
-						$html .=  /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$html .= /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				} else {
 					if ($endjd === $startjd) {

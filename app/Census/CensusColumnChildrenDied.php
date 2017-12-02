@@ -51,6 +51,6 @@ class CensusColumnChildrenDied extends AbstractCensusColumn implements CensusCol
 			}
 		}
 
-		return (string)$count;
+		return (string) $count;
 	}
 }
