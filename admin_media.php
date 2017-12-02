@@ -98,16 +98,17 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
+			" JOIN  `##media_file` USING (m_file, m_id)" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 			" JOIN  `##gedcom` USING (gedcom_id)" .
 			" WHERE setting_value = :media_folder" .
-			" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
-			" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
+			" AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
+			" AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
 			"  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
-			" AND   m_filename NOT LIKE 'http://%'" .
-			" AND   m_filename NOT LIKE 'https://%'";
+			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'https://%'";
 		$ARGS1 = [
 			'media_path_1' => $media_path,
 			'media_folder' => $media_folder,
@@ -119,20 +120,21 @@ case 'load_json':
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM  `##media`" .
+			" JOIN  `##media_file` USING (m_file, m_id)" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 			" WHERE setting_value = :media_folder" .
-			" AND   m_filename LIKE CONCAT(:media_path_3, '%')" .
-			" AND   m_filename NOT LIKE 'http://%'" .
-			" AND   m_filename NOT LIKE 'https://%'";
+			" AND   multimedia_file_refn LIKE CONCAT(:media_path_3, '%')" .
+			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'https://%'";
 		$ARGS2 = [
 			'media_folder' => $media_folder,
 			'media_path_3' => $media_path,
 		];
 
 		if ($subfolders == 'exclude') {
-			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+			$SELECT1 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
 			$ARGS1['media_path_4'] = Database::escapeLike($media_path);
-			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+			$SELECT2 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
 			$ARGS2['media_path_4'] = Database::escapeLike($media_path);
 		}
 
@@ -173,9 +175,13 @@ case 'load_json':
 		$data = [];
 		foreach ($rows as $row) {
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+			$media_files = $media->mediaFiles();
+			$media_files = array_map(function(MediaFile $media_file) {
+				return $media_file->displayImage(150, 150, '', []);
+			}, $media_files);
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
-				$media->displayImage(150, 150, '', []),
+				implode('', $media_files),
 				mediaObjectInfo($media),
 			];
 		}
@@ -187,7 +193,7 @@ case 'load_json':
 			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
 			" FROM  `##media_file` USING (m_id, m_file)" .
-			" WHERE (multimedia_file_refn LIKE 'http://%' OR m_filename LIKE 'https://%')" .
+			" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')" .
 			" AND   (multimedia_file_refn LIKE CONCAT('%', :search_1, '%') OR descriptive_title LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = [
 			'search_1' => Database::escapeLike($search),
@@ -197,7 +203,7 @@ case 'load_json':
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM  `##media`" .
-			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
+			" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')";
 		$ARGS2 = [];
 
 		$order = Filter::getArray('order');
@@ -289,7 +295,7 @@ case 'load_json':
 			if ($imgsize === false) {
 				$img = '-';
 			} else {
-				$url = route('unused-media-thumbnail', ['folder' => $media_folder, 'file' => $media_path . $unused_file]);
+				$url = route('unused-media-thumbnail', ['folder' => $media_folder, 'file' => $media_path . $unused_file, 'w' => 100, 'h' => 100]);
 				$img = '<img src="' . e($url) . '">';
 			}
 

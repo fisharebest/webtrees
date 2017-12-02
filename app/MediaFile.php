@@ -186,13 +186,6 @@ class MediaFile {
 	}
 
 	/**
-	 * Where is the file stored on disk?
-	 */
-	private function folder(): string {
-		return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
-	}
-
-	/**
 	 * Is the media file actually a URL?
 	 */
 	public function isExternal(): bool {
@@ -204,6 +197,13 @@ class MediaFile {
 	 */
 	public function isImage(): bool {
 		return in_array($this->extension(), ['jpeg', 'jpg', 'gif', 'png']);
+	}
+
+	/**
+	 * Where is the file stored on disk?
+	 */
+	public function folder(): string {
+		return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
 	}
 
 	/**
