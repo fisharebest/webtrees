@@ -185,32 +185,32 @@ if ($action === 'submit') {
 						<p class="card-text">
 							<?php
 							// Show file details
-							$mediatype = $media->getMediaType();
-	if ($mediatype) {
-		echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-	}
-	if ($media->isExternal()) {
-		echo GedcomTag::getLabelValue('URL', $media->getFilename());
-	} else {
-		if ($media->fileExists()) {
-			if ($details === '1') {
-				// @TODO media file
-				if (Auth::isEditor($WT_TREE)) {
-					echo GedcomTag::getLabelValue('FILE', $media->getFilename());
-				}
-				echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-				echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
-				$imgsize = $media->getImageAttributes();
-				if ($imgsize['WxH']) {
-					echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-				}
-			}
-		} else {
-			echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media->getFilename()), '</p>';
-		}
-	}
-	echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
-	echo FunctionsPrint::printFactNotes($media->getGedcom(), 1); ?>
+							$mediatype = $media_file->type();
+							if ($mediatype) {
+								echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+							}
+							if ($media_file->isExternal()) {
+								echo GedcomTag::getLabelValue('URL', $media_file->filename());
+							} else {
+								if ($media_file->fileExists()) {
+									if ($details === '1') {
+										// @TODO media file
+										if (Auth::isEditor($WT_TREE)) {
+											echo GedcomTag::getLabelValue('FILE', $media_file->filename());
+										}
+										echo GedcomTag::getLabelValue('FORM', $media_file->mimeType());
+										echo GedcomTag::getLabelValue('__FILE_SIZE__', $media_file->fileSizeKB());
+										$imgsize = $media_file->getImageAttributes();
+										if ($imgsize['WxH']) {
+											echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+										}
+									}
+								} else {
+									echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media_file->filename()), '</p>';
+								}
+							}
+							echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
+							echo FunctionsPrint::printFactNotes($media->getGedcom(), 1); ?>
 						</p>
 					</div>
 					<div class="card-footer">
