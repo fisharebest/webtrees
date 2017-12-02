@@ -12,7 +12,7 @@
 	<?php endif ?>
 
 	<figure class="text-center slide-show-figure">
-		<?= $media->displayImage(200, 200, '', ['class' => 'slide-show-image']) ?>
+		<?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image']) ?>
 		<figcaption class="slide-show-figcaption">
 			<a href="<?= $media->getHtmlUrl() ?>">
 				<b><?= $media->getFullName() ?></b>

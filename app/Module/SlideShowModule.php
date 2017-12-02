@@ -91,7 +91,8 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		while ($all_media) {
 			$n     = array_rand($all_media);
 			$media = Media::getInstance($all_media[$n], $WT_TREE);
-			if ($media->canShow() && !$media->isExternal()) {
+			$media_file = $media->firstImageFile();
+			if ($media->canShow() && $media !== null && !$media_file->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {
 					if (
@@ -112,6 +113,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$content = View::make('blocks/slide-show', [
 				'block_id'            => $block_id,
 				'media'               => $random_media,
+				'media_file'          => $media_file,
 				'show_controls'       => $controls,
 				'start_automatically' => $start,
 			]);
