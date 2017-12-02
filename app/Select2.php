@@ -166,7 +166,7 @@ class Select2 extends Html {
 
 		$flag_files = [];
 		foreach ($it as $file) {
-			$file_path = substr($file->getPathname() , strlen($directory));
+			$file_path = substr($file->getPathname(), strlen($directory));
 			if ($file->getExtension() === 'png' && stripos($file_path, $query) !== false) {
 				if ($offset > 0) {
 					// Skip results

@@ -1004,7 +1004,7 @@ echo Bootstrap4::breadcrumbs([
 						'0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
 						'1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last'),
 					], $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX'])),
-					Bootstrap4::select(FunctionsEdit::numericOptions(range(1,9)), $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'), ['name' => 'SHOW_PEDIGREE_PLACES'])
+					Bootstrap4::select(FunctionsEdit::numericOptions(range(1, 9)), $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'), ['name' => 'SHOW_PEDIGREE_PLACES'])
 				) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Abbreviate place names” configuration setting */ I18N::translate('Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.') ?>

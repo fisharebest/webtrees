@@ -2252,7 +2252,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		} catch (\Exception $ex) {
 		DebugBar::addThrowable($ex);
 		
-			FlashMessages::addMessage(I18N::translate('Location not removed: this location contains sub-locations'),'danger');
+			FlashMessages::addMessage(I18N::translate('Location not removed: this location contains sub-locations'), 'danger');
 		}
 
 		header('Location: module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $parent_id . '&inactive=' . $inactive);
@@ -3300,7 +3300,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php endif ?>
 						</td>
 						<td>
-							<?= FontAwesome::linkIcon('edit',  I18N::translate('Edit'), ['href' => 'module.php?mod=googlemap&mod_action=admin_place_edit&action=update&place_id=' . $place['place_id'] . '&parent_id=' . $place['parent_id'], 'class' => 'btn btn-primary']) ?>
+							<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['href' => 'module.php?mod=googlemap&mod_action=admin_place_edit&action=update&place_id=' . $place['place_id'] . '&parent_id=' . $place['parent_id'], 'class' => 'btn btn-primary']) ?>
 						</td>
 						<td>
 							<?php if ($noRows == 0): ?>
@@ -3309,7 +3309,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									<input type="hidden" name="place_id" value="<?= $place['place_id'] ?>">
 									<input type="hidden" name="inactive" value="<?= $inactive ?>">
 									<button type="submit" class="btn btn-danger">
-										<?= FontAwesome::semanticIcon('delete',  I18N::translate('Delete')) ?>
+										<?= FontAwesome::semanticIcon('delete', I18N::translate('Delete')) ?>
 									</button>
 								</form>
 							<?php else: ?>

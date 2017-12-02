@@ -532,7 +532,7 @@ $stats = new Stats($WT_TREE);
 							<?= I18N::translate('Select the desired age interval') ?>
 						</label>
 						<br>
-						<?= Bootstrap4::select(['1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)), '5,20,40,60,75,80,85,90' => I18N::plural('%s year', '%s years', 20, I18N::number(20)), '10,25,50,75,100' => I18N::plural('%s year', '%s years', 25, I18N::number(25)),],'1,5,10,20,30,40,50,60,70,80,90,100', ['id' => 'x-axis-boundaries-ages', 'name' => 'x-axis-boundaries-ages']) ?>
+						<?= Bootstrap4::select(['1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)), '5,20,40,60,75,80,85,90' => I18N::plural('%s year', '%s years', 20, I18N::number(20)), '10,25,50,75,100' => I18N::plural('%s year', '%s years', 25, I18N::number(25)), ], '1,5,10,20,30,40,50,60,70,80,90,100', ['id' => 'x-axis-boundaries-ages', 'name' => 'x-axis-boundaries-ages']) ?>
 					</div>
 
 					<div id="x_years_m" style="display:none;">
