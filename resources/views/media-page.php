@@ -66,7 +66,7 @@
 								<?= GedcomTag::getLabelValue('FILE', $media_file->filename()) ?>
 								<?php if ($media_file->fileExists()): ?>
 									<?php if ($media->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($media->getTree())): ?>
-									— <a href="<?= $media->imageUrl(0, 0, '') ?>">
+									— <a href="<?= $media_file->imageUrl(0, 0, '') ?>">
 											<?= I18N::translate('Download file') ?>
 										</a>
 									<?php endif ?>
