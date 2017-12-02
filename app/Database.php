@@ -123,17 +123,6 @@ class Database {
 	}
 
 	/**
-	 * Determine the number of queries executed, for the page statistics.
-	 *
-	 * @deprecated
-	 *
-	 * @return int
-	 */
-	public static function getQueryCount() {
-		return 0;
-	}
-
-	/**
 	 * Determine the most recently created value of an AUTO_INCREMENT field.
 	 *
 	 * @return string

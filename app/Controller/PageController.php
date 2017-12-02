@@ -112,11 +112,7 @@ class PageController extends BaseController {
 			//DebugBar::renderHead() .
 			//DebugBar::render() .
 			'</body>' .
-			'</html>' . PHP_EOL .
-			'<!-- webtrees: ' . WT_VERSION . ' -->' .
-			'<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
-			'<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
-			'<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
+			'</html>';
 	}
 
 	/**
