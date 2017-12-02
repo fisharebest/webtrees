@@ -121,11 +121,12 @@ tab.tab("show");
 
 $individual_media = [];
 foreach ($controller->record->getFacts() as $fact) {
-	$media = $fact->getTarget();
-	if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
-		$individual_media[] = $media;
+	$media_object = $fact->getTarget();
+	if ($media_object instanceof Media) {
+		$individual_media[] = $media_object->firstImageFile();
 	}
 }
+$individual_media = array_filter($individual_media);
 
 ?>
 
@@ -145,9 +146,9 @@ foreach ($controller->record->getFacts() as $fact) {
 				<?php else: ?>
 					<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
 						<div class="carousel-inner">
-							<?php foreach ($individual_media as $n => $media): ?>
+							<?php foreach ($individual_media as $n => $media_file): ?>
 								<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-									<?= $media->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+									<?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
 								</div>
 							<?php endforeach ?>
 						</div>

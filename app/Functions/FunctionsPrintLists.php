@@ -1208,7 +1208,11 @@ class FunctionsPrintLists {
 				}
 				$html .= '<tr' . $class . '>';
 				// Media object thumbnail
-				$html .= '<td>' . $media_object->displayImage(100, 100, 'contain', []) . '</td>';
+				$html .= '<td>';
+				foreach ($media_object as $media_file) {
+					$html .= $media_file->displayImage(100, 100, 'contain', []);
+				}
+				$html .= '</td>';
 				// Media object name(s)
 				$html .= '<td data-sort="' . Html::escape($media_object->getSortName()) . '">';
 				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';

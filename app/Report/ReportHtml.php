@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 
 /**
  * Class ReportHtml
@@ -388,18 +389,18 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Create an image.
 	 *
-	 * @param Media $mediaobject
-	 * @param $x
-	 * @param $y
-	 * @param $w
-	 * @param $h
-	 * @param $align
-	 * @param $ln
+	 * @param MediaFile $media_file
+	 * @param           $x
+	 * @param           $y
+	 * @param           $w
+	 * @param           $h
+	 * @param           $align
+	 * @param           $ln
 	 *
 	 * @return ReportHtmlImage
 	 */
-	public function createImageFromObject(Media $mediaobject, $x, $y, $w, $h, $align, $ln) {
-		return new ReportHtmlImage($mediaobject->imageUrl($w, $h, ''), $x, $y, $w, $h, $align, $ln);
+	public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln) {
+		return new ReportHtmlImage($media_file->imageUrl($w, $h, ''), $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**

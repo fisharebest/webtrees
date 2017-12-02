@@ -382,13 +382,17 @@ class Individual extends GedcomRecord {
 	/**
 	 * Find the highlighted media object for an individual
 	 *
-	 * @return null|Media
+	 * @return null|MediaFile
 	 */
-	public function findHighlightedMedia() {
+	public function findHighlightedMediaFile() {
 		foreach ($this->getFacts('OBJE') as $fact) {
 			$media = $fact->getTarget();
 			if ($media instanceof Media && $media->canShow() && !$media->isExternal()) {
-				return $media;
+				foreach ($media->mediaFiles() as $media_file) {
+					if ($media_file->isImage()) {
+						return $media_file;
+					}
+				}
 			}
 		}
 
@@ -407,16 +411,17 @@ class Individual extends GedcomRecord {
 	 * @return string
 	 */
 	public function displayImage($width, $height, $fit, $attributes) {
-		$media = $this->findHighlightedMedia();
-		if ($media !== null) {
-			// Image exists - use it.
-			return $media->displayImage($width, $height, $fit, $attributes);
-		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {
-			// No image exists - use an icon
-			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
-		} else {
-			return '';
+		$media_file = $this->findHighlightedMediaFile();
+
+		if ($media_file !== null) {
+			return $media_file->displayImage($width, $height, $fit, $attributes);
 		}
+
+		if ($this->tree->getPreference('USE_SILHOUETTE')) {
+			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
+		}
+
+		return '';
 	}
 
 	/**

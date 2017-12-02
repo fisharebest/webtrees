@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use Fisharebest\Webtrees\Functions\FunctionsMedia;
 use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\Exception\NotSupportedException;
@@ -25,6 +24,7 @@ use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureFactory;
 use League\Glide\Signatures\SignatureException;
+use Throwable;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -103,7 +103,7 @@ try {
 
 	FunctionsMedia::outputHttpStatusAsImage(500, 'Error');
 	Log::addMediaLog("Install php-gd or php-imagick to create thumbnails.\n" . $ex->getMessage());
-} catch (ErrorException $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	FunctionsMedia::outputHttpStatusAsImage(500, 'Error');
