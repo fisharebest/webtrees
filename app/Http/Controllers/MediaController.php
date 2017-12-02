@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use ErrorException;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Adapter\Local;
@@ -32,7 +33,6 @@ use League\Glide\Signatures\SignatureFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Controller for the media page and displaying images.
@@ -66,9 +66,7 @@ class MediaController extends BaseController {
 				if ($media_file->isExternal()) {
 					return new RedirectResponse($media_file->filename());
 				} else if ($media_file->isImage()) {
-					$folder  = $tree->getPreference('MEDIA_DIRECTORY');
-
-					return $this->generateImage($folder, $media_file->filename(), $request->query->all());
+					return $this->generateImage($media_file, $request->query->all());
 				} else {
 					return $this->fileExtensionAsImage($media_file->extension());
 				}
@@ -86,15 +84,20 @@ class MediaController extends BaseController {
 	 * @return Response
 	 */
 	public function unusedMediaThumbnail(Request $request): Response {
-		try {
-			return new StreamedResponse(function () use ($request) {
-				$folder = $request->get('folder');
-				$file   = $request->get('file');
-				$params = ['w' => 100, 'h' => 100];
-				$server = $this->glideServer($folder);
+		$folder = $request->get('folder');
+		$file   = $request->get('file');
 
-				$server->outputImage($file, $params);
-			});
+		try {
+			$server = $this->glideServer($folder);
+			$path   = $server->makeImage($file, $request->query->all());
+			$cache  = $server->getCache();
+
+			return new Response($cache->read($path), Response::HTTP_OK, [
+				'Content-Type'   => $cache->getMimeType($path),
+				'Content-Length' => $cache->getSize($path),
+				'Cache-Control'  => 'max-age=31536000, public',
+				'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s').' GMT',
+			]);
 		} catch (FileNotFoundException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
 		} catch (ErrorException $ex) {
@@ -105,24 +108,27 @@ class MediaController extends BaseController {
 	/**
 	 * Generate a thumbnail image for a file.
 	 *
-	 * @param string $folder
-	 * @param string $file
-	 * @param array  $params
+	 * @param MediaFile $media_file
+	 * @param array     $params
 	 *
 	 * @return Response
 	 */
-	private function generateImage($folder, $file, array $params): Response {
+	private function generateImage(MediaFile $media_file, array $params): Response {
 		try {
 			// Validate HTTP signature
 			$signature = $this->glideSignature();
 
 			$signature->validateRequest(parse_url(WT_BASE_URL . 'index.php', PHP_URL_PATH), $params);
 
-			return new StreamedResponse(function () use ($folder, $file, $params) {
-				$server = $this->glideServer($folder);
+			$server = $this->glideServer($media_file->folder());
+			$path   = $server->makeImage($media_file->filename(), $params);
 
-				$server->outputImage($file, $params);
-			});
+			return new Response($server->getCache()->read($path), Response::HTTP_OK, [
+				'Content-Type'   => $server->getCache()->getMimeType($path),
+				'Content-Length' => $server->getCache()->getSize($path),
+				'Cache-Control'  => 'max-age=31536000, public',
+				'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s').' GMT',
+			]);
 		} catch (SignatureException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_FORBIDDEN);
 		} catch (FileNotFoundException $ex) {
@@ -135,16 +141,16 @@ class MediaController extends BaseController {
 	/**
 	 * Create a glide server to generate files in the specified folder
 	 *
-	 * Caution: $folder may contain relative paths: ../../
+	 * Caution: $media_folder may contain relative paths: ../../
 	 *
-	 * @param string $folder
+	 * @param string $media_folder
 	 *
 	 * @return Server
 	 */
-	private function glideServer(string $folder): Server {
-		$cache_folder     = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($folder)));
+	private function glideServer(string $media_folder): Server {
+		$cache_folder     = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_folder)));
 		$driver           = $this->graphicsDriver();
-		$source_folder    = new Filesystem(new Local(WT_DATA_DIR . $folder));
+		$source_folder    = new Filesystem(new Local($media_folder));
 		$watermark_folder = new Filesystem(new Local( 'assets'));
 
 		return ServerFactory::create([
@@ -189,12 +195,13 @@ class MediaController extends BaseController {
 	 *
 	 * @param int $status HTTP status code
 	 *
-	 * @return StreamedResponse
+	 * @return Response
 	 */
 	private function httpStatusAsImage(int $status): Response {
 		$svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
 
-		return new Response($svg, $status, [
+		// We can't use the actual status code, as browser's won't show images with 4xx/5xx
+		return new Response($svg, Response::HTTP_OK, [
 			'Content-Type' => 'image/svg+xml'
 		]);
 	}
