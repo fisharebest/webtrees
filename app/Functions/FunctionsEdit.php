@@ -598,21 +598,21 @@ class FunctionsEdit {
 
 		$row_class = 'form-group row';
 		switch ($fact) {
-		case 'DATA':
-		case 'MAP':
-			// These GEDCOM tags should have no data, just child tags.
-			if ($value === '') {
-				$row_class .= ' d-none';
-			}
-			break;
-		case 'LATI':
-		case 'LONG':
-			// Indicate that this row is a child of a previous row, so we can expand/collapse them.
-			$row_class .= ' child_of_' . $previous_ids['PLAC'];
-			if ($value === '') {
-				$row_class .= ' collapse';
-			}
-			break;
+			case 'DATA':
+			case 'MAP':
+				// These GEDCOM tags should have no data, just child tags.
+				if ($value === '') {
+					$row_class .= ' d-none';
+				}
+				break;
+			case 'LATI':
+			case 'LONG':
+				// Indicate that this row is a child of a previous row, so we can expand/collapse them.
+				$row_class .= ' child_of_' . $previous_ids['PLAC'];
+				if ($value === '') {
+					$row_class .= ' collapse';
+				}
+				break;
 		}
 
 		$html = '';
@@ -634,16 +634,16 @@ class FunctionsEdit {
 		} else {
 			// Not all facts have help text.
 			switch ($fact) {
-			case 'NAME':
-				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
+				case 'NAME':
+					if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
+						$html .= FunctionsPrint::helpLink($fact);
+					}
+					break;
+				case 'ROMN':
+				case 'SURN':
+				case '_HEB':
 					$html .= FunctionsPrint::helpLink($fact);
-				}
-				break;
-			case 'ROMN':
-			case 'SURN':
-			case '_HEB':
-				$html .= FunctionsPrint::helpLink($fact);
-				break;
+					break;
 			}
 		}
 		// tag level
@@ -848,25 +848,25 @@ class FunctionsEdit {
 
 		// popup links
 		switch ($fact) {
-		case 'SOUR':
-			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-			if ($level === '1') {
-				$html .= '<br>';
-				switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
-				case '2': // records
-				$level1_checked = 'checked';
-				$level2_checked = '';
-				break;
-				case '1': // facts
-				$level1_checked = '';
-				$level2_checked = 'checked';
-				break;
-				case '0': // none
-				default:
-				$level1_checked = '';
-				$level2_checked = '';
-				break;
-				}
+			case 'SOUR':
+				//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
+				if ($level === '1') {
+					$html .= '<br>';
+					switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
+						case '2': // records
+						$level1_checked = 'checked';
+						$level2_checked = '';
+						break;
+						case '1': // facts
+						$level1_checked = '';
+						$level2_checked = 'checked';
+						break;
+						case '0': // none
+						default:
+						$level1_checked = '';
+						$level2_checked = '';
+						break;
+					}
 				if (strpos($bdm, 'B') !== false) {
 					$html .= ' <label><input type="checkbox" name="SOUR_INDI" ' . $level1_checked . ' value="1">' . I18N::translate('Individual') . '</label>';
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -923,29 +923,29 @@ class FunctionsEdit {
 
 		// Show more likely census details at the top of the list.
 		switch ($locale) {
-		case 'cs':
-			$census_places = [new CensusOfCzechRepublic];
-			break;
-		case 'en-AU':
-		case 'en-GB':
-			$census_places = [new CensusOfEngland, new CensusOfWales, new CensusOfScotland];
-			break;
-		case 'en-US':
-			$census_places = [new CensusOfUnitedStates];
-			break;
-		case 'fr':
-		case 'fr-CA':
-			$census_places = [new CensusOfFrance];
-			break;
-		case 'da':
-			$census_places = [new CensusOfDenmark];
-			break;
-		case 'de':
-			$census_places = [new CensusOfDeutschland];
-			break;
-		default:
-			$census_places = [];
-			break;
+			case 'cs':
+				$census_places = [new CensusOfCzechRepublic];
+				break;
+			case 'en-AU':
+			case 'en-GB':
+				$census_places = [new CensusOfEngland, new CensusOfWales, new CensusOfScotland];
+				break;
+			case 'en-US':
+				$census_places = [new CensusOfUnitedStates];
+				break;
+			case 'fr':
+			case 'fr-CA':
+				$census_places = [new CensusOfFrance];
+				break;
+			case 'da':
+				$census_places = [new CensusOfDenmark];
+				break;
+			case 'de':
+				$census_places = [new CensusOfDeutschland];
+				break;
+			default:
+				$census_places = [];
+				break;
 		}
 		foreach (Census::allCensusPlaces() as $census_place) {
 			if (!in_array($census_place, $census_places)) {
@@ -992,46 +992,46 @@ class FunctionsEdit {
 		global $WT_TREE;
 
 		switch ($tag) {
-		case 'SOUR':
-			echo View::make('cards/add-source-citation', [
-				'level'          => $level,
-				'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
-			]);
-			break;
+			case 'SOUR':
+				echo View::make('cards/add-source-citation', [
+					'level'          => $level,
+					'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
+				]);
+				break;
 
-		case 'ASSO':
-		case 'ASSO2':
-			echo View::make('cards/add-associate', [
-				'level' => $level,
-			]);
-			break;
-
-		case 'NOTE':
-			echo View::make('cards/add-note', [
-				'level' => $level,
-			]);
-			break;
-
-		case 'SHARED_NOTE':
-			echo View::make('cards/add-shared-note', [
-				'level'      => $level,
-				'parent_tag' => $parent_tag,
-			]);
-			break;
-
-		case 'OBJE':
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				echo View::make('cards/add-media-object', [
+			case 'ASSO':
+			case 'ASSO2':
+				echo View::make('cards/add-associate', [
 					'level' => $level,
 				]);
-			}
-			break;
+				break;
 
-		case 'RESN':
-			echo View::make('cards/add-restriction', [
-				'level' => $level,
-			]);
-			break;
+			case 'NOTE':
+				echo View::make('cards/add-note', [
+					'level' => $level,
+				]);
+				break;
+
+			case 'SHARED_NOTE':
+				echo View::make('cards/add-shared-note', [
+					'level'      => $level,
+					'parent_tag' => $parent_tag,
+				]);
+				break;
+
+			case 'OBJE':
+				if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
+					echo View::make('cards/add-media-object', [
+						'level' => $level,
+					]);
+				}
+				break;
+
+			case 'RESN':
+				echo View::make('cards/add-restriction', [
+					'level' => $level,
+				]);
+				break;
 		}
 	}
 
@@ -1107,12 +1107,12 @@ class FunctionsEdit {
 	 */
 	public static function addNewSex() {
 		switch (Filter::post('SEX', '[MF]', 'U')) {
-		case 'M':
-			return "\n1 SEX M";
-		case 'F':
-			return "\n1 SEX F";
-		default:
-			return "\n1 SEX U";
+			case 'M':
+				return "\n1 SEX M";
+			case 'F':
+				return "\n1 SEX F";
+			default:
+				return "\n1 SEX U";
 		}
 	}
 
@@ -1634,43 +1634,43 @@ class FunctionsEdit {
 				}
 				// Add level 3/4 tags as appropriate
 				switch ($key) {
-				case 'PLAC':
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
-						foreach ($match[1] as $tag) {
-							echo self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+					case 'PLAC':
+						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+							foreach ($match[1] as $tag) {
+								echo self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+							}
 						}
-					}
-					echo self::addSimpleTag('3 MAP');
-					echo self::addSimpleTag('4 LATI');
-					echo self::addSimpleTag('4 LONG');
-					break;
-				case 'FILE':
-					echo self::addSimpleTag('3 FORM');
-					break;
-				case 'EVEN':
-					echo self::addSimpleTag('3 DATE');
-					echo self::addSimpleTag('3 PLAC');
-					break;
-				case 'STAT':
-					if (GedcomCodeTemp::isTagLDS($level1tag)) {
-						echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
-					}
-					break;
-				case 'DATE':
-					// TIME is NOT a valid 5.5.1 tag
-					if (in_array($level1tag, Config::dateAndTime())) {
-						echo self::addSimpleTag('3 TIME');
-					}
-					break;
-				case 'HUSB':
-				case 'WIFE':
-					echo self::addSimpleTag('3 AGE');
-					break;
-				case 'FAMC':
-					if ($level1tag === 'ADOP') {
-						echo self::addSimpleTag('3 ADOP BOTH');
-					}
-					break;
+						echo self::addSimpleTag('3 MAP');
+						echo self::addSimpleTag('4 LATI');
+						echo self::addSimpleTag('4 LONG');
+						break;
+					case 'FILE':
+						echo self::addSimpleTag('3 FORM');
+						break;
+					case 'EVEN':
+						echo self::addSimpleTag('3 DATE');
+						echo self::addSimpleTag('3 PLAC');
+						break;
+					case 'STAT':
+						if (GedcomCodeTemp::isTagLDS($level1tag)) {
+							echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
+						}
+						break;
+					case 'DATE':
+						// TIME is NOT a valid 5.5.1 tag
+						if (in_array($level1tag, Config::dateAndTime())) {
+							echo self::addSimpleTag('3 TIME');
+						}
+						break;
+					case 'HUSB':
+					case 'WIFE':
+						echo self::addSimpleTag('3 AGE');
+						break;
+					case 'FAMC':
+						if ($level1tag === 'ADOP') {
+							echo self::addSimpleTag('3 ADOP BOTH');
+						}
+						break;
 				}
 			} elseif ($key === 'DATE' && $add_date) {
 				echo self::addSimpleTag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));

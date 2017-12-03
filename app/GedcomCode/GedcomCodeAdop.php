@@ -42,35 +42,35 @@ class GedcomCodeAdop {
 		}
 
 		switch ($type) {
-		case 'BOTH':
-			switch ($sex) {
-			case 'M':
-				return I18N::translateContext('MALE', 'Adopted by both parents');
-			case 'F':
-				return I18N::translateContext('FEMALE', 'Adopted by both parents');
+			case 'BOTH':
+				switch ($sex) {
+					case 'M':
+						return I18N::translateContext('MALE', 'Adopted by both parents');
+					case 'F':
+						return I18N::translateContext('FEMALE', 'Adopted by both parents');
+					default:
+						return I18N::translate('Adopted by both parents');
+				}
+			case 'HUSB':
+				switch ($sex) {
+					case 'M':
+						return I18N::translateContext('MALE', 'Adopted by father');
+					case 'F':
+						return I18N::translateContext('FEMALE', 'Adopted by father');
+					default:
+						return I18N::translate('Adopted by father');
+				}
+			case 'WIFE':
+				switch ($sex) {
+					case 'M':
+						return I18N::translateContext('MALE', 'Adopted by mother');
+					case 'F':
+						return I18N::translateContext('FEMALE', 'Adopted by mother');
+					default:
+						return I18N::translate('Adopted by mother');
+				}
 			default:
-				return I18N::translate('Adopted by both parents');
-			}
-		case 'HUSB':
-			switch ($sex) {
-			case 'M':
-				return I18N::translateContext('MALE', 'Adopted by father');
-			case 'F':
-				return I18N::translateContext('FEMALE', 'Adopted by father');
-			default:
-				return I18N::translate('Adopted by father');
-			}
-		case 'WIFE':
-			switch ($sex) {
-			case 'M':
-				return I18N::translateContext('MALE', 'Adopted by mother');
-			case 'F':
-				return I18N::translateContext('FEMALE', 'Adopted by mother');
-			default:
-				return I18N::translate('Adopted by mother');
-			}
-		default:
-			return $type;
+				return $type;
 		}
 	}
 

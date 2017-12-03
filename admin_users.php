@@ -41,108 +41,108 @@ $THEME_OPTIONS = ['' => I18N::translate('<default theme>')] + Theme::themeNames(
 
 // Form actions
 switch (Filter::post('action')) {
-case 'save':
-	if (Filter::checkCsrf()) {
-		$user_id        = Filter::postInteger('user_id');
-		$user           = User::find($user_id);
-		$username       = Filter::post('username');
-		$real_name      = Filter::post('real_name');
-		$email          = Filter::post('email');
-		$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
-		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
-		$theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
-		$language       = Filter::post('language');
-		$timezone       = Filter::post('timezone');
-		$contact_method = Filter::post('contact_method');
-		$comment        = Filter::post('comment');
-		$auto_accept    = Filter::postBool('auto_accept');
-		$canadmin       = Filter::postBool('canadmin');
-		$visible_online = Filter::postBool('visible_online');
-		$verified       = Filter::postBool('verified');
-		$approved       = Filter::postBool('approved');
+	case 'save':
+		if (Filter::checkCsrf()) {
+			$user_id        = Filter::postInteger('user_id');
+			$user           = User::find($user_id);
+			$username       = Filter::post('username');
+			$real_name      = Filter::post('real_name');
+			$email          = Filter::post('email');
+			$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
+			$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
+			$theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
+			$language       = Filter::post('language');
+			$timezone       = Filter::post('timezone');
+			$contact_method = Filter::post('contact_method');
+			$comment        = Filter::post('comment');
+			$auto_accept    = Filter::postBool('auto_accept');
+			$canadmin       = Filter::postBool('canadmin');
+			$visible_online = Filter::postBool('visible_online');
+			$verified       = Filter::postBool('verified');
+			$approved       = Filter::postBool('approved');
 
-		if ($user_id === 0) {
-			// Create a new user
-			if (User::findByUserName($username)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-			} elseif (User::findByEmail($email)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-			} elseif ($pass1 !== $pass2) {
-				FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
-			} else {
-				$user = User::create($username, $real_name, $email, $pass1);
-				$user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');
-				Log::addAuthenticationLog('User ->' . $username . '<- created');
-			}
-		} else {
-			$user = User::find($user_id);
-			if ($user && $username && $real_name) {
-				$user->setEmail($email);
-				$user->setUserName($username);
-				$user->setRealName($real_name);
-				if ($pass1 !== null && $pass1 === $pass2) {
-					$user->setPassword($pass1);
-				}
-			}
-		}
-
-		if ($user) {
-			// Approving for the first time? Send a confirmation email
-			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
-				I18N::init($user->getPreference('language'));
-
-				// Create a dummy user, so we can send messages from the tree.
-				$sender = new User(
-					(object) [
-						'user_id'   => null,
-						'user_name' => '',
-						'real_name' => $WT_TREE->getTitle(),
-						'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
-					]
-				);
-
-				Mail::send(
-					$sender,
-					$user,
-					$sender,
-					I18N::translate('Approval of account at %s', WT_BASE_URL),
-					View::make('emails/approve-user-text', ['user' => $user]),
-					View::make('emails/approve-user-html', ['user' => $user])
-				);
-			}
-
-			$user
-				->setPreference('theme', $theme)
-				->setPreference('language', $language)
-				->setPreference('TIMEZONE', $timezone)
-				->setPreference('contactmethod', $contact_method)
-				->setPreference('comment', $comment)
-				->setPreference('auto_accept', $auto_accept ? '1' : '0')
-				->setPreference('visibleonline', $visible_online ? '1' : '0')
-				->setPreference('verified', $verified ? '1' : '0')
-				->setPreference('verified_by_admin', $approved ? '1' : '0');
-
-			// We cannot change our own admin status. Another admin will need to do it.
-			if ($user->getUserId() !== Auth::id()) {
-				$user->setPreference('canadmin', $canadmin ? '1' : '0');
-			}
-
-			foreach (Tree::getAll() as $tree) {
-				$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
-				if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
-					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
+			if ($user_id === 0) {
+				// Create a new user
+				if (User::findByUserName($username)) {
+					FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+				} elseif (User::findByEmail($email)) {
+					FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+				} elseif ($pass1 !== $pass2) {
+					FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
 				} else {
-					// Do not allow a path length to be set if the individual ID is not
-					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
+					$user = User::create($username, $real_name, $email, $pass1);
+					$user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');
+					Log::addAuthenticationLog('User ->' . $username . '<- created');
+				}
+			} else {
+				$user = User::find($user_id);
+				if ($user && $username && $real_name) {
+					$user->setEmail($email);
+					$user->setUserName($username);
+					$user->setRealName($real_name);
+					if ($pass1 !== null && $pass1 === $pass2) {
+						$user->setPassword($pass1);
+					}
+				}
+			}
+
+			if ($user) {
+				// Approving for the first time? Send a confirmation email
+				if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
+					I18N::init($user->getPreference('language'));
+
+					// Create a dummy user, so we can send messages from the tree.
+					$sender = new User(
+						(object) [
+							'user_id'   => null,
+							'user_name' => '',
+							'real_name' => $WT_TREE->getTitle(),
+							'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+						]
+					);
+
+					Mail::send(
+						$sender,
+						$user,
+						$sender,
+						I18N::translate('Approval of account at %s', WT_BASE_URL),
+						View::make('emails/approve-user-text', ['user' => $user]),
+						View::make('emails/approve-user-html', ['user' => $user])
+					);
+				}
+
+				$user
+					->setPreference('theme', $theme)
+					->setPreference('language', $language)
+					->setPreference('TIMEZONE', $timezone)
+					->setPreference('contactmethod', $contact_method)
+					->setPreference('comment', $comment)
+					->setPreference('auto_accept', $auto_accept ? '1' : '0')
+					->setPreference('visibleonline', $visible_online ? '1' : '0')
+					->setPreference('verified', $verified ? '1' : '0')
+					->setPreference('verified_by_admin', $approved ? '1' : '0');
+
+				// We cannot change our own admin status. Another admin will need to do it.
+				if ($user->getUserId() !== Auth::id()) {
+					$user->setPreference('canadmin', $canadmin ? '1' : '0');
+				}
+
+				foreach (Tree::getAll() as $tree) {
+					$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
+					$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
+					if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
+						$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
+					} else {
+						// Do not allow a path length to be set if the individual ID is not
+						$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
+					}
 				}
 			}
 		}
-	}
 
-	header('Location: admin_users.php');
+		header('Location: admin_users.php');
 
-	return;
+		return;
 }
 
 switch (Filter::get('action')) {
@@ -182,12 +182,12 @@ case 'load_json':
 			// Datatables numbers columns 0, 1, 2
 			// MySQL numbers columns 1, 2, 3
 			switch ($value['dir']) {
-			case 'asc':
-				$sql_select .= (1 + $value['column']) . " ASC ";
-				break;
-			case 'desc':
-				$sql_select .= (1 + $value['column']) . " DESC ";
-				break;
+				case 'asc':
+					$sql_select .= (1 + $value['column']) . " ASC ";
+					break;
+				case 'desc':
+					$sql_select .= (1 + $value['column']) . " DESC ";
+					break;
 			}
 		}
 	} else {

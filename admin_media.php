@@ -88,104 +88,104 @@ if ($delete_file) {
 ////////////////////////////////////////////////////////////////////////////////
 
 switch ($action) {
-case 'load_json':
-	$search = Filter::get('search');
-	$search = $search['value'];
-	$start  = Filter::getInteger('start');
-	$length = Filter::getInteger('length');
+	case 'load_json':
+		$search = Filter::get('search');
+		$search = $search['value'];
+		$start  = Filter::getInteger('start');
+		$length = Filter::getInteger('length');
 
-	switch ($files) {
-	case 'local':
-		// Filtered rows
-		$SELECT1 =
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
-			" FROM  `##media`" .
-			" JOIN  `##media_file` USING (m_file, m_id)" .
-			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-			" JOIN  `##gedcom` USING (gedcom_id)" .
-			" WHERE setting_value = :media_folder" .
-			" AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
-			" AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
-			"  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
-			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
-			" AND   multimedia_file_refn NOT LIKE 'https://%'";
-		$ARGS1 = [
-			'media_path_1' => $media_path,
-			'media_folder' => $media_folder,
-			'media_path_2' => Database::escapeLike($media_path),
-			'search_1'     => Database::escapeLike($search),
-			'search_2'     => Database::escapeLike($search),
-		];
-		// Unfiltered rows
-		$SELECT2 =
-			"SELECT SQL_CACHE COUNT(*)" .
-			" FROM  `##media`" .
-			" JOIN  `##media_file` USING (m_file, m_id)" .
-			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-			" WHERE setting_value = :media_folder" .
-			" AND   multimedia_file_refn LIKE CONCAT(:media_path_3, '%')" .
-			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
-			" AND   multimedia_file_refn NOT LIKE 'https://%'";
-		$ARGS2 = [
-			'media_folder' => $media_folder,
-			'media_path_3' => $media_path,
-		];
+		switch ($files) {
+			case 'local':
+				// Filtered rows
+				$SELECT1 =
+					"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
+					" FROM  `##media`" .
+					" JOIN  `##media_file` USING (m_file, m_id)" .
+					" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+					" JOIN  `##gedcom` USING (gedcom_id)" .
+					" WHERE setting_value = :media_folder" .
+					" AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
+					" AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
+					"  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
+					" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+					" AND   multimedia_file_refn NOT LIKE 'https://%'";
+				$ARGS1 = [
+					'media_path_1' => $media_path,
+					'media_folder' => $media_folder,
+					'media_path_2' => Database::escapeLike($media_path),
+					'search_1'     => Database::escapeLike($search),
+					'search_2'     => Database::escapeLike($search),
+				];
+				// Unfiltered rows
+				$SELECT2 =
+					"SELECT SQL_CACHE COUNT(*)" .
+					" FROM  `##media`" .
+					" JOIN  `##media_file` USING (m_file, m_id)" .
+					" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+					" WHERE setting_value = :media_folder" .
+					" AND   multimedia_file_refn LIKE CONCAT(:media_path_3, '%')" .
+					" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+					" AND   multimedia_file_refn NOT LIKE 'https://%'";
+				$ARGS2 = [
+					'media_folder' => $media_folder,
+					'media_path_3' => $media_path,
+				];
 
-		if ($subfolders == 'exclude') {
-			$SELECT1 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS1['media_path_4'] = Database::escapeLike($media_path);
-			$SELECT2 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
-			$ARGS2['media_path_4'] = Database::escapeLike($media_path);
-		}
-
-		$order = Filter::getArray('order');
-		$SELECT1 .= " ORDER BY ";
-		if ($order) {
-			foreach ($order as $key => $value) {
-				if ($key > 0) {
-					$SELECT1 .= ',';
+				if ($subfolders == 'exclude') {
+					$SELECT1 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
+					$ARGS1['media_path_4'] = Database::escapeLike($media_path);
+					$SELECT2 .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
+					$ARGS2['media_path_4'] = Database::escapeLike($media_path);
 				}
-				// Datatables numbers columns 0, 1, 2
-				// MySQL numbers columns 1, 2, 3
-				switch ($value['dir']) {
-				case 'asc':
-					$SELECT1 .= ":col_" . $key . " ASC";
-					break;
-				case 'desc':
-					$SELECT1 .= ":col_" . $key . " DESC";
-					break;
+
+				$order = Filter::getArray('order');
+				$SELECT1 .= " ORDER BY ";
+				if ($order) {
+					foreach ($order as $key => $value) {
+						if ($key > 0) {
+							$SELECT1 .= ',';
+						}
+						// Datatables numbers columns 0, 1, 2
+						// MySQL numbers columns 1, 2, 3
+						switch ($value['dir']) {
+							case 'asc':
+								$SELECT1 .= ":col_" . $key . " ASC";
+								break;
+							case 'desc':
+								$SELECT1 .= ":col_" . $key . " DESC";
+								break;
+						}
+					$ARGS1['col_' . $key] = 1 + $value['column'];
 				}
-				$ARGS1['col_' . $key] = 1 + $value['column'];
+			} else {
+				$SELECT1 = " 1 ASC";
 			}
-		} else {
-			$SELECT1 = " 1 ASC";
-		}
 
-		if ($length > 0) {
-			$SELECT1 .= " LIMIT :length OFFSET :start";
-			$ARGS1['length'] = $length;
-			$ARGS1['start']  = $start;
-		}
+			if ($length > 0) {
+				$SELECT1 .= " LIMIT :length OFFSET :start";
+				$ARGS1['length'] = $length;
+				$ARGS1['start']  = $start;
+			}
 
-		$rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
-		// Total filtered/unfiltered rows
-		$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-		$recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
+			$rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
+			// Total filtered/unfiltered rows
+			$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+			$recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-		$data = [];
-		foreach ($rows as $row) {
-			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			$media_files = $media->mediaFiles();
-			$media_files = array_map(function(MediaFile $media_file) {
-				return $media_file->displayImage(150, 150, '', []);
-			}, $media_files);
-			$data[] = [
-				mediaFileInfo($media_folder, $media_path, $row->media_path),
-				implode('', $media_files),
-				mediaObjectInfo($media),
-			];
-		}
-		break;
+			$data = [];
+			foreach ($rows as $row) {
+				$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+				$media_files = $media->mediaFiles();
+				$media_files = array_map(function(MediaFile $media_file) {
+					return $media_file->displayImage(150, 150, '', []);
+				}, $media_files);
+				$data[] = [
+					mediaFileInfo($media_folder, $media_path, $row->media_path),
+					implode('', $media_files),
+					mediaObjectInfo($media),
+				];
+			}
+			break;
 
 	case 'external':
 		// Filtered rows
@@ -216,12 +216,12 @@ case 'load_json':
 				// Datatables numbers columns 0, 1, 2
 				// MySQL numbers columns 1, 2, 3
 				switch ($value['dir']) {
-				case 'asc':
-					$SELECT1 .= ":col_" . $key . " ASC";
-					break;
-				case 'desc':
-					$SELECT1 .= ":col_" . $key . " DESC";
-					break;
+					case 'asc':
+						$SELECT1 .= ":col_" . $key . " ASC";
+						break;
+					case 'desc':
+						$SELECT1 .= ":col_" . $key . " DESC";
+						break;
 				}
 				$ARGS1['col_' . $key] = 1 + $value['column'];
 			}

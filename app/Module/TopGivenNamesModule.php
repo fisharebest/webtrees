@@ -61,23 +61,23 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$stats = new Stats($WT_TREE);
 
 		switch ($infoStyle) {
-		case 'list':
-			$males   = $stats->commonGivenMaleTotals([1, $num, 'rcount']);
-			$females = $stats->commonGivenFemaleTotals([1, $num, 'rcount']);
-			$content = View::make('blocks/top-given-names-list', [
-				'males'   => $males,
-				'females' => $females,
-			]);
-			break;
-		default:
-		case 'table':
-			$males   = $stats->commonGivenMaleTable([1, $num, 'rcount']);
-			$females = $stats->commonGivenFemaleTable([1, $num, 'rcount']);
-			$content = View::make('blocks/top-given-names-table', [
-				'males'   => $males,
-				'females' => $females,
-			]);
-			break;
+			case 'list':
+				$males   = $stats->commonGivenMaleTotals([1, $num, 'rcount']);
+				$females = $stats->commonGivenFemaleTotals([1, $num, 'rcount']);
+				$content = View::make('blocks/top-given-names-list', [
+					'males'   => $males,
+					'females' => $females,
+				]);
+				break;
+			default:
+			case 'table':
+				$males   = $stats->commonGivenMaleTable([1, $num, 'rcount']);
+				$females = $stats->commonGivenFemaleTable([1, $num, 'rcount']);
+				$content = View::make('blocks/top-given-names-table', [
+					'males'   => $males,
+					'females' => $females,
+				]);
+				break;
 		}
 
 		if ($template) {

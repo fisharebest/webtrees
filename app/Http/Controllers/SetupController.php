@@ -103,25 +103,25 @@ class SetupController extends BaseController {
 		}
 
 		switch ($step) {
-		default:
-		case 1:
-			return $this->viewResponse('setup/step-1-language', $data);
-		case 2:
-			return $this->viewResponse('setup/step-2-server-checks', $data);
-		case 3:
-			return $this->viewResponse('setup/step-3-database-connection', $data);
-		case 4:
-			return $this->viewResponse('setup/step-4-database-name', $data);
-		case 5:
-			return $this->viewResponse('setup/step-5-administrator', $data);
-		case 6:
-			$error = $this->createConfigFile($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx'], $data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
+			default:
+			case 1:
+				return $this->viewResponse('setup/step-1-language', $data);
+			case 2:
+				return $this->viewResponse('setup/step-2-server-checks', $data);
+			case 3:
+				return $this->viewResponse('setup/step-3-database-connection', $data);
+			case 4:
+				return $this->viewResponse('setup/step-4-database-name', $data);
+			case 5:
+				return $this->viewResponse('setup/step-5-administrator', $data);
+			case 6:
+				$error = $this->createConfigFile($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx'], $data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
 
-			if ($error === '') {
-				return new RedirectResponse(Html::url('index.php', []));
-			} else {
-				return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
-			}
+				if ($error === '') {
+					return new RedirectResponse(Html::url('index.php', []));
+				} else {
+					return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
+				}
 		}
 	}
 
@@ -371,24 +371,24 @@ class SetupController extends BaseController {
 		$memory_limit = ini_get('memory_limit');
 
 		switch (substr($memory_limit, -1)) {
-		case 'k':
-		case 'K':
-			$memory_limit = substr($memory_limit, 0, -1) / 1024;
-			break;
-		case 'm':
-		case 'M':
-			$memory_limit = substr($memory_limit, 0, -1);
-			break;
-		case 'g':
-		case 'G':
-			$memory_limit = substr($memory_limit, 0, -1) * 1024;
-			break;
-		case 't':
-		case 'T':
-			$memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
-			break;
-		default:
-			$memory_limit = $memory_limit / 1024 / 1024;
+			case 'k':
+			case 'K':
+				$memory_limit = substr($memory_limit, 0, -1) / 1024;
+				break;
+			case 'm':
+			case 'M':
+				$memory_limit = substr($memory_limit, 0, -1);
+				break;
+			case 'g':
+			case 'G':
+				$memory_limit = substr($memory_limit, 0, -1) * 1024;
+				break;
+			case 't':
+			case 'T':
+				$memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
+				break;
+			default:
+				$memory_limit = $memory_limit / 1024 / 1024;
 		}
 
 		return (int) $memory_limit;

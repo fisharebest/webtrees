@@ -45,115 +45,115 @@ if (defined('GLOB_BRACE')) {
 }
 // Process POST actions
 switch (Filter::post('action')) {
-case 'delete':
-	$gedcom_id = Filter::postInteger('gedcom_id');
-	if (Filter::checkCsrf() && $gedcom_id) {
-		$tree = Tree::findById($gedcom_id);
-		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
-		$tree->delete();
-	}
-	header('Location: admin_trees_manage.php');
-
-	return;
-case 'setdefault':
-	if (Filter::checkCsrf()) {
-		Site::setPreference('DEFAULT_GEDCOM', Filter::post('ged'));
-		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $WT_TREE->getTitleHtml()), 'success');
-	}
-	header('Location: admin_trees_manage.php');
-
-	return;
-case 'new_tree':
-	$basename   = basename(Filter::post('tree_name'));
-	$tree_title = Filter::post('tree_title');
-
-	if (Filter::checkCsrf() && $basename && $tree_title) {
-		if (Tree::findByName($basename)) {
-			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Html::escape($basename)), 'danger');
-		} else {
-			Tree::create($basename, $tree_title);
-			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Html::escape($basename)), 'success');
+	case 'delete':
+		$gedcom_id = Filter::postInteger('gedcom_id');
+		if (Filter::checkCsrf() && $gedcom_id) {
+			$tree = Tree::findById($gedcom_id);
+			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
+			$tree->delete();
 		}
-	}
-	header('Location: admin_trees_manage.php?ged=' . rawurlencode($basename));
+		header('Location: admin_trees_manage.php');
 
-	return;
-case 'replace_upload':
-	$gedcom_id          = Filter::postInteger('gedcom_id');
-	$keep_media         = Filter::post('keep_media', '1', '0');
-	$GEDCOM_MEDIA_PATH  = Filter::post('GEDCOM_MEDIA_PATH');
-	$WORD_WRAPPED_NOTES = Filter::post('WORD_WRAPPED_NOTES', '1', '0');
-	$tree               = Tree::findById($gedcom_id);
+		return;
+	case 'setdefault':
+		if (Filter::checkCsrf()) {
+			Site::setPreference('DEFAULT_GEDCOM', Filter::post('ged'));
+			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $WT_TREE->getTitleHtml()), 'success');
+		}
+		header('Location: admin_trees_manage.php');
 
-	if (Filter::checkCsrf() && $tree) {
-		$tree->setPreference('keep_media', $keep_media);
-		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
-		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
-		if (isset($_FILES['tree_name'])) {
-			if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
-				$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
+		return;
+	case 'new_tree':
+		$basename   = basename(Filter::post('tree_name'));
+		$tree_title = Filter::post('tree_title');
+
+		if (Filter::checkCsrf() && $basename && $tree_title) {
+			if (Tree::findByName($basename)) {
+				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Html::escape($basename)), 'danger');
 			} else {
-				FlashMessages::addMessage(Functions::fileUploadErrorText($_FILES['tree_name']['error']), 'danger');
-			}
-		} else {
-			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-		}
-	}
-	header('Location: admin_trees_manage.php');
-
-	return;
-case 'replace_import':
-	$basename           = basename(Filter::post('tree_name'));
-	$gedcom_id          = Filter::postInteger('gedcom_id');
-	$keep_media         = Filter::post('keep_media', '1', '0');
-	$GEDCOM_MEDIA_PATH  = Filter::post('GEDCOM_MEDIA_PATH');
-	$WORD_WRAPPED_NOTES = Filter::post('WORD_WRAPPED_NOTES', '1', '0');
-	$tree               = Tree::findById($gedcom_id);
-
-	if (Filter::checkCsrf() && $tree) {
-		$tree->setPreference('keep_media', $keep_media);
-		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
-		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
-		if ($basename) {
-			$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename);
-		} else {
-			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-		}
-	}
-	header('Location: admin_trees_manage.php');
-
-	return;
-
-case 'synchronize':
-	if (Filter::checkCsrf()) {
-		$basenames = [];
-
-		foreach ($gedcom_files as $gedcom_file) {
-			$filemtime   = filemtime($gedcom_file); // Only import files that have changed
-			$basename    = basename($gedcom_file);
-			$basenames[] = $basename;
-
-			$tree = Tree::findByName($basename);
-			if (!$tree) {
-				$tree = Tree::create($basename, $basename);
-			}
-			if ($tree->getPreference('filemtime') != $filemtime) {
-				$tree->importGedcomFile($gedcom_file, $basename);
-				$tree->setPreference('filemtime', $filemtime);
-				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Html::escape($basename)), 'success');
+				Tree::create($basename, $tree_title);
+				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Html::escape($basename)), 'success');
 			}
 		}
+		header('Location: admin_trees_manage.php?ged=' . rawurlencode($basename));
 
-		foreach (Tree::getAll() as $tree) {
-			if (!in_array($tree->getName(), $basenames)) {
-				FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
-				$tree->delete();
+		return;
+	case 'replace_upload':
+		$gedcom_id          = Filter::postInteger('gedcom_id');
+		$keep_media         = Filter::post('keep_media', '1', '0');
+		$GEDCOM_MEDIA_PATH  = Filter::post('GEDCOM_MEDIA_PATH');
+		$WORD_WRAPPED_NOTES = Filter::post('WORD_WRAPPED_NOTES', '1', '0');
+		$tree               = Tree::findById($gedcom_id);
+
+		if (Filter::checkCsrf() && $tree) {
+			$tree->setPreference('keep_media', $keep_media);
+			$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
+			$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
+			if (isset($_FILES['tree_name'])) {
+				if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
+					$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
+				} else {
+					FlashMessages::addMessage(Functions::fileUploadErrorText($_FILES['tree_name']['error']), 'danger');
+				}
+			} else {
+				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
 			}
 		}
-	}
-	header('Location: admin_trees_manage.php');
+		header('Location: admin_trees_manage.php');
 
-	return;
+		return;
+	case 'replace_import':
+		$basename           = basename(Filter::post('tree_name'));
+		$gedcom_id          = Filter::postInteger('gedcom_id');
+		$keep_media         = Filter::post('keep_media', '1', '0');
+		$GEDCOM_MEDIA_PATH  = Filter::post('GEDCOM_MEDIA_PATH');
+		$WORD_WRAPPED_NOTES = Filter::post('WORD_WRAPPED_NOTES', '1', '0');
+		$tree               = Tree::findById($gedcom_id);
+
+		if (Filter::checkCsrf() && $tree) {
+			$tree->setPreference('keep_media', $keep_media);
+			$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
+			$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
+			if ($basename) {
+				$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename);
+			} else {
+				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
+			}
+		}
+		header('Location: admin_trees_manage.php');
+
+		return;
+
+	case 'synchronize':
+		if (Filter::checkCsrf()) {
+			$basenames = [];
+
+			foreach ($gedcom_files as $gedcom_file) {
+				$filemtime   = filemtime($gedcom_file); // Only import files that have changed
+				$basename    = basename($gedcom_file);
+				$basenames[] = $basename;
+
+				$tree = Tree::findByName($basename);
+				if (!$tree) {
+					$tree = Tree::create($basename, $basename);
+				}
+				if ($tree->getPreference('filemtime') != $filemtime) {
+					$tree->importGedcomFile($gedcom_file, $basename);
+					$tree->setPreference('filemtime', $filemtime);
+					FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Html::escape($basename)), 'success');
+				}
+			}
+
+			foreach (Tree::getAll() as $tree) {
+				if (!in_array($tree->getName(), $basenames)) {
+					FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
+					$tree->delete();
+				}
+			}
+		}
+		header('Location: admin_trees_manage.php');
+
+		return;
 }
 
 $default_tree_title  = /* I18N: Default name for a new tree */ I18N::translate('My family tree');
@@ -167,28 +167,28 @@ $default_tree_name .= $default_tree_number;
 
 // Process GET actions
 switch (Filter::get('action')) {
-case 'importform':
-	$controller
-		->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Import a GEDCOM file'))
-		->pageHeader();
+	case 'importform':
+		$controller
+			->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Import a GEDCOM file'))
+			->pageHeader();
 
-	echo Bootstrap4::breadcrumbs([
-		route('admin-control-panel')              => I18N::translate('Control panel'),
-		'admin_trees_manage.php' => I18N::translate('Manage family trees'),
-	], $controller->getPageTitle());
-	?>
+		echo Bootstrap4::breadcrumbs([
+			route('admin-control-panel')              => I18N::translate('Control panel'),
+			'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+		], $controller->getPageTitle());
+		?>
 
 	<h1><?= $controller->getPageTitle() ?></h1>
 	<?php
 
-	$tree = Tree::findById(Filter::getInteger('gedcom_id'));
-	// Check it exists
-	if (!$tree) {
-		break;
-	}
-	$gedcom_filename = $tree->getPreference('gedcom_filename')
-	?>
-	<p>
+		$tree = Tree::findById(Filter::getInteger('gedcom_id'));
+		// Check it exists
+		if (!$tree) {
+			break;
+		}
+		$gedcom_filename = $tree->getPreference('gedcom_filename')
+		?>
+		<p>
 		<?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', $tree->getTitleHtml()) ?>
 	</p>
 	<form class="form form-horizontal" name="gedcomimportform" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= Html::escape(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
@@ -222,35 +222,35 @@ case 'importform':
 							<div class="input-group">
 								<span class="input-group-addon">
 									<?= WT_DATA_DIR ?>
-								</span>
+									</span>
 								<?php
-								$d     = opendir(WT_DATA_DIR);
-								$files = [];
-								while (($f = readdir($d)) !== false) {
-									if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
-										$fp     = fopen(WT_DATA_DIR . $f, 'rb');
-										$header = fread($fp, 64);
-										fclose($fp);
-										if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
-											$files[] = $f;
+									$d     = opendir(WT_DATA_DIR);
+									$files = [];
+									while (($f = readdir($d)) !== false) {
+										if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
+											$fp     = fopen(WT_DATA_DIR . $f, 'rb');
+											$header = fread($fp, 64);
+											fclose($fp);
+											if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
+												$files[] = $f;
+											}
 										}
 									}
-								}
-								echo '<select name="tree_name" class="form-control" id="import-server-file">';
-								echo '<option value=""></option>';
-								sort($files);
-								foreach ($files as $gedcom_file) {
-									echo '<option value="', Html::escape($gedcom_file), '" ';
-									if ($gedcom_file === $gedcom_filename) {
-										echo ' selected';
+									echo '<select name="tree_name" class="form-control" id="import-server-file">';
+									echo '<option value=""></option>';
+									sort($files);
+									foreach ($files as $gedcom_file) {
+										echo '<option value="', Html::escape($gedcom_file), '" ';
+										if ($gedcom_file === $gedcom_filename) {
+											echo ' selected';
+										}
+										echo'>', Html::escape($gedcom_file), '</option>';
 									}
-									echo'>', Html::escape($gedcom_file), '</option>';
-								}
-								if (empty($files)) {
-									echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
-								}
-								echo '</select>';
-								?>
+									if (empty($files)) {
+										echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
+									}
+									echo '</select>';
+									?>
 							</div>
 						</div>
 					</div>
@@ -294,7 +294,7 @@ case 'importform':
 						>
 					<p class="small text-muted">
 						<?= /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed.') ?>
-						<?= /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>') ?>
+							<?= /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>') ?>
 					</p>
 				</div>
 			</div>
@@ -310,7 +310,7 @@ case 'importform':
 	</form>
 	<?php
 
-	return;
+		return;
 }
 
 if (!Tree::getAll()) {

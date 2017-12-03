@@ -54,14 +54,14 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'admin':
-			$this->admin();
-			break;
-		case 'generate':
-			$this->generate(Filter::get('file'));
-			break;
-		default:
-			http_response_code(404);
+			case 'admin':
+				$this->admin();
+				break;
+			case 'generate':
+				$this->generate(Filter::get('file'));
+				break;
+			default:
+				http_response_code(404);
 		}
 	}
 
@@ -162,86 +162,86 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			$data    = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
 			$records = [];
 			switch ($rec_type) {
-			case 'i':
-				$rows = Database::prepare(
-					"SELECT i_id AS xref, i_gedcom AS gedcom" .
-					" FROM `##individuals`" .
-					" WHERE i_file = :tree_id" .
-					" ORDER BY i_id" .
-					" LIMIT :limit OFFSET :offset"
-				)->execute([
-					'tree_id' => $ged_id,
-					'limit'   => self::RECORDS_PER_VOLUME,
-					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				])->fetchAll();
-				foreach ($rows as $row) {
-					$records[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
-				}
-				break;
-			case 's':
-				$rows = Database::prepare(
-					"SELECT s_id AS xref, s_gedcom AS gedcom" .
-					" FROM `##sources`" .
-					" WHERE s_file = :tree_id" .
-					" ORDER BY s_id" .
-					" LIMIT :limit OFFSET :offset"
-				)->execute([
-					'tree_id' => $ged_id,
-					'limit'   => self::RECORDS_PER_VOLUME,
-					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				])->fetchAll();
-				foreach ($rows as $row) {
-					$records[] = Source::getInstance($row->xref, $tree, $row->gedcom);
-				}
-				break;
-			case 'r':
-				$rows = Database::prepare(
-					"SELECT o_id AS xref, o_gedcom AS gedcom" .
-					" FROM `##other`" .
-					" WHERE o_file = :tree_id AND o_type = 'REPO'" .
-					" ORDER BY o_id" .
-					" LIMIT :limit OFFSET :offset"
-				)->execute([
-					'tree_id' => $ged_id,
-					'limit'   => self::RECORDS_PER_VOLUME,
-					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				])->fetchAll();
-				foreach ($rows as $row) {
-					$records[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
-				}
-				break;
-			case 'n':
-				$rows = Database::prepare(
-					"SELECT o_id AS xref, o_gedcom AS gedcom" .
-					" FROM `##other`" .
-					" WHERE o_file = :tree_id AND o_type = 'NOTE'" .
-					" ORDER BY o_id" .
-					" LIMIT :limit OFFSET :offset"
-				)->execute([
-					'tree_id' => $ged_id,
-					'limit'   => self::RECORDS_PER_VOLUME,
-					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				])->fetchAll();
-				foreach ($rows as $row) {
-					$records[] = Note::getInstance($row->xref, $tree, $row->gedcom);
-				}
-				break;
-			case 'm':
-				$rows = Database::prepare(
-					"SELECT m_id AS xref, m_gedcom AS gedcom" .
-					" FROM `##media`" .
-					" WHERE m_file = :tree_id" .
-					" ORDER BY m_id" .
-					" LIMIT :limit OFFSET :offset"
-				)->execute([
-					'tree_id' => $ged_id,
-					'limit'   => self::RECORDS_PER_VOLUME,
-					'offset'  => self::RECORDS_PER_VOLUME * $volume,
-				])->fetchAll();
-				foreach ($rows as $row) {
-					$records[] = Media::getInstance($row->xref, $tree, $row->gedcom);
-				}
-				break;
+				case 'i':
+					$rows = Database::prepare(
+						"SELECT i_id AS xref, i_gedcom AS gedcom" .
+						" FROM `##individuals`" .
+						" WHERE i_file = :tree_id" .
+						" ORDER BY i_id" .
+						" LIMIT :limit OFFSET :offset"
+					)->execute([
+						'tree_id' => $ged_id,
+						'limit'   => self::RECORDS_PER_VOLUME,
+						'offset'  => self::RECORDS_PER_VOLUME * $volume,
+					])->fetchAll();
+					foreach ($rows as $row) {
+						$records[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
+					}
+					break;
+				case 's':
+					$rows = Database::prepare(
+						"SELECT s_id AS xref, s_gedcom AS gedcom" .
+						" FROM `##sources`" .
+						" WHERE s_file = :tree_id" .
+						" ORDER BY s_id" .
+						" LIMIT :limit OFFSET :offset"
+					)->execute([
+						'tree_id' => $ged_id,
+						'limit'   => self::RECORDS_PER_VOLUME,
+						'offset'  => self::RECORDS_PER_VOLUME * $volume,
+					])->fetchAll();
+					foreach ($rows as $row) {
+						$records[] = Source::getInstance($row->xref, $tree, $row->gedcom);
+					}
+					break;
+				case 'r':
+					$rows = Database::prepare(
+						"SELECT o_id AS xref, o_gedcom AS gedcom" .
+						" FROM `##other`" .
+						" WHERE o_file = :tree_id AND o_type = 'REPO'" .
+						" ORDER BY o_id" .
+						" LIMIT :limit OFFSET :offset"
+					)->execute([
+						'tree_id' => $ged_id,
+						'limit'   => self::RECORDS_PER_VOLUME,
+						'offset'  => self::RECORDS_PER_VOLUME * $volume,
+					])->fetchAll();
+					foreach ($rows as $row) {
+						$records[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
+					}
+					break;
+				case 'n':
+					$rows = Database::prepare(
+						"SELECT o_id AS xref, o_gedcom AS gedcom" .
+						" FROM `##other`" .
+						" WHERE o_file = :tree_id AND o_type = 'NOTE'" .
+						" ORDER BY o_id" .
+						" LIMIT :limit OFFSET :offset"
+					)->execute([
+						'tree_id' => $ged_id,
+						'limit'   => self::RECORDS_PER_VOLUME,
+						'offset'  => self::RECORDS_PER_VOLUME * $volume,
+					])->fetchAll();
+					foreach ($rows as $row) {
+						$records[] = Note::getInstance($row->xref, $tree, $row->gedcom);
+					}
+					break;
+				case 'm':
+					$rows = Database::prepare(
+						"SELECT m_id AS xref, m_gedcom AS gedcom" .
+						" FROM `##media`" .
+						" WHERE m_file = :tree_id" .
+						" ORDER BY m_id" .
+						" LIMIT :limit OFFSET :offset"
+					)->execute([
+						'tree_id' => $ged_id,
+						'limit'   => self::RECORDS_PER_VOLUME,
+						'offset'  => self::RECORDS_PER_VOLUME * $volume,
+					])->fetchAll();
+					foreach ($rows as $row) {
+						$records[] = Media::getInstance($row->xref, $tree, $row->gedcom);
+					}
+					break;
 			}
 			foreach ($records as $record) {
 				if ($record->canShowName()) {

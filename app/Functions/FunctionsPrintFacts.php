@@ -63,34 +63,34 @@ class FunctionsPrintFacts {
 
 		// Some facts don't get printed here ...
 		switch ($fact->getTag()) {
-		case 'NOTE':
-			self::printMainNotes($fact, 1);
+			case 'NOTE':
+				self::printMainNotes($fact, 1);
 
-			return;
-		case 'SOUR':
-			self::printMainSources($fact, 1);
-
-			return;
-		case 'OBJE':
-			self::printMainMedia($fact, 1);
-
-			return;
-		case 'FAMC':
-		case 'FAMS':
-		case 'CHIL':
-		case 'HUSB':
-		case 'WIFE':
-			// These are internal links, not facts
-			return;
-		case '_WT_OBJE_SORT':
-			// These links are used internally to record the sort order.
-			return;
-		default:
-			// Hide unrecognized/custom tags?
-			if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
 				return;
-			}
-			break;
+			case 'SOUR':
+				self::printMainSources($fact, 1);
+
+				return;
+			case 'OBJE':
+				self::printMainMedia($fact, 1);
+
+				return;
+			case 'FAMC':
+			case 'FAMS':
+			case 'CHIL':
+			case 'HUSB':
+			case 'WIFE':
+				// These are internal links, not facts
+				return;
+			case '_WT_OBJE_SORT':
+				// These links are used internally to record the sort order.
+				return;
+			default:
+				// Hide unrecognized/custom tags?
+				if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
+					return;
+				}
+				break;
 		}
 
 		// Who is this fact about? Need it to translate fact label correctly
@@ -134,35 +134,35 @@ class FunctionsPrintFacts {
 		}
 
 		switch ($fact->getTag()) {
-		case 'EVEN':
-		case 'FACT':
-			if (GedcomTag::isTag($type)) {
-				// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
-				$label = GedcomTag::getLabel($type, $label_person);
-				$type  = ''; // Do not print this again
-			} elseif ($type) {
-				// We don't have a translation for $type - but a custom translation might exist.
-				$label = I18N::translate(Html::escape($type));
-				$type  = ''; // Do not print this again
-			} else {
-				// An unspecified fact/event
+			case 'EVEN':
+			case 'FACT':
+				if (GedcomTag::isTag($type)) {
+					// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
+					$label = GedcomTag::getLabel($type, $label_person);
+					$type  = ''; // Do not print this again
+				} elseif ($type) {
+					// We don't have a translation for $type - but a custom translation might exist.
+					$label = I18N::translate(Html::escape($type));
+					$type  = ''; // Do not print this again
+				} else {
+					// An unspecified fact/event
+					$label = $fact->getLabel();
+				}
+				break;
+			case 'MARR':
+				// This is a hack for a proprietory extension. Is it still used/needed?
+				$utype = strtoupper($type);
+				if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
+					$label = GedcomTag::getLabel('MARR_' . $utype, $label_person);
+					$type  = ''; // Do not print this again
+				} else {
+					$label = $fact->getLabel();
+				}
+				break;
+			default:
+				// Normal fact/event
 				$label = $fact->getLabel();
-			}
-			break;
-		case 'MARR':
-			// This is a hack for a proprietory extension. Is it still used/needed?
-			$utype = strtoupper($type);
-			if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
-				$label = GedcomTag::getLabel('MARR_' . $utype, $label_person);
-				$type  = ''; // Do not print this again
-			} else {
-				$label = $fact->getLabel();
-			}
-			break;
-		default:
-			// Normal fact/event
-			$label = $fact->getLabel();
-			break;
+				break;
 		}
 
 		echo '<tr class="', $styleadd, '">';
@@ -173,16 +173,16 @@ class FunctionsPrintFacts {
 		}
 
 		switch ($fact->getTag()) {
-		case '_BIRT_CHIL':
-			$children[$fact->getParent()->getXref()] = true;
-			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($children));
-			break;
-		case '_BIRT_GCHI':
-		case '_BIRT_GCH1':
-		case '_BIRT_GCH2':
-			$grandchildren[$fact->getParent()->getXref()] = true;
-			$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($grandchildren));
-			break;
+			case '_BIRT_CHIL':
+				$children[$fact->getParent()->getXref()] = true;
+				$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($children));
+				break;
+			case '_BIRT_GCHI':
+			case '_BIRT_GCH1':
+			case '_BIRT_GCH2':
+				$grandchildren[$fact->getParent()->getXref()] = true;
+				$label .= '<br>' . /* I18N: Abbreviation for "number %s" */ I18N::translate('#%s', count($grandchildren));
+				break;
 		}
 
 		if ($fact->getFactId() != 'histo' && $fact->canEdit()) {
@@ -217,87 +217,87 @@ class FunctionsPrintFacts {
 
 		// Print the value of this fact/event
 		switch ($fact->getTag()) {
-		case 'ADDR':
-			echo $fact->getValue();
-			break;
-		case 'AFN':
-			echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
-			break;
-		case 'ASSO':
-			// we handle this later, in format_asso_rela_record()
-			break;
-		case 'EMAIL':
-		case 'EMAI':
-		case '_EMAIL':
-			echo '<div class="field"><a href="mailto:', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
-			break;
-		case 'RESN':
-			echo '<div class="field">';
-			switch ($fact->getValue()) {
-			case 'none':
-			// Note: "1 RESN none" is not valid gedcom.
-			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
-			echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-			break;
-			case 'privacy':
-			echo '<i class="icon-class-none"></i> ', I18N::translate('Show to members');
-			break;
-			case 'confidential':
-			echo '<i class="icon-confidential-none"></i> ', I18N::translate('Show to managers');
-			break;
-			case 'locked':
-			echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
-			break;
-			default:
-			echo Html::escape($fact->getValue());
-			break;
-			}
+			case 'ADDR':
+				echo $fact->getValue();
+				break;
+			case 'AFN':
+				echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				break;
+			case 'ASSO':
+				// we handle this later, in format_asso_rela_record()
+				break;
+			case 'EMAIL':
+			case 'EMAI':
+			case '_EMAIL':
+				echo '<div class="field"><a href="mailto:', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				break;
+			case 'RESN':
+				echo '<div class="field">';
+				switch ($fact->getValue()) {
+					case 'none':
+					// Note: "1 RESN none" is not valid gedcom.
+					// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
+					echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
+					break;
+					case 'privacy':
+					echo '<i class="icon-class-none"></i> ', I18N::translate('Show to members');
+					break;
+					case 'confidential':
+					echo '<i class="icon-confidential-none"></i> ', I18N::translate('Show to managers');
+					break;
+					case 'locked':
+					echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
+					break;
+					default:
+					echo Html::escape($fact->getValue());
+					break;
+				}
 				echo '</div>';
 				break;
-		case 'PUBL': // Publication details might contain URLs.
-			echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
-			break;
-		case 'REPO':
-			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-				self::printRepositoryRecord($match[1]);
-			} else {
-				echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
-			}
-			break;
-		case 'URL':
-		case '_URL':
-		case 'WWW':
-			echo '<div class="field"><a href="', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
-			break;
-		case 'TEXT': // 0 SOUR / 1 TEXT
-			echo '<div class="field">', nl2br(Html::escape($fact->getValue()), false), '</div>';
-			break;
-		default:
-			// Display the value for all other facts/events
-			switch ($fact->getValue()) {
-			case '':
-			// Nothing to display
-			break;
-			case 'N':
-			// Not valid GEDCOM
-			echo '<div class="field">', I18N::translate('No'), '</div>';
-			break;
-			case 'Y':
-			// Do not display "Yes".
-			break;
-			default:
-			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-				$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
-				if ($target) {
-					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+			case 'PUBL': // Publication details might contain URLs.
+				echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
+				break;
+			case 'REPO':
+				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
+					self::printRepositoryRecord($match[1]);
 				} else {
 					echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
 				}
-			} else {
-				echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
-			}
-			break;
-			}
+				break;
+			case 'URL':
+			case '_URL':
+			case 'WWW':
+				echo '<div class="field"><a href="', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				break;
+			case 'TEXT': // 0 SOUR / 1 TEXT
+				echo '<div class="field">', nl2br(Html::escape($fact->getValue()), false), '</div>';
+				break;
+			default:
+				// Display the value for all other facts/events
+				switch ($fact->getValue()) {
+					case '':
+					// Nothing to display
+					break;
+					case 'N':
+					// Not valid GEDCOM
+					echo '<div class="field">', I18N::translate('No'), '</div>';
+					break;
+					case 'Y':
+					// Do not display "Yes".
+					break;
+					default:
+					if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
+						$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
+						if ($target) {
+							echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+						} else {
+							echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
+						}
+					} else {
+						echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
+					}
+					break;
+				}
 				break;
 		}
 
@@ -337,123 +337,123 @@ class FunctionsPrintFacts {
 		preg_match_all('/\n2 (' . WT_REGEX_TAG . ') (.+)/', $fact->getGedcom(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			switch ($match[1]) {
-			case 'DATE':
-			case 'TIME':
-			case 'AGE':
-			case 'PLAC':
-			case 'ADDR':
-			case 'ALIA':
-			case 'ASSO':
-			case '_ASSO':
-			case 'DESC':
-			case 'RELA':
-			case 'STAT':
-			case 'TEMP':
-			case 'TYPE':
-			case 'FAMS':
-			case 'CONT':
-				// These were already shown at the beginning
-				break;
-			case 'NOTE':
-			case 'OBJE':
-			case 'SOUR':
-				// These will be shown at the end
-				break;
-			case '_UID':
-			case 'RIN':
-				// These don't belong at level 2, so do not display them.
-				// They are only shown when editing.
-				break;
-			case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN / 3 DATE / 3 PLAC
-				$events = [];
-				foreach (preg_split('/ *, */', $match[2]) as $event) {
-					$events[] = GedcomTag::getLabel($event);
-				}
-				if (count($events) == 1) {
-					echo GedcomTag::getLabelValue('EVEN', $event);
-				} else {
-					echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
-				}
-				if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
-					$date = new Date($date_match[1]);
-					echo GedcomTag::getLabelValue('DATE', $date->display());
-				}
-				if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcom(), $plac_match)) {
-					echo GedcomTag::getLabelValue('PLAC', $plac_match[1]);
-				}
-				break;
-			case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-				$family = Family::getInstance(str_replace('@', '', $match[2]), $fact->getParent()->getTree());
-				if ($family) {
-					echo GedcomTag::getLabelValue('FAM', '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>');
-					if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
-						echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($match[1], $label_person));
-					}
-				} else {
-					echo GedcomTag::getLabelValue('FAM', '<span class="error">' . $match[2] . '</span>');
-				}
-				break;
-			case '_WT_USER':
-				$user = User::findByIdentifier($match[2]); // may not exist
-				if ($user) {
-					echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
-				} else {
-					echo GedcomTag::getLabelValue('_WT_USER', Html::escape($match[2]));
-				}
-				break;
-			case 'RESN':
-				switch ($match[2]) {
-				case 'none':
-				// Note: "2 RESN none" is not valid gedcom.
-				// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-				echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'));
-				break;
-				case 'privacy':
-				echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'));
-				break;
-				case 'confidential':
-				echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'));
-				break;
-				case 'locked':
-				echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'));
-				break;
-				default:
-				echo GedcomTag::getLabelValue('RESN', Html::escape($match[2]));
-				break;
-				}
+				case 'DATE':
+				case 'TIME':
+				case 'AGE':
+				case 'PLAC':
+				case 'ADDR':
+				case 'ALIA':
+				case 'ASSO':
+				case '_ASSO':
+				case 'DESC':
+				case 'RELA':
+				case 'STAT':
+				case 'TEMP':
+				case 'TYPE':
+				case 'FAMS':
+				case 'CONT':
+					// These were already shown at the beginning
 					break;
-			case 'CALN':
-				echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $record->getTree()));
-				break;
-			case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
-				echo GedcomTag::getLabelValue('FORM', $match[2]);
-				if (preg_match('/\n3 TYPE (.+)/', $fact->getGedcom(), $type_match)) {
-					echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($type_match[1]));
-				}
-				break;
-			case 'URL':
-			case '_URL':
-			case 'WWW':
-				$link = '<a href="' . Html::escape($match[2]) . '">' . Html::escape($match[2]) . '</a>';
-				echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
-				break;
-			default:
-				if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
-					if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
-						// Links
-						$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
-						if ($linked_record) {
-							$link = '<a href="' . $linked_record->getHtmlUrl() . '">' . $linked_record->getFullName() . '</a>';
-							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
-						} else {
-							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+				case 'NOTE':
+				case 'OBJE':
+				case 'SOUR':
+					// These will be shown at the end
+					break;
+				case '_UID':
+				case 'RIN':
+					// These don't belong at level 2, so do not display them.
+					// They are only shown when editing.
+					break;
+				case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN / 3 DATE / 3 PLAC
+					$events = [];
+					foreach (preg_split('/ *, */', $match[2]) as $event) {
+						$events[] = GedcomTag::getLabel($event);
+					}
+					if (count($events) == 1) {
+						echo GedcomTag::getLabelValue('EVEN', $event);
+					} else {
+						echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
+					}
+					if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
+						$date = new Date($date_match[1]);
+						echo GedcomTag::getLabelValue('DATE', $date->display());
+					}
+					if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcom(), $plac_match)) {
+						echo GedcomTag::getLabelValue('PLAC', $plac_match[1]);
+					}
+					break;
+				case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
+					$family = Family::getInstance(str_replace('@', '', $match[2]), $fact->getParent()->getTree());
+					if ($family) {
+						echo GedcomTag::getLabelValue('FAM', '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>');
+						if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
+							echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($match[1], $label_person));
 						}
 					} else {
-						// Non links
-						echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+						echo GedcomTag::getLabelValue('FAM', '<span class="error">' . $match[2] . '</span>');
 					}
-				}
-				break;
+					break;
+				case '_WT_USER':
+					$user = User::findByIdentifier($match[2]); // may not exist
+					if ($user) {
+						echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
+					} else {
+						echo GedcomTag::getLabelValue('_WT_USER', Html::escape($match[2]));
+					}
+					break;
+				case 'RESN':
+					switch ($match[2]) {
+						case 'none':
+						// Note: "2 RESN none" is not valid gedcom.
+						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+						echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'));
+						break;
+						case 'privacy':
+						echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'));
+						break;
+						case 'confidential':
+						echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'));
+						break;
+						case 'locked':
+						echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'));
+						break;
+						default:
+						echo GedcomTag::getLabelValue('RESN', Html::escape($match[2]));
+						break;
+					}
+					break;
+				case 'CALN':
+					echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $record->getTree()));
+					break;
+				case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
+					echo GedcomTag::getLabelValue('FORM', $match[2]);
+					if (preg_match('/\n3 TYPE (.+)/', $fact->getGedcom(), $type_match)) {
+						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($type_match[1]));
+					}
+					break;
+				case 'URL':
+				case '_URL':
+				case 'WWW':
+					$link = '<a href="' . Html::escape($match[2]) . '">' . Html::escape($match[2]) . '</a>';
+					echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
+					break;
+				default:
+					if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
+						if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
+							// Links
+							$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
+							if ($linked_record) {
+								$link = '<a href="' . $linked_record->getHtmlUrl() . '">' . $linked_record->getFullName() . '</a>';
+								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
+							} else {
+								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+							}
+						} else {
+							// Non links
+							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+						}
+					}
+					break;
 			}
 		}
 		echo self::printFactSources($fact->getGedcom(), 2);
@@ -800,23 +800,23 @@ class FunctionsPrintFacts {
 						foreach ($rmatches[1] as $rmatch) {
 							echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
 							switch ($rmatch) {
-							case 'none':
-								// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-								// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-								echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-								break;
-							case 'privacy':
-								echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
-								break;
-							case 'confidential':
-								echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
-								break;
-							case 'locked':
-								echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
-								break;
-							default:
-								echo $rmatch;
-								break;
+								case 'none':
+									// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+									// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+									echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
+									break;
+								case 'privacy':
+									echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
+									break;
+								case 'confidential':
+									echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
+									break;
+								case 'locked':
+									echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
+									break;
+								default:
+									echo $rmatch;
+									break;
 							}
 							echo '</span>';
 						}
@@ -1053,23 +1053,23 @@ class FunctionsPrintFacts {
 				foreach ($matches[1] as $match) {
 					echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
 					switch ($match) {
-					case 'none':
-						// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-						echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-						break;
-					case 'privacy':
-						echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
-						break;
-					case 'confidential':
-						echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
-						break;
-					case 'locked':
-						echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
-						break;
-					default:
-						echo $match;
-						break;
+						case 'none':
+							// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+							// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+							echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
+							break;
+						case 'privacy':
+							echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
+							break;
+						case 'confidential':
+							echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
+							break;
+						case 'locked':
+							echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
+							break;
+						default:
+							echo $match;
+							break;
 					}
 					echo '</span>';
 				}

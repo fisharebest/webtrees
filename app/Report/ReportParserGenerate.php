@@ -933,14 +933,14 @@ class ReportParserGenerate extends ReportParserBase {
 				$tags  = preg_split('/[: ]/', $tag);
 				$value = $this->getGedcomValue($tag, $level, $this->gedrec);
 				switch (end($tags)) {
-				case 'DATE':
-					$tmp   = new Date($value);
-					$value = $tmp->display();
-					break;
-				case 'PLAC':
-					$tmp   = new Place($value, $WT_TREE);
-					$value = $tmp->getShortName();
-					break;
+					case 'DATE':
+						$tmp   = new Date($value);
+						$value = $tmp->display();
+						break;
+					case 'PLAC':
+						$tmp   = new Place($value, $WT_TREE);
+						$value = $tmp->getShortName();
+						break;
 				}
 				if ($useBreak == '1') {
 					// Insert <br> when multiple dates exist.
@@ -1333,22 +1333,22 @@ class ReportParserGenerate extends ReportParserBase {
 		// Arithmetic functions
 		if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {
 			switch ($match[2]) {
-			case '+':
-				$t     = $match[1] + $match[3];
-				$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-				break;
-			case '-':
-				$t     = $match[1] - $match[3];
-				$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-				break;
-			case '*':
-				$t     = $match[1] * $match[3];
-				$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-				break;
-			case '/':
-				$t     = $match[1] / $match[3];
-				$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-				break;
+				case '+':
+					$t     = $match[1] + $match[3];
+					$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
+					break;
+				case '-':
+					$t     = $match[1] - $match[3];
+					$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
+					break;
+				case '*':
+					$t     = $match[1] * $match[3];
+					$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
+					break;
+				case '/':
+					$t     = $match[1] / $match[3];
+					$value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
+					break;
 			}
 		}
 		if (strpos($value, '@') !== false) {
@@ -1816,179 +1816,179 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 		// Some filters/sorts can be applied using SQL, while others require PHP
 		switch ($listname) {
-		case 'pending':
-			$rows = Database::prepare(
-				"SELECT xref, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" .
-				" FROM `##change`" . " WHERE (xref, change_id) IN (" .
-				"  SELECT xref, MAX(change_id)" .
-				"  FROM `##change`" .
-				"  WHERE status = 'pending' AND gedcom_id = :tree_id" .
-				"  GROUP BY xref" .
-				" )"
-			)->execute([
-				'tree_id' => $WT_TREE->getTreeId(),
-			])->fetchAll();
-			$this->list = [];
-			foreach ($rows as $row) {
-				$this->list[] = GedcomRecord::getInstance($row->xref, $WT_TREE, $row->gedcom);
-			}
-			break;
-		case 'individual':
-			$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
-			$sql_join     = "";
-			$sql_where    = " WHERE i_file = :tree_id";
-			$sql_order_by = "";
-			$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
-			foreach ($attrs as $attr => $value) {
-				if (strpos($attr, 'filter') === 0 && $value) {
-					$value = $this->substituteVars($value, false);
-					// Convert the various filters into SQL
-					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-						$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
-						$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
-						$sql_params[$attr . 'fact'] = $match[1];
-						$date                       = new Date($match[3]);
-						if ($match[2] == 'LTE') {
-							$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
-							$sql_params[$attr . 'date'] = $date->maximumJulianDay();
-						} else {
-							$sql_where .= " AND {$attr}.d_julianday1 >= :{$attr}date";
-							$sql_params[$attr . 'date'] = $date->minimumJulianDay();
-						}
-						if ($sortby == $match[1]) {
-							$sortby = "";
-							$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.d_julianday1";
-						}
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
-						// Do nothing, unless you have to
-						if ($match[1] != '' || $sortby == 'NAME') {
-							$sql_join .= " JOIN `##name` AS {$attr} ON (n_file=i_file AND n_id=i_id)";
-							// Search the DB only if there is any name supplied
-							if ($match[1] != '') {
-								$names = explode(' ', $match[1]);
-								foreach ($names as $n => $name) {
-									$sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
-									$sql_params[$attr . 'name' . $n] = $name;
+			case 'pending':
+				$rows = Database::prepare(
+					"SELECT xref, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" .
+					" FROM `##change`" . " WHERE (xref, change_id) IN (" .
+					"  SELECT xref, MAX(change_id)" .
+					"  FROM `##change`" .
+					"  WHERE status = 'pending' AND gedcom_id = :tree_id" .
+					"  GROUP BY xref" .
+					" )"
+				)->execute([
+					'tree_id' => $WT_TREE->getTreeId(),
+				])->fetchAll();
+				$this->list = [];
+				foreach ($rows as $row) {
+					$this->list[] = GedcomRecord::getInstance($row->xref, $WT_TREE, $row->gedcom);
+				}
+				break;
+			case 'individual':
+				$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
+				$sql_join     = "";
+				$sql_where    = " WHERE i_file = :tree_id";
+				$sql_order_by = "";
+				$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
+				foreach ($attrs as $attr => $value) {
+					if (strpos($attr, 'filter') === 0 && $value) {
+						$value = $this->substituteVars($value, false);
+						// Convert the various filters into SQL
+						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
+							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
+							$sql_params[$attr . 'fact'] = $match[1];
+							$date                       = new Date($match[3]);
+							if ($match[2] == 'LTE') {
+								$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
+								$sql_params[$attr . 'date'] = $date->maximumJulianDay();
+							} else {
+								$sql_where .= " AND {$attr}.d_julianday1 >= :{$attr}date";
+								$sql_params[$attr . 'date'] = $date->minimumJulianDay();
+							}
+							if ($sortby == $match[1]) {
+								$sortby = "";
+								$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.d_julianday1";
+							}
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
+							// Do nothing, unless you have to
+							if ($match[1] != '' || $sortby == 'NAME') {
+								$sql_join .= " JOIN `##name` AS {$attr} ON (n_file=i_file AND n_id=i_id)";
+								// Search the DB only if there is any name supplied
+								if ($match[1] != '') {
+									$names = explode(' ', $match[1]);
+									foreach ($names as $n => $name) {
+										$sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
+										$sql_params[$attr . 'name' . $n] = $name;
+									}
+								}
+								// Let the DB do the name sorting even when no name was entered
+								if ($sortby == 'NAME') {
+									$sortby = '';
+									$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
 								}
 							}
-							// Let the DB do the name sorting even when no name was entered
-							if ($sortby == 'NAME') {
-								$sortby = '';
-								$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
-							}
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+							$sql_where .= " AND i_gedcom REGEXP :{$attr}gedcom";
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+							$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file = i_file)";
+							$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file = {$attr}b.pl_file AND {$attr}b.pl_p_id = {$attr}a.p_id AND {$attr}b.pl_gid = i_id)";
+							$sql_where .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
+							$sql_params[$attr . 'place'] = $match[1];
+							// Don't unset this filter. This is just initial filtering
+						} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+							$sql_where .= " AND i_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
+							$sql_params[$attr . 'contains1'] = $match[1];
+							$sql_params[$attr . 'contains2'] = $match[2];
+							$sql_params[$attr . 'contains3'] = $match[3];
+							// Don't unset this filter. This is just initial filtering
 						}
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
-						$sql_where .= " AND i_gedcom REGEXP :{$attr}gedcom";
-						// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
-						$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
-						$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file = i_file)";
-						$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file = {$attr}b.pl_file AND {$attr}b.pl_p_id = {$attr}a.p_id AND {$attr}b.pl_gid = i_id)";
-						$sql_where .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
-						$sql_params[$attr . 'place'] = $match[1];
-						// Don't unset this filter. This is just initial filtering
-					} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-						$sql_where .= " AND i_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
-						$sql_params[$attr . 'contains1'] = $match[1];
-						$sql_params[$attr . 'contains2'] = $match[2];
-						$sql_params[$attr . 'contains3'] = $match[3];
-						// Don't unset this filter. This is just initial filtering
 					}
 				}
-			}
 
-			$this->list = [];
-			$rows       = Database::prepare(
-				$sql_select . $sql_join . $sql_where . $sql_order_by
-			)->execute($sql_params)->fetchAll();
+				$this->list = [];
+				$rows       = Database::prepare(
+					$sql_select . $sql_join . $sql_where . $sql_order_by
+				)->execute($sql_params)->fetchAll();
 
-			foreach ($rows as $row) {
-				$this->list[$row->xref] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
-			}
-			break;
+				foreach ($rows as $row) {
+					$this->list[$row->xref] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+				}
+				break;
 
-		case 'family':
-			$sql_select   = "SELECT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
-			$sql_join     = "";
-			$sql_where    = " WHERE f_file = :tree_id";
-			$sql_order_by = "";
-			$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
-			foreach ($attrs as $attr => $value) {
-				if (strpos($attr, 'filter') === 0 && $value) {
-					$value = $this->substituteVars($value, false);
-					// Convert the various filters into SQL
-					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-						$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
-						$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
-						$sql_params[$attr . 'fact'] = $match[1];
-						$date                       = new Date($match[3]);
-						if ($match[2] == 'LTE') {
-							$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
-							$sql_params[$attr . 'date'] = $date->maximumJulianDay();
-						} else {
-							$sql_where .= " AND {$attr}.d_julianday1 >= :{$attr}date";
-							$sql_params[$attr . 'date'] = $date->minimumJulianDay();
-						}
-						if ($sortby == $match[1]) {
-							$sortby = '';
-							$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.d_julianday1";
-						}
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
-						$sql_where .= " AND f_gedcom REGEXP :{$attr}gedcom";
-						// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
-						$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-						// Do nothing, unless you have to
-						if ($match[1] != '' || $sortby == 'NAME') {
-							$sql_join .= " JOIN `##name` AS {$attr} ON n_file = f_file AND n_id IN (f_husb, f_wife)";
-							// Search the DB only if there is any name supplied
-							if ($match[1] != '') {
-								$names = explode(' ', $match[1]);
-								foreach ($names as $n => $name) {
-									$sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
-									$sql_params[$attr . 'name' . $n] = $name;
+			case 'family':
+				$sql_select   = "SELECT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
+				$sql_join     = "";
+				$sql_where    = " WHERE f_file = :tree_id";
+				$sql_order_by = "";
+				$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
+				foreach ($attrs as $attr => $value) {
+					if (strpos($attr, 'filter') === 0 && $value) {
+						$value = $this->substituteVars($value, false);
+						// Convert the various filters into SQL
+						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
+							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
+							$sql_params[$attr . 'fact'] = $match[1];
+							$date                       = new Date($match[3]);
+							if ($match[2] == 'LTE') {
+								$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
+								$sql_params[$attr . 'date'] = $date->maximumJulianDay();
+							} else {
+								$sql_where .= " AND {$attr}.d_julianday1 >= :{$attr}date";
+								$sql_params[$attr . 'date'] = $date->minimumJulianDay();
+							}
+							if ($sortby == $match[1]) {
+								$sortby = '';
+								$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.d_julianday1";
+							}
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+							$sql_where .= " AND f_gedcom REGEXP :{$attr}gedcom";
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
+							// Do nothing, unless you have to
+							if ($match[1] != '' || $sortby == 'NAME') {
+								$sql_join .= " JOIN `##name` AS {$attr} ON n_file = f_file AND n_id IN (f_husb, f_wife)";
+								// Search the DB only if there is any name supplied
+								if ($match[1] != '') {
+									$names = explode(' ', $match[1]);
+									foreach ($names as $n => $name) {
+										$sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
+										$sql_params[$attr . 'name' . $n] = $name;
+									}
+								}
+								// Let the DB do the name sorting even when no name was entered
+								if ($sortby == 'NAME') {
+									$sortby = '';
+									$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
 								}
 							}
-							// Let the DB do the name sorting even when no name was entered
-							if ($sortby == 'NAME') {
-								$sortby = '';
-								$sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
-							}
+							unset($attrs[$attr]); // This filter has been fully processed
+						} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+							$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=f_file)";
+							$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";
+							$sql_where .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
+							$sql_params[$attr . 'place'] = $match[1];
+							// Don't unset this filter. This is just initial filtering
+						} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+							$sql_where .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
+							$sql_params[$attr . 'contains1'] = $match[1];
+							$sql_params[$attr . 'contains2'] = $match[2];
+							$sql_params[$attr . 'contains3'] = $match[3];
+							// Don't unset this filter. This is just initial filtering
 						}
-						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
-						$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=f_file)";
-						$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";
-						$sql_where .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
-						$sql_params[$attr . 'place'] = $match[1];
-						// Don't unset this filter. This is just initial filtering
-					} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-						$sql_where .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
-						$sql_params[$attr . 'contains1'] = $match[1];
-						$sql_params[$attr . 'contains2'] = $match[2];
-						$sql_params[$attr . 'contains3'] = $match[3];
-						// Don't unset this filter. This is just initial filtering
 					}
 				}
-			}
 
-			$this->list = [];
-			$rows       = Database::prepare(
-				$sql_select . $sql_join . $sql_where . $sql_order_by
-			)->execute($sql_params)->fetchAll();
+				$this->list = [];
+				$rows       = Database::prepare(
+					$sql_select . $sql_join . $sql_where . $sql_order_by
+				)->execute($sql_params)->fetchAll();
 
-			foreach ($rows as $row) {
-				$this->list[$row->xref] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
-			}
-			break;
+				foreach ($rows as $row) {
+					$this->list[$row->xref] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
+				}
+				break;
 
-		default:
-			throw new \DomainException('Invalid list name: ' . $listname);
+			default:
+				throw new \DomainException('Invalid list name: ' . $listname);
 		}
 
 		$filters  = [];
@@ -2049,17 +2049,17 @@ class ReportParserGenerate extends ReportParserBase {
 								$searchstr = '1 ' . $tag;
 							}
 							switch ($expr) {
-							case 'CONTAINS':
-								if ($t == 'PLAC') {
-									$searchstr .= "[^\n]*[, ]*" . $val;
-								} else {
-									$searchstr .= "[^\n]*" . $val;
-								}
-								$filters[] = $searchstr;
-								break;
-							default:
-								$filters2[] = ['tag' => $tag, 'expr' => $expr, 'val' => $val];
-								break;
+								case 'CONTAINS':
+									if ($t == 'PLAC') {
+										$searchstr .= "[^\n]*[, ]*" . $val;
+									} else {
+										$searchstr .= "[^\n]*" . $val;
+									}
+									$filters[] = $searchstr;
+									break;
+								default:
+									$filters2[] = ['tag' => $tag, 'expr' => $expr, 'val' => $val];
+									break;
 							}
 						}
 					}
@@ -2103,31 +2103,31 @@ class ReportParserGenerate extends ReportParserBase {
 						}
 
 						switch ($expr) {
-						case 'GTE':
-							if ($t == 'DATE') {
-								$date1 = new Date($v);
-								$date2 = new Date($val);
-								$keep  = (Date::compare($date1, $date2) >= 0);
-							} elseif ($val >= $v) {
-								$keep = true;
-							}
-							break;
-						case 'LTE':
-							if ($t == 'DATE') {
-								$date1 = new Date($v);
-								$date2 = new Date($val);
-								$keep  = (Date::compare($date1, $date2) <= 0);
-							} elseif ($val >= $v) {
-								$keep = true;
-							}
-							break;
-						default:
-							if ($v == $val) {
-								$keep = true;
-							} else {
-								$keep = false;
-							}
-							break;
+							case 'GTE':
+								if ($t == 'DATE') {
+									$date1 = new Date($v);
+									$date2 = new Date($val);
+									$keep  = (Date::compare($date1, $date2) >= 0);
+								} elseif ($val >= $v) {
+									$keep = true;
+								}
+								break;
+							case 'LTE':
+								if ($t == 'DATE') {
+									$date1 = new Date($v);
+									$date2 = new Date($val);
+									$keep  = (Date::compare($date1, $date2) <= 0);
+								} elseif ($val >= $v) {
+									$keep = true;
+								}
+								break;
+							default:
+								if ($v == $val) {
+									$keep = true;
+								} else {
+									$keep = false;
+								}
+								break;
 						}
 					}
 				}
@@ -2139,26 +2139,26 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		switch ($sortby) {
-		case 'NAME':
-			uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			break;
-		case 'CHAN':
-			uasort($this->list, function (GedcomRecord $x, GedcomRecord $y) {
-				return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
-			});
-			break;
-		case 'BIRT:DATE':
-			uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
-			break;
-		case 'DEAT:DATE':
-			uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
-			break;
-		case 'MARR:DATE':
-			uasort($this->list, '\Fisharebest\Webtrees\Family::compareMarrDate');
-			break;
-		default:
-			// unsorted or already sorted by SQL
-			break;
+			case 'NAME':
+				uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+				break;
+			case 'CHAN':
+				uasort($this->list, function (GedcomRecord $x, GedcomRecord $y) {
+					return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
+				});
+				break;
+			case 'BIRT:DATE':
+				uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
+				break;
+			case 'DEAT:DATE':
+				uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
+				break;
+			case 'MARR:DATE':
+				uasort($this->list, '\Fisharebest\Webtrees\Family::compareMarrDate');
+				break;
+			default:
+				// unsorted or already sorted by SQL
+				break;
 		}
 
 		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
@@ -2309,88 +2309,88 @@ class ReportParserGenerate extends ReportParserBase {
 		if (!empty($person)) {
 			$this->list[$id] = $person;
 			switch ($group) {
-			case 'child-family':
-				foreach ($person->getChildFamilies() as $family) {
-					$husband = $family->getHusband();
-					$wife    = $family->getWife();
-					if (!empty($husband)) {
-						$this->list[$husband->getXref()] = $husband;
-					}
-					if (!empty($wife)) {
-						$this->list[$wife->getXref()] = $wife;
-					}
-					$children = $family->getChildren();
-					foreach ($children as $child) {
-						if (!empty($child)) {
-							$this->list[$child->getXref()] = $child;
+				case 'child-family':
+					foreach ($person->getChildFamilies() as $family) {
+						$husband = $family->getHusband();
+						$wife    = $family->getWife();
+						if (!empty($husband)) {
+							$this->list[$husband->getXref()] = $husband;
+						}
+						if (!empty($wife)) {
+							$this->list[$wife->getXref()] = $wife;
+						}
+						$children = $family->getChildren();
+						foreach ($children as $child) {
+							if (!empty($child)) {
+								$this->list[$child->getXref()] = $child;
+							}
 						}
 					}
-				}
-				break;
-			case 'spouse-family':
-				foreach ($person->getSpouseFamilies() as $family) {
-					$husband = $family->getHusband();
-					$wife    = $family->getWife();
-					if (!empty($husband)) {
-						$this->list[$husband->getXref()] = $husband;
-					}
-					if (!empty($wife)) {
-						$this->list[$wife->getXref()] = $wife;
-					}
-					$children = $family->getChildren();
-					foreach ($children as $child) {
-						if (!empty($child)) {
-							$this->list[$child->getXref()] = $child;
+					break;
+				case 'spouse-family':
+					foreach ($person->getSpouseFamilies() as $family) {
+						$husband = $family->getHusband();
+						$wife    = $family->getWife();
+						if (!empty($husband)) {
+							$this->list[$husband->getXref()] = $husband;
+						}
+						if (!empty($wife)) {
+							$this->list[$wife->getXref()] = $wife;
+						}
+						$children = $family->getChildren();
+						foreach ($children as $child) {
+							if (!empty($child)) {
+								$this->list[$child->getXref()] = $child;
+							}
 						}
 					}
-				}
-				break;
-			case 'direct-ancestors':
-				$this->addAncestors($this->list, $id, false, $maxgen);
-				break;
-			case 'ancestors':
-				$this->addAncestors($this->list, $id, true, $maxgen);
-				break;
-			case 'descendants':
-				$this->list[$id]->generation = 1;
-				$this->addDescendancy($this->list, $id, false, $maxgen);
-				break;
-			case 'all':
-				$this->addAncestors($this->list, $id, true, $maxgen);
-				$this->addDescendancy($this->list, $id, true, $maxgen);
-				break;
+					break;
+				case 'direct-ancestors':
+					$this->addAncestors($this->list, $id, false, $maxgen);
+					break;
+				case 'ancestors':
+					$this->addAncestors($this->list, $id, true, $maxgen);
+					break;
+				case 'descendants':
+					$this->list[$id]->generation = 1;
+					$this->addDescendancy($this->list, $id, false, $maxgen);
+					break;
+				case 'all':
+					$this->addAncestors($this->list, $id, true, $maxgen);
+					$this->addDescendancy($this->list, $id, true, $maxgen);
+					break;
 			}
 		}
 
 		switch ($sortby) {
-		case 'NAME':
-			uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			break;
-		case 'BIRT:DATE':
-			uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
-			break;
-		case 'DEAT:DATE':
-			uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
-			break;
-		case 'generation':
-			$newarray = [];
-			reset($this->list);
-			$genCounter = 1;
-			while (count($newarray) < count($this->list)) {
-				foreach ($this->list as $key => $value) {
-					$this->generation = $value->generation;
-					if ($this->generation == $genCounter) {
-						$newarray[$key]             = new \stdClass;
-						$newarray[$key]->generation = $this->generation;
+			case 'NAME':
+				uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+				break;
+			case 'BIRT:DATE':
+				uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
+				break;
+			case 'DEAT:DATE':
+				uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
+				break;
+			case 'generation':
+				$newarray = [];
+				reset($this->list);
+				$genCounter = 1;
+				while (count($newarray) < count($this->list)) {
+					foreach ($this->list as $key => $value) {
+						$this->generation = $value->generation;
+						if ($this->generation == $genCounter) {
+							$newarray[$key]             = new \stdClass;
+							$newarray[$key]->generation = $this->generation;
+						}
 					}
+					$genCounter++;
 				}
-				$genCounter++;
-			}
-			$this->list = $newarray;
-			break;
-		default:
-			// unsorted
-			break;
+				$this->list = $newarray;
+				break;
+			default:
+				// unsorted
+				break;
 		}
 		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
 		$this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;

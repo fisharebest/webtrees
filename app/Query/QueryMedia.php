@@ -107,17 +107,17 @@ class QueryMedia {
 
 		// Include / exclude subfolders (but always include external)
 		switch ($subfolders) {
-		case 'include':
-			$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
-			$args[] = Database::escapeLike($folder);
-			break;
-		case 'exclude':
-			$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
-			$args[] = Database::escapeLike($folder);
-			$args[] = Database::escapeLike($folder);
-			break;
-		default:
-			throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
+			case 'include':
+				$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
+				$args[] = Database::escapeLike($folder);
+				break;
+			case 'exclude':
+				$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
+				$args[] = Database::escapeLike($folder);
+				$args[] = Database::escapeLike($folder);
+				break;
+			default:
+				throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
 		}
 
 		// Apply search terms
@@ -133,14 +133,14 @@ class QueryMedia {
 		}
 
 		switch ($sort) {
-		case 'file':
-			$sql .= " ORDER BY multimedia_file_refn";
-			break;
-		case 'title':
-			$sql .= " ORDER BY descriptive_title";
-			break;
-		default:
-			throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');
+			case 'file':
+				$sql .= " ORDER BY multimedia_file_refn";
+				break;
+			case 'title':
+				$sql .= " ORDER BY descriptive_title";
+				break;
+			default:
+				throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');
 		}
 
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();

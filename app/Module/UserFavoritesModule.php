@@ -80,22 +80,22 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 		global $WT_TREE;
 
 		switch ($mod_action) {
-		case 'menu-add-favorite':
-			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
-			if (Auth::check() && $record->canShowName()) {
-				self::addFavorite([
-					'user_id'   => Auth::id(),
-					'gedcom_id' => $record->getTree()->getTreeId(),
-					'gid'       => $record->getXref(),
-					'type'      => $record::RECORD_TYPE,
-					'url'       => null,
-					'note'      => null,
-					'title'     => null,
-				]);
-				FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
-			}
-			break;
+			case 'menu-add-favorite':
+				// Process the "add to user favorites" menu item on indi/fam/etc. pages
+				$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
+				if (Auth::check() && $record->canShowName()) {
+					self::addFavorite([
+						'user_id'   => Auth::id(),
+						'gedcom_id' => $record->getTree()->getTreeId(),
+						'gid'       => $record->getXref(),
+						'type'      => $record::RECORD_TYPE,
+						'url'       => null,
+						'note'      => null,
+						'title'     => null,
+					]);
+					FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+				}
+				break;
 		}
 	}
 }

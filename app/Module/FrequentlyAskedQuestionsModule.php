@@ -49,41 +49,41 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'admin_config':
-			$this->config();
-			break;
-		case 'admin_delete':
-			if (Auth::isAdmin()) {
-				$this->delete();
-			}
-			header('Location: module.php?mod=faq&mod_action=admin_config');
-			break;
-		case 'admin_edit':
-			$this->edit();
-			break;
-		case 'admin_edit_save':
-			if (Auth::isAdmin()) {
-				$this->editSave();
-			}
-			header('Location: module.php?mod=faq&mod_action=admin_config');
-			break;
-		case 'admin_movedown':
-			if (Auth::isAdmin()) {
-				$this->movedown();
-			}
-			header('Location: module.php?mod=faq&mod_action=admin_config');
-			break;
-		case 'admin_moveup':
-			if (Auth::isAdmin()) {
-				$this->moveup();
-			}
-			header('Location: module.php?mod=faq&mod_action=admin_config');
-			break;
-		case 'show':
-			$this->show();
-			break;
-		default:
-			http_response_code(404);
+			case 'admin_config':
+				$this->config();
+				break;
+			case 'admin_delete':
+				if (Auth::isAdmin()) {
+					$this->delete();
+				}
+				header('Location: module.php?mod=faq&mod_action=admin_config');
+				break;
+			case 'admin_edit':
+				$this->edit();
+				break;
+			case 'admin_edit_save':
+				if (Auth::isAdmin()) {
+					$this->editSave();
+				}
+				header('Location: module.php?mod=faq&mod_action=admin_config');
+				break;
+			case 'admin_movedown':
+				if (Auth::isAdmin()) {
+					$this->movedown();
+				}
+				header('Location: module.php?mod=faq&mod_action=admin_config');
+				break;
+			case 'admin_moveup':
+				if (Auth::isAdmin()) {
+					$this->moveup();
+				}
+				header('Location: module.php?mod=faq&mod_action=admin_config');
+				break;
+			case 'show':
+				$this->show();
+				break;
+			default:
+				http_response_code(404);
 		}
 	}
 

@@ -35,85 +35,85 @@ class IndividualListController extends PageController {
 	 */
 	private function getAlphabetForLocale($locale) {
 		switch ($locale) {
-		case 'ar':
-			return [
-				'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی',
-			];
-		case 'cs':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			];
-		case 'da':
-		case 'nb':
-		case 'nn':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å',
-			];
-		case 'el':
-			return [
-				'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω',
-			];
-		case 'es':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			];
-		case 'et':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y',
-			];
-		case 'fi':
-		case 'sv':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö',
-			];
-		case 'he':
-			return [
-				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת',
-			];
-		case 'hu':
-			return [
-				'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS',
-			];
-		case 'lt':
-			return [
-				'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž',
-			];
-		case 'nl':
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ',
-			];
-		case 'pl':
-			return [
-				'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż',
-			];
-		case 'ro':
-			return [
-				'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			];
-		case 'ru':
-			return [
-				'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
-			];
-		case 'sk':
-			return [
-				'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž',
-			];
-		case 'sl':
-			return [
-				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
-			];
-		case 'sr':
-			return [
-				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
-			];
-		case 'tr':
-			return [
-				'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z',
-			];
-		default:
-			return [
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-			];
+			case 'ar':
+				return [
+					'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی',
+				];
+			case 'cs':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+				];
+			case 'da':
+			case 'nb':
+			case 'nn':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å',
+				];
+			case 'el':
+				return [
+					'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω',
+				];
+			case 'es':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+				];
+			case 'et':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y',
+				];
+			case 'fi':
+			case 'sv':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö',
+				];
+			case 'he':
+				return [
+					'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת',
+				];
+			case 'hu':
+				return [
+					'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS',
+				];
+			case 'lt':
+				return [
+					'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž',
+				];
+			case 'nl':
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ',
+				];
+			case 'pl':
+				return [
+					'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż',
+				];
+			case 'ro':
+				return [
+					'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z',
+				];
+			case 'ru':
+				return [
+					'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
+				];
+			case 'sk':
+				return [
+					'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž',
+				];
+			case 'sl':
+				return [
+					'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
+				];
+			case 'sr':
+				return [
+					'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
+				];
+			case 'tr':
+				return [
+					'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z',
+				];
+			default:
+				return [
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+				];
 		}
 	}
 
@@ -127,44 +127,44 @@ class IndividualListController extends PageController {
 	public function initialLetter($name) {
 		$name = I18N::strtoupper($name);
 		switch (WT_LOCALE) {
-		case 'cs':
-			if (substr($name, 0, 2) == 'CH') {
-				return 'CH';
-			}
-			break;
-		case 'da':
-		case 'nb':
-		case 'nn':
-			if (substr($name, 0, 2) == 'AA') {
-				return 'Å';
-			}
-			break;
-		case 'hu':
-			if (substr($name, 0, 2) == 'CS') {
-				return 'CS';
-			} elseif (substr($name, 0, 3) == 'DZS') {
-				return 'DZS';
-			} elseif (substr($name, 0, 2) == 'DZ') {
-				return 'DZ';
-			} elseif (substr($name, 0, 2) == 'GY') {
-				return 'GY';
-			} elseif (substr($name, 0, 2) == 'LY') {
-				return 'LY';
-			} elseif (substr($name, 0, 2) == 'NY') {
-				return 'NY';
-			} elseif (substr($name, 0, 2) == 'SZ') {
-				return 'SZ';
-			} elseif (substr($name, 0, 2) == 'TY') {
-				return 'TY';
-			} elseif (substr($name, 0, 2) == 'ZS') {
-				return 'ZS';
-			}
-			break;
-		case 'nl':
-			if (substr($name, 0, 2) == 'IJ') {
-				return 'IJ';
-			}
-			break;
+			case 'cs':
+				if (substr($name, 0, 2) == 'CH') {
+					return 'CH';
+				}
+				break;
+			case 'da':
+			case 'nb':
+			case 'nn':
+				if (substr($name, 0, 2) == 'AA') {
+					return 'Å';
+				}
+				break;
+			case 'hu':
+				if (substr($name, 0, 2) == 'CS') {
+					return 'CS';
+				} elseif (substr($name, 0, 3) == 'DZS') {
+					return 'DZS';
+				} elseif (substr($name, 0, 2) == 'DZ') {
+					return 'DZ';
+				} elseif (substr($name, 0, 2) == 'GY') {
+					return 'GY';
+				} elseif (substr($name, 0, 2) == 'LY') {
+					return 'LY';
+				} elseif (substr($name, 0, 2) == 'NY') {
+					return 'NY';
+				} elseif (substr($name, 0, 2) == 'SZ') {
+					return 'SZ';
+				} elseif (substr($name, 0, 2) == 'TY') {
+					return 'TY';
+				} elseif (substr($name, 0, 2) == 'ZS') {
+					return 'ZS';
+				}
+				break;
+			case 'nl':
+				if (substr($name, 0, 2) == 'IJ') {
+					return 'IJ';
+				}
+				break;
 		}
 		// No special rules - just take the first character
 		return mb_substr($name, 0, 1);
@@ -192,37 +192,37 @@ class IndividualListController extends PageController {
 	 */
 	private function getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
-		case 'cs':
-			switch ($letter) {
-			case 'C': return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . I18N::collation();
-			}
+			case 'cs':
+				switch ($letter) {
+					case 'C': return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . I18N::collation();
+				}
 			break;
-		case 'da':
-		case 'nb':
-		case 'nn':
-			switch ($letter) {
-				// AA gets listed under Å
-			case 'A': return $field . " LIKE 'A%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . I18N::collation();
-			case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . I18N::collation() . " OR " . $field . " LIKE 'AA%' COLLATE " . I18N::collation() . ")";
-			}
+			case 'da':
+			case 'nb':
+			case 'nn':
+				switch ($letter) {
+					// AA gets listed under Å
+					case 'A': return $field . " LIKE 'A%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . I18N::collation();
+					case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . I18N::collation() . " OR " . $field . " LIKE 'AA%' COLLATE " . I18N::collation() . ")";
+				}
 			break;
-		case 'hu':
-			switch ($letter) {
-			case 'C':  return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . I18N::collation();
-			case 'D':  return $field . " LIKE 'D%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . I18N::collation();
-			case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . I18N::collation();
-			case 'G':  return $field . " LIKE 'G%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . I18N::collation();
-			case 'L':  return $field . " LIKE 'L%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . I18N::collation();
-			case 'N':  return $field . " LIKE 'N%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . I18N::collation();
-			case 'S':  return $field . " LIKE 'S%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . I18N::collation();
-			case 'T':  return $field . " LIKE 'T%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . I18N::collation();
-			case 'Z':  return $field . " LIKE 'Z%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . I18N::collation();
-			}
+			case 'hu':
+				switch ($letter) {
+					case 'C':  return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . I18N::collation();
+					case 'D':  return $field . " LIKE 'D%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . I18N::collation();
+					case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . I18N::collation();
+					case 'G':  return $field . " LIKE 'G%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . I18N::collation();
+					case 'L':  return $field . " LIKE 'L%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . I18N::collation();
+					case 'N':  return $field . " LIKE 'N%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . I18N::collation();
+					case 'S':  return $field . " LIKE 'S%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . I18N::collation();
+					case 'T':  return $field . " LIKE 'T%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . I18N::collation();
+					case 'Z':  return $field . " LIKE 'Z%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . I18N::collation();
+				}
 			break;
-		case 'nl':
-			switch ($letter) {
-			case 'I': return $field . " LIKE 'I%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . I18N::collation();
-			}
+			case 'nl':
+				switch ($letter) {
+					case 'I': return $field . " LIKE 'I%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . I18N::collation();
+				}
 			break;
 		}
 
@@ -538,12 +538,12 @@ class IndividualListController extends PageController {
 	 */
 	public function givenNameInitial($initial) {
 		switch ($initial) {
-		case '@':
-			return I18N::translateContext('Unknown given name', '…');
-			break;
-		default:
-			return Html::escape($initial);
-			break;
+			case '@':
+				return I18N::translateContext('Unknown given name', '…');
+				break;
+			default:
+				return Html::escape($initial);
+				break;
 		}
 	}
 
@@ -556,15 +556,15 @@ class IndividualListController extends PageController {
 	 */
 	public function surnameInitial($initial) {
 		switch ($initial) {
-		case '@':
-			return I18N::translateContext('Unknown surname', '…');
-			break;
-		case ',':
-			return I18N::translate('None');
-			break;
-		default:
-			return Html::escape($initial);
-			break;
+			case '@':
+				return I18N::translateContext('Unknown surname', '…');
+				break;
+			case ',':
+				return I18N::translate('None');
+				break;
+			default:
+				return Html::escape($initial);
+				break;
 		}
 	}
 }

@@ -1395,37 +1395,37 @@ class FunctionsPrintLists {
 			$html[] = $subhtml;
 		}
 		switch ($style) {
-		case 1:
-			return '<ul><li>' . implode('</li><li>', $html) . '</li></ul>';
-		case 2:
-			return implode(I18N::$list_separator, $html);
-		case 3:
-			$i     = 0;
-			$count = count($html);
-			if ($count > 36) {
-				$col = 4;
-			} elseif ($count > 18) {
-				$col = 3;
-			} elseif ($count > 6) {
-				$col = 2;
-			} else {
-				$col = 1;
-			}
-			$newcol = ceil($count / $col);
-			$html2  = '<table class="list_table"><tr>';
-			$html2 .= '<td class="list_value" style="padding: 14px;">';
-
-			foreach ($html as $surns) {
-				$html2 .= $surns . '<br>';
-				$i++;
-				if ($i == $newcol && $i < $count) {
-					$html2 .= '</td><td class="list_value" style="padding: 14px;">';
-					$newcol = $i + ceil($count / $col);
+			case 1:
+				return '<ul><li>' . implode('</li><li>', $html) . '</li></ul>';
+			case 2:
+				return implode(I18N::$list_separator, $html);
+			case 3:
+				$i     = 0;
+				$count = count($html);
+				if ($count > 36) {
+					$col = 4;
+				} elseif ($count > 18) {
+					$col = 3;
+				} elseif ($count > 6) {
+					$col = 2;
+				} else {
+					$col = 1;
 				}
-			}
-			$html2 .= '</td></tr></table>';
+				$newcol = ceil($count / $col);
+				$html2  = '<table class="list_table"><tr>';
+				$html2 .= '<td class="list_value" style="padding: 14px;">';
 
-			return $html2;
+				foreach ($html as $surns) {
+					$html2 .= $surns . '<br>';
+					$i++;
+					if ($i == $newcol && $i < $count) {
+						$html2 .= '</td><td class="list_value" style="padding: 14px;">';
+						$newcol = $i + ceil($count / $col);
+					}
+				}
+				$html2 .= '</td></tr></table>';
+
+				return $html2;
 		}
 	}
 	/**
@@ -1602,14 +1602,14 @@ class FunctionsPrintLists {
 
 		// Now we've filtered the list, we can sort by event, if required
 		switch ($sort_by) {
-		case 'anniv':
-			// Data is already sorted by anniversary date
-			break;
-		case 'alpha':
-			uasort($filtered_events, function (Fact $x, Fact $y) {
-				return GedcomRecord::compare($x->getParent(), $y->getParent());
-			});
-			break;
+			case 'anniv':
+				// Data is already sorted by anniversary date
+				break;
+			case 'alpha':
+				uasort($filtered_events, function (Fact $x, Fact $y) {
+					return GedcomRecord::compare($x->getParent(), $y->getParent());
+				});
+				break;
 		}
 
 		foreach ($filtered_events as $fact) {

@@ -106,119 +106,119 @@ $CALENDAR_FORMATS = explode('_and_', $WT_TREE->getPreference('CALENDAR_FORMAT') 
 $relatives_events = explode(',', $WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'));
 
 switch (Filter::post('action')) {
-case 'general':
-	if (!Filter::checkCsrf()) {
-		break;
-	}
-
-	// Coming soon
-	if (Filter::postBool('all_trees')) {
-		FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
-	}
-	if (Filter::postBool('new_trees')) {
-		FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
-	}
-
-	$WT_TREE->setPreference('ADVANCED_NAME_FACTS', implode(',', Filter::postArray('ADVANCED_NAME_FACTS')));
-	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS', implode(',', Filter::postArray('ADVANCED_PLAC_FACTS')));
-	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', Filter::postBool('ALLOW_THEME_DROPDOWN'));
-	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
-	// e.g. "gregorian_and_jewish"
-	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
-		Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
-		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
-	])));
-	$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
-	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
-	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
-	$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
-	$WT_TREE->setPreference('EXPAND_SOURCES', Filter::postBool('EXPAND_SOURCES'));
-	$WT_TREE->setPreference('FAM_FACTS_ADD', implode(',', Filter::postArray('FAM_FACTS_ADD')));
-	$WT_TREE->setPreference('FAM_FACTS_QUICK', implode(',', Filter::postArray('FAM_FACTS_QUICK')));
-	$WT_TREE->setPreference('FAM_FACTS_UNIQUE', implode(',', Filter::postArray('FAM_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('FULL_SOURCES', Filter::postBool('FULL_SOURCES'));
-	$WT_TREE->setPreference('FORMAT_TEXT', Filter::post('FORMAT_TEXT'));
-	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH', Filter::post('GEDCOM_MEDIA_PATH'));
-	$WT_TREE->setPreference('GENERATE_UIDS', Filter::postBool('GENERATE_UIDS'));
-	$WT_TREE->setPreference('GEONAMES_ACCOUNT', Filter::post('GEONAMES_ACCOUNT'));
-	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS', Filter::postBool('HIDE_GEDCOM_ERRORS'));
-	$WT_TREE->setPreference('INDI_FACTS_ADD', implode(',', Filter::postArray('INDI_FACTS_ADD')));
-	$WT_TREE->setPreference('INDI_FACTS_QUICK', implode(',', Filter::postArray('INDI_FACTS_QUICK')));
-	$WT_TREE->setPreference('INDI_FACTS_UNIQUE', implode(',', Filter::postArray('INDI_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('LANGUAGE', Filter::post('LANGUAGE'));
-	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS', Filter::post('MAX_DESCENDANCY_GENERATIONS'));
-	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS', Filter::post('MAX_PEDIGREE_GENERATIONS'));
-	$WT_TREE->setPreference('MEDIA_UPLOAD', Filter::post('MEDIA_UPLOAD'));
-	$WT_TREE->setPreference('META_DESCRIPTION', Filter::post('META_DESCRIPTION'));
-	$WT_TREE->setPreference('META_TITLE', Filter::post('META_TITLE'));
-	$WT_TREE->setPreference('NO_UPDATE_CHAN', Filter::postBool('NO_UPDATE_CHAN'));
-	$WT_TREE->setPreference('PEDIGREE_LAYOUT', Filter::postBool('PEDIGREE_LAYOUT'));
-	$WT_TREE->setPreference('PEDIGREE_ROOT_ID', Filter::post('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
-	$WT_TREE->setPreference('PEDIGREE_SHOW_GENDER', Filter::postBool('PEDIGREE_SHOW_GENDER'));
-	$WT_TREE->setPreference('PREFER_LEVEL2_SOURCES', Filter::post('PREFER_LEVEL2_SOURCES'));
-	$WT_TREE->setPreference('QUICK_REQUIRED_FACTS', implode(',', Filter::postArray('QUICK_REQUIRED_FACTS')));
-	$WT_TREE->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', Filter::postArray('QUICK_REQUIRED_FAMFACTS')));
-	$WT_TREE->setPreference('REPO_FACTS_ADD', implode(',', Filter::postArray('REPO_FACTS_ADD')));
-	$WT_TREE->setPreference('REPO_FACTS_QUICK', implode(',', Filter::postArray('REPO_FACTS_QUICK')));
-	$WT_TREE->setPreference('REPO_FACTS_UNIQUE', implode(',', Filter::postArray('REPO_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
-	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
-	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
-	$WT_TREE->setPreference('SHOW_GEDCOM_RECORD', Filter::postBool('SHOW_GEDCOM_RECORD'));
-	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES', Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
-	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
-	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
-	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
-	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
-	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
-	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
-	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
-	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
-	$WT_TREE->setPreference('SOUR_FACTS_ADD', implode(',', Filter::postArray('SOUR_FACTS_ADD')));
-	$WT_TREE->setPreference('SOUR_FACTS_QUICK', implode(',', Filter::postArray('SOUR_FACTS_QUICK')));
-	$WT_TREE->setPreference('SOUR_FACTS_UNIQUE', implode(',', Filter::postArray('SOUR_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('SUBLIST_TRIGGER_I', Filter::post('SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
-	$WT_TREE->setPreference('SURNAME_LIST_STYLE', Filter::post('SURNAME_LIST_STYLE'));
-	$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
-	$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
-	$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
-	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
-	$WT_TREE->setPreference('WEBTREES_EMAIL', Filter::post('WEBTREES_EMAIL'));
-	$WT_TREE->setPreference('title', Filter::post('title'));
-
-	// Only accept valid folders for MEDIA_DIRECTORY
-	$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', Filter::post('MEDIA_DIRECTORY') . '/');
-	if (substr($MEDIA_DIRECTORY, 0, 1) === '/') {
-		$MEDIA_DIRECTORY = substr($MEDIA_DIRECTORY, 1);
-	}
-
-	if ($MEDIA_DIRECTORY) {
-		if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-		} elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
-		} else {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
+	case 'general':
+		if (!Filter::checkCsrf()) {
+			break;
 		}
-	}
 
-	$gedcom = Filter::post('gedcom');
-	if ($gedcom && $gedcom !== $WT_TREE->getName()) {
-		try {
-			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([$gedcom, $WT_TREE->getTreeId()]);
-			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([$gedcom, $WT_TREE->getName()]);
-		} catch (\Exception $ex) {
-			DebugBar::addThrowable($ex);
-
-			// Probably a duplicate name.
+		// Coming soon
+		if (Filter::postBool('all_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
 		}
-	}
+		if (Filter::postBool('new_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+		}
 
-	FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
-	header('Location: admin_trees_manage.php');
+		$WT_TREE->setPreference('ADVANCED_NAME_FACTS', implode(',', Filter::postArray('ADVANCED_NAME_FACTS')));
+		$WT_TREE->setPreference('ADVANCED_PLAC_FACTS', implode(',', Filter::postArray('ADVANCED_PLAC_FACTS')));
+		$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', Filter::postBool('ALLOW_THEME_DROPDOWN'));
+		// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
+		// e.g. "gregorian_and_jewish"
+		$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
+			Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
+			Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
+		])));
+		$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
+		$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
+		$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
+		$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
+		$WT_TREE->setPreference('EXPAND_SOURCES', Filter::postBool('EXPAND_SOURCES'));
+		$WT_TREE->setPreference('FAM_FACTS_ADD', implode(',', Filter::postArray('FAM_FACTS_ADD')));
+		$WT_TREE->setPreference('FAM_FACTS_QUICK', implode(',', Filter::postArray('FAM_FACTS_QUICK')));
+		$WT_TREE->setPreference('FAM_FACTS_UNIQUE', implode(',', Filter::postArray('FAM_FACTS_UNIQUE')));
+		$WT_TREE->setPreference('FULL_SOURCES', Filter::postBool('FULL_SOURCES'));
+		$WT_TREE->setPreference('FORMAT_TEXT', Filter::post('FORMAT_TEXT'));
+		$WT_TREE->setPreference('GEDCOM_MEDIA_PATH', Filter::post('GEDCOM_MEDIA_PATH'));
+		$WT_TREE->setPreference('GENERATE_UIDS', Filter::postBool('GENERATE_UIDS'));
+		$WT_TREE->setPreference('GEONAMES_ACCOUNT', Filter::post('GEONAMES_ACCOUNT'));
+		$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS', Filter::postBool('HIDE_GEDCOM_ERRORS'));
+		$WT_TREE->setPreference('INDI_FACTS_ADD', implode(',', Filter::postArray('INDI_FACTS_ADD')));
+		$WT_TREE->setPreference('INDI_FACTS_QUICK', implode(',', Filter::postArray('INDI_FACTS_QUICK')));
+		$WT_TREE->setPreference('INDI_FACTS_UNIQUE', implode(',', Filter::postArray('INDI_FACTS_UNIQUE')));
+		$WT_TREE->setPreference('LANGUAGE', Filter::post('LANGUAGE'));
+		$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS', Filter::post('MAX_DESCENDANCY_GENERATIONS'));
+		$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS', Filter::post('MAX_PEDIGREE_GENERATIONS'));
+		$WT_TREE->setPreference('MEDIA_UPLOAD', Filter::post('MEDIA_UPLOAD'));
+		$WT_TREE->setPreference('META_DESCRIPTION', Filter::post('META_DESCRIPTION'));
+		$WT_TREE->setPreference('META_TITLE', Filter::post('META_TITLE'));
+		$WT_TREE->setPreference('NO_UPDATE_CHAN', Filter::postBool('NO_UPDATE_CHAN'));
+		$WT_TREE->setPreference('PEDIGREE_LAYOUT', Filter::postBool('PEDIGREE_LAYOUT'));
+		$WT_TREE->setPreference('PEDIGREE_ROOT_ID', Filter::post('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+		$WT_TREE->setPreference('PEDIGREE_SHOW_GENDER', Filter::postBool('PEDIGREE_SHOW_GENDER'));
+		$WT_TREE->setPreference('PREFER_LEVEL2_SOURCES', Filter::post('PREFER_LEVEL2_SOURCES'));
+		$WT_TREE->setPreference('QUICK_REQUIRED_FACTS', implode(',', Filter::postArray('QUICK_REQUIRED_FACTS')));
+		$WT_TREE->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', Filter::postArray('QUICK_REQUIRED_FAMFACTS')));
+		$WT_TREE->setPreference('REPO_FACTS_ADD', implode(',', Filter::postArray('REPO_FACTS_ADD')));
+		$WT_TREE->setPreference('REPO_FACTS_QUICK', implode(',', Filter::postArray('REPO_FACTS_QUICK')));
+		$WT_TREE->setPreference('REPO_FACTS_UNIQUE', implode(',', Filter::postArray('REPO_FACTS_UNIQUE')));
+		$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
+		$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
+		$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
+		$WT_TREE->setPreference('SHOW_GEDCOM_RECORD', Filter::postBool('SHOW_GEDCOM_RECORD'));
+		$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES', Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
+		$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
+		$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
+		$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
+		$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
+		$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
+		$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
+		$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
+		$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
+		$WT_TREE->setPreference('SOUR_FACTS_ADD', implode(',', Filter::postArray('SOUR_FACTS_ADD')));
+		$WT_TREE->setPreference('SOUR_FACTS_QUICK', implode(',', Filter::postArray('SOUR_FACTS_QUICK')));
+		$WT_TREE->setPreference('SOUR_FACTS_UNIQUE', implode(',', Filter::postArray('SOUR_FACTS_UNIQUE')));
+		$WT_TREE->setPreference('SUBLIST_TRIGGER_I', Filter::post('SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
+		$WT_TREE->setPreference('SURNAME_LIST_STYLE', Filter::post('SURNAME_LIST_STYLE'));
+		$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
+		$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
+		$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
+		$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
+		$WT_TREE->setPreference('WEBTREES_EMAIL', Filter::post('WEBTREES_EMAIL'));
+		$WT_TREE->setPreference('title', Filter::post('title'));
 
-	return;
+		// Only accept valid folders for MEDIA_DIRECTORY
+		$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', Filter::post('MEDIA_DIRECTORY') . '/');
+		if (substr($MEDIA_DIRECTORY, 0, 1) === '/') {
+			$MEDIA_DIRECTORY = substr($MEDIA_DIRECTORY, 1);
+		}
+
+		if ($MEDIA_DIRECTORY) {
+			if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+				$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+			} elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+				$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
+			} else {
+				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
+			}
+		}
+
+		$gedcom = Filter::post('gedcom');
+		if ($gedcom && $gedcom !== $WT_TREE->getName()) {
+			try {
+				Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([$gedcom, $WT_TREE->getTreeId()]);
+				Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([$gedcom, $WT_TREE->getName()]);
+			} catch (\Exception $ex) {
+				DebugBar::addThrowable($ex);
+
+				// Probably a duplicate name.
+			}
+		}
+
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
+		header('Location: admin_trees_manage.php');
+
+		return;
 }
 
 switch (Filter::get('action')) {

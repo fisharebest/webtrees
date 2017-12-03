@@ -288,40 +288,40 @@ case 'edit':
 
 	$level1type = $edit_fact->getTag();
 	switch ($record::RECORD_TYPE) {
-	case 'REPO':
-		// REPO:NAME facts may take a NOTE (but the REPO record may not).
-		if ($level1type === 'NAME') {
-			FunctionsEdit::printAddLayer('NOTE');
-			FunctionsEdit::printAddLayer('SHARED_NOTE');
-		}
-		break;
-	case 'FAM':
-	case 'INDI':
-		// FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
-		if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
-			if ($level1type !== 'SOUR') {
-				FunctionsEdit::printAddLayer('SOUR');
+		case 'REPO':
+			// REPO:NAME facts may take a NOTE (but the REPO record may not).
+			if ($level1type === 'NAME') {
+				FunctionsEdit::printAddLayer('NOTE');
+				FunctionsEdit::printAddLayer('SHARED_NOTE');
 			}
-			if ($level1type !== 'OBJE') {
-				FunctionsEdit::printAddLayer('OBJE');
+			break;
+		case 'FAM':
+		case 'INDI':
+			// FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
+			if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
+				if ($level1type !== 'SOUR') {
+					FunctionsEdit::printAddLayer('SOUR');
+				}
+				if ($level1type !== 'OBJE') {
+					FunctionsEdit::printAddLayer('OBJE');
+				}
+				FunctionsEdit::printAddLayer('NOTE');
+				FunctionsEdit::printAddLayer('SHARED_NOTE', 2, $level1type);
+				if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
+					FunctionsEdit::printAddLayer('ASSO');
+				}
+				// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+				if (in_array($level1type, Config::twoAssociates())) {
+					FunctionsEdit::printAddLayer('ASSO2');
+				}
+				if ($level1type !== 'SOUR') {
+					FunctionsEdit::printAddLayer('RESN');
+				}
 			}
-			FunctionsEdit::printAddLayer('NOTE');
-			FunctionsEdit::printAddLayer('SHARED_NOTE', 2, $level1type);
-			if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
-				FunctionsEdit::printAddLayer('ASSO');
-			}
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if (in_array($level1type, Config::twoAssociates())) {
-				FunctionsEdit::printAddLayer('ASSO2');
-			}
-			if ($level1type !== 'SOUR') {
-				FunctionsEdit::printAddLayer('RESN');
-			}
-		}
-		break;
-	default:
-		// Other types of record do not have these lower-level records
-		break;
+			break;
+		default:
+			// Other types of record do not have these lower-level records
+			break;
 	}
 
 	?>
@@ -2120,15 +2120,15 @@ case 'changefamily':
 							<b>
 								<?php
 								switch ($father->getSex()) {
-								case 'M':
-									echo I18N::translate('husband');
-									break;
-								case 'F':
-									echo I18N::translate('wife');
-									break;
-								default:
-									echo I18N::translate('spouse');
-									break;
+									case 'M':
+										echo I18N::translate('husband');
+										break;
+									case 'F':
+										echo I18N::translate('wife');
+										break;
+									default:
+										echo I18N::translate('spouse');
+										break;
 								}
 								?>
 							</b>
@@ -2159,15 +2159,15 @@ case 'changefamily':
 							<b>
 								<?php
 								switch ($mother->getSex()) {
-								case 'M':
-									echo I18N::translate('husband');
-									break;
-								case 'F':
-									echo I18N::translate('wife');
-									break;
-								default:
-									echo I18N::translate('spouse');
-									break;
+									case 'M':
+										echo I18N::translate('husband');
+										break;
+									case 'F':
+										echo I18N::translate('wife');
+										break;
+									default:
+										echo I18N::translate('spouse');
+										break;
 								}
 								?>
 							</b>
@@ -2200,15 +2200,15 @@ case 'changefamily':
 							<b>
 								<?php
 								switch ($child->getSex()) {
-								case 'M':
-									echo I18N::translate('son');
-									break;
-								case 'F':
-									echo I18N::translate('daughter');
-									break;
-								default:
-									echo I18N::translate('child');
-									break;
+									case 'M':
+										echo I18N::translate('son');
+										break;
+									case 'F':
+										echo I18N::translate('daughter');
+										break;
+									default:
+										echo I18N::translate('child');
+										break;
 								}
 								?>
 							</b>
@@ -2886,35 +2886,35 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		}
 
 		switch ($nextaction) {
-		case 'add_child_to_family_action':
-			$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
-			break;
-		case 'add_child_to_individual_action':
-			if ($person->getSex() === 'F') {
-				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
-			} else {
-				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
-			}
-			break;
-		case 'add_parent_to_individual_action':
-			$name_fields = array_merge($name_fields, $surname_tradition->newParentNames($indi_name, $gender));
-			break;
-		case 'add_spouse_to_family_action':
-			if ($father) {
-				$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($father_name, $gender));
-			} else {
-				$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($mother_name, $gender));
-			}
-			break;
-		case 'add_spouse_to_individual_action':
-			$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
-			break;
-		case 'add_unlinked_indi_action':
-		case 'update':
-			if ($surname_tradition->hasSurnames()) {
-				$name_fields['NAME'] = '//';
-			}
-			break;
+			case 'add_child_to_family_action':
+				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
+				break;
+			case 'add_child_to_individual_action':
+				if ($person->getSex() === 'F') {
+					$name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
+				} else {
+					$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
+				}
+				break;
+			case 'add_parent_to_individual_action':
+				$name_fields = array_merge($name_fields, $surname_tradition->newParentNames($indi_name, $gender));
+				break;
+			case 'add_spouse_to_family_action':
+				if ($father) {
+					$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($father_name, $gender));
+				} else {
+					$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($mother_name, $gender));
+				}
+				break;
+			case 'add_spouse_to_individual_action':
+				$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
+				break;
+			case 'add_unlinked_indi_action':
+			case 'update':
+				if ($surname_tradition->hasSurnames()) {
+					$name_fields['NAME'] = '//';
+				}
+				break;
 		}
 	}
 
@@ -2934,11 +2934,11 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '<table class="table wt-facts-table">';
 
 	switch ($nextaction) {
-	case 'add_child_to_family_action':
-	case 'add_child_to_individual_action':
-		// When adding a new child, specify the pedigree
-		echo FunctionsEdit::addSimpleTag('0 PEDI');
-		break;
+		case 'add_child_to_family_action':
+		case 'add_child_to_individual_action':
+			// When adding a new child, specify the pedigree
+			echo FunctionsEdit::addSimpleTag('0 PEDI');
+			break;
 	}
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {

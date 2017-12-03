@@ -84,23 +84,23 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		switch ($infoStyle) {
-		case 'tagcloud':
-			uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
-			$content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
-			break;
-		case 'list':
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'indilist.php', $WT_TREE);
-			break;
-		case 'array':
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'indilist.php', $WT_TREE);
-			break;
-		case 'table':
-		default:
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
-			break;
+			case 'tagcloud':
+				uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
+				$content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
+				break;
+			case 'list':
+				uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+				$content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'indilist.php', $WT_TREE);
+				break;
+			case 'array':
+				uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+				$content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'indilist.php', $WT_TREE);
+				break;
+			case 'table':
+			default:
+				uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+				$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
+				break;
 		}
 
 		if ($template) {

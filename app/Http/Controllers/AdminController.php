@@ -749,14 +749,14 @@ class AdminController extends BaseController {
 
 			foreach ($differences as $difference) {
 				switch ($difference[1]) {
-				case MyersDiff::DELETE:
-					$diff_lines[] = '<del>' . $difference[0] . '</del>';
-					break;
-				case MyersDiff::INSERT:
-					$diff_lines[] = '<ins>' . $difference[0] . '</ins>';
-					break;
-				default:
-					$diff_lines[] = $difference[0];
+					case MyersDiff::DELETE:
+						$diff_lines[] = '<del>' . $difference[0] . '</del>';
+						break;
+					case MyersDiff::INSERT:
+						$diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+						break;
+					default:
+						$diff_lines[] = $difference[0];
 				}
 			}
 
@@ -1599,12 +1599,12 @@ class AdminController extends BaseController {
 				// Datatables numbers columns 0, 1, 2
 				// MySQL numbers columns 1, 2, 3
 				switch ($value['dir']) {
-				case 'asc':
-					$order_by .= (1 + $value['column']) . ' ASC ';
-					break;
-				case 'desc':
-					$order_by .= (1 + $value['column']) . ' DESC ';
-					break;
+					case 'asc':
+						$order_by .= (1 + $value['column']) . ' ASC ';
+						break;
+					case 'desc':
+						$order_by .= (1 + $value['column']) . ' DESC ';
+						break;
 				}
 			}
 		} else {
