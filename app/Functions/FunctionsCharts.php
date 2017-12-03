@@ -111,7 +111,7 @@ class FunctionsCharts {
 		$hfam = $husb->getPrimaryChildFamily();
 		if ($hfam) {
 			// remove the|| test for $sosa
-			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img  src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14 ) . '"></td>';
+			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img  src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14) . '"></td>';
 			echo '<td><img class="linea1 lined1"  src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// husband’s father
 			if ($hfam && $hfam->getHusband()) {
@@ -201,7 +201,7 @@ class FunctionsCharts {
 		// wife’s parents
 		$hfam = $wife->getPrimaryChildFamily();
 		if ($hfam) {
-			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14 ) . '"></td>';
+			echo '<td rowspan="2"><img src="' . Theme::theme()->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . Theme::theme()->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14) . '"></td>';
 			echo '<td><img class="linea3 lined3" src="' . Theme::theme()->parameter('image-hline') . '"></td><td>';
 			// wife’s father
 			if ($hfam && $hfam->getHusband()) {
@@ -337,14 +337,14 @@ class FunctionsCharts {
 							$PBadj     = 6; // default
 
 							if ($show_cousins) {
-								if ($kids > 0) 		{
-									echo '<img height="' . ((($kids *80/2)) ) . 'px"';
+								if ($kids > 0) {
+									echo '<img height="' . ((($kids * 80 / 2))) . 'px"';
 								} else {
-									echo '<img height="' . ($pbheight -14) / 2 . 'px"';
+									echo '<img height="' . ($pbheight - 14) / 2 . 'px"';
 								}
 							} else {
 								if ($f == $maxfam) {
-									echo '<img height="' . ((($bheight / 2)) ) . 'px"';
+									echo '<img height="' . ((($bheight / 2))) . 'px"';
 								} else {
 									echo '<img height="' . $pbheight . 'px"';
 								}

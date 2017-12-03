@@ -1696,7 +1696,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$media_file  = $mediaobject->firstImageFile();
 
 				if ($media_file !== null && $media_file->fileExists()) {
-					$attributes  = $media_file->getImageAttributes();
+					$attributes = $media_file->getImageAttributes();
 					if ($width > 0 && $height == 0) {
 						$perc   = $width / $attributes[0];
 						$height = round($attributes[1] * $perc);
