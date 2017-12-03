@@ -177,7 +177,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 					$row_class .= ' old';
 				}
 				$icon = $controller->record === $person ? '<i class="icon-selected"></i>' : '';
-        ?>
+				?>
 				<tr class="<?= $row_class ?>">
 					<th scope="row">
 					<?= $icon ?>

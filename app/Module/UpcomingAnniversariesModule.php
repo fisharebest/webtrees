@@ -75,16 +75,16 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
 		$content = '';
 		switch ($infoStyle) {
-		case 'list':
-			// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
-			$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
-			break;
-		case 'table':
-			// Style 2: New format, tables, big text, etc. Not too good on right side of page
-			ob_start();
-			$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
-			$content .= ob_get_clean();
-			break;
+			case 'list':
+				// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
+				$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+				break;
+			case 'table':
+				// Style 2: New format, tables, big text, etc. Not too good on right side of page
+				ob_start();
+				$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+				$content .= ob_get_clean();
+				break;
 		}
 
 		if ($template) {

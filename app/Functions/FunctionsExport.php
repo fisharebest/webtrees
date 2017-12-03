@@ -183,18 +183,18 @@ class FunctionsExport {
 	 */
 	public static function exportGedcom(Tree $tree, $gedout, $exportOptions) {
 		switch ($exportOptions['privatize']) {
-		case 'gedadmin':
-			$access_level = Auth::PRIV_NONE;
-			break;
-		case 'user':
-			$access_level = Auth::PRIV_USER;
-			break;
-		case 'visitor':
-			$access_level = Auth::PRIV_PRIVATE;
-			break;
-		case 'none':
-			$access_level = Auth::PRIV_HIDE;
-			break;
+			case 'gedadmin':
+				$access_level = Auth::PRIV_NONE;
+				break;
+			case 'user':
+				$access_level = Auth::PRIV_USER;
+				break;
+			case 'visitor':
+				$access_level = Auth::PRIV_PRIVATE;
+				break;
+			case 'none':
+				$access_level = Auth::PRIV_HIDE;
+				break;
 		}
 
 		$head = self::gedcomHeader($tree);
@@ -251,15 +251,15 @@ class FunctionsExport {
 
 		foreach ($rows as $row) {
 			switch ($row->type) {
-			case 'NOTE':
-				$record = Note::getInstance($row->xref, $tree, $row->gedcom);
-				break;
-			case 'REPO':
-				$record = Repository::getInstance($row->xref, $tree, $row->gedcom);
-				break;
-			default:
-				$record = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
-				break;
+				case 'NOTE':
+					$record = Note::getInstance($row->xref, $tree, $row->gedcom);
+					break;
+				case 'REPO':
+					$record = Repository::getInstance($row->xref, $tree, $row->gedcom);
+					break;
+				default:
+					$record = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
+					break;
 			}
 
 			$rec = $record->privatizeGedcom($access_level);

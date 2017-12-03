@@ -46,13 +46,13 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'ajax':
-			header('Content-Type: text/html; charset=UTF-8');
-			echo $this->getSidebarAjaxContent();
-			break;
-		default:
-			http_response_code(404);
-			break;
+			case 'ajax':
+				header('Content-Type: text/html; charset=UTF-8');
+				echo $this->getSidebarAjaxContent();
+				break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 
@@ -150,18 +150,18 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
 		foreach ($initials as $letter => $count) {
 			switch ($letter) {
-			case '@':
-				$html = I18N::translateContext('Unknown surname', '…');
-				break;
-			case ',':
-				$html = I18N::translate('None');
-				break;
-			case ' ':
-				$html = '&nbsp;';
-				break;
-			default:
-				$html = $letter;
-				break;
+				case '@':
+					$html = I18N::translateContext('Unknown surname', '…');
+					break;
+				case ',':
+					$html = I18N::translate('None');
+					break;
+				case ' ':
+					$html = '&nbsp;';
+					break;
+				default:
+					$html = $letter;
+					break;
 			}
 			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
 			$out .= $html . ' ';

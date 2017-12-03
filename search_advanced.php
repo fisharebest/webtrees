@@ -192,18 +192,18 @@ $controller->pageHeader();
 							$searchField  = $controller->getField($k);
 							$searchOption = substr($searchField, 20); // Assume we have something like "FAMC:HUSB:NAME:GIVN:foo"
 							switch (substr($searchField, 0, 20)) {
-							case 'FAMC:HUSB:NAME:GIVN:':
-								$fatherGivnOption = $searchOption;
-								break;
-							case 'FAMC:HUSB:NAME:SURN:':
-								$fatherSurnOption = $searchOption;
-								break;
-							case 'FAMC:WIFE:NAME:GIVN:':
-								$motherGivnOption = $searchOption;
-								break;
-							case 'FAMC:WIFE:NAME:SURN:':
-								$motherSurnOption = $searchOption;
-								break;
+								case 'FAMC:HUSB:NAME:GIVN:':
+									$fatherGivnOption = $searchOption;
+									break;
+								case 'FAMC:HUSB:NAME:SURN:':
+									$fatherSurnOption = $searchOption;
+									break;
+								case 'FAMC:WIFE:NAME:GIVN:':
+									$motherGivnOption = $searchOption;
+									break;
+								case 'FAMC:WIFE:NAME:SURN:':
+									$motherSurnOption = $searchOption;
+									break;
 							}
 						}
 					}
