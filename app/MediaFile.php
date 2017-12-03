@@ -31,17 +31,17 @@ class MediaFile {
 	private $multimedia_format = '';
 
 	/** @var string The type of document; newspaper, microfiche, etc. */
-  private $source_media_type = '';
+	private $source_media_type = '';
 	/** @var string The filename */
 
 	/** @var string The name of the document */
-  private $descriptive_title = '';
+	private $descriptive_title = '';
 
-  /** @var Media $media The media object to which this file belongs */
-  private $media;
+	/** @var Media $media The media object to which this file belongs */
+	private $media;
 
-  /** @var string */
-  private $fact_id;
+	/** @var string */
+	private $fact_id;
 
 	/**
 	 * Create a MediaFile from raw GEDCOM data.

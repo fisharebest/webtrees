@@ -101,9 +101,9 @@ abstract class AbstractTheme {
 		'info'    => 'fa fa-info-circle',
 		'warning' => 'fa fa-exclamation-circle',
 
-	  // Icons for file types
-	  'mime-application-pdf' => '',
-	  'mime-text-html'       => '',
+		// Icons for file types
+		'mime-application-pdf' => '',
+		'mime-text-html'       => '',
 
 		// Other icons
 		'mail'   => 'fa fa-envelope-o',

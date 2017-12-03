@@ -64,7 +64,7 @@ class Datatables {
 
 		return [
 			'data-language'     => json_encode($language),
-		  'data-length-menu' => json_encode([array_keys($length_menu), array_values($length_menu)])
+			'data-length-menu' => json_encode([array_keys($length_menu), array_values($length_menu)])
 		];
 	}
 

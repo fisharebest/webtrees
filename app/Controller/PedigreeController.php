@@ -99,26 +99,26 @@ class PedigreeController extends ChartController {
 
 		$this->arrows = new \stdClass();
 		switch ($this->orientation) {
-		case self::PORTRAIT:
-			//drop through
-		case self::LANDSCAPE:
-			$this->arrows->prevGen = 'fa fa-arrow-end wt-icon-arrow-end';
-			$this->arrows->menu    = 'fa fa-arrow-start wt-icon-arrow-start';
-			$addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
-			$addoffset['y']        = 0;
-			break;
-		case self::OLDEST_AT_TOP:
-			$this->arrows->prevGen = 'fa fa-arrow-up wt-icon-arrow-up';
-			$this->arrows->menu    = 'fa fa-arrow-down wt-icon-arrow-down';
-			$addoffset['x']        = 0;
-			$addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
-			break;
-		case self::OLDEST_AT_BOTTOM:
-			$this->arrows->prevGen = 'fa fa-arrow-down wt-icon-arrow-down';
-			$this->arrows->menu    = 'fa fa-arrow-up wt-icon-arrow-up';
-			$addoffset['x']        = 0;
-			$addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
-			break;
+			case self::PORTRAIT:
+				//drop through
+			case self::LANDSCAPE:
+				$this->arrows->prevGen = 'fa fa-arrow-end wt-icon-arrow-end';
+				$this->arrows->menu    = 'fa fa-arrow-start wt-icon-arrow-start';
+				$addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				$addoffset['y']        = 0;
+				break;
+			case self::OLDEST_AT_TOP:
+				$this->arrows->prevGen = 'fa fa-arrow-up wt-icon-arrow-up';
+				$this->arrows->menu    = 'fa fa-arrow-down wt-icon-arrow-down';
+				$addoffset['x']        = 0;
+				$addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
+				break;
+			case self::OLDEST_AT_BOTTOM:
+				$this->arrows->prevGen = 'fa fa-arrow-down wt-icon-arrow-down';
+				$this->arrows->menu    = 'fa fa-arrow-up wt-icon-arrow-up';
+				$addoffset['x']        = 0;
+				$addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				break;
 		}
 
 		// -- this next section will create and position the DIV layers for the pedigree tree
@@ -147,73 +147,73 @@ class PedigreeController extends ChartController {
 
 			// -- calculate the xoffset
 			switch ($this->orientation) {
-			case self::PORTRAIT:
-				$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 1.8);
-				if (!$i && $this->root->getSpouseFamilies()) {
-					$xoffset -= self::ARROW_SIZE;
-				}
-				// -- compact the tree
-				if ($curgen < $this->generations) {
-					if ($i % 2 == 0) {
-						$yoffset = $yoffset - (($boxspacing / 2) * ($curgen - 1));
-					} else {
-						$yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
+				case self::PORTRAIT:
+					$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 1.8);
+					if (!$i && $this->root->getSpouseFamilies()) {
+						$xoffset -= self::ARROW_SIZE;
 					}
-					$parent = (int) (($i - 1) / 2);
-					$pgen   = $curgen;
-					while ($parent > 0) {
-						if ($parent % 2 == 0) {
-							$yoffset = $yoffset - (($boxspacing / 2) * $pgen);
+					// -- compact the tree
+					if ($curgen < $this->generations) {
+						if ($i % 2 == 0) {
+							$yoffset = $yoffset - (($boxspacing / 2) * ($curgen - 1));
 						} else {
-							$yoffset = $yoffset + (($boxspacing / 2) * $pgen);
+							$yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
 						}
-						$pgen++;
-						if ($pgen > 3) {
+						$parent = (int) (($i - 1) / 2);
+						$pgen   = $curgen;
+						while ($parent > 0) {
+							if ($parent % 2 == 0) {
+								$yoffset = $yoffset - (($boxspacing / 2) * $pgen);
+							} else {
+								$yoffset = $yoffset + (($boxspacing / 2) * $pgen);
+							}
+							$pgen++;
+							if ($pgen > 3) {
+								$temp = 0;
+								for ($j = 1; $j < ($pgen - 2); $j++) {
+									$temp += (pow(2, $j) - 1);
+								}
+								if ($parent % 2 == 0) {
+									$yoffset = $yoffset - (($boxspacing / 2) * $temp);
+								} else {
+									$yoffset = $yoffset + (($boxspacing / 2) * $temp);
+								}
+							}
+							$parent = (int) (($parent - 1) / 2);
+						}
+						if ($curgen > 3) {
 							$temp = 0;
-							for ($j = 1; $j < ($pgen - 2); $j++) {
+							for ($j = 1; $j < ($curgen - 2); $j++) {
 								$temp += (pow(2, $j) - 1);
 							}
-							if ($parent % 2 == 0) {
+							if ($i % 2 == 0) {
 								$yoffset = $yoffset - (($boxspacing / 2) * $temp);
 							} else {
 								$yoffset = $yoffset + (($boxspacing / 2) * $temp);
 							}
 						}
-						$parent = (int) (($parent - 1) / 2);
 					}
-					if ($curgen > 3) {
-						$temp = 0;
-						for ($j = 1; $j < ($curgen - 2); $j++) {
-							$temp += (pow(2, $j) - 1);
-						}
-						if ($i % 2 == 0) {
-							$yoffset = $yoffset - (($boxspacing / 2) * $temp);
-						} else {
-							$yoffset = $yoffset + (($boxspacing / 2) * $temp);
-						}
+					$yoffset -= (($boxspacing / 2) * pow(2, ($this->generations - 2)) - ($boxspacing / 2));
+					break;
+				case self::LANDSCAPE:
+					$xoffset = ($this->generations - $curgen) * ($this->getBoxDimensions()->width + $bxspacing);
+					if ($curgen == 1) {
+						$xoffset += 10;
 					}
-				}
-				$yoffset -= (($boxspacing / 2) * pow(2, ($this->generations - 2)) - ($boxspacing / 2));
-				break;
-			case self::LANDSCAPE:
-				$xoffset = ($this->generations - $curgen) * ($this->getBoxDimensions()->width + $bxspacing);
-				if ($curgen == 1) {
-					$xoffset += 10;
-				}
-				break;
-			case self::OLDEST_AT_TOP:
-				//swap x & y offsets as chart is rotated
-				$xoffset = $yoffset;
-				$yoffset = $curgen * ($this->getBoxDimensions()->height + ($byspacing * 4));
-				break;
-			case self::OLDEST_AT_BOTTOM:
-				//swap x & y offsets as chart is rotated
-				$xoffset = $yoffset;
-				$yoffset = ($this->generations - $curgen) * ($this->getBoxDimensions()->height + ($byspacing * 2));
-				if ($i && $this->root->getSpouseFamilies()) {
-					$yoffset += self::ARROW_SIZE;
-				}
-				break;
+					break;
+				case self::OLDEST_AT_TOP:
+					//swap x & y offsets as chart is rotated
+					$xoffset = $yoffset;
+					$yoffset = $curgen * ($this->getBoxDimensions()->height + ($byspacing * 4));
+					break;
+				case self::OLDEST_AT_BOTTOM:
+					//swap x & y offsets as chart is rotated
+					$xoffset = $yoffset;
+					$yoffset = ($this->generations - $curgen) * ($this->getBoxDimensions()->height + ($byspacing * 2));
+					if ($i && $this->root->getSpouseFamilies()) {
+						$yoffset += self::ARROW_SIZE;
+					}
+					break;
 			}
 			$this->nodes[$i]['x'] = (int) $xoffset;
 			$this->nodes[$i]['y'] = (int) $yoffset;

@@ -86,17 +86,17 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 	 */
 	public static function showFact(Fact $fact) {
 		switch ($fact->getTag()) {
-		case 'AFN':
-		case 'CHAN':
-		case 'IDNO':
-		case 'REFN':
-		case 'RFN':
-		case 'RIN':
-		case 'SSN':
-		case '_UID':
-			return true;
-		default:
-			return false;
+			case 'AFN':
+			case 'CHAN':
+			case 'IDNO':
+			case 'REFN':
+			case 'RFN':
+			case 'RIN':
+			case 'SSN':
+			case '_UID':
+				return true;
+			default:
+				return false;
 		}
 	}
 }
