@@ -48,46 +48,46 @@ $visible_online = Filter::postBool('visible-online');
 // Respond to form action
 if ($action !== '' && Filter::checkCsrf()) {
 	switch ($action) {
-	case 'update':
-		if ($username !== Auth::user()->getUserName() && User::findByUserName($username)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-		} elseif ($email !== Auth::user()->getEmail() && User::findByEmail($email)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-		} else {
-			// Change username
-			if ($username !== Auth::user()->getUserName()) {
-				Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $username);
-				Auth::user()->setUserName($username);
+		case 'update':
+			if ($username !== Auth::user()->getUserName() && User::findByUserName($username)) {
+				FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+			} elseif ($email !== Auth::user()->getEmail() && User::findByEmail($email)) {
+				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+			} else {
+				// Change username
+				if ($username !== Auth::user()->getUserName()) {
+					Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $username);
+					Auth::user()->setUserName($username);
+				}
+
+				// Change password
+				if ($password_1 !== '' && $password_1 === $password_2) {
+					Auth::user()->setPassword($password_1);
+				}
+
+				// Change other settings
+				Auth::user()
+					->setRealName($real_name)
+					->setEmail($email)
+					->setPreference('language', $language)
+					->setPreference('TIMEZONE', $time_zone)
+					->setPreference('contactmethod', $contact_method)
+					->setPreference('visibleonline', $visible_online ? '1' : '0');
+
+				Auth::user()->setPreference('theme', $theme);
+
+				$WT_TREE->setUserPreference(Auth::user(), 'rootid', $root_id);
 			}
+			break;
 
-			// Change password
-			if ($password_1 !== '' && $password_1 === $password_2) {
-				Auth::user()->setPassword($password_1);
+		case 'delete':
+			// An administrator can only be deleted by another administrator
+			if (!Auth::user()->getPreference('canadmin')) {
+				$currentUser = Auth::user();
+				Auth::logout();
+				$currentUser->delete();
 			}
-
-			// Change other settings
-			Auth::user()
-				->setRealName($real_name)
-				->setEmail($email)
-				->setPreference('language', $language)
-				->setPreference('TIMEZONE', $time_zone)
-				->setPreference('contactmethod', $contact_method)
-				->setPreference('visibleonline', $visible_online ? '1' : '0');
-
-			Auth::user()->setPreference('theme', $theme);
-
-			$WT_TREE->setUserPreference(Auth::user(), 'rootid', $root_id);
-		}
-		break;
-
-	case 'delete':
-		// An administrator can only be deleted by another administrator
-		if (!Auth::user()->getPreference('canadmin')) {
-			$currentUser = Auth::user();
-			Auth::logout();
-			$currentUser->delete();
-		}
-		break;
+			break;
 	}
 
 	header('Location: edituser.php');

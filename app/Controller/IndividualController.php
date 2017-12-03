@@ -166,23 +166,23 @@ class IndividualController extends GedcomRecordController {
 					$name = str_replace('/', '', $name);
 					$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 					switch ($tag) {
-					case 'TYPE':
-						echo GedcomCodeName::getValue($name, $this->record);
-						break;
-					case 'SURN':
-						// The SURN field is not necessarily the surname.
-						// Where it is not a substring of the real surname, show it after the real surname.
-						$surname = Html::escape($dummy->getAllNames()[0]['surname']);
-						$surns   = preg_replace('/, */', ' ', $nmatch[$i][2]);
-						if (strpos($dummy->getAllNames()[0]['surname'], $surns) !== false) {
-							echo '<span dir="auto">' . $surname . '</span>';
-						} else {
-							echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
-						}
-						break;
-					default:
-						echo '<span dir="auto">' . $name . '</span>';
-						break;
+						case 'TYPE':
+							echo GedcomCodeName::getValue($name, $this->record);
+							break;
+						case 'SURN':
+							// The SURN field is not necessarily the surname.
+							// Where it is not a substring of the real surname, show it after the real surname.
+							$surname = Html::escape($dummy->getAllNames()[0]['surname']);
+							$surns   = preg_replace('/, */', ' ', $nmatch[$i][2]);
+							if (strpos($dummy->getAllNames()[0]['surname'], $surns) !== false) {
+								echo '<span dir="auto">' . $surname . '</span>';
+							} else {
+								echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
+							}
+							break;
+						default:
+							echo '<span dir="auto">' . $name . '</span>';
+							break;
 					}
 				}
 				echo '</dd>';
@@ -228,15 +228,15 @@ class IndividualController extends GedcomRecordController {
 		$individual = $fact->getParent();
 
 		switch ($fact->getValue()) {
-		case 'M':
-			$sex = I18N::translate('Male');
-			break;
-		case 'F':
-			$sex = I18N::translate('Female');
-			break;
-		default:
-			$sex = I18N::translateContext('unknown gender', 'Unknown');
-			break;
+			case 'M':
+				$sex = I18N::translate('Male');
+				break;
+			case 'F':
+				$sex = I18N::translate('Female');
+				break;
+			default:
+				$sex = I18N::translateContext('unknown gender', 'Unknown');
+				break;
 		}
 
 		$container_class = 'card';
@@ -296,15 +296,15 @@ class IndividualController extends GedcomRecordController {
 	 */
 	public function getPersonStyle($person) {
 		switch ($person->getSex()) {
-		case 'M':
-			$class = 'person_box';
-			break;
-		case 'F':
-			$class = 'person_boxF';
-			break;
-		default:
-			$class = 'person_boxNN';
-			break;
+			case 'M':
+				$class = 'person_box';
+				break;
+			case 'F':
+				$class = 'person_boxF';
+				break;
+			default:
+				$class = 'person_boxNN';
+				break;
 		}
 		if ($person->isPendingDeletion()) {
 			$class .= ' old';

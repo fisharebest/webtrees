@@ -54,32 +54,32 @@ foreach ($vars as $name => $var) {
 	$newvars[$name]['id'] = $var;
 	if (!empty($type[$name])) {
 		switch ($type[$name]) {
-		case 'INDI':
-			$record = Individual::getInstance($var, $WT_TREE);
-			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-			} else {
-				$action = 'setup';
-			}
-			break;
-		case 'FAM':
-			$record = Family::getInstance($var, $WT_TREE);
-			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-			} else {
-				$action = 'setup';
-			}
-			break;
-		case 'SOUR':
-			$record = Source::getInstance($var, $WT_TREE);
-			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-			} else {
-				$action = 'setup';
-			}
-			break;
-		default:
-			break;
+			case 'INDI':
+				$record = Individual::getInstance($var, $WT_TREE);
+				if ($record && $record->canShowName()) {
+					$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+				} else {
+					$action = 'setup';
+				}
+				break;
+			case 'FAM':
+				$record = Family::getInstance($var, $WT_TREE);
+				if ($record && $record->canShowName()) {
+					$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+				} else {
+					$action = 'setup';
+				}
+				break;
+			case 'SOUR':
+				$record = Source::getInstance($var, $WT_TREE);
+				if ($record && $record->canShowName()) {
+					$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+				} else {
+					$action = 'setup';
+				}
+				break;
+			default:
+				break;
 		}
 	}
 }
@@ -142,61 +142,61 @@ case 'setup':
 		];
 
 		switch ($input['lookup']) {
-		case 'INDI':
-			$individual       = Individual::getInstance($pid, $WT_TREE) ?: $controller->getSignificantIndividual();
-			$input['control'] = FunctionsEdit::formControlIndividual($individual, $attributes);
-			break;
-		case 'FAM':
-			$family           = Family::getInstance($pid, $WT_TREE) ?: $controller->getSignificantFamily();
-			$input['control'] = FunctionsEdit::formControlFamily($family, $attributes);
-			break;
-		case 'SOUR':
-			$source           = Source::getInstance($pid, $WT_TREE);
-			$input['control'] = FunctionsEdit::formControlSource($source, $attributes);
-			break;
-		case 'DATE':
-			$attributes += [
-				'type'  => 'text',
-				'value' => $input['default'],
-			];
-			$input['control'] = '<input ' . Html::attributes($attributes) . '>';
-			$input['extra']   = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
-				'class'   => 'btn btn-link',
-				'href'    => '#',
-				'onclick' => 'return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");',
-			]) . '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
-			break;
-		default:
-			switch ($input['type']) {
-			case 'text':
+			case 'INDI':
+				$individual       = Individual::getInstance($pid, $WT_TREE) ?: $controller->getSignificantIndividual();
+				$input['control'] = FunctionsEdit::formControlIndividual($individual, $attributes);
+				break;
+			case 'FAM':
+				$family           = Family::getInstance($pid, $WT_TREE) ?: $controller->getSignificantFamily();
+				$input['control'] = FunctionsEdit::formControlFamily($family, $attributes);
+				break;
+			case 'SOUR':
+				$source           = Source::getInstance($pid, $WT_TREE);
+				$input['control'] = FunctionsEdit::formControlSource($source, $attributes);
+				break;
+			case 'DATE':
 				$attributes += [
 					'type'  => 'text',
 					'value' => $input['default'],
 				];
 				$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+				$input['extra']   = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
+					'class'   => 'btn btn-link',
+					'href'    => '#',
+					'onclick' => 'return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");',
+				]) . '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 				break;
-			case 'checkbox':
-				$attributes += [
-					'type'    => 'checkbox',
-					'checked' => (bool) $input['default'],
-				];
-				$input['control'] = '<input ' . Html::attributes($attributes) . '>';
-				break;
-			case 'select':
-				$options = [];
-				foreach (preg_split('/[|]+/', $input['options']) as $option) {
-					list($key, $value) = explode('=>', $option);
-					if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
-						$options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
-					} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-						$options[$key] = I18N::translate($match[1]);
-					} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-						$options[$key] = I18N::translateContext($match[1], $match[2]);
-					}
+			default:
+				switch ($input['type']) {
+					case 'text':
+						$attributes += [
+							'type'  => 'text',
+							'value' => $input['default'],
+						];
+						$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+						break;
+					case 'checkbox':
+						$attributes += [
+							'type'    => 'checkbox',
+							'checked' => (bool) $input['default'],
+						];
+						$input['control'] = '<input ' . Html::attributes($attributes) . '>';
+						break;
+					case 'select':
+						$options = [];
+						foreach (preg_split('/[|]+/', $input['options']) as $option) {
+							list($key, $value) = explode('=>', $option);
+							if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
+								$options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
+							} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
+								$options[$key] = I18N::translate($match[1]);
+							} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
+								$options[$key] = I18N::translateContext($match[1], $match[2]);
+							}
+						}
+						$input['control'] = Bootstrap4::select($options, $input['default'], $attributes);
+						break;
 				}
-				$input['control'] = Bootstrap4::select($options, $input['default'], $attributes);
-				break;
-			}
 		}
 
 		$inputs[] = $input;
@@ -221,13 +221,13 @@ case 'run':
 		}
 
 		switch ($output) {
-		case 'HTML':
-			header('Content-type: text/html; charset=UTF-8');
-			new ReportParserGenerate($report, new ReportHtml, $vars);
-			break;
-		case 'PDF':
-			new ReportParserGenerate($report, new ReportPdf, $vars);
-			break;
+			case 'HTML':
+				header('Content-type: text/html; charset=UTF-8');
+				new ReportParserGenerate($report, new ReportHtml, $vars);
+				break;
+			case 'PDF':
+				new ReportParserGenerate($report, new ReportPdf, $vars);
+				break;
 		}
 	}
 }

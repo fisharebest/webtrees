@@ -853,33 +853,33 @@ class Individual extends GedcomRecord {
 	public function getPrimaryChildFamily() {
 		$families = $this->getChildFamilies();
 		switch (count($families)) {
-		case 0:
-			return null;
-		case 1:
-			return $families[0];
-		default:
-			// If there is more than one FAMC record, choose the preferred parents:
-			// a) records with '2 _PRIMARY'
-			foreach ($families as $famid => $fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcom())) {
-					return $fam;
+			case 0:
+				return null;
+			case 1:
+				return $families[0];
+			default:
+				// If there is more than one FAMC record, choose the preferred parents:
+				// a) records with '2 _PRIMARY'
+				foreach ($families as $famid => $fam) {
+					if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcom())) {
+						return $fam;
+					}
 				}
-			}
-			// b) records with '2 PEDI birt'
-			foreach ($families as $famid => $fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcom())) {
-					return $fam;
+				// b) records with '2 PEDI birt'
+				foreach ($families as $famid => $fam) {
+					if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcom())) {
+						return $fam;
+					}
 				}
-			}
-			// c) records with no '2 PEDI'
-			foreach ($families as $famid => $fam) {
-				if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcom())) {
-					return $fam;
+				// c) records with no '2 PEDI'
+				foreach ($families as $famid => $fam) {
+					if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcom())) {
+						return $fam;
+					}
 				}
-			}
 
-			// d) any record
-			return $families[0];
+				// d) any record
+				return $families[0];
 		}
 	}
 

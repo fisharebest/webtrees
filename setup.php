@@ -53,15 +53,15 @@ $method  = $request->getMethod();
 $route   = $request->get('route');
 
 switch ($method . ':' . $route) {
-default:
-	$url      = Html::url('setup.php', ['route' => 'setup']);
-	$response = new RedirectResponse($url);
-	break;
+	default:
+		$url      = Html::url('setup.php', ['route' => 'setup']);
+		$response = new RedirectResponse($url);
+		break;
 
-case 'GET:setup':
-case 'POST:setup':
-	$response = (new SetupController)->setup($request);
-	break;
+	case 'GET:setup':
+	case 'POST:setup':
+		$response = (new SetupController)->setup($request);
+		break;
 }
 
 $response->prepare($request)->send();

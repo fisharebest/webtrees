@@ -64,18 +64,18 @@ class Statement {
 				$key = ':' . $key;
 			}
 			switch (gettype($bind_variable)) {
-			case 'NULL':
-				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_NULL);
-				break;
-			case 'boolean':
-				$this->pdo_statement->bindValue($key, (int) $bind_variable, PDO::PARAM_INT);
-				break;
-			case 'integer':
-				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_INT);
-				break;
-			default:
-				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_STR);
-				break;
+				case 'NULL':
+					$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_NULL);
+					break;
+				case 'boolean':
+					$this->pdo_statement->bindValue($key, (int) $bind_variable, PDO::PARAM_INT);
+					break;
+				case 'integer':
+					$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_INT);
+					break;
+				default:
+					$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_STR);
+					break;
 			}
 		}
 

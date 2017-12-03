@@ -51,19 +51,19 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		header('Content-Type: text/html; charset=UTF-8');
 
 		switch ($mod_action) {
-		case 'search':
-			$search = Filter::get('search');
-			echo $this->search($search, $WT_TREE);
-			break;
-		case 'descendants':
-			$individual = Individual::getInstance(Filter::get('xref', WT_REGEX_XREF), $WT_TREE);
-			if ($individual) {
-				echo $this->loadSpouses($individual, 1);
-			}
-			break;
-		default:
-			http_response_code(404);
-			break;
+			case 'search':
+				$search = Filter::get('search');
+				echo $this->search($search, $WT_TREE);
+				break;
+			case 'descendants':
+				$individual = Individual::getInstance(Filter::get('xref', WT_REGEX_XREF), $WT_TREE);
+				if ($individual) {
+					echo $this->loadSpouses($individual, 1);
+				}
+				break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 

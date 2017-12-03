@@ -75,12 +75,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			$content .= I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
 		} else {
 			switch ($infoStyle) {
-			case 'list':
-				$content .= $this->changesList($records, $sortStyle, $show_user);
-				break;
-			case 'table':
-				$content .= $this->changesTable($records, $sortStyle, $show_user);
-				break;
+				case 'list':
+					$content .= $this->changesList($records, $sortStyle, $show_user);
+					break;
+				case 'table':
+					$content .= $this->changesTable($records, $sortStyle, $show_user);
+					break;
 			}
 		}
 
@@ -206,15 +206,15 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	 */
 	private function changesList(array $records, $sort, $show_user) {
 		switch ($sort) {
-		case 'name':
-			uasort($records, ['self', 'sortByNameAndChangeDate']);
-			break;
-		case 'date_asc':
-			uasort($records, ['self', 'sortByChangeDateAndName']);
-			$records = array_reverse($records);
-			break;
-		case 'date_desc':
-			uasort($records, ['self', 'sortByChangeDateAndName']);
+			case 'name':
+				uasort($records, ['self', 'sortByNameAndChangeDate']);
+				break;
+			case 'date_asc':
+				uasort($records, ['self', 'sortByChangeDateAndName']);
+				$records = array_reverse($records);
+				break;
+			case 'date_desc':
+				uasort($records, ['self', 'sortByChangeDateAndName']);
 		}
 
 		$html = '';
@@ -259,16 +259,16 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
 		switch ($sort) {
-		case 'name':
-		default:
-			$aaSorting = "[1,'asc'], [2,'desc']";
-			break;
-		case 'date_asc':
-			$aaSorting = "[2,'asc'], [1,'asc']";
-			break;
-		case 'date_desc':
-			$aaSorting = "[2,'desc'], [1,'asc']";
-			break;
+			case 'name':
+			default:
+				$aaSorting = "[1,'asc'], [2,'desc']";
+				break;
+			case 'date_asc':
+				$aaSorting = "[2,'asc'], [1,'asc']";
+				break;
+			case 'date_desc':
+				$aaSorting = "[2,'desc'], [1,'asc']";
+				break;
 		}
 
 		$html = '';
@@ -302,27 +302,27 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		foreach ($records as $record) {
 			$html .= '<tr><td>';
 			switch ($record::RECORD_TYPE) {
-			case 'INDI':
-				$html .= FontAwesome::semanticIcon('individual', I18N::translate('Individual'));
-				break;
-			case 'FAM':
-				$html .= FontAwesome::semanticicon('family', I18N::translate('Family'));
-				break;
-			case 'OBJE':
-				$html .= FontAwesome::semanticIcon('media', I18N::translate('Media'));
-				break;
-			case 'NOTE':
-				$html .= FontAwesome::semanticIcon('note', I18N::translate('Note'));
-				break;
-			case 'SOUR':
-				$html .= FontAwesome::semanticIcon('source', I18N::translate('Source'));
-				break;
-			case 'SUBM':
-				$html .= FontAwesome::semanticIcon('submitter', I18N::translate('Submitter'));
-				break;
-			case 'REPO':
-				$html .= FontAwesome::semanticIcon('repository', I18N::translate('Repository'));
-				break;
+				case 'INDI':
+					$html .= FontAwesome::semanticIcon('individual', I18N::translate('Individual'));
+					break;
+				case 'FAM':
+					$html .= FontAwesome::semanticicon('family', I18N::translate('Family'));
+					break;
+				case 'OBJE':
+					$html .= FontAwesome::semanticIcon('media', I18N::translate('Media'));
+					break;
+				case 'NOTE':
+					$html .= FontAwesome::semanticIcon('note', I18N::translate('Note'));
+					break;
+				case 'SOUR':
+					$html .= FontAwesome::semanticIcon('source', I18N::translate('Source'));
+					break;
+				case 'SUBM':
+					$html .= FontAwesome::semanticIcon('submitter', I18N::translate('Submitter'));
+					break;
+				case 'REPO':
+					$html .= FontAwesome::semanticIcon('repository', I18N::translate('Repository'));
+					break;
 			}
 			$html .= '</td>';
 			$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';

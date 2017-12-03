@@ -169,22 +169,22 @@ class Date {
 		}
 		// Now construct an object of the correct type
 		switch ($cal) {
-		case '@#DGREGORIAN@':
-			return new GregorianDate([$y, $m, $d]);
-		case '@#DJULIAN@':
-			return new JulianDate([$y, $m, $d]);
-		case '@#DHEBREW@':
-			return new JewishDate([$y, $m, $d]);
-		case '@#DHIJRI@':
-			return new HijriDate([$y, $m, $d]);
-		case '@#DFRENCH R@':
-			return new FrenchDate([$y, $m, $d]);
-		case '@#DJALALI@':
-			return new JalaliDate([$y, $m, $d]);
-		case '@#DROMAN@':
-			return new RomanDate([$y, $m, $d]);
-		default:
-			throw new \DomainException('Invalid calendar');
+			case '@#DGREGORIAN@':
+				return new GregorianDate([$y, $m, $d]);
+			case '@#DJULIAN@':
+				return new JulianDate([$y, $m, $d]);
+			case '@#DHEBREW@':
+				return new JewishDate([$y, $m, $d]);
+			case '@#DHIJRI@':
+				return new HijriDate([$y, $m, $d]);
+			case '@#DFRENCH R@':
+				return new FrenchDate([$y, $m, $d]);
+			case '@#DJALALI@':
+				return new JalaliDate([$y, $m, $d]);
+			case '@#DROMAN@':
+				return new RomanDate([$y, $m, $d]);
+			default:
+				throw new \DomainException('Invalid calendar');
 		}
 	}
 
@@ -291,42 +291,42 @@ class Date {
 
 		// Localise the date
 		switch ($q1 . $q2) {
-		case '':
-			$tmp = $d1 . $conv1;
-			break;
-		case 'ABT':
-			$tmp = /* I18N: Gedcom ABT dates */ I18N::translate('about %s', $d1 . $conv1);
-			break;
-		case 'CAL':
-			$tmp = /* I18N: Gedcom CAL dates */ I18N::translate('calculated %s', $d1 . $conv1);
-			break;
-		case 'EST':
-			$tmp = /* I18N: Gedcom EST dates */ I18N::translate('estimated %s', $d1 . $conv1);
-			break;
-		case 'INT':
-			$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, $this->text);
-			break;
-		case 'BEF':
-			$tmp = /* I18N: Gedcom BEF dates */ I18N::translate('before %s', $d1 . $conv1);
-			break;
-		case 'AFT':
-			$tmp = /* I18N: Gedcom AFT dates */ I18N::translate('after %s', $d1 . $conv1);
-			break;
-		case 'FROM':
-			$tmp = /* I18N: Gedcom FROM dates */ I18N::translate('from %s', $d1 . $conv1);
-			break;
-		case 'TO':
-			$tmp = /* I18N: Gedcom TO dates */ I18N::translate('to %s', $d1 . $conv1);
-			break;
-		case 'BETAND':
-			$tmp = /* I18N: Gedcom BET-AND dates */ I18N::translate('between %s and %s', $d1 . $conv1, $d2 . $conv2);
-			break;
-		case 'FROMTO':
-			$tmp = /* I18N: Gedcom FROM-TO dates */ I18N::translate('from %s to %s', $d1 . $conv1, $d2 . $conv2);
-			break;
-		default:
-			$tmp = I18N::translate('Invalid date');
-			break; // e.g. BET without AND
+			case '':
+				$tmp = $d1 . $conv1;
+				break;
+			case 'ABT':
+				$tmp = /* I18N: Gedcom ABT dates */ I18N::translate('about %s', $d1 . $conv1);
+				break;
+			case 'CAL':
+				$tmp = /* I18N: Gedcom CAL dates */ I18N::translate('calculated %s', $d1 . $conv1);
+				break;
+			case 'EST':
+				$tmp = /* I18N: Gedcom EST dates */ I18N::translate('estimated %s', $d1 . $conv1);
+				break;
+			case 'INT':
+				$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, $this->text);
+				break;
+			case 'BEF':
+				$tmp = /* I18N: Gedcom BEF dates */ I18N::translate('before %s', $d1 . $conv1);
+				break;
+			case 'AFT':
+				$tmp = /* I18N: Gedcom AFT dates */ I18N::translate('after %s', $d1 . $conv1);
+				break;
+			case 'FROM':
+				$tmp = /* I18N: Gedcom FROM dates */ I18N::translate('from %s', $d1 . $conv1);
+				break;
+			case 'TO':
+				$tmp = /* I18N: Gedcom TO dates */ I18N::translate('to %s', $d1 . $conv1);
+				break;
+			case 'BETAND':
+				$tmp = /* I18N: Gedcom BET-AND dates */ I18N::translate('between %s and %s', $d1 . $conv1, $d2 . $conv2);
+				break;
+			case 'FROMTO':
+				$tmp = /* I18N: Gedcom FROM-TO dates */ I18N::translate('from %s to %s', $d1 . $conv1, $d2 . $conv2);
+				break;
+			default:
+				$tmp = I18N::translate('Invalid date');
+				break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
 			$tmp = I18N::translate('%1$s (%2$s)', $tmp, $this->text);
@@ -445,33 +445,33 @@ class Date {
 		}
 
 		switch ($format) {
-		case 0:
-			// Years - integer only (for statistics, rather than for display)
-			if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
-				return $d1->minimumDate()->getAge(false, $jd, false);
-			} else {
-				return -1;
-			}
-		case 1:
-			// Days - integer only (for sorting, rather than for display)
-			if ($jd && $d1->minimumJulianDay()) {
-				return $jd - $d1->minimumJulianDay();
-			} else {
-				return -1;
-			}
-		case 2:
-			// Just years, in local digits, with warning for negative/
-			if ($jd && $d1->minimumJulianDay()) {
-				if ($d1->minimumJulianDay() > $jd) {
-					return '<i class="icon-warning"></i>';
+			case 0:
+				// Years - integer only (for statistics, rather than for display)
+				if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
+					return $d1->minimumDate()->getAge(false, $jd, false);
 				} else {
-					return I18N::number($d1->minimumDate()->getAge(false, $jd));
+					return -1;
 				}
-			} else {
-				return '';
-			}
-		default:
-			throw new \InvalidArgumentException('format: ' . $format);
+			case 1:
+				// Days - integer only (for sorting, rather than for display)
+				if ($jd && $d1->minimumJulianDay()) {
+					return $jd - $d1->minimumJulianDay();
+				} else {
+					return -1;
+				}
+			case 2:
+				// Just years, in local digits, with warning for negative/
+				if ($jd && $d1->minimumJulianDay()) {
+					if ($d1->minimumJulianDay() > $jd) {
+						return '<i class="icon-warning"></i>';
+					} else {
+						return I18N::number($d1->minimumDate()->getAge(false, $jd));
+					}
+				} else {
+					return '';
+				}
+			default:
+				throw new \InvalidArgumentException('format: ' . $format);
 		}
 	}
 
@@ -515,32 +515,32 @@ class Date {
 	public static function compare(Date $a, Date $b) {
 		// Get min/max JD for each date.
 		switch ($a->qual1) {
-		case 'BEF':
-			$amin = $a->minimumJulianDay() - 1;
-			$amax = $amin;
-			break;
-		case 'AFT':
-			$amax = $a->maximumJulianDay() + 1;
-			$amin = $amax;
-			break;
-		default:
-			$amin = $a->minimumJulianDay();
-			$amax = $a->maximumJulianDay();
-			break;
+			case 'BEF':
+				$amin = $a->minimumJulianDay() - 1;
+				$amax = $amin;
+				break;
+			case 'AFT':
+				$amax = $a->maximumJulianDay() + 1;
+				$amin = $amax;
+				break;
+			default:
+				$amin = $a->minimumJulianDay();
+				$amax = $a->maximumJulianDay();
+				break;
 		}
 		switch ($b->qual1) {
-		case 'BEF':
-			$bmin = $b->minimumJulianDay() - 1;
-			$bmax = $bmin;
-			break;
-		case 'AFT':
-			$bmax = $b->maximumJulianDay() + 1;
-			$bmin = $bmax;
-			break;
-		default:
-			$bmin = $b->minimumJulianDay();
-			$bmax = $b->maximumJulianDay();
-			break;
+			case 'BEF':
+				$bmin = $b->minimumJulianDay() - 1;
+				$bmax = $bmin;
+				break;
+			case 'AFT':
+				$bmax = $b->maximumJulianDay() + 1;
+				$bmin = $bmax;
+				break;
+			default:
+				$bmin = $b->minimumJulianDay();
+				$bmax = $b->maximumJulianDay();
+				break;
 		}
 		if ($amax < $bmin) {
 			return -1;

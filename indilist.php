@@ -37,12 +37,12 @@ if ($show_all_firstnames === 'yes') {
 
 $show_marnm = Filter::get('show_marnm', 'no|yes');
 switch ($show_marnm) {
-case 'no':
-case 'yes':
-	Auth::user()->setPreference('indilist.php_show_marnm', $show_marnm);
-	break;
-default:
-	$show_marnm = Auth::user()->getPreference('indilist.php_show_marnm');
+	case 'no':
+	case 'yes':
+		Auth::user()->setPreference('indilist.php_show_marnm', $show_marnm);
+		break;
+	default:
+		$show_marnm = Auth::user()->getPreference('indilist.php_show_marnm');
 }
 
 // Make sure selections are consistent.
@@ -79,16 +79,16 @@ if ($show_all === 'yes') {
 	}
 	$url = '?surname=' . rawurlencode($surname) . '&amp;ged=' . $controller->tree()->getNameUrl();
 	switch ($falpha) {
-	case '':
-		break;
-	case '@':
-		$legend .= ', ' . I18N::translateContext('Unknown given name', '…');
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
-		break;
-	default:
-		$legend .= ', ' . Html::escape($falpha) . '…';
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
-		break;
+		case '':
+			break;
+		case '@':
+			$legend .= ', ' . I18N::translateContext('Unknown given name', '…');
+			$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
+			break;
+		default:
+			$legend .= ', ' . Html::escape($falpha) . '…';
+			$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $controller->tree()->getNameUrl();
+			break;
 	}
 	$show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
@@ -173,16 +173,16 @@ if ($show === 'indi' || $show === 'surn') {
 	if ($show === 'surn') {
 		// Show the surname list
 		switch ($controller->tree()->getPreference('SURNAME_LIST_STYLE')) {
-		case 'style1':
-			echo FunctionsPrintLists::surnameList($surns, 3, true, 'indilist.php', $controller->tree());
-			break;
-		case 'style3':
-			echo FunctionsPrintLists::surnameTagCloud($surns, 'indilist.php', true, $controller->tree());
-			break;
-		case 'style2':
-		default:
-			echo FunctionsPrintLists::surnameTable($surns, 'indilist.php', $controller->tree());
-			break;
+			case 'style1':
+				echo FunctionsPrintLists::surnameList($surns, 3, true, 'indilist.php', $controller->tree());
+				break;
+			case 'style3':
+				echo FunctionsPrintLists::surnameTagCloud($surns, 'indilist.php', true, $controller->tree());
+				break;
+			case 'style2':
+			default:
+				echo FunctionsPrintLists::surnameTable($surns, 'indilist.php', $controller->tree());
+				break;
 		}
 	} else {
 		// Show the list

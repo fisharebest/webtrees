@@ -93,23 +93,23 @@ class Fact {
 	public function getTarget() {
 		$xref = trim($this->getValue(), '@');
 		switch ($this->tag) {
-		case 'FAMC':
-		case 'FAMS':
-			return Family::getInstance($xref, $this->getParent()->getTree());
-		case 'HUSB':
-		case 'WIFE':
-		case 'CHIL':
-			return Individual::getInstance($xref, $this->getParent()->getTree());
-		case 'SOUR':
-			return Source::getInstance($xref, $this->getParent()->getTree());
-		case 'OBJE':
-			return Media::getInstance($xref, $this->getParent()->getTree());
-		case 'REPO':
-			return Repository::getInstance($xref, $this->getParent()->getTree());
-		case 'NOTE':
-			return Note::getInstance($xref, $this->getParent()->getTree());
-		default:
-			return GedcomRecord::getInstance($xref, $this->getParent()->getTree());
+			case 'FAMC':
+			case 'FAMS':
+				return Family::getInstance($xref, $this->getParent()->getTree());
+			case 'HUSB':
+			case 'WIFE':
+			case 'CHIL':
+				return Individual::getInstance($xref, $this->getParent()->getTree());
+			case 'SOUR':
+				return Source::getInstance($xref, $this->getParent()->getTree());
+			case 'OBJE':
+				return Media::getInstance($xref, $this->getParent()->getTree());
+			case 'REPO':
+				return Repository::getInstance($xref, $this->getParent()->getTree());
+			case 'NOTE':
+				return Note::getInstance($xref, $this->getParent()->getTree());
+			default:
+				return GedcomRecord::getInstance($xref, $this->getParent()->getTree());
 		}
 	}
 
@@ -263,15 +263,15 @@ class Fact {
 	 */
 	public function getLabel() {
 		switch ($this->tag) {
-		case 'EVEN':
-		case 'FACT':
-			if ($this->getAttribute('TYPE') !== '') {
-				// Custom FACT/EVEN - with a TYPE
-				return I18N::translate(Html::escape($this->getAttribute('TYPE')));
-			}
-			// no break - drop into next case
-		default:
-			return GedcomTag::getLabel($this->tag, $this->parent);
+			case 'EVEN':
+			case 'FACT':
+				if ($this->getAttribute('TYPE') !== '') {
+					// Custom FACT/EVEN - with a TYPE
+					return I18N::translate(Html::escape($this->getAttribute('TYPE')));
+				}
+				// no break - drop into next case
+			default:
+				return GedcomTag::getLabel($this->tag, $this->parent);
 		}
 	}
 

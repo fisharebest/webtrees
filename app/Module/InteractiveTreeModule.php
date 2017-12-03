@@ -125,20 +125,20 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		global $controller, $WT_TREE;
 
 		switch ($mod_action) {
-		case 'treeview':
-			$controller = new ChartController;
-			$tv         = new TreeView('tv');
+			case 'treeview':
+				$controller = new ChartController;
+				$tv         = new TreeView('tv');
 
-			$person = $controller->getSignificantIndividual();
+				$person = $controller->getSignificantIndividual();
 
-			list($html, $js) = $tv->drawViewport($person, 4);
+				list($html, $js) = $tv->drawViewport($person, 4);
 
-			$controller
-				->setPageTitle(I18N::translate('Interactive tree of %s', $person->getFullName()))
-				->pageHeader()
-				->addExternalJavascript($this->js())
-				->addInlineJavascript($js)
-				->addInlineJavascript('
+				$controller
+					->setPageTitle(I18N::translate('Interactive tree of %s', $person->getFullName()))
+					->pageHeader()
+					->addExternalJavascript($this->js())
+					->addInlineJavascript($js)
+					->addInlineJavascript('
 					if (document.createStyleSheet) {
 						document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
 					} else {
@@ -146,38 +146,38 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 					}
 				');
 
-			echo View::make('interactive-tree-page', [
-				'title'      => $controller->getPageTitle(),
-				'individual' => $controller->root,
-				'html'       => $html,
-				//'css'        => $this->css(),
-				//'js'         => $this->js(),
-			]);
+				echo View::make('interactive-tree-page', [
+					'title'      => $controller->getPageTitle(),
+					'individual' => $controller->root,
+					'html'       => $html,
+					//'css'        => $this->css(),
+					//'js'         => $this->js(),
+				]);
 
-			break;
+				break;
 
-		case 'getDetails':
-			header('Content-Type: text/html; charset=UTF-8');
-			$pid        = Filter::get('pid', WT_REGEX_XREF);
-			$i          = Filter::get('instance');
-			$tv         = new TreeView($i);
-			$individual = Individual::getInstance($pid, $WT_TREE);
-			if ($individual) {
-				echo $tv->getDetails($individual);
-			}
-			break;
+			case 'getDetails':
+				header('Content-Type: text/html; charset=UTF-8');
+				$pid        = Filter::get('pid', WT_REGEX_XREF);
+				$i          = Filter::get('instance');
+				$tv         = new TreeView($i);
+				$individual = Individual::getInstance($pid, $WT_TREE);
+				if ($individual) {
+					echo $tv->getDetails($individual);
+				}
+				break;
 
-		case 'getPersons':
-			header('Content-Type: text/html; charset=UTF-8');
-			$q  = Filter::get('q');
-			$i  = Filter::get('instance');
-			$tv = new TreeView($i);
-			echo $tv->getPersons($q);
-			break;
+			case 'getPersons':
+				header('Content-Type: text/html; charset=UTF-8');
+				$q  = Filter::get('q');
+				$i  = Filter::get('instance');
+				$tv = new TreeView($i);
+				echo $tv->getPersons($q);
+				break;
 
-		default:
-			http_response_code(404);
-			break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 

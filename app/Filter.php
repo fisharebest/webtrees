@@ -50,10 +50,10 @@ class Filter {
 	 */
 	public static function formatText($text, Tree $WT_TREE) {
 		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
-		case 'markdown':
-			return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
-		default:
-			return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
+			case 'markdown':
+				return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
+			default:
+				return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
 		}
 	}
 

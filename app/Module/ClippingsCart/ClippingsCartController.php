@@ -187,19 +187,19 @@ class ClippingsCartController {
 			}
 
 			switch ($this->privatize_export) {
-			case 'gedadmin':
-				$access_level = Auth::PRIV_NONE;
-				break;
-			case 'user':
-				$access_level = Auth::PRIV_USER;
-				break;
-			case 'visitor':
-				$access_level = Auth::PRIV_PRIVATE;
-				break;
-			case 'none':
-			default:
-				$access_level = Auth::PRIV_HIDE;
-				break;
+				case 'gedadmin':
+					$access_level = Auth::PRIV_NONE;
+					break;
+				case 'user':
+					$access_level = Auth::PRIV_USER;
+					break;
+				case 'visitor':
+					$access_level = Auth::PRIV_PRIVATE;
+					break;
+				case 'none':
+				default:
+					$access_level = Auth::PRIV_HIDE;
+					break;
 			}
 
 			foreach (array_keys($this->cart[$WT_TREE->getTreeId()]) as $xref) {
@@ -231,28 +231,28 @@ class ClippingsCartController {
 						$record = utf8_decode($record);
 					}
 					switch ($object::RECORD_TYPE) {
-					case 'INDI':
-					case 'FAM':
-						$filetext .= $record . "\n";
-						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
-						break;
-					case 'SOUR':
-						$filetext .= $record . "\n";
-						$filetext .= '1 NOTE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
-						break;
-					case 'OBJE':
-						// Add the file to the archive
-						if (file_exists($object->getServerFilename())) {
-							$fp = fopen($object->getServerFilename(), 'r');
-							$zip_filesystem->writeStream($path . $object->getFilename(), $fp);
-							fclose($fp);
-						}
-						$filetext .= $record . "\n";
-						break;
-					default:
-						$filetext .= $record . "\n";
-						break;
+						case 'INDI':
+						case 'FAM':
+							$filetext .= $record . "\n";
+							$filetext .= "1 SOUR @WEBTREES@\n";
+							$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
+							break;
+						case 'SOUR':
+							$filetext .= $record . "\n";
+							$filetext .= '1 NOTE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
+							break;
+						case 'OBJE':
+							// Add the file to the archive
+							if (file_exists($object->getServerFilename())) {
+								$fp = fopen($object->getServerFilename(), 'r');
+								$zip_filesystem->writeStream($path . $object->getFilename(), $fp);
+								fclose($fp);
+							}
+							$filetext .= $record . "\n";
+							break;
+						default:
+							$filetext .= $record . "\n";
+							break;
 					}
 				}
 			}
@@ -402,22 +402,22 @@ class ClippingsCartController {
 		$b = GedcomRecord::getInstance($b, $WT_TREE);
 		if ($a && $b) {
 			switch ($a::RECORD_TYPE) {
-			case 'INDI': $t1 = 1; break;
-			case 'FAM':  $t1 = 2; break;
-			case 'SOUR': $t1 = 3; break;
-			case 'REPO': $t1 = 4; break;
-			case 'OBJE': $t1 = 5; break;
-			case 'NOTE': $t1 = 6; break;
-			default:     $t1 = 7; break;
+				case 'INDI': $t1 = 1; break;
+				case 'FAM':  $t1 = 2; break;
+				case 'SOUR': $t1 = 3; break;
+				case 'REPO': $t1 = 4; break;
+				case 'OBJE': $t1 = 5; break;
+				case 'NOTE': $t1 = 6; break;
+				default:     $t1 = 7; break;
 			}
 			switch ($b::RECORD_TYPE) {
-			case 'INDI': $t2 = 1; break;
-			case 'FAM':  $t2 = 2; break;
-			case 'SOUR': $t2 = 3; break;
-			case 'REPO': $t2 = 4; break;
-			case 'OBJE': $t2 = 5; break;
-			case 'NOTE': $t2 = 6; break;
-			default:     $t2 = 7; break;
+				case 'INDI': $t2 = 1; break;
+				case 'FAM':  $t2 = 2; break;
+				case 'SOUR': $t2 = 3; break;
+				case 'REPO': $t2 = 4; break;
+				case 'OBJE': $t2 = 5; break;
+				case 'NOTE': $t2 = 6; break;
+				default:     $t2 = 7; break;
 			}
 			if ($t1 != $t2) {
 				return $t1 - $t2;

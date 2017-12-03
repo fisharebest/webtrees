@@ -131,12 +131,12 @@ case 'load_json':
 			// Datatables numbers columns 0, 1, 2
 			// MySQL numbers columns 1, 2, 3
 			switch ($value['dir']) {
-			case 'asc':
-				$order_by .= (1 + $value['column']) . " ASC ";
-				break;
-			case 'desc':
-				$order_by .= (1 + $value['column']) . " DESC ";
-				break;
+				case 'asc':
+					$order_by .= (1 + $value['column']) . " ASC ";
+					break;
+				case 'desc':
+					$order_by .= (1 + $value['column']) . " DESC ";
+					break;
 			}
 		}
 	} else {

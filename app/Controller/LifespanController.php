@@ -497,23 +497,23 @@ class LifespanController extends PageController {
 	 */
 	private function getCalendarDate($date) {
 		switch ($this->calendar) {
-		case 'julian':
-			$caldate = new JulianDate($date);
-			break;
-		case 'french':
-			$caldate = new FrenchDate($date);
-			break;
-		case 'jewish':
-			$caldate = new JewishDate($date);
-			break;
-		case 'hijri':
-			$caldate = new HijriDate($date);
-			break;
-		case 'jalali':
-			$caldate = new JalaliDate($date);
-			break;
-		default:
-			$caldate = new GregorianDate($date);
+			case 'julian':
+				$caldate = new JulianDate($date);
+				break;
+			case 'french':
+				$caldate = new FrenchDate($date);
+				break;
+			case 'jewish':
+				$caldate = new JewishDate($date);
+				break;
+			case 'hijri':
+				$caldate = new HijriDate($date);
+				break;
+			case 'jalali':
+				$caldate = new JalaliDate($date);
+				break;
+			default:
+				$caldate = new GregorianDate($date);
 		}
 
 		return $caldate;

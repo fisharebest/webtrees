@@ -777,69 +777,69 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_QUICK', $INDI_FACTS_QUICK]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_UNIQUE', $INDI_FACTS_UNIQUE]);
 	switch ($LANGUAGE) {
-	case 'catalan':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ca']);
-		break;
-	case 'english-uk':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-GB']);
-		break;
-	case 'polish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pl']);
-		break;
-	case 'italian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'it']);
-		break;
-	case 'spanish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'es']);
-		break;
-	case 'finnish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fi']);
-		break;
-	case 'french':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fr']);
-		break;
-	case 'german':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'de']);
-		break;
-	case 'danish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'da']);
-		break;
-	case 'portuguese':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pt']);
-		break;
-	case 'hebrew':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'he']);
-		break;
-	case 'estonian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'et']);
-		break;
-	case 'turkish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'tr']);
-		break;
-	case 'dutch':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nl']);
-		break;
-	case 'slovak':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sk']);
-		break;
-	case 'norwegian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nn']);
-		break;
-	case 'slovenian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sl']);
-		break;
-	case 'hungarian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'hu']);
-		break;
-	case 'swedish':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sv']);
-		break;
-	case 'russian':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ru']);
-		break;
-	default:
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-US']);
-		break;
+		case 'catalan':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ca']);
+			break;
+		case 'english-uk':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-GB']);
+			break;
+		case 'polish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pl']);
+			break;
+		case 'italian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'it']);
+			break;
+		case 'spanish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'es']);
+			break;
+		case 'finnish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fi']);
+			break;
+		case 'french':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fr']);
+			break;
+		case 'german':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'de']);
+			break;
+		case 'danish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'da']);
+			break;
+		case 'portuguese':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pt']);
+			break;
+		case 'hebrew':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'he']);
+			break;
+		case 'estonian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'et']);
+			break;
+		case 'turkish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'tr']);
+			break;
+		case 'dutch':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nl']);
+			break;
+		case 'slovak':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sk']);
+			break;
+		case 'norwegian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nn']);
+			break;
+		case 'slovenian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sl']);
+			break;
+		case 'hungarian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'hu']);
+			break;
+		case 'swedish':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sv']);
+			break;
+		case 'russian':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ru']);
+			break;
+		default:
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-US']);
+			break;
 	}
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_DESCENDANCY_GENERATIONS', $MAX_DESCENDANCY_GENERATIONS]);
@@ -892,26 +892,26 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_LIST_STYLE', $SURNAME_LIST_STYLE]);
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_TRADITION', $SURNAME_TRADITION]);
 	switch ($THEME_DIR) {
-	case '':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', '']);
-		break;
-	case 'themes/cloudy/':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'clouds']);
-		break;
-	case 'themes/minimal/':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'minimal']);
-		break;
-	case 'themes/simplyblue/':
-	case 'themes/simplygreen/':
-	case 'themes/simplyred/':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'colors']);
-		break;
-	case 'themes/xenea/':
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'xenea']);
-		break;
-	default:
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'webtrees']);
-		break;
+		case '':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', '']);
+			break;
+		case 'themes/cloudy/':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'clouds']);
+			break;
+		case 'themes/minimal/':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'minimal']);
+			break;
+		case 'themes/simplyblue/':
+		case 'themes/simplygreen/':
+		case 'themes/simplyred/':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'colors']);
+			break;
+		case 'themes/xenea/':
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'xenea']);
+			break;
+		default:
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'webtrees']);
+			break;
 	}
 	$stmt_gedcom_setting->execute([$GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY]);
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);
