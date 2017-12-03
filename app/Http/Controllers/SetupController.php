@@ -442,7 +442,7 @@ class SetupController extends BaseController {
 
 		foreach ($extensions as $extension => $features) {
 			if (!extension_loaded($extension)) {
-				$warnings[] =  I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features);
+				$warnings[] = I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features);
 			}
 		}
 

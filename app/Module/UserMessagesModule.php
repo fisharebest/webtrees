@@ -88,8 +88,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		if (!empty($users)) {
 			$url = route('user-page', ['ged' => $WT_TREE->getName()]);
 			$content .= '<form action="message.php" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
-			$content .= '<input type="hidden" name="ged" value="' . Html::escape($WT_TREE->getName()) .  '">';
-			$content .= '<input type="hidden" name="url" value="' . Html::escape($url) .  '">';
+			$content .= '<input type="hidden" name="ged" value="' . Html::escape($WT_TREE->getName()) . '">';
+			$content .= '<input type="hidden" name="url" value="' . Html::escape($url) . '">';
 			$content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
 			$content .= '<select id="to" name="to">';
 			$content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';

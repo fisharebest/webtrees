@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
  * The "Legacy" base controller was used to inject Javascript into responses.
  * Once this is updated, we can remove it.
  */
-class BaseController extends LegacyBaseController{
+class BaseController extends LegacyBaseController {
 	protected $layout = 'layouts/default';
 
 	/**

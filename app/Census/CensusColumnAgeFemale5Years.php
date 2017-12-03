@@ -40,7 +40,7 @@ class CensusColumnAgeFemale5Years extends AbstractCensusColumn implements Census
 				$years -= $years % 5;
 			}
 
-			return (string)$years;
+			return (string) $years;
 		}
 	}
 }
