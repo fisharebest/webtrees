@@ -819,7 +819,7 @@ abstract class AbstractTheme {
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) {
+				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function (Menu $menu) {
 					return $menu->bootstrap4();
 				}, $this->individualBoxMenu($individual))) . '</ul>' .
 				'</div>' .
@@ -871,7 +871,7 @@ abstract class AbstractTheme {
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function(Menu $menu) {
+				'<ul class="' . $personBoxClass . '">' . implode('', array_map(function (Menu $menu) {
 					return $menu->bootstrap4();
 				}, $this->individualBoxMenu($individual))) . '</ul>' .
 				'</div>' .

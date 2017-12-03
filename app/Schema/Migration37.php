@@ -56,7 +56,7 @@ class Migration37 implements MigrationInterface {
 			"multimedia_format    VARCHAR(4)   NOT NULL," .
 			"source_media_type    VARCHAR(15)  NOT NULL," .
 			"descriptive_title    VARCHAR(248) NOT NULL," .
-			"KEY `##media_file_ix1` (m_id, m_file),".
+			"KEY `##media_file_ix1` (m_id, m_file)," .
 			"KEY `##media_file_ix2` (m_file, m_id)," .
 			"KEY `##media_file_ix3` (m_file, multimedia_file_refn)," .
 			"KEY `##media_file_ix4` (m_file, multimedia_format)," .
