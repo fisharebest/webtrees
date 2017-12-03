@@ -156,29 +156,29 @@ set_exception_handler(function (Throwable $ex) {
 		$frame += ['args' => [], 'file' => 'unknown', 'line' => 'unknown'];
 		array_walk($frame['args'], function (&$arg) {
 			switch (gettype($arg)) {
-			case 'boolean':
-			case 'integer':
-			case 'double':
-			case 'null':
-				$arg = var_export($arg, true);
-				break;
-			case 'string':
-				if (mb_strlen($arg) > 30) {
-					$arg = mb_substr($arg, 0, 30) . '…';
-				}
-				$arg = var_export($arg, true);
-				break;
-			case 'object':
-				$reflection = new \ReflectionClass($arg);
-				if (is_object($arg) && method_exists($arg, '__toString')) {
-					$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
-				} else {
-					$arg = '[' . $reflection->getShortName() . ']';
-				}
-				break;
-			default:
-				$arg = '[' . gettype($arg) . ']';
-				break;
+				case 'boolean':
+				case 'integer':
+				case 'double':
+				case 'null':
+					$arg = var_export($arg, true);
+					break;
+				case 'string':
+					if (mb_strlen($arg) > 30) {
+						$arg = mb_substr($arg, 0, 30) . '…';
+					}
+					$arg = var_export($arg, true);
+					break;
+				case 'object':
+					$reflection = new \ReflectionClass($arg);
+					if (is_object($arg) && method_exists($arg, '__toString')) {
+						$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
+					} else {
+						$arg = '[' . $reflection->getShortName() . ']';
+					}
+					break;
+				default:
+					$arg = '[' . gettype($arg) . ']';
+					break;
 			}
 		});
 		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);

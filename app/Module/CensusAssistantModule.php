@@ -57,28 +57,28 @@ class CensusAssistantModule extends AbstractModule {
 		global $WT_TREE;
 
 		switch ($mod_action) {
-		case 'census-header':
-			header('Content-Type: text/html; charset=utf8');
-			$census = Filter::get('census');
-			echo $this->censusTableHeader(new $census);
-			break;
+			case 'census-header':
+				header('Content-Type: text/html; charset=utf8');
+				$census = Filter::get('census');
+				echo $this->censusTableHeader(new $census);
+				break;
 
-		case 'census-individual':
-			header('Content-Type: text/html; charset=utf8');
-			$census     = Filter::get('census');
-			$individual = Individual::getInstance(Filter::get('xref'), $WT_TREE);
-			$head       = Individual::getInstance(Filter::get('head'), $WT_TREE);
-			echo $this->censusTableRow(new $census, $individual, $head);
-			break;
+			case 'census-individual':
+				header('Content-Type: text/html; charset=utf8');
+				$census     = Filter::get('census');
+				$individual = Individual::getInstance(Filter::get('xref'), $WT_TREE);
+				$head       = Individual::getInstance(Filter::get('head'), $WT_TREE);
+				echo $this->censusTableRow(new $census, $individual, $head);
+				break;
 
-		case 'media_find':
-			self::mediaFind();
-			break;
-		case 'media_query_3a':
-			self::mediaQuery();
-			break;
-		default:
-			http_response_code(404);
+			case 'media_find':
+				self::mediaFind();
+				break;
+			case 'media_query_3a':
+				self::mediaQuery();
+				break;
+			default:
+				http_response_code(404);
 		}
 	}
 

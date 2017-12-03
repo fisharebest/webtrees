@@ -124,47 +124,47 @@ class AncestryController extends ChartController {
 		}
 
 		switch ($this->chart_style) {
-		case 0:
-			// List
-			return
-				'<ul class="chart_common">' .
-				$this->printChildAscendancy($this->root, 1, $this->generations - 1) .
-				'</ul>';
+			case 0:
+				// List
+				return
+					'<ul class="chart_common">' .
+					$this->printChildAscendancy($this->root, 1, $this->generations - 1) .
+					'</ul>';
 
-		case 1:
-			// Booklet
-			// first page : show indi facts
-			FunctionsPrint::printPedigreePerson($this->root);
-			// process the tree
-			$ancestors = $this->sosaAncestors($this->generations - 1);
-			$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+			case 1:
+				// Booklet
+				// first page : show indi facts
+				FunctionsPrint::printPedigreePerson($this->root);
+				// process the tree
+				$ancestors = $this->sosaAncestors($this->generations - 1);
+				$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 
-			foreach ($ancestors as $sosa => $individual) {
-				foreach ($individual->getChildFamilies() as $family) {
-					FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $this->show_cousins);
+				foreach ($ancestors as $sosa => $individual) {
+					foreach ($individual->getChildFamilies() as $family) {
+						FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $this->show_cousins);
+					}
 				}
-			}
-			break;
+				break;
 
-		case 2:
-			// Individual list
-			$ancestors = $this->sosaAncestors($this->generations);
-			$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+			case 2:
+				// Individual list
+				$ancestors = $this->sosaAncestors($this->generations);
+				$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 
-			return FunctionsPrintLists::individualTable($ancestors, 'sosa');
+				return FunctionsPrintLists::individualTable($ancestors, 'sosa');
 
-		case 3:
-			// Family list
-			$ancestors = $this->sosaAncestors($this->generations - 1);
-			$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-			$families  = [];
-			foreach ($ancestors as $individual) {
-				foreach ($individual->getChildFamilies() as $family) {
-					$families[$family->getXref()] = $family;
+			case 3:
+				// Family list
+				$ancestors = $this->sosaAncestors($this->generations - 1);
+				$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+				$families  = [];
+				foreach ($ancestors as $individual) {
+					foreach ($individual->getChildFamilies() as $family) {
+						$families[$family->getXref()] = $family;
+					}
 				}
-			}
 
-			return FunctionsPrintLists::familyTable($families);
+				return FunctionsPrintLists::familyTable($families);
 		}
 
 		return '';

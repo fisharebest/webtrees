@@ -198,27 +198,27 @@ class GedcomRecord {
 		}
 
 		switch ($type) {
-		case 'INDI':
-			$record = new Individual($xref, $gedcom, $pending, $tree);
-			break;
-		case 'FAM':
-			$record = new Family($xref, $gedcom, $pending, $tree);
-			break;
-		case 'SOUR':
-			$record = new Source($xref, $gedcom, $pending, $tree);
-			break;
-		case 'OBJE':
-			$record = new Media($xref, $gedcom, $pending, $tree);
-			break;
-		case 'REPO':
-			$record = new Repository($xref, $gedcom, $pending, $tree);
-			break;
-		case 'NOTE':
-			$record = new Note($xref, $gedcom, $pending, $tree);
-			break;
-		default:
-			$record = new self($xref, $gedcom, $pending, $tree);
-			break;
+			case 'INDI':
+				$record = new Individual($xref, $gedcom, $pending, $tree);
+				break;
+			case 'FAM':
+				$record = new Family($xref, $gedcom, $pending, $tree);
+				break;
+			case 'SOUR':
+				$record = new Source($xref, $gedcom, $pending, $tree);
+				break;
+			case 'OBJE':
+				$record = new Media($xref, $gedcom, $pending, $tree);
+				break;
+			case 'REPO':
+				$record = new Repository($xref, $gedcom, $pending, $tree);
+				break;
+			case 'NOTE':
+				$record = new Note($xref, $gedcom, $pending, $tree);
+				break;
+			default:
+				$record = new self($xref, $gedcom, $pending, $tree);
+				break;
 		}
 
 		// Store it in the cache
@@ -428,31 +428,31 @@ class GedcomRecord {
 		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
-		case Auth::PRIV_PRIVATE: // visitor
-			if ($this->disp_public === null) {
-				$this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
-			}
+			case Auth::PRIV_PRIVATE: // visitor
+				if ($this->disp_public === null) {
+					$this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
+				}
 
-			return $this->disp_public;
-		case Auth::PRIV_USER: // member
-			if ($this->disp_user === null) {
-				$this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
-			}
+				return $this->disp_public;
+			case Auth::PRIV_USER: // member
+				if ($this->disp_user === null) {
+					$this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
+				}
 
-			return $this->disp_user;
-		case Auth::PRIV_NONE: // admin
-			if ($this->disp_none === null) {
-				$this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
-			}
+				return $this->disp_user;
+			case Auth::PRIV_NONE: // admin
+				if ($this->disp_none === null) {
+					$this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
+				}
 
-			return $this->disp_none;
-		case Auth::PRIV_HIDE: // hidden from admins
-			// We use this value to bypass privacy checks. For example,
-			// when downloading data or when calculating privacy itself.
-			return true;
-		default:
-			// Should never get here.
-			return false;
+				return $this->disp_none;
+			case Auth::PRIV_HIDE: // hidden from admins
+				// We use this value to bypass privacy checks. For example,
+				// when downloading data or when calculating privacy itself.
+				return true;
+			default:
+				// Should never get here.
+				return false;
 		}
 	}
 
@@ -809,10 +809,10 @@ class GedcomRecord {
 			}
 			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {
 				switch ($style) {
-				case 1:
-					return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
-				case 2:
-					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
+					case 1:
+						return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
+					case 2:
+						return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
 				}
 			}
 		}

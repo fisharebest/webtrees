@@ -70,25 +70,25 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		 * Select GEDCOM
 		 */
 		switch ($gedcom) {
-		case '__current__':
-			$stats = new Stats($WT_TREE);
-			break;
-		case '__default__':
-			$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM'));
-			if ($tree) {
-				$stats = new Stats($tree);
-			} else {
+			case '__current__':
 				$stats = new Stats($WT_TREE);
-			}
-			break;
-		default:
-			$tree = Tree::findByName($gedcom);
-			if ($tree) {
-				$stats = new Stats($tree);
-			} else {
-				$stats = new Stats($WT_TREE);
-			}
-			break;
+				break;
+			case '__default__':
+				$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM'));
+				if ($tree) {
+					$stats = new Stats($tree);
+				} else {
+					$stats = new Stats($WT_TREE);
+				}
+				break;
+			default:
+				$tree = Tree::findByName($gedcom);
+				if ($tree) {
+					$stats = new Stats($tree);
+				} else {
+					$stats = new Stats($WT_TREE);
+				}
+				break;
 		}
 
 		/*

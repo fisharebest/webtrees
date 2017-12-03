@@ -329,12 +329,12 @@ abstract class AbstractTheme {
 		$method = $user->getPreference('contactmethod');
 
 		switch ($method) {
-		case 'none':
-			return '';
-		case 'mailto':
-			return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
-		default:
-			return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+			case 'none':
+				return '';
+			case 'mailto':
+				return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+			default:
+				return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
@@ -1413,20 +1413,20 @@ abstract class AbstractTheme {
 		$records  = [];
 		foreach ($favorites as $favorite) {
 			switch ($favorite['type']) {
-			case 'URL':
-				$submenus[] = new Menu($favorite['title'], $favorite['url']);
-				break;
-			case 'INDI':
-			case 'FAM':
-			case 'SOUR':
-			case 'OBJE':
-			case 'NOTE':
-				$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
-				if ($record && $record->canShowName()) {
-					$submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
-					$records[]  = $record;
-				}
-				break;
+				case 'URL':
+					$submenus[] = new Menu($favorite['title'], $favorite['url']);
+					break;
+				case 'INDI':
+				case 'FAM':
+				case 'SOUR':
+				case 'OBJE':
+				case 'NOTE':
+					$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
+					if ($record && $record->canShowName()) {
+						$submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
+						$records[]  = $record;
+					}
+					break;
 			}
 		}
 

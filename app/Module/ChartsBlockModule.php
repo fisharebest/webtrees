@@ -77,57 +77,57 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		if ($person) {
 			$content = '';
 			switch ($type) {
-			case 'pedigree':
-				$title           = I18N::translate('Pedigree of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref());
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-				$content .= '<td class="myCharts">';
-				ob_start();
-				FunctionsPrint::printPedigreePerson($person);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printPersonPedigree($person, 1);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '</tr></table>';
-				break;
-			case 'descendants':
-				$title           = I18N::translate('Descendants of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref());
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				ob_start();
-				$chartController->printDescendency($person, 1, false);
-				$content .= ob_get_clean();
-				break;
-			case 'hourglass':
-				$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref());
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printDescendency($person, 1, false);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printPersonPedigree($person, 1);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '</tr></table>';
-				break;
-			case 'treenav':
-				$title = I18N::translate('Interactive tree of %s', $person->getFullName());
-				$mod   = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-				$tv    = new TreeView;
-				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
-				$content .= '<script src="' . $mod->js() . '"></script>';
-				list($html, $js) = $tv->drawViewport($person, 2);
-				$content .= $html . '<script>' . $js . '</script>';
-				break;
+				case 'pedigree':
+					$title           = I18N::translate('Pedigree of %s', $person->getFullName());
+					$chartController = new HourglassController($person->getXref());
+					$controller->addInlineJavascript($chartController->setupJavascript());
+					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
+					$content .= '<td class="myCharts">';
+					ob_start();
+					FunctionsPrint::printPedigreePerson($person);
+					$content .= ob_get_clean();
+					$content .= '</td>';
+					$content .= '<td>';
+					ob_start();
+					$chartController->printPersonPedigree($person, 1);
+					$content .= ob_get_clean();
+					$content .= '</td>';
+					$content .= '</tr></table>';
+					break;
+				case 'descendants':
+					$title           = I18N::translate('Descendants of %s', $person->getFullName());
+					$chartController = new HourglassController($person->getXref());
+					$controller->addInlineJavascript($chartController->setupJavascript());
+					ob_start();
+					$chartController->printDescendency($person, 1, false);
+					$content .= ob_get_clean();
+					break;
+				case 'hourglass':
+					$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
+					$chartController = new HourglassController($person->getXref());
+					$controller->addInlineJavascript($chartController->setupJavascript());
+					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
+					$content .= '<td>';
+					ob_start();
+					$chartController->printDescendency($person, 1, false);
+					$content .= ob_get_clean();
+					$content .= '</td>';
+					$content .= '<td>';
+					ob_start();
+					$chartController->printPersonPedigree($person, 1);
+					$content .= ob_get_clean();
+					$content .= '</td>';
+					$content .= '</tr></table>';
+					break;
+				case 'treenav':
+					$title = I18N::translate('Interactive tree of %s', $person->getFullName());
+					$mod   = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+					$tv    = new TreeView;
+					$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+					$content .= '<script src="' . $mod->js() . '"></script>';
+					list($html, $js) = $tv->drawViewport($person, 2);
+					$content .= $html . '<script>' . $js . '</script>';
+					break;
 			}
 		} else {
 			$content = I18N::translate('You must select an individual and a chart type in the block preferences');

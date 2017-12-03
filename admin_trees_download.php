@@ -37,19 +37,19 @@ $privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin'
 
 if ($action === 'download') {
 	switch ($privatize_export) {
-	default:
-	case 'gedadmin':
-		$access_level = Auth::PRIV_NONE;
-		break;
-	case 'user':
-		$access_level = Auth::PRIV_USER;
-		break;
-	case 'visitor':
-		$access_level = Auth::PRIV_PRIVATE;
-		break;
-	case 'none':
-		$access_level = Auth::PRIV_HIDE;
-		break;
+		default:
+		case 'gedadmin':
+			$access_level = Auth::PRIV_NONE;
+			break;
+		case 'user':
+			$access_level = Auth::PRIV_USER;
+			break;
+		case 'visitor':
+			$access_level = Auth::PRIV_PRIVATE;
+			break;
+		case 'none':
+			$access_level = Auth::PRIV_HIDE;
+			break;
 	}
 
 	$exportOptions = [

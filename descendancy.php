@@ -27,25 +27,25 @@ $controller->restrictAccess(Module::isActiveChart($controller->tree(), 'descenda
 // Only generate the content for interactive users (not search robots).
 if (Filter::getBool('ajax') && Session::has('initiated')) {
 	switch ($controller->chart_style) {
-	case 0: // List
-		echo '<ul id="descendancy_chart" class="chart_common">';
-		$controller->printChildDescendancy($controller->root, $controller->generations);
-		echo '</ul>';
-		break;
-	case 1: // Booklet
-		$show_cousins = true;
-		echo '<div id="descendancy_booklet">';
-		$controller->printChildFamily($controller->root, $controller->generations);
-		echo '</div>';
-		break;
-	case 2: // Individual list
-		$descendants = $controller->individualDescendancy($controller->root, $controller->generations, []);
-		echo '<div id="descendancy-list">', FunctionsPrintLists::individualTable($descendants), '</div>';
-		break;
-	case 3: // Family list
-		$descendants = $controller->familyDescendancy($controller->root, $controller->generations, []);
-		echo '<div id="descendancy-list">', FunctionsPrintLists::familyTable($descendants), '</div>';
-		break;
+		case 0: // List
+			echo '<ul id="descendancy_chart" class="chart_common">';
+			$controller->printChildDescendancy($controller->root, $controller->generations);
+			echo '</ul>';
+			break;
+		case 1: // Booklet
+			$show_cousins = true;
+			echo '<div id="descendancy_booklet">';
+			$controller->printChildFamily($controller->root, $controller->generations);
+			echo '</div>';
+			break;
+		case 2: // Individual list
+			$descendants = $controller->individualDescendancy($controller->root, $controller->generations, []);
+			echo '<div id="descendancy-list">', FunctionsPrintLists::individualTable($descendants), '</div>';
+			break;
+		case 3: // Family list
+			$descendants = $controller->familyDescendancy($controller->root, $controller->generations, []);
+			echo '<div id="descendancy-list">', FunctionsPrintLists::familyTable($descendants), '</div>';
+			break;
 	}
 	echo $controller->getJavascript();
 

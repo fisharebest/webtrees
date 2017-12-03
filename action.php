@@ -62,14 +62,14 @@ case 'copy-fact':
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getFactId() == $fact_id) {
 				switch ($fact->getTag()) {
-				case 'NOTE':
-				case 'SOUR':
-				case 'OBJE':
-					$type = 'all'; // paste this anywhere
-					break;
-				default:
-					$type = $record::RECORD_TYPE; // paste only to the same record type
-					break;
+					case 'NOTE':
+					case 'SOUR':
+					case 'OBJE':
+						$type = 'all'; // paste this anywhere
+						break;
+					default:
+						$type = $record::RECORD_TYPE; // paste only to the same record type
+						break;
 				}
 				$clipboard = Session::get('clipboard');
 				if (!is_array($clipboard)) {

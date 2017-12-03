@@ -110,23 +110,23 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		switch ($infoStyle) {
-		case 'list':
-			foreach ($yahrzeits as $yahrzeit) {
-				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
-					$ind = $yahrzeit->getParent();
-					$content .= '<a href="' . $ind->getHtmlUrl() . '" class="list_item name2">' . $ind->getFullName() . '</a>' . $ind->getSexImage();
-					$content .= '<div class="indent">';
-					$content .= $yahrzeit->getDate()->display(true);
-					$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
-					$content .= '</div>';
+			case 'list':
+				foreach ($yahrzeits as $yahrzeit) {
+					if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
+						$ind = $yahrzeit->getParent();
+						$content .= '<a href="' . $ind->getHtmlUrl() . '" class="list_item name2">' . $ind->getFullName() . '</a>' . $ind->getSexImage();
+						$content .= '<div class="indent">';
+						$content .= $yahrzeit->getDate()->display(true);
+						$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
+						$content .= '</div>';
+					}
 				}
-			}
-			break;
-		case 'table':
-		default:
-			$table_id = Uuid::uuid4(); // table requires a unique ID
-			$controller
-				->addInlineJavascript('
+				break;
+			case 'table':
+			default:
+				$table_id = Uuid::uuid4(); // table requires a unique ID
+				$controller
+					->addInlineJavascript('
 					$("#' . $table_id . '").dataTable({
 						dom: \'t\',
 						' . I18N::datatablesI18N() . ',
@@ -148,52 +148,52 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 					});
 					$("#' . $table_id . '").css("visibility", "visible");
 				');
-			$content = '';
-			$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
-			$content .= '<thead><tr>';
-			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
-			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
-			$content .= '<th>' . I18N::translate('Death') . '</th>';
-			$content .= '<th>DEAT</th>';
-			$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
-			$content .= '<th>' . GedcomTag::getLabel('_YART') . '</th>';
-			$content .= '<th>_YART</th>';
-			$content .= '</tr></thead><tbody>';
+				$content = '';
+				$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
+				$content .= '<thead><tr>';
+				$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
+				$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
+				$content .= '<th>' . I18N::translate('Death') . '</th>';
+				$content .= '<th>DEAT</th>';
+				$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
+				$content .= '<th>' . GedcomTag::getLabel('_YART') . '</th>';
+				$content .= '<th>_YART</th>';
+				$content .= '</tr></thead><tbody>';
 
-			foreach ($yahrzeits as $yahrzeit) {
-				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
-					$content .= '<tr>';
-					$ind = $yahrzeit->getParent();
-					// Individual name(s)
-					$name = $ind->getFullName();
-					$url  = $ind->getHtmlUrl();
-					$content .= '<td>';
-					$content .= '<a href="' . $url . '">' . $name . '</a>';
-					$content .= $ind->getSexImage();
-					$addname = $ind->getAddName();
-					if ($addname) {
-						$content .= '<br><a href="' . $url . '">' . $addname . '</a>';
-					}
-					$content .= '</td>';
-					$content .= '<td>' . $ind->getSortName() . '</td>';
+				foreach ($yahrzeits as $yahrzeit) {
+					if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
+						$content .= '<tr>';
+						$ind = $yahrzeit->getParent();
+						// Individual name(s)
+						$name = $ind->getFullName();
+						$url  = $ind->getHtmlUrl();
+						$content .= '<td>';
+						$content .= '<a href="' . $url . '">' . $name . '</a>';
+						$content .= $ind->getSexImage();
+						$addname = $ind->getAddName();
+						if ($addname) {
+							$content .= '<br><a href="' . $url . '">' . $addname . '</a>';
+						}
+						$content .= '</td>';
+						$content .= '<td>' . $ind->getSortName() . '</td>';
 
-					// death/yahrzeit event date
-					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
-					$content .= '<td>' . $yahrzeit->getDate()->julianDay() . '</td>'; // sortable date
+						// death/yahrzeit event date
+						$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
+						$content .= '<td>' . $yahrzeit->getDate()->julianDay() . '</td>'; // sortable date
 
-					// Anniversary
-					$content .= '<td>' . $yahrzeit->anniv . '</td>';
+						// Anniversary
+						$content .= '<td>' . $yahrzeit->anniv . '</td>';
 
-					// upcomming yahrzeit dates
-					switch ($calendar) {
-					case 'gregorian':
-						$today = new GregorianDate($yahrzeit->jd);
-						break;
-					case 'jewish':
-					default:
-						$today = new JewishDate($yahrzeit->jd);
-						break;
-					}
+						// upcomming yahrzeit dates
+						switch ($calendar) {
+							case 'gregorian':
+								$today = new GregorianDate($yahrzeit->jd);
+								break;
+							case 'jewish':
+							default:
+								$today = new JewishDate($yahrzeit->jd);
+								break;
+						}
 					$td = new Date($today->format('%@ %A %O %E'));
 					$content .= '<td>' . $td->display() . '</td>';
 					$content .= '<td>' . $td->julianDay() . '</td>'; // sortable date

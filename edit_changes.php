@@ -35,72 +35,72 @@ $change_id = Filter::getInteger('change_id');
 $url       = Filter::get('url', null, 'index.php');
 
 switch ($action) {
-case 'reject':
-	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
-	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
-	// Reject a change, and subsequent changes to the same record
-	Database::prepare(
-		"UPDATE `##change`" .
-		" SET   status     = 'rejected'" .
-		" WHERE status     = 'pending'" .
-		" AND   gedcom_id  = ?" .
-		" AND   xref       = ?" .
-		" AND   change_id >= ?"
-	)->execute([$gedcom_id, $xref, $change_id]);
-	break;
-case 'accept':
-	$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
-	$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
-	// Accept a change, and all previous changes to the same record
-	$all_changes = Database::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
-		" FROM  `##change` c" .
-		" JOIN  `##gedcom` g USING (gedcom_id)" .
-		" WHERE c.status   = 'pending'" .
-		" AND   gedcom_id  = ?" .
-		" AND   xref       = ?" .
-		" AND   change_id <= ?" .
-		" ORDER BY change_id"
-	)->execute([$gedcom_id, $xref, $change_id])->fetchAll();
-	foreach ($all_changes as $change) {
-		if (empty($change->new_gedcom)) {
-			// delete
-			FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
-		} else {
-			// add/update
-			FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
+	case 'reject':
+		$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+		$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+		// Reject a change, and subsequent changes to the same record
+		Database::prepare(
+			"UPDATE `##change`" .
+			" SET   status     = 'rejected'" .
+			" WHERE status     = 'pending'" .
+			" AND   gedcom_id  = ?" .
+			" AND   xref       = ?" .
+			" AND   change_id >= ?"
+		)->execute([$gedcom_id, $xref, $change_id]);
+		break;
+	case 'accept':
+		$gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+		$xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute([$change_id])->fetchOne();
+		// Accept a change, and all previous changes to the same record
+		$all_changes = Database::prepare(
+			"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
+			" FROM  `##change` c" .
+			" JOIN  `##gedcom` g USING (gedcom_id)" .
+			" WHERE c.status   = 'pending'" .
+			" AND   gedcom_id  = ?" .
+			" AND   xref       = ?" .
+			" AND   change_id <= ?" .
+			" ORDER BY change_id"
+		)->execute([$gedcom_id, $xref, $change_id])->fetchAll();
+		foreach ($all_changes as $change) {
+			if (empty($change->new_gedcom)) {
+				// delete
+				FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
+			} else {
+				// add/update
+				FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
+			}
+			Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
+			Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 		}
-		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
-		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
-	}
-	break;
-case 'rejectall':
-	Database::prepare(
-		"UPDATE `##change`" .
-		" SET status='rejected'" .
-		" WHERE status='pending' AND gedcom_id=?"
-	)->execute([$WT_TREE->getTreeId()]);
-	break;
-case 'acceptall':
-	$all_changes = Database::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
-		" FROM `##change` c" .
-		" JOIN `##gedcom` g USING (gedcom_id)" .
-		" WHERE c.status='pending' AND gedcom_id=?" .
-		" ORDER BY change_id"
-	)->execute([$WT_TREE->getTreeId()])->fetchAll();
-	foreach ($all_changes as $change) {
-		if (empty($change->new_gedcom)) {
-			// delete
-			FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
-		} else {
-			// add/update
-			FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
+		break;
+	case 'rejectall':
+		Database::prepare(
+			"UPDATE `##change`" .
+			" SET status='rejected'" .
+			" WHERE status='pending' AND gedcom_id=?"
+		)->execute([$WT_TREE->getTreeId()]);
+		break;
+	case 'acceptall':
+		$all_changes = Database::prepare(
+			"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
+			" FROM `##change` c" .
+			" JOIN `##gedcom` g USING (gedcom_id)" .
+			" WHERE c.status='pending' AND gedcom_id=?" .
+			" ORDER BY change_id"
+		)->execute([$WT_TREE->getTreeId()])->fetchAll();
+		foreach ($all_changes as $change) {
+			if (empty($change->new_gedcom)) {
+				// delete
+				FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
+			} else {
+				// add/update
+				FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
+			}
+			Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
+			Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 		}
-		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute([$change->change_id]);
-		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
-	}
-	break;
+		break;
 }
 
 $rows = Database::prepare(
@@ -120,27 +120,27 @@ foreach ($rows as $row) {
 	preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
 	switch ($match[1]) {
-	case 'INDI':
-		$row->record = new Individual($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	case 'FAM':
-		$row->record = new Family($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	case 'SOUR':
-		$row->record = new Source($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	case 'REPO':
-		$row->record = new Repository($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	case 'OBJE':
-		$row->record = new Media($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	case 'NOTE':
-		$row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
-	default:
-		$row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
-		break;
+		case 'INDI':
+			$row->record = new Individual($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		case 'FAM':
+			$row->record = new Family($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		case 'SOUR':
+			$row->record = new Source($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		case 'REPO':
+			$row->record = new Repository($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		case 'OBJE':
+			$row->record = new Media($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		case 'NOTE':
+			$row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
+		default:
+			$row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
+			break;
 	}
 
 	$row->accept_url = Html::url('edit_changes.php', [

@@ -95,13 +95,13 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'admin_batch_update':
-			echo $this->main();
-			break;
+			case 'admin_batch_update':
+				echo $this->main();
+				break;
 
-		default:
-			http_response_code(404);
-			break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 
@@ -126,36 +126,36 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 			$this->getAllXrefs();
 
 			switch ($this->action) {
-			case 'update':
-				$record = self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
-				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
-					if ($newrecord != $record) {
-						if ($newrecord) {
-							GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
-						} else {
-							GedcomRecord::getInstance($this->xref, $WT_TREE)->deleteRecord();
-						}
-					}
-				}
-				$this->xref = $this->findNextXref($this->xref);
-				break;
-			case 'update_all':
-				foreach ($this->all_xrefs as $xref => $type) {
-					$record = self::getLatestRecord($xref, $type);
-					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
+				case 'update':
+					$record = self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
+					if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
+						$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
 						if ($newrecord != $record) {
 							if ($newrecord) {
-								GedcomRecord::getInstance($xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
+								GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
 							} else {
-								GedcomRecord::getInstance($xref, $WT_TREE)->deleteRecord();
+								GedcomRecord::getInstance($this->xref, $WT_TREE)->deleteRecord();
 							}
 						}
 					}
-				}
-				$this->xref = '';
-				break;
+					$this->xref = $this->findNextXref($this->xref);
+					break;
+				case 'update_all':
+					foreach ($this->all_xrefs as $xref => $type) {
+						$record = self::getLatestRecord($xref, $type);
+						if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
+							$newrecord = $this->PLUGIN->updateRecord($xref, $record);
+							if ($newrecord != $record) {
+								if ($newrecord) {
+									GedcomRecord::getInstance($xref, $WT_TREE)->updateRecord($newrecord, !$this->PLUGIN->chan);
+								} else {
+									GedcomRecord::getInstance($xref, $WT_TREE)->deleteRecord();
+								}
+							}
+						}
+					}
+					$this->xref = '';
+					break;
 			}
 
 			// Make sure that our requested record really does need updating.
@@ -313,28 +313,28 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		$vars = [];
 		foreach ($this->PLUGIN->getRecordTypesToUpdate() as $type) {
 			switch ($type) {
-			case 'INDI':
-				$sql[]  = "SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
-				$vars[] = $WT_TREE->getTreeId();
-				break;
-			case 'FAM':
-				$sql[]  = "SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
-				$vars[] = $WT_TREE->getTreeId();
-				break;
-			case 'SOUR':
-				$sql[]  = "SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
-				$vars[] = $WT_TREE->getTreeId();
-				break;
-			case 'OBJE':
-				$sql[]  = "SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
-				$vars[] = $WT_TREE->getTreeId();
-				break;
-			default:
-				$sql[]  = "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
-				$vars[] = $type;
-				$vars[] = $type;
-				$vars[] = $WT_TREE->getTreeId();
-				break;
+				case 'INDI':
+					$sql[]  = "SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
+					$vars[] = $WT_TREE->getTreeId();
+					break;
+				case 'FAM':
+					$sql[]  = "SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
+					$vars[] = $WT_TREE->getTreeId();
+					break;
+				case 'SOUR':
+					$sql[]  = "SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
+					$vars[] = $WT_TREE->getTreeId();
+					break;
+				case 'OBJE':
+					$sql[]  = "SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
+					$vars[] = $WT_TREE->getTreeId();
+					break;
+				default:
+					$sql[]  = "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
+					$vars[] = $type;
+					$vars[] = $type;
+					$vars[] = $WT_TREE->getTreeId();
+					break;
 			}
 		}
 		$this->all_xrefs = Database::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
@@ -410,20 +410,20 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		global $WT_TREE;
 
 		switch ($type) {
-		case 'INDI':
-			return Individual::getInstance($xref, $WT_TREE)->getGedcom();
-		case 'FAM':
-			return Family::getInstance($xref, $WT_TREE)->getGedcom();
-		case 'SOUR':
-			return Source::getInstance($xref, $WT_TREE)->getGedcom();
-		case 'REPO':
-			return Repository::getInstance($xref, $WT_TREE)->getGedcom();
-		case 'OBJE':
-			return Media::getInstance($xref, $WT_TREE)->getGedcom();
-		case 'NOTE':
-			return Note::getInstance($xref, $WT_TREE)->getGedcom();
-		default:
-			return GedcomRecord::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'INDI':
+				return Individual::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'FAM':
+				return Family::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'SOUR':
+				return Source::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'REPO':
+				return Repository::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'OBJE':
+				return Media::getInstance($xref, $WT_TREE)->getGedcom();
+			case 'NOTE':
+				return Note::getInstance($xref, $WT_TREE)->getGedcom();
+			default:
+				return GedcomRecord::getInstance($xref, $WT_TREE)->getGedcom();
 		}
 	}
 

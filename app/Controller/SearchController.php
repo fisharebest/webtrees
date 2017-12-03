@@ -169,46 +169,46 @@ class SearchController extends PageController {
 
 		// If we want to show associated persons, build the list
 		switch ($this->action) {
-		case 'header':
-			// We can type in an XREF into the header search, and jump straight to it.
-			// Otherwise, the header search is the same as the general search
-			if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
-				$record = GedcomRecord::getInstance($this->query, $this->tree());
-				if ($record && $record->canShowName()) {
-					header('Location: ' . $record->getRawUrl());
+			case 'header':
+				// We can type in an XREF into the header search, and jump straight to it.
+				// Otherwise, the header search is the same as the general search
+				if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
+					$record = GedcomRecord::getInstance($this->query, $this->tree());
+					if ($record && $record->canShowName()) {
+						header('Location: ' . $record->getRawUrl());
+						exit;
+					}
+				}
+				$this->action = 'general';
+				$this->srindi = 'checked';
+				$this->srfams = 'checked';
+				$this->srsour = 'checked';
+				$this->srnote = 'checked';
+				$this->setPageTitle(I18N::translate('General search'));
+				$this->generalSearch();
+				break;
+			case 'general':
+				$this->setPageTitle(I18N::translate('General search'));
+				$this->generalSearch();
+				break;
+			case 'soundex':
+				// Create a dummy search query to use as a title to the results list
+				$this->query = trim($this->firstname . ' ' . $this->lastname . ' ' . $this->place);
+				$this->setPageTitle(I18N::translate('Phonetic search'));
+				$this->soundexSearch();
+				break;
+			case 'replace':
+				$this->setPageTitle(I18N::translate('Search and replace'));
+				$this->search_trees = [$this->tree()];
+				$this->srindi       = 'checked';
+				$this->srfams       = 'checked';
+				$this->srsour       = 'checked';
+				$this->srnote       = 'checked';
+				if (Filter::post('query')) {
+					$this->searchAndReplace($this->tree());
+					header('Location: search.php?action=replace&query=' . rawurlencode($this->query) . '&replace=' . rawurlencode($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
 					exit;
 				}
-			}
-			$this->action = 'general';
-			$this->srindi = 'checked';
-			$this->srfams = 'checked';
-			$this->srsour = 'checked';
-			$this->srnote = 'checked';
-			$this->setPageTitle(I18N::translate('General search'));
-			$this->generalSearch();
-			break;
-		case 'general':
-			$this->setPageTitle(I18N::translate('General search'));
-			$this->generalSearch();
-			break;
-		case 'soundex':
-			// Create a dummy search query to use as a title to the results list
-			$this->query = trim($this->firstname . ' ' . $this->lastname . ' ' . $this->place);
-			$this->setPageTitle(I18N::translate('Phonetic search'));
-			$this->soundexSearch();
-			break;
-		case 'replace':
-			$this->setPageTitle(I18N::translate('Search and replace'));
-			$this->search_trees = [$this->tree()];
-			$this->srindi       = 'checked';
-			$this->srfams       = 'checked';
-			$this->srsour       = 'checked';
-			$this->srnote       = 'checked';
-			if (Filter::post('query')) {
-				$this->searchAndReplace($this->tree());
-				header('Location: search.php?action=replace&query=' . rawurlencode($this->query) . '&replace=' . rawurlencode($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
-				exit;
-			}
 		}
 	}
 

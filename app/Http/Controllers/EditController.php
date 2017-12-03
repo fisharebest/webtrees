@@ -190,77 +190,77 @@ class EditController extends BaseController {
 		$file_location = $request->get('file_location');
 
 		switch ($file_location) {
-		case 'url':
-			$remote = $request->get('remote');
+			case 'url':
+				$remote = $request->get('remote');
 
-			if (strpos($remote, '://') !== false) {
-				return $remote;
-			} else {
-				return '';
-			}
-
-		case 'unused':
-			$unused = $request->get('unused');
-			$unused = str_replace('\\', '/', $unused);
-
-			if (strpos($unused, '../') !== false) {
-				return '';
-			}
-
-			return $unused;
-
-		case 'upload':
-		default:
-			$media_folder = $tree->getPreference('MEDIA_DIRECTORY');
-			$folder       = $request->get('folder', '');
-			$auto         = $request->get('auto', '0');
-			$new_file     = $request->get('new_file', '');
-
-			$uploaded_file = $request->files->get('file');
-			if ($uploaded_file === null) {
-				return '';
-			}
-
-			// The filename
-			$new_file = str_replace('\\', '/', $new_file);
-			if ($new_file !== '' && strpos($new_file, '/') === false) {
-				$file = $new_file;
-			} else {
-				$file = $uploaded_file->getClientOriginalName();
-			}
-
-			// The folder
-			$folder = str_replace('\\', '/', $folder);
-			$folder = trim($folder, '/');
-			if ($folder !== '') {
-				$folder .= '/';
-			}
-
-			// Invalid path?
-			if (strpos($folder, '../') !== false || !File::mkdir(WT_DATA_DIR . $media_folder . $folder)) {
-				$auto = '1';
-			}
-
-			// Generate a unique name for the file?
-			if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
-				$folder    = '';
-				$extension = $uploaded_file->guessExtension();
-				$file      = sha1_file($uploaded_file->getPathname()) . '.' . $extension;
-			}
-
-			try {
-				//if ($uploaded_file->isValid()) {
-				//	$uploaded_file->move(WT_DATA_DIR . $media_folder . $folder, $file);
-				if (is_uploaded_file($_FILES['file']['tmp_name'])) {
-					move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $media_folder . $folder . $file);
-
-					return $folder . $file;
+				if (strpos($remote, '://') !== false) {
+					return $remote;
+				} else {
+					return '';
 				}
-			} catch (FileException $ex) {
-				DebugBar::addThrowable($ex);
-			}
 
-			return '';
+			case 'unused':
+				$unused = $request->get('unused');
+				$unused = str_replace('\\', '/', $unused);
+
+				if (strpos($unused, '../') !== false) {
+					return '';
+				}
+
+				return $unused;
+
+			case 'upload':
+			default:
+				$media_folder = $tree->getPreference('MEDIA_DIRECTORY');
+				$folder       = $request->get('folder', '');
+				$auto         = $request->get('auto', '0');
+				$new_file     = $request->get('new_file', '');
+
+				$uploaded_file = $request->files->get('file');
+				if ($uploaded_file === null) {
+					return '';
+				}
+
+				// The filename
+				$new_file = str_replace('\\', '/', $new_file);
+				if ($new_file !== '' && strpos($new_file, '/') === false) {
+					$file = $new_file;
+				} else {
+					$file = $uploaded_file->getClientOriginalName();
+				}
+
+				// The folder
+				$folder = str_replace('\\', '/', $folder);
+				$folder = trim($folder, '/');
+				if ($folder !== '') {
+					$folder .= '/';
+				}
+
+				// Invalid path?
+				if (strpos($folder, '../') !== false || !File::mkdir(WT_DATA_DIR . $media_folder . $folder)) {
+					$auto = '1';
+				}
+
+				// Generate a unique name for the file?
+				if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
+					$folder    = '';
+					$extension = $uploaded_file->guessExtension();
+					$file      = sha1_file($uploaded_file->getPathname()) . '.' . $extension;
+				}
+
+				try {
+					//if ($uploaded_file->isValid()) {
+					//	$uploaded_file->move(WT_DATA_DIR . $media_folder . $folder, $file);
+					if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+						move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $media_folder . $folder . $file);
+
+						return $folder . $file;
+					}
+				} catch (FileException $ex) {
+					DebugBar::addThrowable($ex);
+				}
+
+				return '';
 		}
 	}
 

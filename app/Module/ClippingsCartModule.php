@@ -62,36 +62,36 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'ajax':
-			$html = $this->getSidebarAjaxContent();
-			header('Content-Type: text/html; charset=UTF-8');
-			echo $html;
-			break;
-		case 'index':
-			global $controller, $WT_TREE;
+			case 'ajax':
+				$html = $this->getSidebarAjaxContent();
+				header('Content-Type: text/html; charset=UTF-8');
+				echo $html;
+				break;
+			case 'index':
+				global $controller, $WT_TREE;
 
-			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
+				$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-			$clip_ctrl = new ClippingsCartController;
-			$cart      = Session::get('cart');
+				$clip_ctrl = new ClippingsCartController;
+				$cart      = Session::get('cart');
 
-			$controller = new PageController;
-			$controller
-				->setPageTitle($this->getTitle())
-				->pageHeader();
+				$controller = new PageController;
+				$controller
+					->setPageTitle($this->getTitle())
+					->pageHeader();
 
-			echo '<script>';
-			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
-			echo '</script>';
-			echo '<div class="clipping-cart">';
+				echo '<script>';
+				echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
+				echo '</script>';
+				echo '<div class="clipping-cart">';
 
-			if (!$cart[$WT_TREE->getTreeId()]) {
-				echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
-			}
+				if (!$cart[$WT_TREE->getTreeId()]) {
+					echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
+				}
 
-			if ($clip_ctrl->action == 'add') {
-				$record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
-				if ($clip_ctrl->type === 'FAM') { ?>
+				if ($clip_ctrl->action == 'add') {
+					$record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
+					if ($clip_ctrl->type === 'FAM') { ?>
 					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
@@ -117,14 +117,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 									<td class="optionbox">
 										<input type="radio" name="others" value="members" checked>
 										<?= /* I18N: %s is a family (husband + wife) */
-										I18N::translate('%s and their children', $record->getFullName()) ?>
+											I18N::translate('%s and their children', $record->getFullName()) ?>
 									</td>
 								</tr>
 								<tr>
 									<td class="optionbox">
 										<input type="radio" name="others" value="descendants">
 										<?= /* I18N: %s is a family (husband + wife) */
-										I18N::translate('%s and their descendants', $record->getFullName()) ?>
+											I18N::translate('%s and their descendants', $record->getFullName()) ?>
 									</td>
 								</tr>
 							</tbody>
@@ -166,14 +166,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="parents">
 											<?php
-											if ($record->getSex() === 'F') {
-												echo /* I18N: %s is a woman's name */
-												I18N::translate('%s, her parents and siblings', $record->getFullName());
-											} else {
-												echo /* I18N: %s is a man's name */
-												I18N::translate('%s, his parents and siblings', $record->getFullName());
-											}
-											?>
+												if ($record->getSex() === 'F') {
+													echo /* I18N: %s is a woman's name */
+													I18N::translate('%s, her parents and siblings', $record->getFullName());
+												} else {
+													echo /* I18N: %s is a man's name */
+													I18N::translate('%s, his parents and siblings', $record->getFullName());
+												}
+												?>
 										</label>
 									</td>
 								</tr>
@@ -182,14 +182,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="members">
 											<?php
-											if ($record->getSex() === 'F') {
-												echo /* I18N: %s is a woman's name */
-												I18N::translate('%s, her spouses and children', $record->getFullName());
-											} else {
-												echo /* I18N: %s is a man's name */
-												I18N::translate('%s, his spouses and children', $record->getFullName());
-											}
-											?>
+												if ($record->getSex() === 'F') {
+													echo /* I18N: %s is a woman's name */
+													I18N::translate('%s, her spouses and children', $record->getFullName());
+												} else {
+													echo /* I18N: %s is a man's name */
+													I18N::translate('%s, his spouses and children', $record->getFullName());
+												}
+												?>
 										</label>
 									</td>
 								</tr>
@@ -198,18 +198,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="ancestors" id="ancestors">
 											<?php
-											if ($record->getSex() === 'F') {
-												echo /* I18N: %s is a woman's name */
-												I18N::translate('%s and her ancestors', $record->getFullName());
-											} else {
-												echo /* I18N: %s is a man's name */
-												I18N::translate('%s and his ancestors', $record->getFullName());
-											}
-											?>
+												if ($record->getSex() === 'F') {
+													echo /* I18N: %s is a woman's name */
+													I18N::translate('%s and her ancestors', $record->getFullName());
+												} else {
+													echo /* I18N: %s is a man's name */
+													I18N::translate('%s and his ancestors', $record->getFullName());
+												}
+												?>
 										</label>
 										<br>
 										<?= I18N::translate('Number of generations') ?>
-										<input type="text" size="5" name="level1" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('ancestors');">
+											<input type="text" size="5" name="level1" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('ancestors');">
 									</td>
 								</tr>
 								<tr>
@@ -217,18 +217,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">
 											<?php
-											if ($record->getSex() === 'F') {
-												echo /* I18N: %s is a woman's name */
-												I18N::translate('%s, her ancestors and their families', $record->getFullName());
-											} else {
-												echo /* I18N: %s is a man's name */
-												I18N::translate('%s, his ancestors and their families', $record->getFullName());
-											}
-											?>
+												if ($record->getSex() === 'F') {
+													echo /* I18N: %s is a woman's name */
+													I18N::translate('%s, her ancestors and their families', $record->getFullName());
+												} else {
+													echo /* I18N: %s is a man's name */
+													I18N::translate('%s, his ancestors and their families', $record->getFullName());
+												}
+												?>
 										</label>
 										<br>
 										<?= I18N::translate('Number of generations') ?>
-										<input type="text" size="5" name="level2" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('ancestorsfamilies');">
+											<input type="text" size="5" name="level2" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('ancestorsfamilies');">
 									</td>
 								</tr>
 								<tr>
@@ -236,18 +236,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="descendants" id="descendants">
 											<?php
-											if ($record->getSex() === 'F') {
-												echo /* I18N: %s is a woman's name */
-												I18N::translate('%s, her spouses and descendants', $record->getFullName());
-											} else {
-												echo /* I18N: %s is a man's name */
-												I18N::translate('%s, his spouses and descendants', $record->getFullName());
-											}
-											?>
+												if ($record->getSex() === 'F') {
+													echo /* I18N: %s is a woman's name */
+													I18N::translate('%s, her spouses and descendants', $record->getFullName());
+												} else {
+													echo /* I18N: %s is a man's name */
+													I18N::translate('%s, his spouses and descendants', $record->getFullName());
+												}
+												?>
 										</label>
 										<br>
 										<?= I18N::translate('Number of generations') ?>
-										<input type="text" size="5" name="level3" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('descendants');">
+											<input type="text" size="5" name="level3" value="<?= $MAX_PEDIGREE_GENERATIONS ?>" onfocus="radAncestors('descendants');">
 									</td>
 								</tr>
 							</tbody>
@@ -290,7 +290,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<label>
 											<input type="radio" name="others" value="linked">
 											<?= /* I18N: %s is the name of a source */
-											I18N::translate('%s and the individuals that reference it.', $record->getFullName()) ?>
+												I18N::translate('%s and the individuals that reference it.', $record->getFullName()) ?>
 										</label>
 									</td>
 								</tr>
@@ -306,14 +306,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					</form>
 				</div>
 				<?php }
-			}
+				}
 
-			if (!$cart[$WT_TREE->getTreeId()]) {
-				if ($clip_ctrl->action != 'add') {
-					echo '<div class="center">';
-					echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
-					echo '</div>';
-					?>
+				if (!$cart[$WT_TREE->getTreeId()]) {
+					if ($clip_ctrl->action != 'add') {
+						echo '<div class="center">';
+						echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
+						echo '</div>';
+						?>
 					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" name="addin" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
@@ -340,17 +340,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					</form>
 				</div>
 					<?php
-				}
-				echo '<div class="center">';
-				// -- end new lines
-				echo I18N::translate('Your clippings cart is empty.');
-				echo '</div>';
-			} else {
-				// Keep track of the INDI from the parent page, otherwise it will
-				// get lost after ajax updates
-				$pid = Filter::get('pid', WT_REGEX_XREF);
+					}
+					echo '<div class="center">';
+					// -- end new lines
+					echo I18N::translate('Your clippings cart is empty.');
+					echo '</div>';
+				} else {
+					// Keep track of the INDI from the parent page, otherwise it will
+					// get lost after ajax updates
+					$pid = Filter::get('pid', WT_REGEX_XREF);
 
-				if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
+					if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
 					<form class="wt-page-options wt-page-options-clipping-cart hidden-print" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
 						<input type="hidden" name="mod_action" value="index">
@@ -460,32 +460,32 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					</thead>
 					<tbody>
 						<?php
-						foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
-							$record = GedcomRecord::getInstance($xref, $WT_TREE);
-							if ($record) {
-								switch ($record::RECORD_TYPE) {
-								case 'INDI':
-									$icon = 'icon-indis';
-									break;
-								case 'FAM':
-									$icon = 'icon-sfamily';
-									break;
-								case 'SOUR':
-									$icon = 'icon-source';
-									break;
-								case 'REPO':
-									$icon = 'icon-repository';
-									break;
-								case 'NOTE':
-									$icon = 'icon-note';
-									break;
-								case 'OBJE':
-									$icon = 'icon-media';
-									break;
-								default:
-									$icon = 'icon-clippings';
-									break;
-								}
+							foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
+								$record = GedcomRecord::getInstance($xref, $WT_TREE);
+								if ($record) {
+									switch ($record::RECORD_TYPE) {
+										case 'INDI':
+											$icon = 'icon-indis';
+											break;
+										case 'FAM':
+											$icon = 'icon-sfamily';
+											break;
+										case 'SOUR':
+											$icon = 'icon-source';
+											break;
+										case 'REPO':
+											$icon = 'icon-repository';
+											break;
+										case 'NOTE':
+											$icon = 'icon-note';
+											break;
+										case 'OBJE':
+											$icon = 'icon-media';
+											break;
+										default:
+											$icon = 'icon-clippings';
+											break;
+									}
 								?>
 								<tr>
 									<td class="list_value">
@@ -505,9 +505,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				<?php
 			}
 			break;
-		default:
-			http_response_code(404);
-			break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 
@@ -667,12 +667,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				$record = GedcomRecord::getInstance($xref, $WT_TREE);
 				if ($record instanceof Individual || $record instanceof Family) {
 					switch ($record::RECORD_TYPE) {
-					case 'INDI':
-						$icon = 'icon-indis';
-						break;
-					case 'FAM':
-						$icon = 'icon-sfamily';
-						break;
+						case 'INDI':
+							$icon = 'icon-indis';
+							break;
+						case 'FAM':
+							$icon = 'icon-sfamily';
+							break;
 					}
 					$out .= '<li>';
 					if (!empty($icon)) {

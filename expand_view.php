@@ -38,38 +38,38 @@ Functions::sortFacts($facts);
 
 foreach ($facts as $fact) {
 	switch ($fact->getTag()) {
-	case 'ADDR':
-	case 'ALIA':
-	case 'ASSO':
-	case 'CHAN':
-	case 'CHIL':
-	case 'EMAIL':
-	case 'FAMC':
-	case 'FAMS':
-	case 'HUSB':
-	case 'NAME':
-	case 'NOTE':
-	case 'OBJE':
-	case 'PHON':
-	case 'RESI':
-	case 'RESN':
-	case 'SEX':
-	case 'SOUR':
-	case 'SSN':
-	case 'SUBM':
-	case 'TITL':
-	case 'URL':
-	case 'WIFE':
-	case 'WWW':
-	case '_EMAIL':
-	case '_TODO':
-	case '_UID':
-	case '_WT_OBJE_SORT':
-		// Do not show these
-		break;
-	default:
-		// Simple version of FunctionsPrintFacts::print_fact()
-		echo $fact->summary();
-		break;
+		case 'ADDR':
+		case 'ALIA':
+		case 'ASSO':
+		case 'CHAN':
+		case 'CHIL':
+		case 'EMAIL':
+		case 'FAMC':
+		case 'FAMS':
+		case 'HUSB':
+		case 'NAME':
+		case 'NOTE':
+		case 'OBJE':
+		case 'PHON':
+		case 'RESI':
+		case 'RESN':
+		case 'SEX':
+		case 'SOUR':
+		case 'SSN':
+		case 'SUBM':
+		case 'TITL':
+		case 'URL':
+		case 'WIFE':
+		case 'WWW':
+		case '_EMAIL':
+		case '_TODO':
+		case '_UID':
+		case '_WT_OBJE_SORT':
+			// Do not show these
+			break;
+		default:
+			// Simple version of FunctionsPrintFacts::print_fact()
+			echo $fact->summary();
+			break;
 	}
 }
