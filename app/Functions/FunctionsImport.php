@@ -287,8 +287,8 @@ class FunctionsImport {
 					$tag = 'FILE';
 					break;
 				case 'FORMAT':
-					$tag = 'FORM';
 				case 'FORM':
+					$tag = 'FORM';
 					// Consistent commas
 					$data = preg_replace('/ *, */', ', ', $data);
 					break;
@@ -302,8 +302,8 @@ class FunctionsImport {
 					$tag = 'GRAD';
 					break;
 				case 'HEADER':
-					$tag = 'HEAD';
 				case 'HEAD':
+					$tag = 'HEAD';
 					// HEAD records don't have an XREF or DATA
 					if ($level == '0') {
 						$xref = '';
@@ -390,8 +390,8 @@ class FunctionsImport {
 					$tag = 'ORDN';
 					break;
 				case 'PEDIGREE':
-					$tag = 'PEDI';
 				case 'PEDI':
+					$tag = 'PEDI';
 					// PEDI values are lower case
 					$data = strtolower($data);
 					break;
@@ -405,8 +405,8 @@ class FunctionsImport {
 					$tag = 'DSCR';
 					break;
 				case 'PLACE':
-					$tag = 'PLAC';
 				case 'PLAC':
+					$tag = 'PLAC';
 					// Consistent commas
 					$data = preg_replace('/ *(،|,) */', ', ', $data);
 					// The Master Genealogist stores LAT/LONG data in the PLAC field, e.g. Pennsylvania, USA, 395945N0751013W
@@ -455,8 +455,8 @@ class FunctionsImport {
 					$tag = 'RESI';
 					break;
 				case 'RESTRICTION':
-					$tag = 'RESN';
 				case 'RESN':
+					$tag = 'RESN';
 					// RESN values are lower case (confidential, privacy, locked, none)
 					$data = strtolower($data);
 					if ($data == 'invisible') {
@@ -488,8 +488,8 @@ class FunctionsImport {
 					$tag = 'STAE';
 					break;
 				case 'STATUS':
-					$tag = 'STAT';
 				case 'STAT':
+					$tag = 'STAT';
 					if ($data == 'CANCELLED') {
 						// PhpGedView mis-spells this tag - correct it.
 						$data = 'CANCELED';
@@ -508,8 +508,8 @@ class FunctionsImport {
 					$tag = 'SPFX';
 					break;
 				case 'TEMPLE':
-					$tag = 'TEMP';
 				case 'TEMP':
+					$tag = 'TEMP';
 					// Temple codes are upper case
 					$data = strtoupper($data);
 					break;
@@ -517,8 +517,8 @@ class FunctionsImport {
 					$tag = 'TITL';
 					break;
 				case 'TRAILER':
-					$tag = 'TRLR';
 				case 'TRLR':
+					$tag = 'TRLR';
 					// TRLR records don't have an XREF or DATA
 					if ($level == '0') {
 						$xref = '';
