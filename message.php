@@ -96,7 +96,7 @@ $url        = Filter::get('url', null, 'index.php');
 $controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || Auth::isAdmin());
 $controller->pageHeader();
 
-$to_names = implode(I18N::$list_separator, array_map(function(User $user) {
+$to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 	return $user->getRealName();
 }, recipients($to)));
 
@@ -188,11 +188,11 @@ function recipients($to) {
 	if ($to === 'all') {
 		$recipients = User::all();
 	} elseif ($to === 'last_6mo') {
-		$recipients = array_filter(User::all(), function(User $user) {
+		$recipients = array_filter(User::all(), function (User $user) {
 			return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;
 		});
 	} elseif ($to === 'never_logged') {
-		$recipients = array_filter(User::all(), function(User $user) {
+		$recipients = array_filter(User::all(), function (User $user) {
 			return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
 		});
 	} else {

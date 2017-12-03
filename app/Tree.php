@@ -457,25 +457,25 @@ class Tree {
 		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
 		$tree->setPreference('LANGUAGE', WT_LOCALE); // Default to the current admin’s language
 		switch (WT_LOCALE) {
-		case 'es':
-			$tree->setPreference('SURNAME_TRADITION', 'spanish');
-			break;
-		case 'is':
-			$tree->setPreference('SURNAME_TRADITION', 'icelandic');
-			break;
-		case 'lt':
-			$tree->setPreference('SURNAME_TRADITION', 'lithuanian');
-			break;
-		case 'pl':
-			$tree->setPreference('SURNAME_TRADITION', 'polish');
-			break;
-		case 'pt':
-		case 'pt-BR':
-			$tree->setPreference('SURNAME_TRADITION', 'portuguese');
-			break;
-		default:
-			$tree->setPreference('SURNAME_TRADITION', 'paternal');
-			break;
+			case 'es':
+				$tree->setPreference('SURNAME_TRADITION', 'spanish');
+				break;
+			case 'is':
+				$tree->setPreference('SURNAME_TRADITION', 'icelandic');
+				break;
+			case 'lt':
+				$tree->setPreference('SURNAME_TRADITION', 'lithuanian');
+				break;
+			case 'pl':
+				$tree->setPreference('SURNAME_TRADITION', 'polish');
+				break;
+			case 'pt':
+			case 'pt-BR':
+				$tree->setPreference('SURNAME_TRADITION', 'portuguese');
+				break;
+			default:
+				$tree->setPreference('SURNAME_TRADITION', 'paternal');
+				break;
 		}
 
 		// Genealogy data
