@@ -155,7 +155,7 @@ class EditController extends BaseController {
 			return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
 		}
 
-		$gedcom = "0 @new@ OBJE\n1 FILE " . $file;
+		$gedcom = "0 @XREF@ OBJE\n1 FILE " . $file;
 		if ($type !== '') {
 			$gedcom .= "\n2 FORM\n3 TYPE " . $type;
 		}
@@ -224,7 +224,7 @@ class EditController extends BaseController {
 		// Convert line endings to GEDDCOM continuations
 		$note = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $note);
 
-		$gedcom = '0 @XREF@ NOTE ' .  $note;
+		$gedcom = '0 @XREF@ NOTE ' . $note;
 
 		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
 			$gedcom .= "\n1 RESN " . $privacy_restriction;
@@ -281,7 +281,7 @@ class EditController extends BaseController {
 		// Fix whitespace
 		$name   = trim(preg_replace('/\s+/', ' ', $name));
 
-		$gedcom = "0 @new@ REPO\n1 NAME " . $name;
+		$gedcom = "0 @XREF@ REPO\n1 NAME " . $name;
 
 		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
 			$gedcom .= "\n1 RESN " . $privacy_restriction;
@@ -354,7 +354,7 @@ class EditController extends BaseController {
 		// Convert line endings to GEDDCOM continuations
 		$text = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $text);
 
-		$gedcom = "0 @new@ SOUR\n\n1 TITL " . $title;
+		$gedcom = "0 @XREF@ SOUR\n\n1 TITL " . $title;
 
 		if ($abbreviation !== '') {
 			$gedcom .= "\n1 ABBR " . $abbreviation;
