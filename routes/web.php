@@ -80,18 +80,18 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 // Editor routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
 	$routes += [
-		'GET:add-media-file'       => 'EditController@addMediaFile',
-		'POST:add-media-file'      => 'EditController@addMediaFileAction',
-		'GET:create-media-object'  => 'EditController@createMediaObject',
-		'POST:create-media-object' => 'EditController@createMediaObjectAction',
-		'GET:create-note-object'   => 'EditController@createNoteObject',
-		'POST:create-note-object'  => 'EditController@createNoteObjectAction',
-		'GET:create-repository'    => 'EditController@createRepository',
-		'POST:create-repository'   => 'EditController@createRepositoryAction',
-		'GET:create-source'        => 'EditController@createSource',
-		'POST:create-source'       => 'EditController@createSourceAction',
-		'GET:create-submitter'     => 'EditController@createSubmitter',
-		'POST:create-submitter'    => 'EditController@createSubmitterAction',
+		'GET:add-media-file'       => 'EditMediaController@addMediaFile',
+		'POST:add-media-file'      => 'EditMediaController@addMediaFileAction',
+		'GET:create-media-object'  => 'EditMediaController@createMediaObject',
+		'POST:create-media-object' => 'EditMediaController@createMediaObjectAction',
+		'GET:create-note-object'   => 'EditNoteController@createNoteObject',
+		'POST:create-note-object'  => 'EditNoteController@createNoteObjectAction',
+		'GET:create-repository'    => 'EditRepositoryController@createRepository',
+		'POST:create-repository'   => 'EditRepositoryController@createRepositoryAction',
+		'GET:create-source'        => 'EditSourceController@createSource',
+		'POST:create-source'       => 'EditSourceController@createSourceAction',
+		'GET:create-submitter'     => 'EditSubmitterController@createSubmitter',
+		'POST:create-submitter'    => 'EditSubmitterController@createSubmitterAction',
 	];
 }
 
