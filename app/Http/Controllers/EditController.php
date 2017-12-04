@@ -112,25 +112,48 @@ class EditController extends BaseController {
 	}
 
 	/**
-	 *
+	 * Show a form to create a new media object.
 	 *
 	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function createMediaFile(Request $request): Response {
+	public function createMediaObject(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+
+		return new Response(View::make('modals/create-media-object', [
+			'tree'            => $tree,
+			'max_upload_size' => $this->maxUploadFilesize(),
+			'media_types'     => $this->mediaTypes(),
+			'unused_files'    => $this->unusedFiles($tree),
+		]));
+	}
+
+	/**
+	 * Process a form to create a new media object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function createMediaObjectAction(Request $request): JsonResponse {
 		/** @var Tree $tree */
 		$tree  = $request->attributes->get('tree');
 		$note  = $request->get('note');
+		$title = $request->get('title');
+		$type  = $request->get('type');
+
+		$privacy_restriction = $request->get('privacy-restriction', '');
+		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Convert line endings to GEDDCOM continuations
+		$note = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $note);
 
 		$file = $this->uploadFile($request);
 
 		if ($file === '') {
 			return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
 		}
-
-		$title = $request->get('title');
-		$type  = $request->get('type');
 
 		$gedcom = "0 @new@ OBJE\n1 FILE " . $file;
 		if ($type !== '') {
@@ -143,12 +166,308 @@ class EditController extends BaseController {
 			$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
 		}
 
-		$media_object = $tree->createRecord($gedcom);
+		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+			$gedcom .= "\n1 RESN " . $privacy_restriction;
+		}
 
-		// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-		FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
+		if (in_array($edit_restriction, ['locked'])) {
+			$gedcom .= "\n1 RESN " . $edit_restriction;
+		}
 
-		return new JsonResponse(['id' => $media_object->getXref(), 'text' => strip_tags(View::make('selects/media', ['media' => $media_object]))]);
+		$record = $tree->createRecord($gedcom);
+
+		// Accept the new record to keep the filesystem synchronized with the genealogy.
+		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
+
+		return new JsonResponse([
+			'id' => $record->getXref(),
+			'text' => View::make('selects/media', [
+				'media' => $record,
+			]),
+			'html' => view('modals/record-created', [
+				'title' => I18N::translate('The media object has been created'),
+				'name'  => $record->getFullName(),
+				'url'   => $record->getRawUrl(),
+			])
+		]);
+	}
+
+	/**
+	 * Show a form to create a new note object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function createNoteObject(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+
+		return new Response(View::make('modals/create-note-object', [
+			'tree' => $tree,
+		]));
+	}
+
+	/**
+	 * Process a form to create a new note object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function createNoteObjectAction(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree                = $request->attributes->get('tree');
+		$note                = $request->get('note', '');
+		$privacy_restriction = $request->get('privacy-restriction', '');
+		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Convert line endings to GEDDCOM continuations
+		$note = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $note);
+
+		$gedcom = '0 @XREF@ NOTE ' .  $note;
+
+		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+			$gedcom .= "\n1 RESN " . $privacy_restriction;
+		}
+
+		if (in_array($edit_restriction, ['locked'])) {
+			$gedcom .= "\n1 RESN " . $edit_restriction;
+		}
+
+		$record = $tree->createRecord($gedcom);
+
+		return new JsonResponse([
+			'id' => $record->getXref(),
+			'text' => View::make('selects/note', [
+				'note' => $record,
+			]),
+			'html' => view('modals/record-created', [
+				'title' => I18N::translate('The note has been created'),
+				'name'  => $record->getFullName(),
+				'url'   => $record->getRawUrl(),
+			])
+		]);
+	}
+
+	/**
+	 * Show a form to create a new repository.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function createRepository(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+
+		return new Response(View::make('modals/create-repository', [
+			'tree' => $tree,
+		]));
+	}
+
+	/**
+	 * Process a form to create a new repository.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function createRepositoryAction(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree                = $request->attributes->get('tree');
+		$name                = $request->get('repository-name', '');
+		$privacy_restriction = $request->get('privacy-restriction', '');
+		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Fix whitespace
+		$name   = trim(preg_replace('/\s+/', ' ', $name));
+
+		$gedcom = "0 @new@ REPO\n1 NAME " . $name;
+
+		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+			$gedcom .= "\n1 RESN " . $privacy_restriction;
+		}
+
+		if (in_array($edit_restriction, ['locked'])) {
+			$gedcom .= "\n1 RESN " . $edit_restriction;
+		}
+
+		$record = $tree->createRecord($gedcom);
+
+		// id and text are for select2 / autocomplete
+		// html is for interactive modals
+		return new JsonResponse([
+			'id' => $record->getXref(),
+			'text' => View::make('selects/repository', [
+				'repository' => $record,
+			]),
+			'html' => view('modals/record-created', [
+				'title' => I18N::translate('The repository has been created'),
+				'name'  => $record->getFullName(),
+				'url'   => $record->getRawUrl(),
+			])
+		]);
+	}
+
+	/**
+	 * Show a form to create a new source.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function createSource(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+
+		return new Response(View::make('modals/create-source', [
+			'tree' => $tree,
+		]));
+	}
+
+	/**
+	 * Process a form to create a new source.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function createSourceAction(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree                = $request->attributes->get('tree');
+		$title               = $request->get('source-title', '');
+		$abbreviation        = $request->get('source-abbreviation', '');
+		$author              = $request->get('source-author', '');
+		$publication         = $request->get('source-publication', '');
+		$repository          = $request->get('source-repository', '');
+		$call_number         = $request->get('source-call-number', '');
+		$text                = $request->get('source-text', '');
+		$privacy_restriction = $request->get('privacy-restriction', '');
+		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Fix whitespace
+		$title        = trim(preg_replace('/\s+/', ' ', $title));
+		$abbreviation = trim(preg_replace('/\s+/', ' ', $abbreviation));
+		$author       = trim(preg_replace('/\s+/', ' ', $author));
+		$publication  = trim(preg_replace('/\s+/', ' ', $publication));
+		$repository   = trim(preg_replace('/\s+/', ' ', $repository));
+		$call_number  = trim(preg_replace('/\s+/', ' ', $call_number));
+
+		// Convert line endings to GEDDCOM continuations
+		$text = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $text);
+
+		$gedcom = "0 @new@ SOUR\n\n1 TITL " . $title;
+
+		if ($abbreviation !== '') {
+			$gedcom .= "\n1 ABBR " . $abbreviation;
+		}
+
+		if ($author !== '') {
+			$gedcom .= "\n1 AUTH " . $author;
+		}
+
+		if ($publication !== '') {
+			$gedcom .= "\n1 PUBL " . $publication;
+		}
+
+		if ($text !== '') {
+			$gedcom .= "\n1 TEXT " . $text;
+		}
+
+		if ($repository !== '') {
+			$gedcom .= "\n1 REPO @" . $repository . '@';
+
+			if ($call_number !== '') {
+				$gedcom .= "\n2 CALN " . $call_number;
+			}
+		}
+
+		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+			$gedcom .= "\n1 RESN " . $privacy_restriction;
+		}
+
+		if (in_array($edit_restriction, ['locked'])) {
+			$gedcom .= "\n1 RESN " . $edit_restriction;
+		}
+
+		$record = $tree->createRecord($gedcom);
+
+		// id and text are for select2 / autocomplete
+		// html is for interactive modals
+		return new JsonResponse([
+			'id' => $record->getXref(),
+			'text' => View::make('selects/source', [
+				'source' => $record,
+			]),
+			'html' => view('modals/record-created', [
+				'title' => I18N::translate('The source has been created'),
+				'name'  => $record->getFullName(),
+				'url'   => $record->getRawUrl(),
+			])
+		]);
+	}
+
+	/**
+	 * Show a form to create a new submitter.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function createSubmitter(Request $request): Response {
+		$tree = $request->attributes->get('tree');
+
+		return new Response(View::make('modals/create-submitter', [
+			'tree' => $tree,
+		]));
+	}
+
+	/**
+	 * Process a form to create a new submitter.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function createSubmitterAction(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree                = $request->attributes->get('tree');
+		$name                = $request->get('submitter_name', '');
+		$address             = $request->get('submitter_address', '');
+		$privacy_restriction = $request->get('privacy-restriction', '');
+		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Fix whitespace
+		$name = trim(preg_replace('/\s+/', ' ', $name));
+
+		// Convert line endings to GEDDCOM continuations
+		$address = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $address);
+
+		$gedcom = "0 @XREF@ SUBM\n1 NAME " . $name;
+
+		if ($address !== '') {
+			$gedcom .= "\n1 ADDR " . $address;
+		}
+
+		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+			$gedcom .= "\n1 RESN " . $privacy_restriction;
+		}
+
+		if (in_array($edit_restriction, ['locked'])) {
+			$gedcom .= "\n1 RESN " . $edit_restriction;
+		}
+
+		$record = $tree->createRecord($gedcom);
+
+		return new JsonResponse([
+			'id' => $record->getXref(),
+			'text' => View::make('selects/submitter', [
+				'submitter' => $record,
+			]),
+			'html' => view('modals/record-created', [
+				'title' => I18N::translate('The submitter has been created'),
+				'name'  => $record->getFullName(),
+				'url'   => $record->getRawUrl(),
+			])
+		]);
 	}
 
 	/**

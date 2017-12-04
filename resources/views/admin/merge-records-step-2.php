@@ -1,13 +1,11 @@
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <form action="<?= e(route('merge-records', ['ged' => $tree->getName(), 'xref1' => $record1->getXref(), 'xref2' => $record2->getXref()])) ?>" method="POST">
-	<?= Filter::getCsrf() ?>
+	<?= csrf_field() ?>
 	<p>
 		<?= I18N::translate('Select the facts and events to keep from both records.') ?>
 	</p>

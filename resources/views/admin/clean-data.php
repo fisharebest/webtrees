@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
@@ -12,7 +11,7 @@
 
 <form method="post">
 	<input type="hidden" value="admin-clean-data">
-	<?= Filter::getCsrf() ?>
+	<?= csrf_field() ?>
 	<ul class="fa-ul">
 		<?php
 		foreach ($entries as $entry) {

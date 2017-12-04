@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\DebugBar; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>
@@ -7,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="csrf" content="<?= e(Filter::getCsrfToken()) ?>">
+		<meta name="csrf" content="<?= e(csrf_token()) ?>">
 
 		<title><?= $title ?></title>
 

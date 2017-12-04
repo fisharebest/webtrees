@@ -1,11 +1,11 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+
 <div class="modal" id="modal-create-media-from-file">
 	<form action="action.php" method="POST">
-		<?= Filter::getCsrf() ?>
+		<?= csrf_field() ?>
 		<input type="hidden" name="action" value="create-media-object-from-file">
 		<input type="hidden" name="ged" id="ged" value="">
 		<div class="modal-dialog modal-lg" role="document">

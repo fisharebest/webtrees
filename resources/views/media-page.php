@@ -7,7 +7,6 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <h2 class="wt-page-title">
 	<?= $media->getFullName() ?>
@@ -154,4 +153,4 @@
 	</div>
 </div>
 
-<?= View::make('modals/ajax') ?>
+<?= view('modals/ajax') ?>

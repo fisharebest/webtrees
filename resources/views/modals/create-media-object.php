@@ -1,13 +1,13 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(route('create-repository')) ?>" id="wt-modal-form" method="POST">
+<form action="<?= e(route('create-media-object')) ?>" id="wt-modal-form" method="POST">
 	<?= csrf_field() ?>
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 
-	<?= view('modals/header', ['title' => I18N::translate('Create a repository')]) ?>
+	<?= view('modals/header', ['title' => I18N::translate('Create a media object')]) ?>
 
 	<div class="modal-body">
-		<?= view('modals/repository-fields') ?>
+		<?= view('modals/media-object-fields', ['max_upload_size' => $max_upload_size, 'media_types' => $media_types, 'unused_files' => $unused_files]) ?>
 	</div>
 
 	<?= view('modals/footer-save-cancel') ?>

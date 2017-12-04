@@ -1,8 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
@@ -12,14 +10,14 @@
 <?php use Fisharebest\Webtrees\Module\ModuleTabInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <?php foreach ($deleted_modules as $module_name): ?>
 	<div class="alert alert-warning" role="alert">
 		<form action="<?= e(route('admin-control-panel')) ?>" class="form-inline" method="POST">
-			<?= Filter::getCsrf() ?>
+			<?= csrf_field() ?>
 			<input type="hidden" name="route" value="admin-delete-module-settings">
 			<input type="hidden" name="module_name" value="<?= $module_name ?>">
 			<?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
@@ -32,7 +30,7 @@
 
 <form action="<?= e(route('admin-update-module-status')) ?>" method="POST">
 	<input type="hidden" name="route" value="admin-update-module-status">
-	<?= Filter::getCsrf() ?>
+	<?= csrf_field() ?>
 	<table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true">
 		<caption class="sr-only">
 			<?= I18N::translate('Module administration') ?>
