@@ -15,12 +15,9 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
-use Fisharebest\Webtrees\Http\Controllers\EditController;
-use Symfony\Component\HttpFoundation\Request;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
