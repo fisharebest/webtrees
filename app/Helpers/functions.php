@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\View;
 
 /**
  * Generate a CSRF token form field.
@@ -25,6 +26,15 @@ use Fisharebest\Webtrees\Html;
  */
 function csrf_field() {
 	return '<input type="hidden" name="csrf" value="' . e(Filter::getCsrfToken()) . '">';
+}
+
+/**
+ * Get the CSRF token value.
+ *
+ * @return string
+ */
+function csrf_token() {
+	return Filter::getCsrfToken();
 }
 
 /**
@@ -50,4 +60,16 @@ function route(string $route, array $parameters = []): string {
 	$parameters = ['route' => $route] + $parameters;
 
 	return Html::url('index.php', $parameters);
+}
+
+/**
+ * Cerate and render a view in a single operation.
+ *
+ * @param string  $name
+ * @param mixed[] $data
+ *
+ * @return string
+ */
+function view(string $name, array $data = []) {
+	return View::make($name, $data);
 }

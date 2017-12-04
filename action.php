@@ -92,14 +92,6 @@ case 'copy-fact':
 	}
 	break;
 
-case 'create-media-object':
-	$request         = Request::createFromGlobals();
-	$request->attributes->set('tree', $WT_TREE);
-	$edit_controller = new EditController;
-	$response        = $edit_controller->createMediaFile($request);
-	$response->prepare($request)->send();
-	break;
-
 case 'create-media-object-from-file':
 	$file  = Filter::post('file');
 	$type  = Filter::post('type');
@@ -128,76 +120,6 @@ case 'create-media-object-from-file':
 	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
 	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
 	header('Location: admin_media.php?files=unused');
-	break;
-
-case 'create-note-object':
-	// Create a note, and return parameters needed by Select2
-	header('Content-type: application/json');
-	$note        = Filter::post('note');
-	$gedcom      = "0 @new@ NOTE " . str_replace("\n", "\n1 CONT ", $note);
-	$note_object = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $note_object->getXref(), 'text' => View::make('selects/note', ['note' => $note_object])]);
-	break;
-
-case 'create-repository':
-	// Create a repository, and return parameters needed by Select2
-	header('Content-type: application/json');
-	$repository_name = Filter::post('repository_name');
-	$gedcom          = "0 @new@ REPO\n1 NAME " . $repository_name;
-	$repository      = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $repository->getXref(), 'text' => View::make('selects/repository', ['repository' => $repository])]);
-	break;
-
-case 'create-source':
-	// Create a source, and return parameters needed by Select2
-	header('Content-type: application/json');
-	$TITL   = Filter::post('TITL');
-	$ABBR   = Filter::post('ABBR');
-	$AUTH   = Filter::post('AUTH');
-	$PUBL   = Filter::post('PUBL');
-	$TEXT   = Filter::post('TEXT');
-	$REPO   = Filter::post('REPO', WT_REGEX_XREF);
-	$CALN   = Filter::post('CALN');
-	$gedcom = '0 @new@ SOUR';
-	if ($TITL !== '') {
-		$gedcom .= "\n1 TITL " . $TITL;
-	}
-	if ($ABBR !== '') {
-		$gedcom .= "\n1 ABBR " . $ABBR;
-	}
-	if ($AUTH !== '') {
-		$gedcom .= "\n1 AUTH " . $AUTH;
-	}
-	if ($PUBL !== '') {
-		$gedcom .= "\n1 PUBL " . $PUBL;
-	}
-	if ($TEXT !== '') {
-		$gedcom .= "\n1 TEXT " . str_replace("\n", "\n2 CONT ", $TEXT);
-	}
-	if ($REPO !== '') {
-		$gedcom .= "\n1 REPO @" . $REPO . '@';
-		if ($CALN !== '') {
-			$gedcom .= "\n2 CALN " . $CALN;
-		}
-	}
-	$source = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $source->getXref(), 'text' => View::make('selects/source', ['source' => $source])]);
-	break;
-
-case 'create-submitter':
-	// Create a submitter, and return parameters needed by Select2
-	header('Content-type: application/json');
-	$gedcom         = '0 @new@ SUBM';
-	$submitter_name = Filter::post('submitter_name', null, '');
-	if ($submitter_name !== '') {
-		$gedcom .= "\n1 NAME " . $submitter_name;
-	}
-	$submitter_address = Filter::post('submitter_address', null, '');
-	if ($submitter_address !== '') {
-		$gedcom .= "\n1 ADDR " . $submitter_address;
-	}
-	$submitter = $WT_TREE->createRecord($gedcom);
-	echo json_encode(['id' => $submitter->getXref(), 'text' => View::make('selects/submitter', ['submitter' => $submitter])]);
 	break;
 
 case 'paste-fact':

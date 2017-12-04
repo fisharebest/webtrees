@@ -1,1 +1,4 @@
-<?= $media->displayImage(30, 40, 'crop', []) ?> <?= $media->getFullName() ?>, <?= basename($media->getFilename()) ?>
+<?php foreach ($media->mediaFiles() as $media_file): ?>
+	<?= $media_file->displayImage(30, 40, 'crop', []) ?>
+<?php endforeach ?>
+<?= $media->getFullName() ?>

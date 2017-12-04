@@ -1,45 +1,52 @@
-<?php use Fisharebest\Webtrees\Filter; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<div class="modal wt-modal-create-record" id="modal-create-submitter">
-	<form id="form-create-submitter"><!-- This form is posted using jQuery -->
-		<?= Filter::getCsrf() ?>
-		<input type="hidden" name="action" value="create-submitter">
-		<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title"><?= I18N::translate('Create a submitter') ?></h3>
-					<button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label class="col-form-label" for="submitter-name">
-							<?= GedcomTag::getLabel('SUBM:NAME') ?>
-						</label>
-						<input class="form-control" type="text" id="submitter-name" name="submitter_name" required>
-					</div>
-					<div class="form-group">
-						<label class="col-form-label" for="submitter-address">
-							<?= GedcomTag::getLabel('SUBM:ADDR') ?>
-						</label>
-						<input class="form-control" type="text" id="submitter-address" name="submitter_address">
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">
-						<?= FontAwesome::decorativeIcon('save') ?>
-						<?= I18N::translate('save') ?>
-					</button>
-					<button type="button" class="btn btn-text" data-dismiss="modal">
-						<?= FontAwesome::decorativeIcon('cancel') ?>
-						<?= I18N::translate('cancel') ?>
-					</button>
-				</div>
-			</div>
-		</div>
-	</form>
-</div>
+
+<form action="<?= e(route('create-submitter')) ?>" id="wt-modal-form" method="POST">
+	<?= csrf_field() ?>
+	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+
+	<?= view('modals/header', ['title' => I18N::translate('Create a submitter')]) ?>
+
+	<div class="modal-body">
+		<?= view('modals/submitter-fields') ?>
+	</div>
+
+	<?= view('modals/footer-save-cancel') ?>
+</form>
+
+<script>
+  // Submit the modal form using AJAX
+  document.getElementById('wt-modal-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let form          = event.target;
+    let modal_content = document.querySelector('#wt-ajax-modal .modal-content');
+    let select        = document.getElementById(modal_content.dataset.selectId);
+
+    $.ajax({
+      url:         form.action,
+      type:        form.method,
+      data:        new FormData(form),
+      async:       false,
+      cache:       false,
+      contentType: false,
+      processData: false,
+      success:     function (data) {
+        if (select) {
+          // If this modal was activated by the "new" button in a select2
+          // edit control, then insert the result and select it.
+          $(select)
+            .select2()
+            .empty()
+            .append(new Option(data.text, data.id)).val(data.id)
+            .trigger('change');
+
+          $('#wt-ajax-modal').modal('hide');
+        } else {
+          modal_content.innerHTML = data.html;
+        }
+      },
+      failure:     function (data) {
+        modal_content.innerHTML = data.html;
+      }
+    });
+  });
+</script>

@@ -1,8 +1,6 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\I18N; ?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\GedcomTag; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
 	<label class="col-form-label col-sm-2" for="file-location">

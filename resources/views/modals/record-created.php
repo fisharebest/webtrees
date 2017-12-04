@@ -1,9 +1,9 @@
 <?= view('modals/header', ['title' => $title]) ?>
 
 <div class="modal-body">
-	<div class="alert alert-danger">
-		<?= $error ?>
-	</div>
+	<a href="<?= e($url) ?>">
+		<?= $name ?>
+	</a>
 </div>
 
 <?= view('modals/footer-close') ?>

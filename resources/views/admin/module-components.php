@@ -1,19 +1,17 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Filter; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Tree; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
+<?php use Fisharebest\Webtrees\Tree; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), $title]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <form action="<?= e(route('admin-control-panel')) ?>" method="post">
 	<input type="hidden" name="route" value="admin-update-module-access">
 	<input type="hidden" name="component" value="<?= e($component) ?>">
-	<?= Filter::getCsrf() ?>
+	<?= csrf_field() ?>
 	<table class="table table-bordered" class="row">
 		<thead>
 			<tr>

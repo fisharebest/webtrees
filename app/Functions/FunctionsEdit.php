@@ -726,7 +726,11 @@ class FunctionsEdit {
 		} elseif ($fact === 'NOTE' && $islink) {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-note-object" data-element-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '"><i class="fa fa-plus"></i></button></span>' .
+				'<span class="input-group-btn">' .
+				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['tree' => $WT_TREE->getName()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
+				'<i class="fa fa-plus"></i><' .
+				'/button>' .
+				'</span>' .
 				self::formControlNote(Note::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'OBJE') {
@@ -777,7 +781,11 @@ class FunctionsEdit {
 		} elseif ($fact === 'SUBM') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-submitter" data-element-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fa fa-plus"></i></button></span>' .
+				'<span class="input-group-btn">' .
+				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-submitter" data-element-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' .
+				'<i class="fa fa-plus"></i>' .
+				'</button>' .
+				'</span>' .
 				self::formControlSubmitter(GedcomRecord::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'TEMP') {

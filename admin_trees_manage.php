@@ -542,7 +542,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED SOURCE -->
 							<li>
 								<i class="fa fa-li fa-book"></i>
-								<a href="edit_interface.php?action=addnewsource&amp;ged=<?= $tree->getNameHtml() ?>">
+								<a href="#" data-href="<?= e(route('create-source', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<?= I18N::translate('Source') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -552,7 +552,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED REPOSITORY -->
 							<li>
 								<i class="fa fa-li fa-university"></i>
-								<a href="edit_interface.php?action=addnewrepository&amp;ged=<?= $tree->getNameHtml() ?>">
+								<a href="#" data-href="<?= e(route('create-repository', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<?= I18N::translate('Repository') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -562,7 +562,8 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED MEDIA OBJECT -->
 							<li>
 								<i class="fa fa-li fa-photo"></i>
-								<a href="#">
+								<a href="#" data-href="<?= e(route('create-media-object', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+
 									<?= I18N::translate('Media object') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -572,11 +573,21 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED NOTE -->
 							<li>
 								<i class="fa fa-li fa-paragraph"></i>
-								<a href="edit_interface.php?action=addnewnote&amp;ged=<?= $tree->getNameHtml() ?>">
+								<a href="#" data-href="<?= e(route('create-note-object', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
 									</span>
 									<?= I18N::translate('Shared note') ?>
+								</a>
+							</li>
+							<!-- UNLINKED SUBMITTER -->
+							<li>
+								<i class="fa fa-li fa-user"></i>
+								<a href="#" data-href="<?= e(route('create-submitter', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+									<span class="sr-only">
+										<?= $tree->getTitleHtml() ?>
+									</span>
+									<?= I18N::translate('Submitter') ?>
 								</a>
 							</li>
 						</ul>
@@ -764,3 +775,5 @@ echo Bootstrap4::breadcrumbs([
 	</div>
 	<?php endif ?>
 </div>
+
+<?= View::make('modals/ajax') ?>

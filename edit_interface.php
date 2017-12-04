@@ -348,13 +348,8 @@ case 'edit':
 
 	</form>
 	<?php
-	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]);
-	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
 	echo View::make('modals/on-screen-keyboard');
+	echo view('modals/ajax');
 	break;
 
 case 'add':
@@ -422,13 +417,8 @@ case 'add':
 	</div>
 	</form>
 	<?php
-	echo View::make('modals/create-family', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]);
-	echo View::make('modals/create-note', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-repository', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-source', ['tree' => $controller->tree()]);
-	echo View::make('modals/create-submitter', ['tree' => $controller->tree()]);
 	echo View::make('modals/on-screen-keyboard');
+	echo view('modals/ajax');
 
 	break;
 
@@ -1493,248 +1483,6 @@ case 'linkspouseaction':
 	header('Location: ' . $person->getRawUrl());
 	break;
 
-case 'addnewsource':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new source record
-	//////////////////////////////////////////////////////////////////////////////
-	$controller
-		->setPageTitle(I18N::translate('Create a source'))
-		->pageHeader();
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="addsourceaction">
-		<?= Filter::getCsrf() ?>
-		<table class="table wt-facts-table">
-			<tr>
-				<th scope="row"><?= I18N::translate('Title') ?></td>
-				<td><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL"
-				                                  required> <?= FunctionsPrint::printSpecialCharacterLink('TITL') ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><?= I18N::translate('Abbreviation') ?></td>
-				<td><input type="text" name="ABBR" id="ABBR"
-				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('ABBR') ?>
-				</td>
-			</tr>
-			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
-				<tr>
-					<th scope="row"><?= GedcomTag::getLabel('_HEB') ?></th>
-					<td><input type="text" name="_HEB" id="_HEB" value="" size="60">
-						<?= FunctionsPrint::printSpecialCharacterLink('_HEB') ?></td>
-				</tr>
-			<?php } ?>
-			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
-				<tr>
-					<th scope="row">
-						<?= GedcomTag::getLabel('ROMN') ?></th>
-					<td><input type="text" name="ROMN" id="ROMN" value=""
-					                                  size="60"> <?= FunctionsPrint::printSpecialCharacterLink('ROMN') ?></td>
-				</tr>
-			<?php } ?>
-			<tr>
-				<th scope="row"><?= I18N::translate('Author') ?></th>
-				<td><input type="text" name="AUTH" id="AUTH" value="" size="40"
-				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('AUTH') ?>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row"><?= GedcomTag::getLabel('PUBL') ?></th>
-				<td><textarea name="PUBL" id="PUBL" rows="5"
-				                                     cols="60"></textarea><br><?= FunctionsPrint::printSpecialCharacterLink('PUBL') ?>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row"><?= I18N::translate('Repository') ?></th>
-				<td><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value=""
-				                                  size="10"></td>
-			</tr>
-			<tr>
-				<th scope="row"><?= I18N::translate('Call number') ?></th>
-				<td><input type="text" name="CALN" id="CALN" value=""></td>
-			</tr>
-			<?= keep_chan() ?>
-		</table>
-		<a href="#" onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
-			<?= I18N::translate('Associate events with this source') ?></a>
-		<div id="events" style="display: none;">
-			<table class="table wt-facts-table">
-				<tr>
-					<th scope="row">
-						<label for="source-events">
-							<?= I18N::translate('Select events'), FunctionsPrint::helpLink('edit_SOUR_EVEN') ?>
-						</label>
-					</th>
-					<td>
-						<select id="source-events" name="EVEN[]" multiple="multiple" size="5">
-							<?php
-							$parts = explode(',', $controller->tree()->getPreference('INDI_FACTS_ADD'));
-							foreach ($parts as $key) {
-								?>
-								<option value="<?= $key ?>"><?= GedcomTag::getLabel($key) ?></option>
-								<?php
-							}
-							$parts = explode(',', $controller->tree()->getPreference('FAM_FACTS_ADD'));
-							foreach ($parts as $key) {
-								?>
-								<option value="<?= $key ?>"><?= GedcomTag::getLabel($key) ?></option>
-								<?php
-							}
-							?>
-						</select></td>
-				</tr>
-				<?= FunctionsEdit::addSimpleTag('0 DATE', 'EVEN') ?>
-				<?= FunctionsEdit::addSimpleTag('0 PLAC', 'EVEN') ?>
-				<?= FunctionsEdit::addSimpleTag('0 AGNC') ?>
-			</table>
-		</div>
-
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="sourcelist.php?ged=<?= $controller->tree()->getNameHtml() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'addsourceaction':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new source record
-	//////////////////////////////////////////////////////////////////////////////
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=addnewsource&ged=' . $controller->tree()->getNameUrl());
-		break;
-	}
-
-	$newgedrec = '0 @XREF@ SOUR';
-	$ABBR      = Filter::post('ABBR');
-	if ($ABBR) {
-		$newgedrec .= "\n1 ABBR " . $ABBR;
-	}
-	$TITL = Filter::post('TITL');
-	if ($TITL) {
-		$newgedrec .= "\n1 TITL " . $TITL;
-		$_HEB = Filter::post('_HEB');
-		if ($_HEB) {
-			$newgedrec .= "\n2 _HEB " . $_HEB;
-		}
-		$ROMN = Filter::post('ROMN');
-		if ($ROMN) {
-			$newgedrec .= "\n2 ROMN " . $ROMN;
-		}
-	}
-	$AUTH = Filter::post('AUTH');
-	if ($AUTH) {
-		$newgedrec .= "\n1 AUTH " . $AUTH;
-	}
-	$PUBL = Filter::post('PUBL');
-	if ($PUBL) {
-		$newgedrec .= "\n1 PUBL " . preg_replace('/\r?\n/', "\n2 CONT ", $PUBL);
-	}
-	$REPO = Filter::post('REPO', WT_REGEX_XREF);
-	if ($REPO) {
-		$newgedrec .= "\n1 REPO @" . $REPO . '@';
-		$CALN = Filter::post('CALN');
-		if ($CALN) {
-			$newgedrec .= "\n2 CALN " . $CALN;
-		}
-	}
-	$EVEN = Filter::postArray('EVEN', WT_REGEX_TAG);
-	if ($EVEN) {
-		$newgedrec .= "\n1 DATA";
-		$newgedrec .= "\n2 EVEN " . implode(',', $EVEN);
-		$EVEN_DATE = Filter::post('EVEN_DATE');
-		if ($EVEN_DATE) {
-			$newgedrec .= "\n3 EVEN_DATE " . $EVEN_DATE;
-		}
-		$EVEN_PLAC = Filter::post('EVEN_PLAC');
-		if ($EVEN_PLAC) {
-			$newgedrec .= "\n3 EVEN_PLAC " . $EVEN_PLAC;
-		}
-		$AGNC = Filter::post('AGNC');
-		if ($AGNC) {
-			$newgedrec .= "\n2 AGNC " . $AGNC;
-		}
-	}
-
-	$record = $controller->tree()->createRecord($newgedrec);
-
-	header('Location: ' . $record->getRawUrl());
-	break;
-
-case 'addnewnote':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new note record
-	//////////////////////////////////////////////////////////////////////////////
-	$controller
-		->setPageTitle(I18N::translate('Create a shared note'))
-		->pageHeader();
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="addnoteaction">
-		<input type="hidden" name="noteid" value="newnote">
-		<?= Filter::getCsrf() ?>
-		<?php
-		echo '<table class="table wt-facts-table">';
-		echo '<tr>';
-		echo '<th scope="row">';
-		echo I18N::translate('Shared note');
-		echo '</th>';
-		echo '<td><textarea name="NOTE" id="NOTE" rows="10" required></textarea>';
-		echo FunctionsPrint::printSpecialCharacterLink('NOTE');
-		echo '</td>';
-		echo '</tr>';
-		echo keep_chan();
-		echo '</table>';
-		?>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="index.php?ctype=ged&amp;ged=<?= $controller->tree()->getNameHtml() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'addnoteaction':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new note record
-	//////////////////////////////////////////////////////////////////////////////
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=addnewnote');
-		break;
-	}
-
-	$gedrec = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", Filter::post('NOTE'));
-
-	$record = $controller->tree()->createRecord($gedrec);
-	break;
-
 case 'addmedia_links':
 	//////////////////////////////////////////////////////////////////////////////
 	//
@@ -1841,130 +1589,6 @@ case 'editnoteaction':
 	header('Location: ' . $record->getRawUrl());
 	break;
 
-case 'addnewrepository':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new repository
-	//////////////////////////////////////////////////////////////////////////////
-	$controller
-		->setPageTitle(I18N::translate('Create a repository'))
-		->pageHeader();
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="addrepoaction">
-		<input type="hidden" name="xref" value="newrepo">
-		<?= Filter::getCsrf() ?>
-		<table class="table wt-facts-table">
-			<tr>
-				<th scope="row"><?= I18N::translate('Repository name') ?></th>
-				<td><input type="text" name="REPO_NAME" id="REPO_NAME" required
-				                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('REPO_NAME') ?>
-				</td>
-			</tr>
-			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) { ?>
-				<tr>
-					<th scope="row"><?= GedcomTag::getLabel('_HEB') ?></th>
-					<td><input type="text" name="_HEB" id="_HEB" value="" size="40"
-					                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('_HEB') ?>
-					</td>
-				</tr>
-			<?php } ?>
-			<?php if (strstr($controller->tree()->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) { ?>
-				<tr>
-					<th scope="row"><?= GedcomTag::getLabel('ROMN') ?></th>
-					<td><input type="text" name="ROMN" id="ROMN" value="" size="40"
-					                                  maxlength="255"> <?= FunctionsPrint::printSpecialCharacterLink('ROMN') ?>
-					</td>
-				</tr>
-			<?php } ?>
-			<tr>
-				<th scope="row"><?= GedcomTag::getLabel('ADDR') ?></th>
-				<td><textarea name="ADDR" id="ADDR" rows="5"
-				                                     cols="60"></textarea><?= FunctionsPrint::printSpecialCharacterLink('ADDR') ?>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row"><?= GedcomTag::getLabel('PHON') ?></th>
-				<td><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"></td>
-			</tr>
-			<tr>
-				<th scope="row"><?= GedcomTag::getLabel('EMAIL') ?></th>
-				<td><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td>
-			</tr>
-			<tr>
-				<th scope="row"><?= GedcomTag::getLabel('WWW') ?></th>
-				<td><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"></td>
-			</tr>
-		</table>
-
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="sourcelist.php?ged=<?= $controller->tree()->getNameHtml() ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'addrepoaction':
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a new repository
-	//////////////////////////////////////////////////////////////////////////////
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=addnewrepository&ged=' . $controller->tree()->getNameUrl());
-		break;
-	}
-
-	$gedrec    = '0 @XREF@ REPO';
-	$REPO_NAME = Filter::post('REPO_NAME');
-	if ($REPO_NAME) {
-		$gedrec .= "\n1 NAME " . $REPO_NAME;
-		$_HEB = Filter::post('_HEB');
-		if ($_HEB) {
-			$gedrec .= "\n2 _HEB " . $_HEB;
-		}
-		$ROMN = Filter::post('ROMN');
-		if ($ROMN) {
-			$gedrec .= "\n2 ROMN " . $ROMN;
-		}
-	}
-	$ADDR = Filter::post('ADDR');
-	if ($ADDR) {
-		$gedrec .= "\n1 ADDR " . preg_replace('/\r?\n/', "\n2 CONT ", $ADDR);
-	}
-	$PHON = Filter::post('PHON');
-	if ($PHON) {
-		$gedrec .= "\n1 PHON " . $PHON;
-	}
-	$FAX = Filter::post('FAX');
-	if ($FAX) {
-		$gedrec .= "\n1 FAX " . $FAX;
-	}
-	$EMAIL = Filter::post('EMAIL');
-	if ($EMAIL) {
-		$gedrec .= "\n1 EMAIL " . $EMAIL;
-	}
-	$WWW = Filter::post('WWW');
-	if ($WWW) {
-		$gedrec .= "\n1 WWW " . $WWW;
-	}
-
-	$record = $controller->tree()->createRecord($gedrec);
-	header('Location: ' . $record->getRawUrl());
-	break;
-
 case 'add-media-link':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link a media object to a record.
@@ -2019,7 +1643,6 @@ case 'add-media-link':
 			</div>
 		</div>
 	</form>
-	<?= View::make('modals/create-media', ['tree' => $controller->tree(), 'max_upload_size' => '???', 'unused_files' => []]) ?>
 	<?php
 	break;
 
@@ -2070,6 +1693,7 @@ case 'editname':
 		->pageHeader();
 
 	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
+	echo view('modals/ajax');
 	break;
 
 case 'addname':

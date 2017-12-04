@@ -4,16 +4,15 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
-<?= View::make('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <form method="POST">
 	<input type="hidden" name="route" value="tree-privacy">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
-	<?= Filter::getCsrf() ?>
+	<?= csrf_field() ?>
 
 	<!-- REQUIRE_AUTHENTICATION -->
 	<div class="row form-group">
