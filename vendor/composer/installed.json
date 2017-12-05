@@ -1,61 +1,5 @@
 [
     {
-        "name": "fisharebest/localization",
-        "version": "1.10.0",
-        "version_normalized": "1.10.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/localization.git",
-            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
-            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2016-06-02T13:56:47+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\Localization\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
-        "homepage": "https://github.com/fisharebest/localization",
-        "keywords": [
-            "cldr",
-            "gettext",
-            "i18n",
-            "l10n",
-            "language",
-            "locale",
-            "localization",
-            "script",
-            "translate",
-            "translation"
-        ]
-    },
-    {
         "name": "fisharebest/ext-calendar",
         "version": "2.3.0",
         "version_normalized": "2.3.0.0",
@@ -119,38 +63,146 @@
         ]
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.8",
-        "version_normalized": "5.4.8.0",
+        "name": "fisharebest/localization",
+        "version": "1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
+            "url": "https://github.com/fisharebest/localization.git",
+            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
-            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
+            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3"
+            "php": ">=5.3.0"
         },
         "require-dev": {
-            "mockery/mockery": "~0.9.1",
-            "symfony/phpunit-bridge": "~3.2"
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
         },
-        "time": "2017-05-01T15:54:03+00:00",
+        "time": "2016-06-02T13:56:47+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Localization\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
+        "homepage": "https://github.com/fisharebest/localization",
+        "keywords": [
+            "cldr",
+            "gettext",
+            "i18n",
+            "l10n",
+            "language",
+            "locale",
+            "localization",
+            "script",
+            "translate",
+            "translation"
+        ]
+    },
+    {
+        "name": "fisharebest/algorithm",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/algorithm.git",
+            "reference": "e269fd476dc165b40f1cdc99c3051245d56c9380"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/e269fd476dc165b40f1cdc99c3051245d56c9380",
+            "reference": "e269fd476dc165b40f1cdc99c3051245d56c9380",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2017-08-21T11:21:58+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Algorithm\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "greg@subaqua.co.uk",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of standard algorithms in PHP.",
+        "homepage": "https://github.com/fisharebest/algorithm",
+        "keywords": [
+            "Algorithm",
+            "diff",
+            "dijkstra",
+            "myers"
+        ]
+    },
+    {
+        "name": "guzzlehttp/promises",
+        "version": "v1.3.1",
+        "version_normalized": "1.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/promises.git",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.0"
+        },
+        "time": "2016-12-20T10:07:11+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.4-dev"
+                "dev-master": "1.4-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Promise\\": "src/"
+            },
             "files": [
-                "lib/swift_required.php"
+                "src/functions_include.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -159,19 +211,14 @@
         ],
         "authors": [
             {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
             }
         ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
+        "description": "Guzzle promises library",
         "keywords": [
-            "email",
-            "mail",
-            "mailer"
+            "promise"
         ]
     },
     {
@@ -294,186 +341,6 @@
         ]
     },
     {
-        "name": "league/glide",
-        "version": "1.2.2",
-        "version_normalized": "1.2.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/thephpleague/glide.git",
-            "reference": "8077f529a07ded3eed6c5dcf7f688249b626ddf3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/glide/zipball/8077f529a07ded3eed6c5dcf7f688249b626ddf3",
-            "reference": "8077f529a07ded3eed6c5dcf7f688249b626ddf3",
-            "shasum": ""
-        },
-        "require": {
-            "intervention/image": "^2.1",
-            "league/flysystem": "^1.0",
-            "php": "^5.4 | ^7.0",
-            "psr/http-message": "^1.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9",
-            "phpunit/php-token-stream": "^1.4",
-            "phpunit/phpunit": "~4.4"
-        },
-        "time": "2017-05-09T17:41:49+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "League\\Glide\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Reinink",
-                "email": "jonathan@reinink.ca",
-                "homepage": "http://reinink.ca"
-            }
-        ],
-        "description": "Wonderfully easy on-demand image manipulation library with an HTTP based API.",
-        "homepage": "http://glide.thephpleague.com",
-        "keywords": [
-            "ImageMagick",
-            "editing",
-            "gd",
-            "image",
-            "imagick",
-            "league",
-            "manipulation",
-            "processing"
-        ]
-    },
-    {
-        "name": "tecnickcom/tcpdf",
-        "version": "6.2.13",
-        "version_normalized": "6.2.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
-            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2017-04-26T08:14:48+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "config",
-                "include",
-                "tcpdf.php",
-                "tcpdf_parser.php",
-                "tcpdf_import.php",
-                "tcpdf_barcodes_1d.php",
-                "tcpdf_barcodes_2d.php",
-                "include/tcpdf_colors.php",
-                "include/tcpdf_filters.php",
-                "include/tcpdf_font_data.php",
-                "include/tcpdf_fonts.php",
-                "include/tcpdf_images.php",
-                "include/tcpdf_static.php",
-                "include/barcodes/datamatrix.php",
-                "include/barcodes/pdf417.php",
-                "include/barcodes/qrcode.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPLv3"
-        ],
-        "authors": [
-            {
-                "name": "Nicola Asuni",
-                "email": "info@tecnick.com",
-                "homepage": "http://nicolaasuni.tecnick.com"
-            }
-        ],
-        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
-        "homepage": "http://www.tcpdf.org/",
-        "keywords": [
-            "PDFD32000-2008",
-            "TCPDF",
-            "barcodes",
-            "datamatrix",
-            "pdf",
-            "pdf417",
-            "qrcode"
-        ]
-    },
-    {
-        "name": "guzzlehttp/promises",
-        "version": "v1.3.1",
-        "version_normalized": "1.3.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/guzzle/promises.git",
-            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
-            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^4.0"
-        },
-        "time": "2016-12-20T10:07:11+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "GuzzleHttp\\Promise\\": "src/"
-            },
-            "files": [
-                "src/functions_include.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael Dowling",
-                "email": "mtdowling@gmail.com",
-                "homepage": "https://github.com/mtdowling"
-            }
-        ],
-        "description": "Guzzle promises library",
-        "keywords": [
-            "promise"
-        ]
-    },
-    {
         "name": "guzzlehttp/guzzle",
         "version": "6.3.0",
         "version_normalized": "6.3.0.0",
@@ -539,55 +406,6 @@
             "rest",
             "web service"
         ]
-    },
-    {
-        "name": "league/flysystem-ziparchive",
-        "version": "1.0.3",
-        "version_normalized": "1.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/thephpleague/flysystem-ziparchive.git",
-            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem-ziparchive/zipball/c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
-            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
-            "shasum": ""
-        },
-        "require": {
-            "ext-zip": "*",
-            "league/flysystem": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "0.9.*",
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2016-12-20T08:36:16+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "League\\Flysystem\\ZipArchive\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Frank de Jonge",
-                "email": "info@frenky.net"
-            }
-        ],
-        "description": "Flysystem adapter for ZipArchive's"
     },
     {
         "name": "league/flysystem",
@@ -675,53 +493,187 @@
         ]
     },
     {
-        "name": "fisharebest/algorithm",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "name": "league/flysystem-ziparchive",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/fisharebest/algorithm.git",
-            "reference": "e269fd476dc165b40f1cdc99c3051245d56c9380"
+            "url": "https://github.com/thephpleague/flysystem-ziparchive.git",
+            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/e269fd476dc165b40f1cdc99c3051245d56c9380",
-            "reference": "e269fd476dc165b40f1cdc99c3051245d56c9380",
+            "url": "https://api.github.com/repos/thephpleague/flysystem-ziparchive/zipball/c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
+            "reference": "c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0"
+            "ext-zip": "*",
+            "league/flysystem": "~1.0",
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "~4.0"
         },
-        "time": "2017-08-21T11:21:58+00:00",
+        "time": "2016-12-20T08:36:16+00:00",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Fisharebest\\Algorithm\\": "src/"
+                "League\\Flysystem\\ZipArchive\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL-3.0+"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "Greg Roach",
-                "email": "greg@subaqua.co.uk",
-                "role": "Developer"
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
             }
         ],
-        "description": "Implementation of standard algorithms in PHP.",
-        "homepage": "https://github.com/fisharebest/algorithm",
+        "description": "Flysystem adapter for ZipArchive's"
+    },
+    {
+        "name": "intervention/image",
+        "version": "2.4.1",
+        "version_normalized": "2.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Intervention/image.git",
+            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Intervention/image/zipball/3603dbcc9a17d307533473246a6c58c31cf17919",
+            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919",
+            "shasum": ""
+        },
+        "require": {
+            "ext-fileinfo": "*",
+            "guzzlehttp/psr7": "~1.1",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.2",
+            "phpunit/phpunit": "^4.8 || ^5.7"
+        },
+        "suggest": {
+            "ext-gd": "to use GD library based image processing.",
+            "ext-imagick": "to use Imagick based image processing.",
+            "intervention/imagecache": "Caching extension for the Intervention Image library"
+        },
+        "time": "2017-09-21T16:29:17+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Intervention\\Image\\ImageServiceProvider"
+                ],
+                "aliases": {
+                    "Image": "Intervention\\Image\\Facades\\Image"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Intervention\\Image\\": "src/Intervention/Image"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Oliver Vogel",
+                "email": "oliver@olivervogel.com",
+                "homepage": "http://olivervogel.com/"
+            }
+        ],
+        "description": "Image handling and manipulation library with support for Laravel integration",
+        "homepage": "http://image.intervention.io/",
         "keywords": [
-            "Algorithm",
-            "diff",
-            "dijkstra",
-            "myers"
+            "gd",
+            "image",
+            "imagick",
+            "laravel",
+            "thumbnail",
+            "watermark"
+        ]
+    },
+    {
+        "name": "league/glide",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/glide.git",
+            "reference": "8077f529a07ded3eed6c5dcf7f688249b626ddf3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/glide/zipball/8077f529a07ded3eed6c5dcf7f688249b626ddf3",
+            "reference": "8077f529a07ded3eed6c5dcf7f688249b626ddf3",
+            "shasum": ""
+        },
+        "require": {
+            "intervention/image": "^2.1",
+            "league/flysystem": "^1.0",
+            "php": "^5.4 | ^7.0",
+            "psr/http-message": "^1.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "phpunit/php-token-stream": "^1.4",
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2017-05-09T17:41:49+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Glide\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Reinink",
+                "email": "jonathan@reinink.ca",
+                "homepage": "http://reinink.ca"
+            }
+        ],
+        "description": "Wonderfully easy on-demand image manipulation library with an HTTP based API.",
+        "homepage": "http://glide.thephpleague.com",
+        "keywords": [
+            "ImageMagick",
+            "editing",
+            "gd",
+            "image",
+            "imagick",
+            "league",
+            "manipulation",
+            "processing"
         ]
     },
     {
@@ -859,54 +811,39 @@
         ]
     },
     {
-        "name": "intervention/image",
-        "version": "2.4.1",
-        "version_normalized": "2.4.1.0",
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.8",
+        "version_normalized": "5.4.8.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/Intervention/image.git",
-            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919"
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Intervention/image/zipball/3603dbcc9a17d307533473246a6c58c31cf17919",
-            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
+            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
             "shasum": ""
         },
         "require": {
-            "ext-fileinfo": "*",
-            "guzzlehttp/psr7": "~1.1",
-            "php": ">=5.4.0"
+            "php": ">=5.3.3"
         },
         "require-dev": {
-            "mockery/mockery": "~0.9.2",
-            "phpunit/phpunit": "^4.8 || ^5.7"
+            "mockery/mockery": "~0.9.1",
+            "symfony/phpunit-bridge": "~3.2"
         },
-        "suggest": {
-            "ext-gd": "to use GD library based image processing.",
-            "ext-imagick": "to use Imagick based image processing.",
-            "intervention/imagecache": "Caching extension for the Intervention Image library"
-        },
-        "time": "2017-09-21T16:29:17+00:00",
+        "time": "2017-05-01T15:54:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.3-dev"
-            },
-            "laravel": {
-                "providers": [
-                    "Intervention\\Image\\ImageServiceProvider"
-                ],
-                "aliases": {
-                    "Image": "Intervention\\Image\\Facades\\Image"
-                }
+                "dev-master": "5.4-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Intervention\\Image\\": "src/Intervention/Image"
-            }
+            "files": [
+                "lib/swift_required.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -914,59 +851,58 @@
         ],
         "authors": [
             {
-                "name": "Oliver Vogel",
-                "email": "oliver@olivervogel.com",
-                "homepage": "http://olivervogel.com/"
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
             }
         ],
-        "description": "Image handling and manipulation library with support for Laravel integration",
-        "homepage": "http://image.intervention.io/",
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
         "keywords": [
-            "gd",
-            "image",
-            "imagick",
-            "laravel",
-            "thumbnail",
-            "watermark"
+            "email",
+            "mail",
+            "mailer"
         ]
     },
     {
-        "name": "webuni/commonmark-table-extension",
-        "version": "0.6.1",
-        "version_normalized": "0.6.1.0",
+        "name": "symfony/polyfill-php70",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webuni/commonmark-table-extension.git",
-            "reference": "ebbd69b63436283ec726658835b213ec634485e8"
+            "url": "https://github.com/symfony/polyfill-php70.git",
+            "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/ebbd69b63436283ec726658835b213ec634485e8",
-            "reference": "ebbd69b63436283ec726658835b213ec634485e8",
+            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
+            "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
             "shasum": ""
         },
         "require": {
-            "league/commonmark": "^0.14|^0.15",
-            "php": "^5.5|^7.0"
+            "paragonie/random_compat": "~1.0|~2.0",
+            "php": ">=5.3.3"
         },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "^1.9",
-            "phpunit/phpunit": "^4.3|^5.0",
-            "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-            "symfony/var-dumper": "^2.7|^3.0"
-        },
-        "time": "2017-01-11T14:52:17+00:00",
+        "time": "2017-10-11T12:05:26+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "0.7-dev"
+                "dev-master": "1.6-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Webuni\\CommonMark\\TableExtension\\": "src"
-            }
+                "Symfony\\Polyfill\\Php70\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ],
+            "classmap": [
+                "Resources/stubs"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -974,21 +910,21 @@
         ],
         "authors": [
             {
-                "name": "Martin Hasoň",
-                "email": "martin.hason@gmail.com",
-                "role": "Lead Developer"
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
             },
             {
-                "name": "Webuni s.r.o.",
-                "homepage": "https://www.webuni.cz"
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "The table extension for CommonMark PHP implementation",
-        "homepage": "https://github.com/webuni/commonmark-table-extension",
+        "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
+        "homepage": "https://symfony.com",
         "keywords": [
-            "commonmark",
-            "markdown",
-            "table"
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
         ]
     },
     {
@@ -1053,6 +989,62 @@
         ]
     },
     {
+        "name": "symfony/http-foundation",
+        "version": "v3.4.1",
+        "version_normalized": "3.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/http-foundation.git",
+            "reference": "d9625c8abb907e0ca2d7506afd7a719a572c766f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d9625c8abb907e0ca2d7506afd7a719a572c766f",
+            "reference": "d9625c8abb907e0ca2d7506afd7a719a572c766f",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.5.9|>=7.0.8",
+            "symfony/polyfill-mbstring": "~1.1",
+            "symfony/polyfill-php70": "~1.6"
+        },
+        "require-dev": {
+            "symfony/expression-language": "~2.8|~3.0|~4.0"
+        },
+        "time": "2017-11-30T14:56:21+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\HttpFoundation\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony HttpFoundation Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/polyfill-php71",
         "version": "v1.6.0",
         "version_normalized": "1.6.0.0",
@@ -1110,60 +1102,67 @@
         ]
     },
     {
-        "name": "symfony/polyfill-php72",
-        "version": "v1.6.0",
-        "version_normalized": "1.6.0.0",
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254"
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/6de4f4884b97abbbed9f0a84a95ff2ff77254254",
-            "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3"
+            "php": ">=5.3.0"
         },
-        "time": "2017-10-11T12:05:26+00:00",
+        "time": "2017-04-26T08:14:48+00:00",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.6-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Php72\\": ""
-            },
-            "files": [
-                "bootstrap.php"
+            "classmap": [
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "LGPLv3"
         ],
         "authors": [
             {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "homepage": "http://nicolaasuni.tecnick.com"
             }
         ],
-        "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
-        "homepage": "https://symfony.com",
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
         "keywords": [
-            "compatibility",
-            "polyfill",
-            "portable",
-            "shim"
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
         ]
     },
     {
@@ -1238,41 +1237,98 @@
         ]
     },
     {
-        "name": "symfony/http-foundation",
-        "version": "v3.3.13",
-        "version_normalized": "3.3.13.0",
+        "name": "webuni/commonmark-table-extension",
+        "version": "0.6.1",
+        "version_normalized": "0.6.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "5943f0f19817a7e05992d20a90729b0dc93faf36"
+            "url": "https://github.com/webuni/commonmark-table-extension.git",
+            "reference": "ebbd69b63436283ec726658835b213ec634485e8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/5943f0f19817a7e05992d20a90729b0dc93faf36",
-            "reference": "5943f0f19817a7e05992d20a90729b0dc93faf36",
+            "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/ebbd69b63436283ec726658835b213ec634485e8",
+            "reference": "ebbd69b63436283ec726658835b213ec634485e8",
             "shasum": ""
         },
         "require": {
-            "php": "^5.5.9|>=7.0.8",
-            "symfony/polyfill-mbstring": "~1.1"
+            "league/commonmark": "^0.14|^0.15",
+            "php": "^5.5|^7.0"
         },
         "require-dev": {
-            "symfony/expression-language": "~2.8|~3.0"
+            "friendsofphp/php-cs-fixer": "^1.9",
+            "phpunit/phpunit": "^4.3|^5.0",
+            "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+            "symfony/var-dumper": "^2.7|^3.0"
         },
-        "time": "2017-11-13T18:13:16+00:00",
+        "time": "2017-01-11T14:52:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.3-dev"
+                "dev-master": "0.7-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Symfony\\Component\\HttpFoundation\\": ""
+                "Webuni\\CommonMark\\TableExtension\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Martin Hasoň",
+                "email": "martin.hason@gmail.com",
+                "role": "Lead Developer"
             },
-            "exclude-from-classmap": [
-                "/Tests/"
+            {
+                "name": "Webuni s.r.o.",
+                "homepage": "https://www.webuni.cz"
+            }
+        ],
+        "description": "The table extension for CommonMark PHP implementation",
+        "homepage": "https://github.com/webuni/commonmark-table-extension",
+        "keywords": [
+            "commonmark",
+            "markdown",
+            "table"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-php72",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-php72.git",
+            "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/6de4f4884b97abbbed9f0a84a95ff2ff77254254",
+            "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2017-10-11T12:05:26+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Php72\\": ""
+            },
+            "files": [
+                "bootstrap.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1281,15 +1337,21 @@
         ],
         "authors": [
             {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
             },
             {
                 "name": "Symfony Community",
                 "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "Symfony HttpFoundation Component",
-        "homepage": "https://symfony.com"
+        "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
     }
 ]

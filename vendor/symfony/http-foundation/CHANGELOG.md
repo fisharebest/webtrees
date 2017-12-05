@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+3.4.0
+-----
+
+ * implemented PHP 7.0's `SessionUpdateTimestampHandlerInterface` with a new
+   `AbstractSessionHandler` base class and a new `StrictSessionHandler` wrapper
+ * deprecated the `WriteCheckSessionHandler`, `NativeSessionHandler` and `NativeProxy` classes
+ * deprecated setting session save handlers that do not implement `\SessionHandlerInterface` in `NativeSessionStorage::setSaveHandler()`
+ * deprecated using `MongoDbSessionHandler` with the legacy mongo extension; use it with the mongodb/mongodb package and ext-mongodb instead
+ * deprecated `MemcacheSessionHandler`; use `MemcachedSessionHandler` instead
+
 3.3.0
 -----
 

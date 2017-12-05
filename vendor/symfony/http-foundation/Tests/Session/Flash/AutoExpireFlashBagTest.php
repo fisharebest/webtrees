@@ -59,7 +59,7 @@ class AutoExpireFlashBagTest extends TestCase
 
     public function testGetStorageKey()
     {
-        $this->assertEquals('_sf2_flashes', $this->bag->getStorageKey());
+        $this->assertEquals('_symfony_flashes', $this->bag->getStorageKey());
         $attributeBag = new FlashBag('test');
         $this->assertEquals('test', $attributeBag->getStorageKey());
     }
@@ -149,5 +149,13 @@ class AutoExpireFlashBagTest extends TestCase
     public function testClear()
     {
         $this->assertEquals(array('notice' => array('A previous flash message')), $this->bag->clear());
+    }
+
+    public function testDoNotRemoveTheNewFlashesWhenDisplayingTheExistingOnes()
+    {
+        $this->bag->add('success', 'Something');
+        $this->bag->all();
+
+        $this->assertEquals(array('new' => array('success' => array('Something')), 'display' => array()), $this->array);
     }
 }
