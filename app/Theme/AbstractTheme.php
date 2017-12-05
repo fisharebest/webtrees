@@ -1625,7 +1625,12 @@ abstract class AbstractTheme {
 		if (Auth::check() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', ['rel' => 'nofollow']);
+			// Return to this page after login...
+			$url = Functions::getQueryUrl();
+			// ...but switch from the tree-page to the user-page
+			$url = str_replace('route=tree-page', 'route=user-page', $url);
+
+			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode($url), 'menu-login', ['rel' => 'nofollow']);
 		}
 	}
 
