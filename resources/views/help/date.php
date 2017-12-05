@@ -1,19 +1,4 @@
-<?php
-/**
- * webtrees: online genealogy
- * Copyright (C) 2017 webtrees development team
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-namespace Fisharebest\Webtrees;
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 switch ($help_topic) {
 	//////////////////////////////////////////////////////////////////////////////
@@ -128,11 +113,8 @@ switch ($help_topic) {
 	$example2 .= '<br>' . str_replace('/', '-', $example2) . '<br>' . str_replace('/', '.', $example2);
 	$text =
 		'<p>' . I18N::translate('Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords.') . '</p>' .
-		'<table class="table table-bordered table-sm">' .
-		'<thead>' .
+		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'</thead>' .
-		'<tbody>' .
 		'<tr><td>' . $dates['1900'] . '</td><td><kbd dir="ltr" lang="en">1900</kbd></td><td></td></tr>' .
 		'<tr><td>' . $dates['JAN 1900'] . '<br>' . $dates['FEB 1900'] . '<br>' . $dates['MAR 1900'] . '<br>' . $dates['APR 1900'] . '<br>' . $dates['MAY 1900'] . '<br>' . $dates['JUN 1900'] . '<br>' . $dates['JUL 1900'] . '<br>' . $dates['AUG 1900'] . '<br>' . $dates['SEP 1900'] . '<br>' . $dates['OCT 1900'] . '<br>' . $dates['NOV 1900'] . '<br>' . $dates['DEC 1900'] . '</td><td><kbd dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</kbd></td><td></td></tr>' .
 		'<tr><td>' . $dates['11 DEC 1913'] . '</td><td><kbd dir="ltr" lang="en">11 DEC 1913</kbd></td><td><kbd dir="ltr" lang="en">' . $example1 . '</kbd></td></tr>' .
@@ -141,14 +123,10 @@ switch ($help_topic) {
 		'<tr><td>' . $dates['EST 1900'] . '</td><td><kbd dir="ltr" lang="en">EST 1900</kbd></td><td><kbd dir="ltr" lang="en">*1900</kbd></td></tr>' .
 		'<tr><td>' . $dates['CAL 1900'] . '</td><td><kbd dir="ltr" lang="en">CAL 1900</kbd></td><td><kbd dir="ltr" lang="en">#1900</kbd></td></tr>' .
 		'<tr><td>' . $dates['INT 1900 (...)'] . '</td><td><kbd dir="ltr" lang="en">INT 1900 (...)</kbd></td><td></td></tr>' .
-		'</tbody>' .
 		'</table>' .
 		'<p>' . I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range.') . '</p>' .
-		'<table class="table table-bordered table-sm">' .
-		'<thead>' .
+		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date range') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'</thead>' .
-		'<tbody>' .
 		'<tr><td>' . $dates['BET 1900 AND 1910'] . '</td><td><kbd dir="ltr" lang="en">BET 1900 AND 1910</kbd></td><td><kbd dir="ltr" lang="en">1900-1910</kbd></td></tr>' .
 		'<tr><td>' . $dates['AFT 1900'] . '</td><td><kbd dir="ltr" lang="en">AFT 1900</kbd></td><td><kbd dir="ltr" lang="en">&gt;1900</kbd></td></tr>' .
 		'<tr><td>' . $dates['BEF 1910'] . '</td><td><kbd dir="ltr" lang="en">BEF 1910</kbd></td><td><kbd dir="ltr" lang="en">&lt;1910</kbd></td></tr>' .
@@ -156,25 +134,17 @@ switch ($help_topic) {
 		'<tr><td>' . $dates['BET APR 1900 AND JUN 1900'] . '</td><td><kbd dir="ltr" lang="en">BET APR 1900 AND JUN 1900</kbd></td><td><kbd dir="ltr" lang="en">Q2 1900</kbd></td></tr>' .
 		'<tr><td>' . $dates['BET JUL 1900 AND SEP 1900'] . '</td><td><kbd dir="ltr" lang="en">BET JUL 1900 AND SEP 1900</kbd></td><td><kbd dir="ltr" lang="en">Q3 1900</kbd></td></tr>' .
 		'<tr><td>' . $dates['BET OCT 1900 AND DEC 1900'] . '</td><td><kbd dir="ltr" lang="en">BET OCT 1900 AND DEC 1900</kbd></td><td><kbd dir="ltr" lang="en">Q4 1900</kbd></td></tr>' .
-		'</tbody>' .
 		'</table>' .
 		'<p>' . I18N::translate('Date periods are used to indicate that a fact, such as an occupation, continued for a period of time.') . '</p>' .
-		'<table class="table table-bordered table-sm">' .
-		'<thead>' .
+		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date period') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'</thead>' .
-		'<tbody>' .
 		'<tr><td>' . $dates['FROM 1900 TO 1910'] . '</td><td><kbd dir="ltr" lang="en">FROM 1900 TO 1910</kbd></td><td><kbd dir="ltr" lang="en">1900~1910</kbd></td></tr>' .
 		'<tr><td>' . $dates['FROM 1900'] . '</td><td><kbd dir="ltr" lang="en">FROM 1900</kbd></td><td><kbd dir="ltr" lang="en">1900-</kbd></td></tr>' .
 		'<tr><td>' . $dates['TO 1910'] . '</td><td><kbd dir="ltr" lang="en">TO 1910</kbd></td><td><kbd dir="ltr" lang="en">-1900</kbd></td></tr>' .
-		'</tbody>' .
 		'</table>' .
 		'<p>' . I18N::translate('Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous.') . '</p>' .
-		'<table class="table table-bordered table-sm">' .
-		'<thead>' .
+		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th></tr>' .
-		'</thead>' .
-//		'<tbody>' .
 		'<tr><th colspan="2">' . I18N::translate('Julian') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 14 JAN 1700'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 44 B.C.'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</kbd></td></tr>' .
@@ -219,7 +189,6 @@ switch ($help_topic) {
 		'<tr><td>' . $dates['TO @#DFRENCH R@ THER 12'] . '</td><td><kbd dir="ltr" lang="en">TO @#DFRENCH R@ THER 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['EST @#DFRENCH R@ FRUC 12'] . '</td><td><kbd dir="ltr" lang="en">EST @#DFRENCH R@ FRUC 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DFRENCH R@ 03 COMP 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ 03 COMP 12</kbd></td></tr>' .
-//		'</tbody>';
 		'</table>';
 	break;
 
