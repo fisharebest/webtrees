@@ -545,7 +545,7 @@ function mediaObjectInfo(Media $media) {
 		}
 		$html .= '</ul>';
 	} else {
-		$html .= '<div class="alert alert-danger">' . I18N::translate('This media object is not linked to any other record.') . '</div>';
+		$html .= '<div class="alert alert-danger">' . I18N::translate('There are no links to this media object.') . '</div>';
 	}
 
 	return $html;
