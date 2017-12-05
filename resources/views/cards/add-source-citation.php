@@ -3,10 +3,12 @@
 
 <div class="card mb-4">
 	<div class="card-header">
-		<?= I18N::translate('Add a source citation') ?>
+		<a href="#" data-toggle="collapse" data-target="#add-source-citation" aria-expanded="false" aria-controls="add-source-citation">
+			<?= I18N::translate('Add a source citation') ?>
+		</a>
 	</div>
 
-	<div class="card-body">
+	<div class="card-body collapse" id="add-source-citation">
 		<?= FunctionsEdit::addSimpleTag($level . ' SOUR @') ?>
 		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' PAGE') ?>
 		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' DATA') ?>
