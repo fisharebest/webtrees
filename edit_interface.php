@@ -2733,6 +2733,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		</div>
 	</div>
 	</form>
+	<?= view('modals/ajax') ?>
 
 	<?php
 	$controller->addInlineJavascript('
