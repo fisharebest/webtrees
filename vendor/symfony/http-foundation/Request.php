@@ -1579,6 +1579,30 @@ class Request
     }
 
     /**
+     * Returns the protocol version.
+     *
+     * If the application is behind a proxy, the protocol version used in the
+     * requests between the client and the proxy and between the proxy and the
+     * server might be different. This returns the former (from the "Via" header)
+     * if the proxy is trusted (see "setTrustedProxies()"), otherwise it returns
+     * the latter (from the "SERVER_PROTOCOL" server parameter).
+     *
+     * @return string
+     */
+    public function getProtocolVersion()
+    {
+        if ($this->isFromTrustedProxy()) {
+            preg_match('~^(HTTP/)?([1-9]\.[0-9]) ~', $this->headers->get('Via'), $matches);
+
+            if ($matches) {
+                return 'HTTP/'.$matches[2];
+            }
+        }
+
+        return $this->server->get('SERVER_PROTOCOL');
+    }
+
+    /**
      * Returns the request body content.
      *
      * @param bool $asResource If true, a resource will be returned
@@ -1904,12 +1928,12 @@ class Request
      */
     protected function prepareBasePath()
     {
-        $filename = basename($this->server->get('SCRIPT_FILENAME'));
         $baseUrl = $this->getBaseUrl();
         if (empty($baseUrl)) {
             return '';
         }
 
+        $filename = basename($this->server->get('SCRIPT_FILENAME'));
         if (basename($baseUrl) === $filename) {
             $basePath = dirname($baseUrl);
         } else {
@@ -1930,8 +1954,6 @@ class Request
      */
     protected function preparePathInfo()
     {
-        $baseUrl = $this->getBaseUrl();
-
         if (null === ($requestUri = $this->getRequestUri())) {
             return '/';
         }
@@ -1944,12 +1966,14 @@ class Request
             $requestUri = '/'.$requestUri;
         }
 
+        if (null === ($baseUrl = $this->getBaseUrl())) {
+            return $requestUri;
+        }
+
         $pathInfo = substr($requestUri, strlen($baseUrl));
-        if (null !== $baseUrl && (false === $pathInfo || '' === $pathInfo)) {
+        if (false === $pathInfo || '' === $pathInfo) {
             // If substr() returns false then PATH_INFO is set to an empty string
             return '/';
-        } elseif (null === $baseUrl) {
-            return $requestUri;
         }
 
         return (string) $pathInfo;

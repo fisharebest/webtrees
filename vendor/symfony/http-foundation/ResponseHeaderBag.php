@@ -35,6 +35,11 @@ class ResponseHeaderBag extends HeaderBag
         if (!isset($this->headers['cache-control'])) {
             $this->set('Cache-Control', '');
         }
+
+        /* RFC2616 - 14.18 says all Responses need to have a Date */
+        if (!isset($this->headers['date'])) {
+            $this->initDate();
+        }
     }
 
     /**
@@ -73,6 +78,10 @@ class ResponseHeaderBag extends HeaderBag
 
         if (!isset($this->headers['cache-control'])) {
             $this->set('Cache-Control', '');
+        }
+
+        if (!isset($this->headers['date'])) {
+            $this->initDate();
         }
     }
 
@@ -113,7 +122,7 @@ class ResponseHeaderBag extends HeaderBag
         parent::set($key, $values, $replace);
 
         // ensure the cache-control header has sensible defaults
-        if (in_array($uniqueKey, array('cache-control', 'etag', 'last-modified', 'expires'))) {
+        if (\in_array($uniqueKey, array('cache-control', 'etag', 'last-modified', 'expires'), true)) {
             $computed = $this->computeCacheControlValue();
             $this->headers['cache-control'] = array($computed);
             $this->headerNames['cache-control'] = 'Cache-Control';
@@ -139,6 +148,10 @@ class ResponseHeaderBag extends HeaderBag
 
         if ('cache-control' === $uniqueKey) {
             $this->computedCacheControl = array();
+        }
+
+        if ('date' === $uniqueKey) {
+            $this->initDate();
         }
     }
 
@@ -316,5 +329,12 @@ class ResponseHeaderBag extends HeaderBag
         }
 
         return $header;
+    }
+
+    private function initDate()
+    {
+        $now = \DateTime::createFromFormat('U', time());
+        $now->setTimezone(new \DateTimeZone('UTC'));
+        $this->set('Date', $now->format('D, d M Y H:i:s').' GMT');
     }
 }

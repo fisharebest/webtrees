@@ -64,16 +64,22 @@ class StreamedResponse extends Response
      * Sets the PHP callback associated with this Response.
      *
      * @param callable $callback A valid PHP callback
+     *
+     * @return $this
      */
     public function setCallback(callable $callback)
     {
         $this->callback = $callback;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      *
      * This method only sends the headers once.
+     *
+     * @return $this
      */
     public function sendHeaders()
     {
@@ -90,6 +96,8 @@ class StreamedResponse extends Response
      * {@inheritdoc}
      *
      * This method only sends the content once.
+     *
+     * @return $this
      */
     public function sendContent()
     {
@@ -112,12 +120,16 @@ class StreamedResponse extends Response
      * {@inheritdoc}
      *
      * @throws \LogicException when the content is not null
+     *
+     * @return $this
      */
     public function setContent($content)
     {
         if (null !== $content) {
             throw new \LogicException('The content cannot be set on a StreamedResponse instance.');
         }
+
+        return $this;
     }
 
     /**
