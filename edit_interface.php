@@ -1618,7 +1618,7 @@ case 'add-media-link':
 				<div class="input-group">
 					<?php if ($record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($record->getTree())): ?>
 						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-media-object" data-element-id="media-xref" title="<?= I18N::translate('Create a media object') ?>">
+							<button class="btn btn-secondary" type="button" data-toggle="modal" data-href="<?= e(route('create-media-object', ['tree' => $record->getTree()->getName()])) ?>" data-target="#wt-ajax-modal" data-select-id="media-xref" title="<?= I18N::translate('Create a media object') ?>">
 								<i class="fa fa-plus"></i>
 							</button>
 						</span>
@@ -1643,6 +1643,7 @@ case 'add-media-link':
 			</div>
 		</div>
 	</form>
+	<?= view('modals/ajax') ?>
 	<?php
 	break;
 
