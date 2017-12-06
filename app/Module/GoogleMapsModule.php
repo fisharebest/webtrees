@@ -990,7 +990,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			/* prepending the module css in the page head allows the theme to over-ride it*/
 			->addInlineJavascript('$("head").prepend(\'<link type="text/css" href ="' . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">\');')
-			->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
 			->pageHeader();
 ?>
 
@@ -1029,6 +1028,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		</form>
 
 		<div class="wt-ajax-load wt-page-content"></div>
+		<script>
+			document.addEventListener(DOMContentLoaded, function () {
+		    $(".wt-page-content").load(location.search + "&ajax=1");
+			});
+		</script>
 		<?php
 	}
 
@@ -2113,7 +2117,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		} catch (\Exception $ex) {
 		DebugBar::addThrowable($ex);
-		
+
 			Log::addErrorLog(basename($ex->getFile()) . ' - line: ' . $ex->getLine() . ' - ' . $ex->getMessage());
 		}
 
@@ -2251,7 +2255,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			]);
 		} catch (\Exception $ex) {
 		DebugBar::addThrowable($ex);
-		
+
 			FlashMessages::addMessage(I18N::translate('Location not removed: this location contains sub-locations'), 'danger');
 		}
 

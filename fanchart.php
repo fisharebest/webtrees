@@ -67,9 +67,7 @@ if (Filter::getBool('img') && Session::has('initiated')) {
 	return;
 }
 
-$controller
-	->addInlineJavascript('$(".wt-page-content").load(location.search + "&ajax=1");')
-	->pageHeader();
+$controller->pageHeader();
 
 ?>
 <h2 class="wt-page-title"><?= $controller->getPageTitle() ?></h2>
@@ -125,3 +123,8 @@ $controller
 </form>
 
 <div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart"></div>
+<script>
+	document.addEventListener(DOMContentLoaded, function () {
+    $(".wt-page-content").load(location.search + "&ajax=1");
+	});
+</script>
