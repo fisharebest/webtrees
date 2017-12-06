@@ -782,11 +782,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'SUBM') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn">' .
-				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-submitter" data-element-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' .
-				'<i class="fa fa-plus"></i>' .
-				'</button>' .
-				'</span>' .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fa fa-plus"></i></button></span>' .
 				self::formControlSubmitter(GedcomRecord::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'TEMP') {

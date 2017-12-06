@@ -319,6 +319,13 @@ case 'select2-source':
 	echo json_encode(Select2::sourceSearch($WT_TREE, $page, $query));
 	break;
 
+case 'select2-submitter':
+	$page  = Filter::postInteger('page');
+	$query = Filter::post('q', null, '');
+	header('Content-Type: application/json');
+	echo json_encode(Select2::submitterSearch($WT_TREE, $page, $query));
+	break;
+
 case 'theme':
 	// Change the current theme
 	$theme = Filter::post('theme');
