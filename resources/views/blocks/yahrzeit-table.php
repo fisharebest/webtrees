@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<table class="table table-sm wt-table-yahrzeit" data-info="false" data-paging="false" data-searching="false" data-sorting="<?= e('[[3, "asc" ]]') ?>">
+<table class="table table-sm datatable wt-table-yahrzeit" data-info="false" data-paging="false" data-searching="false" data-sorting="<?= e('[[3, "asc" ]]') ?>">
 	<thead>
 		<tr>
 			<th><?= I18N::translate('Name') ?></th>
