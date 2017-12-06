@@ -606,7 +606,11 @@ class Select2 extends Html {
 		$offset  = $page * self::RESULTS_PER_PAGE;
 		$more    = false;
 		$results = [];
-		$cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'SUBM'" . " ORDER BY n_full COLLATE :collation")->execute([
+		$cursor  = Database::prepare(
+			"SELECT o_id AS xref, o_gedcom AS gedcom" .
+			" FROM `##other`" .
+			" WHERE (o_id LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'SUBM'" .
+			" ORDER BY o_id COLLATE :collation")->execute([
 			'query'     => $query,
 			'xref'      => $query,
 			'tree_id'   => $tree->getTreeId(),
