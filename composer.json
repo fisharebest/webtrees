@@ -13,7 +13,7 @@
 	},
 	"config": {
 		"platform": {
-			"php" : "5.6"
+			"php" : "7.0"
 		},
 		"sort-packages": true
 	},
@@ -50,9 +50,79 @@
 		"phpunit/phpunit": "*",
 		"satooshi/php-coveralls": "*"
 	},
+	"scripts": {
+		"webtrees-mo": [
+			"msgfmt --output=language/af.mo language/af.po",
+			"msgfmt --output=language/ar.mo language/ar.po",
+			"msgfmt --output=language/bg.mo language/bg.po",
+			"msgfmt --output=language/bs.mo language/bs.po",
+			"msgfmt --output=language/ca.mo language/ca.po",
+			"msgfmt --output=language/cs.mo language/cs.po",
+			"msgfmt --output=language/da.mo language/da.po",
+			"msgfmt --output=language/de.mo language/de.po",
+			"msgfmt --output=language/dv.mo language/dv.po",
+			"msgfmt --output=language/el.mo language/el.po",
+			"msgfmt --output=language/en-AU.mo language/en-AU.po",
+			"msgfmt --output=language/en-GB.mo language/en-GB.po",
+			"msgfmt --output=language/en-US.mo language/en-US.po",
+			"msgfmt --output=language/es.mo language/es.po",
+			"msgfmt --output=language/et.mo language/et.po",
+			"msgfmt --output=language/fa.mo language/fa.po",
+			"msgfmt --output=language/fi.mo language/fi.po",
+			"msgfmt --output=language/fo.mo language/fo.po",
+			"msgfmt --output=language/fr-CA.mo language/fr-CA.po",
+			"msgfmt --output=language/fr.mo language/fr.po",
+			"msgfmt --output=language/gl.mo language/gl.po",
+			"msgfmt --output=language/he.mo language/he.po",
+			"msgfmt --output=language/hr.mo language/hr.po",
+			"msgfmt --output=language/hu.mo language/hu.po",
+			"msgfmt --output=language/id.mo language/id.po",
+			"msgfmt --output=language/is.mo language/is.po",
+			"msgfmt --output=language/it.mo language/it.po",
+			"msgfmt --output=language/ja.mo language/ja.po",
+			"msgfmt --output=language/ka.mo language/ka.po",
+			"msgfmt --output=language/ko.mo language/ko.po",
+			"msgfmt --output=language/ln.mo language/ln.po",
+			"msgfmt --output=language/lt.mo language/lt.po",
+			"msgfmt --output=language/lv.mo language/lv.po",
+			"msgfmt --output=language/mi.mo language/mi.po",
+			"msgfmt --output=language/mr.mo language/mr.po",
+			"msgfmt --output=language/ms.mo language/ms.po",
+			"msgfmt --output=language/nb.mo language/nb.po",
+			"msgfmt --output=language/ne.mo language/ne.po",
+			"msgfmt --output=language/nl.mo language/nl.po",
+			"msgfmt --output=language/nn.mo language/nn.po",
+			"msgfmt --output=language/oc.mo language/oc.po",
+			"msgfmt --output=language/pl.mo language/pl.po",
+			"msgfmt --output=language/pt-BR.mo language/pt-BR.po",
+			"msgfmt --output=language/pt.mo language/pt.po",
+			"msgfmt --output=language/ro.mo language/ro.po",
+			"msgfmt --output=language/ru.mo language/ru.po",
+			"msgfmt --output=language/sk.mo language/sk.po",
+			"msgfmt --output=language/sl.mo language/sl.po",
+			"msgfmt --output=language/sq.mo language/sq.po",
+			"msgfmt --output=language/sr-Latn.mo language/sr-Latn.po",
+			"msgfmt --output=language/sr.mo language/sr.po",
+			"msgfmt --output=language/sv.mo language/sv.po",
+			"msgfmt --output=language/sw.mo language/sw.po",
+			"msgfmt --output=language/ta.mo language/ta.po",
+			"msgfmt --output=language/th.mo language/th.po",
+			"msgfmt --output=language/tr.mo language/tr.po",
+			"msgfmt --output=language/tt.mo language/tt.po",
+			"msgfmt --output=language/uk.mo language/uk.po",
+			"msgfmt --output=language/vi.mo language/vi.po",
+			"msgfmt --output=language/yi.mo language/yi.po",
+			"msgfmt --output=language/zh-Hans.mo language/zh-Hans.po",
+			"msgfmt --output=language/zh-Hant.mo language/zh-Hant.po",
+			"rm -Rf data/cache/language*"
+		]
+	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.8-dev"
+			"dev-master": "2.0-dev"
+		},
+		"scripts-description": {
+			"webtrees-mo": "Compile the language files"
 		}
 	}
 }
