@@ -1,8 +1,8 @@
-<div class="d-flex flex-wrap">
-	<div>
+<div class="d-flex flex-wrap w-100">
+	<div style="flex-grow: 1">
 		<?= $males ?>
 	</div>
-	<div>
+	<div style="flex-grow: 1">
 		<?= $females ?>
 	</div>
 </div>
