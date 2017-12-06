@@ -80,7 +80,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				case 'pedigree':
 					$title           = I18N::translate('Pedigree of %s', $person->getFullName());
 					$chartController = new HourglassController($person->getXref());
-					$controller->addInlineJavascript($chartController->setupJavascript());
 					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 					$content .= '<td class="myCharts">';
 					ob_start();
@@ -93,19 +92,19 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 					$content .= ob_get_clean();
 					$content .= '</td>';
 					$content .= '</tr></table>';
+					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
 					break;
 				case 'descendants':
 					$title           = I18N::translate('Descendants of %s', $person->getFullName());
 					$chartController = new HourglassController($person->getXref());
-					$controller->addInlineJavascript($chartController->setupJavascript());
 					ob_start();
 					$chartController->printDescendency($person, 1, false);
 					$content .= ob_get_clean();
+					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
 					break;
 				case 'hourglass':
 					$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
 					$chartController = new HourglassController($person->getXref());
-					$controller->addInlineJavascript($chartController->setupJavascript());
 					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 					$content .= '<td>';
 					ob_start();
@@ -118,6 +117,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 					$content .= ob_get_clean();
 					$content .= '</td>';
 					$content .= '</tr></table>';
+					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
 					break;
 				case 'treenav':
 					$title = I18N::translate('Interactive tree of %s', $person->getFullName());
