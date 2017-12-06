@@ -68,7 +68,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<SetVar name="nrrelatives" value="$nrrelatives + 1" />
 				<SetVar name="printname" value="0" />
 				<!-- Birth -->
-				<if condition="$fbirt=='1'">
+				<if condition="$fbirt=='on'">
 					<!-- Total Event Counter -->
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@BIRT:DATE==''">
@@ -92,7 +92,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of birth')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<!-- Total Event Counter -->
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@BIRT:SOUR==''">
@@ -111,7 +111,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- Baptism / Christining -->
-				<if condition="$fbapm=='1'">
+				<if condition="$fbapm=='on'">
 					<!-- Total Event Counter -->
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<SetVar name="printbapm" value="0" />
@@ -139,7 +139,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of baptism')" /></Cell>
 						</if>
-						<if condition="$fsour=='1'">
+						<if condition="$fsour=='on'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
 							<if condition="@BAPM:SOUR==''">
 								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -155,7 +155,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<SetVar name="printbapm" value="1" />
 					</if>
-					
+
 					<!-- Christining -->
 					<if condition="((@CHR:DATE=='') or (@CHR:PLAC=='')) and ($printbapm==0)">
 						<if condition="@CHR:DATE==''">
@@ -180,7 +180,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of christening')" /></Cell>
 						</if>
-						<if condition="$fsour=='1'">
+						<if condition="$fsour=='on'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
 							<if condition="@CHR:SOUR==''">
 								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -198,7 +198,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- BARM - male only -->
-				<if condition="($fbarm=='1') and (@SEX=='M')">
+				<if condition="($fbarm=='on') and (@SEX=='M')">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@BARM:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -213,7 +213,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</if>
 					<if condition="@BARM:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<if condition="$printname=='1'">
+						<if condition="$printname=='on'">
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
@@ -226,7 +226,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@BARM:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<if condition="$printname=='1'">
+							<if condition="$printname=='on'">
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
@@ -239,7 +239,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- BASM - female only -->
-				<if condition="($fbasm=='1') and (@SEX=='F')">
+				<if condition="($fbasm=='on') and (@SEX=='F')">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@BASM:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -263,7 +263,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of bat mitzvah')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@BASM:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -280,7 +280,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- CONF -->
-				<if condition="$fconf=='1'">
+				<if condition="$fconf=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@CONF:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -304,7 +304,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of confirmation')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@CONF:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -321,7 +321,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- ENGA -->
-				<if condition="$fenga=='1'">
+				<if condition="$fenga=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
 						<if condition="@ENGA:DATE==''">
@@ -346,7 +346,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of engagement')" /></Cell>
 						</if>
-						<if condition="$fsour=='1'">
+						<if condition="$fsour=='on'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
 							<if condition="@ENGA:SOUR==''">
 								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -364,7 +364,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- FCOM -->
-				<if condition="$ffcom=='1'">
+				<if condition="$ffcom=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@FCOM:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -388,7 +388,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of first communion')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@FCOM:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -405,7 +405,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- MARB -->
-				<if condition="$fmarb=='1'">
+				<if condition="$fmarb=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
 						<if condition="@MARB:DATE==''">
@@ -430,7 +430,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of marriage banns')" /></Cell>
 						</if>
-						<if condition="$fsour=='1'">
+						<if condition="$fsour=='on'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
 							<if condition="@MARB:SOUR==''">
 								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -448,7 +448,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- MARM -->
-				<if condition="$fmarr=='1'">
+				<if condition="$fmarr=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
 						<if condition="@MARR:DATE==''">
@@ -473,7 +473,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of marriage')" /></Cell>
 						</if>
-						<if condition="$fsour=='1'">
+						<if condition="$fsour=='on'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
 							<if condition="@MARR:SOUR==''">
 								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -491,7 +491,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- DEAT -->
-				<if condition="$fdeat=='1'">
+				<if condition="$fdeat=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@DEAT:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -515,7 +515,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of death')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@DEAT:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -532,7 +532,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- BURI -->
-				<if condition="$fburi=='1'">
+				<if condition="$fburi=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@BURI:DATE==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -556,7 +556,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of burial')" /></Cell>
 					</if>
-					<if condition="$fsour=='1'">
+					<if condition="$fsour=='on'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@BURI:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -573,7 +573,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 
 				<!-- RELI -->
-				<if condition="$freli=='1'">
+				<if condition="$freli=='on'">
 					<SetVar name="nrevent" value="$nrevent + 1" />
 					<if condition="@RELI==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
