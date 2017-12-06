@@ -23,11 +23,8 @@ use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class YahrzeitModule
@@ -65,144 +62,78 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			}
 		}
 
-		$startjd = WT_CLIENT_JD;
-		$endjd   = WT_CLIENT_JD + $days - 1;
+		$jewish_calendar = new JewishCalendar;
+		$startjd         = WT_CLIENT_JD;
+		$endjd           = WT_CLIENT_JD + $days - 1;
 
-		$content = '';
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
 		// need to handle a few special cases.
-		// Fetch normal anniversaries...
+		// Fetch normal anniversaries, with an extra day before/after
 		$yahrzeits = [];
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
 			foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
 				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
-					$fact->jd    = $jd;
-					$yahrzeits[] = $fact;
-				}
-			}
-		}
 
-		// ...then adjust dates
-		$jewish_calendar = new JewishCalendar;
+					// ...then adjust DEAT dates (but not _YART)
+					if ($fact->getTag() === 'DEAT') {
+						$today = new JewishDate($jd);
+						$hd    = $fact->getDate()->minimumDate();
+						$hd1   = new JewishDate($hd);
+						$hd1->y += 1;
+						$hd1->setJdFromYmd();
+						// Special rules. See http://www.hebcal.com/help/anniv.html
+						// Everything else is taken care of by our standard anniversary rules.
+						if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+							// 30 CSH - Last day in CSH
+							$jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
+						} elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+							// 30 KSL - Last day in KSL
+							$jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
+						} elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
+							// 30 ADR - Last day in SHV
+							$jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
+						}
+					}
 
-		foreach ($yahrzeits as $yahrzeit) {
-			if ($yahrzeit->getTag() === 'DEAT') {
-				$today = new JewishDate($yahrzeit->jd);
-				$hd    = $yahrzeit->getDate()->minimumDate();
-				$hd1   = new JewishDate($hd);
-				$hd1->y += 1;
-				$hd1->setJdFromYmd();
-				// Special rules. See http://www.hebcal.com/help/anniv.html
-				// Everything else is taken care of by our standard anniversary rules.
-				if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
-					// 30 CSH - Last day in CSH
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
-				} elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
-					// 30 KSL - Last day in KSL
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
-				} elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
-					// 30 ADR - Last day in SHV
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
+					// Filter adjusted dates to our date range
+					if ($jd >= $startjd && $jd < $startjd + $days) {
+						// upcomming yahrzeit dates
+						switch ($calendar) {
+							case 'gregorian':
+								$yahrzeit_date = new GregorianDate($jd);
+								break;
+							case 'jewish':
+							default:
+								$yahrzeit_date = new JewishDate($jd);
+								break;
+						}
+						$yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
+
+						$yahrzeits[] = (object) [
+							'individual' => $fact->getParent(),
+							'fact_date'  => $fact->getDate(),
+							'fact'       => $fact,
+							'jd'            => $jd,
+							'yahrzeit_date' => $yahrzeit_date,
+						];
+					}
 				}
 			}
 		}
 
 		switch ($infoStyle) {
 			case 'list':
-				foreach ($yahrzeits as $yahrzeit) {
-					if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
-						$ind = $yahrzeit->getParent();
-						$content .= '<a href="' . $ind->getHtmlUrl() . '" class="list_item name2">' . $ind->getFullName() . '</a>' . $ind->getSexImage();
-						$content .= '<div class="indent">';
-						$content .= $yahrzeit->getDate()->display(true);
-						$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
-						$content .= '</div>';
-					}
-				}
+				$content = view('blocks/yahrzeit-list', [
+					'yahrzeits' => $yahrzeits,
+				]);
 				break;
 			case 'table':
 			default:
-				$table_id = Uuid::uuid4(); // table requires a unique ID
-				$controller
-					->addInlineJavascript('
-					$("#' . $table_id . '").dataTable({
-						dom: \'t\',
-						' . I18N::datatablesI18N() . ',
-						autoWidth: false,
-						paginate: false,
-						lengthChange: false,
-						filter: false,
-						info: true,
-						sorting: [[5,"asc"]],
-						columns: [
-							/* 0-name */ { dataSort: 1 },
-							/* 1-NAME */ { visible: false },
-							/* 2-date */ { dataSort: 3 },
-							/* 3-DATE */ { visible: false },
-							/* 4-Aniv */ { class: "center"},
-							/* 5-yart */ { dataSort: 6 },
-							/* 6-YART */ { visible: false }
-						]
-					});
-					$("#' . $table_id . '").css("visibility", "visible");
-				');
-				$content = '';
-				$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
-				$content .= '<thead><tr>';
-				$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
-				$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
-				$content .= '<th>' . I18N::translate('Death') . '</th>';
-				$content .= '<th>DEAT</th>';
-				$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
-				$content .= '<th>' . GedcomTag::getLabel('_YART') . '</th>';
-				$content .= '<th>_YART</th>';
-				$content .= '</tr></thead><tbody>';
-
-				foreach ($yahrzeits as $yahrzeit) {
-					if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
-						$content .= '<tr>';
-						$ind = $yahrzeit->getParent();
-						// Individual name(s)
-						$name = $ind->getFullName();
-						$url  = $ind->getHtmlUrl();
-						$content .= '<td>';
-						$content .= '<a href="' . $url . '">' . $name . '</a>';
-						$content .= $ind->getSexImage();
-						$addname = $ind->getAddName();
-						if ($addname) {
-							$content .= '<br><a href="' . $url . '">' . $addname . '</a>';
-						}
-						$content .= '</td>';
-						$content .= '<td>' . $ind->getSortName() . '</td>';
-
-						// death/yahrzeit event date
-						$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
-						$content .= '<td>' . $yahrzeit->getDate()->julianDay() . '</td>'; // sortable date
-
-						// Anniversary
-						$content .= '<td>' . $yahrzeit->anniv . '</td>';
-
-						// upcomming yahrzeit dates
-						switch ($calendar) {
-							case 'gregorian':
-								$today = new GregorianDate($yahrzeit->jd);
-								break;
-							case 'jewish':
-							default:
-								$today = new JewishDate($yahrzeit->jd);
-								break;
-						}
-					$td = new Date($today->format('%@ %A %O %E'));
-					$content .= '<td>' . $td->display() . '</td>';
-					$content .= '<td>' . $td->julianDay() . '</td>'; // sortable date
-
-					$content .= '</tr>';
-				}
-			}
-			$content .= '</tbody></table>';
-
+				$content = view('blocks/yahrzeit-table', [
+					'yahrzeits' => $yahrzeits,
+				]);
 			break;
 		}
 
@@ -213,7 +144,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
