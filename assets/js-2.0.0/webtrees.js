@@ -447,7 +447,7 @@ function calendarWidget (dateDivId, dateFieldId) {
   }
 
   /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
-  var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
+  var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/i;
   var date;
   if (greg_regex.exec(dateField.value)) {
     date = new Date(RegExp.$1);
