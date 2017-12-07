@@ -119,9 +119,8 @@ switch ($action) {
 				}
 			}
 
-			// If we were on a "home page", redirect to "my page"
-			if ($url === '' || strpos($url, 'index.php?ctype=gedcom') === 0) {
-				$url = 'index.php?ctype=user';
+			// If there was no referring page, redirect to "my page".
+			if ($url === '') {
 				// Switch to a tree where we have a genealogy record (or keep to the current/default).
 				$tree = Database::prepare(
 					"SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" .
@@ -131,7 +130,8 @@ switch ($action) {
 					'user_id' => Auth::user()->getUserId(),
 					'tree_id' => $WT_TREE->getTreeId(),
 				])->fetchOne();
-				$url .= '&ged=' . rawurlencode($tree);
+
+				$url = route('home-page', ['ged' => $tree ?? $WT_TREE->getName()]);
 			}
 
 			// Redirect to the target URL
