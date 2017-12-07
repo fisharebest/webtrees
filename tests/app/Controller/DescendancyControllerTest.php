@@ -18,7 +18,7 @@
 /**
  * Test harness for the class DescendancyController
  */
-class DescendancyControllerTest extends \PHPUnit_Framework_TestCase {
+class DescendancyControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

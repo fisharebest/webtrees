@@ -228,10 +228,6 @@ class JsonResponseTest extends TestCase
      */
     public function testSetContentJsonSerializeError()
     {
-        if (!interface_exists('JsonSerializable', false)) {
-            $this->markTestSkipped('JsonSerializable is required.');
-        }
-
         $serializable = new JsonSerializableObject();
 
         JsonResponse::create($serializable);
@@ -246,7 +242,7 @@ class JsonResponseTest extends TestCase
     }
 }
 
-if (interface_exists('JsonSerializable', false)) {
+if (interface_exists('JsonSerializable')) {
     class JsonSerializableObject implements \JsonSerializable
     {
         public function jsonSerialize()

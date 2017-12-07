@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GedcomCodeQuay
  */
-class GedcomCodeQuayTest extends \PHPUnit_Framework_TestCase {
+class GedcomCodeQuayTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

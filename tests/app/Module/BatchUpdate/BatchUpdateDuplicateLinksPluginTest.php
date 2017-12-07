@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BatchUpdateDuplicateLinksPlugin
  */
-class BatchUpdateDuplicateLinksPluginTest extends \PHPUnit_Framework_TestCase {
+class BatchUpdateDuplicateLinksPluginTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class TopSurnamesModule
  */
-class TopSurnamesModuleTest extends \PHPUnit_Framework_TestCase {
+class TopSurnamesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

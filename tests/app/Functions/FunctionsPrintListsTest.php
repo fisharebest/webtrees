@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_print_lists.php
  */
-class FunctionsPrintListsTest extends \PHPUnit_Framework_TestCase {
+class FunctionsPrintListsTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

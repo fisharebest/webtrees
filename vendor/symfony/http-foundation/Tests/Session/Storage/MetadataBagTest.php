@@ -26,6 +26,9 @@ class MetadataBagTest extends TestCase
      */
     protected $bag;
 
+    /**
+     * @var array
+     */
     protected $array = array();
 
     protected function setUp()

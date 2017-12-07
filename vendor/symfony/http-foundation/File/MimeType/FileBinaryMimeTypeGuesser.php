@@ -24,6 +24,8 @@ class FileBinaryMimeTypeGuesser implements MimeTypeGuesserInterface
     private $cmd;
 
     /**
+     * Constructor.
+     *
      * The $cmd pattern must contain a "%s" string that will be replaced
      * with the file name to guess.
      *

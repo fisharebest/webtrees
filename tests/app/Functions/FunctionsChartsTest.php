@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_charts.php
  */
-class FunctionsChartsTest extends \PHPUnit_Framework_TestCase {
+class FunctionsChartsTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

@@ -21,7 +21,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBirthDayMonthSlashYearTest
  */
-class CensusColumnBirthDayMonthSlashYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthDayMonthSlashYearTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Delete mock objects
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BatchUpdateMarriedNamesPlugin
  */
-class BatchUpdateMarriedNamesPluginTest extends \PHPUnit_Framework_TestCase {
+class BatchUpdateMarriedNamesPluginTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

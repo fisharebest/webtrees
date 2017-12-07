@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\Functions\FunctionsMedia;
 /**
  * Unit tests for the global functions in the file includes/functions/functions_mediadb.php
  */
-class FunctionsMediaTest extends \PHPUnit_Framework_TestCase {
+class FunctionsMediaTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test the function return_bytes().
 	 */

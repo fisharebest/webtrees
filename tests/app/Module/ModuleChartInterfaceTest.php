@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleChartInterface
  */
-class ModuleChartInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleChartInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

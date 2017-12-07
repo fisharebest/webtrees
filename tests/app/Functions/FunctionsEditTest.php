@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_edit.php
  */
-class FunctionsEditTest extends \PHPUnit_Framework_TestCase {
+class FunctionsEditTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

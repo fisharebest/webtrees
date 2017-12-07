@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamilyTreeStatisticsModule
  */
-class FamilyTreeStatisticsModuleTest extends \PHPUnit_Framework_TestCase {
+class FamilyTreeStatisticsModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

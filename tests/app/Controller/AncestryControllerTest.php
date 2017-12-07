@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AncestryController
  */
-class AncestryControllerTest extends \PHPUnit_Framework_TestCase {
+class AncestryControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

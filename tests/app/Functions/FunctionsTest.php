@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 /**
  * Unit tests for the global functions in the file includes/functions/functions.php
  */
-class FunctionsTest extends \PHPUnit_Framework_TestCase {
+class FunctionsTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Tests for function isFileExternal()
 	 */

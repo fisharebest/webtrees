@@ -21,7 +21,10 @@ use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
  */
 class NamespacedAttributeBagTest extends TestCase
 {
-    private $array = array();
+    /**
+     * @var array
+     */
+    private $array;
 
     /**
      * @var NamespacedAttributeBag

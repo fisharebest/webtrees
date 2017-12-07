@@ -18,7 +18,7 @@
 /**
  * Test harness for the class TopPageViewsModule
  */
-class TopPageViewsModuleTest extends \PHPUnit_Framework_TestCase {
+class TopPageViewsModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

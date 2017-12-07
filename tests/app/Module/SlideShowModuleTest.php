@@ -18,7 +18,7 @@
 /**
  * Test harness for the class SlideShowModule
  */
-class SlideShowModuleTest extends \PHPUnit_Framework_TestCase {
+class SlideShowModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

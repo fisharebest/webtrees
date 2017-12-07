@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AlbumModule
  */
-class AlbumModuleTest extends \PHPUnit_Framework_TestCase {
+class AlbumModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class DescendancyReportModule
  */
-class DescendancyReportModuleTest extends \PHPUnit_Framework_TestCase {
+class DescendancyReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

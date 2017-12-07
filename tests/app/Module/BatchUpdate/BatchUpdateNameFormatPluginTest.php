@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BatchUpdateNameFormatPlugin
  */
-class BatchUpdateNameFormatPluginTest extends \PHPUnit_Framework_TestCase {
+class BatchUpdateNameFormatPluginTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

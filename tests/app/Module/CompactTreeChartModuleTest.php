@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CompactTreeChartModule
  */
-class CompactTreeChartModuleTest extends \PHPUnit_Framework_TestCase {
+class CompactTreeChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

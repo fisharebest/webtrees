@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FrenchDate
  */
-class FrenchDateTest extends \PHPUnit_Framework_TestCase {
+class FrenchDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

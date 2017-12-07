@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Statement
  */
-class StatementTest extends \PHPUnit_Framework_TestCase {
+class StatementTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

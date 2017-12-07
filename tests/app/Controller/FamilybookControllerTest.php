@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamilyBookController
  */
-class FamilybookControllerTest extends \PHPUnit_Framework_TestCase {
+class FamilybookControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

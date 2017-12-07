@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleThemeInterface
  */
-class ModuleThemeInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleThemeInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

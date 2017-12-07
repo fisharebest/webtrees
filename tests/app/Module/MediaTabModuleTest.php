@@ -18,7 +18,7 @@
 /**
  * Test harness for the class MediaTabModule
  */
-class MediaTabModuleTest extends \PHPUnit_Framework_TestCase {
+class MediaTabModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

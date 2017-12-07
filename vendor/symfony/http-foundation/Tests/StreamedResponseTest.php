@@ -112,15 +112,4 @@ class StreamedResponseTest extends TestCase
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\StreamedResponse', $response);
         $this->assertEquals(204, $response->getStatusCode());
     }
-
-    public function testReturnThis()
-    {
-        $response = new StreamedResponse(function () {});
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\StreamedResponse', $response->sendContent());
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\StreamedResponse', $response->sendContent());
-
-        $response = new StreamedResponse(function () {});
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\StreamedResponse', $response->sendHeaders());
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\StreamedResponse', $response->sendHeaders());
-    }
 }

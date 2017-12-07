@@ -16,8 +16,6 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler\WriteCheckSessionHa
 
 /**
  * @author Adrien Brault <adrien.brault@gmail.com>
- *
- * @group legacy
  */
 class WriteCheckSessionHandlerTest extends TestCase
 {

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class TimelineChartModule
  */
-class TimelineChartModuleTest extends \PHPUnit_Framework_TestCase {
+class TimelineChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

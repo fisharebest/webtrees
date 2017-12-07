@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusColumnAgeFemale5Years
  */
-class CensusTest extends \PHPUnit_Framework_TestCase {
+class CensusTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * @covers \Fisharebest\Webtrees\Census\Census
 	 */

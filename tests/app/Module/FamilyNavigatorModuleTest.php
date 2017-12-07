@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamilyNavigatorModule
  */
-class FamilyNavigatorModuleTest extends \PHPUnit_Framework_TestCase {
+class FamilyNavigatorModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

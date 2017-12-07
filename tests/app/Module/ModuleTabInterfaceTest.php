@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleTabInterface
  */
-class ModuleTabInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleTabInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

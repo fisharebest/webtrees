@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GedcomTag
  */
-class GedcomTagTest extends \PHPUnit_Framework_TestCase {
+class GedcomTagTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

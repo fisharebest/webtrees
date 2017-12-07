@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Site
  */
-class SiteTest extends \PHPUnit_Framework_TestCase {
+class SiteTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

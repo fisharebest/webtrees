@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_db.php
  */
-class FunctionsDbTest extends \PHPUnit_Framework_TestCase {
+class FunctionsDbTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

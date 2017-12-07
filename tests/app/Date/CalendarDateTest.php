@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CalendarDate
  */
-class CalendarDateTest extends \PHPUnit_Framework_TestCase {
+class CalendarDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

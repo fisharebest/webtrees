@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamilyGroupReportModule
  */
-class FamilyGroupReportModuleTest extends \PHPUnit_Framework_TestCase {
+class FamilyGroupReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

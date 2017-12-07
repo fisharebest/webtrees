@@ -18,7 +18,7 @@
 /**
  * Test harness for the class HourglassChartModule
  */
-class HourglassChartModuleTest extends \PHPUnit_Framework_TestCase {
+class HourglassChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

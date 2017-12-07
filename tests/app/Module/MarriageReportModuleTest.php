@@ -18,7 +18,7 @@
 /**
  * Test harness for the class MarriageReportModule
  */
-class MarriageReportModuleTest extends \PHPUnit_Framework_TestCase {
+class MarriageReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

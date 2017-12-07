@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GedcomCodeRela
  */
-class GedcomCodeRelaTest extends \PHPUnit_Framework_TestCase {
+class GedcomCodeRelaTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

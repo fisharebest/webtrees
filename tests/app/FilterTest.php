@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Filter
  */
-class FilterTest extends \PHPUnit_Framework_TestCase {
+class FilterTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ChartsBlockModule
  */
-class ChartsBlockModuleTest extends \PHPUnit_Framework_TestCase {
+class ChartsBlockModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

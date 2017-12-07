@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfScotland
  */
-class CensusOfScotlandTest extends \PHPUnit_Framework_TestCase {
+class CensusOfScotlandTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test the census place
 	 *

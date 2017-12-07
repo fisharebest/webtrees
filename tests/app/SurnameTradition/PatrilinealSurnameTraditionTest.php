@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class PatrilinenalSurnameTradition
  */
-class PatrilinealSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
+class PatrilinealSurnameTraditionTest extends \PHPUnit\Framework\TestCase {
 	/** @var SurnameTraditionInterface */
 	private $surname_tradition;
 

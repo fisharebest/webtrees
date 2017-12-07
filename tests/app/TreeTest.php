@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Tree
  */
-class TreeTest extends \PHPUnit_Framework_TestCase {
+class TreeTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class JewishDate
  */
-class JewishDateTest extends \PHPUnit_Framework_TestCase {
+class JewishDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

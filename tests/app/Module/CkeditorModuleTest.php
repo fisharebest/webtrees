@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CkeditorModule
  */
-class CkeditorModuleTest extends \PHPUnit_Framework_TestCase {
+class CkeditorModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

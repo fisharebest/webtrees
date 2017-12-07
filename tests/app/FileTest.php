@@ -18,7 +18,7 @@
 /**
  * Test harness for the class File
  */
-class FileTest extends \PHPUnit_Framework_TestCase {
+class FileTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

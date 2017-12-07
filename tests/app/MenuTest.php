@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Test harness for the class Menu
  */
-class MenuTest extends \PHPUnit_Framework_TestCase {
+class MenuTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests.
 	 */

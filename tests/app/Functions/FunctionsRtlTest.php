@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_rtl.php
  */
-class FunctionsRtlTest extends \PHPUnit_Framework_TestCase {
+class FunctionsRtlTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

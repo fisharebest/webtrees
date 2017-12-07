@@ -18,7 +18,7 @@
 /**
  * Test harness for the class IndividualController
  */
-class IndividualControllerTest extends \PHPUnit_Framework_TestCase {
+class IndividualControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

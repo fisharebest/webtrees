@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AdvancedSearchController
  */
-class AdvancedSearchControllerTest extends \PHPUnit_Framework_TestCase {
+class AdvancedSearchControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

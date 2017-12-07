@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CensusAssistantModule
  */
-class CensusAssistantModuleTest extends \PHPUnit_Framework_TestCase {
+class CensusAssistantModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

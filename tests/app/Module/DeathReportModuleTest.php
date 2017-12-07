@@ -18,7 +18,7 @@
 /**
  * Test harness for the class DeathReportModule
  */
-class DeathReportModuleTest extends \PHPUnit_Framework_TestCase {
+class DeathReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

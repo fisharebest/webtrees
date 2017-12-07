@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FanChartModule
  */
-class FanChartModuleTest extends \PHPUnit_Framework_TestCase {
+class FanChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

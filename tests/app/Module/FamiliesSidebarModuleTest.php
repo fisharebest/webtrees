@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamiliesSidebarModule
  */
-class FamiliesSidebarModuleTest extends \PHPUnit_Framework_TestCase {
+class FamiliesSidebarModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler\MongoDbSessionHandl
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>
  * @group time-sensitive
- * @group legacy
  */
 class MongoDbSessionHandlerTest extends TestCase
 {
@@ -286,7 +285,7 @@ class MongoDbSessionHandlerTest extends TestCase
             ->with($this->options['database'], $this->options['collection'])
             ->will($this->returnValue($collection));
 
-        $methodName = phpversion('mongodb') ? 'deleteMany' : 'remove';
+        $methodName = phpversion('mongodb') ? 'deleteOne' : 'remove';
 
         $collection->expects($this->once())
             ->method($methodName)

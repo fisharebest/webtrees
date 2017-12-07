@@ -18,7 +18,7 @@
 /**
  * Test harness for the class PageController
  */
-class PageControllerTest extends \PHPUnit_Framework_TestCase {
+class PageControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

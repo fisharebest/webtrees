@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GedcomCodePedi
  */
-class GedcomCodePediTest extends \PHPUnit_Framework_TestCase {
+class GedcomCodePediTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

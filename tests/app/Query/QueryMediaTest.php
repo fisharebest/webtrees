@@ -18,7 +18,7 @@
 /**
  * Test harness for the class QueryMedia
  */
-class QueryMediaTest extends \PHPUnit_Framework_TestCase {
+class QueryMediaTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

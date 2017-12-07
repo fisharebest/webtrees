@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CemeteryReportModule
  */
-class CemeteryReportModuleTest extends \PHPUnit_Framework_TestCase {
+class CemeteryReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

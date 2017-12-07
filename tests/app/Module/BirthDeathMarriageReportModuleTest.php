@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BirthDeathMarriageReportModule
  */
-class BirthDeathMarriageReportModuleTest extends \PHPUnit_Framework_TestCase {
+class BirthDeathMarriageReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

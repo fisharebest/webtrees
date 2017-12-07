@@ -18,7 +18,7 @@
 /**
  * Test harness for the class YahrzeitModule
  */
-class YahrzeitModuleTest extends \PHPUnit_Framework_TestCase {
+class YahrzeitModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

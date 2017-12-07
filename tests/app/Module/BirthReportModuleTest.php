@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BirthReportModule
  */
-class BirthReportModuleTest extends \PHPUnit_Framework_TestCase {
+class BirthReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

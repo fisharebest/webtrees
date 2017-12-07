@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_import.php
  */
-class FunctionsImportTest extends \PHPUnit_Framework_TestCase {
+class FunctionsImportTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

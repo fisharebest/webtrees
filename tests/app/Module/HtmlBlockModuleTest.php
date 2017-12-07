@@ -18,7 +18,7 @@
 /**
  * Test harness for the class HtmlBlockModule
  */
-class HtmlBlockModuleTest extends \PHPUnit_Framework_TestCase {
+class HtmlBlockModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

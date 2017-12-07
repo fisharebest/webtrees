@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 /**
  * Test harness for the class Soundex
  */
-class SurnameTraditionTest extends \PHPUnit_Framework_TestCase {
+class SurnameTraditionTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

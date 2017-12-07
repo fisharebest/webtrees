@@ -18,7 +18,7 @@
 /**
  * Test harness for the class NotesTabModule
  */
-class NotesTabModuleTest extends \PHPUnit_Framework_TestCase {
+class NotesTabModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

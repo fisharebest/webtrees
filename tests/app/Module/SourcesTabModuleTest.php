@@ -18,7 +18,7 @@
 /**
  * Test harness for the class SourcesTabModule
  */
-class SourcesTabModuleTest extends \PHPUnit_Framework_TestCase {
+class SourcesTabModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

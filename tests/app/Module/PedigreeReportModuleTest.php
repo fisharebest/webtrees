@@ -18,7 +18,7 @@
 /**
  * Test harness for the class PedigreeReportModule
  */
-class PedigreeReportModuleTest extends \PHPUnit_Framework_TestCase {
+class PedigreeReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

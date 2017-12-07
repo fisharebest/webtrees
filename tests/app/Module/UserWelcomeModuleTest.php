@@ -18,7 +18,7 @@
 /**
  * Test harness for the class UserWelcomeModule
  */
-class UserWelcomeModuleTest extends \PHPUnit_Framework_TestCase {
+class UserWelcomeModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

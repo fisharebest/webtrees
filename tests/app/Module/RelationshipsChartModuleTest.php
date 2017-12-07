@@ -18,7 +18,7 @@
 /**
  * Test harness for the class RelationshipsChartModule
  */
-class RelationshipsChartModuleTest extends \PHPUnit_Framework_TestCase {
+class RelationshipsChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

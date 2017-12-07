@@ -22,7 +22,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnConditionDanish
  */
-class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnConditionDanishTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Delete mock objects
 	 */

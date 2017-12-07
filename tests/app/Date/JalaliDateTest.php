@@ -18,7 +18,7 @@
 /**
  * Test harness for the class JalaliDate
  */
-class JalaliDateTest extends \PHPUnit_Framework_TestCase {
+class JalaliDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */
