@@ -49,11 +49,11 @@
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
 			<table class="table wt-facts-table">
 				<?php foreach ($media->mediaFiles() as $media_file): ?>
-				<tr>
+				<tr class="<?= $media_file->isPendingAddtion() ? 'new' : '' ?><?= $media_file->isPendingDeletion() ? 'old' : '' ?>">
 					<th scope="row">
 						<?= I18N::translate('Media file') ?>
 						<div class="editfacts">
-							<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=media-edit&xref=' . $media->getXref() . '&fact_id=' . $media_file->factId() . '&ged=' . e($media->getTree()->getName())]) ?>
+							<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact_id' => $media_file->factId()])]) ?>
 							<?php if (count($media->mediaFiles()) > 1): ?>
 								<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $media->getXref() . '", "' . $media_file->factId() . '");']) ?>
 							<?php endif ?>
@@ -61,7 +61,9 @@
 					</th>
 					<td class="d-flex justify-content-between">
 						<div>
-							<?php if (Auth::isEditor($media->getTree())): ?>
+							<?php if ($media_file->isExternal()): ?>
+								<?= GedcomTag::getLabelValue('URL', $media_file->filename()) ?>
+							<?php elseif (Auth::isEditor($media->getTree())): ?>
 								<?= GedcomTag::getLabelValue('FILE', $media_file->filename()) ?>
 								<?php if ($media_file->fileExists()): ?>
 									<?php if ($media->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($media->getTree())): ?>
@@ -69,19 +71,20 @@
 											<?= I18N::translate('Download file') ?>
 										</a>
 									<?php endif ?>
-								<?php else: ?>
+								<?php elseif (!$media_file->isExternal()): ?>
 									<p class="alert alert-danger">
 										<?= I18N::translate('The file “%s” does not exist.', $media_file->filename()) ?>
 									</p>
 								<?php endif ?>
-
 							<?php endif ?>
 							<?= GedcomTag::getLabelValue('TITL', $media_file->title()) ?>
 							<?= GedcomTag::getLabelValue('TYPE', $media_file->type()) ?>
 							<?= GedcomTag::getLabelValue('FORM', $media_file->format()) ?>
 						</div>
 						<div>
-							<?= $media_file->displayImage(200, 150, 'contain', []) ?>
+							<?php if (!$media_file->isExternal()): ?>
+								<?= $media_file->displayImage(200, 150, 'contain', []) ?>
+							<?php endif ?>
 						</div>
 					</td>
 				</tr>

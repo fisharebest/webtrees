@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<div class="form-group row">
+<div class="form-group row <?= $media_file ? 'd-none' : '' ?>">
 	<label class="col-form-label col-sm-2" for="file-location">
 		<?= I18N::translate('Media file') ?>
 	</label>
@@ -23,7 +23,7 @@
 	</div>
 </div>
 
-<div class="form-group row file-location file-location-upload">
+<div class="form-group row file-location file-location-upload <?= $media_file ? 'd-none' : '' ?>">
 	<label class="col-form-label col-sm-2" for="file">
 		<?= I18N::translate('A file on your computer') ?>
 	</label>
@@ -36,7 +36,7 @@
 	</div>
 </div>
 
-<div class="form-group row file-location file-location-upload">
+<div class="form-group row file-location file-location-upload <?= $media_file && $media_file->isExternal() ? 'd-none' : '' ?>">
 	<label class="col-form-label col-sm-2" for="type">
 		<?= I18N::translate('Filename on server') ?>
 	</label>
@@ -45,9 +45,9 @@
 			<label class="form-check-label">
 				<input class="form-check-input" type="radio" name="auto" value="0" checked>
 				<span class="input-group">
-					<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text">
+					<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text" value="<?= e($media_file ? $media_file->dirname() : '') ?>">
 					<span class="input-group-addon">/</span>
-					<input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>">
+					<input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e($media_file ? $media_file->basename() : '') ?>">
 				</span>
 			</label>
 		</div>
@@ -74,14 +74,14 @@
 	</div>
 </div>
 
-<div class="form-group row file-location file-location-url d-none">
+<div class="form-group row file-location file-location-url <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
 	<label class="col-form-label col-sm-2" for="remote">
 		<?= I18N::translate('URL') ?>
 	</label>
 	<div class="col-sm-10">
-		<input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg">
+		<input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg" value="<?= e($media_file ? $media_file->filename() : '') ?>">
 		<small class="text-muted">
-			<?= \Fisharebest\Webtrees\FontAwesome::semanticIcon('warning', I18N::translate('Cuation!')) ?>
+			<?= \Fisharebest\Webtrees\FontAwesome::semanticIcon('warning', I18N::translate('Caution!')) ?>
 			<?= I18N::translate('The GEDCOM standard does not allow URLs in media objects.') ?>
 			<?= I18N::translate('Other genealogy applications might not recognize this data.') ?>
 		</small>
@@ -93,7 +93,7 @@
 		<?= I18N::translate('Title') ?>
 	</label>
 	<div class="col-sm-10">
-		<input class="form-control" id="title" name="title" type="text">
+		<input class="form-control" id="title" name="title" type="text" value="<?= e($media_file ? $media_file->title() : '') ?>">
 	</div>
 </div>
 
@@ -102,7 +102,7 @@
 		<?= I18N::translate('Media type') ?>
 	</label>
 	<div class="col-sm-10">
-		<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), '', ['id'   => 'type', 'name' => 'type']) ?>
+		<?= Bootstrap4::select(['' => ''] + GedcomTag::getFileFormTypes(), $media_file ? $media_file->type() : '', ['id'   => 'type', 'name' => 'type']) ?>
 	</div>
 </div>
 

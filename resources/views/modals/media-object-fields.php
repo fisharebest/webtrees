@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files]) ?>
+<?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files, 'media_file' => null]) ?>
 
 <div class="form-group row">
 	<label class="col-form-label col-sm-2" for="media-note">
