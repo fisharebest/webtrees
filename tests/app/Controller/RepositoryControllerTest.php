@@ -18,7 +18,7 @@
 /**
  * Test harness for the class RepositoryController
  */
-class RepositoryControllerTest extends \PHPUnit_Framework_TestCase {
+class RepositoryControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

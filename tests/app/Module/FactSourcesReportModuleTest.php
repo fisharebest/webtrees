@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FactSourcesReportModule
  */
-class FactSourcesReportModuleTest extends \PHPUnit_Framework_TestCase {
+class FactSourcesReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

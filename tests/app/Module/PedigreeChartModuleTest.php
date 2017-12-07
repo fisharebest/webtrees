@@ -18,7 +18,7 @@
 /**
  * Test harness for the class PedigreeChartModule
  */
-class PedigreeChartModuleTest extends \PHPUnit_Framework_TestCase {
+class PedigreeChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

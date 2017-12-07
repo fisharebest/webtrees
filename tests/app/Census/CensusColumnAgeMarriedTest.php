@@ -22,7 +22,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAgeMarried
  */
-class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnAgeMarriedTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -58,6 +58,16 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoBirthDate() {
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+
+		$column = new CensusColumnAgeMarried($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**

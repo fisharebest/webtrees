@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfEngland
  */
-class CensusOfEnglandTest extends \PHPUnit_Framework_TestCase {
+class CensusOfEnglandTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test the census place
 	 *

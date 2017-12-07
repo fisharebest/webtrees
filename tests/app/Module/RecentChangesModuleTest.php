@@ -18,7 +18,7 @@
 /**
  * Test harness for the class RecentChangesModule
  */
-class RecentChangesModuleTest extends \PHPUnit_Framework_TestCase {
+class RecentChangesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

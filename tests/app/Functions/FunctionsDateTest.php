@@ -18,7 +18,7 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_date.php
  */
-class FunctionsDateTest extends \PHPUnit_Framework_TestCase {
+class FunctionsDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that the class exists
 	 */

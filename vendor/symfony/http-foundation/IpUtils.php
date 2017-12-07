@@ -75,7 +75,7 @@ class IpUtils
         if (false !== strpos($ip, '/')) {
             list($address, $netmask) = explode('/', $ip, 2);
 
-            if ('0' === $netmask) {
+            if ($netmask === '0') {
                 return self::$checkedIps[$cacheKey] = filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
             }
 
@@ -85,10 +85,6 @@ class IpUtils
         } else {
             $address = $ip;
             $netmask = 32;
-        }
-
-        if (false === ip2long($address)) {
-            return self::$checkedIps[$cacheKey] = false;
         }
 
         return self::$checkedIps[$cacheKey] = 0 === substr_compare(sprintf('%032b', ip2long($requestIp)), sprintf('%032b', ip2long($address)), 0, $netmask);

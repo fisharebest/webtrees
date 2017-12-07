@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AbstractModule
  */
-class AbstractModuleTest extends \PHPUnit_Framework_TestCase {
+class AbstractModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleBlockInterface
  */
-class ModuleBlockInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleBlockInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

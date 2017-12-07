@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Test harness for the class I18N
  */
-class I18NTest extends \PHPUnit_Framework_TestCase {
+class I18NTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

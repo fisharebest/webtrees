@@ -18,7 +18,7 @@
 /**
  * Test harness for the class UserJournalModule
  */
-class UserJournalModuleTest extends \PHPUnit_Framework_TestCase {
+class UserJournalModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

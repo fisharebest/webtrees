@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GedcomCodeTemp
  */
-class GedcomCodeTempTest extends \PHPUnit_Framework_TestCase {
+class GedcomCodeTempTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

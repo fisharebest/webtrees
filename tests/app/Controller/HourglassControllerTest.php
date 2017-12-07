@@ -18,7 +18,7 @@
 /**
  * Test harness for the class HourglassController
  */
-class HourglassControllerTest extends \PHPUnit_Framework_TestCase {
+class HourglassControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class StoriesModule
  */
-class StoriesModuleTest extends \PHPUnit_Framework_TestCase {
+class StoriesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

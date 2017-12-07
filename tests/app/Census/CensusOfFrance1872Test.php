@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfFrance1872
  */
-class CensusOfFrance1872Test extends \PHPUnit_Framework_TestCase {
+class CensusOfFrance1872Test extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test the census place and date
 	 *

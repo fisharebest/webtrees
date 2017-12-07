@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleReportInterface
  */
-class ModuleReportInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleReportInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

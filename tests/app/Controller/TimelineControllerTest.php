@@ -18,7 +18,7 @@
 /**
  * Test harness for the class TimelineController
  */
-class TimelineControllerTest extends \PHPUnit_Framework_TestCase {
+class TimelineControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Module
  */
-class ModuleTest extends \PHPUnit_Framework_TestCase {
+class ModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Source
  */
-class SourceTest extends \PHPUnit_Framework_TestCase {
+class SourceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

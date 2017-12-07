@@ -18,7 +18,7 @@
 /**
  * Test harness for the class MissingFactsReportModule
  */
-class MissingFactsReportModuleTest extends \PHPUnit_Framework_TestCase {
+class MissingFactsReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

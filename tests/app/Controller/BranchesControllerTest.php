@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BranchesController
  */
-class BranchesControllerTest extends \PHPUnit_Framework_TestCase {
+class BranchesControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

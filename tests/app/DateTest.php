@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Date
  */
-class DateTest extends \PHPUnit_Framework_TestCase {
+class DateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

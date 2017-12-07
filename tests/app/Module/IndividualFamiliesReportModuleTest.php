@@ -18,7 +18,7 @@
 /**
  * Test harness for the class IndividualFamiliesReportModule
  */
-class IndividualFamiliesReportModuleTest extends \PHPUnit_Framework_TestCase {
+class IndividualFamiliesReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

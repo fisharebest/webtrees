@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BaseController
  */
-class BaseControllerTest extends \PHPUnit_Framework_TestCase {
+class BaseControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

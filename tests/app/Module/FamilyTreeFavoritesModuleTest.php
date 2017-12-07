@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FamilyTreeFavoritesModule
  */
-class FamilyTreeFavoritesModuleTest extends \PHPUnit_Framework_TestCase {
+class FamilyTreeFavoritesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

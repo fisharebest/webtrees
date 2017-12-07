@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Stats
  */
-class StatsTest extends \PHPUnit_Framework_TestCase {
+class StatsTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

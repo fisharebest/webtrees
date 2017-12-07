@@ -18,7 +18,7 @@
 /**
  * Test harness for the class QueryName
  */
-class QueryNameTest extends \PHPUnit_Framework_TestCase {
+class QueryNameTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

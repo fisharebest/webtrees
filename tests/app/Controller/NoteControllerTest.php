@@ -18,7 +18,7 @@
 /**
  * Test harness for the class NoteController
  */
-class NoteControllerTest extends \PHPUnit_Framework_TestCase {
+class NoteControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

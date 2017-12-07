@@ -18,7 +18,7 @@
 /**
  * Test harness for the class IndividualSidebarModule
  */
-class IndividualSidebarModuleTest extends \PHPUnit_Framework_TestCase {
+class IndividualSidebarModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

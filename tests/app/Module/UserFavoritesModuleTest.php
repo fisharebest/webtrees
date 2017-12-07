@@ -18,7 +18,7 @@
 /**
  * Test harness for the class UserFavoritesModule
  */
-class UserFavoritesModuleTest extends \PHPUnit_Framework_TestCase {
+class UserFavoritesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

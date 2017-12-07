@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleMenuInterface
  */
-class ModuleMenuInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleMenuInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

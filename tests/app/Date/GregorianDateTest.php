@@ -18,7 +18,7 @@
 /**
  * Test harness for the class GregorianDate
  */
-class GregorianDateTest extends \PHPUnit_Framework_TestCase {
+class GregorianDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

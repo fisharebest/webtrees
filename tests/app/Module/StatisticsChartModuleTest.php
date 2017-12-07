@@ -18,7 +18,7 @@
 /**
  * Test harness for the class StatisticsChartModule
  */
-class StatisticsChartModuleTest extends \PHPUnit_Framework_TestCase {
+class StatisticsChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

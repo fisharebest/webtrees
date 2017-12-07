@@ -22,7 +22,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnMonthIfBornWithinYear
  */
-class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Delete mock objects
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class JulianDate
  */
-class JulianDateTest extends \PHPUnit_Framework_TestCase {
+class JulianDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

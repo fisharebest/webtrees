@@ -18,7 +18,7 @@
 /**
  * Test harness for the class BatchUpdateModule
  */
-class BatchUpdateModuleTest extends \PHPUnit_Framework_TestCase {
+class BatchUpdateModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

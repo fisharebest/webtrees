@@ -18,7 +18,7 @@
 /**
  * Test harness for the class WelcomeBlockModule
  */
-class WelcomeBlockModuleTest extends \PHPUnit_Framework_TestCase {
+class WelcomeBlockModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

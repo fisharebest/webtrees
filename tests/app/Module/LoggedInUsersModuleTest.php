@@ -18,7 +18,7 @@
 /**
  * Test harness for the class LoggedInUsersModule
  */
-class LoggedInUsersModuleTest extends \PHPUnit_Framework_TestCase {
+class LoggedInUsersModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

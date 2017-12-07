@@ -21,7 +21,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnRelationToHead
  */
-class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnRelationToHeadGermanTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Delete mock objects
 	 */

@@ -24,6 +24,8 @@ class FileBag extends ParameterBag
     private static $fileKeys = array('error', 'name', 'size', 'tmp_name', 'type');
 
     /**
+     * Constructor.
+     *
      * @param array $parameters An array of HTTP files
      */
     public function __construct(array $parameters = array())
@@ -67,7 +69,7 @@ class FileBag extends ParameterBag
      *
      * @param array|UploadedFile $file A (multi-dimensional) array of uploaded file information
      *
-     * @return UploadedFile[]|UploadedFile|null A (multi-dimensional) array of UploadedFile instances
+     * @return UploadedFile|UploadedFile[] A (multi-dimensional) array of UploadedFile instances
      */
     protected function convertFileInformation($file)
     {
@@ -88,9 +90,6 @@ class FileBag extends ParameterBag
                 }
             } else {
                 $file = array_map(array($this, 'convertFileInformation'), $file);
-                if (array_keys($keys) === $keys) {
-                    $file = array_filter($file);
-                }
             }
         }
 
@@ -108,6 +107,8 @@ class FileBag extends ParameterBag
      *
      * It's safe to pass an already converted array, in which case this method
      * just returns the original array unmodified.
+     *
+     * @param array $data
      *
      * @return array
      */

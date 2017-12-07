@@ -18,7 +18,7 @@
 /**
  * Test harness for the class UpcomingAnniversariesModule
  */
-class UpcomingAnniversariesModuleTest extends \PHPUnit_Framework_TestCase {
+class UpcomingAnniversariesModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

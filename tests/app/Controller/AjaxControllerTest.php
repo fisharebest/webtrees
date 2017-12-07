@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AjaxController
  */
-class AjaxControllerTest extends \PHPUnit_Framework_TestCase {
+class AjaxControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

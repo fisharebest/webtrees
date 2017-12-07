@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ChartController
  */
-class ChartControllerTest extends \PHPUnit_Framework_TestCase {
+class ChartControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

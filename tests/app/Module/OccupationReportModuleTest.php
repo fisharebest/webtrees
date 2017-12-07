@@ -18,7 +18,7 @@
 /**
  * Test harness for the class OccupationReportModule
  */
-class OccupationReportModuleTest extends \PHPUnit_Framework_TestCase {
+class OccupationReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

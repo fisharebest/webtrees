@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ReportPdf
  */
-class ReportPDFTest extends \PHPUnit_Framework_TestCase {
+class ReportPDFTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

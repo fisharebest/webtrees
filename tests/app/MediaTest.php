@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Media
  */
-class MediaTest extends \PHPUnit_Framework_TestCase {
+class MediaTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

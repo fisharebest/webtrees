@@ -18,7 +18,7 @@
 /**
  * Test harness for the class FlashMessages
  */
-class FlashMessagesTest extends \PHPUnit_Framework_TestCase {
+class FlashMessagesTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

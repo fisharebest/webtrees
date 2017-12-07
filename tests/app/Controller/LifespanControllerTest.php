@@ -18,7 +18,7 @@
 /**
  * Test harness for the class LifespanController
  */
-class LifespanControllerTest extends \PHPUnit_Framework_TestCase {
+class LifespanControllerTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class LifespansChartModule
  */
-class LifespansChartModuleTest extends \PHPUnit_Framework_TestCase {
+class LifespansChartModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

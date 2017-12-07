@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ReportHtml
  */
-class ReportHTMLTest extends \PHPUnit_Framework_TestCase {
+class ReportHTMLTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

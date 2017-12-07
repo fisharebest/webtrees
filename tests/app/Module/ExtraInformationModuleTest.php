@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ExtraInformationModule
  */
-class ExtraInformationModuleTest extends \PHPUnit_Framework_TestCase {
+class ExtraInformationModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -17,8 +17,6 @@ use Symfony\Component\HttpFoundation\Session\Storage\Proxy\NativeProxy;
 /**
  * Test class for NativeProxy.
  *
- * @group legacy
- *
  * @author Drak <drak@zikula.org>
  */
 class NativeProxyTest extends TestCase

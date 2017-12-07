@@ -18,7 +18,7 @@
 /**
  * Test harness for the class RelativesTabModule
  */
-class RelativesTabModuleTest extends \PHPUnit_Framework_TestCase {
+class RelativesTabModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

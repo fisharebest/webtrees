@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Soundex
  */
-class SoundexTest extends \PHPUnit_Framework_TestCase {
+class SoundexTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

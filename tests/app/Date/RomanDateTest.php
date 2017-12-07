@@ -18,7 +18,7 @@
 /**
  * Test harness for the class RomanDate
  */
-class RomanDateTest extends \PHPUnit_Framework_TestCase {
+class RomanDateTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

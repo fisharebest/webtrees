@@ -18,7 +18,7 @@
 /**
  * Test harness for the class AhnentafelReportModule
  */
-class AhnentafelReportModuleTest extends \PHPUnit_Framework_TestCase {
+class AhnentafelReportModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

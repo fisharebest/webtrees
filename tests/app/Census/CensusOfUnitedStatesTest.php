@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfUnitedStates
  */
-class CensusOfUnitedStatesTest extends \PHPUnit_Framework_TestCase {
+class CensusOfUnitedStatesTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test the census place
 	 *

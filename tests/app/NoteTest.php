@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Note
  */
-class NoteTest extends \PHPUnit_Framework_TestCase {
+class NoteTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

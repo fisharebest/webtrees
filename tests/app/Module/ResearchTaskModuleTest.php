@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ResearchTaskModule
  */
-class ResearchTaskModuleTest extends \PHPUnit_Framework_TestCase {
+class ResearchTaskModuleTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

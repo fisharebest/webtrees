@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ModuleSidebarInterface
  */
-class ModuleSidebarInterfaceTest extends \PHPUnit_Framework_TestCase {
+class ModuleSidebarInterfaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

@@ -18,7 +18,7 @@
 /**
  * Test harness for the class Place
  */
-class PlaceTest extends \PHPUnit_Framework_TestCase {
+class PlaceTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */
