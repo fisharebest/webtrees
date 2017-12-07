@@ -82,6 +82,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 	$routes += [
 		'GET:add-media-file'       => 'EditMediaController@addMediaFile',
 		'POST:add-media-file'      => 'EditMediaController@addMediaFileAction',
+		'GET:edit-media-file'      => 'EditMediaController@editMediaFile',
+		'POST:edit-media-file'     => 'EditMediaController@editMediaFileAction',
 		'GET:create-media-object'  => 'EditMediaController@createMediaObject',
 		'POST:create-media-object' => 'EditMediaController@createMediaObjectAction',
 		'GET:create-note-object'   => 'EditNoteController@createNoteObject',

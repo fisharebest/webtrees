@@ -80,6 +80,30 @@ class MediaFile {
 	}
 
 	/**
+	 * Get the base part of the filename.
+	 *
+	 * @return string
+	 */
+	public function basename(): string {
+		return basename($this->multimedia_file_refn);
+	}
+
+	/**
+	 * Get the folder part of the filename.
+	 *
+	 * @return string
+	 */
+	public function dirname(): string {
+		$dirname = dirname($this->multimedia_file_refn);
+
+		if ($dirname === '.') {
+			return '';
+		} else {
+			return $dirname;
+		}
+	}
+
+	/**
 	 * Get the format.
 	 *
 	 * @return string
@@ -113,6 +137,32 @@ class MediaFile {
 	 */
 	public function factId(): string {
 		return $this->fact_id;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isPendingAddtion() {
+		foreach ($this->media->getFacts() as $fact) {
+			if ($fact->getFactId() === $this->fact_id) {
+				return $fact->isPendingAddition();
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isPendingDeletion() {
+		foreach ($this->media->getFacts() as $fact) {
+			if ($fact->getFactId() === $this->fact_id) {
+				return $fact->isPendingDeletion();
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -182,7 +232,7 @@ class MediaFile {
 	 * @return bool
 	 */
 	public function fileExists() {
-		return file_exists($this->folder() . $this->multimedia_file_refn);
+		return !$this->isExternal() && file_exists($this->folder() . $this->multimedia_file_refn);
 	}
 
 	/**

@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use ErrorException;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
@@ -112,6 +114,136 @@ class EditMediaController extends BaseController {
 	}
 
 	/**
+	 * Edit an existing media file.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editMediaFile(Request $request): Response {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$xref     = $request->get('xref', '');
+		$fact_id  = $request->get('fact_id', '');
+		$media    = Media::getInstance($xref, $tree);
+
+		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+			return new Response(View::make('modals/error', [
+				'title' => I18N::translate('Edit a media file'),
+				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
+			]),Response::HTTP_FORBIDDEN);
+		}
+
+		foreach ($media->mediaFiles() as $media_file) {
+			if ($media_file->factId() === $fact_id) {
+				return new Response(View::make('modals/edit-media-file', [
+					'media_file'      => $media_file,
+					'max_upload_size' => $this->maxUploadFilesize(),
+					'media'           => $media,
+					'media_types'     => $this->mediaTypes(),
+					'unused_files'    => $this->unusedFiles($tree),
+				]));
+			}
+		}
+
+		return new Response('', Response::HTTP_NOT_FOUND);
+	}
+
+	/**
+	 * Save an edited media file.
+	 *
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function editMediaFileAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree          = $request->attributes->get('tree');
+		$xref          = $request->get('xref', '');
+		$fact_id       = $request->get('fact_id', '');
+		$file_location = $request->get('file_location', '');
+		$folder        = $request->get('folder', '');
+		$new_file      = $request->get('new_file', '');
+		$remote        = $request->get('remote', '');
+		$title         = $request->get('title', '');
+		$type          = $request->get('type', '');
+		$media         = Media::getInstance($xref, $tree);
+
+		// Media object oes not exist?  Media object is read-only?
+		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+			return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+		}
+
+		// Find the fact we are editing.
+		$media_file = null;
+		foreach ($media->mediaFiles() as $tmp) {
+			if ($tmp->factId() === $fact_id) {
+				$media_file = $tmp;
+			}
+		}
+
+		// Media file does not exist?
+		if ($media_file === null) {
+			return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+		}
+
+		// We can edit the file as either a URL or a folder/file
+		if ($remote !== '') {
+			$file = $remote;
+		} else {
+			$new_file = str_replace('\\', '/', $new_file);
+			$folder   = str_replace('\\', '/', $folder);
+			if ($folder === '') {
+				$file = $new_file;
+			} else {
+				$file = $folder . '/' . $new_file;
+			}
+			if (strpos($file, '../') !== false) {
+				$file = '';
+			}
+		}
+
+		// Invalid filename?  Do not change it.
+		if ($file === '') {
+			$file = $media_file->filename();
+		}
+
+		$MEDIA_DIRECTORY = $media->getTree()->getPreference('MEDIA_DIRECTORY');
+		$old             = $MEDIA_DIRECTORY . $media_file->filename();
+		$new             = $MEDIA_DIRECTORY . $file;
+
+		// Update the filesystem, if we can.
+		if (!$media_file->isExternal()) {
+			// Don't overwrite existing file
+			if (file_exists(WT_DATA_DIR . $new) && sha1_file(WT_DATA_DIR . $old) !== sha1_file(WT_DATA_DIR . $new) ) {
+				FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+				$file = $media_file->filename();
+			} else {
+				try {
+					File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder);
+					rename(WT_DATA_DIR . $MEDIA_DIRECTORY . $media_file->filename(), WT_DATA_DIR . $MEDIA_DIRECTORY . $file);
+					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+				} catch (ErrorException $ex) {
+					FlashMessages::addMessage($ex, 'info');
+					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+					$file = $media_file->filename();
+				}
+			}
+		}
+
+		$gedcom = $this->createMediaFileGedcom($file, $type, $title);
+
+		$media->updateFact($fact_id, $gedcom, true);
+
+		// Accept the changes, to keep the filesystem in sync with the GEDCOM data.
+		if ($old !== $new && !$media_file->isExternal()) {
+			FunctionsImport::acceptAllChanges($media->getxref(), $tree->getTreeId());
+		}
+
+		return new RedirectResponse($media->getRawUrl());
+	}
+
+	/**
 	 * Show a form to create a new media object.
 	 *
 	 * @param Request $request
@@ -155,13 +287,8 @@ class EditMediaController extends BaseController {
 			return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
 		}
 
-		$gedcom = "0 @XREF@ OBJE\n1 FILE " . $file;
-		if ($type !== '') {
-			$gedcom .= "\n2 FORM\n3 TYPE " . $type;
-		}
-		if ($title !== '') {
-			$gedcom .= "\n2 TITL " . $title;
-		}
+		$gedcom = "0 @XREF@ OBJE\n" . $this->createMediaFileGedcom($file, $type, $title);
+
 		if ($note !== '') {
 			$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
 		}
@@ -190,6 +317,35 @@ class EditMediaController extends BaseController {
 				'url'   => $record->getRawUrl(),
 			])
 		]);
+	}
+
+	/**
+	 * Convert the media file attributes into GEDCOM format.
+	 *
+	 * @param string $file
+	 * @param string $type
+	 * @param string $title
+	 *
+	 * @return string
+	 */
+	private function createMediaFileGedcom(string $file, string $type, string $title): string {
+		if (preg_match('/\.([a-z0-9]+)/i', $file, $match)) {
+			$extension = strtolower($match[1]);
+			$extension = str_replace('jpg', 'jpeg', $extension);
+			$extension = ' ' . $extension;
+		} else {
+			$extension = '';
+		}
+
+		$gedcom = '1 FILE ' . $file;
+		if ($type !== '') {
+			$gedcom .= "\n2 FORM" . $extension . "\n3 TYPE " . $type;
+		}
+		if ($title !== '') {
+			$gedcom .= "\n2 TITL " . $title;
+		}
+
+		return $gedcom;
 	}
 
 	/**
