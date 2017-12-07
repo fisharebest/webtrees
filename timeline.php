@@ -432,7 +432,7 @@ $controller->pageHeader();
 
 <div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart"></div>
 <script>
-  document.addEventListener(DOMContentLoaded, function () {
+  document.addEventListener("DOMContentLoaded", function () {
     $(".wt-page-content").load(location.search + "&ajax=1");
   });
 </script>

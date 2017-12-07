@@ -1029,7 +1029,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		<div class="wt-ajax-load wt-page-content"></div>
 		<script>
-			document.addEventListener(DOMContentLoaded, function () {
+			document.addEventListener("DOMContentLoaded", function () {
 		    $(".wt-page-content").load(location.search + "&ajax=1");
 			});
 		</script>
