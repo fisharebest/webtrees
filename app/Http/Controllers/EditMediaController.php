@@ -42,6 +42,9 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller for edit forms and responses.
  */
 class EditMediaController extends BaseController {
+	const EDIT_RESTRICTIONS    = ['locked'];
+	const PRIVACY_RESTRICTIONS = ['none', 'privacy', 'confidential'];
+
 	/**
 	 * Add a media file to an existing media object.
 	 *
@@ -82,6 +85,12 @@ class EditMediaController extends BaseController {
 		$tree  = $request->attributes->get('tree');
 		$xref  = $request->get('xref');
 		$media = Media::getInstance($xref, $tree);
+		$title = $request->get('title');
+		$type  = $request->get('type');
+
+		// Tidy whitespace
+		$type  = trim(preg_replace('/\s+/', ' ', $type));
+		$title = trim(preg_replace('/\s+/', ' ', $title));
 
 		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
 			return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
@@ -93,9 +102,6 @@ class EditMediaController extends BaseController {
 			FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
 			return new RedirectResponse($media->getRawUrl());
 		}
-
-		$title = $request->get('title');
-		$type  = $request->get('type');
 
 		$gedcom = '1 FILE ' . $file;
 		if ($type !== '') {
@@ -158,15 +164,19 @@ class EditMediaController extends BaseController {
 	 */
 	public function editMediaFileAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
-		$tree          = $request->attributes->get('tree');
-		$xref          = $request->get('xref', '');
-		$fact_id       = $request->get('fact_id', '');
-		$folder        = $request->get('folder', '');
-		$new_file      = $request->get('new_file', '');
-		$remote        = $request->get('remote', '');
-		$title         = $request->get('title', '');
-		$type          = $request->get('type', '');
-		$media         = Media::getInstance($xref, $tree);
+		$tree     = $request->attributes->get('tree');
+		$xref     = $request->get('xref', '');
+		$fact_id  = $request->get('fact_id', '');
+		$folder   = $request->get('folder', '');
+		$new_file = $request->get('new_file', '');
+		$remote   = $request->get('remote', '');
+		$title    = $request->get('title', '');
+		$type     = $request->get('type', '');
+		$media    = Media::getInstance($xref, $tree);
+
+		// Tidy whitespace
+		$type  = trim(preg_replace('/\s+/', ' ', $type));
+		$title = trim(preg_replace('/\s+/', ' ', $title));
 
 		// Media object oes not exist?  Media object is read-only?
 		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
@@ -269,13 +279,16 @@ class EditMediaController extends BaseController {
 	 */
 	public function createMediaObjectAction(Request $request): JsonResponse {
 		/** @var Tree $tree */
-		$tree  = $request->attributes->get('tree');
-		$note  = $request->get('note');
-		$title = $request->get('title');
-		$type  = $request->get('type');
-
+		$tree                = $request->attributes->get('tree');
+		$note                = $request->get('note');
+		$title               = $request->get('title');
+		$type                = $request->get('type');
 		$privacy_restriction = $request->get('privacy-restriction', '');
 		$edit_restriction    = $request->get('edit-restriction', '');
+
+		// Tidy whitespace
+		$type  = trim(preg_replace('/\s+/', ' ', $type));
+		$title = trim(preg_replace('/\s+/', ' ', $title));
 
 		// Convert line endings to GEDDCOM continuations
 		$note = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $note);
@@ -292,11 +305,11 @@ class EditMediaController extends BaseController {
 			$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
 		}
 
-		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+		if (in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS)) {
 			$gedcom .= "\n1 RESN " . $privacy_restriction;
 		}
 
-		if (in_array($edit_restriction, ['locked'])) {
+		if (in_array($edit_restriction, self::EDIT_RESTRICTIONS)) {
 			$gedcom .= "\n1 RESN " . $edit_restriction;
 		}
 
