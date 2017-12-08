@@ -131,7 +131,7 @@ class EditMediaController extends BaseController {
 			return new Response(View::make('modals/error', [
 				'title' => I18N::translate('Edit a media file'),
 				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
-			]),Response::HTTP_FORBIDDEN);
+			]), Response::HTTP_FORBIDDEN);
 		}
 
 		foreach ($media->mediaFiles() as $media_file) {
@@ -215,7 +215,7 @@ class EditMediaController extends BaseController {
 		// Update the filesystem, if we can.
 		if (!$media_file->isExternal()) {
 			// Don't overwrite existing file
-			if (file_exists(WT_DATA_DIR . $new) && sha1_file(WT_DATA_DIR . $old) !== sha1_file(WT_DATA_DIR . $new) ) {
+			if (file_exists(WT_DATA_DIR . $new) && sha1_file(WT_DATA_DIR . $old) !== sha1_file(WT_DATA_DIR . $new)) {
 				FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
 				$file = $media_file->filename();
 			} else {
