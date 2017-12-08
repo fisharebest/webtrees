@@ -161,7 +161,6 @@ class EditMediaController extends BaseController {
 		$tree          = $request->attributes->get('tree');
 		$xref          = $request->get('xref', '');
 		$fact_id       = $request->get('fact_id', '');
-		$file_location = $request->get('file_location', '');
 		$folder        = $request->get('folder', '');
 		$new_file      = $request->get('new_file', '');
 		$remote        = $request->get('remote', '');
