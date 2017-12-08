@@ -16,12 +16,8 @@
 
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
