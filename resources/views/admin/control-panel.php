@@ -37,32 +37,64 @@
 			<?php endif ?>
 		</p>
 
-		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
-				<?= I18N::translate('Website preferences') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
-				<?= I18N::translate('Sending email') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
-				<?= I18N::translate('Sign-in and registration') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
-				<?= I18N::translate('Languages') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
-				<?= I18N::translate('Tracking and analytics') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_site_logs.php', [])) ?>">
-				<?= I18N::translate('Website logs') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-clean-data')) ?>">
-				<?= I18N::translate('Clean up data folder') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-server-information')) ?>">
-				<?= I18N::translate('Server information') ?>
-			</a>
-		</p>
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
+							<?= I18N::translate('Website preferences') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
+							<?= I18N::translate('Sending email') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
+							<?= I18N::translate('Sign-in and registration') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
+							<?= I18N::translate('Languages') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
+							<?= I18N::translate('Tracking and analytics') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(Html::url('admin_site_logs.php', [])) ?>">
+							<?= I18N::translate('Website logs') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(route('admin-clean-data')) ?>">
+							<?= I18N::translate('Clean up data folder') ?>
+						</a>
+					</li>
+					<li>
+						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<a href="<?= e(route('admin-server-information')) ?>">
+							<?= I18N::translate('Server information') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -208,19 +240,28 @@
 			</tfoot>
 		</table>
 
-		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_trees_manage.php', [])) ?>">
-				<?= I18N::translate('Manage family trees') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('tree-page-default-edit')) ?>">
-				<?= I18N::translate('Set the default blocks for new family trees') ?>
-			</a>
-			<?php if (count($all_trees) > 1): ?>
-				<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_trees_merge.php', [])) ?>">
-					<?= I18N::translate('Merge family trees') ?>
+		<ul class="fa-ul">
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_trees_manage.php', [])) ?>">
+					<?= I18N::translate('Manage family trees') ?>
 				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(route('tree-page-default-edit')) ?>">
+					<?= I18N::translate('Set the default blocks for new family trees') ?>
+				</a>
+			</li>
+			<?php if (count($all_trees) > 1): ?>
+				<li>
+					<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+					<a href="<?= e(Html::url('admin_trees_merge.php', [])) ?>">
+						<?= I18N::translate('Merge family trees') ?>
+					</a>
+				</li>
 			<?php endif ?>
-		</p>
+		</ul>
 	</div>
 </div>
 
@@ -253,23 +294,38 @@
 			<?php endforeach ?>
 		</dl>
 
-		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', [])) ?>">
-				<?= I18N::translate('User administration') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
-				<?= I18N::translate('Add a user') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users_bulk.php', [])) ?>">
-				<?= I18N::translate('Send broadcast messages') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
-				<?= I18N::translate('Delete inactive users') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('user-page-default-edit')) ?>">
-				<?= I18N::translate('Set the default blocks for new users') ?>
-			</a>
-		</p>
+		<ul class="fa-ul">
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_users.php', [])) ?>">
+					<?= I18N::translate('User administration') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
+					<?= I18N::translate('Add a user') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_users_bulk.php', [])) ?>">
+					<?= I18N::translate('Send broadcast messages') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
+					<?= I18N::translate('Delete inactive users') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(route('user-page-default-edit')) ?>">
+					<?= I18N::translate('Set the default blocks for new users') ?>
+				</a>
+			</li>
+		</ul>
 	</div>
 </div>
 
@@ -286,11 +342,6 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-6">
-				<p class="card-text">
-					<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-modules')) ?>">
-						<?= I18N::translate('Module administration') ?>
-					</a>
-				</p>
 				<ul class="fa-ul">
 					<li>
 						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
@@ -331,9 +382,6 @@
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<p class="card-text">
-					<?= I18N::translate('Preferences') ?>
-				</p>
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
@@ -346,6 +394,15 @@
 				</ul>
 			</div>
 		</div>
+
+		<ul class="fa-ul">
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(route('admin-modules')) ?>">
+					<?= I18N::translate('Module administration') ?>
+				</a>
+			</li>
+		</ul>
 	</div>
 </div>
 
@@ -360,17 +417,26 @@
 		</h2>
 	</div>
 	<div class="card-body">
-		<p class="card-text">
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_media.php', [])) ?>">
-				<?= I18N::translate('Manage media') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(Html::url('admin_media_upload.php', [])) ?>">
-				<?= I18N::translate('Upload media files') ?>
-			</a>
-			<a class="btn btn-sm btn-outline-primary mb-2" href="<?= e(route('admin-fix-level-0-media')) ?>">
-				<?= I18N::translate('MEDIA FIXUP') ?>
-			</a>
-		</p>
+		<ul class="fa-ul">
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_media.php', [])) ?>">
+					<?= I18N::translate('Manage media') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(Html::url('admin_media_upload.php', [])) ?>">
+					<?= I18N::translate('Upload media files') ?>
+				</a>
+			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(route('admin-fix-level-0-media')) ?>">
+					<?= I18N::translate('MEDIA FIXUP') ?>
+				</a>
+			</li>
+		</ul>
 	</div>
 </div>
 
