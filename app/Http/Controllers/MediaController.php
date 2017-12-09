@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Intervention\Image\Exception\NotReadableException;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Filesystem\FileNotFoundException;
@@ -100,6 +101,8 @@ class MediaController extends BaseController {
 			]);
 		} catch (FileNotFoundException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
+		} catch (NotReadableException $ex) {
+			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
 		} catch (ErrorException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
 		}
