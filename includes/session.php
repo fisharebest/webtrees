@@ -146,7 +146,10 @@ define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+	// Ignore errors thar are silenced with '@'
+	if (error_reporting() & $errno) {
+		throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+	}
 });
 
 set_exception_handler(function (Throwable $ex) {
