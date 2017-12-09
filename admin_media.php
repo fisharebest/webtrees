@@ -192,7 +192,7 @@ switch ($action) {
 		$SELECT1 =
 			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
-			" FROM  `##media_file` USING (m_id, m_file)" .
+			" JOIN  `##media_file` USING (m_id, m_file)" .
 			" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')" .
 			" AND   (multimedia_file_refn LIKE CONCAT('%', :search_1, '%') OR descriptive_title LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = [
@@ -203,6 +203,7 @@ switch ($action) {
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM  `##media`" .
+			" JOIN  `##media_file` USING (m_id, m_file)" .
 			" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')";
 		$ARGS2 = [];
 
@@ -245,7 +246,7 @@ switch ($action) {
 		foreach ($rows as $row) {
 			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = [
-				GedcomTag::getLabelValue('URL', $row->m_filename),
+				GedcomTag::getLabelValue('URL', $row->multimedia_file_refn),
 				$media->displayImage(150, 150, '', []),
 				mediaObjectInfo($media),
 			];

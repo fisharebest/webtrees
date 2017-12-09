@@ -880,7 +880,7 @@ class AdminController extends BaseController {
 	 */
 	public function fixLevel0Media(): Response {
 		return $this->viewResponse('admin/fix-level-0-media', [
-			'title' => I18N::translate('Link media to facts and events'),
+			'title' => I18N::translate('Link media objects to facts and events'),
 		]);
 	}
 
