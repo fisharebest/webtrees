@@ -89,7 +89,11 @@ class FontAwesome extends Html {
 	 * @return string
 	 */
 	public static function decorativeIcon($icon, $attributes = []) {
-		$attributes['class']       = self::ICONS[$icon];
+		if (empty($attributes['class'])) {
+			$attributes['class'] = self::ICONS[$icon];
+		} else {
+			$attributes['class'] .= ' ' . self::ICONS[$icon];
+		}
 		$attributes['aria-hidden'] = 'true';
 
 		return '<i ' . self::attributes($attributes) . '></i>';
