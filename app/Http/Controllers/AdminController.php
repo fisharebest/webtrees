@@ -880,7 +880,7 @@ class AdminController extends BaseController {
 	 */
 	public function fixLevel0Media(): Response {
 		return $this->viewResponse('admin/fix-level-0-media', [
-			'title' => I18N::translate('MEDIA FIXUP'),
+			'title' => I18N::translate('Link media to facts and events'),
 		]);
 	}
 
@@ -936,13 +936,13 @@ class AdminController extends BaseController {
 		$search = $search['value'] ?? '';
 
 		$select1 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
-			" JOIN `##media_file USING (m_id, m_file)`" .
+			" JOIN `##media_file` USING (m_id, m_file)" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
 		$select2 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
-			" JOIN `##media_file USING (m_id, m_file)`" .
+			" JOIN `##media_file` USING (m_id, m_file)" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";

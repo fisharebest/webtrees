@@ -148,4 +148,31 @@ class Media extends GedcomRecord {
 
 		return ob_get_clean();
 	}
+
+	/**
+	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
+	 *
+	 * @param int      $width      Pixels
+	 * @param int      $height     Pixels
+	 * @param string   $fit        "crop" or "contain"
+	 * @param string[] $attributes Additional HTML attributes
+	 *
+	 * @return string
+	 */
+	public function displayImage($width, $height, $fit, $attributes = []) {
+		// Display the first image
+		foreach ($this->mediaFiles() as $media_file) {
+			if ($media_file->isImage()) {
+				return $media_file->displayImage($width, $height, $fit, $attributes);
+			}
+		}
+
+		// Display the first file of any type
+		foreach ($this->mediaFiles() as $media_file) {
+			return $media_file->displayImage($width, $height, $fit, $attributes);
+		}
+
+		// No image?
+		return '';
+	}
 }
