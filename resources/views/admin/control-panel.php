@@ -433,7 +433,7 @@
 			<li>
 				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
 				<a href="<?= e(route('admin-fix-level-0-media')) ?>">
-					<?= I18N::translate('MEDIA FIXUP') ?>
+					<?= I18N::translate('Link media to facts and events') ?>
 				</a>
 			</li>
 		</ul>
