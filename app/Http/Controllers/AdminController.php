@@ -40,6 +40,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -1021,6 +1023,145 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Import custom thumbnails from webtres 1.x.
+	 *
+	 * @return Response
+	 */
+	public function webtrees1Thumbnails(): Response {
+		return $this->viewResponse('admin/webtrees1-thumbnails', [
+			'title' => I18N::translate('Import custom thumbnails from webtrees version 1'),
+		]);
+	}
+
+	/**
+	 * Import custom thumbnails from webtres 1.x.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function webtrees1ThumbnailsAction(Request $request): Response {
+		$fact_id   = $request->get('fact_id');
+		$indi_xref = $request->get('indi_xref');
+		$obje_xref = $request->get('obje_xref');
+		$tree_id   = $request->get('tree_id');
+
+		$tree = Tree::findById($tree_id);
+		if ($tree !== null) {
+			$individual = Individual::getInstance($indi_xref, $tree);
+			$media      = Media::getInstance($obje_xref, $tree);
+			if ($individual !== null && $media !== null) {
+				foreach ($individual->getFacts() as $fact1) {
+					if ($fact1->getFactId() === $fact_id) {
+						$individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
+						foreach ($individual->getFacts('OBJE') as $fact2) {
+							if ($fact2->getTarget() === $media) {
+								$individual->deleteFact($fact2->getFactId(), false);
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
+
+		return new Response;
+	}
+
+	/**
+	 * Import custom thumbnails from webtres 1.x.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function webtrees1ThumbnailsData(Request $request): JsonResponse {
+		$start  = (int) $request->get('start', 0);
+		$length = (int) $request->get('length', 20);
+		$search = $request->get('search', []);
+		$search = $search['value'] ?? '';
+
+		// Fetch all thumbnails
+		$thumbnails = [];
+
+		$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_DATA_DIR));
+
+		foreach ($iterator as $iteration) {
+			if ($iteration->isFile() && basename(dirname($iteration->getPathname())) === 'thumbs') {
+				$thumbnails[] = $iteration->getPathname();
+			}
+		}
+
+		$recordsTotal = count($thumbnails);
+
+		if ($search !== '') {
+			$thumbnails = array_filter($thumbnails, function(string $thumbnail) use ($search) {
+				return stripos($thumbnail, $search) !== false;
+			});
+		}
+
+		$recordsFiltered = count($thumbnails);
+
+		$thumbnails = array_slice($thumbnails, $start, $length);
+
+		// Turn each filename into a row for the table
+		$data = array_map(function (string $thumbnail) {
+			$original = $this->findOriginalFileFromThumbnail($thumbnail);
+
+			$original_url = route('unused-media-thumbnail', [
+				'folder' => dirname($original),
+				'file' => basename($original),
+				'w' => 100,
+				'h' => 100,
+				]);
+			$thumbnail_url = route('unused-media-thumbnail', [
+				'folder' => dirname($thumbnail),
+				'file' => basename($thumbnail),
+				'w' => 100,
+				'h' => 100,
+				]);
+
+			$custom = $this->isCustomWebtrees1Thumbnail($original, $thumbnail);
+
+			$original_path  = substr($original, strlen(WT_DATA_DIR));
+			$thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
+
+			$media = $this->findMediaObjectsForMediaFile($original_path);
+
+			$media = array_map(function (Media $media) {
+				return '<a href="' . e($media->getRawUrl()) . '">' . $media->getFullName() . '</a>';
+			}, $media);
+
+			$media = implode('<br>', $media);
+
+			if ($custom) {
+				$status = I18n::translate('Custom');
+				$import = '<a href="#" class="btn btn-primary" onclick="alert(\'@TODO\');">' . I18N::translate('Import') . '</a>';
+				$delete = '<a href="#" class="btn btn-secondary" onclick="alert(\'@TODO\');">' . I18N::translate('Delete') . '</a>';
+			} else {
+				$status = I18n::translate('Default');
+				$import = '<a href="#" class="btn btn-secondary" onclick="alert(\'@TODO\');">' . I18N::translate('Import') . '</a>';
+				$delete = '<a href="#" class="btn btn-primary" onclick="alert(\'@TODO\');">' . I18N::translate('Delete') . '</a>';
+			}
+
+
+			return [
+				'<img src="' . e($thumbnail_url) . '"><br>' . str_replace('/', '/&zwnj;', e($thumbnail_path)),
+				'<img src="' . e($original_url) . '"><br>' . str_replace('/', '/&zwnj;', e($original_path)),
+				$media,
+				$status . ' ' . $import . ' ' . $delete,
+			];
+		}, $thumbnails);
+
+		return new JsonResponse([
+			'draw'            => (int) $request->get('draw'),
+			'recordsTotal'    => $recordsTotal,
+			'recordsFiltered' => $recordsFiltered,
+			'data'            => $data,
+		]);
+	}
+
+	/**
 	 * Merge two genealogy records.
 	 *
 	 * @param Request $request
@@ -1650,6 +1791,106 @@ class AdminController extends BaseController {
 		}
 
 		return $files_to_delete;
+	}
+
+	/**
+	 * Find the media object that uses a particular media file.
+	 *
+	 * @param string $file
+	 *
+	 * @return Media[]
+	 */
+	private function findMediaObjectsForMediaFile(string $file): array {
+		$rows = Database::prepare(
+			"SELECT m.*" .
+			" FROM  `##media` as m" .
+			" JOIN  `##media_file` USING (m_file, m_id)" .
+			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+			" WHERE CONCAT(setting_value, multimedia_file_refn) = :file"
+		)->execute([
+			'file' => $file,
+		])->fetchAll();
+
+		$media = [];
+
+		foreach ($rows as $row) {
+			$tree = Tree::findById($row->m_file);
+			$media[] = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+		}
+
+		return array_filter($media);
+	}
+
+	/**
+	 * Find the original image that corresponds to a (webtrees 1.x) thumbnail file.
+	 *
+	 * @param string $thumbanil
+	 *
+	 * @return string
+	 */
+	private function findOriginalFileFromThumbnail(string $thumbnail): string {
+		// First option - a file with the same name
+		$original = dirname(dirname($thumbnail)) . '/' . basename($thumbnail);
+
+		// Second option - a .PNG thumbnail for some other image type
+		if (substr_compare($original,'.png', -4, 4) === 0) {
+			$pattern = substr($original, 0, -3) . '*';
+			$matches = glob($pattern);
+			if (!empty($matches) && is_file($matches[0])) {
+				$original = $matches[0];
+			}
+		}
+
+		return $original;
+	}
+
+
+	/**
+	 * Does the thumbnail file appear to be custom generated.
+	 * If yes, we should probably import it.
+	 * If no, we should probably delete it.
+	 *
+	 * @param string $original
+	 * @param string $thumbnail
+	 *
+	 * @return bool
+	 */
+	private function isCustomWebtrees1Thumbnail(string $original, string $thumbnail): bool {
+		// Original file no longer exists?
+		if (!file_exists($original)) {
+			return false;
+		}
+
+		$original_attributes  = getimagesize($original);
+		$thumbnail_attributes = getimagesize($thumbnail);
+
+		// Not a thumbnail image?
+		if ($thumbnail_attributes === false) {
+			return false;
+		}
+
+		// Thumbnail of a non-image?
+		if ($original_attributes === false) {
+			return true;
+		}
+
+		// The same size image?
+		if ($original_attributes[3] === $thumbnail_attributes[3]) {
+			return false;
+		}
+
+		// Different aspect ratio?  Use exact same algorithm as webtrees 1.x
+		$original_width    = $original_attributes[0];
+		$original_height   = $original_attributes[1];
+		$thumbnail_width   = $thumbnail_attributes[0];
+		$thumbnail_height  = $thumbnail_attributes[1];
+		$calculated_height = round($original_height * ($thumbnail_width / $original_width));
+
+		if ($calculated_height !== $thumbnail_height) {
+			return true;
+		}
+
+		return true;
 	}
 
 	/**
