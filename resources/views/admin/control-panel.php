@@ -436,6 +436,12 @@
 					<?= I18N::translate('Link media objects to facts and events') ?>
 				</a>
 			</li>
+			<li>
+				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<a href="<?= e(route('admin-webtrees1-thumbs')) ?>">
+					<?= I18N::translate('Import custom thumbnails from webtrees version 1') ?>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
