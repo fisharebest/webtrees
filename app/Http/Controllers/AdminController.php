@@ -42,12 +42,12 @@ use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use stdClass;
 
 /**
  * Controller for the administration pages
@@ -1095,7 +1095,7 @@ class AdminController extends BaseController {
 		$recordsTotal = count($thumbnails);
 
 		if ($search !== '') {
-			$thumbnails = array_filter($thumbnails, function(string $thumbnail) use ($search) {
+			$thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search) {
 				return stripos($thumbnail, $search) !== false;
 			});
 		}
@@ -1824,7 +1824,7 @@ class AdminController extends BaseController {
 	/**
 	 * Find the original image that corresponds to a (webtrees 1.x) thumbnail file.
 	 *
-	 * @param string $thumbanil
+	 * @param string $thumbnail
 	 *
 	 * @return string
 	 */
@@ -1833,7 +1833,7 @@ class AdminController extends BaseController {
 		$original = dirname(dirname($thumbnail)) . '/' . basename($thumbnail);
 
 		// Second option - a .PNG thumbnail for some other image type
-		if (substr_compare($original,'.png', -4, 4) === 0) {
+		if (substr_compare($original, '.png', -4, 4) === 0) {
 			$pattern = substr($original, 0, -3) . '*';
 			$matches = glob($pattern);
 			if (!empty($matches) && is_file($matches[0])) {
