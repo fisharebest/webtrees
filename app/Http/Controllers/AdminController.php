@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use BigV\ImageCompare;
 use DirectoryIterator;
+use ErrorException;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -1124,7 +1125,7 @@ class AdminController extends BaseController {
 				'h' => 100,
 				]);
 
-			$custom = $this->isCustomWebtrees1Thumbnail($original, $thumbnail);
+			$difference = $this->imageDiff($thumbnail, $original);
 
 			$original_path  = substr($original, strlen(WT_DATA_DIR));
 			$thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
@@ -1137,22 +1138,22 @@ class AdminController extends BaseController {
 
 			$media = implode('<br>', $media);
 
-			if ($custom) {
-				$status = I18n::translate('Custom');
-				$import = '<a href="#" class="btn btn-primary" onclick="alert(\'@TODO\');">' . I18N::translate('Import') . '</a>';
-				$delete = '<a href="#" class="btn btn-secondary" onclick="alert(\'@TODO\');">' . I18N::translate('Delete') . '</a>';
+			if ($difference < 99) {
+				$import = '<button class="btn btn-primary" value="add">' .FontAwesome ::decorativeIcon('add') . ' ' .I18N::translate('add') . '</button>';
+				$delete = '<a href="#" class="btn btn-secondary">' .FontAwesome ::decorativeIcon('delete') . ' ' .I18N::translate('delete') . '</a>';
 			} else {
-				$status = I18n::translate('Default');
-				$import = '<a href="#" class="btn btn-secondary" onclick="alert(\'@TODO\');">' . I18N::translate('Import') . '</a>';
-				$delete = '<a href="#" class="btn btn-primary" onclick="alert(\'@TODO\');">' . I18N::translate('Delete') . '</a>';
+				$import = '<button class="btn btn-secondary" value="add">' .FontAwesome ::decorativeIcon('add') . ' ' .I18N::translate('add') . '</button>';
+				$delete = '<a href="#" class="btn btn-primary">' .FontAwesome ::decorativeIcon('delete') . ' ' .I18N::translate('delete') . '</a>';
 			}
 
+			$action = '<div class="btn-group">' . $import . $delete . '</div>';
 
 			return [
 				'<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail_path) . '">',
 				'<img src="' . e($original_url) . '" title="' . e($original_path) . '">',
 				$media,
-				$status . ' ' . $import . ' ' . $delete . ' ' . @$this->imageDiff($original, $thumbnail),
+				I18N::percentage($difference / 100.0, 0),
+				$action,
 			];
 		}, $thumbnails);
 
@@ -1852,88 +1853,81 @@ class AdminController extends BaseController {
 	 *
 	 * 0 (different) ... 100 (same)
 	 *
-	 * @param $image1
-	 * @param $image2
+	 * @param string $thumbanil
+	 * @param string $original
 	 *
 	 * @return int
 	 */
-	private function imageDiff($image1, $image2): int {
-		$size = 10;
-
-		// Convert images to 10x10
+	private function imageDiff($thumbanil, $original): int {
 		try {
-			$manager = new ImageManager;
-			$image1  = $manager->make($image1)->resize($size, $size);
-			$image2  = $manager->make($image2)->resize($size, $size);
-		} catch (\Throwable $ex) {
-			//var_dump($image1, $image2);
-			//throw $ex;
-			return -1;
+			if (getimagesize($thumbanil) === false) {
+				return 100;
+			}
+		} catch (ErrorException $ex) {
+			// If the first file is not an image then similarity is unimportant.
+			// Response with an exact match, so the GUI will recommend deleting it.
+			return 100;
 		}
 
-		$max_difference = 0;
-		// Compare each pixel
-		for ($x = 0; $x < $size; ++$x) {
-			for ($y = 0; $y < $size; ++$y) {
-				// Sum the RGB channels to convert to grayscale.
-				$pixel1 = $image1->pickColor($x, $y);
-				$pixel2 = $image2->pickColor($x, $y);
-				$value1 = $pixel1[0] + $pixel1[1] + $pixel1[2];
-				$value2 = $pixel2[0] + $pixel2[1] + $pixel2[2];
+		try {
+			if (getimagesize($original) === false) {
+				return 0;
+			}
+		} catch (ErrorException $ex) {
+			// If the first file is not an image then the thumbnail .
+			// Response with an exact mismatch, so the GUI will recommend importing it.
+			return 0;
+		}
 
-				$max_difference = max($max_difference, abs($value1 - $value2));
+		$pixels1 = $this->scaledImagePixels($thumbanil);
+		$pixels2 = $this->scaledImagePixels($original);
+
+		$max_difference = 0;
+
+		foreach ($pixels1 as $x => $row) {
+			foreach ($row as $y => $pixel) {
+				$max_difference = max($max_difference, abs($pixel - $pixels2[$x][$y]));
 			}
 		}
 
-		// The maximum difference is 3 x 255 = 765 (black versus white).
-
-		return 100 - (int) ($max_difference * 100 / 765);
+		// The maximum difference is 255 (black versus white).
+		return 100 - (int) ($max_difference * 100 / 255);
 	}
 
 	/**
-	 * Does the thumbnail file appear to be custom generated.
-	 * If yes (true), we should probably import it.
-	 * If no (false), we should probably delete it.
+	 * Scale an image to 10x10 and read the individual pixels.
 	 *
-	 * @param string $original
-	 * @param string $thumbnail
+	 * This is a slow operation, add we will do it many times on
+	 * the "import wetbrees 1 thumbnails" page so cache the results.
 	 *
-	 * @return bool
+	 * @param $path
+	 *
+	 * @return int[][]
 	 */
-	private function isCustomWebtrees1Thumbnail(string $original, string $thumbnail): bool {
-		// Original file no longer exists?
-		if (!file_exists($original)) {
-			return false;
+	private function scaledImagePixels($path): array {
+		$size       = 10;
+		$sha1       = sha1_file($path);
+		$cache_file = WT_DATA_DIR . 'cache/' . $sha1 . '.php';
+
+		if (file_exists($cache_file)) {
+			return include $cache_file;
 		}
 
-		$original_attributes  = getimagesize($original);
-		$thumbnail_attributes = getimagesize($thumbnail);
+		$manager = new ImageManager;
+		$image   = $manager->make($path)->resize($size, $size);
 
-		// Not a thumbnail image?
-		if ($thumbnail_attributes === false) {
-			return false;
+		$pixels = [];
+		for ($x = 0; $x < $size; ++$x) {
+			$pixels[$x] = [];
+			for ($y = 0; $y < $size; ++$y) {
+				$pixel          = $image->pickColor($x, $y);
+				$pixels[$x][$y] = (int) (($pixel[0] + $pixel[1] + $pixel[2]) / 3);
+			}
 		}
 
-		// Thumbnail of a non-image?
-		if ($original_attributes === false) {
-			return true;
-		}
+		file_put_contents($cache_file, '<?php return ' . var_export($pixels, true) . ';');
 
-		// Different aspect ratio?  Use exact same algorithm as webtrees 1.x
-		$original_width    = $original_attributes[0];
-		$original_height   = $original_attributes[1];
-		$thumbnail_width   = $thumbnail_attributes[0];
-		$thumbnail_height  = $thumbnail_attributes[1];
-		$calculated_height = round($original_height * ($thumbnail_width / $original_width));
-
-		if (abs($calculated_height - $thumbnail_height) > 1) {
-			return true;
-		}
-
-		// Do a pixel-by-pixel comparison
-		$image_compare = new ImageCompare;
-
-		return $image_compare->compare($original, $thumbnail) >= 10;
+		return $pixels;
 	}
 
 	/**
@@ -1965,7 +1959,6 @@ class AdminController extends BaseController {
 			'confidential' => I18N::translate('Show to managers'),
 			'hidden'       => I18N::translate('Hide from everyone'),
 		];
-
 	}
 
 	/**
