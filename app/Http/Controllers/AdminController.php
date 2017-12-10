@@ -1139,11 +1139,11 @@ class AdminController extends BaseController {
 			$media = implode('<br>', $media);
 
 			if ($difference < 99) {
-				$import = '<button class="btn btn-primary" value="add">' .FontAwesome ::decorativeIcon('add') . ' ' .I18N::translate('add') . '</button>';
-				$delete = '<a href="#" class="btn btn-secondary">' .FontAwesome ::decorativeIcon('delete') . ' ' .I18N::translate('delete') . '</a>';
+				$import = '<button class="btn btn-primary" value="add">' . FontAwesome ::decorativeIcon('add') . ' ' . I18N::translate('add') . '</button>';
+				$delete = '<a href="#" class="btn btn-secondary">' . FontAwesome ::decorativeIcon('delete') . ' ' . I18N::translate('delete') . '</a>';
 			} else {
-				$import = '<button class="btn btn-secondary" value="add">' .FontAwesome ::decorativeIcon('add') . ' ' .I18N::translate('add') . '</button>';
-				$delete = '<a href="#" class="btn btn-primary">' .FontAwesome ::decorativeIcon('delete') . ' ' .I18N::translate('delete') . '</a>';
+				$import = '<button class="btn btn-secondary" value="add">' . FontAwesome ::decorativeIcon('add') . ' ' . I18N::translate('add') . '</button>';
+				$delete = '<a href="#" class="btn btn-primary">' . FontAwesome ::decorativeIcon('delete') . ' ' . I18N::translate('delete') . '</a>';
 			}
 
 			$action = '<div class="btn-group">' . $import . $delete . '</div>';
@@ -1900,7 +1900,7 @@ class AdminController extends BaseController {
 	 * This is a slow operation, add we will do it many times on
 	 * the "import wetbrees 1 thumbnails" page so cache the results.
 	 *
-	 * @param $path
+	 * @param string $path
 	 *
 	 * @return int[][]
 	 */
