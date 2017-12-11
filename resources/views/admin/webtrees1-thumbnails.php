@@ -1,5 +1,6 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\I18N; ?>
+<?php ?>
 
 <?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
 
@@ -10,7 +11,7 @@
 	<br>
 	<?= I18N::translate('In webtrees version 2, custom thumbnails are stored as a second media file in the same media object.') ?>
 	<br>
-	<?= I18N::translate('If the thumbnail image is the same as the original, it is no longer needed and you should delete it.  If it is a custom image, you should import it.') ?>
+	<?= I18N::translate('If the thumbnail image is the same as the original, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object.') ?>
 </p>
 
 <table class="table table-bordered table-sm table-hover table-responsive datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-webtrees1-thumbs-data')])) ?>" data-server-side="true" data-state-save="true" data-sort="false" data-auto-width="false" data-save-state="true">
@@ -31,21 +32,24 @@
 <script>
   // If we click on a button, post the request and reload the table
   document.querySelector(".wt-fix-table").onclick = function (event) {
-    var element = event.target;
+    let element = event.target;
     if (element.classList.contains("wt-fix-button")) {
       event.stopPropagation();
-      if (confirm(element.dataset.confirm)) {
+      event.preventDefault();
+      if (!element.dataset.confirm || confirm(element.dataset.confirm)) {
+        let formData = new FormData(element.form);
+        formData.append('action', element.dataset.action);
+
         $.ajax({
-          data: {
-            "fact_id":   element.dataset.factId,
-            "indi_xref": element.dataset.individualXref,
-            "obje_xref": element.dataset.mediaXref,
-            "tree_id":   element.dataset.treeId
-          },
-          method: "POST",
-          url: <?= json_encode(route('admin-fix-level-0-media-action')) ?>
-        }).done(function () {
-          $(".wt-fix-table").DataTable().ajax.reload(null, false);
+          data:        formData,
+          method:      element.form.method,
+          url:         element.form.action,
+          async:       false,
+          contentType: false,
+          processData: false,
+          complete: function() {
+            $(".wt-fix-table").DataTable().ajax.reload(null, false);
+          }
         });
       }
     }
