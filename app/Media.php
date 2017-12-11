@@ -123,6 +123,8 @@ class Media extends GedcomRecord {
 		$names = [];
 		foreach ($this->mediaFiles() as $media_file) {
 			$names[] = $media_file->title();
+		}
+		foreach ($this->mediaFiles() as $media_file) {
 			$names[] = $media_file->filename();
 		}
 		$names = array_filter(array_unique($names));
