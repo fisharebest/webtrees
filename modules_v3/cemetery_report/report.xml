@@ -27,12 +27,11 @@
 	<!-- landscape orientation -->
 	<SetVar name="namewidth" value="185"/>
 	<SetVar name="datewidth" value="95"/>
-	<SetVar name="cemewidth" value="150"/>
-	<SetVar name="placewidth" value="175"/>
+	<SetVar name="placewidth" value="325"/>
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Cemeteries')" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Burials')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />
@@ -45,13 +44,6 @@
 			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$datewidth">
 				<Text style="label"><var var="I18N::translate('Date of death')" /></Text>
-			</TextBox>
-			<!-- should print and sort by burial date -->
-
-			<SetVar name="fill" value="" />
-			<if condition="$sortby=='BURI'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$cemewidth">
-				<Text style="label"><var var="I18N::translate('Cemetery')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
@@ -80,12 +72,22 @@
 						</RepeatTag>
 					</if>
 				</Cell>
-				<Cell style="text" width="$datewidth"><GedcomValue tag="DEAT:DATE" newline="1" /></Cell>
-				<Cell style="text" width="$cemewidth"><GedcomValue tag="BURI:CEME" /></Cell>
-				<Cell style="text" width="$placewidth"><GedcomValue tag="BURI:PLAC" /></Cell>
-				<Cell newline="1" style="text"><GedcomValue tag="BURI:NOTE" /></Cell>
+				<Cell style="text" width="$datewidth">
+					<GedcomValue tag="DEAT:DATE" newline="1" />
+				</Cell>
+				<Cell style="text" width="$placewidth">
+					<GedcomValue tag="BURI:CEME" />
+					<if condition="@BURI:CEME !== ''">, </if>
+					<GedcomValue tag="BURI:PLAC" />
+				</Cell>
+				<Cell newline="1" style="text">
+					<GedcomValue tag="BURI:NOTE" />
+				</Cell>
 			</List>
-			<Cell align="rightrtl" newline="1" style="label"><br /><var var="I18N::translate('Total individuals')" />: <ListTotal /></Cell>
+			<Cell align="rightrtl" newline="1" style="label">
+				<br />
+				<var var="I18N::translate('Total individuals')" />: <ListTotal />
+			</Cell>
 		</Body>
 		<Footer>
 			<Cell align="rightrtl" newline="1" style="date"><Now /></Cell>
