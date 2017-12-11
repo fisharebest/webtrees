@@ -74,7 +74,7 @@
 
 	$(".wt-icon-media-stop").on('click', function () {
 		$(".wt-icon-media-stop").parent().attr('hidden', true);
-		$(".wt-icon-media-play").attr('hidden', false);
+		$(".wt-icon-media-play").parent().attr('hidden', false);
 		play = false;
 		return false;
 	});

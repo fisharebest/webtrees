@@ -43,12 +43,13 @@ class BaseController extends LegacyBaseController {
 		$theme = Theme::theme();
 
 		$html = View::make($this->layout, [
-			'content'                => View::make($name, $data),
-			'tree'                   => $this->tree(),
-			'theme_head'             => $theme->head($this),
-			'theme_body_header'      => $theme->bodyHeader(),
-			'theme_footer_container' => $theme->footerContainer(),
-			'javascript'             => $this->getJavascript() . $theme->hookFooterExtraJavascript(),
+			'content'                 => View::make($name, $data),
+			'tree'                    => $this->tree(),
+			'theme_head'              => $theme->head($this),
+			'theme_body_header'       => $theme->bodyHeader(),
+			'theme_footer_container'  => $theme->footerContainer(),
+			'theme_footer_javascript' => $theme->hookFooterExtraJavascript(),
+			'javascript'              => $this->getJavascript() . $theme->hookFooterExtraJavascript(),
 		]);
 
 		return new Response($html);
