@@ -26,7 +26,7 @@ class CemeteryReportModule extends AbstractModule implements ModuleReportInterfa
 	/** {@inheritdoc} */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Cemeteries');
+		return /* I18N: Name of a module/report */ I18N::translate('Burials');
 	}
 
 	/** {@inheritdoc} */
