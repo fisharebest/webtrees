@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
@@ -42,7 +42,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -957,7 +956,6 @@ class AdminController extends BaseController {
 		$args  = [];
 
 		if ($search !== '') {
-			// @TODO MediaFile
 			$where .= " AND (multimedia_file_refn LIKE CONCAT('%', :search1, '%') OR multimedia_file_refn LIKE CONCAT('%', :search2, '%'))";
 			$args['search1'] = $search;
 			$args['search2'] = $search;
@@ -1045,31 +1043,56 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	public function webtrees1ThumbnailsAction(Request $request): Response {
-		$fact_id   = $request->get('fact_id');
-		$indi_xref = $request->get('indi_xref');
-		$obje_xref = $request->get('obje_xref');
-		$tree_id   = $request->get('tree_id');
+		$thumbnail = $request->get('thumbnail', '');
+		$action    = $request->get('action', '');
+		$xrefs     = $request->get('xref', []);
+		$geds      = $request->get('ged', []);
 
-		$tree = Tree::findById($tree_id);
-		if ($tree !== null) {
-			$individual = Individual::getInstance($indi_xref, $tree);
-			$media      = Media::getInstance($obje_xref, $tree);
-			if ($individual !== null && $media !== null) {
-				foreach ($individual->getFacts() as $fact1) {
-					if ($fact1->getFactId() === $fact_id) {
-						$individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
-						foreach ($individual->getFacts('OBJE') as $fact2) {
-							if ($fact2->getTarget() === $media) {
-								$individual->deleteFact($fact2->getFactId(), false);
-							}
-						}
-						break;
-					}
-				}
-			}
+		$media_objects = [];
+
+		foreach ($xrefs as $key => $xref) {
+			$tree = Tree::findByName($geds[$key]);
+			$media_objects[] = Media::getInstance($xref, $tree);
 		}
 
-		return new Response;
+		$thumbnail = WT_DATA_DIR . $thumbnail;
+
+		switch ($action) {
+			case 'delete':
+				if (file_exists($thumbnail)) {
+					unlink($thumbnail);
+				}
+				break;
+
+			case 'add':
+				$image_size = getimagesize($thumbnail);
+				list(, $extension) = explode('/', $image_size['mime']);
+				$move_to = dirname(dirname($thumbnail)) . '/' . sha1_file($thumbnail) . '.' . $extension;
+				rename($thumbnail, $move_to);
+
+				foreach ($media_objects as $media_object) {
+					$prefix = WT_DATA_DIR . $media_object->getTree()->getPreference('MEDIA_DIRECTORY');
+					$gedcom = "1 FILE " . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
+
+					if ($media_object->firstImageFile() === null) {
+						// The media object doesn't have an image.  Add this as a secondary file.
+						$media_object->createFact($gedcom, true);
+					} else {
+						// The media object already has an image.  Show this custom one in preference.
+						$gedcom = '0 @' . $media_object->getXref() . "@ OBJE\n" . $gedcom;
+						foreach ($media_object->getFacts() as $fact) {
+							$gedcom .= "\n" . $fact->getGedcom();
+						}
+						$media_object->updateRecord($gedcom, true);
+					}
+
+					// Accept the changes, to keep the filesystem in sync with the GEDCOM data.
+					FunctionsImport::acceptAllChanges($media_object->getxref(), $media_object->getTree()->getTreeId());
+				}
+				break;
+		}
+
+		return new JsonResponse([]);
 	}
 
 	/**
@@ -1112,18 +1135,18 @@ class AdminController extends BaseController {
 		$data = array_map(function (string $thumbnail) {
 			$original = $this->findOriginalFileFromThumbnail($thumbnail);
 
-			$original_url = route('unused-media-thumbnail', [
+			$original_url  = route('unused-media-thumbnail', [
 				'folder' => dirname($original),
-				'file' => basename($original),
-				'w' => 100,
-				'h' => 100,
-				]);
+				'file'   => basename($original),
+				'w'      => 100,
+				'h'      => 100,
+			]);
 			$thumbnail_url = route('unused-media-thumbnail', [
 				'folder' => dirname($thumbnail),
-				'file' => basename($thumbnail),
-				'w' => 100,
-				'h' => 100,
-				]);
+				'file'   => basename($thumbnail),
+				'w'      => 100,
+				'h'      => 100,
+			]);
 
 			$difference = $this->imageDiff($thumbnail, $original);
 
@@ -1132,26 +1155,22 @@ class AdminController extends BaseController {
 
 			$media = $this->findMediaObjectsForMediaFile($original_path);
 
-			$media = array_map(function (Media $media) {
+			$media_links = array_map(function (Media $media) {
 				return '<a href="' . e($media->getRawUrl()) . '">' . $media->getFullName() . '</a>';
 			}, $media);
 
-			$media = implode('<br>', $media);
+			$media_links = implode('<br>', $media_links);
 
-			if ($difference < 99) {
-				$import = '<button class="btn btn-primary" value="add">' . FontAwesome ::decorativeIcon('add') . ' ' . I18N::translate('add') . '</button>';
-				$delete = '<a href="#" class="btn btn-secondary">' . FontAwesome ::decorativeIcon('delete') . ' ' . I18N::translate('delete') . '</a>';
-			} else {
-				$import = '<button class="btn btn-secondary" value="add">' . FontAwesome ::decorativeIcon('add') . ' ' . I18N::translate('add') . '</button>';
-				$delete = '<a href="#" class="btn btn-primary">' . FontAwesome ::decorativeIcon('delete') . ' ' . I18N::translate('delete') . '</a>';
-			}
-
-			$action = '<div class="btn-group">' . $import . $delete . '</div>';
+			$action = view('admin/webtrees1-thumbnails-form', [
+				'difference' => $difference,
+				'media'      => $media,
+				'thumbnail'  => $thumbnail_path,
+			]);
 
 			return [
 				'<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail_path) . '">',
 				'<img src="' . e($original_url) . '" title="' . e($original_path) . '">',
-				$media,
+				$media_links,
 				I18N::percentage($difference / 100.0, 0),
 				$action,
 			];
@@ -1806,7 +1825,7 @@ class AdminController extends BaseController {
 	 */
 	private function findMediaObjectsForMediaFile(string $file): array {
 		$rows = Database::prepare(
-			"SELECT m.*" .
+			"SELECT DISTINCT m.*" .
 			" FROM  `##media` as m" .
 			" JOIN  `##media_file` USING (m_file, m_id)" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .

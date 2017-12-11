@@ -27,7 +27,7 @@
 <script>
   // If we click on a button, post the request and reload the table
   document.querySelector(".wt-fix-table").onclick = function (event) {
-    var element = event.target;
+    let element = event.target;
     if (element.classList.contains("wt-fix-button")) {
       event.stopPropagation();
       if (confirm(element.dataset.confirm)) {
