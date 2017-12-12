@@ -38,7 +38,7 @@
 
 			<ul class="nav small d-flex justify-content-end">
 				<li class="nav-item menu-mypage">
-					<a class="nav-link active" href="index.php"><?= I18N::translate('My page') ?></a>
+					<a class="nav-link active" href="<?= e(route('user-page')) ?>"><?= I18N::translate('My page') ?></a>
 				</li>
 				<li class="nav-item dropdown menu-language">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
