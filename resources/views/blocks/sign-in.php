@@ -2,6 +2,7 @@
 
 <form name="login-form" method="POST" action="<?= WT_LOGIN_URL ?>">
 	<input type="hidden" name="action" value="login">
+	<input type="hidden" name="url" value="<?= e(route('user-page')) ?>">
 
 	<div class="form-group">
 		<label for="username">
