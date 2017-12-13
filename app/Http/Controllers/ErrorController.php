@@ -19,10 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +50,7 @@ class ErrorController extends BaseController {
 
 		// No tree or tree not imported?
 		if (Auth::isAdmin()) {
-			$response = new RedirectResponse(Html::url('admin_trees_manage.php', []));
+			return new RedirectResponse(Html::url('admin_trees_manage.php', []));
 		}
 
 		return $this->viewResponse('errors/no-tree-access', []);
