@@ -1704,7 +1704,7 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuMyPages() {
-		if (Auth::id()) {
+		if (Auth::id() && $this->tree !== null) {
 			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
 				$this->menuMyPage(),
 				$this->menuMyIndividualRecord(),

@@ -49,22 +49,7 @@ $request->attributes->set('user', AUth::user());
 $routes = require 'routes/web.php';
 
 // Find the action for the selected route
-$controller_action = $routes[$method . ':' . $route] ?? null;
-
-// No access to this route?  Go somewhere else.
-if ($controller_action === null) {
-	if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-		$response = new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
-	} elseif (!Auth::check()) {
-		// Probably need to log in to see this page?
-		$response = new RedirectResponse(Html::url('login.php', ['url' => $request->getRequestUri()]));
-	} elseif (Auth::isAdmin()) {
-		// No tree or tree not imported?
-		$response = new RedirectResponse(Html::url('admin_trees_manage.php', []));
-	}
-
-	return $response->prepare($request)->send();
-}
+$controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
 
 DebugBar::stopMeasure('routing');
 
