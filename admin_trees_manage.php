@@ -763,7 +763,7 @@ echo Bootstrap4::breadcrumbs([
 					<?= Filter::getCsrf() ?>
 					<input type="hidden" name="action" value="synchronize">
 					<button type="submit" class="btn btn-danger">
-						<i class="fa fa-refresh"></i>
+						<i class="fas fa-sync"></i>
 						<?= /* I18N: A button label. */ I18N::translate('continue') ?>
 					</button>
 					<p class="small text-muted">

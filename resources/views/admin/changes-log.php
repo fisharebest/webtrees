@@ -16,7 +16,7 @@
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= e($from) ?>">
-				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
 			</div>
 		</div>
 
@@ -26,7 +26,7 @@
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= e($to) ?>">
-				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
 			</div>
 		</div>
 
@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     locale: <?= json_encode(WT_LOCALE) ?>,
     useCurrent: false,
     icons: {
-      time: "fa fa-clock-o",
-      date: "fa fa-calendar",
+      time: "far fa-clock",
+      date: "fas fa-calendar-alt",
       up: "fa fa-arrow-up",
       down: "fa fa-arrow-down",
       previous: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'right' : 'left' ?>",
       next: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'left' : 'right' ?>",
-      today: "fa fa-trash-o",
-      clear: "fa fa-trash-o"
+      today: "far fa-trash-alt",
+      clear: "far fa-trash-alt"
     }
   });
 });

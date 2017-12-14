@@ -68,25 +68,25 @@ abstract class AbstractTheme {
 		// Icons for GEDCOM records
 		'family'     => 'fa fa-users',
 		'individual' => 'fa fa-user',
-		'media'      => 'fa fa-file-image-o',
-		'note'       => 'fa fa-sticky-note-o',
-		'repository' => 'fa fa-institution',
-		'source'     => 'fa fa-file-text-o',
+		'media'      => 'far fa-file-image',
+		'note'       => 'far fa-sticky-note',
+		'repository' => 'fas fa-university',
+		'source'     => 'far fa-file-alt',
 		'submission' => 'fa fa-upload',
 		'submitter'  => 'fa fa-user-plus',
 
 		// Icons for sexes
 		'F' => 'fa fa-venus',
 		'M' => 'fa fa-mars',
-		'U' => 'fa fa-genderless',
+		'U' => 'fab fa-empirenderless',
 
 		// Icons for editing
 		'add'    => 'fa fa-plus',
 		'config' => 'fa fa-cogs',
 		'copy'   => 'fa fa-copy',
 		'create' => 'fa fa-plus',
-		'delete' => 'fa fa-trash',
-		'edit'   => 'fa fa-pencil',
+		'delete' => 'fas fa-trash-alt',
+		'edit'   => 'fas fa-pencil-alt',
 		'link'   => 'fa fa-link',
 		'unlink' => 'fa fa-unlink',
 
@@ -106,7 +106,7 @@ abstract class AbstractTheme {
 		'mime-text-html'       => '',
 
 		// Other icons
-		'mail'   => 'fa fa-envelope-o',
+		'mail'   => 'far fa-envelope',
 		'help'   => 'fa fa-info-circle',
 		'search' => 'fa fa-search',
 	];
