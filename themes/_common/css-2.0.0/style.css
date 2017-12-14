@@ -425,7 +425,7 @@ wt-pedigree-chart .spacer {
  *
  * wt-chart, wt-relationships-chart
  */
-#relationship-page .person_box_template {
+.wt-relationship-chart .person_box_template {
 	line-height: 1.0;
 }
 .vline-text, .hline-text {	font-size: 0.7rem;
