@@ -2755,7 +2755,8 @@ div.faq_body {
 
 /*-- Relationship ---- */
 
-#relationship-page .hline-text, #relationship-page .vline-text {
+.wt-relationship-chart .hline-text,
+.wt-relationship-chart .vline-text {
 	font-size: 12px;
 }
 

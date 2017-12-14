@@ -190,7 +190,8 @@ if ($person1 && $person2) {
 				$table[$x][$y] = ob_get_clean();
 			}
 		}
-		echo '<table id="relationship-page" style="border-collapse: collapse; margin: 20px 50px;">';
+		echo '<div class="wt-chart wt-relationship-chart">';
+		echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
 		for ($y = $max_y; $y >= $min_y; --$y) {
 			echo '<tr>';
 			for ($x = 0; $x <= $max_x; ++$x) {
@@ -203,6 +204,7 @@ if ($person1 && $person2) {
 			echo '</tr>';
 		}
 		echo '</table>';
+		echo '</div>';
 	}
 
 	if (!$num_paths) {
