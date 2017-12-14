@@ -829,7 +829,7 @@ echo Bootstrap4::breadcrumbs([
 					>
 				<div class="input-group-btn">
 					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
-						<i class="fa fa-pencil"></i>
+						<i class="fas fa-pencil-alt"></i>
 						<?= /* I18N: A button label. */ I18N::translate('edit') ?>
 					</a>
 				</div>

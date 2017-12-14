@@ -47,7 +47,7 @@ define('WT_BOOTSTRAP_RTL_CSS_URL', 'https://raw.githubusercontent.com/GhalamborM
 define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.16/jquery.dataTables.min.js');
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.css');
 define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.js');
-define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-4.7.0/css/font-awesome.min.css');
+define('WT_FONT_AWESOME_CSS_URL', 'packages/font-awesome-5.0.1/css/fontawesome-all.min.css');
 define('WT_JQUERY_JS_URL', 'packages/jquery-3.1.1/jquery.min.js');
 define('WT_MOMENT_JS_URL', 'packages/moment-2.11.2/moment-with-locales.min.js');
 define('WT_POPPER_JS_URL', 'packages/popper-1.11.0/popper.min.js');
