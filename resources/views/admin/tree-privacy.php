@@ -20,8 +20,8 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Show the family tree') ?>
 			</label>
 			<div class="hidden-xs">
-				<span class="badge visitors"><i class="fa fa-fw"></i> <?= I18N::translate('visitors') ?></span>
-				<span class="badge members"><i class="fa fa-fw"></i><?= I18N::translate('members') ?></span>
+				<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+				<span class="badge members"><?= I18N::translate('members') ?></span>
 			</div>
 		</div>
 		<div class="col-sm-8">
@@ -44,8 +44,8 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Show dead individuals') ?>
 			</label>
 			<div class="hidden-xs">
-				<span class="badge visitors"><i class="fa fa-fw"></i> <?= I18N::translate('visitors') ?></span>
-				<span class="badge members"><i class="fa fa-fw"></i><?= I18N::translate('members') ?></span>
+				<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+				<span class="badge members"><?= I18N::translate('members') ?></span>
 			</div>
 		</div>
 		<div class="col-sm-8">
@@ -84,8 +84,8 @@
 				<legend class="col-form-legend">
 					<?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
 					<div class="hidden-xs">
-						<span class="badge visitors"><i class="fa fa-fw"></i> <?= I18N::translate('visitors') ?></span>
-						<span class="badge members"><i class="fa fa-fw"></i><?= I18N::translate('members') ?></span>
+						<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+						<span class="badge members"><?= I18N::translate('members') ?></span>
 					</div>
 				</legend>
 			</div>
@@ -126,9 +126,9 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Show names of private individuals') ?>
 			</label>
 			<div class="hidden-xs">
-				<span class="badge visitors"><i class="fa fa-fw"></i> <?= I18N::translate('visitors') ?></span>
-				<span class="badge members"><i class="fa fa-fw"></i><?= I18N::translate('members') ?></span>
-				<span class="badge managers"><i class="fa fa-fw"></i> <?= I18N::translate('managers') ?></span>
+				<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+				<span class="badge members"><?= I18N::translate('members') ?></span>
+				<span class="badge managers"><?= I18N::translate('managers') ?></span>
 			</div>
 		</div>
 		<div class="col-sm-8">
@@ -146,8 +146,8 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Show private relationships') ?>
 			</label>
 			<div class="hidden-xs">
-				<span class="badge visitors"><i class="fa fa-fw"></i> <?= I18N::translate('visitors') ?></span>
-				<span class="badge members"><i class="fa fa-fw"></i><?= I18N::translate('members') ?></span>
+				<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+				<span class="badge members"><?= I18N::translate('members') ?></span>
 			</div>
 		</div>
 		<div class="col-sm-8">

@@ -342,7 +342,7 @@ echo Bootstrap4::breadcrumbs([
 		<div class="card">
 			<div class="card-header" role="tab" id="card-tree-header-<?= $tree->getTreeId() ?>">
 				<h2 class="mb-0">
-					<i class="fa fa-fw fa-tree"></i>
+					<i class="fas fa-tree fa-fw"></i>
 					<a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $tree->getTreeId() ?>" <?= $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $tree->getTreeId() ?>">
 						<?= $tree->getNameHtml() ?> — <?= $tree->getTitleHtml() ?>
 					</a>
@@ -630,7 +630,7 @@ echo Bootstrap4::breadcrumbs([
 	<div class="card">
 		<div class="card-header" id="card-tree-create-header">
 			<h2 class="mb-0">
-				<i class="fa fa-fw fa-plus"></i>
+				<i class="fas fa-plus fa-fw"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#card-tree-create-content" aria-controls="card-tree-create-content">
 					<?= I18N::translate('Create a family tree') ?>
 				</a>
@@ -705,7 +705,7 @@ echo Bootstrap4::breadcrumbs([
 	<div class="card">
 		<div class="card-header" id="card-pgv-wizard-header">
 			<h2 class="mb-0">
-				<i class="fa fa-fw fa-magic"></i>
+				<i class="fas fa-magic fa-fw"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#card-pgv-wizard-content" aria-controls="card-pgv-wizard-content">
 					<?= I18N::translate('PhpGedView to webtrees transfer wizard') ?>
 				</a>
@@ -748,11 +748,11 @@ echo Bootstrap4::breadcrumbs([
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 class="panel-title">
-			<i class="fa fa-fw fa-refresh"></i>
-			<a data-toggle="collapse" data-parent="#accordion" href="#synchronize-gedcom-files">
-				<?= I18N::translate('Synchronize family trees with GEDCOM files') ?>
-			</a>
-		</h2>
+				<i class="fas fa-sync-alt fa-fw"></i>
+				<a data-toggle="collapse" data-parent="#accordion" href="#synchronize-gedcom-files">
+					<?= I18N::translate('Synchronize family trees with GEDCOM files') ?>
+				</a>
+			</h2>
 		</div>
 		<div id="synchronize-gedcom-files" class="panel-collapse collapse">
 			<div class="panel-body">
