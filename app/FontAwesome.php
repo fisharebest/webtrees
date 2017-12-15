@@ -49,7 +49,7 @@ class FontAwesome extends Html {
 		'arrow-start' => 'fa fa-arrow-start wt-icon-arrow-start',
 		'arrow-up'    => 'fa fa-arrow-up wt-icon-arrow-up',
 		// Modules
-		'block'      => 'fa fa-th-list wt-icon-block',
+		'block'      => 'fa fa-th-list fa-flip-horizontal wt-icon-block',
 		'block-user' => 'fa fa-user wt-icon-block-user',
 		'block-tree' => 'fa fa-tree wt-icon-block-tree',
 		'chart'      => 'fa fa-share-alt wt-icon-chart',

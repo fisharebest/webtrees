@@ -374,7 +374,7 @@ echo Bootstrap4::breadcrumbs([
 						<ul class="fa-ul">
 							<!-- PREFERENCES -->
 							<li>
-								<i class="fa fa-li fa-cogs"></i>
+								<span class="fa-li"><i class="fas fa-cogs"></i></span>
 								<a href="<?= Html::escape(Html::url('admin_trees_config.php', ['ged' => $tree->getName(), 'action' => 'general'])) ?>">
 									<?= I18N::translate('Preferences') ?>
 									<span class="sr-only">
@@ -384,7 +384,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- PRIVACY -->
 							<li>
-								<i class="fa fa-li fa-lock"></i>
+								<span class="fa-li"><i class="fas fa-lock"></i></span>
 								<a href="<?= Html::escape(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Privacy') ?>
 									<span class="sr-only">
@@ -394,7 +394,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- HOME PAGE BLOCKS-->
 							<li>
-								<i class="fa fa-li fa-th-large"></i>
+								<span class="fa-li"><i class="fas fa-th-large"></i></span>
 								<a href="<?= Html::escape(route('tree-page-edit', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Change the “Home page” blocks') ?>
 									<span class="sr-only">
@@ -404,7 +404,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- DELETE -->
 							<li>
-								<i class="fa fa-li fa-trash-o"></i>
+								<span class="fa-li"><i class="far fa-trash-alt"></i></span>
 								<a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $tree->getTreeId() ?>.submit(); } return false;">
 									<?= I18N::translate('Delete') ?>
 									<span class="sr-only">
@@ -424,7 +424,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- SET AS DEFAULT -->
 							<?php if (count(Tree::getAll()) > 1): ?>
 								<li>
-									<i class="fa fa-li fa-star"></i>
+									<span class="fa-li"><i class="far fa-star"></i></span>
 									<?php if ($tree->getName() === Site::getPreference('DEFAULT_GEDCOM')): ?>
 										<?= I18N::translate('Default family tree') ?>
 									<?php else: ?>
@@ -453,7 +453,7 @@ echo Bootstrap4::breadcrumbs([
 						<ul class="fa-ul">
 							<!-- FIND DUPLICATES -->
 							<li>
-								<i class="fa fa-li fa-copy"></i>
+								<span class="fa-li"><i class="far fa-copy"></i></span>
 								<a href="admin_trees_duplicates.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Find duplicates') ?>
 									<span class="sr-only">
@@ -463,7 +463,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- MERGE -->
 							<li>
-								<i class="fa fa-li fa-code-fork"></i>
+								<span class="fa-li"><i class="fas fa-code-branch"></i></span>
 								<a href="<?= Html::escape(route('merge-records', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Merge records') ?>
 									<span class="sr-only">
@@ -473,7 +473,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UPDATE PLACE NAMES -->
 							<li>
-								<i class="fa fa-li fa-map-marker"></i>
+								<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
 								<a href="admin_trees_places.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Update place names') ?>
 									<span class="sr-only">
@@ -483,7 +483,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- CHECK FOR ERRORS -->
 							<li>
-								<i class="fa fa-li fa-check"></i>
+								<span class="fa-li"><i class="fas fa-check"></i></span>
 								<a href="admin_trees_check.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Check for errors') ?>
 									<span class="sr-only">
@@ -493,7 +493,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNCONNECTED INDIVIDUALS -->
 							<li>
-								<i class="fa fa-li fa-chain-broken"></i>
+								<span class="fa-li"><i class="fas fa-unlink"></i></span>
 								<a href="admin_trees_unconnected.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Find unrelated individuals') ?>
 									<span class="sr-only">
@@ -503,7 +503,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- RENUMBER -->
 							<li>
-								<i class="fa fa-li fa-sort-numeric-asc"></i>
+								<span class="fa-li"><i class="fas fa-sort-numeric-down"></i></span>
 								<a href="admin_trees_renumber.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Renumber') ?>
 									<span class="sr-only">
@@ -513,7 +513,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- CHANGES -->
 							<li>
-								<i class="fa fa-li fa-th-list"></i>
+								<span class="fa-li"><i class="fas fa-th-list"></i></span>
 								<a href="<?= route('admin-changes-log', ['ged' => $tree->getName()]) ?>">
 									<?= I18N::translate('Changes log') ?>
 									<span class="sr-only">
@@ -531,7 +531,7 @@ echo Bootstrap4::breadcrumbs([
 						<ul class="fa-ul">
 							<!-- UNLINKED INDIVIDUAL -->
 							<li>
-								<i class="fa fa-li fa-user"></i>
+								<span class="fa-li"><i class="far fa-user"></i></span>
 								<a href="edit_interface.php?action=add_unlinked_indi&amp;ged=<?= $tree->getNameHtml() ?>">
 									<?= I18N::translate('Individual') ?>
 									<span class="sr-only">
@@ -541,7 +541,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNLINKED SOURCE -->
 							<li>
-								<i class="fa fa-li fa-book"></i>
+								<span class="fa-li"><i class="fas fa-book"></i></span>
 								<a href="#" data-href="<?= e(route('create-source', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<?= I18N::translate('Source') ?>
 									<span class="sr-only">
@@ -551,7 +551,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNLINKED REPOSITORY -->
 							<li>
-								<i class="fa fa-li fa-university"></i>
+								<span class="fa-li"><i class="fas fa-university"></i></span>
 								<a href="#" data-href="<?= e(route('create-repository', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<?= I18N::translate('Repository') ?>
 									<span class="sr-only">
@@ -561,7 +561,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNLINKED MEDIA OBJECT -->
 							<li>
-								<i class="fa fa-li fa-photo"></i>
+								<span class="fa-li"><i class="far fa-image"></i></span>
 								<a href="#" data-href="<?= e(route('create-media-object', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 
 									<?= I18N::translate('Media object') ?>
@@ -572,7 +572,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNLINKED NOTE -->
 							<li>
-								<i class="fa fa-li fa-paragraph"></i>
+								<span class="fa-li"><i class="fas fa-paragraph"></i></span>
 								<a href="#" data-href="<?= e(route('create-note-object', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -582,7 +582,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UNLINKED SUBMITTER -->
 							<li>
-								<i class="fa fa-li fa-user"></i>
+								<span class="fa-li"><i class="far fa-user"></i></span>
 								<a href="#" data-href="<?= e(route('create-submitter', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -599,7 +599,7 @@ echo Bootstrap4::breadcrumbs([
 						<ul class="fa-ul">
 							<!-- DOWNLOAD/Export -->
 							<li>
-								<i class="fa fa-li fa-download"></i>
+								<span class="fa-li"><i class="fas fa-download"></i></span>
 								<a href="admin_trees_download.php?ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Export') ?>
 									<span class="sr-only">
@@ -609,7 +609,7 @@ echo Bootstrap4::breadcrumbs([
 							</li>
 							<!-- UPLOAD/IMPORT -->
 							<li>
-								<i class="fa fa-li fa-upload"></i>
+								<span class="fa-li"><i class="fas fa-upload"></i></span>
 								<a href="?action=importform&amp;gedcom_id=<?= $tree->getTreeId() ?>&amp;ged=<?= $tree->getNameUrl() ?>">
 									<?= I18N::translate('Import') ?>
 									<span class="sr-only">

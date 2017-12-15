@@ -41,31 +41,31 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
 							<?= I18N::translate('Website preferences') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
 							<?= I18N::translate('Sending email') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
 							<?= I18N::translate('Sign-in and registration') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
 							<?= I18N::translate('Languages') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
 							<?= I18N::translate('Tracking and analytics') ?>
 						</a>
@@ -75,19 +75,19 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(Html::url('admin_site_logs.php', [])) ?>">
 							<?= I18N::translate('Website logs') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(route('admin-clean-data')) ?>">
 							<?= I18N::translate('Clean up data folder') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
 						<a href="<?= e(route('admin-server-information')) ?>">
 							<?= I18N::translate('Server information') ?>
 						</a>
@@ -242,20 +242,20 @@
 
 		<ul class="fa-ul">
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(Html::url('admin_trees_manage.php', [])) ?>">
 					<?= I18N::translate('Manage family trees') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(route('tree-page-default-edit')) ?>">
 					<?= I18N::translate('Set the default blocks for new family trees') ?>
 				</a>
 			</li>
 			<?php if (count($all_trees) > 1): ?>
 				<li>
-					<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+					<span class="fa-li"><i class="fas fa-wrench"></i></span>
 					<a href="<?= e(Html::url('admin_trees_merge.php', [])) ?>">
 						<?= I18N::translate('Merge family trees') ?>
 					</a>
@@ -296,31 +296,31 @@
 
 		<ul class="fa-ul">
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(Html::url('admin_users.php', [])) ?>">
 					<?= I18N::translate('User administration') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
 					<?= I18N::translate('Add a user') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(Html::url('admin_users_bulk.php', [])) ?>">
 					<?= I18N::translate('Send broadcast messages') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
 					<?= I18N::translate('Delete inactive users') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-wrench"></i></span>
 				<a href="<?= e(route('user-page-default-edit')) ?>">
 					<?= I18N::translate('Set the default blocks for new users') ?>
 				</a>
@@ -344,37 +344,37 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<?= FontAwesome::decorativeIcon('menu', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-bars"></i></span>
 						<a href="<?= e(route('admin-menus')) ?>">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('tab', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="far fa-folder"></i></span>
 						<a href="<?= e(route('admin-tabs')) ?>">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('block', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-th-list fa-flip-horizontal"></i></span>
 						<a href="<?= e(route('admin-blocks')) ?>">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('sidebar', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-pause"></i></span>
 						<a href="<?= e(route('admin-sidebars')) ?>">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('chart', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="fas fa-share-alt"></i></span>
 						<a href="<?= e(route('admin-charts')) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
-						<?= FontAwesome::decorativeIcon('report', ['class' => 'fa-li']) ?>
+						<span class="fa-li"><i class="far fa-file"></i></span>
 						<a href="<?= e(route('admin-reports')) ?>">
 							<?= I18N::translate('Reports') ?>
 						</a>
@@ -385,7 +385,7 @@
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
-							<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+							<span class="fa-li"><i class="fas fa-cogs"></i></span>
 							<a href="<?= e($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?>
 							</a>
@@ -397,7 +397,7 @@
 
 		<ul class="fa-ul">
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-cogs"></i></span>
 				<a href="<?= e(route('admin-modules')) ?>">
 					<?= I18N::translate('Module administration') ?>
 				</a>
@@ -419,25 +419,25 @@
 	<div class="card-body">
 		<ul class="fa-ul">
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-cogs"></i></span>
 				<a href="<?= e(Html::url('admin_media.php', [])) ?>">
 					<?= I18N::translate('Manage media') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-cogs"></i></span>
 				<a href="<?= e(Html::url('admin_media_upload.php', [])) ?>">
 					<?= I18N::translate('Upload media files') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-cogs"></i></span>
 				<a href="<?= e(route('admin-fix-level-0-media')) ?>">
 					<?= I18N::translate('Link media objects to facts and events') ?>
 				</a>
 			</li>
 			<li>
-				<?= FontAwesome::decorativeIcon('preferences', ['class' => 'fa-li']) ?>
+				<span class="fa-li"><i class="fas fa-cogs"></i></span>
 				<a href="<?= e(route('admin-webtrees1-thumbs')) ?>">
 					<?= I18N::translate('Import custom thumbnails from webtrees version 1') ?>
 				</a>
