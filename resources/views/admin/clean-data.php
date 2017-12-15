@@ -16,9 +16,9 @@
 		<?php
 		foreach ($entries as $entry) {
 			if (in_array($entry, $protected)) {
-				echo '<li><i class="fa-li fa fa-ban text-danger"></i>', e($entry), '</li>';
+				echo '<li><span class="fa-li"><i class="fas fa fa-ban text-danger"></i></span>', e($entry), '</li>';
 			} else {
-				echo '<li><i class="fa-li far fa-trash-alt"></i>';
+				echo '<li><span class="fa-li"><i class="far fa-trash-alt"></i></span>';
 				echo '<label>';
 				echo '<input type="checkbox" name="to_delete[]" value="', e($entry), '"> ';
 				echo e($entry);
