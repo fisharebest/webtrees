@@ -129,10 +129,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     icons: {
       time: "far fa-clock",
       date: "fas fa-calendar-alt",
-      up: "fa fa-arrow-up",
-      down: "fa fa-arrow-down",
-      previous: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'right' : 'left' ?>",
-      next: "fa fa-arrow- <?= I18N::direction() === 'rtl' ? 'left' : 'right' ?>",
+      up: "fas fa-arrow-up",
+      down: "fas fa-arrow-down",
+      previous: "fas fa-arrow- <?= I18N::direction() === 'rtl' ? 'right' : 'left' ?>",
+      next: "fas fa-arrow- <?= I18N::direction() === 'rtl' ? 'left' : 'right' ?>",
       today: "far fa-trash-alt",
       clear: "far fa-trash-alt"
     }

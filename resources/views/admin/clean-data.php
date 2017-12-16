@@ -6,7 +6,7 @@
 <h1><?= $title ?></h1>
 
 <p>
-	<?= I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="fa fa-ban text-danger"></i>') ?>
+	<?= I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="fas fa-ban text-danger"></i>') ?>
 </p>
 
 <form method="post">
@@ -16,7 +16,7 @@
 		<?php
 		foreach ($entries as $entry) {
 			if (in_array($entry, $protected)) {
-				echo '<li><span class="fa-li"><i class="fas fa fa-ban text-danger"></i></span>', e($entry), '</li>';
+				echo '<li><span class="fa-li"><i class="fas fa-ban text-danger"></i></span>', e($entry), '</li>';
 			} else {
 				echo '<li><span class="fa-li"><i class="far fa-trash-alt"></i></span>';
 				echo '<label>';

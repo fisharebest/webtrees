@@ -231,7 +231,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		<div class="row form-group">
 			<div class="offset-sm-3 col-sm-9">
 				<button type="submit" class="btn btn-primary">
-					<i class="fa fa-check"></i>
+					<i class="fas fa-check"></i>
 					<?= I18N::translate('save') ?>
 				</button>
 			</div>
@@ -462,7 +462,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		<p>
 			<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit" class="btn btn-default">
-				<i class="fa fa-plus"></i>
+				<i class="fas fa-plus"></i>
 				<?= /* I18N: FAQ = “Frequently Asked Question” */ I18N::translate('Add an FAQ') ?>
 			</a>
 		</p>
@@ -484,13 +484,13 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			if ($faq->block_order == $min_block_order) {
 				echo '&nbsp;';
 			} else {
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><i class="fa fa-arrow-up"></i></i> ', I18N::translate('Move up'), '</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><i class="fas fa-arrow-up"></i></i> ', I18N::translate('Move up'), '</a>';
 			}
 			echo '</td><td>';
 			if ($faq->block_order == $max_block_order) {
 				echo '&nbsp;';
 			} else {
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><i class="fa fa-arrow-down"></i></i> ', I18N::translate('Move down'), '</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><i class="fas fa-arrow-down"></i></i> ', I18N::translate('Move down'), '</a>';
 			}
 			echo '</td><td>';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '"><i class="fas fa-pencil-alt"></i> ', I18N::translate('Edit'), '</a>';

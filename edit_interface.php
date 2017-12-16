@@ -1342,7 +1342,8 @@ case 'add-media-link':
 					<?php if ($record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($record->getTree())): ?>
 						<span class="input-group-btn">
 							<button class="btn btn-secondary" type="button" data-toggle="modal" data-href="<?= e(route('create-media-object', ['tree' => $record->getTree()->getName()])) ?>" data-target="#wt-ajax-modal" data-select-id="media-xref" title="<?= I18N::translate('Create a media object') ?>">
-								<i class="fa fa-plus"></i>
+								<i class="fas fa-plus" aria-hidden="true" title="<?= I18N::translate('add') ?>"></i>
+								<span class="sr-only"><?= I18N::translate('add') ?></span>
 							</button>
 						</span>
 					<?php endif ?>

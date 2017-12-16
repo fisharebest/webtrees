@@ -90,7 +90,7 @@
 					<th scope="row" data-sort="<?= $module->getTitle() ?>" dir="auto">
 						<?php if ($module instanceof ModuleConfigInterface): ?>
 							<a href="<?= e($module->getConfigLink()) ?>">
-								<?= $module->getTitle() ?> <i class="fa fa-cogs"></i>
+								<?= $module->getTitle() ?> <i class="fas fa-cogs"></i>
 							</a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>
@@ -103,7 +103,7 @@
 						<?= $module->getDescription() ?>
 						<?php if (!in_array($module->getName(), $core_module_names)): ?>
 							<br>
-							<i class="fa fa-asterisk"></i>
+							<i class="fas fa-asterisk"></i>
 							<?= I18N::translate('Custom module') ?>
 							<?php if ($module::CUSTOM_VERSION): ?>
 								- <?= I18N::translate('Version') ?> <?= $module::CUSTOM_VERSION ?>
@@ -200,7 +200,7 @@
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit">
-		<i class="fa fa-check"></i>
+		<i class="fas fa-check"></i>
 		<?= I18N::translate('save') ?></button>
 </form>
 

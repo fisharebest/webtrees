@@ -102,20 +102,20 @@ class PedigreeController extends ChartController {
 			case self::PORTRAIT:
 				//drop through
 			case self::LANDSCAPE:
-				$this->arrows->prevGen = 'fa fa-arrow-end wt-icon-arrow-end';
-				$this->arrows->menu    = 'fa fa-arrow-start wt-icon-arrow-start';
+				$this->arrows->prevGen = 'fas fa-arrow-end wt-icon-arrow-end';
+				$this->arrows->menu    = 'fas fa-arrow-start wt-icon-arrow-start';
 				$addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
 				$addoffset['y']        = 0;
 				break;
 			case self::OLDEST_AT_TOP:
-				$this->arrows->prevGen = 'fa fa-arrow-up wt-icon-arrow-up';
-				$this->arrows->menu    = 'fa fa-arrow-down wt-icon-arrow-down';
+				$this->arrows->prevGen = 'fas fa-arrow-up wt-icon-arrow-up';
+				$this->arrows->menu    = 'fas fa-arrow-down wt-icon-arrow-down';
 				$addoffset['x']        = 0;
 				$addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
 				break;
 			case self::OLDEST_AT_BOTTOM:
-				$this->arrows->prevGen = 'fa fa-arrow-down wt-icon-arrow-down';
-				$this->arrows->menu    = 'fa fa-arrow-up wt-icon-arrow-up';
+				$this->arrows->prevGen = 'fas fa-arrow-down wt-icon-arrow-down';
+				$this->arrows->menu    = 'fas fa-arrow-up wt-icon-arrow-up';
 				$addoffset['x']        = 0;
 				$addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
 				break;

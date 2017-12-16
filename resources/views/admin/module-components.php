@@ -25,7 +25,7 @@
 				<tr>
 					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
-							<a href="<?= e($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fa fa-cogs"></i></a>
+							<a href="<?= e($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fas fa-cogs"></i></a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>
 						<?php endif ?>
@@ -52,7 +52,7 @@
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit">
-		<i class="fa fa-check"></i>
+		<i class="fas fa-check"></i>
 		<?= I18N::translate('save') ?>
 	</button>
 </form>

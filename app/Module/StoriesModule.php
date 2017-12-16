@@ -262,7 +262,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					<div class="row form-group">
 						<div class="offset-sm-3 col-sm-9">
 							<button type="submit" class="btn btn-primary">
-								<i class="fa fa-check"></i>
+								<i class="fas fa-check"></i>
 								<?= I18N::translate('save') ?>
 							</button>
 						</div>
@@ -356,7 +356,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 		<p>
 			<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit" class="btn btn-default">
-				<i class="fa fa-plus"></i>
+				<i class="fas fa-plus"></i>
 				<?= I18N::translate('Add a story') ?>
 			</a>
 		</p>
