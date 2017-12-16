@@ -66,40 +66,40 @@ abstract class AbstractTheme {
 	// Icons are created using <i class="..."></i>
 	const ICONS = [
 		// Icons for GEDCOM records
-		'family'     => 'fa fa-users',
-		'individual' => 'fa fa-user',
+		'family'     => 'fas fa-users',
+		'individual' => 'far fa-user',
 		'media'      => 'far fa-file-image',
 		'note'       => 'far fa-sticky-note',
 		'repository' => 'fas fa-university',
 		'source'     => 'far fa-file-alt',
-		'submission' => 'fa fa-upload',
-		'submitter'  => 'fa fa-user-plus',
+		'submission' => 'fas fa-upload',
+		'submitter'  => 'fas fa-user-plus',
 
 		// Icons for sexes
-		'F' => 'fa fa-venus',
-		'M' => 'fa fa-mars',
-		'U' => 'fab fa-empirenderless',
+		'F' => 'fas fa-venus',
+		'M' => 'fas fa-mars',
+		'U' => 'fas fa-genderless',
 
 		// Icons for editing
-		'add'    => 'fa fa-plus',
-		'config' => 'fa fa-cogs',
-		'copy'   => 'fa fa-copy',
-		'create' => 'fa fa-plus',
+		'add'    => 'fas fa-plus',
+		'config' => 'far fa-cogs',
+		'copy'   => 'far fa-copy',
+		'create' => 'fas fa-plus',
 		'delete' => 'fas fa-trash-alt',
 		'edit'   => 'fas fa-pencil-alt',
-		'link'   => 'fa fa-link',
-		'unlink' => 'fa fa-unlink',
+		'link'   => 'fas fa-link',
+		'unlink' => 'fas fa-unlink',
 
 		// Icons for arrows
-		'arrow-down'  => 'fa fa-arrow-down',
-		'arrow-left'  => 'fa fa-arrow-left',
-		'arrow-right' => 'fa fa-arrow-right',
-		'arrow-up'    => 'fa fa-arrow-up',
+		'arrow-down'  => 'fas fa-arrow-down',
+		'arrow-left'  => 'fas fa-arrow-left',
+		'arrow-right' => 'fas fa-arrow-right',
+		'arrow-up'    => 'fas fa-arrow-up',
 
 		// Status icons
-		'error'   => 'fa fa-exclamation-triangle',
-		'info'    => 'fa fa-info-circle',
-		'warning' => 'fa fa-exclamation-circle',
+		'error'   => 'fas fa-exclamation-triangle',
+		'info'    => 'fas fa-info-circle',
+		'warning' => 'fas fa-exclamation-circle',
 
 		// Icons for file types
 		'mime-application-pdf' => '',
@@ -107,8 +107,8 @@ abstract class AbstractTheme {
 
 		// Other icons
 		'mail'   => 'far fa-envelope',
-		'help'   => 'fa fa-info-circle',
-		'search' => 'fa fa-search',
+		'help'   => 'fas fa-info-circle',
+		'search' => 'fas fa-search',
 	];
 
 	/** @var  Request */
@@ -572,7 +572,7 @@ abstract class AbstractTheme {
 			'<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
 			'<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
 			'<span class="input-group-btn">' .
-			'<button type="submit" class="btn btn-primary wt-header-search-button"><i class="fa fa-search"></i></button>' .
+			'<button type="submit" class="btn btn-primary wt-header-search-button"><i class="fas fa-search"></i></button>' .
 			'</span>' .
 			'</div>';
 	}

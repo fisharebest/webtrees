@@ -686,7 +686,7 @@ echo Bootstrap4::breadcrumbs([
 					<div class="row form-group">
 						<div class="offset-sm-2 col-sm-10">
 							<button type="submit" class="btn btn-primary">
-								<i class="fa fa-check"></i>
+								<i class="fas fa-check" aria-hidden="true"></i>
 								<?= /* I18N: A button label. */ I18N::translate('create') ?>
 							</button>
 							<p class="small text-muted">

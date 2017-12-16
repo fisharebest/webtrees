@@ -434,7 +434,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<div class="row form-group">
 				<div class="offset-sm-3 col-sm-9">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-check"></i>
+						<i class="fas fa-check"></i>
 						<?= I18N::translate('save') ?>
 					</button>
 				</div>
@@ -2230,7 +2230,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<div class="row form-group">
 				<div class="offset-sm-4 col-sm-8">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-check"></i>
+						<i class="fas fa-check"></i>
 						<?= I18N::translate('continue') ?>
 					</button>
 				</div>
