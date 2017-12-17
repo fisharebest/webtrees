@@ -196,9 +196,10 @@ class MediaFile {
 				]) . '>';
 
 		$attributes = Html::attributes([
-			'class' => 'gallery',
-			'type'  => $this->mimeType(),
-			'href'  => $this->imageUrl(0, 0, ''),
+			'class'      => 'gallery',
+			'type'       => $this->mimeType(),
+			'href'       => $this->imageUrl(0, 0, 'contain'),
+			'data-title' => strip_tags($this->media->getFullName()),
 		]);
 
 		return '<a ' . $attributes . '>' . $image . '</a>';
