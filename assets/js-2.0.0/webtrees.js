@@ -715,13 +715,12 @@ function activate_colorbox (config) {
   $.extend($.colorbox.settings, {
     // Don't scroll window with document
     fixed: true,
-    // Simple I18N - the text will need to come from PHP
     current: '',
-    previous: textDirection === 'rtl' ? '\u25b6' : '\u25c0', // ▶ ◀
-    next: textDirection === 'rtl' ? '\u25c0' : '\u25b6', // ◀ ▶
-    slideshowStart: '\u25cb', // ○
-    slideshowStop: '\u25cf', // ●
-    close: '\u2715'  // ×
+    previous: '\uf048',
+    next: '\uf051',
+    slideshowStart: '\uf04b',
+    slideshowStop: '\uf04c',
+    close: '\uf00d'
   });
   if (config) {
     $.extend($.colorbox.settings, config);

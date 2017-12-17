@@ -2964,7 +2964,7 @@ ituser-table .value {
 	width: 440px;
 }
 
-/* ===== Styling for the jquery.colorbox gallery ===== */
+/* http://www.jacklmoore.com/colorbox */
 #colorbox,
 #cboxOverlay,
 #cboxWrapper {
@@ -2975,38 +2975,32 @@ ituser-table .value {
 	overflow: hidden;
 }
 
-#colorbox {
-	border: 2px solid #ccc;
+#cboxWrapper {
+	max-width: none;
 }
 
 #cboxOverlay {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background: #ccc;
+	background: #fff;
 }
 
 #cboxContent {
 	background: #fff;
-	border: 5px solid #888;
+	overflow: hidden;
+	position: relative;
+	padding: 0.5rem;
+	border: 0.25rem solid #ccc;
 }
 
-#cboxLoadedContent {
-	overflow: auto;
-	background: #fff;
-	margin-bottom: 30px;
-	margin-top: 35px;
-}
-
-#cboxTitle {
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
 	position: absolute;
+	top: 0;
 	left: 0;
-	top: 10px;
-	font-size: 14px;
-	color: #949494;
-	text-align: center;
 	width: 100%;
-	font-weight: 800;
+	height: 100%;
 }
 
 .cboxPhoto {
@@ -3017,106 +3011,63 @@ ituser-table .value {
 	max-width: none;
 }
 
-.cboxIframe {
-	width: 100%;
-	height: 100%;
-	display: block;
-	border: 0;
+#colorbox,
+#cboxContent,
+#cboxLoadedContent {
+	box-sizing: content-box;
 }
 
-#cboxPrevious {
+#cboxError {
+	padding: 50px;
+	border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+	margin-bottom: 28px;
+}
+
+#cboxTitle {
+	background: #fff;
 	position: absolute;
-	bottom: 0;
+	bottom: 0.25rem;
 	left: 0;
-	background: url(images/controls.png) no-repeat -75px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
+	margin: 0 3rem;
+	text-align: center;
+}
+
+#cboxLoadingGraphic {
+	background: url(images/loading-32x32.gif) no-repeat center center;
+}
+
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+	background: none;
 	border: 0;
-}
-
-#cboxPrevious:hover {
-	background-position: -75px -25px;
-}
-
-#cboxNext {
+	cursor: pointer;
+	font-family: "Font Awesome\ 5 Free", sans-serif;
+	font-weight: 900;
+	overflow: visible;
+	padding: 0;
 	position: absolute;
-	bottom: 0;
-	left: 27px;
-	background: url(images/controls.png) no-repeat -50px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
-	border: 0;
-}
-
-#cboxNext:hover {
-	background-position: -50px -25px;
 }
 
 #cboxSlideshow {
-	position: absolute;
-	bottom: 5px;
-	font-size: 14px;
-	left: 57px;
-	margin: 10px;
-	border: 0;
-	background: none;
+	bottom: 0.25rem;
+	right: 0.25rem;
 }
 
-#cboxSlideshow:hover {
-	color: #f00;
-	background: #fff;
+#cboxPrevious {
+	bottom: 0.25rem;
+	left: 0.25rem;
+}
+
+#cboxNext {
+	bottom: 0.25rem;
+	left: 1.5rem;
 }
 
 #cboxClose {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	background: url(images/controls.png) no-repeat -25px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
-	border: 0;
-}
-
-#cboxClose:hover {
-	background-position: -25px -25px;
-}
-
-#cboxCurrent {
-	bottom: 4px;
-	color: #949494;
-	left: 58px;
-	position: absolute;
-}
-
-[dir=rtl] #cboxPrevious {
-	right: 27px;
-	left: auto;
-}
-
-[dir=rtl] #cboxNext {
-	right: 0;
-	left: auto;
-}
-
-[dir=rtl] #cboxCurrent {
-	right: auto;
-	left: 0;
-}
-
-[dir=rtl] #cboxClose {
-	right: auto;
-	left: 0;
-}
-
-[dir=rtl] #cboxSlideshow {
-	right: 57px;
-	left: auto;
+	top: 0.25rem;
+	right: 0.25rem;
 }
 
 /* Stories module */
