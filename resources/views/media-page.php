@@ -52,12 +52,14 @@
 				<tr class="<?= $media_file->isPendingAddtion() ? 'new' : '' ?><?= $media_file->isPendingDeletion() ? 'old' : '' ?>">
 					<th scope="row">
 						<?= I18N::translate('Media file') ?>
-						<div class="editfacts">
-							<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact_id' => $media_file->factId()])]) ?>
-							<?php if (count($media->mediaFiles()) > 1): ?>
-								<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $media->getXref() . '", "' . $media_file->factId() . '");']) ?>
-							<?php endif ?>
-						</div>
+						<?php if ($media->canEdit()): ?>
+							<div class="editfacts">
+								<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact_id' => $media_file->factId()])]) ?>
+								<?php if (count($media->mediaFiles()) > 1): ?>
+									<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $media->getXref() . '", "' . $media_file->factId() . '");']) ?>
+								<?php endif ?>
+							</div>
+						<?php endif ?>
 					</th>
 					<td class="d-flex justify-content-between">
 						<div>
