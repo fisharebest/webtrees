@@ -79,7 +79,7 @@
 		<?= I18N::translate('URL') ?>
 	</label>
 	<div class="col-sm-10">
-		<input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg" value="<?= e($media_file ? $media_file->filename() : '') ?>">
+		<input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg" value="<?= e($media_file && $media_file->isExternal() ? $media_file->filename() : '') ?>">
 		<small class="text-muted">
 			<?= \Fisharebest\Webtrees\FontAwesome::semanticIcon('warning', I18N::translate('Caution!')) ?>
 			<?= I18N::translate('The GEDCOM standard does not allow URLs in media objects.') ?>
