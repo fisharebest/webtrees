@@ -1181,6 +1181,7 @@ class FunctionsImport {
 				break;
 			case 'OBJE':
 				Database::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute([$gid, $ged_id]);
+				Database::prepare("DELETE FROM `##media_file` WHERE m_id=? AND m_file=?")->execute([$gid, $ged_id]);
 				break;
 			default:
 				Database::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute([$gid, $ged_id]);
