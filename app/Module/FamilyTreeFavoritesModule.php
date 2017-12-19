@@ -254,7 +254,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 	}
 
 	/**

@@ -119,7 +119,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));

@@ -139,7 +139,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
 			$this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));

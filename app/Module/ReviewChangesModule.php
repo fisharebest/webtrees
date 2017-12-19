@@ -176,7 +176,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
 			$this->setBlockSetting($block_id, 'sendmail', Filter::postBool('sendmail'));

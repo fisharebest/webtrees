@@ -178,7 +178,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
