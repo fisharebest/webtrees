@@ -192,14 +192,14 @@ class MediaFile {
 					'dir'    => 'auto',
 					'src'    => $src,
 					'srcset' => implode(',', $srcset),
-					'alt'    => strip_tags($this->media->getFullName()),
+					'alt'    => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
 				]) . '>';
 
 		$attributes = Html::attributes([
 			'class'      => 'gallery',
 			'type'       => $this->mimeType(),
 			'href'       => $this->imageUrl(0, 0, 'contain'),
-			'data-title' => strip_tags($this->media->getFullName()),
+			'data-title' => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
 		]);
 
 		return '<a ' . $attributes . '>' . $image . '</a>';
