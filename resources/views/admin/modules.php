@@ -206,6 +206,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
-    $(".table-module-administration").dataTable(<?= json_encode(I18N::datatablesI18N()) ?>);
+    $(".table-module-administration").dataTable({<?= I18N::datatablesI18N() ?>});
   });
 </script>
