@@ -162,7 +162,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
 			$this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));

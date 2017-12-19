@@ -128,7 +128,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));

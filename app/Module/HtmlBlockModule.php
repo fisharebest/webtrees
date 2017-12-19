@@ -142,7 +142,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		global $WT_TREE;
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {

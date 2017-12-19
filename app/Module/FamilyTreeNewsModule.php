@@ -163,6 +163,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 	}
 }

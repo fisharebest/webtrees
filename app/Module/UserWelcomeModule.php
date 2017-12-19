@@ -112,6 +112,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 	}
 }

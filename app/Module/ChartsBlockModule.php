@@ -174,7 +174,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id): void {
+	public function configureBlock($block_id) {
 		global $WT_TREE, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
