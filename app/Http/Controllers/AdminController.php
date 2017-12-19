@@ -1114,7 +1114,7 @@ class AdminController extends BaseController {
 		$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_DATA_DIR));
 
 		foreach ($iterator as $iteration) {
-			if ($iteration->isFile() && basename(dirname($iteration->getPathname())) === 'thumbs') {
+			if ($iteration->isFile() && strpos($iteration->getPathname(), '/thumbs/') !== false) {
 				$thumbnails[] = $iteration->getPathname();
 			}
 		}
@@ -1853,7 +1853,7 @@ class AdminController extends BaseController {
 	 */
 	private function findOriginalFileFromThumbnail(string $thumbnail): string {
 		// First option - a file with the same name
-		$original = dirname(dirname($thumbnail)) . '/' . basename($thumbnail);
+		$original = str_replace('/thumbs/', '/', $thumbnail);
 
 		// Second option - a .PNG thumbnail for some other image type
 		if (substr_compare($original, '.png', -4, 4) === 0) {
