@@ -531,6 +531,7 @@ class Tree {
 		} else {
 			Database::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute([$this->tree_id]);
 			Database::prepare("DELETE FROM `##media` WHERE m_file =?")->execute([$this->tree_id]);
+			Database::prepare("DELETE FROM `##media_file` WHERE m_file =?")->execute([$this->tree_id]);
 		}
 	}
 
