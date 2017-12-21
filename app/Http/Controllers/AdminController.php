@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DirectoryIterator;
 use ErrorException;
+use FilesystemIterator;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -1111,7 +1112,7 @@ class AdminController extends BaseController {
 		// Fetch all thumbnails
 		$thumbnails = [];
 
-		$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_DATA_DIR));
+		$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_DATA_DIR, FilesystemIterator::FOLLOW_SYMLINKS));
 
 		foreach ($iterator as $iteration) {
 			if ($iteration->isFile() && strpos($iteration->getPathname(), '/thumbs/') !== false) {
