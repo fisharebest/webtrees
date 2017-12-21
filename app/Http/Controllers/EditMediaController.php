@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use ErrorException;
+use FilesystemIterator;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
@@ -491,7 +492,7 @@ class EditMediaController extends BaseController {
 
 		$disk_files = [];
 		$media_dir  = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', 'media/');
-		$iter       = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($media_dir));
+		$iter       = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($media_dir, FilesystemIterator::FOLLOW_SYMLINKS));
 
 		foreach ($iter as $file) {
 			if ($file->isFile()) {
