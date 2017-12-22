@@ -98,7 +98,7 @@ class User {
 		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
 		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
 		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
-		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([$this->user_id]);
+		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([(string) $this->user_id]);
 		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
 		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
 		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
