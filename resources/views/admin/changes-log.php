@@ -6,8 +6,10 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form" name="logs" action="<?= e(route('admin-changes-log')) ?>">
+<form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
+	<input type="hidden" name="route" value="admin-changes-log">
+	<input type="hidden" name="ged" value="<?= e($ged) ?>">
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
@@ -61,10 +63,10 @@
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="user">
+			<label for="username">
 				<?= I18N::translate('User') ?>
 			</label>
-			<?= Bootstrap4::select($user_list, $user, ['id' => 'user', 'name' => 'user']) ?>
+			<?= Bootstrap4::select($user_list, $username, ['id' => 'username', 'name' => 'username']) ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -72,7 +74,6 @@
 				<?= I18N::translate('Family tree') ?>
 			</label>
 			<?= Bootstrap4::select($tree_list, $ged, ['id' => 'ged', 'name' => 'ged']) ?>
-<?= $ged ?>
 		</div>
 	</div>
 
@@ -97,7 +98,7 @@
 <?php if ($action === 'show'): ?>
 	<table
 		class="table table-bordered table-sm table-hover table-site-changes datatables"
-		data-ajax="<?= route('admin-changes-log-data', ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'user' => $user]) ?>"
+		data-ajax="<?= route('admin-changes-log-data', ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'username' => $username]) ?>"
 		data-server-side="true"
 		data-sorting="<?= e('[[ 0, "desc" ]]') ?>"
 	>

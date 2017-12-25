@@ -46,12 +46,12 @@ use Fisharebest\Webtrees\View;
 use Intervention\Image\ImageManager;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use stdClass;
 
 /**
  * Controller for the administration pages
@@ -681,17 +681,17 @@ class AdminController extends BaseController {
 		$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->fetchOne();
 		$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->fetchOne();
 
-		$action = $request->get('action');
-		$ged    = $request->get('ged');
-		$from   = $request->get('from', $earliest);
-		$to     = $request->get('to', $latest);
-		$type   = $request->get('type');
-		$oldged = $request->get('oldged');
-		$newged = $request->get('newged');
-		$xref   = $request->get('xref');
-		$user   = $request->get('user');
-		$search = $request->get('search');
-		$search = $search['value'] ?? null;
+		$action   = $request->get('action');
+		$ged      = $request->get('ged');
+		$from     = $request->get('from', $earliest);
+		$to       = $request->get('to', $latest);
+		$type     = $request->get('type', '');
+		$oldged   = $request->get('oldged', '');
+		$newged   = $request->get('newged', '');
+		$xref     = $request->get('xref', '');
+		$username = $request->get('username', '');
+		$search   = $request->get('search', []);
+		$search   = $search['value'] ?? null;
 
 		if (!array_key_exists($ged, $tree_list)) {
 			$ged = reset($tree_list);
@@ -718,7 +718,7 @@ class AdminController extends BaseController {
 			'to'        => $to,
 			'tree_list' => $tree_list,
 			'type'      => $type,
-			'user'      => $user,
+			'username'  => $username,
 			'user_list' => $user_list,
 			'xref'      => $xref,
 		]);
@@ -1663,16 +1663,16 @@ class AdminController extends BaseController {
 	 *
 	 */
 	private function changesQuery(Request $request): array {
-		$from   = $request->get('from', '');
-		$to     = $request->get('to', '');
-		$type   = $request->get('type', '');
-		$oldged = $request->get('oldged', '');
-		$newged = $request->get('newged', '');
-		$xref   = $request->get('xref', '');
-		$user   = $request->get('user', '');
-		$ged    = $request->get('ged', '');
-		$search = $request->get('search', '');
-		$search = $search['value'] ?? '';
+		$from     = $request->get('from', '');
+		$to       = $request->get('to', '');
+		$type     = $request->get('type', '');
+		$oldged   = $request->get('oldged', '');
+		$newged   = $request->get('newged', '');
+		$xref     = $request->get('xref', '');
+		$username = $request->get('username', '');
+		$ged      = $request->get('ged', '');
+		$search   = $request->get('search', '');
+		$search   = $search['value'] ?? '';
 
 		$where = ' WHERE 1';
 		$args  = [];
@@ -1705,9 +1705,9 @@ class AdminController extends BaseController {
 			$where .= " AND xref = :xref";
 			$args['xref'] = $xref;
 		}
-		if ($user !== '') {
+		if ($username !== '') {
 			$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
-			$args['user'] = $user;
+			$args['user'] = $username;
 		}
 		if ($ged !== '') {
 			$where .= " AND gedcom_name LIKE CONCAT('%', :ged, '%')";
