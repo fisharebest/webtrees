@@ -194,7 +194,7 @@ switch ($action) {
 		</div>
 		<div>
 			<label for="password">', I18N::translate('Password'),
-				'<input type="password" id="password" name="password" class="formField">
+				'<input type="password" id="password" name="password" class="formField" autocomplete="current-password">
 			</label>
 		</div>
 		<div>
@@ -417,7 +417,7 @@ switch ($action) {
 				<div>
 					<label for="username">
 						<?= I18N::translate('Username') ?>
-							<input type="text" id="username" name="username" required maxlength="32" value="<?php Html::escape($username) ?>">
+							<input type="text" id="username" name="username" required maxlength="32" value="<?php Html::escape($username) ?>" autocomplete="username">
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>

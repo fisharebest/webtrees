@@ -15,7 +15,7 @@
 		<label for="password">
 			<?= I18N::translate('Password') ?>
 		</label>
-		<input type="password" id="password" name="password" class="form-control">
+		<input type="password" id="password" name="password" class="form-control" autocomplete="current-password">
 	</div>
 
 	<div>

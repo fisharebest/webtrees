@@ -186,7 +186,7 @@ function checkform(frm) {
 			<?= I18N::translate('Password') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" type="password" id="password-1" name="password-1" aria-describedby="password-1-description">
+			<input class="form-control" type="password" id="password-1" name="password-1" aria-describedby="password-1-description" autocomplete="new-password">
 			<p class="small text-muted" id="password-1-description">
 				<?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
 				<br>
@@ -200,7 +200,7 @@ function checkform(frm) {
 			<?= I18N::translate('Confirm password') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" type="password" id="password-2" name="password-2" aria-describedby="password-2-description">
+			<input class="form-control" type="password" id="password-2" name="password-2" aria-describedby="password-2-description" autocomplete="new-password">
 			<p class="small text-muted" id="password-2-description">
 				<?= I18N::translate('Type your password again, to make sure you have typed it correctly.') ?>
 			</p>
