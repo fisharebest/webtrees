@@ -278,10 +278,12 @@ echo Bootstrap4::breadcrumbs([
 			<?= I18N::translate('URL') ?>
 		</label>
 		<div class="col-sm-9">
-			<div class="input-group">
-				<span class="input-group-addon" dir="ltr">
-					<?= WT_BASE_URL ?>?ged=
-				</span>
+			<div class="input-group" dir="ltr">
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<?= WT_BASE_URL ?>?ged=
+					</span>
+				</div>
 				<input
 					class="form-control"
 					id="gedcom"
@@ -525,13 +527,14 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Media folder') ?>
 		</label>
 		<div class="col-sm-9">
-			<div class="input-group">
-				<span class="input-group-addon">
-					<?= WT_DATA_DIR ?>
-				</span>
+			<div class="input-group" dir="ltr">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<?= WT_DATA_DIR ?>
+					</span>
+				</div>
 				<input
 					class="form-control"
-					dir="ltr"
 					id="MEDIA_DIRECTORY"
 					maxlength="255"
 					name="MEDIA_DIRECTORY"

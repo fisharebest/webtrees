@@ -109,7 +109,11 @@ $controller->pageHeader();
 		<div class="col-sm-9 wt-page-options-value">
 			<div class="input-group">
 				<input class="form-control" type="text" size="3" id="fan_width" name="fan_width" value="<?= $controller->fan_width ?>">
-				<span class="input-group-addon">%</span>
+				<div class="input-group-append">
+					<span class="input-group-text">
+						%
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>

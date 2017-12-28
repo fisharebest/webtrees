@@ -501,9 +501,11 @@ class FunctionsEdit {
 	 */
 	public static function inputAddonCalendar($id) {
 		return
-			'<span class="input-group-addon">' .
+			'<div class="input-group-append">' .
+			'<span class="input-group-text">' .
 			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
-			'</span>';
+			'</span>' .
+			'</div>';
 	}
 
 	/**
@@ -515,9 +517,11 @@ class FunctionsEdit {
 	 */
 	public static function inputAddonKeyboard($id) {
 		return
-			'<span class="input-group-addon">' .
+			'<div class="input-group-append">' .
+			'<span class="input-group-text">' .
 			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
-			'</span>';
+			'</span>' .
+			'</div>';
 	}
 
 	/**
@@ -528,7 +532,12 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function inputAddonHelp($fact) {
-		return '<span class="input-group-addon">' . FunctionsPrint::helpLink($fact) . '</span>';
+		return
+			'<div class="input-group-append">' .
+			'<span class="input-group-text">' .
+			FunctionsPrint::helpLink($fact) .
+			'</span>' .
+			'</div>';
 	}
 
 	/**
@@ -746,7 +755,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'PLAC') {
 			$html .= '<div class="input-group">';
 			$html .= self::formControlPlace($value, ['id' => $id, 'name' => $name]);
-			$html .= '<span class="input-group-addon">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span>';
+			$html .= '<div class="input-group-append"><span class="input-group-text">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span></div>';
 			$html .= self::inputAddonHelp('PLAC');
 			$html .= '</div>';
 			if (Module::getModuleByName('places_assistant')) {

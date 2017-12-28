@@ -18,7 +18,11 @@
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= e($from) ?>">
-				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<span class="fas fa-calendar-alt"></span>
+					</span>
+				</div>
 			</div>
 		</div>
 
@@ -28,7 +32,11 @@
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= e($to) ?>">
-				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
+				<div class="input-group-append">
+				<span class="input-group-text">
+					<span class="fas fa-calendar-alt"></span>
+				</span>
+				</div>
 			</div>
 		</div>
 

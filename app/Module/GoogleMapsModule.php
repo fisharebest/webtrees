@@ -342,13 +342,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="input-group">
-									<label class="input-group-addon" for="GM_MIN_ZOOM"><?= I18N::translate('minimum') ?></label>
+									<div class="input-group-prepend">
+									<label class="input-group-text" for="GM_MIN_ZOOM">
+									<?= I18N::translate('minimum') ?>
+									</label>
+									</div>
 									<?= Bootstrap4::select(array_combine(range(self::GM_MIN_ZOOM_MINIMUM, self::GM_MIN_ZOOM_MAXIMUM), range(self::GM_MIN_ZOOM_MINIMUM, self::GM_MIN_ZOOM_MAXIMUM)), $this->getPreference('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT), ['id' => 'GM_MIN_ZOOM', 'name' => 'GM_MIN_ZOOM']) ?>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="input-group">
-									<label class="input-group-addon" for="GM_MAX_ZOOM"><?= I18N::translate('maximum') ?></label>
+									<div class="input-group-prepend">
+									<label class="input-group-text" for="GM_MAX_ZOOM">
+									<?= I18N::translate('maximum') ?>
+									</label>
+									</div>
 									<?= Bootstrap4::select(array_combine(range(self::GM_MAX_ZOOM_MINIMUM, self::GM_MAX_ZOOM_MAXIMUM), range(self::GM_MAX_ZOOM_MINIMUM, self::GM_MAX_ZOOM_MAXIMUM)), $this->getPreference('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT), ['id' => 'GM_MAX_ZOOM', 'name' => 'GM_MAX_ZOOM']) ?>
 								</div>
 							</div>
@@ -377,7 +385,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								}
 								?>
 								<div class="input-group">
-									<label class="input-group-addon" for="GM_PREFIX_<?= $level ?>"><?= $label ?></label>
+									<div class="input-group-prepend">
+									<label class="input-group-text" for="GM_PREFIX_<?= $level ?>">
+									<?= $label ?>
+									</label>
+									</div>
 									<input class="form-control" type="text" name="GM_PREFIX_<?= $level ?>" value="<?= $this->getPreference('GM_PREFIX_' . $level) ?>">
 								</div>
 								<?php endfor ?>
@@ -393,7 +405,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								}
 								?>
 								<div class="input-group">
-									<label class="input-group-addon" for="GM_POSTFIX_<?= $level ?>"><?= $label ?></label>
+									<div class="input-group-prepend">
+									<label class="input-group-addon" for="GM_POSTFIX_<?= $level ?>">
+									<?= $label ?>
+									</label>
+									</div>
 									<input class="form-control" type="text" name="GM_POSTFIX_<?= $level ?>" value="<?= $this->getPreference('GM_POSTFIX_' . $level) ?>">
 								</div>
 								<?php endfor ?>
@@ -2169,10 +2185,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?= I18N::translate('A file on the server') ?>
 				</label>
 				<div class="col-sm-8">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<?= WT_MODULES_DIR . 'googlemap/extra/' ?>
-						</span>
+					<div class="input-group" dir="ltr">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<?= WT_MODULES_DIR . 'googlemap/extra/' ?>
+							</span>
+						</div>
 						<?php
 						foreach ($placefiles as $p => $placefile) {
 							unset($placefiles[$p]);
@@ -3068,7 +3086,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</label>
 				<div class="col-sm-10">
 					<div class="input-group" dir="ltr">
-					<span class="input-group-addon"><?= WT_MODULES_DIR ?>googlemap/places/flags/</span>
+						<div class="input-group-prepend">
+						<span class="input-group-text">
+						<?= WT_MODULES_DIR ?>googlemap/places/flags/
+						</span>
+						</div>
 						<?= FunctionsEdit::formControlFlag($record->pl_icon, ['name' => 'icon', 'id' => 'icon', 'class' => 'form-control']) ?>
 					</div>
 				</div>

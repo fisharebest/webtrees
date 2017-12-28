@@ -240,7 +240,11 @@ echo Bootstrap4::breadcrumbs([
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= Html::escape($from) ?>">
-				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<span class="fas fa-calendar-alt"></span>
+					</span>
+				</div>
 			</div>
 		</div>
 
@@ -250,7 +254,11 @@ echo Bootstrap4::breadcrumbs([
 			</label>
 			<div class="input-group date">
 				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= Html::escape($to) ?>">
-				<span class="input-group-addon"><span class="fas fa-calendar-alt"></span></span>
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<span class="fas fa-calendar-alt"></span>
+					</span>
+				</div>
 			</div>
 		</div>
 
