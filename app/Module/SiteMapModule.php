@@ -311,7 +311,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (Tree::getAll() as $tree) {
-			echo '<div class="checkbox"><label><input type="checkbox" name="include', $tree->getTreeId(), '" ';
+			echo '<div class="form-check"><label><input type="checkbox" name="include', $tree->getTreeId(), '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
 				echo 'checked';
 				$include_any = true;

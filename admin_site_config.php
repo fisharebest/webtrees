@@ -259,7 +259,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- ALLOW_USER_THEMES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Allow users to select their own theme') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -271,7 +271,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- ALLOW_CHANGE_GEDCOM -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Show list of family trees') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -357,7 +357,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SMTP_AUTH -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Use password') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -474,7 +474,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- USE_REGISTRATION_MODULE -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -491,7 +491,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_REGISTER_CAUTION -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -626,12 +626,12 @@ echo Bootstrap4::breadcrumbs([
 
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
 				</legend>
 				<div class="col-sm-9" style="columns: 4 150px;">
 					<?php foreach (I18N::installedLocales() as $installed_locale): ?>
-						<div class="checkbox">
+						<div class="form-check">
 							<label title="<?= $installed_locale->languageTag() ?>">
 								<input type="checkbox" name="LANGUAGES[]" value="<?= $installed_locale->languageTag() ?>"<?= in_array($installed_locale->languageTag(), $language_tags) ? ' checked' : '' ?>>
 								<?= $installed_locale->endonym() ?>

@@ -198,7 +198,7 @@ switch (Filter::get('action')) {
 
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<?= /* I18N: A configuration setting */ I18N::translate('Select a GEDCOM file to import') ?>
 				</legend>
 				<div class="col-sm-9">
@@ -262,7 +262,7 @@ switch (Filter::get('action')) {
 
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<?= I18N::translate('Import preferences') ?>
 				</legend>
 				<div class="col-sm-9">

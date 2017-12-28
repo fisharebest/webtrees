@@ -275,15 +275,17 @@ function checkform(frm) {
 		</div>
 	</div>
 
-	<fieldset class="form-group row">
-		<legend  class="col-sm-3 col-form-legend">
-			<?= I18N::translate('Visible online') ?>
-		</legend>
-		<div class="col-sm-9">
-			<?= Bootstrap4::checkbox(I18N::translate('Visible to other users when online'), false, ['name' => 'visible-online', 'checked' => (bool) Auth::user()->getPreference('visibleonline'), 'aria-describedby' => 'visible-online-description']) ?>
-			<p class="small text-muted" id="visible-online-description">
-				<?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
-			</p>
+	<fieldset class="form-group">
+		<div class="row">
+			<legend  class="col-sm-3 col-form-label">
+				<?= I18N::translate('Visible online') ?>
+			</legend>
+			<div class="col-sm-9">
+				<?= Bootstrap4::checkbox(I18N::translate('Visible to other users when online'), false, ['name' => 'visible-online', 'checked' => (bool) Auth::user()->getPreference('visibleonline'), 'aria-describedby' => 'visible-online-description']) ?>
+				<p class="small text-muted" id="visible-online-description">
+					<?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
+				</p>
+			</div>
 		</div>
 	</fieldset>
 

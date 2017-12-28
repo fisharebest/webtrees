@@ -186,7 +186,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 
 				<fieldset class="form-group">
 					<div class="row">
-						<legend class="col-form-legend col-sm-3">
+						<legend class="col-form-label col-sm-3">
 							<?= /* I18N: Configuration option */I18N::translate('How much recursion to use when searching for relationships') ?>
 						</legend>
 						<div class="col-sm-9">

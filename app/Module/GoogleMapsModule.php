@@ -335,7 +335,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_MIN_ZOOM / GM_MAX_ZOOM -->
 			<fieldset class="form-group">
 				<div class="row">
-					<legend class="col-form-legend col-sm-3">
+					<legend class="col-form-label col-sm-3">
 						<?= I18N::translate('Zoom level of map') ?>
 					</legend>
 					<div class="col-sm-9">
@@ -361,7 +361,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_PREFIX / GM_POSTFIX -->
 			<fieldset class="form-group">
 				<div class="row">
-					<legend class="col-form-legend col-sm-3">
+					<legend class="col-form-label col-sm-3">
 						<?= I18N::translate('Optional prefixes and suffixes') ?>
 					</legend>
 					<div class="col-sm-9">
@@ -409,7 +409,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_PLACE_HIERARCHY -->
 			<fieldset class="form-group">
 				<div class="row">
-					<legend class="col-form-legend col-sm-3">
+					<legend class="col-form-label col-sm-3">
 						<?= I18N::translate('Use Google Maps™ for the place hierarchy') ?>
 					</legend>
 					<div class="col-sm-9">
@@ -2192,7 +2192,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- CLEAR DATABASE -->
 			<fieldset class="form-group">
 				<div class="row">
-					<legend class="col-form-legend col-sm-4">
+					<legend class="col-form-label col-sm-4">
 						<?= I18N::translate('Delete all existing geographic data before importing the file.') ?>
 					</legend>
 					<div class="col-sm-8">
@@ -2205,7 +2205,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<fieldset class="form-group">
 
 				<div class="row">
-					<legend class="col-form-legend col-sm-4">
+					<legend class="col-form-label col-sm-4">
 						<?= I18N::translate('Do not create new locations, just import coordinates for existing locations.') ?>
 					</legend>
 					<div class="col-sm-8">
@@ -2217,7 +2217,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- OVERWRITE DATA -->
 			<fieldset class="form-group">
 				<div class="row">
-					<legend class="col-form-legend col-sm-4">
+					<legend class="col-form-label col-sm-4">
 						<?= I18N::translate('Overwrite existing coordinates.') ?>
 					</legend>
 					<div class="col-sm-8">

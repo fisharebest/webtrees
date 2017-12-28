@@ -76,7 +76,7 @@ if ($person1 && $person2) {
 
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+			<legend class="col-form-label col-sm-3 wt-page-options-label">
 			</legend>
 			<div class="col-sm-9 wt-page-options-value">
 				<?php if ($ancestors_only === '1'): ?>
@@ -91,7 +91,7 @@ if ($person1 && $person2) {
 
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+			<legend class="col-form-label col-sm-3 wt-page-options-label">
 			</legend>
 			<div class="col-sm-9 wt-page-options-value">
 				<?php if ($max_recursion === 0): ?>

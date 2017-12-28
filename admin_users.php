@@ -379,7 +379,7 @@ case 'edit':
 				<?= I18N::translate('Account approval and email verification') ?>
 			</label>
 			<div class="col-sm-9">
-				<div class="checkbox">
+				<div class="form-check">
 					<label>
 						<input type="checkbox" name="verified" value="1" <?= $user->getPreference('verified') ? 'checked' : '' ?>>
 						<?= I18N::translate('Email verified') ?>
@@ -439,7 +439,7 @@ case 'edit':
 				<?= I18N::translate('Changes') ?>
 			</label>
 			<div class="col-sm-9">
-				<div class="checkbox">
+				<div class="form-check">
 					<label>
 						<input type="checkbox" name="auto_accept" value="1" <?= $user->getPreference('auto_accept') ? 'checked' : '' ?>>
 						<?= I18N::translate('Automatically accept changes made by this user') ?>
@@ -457,7 +457,7 @@ case 'edit':
 				<?= /* I18N: A configuration setting */ I18N::translate('Visible online') ?>
 			</label>
 			<div class="col-sm-9">
-				<div class="checkbox">
+				<div class="form-check">
 					<label>
 						<input type="checkbox" id="visible_online" name="visible_online" value="1" <?= $user->getPreference('visibleonline') ? 'checked' : '' ?>>
 						<?= /* I18N: A configuration setting */ I18N::translate('Visible to other users when online') ?>
@@ -508,7 +508,7 @@ case 'edit':
 			<label class="col-sm-3 col-form-label" for="admin">
 			</label>
 			<div class="col-sm-9">
-				<div class="checkbox">
+				<div class="form-check">
 					<label>
 						<input
 							type="checkbox" id="admin" name="canadmin" value="1"
