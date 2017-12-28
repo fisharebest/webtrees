@@ -192,7 +192,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails') ?>
 			</legend>
 			<div class="col-sm-9">

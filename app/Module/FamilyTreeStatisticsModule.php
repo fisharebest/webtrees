@@ -209,7 +209,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		?>
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<?= I18N::translate('Last change') ?>
 				</legend>
 				<div class="col-sm-9">
@@ -221,7 +221,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<?= I18N::translate('Statistics') ?>
 				</legend>
 				<div class="col-sm-9">
@@ -247,7 +247,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
 		<fieldset class="form-group">
 			<div class="row">
-				<legend class="col-form-legend col-sm-3">
+				<legend class="col-form-label col-sm-3">
 					<label for="show_common_surnames">
 						<?= I18N::translate('Surnames') ?>
 					</label>

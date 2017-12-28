@@ -81,7 +81,7 @@
 	<fieldset class="form-group">
 		<div class="row">
 			<div class="col-sm-4">
-				<legend class="col-form-legend">
+				<legend class="col-form-label">
 					<?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
 					<div class="hidden-xs">
 						<span class="badge visitors"><?= I18N::translate('visitors') ?></span>
@@ -101,7 +101,7 @@
 	<!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-4">
+			<legend class="col-form-label col-sm-4">
 				<?= /* I18N: A configuration setting. …who were born in the last XX years or died in the 	last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
 			</legend>
 			<div class="col-sm-8">
@@ -277,7 +277,7 @@
 				<?= I18N::translate('cancel') ?>
 			</a>
 			<!-- Coming soon
-			<div class="checkbox">
+			<div class="form-check">
 				<?php if ($count_trees > 1): ?>
 				<label>
 					<input type="checkbox" name="all_trees">
@@ -285,7 +285,7 @@
 				</label>
 				<?php endif ?>
 			</div>
-			<div class="checkbox">
+			<div class="form-check">
 				<label>
 					<input type="checkbox" name="new_trees">
 					<?= /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to new family trees') ?>

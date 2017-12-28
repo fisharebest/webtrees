@@ -569,8 +569,7 @@ fieldset.row > legend, fieldset.row > div {
 }
 
 /* Forms */
-.col-form-label,
-.col-form-legend {
+.col-form-label {
 	font-weight: bold;
 }
 
@@ -630,8 +629,7 @@ fieldset.row > legend, fieldset.row > div {
 		padding: .5em;
 	}
 
-.col-form-label,
-.col-form-legend {
+.col-form-label {
 	text-align: center;
 	}
 }

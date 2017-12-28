@@ -154,7 +154,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('Export preferences') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -201,7 +201,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- PRIVACY OPTIONS -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('Apply privacy settings') ?>
 			</legend>
 			<div class="col-sm-9">

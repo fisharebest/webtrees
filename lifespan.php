@@ -75,7 +75,7 @@ $controller->pageHeader();
 
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3 wt-page-options-label">
+			<legend class="col-form-label col-sm-3 wt-page-options-label">
 				<?= I18N::translate('Select individuals by place or date') ?>
 			</legend>
 			<div class="col-sm-9 wt-page-options-value">

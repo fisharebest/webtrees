@@ -333,7 +333,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- CALENDAR_FORMAT -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
 				<label class="sr-only" for="CALENDAR_FORMAT0">
 					<?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?> 1
@@ -367,7 +367,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- GENERATE_UIDS -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Add unique identifiers') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -492,7 +492,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- ALLOW_THEME_DROPDOWN -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Theme menu') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -565,7 +565,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_MEDIA_DOWNLOAD -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -582,7 +582,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_HIGHLIGHT_IMAGES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('Thumbnail images') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -597,7 +597,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- USE_SILHOUETTE -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Use silhouettes') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -662,7 +662,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_EST_LIST_DATES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Estimated dates for birth and death') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -677,7 +677,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_LAST_CHANGE -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('The date and time of the last update') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -693,7 +693,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- PEDIGREE_LAYOUT -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Default pedigree chart layout') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -769,7 +769,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- PEDIGREE_SHOW_GENDER -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Gender icon on charts') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -784,7 +784,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_PARENTS_AGE -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -799,7 +799,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_LDS_AT_GLANCE -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('LDS ordinance codes in chart boxes') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -845,23 +845,23 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('Show the events of close relatives on the individual page') ?>
 			</legend>
 			<div class="col-sm-3">
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_BIRT_GCHI">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?= in_array('_BIRT_GCHI', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_BIRT_GCHI') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_BIRT_CHIL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?= in_array('_BIRT_CHIL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_BIRT_CHIL') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_BIRT_SIBL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?= in_array('_BIRT_SIBL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_BIRT_SIBL') ?>
@@ -869,25 +869,25 @@ echo Bootstrap4::breadcrumbs([
 				</div>
 			</div>
 			<div class="col-sm-3">
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_MARR_GCHI">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?= in_array('_MARR_GCHI', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_MARR_GCHI') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_MARR_CHIL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?= in_array('_MARR_CHIL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_MARR_CHIL') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_MARR_SIBL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?= in_array('_MARR_SIBL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_MARR_SIBL') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_MARR_PARE">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?= in_array('_MARR_PARE', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_MARR_PARE') ?>
@@ -895,37 +895,37 @@ echo Bootstrap4::breadcrumbs([
 				</div>
 			</div>
 			<div class="col-sm-3">
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_GCHI">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?= in_array('_DEAT_GCHI', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_GCHI') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_CHIL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?= in_array('_DEAT_CHIL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_CHIL') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_SIBL">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?= in_array('_DEAT_SIBL', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_SIBL') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_PARE">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?= in_array('_DEAT_PARE', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_PARE') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_SPOU">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?= in_array('_DEAT_SPOU', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_SPOU') ?>
 					</label>
 				</div>
-				<div class="checkbox">
+				<div class="form-check">
 					<label for="_DEAT_GPAR">
 						<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?= in_array('_DEAT_GPAR', $relatives_events) ? 'checked' : '' ?>>
 						<?= GedcomTag::getLabel('_DEAT_GPAR') ?>
@@ -937,8 +937,8 @@ echo Bootstrap4::breadcrumbs([
 
 	<!-- SHOW_FACT_ICONS -->
 	<fieldset class="form-group">
-			<div class="row">
-			<legend class="col-form-legend col-sm-3">
+		<div class="row">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Fact icons') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -953,7 +953,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- EXPAND_NOTES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Automatically expand notes') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -969,7 +969,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- EXPAND_SOURCES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Automatically expand sources') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -987,7 +987,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_PEDIGREE_PLACES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
 				<label class="sr-only" for="SHOW_PEDIGREE_PLACES_SUFFIX">
 					<?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
@@ -1039,7 +1039,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- FORMAT_TEXT -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Format text and notes') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1059,7 +1059,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_GEDCOM_RECORD -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Allow users to see raw GEDCOM records') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1074,7 +1074,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- HIDE_GEDCOM_ERRORS -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('GEDCOM errors') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1089,7 +1089,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SHOW_COUNTER -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Hit counters') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1326,7 +1326,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- SURNAME_TRADITION -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= I18N::translate('Surname tradition') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1341,7 +1341,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- FULL_SOURCES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Use full source citations') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1356,7 +1356,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- PREFER_LEVEL2_SOURCES -->
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Source type') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1371,7 +1371,7 @@ echo Bootstrap4::breadcrumbs([
 	<!-- NO_UPDATE_CHAN -->
 	<fieldset class="form-group">
 			<div class="row">
-			<legend class="col-form-legend col-sm-3">
+			<legend class="col-form-label col-sm-3">
 				<?= /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information') ?>
 			</legend>
 			<div class="col-sm-9">
@@ -1396,7 +1396,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= I18N::translate('cancel') ?>
 			</a>
 			<!-- Coming soon
-			<div class="checkbox">
+			<div class="form-check">
 				<?php if (count(Tree::getAll()) > 1): ?>
 				<label>
 					<input type="checkbox" name="all_trees">
@@ -1404,7 +1404,7 @@ echo Bootstrap4::breadcrumbs([
 				</label>
 				<?php endif ?>
 			</div>
-			<div class="checkbox">
+			<div class="form-check">
 				<label>
 					<input type="checkbox" name="new_trees">
 					<?= /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to new family trees') ?>

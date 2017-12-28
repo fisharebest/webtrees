@@ -70,7 +70,7 @@ class FunctionsEdit {
 	public static function editLanguageCheckboxes($parameter_name, $accepted_languages) {
 		$html = '';
 		foreach (I18N::activeLocales() as $locale) {
-			$html .= '<div class="checkbox">';
+			$html .= '<div class="form-check">';
 			$html .= '<label title="' . $locale->languageTag() . '">';
 			$html .= '<input type="checkbox" name="' . $parameter_name . '[]" value="' . $locale->languageTag() . '"';
 			$html .= in_array($locale->languageTag(), $accepted_languages) ? ' checked>' : '>';
