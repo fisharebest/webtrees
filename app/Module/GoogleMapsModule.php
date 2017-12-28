@@ -1766,7 +1766,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</a>';
 			$parent[$level] = $place2->pl_place;
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '</div>", icon_url, "', Html::escape($place2->pl_place), '");';
+			echo '</div>", icon_url, ', json_encode($place2->pl_place), ');';
 		}
 	}
 
