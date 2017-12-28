@@ -1216,9 +1216,6 @@ class FunctionsPrintLists {
 				// Media object name(s)
 				$html .= '<td data-sort="' . Html::escape($media_object->getSortName()) . '">';
 				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';
-				if (Auth::isEditor($media_object->getTree())) {
-					$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
-				}
 				$html .= '</td>';
 
 				// Count of linked individuals
