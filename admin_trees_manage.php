@@ -220,9 +220,9 @@ switch (Filter::get('action')) {
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group">
-								<span class="input-group-addon">
+								<span class="input-group-prepend">
 									<?= WT_DATA_DIR ?>
-									</span>
+								</span>
 								<?php
 									$d     = opendir(WT_DATA_DIR);
 									$files = [];
@@ -663,13 +663,14 @@ echo Bootstrap4::breadcrumbs([
 						</label>
 						<div class="col-sm-10">
 							<div class="input-group" dir="ltr">
-								<span class="input-group-addon" dir="ltr">
-									<?= WT_BASE_URL ?>?ged=
-								</span>
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<?= WT_BASE_URL ?>?ged=
+									</span>
+								</div>
 								<input
 									class="form-control"
 									id="tree_name"
-									dir="ltr"
 									maxlength="31"
 									name="tree_name"
 									pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"

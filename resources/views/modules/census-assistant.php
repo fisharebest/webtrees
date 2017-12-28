@@ -12,9 +12,11 @@
 	<input type="hidden" name="ca_census" id="census-assistant-class">
 	<div class="form-group">
 		<div class="input-group">
-			<label for="census-assistant-title" class="input-group-addon">
-				<?= I18N::translate('Title') ?>
-			</label>
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="census-assistant-title">
+					<?= I18N::translate('Title') ?>
+				</label>
+			</div>
 			<input class="form-control" id="census-assistant-title" name="ca_title" value="">
 		</div>
 	</div>
@@ -22,18 +24,22 @@
 	<div class="row">
 		<div class="form-group col-sm-6">
 			<div class="input-group">
-				<label for="census-assistant-citation" class="input-group-addon">
-					<?= I18N::translate('Citation') ?>
-				</label>
+				<div class="input-group-prepend">
+					<label class="input-group-addon" for="census-assistant-citation">
+						<?= I18N::translate('Citation') ?>
+					</label>
+				</div>
 				<input class="form-control" id="census-assistant-citation" name="ca_citation">
 			</div>
 		</div>
 
 		<div class="form-group col-sm-6">
 			<div class="input-group">
-				<label for="census-assistant-place" class="input-group-addon">
-					<?= I18N::translate('Place') ?>
-				</label>
+				<div class="input-group-prepend">
+					<label class="input-group-text" for="census-assistant-place">
+						<?= I18N::translate('Place') ?>
+					</label>
+				</div>
 				<input class="form-control" id="census-assistant-place" name="ca_place">
 			</div>
 		</div>
@@ -41,7 +47,11 @@
 
 	<div class="form-group">
 		<div class="input-group">
-			<span class="input-group-addon"><?= I18N::translate('Individuals') ?></span>
+			<div class="input-group-prepend">
+				<span class="input-group-text">
+					<?= I18N::translate('Individuals') ?>
+				</span>
+			</div>
 			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
 			<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" id="census-assistant-add">
@@ -65,9 +75,11 @@
 
 	<div class="form-group">
 		<div class="input-group">
-			<label for="census-assistant-notes" class="input-group-addon">
-				<?= I18N::translate('Notes') ?>
-			</label>
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="census-assistant-notes">
+					<?= I18N::translate('Notes') ?>
+				</label>
+			</div>
 			<input class="form-control" id="census-assistant-notes" name="ca_notes">
 		</div>
 	</div>
