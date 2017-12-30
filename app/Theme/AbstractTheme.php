@@ -2140,6 +2140,7 @@ abstract class AbstractTheme {
 	protected function stylesheets() {
 		$stylesheets = [
 			WT_BOOTSTRAP_CSS_URL,
+			WT_TYPEAHEAD_CSS_URL,
 			WT_FONT_AWESOME_CSS_URL,
 			WT_FONT_AWESOME_RTL_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,

@@ -753,8 +753,20 @@ class FunctionsEdit {
 		} elseif ($fact === 'PEDI') {
 			$html .= Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
+			$html .= '<input ' . Html::attributes([
+					'autocomplete'          => 'off',
+					'class'                 => 'form-control',
+					'id'                    => $id,
+					'name'                  => $name,
+					'type'                  => 'text',
+					'data-autocomplete-url' => route('autocomplete-place', [
+						'ged'   => $WT_TREE->getName(),
+						'query' => 'QUERY',
+					]),
+			]) . '>';
+
+			/** @TODO - typeaheadjs.css doesn't work in an input-group */
 			$html .= '<div class="input-group">';
-			$html .= self::formControlPlace($value, ['id' => $id, 'name' => $name]);
 			$html .= '<div class="input-group-append"><span class="input-group-text">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span></div>';
 			$html .= self::inputAddonHelp('PLAC');
 			$html .= '</div>';

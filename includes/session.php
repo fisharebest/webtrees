@@ -54,6 +54,8 @@ define('WT_POPPER_JS_URL', 'packages/popper-1.11.0/popper.min.js');
 define('WT_SELECT2_JS_URL', 'packages/select2-4.0.3/js/select2.min.js');
 define('WT_SELECT2_CSS_URL', 'packages/select2-4.0.3/css/select2.min.css');
 define('WT_SORTABLE_JS_URL', 'packages/rubaxa-sortable-1.4.0/Sortable.min.js');
+define('WT_TYPEAHEAD_CSS_URL', 'packages/typeahead-1.2.1/typeaheadjs.css');
+define('WT_TYPEAHEAD_JS_URL', 'packages/typeahead-1.2.1/typeahead.bundle.min.js');
 // Note: these have been patched.
 define('WT_JQUERY_COLORBOX_URL', 'assets/js-2.0.0/jquery.colorbox-1.6.4.js');
 define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-3.1.2.js');
