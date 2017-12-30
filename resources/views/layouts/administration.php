@@ -78,7 +78,6 @@
 		<script src="<?= e(WT_MOMENT_JS_URL) ?>"></script>
 		<script src="<?= e(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL) ?>"></script>
 		<script src="<?= e(WT_WEBTREES_JS_URL) ?>"></script>
-		<script src="<?= e(WT_ADMIN_JS_URL) ?>"></script>
 
 		<?= DebugBar::render() ?>
 	</body>

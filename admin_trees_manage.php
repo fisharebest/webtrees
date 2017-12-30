@@ -25,7 +25,6 @@ require 'includes/session.php';
 
 $controller = new PageController;
 $controller
-	->addExternalJavascript(WT_ADMIN_JS_URL)
 	->restrictAccess(Auth::isAdmin() || Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Manage family trees'));
 
@@ -308,7 +307,31 @@ switch (Filter::get('action')) {
 			</div>
 		</div>
 	</form>
-	<?php
+
+	<script>
+    function checkGedcomImportForm (message) {
+      var oldFile = $('#gedcom_filename').val();
+      var method = $('input[name=action]:checked').val();
+      var newFile = method === 'replace_import' ? $('#import-server-file').val() : $('#import-computer-file').val();
+
+      // Some browsers include c:\fakepath\ in the filename.
+      newFile = newFile.replace(/.*[/\\]/, '');
+      if (newFile !== oldFile && oldFile !== '') {
+        return window.confirm(message);
+      } else {
+        return true;
+      }
+    }
+
+    document.getElementById("import-computer-file").addEventListener("click", function () {
+      document.getElementById("import-computer").checked = true;
+    });
+    document.getElementById("import-server-file").addEventListener("focus", function () {
+      document.getElementById("import-server").checked = true;
+    });
+	</script>
+
+		<?php
 
 		return;
 }

@@ -231,9 +231,7 @@ default:
 	return;
 }
 
-$controller
-	->pageHeader()
-	->addExternalJavascript(WT_ADMIN_JS_URL);
+$controller->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
 	route('admin-control-panel')              => I18N::translate('Control panel'),

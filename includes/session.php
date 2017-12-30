@@ -60,7 +60,6 @@ define('WT_JQUERY_WHEELZOOM_URL', 'assets/js-2.0.0/jquery.wheelzoom-3.1.2.js');
 define('WT_CKEDITOR_BASE_URL', 'packages/ckeditor-4.5.2-custom/');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', 'assets/js-2.0.0/admin.js');
 define('WT_WEBTREES_JS_URL', 'assets/js-2.0.0/webtrees.js');
 define('WT_FONT_AWESOME_RTL_CSS_URL', 'assets/js-2.0.0/font-awesome-rtl.css');
 
