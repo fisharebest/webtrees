@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "laravel-mix": "^1.7.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.3",
+    "corejs-typeahead": "^1.2.1",
+    "datatables.net-bs4": "^1.10.16",
+    "dejavu-fonts-ttf": "^2.37.3",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "@fortawesome/fontawesome": "^1.1.0",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.0",
+    "font-awesome-rtl": "^1.1.0",
+    "jquery": "^3.2.1",
+    "jquery-colorbox": "^1.6.4",
+    "moment": "^2.20.1",
+    "popper.js": "^1.13.0",
+    "select2": "^4.0.6-rc.1",
+    "sortablejs": "^1.7.0",
+    "typeahead.js-bootstrap4-css": "^1.0.0",
+    "wheelzoom": "^3.1.2"
+  }
+}

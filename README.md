@@ -174,6 +174,24 @@ new version is available.
 4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
 5. Delete the file **data/offline.txt**
 
+### Building and developing
+
+If you want to build webtrees from source, or modify the code, you'll need to install
+a couple of tools first.
+
+You will need [composer](https://getcomposer.org/) to install the PHP dependencies.
+Then run this command::
+
+* php composer.phar install
+
+You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
+Then run the commands:
+
+* npm install
+* npm run prod
+
+You will need to re-run the second of these any time you modify the file `webtrees.js`.
+
 
 #### Note for Macintosh users
 

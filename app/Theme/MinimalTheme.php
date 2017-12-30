@@ -35,8 +35,6 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	public function hookFooterExtraJavascript() {
 		return
-			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
-			'<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
 			'<script>' .
 			'activate_colorbox();' .
 			'jQuery.extend(jQuery.colorbox.settings, {' .

@@ -100,14 +100,8 @@ class PageController extends BaseController {
 	public function pageFooter() {
 		echo
 			Theme::theme()->footerContainer() .
-			'<script src="' . WT_JQUERY_JS_URL . '"></script>' .
-			'<script src="' . WT_POPPER_JS_URL . '"></script>' .
-			'<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>' .
-			'<script src="' . WT_DATATABLES_JS_URL . '"></script>' .
-			'<script src="' . WT_DATATABLES_BOOTSTRAP_JS_URL . '"></script>' .
-			'<script src="' . WT_SELECT2_JS_URL . '"></script>' .
-			'<script src="' . WT_TYPEAHEAD_JS_URL . '"></script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
+			'<script src="' . e(WT_ASSETS_URL . 'js/vendor.js') . '"></script>' .
+			'<script src="' . e(WT_ASSETS_URL . 'js/webtrees.js') . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
 			//DebugBar::renderHead() .

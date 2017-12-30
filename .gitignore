@@ -1,5 +1,7 @@
-.php_cs.cache
+/.php_cs.cache
 /apidocs/
-robots.txt
-phpunit.xml
-/themes/_common/css-2.0.0/favicon.png
+/mix-manifest.json
+/public/js/*.map
+/node_modules/
+/robots.txt
+/phpunit.xml.dist

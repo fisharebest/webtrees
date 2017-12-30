@@ -39,8 +39,6 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 */
 	protected function stylesheets() {
 		return array_merge(parent::stylesheets(), [
-			WT_DATATABLES_BOOTSTRAP_CSS_URL,
-			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
 			self::STYLESHEET,
 		]);
 	}
