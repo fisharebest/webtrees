@@ -889,6 +889,23 @@ $(function () {
     $(this.getAttribute('href') + ':empty').load($(this).data('href'));
   });
 
+
+  // Use typeahead/bloodhound for autocomplete
+  $('input[data-autocomplete-url]').each(function() {
+    $(this).typeahead(null, {
+      display: 'value',
+      source: new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: this.dataset.autocompleteUrl,
+          wildcard: 'QUERY'
+        }
+      })
+    });
+  });
+
+
   // Select2 - format entries in the select list
   function templateOptionForSelect2(data) {
     if (data.loading) {

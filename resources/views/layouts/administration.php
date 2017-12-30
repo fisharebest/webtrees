@@ -13,6 +13,7 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
 		<link rel="stylesheet" type="text/css" href="<?= e(WT_BOOTSTRAP_CSS_URL) ?>">
+		<link rel="stylesheet" type="text/css" href="<?= e(WT_TYPEAHEAD_CSS_URL) ?>">
 		<link rel="stylesheet" type="text/css" href="<?= e(WT_FONT_AWESOME_CSS_URL) ?>">
 		<link rel="stylesheet" type="text/css" href="<?= e(WT_FONT_AWESOME_RTL_CSS_URL) ?>">
 		<link rel="stylesheet" type="text/css" href="<?= e(WT_DATATABLES_BOOTSTRAP_CSS_URL) ?>">
@@ -75,6 +76,7 @@
 		<script src="<?= e(WT_DATATABLES_JS_URL) ?>"></script>
 		<script src="<?= e(WT_DATATABLES_BOOTSTRAP_JS_URL) ?>"></script>
 		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
+		<script src="<?= e(WT_TYPEAHEAD_JS_URL) ?>"></script>
 		<script src="<?= e(WT_MOMENT_JS_URL) ?>"></script>
 		<script src="<?= e(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL) ?>"></script>
 		<script src="<?= e(WT_WEBTREES_JS_URL) ?>"></script>

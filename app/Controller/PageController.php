@@ -106,6 +106,7 @@ class PageController extends BaseController {
 			'<script src="' . WT_DATATABLES_JS_URL . '"></script>' .
 			'<script src="' . WT_DATATABLES_BOOTSTRAP_JS_URL . '"></script>' .
 			'<script src="' . WT_SELECT2_JS_URL . '"></script>' .
+			'<script src="' . WT_TYPEAHEAD_JS_URL . '"></script>' .
 			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .

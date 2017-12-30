@@ -24,7 +24,8 @@
 		<script src="<?= e(WT_DATATABLES_JS_URL) ?>"></script>
 		<script src="<?= e(WT_DATATABLES_BOOTSTRAP_JS_URL) ?>"></script>
 		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
-		<script src="<?= e(WT_WEBTREES_JS_URL) ?>"></script>
+		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
+		<script src="<?= e(WT_TYPEAHEAD_JS_URL) ?>"></script>
 		<?= $theme_footer_javascript ?>
 
 		<?= DebugBar::renderHead() ?>
