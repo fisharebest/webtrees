@@ -18,14 +18,9 @@
 			var WT_LOCALE      = <?= json_encode(WT_LOCALE) ?>;
 		</script>
 
-		<script src="<?= e(WT_JQUERY_JS_URL) ?>"></script>
-		<script src="<?= e(WT_POPPER_JS_URL) ?>"></script>
-		<script src="<?= e(WT_BOOTSTRAP_JS_URL) ?>"></script>
-		<script src="<?= e(WT_DATATABLES_JS_URL) ?>"></script>
-		<script src="<?= e(WT_DATATABLES_BOOTSTRAP_JS_URL) ?>"></script>
-		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
-		<script src="<?= e(WT_SELECT2_JS_URL) ?>"></script>
-		<script src="<?= e(WT_TYPEAHEAD_JS_URL) ?>"></script>
+		<script src="<?= e(WT_ASSETS_URL . 'js/vendor.js') ?>"></script>
+		<script src="<?= e(WT_ASSETS_URL . 'js/webtrees.js') ?>"></script>
+
 		<?= $theme_footer_javascript ?>
 
 		<?= DebugBar::renderHead() ?>

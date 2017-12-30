@@ -7,7 +7,9 @@
 .travis.yml       export-ignore
 Makefile          export-ignore
 build/            export-ignore
-packages/**/*.map export-ignore
+package.josn      export-ignore
+package-lock.json export-ignore
 phpdoc.xml        export-ignore
 phpunit.xml.dist  export-ignore
 tests/            export-ignore
+webpack.mix.js    export-ignore

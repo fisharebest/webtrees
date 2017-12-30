@@ -180,8 +180,6 @@ case 'load_json':
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_MOMENT_JS_URL)
-	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
 	->addInlineJavascript('
 		$(".table-site-logs").dataTable( {
 			processing: true,

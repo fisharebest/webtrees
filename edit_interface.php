@@ -1730,7 +1730,6 @@ case 'reorder-media':
 	check_record_access($individual);
 
 	$controller
-		->addExternalJavascript(WT_SORTABLE_JS_URL)
 		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
 		->setPageTitle($individual->getFullName() . ' — ' . I18N::translate('Re-order media'))
 		->pageHeader();
@@ -1825,7 +1824,6 @@ case 'reorder-names':
 	check_record_access($individual);
 
 	$controller
-		->addExternalJavascript(WT_SORTABLE_JS_URL)
 		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
 		->setPageTitle($individual->getFullName() . ' — ' . I18N::translate('Re-order names'))
 		->pageHeader();
@@ -1920,7 +1918,6 @@ case 'reorder-children':
 	check_record_access($family);
 
 	$controller
-		->addExternalJavascript(WT_SORTABLE_JS_URL)
 		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
 		->addInlineJavascript('$("#btn-default-order").on("click", function() { $(".wt-sortable-list li").sort(function(x, y) { return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate); }).appendTo(".wt-sortable-list"); });')
 		->setPageTitle($family->getFullName() . ' — ' . I18N::translate('Re-order children'))
@@ -2021,7 +2018,6 @@ case 'reorder-spouses':
 	check_record_access($person);
 
 	$controller
-		->addExternalJavascript(WT_SORTABLE_JS_URL)
 		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
 		->addInlineJavascript('$("#btn-default-order").on("click", function() { $(".wt-sortable-list li").sort(function(x, y) { return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate); }).appendTo(".wt-sortable-list"); });')
 		->setPageTitle($person->getFullName() . ' — ' . I18N::translate('Re-order families'))
