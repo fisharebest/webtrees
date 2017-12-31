@@ -41,19 +41,23 @@
 		<?= I18N::translate('Filename on server') ?>
 	</label>
 	<div class="col-sm-10">
-		<div class="form-check">
-			<label class="form-check-label">
-				<input class="form-check-input" type="radio" name="auto" value="0" checked>
-				<div class="input-group" dir="ltr">
-					<span class="input-group-prepend">
-						<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text" value="<?= e($media_file ? $media_file->dirname() : '') ?>">
-					</span>
-					<span class="input-group-text">/</span>
-					<span class="input-group-append">
-						<input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e($media_file ? $media_file->basename() : '') ?>">
-					</span>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="auto" value="0" checked>
+						<span class="input-group">
+							<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text" value="<?= e($media_file ? $media_file->dirname() : '') ?>" data-autocomplete-url="<?= e(route('autocomplete-folder', [])) ?>">
+							<div class="input-group-append">
+								<span class="input-group-text">/</span>
+							</div>
+						</span>
+					</label>
 				</div>
-			</label>
+			</div>
+			<div class="col-sm-6">
+				<input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e($media_file ? $media_file->basename() : '') ?>">
+			</div>
 		</div>
 		<p class="small text-muted">
 			<?= I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') ?>
