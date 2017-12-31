@@ -3241,7 +3241,7 @@ msgstr "כברירת מחדל, השרת מאפשר לסקריפטים להשתמ
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr "<span dir=\"ltr\">CKEditor™</span>"
+msgstr "CKEditor™"
 
 #: admin_trees_manage.php:362 app/Datatables.php:60
 msgid "Calculating…"
