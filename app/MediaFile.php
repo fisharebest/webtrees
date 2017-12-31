@@ -284,11 +284,9 @@ class MediaFile {
 		return /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
 	}
 
-	///////////////////////////////////////////////////////////////////////////
-
 	/**
 	 * Get the filename on the server - for those (very few!) functions which actually
-	 * need the filename, such as mediafirewall.php and the PDF reports.
+	 * need the filename, such as the PDF reports.
 	 *
 	 * @return string
 	 */
