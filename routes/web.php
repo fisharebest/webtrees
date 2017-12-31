@@ -103,11 +103,12 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 // Public routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	$routes += [
-		'GET:autocomplete-place' => 'AutocompleteController@place',
-		'GET:help-text'          => 'HelpTextController@helpText',
-		'GET:tree-page'          => 'HomePageController@treePage',
-		'GET:tree-page-block'    => 'HomePageController@treePageBlock',
-		'GET:media-thumbnail'    => 'MediaController@mediaThumbnail',
+		'GET:autocomplete-folder' => 'AutocompleteController@folder',
+		'GET:autocomplete-place'  => 'AutocompleteController@place',
+		'GET:help-text'           => 'HelpTextController@helpText',
+		'GET:tree-page'           => 'HomePageController@treePage',
+		'GET:tree-page-block'     => 'HomePageController@treePageBlock',
+		'GET:media-thumbnail'     => 'MediaController@mediaThumbnail',
 	];
 }
 
