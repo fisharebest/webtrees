@@ -46,12 +46,12 @@
 				<div class="form-check">
 					<label class="form-check-label">
 						<input class="form-check-input" type="radio" name="auto" value="0" checked>
-						<span class="input-group">
+						<div class="input-group">
 							<input class="form-control" name="folder" placeholder="<?= I18N::translate('Folder') ?>" data-autocomplete-type="folder" type="text" value="<?= e($media_file ? $media_file->dirname() : '') ?>" data-autocomplete-url="<?= e(route('autocomplete-folder', [])) ?>">
 							<div class="input-group-append">
 								<span class="input-group-text">/</span>
 							</div>
-						</span>
+						</div>
 					</label>
 				</div>
 			</div>
