@@ -68,7 +68,7 @@ try {
 	// Caution - $media_dir may contain relative paths: ../../
 	$source_dir = new Filesystem(new Local(WT_DATA_DIR . $media_dir));
 	$cache_dir  = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_dir)));
-	$assets_dir = new Filesystem(new Local( 'assets'));
+	$assets_dir = new Filesystem(new Local( 'resources/assets/img'));
 
 	$server = ServerFactory::create([
 		'driver'     => $driver,
