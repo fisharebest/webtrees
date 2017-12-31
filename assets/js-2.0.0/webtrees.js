@@ -762,40 +762,18 @@ function activate_colorbox (config) {
 
 // Initialize autocomplete elements.
 function autocomplete (selector) {
-  if (typeof (selector) === 'undefined') {
-    selector = 'input[data-autocomplete-type]';
-  }
-
-  $(selector).each(function () {
-    var type = $(this).data('autocomplete-type'); // What type of field
-    var ged = $(this).data('autocomplete-ged'); // Which family tree
-    if (typeof (type) === 'undefined') {
-      alert('Missing data-autocomplete-type attribute');
-    }
-
-    // Default to the current tree
-    if (typeof (ged) === 'undefined') {
-      $(this).data('autocomplete-ged', WT_GEDCOM);
-    }
-
-    var self = $(this);
-    self.autocomplete({
-      // Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
-      source: function (request, response) {
-        // Some autocomplete fields require the current value of an earlier field
-        var extra = null;
-        if (self.data('autocomplete-extra')) {
-          extra = $(self.data('autocomplete-extra')).val();
+  // Use typeahead/bloodhound for autocomplete
+  $(selector).each(function() {
+    $(this).typeahead(null, {
+      display: 'value',
+      source: new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: this.dataset.autocompleteUrl,
+          wildcard: 'QUERY'
         }
-
-        $.getJSON('autocomplete.php', {
-          field: self.data('autocomplete-type'),
-          ged: self.data('autocomplete-ged'),
-          extra: extra,
-          term: request.term
-        }, response);
-      },
-      html: true
+      })
     });
   });
 }
@@ -889,23 +867,6 @@ $(function () {
     $(this.getAttribute('href') + ':empty').load($(this).data('href'));
   });
 
-
-  // Use typeahead/bloodhound for autocomplete
-  $('input[data-autocomplete-url]').each(function() {
-    $(this).typeahead(null, {
-      display: 'value',
-      source: new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-          url: this.dataset.autocompleteUrl,
-          wildcard: 'QUERY'
-        }
-      })
-    });
-  });
-
-
   // Select2 - format entries in the select list
   function templateOptionForSelect2(data) {
     if (data.loading) {
@@ -916,6 +877,9 @@ $(function () {
       return data.text;
     }
   }
+
+  // Autocomplete
+  autocomplete('input[data-autocomplete-url]');
 
   // Select2 - activate autocomplete fields
   $('select.select2').select2({

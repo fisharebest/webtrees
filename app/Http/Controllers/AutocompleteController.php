@@ -17,7 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use FilesystemIterator;
 use Fisharebest\Webtrees\Place;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,6 +28,38 @@ use Symfony\Component\HttpFoundation\Request;
  * Controller for the autocomplete callbacks
  */
 class AutocompleteController extends BaseController {
+	/**
+
+	/**
+	 * Autocomplete for media folders.
+	 *
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function folder(Request $request): JsonResponse {
+		$tree     = $request->attributes->get('tree');
+		$query    = $request->get('query', '');
+		$folder   = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', '');
+		$flags    = FilesystemIterator::FOLLOW_SYMLINKS;
+		$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder, $flags));
+		$folders  = [];
+
+		// Iterator finds media/foo/. but not media/foo ??
+		foreach ($iterator as $iteration) {
+			if ($iteration->getFileName() === '.') {
+				$path = dirname(substr($iteration->getPathName(), strlen($folder)));
+				if ($query === '' || stripos($path, $query) !== false) {
+					$folders[] = ['value' => $path];
+				}
+			}
+		}
+
+		return new JsonResponse($folders);
+	}
+
+	/**
+
 	/**
 	 * Autocomplete for place names.
 	 *
