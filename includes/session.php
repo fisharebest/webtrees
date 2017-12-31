@@ -39,11 +39,11 @@ define('WT_VERSION', '2.0.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
-define('WT_BOOTSTRAP_CSS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css');
+define('WT_BOOTSTRAP_CSS_URL', 'packages/bootstrap-4.0.0-beta.3/bootstrap.min.css');
 define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', 'packages/bootstrap-datetimepicker-4.17.47/css/bootstrap-datetimepicker.min.css');
 define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', 'packages/bootstrap-datetimepicker-4.17.47/js/bootstrap-datetimepicker.min.js');
-define('WT_BOOTSTRAP_JS_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js');
-define('WT_BOOTSTRAP_RTL_CSS_URL', 'https://raw.githubusercontent.com/GhalamborM/bootstrap4-rtl/master/bootstrap-rtl.css');
+define('WT_BOOTSTRAP_JS_URL', 'packages/bootstrap-4.0.0-beta.3/bootstrap.min.js');
+define('WT_BOOTSTRAP_RTL_CSS_URL', 'packages/bootstrap-4.0.0-beta.3/bootstrap-rtl.min.css');
 define('WT_DATATABLES_JS_URL', 'packages/datatables-1.10.16/jquery.dataTables.min.js');
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.css');
 define('WT_DATATABLES_BOOTSTRAP_JS_URL', 'packages/datatables-1.10.16/dataTables.bootstrap4.min.js');
