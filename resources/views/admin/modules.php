@@ -16,9 +16,8 @@
 
 <?php foreach ($deleted_modules as $module_name): ?>
 	<div class="alert alert-warning" role="alert">
-		<form action="<?= e(route('admin-control-panel')) ?>" class="form-inline" method="POST">
+		<form action="<?= e(route('admin-delete-module-settings')) ?>" class="form-inline" method="POST">
 			<?= csrf_field() ?>
-			<input type="hidden" name="route" value="admin-delete-module-settings">
 			<input type="hidden" name="module_name" value="<?= $module_name ?>">
 			<?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
 			<button type="submit" class="btn btn-secondary text-wrap">
