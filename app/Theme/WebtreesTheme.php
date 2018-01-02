@@ -45,7 +45,7 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface {
 			' transition:"none",' .
 			//' slideshowStart:"' . I18N::translate('Play') . '",' .
 			//' slideshowStop:"' . I18N::translate('Stop') . '",' .
-			' title: function() { return $(this).data("title"); }' .
+			' title: function() { return this.dataset.title; }' .
 			'});' .
 			'</script>';
 	}
