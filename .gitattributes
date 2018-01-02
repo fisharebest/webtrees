@@ -6,7 +6,6 @@
 .php_cs           export-ignore
 .travis.yml       export-ignore
 Makefile          export-ignore
-build/            export-ignore
 package.josn      export-ignore
 package-lock.json export-ignore
 phpdoc.xml        export-ignore
