@@ -9,8 +9,7 @@
 # webtrees
 
 The project’s website is [www.webtrees.net](https://www.webtrees.net).
-Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.net).
-
+Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.net) and [webtrees.github.io](https://webtrees.github.io).
 
 ## Contents
 
