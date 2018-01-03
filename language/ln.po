@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-06-18 16:44+0100\n"
-"PO-Revision-Date: 2017-11-30 23:04+0000\n"
+"PO-Revision-Date: 2018-01-03 12:45+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1819,7 +1819,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1543
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "Kopésa basáleli ndingisa ya komɔ́nɔ bokɔ́tisi bwa péto ya GEDCOM"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:263
@@ -2026,7 +2026,7 @@ msgstr "Kotíya mabóngoli na bipɛ́sɛli bya libótá na yɔ̌."
 #: app/Module/ClippingsCartModule.php:755
 #: app/Module/ClippingsCartModule.php:764
 msgid "Apply privacy settings"
-msgstr "Kotíya bisalela bya moto yě mɔ̌kɔ́"
+msgstr "Kotíya bizalela bya moto yě mɔ̌kɔ́"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:1883
@@ -2217,17 +2217,17 @@ msgstr "Ntómá mobáli"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr ""
+msgstr "Azalí"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "Azalí (mwǎsí)"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "Azalí (mobáli)"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1499
@@ -2351,7 +2351,7 @@ msgstr "Mbúla ya katikáti ya bǎna libótá na libótá"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:590 admin_trees_manage.php:671
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Kímá ntáká na matɔ́nɔ́. Esengélí nkómbó ya libótá ezala bopɔni bolámu."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
