@@ -467,9 +467,9 @@ class FunctionsCharts {
 			$i      = 1;
 			foreach ($fchildren as $fchil) {
 				if ($i == 1) {
-					echo '<td><img width="10px" height="3px" style="vertical-align:middle"';
+					echo '<td><img class="linea1" width="10px" height="3px" style="vertical-align:middle"';
 				} else {
-					echo '<td><img width="10px" height="3px"';
+					echo '<td><img class="linea1" width="10px" height="3px"';
 				}
 				if (I18N::direction() === 'ltr') {
 					echo ' style="padding-right: 2px;"';
