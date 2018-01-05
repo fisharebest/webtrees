@@ -1973,8 +1973,6 @@ abstract class AbstractTheme {
 			'chart-box-x'                    => 250,
 			'chart-box-y'                    => 80,
 			'chart-font-color'               => '000000',
-			'chart-font-name'                => WT_ROOT . 'packages/dejavu-fonts-ttf-2.35/ttf/DejaVuSans.ttf',
-			'chart-font-size'                => 7,
 			'chart-spacing-x'                => 5,
 			'chart-spacing-y'                => 10,
 			'compact-chart-box-x'            => 240,
