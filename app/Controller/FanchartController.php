@@ -259,7 +259,7 @@ class FanchartController extends ChartController {
 					imagefilledarc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
 					// split and center text by lines
-					$wmax = (int) ($angle * 7 / Theme::theme()->parameter('chart-font-size') * $scale);
+					$wmax = (int) ($angle * 7 / 7 * $scale);
 					$wmax = min($wmax, 35 * $scale);
 					if ($gen == 0) {
 						$wmax = min($wmax, 17 * $scale);
@@ -300,9 +300,10 @@ class FanchartController extends ChartController {
 					// print text
 					imagettftext(
 						$image,
-						Theme::theme()->parameter('chart-font-size'),
+						7,
 						$tangle, $tx, $ty,
-						$color, Theme::theme()->parameter('chart-font-name'),
+						$color,
+						WT_ROOT . 'resources/fonts/DejaVuSans.ttf',
 						$text
 					);
 
