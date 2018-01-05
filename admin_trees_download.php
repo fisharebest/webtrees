@@ -171,7 +171,7 @@ echo Bootstrap4::breadcrumbs([
 				<div class="form-check">
 					<label class="form-check-label">
 						<input class="form-check-input" type="checkbox" name="media">
-						<?= I18N::translate('Include media (automatically zips files) ') ?>
+						<?= I18N::translate('Include media (automatically zips files)') ?>
 					</label>
 				</div>
 

@@ -6,7 +6,7 @@
 <h1><?= $title ?></h1>
 
 <p>
-	<?= I18N::translate('If you have linked a media object to an individual, instead of linking it to one of the facts or events, then you can move it to the correct location.') ?>
+	<?= I18N::translate('If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location.') ?>
 </p>
 
 <table class="table table-bordered table-sm table-hover table-responsive datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-fix-level-0-media-data')])) ?>" data-server-side="true" data-state-save="true">
@@ -15,7 +15,7 @@
 	</caption>
 	<thead class="thead-dark">
 		<tr>
-			<th data-sortable="false"><?= I18N::translate('Tree') ?></th>
+			<th data-sortable="false"><?= I18N::translate('Family tree') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Media object') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Title') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Individual') ?></th>

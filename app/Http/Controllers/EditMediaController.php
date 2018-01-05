@@ -61,7 +61,7 @@ class EditMediaController extends BaseController {
 
 		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
 			return new Response(View::make('modals/error', [
-				'title' => I18N::translate('Add a media file to this media object'),
+				'title' => I18N::translate('Add a media file'),
 				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
 			]));
 		}
