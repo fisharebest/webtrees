@@ -123,7 +123,7 @@
 					</td>
 					<td class="text-center text-muted d-none d-sm-table-cell">
 						<?php if ($module instanceof ModuleTabInterface): ?>
-							<?= FontAwesome::semanticIcon('tab', I18N::translate('Taba')) ?>
+							<?= FontAwesome::semanticIcon('tab', I18N::translate('Tabs')) ?>
 						<?php else: ?>
 							-
 						<?php endif ?>
@@ -173,7 +173,7 @@
 							<?= FontAwesome::semanticIcon('menu', I18N::translate('Menu')) ?>
 						<?php endif ?>
 						<?php if ($module instanceof ModuleTabInterface): ?>
-							<?= FontAwesome::semanticIcon('tab', I18N::translate('Taba')) ?>
+							<?= FontAwesome::semanticIcon('tab', I18N::translate('Tabs')) ?>
 						<?php endif ?>
 						<?php if ($module instanceof ModuleSidebarInterface): ?>
 							<?= FontAwesome::semanticIcon('sidebar', I18N::translate('Sidebar')) ?>

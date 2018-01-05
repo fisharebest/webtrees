@@ -2,7 +2,7 @@
 
 <div class="form-group row">
 	<label class="col-form-label col-sm-2" for="privacy-restriction">
-		<?= /* I18N: a restrction on editing */ I18N::translate('Privacy restriction') ?>
+		<?= /* I18N: a restrction on viewing data */ I18N::translate('Privacy restriction') ?>
 	</label>
 	<div class="col-sm-4">
 		<select class="form-control" id="privacy-restriction" name="privacy-restriction">
@@ -19,7 +19,7 @@
 		</select>
 	</div>
 	<label class="col-form-label col-sm-2" for="edit-restriction">
-		<?= /* I18N: a restrction on editing */ I18N::translate('Edit restriction') ?>
+		<?= /* I18N: A restriction on editing data */ I18N::translate('Editing restriction') ?>
 	</label>
 	<div class="col-sm-4">
 		<select class="form-control" id="edit-restriction" name="edit-restriction">

@@ -7,11 +7,11 @@ use Fisharebest\Webtrees\I18N; ?>
 <h1><?= $title ?></h1>
 
 <p>
-	<?= /* I18N: "thumbs" is fixed text.  Do not change it. */ I18N::translate('In webtrees version 1, you could add custom thumbnails to media objects by creating files in the "thumbs" folders.') ?>
+	<?= /* I18N: "thumbs" is fixed text.  Do not change it. */ I18N::translate('In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders.') ?>
 	<br>
 	<?= I18N::translate('In webtrees version 2, custom thumbnails are stored as a second media file in the same media object.') ?>
 	<br>
-	<?= I18N::translate('If the thumbnail image is the same as the original, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object.') ?>
+	<?= I18N::translate('If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object.') ?>
 </p>
 
 <table class="table table-bordered table-sm table-hover table-responsive datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-webtrees1-thumbs-data')])) ?>" data-server-side="true" data-state-save="true" data-sort="false" data-auto-width="false" data-save-state="true">
@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N; ?>
 	</caption>
 	<thead class="thead-dark">
 		<tr>
-			<th data-sortable="false"><?= I18N::translate('Thumbnail') ?></th>
+			<th data-sortable="false"><?= I18N::translate('Thumbnail image') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Media file') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Media object') ?></th>
 			<th data-sortable="false"><?= I18N::translate('Comparison') ?></th>
