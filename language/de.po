@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-31 20:23+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2018-01-06 17:50+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -227,7 +227,7 @@ msgstr "%s und ihre Kinder"
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s und ihren Nachkommen"
+msgstr "%s und ihre Nachkommen"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
@@ -304,8 +304,8 @@ msgstr[1] "%s Personen wurden aktualisiert."
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "Die Person %s ist vertraulich."
-msgstr[1] "Die Personen %s sind vertraulich."
+msgstr[0] "Eine Person ist vertraulich."
+msgstr[1] "%s Personen sind vertraulich."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -703,7 +703,7 @@ msgstr "9."
 
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b> Wichtiger Hinweis:</b> Der Migrationsassistent ist nicht in der Lage, Mediendateien umzuziehen. Die Einrichtung, das Verschieben oder das Kopieren Ihrer Medienkonfiguration und -objekte ist im Anschluss an den beendeten Migrationsassistenten manuell erfoderlich."
+msgstr "<b> Wichtiger Hinweis:</b> Der Migrationsassistent ist nicht in der Lage, Mediendateien umzuziehen. Die Einrichtung, das Verschieben oder das Kopieren Ihrer Medienkonfiguration und -objekte hat im Anschluss an den beendeten Migrationsassistenten manuell zu erfolgen."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
@@ -716,7 +716,7 @@ msgstr "<Standardthema>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>dass Sie Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich halten;</li><li>und dass Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären und Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, mitteilen.</li></ul></div>"
+msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis zu den folgenden Bedingungen:<ul><li>Sie behandeln Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich;</li><li>und Sie erklären in der unten stehenden Textbox Ihre direkte Verwandtschaft zu Personen in dieser Datenbank oder geben Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, an.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
