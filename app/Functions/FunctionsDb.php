@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;

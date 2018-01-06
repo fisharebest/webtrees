@@ -19,7 +19,6 @@ use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Block\Parser\AbstractBlockParser;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
-use League\CommonMark\Util\RegexHelper;
 use Webuni\CommonMark\TableExtension\Table;
 use Webuni\CommonMark\TableExtension\TableCell;
 use Webuni\CommonMark\TableExtension\TableRow;

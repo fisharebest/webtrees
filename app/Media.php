@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use League\Glide\Urls\UrlBuilderFactory;
 
 /**
  * A GEDCOM media (OBJE) object.
