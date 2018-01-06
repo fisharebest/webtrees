@@ -22,6 +22,10 @@
  .row .select2-selection--single {
 }
 
+.select2-container .select2-selection--single { /* Relationships, thumbnail fit in parent */
+	height: auto;
+}
+
 /*
  * Pages have the following high-level structure:
  *
