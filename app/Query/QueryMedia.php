@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Query;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Media;
 
 /**

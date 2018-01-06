@@ -15,10 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Base controller for all other controllers

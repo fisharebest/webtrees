@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Controller\NoteController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\Module\CensusAssistantModule;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
