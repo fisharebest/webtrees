@@ -12,12 +12,12 @@
 	<input type="hidden" name="route" value="admin-update-module-access">
 	<input type="hidden" name="component" value="<?= e($component) ?>">
 	<?= csrf_field() ?>
-	<table class="table table-bordered" class="row">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th class="col-sm-2"><?= $component_title ?></th>
-				<th class="col-sm-4"><?= I18N::translate('Description') ?></th>
-				<th class="col-sm-6"><?= I18N::translate('Access level') ?></th>
+				<th><?= $component_title ?></th>
+				<th class="d-none d-sm-table-cell"><?= I18N::translate('Description') ?></th>
+				<th><?= I18N::translate('Access level') ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,7 +30,9 @@
 							<?= $module->getTitle() ?>
 						<?php endif ?>
 					</td>
-					<td><?= $module->getDescription() ?></td>
+					<td class="d-none d-sm-table-cell">
+						<?= $module->getDescription() ?>
+					</td>
 					<td>
 						<table class="table table-sm">
 							<tbody>
