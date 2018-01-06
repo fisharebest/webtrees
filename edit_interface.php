@@ -71,7 +71,7 @@ case 'editraw':
 						</div>
 						<input type="hidden" name="fact_id[]" value="<?= $fact->getFactId() ?>">
 						<textarea name="fact[]" dir="ltr" rows="<?= preg_match_all('/\n/', $fact->getGedcom()) ?>"
-						          style="width:100%;"><?= Html::escape($fact->getGedcom()) ?></textarea>
+						          style="width:100%;"><?= e($fact->getGedcom()) ?></textarea>
 					</li>
 				<?php endif ?>
 			<?php endforeach ?>
@@ -189,7 +189,7 @@ case 'editrawfact':
 			</label>
 			<div class="col-sm-9">
 					<textarea autofocus class="form-control" rows="<?= $rows ?>" name="gedcom" id="gedcom"
-					          dir="ltr"><?= Html::escape($edit_fact->getGedcom()) ?></textarea>
+					          dir="ltr"><?= e($edit_fact->getGedcom()) ?></textarea>
 			</div>
 		</div>
 		<?= keep_chan($record) ?>
@@ -1257,7 +1257,7 @@ case 'editnote':
 			<tr>
 				<th scope="row"><?= I18N::translate('Shared note') ?></th>
 				<td>
-					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= Html::escape($note->getNote()) ?></textarea>
+					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= e($note->getNote()) ?></textarea>
 					<br>
 					<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
 				</td>
@@ -2123,7 +2123,7 @@ function keep_chan(GedcomRecord $record = null) {
 		if ($record) {
 			$details
 				= GedcomTag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				GedcomTag::getLabelValue('_WT_USER', Html::escape($record->lastChangeUser()));
+				GedcomTag::getLabelValue('_WT_USER', e($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}
@@ -2440,7 +2440,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					<?= /* I18N: A button label. */ I18N::translate('go to new individual') ?>
 				</button>
 			<?php endif ?>
-			<a class="btn btn-secondary" href="<?= Html::escape($person ? $person->url() : $family->url()) ?>">
+			<a class="btn btn-secondary" href="<?= e($person ? $person->url() : $family->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>

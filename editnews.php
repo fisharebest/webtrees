@@ -102,7 +102,7 @@ if (Module::getModuleByName('ckeditor')) {
 		<tr>
 		<tr>
 			<td>
-				<input type="text" id="subject" name="subject" size="50" dir="auto" autofocus value="<?= Html::escape($news['subject']) ?>">
+				<input type="text" id="subject" name="subject" size="50" dir="auto" autofocus value="<?= e($news['subject']) ?>">
 			</td>
 		</tr>
 		<tr>
@@ -114,7 +114,7 @@ if (Module::getModuleByName('ckeditor')) {
 		</tr>
 		<tr>
 			<td>
-				<textarea id="body" name="body" class="html-edit" cols="80" rows="10" dir="auto"><?= Html::escape($news['body']) ?></textarea>
+				<textarea id="body" name="body" class="html-edit" cols="80" rows="10" dir="auto"><?= e($news['body']) ?></textarea>
 			</td>
 		</tr>
 		<tr>

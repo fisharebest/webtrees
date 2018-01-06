@@ -35,7 +35,7 @@ $controller->pageHeader();
 			<?= I18N::translate('Surname') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= Html::escape($controller->getSurname()) ?>" dir="auto">
+			<input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= e($controller->getSurname()) ?>" dir="auto">
 		</div>
 	</div>
 

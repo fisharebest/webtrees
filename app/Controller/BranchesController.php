@@ -56,7 +56,7 @@ class BranchesController extends PageController {
 
 		if ($this->surname !== '') {
 			$this->setPageTitle(/* I18N: %s is a surname */
-				I18N::translate('Branches of the %s family', Html::escape($this->surname)));
+				I18N::translate('Branches of the %s family', e($this->surname)));
 			$this->loadIndividuals();
 			$self = Individual::getInstance($this->tree()->getUserPreference(Auth::user(), 'gedcomid'), $this->tree());
 			if ($self) {

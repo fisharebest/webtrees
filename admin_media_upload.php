@@ -203,7 +203,7 @@ for ($i = 1; $i < 6; $i++) {
 			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), '</option>';
 		}
 		foreach ($mediaFolders as $f) {
-			echo '<option value="', Html::escape($f), '">', Html::escape($f), '</option>';
+			echo '<option value="', e($f), '">', e($f), '</option>';
 		}
 		echo '</select>';
 		if (Auth::isAdmin()) {

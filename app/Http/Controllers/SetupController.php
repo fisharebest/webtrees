@@ -171,7 +171,7 @@ class SetupController extends BaseController {
 		} catch (PDOException $ex) {
 			DebugBar::addThrowable($ex);
 
-			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . Html::escape($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
+			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
 		}
 
 		return '';
@@ -217,7 +217,7 @@ class SetupController extends BaseController {
 		} catch (PDOException $ex) {
 			DebugBar::addThrowable($ex);
 
-			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . Html::escape($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
+			return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
 		}
 
 		return '';
@@ -405,7 +405,7 @@ class SetupController extends BaseController {
 		$errors     = [];
 
 		if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
-			$errors[] = '<code>' . Html::escape(realpath(WT_DATA_DIR)) . '</code><br>' . I18N::translate('Oops! webtrees was unable to create files in this folder.') . '<br>' . I18N::translate('This usually means that you need to change the folder permissions to 777.') . '<br>' . I18N::translate('You must change this before you can continue.');
+			$errors[] = '<code>' . e(realpath(WT_DATA_DIR)) . '</code><br>' . I18N::translate('Oops! webtrees was unable to create files in this folder.') . '<br>' . I18N::translate('This usually means that you need to change the folder permissions to 777.') . '<br>' . I18N::translate('You must change this before you can continue.');
 		}
 
 		foreach ($extensions as $extension) {

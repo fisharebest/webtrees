@@ -228,7 +228,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?= I18N::translate('Story title') ?>
 						</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="title" id="title" value="<?= Html::escape($title) ?>">
+							<input type="text" class="form-control" name="title" id="title" value="<?= e($title) ?>">
 						</div>
 					</div>
 
@@ -237,7 +237,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?= I18N::translate('Story') ?>
 						</label>
 						<div class="col-sm-9">
-							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?= Html::escape($story_body) ?></textarea>
+							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?= e($story_body) ?></textarea>
 						</div>
 					</div>
 
@@ -374,7 +374,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				<?php foreach ($stories as $story): ?>
 				<tr>
 					<td>
-						<?= Html::escape($this->getBlockSetting($story->block_id, 'title')) ?>
+						<?= e($this->getBlockSetting($story->block_id, 'title')) ?>
 					</td>
 					<td>
 						<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
@@ -394,7 +394,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						<td>
 							<a
 								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>"
-								onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($this->getBlockSetting($story->block_id, 'title'))) ?>');"
+								onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', e($this->getBlockSetting($story->block_id, 'title'))) ?>');"
 							>
 								<i class="fas fa-trash-alt"></i> <?= I18N::translate('Delete') ?>
 							</a>

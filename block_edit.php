@@ -88,7 +88,7 @@ if (Module::getModuleByName('ckeditor')) {
 				<?= FontAwesome::decorativeIcon('save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= Html::escape($url) ?>">
+			<a class="btn btn-secondary" href="<?= e($url) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>

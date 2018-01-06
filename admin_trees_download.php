@@ -177,11 +177,11 @@ echo Bootstrap4::breadcrumbs([
 
 				<?php if ($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')): ?>
 					<label>
-						<input type="checkbox" name="media-path" value="<?= Html::escape($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) ?>">
+						<input type="checkbox" name="media-path" value="<?= e($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) ?>">
 						<?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
 					</label>
 					<p>
-						<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Html::escape($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
+						<?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . e($controller->tree()->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
 					</p>
 				<?php endif ?>
 

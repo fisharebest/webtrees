@@ -391,9 +391,9 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	public static function createSubmitButton($text, $xref, $action = '', $data = '') {
 		return
 			'<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
-			'this.form.xref.value=\'' . Html::escape($xref) . '\';' .
-			'this.form.action.value=\'' . Html::escape($action) . '\';' .
-			'this.form.data.value=\'' . Html::escape($data) . '\';' .
+			'this.form.xref.value=\'' . e($xref) . '\';' .
+			'this.form.action.value=\'' . e($action) . '\';' .
+			'this.form.data.value=\'' . e($data) . '\';' .
 			'return true;"' .
 			($xref ? '' : ' disabled') . '>';
 	}

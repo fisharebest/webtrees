@@ -397,7 +397,7 @@ $controller->pageHeader();
 						<a href="<?= e($indi->url()) ?>"> <?= $indi->getFullName() ?><br>
 							<?= $indi->getAddName() ?><br>
 						</a>
-						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Html::escape($pid) ?>">
+						<input type="hidden" name="pids[<?= $p ?>]" value="<?= e($pid) ?>">
 						<a href="timeline.php?<?= $controller->pidlinks ?>&amp;scale=<?= $controller->scale ?>&amp;remove=<?= $pid ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 							<span class="details1"><?= I18N::translate('Remove individual') ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
@@ -412,7 +412,7 @@ $controller->pageHeader();
 					} else {
 						echo '<div class="error">', I18N::translate('This information is private and cannot be shown.'), '</div>';
 						?>
-						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Html::escape($pid) ?>">
+						<input type="hidden" name="pids[<?= $p ?>]" value="<?= e($pid) ?>">
 						<br>
 						<a href="timeline.php?<?= $controller->pidlinks ?>&amp;scale=<?= $controller->scale ?>&amp;remove=<?= $pid ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
 							<span class="details1"><?= I18N::translate('Remove individual') ?></span></a>

@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		// No errors.  Send the message.
 		foreach ($recipients as $recipient) {
 			if (deliverMessage($WT_TREE, $from_email, $from_name, $recipient, $subject, $body, $url)) {
-				FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Html::escape($to)), 'info');
+				FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to)), 'info');
 			} else {
 				FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
 				Log::addErrorLog('Unable to send a message. FROM:' . $from_email . ' TO:' . $recipient->getEmail());
@@ -105,15 +105,15 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 
 <form method="post">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="url" value="<?= Html::escape($url) ?>">
+	<input type="hidden" name="url" value="<?= e($url) ?>">
 
 	<div class="form-group row">
 		<div class="col-sm-3 col-form-label">
 			<?= I18N::translate('To') ?>
 		</div>
 		<div class="col-sm-9">
-			<input type="hidden" name="to" value="<?= Html::escape($to) ?>">
-			<div class="form-control"><?= Html::escape($to_names) ?></div>
+			<input type="hidden" name="to" value="<?= e($to) ?>">
+			<div class="form-control"><?= e($to_names) ?></div>
 		</div>
 	</div>
 
@@ -123,7 +123,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 				<?= I18N::translate('From') ?>
 			</div>
 			<div class="col-sm-9">
-				<div class="form-control"><?= Html::escape(Auth::user()->getRealName()) ?></div>
+				<div class="form-control"><?= e(Auth::user()->getRealName()) ?></div>
 			</div>
 		</div>
 	<?php else: ?>
@@ -132,7 +132,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 				<?= I18N::translate('Your name') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" id="from-name" type="text" name="from_name" value="<?= Html::escape($from_name) ?>" required>
+				<input class="form-control" id="from-name" type="text" name="from_name" value="<?= e($from_name) ?>" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -140,7 +140,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 				<?= I18N::translate('Email address') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" id="from-email" type="text" name="from_email" value="<?= Html::escape($from_email) ?>" required>
+				<input class="form-control" id="from-email" type="text" name="from_email" value="<?= e($from_email) ?>" required>
 			</div>
 		</div>
 	<?php endif ?>
@@ -150,7 +150,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 			<?= I18N::translate('Subject') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" id="subject" type="text" name="subject" value="<?= Html::escape($subject) ?>" required>
+			<input class="form-control" id="subject" type="text" name="subject" value="<?= e($subject) ?>" required>
 		</div>
 	</div>
 
@@ -159,7 +159,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 			<?= I18N::translate('Body') ?>
 		</label>
 		<div class="col-sm-9">
-			<textarea class="form-control" id="body" type="text" name="body" required><?= Html::escape($body) ?></textarea>
+			<textarea class="form-control" id="body" type="text" name="body" required><?= e($body) ?></textarea>
 		</div>
 	</div>
 
@@ -168,7 +168,7 @@ $to_names = implode(I18N::$list_separator, array_map(function (User $user) {
 			<button type="submit" class="btn btn-primary">
 				<?= I18N::translate('Send') ?>
 			</button>
-			<a class="btn btn-link" href="<?= Html::escape($url) ?>">
+			<a class="btn btn-link" href="<?= e($url) ?>">
 				<?= I18N::translate('cancel') ?>
 			</a>
 		</div>

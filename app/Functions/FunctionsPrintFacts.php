@@ -142,7 +142,7 @@ class FunctionsPrintFacts {
 					$type  = ''; // Do not print this again
 				} elseif ($type) {
 					// We don't have a translation for $type - but a custom translation might exist.
-					$label = I18N::translate(Html::escape($type));
+					$label = I18N::translate(e($type));
 					$type  = ''; // Do not print this again
 				} else {
 					// An unspecified fact/event
@@ -221,7 +221,7 @@ class FunctionsPrintFacts {
 				echo $fact->getValue();
 				break;
 			case 'AFN':
-				echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
 				break;
 			case 'ASSO':
 				// we handle this later, in format_asso_rela_record()
@@ -229,7 +229,7 @@ class FunctionsPrintFacts {
 			case 'EMAIL':
 			case 'EMAI':
 			case '_EMAIL':
-				echo '<div class="field"><a href="mailto:', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				echo '<div class="field"><a href="mailto:', e($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
 				break;
 			case 'RESN':
 				echo '<div class="field">';
@@ -249,7 +249,7 @@ class FunctionsPrintFacts {
 					echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
 					break;
 					default:
-					echo Html::escape($fact->getValue());
+					echo e($fact->getValue());
 					break;
 				}
 				echo '</div>';
@@ -261,16 +261,16 @@ class FunctionsPrintFacts {
 				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
 					self::printRepositoryRecord($match[1]);
 				} else {
-					echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
+					echo '<div class="error">', e($fact->getValue()), '</div>';
 				}
 				break;
 			case 'URL':
 			case '_URL':
 			case 'WWW':
-				echo '<div class="field"><a href="', Html::escape($fact->getValue()), '">', Html::escape($fact->getValue()), '</a></div>';
+				echo '<div class="field"><a href="', e($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
 				break;
 			case 'TEXT': // 0 SOUR / 1 TEXT
-				echo '<div class="field">', nl2br(Html::escape($fact->getValue()), false), '</div>';
+				echo '<div class="field">', nl2br(e($fact->getValue()), false), '</div>';
 				break;
 			default:
 				// Display the value for all other facts/events
@@ -291,10 +291,10 @@ class FunctionsPrintFacts {
 						if ($target) {
 							echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
 						} else {
-							echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
+							echo '<div class="error">', e($fact->getValue()), '</div>';
 						}
 					} else {
-						echo '<div class="field"><span dir="auto">', Html::escape($fact->getValue()), '</span></div>';
+						echo '<div class="field"><span dir="auto">', e($fact->getValue()), '</span></div>';
 					}
 					break;
 				}
@@ -312,7 +312,7 @@ class FunctionsPrintFacts {
 				// Allow (custom) translations for other types
 				$type = I18N::translate($type);
 			}
-			echo GedcomTag::getLabelValue('TYPE', Html::escape($type));
+			echo GedcomTag::getLabelValue('TYPE', e($type));
 		}
 
 		// Print the date of this fact/event
@@ -398,7 +398,7 @@ class FunctionsPrintFacts {
 					if ($user) {
 						echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
 					} else {
-						echo GedcomTag::getLabelValue('_WT_USER', Html::escape($match[2]));
+						echo GedcomTag::getLabelValue('_WT_USER', e($match[2]));
 					}
 					break;
 				case 'RESN':
@@ -418,7 +418,7 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabelValue('RESN', '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'));
 						break;
 						default:
-						echo GedcomTag::getLabelValue('RESN', Html::escape($match[2]));
+						echo GedcomTag::getLabelValue('RESN', e($match[2]));
 						break;
 					}
 					break;
@@ -434,7 +434,7 @@ class FunctionsPrintFacts {
 				case 'URL':
 				case '_URL':
 				case 'WWW':
-					$link = '<a href="' . Html::escape($match[2]) . '">' . Html::escape($match[2]) . '</a>';
+					$link = '<a href="' . e($match[2]) . '">' . e($match[2]) . '</a>';
 					echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 					break;
 				default:
@@ -446,11 +446,11 @@ class FunctionsPrintFacts {
 								$link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->getFullName() . '</a>';
 								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 							} else {
-								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], e($match[2]));
 							}
 						} else {
 							// Non links
-							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
+							echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], e($match[2]));
 						}
 					}
 					break;
@@ -571,7 +571,7 @@ class FunctionsPrintFacts {
 		$ct = preg_match_all('/' . $level . ' SOUR (.*)((?:\n\d CONT.*)*)/', $factrec, $match, PREG_SET_ORDER);
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
-				$source = Html::escape($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
+				$source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
 				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
 			}
 		}
@@ -866,9 +866,9 @@ class FunctionsPrintFacts {
 		}
 
 		if ($textSOUR['EVEN']) {
-			$html .= GedcomTag::getLabelValue('EVEN', Html::escape($textSOUR['EVEN']));
+			$html .= GedcomTag::getLabelValue('EVEN', e($textSOUR['EVEN']));
 			if ($textSOUR['ROLE']) {
-				$html .= GedcomTag::getLabelValue('ROLE', Html::escape($textSOUR['ROLE']));
+				$html .= GedcomTag::getLabelValue('ROLE', e($textSOUR['ROLE']));
 			}
 		}
 

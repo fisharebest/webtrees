@@ -215,21 +215,21 @@ case 'load_json':
 		$user_name = $datum[2];
 
 		if ($user_id != Auth::id()) {
-			$admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="far fa-user fa-fw"></i> ' . /* I18N: Pretend to be another user, by logging in as them */ I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fas fa-trash-alt fa-fw" aria-hidden="true"></i> ' . I18N::translate('Delete') . '</a></div>';
+			$admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="far fa-user fa-fw"></i> ' . /* I18N: Pretend to be another user, by logging in as them */ I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fas fa-trash-alt fa-fw" aria-hidden="true"></i> ' . I18N::translate('Delete') . '</a></div>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
 		}
 
-		$datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false"><i class="fas fa-pencil-alt"></i> <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fas fa-pencil-alt fa-fw"></i> ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . Html::escape(route('user-page-user-edit', ['user_id' => $user_id])) . '"><i class="fas fa-th-large fa-fw" aria-hidden="true"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
+		$datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false"><i class="fas fa-pencil-alt"></i> <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fas fa-pencil-alt fa-fw"></i> ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '"><i class="fas fa-th-large fa-fw" aria-hidden="true"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
 		// The real name
-		$datum[3] = '<span dir="auto">' . Html::escape($datum[3]) . '</span>';
+		$datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="' . Html::escape(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . Html::escape($datum[4]) . '</a>';
+			$datum[4] = '<a href="' . e(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . e($datum[4]) . '</a>';
 		}
 		// The username
-		$datum[2] = '<span dir="auto">' . Html::escape($datum[2]) . '</span>';
+		$datum[2] = '<span dir="auto">' . e($datum[2]) . '</span>';
 		// The langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
 			$datum[5] = $installed_languages[$datum[5]];
@@ -316,7 +316,7 @@ case 'edit':
 				<?= I18N::translate('Real name') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= Html::escape($user->getRealName()) ?>" dir="auto">
+				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= e($user->getRealName()) ?>" dir="auto">
 				<p class="small text-muted">
 					<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
 				</p>
@@ -329,7 +329,7 @@ case 'edit':
 				<?= I18N::translate('Username') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= Html::escape($user->getUserName()) ?>" dir="auto">
+				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= e($user->getUserName()) ?>" dir="auto">
 				<p class="small text-muted">
 					<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
 				</p>
@@ -365,7 +365,7 @@ case 'edit':
 				<?= I18N::translate('Email address') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= Html::escape($user->getEmail()) ?>">
+				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= e($user->getEmail()) ?>">
 				<p class="small text-muted">
 					<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
 				</p>
@@ -499,7 +499,7 @@ case 'edit':
 				<?= I18N::translate('Administrator comments on user') ?>
 			</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?= Html::escape($user->getPreference('comment')) ?></textarea>
+				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?= e($user->getPreference('comment')) ?></textarea>
 			</div>
 		</div>
 
@@ -696,7 +696,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Html::escape($user->getUserName()) ?>
+						<?= e($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -720,7 +720,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Html::escape($user->getUserName()) ?>
+						<?= e($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -744,7 +744,7 @@ case 'cleanup':
 			<tr>
 				<td>
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
-						<?= Html::escape($user->getUserName()) ?>
+						<?= e($user->getUserName()) ?>
 						—
 						<?= $user->getRealNameHtml() ?>
 					</a>
@@ -777,7 +777,7 @@ case 'cleanup2':
 		if (Filter::post('del_' . $user->getUserId()) == '1') {
 			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
 			$user->delete();
-			I18N::translate('The user %s has been deleted.', Html::escape($user->getUserName()));
+			I18N::translate('The user %s has been deleted.', e($user->getUserName()));
 		}
 	}
 

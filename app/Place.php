@@ -142,7 +142,7 @@ class Place {
 	public function getPlaceName() {
 		$place = reset($this->gedcom_place);
 
-		return $place ? '<span dir="auto">' . Html::escape($place) . '</span>' : I18N::translate('unknown');
+		return $place ? '<span dir="auto">' . e($place) . '</span>' : I18N::translate('unknown');
 	}
 
 	/**
@@ -162,12 +162,12 @@ class Place {
 	public function getFullName() {
 		if (true) {
 			// If a place hierarchy is a single entity
-			return '<span dir="auto">' . Html::escape(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
+			return '<span dir="auto">' . e(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
 		} else {
 			// If a place hierarchy is a list of distinct items
 			$tmp = [];
 			foreach ($this->gedcom_place as $place) {
-				$tmp[] = '<span dir="auto">' . Html::escape($place) . '</span>';
+				$tmp[] = '<span dir="auto">' . e($place) . '</span>';
 			}
 
 			return implode(I18N::$list_separator, $tmp);
@@ -195,7 +195,7 @@ class Place {
 				$short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
 			}
 			// Add a tool-tip showing the full name
-			return '<span title="' . Html::escape($this->getGedcomName()) . '" dir="auto">' . Html::escape($short_name) . '</span>';
+			return '<span title="' . e($this->getGedcomName()) . '" dir="auto">' . e($short_name) . '</span>';
 		}
 	}
 
@@ -207,7 +207,7 @@ class Place {
 	public function getReverseName() {
 		$tmp = [];
 		foreach (array_reverse($this->gedcom_place) as $place) {
-			$tmp[] = '<span dir="auto">' . Html::escape($place) . '</span>';
+			$tmp[] = '<span dir="auto">' . e($place) . '</span>';
 		}
 
 		return implode(I18N::$list_separator, $tmp);

@@ -244,7 +244,7 @@ class CensusAssistantModule extends AbstractModule {
 			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
-				$nam = Html::escape($indi->getFullName());
+				$nam = e($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
 					'" . $indi->getXref() . "' ,
 					'" . $nam . "' ,

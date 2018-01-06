@@ -265,7 +265,7 @@ echo Bootstrap4::breadcrumbs([
 				name="title"
 				required
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('title')) ?>"
+				value="<?= e($WT_TREE->getPreference('title')) ?>"
 				>
 		</div>
 	</div>
@@ -394,7 +394,7 @@ echo Bootstrap4::breadcrumbs([
 				name="WEBTREES_EMAIL"
 				required
 				type="email"
-				value="<?= Html::escape($WT_TREE->getPreference('WEBTREES_EMAIL')) ?>"
+				value="<?= e($WT_TREE->getPreference('WEBTREES_EMAIL')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “webtrees reply address” configuration setting */ I18N::translate('Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.') ?>
@@ -413,7 +413,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= Html::escape($user->getUserName()) ?>
+							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>
@@ -435,7 +435,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= Html::escape($user->getUserName()) ?>
+							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>
@@ -460,7 +460,7 @@ echo Bootstrap4::breadcrumbs([
 				maxlength="255"
 				name="META_TITLE"
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('META_TITLE')) ?>"
+				value="<?= e($WT_TREE->getPreference('META_TITLE')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Add to TITLE header tag” configuration setting */ I18N::translate('This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc.') ?>
@@ -480,7 +480,7 @@ echo Bootstrap4::breadcrumbs([
 				maxlength="255"
 				name="META_DESCRIPTION"
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('META_DESCRIPTION')) ?>"
+				value="<?= e($WT_TREE->getPreference('META_DESCRIPTION')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Description META tag” configuration setting */ I18N::translate('The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree.') ?>
@@ -537,7 +537,7 @@ echo Bootstrap4::breadcrumbs([
 					maxlength="255"
 					name="MEDIA_DIRECTORY"
 					type="text"
-					value="<?= Html::escape($WT_TREE->getPreference('MEDIA_DIRECTORY')) ?>"
+					value="<?= e($WT_TREE->getPreference('MEDIA_DIRECTORY')) ?>"
 				>
 			</div>
 			<p class="small text-muted">
@@ -652,7 +652,7 @@ echo Bootstrap4::breadcrumbs([
 				name="SUBLIST_TRIGGER_I"
 				required
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('SUBLIST_TRIGGER_I')) ?>"
+				value="<?= e($WT_TREE->getPreference('SUBLIST_TRIGGER_I')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Maximum number of surnames on individual list” configuration setting */ I18N::translate('Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero.') ?>
@@ -719,7 +719,7 @@ echo Bootstrap4::breadcrumbs([
 				name="DEFAULT_PEDIGREE_GENERATIONS"
 				required
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS')) ?>"
+				value="<?= e($WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Default pedigree generations” configuration setting */ I18N::translate('Set the default number of generations to display on descendancy and pedigree charts.') ?>
@@ -739,7 +739,7 @@ echo Bootstrap4::breadcrumbs([
 				maxlength="5"
 				name="MAX_PEDIGREE_GENERATIONS"
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')) ?>"
+				value="<?= e($WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Maximum pedigree generations” configuration setting */ I18N::translate('Set the maximum number of generations to display on pedigree charts.') ?>
@@ -759,7 +759,7 @@ echo Bootstrap4::breadcrumbs([
 				maxlength="5"
 				name="MAX_DESCENDANCY_GENERATIONS"
 				type="text"
-				value="<?= Html::escape($WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')) ?>"
+				value="<?= e($WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')) ?>"
 				>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Maximum descendancy generations” configuration setting */ I18N::translate('Set the maximum number of generations to display on descendancy charts.') ?>
@@ -826,7 +826,7 @@ echo Bootstrap4::breadcrumbs([
 					maxlength="255"
 					name="CHART_BOX_TAGS"
 					type="text"
-					value="<?= Html::escape($WT_TREE->getPreference('CHART_BOX_TAGS')) ?>"
+					value="<?= e($WT_TREE->getPreference('CHART_BOX_TAGS')) ?>"
 					>
 				<div class="input-group-btn">
 					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
@@ -1027,7 +1027,7 @@ echo Bootstrap4::breadcrumbs([
 					maxlength="255"
 					name="GEONAMES_ACCOUNT"
 					type="text"
-					value="<?= Html::escape($WT_TREE->getPreference('GEONAMES_ACCOUNT')) ?>"
+					value="<?= e($WT_TREE->getPreference('GEONAMES_ACCOUNT')) ?>"
 				>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.') ?>

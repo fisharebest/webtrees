@@ -68,10 +68,10 @@ switch (Filter::post('action')) {
 
 		if (Filter::checkCsrf() && $basename && $tree_title) {
 			if (Tree::findByName($basename)) {
-				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Html::escape($basename)), 'danger');
+				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', e($basename)), 'danger');
 			} else {
 				Tree::create($basename, $tree_title);
-				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Html::escape($basename)), 'success');
+				FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', e($basename)), 'success');
 			}
 		}
 		header('Location: admin_trees_manage.php?ged=' . rawurlencode($basename));
@@ -139,7 +139,7 @@ switch (Filter::post('action')) {
 				if ($tree->getPreference('filemtime') != $filemtime) {
 					$tree->importGedcomFile($gedcom_file, $basename);
 					$tree->setPreference('filemtime', $filemtime);
-					FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Html::escape($basename)), 'success');
+					FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($basename)), 'success');
 				}
 			}
 
@@ -190,9 +190,9 @@ switch (Filter::get('action')) {
 		<p>
 		<?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', $tree->getTitleHtml()) ?>
 	</p>
-	<form class="form form-horizontal" name="gedcomimportform" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= Html::escape(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+	<form class="form form-horizontal" name="gedcomimportform" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
 		<input type="hidden" name="gedcom_id" value="<?= $tree->getTreeId() ?>">
-		<input type="hidden" id="gedcom_filename" value="<?= Html::escape($gedcom_filename) ?>">
+		<input type="hidden" id="gedcom_filename" value="<?= e($gedcom_filename) ?>">
 		<?= Filter::getCsrf() ?>
 
 		<fieldset class="form-group">
@@ -239,11 +239,11 @@ switch (Filter::get('action')) {
 									echo '<option value=""></option>';
 									sort($files);
 									foreach ($files as $gedcom_file) {
-										echo '<option value="', Html::escape($gedcom_file), '" ';
+										echo '<option value="', e($gedcom_file), '" ';
 										if ($gedcom_file === $gedcom_filename) {
 											echo ' selected';
 										}
-										echo'>', Html::escape($gedcom_file), '</option>';
+										echo'>', e($gedcom_file), '</option>';
 									}
 									if (empty($files)) {
 										echo '<option disabled selected>', I18N::translate('No GEDCOM files found.'), '</option>';
@@ -289,7 +289,7 @@ switch (Filter::get('action')) {
 						maxlength="255"
 						name="GEDCOM_MEDIA_PATH"
 						type="text"
-						value="<?= Html::escape($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>"
+						value="<?= e($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) ?>"
 						>
 					<p class="small text-muted">
 						<?= /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed.') ?>
@@ -398,7 +398,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- PREFERENCES -->
 							<li>
 								<span class="fa-li"><i class="fas fa-cogs"></i></span>
-								<a href="<?= Html::escape(Html::url('admin_trees_config.php', ['ged' => $tree->getName(), 'action' => 'general'])) ?>">
+								<a href="<?= e(Html::url('admin_trees_config.php', ['ged' => $tree->getName(), 'action' => 'general'])) ?>">
 									<?= I18N::translate('Preferences') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -408,7 +408,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- PRIVACY -->
 							<li>
 								<span class="fa-li"><i class="fas fa-lock"></i></span>
-								<a href="<?= Html::escape(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
+								<a href="<?= e(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Privacy') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -418,7 +418,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- HOME PAGE BLOCKS-->
 							<li>
 								<span class="fa-li"><i class="fas fa-th-large"></i></span>
-								<a href="<?= Html::escape(route('tree-page-edit', ['ged' => $tree->getName()])) ?>">
+								<a href="<?= e(route('tree-page-edit', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Change the “Home page” blocks') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -428,7 +428,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- DELETE -->
 							<li>
 								<span class="fa-li"><i class="far fa-trash-alt"></i></span>
-								<a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $tree->getTreeId() ?>.submit(); } return false;">
+								<a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $tree->getTreeId() ?>.submit(); } return false;">
 									<?= I18N::translate('Delete') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>
@@ -439,7 +439,7 @@ echo Bootstrap4::breadcrumbs([
 									<input type="hidden" name="gedcom_id" value="<?= $tree->getTreeId() ?>">
 									<?= Filter::getCsrf() ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape($tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
+									<button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
 										<?= I18N::translate('Delete') ?>
 									</button>
 								</form>
@@ -487,7 +487,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- MERGE -->
 							<li>
 								<span class="fa-li"><i class="fas fa-code-branch"></i></span>
-								<a href="<?= Html::escape(route('merge-records', ['ged' => $tree->getName()])) ?>">
+								<a href="<?= e(route('merge-records', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Merge records') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>

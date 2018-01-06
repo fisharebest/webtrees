@@ -94,9 +94,9 @@ echo Bootstrap4::breadcrumbs([
 <form method="post">
 	<dl>
 		<dt><label for="search"><?= I18N::translate('Search for') ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="60" value="<?= Html::escape($search) ?>" data-autocomplete-type="PLAC" required autofocus></dd>
+		<dd><input name="search" id="search" type="text" size="60" value="<?= e($search) ?>" data-autocomplete-type="PLAC" required autofocus></dd>
 		<dt><label for="replace"><?= I18N::translate('Replace with') ?></label></dt>
-		<dd><input name="replace" id="replace" type="text" size="60" value="<?= Html::escape($replace) ?>" data-autocomplete-type="PLAC" required></dd>
+		<dd><input name="replace" id="replace" type="text" size="60" value="<?= e($replace) ?>" data-autocomplete-type="PLAC" required></dd>
 	</dl>
 	<button type="submit" value="preview"><?= /* I18N: A button label. */ I18N::translate('preview') ?></button>
 	<button type="submit" value="update" name="confirm"><?= /* I18N: A button label. */ I18N::translate('update') ?></button>
@@ -110,9 +110,9 @@ echo Bootstrap4::breadcrumbs([
 	<ul>
 		<?php foreach ($changes as $old_place => $new_place) { ?>
 		<li>
-			<?= Html::escape($old_place) ?>
+			<?= e($old_place) ?>
 			&rarr;
-			<?= Html::escape($new_place) ?>
+			<?= e($new_place) ?>
 		</li>
 		<?php } ?>
 	</ul>

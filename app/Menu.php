@@ -69,7 +69,7 @@ class Menu {
 			foreach ($this->submenus as $submenu) {
 				$attrs = '';
 				foreach ($submenu->attrs as $key => $value) {
-					$attrs .= ' ' . $key . '="' . Html::escape($value) . '"';
+					$attrs .= ' ' . $key . '="' . e($value) . '"';
 				}
 
 				$class = trim('dropdown-item ' . $submenu->class);
@@ -90,7 +90,7 @@ class Menu {
 		} else {
 			$attrs = '';
 			foreach ($this->attrs as $key => $value) {
-				$attrs .= ' ' . $key . '="' . Html::escape($value) . '"';
+				$attrs .= ' ' . $key . '="' . e($value) . '"';
 			}
 
 			$class = trim('nav-item ' . $this->class);
@@ -219,7 +219,7 @@ class Menu {
 	public function getMenuAsList() {
 		$attrs = '';
 		foreach ($this->attrs as $key => $value) {
-			$attrs .= ' ' . $key . '="' . Html::escape($value) . '"';
+			$attrs .= ' ' . $key . '="' . e($value) . '"';
 		}
 		if ($this->link) {
 			$link = ' href="' . $this->link . '"';

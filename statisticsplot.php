@@ -684,7 +684,7 @@ function my_plot($chart_title, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 			$imgurl .= rawurlencode($data);
 		}
 	}
-	echo '<img src="', $imgurl, '" width="950" height="300" alt="', Html::escape($chart_title), '">';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', e($chart_title), '">';
 }
 
 /**

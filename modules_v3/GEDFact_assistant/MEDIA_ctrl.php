@@ -132,7 +132,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 		?>
 		<tr>
 			<td>
-				<a href="#" onclick="opener.insertRowToTable('<?= $spouse->getXref() ?>', '<?= Html::escape($spouse->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
+				<a href="#" onclick="opener.insertRowToTable('<?= $spouse->getXref() ?>', '<?= e($spouse->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?= $spouse === $individual ? '<b>' : '' ?>
 					<?= $spouse->getFullName() ?> <?= $spouse->getLifeSpan() ?>
 					<?= $spouse === $individual ? '</b>' : '' ?>
@@ -153,7 +153,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 		?>
 		<tr>
 			<td>
-				<a href="#" onclick="opener.insertRowToTable('<?= $child->getXref() ?>', '<?= Html::escape($child->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
+				<a href="#" onclick="opener.insertRowToTable('<?= $child->getXref() ?>', '<?= e($child->getFullName()) ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?= $child === $individual ? '<b>' : '' ?>
 					<?= $child->getFullName() ?> <?= $child->getLifeSpan() ?>
 				<?= $child === $individual ? '</b>' : '' ?>

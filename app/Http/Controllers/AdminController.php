@@ -568,15 +568,15 @@ class AdminController extends BaseController {
 
 			if (File::delete(WT_DATA_DIR . $path)) {
 				if ($is_dir) {
-					FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Html::escape($path)), 'success');
+					FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
 				} else {
-					FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::escape($path)), 'success');
+					FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
 				}
 			} else {
 				if ($is_dir) {
-					FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Html::escape($path)), 'danger');
+					FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
 				} else {
-					FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::escape($path)), 'danger');
+					FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
 				}
 			}
 		}
@@ -992,8 +992,8 @@ class AdminController extends BaseController {
 			return [
 				$tree->getName(),
 				$media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
-				'<a href="' . Html::escape($media->url()) . '">' . $media->getFullName() . '</a>',
-				'<a href="' . Html::escape($individual->url()) . '">' . $individual->getFullName() . '</a>',
+				'<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>',
+				'<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>',
 				implode(' ', $facts),
 			];
 		}, $data);
@@ -1176,7 +1176,7 @@ class AdminController extends BaseController {
 	public function mergeRecords(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
-		$title = I18N::translate('Merge records') . ' — ' . Html::escape($tree->getTitle());
+		$title = I18N::translate('Merge records') . ' — ' . e($tree->getTitle());
 
 		$xref1 = $request->get('xref1', '');
 		$xref2 = $request->get('xref2', '');
@@ -1461,7 +1461,7 @@ class AdminController extends BaseController {
 	public function treePrivacyEdit(Request $request): Response {
 		/** @var Tree $tree */
 		$tree                 = $request->attributes->get('tree');
-		$title                = Html::escape($tree->getName()) . ' — ' . I18N::translate('Privacy');
+		$title                = e($tree->getName()) . ' — ' . I18N::translate('Privacy');
 		$all_tags             = $this->tagsForPrivacy($tree);
 		$privacy_constants    = $this->privacyConstants();
 		$privacy_restrictions = $this->privacyRestrictions($tree);
@@ -1542,14 +1542,14 @@ class AdminController extends BaseController {
 		$tree->setPreference('SHOW_LIVING_NAMES', $request->get('SHOW_LIVING_NAMES'));
 		$tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $request->get('SHOW_PRIVATE_RELATIONSHIPS'));
 
-		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', Html::escape($tree->getTitle()), 'success'));
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle()), 'success'));
 
 		// Coming soon...
 		if ((bool) $request->get('all_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', Html::escape($tree->getTitle())), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->getTitle())), 'success');
 		}
 		if ((bool) $request->get('new_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', Html::escape($tree->getTitle())), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->getTitle())), 'success');
 		}
 
 

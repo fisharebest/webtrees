@@ -186,7 +186,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$surnames = QueryName::surnames($tree, '', $alpha, true, true);
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
-			$out .= '<li class="sb_fam_surname_li"><a href="#" data-surname="' . Html::escape($surname) . '" data-alpha="' . Html::escape($alpha) . '" class="sb_fam_surname">' . Html::escape($surname) . '</a>';
+			$out .= '<li class="sb_fam_surname_li"><a href="#" data-surname="' . e($surname) . '" data-alpha="' . e($alpha) . '" class="sb_fam_surname">' . e($surname) . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}

@@ -33,7 +33,7 @@ switch (Filter::post('action')) {
 			if (File::mkdir($INDEX_DIRECTORY)) {
 				Site::setPreference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
 			} else {
-				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::escape($INDEX_DIRECTORY)), 'danger');
+				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', e($INDEX_DIRECTORY)), 'danger');
 			}
 			Site::setPreference('MEMORY_LIMIT', Filter::post('MEMORY_LIMIT'));
 			Site::setPreference('MAX_EXECUTION_TIME', Filter::post('MAX_EXECUTION_TIME'));
@@ -177,7 +177,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Data folder') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= Html::escape(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
+			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= e(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Data folder" site configuration setting */ I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>
 			</p>
@@ -199,7 +199,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Memory limit') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?= Html::escape(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?= get_cfg_var('memory_limit') ?>" maxlength="255">
+			<input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?= e(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?= get_cfg_var('memory_limit') ?>" maxlength="255">
 			<p class="small text-muted">
 				<?= /* I18N: %s is an amount of memory, such as 32MB */ I18N::translate('By default, your server allows scripts to use %s of memory.', get_cfg_var('memory_limit')) ?>
 				<?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
@@ -214,7 +214,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('PHP time limit') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?= Html::escape(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?= get_cfg_var('max_execution_time') ?>" maxlength="255">
+			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?= e(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?= get_cfg_var('max_execution_time') ?>" maxlength="255">
 			<p class="small text-muted">
 				<?= I18N::plural(
 					'By default, your server allows scripts to run for %s second.',
@@ -289,7 +289,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Session timeout') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?= Html::escape(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
+			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?= e(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
 				<?= I18N::translate('Leave this blank to use the default value.') ?>
@@ -319,7 +319,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Sender name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= Html::escape(Site::getPreference('SMTP_FROM_NAME')) ?>" placeholder="no-reply@localhost" maxlength="255">
+			<input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e(Site::getPreference('SMTP_FROM_NAME')) ?>" placeholder="no-reply@localhost" maxlength="255">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Sender name” site configuration setting */ I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
 			</p>
@@ -334,7 +334,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Server name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= Html::escape(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= e(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Server name” site configuration setting */ I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
 			</p>
@@ -347,7 +347,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Port number') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?= Html::escape(Site::getPreference('SMTP_PORT')) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
+			<input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?= e(Site::getPreference('SMTP_PORT')) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Port number" site configuration setting */ I18N::translate('By default, SMTP works on port 25.') ?>
 			</p>
@@ -375,7 +375,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Username') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?= Html::escape(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
+			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?= e(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The username required for authentication with the SMTP server.') ?>
 			</p>
@@ -414,7 +414,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Sending server name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= Html::escape(Site::getPreference('SMTP_HELO')) ?>" placeholder="localhost" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+			<input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= e(Site::getPreference('SMTP_HELO')) ?>" placeholder="localhost" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Sending server name" site configuration setting */ I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>
 			</p>
@@ -439,7 +439,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?= Html::escape(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
+			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?= e(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
 			</p>
@@ -464,7 +464,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
 		</label>
 		<div class="col-sm-9">
-			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?= Html::escape(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
+			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?= e(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.') ?>
 			</p>
@@ -521,7 +521,7 @@ echo Bootstrap4::breadcrumbs([
 				<input
 					type="text" class="form-control"
 					id="BING_WEBMASTER_ID" name="BING_WEBMASTER_ID" <?= dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
-					value="<?= Html::escape(Site::getPreference('BING_WEBMASTER_ID')) ?>"
+					value="<?= e(Site::getPreference('BING_WEBMASTER_ID')) ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 					>
 				<p class="small text-muted">
@@ -542,7 +542,7 @@ echo Bootstrap4::breadcrumbs([
 				<input
 					type="text" class="form-control"
 					id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" <?= dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled' ?>
-					value="<?= Html::escape(Site::getPreference('GOOGLE_WEBMASTER_ID')) ?>"
+					value="<?= e(Site::getPreference('GOOGLE_WEBMASTER_ID')) ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 				>
 				<p class="small text-muted">
@@ -560,7 +560,7 @@ echo Bootstrap4::breadcrumbs([
 				<span class="sr-only">Google Analytics</span>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="GOOGLE_ANALYTICS_ID" name="GOOGLE_ANALYTICS_ID" value="<?= Html::escape(Site::getPreference('GOOGLE_ANALYTICS_ID')) ?>" placeholder="UA-12345-6" maxlength="255" pattern="UA-[0-9]+-[0-9]+">
+				<input type="text" class="form-control" id="GOOGLE_ANALYTICS_ID" name="GOOGLE_ANALYTICS_ID" value="<?= e(Site::getPreference('GOOGLE_ANALYTICS_ID')) ?>" placeholder="UA-12345-6" maxlength="255" pattern="UA-[0-9]+-[0-9]+">
 				<p class="small text-muted">
 					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
@@ -575,7 +575,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?= Html::escape(Site::getPreference('PIWIK_SITE_ID')) ?>" maxlength="255" pattern="[0-9]+">
+				<input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?= e(Site::getPreference('PIWIK_SITE_ID')) ?>" maxlength="255" pattern="[0-9]+">
 			</div>
 		</div>
 
@@ -585,7 +585,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: A configuration setting */ I18N::translate('URL') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?= Html::escape(Site::getPreference('PIWIK_URL')) ?>" placeholder="example.com/piwik" maxlength="255">
+				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?= e(Site::getPreference('PIWIK_URL')) ?>" placeholder="example.com/piwik" maxlength="255">
 				<p class="small text-muted">
 					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
@@ -600,7 +600,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?= Html::escape(Site::getPreference('STATCOUNTER_PROJECT_ID')) ?>" maxlength="255" pattern="[0-9]+">
+				<input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?= e(Site::getPreference('STATCOUNTER_PROJECT_ID')) ?>" maxlength="255" pattern="[0-9]+">
 			</div>
 		</div>
 
@@ -610,7 +610,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= /* I18N: A configuration setting */ I18N::translate('Security code') ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?= Html::escape(Site::getPreference('STATCOUNTER_SECURITY_ID')) ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
+				<input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?= e(Site::getPreference('STATCOUNTER_SECURITY_ID')) ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
 				<p class="small text-muted">
 					<?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
 				</p>
