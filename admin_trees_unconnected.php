@@ -95,7 +95,7 @@ echo Bootstrap4::breadcrumbs([
 	<ul>
 		<?php foreach ($group as $individual): ?>
 			<li>
-				<a href="<?= $individual->getHtmlUrl() ?>"><?= $individual->getFullName() ?></a>
+				<a href="<?= e($individual->url()) ?>"><?= $individual->getFullName() ?></a>
 			</li>
 		<?php endforeach ?>
 	</ul>

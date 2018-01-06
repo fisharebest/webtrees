@@ -120,7 +120,7 @@ class EditSourceController extends BaseController {
 			'html' => view('modals/record-created', [
 				'title' => I18N::translate('The source has been created'),
 				'name'  => $record->getFullName(),
-				'url'   => $record->getRawUrl(),
+				'url'   => $record->url(),
 			])
 		]);
 	}

@@ -174,7 +174,7 @@ if ($action === 'submit') {
 				<div class="card mb-4">
 					<div class="card-header">
 						<h4 class="card-title">
-							<a href="<?= $media->getHtmlUrl() ?>"><?= $media->getFullName() ?></a>
+							<a href="<?= e($media->url()) ?>"><?= $media->getFullName() ?></a>
 						</h4>
 					</div>
 					<div class="card-body">
@@ -216,13 +216,13 @@ if ($action === 'submit') {
 					<div class="card-footer">
 						<?php
 						foreach ($media->linkedIndividuals('OBJE') as $individual) {
-							echo '<a href="' . $individual->getHtmlUrl() . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
+							echo '<a href="' . e($individual->url()) . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
 						}
 	foreach ($media->linkedFamilies('OBJE') as $family) {
-		echo '<a href="' . $family->getHtmlUrl() . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
+		echo '<a href="' . e($family->url()) . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
 	}
 	foreach ($media->linkedSources('OBJE') as $source) {
-		echo '<a href="' . $source->getHtmlUrl() . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
+		echo '<a href="' . e($source->url()) . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
 	} ?>
 					</div>
 				</div>

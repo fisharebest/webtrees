@@ -115,7 +115,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 				<td>
 					<span class="subheaders"> <?= $label ?></span>
-					<a href="<?= $family->getHtmlUrl() ?>"> - <?= I18N::translate('View this family') ?></a>
+					<a href="<?= e($family->url()) ?>"> - <?= I18N::translate('View this family') ?></a>
 				</td>
 			</tr>
 		</table>

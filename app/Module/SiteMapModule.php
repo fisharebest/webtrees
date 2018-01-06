@@ -246,7 +246,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			foreach ($records as $record) {
 				if ($record->canShowName()) {
 					$data .= '<url>';
-					$data .= '<loc>' . WT_BASE_URL . $record->getHtmlUrl() . '</loc>';
+					$data .= '<loc>' . WT_BASE_URL . e($record->url()) . '</loc>';
 					$chan = $record->getFirstFact('CHAN');
 					if ($chan) {
 						$date = $chan->getDate();

@@ -116,7 +116,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		?>
 		<table class="table table-sm wt-facts-table">
 		<caption class="text-center">
-			<a class="famnav_title" href="<?= $family->getHtmlUrl() ?>">
+			<a class="famnav_title" href="<?= e($family->url()) ?>">
 				<?= $title ?>
 			</a>
 		</caption>
@@ -135,7 +135,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 						</th>
 						<td>
 							<?php if ($spouse->canShow()): ?>
-							<a class="famnav_link" href="<?= $spouse->getHtmlUrl() ?>">
+							<a class="famnav_link" href="<?= e($spouse->url()) ?>">
 								<?= $spouse->getFullName() ?>
 							</a>
 							<div class="small">
@@ -162,7 +162,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 						</th>
 						<td>
 							<?php if ($child->canShow()): ?>
-							<a class="famnav_link" href="<?= $child->getHtmlUrl() ?>">
+							<a class="famnav_link" href="<?= e($child->url()) ?>">
 								<?= $child->getFullName() ?>
 							</a>
 							<div class="small">
@@ -191,7 +191,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	 */
 	private function getHTML($person, $showUnknown = false) {
 		if ($person instanceof Individual) {
-			return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
+			return sprintf(self::LNK, e($person->url()), $person->getFullName());
 		} elseif ($showUnknown) {
 			return sprintf(self::MSG, I18N::translate('unknown'));
 		} else {

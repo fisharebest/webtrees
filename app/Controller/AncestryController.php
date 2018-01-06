@@ -84,7 +84,7 @@ class AncestryController extends ChartController {
 			echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
 			if ($family->canShow()) {
 				foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
-					echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';
+					echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
 				}
 			}
 			echo '</span>';

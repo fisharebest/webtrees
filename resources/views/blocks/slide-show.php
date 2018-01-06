@@ -14,7 +14,7 @@
 	<figure class="text-center slide-show-figure">
 		<?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image']) ?>
 		<figcaption class="slide-show-figcaption">
-			<a href="<?= $media->getHtmlUrl() ?>">
+			<a href="<?= e($media->url()) ?>">
 				<b><?= $media->getFullName() ?></b>
 			</a>
 		</figcaption>
@@ -27,7 +27,7 @@
 	<ul class="slide-show-links">
 		<?php foreach ($media->linkedIndividuals('OBJE') as $individual): ?>
 			<?= I18N::translate('Individual') ?> —
-			<a href="<?= e($individual->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($individual->url()) ?>" class="slide-show-link">
 				<?= $individual->getFullName() ?>
 			</a>
 			<br>
@@ -35,7 +35,7 @@
 
 		<?php foreach ($media->linkedFamilies('OBJE') as $family): ?>
 			<?= I18N::translate('View this family') ?> —
-			<a href="<?= e($family->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($family->url()) ?>" class="slide-show-link">
 				<?= $family->getFullName() ?>
 			</a>
 			<br>
@@ -43,7 +43,7 @@
 
 		<?php foreach ($media->linkedSources('OBJE') as $source): ?>
 			<?= I18N::translate('View this source') ?> —
-			<a href="<?= e($source->getRawUrl()) ?>" class="slide-show-link">
+			<a href="<?= e($source->url()) ?>" class="slide-show-link">
 				<?= $source->getFullName() ?>
 			</a>
 			<br>

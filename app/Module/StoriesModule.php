@@ -379,7 +379,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					<td>
 						<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
 						<?php if ($individual): ?>
-						<a href="<?= $individual->getHtmlUrl() ?>#tab-stories">
+						<a href="<?= e($individual->url()) ?>#tab-stories">
 							<?= $individual->getFullName() ?>
 						</a>
 						<?php else: ?>
@@ -457,7 +457,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					if ($indi) {
 						if ($indi->canShow()) {
-							echo '<tr><td><a href="' . $indi->getHtmlUrl() . '#tab-stories">' . $story_title . '</a></td><td><a href="' . $indi->getHtmlUrl() . '#tab-stories">' . $indi->getFullName() . '</a></td></tr>';
+							echo '<tr><td><a href="' . e($indi->url()) . '#tab-stories">' . $story_title . '</a></td><td><a href="' . e($indi->url()) . '#tab-stories">' . $indi->getFullName() . '</a></td></tr>';
 						}
 					} else {
 						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';

@@ -219,11 +219,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
 		$html = '';
 		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '" class="list_item name2">' . $record->getFullName() . '</a>';
+			$html .= '<a href="' . e($record->url()) . '" class="list_item name2">' . $record->getFullName() . '</a>';
 			$html .= '<div class="indent" style="margin-bottom: 5px;">';
 			if ($record instanceof Individual) {
 				if ($record->getAddName()) {
-					$html .= '<a href="' . $record->getHtmlUrl() . '" class="list_item">' . $record->getAddName() . '</a>';
+					$html .= '<a href="' . e($record->url()) . '" class="list_item">' . $record->getAddName() . '</a>';
 				}
 			}
 
@@ -326,10 +326,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			$html .= '</td>';
 			$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+			$html .= '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
 			$addname = $record->getAddName();
 			if ($addname) {
-				$html .= '<div class="indent"><a href="' . $record->getHtmlUrl() . '">' . $addname . '</a></div>';
+				$html .= '<div class="indent"><a href="' . e($record->url()) . '">' . $addname . '</a></div>';
 			}
 			$html .= '</td>';
 			$html .= '<td data-sort="' . $record->lastChangeTimestamp(true) . '">' . $record->lastChangeTimestamp() . '</td>';

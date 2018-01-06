@@ -491,7 +491,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 									<td class="list_value">
 										<i class="<?= $icon ?>"></i>
 										<?php
-										echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
+										echo '<a href="', e($record->url()), '">', $record->getFullName(), '</a>';
 										?>
 									</td>
 									<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?= $xref ?>" class="icon-remove" title="<?= I18N::translate('Remove') ?>"></a></td>
@@ -678,7 +678,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					if (!empty($icon)) {
 						$out .= '<i class="' . $icon . '"></i>';
 					}
-					$out .= '<a href="' . $record->getHtmlUrl() . '">';
+					$out .= '<a href="' . e($record->url()) . '">';
 					if ($record instanceof Individual) {
 						$out .= $record->getSexImage();
 					}

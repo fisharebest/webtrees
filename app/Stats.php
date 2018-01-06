@@ -1458,7 +1458,7 @@ class Stats {
 				$result = $date->display();
 				break;
 			case 'name':
-				$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+				$result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
 				break;
 			case 'place':
 				$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
@@ -2272,7 +2272,7 @@ class Stats {
 				$result = I18N::number((int) ($row['age'] / 365.25));
 				break;
 			case 'name':
-				$result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+				$result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
 				break;
 		}
 
@@ -2341,9 +2341,9 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($person->canShow()) {
 				if ($type == 'list') {
-					$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
+					$top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
-					$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
+					$top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
@@ -2419,9 +2419,9 @@ class Stats {
 			}
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type === 'list') {
-				$top10[] = '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
+				$top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
 			} else {
-				$top10[] = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a> (' . $age . ')';
+				$top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
 			}
 		}
 		if ($type === 'list') {
@@ -2963,7 +2963,7 @@ class Stats {
 				}
 				break;
 			case 'name':
-				$result = '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+				$result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
 				break;
 			case 'place':
 				$fact = $record->getFirstFact($row['fact']);
@@ -3126,7 +3126,7 @@ class Stats {
 				}
 				break;
 			case 'name':
-				$result = '<a href="' . $family->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+				$result = '<a href="' . e($family->url()) . '">' . $person->getFullName() . '</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
@@ -3258,9 +3258,9 @@ class Stats {
 			if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
 				if ($family->canShow()) {
 					if ($type === 'list') {
-						$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
+						$top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 					} else {
-						$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
+						$top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')';
 					}
 				}
 				if (++$i === $total) {
@@ -3349,9 +3349,9 @@ class Stats {
 			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
+					$top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
 				} else {
-					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
+					$top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
@@ -3424,7 +3424,7 @@ class Stats {
 				}
 				break;
 			case 'name':
-				$result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+				$result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
@@ -4410,7 +4410,7 @@ class Stats {
 				$result = I18N::number($row['tot']);
 				break;
 			case 'name':
-				$result = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
+				$result = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
 				break;
 		}
 
@@ -4450,9 +4450,9 @@ class Stats {
 			$family = Family::getInstance($rows[$c]['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
+					$top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
 				} else {
-					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
+					$top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
 				}
 			}
 		}
@@ -4526,10 +4526,10 @@ class Stats {
 			$child2 = Individual::getInstance($fam['ch2'], $this->tree);
 			if ($type == 'name') {
 				if ($child1->canShow() && $child2->canShow()) {
-					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+					$return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
 					$return .= I18N::translate('and') . ' ';
-					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
-					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
+					$return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
+					$return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
 				} else {
 					$return = I18N::translate('This information is private and cannot be shown.');
 				}
@@ -4552,22 +4552,22 @@ class Stats {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canShow() && $child2->canShow()) {
 						$return = '<li>';
-						$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+						$return .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
 						$return .= I18N::translate('and') . ' ';
-						$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+						$return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
 						$return .= ' (' . $age . ')';
-						$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
+						$return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
 					}
 				} elseif (!$one && $child1->canShow() && $child2->canShow()) {
 					$return = '<li>';
-					$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+					$return .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
 					$return .= I18N::translate('and') . ' ';
-					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+					$return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
 					$return .= ' (' . $age . ')';
-					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
+					$return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
 					$return .= '</li>';
 					$top10[] = $return;
 				}
@@ -4576,7 +4576,7 @@ class Stats {
 					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= '<br>' . I18N::translate('and') . '<br>';
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= '<br><a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
+					$return .= '<br><a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
 
 					return $return;
 				} else {
@@ -5087,9 +5087,9 @@ class Stats {
 			$family = Family::getInstance($row['family'], $this->tree);
 			if ($family->canShow()) {
 				if ($type == 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a></li>';
+					$top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a></li>';
 				} else {
-					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>';
+					$top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
 				}
 			}
 		}
@@ -5246,9 +5246,9 @@ class Stats {
 			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
+					$top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
 				} else {
-					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
+					$top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
 				}
 			}
 		}

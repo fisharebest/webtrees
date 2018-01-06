@@ -63,7 +63,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		}
 
 		$links[] = [
-			'url'   => $individual->getRawUrl(),
+			'url'   => $individual->url(),
 			'title' => I18N::translate('Default individual'),
 			'icon'  => 'icon-indis',
 		];

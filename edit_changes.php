@@ -158,7 +158,7 @@ foreach ($rows as $row) {
 	$row->message_url = Html::url('message.php', [
 			'to'      => $row->user_name,
 			'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($row->record->getFullName()),
-			'body'    => WT_BASE_URL . $row->record->getRawUrl(),
+			'body'    => WT_BASE_URL . $row->record->url(),
 			'ged'     => $row->gedcom_name]
 	);
 
@@ -200,7 +200,7 @@ foreach ($rows as $row) {
 	<thead class="thead-default">
 		<tr>
 			<th colspan="5">
-				<a href="<?= Html::escape($record_changes[0]->record->getRawUrl()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
+				<a href="<?= Html::escape($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
 			</th>
 		</tr>
 		<tr>

@@ -326,7 +326,7 @@ class FunctionsPrintLists {
 					$class     = '';
 					$sex_image = '';
 				}
-				$html .= '<a ' . $title . ' href="' . $individual->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
+				$html .= '<a ' . $title . ' href="' . e($individual->url()) . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 			}
 			$html .= $individual->getPrimaryParentsNames('parents details1', 'none');
 			$html .= '</td>';
@@ -748,7 +748,7 @@ class FunctionsPrintLists {
 				}
 				// Only show married names if they are the name we are filtering by.
 				if ($name['type'] != '_MARNM' || $num == $husb->getPrimaryName()) {
-					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
+					$html .= '<a ' . $title . ' href="' . e($family->url()) . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 				}
 			}
 			// Husband parents
@@ -791,7 +791,7 @@ class FunctionsPrintLists {
 				}
 				// Only show married names if they are the name we are filtering by.
 				if ($name['type'] != '_MARNM' || $num == $wife->getPrimaryName()) {
-					$html .= '<a ' . $title . ' href="' . $family->getHtmlUrl() . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
+					$html .= '<a ' . $title . ' href="' . e($family->url()) . '"' . $class . '>' . $name['full'] . '</a>' . $sex_image . '<br>';
 				}
 			}
 			// Wife parents
@@ -985,9 +985,9 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				if ($n == $source->getPrimaryName()) {
-					$html .= '<a class="name2" href="' . $source->getHtmlUrl() . '">' . $name['full'] . '</a>';
+					$html .= '<a class="name2" href="' . e($source->url()) . '">' . $name['full'] . '</a>';
 				} else {
-					$html .= '<a href="' . $source->getHtmlUrl() . '">' . $name['full'] . '</a>';
+					$html .= '<a href="' . e($source->url()) . '">' . $name['full'] . '</a>';
 				}
 			}
 			$html .= '</td>';
@@ -1069,7 +1069,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Count of linked notes
-			$html .= '<td data-sort="' . Html::escape($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a></td>';
+			$html .= '<td data-sort="' . Html::escape($note->getSortName()) . '"><a class="name2" href="' . e($note->url()) . '">' . $note->getFullName() . '</a></td>';
 			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
@@ -1134,9 +1134,9 @@ class FunctionsPrintLists {
 					$html .= '<br>';
 				}
 				if ($n == $repository->getPrimaryName()) {
-					$html .= '<a class="name2" href="' . $repository->getHtmlUrl() . '">' . $name['full'] . '</a>';
+					$html .= '<a class="name2" href="' . e($repository->url()) . '">' . $name['full'] . '</a>';
 				} else {
-					$html .= '<a href="' . $repository->getHtmlUrl() . '">' . $name['full'] . '</a>';
+					$html .= '<a href="' . e($repository->url()) . '">' . $name['full'] . '</a>';
 				}
 			}
 			$html .= '</td>';
@@ -1215,7 +1215,7 @@ class FunctionsPrintLists {
 				$html .= '</td>';
 				// Media object name(s)
 				$html .= '<td data-sort="' . Html::escape($media_object->getSortName()) . '">';
-				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">' . $name . '</a>';
+				$html .= '<a href="' . e($media_object->url()) . '" class="list_item name2">' . $name . '</a>';
 				$html .= '</td>';
 
 				// Count of linked individuals
@@ -1503,7 +1503,7 @@ class FunctionsPrintLists {
 				$record = $fact->getParent();
 				$html .= '<tr>';
 				$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
-				$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+				$html .= '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
 				if ($record instanceof Individual) {
 					$html .= $record->getSexImage();
 				}
@@ -1611,7 +1611,7 @@ class FunctionsPrintLists {
 
 		foreach ($filtered_events as $fact) {
 			$record = $fact->getParent();
-			$html .= '<a href="' . $record->getHtmlUrl() . '" class="list_item name2">' . $record->getFullName() . '</a>';
+			$html .= '<a href="' . e($record->url()) . '" class="list_item name2">' . $record->getFullName() . '</a>';
 			if ($record instanceof Individual) {
 				$html .= $record->getSexImage();
 			}

@@ -101,7 +101,7 @@ class EditMediaController extends BaseController {
 
 		if ($file === '') {
 			FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
-			return new RedirectResponse($media->getRawUrl());
+			return new RedirectResponse($media->url());
 		}
 
 		$gedcom = '1 FILE ' . $file;
@@ -117,7 +117,7 @@ class EditMediaController extends BaseController {
 		// Accept the changes, to keep the filesystem in sync with the GEDCOM data.
 		FunctionsImport::acceptAllChanges($media->getxref(), $tree->getTreeId());
 
-		return new RedirectResponse($media->getRawUrl());
+		return new RedirectResponse($media->url());
 	}
 
 	/**
@@ -250,7 +250,7 @@ class EditMediaController extends BaseController {
 			FunctionsImport::acceptAllChanges($media->getxref(), $tree->getTreeId());
 		}
 
-		return new RedirectResponse($media->getRawUrl());
+		return new RedirectResponse($media->url());
 	}
 
 	/**
@@ -327,7 +327,7 @@ class EditMediaController extends BaseController {
 			'html' => view('modals/record-created', [
 				'title' => I18N::translate('The media object has been created'),
 				'name'  => $record->getFullName(),
-				'url'   => $record->getRawUrl(),
+				'url'   => $record->url(),
 			])
 		]);
 	}

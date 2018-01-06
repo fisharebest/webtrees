@@ -7,7 +7,7 @@
 				<?php endif ?>
 			<?php endforeach ?>
 			<figcaption class="figure-caption wt-album-tab-caption">
-				<a href="<?= e($media->getRawUrl()) ?>">
+				<a href="<?= e($media->url()) ?>">
 					<?= $media->getFullName() ?>
 				</a>
 			</figcaption>

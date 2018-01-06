@@ -209,7 +209,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		$out   = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
-				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
+				$out .= '<li><a href="' . e($person->url()) . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
@@ -254,7 +254,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			if ($person->canShowName()) {
-				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
+				$out .= '<li><a href="' . e($person->url()) . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {

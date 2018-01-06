@@ -754,13 +754,13 @@ class AdminController extends BaseController {
 				$row->change_id,
 				$row->change_time,
 				I18N::translate($row->status),
-				$record ? '<a href="' . $record->getHtmlUrl() . '">' . $record->getXref() . '</a>' : $row->xref,
+				$record ? '<a href="' . e($record->url()) . '">' . $record->getXref() . '</a>' : $row->xref,
 				'<div class="gedcom-data" dir="ltr">' .
 				preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
 					function ($match) use ($tree) {
 						$record = GedcomRecord::getInstance($match[1], $tree);
 
-						return $record ? '<a href="' . $record->getHtmlUrl() . '">' . $match[0] . '</a>' : $match[0];
+						return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
 					},
 					implode("\n", $diff_lines)
 				) .
@@ -992,8 +992,8 @@ class AdminController extends BaseController {
 			return [
 				$tree->getName(),
 				$media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
-				'<a href="' . Html::escape($media->getRawUrl()) . '">' . $media->getFullName() . '</a>',
-				'<a href="' . Html::escape($individual->getRawUrl()) . '">' . $individual->getFullName() . '</a>',
+				'<a href="' . Html::escape($media->url()) . '">' . $media->getFullName() . '</a>',
+				'<a href="' . Html::escape($individual->url()) . '">' . $individual->getFullName() . '</a>',
 				implode(' ', $facts),
 			];
 		}, $data);
@@ -1138,7 +1138,7 @@ class AdminController extends BaseController {
 			$media = $this->findMediaObjectsForMediaFile($original_path);
 
 			$media_links = array_map(function (Media $media) {
-				return '<a href="' . e($media->getRawUrl()) . '">' . $media->getFullName() . '</a>';
+				return '<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>';
 			}, $media);
 
 			$media_links = implode('<br>', $media_links);
@@ -1296,7 +1296,7 @@ class AdminController extends BaseController {
 		if (Auth::user()->getPreference('auto_accept')) {
 			$record2_name = $record2->getFullName();
 		} else {
-			$record2_name = '<a class="alert-link" href="' . $record2->getHtmlUrl() . '">' . $record2->getFullName() . '</a>';
+			$record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->getFullName() . '</a>';
 		}
 
 		// Update records that link to the one we will be removing.
@@ -1308,7 +1308,7 @@ class AdminController extends BaseController {
 				FlashMessages::addMessage(I18N::translate(
 				/* I18N: The placeholders are the names of individuals, sources, etc. */
 					'The link from “%1$s” to “%2$s” has been updated.',
-					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
+					'<a class="alert-link" href="' . e($record->url()) . '">' . $record->getFullName() . '</a>',
 					$record2_name
 				), 'info');
 				$gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->getGedcom());
@@ -1369,7 +1369,7 @@ class AdminController extends BaseController {
 		FlashMessages::addMessage(I18N::translate(
 		/* I18N: Records are individuals, sources, etc. */
 			'The records “%1$s” and “%2$s” have been merged.',
-			'<a class="alert-link" href="' . $record1->getHtmlUrl() . '">' . $record1->getFullName() . '</a>',
+			'<a class="alert-link" href="' . e($record1->url()) . '">' . $record1->getFullName() . '</a>',
 			$record2_name
 		), 'success');
 

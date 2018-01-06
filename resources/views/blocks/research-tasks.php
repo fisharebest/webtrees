@@ -25,7 +25,7 @@
 					<?= $task->getDate()->display() ?>
 				</td>
 				<td data-sort="<?= e($task->getParent()->getSortName()) ?>">
-					<a href="<?= $task->getParent()->getHtmlUrl() ?>">
+					<a href="<?= e($task->getParent()->url()) ?>">
 						<?= $task->getParent()->getFullName() ?>
 					</a>
 				</td>

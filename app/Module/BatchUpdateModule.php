@@ -247,7 +247,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 								<?= self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
 							</div>
 							<div class="row form-group">
-								<a class="lead" href="<?= $this->record->getHtmlUrl() ?>"><?= $this->record->getFullName() ?></a>
+								<a class="lead" href="<?= e($this->record->url()) ?>"><?= $this->record->getFullName() ?></a>
 								<?= $this->PLUGIN->getActionPreview($this->record) ?>
 							</div>
 							<div class="row form-group">

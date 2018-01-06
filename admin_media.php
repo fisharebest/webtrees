@@ -519,25 +519,25 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  * @return string HTML
  */
 function mediaObjectInfo(Media $media) {
-	$html = '<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . Html::escape($media->getNote()) . '</i></br><br>';
+	$html = '<b><a href="' . e($media->url()) . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . Html::escape($media->getNote()) . '</i></br><br>';
 
 	$linked = [];
 	foreach ($media->linkedIndividuals('OBJE') as $link) {
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
 	}
 	foreach ($media->linkedFamilies('OBJE') as $link) {
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
 	}
 	foreach ($media->linkedSources('OBJE') as $link) {
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
 	}
 	foreach ($media->linkedNotes('OBJE') as $link) {
 		// Invalid GEDCOM - you cannot link a NOTE to an OBJE
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
 	}
 	foreach ($media->linkedRepositories('OBJE') as $link) {
 		// Invalid GEDCOM - you cannot link a REPO to an OBJE
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
 	}
 	if (!empty($linked)) {
 		$html .= '<ul>';

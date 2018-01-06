@@ -175,7 +175,7 @@ class SearchController extends PageController {
 				if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
 					$record = GedcomRecord::getInstance($this->query, $this->tree());
 					if ($record && $record->canShowName()) {
-						header('Location: ' . $record->getRawUrl());
+						header('Location: ' . $record->url());
 						exit;
 					}
 				}
@@ -266,28 +266,28 @@ class SearchController extends PageController {
 				if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 					$indi = reset($this->myindilist);
 					if ($indi->canShowName()) {
-						header('Location: ' . $indi->getRawUrl());
+						header('Location: ' . $indi->url());
 						exit;
 					}
 				}
 				if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
 					$fam = reset($this->myfamlist);
 					if ($fam->canShowName()) {
-						header('Location: ' . $fam->getRawUrl());
+						header('Location: ' . $fam->url());
 						exit;
 					}
 				}
 				if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
 					$sour = reset($this->mysourcelist);
 					if ($sour->canShowName()) {
-						header('Location: ' . $sour->getRawUrl());
+						header('Location: ' . $sour->url());
 						exit;
 					}
 				}
 				if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
 					$note = reset($this->mynotelist);
 					if ($note->canShowName()) {
-						header('Location: ' . $note->getRawUrl());
+						header('Location: ' . $note->url());
 						exit;
 					}
 				}
@@ -494,7 +494,7 @@ class SearchController extends PageController {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action != 'replace') {
 			$indi = reset($this->myindilist);
-			header('Location: ' . $indi->getRawUrl());
+			header('Location: ' . $indi->url());
 			exit;
 		}
 		usort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
