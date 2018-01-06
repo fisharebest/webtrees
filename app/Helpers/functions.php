@@ -45,7 +45,7 @@ function csrf_token() {
  * @return string
  */
 function e(string $text): string {
-	return e($text);
+	return Html::escape($text);
 }
 
 /**
