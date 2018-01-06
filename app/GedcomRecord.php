@@ -538,7 +538,7 @@ class GedcomRecord {
 			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) {
 				return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
 			}, $value),
-			'full'   => '<span dir="auto">' . Html::escape($value) . '</span>', // This is used for display
+			'full'   => '<span dir="auto">' . e($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
 		];
 	}
@@ -614,7 +614,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function getFallBackName() {
-		return Html::escape($this->getXref());
+		return e($this->getXref());
 	}
 
 	/**

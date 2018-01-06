@@ -1354,7 +1354,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo '</th>';
 				echo '<td>';
 				if ($event['info']) {
-					echo '<div><span class="field">', Html::escape($event['info']), '</span></div>';
+					echo '<div><span class="field">', e($event['info']), '</span></div>';
 				}
 				if ($event['name']) {
 					echo '<div>', $event['name'], '</div>';
@@ -1777,7 +1777,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($place2->pl_place === 'Unknown') {
 				echo I18N::translate('unknown');
 			} else {
-				echo Html::escape($place2->pl_place);
+				echo e($place2->pl_place);
 			}
 			echo '</a>';
 			$parent[$level] = $place2->pl_place;
@@ -2194,7 +2194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php
 						foreach ($placefiles as $p => $placefile) {
 							unset($placefiles[$p]);
-							$p = Html::escape($placefile);
+							$p = e($placefile);
 							if (substr($placefile, 0, 1) == '/') {
 								$placefiles[$p] = substr($placefile, 1);
 							} else {
@@ -2624,7 +2624,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($place_id === 0 ? $parent_id : $place_id);
 		foreach ($hierarchy as $id => $name) {
-			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
+			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => e($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, $place_id === 0 ? I18N::translate('Add') : I18N::translate('Edit'));
 
@@ -3021,7 +3021,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?= I18N::translate('Place') ?>
 				</label>
 				<div class="col-sm-6">
-					<input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?= Html::escape($record->pl_place) ?>" class="form-control" required>
+					<input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?= e($record->pl_place) ?>" class="form-control" required>
 
 					<label for="new_pl_name">
 						<a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">
@@ -3134,7 +3134,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			[0 => I18N::translate('Geographic data')] +
 			$this->placeIdToHierarchy($parent_id);
 		foreach (array_slice($hierarchy, 0, -1, true) as $id => $name) {
-			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => Html::escape($name)];
+			$breadcrumbs += ['module.php?mod=googlemap&mod_action=admin_places&parent_id=' . $id . '&inactive=' . $inactive => e($name)];
 		}
 		echo Bootstrap4::breadcrumbs($breadcrumbs, end($hierarchy));
 
@@ -3236,7 +3236,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$highestIndex++;
 							Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom) VALUES (?, ?, ?, ?, ?)")
 								->execute([$highestIndex, $parent_id, $i, $escparent, $default_zoom_level[$i]]);
-							echo Html::escape($escparent), '<br>';
+							echo e($escparent), '<br>';
 							$parent_id = $highestIndex;
 						} else {
 							$parent_id = $row->pl_id;
@@ -3247,12 +3247,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$highestIndex++;
 							Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
 								->execute([$highestIndex, $parent_id, $i, $escparent, $place['long'], $place['lati'], $default_zoom_level[$i]]);
-							echo Html::escape($escparent), '<br>';
+							echo e($escparent), '<br>';
 						} else {
 							if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati'] != '0' && $place['long'] != '0') {
 								Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
 									->execute([$place['lati'], $place['long'], $row->pl_id]);
-								echo Html::escape($escparent), '<br>';
+								echo e($escparent), '<br>';
 							}
 						}
 					}
@@ -3296,7 +3296,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php if ($place['place'] === 'Unknown'): ?>
 									<?= I18N::translate('unknown') ?>
 								<?php else: ?>
-									<?= Html::escape($place['place']) ?>
+									<?= e($place['place']) ?>
 								<?php endif ?>
 								<?php if ($place['missing'] > 0): ?>
 								<span class="badge badge-pill badge-warning">
@@ -3320,7 +3320,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</td>
 						<td>
 								<?php if ($place['icon']): ?>
-									<img src="<?= WT_MODULES_DIR ?>googlemap/places/flags/<?= Html::escape($place['icon']) ?>" width="25" height="15" title="<?= Html::escape($place['icon']) ?>" alt="<?= I18N::translate('Flag') ?>">
+									<img src="<?= WT_MODULES_DIR ?>googlemap/places/flags/<?= e($place['icon']) ?>" width="25" height="15" title="<?= e($place['icon']) ?>" alt="<?= I18N::translate('Flag') ?>">
 								<?php else: ?>
 									<img src="<?= WT_MODULES_DIR ?>googlemap/images/mm_20_red.png">
 								<?php endif ?>

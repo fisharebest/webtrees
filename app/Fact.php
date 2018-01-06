@@ -267,7 +267,7 @@ class Fact {
 			case 'FACT':
 				if ($this->getAttribute('TYPE') !== '') {
 					// Custom FACT/EVEN - with a TYPE
-					return I18N::translate(Html::escape($this->getAttribute('TYPE')));
+					return I18N::translate(e($this->getAttribute('TYPE')));
 				}
 				// no break - drop into next case
 			default:
@@ -384,7 +384,7 @@ class Fact {
 			// Fact value
 			$value = $this->getValue();
 			if ($value !== '' && $value !== 'Y') {
-				$attributes[] = '<span dir="auto">' . Html::escape($value) . '</span>';
+				$attributes[] = '<span dir="auto">' . e($value) . '</span>';
 			}
 			// Fact date
 			$date = $this->getDate();

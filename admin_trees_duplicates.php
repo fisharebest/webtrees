@@ -165,7 +165,7 @@ echo Bootstrap4::breadcrumbs([
 		<?php endforeach ?>
 		<?php if (count($duplicates) === 2): ?>
 		—
-		<a href="<?= Html::escape(route('merge-records', ['ged' => $WT_TREE->getName(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
+		<a href="<?= e(route('merge-records', ['ged' => $WT_TREE->getName(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
 			<?= I18N::translate('Merge') ?>
 		</a>
 		<?php endif ?>

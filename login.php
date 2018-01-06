@@ -186,10 +186,10 @@ switch ($action) {
 		}
 	echo '<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="', Html::escape($url), '">';
+		<input type="hidden" name="url" value="', e($url), '">';
 		echo '<div>
 			<label for="username">', I18N::translate('Username'),
-			'<input type="text" id="username" name="username" value="', Html::escape($username), '" class="formField" autofocus>
+			'<input type="text" id="username" name="username" value="', e($username), '" class="formField" autofocus>
 			</label>
 		</div>
 		<div>
@@ -266,9 +266,9 @@ switch ($action) {
 				View::make('emails/password-reset-html', ['user' => $user, 'new_password' => $user_new_pw])
 			);
 
-			FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', Html::escape($username)), 'success');
+			FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', e($username)), 'success');
 		} else {
-			FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Html::escape($username)), 'danger');
+			FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', e($username)), 'danger');
 		}
 		header('Location: login.php');
 
@@ -397,7 +397,7 @@ switch ($action) {
 				<div>
 					<label for="user_realname">
 						<?= I18N::translate('Real name') ?>
-							<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?= Html::escape($user_realname) ?>" autofocus>
+							<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?= e($user_realname) ?>" autofocus>
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
@@ -407,7 +407,7 @@ switch ($action) {
 				<div>
 					<label for="user_email">
 						<?= I18N::translate('Email address') ?>
-							<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?= Html::escape($user_email) ?>">
+							<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?= e($user_email) ?>">
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
@@ -417,7 +417,7 @@ switch ($action) {
 				<div>
 					<label for="username">
 						<?= I18N::translate('Username') ?>
-							<input type="text" id="username" name="username" required maxlength="32" value="<?php Html::escape($username) ?>" autocomplete="username">
+							<input type="text" id="username" name="username" required maxlength="32" value="<?php e($username) ?>" autocomplete="username">
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
@@ -430,7 +430,7 @@ switch ($action) {
 						<input required
 							type="password"
 							id="user_password01" name="user_password01"
-							value="<?= Html::escape($user_password01) ?>"
+							value="<?= e($user_password01) ?>"
 							placeholder="<?= /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)) ?>"
 							pattern="<?=  WT_REGEX_PASSWORD ?>"
 							onchange="form.user_password02.pattern = regex_quote(this.value);"
@@ -447,7 +447,7 @@ switch ($action) {
 						<input required
 							type="password"
 							id="user_password02" name="user_password02"
-							value="<?= Html::escape($user_password02) ?>"
+							value="<?= e($user_password02) ?>"
 							placeholder="<?= /* I18N: placeholder text for repeat-password field */ I18N::translate('Type the password again.') ?>"
 							pattern="<?= WT_REGEX_PASSWORD ?>"
 						>
@@ -464,7 +464,7 @@ switch ($action) {
 							cols="50" rows="5"
 							id="user_comments" name="user_comments"
 							placeholder="<?php /* I18N: placeholder text for registration-comments field */ I18N::translate('Explain why you are requesting an account.') ?>"
-						><?= Html::escape($user_comments) ?></textarea>
+						><?= e($user_comments) ?></textarea>
 					</label>
 					<p class="small text-muted">
 						<?= I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.') ?>

@@ -553,7 +553,7 @@ $ajax_url = Html::url('calendar.php', [
 $controller->pageHeader();
 
 ?>
-	<div class="wt-ajax-load wt-page-content" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>
+	<div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e($ajax_url) ?>"></div>
 	<?php
 
 /**

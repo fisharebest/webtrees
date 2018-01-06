@@ -49,7 +49,7 @@ class HomePageController extends BaseController {
 		$access_level = Auth::accessLevel($tree);
 		$main_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'main');
 		$side_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'side');
-		$title        = Html::escape($tree->getTitle());
+		$title        = e($tree->getTitle());
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
 		global $WT_TREE, $ctype, $controller;
@@ -391,7 +391,7 @@ class HomePageController extends BaseController {
 		$main_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'main');
 		$side_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
-		$title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . Html::escape($user->getUserName());
+		$title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->getUserName());
 		$url_cancel  = Html::url('admin_users.php', []);
 		$url_save    = route('user-page-user-update', ['user_id' => $user_id]);
 

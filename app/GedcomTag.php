@@ -1383,7 +1383,7 @@ class GedcomTag {
 				}
 
 				// Still no translation? Highlight this as an error
-				return '<span class="error" title="' . I18N::translate('Unrecognized GEDCOM code') . '">' . Html::escape($tag) . '</span>';
+				return '<span class="error" title="' . I18N::translate('Unrecognized GEDCOM code') . '">' . e($tag) . '</span>';
 		}
 	}
 

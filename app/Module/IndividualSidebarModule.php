@@ -186,7 +186,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		$surnames = QueryName::surnames($tree, '', $alpha, true, false);
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
-			$out .= '<li class="sb_indi_surname_li"><a href="#" data-surname="' . Html::escape($surname) . '" data-alpha="' . Html::escape($alpha) . '" class="sb_indi_surname">' . Html::escape($surname) . '</a>';
+			$out .= '<li class="sb_indi_surname_li"><a href="#" data-surname="' . e($surname) . '" data-alpha="' . e($alpha) . '" class="sb_indi_surname">' . e($surname) . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}

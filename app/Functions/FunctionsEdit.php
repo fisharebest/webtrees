@@ -694,11 +694,11 @@ class FunctionsEdit {
 				}
 			}
 		} elseif ($fact === 'NPFX' || $fact === 'NSFX' || $fact === 'SPFX' || $fact === 'NICK') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="updatewholename()">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="updatewholename()">';
 		} elseif ($fact === 'GIVN') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
 		} elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
 		} elseif ($fact === 'ADOP') {
 			$html .= Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
@@ -716,7 +716,7 @@ class FunctionsEdit {
 			}
 		} elseif ($fact === 'DATE') {
 			$html .= '<div class="input-group">';
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" onchange="valid_date(this)">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this)">';
 			$html .= self::inputAddonCalendar($id);
 			$html .= self::inputAddonHelp('DATE');
 			$html .= '</div>';
@@ -729,9 +729,9 @@ class FunctionsEdit {
 				self::formControlFamily(Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
 		} elseif ($fact === 'LONG') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'E\', \'W\')">';
 		} elseif ($fact === 'NOTE' && $islink) {
 			$html .=
 				'<div class="input-group">' .
@@ -749,7 +749,7 @@ class FunctionsEdit {
 				self::formControlMediaObject(Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
 		} elseif ($fact === 'PEDI') {
 			$html .= Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
@@ -809,7 +809,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'TEMP') {
 			$html .= Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'TIME') {
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '">';
 		} elseif ($fact === '_WT_USER') {
 			$html .= Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === '_PRIM') {
@@ -820,7 +820,7 @@ class FunctionsEdit {
 			$html .= '<select name="text[]"><option selected value="" ></option>';
 			$selectedValue = strtolower($value);
 			if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-				$html .= '<option selected value="' . Html::escape($value) . '" >' . Html::escape($value) . '</option>';
+				$html .= '<option selected value="' . e($value) . '" >' . e($value) . '</option>';
 			}
 			foreach (['' => ''] + GedcomTag::getFileFormTypes() + [] as $typeName => $typeValue) {
 				$html .= '<option value="' . $typeName . '" ';
@@ -833,17 +833,17 @@ class FunctionsEdit {
 		} elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
 				$html .= '<div class="input-group">';
-				$html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" dir="auto">' . Html::escape($value) . '</textarea>';
+				$html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" dir="auto">' . e($value) . '</textarea>';
 				$html .= self::inputAddonKeyboard($id);
 				$html .= '</div>';
 			} else {
 				// If using GEDFact-assistant window
-				$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . Html::escape($value) . '">';
+				$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '">';
 			}
 		} else {
 			// Populated in javascript from sub-tags
-			$html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" oninput="updateTextName(\'' . $id . '\')" value="' . Html::escape($value) . '" class="' . $fact . '">';
-			$html .= '<span id="' . $id . '_display" dir="auto">' . Html::escape($value) . '</span>';
+			$html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" oninput="updateTextName(\'' . $id . '\')" value="' . e($value) . '" class="' . $fact . '">';
+			$html .= '<span id="' . $id . '_display" dir="auto">' . e($value) . '</span>';
 			$html .= ' <a href="#edit_name" onclick="convertHidden(\'' . $id . '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list

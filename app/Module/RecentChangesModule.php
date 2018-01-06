@@ -232,7 +232,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			if ($timestamp !== '') {
 				if ($show_user) {
 					$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-						I18N::translate('Changed on %1$s by %2$s', $timestamp, Html::escape($record->lastChangeUser()));
+						I18N::translate('Changed on %1$s by %2$s', $timestamp, e($record->lastChangeUser()));
 				} else {
 					$html .= /* I18N: [a record was] Changed on <date/time> */
 						I18N::translate('Changed on %1$s', $timestamp);
@@ -325,7 +325,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 					break;
 			}
 			$html .= '</td>';
-			$html .= '<td data-sort="' . Html::escape($record->getSortName()) . '">';
+			$html .= '<td data-sort="' . e($record->getSortName()) . '">';
 			$html .= '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
 			$addname = $record->getAddName();
 			if ($addname) {
@@ -333,7 +333,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			$html .= '</td>';
 			$html .= '<td data-sort="' . $record->lastChangeTimestamp(true) . '">' . $record->lastChangeTimestamp() . '</td>';
-			$html .= '<td>' . Html::escape($record->lastChangeUser()) . '</td>';
+			$html .= '<td>' . e($record->lastChangeUser()) . '</td>';
 			$html .= '</tr>';
 		}
 

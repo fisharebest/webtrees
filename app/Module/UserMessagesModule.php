@@ -88,13 +88,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		if (!empty($users)) {
 			$url = route('user-page', ['ged' => $WT_TREE->getName()]);
 			$content .= '<form action="message.php" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
-			$content .= '<input type="hidden" name="ged" value="' . Html::escape($WT_TREE->getName()) . '">';
-			$content .= '<input type="hidden" name="url" value="' . Html::escape($url) . '">';
+			$content .= '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
+			$content .= '<input type="hidden" name="url" value="' . e($url) . '">';
 			$content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
 			$content .= '<select id="to" name="to">';
 			$content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
 			foreach ($users as $user) {
-				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Html::escape($user->getUserName()), Html::escape($user->getRealName()));
+				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', e($user->getUserName()), e($user->getRealName()));
 			}
 			$content .= '</select>';
 			$content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
@@ -113,7 +113,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			foreach ($messages as $message) {
 				$content .= '<tr>';
 				$content .= '<td class="list_value_wrap center"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
-				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Html::escape($message->subject) . '</b></a></td>';
+				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . e($message->subject) . '</b></a></td>';
 				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
@@ -121,7 +121,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$content .= $user->getRealNameHtml();
 					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
-					$content .= '<a href="mailto:' . Html::escape($message->sender) . '">' . Html::escape($message->sender) . '</a>';
+					$content .= '<a href="mailto:' . e($message->sender) . '">' . e($message->sender) . '</a>';
 				}
 				$content .= '</td>';
 				$content .= '</tr>';

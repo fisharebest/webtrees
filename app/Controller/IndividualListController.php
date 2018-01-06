@@ -542,7 +542,7 @@ class IndividualListController extends PageController {
 				return I18N::translateContext('Unknown given name', '…');
 				break;
 			default:
-				return Html::escape($initial);
+				return e($initial);
 				break;
 		}
 	}
@@ -563,7 +563,7 @@ class IndividualListController extends PageController {
 				return I18N::translate('None');
 				break;
 			default:
-				return Html::escape($initial);
+				return e($initial);
 				break;
 		}
 	}

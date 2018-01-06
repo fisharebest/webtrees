@@ -132,7 +132,7 @@ function checkform(frm) {
 			<?= I18N::translate('Username') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="username" name="username" value="<?= Html::escape(Auth::user()->getUserName()) ?>" dir="auto" aria-describedby="username-description" required>
+			<input type="text" class="form-control" id="username" name="username" value="<?= e(Auth::user()->getUserName()) ?>" dir="auto" aria-describedby="username-description" required>
 			<p class="small text-muted" id="username-description">
 				<?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
 			</p>
@@ -144,7 +144,7 @@ function checkform(frm) {
 			<?= I18N::translate('Real name') ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="real-name" name="real-name" value="<?= Html::escape(Auth::user()->getRealName()) ?>" dir="auto" aria-describedby="real-name-description" required>
+			<input type="text" class="form-control" id="real-name" name="real-name" value="<?= e(Auth::user()->getRealName()) ?>" dir="auto" aria-describedby="real-name-description" required>
 			<p class="small text-muted" id="username-description">
 				<?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
 			</p>
@@ -233,7 +233,7 @@ function checkform(frm) {
 			<?= I18N::translate('Email address') ?>
 		</label>
 		<div class="col-sm-9">
-			<input class="form-control" type="email" id="email" name="email" value="<?= Html::escape(Auth::user()->getEmail()) ?>" aria-describedby="email-description">
+			<input class="form-control" type="email" id="email" name="email" value="<?= e(Auth::user()->getEmail()) ?>" aria-describedby="email-description">
 			<p class="small text-muted" id="email-description">
 				<?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
 			</p>
@@ -248,7 +248,7 @@ function checkform(frm) {
 		<div class="col-sm-9">
 			<select class="form-control" id="theme" name="theme" aria-describedby="theme-description">
 				<option value="">
-					<?= Html::escape(/* I18N: default option in list of themes */ I18N::translate('<default theme>')) ?>
+					<?= e(/* I18N: default option in list of themes */ I18N::translate('<default theme>')) ?>
 				</option>
 				<?php foreach (Theme::themeNames() as $theme_id => $theme_name): ?>
 					<option value="<?= $theme_id ?>" <?= $theme_id === Auth::user()->getPreference('theme') ? 'selected' : '' ?>>
@@ -302,7 +302,7 @@ function checkform(frm) {
 	<?= Filter::getCsrf() ?>
 	<div class="row form-group">
 		<div class="col-sm-9 offset-sm-3">
-			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', Html::escape(Auth::user()->getUserName())) ?>" onclick="return confirm(this.dataset.confirm);">
+			<input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e(Auth::user()->getUserName())) ?>" onclick="return confirm(this.dataset.confirm);">
 		</div>
 	</div>
 </form>

@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -150,13 +149,13 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'<div class="row form-group">' .
 			'<label class="col-sm-3 col-form-label">' . I18N::translate('Search text/pattern') . '</label>' .
 			'<div class="col-sm-9">' .
-			'<input class="form-control" name="search" size="40" value="' . Html::escape($this->search) .
+			'<input class="form-control" name="search" size="40" value="' . e($this->search) .
 			'" onchange="this.form.submit();">' .
 			'</div></div>' .
 			'<div class="row form-group">' .
 			'<label class="col-sm-3 col-form-label">' . I18N::translate('Replacement text') . '</label>' .
 			'<div class="col-sm-9">' .
-			'<input class="form-control" name="replace" size="40" value="' . Html::escape($this->replace) .
+			'<input class="form-control" name="replace" size="40" value="' . e($this->replace) .
 			'" onchange="this.form.submit();"></td></tr>' .
 			'</div></div>' .
 			'<div class="row form-group">' .

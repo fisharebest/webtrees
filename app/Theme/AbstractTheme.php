@@ -332,9 +332,9 @@ abstract class AbstractTheme {
 			case 'none':
 				return '';
 			case 'mailto':
-				return '<a href="mailto:' . Html::escape($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+				return '<a href="mailto:' . e($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 			default:
-				return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . Html::escape(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+				return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . e(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
@@ -1751,7 +1751,7 @@ abstract class AbstractTheme {
 				'url' => $this->request->getRequestUri()
 			]);
 
-			$url = Html::escape($url);
+			$url = e($url);
 
 			$menu = new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
 
@@ -1876,7 +1876,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function metaCsrf() {
-		return '<meta name="csrf" content="' . Html::escape(Filter::getCsrfToken()) . '">';
+		return '<meta name="csrf" content="' . e(Filter::getCsrfToken()) . '">';
 	}
 
 	/**
@@ -2176,6 +2176,6 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function title($title) {
-		return '<title>' . Html::escape($title) . '</title>';
+		return '<title>' . e($title) . '</title>';
 	}
 }

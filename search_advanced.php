@@ -143,7 +143,7 @@ $controller->pageHeader();
 					?>
 					<div class="col-sm-9 wt-page-options-value form-row mx-0">
 						<input class="form-control form-control-sm col-9" type="text" id="value<?= $i ?>" name="values[<?= $i ?>]"
-					value="<?= Html::escape($controller->getValue($i)) ?>">
+					value="<?= e($controller->getValue($i)) ?>">
 						<?php if (preg_match('/^NAME:/', $currentFieldSearch) > 0): ?>
 							<select class="form-control form-control-sm col-3" name="fields[<?= $i ?>]">
 								<option value="<?= $currentField ?>:EXACT" <?php if (preg_match('/:EXACT$/', $currentFieldSearch) > 0) echo 'selected' ?>>

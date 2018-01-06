@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -83,7 +82,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 
 		foreach ($articles as $article) {
 			$content .= '<div class="journal_box">';
-			$content .= '<div class="news_title">' . Html::escape($article->subject) . '</div>';
+			$content .= '<div class="news_title">' . e($article->subject) . '</div>';
 			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($article->updated) . '</div>';
 			if ($article->body == strip_tags($article->body)) {
 				$article->body = nl2br($article->body, false);
@@ -91,7 +90,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= $article->body;
 			$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('Edit') . '</a>';
 			$content .= ' | ';
-			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
+			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
 			$content .= '</div><br>';
 		}
 

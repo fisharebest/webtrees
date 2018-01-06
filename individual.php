@@ -84,7 +84,7 @@ $user_link = '';
 if (Auth::isAdmin()) {
 	$user = User::findByIndividual($controller->record);
 	if ($user) {
-		$user_link = ' —  <a href="admin_users.php?filter=' . Html::escape($user->getUserName()) . '">' . Html::escape($user->getUserName()) . '</a>';
+		$user_link = ' —  <a href="admin_users.php?filter=' . e($user->getUserName()) . '">' . e($user->getUserName()) . '</a>';
 	};
 }
 
@@ -166,13 +166,13 @@ $individual_media = array_filter($individual_media);
 
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
-						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 							<?= I18N::translate('Re-order media') ?>
 						</a></div>
 					<?php endif ?>
 
 					<?php if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
-						<div><a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 							<?= I18N::translate('Add a media object') ?>
 						</a></div>
 					<?php endif ?>
@@ -192,17 +192,17 @@ $individual_media = array_filter($individual_media);
 				<div class="card">
 					<div class="card-header" role="tab" id="name-header-add">
 						<div class="card-title mb-0">
-							<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+							<a href="<?= e(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 								<?= I18N::translate('Add a name') ?>
 							</a>
 							<?php if (count($controller->record->getFacts('NAME')) > 1): ?>
-								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 									<?= I18N::translate('Re-order names') ?>
 								</a>
 							<?php endif ?>
 
 							<?php if (count($controller->record->getFacts('SEX')) === 0): ?>
-								<a href="<?= Html::escape(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
+								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
 									<?= I18N::translate('Edit the gender') ?>
 								</a>
 							<?php endif ?>

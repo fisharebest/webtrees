@@ -312,11 +312,11 @@ switch ($action) {
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . Html::escape($unused_file) . '" data-tree="' . Html::escape($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . Html::escape($media_tree) . '<p>';
+						'<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($unused_file) . '" data-tree="' . e($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
 				}
 			}
 
-			$delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', Html::escape($unused_file)) . '" data-file="' . Html::escape($media_path . $unused_file) . '" data-folder="' . Html::escape($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+			$delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-file="' . e($media_path . $unused_file) . '" data-folder="' . e($media_folder) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(\'admin_media.php\',{delete: this.dataset.file, media_folder: this.dataset.folder},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = [
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
@@ -480,7 +480,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 function mediaFileInfo($media_folder, $media_path, $file) {
 	$html = '<dl>';
 	$html .= '<dt>' . I18N::translate('Filename') . '</dt>';
-	$html .= '<dd>' . Html::escape($file) . '</dd>';
+	$html .= '<dd>' . e($file) . '</dd>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	try {
@@ -519,7 +519,7 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  * @return string HTML
  */
 function mediaObjectInfo(Media $media) {
-	$html = '<b><a href="' . e($media->url()) . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . Html::escape($media->getNote()) . '</i></br><br>';
+	$html = '<b><a href="' . e($media->url()) . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
 
 	$linked = [];
 	foreach ($media->linkedIndividuals('OBJE') as $link) {
@@ -625,16 +625,16 @@ echo Bootstrap4::breadcrumbs([
 						<?php if (count($media_folders) > 1): ?>
 						<?= WT_DATA_DIR . Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
 						<?php else: ?>
-						<?= WT_DATA_DIR . Html::escape($media_folder) ?>
-						<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
+						<?= WT_DATA_DIR . e($media_folder) ?>
+						<input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
 						<?php endif ?>
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
 					<?= Bootstrap4::select($media_paths, $media_path, ['name' => 'media_path', 'onchange' => 'this.form.submit();']) ?>
 					<?php else: ?>
-					<?= Html::escape($media_path) ?>
-					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
+					<?= e($media_path) ?>
+					<input type="hidden" name="media_path" value="<?= e($media_path) ?>">
 					<?php endif ?>
 
 					<label>
@@ -650,8 +650,8 @@ echo Bootstrap4::breadcrumbs([
 					<?php elseif ($files === 'external'): ?>
 
 					<?= I18N::translate('External media files have a URL instead of a filename.') ?>
-					<input type="hidden" name="media_folder" value="<?= Html::escape($media_folder) ?>">
-					<input type="hidden" name="media_path" value="<?= Html::escape($media_path) ?>">
+					<input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
+					<input type="hidden" name="media_path" value="<?= e($media_path) ?>">
 
 					<?php endif ?>
 				</td>

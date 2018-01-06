@@ -233,7 +233,7 @@ class TimelineController extends PageController {
 				echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
 			}
 		}
-		echo ' ' . Html::escape($desc);
+		echo ' ' . e($desc);
 		if (!$event->getPlace()->isEmpty()) {
 			echo ' — ' . $event->getPlace()->getShortName();
 		}

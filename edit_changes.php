@@ -174,7 +174,7 @@ foreach ($rows as $row) {
 	<?= I18N::translate('There are no pending changes.') ?>
 </p>
 <p>
-	<a class="btn btn-primary" href="<?= Html::escape($url) ?>">
+	<a class="btn btn-primary" href="<?= e($url) ?>">
 		<?= I18N::translate('continue') ?>
 	</a>
 </p>
@@ -200,7 +200,7 @@ foreach ($rows as $row) {
 	<thead class="thead-default">
 		<tr>
 			<th colspan="5">
-				<a href="<?= Html::escape($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
+				<a href="<?= e($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
 			</th>
 		</tr>
 		<tr>
@@ -227,8 +227,8 @@ foreach ($rows as $row) {
 				<?php endforeach ?>
 			</td>
 			<td>
-				<a href="<?= Html::escape($record_change->message_url) ?>" title="<?= I18N::translate('Send a message') ?>">
-					<?= Html::escape($record_change->real_name)?> - <?= Html::escape($record_change->user_name) ?>
+				<a href="<?= e($record_change->message_url) ?>" title="<?= I18N::translate('Send a message') ?>">
+					<?= e($record_change->real_name)?> - <?= e($record_change->user_name) ?>
 				</a>
 			</td>
 			<td>

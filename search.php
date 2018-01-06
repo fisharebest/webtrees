@@ -71,7 +71,7 @@ function checknames(frm) {
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
 				<div class="input-group input-group-sm">
-					<input id="query" class="form-control form-control-sm" type="text" name="query" value="<?= Html::escape($controller->query) ?>" autofocus>
+					<input id="query" class="form-control form-control-sm" type="text" name="query" value="<?= e($controller->query) ?>" autofocus>
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
@@ -178,7 +178,7 @@ function checknames(frm) {
 				<?= I18N::translate('Search for') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<input class="form-control form-control-sm" name="query" value="<?= Html::escape($controller->query) ?>" type="text" autofocus>
+				<input class="form-control form-control-sm" name="query" value="<?= e($controller->query) ?>" type="text" autofocus>
 			</div>
 		</div>
 		<div class="row form-group">
@@ -186,7 +186,7 @@ function checknames(frm) {
 				<?= I18N::translate('Replace with') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<input class="form-control form-control-sm" name="replace" value="<?= Html::escape($controller->replace) ?>" type="text">
+				<input class="form-control form-control-sm" name="replace" value="<?= e($controller->replace) ?>" type="text">
 			</div>
 		</div>
 			<script>
@@ -256,7 +256,7 @@ function checknames(frm) {
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
 				<div class="input-group input-group-sm">
-					<input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= Html::escape($controller->firstname) ?>" autofocus>
+					<input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= e($controller->firstname) ?>" autofocus>
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
@@ -271,7 +271,7 @@ function checknames(frm) {
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
 				<div class="input-group input-group-sm">
-					<input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= Html::escape($controller->lastname) ?>">
+					<input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= e($controller->lastname) ?>">
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
@@ -285,7 +285,7 @@ function checknames(frm) {
 				<?= I18N::translate('Place') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<input class="form-control form-control-sm" type="text" name="place" id="place" value="<?= Html::escape($controller->place) ?>">
+				<input class="form-control form-control-sm" type="text" name="place" id="place" value="<?= e($controller->place) ?>">
 			</div>
 		</div>
 		<div class="row form-group">
@@ -293,7 +293,7 @@ function checknames(frm) {
 				<?= I18N::translate('Year') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<input class="form-control form-control-sm" type="text" name="year" id="year" value="<?= Html::escape($controller->year) ?>">
+				<input class="form-control form-control-sm" type="text" name="year" id="year" value="<?= e($controller->year) ?>">
 			</div>
 		</div>
 		<fieldset class="form-group">

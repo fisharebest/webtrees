@@ -265,7 +265,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				<?= I18N::translate('Title') ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="title" name="title" value="<?= Html::escape($title) ?>">
+				<input class="form-control" type="text" id="title" name="title" value="<?= e($title) ?>">
 			</div>
 		</div>
 
@@ -302,7 +302,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		</div>
 
 		<div class="row form-group">
-			<textarea name="html" id="html" class="html-edit" rows="10"><?= Html::escape($html) ?></textarea>
+			<textarea name="html" id="html" class="html-edit" rows="10"><?= e($html) ?></textarea>
 		</div>
 
 		<fieldset class="form-group">

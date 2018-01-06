@@ -119,4 +119,4 @@ $controller->pageHeader();
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-lifespans-chart" data-ajax-url="<?= Html::escape($ajax_url) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-lifespans-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
