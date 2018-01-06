@@ -814,7 +814,7 @@ abstract class AbstractTheme {
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
 		if ($individual->canShow()) {
-			$content = '<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+			$content = '<a href="' . e($individual->url()) . '">' . $content . '</a>' .
 				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
@@ -866,7 +866,7 @@ abstract class AbstractTheme {
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
 		if ($individual->canShow()) {
-			$content = '<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+			$content = '<a href="' . e($individual->url()) . '">' . $content . '</a>' .
 				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
 			$icons = '<div class="icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
@@ -910,7 +910,7 @@ abstract class AbstractTheme {
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">' .
+			'<a href="' . e($individual->url()) . '">' .
 			'<span class="namedef name0">' . $individual->getFullName() . '</span>' .
 			'</a>' .
 			'<div class="inout2 details0">' . $individual->getLifeSpan() . '</div>' .
@@ -1057,14 +1057,14 @@ abstract class AbstractTheme {
 		$menus = [];
 
 		foreach ($individual->getSpouseFamilies() as $family) {
-			$menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->getHtmlUrl());
+			$menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', e($family->url()));
 			$spouse  = $family->getSpouse($individual);
 			if ($spouse && $spouse->canShowName()) {
-				$menus[] = new Menu($spouse->getFullName(), $spouse->getHtmlUrl());
+				$menus[] = new Menu($spouse->getFullName(), e($spouse->url()));
 			}
 			foreach ($family->getChildren() as $child) {
 				if ($child->canShowName()) {
-					$menus[] = new Menu($child->getFullName(), $child->getHtmlUrl());
+					$menus[] = new Menu($child->getFullName(), e($child->url()));
 				}
 			}
 		}
@@ -1423,7 +1423,7 @@ abstract class AbstractTheme {
 				case 'NOTE':
 					$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
 					if ($record && $record->canShowName()) {
-						$submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
+						$submenus[] = new Menu($record->getFullName(), e($record->url()));
 						$records[]  = $record;
 					}
 					break;

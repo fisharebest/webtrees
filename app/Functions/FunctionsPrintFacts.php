@@ -206,12 +206,12 @@ class FunctionsPrintFacts {
 			if ($parent instanceof Family) {
 				foreach ($parent->getSpouses() as $spouse) {
 					if ($record !== $spouse) {
-						echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> — ';
+						echo '<a href="', e($spouse->url()), '">', $spouse->getFullName(), '</a> — ';
 					}
 				}
-				echo '<a href="', $parent->getHtmlUrl(), '">', I18N::translate('View this family'), '</a><br>';
+				echo '<a href="', e($parent->url()), '">', I18N::translate('View this family'), '</a><br>';
 			} elseif ($parent instanceof Individual) {
-				echo '<a href="', $parent->getHtmlUrl(), '">', $parent->getFullName(), '</a><br>';
+				echo '<a href="', e($parent->url()), '">', $parent->getFullName(), '</a><br>';
 			}
 		}
 
@@ -289,7 +289,7 @@ class FunctionsPrintFacts {
 					if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
 						$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
 						if ($target) {
-							echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+							echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
 						} else {
 							echo '<div class="error">', Html::escape($fact->getValue()), '</div>';
 						}
@@ -385,7 +385,7 @@ class FunctionsPrintFacts {
 				case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
 					$family = Family::getInstance(str_replace('@', '', $match[2]), $fact->getParent()->getTree());
 					if ($family) {
-						echo GedcomTag::getLabelValue('FAM', '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>');
+						echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>');
 						if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
 							echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($match[1], $label_person));
 						}
@@ -443,7 +443,7 @@ class FunctionsPrintFacts {
 							// Links
 							$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
 							if ($linked_record) {
-								$link = '<a href="' . $linked_record->getHtmlUrl() . '">' . $linked_record->getFullName() . '</a>';
+								$link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->getFullName() . '</a>';
 								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 							} else {
 								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], Html::escape($match[2]));
@@ -500,7 +500,7 @@ class FunctionsPrintFacts {
 					$label = GedcomTag::getLabel('ASSO', $person);
 				}
 
-				$values = ['<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>'];
+				$values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
 				foreach ($associates as $associate) {
 					$relationship_name = Functions::getCloseRelationshipName($associate, $person);
 					if (!$relationship_name) {
@@ -541,7 +541,7 @@ class FunctionsPrintFacts {
 
 		$repository = Repository::getInstance($xref, $WT_TREE);
 		if ($repository && $repository->canShow()) {
-			echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
+			echo '<a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a><br>';
 			echo '<br>';
 			echo FunctionsPrint::printFactNotes($repository->getGedcom(), 1);
 		}
@@ -600,7 +600,7 @@ class FunctionsPrintFacts {
 					if ($lt > 0) {
 						$data .= '<a href="#" onclick="return expand_layer(\'' . $elementID . '\');"><i id="' . $elementID . '_img" class="' . $plusminus . '"></i></a> ';
 					}
-					$data .= GedcomTag::getLabelValue('SOUR', '<a href="' . $source->getHtmlUrl() . '">' . $source->getFullName() . '</a>', null, 'span');
+					$data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->getFullName() . '</a>', null, 'span');
 					$data .= '</div>';
 
 					$data .= "<div id=\"$elementID\"";
@@ -663,7 +663,7 @@ class FunctionsPrintFacts {
 					}
 					echo '</div>';
 					echo '<div class="media-display-title">';
-					echo '<a href="', $media->getHtmlUrl(), '">', $media->getFullName(), '</a>';
+					echo '<a href="', e($media->url()), '">', $media->getFullName(), '</a>';
 					// NOTE: echo the notes of the media
 					echo '<p>';
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
@@ -678,7 +678,7 @@ class FunctionsPrintFacts {
 					if ($ct > 0) {
 						$spouse = Individual::getInstance($match[1], $media->getTree());
 						if ($spouse) {
-							echo '<a href="', $spouse->getHtmlUrl(), '">';
+							echo '<a href="', e($spouse->url()), '">';
 							echo $spouse->getFullName();
 							echo '</a>';
 						}
@@ -690,7 +690,7 @@ class FunctionsPrintFacts {
 								if ($spouse) {
 									echo ' - ';
 								}
-								echo '<a href="', $family->getHtmlUrl(), '">', I18N::translate('View this family'), '</a>';
+								echo '<a href="', e($family->url()), '">', I18N::translate('View this family'), '</a>';
 							}
 						}
 					}
@@ -789,7 +789,7 @@ class FunctionsPrintFacts {
 				echo '</th>';
 				echo '<td class="', $styleadd, '">';
 				if ($source) {
-					echo '<a href="', $source->getHtmlUrl(), '">', $source->getFullName(), '</a>';
+					echo '<a href="', e($source->url()), '">', $source->getFullName(), '</a>';
 					// PUBL
 					$publ = $source->getFirstFact('PUBL');
 					if ($publ) {
@@ -988,7 +988,7 @@ class FunctionsPrintFacts {
 				if ($level < 2) {
 					if ($note instanceof Note) {
 						echo GedcomTag::getLabel('SHARED_NOTE');
-						echo FontAwesome::linkIcon('note', I18N::translate('View'), ['class' => 'btn btn-link', 'href' => $note->getRawUrl()]);
+						echo FontAwesome::linkIcon('note', I18N::translate('View'), ['class' => 'btn btn-link', 'href' => $note->url()]);
 					} else {
 						echo GedcomTag::getLabel('NOTE');
 					}
@@ -1026,7 +1026,7 @@ class FunctionsPrintFacts {
 					// Note is already printed
 					echo GedcomTag::getLabel($factname, $parent);
 					if ($note) {
-						echo FontAwesome::linkIcon('note', I18N::translate('View'), ['class' => 'btn btn-link', 'href' => $note->getRawUrl()]);
+						echo FontAwesome::linkIcon('note', I18N::translate('View'), ['class' => 'btn btn-link', 'href' => $note->url()]);
 					}
 				}
 			}
@@ -1140,7 +1140,7 @@ class FunctionsPrintFacts {
 					foreach ($media->mediaFiles() as $media_file) {
 						echo $media_file->displayImage(100, 100, 'contain', []);
 					}
-					echo '<a href="' . $media->getHtmlUrl() . '"> ';
+					echo '<a href="' . e($media->url()) . '"> ';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {
 						if ($name['type'] != 'TITL') {

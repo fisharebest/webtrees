@@ -235,11 +235,11 @@ class ClippingsCartController {
 						case 'FAM':
 							$filetext .= $record . "\n";
 							$filetext .= "1 SOUR @WEBTREES@\n";
-							$filetext .= '2 PAGE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
+							$filetext .= '2 PAGE ' . WT_BASE_URL . $object->url() . "\n";
 							break;
 						case 'SOUR':
 							$filetext .= $record . "\n";
-							$filetext .= '1 NOTE ' . WT_BASE_URL . $object->getRawUrl() . "\n";
+							$filetext .= '1 NOTE ' . WT_BASE_URL . $object->url() . "\n";
 							break;
 						case 'OBJE':
 							// Add the file to the archive

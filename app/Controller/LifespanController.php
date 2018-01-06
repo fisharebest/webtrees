@@ -443,7 +443,7 @@ class LifespanController extends PageController {
 				$popupClass, $Y, $direction, $startPos, $width, $color,
 				$person->getSexImage(), $printName, $abbrLifespan,
 				$popupClass,
-				$person->getHtmlUrl(), $person->getFullName(), $lifespan
+				e($person->url()), $person->getFullName(), $lifespan
 			);
 
 			// Add events to popup

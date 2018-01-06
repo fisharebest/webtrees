@@ -239,7 +239,7 @@ class TimelineController extends PageController {
 		}
 		// Print spouses names for family events
 		if ($event->getParent() instanceof Family) {
-			echo ' — <a href="', $event->getParent()->getHtmlUrl(), '">', $event->getParent()->getFullName(), '</a>';
+			echo ' — <a href="', e($event->getParent()->url()), '">', $event->getParent()->getFullName(), '</a>';
 		}
 		echo '</td></tr></table>';
 		echo '</div>';

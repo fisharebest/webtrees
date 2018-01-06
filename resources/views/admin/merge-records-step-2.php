@@ -37,7 +37,7 @@
 								<td>
 									<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 									<?php if ($fact->getTarget()): ?>
-										<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
+										<a href="<?= e($fact->getTarget()->url()) ?>">
 											<?= $fact->getTarget()->getFullName() ?>
 										</a>
 									<?php endif ?>
@@ -59,7 +59,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2 class="card-title">
-						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record1->getRawUrl()) . '">' . $record1->getFullName()) . '</a>' ?>
+						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record1->url()) . '">' . $record1->getFullName()) . '</a>' ?>
 					</h2>
 				</div>
 				<div class="card-body">
@@ -84,7 +84,7 @@
 										<td>
 											<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 											<?php if ($fact->getTarget()): ?>
-												<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
+												<a href="<?= e($fact->getTarget()->url()) ?>">
 													<?= $fact->getTarget()->getFullName() ?>
 												</a>
 											<?php endif ?>
@@ -105,7 +105,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2 class="card-title">
-						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record2->getRawUrl()) . '">' . $record2->getFullName()) . '</a>' ?>
+						<?= /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . e($record2->url()) . '">' . $record2->getFullName()) . '</a>' ?>
 					</h2>
 				</div>
 				<div class="card-body">
@@ -130,7 +130,7 @@
 										<td>
 											<div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
 											<?php if ($fact->getTarget()): ?>
-												<a href="<?= $fact->getTarget()->getHtmlUrl() ?>">
+												<a href="<?= e($fact->getTarget()->url()) ?>">
 													<?= $fact->getTarget()->getFullName() ?>
 												</a>
 											<?php endif ?>

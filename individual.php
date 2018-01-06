@@ -217,7 +217,7 @@ $individual_media = array_filter($individual_media);
 			<ul class="nav nav-tabs flex-wrap">
 				<?php foreach ($controller->getTabs() as $tab): ?>
 					<li class="nav-item">
-						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
+						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e($controller->record->url()), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
 							<?= $tab->getTitle() ?>
 						</a>
 					</li>

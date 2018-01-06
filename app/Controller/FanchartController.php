@@ -340,7 +340,7 @@ class FanchartController extends ChartController {
 					$imagemap .= '" href="#' . $pid . '"';
 					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
 					$html .= '<div class="person_box"><div class="details1">';
-					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
+					$html .= '<a href="' . e($person->url()) . '" class="name1">' . $name;
 					if ($addname) {
 						$html .= $addname;
 					}

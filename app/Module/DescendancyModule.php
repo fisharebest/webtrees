@@ -158,7 +158,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			'<i class="plusminus ' . $icon . '"></i>' .
 			$person->getSexImage() . $person->getFullName() . $lifespan .
 			'</a>' .
-			FontAwesome::linkIcon('individual', $person->getFullName(), ['href' => $person->getRawUrl()]) .
+			FontAwesome::linkIcon('individual', $person->getFullName(), ['href' => $person->url()]) .
 			'<div>' . $spouses . '</div>' .
 			'</li>';
 	}
@@ -176,7 +176,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {
 			$spouse_name = $spouse->getSexImage() . $spouse->getFullName();
-			$spouse_link = FontAwesome::linkIcon('individual', $spouse->getFullName(), ['href' => $person->getRawUrl()]);
+			$spouse_link = FontAwesome::linkIcon('individual', $spouse->getFullName(), ['href' => $person->url()]);
 		} else {
 			$spouse_name = '';
 			$spouse_link = '';
@@ -189,7 +189,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			'<li class="sb_desc_indi_li">' .
 			'<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' . $spouse_name . $marr . '</a>' .
 			$spouse_link .
-			FontAwesome::linkIcon('family', $family->getFullName(), ['href' => $family->getRawUrl()]) .
+			FontAwesome::linkIcon('family', $family->getFullName(), ['href' => $family->url()]) .
 		 '<div>' . $this->loadChildren($family, $generations) . '</div>' .
 			'</li>';
 	}

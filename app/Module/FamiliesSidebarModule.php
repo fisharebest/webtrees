@@ -209,7 +209,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$out      = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canShowName()) {
-				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
+				$out .= '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . ' ';
 				if ($family->canShow()) {
 					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {
@@ -276,7 +276,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		foreach ($rows as $row) {
 			$family = Family::getInstance($row->xref, $tree, $row->gedcom);
 			if ($family->canShowName()) {
-				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
+				$out .= '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . ' ';
 				if ($family->canShow()) {
 					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {

@@ -394,7 +394,7 @@ $controller->pageHeader();
 					if ($indi && $indi->canShow()) {
 						echo $indi->getSexImage('large');
 						?>
-						<a href="<?= $indi->getHtmlUrl() ?>"> <?= $indi->getFullName() ?><br>
+						<a href="<?= e($indi->url()) ?>"> <?= $indi->getFullName() ?><br>
 							<?= $indi->getAddName() ?><br>
 						</a>
 						<input type="hidden" name="pids[<?= $p ?>]" value="<?= Html::escape($pid) ?>">

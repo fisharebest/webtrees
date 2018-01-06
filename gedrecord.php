@@ -34,7 +34,7 @@ if (
 	$record instanceof Note ||
 	$record instanceof Media
 ) {
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 
 	return;
 }

@@ -219,7 +219,7 @@ class BranchesController extends PageController {
 		}
 
 		// Generate HTML for this individual, and all their descendants
-		$indi_html = $individual->getSexImage() . '<a class="' . $sosa_class . '" href="' . $individual->getHtmlUrl() . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
+		$indi_html = $individual->getSexImage() . '<a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
 
 		// If this is not a birth pedigree (e.g. an adoption), highlight it
 		if ($parents) {
@@ -255,13 +255,13 @@ class BranchesController extends PageController {
 					}
 					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
+						$fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
 					} else {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
 					}
-					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
+					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
 				}
 
 				$fam_html .= '<ol>';

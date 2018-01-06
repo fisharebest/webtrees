@@ -82,7 +82,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 
 				$content .= '<div class="logged_in_name">';
 				if ($individual) {
-					$content .= '<a href="' . $individual->getHtmlUrl() . '">' . $user->getRealNameHtml() . '</a>';
+					$content .= '<a href="' . e($individual->url()) . '">' . $user->getRealNameHtml() . '</a>';
 				} else {
 					$content .= $user->getRealNameHtml();
 				}

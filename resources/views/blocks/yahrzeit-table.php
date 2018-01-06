@@ -14,7 +14,7 @@
 		<?php foreach ($yahrzeits as $yahrzeit): ?>
 			<tr>
 				<td data-sort="<?= e($yahrzeit->individual->getSortName()) ?>">
-					<a href="<?= e($yahrzeit->individual->getRawUrl()) ?>">
+					<a href="<?= e($yahrzeit->individual->url()) ?>">
 						<?= $yahrzeit->individual->getFullname() ?>
 						<?php if ($yahrzeit->individual->getAddName()): ?>
 						<br>

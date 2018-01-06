@@ -80,7 +80,7 @@ class EditNoteController extends BaseController {
 			'html' => view('modals/record-created', [
 				'title' => I18N::translate('The note has been created'),
 				'name'  => $record->getFullName(),
-				'url'   => $record->getRawUrl(),
+				'url'   => $record->url(),
 			])
 		]);
 	}

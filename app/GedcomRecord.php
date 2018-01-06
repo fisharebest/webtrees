@@ -324,10 +324,23 @@ class GedcomRecord {
 	/**
 	 * Generate a URL to this record, suitable for use in HTML, etc.
 	 *
+	 * @deprecated
+	 *
 	 * @return string
 	 */
 	public function getHtmlUrl() {
-		return $this->getLinkUrl('&amp;');
+		return e($this->url());
+	}
+
+	/**
+	 * Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	 *
+	 * @deprecated
+	 *
+	 * @return string
+	 */
+	public function getRawUrl() {
+		return $this->url();
 	}
 
 	/**
@@ -335,19 +348,8 @@ class GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function getRawUrl() {
-		return $this->getLinkUrl('&');
-	}
-
-	/**
-	 * Generate a URL to this record.
-	 *
-	 * @param string $separator
-	 *
-	 * @return string
-	 */
-	private function getLinkUrl($separator) {
-		return static::URL_PREFIX . rawurlencode($this->getXref()) . $separator . 'ged=' . rawurlencode($this->tree->getName());
+	public function url() {
+		return static::URL_PREFIX . rawurlencode($this->getXref()) . '&ged=' . rawurlencode($this->tree->getName());
 	}
 
 	/**
@@ -770,7 +772,7 @@ class GedcomRecord {
 		if (is_null($name)) {
 			$name = $this->getFullName();
 		}
-		$html = '<a href="' . $this->getHtmlUrl() . '"';
+		$html = '<a href="' . e($this->url()) . '"';
 		if ($find) {
 			$html .= ' onclick="pasteid(\'' . $this->getXref() . '\', \'' . htmlentities($name) . '\');"';
 		}

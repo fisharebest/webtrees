@@ -159,7 +159,7 @@ echo Bootstrap4::breadcrumbs([
 		<?= $duplicates[0]->getFullName() ?>
 		<?php foreach ($duplicates as $record): ?>
 		—
-		<a href="<?= $record->getHtmlUrl() ?>">
+		<a href="<?= e($record->url()) ?>">
 			<?= $record->getXref() ?>
 		</a>
 		<?php endforeach ?>

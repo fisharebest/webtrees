@@ -90,7 +90,7 @@ case 'editraw':
 					<?= /* I18N: A button label. */
 					I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */
 					I18N::translate('cancel') ?>
@@ -136,7 +136,7 @@ case 'updateraw':
 
 	$record->updateRecord($gedcom, false);
 
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 	break;
 
 case 'editrawfact':
@@ -158,7 +158,7 @@ case 'editrawfact':
 		}
 	}
 	if (!$edit_fact) {
-		header('Location: ' . $record->getRawUrl());
+		header('Location: ' . $record->url());
 		break;
 	}
 
@@ -200,7 +200,7 @@ case 'editrawfact':
 					<?= /* I18N: A button label. */
 					I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */
 					I18N::translate('cancel') ?>
@@ -240,7 +240,7 @@ case 'updaterawfact':
 		}
 	}
 
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 	break;
 
 case 'edit':
@@ -262,7 +262,7 @@ case 'edit':
 		}
 	}
 	if (!$edit_fact) {
-		header('Location: ' . $record->getRawUrl());
+		header('Location: ' . $record->url());
 		break;
 	}
 
@@ -328,7 +328,7 @@ case 'edit':
 				<?= /* I18N: A button label. */
 				I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('cancel') ?>
@@ -404,7 +404,7 @@ case 'add':
 				<?= /* I18N: A button label. */
 				I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('cancel') ?>
@@ -511,7 +511,7 @@ case 'update':
 		}
 	}
 
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 	break;
 
 case 'add_child_to_family':
@@ -588,9 +588,9 @@ case 'add_child_to_family_action':
 	}
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $new_child->getRawUrl());
+		header('Location: ' . $new_child->url());
 	} else {
-		header('Location: ' . $family->getRawUrl());
+		header('Location: ' . $family->url());
 	}
 	break;
 
@@ -664,9 +664,9 @@ case 'add_child_to_individual_action':
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $child->getRawUrl());
+		header('Location: ' . $child->url());
 	} else {
-		header('Location: ' . $person->getRawUrl());
+		header('Location: ' . $person->url());
 	}
 	break;
 
@@ -747,9 +747,9 @@ case 'add_parent_to_individual_action':
 	}
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $parent->getRawUrl());
+		header('Location: ' . $parent->url());
 	} else {
-		header('Location: ' . $person->getRawUrl());
+		header('Location: ' . $person->url());
 	}
 	break;
 
@@ -799,7 +799,7 @@ case 'add_unlinked_indi_action':
 	$new_indi = $controller->tree()->createRecord($gedrec);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $new_indi->getRawUrl());
+		header('Location: ' . $new_indi->url());
 	} else {
 		header('Location: admin_trees_manage.php');
 	}
@@ -887,9 +887,9 @@ case 'add_spouse_to_individual_action':
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $spouse->getRawUrl());
+		header('Location: ' . $spouse->url());
 	} else {
-		header('Location: ' . $person->getRawUrl());
+		header('Location: ' . $person->url());
 	}
 	break;
 
@@ -975,9 +975,9 @@ case 'add_spouse_to_family_action':
 	$family->createFact(trim($famrec), true); // trim leading \n
 
 	if (Filter::post('goto') === 'new') {
-		header('Location: ' . $spouse->getRawUrl());
+		header('Location: ' . $spouse->url());
 	} else {
-		header('Location: ' . $family->getRawUrl());
+		header('Location: ' . $family->url());
 	}
 	break;
 
@@ -1032,7 +1032,7 @@ case 'addfamlink':
 					<?= /* I18N: A button label. */
 					I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($person->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */
 					I18N::translate('cancel') ?>
@@ -1085,7 +1085,7 @@ case 'linkfamaction':
 		$family->createFact('1 CHIL @' . $person->getXref() . '@', true);
 	}
 
-	header('Location: ' . $person->getRawUrl());
+	header('Location: ' . $person->url());
 	break;
 
 case 'linkspouse':
@@ -1137,7 +1137,7 @@ case 'linkspouse':
 					<?= FontAwesome::decorativeIcon('save') ?>
 					<?= /* I18N: A button label. */ I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($person->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 				</a>
@@ -1203,7 +1203,7 @@ case 'linkspouseaction':
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
-	header('Location: ' . $person->getRawUrl());
+	header('Location: ' . $person->url());
 	break;
 
 case 'addmedia_links':
@@ -1271,7 +1271,7 @@ case 'editnote':
 					<?= /* I18N: A button label. */
 					I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $note->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($note->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */
 					I18N::translate('cancel') ?>
@@ -1309,7 +1309,7 @@ case 'editnoteaction':
 
 	$record->updateRecord($gedrec, !$keep_chan);
 
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 	break;
 
 case 'add-media-link':
@@ -1359,7 +1359,7 @@ case 'add-media-link':
 					<?= /* I18N: A button label. */
 					I18N::translate('save') ?>
 				</button>
-				<a class="btn btn-secondary" href="<?= $record->getHtmlUrl() ?>">
+				<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
 					<?= FontAwesome::decorativeIcon('cancel') ?>
 					<?= /* I18N: A button label. */
 					I18N::translate('cancel') ?>
@@ -1388,7 +1388,7 @@ case 'save-media-link':
 
 	$record->createFact($gedcom, true);
 
-	header('Location: ' . $record->getRawUrl());
+	header('Location: ' . $record->url());
 	break;
 
 case 'editname':
@@ -1409,7 +1409,7 @@ case 'editname':
 		}
 	}
 	if (!$name_fact) {
-		header('Location: ' . $person->getRawUrl());
+		header('Location: ' . $person->url());
 		break;
 	}
 
@@ -1598,7 +1598,7 @@ case 'changefamily':
 						<?= /* I18N: A button label. */
 						I18N::translate('save') ?>
 					</button>
-					<a class="btn btn-secondary" href="<?= $family->getHtmlUrl() ?>">
+					<a class="btn btn-secondary" href="<?= e($family->url()) ?>">
 						<?= FontAwesome::decorativeIcon('cancel') ?>
 						<?= /* I18N: A button label. */
 						I18N::translate('cancel') ?>
@@ -1717,7 +1717,7 @@ case 'changefamily_update':
 		}
 	}
 
-	header('Location: ' . $family->getRawUrl());
+	header('Location: ' . $family->url());
 	break;
 
 case 'reorder-media':
@@ -1763,7 +1763,7 @@ case 'reorder-media':
 				<?= /* I18N: A button label. */
 				I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $individual->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($individual->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
@@ -1811,7 +1811,7 @@ case 'reorder-media-save':
 
 	$individual->updateRecord($gedcom, false);
 
-	header('Location: ' . $individual->getRawUrl());
+	header('Location: ' . $individual->url());
 	break;
 
 case 'reorder-names':
@@ -1857,7 +1857,7 @@ case 'reorder-names':
 				<?= /* I18N: A button label. */
 				I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $individual->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($individual->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
@@ -1905,7 +1905,7 @@ case 'reorder-names-save':
 
 	$individual->updateRecord($gedcom, false);
 
-	header('Location: ' . $individual->getRawUrl());
+	header('Location: ' . $individual->url());
 	break;
 
 case 'reorder-children':
@@ -1957,7 +1957,7 @@ case 'reorder-children':
 				<?= FontAwesome::decorativeIcon('sort') ?>
 				<?= /* I18N: A button label. */ I18N::translate('sort by date of birth') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $family->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($family->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
@@ -2005,7 +2005,7 @@ case 'reorder-children-save':
 
 	$family->updateRecord($gedcom, false);
 
-	header('Location: ' . $family->getRawUrl());
+	header('Location: ' . $family->url());
 	break;
 
 case 'reorder-spouses':
@@ -2057,7 +2057,7 @@ case 'reorder-spouses':
 				<?= FontAwesome::decorativeIcon('sort') ?>
 				<?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= $person->getHtmlUrl() ?>">
+			<a class="btn btn-secondary" href="<?= e($person->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
@@ -2105,7 +2105,7 @@ case 'reorder-spouses-save':
 
 	$individual->updateRecord($gedcom, false);
 
-	header('Location: ' . $individual->getRawUrl());
+	header('Location: ' . $individual->url());
 	break;
 }
 
@@ -2440,7 +2440,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					<?= /* I18N: A button label. */ I18N::translate('go to new individual') ?>
 				</button>
 			<?php endif ?>
-			<a class="btn btn-secondary" href="<?= Html::escape($person ? $person->getRawUrl() : $family->getRawUrl()) ?>">
+			<a class="btn btn-secondary" href="<?= Html::escape($person ? $person->url() : $family->url()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
@@ -2626,7 +2626,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
  */
 function check_record_access(GedcomRecord $record = null) {
 	if (!$record || !$record->canShow() || !$record->canEdit()) {
-		header('Location: ' . $record->getRawUrl());
+		header('Location: ' . $record->url());
 
 		exit;
 	}

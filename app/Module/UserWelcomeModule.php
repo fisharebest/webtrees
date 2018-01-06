@@ -64,7 +64,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 			}
 
 			$links[] = [
-				'url'   => $individual->getRawUrl(),
+				'url'   => $individual->url(),
 				'title' => I18N::translate('My individual record'),
 				'icon'  => 'icon-indis',
 			];

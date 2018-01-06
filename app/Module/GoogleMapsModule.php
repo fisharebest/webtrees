@@ -524,14 +524,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						} else {
 							// The place is in the table but has empty values
 							if ($name) {
-								$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
+								$missing[] = '<a href="' . e($person->url()) . '">' . $name . '</a>';
 								$miscount++;
 							}
 						}
 					} else {
 						// There was no place, or not listed in the map table
 						if ($name) {
-							$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
+							$missing[] = '<a href="' . e($person->url()) . '">' . $name . '</a>';
 							$miscount++;
 						}
 					}
@@ -890,7 +890,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$event .= '<strong>' . $relationship . '</strong>';
 
 							$birth = $person->getFirstFact('BIRT');
-							$data  = addslashes($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
+							$data  = addslashes($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . e($person->url()) . '">' . $name . '</a></span>');
 							$data .= $birth ? addslashes($birth->summary()) : '';
 							$data .= '</div>';
 
@@ -1299,13 +1299,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$parent = $fact->getParent();
 				if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
 					// Childs birth
-					$name   = '<a href="' . $parent->getHtmlUrl() . '">' . $parent->getFullName() . '</a>';
+					$name   = '<a href="' . e($parent->url()) . '">' . $parent->getFullName() . '</a>';
 					$label  = strtr($parent->getSex(), ['F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')]);
 					$class  = 'wt-gender-' . $parent->getSex();
 					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 				} else {
 					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
-					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>' : '';
+					$name   = $spouse ? '<a href="' . e($spouse->url()) . '">' . $spouse->getFullName() . '</a>' : '';
 					$label  = $fact->getLabel();
 					$class  = '';
 					if ($fact->getValue() && $spouse) {
