@@ -84,7 +84,7 @@ class Config {
 		return array(
 			'ABBR', 'ADDR', 'AFN', 'ALIA', 'AUTH', 'CHIL', 'EMAIL', 'FAX', 'FILE',
 			'HUSB', 'NAME', 'NCHI', 'NOTE', 'OBJE', 'PHON', 'PUBL', 'REFN', 'REPO',
-			'RESN', 'SEX', 'SOUR', 'SSN', 'TEXT', 'TITL', 'WIFE', 'WWW', '_EMAIL',
+			'RESN', 'SEX', 'SOUR', 'SSN', 'TEXT', 'WIFE', 'WWW', '_EMAIL',
 		);
 	}
 
