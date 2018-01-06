@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-09-29 02:45+0000\n"
+"PO-Revision-Date: 2018-01-06 07:22+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -1153,7 +1153,7 @@ msgstr "Accra, Ghana"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Actie"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1290,7 +1290,7 @@ msgstr "Voeg een nieuw logboek toe"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Voeg een media bestand toe"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -3187,7 +3187,7 @@ msgstr "Plaats begrafenis bevat"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Begraven"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3329,7 +3329,7 @@ msgstr "Doodsoorzaak"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Waarschuwing!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -3831,7 +3831,7 @@ msgstr "Compacte boom van %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Vergelijking"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -5303,7 +5303,7 @@ msgstr "Wijzig"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Media bestand wijzigen"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5367,7 +5367,7 @@ msgstr "Wijzig deze persoon en vervang de details door uw eigen gegevens."
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Wijzigingsbeperking"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -7149,7 +7149,7 @@ msgstr "Identificatienummer"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Als een media-object aan een persoon is gekoppeld, terwijl het aan een feit of gebeurtenis gekoppeld had moeten zijn, kun je het naar de juiste locatie verplaatsen."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7187,7 +7187,7 @@ msgstr "Als de achternaam onbekend is, gebruik dan lege schuine strepen:<%s>Mari
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Als de miniatuur afbeelding hetzelfde is als de originele afbeelding, is deze niet langer nodig en kun je deze verwijderen. Als het een aangepaste afbeelding betreft, zal je deze aan het media object moeten toevoegen."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7291,7 +7291,7 @@ msgstr "Importeer alle plaatsen van een stamboom"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Aangepaste miniatuurafbeeldingen van webtrees versie 1 importeren"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
@@ -7330,11 +7330,11 @@ msgstr "In dit jaar…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "In webtrees versie 1 kon je aangepaste thumbnails aan het media object toevoegen door bestanden aan te maken in de “thumbs” folders."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "In webtrees versie 2, worden aangepaste miniatuurafbeeldingen opgeslagen als tweede media bestand in hetzelfde media object."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
@@ -8149,7 +8149,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Koppel media objects aan feiten en gebeurtenissen"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -9343,7 +9343,7 @@ msgstr "Verplaats naar rechts"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Media object verplaatsen?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10283,7 +10283,7 @@ msgstr "Andere map… voer in"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Andere genealogie applicaties herkennen deze gegevens mogelijk niet."
 
 #: admin_trees_config.php:1325
 msgid "Other preferences"
@@ -10981,7 +10981,7 @@ msgstr "Privacy"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Privacy beperking"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11211,7 +11211,7 @@ msgstr "Wijzig volgorde media"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Namen rangschikken"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -13365,7 +13365,7 @@ msgstr "Het GEDCOM bestand “%s” is geïmporteerd."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "De GEDCOM standaard staat geen URL's in media objecten toe."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13604,7 +13604,7 @@ msgstr "Het mediabestand dat u uploadt kan, en moet eigenlijk, een andere naam k
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "Het media object is aangemaakt"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13660,7 +13660,7 @@ msgstr "De nieuwe gebruiker zal worden gevraagd om zijn/haar e-mailadres te beve
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "De notitie is aangemaakt"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13733,7 +13733,7 @@ msgstr "Deze reguliere expressie lijkt een fout te bevatten en is daarom niet br
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "De opslagplaats is aangemaakt"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13750,11 +13750,11 @@ msgstr "De grootte van de stamboom, vroegste en laatste gebeurtenissen, gemeensc
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "De bron is aangemaakt"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "De inzender is aangemaakt"
 
 #: help_text.php:234
 #, php-format
@@ -13871,7 +13871,7 @@ msgstr "Er zijn geen feiten voor deze persoon."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Er bestaan geen koppelingen naar dit media object."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -14463,7 +14463,7 @@ msgstr "Do"
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Miniatuurafbeelding"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
@@ -15904,15 +15904,15 @@ msgstr "Uitzoomen"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "een URL"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "Een bestand op de server"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "Een bestand op jouw computer"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
