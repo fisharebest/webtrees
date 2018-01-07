@@ -117,8 +117,10 @@ class FamilyController extends GedcomRecordController {
 	/**
 	 * Print the facts
 	 */
-	public function printFamilyFacts() {
+	public function familyFacts() {
 		global $linkToID;
+
+		$html = '';
 
 		$linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to
 
@@ -126,40 +128,46 @@ class FamilyController extends GedcomRecordController {
 		if ($indifacts) {
 			Functions::sortFacts($indifacts);
 			foreach ($indifacts as $fact) {
+				ob_start();
 				FunctionsPrintFacts::printFact($fact, $this->record);
+				$html .= ob_get_clean();
 			}
 		} else {
-			echo '<tr><td class="messagebox" colspan="2">', I18N::translate('No facts exist for this family.'), '</td></tr>';
+			$html .= '<tr><td class="messagebox" colspan="2">' . I18N::translate('No facts exist for this family.') . '</td></tr>';
 		}
 
 		if (Auth::isEditor($this->record->getTree())) {
+			ob_start();
 			FunctionsPrint::printAddNewFact($this->record->getXref(), $indifacts, 'FAM');
+			$html .= ob_get_clean();
 
-			echo '<tr><th scope="row">';
-			echo I18N::translate('Note');
-			echo '</th><td>';
-			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=NOTE">', I18N::translate('Add a note'), '</a>';
-			echo '</td></tr>';
+			$html .= '<tr><th scope="row">';
+			$html .= I18N::translate('Note');
+			$html .= '</th><td>';
+			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=NOTE">' . I18N::translate('Add a note') . '</a>';
+			$html .= '</td></tr>';
 
-			echo '<tr><th scope="row">';
-			echo I18N::translate('Shared note');
-			echo '</th><td class="optionbox">';
-			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SHARED_NOTE">', I18N::translate('Add a shared note'), '</a>';
-			echo '</td></tr>';
+			$html .= '<tr><th scope="row">';
+			$html .= I18N::translate('Shared note');
+			$html .= '</th><td class="optionbox">';
+			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SHARED_NOTE">' . I18N::translate('Add a shared note') . '</a>';
+			$html .= '</td></tr>';
 
 			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
-				echo '<tr><th scope="row">';
-				echo I18N::translate('Media object');
-				echo '</th><td class="optionbox">';
-				echo  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
-				echo '</td></tr>';
+				$html .= '<tr><th scope="row">';
+				$html .= I18N::translate('Media object');
+				$html .= '</th><td class="optionbox">';
+				$html .=  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
+				$html .= '</td></tr>';
 			}
 
-			echo '<tr><th scope="row">';
-			echo I18N::translate('Source');
-			echo '</th><td>';
-			echo '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SOUR">', I18N::translate('Add a source citation'), '</a>';
-			echo '</td></tr>';
+			$html .= '<tr><th scope="row">';
+			$html .= I18N::translate('Source');
+			$html .= '</th><td>';
+			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SOUR">' . I18N::translate('Add a source citation') . '</a>';
+			$html .= '</td></tr>';
 		}
+
+		return $html;
 	}
 }
