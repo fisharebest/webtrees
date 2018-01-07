@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-06 21:51+0000\n"
+"PO-Revision-Date: 2018-01-07 15:51+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -1560,7 +1560,7 @@ msgstr "Adoption einer Tochter"
 
 #: app/GedcomTag.php:599 app/GedcomTag.php:608 app/GedcomTag.php:617
 msgid "Adoption of a grandchild"
-msgstr "Adoption eines Enkelkindes"
+msgstr "Adoption eines Enkels"
 
 #: app/GedcomTag.php:597
 msgid "Adoption of a granddaughter"
