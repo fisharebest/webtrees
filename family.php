@@ -27,15 +27,11 @@ $controller = new FamilyController($record);
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
-} elseif ($controller->record && $controller->record->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
-	$controller->pageHeader();
-	// Continue - to display the children/parents/grandparents.
-	// We'll check for showing the details again later
 } else {
 	http_response_code(404);
 	$controller->pageHeader();
 
-	echo View::make('alerts/error', [
+	echo View::make('alerts/danger', [
 		'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
 	]);
 

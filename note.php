@@ -31,7 +31,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 
-	echo View::make('alerts/error', [
+	echo View::make('alerts/danger', [
 		'alert' => I18N::translate('This note does not exist or you do not have permission to view it.'),
 	]);
 	return;
