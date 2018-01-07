@@ -56,3 +56,5 @@
 		</td>
 	</tr>
 </table>
+
+<?= view('modals/ajax') ?>

@@ -37,7 +37,7 @@ if ($controller->record && $controller->record->canShow()) {
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			FlashMessages::addMessage(I18N::translate('This repository has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
 		}
-	} elseif ($controller->record->isPendingAddtion()) {
+	} elseif ($controller->record->isPendingAddition()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
 				'This repository has been edited. You should review the changes and then %1$s or %2$s them.',

@@ -308,7 +308,7 @@ class IndividualController extends GedcomRecordController {
 		}
 		if ($person->isPendingDeletion()) {
 			$class .= ' old';
-		} elseif ($person->isPendingAddtion()) {
+		} elseif ($person->isPendingAddition()) {
 			$class .= ' new';
 		}
 

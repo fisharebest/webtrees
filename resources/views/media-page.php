@@ -49,7 +49,7 @@
 		<div class="tab-pane active fade show" role="tabpanel" id="details">
 			<table class="table wt-facts-table">
 				<?php foreach ($media->mediaFiles() as $media_file): ?>
-				<tr class="<?= $media_file->isPendingAddtion() ? 'new' : '' ?><?= $media_file->isPendingDeletion() ? 'old' : '' ?>">
+				<tr class="<?= $media_file->isPendingAddition() ? 'new' : '' ?><?= $media_file->isPendingDeletion() ? 'old' : '' ?>">
 					<th scope="row">
 						<?= I18N::translate('Media file') ?>
 						<?php if ($media->canEdit()): ?>
