@@ -128,111 +128,23 @@ foreach ($controller->record->getFacts() as $fact) {
 }
 $individual_media = array_filter($individual_media);
 
-?>
+$name_records = [];
+foreach ($controller->record->getFacts('NAME') as $n => $name_fact) {
+	$name_records[] = $controller->formatNameRecord($n, $name_fact);
+}
 
-<h2>
-	<?= $controller->record->getFullName() ?><?= $user_link ?>, <?= $controller->record->getLifeSpan() ?> <?= $age ?>
-</h2>
+$sex_records = [];
+foreach ($controller->record->getFacts('SEX') as $n => $sex_fact) {
+	$sex_records[] = $controller->formatSexRecord($sex_fact);
+}
 
-<div class="row">
-	<div class="col-sm-8">
-		<div class="row">
-			<!-- Individual images -->
-			<div class="col-sm-3">
-				<?php if (empty($individual_media)): ?>
-					<i class="wt-silhouette wt-silhouette-<?= $controller->record->getSex() ?>"></i>
-				<?php elseif (count($individual_media) === 1): ?>
-					<?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-				<?php else: ?>
-					<div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
-						<div class="carousel-inner">
-							<?php foreach ($individual_media as $n => $media_file): ?>
-								<div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-									<?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-								</div>
-							<?php endforeach ?>
-						</div>
-						<a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only"><?= I18N::translate('previous') ?></span>
-						</a>
-						<a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only"><?= I18N::translate('next') ?></span>
-						</a>
-					</div>
-
-				<?php endif ?>
-
-				<?php if (Auth::isEditor($WT_TREE)): ?>
-					<?php if (count($controller->record->getFacts('OBJE')) > 1): ?>
-						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
-							<?= I18N::translate('Re-order media') ?>
-						</a></div>
-					<?php endif ?>
-
-					<?php if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)): ?>
-						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $controller->record->getTree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
-							<?= I18N::translate('Add a media object') ?>
-						</a></div>
-					<?php endif ?>
-				<?php endif ?>
-			</div>
-
-			<!-- Names -->
-			<div class="col-sm-9" id="individual-names" role="tablist">
-				<?php foreach ($controller->record->getFacts('NAME') as $n => $name_fact): ?>
-				<?= $controller->formatNameRecord($n, $name_fact) ?>
-				<?php endforeach ?>
-				<?php foreach ($controller->record->getFacts('SEX') as $n => $sex_fact): ?>
-				<?= $controller->formatSexRecord($sex_fact) ?>
-				<?php endforeach ?>
-
-				<?php if ($controller->record->canEdit()): ?>
-				<div class="card">
-					<div class="card-header" role="tab" id="name-header-add">
-						<div class="card-title mb-0">
-							<a href="<?= e(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
-								<?= I18N::translate('Add a name') ?>
-							</a>
-							<?php if (count($controller->record->getFacts('NAME')) > 1): ?>
-								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
-									<?= I18N::translate('Re-order names') ?>
-								</a>
-							<?php endif ?>
-
-							<?php if (count($controller->record->getFacts('SEX')) === 0): ?>
-								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $controller->tree()->getName(), 'xref' => $controller->record->getXref()])) ?>">
-									<?= I18N::translate('Edit the gender') ?>
-								</a>
-							<?php endif ?>
-						</div>
-					</div>
-				</div>
-				<?php endif ?>
-			</div>
-		</div>
-
-		<div id="individual-tabs">
-			<ul class="nav nav-tabs flex-wrap">
-				<?php foreach ($controller->getTabs() as $tab): ?>
-					<li class="nav-item">
-						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e($controller->record->url()), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
-							<?= $tab->getTitle() ?>
-						</a>
-					</li>
-					<?php endforeach ?>
-			</ul>
-			<div class="tab-content">
-				<?php	foreach ($controller->getTabs() as $tab): ?>
-					<div id="<?= $tab->getName() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()): ?>
-						<?= $tab->getTabContent() ?>
-					<?php endif ?></div>
-				<?php endforeach ?>
-			</div>
-		</div>
-	</div>
-	<div class="col-sm-4">
-		<?= $sidebar_html ?>
-	</div>
-</div>
+echo View::make('individual-page', [
+	'age'              => $age,
+	'individual'       => $controller->record,
+	'individual_media' => $individual_media,
+	'name_records'     => $name_records,
+	'sex_records'      => $sex_records,
+	'sidebar_html'     => $sidebar_html,
+	'tabs'             => $controller->getTabs(),
+	'user_link'        => $user_link,
+]);
