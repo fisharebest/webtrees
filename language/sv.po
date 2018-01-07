@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-06-19 07:06+0000\n"
+"PO-Revision-Date: 2018-01-07 23:38+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sv/>\n"
 "Language: sv\n"
@@ -12709,7 +12709,7 @@ msgstr "För vilket språk visas detta block"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Visa markerade bilder i diagram och familjegrupper."
+msgstr "Visa miniatyrbilder i diagram och familjegrupper."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -13263,7 +13263,7 @@ msgstr "Framlagt, men inte ännu klargjorts"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Bidragsgivare"
+msgstr "Avsändare"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
