@@ -816,6 +816,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 					// create the map
 					var myOptions = {
+					  gestureHandling:          'cooperative',
 						zoom:                     6,
 						minZoom:                  <?= $this->getPreference('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>,
 						maxZoom:                  <?= $this->getPreference('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>,
