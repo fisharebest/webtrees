@@ -21,6 +21,11 @@
 	min-height: 350px; /* customizable, not mandatory, but should be set to have allways something to display */
 	max-height: 95vh; /* customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */
 	background: #E6E6E6; /* customizable */
+	display: -webkit-box;
+	display: -moz-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .tv_out img {
 	border: 0;
@@ -28,9 +33,6 @@
 
 .tv_in {
 	clear: both;
-	position: relative; /* required for re-calculating size on ajax updates */
-	left: 0;
-	top: 0;
 	cursor: move;
 	display: inline-block; /* prevent from blinking on IE */
 }
