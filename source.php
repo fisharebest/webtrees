@@ -90,81 +90,11 @@ usort(
 	}
 );
 
-?>
-<h2 class="wt-page-title">
-	<?= $controller->record->getFullName() ?>
-</h2>
-
-<div class="wt-page-content">
-	<ul class="nav nav-tabs" role="tablist">
-		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" role="tab" href="#details">
-				<?= I18N::translate('Details') ?>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link<?= empty($individuals) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
-				<?= I18N::translate('Individuals') ?>
-				<?= Bootstrap4::badgeCount($individuals) ?>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link<?= empty($families) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
-				<?= I18N::translate('Families') ?>
-				<?= Bootstrap4::badgeCount($families) ?>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link<?= empty($media_objects) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
-				<?= I18N::translate('Media objects') ?>
-				<?= Bootstrap4::badgeCount($media_objects) ?>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link<?= empty($notes) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
-				<?= I18N::translate('Notes') ?>
-				<?= Bootstrap4::badgeCount($notes) ?>
-			</a>
-		</li>
-	</ul>
-
-	<div class="tab-content">
-		<div class="tab-pane fade show active" role="tabpanel" id="details">
-			<table class="table wt-facts-table">
-				<?php
-				foreach ($facts as $fact) {
-					FunctionsPrintFacts::printFact($fact, $controller->record);
-				}
-
-				if ($controller->record->canEdit()) {
-					FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'SOUR');
-					// new media
-					if ($controller->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-						echo '<tr><td class="descriptionbox">';
-						echo I18N::translate('Media object');
-						echo '</td><td class="optionbox">';
-						echo  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=' . $controller->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
-						echo '</td></tr>';
-					}
-				}
-				?>
-			</table>
-		</div>
-
-		<div class="tab-pane fade" role="tabpanel" id="individuals">
-			<?= FunctionsPrintLists::individualTable($individuals) ?>
-		</div>
-
-		<div class="tab-pane fade" role="tabpanel" id="families">
-			<?= FunctionsPrintLists::familyTable($families) ?>
-		</div>
-
-		<div class="tab-pane fade" role="tabpanel" id="media">
-			<?= FunctionsPrintLists::mediaTable($media_objects) ?>
-		</div>
-
-		<div class="tab-pane fade" role="tabpanel" id="notes">
-			<?= FunctionsPrintLists::noteTable($notes) ?>
-		</div>
-	</div>
-</div>
+echo View::make('source-page', [
+	'source'        => $controller->record,
+	'families'      => $families,
+	'individuals'   => $individuals,
+	'media_objects' => $media_objects,
+	'notes'         => $notes,
+	'facts'         => $facts,
+]);
