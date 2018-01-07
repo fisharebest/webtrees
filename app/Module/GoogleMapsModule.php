@@ -164,16 +164,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$('head').append('<link type=\"text/css\" href =\"" . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
 		");
 
-		ob_start();
-		?>
-		<script src="<?= $this->googleMapsScript() ?>"></script>
-		<script>
-			var minZoomLevel   = <?= $this->getPreference('GM_MIN_ZOOM', self::GM_MIN_ZOOM_DEFAULT) ?>;
-			var maxZoomLevel   = <?= $this->getPreference('GM_MAX_ZOOM', self::GM_MAX_ZOOM_DEFAULT) ?>;
-			var startZoomLevel = maxZoomLevel;
-		</script>
-		<?php
-		return ob_get_clean();
+		return '<script src="' . $this->googleMapsScript() . '"></script>';
 	}
 
 	/** {@inheritdoc} */
