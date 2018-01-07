@@ -17,8 +17,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\RepositoryController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -83,41 +81,8 @@ usort(
 	}
 );
 
-?>
-<h2 class="wt-page-title">
-	<?= $controller->record->getFullName() ?>
-</h2>
-
-<div class="wt-page-content">
-	<ul class="nav nav-tabs" role="tablist">
-		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" role="tab" href="#details">
-				<?= I18N::translate('Details') ?>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link<?= empty($sources) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
-				<?= I18N::translate('Sources') ?>
-				<?= Bootstrap4::badgeCount($sources) ?>
-			</a>
-		</li>
-	</ul>
-
-	<div class="tab-content">
-		<div class="tab-pane fade show active" role="tabpanel" id="details">
-			<table class="table wt-facts-table">
-				<?php foreach ($facts as $fact): ?>
-					<?php FunctionsPrintFacts::printFact($fact, $controller->record) ?>
-				<?php endforeach ?>
-
-				<?php if ($controller->record->canEdit()): ?>
-					<?php FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'REPO') ?>
-				<?php endif ?>
-			</table>
-		</div>
-
-		<div class="tab-pane fade" role="tabpanel" id="sources">
-			<?= FunctionsPrintLists::sourceTable($sources) ?>
-		</div>
-	</div>
-</div>
+echo View::make('repository-page', [
+	'repository' => $controller->record,
+	'sources'    => $sources,
+	'facts'      => $facts,
+]);
