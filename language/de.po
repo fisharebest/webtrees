@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-07 15:51+0000\n"
+"PO-Revision-Date: 2018-01-07 21:44+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -8846,7 +8846,7 @@ msgstr "Mediendatei"
 
 #: admin_media_upload.php:172
 msgid "Media file to upload"
-msgstr "Multimedia Datei zum Hochladen"
+msgstr "Mediendatei zum Hochladen"
 
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:184
@@ -12792,7 +12792,7 @@ msgstr "Somalia"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:295
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Mediendateinamen mit vollständigem Pfad enthalten. Diese Pfade werden auf der Webserver nicht vorhanden sein. Damit webtrees die Datei finde, muss der erste Teil des Pfades entfernt werden."
+msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Medien-Dateinamen mit vollständigem Pfad enthalten. Diese Pfade werden auf der Webserver nicht vorhanden sein. Damit webtrees die Datei finde, muss der erste Teil des Pfades entfernt werden."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1099
@@ -13361,7 +13361,7 @@ msgstr "Die GEDCOM Datei “%s” wurde importiert."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr "Der GEDCOM-Standard erlaubt keine URL's in Medienobjekten."
+msgstr "Der GEDCOM-Standard erlaubt keine Internetadressen in Medienobjekten."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13871,7 +13871,7 @@ msgstr "Zu diesem Medienobjekt gibt es keine Verknüpfungen."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
-msgstr "Zu dieser Person gibt es keine Multimedia Objekte."
+msgstr "Zu dieser Person gibt es keine Medienobjekte."
 
 #: app/Module/NotesTabModule.php:86
 msgid "There are no notes for this individual."
@@ -14202,7 +14202,7 @@ msgstr "Dieses Medienobjekt wurde geändert. Sie sollten die Änderung prüfen u
 #: resources/views/emails/message-user-html.php:19
 #: resources/views/emails/message-user-text.php:10
 msgid "This message was sent while viewing the following URL: "
-msgstr "Diese Nachricht wurde gesendet, als die folgende Seite aufgerufen wurde: "
+msgstr "Diese Nachricht wurde gesendet, während die folgende Internetadresse angezeigt wurde: "
 
 #: resources/views/setup/step-5-administrator.php:56
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -15064,7 +15064,7 @@ msgstr "Geographische Daten hochladen"
 
 #: admin_media_upload.php:32 resources/views/admin/control-panel.php:430
 msgid "Upload media files"
-msgstr "Multimediadateien hochladen"
+msgstr "Mediendateien hochladen"
 
 #: admin_media_upload.php:157
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -15776,7 +15776,7 @@ msgstr "Bitte erneut anmelden, und zwar mit dem PhpGedView Benutzernamen und Pas
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:444
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Die Anmeldeadresse (URL) muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.example.com/webtrees/login.php."
+msgstr "Die Anmeldeadresse (URL) muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige Internetadresse für <i>login.php</i> ein. Zum Beispiel https://www.example.com/webtrees/login.php."
 
 #: resources/views/emails/message-copy-html.php:7
 #: resources/views/emails/message-copy-text.php:4
@@ -15900,7 +15900,7 @@ msgstr "Herauszoomen"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr "eine URL"
+msgstr "eine Internetadresse"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
