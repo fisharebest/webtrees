@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\IndividualController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -42,27 +41,6 @@ if ($controller->record && $controller->record->canShow()) {
 	// as the clippings cart needs to have write access to the session.
 	$sidebar_html = $controller->getSideBarContent();
 
-	if ($controller->record->isPendingDeletion()) {
-		if (Auth::isModerator($controller->record->getTree())) {
-			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
-				'This individual has been deleted. You should review the deletion and then %1$s or %2$s it.',
-				'<a href="#" class="alert-link" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-				'<a href="#" class="alert-link" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
-			) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		} elseif (Auth::isEditor($controller->record->getTree())) {
-			FlashMessages::addMessage(I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		}
-	} elseif ($controller->record->isPendingAddition()) {
-		if (Auth::isModerator($controller->record->getTree())) {
-			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
-				'This individual has been edited. You should review the changes and then %1$s or %2$s them.',
-				'<a href="#" class="alert-link" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-				'<a href="#" class="alert-link" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
-			) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		} elseif (Auth::isEditor($controller->record->getTree())) {
-			FlashMessages::addMessage(I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		}
-	}
 	$controller->pageHeader();
 } elseif ($controller->record && $controller->record->canShowName()) {
 	// Just show the name.
@@ -72,9 +50,12 @@ if ($controller->record && $controller->record->canShow()) {
 
 	return;
 } else {
-	FlashMessages::addMessage(I18N::translate('This individual does not exist or you do not have permission to view it.'), 'danger');
 	http_response_code(404);
 	$controller->pageHeader();
+
+	echo View::make('alerts/error', [
+		'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
+	]);
 
 	return;
 }
