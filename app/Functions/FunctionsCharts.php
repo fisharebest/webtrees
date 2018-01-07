@@ -97,7 +97,7 @@ class FunctionsCharts {
 		} elseif ($sosa) {
 			self::printSosaNumber($sosa * 2, '', 'arrow-up');
 		}
-		if ($husb->isPendingAddtion()) {
+		if ($husb->isPendingAddition()) {
 			echo '<td class="new">';
 		} elseif ($husb->isPendingDeletion()) {
 			echo '<td class="old">';
@@ -188,7 +188,7 @@ class FunctionsCharts {
 		} elseif ($sosa) {
 			self::printSosaNumber($sosa * 2 + 1, '', 'arrow-up');
 		}
-		if ($wife->isPendingAddtion()) {
+		if ($wife->isPendingAddition()) {
 			echo '<td class="new">';
 		} elseif ($wife->isPendingDeletion()) {
 			echo '<td class="old">';
@@ -311,7 +311,7 @@ class FunctionsCharts {
 						self::printSosaNumber($label . ($nchi++) . '.', '', 'arrow-up');
 					}
 				}
-				if ($child->isPendingAddtion()) {
+				if ($child->isPendingAddition()) {
 					echo '<td class="new">';
 				} elseif ($child->isPendingDeletion()) {
 					echo '<td class="old">';

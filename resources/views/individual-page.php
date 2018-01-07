@@ -109,3 +109,5 @@
 		<?= $sidebar_html ?>
 	</div>
 </div>
+
+<?= view('modals/ajax') ?>

@@ -308,7 +308,7 @@ class GedcomRecord {
 	 *
 	 * @return bool
 	 */
-	public function isPendingAddtion() {
+	public function isPendingAddition() {
 		return $this->pending !== null;
 	}
 

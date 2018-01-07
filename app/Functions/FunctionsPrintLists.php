@@ -303,7 +303,7 @@ class FunctionsPrintLists {
 			}
 			if ($individual->isPendingDeletion()) {
 				$class = ' class="old"';
-			} elseif ($individual->isPendingAddtion()) {
+			} elseif ($individual->isPendingAddition()) {
 				$class = ' class="new"';
 			} else {
 				$class = '';
@@ -722,7 +722,7 @@ class FunctionsPrintLists {
 			}
 			if ($family->isPendingDeletion()) {
 				$class = ' class="old"';
-			} elseif ($family->isPendingAddtion()) {
+			} elseif ($family->isPendingAddition()) {
 				$class = ' class="new"';
 			} else {
 				$class = '';
@@ -972,7 +972,7 @@ class FunctionsPrintLists {
 			}
 			if ($source->isPendingDeletion()) {
 				$class = ' class="old"';
-			} elseif ($source->isPendingAddtion()) {
+			} elseif ($source->isPendingAddition()) {
 				$class = ' class="new"';
 			} else {
 				$class = '';
@@ -1062,7 +1062,7 @@ class FunctionsPrintLists {
 			}
 			if ($note->isPendingDeletion()) {
 				$class = ' class="old"';
-			} elseif ($note->isPendingAddtion()) {
+			} elseif ($note->isPendingAddition()) {
 				$class = ' class="new"';
 			} else {
 				$class = '';
@@ -1121,7 +1121,7 @@ class FunctionsPrintLists {
 			}
 			if ($repository->isPendingDeletion()) {
 				$class = ' class="old"';
-			} elseif ($repository->isPendingAddtion()) {
+			} elseif ($repository->isPendingAddition()) {
 				$class = ' class="new"';
 			} else {
 				$class = '';
@@ -1201,7 +1201,7 @@ class FunctionsPrintLists {
 				$name = $media_object->getFullName();
 				if ($media_object->isPendingDeletion()) {
 					$class = ' class="old"';
-				} elseif ($media_object->isPendingAddtion()) {
+				} elseif ($media_object->isPendingAddition()) {
 					$class = ' class="new"';
 				} else {
 					$class = '';

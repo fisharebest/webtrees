@@ -142,7 +142,7 @@ class MediaFile {
 	/**
 	 * @return bool
 	 */
-	public function isPendingAddtion() {
+	public function isPendingAddition() {
 		foreach ($this->media->getFacts() as $fact) {
 			if ($fact->getFactId() === $this->fact_id) {
 				return $fact->isPendingAddition();
