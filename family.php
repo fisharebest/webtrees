@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\FamilyController;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /** @global Tree $WT_TREE */
@@ -62,54 +61,7 @@ if ($controller->record && $controller->record->canShow()) {
 	return;
 }
 
-?>
-<div id="family-page">
-	<h2><?= $controller->record->getFullName() ?></h2>
-
-	<table id="family-table">
-		<tr style="vertical-align:top;">
-			<td style="width: <?= Theme::theme()->parameter('chart-box-x') + 30 ?>px;"><!--//List of children//-->
-				<?php FunctionsCharts::printFamilyChildren($controller->record) ?>
-			</td>
-			<td> <!--//parents pedigree chart and Family Details//-->
-				<table width="100%">
-					<tr>
-						<td class="subheaders"><?= I18N::translate('Parents') ?></td>
-						<td class="subheaders"><?= I18N::translate('Grandparents') ?></td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<?php
-							FunctionsCharts::printFamilyParents($controller->record);
-							if (Auth::isEditor($controller->record->getTree())) {
-								$husb = $controller->record->getHusband();
-								if ($husb !== null) {
-									echo '<a href="edit_interface.php?action=add_spouse_to_family&amp;ged=' . $controller->record->getTree()->getNameHtml() . '&amp;xref=', $controller->record->getXref(), '&amp;famtag=HUSB">', I18N::translate('Add a father'), '</a><br>';
-								}
-								$wife = $controller->record->getWife();
-								if ($wife !== null) {
-									echo '<a href="edit_interface.php?action=add_spouse_to_family&amp;ged=\' . $controller->record->getTree()->getNameHtml() . \'&amp;xref=\', $controller->record->getXref(), \'&amp;famtag=WIFE">', I18N::translate('Add a mother'), '</a><br>';
-								}
-							}
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<span class="subheaders"><?= I18N::translate('Family group information') ?></span>
-							<?php
-							if ($controller->record->canShow()) {
-								echo '<table class="table wt-facts-table">';
-								$controller->printFamilyFacts();
-								echo '</table>';
-							} else {
-								echo '<p>', I18N::translate('The details of this family are private.'), '</p>';
-							}
-							?>
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
-</div>
+echo View::make('family-page', [
+	'family' => $controller->record,
+	'facts'  => $controller->familyFacts(),
+]);
