@@ -38,7 +38,9 @@ if ($controller->record && $controller->record->canShow()) {
 	return;
 }
 
+$facts = $controller->record->getFacts(null, true);
+
 echo View::make('family-page', [
 	'family' => $controller->record,
-	'facts'  => $controller->familyFacts(),
+	'facts'  => $facts,
 ]);

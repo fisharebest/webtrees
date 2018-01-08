@@ -17,9 +17,6 @@ namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -112,58 +109,5 @@ class FamilyController extends GedcomRecordController {
 		} else {
 			return '';
 		}
-	}
-
-	/**
-	 * Print the facts
-	 */
-	public function familyFacts() {
-		$html = '';
-
-		$indifacts = $this->record->getFacts();
-		if ($indifacts) {
-			Functions::sortFacts($indifacts);
-			foreach ($indifacts as $fact) {
-				ob_start();
-				FunctionsPrintFacts::printFact($fact, $this->record);
-				$html .= ob_get_clean();
-			}
-		} else {
-			$html .= '<tr><td class="messagebox" colspan="2">' . I18N::translate('No facts exist for this family.') . '</td></tr>';
-		}
-
-		if (Auth::isEditor($this->record->getTree())) {
-			ob_start();
-			FunctionsPrint::printAddNewFact($this->record->getXref(), $indifacts, 'FAM');
-			$html .= ob_get_clean();
-
-			$html .= '<tr><th scope="row">';
-			$html .= I18N::translate('Note');
-			$html .= '</th><td>';
-			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=NOTE">' . I18N::translate('Add a note') . '</a>';
-			$html .= '</td></tr>';
-
-			$html .= '<tr><th scope="row">';
-			$html .= I18N::translate('Shared note');
-			$html .= '</th><td class="optionbox">';
-			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SHARED_NOTE">' . I18N::translate('Add a shared note') . '</a>';
-			$html .= '</td></tr>';
-
-			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
-				$html .= '<tr><th scope="row">';
-				$html .= I18N::translate('Media object');
-				$html .= '</th><td class="optionbox">';
-				$html .=  '<a href="edit_interface.php?action=add-media-link&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '">' . I18N::translate('Add a media object') . '</a>';
-				$html .= '</td></tr>';
-			}
-
-			$html .= '<tr><th scope="row">';
-			$html .= I18N::translate('Source');
-			$html .= '</th><td>';
-			$html .= '<a href="edit_interface.php?action=add&amp;ged=' . $this->record->getTree()->getNameHtml() . '&amp;xref=' . $this->record->getXref() . '&amp;fact=SOUR">' . I18N::translate('Add a source citation') . '</a>';
-			$html .= '</td></tr>';
-		}
-
-		return $html;
 	}
 }
