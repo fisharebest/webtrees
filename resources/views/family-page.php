@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsCharts; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
 <?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>
@@ -57,15 +58,68 @@
 				<tr>
 					<td colspan="2">
 						<span class="subheaders"><?= I18N::translate('Family group information') ?></span>
-						<?php if ($family->canShow()): ?>
-							<table class="table wt-facts-table">
-								<?= $facts ?>
-							</table>
-						<?php else: ?>
-							<p>
-								<?= I18N::translate('The details of this family are private.') ?>
-							</p>
-						<?php endif ?>
+						<table class="table wt-facts-table">
+							<?php if (empty($facts)): ?>
+								<tr>
+									<td class="messagebox" colspan="2">
+										<?= I18N::translate('No facts exist for this family.') ?>
+									</td>
+								</tr>
+							<?php else: ?>
+								<?php foreach ($facts as $fact): ?>
+									<?php FunctionsPrintFacts::printFact($fact, $family) ?>
+								<?php endforeach ?>
+							<?php endif ?>
+
+							<?php if (Auth::isEditor($family->getTree())): ?>
+								<?php FunctionsPrint::printAddNewFact($family->getXref(), $facts, 'FAM') ?>
+								<tr>
+									<th scope="row">
+										<?= I18N::translate('Note') ?>
+									</th>
+									<td>
+										<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'fact' => 'NOTE'])) ?>">
+											<?= I18N::translate('Add a note') ?>
+										</a>
+									</td>
+								</tr>
+
+								<tr>
+									<th scope="row">
+										<?= I18N::translate('Shared note') ?>
+									</th>
+									<td class="optionbox">
+										<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+											<?= I18N::translate('Add a shared note') ?>
+										</a>
+									</td>
+								</tr>
+
+								<?php if ($family->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($family->getTree())): ?>
+									<tr>
+										<th scope="row">
+											<?= I18N::translate('Media object') ?>
+										</th>
+										<td class="optionbox">
+											<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref()]))  ?>">
+												<?= I18N::translate('Add a media object') ?>
+											</a>
+										</td>
+									</tr>
+								<?php endif ?>
+
+								<tr>
+									<th scope="row">
+										<?= I18N::translate('Source') ?>
+									</th>
+									<td>
+										<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'fact' => 'SOUR'])) ?>">
+											<?= I18N::translate('Add a source citation') ?>
+										</a>
+									</td>
+								</tr>
+							<?php endif ?>
+						</table>
 					</td>
 				</tr>
 			</table>
