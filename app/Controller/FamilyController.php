@@ -118,11 +118,7 @@ class FamilyController extends GedcomRecordController {
 	 * Print the facts
 	 */
 	public function familyFacts() {
-		global $linkToID;
-
 		$html = '';
-
-		$linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to
 
 		$indifacts = $this->record->getFacts();
 		if ($indifacts) {
