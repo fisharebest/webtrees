@@ -37,26 +37,26 @@ class ListParser extends AbstractBlockParser
         }
 
         $tmpCursor = clone $cursor;
-        $tmpCursor->advanceToFirstNonSpace();
+        $tmpCursor->advanceToNextNonSpaceOrTab();
         $rest = $tmpCursor->getRemainder();
 
         $data = new ListData();
         $data->markerOffset = $cursor->getIndent();
 
-        if ($matches = RegexHelper::matchAll('/^[*+-]/', $rest)) {
+        if (preg_match('/^[*+-]/', $rest) === 1) {
             $data->type = ListBlock::TYPE_UNORDERED;
             $data->delimiter = null;
-            $data->bulletChar = $matches[0][0];
+            $data->bulletChar = $rest[0];
+            $markerLength = 1;
         } elseif (($matches = RegexHelper::matchAll('/^(\d{1,9})([.)])/', $rest)) && (!($context->getContainer() instanceof Paragraph) || $matches[1] === '1')) {
             $data->type = ListBlock::TYPE_ORDERED;
-            $data->start = intval($matches[1]);
+            $data->start = (int) $matches[1];
             $data->delimiter = $matches[2];
             $data->bulletChar = null;
+            $markerLength = strlen($matches[0]);
         } else {
             return false;
         }
-
-        $markerLength = strlen($matches[0]);
 
         // Make sure we have spaces after
         $nextChar = $tmpCursor->peek($markerLength);
@@ -65,18 +65,18 @@ class ListParser extends AbstractBlockParser
         }
 
         // If it interrupts paragraph, make sure first line isn't blank
-        if ($context->getContainer() instanceof Paragraph && !RegexHelper::matchAt(RegexHelper::REGEX_NON_SPACE, $rest, $markerLength)) {
+        $container = $context->getContainer();
+        if ($container instanceof Paragraph && !RegexHelper::matchAt(RegexHelper::REGEX_NON_SPACE, $rest, $markerLength)) {
             return false;
         }
 
         // We've got a match! Advance offset and calculate padding
-        $cursor->advanceToFirstNonSpace(); // to start of marker
+        $cursor->advanceToNextNonSpaceOrTab(); // to start of marker
         $cursor->advanceBy($markerLength, true); // to end of marker
         $data->padding = $this->calculateListMarkerPadding($cursor, $markerLength);
 
         // add the list if needed
-        $container = $context->getContainer();
-        if (!$container || !($context->getContainer() instanceof ListBlock) || !$data->equals($container->getListData())) {
+        if (!$container || !($container instanceof ListBlock) || !$data->equals($container->getListData())) {
             $context->addBlock(new ListBlock($data));
         }
 

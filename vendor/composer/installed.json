@@ -1049,138 +1049,6 @@
         ]
     },
     {
-        "name": "league/commonmark",
-        "version": "0.15.3",
-        "version_normalized": "0.15.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "c8b43ee5821362216f8e9ac684f0f59de164edcc"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c8b43ee5821362216f8e9ac684f0f59de164edcc",
-            "reference": "c8b43ee5821362216f8e9ac684f0f59de164edcc",
-            "shasum": ""
-        },
-        "require": {
-            "ext-mbstring": "*",
-            "php": ">=5.4.8"
-        },
-        "replace": {
-            "colinodell/commonmark-php": "*"
-        },
-        "require-dev": {
-            "cebe/markdown": "~1.0",
-            "erusev/parsedown": "~1.0",
-            "jgm/commonmark": "0.27",
-            "michelf/php-markdown": "~1.4",
-            "mikehaertl/php-shellcommand": "~1.2.0",
-            "phpunit/phpunit": "~4.3|~5.0",
-            "scrutinizer/ocular": "~1.1",
-            "symfony/finder": "~2.3|~3.0"
-        },
-        "suggest": {
-            "league/commonmark-extras": "Library of useful extensions including smart punctuation"
-        },
-        "time": "2016-12-19T00:11:43+00:00",
-        "bin": [
-            "bin/commonmark"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.16-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "League\\CommonMark\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Colin O'Dell",
-                "email": "colinodell@gmail.com",
-                "homepage": "https://www.colinodell.com",
-                "role": "Lead Developer"
-            }
-        ],
-        "description": "Markdown parser for PHP based on the CommonMark spec",
-        "homepage": "https://github.com/thephpleague/commonmark",
-        "keywords": [
-            "commonmark",
-            "markdown",
-            "parser"
-        ]
-    },
-    {
-        "name": "webuni/commonmark-table-extension",
-        "version": "0.6.1",
-        "version_normalized": "0.6.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/webuni/commonmark-table-extension.git",
-            "reference": "ebbd69b63436283ec726658835b213ec634485e8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/ebbd69b63436283ec726658835b213ec634485e8",
-            "reference": "ebbd69b63436283ec726658835b213ec634485e8",
-            "shasum": ""
-        },
-        "require": {
-            "league/commonmark": "^0.14|^0.15",
-            "php": "^5.5|^7.0"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "^1.9",
-            "phpunit/phpunit": "^4.3|^5.0",
-            "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-            "symfony/var-dumper": "^2.7|^3.0"
-        },
-        "time": "2017-01-11T14:52:17+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.7-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Webuni\\CommonMark\\TableExtension\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Martin Hasoň",
-                "email": "martin.hason@gmail.com",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Webuni s.r.o.",
-                "homepage": "https://www.webuni.cz"
-            }
-        ],
-        "description": "The table extension for CommonMark PHP implementation",
-        "homepage": "https://github.com/webuni/commonmark-table-extension",
-        "keywords": [
-            "commonmark",
-            "markdown",
-            "table"
-        ]
-    },
-    {
         "name": "symfony/polyfill-php72",
         "version": "v1.6.0",
         "version_normalized": "1.6.0.0",
@@ -1291,5 +1159,135 @@
         ],
         "description": "Symfony HttpFoundation Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "league/commonmark",
+        "version": "0.17.0",
+        "version_normalized": "0.17.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/commonmark.git",
+            "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/3b4c2224524776a584de663c7a04bc8eb2e1544d",
+            "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.6.5"
+        },
+        "replace": {
+            "colinodell/commonmark-php": "*"
+        },
+        "require-dev": {
+            "cebe/markdown": "~1.0",
+            "commonmark/commonmark.js": "0.28",
+            "erusev/parsedown": "~1.0",
+            "michelf/php-markdown": "~1.4",
+            "mikehaertl/php-shellcommand": "~1.2.0",
+            "phpunit/phpunit": "~5.7|~6.5",
+            "scrutinizer/ocular": "~1.1",
+            "symfony/finder": "~3.0|~4.0"
+        },
+        "suggest": {
+            "league/commonmark-extras": "Library of useful extensions including smart punctuation"
+        },
+        "time": "2017-12-30T22:08:48+00:00",
+        "bin": [
+            "bin/commonmark"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.18-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\CommonMark\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Colin O'Dell",
+                "email": "colinodell@gmail.com",
+                "homepage": "https://www.colinodell.com",
+                "role": "Lead Developer"
+            }
+        ],
+        "description": "Markdown parser for PHP based on the CommonMark spec",
+        "homepage": "https://github.com/thephpleague/commonmark",
+        "keywords": [
+            "commonmark",
+            "markdown",
+            "parser"
+        ]
+    },
+    {
+        "name": "webuni/commonmark-table-extension",
+        "version": "0.7.0",
+        "version_normalized": "0.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/webuni/commonmark-table-extension.git",
+            "reference": "6326245c1e198cc839ef4f6dc070cf99cffb1a84"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/6326245c1e198cc839ef4f6dc070cf99cffb1a84",
+            "reference": "6326245c1e198cc839ef4f6dc070cf99cffb1a84",
+            "shasum": ""
+        },
+        "require": {
+            "league/commonmark": "^0.16|^0.17",
+            "php": "^5.6|^7.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "phpunit/phpunit": "^5.4|^6.0",
+            "symfony/var-dumper": "^3.0|^4.0"
+        },
+        "time": "2018-01-09T11:11:46+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Webuni\\CommonMark\\TableExtension\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Martin Hasoň",
+                "email": "martin.hason@gmail.com"
+            },
+            {
+                "name": "Webuni s.r.o.",
+                "homepage": "https://www.webuni.cz"
+            }
+        ],
+        "description": "The table extension for CommonMark PHP implementation",
+        "homepage": "https://github.com/webuni/commonmark-table-extension",
+        "keywords": [
+            "commonmark",
+            "markdown",
+            "table"
+        ]
     }
 ]

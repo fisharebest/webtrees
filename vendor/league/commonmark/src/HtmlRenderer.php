@@ -47,23 +47,6 @@ class HtmlRenderer implements ElementRendererInterface
     }
 
     /**
-     * @param string $string
-     * @param bool   $preserveEntities
-     *
-     * @return string
-     */
-    public function escape($string, $preserveEntities = false)
-    {
-        if ($preserveEntities) {
-            $string = preg_replace('/[&](?![#](x[a-f0-9]{1,8}|[0-9]{1,8});|[a-z][a-z0-9]{1,31};)/i', '&amp;', $string);
-        } else {
-            $string = str_replace('&', '&amp;', $string);
-        }
-
-        return str_replace(['<', '>', '"'], ['&lt;', '&gt;', '&quot;'], $string);
-    }
-
-    /**
      * @param AbstractInline $inline
      *
      * @throws \RuntimeException

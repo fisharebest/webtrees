@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "03a6ab51f1f458e2a42f5616547bafed",
+    "content-hash": "c7038f81e9180c041b368fe5f6bb0a73",
     "packages": [
         {
             "name": "fisharebest/algorithm",
@@ -422,34 +422,34 @@
         },
         {
             "name": "league/commonmark",
-            "version": "0.15.3",
+            "version": "0.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "c8b43ee5821362216f8e9ac684f0f59de164edcc"
+                "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c8b43ee5821362216f8e9ac684f0f59de164edcc",
-                "reference": "c8b43ee5821362216f8e9ac684f0f59de164edcc",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/3b4c2224524776a584de663c7a04bc8eb2e1544d",
+                "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">=5.4.8"
+                "php": ">=5.6.5"
             },
             "replace": {
                 "colinodell/commonmark-php": "*"
             },
             "require-dev": {
                 "cebe/markdown": "~1.0",
+                "commonmark/commonmark.js": "0.28",
                 "erusev/parsedown": "~1.0",
-                "jgm/commonmark": "0.27",
                 "michelf/php-markdown": "~1.4",
                 "mikehaertl/php-shellcommand": "~1.2.0",
-                "phpunit/phpunit": "~4.3|~5.0",
+                "phpunit/phpunit": "~5.7|~6.5",
                 "scrutinizer/ocular": "~1.1",
-                "symfony/finder": "~2.3|~3.0"
+                "symfony/finder": "~3.0|~4.0"
             },
             "suggest": {
                 "league/commonmark-extras": "Library of useful extensions including smart punctuation"
@@ -460,7 +460,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.16-dev"
+                    "dev-master": "0.18-dev"
                 }
             },
             "autoload": {
@@ -487,7 +487,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2016-12-19T00:11:43+00:00"
+            "time": "2017-12-30T22:08:48+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1200,27 +1200,26 @@
         },
         {
             "name": "webuni/commonmark-table-extension",
-            "version": "0.6.1",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webuni/commonmark-table-extension.git",
-                "reference": "ebbd69b63436283ec726658835b213ec634485e8"
+                "reference": "6326245c1e198cc839ef4f6dc070cf99cffb1a84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/ebbd69b63436283ec726658835b213ec634485e8",
-                "reference": "ebbd69b63436283ec726658835b213ec634485e8",
+                "url": "https://api.github.com/repos/webuni/commonmark-table-extension/zipball/6326245c1e198cc839ef4f6dc070cf99cffb1a84",
+                "reference": "6326245c1e198cc839ef4f6dc070cf99cffb1a84",
                 "shasum": ""
             },
             "require": {
-                "league/commonmark": "^0.14|^0.15",
-                "php": "^5.5|^7.0"
+                "league/commonmark": "^0.16|^0.17",
+                "php": "^5.6|^7.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.9",
-                "phpunit/phpunit": "^4.3|^5.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-                "symfony/var-dumper": "^2.7|^3.0"
+                "friendsofphp/php-cs-fixer": "^2.9",
+                "phpunit/phpunit": "^5.4|^6.0",
+                "symfony/var-dumper": "^3.0|^4.0"
             },
             "type": "library",
             "extra": {
@@ -1240,8 +1239,7 @@
             "authors": [
                 {
                     "name": "Martin Hasoň",
-                    "email": "martin.hason@gmail.com",
-                    "role": "Lead Developer"
+                    "email": "martin.hason@gmail.com"
                 },
                 {
                     "name": "Webuni s.r.o.",
@@ -1255,7 +1253,7 @@
                 "markdown",
                 "table"
             ],
-            "time": "2017-01-11T14:52:17+00:00"
+            "time": "2018-01-09T11:11:46+00:00"
         }
     ],
     "packages-dev": [
@@ -1499,16 +1497,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.8.3",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "d9ec9b848cbf930c31dea3693d34dbd8b9c95295"
+                "reference": "454ddbe65da6a9297446f442bad244e8a99a9a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/d9ec9b848cbf930c31dea3693d34dbd8b9c95295",
-                "reference": "d9ec9b848cbf930c31dea3693d34dbd8b9c95295",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/454ddbe65da6a9297446f442bad244e8a99a9a38",
+                "reference": "454ddbe65da6a9297446f442bad244e8a99a9a38",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1533,8 @@
             "require-dev": {
                 "johnkary/phpunit-speedtrap": "^1.1 || ^2.0@dev",
                 "justinrainbow/json-schema": "^5.0",
-                "php-coveralls/php-coveralls": "^1.0.2",
+                "mikey179/vfsstream": "^1.6",
+                "php-coveralls/php-coveralls": "^2.0",
                 "php-cs-fixer/accessible-object": "^1.0",
                 "phpunit/phpunit": "^5.7.23 || ^6.4.3",
                 "symfony/phpunit-bridge": "^3.2.2 || ^4.0"
@@ -1575,7 +1574,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2017-11-26T20:45:16+00:00"
+            "time": "2017-12-08T16:36:20+00:00"
         },
         {
             "name": "gecko-packages/gecko-php-unit",
@@ -1627,99 +1626,6 @@
             "time": "2017-08-23T07:46:41+00:00"
         },
         {
-            "name": "guzzle/guzzle",
-            "version": "v3.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.3.3",
-                "symfony/event-dispatcher": ">=2.1"
-            },
-            "replace": {
-                "guzzle/batch": "self.version",
-                "guzzle/cache": "self.version",
-                "guzzle/common": "self.version",
-                "guzzle/http": "self.version",
-                "guzzle/inflection": "self.version",
-                "guzzle/iterator": "self.version",
-                "guzzle/log": "self.version",
-                "guzzle/parser": "self.version",
-                "guzzle/plugin": "self.version",
-                "guzzle/plugin-async": "self.version",
-                "guzzle/plugin-backoff": "self.version",
-                "guzzle/plugin-cache": "self.version",
-                "guzzle/plugin-cookie": "self.version",
-                "guzzle/plugin-curlauth": "self.version",
-                "guzzle/plugin-error-response": "self.version",
-                "guzzle/plugin-history": "self.version",
-                "guzzle/plugin-log": "self.version",
-                "guzzle/plugin-md5": "self.version",
-                "guzzle/plugin-mock": "self.version",
-                "guzzle/plugin-oauth": "self.version",
-                "guzzle/service": "self.version",
-                "guzzle/stream": "self.version"
-            },
-            "require-dev": {
-                "doctrine/cache": "*",
-                "monolog/monolog": "1.*",
-                "phpunit/phpunit": "3.7.*",
-                "psr/log": "1.0.*",
-                "symfony/class-loader": "*",
-                "zendframework/zend-cache": "<2.3",
-                "zendframework/zend-log": "<2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Guzzle": "src/",
-                    "Guzzle\\Tests": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Guzzle Community",
-                    "homepage": "https://github.com/guzzle/guzzle/contributors"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "abandoned": "guzzlehttp/guzzle",
-            "time": "2014-01-28T22:29:15+00:00"
-        },
-        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.0",
             "source": {
@@ -1769,22 +1675,22 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.14.1",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "64251a392344e3d22f3d21c3b7c531ba96eb01d2"
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/64251a392344e3d22f3d21c3b7c531ba96eb01d2",
-                "reference": "64251a392344e3d22f3d21c3b7c531ba96eb01d2",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3.0"
+                "symfony/var-dumper": "^2.6|^3.0|^4.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.0|^5.0"
@@ -1826,7 +1732,7 @@
                 "debug",
                 "debugbar"
             ],
-            "time": "2017-09-13T12:19:36+00:00"
+            "time": "2017-12-15T11:13:46+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -2554,16 +2460,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.5.3",
+            "version": "6.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "882e886cc928a0abd3c61282b2a64026237d14a4"
+                "reference": "83d27937a310f2984fd575686138597147bdc7df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/882e886cc928a0abd3c61282b2a64026237d14a4",
-                "reference": "882e886cc928a0abd3c61282b2a64026237d14a4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/83d27937a310f2984fd575686138597147bdc7df",
+                "reference": "83d27937a310f2984fd575686138597147bdc7df",
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2487,7 @@
                 "phpunit/php-file-iterator": "^1.4.3",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^1.0.9",
-                "phpunit/phpunit-mock-objects": "^5.0.4",
+                "phpunit/phpunit-mock-objects": "^5.0.5",
                 "sebastian/comparator": "^2.1",
                 "sebastian/diff": "^2.0",
                 "sebastian/environment": "^3.1",
@@ -2634,27 +2540,27 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-12-06T09:42:03+00:00"
+            "time": "2017-12-17T06:31:19+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "5.0.4",
+            "version": "5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "16b50f4167e5e85e81ca8a3dd105d0a5fd32009a"
+                "reference": "33fd41a76e746b8fa96d00b49a23dadfa8334cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/16b50f4167e5e85e81ca8a3dd105d0a5fd32009a",
-                "reference": "16b50f4167e5e85e81ca8a3dd105d0a5fd32009a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/33fd41a76e746b8fa96d00b49a23dadfa8334cdf",
+                "reference": "33fd41a76e746b8fa96d00b49a23dadfa8334cdf",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.5",
                 "php": "^7.0",
                 "phpunit/php-text-template": "^1.2.1",
-                "sebastian/exporter": "^3.0"
+                "sebastian/exporter": "^3.1"
             },
             "conflict": {
                 "phpunit/phpunit": "<6.0"
@@ -2693,7 +2599,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-12-02T05:31:19+00:00"
+            "time": "2018-01-06T05:45:45+00:00"
         },
         {
             "name": "psr/log",
@@ -2744,23 +2650,23 @@
         },
         {
             "name": "satooshi/php-coveralls",
-            "version": "v1.0.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-coveralls/php-coveralls.git",
-                "reference": "9c07b63acbc9709344948b6fd4f63a32b2ef4127"
+                "reference": "3eaf7eb689cdf6b86801a3843940d974dc657068"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/9c07b63acbc9709344948b6fd4f63a32b2ef4127",
-                "reference": "9c07b63acbc9709344948b6fd4f63a32b2ef4127",
+                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/3eaf7eb689cdf6b86801a3843940d974dc657068",
+                "reference": "3eaf7eb689cdf6b86801a3843940d974dc657068",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-simplexml": "*",
-                "guzzle/guzzle": "^2.8 || ^3.0",
-                "php": "^5.3.3 || ^7.0",
+                "guzzlehttp/guzzle": "^6.0",
+                "php": "^5.5 || ^7.0",
                 "psr/log": "^1.0",
                 "symfony/config": "^2.1 || ^3.0 || ^4.0",
                 "symfony/console": "^2.1 || ^3.0 || ^4.0",
@@ -2774,12 +2680,17 @@
                 "symfony/http-kernel": "Allows Symfony integration"
             },
             "bin": [
-                "bin/coveralls"
+                "bin/php-coveralls"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Satooshi\\": "src/Satooshi/"
+                    "PhpCoveralls\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2790,7 +2701,24 @@
                 {
                     "name": "Kitamura Satoshi",
                     "email": "with.no.parachute@gmail.com",
-                    "homepage": "https://www.facebook.com/satooshi.jp"
+                    "homepage": "https://www.facebook.com/satooshi.jp",
+                    "role": "Original creator"
+                },
+                {
+                    "name": "Takashi Matsuo",
+                    "email": "tmatsuo@google.com"
+                },
+                {
+                    "name": "Google Inc"
+                },
+                {
+                    "name": "Dariusz Ruminski",
+                    "email": "dariusz.ruminski@gmail.com",
+                    "homepage": "https://github.com/keradus"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/php-coveralls/php-coveralls/graphs/contributors"
                 }
             ],
             "description": "PHP client library for Coveralls API",
@@ -2801,7 +2729,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-10-14T23:15:34+00:00"
+            "time": "2017-12-08T14:28:16+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2850,16 +2778,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158"
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1174d9018191e93cb9d719edec01257fc05f8158",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
                 "shasum": ""
             },
             "require": {
@@ -2910,7 +2838,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-11-03T07:16:52+00:00"
+            "time": "2017-12-22T14:50:35+00:00"
         },
         {
             "name": "sebastian/diff",

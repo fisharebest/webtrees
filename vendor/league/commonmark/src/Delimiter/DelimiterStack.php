@@ -175,31 +175,8 @@ class DelimiterStack
         $opener = $closer->getPrevious();
 
         while ($opener !== null && $opener !== $stackBottom && $opener !== $openersBottom[$closerChar]) {
-            $oddMatch = ($closer->canOpen() || $opener->canClose()) && ($opener->getNumDelims() + $closer->getNumDelims()) % 3 === 0;
+            $oddMatch = ($closer->canOpen() || $opener->canClose()) && ($opener->getOrigDelims() + $closer->getOrigDelims()) % 3 === 0;
             if ($opener->getChar() === $closerChar && $opener->canOpen() && !$oddMatch) {
-                return $opener;
-            }
-
-            $opener = $opener->getPrevious();
-        }
-    }
-
-    /**
-     * @param Delimiter      $closer
-     * @param array          $openersBottom
-     * @param Delimiter|null $stackBottom
-     *
-     * @return Delimiter|null
-     *
-     * @deprecated Use findMatchingOpener() instead.  This method will be removed in the next major release.
-     */
-    protected function findFirstMatchingOpener(Delimiter $closer, $openersBottom, Delimiter $stackBottom = null)
-    {
-        $closerChar = $closer->getChar();
-        $opener = $closer->getPrevious();
-
-        while ($opener !== null && $opener !== $stackBottom && $opener !== $openersBottom[$closerChar]) {
-            if ($opener->getChar() === $closerChar && $opener->canOpen()) {
                 return $opener;
             }
 

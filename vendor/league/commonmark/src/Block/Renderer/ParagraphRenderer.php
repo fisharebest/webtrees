@@ -18,6 +18,7 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
+use League\CommonMark\Util\Xml;
 
 class ParagraphRenderer implements BlockRendererInterface
 {
@@ -36,13 +37,13 @@ class ParagraphRenderer implements BlockRendererInterface
 
         if ($inTightList) {
             return $htmlRenderer->renderInlines($block->children());
-        } else {
-            $attrs = [];
-            foreach ($block->getData('attributes', []) as $key => $value) {
-                $attrs[$key] = $htmlRenderer->escape($value, true);
-            }
-
-            return new HtmlElement('p', $attrs, $htmlRenderer->renderInlines($block->children()));
         }
+
+        $attrs = [];
+        foreach ($block->getData('attributes', []) as $key => $value) {
+            $attrs[$key] = Xml::escape($value, true);
+        }
+
+        return new HtmlElement('p', $attrs, $htmlRenderer->renderInlines($block->children()));
     }
 }

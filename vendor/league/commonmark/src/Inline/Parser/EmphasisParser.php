@@ -29,10 +29,10 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
     public function __construct(array $newConfig = [])
     {
         $this->config = new Configuration([
-            'use_asterisk'    => true,
-            'use_underscore'  => true,
-            'enable_em'       => true,
-            'enable_strong'   => true,
+            'use_asterisk'   => true,
+            'use_underscore' => true,
+            'enable_em'      => true,
+            'enable_strong'  => true,
         ]);
         $this->config->mergeConfig($newConfig);
     }
@@ -131,8 +131,8 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
         $beforeIsWhitespace = preg_match(RegexHelper::REGEX_UNICODE_WHITESPACE_CHAR, $charBefore);
         $beforeIsPunctuation = preg_match(RegexHelper::REGEX_PUNCTUATION, $charBefore);
 
-        $leftFlanking = !$afterIsWhitespace && !($afterIsPunctuation && !$beforeIsWhitespace && !$beforeIsPunctuation);
-        $rightFlanking = !$beforeIsWhitespace && !($beforeIsPunctuation && !$afterIsWhitespace && !$afterIsPunctuation);
+        $leftFlanking = !$afterIsWhitespace && (!$afterIsPunctuation || $beforeIsWhitespace || $beforeIsPunctuation);
+        $rightFlanking = !$beforeIsWhitespace && (!$beforeIsPunctuation || $afterIsWhitespace || $afterIsPunctuation);
 
         if ($character === '_') {
             $canOpen = $leftFlanking && (!$rightFlanking || $beforeIsPunctuation);
