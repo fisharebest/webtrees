@@ -1621,10 +1621,11 @@ class AdminController extends BaseController {
 	 *
 	 * @param string  $name
 	 * @param mixed[] $data
+	 * @param int     $status
 	 *
 	 * @return Response
 	 */
-	protected function viewResponse($name, $data): Response {
+	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
 		$html = View::make($this->layout, [
 			'content'    => View::make($name, $data),
 			'title'      => strip_tags($data['title']),
@@ -1632,7 +1633,7 @@ class AdminController extends BaseController {
 			'theme_url'  => 'themes/_administration/css-2.0.0/',
 		]);
 
-		return new Response($html);
+		return new Response($html, $status);
 	}
 
 	/**

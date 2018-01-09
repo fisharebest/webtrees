@@ -36,10 +36,11 @@ class BaseController extends LegacyBaseController {
 	 *
 	 * @param string  $name
 	 * @param mixed[] $data
+	 * @param int     $status
 	 *
 	 * @return Response
 	 */
-	protected function viewResponse($name, $data): Response {
+	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
 		$theme = Theme::theme();
 
 		$html = View::make($this->layout, [
@@ -52,6 +53,6 @@ class BaseController extends LegacyBaseController {
 			'javascript'              => $this->getJavascript() . $theme->hookFooterExtraJavascript(),
 		]);
 
-		return new Response($html);
+		return new Response($html, $status);
 	}
 }
