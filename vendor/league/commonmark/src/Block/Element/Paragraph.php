@@ -17,7 +17,7 @@ namespace League\CommonMark\Block\Element;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
 
-class Paragraph extends AbstractBlock implements InlineContainer
+class Paragraph extends AbstractBlock implements InlineContainerInterface
 {
     /**
      * Returns true if this block can contain the given block as a child node
@@ -107,7 +107,7 @@ class Paragraph extends AbstractBlock implements InlineContainer
      */
     public function handleRemainingContents(ContextInterface $context, Cursor $cursor)
     {
-        $cursor->advanceToFirstNonSpace();
+        $cursor->advanceToNextNonSpaceOrTab();
         $context->getTip()->addLine($cursor->getRemainder());
     }
 }

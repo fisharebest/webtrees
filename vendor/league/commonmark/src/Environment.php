@@ -243,14 +243,14 @@ class Environment
     /**
      * @param string $character
      *
-     * @return InlineParserInterface[]|null
+     * @return InlineParserInterface[]
      */
     public function getInlineParsersForCharacter($character)
     {
         $this->initializeExtensions();
 
         if (!isset($this->inlineParsersByCharacter[$character])) {
-            return;
+            return [];
         }
 
         return $this->inlineParsersByCharacter[$character];
@@ -485,6 +485,7 @@ class Environment
             'safe'               => false, // deprecated option
             'html_input'         => self::HTML_INPUT_ALLOW,
             'allow_unsafe_links' => true,
+            'max_nesting_level'  => INF,
         ]);
 
         return $environment;
@@ -533,7 +534,7 @@ class Environment
     private function getMiscExtension()
     {
         $lastExtension = end($this->extensions);
-        if ($lastExtension !== false && $lastExtension instanceof MiscExtension) {
+        if ($lastExtension instanceof MiscExtension) {
             return $lastExtension;
         }
 

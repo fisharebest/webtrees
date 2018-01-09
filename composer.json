@@ -30,7 +30,7 @@
 		"fisharebest/ext-calendar": "~2.3",
 		"fisharebest/localization": "~1.10",
 		"guzzlehttp/guzzle": "~6.0",
-		"league/commonmark": "0.15.3",
+		"league/commonmark": "~0.17",
 		"league/flysystem": "~1.0",
 		"league/flysystem-ziparchive": "~1.0",
 		"league/glide": "~1.2",
@@ -41,7 +41,7 @@
 		"symfony/polyfill-php71": "~1.4",
 		"symfony/polyfill-php72": "~1.4",
 		"tecnickcom/tcpdf": "~6.2",
-		"webuni/commonmark-table-extension": "~0.6"
+		"webuni/commonmark-table-extension": "~0.7"
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "*",

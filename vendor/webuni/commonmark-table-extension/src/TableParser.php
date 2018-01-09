@@ -21,7 +21,7 @@ use League\CommonMark\Util\RegexHelper;
 class TableParser extends AbstractBlockParser
 {
     const REGEXP_DEFINITION = '/(?: *(:?) *-+ *(:?) *)+(?=\||$)/';
-    const REGEXP_CELLS = '/(?:`[^`]*`|\\\\\\\\|\\\\\||[^|`\\\\]+)+(?=\||$)/';
+    const REGEXP_CELLS = '/(?:`[^`]*`|\\\\\||\\\\|[^|`\\\\]+)+(?=\||$)/';
     const REGEXP_CAPTION = '/^\[(.+?)\](?:\[(.+)\])?\s*$/';
 
     public function parse(ContextInterface $context, Cursor $cursor)
@@ -37,7 +37,9 @@ class TableParser extends AbstractBlockParser
             return false;
         }
 
-        $match = RegexHelper::matchAll(self::REGEXP_DEFINITION, $cursor->getLine(), $cursor->getFirstNonSpacePosition());
+        $expressionOffset = $cursor->getNextNonSpacePosition();
+
+        $match = RegexHelper::matchAll(self::REGEXP_DEFINITION, $cursor->getLine(), $expressionOffset);
         if (null === $match) {
             return false;
         }
@@ -97,7 +99,7 @@ class TableParser extends AbstractBlockParser
             } elseif (isset($match[2][$i]) && $match[2][$i]) {
                 $columns[] = TableCell::ALIGN_RIGHT;
             } else {
-                $columns[] = null;
+                $columns[] = '';
             }
         }
 
@@ -114,6 +116,10 @@ class TableParser extends AbstractBlockParser
 
         $row = new TableRow();
         foreach ((array) $cells[0] as $i => $cell) {
+            if (!isset($columns[$i])) {
+                return $row;
+            }
+
             $row->appendChild(new TableCell(trim($cell), $type, isset($columns[$i]) ? $columns[$i] : null));
         }
 

@@ -135,7 +135,7 @@ abstract class AbstractBlock extends Node
     {
         // create paragraph container for line
         $context->addBlock(new Paragraph());
-        $cursor->advanceToFirstNonSpace();
+        $cursor->advanceToNextNonSpaceOrTab();
         $context->getTip()->addLine($cursor->getRemainder());
     }
 
@@ -247,7 +247,7 @@ abstract class AbstractBlock extends Node
     public function finalize(ContextInterface $context, $endLineNumber)
     {
         if (!$this->open) {
-            return; // TODO: Throw AlreadyClosedException?
+            return;
         }
 
         $this->open = false;

@@ -33,19 +33,19 @@ class ATXHeadingParser extends AbstractBlockParser
             return false;
         }
 
-        $match = RegexHelper::matchAll('/^#{1,6}(?:[ \t]+|$)/', $cursor->getLine(), $cursor->getFirstNonSpacePosition());
+        $match = RegexHelper::matchAll('/^#{1,6}(?:[ \t]+|$)/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
         if (!$match) {
             return false;
         }
 
-        $cursor->advanceToFirstNonSpace();
+        $cursor->advanceToNextNonSpaceOrTab();
 
         $cursor->advanceBy(strlen($match[0]));
 
         $level = strlen(trim($match[0]));
         $str = $cursor->getRemainder();
-        $str = preg_replace('/^ *#+ *$/', '', $str);
-        $str = preg_replace('/ +#+ *$/', '', $str);
+        $str = preg_replace('/^[ \t]*#+[ \t]*$/', '', $str);
+        $str = preg_replace('/[ \t]+#+[ \t]*$/', '', $str);
 
         $context->addBlock(new Heading($level, $str));
         $context->setBlocksParsed(true);

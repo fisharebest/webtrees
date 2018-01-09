@@ -16,7 +16,7 @@ namespace League\CommonMark;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\Document;
-use League\CommonMark\Block\Element\InlineContainer;
+use League\CommonMark\Block\Element\InlineContainerInterface;
 use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Node\NodeWalker;
 
@@ -33,12 +33,18 @@ class DocParser
     private $inlineParserEngine;
 
     /**
+     * @var int|float
+     */
+    private $maxNestingLevel;
+
+    /**
      * @param Environment $environment
      */
     public function __construct(Environment $environment)
     {
         $this->environment = $environment;
         $this->inlineParserEngine = new InlineParserEngine($environment);
+        $this->maxNestingLevel = $environment->getConfig('max_nesting_level', INF);
     }
 
     /**
@@ -83,8 +89,8 @@ class DocParser
             $this->incorporateLine($context);
         }
 
-        while ($context->getTip()) {
-            $context->getTip()->finalize($context, count($lines));
+        while ($tip = $context->getTip()) {
+            $tip->finalize($context, count($lines));
         }
 
         $this->processInlines($context, $context->getDocument()->walker());
@@ -128,7 +134,7 @@ class DocParser
         } elseif (!$cursor->isBlank()) {
             // Create paragraph container for line
             $context->addBlock(new Paragraph());
-            $cursor->advanceToFirstNonSpace();
+            $cursor->advanceToNextNonSpaceOrTab();
             $context->getTip()->addLine($cursor->getRemainder());
         }
     }
@@ -142,13 +148,13 @@ class DocParser
 
     private function processInlines(ContextInterface $context, NodeWalker $walker)
     {
-        while (($event = $walker->next()) !== null) {
+        while ($event = $walker->next()) {
             if (!$event->isEntering()) {
                 continue;
             }
 
             $node = $event->getNode();
-            if ($node instanceof InlineContainer) {
+            if ($node instanceof InlineContainerInterface) {
                 $this->inlineParserEngine->parse($node, $context->getDocument()->getReferenceMap());
             }
         }
@@ -162,20 +168,22 @@ class DocParser
      */
     private function resetContainer(ContextInterface $context, Cursor $cursor)
     {
-        $context->setContainer($context->getDocument());
+        $container = $context->getDocument();
 
-        while ($context->getContainer()->hasChildren()) {
-            $lastChild = $context->getContainer()->lastChild();
+        while ($container->hasChildren()) {
+            $lastChild = $container->lastChild();
             if (!$lastChild->isOpen()) {
                 break;
             }
 
-            $context->setContainer($lastChild);
-            if (!$context->getContainer()->matchesNextLine($cursor)) {
-                $context->setContainer($context->getContainer()->parent()); // back up to the last matching block
+            $container = $lastChild;
+            if (!$container->matchesNextLine($cursor)) {
+                $container = $container->parent(); // back up to the last matching block
                 break;
             }
         }
+
+        $context->setContainer($container);
     }
 
     /**
@@ -195,8 +203,9 @@ class DocParser
                 }
             }
 
-            if (!$parsed || $context->getContainer()->acceptsLines()) {
+            if (!$parsed || $context->getContainer()->acceptsLines() || $context->getTip()->getDepth() >= $this->maxNestingLevel) {
                 $context->setBlocksParsed(true);
+                break;
             }
         }
     }
@@ -219,15 +228,16 @@ class DocParser
      * @param ContextInterface $context
      * @param Cursor           $cursor
      */
-    private function setAndPropagateLastLineBlank(ContextInterface $context, $cursor)
+    private function setAndPropagateLastLineBlank(ContextInterface $context, Cursor $cursor)
     {
-        if ($cursor->isBlank() && $lastChild = $context->getContainer()->lastChild()) {
+        $container = $context->getContainer();
+
+        if ($cursor->isBlank() && $lastChild = $container->lastChild()) {
             if ($lastChild instanceof AbstractBlock) {
                 $lastChild->setLastLineBlank(true);
             }
         }
 
-        $container = $context->getContainer();
         $lastLineBlank = $container->shouldLastLineBeBlank($cursor, $context->getLineNumber());
 
         // Propagate lastLineBlank up through parents:
