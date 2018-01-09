@@ -460,14 +460,15 @@ class SetupController extends BaseController {
 	 *
 	 * @param string  $name
 	 * @param mixed[] $data
+	 * @param int     $atatus
 	 *
 	 * @return Response
 	 */
-	protected function viewResponse($name, $data): Response {
+	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
 		$html = View::make('layouts/setup', [
 			'content' => View::make($name, $data),
 		]);
 
-		return new Response($html);
+		return new Response($html, $status);
 	}
 }
