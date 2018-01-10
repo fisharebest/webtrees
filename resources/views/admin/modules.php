@@ -9,6 +9,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleTabInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
@@ -203,8 +204,10 @@
 		<?= I18N::translate('save') ?></button>
 </form>
 
+<?php View::push('javascript') ?>
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    $(".table-module-administration").dataTable({<?= I18N::datatablesI18N() ?>});
-  });
+  'use strict';
+
+  $(".table-module-administration").dataTable({<?= I18N::datatablesI18N() ?>});
 </script>
+<?php View::endpush() ?>

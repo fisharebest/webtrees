@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
 
@@ -127,8 +128,10 @@
 	</table>
 <?php endif ?>
 
+<?php View::push('javascript') ?>
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
+  'use strict';
+
   $("#from, #to").parent("div").datetimepicker({
     format: "YYYY-MM-DD",
     minDate: <?= json_encode($earliest) ?>,
@@ -146,5 +149,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
       clear: "far fa-trash-alt"
     }
   });
-});
 </script>
+<?php View::endpush() ?>
