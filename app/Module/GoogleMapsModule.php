@@ -157,64 +157,37 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		global $controller;
-
-		$controller->addInlineJavascript("
-		$('head').append('<link type=\"text/css\" href =\"" . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
-		");
-
-		return '<script src="' . $this->googleMapsScript() . '"></script>';
-	}
-
-	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
-
+	public function getTabContent(Individual $individual) {
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
-		if ($this->checkMapData($controller->record)) {
+		if ($this->checkMapData($individual)) {
 			// This call can return an empty string if no facts with map co-ordinates exist
-			$mapdata = $this->buildIndividualMap($controller->record);
+			$map_data = $this->buildIndividualMap($individual);
 		} else {
-			$mapdata = '';
-		}
-		if ($mapdata) {
-			$html = '<div id="' . $this->getName() . '_content">';
-			$html .= '<div class="gm-wrapper">';
-			$html .= '<div class="gm-map"></div>';
-			$html .= $mapdata;
-			$html .= '</div>';
-			if (Auth::isAdmin()) {
-				$html .= '<div class="gm-options">';
-				$html .= '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
-				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
-				$html .= '</div>';
-			}
-			$html .= '<script>loadMap();</script>';
-			$html .= '</div>';
-		} else {
-			$html = '<div>' . I18N::translate('No map data exists for this individual') . '</div>';
-			if (Auth::isAdmin()) {
-				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
-			}
+			$map_data = '';
 		}
 
-		return $html;
+		return view('tabs/map', [
+			'google_map_css'       => WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css',
+			'google_map_js'        => $this->googleMapsScript(),
+			'individual'           => $individual,
+			'is_admin'             => Auth::isAdmin(),
+			'map_data'             => $map_data,
+		]);
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
+	public function hasTabContent(Individual $individual) {
 		return Module::getModuleByName('googlemap') || Auth::isAdmin();
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
+	public function isGrayedOut(Individual $individual) {
 		return false;
 	}
 
@@ -1365,11 +1338,22 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			?>
 
 			<script>
-				var map_center = new google.maps.LatLng(0, 0);
 				var gmarkers   = [];
+				var infowindow;
+
+				// Opens Marker infowindow when corresponding Sidebar item is clicked
+				function openInfowindow(i) {
+					infowindow.close();
+					google.maps.event.trigger(gmarkers[i], 'click');
+					return false;
+				}
+
+				function loadMap() {
+				var map_center = new google.maps.LatLng(0, 0);
 				var gicons     = [];
 				var map        = null;
-				var infowindow = new google.maps.InfoWindow({});
+
+				infowindow = new google.maps.InfoWindow({});
 
 				gicons["red"] = {
 					url:    "https://maps.google.com/mapfiles/marker.png",
@@ -1431,14 +1415,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					});
 				}
 
-				// Opens Marker infowindow when corresponding Sidebar item is clicked
-				function openInfowindow(i) {
-					infowindow.close();
-					google.maps.event.trigger(gmarkers[i], 'click');
-					return false;
-				}
-
-				function loadMap() {
 					// Create the map and mapOptions
 					var mapOptions = {
 						zoom:                     7,

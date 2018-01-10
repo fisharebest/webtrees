@@ -13,36 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\MediaController;
+// Redirect legacy URLs to the new router.
+$_GET['xref']  = $_GET['mid'] ?? '';
+$_GET['route'] = 'media';
 
-/** @global Tree $WT_TREE */
-global $WT_TREE;
-
-require 'includes/session.php';
-
-$record     = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
-$controller = new MediaController($record);
-
-if ($controller->record && $controller->record->canShow()) {
-	$controller->pageHeader();
-} else {
-	http_response_code(404);
-	$controller->pageHeader();
-
-	echo View::make('alerts/danger', [
-		'alert' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
-	]);
-
-	return;
-}
-
-echo View::make('media-page', [
-	'media'       => $controller->record,
-	'individuals' => $controller->record->linkedIndividuals('OBJE'),
-	'families'    => $controller->record->linkedFamilies('OBJE'),
-	'sources'     => $controller->record->linkedSources('OBJE'),
-	'notes'       => $controller->record->linkedNotes('OBJE'),
-	'facts'       => array_filter($controller->getFacts(), function (Fact $fact) { return $fact->getTag() !== 'FILE'; }),
-]);
+require __DIR__ . '/index.php';

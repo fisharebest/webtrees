@@ -13,57 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\RepositoryController;
+// Redirect legacy URLs to the new router.
+$_GET['xref']  = $_GET['rid'] ?? '';
+$_GET['route'] = 'repository';
 
-/** @global Tree $WT_TREE */
-global $WT_TREE;
-
-require 'includes/session.php';
-
-$record     = Repository::getInstance(Filter::get('rid', WT_REGEX_XREF), $WT_TREE);
-$controller = new RepositoryController($record);
-
-if ($controller->record && $controller->record->canShow()) {
-	$controller->pageHeader();
-} else {
-	http_response_code(404);
-	$controller->pageHeader();
-
-	echo View::make('alerts/danger', [
-		'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
-	]);
-
-	return;
-}
-
-$sources = $controller->record->linkedSources('REPO');
-$facts   = $controller->record->getFacts();
-
-usort(
-	$facts,
-	function (Fact $x, Fact $y) {
-		static $order = [
-			'NAME' => 0,
-			'ADDR' => 1,
-			'NOTE' => 2,
-			'WWW'  => 3,
-			'REFN' => 4,
-			'RIN'  => 5,
-			'_UID' => 6,
-			'CHAN' => 7,
-		];
-
-		return
-			(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
-			-
-			(array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
-	}
-);
-
-echo View::make('repository-page', [
-	'repository' => $controller->record,
-	'sources'    => $sources,
-	'facts'      => $facts,
-]);
+require __DIR__ . '/index.php';

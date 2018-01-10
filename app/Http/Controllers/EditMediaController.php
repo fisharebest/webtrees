@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -60,13 +59,13 @@ class EditMediaController extends BaseController {
 		$media = Media::getInstance($xref, $tree);
 
 		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-			return new Response(View::make('modals/error', [
+			return new Response(view('modals/error', [
 				'title' => I18N::translate('Add a media file'),
 				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
 			]));
 		}
 
-		return new Response(View::make('modals/add-media-file', [
+		return new Response(view('modals/add-media-file', [
 			'max_upload_size' => $this->maxUploadFilesize(),
 			'media'           => $media,
 			'media_types'     => $this->mediaTypes(),
@@ -135,7 +134,7 @@ class EditMediaController extends BaseController {
 		$media    = Media::getInstance($xref, $tree);
 
 		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-			return new Response(View::make('modals/error', [
+			return new Response(view('modals/error', [
 				'title' => I18N::translate('Edit a media file'),
 				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
 			]), Response::HTTP_FORBIDDEN);
@@ -143,7 +142,7 @@ class EditMediaController extends BaseController {
 
 		foreach ($media->mediaFiles() as $media_file) {
 			if ($media_file->factId() === $fact_id) {
-				return new Response(View::make('modals/edit-media-file', [
+				return new Response(view('modals/edit-media-file', [
 					'media_file'      => $media_file,
 					'max_upload_size' => $this->maxUploadFilesize(),
 					'media'           => $media,
@@ -263,7 +262,7 @@ class EditMediaController extends BaseController {
 	public function createMediaObject(Request $request): Response {
 		$tree = $request->attributes->get('tree');
 
-		return new Response(View::make('modals/create-media-object', [
+		return new Response(view('modals/create-media-object', [
 			'tree'            => $tree,
 			'max_upload_size' => $this->maxUploadFilesize(),
 			'media_types'     => $this->mediaTypes(),
@@ -321,7 +320,7 @@ class EditMediaController extends BaseController {
 
 		return new JsonResponse([
 			'id' => $record->getXref(),
-			'text' => View::make('selects/media', [
+			'text' => view('selects/media', [
 				'media' => $record,
 			]),
 			'html' => view('modals/record-created', [

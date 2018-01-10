@@ -62,7 +62,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		return true;
 	}
 
@@ -88,13 +88,15 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
+	public function getSidebarContent(Individual $individual) {
 		global $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
+		$initials = QueryName::surnameAlpha($individual->getTree(), true, false, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();

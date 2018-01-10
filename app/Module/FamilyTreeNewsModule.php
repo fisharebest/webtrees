@@ -19,9 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class FamilyTreeNewsModule
@@ -129,7 +127,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		}
 
 		if ($template) {
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

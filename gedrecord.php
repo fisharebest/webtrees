@@ -13,56 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\GedcomRecordController;
+// Redirect legacy URLs to the new router.
+$_GET['xref']  = $_GET['pid'] ?? '';
+$_GET['route'] = 'record';
 
-/** @global Tree $WT_TREE */
-global $WT_TREE;
-
-require 'includes/session.php';
-
-$record = GedcomRecord::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);
-if (
-	$record instanceof Individual ||
-	$record instanceof Family ||
-	$record instanceof Source ||
-	$record instanceof Repository ||
-	$record instanceof Note ||
-	$record instanceof Media
-) {
-	header('Location: ' . $record->url());
-
-	return;
-}
-$controller = new GedcomRecordController($record);
-
-if ($controller->record && $controller->record->canShow()) {
-	$controller->pageHeader();
-} else {
-	http_response_code(404);
-	$controller->pageHeader();
-
-	echo View::make('alerts/danger', [
-		'alert' => I18N::translate('This record does not exist or you do not have permission to view it.'),
-	]);
-
-	return;
-}
-
-$individuals   = $controller->record->linkedIndividuals('SUBM');
-$families      = $controller->record->linkedFamilies('SUBM');
-$media_objects = $controller->record->linkedMedia('SUBM');
-$sources       = $controller->record->linkedSources('SUBM');
-$notes         = $controller->record->linkedNotes('SUBM');
-$facts         = $controller->record->getFacts();
-
-echo View::make('gedcom-record-page', [
-	'facts'         => $facts,
-	'families'      => $families,
-	'individuals'   => $individuals,
-	'media_objects' => $media_objects,
-	'notes'         => $notes,
-	'record'        => $controller->record,
-	'sources'       => $sources,
-]);
+require __DIR__ . '/index.php';

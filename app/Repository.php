@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  */
 class Repository extends GedcomRecord {
 	const RECORD_TYPE = 'REPO';
-	const URL_PREFIX  = 'repo.php?rid=';
+	const ROUTE_NAME  = 'repository';
 
 	/**
 	 * Fetch data from the database

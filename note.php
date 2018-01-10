@@ -13,52 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\NoteController;
+// Redirect legacy URLs to the new router.
+$_GET['xref']  = $_GET['nid'] ?? '';
+$_GET['route'] = 'note';
 
-/** @global Tree $WT_TREE */
-global $WT_TREE;
-
-require 'includes/session.php';
-
-$record     = Note::getInstance(Filter::get('nid', WT_REGEX_XREF), $WT_TREE);
-$controller = new NoteController($record);
-
-if ($controller->record && $controller->record->canShow()) {
-	$controller->pageHeader();
-} else {
-	http_response_code(404);
-	$controller->pageHeader();
-
-	echo View::make('alerts/danger', [
-		'alert' => I18N::translate('This note does not exist or you do not have permission to view it.'),
-	]);
-	return;
-}
-
-$families      = $controller->record->linkedFamilies('NOTE');
-$individuals   = $controller->record->linkedIndividuals('NOTE');
-$notes         = [];
-$media_objects = $controller->record->linkedMedia('NOTE');
-$sources       = $controller->record->linkedSources('NOTE');
-
-$facts = [];
-foreach ($controller->record->getFacts() as $fact) {
-	if ($fact->getTag() != 'CONT') {
-		$facts[] = $fact;
-	}
-}
-
-$text = Filter::formatText($controller->record->getNote(), $controller->record->getTree());
-
-echo View::make('note-page', [
-	'note'          => $controller->record,
-	'families'      => $families,
-	'individuals'   => $individuals,
-	'sources'       => $sources,
-	'media_objects' => $media_objects,
-	'notes'         => $notes,
-	'facts'         => $facts,
-	'text'          => $text
-]);
+require __DIR__ . '/index.php';

@@ -549,7 +549,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		// Creating a controller has the side effect of initialising the cart
 		new ClippingsCartController;
 
@@ -559,9 +559,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
+	public function getSidebarContent(Individual $individual) {
 		global $controller;
 
 		$controller->addInlineJavascript('

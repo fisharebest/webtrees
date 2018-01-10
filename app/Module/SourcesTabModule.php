@@ -15,11 +15,10 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class SourcesTabModule
@@ -44,80 +43,35 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
-		global $WT_TREE;
-
-		return Auth::isEditor($WT_TREE) || $this->getFactsWithSources();
+	public function hasTabContent(Individual $individual) {
+		return $individual->canedit() || $this->getFactsWithSources($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
-		return !$this->getFactsWithSources();
+	public function isGrayedOut(Individual $individual) {
+		return !$this->getFactsWithSources($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
-
-		ob_start();
-		?>
-		<table class="table wt-facts-table">
-			<tr>
-				<td colspan="2" class="rela">
-					<label>
-						<input id="show-level-2-sources" type="checkbox">
-						<?= I18N::translate('Show all sources') ?>
-					</label>
-				</td>
-			</tr>
-			<?php
-			foreach ($this->getFactsWithSources() as $fact) {
-				if ($fact->getTag() == 'SOUR') {
-					FunctionsPrintFacts::printMainSources($fact, 1);
-				} else {
-					FunctionsPrintFacts::printMainSources($fact, 2);
-				}
-			}
-		if (!$this->getFactsWithSources()) {
-			echo '<tr><td colspan="2">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
-		}
-
-		// New Source Link
-		if ($controller->record->canEdit()) {
-			?>
-				<tr>
-					<th>
-						<?= I18N::translate('Source') ?>
-					</th>
-					<td>
-						<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SOUR">
-							<?= I18N::translate('Add a source citation') ?>
-						</a>
-					</td>
-				</tr>
-			<?php
-			}
-			?>
-		</table>
-		<script>
-			//persistent_toggle("show-level-2-sources", ".row_sour2");
-		</script>
-		<?php
-
-		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+	public function getTabContent(Individual $individual) {
+		return view('tabs/sources', [
+			'can_edit'   => $individual->canEdit(),
+			'individual' => $individual,
+			'facts'      => $this->getFactsWithSources($individual),
+		]);
 	}
 
 	/**
 	 * Get all the facts for an individual which contain sources.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return Fact[]
 	 */
-	private function getFactsWithSources() {
-		global $controller;
-
+	private function getFactsWithSources(Individual $individual) {
 		if ($this->facts === null) {
-			$facts = $controller->record->getFacts();
-			foreach ($controller->record->getSpouseFamilies() as $family) {
+			$facts = $individual->getFacts();
+			foreach ($individual->getSpouseFamilies() as $family) {
 				if ($family->canShow()) {
 					foreach ($family->getFacts() as $fact) {
 						$facts[] = $fact;
@@ -139,10 +93,5 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return false;
-	}
-
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
 	}
 }

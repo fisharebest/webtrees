@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class MediaTabModule
@@ -44,53 +45,35 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
-		global $WT_TREE;
-
-		return Auth::isEditor($WT_TREE) || $this->getFactsWithMedia();
+	public function hasTabContent(Individual $individual) {
+		return $individual->canEdit() || $this->getFactsWithMedia($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
-		return !$this->getFactsWithMedia();
+	public function isGrayedOut(Individual $individual) {
+		return !$this->getFactsWithMedia($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		ob_start();
-		echo '<table class="table wt-facts-table">';
-		echo '<tbody>';
-		foreach ($this->getFactsWithMedia() as $fact) {
-			if ($fact->getTag() == 'OBJE') {
-				FunctionsPrintFacts::printMainMedia($fact, 1);
-			} else {
-				for ($i = 2; $i < 4; ++$i) {
-					FunctionsPrintFacts::printMainMedia($fact, $i);
-				}
-			}
-		}
-		?>
-		</tbody>
-		</table>
-		<?php
-		if (!$this->getFactsWithMedia()) {
-			echo '<p>', I18N::translate('There are no media objects for this individual.'), '</p>';
-		}
-
-		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+	public function getTabContent(Individual $individual) {
+		return view('tabs/media', [
+			'can_edit'   => $individual->canEdit(),
+			'individual' => $individual,
+			'facts'      => $this->getFactsWithMedia($individual),
+		]);
 	}
 
 	/**
 	 * Get all the facts for an individual which contain media objects.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return Fact[]
 	 */
-	private function getFactsWithMedia() {
-		global $controller;
-
+	private function getFactsWithMedia(Individual $individual) {
 		if ($this->facts === null) {
-			$facts = $controller->record->getFacts();
-			foreach ($controller->record->getSpouseFamilies() as $family) {
+			$facts = $individual->getFacts();
+			foreach ($individual->getSpouseFamilies() as $family) {
 				if ($family->canShow()) {
 					foreach ($family->getFacts() as $fact) {
 						$facts[] = $fact;
@@ -112,10 +95,5 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return false;
-	}
-
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
 	}
 }

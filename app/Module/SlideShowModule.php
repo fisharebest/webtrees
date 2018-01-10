@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class SlideShowModule
@@ -110,7 +109,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($random_media) {
-			$content = View::make('blocks/slide-show', [
+			$content = view('blocks/slide-show', [
 				'block_id'            => $block_id,
 				'media'               => $random_media,
 				'media_file'          => $media_file,
@@ -128,7 +127,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,

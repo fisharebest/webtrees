@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class ReviewChangesModule
@@ -96,8 +95,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 									$user,
 									$sender,
 									I18N::translate('Pending changes'),
-									View::make('emails/pending-changes-text', ['tree' => $tree, 'user' => $user]),
-									View::make('emails/pending-changes-html', ['tree' => $tree, 'user' => $user])
+									view('emails/pending-changes-text', ['tree' => $tree, 'user' => $user]),
+									view('emails/pending-changes-html', ['tree' => $tree, 'user' => $user])
 								);
 								I18N::init(WT_LOCALE);
 							}
@@ -139,7 +138,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 					$config_url = '';
 				}
 
-				return View::make('blocks/template', [
+				return view('blocks/template', [
 					'block'      => str_replace('_', '-', $this->getName()),
 					'id'         => $block_id,
 					'config_url' => $config_url,

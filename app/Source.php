@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  */
 class Source extends GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
-	const URL_PREFIX  = 'source.php?sid=';
+	const ROUTE_NAME  = 'source';
 
 	/**
 	 * Each object type may have its own special rules, and re-implement this function.

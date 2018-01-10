@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +37,7 @@ class EditSubmitterController extends BaseController {
 	public function createSubmitter(Request $request): Response {
 		$tree = $request->attributes->get('tree');
 
-		return new Response(View::make('modals/create-submitter', [
+		return new Response(view('modals/create-submitter', [
 			'tree' => $tree,
 		]));
 	}
@@ -82,7 +81,7 @@ class EditSubmitterController extends BaseController {
 
 		return new JsonResponse([
 			'id' => $record->getXref(),
-			'text' => View::make('selects/submitter', [
+			'text' => view('selects/submitter', [
 				'submitter' => $record,
 			]),
 			'html' => view('modals/record-created', [

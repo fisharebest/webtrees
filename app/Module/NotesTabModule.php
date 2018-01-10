@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class NotesTabModule
@@ -45,93 +46,35 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
-		global $WT_TREE;
-
-		return Auth::isEditor($WT_TREE) || $this->getFactsWithNotes();
+	public function hasTabContent(Individual $individual) {
+		return $individual->canEdit() || $this->getFactsWithNotes($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
-		return !$this->getFactsWithNotes();
+	public function isGrayedOut(Individual $individual) {
+		return !$this->getFactsWithNotes($individual);
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
-
-		ob_start();
-		?>
-		<table class="table wt-facts-table">
-			<tr>
-				<td colspan="2">
-					<label>
-						<input id="show-level-2-notes" type="checkbox">
-						<?= I18N::translate('Show all notes') ?>
-					</label>
-				</td>
-			</tr>
-
-		<?php
-		foreach ($this->getFactsWithNotes() as $fact) {
-			if ($fact->getTag() == 'NOTE') {
-				FunctionsPrintFacts::printMainNotes($fact, 1);
-			} else {
-				for ($i = 2; $i < 4; ++$i) {
-					FunctionsPrintFacts::printMainNotes($fact, $i);
-				}
-			}
-		}
-		if (!$this->getFactsWithNotes()) {
-			echo '<tr><td colspan="2">', I18N::translate('There are no notes for this individual.'), '</td></tr>';
-		}
-
-		// New note link
-		if ($controller->record->canEdit()) {
-			?>
-			<tr>
-				<th scope="row">
-					<?= GedcomTag::getLabel('NOTE') ?>
-				</th>
-				<td>
-					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=NOTE">
-						<?= I18N::translate('Add a note') ?>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<?= GedcomTag::getLabel('SHARED_NOTE') ?>
-				</th>
-				<td>
-					<a href="edit_interface.php?action=add&amp;ged=<?= $controller->record->getTree()->getNameHtml() ?>&amp;xref=<?= $controller->record->getXref() ?>&amp;fact=SHARED_NOTE">
-						<?= I18N::translate('Add a shared note') ?>
-					</a>
-				</td>
-			</tr>
-		<?php
-		}
-		?>
-		</table>
-		<script>
-			//persistent_toggle("show-level-2-notes", ".row_note2");
-		</script>
-		<?php
-
-		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+	public function getTabContent(Individual $individual) {
+		return view('tabs/notes', [
+			'can_edit'   => $individual->canEdit(),
+			'individual' => $individual,
+			'facts'      => $this->getFactsWithNotes($individual),
+		]);
 	}
 
 	/**
 	 * Get all the facts for an individual which contain notes.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return Fact[]
 	 */
-	private function getFactsWithNotes() {
-		global $controller;
-
+	private function getFactsWithNotes(Individual $individual) {
 		if ($this->facts === null) {
-			$facts = $controller->record->getFacts();
-			foreach ($controller->record->getSpouseFamilies() as $family) {
+			$facts = $individual->getFacts();
+			foreach ($individual->getSpouseFamilies() as $family) {
 				if ($family->canShow()) {
 					foreach ($family->getFacts() as $fact) {
 						$facts[] = $fact;
@@ -153,10 +96,5 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return false;
-	}
-
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
 	}
 }

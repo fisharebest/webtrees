@@ -16,13 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class LoggedInUsersModule
@@ -100,7 +97,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		if ($template) {
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

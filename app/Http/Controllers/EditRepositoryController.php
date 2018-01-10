@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +37,7 @@ class EditRepositoryController extends BaseController {
 	public function createRepository(Request $request): Response {
 		$tree = $request->attributes->get('tree');
 
-		return new Response(View::make('modals/create-repository', [
+		return new Response(view('modals/create-repository', [
 			'tree' => $tree,
 		]));
 	}
@@ -76,7 +75,7 @@ class EditRepositoryController extends BaseController {
 		// html is for interactive modals
 		return new JsonResponse([
 			'id' => $record->getXref(),
-			'text' => View::make('selects/repository', [
+			'text' => view('selects/repository', [
 				'repository' => $record,
 			]),
 			'html' => view('modals/record-created', [

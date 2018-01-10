@@ -73,7 +73,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		return true;
 	}
 
@@ -85,9 +85,11 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
+	public function getSidebarContent(Individual $individual) {
 		global $controller;
 
 		$controller->addInlineJavascript('
@@ -135,7 +137,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			'<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="' . I18N::translate('Search') . '">' .
 			'</form>' .
 			'<div id="sb_desc_content">' .
-			'<ul>' . $this->getPersonLi($controller->record, 1) . '</ul>' .
+			'<ul>' . $this->getPersonLi($individual, 1) . '</ul>' .
 			'</div>';
 	}
 

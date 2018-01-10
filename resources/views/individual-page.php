@@ -6,15 +6,15 @@
 
 <?php if ($individual->isPendingDeletion()): ?>
 	<?php if (Auth::isModerator($individual->getTree())): ?>
-		<?= View::make('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php elseif (Auth::isEditor($individual->getTree())): ?>
-		<?= View::make('alerts/warning-dissmissible', ['alert' => I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php endif ?>
 <?php elseif ($individual->isPendingAddition()): ?>
 	<?php if (Auth::isModerator($individual->getTree())): ?>
-		<?= View::make('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>' ) . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . $individual->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>' ) . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php elseif (Auth::isEditor($individual->getTree())): ?>
-		<?= View::make('alerts/warning-dissmissible', ['alert' => I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php endif ?>
 <?php endif ?>
 
@@ -106,7 +106,7 @@
 			<ul class="nav nav-tabs flex-wrap">
 				<?php foreach ($tabs as $tab): ?>
 					<li class="nav-item">
-						<a class="nav-link<?= $tab->isGrayedOut() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e($individual->url()), '&amp;action=ajax&amp;module=', $tab->getName() ?>" href="#<?= $tab->getName() ?>">
+						<a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'module' => $tab->getName()])) ?>" href="#<?= $tab->getName() ?>">
 							<?= $tab->getTitle() ?>
 						</a>
 					</li>
@@ -115,15 +115,45 @@
 			<div class="tab-content">
 				<?php	foreach ($tabs as $tab): ?>
 					<div id="<?= $tab->getName() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()): ?>
-							<?= $tab->getTabContent() ?>
+							<?= $tab->getTabContent($individual) ?>
 						<?php endif ?></div>
 				<?php endforeach ?>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-4">
-		<?= $sidebar_html ?>
+	<div class="col-sm-4" id="sidebar" role="tablist">
+		<?php foreach ($sidebars as $sidebar): ?>
+			<div class="card">
+				<div class="card-header" role="tab" id="sidebar-header-<?= $sidebar->getName() ?>">
+					<div class="card-title mb-0">
+						<a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-content-<?= $sidebar->getName() ?>" aria-expanded="<?= $sidebar->getName() === 'family_nav' ? 'true' : 'false' ?>" aria-controls="sidebar-content-<?= $sidebar->getName() ?>">
+							<?= $sidebar->getTitle() ?>
+						</a>
+					</div>
+				</div>
+				<div id="sidebar-content-<?= $sidebar->getName() ?>" class="collapse<?= $sidebar->getName() === 'family_nav' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="sidebar-header-<?= $sidebar->getName() ?>">
+					<div class="card-body">
+						<?= $sidebar->getSidebarContent($individual) ?></div>
+				</div>
+			</div>
+		<?php endforeach ?>
 	</div>
 </div>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  // If the URL contains a fragment, then activate the corresponding tab.
+  // Use a prefix on the fragment, to prevent scrolling to the element.
+  var target = window.location.hash.replace("tab-", "");
+  var tab = $("#individual-tabs .nav-link[href='" + target + "']");
+  // If not, then activate the first tab.
+  if (tab.length === 0) {
+    tab = $("#individual-tabs .nav-link:first");
+  }
+  tab.tab("show");
+</script>
+<?php View::endpush() ?>
 
 <?= view('modals/ajax') ?>

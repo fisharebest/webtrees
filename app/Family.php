@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  */
 class Family extends GedcomRecord {
 	const RECORD_TYPE = 'FAM';
-	const URL_PREFIX  = 'family.php?famid=';
+	const ROUTE_NAME  = 'family';
 
 	/** @var Individual|null The husband (or first spouse for same-sex couples) */
 	private $husb;

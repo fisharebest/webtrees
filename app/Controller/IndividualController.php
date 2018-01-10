@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -92,29 +91,33 @@ class IndividualController extends GedcomRecordController {
 	 * Which tabs should we show on this individual's page.
 	 * We don't show empty tabs.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return ModuleTabInterface[]
 	 */
-	public function getTabs() {
-		$active_tabs = Module::getActiveTabs($this->record->getTree());
+	public function getTabs(Individual $individual) {
+		$active_tabs = Module::getActiveTabs($individual->getTree());
 
-		return array_filter($active_tabs, function (ModuleTabInterface $tab) {
-			return $tab->hasTabContent();
+		return array_filter($active_tabs, function (ModuleTabInterface $tab) use ($individual) {
+			return $tab->hasTabContent($individual);
 		});
 	}
 
 	/**
 	 * Handle AJAX requests - to generate the tab content
+	 *
+	 * @param Individual $individual
 	 */
-	public function ajaxRequest() {
+	public function ajaxRequest(Individual $individual) {
 		header('Content-Type: text/html; charset=UTF-8');
 
 		$tab  = Filter::get('module');
-		$tabs = $this->getTabs();
+		$tabs = $this->getTabs($individual);
 
 		if (!array_key_exists($tab, $tabs)) {
 			http_response_code(404);
 		} else {
-			echo $tabs[$tab]->getTabContent();
+			echo $tabs[$tab]->getTabContent($individual);
 		}
 	}
 
@@ -339,7 +342,7 @@ class IndividualController extends GedcomRecordController {
 	public function getSideBarContent() {
 		$html = '';
 		foreach (Module::getActiveSidebars($this->record->getTree()) as $module) {
-			if ($module->hasSidebarContent()) {
+			if ($module->hasSidebarContent($this->record)) {
 				$class = $module->getName() === 'family_nav' ? 'collapse show' : 'collapse';
 				$aria  = $module->getName() === 'family_nav' ? 'true' : 'false';
 				$html .= '
@@ -360,27 +363,6 @@ class IndividualController extends GedcomRecordController {
 			return '<div id="sidebar" role="tablist">' . $html . '</div>';
 		} else {
 			return '';
-		}
-	}
-
-	/**
-	 * Get the description for the family.
-	 *
-	 * For example, "XXX's family with new wife".
-	 *
-	 * @param Family     $family
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function getSpouseFamilyLabel(Family $family, Individual $individual) {
-		$spouse = $family->getSpouse($individual);
-		if ($spouse) {
-			return
-				/* I18N: %s is the spouse name */
-				I18N::translate('Family with %s', $spouse->getFullName());
-		} else {
-			return $family->getFullName();
 		}
 	}
 }

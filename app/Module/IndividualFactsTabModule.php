@@ -46,18 +46,15 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
+	public function isGrayedOut(Individual $individual) {
 		return false;
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
-		$EXPAND_HISTO_EVENTS = false;
-
+	public function getTabContent(Individual $individual) {
 		$indifacts = [];
 		// The individual’s own facts
-		foreach ($controller->record->getFacts() as $fact) {
+		foreach ($individual->getFacts() as $fact) {
 			switch ($fact->getTag()) {
 				case 'SEX':
 				case 'NAME':
@@ -68,7 +65,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 				case 'FAMS':
 					break;
 				default:
-					if (!array_key_exists('extra_info', Module::getActiveSidebars($controller->record->getTree())) || !ExtraInformationModule::showFact($fact)) {
+					if (!array_key_exists('extra_info', Module::getActiveSidebars($individual->getTree())) || !ExtraInformationModule::showFact($fact)) {
 						$indifacts[] = $fact;
 					}
 					break;
@@ -76,7 +73,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		}
 
 		// Add spouse-family facts
-		foreach ($controller->record->getSpouseFamilies() as $family) {
+		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getFacts() as $fact) {
 				switch ($fact->getTag()) {
 					case 'SOUR':
@@ -94,89 +91,49 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 						break;
 				}
 			}
-			$spouse = $family->getSpouse($controller->record);
+			$spouse = $family->getSpouse($individual);
 			if ($spouse) {
-				foreach (self::spouseFacts($controller->record, $spouse) as $fact) {
+				foreach (self::spouseFacts($individual, $spouse) as $fact) {
 					$indifacts[] = $fact;
 				}
 			}
-			foreach (self::childFacts($controller->record, $family, '_CHIL', '') as $fact) {
+			foreach (self::childFacts($individual, $family, '_CHIL', '') as $fact) {
 				$indifacts[] = $fact;
 			}
 		}
 
-		foreach (self::parentFacts($controller->record, 1) as $fact) {
+		foreach (self::parentFacts($individual, 1) as $fact) {
 			$indifacts[] = $fact;
 		}
-		foreach (self::historicalFacts($controller->record) as $fact) {
+
+		foreach (self::associateFacts($individual) as $fact) {
 			$indifacts[] = $fact;
 		}
-		foreach (self::associateFacts($controller->record) as $fact) {
+
+		$has_historical_facts = false;
+		foreach (self::historicalFacts($individual) as $fact) {
+			$has_historical_facts = true;
 			$indifacts[] = $fact;
 		}
 
 		Functions::sortFacts($indifacts);
 
-		ob_start();
-		?>
-		<table class="table wt-facts-table">
-			<tbody>
-				<tr>
-					<td colspan="2">
-						<?php if ($controller->record->getTree()->getPreference('SHOW_RELATIVES_EVENTS')) : ?>
-						<label>
-							<input id="show-relatives-facts" type="checkbox" data-toggle="collapse" data-target=".wt-relation-fact">
-							<?= I18N::translate('Events of close relatives') ?>
-						</label>
-						<?php endif ?>
-						<?php if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) : ?>
-						<label>
-							<input id="show-historical-facts" type="checkbox" data-toggle="collapse" data-target=".wt-historic-fact">
-							<?= I18N::translate('Historical facts') ?>
-						</label>
-						<?php endif ?>
-					</td>
-				</tr>
-				<?php
-
-		if (!$indifacts) {
-			echo '<tr><td colspan="2">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
-		}
-
-		foreach ($indifacts as $fact) {
-			FunctionsPrintFacts::printFact($fact, $controller->record);
-		}
-
-		//-- new fact link
-		if ($controller->record->canEdit()) {
-			FunctionsPrint::printAddNewFact($controller->record->getXref(), $indifacts, 'INDI');
-		}
-
-		?>
-			</tbody>
-		</table>
-		<script>
-			//persistent_toggle("show-relatives-facts", "tr.rela");
-			//persistent_toggle("show-historical-facts", "tr.histo");
-		</script>
-		<?php
-
-		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+		return view('tabs/facts', [
+			'can_edit'             => $individual->canEdit(),
+			'has_historical_facts' => $has_historical_facts,
+			'individual'           => $individual,
+			'facts'                => $indifacts,
+		]);
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
+	public function hasTabContent(Individual $individual) {
 		return true;
 	}
 
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return false;
-	}
-
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
 	}
 
 	/**
@@ -228,8 +185,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		$facts = [];
 
 		// Only include events between birth and death
-		$birt_date = $controller->record->getEstimatedBirthDate();
-		$deat_date = $controller->record->getEstimatedDeathDate();
+		$birt_date = $person->getEstimatedBirthDate();
+		$deat_date = $person->getEstimatedDeathDate();
 
 		// Deal with recursion.
 		switch ($option) {
@@ -361,8 +318,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		$facts = [];
 
 		// Only include events between birth and death
-		$birt_date = $controller->record->getEstimatedBirthDate();
-		$deat_date = $controller->record->getEstimatedDeathDate();
+		$birt_date = $person->getEstimatedBirthDate();
+		$deat_date = $person->getEstimatedDeathDate();
 
 		if ($sosa == 1) {
 			foreach ($person->getChildFamilies() as $family) {

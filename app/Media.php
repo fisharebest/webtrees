@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
  */
 class Media extends GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
-	const URL_PREFIX  = 'mediaviewer.php?mid=';
+	const ROUTE_NAME  = 'media';
 
 	/**
 	 * Each object type may have its own special rules, and re-implement this function.

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -97,7 +96,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$surnames = '';
 		}
 
-		$content = View::make('blocks/family-tree-statistics', [
+		$content = view('blocks/family-tree-statistics', [
 			'show_last_update'     => $show_last_update,
 			'show_common_surnames' => $show_common_surnames,
 			'number_of_surnames'   => $number_of_surnames,
@@ -128,7 +127,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
