@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-11-29 20:08+0000\n"
-"Last-Translator: Michael <mike_jpr@outlook.com>\n"
+"PO-Revision-Date: 2018-01-10 20:52+0000\n"
+"Last-Translator: Erwan Le Masson <maggot_fff@hotmail.fr>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1718,7 +1718,7 @@ msgstr "Âge à la naissance de l’enfant"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr "Âge maxi d’une personne"
+msgstr "Âge maximal d’une personne"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -2796,11 +2796,11 @@ msgstr "Naissance par pays"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr "Date de naissance maxi"
+msgstr "Date de naissance maximale"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr "Date de naissance mini"
+msgstr "Date de naissance minimale"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
@@ -3392,7 +3392,7 @@ msgstr "Attention&nbsp;: les anciens thèmes peuvent ne pas fonctionner ou bloqu
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
 msgid "Cayman Islands"
-msgstr "Îles Caïmanes"
+msgstr "Îles Caïmans"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
@@ -4055,7 +4055,7 @@ msgstr "Côte d’Ivoire"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "Identification impossible. Merci de réessayer."
+msgstr "Impossible de vérifier les identifiants. Réessayez ou contactez l'administrateur pour plus d'informations."
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -4578,7 +4578,7 @@ msgstr "Jour&nbsp;:"
 #: app/Functions/FunctionsPrintLists.php:218 app/Stats.php:1069
 #: app/Stats.php:1071
 msgid "Dead"
-msgstr "Décédé(e)"
+msgstr "Décédés"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:457
@@ -4709,11 +4709,11 @@ msgstr "Décès par pays"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr "Date de décès maxi"
+msgstr "Date de décès maximale"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "Date de décès mini"
+msgstr "Date de décès minimale"
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
@@ -5343,7 +5343,7 @@ msgstr "Chaque source enregistre des évènements spécifiques, généralement p
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Chaque compte utilisateur a une option pour «&nbsp;accepter automatiquement les changements&nbsp;». Lorsque cette option est activée, toutes les modifications apportées par cet utilisateur sont enregistrées immédiatement. Plusieurs administrateurs activent cette option pour leur propre compte utilisateur."
+msgstr "Chaque compte utilisateur possède une option pour «&nbsp;accepter automatiquement les changements&nbsp;». Lorsque cette option est activée, toutes les modifications apportées par cet utilisateur sont enregistrées immédiatement. De nombreux administrateurs activent cette option pour leur propre compte utilisateur."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -5357,7 +5357,7 @@ msgstr "Naissance la plus ancienne"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr "Décès le plus ancien"
+msgstr "Premier décès"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
@@ -5479,7 +5479,7 @@ msgstr "Modifier l’histoire"
 
 #: admin_users.php:272
 msgid "Edit the user"
-msgstr "Éditer l’utilisateur"
+msgstr "Modifier l’utilisateur"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
@@ -5628,7 +5628,7 @@ msgstr "Année fin"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr "Date maxi des modifications"
+msgstr "Date maximale des modifications"
 
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
@@ -7460,7 +7460,7 @@ msgstr "Inclure les lieux correspondants totalement"
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inclure les personnes avec des «&nbsp;%s&nbsp;» comme un nom de femme mariée"
+msgstr "Inclure les personnes avec «&nbsp;%s&nbsp;» comme nom d'usage"
 
 #: app/Module/ClippingsCartModule.php:373
 #: app/Module/ClippingsCartModule.php:758
@@ -7475,7 +7475,7 @@ msgstr "Inclure les sous-dossiers"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Inclure la famille proche de cette personne&nbsp;?"
+msgstr "Inclure la famille proche de cette personne"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -7564,7 +7564,7 @@ msgstr "Individus"
 
 #: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
-msgstr "individus avec sources"
+msgstr "Individus avec sources"
 
 #: famlist.php:255 indilist.php:255
 #, php-format
@@ -8670,11 +8670,11 @@ msgstr "Contrat de mariage"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
-msgstr "Date de mariage maxi"
+msgstr "Date de mariage maximale"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage date range start"
-msgstr "Date de mariage mini"
+msgstr "Date de mariage minimale"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1655
@@ -8877,11 +8877,11 @@ msgstr "Nombre maximum de noms sur la liste individuelle"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
 msgid "Maximum pedigree generations"
-msgstr "Nombre maximun de générations"
+msgstr "Nombre maximum de générations"
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
-msgstr "Taille maxi pour l’envoi "
+msgstr "Taille maximale pour l’envoi : "
 
 #: app/Date/CalendarDate.php:315
 msgctxt "Abbreviation for May"
@@ -9181,7 +9181,7 @@ msgstr "Service militaire"
 
 #: app/Module/GoogleMapsModule.php:366
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr "Facteur de zoom mini et maxi applicable à la carte. 1 correspond à une vue de la carte entière, 15 permet de voir juste une maison. Notez qu’un zoom de 15 est disponible uniquement à certains endroits."
+msgstr "Niveau de zoom minimal et maximal applicable à la carte. 1 correspond à une vue de la carte entière, 15 permet de voir juste une maison. Notez qu’un zoom de 15 est disponible uniquement à certains endroits."
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
@@ -9276,7 +9276,7 @@ msgstr "Mois de naissance"
 
 #: app/Stats.php:4735 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
-msgstr "mois de naissance du premier enfant dans une relation"
+msgstr "Mois de naissance du premier enfant dans une relation"
 
 #: statistics.php:515 statisticsplot.php:924
 msgid "Month of death"
@@ -10093,7 +10093,7 @@ msgstr "Nombre de familles sans enfants"
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr "Nombre de générations&nbsp;:"
+msgstr "Nombre de générations"
 
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
@@ -10420,7 +10420,7 @@ msgstr "Le paramètre PHP «&nbsp;%1$s&nbsp;» est désactivée. La fonctionnali
 #. I18N: A configuration setting
 #: admin_site_config.php:218
 msgid "PHP time limit"
-msgstr "Durée max PHP"
+msgstr "Durée maximale PHP"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -12195,12 +12195,12 @@ msgstr "Indique le nombre de générations à afficher par défaut sur les arbre
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1277
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr "Fixe le nombre maximun de générations à afficher pour les arbres de <b>descendance</b>."
+msgstr "Fixer le nombre maximal de générations à afficher pour les arbres de descendance."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1257
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr "Fixe le nombre maximum de générations à afficher pour les arbres d’<b>ascendance</b>."
+msgstr "Fixer le nombre maximal de générations à afficher pour les arbres d’ascendance."
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
@@ -12496,7 +12496,7 @@ msgstr "Afficher la date de la dernière mise à jour&nbsp;?"
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
 msgid "Show dead individuals"
-msgstr "Montrer les personnes décédées"
+msgstr "Afficher les individus décédés"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:206 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:83
@@ -12549,19 +12549,19 @@ msgstr "Afficher la liste des arbres"
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
 msgid "Show living individuals"
-msgstr "Montrer les individus vivants"
+msgstr "Afficher les individus vivants"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr "Montrer les noms des individus privés"
+msgstr "Afficher les noms des individus privés"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Montrer les notes&nbsp;?"
+msgstr "Afficher les notes"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
@@ -12588,7 +12588,7 @@ msgstr "Affichage des personnes de sexe indéterminé."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Montrer seulement les personnes, les événements ou tout&nbsp;?"
+msgstr "Afficher seulement les individus, les événements ou tout"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12611,7 +12611,7 @@ msgstr "Afficher les changements en cours"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Montrer les photos&nbsp;?"
+msgstr "Afficher les photos"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12653,7 +12653,7 @@ msgstr "Afficher les contrôles du diaporama&nbsp;?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Montrer les sources&nbsp;?"
+msgstr "Afficher les sources"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12681,7 +12681,7 @@ msgstr "Affiche les évènements de la famille proche à la page individuelle"
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr "Montrer l’arbre généalogique"
+msgstr "Afficher l’arbre généalogique"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -12719,7 +12719,7 @@ msgstr "Afficher les vignettes dans les diagrammes et les familles."
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr "Montrer aux gestionnaires"
+msgstr "Afficher aux gestionnaires"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12730,7 +12730,7 @@ msgstr "Montrer aux gestionnaires"
 #: app/Functions/FunctionsPrintFacts.php:833
 #: app/Functions/FunctionsPrintFacts.php:1099
 msgid "Show to members"
-msgstr "Montrer aux membres"
+msgstr "Afficher aux membres"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12741,7 +12741,7 @@ msgstr "Montrer aux membres"
 #: app/Functions/FunctionsPrintFacts.php:830
 #: app/Functions/FunctionsPrintFacts.php:1096
 msgid "Show to visitors"
-msgstr "Montrer aux visiteurs"
+msgstr "Afficher aux visiteurs"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
@@ -13167,7 +13167,7 @@ msgstr "Année début"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr "Date mini des modifications"
+msgstr "Date minimale des modifications"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3446
@@ -13768,7 +13768,7 @@ msgstr "Le fichier média que vous téléversez peut être, et devrait probablem
 
 #: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "La mémoire et le temps maximum d’exécution requis dépendent du nombre d’individus dans votre arbre."
+msgstr "La mémoire et le temps d’exécution requis dépendent du nombre d’individus dans votre arbre."
 
 #: message.php:193
 msgid "The message was not sent."
@@ -14593,7 +14593,7 @@ msgstr "Ce serveur ne supporte pas les téléchargements sécurisés utilisant l
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "La limite de mémoire RAM du serveur est %s Mo, et le temps maximal d’exécution est de %s secondes."
+msgstr "La limite de mémoire du serveur est %s Mo et le temps maximal d’exécution est de %s secondes."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
@@ -16897,7 +16897,7 @@ msgstr "possibilité de téléverser des fichiers"
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
 msgid "first"
-msgstr "début"
+msgstr "premier"
 
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19527,7 +19527,7 @@ msgstr "afficher"
 
 #: statistics.php:765
 msgid "show the chart"
-msgstr "montrer le graphique"
+msgstr "Afficher le graphique"
 
 #: app/Functions/Functions.php:802
 msgid "sibling"
