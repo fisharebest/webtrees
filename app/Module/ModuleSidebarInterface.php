@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
  * Interface ModuleSidebarInterface - Classes and libraries for module system
  */
@@ -29,9 +31,11 @@ interface ModuleSidebarInterface {
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent();
+	public function getSidebarContent(Individual $individual);
 
 	/**
 	 * Load this sidebar asynchronously.
@@ -43,7 +47,9 @@ interface ModuleSidebarInterface {
 	/**
 	 * Does this sidebar have anything to display for this individual?
 	 *
+	 * Individual $individual
+	 *
 	 * @return bool
 	 */
-	public function hasSidebarContent();
+	public function hasSidebarContent(Individual $individual);
 }

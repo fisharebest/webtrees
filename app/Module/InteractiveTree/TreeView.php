@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class TreeView
@@ -46,7 +45,7 @@ class TreeView {
 	 * @return string[]  HTML and Javascript
 	 */
 	public function drawViewport(Individual $individual, $generations) {
-		$html = View::make('interactive-tree-chart', [
+		$html = view('interactive-tree-chart', [
 			'name'       => $this->name,
 			'individual' => $this->drawPerson($individual, $generations, 0, null, null, true),
 		]);

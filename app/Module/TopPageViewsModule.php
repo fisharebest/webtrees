@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class TopPageViewsModule
@@ -102,7 +101,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,

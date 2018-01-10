@@ -113,7 +113,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/family', ['family' => $family]),
+						'text' => view('selects/family', ['family' => $family]),
 					];
 				}
 			}
@@ -240,7 +240,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/individual', ['individual' => $individual]),
+						'text' => view('selects/individual', ['individual' => $individual]),
 					];
 				}
 			}
@@ -299,7 +299,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/media', ['media' => $media]),
+						'text' => view('selects/media', ['media' => $media]),
 					];
 				}
 			}
@@ -358,7 +358,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/note', ['note' => $note]),
+						'text' => view('selects/note', ['note' => $note]),
 					];
 				}
 			}
@@ -510,7 +510,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/repository', ['repository' => $repository]),
+						'text' => view('selects/repository', ['repository' => $repository]),
 					];
 				}
 			}
@@ -569,7 +569,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/source', ['source' => $source]),
+						'text' => view('selects/source', ['source' => $source]),
 					];
 				}
 			}
@@ -632,7 +632,7 @@ class Select2 extends Html {
 					// Add to the results
 					$results[] = [
 						'id'   => $row->xref,
-						'text' => View::make('selects/submitter', ['submitter' => $submitter]),
+						'text' => view('selects/submitter', ['submitter' => $submitter]),
 					];
 				}
 			}

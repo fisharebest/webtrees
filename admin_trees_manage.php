@@ -800,4 +800,4 @@ echo Bootstrap4::breadcrumbs([
 	<?php endif ?>
 </div>
 
-<?= View::make('modals/ajax') ?>
+<?= view('modals/ajax') ?>

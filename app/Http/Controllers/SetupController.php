@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -465,8 +464,8 @@ class SetupController extends BaseController {
 	 * @return Response
 	 */
 	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
-		$html = View::make('layouts/setup', [
-			'content' => View::make($name, $data),
+		$html = view('layouts/setup', [
+			'content' => view($name, $data),
 		]);
 
 		return new Response($html, $status);

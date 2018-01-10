@@ -672,4 +672,4 @@ echo Bootstrap4::breadcrumbs([
 	<tbody>
 	</tbody>
 </table>
-<?= View::make('modals/create-media-from-file') ?>
+<?= view('modals/create-media-from-file') ?>

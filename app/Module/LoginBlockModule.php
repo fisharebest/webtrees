@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class LoginBlockModule
@@ -46,18 +45,18 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		if (Auth::check()) {
 			$title   = I18N::translate('Sign out');
-			$content = View::make('blocks/sign-out', [
+			$content = view('blocks/sign-out', [
 				'user' => Auth::user(),
 				]);
 		} else {
 			$title   = I18N::translate('Sign in');
-			$content = View::make('blocks/sign-in', [
+			$content = view('blocks/sign-in', [
 				'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE')
 			]);
 		}
 
 		if ($template) {
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

@@ -344,7 +344,7 @@ case 'edit':
 
 	</form>
 	<?php
-	echo View::make('modals/on-screen-keyboard');
+	echo view('modals/on-screen-keyboard');
 	echo view('modals/ajax');
 	break;
 
@@ -413,7 +413,7 @@ case 'add':
 	</div>
 	</form>
 	<?php
-	echo View::make('modals/on-screen-keyboard');
+	echo view('modals/on-screen-keyboard');
 	echo view('modals/ajax');
 
 	break;

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 
 /**
  * Class StoriesModule
@@ -82,67 +83,23 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller, $WT_TREE;
-
-		$block_ids =
-			Database::prepare(
-				"SELECT block_id" .
-				" FROM `##block`" .
-				" WHERE module_name=?" .
-				" AND xref=?" .
-				" AND gedcom_id=?"
-			)->execute([
-				$this->getName(),
-				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId(),
-			])->fetchOneColumn();
-
-		$html = '';
-		foreach ($block_ids as $block_id) {
-			// Only show this block for certain languages
-			$languages = $this->getBlockSetting($block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				$html .= '<div class="story_title descriptionbox center rela">' . $this->getBlockSetting($block_id, 'title') . '</div>';
-				$html .= '<div class="story_body optionbox">' . $this->getBlockSetting($block_id, 'story_body') . '</div>';
-				if (Auth::isEditor($WT_TREE)) {
-					$html .= '<div class="story_edit"><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;block_id=' . $block_id . '">';
-					$html .= I18N::translate('Edit the story') . '</a></div>';
-				}
-			}
-		}
-		if (Auth::isManager($WT_TREE) && !$html) {
-			$html .= '<div class="news_title center">' . $this->getTitle() . '</div>';
-			$html .= '<div><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;xref=' . $controller->record->getXref() . '">';
-			$html .= I18N::translate('Add a story') . '</a></div><br>';
-		}
-
-		return $html;
+	public function getTabContent(Individual $individual) {
+		return view('tabs/stories', [
+			'is_editor'  => Auth::isEditor($individual->getTree()),
+			'is_manager' => Auth::isManager($individual->getTree()),
+			'individual' => $individual,
+			'stories'    => $this->getStoriesForIndividual($individual),
+		]);
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
-		return $this->getTabContent() != '';
+	public function hasTabContent(Individual $individual) {
+		return Auth::isManager($individual->getTree() )|| !empty($this->getStoriesForIndividual($individual));
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
-		global $controller;
-
-		$count_of_stories =
-			Database::prepare(
-				"SELECT COUNT(block_id)" .
-				" FROM `##block`" .
-				" WHERE module_name=?" .
-				" AND xref=?" .
-				" AND gedcom_id=?"
-			)->execute([
-				$this->getName(),
-				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId(),
-			])->fetchOne();
-
-		return $count_of_stories == 0;
+	public function isGrayedOut(Individual $individual) {
+		return !empty($this->getStoriesForIndividual($individual));
 	}
 
 	/** {@inheritdoc} */
@@ -150,9 +107,39 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		return false;
 	}
 
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
+	/**
+	 * @param Individual $individual
+	 *
+	 * @return stdClass[]
+	 */
+	private function getStoriesForIndividual(Individual $individual): array {
+		$block_ids =
+			Database::prepare(
+				"SELECT SQL_CACHE block_id" .
+				" FROM `##block`" .
+				" WHERE module_name = :module_name" .
+				" AND xref          = :xref" .
+				" AND gedcom_id     = :tree_id"
+			)->execute([
+				'module_name' => $this->getName(),
+				'xref'        => $individual->getXref(),
+				'tree_id'     => $individual->getTree()->getTreeId(),
+			])->fetchOneColumn();
+
+		$stories = [];
+		foreach ($block_ids as $block_id) {
+			// Only show this block for certain languages
+			$languages = $this->getBlockSetting($block_id, 'languages', '');
+			if ($languages === '' || in_array(WT_LOCALE, explode(',', $languages))) {
+				$stories[] = (object) [
+					'block_id' => $block_id,
+					'title'    => $this->getBlockSetting($block_id, 'title'),
+					'body'     => $this->getBlockSetting($block_id, 'story_body'),
+				];
+			}
+		}
+
+		return $stories;
 	}
 
 	/**

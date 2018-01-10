@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class UpcomingAnniversariesModule
@@ -94,7 +93,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,

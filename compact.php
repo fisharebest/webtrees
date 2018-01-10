@@ -26,7 +26,7 @@ $controller
 
 // Only generate the content for interactive users (not search robots).
 if (Filter::getBool('ajax') && Session::has('initiated')) {
-	echo View::make('compact-chart', [
+	echo view('compact-chart', [
 		'ancestors'  => $controller->sosaAncestors(5),
 		'controller' => $controller,
 	]);
@@ -42,7 +42,7 @@ $ajax_url = Html::url('compact.php', [
 
 $controller->pageHeader();
 
-echo View::make('compact-chart-page', [
+echo view('compact-chart-page', [
 	'title'      => $controller->getPageTitle(),
 	'individual' => $controller->root,
 	'ajax_url'   => $ajax_url,

@@ -41,7 +41,7 @@ $ajax_url = Html::url('familybook.php', [
 
 $controller->pageHeader();
 
-echo View::make('family-book-page', [
+echo view('family-book-page', [
 	'title'       => $controller->getPageTitle(),
 	'individual'  => $controller->root,
 	'generations' => (int) $controller->generations,

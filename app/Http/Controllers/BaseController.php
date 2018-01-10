@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\Response;
 use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
 
@@ -43,8 +42,8 @@ class BaseController extends LegacyBaseController {
 	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
 		$theme = Theme::theme();
 
-		$html = View::make($this->layout, [
-			'content'                 => View::make($name, $data),
+		$html = view($this->layout, [
+			'content'                 => view($name, $data),
 			'tree'                    => $this->tree(),
 			'theme_head'              => $theme->head($this),
 			'theme_body_header'       => $theme->bodyHeader(),

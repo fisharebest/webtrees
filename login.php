@@ -262,8 +262,8 @@ switch ($action) {
 				$user,
 				$sender,
 				I18N::translate('Lost password request'),
-				View::make('emails/password-reset-text', ['user' => $user, 'new_password' => $user_new_pw]),
-				View::make('emails/password-reset-html', ['user' => $user, 'new_password' => $user_new_pw])
+				view('emails/password-reset-text', ['user' => $user, 'new_password' => $user_new_pw]),
+				view('emails/password-reset-html', ['user' => $user, 'new_password' => $user_new_pw])
 			);
 
 			FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', e($username)), 'success');
@@ -333,8 +333,8 @@ switch ($action) {
 					$user,
 					$sender,
 					/* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL),
-					View::make('emails/register-user-text', ['tree' => $WT_TREE, 'user' => $user]),
-					View::make('emails/register-user-html', ['tree' => $WT_TREE, 'user' => $user])
+					view('emails/register-user-text', ['tree' => $WT_TREE, 'user' => $user]),
+					view('emails/register-user-html', ['tree' => $WT_TREE, 'user' => $user])
 				);
 
 				// Tell the genealogy contact about the registration.
@@ -346,8 +346,8 @@ switch ($action) {
 					$webmaster,
 					$user,
 					/* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle()),
-					View::make('emails/register-notify-text', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments]),
-					View::make('emails/register-notify-html', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments])
+					view('emails/register-notify-text', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments]),
+					view('emails/register-notify-html', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments])
 				);
 
 				$mail1_method = $webmaster->getPreference('contact_method');
@@ -359,7 +359,7 @@ switch ($action) {
 						$request->getClientIp(),
 						$webmaster->getUserId(),
 						/* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', $WT_TREE->getTitle()),
-						View::make('emails/register-notify-text', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments]),
+						view('emails/register-notify-text', ['tree' => $WT_TREE, 'user' => $user, 'comments' => $user_comments]),
 					]);
 				}
 				I18N::init(WT_LOCALE);
@@ -520,8 +520,8 @@ switch ($action) {
 				$webmaster,
 				$sender,
 				/* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle()),
-				View::make('emails/verify-notify-text', ['user' => $user]),
-				View::make('emails/verify-notify-html', ['user' => $user])
+				view('emails/verify-notify-text', ['user' => $user]),
+				view('emails/verify-notify-html', ['user' => $user])
 			);
 
 			$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
@@ -533,7 +533,7 @@ switch ($action) {
 					$request->getClientIp(),
 					$webmaster->getUserId(),
 					/* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle()),
-					View::make('emails/verify-notify-text', ['user' => $user])
+					view('emails/verify-notify-text', ['user' => $user])
 				]);
 			}
 			I18N::init(WT_LOCALE);

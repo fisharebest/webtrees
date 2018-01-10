@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +37,7 @@ class EditNoteController extends BaseController {
 	public function createNoteObject(Request $request): Response {
 		$tree = $request->attributes->get('tree');
 
-		return new Response(View::make('modals/create-note-object', [
+		return new Response(view('modals/create-note-object', [
 			'tree' => $tree,
 		]));
 	}
@@ -74,7 +73,7 @@ class EditNoteController extends BaseController {
 
 		return new JsonResponse([
 			'id' => $record->getXref(),
-			'text' => View::make('selects/note', [
+			'text' => view('selects/note', [
 				'note' => $record,
 			]),
 			'html' => view('modals/record-created', [

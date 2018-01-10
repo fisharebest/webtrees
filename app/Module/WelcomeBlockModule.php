@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class WelcomeBlockModule
@@ -76,10 +75,10 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 			];
 		}
 
-		$content = View::make('blocks/welcome', ['links' => $links]);
+		$content = view('blocks/welcome', ['links' => $links]);
 
 		if ($template) {
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

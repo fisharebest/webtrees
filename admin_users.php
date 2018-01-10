@@ -106,8 +106,8 @@ switch (Filter::post('action')) {
 						$user,
 						$sender,
 						I18N::translate('Approval of account at %s', WT_BASE_URL),
-						View::make('emails/approve-user-text', ['user' => $user]),
-						View::make('emails/approve-user-html', ['user' => $user])
+						view('emails/approve-user-text', ['user' => $user]),
+						view('emails/approve-user-html', ['user' => $user])
 					);
 				}
 

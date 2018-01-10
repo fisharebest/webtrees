@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
  */
 class Individual extends GedcomRecord {
 	const RECORD_TYPE = 'INDI';
-	const URL_PREFIX  = 'individual.php?pid=';
+	const ROUTE_NAME  = 'individual';
 
 	/** @var int used in some lists to keep track of this individual’s generation in that list */
 	public $generation;
@@ -998,6 +998,27 @@ class Individual extends GedcomRecord {
 
 		// Perahps same parents - but a different family record?
 		return I18N::translate('Family with parents');
+	}
+
+
+	/**
+	 * Get the description for the family.
+	 *
+	 * For example, "XXX's family with new wife".
+	 *
+	 * @param Family     $family
+	 *
+	 * @return string
+	 */
+	public function getSpouseFamilyLabel(Family $family) {
+		$spouse = $family->getSpouse($this);
+		if ($spouse) {
+			return
+				/* I18N: %s is the spouse name */
+				I18N::translate('Family with %s', $spouse->getFullName());
+		} else {
+			return $family->getFullName();
+		}
 	}
 
 	/**

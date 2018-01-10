@@ -27,9 +27,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Soundex;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class CensusAssistantModule
@@ -86,7 +83,7 @@ class CensusAssistantModule extends AbstractModule {
 	 * @param Individual $individual
 	 */
 	public function createCensusAssistant(Individual $individual) {
-		return View::make('modules/census-assistant', [
+		return view('modules/census-assistant', [
 			'individual' => $individual,
 		]);
 	}

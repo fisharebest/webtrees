@@ -205,12 +205,12 @@ try {
 	I18N::init();
 	if ($ex->getCode() === 1045) {
 		// Error during connection?
-		$content = View::make('errors/database-connection', ['error' => $ex->getMessage()]);
+		$content = view('errors/database-connection', ['error' => $ex->getMessage()]);
 	} else {
 		// Error in a migration script?
-		$content = View::make('errors/database-error', ['error' => $ex->getMessage()]);
+		$content = view('errors/database-error', ['error' => $ex->getMessage()]);
 	}
-	$html     = View::make('layouts/error', ['content' => $content]);
+	$html     = view('layouts/error', ['content' => $content]);
 	$response = new Response($html, 503);
 	$response->prepare($request)->send();
 	exit;
@@ -219,8 +219,8 @@ try {
 
 	define('WT_DATA_DIR', 'data/');
 	I18N::init();
-	$content = View::make('errors/database-connection', ['error' => $ex->getMessage()]);
-	$html     = View::make('layouts/error', ['content' => $content]);
+	$content = view('errors/database-connection', ['error' => $ex->getMessage()]);
+	$html     = view('layouts/error', ['content' => $content]);
 	$response = new Response($html, 503);
 	$response->prepare($request)->send();
 	exit;

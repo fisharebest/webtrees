@@ -48,7 +48,7 @@ if (Auth::isAdmin()) {
 		'POST:user-page-default-update'       => 'HomePageController@userPageDefaultUpdate',
 		'GET:user-page-user-edit'             => 'HomePageController@userPageUserEdit',
 		'POST:user-page-user-update'          => 'HomePageController@userPageUserUpdate',
-		'GET:unused-media-thumbnail'          => 'MediaController@unusedMediaThumbnail',
+		'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
 	];
 }
 
@@ -108,7 +108,15 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:help-text'           => 'HelpTextController@helpText',
 		'GET:tree-page'           => 'HomePageController@treePage',
 		'GET:tree-page-block'     => 'HomePageController@treePageBlock',
-		'GET:media-thumbnail'     => 'MediaController@mediaThumbnail',
+		'GET:media-thumbnail'     => 'MediaFileController@mediaThumbnail',
+		'GET:family'              => 'FamilyController@show',
+		'GET:individual'          => 'IndividualController@show',
+		'GET:individual-tab'      => 'IndividualController@tab',
+		'GET:media'               => 'MediaController@show',
+		'GET:note'                => 'NoteController@show',
+		'GET:source'              => 'SourceController@show',
+		'GET:record'              => 'GedcomRecordController@show',
+		'GET:repository'          => 'RepositoryController@show',
 	];
 }
 

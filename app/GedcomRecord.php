@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
  */
 class GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
-	const URL_PREFIX  = 'gedrecord.php?pid=';
+	const ROUTE_NAME  = 'record';
 
 	/** @var string The record identifier */
 	protected $xref;
@@ -333,7 +333,7 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	 * Generate a URL to this record.
 	 *
 	 * @deprecated
 	 *
@@ -344,12 +344,15 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	 * Generate a URL to this record.
 	 *
 	 * @return string
 	 */
 	public function url() {
-		return static::URL_PREFIX . rawurlencode($this->getXref()) . '&ged=' . rawurlencode($this->tree->getName());
+		return route(static::ROUTE_NAME, [
+			'xref' => $this->getXref(),
+			'ged'  => $this->tree->getName(),
+		]);
 	}
 
 	/**

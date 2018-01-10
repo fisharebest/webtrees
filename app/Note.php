@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  */
 class Note extends GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
-	const URL_PREFIX  = 'note.php?nid=';
+	const ROUTE_NAME  = 'note';
 
 	/**
 	 * Get the text contents of the note

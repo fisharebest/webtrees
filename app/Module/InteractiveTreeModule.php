@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class InteractiveTreeModule
@@ -44,25 +43,25 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	}
 
 	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
+	public function getTabContent(Individual $individual) {
+		$treeview        = new TreeView('tvTab');
+		list($html, $js) = $treeview->drawViewport($individual, 3);
 
-		$tv              = new TreeView('tvTab');
-		list($html, $js) = $tv->drawViewport($controller->record, 3);
-
-		return
-			'<script src="' . $this->js() . '"></script>' .
-			'<script>' . $js . '</script>' .
-			$html;
+		return view('tabs/treeview', [
+			'html'         => $html,
+			'js'           => $js,
+			'treeview_css' => $this->css(),
+			'treeview_js'  => $this->js(),
+		]);
 	}
 
 	/** {@inheritdoc} */
-	public function hasTabContent() {
+	public function hasTabContent(Individual $individual) {
 		return true;
 	}
 
 	/** {@inheritdoc} */
-	public function isGrayedOut() {
+	public function isGrayedOut(Individual $individual) {
 		return false;
 	}
 
@@ -98,23 +97,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		return $this->getChartMenu($individual);
 	}
 
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		// We cannot use $("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
-		return
-			'<script>
-			if (document.createStyleSheet) {
-				document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
-			} else {
-				var newSheet=document.createElement("link");
-				newSheet.setAttribute("rel","stylesheet");
-				newSheet.setAttribute("type","text/css");
-				newSheet.setAttribute("href","' . $this->css() . '");
-				document.getElementsByTagName("head")[0].appendChild(newSheet);
-			}
-			</script>';
-	}
-
 	/**
 	 * This is a general purpose hook, allowing modules to respond to routes
 	 * of the form module.php?mod=FOO&mod_action=BAR
@@ -146,7 +128,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 					}
 				');
 
-				echo View::make('interactive-tree-page', [
+				echo view('interactive-tree-page', [
 					'title'      => $controller->getPageTitle(),
 					'individual' => $controller->root,
 					'html'       => $html,

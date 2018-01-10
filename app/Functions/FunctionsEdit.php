@@ -52,7 +52,6 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -309,7 +308,7 @@ class FunctionsEdit {
 
 		if ($family !== null) {
 			$value   = $family->getXref();
-			$options = [$value => View::make('selects/family', ['family' => $family])];
+			$options = [$value => view('selects/family', ['family' => $family])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::familyConfig() + $attributes);
@@ -349,7 +348,7 @@ class FunctionsEdit {
 
 		if ($individual !== null) {
 			$value   = $individual->getXref();
-			$options = [$value => View::make('selects/individual', ['individual' => $individual])];
+			$options = [$value => view('selects/individual', ['individual' => $individual])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::individualConfig() + $attributes);
@@ -369,7 +368,7 @@ class FunctionsEdit {
 
 		if ($media !== null) {
 			$value   = $media->getXref();
-			$options = [$value => View::make('selects/media', ['media' => $media])];
+			$options = [$value => view('selects/media', ['media' => $media])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::mediaObjectConfig() + $attributes);
@@ -389,7 +388,7 @@ class FunctionsEdit {
 
 		if ($note !== null) {
 			$value   = $note->getXref();
-			$options = [$value => View::make('selects/note', ['note' => $note])];
+			$options = [$value => view('selects/note', ['note' => $note])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::noteConfig() + $attributes);
@@ -428,7 +427,7 @@ class FunctionsEdit {
 
 		if ($repository !== null) {
 			$value   = $repository->getXref();
-			$options = [$value => View::make('selects/repository', ['repository' => $repository])];
+			$options = [$value => view('selects/repository', ['repository' => $repository])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::repositoryConfig() + $attributes);
@@ -448,7 +447,7 @@ class FunctionsEdit {
 
 		if ($source !== null) {
 			$value   = $source->getXref();
-			$options = [$value => View::make('selects/source', ['source' => $source])];
+			$options = [$value => view('selects/source', ['source' => $source])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::sourceConfig() + $attributes);
@@ -468,7 +467,7 @@ class FunctionsEdit {
 
 		if ($submitter !== null) {
 			$value   = $submitter->getXref();
-			$options = [$value => View::make('selects/submitter', ['submitter' => $submitter])];
+			$options = [$value => view('selects/submitter', ['submitter' => $submitter])];
 		}
 
 		return Bootstrap4::select($options, $value, Select2::submitterConfig() + $attributes);
@@ -1019,7 +1018,7 @@ class FunctionsEdit {
 
 		switch ($tag) {
 			case 'SOUR':
-				echo View::make('cards/add-source-citation', [
+				echo view('cards/add-source-citation', [
 					'level'          => $level,
 					'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
 				]);
@@ -1027,19 +1026,19 @@ class FunctionsEdit {
 
 			case 'ASSO':
 			case 'ASSO2':
-				echo View::make('cards/add-associate', [
+				echo view('cards/add-associate', [
 					'level' => $level,
 				]);
 				break;
 
 			case 'NOTE':
-				echo View::make('cards/add-note', [
+				echo view('cards/add-note', [
 					'level' => $level,
 				]);
 				break;
 
 			case 'SHARED_NOTE':
-				echo View::make('cards/add-shared-note', [
+				echo view('cards/add-shared-note', [
 					'level'      => $level,
 					'parent_tag' => $parent_tag,
 				]);
@@ -1047,14 +1046,14 @@ class FunctionsEdit {
 
 			case 'OBJE':
 				if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-					echo View::make('cards/add-media-object', [
+					echo view('cards/add-media-object', [
 						'level' => $level,
 					]);
 				}
 				break;
 
 			case 'RESN':
-				echo View::make('cards/add-restriction', [
+				echo view('cards/add-restriction', [
 					'level' => $level,
 				]);
 				break;

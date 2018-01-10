@@ -45,7 +45,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		return true;
 	}
 
@@ -57,9 +57,11 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
+	public function getSidebarContent(Individual $individual) {
 		global $controller;
 
 		$controller->addInlineJavascript('
@@ -81,20 +83,20 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
 		<?php
 		//-- parent families -------------------------------------------------------------
-		foreach ($controller->record->getChildFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getChildFamilyLabel($family));
+		foreach ($individual->getChildFamilies() as $family) {
+			$this->drawFamily($individual, $family, $individual->getChildFamilyLabel($family));
 		}
 		//-- step parents ----------------------------------------------------------------
-		foreach ($controller->record->getChildStepFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getStepFamilyLabel($family));
+		foreach ($individual->getChildStepFamilies() as $family) {
+			$this->drawFamily($individual, $family, $individual->getStepFamilyLabel($family));
 		}
 		//-- spouse and children --------------------------------------------------
-		foreach ($controller->record->getSpouseFamilies() as $family) {
-			$this->drawFamily($family, $controller->getSpouseFamilyLabel($family, $controller->record));
+		foreach ($individual->getSpouseFamilies() as $family) {
+			$this->drawFamily($individual, $family, $individual->getSpouseFamilyLabel($family));
 		}
 		//-- step children ----------------------------------------------------------------
-		foreach ($controller->record->getSpouseStepFamilies() as $family) {
-			$this->drawFamily($family, $family->getFullName());
+		foreach ($individual->getSpouseStepFamilies() as $family) {
+			$this->drawFamily($individual, $family, $family->getFullName());
 		}
 		?>
 			</div>
@@ -110,7 +112,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	 * @param Family $family
 	 * @param string $title
 	 */
-	private function drawFamily(Family $family, $title) {
+	private function drawFamily(Individual $individual, Family $family, $title) {
 		global $controller;
 
 		?>
@@ -123,8 +125,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		<tbody>
 			<?php
 				foreach ($family->getSpouses() as $spouse) {
-					$icon = $controller->record === $spouse ? '<i class="icon-selected"></i>' : '';
-					$menu = new Menu($icon . Functions::getCloseRelationshipName($controller->record, $spouse));
+					$icon = $individual === $spouse ? '<i class="icon-selected"></i>' : '';
+					$menu = new Menu($icon . Functions::getCloseRelationshipName($individual, $spouse));
 					$menu->addSubmenu(new Menu($this->getParents($spouse)));
 					?>
 					<tr class="text-center wt-parent wt-gender-<?= $spouse->getSex() ?>">
@@ -150,8 +152,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 				}
 
 				foreach ($family->getChildren() as $child) {
-					$icon = $controller->record === $child ? '<i class="icon-selected"></i>' : '';
-					$menu = new Menu($icon . Functions::getCloseRelationshipName($controller->record, $child));
+					$icon = $individual === $child ? '<i class="icon-selected"></i>' : '';
+					$menu = new Menu($icon . Functions::getCloseRelationshipName($individual, $child));
 					$menu->addSubmenu(new Menu($this->getFamily($child)));
 					?>
 					<tr class="text-center wt-child wt-gender-<?= $child->getSex() ?>">

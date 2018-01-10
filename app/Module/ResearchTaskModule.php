@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class ResearchTaskModule
@@ -95,7 +94,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		if (empty($records)) {
 			$content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
 		} else {
-			$content = View::make('blocks/research-tasks', ['tasks' => $tasks]);
+			$content = view('blocks/research-tasks', ['tasks' => $tasks]);
 		}
 
 		if ($template) {
@@ -105,7 +104,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,

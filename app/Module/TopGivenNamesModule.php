@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\View;
 
 /**
  * Class TopGivenNamesModule
@@ -64,7 +63,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			case 'list':
 				$males   = $stats->commonGivenMaleTotals([1, $num, 'rcount']);
 				$females = $stats->commonGivenFemaleTotals([1, $num, 'rcount']);
-				$content = View::make('blocks/top-given-names-list', [
+				$content = view('blocks/top-given-names-list', [
 					'males'   => $males,
 					'females' => $females,
 				]);
@@ -73,7 +72,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			case 'table':
 				$males   = $stats->commonGivenMaleTable([1, $num, 'rcount']);
 				$females = $stats->commonGivenFemaleTable([1, $num, 'rcount']);
-				$content = View::make('blocks/top-given-names-table', [
+				$content = view('blocks/top-given-names-table', [
 					'males'   => $males,
 					'females' => $females,
 				]);
@@ -95,7 +94,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 				$config_url = '';
 			}
 
-			return View::make('blocks/template', [
+			return view('blocks/template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,

@@ -111,7 +111,7 @@ case 'choose':
 		->setPageTitle(I18N::translate('Choose a report to run'))
 		->pageHeader();
 
-	echo View::make('report-select-page', [
+	echo view('report-select-page', [
 		'reports' => $reports,
 	]);
 
@@ -202,7 +202,7 @@ case 'setup':
 		$inputs[] = $input;
 	}
 
-	echo View::make('report-setup-page', [
+	echo view('report-setup-page', [
 		'title'       => $report_array['title'],
 		'description' => $report_array['description'],
 		'inputs'      => $inputs,

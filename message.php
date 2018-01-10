@@ -251,7 +251,7 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 				$request->getClientIp(),
 				$recipient->getUserId(),
 				$subject,
-				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
+				view('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
 			]);
 	}
 
@@ -262,8 +262,8 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 				$recipient,
 				$sender,
 				I18N::translate('webtrees message') . ' - ' . $subject,
-				View::make('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
-				View::make('emails/message-user-html', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
+				view('emails/message-user-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url]),
+				view('emails/message-user-html', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
 			);
 	}
 
@@ -278,7 +278,7 @@ function deliverMessage(Tree $tree, $sender_email, $sender_name, User $recipient
 			$request->getClientIp(),
 			$recipient->getUserId(),
 			$subject,
-			View::make('emails/message-copy-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
+			view('emails/message-copy-text', ['sender' => $sender, 'recipient' => $recipient, 'message' => $body, 'url' => $url])
 		]);
 	}
 

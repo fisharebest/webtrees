@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -62,7 +63,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		return true;
 	}
 
@@ -88,15 +89,15 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
-		global $controller, $WT_TREE;
-
+	public function getSidebarContent(Individual $individual) {
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
+		$initials = QueryName::surnameAlpha($individual->getTree(), true, false, false);
 
-		$controller->addInlineJavascript('
+		$out = '
 			var famloadedNames = new Array();
 
 			function fsearchQ() {
@@ -145,9 +146,9 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				}
 				return false;
 			});
-		');
+		';
 
-		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
+		$out .= '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
 		foreach ($initials as $letter => $count) {
 			switch ($letter) {
 				case '@':

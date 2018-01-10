@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class ExtraInformationModule
@@ -40,21 +41,21 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 	}
 
 	/** {@inheritdoc} */
-	public function hasSidebarContent() {
+	public function hasSidebarContent(Individual $individual) {
 		return true;
 	}
 
 	/**
 	 * Load this sidebar synchronously.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function getSidebarContent() {
-		global $controller;
-
+	public function getSidebarContent(Individual $individual) {
 		$indifacts = [];
 		// The individual’s own facts
-		foreach ($controller->record->getFacts() as $fact) {
+		foreach ($individual->getFacts() as $fact) {
 			if (self::showFact($fact)) {
 				$indifacts[] = $fact;
 			}
@@ -65,7 +66,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 			echo I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
-				FunctionsPrintFacts::printFact($fact, $controller->record);
+				FunctionsPrintFacts::printFact($fact, $individual);
 			}
 		}
 

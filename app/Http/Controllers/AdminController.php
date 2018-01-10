@@ -42,7 +42,6 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 use Intervention\Image\ImageManager;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -981,7 +980,7 @@ class AdminController extends BaseController {
 			}
 
 			$facts = array_map(function (Fact $fact) use ($individual, $media, $tree) {
-				return View::make('admin/fix-level-0-media-action', [
+				return view('admin/fix-level-0-media-action', [
 					'fact'       => $fact,
 					'individual' => $individual,
 					'media'      => $media,
@@ -1626,8 +1625,8 @@ class AdminController extends BaseController {
 	 * @return Response
 	 */
 	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
-		$html = View::make($this->layout, [
-			'content'    => View::make($name, $data),
+		$html = view($this->layout, [
+			'content'    => view($name, $data),
 			'title'      => strip_tags($data['title']),
 			'common_url' => 'themes/_common/css-2.0.0/',
 			'theme_url'  => 'themes/_administration/css-2.0.0/',

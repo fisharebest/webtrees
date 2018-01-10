@@ -1,0 +1,5 @@
+<?php use Fisharebest\Webtrees\View; ?>
+
+<?= $content ?>
+
+<?= View::stack('javascript') ?>
