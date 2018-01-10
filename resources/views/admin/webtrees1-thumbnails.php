@@ -1,6 +1,6 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\I18N; ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel')], $title) ?>
 
@@ -29,7 +29,10 @@ use Fisharebest\Webtrees\I18N; ?>
 	</thead>
 </table>
 
+<?php View::push('javascript') ?>
 <script>
+  'use strict';
+
   // If we click on a button, post the request and reload the table
   document.querySelector(".wt-fix-table").onclick = function (event) {
     let element = event.target;
@@ -55,3 +58,4 @@ use Fisharebest\Webtrees\I18N; ?>
     }
   };
 </script>
+<?php View::endpush() ?>

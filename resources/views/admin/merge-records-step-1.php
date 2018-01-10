@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
 
@@ -85,13 +86,15 @@
 	</div>
 </form>
 
+<?php View::push('javascript') ?>
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    // Disabled elements do not get submitted with the form.
-    $('#record-type').change(function() {
-      $('.select-record').addClass('d-none').attr("disabled", true);
-      $('.select-' + $(this).val()).removeClass('d-none').attr("disabled", false);
-      // Recalculate width of previously hidden elements
-    });
+  'use strict';
+
+  // Disabled elements do not get submitted with the form.
+  $('#record-type').change(function() {
+    $('.select-record').addClass('d-none').attr("disabled", true);
+    $('.select-' + $(this).val()).removeClass('d-none').attr("disabled", false);
+    // Recalculate width of previously hidden elements
   });
 </script>
+<?php View::endpush() ?>

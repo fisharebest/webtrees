@@ -30,6 +30,16 @@ class View {
 	private $data;
 
 	/**
+	 * @var string Implementation of Blade "stacks".
+	 */
+	private static $stack;
+
+	/**
+	 * @var array[] Implementation of Blade "stacks".
+	 */
+	private static $stacks = [];
+
+	/**
 	 * Createa view from a template name and optional data.
 	 *
 	 * @param       $name
@@ -38,6 +48,36 @@ class View {
 	public function __construct($name, $data = []) {
 		$this->name = $name;
 		$this->data = $data;
+	}
+
+	/**
+	 * Implementation of Blade "stacks".
+	 *
+	 * @see https://laravel.com/docs/5.5/blade#stacks
+	 */
+	public static function push(string $stack) {
+		self::$stack = $stack;
+		ob_start();
+	}
+
+	/**
+	 * Implementation of Blade "stacks".
+	 */
+	public static function endpush() {
+		self::$stacks[self::$stack][] = ob_get_clean();
+	}
+
+	/**
+	 * Implementation of Blade "stacks".
+	 *
+	 * @return string
+	 */
+	public static function stack(string $stack): string {
+		$content = implode('', self::$stacks[$stack] ?? []);
+
+		self::$stacks[$stack] = [];
+
+		return $content;
 	}
 
 	/**
