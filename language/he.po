@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-10-09 12:04+0000\n"
+"PO-Revision-Date: 2018-01-12 22:37+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/he/>\n"
 "Language: he\n"
@@ -10666,7 +10666,7 @@ msgstr "יתכן ש-PhpGedView הותקן באחת התיקיות הבאות:"
 #: admin_trees_manage.php:721
 #, php-format
 msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr "PhpGedView חייבת להיות גירסה 4.2.3, או SVN עד ל-#%s"
+msgstr "PhpGedView חייבת להיות גרסה 4.2.3, או SVN עד ל-#%s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
@@ -16125,11 +16125,11 @@ msgstr "לפני השדרוג קבל או דחה את כל השינויים המ
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "עליך להתיעץ עם מחבר המודול כדי לוודא את תאימותו עם גירסה זו של webtrees."
+msgstr "עליך להתיעץ עם מחבר המודול כדי לוודא את תאימותו עם גרסה זו של webtrees."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr "עליך להתייעץ עם מחבר ערכת הנושא כדי לאשר את תאימותה עם גירסה זו של webtrees."
+msgstr "עליך להתייעץ עם מחבר ערכת הנושא כדי לאשר את תאימותה עם גרסה זו של webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:293 message.php:58
@@ -20066,7 +20066,7 @@ msgstr "הודעת webtrees"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees צריכה מאגר מידע MySQL, גירסה %s ומעלה."
+msgstr "webtrees צריכה מאגר מידע MySQL, גרסה %s ומעלה."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:327
