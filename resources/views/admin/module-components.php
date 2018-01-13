@@ -8,8 +8,7 @@
 
 <h1><?= $title ?></h1>
 
-<form action="<?= e(route('admin-control-panel')) ?>" method="post">
-	<input type="hidden" name="route" value="admin-update-module-access">
+<form action="<?= e(route('admin-update-module-access')) ?>" method="post">
 	<input type="hidden" name="component" value="<?= e($component) ?>">
 	<?= csrf_field() ?>
 	<table class="table table-bordered">
