@@ -19,9 +19,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2 class="wt-page-title">
-	<?= $repository->getFullName() ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $repository->getFullName() ?>
+	</h2>
+	<?php if ($repository->canEdit() && !$repository->isPendingDeletion()): ?>
+		<?= view('repository-page-menu', ['record' => $repository]) ?>
+	<?php endif ?>
+</div>
 
 <div class="wt-page-content">
 	<ul class="nav nav-tabs" role="tablist">

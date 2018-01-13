@@ -161,31 +161,6 @@ class IndividualController extends BaseController {
 	}
 
 	/**
-	 * @param Individual $record
-	 *
-	 * @return Menu|null
-	 */
-	private function menu(Individual $record) {
-		if ($record->isPendingDeletion()) {
-			return null;
-		}
-
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-fam');
-
-		if (Auth::isEditor($record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) . '", "' . $record->getXref() . '");',
-			]));
-		}
-
-		if (Auth::isAdmin() || Auth::isEditor($record->getTree()) && $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref(), 'menu-fam-editraw'));
-		}
-
-		return $menu;
-	}
-
-	/**
 	 * Format a name record
 	 *
 	 * @param int  $n

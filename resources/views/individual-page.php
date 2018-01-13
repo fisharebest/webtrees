@@ -18,9 +18,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2>
-	<?= $individual->getFullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $individual->getFullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
+	</h2>
+	<?php if ($individual->canEdit() && !$individual->isPendingDeletion()): ?>
+		<?= view('individual-page-menu', ['record' => $individual]) ?>
+	<?php endif ?>
+</div>
 
 <div class="row">
 	<div class="col-sm-8">

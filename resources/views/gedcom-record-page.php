@@ -19,9 +19,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2 class="wt-page-title">
-	<?= $record->getFullName() ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $record->getFullName() ?>
+	</h2>
+	<?php if ($record->canEdit() && !$record->isPendingDeletion()): ?>
+		<?= view('gedcom-record-page-menu', ['record' => $record]) ?>
+	<?php endif ?>
+</div>
 
 <div class="wt-page-content">
 	<ul class="nav nav-tabs" role="tablist">

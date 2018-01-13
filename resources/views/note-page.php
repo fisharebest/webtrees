@@ -20,9 +20,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2 class="wt-page-title">
-	<?= $note->getFullName() ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $note->getFullName() ?>
+	</h2>
+	<?php if ($note->canEdit() && !$note->isPendingDeletion()): ?>
+		<?= view('note-page-menu', ['record' => $note]) ?>
+	<?php endif ?>
+</div>
 
 <div class="wt-page-content">
 	<ul class="nav nav-tabs" role="tablist">
