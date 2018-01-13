@@ -17,10 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
