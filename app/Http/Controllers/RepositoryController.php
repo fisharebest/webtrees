@@ -52,7 +52,6 @@ class RepositoryController extends BaseController {
 				'repository' => $record,
 				'sources'    => $record->linkedSources('REPO'),
 				'facts'      => $this->facts($record),
-				'menu'       => $this->menu($record),
 			]);
 		}
 	}
@@ -105,30 +104,5 @@ class RepositoryController extends BaseController {
 		return $this->viewResponse('alerts/danger', [
 			'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
 		], Response::HTTP_NOT_FOUND);
-	}
-
-	/**
-	 * @param Repository $record
-	 *
-	 * @return Menu|null
-	 */
-	private function menu(Repository $record) {
-		if ($record->isPendingDeletion()) {
-			return null;
-		}
-
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-fam');
-
-		if (Auth::isEditor($record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) . '", "' . $record->getXref() . '");',
-			]));
-		}
-
-		if (Auth::isAdmin() || Auth::isEditor($record->getTree()) && $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref(), 'menu-fam-editraw'));
-		}
-
-		return $menu;
 	}
 }

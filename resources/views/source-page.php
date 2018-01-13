@@ -20,9 +20,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2 class="wt-page-title">
-	<?= $source->getFullName() ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $source->getFullName() ?>
+	</h2>
+	<?php if ($source->canEdit() && !$source->isPendingDeletion()): ?>
+		<?= view('source-page-menu', ['record' => $source]) ?>
+	<?php endif ?>
+</div>
 
 <div class="wt-page-content">
 	<ul class="nav nav-tabs" role="tablist">

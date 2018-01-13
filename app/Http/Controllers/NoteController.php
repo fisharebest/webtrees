@@ -57,7 +57,6 @@ class NoteController extends BaseController {
 				'sources'       => $record->linkedSources('NOTE'),
 				'facts'         => $this->facts($record),
 				'text'          => Filter::formatText($record->getNote(), $tree),
-				'menu'          => $this->menu($record),
 			]);
 		}
 	}
@@ -94,30 +93,5 @@ class NoteController extends BaseController {
 		return $this->viewResponse('alerts/danger', [
 			'alert' => I18N::translate('This note does not exist or you do not have permission to view it.'),
 		], Response::HTTP_NOT_FOUND);
-	}
-
-	/**
-	 * @param Note $record
-	 *
-	 * @return Menu|null
-	 */
-	private function menu(Note $record) {
-		if ($record->isPendingDeletion()) {
-			return null;
-		}
-
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-fam');
-
-		if (Auth::isEditor($record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) . '", "' . $record->getXref() . '");',
-			]));
-		}
-
-		if (Auth::isAdmin() || Auth::isEditor($record->getTree()) && $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref(), 'menu-fam-editraw'));
-		}
-
-		return $menu;
 	}
 }

@@ -22,9 +22,14 @@
 	<?php endif ?>
 <?php endif ?>
 
-<h2 class="wt-page-title">
-	<?= $media->getFullName() ?>
-</h2>
+<div class="d-flex mb-4">
+	<h2 class="wt-page-title mx-auto">
+		<?= $media->getFullName() ?>
+	</h2>
+	<?php if ($media->canEdit() && !$media->isPendingDeletion()): ?>
+		<?= view('media-record-page-menu', ['record' => $media]) ?>
+	<?php endif ?>
+</div>
 
 <div class="wt-page-content">
 	<ul class="nav nav-tabs" role="tablist">

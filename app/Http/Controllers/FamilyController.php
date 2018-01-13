@@ -51,7 +51,6 @@ class FamilyController extends BaseController {
 			return $this->viewResponse('family-page', [
 				'record' => $record,
 				'facts'  => $record->getFacts(null, true),
-				'menu'   => $this->menu($record),
 			]);
 		}
 	}
@@ -72,38 +71,5 @@ class FamilyController extends BaseController {
 		return $this->viewResponse('alerts/danger', [
 			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
 		], Response::HTTP_NOT_FOUND);
-	}
-
-	/**
-	 * @param Family $record
-	 *
-	 * @return Menu|null
-	 */
-	private function menu(Family $record) {
-		if ($record->isPendingDeletion()) {
-			return null;
-		}
-
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-fam');
-
-		if (Auth::isEditor($record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), e(Html::url('edit_interface.php', ['action' => 'changefamily', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])), 'menu-fam-change'));
-
-			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), 'edit_interface.php?action=add_child_to_family&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref() . '&amp;gender=U', 'menu-fam-addchil'));
-
-			if ($record->getNumberOfChildren() > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), 'edit_interface.php?action=reorder-children&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref(), 'menu-fam-orderchil'));
-			}
-
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', [
-				'onclick' => 'return delete_record("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $record->getXref() . '");',
-			]));
-		}
-
-		if (Auth::isAdmin() || Auth::isEditor($record->getTree()) && $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), 'edit_interface.php?action=editraw&amp;ged=' . $record->getTree()->getNameHtml() . '&amp;xref=' . $record->getXref(), 'menu-fam-editraw'));
-		}
-
-		return $menu;
 	}
 }
