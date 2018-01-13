@@ -113,3 +113,5 @@
 		</div>
 	</div>
 </div>
+
+<?= view('modals/ajax') ?>
