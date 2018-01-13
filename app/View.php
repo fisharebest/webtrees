@@ -102,14 +102,14 @@ class View {
 	 * @return string
 	 */
 	public static function getFilenameForView($view_name) {
-		$view_file  = $view_name . '.php';
-		//$theme_view = WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views/' . $view_file;
+		$view_file  = '/resources/views/' . $view_name . '.php';
+		$theme_view = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . $view_file;
 
-		//if (file_exists($theme_view)) {
-		//	return $theme_view;
-		//} else {
-			return WT_ROOT . 'resources/views/' . $view_file;
-		//}
+		if (is_file($theme_view)) {
+			return $theme_view;
+		} else {
+			return WT_ROOT . $view_file;
+		}
 	}
 
 	/**
