@@ -26,3 +26,4 @@ import "moment";
 import "eonasdan-bootstrap-datetimepicker";
 import "jquery-colorbox";
 import "wheelzoom";
+import "sortablejs";
