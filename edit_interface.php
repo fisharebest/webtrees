@@ -1974,7 +1974,7 @@ case 'reorder-children-save':
 	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=reorder-spouses&xref=' . $xref);
+		header('Location: edit_interface.php?action=reorder-children&xref=' . $xref);
 		break;
 	}
 
@@ -2008,105 +2008,6 @@ case 'reorder-children-save':
 	header('Location: ' . $family->url());
 	break;
 
-case 'reorder-spouses':
-	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of FAMS records within an INDI record
-	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::get('xref', WT_REGEX_XREF);
-
-	$person = Individual::getInstance($xref, $controller->tree());
-	check_record_access($person);
-
-	$controller
-		->addInlineJavascript('new Sortable(document.querySelector(".wt-sortable-list"), {});')
-		->addInlineJavascript('$("#btn-default-order").on("click", function() { $(".wt-sortable-list li").sort(function(x, y) { return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate); }).appendTo(".wt-sortable-list"); });')
-		->setPageTitle($person->getFullName() . ' — ' . I18N::translate('Re-order families'))
-		->pageHeader();
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form name="reorder_form" method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="reorder-spouses-save">
-		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<?= Filter::getCsrf() ?>
-		<div class="wt-sortable-list">
-			<?php foreach ($person->getFacts('FAMS') as $fact): ?>
-				<div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->getTarget()->getMarriageDate()->julianDay() ?>">
-					<input type="hidden" name="order[]" value="<?= $fact->getFactId() ?>">
-					<h3 class="card-header">
-						<?= FontAwesome::semanticIcon('drag-handle', '') ?>
-						<?= $fact->getTarget()->getFullName() ?>
-					</h3>
-					<div class="card-body">
-						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_MARR, 2) ?>
-						<?= $fact->getTarget()->formatFirstMajorFact(WT_EVENTS_DIV, 2) ?>
-					</div>
-				</div>
-			<?php endforeach ?>
-		</div>
-
-		<p class="text-center">
-			<button class="btn btn-primary" type="submit">
-				<?= FontAwesome::decorativeIcon('save') ?>
-				<?= /* I18N: A button label. */
-				I18N::translate('save') ?>
-			</button>
-			<button class="btn btn-secondary" id="btn-default-order" type="button">
-				<?= FontAwesome::decorativeIcon('sort') ?>
-				<?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
-			</button>
-			<a class="btn btn-secondary" href="<?= e($person->url()) ?>">
-				<?= FontAwesome::decorativeIcon('cancel') ?>
-				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
-			</a>
-		</p>
-	</form>
-	<?php
-	break;
-
-case 'reorder-spouses-save':
-	//////////////////////////////////////////////////////////////////////////////
-	// Change the order of FAMS records within an INDI record
-	//////////////////////////////////////////////////////////////////////////////
-	$xref  = Filter::post('xref', WT_REGEX_XREF);
-	$order = Filter::post('order');
-
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=reorder-spouses&xref=' . $xref);
-		break;
-	}
-
-	$individual = Individual::getInstance($xref, $controller->tree());
-	check_record_access($individual);
-
-	$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
-	$sort_facts  = [];
-	$keep_facts  = [];
-
-	// Split facts into FAMS and other
-	foreach ($individual->getFacts() as $fact) {
-		if ($fact->getTag() === 'FAMS') {
-			$sort_facts[$fact->getFactId()] = $fact->getGedcom();
-		} else {
-			$keep_facts[] = $fact->getGedcom();
-		}
-	}
-
-	// Sort the facts
-	$order = (array) $order;
-	uksort($sort_facts, function ($x, $y) use ($order) {
-		return array_search($x, $order) - array_search($y, $order);
-	});
-
-	// Merge the facts
-	$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
-
-	$individual->updateRecord($gedcom, false);
-
-	header('Location: ' . $individual->url());
-	break;
 }
 
 /**

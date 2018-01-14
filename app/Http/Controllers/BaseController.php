@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 use Symfony\Component\HttpFoundation\Response;
 use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
@@ -29,6 +30,24 @@ use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
  */
 class BaseController extends LegacyBaseController {
 	protected $layout = 'layouts/default';
+
+	/**
+	 * @return Response
+	 */
+	protected function individualNotAllowedResponse(): Response {
+		return $this->viewResponse('alerts/danger', [
+			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
+		], Response::HTTP_FORBIDDEN);
+	}
+
+	/**
+	 * @return Response
+	 */
+	protected function individualNotFoundResponse(): Response {
+		return $this->viewResponse('alerts/danger', [
+			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
+		], Response::HTTP_NOT_FOUND);
+	}
 
 	/**
 	 * Create a response object from a view.

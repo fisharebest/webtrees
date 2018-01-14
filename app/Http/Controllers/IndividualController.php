@@ -55,9 +55,9 @@ class IndividualController extends BaseController {
 		$record = Individual::getInstance($xref, $tree);
 
 		if ($record === null) {
-			return $this->notFound();
+			return $this->individualNotFoundResponse();
 		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
+			return $this->individualNotAllowedResponse();
 		} else {
 			$individual_media = [];
 			// What is (was) the age of the individual
@@ -139,24 +139,6 @@ class IndividualController extends BaseController {
 
 			return new Response($layout);
 		}
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 
 	/**
