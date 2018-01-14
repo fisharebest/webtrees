@@ -30,6 +30,11 @@ class View {
 	private $data;
 
 	/**
+	 * @var mixed[] Data to be inserted into all views.
+	 */
+	private static $shared_data = [];
+
+	/**
 	 * @var string Implementation of Blade "stacks".
 	 */
 	private static $stack;
@@ -48,6 +53,13 @@ class View {
 	public function __construct($name, $data = []) {
 		$this->name = $name;
 		$this->data = $data;
+	}
+
+	/**
+	 * Shared data that is available to all views.
+	 */
+	public static function share($key, $value) {
+		self::$shared_data[$key] = $value;
 	}
 
 	/**
@@ -86,7 +98,7 @@ class View {
 	 * @return string
 	 */
 	public function render() {
-		extract($this->data);
+		extract($this->data + self::$shared_data);
 
 		ob_start();
 		require $this->getFilenameForView($this->name);
