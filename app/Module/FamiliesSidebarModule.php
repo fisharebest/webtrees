@@ -97,6 +97,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$initials = QueryName::surnameAlpha($individual->getTree(), true, false, false);
 
 		$out = '
+			<script>
 			var famloadedNames = new Array();
 
 			function fsearchQ() {
@@ -145,6 +146,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				}
 				return false;
 			});
+			</script>
 		';
 
 		$out .= '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
