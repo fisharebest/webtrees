@@ -33,6 +33,144 @@ class EditIndividualController extends BaseController {
 	 *
 	 * @return Response
 	 */
+	public function reorderMedia(Request $request): Response {
+		/** @var Tree $tree */
+		$tree       = $request->attributes->get('tree');
+		$xref       = $request->get('xref');
+		$individual = Individual::getInstance($xref, $tree);
+
+		if ($individual === null) {
+			return $this->individualNotFound();
+		} elseif (!$individual->canEdit()) {
+			return $this->individualNotAllowed();
+		}
+
+		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order media');
+
+		return $this->viewResponse('edit/reorder-media', [
+			'title'      => $title,
+			'individual' => $individual,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function reorderMediaAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree       = $request->attributes->get('tree');
+		$xref       = $request->get('xref');
+		$order      = (array) $request->get('order', []);
+		$individual = Individual::getInstance($xref, $tree);
+
+		if ($individual === null) {
+			return $this->individualNotFound();
+		} elseif (!$individual->canEdit()) {
+			return $this->individualNotAllowed();
+		}
+
+		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+		$sort_facts  = [];
+		$keep_facts  = [];
+
+		// Split facts into OBJE and other
+		foreach ($individual->getFacts() as $fact) {
+			if ($fact->getTag() === 'OBJE') {
+				$sort_facts[$fact->getFactId()] = $fact->getGedcom();
+			} else {
+				$keep_facts[] = $fact->getGedcom();
+			}
+		}
+
+		// Sort the facts
+		uksort($sort_facts, function ($x, $y) use ($order) {
+			return array_search($x, $order) - array_search($y, $order);
+		});
+
+		// Merge the facts
+		$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+
+		$individual->updateRecord($gedcom, false);
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function reorderNames(Request $request): Response {
+		/** @var Tree $tree */
+		$tree       = $request->attributes->get('tree');
+		$xref       = $request->get('xref');
+		$individual = Individual::getInstance($xref, $tree);
+
+		if ($individual === null) {
+			return $this->individualNotFound();
+		} elseif (!$individual->canEdit()) {
+			return $this->individualNotAllowed();
+		}
+
+		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order names');
+
+		return $this->viewResponse('edit/reorder-names', [
+			'title'      => $title,
+			'individual' => $individual,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function reorderNamesAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree       = $request->attributes->get('tree');
+		$xref       = $request->get('xref');
+		$order      = (array) $request->get('order', []);
+		$individual = Individual::getInstance($xref, $tree);
+
+		if ($individual === null) {
+			return $this->individualNotFound();
+		} elseif (!$individual->canEdit()) {
+			return $this->individualNotAllowed();
+		}
+
+		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+		$sort_facts  = [];
+		$keep_facts  = [];
+
+		// Split facts into NAME and other
+		foreach ($individual->getFacts() as $fact) {
+			if ($fact->getTag() === 'NAME') {
+				$sort_facts[$fact->getFactId()] = $fact->getGedcom();
+			} else {
+				$keep_facts[] = $fact->getGedcom();
+			}
+		}
+
+		// Sort the facts
+		uksort($sort_facts, function ($x, $y) use ($order) {
+			return array_search($x, $order) - array_search($y, $order);
+		});
+
+		// Merge the facts
+		$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+
+		$individual->updateRecord($gedcom, false);
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
 	public function reorderSpouses(Request $request): Response {
 		/** @var Tree $tree */
 		$tree       = $request->attributes->get('tree');
