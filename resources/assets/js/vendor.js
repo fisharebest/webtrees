@@ -20,7 +20,8 @@ import "bootstrap";
 import "datatables.net";
 import "corejs-typeahead";
 import "datatables.net-bs4";
-import "sortablejs";
+// See https://github.com/RubaXa/Sortable/issues/1229
+window.Sortable = require('sortablejs');
 import "select2";
 import "moment";
 import "eonasdan-bootstrap-datetimepicker";
