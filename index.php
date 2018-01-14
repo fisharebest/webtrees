@@ -51,6 +51,12 @@ $routes = require 'routes/web.php';
 // Find the action for the selected route
 $controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
 
+// POST requests need a valid CSRF token
+$csrf_token = $request->get('csrf', $request->headers->get('HTTP_X_CSRF_TOKEN'));
+if ($method === 'POST' && $csrf_token !== Filter::getCsrfToken()) {
+	$controller_action = 'ErrorController@csrf';
+}
+
 DebugBar::stopMeasure('routing');
 
 DebugBar::startMeasure('create controller');

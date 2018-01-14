@@ -88,7 +88,7 @@
 			<?php if (count($spouse_families) > 1): ?>
 				<tr>
 					<td>
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-spouses', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+						<a href="<?= e(route('reorder-spouses', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 							<?= I18N::translate('Re-order families') ?>
 						</a>
 					</td>

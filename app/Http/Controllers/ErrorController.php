@@ -29,6 +29,17 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ErrorController extends BaseController {
 	/**
+	 * A POST request was made with a missing/invalid CSRF token.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function csrf(Request $request): Response {
+		return $this->viewResponse('errors/csrf', []);
+	}
+
+	/**
 	 * No route was match?  Send the user somewhere sensible, if we can.
 	 *
 	 * @param Request $request
