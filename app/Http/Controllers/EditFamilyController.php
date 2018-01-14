@@ -62,7 +62,7 @@ class EditFamilyController extends BaseController {
 		/** @var Tree $tree */
 		$tree   = $request->attributes->get('tree');
 		$xref   = $request->get('xref');
-		$order      = (array) $request->get('order', []);
+		$order  = (array) $request->get('order', []);
 		$family = Family::getInstance($xref, $tree);
 
 		if ($family === null) {
