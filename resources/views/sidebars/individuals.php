@@ -36,7 +36,7 @@
   function isearchQ() {
     var query = $("#sb_indi_name").val();
     if (query.length > 1) {
-      $("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search=" + query);
+      $("#sb_indi_content").load("module.php?mod=individuals&mod_action=ajax&search=" + query);
     }
   }
 
@@ -66,7 +66,7 @@
           loadedNames[surname] = 2;
         }
       });
-    } else if (loadedNames[surname] == 1) {
+    } else if (loadedNames[surname] === 1) {
       loadedNames[surname] = 2;
       $("div.name_tree_div", $(this).closest("li"))
         .show()
