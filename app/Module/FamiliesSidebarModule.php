@@ -96,88 +96,13 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = QueryName::surnameAlpha($individual->getTree(), true, false, false);
 
-		$out = '
-			<script>
-			var famloadedNames = new Array();
-
-			function fsearchQ() {
-				var query = $("#sb_fam_name").val();
-				if (query.length>1) {
-					$("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
-				}
-			}
-
-			var famtimerid = null;
-			$("#sb_fam_name").keyup(function(e) {
-				if (famtimerid) window.clearTimeout(famtimerid);
-				famtimerid = window.setTimeout("fsearchQ()", 500);
-			});
-			$("#sidebar-content-families").on("click", ".sb_fam_letter", function() {
-				$("#sb_fam_content").load(this.href);
-				return false;
-			});
-			$("#sidebar-content-families").on("click", ".sb_fam_surname", function() {
-				var element = $(this);
-				var surname = element.data("surname");
-				var alpha   = element.data("alpha");
-
-				if (!famloadedNames[surname]) {
-					jQuery.ajax({
-					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
-					  cache: false,
-					  success: function(html) {
-					    $("div.name_tree_div", element.closest("li"))
-					    .html(html)
-					    .show("fast")
-					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
-					    famloadedNames[surname]=2;
-					  }
-					});
-				} else if (famloadedNames[surname]==1) {
-					famloadedNames[surname]=2;
-					$("div.name_tree_div", $(this).closest("li"))
-					.show()
-					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
-				} else {
-					famloadedNames[surname]=1;
-					$("div.name_tree_div", $(this).closest("li"))
-					.hide("fast")
-					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
-				}
-				return false;
-			});
-			</script>
-		';
-
-		$out .= '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
-		foreach ($initials as $letter => $count) {
-			switch ($letter) {
-				case '@':
-					$html = I18N::translateContext('Unknown surname', '…');
-					break;
-				case ',':
-					$html = I18N::translate('None');
-					break;
-				case ' ':
-					$html = '&nbsp;';
-					break;
-				default:
-					$html = $letter;
-					break;
-			}
-			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
-			$out .= $html . ' ';
-		}
-
-		$out .= '</p>';
-		$out .= '<div id="sb_fam_content">';
-		$out .= '</div></form>';
-
-		return $out;
+		return view('sidebars/families', [
+			'initials' => $initials,
+		]);
 	}
 
 	/**
-	 * Get a list of surname initials.
+	 * Get the initial letters of surnames.
 	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
@@ -198,7 +123,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
-	 * Get a list of surnames.
+	 * Format a list of families.
 	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
@@ -227,7 +152,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
-	 * Autocomplete search for families.
+	 * Search for families in a tree.
 	 *
 	 * @param Tree   $tree  Search this tree
 	 * @param string $query Search for this text

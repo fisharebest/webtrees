@@ -3,11 +3,11 @@
 <?php use Fisharebest\Webtrees\Theme; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<form method="post" action="<?= e(Html::url('module.php' ,['mod' => 'individuals', 'mod_action' => 'ajax'])) ?>" onsubmit="return false;">
-	<input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="<?= I18N::translate('Search') ?>">
+<form method="post" action="<?= e(Html::url('module.php' ,['mod' => 'families', 'mod_action' => 'ajax'])) ?>" onsubmit="return false;">
+	<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="<?= I18N::translate('Search') ?>">
 	<p>
 		<?php foreach ($initials as $letter => $count): ?>
-			<a href="<?= e(Html::url('module.php', ['mod' => 'individuals', 'mod_action' => 'ajax', 'alpha' => $letter])) ?>" class="sb_indi_letter">
+			<a href="<?= e(Html::url('module.php', ['mod' => 'families', 'mod_action' => 'ajax', 'alpha' => $letter])) ?>" class="sb_fam_letter">
 				<?php if ($letter === '@'): ?>
 					<?= I18N::translateContext('Unknown surname', '…') ?>
 				<?php elseif ($letter === ','): ?>
@@ -20,53 +20,53 @@
 			</a>
 		<?php endforeach ?>
 	</p>
-	<div id="sb_indi_content"></div>
+	<div id="sb_fam_content"></div>
 </form>
 
 <?php View::push('javascript') ?>
 <script>
-  var loadedNames = [];
+  var famloadedNames = [];
 
-  function isearchQ() {
-    var query = $("#sb_indi_name").val();
-    if (query.length > 1) {
-      $("#sb_indi_content").load("module.php?mod=individuals&mod_action=ajax&search=" + query);
+  function fsearchQ() {
+    var query = $("#sb_fam_name").val();
+    if (query.length>1) {
+      $("#sb_fam_content").load("module.php?mod=families&mod_action=ajax&search=" + query);
     }
   }
 
-  var timerid = null;
-  $("#sb_indi_name").keyup(function (e) {
-    if (timerid) window.clearTimeout(timerid);
-    timerid = window.setTimeout("isearchQ()", 500);
+  var famtimerid = null;
+  $("#sb_fam_name").keyup(function(e) {
+    if (famtimerid) window.clearTimeout(famtimerid);
+    famtimerid = window.setTimeout("fsearchQ()", 500);
   });
-  $("#sidebar-content-individuals").on("click", ".sb_indi_letter", function () {
-    $("#sb_indi_content").load(this.href);
+  $("#sidebar-content-families").on("click", ".sb_fam_letter", function() {
+    $("#sb_fam_content").load(this.href);
     return false;
   });
-  $("#sidebar-content-individuals").on("click", ".sb_indi_surname", function () {
+  $("#sidebar-content-families").on("click", ".sb_fam_surname", function() {
     var element = $(this);
     var surname = element.data("surname");
     var alpha   = element.data("alpha");
 
-    if (!loadedNames[surname]) {
+    if (!famloadedNames[surname]) {
       jQuery.ajax({
-        url:     "module.php?mod=individuals&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
+        url:     "module.php?mod=families&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
         cache:   false,
         success: function (html) {
           $("div.name_tree_div", element.closest("li"))
             .html(html)
             .show("fast")
             .css("list-style-image", "url(<?= Theme::theme()->parameter('image-minus') ?>)");
-          loadedNames[surname] = 2;
+          famloadedNames[surname] = 2;
         }
       });
-    } else if (loadedNames[surname] === 1) {
-      loadedNames[surname] = 2;
+    } else if (famloadedNames[surname] === 1) {
+      famloadedNames[surname] = 2;
       $("div.name_tree_div", $(this).closest("li"))
         .show()
         .css("list-style-image", "url(<?= Theme::theme()->parameter('image-minus') ?>)");
     } else {
-      loadedNames[surname] = 1;
+      famloadedNames[surname] = 1;
       $("div.name_tree_div", $(this).closest("li"))
         .hide("fast")
         .css("list-style-image", "url(<?= Theme::theme()->parameter('image-plus') ?>)");
