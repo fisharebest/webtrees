@@ -34,7 +34,25 @@ class BaseController extends LegacyBaseController {
 	/**
 	 * @return Response
 	 */
-	protected function individualNotAllowedResponse(): Response {
+	protected function familyNotAllowed(): Response {
+		return $this->viewResponse('alerts/danger', [
+			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
+		], Response::HTTP_FORBIDDEN);
+	}
+
+	/**
+	 * @return Response
+	 */
+	protected function familyNotFound(): Response {
+		return $this->viewResponse('alerts/danger', [
+			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
+		], Response::HTTP_NOT_FOUND);
+	}
+
+	/**
+	 * @return Response
+	 */
+	protected function individualNotAllowed(): Response {
 		return $this->viewResponse('alerts/danger', [
 			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
 		], Response::HTTP_FORBIDDEN);
@@ -43,7 +61,7 @@ class BaseController extends LegacyBaseController {
 	/**
 	 * @return Response
 	 */
-	protected function individualNotFoundResponse(): Response {
+	protected function individualNotFound(): Response {
 		return $this->viewResponse('alerts/danger', [
 			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
 		], Response::HTTP_NOT_FOUND);

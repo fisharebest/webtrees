@@ -44,32 +44,14 @@ class FamilyController extends BaseController {
 		$record = Family::getInstance($xref, $tree);
 
 		if ($record === null) {
-			return $this->notFound();
+			return $this->familyNotFound();
 		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
+			return $this->familyNotAllowed();
 		} else {
 			return $this->viewResponse('family-page', [
 				'record' => $record,
 				'facts'  => $record->getFacts(null, true),
 			]);
 		}
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 }

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,29 +27,29 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditIndividualController extends BaseController {
+class EditFamilyController extends BaseController {
 	/**
 	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function reorderSpouses(Request $request): Response {
+	public function reorderChildren(Request $request): Response {
 		/** @var Tree $tree */
-		$tree       = $request->attributes->get('tree');
-		$xref       = $request->get('xref');
-		$individual = Individual::getInstance($xref, $tree);
+		$tree   = $request->attributes->get('tree');
+		$xref   = $request->get('xref');
+		$family = Family::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
+		if ($family === null) {
+			return $this->familyNotFound();
+		} elseif (!$family->canEdit()) {
+			return $this->familyNotAllowed();
 		}
 
-		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order families');
+		$title = $family->getFullName() . ' — ' . I18N::translate('Re-order children');
 
-		return $this->viewResponse('edit/reorder-spouses', [
-			'title'      => $title,
-			'individual' => $individual,
+		return $this->viewResponse('edit/reorder-children', [
+			'title'  => $title,
+			'family' => $family,
 		]);
 	}
 
@@ -58,26 +58,26 @@ class EditIndividualController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function reorderSpousesAction(Request $request): Response {
+	public function reorderChildrenAction(Request $request): Response {
 		/** @var Tree $tree */
-		$tree       = $request->attributes->get('tree');
-		$xref       = $request->get('xref');
+		$tree   = $request->attributes->get('tree');
+		$xref   = $request->get('xref');
 		$order      = (array) $request->get('order', []);
-		$individual = Individual::getInstance($xref, $tree);
+		$family = Family::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
+		if ($family === null) {
+			return $this->familyNotFound();
+		} elseif (!$family->canEdit()) {
+			return $this->familyNotAllowed();
 		}
 
-		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+		$dummy_facts = ['0 @' . $family->getXref() . '@ FAM'];
 		$sort_facts  = [];
 		$keep_facts  = [];
 
 		// Split facts into FAMS and other
-		foreach ($individual->getFacts() as $fact) {
-			if ($fact->getTag() === 'FAMS') {
+		foreach ($family->getFacts() as $fact) {
+			if ($fact->getTag() === 'CHIL') {
 				$sort_facts[$fact->getFactId()] = $fact->getGedcom();
 			} else {
 				$keep_facts[] = $fact->getGedcom();
@@ -92,8 +92,8 @@ class EditIndividualController extends BaseController {
 		// Merge the facts
 		$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
 
-		$individual->updateRecord($gedcom, false);
+		$family->updateRecord($gedcom, false);
 
-		return new RedirectResponse($individual->url());
+		return new RedirectResponse($family->url());
 	}
 }

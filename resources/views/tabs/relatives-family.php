@@ -191,7 +191,7 @@
 			<tr>
 				<th scope="row">
 					<?php if (count($family->getChildren()) > 1): ?>
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-children', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref()])) ?>">
+						<a href="<?= e(route('reorder-children', ['ged' => $family->getTree()->getName(), 'xref' => $family->getXref()])) ?>">
 							<i class="icon-media-shuffle"></i> <?= I18N::translate('Re-order children') ?>
 						</a>
 					<?php endif; ?>

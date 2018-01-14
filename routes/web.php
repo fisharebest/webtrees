@@ -97,6 +97,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:create-source'       => 'EditSourceController@createSourceAction',
 		'GET:create-submitter'     => 'EditSubmitterController@createSubmitter',
 		'POST:create-submitter'    => 'EditSubmitterController@createSubmitterAction',
+		'GET:reorder-children'     => 'EditFamilyController@reorderChildren',
+		'POST:reorder-children'    => 'EditFamilyController@reorderChildrenAction',
 		'GET:reorder-spouses'      => 'EditIndividualController@reorderSpouses',
 		'POST:reorder-spouses'     => 'EditIndividualController@reorderSpousesAction',
 	];

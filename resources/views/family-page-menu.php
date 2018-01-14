@@ -18,7 +18,7 @@
 		</a>
 
 		<?php if ($record->getNumberOfChildren() > 1): ?>
-			<a class="dropdown-item menu-fam-orderchil" href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-children', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
+			<a class="dropdown-item menu-fam-orderchil" href="<?= e(route('reorder-children', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
 				<?= I18N::translate('Re-order children') ?>
 			</a>
 		<?php endif ?>
