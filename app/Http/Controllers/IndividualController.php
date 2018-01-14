@@ -55,9 +55,9 @@ class IndividualController extends BaseController {
 		$record = Individual::getInstance($xref, $tree);
 
 		if ($record === null) {
-			return $this->individualNotFoundResponse();
+			return $this->individualNotFound();
 		} elseif (!$record->canShow()) {
-			return $this->individualNotAllowedResponse();
+			return $this->individualNotAllowed();
 		} else {
 			$individual_media = [];
 			// What is (was) the age of the individual
