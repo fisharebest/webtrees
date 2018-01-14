@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-10 20:52+0000\n"
-"Last-Translator: Erwan Le Masson <maggot_fff@hotmail.fr>\n"
+"PO-Revision-Date: 2018-01-14 10:58+0000\n"
+"Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -14288,7 +14288,7 @@ msgstr "Cette option affichera les noms (mais sans détails) des individus priv�
 
 #: edit_interface.php:59 edit_interface.php:182
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Cette page vous permet de contourner les formes habituelles, et de modifier directement les données. C’est une option avancée, et vous ne devriez pas l’utiliser que si vous comprenez le format GEDCOM. Si vous faites une erreur ici, il peut être difficile à corriger."
+msgstr "Cette page vous permet de contourner les formes habituelles, et de modifier directement les données. C’est une option avancée et vous ne devriez l’utiliser que si vous comprenez le format GEDCOM. Si vous faites une erreur ici, elle peut être difficile à corriger."
 
 #: app/Theme/AbstractTheme.php:523
 #, php-format
@@ -15665,7 +15665,7 @@ msgstr "On peut choisir d’apparaître ou pas dans la liste des utilisateurs ac
 #: edit_interface.php:61 edit_interface.php:184
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr "Vous pouvez télécharger une copie de la spécification GEDCOM à partir de %s."
+msgstr "Vous pouvez télécharger une copie de la norme GEDCOM à partir de %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
