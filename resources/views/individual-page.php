@@ -59,7 +59,7 @@
 
 				<?php if (Auth::isEditor($individual->getTree())): ?>
 					<?php if (count($individual->getFacts('OBJE')) > 1): ?>
-						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-media', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+						<div><a href="<?= e(route('reorder-media', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 								<?= I18N::translate('Re-order media') ?>
 							</a></div>
 					<?php endif ?>
@@ -90,7 +90,7 @@
 									<?= I18N::translate('Add a name') ?>
 								</a>
 								<?php if (count($individual->getFacts('NAME')) > 1): ?>
-									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'reorder-names', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+									<a href="<?= e(route('reorder-names', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 										<?= I18N::translate('Re-order names') ?>
 									</a>
 								<?php endif ?>
