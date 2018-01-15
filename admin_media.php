@@ -15,9 +15,9 @@
  */
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
+use Throwable;
 
 // @TODO MediaFile
 require 'includes/session.php';
@@ -60,7 +60,7 @@ if ($delete_file) {
 		try {
 			unlink($tmp);
 			FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -71,7 +71,7 @@ if ($delete_file) {
 			try {
 				unlink($tmp);
 				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
-			} catch (ErrorException $ex) {
+			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
 				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -495,14 +495,14 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 			$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
 			$html .= '<dd>' . /* I18N: image dimensions, width × height */
 				I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Not an image, or not a valid image?
 		}
 
 		$html .= '</dl>';
-	} catch (ErrorException $ex) {
+	} catch (Throwable $ex) {
 		DebugBar::addThrowable($ex);
 
 		// Not a file?  Not an image?

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
+use Throwable;
 
 /**
  * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
@@ -123,7 +124,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 				// An invalid regex on a null string returns false and throws a warning.
 				try {
 					preg_match('/' . $this->search . '/', null);
-				} catch (\ErrorException $ex) {
+				} catch (Throwable $ex) {
 					DebugBar::addThrowable($ex);
 
 					$this->error = '<div class="alert alert-danger">' . /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';

@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use PDO;
 use PDOException;
+use Throwable;
 
 /** @global Tree $WT_TREE */
 global $WT_TREE;
@@ -567,7 +568,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					)->execute([$setting->user_id, $tree->getTreeId(), 'gedcomid', $value]);
 				}
 			}
-		} catch (\ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Invalid serialized data?
@@ -583,7 +584,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					)->execute([$setting->user_id, $tree->getTreeId(), 'rootid', $value]);
 				}
 			}
-		} catch (\ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Invalid serialized data?
@@ -599,7 +600,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					)->execute([$setting->user_id, $tree->getTreeId(), 'canedit', $value]);
 				}
 			}
-		} catch (\ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			// Invalid serialized data?

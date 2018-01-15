@@ -51,6 +51,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Throwable;
 
 /**
  * Controller for the administration pages
@@ -1864,7 +1865,7 @@ class AdminController extends BaseController {
 			if (getimagesize($thumbanil) === false) {
 				return 100;
 			}
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			// If the first file is not an image then similarity is unimportant.
 			// Response with an exact match, so the GUI will recommend deleting it.
 			return 100;
