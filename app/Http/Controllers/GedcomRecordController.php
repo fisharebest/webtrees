@@ -50,9 +50,9 @@ class GedcomRecordController extends BaseController {
 		$record = GedcomRecord::getInstance($xref, $tree);
 
 		if ($record === null) {
-			return $this->notFound();
+			return $this->recordNotFound();
 		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
+			return $this->recordNotAllowed();
 		} elseif ($this->hasCustomPage($record)) {
 			return new RedirectResponse($record->url());
 		} else {
@@ -83,23 +83,5 @@ class GedcomRecordController extends BaseController {
 			$record instanceof Repository ||
 			$record instanceof Note ||
 			$record instanceof Media;
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This record does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This record does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 }
