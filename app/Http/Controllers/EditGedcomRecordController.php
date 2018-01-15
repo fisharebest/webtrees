@@ -52,7 +52,7 @@ class EditGedcomRecordController extends BaseController {
 	/**
 	 * @param Request $request
 	 *
-	 * @return Request
+	 * @return Response
 	 */
 	public function editRawAction(Request $request): Response {
 		/** @var Tree $tree */

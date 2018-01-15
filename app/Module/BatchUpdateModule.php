@@ -107,8 +107,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 
 	/**
 	 * Main entry point
-	 *
-	 * @return string
 	 */
 	private function main() {
 		global $WT_TREE;
