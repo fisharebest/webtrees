@@ -107,7 +107,7 @@ $default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth
 ?>
 <script>
 function checkform(frm) {
-	if (frm.form_pass1.value!=frm.form_pass2.value) {
+	if (frm.form_pass1.value !== frm.form_pass2.value) {
 		alert("<?= I18N::translate('The passwords do not match.') ?>");
 		frm.form_pass1.focus();
 		return false;
