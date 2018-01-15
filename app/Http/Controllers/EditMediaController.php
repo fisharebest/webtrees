@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use ErrorException;
 use FilesystemIterator;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
@@ -37,6 +36,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 /**
  * Controller for edit forms and responses.
@@ -232,7 +232,7 @@ class EditMediaController extends BaseController {
 					File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder);
 					rename(WT_DATA_DIR . $MEDIA_DIRECTORY . $media_file->filename(), WT_DATA_DIR . $MEDIA_DIRECTORY . $file);
 					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-				} catch (ErrorException $ex) {
+				} catch (Throwable $ex) {
 					FlashMessages::addMessage($ex, 'info');
 					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
 					$file = $media_file->filename();

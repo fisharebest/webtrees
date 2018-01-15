@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees;
 /** @global Tree $WT_TREE */
 global $WT_TREE;
 
+use Throwable;
+
 require 'includes/session.php';
 
 if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
@@ -34,7 +36,7 @@ if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
 		fclose($stream);
 		rename($filename . '.tmp', $filename);
 		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
-	} catch (\ErrorException $ex) {
+	} catch (Throwable $ex) {
 		DebugBar::addThrowable($ex);
 
 		FlashMessages::addMessage(

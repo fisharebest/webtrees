@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Exception;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -23,6 +22,7 @@ use GuzzleHttp\Client;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Throwable;
 
 require 'includes/session.php';
 
@@ -229,7 +229,7 @@ foreach (Tree::getAll() as $tree) {
 		fclose($stream);
 		rename($filename . '.tmp', $filename);
 		echo '<br>', I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), $icon_success;
-	} catch (\ErrorException $ex) {
+	} catch (Throwable $ex) {
 		DebugBar::addThrowable($ex);
 
 		echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($filename)), $icon_failure;
@@ -243,7 +243,7 @@ echo '</li>';
 try {
 	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
 	copy('app/GedcomTag.php', WT_DATA_DIR . 'GedcomTag' . date('-Y-m-d') . '.php');
-} catch (\ErrorException $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	// No problem if we cannot do this.
@@ -313,7 +313,7 @@ try {
 	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, I18N::number($end_time - $start_time, 2)), $icon_success;
 
 	echo '</li>';
-} catch (Exception $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
@@ -332,7 +332,7 @@ echo '<li>', I18N::translate('Place the website offline, by creating the file %s
 try {
 	$data_filesystem->put($lock_file, $lock_file_text);
 	echo '<br>', I18N::translate('The file %s has been created.', Html::filename($lock_file)), $icon_success;
-} catch (\ErrorException $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($lock_file)), $icon_failure;
@@ -361,7 +361,7 @@ try {
 	$end_time = microtime(true);
 
 	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, I18N::number($end_time - $start_time, 2)), $icon_success;
-} catch (Exception $ex) {
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	echo '<br>', I18N::translate('The file %s could not be updated.', Html::filename($file['path'])), $icon_failure;
