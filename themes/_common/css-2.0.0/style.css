@@ -22,7 +22,7 @@
  .row .select2-selection--single {
 }
 
-#select2-rootid-container { /* Relationships, thumbnail fit in parent */
+.select2-container .select2-selection--single  { /* Relationships, thumbnail fit in parent */
 	height: auto;
 }
 
