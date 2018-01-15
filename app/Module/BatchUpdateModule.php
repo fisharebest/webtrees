@@ -249,7 +249,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 								<?= $this->PLUGIN->getActionPreview($this->record) ?>
 							</div>
 							<div class="row form-group">
-							<?= implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) ?>
+							<?= implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref)) ?>
 							</div>
 						<?php else: ?>
 							<div class="alert alert-info"><?= I18N::translate('Nothing found.') ?></div>
