@@ -459,7 +459,7 @@ class SetupController extends BaseController {
 	 *
 	 * @param string  $name
 	 * @param mixed[] $data
-	 * @param int     $atatus
+	 * @param int     $status
 	 *
 	 * @return Response
 	 */

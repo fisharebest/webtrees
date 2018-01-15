@@ -57,6 +57,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	/**
 	 * Is this tab empty? If so, we don't always need to display it.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return bool
 	 */
 	public function hasTabContent(Individual $individual) {
@@ -66,6 +68,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	/**
 	 * A greyed out tab has no actual content, but may perhaps have
 	 * options to create content.
+	 *
+	 * @param Individual $individual
 	 *
 	 * @return bool
 	 */
