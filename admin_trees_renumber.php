@@ -80,7 +80,7 @@ if (Filter::get('action') === 'renumber') {
 			" `##site_setting` WRITE," .
 			" `##user_gedcom_setting` WRITE"
 		);
-		$new_xref = $WT_TREE->getNewXref($type);
+		$new_xref = $WT_TREE->getNewXref();
 		switch ($type) {
 			case 'INDI':
 				Database::prepare(
