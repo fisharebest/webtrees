@@ -50,7 +50,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $controller, $WT_TREE;
+		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
