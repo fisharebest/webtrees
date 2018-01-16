@@ -2000,7 +2000,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					echo FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
@@ -2009,14 +2009,14 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			$bdm .= 'M';
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
-					echo FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					echo FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
