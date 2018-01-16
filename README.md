@@ -82,44 +82,46 @@ To install **webtrees**, you need:
   needed for your media files, GEDCOM files and database.
 * PHP 7.0 or later.  Servers with PHP 5.3 - 5.6 should use **webtrees** 1.7.
   Servers with PHP 5.2 should use **webtrees** 1.4.
-   * PHP should be configured with the PHP/PDO library for MySQL. This is a
-     server configuration option. It is enabled by default on most hosts.
-     See [http://php.net/pdo](http://php.net/pdo)
+   * PHP should be configured with the following libraries:
+     PDO and pdo_mysql for MySQL. These are enabled by default on most hosts.
+     See [http://php.net/pdo](http://php.net/pdo),
+     php\_gd(2) for images and PHP_XML for reports.
    * PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
       * Small systems (500 individuals): 16–32 MB, 10–20 seconds
       * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
       * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
 * MySQL/MariaDB 5.0.13 or later. Note that **webtrees** can share a single database
-  with other applications, by choosing a unique table prefix during configuration.
+  with other applications, by choosing a unique table prefix during setup.
   If the number of databases is not restricted, you can set up a database purely
   for use by **webtrees** and create a separate user and password for only
   your genealogy.
-* Internet browser compatibility. **webtrees** supports the use of most
-  current browsers such as Edge, Firefox, Chrome, and Safari.
-  We will do our best to support others such as Opera and Internet Explorer, though
-  not their earlier versions, in particular versions of Internet Explorer prior
-  to IE11 do not work with **webtrees**. We strongly recommend anyone using these
-  obsolete browsers to upgrade as soon as possible. We are also aware that IE
-  provides poor RTL language support generally, so cannot recommend it for sites
-  requiring RTL languages.
+
+
+  ### Internet browser compatibility.
+  
+  **webtrees** supports the use of most current browsers such as Edge, Firefox,
+  Chrome, and Safari. We will do our best to support the current versions of others
+  such as Opera and Internet Explorer; note that versions of Internet Explorer prior
+  to IE11 do not work with **webtrees**. We strongly recommend anyone using an
+  obsolete browser to upgrade as soon as possible. We are also aware that Internet
+  Explorer provides poor RTL language support generally, so cannot recommend it for
+  sites requiring RTL languages.
 * To view sites that contain both left-to-right and right-to-left text (e.g.
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
   or Internet Explorer support this.
 * HTML Frames. Note that **webtrees** uses cookies to track login sessions. Sites
   that make **webtrees** pages available inside an HTML Frame will encounter
-  problems with login for versions of Internet Explorer prior to version 10. IE users
-  should review the ``Privacy settings Tools`` / ``Internet Options`` for more details.
+  problems with login for versions of Internet Explorer prior to version 10.
+  Internet Explorer users should review the ``Privacy settings Tools`` / ``Internet Options`` for more details.
 
 
 ### Installation
 
-Installing **webtrees** is really easy. All you need is a webserver with PHP and
-MySQL/MariaDB. Almost every web hosting service provides these, but be sure to confirm
-that those supplied meet or exceed the minimum system requirements.
+Once the system requirements are met, perform the following steps
 
-1. Download latest stable version from [webtrees.net](https://webtrees.net/)
+1. Download the latest stable version from [webtrees.net](https://webtrees.net/)
 2. Unzip the files and upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
    [http://www.yourserver.com/webtrees](http://www.yourserver.com/webtrees)) into
@@ -129,8 +131,8 @@ that those supplied meet or exceed the minimum system requirements.
 
 That's it!
 
-However, before you can use **webtrees**, you need one (or possibly more) GEDCOM
-(family tree) files. If you have been doing your research using a desktop program
+However, before you can use **webtrees**, you need at least one GEDCOM
+(family tree) file. If you have been doing your research using a desktop program
 such as Family Tree Maker, you can use it's “save as GEDCOM” function to create
 a GEDCOM file. If you are starting from scratch, then **webtrees** can create a
 GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
@@ -160,10 +162,15 @@ forum.
 Upgrading **webtrees** is quick and easy. It is strongly recommended that you
 upgrade your installation whenever a new version is made available. Even minor
 **webtrees** version updates usually contain a significant number of bug fixes
-as well as interface improvements and program enhancements. The Administration
-page of your **webtrees** installation will display a notification whenever a
-new version is available.
+as well as interface improvements and program enhancements.
 
+**Automatic upgrade**
+**webtrees** has an automatic upgrade facility. An administrator upon logging in
+will receive notification when a new version is available and an option to start
+the automatic upgrade. If for some reason the automatic upgrade should fail
+then a manual upgrade should be performed.
+
+**Manual upgrade**
 1. Now would be a good time to make a [backup](#backup).
 2. Download the latest version of **webtrees** available from
    [webtrees.net](https://webtrees.net/)
@@ -174,6 +181,7 @@ new version is available.
    “site unavailable - come back later” message.
 4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
 5. Delete the file **data/offline.txt**
+
 
 ### Building and developing
 
