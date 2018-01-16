@@ -381,7 +381,7 @@ function addRowToTable(num, pid, nam, head)
 function deleteChecked()
 {
 	if (hasLoaded) {
-		var checkedObjArray = new Array();
+		var checkedObjArray = [];
 		var cCount = 0;
 
 		var tbl = document.getElementById(TABLE_NAME);
