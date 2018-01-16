@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 2.3.1 (2018-01-15)
+ - Update PHPdoc to use int/bool instead of integer/boolean
+
 ## 2.3.0 (2017-05-07)
  - Test against PHP 7.1
  - Use civil instead of astronomical calendar for Arabic (jon48)

@@ -22,6 +22,14 @@ use InvalidArgumentException;
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class ArabicCalendar implements CalendarInterface {
+	/**
+	 * Determine the number of days in a specified month, allowing for leap years, etc.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 *
+	 * @return int
+	 */
 	public function daysInMonth($year, $month) {
 		if ($month === 2) {
 			return 28;
@@ -32,26 +40,60 @@ class ArabicCalendar implements CalendarInterface {
 		}
 	}
 
+	/**
+	 * Determine the number of days in a week.
+	 *
+	 * @return int
+	 */
 	public function daysInWeek() {
 		return 7;
 	}
 
+	/**
+	 * The escape sequence used to indicate this calendar in GEDCOM files.
+	 *
+	 * @return string
+	 */
 	public function gedcomCalendarEscape() {
 		return '@#DHIJRI@';
 	}
 
+	/**
+	 * Determine whether or not a given year is a leap-year.
+	 *
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
 	public function isLeapYear($year) {
 		return ((11 * $year + 14) % 30) < 11;
 	}
 
+	/**
+	 * What is the highest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
+	/**
+	 * What is the lowest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdStart() {
 		return 1948440; // 1 Muharram 1 AH, 16 July 622 AD
 	}
 
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param int $julian_day
+	 *
+	 * @return int[]
+	 */
 	public function jdToYmd($julian_day) {
 		$year  = (int) ((30 * ($julian_day - 1948440) + 10646) / 10631);
 		$month = (int) ((11 * ($julian_day - $year * 354 - (int) ((3 + 11 * $year) / 30) - 1948086) + 330) / 325);
@@ -60,34 +102,29 @@ class ArabicCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
+	/**
+	 * Determine the number of months in a year.
+	 *
+	 * @return int
+	 */
 	public function monthsInYear() {
 		return 12;
 	}
 
+	/**
+	 * Convert a year/month/day to a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
 	public function ymdToJd($year, $month, $day) {
 		if ($month < 1 || $month > $this->monthsInYear()) {
 			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
 		}
 
 		return $day + 29 * ($month - 1) + (int) ((6 * $month - 1) / 11) + $year * 354 + (int) ((3 + 11 * $year) / 30) + 1948085;
-	}
-
-	/**
-	 * The algorithm used above require a mod() function that always returns a positive
-	 * modules.  The native PHP function returns a negative modulus for a negative dividend.
-	 *
-	 * @param number $dividend
-	 * @param number $divisor
-	 * @return number
-	 */
-	public static function mod($dividend, $divisor) {
-		if ($divisor === 0) return 0;
-
-		$modulus = $dividend % $divisor;
-		if($modulus < 0) {
-			$modulus += $divisor;
-		}
-
-		return $modulus;
 	}
 }

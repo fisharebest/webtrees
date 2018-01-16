@@ -120,7 +120,7 @@ class JewishCalendar implements CalendarInterface {
 		"\xd7\xa6" => "\xd7\xa5",
 	);
 
-	/** @var integer[] These months have fixed lengths.  Others are variable. */
+	/** @var int[] These months have fixed lengths.  Others are variable. */
 	private static $FIXED_MONTH_LENGTHS = array(
 		1 => 30, 4 => 29, 5 => 30, 7 => 29, 8 => 30, 9 => 29, 10 => 30, 11 => 29, 12 => 30, 13 => 29
 	);
@@ -131,7 +131,7 @@ class JewishCalendar implements CalendarInterface {
 	 * Second index is year type (-1, 0, 1)
 	 * Third index is month number (1 ... 13)
 	 *
-	 * @var integer[][][]
+	 * @var int[][][]
 	 */
 	private static $CUMULATIVE_DAYS = array(
 		0 => array( // Non-leap years
@@ -158,7 +158,7 @@ class JewishCalendar implements CalendarInterface {
 		),
 	);
 
-	/** @var integer[] Rosh Hashanah cannot fall on a Sunday, Wednesday or Friday.  Move the year start accordingly. */
+	/** @var int[] Rosh Hashanah cannot fall on a Sunday, Wednesday or Friday.  Move the year start accordingly. */
 	private static $ROSH_HASHANAH = array(347998, 347997, 347997, 347998, 347997, 347998, 347997);
 
 	/** @var mixed[] special behaviour for this calendar */
@@ -166,11 +166,21 @@ class JewishCalendar implements CalendarInterface {
 		self::EMULATE_BUG_54254 => false,
 	);
 
-	/** @param mixed[] $options Some calendars have options that change their behaviour. */
+	/**
+	 * @param mixed[] $options Some calendars have options that change their behaviour.
+	 */
 	public function __construct($options = array()) {
 		$this->options = array_merge($this->options, $options);
 	}
 
+	/**
+	 * Determine the number of days in a specified month, allowing for leap years, etc.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 *
+	 * @return int
+	 */
 	public function daysInMonth($year, $month) {
 		if ($year < 1) {
 			throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
@@ -187,22 +197,49 @@ class JewishCalendar implements CalendarInterface {
 		}
 	}
 
+	/**
+	 * Determine the number of days in a week.
+	 *
+	 * @return int
+	 */
 	public function daysInWeek() {
 		return 7;
 	}
 
+	/**
+	 * The escape sequence used to indicate this calendar in GEDCOM files.
+	 *
+	 * @return string
+	 */
 	public function gedcomCalendarEscape() {
 		return '@#DHEBREW@';
 	}
 
+	/**
+	 * Determine whether or not a given year is a leap-year.
+	 *
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
 	public function isLeapYear($year) {
 		return (7 * $year + 1) % 19 < 7;
 	}
 
+	/**
+	 * What is the highest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
+	/**
+	 * What is the lowest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdStart() {
 		return 347998; // 1 Tishri 0001 AM
 	}
@@ -210,9 +247,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year.
 	 *
-	 * @param integer $julian_day
+	 * @param int $julian_day
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function jdToY($julian_day) {
 		// Estimate the year, and underestimate it, it will be refined after
@@ -226,6 +263,13 @@ class JewishCalendar implements CalendarInterface {
 		return $year;
 	}
 
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param int $julian_day
+	 *
+	 * @return int[]
+	 */
 	public function jdToYmd($julian_day) {
 		// Find the year, by adding one month at a time to use up the remaining days.
 		$year  = $this->jdToY($julian_day);
@@ -243,6 +287,11 @@ class JewishCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
+	/**
+	 * Determine the number of months in a year.
+	 *
+	 * @return int
+	 */
 	public function monthsInYear() {
 		return 13;
 	}
@@ -250,9 +299,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Calculate the Julian Day number of the first day in a year.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function yToJd($year) {
 		$div19 = (int) (($year - 1) / 19);
@@ -276,6 +325,15 @@ class JewishCalendar implements CalendarInterface {
 		return $julian_day + self::$ROSH_HASHANAH[$julian_day % 7];
 	}
 
+	/**
+	 * Convert a year/month/day to a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
 	public function ymdToJd($year, $month, $day) {
 		return
 			$this->yToJd($year) +
@@ -286,9 +344,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Determine whether a year is normal, defective or complete.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer defective (-1), normal (0) or complete (1)
+	 * @return int defective (-1), normal (0) or complete (1)
 	 */
 	private function yearType($year) {
 		$year_length = $this->yToJd($year + 1) - $this->yToJd($year);
@@ -305,9 +363,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Calculate the number of days in Heshvan.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private function daysInMonthHeshvan($year) {
 		if ($this->yearType($year) === self::COMPLETE_YEAR) {
@@ -320,9 +378,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Calculate the number of days in Kislev.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private function daysInMonthKislev($year) {
 		if ($this->yearType($year) === self::DEFECTIVE_YEAR) {
@@ -335,9 +393,9 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Calculate the number of days in Adar I.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private function daysInMonthAdarI($year) {
 		if ($this->isLeapYear($year)) {
@@ -352,7 +410,7 @@ class JewishCalendar implements CalendarInterface {
 	 *
 	 * @link https://bugs.php.net/bug.php?id=54254
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
 	 * @return string[]
 	 */
@@ -379,8 +437,8 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * The Hebrew name of a given month.
 	 *
-	 * @param integer $year
-	 * @param integer $month
+	 * @param int $year
+	 * @param int $month
 	 *
 	 * @return string
 	 */
@@ -416,7 +474,7 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Convert a number into a string, in the style of roman numerals
 	 *
-	 * @param integer  $number
+	 * @param int      $number
 	 * @param string[] $numerals
 	 *
 	 * @return string
@@ -440,8 +498,8 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Convert a number into Hebrew numerals using UTF8.
 	 *
-	 * @param integer $number
-	 * @param boolean $show_thousands
+	 * @param int  $number
+	 * @param bool $show_thousands
 	 *
 	 * @return string
 	 */
@@ -482,8 +540,8 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Convert a number into Hebrew numerals using ISO8859-8.
 	 *
-	 * @param integer $number
-	 * @param boolean $gereshayim Add punctuation to numeric values
+	 * @param int  $number
+	 * @param bool $gereshayim Add punctuation to numeric values
 	 *
 	 * @return string
 	 */
@@ -501,10 +559,10 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Format a year using Hebrew numerals.
 	 *
-	 * @param integer $year
-	 * @param boolean $alafim_geresh Add a geresh  (׳) after thousands
-	 * @param boolean $alafim        Add the word for thousands after the thousands
-	 * @param boolean $gereshayim    Add geresh (׳) and gershayim (״) punctuation to numeric values
+	 * @param int  $year
+	 * @param bool $alafim_geresh Add a geresh  (׳) after thousands
+	 * @param bool $alafim        Add the word for thousands after the thousands
+	 * @param bool $gereshayim    Add geresh (׳) and gershayim (״) punctuation to numeric values
 	 *
 	 * @return string
 	 */
@@ -527,10 +585,10 @@ class JewishCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian Day number into a Hebrew date.
 	 *
-	 * @param integer $julian_day
-	 * @param boolean $alafim_garesh
-	 * @param boolean $alafim
-	 * @param boolean $gereshayim
+	 * @param int  $julian_day
+	 * @param bool $alafim_garesh
+	 * @param bool $alafim
+	 * @param bool $gereshayim
 	 *
 	 * @return string
 	 */

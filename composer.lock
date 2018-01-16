@@ -56,16 +56,16 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "133ddcfbf06373e8655b4af3b1ee3333e6f77b1d"
+                "reference": "33c4b539f0974d3573e8a8e43274a57ecbaededc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/133ddcfbf06373e8655b4af3b1ee3333e6f77b1d",
-                "reference": "133ddcfbf06373e8655b4af3b1ee3333e6f77b1d",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/33c4b539f0974d3573e8a8e43274a57ecbaededc",
+                "reference": "33c4b539f0974d3573e8a8e43274a57ecbaededc",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,7 @@
                 "persian",
                 "shamsi"
             ],
-            "time": "2017-05-07T21:22:43+00:00"
+            "time": "2018-01-16T09:25:12+00:00"
         },
         {
             "name": "fisharebest/localization",
