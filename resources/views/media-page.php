@@ -27,7 +27,7 @@
 		<?= $media->getFullName() ?>
 	</h2>
 	<?php if ($media->canEdit() && !$media->isPendingDeletion()): ?>
-		<?= view('media-record-page-menu', ['record' => $media]) ?>
+		<?= view('media-page-menu', ['record' => $media]) ?>
 	<?php endif ?>
 </div>
 
