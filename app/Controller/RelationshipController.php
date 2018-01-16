@@ -73,7 +73,7 @@ class RelationshipController extends PageController {
 			// Insert the paths into the queue, with an exclusion list.
 			$queue[] = ['path' => $path, 'exclude' => []];
 			// While there are un-extended paths
-			while (list(, $next) = each($queue)) {
+			for ($next = current($queue); $next !== false; next($queue)) {
 				// For each family on the path
 				for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
 					$exclude = $next['exclude'];
