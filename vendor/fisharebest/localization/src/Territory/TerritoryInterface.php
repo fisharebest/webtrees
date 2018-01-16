@@ -21,7 +21,7 @@ interface TerritoryInterface {
 	 * 1 = Monday
 	 * etc.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function firstDay();
 
@@ -45,7 +45,7 @@ interface TerritoryInterface {
 	 * 1 = Monday
 	 * etc.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function weekendStart();
 
@@ -55,7 +55,7 @@ interface TerritoryInterface {
 	 * 1 = Monday
 	 * etc.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function weekendEnd();
 }

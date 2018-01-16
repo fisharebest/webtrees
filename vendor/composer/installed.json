@@ -63,62 +63,6 @@
         ]
     },
     {
-        "name": "fisharebest/localization",
-        "version": "1.10.0",
-        "version_normalized": "1.10.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/localization.git",
-            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
-            "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2016-06-02T13:56:47+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\Localization\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
-        "homepage": "https://github.com/fisharebest/localization",
-        "keywords": [
-            "cldr",
-            "gettext",
-            "i18n",
-            "l10n",
-            "language",
-            "locale",
-            "localization",
-            "script",
-            "translate",
-            "translation"
-        ]
-    },
-    {
         "name": "fisharebest/algorithm",
         "version": "1.4.0",
         "version_normalized": "1.4.0.0",
@@ -1288,6 +1232,62 @@
             "commonmark",
             "markdown",
             "table"
+        ]
+    },
+    {
+        "name": "fisharebest/localization",
+        "version": "1.10.3",
+        "version_normalized": "1.10.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/localization.git",
+            "reference": "64bb6ed8bc7b18920f8e449704f7cb00f90f7603"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/64bb6ed8bc7b18920f8e449704f7cb00f90f7603",
+            "reference": "64bb6ed8bc7b18920f8e449704f7cb00f90f7603",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2018-01-16T07:36:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Localization\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
+        "homepage": "https://github.com/fisharebest/localization",
+        "keywords": [
+            "cldr",
+            "gettext",
+            "i18n",
+            "l10n",
+            "language",
+            "locale",
+            "localization",
+            "script",
+            "translate",
+            "translation"
         ]
     }
 ]

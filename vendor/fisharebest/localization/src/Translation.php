@@ -45,7 +45,10 @@ class Translation {
 			break;
 
 		case 'php':
-			$this->translations = include $filename;
+			$translations = include $filename;
+			if (is_array($translations)) {
+			    $this->translations = $translations;
+            }
 			break;
 		}
 	}
@@ -63,11 +66,11 @@ class Translation {
 	 * Read specific binary data (32 bit words) from a .MO file
 	 *
 	 * @param resource $fp
-	 * @param integer  $offset
-	 * @param integer  $count
+	 * @param int      $offset
+	 * @param int      $count
 	 * @param string   $pack   "N" for big-endian, "V" for little-endian
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	private function readMoWords($fp, $offset, $count, $pack) {
 		fseek($fp, $offset);

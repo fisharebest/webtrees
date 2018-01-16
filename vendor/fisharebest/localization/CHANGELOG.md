@@ -1,6 +1,16 @@
 CHANGE LOG
 ==========
 
+## 1.10.3 (2018-01-15)
+ - Use short type names in PHPdoc
+
+## 1.10.2 (2017-10-30)
+ - Fix wrong collation for Czech.
+
+## 1.10.1 (2017-10-24)
+ - Add PHP7.1 and PHP7.2 to the test matrix.
+ - Fix invalid PHP translation file causes unhandled error.
+
 ## 1.10.0 (2016-06-02)
  - Add Anglo-Saxon (ang).
 

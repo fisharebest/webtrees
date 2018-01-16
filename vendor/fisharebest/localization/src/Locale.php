@@ -17,7 +17,7 @@ class Locale {
 	 * @param LocaleInterface $x
 	 * @param LocaleInterface $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compare(LocaleInterface $x, LocaleInterface $y) {
 		return strcmp($x->endonymSortable(), $y->endonymSortable());

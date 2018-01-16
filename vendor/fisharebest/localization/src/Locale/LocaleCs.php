@@ -11,7 +11,7 @@ use Fisharebest\Localization\Language\LanguageCs;
  */
 class LocaleCs extends AbstractLocale implements LocaleInterface {
 	public function collation() {
-		return 'croatian_ci';
+		return 'czech_ci';
 	}
 
 	public function endonym() {
