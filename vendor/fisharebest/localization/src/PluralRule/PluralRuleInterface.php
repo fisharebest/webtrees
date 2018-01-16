@@ -14,16 +14,16 @@ interface PluralRuleInterface {
 	/**
 	 * How many plural forms exist.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function plurals();
 
 	/**
 	 * Which plural form to use for a specified number.
 	 *
-	 * @param integer $number
+	 * @param int $number
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function plural($number);
 }

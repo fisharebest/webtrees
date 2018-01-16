@@ -86,7 +86,7 @@ abstract class AbstractLocale {
 	/**
 	 * When writing large numbers place a separator after this number of digits.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function digitsFirstGroup() {
 		return 3;
@@ -95,7 +95,7 @@ abstract class AbstractLocale {
 	/**
 	 * When writing large numbers place a separator after this number of digits.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function digitsGroup() {
 		return 3;
@@ -161,7 +161,7 @@ abstract class AbstractLocale {
 	/**
 	 * When using grouping digits in numbers, keep this many of digits together.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function minimumGroupingDigits() {
 		return 1;
@@ -170,7 +170,7 @@ abstract class AbstractLocale {
 	/**
 	 * Convert (Hindu-Arabic) digits into a localized form
 	 *
-	 * @param string|float|integer $number The number to be localized
+	 * @param string|float|int $number The number to be localized
 	 *
 	 * @return string
 	 */
@@ -222,7 +222,7 @@ abstract class AbstractLocale {
 	/**
 	 * Convert (Hindu-Arabic) digits into a localized form
 	 *
-	 * @param string|float|integer $number The number to be localized
+	 * @param string|float|int $number The number to be localized
 	 *
 	 * @return string
 	 */

@@ -117,23 +117,23 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.10.0",
+            "version": "1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a"
+                "reference": "64bb6ed8bc7b18920f8e449704f7cb00f90f7603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
-                "reference": "0c58a02ae03650dd6a406a42d46e0dedc39a3c8a",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/64bb6ed8bc7b18920f8e449704f7cb00f90f7603",
+                "reference": "64bb6ed8bc7b18920f8e449704f7cb00f90f7603",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*",
+                "phpunit/phpunit": "4.*|5.*",
                 "satooshi/php-coveralls": "*"
             },
             "type": "library",
@@ -167,7 +167,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2016-06-02T13:56:47+00:00"
+            "time": "2018-01-16T07:36:49+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
