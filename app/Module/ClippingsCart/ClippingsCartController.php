@@ -243,10 +243,12 @@ class ClippingsCartController {
 							break;
 						case 'OBJE':
 							// Add the file to the archive
-							if (file_exists($object->getServerFilename())) {
-								$fp = fopen($object->getServerFilename(), 'r');
-								$zip_filesystem->writeStream($path . $object->getFilename(), $fp);
-								fclose($fp);
+							foreach ($object->mediaFiles() as $media_file) {
+								if (file_exists($media_file->getServerFilename())) {
+									$fp = fopen($media_file->getServerFilename(), 'r');
+									$zip_filesystem->writeStream($path . $media_file->filename(), $fp);
+									fclose($fp);
+								}
 							}
 							$filetext .= $record . "\n";
 							break;
