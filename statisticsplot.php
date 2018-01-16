@@ -549,12 +549,12 @@ function fill_y_data($z, $x, $val) {
 /**
  * Plot the data.
  *
- * @param string      $chart_title
- * @param integer[][] $xdata
- * @param string      $xtitle
- * @param integer[][] $ydata
- * @param string      $ytitle
- * @param string[]    $legend
+ * @param string   $chart_title
+ * @param int[][]  $xdata
+ * @param string   $xtitle
+ * @param int[][]  $ydata
+ * @param string   $ytitle
+ * @param string[] $legend
  */
 function my_plot($chart_title, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	global $percentage, $male_female, $ymax, $scalefactor, $datastring, $imgurl;
