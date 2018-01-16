@@ -196,7 +196,9 @@ class Shim {
 		try {
 			return $calendar->daysInMonth($year, $month);
 		} catch (InvalidArgumentException $ex) {
-			return trigger_error('invalid date.', E_USER_WARNING);
+			$error_msg = PHP_VERSION_ID < 70200 ? 'invalid date.' : 'invalid date';
+
+			return trigger_error($error_msg, E_USER_WARNING);
 		}
 	}
 
@@ -214,7 +216,9 @@ class Shim {
 		if ($month == 13 && $year == 14 && self::shouldEmulateBug67976()) {
 			return -2380948;
 		} elseif ($year > 14) {
-			return trigger_error('invalid date.', E_USER_WARNING);
+			$error_msg = PHP_VERSION_ID < 70200 ? 'invalid date.' : 'invalid date';
+
+			return trigger_error($error_msg, E_USER_WARNING);
 		} else {
 			return self::calDaysInMonthCalendar(self::$french_calendar, $year, $month);
 		}
@@ -648,7 +652,9 @@ class Shim {
 	public static function jdToJewish($julian_day, $hebrew, $fl) {
 		if ($hebrew) {
 			if ($julian_day < 347998 || $julian_day > 4000075) {
-				return trigger_error('Year out of range (0-9999).', E_USER_WARNING);
+				$error_msg = PHP_VERSION_ID < 70200 ? 'Year out of range (0-9999).' : 'Year out of range (0-9999)';
+
+				return trigger_error($error_msg, E_USER_WARNING);
 			}
 
 			return self::$jewish_calendar->jdToHebrew(

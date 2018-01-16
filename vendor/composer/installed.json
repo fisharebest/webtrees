@@ -1229,17 +1229,17 @@
     },
     {
         "name": "fisharebest/ext-calendar",
-        "version": "2.3.1",
-        "version_normalized": "2.3.1.0",
+        "version": "2.4.0",
+        "version_normalized": "2.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "33c4b539f0974d3573e8a8e43274a57ecbaededc"
+            "reference": "d30c9822ccd207671cd0864158ef6d63e71a8523"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/33c4b539f0974d3573e8a8e43274a57ecbaededc",
-            "reference": "33c4b539f0974d3573e8a8e43274a57ecbaededc",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/d30c9822ccd207671cd0864158ef6d63e71a8523",
+            "reference": "d30c9822ccd207671cd0864158ef6d63e71a8523",
             "shasum": ""
         },
         "require": {
@@ -1249,7 +1249,7 @@
             "phpunit/phpunit": "<6",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2018-01-16T09:25:12+00:00",
+        "time": "2018-01-16T11:36:25+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

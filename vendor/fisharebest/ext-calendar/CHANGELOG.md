@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 2.4.0 (2018-01-15)
+ - PHP error messages changed slightly in 7.2.0
+
 ## 2.3.1 (2018-01-15)
  - Update PHPdoc to use int/bool instead of integer/boolean
 
