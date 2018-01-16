@@ -166,7 +166,7 @@ class Tree {
 	/**
 	 * The individual-fact-level privacy for this tree.
 	 *
-	 * @return integer[][]
+	 * @return int[][]
 	 */
 	public function getIndividualFactPrivacy() {
 		return $this->individual_fact_privacy;
