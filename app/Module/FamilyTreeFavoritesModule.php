@@ -169,7 +169,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
-							$content .= $record->formatList('span');
+							$content .= $record->formatList();
 							$content .= '<br>' . $favorite['note'];
 							$content .= '</div>';
 						}
