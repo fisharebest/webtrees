@@ -131,6 +131,7 @@
 </p>
 
 <form name="config_setup" method="post" action="<?= e($url_save) ?>" onsubmit="select_options();" >
+	<?= csrf_field() ?>
 	<table border="1" id="change_blocks">
 		<thead>
 			<tr>
