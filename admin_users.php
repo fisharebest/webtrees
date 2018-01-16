@@ -179,8 +179,8 @@ case 'load_json':
 			if ($key > 0) {
 				$sql_select .= ',';
 			}
-			// Datatables numbers columns 0, 1, 2
-			// MySQL numbers columns 1, 2, 3
+			// Columns in datatables are numbered from zero.
+			// Columns in MySQL are numbered starting with one.
 			switch ($value['dir']) {
 				case 'asc':
 					$sql_select .= (1 + $value['column']) . " ASC ";

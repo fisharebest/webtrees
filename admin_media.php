@@ -145,8 +145,8 @@ switch ($action) {
 						if ($key > 0) {
 							$SELECT1 .= ',';
 						}
-						// Datatables numbers columns 0, 1, 2
-						// MySQL numbers columns 1, 2, 3
+						// Columns in datatables are numbered from zero.
+						// Columns in MySQL are numbered starting with one.
 						switch ($value['dir']) {
 							case 'asc':
 								$SELECT1 .= ":col_" . $key . " ASC";
@@ -214,8 +214,8 @@ switch ($action) {
 				if ($key > 0) {
 					$SELECT1 .= ',';
 				}
-				// Datatables numbers columns 0, 1, 2
-				// MySQL numbers columns 1, 2, 3
+				// Columns in datatables are numbered from zero.
+				// Columns in MySQL are numbered starting with one.
 				switch ($value['dir']) {
 					case 'asc':
 						$SELECT1 .= ":col_" . $key . " ASC";
