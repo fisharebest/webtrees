@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-08-12 15:30+0300\n"
-"Last-Translator: gr translat <dixex@amail.club>\n"
+"PO-Revision-Date: 2018-01-16 13:48+0000\n"
+"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -97,7 +97,7 @@ msgstr "%1$s δεν υπάρχει. Εννοείτε %2$s;"
 #: admin_trees_check.php:198
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s δεν έχει σύνδεσμο σύνδεσης με %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:313 admin_site_upgrade.php:363
@@ -19705,13 +19705,13 @@ msgstr "γεννήθηκε"
 
 #: app/Theme/WebtreesTheme.php:90
 msgid "webtrees"
-msgstr ""
+msgstr "WebTrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "To webtrees δεν μπορεί να συνδεθεί με την βάση δεδομένων του PhpGedView : %s."
 
 #: message.php:27 message.php:264
 msgid "webtrees message"
@@ -19720,7 +19720,7 @@ msgstr "Μήνυμα webtrees"
 #: resources/views/setup/step-3-database-connection.php:16
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "Το webtrees χρειάζεται μια MySQL βάση δεδομένων, με έκδοση %s ή νεώτερη."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:311
@@ -19742,7 +19742,7 @@ msgstr ""
 
 #: admin_trees_manage.php:745
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "Η βάση δεδομένων του webtrees πρέπει να είναι στον ίδιο server με την βάση δεδομένων του PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3076
 msgid "west"
@@ -19756,7 +19756,7 @@ msgstr "Σύζυγος"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:90
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:132
 msgid "years"
@@ -19782,7 +19782,7 @@ msgstr "Ναι"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.php:22
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "δεν μπορείτε να συνδεθείτε με την βάση δεδομένων χρησιμοποιώντας άλλες εφαρμογές, όπως το phpmyadmin"
 
 #: app/Functions/Functions.php:734
 msgid "younger brother"
