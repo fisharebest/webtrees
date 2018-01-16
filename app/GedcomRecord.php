@@ -762,26 +762,14 @@ class GedcomRecord {
 
 	/**
 	 * Format this object for display in a list
-	 * If $find is set, then we are displaying items from a selection list.
-	 * $name allows us to use something other than the record name.
-	 *
-	 * @param string $tag
-	 * @param bool   $find
-	 * @param null   $name
 	 *
 	 * @return string
 	 */
-	public function formatList($tag = 'li', $find = false, $name = null) {
-		if (is_null($name)) {
-			$name = $this->getFullName();
-		}
-		$html = '<a href="' . e($this->url()) . '"';
-		if ($find) {
-			$html .= ' onclick="pasteid(\'' . $this->getXref() . '\', \'' . htmlentities($name) . '\');"';
-		}
-		$html .= ' class="list_item"><b>' . $name . '</b>';
+	public function formatList() {
+		$html = '<a href="' . e($this->url()) . '" class="list_item">';
+		$html .= '<b>' . $this->getFullName() . '</b>';
 		$html .= $this->formatListDetails();
-		$html = '<' . $tag . '>' . $html . '</a></' . $tag . '>';
+		$html .= '</a>';
 
 		return $html;
 	}

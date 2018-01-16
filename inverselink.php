@@ -89,7 +89,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
 			} else {
 				$record = Individual::getInstance($linktoid, $WT_TREE);
-				echo $record->formatList('span', false, $record->getFullName());
+				echo $record->formatList();
 			}
 		}
 
@@ -100,7 +100,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '"> ';
 			} else {
 				$record = Family::getInstance($linktoid, $WT_TREE);
-				echo $record->formatList('span', false, $record->getFullName());
+				echo $record->formatList();
 			}
 		}
 
@@ -111,7 +111,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '"> ';
 			} else {
 				$record = Source::getInstance($linktoid, $WT_TREE);
-				echo $record->formatList('span', false, $record->getFullName());
+				echo $record->formatList();
 			}
 		}
 		if ($linkto === 'repository') {
@@ -121,7 +121,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Repository::getInstance($linktoid, $WT_TREE);
-				echo $record->formatList('span', false, $record->getFullName());
+				echo $record->formatList();
 			}
 		}
 
@@ -132,7 +132,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Note::getInstance($linktoid, $WT_TREE);
-				echo $record->formatList('span', false, $record->getFullName());
+				echo $record->formatList();
 			}
 		}
 
