@@ -83,15 +83,16 @@ To install **webtrees**, you need:
 * PHP 7.0 or later.  Servers with PHP 5.3 - 5.6 should use **webtrees** 1.7.
   Servers with PHP 5.2 should use **webtrees** 1.4.
    * PHP should be configured with the following libraries:
-     PDO and pdo_mysql for MySQL. These are enabled by default on most hosts.
-     See [http://php.net/pdo](http://php.net/pdo),
-     php\_gd(2) for images and PHP_XML for reports.
+     * PDO and pdo_mysql to enable access to MySQL. These are enabled by default
+     on most hosts. See [http://php.net/pdo](http://php.net/pdo),
+     * php\_gd(2) for images
+     * PHP_XML for reports.
    * PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
       * Small systems (500 individuals): 16–32 MB, 10–20 seconds
       * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
       * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
-* MySQL/MariaDB 5.0.13 or later. Note that **webtrees** can share a single database
+* MySQL or MariaDB. Note that **webtrees** can share a single database
   with other applications, by choosing a unique table prefix during setup.
   If the number of databases is not restricted, you can set up a database purely
   for use by **webtrees** and create a separate user and password for only
@@ -102,8 +103,8 @@ To install **webtrees**, you need:
   
   **webtrees** supports the use of most current browsers such as Edge, Firefox,
   Chrome, and Safari. We will do our best to support the current versions of others
-  such as Opera and Internet Explorer; note that versions of Internet Explorer prior
-  to IE11 do not work with **webtrees**. We strongly recommend anyone using an
+  such as Opera and Internet Explorer, however note that versions of Internet Explorer
+  prior to IE11 do not work with **webtrees**. We strongly recommend anyone using an
   obsolete browser to upgrade as soon as possible. We are also aware that Internet
   Explorer provides poor RTL language support generally, so cannot recommend it for
   sites requiring RTL languages.
@@ -111,10 +112,9 @@ To install **webtrees**, you need:
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
   or Internet Explorer support this.
-* HTML Frames. Note that **webtrees** uses cookies to track login sessions. Sites
-  that make **webtrees** pages available inside an HTML Frame will encounter
-  problems with login for versions of Internet Explorer prior to version 10.
-  Internet Explorer users should review the ``Privacy settings Tools`` / ``Internet Options`` for more details.
+* HTML Frames. Note that **webtrees** uses cookies to track login sessions.
+  Internet Explorer users should review
+  ``Settings`` / ``Internet Options`` / ``Privacy`` / ``Advanced`` for more details.
 
 
 ### Installation
@@ -124,10 +124,9 @@ Once the system requirements are met, perform the following steps
 1. Download the latest stable version from [webtrees.net](https://webtrees.net/)
 2. Unzip the files and upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
-   [http://www.yourserver.com/webtrees](http://www.yourserver.com/webtrees)) into
-   the address bar.
+   ``http://www.yourserver.com/webtrees`` into the address bar.
 4. The **webtrees** setup wizard will start automatically. Simply follow the steps,
-   answering each question as you proceed. (See '''Step Six''' procedure below.)
+   answering each question as you proceed.
 
 That's it!
 
@@ -137,18 +136,15 @@ such as Family Tree Maker, you can use it's “save as GEDCOM” function to cre
 a GEDCOM file. If you are starting from scratch, then **webtrees** can create a
 GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
 
-So, after installation, you'll be directed to the GEDCOM (family tree)
-administration page, where you'll need to select one of the following options:
-
-* On successful completion of all steps you will be taken to the
+On successful installation you will be taken to the
  ``Control panel`` -> ``Manage family trees``  page where you can:
-   * UPLOAD a GEDCOM file from your local machine
-   * ADD a GEDCOM file from your server, (if your GEDCOM file is too large to upload,
-     you can copy it to the webtrees/data folder, and load it from there)
-   * CREATE a new, empty GEDCOM file
-   * TRANSFER your existing PhpGedView data straight into **webtrees**, using the
-     PhpGedView-to-**webtrees** wizard described in section 9 below:
-     [Converting from phpgedview](#converting-from-phpgedview)
+ * UPLOAD a GEDCOM file from your local machine
+ * ADD a GEDCOM file from your server, (if your GEDCOM file is too large to upload,
+   you can copy it to the webtrees/data folder, and load it from there)
+ * CREATE a new, empty GEDCOM file
+ * TRANSFER your existing PhpGedView data straight into **webtrees**, using the
+   PhpGedView-to-**webtrees** wizard described below:
+   [Converting from phpgedview](#converting-from-phpgedview)
 
 There are *lots* of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
@@ -164,23 +160,25 @@ upgrade your installation whenever a new version is made available. Even minor
 **webtrees** version updates usually contain a significant number of bug fixes
 as well as interface improvements and program enhancements.
 
-**Automatic upgrade**
-**webtrees** has an automatic upgrade facility. An administrator upon logging in
+* **Automatic upgrade**
+
+  **webtrees** has an automatic upgrade facility. An administrator upon logging in
 will receive notification when a new version is available and an option to start
 the automatic upgrade. If for some reason the automatic upgrade should fail
 then a manual upgrade should be performed.
 
-**Manual upgrade**
-1. Now would be a good time to make a [backup](#backup).
-2. Download the latest version of **webtrees** available from
+* **Manual upgrade**
+
+  1. Now would be a good time to make a [backup](#backup).
+  2. Download the latest version of **webtrees** available from
    [webtrees.net](https://webtrees.net/)
-3. While you are in the middle of uploading the new files,
+  3. While you are in the middle of uploading the new files,
    a visitor to your site would encounter a mixture of new and old files.  This
    could cause unpredictable behaviour or errors.  To prevent this, create the
    file **data/offline.txt**.  While this file exists, visitors will see a
    “site unavailable - come back later” message.
-4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
-5. Delete the file **data/offline.txt**
+  4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
+  5. Delete the file **data/offline.txt**
 
 
 ### Building and developing
@@ -241,8 +239,8 @@ If you have any problems or questions, help is available on the
 
 When you ADD or IMPORT a family tree (GEDCOM) file in **webtrees** the
 data from the file is transferred to the database tables. The file itself 
-remains in the **webtrees/data** folder you first copied it to, and is no longer
-used or required by **webtrees**. Any subsequent editing of the **webtrees** data
+remains in the **webtrees/data** folder and is no longer used or required
+by **webtrees**. Any subsequent editing of the **webtrees** data
 will not change this file
 
 When or if you change your genealogy data outside of **webtrees**, it is not
@@ -306,7 +304,7 @@ The most likely result is an “access denied” message like this:
 
     Forbidden
 
-    You don't have permission to access /data/xxxx.ged on this server.
+    You don't have permission to access /data/config.ini.php on this server.
 
 This indicates that the protection built into **webtrees** is working, and no
 further action is required.
