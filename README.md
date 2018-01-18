@@ -16,8 +16,10 @@ Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.
 * [License](#license)
 * [Introduction](#introduction)
 * [System requirements](#system-requirements)
+* [Internet browser compatibility](#internet-browser-compatibility)
 * [Installation](#installation)
 * [Upgrading](#upgrading)
+* [Building and developing](#building-and-developing)
 * [Gedcom (family tree) files](#gedcom-family-tree-files)
 * [Security](#security)
 * [Backup](#backup)
@@ -99,7 +101,7 @@ To install **webtrees**, you need:
   your genealogy.
 
 
-  ### Internet browser compatibility.
+  ### Internet browser compatibility
   
   **webtrees** supports the use of most current browsers such as Edge, Firefox,
   Chrome, and Safari. We will do our best to support the current versions of others
@@ -181,25 +183,6 @@ then a manual upgrade should be performed.
   5. Delete the file **data/offline.txt**
 
 
-### Building and developing
-
-If you want to build webtrees from source, or modify the code, you'll need to install
-a couple of tools first.
-
-You will need [composer](https://getcomposer.org/) to install the PHP dependencies.
-Then run this command::
-
-* php composer.phar install
-
-You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
-Then run the commands:
-
-* npm install
-* npm run prod
-
-You will need to re-run the second of these any time you modify the file `webtrees.js`.
-
-
 #### Note for Macintosh users
 
 Step 4 assumes you are using a copy tool that **merges** directories rather than
@@ -234,6 +217,23 @@ cache can be cleared simply by going to ``Control Panel`` -> ``Family Trees`` ->
 If you have any problems or questions, help is available on the
 [webtrees forum](https://www.webtrees.net/index.php/en/forum).
 
+### Building and developing
+
+If you want to build webtrees from source, or modify the code, you'll need to install
+a couple of tools first.
+
+You will need [composer](https://getcomposer.org/) to install the PHP dependencies.
+Then run this command::
+
+* php composer.phar install
+
+You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
+Then run the commands:
+
+* npm install
+* npm run prod
+
+You will need to re-run the second of these any time you modify the file `webtrees.js`.
 
 ### Gedcom (family tree) files
 
@@ -262,7 +262,7 @@ over. Follow these steps to update a GEDCOM that has already been imported:
   It will start again when you return to the Family Tree management page.
 
 
-#### FORMAT
+#### Gedcom file Formats
 
 Every Family History program has its own method of creating GEDCOM files, and
 differing output format options to select from. **webtrees'** import routines
@@ -296,8 +296,8 @@ and have made every attempt to ensure your data is safe.
 
 The area most at risk of intrusion would be the **/data** folder that contains your
 config.ini.php file, and various temporary files. If you are concerned there
-may be a risk there is a very simple test you can do: try to fetch **config.ini.php**
-by typing **http://_url to your site_/data/config.ini.php** in your web
+may be a risk there is a very simple test you can do: try to fetch the file 
+config.ini.php by typing **``url_to_your_server/data/config.ini.php``** in your web
 browser.
 
 The most likely result is an “access denied” message like this:
@@ -349,8 +349,7 @@ If your website is configured with optional https support, **webtrees** can be
 configured to switch to https at login. To enable https at login, set the Sign-in
 URL setting on the ``Control panel`` -> ``Website`` ->
 ``Sign-in and registration`` to your https login URL, which is often in the form
-[https://example.com/admin.php](https://example.com/admin.php)
-(substitute your domain for example.com).
+**``url_to_your_server/data/admin.php``**
 
 **Warning:** Misconfiguration can disable your login links. If this occurs,
 access the login by typing the correct URL directly into your browser's address input.
