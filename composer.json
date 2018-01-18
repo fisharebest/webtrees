@@ -2,7 +2,7 @@
 	"name": "fisharebest/webtrees",
 	"description": "webtrees online genealogy",
 	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-3.0",
+	"license": "GPL-3.0-or-later",
 	"autoload": {
 		"psr-4": {
 			"Fisharebest\\Webtrees\\": "app/"
