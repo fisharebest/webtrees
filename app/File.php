@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Throwable;
+
 /**
  * File manipulation utilities.
  */
@@ -37,7 +39,7 @@ class File {
 			closedir($dir);
 			try {
 				rmdir($path);
-			} catch (\ErrorException $ex) {
+			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
 				// Continue, in case there are other files/folders that we can delete.
@@ -45,7 +47,7 @@ class File {
 		} else {
 			try {
 				unlink($path);
-			} catch (\ErrorException $ex) {
+			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
 				// Continue, in case there are other files/folders that we can delete.
@@ -73,7 +75,7 @@ class File {
 				mkdir($path);
 
 				return true;
-			} catch (\ErrorException $ex) {
+			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
 				return false;

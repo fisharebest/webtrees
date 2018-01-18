@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,11 +38,6 @@ define('WT_ROOT', '');
 
 // PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
-
-// Convert PHP errors into exceptions
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-});
 
 define('WT_LOCALE', I18N::init('en-US'));
 

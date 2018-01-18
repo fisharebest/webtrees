@@ -15,8 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use League\Glide\Urls\UrlBuilderFactory;
+use Throwable;
 
 /**
  * A GEDCOM media file.  A media object can contain many media files,
@@ -265,7 +265,7 @@ class MediaFile {
 	private function fileSizeBytes(): int {
 		try {
 			return filesize($this->folder() . $this->multimedia_file_refn);
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
 			return 0;
@@ -320,7 +320,7 @@ class MediaFile {
 					$imgsize['WxH'] = /* I18N: image dimensions, width × height */
 						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
 				}
-			} catch (ErrorException $ex) {
+			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
 				// Not an image, or not a valid image?

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DirectoryIterator;
-use ErrorException;
 use FilesystemIterator;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
@@ -1875,7 +1874,7 @@ class AdminController extends BaseController {
 			if (getimagesize($original) === false) {
 				return 0;
 			}
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			// If the first file is not an image then the thumbnail .
 			// Response with an exact mismatch, so the GUI will recommend importing it.
 			return 0;

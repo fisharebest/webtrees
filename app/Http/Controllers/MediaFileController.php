@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use ErrorException;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
@@ -34,6 +33,7 @@ use League\Glide\Signatures\SignatureFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 /**
  * Controller for the media page and displaying images.
@@ -103,7 +103,7 @@ class MediaFileController extends BaseController {
 			return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
 		} catch (NotReadableException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -136,7 +136,7 @@ class MediaFileController extends BaseController {
 			return $this->httpStatusAsImage(Response::HTTP_FORBIDDEN);
 		} catch (FileNotFoundException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
-		} catch (ErrorException $ex) {
+		} catch (Throwable $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
 		}
 	}

@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
+use Throwable;
 
 /**
  * Upgrade the database schema from version 22 to version 23.
@@ -79,7 +80,7 @@ class Migration22 implements MigrationInterface {
 				) {
 					try {
 						rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
-					} catch (\ErrorException $ex) {
+					} catch (Throwable $ex) {
 						DebugBar::addThrowable($ex);
 
 						// Cannot move the folder?
