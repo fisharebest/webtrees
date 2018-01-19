@@ -231,7 +231,7 @@ You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dep
 Then run the commands:
 
 * npm install
-* npm run prod
+* npm run production
 
 You will need to re-run the second of these any time you modify the file `webtrees.js`.
 
