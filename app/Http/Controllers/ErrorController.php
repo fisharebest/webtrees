@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Tree;
+use HttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 /**
  * Controller for error handling.
@@ -65,5 +67,21 @@ class ErrorController extends BaseController {
 		}
 
 		return $this->viewResponse('errors/no-tree-access', []);
+	}
+
+	/**
+	 * Convert an exception into an error message
+	 *
+	 * @param Throwable $throwable
+	 *
+	 * @return Response
+	 */
+	public function errorResponse(Throwable $throwable): Response {
+		if ($throwable instanceof HttpException) {
+			return $this->viewResponse('alerts/danger', ['alert' => $throwable->getMessage()], $throwable->getStatusCode());
+		} else {
+			var_dump($throwable);exit;
+			return $this->viewResponse('alerts/danger', ['alert' => $throwable->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+		}
 	}
 }

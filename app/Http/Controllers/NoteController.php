@@ -41,22 +41,18 @@ class NoteController extends BaseController {
 		$xref   = $request->get('xref');
 		$record = Note::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->notFound();
-		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
-		} else {
-			return $this->viewResponse('note-page', [
-				'note' => $record,
-				'families'      => $record->linkedFamilies('NOTE'),
-				'individuals'   => $record->linkedIndividuals('NOTE'),
-				'notes'         => [],
-				'media_objects' => $record->linkedMedia('NOTE'),
-				'sources'       => $record->linkedSources('NOTE'),
-				'facts'         => $this->facts($record),
-				'text'          => Filter::formatText($record->getNote(), $tree),
-			]);
-		}
+		$this->checkNoteAccess($record, false);
+
+		return $this->viewResponse('note-page', [
+			'note' => $record,
+			'families'      => $record->linkedFamilies('NOTE'),
+			'individuals'   => $record->linkedIndividuals('NOTE'),
+			'notes'         => [],
+			'media_objects' => $record->linkedMedia('NOTE'),
+			'sources'       => $record->linkedSources('NOTE'),
+			'facts'         => $this->facts($record),
+			'text'          => Filter::formatText($record->getNote(), $tree),
+		]);
 	}
 
 	/**
@@ -73,23 +69,5 @@ class NoteController extends BaseController {
 		}
 
 		return $facts;
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This note does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This note does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 }

@@ -37,24 +37,20 @@ class MediaController extends BaseController {
 	 */
 	public function show(Request $request): Response {
 		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = Media::getInstance($xref, $tree);
+		$tree  = $request->attributes->get('tree');
+		$xref  = $request->get('xref');
+		$media = Media::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->notFound();
-		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
-		} else {
-			return $this->viewResponse('media-page', [
-				'media'         => $record,
-				'families'      => $record->linkedFamilies('OBJE'),
-				'individuals'   => $record->linkedIndividuals('OBJE'),
-				'notes'         => $record->linkedNotes('OBJE'),
-				'sources'       => $record->linkedSources('OBJE'),
-				'facts'         => $this->facts($record),
-			]);
-		}
+		$this->checkMediaAccess($media);
+
+		return $this->viewResponse('media-page', [
+			'media'         => $media,
+			'families'      => $media->linkedFamilies('OBJE'),
+			'individuals'   => $media->linkedIndividuals('OBJE'),
+			'notes'         => $media->linkedNotes('OBJE'),
+			'sources'       => $media->linkedSources('OBJE'),
+			'facts'         => $this->facts($media),
+		]);
 	}
 
 	/**
@@ -70,23 +66,5 @@ class MediaController extends BaseController {
 		});
 
 		return $facts;
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 }

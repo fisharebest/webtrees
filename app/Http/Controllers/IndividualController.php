@@ -50,67 +50,64 @@ class IndividualController extends BaseController {
 	 */
 	public function show(Request $request): Response {
 		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = Individual::getInstance($xref, $tree);
+		$tree       = $request->attributes->get('tree');
+		$xref       = $request->get('xref');
+		$individual = Individual::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->individualNotFound();
-		} elseif (!$record->canShow()) {
-			return $this->individualNotAllowed();
+		$this->checkIndividualAccess($individual, false);
+
+		// What is (was) the age of the individual
+		$bdate = $individual->getBirthDate();
+		$ddate = $individual->getDeathDate();
+		if ($bdate->isOK() && !$individual->isDead()) {
+			// If living display age
+			$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y'))))) . ')';
+		} elseif ($bdate->isOK() && $ddate->isOK()) {
+			// If dead, show age at death
+			$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate)) . ')';
 		} else {
-			$individual_media = [];
-			// What is (was) the age of the individual
-			$bdate = $record->getBirthDate();
-			$ddate = $record->getDeathDate();
-			if ($bdate->isOK() && !$record->isDead()) {
-				// If living display age
-				$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y'))))) . ')';
-			} elseif ($bdate->isOK() && $ddate->isOK()) {
-				// If dead, show age at death
-				$age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate)) . ')';
-			} else {
-				$age = '';
-			}
-
-			foreach ($record->getFacts() as $fact) {
-				$media_object = $fact->getTarget();
-				if ($media_object instanceof Media) {
-					$individual_media[] = $media_object->firstImageFile();
-				}
-			}
-			$individual_media = array_filter($individual_media);
-
-			$name_records = [];
-			foreach ($record->getFacts('NAME') as $n => $name_fact) {
-				$name_records[] = $this->formatNameRecord($n, $name_fact);
-			}
-
-			$sex_records = [];
-			foreach ($record->getFacts('SEX') as $n => $sex_fact) {
-				$sex_records[] = $this->formatSexRecord($sex_fact);
-			}
-
-			// If this individual is linked to a user account, show the link
-			$user_link = '';
-			if (Auth::isAdmin()) {
-				$user = User::findByIndividual($record);
-				if ($user) {
-					$user_link = ' —  <a href="admin_users.php?filter=' . e($user->getUserName()) . '">' . e($user->getUserName()) . '</a>';
-				};
-			}
-
-			return $this->viewResponse('individual-page', [
-				'age'              => $age,
-				'individual'       => $record,
-				'individual_media' => $individual_media,
-				'name_records'     => $name_records,
-				'sex_records'      => $sex_records,
-				'sidebars'         => $this->getSidebars($record),
-				'tabs'             => $this->getTabs($record),
-				'user_link'        => $user_link,
-			]);
+			$age = '';
 		}
+
+		// What images are linked to this individual
+		$individual_media = [];
+		foreach ($individual->getFacts() as $fact) {
+			$media_object = $fact->getTarget();
+			if ($media_object instanceof Media) {
+				$individual_media[] = $media_object->firstImageFile();
+			}
+		}
+		$individual_media = array_filter($individual_media);
+
+		$name_records = [];
+		foreach ($individual->getFacts('NAME') as $n => $name_fact) {
+			$name_records[] = $this->formatNameRecord($n, $name_fact);
+		}
+
+		$sex_records = [];
+		foreach ($individual->getFacts('SEX') as $n => $sex_fact) {
+			$sex_records[] = $this->formatSexRecord($sex_fact);
+		}
+
+		// If this individual is linked to a user account, show the link
+		$user_link = '';
+		if (Auth::isAdmin()) {
+			$user = User::findByIndividual($individual);
+			if ($user) {
+				$user_link = ' —  <a href="admin_users.php?filter=' . e($user->getUserName()) . '">' . e($user->getUserName()) . '</a>';
+			};
+		}
+
+		return $this->viewResponse('individual-page', [
+			'age'              => $age,
+			'individual'       => $individual,
+			'individual_media' => $individual_media,
+			'name_records'     => $name_records,
+			'sex_records'      => $sex_records,
+			'sidebars'         => $this->getSidebars($individual),
+			'tabs'             => $this->getTabs($individual),
+			'user_link'        => $user_link,
+		]);
 	}
 
 	/**

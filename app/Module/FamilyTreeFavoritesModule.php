@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use PDO;
 use Ramsey\Uuid\Uuid;
 use stdClass;
@@ -124,7 +125,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				break;
 		}
 
-		$userfavs = $this->getFavorites($WT_TREE, Auth::id());
+		$userfavs = $this->getFavorites($WT_TREE, Auth::user());
 
 		$content = '';
 		if ($userfavs) {
@@ -317,11 +318,11 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 * Get favorites for a user or family tree
 	 *
 	 * @param Tree $tree
-	 * @param int  $user_id
+	 * @param User $user
 	 *
 	 * @return stdClass[]
 	 */
-	public static function getFavorites(Tree $tree, $user_id) {
+	public static function getFavorites(Tree $tree, User $user) {
 		$favorites =
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .

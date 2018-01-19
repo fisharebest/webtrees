@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Controller for edit forms and responses.
@@ -39,11 +41,7 @@ class EditFamilyController extends BaseController {
 		$xref   = $request->get('xref');
 		$family = Family::getInstance($xref, $tree);
 
-		if ($family === null) {
-			return $this->familyNotFound();
-		} elseif (!$family->canEdit()) {
-			return $this->familyNotAllowed();
-		}
+		$this->checkFamilyAccess($family, true);
 
 		$title = $family->getFullName() . ' — ' . I18N::translate('Re-order children');
 
@@ -65,11 +63,7 @@ class EditFamilyController extends BaseController {
 		$order  = (array) $request->get('order', []);
 		$family = Family::getInstance($xref, $tree);
 
-		if ($family === null) {
-			return $this->familyNotFound();
-		} elseif (!$family->canEdit()) {
-			return $this->familyNotAllowed();
-		}
+		$this->checkFamilyAccess($family, true);
 
 		$dummy_facts = ['0 @' . $family->getXref() . '@ FAM'];
 		$sort_facts  = [];

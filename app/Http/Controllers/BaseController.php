@@ -17,10 +17,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
 use Symfony\Component\HttpFoundation\Response;
-use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Common functions for all controllers
@@ -32,57 +41,122 @@ class BaseController extends LegacyBaseController {
 	protected $layout = 'layouts/default';
 
 	/**
-	 * @return Response
+	 * @param Family|null $family
+	 * @param bool|null   $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function familyNotAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
+	protected function checkFamilyAccess(Family $family = null, $edit = false): void {
+		if ($family === null) {
+			throw new NotFoundHttpException(I18N::translate('This family does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This family does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**
-	 * @return Response
+	 * @param Individual|null $individual
+	 * @param bool|null       $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function familyNotFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This family does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
+	protected function checkIndividualAccess(Individual $individual = null, $edit = false): void {
+		if ($individual === null) {
+			throw new NotFoundHttpException(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**
-	 * @return Response
+	 * @param Media|null $media
+	 * @param bool|null  $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function individualNotAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
+	protected function checkMediaAccess(Media $media = null, $edit = false): void {
+		if ($media === null) {
+			throw new NotFoundHttpException(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**
-	 * @return Response
+	 * @param Note|null $note
+	 * @param bool|null  $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function individualNotFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This individual does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
+	protected function checkNoteAccess(Note $note = null, $edit = false): void {
+		if ($note === null) {
+			throw new NotFoundHttpException(I18N::translate('This note does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$note->canShow() || $edit && (!$note->canEdit() || $note->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This note does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**
-	 * @return Response
+	 * @param GedcomRecord|null $record
+	 * @param bool|null         $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function recordNotAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This record does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
+	protected function checkRecordAccess(GedcomRecord $record = null, $edit = false): void {
+		if ($record === null) {
+			throw new NotFoundHttpException(I18N::translate('This record does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$record->canShow() || $edit && (!$record->canEdit() || $record->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This record does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**
-	 * @return Response
+	 * @param Repository|null $repository
+	 * @param bool|null       $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
 	 */
-	protected function recordNotFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This record does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
+	protected function checkRepositoryAccess(Repository $repository = null, $edit = false): void {
+		if ($repository === null) {
+			throw new NotFoundHttpException(I18N::translate('This repository does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$repository->canShow() || $edit && (!$repository->canEdit() || $repository->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This repository does not exist or you do not have permission to view it.'));
+		}
+	}
+
+	/**
+	 * @param Source|null $source
+	 * @param bool|null   $edit
+	 *
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
+	 */
+	protected function checkSourceAccess(Source $source = null, $edit = false): void {
+		if ($source === null) {
+			throw new NotFoundHttpException(I18N::translate('This source does not exist or you do not have permission to view it.'));
+		}
+
+		if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
+			throw new AccessDeniedHttpException(I18N::translate('This source does not exist or you do not have permission to view it.'));
+		}
 	}
 
 	/**

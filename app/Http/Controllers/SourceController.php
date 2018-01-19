@@ -41,20 +41,16 @@ class SourceController extends BaseController {
 		$xref   = $request->get('xref');
 		$record = Source::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->notFound();
-		} elseif (!$record->canShow()) {
-			return $this->notAllowed();
-		} else {
-			return $this->viewResponse('source-page', [
-				'source'        => $record,
-				'families'      => $record->linkedFamilies('SOUR'),
-				'individuals'   => $record->linkedIndividuals('SOUR'),
-				'notes'         => $record->linkedNotes('SOUR'),
-				'media_objects' => $record->linkedMedia('SOUR'),
-				'facts'         => $this->facts($record),
-			]);
-		}
+		$this->checkSourceAccess($record, false);
+
+		return $this->viewResponse('source-page', [
+			'source'        => $record,
+			'families'      => $record->linkedFamilies('SOUR'),
+			'individuals'   => $record->linkedIndividuals('SOUR'),
+			'notes'         => $record->linkedNotes('SOUR'),
+			'media_objects' => $record->linkedMedia('SOUR'),
+			'facts'         => $this->facts($record),
+		]);
 	}
 
 	/**
@@ -91,23 +87,5 @@ class SourceController extends BaseController {
 		);
 
 		return $facts;
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notAllowed(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
-		], Response::HTTP_FORBIDDEN);
-	}
-
-	/**
-	 * @return Response
-	 */
-	private function notFound(): Response {
-		return $this->viewResponse('alerts/danger', [
-			'alert' => I18N::translate('This repository does not exist or you do not have permission to view it.'),
-		], Response::HTTP_NOT_FOUND);
 	}
 }

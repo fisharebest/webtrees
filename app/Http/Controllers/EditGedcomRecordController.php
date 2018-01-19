@@ -38,11 +38,7 @@ class EditGedcomRecordController extends BaseController {
 		$xref   = $request->get('xref');
 		$record = GedcomRecord::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->recordNotFound();
-		} elseif (!$record->canEdit()) {
-			return $this->recordNotAllowed();
-		}
+		$this->checkRecordAccess($record, true);
 
 		return $this->viewResponse('', [
 			'record' => $record,
@@ -60,11 +56,7 @@ class EditGedcomRecordController extends BaseController {
 		$xref   = $request->get('xref');
 		$record = GedcomRecord::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->recordNotFound();
-		} elseif (!$record->canEdit()) {
-			return $this->recordNotAllowed();
-		}
+		$this->checkRecordAccess($record, true);
 
 		return new RedirectResponse($record->url());
 	}

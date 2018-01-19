@@ -39,11 +39,7 @@ class EditIndividualController extends BaseController {
 		$xref       = $request->get('xref');
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order media');
 
@@ -65,11 +61,7 @@ class EditIndividualController extends BaseController {
 		$order      = (array) $request->get('order', []);
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
 		$sort_facts  = [];
@@ -108,11 +100,7 @@ class EditIndividualController extends BaseController {
 		$xref       = $request->get('xref');
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order names');
 
@@ -134,11 +122,7 @@ class EditIndividualController extends BaseController {
 		$order      = (array) $request->get('order', []);
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
 		$sort_facts  = [];
@@ -177,11 +161,7 @@ class EditIndividualController extends BaseController {
 		$xref       = $request->get('xref');
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$title = $individual->getFullName() . ' — ' . I18N::translate('Re-order families');
 
@@ -203,11 +183,7 @@ class EditIndividualController extends BaseController {
 		$order      = (array) $request->get('order', []);
 		$individual = Individual::getInstance($xref, $tree);
 
-		if ($individual === null) {
-			return $this->individualNotFound();
-		} elseif (!$individual->canEdit()) {
-			return $this->individualNotAllowed();
-		}
+		$this->checkIndividualAccess($individual, true);
 
 		$dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
 		$sort_facts  = [];

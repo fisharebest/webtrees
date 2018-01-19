@@ -17,10 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\Controllers\BaseController;
+use Fisharebest\Webtrees\Http\Controllers\ErrorController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;
 
 // Bootstrap the application
@@ -72,23 +75,29 @@ DebugBar::stopMeasure('create controller');
 // generate the response - which includes (and stops) the timer
 DebugBar::startMeasure('controller_action', $controller_action);
 
-if ($method === 'POST' && Database::isConnected()) {
-	Database::beginTransaction();
-	try {
-		/** @var Response $response */
-		$response = $controller->$action($request);
+try {
+	// Wrap POST requests in a database transaction.
+	if ($method === 'POST') {
+		Database::beginTransaction();
+		$response = call_user_func([$controller, $action], $request);
 		Database::commit();
-	} catch (Throwable $ex) {
-		DebugBar::addThrowable($ex);
-
-		Database::rollBack();
-
-		// Yikes!  Something went badly wrong.
-		throw $ex;
+	} else {
+		$response = call_user_func([$controller, $action], $request);
 	}
-} else {
-	/** @var Response $response */
-	$response = $controller->$action($request);
+} catch (HttpExceptionInterface $ex) {
+	if ($request->isXmlHttpRequest()) {
+		$response = new Response($ex->getMessage(), $ex->getStatusCode());
+	} else {
+		$controller = new ErrorController;
+		$response   = $controller->errorResponse($ex);
+	}
+} catch (Throwable $ex) {
+	if ($method === 'POST') {
+		Database::rollBack();
+	}
+	DebugBar::addThrowable($ex);
+	$controller = new ErrorController;
+	$response   = $controller->errorResponse($ex);
 }
 
 // Send response

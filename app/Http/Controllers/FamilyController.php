@@ -17,11 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,17 +37,13 @@ class FamilyController extends BaseController {
 		/** @var Tree $tree */
 		$tree   = $request->attributes->get('tree');
 		$xref   = $request->get('xref');
-		$record = Family::getInstance($xref, $tree);
+		$family = Family::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->familyNotFound();
-		} elseif (!$record->canShow()) {
-			return $this->familyNotAllowed();
-		} else {
-			return $this->viewResponse('family-page', [
-				'record' => $record,
-				'facts'  => $record->getFacts(null, true),
-			]);
-		}
+		$this->checkFamilyAccess($famil, false);
+
+		return $this->viewResponse('family-page', [
+			'record' => $family,
+			'facts'  => $family->getFacts(null, true),
+		]);
 	}
 }

@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use PDO;
 
 /**
@@ -57,18 +58,18 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	 * Get the favorites for a user (for the current family tree)
 	 *
 	 * @param Tree $tree
-	 * @param int  $user_id
+	 * @param User $user
 	 *
 	 * @return string[][]
 	 */
-	public static function getFavorites(Tree $tree, $user_id) {
+	public static function getFavorites(Tree $tree, User $user) {
 		$favorites =
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
 				" FROM `##favorite` WHERE user_id = :user_id AND gedcom_id = :tree_id")
 			->execute([
 				'tree_id' => $tree->getTreeId(),
-				'user_id' => $user_id,
+				'user_id' => $user->getUserId(),
 			])
 			->fetchAll();
 

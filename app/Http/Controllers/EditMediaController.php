@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Exception;
 use FilesystemIterator;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
@@ -58,10 +59,12 @@ class EditMediaController extends BaseController {
 		$xref  = $request->get('xref');
 		$media = Media::getInstance($xref, $tree);
 
-		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+		try {
+			$this->checkMediaAccess($media);
+		} catch (Exception $ex) {
 			return new Response(view('modals/error', [
 				'title' => I18N::translate('Add a media file'),
-				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
+				'error' => $ex->getMessage(),
 			]));
 		}
 
@@ -133,10 +136,12 @@ class EditMediaController extends BaseController {
 		$fact_id  = $request->get('fact_id', '');
 		$media    = Media::getInstance($xref, $tree);
 
-		if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
+		try {
+			$this->checkMediaAccess($media);
+		} catch (Exception $ex) {
 			return new Response(view('modals/error', [
 				'title' => I18N::translate('Edit a media file'),
-				'error' => I18N::translate('This media object does not exist or you do not have permission to view it.'),
+				'error' => $ex->getMessage(),
 			]), Response::HTTP_FORBIDDEN);
 		}
 

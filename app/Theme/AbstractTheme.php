@@ -1398,13 +1398,13 @@ abstract class AbstractTheme {
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::id()),
-				UserFavoritesModule::getFavorites($this->tree, Auth::id())
+				FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::user()),
+				UserFavoritesModule::getFavorites($this->tree, Auth::user())
 			);
 		} elseif ($show_user_favorites) {
-			$favorites = UserFavoritesModule::getFavorites($this->tree, Auth::id());
+			$favorites = UserFavoritesModule::getFavorites($this->tree, Auth::user());
 		} elseif ($show_tree_favorites) {
-			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::id());
+			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::user());
 		} else {
 			$favorites = [];
 		}

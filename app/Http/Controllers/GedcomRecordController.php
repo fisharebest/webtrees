@@ -49,11 +49,9 @@ class GedcomRecordController extends BaseController {
 		$xref   = $request->get('xref');
 		$record = GedcomRecord::getInstance($xref, $tree);
 
-		if ($record === null) {
-			return $this->recordNotFound();
-		} elseif (!$record->canShow()) {
-			return $this->recordNotAllowed();
-		} elseif ($this->hasCustomPage($record)) {
+		$this->checkRecordAccess($record);
+
+		if ($this->hasCustomPage($record)) {
 			return new RedirectResponse($record->url());
 		} else {
 			return $this->viewResponse('gedcom-record-page', [
