@@ -17,7 +17,7 @@
 
 	<?php if ($ctype == 'user' || $is_manager): ?>
 		<p class="small">
-			<a href="index.php?ctype=<?= $ctype ?>&amp;ged=<?= $tree->getNameHtml() ?>&amp;action=deletefav&amp;favorite_id=<?= $favorite->favorite_id ?>" onclick="return confirm(\'<? I18N::translate('Are you sure you want to remove this item from your list of favorites?') ?>\');">
+			<a href="index.php?ctype=<?= $ctype ?>&amp;ged=<?= $tree->getNameHtml() ?>&amp;action=deletefav&amp;favorite_id=<?= $favorite->favorite_id ?>" onclick="return confirm(\'<?= I18N::translate('Are you sure you want to remove this item from your list of favorites?') ?>\');">
 				<?= I18N::translate('Remove') ?>
 			</a>
 		</p>
