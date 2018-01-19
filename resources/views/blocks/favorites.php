@@ -8,8 +8,8 @@
 			<a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
 		<?php elseif ($favorite->record instanceof Individual): ?>
 			<?= Theme::theme()->individualBoxLarge($favorite->record) ?>
-		<?php else: ?>
-				<?= $favorite->record->formatList() ?>
+		<?php elseif ($favorite->record !== null) : ?>
+			<?= $favorite->record->formatList() ?>
 		<?php endif ?>
 
 		<?= e((string) $favorite->note) ?>
