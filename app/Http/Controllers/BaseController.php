@@ -99,6 +99,7 @@ class BaseController extends LegacyBaseController {
 
 		$html = view($this->layout, [
 			'content'                 => view($name, $data),
+			'theme'                   => Theme::theme(),
 			'tree'                    => $this->tree(),
 			'theme_head'              => $theme->head($this),
 			'theme_body_header'       => $theme->bodyHeader(),

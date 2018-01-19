@@ -23,8 +23,10 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 use PDO;
 use Ramsey\Uuid\Uuid;
+use stdClass;
 
 /**
  * Class FamilyTreeFavoritesModule
@@ -90,12 +92,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				}
 				break;
 			case 'addfav':
-				$gid      = Filter::get('gid', WT_REGEX_XREF);
+				$gid      = Filter::get('gid', WT_REGEX_XREF, '');
 				$favnote  = Filter::get('favnote');
 				$url      = Filter::getUrl('url');
 				$favtitle = Filter::get('favtitle');
 
-				if ($gid) {
+				if ($gid !== '') {
 					$record = GedcomRecord::getInstance($gid, $WT_TREE);
 					if ($record && $record->canShow()) {
 						self::addFavorite([
@@ -108,7 +110,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 							'title'     => $favtitle,
 						]);
 					}
-				} elseif ($url) {
+				} elseif ($url !== null) {
 					self::addFavorite([
 						'user_id'   => $ctype === 'user' ? Auth::id() : null,
 						'gedcom_id' => $WT_TREE->getTreeId(),
@@ -122,31 +124,25 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				break;
 		}
 
-		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : $WT_TREE->getTreeId());
-		if (!is_array($userfavs)) {
-			$userfavs = [];
-		}
+		$userfavs = $this->getFavorites($WT_TREE, Auth::id());
 
 		$content = '';
 		if ($userfavs) {
-			foreach ($userfavs as $key => $favorite) {
-				if (isset($favorite['id'])) {
-					$key = $favorite['id'];
-				}
-				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;action=deletefav&amp;favorite_id=' . $key . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '\');">' . I18N::translate('Remove') . '</a> ';
-				if ($favorite['type'] == 'URL') {
-					$content .= '<div id="boxurl' . $key . '.0" class="person_box">';
+			foreach ($userfavs as $favorite) {
+				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '\');">' . I18N::translate('Remove') . '</a> ';
+				if ($favorite->favorite_type === 'URL') {
+					$content .= '<div id="boxurl' . e($favorite->favorite_id) . '.0" class="person_box">';
 					if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 						$content .= $removeFavourite;
 					}
-					$content .= '<a href="' . $favorite['url'] . '"><b>' . $favorite['title'] . '</b></a>';
-					$content .= '<br>' . $favorite['note'];
+					$content .= '<a href="' . e($favorite->url) . '"><b>' . e($favorite->title) . '</b></a>';
+					$content .= '<br>' . e((string) $favorite->note);
 					$content .= '</div>';
 				} else {
-					$record = GedcomRecord::getInstance($favorite['gid'], $WT_TREE);
+					$record = GedcomRecord::getInstance($favorite->xref, $WT_TREE);
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
-							$content .= '<div id="box' . $favorite['gid'] . '.0" class="person_box action_header';
+							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box action_header';
 							switch ($record->getSex()) {
 								case 'M':
 									break;
@@ -162,15 +158,15 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 								$content .= $removeFavourite;
 							}
 							$content .= Theme::theme()->individualBoxLarge($record);
-							$content .= $favorite['note'];
+							$content .= e((string) $favorite->note);
 							$content .= '</div>';
 						} else {
-							$content .= '<div id="box' . $favorite['gid'] . '.0" class="person_box">';
+							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box">';
 							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
 							$content .= $record->formatList();
-							$content .= '<br>' . $favorite['note'];
+							$content .= '<br>' . e((string) $favorite->note);
 							$content .= '</div>';
 						}
 					}
@@ -202,6 +198,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('add') . '">';
 			$content .= '</form></div>';
 		}
+
+		$content = view('blocks/favorites', [
+			'ctype'      => $ctype,
+			'favorites'  => $userfavs,
+			'is_manager' => Auth::isManager($WT_TREE),
+			'tree'       => $WT_TREE,
+		]);
 
 		if ($template) {
 			return view('blocks/template', [
@@ -313,16 +316,25 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/**
 	 * Get favorites for a user or family tree
 	 *
-	 * @param int $gedcom_id
+	 * @param Tree $tree
+	 * @param int  $user_id
 	 *
-	 * @return string[][]
+	 * @return stdClass[]
 	 */
-	public static function getFavorites($gedcom_id) {
-		return
+	public static function getFavorites(Tree $tree, $user_id) {
+		$favorites =
 			Database::prepare(
-				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .
-				" FROM `##favorite` WHERE gedcom_id=? AND user_id IS NULL")
-			->execute([$gedcom_id])
-			->fetchAll(PDO::FETCH_ASSOC);
+				"SELECT SQL_CACHE favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
+				" FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id IS NULL")
+			->execute([
+				'tree_id' => $tree->getTreeId(),
+			])
+			->fetchAll();
+
+		foreach ($favorites as $favorite) {
+			$favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
+		}
+
+		return $favorites;
 	}
 }

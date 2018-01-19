@@ -6439,7 +6439,7 @@ class Stats {
 	 */
 	public function totalGedcomFavorites() {
 		if (Module::getModuleByName('gedcom_favorites')) {
-			return count(FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId()));
+			return count(FamilyTreeFavoritesModule::getFavorites($this->tree));
 		} else {
 			return 0;
 		}
@@ -6452,7 +6452,7 @@ class Stats {
 	 */
 	public function totalUserFavorites() {
 		if (Module::getModuleByName('user_favorites')) {
-			return count(UserFavoritesModule::getFavorites(Auth::id()));
+			return count(UserFavoritesModule::getFavorites($this->tree, Auth::id()));
 		} else {
 			return 0;
 		}

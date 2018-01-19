@@ -1398,13 +1398,13 @@ abstract class AbstractTheme {
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId()),
-				UserFavoritesModule::getFavorites(Auth::id())
+				FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::id()),
+				UserFavoritesModule::getFavorites($this->tree, Auth::id())
 			);
 		} elseif ($show_user_favorites) {
-			$favorites = UserFavoritesModule::getFavorites(Auth::id());
+			$favorites = UserFavoritesModule::getFavorites($this->tree, Auth::id());
 		} elseif ($show_tree_favorites) {
-			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId());
+			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::id());
 		} else {
 			$favorites = [];
 		}
@@ -1412,16 +1412,12 @@ abstract class AbstractTheme {
 		$submenus = [];
 		$records  = [];
 		foreach ($favorites as $favorite) {
-			switch ($favorite['type']) {
+			switch ($favorite->favorite_type) {
 				case 'URL':
-					$submenus[] = new Menu($favorite['title'], $favorite['url']);
+					$submenus[] = new Menu(e($favorite->title), e($favorite->url));
 					break;
-				case 'INDI':
-				case 'FAM':
-				case 'SOUR':
-				case 'OBJE':
-				case 'NOTE':
-					$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
+				default:
+					$record = GedcomRecord::getInstance($favorite->xref, $this->tree);
 					if ($record && $record->canShowName()) {
 						$submenus[] = new Menu($record->getFullName(), e($record->url()));
 						$records[]  = $record;
