@@ -81,7 +81,7 @@ class Family extends GedcomRecord {
 		}
 	}
 
-		/**
+	/**
 	 * Generate a private version of this record
 	 *
 	 * @param int $access_level
