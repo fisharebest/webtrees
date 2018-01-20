@@ -591,7 +591,7 @@ class FunctionsEdit {
 		// field value
 		$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) !== '@#');
 		if ($islink) {
-			$value = trim(substr($tag, strlen($fact) + 3), ' @\r');
+			$value = trim($value, '@');
 		} else {
 			$value = (string) substr($tag, strlen($fact) + 3);
 		}
@@ -781,7 +781,7 @@ class FunctionsEdit {
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlRepository(Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				self::formControlRepository(Repository::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'RESN') {
 			$html .= '<div class="input-group">';
