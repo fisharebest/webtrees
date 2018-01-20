@@ -518,7 +518,7 @@ class FunctionsEdit {
 		// field value
 		$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) !== '@#');
 		if ($islink) {
-			$value = trim(substr($tag, strlen($fact) + 3), ' @\r');
+			$value = trim(substr($tag, strlen($fact) + 3), '@');
 		} else {
 			$value = (string) substr($tag, strlen($fact) + 3);
 		}
