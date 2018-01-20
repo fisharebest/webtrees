@@ -120,58 +120,12 @@ define('WT_BASE_URL', $base_uri);
 // What is the name of the requested script.
 define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
 
-// Convert PHP errors into exceptions
+// Convert PHP warnings/notices into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	// Ignore errors thar are silenced with '@'
 	if (error_reporting() & $errno) {
 		throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 	}
-});
-
-set_exception_handler(function (Throwable $ex) {
-	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
-
-	foreach ($ex->getTrace() as $level => $frame) {
-		$frame += ['args' => [], 'file' => 'unknown', 'line' => 'unknown'];
-		array_walk($frame['args'], function (&$arg) {
-			switch (gettype($arg)) {
-				case 'boolean':
-				case 'integer':
-				case 'double':
-				case 'null':
-					$arg = var_export($arg, true);
-					break;
-				case 'string':
-					if (mb_strlen($arg) > 30) {
-						$arg = mb_substr($arg, 0, 30) . '…';
-					}
-					$arg = var_export($arg, true);
-					break;
-				case 'object':
-					$reflection = new \ReflectionClass($arg);
-					if (is_object($arg) && method_exists($arg, '__toString')) {
-						$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
-					} else {
-						$arg = '[' . $reflection->getShortName() . ']';
-					}
-					break;
-				default:
-					$arg = '[' . gettype($arg) . ']';
-					break;
-			}
-		});
-		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
-		$message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
-		if ($level > 0) {
-			$message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
-		} else {
-			$message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
-		}
-	}
-
-	echo $message;
-
-	Log::addErrorLog($message);
 });
 
 DebugBar::startMeasure('init database');
