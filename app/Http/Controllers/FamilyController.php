@@ -39,7 +39,7 @@ class FamilyController extends BaseController {
 		$xref   = $request->get('xref');
 		$family = Family::getInstance($xref, $tree);
 
-		$this->checkFamilyAccess($famil, false);
+		$this->checkFamilyAccess($family, false);
 
 		return $this->viewResponse('family-page', [
 			'record' => $family,
