@@ -141,9 +141,9 @@ class DebugBar {
 	/**
 	 * Start a timer.
 	 *
-	 * @param      $name
-	 * @param null $label
-	 * @param null $collector
+	 * @param string      $name
+	 * @param string|null $label
+	 * @param string|null $collector
 	 */
 	public static function startMeasure($name, $label = null, $collector = null) {
 		if (self::$debugbar !== null) {
@@ -154,8 +154,8 @@ class DebugBar {
 	/**
 	 * Stop a timer.
 	 *
-	 * @param       $name
-	 * @param array $params
+	 * @param string $name
+	 * @param array  $params
 	 */
 	public static function stopMeasure($name, $params = []) {
 		if (self::$debugbar !== null) {
@@ -166,9 +166,9 @@ class DebugBar {
 	/**
 	 * Time a closure.
 	 *
-	 * @param         $label
-	 * @param Closure $closure
-	 * @param null    $collector
+	 * @param string      $label
+	 * @param Closure     $closure
+	 * @param string|null $collector
 	 */
 	public static function measure($label, Closure $closure, $collector = null) {
 		if (self::$debugbar !== null) {
