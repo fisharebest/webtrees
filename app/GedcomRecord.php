@@ -136,15 +136,9 @@ class GedcomRecord {
 	public static function getInstance($xref, Tree $tree, $gedcom = null) {
 		$tree_id = $tree->getTreeId();
 
-		// Is this record already in the cache, and of the correct type?
+		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$tree_id])) {
-			$record = self::$gedcom_record_cache[$xref][$tree_id];
-
-			if ($record instanceof static) {
-				return $record;
-			} else {
-				null;
-			}
+			return self::$gedcom_record_cache[$xref][$tree_id];
 		}
 
 		// Do we need to fetch the record from the database?

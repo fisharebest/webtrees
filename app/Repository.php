@@ -23,6 +23,29 @@ class Repository extends GedcomRecord {
 	const ROUTE_NAME  = 'repository';
 
 	/**
+	 * Get an instance of a repository object. For single records,
+	 * we just receive the XREF. For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
+	 *
+	 * @throws \Exception
+	 *
+	 * @return Repository|null
+	 */
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
+
+		if ($record instanceof Repository) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Fetch data from the database
 	 *
 	 * @param string $xref

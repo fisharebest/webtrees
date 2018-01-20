@@ -23,6 +23,29 @@ class Source extends GedcomRecord {
 	const ROUTE_NAME  = 'source';
 
 	/**
+	 * Get an instance of a source object. For single records,
+	 * we just receive the XREF. For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
+	 *
+	 * @throws \Exception
+	 *
+	 * @return Source|null
+	 */
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
+
+		if ($record instanceof Source) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Each object type may have its own special rules, and re-implement this function.
 	 *
 	 * @param int $access_level

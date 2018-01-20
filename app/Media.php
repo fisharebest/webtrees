@@ -25,6 +25,29 @@ class Media extends GedcomRecord {
 	const ROUTE_NAME  = 'media';
 
 	/**
+	 * Get an instance of a media object. For single records,
+	 * we just receive the XREF. For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
+	 *
+	 * @throws \Exception
+	 *
+	 * @return Media|null
+	 */
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
+
+		if ($record instanceof Media) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Each object type may have its own special rules, and re-implement this function.
 	 *
 	 * @param int $access_level
