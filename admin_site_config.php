@@ -219,7 +219,7 @@ echo Bootstrap4::breadcrumbs([
 				<?= I18N::plural(
 					'By default, your server allows scripts to run for %s second.',
 					'By default, your server allows scripts to run for %s seconds.',
-					get_cfg_var('max_execution_time'), I18N::number(get_cfg_var('max_execution_time')));
+					get_cfg_var('max_execution_time'), I18N::number((float) get_cfg_var('max_execution_time')));
 				?>
 				<?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
 				<?= I18N::translate('Leave this blank to use the default value.') ?>
