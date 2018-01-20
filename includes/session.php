@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use DateTime;
+use ErrorException;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -118,6 +119,14 @@ define('WT_BASE_URL', $base_uri);
 
 // What is the name of the requested script.
 define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
+
+// Convert PHP errors into exceptions
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+	// Ignore errors thar are silenced with '@'
+	if (error_reporting() & $errno) {
+		throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+	}
+});
 
 set_exception_handler(function (Throwable $ex) {
 	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;

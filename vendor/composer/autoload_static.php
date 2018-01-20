@@ -22,6 +22,7 @@ class ComposerStaticInit6d3b4e102d83b25f563035091d204a43
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
+            'Whoops\\' => 7,
             'Webuni\\CommonMark\\TableExtension\\' => 33,
         ),
         'S' => 
@@ -70,6 +71,10 @@ class ComposerStaticInit6d3b4e102d83b25f563035091d204a43
     );
 
     public static $prefixDirsPsr4 = array (
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
+        ),
         'Webuni\\CommonMark\\TableExtension\\' => 
         array (
             0 => __DIR__ . '/..' . '/webuni/commonmark-table-extension/src',

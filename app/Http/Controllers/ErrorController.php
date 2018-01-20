@@ -19,28 +19,20 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Tree;
 use HttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use Whoops\Handler\PlainTextHandler;
+use Whoops\Run;
 
 /**
  * Controller for error handling.
  */
 class ErrorController extends BaseController {
-	/**
-	 * A POST request was made with a missing/invalid CSRF token.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function csrf(Request $request): Response {
-		return $this->viewResponse('errors/csrf', []);
-	}
-
 	/**
 	 * No route was match?  Send the user somewhere sensible, if we can.
 	 *
@@ -72,16 +64,49 @@ class ErrorController extends BaseController {
 	/**
 	 * Convert an exception into an error message
 	 *
-	 * @param Throwable $throwable
+	 * @param string $error
 	 *
 	 * @return Response
 	 */
-	public function errorResponse(Throwable $throwable): Response {
-		if ($throwable instanceof HttpException) {
-			return $this->viewResponse('alerts/danger', ['alert' => $throwable->getMessage()], $throwable->getStatusCode());
-		} else {
-			var_dump($throwable);exit;
-			return $this->viewResponse('alerts/danger', ['alert' => $throwable->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+	public function errorResponse(string $error): Response {
+		return $this->viewResponse('alerts/danger', [
+			'alert' => $error,
+			], Response::HTTP_INTERNAL_SERVER_ERROR);
+	}
+
+	/**
+	 * Convert an exception into an error message
+	 *
+	 * @param Request   $request
+	 * @param Throwable $ex
+	 *
+	 * @return Response
+	 */
+	public function unhandledExceptionResponse(Request $request, Throwable $ex): Response {
+		// Create a stack dump for the exception
+		$whoops = new Run;
+		$whoops->allowQuit(false);
+		$whoops->writeToOutput(false);
+		$whoops->pushHandler(new PlainTextHandler);
+		$error = $whoops->handleException($ex);
+
+		try {
+			Log::addErrorLog($error);
+		} catch (Throwable $ex2) {
+			// Must have been a problem with the database.  Nothing we can do here.
+		}
+
+		if ($request->isXmlHttpRequest()) {
+			return new Response(view('alerts/danger', ['alert' => $error]), Response::HTTP_INTERNAL_SERVER_ERROR);
+		}
+
+		try {
+			return $this->viewResponse('errors/unhandled-exception', [
+				'error' => $error,
+			], Response::HTTP_INTERNAL_SERVER_ERROR);
+		} catch (Throwable $ex2) {
+			// An error occured in the layout?  Just show the error.
+			return new Response($error, Response::HTTP_INTERNAL_SERVER_ERROR);
 		}
 	}
 }
