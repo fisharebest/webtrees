@@ -189,7 +189,7 @@ foreach ($rows as $row) {
 		<?= I18N::translate('Accept all changes') ?>
 	</a>
 	—
-	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'rejectall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>" onclick="return confirm('<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>');">
+	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'rejectall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
 		<?= I18N::translate('Reject all changes') ?>
 	</a>
 </h3>

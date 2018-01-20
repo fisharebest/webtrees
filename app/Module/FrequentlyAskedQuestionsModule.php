@@ -495,7 +495,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			echo '</td><td>';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '"><i class="fas fa-pencil-alt"></i> ', I18N::translate('Edit'), '</a>';
 			echo '</td><td>';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)), '\');"><i class="fas fa-trash-alt"></i> ', I18N::translate('Delete'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" data-confirm="\', I18N::translate(\'Are you sure you want to delete “%s”?\', e($faq->header)), \'" onclick="return confirm(this.dataset.confirm);"><i class="fas fa-trash-alt"></i> ', I18N::translate('Delete'), '</a>';
 			echo '</td></tr>';
 			// NOTE: Print the title text of the current item
 			echo '<tr><td colspan="5">';

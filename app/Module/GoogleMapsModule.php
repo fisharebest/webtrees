@@ -3298,7 +3298,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</td>
 						<td>
 							<?php if ($noRows == 0): ?>
-								<form method="POST" action="module.php?mod=googlemap&amp;mod_action=admin_delete_action" onsubmit="return confirm('<?= I18N::translate('Remove this location?') ?>')">
+								<form method="POST" action="module.php?mod=googlemap&amp;mod_action=admin_delete_action" data-confirm="<?= I18N::translate('Remove this location?') ?>" onsubmit="return confirm(this.dataset.confirm)">
 									<input type="hidden" name="parent_id" value="<?= $parent_id ?>">
 									<input type="hidden" name="place_id" value="<?= $place['place_id'] ?>">
 									<input type="hidden" name="inactive" value="<?= $inactive ?>">

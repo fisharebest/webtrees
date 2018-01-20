@@ -98,7 +98,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
 			$content .= '</form>';
 		}
-		$content .= '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\');">';
+		$content .= '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
 		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
 		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
 		if (!empty($messages)) {
@@ -131,7 +131,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				if ($user) {
 					$content .= '<a class="btn btn-secondary" href="message.php?to=' . rawurlencode($message->sender) . '&amp;subject=' . rawurlencode($message->subject) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
 				}
-				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
+				$content .= '<button type="button" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onclick="if (confirm(this.dataset.confirm)) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}
 			$content .= '</table>';
 			$content .= '<p><button type="submit">' . I18N::translate('Delete selected messages') . '</button></p>';

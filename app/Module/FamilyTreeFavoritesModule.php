@@ -130,7 +130,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		$content = '';
 		if ($userfavs) {
 			foreach ($userfavs as $favorite) {
-				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '\');">' . I18N::translate('Remove') . '</a> ';
+				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
 				if ($favorite->favorite_type === 'URL') {
 					$content .= '<div id="boxurl' . e($favorite->favorite_id) . '.0" class="person_box">';
 					if ($ctype == 'user' || Auth::isManager($WT_TREE)) {

@@ -380,9 +380,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						</td>
 						<td>
 							<a
-								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>"
-								onclick="return confirm('<?= I18N::translate('Are you sure you want to delete “%s”?', e($this->getBlockSetting($story->block_id, 'title'))) ?>');"
-							>
+								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($this->getBlockSetting($story->block_id, 'title'))) ?>" onclick="return confirm(this.dataset.confirm);">
 								<i class="fas fa-trash-alt"></i> <?= I18N::translate('Delete') ?>
 							</a>
 					</td>

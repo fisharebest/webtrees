@@ -97,7 +97,7 @@
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
-		<button type="submit" class="btn btn-danger" onclick="if (confirm('<?= I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+		<button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" onclick="if (confirm(this.dataset.confirm)) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
 			<?= FontAwesome::decorativeIcon('delete') ?>
 			<?= I18N::translate('delete') ?>
 		</button>
