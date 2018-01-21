@@ -379,7 +379,7 @@ case 'add':
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 	if ($level0type === 'INDI' || $level0type === 'FAM') {
 		// ... but not facts which are simply links to other records
-		if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA') {
+		if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') {
 			FunctionsEdit::printAddLayer('SOUR');
 			FunctionsEdit::printAddLayer('OBJE');
 			// Don’t add notes to notes!

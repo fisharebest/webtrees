@@ -790,6 +790,9 @@ class FunctionsEdit {
 			$html .= '</span>';
 			$html .= '</div>';
 		} elseif ($fact === 'SEX') {
+			if ($value !== 'M' && !$value !== 'F') {
+				$value = 'U';
+			}
 			$html .= Bootstrap4::radioButtons($name, ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], $value, true);
 		} elseif ($fact === 'SOUR') {
 			$html .=
