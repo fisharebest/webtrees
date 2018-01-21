@@ -44,9 +44,11 @@ class RepositoryController extends BaseController {
 		$this->checkRepositoryAccess($record, false);
 
 		return $this->viewResponse('repository-page', [
-			'repository' => $record,
-			'sources'    => $record->linkedSources('REPO'),
-			'facts'      => $this->facts($record),
+			'facts'       => $this->facts($record),
+			'meta_robots' => 'index,follow',
+			'repository'  => $record,
+			'sources'     => $record->linkedSources('REPO'),
+			'title'       => $record->getFullName(),
 		]);
 	}
 

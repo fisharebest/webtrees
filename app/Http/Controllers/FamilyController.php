@@ -42,8 +42,10 @@ class FamilyController extends BaseController {
 		$this->checkFamilyAccess($family, false);
 
 		return $this->viewResponse('family-page', [
-			'record' => $family,
-			'facts'  => $family->getFacts(null, true),
+			'facts'       => $family->getFacts(null, true),
+			'meta_robots' => 'index,follow',
+			'record'      => $family,
+			'title'       => $family->getFullName(),
 		]);
 	}
 }

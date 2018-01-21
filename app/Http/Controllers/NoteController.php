@@ -44,14 +44,16 @@ class NoteController extends BaseController {
 		$this->checkNoteAccess($record, false);
 
 		return $this->viewResponse('note-page', [
-			'note' => $record,
+			'facts'         => $this->facts($record),
 			'families'      => $record->linkedFamilies('NOTE'),
 			'individuals'   => $record->linkedIndividuals('NOTE'),
+			'note'          => $record,
 			'notes'         => [],
 			'media_objects' => $record->linkedMedia('NOTE'),
+			'meta_robots'   => 'index,follow',
 			'sources'       => $record->linkedSources('NOTE'),
-			'facts'         => $this->facts($record),
 			'text'          => Filter::formatText($record->getNote(), $tree),
+			'title'         => $record->getFullName(),
 		]);
 	}
 

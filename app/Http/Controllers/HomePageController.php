@@ -62,6 +62,7 @@ class HomePageController extends BaseController {
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
 			'tree'        => $tree,
+			'meta_robots' => 'index,follow',
 		]);
 	}
 

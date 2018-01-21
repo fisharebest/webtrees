@@ -55,13 +55,15 @@ class GedcomRecordController extends BaseController {
 			return new RedirectResponse($record->url());
 		} else {
 			return $this->viewResponse('gedcom-record-page', [
-				'record'        => $record,
+				'facts'         => $record->getFacts(),
 				'families'      => $record->linkedFamilies($record::RECORD_TYPE),
 				'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
+				'meta_robots'   => 'index,follow',
 				'notes'         => $record->linkedNotes($record::RECORD_TYPE),
 				'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
+				'record'        => $record,
 				'sources'       => $record->linkedSources($record::RECORD_TYPE),
-				'facts'         => $record->getFacts(),
+				'title'         => $record->getFullName(),
 			]);
 		}
 	}

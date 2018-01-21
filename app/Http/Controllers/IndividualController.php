@@ -105,10 +105,12 @@ class IndividualController extends BaseController {
 			'count_sex'        => $this->countFacts($individual, 'SEX'),
 			'individual'       => $individual,
 			'individual_media' => $individual_media,
+			'meta_robots'      => 'index,follow',
 			'name_records'     => $name_records,
 			'sex_records'      => $sex_records,
 			'sidebars'         => $this->getSidebars($individual),
 			'tabs'             => $this->getTabs($individual),
+			'title'            => $individual->getFullName() . ' ' . $individual->getLifeSpan(),
 			'user_link'        => $user_link,
 		]);
 	}

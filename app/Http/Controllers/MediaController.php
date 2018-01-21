@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,12 +43,14 @@ class MediaController extends BaseController {
 		$this->checkMediaAccess($media);
 
 		return $this->viewResponse('media-page', [
-			'media'         => $media,
-			'families'      => $media->linkedFamilies('OBJE'),
-			'individuals'   => $media->linkedIndividuals('OBJE'),
-			'notes'         => $media->linkedNotes('OBJE'),
-			'sources'       => $media->linkedSources('OBJE'),
-			'facts'         => $this->facts($media),
+			'families'    => $media->linkedFamilies('OBJE'),
+			'facts'       => $this->facts($media),
+			'individuals' => $media->linkedIndividuals('OBJE'),
+			'media'       => $media,
+			'meta_robots' => 'index,follow',
+			'notes'       => $media->linkedNotes('OBJE'),
+			'sources'     => $media->linkedSources('OBJE'),
+			'title'       => $media->getFullName(),
 		]);
 	}
 

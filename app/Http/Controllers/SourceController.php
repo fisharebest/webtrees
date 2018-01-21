@@ -44,12 +44,14 @@ class SourceController extends BaseController {
 		$this->checkSourceAccess($record, false);
 
 		return $this->viewResponse('source-page', [
-			'source'        => $record,
+			'facts'         => $this->facts($record),
 			'families'      => $record->linkedFamilies('SOUR'),
 			'individuals'   => $record->linkedIndividuals('SOUR'),
+			'meta_robots'   => 'index,follow',
 			'notes'         => $record->linkedNotes('SOUR'),
 			'media_objects' => $record->linkedMedia('SOUR'),
-			'facts'         => $this->facts($record),
+			'source'        => $record,
+			'title'         => $record->getFullName(),
 		]);
 	}
 
