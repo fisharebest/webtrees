@@ -100,6 +100,9 @@ class IndividualController extends BaseController {
 
 		return $this->viewResponse('individual-page', [
 			'age'              => $age,
+			'count_media'      => $this->countFacts($individual, 'OBJE'),
+			'count_names'      => $this->countFacts($individual, 'NAME'),
+			'count_sex'        => $this->countFacts($individual, 'SEX'),
 			'individual'       => $individual,
 			'individual_media' => $individual_media,
 			'name_records'     => $name_records,
@@ -136,6 +139,26 @@ class IndividualController extends BaseController {
 
 			return new Response($layout);
 		}
+	}
+
+	/**
+	 * Count the (non-pending-delete) name records for an individual.
+	 *
+	 * @param Individual $individual
+	 * @param string     $fat_name
+	 *
+	 * @return int
+	 */
+	private function countFacts(Individual $individual, $fact_name): int {
+		$count = 0;
+
+		foreach ($individual->getFacts($fact_name) as $fact) {
+			if (!$fact->isPendingDeletion()) {
+				$count++;
+			}
+		}
+
+		return $count;
 	}
 
 	/**

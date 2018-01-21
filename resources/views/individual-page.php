@@ -23,13 +23,13 @@
 		<?= $individual->getFullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
 	</h2>
 	<?php if ($individual->canEdit() && !$individual->isPendingDeletion()): ?>
-		<?= view('individual-page-menu', ['record' => $individual]) ?>
+		<?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex]) ?>
 	<?php endif ?>
 </div>
 
 <div class="row">
 	<div class="col-sm-8">
-		<div class="row">
+		<div class="row mb-4">
 			<!-- Individual images -->
 			<div class="col-sm-3">
 				<?php if (empty($individual_media)): ?>
@@ -81,29 +81,6 @@
 				<?php foreach ($sex_records as $sex_record): ?>
 					<?= $sex_record ?>
 				<?php endforeach ?>
-
-				<?php if ($individual->canEdit()): ?>
-					<div class="card">
-						<div class="card-header" role="tab" id="name-header-add">
-							<div class="card-title mb-0">
-								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
-									<?= I18N::translate('Add a name') ?>
-								</a>
-								<?php if (count($individual->getFacts('NAME')) > 1): ?>
-									<a href="<?= e(route('reorder-names', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
-										<?= I18N::translate('Re-order names') ?>
-									</a>
-								<?php endif ?>
-
-								<?php if (count($individual->getFacts('SEX')) === 0): ?>
-									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
-										<?= I18N::translate('Edit the gender') ?>
-									</a>
-								<?php endif ?>
-							</div>
-						</div>
-					</div>
-				<?php endif ?>
 			</div>
 		</div>
 

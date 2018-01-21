@@ -9,14 +9,38 @@
 		<?= I18N::translate('edit') ?>
 	</button>
 	<div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-		<a class="dropdown-item menu-indi-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>');">
+		<?php if ($count_sex === 0): ?>
+			<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+				<?= I18N::translate('Edit the gender') ?>
+			</a>
+
+		<?php endif ?>
+
+		<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+			<?= I18N::translate('Add a name') ?>
+		</a>
+
+		<?php if ($count_names > 1): ?>
+			<a class="dropdown-item menu-indi-editraw" href="<?= e(route('reorder-names', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+				<?= I18N::translate('Re-order names') ?>
+			</a>
+		<?php endif ?>
+
+		<?php if (empty($individual->getFacts('SEX'))): ?>
+			<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'fact' => 'SEX', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+				<?= I18N::translate('Edit the gender') ?>
+			</a>
+		<?php endif ?>
+
+
+		<a class="dropdown-item menu-indi-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 
-		<?php if (Auth::isAdmin() || $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
+		<?php if (Auth::isAdmin() || $individual->getTree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
 			<div class="dropdown-divider"></div>
 
-			<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'editraw', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
+			<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'editraw', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 				<?= I18N::translate('Edit the raw GEDCOM') ?>
 			</a>
 			<?php endif ?>
