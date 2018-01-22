@@ -18,7 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -45,7 +47,32 @@ class FamilyController extends BaseController {
 			'facts'       => $family->getFacts(null, true),
 			'meta_robots' => 'index,follow',
 			'record'      => $family,
+			'significant' => $this->significant($family),
 			'title'       => $family->getFullName(),
 		]);
+	}
+
+	/**
+	 * What are the significant elements of this page?
+	 * The layout will need them to generate URLs for charts and reports.
+	 *
+	 * @param Family $family
+	 *
+	 * @return stdClass
+	 */
+	private function significant(Family $family) {
+		$significant = (object) [
+			'family'     => $family,
+			'individual' => null,
+			'surname'    => ''
+		];
+
+		foreach ($family->getSpouses() + $family->getChildren() as $individual) {
+			$significant->individual = $individual;
+			list($significant->surname) = explode(',', $individual->getSortName());
+			break;
+		}
+
+		return $significant;
 	}
 }

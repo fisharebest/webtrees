@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -110,6 +111,7 @@ class IndividualController extends BaseController {
 			'sex_records'      => $sex_records,
 			'sidebars'         => $this->getSidebars($individual),
 			'tabs'             => $this->getTabs($individual),
+			'significant'      => $this->significant($individual),
 			'title'            => $individual->getFullName() . ' ' . $individual->getLifeSpan(),
 			'user_link'        => $user_link,
 		]);
@@ -337,5 +339,30 @@ class IndividualController extends BaseController {
 		return array_filter($tabs, function (ModuleTabInterface $tab) use ($individual) {
 			return $tab->hasTabContent($individual);
 		});
+	}
+
+	/**
+	 * What are the significant elements of this page?
+	 * The layout will need them to generate URLs for charts and reports.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return stdClass
+	 */
+	private function significant(Individual $individual) {
+		$significant = (object) [
+			'family'     => null,
+			'individual' => $individual,
+			'surname'    => ''
+		];
+
+		list($significant->surname) = explode(',', $individual->getSortName());
+
+		foreach ($individual->getChildFamilies() + $individual->getSpouseFamilies() as $family) {
+			$significant->family = $family;
+			break;
+		}
+
+		return $significant;
 	}
 }
