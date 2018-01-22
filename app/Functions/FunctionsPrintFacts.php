@@ -258,8 +258,9 @@ class FunctionsPrintFacts {
 				echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
 				break;
 			case 'REPO':
-				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-					self::printRepositoryRecord($match[1]);
+				$repository = $fact->getTarget();
+				if ($repository !== null) {
+					echo '<div><a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a></div>';
 				} else {
 					echo '<div class="error">', e($fact->getValue()), '</div>';
 				}
@@ -527,24 +528,6 @@ class FunctionsPrintFacts {
 		}
 
 		return $html;
-	}
-
-	/**
-	 * print a repository record
-	 *
-	 * find and print repository information attached to a source
-	 *
-	 * @param string $xref the Gedcom Xref ID of the repository to print
-	 */
-	public static function printRepositoryRecord($xref) {
-		global $WT_TREE;
-
-		$repository = Repository::getInstance($xref, $WT_TREE);
-		if ($repository && $repository->canShow()) {
-			echo '<a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a><br>';
-			echo '<br>';
-			echo FunctionsPrint::printFactNotes($repository->getGedcom(), 1);
-		}
 	}
 
 	/**
