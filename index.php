@@ -17,13 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\Webtrees\Http\Controllers\ErrorController;
+use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
+use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
@@ -72,24 +74,26 @@ try {
 	// generate the response - which includes (and stops) the timer
 	DebugBar::startMeasure('controller_action', $controller_action);
 
-	if ($method === 'POST') {
-		// POST requests need a valid CSRF token
-		$csrf_token = $request->get('csrf', $request->headers->get('HTTP_X_CSRF_TOKEN'));
-		if ($csrf_token !== Filter::getCsrfToken()) {
-			throw new UnauthorizedHttpException(I18N::translate('This form has expired. Try again.'));
-		}
+	$middleware_stack = [];
 
-		// Wrap POST requests in a database transaction.
-		Database::beginTransaction();
-		$response = call_user_func([$controller, $action], $request);
-		Database::commit();
-	} else {
-		$response = call_user_func([$controller, $action], $request);
-	}
-} catch (Throwable $ex) {
 	if ($method === 'POST') {
-		Database::rollBack();
+		$middleware_stack[] = new UseTransaction;
+		$middleware_stack[] = new CheckCsrf;
 	}
+
+	// Apply the middleware using the "onion" pattern.
+	$pipeline = array_reduce($middleware_stack, function (Closure $next, $middleware): Closure {
+		// Create a closure to apply the middleware.
+		return function (Request $request) use ($middleware, $next): Response {
+			return $middleware->handle($request, $next);
+		};
+	}, function (Request $request) use ($controller, $action): Response {
+		// Create a closure to generate the response.
+		return call_user_func([$controller, $action], $request);
+	});
+
+	$response = call_user_func($pipeline, $request);
+} catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
 	// Clear any buffered output.
@@ -107,8 +111,8 @@ try {
 		}
 	} else {
 		// Show an error page for unexpected exceptions.
-		if ($request->server->get('SERVER_ADDR') !== $request->server->get('REMOTE_ADDR')) {
-			// Running locally?  Show full debug.
+		if (getenv('DEBUG')) {
+			// Local dev environment?  Show full debug.
 			$whoops = new Run;
 			$whoops->pushHandler(new PrettyPageHandler);
 			$whoops->handleException($ex);

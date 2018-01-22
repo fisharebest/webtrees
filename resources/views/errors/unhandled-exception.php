@@ -1,3 +1,1 @@
-<pre class="alert alert-danger">
-	<?= e($error) ?>
-</pre>
+<pre class="alert alert-danger"><?= e($error) ?></pre>

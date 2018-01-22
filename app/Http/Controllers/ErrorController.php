@@ -70,6 +70,7 @@ class ErrorController extends BaseController {
 	 */
 	public function errorResponse(string $error): Response {
 		return $this->viewResponse('alerts/danger', [
+			'title' => 'Error',
 			'alert' => $error,
 			], Response::HTTP_INTERNAL_SERVER_ERROR);
 	}
@@ -90,6 +91,9 @@ class ErrorController extends BaseController {
 		$whoops->pushHandler(new PlainTextHandler);
 		$error = $whoops->handleException($ex);
 
+		// We do not need to show the full path.
+		$error = str_replace(' ' . WT_ROOT, ' /', $error);
+
 		try {
 			Log::addErrorLog($error);
 		} catch (Throwable $ex2) {
@@ -102,6 +106,7 @@ class ErrorController extends BaseController {
 
 		try {
 			return $this->viewResponse('errors/unhandled-exception', [
+				'title' => 'Error',
 				'error' => $error,
 			], Response::HTTP_INTERNAL_SERVER_ERROR);
 		} catch (Throwable $ex2) {
