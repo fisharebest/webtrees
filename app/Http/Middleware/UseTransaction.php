@@ -35,7 +35,6 @@ class UseTransaction {
 	 * @throws Throwable
 	 */
 	public function handle(Request $request, Closure $next): Response {
-		throw new Throwable('eek');
 		$connected = Database::isConnected();
 		if ($connected) {
 			Database::beginTransaction();
