@@ -116,11 +116,6 @@ class Stats {
 	 * @return string[][]
 	 */
 	private function getTags($text) {
-		static $funcs;
-
-		// Retrive all class methods
-		isset($funcs) or $funcs = get_class_methods($this);
-
 		// Extract all tags from the provided text
 		preg_match_all('/#([^#]+)(?=#)/', (string) $text, $match);
 		$tags       = $match[1];
