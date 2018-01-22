@@ -252,8 +252,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				</div>',
 		];
 
-		$title          = $this->getBlockSetting($block_id, 'title');
-		$html           = $this->getBlockSetting($block_id, 'html');
+		$title          = $this->getBlockSetting($block_id, 'title', '');
+		$html           = $this->getBlockSetting($block_id, 'html', '');
 		$gedcom         = $this->getBlockSetting($block_id, 'gedcom', '__current__');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
