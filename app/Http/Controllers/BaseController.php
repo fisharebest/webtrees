@@ -47,7 +47,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkFamilyAccess(Family $family = null, $edit = false): void {
+	protected function checkFamilyAccess(Family $family = null, $edit = false) {
 		if ($family === null) {
 			throw new NotFoundHttpException(I18N::translate('This family does not exist or you do not have permission to view it.'));
 		}
@@ -64,7 +64,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkIndividualAccess(Individual $individual = null, $edit = false): void {
+	protected function checkIndividualAccess(Individual $individual = null, $edit = false) {
 		if ($individual === null) {
 			throw new NotFoundHttpException(I18N::translate('This individual does not exist or you do not have permission to view it.'));
 		}
@@ -81,7 +81,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkMediaAccess(Media $media = null, $edit = false): void {
+	protected function checkMediaAccess(Media $media = null, $edit = false) {
 		if ($media === null) {
 			throw new NotFoundHttpException(I18N::translate('This media object does not exist or you do not have permission to view it.'));
 		}
@@ -98,7 +98,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkNoteAccess(Note $note = null, $edit = false): void {
+	protected function checkNoteAccess(Note $note = null, $edit = false) {
 		if ($note === null) {
 			throw new NotFoundHttpException(I18N::translate('This note does not exist or you do not have permission to view it.'));
 		}
@@ -115,7 +115,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkRecordAccess(GedcomRecord $record = null, $edit = false): void {
+	protected function checkRecordAccess(GedcomRecord $record = null, $edit = false) {
 		if ($record === null) {
 			throw new NotFoundHttpException(I18N::translate('This record does not exist or you do not have permission to view it.'));
 		}
@@ -132,7 +132,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkRepositoryAccess(Repository $repository = null, $edit = false): void {
+	protected function checkRepositoryAccess(Repository $repository = null, $edit = false) {
 		if ($repository === null) {
 			throw new NotFoundHttpException(I18N::translate('This repository does not exist or you do not have permission to view it.'));
 		}
@@ -149,7 +149,7 @@ class BaseController extends LegacyBaseController {
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
 	 */
-	protected function checkSourceAccess(Source $source = null, $edit = false): void {
+	protected function checkSourceAccess(Source $source = null, $edit = false) {
 		if ($source === null) {
 			throw new NotFoundHttpException(I18N::translate('This source does not exist or you do not have permission to view it.'));
 		}
