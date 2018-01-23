@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-10-12 08:26+0000\n"
+"PO-Revision-Date: 2018-01-23 20:37+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -1183,7 +1183,7 @@ msgstr "Accra, Ghana"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1320,7 +1320,7 @@ msgstr "Přidat do deníku záznam"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Přidat mediální soubor"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -3217,7 +3217,7 @@ msgstr "Místo pohřbení obsahuje"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "I18N: Jméno modulu/zprávy"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3360,7 +3360,7 @@ msgstr "Příčina smrti"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Výstraha!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -3863,7 +3863,7 @@ msgstr "Kompaktní strom pro %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Porovnání"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -5335,7 +5335,7 @@ msgstr "Upravit"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Editovat soubor media"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5399,7 +5399,7 @@ msgstr "Upravit tuto osobu a nahradit její údaje vlastními."
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Úprava omezení"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -7181,7 +7181,7 @@ msgstr "Identifikační číslo"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Jestliže je mediální objekt propojen s osobou, ale má být propojen s faktem nebo událostí, můžete jej přesunout na správné místo."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7219,7 +7219,7 @@ msgstr "Pokud příjmení není známé, použijí se prázdná lomítka: <%s>Ma
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Je-li náhledový obrázek stejný jako původní obrázek, není potřebný a má být odstraněn. Je-li to upravený obrázek, přidejte jej k mediálnímu objektu."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7323,7 +7323,7 @@ msgstr "Importovat všechna místa z rodokmenu"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Importovat upravené náhledové obrázky z webtrees verse 1"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
@@ -7362,11 +7362,11 @@ msgstr "Tohoto roku …"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "I18N: \"thumbs\" je pevný text. Neměňte jej."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "Ve webtrees verse 2 se náhledové obrázky ukládají jako druhý mediálbí soubor k témuž mediálnímu objektu."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
@@ -8181,7 +8181,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Propojit mediální objekty s fakty nebo událostmi"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -9375,7 +9375,7 @@ msgstr "Přesunout doprava"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Přemístit mediální objekt?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10317,7 +10317,7 @@ msgstr "Jiná složka … prosím napište"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Jiné genealogické aplikace nemusejí tyto údaje uznávat."
 
 #: admin_trees_config.php:1325
 msgid "Other preferences"
@@ -11015,7 +11015,7 @@ msgstr "Soukromí"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "I18N: omezení na prohlížení údajů"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11245,7 +11245,7 @@ msgstr "Přeřadit média"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Přeřadit jména"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -13399,7 +13399,7 @@ msgstr "Soubor GEDCOM “%s” je importován."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "Standard GEDCOM nepřipouští URL u mediálních objektů."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13638,7 +13638,7 @@ msgstr "Soubor médií, který nahráváte, může být nebo pravděpodobně bud
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "Je vytvořen mediální objekt"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13694,7 +13694,7 @@ msgstr "Nový uživatel bude požádán, aby před vytvořením jeho účtu potv
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Je vytvořena poznámka"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13767,7 +13767,7 @@ msgstr "Regulární výraz obsahuje chybu. Nemůže se použít."
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Je vytvořen repozitář"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13784,11 +13784,11 @@ msgstr "Velikost rodokmenu, nejstarší a nejnovější události, společná jm
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "Je vytvořen pramen"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Je vytvořen předkladatel"
 
 #: help_text.php:234
 #, php-format
@@ -13906,7 +13906,7 @@ msgstr "K této osobě nejsou známy žádné údaje."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Mediální objekt není k ničemu propojen."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -14501,7 +14501,7 @@ msgstr "čt"
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Náhledový obrázek"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
@@ -15945,15 +15945,15 @@ msgstr "Zmenšit"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "URL"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "soubor na serveru"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "soubor na vašem počítači"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
