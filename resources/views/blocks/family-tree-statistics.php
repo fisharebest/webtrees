@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="col-sm-4">
-		<table class="table wt-facts-table table-responsive">
+		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
 			</caption>
