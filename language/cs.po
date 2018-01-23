@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-23 20:37+0000\n"
+"PO-Revision-Date: 2018-01-23 20:48+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -3217,7 +3217,7 @@ msgstr "Místo pohřbení obsahuje"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr "I18N: Jméno modulu/zprávy"
+msgstr "Pohřbení"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -7224,7 +7224,7 @@ msgstr "Je-li náhledový obrázek stejný jako původní obrázek, není potře
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Pokud osoba má události jiné než úmrtí, pohřbení nebo kremace v nedávné době, menší než tento počet let, je považována za „žijící“. Data narození dítěte jsou v tomto případě posuzována jako takové události."
+msgstr "Pokud osoba má události jiné než úmrtí, pohřbení nebo kremace v době čerstvější než tento počet let, je považována za „žijící“. Data narození dětí jsou v tomto případě posuzována jako takové události."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:546
@@ -7362,7 +7362,7 @@ msgstr "Tohoto roku …"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "I18N: \"thumbs\" je pevný text. Neměňte jej."
+msgstr "Ve webtrees verse 1 jste mohli k mediálním objektům přidat upravené náhledové obrázky vytvořením souborů ve složkách \"thumbs\"."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -11015,7 +11015,7 @@ msgstr "Soukromí"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr "I18N: omezení na prohlížení údajů"
+msgstr "Utajovací omezení"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
