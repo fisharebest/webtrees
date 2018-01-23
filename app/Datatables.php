@@ -36,32 +36,32 @@ class Datatables
         $length_menu = FunctionsEdit::numericOptions($lengths);
 
         $language = [
-            'paginate'       => [
+            'paginate' => [
                 /* I18N: A button label, first page */
-                'first'    => I18N::translate('first'),
+                'first' => I18N::translate('first'),
                 /* I18N: A button label, last page */
-                'last'     => I18N::translate('last'),
+                'last' => I18N::translate('last'),
                 /* I18N: A button label, next page */
-                'next'     => I18N::translate('next'),
+                'next' => I18N::translate('next'),
                 /* I18N: A button label, previous page */
                 'previous' => I18N::translate('previous'),
             ],
-            'emptyTable'     => I18N::translate('No records to display'),
+            'emptyTable' => I18N::translate('No records to display'),
             /* I18N: %s are placeholders for numbers */
-            'info'           => I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'),
-            'infoEmpty'      => I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0),
+            'info' => I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'),
+            'infoEmpty' => I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0),
             /* I18N: %s is a number */
-            'infoFiltered'   => I18N::translate('(filtered from %s total entries)', '_MAX_'),
+            'infoFiltered' => I18N::translate('(filtered from %s total entries)', '_MAX_'),
             /* I18N: %s is a number of records per page */
-            'lengthMenu'     => I18N::translate('Display %s', '_MENU_'),
+            'lengthMenu' => I18N::translate('Display %s', '_MENU_'),
             'loadingRecords' => I18N::translate('Loading…'),
-            'processing'     => I18N::translate('Calculating…'),
-            'search'         => I18N::translate('Filter'),
-            'zeroRecords'    => I18N::translate('No records to display'),
+            'processing' => I18N::translate('Calculating…'),
+            'search' => I18N::translate('Filter'),
+            'zeroRecords' => I18N::translate('No records to display'),
         ];
 
         return [
-            'data-language'    => json_encode($language),
+            'data-language' => json_encode($language),
             'data-length-menu' => json_encode([
                 array_keys($length_menu),
                 array_values($length_menu),
@@ -77,11 +77,12 @@ class Datatables
     public static function eventTableAttributes(): string
     {
         return Html::attributes([
-                'class'           => 'table table-bordered table-sm datatables table-event',
-                'data-columns'    => '[null, null, null, null]',
-                'data-info'       => 'false',
-                'data-paging'     => 'false',
-                'data-searching'  => 'false',
+                'class' => 'table table-bordered table-sm datatables table-event',
+                //'data-columns'   => '[{ type: "text" }, { type: "num" }, { type: "num" }, { type: "text" }]',
+                'data-columns' => '[null, null, null, null]',
+                'data-info' => 'false',
+                'data-paging' => 'false',
+                'data-searching' => 'false',
                 'data-state-save' => 'true',
             ] + self::languageAttributes());
     }
@@ -94,13 +95,14 @@ class Datatables
     public static function givenNameTableAttributes(): string
     {
         return Html::attributes([
-            'class'           => 'table table-bordered table-sm datatables table-given-name',
-            'data-columns'    => '[null, null]',
-            'data-info'       => 'false',
-            'data-paging'     => 'false',
-            'data-searching'  => 'false',
+            'class' => 'table table-bordered table-sm dt-responsive datatables table-given-name',
+            //'data-columns'   => '[{ type: "text" }, { type: "num" }]',
+            'data-columns' => '[null, null]',
+            'data-info' => 'false',
+            'data-paging' => 'false',
+            'data-searching' => 'false',
             'data-state-save' => 'true',
-            'data-order'      => '[[1, "desc"]]',
+            'data-order' => '[[1, "desc"]]',
         ]);
     }
 }
