@@ -1,15 +1,15 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<table class="table table-bordered table-sm datatables wt-table-tasks" data-columns="[null, null, null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true">
+<table class="table table-bordered datatables dt-responsive wt-table-tasks" data-columns="[null, null, null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true">
 	<thead>
 		<tr>
-			<th class="d-none d-md-table-cell wt-side-block-optional">
+			<th>
 				<?= I18N::translate('Date') ?>
 			</th>
 			<th>
 				<?= I18N::translate('Record') ?>
 			</th>
-			<th class="d-none d-md-table-cell wt-side-block-optional">
+			<th>
 				<?= I18N::translate('Username') ?>
 			</th>
 			<th>
@@ -17,11 +17,10 @@
 			</th>
 		</tr>
 	</thead>
-
 	<tbody>
 		<?php foreach ($tasks as $task): ?>
 			<tr>
-				<td data-sort="<?= $task->getDate()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
+				<td data-sort="<?= $task->getDate()->julianDay() ?>">
 					<?= $task->getDate()->display() ?>
 				</td>
 				<td data-sort="<?= e($task->getParent()->getSortName()) ?>">
@@ -29,7 +28,7 @@
 						<?= $task->getParent()->getFullName() ?>
 					</a>
 				</td>
-				<td class="d-none d-md-table-cell wt-side-block-optional">
+				<td>
 					<?= e($task->getAttribute('_WT_USER')) ?>
 				</td>
 				<td dir="auto">
