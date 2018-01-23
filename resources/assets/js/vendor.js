@@ -21,23 +21,22 @@ import "bootstrap";
 import "datatables.net";
 
 window.Bloodhound = require("corejs-typeahead/dist/bloodhound.min.js");
-import "corejs-typeahead";
 
+import "corejs-typeahead";
 import "datatables.net-bs4";
+import "datatables.net-responsive-bs4";
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 window.Sortable = require('sortablejs');
 
 import "select2";
-
 import "moment";
-
 import "jquery-colorbox";
-
 import "wheelzoom";
-
 import "leaflet";
 import "leaflet-providers";
+
 window.GeoSearch = require("leaflet-geosearch");
+
 import "leaflet.markercluster";
 import "beautifymarker";
