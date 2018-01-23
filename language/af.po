@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-06-27 16:03+0000\n"
+"PO-Revision-Date: 2018-01-23 15:54+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1286,7 +1286,7 @@ msgstr "Voeg 'n joernaalinskrywing by"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Voeg ’n medialêer by"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -3183,7 +3183,7 @@ msgstr "Begrafnis pleknaam bevat"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Begrafnisse"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3325,7 +3325,7 @@ msgstr "Doodsoorsaak"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Versigtig!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -3827,7 +3827,7 @@ msgstr "Kompakte boom van %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Vergelyking"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -5299,7 +5299,7 @@ msgstr "Redigeer"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Wysig ’n medialêer"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5363,7 +5363,7 @@ msgstr "Wysig hierdie persoon en vervang hulle besonderhede met jou eie."
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Wysigingsbeperking"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -7145,7 +7145,7 @@ msgstr "Identifikasienommer"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Indien ’n media-objek aan 'n persoon gekoppel is, terwyl dit eintlik aan 'n feit of gebeurtenis gekoppel moes wees, kan jy dit na die korrekte plek skuif."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
