@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-05-07 06:00+0000\n"
+"PO-Revision-Date: 2018-01-23 20:44+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/cs/>\n"
 "Language: cs\n"
@@ -7347,7 +7347,7 @@ msgstr "Pokud příjmení není známé, použijí se prázdná lomítka: <%s>Ma
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Pokud osoba má události jiné než úmrtí, pohřbení nebo kremace v nedávné době, menší než tento počet let, je považována za „žijící“. Data narození dítěte jsou v tomto případě posuzována jako takové události."
+msgstr "Pokud osoba má události jiné než úmrtí, pohřbení nebo kremace v době čerstvější než tento počet let, je považována za „žijící“. Data narození dětí jsou v tomto případě posuzována jako takové události."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
