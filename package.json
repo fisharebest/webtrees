@@ -16,15 +16,15 @@
     "laravel-mix": "^1.7.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.2",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.2",
     "bootstrap": "^4.0.0",
     "corejs-typeahead": "^1.2.1",
     "datatables.net-bs4": "^1.10.16",
     "dejavu-fonts-ttf": "^2.37.3",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
-    "@fortawesome/fontawesome": "^1.1.0",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.0",
     "font-awesome-rtl": "^1.1.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "jquery-colorbox": "^1.6.4",
     "moment": "^2.20.1",
     "popper.js": "^1.13.0",
