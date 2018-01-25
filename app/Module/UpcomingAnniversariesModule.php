@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDB;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
@@ -27,6 +28,46 @@ use Fisharebest\Webtrees\I18N;
  * Class UpcomingAnniversariesModule
  */
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface {
+	// All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
+	const ALL_EVENTS = [
+		'ADOP',
+		'ANUL',
+		'BAPM',
+		'BARM',
+		'BASM',
+		'BIRT',
+		'BLES',
+		'BURI',
+		'CHR',
+		'CHRA',
+		'CONF',
+		'CREM',
+		'DEAT',
+		'DIV',
+		'DIVF',
+		'EMIG',
+		'ENGA',
+		'FCOM',
+		'GRAD',
+		'IMMI',
+		'MARB',
+		'MARC',
+		'MARL',
+		'MARR',
+		'MARS',
+		'NATU',
+		'ORDN',
+		'PROB',
+		'RETI',
+		'WILL',
+	];
+
+	const DEFAULT_EVENTS = [
+		'BIRT',
+		'MARR',
+		'DEAT',
+	];
+
 	/**
 	 * How should this module be labelled on tabs, menus, etc.?
 	 *
@@ -57,26 +98,38 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
+		$default_events = implode(',', self::DEFAULT_EVENTS);
+
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
 		$filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
-		$onlyBDM   = (bool) $this->getBlockSetting($block_id, 'onlyBDM', '0');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
-		foreach (['days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle'] as $name) {
+		foreach (['days', 'events', 'filter', 'infoStyle', 'sortStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
 		}
 
+		$event_array = explode(',', $events);
+
+		// If we are only showing living individuals, then we don't need to search for DEAT events.
+		if ($filter) {
+			$death_events = explode('|', WT_EVENTS_DEAT);
+			$event_array = array_diff($event_array, $death_events);
+		}
+
+		$events_filter = implode('|', $event_array);
+
 		$startjd = WT_CLIENT_JD + 1;
 		$endjd   = WT_CLIENT_JD + $days;
-		$tags    = $onlyBDM ? 'BIRT MARR DEAT' : '';
+
+		$facts = FunctionsDB::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
+
 		$summary = '';
 
-		$facts = FunctionsDB::getEventsList($startjd, $endjd, $tags, $filter, $sortStyle, $WT_TREE);
-
-		if (count($facts) === 0) {
+		if (empty($facts)) {
 			if ($filter) {
 				if ($endjd == $startjd) {
 					$summary = I18N::translate('No events for living individuals exist for tomorrow.');
@@ -145,18 +198,27 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-			$this->setBlockSetting($block_id, 'onlyBDM', Filter::postBool('onlyBDM'));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			$this->setBlockSetting($block_id, 'events', implode(',', Filter::postArray('events')));
 		}
+
+		$default_events = implode(',', self::DEFAULT_EVENTS);
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '0');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
+		$event_array = explode(',', $events);
+
+		$all_events = [];
+		foreach (self::ALL_EVENTS as $event) {
+			$all_events[$event] = GedcomTag::getLabel($event);
+		}
 		?>
+
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="days">
 				<?= I18N::translate('Number of days to show') ?>
@@ -177,17 +239,17 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		</div>
 
 		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="onlyBDM">
-				<?= I18N::translate('Show only births, deaths, and marriages') ?>
+			<label class="col-sm-3 col-form-label" for="events">
+				<?= I18N::translate('Events') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::radioButtons('onlyBDM', FunctionsEdit::optionsNoYes(), $onlyBDM, true) ?>
+				<?= Bootstrap4::multiSelect($all_events, $event_array, ['id' => 'events', 'name' => 'events[]', 'class' => 'select2']) ?>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="infoStyle">
-				<?= I18N::translate('Presentation style') ?>
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
 			</label>
 			<div class="col-sm-9">
 				<?= Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
@@ -196,10 +258,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="sortStyle">
-				<?= I18N::translate('Sort order') ?>
+				<?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= Bootstrap4::select([/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'), /* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date')], $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
+				<?= Bootstrap4::select(['alpha' => /* I18N: An option in a list-box */ I18N::translate('sort by name'), 'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date')], $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
 			</div>
 		</div>
 		<?php
