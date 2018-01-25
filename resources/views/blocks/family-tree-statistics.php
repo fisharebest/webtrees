@@ -127,8 +127,8 @@
 		</table>
 	</div>
 
-	<div class="col-sm-8">
-		<table class="table wt-facts-table table-responsive">
+	<div class="col-sm-8 table-responsive">
+		<table class="table wt-facts-table">
 			<caption class="sr-only">
 				<?= I18N::translate('Statistics') ?>
 			</caption>
