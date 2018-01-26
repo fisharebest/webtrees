@@ -29,11 +29,178 @@ use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller for the user/tree's home page.
  */
 class HomePageController extends BaseController {
+	/**
+	 * Show a form to edit block config options.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
+	 */
+	public function treePageBlockEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$block_id = (int) $request->get('block_id');
+		$block    = $this->treeBlock($request);
+		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
+
+		return $this->viewResponse('blocks/edit-config', [
+			'block'      => $block,
+			'block_id'   => $block_id,
+			'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
+			'title'      => $title,
+		]);
+	}
+
+	/**
+	 * Update block config options.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function treePageBlockUpdate(Request $request): redirectResponse {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$block_id = (int) $request->get('block_id');
+		$block    = $this->treeBlock($request);
+
+		ob_start();
+		$_POST['save'] = '1';
+		$block->configureBlock($block_id);
+		ob_end_clean();
+
+		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+	}
+
+	/**
+	 * Load a block and check we have permission to edit it.
+	 *
+	 * @param Request $request
+	 *
+	 * @return ModuleBlockInterface
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
+	 */
+	private function treeBlock(Request $request): ModuleBlockInterface {
+		/** @var User $user */
+		$user     = $request->attributes->get('user');
+		$block_id = (int) $request->get('block_id');
+
+		$block_info = Database::prepare(
+			"SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
+		)->execute([
+			'block_id' => $block_id,
+		])->fetchOneRow();
+
+		if ($block_info === null) {
+			throw new NotFoundHttpException;
+		}
+
+		$block = Module::getModuleByName($block_info->module_name);
+
+		if (!$block instanceof ModuleBlockInterface) {
+			throw new NotFoundHttpException;
+		}
+
+		if ($block_info->user_id !== $user->getUserId() && !Auth::isAdmin()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		return $block;
+	}
+
+	/**
+	 * Show a form to edit block config options.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
+	 */
+	public function userPageBlockEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$block_id = (int) $request->get('block_id');
+		$block    = $this->userBlock($request);
+		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
+
+		return $this->viewResponse('blocks/edit-config', [
+			'block'      => $block,
+			'block_id'   => $block_id,
+			'cancel_url' => route('user-page', ['ged' => $tree->getName()]),
+			'title'      => $title,
+		]);
+	}
+
+	/**
+	 * Update block config options.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function userPageBlockUpdate(Request $request): redirectResponse {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$block_id = (int) $request->get('block_id');
+		$block    = $this->userBlock($request);
+
+		ob_start();
+		$_POST['save'] = '1';
+		$block->configureBlock($block_id);
+		ob_end_clean();
+
+		return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
+	}
+
+	/**
+	 * Load a block and check we have permission to edit it.
+	 *
+	 * @param Request $request
+	 *
+	 * @return ModuleBlockInterface
+	 * @throws NotFoundHttpException
+	 * @throws AccessDeniedHttpException
+	 */
+	private function userBlock(Request $request): ModuleBlockInterface {
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
+		$block_id = (int) $request->get('block_id');
+
+		$block_info = Database::prepare(
+			"SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
+		)->execute([
+			'block_id' => $block_id,
+		])->fetchOneRow();
+
+		if ($block_info === null) {
+			throw new NotFoundHttpException;
+		}
+
+		$block = Module::getModuleByName($block_info->module_name);
+
+		if (!$block instanceof ModuleBlockInterface) {
+			throw new NotFoundHttpException;
+		}
+
+		if ($block_info->user_id !== $user->getUserId() && !Auth::isAdmin()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		return $block;
+	}
+
 	/**
 	 * Show a tree's page.
 	 *

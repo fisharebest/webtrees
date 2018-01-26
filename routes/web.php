@@ -63,6 +63,8 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 		'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
 		'GET:merge-records'               => 'AdminController@mergeRecords',
 		'POST:merge-records'              => 'AdminController@mergeRecordsAction',
+		'GET:tree-page-block-edit'        => 'HomePageController@treePageBlockEdit',
+		'POST:tree-page-block-edit'       => 'HomePageController@treePageBlockUpdate',
 		'GET:tree-preferences'            => 'AdminController@treePreferencesEdit',
 		'POST:tree-preferences'           => 'AdminController@treePreferencesUpdate',
 		'GET:tree-privacy'                => 'AdminController@treePrivacyEdit',
@@ -73,10 +75,12 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 // Member routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
 	$routes += [
-		'GET:user-page'         => 'HomePageController@userPage',
-		'GET:user-page-block'   => 'HomePageController@userPageBlock',
-		'GET:user-page-edit'    => 'HomePageController@userPageEdit',
-		'POST:user-page-update' => 'HomePageController@userPageUpdate',
+		'GET:user-page'             => 'HomePageController@userPage',
+		'GET:user-page-block'       => 'HomePageController@userPageBlock',
+		'GET:user-page-edit'        => 'HomePageController@userPageEdit',
+		'POST:user-page-update'     => 'HomePageController@userPageUpdate',
+		'GET:user-page-block-edit'  => 'HomePageController@userPageBlockEdit',
+		'POST:user-page-block-edit' => 'HomePageController@userPageBlockUpdate',
 	];
 }
 

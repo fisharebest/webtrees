@@ -95,8 +95,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</table>';
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-				$config_url = Html::url('block_edit.php', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			} elseif ($ctype === 'user' && Auth::check()) {
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
 			} else {
 				$config_url = '';
 			}
