@@ -474,6 +474,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'index_edit.php',
 			WT_ROOT . 'packages',
+			WT_ROOT . 'reportengine.php',
 			WT_ROOT . 'site-unavailable.php',
 			WT_ROOT . 'themes/_administration/css-1.7.5',
 			WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',

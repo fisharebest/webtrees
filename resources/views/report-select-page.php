@@ -1,11 +1,12 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
-	<?= I18N::translate('Choose a report to run') ?>
+	<?= $title ?>
 </h2>
 
-<form action="reportengine.php" class="wt-page-options wt-page-options-report-select">
-	<input type="hidden" name="action" value="setup">
+<form class="wt-page-options wt-page-options-report-select">
+	<input type="hidden" name="route" value="report-setup">
+	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="report">
 			<?= I18N::translate('Report') ?>

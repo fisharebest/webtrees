@@ -56,7 +56,7 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface 
 
 		return new Menu(
 			$this->getTitle(),
-			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
+			e(route('report-setup', ['ged' => $WT_TREE->getName(), 'report' => $this->getName()])),
 			'menu-report-' . $this->getName(),
 			['rel' => 'nofollow']
 		);

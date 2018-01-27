@@ -4,8 +4,8 @@
 	<?= $title ?>
 </h2>
 
-<form action="reportengine.php" class="wt-page-options wt-page-options-report-setup">
-	<input type="hidden" name="action" value="run">
+<form class="wt-page-options wt-page-options-report-setup">
+	<input type="hidden" name="route" value="report-run">
 	<input type="hidden" name="report" value="<?= e($report) ?>">
 
 	<div class="row form-group">

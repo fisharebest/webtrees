@@ -129,6 +129,9 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:source'              => 'SourceController@show',
 		'GET:record'              => 'GedcomRecordController@show',
 		'GET:repository'          => 'RepositoryController@show',
+		'GET:report-list'         => 'ReportEngineController@reportList',
+		'GET:report-setup'        => 'ReportEngineController@reportSetup',
+		'GET:report-run'          => 'ReportEngineController@reportRun',
 	];
 }
 
