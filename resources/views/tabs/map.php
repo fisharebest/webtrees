@@ -10,11 +10,11 @@
 
 	<?php if ($is_admin): ?>
 		<div class="gm-options">
-			<a href="<?= e(Html::url('module.php', ['mod' => 'googlemaps', 'mod_action' => 'admin_config'])) ?>">
+			<a href="<?= e(Html::url('module.php', ['mod' => 'googlemap', 'mod_action' => 'admin_config'])) ?>">
 				<?= I18N::translate('Google Maps™ preferences') ?>
 			</a>
 			|
-			<a href="<?= e(Html::url('module.php', ['mod' => 'googlemaps', 'mod_action' => 'admin_places'])) ?>">
+			<a href="<?= e(Html::url('module.php', ['mod' => 'googlemap', 'mod_action' => 'admin_places'])) ?>">
 				<?= I18N::translate('Geographic data') ?>
 			</a>
 		</div>
