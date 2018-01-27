@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-23 15:54+0000\n"
+"PO-Revision-Date: 2018-01-27 15:17+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1149,7 +1149,7 @@ msgstr "Akkra, Ghana"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Aksie"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -7183,7 +7183,7 @@ msgstr "As die van onbekend is, gebruik leë skuinsstrepe: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "As die miniatuurbeeld dieselfde as die oorspronklike is, word dit nie meer benodig nie en behoort jy dit te verwyder. Indien dit 'n aangepaste beeld is, moet jy dit by die media-objek byvoeg."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7287,7 +7287,7 @@ msgstr "Voer alle plekke in vanuit 'n familiestamboom"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Voer aangepaste miniatuurbeelde in van webtrees weergawe 1"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
