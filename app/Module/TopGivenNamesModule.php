@@ -16,9 +16,7 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 
@@ -51,11 +49,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		foreach (['num', 'infoStyle'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		$stats = new Stats($WT_TREE);
 
@@ -131,32 +125,25 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+
+			return;
 		}
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		?>
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="num">
-				<?= /* I18N: ... to show in a list */ I18N::translate('Number of given names') ?>
-			</label>
-			<div class="col-sm-9">
-				<input type="text" id="num" name="num" size="2" value="<?= $num ?>">
-			</div>
-		</div>
+		$info_styles = [
+			'list'  => /* I18N: An option in a list-box */ I18N::translate('list'),
+			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
+		];
 
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="infoStyle">
-				<?= I18N::translate('Presentation style') ?>
-			</label>
-			<div class="col-sm-9">
-				<?= Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
-			</div>
-		</div>
-		<?php
+		echo view('blocks/top-given-names-config', [
+			'infoStyle'   => $infoStyle,
+			'info_styles' => $info_styles,
+			'num'         => $num,
+		]);
 	}
 }

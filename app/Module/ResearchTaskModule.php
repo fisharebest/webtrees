@@ -16,12 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -59,11 +56,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
 		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
 
-		foreach (['show_unassigned', 'show_other', 'show_future'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 
@@ -141,40 +134,23 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
 			$this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
 			$this->setBlockSetting($block_id, 'show_future', Filter::postBool('show_future'));
+
+			return;
 		}
 
 		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
 		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
 		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
 
-		?>
-		<p>
-			<?= I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.') ?>
-			<?= I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.') ?>
-			<?= I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag.') ?>
-		</p>
-		<?php
+		echo view('blocks/research-tasks-config', [
+			'show_future'     => $show_future,
+			'show_other'      => $show_other,
+			'show_unassigned' => $show_unassigned,
+		]);
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="show_other">';
-		echo I18N::translate('Show research tasks that are assigned to other users');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::radioButtons('show_other', FunctionsEdit::optionsNoYes(), $show_other, true);
-		echo '</div></div>';
-
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="show_unassigned">';
-		echo I18N::translate('Show research tasks that are not assigned to any user');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::radioButtons('show_unassigned', FunctionsEdit::optionsNoYes(), $show_unassigned, true);
-		echo '</div></div>';
-
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="show_future">';
-		echo I18N::translate('Show research tasks that have a date in the future');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::radioButtons('show_future', FunctionsEdit::optionsNoYes(), $show_future, true);
-		echo '</div></div>';
 	}
 }

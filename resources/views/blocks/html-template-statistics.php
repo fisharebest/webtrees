@@ -1,0 +1,101 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<div class="gedcom_stats">
+	<p>
+		<a href="<?= e(route('tree-page', [])) ?>">#gedcomTitle#</a>
+	</p>
+
+	<?= I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') ?>
+
+	<div class="row">
+		<div class="col col-sm-4">
+			<table class="table wt-facts-table">
+				<tr>
+					<th scope="row"><?= I18N::translate('Individuals') ?></th>
+					<td>#totalIndividuals#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Males') ?></th>
+					<td>#totalSexMales#<br>#totalSexMalesPercentage#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Females') ?></th>
+					<td>#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Total surnames') ?></th>
+					<td>#totalSurnames#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Families') ?></th>
+					<td>#totalFamilies#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Sources') ?></th>
+					<td>#totalSources#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Media objects') ?></th>
+					<td>#totalMedia#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Repositories') ?></th>
+					<td>#totalRepositories#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Events') ?></th>
+					<td>#totalEvents#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Users') ?></th>
+					<td>#totalUsers#</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="col col-sm-8">
+			<table class="table wt-facts-table">
+				<tr>
+					<th scope="row"><?= I18N::translate('Earliest birth') ?></th>
+					<td>#firstBirth#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Latest birth') ?></th>
+					<td>#lastBirth#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Earliest death') ?></th>
+					<td>#firstDeath#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Latest death') ?></th>
+					<td>#lastDeath#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Individual who lived the longest') ?></th>
+					<td>#longestLife#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Average age at death') ?></th>
+					<td>#averageLifespan#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Family with the most children') ?></th>
+					<td>#largestFamilySize#<br>#largestFamily#</td>
+				</tr>
+				<tr>
+					<th scope="row"><?= I18N::translate('Average number of children per family') ?></th>
+					<td>#averageChildren#</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<p>
+		<b><?= I18N::translate('Most common surnames') ?></b>
+	</p>
+
+	<p>
+		#commonSurnames#
+	</p>
+</div>

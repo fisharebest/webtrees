@@ -73,10 +73,7 @@ class HomePageController extends BaseController {
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->treeBlock($request);
 
-		ob_start();
-		$_POST['save'] = '1';
 		$block->configureBlock($block_id);
-		ob_end_clean();
 
 		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
 	}
@@ -155,10 +152,7 @@ class HomePageController extends BaseController {
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->userBlock($request);
 
-		ob_start();
-		$_POST['save'] = '1';
 		$block->configureBlock($block_id);
-		ob_end_clean();
 
 		return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
 	}

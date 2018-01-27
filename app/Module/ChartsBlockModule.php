@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
@@ -58,11 +57,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		foreach (['type', 'pid'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		$person = Individual::getInstance($pid, $WT_TREE);
 		if (!$person) {
@@ -176,14 +171,16 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		global $WT_TREE, $controller;
+		global $WT_TREE;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
 			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
+
+			return;
 		}
 
 		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
@@ -197,25 +194,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		];
 		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-		?>
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="type">
-				<?= I18N::translate('Chart type') ?>
-			</label>
-			<div class="col-sm-9">
-				<?= Bootstrap4::select($charts, $type, ['id' => 'type', 'name' => 'type']) ?>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="pid">
-				<label for="pid">
-					<?= I18N::translate('Individual') ?>
-				</label>
-			</label>
-			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlIndividual(Individual::getInstance($pid, $WT_TREE), ['id' => 'pid', 'name' => 'pid']) ?>
-			</div>
-		</div>
-		<?php
+		$individual = Individual::getInstance($pid, $WT_TREE);
+
+		echo view('blocks/charts-config', [
+			'charts'     => $charts,
+			'individual' => $individual,
+			'type'       => $type,
+		]);
 	}
 }

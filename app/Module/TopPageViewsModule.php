@@ -16,11 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -60,11 +58,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		foreach (['count_placement', 'num'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		// load the lines from the file
 		$top10 = Database::prepare(
@@ -153,24 +147,25 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
+
+			return;
 		}
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="num">';
-		echo /* I18N: ... to show in a list */ I18N::translate('Number of pages');
-		echo '</label><div class="col-sm-9">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</div></div>';
+		$options = [
+			'before' => /* I18N: An option in a list-box */ I18N::translate('before'),
+			'after'  => /* I18N: An option in a list-box */ I18N::translate('after'),
+		];
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="count_placement">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
-		echo '</label><div class="col-sm-9">';
-		echo Bootstrap4::select(['before' => I18N::translate('before'), 'after' => I18N::translate('after')], $count_placement, ['id' => 'count_placement', 'name' => 'count_placement']);
-		echo '</div></div>';
+		echo view('blocks/top-page-views-config', [
+			'count_placement' => $count_placement,
+			'num'             => $num,
+			'options'         => $options,
+		]);
 	}
 }

@@ -16,14 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -60,11 +57,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
 		$show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
-		foreach (['days', 'infoStyle', 'sortStyle', 'show_user'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		$records = $this->getRecentChanges($WT_TREE, $days);
 
@@ -121,11 +114,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'name|date_asc|date_desc'));
 			$this->setBlockSetting($block_id, 'show_user', Filter::postBool('show_user'));
+
+			return;
 		}
 
 		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -133,34 +128,26 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
 		$show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="days">';
-		echo I18N::translate('Number of days to show');
-		echo '</div><div class="col-sm-9">';
-		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' ' . I18N::plural('maximum %s day', 'maximum %s days', I18N::number(self::MAX_DAYS), I18N::number(self::MAX_DAYS));
-		echo '</div></div>';
+		$info_styles = [
+			'list'  => /* I18N: An option in a list-box */ I18N::translate('list'),
+			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
+		];
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="infoStyle">';
-		echo I18N::translate('Presentation style');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']);
-		echo '</div></div>';
-
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="sortStyle">';
-		echo I18N::translate('Sort order');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::select([
+		$sort_styles = [
 			'name'      => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
-		], $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']);
-		echo '</div></div>';
+		];
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="show_usere">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Show the user who made the change');
-		echo '</div><div class="col-sm-9">';
-		echo Bootstrap4::radioButtons('show_user', FunctionsEdit::optionsNoYes(), $show_user, true);
-		echo '</div></div>';
+		echo view('blocks/recent-changes-config', [
+			'days'        => $days,
+			'infoStyle'   => $infoStyle,
+			'info_styles' => $info_styles,
+			'max_days'    => self::MAX_DAYS,
+			'sortStyle'   => $sortStyle,
+			'sort_styles' => $sort_styles,
+			'show_user'   => $show_user,
+		]);
 	}
 
 	/**

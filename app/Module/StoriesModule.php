@@ -149,7 +149,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		global $WT_TREE;
 
 		if (Auth::isEditor($WT_TREE)) {
-			if (Filter::postBool('save') && Filter::checkCsrf()) {
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$block_id = Filter::postInteger('block_id');
 				if ($block_id) {
 					Database::prepare(

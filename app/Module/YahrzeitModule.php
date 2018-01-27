@@ -17,19 +17,25 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 
 /**
  * Class YahrzeitModule
  */
 class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
+	// Default values for new blocks.
+	const DEFAULT_CALENDAR = 'jewish';
+	const DEFAULT_DAYS     = 7;
+	const DEFAULT_STYLE    = 'table';
+
+	// Can show this number of days into the future.
+	const MAX_DAYS = 30;
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ I18N::translate('Yahrzeiten');
@@ -52,15 +58,11 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $ctype, $WT_TREE;
 
-		$days      = $this->getBlockSetting($block_id, 'days', '7');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+		$calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
 
-		foreach (['days', 'infoStyle', 'calendar'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		$jewish_calendar = new JewishCalendar;
 		$startjd         = WT_CLIENT_JD;
@@ -181,33 +183,35 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			$this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', 'jewish'));
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', self::DEFAULT_STYLE));
+			$this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', self::DEFAULT_CALENDAR));
+
+			return;
 		}
 
-		$days      = $this->getBlockSetting($block_id, 'days', '7');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+		$days      = $this->getBlockSetting($block_id, 'days', 'self::DEFAULT_DAYS');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="days">';
-		echo I18N::translate('Number of days to show');
-		echo '</label><div class="col-sm-9">';
-		echo '<input type="text" name="days" size="2" value="' . $days . '">';
-		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', 30, I18N::number(30)), '</em>';
-		echo '</div></div>';
+		$styles = [
+			'list'  => /* I18N: An option in a list-box */ I18N::translate('list'),
+			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
+		];
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="infoStyle">';
-		echo I18N::translate('Presentation style');
-		echo '</label><div class="col-sm-9">';
-		echo Bootstrap4::select(['list' => I18N::translate('list'), 'table' => I18N::translate('table')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']);
-		echo '</div></div>';
+		$calendars = [
+			'jewish'    => I18N::translate('Jewish'),
+			'gregorian' => I18N::translate('Gregorian'),
+		];
 
-		echo '<div class="form-group row"><label class="col-sm-3 col-form-label" for="calendar">';
-		echo I18N::translate('Calendar');
-		echo '</label><div class="col-sm-9">';
-		echo Bootstrap4::select(['jewish' => I18N::translate('Jewish'), 'gregorian' => I18N::translate('Gregorian')], $calendar, ['id' => 'calendar', 'name' => 'calendar']);
-		echo '</div></div>';
+		echo view('blocks/yahrzeit-config', [
+			'calendar'  => $calendar,
+			'calendars' => $calendars,
+			'days'      => $days,
+			'infoStyle' => $infoStyle,
+			'max_days'  => self::MAX_DAYS,
+			'styles'    => $styles,
+		]);
 	}
 }

@@ -16,11 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 
@@ -28,6 +26,10 @@ use Fisharebest\Webtrees\Query\QueryName;
  * Class TopSurnamesModule
  */
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
+	// Default values for new blocks.
+	const DEFAULT_NUMBER = 10;
+	const DEFAULT_STYLE  = 'table';
+
 	/**
 	 * How should this module be labelled on tabs, menus, etc.?
 	 *
@@ -58,14 +60,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $WT_TREE, $ctype;
 
-		$num       = $this->getBlockSetting($block_id, 'num', '10');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
-		foreach (['num', 'infoStyle'] as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+		extract($cfg, EXTR_OVERWRITE);
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
 		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, $num);
@@ -154,33 +152,28 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', self::DEFAULT_STYLE));
+
+			return;
 		}
 
-		$num       = $this->getBlockSetting($block_id, 'num', '10');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
-		?>
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="num">
-				<?= /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
-			</label>
-			<div class="col-sm-9">
-				<input type="text" name="num" size="2" value="<?= $num ?>">
-			</div>
-		</div>
+		$info_styles = [
+			'list'     => /* I18N: An option in a list-box */ I18N::translate('bullet list'),
+			'array'    => /* I18N: An option in a list-box */ I18N::translate('compact list'),
+			'table'    => /* I18N: An option in a list-box */ I18N::translate('table'),
+			'tagcloud' => /* I18N: An option in a list-box */ I18N::translate('tag cloud'),
+		];
 
-		<div class="form-group row">
-			<label class="col-sm-3 col-form-label" for="infoStyle">
-				<?= I18N::translate('Presentation style') ?>
-			</label>
-			<div class="col-sm-9">
-				<?= Bootstrap4::select(['list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')], $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
-			</div>
-		</div>
-		<?php
+		echo view('blocks/top-surnames-config', [
+			'num'         => $num,
+			'infoStyle'   => $infoStyle,
+			'info_styles' => $info_styles,
+		]);
 	}
 
 	/**
