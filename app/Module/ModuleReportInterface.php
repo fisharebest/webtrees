@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Interface ModuleReportInterface - Classes and libraries for module system
@@ -24,7 +25,9 @@ interface ModuleReportInterface {
 	/**
 	 * Return a menu item for this report.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu
 	 */
-	public function getReportMenu();
+	public function getReportMenu(Tree $tree): Menu;
 }

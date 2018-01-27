@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class AhnentafelReportModule
@@ -57,14 +58,14 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
 	/**
 	 * Return a menu item for this report.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu
 	 */
-	public function getReportMenu() {
-		global $WT_TREE;
-
+	public function getReportMenu(Tree $tree): Menu {
 		return new Menu(
 			$this->getTitle(),
-			e(route('report-setup', ['ged' => $WT_TREE->getName(), 'report' => $this->getName()])),
+			e(route('report-setup', ['ged' => $tree->getName(), 'report' => $this->getName()])),
 			'menu-report-' . $this->getName(),
 			['rel' => 'nofollow']
 		);

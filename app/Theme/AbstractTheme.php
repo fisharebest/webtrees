@@ -1765,7 +1765,7 @@ abstract class AbstractTheme {
 	protected function menuReports() {
 		$submenus = [];
 		foreach (Module::getActiveReports($this->tree) as $report) {
-			$submenus[] = $report->getReportMenu();
+			$submenus[] = $report->getReportMenu($this->tree);
 		}
 
 		if (empty($submenus)) {
