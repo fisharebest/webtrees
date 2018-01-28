@@ -117,7 +117,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$startjd = WT_CLIENT_JD;
 		$endjd   = WT_CLIENT_JD;
 
-		$facts = FunctionsDB::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
+		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
 
 		$summary = '';
 

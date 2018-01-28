@@ -17,7 +17,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDB;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
@@ -128,7 +128,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$startjd = WT_CLIENT_JD + 1;
 		$endjd   = WT_CLIENT_JD + $days;
 
-		$facts = FunctionsDB::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
+		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
 
 		$summary = '';
 
