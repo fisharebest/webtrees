@@ -18,6 +18,7 @@ window.$ = window.jQuery = $;
 import "popper.js";
 import "bootstrap";
 import "datatables.net";
+window.Bloodhound = require("corejs-typeahead/dist/bloodhound.min.js");
 import "corejs-typeahead";
 import "datatables.net-bs4";
 // See https://github.com/RubaXa/Sortable/issues/1229
