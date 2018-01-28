@@ -757,6 +757,7 @@ class FunctionsEdit {
 					'class'                 => 'form-control',
 					'id'                    => $id,
 					'name'                  => $name,
+					'value'                 => $value,
 					'type'                  => 'text',
 					'data-autocomplete-url' => route('autocomplete-place', [
 						'ged'   => $WT_TREE->getName(),
