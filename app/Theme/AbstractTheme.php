@@ -1582,7 +1582,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsNotes() {
-		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Shared notes'), e(route('note-list', ['ged' => $this->tree->getName()])), 'menu-list-note', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1600,7 +1600,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsRepositories() {
-		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Repositories'), e(route('repository-list', ['ged' => $this->tree->getName()])), 'menu-list-repo', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1609,7 +1609,8 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsSources() {
-		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour', ['rel' => 'nofollow']);
+		return new Menu(
+			I18N::translate('Sources'), e(route('source-list', ['ged' => $this->tree->getName()])), 'menu-list-sour', ['rel' => 'nofollow']);
 	}
 
 	/**

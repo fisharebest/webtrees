@@ -96,7 +96,7 @@
 						</td>
 						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($sources[$tree->getTreeId()]): ?>
-								<a href="sourcelist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('source-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($sources[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
@@ -105,7 +105,7 @@
 						</td>
 						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($repositories[$tree->getTreeId()]): ?>
-								<a href="repolist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('repository-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($repositories[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
@@ -123,7 +123,7 @@
 						</td>
 						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($notes[$tree->getTreeId()]): ?>
-								<a href="notelist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('note-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
