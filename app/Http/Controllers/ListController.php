@@ -18,7 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
@@ -30,6 +32,66 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller for lists of GEDCOM records.
  */
 class ListController extends BaseController {
+	/**
+	 * Show a list of all media records.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function mediaList(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$formats = GedcomTag::getFileFormTypes();
+
+		$action    = $request->get('action');
+		$page      = (int) $request->get('page');
+		$max       = (int) $request->get('max', 20);
+		$folder    = $request->get('folder', '');
+		$filter    = $request->get('filter', '');
+		$subdirs   = $request->get('subdirs', '1');
+		$form_type = $request->get('form_type', '');
+
+		$folders = $this->allFolders($tree);
+
+		if ($action === '1') {
+			$media_objects = $this->allMedia(
+				$tree,
+				$folder,
+				$subdirs === '1' ? 'include' : 'exclude',
+				'title',
+				$filter,
+				$form_type
+			);
+		} else {
+			$media_objects = [];
+		}
+
+		// Pagination
+		$count = count($media_objects);
+		$pages = (int) (($count + $max - 1) / $max);
+		$page  = max(min($page, $pages), 1);
+
+		$media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
+
+		return $this->viewResponse('media-list-page', [
+			'count'         => $count,
+			'filter'        => $filter,
+			'folder'        => $folder,
+			'folders'       => $folders,
+			'formats'       => $formats,
+			'form_type'     => $form_type,
+			'max'           => $max,
+			'media_objects' => $media_objects,
+			'page'          => $page,
+			'pages'         => $pages,
+			'subdirs'       => $subdirs,
+			'title'         => I18N::translate('Media'),
+			'tree'          => $tree,
+		]);
+	}
+
 	/**
 	 * Show a list of all note records.
 	 *
@@ -85,6 +147,111 @@ class ListController extends BaseController {
 			'sources' => $sources,
 			'title'   => I18N::translate('Sources'),
 		]);
+	}
+
+	/**
+	 * Generate a list of all the folders in a current tree.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string[]
+	 */
+	private function allFolders(Tree $tree) {
+		$folders = Database::prepare(
+			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
+			" FROM  `##media_file`" .
+			" WHERE m_file = ?" .
+			" AND   multimedia_file_refn NOT LIKE 'http://%'" .
+			" AND   multimedia_file_refn NOT LIKE 'https://%'" .
+			" GROUP BY 1" .
+			" ORDER BY 1"
+		)->execute([
+			$tree->getTreeId(),
+		])->fetchOneColumn();
+
+		// Ensure we have an empty (top level) folder.
+		if (!$folders || reset($folders) !== '') {
+			array_unshift($folders, '');
+		}
+
+		return array_combine($folders, $folders);
+	}
+
+
+	/**
+	 * Generate a list of all the media objects matching the criteria in a current tree.
+	 *
+	 * @param Tree   $tree       find media in this tree
+	 * @param string $folder     folder to search
+	 * @param string $subfolders either "include" or "exclude"
+	 * @param string $sort       either "file" or "title"
+	 * @param string $filter     optional search string
+	 * @param string $form_type  option OBJE/FILE/FORM/TYPE
+	 *
+	 * @return Media[]
+	 */
+	private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array {
+		// All files in the folder, plus external files
+		$sql =
+			"SELECT m_id AS xref, m_gedcom AS gedcom" .
+			" FROM `##media`" .
+			" JOIN `##media_file` USING (m_id, m_file)" .
+			" WHERE m_file = ?";
+		$args = [
+			$tree->getTreeId(),
+		];
+
+		// Only show external files when we are looking at the root folder
+		if ($folder == '') {
+			$sql_external = " OR multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%'";
+		} else {
+			$sql_external = "";
+		}
+
+		// Include / exclude subfolders (but always include external)
+		switch ($subfolders) {
+			case 'include':
+				$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
+				$args[] = Database::escapeLike($folder);
+				break;
+			case 'exclude':
+				$sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
+				$args[] = Database::escapeLike($folder);
+				$args[] = Database::escapeLike($folder);
+				break;
+		}
+
+		// Apply search terms
+		if ($filter) {
+			$sql .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
+			$args[] = Database::escapeLike($filter);
+			$args[] = Database::escapeLike($filter);
+		}
+
+		if ($form_type) {
+			$sql .= " AND source_media_type = ?";
+			$args[] = $form_type;
+		}
+
+		switch ($sort) {
+			case 'file':
+				$sql .= " ORDER BY multimedia_file_refn";
+				break;
+			case 'title':
+				$sql .= " ORDER BY descriptive_title";
+				break;
+		}
+
+		$rows = Database::prepare($sql)->execute($args)->fetchAll();
+		$list = [];
+		foreach ($rows as $row) {
+			$media = Media::getInstance($row->xref, $tree, $row->gedcom);
+			if ($media->canShow()) {
+				$list[] = $media;
+			}
+		}
+
+		return $list;
 	}
 
 	/**

@@ -30,7 +30,6 @@ Disallow: /fanchart.php
 Disallow: /hourglass.php
 Disallow: /lifespan.php
 Disallow: /login.php
-Disallow: /medialist.php
 Disallow: /pedigree.php
 Disallow: /placelist.php
 Disallow: /relationship.php

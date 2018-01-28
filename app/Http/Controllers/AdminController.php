@@ -473,6 +473,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'block_edit.php',
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'index_edit.php',
+			WT_ROOT . 'medialist.php',
 			WT_ROOT . 'notelist.php',
 			WT_ROOT . 'packages',
 			WT_ROOT . 'repolist.php',

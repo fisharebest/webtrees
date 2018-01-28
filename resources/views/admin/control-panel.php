@@ -190,7 +190,7 @@
 						</td>
 						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($media[$tree->getTreeId()]): ?>
-								<a href="medialist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('media-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>

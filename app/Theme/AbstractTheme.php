@@ -1573,7 +1573,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsMedia() {
-		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Media objects'), e(route('media-list', ['ged' => $this->tree->getName()])), 'menu-list-obje', ['rel' => 'nofollow']);
 	}
 
 	/**
