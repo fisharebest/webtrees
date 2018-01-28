@@ -571,24 +571,6 @@ class FunctionsDb {
 	}
 
 	/**
-	 * Find the record for the given rin.
-	 *
-	 * @param string $rin
-	 *
-	 * @return string
-	 */
-	public static function findRin($rin) {
-		global $WT_TREE;
-
-		$xref =
-			Database::prepare("SELECT i_id FROM `##individuals` WHERE i_rin=? AND i_file=?")
-				->execute([$rin, $WT_TREE->getTreeId()])
-				->fetchOne();
-
-		return $xref ? $xref : $rin;
-	}
-
-	/**
 	 * Get array of common surnames
 	 *
 	 * This function returns a simple array of the most common surnames
