@@ -17,28 +17,14 @@
 			<label for="from">
 				<?= /* I18N: From date1 (To date2) */ I18N::translate('From') ?>
 			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= e($from) ?>">
-				<div class="input-group-append">
-					<span class="input-group-text">
-						<span class="fas fa-calendar-alt"></span>
-					</span>
-				</div>
-			</div>
+			<input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="to">
 				<?= /* I18N: (From date1) To date2 */ I18N::translate('To') ?>
 			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= e($to) ?>">
-				<div class="input-group-append">
-				<span class="input-group-text">
-					<span class="fas fa-calendar-alt"></span>
-				</span>
-				</div>
-			</div>
+			<input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>"  name="to" value="<?= e($to) ?>" required>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -127,27 +113,3 @@
 		</thead>
 	</table>
 <?php endif ?>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  $("#from, #to").parent("div").datetimepicker({
-    format: "YYYY-MM-DD",
-    minDate: <?= json_encode($earliest) ?>,
-    maxDate: <?= json_encode($latest) ?>,
-    locale: <?= json_encode(WT_LOCALE) ?>,
-    useCurrent: false,
-    icons: {
-      time: "far fa-clock",
-      date: "fas fa-calendar-alt",
-      up: "fas fa-arrow-up",
-      down: "fas fa-arrow-down",
-      previous: "fas fa-arrow- <?= I18N::direction() === 'rtl' ? 'right' : 'left' ?>",
-      next: "fas fa-arrow- <?= I18N::direction() === 'rtl' ? 'left' : 'right' ?>",
-      today: "far fa-trash-alt",
-      clear: "far fa-trash-alt"
-    }
-  });
-</script>
-<?php View::endpush() ?>

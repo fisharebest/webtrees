@@ -50,6 +50,9 @@ if (Auth::isAdmin()) {
 	$gedc = $WT_TREE->getName();
 }
 
+$from = max($from, $earliest);
+$to   = min(max($from, $to), $latest);
+
 $sql_select =
 	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
 	" FROM `##log`" .
@@ -198,22 +201,6 @@ $controller
 			/* Family tree */ { }
 			]
 		});
-		$("#from,#to").parent("div").datetimepicker({
-			format: "YYYY-MM-DD",
-			minDate: "' . $earliest . '",
-			maxDate: "' . $latest . '",
-			locale: "' . WT_LOCALE . '",
-			icons: {
-				time: "far fa-clock",
-				date: "fas fa-calendar-alt",
-				up: "fas fa-arrow-up",
-				down: "fas fa-arrow-down",
-				previous: "fas fa-arrow-' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '",
-				next: "fas fa-arrow-' . (I18N::direction() === 'rtl' ? 'left' : 'right') . '",
-				today: "far fa-trash-alt",
-				clear: "far fa-trash-alt"
-			}
-		});
 	');
 
 $users_array = [];
@@ -236,28 +223,14 @@ echo Bootstrap4::breadcrumbs([
 			<label for="from">
 				<?= /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?= e($from) ?>">
-				<div class="input-group-append">
-					<span class="input-group-text">
-						<span class="fas fa-calendar-alt"></span>
-					</span>
-				</div>
-			</div>
+			<input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-3">
 			<label for="to">
 				<?= /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?= e($to) ?>">
-				<div class="input-group-append">
-					<span class="input-group-text">
-						<span class="fas fa-calendar-alt"></span>
-					</span>
-				</div>
-			</div>
+			<input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="to" value="<?= e($to) ?>" required>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-2">

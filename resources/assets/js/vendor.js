@@ -25,6 +25,5 @@ import "datatables.net-bs4";
 window.Sortable = require('sortablejs');
 import "select2";
 import "moment";
-import "eonasdan-bootstrap-datetimepicker";
 import "jquery-colorbox";
 import "wheelzoom";

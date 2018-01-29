@@ -11,7 +11,6 @@ mix
   .styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css',
-    'node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css',
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css',
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css',
@@ -21,7 +20,6 @@ mix
   .styles([
     'resources/assets/css/bootstrap-rtl.min.css',
     'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css',
-    'node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     'node_modules/font-awesome/css/font-awesome.css',
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css',
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css',
