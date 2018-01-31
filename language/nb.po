@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-10 12:42+0000\n"
-"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
+"PO-Revision-Date: 2018-01-31 09:17+0000\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -5363,7 +5363,7 @@ msgstr "Rediger denne person og erstatt dens detaljer med dine egne."
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Redigeringsbegrensning"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -7145,7 +7145,7 @@ msgstr "Identifikasjonsnummer"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Hvis et medieobjekt er knyttet til en person, men skulle i stedet vært knyttet til et faktum eller en begivenhet, kan du flytte det til rett sted."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7183,7 +7183,7 @@ msgstr "Hvis etternavnet er ukjent, bruk to skråstreker uten noe imellom: <%s>N
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Hvis miniatyrbildet er det samme som det opprinnelige bildet, trengs det ikke lenger men bør slettes. Hvis det er et tilpasset miniatyrbilde, må det legges til i medieobjektet."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7287,7 +7287,7 @@ msgstr "Importer alle stedsnavn fra et slektstre"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Importer tilpassede miniatyrbilder fra webtrees versjon 1"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
@@ -7326,11 +7326,11 @@ msgstr "Familiehendelser i år…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "I webtrees version 1 kunne tilpassede miniatyrbilder føyes til medieobjekter ved å opprette egne filer i mappene “thumbs”."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "I webtees versjon 2 lagres miniatyrbilder som en ekstra mediefil i samme medieobjekt."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
@@ -8145,7 +8145,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Knytt medieobjekter til fakta og begivenheter"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -9339,7 +9339,7 @@ msgstr "Flytt mot høyre"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Flytte medieobjektet?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10279,7 +10279,7 @@ msgstr "Annen mappe… vennligst skriv inn"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Det er ikke sikkert at andre slektsprogrammer gjenkjenner disse dataene."
 
 #: admin_trees_config.php:1325
 msgid "Other preferences"
@@ -10977,7 +10977,7 @@ msgstr "Personvern"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Personvern"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11207,7 +11207,7 @@ msgstr "Endre rekkefølge på media"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Endre rekkefølge på navn"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -13361,7 +13361,7 @@ msgstr "GEDCOM-filen «%s» er importert."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "GEDCOM-standarden tillater ikke nettadresser i medieobjekter."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13600,7 +13600,7 @@ msgstr "Mediefilene du laster opp kan - og bør kanskje - kalles noe annet på s
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "Medieobjektet er blitt opprettet"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13656,7 +13656,7 @@ msgstr "Den nye brukeren vil bli bedt om å bekrefte sin e-postadresse før bruk
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Notatet er blitt opprettet"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13729,7 +13729,7 @@ msgstr "Din regulært uttrykk ser ut til å inneholde feil og kan ikke brukes."
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Arkivet er blitt opprettet"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13746,11 +13746,11 @@ msgstr "Slektstreets størrelse, tidligste og nyligste hendelser, vanlige navn, 
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "Kilden er blitt opprettet"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Innsenderen er blitt opprettet"
 
 #: help_text.php:234
 #, php-format
@@ -13867,7 +13867,7 @@ msgstr "Det finnes ingen fakta om denne personen."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Det fins ingen lenker til dette medieobjektet."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -14459,7 +14459,7 @@ msgstr "tor"
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Miniatyrbilde"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
@@ -15900,15 +15900,15 @@ msgstr "Zoom ut"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "en URL"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "en fil på serveren"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "en fil på din datamaskin"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
