@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-02-19 22:44+0000\n"
-"Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
+"PO-Revision-Date: 2018-01-31 09:24+0000\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -9297,7 +9297,7 @@ msgstr "Måned:"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
