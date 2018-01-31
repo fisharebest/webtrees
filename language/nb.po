@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-31 09:17+0000\n"
+"PO-Revision-Date: 2018-01-31 10:15+0000\n"
 "Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -2168,7 +2168,7 @@ msgstr "Vise i tillegg"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Asuncion, Paraguay"
-msgstr "Asuncion, Paraguay"
+msgstr "Asunción, Paraguay"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6818
@@ -2864,7 +2864,7 @@ msgstr "Melding"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bogota, Colombia"
-msgstr "Bogota, Colombia"
+msgstr "Bogotá, Colombia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
@@ -3026,7 +3026,7 @@ msgstr "Brumaire"
 #. I18N: Name of a country or state
 #: app/Stats.php:6655
 msgid "Brunei Darussalam"
-msgstr "Brunei Darussalam"
+msgstr "Brunei"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:101
