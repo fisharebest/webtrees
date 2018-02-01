@@ -6,14 +6,15 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-compact-chart d-print-none">
+	<input type="hidden" name="route" value="compact-tree">
 	<input type="hidden" name="ged" value="<?= e($individual->getTree()->getName()) ?>">
 
 	<div class="row form-group">
-		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
 			<?= I18N::translate('Individual') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'rootid', 'name' => 'rootid']) ?>
+			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
 		</div>
 	</div>
 
@@ -25,4 +26,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart" data-ajax-url="<?= e(route('compact-tree-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])) ?>"></div>

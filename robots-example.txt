@@ -19,11 +19,8 @@
 
 # These URLs are expensive to generate or duplicate existing content:
 User-Agent: *
-Disallow: /ancestry.php
 Disallow: /branches.php
 Disallow: /calendar.php
-Disallow: /compact.php
-Disallow: /descendancy.php
 Disallow: /familybook.php
 Disallow: /famlist.php
 Disallow: /fanchart.php

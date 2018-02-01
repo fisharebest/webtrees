@@ -63,7 +63,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			'descendancy.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			route('descendants', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()]),
 			'menu-chart-descendants',
 			['rel' => 'nofollow']
 		);
