@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
+use Fisharebest\Webtrees\Theme\WebtreesTheme;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,7 +35,9 @@ define('WT_DATA_DIR', 'data/');
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
 define('WT_REQUIRED_PHP_VERSION', '5.6');
 define('WT_MODULES_DIR', 'modules_v3/');
-define('WT_ROOT', '');
+define('WT_ROOT', __DIR__ . '/');
+define('WT_THEMES_DIR', 'themes/');
+Theme::theme(new WebtreesTheme);
 
 // PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
