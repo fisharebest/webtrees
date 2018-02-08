@@ -26,8 +26,12 @@
 	height: auto;
 }
 
-#select2-rootid-container img {
-	padding: 5px;
+.select2-container .select2-selection--single .select2-selection__rendered {
+	padding-left: 0;
+}
+
+#select2-rootid-container img, #select2-xref-container img {
+    padding: 3px;
 }
 
 /*
