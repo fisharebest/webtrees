@@ -1484,7 +1484,7 @@ a:hover .nameZoom {
 
 .optionbox {
 	background-color: #ecf5ff;
-	font-size: 12px;
+	font-size: 1rem;
 	border: solid #c3dfff 1px;
 	vertical-align: top;
 	white-space: nowrap;

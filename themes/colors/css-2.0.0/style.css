@@ -1047,25 +1047,17 @@ hr {
 .person_box, .action_header {
 	background-color: #ddf;
 	border: 1px solid #ccc;
-	padding: 3px;
 }
 
 .person_boxF, .action_headerF {
 	background-color: #fdd;
 	border: 1px solid #ccc;
-	padding: 3px;
 }
 
 .person_boxNN {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	padding: 3px;
-}
-
-.person_box:target,
-.news_box:target,
-#gedcom_stats:target {
-	background-color: #ffc;
 }
 
 /* families tab person box */
@@ -1160,13 +1152,10 @@ div.fact_SHARED_NOTE {
 }
 
 .name1 {
-	font-weight: bold;
-	font-size: 12px;
 }
 
 .name2 {
-	font-size: 16px;
-	}
+}
 
 a:hover .name1, a:hover .name2 {
 	color: #f00;
@@ -1182,7 +1171,7 @@ a:hover .nameZoom {
 
 .details0,
 .details1 {
-	font-size: 11px;
+	font: 13px tahoma, arial, helvetica, sans-serif;
 }
 
 .details2 {
@@ -1686,12 +1675,6 @@ a:hover .nameZoom {
 	line-height: 1.5em!important;
 }
 
-.person_box_template {
-	height: auto;
-	white-space: normal;
-	overflow: hidden !important;
-}
-
 .person_box_template .namedef i[class^="icon-sex"] {
 	margin-left: 3px;
 }
@@ -1701,20 +1684,14 @@ a:hover .nameZoom {
 }
 
 .person_box_template .icons {
-	float: right;
 }
 
 [dir=rtl] .person_box_template .icons {
-	float: left;
 }
 
 .person_box_template .inout {
 	clear: both;
 	display: none;
-}
-
-.person_box_template .chart_textbox {
-	overflow: hidden;
 }
 
 .person_box_template img,
@@ -3083,7 +3060,6 @@ div.faq_body {
 }
 
 /*-- Pedigree ---- */
-
 #pedigree_canvas {
 	color:   #81a9cb;
 }

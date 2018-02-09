@@ -304,7 +304,6 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-block-content {
 }
 
-
 .wt-accessibility-links {
 }
 
@@ -359,6 +358,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .wt-primary-menu {
+	display: flex; flex-wrap: wrap;
 }
 
 .wt-primary-menu .nav-item {
@@ -1126,7 +1126,12 @@ button:focus {
 }
 
 .alpha_index {
-	color: #006;
+	color: #999;
+}
+
+.person_box_template .details0,
+.person_box_template .details1 {
+    font-size: 11px;
 }
 
 hr {
@@ -1275,7 +1280,7 @@ a:hover .nameZoom {
 
 .details0,
 .details1 {
-	font-size: 11px;
+	font: 13px tahoma, arial, helvetica, sans-serif;
 }
 
 .details2 {
@@ -1593,7 +1598,7 @@ a:hover .nameZoom {
 }
 
 .optionbox {
-	font-size: 12px;
+	font-size: 1rem;
 	background-color: #ecf5ff;
 	color: #006;
 	border: solid #ccc 1px;
@@ -1812,13 +1817,10 @@ a:hover .nameZoom {
 	float: left;
 }
 
-.person_box_template .inout {
-	clear: both;
-	display: none;
-}
-
 .person_box_template .chart_textbox {
 	overflow: hidden;
+	font: 13px tahoma, arial, helvetica, sans-serif;
+	line-height: 1;
 }
 
 .person_box_template img,

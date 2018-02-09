@@ -1049,6 +1049,11 @@ img.block,
 	color: #999;
 }
 
+.person_box_template .details0,
+.person_box_template .details1 {
+    font-size: 11px;
+}
+
 .person_box, .action_header {
 	background: #edf7fd;
 	border: solid #81a9cb 1px;
@@ -1494,7 +1499,7 @@ a:hover .nameZoom {
 
 .optionbox {
 	background-color: #d1d9ef;
-	font-size: 12px;
+	font-size: 1rem;
 	border: solid #81a9cb 1px;
 	vertical-align: top;
 	white-space: nowrap;
