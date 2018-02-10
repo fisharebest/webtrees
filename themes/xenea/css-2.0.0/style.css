@@ -1702,6 +1702,7 @@ a:hover .nameZoom {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
+	font: 13px tahoma, arial, helvetica, sans-serif;
 }
 
 .person_box_template img,

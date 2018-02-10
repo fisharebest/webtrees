@@ -585,7 +585,7 @@ table {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-	font-size: 12px;
+	font: 13px tahoma, arial, helvetica, sans-serif;
 }
 
 .person_box_template .chart_textbox .name1{
