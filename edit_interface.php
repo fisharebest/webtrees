@@ -1686,9 +1686,12 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	if ($person) {
 		$xref = $person->getXref();
+		$cancel_url = $person->url();
 	} elseif ($family) {
 		$xref = $family->getXref();
+		$cancel_url = $family->url();
 	} else {
+		$cancel_url = 'admin_trees_manage.php';
 		$xref = 'new';
 	}
 
@@ -1971,7 +1974,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					<?= /* I18N: A button label. */ I18N::translate('go to new individual') ?>
 				</button>
 			<?php endif ?>
-			<a class="btn btn-secondary" href="<?= e($person ? $person->url() : $family->url()) ?>">
+			<a class="btn btn-secondary" href="<?= e($cancel_url) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
