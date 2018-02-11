@@ -32,6 +32,10 @@
 	border: 0;
 }
 
+.card-header h4 {
+	font-size: 1.2rem;
+}
+
 .btn.focus, .btn:focus {
 	box-shadow: none;
 }
@@ -52,8 +56,9 @@
 	border-color: #ccc;
 }
 
-.form-control:focus {
-	border-color: #999;
+.form-control:focus{
+	border-color:#ccc;
+	box-shadow:0 0 0 .2rem rgba(128,128,128,.25);
 }
 
 .container-fluid {
