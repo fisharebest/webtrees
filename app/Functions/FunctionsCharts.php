@@ -163,16 +163,15 @@ class FunctionsCharts {
 			echo '</td>';
 		}
 		echo '</tr></table>';
+		echo '<br>';
 		if ($sosa && $family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo '<a href="', e($family->url()), '" class="details1">';
-				echo str_repeat('&nbsp;', 10);
 				echo $fact->summary();
 				echo '</a>';
 			}
-		} else {
-			echo '<br>';
 		}
+		echo '<br>';
 
 		/**
 		 * wife side
