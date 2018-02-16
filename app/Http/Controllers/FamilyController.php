@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;

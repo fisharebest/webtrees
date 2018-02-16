@@ -149,7 +149,7 @@ class IndividualController extends BaseController {
 	 * Count the (non-pending-delete) name records for an individual.
 	 *
 	 * @param Individual $individual
-	 * @param string     $fat_name
+	 * @param string     $fact_name
 	 *
 	 * @return int
 	 */

@@ -65,9 +65,9 @@ class HomePageController extends BaseController {
 	 *
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
-	public function treePageBlockUpdate(Request $request): redirectResponse {
+	public function treePageBlockUpdate(Request $request): RedirectResponse {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
 		$block_id = (int) $request->get('block_id');
@@ -144,9 +144,9 @@ class HomePageController extends BaseController {
 	 *
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
-	public function userPageBlockUpdate(Request $request): redirectResponse {
+	public function userPageBlockUpdate(Request $request): RedirectResponse {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
 		$block_id = (int) $request->get('block_id');
