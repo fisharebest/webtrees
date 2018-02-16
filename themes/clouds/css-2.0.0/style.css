@@ -2171,11 +2171,10 @@ a:hover .nameZoom {
 .media-list th,
 .indi-list th,
 .fam-list th,
-.recent_changes_block th,
-.upcoming_events_block th,
-.todays_events_block th,
-.todo_block th,
-.yahrzeit_block th,
+.wt-table-changes th,
+.wt-table-events th,
+.wt-table-tasks th,
+.wt-table-yahrzeits th,
 .surname-list th,
 .givn-list th {
 	cursor: pointer;

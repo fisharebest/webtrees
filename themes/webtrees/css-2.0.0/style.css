@@ -2064,6 +2064,10 @@ td.descriptionbox a {
 .media-list th,
 .indi-list th,
 .fam-list th,
+.wt-table-changes th,
+.wt-table-events th,
+.wt-table-tasks th,
+.wt-table-yahrzeits th,
 .surname-list th,
 .givn-list th {
 	cursor: pointer;

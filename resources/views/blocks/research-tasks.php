@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<table class="table table-bordered table-sm datatables table-research-task table-responsive" data-columns="[null, null, null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true">
+<table class="table table-bordered table-sm datatables wt-table-tasks" data-columns="[null, null, null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true">
 	<thead>
 		<tr>
 			<th class="d-none d-md-table-cell wt-side-block-optional">

@@ -258,7 +258,10 @@ class HomePageController extends BaseController {
 		$ctype      = 'gedcom';
 		$controller = $this;
 
-		$html = $module->getBlock($block_id, true);
+		$html = view('layouts/ajax', [
+			'content' => $module->getBlock($block_id, true),
+		]);
+
 
 		// Use HTTP headers and some jQuery to add debug to the current page.
 		DebugBar::sendDataInHeaders();
@@ -431,7 +434,9 @@ class HomePageController extends BaseController {
 		$ctype      = 'user';
 		$controller = $this;
 
-		$html = $module->getBlock($block_id, true);
+		$html = view('layouts/ajax', [
+			'content' => $module->getBlock($block_id, true),
+		]);
 
 		// Use HTTP headers and some jQuery to add debug to the current page.
 		DebugBar::sendDataInHeaders();

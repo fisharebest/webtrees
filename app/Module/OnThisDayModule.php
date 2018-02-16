@@ -119,21 +119,15 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 
 		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
 
-		$summary = '';
-
 		if (empty($facts)) {
-			if ($filter) {
-				$summary = I18N::translate('No events for living individuals exist for today.');
-			} else {
-				$summary = I18N::translate('No events exist for today.');
-			}
+			$content = view('blocks/events-empty', [
+				'message' => I18N::translate('No events exist for today.')
+			]);
+		} else {
+			$content = view('blocks/events-' . $infoStyle, [
+					'facts'   => $facts,
+				]);
 		}
-
-		$content = view('blocks/events-' . $infoStyle, [
-				'facts'   => $facts,
-				'summary' => $summary,
-			]
-		);
 
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {

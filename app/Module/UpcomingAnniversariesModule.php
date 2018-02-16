@@ -130,31 +130,22 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
 		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
 
-		$summary = '';
-
 		if (empty($facts)) {
-			if ($filter) {
-				if ($endjd == $startjd) {
-					$summary = I18N::translate('No events for living individuals exist for tomorrow.');
-				} else {
-					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-					$summary = I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
-				}
+			if ($endjd == $startjd) {
+				$content = view('blocks/events-empty', [
+					'message' => I18N::translate('No events exist for tomorrow.')
+				]);
 			} else {
-				if ($endjd == $startjd) {
-					$summary = I18N::translate('No events exist for tomorrow.');
-				} else {
-					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-					$summary = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
-				}
+				$content = view('blocks/events-empty', [
+					'message' => /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1))
+				]);
 			}
+		} else {
+			$content = view('blocks/events-' . $infoStyle, [
+					'facts'   => $facts,
+				]
+			);
 		}
-
-		$content = view('blocks/events-' . $infoStyle, [
-				'facts'   => $facts,
-				'summary' => $summary,
-			]
-		);
 
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {

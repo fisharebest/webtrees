@@ -18,13 +18,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class RecentChangesModule
@@ -61,19 +58,27 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
 		$records = $this->getRecentChanges($WT_TREE, $days);
 
-		$content = '';
-		// Print block content
+		switch ($sortStyle) {
+			case 'name':
+				uasort($records, ['self', 'sortByNameAndChangeDate']);
+				break;
+			case 'date_asc':
+				uasort($records, ['self', 'sortByChangeDateAndName']);
+				$records = array_reverse($records);
+				break;
+			case 'date_desc':
+				uasort($records, ['self', 'sortByChangeDateAndName']);
+		}
+
 		if (empty($records)) {
-			$content .= I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
+			$content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
+		} elseif ($infoStyle === 'list') {
+			$content = $this->changesList($records, $show_user);
 		} else {
-			switch ($infoStyle) {
-				case 'list':
-					$content .= $this->changesList($records, $sortStyle, $show_user);
-					break;
-				case 'table':
-					$content .= $this->changesTable($records, $sortStyle, $show_user);
-					break;
-			}
+			$content = view('blocks/changes-' . $infoStyle, [
+				'records'   => $records,
+				'show_user' => $show_user,
+			]);
 		}
 
 		if ($template) {
@@ -187,24 +192,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	 * Format a table of events
 	 *
 	 * @param GedcomRecord[] $records
-	 * @param string         $sort
 	 * @param bool           $show_user
 	 *
 	 * @return string
 	 */
-	private function changesList(array $records, $sort, $show_user) {
-		switch ($sort) {
-			case 'name':
-				uasort($records, ['self', 'sortByNameAndChangeDate']);
-				break;
-			case 'date_asc':
-				uasort($records, ['self', 'sortByChangeDateAndName']);
-				$records = array_reverse($records);
-				break;
-			case 'date_desc':
-				uasort($records, ['self', 'sortByChangeDateAndName']);
-		}
-
+	private function changesList(array $records, $show_user) {
 		$html = '';
 		foreach ($records as $record) {
 			$html .= '<a href="' . e($record->url()) . '" class="list_item name2">' . $record->getFullName() . '</a>';
@@ -228,104 +220,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			$html .= '</div>';
 		}
-
-		return $html;
-	}
-
-	/**
-	 * Format a table of events
-	 *
-	 * @param GedcomRecord[] $records
-	 * @param string         $sort
-	 * @param bool           $show_user
-	 *
-	 * @return string
-	 */
-	private function changesTable($records, $sort, $show_user) {
-		global $controller;
-
-		$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-
-		switch ($sort) {
-			case 'name':
-			default:
-				$aaSorting = "[1,'asc'], [2,'desc']";
-				break;
-			case 'date_asc':
-				$aaSorting = "[2,'asc'], [1,'asc']";
-				break;
-			case 'date_desc':
-				$aaSorting = "[2,'desc'], [1,'asc']";
-				break;
-		}
-
-		$html = '';
-		$controller
-			->addInlineJavascript('
-				$("#' . $table_id . '").dataTable({
-					dom: \'t\',
-					paging: false,
-					autoWidth:false,
-					lengthChange: false,
-					filter: false,
-					' . I18N::datatablesI18N() . ',
-					sorting: [' . $aaSorting . '],
-					columns: [
-						{ sortable: false, class: "center" },
-						null,
-						null,
-						{ visible: ' . ($show_user ? 'true' : 'false') . ' }
-					]
-				});
-			');
-
-		$html .= '<table id="' . $table_id . '" class="width100">';
-		$html .= '<thead><tr>';
-		$html .= '<th></th>';
-		$html .= '<th>' . I18N::translate('Record') . '</th>';
-		$html .= '<th>' . I18N::translate('Last change') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
-		$html .= '</tr></thead><tbody>';
-
-		foreach ($records as $record) {
-			$html .= '<tr><td>';
-			switch ($record::RECORD_TYPE) {
-				case 'INDI':
-					$html .= FontAwesome::semanticIcon('individual', I18N::translate('Individual'));
-					break;
-				case 'FAM':
-					$html .= FontAwesome::semanticicon('family', I18N::translate('Family'));
-					break;
-				case 'OBJE':
-					$html .= FontAwesome::semanticIcon('media', I18N::translate('Media'));
-					break;
-				case 'NOTE':
-					$html .= FontAwesome::semanticIcon('note', I18N::translate('Note'));
-					break;
-				case 'SOUR':
-					$html .= FontAwesome::semanticIcon('source', I18N::translate('Source'));
-					break;
-				case 'SUBM':
-					$html .= FontAwesome::semanticIcon('submitter', I18N::translate('Submitter'));
-					break;
-				case 'REPO':
-					$html .= FontAwesome::semanticIcon('repository', I18N::translate('Repository'));
-					break;
-			}
-			$html .= '</td>';
-			$html .= '<td data-sort="' . e($record->getSortName()) . '">';
-			$html .= '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
-			$addname = $record->getAddName();
-			if ($addname) {
-				$html .= '<div class="indent"><a href="' . e($record->url()) . '">' . $addname . '</a></div>';
-			}
-			$html .= '</td>';
-			$html .= '<td data-sort="' . $record->lastChangeTimestamp(true) . '">' . $record->lastChangeTimestamp() . '</td>';
-			$html .= '<td>' . e($record->lastChangeUser()) . '</td>';
-			$html .= '</tr>';
-		}
-
-		$html .= '</tbody></table>';
 
 		return $html;
 	}
