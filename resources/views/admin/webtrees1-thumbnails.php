@@ -14,7 +14,7 @@
 	<?= I18N::translate('If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object.') ?>
 </p>
 
-<table class="table table-bordered table-sm table-hover table-responsive datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-webtrees1-thumbs-data')])) ?>" data-server-side="true" data-state-save="true" data-sort="false" data-auto-width="false" data-save-state="true">
+<table class="table table-bordered table-sm table-hover datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-webtrees1-thumbs-data')])) ?>" data-server-side="true" data-state-save="true" data-sort="false" data-auto-width="false" data-save-state="true">
 	<caption class="sr-only">
 		<?= I18N::translate('Media objects') ?>
 	</caption>

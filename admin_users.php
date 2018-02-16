@@ -572,7 +572,7 @@ case 'edit':
 			</div>
 		</div>
 
-		<table class="table table-bordered table-sm table-responsive">
+		<table class="table table-bordered table-sm">
 			<thead>
 				<tr>
 					<th>

@@ -10,7 +10,7 @@
 	<?= I18N::translate('If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location.') ?>
 </p>
 
-<table class="table table-bordered table-sm table-hover table-responsive datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-fix-level-0-media-data')])) ?>" data-server-side="true" data-state-save="true">
+<table class="table table-bordered table-sm table-hover datatables wt-fix-table" data-ajax="<?= e(json_encode(['url' => route('admin-fix-level-0-media-data')])) ?>" data-server-side="true" data-state-save="true">
 	<caption class="sr-only">
 		<?= I18N::translate('Media objects') ?>
 	</caption>
