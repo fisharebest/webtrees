@@ -7,32 +7,33 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-family-book-chart d-print-none">
+	<input type="hidden" name="route" value="family-book">
 	<input type="hidden" name="ged" value="<?= e($individual->getTree()->getName()) ?>">
 
 	<div class="row form-group">
-		<label class="col-sm-3 col-form-label wt-page-options-label" for="rootid">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
 			<?= I18N::translate('Individual') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'rootid', 'name' => 'rootid']) ?>
+			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="book_size">
+			<?= I18N::translate('Generations') ?>
+		</label>
+		<div class="col-sm-9 wt-page-options-value">
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, 5)), $book_size, ['id' => 'book_size', 'name' => 'book_size']) ?>
 		</div>
 	</div>
 
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="generations">
-			<?= I18N::translate('Generations') ?>
-		</label>
-		<div class="col-sm-9 wt-page-options-value">
-			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, $individual->getTree()->getPreference('MAX_PEDIGREE_GENERATIONS'))), $generations, ['id' => 'generations', 'name' => 'generations']) ?>
-		</div>
-	</div>
-
-	<div class="row form-group">
-		<label class="col-sm-3 col-form-label wt-page-options-label" for="descent">
 			<?= I18N::translate('Descendant generations') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, 9)), $descent, ['id' => 'descent', 'name' => 'descent']) ?>
+			<?= Bootstrap4::select(FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations)), $generations, ['id' => 'generations', 'name' => 'generations']) ?>
 		</div>
 	</div>
 
@@ -55,4 +56,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => $show_spouse])) ?>"></div>

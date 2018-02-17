@@ -17,17 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FontAwesome;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,8 +30,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class FamilyBookChartController extends AbstractChartController {
 	// Defaults
-	const DEFAULT_GENERATIONS   = 2;
+	const DEFAULT_GENERATIONS            = 2;
 	const DEFAULT_DESCENDANT_GENERATIONS = 5;
+	const DEFAULT_MAXIMUM_GENERATIONS    = 9;
 
 	/**
 	 * A form to request the chart parameters.
@@ -50,37 +45,37 @@ class FamilyBookChartController extends AbstractChartController {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		$this->checkModuleIsActive($tree, 'descendancy_chart');
+		$this->checkModuleIsActive($tree, 'family_book_chart');
 
-		$xref         = $request->get('xref');
-		$individual   = Individual::getInstance($xref, $tree);
+		$xref       = $request->get('xref');
+		$individual = Individual::getInstance($xref, $tree);
 
 		$minimum_generations = 2;
 		$maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
 		$default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-		$chart_style  = (int) $request->get('chart_style', self::DEFAULT_STYLE);
-		$generations  = (int) $request->get('generations', $default_generations);
-
+		$show_spouse = (bool) $request->get('show_spouse');
+		$generations = (int) $request->get('generations', $default_generations);
 		$generations = min($generations, $maximum_generations);
 		$generations = max($generations, $minimum_generations);
 
-		if ($individual !== null && $individual->canShowName()) {
-			$title = /* I18N: %s is an individual’s name */ I18N::translate('Descendants of %s', $individual->getFullName());
-		} else {
-			$title = I18N::translate('Descendants');
-		}
+		// Generations of ancestors/descendants in each mini-tree.
+		$book_size = (int) $request->get('book_size', 2);
+		$book_size = min($book_size, 5);
+		$book_size = max($book_size, 2);
 
-		return $this->viewResponse('descendants-page', [
-			'chart_style'         => $chart_style,
-			'chart_styles'        => $this->chartStyles(),
-			'default_generations' => $default_generations,
+		$title
+			= /* I18N: %s is an individual’s name */
+			I18N::translate('Descendants of %s', $individual->getFullName());
+
+		return $this->viewResponse('family-book-page', [
+			'book_size'           => $book_size,
 			'generations'         => $generations,
 			'individual'          => $individual,
 			'maximum_generations' => $maximum_generations,
 			'minimum_generations' => $minimum_generations,
+			'show_spouse'         => $show_spouse,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 
@@ -93,9 +88,9 @@ class FamilyBookChartController extends AbstractChartController {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		$this->checkModuleIsActive($tree, 'descendancy_chart');
+		$this->checkModuleIsActive($tree, 'family_book_chart');
 
-		$xref         = $request->get('xref');
+		$xref       = $request->get('xref');
 		$individual = Individual::getInstance($xref, $tree);
 
 		$this->checkIndividualAccess($individual);
@@ -104,299 +99,348 @@ class FamilyBookChartController extends AbstractChartController {
 		$maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
 		$default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-		$chart_style  = (int) $request->get('chart_style', self::DEFAULT_STYLE);
-		$generations  = (int) $request->get('generations', $default_generations);
+		$book_size   = (int) $request->get('book_size', 2);
+		$show_spouse = (bool) $request->get('show_spouse');
 
+		$generations = (int) $request->get('generations', $default_generations);
 		$generations = min($generations, $maximum_generations);
 		$generations = max($generations, $minimum_generations);
-
 		$descendants = $this->descendants($individual, $generations, []);
 
-		switch($chart_style) {
-			case self::CHART_STYLE_LIST:
-			default:
-				return $this->descendantsList($individual, $generations);
-			case self::CHART_STYLE_BOOKLET:
-				return $this->descendantsBooklet($individual, $generations);
-			case self::CHART_STYLE_INDIVIDUALS:
-				return $this->descendantsIndividuals($descendants);
-			case self::CHART_STYLE_FAMILIES:
-				return $this->descendantsFamilies($descendants);
-		}
-	}
-
-	/**
-	 * Find all the individuals that are descended from an individual.
-	 *
-	 * @param Individual   $individual
-	 * @param int          $generations
-	 * @param Individual[] $array
-	 *
-	 * @return Individual[]
-	 */
-	private function descendants(Individual $individual, int $generations, array $array): array {
-		if ($generations < 1) {
-			return $array;
-		}
-
-		$array[$individual->getXref()] = $individual;
-
-		foreach ($individual->getSpouseFamilies() as $family) {
-			$spouse = $family->getSpouse($individual);
-			if ($spouse !== null && !array_key_exists($spouse->getXref(), $array)) {
-				$array[$spouse->getXref()] = $spouse;
-			}
-			foreach ($family->getChildren() as $child) {
-				$array = $this->descendants($child, $generations - 1, $array);
-			}
-		}
-
-		return $array;
-	}
-
-	/**
-	 * Show a hierarchical list of descendants
-	 *
-	 * @TODO replace ob_start() with views.
-	 *
-	 * @param Individual $individual
-	 * @param int        $generations
-	 *
-	 * @return Response
-	 */
-	private function descendantsList(Individual $individual, int $generations): Response {
+		// @TODO - this is just a wrapper around the old code.
 		ob_start();
+		$this->box = (object) [
+			'width'  => Theme::theme()->parameter('chart-box-x'),
+			'height' => Theme::theme()->parameter('chart-box-y'),
+		];
 
-		echo '<ul class="chart_common">';
-		$this->printChildDescendancy($individual, $generations, $generations);
-		echo '</ul>';
+		$this->show_spouse = $show_spouse;
+		$this->descent     = $generations;
+		$this->generations = $book_size;
+
+		$this->bhalfheight = $this->box->height / 2;
+		$this->dgenerations = $this->maxDescendencyGenerations($individual->getXref(), 0);
+
+		if ($this->dgenerations < 1) {
+			$this->dgenerations = 1;
+		}
+
+		$this->printFamilyBook($individual, $generations);
 
 		$html = ob_get_clean();
 
 		return new Response($html);
-
 	}
 
 	/**
-	 * print a child descendancy
+	 * Prints descendency of passed in person
 	 *
-	 * @param Individual $person
-	 * @param int        $depth the descendancy depth to show
-	 * @param int        $generations
-	 */
-	private function printChildDescendancy(Individual $person, $depth, int $generations) {
-		echo '<li>';
-		echo '<table><tr><td>';
-		if ($depth == $generations) {
-			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="15"></td><td>';
-		} else {
-			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3">';
-			echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', 12, '"></td><td>';
-		}
-		FunctionsPrint::printPedigreePerson($person);
-		echo '</td>';
-
-		// check if child has parents and add an arrow
-		echo '<td></td>';
-		echo '<td>';
-		foreach ($person->getChildFamilies() as $cfamily) {
-			foreach ($cfamily->getSpouses() as $parent) {
-				echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged' => $parent->getTree()->getName(), 'xref' => $parent->getXref(), 'generations' => $generations])]);
-				// only show the arrow for one of the parents
-				break;
-			}
-		}
-
-		// d'Aboville child number
-		$level = $generations - $depth;
-		echo '<br><br>&nbsp;';
-		echo '<span dir="ltr">'; //needed so that RTL languages will display this properly
-		if (!isset($this->dabo_num[$level])) {
-			$this->dabo_num[$level] = 0;
-		}
-		$this->dabo_num[$level]++;
-		$this->dabo_num[$level + 1] = 0;
-		$this->dabo_sex[$level]     = $person->getSex();
-		for ($i = 0; $i <= $level; $i++) {
-			$isf = $this->dabo_sex[$i];
-			if ($isf === 'M') {
-				$isf = '';
-			}
-			if ($isf === 'U') {
-				$isf = 'NN';
-			}
-			echo '<span class="person_box' . $isf . '">&nbsp;' . $this->dabo_num[$i] . '&nbsp;</span>';
-			if ($i < $level) {
-				echo '.';
-			}
-		}
-		echo '</span>';
-		echo '</td></tr>';
-		echo '</table>';
-		echo '</li>';
-
-		// loop for each spouse
-		foreach ($person->getSpouseFamilies() as $family) {
-			$this->printFamilyDescendancy($person, $family, $depth, $generations);
-		}
-	}
-
-	/**
-	 * print a family descendancy
+	 * @param Individual|null $person
+	 * @param int             $generation
 	 *
-	 * @param Individual $person
-	 * @param Family     $family
-	 * @param int        $depth the descendancy depth to show
-	 * @param int        $generations
+	 * @return int
 	 */
-	private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations) {
-		$uid = Uuid::uuid4()->toString(); // create a unique ID
-		// print marriage info
-		echo '<li>';
-		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', 19, '">';
-		echo '<span class="details1">';
-		echo '<a href="#" onclick="expand_layer(\'' . $uid . '\'); return false;" class="top"><i id="' . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
-		if ($family->canShow()) {
-			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
-				echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
-			}
+	private function printDescendency(Individual $person = null, $generation) {
+		if ($generation > $this->dgenerations) {
+			return 0;
 		}
-		echo '</span>';
 
-		// print spouse
-		$spouse = $family->getSpouse($person);
-		echo '<ul class="generations" id="' . $uid . '">';
-		echo '<li>';
-		echo '<table><tr><td>';
-		FunctionsPrint::printPedigreePerson($spouse);
-		echo '</td>';
+		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
+		$numkids = 0;
 
-		// check if spouse has parents and add an arrow
-		echo '<td></td>';
-		echo '<td>';
-		if ($spouse) {
-			foreach ($spouse->getChildFamilies() as $cfamily) {
-				foreach ($cfamily->getSpouses() as $parent) {
-					echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged' => $parent->getTree()->getName(), 'xref' => $parent->getXref(), 'generations' => $generations])]);
-					// only show the arrow for one of the parents
-					break;
+		// Load children
+		$children = [];
+		if ($person) {
+			// Count is position from center to left, dgenerations is number of generations
+			if ($generation < $this->dgenerations) {
+				// All children, from all partners
+				foreach ($person->getSpouseFamilies() as $family) {
+					foreach ($family->getChildren() as $child) {
+						$children[] = $child;
+					}
 				}
 			}
 		}
-		echo '<br><br>&nbsp;';
-		echo '</td></tr>';
-
-		// children
-		$children = $family->getChildren();
-		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
-		if (!empty($children)) {
-			echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
-		} else {
-			// Distinguish between no children (NCHI 0) and no recorded
-			// children (no CHIL records)
-			if (strpos($family->getGedcom(), '\n1 NCHI 0')) {
-				echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
+		if ($generation < $this->dgenerations) {
+			if (!empty($children)) {
+				// real people
+				echo '<table cellspacing="0" cellpadding="0" border="0" >';
+				foreach ($children as $i => $child) {
+					echo '<tr><td>';
+					$kids = $this->printDescendency($child, $generation + 1);
+					$numkids += $kids;
+					echo '</td>';
+					// Print the lines
+					if (count($children) > 1) {
+						if ($i === 0) {
+							// Adjust for the first column on left
+							$h = round(((($this->box->height) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
+							//  Adjust for other vertical columns
+							if ($kids > 1) {
+								$h = ($kids - 1) * 4 + $h;
+							}
+							echo '<td class="align-bottom">',
+							'<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h - 4, '"></td>';
+						} elseif ($i === count($children) - 1) {
+							// Adjust for the first column on left
+							$h = round(((($this->box->height) * $kids) + 8) / 2);
+							// Adjust for other vertical columns
+							if ($kids > 1) {
+								$h = ($kids - 1) * 4 + $h;
+							}
+							echo '<td class="align-top">',
+							'<img class="bvertline" width="3" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h - 2, '"></td>';
+						} else {
+							echo '<td class="align-bottomm"style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
+							'<img class="spacer"  width="3" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
+						}
+					}
+					echo '</tr>';
+				}
+				echo '</table>';
 			} else {
-				echo I18N::translate('No children');
+				// Hidden/empty boxes - to preserve the layout
+				echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
+				$numkids += $this->printDescendency(null, $generation + 1);
+				echo '</td></tr></table>';
+			}
+			echo '</td>';
+			echo '<td>';
+		}
+
+		if ($numkids === 0) {
+			$numkids = 1;
+		}
+		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
+		if ($person) {
+			FunctionsPrint::printPedigreePerson($person);
+			echo '</td><td>',
+			'<img class="linef1" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
+		} else {
+			echo '<div style="width:', $this->box->width + 19, 'px; height:', $this->box->height + 8, 'px;"></div>',
+			'</td><td>';
+		}
+
+		// Print the spouse
+		if ($generation === 1) {
+			if ($this->show_spouse === '1') {
+				foreach ($person->getSpouseFamilies() as $family) {
+					$spouse = $family->getSpouse($person);
+					echo '</td></tr><tr><td>';
+					FunctionsPrint::printPedigreePerson($spouse);
+					$numkids += 0.95;
+					echo '</td><td>';
+				}
 			}
 		}
 		echo '</td></tr></table>';
-		echo '</li>';
-		if ($depth > 1) {
-			foreach ($children as $child) {
-				$this->printChildDescendancy($child, $depth - 1, $generations);
-			}
-		}
-		echo '</ul>';
-		echo '</li>';
+		echo '</td></tr>';
+		echo '</table>';
+
+		return $numkids;
 	}
 
 	/**
-	 * Show a tabular list of individual descendants.
-	 *
-	 * @param Individual[] $descendants
-	 *
-	 * @return Response
-	 */
-	private function descendantsIndividuals(array $descendants): Response {
-		$html = FunctionsPrintLists::individualTable($descendants);
-
-		return new Response($html);
-	}
-
-	/**
-	 * Show a tabular list of individual descendants.
-	 *
-	 * @param Individual[] $descendants
-	 *
-	 * @return Response
-	 */
-	private function descendantsFamilies(array $descendants): Response {
-		$families  = [];
-		foreach ($descendants as $individual) {
-			foreach ($individual->getChildFamilies() as $family) {
-				$families[$family->getXref()] = $family;
-			}
-		}
-
-		$html = FunctionsPrintLists::familyTable($families);
-
-		return new Response($html);
-	}
-
-	/**
-	 * Show a booklet view of descendants
-	 *
-	 * @TODO replace ob_start() with views.
-	 *
-	 * @param Individual $individual
-	 * @param int        $generations
-	 *
-	 * @return Response
-	 */
-	private function descendantsBooklet(Individual $individual, int $generations): Response {
-		ob_start();
-
-		$this->printChildFamily($individual, $generations);
-
-		$html = ob_get_clean();
-
-		return new Response($html);
-	}
-
-
-	/**
-	 * Print a child family
+	 * Prints pedigree of the person passed in
 	 *
 	 * @param Individual $person
-	 * @param int        $depth the descendancy depth to show
-	 * @param string     $label
-	 * @param string     $gpid
+	 * @param int        $count
 	 */
-	private function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '') {
-		if ($depth < 2) {
+	private function printPersonPedigree($person, $count) {
+		if ($count >= $this->generations) {
 			return;
 		}
-		foreach ($person->getSpouseFamilies() as $family) {
-			FunctionsCharts::printSosaFamily($family->getXref(), '', -1, $label, $person->getXref(), $gpid, 0);
-			$i = 1;
-			foreach ($family->getChildren() as $child) {
-				$this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
+
+		$genoffset = $this->generations; // handle pedigree n generations lines
+		//-- calculate how tall the lines should be
+		$lh = ($this->bhalfheight) * pow(2, ($genoffset - $count - 1));
+		//
+		//Prints empty table columns for children w/o parents up to the max generation
+		//This allows vertical line spacing to be consistent
+		if (count($person->getChildFamilies()) == 0) {
+			echo '<table cellspacing="0" cellpadding="0" border="0" >';
+			$this->printEmptyBox();
+
+			//-- recursively get the father’s family
+			$this->printPersonPedigree($person, $count + 1);
+			echo '</td><td></tr>';
+			$this->printEmptyBox();
+
+			//-- recursively get the mother’s family
+			$this->printPersonPedigree($person, $count + 1);
+			echo '</td><td></tr></table>';
+		}
+
+		// Empty box section done, now for regular pedigree
+		foreach ($person->getChildFamilies() as $family) {
+			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-bottom">';
+			// Determine line height for two or more spouces
+			// And then adjust the vertical line for the root person only
+			$famcount = 0;
+			if ($this->show_spouse === '1') {
+				// count number of spouses
+				$famcount += count($person->getSpouseFamilies());
 			}
+			$savlh = $lh; // Save current line height
+			if ($count == 1 && $genoffset <= $famcount) {
+				$linefactor = 0;
+				// genoffset of 2 needs no adjustment
+				if ($genoffset > 2) {
+					$tblheight = $this->box->height + 8;
+					if ($genoffset == 3) {
+						if ($famcount == 3) {
+							$linefactor = $tblheight / 2;
+						} elseif ($famcount > 3) {
+							$linefactor = $tblheight;
+						}
+					}
+					if ($genoffset == 4) {
+						if ($famcount == 4) {
+							$linefactor = $tblheight;
+						} elseif ($famcount > 4) {
+							$linefactor = ($famcount - $genoffset) * ($tblheight * 1.5);
+						}
+					}
+					if ($genoffset == 5) {
+						if ($famcount == 5) {
+							$linefactor = 0;
+						} elseif ($famcount > 5) {
+							$linefactor = $tblheight * ($famcount - $genoffset);
+						}
+					}
+				}
+				$lh = (($famcount - 1) * ($this->box->height) - ($linefactor));
+				if ($genoffset > 5) {
+					$lh = $savlh;
+				}
+			}
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
+			'<td>',
+			'<img class="linef2" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
+			'<td>';
+			$lh = $savlh; // restore original line height
+			//-- print the father box
+			FunctionsPrint::printPedigreePerson($family->getHusband());
+			echo '</td>';
+			if ($family->getHusband()) {
+				echo '<td>';
+				//-- recursively get the father’s family
+				$this->printPersonPedigree($family->getHusband(), $count + 1);
+				echo '</td>';
+			} else {
+				echo '<td>';
+				if ($genoffset > $count) {
+					echo '<table cellspacing="0" cellpadding="0" border="0" >';
+					for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
+						$this->printEmptyBox();
+						echo '</tr>';
+					}
+					echo '</table>';
+				}
+			}
+			echo '</tr><tr>',
+			'<td class="align-top"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
+			'<td><img class="linef3" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
+			'<td>';
+			//-- print the mother box
+			FunctionsPrint::printPedigreePerson($family->getWife());
+			echo '</td>';
+			if ($family->getWife()) {
+				echo '<td>';
+				//-- recursively print the mother’s family
+				$this->printPersonPedigree($family->getWife(), $count + 1);
+				echo '</td>';
+			} else {
+				echo '<td>';
+				if ($count < $genoffset - 1) {
+					echo '<table cellspacing="0" cellpadding="0" border="0" >';
+					for ($i = 1; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 1; $i++) {
+						$this->printEmptyBox();
+						echo '</tr>';
+						$this->printEmptyBox();
+						echo '</tr>';
+					}
+					echo '</table>';
+				}
+			}
+			echo '</tr>',
+			'</table>';
+			break;
 		}
 	}
 
 	/**
-	 * This chart can display its output in a number of styles
+	 * Calculates number of generations a person has
 	 *
-	 * @return array
+	 * @param string $pid
+	 * @param int    $depth
+	 *
+	 * @return int
 	 */
-	private function chartStyles(): array {
-		return [
-			self::CHART_STYLE_LIST        => I18N::translate('List'),
-			self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
-			self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
-			self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
-		];
+	private function maxDescendencyGenerations($pid, $depth) {
+		if ($depth > $this->generations) {
+			return $depth;
+		}
+		$person = Individual::getInstance($pid, $this->tree());
+		if (is_null($person)) {
+			return $depth;
+		}
+		$maxdc = $depth;
+		foreach ($person->getSpouseFamilies() as $family) {
+			foreach ($family->getChildren() as $child) {
+				$dc = $this->maxDescendencyGenerations($child->getXref(), $depth + 1);
+				if ($dc >= $this->generations) {
+					return $dc;
+				}
+				if ($dc > $maxdc) {
+					$maxdc = $dc;
+				}
+			}
+		}
+		$maxdc++;
+		if ($maxdc == 1) {
+			$maxdc++;
+		}
+
+		return $maxdc;
+	}
+
+	/**
+	 * Print empty box
+	 */
+
+	private function printEmptyBox() {
+		echo Theme::theme()->individualBoxEmpty();
+	}
+
+	/**
+	 * Print a “Family Book” for an individual
+	 *
+	 * @param Individual $person
+	 * @param int    $descent_steps
+	 */
+	private function printFamilyBook(Individual $person, $descent_steps) {
+		if ($descent_steps == 0) {
+			return;
+		}
+
+		$families = $person->getSpouseFamilies();
+		if (1 || !empty($families)) {
+			echo
+			'<h3>',
+				/* I18N: %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
+			'</h3>',
+			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
+			$this->dgenerations = $this->generations;
+			$this->printDescendency($person, 1);
+			echo '</td><td class="align-middle">';
+			$this->printPersonPedigree($person, 1);
+			echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
+			foreach ($families as $family) {
+				foreach ($family->getChildren() as $child) {
+					$this->printFamilyBook($child, $descent_steps - 1);
+				}
+			}
+		}
 	}
 }

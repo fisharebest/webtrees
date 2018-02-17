@@ -78,4 +78,33 @@ abstract class AbstractChartController extends BaseController {
 
 		return $ancestors;
 	}
+
+	/**
+	 * Find all the individuals that are descended from an individual.
+	 *
+	 * @param Individual   $individual
+	 * @param int          $generations
+	 * @param Individual[] $array
+	 *
+	 * @return Individual[]
+	 */
+	protected function descendants(Individual $individual, int $generations, array $array): array {
+		if ($generations < 1) {
+			return $array;
+		}
+
+		$array[$individual->getXref()] = $individual;
+
+		foreach ($individual->getSpouseFamilies() as $family) {
+			$spouse = $family->getSpouse($individual);
+			if ($spouse !== null && !array_key_exists($spouse->getXref(), $array)) {
+				$array[$spouse->getXref()] = $spouse;
+			}
+			foreach ($family->getChildren() as $child) {
+				$array = $this->descendants($child, $generations - 1, $array);
+			}
+		}
+
+		return $array;
+	}
 }
