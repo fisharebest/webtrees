@@ -120,12 +120,12 @@ class LoginController extends BaseController {
 			// If there was no referring page, redirect to "my page".
 			if ($url === '') {
 				// Switch to a tree where we have a genealogy record (or keep to the current/default).
-				$gedcom = Database::prepare("SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" . " WHERE setting_name = 'gedcomid' AND user_id = :user_id" . " ORDER BY gedcom_id = :tree_id DESC")->execute([
+				$ged = Database::prepare("SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" . " WHERE setting_name = 'gedcomid' AND user_id = :user_id" . " ORDER BY gedcom_id = :tree_id DESC")->execute([
 					'user_id' => Auth::user()->getUserId(),
 					'tree_id' => $tree ? $tree->getTreeId() : 0,
 				])->fetchOne();
 
-				$url = route('home-page', ['ged' => $gedcom->gedcom_name ?? '']);
+				$url = route('home-page', ['ged' => $ged]);
 			}
 
 			// Redirect to the target URL
