@@ -62,7 +62,7 @@ class ForgotPasswordController extends BaseController {
 
 		$user = User::findByIdentifier($identifier);
 
-		if ($user) {
+		if ($user !== null) {
 			$password = $this->createNewPassword();
 			$user->setPassword($password);
 

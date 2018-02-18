@@ -51,7 +51,7 @@ class VerifyEmailController extends BaseController {
 
 		$user = User::findByUserName($username);
 
-		if ($user && $user->getPreference('reg_hashcode') === $token) {
+		if ($user !== null && $user->getPreference('reg_hashcode') === $token) {
 			// switch language to webmaster settings
 			$webmaster = User::find($tree->getPreference('WEBMASTER_USER_ID'));
 			I18N::init($webmaster->getPreference('language'));

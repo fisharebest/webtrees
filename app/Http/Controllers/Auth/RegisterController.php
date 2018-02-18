@@ -136,7 +136,7 @@ class RegisterController extends BaseController {
 			]));
 
 		// Tell the genealogy contact about the registration.
-		$webmaster = User::find($tree->getPreference('WEBMASTER_USER_ID'));
+		$webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 		I18N::init($webmaster->getPreference('language'));
 
 		Mail::send($sender, $webmaster, $user, /* I18N: %s is a server name/URL */
