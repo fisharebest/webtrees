@@ -472,6 +472,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'app/Controller/SimpleController.php',
 			WT_ROOT . 'assets/js-1.7.7',
 			WT_ROOT . 'block_edit.php',
+			WT_ROOT . 'compact.php',
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'descendancy.php',
 			WT_ROOT . 'familybook.php',
