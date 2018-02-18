@@ -46,7 +46,7 @@
 					</div>
 				</li>
 				<li class="nav-item menu-logout">
-					<a class="nav-link" href="logout.php"><?= I18N::translate('Sign out') ?></a>
+					<a class="nav-link" href="<?= e(route('logout')) ?>"><?= I18N::translate('Sign out') ?></a>
 				</li>
 			</ul>
 		</header>

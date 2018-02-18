@@ -1619,7 +1619,7 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuLogin() {
-		if (Auth::check() || WT_SCRIPT_NAME === 'login.php') {
+		if (Auth::check()) {
 			return null;
 		} else {
 			// Return to this page after login...
@@ -1627,7 +1627,7 @@ abstract class AbstractTheme {
 			// ...but switch from the tree-page to the user-page
 			$url = str_replace('route=tree-page', 'route=user-page', $url);
 
-			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode($url), 'menu-login', ['rel' => 'nofollow']);
+			return new Menu(I18N::translate('Sign in'), e(route('login', ['url' => $url])), 'menu-login', ['rel' => 'nofollow']);
 		}
 	}
 
@@ -1638,7 +1638,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuLogout() {
 		if (Auth::check()) {
-			return new Menu(I18N::translate('Sign out'), 'logout.php', 'menu-logout');
+			return new Menu(I18N::translate('Sign out'), e(route('logout')), 'menu-logout');
 		} else {
 			return null;
 		}

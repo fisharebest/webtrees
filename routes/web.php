@@ -112,7 +112,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 	];
 }
 
-// Public routes.
+// Public routes (that need a tree).
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	$routes += [
 		'GET:autocomplete-folder' => 'AutocompleteController@folder',
@@ -162,5 +162,18 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:timeline-chart'      => 'TimelineChartController@chart',
 	];
 }
+
+// Public routes (that do not need a tree).
+$routes += [
+	'GET:login'            => 'Auth\\LoginController@loginPage',
+	'POST:login'           => 'Auth\\LoginController@loginAction',
+	'GET:logout'           => 'Auth\\LoginController@logoutAction',
+	'POST:logout'          => 'Auth\\LoginController@logoutAction',
+	'GET:register'         => 'Auth\\RegisterController@registerPage',
+	'POST:register'        => 'Auth\\RegisterController@registerAction',
+	'GET:verify'           => 'Auth\\VerifyEmailController@verify',
+	'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
+	'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
+];
 
 return $routes;

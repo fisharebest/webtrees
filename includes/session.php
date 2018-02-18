@@ -256,15 +256,8 @@ define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
-// The login URL must be an absolute URL, and can be user-defined
-if (Site::getPreference('LOGIN_URL') !== '') {
-	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
-} else {
-	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
-}
-
 // If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'action.php') {
+if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && Filter::get('route') !== 'login' && Filter::get('route') !== 'logout' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'action.php') {
 	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
 			header('Location: admin_trees_manage.php');
@@ -276,7 +269,7 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 					I18N::translate('This user account does not have access to any tree.')
 				);
 			}
-			header('Location: ' . Html::url(WT_LOGIN_URL, ['url' => $request->getRequestUri()]));
+			header('Location: ' . route('login', ['url' => $request->getRequestUri()]));
 		}
 		exit;
 	}

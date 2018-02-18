@@ -49,7 +49,7 @@ class ErrorController extends BaseController {
 
 		// Not logged in?
 		if (!Auth::check()) {
-			return new RedirectResponse(Html::url('login.php', ['url' => $request->getRequestUri()]));
+			return new RedirectResponse(route('login', ['url' => $request->getRequestUri()]));
 		}
 
 		// No tree or tree not imported?

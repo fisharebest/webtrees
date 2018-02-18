@@ -53,13 +53,18 @@ function e(string $text): string {
  *
  * @param string $route
  * @param array  $parameters
+ * @param bool   $absolute
  *
  * @return string
  */
-function route(string $route, array $parameters = []): string {
+function route(string $route, array $parameters = [], bool $absolute = false): string {
 	$parameters = ['route' => $route] + $parameters;
 
-	return Html::url('index.php', $parameters);
+	if ($absolute) {
+		return Html::url(WT_BASE_URL . 'index.php', $parameters);
+	} else {
+		return Html::url('index.php', $parameters);
+	}
 }
 
 /**

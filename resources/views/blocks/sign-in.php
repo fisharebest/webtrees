@@ -1,8 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form name="login-form" method="POST" action="<?= WT_LOGIN_URL ?>">
-	<input type="hidden" name="action" value="login">
-	<input type="hidden" name="url" value="<?= e(route('user-page')) ?>">
+<form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page')]) ?>">
 
 	<div class="form-group">
 		<label for="username">
@@ -30,13 +28,13 @@
 </form>
 
 <?php if ($allow_register): ?>
-	<a class="btn btn-link" href="<?= WT_LOGIN_URL ?>?action=register">
+	<a class="btn btn-link" href="<?= e(route('register')) ?>">
 		<?= I18N::translate('Request a new user account') ?>
 	</a>
 <?php endif ?>
 
 <div class="collapse" id="forgot-password">
-	<form action="<?= WT_LOGIN_URL ?>" method="POST">
+	<form action="<?= e(route('login')) ?>" method="POST">
 		<input type="hidden" name="time" value="">
 		<input type="hidden" name="action" value="requestpw">
 		<?= I18N::translate('Request a new password') ?>

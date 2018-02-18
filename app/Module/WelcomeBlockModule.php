@@ -69,7 +69,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 
 		if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
 			$links[] = [
-				'url'   => Html::url(WT_LOGIN_URL, ['action' => 'register']),
+				'url'   => route('register'),
 				'title' => I18N::translate('Request a new user account'),
 				'icon'  => 'icon-user_add',
 			];

@@ -4,7 +4,7 @@
 <?= I18N::translate('You are signed in as %s.', e($user->getUserName())) ?>
 </p>
 
-<form method="POST" action="logout.php">
+<form method="POST" action="<?= e(route('logout')) ?>">
 	<button type="submit" class="btn btn-primary">
 		<?= /* I18N: A button label. */ I18N::translate('sign out') ?>
 	</button>

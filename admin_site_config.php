@@ -68,7 +68,6 @@ switch (Filter::post('action')) {
 		return;
 	case 'login':
 		if (Filter::checkCsrf()) {
-			Site::setPreference('LOGIN_URL', Filter::post('LOGIN_URL'));
 			Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
 			Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 			Site::setPreference('USE_REGISTRATION_MODULE', Filter::postBool('USE_REGISTRATION_MODULE'));
@@ -433,19 +432,6 @@ echo Bootstrap4::breadcrumbs([
 	<?php elseif (Filter::get('action') === 'login'): ?>
 	<input type="hidden" name="action" value="login">
 
-	<!-- LOGIN_URL -->
-	<div class="row form-group">
-		<label for="LOGIN_URL" class="col-sm-3 col-form-label">
-			<?= /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
-		</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?= e(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
-			<p class="small text-muted">
-				<?= /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
-			</p>
-		</div>
-	</div>
-
 	<!-- WELCOME_TEXT_AUTH_MODE -->
 	<div class="row form-group">
 		<label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 col-form-label">
@@ -458,7 +444,7 @@ echo Bootstrap4::breadcrumbs([
 		</div>
 	</div>
 
-	<!-- LOGIN_URL -->
+	<!-- WELCOME_TEXT_AUTH_MODE_4 -->
 	<div class="row form-group">
 		<label for="WELCOME_TEXT_AUTH_MODE_4" class="col-sm-3 col-form-label">
 			<?= /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
