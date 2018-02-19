@@ -249,6 +249,7 @@ class ReportEngineController extends BaseController {
 
 
 		switch ($output) {
+			default:
 			case 'HTML':
 				ob_start();
 				new ReportParserGenerate($report_xml, new ReportHtml, $vars, $tree);
@@ -276,9 +277,9 @@ class ReportEngineController extends BaseController {
 
 				$response->headers->set('Content-Disposition', $disposition);
 				$response->headers->set('Content-Type', 'application/pdf');
-		}
 
-		return new Response(ob_get_clean());
+				return $response;
+		}
 	}
 
 	/**

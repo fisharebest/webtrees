@@ -126,10 +126,7 @@ class ReportPdf extends ReportBase {
 	 */
 	public function run() {
 		$this->pdf->body();
-		header('Expires:');
-		header('Pragma:');
-		header('Cache-control:');
-		$this->pdf->Output('webtrees-' . uniqid() . '.pdf', 'I');
+		echo $this->pdf->Output('doc.pdf', 'S');
 	}
 
 	/**
