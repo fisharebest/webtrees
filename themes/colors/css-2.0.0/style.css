@@ -66,6 +66,10 @@
     padding-right: 5px;
 }
 
+.form-control {
+	background-color: #fff!important;
+}
+
 table {
 	border-collapse: separate;
 }
@@ -412,6 +416,10 @@ i[class*="wt-icon-media"] {
 	/* Recalculate margins for content */
 	margin: 0 calc(50% - 50vw);
 	padding: 0 calc(50vw - 50%);
+}
+
+.wt-primary-menu .dropdown-menu {
+    max-height: 60rem;
 }
 
 .wt-primary-menu .nav-item {

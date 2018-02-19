@@ -30,7 +30,7 @@
 	padding-left: 0;
 }
 
-#select2-rootid-container img, #select2-xref-container img {
+.select2-selection--single img {
     padding: 3px;
 }
 
