@@ -33,12 +33,63 @@ use League\Glide\Signatures\SignatureFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 /**
  * Controller for the media page and displaying images.
  */
 class MediaFileController extends BaseController {
+	/**
+	 * Download a non-image media file.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function mediaDownload(Request $request): Response {
+		/** @var Tree $tree */
+		$tree    = $request->attributes->get('tree');
+		$xref    = $request->get('xref');
+		$fact_id = $request->get('fact_id');
+		$media   = Media::getInstance($xref, $tree);
+
+		if ($media === null) {
+			throw new NotFoundHttpException;
+		}
+
+		if (!$media->canShow()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		foreach ($media->mediaFiles() as $media_file) {
+			if ($media_file->factId() === $fact_id) {
+				if ($media_file->isExternal()) {
+					return new RedirectResponse($media_file->filename());
+				}
+
+				if (!$media_file->isImage() && $media_file->fileExists()) {
+					$data     = file_get_contents($media_file->getServerFilename());
+					$response = new Response($data);
+
+					$disposition = $response->headers->makeDisposition(
+						ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+						basename($media_file->filename())
+					);
+
+					$response->headers->set('Content-Disposition', $disposition);
+					$response->headers->set('Content-Type', $media_file->mimeType());
+
+					return $response;
+				}
+			}
+		}
+
+		throw new NotFoundHttpException;
+	}
+
 	/**
 	 * Show an image/thumbnail, with/without a watermark.
 	 *

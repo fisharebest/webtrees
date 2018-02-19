@@ -195,12 +195,19 @@ class MediaFile {
 					'alt'    => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
 				]) . '>';
 
-		$attributes = Html::attributes([
-			'class'      => 'gallery',
-			'type'       => $this->mimeType(),
-			'href'       => $this->imageUrl(0, 0, 'contain'),
-			'data-title' => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
-		]);
+		if ($this->isImage()) {
+			$attributes = Html::attributes([
+				'class'      => 'gallery',
+				'type'       => $this->mimeType(),
+				'href'       => $this->imageUrl(0, 0, 'contain'),
+				'data-title' => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
+			]);
+		} else {
+			$attributes = Html::attributes([
+				'type' => $this->mimeType(),
+				'href' => $this->downloadUrl(),
+			]);
+		}
 
 		return '<a ' . $attributes . '>' . $image . '</a>';
 	}
@@ -369,6 +376,19 @@ class MediaFile {
 		}
 
 		return $imgsize;
+	}
+
+	/**
+	 * Generate a URL to download a non-image media file.
+	 *
+	 * @return string
+	 */
+	public function downloadUrl() {
+		return route('media-download', [
+			'xref'    => $this->media->getXref(),
+			'ged'     => $this->media->getTree()->getName(),
+			'fact_id' => $this->fact_id,
+		]);
 	}
 
 	/**

@@ -121,6 +121,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:tree-page'           => 'HomePageController@treePage',
 		'GET:tree-page-block'     => 'HomePageController@treePageBlock',
 		'GET:media-thumbnail'     => 'MediaFileController@mediaThumbnail',
+		'GET:media-download'      => 'MediaFileController@mediaDownload',
 		'GET:family'              => 'FamilyController@show',
 		'GET:individual'          => 'IndividualController@show',
 		'GET:individual-tab'      => 'IndividualController@tab',
