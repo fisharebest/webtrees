@@ -66,7 +66,7 @@ class FamilyBookChartController extends AbstractChartController {
 
 		$title
 			= /* I18N: %s is an individual’s name */
-			I18N::translate('Descendants of %s', $individual->getFullName());
+			I18N::translate('Family book of %s', $individual->getFullName());
 
 		return $this->viewResponse('family-book-page', [
 			'book_size'           => $book_size,
