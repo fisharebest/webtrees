@@ -17,6 +17,11 @@
 
 /* Override Bootstrap formatting */
 
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #eee;
+    color: #000;
+}
+
 .table-given-name {
     overflow-x: hidden;
 }
