@@ -256,23 +256,10 @@ define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
-// If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && Filter::get('route') !== 'login' && Filter::get('route') !== 'logout' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'action.php') {
-	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
-		if (Auth::isAdmin()) {
-			header('Location: admin_trees_manage.php');
-		} else {
-			// We're not an administrator, so we can only log in if there is a tree.
-			if (Auth::id()) {
-				Auth::logout();
-				FlashMessages::addMessage(
-					I18N::translate('This user account does not have access to any tree.')
-				);
-			}
-			header('Location: ' . route('login', ['url' => $request->getRequestUri()]));
-		}
-		exit;
-	}
+// Redirect to login url
+if (!$WT_TREE && !Auth::check() && (WT_SCRIPT_NAME !== 'index.php')) {
+	header('Location: ' . route('login', ['url' => $request->getRequestUri()]));
+	exit;
 }
 
 // Update the last-login time no more than once a minute
