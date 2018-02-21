@@ -51,7 +51,7 @@ try {
 	Session::put('GEDCOM', $tree_name);
 
 	$request->attributes->set('tree', $tree);
-	$request->attributes->set('user', AUth::user());
+	$request->attributes->set('user', Auth::user());
 
 	// Load the routing table.
 	$routes = require 'routes/web.php';
