@@ -57,7 +57,7 @@ class ErrorController extends BaseController {
 			return new RedirectResponse(Html::url('admin_trees_manage.php', []));
 		}
 
-		return $this->viewResponse('errors/no-tree-access', []);
+		return $this->viewResponse('errors/no-tree-access', [ 'title' => '' ]);
 	}
 
 	/**
