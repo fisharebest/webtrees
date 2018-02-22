@@ -476,6 +476,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'descendancy.php',
 			WT_ROOT . 'familybook.php',
+			WT_ROOT . 'fanchart.php',
 			WT_ROOT . 'index_edit.php',
 			WT_ROOT . 'login.php',
 			WT_ROOT . 'logout.php',
