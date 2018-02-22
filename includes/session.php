@@ -257,7 +257,7 @@ define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
 // Redirect to login url
-if (!$WT_TREE && !Auth::check() && (WT_SCRIPT_NAME !== 'index.php')) {
+if (!$WT_TREE && !Auth::check() && WT_SCRIPT_NAME !== 'index.php') {
 	header('Location: ' . route('login', ['url' => $request->getRequestUri()]));
 	exit;
 }

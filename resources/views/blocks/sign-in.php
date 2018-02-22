@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page')]) ?>">
+	<?= csrf_field() ?>
 
 	<div class="form-group">
 		<label for="username">
