@@ -44,13 +44,14 @@ try {
 	// Most requests will need the current tree and user.
 	$all_tree_names     = array_keys(Tree::getNameList());
 	$first_tree_name    = current($all_tree_names) ?? '';
-	$from_session       = Session::get('GEDCOM');
-	$previous_tree_name = !empty($from_session) ? $from_session : $first_tree_name;
+	$previous_tree_name = Session::get('GEDCOM', $first_tree_name);
 	$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
 	$tree_name          = $request->get('ged', $default_tree_name);
 	$tree               = Tree::findByName($tree_name);
 
-	Session::put('GEDCOM', $tree_name);
+	if ($tree_name) {
+		Session::put('GEDCOM', $tree_name);
+	}
 
 	$request->attributes->set('tree', $tree);
 	$request->attributes->set('user', Auth::user());
