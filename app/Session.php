@@ -53,11 +53,7 @@ class Session {
 	 * @return mixed
 	 */
 	public static function get($name, $default = null) {
-		if (isset($_SESSION[$name])) {
-			return $_SESSION[$name];
-		} else {
-			return $default;
-		}
+		return $_SESSION[$name] ?? $default;
 	}
 
 	/**
