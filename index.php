@@ -40,58 +40,23 @@ $request = Request::createFromGlobals();
 $method  = $request->getMethod();
 $route   = $request->get('route');
 
-/**
- * Init the tree instance.
- *
- * @return Tree
- */
-function initTree() {
-	$tree = null;
-
-	// Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
-	foreach ([Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')] as $treeName) {
-		$tree = Tree::findByName($treeName);
-
-		if ($tree) {
-			Session::put('GEDCOM', $treeName);
-			break;
-		}
-	}
-
-	// No chosen tree? Use any one.
-	if (!$tree) {
-		foreach (Tree::getAll() as $tree) {
-			break;
-		}
-	}
-
-	return $tree;
-}
-
 try {
-	$tree = initTree();
+	// Most requests will need the current tree and user.
+	$all_tree_names     = array_keys(Tree::getNameList());
+	$first_tree_name    = current($all_tree_names) ?? '';
+	$from_session       = Session::get('GEDCOM');
+	$previous_tree_name = !empty($from_session) ? $from_session : $first_tree_name;
+	$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
+	$tree_name          = $request->get('ged', $default_tree_name);
+	$tree               = Tree::findByName($tree_name);
 
-	// Avoid global vars! But needed as some controllers still rely on it. :(
-	$WT_TREE = $tree;
+	Session::put('GEDCOM', $tree_name);
 
 	$request->attributes->set('tree', $tree);
 	$request->attributes->set('user', Auth::user());
 
 	// Load the routing table.
 	$routes = require 'routes/web.php';
-
-	// Force login
-	if (!$tree) {
-		if (!Auth::check() && empty($route)) {
-			$route = 'login';
-		}
-
-		// Check if tree exists and user is not an admin
-		// -> Clear route to force redirect to "ErrorController@noRouteFound" to render "errors/no-tree-access"
-		if (Auth::check() && !Auth::isAdmin() && Auth::id() && ($route !== 'logout')) {
-			$route = '';
-		}
-	}
 
 	// Find the action for the selected route
 	$controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
