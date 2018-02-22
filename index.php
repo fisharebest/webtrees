@@ -48,7 +48,10 @@ try {
 	$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
 	$tree_name          = $request->get('ged', $default_tree_name);
 	$tree               = Tree::findByName($tree_name);
-	Session::put('GEDCOM', $tree_name);
+
+	if ($tree_name) {
+		Session::put('GEDCOM', $tree_name);
+	}
 
 	$request->attributes->set('tree', $tree);
 	$request->attributes->set('user', Auth::user());
