@@ -137,45 +137,25 @@ class FanChartController extends AbstractChartController {
 		}
 		$scale = $fanw / 640;
 
-		// image init
+		// Create the image
 		$image = imagecreate((int) $fanw, (int) $fanh);
-		$white = imagecolorallocate($image, 0xFF, 0xFF, 0xFF);
-		imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $white);
-		imagecolortransparent($image, $white);
+
+		// Create colors
+		$transparent = imagecolorallocate($image, 0, 0, 0);
+		imagecolortransparent($image, $transparent);
 
 		$theme = Theme::theme();
 
-		$chart_font_color   = $theme->parameter('chart-font-color');
-		$chart_background_u = $theme->parameter('chart-background-u');
-		$chart_background_m = $theme->parameter('chart-background-m');
-		$chart_background_f = $theme->parameter('chart-background-f');
+		$foreground  = $this->imageColor($image, $theme->parameter('chart-font-color'));
 
-		$color = imagecolorallocate(
-			$image,
-			hexdec(substr($chart_font_color, 0, 2)),
-			hexdec(substr($chart_font_color, 2, 2)),
-			hexdec(substr($chart_font_color, 4, 2)));
+		$backgrounds = [
+			'M' => $this->imageColor($image, $theme->parameter('chart-background-m')),
+			'F' => $this->imageColor($image, $theme->parameter('chart-background-f')),
+			'U' => $this->imageColor($image, $theme->parameter('chart-background-u')),
+		];
 
-		$bgcolor = imagecolorallocate(
-			$image,
-			hexdec(substr($chart_background_u, 0, 2)),
-			hexdec(substr($chart_background_u, 2, 2)),
-			hexdec(substr($chart_background_u, 4, 2))
-		);
 
-		$bgcolorM = imagecolorallocate(
-			$image,
-			hexdec(substr($chart_background_m, 0, 2)),
-			hexdec(substr($chart_background_m, 2, 2)),
-			hexdec(substr($chart_background_m, 4, 2))
-		);
-
-		$bgcolorF = imagecolorallocate(
-			$image,
-			hexdec(substr($chart_background_f, 0, 2)),
-			hexdec(substr($chart_background_f, 2, 2)),
-			hexdec(substr($chart_background_f, 4, 2))
-		);
+		imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $transparent);
 
 		$fandeg = 90 * $chart_style;
 
@@ -190,7 +170,7 @@ class FanChartController extends AbstractChartController {
 			// clean current generation area
 			$deg2 = 360 + ($fandeg - 180) / 2;
 			$deg1 = $deg2 - $fandeg;
-			imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $bgcolor, IMG_ARC_PIE);
+			imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $backgrounds['U'], IMG_ARC_PIE);
 			$rx -= 3;
 
 			// calculate new angle
@@ -218,19 +198,9 @@ class FanChartController extends AbstractChartController {
 
 					$text .= "\n" . I18N::reverseText($person->getLifeSpan());
 
-					switch ($person->getSex()) {
-						case 'M':
-							$bg = $bgcolorM;
-							break;
-						case 'F':
-							$bg = $bgcolorF;
-							break;
-						default:
-							$bg = $bgcolor;
-							break;
-					}
+					$background = $backgrounds[$person->getSex()];
 
-					imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $bg, IMG_ARC_PIE);
+					imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $background, IMG_ARC_PIE);
 
 					// split and center text by lines
 					$wmax = (int) ($angle * 7 / 7 * $scale);
@@ -266,7 +236,7 @@ class FanChartController extends AbstractChartController {
 						$mr = $rx / 2;
 					}
 					$tx = $cx + $mr * cos($rad);
-					$ty = $cy - $mr * -sin($rad);
+					$ty = $cy + $mr * sin($rad);
 					if ($sosa == 1) {
 						$ty -= $mr / 2;
 					}
@@ -276,7 +246,7 @@ class FanChartController extends AbstractChartController {
 						$image,
 						7,
 						$tangle, (int) $tx, (int) $ty,
-						$color,
+						$foreground,
 						WT_ROOT . 'resources/fonts/DejaVuSans.ttf',
 						$text
 					);
@@ -288,7 +258,7 @@ class FanChartController extends AbstractChartController {
 					while ($deg <= $deg2) {
 						$rad = deg2rad($deg);
 						$tx  = round($cx + $mr * cos($rad));
-						$ty  = round($cy - $mr * -sin($rad));
+						$ty  = round($cy + $mr * sin($rad));
 						$areas .= "$tx,$ty,";
 						$deg += ($deg2 - $deg1) / 6;
 					}
@@ -298,7 +268,7 @@ class FanChartController extends AbstractChartController {
 					while ($deg >= $deg1) {
 						$rad = deg2rad($deg);
 						$tx  = round($cx + $mr * cos($rad));
-						$ty  = round($cy - $mr * -sin($rad));
+						$ty  = round($cy + $mr * sin($rad));
 						$areas .= "$tx,$ty,";
 						$deg -= ($deg2 - $deg1) / 6;
 					}
@@ -307,7 +277,7 @@ class FanChartController extends AbstractChartController {
 					$deg = $deg1;
 					$rad = deg2rad($deg);
 					$tx  = round($cx + $mr * cos($rad));
-					$ty  = round($cy - $mr * -sin($rad));
+					$ty  = round($cy + $mr * sin($rad));
 					$areas .= "$tx,$ty";
 					// add action url
 					$areas .= '" href="#' . $person->getXref() . '"';
@@ -343,12 +313,12 @@ class FanChartController extends AbstractChartController {
 		$title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */ I18N::translate('Fan chart of %s', $individual->getFullName());
 
 		return new Response(view('fan-chart', [
-			'fanh'  => $fanh,
-			'fanw'  => $fanw,
-			'html'  => $html,
+			'fanh'     => $fanh,
+			'fanw'     => $fanw,
+			'html'     => $html,
 			'areas' => $areas,
-			'png'   => $png,
-			'title' => $title,
+			'png'      => $png,
+			'title'    => $title,
 		]));
 	}
 
@@ -418,6 +388,23 @@ class FanChartController extends AbstractChartController {
 		}
 
 		return $text;
+	}
+
+	/**
+	 * Convert a CSS color into a GD color.
+	 *
+	 * @param resource $image
+	 * @param string   $css_color
+	 *
+	 * @return int
+	 */
+	private function imageColor($image, string $css_color): int {
+		return imagecolorallocate(
+			$image,
+			(int) hexdec(substr($css_color, 0, 2)),
+			(int) hexdec(substr($css_color, 2, 2)),
+			(int) hexdec(substr($css_color, 4, 2))
+		);
 	}
 
 	/**
