@@ -143,35 +143,47 @@ class FanChartController extends AbstractChartController {
 		imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $white);
 		imagecolortransparent($image, $white);
 
+		$theme = Theme::theme();
+
+		$chart_font_color   = $theme->parameter('chart-font-color');
+		$chart_background_u = $theme->parameter('chart-background-u');
+		$chart_background_m = $theme->parameter('chart-background-m');
+		$chart_background_f = $theme->parameter('chart-background-f');
+
 		$color = imagecolorallocate(
 			$image,
-			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 0, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 2, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 4, 2)));
+			hexdec(substr($chart_font_color, 0, 2)),
+			hexdec(substr($chart_font_color, 2, 2)),
+			hexdec(substr($chart_font_color, 4, 2)));
+
 		$bgcolor = imagecolorallocate(
 			$image,
-			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 0, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 2, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 4, 2))
+			hexdec(substr($chart_background_u, 0, 2)),
+			hexdec(substr($chart_background_u, 2, 2)),
+			hexdec(substr($chart_background_u, 4, 2))
 		);
+
 		$bgcolorM = imagecolorallocate(
 			$image,
-			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 0, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 2, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 4, 2))
+			hexdec(substr($chart_background_m, 0, 2)),
+			hexdec(substr($chart_background_m, 2, 2)),
+			hexdec(substr($chart_background_m, 4, 2))
 		);
+
 		$bgcolorF = imagecolorallocate(
 			$image,
-			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 0, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 2, 2)),
-			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 4, 2))
+			hexdec(substr($chart_background_f, 0, 2)),
+			hexdec(substr($chart_background_f, 2, 2)),
+			hexdec(substr($chart_background_f, 4, 2))
 		);
 
 		$fandeg = 90 * $chart_style;
+
+		// Popup menus for each ancestor
 		$html   = '';
 
-		// imagemap
-		$imagemap = '<map id="fanmap" name="fanmap">';
+		// Areas for the imagemap
+		$areas = '';
 
 		// loop to create fan cells
 		while ($gen >= 0) {
@@ -226,7 +238,7 @@ class FanChartController extends AbstractChartController {
 					if ($gen == 0) {
 						$wmax = min($wmax, 17 * $scale);
 					}
-					$text = $this->splitAlignText($text, $wmax);
+					$text = $this->splitAlignText($text, (int) $wmax);
 
 					// text angle
 					$tangle = 270 - ($deg1 + $angle / 2);
@@ -269,7 +281,7 @@ class FanChartController extends AbstractChartController {
 						$text
 					);
 
-					$imagemap .= '<area shape="poly" coords="';
+					$areas .= '<area shape="poly" coords="';
 					// plot upper points
 					$mr  = $rx / 2;
 					$deg = $deg1;
@@ -277,7 +289,7 @@ class FanChartController extends AbstractChartController {
 						$rad = deg2rad($deg);
 						$tx  = round($cx + $mr * cos($rad));
 						$ty  = round($cy - $mr * -sin($rad));
-						$imagemap .= "$tx,$ty,";
+						$areas .= "$tx,$ty,";
 						$deg += ($deg2 - $deg1) / 6;
 					}
 					// plot lower points
@@ -287,7 +299,7 @@ class FanChartController extends AbstractChartController {
 						$rad = deg2rad($deg);
 						$tx  = round($cx + $mr * cos($rad));
 						$ty  = round($cy - $mr * -sin($rad));
-						$imagemap .= "$tx,$ty,";
+						$areas .= "$tx,$ty,";
 						$deg -= ($deg2 - $deg1) / 6;
 					}
 					// join first point
@@ -296,11 +308,10 @@ class FanChartController extends AbstractChartController {
 					$rad = deg2rad($deg);
 					$tx  = round($cx + $mr * cos($rad));
 					$ty  = round($cy - $mr * -sin($rad));
-					$imagemap .= "$tx,$ty";
+					$areas .= "$tx,$ty";
 					// add action url
-					$pid = $person->getXref();
-					$imagemap .= '" href="#' . $pid . '"';
-					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
+					$areas .= '" href="#' . $person->getXref() . '"';
+					$html .= '<div id="' . $person->getXref() . '" class="fan_chart_menu">';
 					$html .= '<div class="person_box"><div class="details1">';
 					$html .= '<a href="' . e($person->url()) . '" class="name1">' . $name;
 					if ($addname) {
@@ -308,13 +319,13 @@ class FanChartController extends AbstractChartController {
 					}
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
-					foreach (Theme::theme()->individualBoxMenu($person) as $menu) {
+					foreach ($theme->individualBoxMenu($person) as $menu) {
 						$html .= $menu->getMenuAsList();
 					}
 					$html .= '</ul>';
 					$html .= '</div></div>';
 					$html .= '</div>';
-					$imagemap .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';
+					$areas .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';
 				}
 				$deg1 -= $angle;
 				$deg2 -= $angle;
@@ -324,8 +335,6 @@ class FanChartController extends AbstractChartController {
 			$gen--;
 		}
 
-		$imagemap .= '</map>';
-
 		ob_start();
 		imagepng($image);
 		imagedestroy($image);
@@ -334,12 +343,12 @@ class FanChartController extends AbstractChartController {
 		$title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */ I18N::translate('Fan chart of %s', $individual->getFullName());
 
 		return new Response(view('fan-chart', [
-			'fanh'     => $fanh,
-			'fanw'     => $fanw,
-			'html'     => $html,
-			'imagemap' => $imagemap,
-			'png'      => $png,
-			'title'    => $title,
+			'fanh'  => $fanh,
+			'fanw'  => $fanw,
+			'html'  => $html,
+			'areas' => $areas,
+			'png'   => $png,
+			'title' => $title,
 		]));
 	}
 
@@ -420,7 +429,7 @@ class FanChartController extends AbstractChartController {
 		return [
 			self::STYLE_HALF_CIRCLE          => /* I18N: layout option for the fan chart */ I18N::translate('half circle'),
 			self::STYLE_THREE_QUARTER_CIRCLE => /* I18N: layout option for the fan chart */ I18N::translate('three-quarter circle'),
-			self::STYLE_HALF_CIRCLE          => /* I18N: layout option for the fan chart */ I18N::translate('full circle'),
+			self::STYLE_FULL_CIRCLE          => /* I18N: layout option for the fan chart */ I18N::translate('full circle'),
 		];
 	}
 }

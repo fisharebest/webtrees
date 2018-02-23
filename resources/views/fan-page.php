@@ -43,7 +43,7 @@
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
 			<div class="input-group">
-				<input class="form-control" type="number" id="fan_width" max="<?= $maximum_width ?>" min="<?= $minimum_width ?>" name="fan_width" value="<?= $fan_width ?>">
+				<input class="form-control" id="fan_width" max="<?= $maximum_width ?>" min="<?= $minimum_width ?>" name="fan_width" required type="number" value="<?= $fan_width ?>">
 				<div class="input-group-append">
 					<span class="input-group-text">
 						%
@@ -61,4 +61,4 @@
 	</div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart" data-ajax-url="<?= e(route('fan-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart" data-ajax-url="<?= e(route('fan-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'generations' => $generations, 'chart_style' => $chart_style, 'fan_width' => $fan_width])) ?>"></div>
