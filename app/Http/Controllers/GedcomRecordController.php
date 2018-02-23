@@ -32,7 +32,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the gedcom record page.
  */
-class GedcomRecordController extends BaseController {
+class GedcomRecordController extends AbstractBaseController {
 	/**
 	 * Show a gedcom record's page.
 	 *

@@ -31,7 +31,7 @@ use Whoops\Run;
 /**
  * Controller for error handling.
  */
-class ErrorController extends BaseController {
+class ErrorController extends AbstractBaseController {
 	/**
 	 * No route was match?  Send the user somewhere sensible, if we can.
 	 *

@@ -41,7 +41,7 @@ use Throwable;
 /**
  * Controller for the media page and displaying images.
  */
-class MediaFileController extends BaseController {
+class MediaFileController extends AbstractBaseController {
 	/**
 	 * Download a non-image media file.
 	 *

@@ -41,7 +41,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the individual page.
  */
-class IndividualController extends BaseController {
+class IndividualController extends AbstractBaseController {
 	/**
 	 * Show a individual's page.
 	 *

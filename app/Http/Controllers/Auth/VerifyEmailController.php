@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Http\Controllers\BaseController;
+use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
@@ -31,7 +31,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for email verification.
  */
-class VerifyEmailController extends BaseController {
+class VerifyEmailController extends AbstractBaseController {
 	/**
 	 * Respond to a verification link that was emailed to a user.
 	 *

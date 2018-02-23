@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Http\Controllers\BaseController;
+use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Session;
@@ -37,7 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for user login and logout.
  */
-class LoginController extends BaseController {
+class LoginController extends AbstractBaseController {
 	/**
 	 * Show a login page.
 	 *

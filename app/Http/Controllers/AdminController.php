@@ -55,7 +55,7 @@ use Throwable;
 /**
  * Controller for the administration pages
  */
-class AdminController extends BaseController {
+class AdminController extends AbstractBaseController {
 	// This is a list of old files and directories, from earlier versions of webtrees.
 	// git diff 1.7.9..master --name-status | grep ^D
 	const OLD_FILES = [

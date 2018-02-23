@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for help text.
  */
-class HelpTextController extends BaseController {
+class HelpTextController extends AbstractBaseController {
 	/**
 	 * Help for dates.
 	 *

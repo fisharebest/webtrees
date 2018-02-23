@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for module actions.
  */
-class ModuleController extends BaseController {
+class ModuleController extends AbstractBaseController {
 	/**
 	 * Perform an HTTP action for one of the modules.
 	 *

@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the source page.
  */
-class SourceController extends BaseController {
+class SourceController extends AbstractBaseController {
 	/**
 	 * Show a repository's page.
 	 *

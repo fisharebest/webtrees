@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for lists of GEDCOM records.
  */
-class ListController extends BaseController {
+class ListController extends AbstractBaseController {
 	/**
 	 * Show a list of all media records.
 	 *

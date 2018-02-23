@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Controller for the autocomplete callbacks
  */
-class AutocompleteController extends BaseController {
+class AutocompleteController extends AbstractBaseController {
 	/**
 
 	/**

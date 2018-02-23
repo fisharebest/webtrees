@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the media page.
  */
-class MediaController extends BaseController {
+class MediaController extends AbstractBaseController {
 	/**
 	 * Show a repository's page.
 	 *

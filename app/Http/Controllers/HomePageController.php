@@ -35,7 +35,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for the user/tree's home page.
  */
-class HomePageController extends BaseController {
+class HomePageController extends AbstractBaseController {
 	/**
 	 * Show a form to edit block config options.
 	 *

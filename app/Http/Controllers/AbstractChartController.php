@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Common logic for chart controllers.
  */
-abstract class AbstractChartController extends BaseController {
+abstract class AbstractChartController extends AbstractBaseController {
 	/**
 	 * Check that a module is enabled for a tree.
 	 *

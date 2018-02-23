@@ -37,7 +37,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * The "Legacy" base controller was used to inject Javascript into responses.
  * Once this is updated, we can remove it.
  */
-class BaseController extends LegacyBaseController {
+abstract class AbstractBaseController extends LegacyBaseController {
 	protected $layout = 'layouts/default';
 
 	/**
@@ -180,7 +180,7 @@ class BaseController extends LegacyBaseController {
 			'theme_body_header'       => $theme->bodyHeader(),
 			'theme_footer_container'  => $theme->footerContainer(),
 			'theme_footer_javascript' => $theme->hookFooterExtraJavascript(),
-			'javascript'              => $this->getJavascript() . $theme->hookFooterExtraJavascript(),
+			'javascript'              => $this->getJavascript(),
 		]);
 
 		return new Response($html, $status);
