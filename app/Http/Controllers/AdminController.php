@@ -477,6 +477,8 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'descendancy.php',
 			WT_ROOT . 'familybook.php',
 			WT_ROOT . 'fanchart.php',
+			WT_ROOT . 'hourglass.php',
+			WT_ROOT . 'hourglass_ajax.php',
 			WT_ROOT . 'index_edit.php',
 			WT_ROOT . 'login.php',
 			WT_ROOT . 'logout.php',
