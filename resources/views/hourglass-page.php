@@ -34,7 +34,7 @@
 				<?= I18N::translate('Layout') ?>
 			</legend>
 			<div class="col-sm-9 wt-page-options-value">
-				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), $show_spouse, ['name' => 'show_spouse']) ?>
+				<?= Bootstrap4::checkbox(I18N::translate('Show spouses'), false, ['name' => 'show_spouse', 'checked' => $show_spouse]) ?>
 			</div>
 		</div>
 	</fieldset>
