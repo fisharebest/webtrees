@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-02-25 14:05+0000\n"
+"PO-Revision-Date: 2018-02-25 14:29+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -7326,7 +7326,7 @@ msgstr "In hierdie jaar…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "In die eerste weergawe van webtrees, kon jy miniatuurbeelde aan media-objekte voeg deur lêers in die \"thumbs\" lêergids te skep."
+msgstr "In die eerste weergawe van webtrees, kon jy miniatuurbeelde aan media-objekte voeg deur lêers in die “thumbs” lêergids te skep."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -11207,7 +11207,7 @@ msgstr "Herrangskik media"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr "Herrangskik"
+msgstr "Herrangskik name"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
