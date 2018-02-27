@@ -370,7 +370,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								?>
 								<div class="input-group">
 									<div class="input-group-prepend">
-									<label class="input-group-addon" for="GM_POSTFIX_<?= $level ?>">
+									<label class="input-group-text" for="GM_POSTFIX_<?= $level ?>">
 									<?= $label ?>
 									</label>
 									</div>
