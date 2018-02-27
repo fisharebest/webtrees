@@ -33,7 +33,7 @@
 .topbottombar, .topbottombar a,
 .list_label, .list_label a {
 	background-color: #93724f;
-	color: #553e2f;
+	color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {
