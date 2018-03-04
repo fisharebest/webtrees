@@ -312,7 +312,7 @@ class RelationshipsChartController extends AbstractChartController {
 		$sibling_codes = ['M' => 'bro', 'F' => 'sis', 'U' => 'sib'];
 		$relationships = [];
 
-		for ($i = 1; $i < count($path); $i += 2) {
+		for ($i = 1, $count = count($path); $i < $count; $i += 2) {
 			$family = Family::getInstance($path[$i], $this->tree());
 			$prev   = Individual::getInstance($path[$i - 1], $this->tree());
 			$next   = Individual::getInstance($path[$i + 1], $this->tree());
