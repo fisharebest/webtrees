@@ -504,6 +504,7 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'themes/webtrees/jquery-ui-1.11.2',
 			WT_ROOT . 'themes/xenea/css-1.7.8',
 			WT_ROOT . 'themes/xenea/jquery-ui-1.11.2',
+			WT_ROOT . 'timeline.php',
 		];
 
 	protected $layout = 'layouts/administration';
