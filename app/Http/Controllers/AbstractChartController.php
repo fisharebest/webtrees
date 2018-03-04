@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
@@ -36,7 +37,7 @@ abstract class AbstractChartController extends AbstractBaseController {
 		$active_charts = Module::getActiveCharts($tree);
 
 		if (!array_key_exists($module, $active_charts)) {
-			throw new NotFoundHttpException;
+			throw new NotFoundHttpException(I18N::translate('The module “%s” has been disabled.', $module));
 		}
 	}
 

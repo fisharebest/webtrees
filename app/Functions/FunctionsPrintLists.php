@@ -337,7 +337,7 @@ class FunctionsPrintLists {
 			// SOSA
 			$html .= '<td class="center" data-sort="' . $key . '">';
 			if ($option === 'sosa') {
-				$html .= '<a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '" rel="nofollow">' . I18N::number($key) . '</a>';
+				$html .= '<a href="' . e(route('relationships', ['xref1' => $indiviudals[1]->getXref(), 'xref2' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])) . '" title="' . I18N::translate('Relationships') . '" rel="nofollow">' . I18N::number($key) . '</a>';
 			}
 			$html .= '</td>';
 
