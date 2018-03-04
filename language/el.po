@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-16 13:48+0000\n"
+"PO-Revision-Date: 2018-03-04 08:40+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -61,13 +61,13 @@ msgstr "%1$s %2$s έχει ένα(ν) %3$s σύνδεσμο με το %4$s."
 #: app/Functions/Functions.php:2105
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s φορές αφαιρέθηκε αύξουσα"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s φορές αφαιρέθηκε φθίνουσα"
 
 #: app/Controller/IndividualController.php:180 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1339
@@ -296,8 +296,8 @@ msgstr[1] "οι %s είναι μυστικοί λογαριασμοί."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s άτομο με γεγονότα μεταξύ %s και %s"
+msgstr[1] "%s άτομα με γεγονότα μεταξύ %s και %s"
 
 #: app/Controller/LifespanController.php:243
 #, php-format
