@@ -204,6 +204,10 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
+	// Total filtered/unfiltered rows
+	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal    = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
+
 	$installed_languages = [];
 	foreach (I18N::installedLocales() as $installed_locale) {
 		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
@@ -248,10 +252,6 @@ case 'load_json':
 		$datum[10] = $datum[10] ? I18N::translate('yes') : I18N::translate('no');
 		$datum[11] = $datum[11] ? I18N::translate('yes') : I18N::translate('no');
 	}
-
-	// Total filtered/unfiltered rows
-	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal    = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
