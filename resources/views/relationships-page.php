@@ -100,7 +100,6 @@ use Fisharebest\Webtrees\View;
     var select1       = document.querySelector('#xref1');
     var select2       = document.querySelector('#xref2');
     var tmp_html      = select1.innerHTML;
-    alert(tmp_html);
     select1.innerHTML = select2.innerHTML;
     select2.innerHTML = tmp_html;
 
