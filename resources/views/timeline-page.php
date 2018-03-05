@@ -37,6 +37,9 @@ use Fisharebest\Webtrees\View;
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
 			I18N::translate('add') ?>">
+			<a class="btn btn-secondary" href="<?= e(route('timeline', ['ged' => $tree->getName()])) ?>">
+				<?= /* I18N: A button label. */ I18N::translate('reset') ?>
+			</a>
 		</div>
 	</div>
 
