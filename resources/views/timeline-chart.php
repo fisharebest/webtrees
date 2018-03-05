@@ -3,6 +3,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsDate; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Individual; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>
 
 <script>
