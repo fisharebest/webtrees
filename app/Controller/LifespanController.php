@@ -44,7 +44,7 @@ class LifespanController extends PageController {
 	const LIGHTNESS       = 30; // percent
 	const ALPHA           = 0.25;
 	const CHART_TOP       = 10; // pixels
-	const BAR_SPACING     = 22; // pixels
+	const BAR_SPACING     = 30; // pixels
 	const YEAR_SPAN       = 10; // Number of years per scale section
 	const PIXELS_PER_YEAR = 7; // Number of pixels to shift per year
 	const SESSION_DATA    = 'lifespan_data';
@@ -432,28 +432,26 @@ class LifespanController extends PageController {
 				$abbrLifespan = '';
 			}
 
-			// Bar framework
-			printf('
-                <div class="person_box%s" style="top:%spx; %s:%spx; width:%spx; %s">
-                        <div class="itr">%s %s %s
-                            <div class="popup person_box%s">
-                                <div>
-                                    <a href="%s">%s%s</a>
-                                </div>',
-				$popupClass, $Y, $direction, $startPos, $width, $color,
-				$person->getSexImage(), $printName, $abbrLifespan,
-				$popupClass,
-				e($person->url()), $person->getFullName(), $lifespan
-			);
+			$id= 'individual-' . md5($person->getXref());
+
+			echo '<a href="#' . $id . '" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="' . e($id) . '">';
+			echo '<div class="wt-lifespans-individual position-absolute text-nowrap text-truncate person_box' .  $popupClass . '" style="top:' . $Y . 'px; ' . $direction . ':' . $startPos . 'px; width:' . $width . 'px; ' . $color . '">';
+			echo $person->getSexImage(), ' ' , $printName, ' ', $abbrLifespan;
+			echo '</div>';
+			echo '</a>';
+
+			echo '<div class="collapse position-absolute person_box' . $popupClass . '" id=' . e($id) . '  style="top:' . ($Y + self::BAR_SPACING) . 'px; ' . $direction . ':' . $startPos . 'px; z-index: 1000;" data-parent="#lifespan-people">';
+			echo '<div>';
+			echo '<a href="' . e($person->url()) . '">', $person->getFullName(), '</a>';
+			echo '</div>';
 
 			// Add events to popup
 			foreach ($eventList as $event) {
-				printf('<div>%s: %s %s</div>', $event['label'], $event['date'], $event['place']);
+				echo '<div>';
+				echo $event['label'], ': ', $event['date'], ' ', $event['place'];
+				echo '</div>';
 			}
-			echo
-				'</div>' . // class="popup"
-				'</div>' . // class="itr"
-				'</div>'; // class=$popupclass
+			echo '</div>';
 
 			$maxY = max($maxY, $Y);
 		}
