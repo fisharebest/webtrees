@@ -8,16 +8,16 @@
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "laravel-mix": "^1.7.2"
+    "laravel-mix": "^2.0.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.2",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.2",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
     "bootstrap": "^4.0.0",
     "corejs-typeahead": "^1.2.1",
     "datatables.net-bs4": "^1.10.16",
@@ -25,11 +25,11 @@
     "font-awesome-rtl": "^1.1.0",
     "jquery": "^3.3.1",
     "jquery-colorbox": "^1.6.4",
-    "moment": "^2.20.1",
+    "moment": "^2.21.0",
     "popper.js": "^1.13.0",
     "select2": "^4.0.5",
     "sortablejs": "^1.7.0",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^3.1.2"
+    "wheelzoom": "^3.1.3"
   }
 }
