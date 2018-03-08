@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2016-09-15 15:16+0000\n"
-"Last-Translator: Ivo R <info@majaslapatev.lv>\n"
+"PO-Revision-Date: 2018-03-08 23:40+0000\n"
+"Last-Translator: Edgars <edgars.kalnins.riga@gmail.com>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -43,7 +43,7 @@ msgstr " iekšā "
 #: app/Functions/FunctionsPrintFacts.php:178
 #: app/Functions/FunctionsPrintFacts.php:184
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
-#, fuzzy, php-format
+#, php-format
 msgid "#%s"
 msgstr "#%s"
 
@@ -67,7 +67,7 @@ msgstr "%1$s %2$s reizes noņemts krītošā"
 
 #: app/Controller/IndividualController.php:180 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1339
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
@@ -75,7 +75,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:276
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KB nopumpēti  %2$s sekundēs."
+msgstr "%1$s KB lejupielādēti %2$s sekundēs."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:165
@@ -129,20 +129,20 @@ msgstr "%1$s ir %2$s , bet gaidījām %3$s ."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:618
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:603
-#, fuzzy, php-format
+#, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:588
-#, fuzzy, php-format
+#, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
@@ -156,7 +156,7 @@ msgstr "%1$s × %2$s pikseļi"
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:523 statisticsplot.php:746
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s–%2$s"
 msgstr "%1$s–%2$s"
 
@@ -168,13 +168,11 @@ msgstr "%1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:731
-#, fuzzy
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:163
-#, fuzzy
 msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
@@ -187,7 +185,7 @@ msgstr "%s PMĒ"
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Http/Controllers/EditMediaController.php:371
 #: app/MediaFile.php:284
-#, fuzzy, php-format
+#, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
@@ -301,6 +299,7 @@ msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s privāta persona."
 msgstr[1] "%s privātas personas."
+msgstr[2] "%s privātu personu."
 
 #: app/Controller/LifespanController.php:250
 #, php-format
@@ -338,6 +337,7 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s ziņojums"
 msgstr[1] "%s ziņojumi"
+msgstr[2] "%s ziņojumi"
 
 #: app/I18N.php:719
 #, php-format
@@ -353,9 +353,9 @@ msgstr[2] "%s minūtes atpakaļ"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "% mēnesis"
-msgstr[1] "% mēneši"
-msgstr[2] "% mēneši"
+msgstr[0] "%s mēnesis"
+msgstr[1] "%s mēneši"
+msgstr[2] "%s mēneši"
 
 #: app/I18N.php:707
 #, php-format
@@ -369,9 +369,9 @@ msgstr[2] "%s mēnešus atpakaļ"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s piezīme tika atjaunota"
-msgstr[1] "%s piezīmes tika atjaunotas"
-msgstr[2] "%s piezīmes tika atjaunotas"
+msgstr[0] "%s piezīme tika atjaunota."
+msgstr[1] "%s piezīmes tika atjaunotas."
+msgstr[2] "%s piezīmes tika atjaunotas."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2081
@@ -2739,22 +2739,22 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr ""
+msgstr "Dzimis"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Dzimis"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Dzimis"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Dzimis"
 
 #: app/Stats.php:1659 statistics.php:526
 msgid "Birth by country"
@@ -2778,7 +2778,7 @@ msgstr ""
 
 #: app/GedcomTag.php:730 app/Module/GoogleMapsModule.php:1303
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "Piedzima meita"
 
 #: app/GedcomTag.php:741 app/GedcomTag.php:750 app/GedcomTag.php:759
 msgid "Birth of a grandchild"
@@ -2834,7 +2834,7 @@ msgstr ""
 
 #: app/GedcomTag.php:728 app/Module/GoogleMapsModule.php:1303
 msgid "Birth of a son"
-msgstr ""
+msgstr "Piedzima dēls"
 
 #: statistics.php:424
 msgid "Birth places"
@@ -4654,7 +4654,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:62
 #: resources/views/blocks/yahrzeit-table.php:7
 msgid "Death"
-msgstr ""
+msgstr "Nāve"
 
 #: app/Stats.php:1675 statistics.php:528
 msgid "Death by country"
@@ -4670,7 +4670,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1125
 msgid "Death of a brother"
-msgstr ""
+msgstr "Nomira brālis"
 
 #: app/GedcomTag.php:1048
 msgid "Death of a child"
@@ -4682,7 +4682,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1116
 msgid "Death of a father"
-msgstr ""
+msgstr "Nomira tēvs"
 
 #: app/GedcomTag.php:1084 app/GedcomTag.php:1093 app/GedcomTag.php:1102
 msgid "Death of a grand-parent"
@@ -4754,7 +4754,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1118
 msgid "Death of a mother"
-msgstr ""
+msgstr "Nomira māte"
 
 #: app/GedcomTag.php:1120
 msgid "Death of a parent"
@@ -5187,7 +5187,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:659 app/GedcomTag.php:281
 #: calendar.php:264
 msgid "Divorce"
-msgstr ""
+msgstr "Šķiršanās"
 
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:283
@@ -7520,14 +7520,14 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:195 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr ""
+msgstr "Interaktīvais koks"
 
 #: app/Module/ChartsBlockModule.php:123
 #: app/Module/InteractiveTree/TreeView.php:127
 #: app/Module/InteractiveTreeModule.php:137
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "%s Interaktīvais koks"
 
 #: app/Functions/FunctionsEdit.php:129
 msgid "Internal messaging"
@@ -8578,7 +8578,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1316
 #: modules_v3/pedigree_report/report.xml:1354
 msgid "Marriage"
-msgstr ""
+msgstr "Laulība"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:395 modules_v3/missing_facts_report/report.xml:22
@@ -9048,7 +9048,7 @@ msgstr ""
 
 #: admin_site_logs.php:281 admin_site_logs.php:329
 msgid "Message"
-msgstr ""
+msgstr "Ziņojums"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
@@ -9060,19 +9060,19 @@ msgstr "Ziņojumi"
 #: app/Date/FrenchDate.php:97
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidors"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidors"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:130
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidors"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:64
@@ -11837,7 +11837,6 @@ msgstr "Meklēt"
 #: app/Controller/SearchController.php:201
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:52
 #: app/Theme/AbstractTheme.php:1830
-#, fuzzy
 msgid "Search and replace"
 msgstr "Meklēt un nomainīt"
 
@@ -12351,7 +12350,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:170
 msgid "Show counts before or after name"
-msgstr "Norādīt skaitu pirms vai pēc vārda?"
+msgstr "Norādīt skaitu pirms vai pēc vārda"
 
 #: app/Functions/FunctionsPrintLists.php:665
 msgid "Show couples where either partner married more than once."
@@ -12471,7 +12470,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:218
 msgid "Show only individuals, events, or all"
-msgstr "Rādīt tikai personas, notikumus vai visu?"
+msgstr "Rādīt tikai personas, notikumus vai visu"
 
 #: app/Functions/FunctionsPrintLists.php:166
 msgid "Show only males."
@@ -12523,7 +12522,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:240
 msgid "Show slide show controls"
-msgstr "Rādīt bilžu prezentācijas kontroles pogas?"
+msgstr "Rādīt bilžu prezentācijas kontroles pogas"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12675,13 +12674,11 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1633 login.php:150
 #: resources/views/emails/password-reset-html.php:19
 #: resources/views/emails/password-reset-text.php:9
-#, fuzzy
 msgid "Sign in"
 msgstr "Pieslēgties"
 
 #: app/Module/LoginBlockModule.php:48 app/Theme/AbstractTheme.php:1644
 #: resources/views/layouts/administration.php:48
-#, fuzzy
 msgid "Sign out"
 msgstr "Atslēgties"
 
@@ -13039,7 +13036,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:249
 msgid "Start slide show on page load"
-msgstr "Atskaņot automātiski bilžu prezentāciju, ielādējot lapu?"
+msgstr "Atskaņot automātiski bilžu prezentāciju, ielādējot lapu"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:92
@@ -13897,7 +13894,6 @@ msgstr ""
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:143
-#, fuzzy
 msgid "There are no facts for this individual."
 msgstr "Nav ievadīts neviens fakts par šo personu."
 
@@ -15386,9 +15382,8 @@ msgid "View this month"
 msgstr ""
 
 #: resources/views/blocks/slide-show.php:45
-#, fuzzy
 msgid "View this source"
-msgstr "Skatīt avotu"
+msgstr "Skatīt šo avotu"
 
 #: calendar.php:295
 msgid "View this year"
@@ -15893,9 +15888,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr ""
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Jūsu lietotāja nav ispējota \"automātiskā labojumu apstiprināšana\". Jums būs iespējams vienlaicīgi izmainīt tikai vienu ierakstu."
+msgstr "Jūsu lietotāja kontam nav iespējota \"automātiskā labojumu apstiprināšana\". Jūs varēsiet vienlaicīgi izmainīt tikai vienu ierakstu."
 
 #: app/Http/Controllers/AdminController.php:2012
 #, php-format
@@ -15948,7 +15942,7 @@ msgstr ""
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "fails serverī"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
@@ -16135,7 +16129,7 @@ msgstr ""
 
 #: app/Stats.php:2911
 msgid "birth"
-msgstr ""
+msgstr "dzimis"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
@@ -16266,9 +16260,8 @@ msgstr ""
 #: resources/views/modals/create-family.php:39
 #: resources/views/modals/create-media-from-file.php:60
 #: resources/views/modals/footer-save-cancel.php:11
-#, fuzzy
 msgid "cancel"
-msgstr "Atcelt"
+msgstr "atcelt"
 
 #: app/Stats.php:2916
 msgid "census added"
@@ -16393,7 +16386,7 @@ msgstr ""
 
 #: app/Stats.php:2912
 msgid "death"
-msgstr ""
+msgstr "nāve"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3053 app/Module/GoogleMapsModule.php:3070
@@ -16424,7 +16417,6 @@ msgstr ""
 #: admin_site_logs.php:309 app/Module/ClippingsCartModule.php:407
 #: app/Module/ClippingsCartModule.php:754 app/Module/GoogleMapsModule.php:3360
 #: resources/views/admin/changes-log.php:96
-#, fuzzy
 msgid "download"
 msgstr "lejupielādēt"
 
@@ -18469,7 +18461,6 @@ msgstr ""
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:3389
-#, fuzzy
 msgid "import"
 msgstr "importēt"
 
@@ -18556,7 +18547,7 @@ msgstr ""
 
 #: app/Stats.php:2913
 msgid "marriage"
-msgstr ""
+msgstr "laulība"
 
 #: modules_v3/descendancy_report/report.xml:245
 msgctxt "FEMALE"
@@ -18617,7 +18608,7 @@ msgid "maximum %s day"
 msgid_plural "maximum %s days"
 msgstr[0] "maks. %s diena"
 msgstr[1] "maks. %s dienas"
-msgstr[2] ""
+msgstr[2] "maks. %s dienas"
 
 #: resources/views/admin/tree-privacy.php:24
 #: resources/views/admin/tree-privacy.php:48
@@ -19241,7 +19232,6 @@ msgstr "pieslēgties"
 
 #. I18N: A button label.
 #: resources/views/blocks/sign-out.php:9
-#, fuzzy
 msgid "sign out"
 msgstr "atslēgties"
 
@@ -19711,7 +19701,6 @@ msgstr "Atjaunināt"
 
 #. I18N: A button label.
 #: admin_media_upload.php:224 app/Module/GoogleMapsModule.php:3365
-#, fuzzy
 msgid "upload"
 msgstr "augšupielādēt"
 
@@ -19722,7 +19711,6 @@ msgstr "augšupielādēt"
 #: resources/views/compact-chart-page.php:23
 #: resources/views/family-book-page.php:53
 #: resources/views/interactive-tree-page.php:25
-#, fuzzy
 msgid "view"
 msgstr "skats"
 
@@ -19768,9 +19756,7 @@ msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai  jaunākas."
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:311
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr ""
-"webtrees nepieciešams nosūtīt e-pastus, piemēram, paroļu atgādinājumus un paziņojumiem. Lai to izpildītu, var izmantot serveri iebūvēto PHP pasta iekārtu (kas ne vienmēr ir pieejama) vai ārējā SMTP (pasta releja) pakalpojumu, kura dati jums būs jānorāda, lai nodrošinātu savienojumu.\n"
-"tulkojums"
+msgstr "webtrees nepieciešams nosūtīt e-pastus, piemēram, paroļu atgādinājumus un paziņojumiem. Lai to izpildītu, var izmantot serveri iebūvēto PHP pasta iekārtu (kas ne vienmēr ir pieejama) vai ārējā SMTP (pasta releja) pakalpojumu, kura dati jums būs jānorāda, lai nodrošinātu savienojumu."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:387
@@ -19865,7 +19851,7 @@ msgstr "\"%s\" tika pievienots jūsu izvēlētiem."
 #: action.php:40
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" tika dzēsts"
+msgstr "\"%s\" tika izdzēsts."
 
 #: app/Functions/FunctionsPrint.php:102 app/Note.php:108
 msgid "…"
