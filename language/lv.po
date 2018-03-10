@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-08 23:40+0000\n"
+"PO-Revision-Date: 2018-03-10 01:03+0000\n"
 "Last-Translator: Edgars <edgars.kalnins.riga@gmail.com>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
@@ -2814,7 +2814,7 @@ msgstr ""
 
 #: app/GedcomTag.php:764
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Piedzima pusbrālis"
 
 #: app/GedcomTag.php:768
 msgid "Birth of a half-sibling"
@@ -3271,7 +3271,7 @@ msgstr ""
 #: app/Module/YahrzeitModule.php:206 app/Theme/AbstractTheme.php:1128
 #: lifespan.php:104
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendārs"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:337 admin_trees_config.php:339
@@ -3765,8 +3765,9 @@ msgstr ""
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:37
+#, fuzzy
 msgid "Clippings cart"
-msgstr ""
+msgstr "Izgriezumi"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1509
@@ -4654,7 +4655,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:62
 #: resources/views/blocks/yahrzeit-table.php:7
 msgid "Death"
-msgstr "Nāve"
+msgstr "Miris"
 
 #: app/Stats.php:1675 statistics.php:528
 msgid "Death by country"
@@ -4678,7 +4679,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1046
 msgid "Death of a daughter"
-msgstr ""
+msgstr "Nomira meita"
 
 #: app/GedcomTag.php:1116
 msgid "Death of a father"
@@ -4742,7 +4743,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1134
 msgid "Death of a husband"
-msgstr ""
+msgstr "Nomira vīrs"
 
 #: app/GedcomTag.php:1098
 msgid "Death of a maternal grandfather"
@@ -4778,7 +4779,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1044
 msgid "Death of a son"
-msgstr ""
+msgstr "Nomira dēls"
 
 #: app/GedcomTag.php:1138
 msgid "Death of a spouse"
@@ -6111,22 +6112,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "Februāris"
 
 #: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr ""
+msgstr "Februāris"
 
 #: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr ""
+msgstr "Februāris"
 
 #: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:599
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "Februāris"
 
 #: app/Controller/IndividualController.php:235
 #: app/Functions/FunctionsEdit.php:794 app/Stats.php:5547 calendar.php:651
@@ -7642,22 +7643,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "Janvāris"
 
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr ""
+msgstr "Janvāris"
 
 #: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr ""
+msgstr "Janvāris"
 
 #: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:598
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "Janvāris"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
@@ -7975,7 +7976,7 @@ msgstr ""
 #: edituser.php:212 resources/views/layouts/administration.php:39
 #: resources/views/setup/step-1-language.php:18
 msgid "Language"
-msgstr ""
+msgstr "Valoda"
 
 #: admin_site_config.php:151 resources/views/admin/control-panel.php:64
 msgid "Languages"
@@ -8223,7 +8224,7 @@ msgstr ""
 
 #: admin_trees_config.php:628 app/Theme/AbstractTheme.php:1538
 msgid "Lists"
-msgstr ""
+msgstr "Saraksti"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6755
@@ -8633,7 +8634,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1220
 msgid "Marriage of a child"
-msgstr ""
+msgstr "Bērna laulības"
 
 #: app/GedcomTag.php:1218
 msgid "Marriage of a daughter"
@@ -11503,7 +11504,7 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1778 resources/views/admin/control-panel.php:379
 #: resources/views/admin/modules.php:75
 msgid "Reports"
-msgstr ""
+msgstr "Ziņojumi"
 
 #: admin_trees_duplicates.php:136 app/Module/FamilyTreeStatisticsModule.php:233
 #: app/Module/HtmlBlockModule.php:198 app/Theme/AbstractTheme.php:1607
@@ -13872,7 +13873,7 @@ msgstr ""
 #: admin_users.php:489 app/Theme/AbstractTheme.php:1856 edituser.php:246
 #: resources/views/admin/modules.php:166 resources/views/admin/modules.php:194
 msgid "Theme"
-msgstr ""
+msgstr "Dizains"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:28
@@ -16027,7 +16028,7 @@ msgstr ""
 #: individual.php:96 individual.php:99 statisticsplot.php:1049
 #: statisticsplot.php:1091 statisticsplot.php:1133
 msgid "age"
-msgstr ""
+msgstr "vecums"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16386,7 +16387,7 @@ msgstr ""
 
 #: app/Stats.php:2912
 msgid "death"
-msgstr "nāve"
+msgstr "miris"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3053 app/Module/GoogleMapsModule.php:3070
@@ -19791,7 +19792,7 @@ msgstr ""
 
 #: timeline.php:132
 msgid "years"
-msgstr ""
+msgstr "gadi"
 
 #: admin_users.php:248 admin_users.php:249 app/Functions/FunctionsEdit.php:145
 #: app/Functions/FunctionsEdit.php:191 app/Functions/FunctionsPrint.php:358
