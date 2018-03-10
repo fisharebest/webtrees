@@ -39,16 +39,6 @@ class LifespansChartController extends AbstractChartController {
 	const LIGHTNESS  = 30; // percent
 	const ALPHA      = 0.25;
 
-	// GEDCOM events that may have DATE data, but should not be displayed
-	const NON_FACTS = [
-		'BAPL',
-		'ENDL',
-		'SLGC',
-		'SLGS',
-		'_TODO',
-		'CHAN',
-	];
-
 	/**
 	 * A form to request the chart parameters.
 	 *
