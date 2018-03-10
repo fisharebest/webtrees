@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\View;
 	<?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-relationships-chart d-print-none">
+<form class="wt-page-options wt-page-options-timeline-chart d-print-none">
 	<input type="hidden" name="route" value="timeline">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 

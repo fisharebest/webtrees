@@ -2803,55 +2803,41 @@ div.faq_body {
 	margin: 0;
 }
 
-/*-- Lifespan ---- */
-#lifespan-chart {
-	padding:    0 10px 10px;
-	margin:     0 auto;
-	min-height: 500px;
+/* Lifespans chart */
+.wt-lifespans-subtitle {
+	text-align: center;
 }
 
-#lifespan-scale {
-	background: transparent url(images/lifespan-chunk.png) repeat-x left bottom;
-	display: inline-block;
-	padding-bottom: 37px;
-}
-
-#lifespan-scale .date {
-	display: inline-block;
-	width:   70px;
-}
-
-[dir='rtl'] #lifespan-scale .date {
-	text-align: right;
-}
-
-#lifespan-people {
-	position: relative;
-}
-
-#lifespan-people > div {
-	position: absolute;
-	padding:  0;
-}
-
-#lifespan-people .itr {
-	display: inline;
+.wt-lifespans-scale {
 	white-space: nowrap;
 }
 
-#lifespan-people .popup div:first-of-type {
-	font-weight: 900;
+.wt-lifespans-decade {
+	width: 70px;
+	height: 60px;
+	display: inline-block;
+	background-image: url(images/lifespan-chunk.png);
+	background-position-y: bottom;
+	background-repeat: no-repeat;
+	background-size: 70px 37px;
 }
 
-#lifespan-people .popup {
-	left:        0;
-	right:       auto;
-	white-space: nowrap;
+.wt-lifespans-individuals {
+	background: #fafafa;
 }
 
-[dir='rtl'] #lifespan-people .popup {
-	left:  auto;
-	right: 0;
+.wt-lifespans-individual {
+
+}
+
+.wt-lifespans-summary {
+	background: #ffffff;
+	border: thin solid #000;
+	z-index: 1;
+}
+
+.wt-lifespans-summary-link {
+	font-weight: bold;
 }
 
 /*-- Pedigree ---- */
