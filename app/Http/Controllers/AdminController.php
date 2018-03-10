@@ -491,6 +491,8 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'reportengine.php',
 			WT_ROOT . 'site-unavailable.php',
 			WT_ROOT . 'sourcelist.php',
+			WT_ROOT . 'statistics.php',
+			WT_ROOT . 'statisticsplot.php',
 			WT_ROOT . 'themes/_administration/css-1.7.5',
 			WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',
 			WT_ROOT . 'themes/clouds/css-1.7.8',
