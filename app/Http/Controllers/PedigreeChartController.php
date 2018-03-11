@@ -30,6 +30,12 @@ use Symfony\Component\HttpFoundation\Response;
  * A chart of direct-line ancestors in a tree layout.
  */
 class PedigreeChartController extends AbstractChartController {
+	// With more than 8 generations, we run out of pixels on the <canvas>
+	const MAX_GENERATIONS = 8;
+	const MIN_GENERATIONS = 2;
+
+	const DEFAULT_GENERATIONS = 4;
+
 	/**
 	 * Chart orientation codes
 	 * Dont change them! the offset calculations rely on this order
@@ -86,11 +92,11 @@ class PedigreeChartController extends AbstractChartController {
 
 		$this->checkIndividualAccess($individual);
 
-		$orientation = (int) $request->get('orientation');
-		$generations = (int) $request->get('generations');
+		$orientation = (int) $request->get('orientation', self::LANDSCAPE);
+		$generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
-		// With more than 8 generations, we run out of pixels on the <canvas>
-		$generations = min(8, $generations);
+		$generations = min(self::MAX_GENERATIONS, $generations);
+		$generations = max(self::MIN_GENERATIONS, $generations);
 
 		$orientations       = $this->orientations();
 		$generation_options = $this->generationOptions($tree);
@@ -445,7 +451,10 @@ class PedigreeChartController extends AbstractChartController {
 	 * @return string[]
 	 */
 	private function generationOptions(Tree $tree): array {
-		return FunctionsEdit::numericOptions(range(2, $tree->getPreference('MAX_PEDIGREE_GENERATIONS')));
+		// @TODO - do we need this config setting, given that we cannot show more than 8 generations?
+		$max_generations = min(self::MAX_GENERATIONS, (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS'));
+
+		return FunctionsEdit::numericOptions(range(self::MIN_GENERATIONS, $max_generations));
 	}
 
 	/**
