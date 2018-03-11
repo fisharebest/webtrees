@@ -15,6 +15,7 @@ use Fisharebest\Webtrees\View;
 <form class="wt-page-options wt-page-options-timeline-chart d-print-none">
 	<input type="hidden" name="route" value="timeline">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+	<input type="hidden" name="scale" value="<?= e($scale) ?>">
 
 	<?php foreach ($individuals as $individual): ?>
 	<input name="xrefs[]" type="hidden" value="<?= e($individual->getXref()) ?>">

@@ -17,15 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,18 +32,17 @@ class TimelineChartController extends AbstractChartController {
 	// The user can alter the vertical scale
 	const SCALE_MIN     = 1;
 	const SCALE_MAX     = 200;
-	const SCALE_DEFAULT = 2;
+	const SCALE_DEFAULT = 10;
 
 	// GEDCOM events that may have DATE data, but should not be displayed
-	const NON_FACTS
-		= [
-			'BAPL',
-			'ENDL',
-			'SLGC',
-			'SLGS',
-			'_TODO',
-			'CHAN',
-		];
+	const NON_FACTS = [
+		'BAPL',
+		'ENDL',
+		'SLGC',
+		'SLGS',
+		'_TODO',
+		'CHAN',
+	];
 
 	// Box height
 	const BHEIGHT = 30;
