@@ -486,6 +486,7 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'medialist.php',
 			WT_ROOT . 'notelist.php',
 			WT_ROOT . 'packages',
+			WT_ROOT . 'pedigree.php',
 			WT_ROOT . 'relationship.php',
 			WT_ROOT . 'repolist.php',
 			WT_ROOT . 'reportengine.php',

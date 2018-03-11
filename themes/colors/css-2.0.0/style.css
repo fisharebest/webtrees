@@ -2901,8 +2901,57 @@ div.faq_body {
 }
 
 /*-- Pedigree ---- */
+#pedigree_chart {
+	position: relative;
+	margin: 20px auto;
+}
+
 #pedigree_canvas {
 	color:   #81a9cb;
+	z-index: -1000;
+}
+
+#pedigree-page .shadow {
+	position: absolute;
+	white-space: nowrap;
+}
+
+#pedigree-page .layout0 .shadow > div,
+#pedigree-page .layout1 .shadow > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pedigree-page .spacer {
+	background-image: url(images/spacer.png);
+	height:           20px;
+	width:            1px;
+}
+
+#childarrow,
+.ancestorarrow {
+	text-align: center;
+}
+
+#pedigree-page #childarrow {
+	position: relative;
+}
+
+#pedigree-page #childbox {
+	border:           1px solid;
+	background-color: #fff;
+}
+
+#pedigree-page table.list_table {
+	margin: 0 auto;
+	width:  500px;
+}
+
+.pedigree_chart_table {
+	border:          0;
+	border-collapse: collapse;
+	padding:         0;
+	width:           100%;
 }
 
 /*-- timeline  --*/

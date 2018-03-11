@@ -364,10 +364,6 @@
  * wt-chart, wt-pedigree-chart
  */
 
-.pedigree_form {
-	width: 45px;
-}
-
 #pedigree_chart {
 	position: relative;
 	margin: 20px auto;
@@ -400,7 +396,8 @@
 	left: 0;
 	z-index: 9999;
 }
-wt-pedigree-chart .spacer {
+
+.wt-pedigree-chart .spacer {
 	background-image: url(images/spacer.png);
 	height:           20px;
 	width:            1px;

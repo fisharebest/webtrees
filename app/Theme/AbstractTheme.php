@@ -1724,11 +1724,9 @@ abstract class AbstractTheme {
 		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
 		if ($gedcomid && Module::isActiveChart($this->tree, 'pedigree_chart')) {
-			$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
-
 			return new Menu(
 				I18N::translate('My pedigree'),
-				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . $gedcomid . '&amp;talloffset=' . $showLayout,
+				e(route('pedigree', ['xref' => $gedcomid, 'ged' => $this->tree->getName()])),
 				'menu-mypedigree'
 			);
 		} else {
