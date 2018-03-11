@@ -68,7 +68,7 @@ class LifespansChartController extends AbstractChartController {
 		if ($individual !== null) {
 			$xrefs[] = $addxref;
 			if ($addfam) {
-				$xrefs += $this->closeFamily($individual);
+				$xrefs = array_merge($xrefs,  $this->closeFamily($individual));
 			}
 		}
 
@@ -328,6 +328,10 @@ class LifespansChartController extends AbstractChartController {
 		}
 
 		foreach ($individual->getChildFamilies() as $family) {
+			foreach ($family->getChildren() as $child) {
+				$xrefs[] = $child->getXref();
+			}
+
 			foreach ($family->getSpouses() as $spouse) {
 				$xrefs[] = $spouse->getXref();
 			}
