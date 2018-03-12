@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-12 00:07+0000\n"
+"PO-Revision-Date: 2018-03-12 08:03+0000\n"
 "Last-Translator: Edgars <edgars.kalnins.riga@gmail.com>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
@@ -1950,7 +1950,7 @@ msgstr ""
 #: app/Module/AncestorsChartModule.php:33
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Priekšteči"
 
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:144
@@ -2026,7 +2026,7 @@ msgstr ""
 
 #: login.php:169
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Ikviens ar lietotāja kontu var piekļūt šai lapai."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -3940,7 +3940,7 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:7
 #: resources/views/admin/webtrees1-thumbnails.php:5
 msgid "Control panel"
-msgstr ""
+msgstr "Vadības panelis"
 
 #: admin_trees_download.php:191 app/Module/ClippingsCartModule.php:398
 #: app/Module/ClippingsCartModule.php:749
@@ -4266,7 +4266,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1145 app/Theme/AbstractTheme.php:1147
 msgid "Customize this page"
-msgstr ""
+msgstr "Pielāgot šo lapu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -5001,7 +5001,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Descendants"
-msgstr ""
+msgstr "Pēcteči"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:277
@@ -5900,7 +5900,7 @@ msgstr ""
 #: app/Controller/FamilyBookController.php:61
 #: app/Module/FamilyBookChartModule.php:33
 msgid "Family book"
-msgstr ""
+msgstr "Ģimenes grāmata"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/FamilyBookController.php:58 familybook.php:24
@@ -6022,7 +6022,7 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:54 app/Module/FanChartModule.php:33
 msgid "Fan chart"
-msgstr ""
+msgstr "Ventilatora diagramma"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:51
@@ -7096,14 +7096,14 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:194 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
-msgstr ""
+msgstr "Smilšu pulksteņa diagramma"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:63
 #: app/Module/ChartsBlockModule.php:106
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "Smilšu pulksteņa diagramma personai %s"
 
 #: resources/views/modules/census-assistant.php:106
 msgid "Household"
@@ -8165,7 +8165,7 @@ msgstr ""
 #: app/Controller/LifespanController.php:114
 #: app/Module/LifespansChartModule.php:33
 msgid "Lifespans"
-msgstr ""
+msgstr "Dzīves ilguma skala"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:215
@@ -8501,7 +8501,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Marts"
 
 #: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
@@ -8516,7 +8516,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:600
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Marts"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1052
@@ -11359,21 +11359,21 @@ msgstr ""
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1179
 msgid "Relationship to father"
-msgstr ""
+msgstr "Radniecība ar tēvu"
 
 #: app/Module/RelationshipsChartModule.php:84
 msgid "Relationship to me"
-msgstr ""
+msgstr "Radniecība ar mani"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1291
 msgid "Relationship to mother"
-msgstr ""
+msgstr "Radniecība ar māti"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:471
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Radniecība ar vecākiem"
 
 #: relationship.php:133
 #, php-format
@@ -15493,7 +15493,7 @@ msgstr ""
 #: app/Module/UserWelcomeModule.php:85
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Prieks tevi redzēt %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:452
@@ -15502,7 +15502,7 @@ msgstr ""
 
 #: login.php:165
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "Sveicināti ģenealoģijas mājaslapā"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
@@ -15683,7 +15683,7 @@ msgstr ""
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Jūs variet izveidot jaunu kontu, lietojot saiti zemāk."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
