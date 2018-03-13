@@ -18,8 +18,8 @@
 	white-space: normal !important;
 }
 
- /* Override Bootstrap formatting */
- .row .select2-selection--single {
+/* Override Bootstrap formatting */
+.row .select2-selection--single {
 }
 
 .select2-container .select2-selection--single  { /* Relationships, thumbnail fit in parent */
@@ -31,7 +31,7 @@
 }
 
 .select2-selection--single img {
-    padding: 3px;
+	padding: 3px;
 }
 
 /*
@@ -97,7 +97,7 @@
 
 .wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
 	padding: .5rem 0 0;
-    align-items: center;
+	align-items: center;
 }
 
 .wt-initials-list {
@@ -187,16 +187,16 @@
  * +---wt-block-content, wt-block-content-XXX
  */
 
- /* Some blocks show a reduced version on the right-hand side. */
+/* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
 	display: none !important;
 }
 
- /* my page chart enhancements */
+/* my page chart enhancements */
 .wt-block-content-charts {
 	display: flex;
-    flex-flow: column-reverse;
-    overflow: auto;
+	flex-flow: column-reverse;
+	overflow: auto;
 }
 
 .wt-block-content-todays-events-block {
@@ -204,7 +204,7 @@
 }
 
 [dir=rtl] .wt-block-content-charts-block {
-    flex-flow: row;
+	flex-flow: row;
 }
 
 /*
@@ -319,7 +319,7 @@
  *
  * wt-chart, wt-family-book-chart
  */
- .wt-family-book-chart .person_box_template {
+.wt-family-book-chart .person_box_template {
 	line-height: 1.0;
 }
 
@@ -510,7 +510,7 @@
  * wt-place-hierarchy-page
  */
 
- #place_hierarchy ul {
+#place_hierarchy ul {
 	margin-right: 15px;
 }
 [dir=rtl] #place_hierarchy ul {
@@ -545,7 +545,7 @@
 .clipping-cart h2 {
 	margin: 20px;
 	text-align: center;
- }
+}
 .clipping-cart .wt-page-options {
 	max-width: 25rem;
 }
@@ -638,13 +638,67 @@ fieldset.row > legend, fieldset.row > div {
 		padding: .5em;
 	}
 
-.col-form-label {
-	text-align: center;
+	.col-form-label {
+		text-align: center;
 	}
 }
 
 @media (max-width: 500px) {
 	.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
-    align-items: left;
+		align-items: left;
 	}
+}
+
+
+/*
+ * Log/Sign in forms
+ */
+.form-login {
+	width: 100%;
+	max-width: 370px;
+	margin: 3rem auto;
+}
+
+.form-login .wt-page-options-login {
+	padding: 15px;
+	background-color: #edf7fd;
+	-moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+	border-radius: 0.25rem;
+}
+
+.form-login a,
+.form-signin a {
+	display: block;
+	font-size: 12px;
+}
+
+.wt-page-options-login form {
+	margin: 0;
+}
+
+.wt-page-options-login .form-label-group {
+	position: relative;
+}
+
+.wt-page-options-login .form-control {
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 0.25rem;
+}
+
+.wt-page-options-login .form-control:focus {
+	z-index: 2;
+}
+
+.wt-page-options-login input[type="text"] {
+	margin-bottom: -1px;
+}
+
+.wt-page-options-login input[type="password"] {
+	margin-bottom: 10px;
 }
