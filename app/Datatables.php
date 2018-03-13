@@ -99,6 +99,7 @@ class Datatables {
 			'data-paging'     => 'false',
 			'data-searching'  => 'false',
 			'data-state-save' => 'true',
+			'data-order'      => '[[1, "desc"]]',
 		]);
 	}
 
@@ -158,6 +159,7 @@ class Datatables {
 			'data-paging'     => 'false',
 			'data-searching'  => 'false',
 			'data-state-save' => 'true',
+			'data-order'      => '[[1, "desc"]]',
 		]);
 	}
 }
