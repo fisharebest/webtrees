@@ -11,7 +11,7 @@
   var newSheet=document.createElement("link");
   newSheet.setAttribute("rel","stylesheet");
   newSheet.setAttribute("type","text/css");
-  newSheet.setAttribute("href","<?= $google_map_css ?>");
+  newSheet.setAttribute("href","<?= $treeview_css ?>");
   document.head.appendChild(newSheet);
 
   <?= $js ?>
