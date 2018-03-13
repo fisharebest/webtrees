@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2016-12-12 21:05+0000\n"
-"Last-Translator: Yuri <yurius.r@gmail.com>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
+"PO-Revision-Date: 2018-03-13 15:49+0000\n"
+"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
+"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -3033,8 +3033,9 @@ msgstr "Свідок нареченої"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
+#, fuzzy
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, United States"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3335,8 +3336,9 @@ msgstr "Конвертація календаря"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
+#, fuzzy
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberta, Canada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3424,8 +3426,9 @@ msgstr "Кайманові острови"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
+#, fuzzy
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Philippines"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -4060,8 +4063,9 @@ msgstr "Авторські права"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
+#, fuzzy
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Cordoba, Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -6357,7 +6361,7 @@ msgstr "Знайти запис про людину"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Знайдіть будь-які відносини"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6370,7 +6374,7 @@ msgstr "Знайти інші відносини"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Знайти відносини через предків"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6378,7 +6382,7 @@ msgstr "Знайти найближчі відносини"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Знайти не пов'язаних між собою людей"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -13312,7 +13316,7 @@ msgstr "Підтверджено, але до цих пір неясно"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Подавець"
+msgstr "Заявник"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
@@ -14080,7 +14084,7 @@ msgstr "Тема"
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr "Вибір теми"
+msgstr "Зміна теми"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14171,7 +14175,7 @@ msgstr "Термідор"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ці групи осіб не пов'язані з %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14325,7 +14329,7 @@ msgstr "Це поле введення дозволяє вам змінити к
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено на формі додавання/редагування імені. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні нової сім'ї. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
@@ -14546,7 +14550,7 @@ msgstr "Цей параметр визначає, показувати чи ні
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1216
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Задайте горизонтальне або вертикальне позиціонування графіка предків."
+msgstr "Цей параметр вказує, чи слід створити діаграму родоводу в ландшафтному або портретному режимі."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
@@ -14747,7 +14751,7 @@ msgstr "Ескізи повинні бути зображеннями."
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 msgid "Thumbnail images"
-msgstr "Мініатюра зображення"
+msgstr "Мініатюри зображення"
 
 #: addmedia.php:459 admin_media_upload.php:208
 msgid "Thumbnail to upload"
@@ -15247,7 +15251,7 @@ msgstr "Невирішені: недостатньо даних"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr "Одноразові факти сім'ї"
+msgstr "Унікальні сімейні факти"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15258,7 +15262,7 @@ msgstr "Глобально унікальний ідентифікатор"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Унікальні ідентифікатори дозволяють знайти такий самий запис у різних родинних деревах та в різних системах. Вони будуть додані кожного разу, коли записи створюються або оновлюються. Якщо ви не хочете, щоб унікальні ідентифікатори відображалися, ви можете приховати їх, використовуючи правила конфіденційності."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15436,7 +15440,7 @@ msgstr "Використовувати пароль"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Надіслати повідомлення за допомогою sendmail"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -16075,7 +16079,7 @@ msgstr "Ви може вказати інше обмеження, але сер�
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Ви можете встановити доступ до певної записи, факту або події, додавши до неї обмеження. Якщо запис, факт або подія не мають обмеження, будуть використані наступні обмеження за замовчуванням."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
