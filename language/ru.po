@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-03-13 14:14+0000\n"
+"PO-Revision-Date: 2018-03-14 21:19+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ru/>\n"
 "Language: ru\n"
@@ -96,7 +96,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB было загружено за %2$s секунд."
+msgstr "%1$s KB было загружено за %2$s секунд."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -358,7 +358,7 @@ msgstr[2] "%s отдельные события в %s между %s и %s"
 #: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s отключен на этом сервере. Вы не сможете установить webtrees. Для включения, пожалуйста, обратитесь к администратору сервера."
+msgstr "%s отключен на этом сервере. Вы не сможете установить Webtrees. Для включения, пожалуйста, обратитесь к администратору сервера."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
@@ -605,7 +605,7 @@ msgstr "(в возрасте меньше %s)"
 #: app/I18N.php:326
 #, php-format
 msgid "(aged more than %s)"
-msgstr "(в возрасте больще %s)"
+msgstr "(в возрасте больше %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:230
@@ -921,7 +921,7 @@ msgstr "Место для личных записей или ведения дн
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Новый пользователь зарегистрировался в webtrees на %s."
+msgstr "Новый пользователь зарегистрировался в Webtrees на %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -7047,7 +7047,7 @@ msgstr "Он умер"
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:173
 msgid "He married"
-msgstr "Он женился"
+msgstr "Он женился на"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -12376,7 +12376,7 @@ msgstr "Она умерла"
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr "Она вышла замуж"
+msgstr "Она вышла замуж за"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
@@ -12451,7 +12451,7 @@ msgstr "Показать"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr "Показать ссылку на скачивание в медиа просмотре"
+msgstr "Показать ссылку на скачивание в медиапроигрывателе"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:506
@@ -15336,7 +15336,7 @@ msgstr "Обновление в любом случае"
 #: admin.php:634 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Обновить webtrees на %s."
+msgstr "Обновить Webtrees на %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -16836,7 +16836,7 @@ msgstr "название недвижимости"
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr "предполагаемо %s"
+msgstr "предполагаемо в %s г."
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
@@ -20115,7 +20115,7 @@ msgstr "Сообщение webtrees"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "Программе webtrees нужна СУБД MySQL версии не ниже %s."
+msgstr "Программе Webtrees нужна СУБД MySQL версии не ниже %s."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:327
