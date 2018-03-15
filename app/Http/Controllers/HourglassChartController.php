@@ -185,7 +185,7 @@ class HourglassChartController extends AbstractChartController {
 		if ($generation > $generations) {
 			return;
 		}
-		$pid         = $individual->getXref();
+		$pid = $individual->getXref();
 		$tablealign  = 'right';
 		$otablealign = 'left';
 		if (I18N::direction() === 'rtl') {
@@ -222,7 +222,7 @@ class HourglassChartController extends AbstractChartController {
 					$individual2 = $children[$i];
 					$chil    = $individual2->getXref();
 					echo '<tr>';
-					echo '<td id="td_', $chil, '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
+					echo '<td id="td_', e($chil), '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
 					$this->printDescendency($individual2, $generation + 1, $generations, $show_spouse, false);
 					echo '</td>';
 
@@ -389,7 +389,7 @@ class HourglassChartController extends AbstractChartController {
 			echo '</td>';
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
-				echo '<td id="td_' . $ARID . '">';
+				echo '<td id="td_' . e($ARID) . '">';
 
 				if ($generation == $generations - 1 && $family->getHusband()->getChildFamilies()) {
 					echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [
@@ -426,7 +426,7 @@ class HourglassChartController extends AbstractChartController {
 			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
-				echo '<td id="td_' . $ARID . '">';
+				echo '<td id="td_' . e($ARID) . '">';
 
 				if ($generation == $generations - 1 && $family->getWife()->getChildFamilies()) {
 					echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [

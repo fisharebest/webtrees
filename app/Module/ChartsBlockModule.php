@@ -16,11 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Http\Controllers\PedigreeChartController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
@@ -31,12 +29,14 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module/block */ I18N::translate('Charts');
+		return /* I18N: Name of a module/block */
+			I18N::translate('Charts');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Charts” module */ I18N::translate('An alternative way to display charts.');
+		return /* I18N: Description of the “Charts” module */
+			I18N::translate('An alternative way to display charts.');
 	}
 
 	/**
@@ -72,51 +72,48 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$content = '';
 			switch ($type) {
 				case 'pedigree':
-					$title           = I18N::translate('Pedigree of %s', $person->getFullName());
-					$chartController = new HourglassController($person->getXref());
-					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-					$content .= '<td class="myCharts">';
-					ob_start();
-					FunctionsPrint::printPedigreePerson($person);
-					$content .= ob_get_clean();
-					$content .= '</td>';
-					$content .= '<td>';
-					ob_start();
-					$chartController->printPersonPedigree($person, 1);
-					$content .= ob_get_clean();
-					$content .= '</td>';
-					$content .= '</tr></table>';
-					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
+					$title     = I18N::translate('Pedigree of %s', $person->getFullName());
+					$chart_url = route('pedigree-chart', [
+						'xref'        => $person->getXref(),
+						'ged'         => $person->getTree()->getName(),
+						'generations' => 3,
+						'layout'      => PedigreeChartController::PORTRAIT,
+					]);
+					$content = view('blocks/chart', [
+						'block_id'  => $block_id,
+						'chart_url' => $chart_url,
+					]);
 					break;
 				case 'descendants':
 					$title           = I18N::translate('Descendants of %s', $person->getFullName());
-					$chartController = new HourglassController($person->getXref());
-					ob_start();
-					$chartController->printDescendency($person, 1, false);
-					$content .= ob_get_clean();
-					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
+					$chart_url = route('descendants-chart', [
+						'xref'        => $person->getXref(),
+						'ged'         => $person->getTree()->getName(),
+						'generations' => 2,
+						'chart_style' => 0,
+					]);
+					$content = view('blocks/chart', [
+						'block_id'  => $block_id,
+						'chart_url' => $chart_url,
+					]);
 					break;
 				case 'hourglass':
 					$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
-					$chartController = new HourglassController($person->getXref());
-					$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-					$content .= '<td>';
-					ob_start();
-					$chartController->printDescendency($person, 1, false);
-					$content .= ob_get_clean();
-					$content .= '</td>';
-					$content .= '<td>';
-					ob_start();
-					$chartController->printPersonPedigree($person, 1);
-					$content .= ob_get_clean();
-					$content .= '</td>';
-					$content .= '</tr></table>';
-					$content .= '<script>' . $chartController->setupJavascript() . '</script>';
+					$chart_url = route('hourglass-chart', [
+						'xref'        => $person->getXref(),
+						'ged'         => $person->getTree()->getName(),
+						'generations' => 2,
+						'layout'      => PedigreeChartController::PORTRAIT,
+					]);
+					$content = view('blocks/chart', [
+						'block_id'  => $block_id,
+						'chart_url' => $chart_url,
+					]);
 					break;
 				case 'treenav':
-					$title = I18N::translate('Interactive tree of %s', $person->getFullName());
-					$mod   = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-					$tv    = new TreeView;
+					$title   = I18N::translate('Interactive tree of %s', $person->getFullName());
+					$mod     = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+					$tv      = new TreeView;
 					$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 					$content .= '<script src="' . $mod->js() . '"></script>';
 					list($html, $js) = $tv->drawViewport($person, 2);
@@ -129,9 +126,15 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		if ($template) {
 			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('tree-page-block-edit', [
+					'block_id' => $block_id,
+					'ged'      => $WT_TREE->getName(),
+				]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', [
+					'block_id' => $block_id,
+					'ged'      => $WT_TREE->getName(),
+				]);
 			} else {
 				$config_url = '';
 			}
