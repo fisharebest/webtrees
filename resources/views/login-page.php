@@ -14,7 +14,7 @@
 	<?= nl2br($welcome, false) ?>
 </p>
 
-<form class="wt-page-options wt-page-options-login" method="post">
+<form action="<?= e(route('login')) ?>" class="wt-page-options wt-page-options-login" method="post">
 	<?= csrf_field() ?>
 	<input type="hidden" name="url" value="<?= e($url) ?>">
 
