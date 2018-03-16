@@ -2611,72 +2611,14 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
-}
-
-#sb_family_nav_content {
-	margin-top: 0;
-}
-
-.nam a:hover {
-	color: #f00;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
+/* Sidebar - Family navigator */
+.wt-family-navigator-dropdown-heading {
 	font-weight: bold;
-	display: block;
-	padding: 5px 0;
+	font-size: inherit;
+	color: inherit;
 }
 
-.flyout {
-	left: 40px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #039;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	color: #f00;
-}
-
-.nav .dropdown-item {
-	background: #fff;
-	color: black;
-}
-.nav .dropdown-item:focus, .nav .dropdown-item:hover {
-	background-color: #f7f7f9;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 0;
 }
