@@ -59,6 +59,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 		$parameters = [
 			'chart-background-f'            => 'dddddd',
 			'chart-background-m'            => 'cccccc',
+			'chart-box-x'                    => 260,
+			'chart-box-y'                    => 85,
 			'distribution-chart-low-values' => 'cccccc',
 			'distribution-chart-no-values'  => 'ffffff',
 		];
