@@ -70,7 +70,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$links[] = [
-			'url'   => Html::url('edituser.php', []),
+			'url'   => route('my-account', []),
 			'title' => I18N::translate('My account'),
 			'icon'  => 'icon-mypage',
 		];

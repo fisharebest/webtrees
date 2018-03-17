@@ -72,18 +72,6 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 	];
 }
 
-// Member routes.
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
-	$routes += [
-		'GET:user-page'             => 'HomePageController@userPage',
-		'GET:user-page-block'       => 'HomePageController@userPageBlock',
-		'GET:user-page-edit'        => 'HomePageController@userPageEdit',
-		'POST:user-page-update'     => 'HomePageController@userPageUpdate',
-		'GET:user-page-block-edit'  => 'HomePageController@userPageBlockEdit',
-		'POST:user-page-block-edit' => 'HomePageController@userPageBlockUpdate',
-	];
-}
-
 // Editor routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
 	$routes += [
@@ -109,6 +97,21 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:reorder-names'       => 'EditIndividualController@reorderNamesAction',
 		'GET:reorder-spouses'      => 'EditIndividualController@reorderSpouses',
 		'POST:reorder-spouses'     => 'EditIndividualController@reorderSpousesAction',
+	];
+}
+
+// Member routes.
+if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
+	$routes += [
+		'GET:user-page'             => 'HomePageController@userPage',
+		'GET:user-page-block'       => 'HomePageController@userPageBlock',
+		'GET:user-page-edit'        => 'HomePageController@userPageEdit',
+		'POST:user-page-update'     => 'HomePageController@userPageUpdate',
+		'GET:user-page-block-edit'  => 'HomePageController@userPageBlockEdit',
+		'POST:user-page-block-edit' => 'HomePageController@userPageBlockUpdate',
+		'GET:my-account'            => 'AccountController@edit',
+		'POST:my-account'           => 'AccountController@update',
+		'POST:delete-account'       => 'AccountController@delete',
 	];
 }
 

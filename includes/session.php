@@ -247,11 +247,17 @@ DebugBar::stopMeasure('init i18n');
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
 // Users get their own time-zone. Visitors get the site time-zone.
-if (Auth::check()) {
-	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
-} else {
-	date_default_timezone_set(Site::getPreference('TIMEZONE', 'UTC'));
+try {
+	if (Auth::check()) {
+		date_default_timezone_set(Auth::user()->getPreference('TIMEZONE'));
+	} else {
+		date_default_timezone_set(Site::getPreference('TIMEZONE'));
+	}
+} catch (ErrorException $ex) {
+	// Server upgrades and migrations can leave us with invalid timezone settings.
+	date_default_timezone_set('UTC');
 }
+
 define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));

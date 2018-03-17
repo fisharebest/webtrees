@@ -15,7 +15,7 @@
 </dl>
 
 <p>
-	<a href="<?= e(route('login', ['username' => $user->getUserName(), 'url' => 'edituser.php'], true)) ?>">
+	<a href="<?= e(route('login', ['username' => $user->getUserName(), 'url' => route('my-account', [])], true)) ?>">
 		<?= I18N::translate('Sign in') ?>
 	</a>
 </p>

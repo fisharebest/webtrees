@@ -1659,13 +1659,13 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * A link to allow users to edit their account settings (edituser.php).
+	 * A link to allow users to edit their account settings.
 	 *
 	 * @return Menu|null
 	 */
 	protected function menuMyAccount() {
 		if (Auth::check()) {
-			return new Menu(I18N::translate('My account'), 'edituser.php');
+			return new Menu(I18N::translate('My account'), e(route('my-account', [])));
 		} else {
 			return null;
 		}
