@@ -392,6 +392,11 @@
 	z-index: 9999;
 }
 
+.wt-pedigree-chart  {
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
 .wt-pedigree-chart .spacer {
 	background-image: url(images/spacer.png);
 	height:           20px;
