@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-13 14:25+0000\n"
+"PO-Revision-Date: 2018-03-18 17:45+0000\n"
 "Last-Translator: Edgars <edgars.kalnins.riga@gmail.com>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
@@ -4528,7 +4528,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:202 app/Stats.php:1067
 #: app/Stats.php:1069
 msgid "Dead"
-msgstr ""
+msgstr "Miris"
 
 #. I18N: gedcom tag DEAT
 #: app/Functions/FunctionsPrintLists.php:210
@@ -4833,22 +4833,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:233
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "Decembrī"
 
 #: app/Date/CalendarDate.php:301
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "Decembris"
 
 #: app/Date/CalendarDate.php:267
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "Decembrī"
 
 #: app/Date/CalendarDate.php:199 app/Functions/FunctionsPrint.php:609
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "Decembris"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
@@ -6904,7 +6904,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:401
 msgid "He was born"
-msgstr ""
+msgstr "Viņš piedzima"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
@@ -10011,22 +10011,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Novembrī"
 
 #: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Novembris"
 
 #: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Novembrī"
 
 #: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:608
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Novembris"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:265
@@ -12257,7 +12257,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:331
 msgid "She was born"
-msgstr ""
+msgstr "Viņa piedzima"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
@@ -14747,7 +14747,7 @@ msgstr ""
 
 #: statistics.php:92
 msgid "Total dead"
-msgstr ""
+msgstr "Kopā miruši"
 
 #: statistics.php:117
 msgid "Total deaths"
@@ -19727,13 +19727,13 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "piedzima"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:102
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "piedzima"
 
 #: app/Theme/WebtreesTheme.php:90
 msgid "webtrees"
