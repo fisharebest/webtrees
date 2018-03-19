@@ -20,7 +20,11 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserMessagesModule
@@ -37,28 +41,34 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
+	 * Delete one or messages belonging to a user.
 	 *
-	 * @param string $mod_action
+	 * @param Request $request
+	 *
+	 * @return Response
 	 */
-	public function modAction($mod_action) {
-		switch ($mod_action) {
-			case 'delete':
-				$stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
+	public function postDeleteMessageAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
 
-				foreach (Filter::postArray('message_id') as $id) {
-					$stmt->execute([
-						'message_id' => $id,
-						'user_id'    => Auth::id(),
-					]);
-				}
+		$message_ids = (array) $request->get('message_id', []);
+
+		$stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
+
+		foreach ($message_ids as $message_id) {
+			$stmt->execute([
+				'message_id' => $message_id,
+				'user_id'    => Auth::id(),
+			]);
 		}
 
-		$ged   = Filter::post('ged');
-		$ctype = Filter::post('ctype', 'user|gedcom', 'user');
+		if ($request->get('ctype') === 'user') {
+			$url = route('user-page', ['ged' => $tree->getName()]);
+		} else {
+			$url = route('tree-page', ['ged' => $tree->getName()]);
+		}
 
-		header('Location: index.php?ged=' . rawurlencode($ged) . '&ctype=' . $ctype);
+		return new RedirectResponse($url);
 	}
 
 	/**
@@ -98,9 +108,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
 			$content .= '</form>';
 		}
-		$content .= '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
-		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
-		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
+		$content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', ['action' => 'DeleteMessage', 'module' => $this->getName(), 'ctype' => $ctype, 'ged' => $WT_TREE->getName()])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
+		$content .= csrf_field();
+
 		if (!empty($messages)) {
 			$content .= '<table class="list_table"><tr>';
 			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';

@@ -175,6 +175,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 
 // Public routes (that do not need a tree).
 $routes += [
+	'GET:module'           => 'ModuleController@action',
+	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
 	'POST:login'           => 'Auth\\LoginController@loginAction',
 	'GET:logout'           => 'Auth\\LoginController@logoutAction',
