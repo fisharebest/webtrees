@@ -185,11 +185,11 @@ foreach ($rows as $row) {
 <h3>
 	<?= Tree::findById($gedcom_name)->getTitleHtml() ?>
 	—
-	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'acceptall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>">
+	<a href="<?= e(Html::url('edit_changes.php', ['action' => 'acceptall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>">
 		<?= I18N::translate('Accept all changes') ?>
 	</a>
 	—
-	<a href="<?= html::escape(Html::url('edit_changes.php', ['action' => 'rejectall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
+	<a href="<?= e(Html::url('edit_changes.php', ['action' => 'rejectall', 'ged' => $WT_TREE->getName(), 'url' => $url])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
 		<?= I18N::translate('Reject all changes') ?>
 	</a>
 </h3>
@@ -215,7 +215,7 @@ foreach ($rows as $row) {
 		<?php foreach ($record_changes as $record_change): ?>
 		<tr>
 			<td>
-				<a href="<?= html::escape($record_change->accept_url) ?>"><?= I18N::translate('Accept') ?></a>
+				<a href="<?= e($record_change->accept_url) ?>"><?= I18N::translate('Accept') ?></a>
 			</td>
 			<td>
 				<?php foreach ($record_change->record->getFacts() as $fact): ?>
@@ -235,7 +235,7 @@ foreach ($rows as $row) {
 				<?= FunctionsDate::formatTimestamp($record_change->change_timestamp) ?>
 			</td>
 			<td>
-				<a href="<?= html::escape($record_change->reject_url) ?>"><?= I18N::translate('Reject') ?></a>
+				<a href="<?= e($record_change->reject_url) ?>"><?= I18N::translate('Reject') ?></a>
 			</td>
 		</tr>
 		<?php endforeach ?>
