@@ -1542,7 +1542,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsBranches($surname) {
-		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-branches', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Branches'), e(route('branches', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-branches', ['rel' => 'nofollow']);
 	}
 
 	/**
