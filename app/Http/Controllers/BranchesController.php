@@ -95,9 +95,6 @@ class BranchesController extends AbstractChartController {
 			$ancestors = [];
 		}
 
-		$ancestors = array_map(function($i) { return strip_tags($i->getFullName());}, $ancestors);
-		return new Response(print_r($ancestors, true));
-
 		// @TODO - convert this to use views
 		$html = view('branches-list', [
 			'branches' => $this->getPatriarchsHtml($individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
@@ -114,21 +111,25 @@ class BranchesController extends AbstractChartController {
 	 * @return Individual[]
 	 */
 	protected function allAncestors(Individual $individual): array {
-		$ancestors = [
-			1 => $individual,
-		];
+	    /** @var Individual[] $ancestors */
+        $ancestors = [
+            1 => $individual,
+        ];
 
-		// Loop over the array, while adding
-		for ($sosa = key($ancestors), $value = current($ancestors); $sosa !== null; next($ancestors)) {
-			/** @var @var Family $family */
-			$family = $value->getPrimaryChildFamily();
-			if ($family->getHusband() !== null) {
-				$ancestors[$sosa * 2 + 1] = $family->getHusband();
-			}
-			if ($family->getWife() !== null) {
-				$ancestors[$sosa * 2 + 2] = $family->getWife();
-			}
-		}
+        do {
+            $sosa = key($ancestors);
+
+			$family = $ancestors[$sosa]->getPrimaryChildFamily();
+
+			if ($family !== null) {
+                if ($family->getHusband() !== null) {
+                    $ancestors[$sosa * 2] = $family->getHusband();
+                }
+                if ($family->getWife() !== null) {
+                    $ancestors[$sosa * 2 + 1] = $family->getWife();
+                }
+            }
+		} while (next($ancestors));
 
 		return $ancestors;
 	}
