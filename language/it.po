@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-10-08 22:07+0000\n"
-"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
+"PO-Revision-Date: 2018-03-22 16:54+0000\n"
+"Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -6183,7 +6183,7 @@ msgstr "Cerca un carattere speciale"
 
 #: relationship.php:101
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Cerca tutte le possibili relazioni"
 
 #: app/Module/CensusAssistantModule.php:180
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:68
@@ -6192,24 +6192,24 @@ msgstr "Cerca una persona"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:86
 msgid "Find any relationship"
-msgstr ""
+msgstr "Cerca una relazione"
 
 #: admin_trees_duplicates.php:28 admin_trees_manage.php:481
 msgid "Find duplicates"
-msgstr ""
+msgstr "Cerca duplicati"
 
 #: relationship.php:101
 msgid "Find other relationships"
-msgstr ""
+msgstr "Cerca altre relazioni"
 
 #: app/Module/RelationshipsChartModule.php:136 relationship.php:84
 #: relationship.php:86
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Trova relazioni tramite antenati"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Trova le relazioni più vicine"
 
 #: admin_trees_manage.php:521 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
@@ -11337,7 +11337,7 @@ msgstr "Relazione col padre"
 
 #: app/Module/RelationshipsChartModule.php:84
 msgid "Relationship to me"
-msgstr "Relazionato a me"
+msgstr "Relazione"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1291
@@ -13198,7 +13198,7 @@ msgstr "Isole Svalbard e Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:64
 msgid "Swap individuals"
-msgstr ""
+msgstr "Inverti persone"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6837
