@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Find all branches of families with a given surname.
  */
-class BranchesController extends AbstractChartController {
+class BranchesController extends AbstractBaseController {
 	/**
 	 * A form to request the page parameters.
 	 *
