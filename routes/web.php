@@ -122,6 +122,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:autocomplete-place'     => 'AutocompleteController@place',
 		'GET:branches'               => 'BranchesController@page',
 		'GET:branches-list'          => 'BranchesController@list',
+		'GET:calendar'               => 'CalendarController@page',
+		'GET:calendar-events'        => 'CalendarController@calendar',
 		'GET:help-text'              => 'HelpTextController@helpText',
 		'GET:tree-page'              => 'HomePageController@treePage',
 		'GET:tree-page-block'        => 'HomePageController@treePageBlock',
