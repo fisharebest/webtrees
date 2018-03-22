@@ -1553,7 +1553,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsFamilies($surname) {
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-fam', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Families'), e(route('family-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
 	/**
@@ -1564,7 +1564,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsIndividuals($surname) {
-		return new Menu(I18N::translate('Individuals'), 'indilist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-indi');
+		return new Menu(I18N::translate('Individuals'), e(route('individual-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
 	/**

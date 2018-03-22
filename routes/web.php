@@ -138,6 +138,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:report-list'            => 'ReportEngineController@reportList',
 		'GET:report-setup'           => 'ReportEngineController@reportSetup',
 		'GET:report-run'             => 'ReportEngineController@reportRun',
+		'GET:family-list'            => 'ListController@familyList',
+		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
 		'GET:repository-list'        => 'ListController@repositoryList',

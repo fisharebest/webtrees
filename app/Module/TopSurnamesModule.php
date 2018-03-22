@@ -96,7 +96,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			case 'table':
 			default:
 				uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-				$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
+				$content = view('tables/surname', [
+					'surnames' => $all_surnames,
+					'route'    => 'individual-list',
+					'tree'     => $WT_TREE,
+				]);
 				break;
 		}
 
