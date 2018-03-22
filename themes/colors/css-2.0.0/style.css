@@ -1170,11 +1170,6 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
-.details0,
-.details1 {
-	font: 13px tahoma, arial, helvetica, sans-serif;
-}
-
 .details2 {
 	font-size: 12px;
 }
@@ -1669,13 +1664,6 @@ a:hover .nameZoom {
 	cursor: url(images/zoomout.png), n-resize;
 }
 
-.box-style0-expanded,
-.box-style1-expanded {
-	width: 300px !important;
-	height: auto !important;
-	line-height: 1.5em!important;
-}
-
 .person_box_template .namedef i[class^="icon-sex"] {
 	margin-left: 3px;
 }
@@ -1685,6 +1673,10 @@ a:hover .nameZoom {
 }
 
 .person_box_template .icons {
+}
+
+.person_box_template .chart_textbox .details1 {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 [dir=rtl] .person_box_template .icons {
@@ -1767,7 +1759,6 @@ a:hover .nameZoom {
 	list-style: none;
 	margin: 0;
 	padding: 0 10px;
-	font-size: smaller;
 }
 
 .popup > ul {
