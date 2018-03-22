@@ -288,7 +288,6 @@ class ListController extends AbstractBaseController {
 					// Don't sublists short lists.
 					if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
 						$falpha              = '';
-						$show_all_firstnames = 'no';
 					} else {
 						$givn_initials = $this->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families);
 						// Break long lists by initial letter of given name
@@ -1724,10 +1723,8 @@ class ListController extends AbstractBaseController {
 		switch ($initial) {
 			case '@':
 				return I18N::translateContext('Unknown given name', '…');
-				break;
 			default:
 				return e($initial);
-				break;
 		}
 	}
 
@@ -1742,13 +1739,10 @@ class ListController extends AbstractBaseController {
 		switch ($initial) {
 			case '@':
 				return I18N::translateContext('Unknown surname', '…');
-				break;
 			case ',':
 				return I18N::translate('None');
-				break;
 			default:
 				return e($initial);
-				break;
 		}
 	}
 }
