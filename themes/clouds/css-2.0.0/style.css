@@ -1782,7 +1782,7 @@ a:hover .nameZoom {
 	white-space: normal;
 	overflow: hidden !important;
 	font-size: .75rem;
-	line-height: 1.1;
+	line-height: 1.1!important;
 }
 
 .box-style0-expanded,
