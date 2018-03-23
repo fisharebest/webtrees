@@ -1269,7 +1269,7 @@ a:hover .nameZoom {
 
 .details0,
 .details1 {
-	font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: 13px;
 }
 
 .details2 {
@@ -1813,11 +1813,6 @@ a:hover .nameZoom {
 	overflow: hidden;
 	font-size: .75rem; /* .75 = 12px*/
 }
-
-.person_box_template .chart_textbox .details1 {
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-}
-
 
 .person_box_template img,
 .person_box_template a.gallery {
