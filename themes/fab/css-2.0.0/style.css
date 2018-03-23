@@ -702,7 +702,7 @@ div.fact_SHARED_NOTE {
 
 
 .name1, .name2 {
-	color: #555;
+	color: #337;
 }
 
 a:hover .name1, a:hover .name2 {
@@ -1237,11 +1237,13 @@ a:hover .nameZoom {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-	font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
 }
 
 .person_box_template .chart_textbox .name1{
 	line-height: 1;
+	font-weight: bold;
 }
 
 .person_box_template img,

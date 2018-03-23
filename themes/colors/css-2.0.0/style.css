@@ -1686,7 +1686,7 @@ a:hover .nameZoom {
 .person_box_template img,
 .person_box_template a.gallery {
 	float: left;
-	height: 45px;
+	height: 50px;
 	margin: 0 3px 0 0;
 	max-width: 60px;
 	width: auto;

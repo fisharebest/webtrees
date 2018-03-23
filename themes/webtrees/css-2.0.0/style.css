@@ -1692,6 +1692,7 @@ td.descriptionbox a {
 	height: auto;
 	white-space: normal;
 	overflow: hidden !important;
+
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -1717,7 +1718,8 @@ td.descriptionbox a {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-    font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
 }
 
 .person_box_template img,
