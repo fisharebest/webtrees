@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-22 16:54+0000\n"
+"PO-Revision-Date: 2018-03-23 22:32+0000\n"
 "Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -6333,7 +6333,7 @@ msgstr "Per i siti con più di un albero genealogico, questa opzione permette di
 
 #: login.php:209 resources/views/blocks/sign-in.php:27
 msgid "Forgot password?"
-msgstr ""
+msgstr "Password dimenticata?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:361 help_text.php:133 help_text.php:149 help_text.php:164
