@@ -84,7 +84,7 @@
 	<thead>
 		<tr>
 			<th>
-				<? I18N::translate('Date period') ?>
+				<?= I18N::translate('Date period') ?>
 			</th>
 			<th>
 				<?= I18N::translate('Format') ?>
