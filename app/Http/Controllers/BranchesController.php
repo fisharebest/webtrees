@@ -298,7 +298,7 @@ class BranchesController extends AbstractBaseController {
 					$sosa = array_search($spouse, $ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('\'xref1\' => $spouse->getXref(), relationships', [
+						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
 								'xref2' => $ancestors[1]->getXref(),
 								'ged'   => $individual->getTree()->getName(),
 							])) . '" rel="nofollow"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
