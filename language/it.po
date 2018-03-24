@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-23 22:32+0000\n"
+"PO-Revision-Date: 2018-03-24 09:01+0000\n"
 "Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -8824,12 +8824,12 @@ msgstr "maggio"
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
 msgid "Mayotte"
-msgstr "Mayotte"
+msgstr "Mayotte, France"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #: admin_media.php:668 app/Functions/FunctionsPrintLists.php:1190
@@ -8858,7 +8858,7 @@ msgstr "File multimediale"
 #: admin_trees_download.php:184
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "I file multmediali saranno prefissati da %s."
 
 #: admin_media.php:599 admin_trees_config.php:551
 msgid "Media files"
@@ -12122,7 +12122,7 @@ msgstr "Sestidì"
 #. I18N: Name of a country or state
 #: app/Stats.php:6839
 msgid "Seychelles"
-msgstr "Seychelles"
+msgstr "Seicelle"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -15150,7 +15150,7 @@ msgstr "Usare questo campo per descrivere all’amministratore del sito il motiv
 
 #: app/Functions/FunctionsEdit.php:817
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Usa questa immagine per i grafici e sulla pagina della persona."
 
 #: app/Module/GoogleMapsModule.php:2954
 msgid "Use this value"
