@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-03-23 22:32+0000\n"
+"PO-Revision-Date: 2018-03-24 09:01+0000\n"
 "Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/it/>\n"
 "Language: it\n"
@@ -8913,12 +8913,12 @@ msgstr "maggio"
 #. I18N: Name of a country or state
 #: app/Stats.php:6832
 msgid "Mayotte"
-msgstr "Mayotte"
+msgstr "Mayotte, France"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -8932,7 +8932,7 @@ msgstr "Oggetti multimediali"
 #. I18N: Label for search field
 #: find.php:184
 msgid "Media contains"
-msgstr "Elemento multimediale contiene:"
+msgstr "Elemento multimediale contiene"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -8946,7 +8946,7 @@ msgstr "File multimediale"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "I file multmediali saranno prefissati da %s."
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
@@ -12231,7 +12231,7 @@ msgstr "Sestidì"
 #. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Seychelles"
-msgstr "Seychelles"
+msgstr "Seicelle"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -15386,7 +15386,7 @@ msgstr "Usare questo campo per descrivere all’amministratore del sito il motiv
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Usa questa immagine per i grafici e sulla pagina della persona."
 
 #: app/Module/GoogleMapsModule.php:3277
 msgid "Use this value"
