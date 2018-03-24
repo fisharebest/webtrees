@@ -3080,6 +3080,12 @@ footer {
 
 /* ====== Theme Icons ========== */
 /* --- Body Icons -- */
+.icon-indis {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/indis.png);
+}
+
 .icon-pedigree {
 	width: 24px;
 	height: 24px;
