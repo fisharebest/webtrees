@@ -1,10 +1,5 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\I18N;
-
-?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <script>
   function statusHide(sel) {
@@ -173,7 +168,6 @@ use Fisharebest\Webtrees\I18N;
 					<label for="SURN">
 						<?= I18N::translate('Surname') ?>
 					</label>
-					<?= FunctionsPrint::helpLink('google_chart_surname') ?>
 					<br>
 					<input data-autocomplete-type="SURN" type="text" id="SURN" name="SURN" size="20">
 					<br>

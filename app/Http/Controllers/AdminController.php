@@ -480,6 +480,7 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'familybook.php',
 			WT_ROOT . 'famlist.php',
 			WT_ROOT . 'fanchart.php',
+			WT_ROOT . 'help_text.php',
 			WT_ROOT . 'hourglass.php',
 			WT_ROOT . 'hourglass_ajax.php',
 			WT_ROOT . 'index_edit.php',
