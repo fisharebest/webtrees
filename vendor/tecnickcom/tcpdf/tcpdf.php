@@ -8157,7 +8157,9 @@ class TCPDF {
 						$annots .= ' /FT /'.$pl['opt']['ft'];
 						$formfield = true;
 					}
-					$annots .= ' /Contents '.$this->_textstring($pl['txt'], $annot_obj_id);
+					if ($pl['opt']['subtype'] !== 'Link') {
+						$annots .= ' /Contents '.$this->_textstring($pl['txt'], $annot_obj_id);
+					}
 					$annots .= ' /P '.$this->page_obj_id[$n].' 0 R';
 					$annots .= ' /NM '.$this->_datastring(sprintf('%04u-%04u', $n, $key), $annot_obj_id);
 					$annots .= ' /M '.$this->_datestring($annot_obj_id, $this->doc_modification_timestamp);
@@ -12582,7 +12584,7 @@ class TCPDF {
 		$k = $this->k;
 		$this->javascript .= sprintf("f".$name."=this.addField('%s','%s',%u,[%F,%F,%F,%F]);", $name, $type, $this->PageNo()-1, $x*$k, ($this->h-$y)*$k+1, ($x+$w)*$k, ($this->h-$y-$h)*$k+1)."\n";
 		$this->javascript .= 'f'.$name.'.textSize='.$this->FontSizePt.";\n";
-		while (list($key, $val) = each($prop)) {
+		foreach($prop as $key => $val) {
 			if (strcmp(substr($key, -5), 'Color') == 0) {
 				$val = TCPDF_COLORS::_JScolor($val);
 			} else {
@@ -15190,7 +15192,7 @@ class TCPDF {
 	 * @since 3.1.000 (2008-06-09)
 	 * @public
 	 */
-	public function write1DBarcode($code, $type, $x='', $y='', $w='', $h='', $xres='', $style='', $align='') {
+	public function write1DBarcode($code, $type, $x='', $y='', $w='', $h='', $xres='', $style=array(), $align='') {
 		if (TCPDF_STATIC::empty_string(trim($code))) {
 			return;
 		}
@@ -15509,7 +15511,7 @@ class TCPDF {
 	 * @since 4.5.037 (2009-04-07)
 	 * @public
 	 */
-	public function write2DBarcode($code, $type, $x='', $y='', $w='', $h='', $style='', $align='', $distort=false) {
+	public function write2DBarcode($code, $type, $x='', $y='', $w='', $h='', $style=array(), $align='', $distort=false) {
 		if (TCPDF_STATIC::empty_string(trim($code))) {
 			return;
 		}
@@ -16545,9 +16547,9 @@ class TCPDF {
 					// get attributes
 					preg_match_all('/([^=\s]*)[\s]*=[\s]*"([^"]*)"/', $element, $attr_array, PREG_PATTERN_ORDER);
 					$dom[$key]['attribute'] = array(); // reset attribute array
-					while (list($id, $name) = each($attr_array[1])) {
-						$dom[$key]['attribute'][strtolower($name)] = $attr_array[2][$id];
-					}
+                    foreach($attr_array[1] as $id => $name) {
+                        $dom[$key]['attribute'][strtolower($name)] = $attr_array[2][$id];
+                    }
 					if (!empty($css)) {
 						// merge CSS style to current style
 						list($dom[$key]['csssel'], $dom[$key]['cssdata']) = TCPDF_STATIC::getCSSdataArray($dom, $key, $css);
@@ -16558,10 +16560,10 @@ class TCPDF {
 						// get style attributes
 						preg_match_all('/([^;:\s]*):([^;]*)/', $dom[$key]['attribute']['style'], $style_array, PREG_PATTERN_ORDER);
 						$dom[$key]['style'] = array(); // reset style attribute array
-						while (list($id, $name) = each($style_array[1])) {
-							// in case of duplicate attribute the last replace the previous
-							$dom[$key]['style'][strtolower($name)] = trim($style_array[2][$id]);
-						}
+                        foreach($style_array[1] as $id => $name) {
+                            // in case of duplicate attribute the last replace the previous
+                            $dom[$key]['style'][strtolower($name)] = trim($style_array[2][$id]);
+                        }
 						// --- get some style attributes ---
 						// text direction
 						if (isset($dom[$key]['style']['direction'])) {
@@ -17176,10 +17178,10 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 		if ($cell) {
 			if ($this->rtl) {
 				$this->x -= $this->cell_padding['R'];
-				$this->lMargin += $this->cell_padding['R'];
+				$this->lMargin += $this->cell_padding['L'];
 			} else {
 				$this->x += $this->cell_padding['L'];
-				$this->rMargin += $this->cell_padding['L'];
+				$this->rMargin += $this->cell_padding['R'];
 			}
 		}
 		if ($this->customlistindent >= 0) {
@@ -21511,7 +21513,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			} else {
 				// placemark to be replaced with the correct number
 				$pagenum = '{#'.($outline['p']).'}';
-				if ($templates['F'.$outline['l']]) {
+				if (isset($templates['F'.$outline['l']]) && $templates['F'.$outline['l']]) {
 					$pagenum = '{'.$pagenum.'}';
 				}
 				$maxpage = max($maxpage, $outline['p']);

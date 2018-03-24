@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+0.8.0 (2018-01-24)
+------------------
+
+ * Replace align attribute with text-align style
+
+0.7.1 (2018-01-23)
+------------------
+
+ * Fix undefined method in commonmark 0.17
+
 0.7.0 (2018-01-09)
 ------------------
 

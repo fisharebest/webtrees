@@ -16,18 +16,19 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
+use League\CommonMark\Util\Xml;
 
 class TableCaptionRenderer implements BlockRendererInterface
 {
     public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
     {
-        if (!($block instanceof TableCaption)) {
+        if (!$block instanceof TableCaption) {
             throw new \InvalidArgumentException('Incompatible block type: '.get_class($block));
         }
 
         $attrs = [];
         foreach ($block->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = $htmlRenderer->escape($value, true);
+            $attrs[$key] = Xml::escape($value, true);
         }
 
         if ($block->id) {
