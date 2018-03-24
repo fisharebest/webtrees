@@ -1241,13 +1241,13 @@ class FunctionsPrintLists {
 	 * Print a tagcloud of surnames.
 	 *
 	 * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
-	 * @param string $script indilist or famlist
+	 * @param string $route individual-list or family-listlist
 	 * @param bool $totals show totals after each name
 	 * @param Tree $tree generate links to this tree
 	 *
 	 * @return string
 	 */
-	public static function surnameTagCloud($surnames, $script, $totals, Tree $tree) {
+	public static function surnameTagCloud($surnames, $route, $totals, Tree $tree) {
 		$minimum = PHP_INT_MAX;
 		$maximum = 1;
 		foreach ($surnames as $surn => $surns) {
@@ -1266,7 +1266,8 @@ class FunctionsPrintLists {
 				} else {
 					$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
 				}
-				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $tree->getNameUrl() . '">';
+				$url = route($route, ['surname' => $surn, 'ged' => $tree->getName()]);
+				$html .= '<a style="font-size:' . $size . '%" href="' . e($url) . '">';
 				if ($totals) {
 					$html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis)));
 				} else {
@@ -1285,19 +1286,19 @@ class FunctionsPrintLists {
 	 * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
 	 * @param int $style 1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
 	 * @param bool $totals show totals after each name
-	 * @param string $script indilist or famlist
+	 * @param string $route individual-list or family-list
 	 * @param Tree $tree Link back to the individual list in this tree
 	 *
 	 * @return string
 	 */
-	public static function surnameList($surnames, $style, $totals, $script, Tree $tree) {
+	public static function surnameList($surnames, $style, $totals, $route, Tree $tree) {
 		$html = [];
 		foreach ($surnames as $surn => $surns) {
 			// Each surname links back to the indilist
 			if ($surn) {
-				$url = $script . '?surname=' . urlencode($surn) . '&amp;ged=' . $tree->getNameUrl();
+				$url = route($route, ['surname' => $surn, 'ged' => $tree->getName()]);
 			} else {
-				$url = $script . '?alpha=,&amp;ged=' . $tree->getNameUrl();
+				$url = route($route, ['alpha' => ',', 'ged' => $tree->getName()]);
 			}
 			// If all the surnames are just case variants, then merge them into one
 			// Comment out this block if you want SMITH listed separately from Smith
@@ -1312,7 +1313,7 @@ class FunctionsPrintLists {
 					$first_spfxsurn = $spfxsurn;
 				}
 			}
-			$subhtml = '<a href="' . $url . '" dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
+			$subhtml = '<a href="' . e($url) . '" dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
 
 			if ($totals) {
 				$subtotal = 0;
