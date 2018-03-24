@@ -20,6 +20,7 @@
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
 }
+
 .table-given-name {
     overflow-x: hidden;
 }
@@ -3079,7 +3080,6 @@ footer {
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
-/* --- Body Icons -- */
 .icon-indis {
 	width: 24px;
 	height: 24px;
