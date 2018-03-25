@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-03-24 09:01+0000\n"
+"PO-Revision-Date: 2018-03-25 15:06+0000\n"
 "Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/it/>\n"
 "Language: it\n"
@@ -77,13 +77,13 @@ msgstr "%1$s %2$s ha un collegamento %3$s a %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s volta/volte rimosso discendente"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -379,15 +379,15 @@ msgstr[1] "%s note sono state aggiornate."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
-#, fuzzy, php-format
+#, php-format
 msgid "%s once removed ascending"
-msgstr "%s del genitore"
+msgstr "%s volta/volte rimosso ascendente"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
-#, fuzzy, php-format
+#, php-format
 msgid "%s once removed descending"
-msgstr "figlio/a del %s"
+msgstr "%s volta/volte rimosso discendente"
 
 #: app/I18N.php:812
 #, php-format
@@ -420,25 +420,25 @@ msgstr[1] "%s fonti sono state aggiornate."
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s volta/volte rimosso ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s  tre volte rimosso discendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s rimosso due volte in ordine crescente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s rimosso due volte in ordine discendente"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:310
@@ -754,7 +754,7 @@ msgstr "Grafico che mostra gli antenati, formattato come albero."
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un grafico degli antenati di una persona."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
@@ -764,7 +764,7 @@ msgstr "Grafico che mostra i discendenti di una persona."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Un grafico della vita delle persone."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -781,7 +781,7 @@ msgstr "Un server di database è in grado di memorizzare molti database distinti
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un grafico a ventaglio degli antenati di un individuo."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -1045,7 +1045,7 @@ msgstr "Una scheda che mostra le fonti collegate a una persona."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Una grafico cronologico che mostra gli eventi di una persona."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1099,16 +1099,16 @@ msgstr "A4"
 
 #: app/I18N.php:441
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "Alfabeto_minuscolo=abcdefghijklmnopqrstuvwxyz"
 
 #: app/I18N.php:439
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "Alfabeto_maiuscolo=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "chiave API"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -4344,7 +4344,7 @@ msgstr "Dallas, Texas, United States"
 #. I18N: A summary of the system status
 #: admin.php:482
 msgid "Dashboard"
-msgstr ""
+msgstr "Cruscotto"
 
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:390 app/GedcomTag.php:342
@@ -6486,7 +6486,7 @@ msgstr "Formatta testo e note"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Fort Lauderdale, Florida, USA"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -9500,12 +9500,12 @@ msgstr "MySQL ha ritornato il seguente errore: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "Variabili MySQL"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
 msgid "Myanmar"
-msgstr "Myanmar"
+msgstr "Birmania"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
@@ -9538,7 +9538,7 @@ msgstr "Nome"
 #. I18N: Label for search field
 #: find.php:148 find.php:165
 msgid "Name contains"
-msgstr "Il nome contiene:"
+msgstr "Il nome contiene"
 
 #: app/GedcomTag.php:610
 msgid "Name in Hebrew"
@@ -10714,7 +10714,7 @@ msgstr "Verifica luoghi"
 #. I18N: Label for search field
 #: find.php:202
 msgid "Place contains"
-msgstr "Il posto contiene:"
+msgstr "Il posto contiene"
 
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
@@ -11582,7 +11582,7 @@ msgstr "Archivio"
 #. I18N: Label for search field
 #: find.php:220
 msgid "Repository contains"
-msgstr "Archivio contiene:"
+msgstr "L'archivio contiene"
 
 #: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1537
 msgid "Repository name"
@@ -12271,7 +12271,7 @@ msgstr "Nota condivisa"
 #. I18N: Label for search field
 #: find.php:239
 msgid "Shared note contains"
-msgstr "Note condivise contiene:"
+msgstr "Le note condivise contengono"
 
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12407,7 +12407,7 @@ msgstr "Matrimonio più breve"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Nascondere questo riquadro quando è vuoto?"
+msgstr "Nascondere questo riquadro quando è vuoto"
 
 #: calendar.php:221
 msgid "Show"
@@ -13030,7 +13030,7 @@ msgstr "Le citazioni delle fonti possono includere campi per registrare la quali
 #. I18N: Label for search field
 #: find.php:257
 msgid "Source contains"
-msgstr "La fonte contiene:"
+msgstr "La fonte contiene"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2118 modules_v3/fact_sources/report.xml:6
@@ -15364,12 +15364,12 @@ msgstr "Usa password"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Usa posta elettronica per inviare messaggi"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Usa le immagini silhouette quando non è stata selezionata una immagine per la persona. Le silhouette sono specifiche per il sesso della persona in questione."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
