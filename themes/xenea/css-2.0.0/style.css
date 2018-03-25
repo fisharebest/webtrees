@@ -1691,6 +1691,7 @@ a:hover .nameZoom {
 	overflow: hidden;
 	font-size: .75rem;
 	line-height: 1;
+	padding-bottom: 4px;
 }
 
 .person_box_template img,

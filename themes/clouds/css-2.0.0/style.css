@@ -1782,7 +1782,6 @@ a:hover .nameZoom {
 	white-space: normal;
 	overflow: hidden !important;
 	font-size: .75rem;
-	line-height: 1.1!important;
 }
 
 .box-style0-expanded,
@@ -1812,6 +1811,8 @@ a:hover .nameZoom {
 .person_box_template .chart_textbox {
 	overflow: hidden;
 	font-size: .75rem; /* .75 = 12px*/
+	line-height: 1.1;
+	padding-bottom: 4px;
 }
 
 .person_box_template img,
