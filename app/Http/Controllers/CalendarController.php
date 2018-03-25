@@ -454,7 +454,7 @@
 		 *
 		 * @return Fact[]
 		 */
-		function applyFilter(array $facts, string $filterof, string $filtersx): array  {
+		private function applyFilter(array $facts, string $filterof, string $filtersx): array  {
 			$filtered      = [];
 			$hundred_years = WT_CLIENT_JD - 36525;
 			foreach ($facts as $fact) {
@@ -500,7 +500,7 @@
 		 *
 		 * @return string
 		 */
-		function calendarFactText(Fact $fact, bool $show_places): string {
+		private function calendarFactText(Fact $fact, bool $show_places): string {
 			$text = $fact->getLabel() . ' — ' . $fact->getDate()->display(true, null, false);
 			if ($fact->anniv) {
 				$text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
