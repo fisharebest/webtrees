@@ -304,7 +304,7 @@ class Date {
 			$tmp = /* I18N: Gedcom EST dates */ I18N::translate('estimated %s', $d1 . $conv1);
 			break;
 		case 'INT':
-			$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, $this->text);
+			$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, Filter::escapeHtml($this->text));
 			break;
 		case 'BEF':
 			$tmp = /* I18N: Gedcom BEF dates */ I18N::translate('before %s', $d1 . $conv1);
