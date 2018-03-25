@@ -72,6 +72,17 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 	];
 }
 
+// Moderator routes.
+if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isModerator($tree)) {
+	$routes += [
+		'GET:show-pending'        => 'PendingChangesController@showChanges',
+		'POST:accept-pending'     => 'PendingChangesController@acceptChange',
+		'POST:reject-pending'     => 'PendingChangesController@rejectChange',
+		'POST:accept-all-pending' => 'PendingChangesController@acceptAllChanges',
+		'POST:reject-all-pending' => 'PendingChangesController@rejectAllChanges',
+	];
+}
+
 // Editor routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
 	$routes += [
@@ -124,7 +135,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:branches-list'          => 'BranchesController@list',
 		'GET:calendar'               => 'CalendarController@page',
 		'GET:calendar-events'        => 'CalendarController@calendar',
-		'POST:expand-chart-box'       => 'IndividualController@expandChartBox',
+		'POST:expand-chart-box'      => 'IndividualController@expandChartBox',
 		'GET:help-text'              => 'HelpTextController@helpText',
 		'GET:tree-page'              => 'HomePageController@treePage',
 		'GET:tree-page-block'        => 'HomePageController@treePageBlock',

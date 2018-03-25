@@ -477,6 +477,7 @@ class AdminController extends AbstractBaseController {
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'descendancy.php',
 			WT_ROOT . 'edituser.php',
+			WT_ROOT . 'edit_changes.php',
 			WT_ROOT . 'expand_view.php',
 			WT_ROOT . 'familybook.php',
 			WT_ROOT . 'famlist.php',

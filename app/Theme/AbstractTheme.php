@@ -1741,16 +1741,12 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$url = Html::url('edit_changes.php', [
+			$url = route('show-pending', [
 				'ged' => $this->tree ? $this->tree->getName() : '',
 				'url' => $this->request->getRequestUri()
 			]);
 
-			$url = e($url);
-
-			$menu = new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
-
-			return $menu;
+			return new Menu(I18N::translate('Pending changes'), e($url), 'menu-pending');
 		} else {
 			return null;
 		}
@@ -2016,7 +2012,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function pendingChangesLink() {
-		return '<a href="edit_changes.php">' . $this->pendingChangesLinkText() . '</a>';
+		return '<a href="' . e(route('show-pending', ['ged' => $this->tree->getName()])) . '">' . $this->pendingChangesLinkText() . '</a>';
 	}
 
 	/**

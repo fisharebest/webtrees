@@ -9,7 +9,7 @@
 
 <ul>
 	<li>
-		<a href="<?= e(Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()])) ?>">
+		<a href="<?= e(route('show-pending', ['ged' => $tree->getName()], true)) ?>">
 			<?= e($tree->getTitle()) ?>
 		</a>
 	</li>

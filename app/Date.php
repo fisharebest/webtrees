@@ -329,7 +329,7 @@ class Date {
 				break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
-			$tmp = I18N::translate('%1$s (%2$s)', $tmp, $this->text);
+			$tmp = I18N::translate('%1$s (%2$s)', $tmp, e($this->text));
 		}
 
 		if (strip_tags($tmp) === '') {

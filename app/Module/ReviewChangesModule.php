@@ -105,7 +105,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
 			$content = '';
 			if (Auth::isModerator($WT_TREE)) {
-				$content .= '<a href="edit_changes.php">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+				$content .= '<a href="' . e(route('show-pending', ['ged' => $WT_TREE->getName()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
 			}
 			if ($sendmail === '1') {
 				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';

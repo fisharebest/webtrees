@@ -65,10 +65,7 @@
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
-								<a href="<?= e(Html::url('edit_changes.php', [
-									'ged' => $tree->getName(),
-									'url' => route('admin-control-panel'),
-								])) ?>">
+								<a href="<?= e(route('show-pending', ['ged' => $tree->getName(), 'url' => route('admin-control-panel')])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
 									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->getTitle()) ?></span>
 								</a>
