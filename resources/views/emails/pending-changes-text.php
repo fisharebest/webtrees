@@ -4,4 +4,4 @@
 
 <?= I18N::translate('There are pending changes for you to moderate.') ?>
 
-<?= $tree->getTitle() ?> - <?= Html::url(WT_BASE_URL . 'edit_changes.php', ['ged' => $tree->getName()]) ?>
+<?= $tree->getTitle() ?> - <?= route('show-pending', ['ged' => $tree->getName()], true) ?>

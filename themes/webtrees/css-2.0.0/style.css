@@ -1692,6 +1692,7 @@ td.descriptionbox a {
 	height: auto;
 	white-space: normal;
 	overflow: hidden !important;
+
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -1717,7 +1718,9 @@ td.descriptionbox a {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-    font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
+	padding-bottom: 4px;
 }
 
 .person_box_template img,
@@ -2482,64 +2485,18 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
+/* Sidebar - Family navigator */
+.wt-family-navigator-dropdown {
+	background: #edf7fd;
 }
 
-#sb_family_nav_content {
-	margin-top: 8px;
-}
-
-.nam a:hover {
-	color: #f00;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
+.wt-family-navigator-dropdown-heading {
 	font-weight: bold;
-	display: block;
-	padding: 5px 0;
+	font-size: inherit;
+	color: inherit;
 }
 
-.flyout {
-	left: 40px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #362b36;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	color: #f00;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 5px;
 }

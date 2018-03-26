@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-11-04 10:56+0000\n"
-"Last-Translator: Kirill Uksusov <uksusoff@yandex.ru>\n"
+"PO-Revision-Date: 2018-03-14 21:19+0000\n"
+"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:276
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB было загружено за %2$s секунд."
+msgstr "%1$s KB было загружено за %2$s секунд."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:165
@@ -338,7 +338,7 @@ msgstr[2] "%s отдельные события в %s между %s и %s"
 #: app/Http/Controllers/SetupController.php:420
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s отключен на этом сервере. Вы не сможете установить webtrees. Для включения, пожалуйста, обратитесь к администратору сервера."
+msgstr "%s отключен на этом сервере. Вы не сможете установить Webtrees. Для включения, пожалуйста, обратитесь к администратору сервера."
 
 #: app/Module/UserMessagesModule.php:148
 #, php-format
@@ -586,7 +586,7 @@ msgstr "(в возрасте меньше %s)"
 #: app/I18N.php:281
 #, php-format
 msgid "(aged more than %s)"
-msgstr "(в возрасте больще %s)"
+msgstr "(в возрасте больше %s)"
 
 #. I18N: %s is a number
 #. I18N: %s is a placeholder for a number
@@ -722,7 +722,7 @@ msgstr "9-ый"
 
 #: admin_trees_manage.php:758
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Важное Примечание:</b> Мастер переноса не в состоянии поддерживать передачу мультимедийных объектов. Вам нужно будет установить, переместить или копировать Вашу медиа-конфигурацию и объекты отдельно после завершения работы мастера."
+msgstr "<b>Важное Примечание:</b> Мастер переноса не поддерживает передачу мультимедийных объектов. Вам нужно будет настроить, переместить или скопировать Вашу медиаконфигурацию и объекты отдельно после завершения работы мастера."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:55 admin_users.php:40 edituser.php:251
@@ -871,7 +871,7 @@ msgstr "Список пользователей и посетителей, ко�
 
 #: help_text.php:259 resources/views/help/date.php:228
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Медиа-объект - это запись в генеалогическом дереве, которая содержит информацию о медиафайле. Эта информация может включать в себя название, уведомление об авторских правах, расшифровка, ограничения конфиденциальности и др. Мультимедийные файлы, такие как фото или видео, могут храниться локально (на этом веб-сервера) или удаленно (на другом веб-сервер)."
+msgstr "Медиаобъект - это запись в генеалогическом дереве, которая содержит информацию о медиафайле. Эта информация может включать в себя название, уведомление об авторских правах, расшифровка, ограничения конфиденциальности и др. Мультимедийные файлы, такие как фото или видео, могут храниться локально (на этом веб-сервера) или удаленно (на другом веб-сервер)."
 
 #: login.php:269
 #, php-format
@@ -905,7 +905,7 @@ msgstr "Место для личных записей или ведения дн
 #: resources/views/emails/register-notify-text.php:4
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Новый пользователь зарегистрировался в webtrees на %s."
+msgstr "Новый пользователь зарегистрировался в Webtrees на %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -1185,7 +1185,7 @@ msgstr "Аккра, Гана"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Действие"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1322,7 +1322,7 @@ msgstr "Добавить новую заметку в дневник"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Добавить медиафайл"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -1441,7 +1441,7 @@ msgstr "Добавить пространства, где были заверн�
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:181
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Добавить медиа путь в именах файлов GEDCOM"
+msgstr "Добавить медиапуть в именах файлов GEDCOM"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:454
@@ -1852,7 +1852,7 @@ msgstr "Позволить другим модулям редактироват�
 #. I18N: A configuration setting
 #: admin_trees_config.php:1064
 msgid "Allow users to see raw GEDCOM records"
-msgstr "Позволять пользователям просматривать GEDCOM записи"
+msgstr "Позволять пользователям просматривать записи GEDCOM"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:263
@@ -3219,7 +3219,7 @@ msgstr "Место захоронения"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Похороны"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3362,7 +3362,7 @@ msgstr "Причина смерти"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Внимание!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -3775,7 +3775,7 @@ msgstr "Уточнено, но еще не завершена"
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:37
 msgid "Clippings cart"
-msgstr "GEDCOM-Корзина"
+msgstr "Корзина вырезок"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1509
@@ -3865,7 +3865,7 @@ msgstr "График бабочка для %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Сравнение"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -3879,7 +3879,7 @@ msgstr "Завершено; дата неизвестна"
 
 #: admin_trees_download.php:164
 msgid "Compress the GEDCOM file"
-msgstr "Сжать GEDCOM файл"
+msgstr "Сжать файл GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:235
@@ -4055,7 +4055,7 @@ msgstr "Создать новое генеалогическое дерево"
 #: resources/views/modals/create-media-from-file.php:14
 #: resources/views/modals/create-media-object.php:7
 msgid "Create a media object"
-msgstr "Создать новый медиа-объект"
+msgstr "Создать новый медиаобъект"
 
 #: app/Functions/FunctionsEdit.php:784
 #: resources/views/modals/create-repository.php:7
@@ -4079,7 +4079,7 @@ msgstr "Создать новый источник"
 #: app/Functions/FunctionsEdit.php:806
 #: resources/views/modals/create-submitter.php:7
 msgid "Create a submitter"
-msgstr ""
+msgstr "Создать подателя"
 
 #: resources/views/modals/media-file-fields.php:69
 msgid "Create a unique filename"
@@ -5031,7 +5031,7 @@ msgstr "Потомки %s"
 #: app/GedcomTag.php:285 resources/views/admin/module-components.php:19
 #: resources/views/admin/modules.php:46 resources/views/report-setup.php:13
 msgid "Description"
-msgstr "Приметы"
+msgstr "Описание"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:474
@@ -5337,7 +5337,7 @@ msgstr "Правка"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Редактирование медиафайла"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5370,7 +5370,7 @@ msgstr "Редактировать примечание"
 #: app/Controller/SourceController.php:56 edit_interface.php:46
 #: edit_interface.php:166 edit_interface.php:339 edit_interface.php:2450
 msgid "Edit the raw GEDCOM"
-msgstr "Редактировать запись в GEDCOM формате"
+msgstr "Редактировать запись в формате GEDCOM"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:46
@@ -5401,7 +5401,7 @@ msgstr "Редактируйте запись этой персоны и зам�
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Ограничение редактирования"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -5582,7 +5582,7 @@ msgstr "Эритрея"
 #: import.php:192
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr "Ошибка: конвертация GEDCOM'а из кодировки %s в UTF-8 не поддерживается."
+msgstr "Ошибка: конвертация файла GEDCOM из кодировки %s в кодировку UTF-8 не поддерживается."
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -5699,7 +5699,7 @@ msgstr "Сохранить в файл GEDCOM"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:220
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "Экспорт всех семейных деревьев в GEDCOM-файлы…"
+msgstr "Экспорт всех семейных деревьев в файл GEDCOM …"
 
 #: admin_trees_download.php:158
 msgid "Export preferences"
@@ -5963,7 +5963,7 @@ msgstr "Дерево"
 
 #: app/Module/ClippingsCartModule.php:89 app/Module/ClippingsCartModule.php:452
 msgid "Family tree clippings cart"
-msgstr "GEDCOM-Корзина генеалогического дерева"
+msgstr "Корзина вырезок генеалогического дерева"
 
 #: admin_trees_config.php:257 admin_trees_manage.php:669
 msgid "Family tree title"
@@ -6337,7 +6337,7 @@ msgstr "Шрифт"
 #: admin_trees_manage.php:296
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Например, если файл GEDCOM содержит путь к медиа-файлу %1$s, то webtrees должен найти медиа-файл по пути %2$s в папке MEDIA, для этого Вам нужно будет удалить первую часть пути %3$s."
+msgstr "Например, если файл GEDCOM содержит путь к медиафайлу %1$s, то Webtrees должен найти медиафайл по пути %2$s в папке MEDIA, для этого Вам нужно будет удалить первую часть пути %3$s."
 
 #: admin_users.php:604
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6904,7 +6904,7 @@ msgstr "Он умер"
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:173
 msgid "He married"
-msgstr "Он женился"
+msgstr "Он женился на"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -7183,7 +7183,7 @@ msgstr "Идентификационный номер"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Если медиаобъект связан с человеком, который должен быть связан с фактом или событием, то Вы можете переместить его в нужное место."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7221,7 +7221,7 @@ msgstr "Если фамилия неизвестна, используйте п�
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Если уменьшенное изображение является таким же, как исходное изображение, он больше не нужен, и Вы должны удалить его.  Если это пользовательское изображение, Вы должны добавить его в медиаобъект."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7269,7 +7269,7 @@ msgstr "Если у Вас есть большое количество меди
 
 #: admin_trees_manage.php:273
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Если Вы создали медиаобъекты в webtrees, но ввели изменения используя программу которая удаляет медиаобъекты, то поставьте флажок, чтобы объединить медиаобъекты с новыми генеалогическим деревом."
+msgstr "Если Вы создали медиаобъекты в Webtrees, но ввели изменения в этот файл GEDCOM используя программу которая удаляет медиаобъекты, то выберите этот параметр, чтобы объединить существующие медиаобъекты с новым файлом GEDCOM."
 
 #: admin_site_config.php:188
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7316,7 +7316,7 @@ msgstr "Загрузить"
 
 #: admin_trees_manage.php:171
 msgid "Import a GEDCOM file"
-msgstr "Загрузить файл GEDCOM"
+msgstr "Импорт (загрузить) файла GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:3381
 msgid "Import all places from a family tree"
@@ -7325,7 +7325,7 @@ msgstr "Импортировать все места из дерева"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Импорт пользовательских миниатюр из Webtrees версии 1"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
@@ -7364,15 +7364,15 @@ msgstr "В этом году, в прошлом …"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "В Webtrees версии 1, Вы можете добавить пользовательские миниатюры к медиаобъектам путем создания файлов в папках \"превью\"."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "В Webtrees версии 2, пользовательские миниатюры хранятся в качестве второго медиафайла в том же медиаобъекте."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "Включить связи"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7565,11 +7565,11 @@ msgstr "Погребен"
 
 #: import.php:113
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Недопустимый GEDCOM файл - запись заголовка не сущестует."
+msgstr "Недопустимый файл GEDCOM - запись заголовка не существует."
 
 #: app/Functions/FunctionsImport.php:620
 msgid "Invalid GEDCOM format"
-msgstr "Недопустимый GEDCOM формат"
+msgstr "Недопустимый формат GEDCOM"
 
 #: app/Date.php:328
 msgid "Invalid date"
@@ -7827,11 +7827,11 @@ msgstr "Сохранить связь в списке"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:270
 msgid "Keep media objects"
-msgstr "Сохранить объекты мультимедиа"
+msgstr "Сохранить медиаобъекты"
 
 #: resources/views/modals/on-screen-keyboard.php:8
 msgid "Keep open"
-msgstr ""
+msgstr "Держать открытыми"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1376
@@ -8183,7 +8183,7 @@ msgstr "Лима, Перу"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Связать медиаобъекты с фактами и событиями"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -8197,15 +8197,15 @@ msgstr "Присоединить к семье в качестве ребёнк�
 
 #: app/Controller/MediaController.php:51
 msgid "Link this media object to a family"
-msgstr "Ссылка на медиа-объект для семьи"
+msgstr "Ссылка на медиаобъект для семьи"
 
 #: app/Controller/MediaController.php:55
 msgid "Link this media object to a source"
-msgstr "Ссылка на медиа-объект для источника"
+msgstr "Ссылка на медиаобъект для источника"
 
 #: app/Controller/MediaController.php:47
 msgid "Link this media object to an individual"
-msgstr "Ссылка на медиа-объект для персоны"
+msgstr "Ссылка на медиаобъект для персоны"
 
 #: admin_users.php:598
 msgid "Link this user to an individual in the family tree."
@@ -8215,7 +8215,7 @@ msgstr "Свяжите данного пользователя с персоно
 #: inverselink.php:61
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:63
 msgid "Link to an existing media object"
-msgstr "Присоединить медиаобъект"
+msgstr "Ссылка на имеющийся медиаобъект"
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1040
@@ -8306,7 +8306,7 @@ msgstr "Самый долгий брак"
 #. I18N: Two axes of a graph
 #: statistics.php:521 statisticsplot.php:1048
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Долголетие по сравнению с временем"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:770 app/Functions/FunctionsPrint.php:408
@@ -8488,7 +8488,7 @@ msgstr "Рукопись"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1084
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Многие программы генеалогии создают GEDCOM файлы с пользовательскими тегами, и webtrees понимает большинство из них. Когда непризнанные теги будут найдены, этот параметр позволяет Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
+msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги,  этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:419
@@ -8899,11 +8899,11 @@ msgstr "Мультимедийные файлы"
 #. I18N: A configuration setting
 #: admin_trees_config.php:525
 msgid "Media folder"
-msgstr "Медиа-папка"
+msgstr "Медиапапка"
 
 #: admin_media.php:600 admin_trees_config.php:520
 msgid "Media folders"
-msgstr "Медиа-папки"
+msgstr "Медиапапки"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:669 admin_trees_manage.php:590
@@ -9377,7 +9377,7 @@ msgstr "Вправо"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Переместить медиаобъект?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10319,7 +10319,7 @@ msgstr "Другая папка… введите, пожалуйста"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Другие генеалогические приложения могут не распознавать эти данные."
 
 #: admin_trees_config.php:1325
 msgid "Other preferences"
@@ -11017,7 +11017,7 @@ msgstr "Конфиденциальность"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Ограничение конфиденциальности"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11026,7 +11026,7 @@ msgstr "Ограничения доступа"
 
 #: resources/views/admin/tree-privacy.php:209
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Ограничения доступа - эти настройки влияют на записи и факты без GEDCOM тега RESN"
+msgstr "Ограничения доступа - эти настройки влияют на записи и факты без GEDCOM-тега RESN"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:522
 #: app/GedcomRecord.php:602 app/GedcomRecord.php:727 app/Individual.php:1278
@@ -11247,7 +11247,7 @@ msgstr "Пересортировать медиаобъекты"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Изменить порядок имен"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -11469,7 +11469,7 @@ msgstr "Удалить связь из списка"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:283
 msgid "Remove the GEDCOM media path from filenames"
-msgstr "Удалить из файла GEDCOM медиа пути"
+msgstr "Удалить медиапути GEDCOM из имен файлов"
 
 #: app/Module/GoogleMapsModule.php:3333
 msgid "Remove this location?"
@@ -11566,7 +11566,7 @@ msgstr "Задачи исследования являются специаль�
 
 #: app/Module/ResearchTaskModule.php:157
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Задачи исследования хранятся с использованием пользовательского тега GEDCOM «_TODO». Другие приложения генеалогии могут не распознать этот тег."
+msgstr "Задачи исследования хранятся с использованием пользовательского GEDCOM-тега «_TODO». Другие приложения генеалогии могут не распознать этот тег."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:502
@@ -11916,7 +11916,7 @@ msgstr "Выбрать"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:201
 msgid "Select a GEDCOM file to import"
-msgstr "Выбрать файл GEDCOM для загрузки"
+msgstr "Выбрать файл GEDCOM для импорта (загрузки)"
 
 #: resources/views/edit-blocks-page.php:130
 msgid "Select a block and use the arrows to move it."
@@ -11933,7 +11933,7 @@ msgstr "Выберите персон по месту или дате"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Выбор записей из Вашего семейного дерева и сохранения их, в файле GEDCOM."
+msgstr "Выбор записей из Вашего семейного дерева и сохранения их в файле GEDCOM."
 
 #: statistics.php:532 statistics.php:540 statistics.php:547
 msgid "Select the desired age interval"
@@ -12257,7 +12257,7 @@ msgstr "Она умерла"
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr "Она вышла замуж"
+msgstr "Она вышла замуж за"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
@@ -12328,7 +12328,7 @@ msgstr "Показать"
 #. I18N: A configuration setting
 #: admin_trees_config.php:570
 msgid "Show a download link in the media viewer"
-msgstr "Показать ссылку на скачивание в медиа просмотре"
+msgstr "Показать ссылку на скачивание в медиапроигрывателе"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:495
@@ -12832,7 +12832,7 @@ msgstr "Сомали"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:295
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Некоторое генеалогическое программное обеспечение создает файлы GEDCOM, которые содержат имена медиа-файлов с полными путями. Эти пути не будуть существовать на веб-сервере. Чтобы webtrees смог найти такой файл, необходимо удалить первую часть пути."
+msgstr "Некоторое генеалогическое программное обеспечение создает файлы GEDCOM, которые содержат имена медиафайлов с полными путями. Эти пути не будут присутствовать на веб-сервере. Чтобы Webtrees смог найти такой файл, необходимо удалить первую часть пути."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1099
@@ -13139,7 +13139,7 @@ msgstr "Подтверждено, но до сих пор неясно"
 #: admin_trees_manage.php:613 app/GedcomTag.php:550
 #: app/Module/RecentChangesModule.php:321
 msgid "Submitter"
-msgstr "Податель"
+msgstr "Заявитель"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6817
@@ -13397,11 +13397,11 @@ msgstr "<b>фамилия</b> поле содержит имя, которое �
 #: admin_trees_manage.php:142
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Файл GEDCOM “%s” был импортирован."
+msgstr "Файл GEDCOM “%s” был импортирован (загружен)."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "Стандарт GEDCOM не разрешает URL-адреса в медиаобъектах."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13415,7 +13415,7 @@ msgstr "Отсутствует папка для временных PHP файл
 
 #: admin_trees_manage.php:741
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "Мастер переноса PhpGedView в webtrees представляет собой автоматизированный процесс, который поможет администраторам сделать переход PhpGedView к новой системе webtrees. Это позволит переместить все файлы GEDCOM и другой информации, содержащейся в базе данных PhpGedView непосредственно в новую базу данных webtrees. Необходимы следующие параметры:"
+msgstr "Мастер переноса PhpGedView в Webtrees представляет собой автоматизированный процесс, который поможет администраторам сделать переход PhpGedView к новой системе Webtrees. Это позволит переместить все файлы GEDCOM и другой информации, содержащейся в базе данных PhpGedView непосредственно в новую базу данных Webtrees. Необходимы следующие параметры:"
 
 #: resources/views/emails/approve-user-html.php:7
 #: resources/views/emails/approve-user-text.php:4
@@ -13441,7 +13441,7 @@ msgstr "Изменения для «%s» отклонены."
 
 #: app/Module/ClippingsCartModule.php:314
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "GEDCOM-Корзина позволяет делать «вырезки» из семейного дерева и загружать их как GEDCOM файл."
+msgstr "Корзина вырезок позволяет извлекать вырезки (выдержки) из этого генеалогического дерева и соединить их в один файл для загрузки и последующего импорта в Вашу собственную генеалогически программу. Загружаемый файл записывается в формате GEDCOM.<br><ul><li>Как сделать вырезку?<br> Это очень просто. Каждый раз, когда Вы видите имя (персон, семьи или источники), на которое можно нажать, перейдите на страницу с подробностями для этого имени. Там Вы увидите ссылки <b>Добавить в корзину вырезок</b>. Когда Вы перейдете по этой ссылке, Вам будет предложено несколько вариантов для загрузки.</li <li>Как загружать?<br>Когда в корзине будут все нужные Вам вырезки, Вы можете скачать их просто нажав на ссылку \"Скачать\". Затем следуйте инструкциям и ссылкам.</li></ul>"
 
 #: admin_trees_config.php:682
 msgid "The date and time of the last update"
@@ -13640,7 +13640,7 @@ msgstr "Медиафайл, который вы загружаете, может
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "Медиаобъект создан"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13696,7 +13696,7 @@ msgstr "Новому пользователю будет предложено п
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Примечание создано"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13769,7 +13769,7 @@ msgstr "Регулярное выражение содержит ошибку. �
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Хранилище (репозиторий) создано"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13786,11 +13786,11 @@ msgstr "Размер генеалогического дерева, самые �
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "Источник создан"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Заявитель создан"
 
 #: help_text.php:234
 #, php-format
@@ -13908,7 +13908,7 @@ msgstr "Для этой персоны нету фактов."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Нет ссылок на этот медиаобъект."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -13987,7 +13987,7 @@ msgstr "Эти группы персон не связаны с %s."
 #: import.php:149
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr "Этот GEDCOM-файл закодирован с помощью %1$s. Предположим, что это означает %2$s."
+msgstr "Этот файл GEDCOM закодирован с помощью %1$s. Предположим, что это означает %2$s."
 
 #: login.php:94
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14049,7 +14049,7 @@ msgstr "Это генеалогическое дерево не имеет ка�
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:161
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Последнее обновление фамильное дерево было #gedcomUpdated#. #totalSurnames# фамилий в этом дереве. Раннее событие #firstEventType# из #firstEventName# в #firstEventYear#. Самое последнее событие - это #lastEventType# из #lastEventName# в #lastEventYear#.<br><br>Если у Вас есть какие-либо комментарии или предложения, пожалуйста, свяжитесь с #contactWebmaster#."
+msgstr "Последнее обновление этого фамильного дерева было #gedcomUpdated#. #totalSurnames# фамилий в этом дереве. Раннее событие #firstEventType# из #firstEventName# в #firstEventYear#. Самое последнее событие - это #lastEventType# из #lastEventName# в #lastEventYear#.<br><br>Если у Вас есть какие-либо комментарии или предложения, пожалуйста, свяжитесь с #contactWebmaster#."
 
 #: app/Module/HtmlBlockModule.php:165
 #: resources/views/blocks/family-tree-statistics.php:5
@@ -14060,7 +14060,7 @@ msgstr "Это генеалогическое дерево было обновл
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:182
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Эта папка будет использоваться webtrees для хранения медиа-файлов GEDCOM-файлы, временные файлы и др. Эти файлы могут содержать личные данные, и не должны быть доступны через интернет."
+msgstr "Эта папка будет использоваться Webtrees для хранения медиафайлов, файлов GEDCOM, временные файлы и др. Эти файлы могут содержать личные данные, и не должны быть доступны через интернет."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:544
@@ -14114,22 +14114,22 @@ msgstr "В этом поле ввода можно изменить календ
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:1307
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Это разделенный запятыми список GEDCOM-то теги, которые будут показаны на добавить/изменить имя формы. При использовании нелатинских алфавитов, таких как иврит, греческий, кириллица, Арабский или, возможно, вы захотите добавить такие теги, как _HEB, ROMN, FONE, и т.д. позволяет хранить имена в разных алфавитов."
+msgstr "Это разделенный запятыми список тегов GEDCOM фактов, которые будут отображаться в форме добавления/редактирования имени. При использовании не латинских алфавитов, таких как иврит, греческий, кириллица, арабский, Вы можете добавить такие теги, как _HEB, ROMN, FONE, и т.д. чтобы Вы могли хранить имена в нескольких разных алфавитах."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1197
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Это разделенный запятыми список GEDCOM теги факт, что будет показано при добавлении новой семьи. Например, если MARR находится в списке, то поля для даты вступления в брак и брак место будет показано на виде."
+msgstr "Этот разделенный запятыми список тегов GEDCOM фактов, которые будет показаны при добавлении новой семьи. Например, если MARR находится в списке, то поля для даты вступления и места брака будут показаны в форме."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1143
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Это разделенный запятыми список GEDCOM теги факт, что будет показано при добавлении нового индивидуума. Например, если BIRT находится в списке, поля для даты и места рождения будет отображаться на форме."
+msgstr "Это разделенный запятыми список тегов GEDCOM фактов, которые будут отражены при добавлении нового лица. Например, если BIRT находится в списке, то поля для даты и места рождения будут отображаться в форме."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:1320
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Это разделенный запятыми список GEDCOM теги факт, что будет показано при добавлении или изменении топонимики. При использовании нелатинских алфавитов, таких как иврит, греческий, кириллица, Арабский или, возможно, вы захотите добавить такие теги, как _HEB, ROMN, FONE, и т.д. чтобы позволить вам хранить топонимов в разных алфавитов."
+msgstr "Это разделенный запятыми список тегов GEDCOM фактов, которые будут показаны при добавлении или редактировании названий мест. Если Вы используете не латинский алфавит, такой как иврит, греческий, кириллица, арабский, Вы возможно захотите добавить такие теги, как _HEB, ROMN, FONE, и т.д. чтобы позволить сохранять названия мест в нескольких различных алфавитах."
 
 #: edituser.php:167
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14158,42 +14158,42 @@ msgstr "Это последняя версия webtrees. Обновление н
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1171
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Это список GEDCOM факты, что ваши пользователи могут добавлять семьям. Вы можете изменить этот список, удаляя и добавляя то, имена, даже собственные, по мере необходимости. То имена, которые появляются в этом списке, не должны также появиться в «уникальные семейные факты» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять в семьи. Вы можете изменить этот список, добавив или удалив названия фактов (даже нестандартные, если это необходимо). Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1117
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Это список GEDCOM факты, что ваши пользователи могут добавлять физических лиц. Вы можете изменить этот список, удаляя и добавляя то, имена, даже собственные, по мере необходимости. То имена, которые появляются в этом списке, не должны также появиться в «уникальные индивидуальные факты» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять к людям. Вы можете изменить этот список, добавив или удалив названия фактов (даже нестандартные, если это необходимо). Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1266
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавлять к хранилищам. Вы можете изменить этот список, удаляя и добавляя то, имена, даже собственные, по мере необходимости. То имена, которые появляются в этом списке, не должны также появиться в «уникальное хранилище фактов» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять в хранилища (репозитории). Вы можете изменить этот список, добавив или удалив названия фактов (даже нестандартные, если это необходимо). Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1225
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавлять к источникам. Вы можете изменить этот список, удаляя и добавляя то, имена, даже собственные, по мере необходимости. То имена, которые появляются в этом списке, не должны также появиться в «уникальным источником фактов» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять к источникам. Вы можете изменить этот список, добавив или удалив названия фактов (даже нестандартные, если это необходимо). Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1184
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавить только один раз для семьи. Например, если MARR в этом списке, пользователи не смогут добавлять более одной MARR запись в семье. То имена, которые появляются в этом списке, не должны также появиться в «Все семейные факты» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять к семьям только один раз. Например, если MARR находится в этом списке, то пользователи не смогут добавлять больше чем одну запись MARR к семье. Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1130
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавить только один раз для физических лиц. Например, если BIRT находится в этом списке, пользователи не смогут добавлять более одной BIRT запись на индивидуальный. То имена, которые появляются в этом списке, не должны также появиться в «Все отдельные факты» список."
+msgstr "Это список фактов GEDCOM, которые Ваши пользователи могут добавлять к лицам только один раз. Например, если BIRT находится в этом списке, то пользователи не смогут добавить больше чем одну запись BIRT к лицу. Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1279
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавить только один раз, чтобы репозиториев. Например, если имя есть в этом списке, пользователи не смогут добавить больше чем одно имя записать в репозиторий. То имена, которые появляются в этом списке, не должны также появиться в «Все репозитории факты» список."
+msgstr "Это список фактов GEDCOM, которые пользователи могут добавлять в хранилище (репозиторий) только один раз. Например, если имя есть в этом списке, то пользователи не смогут добавить больше чем одну запись NAME в хранилище (репозиторий). Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1238
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Это список GEDCOM факты, которые пользователи могут добавить только один раз, чтобы источники. Например, если TITL находится в этом списке, пользователи не смогут добавлять более одной TITL записи источника. То имена, которые появляются в этом списке, не должны также появиться в «Все исходные факты» список."
+msgstr "Это список фактов GEDCOM, которые пользователи могут добавить к источникам только один раз. Например, если TITL находится в этом списке, пользователи не смогут добавлять более одной записи TITL к источнику. Названия фактов, которые появляются в этом списке, также не должны присутствовать в списке «Уникальные семейные факты»."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:339
@@ -14224,23 +14224,23 @@ msgstr "Этот медиаобъект не существует или у Ва
 
 #: mediaviewer.php:35
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Этот медиа-объект был удален. Удаление должно быть проверено модератором."
+msgstr "Этот медиаобъект был удален. Удаление должно быть проверено модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:33
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Этот медиа-объект был удален. Вы должны пересмотреть это удаление, а затем %1$s или %2$s его."
+msgstr "Этот медиаобъект был удален. Вы должны пересмотреть это удаление, а затем %1$s или %2$s его."
 
 #: mediaviewer.php:42
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "Этот медиа-объект был отредактирован. Изменения должны быть проверены модератором."
+msgstr "Этот медиаобъект был отредактирован. Изменения должны быть проверены модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:40
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Этот медиа-объект был отредактирован. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
+msgstr "Этот медиаобъект был отредактирован. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
 
 #: resources/views/emails/message-copy-html.php:19
 #: resources/views/emails/message-copy-text.php:10
@@ -14428,7 +14428,7 @@ msgstr "Этот сервер имеет следующие настройки: 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:839
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Это должно быть, перечень фактов с разделителями-запятыми или пробелами (кроме рождения и смерти), которые должны быть видимыми в рамках схем, таких как наследственная схема. Этот список требует использования тегов фактов, определенных в стандарте GEDCOM 5.5.1. Например, если Вы хотите показать в окне профессию, Вы должны добавить «OCCU» в это поле."
+msgstr "Это должно быть разделенный запятыми или пробелами список фактов, в дополнение к рождению и смерти, которые должны отражаться в прямоугольниках диаграмм, таких как диаграмма родословной. Этот список требует использования тегов фактов в соответствии со стандартом GEDCOM 5.5.1. Например, если вы хотите, чтобы в прямоугольнике было отражено род занятий, Вы должны добавить «OCCU» в это поле."
 
 #: source.php:55
 msgid "This source does not exist or you do not have permission to view it."
@@ -14492,7 +14492,7 @@ msgstr "Данный сайт использует куки, чтобы запо
 #: admin_trees_manage.php:191
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Это удалит все генеалогические данные из «%s» и заменит их на данные из другого GEDCOM-файла."
+msgstr "Это удалит все генеалогические данные из «%s» и заменит их на данные из другого файла GEDCOM."
 
 #: admin_trees_places.php:91
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14505,7 +14505,7 @@ msgstr "Чт"
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Миниатюрное изображение"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
@@ -14988,7 +14988,7 @@ msgstr "Нерешенные: недостаточно данных"
 
 #: admin_trees_config.php:1179
 msgid "Unique family facts"
-msgstr "Одноразовые факты семьи"
+msgstr "Уникальные семейные факты"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
@@ -15055,7 +15055,7 @@ msgstr "неизвестно"
 
 #: app/GedcomTag.php:1386
 msgid "Unrecognized GEDCOM code"
-msgstr "Неопознанный тэг GEDCOM"
+msgstr "Неопознанный код GEDCOM"
 
 #: admin_media.php:618
 msgid "Unused files"
@@ -15100,7 +15100,7 @@ msgstr "Обновление в любом случае"
 #: resources/views/admin/control-panel.php:33
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Обновить webtrees на %s."
+msgstr "Обновить Webtrees на %s."
 
 #: admin_site_upgrade.php:56
 msgid "Upgrade wizard"
@@ -15710,7 +15710,7 @@ msgstr "Этот флажок контролирует видимость для
 #: edit_interface.php:61 edit_interface.php:184
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr "Вы можете скачать копию спецификации GEDCOM из %s."
+msgstr "Вы можете загрузить копию спецификации GEDCOM из %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
@@ -15759,7 +15759,7 @@ msgstr "У Вас не создано ни одной заметки для дн
 
 #: admin_trees_manage.php:193
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "Вы выбрали GEDCOM-файл с другим именем. Всё верно?"
+msgstr "Вы выбрали файл GEDCOM с другим именем. Всё верно?"
 
 #: logout.php:26
 msgid "You have signed out."
@@ -15949,15 +15949,15 @@ msgstr "Отдалить"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "URL-адрес"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "файл на сервере"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "файл на Вашем компьютере"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
@@ -16504,7 +16504,7 @@ msgstr "название недвижимости"
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr "предполагаемо %s"
+msgstr "предполагаемо в %s г."
 
 #: app/Functions/Functions.php:671
 msgid "ex-husband"
@@ -19762,7 +19762,7 @@ msgstr "Сообщение webtrees"
 #: resources/views/setup/step-3-database-connection.php:16
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "Программе webtrees нужна СУБД MySQL версии не ниже %s."
+msgstr "Программе Webtrees нужна СУБД MySQL версии не ниже %s."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:311
@@ -19780,7 +19780,7 @@ msgstr "webtrees отсылает письмо не сохраняя"
 
 #: admin_trees_download.php:195
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees использует UTF-8 кодировку для букв со знаком ударения, специальных символов и НЕлатинских символов. Если Вы желаете использовать этот GEDCOM файл в генеалогических программах, которые не поддерживают utf-8, то Вы можете создать его, используя ISO-8859-1 кодировку."
+msgstr "Webtrees использует UTF-8 кодировку для букв со знаком ударения, специальных символов и не-латинских символов. Если Вы желаете использовать этот файл GEDCOM в генеалогических программах, которые не поддерживают UTF-8, то Вы можете создать его, используя ISO-8859-1 кодировку."
 
 #: admin_trees_manage.php:745
 msgid "webtrees’ database must be on the same server as PhpGedView’s"

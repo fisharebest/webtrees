@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <div class="row form-group">
 	<label class="col-sm-3 col-form-label" for="title">
@@ -40,11 +41,8 @@
 		<p>
 			<?= I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.') ?>
 		</p>
+		<textarea name="html" id="html" class="html-edit form-control" rows="10"><?= e($html) ?></textarea>
 	</div>
-</div>
-
-<div class="row form-group">
-	<textarea name="html" id="html" class="html-edit" rows="10"><?= e($html) ?></textarea>
 </div>
 
 <fieldset class="form-group">
@@ -68,3 +66,9 @@
 		</div>
 	</div>
 </fieldset>
+
+<?php if ($enable_ckeditor): ?>
+	<?php View::push('javascript') ?>
+		<?= view('modules/ckeditor-js') ?>
+	<?php View::endpush() ?>
+<?php endif ?>

@@ -1127,11 +1127,11 @@ abstract class AbstractTheme {
 	protected function menuCalendar() {
 		return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', ['rel' => 'nofollow'], [
 			// Day view
-			new Menu(I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day', ['rel' => 'nofollow']),
+			new Menu(I18N::translate('Day'), e(route('calendar', ['view' => 'day', 'ged' => $this->tree->getName()])), 'menu-calendar-day', ['rel' => 'nofollow']),
 			// Month view
-			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', ['rel' => 'nofollow']),
+			new Menu(I18N::translate('Month'), e(route('calendar', ['view' => 'month', 'ged' => $this->tree->getName()])), 'menu-calendar-month', ['rel' => 'nofollow']),
 			//Year view
-			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', ['rel' => 'nofollow']),
+			new Menu(I18N::translate('Year'), e(route('calendar', ['view' => 'year', 'ged' => $this->tree->getName()])), 'menu-calendar-year', ['rel' => 'nofollow']),
 		]);
 	}
 
@@ -1542,7 +1542,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsBranches($surname) {
-		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-branches', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Branches'), e(route('branches', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-branches', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1553,7 +1553,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsFamilies($surname) {
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-fam', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Families'), e(route('family-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
 	/**
@@ -1564,7 +1564,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsIndividuals($surname) {
-		return new Menu(I18N::translate('Individuals'), 'indilist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-indi');
+		return new Menu(I18N::translate('Individuals'), e(route('individual-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
 	/**
@@ -1659,13 +1659,13 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * A link to allow users to edit their account settings (edituser.php).
+	 * A link to allow users to edit their account settings.
 	 *
 	 * @return Menu|null
 	 */
 	protected function menuMyAccount() {
 		if (Auth::check()) {
-			return new Menu(I18N::translate('My account'), 'edituser.php');
+			return new Menu(I18N::translate('My account'), e(route('my-account', [])));
 		} else {
 			return null;
 		}
@@ -1741,16 +1741,12 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$url = Html::url('edit_changes.php', [
+			$url = route('show-pending', [
 				'ged' => $this->tree ? $this->tree->getName() : '',
 				'url' => $this->request->getRequestUri()
 			]);
 
-			$url = e($url);
-
-			$menu = new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
-
-			return $menu;
+			return new Menu(I18N::translate('Pending changes'), e($url), 'menu-pending');
 		} else {
 			return null;
 		}
@@ -2016,7 +2012,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function pendingChangesLink() {
-		return '<a href="edit_changes.php">' . $this->pendingChangesLinkText() . '</a>';
+		return '<a href="' . e(route('show-pending', ['ged' => $this->tree->getName()])) . '">' . $this->pendingChangesLinkText() . '</a>';
 	}
 
 	/**

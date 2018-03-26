@@ -1170,11 +1170,6 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
-.details0,
-.details1 {
-	font: 13px tahoma, arial, helvetica, sans-serif;
-}
-
 .details2 {
 	font-size: 12px;
 }
@@ -1669,13 +1664,6 @@ a:hover .nameZoom {
 	cursor: url(images/zoomout.png), n-resize;
 }
 
-.box-style0-expanded,
-.box-style1-expanded {
-	width: 300px !important;
-	height: auto !important;
-	line-height: 1.5em!important;
-}
-
 .person_box_template .namedef i[class^="icon-sex"] {
 	margin-left: 3px;
 }
@@ -1698,7 +1686,7 @@ a:hover .nameZoom {
 .person_box_template img,
 .person_box_template a.gallery {
 	float: left;
-	height: 45px;
+	height: 50px;
 	margin: 0 3px 0 0;
 	max-width: 60px;
 	width: auto;
@@ -1767,7 +1755,6 @@ a:hover .nameZoom {
 	list-style: none;
 	margin: 0;
 	padding: 0 10px;
-	font-size: smaller;
 }
 
 .popup > ul {
@@ -2459,64 +2446,14 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
-}
-
-#sb_family_nav_content {
-	margin-top: 8px;
-}
-
-.nam a:hover {
-	color: #f00;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
+/* Sidebar - Family navigator */
+.wt-family-navigator-dropdown-heading {
 	font-weight: bold;
-	display: block;
-	padding: 5px 0;
+	font-size: inherit;
+	color: inherit;
 }
 
-.flyout {
-	left: 40px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #362b36;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	color: #f00;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 2px;
 }

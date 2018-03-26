@@ -1,4 +1,4 @@
-<div id="hourglass_chart" style="width:98%; z-index:1;">
+<div class="position-relative" id="hourglass_chart" style="width:98%; z-index:1;">
 	<table>
 		<tr>
 			<td style="vertical-align:middle">

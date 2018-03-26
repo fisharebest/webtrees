@@ -5526,7 +5526,7 @@ class Stats {
 			}
 			switch ($type) {
 				case 'table':
-					$common[] = '<tr><td>' . $given . '</td><td data-sort="' . $total . '">' . I18N::number($total) . '</td></tr>';
+					$common[] = '<tr><td>' . $given . '</td><td class="text-center" data-sort="' . $total . '">' . I18N::number($total) . '</td></tr>';
 					break;
 				case 'list':
 					$common[] = '<li><span dir="auto">' . $given . '</span>' . $tot . '</li>';

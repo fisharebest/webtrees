@@ -114,7 +114,7 @@ if (Module::getModuleByName('ckeditor')) {
 		</tr>
 		<tr>
 			<td>
-				<textarea id="body" name="body" class="html-edit" cols="80" rows="10" dir="auto"><?= e($news['body']) ?></textarea>
+				<textarea id="body" name="body" class="html-edit form-control" rows="10" dir="auto"><?= e($news['body']) ?></textarea>
 			</td>
 		</tr>
 		<tr>

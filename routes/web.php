@@ -72,15 +72,14 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 	];
 }
 
-// Member routes.
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
+// Moderator routes.
+if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isModerator($tree)) {
 	$routes += [
-		'GET:user-page'             => 'HomePageController@userPage',
-		'GET:user-page-block'       => 'HomePageController@userPageBlock',
-		'GET:user-page-edit'        => 'HomePageController@userPageEdit',
-		'POST:user-page-update'     => 'HomePageController@userPageUpdate',
-		'GET:user-page-block-edit'  => 'HomePageController@userPageBlockEdit',
-		'POST:user-page-block-edit' => 'HomePageController@userPageBlockUpdate',
+		'GET:show-pending'        => 'PendingChangesController@showChanges',
+		'POST:accept-pending'     => 'PendingChangesController@acceptChange',
+		'POST:reject-pending'     => 'PendingChangesController@rejectChange',
+		'POST:accept-all-pending' => 'PendingChangesController@acceptAllChanges',
+		'POST:reject-all-pending' => 'PendingChangesController@rejectAllChanges',
 	];
 }
 
@@ -112,11 +111,31 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 	];
 }
 
+// Member routes.
+if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
+	$routes += [
+		'GET:user-page'             => 'HomePageController@userPage',
+		'GET:user-page-block'       => 'HomePageController@userPageBlock',
+		'GET:user-page-edit'        => 'HomePageController@userPageEdit',
+		'POST:user-page-update'     => 'HomePageController@userPageUpdate',
+		'GET:user-page-block-edit'  => 'HomePageController@userPageBlockEdit',
+		'POST:user-page-block-edit' => 'HomePageController@userPageBlockUpdate',
+		'GET:my-account'            => 'AccountController@edit',
+		'POST:my-account'           => 'AccountController@update',
+		'POST:delete-account'       => 'AccountController@delete',
+	];
+}
+
 // Public routes (that need a tree).
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 	$routes += [
 		'GET:autocomplete-folder'    => 'AutocompleteController@folder',
 		'GET:autocomplete-place'     => 'AutocompleteController@place',
+		'GET:branches'               => 'BranchesController@page',
+		'GET:branches-list'          => 'BranchesController@list',
+		'GET:calendar'               => 'CalendarController@page',
+		'GET:calendar-events'        => 'CalendarController@calendar',
+		'POST:expand-chart-box'      => 'IndividualController@expandChartBox',
 		'GET:help-text'              => 'HelpTextController@helpText',
 		'GET:tree-page'              => 'HomePageController@treePage',
 		'GET:tree-page-block'        => 'HomePageController@treePageBlock',
@@ -133,6 +152,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:report-list'            => 'ReportEngineController@reportList',
 		'GET:report-setup'           => 'ReportEngineController@reportSetup',
 		'GET:report-run'             => 'ReportEngineController@reportRun',
+		'GET:family-list'            => 'ListController@familyList',
+		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
 		'GET:repository-list'        => 'ListController@repositoryList',
@@ -172,6 +193,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 
 // Public routes (that do not need a tree).
 $routes += [
+	'GET:module'           => 'ModuleController@action',
+	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
 	'POST:login'           => 'Auth\\LoginController@loginAction',
 	'GET:logout'           => 'Auth\\LoginController@logoutAction',

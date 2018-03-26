@@ -59,6 +59,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
 		$parameters = [
 			'chart-background-f'             => 'e9daf1',
 			'chart-background-m'             => 'b1cff0',
+			'chart-box-x'                    => 260,
+			'chart-box-y'                    => 85,
 			'distribution-chart-high-values' => '84beff',
 			'distribution-chart-low-values'  => 'c3dfff',
 		];

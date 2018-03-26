@@ -20,6 +20,7 @@
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
 }
+
 .table-given-name {
     overflow-x: hidden;
 }
@@ -585,11 +586,14 @@ table {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-	font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
+	padding-bottom: 4px;
 }
 
 .person_box_template .chart_textbox .name1{
 	line-height: 1;
+	font-weight: bold;
 }
 
 .person_box_template img,
@@ -1531,65 +1535,9 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
-}
+/* Sidebar - Family navigator */
 
-#sb_family_nav_content {
-	margin-top: 8px;
-}
-
-.nam a:hover {
-	color: #555;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
-	font-weight: bold;
-	display: block;
-	padding: 5px 0;
-}
-
-.flyout {
-	left: 40px;
-	padding: 3px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #333;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	text-decoration: underline;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 5px;
 }
@@ -3133,7 +3081,12 @@ footer {
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
-/* --- Body Icons -- */
+.icon-indis {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/indis.png);
+}
+
 .icon-pedigree {
 	width: 24px;
 	height: 24px;

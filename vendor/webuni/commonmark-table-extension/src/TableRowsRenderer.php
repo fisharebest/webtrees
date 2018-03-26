@@ -16,12 +16,13 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
+use League\CommonMark\Util\Xml;
 
 class TableRowsRenderer implements BlockRendererInterface
 {
     public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
     {
-        if (!($block instanceof TableRows)) {
+        if (!$block instanceof TableRows) {
             throw new \InvalidArgumentException('Incompatible block type: '.get_class($block));
         }
 
@@ -31,7 +32,7 @@ class TableRowsRenderer implements BlockRendererInterface
 
         $attrs = [];
         foreach ($block->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = $htmlRenderer->escape($value, true);
+            $attrs[$key] = Xml::escape($value, true);
         }
 
         $separator = $htmlRenderer->getOption('inner_separator', "\n");

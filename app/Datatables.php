@@ -144,22 +144,4 @@ class Datatables {
 			'data-state-save' => 'true',
 		] + self::languageAttributes());
 	}
-
-	/**
-	 * Generate the HTML attributes for a table of surnames.
-	 *
-	 * @return string
-	 */
-	public static function surnameTableAttributes() {
-		return Html::attributes([
-			'class' => 'table table-bordered table-sm datatables table-surname',
-			//'data-columns'   => '[{ type: "text" }, { type: "num" }]',
-			'data-columns'    => '[null, null]',
-			'data-info'       => 'false',
-			'data-paging'     => 'false',
-			'data-searching'  => 'false',
-			'data-state-save' => 'true',
-			'data-order'      => '[[1, "desc"]]',
-		]);
-	}
 }

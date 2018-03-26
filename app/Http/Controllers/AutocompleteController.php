@@ -29,8 +29,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AutocompleteController extends AbstractBaseController {
 	/**
-
-	/**
 	 * Autocomplete for media folders.
 	 *
 	 * @param Request $request

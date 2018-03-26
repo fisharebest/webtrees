@@ -17,9 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -34,14 +37,30 @@ class ModuleController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function action(Request $request): Response {
-		$module_name   = $request->get('module');
-		$module_action = $request->get('action');
-		$module        = Module::getModuleByName($module_name);
+		/** @var User $user */
+		$user = $request->attributes->get('user');
 
-		if ($module === null) {
-			throw new NotFoundHttpException('Not found');
+		$module_name = $request->get('module');
+
+		// Check that the module is enabled.
+		// The module itself will need to check any tree-level access,
+		// which may be different for each component (tab, menu, etc.) of the module.
+		$module = Module::getModuleByName($module_name);
+
+		// We'll call a function such as Module::getFooBarAction()
+		$verb   = strtolower($request->getMethod());
+		$action = $request->get('action');
+		$method = $verb . $action . 'Action';
+
+		// Actions with "Admin" in the name are for administrators only.
+		if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
+			throw new AccessDeniedHttpException;
 		}
 
-		$function = $request->getMethod() ;
+		if (method_exists($module, $method)) {
+			return $module->$method($request);
+		} else {
+			throw new NotFoundHttpException('Module not found');
+		}
 	}
 }

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
@@ -167,13 +168,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$all_trees      = Tree::getNameList();
 
 		echo view('blocks/html-config', [
-			'all_trees'      => $all_trees,
-			'gedcom'         => $gedcom,
-			'html'           => $html,
-			'languages'      => $languages,
-			'show_timestamp' => $show_timestamp,
-			'templates'      => $templates,
-			'title'          => $title,
+			'all_trees'       => $all_trees,
+			'enable_ckeditor' => Module::getModuleByName('ckeditor'),
+			'gedcom'          => $gedcom,
+			'html'            => $html,
+			'languages'       => $languages,
+			'show_timestamp'  => $show_timestamp,
+			'templates'       => $templates,
+			'title'           => $title,
 		]);
 	}
 }
