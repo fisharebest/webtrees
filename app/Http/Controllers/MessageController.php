@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -77,5 +78,13 @@ class MessageController extends AbstractBaseController {
 	public function send(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
+
+		if (Auth::check()) {
+			$from_email = Auth::user()->getEmail();
+			$from_name  = Auth::user()->getRealName();
+		} else {
+			$from_email = $request->get('from_email');
+			$from_name  = $request->get('from_name');
+		}
 	}
 }
