@@ -49,7 +49,7 @@ class PendingChangesController extends AbstractBaseController {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		$url = $request->get('url', '');
+		$url = $request->get('url', route('tree-page', ['ged' => $tree->getName()]));
 
 		$rows = Database::prepare(
 			"SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
