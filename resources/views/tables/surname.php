@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<table class="table table-bordered table-sm datatables wt-table-surname" data-columns="[null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true" >
+<table class="table table-bordered table-sm datatables wt-table-surname" data-info="false" data-paging="false" data-searching="false" data-state-save="true" data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>">
 	<caption class="sr-only">
 		<?= I18N::translate('Surnames') ?>
 	</caption>
