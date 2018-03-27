@@ -25,15 +25,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * Controller for module actions.
- */
-class ModuleController extends AbstractBaseController {
+class AdminModuleController extends AdminController {
+
 	/**
-	 * Perform an HTTP action for one of the modules.
-	 *
 	 * @param Request $request
-	 *
 	 * @return Response
 	 */
 	public function action(Request $request): Response {

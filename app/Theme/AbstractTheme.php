@@ -1604,8 +1604,8 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	public function menuListsPlaces() {
-		return new Menu(I18N::translate('Place hierarchy'), e(Html::url('placelist.php' ,['ged' => $this->tree->getName()])), 'menu-list-plac', ['rel' => 'nofollow']);
+	protected function menuListsPlaces() {
+		return new Menu(I18N::translate('Place hierarchy'), e(route('place-hierarchy', ['ged' => $this->tree->getName()])), 'menu-list-plac', ['rel' => 'nofollow']);
 	}
 
 	/**
