@@ -54,6 +54,9 @@ if (Auth::isAdmin()) {
 		'GET:broadcast'                       => 'MessageController@broadcastPage',
 		'POST:broadcast'                      => 'MessageController@broadcastAction',
 		'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
+		'GET:admin-module'                    => 'AdminModuleController@action',
+		'POST:admin-module'                   => 'AdminModuleController@action',
+
 	];
 }
 
@@ -177,6 +180,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
+		'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
 		'GET:repository-list'        => 'ListController@repositoryList',
 		'GET:source-list'            => 'ListController@sourceList',
 		'GET:ancestors'              => 'AncestorsChartController@page',
