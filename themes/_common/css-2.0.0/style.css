@@ -512,12 +512,10 @@
  * wt-place-hierarchy-page
  */
 
- #place_hierarchy ul {
-	margin-right: 15px;
+#place-hierarchy ul {
+	list-style-type: none;
 }
-[dir=rtl] #place_hierarchy ul {
-	margin-left: 15px;
-}
+
 
 /*
  * Calendar

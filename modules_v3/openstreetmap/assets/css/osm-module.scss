@@ -1,0 +1,54 @@
+$border-color: darkGrey;
+
+/*
+Both wrapper & map need a height to keep
+a sensible display when stacking
+ */
+.osm-wrapper, .osm-user-map {
+	height: 45vh;
+}
+
+.osm-admin-map {
+	height: 55vh;
+	border: 1px solid $border-color;
+}
+
+.osm-sidebar {
+	height: 100%;
+	overflow-y: auto;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	display: none;
+	font-size: 1.5vh;
+	.gchart {
+		margin: 1px;
+		padding: 2px;
+		img {
+			height: 15px;
+			width: 25px;
+		}
+	}
+	.border-danger:hover {
+		cursor: not-allowed;
+	}
+}
+
+[dir=rtl] {
+	.leaflet-right {
+		right: auto;
+		left: 0;
+		.leaflet-control {
+			margin-right: 0;
+			margin-left: 10px;
+		}
+	}
+	.leaflet-left {
+		left: auto;
+		right: 0;
+		.leaflet-control {
+			margin-left: 0;
+			margin-right: 10px;
+		}
+	}
+}
