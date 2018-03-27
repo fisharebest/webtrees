@@ -39,6 +39,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface {
+
+	// How to update the database schema for this module
+	const SCHEMA_TARGET_VERSION   = 4;
+	const SCHEMA_SETTING_NAME     = 'OSM_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\OpenStreetMap\Schema';
+
 	// Package version numbers
 	const LEAFLET      = '1.3.1';
 	const LEAFLET_BEAU = '1.0.5';
@@ -106,6 +112,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
+
 		return route('admin-module', ['module' => $this->getName(), 'action' => 'AdminConfig']);
 	}
 
@@ -180,6 +188,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
+
 		return view(
 			'modules/openstreetmap/map',
 			[
