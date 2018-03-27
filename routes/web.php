@@ -52,6 +52,9 @@ if (Auth::isAdmin()) {
 		'GET:broadcast'                       => 'MessageController@broadcastPage',
 		'POST:broadcast'                      => 'MessageController@broadcastAction',
 		'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
+		'GET:admin-module'                    => 'AdminModuleController@action',
+		'POST:admin-module'                   => 'AdminModuleController@action',
+
 	];
 }
 
@@ -172,6 +175,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
+		'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
 		'GET:repository-list'        => 'ListController@repositoryList',
 		'GET:source-list'            => 'ListController@sourceList',
 		'GET:ancestors'              => 'AncestorsChartController@page',
@@ -213,13 +217,13 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'POST:select2-source'        => 'AutocompleteController@select2Source',
 		'POST:select2-submitter'     => 'AutocompleteController@select2Submitter',
 		'POST:select2-repository'    => 'AutocompleteController@select2Repository',
+		'GET:module'                 => 'ModuleController@action',
+		'POST:module'                => 'ModuleController@action',
 	];
 }
 
 // Public routes (that do not need a tree).
 $routes += [
-	'GET:module'           => 'ModuleController@action',
-	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
 	'POST:login'           => 'Auth\\LoginController@loginAction',
 	'GET:logout'           => 'Auth\\LoginController@logoutAction',

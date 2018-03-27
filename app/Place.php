@@ -55,6 +55,7 @@ class Place {
 	 * Get the identifier for a place.
 	 *
 	 * @return int
+	 * @throws \Exception
 	 */
 	public function getPlaceId() {
 		$place_id = 0;
@@ -84,6 +85,7 @@ class Place {
 	 * Get the lower level places.
 	 *
 	 * @return Place[]
+	 * @throws \Exception
 	 */
 	public function getChildPlaces() {
 		$children = [];
@@ -115,10 +117,8 @@ class Place {
 	 * @return string
 	 */
 	public function getURL() {
-		return e(Html::url('placelist.php', [
-			'parent' => array_reverse($this->gedcom_place),
-			'ged' => $this->tree->getName(),
-		]));
+		 return e(route('place-hierarchy',
+			['parent' => array_reverse($this->gedcom_place),'ged' => $this->tree->getNameUrl()]));
 	}
 
 	/**
@@ -196,7 +196,7 @@ class Place {
 	}
 
 	/**
-	 * For the "view all" option of placelist.phpp
+	 * For the Place hierarchy "list all" option
 	 *
 	 * @return string
 	 */
@@ -213,8 +213,8 @@ class Place {
 	 * Fetch all places from the database.
 	 *
 	 * @param Tree $tree
-	 *
 	 * @return Place[]
+	 * @throws \Exception
 	 */
 	public static function allPlaces(Tree $tree) {
 		$places = [];
@@ -247,10 +247,10 @@ class Place {
 	/**
 	 * Search for a place name.
 	 *
-	 * @param string  $filter
-	 * @param Tree    $tree
-	 *
+	 * @param string $filter
+	 * @param Tree $tree
 	 * @return Place[]
+	 * @throws \Exception
 	 */
 	public static function findPlaces($filter, Tree $tree) {
 		$places = [];
