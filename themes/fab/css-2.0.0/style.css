@@ -537,6 +537,7 @@ a {
 
 a:hover,
 a:active {
+	color: #369;
 	text-decoration: underline;
 }
 
@@ -705,18 +706,18 @@ div.fact_SHARED_NOTE {
 	color: #337;
 }
 
-a:hover .name1, a:hover .name2 {
+a:hover, a:hover .name1, a:hover .name2 {
 	color: #f00;
 }
 
 a:hover .nameZoom {
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 .nameZoom {
 	color: #555;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 

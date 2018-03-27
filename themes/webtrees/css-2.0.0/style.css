@@ -1171,6 +1171,7 @@ a:hover .name1, a:hover .name2 {
 
 a:hover .nameZoom {
 	color: #f00;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -1185,6 +1186,7 @@ a:hover .nameZoom {
 
 .nameZoom {
 	color: #555;
+	font-size: 16px;
 	font-weight: bold;
 }
 
