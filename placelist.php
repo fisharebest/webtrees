@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Module\OpenStreetMapModule;
 
 require 'includes/session.php';
 
@@ -76,7 +77,10 @@ switch ($display) {
 		echo '<h4><a href="placelist.php?display=hierarchy">', I18N::translate('Show places in hierarchy'), '</a></h4>';
 		break;
 	case 'hierarchy':
-		$gm_module = Module::getModuleByName('googlemap');
+		$gm_module      = Module::getModuleByName('googlemap');
+		$use_gm_module  = $gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY');
+		$osm_module     = Module::getModuleByName('openstreetmap');
+		$use_osm_module = $osm_module && $osm_module->getPreference('place_hierarchy');
 
 		// Find this place and its ID
 		$place    = new Place(implode(', ', array_reverse($parent)), $WT_TREE);
@@ -103,14 +107,16 @@ switch ($display) {
 		}
 		echo '</h2>';
 
-		if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
-			$linklevels  = '';
-			$place_names = [];
-			for ($j = 0; $j < $level; $j++) {
-				$linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
-			}
+		if ($use_gm_module) {
+            $linklevels  = '';
+            $place_names = [];
+            for ($j = 0; $j < $level; $j++) {
+                $linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
+            }
 
-			$gm_module->createMap();
+            $gm_module->createMap(); /** @scrutinizer ignore-call */
+        } elseif ($use_osm_module) {
+            $osm_module->insertMap($controller);
 		} elseif (Module::getModuleByName('places_assistant')) {
 			// Places Assistant is a custom/add-on module that was once part of the core code.
 			\PlacesAssistantModule::display_map($level, $parent);
@@ -139,7 +145,7 @@ switch ($display) {
 				$html .= '<td class="list_value"><ul>';
 				foreach ($column as $item) {
 					$html .= '<li><a href="' . $item->getURL() . '" class="list_item">' . $item->getPlaceName() . '</a></li>';
-					if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
+					if ($use_gm_module) {
 						list($tmp)     = explode(', ', $item->getGedcomName(), 2);
 						$place_names[] = $tmp;
 					}
@@ -217,7 +223,7 @@ switch ($display) {
 		}
 		echo '<h4><a href="placelist.php?display=list">', I18N::translate('Show all places in a list'), '</a></h4>';
 
-		if ($gm_module && $gm_module->getPreference('GM_PLACE_HIERARCHY')) {
+		if ($use_gm_module) {
 			$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $place_names);
 		}
 		break;
