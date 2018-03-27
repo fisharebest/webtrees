@@ -1591,7 +1591,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsPlaces() {
-		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl(), 'menu-list-plac', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Place hierarchy'), e(route('place-hierarchy', ['ged' => $this->tree->getName()])), 'menu-list-plac', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1741,12 +1741,16 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$url = route('show-pending', [
+			$url = Html::url('edit_changes.php', [
 				'ged' => $this->tree ? $this->tree->getName() : '',
 				'url' => $this->request->getRequestUri()
 			]);
 
-			return new Menu(I18N::translate('Pending changes'), e($url), 'menu-pending');
+			$url = e($url);
+
+			$menu = new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
+
+			return $menu;
 		} else {
 			return null;
 		}
@@ -2012,7 +2016,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function pendingChangesLink() {
-		return '<a href="' . e(route('show-pending', ['ged' => $this->tree->getName()])) . '">' . $this->pendingChangesLinkText() . '</a>';
+		return '<a href="edit_changes.php">' . $this->pendingChangesLinkText() . '</a>';
 	}
 
 	/**
