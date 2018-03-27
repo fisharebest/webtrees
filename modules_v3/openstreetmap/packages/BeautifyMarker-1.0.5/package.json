@@ -1,0 +1,32 @@
+{
+  "name": "beautifymarker",
+  "version": "1.0.5",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marslan390/BeautifyMarker.git"
+  },
+  "main": "leaflet-beautify-marker-icon.js",
+  "style": "leaflet-beautify-marker-icon.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "map",
+    "marker",
+    "leaflet",
+    "beautify"
+  ],
+  "author": {
+    "name": "Muhammad Arslan Sajid"
+  },
+  "license": "MIT (https://opensource.org/licenses/MIT)",
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/marslan390/BeautifyMarker/issues"
+  },
+  "homepage": "https://github.com/marslan390/BeautifyMarker#readme",
+  "_id": "leaflet.beautifymarker@1.1.1",
+  "_shasum": "2ff8e4a6522496f511f2e29211e4718060757f57",
+  "_from": "leaflet.beautifymarker@latest"
+}

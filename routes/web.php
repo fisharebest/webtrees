@@ -166,6 +166,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
+		'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
 		'GET:repository-list'        => 'ListController@repositoryList',
 		'GET:source-list'            => 'ListController@sourceList',
 		'GET:ancestors'              => 'AncestorsChartController@page',
@@ -198,13 +199,13 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:statistics-chart'       => 'StatisticsChartController@chartCustomChart',
 		'GET:timeline'               => 'TimelineChartController@page',
 		'GET:timeline-chart'         => 'TimelineChartController@chart',
+		'GET:module'                 => 'ModuleController@action',
+		'POST:module'                => 'ModuleController@action',
 	];
 }
 
 // Public routes (that do not need a tree).
 $routes += [
-	'GET:module'           => 'ModuleController@action',
-	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
 	'POST:login'           => 'Auth\\LoginController@loginAction',
 	'GET:logout'           => 'Auth\\LoginController@logoutAction',

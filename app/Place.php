@@ -115,10 +115,8 @@ class Place {
 	 * @return string
 	 */
 	public function getURL() {
-		return e(Html::url('placelist.php', [
-			'parent' => array_reverse($this->gedcom_place),
-			'ged' => $this->tree->getName(),
-		]));
+		 return e(route('place-hierarchy',
+			['parent' => array_reverse($this->gedcom_place) ,'ged' => $this->tree->getNameUrl()]));
 	}
 
 	/**

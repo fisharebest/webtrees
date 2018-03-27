@@ -110,6 +110,7 @@ class Module {
 			'missing_facts_report',
 			'notes',
 			'occupation_report',
+			'openstreetmap',
 			'page_menu',
 			'pedigree_chart',
 			'pedigree_report',

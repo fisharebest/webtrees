@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -58,7 +59,12 @@ class ModuleController extends AbstractBaseController {
 		}
 
 		if (method_exists($module, $method)) {
-			return $module->$method($request);
+			$response = $module->$method($request);
+			if ($response instanceof RedirectResponse) {
+				return $response;
+			} else {
+				return $this->viewResponse($response->name, $response->data);
+			}
 		} else {
 			throw new NotFoundHttpException('Module not found');
 		}
