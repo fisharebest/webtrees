@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!--webtrees: online genealogy-->
+ <!--Copyright (C) 2018 webtrees development team-->
+ <!--This program is free software: you can redistribute it and/or modify-->
+ <!--it under the terms of the GNU General Public License as published by-->
+ <!--the Free Software Foundation, either version 3 of the License, or-->
+ <!--(at your option) any later version.-->
+ <!--This program is distributed in the hope that it will be useful,-->
+ <!--but WITHOUT ANY WARRANTY; without even the implied warranty of-->
+ <!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the-->
+ <!--GNU General Public License for more details.-->
+ <!--You should have received a copy of the GNU General Public License-->
+ <!--along with this program. If not, see <http://www.gnu.org/licenses/>.-->
+
+
+<!-- The full list of provider names and styles are to be found at-->
+<!--http://leaflet-extras.github.io/leaflet-providers/preview/index.html-->
+<!--The spelling of all elements in the following data must conform EXACTLY-->
+<!--with those found at the above website-->
+
+<!DOCTYPE providers
+	[
+		<!ELEMENT providers (provider+)>
+		<!ELEMENT provider (name, styles*)>
+		<!ELEMENT name ANY >
+		<!ELEMENT styles ANY >
+	]>
+
+<providers>
+	<provider>
+		<name>OpenStreetMap</name>
+		<styles>Mapnik</styles>
+		<styles>BlackAndWhite</styles>
+		<styles>DE</styles>
+		<styles>France</styles>
+		<styles>HOT</styles>
+		<styles>BZH</styles>
+	</provider>
+	<provider>
+		<name>Esri</name>
+		<styles>WorldStreetMap</styles>
+		<styles>WorldTopoMap</styles>
+		<styles>WorldImagery</styles>
+		<styles>WorldTerrain</styles>
+		<styles>NatGeoWorldMap</styles>
+	</provider>
+	<provider>
+		<name>HERE</name>
+		<styles>normalDay</styles>
+		<styles>normalDayMobile</styles>
+		<styles>normalNight</styles>
+		<styles>normalNightMobile</styles>
+		<styles>terrainDay</styles>
+		<styles>terrainDayMobile</styles>
+	</provider>
+	<provider>
+		<name>MapBox</name>
+	</provider>
+	<provider>
+		<name>Hydda</name>
+		<styles>Full</styles>
+	</provider>
+	<provider>
+		<name>Stamen</name>
+		<styles>Terrain</styles>
+	</provider>
+	<provider>
+		<name>OpenMapSurfer</name>
+		<styles>Roads</styles>
+	</provider>
+</providers>
