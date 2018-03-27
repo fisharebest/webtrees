@@ -104,6 +104,8 @@ if (Auth::isAdmin()) {
 		'POST:phpgedview-wizard'              => 'AdminPhpGedViewController@step',
 		'GET:upgrade'                         => 'AdminUpgradeController@wizard',
 		'POST:upgrade'                        => 'AdminUpgradeController@step',
+		'GET:admin-module'                    => 'AdminModuleController@action',
+		'POST:admin-module'                   => 'AdminModuleController@action',
 	];
 }
 
@@ -258,6 +260,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
+		'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
 		'GET:repository-list'        => 'ListController@repositoryList',
 		'GET:source-list'            => 'ListController@sourceList',
 		'GET:ancestors'              => 'AncestorsChartController@page',
