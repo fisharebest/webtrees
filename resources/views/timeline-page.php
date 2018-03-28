@@ -64,7 +64,6 @@ use Fisharebest\Webtrees\View;
 				<?= $individual->getAddName() ?>
 			<?php endif ?>
 		</a>
-		<br>
 		<a href="<?= e($remove_urls[$individual->getXref()]) ?>">
 			<?= I18N::translate('Remove individual') ?>
 		</a>
