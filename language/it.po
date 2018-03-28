@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-25 15:06+0000\n"
+"PO-Revision-Date: 2018-03-28 07:08+0000\n"
 "Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -19012,27 +19012,27 @@ msgstr "cugino di 2° grado"
 #: app/Functions/Functions.php:1454
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "cugino/a di 3° grado"
+msgstr "cugino/a di 2° grado"
 
 #: app/Functions/Functions.php:1450
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "cugina di 3° grado"
+msgstr "cugina di 2° grado"
 
 #: app/Functions/Functions.php:1452
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "cugino di 3° grado"
+msgstr "cugino di 2° grado"
 
 #: app/Functions/Functions.php:1466
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "cugino/a di 3° grado"
+msgstr "cugino/a di 2° grado"
 
 #: app/Functions/Functions.php:1462
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "cugina di 3° grado"
+msgstr "cugina di 2° grado"
 
 #: app/Functions/Functions.php:1464
 msgctxt "grandfather’s sibling’s grandson"
