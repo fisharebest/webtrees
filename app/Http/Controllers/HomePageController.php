@@ -179,17 +179,19 @@ class HomePageController extends AbstractBaseController {
 		])->fetchOneRow();
 
 		if ($block_info === null) {
-			throw new NotFoundHttpException;
+			throw new NotFoundHttpException('This block does not exist');
 		}
 
 		$block = Module::getModuleByName($block_info->module_name);
 
 		if (!$block instanceof ModuleBlockInterface) {
-			throw new NotFoundHttpException;
+			throw new NotFoundHttpException($block_info->module_name . ' is not a block');
 		}
 
-		if ($block_info->user_id !== $user->getUserId() && !Auth::isAdmin()) {
-			throw new AccessDeniedHttpException;
+		$block_owner_id = (int) $block_info->user_id;
+
+		if ($block_owner_id !== $user->getUserId() && !Auth::isAdmin()) {
+			throw new AccessDeniedHttpException('You are not allowed to edit this block');
 		}
 
 		return $block;
