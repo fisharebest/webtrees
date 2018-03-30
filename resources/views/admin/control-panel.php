@@ -408,9 +408,6 @@
 	<div class="card-header">
 		<h2 class="mb-0">
 			<?= I18N::translate('Media') ?>
-			<span class="badge badge-secondary">
-				<?= WT_VERSION ?>
-			</span>
 		</h2>
 	</div>
 	<div class="card-body">
