@@ -205,9 +205,9 @@ class ListController extends AbstractBaseController {
 						echo '<a href="' . e(route($route, [
 								'alpha' => $letter,
 								'ged'   => $tree->getName(),
-							])) . '" class="wt-initial' . ($letter === $alpha ? ' active' : '') . '" title="' . I18N::number($count) . '">' . $this->surnameInitial($letter) . '</a>';
+							])) . '" class="wt-initial' . ($letter === $alpha ? ' active' : '') . '" title="' . I18N::number($count) . '">' . $this->surnameInitial((string) $letter) . '</a>';
 					} else {
-						echo '<span class="wt-initial text-muted">' . $this->surnameInitial($letter) . '</span>';
+						echo '<span class="wt-initial text-muted">' . $this->surnameInitial((string) $letter) . '</span>';
 					}
 					echo '</li>';
 				}
@@ -303,12 +303,12 @@ class ListController extends AbstractBaseController {
 								echo '<li class="wt-initials-list-item">';
 								if ($count > 0) {
 									if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-										echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial($givn_initial) . '</a>';
+										echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
 									} else {
-										echo '<a class="wt-initial" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial($givn_initial) . '</a>';
+										echo '<a class="wt-initial" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
 									}
 								} else {
-									echo '<span class="wt-initial text-muted">' . $this->givenNameInitial($givn_initial) . '</span>';
+									echo '<span class="wt-initial text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
 								}
 								echo '</li>';
 							}
@@ -1719,7 +1719,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return string
 	 */
-	public function givenNameInitial($initial) {
+	public function givenNameInitial(string $initial): string {
 		switch ($initial) {
 			case '@':
 				return I18N::translateContext('Unknown given name', '…');
@@ -1735,7 +1735,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return string
 	 */
-	public function surnameInitial($initial) {
+	public function surnameInitial(string $initial): string {
 		switch ($initial) {
 			case '@':
 				return I18N::translateContext('Unknown surname', '…');
