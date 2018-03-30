@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
@@ -188,6 +189,8 @@ class MediaFileController extends AbstractBaseController {
 		} catch (FileNotFoundException $ex) {
 			return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
 		} catch (Throwable $ex) {
+			Log::addErrorLog('Cannot create thumbnail ' . $ex->getMessage());
+
 			return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
 		}
 	}
