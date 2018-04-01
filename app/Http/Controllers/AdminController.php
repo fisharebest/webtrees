@@ -2030,13 +2030,14 @@ class AdminController extends AbstractBaseController {
 	 */
 	private function serverWarnings() {
 		$php_support_url   = 'https://secure.php.net/supported-versions.php';
-		$php_major_version = explode('.', PHP_VERSION)[0];
+		$version_parts     = explode('.', PHP_VERSION);
+		$php_minor_version = $version_parts[0] . $version_parts[1];
 		$today             = date('Y-m-d');
 		$warnings          = [];
 
-		if ($php_major_version === 70 && $today >= '201-12-03' || $php_major_version === 71 && $today >= '2019-12-01') {
+		if ($php_minor_version === '70' && $today >= '2017-12-03' || $php_minor_version === '71' && $today >= '2019-12-01') {
 			$warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
-		} elseif ($php_major_version === 70 && $today >= '2017-12-03' || $php_major_version === 71 && $today >= '2018-12-01') {
+		} elseif ($php_minor_version === '70' && $today >= '2017-12-03' || $php_minor_version === '71' && $today >= '2018-12-01') {
 			$warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
 		}
 
