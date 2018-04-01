@@ -210,6 +210,8 @@ class FunctionsImport {
 					$date = str_replace(' APX ', ' ABT ', $date);
 					// B.C. => BC (temporarily, to allow easier handling of ".")
 					$date = str_replace(' B.C. ', ' BC ', $date);
+					// TMG uses "EITHER X OR Y"
+					$date = preg_replace('/^ EITHER (.+) OR (.+)/', ' BET $1 AND $2', $date);
 					// "BET X - Y " => "BET X AND Y"
 					$date = preg_replace('/^(.* BET .+) - (.+)/', '$1 AND $2', $date);
 					$date = preg_replace('/^(.* FROM .+) - (.+)/', '$1 TO $2', $date);
