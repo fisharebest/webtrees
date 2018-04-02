@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-10-08 22:07+0000\n"
-"Last-Translator: Mario Golfetto <webtrees@mariogolfetto.it>\n"
+"PO-Revision-Date: 2018-03-28 07:08+0000\n"
+"Last-Translator: Ercole Di Matteo <antenatidellecese@tiscali.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -63,13 +63,13 @@ msgstr "%1$s %2$s ha un collegamento %3$s a %4$s."
 #: app/Functions/Functions.php:2105
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s volta/volte rimosso discendente"
 
 #: app/Controller/IndividualController.php:180 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1339
@@ -360,15 +360,15 @@ msgstr[1] "%s note sono state aggiornate."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2081
-#, fuzzy, php-format
+#, php-format
 msgid "%s once removed ascending"
-msgstr "%s del genitore"
+msgstr "%s volta/volte rimosso ascendente"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2084
-#, fuzzy, php-format
+#, php-format
 msgid "%s once removed descending"
-msgstr "figlio/a del %s"
+msgstr "%s volta/volte rimosso discendente"
 
 #: app/I18N.php:721
 #, php-format
@@ -402,25 +402,25 @@ msgstr[1] "%s fonti sono state aggiornate."
 #: app/Functions/Functions.php:2097
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s volta/volte rimosso ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2100
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s  tre volte rimosso discendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2089
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s rimosso due volte in ordine crescente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2092
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s rimosso due volte in ordine discendente"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:265
@@ -733,7 +733,7 @@ msgstr "Grafico che mostra gli antenati, formattato come albero."
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un grafico degli antenati di una persona."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
@@ -743,7 +743,7 @@ msgstr "Grafico che mostra i discendenti di una persona."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Un grafico della vita delle persone."
 
 #: edit_interface.php:1021
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -760,7 +760,7 @@ msgstr "Un server di database è in grado di memorizzare molti database distinti
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un grafico a ventaglio degli antenati di un individuo."
 
 #: admin_trees_download.php:138 admin_trees_manage.php:218
 #: app/Module/GoogleMapsModule.php:2185
@@ -1030,7 +1030,7 @@ msgstr "Una scheda che mostra le fonti collegate a una persona."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Una grafico cronologico che mostra gli eventi di una persona."
 
 #: admin_users.php:401
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1080,7 +1080,7 @@ msgstr "A4"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:323
 msgid "API key"
-msgstr ""
+msgstr "chiave API"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -6183,7 +6183,7 @@ msgstr "Cerca un carattere speciale"
 
 #: relationship.php:101
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Cerca tutte le possibili relazioni"
 
 #: app/Module/CensusAssistantModule.php:180
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:68
@@ -6192,24 +6192,24 @@ msgstr "Cerca una persona"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:86
 msgid "Find any relationship"
-msgstr ""
+msgstr "Cerca una relazione"
 
 #: admin_trees_duplicates.php:28 admin_trees_manage.php:481
 msgid "Find duplicates"
-msgstr ""
+msgstr "Cerca duplicati"
 
 #: relationship.php:101
 msgid "Find other relationships"
-msgstr ""
+msgstr "Cerca altre relazioni"
 
 #: app/Module/RelationshipsChartModule.php:136 relationship.php:84
 #: relationship.php:86
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Trova relazioni tramite antenati"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Trova le relazioni più vicine"
 
 #: admin_trees_manage.php:521 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
@@ -6333,7 +6333,7 @@ msgstr "Per i siti con più di un albero genealogico, questa opzione permette di
 
 #: login.php:209 resources/views/blocks/sign-in.php:27
 msgid "Forgot password?"
-msgstr ""
+msgstr "Password dimenticata?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:361 help_text.php:133 help_text.php:149 help_text.php:164
@@ -6349,7 +6349,7 @@ msgstr "Formatta testo e note"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Fort Lauderdale, Florida, USA"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -8824,12 +8824,12 @@ msgstr "maggio"
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
 msgid "Mayotte"
-msgstr "Mayotte"
+msgstr "Mayotte, France"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #: admin_media.php:668 app/Functions/FunctionsPrintLists.php:1190
@@ -8858,7 +8858,7 @@ msgstr "File multimediale"
 #: admin_trees_download.php:184
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "I file multmediali saranno prefissati da %s."
 
 #: admin_media.php:599 admin_trees_config.php:551
 msgid "Media files"
@@ -9424,12 +9424,12 @@ msgstr "MySQL ha ritornato il seguente errore: %s"
 
 #: resources/views/admin/server-information.php:18
 msgid "MySQL variables"
-msgstr ""
+msgstr "Variabili MySQL"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6770
 msgid "Myanmar"
-msgstr "Myanmar"
+msgstr "Birmania"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:156 app/GedcomTag.php:426
@@ -11337,7 +11337,7 @@ msgstr "Relazione col padre"
 
 #: app/Module/RelationshipsChartModule.php:84
 msgid "Relationship to me"
-msgstr "Relazionato a me"
+msgstr "Relazione"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1291
@@ -12122,7 +12122,7 @@ msgstr "Sestidì"
 #. I18N: Name of a country or state
 #: app/Stats.php:6839
 msgid "Seychelles"
-msgstr "Seychelles"
+msgstr "Seicelle"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -13198,7 +13198,7 @@ msgstr "Isole Svalbard e Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:64
 msgid "Swap individuals"
-msgstr ""
+msgstr "Inverti persone"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6837
@@ -15128,12 +15128,12 @@ msgstr "Usa password"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Usa posta elettronica per inviare messaggi"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:607
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Usa le immagini silhouette quando non è stata selezionata una immagine per la persona. Le silhouette sono specifiche per il sesso della persona in questione."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:602
@@ -15150,7 +15150,7 @@ msgstr "Usare questo campo per descrivere all’amministratore del sito il motiv
 
 #: app/Functions/FunctionsEdit.php:817
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Usa questa immagine per i grafici e sulla pagina della persona."
 
 #: app/Module/GoogleMapsModule.php:2954
 msgid "Use this value"
@@ -19012,27 +19012,27 @@ msgstr "cugino di 2° grado"
 #: app/Functions/Functions.php:1454
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "cugino/a di 3° grado"
+msgstr "cugino/a di 2° grado"
 
 #: app/Functions/Functions.php:1450
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "cugina di 3° grado"
+msgstr "cugina di 2° grado"
 
 #: app/Functions/Functions.php:1452
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "cugino di 3° grado"
+msgstr "cugino di 2° grado"
 
 #: app/Functions/Functions.php:1466
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "cugino/a di 3° grado"
+msgstr "cugino/a di 2° grado"
 
 #: app/Functions/Functions.php:1462
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "cugina di 3° grado"
+msgstr "cugina di 2° grado"
 
 #: app/Functions/Functions.php:1464
 msgctxt "grandfather’s sibling’s grandson"

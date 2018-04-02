@@ -43,8 +43,7 @@
 	<div class="row form-group">
 		<div class="col-form-label col-sm-3 wt-page-options-label"></div>
 		<div class="col-sm-9 wt-page-options-value">
-			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
-			I18N::translate('view') ?>">
+			<input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
 		</div>
 	</div>
 </form>

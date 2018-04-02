@@ -223,7 +223,7 @@ class FamilyBookChartController extends AbstractChartController {
 
 		// Print the spouse
 		if ($generation === 1) {
-			if ($this->show_spouse === '1') {
+			if ($this->show_spouse) {
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
@@ -277,7 +277,7 @@ class FamilyBookChartController extends AbstractChartController {
 			// Determine line height for two or more spouces
 			// And then adjust the vertical line for the root person only
 			$famcount = 0;
-			if ($this->show_spouse === '1') {
+			if ($this->show_spouse) {
 				// count number of spouses
 				$famcount += count($person->getSpouseFamilies());
 			}

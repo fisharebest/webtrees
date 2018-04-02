@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2016-12-12 21:05+0000\n"
-"Last-Translator: Yuri <yurius.r@gmail.com>\n"
+"PO-Revision-Date: 2018-03-13 15:50+0000\n"
+"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1176,7 +1176,7 @@ msgstr "Аккра, Гана"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Дія"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1313,7 +1313,7 @@ msgstr "Додати нову замітку в щоденник"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Додати медіафайл"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -2975,8 +2975,9 @@ msgstr "Свідок нареченої"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
+#, fuzzy
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, United States"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3213,7 +3214,7 @@ msgstr "Місце поховання містить"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Поховання"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3284,8 +3285,9 @@ msgstr "Конвертація календаря"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
+#, fuzzy
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberta, Canada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:196 resources/views/modals/source-fields.php:42
@@ -3356,7 +3358,7 @@ msgstr "Причина смерті"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Увага!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -3377,8 +3379,9 @@ msgstr "Кайманові острови"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
+#, fuzzy
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Philippines"
 
 #: modules_v3/cemetery_report/report.xml:3
 msgid "Cemeteries"
@@ -3713,7 +3716,7 @@ msgstr "Здійснює обрізання"
 
 #: resources/views/modules/census-assistant.php:29
 msgid "Citation"
-msgstr ""
+msgstr "Цитування"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:469 modules_v3/fact_sources/report.xml:74
@@ -3859,7 +3862,7 @@ msgstr "Графік метелик для %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Порівняння"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -3993,8 +3996,9 @@ msgstr "Авторські права"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
+#, fuzzy
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Cordoba, Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:249
@@ -4035,11 +4039,11 @@ msgstr "Створити"
 
 #: app/Functions/FunctionsEdit.php:728
 msgid "Create a family"
-msgstr ""
+msgstr "Створити сім'ю"
 
 #: resources/views/modals/create-family.php:13
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "Створіть сім'ю з існуючих осіб"
 
 #: admin_trees_manage.php:658
 msgid "Create a family tree"
@@ -4073,11 +4077,11 @@ msgstr "Додати нове джерело"
 #: app/Functions/FunctionsEdit.php:806
 #: resources/views/modals/create-submitter.php:7
 msgid "Create a submitter"
-msgstr ""
+msgstr "Створити заявника"
 
 #: resources/views/modals/media-file-fields.php:69
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Створіть унікальне ім'я файлу"
 
 #: app/Functions/FunctionsEdit.php:709 edit_interface.php:762
 msgid "Create an individual"
@@ -5331,7 +5335,7 @@ msgstr "Редагувати"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Редагувати медіафайл"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5396,7 +5400,7 @@ msgstr "Редагуйте запис цієї персони і замініт�
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Oбмеження редагування"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -6220,7 +6224,7 @@ msgstr "Знайти запис про людину"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:86
 msgid "Find any relationship"
-msgstr ""
+msgstr "Знайдіть будь-які відносини"
 
 #: admin_trees_duplicates.php:28 admin_trees_manage.php:481
 msgid "Find duplicates"
@@ -6233,7 +6237,7 @@ msgstr "Знайти інші відносини"
 #: app/Module/RelationshipsChartModule.php:136 relationship.php:84
 #: relationship.php:86
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Знайти відносини через предків"
 
 #: relationship.php:98 relationship.php:101
 msgid "Find the closest relationships"
@@ -6241,7 +6245,7 @@ msgstr "Знайти найближчі відносини"
 
 #: admin_trees_manage.php:521 admin_trees_unconnected.php:29
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Знайти не пов'язаних між собою людей"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6694
@@ -7179,7 +7183,7 @@ msgstr "Ідентифікаційний номер"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Якщо мультимедійних об'єктів пов'язаний з людиною, коли він повинен бути пов'язаний з фактом або подією, то Ви можете перемістити його в потрібне місце."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7218,7 +7222,7 @@ msgstr "Якщо прізвище невідоме, використовуйте
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Якщо зменшене зображення є таким же, як вихідне зображення, він більше не потрібен, і Ви повинні видалити його. Якщо це користувацького зображення, Ви повинні додати його до медіаоб'єкта."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7323,7 +7327,7 @@ msgstr "Імпортувати всі місця з древа"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Імпортуйте власні ескізи з Webtrees версії 1"
 
 #: admin_trees_manage.php:265
 #, fuzzy
@@ -7363,15 +7367,15 @@ msgstr "В цьому році, в минулому …"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "У Webtrees версії 1, Ви можете додати користувальницькі мініатюри до мультимедійних об'єктів шляхом створення файлів в папках 'превью'."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "У Webtrees версії 2, призначені для користувача мініатюри зберігаються в якості другого медіафайлу в тому ж медіаоб'єктe."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
-msgstr ""
+msgstr "Включити зв'язки"
 
 #: famlist.php:154 indilist.php:154
 #, php-format
@@ -7830,7 +7834,7 @@ msgstr "Залишити медіа об'єкти без змін"
 
 #: resources/views/modals/on-screen-keyboard.php:8
 msgid "Keep open"
-msgstr ""
+msgstr "Тримати відкритими"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1376
@@ -8182,7 +8186,7 @@ msgstr "Ліма, Перу"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Пов'язати медіаоб'єкти з фактами та подіями"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -9377,7 +9381,7 @@ msgstr "Вправо"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Перемістити медіаоб'єкт?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10320,7 +10324,7 @@ msgstr "Інша папка … введіть, будь ласка"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Інші генеалогічні програми, можливо, не визнають ці дані."
 
 #: admin_trees_config.php:1325
 #, fuzzy
@@ -11019,7 +11023,7 @@ msgstr "Конфіденційність"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Обмеження конфіденційності"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11250,7 +11254,7 @@ msgstr "Упорядкувати медіа"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Змінити порядок імен"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -11735,7 +11739,7 @@ msgstr "Солт-Лейк-Сіті, Юта"
 
 #: resources/views/modals/media-file-fields.php:60
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Так само, як завантажений файл"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6871
@@ -13151,7 +13155,7 @@ msgstr "Підтверджено, але до цих пір неясно"
 #: admin_trees_manage.php:613 app/GedcomTag.php:550
 #: app/Module/RecentChangesModule.php:321
 msgid "Submitter"
-msgstr "Подавець"
+msgstr "Заявник"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6817
@@ -13219,7 +13223,7 @@ msgstr "Традиція успадкування прізвища"
 #: app/Module/FamilyTreeStatisticsModule.php:252
 #: resources/views/blocks/family-tree-statistics.php:52
 msgid "Surnames"
-msgstr ""
+msgstr "Прізвище"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:90
@@ -13415,7 +13419,7 @@ msgstr "GEDCOM файл \"%s\" було імпортовано."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "Стандарт GEDCOM не дозволяє використовувати URL-адреси в медіаоб'єктах."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13655,7 +13659,7 @@ msgstr "Медіа-файл, який ви завантажуєте, може, �
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "Медіа-об'єкт створено"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13715,7 +13719,7 @@ msgstr "Новому користувачу буде запропоновано 
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Нотатка була створена"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13788,7 +13792,7 @@ msgstr "Регулярний вираз містить помилку. Він н
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Репозиторій був створений"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13805,11 +13809,11 @@ msgstr "Розмір генеалогічного древа, самі ранн�
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "Джерело створено"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Заявник створений"
 
 #: help_text.php:234
 #, php-format
@@ -13906,7 +13910,7 @@ msgstr "Тема"
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:28
 msgid "Theme change"
-msgstr "Вибір теми"
+msgstr "Зміна теми"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:496
@@ -13930,7 +13934,7 @@ msgstr "Для цієї персони немає фактів."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Немає посилань на цей медіаоб'єкт."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -14003,7 +14007,7 @@ msgstr "Термідор"
 #: admin_trees_unconnected.php:91
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ці групи осіб не пов'язані з %s."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:149
@@ -14137,7 +14141,7 @@ msgstr "Це поле введення дозволяє вам змінити к
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:1307
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено на формі додавання/редагування імені. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні нової сім'ї. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1197
@@ -14333,7 +14337,7 @@ msgstr "Цей параметр визначає, показувати чи ні
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:703
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Задайте горизонтальне або вертикальне позиціонування графіка предків."
+msgstr "Цей параметр вказує, чи слід створити діаграму родоводу в ландшафтному або портретному режимі."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:575
@@ -14531,11 +14535,11 @@ msgstr "Чтв"
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Мініатюра зображення"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
-msgstr "Мініатюра зображення"
+msgstr "Мініатюри зображення"
 
 #: app/Date/CalendarDate.php:355
 msgid "Thursday"
@@ -15014,7 +15018,7 @@ msgstr "Невирішені: недостатньо даних"
 
 #: admin_trees_config.php:1179
 msgid "Unique family facts"
-msgstr "Одноразові факти сім'ї"
+msgstr "Унікальні сімейні факти"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
@@ -15025,7 +15029,7 @@ msgstr "Глобально унікальний ідентифікатор"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:376
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Унікальні ідентифікатори дозволяють знайти такий самий запис у різних родинних деревах та в різних системах. Вони будуть додані кожного разу, коли записи створюються або оновлюються. Якщо ви не хочете, щоб унікальні ідентифікатори відображалися, ви можете приховати їх, використовуючи правила конфіденційності."
 
 #: admin_trees_config.php:1125
 msgid "Unique individual facts"
@@ -15198,7 +15202,7 @@ msgstr "Використовувати пароль"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Надіслати повідомлення за допомогою sendmail"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:607
@@ -15774,7 +15778,7 @@ msgstr "Ви може вказати інше обмеження, але сер�
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:162
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Ви можете встановити доступ до певної записи, факту або події, додавши до неї обмеження. Якщо запис, факт або подія не мають обмеження, будуть використані наступні обмеження за замовчуванням."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -15986,15 +15990,15 @@ msgstr "Віддалити"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "URL-адреса"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "файл на сервері"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "файл на Вашому комп'ютері"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84

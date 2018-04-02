@@ -20,6 +20,7 @@
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
 }
+
 .table-given-name {
     overflow-x: hidden;
 }
@@ -585,11 +586,14 @@ table {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-	font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
+	padding-bottom: 4px;
 }
 
 .person_box_template .chart_textbox .name1{
 	line-height: 1;
+	font-weight: bold;
 }
 
 .person_box_template img,
@@ -1065,6 +1069,25 @@ table {
 	border: solid #000 1px;
 }
 
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+	text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline!important;
+}
+
+.nameZoom {
+    font-size: 16px;
+    font-weight: bold;
+}
+
 /* ==== Theme select block === */
 .theme_form ul {
 	margin: -10px auto;
@@ -1220,6 +1243,10 @@ div.faq_body {
 #dates {
 	color: #666;
 	float: right;
+}
+
+.label {
+	font-weight: bold;
 }
 
 #individual-names .wt-icon-edit,
@@ -1531,65 +1558,9 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
-}
+/* Sidebar - Family navigator */
 
-#sb_family_nav_content {
-	margin-top: 8px;
-}
-
-.nam a:hover {
-	color: #555;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
-	font-weight: bold;
-	display: block;
-	padding: 5px 0;
-}
-
-.flyout {
-	left: 40px;
-	padding: 3px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #333;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	text-decoration: underline;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 5px;
 }
@@ -2161,10 +2132,6 @@ div.faq_body {
 	margin: 0;
 }
 
-#fan_chart_img {
-	text-align: center;
-}
-
 /*-- Hourglass ---- */
 #hourglass_chart img.line4 {
 	vertical-align: middle;
@@ -2181,94 +2148,41 @@ div.faq_body {
 	empty-cells: show;
 }
 
-/*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
+/* Lifespans chart */
+.wt-lifespans-subtitle {
+	text-align: center;
 }
 
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         106px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
-#lifespan-chart {
-	padding:    0 10px 10px;
-	margin:     0 auto;
-	min-height: 500px;
-}
-
-#lifespan-scale {
-	background: transparent url(images/lifespan-chunk.png) repeat-x left bottom;
-	display: inline-block;
-	padding-bottom: 37px;
-}
-
-#lifespan-scale .date {
-	display: inline-block;
-	width:   70px;
-}
-
-[dir='rtl'] #lifespan-scale .date {
-	text-align: right;
-}
-
-#lifespan-people {
-	position: relative;
-}
-
-#lifespan-people > div {
-	position: absolute;
-	padding:  0;
-}
-
-#lifespan-people .itr {
-	display: inline;
+.wt-lifespans-scale {
 	white-space: nowrap;
 }
 
-#lifespan-people .popup div:first-of-type {
-	font-weight: 900;
+.wt-lifespans-decade {
+	width: 70px;
+	height: 60px;
+	display: inline-block;
+	background-image: url(images/lifespan-chunk.png);
+	background-position-y: bottom;
+	background-repeat: no-repeat;
+	background-size: 70px 37px;
 }
 
-#lifespan-people .popup {
-	left:        0;
-	right:       auto;
-	white-space: nowrap;
+.wt-lifespans-individuals {
+	background: #fafafa;
 }
 
-[dir='rtl'] #lifespan-people .popup {
-	left:  auto;
-	right: 0;
+.wt-lifespans-individual {
+
+}
+
+.wt-lifespans-summary {
+	background: #ffffff;
+	border: thin solid #000;
+	z-index: 1;
+}
+
+.wt-lifespans-summary-link {
+	font-weight: bold;
 }
 
 /*-- Pedigree ---- */
@@ -2396,6 +2310,39 @@ div.faq_body {
 	background-color:#fefefe;
 }
 
+/*-- Pedigree ---- */
+#pedigree_chart {
+	position: relative;
+	margin: 20px auto;
+}
+
+#pedigree_canvas {
+	color:   #555;
+	z-index: -1000;
+}
+
+#pedigree-page .shadow {
+	position: absolute;
+	white-space: nowrap;
+}
+
+#pedigree-page .layout0 .shadow > div,
+#pedigree-page .layout1 .shadow > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pedigree-page .spacer {
+	background-image: url(images/spacer.png);
+	height:           20px;
+	width:            1px;
+}
+
+#childarrow,
+.ancestorarrow {
+	text-align: center;
+}
+
 #pedigree-page #childarrow {
 	position: relative;
 }
@@ -2403,10 +2350,6 @@ div.faq_body {
 #pedigree-page #childbox {
 	border:           1px solid;
 	background-color: #fff;
-}
-
-.pedigree_form {
-	width: 45px;
 }
 
 #pedigree-page table.list_table {
@@ -3161,7 +3104,12 @@ footer {
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
-/* --- Body Icons -- */
+.icon-indis {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/indis.png);
+}
+
 .icon-pedigree {
 	width: 24px;
 	height: 24px;

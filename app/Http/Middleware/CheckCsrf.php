@@ -36,7 +36,7 @@ class CheckCsrf {
 	 * @throws AccessDeniedHttpException
 	 */
 	public function handle(Request $request, Closure $next): Response {
-		$client_token  = $request->get('csrf', $request->headers->get('HTTP_X_CSRF_TOKEN'));
+		$client_token  = $request->get('csrf', $request->headers->get('X_CSRF_TOKEN'));
 		$session_token = Session::get('CSRF_TOKEN');
 
 		if ($client_token !== $session_token) {

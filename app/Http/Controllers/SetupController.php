@@ -33,7 +33,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the installation wizard
  */
-class SetupController extends BaseController {
+class SetupController extends AbstractBaseController {
 	const WT_CONFIG_FILE = 'config.ini.php';
 
 	/**

@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditFamilyController extends BaseController {
+class EditFamilyController extends AbstractBaseController {
 	/**
 	 * @param Request $request
 	 *

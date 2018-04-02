@@ -55,7 +55,7 @@ use Throwable;
 /**
  * Controller for the administration pages
  */
-class AdminController extends BaseController {
+class AdminController extends AbstractBaseController {
 	// This is a list of old files and directories, from earlier versions of webtrees.
 	// git diff 1.7.9..master --name-status | grep ^D
 	const OLD_FILES = [
@@ -472,20 +472,35 @@ class AdminController extends BaseController {
 			WT_ROOT . 'app/Controller/SimpleController.php',
 			WT_ROOT . 'assets/js-1.7.7',
 			WT_ROOT . 'block_edit.php',
+			WT_ROOT . 'branches.php',
 			WT_ROOT . 'compact.php',
 			WT_ROOT . 'data/html_purifier_cache',
 			WT_ROOT . 'descendancy.php',
+			WT_ROOT . 'edituser.php',
+			WT_ROOT . 'edit_changes.php',
+			WT_ROOT . 'expand_view.php',
 			WT_ROOT . 'familybook.php',
+			WT_ROOT . 'famlist.php',
+			WT_ROOT . 'fanchart.php',
+			WT_ROOT . 'help_text.php',
+			WT_ROOT . 'hourglass.php',
+			WT_ROOT . 'hourglass_ajax.php',
 			WT_ROOT . 'index_edit.php',
+			WT_ROOT . 'indilist.php',
+			WT_ROOT . 'lifespan.php',
 			WT_ROOT . 'login.php',
 			WT_ROOT . 'logout.php',
 			WT_ROOT . 'medialist.php',
 			WT_ROOT . 'notelist.php',
 			WT_ROOT . 'packages',
+			WT_ROOT . 'pedigree.php',
+			WT_ROOT . 'relationship.php',
 			WT_ROOT . 'repolist.php',
 			WT_ROOT . 'reportengine.php',
 			WT_ROOT . 'site-unavailable.php',
 			WT_ROOT . 'sourcelist.php',
+			WT_ROOT . 'statistics.php',
+			WT_ROOT . 'statisticsplot.php',
 			WT_ROOT . 'themes/_administration/css-1.7.5',
 			WT_ROOT . 'themes/_administration/jquery-ui-1.11.2',
 			WT_ROOT . 'themes/clouds/css-1.7.8',
@@ -500,6 +515,7 @@ class AdminController extends BaseController {
 			WT_ROOT . 'themes/webtrees/jquery-ui-1.11.2',
 			WT_ROOT . 'themes/xenea/css-1.7.8',
 			WT_ROOT . 'themes/xenea/jquery-ui-1.11.2',
+			WT_ROOT . 'timeline.php',
 		];
 
 	protected $layout = 'layouts/administration';

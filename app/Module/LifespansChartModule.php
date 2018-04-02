@@ -63,7 +63,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			'lifespan.php?',
+			e(route('lifespans', ['xrefs[]' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
 			'menu-chart-lifespan',
 			['rel' => 'nofollow']
 		);

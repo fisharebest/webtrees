@@ -513,7 +513,7 @@ class FunctionsPrintFacts {
 						$relationship_name .= $associate->getSexImage();
 					}
 
-					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '" rel="nofollow">' . $relationship_name . '</a>';
+					$values[] = '<a href="' . e(route('relationships', ['xref1' => $associate->getXref(), 'xref2' => $person->getXref(), 'ged' => $person->getTree()->getName()])) . '" rel="nofollow">' . $relationship_name . '</a>';
 				}
 				$value = implode(' — ', $values);
 

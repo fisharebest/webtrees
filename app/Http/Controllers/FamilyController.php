@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the family page.
  */
-class FamilyController extends BaseController {
+class FamilyController extends AbstractBaseController {
 	/**
 	 * Show a family's page.
 	 *

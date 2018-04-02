@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
@@ -25,7 +26,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Common logic for chart controllers.
  */
-abstract class AbstractChartController extends BaseController {
+abstract class AbstractChartController extends AbstractBaseController {
 	/**
 	 * Check that a module is enabled for a tree.
 	 *
@@ -36,7 +37,7 @@ abstract class AbstractChartController extends BaseController {
 		$active_charts = Module::getActiveCharts($tree);
 
 		if (!array_key_exists($module, $active_charts)) {
-			throw new NotFoundHttpException;
+			throw new NotFoundHttpException(I18N::translate('The module “%s” has been disabled.', $module));
 		}
 	}
 

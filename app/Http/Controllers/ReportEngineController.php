@@ -40,7 +40,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 /**
  * Controller for help text.
  */
-class ReportEngineController extends BaseController {
+class ReportEngineController extends AbstractBaseController {
 	/**
 	 * A list of available reports.
 	 *

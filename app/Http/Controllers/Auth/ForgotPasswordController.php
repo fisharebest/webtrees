@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Controllers\BaseController;
+use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for requesting password resets.
  */
-class ForgotPasswordController extends BaseController {
+class ForgotPasswordController extends AbstractBaseController {
 	/**
 	 * Show a password reset page.
 	 *

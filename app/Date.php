@@ -304,7 +304,7 @@ class Date {
 				$tmp = /* I18N: Gedcom EST dates */ I18N::translate('estimated %s', $d1 . $conv1);
 				break;
 			case 'INT':
-				$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, $this->text);
+				$tmp = /* I18N: Gedcom INT dates */ I18N::translate('interpreted %s (%s)', $d1 . $conv1, e($this->text));
 				break;
 			case 'BEF':
 				$tmp = /* I18N: Gedcom BEF dates */ I18N::translate('before %s', $d1 . $conv1);
@@ -329,7 +329,7 @@ class Date {
 				break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
-			$tmp = I18N::translate('%1$s (%2$s)', $tmp, $this->text);
+			$tmp = I18N::translate('%1$s (%2$s)', $tmp, e($this->text));
 		}
 
 		if (strip_tags($tmp) === '') {

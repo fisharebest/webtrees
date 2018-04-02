@@ -273,7 +273,7 @@
 				<?= FontAwesome::decorativeIcon('save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="<?= e(route('tree-privacy', ['ged' => $tree->getName()])) ?>">
+			<a class="btn btn-secondary" href="admin_trees_manage.php?ged=<?= e($tree->getName()) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>

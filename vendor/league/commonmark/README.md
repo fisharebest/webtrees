@@ -43,6 +43,8 @@ echo $converter->convertToHtml('# Hello World!');
 // <h1>Hello World!</h1>
 ```
 
+**Security warning:** If you will be parsing untrusted input from users, please consider setting the `html_input` and `allow_unsafe_links` options. See <https://commonmark.thephpleague.com/security/> for more details.
+
 ## Advanced Usage & Customization
 
 The actual conversion process requires two steps:
@@ -97,7 +99,7 @@ Documentation can be found at [commonmark.thephpleague.com][docs].
 ### Integrations
 
 - [CakePHP 3](https://github.com/gourmet/common-mark)
-- [Drupal](https://www.drupal.org/project/commonmark)
+- [Drupal 7 & 8](https://www.drupal.org/project/markdown)
 - [Laravel 4 & 5](https://github.com/GrahamCampbell/Laravel-Markdown)
 - [Sculpin](https://github.com/bcremer/sculpin-commonmark-bundle)
 - [Symfony](https://github.com/webuni/commonmark-bundle)
@@ -127,80 +129,9 @@ Check out the other cool things people are doing with `league/commonmark`: <http
 
 This project aims to fully support the entire [CommonMark spec]. Other flavors of Markdown may work but are not supported.  Any/all changes made to the [spec][CommonMark spec] or [JS reference implementation][commonmark.js] should eventually find their way back into this codebase.
 
-The following table shows which versions of league/commonmark are compatible with which version of the CommonMark spec:
+league/commonmark 0.15.5 and higher supports version 0.28 of the [CommonMark spec].
 
-<table>
-    <thead>
-        <tr>
-            <th>league/commonmark</th>
-            <th>CommonMark spec</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>0.16.0</strong><br>0.15.7<br>0.15.6<br>0.15.5</td>
-            <td><strong><a href="http://spec.commonmark.org/0.28/">0.28</a></strong></td>
-        </tr>
-        <tr>
-            <td>0.15.4<br>0.15.3<br>0.15.2</td>
-            <td><a href="http://spec.commonmark.org/0.27/">0.27</a></td>
-        </tr>
-        <tr>
-            <td>0.15.1<br>0.15.0</td>
-            <td><a href="http://spec.commonmark.org/0.26/">0.26</a></td>
-        </tr>
-        <tr>
-            <td>0.14.0<br>0.13.4<br>0.13.3<br>0.13.2</td>
-            <td><a href="http://spec.commonmark.org/0.25/">0.25</a></td>
-        </tr>
-        <tr>
-            <td>0.13.1<br>0.13.0</td>
-            <td><a href="http://spec.commonmark.org/0.24/">0.24</a></td>
-        </tr>
-        <tr>
-            <td>0.12.x<br>0.11.x</td>
-            <td><a href="http://spec.commonmark.org/0.22/">0.22</a></td>
-        </tr>
-        <tr>
-            <td>0.10.0</td>
-            <td><a href="http://spec.commonmark.org/0.21/">0.21</a></td>
-        </tr>
-        <tr>
-            <td>0.9.0</td>
-            <td><a href="http://spec.commonmark.org/0.20/">0.20</a>
-        </tr>
-        <tr>
-            <td>0.8.0</td>
-            <td><a href="http://spec.commonmark.org/0.19/">0.19</a>
-        </tr>
-        <tr>
-            <td>0.7.2<br>0.7.1<br>0.7.0<br>0.6.1</td>
-            <td><a href="http://spec.commonmark.org/0.18/">0.18</a><br><a href="http://spec.commonmark.org/0.17/">0.17</a></td>
-        </tr>
-        <tr>
-            <td>0.6.0</td>
-            <td><a href="http://spec.commonmark.org/0.16/">0.16</a><br><a href="http://spec.commonmark.org/0.15/">0.15</a><br><a href="http://spec.commonmark.org/0.14/">0.14</a></td>
-        </tr>
-        <tr>
-            <td>0.5.x<br>0.4.0</td>
-            <td><a href="http://spec.commonmark.org/0.13/">0.13</a></td>
-        </tr>
-        <tr>
-            <td>0.3.0</td>
-            <td><a href="http://spec.commonmark.org/0.12/">0.12</a></td>
-        </tr>
-        <tr>
-            <td>0.2.x</td>
-            <td><a href="http://spec.commonmark.org/0.10/">0.10</a></td>
-        </tr>
-        <tr>
-            <td>0.1.x</td>
-            <td><a href="https://github.com/jgm/CommonMark/blob/2cf0750a7a507eded4cf3c9a48fd1f924d0ce538/spec.txt">0.01</a></td>
-        </tr>
-    </tbody>
-</table>
-
-This package is **not** part of CommonMark, but rather a compatible derivative.
+(This package is **not** part of CommonMark, but rather a compatible derivative.)
 
 ## Testing
 
@@ -266,7 +197,7 @@ Also a huge thank you to [JetBrains](https://www.jetbrains.com/) for supporting 
 
 ## Governance
 
-This project is primarily maintained by [Colin O'Dell][@colinodell].  Members of the [PHP League][php-league] Leadership Team may occassionally assist with some of these duties.
+This project is primarily maintained by [Colin O'Dell][@colinodell].  Members of the [PHP League] Leadership Team may occasionally assist with some of these duties.
 
 [CommonMark]: http://commonmark.org/
 [CommonMark spec]: http://spec.commonmark.org/

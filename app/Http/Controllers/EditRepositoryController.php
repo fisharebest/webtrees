@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditRepositoryController extends BaseController {
+class EditRepositoryController extends AbstractBaseController {
 	/**
 	 * Show a form to create a new repository.
 	 *

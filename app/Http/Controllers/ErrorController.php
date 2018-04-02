@@ -31,7 +31,7 @@ use Whoops\Run;
 /**
  * Controller for error handling.
  */
-class ErrorController extends BaseController {
+class ErrorController extends AbstractBaseController {
 	/**
 	 * No route was match?  Send the user somewhere sensible, if we can.
 	 *
@@ -57,7 +57,7 @@ class ErrorController extends BaseController {
 			return new RedirectResponse(Html::url('admin_trees_manage.php', []));
 		}
 
-		return $this->viewResponse('errors/no-tree-access', []);
+		return $this->viewResponse('errors/no-tree-access', [ 'title' => '' ]);
 	}
 
 	/**

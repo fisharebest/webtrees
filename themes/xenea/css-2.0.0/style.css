@@ -1154,7 +1154,7 @@ a:hover .name1, a:hover .name2 {
 
 a:hover .nameZoom {
 	color: #f00;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -1169,7 +1169,7 @@ a:hover .nameZoom {
 
 .nameZoom {
 	color: #555;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -1689,7 +1689,9 @@ a:hover .nameZoom {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
-	font: 13px tahoma, arial, helvetica, sans-serif;
+	font-size: .75rem;
+	line-height: 1;
+	padding-bottom: 4px;
 }
 
 .person_box_template img,
@@ -2382,64 +2384,18 @@ div.faq_body {
 	vertical-align: top;
 }
 
-/* Sidebar content items */
-/* Family navigator */
-#sb_content_family_nav {
-	padding: 0;
+/* Sidebar - Family navigator */
+.wt-family-navigator-dropdown {
+	background: #edf7fd;
 }
 
-#sb_family_nav_content {
-	margin-top: 8px;
-}
-
-.nam a:hover {
-	color: #f00;
-}
-
-.nav_content {
-	width: 100%;
-	padding: 0;
-}
-
-#sb_family_nav_content .clist {
-	margin: 0;
-}
-
-.famnav_title {
+.wt-family-navigator-dropdown-heading {
 	font-weight: bold;
-	display: block;
-	padding: 5px 0;
+	font-size: inherit;
+	color: inherit;
 }
 
-.flyout {
-	left: 40px;
-}
-
-[dir=rtl] .flyout {
-	left: auto;
-	right: 40px;
-}
-
-.flyout a, .flyout a:hover {
-	color: #000;
-	cursor: default;
-	text-decoration: none;
-}
-
-.flyout2 {
-	font-weight: bold;
-}
-
-.flyout3 {
-	color: #362b36;
-}
-
-.flyout3:hover {
-	cursor: pointer;
-	color: #f00;
-}
-
-/* Sidebar*/
+/* Sidebar - Descendants */
 #sb_content_descendancy {
 	margin-top: 5px;
 }
@@ -2803,64 +2759,95 @@ div.faq_body {
 	margin: 0;
 }
 
-#fan_chart_img {
+/* Lifespans chart */
+.wt-lifespans-subtitle {
 	text-align: center;
 }
 
-/*-- Lifespan ---- */
-#lifespan-chart {
-	padding:    0 10px 10px;
-	margin:     0 auto;
-	min-height: 500px;
-}
-
-#lifespan-scale {
-	background: transparent url(images/lifespan-chunk.png) repeat-x left bottom;
-	display: inline-block;
-	padding-bottom: 37px;
-}
-
-#lifespan-scale .date {
-	display: inline-block;
-	width:   70px;
-}
-
-[dir='rtl'] #lifespan-scale .date {
-	text-align: right;
-}
-
-#lifespan-people {
-	position: relative;
-}
-
-#lifespan-people > div {
-	position: absolute;
-	padding:  0;
-}
-
-#lifespan-people .itr {
-	display: inline;
+.wt-lifespans-scale {
 	white-space: nowrap;
 }
 
-#lifespan-people .popup div:first-of-type {
-	font-weight: 900;
+.wt-lifespans-decade {
+	width: 70px;
+	height: 60px;
+	display: inline-block;
+	background-image: url(images/lifespan-chunk.png);
+	background-position-y: bottom;
+	background-repeat: no-repeat;
+	background-size: 70px 37px;
 }
 
-#lifespan-people .popup {
-	left:        0;
-	right:       auto;
-	white-space: nowrap;
+.wt-lifespans-individuals {
+	background: #fafafa;
 }
 
-[dir='rtl'] #lifespan-people .popup {
-	left:  auto;
-	right: 0;
+.wt-lifespans-individual {
+
+}
+
+.wt-lifespans-summary {
+	background: #ffffff;
+	border: thin solid #000;
+	z-index: 1;
+}
+
+.wt-lifespans-summary-link {
+	font-weight: bold;
 }
 
 /*-- Pedigree ---- */
+#pedigree_chart {
+	position: relative;
+	margin: 20px auto;
+}
+
 #pedigree_canvas {
 	color:   #81a9cb;
+	z-index: -1000;
+}
+
+#pedigree-page .shadow {
+	position: absolute;
+	white-space: nowrap;
+}
+
+#pedigree-page .layout0 .shadow > div,
+#pedigree-page .layout1 .shadow > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#pedigree-page .spacer {
+	background-image: url(images/spacer.png);
+	height:           20px;
+	width:            1px;
+}
+
+#childarrow,
+.ancestorarrow {
+	text-align: center;
+}
+
+#pedigree-page #childarrow {
+	position: relative;
+}
+
+#pedigree-page #childbox {
+	border:           1px solid;
+	background-color: #fff;
+}
+
+#pedigree-page table.list_table {
+	margin: 0 auto;
+	width:  500px;
+}
+
+.pedigree_chart_table {
+	border:          0;
+	border-collapse: collapse;
+	padding:         0;
+	width:           100%;
 }
 
 /*-- timeline  --*/

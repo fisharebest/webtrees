@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the note page.
  */
-class NoteController extends BaseController {
+class NoteController extends AbstractBaseController {
 	/**
 	 * Show a note's page.
 	 *

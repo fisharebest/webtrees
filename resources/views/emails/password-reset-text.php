@@ -6,6 +6,6 @@
 <?= I18N::translate('Username') ?> - <?= $user->getUserName()?>
 <?= I18N::translate('Password') ?> - <?= $new_password ?>
 
-<?= I18N::translate('Sign in') ?> - <?= route('login', ['username' => $user->getUserName(), 'url' => 'edituser.php'], true) ?>
+<?= I18N::translate('Sign in') ?> - <?= route('login', ['username' => $user->getUserName(), 'url' => route('my-account', [])], true) ?>
 
 <?= I18N::translate('After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password.') ?>

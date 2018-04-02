@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 use Exception;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Controllers\BaseController;
+use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
@@ -36,7 +36,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for user registration.
  */
-class RegisterController extends BaseController {
+class RegisterController extends AbstractBaseController {
 	/**
 	 * Show a registration page.
 	 *

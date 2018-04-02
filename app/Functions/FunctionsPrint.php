@@ -171,17 +171,13 @@ class FunctionsPrint {
 	/**
 	 * Print a link for a popup help window.
 	 *
-	 * @param string $help_topic
+	 * @param string $topic
 	 *
 	 * @return string
 	 */
-	public static function helpLink($help_topic) {
-		$title = '';
-		$text  = '';
-		require 'help_text.php';
-
+	public static function helpLink($topic) {
 		return
-			FontAwesome::linkIcon('help', I18N::translate('Help'), ['data-toggle' => 'modal', 'href' => '#', 'data-target' => '#wt-ajax-modal', 'data-href' => route('help-text', ['topic' => $help_topic])]);
+			FontAwesome::linkIcon('help', I18N::translate('Help'), ['data-toggle' => 'modal', 'href' => '#', 'data-target' => '#wt-ajax-modal', 'data-href' => route('help-text', ['topic' => $topic])]);
 	}
 
 	/**

@@ -91,7 +91,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$n     = array_rand($all_media);
 			$media = Media::getInstance($all_media[$n], $WT_TREE);
 			$media_file = $media->firstImageFile();
-			if ($media->canShow() && $media !== null && !$media_file->isExternal()) {
+			if ($media->canShow() && $media_file !== null && !$media_file->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {
 					if (

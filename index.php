@@ -42,16 +42,17 @@ $route   = $request->get('route');
 
 try {
 	// Most requests will need the current tree and user.
-	$all_tree_names     = array_keys(Tree::getNameList());
-	$first_tree_name    = current($all_tree_names) ?? '';
-	$previous_tree_name = Session::get('GEDCOM', $first_tree_name);
-	$default_tree_name  = $previous_tree_name ?: Site::getPreference('DEFAULT_GEDCOM');
-	$tree_name          = $request->get('ged', $default_tree_name);
-	$tree               = Tree::findByName($tree_name);
-	Session::put('GEDCOM', $tree_name);
+	$all_trees = Tree::getAll();
+
+	$tree = $all_trees[$request->get('ged')] ?? null;
+
+	// No tree specified/available?  Choose one.
+	if ($tree === null && $method === 'GET') {
+		$tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? current($all_trees);
+	}
 
 	$request->attributes->set('tree', $tree);
-	$request->attributes->set('user', AUth::user());
+	$request->attributes->set('user', Auth::user());
 
 	// Load the routing table.
 	$routes = require 'routes/web.php';

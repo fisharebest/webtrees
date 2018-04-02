@@ -815,7 +815,7 @@ $('body').on('click', '.iconz', function (e) {
 
   if (!inout.text().length) {
     wrapper.css('cursor', 'progress');
-    inout.load('expand_view.php?pid=' + wrapper.data('pid'), function () {
+    inout.load('index.php', {route: 'expand-chart-box', xref: wrapper.data('pid'), ged: WT_GEDCOM}, function () {
       wrapper.css('cursor', '');
       showDetails();
     });

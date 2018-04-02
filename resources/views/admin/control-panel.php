@@ -141,10 +141,7 @@
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
-								<a href="<?= e(Html::url('edit_changes.php', [
-									'ged' => $tree->getName(),
-									'url' => route('admin-control-panel'),
-								])) ?>">
+								<a href="<?= e(route('show-pending', ['ged' => $tree->getName(), 'url' => route('admin-control-panel')])) ?>">
 									<?= I18N::number($changes[$tree->getTreeId()]) ?>
 									<span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->getTitle()) ?></span>
 								</a>
@@ -411,9 +408,6 @@
 	<div class="card-header">
 		<h2 class="mb-0">
 			<?= I18N::translate('Media') ?>
-			<span class="badge badge-secondary">
-				<?= WT_VERSION ?>
-			</span>
 		</h2>
 	</div>
 	<div class="card-body">

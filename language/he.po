@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-15 21:18+0000\n"
+"PO-Revision-Date: 2018-03-13 10:42+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -15458,7 +15458,7 @@ msgstr "משקל"
 #: app/Module/UserWelcomeModule.php:85
 #, php-format
 msgid "Welcome %s"
-msgstr "שלום %s"
+msgstr "%s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:452

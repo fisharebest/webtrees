@@ -194,7 +194,6 @@
 
  /* my page chart enhancements */
 .wt-block-content-charts {
-	display: flex;
     flex-flow: column-reverse;
     overflow: auto;
 }
@@ -238,12 +237,7 @@
  *  	amily book
  *  	Hourglass chart
  *
- * */
-/* My Page Charts */
-
-.myCharts {
-	position: relative;
-}
+ */
 
 /* Ascentors */
 .wt-ancestors-chart .linea1 {margin-bottom: 4px;}
@@ -364,10 +358,6 @@
  * wt-chart, wt-pedigree-chart
  */
 
-.pedigree_form {
-	width: 45px;
-}
-
 #pedigree_chart {
 	position: relative;
 	margin: 20px auto;
@@ -400,7 +390,13 @@
 	left: 0;
 	z-index: 9999;
 }
-wt-pedigree-chart .spacer {
+
+.wt-pedigree-chart, .wt-hourglass-chart {
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+.wt-pedigree-chart .spacer {
 	background-image: url(images/spacer.png);
 	height:           20px;
 	width:            1px;

@@ -20,6 +20,13 @@ namespace League\CommonMark;
 class CommonMarkConverter extends Converter
 {
     /**
+     * The currently-installed version.
+     *
+     * This might be a typical `x.y.z` version, or `x.y-dev`.
+     */
+    const VERSION = '0.17.1';
+
+    /**
      * Create a new commonmark converter instance.
      *
      * @param array            $config

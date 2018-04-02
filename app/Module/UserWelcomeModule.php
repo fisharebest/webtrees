@@ -56,7 +56,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 		if ($individual) {
 			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
 				$links[] = [
-					'url'   => Html::url('pedigree.php', ['rootid' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
+					'url'   => route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 					'title' => I18N::translate('Default chart'),
 					'icon'  => 'icon-pedigree',
 				];
@@ -70,7 +70,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$links[] = [
-			'url'   => Html::url('edituser.php', []),
+			'url'   => route('my-account', []),
 			'title' => I18N::translate('My account'),
 			'icon'  => 'icon-mypage',
 		];

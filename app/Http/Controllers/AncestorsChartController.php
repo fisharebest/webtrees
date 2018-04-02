@@ -156,7 +156,6 @@ class AncestorsChartController extends AbstractChartController {
 		$html = ob_get_clean();
 
 		return new Response($html);
-
 	}
 
 	/**

@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditGedcomRecordController extends BaseController {
+class EditGedcomRecordController extends AbstractBaseController {
 	/**
 	 * @param Request $request
 	 *

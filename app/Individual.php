@@ -535,8 +535,8 @@ class Individual extends GedcomRecord {
 	 */
 	public function getLifeSpan() {
 		// Just the first part of the place name
-		$birth_place = $this->getBirthPlace()->getShortName();
-		$death_place = $this->getDeathPlace()->getShortName();
+		$birth_place = strip_tags($this->getBirthPlace()->getShortName());
+		$death_place = strip_tags($this->getDeathPlace()->getShortName());
 		// Remove markup from dates
 		$birth_date = strip_tags($this->getBirthDate()->display());
 		$death_date = strip_tags($this->getDeathDate()->display());

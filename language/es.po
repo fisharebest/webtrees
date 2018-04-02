@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2017-11-29 20:09+0000\n"
-"Last-Translator: Michael <mike_jpr@outlook.com>\n"
+"PO-Revision-Date: 2018-03-22 03:22+0000\n"
+"Last-Translator: Alejandro Cavazos <alexcavazos67@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -60,13 +60,13 @@ msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2105
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s times removed ascending"
 msgstr "%1$s %2$s times removed ascending"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2108
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s times removed descending"
 msgstr "%1$s %2$s times removed descending"
 
@@ -92,28 +92,28 @@ msgstr "%1$s no existe."
 #: admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "El %1$s no existe. ¿Quiere decir %2$s?"
+msgstr "%1$s no existe. ¿Quizo decir %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:198
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s no tiene un enlace a %2$s."
+msgstr "%1$s no tiene un enlace de vuelta a %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:313 admin_site_upgrade.php:363
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s archivo se extrajo en %2$s segundos."
-msgstr[1] "%1$s archivos se extrajeron en %2$s segundos."
+msgstr[0] "%1$s archivo fue extraido en %2$s segundos."
+msgstr[1] "%1$s archivos fueron extraidos en %2$s segundos."
 
 #: app/Module/GoogleMapsModule.php:563
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s Individuo mostrado de un total normal de %2$s, de %3$s generaciones."
-msgstr[1] "%1$s individuos mostrados de un total normal de %2$s, de %3$s generaciones."
+msgstr[0] "%1$s Individuo mostrado, de un total normal de %2$s, de %3$s generaciones."
+msgstr[1] "%1$s individuos mostrados, de un total normal de %2$s, de %3$s generaciones."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:577
@@ -127,7 +127,7 @@ msgstr[1] "%1$s individuos no tienen coordenadas de mapa para el lugar de nacimi
 #: admin_trees_check.php:186
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s es un %2$s; se requiere un %3$s."
+msgstr "%1$s es un %2$s pero se requiere un %3$s."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:618
@@ -207,7 +207,7 @@ msgstr "%s y sus antepasados"
 #: app/Module/ClippingsCartModule.php:293
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s y los individuos que hacen referencia a él."
+msgstr "%s y los individuos que le hacen referencia."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:120

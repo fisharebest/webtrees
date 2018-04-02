@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-14 18:03+0000\n"
+"PO-Revision-Date: 2018-03-01 14:14+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -8401,7 +8401,7 @@ msgstr "Malta"
 #: resources/views/admin/merge-records-step-2.php:3
 #: resources/views/admin/tree-privacy.php:7
 msgid "Manage family trees"
-msgstr "Soy ağaçlarını yonet"
+msgstr "Soy ağaçlarını yönet"
 
 #: admin_media.php:567 resources/views/admin/control-panel.php:424
 msgid "Manage media"
@@ -15767,7 +15767,7 @@ msgstr "Hesap ayrıntılarını gözden geçirmeniz gerekiyor."
 
 #: resources/views/setup/step-5-administrator.php:16
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Bir yönetici hesabı oluşturmanız gerekiyor. Bu hesap ile bu webtrees kurulumunun tüm kontrolunu sağlarsınız. Lütfen güçlü bir şifre belirleyin."
+msgstr "Bir yönetici hesabı oluşturmanız gerekiyor. Bu hesap ile bu webtrees kurulumunun tüm kontrolünü sağlarsınız. Lütfen güçlü bir şifre belirleyin."
 
 #: admin_pgv_to_wt.php:1137
 msgid "You need to sign in again, using your PhpGedView username and password."
