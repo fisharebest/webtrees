@@ -34,7 +34,7 @@ class CensusColumnBirthDateTest extends \PHPUnit\Framework\TestCase {
 	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
-		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
+		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\GregorianDate');
 		$cal_date->shouldReceive('format')->andReturn('1 1 1800');
 
 		$date = Mockery::mock('Fisharebest\Webtrees\Date');
