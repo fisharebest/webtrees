@@ -160,7 +160,7 @@ class BranchesController extends AbstractBaseController {
 		];
 		if ($soundex_std) {
 			$sdx = Soundex::russell($surname);
-			if ($sdx !== null) {
+			if ($sdx !== '') {
 				foreach (explode(':', $sdx) as $value) {
 					$sql    .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 					$args[] = $value;
@@ -170,7 +170,7 @@ class BranchesController extends AbstractBaseController {
 
 		if ($soundex_dm) {
 			$sdx = Soundex::daitchMokotoff($surname);
-			if ($sdx !== null) {
+			if ($sdx !== '') {
 				foreach (explode(':', $sdx) as $value) {
 					$sql    .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 					$args[] = $value;

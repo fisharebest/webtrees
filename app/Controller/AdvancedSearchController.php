@@ -405,7 +405,7 @@ class AdvancedSearchController extends SearchController {
 							case 'SDX': // SDX uses DM by default.
 							case 'SDX_DM':
 								$sdx = Soundex::daitchMokotoff($value);
-								if ($sdx !== null) {
+								if ($sdx !== '') {
 									$sdx = explode(':', $sdx);
 									foreach ($sdx as $k => $v) {
 										$sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
@@ -452,7 +452,7 @@ class AdvancedSearchController extends SearchController {
 							case 'SDX': // SDX uses DM by default.
 							case 'SDX_DM':
 								$sdx = Soundex::daitchMokotoff($value);
-								if ($sdx !== null) {
+								if ($sdx !== '') {
 									$sdx = explode(':', $sdx);
 									foreach ($sdx as $k => $v) {
 										$sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
@@ -554,7 +554,7 @@ class AdvancedSearchController extends SearchController {
 							case 'SDX': // SDX uses DM by default.
 							case 'SDX_DM':
 								$sdx = Soundex::daitchMokotoff($value);
-								if ($sdx !== null) {
+								if ($sdx !== '') {
 									$sdx = explode(':', $sdx);
 									foreach ($sdx as $k => $v) {
 										$sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
@@ -601,7 +601,7 @@ class AdvancedSearchController extends SearchController {
 							case 'SDX': // SDX uses DM by default.
 							case 'SDX_DM':
 								$sdx = Soundex::daitchMokotoff($value);
-								if ($sdx !== null) {
+								if ($sdx !== '') {
 									$sdx = explode(':', $sdx);
 									foreach ($sdx as $k => $v) {
 										$sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";

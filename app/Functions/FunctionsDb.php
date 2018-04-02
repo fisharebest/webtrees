@@ -196,7 +196,7 @@ class FunctionsDb {
 		}
 
 		// Nothing to search for? Return nothing.
-		if (!$givn_sdx && !$surn_sdx && !$plac_sdx) {
+		if ($givn_sdx === '' && $surn_sdx === '' && $plac_sdx === '') {
 			return [];
 		}
 
@@ -218,7 +218,7 @@ class FunctionsDb {
 		}
 		$sql .= ")";
 
-		if ($firstname && $givn_sdx) {
+		if ($givn_sdx !== '') {
 			$sql .= " AND (";
 			$givn_sdx = explode(':', $givn_sdx);
 			foreach ($givn_sdx as $n => $sdx) {
@@ -236,7 +236,7 @@ class FunctionsDb {
 			$sql .= ")";
 		}
 
-		if ($lastname && $surn_sdx) {
+		if ($surn_sdx !== '') {
 			$sql .= " AND (";
 			$surn_sdx = explode(':', $surn_sdx);
 			foreach ($surn_sdx as $n => $sdx) {
@@ -254,7 +254,7 @@ class FunctionsDb {
 			$sql .= ")";
 		}
 
-		if ($place && $plac_sdx) {
+		if ($plac_sdx !== '') {
 			$sql .= " AND (";
 			$plac_sdx = explode(':', $plac_sdx);
 			foreach ($plac_sdx as $n => $sdx) {

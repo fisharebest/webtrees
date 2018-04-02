@@ -40,12 +40,8 @@ class Soundex {
 	 * @return bool
 	 */
 	public static function compare($soundex1, $soundex2) {
-		if ($soundex1 && $soundex2) {
-			foreach (explode(':', $soundex1) as $code) {
-				if (strpos($soundex2, $code) !== false) {
-					return true;
-				}
-			}
+		if ($soundex1 !== '' && $soundex2 !== '') {
+			return !empty(array_intersect(explode(':', $soundex1), explode(':', $soundex2)));
 		}
 
 		return false;
@@ -87,7 +83,7 @@ class Soundex {
 	 *
 	 * @param $text
 	 *
-	 * @return null|string
+	 * @return string
 	 */
 	public static function daitchMokotoff($text) {
 		$words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
