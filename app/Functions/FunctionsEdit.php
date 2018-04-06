@@ -1654,11 +1654,9 @@ class FunctionsEdit {
 					echo self::addSimpleTag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 					echo self::addSimpleTag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-				} elseif ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
-					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				} elseif ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 					echo self::addSimpleTag('2 ' . $key, $level1tag);
-				} elseif ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
+				} elseif ($level1tag !== 'NAME') {
 					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				}
 				// Add level 3/4 tags as appropriate
