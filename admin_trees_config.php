@@ -413,7 +413,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
+							<?= e($user->getRealName()) ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>
@@ -435,7 +435,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
+							<?= e($user->getRealName()) ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>

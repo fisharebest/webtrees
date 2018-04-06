@@ -406,15 +406,6 @@ class User {
 	}
 
 	/**
-	 * Get the real name of this user, for display on screen.
-	 *
-	 * @return string
-	 */
-	public function getRealNameHtml() {
-		return '<span dir="auto">' . e($this->real_name) . '</span>';
-	}
-
-	/**
 	 * Set the real name of this user.
 	 *
 	 * @param string $real_name

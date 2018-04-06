@@ -127,8 +127,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
 				if ($user) {
-					$content .= $user->getRealNameHtml();
-					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
+					$content .= '<span dir="auto">' . e($user->getRealName()) . '</span> - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
 					$content .= '<a href="mailto:' . e($message->sender) . '">' . e($message->sender) . '</a>';
 				}

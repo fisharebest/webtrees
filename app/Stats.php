@@ -6012,7 +6012,7 @@ class Stats {
 	 * @return string
 	 */
 	public function userFullName() {
-		return Auth::check() ? Auth::user()->getRealNameHtml() : '';
+		return Auth::check() ? '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>' : '';
 	}
 
 	/**
@@ -6039,7 +6039,7 @@ class Stats {
 			case 'username':
 				return e($user->getUserName());
 			case 'fullname':
-				return $user->getRealNameHtml();
+				return e($user->getRealName());
 			case 'regdate':
 				if (is_array($params) && isset($params[0]) && $params[0] != '') {
 					$datestamp = $params[0];

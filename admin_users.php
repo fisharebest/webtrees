@@ -698,7 +698,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>
@@ -722,7 +722,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>
@@ -746,7 +746,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>

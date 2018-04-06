@@ -397,7 +397,7 @@ class FunctionsPrintFacts {
 				case '_WT_USER':
 					$user = User::findByIdentifier($match[2]); // may not exist
 					if ($user) {
-						echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
+						echo GedcomTag::getLabelValue('_WT_USER', '<span dir="auto">' . e($user->getRealName()) . '</span>');
 					} else {
 						echo GedcomTag::getLabelValue('_WT_USER', e($match[2]));
 					}
