@@ -279,7 +279,7 @@ if ($xrefs) {
 	echo '<i class="fas fa-check" aria-hidden="true"></i> ', /* I18N: A button label. */ I18N::translate('continue');
 	echo '</button>';
 	echo '<input type="hidden" name="action" value="renumber">';
-	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($WT_TREE->getName()), '">';
 	echo '</form>';
 	echo '<p>', I18N::translate('Caution! This may take a long time. Be patient.'), '</p>';
 }

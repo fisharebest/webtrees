@@ -367,7 +367,7 @@ echo Bootstrap4::breadcrumbs([
 				<h2 class="mb-0">
 					<i class="fas fa-tree fa-fw"></i>
 					<a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $tree->getTreeId() ?>" <?= $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $tree->getTreeId() ?>">
-						<?= $tree->getNameHtml() ?> — <?= $tree->getTitleHtml() ?>
+						<?= e($tree->getName()) ?> — <?= $tree->getTitleHtml() ?>
 					</a>
 				</h2>
 			</div>
@@ -457,7 +457,7 @@ echo Bootstrap4::breadcrumbs([
 										</a>
 										<form name="defaultform<?= $tree->getTreeId() ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
-											<input type="hidden" name="ged" value="<?= $tree->getNameHtml() ?>">
+											<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 											<?= Filter::getCsrf() ?>
 											<!-- A11Y - forms need submit buttons, but they look ugly here -->
 											<button class="sr-only" type="submit">
@@ -555,7 +555,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNLINKED INDIVIDUAL -->
 							<li>
 								<span class="fa-li"><i class="far fa-user"></i></span>
-								<a href="edit_interface.php?action=add_unlinked_indi&amp;ged=<?= $tree->getNameHtml() ?>">
+								<a href="edit_interface.php?action=add_unlinked_indi&amp;ged=<?= e($tree->getName()) ?>">
 									<?= I18N::translate('Individual') ?>
 									<span class="sr-only">
 										<?= $tree->getTitleHtml() ?>

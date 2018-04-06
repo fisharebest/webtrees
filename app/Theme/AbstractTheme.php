@@ -558,7 +558,7 @@ abstract class AbstractTheme {
 				'<div class="col wt-header-search">' .
 				'<form class="wt-header-search-form" role="search" action="search.php">' .
 				'<input type="hidden" name="action" value="header">' .
-				'<input type="hidden" name="ged" value="' . $this->tree->getNameHtml() . '">' .
+				'<input type="hidden" name="ged" value="' . e($this->tree->getName()) . '">' .
 				$this->formQuickSearchFields() .
 				'</form>' .
 				'</div>';

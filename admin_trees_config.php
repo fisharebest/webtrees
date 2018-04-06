@@ -243,7 +243,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form-horizontal" method="post">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= e($WT_TREE->getName()) ?>">
 
 	<?php if (Filter::get('action') === 'general'): ?>
 
@@ -289,7 +289,7 @@ echo Bootstrap4::breadcrumbs([
 					name="gedcom"
 					required
 					type="text"
-					value="<?= $WT_TREE->getNameHtml() ?>"
+					value="<?= e($WT_TREE->getName()) ?>"
 					>
 			</div>
 			<p class="small text-muted">

@@ -286,9 +286,9 @@ class FunctionsCharts {
 
 		if ($sosa == 0 && Auth::isEditor($family->getTree())) {
 			echo '<br>';
-			echo '<a href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() . '&amp;xref=' . $family->getXref() . '&amp;gender=U">' . I18N::translate('Add a child to this family') . '</a>';
-			echo ' <a class="icon-sex_m_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() . '&amp;xref=' . $family->getXref() . '&amp;gender=M" title="', I18N::translate('son'), '"></a>';
-			echo ' <a class="icon-sex_f_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . $family->getTree()->getNameHtml() . '&amp;xref=' . $family->getXref() . '&amp;gender=F" title="', I18N::translate('daughter'), '"></a>';
+			echo '<a href="edit_interface.php?action=add_child_to_family&amp;ged=' . e($family->getTree()->getName()) . '&amp;xref=' . $family->getXref() . '&amp;gender=U">' . I18N::translate('Add a child to this family') . '</a>';
+			echo ' <a class="icon-sex_m_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . e($family->getTree()->getName()) . '&amp;xref=' . $family->getXref() . '&amp;gender=M" title="', I18N::translate('son'), '"></a>';
+			echo ' <a class="icon-sex_f_15x15" href="edit_interface.php?action=add_child_to_family&amp;ged=' . e($family->getTree()->getName()) . '&amp;xref=' . $family->getXref() . '&amp;gender=F" title="', I18N::translate('daughter'), '"></a>';
 			echo '<br><br>';
 		}
 		echo '</td>';

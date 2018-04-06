@@ -978,7 +978,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<h2><?= $controller->getPageTitle() ?></h2>
 
 		<form class="wt-page-options wt-page-options-pedigree-map d-print-none">
-			<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+			<input type="hidden" name="ged" value="<?= e($WT_TREE->getName()) ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
 
@@ -1639,7 +1639,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($latlng && isset($latlng['pl_id'])) {
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
-			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
+			$update_places_url = 'admin_trees_places.php?ged=' . e($WT_TREE->getName()) . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
 			echo '<div class="gm-options">';
 			echo '<a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';

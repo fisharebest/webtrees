@@ -562,7 +562,7 @@ class FunctionsPrint {
 		echo '<form action="edit_interface.php" onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
 		echo '<input type="hidden" name="action" value="add">';
 		echo '<input type="hidden" name="xref" value="' . $id . '">';
-		echo '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
+		echo '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
 		echo '<select id="add-fact" name="fact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
@@ -577,7 +577,7 @@ class FunctionsPrint {
 		echo '</form>';
 		echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . $id . '&amp;ged=' . $WT_TREE->getNameHtml() . '">', GedcomTag::getLabel($fact), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . $id . '&amp;ged=' . e($WT_TREE->getName()) . '">', GedcomTag::getLabel($fact), '</a>';
 		}
 		echo '</span>';
 		echo '</td></tr>';

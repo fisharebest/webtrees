@@ -50,7 +50,7 @@ case 'editraw':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="updateraw">
 		<input type="hidden" name="xref" value="<?= $xref ?>">
 		<?= Filter::getCsrf() ?>
@@ -172,7 +172,7 @@ case 'editrawfact':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="updaterawfact">
 		<input type="hidden" name="xref" value="<?= $xref ?>">
 		<input type="hidden" name="fact_id" value="<?= $fact_id ?>">
@@ -272,7 +272,7 @@ case 'edit':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="editform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -367,7 +367,7 @@ case 'add':
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="addform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<input type="hidden" name="prev_action" value="add">';
@@ -996,7 +996,7 @@ case 'addfamlink':
 	?>
 	<h2><?= $controller->getPageTitle() ?></h2>
 	<form method="post" name="addchildform">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="linkfamaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<?= Filter::getCsrf() ?>
@@ -1112,7 +1112,7 @@ case 'linkspouse':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post" name="addchildform">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="linkspouseaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<input type="hidden" name="famtag" value="<?= $famtag ?>">
@@ -1222,7 +1222,7 @@ case 'addmedia_links':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post" action="edit_interface.php?xref=<?= $person->getXref() ?>" onsubmit="findindi()">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="addmedia_links">
 		<input type="hidden" name="noteid" value="newnote">
 		<?= Filter::getCsrf() ?>
@@ -1247,8 +1247,8 @@ case 'add-media-link':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= $record->getTree()->getNameHtml() ?>">
-		<input type="hidden" name="xref" value="<?= $record->getXref() ?>">
+		<input type="hidden" name="ged" value="<?= e($record->getTree()->getName()) ?>">
+		<input type="hidden" name="xref" value="<?= e($record->getXref()) ?>">
 		<input type="hidden" name="action" value="save-media-link">
 		<?= Filter::getCsrf() ?>
 
@@ -1377,7 +1377,7 @@ case 'changefamily':
 
 	<div id="changefam">
 		<form name="changefamform" method="post">
-			<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+			<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 			<input type="hidden" name="action" value="changefamily_update">
 			<input type="hidden" name="xref" value="<?= $xref ?>">
 			<?= Filter::getCsrf() ?>
@@ -1803,7 +1803,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="', $nextaction, '">';
 	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';

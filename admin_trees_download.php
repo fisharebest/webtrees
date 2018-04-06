@@ -134,7 +134,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form form-horizontal" method="post" action="admin_trees_export.php">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 
 	<div class="row form-group">
 		<label for="submit-export" class="col-sm-3 col-form-label">
@@ -152,7 +152,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
-	<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">

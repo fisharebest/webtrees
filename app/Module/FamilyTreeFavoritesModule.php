@@ -130,7 +130,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		$content = '';
 		if ($userfavs) {
 			foreach ($userfavs as $favorite) {
-				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
+				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . e($WT_TREE->getName()) . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
 				if ($favorite->favorite_type === 'URL') {
 					$content .= '<div id="boxurl' . e($favorite->favorite_id) . '.0" class="person_box">';
 					if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
@@ -183,7 +183,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<form name="addfavform" action="index.php">';
 			$content .= '<input type="hidden" name="action" value="addfav">';
 			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
-			$content .= '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
+			$content .= '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
 			$content .= '<div class="add_fav_ref">';
 			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="$(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); $(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
