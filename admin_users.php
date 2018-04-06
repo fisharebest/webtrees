@@ -611,7 +611,7 @@ case 'edit':
 				<?php foreach (Tree::getAll() as $tree): ?>
 				<tr>
 					<td>
-						<?= $tree->getTitleHtml() ?>
+						<?= e($tree->getTitle()) ?>
 					</td>
 					<td>
 						<select name="canedit<?= $tree->getTreeId() ?>">

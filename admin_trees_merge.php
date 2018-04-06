@@ -90,12 +90,12 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			'</p>',
 			'<p>',
 			'<a class="current" href="admin_trees_renumber.php?ged=', $tree1->getNameUrl(), '">',
-			I18N::translate('Renumber family tree'), ' — ', $tree1->getTitleHtml(),
+			I18N::translate('Renumber family tree'), ' — ', e($tree1->getTitle()),
 			'</a>',
 			'</p>',
 			'<p>',
 			'<a class="current" href="admin_trees_renumber.php?ged=', $tree2->getNameUrl(), '">',
-			I18N::translate('Renumber family tree'), ' — ', $tree2->getTitleHtml(),
+			I18N::translate('Renumber family tree'), ' — ', e($tree2->getTitle()),
 			'</a>',
 			'</p>';
 	} else {

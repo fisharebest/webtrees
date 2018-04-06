@@ -26,7 +26,7 @@ require 'includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . $WT_TREE->getTitleHtml())
+	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . e($WT_TREE->getTitle()))
 	->pageHeader();
 
 $associates = Filter::getBool('associates');

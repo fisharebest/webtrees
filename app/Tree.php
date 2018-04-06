@@ -128,15 +128,6 @@ class Tree {
 	}
 
 	/**
-	 * The title of this tree, with HTML markup
-	 *
-	 * @return string
-	 */
-	public function getTitleHtml() {
-		return '<span dir="auto">' . e($this->title) . '</span>';
-	}
-
-	/**
 	 * The fact-level privacy for this tree.
 	 *
 	 * @return int[]

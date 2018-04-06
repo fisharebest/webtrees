@@ -186,7 +186,7 @@ class Stats {
 	 * @return string
 	 */
 	public function gedcomTitle() {
-		return $this->tree->getTitleHtml();
+		return e($this->tree->getTitle());
 	}
 
 	/**

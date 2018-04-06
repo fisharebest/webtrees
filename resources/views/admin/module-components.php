@@ -38,7 +38,7 @@
 								<?php foreach (Tree::getAll() as $tree): ?>
 									<tr>
 										<td>
-											<?= $tree->getTitleHtml() ?>
+											<?= e($tree->getTitle()) ?>
 										</td>
 										<td>
 											<?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->getAccessLevel($tree, $component), ['name' => 'access-' . $module->getName() . '-' . $tree->getTreeId()]) ?>

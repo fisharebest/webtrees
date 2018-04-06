@@ -25,7 +25,7 @@ require 'includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Check for errors') . ' — ' . $WT_TREE->getTitleHtml())
+	->setPageTitle(I18N::translate('Check for errors') . ' — ' . e($WT_TREE->getTitle()))
 	->pageHeader();
 
 // We need to work with raw GEDCOM data, as we are looking for errors

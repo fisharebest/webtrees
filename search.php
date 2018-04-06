@@ -140,7 +140,7 @@ function checknames(frm) {
 							<div class="col px-0">
 								<label class="form-check-label">
 									<input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
-									<?= $tree->getTitleHtml() ?>
+									<?= e($tree->getTitle()) ?>
 								</label>
 							</div>
 							<?php endforeach ?>
@@ -344,7 +344,7 @@ function checknames(frm) {
 								<div class="col px-0">
 									<label class="form-check-label">
 										<input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $controller->search_trees) ? 'checked' : '' ?> value="yes" id="tree_<?= $tree->getTreeId() ?>" name="tree_<?= $tree->getTreeId() ?>">
-										<?= $tree->getTitleHtml() ?>
+										<?= e($tree->getTitle()) ?>
 									</label>
 								</div>
 								<?php endforeach ?>

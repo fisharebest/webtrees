@@ -24,7 +24,7 @@ require 'includes/session.php';
 
 $controller = new PageController;
 $controller
-	->setPageTitle(I18N::translate($controller->tree()->getTitleHtml()) . ' — ' . I18N::translate('Export a GEDCOM file'))
+	->setPageTitle(I18N::translate('Export a GEDCOM file') . ' — ' . e($controller->tree()->getTitle()))
 	->restrictAccess(Auth::isManager($controller->tree()));
 
 // Validate user parameters

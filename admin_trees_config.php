@@ -113,10 +113,10 @@ switch (Filter::post('action')) {
 
 		// Coming soon
 		if (Filter::postBool('all_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
 		}
 		if (Filter::postBool('new_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
 		}
 
 		$WT_TREE->setPreference('ADVANCED_NAME_FACTS', implode(',', Filter::postArray('ADVANCED_NAME_FACTS')));
@@ -215,7 +215,7 @@ switch (Filter::post('action')) {
 			}
 		}
 
-		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($WT_TREE->getTitle())), 'success');
 		header('Location: admin_trees_manage.php');
 
 		return;
@@ -223,7 +223,7 @@ switch (Filter::post('action')) {
 
 switch (Filter::get('action')) {
 case 'general':
-	$controller->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Preferences'));
+	$controller->setPageTitle(I18N::translate('Preferences') . ' — ' . e($WT_TREE->getTitle()));
 	break;
 default:
 	header('Location: ' . route('admin-control-panel'));

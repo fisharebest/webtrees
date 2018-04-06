@@ -25,7 +25,7 @@ require 'includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Find duplicates') . ' — ' . $WT_TREE->getTitleHtml())
+	->setPageTitle(I18N::translate('Find duplicates') . ' — ' . e($WT_TREE->getTitle()))
 	->pageHeader();
 
 $repositories = Database::prepare(

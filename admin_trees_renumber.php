@@ -25,7 +25,7 @@ require 'includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . $WT_TREE->getTitleHtml())
+	->setPageTitle(I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . e($WT_TREE->getTitle()))
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
