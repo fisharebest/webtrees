@@ -59,7 +59,8 @@ class MessageController extends AbstractBaseController {
 			return $user->getRealName();
 		}, $to_users);
 
-		$title = I18N::translate('Send broadcast messages');
+
+		$title = $this->recipientDescription($to);
 
 		$this->layout = 'layouts/administration';
 
@@ -99,11 +100,11 @@ class MessageController extends AbstractBaseController {
 
 		if ($body === '' || $subject === '') {
 			return new RedirectResponse(route('broadcast', [
-				'body'    => $body,
-				'subject' => $subject,
-				'to'      => $to,
-				'tree'    => $tree,
-				'url'     => $url,
+				'body'        => $body,
+				'subject'     => $subject,
+				'to'          => $to,
+				'tree'        => $tree,
+				'url'         => $url,
 			]));
 		}
 
@@ -344,8 +345,8 @@ class MessageController extends AbstractBaseController {
 	 */
 	private function validContacts(Tree $tree) {
 		$contacts = [
-			User::find($tree->getPreference('CONTACT_USER_ID')),
-			User::find($tree->getPreference('WEBMASTER_USER_ID')),
+			User::find((int) $tree->getPreference('CONTACT_USER_ID')),
+			User::find((int) $tree->getPreference('WEBMASTER_USER_ID')),
 		];
 
 		return array_filter($contacts);
@@ -452,7 +453,7 @@ class MessageController extends AbstractBaseController {
 	function recipientUsers(string $to): array {
 		switch ($to) {
 			default:
-			case  'all':
+			case 'all':
 				return User::all();
 			case 'never_logged':
 				return array_filter(User::all(), function (User $user) {
@@ -473,7 +474,7 @@ class MessageController extends AbstractBaseController {
 	private function recipientDescription(string $to): string {
 		switch ($to) {
 			default:
-			case  'all':
+			case 'all':
 				return I18N::translate('Send a message to all users');
 			case 'never_logged':
 				return I18N::translate('Send a message to users who have never signed in');
