@@ -332,9 +332,15 @@ abstract class AbstractTheme {
 			case 'none':
 				return '';
 			case 'mailto':
-				return '<a href="mailto:' . e($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+				return '<a href="mailto:' . e($user->getEmail()) . '">' . e($user->getRealName()) . '</a>';
 			default:
-				return '<a href="message.php?to=' . rawurlencode($user->getUserName()) . '&amp;ged=' . $this->tree->getNameUrl() . '&amp;url=' . e(Functions::getQueryUrl()) . '">' . $user->getRealNameHtml() . '</a>';
+				$url = route(Auth::check() ? 'message' : 'contact', [
+					'ged' => $this->tree->getName(),
+					'to'  => $user->getUserName(),
+					'url' => $this->request->getRequestUri(),
+				]);
+
+				return '<a href="' . e($url) . '">' . e($user->getRealName()) . '</a>';
 		}
 	}
 

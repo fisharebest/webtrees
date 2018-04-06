@@ -18,9 +18,8 @@
 		<?php else: ?>
 			<link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor.css') ?>">
 		<?php endif ?>
-		<link rel="stylesheet" type="text/css" href="<?= e($common_url) ?>style.css">
-		<link rel="stylesheet" type="text/css" href="<?= e($theme_url) ?>style.css">
-
+		<link rel="stylesheet" type="text/css" href="themes/_common/css-2.0.0/style.css">
+		<link rel="stylesheet" type="text/css" href="themes/_administration/css-2.0.0/style.css">
 		<?= DebugBar::renderHead() ?>
 	</head>
 	<body class="container wt-global">

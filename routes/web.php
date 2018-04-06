@@ -49,6 +49,8 @@ if (Auth::isAdmin()) {
 		'GET:user-page-user-edit'             => 'HomePageController@userPageUserEdit',
 		'POST:user-page-user-update'          => 'HomePageController@userPageUserUpdate',
 		'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
+		'GET:broadcast'                       => 'MessageController@broadcastPage',
+		'POST:broadcast'                      => 'MessageController@broadcastAction',
 	];
 }
 
@@ -145,6 +147,10 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual'             => 'IndividualController@show',
 		'GET:individual-tab'         => 'IndividualController@tab',
 		'GET:media'                  => 'MediaController@show',
+		'GET:contact'                => 'MessageController@contactPage',
+		'POST:contact'               => 'MessageController@contactAction',
+		'GET:message'                => 'MessageController@messagePage',
+		'POST:message'               => 'MessageController@messageAction',
 		'GET:note'                   => 'NoteController@show',
 		'GET:source'                 => 'SourceController@show',
 		'GET:record'                 => 'GedcomRecordController@show',
@@ -193,7 +199,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 
 // Public routes (that do not need a tree).
 $routes += [
-	'GET:message'          => 'MessageController@page',
 	'GET:module'           => 'ModuleController@action',
 	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',

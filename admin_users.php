@@ -230,7 +230,7 @@ case 'load_json':
 		$datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="' . e(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . e($datum[4]) . '</a>';
+			$datum[4] = '<a href="' . e(route('message', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . e($datum[4]) . '</a>';
 		}
 		// The username
 		$datum[2] = '<span dir="auto">' . e($datum[2]) . '</span>';

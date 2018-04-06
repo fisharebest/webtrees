@@ -18,6 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use FilesystemIterator;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Source;
 use RecursiveDirectoryIterator;
@@ -65,75 +68,77 @@ class AutocompleteController extends AbstractBaseController {
 	 * @return JsonResponse
 	 */
 	public function page(Request $request): JsonResponse {
-		$tree     = $request->attributes->get('tree');
-		$query    = $request->get('query', '');
-        $xref     = $request->get('extra', '');
+		$tree  = $request->attributes->get('tree');
+		$query = $request->get('query', '');
+		$xref  = $request->get('extra', '');
 
-        $source   = Source::getInstance($xref, $tree);
+		$source = Source::getInstance($xref, $tree);
 
-        $this->checkSourceAccess($source);
+		$this->checkSourceAccess($source);
 
-        $pages = [];
+		$pages = [];
 
-        // Escape the query for MySQL and PHP, converting spaces to wildcards.
-        $like_query  = strtr($query, ['_' => '\\_', '%' => '\\%', ' ' => '%']);
-        $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
+		// Escape the query for MySQL and PHP, converting spaces to wildcards.
+		$like_query  = strtr($query, ['_' => '\\_', '%' => '\\%', ' ' => '%']);
+		$regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
 
-        // Fetch all individuals with a link to this source
-        $rows = Database::prepare(
-            "SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals`" .
-            " JOIN `##link ON i_file = l_file AND i_from = i_id AND i_to = :xref AND i_type = 'SOUR'" .
-            " WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%')" .
-            " AND   i_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'term'    => $query,
-            'tree_id' => $tree->getTreeId(),
-        ])->fetchAll();
+		$regex_xref = preg_quote($xref, '/');
 
-        // Filter for privacy
-        foreach ($rows as $row) {
-            $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $individual->getGedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $individual->getGedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-        }
-        // Fetch all data, regardless of privacy
-        $rows = Database::prepare(
-            "SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
-            " FROM `##families`" .
-            " WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
-        )->execute([
-            'xref'    => $sid,
-            'term'    => $query,
-            'tree_id' => $WT_TREE->getTreeId(),
-        ])->fetchAll();
-        // Filter for privacy
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $sid . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-            if (preg_match('/\n2 SOUR @' . $sid . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-        }
-        // array_unique() converts the keys from integer to string, which breaks
-        // the JSON encoding - so need to call array_values() to convert them
-        // back into integers.
-        $pages = array_values(array_unique($pages));
-        echo json_encode($pages);
+		// Fetch all individuals with a link to this source
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+			" FROM `##individuals`" .
+			" JOIN `##link ON i_file = l_file AND i_from = i_id AND i_to = :xref AND i_type = 'SOUR'" .
+			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%')" .
+			" AND   i_file = :tree_id"
+		)->execute([
+			'xref'    => $xref,
+			'term'    => $query,
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			if (preg_match('/\n1 SOUR @' . $regex_xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $individual->getGedcom(), $match)) {
+				$pages[] = $match[1];
+			}
+			if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $individual->getGedcom(), $match)) {
+				$pages[] = $match[1];
+			}
+		}
+		// Fetch all data, regardless of privacy
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
+			" FROM `##families`" .
+			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
+		)->execute([
+			'xref'    => $xref,
+			'term'    => $query,
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$family = Family::getInstance($row->xref, $tree, $row->gedcom);
+			if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
+				$pages[] = $match[1];
+			}
+			if (preg_match('/\n2 SOUR @' . $sid . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
+				$pages[] = $match[1];
+			}
+		}
+		// array_unique() converts the keys from integer to string, which breaks
+		// the JSON encoding - so need to call array_values() to convert them
+		// back into integers.
+		$pages = array_values(array_unique($pages));
+		echo json_encode($pages);
 
 		return new JsonResponse($pages);
 	}
 
 	/**
-
-	/**
+	 *
+	 * /**
 	 * Autocomplete for place names.
 	 *
 	 * @param Request $request
