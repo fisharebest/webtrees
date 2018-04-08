@@ -32,7 +32,7 @@
 		<?php if (Auth::isAdmin() || $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
 			<div class="dropdown-divider"></div>
 
-			<a class="dropdown-item menu-fam-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'editraw', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
+			<a class="dropdown-item menu-fam-editraw" href="<?= e(route('edit-raw-record', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
 				<?= I18N::translate('Edit the raw GEDCOM') ?>
 			</a>
 			<?php endif ?>

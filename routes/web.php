@@ -110,6 +110,10 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:reorder-names'       => 'EditIndividualController@reorderNamesAction',
 		'GET:reorder-spouses'      => 'EditIndividualController@reorderSpouses',
 		'POST:reorder-spouses'     => 'EditIndividualController@reorderSpousesAction',
+		'GET:edit-raw-record'      => 'EditGedcomRecordController@editRawRecord',
+		'POST:edit-raw-record'     => 'EditGedcomRecordController@editRawRecordAction',
+		'GET:edit-raw-fact'        => 'EditGedcomRecordController@editRawFact',
+		'POST:edit-raw-fact'       => 'EditGedcomRecordController@editRawFactAction',
 	];
 }
 

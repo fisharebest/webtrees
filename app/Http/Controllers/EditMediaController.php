@@ -103,6 +103,7 @@ class EditMediaController extends AbstractBaseController {
 
 		if ($file === '') {
 			FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
+
 			return new RedirectResponse($media->url());
 		}
 
@@ -131,10 +132,10 @@ class EditMediaController extends AbstractBaseController {
 	 */
 	public function editMediaFile(Request $request): Response {
 		/** @var Tree $tree */
-		$tree     = $request->attributes->get('tree');
-		$xref     = $request->get('xref', '');
-		$fact_id  = $request->get('fact_id', '');
-		$media    = Media::getInstance($xref, $tree);
+		$tree    = $request->attributes->get('tree');
+		$xref    = $request->get('xref', '');
+		$fact_id = $request->get('fact_id', '');
+		$media   = Media::getInstance($xref, $tree);
 
 		try {
 			$this->checkMediaAccess($media);
@@ -324,7 +325,7 @@ class EditMediaController extends AbstractBaseController {
 		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
 
 		return new JsonResponse([
-			'id' => $record->getXref(),
+			'id'   => $record->getXref(),
 			'text' => view('selects/media', [
 				'media' => $record,
 			]),
@@ -332,7 +333,7 @@ class EditMediaController extends AbstractBaseController {
 				'title' => I18N::translate('The media object has been created'),
 				'name'  => $record->getFullName(),
 				'url'   => $record->url(),
-			])
+			]),
 		]);
 	}
 

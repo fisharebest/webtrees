@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,12 +29,14 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller for edit forms and responses.
  */
 class EditGedcomRecordController extends AbstractBaseController {
+	const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
+
 	/**
 	 * @param Request $request
 	 *
 	 * @return Response
 	 */
-	public function editRaw(Request $request): Response {
+	public function editRawFact(Request $request): Response {
 		/** @var Tree $tree */
 		$tree   = $request->attributes->get('tree');
 		$xref   = $request->get('xref');
@@ -40,8 +44,13 @@ class EditGedcomRecordController extends AbstractBaseController {
 
 		$this->checkRecordAccess($record, true);
 
-		return $this->viewResponse('', [
-			'record' => $record,
+		$title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
+
+		return $this->viewResponse('edit/raw-gedcom-fact', [
+			'pattern' => self::GEDCOM_FACT_REGEX,
+			'record'  => $record,
+			'title'   => $title,
+			'tree'    => $tree,
 		]);
 	}
 
@@ -50,13 +59,73 @@ class EditGedcomRecordController extends AbstractBaseController {
 	 *
 	 * @return Response
 	 */
-	public function editRawAction(Request $request): Response {
+	public function editRawFactAction(Request $request): Response {
 		/** @var Tree $tree */
 		$tree   = $request->attributes->get('tree');
 		$xref   = $request->get('xref');
 		$record = GedcomRecord::getInstance($xref, $tree);
 
 		$this->checkRecordAccess($record, true);
+
+		return new RedirectResponse($record->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editRawRecord(Request $request): Response {
+		/** @var Tree $tree */
+		$tree   = $request->attributes->get('tree');
+		$xref   = $request->get('xref');
+		$record = GedcomRecord::getInstance($xref, $tree);
+
+		$this->checkRecordAccess($record, true);
+
+		$title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
+
+		return $this->viewResponse('edit/raw-gedcom-record', [
+			'pattern' => self::GEDCOM_FACT_REGEX,
+			'record'  => $record,
+			'title'   => $title,
+			'tree'    => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editRawRecordAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree     = $request->attributes->get('tree');
+		$xref     = $request->get('xref');
+		$facts    = (array) $request->get('fact');
+		$fact_ids = (array) $request->get('fact_id');
+		$record   = GedcomRecord::getInstance($xref, $tree);
+
+		$this->checkRecordAccess($record, true);
+
+		$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
+
+		// Retain any private facts
+		foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
+			if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
+				$gedcom .= "\n" . $fact->getGedcom();
+			}
+		}
+		// Append the updated facts
+		foreach ($facts as $fact) {
+			$gedcom .= "\n" . $fact;
+		}
+
+		// Empty lines and MSDOS line endings.
+		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
+		$gedcom = trim($gedcom);
+
+		$record->updateRecord($gedcom, false);
 
 		return new RedirectResponse($record->url());
 	}
