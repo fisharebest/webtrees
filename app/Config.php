@@ -137,7 +137,7 @@ class Config {
 				'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI', 'MARB',
 				'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB', 'PROP',
-				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'WILL',
+				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'TITL', 'WILL',
 			],
 			'STAT' => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
