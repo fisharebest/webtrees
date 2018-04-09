@@ -148,7 +148,7 @@ class BatchUpdateBasePlugin {
 	public static function createEditLinks($gedrec, GedcomRecord $record) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",
-			'<a href="'. e(route('edit-raw-record', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) .'">@\\1@</a>',
+			'<a href="' . e(route('edit-raw-record', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) . '">@\\1@</a>',
 			$gedrec
 		);
 	}
