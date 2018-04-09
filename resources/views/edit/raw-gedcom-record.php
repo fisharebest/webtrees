@@ -21,7 +21,7 @@
 			<?= $record->getFullName() ?>
 		</div>
 		<div class="card-body form-control text-muted py-1 px-2">
-			<?= '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE ?>
+			0 @<?= e($record->getXref()) ?>@ <?= e($record::RECORD_TYPE) ?>
 		</div>
 	</div>
 
@@ -33,7 +33,7 @@
 						<i class="fas fa-sort fa-fw drag-handle" style="cursor:move;"></i>
 						<?= $fact->summary() ?>
 					</label>
-					<input type="hidden" name="fact_id[]" value="<?= $fact->getFactId() ?>">
+					<input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">
 					<textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->getFactId()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->getGedcom()) ?>"><?= e($fact->getGedcom()) ?></textarea>
 				</div>
 			<?php endif ?>
@@ -43,7 +43,7 @@
 			<label class="card-header py-1 px-2" for="fact-add">
 				<?= I18N::translate('Add a fact') ?>
 			</label>
-			<input type="hidden" name="fact_id[]" value="<?= $fact->getFactId() ?>">
+			<input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">
 			<textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" pattern="<?= e($pattern) ?>" rows="2"></textarea>
 		</div>
 	</div>
