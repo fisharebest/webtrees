@@ -40,18 +40,25 @@ class EditGedcomRecordController extends AbstractBaseController {
 		/** @var Tree $tree */
 		$tree   = $request->attributes->get('tree');
 		$xref   = $request->get('xref');
+		$fact_id = $request->get('fact_id');
 		$record = GedcomRecord::getInstance($xref, $tree);
 
 		$this->checkRecordAccess($record, true);
 
 		$title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
 
-		return $this->viewResponse('edit/raw-gedcom-fact', [
-			'pattern' => self::GEDCOM_FACT_REGEX,
-			'record'  => $record,
-			'title'   => $title,
-			'tree'    => $tree,
-		]);
+		foreach ($record->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getFactId() === $fact_id) {
+				return $this->viewResponse('edit/raw-gedcom-fact', [
+					'pattern' => self::GEDCOM_FACT_REGEX,
+					'fact'    => $fact,
+					'title'   => $title,
+					'tree'    => $tree,
+				]);
+			}
+		}
+
+		return new RedirectResponse($record->url());
 	}
 
 	/**
@@ -61,11 +68,25 @@ class EditGedcomRecordController extends AbstractBaseController {
 	 */
 	public function editRawFactAction(Request $request): Response {
 		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = GedcomRecord::getInstance($xref, $tree);
+		$tree    = $request->attributes->get('tree');
+		$xref    = $request->get('xref');
+		$fact_id = $request->get('fact_id');
+		$gedcom =  $request->get('gedcom');
+
+		$record  = GedcomRecord::getInstance($xref, $tree);
+
+		// Cleanup the client’s bad editing?
+		$gedcom  = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
+		$gedcom  = trim($gedcom); // Leading/trailing spaces
 
 		$this->checkRecordAccess($record, true);
+
+		foreach ($record->getFacts() as $fact) {
+			if (!$fact->isPendingDeletion() && $fact->getFactId() === $fact_id && $fact->canEdit()) {
+				$record->updateFact($fact_id, $gedcom, false);
+				break;
+			}
+		}
 
 		return new RedirectResponse($record->url());
 	}
