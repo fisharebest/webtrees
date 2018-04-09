@@ -71,7 +71,7 @@ class EditGedcomRecordController extends AbstractBaseController {
 		$tree    = $request->attributes->get('tree');
 		$xref    = $request->get('xref');
 		$fact_id = $request->get('fact_id');
-		$gedcom =  $request->get('gedcom');
+		$gedcom  = $request->get('gedcom');
 
 		$record  = GedcomRecord::getInstance($xref, $tree);
 

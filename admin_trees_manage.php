@@ -390,7 +390,7 @@ echo Bootstrap4::breadcrumbs([
 					<div class="row<?= $importing ? ' hidden' : '' ?>" id="actions<?= $tree->getTreeId() ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
-							<a href="index.php?ctype=gedcom&ged=<?= $tree->getNameUrl() ?>">
+							<a href="<?= e(route('tree-page', ['ged' => $tree->getName()])) ?>">
 								<?= I18N::translate('Family tree') ?>
 							</a>
 						</h3>
@@ -477,7 +477,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- FIND DUPLICATES -->
 							<li>
 								<span class="fa-li"><i class="far fa-copy"></i></span>
-								<a href="admin_trees_duplicates.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_duplicates.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Find duplicates') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -497,7 +497,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UPDATE PLACE NAMES -->
 							<li>
 								<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
-								<a href="admin_trees_places.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_places.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Update place names') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -507,7 +507,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- CHECK FOR ERRORS -->
 							<li>
 								<span class="fa-li"><i class="fas fa-check"></i></span>
-								<a href="admin_trees_check.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_check.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Check for errors') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -517,7 +517,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UNCONNECTED INDIVIDUALS -->
 							<li>
 								<span class="fa-li"><i class="fas fa-unlink"></i></span>
-								<a href="admin_trees_unconnected.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_unconnected.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Find unrelated individuals') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -527,7 +527,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- RENUMBER -->
 							<li>
 								<span class="fa-li"><i class="fas fa-sort-numeric-down"></i></span>
-								<a href="admin_trees_renumber.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_renumber.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Renumber') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -623,7 +623,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- DOWNLOAD/Export -->
 							<li>
 								<span class="fa-li"><i class="fas fa-download"></i></span>
-								<a href="admin_trees_download.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_download.php', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Export') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>
@@ -633,7 +633,7 @@ echo Bootstrap4::breadcrumbs([
 							<!-- UPLOAD/IMPORT -->
 							<li>
 								<span class="fa-li"><i class="fas fa-upload"></i></span>
-								<a href="?action=importform&amp;gedcom_id=<?= $tree->getTreeId() ?>&amp;ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(Html::url('admin_trees_manage.php', ['action' => 'importform', 'gedcom_id' => $tree->getTreeId(), 'ged' => $tree->getName()])) ?>">
 									<?= I18N::translate('Import') ?>
 									<span class="sr-only">
 										<?= e($tree->getTitle()) ?>

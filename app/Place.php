@@ -115,14 +115,10 @@ class Place {
 	 * @return string
 	 */
 	public function getURL() {
-		$url = 'placelist.php';
-		foreach (array_reverse($this->gedcom_place) as $n => $place) {
-			$url .= $n ? '&amp;' : '?';
-			$url .= 'parent%5B%5D=' . rawurlencode($place);
-		}
-		$url .= '&amp;ged=' . $this->tree->getNameUrl();
-
-		return $url;
+		return e(Html::url('placelist.php', [
+			'parent' => array_reverse($this->gedcom_place),
+			'ged' => $this->tree->getName(),
+		]));
 	}
 
 	/**
