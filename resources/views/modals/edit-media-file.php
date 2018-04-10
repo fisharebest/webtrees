@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(Route('edit-media-file', ['xref' => $media->getXref(), 'ged' => $media->getTree()->getName(), 'fact_id' => $media_file->factId()])) ?>" enctype="multipart/form-data" method="POST">
+<form action="<?= e(route('edit-media-file', ['xref' => $media->getXref(), 'ged' => $media->getTree()->getName(), 'fact_id' => $media_file->factId()])) ?>" enctype="multipart/form-data" method="POST">
 	<?= csrf_field() ?>
 
 	<?= view('modals/header', ['title' => I18N::translate('Edit a media file')]) ?>

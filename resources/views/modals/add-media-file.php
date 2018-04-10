@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(Route('add-media-file', ['xref' => $media->getXref(), 'ged' => $media->getTree()->getName()])) ?>" enctype="multipart/form-data" method="POST">
+<form action="<?= e(route('add-media-file', ['xref' => $media->getXref(), 'ged' => $media->getTree()->getName()])) ?>" enctype="multipart/form-data" method="POST">
 	<?= csrf_field() ?>
 
 	<?= view('modals/header', ['title' => I18N::translate('Add a media file')]) ?>
