@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-31 09:25+0000\n"
-"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
+"PO-Revision-Date: 2018-04-11 21:15+0000\n"
+"Last-Translator: Lars Juul <lars@krugerjuul.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -9343,7 +9343,7 @@ msgstr "Flyt til højre"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Flyt medieobjektet?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
