@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-11 21:17+0000\n"
-"Last-Translator: Niels Baggesen <niels@baggesen.net>\n"
+"PO-Revision-Date: 2018-04-11 21:21+0000\n"
+"Last-Translator: Lars Juul <lars@krugerjuul.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -11211,7 +11211,7 @@ msgstr "Gensortér medier"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Gen-sortér navne"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -13365,7 +13365,7 @@ msgstr "GEDCOM filen “%s” er blevet importeret."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "GEDCOM-standarden tillader ikke URL'er i medieobjekter."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
