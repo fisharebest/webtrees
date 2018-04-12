@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-15 07:35+0000\n"
+"PO-Revision-Date: 2018-04-12 05:02+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -8073,7 +8073,7 @@ msgstr "Libanon"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr "Legal"
+msgstr "Legal/Laillinen"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:389
