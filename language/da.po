@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-01-31 09:24+0000\n"
-"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
+"PO-Revision-Date: 2018-04-12 21:41+0000\n"
+"Last-Translator: Lars Juul <lars@krugerjuul.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -3007,7 +3007,7 @@ msgstr "Brudepige"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr "Brigham By, Utah, United States"
+msgstr "Brigham By, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3397,7 +3397,7 @@ msgstr "Caymanøerne"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr "Cebu By, Philippines"
+msgstr "Cebu By, Filippinerne"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -6944,7 +6944,7 @@ msgstr "Guatemala"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:179
 msgid "Guatemala City, Guatemala"
-msgstr "Guatemala City, Guatemala"
+msgstr "Guatemala By, Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:181
@@ -7883,7 +7883,7 @@ msgstr "juni"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr "Kansas By, Missouri, United States"
+msgstr "Kansas City, Missouri, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -9409,7 +9409,7 @@ msgstr "Moders familie med et ukendt individ"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, USA"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
@@ -9578,7 +9578,7 @@ msgstr "Narrativ beskrivelse"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, USA"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
@@ -9644,7 +9644,7 @@ msgstr "Ny Kaledonien"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -10195,12 +10195,12 @@ msgstr "oktober"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, USA"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10338,7 +10338,7 @@ msgstr "Orientering"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, USA"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
@@ -10483,7 +10483,7 @@ msgstr "Farvepalet"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
@@ -10869,7 +10869,7 @@ msgstr "Steder i %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Stednavne bør indtastes i henhold til de gældende standarder for slægtsforskning. Her registreres stednavne med de mest præcise oplysninger først og derefter mindre og mindre præcise oplysninger. Hver oplysning afsluttes med et komma for at adskille de forskellige sted niveauer.<br><br>Bruger vi opdelingen af de danske kirkebøger som eksempel så skal et sogn som Tolstrup skrives som “Tolstrup, Børglum, Hjørring, DK” (“sogn, herred, amt, land”).<br><br>Kender man kun amtet, skrives det som “, , Hjørring, DK”.<br><br>Ved man at begivenheden fandt sted i selve byen Tolstrup og lige netop på Børglumvej vil man skulle skrive “Børglumvej, Tolstrup, Tolstrup, Børglum, Hjørring, DK”."
+msgstr "Stednavne bør indtastes i henhold til de gældende standarder for slægtsforskning. Her registreres stednavne med de mest præcise oplysninger først og derefter mindre og mindre præcise oplysninger. Hver oplysning afsluttes med et komma for at adskille de forskellige sted niveauer.<br><br>Bruger vi opdelingen af de danske kirkebøger som eksempel så skal et sogn som Tolstrup skrives som “Tolstrup, Børglum, Hjørring, DK” (“sogn, herred, amt, land”).<br><br>Kender man kun amtet, skrives det som “, , Hjørring, DK”.<br><br>Ved man at begivenheden fandt sted i selve byen Tolstrup og lige netop på Børglumvej vil man skulle skrive “Børglumvej, Tolstrup, Tolstrup, Børglum, Hjørring, DK”.<br><br>Du kan bruge <b>Find stedet</b> for at finde steder som allerede forekommer i databasen."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
@@ -10944,7 +10944,7 @@ msgstr "Portnummer"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
@@ -11100,12 +11100,12 @@ msgstr "Ejendom"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr "Provo City Center , Utah, United States"
+msgstr "Provo City Center, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, USA"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:708
@@ -11256,7 +11256,7 @@ msgstr "Rajab"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, North Carolina, United States"
+msgstr "Raleigh, North Carolina, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11524,7 +11524,7 @@ msgstr "Fjern dette sted?"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, USA"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
@@ -11787,7 +11787,7 @@ msgstr "Sankt Vincent og Grenadinerne"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6922
@@ -11797,7 +11797,7 @@ msgstr "Samoa"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -11951,7 +11951,7 @@ msgstr "Søgning for alle mulige relationer kan tage meget tid i et meget stort 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, USA"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
@@ -12097,7 +12097,7 @@ msgstr "Senegal"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Seoul, Korea"
-msgstr "Seoul, Korea"
+msgstr "Seoul, Sydkorea"
 
 #: app/Date/CalendarDate.php:319
 msgctxt "Abbreviation for September"
@@ -12889,7 +12889,7 @@ msgstr "Slave"
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr "Slave"
+msgstr "Slavinde"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
@@ -12919,7 +12919,7 @@ msgstr "Små systemer (500 individer): 16-32MB, 10-20 sekunder"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, USA"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
@@ -13091,7 +13091,7 @@ msgstr "Spansk"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, USA"
 
 #: modules_v3/bdm_report/report.xml:169
 #: modules_v3/individual_ext_report/report.xml:202
@@ -13129,17 +13129,17 @@ msgstr "Sri Lanka"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:343
 msgid "St. Louis, Missouri, United States"
-msgstr "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:349
 msgid "St. Paul, Minnesota, United States"
-msgstr "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, USA"
 
 #: app/Module/GoogleMapsModule.php:457
 msgid "Standard"
@@ -15549,7 +15549,7 @@ msgstr "Verificeret"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, USA"
 
 #. I18N: gedcom tag VERS
 #: admin_modules.php:193 app/GedcomTag.php:856
@@ -15670,7 +15670,7 @@ msgstr "Værge"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, USA"
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
@@ -16597,12 +16597,12 @@ msgstr "luk"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
 msgid "clouds"
-msgstr "clouds"
+msgstr "skyer"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:196
 msgid "colors"
-msgstr "colors"
+msgstr "farver"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
