@@ -108,7 +108,7 @@ try {
 			$response = new Response($ex->getMessage(), $ex->getStatusCode());
 		} else {
 			$controller = new ErrorController;
-			$response   = $controller->errorResponse($ex->getMessage());
+			$response   = $controller->errorResponse($ex);
 		}
 	} else {
 		// Show an error page for unexpected exceptions.

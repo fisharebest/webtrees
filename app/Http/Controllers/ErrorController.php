@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 use Whoops\Handler\PlainTextHandler;
 use Whoops\Run;
@@ -63,15 +64,15 @@ class ErrorController extends AbstractBaseController {
 	/**
 	 * Convert an exception into an error message
 	 *
-	 * @param string $error
+	 * @param HttpException $ex
 	 *
 	 * @return Response
 	 */
-	public function errorResponse(string $error): Response {
+	public function errorResponse(HttpException $ex): Response {
 		return $this->viewResponse('alerts/danger', [
 			'title' => 'Error',
-			'alert' => $error,
-			], Response::HTTP_INTERNAL_SERVER_ERROR);
+			'alert' => $ex->getMessage(),
+			], $ex->getStatusCode());
 	}
 
 	/**
