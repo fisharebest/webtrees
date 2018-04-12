@@ -167,34 +167,6 @@ case 'delete-user':
 	}
 	break;
 
-case 'language':
-	// Change the current language
-	$language = Filter::post('language');
-	try {
-		I18N::init($language);
-		Session::put('locale', $language);
-		// Remember our selection
-		Auth::user()->setPreference('language', $language);
-	} catch (\Exception $ex) {
-		DebugBar::addThrowable($ex);
-
-		// Request for a non-existant language.
-		http_response_code(406);
-	}
-	break;
-
-case 'masquerade':
-	$user = User::find(Filter::postInteger('user_id'));
-
-	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
-		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
-		Auth::login($user);
-		Session::put('masquerade', '1');
-	} else {
-		http_response_code(406);
-	}
-	break;
-
 case 'unlink-media':
 	// Remove links from an individual and their spouse-family records to a media object.
 	// Used by the "unlink" option on the album (lightbox) tab.
@@ -294,18 +266,5 @@ case 'select2-submitter':
 	$query = Filter::post('q', null, '');
 	header('Content-Type: application/json');
 	echo json_encode(Select2::submitterSearch($WT_TREE, $page, $query));
-	break;
-
-case 'theme':
-	// Change the current theme
-	$theme = Filter::post('theme');
-	if (Site::getPreference('ALLOW_USER_THEMES') === '1' && array_key_exists($theme, Theme::themeNames())) {
-		Session::put('theme_id', $theme);
-		// Remember our selection
-		Auth::user()->setPreference('theme', $theme);
-	} else {
-		// Request for a non-existant theme.
-		http_response_code(406);
-	}
 	break;
 }

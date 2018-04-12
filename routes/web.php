@@ -215,6 +215,9 @@ $routes += [
 	'GET:verify'           => 'Auth\\VerifyEmailController@verify',
 	'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
 	'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
+	'POST:language'        => 'UserController@language',
+	'POST:masquerade'      => 'UserController@masquerade',
+	'POST:theme'           => 'UserController@theme',
 ];
 
 return $routes;

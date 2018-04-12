@@ -142,8 +142,8 @@ function delete_user (message, user_id) {
 
 // Masquerade as another user - and reload the page.
 function masquerade (user_id) {
-  $.post('action.php', {
-    action: 'masquerade',
+  $.post('index.php', {
+    route: 'masquerade',
     user_id: user_id,
   },
     function () {
@@ -942,8 +942,8 @@ $(function () {
 
   // Activate the langauge selection menu.
   $('.menu-language').on('click', '[data-language]', function () {
-    $.post('action.php', {
-      action: 'language',
+    $.post('index.php', {
+      route: 'language',
       language: $(this).data('language')
     }, function () {
       window.location.reload();
@@ -954,8 +954,8 @@ $(function () {
 
   // Activate the theme selection menu.
   $('.menu-theme').on('click', '[data-theme]', function () {
-    $.post('action.php', {
-      action: 'theme',
+    $.post('index.php', {
+      route: 'theme',
       theme: $(this).data('theme')
     }, function () {
       window.location.reload();
