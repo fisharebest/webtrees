@@ -89,36 +89,6 @@ case 'copy-fact':
 	}
 	break;
 
-case 'create-media-object-from-file':
-	$file  = Filter::post('file');
-	$type  = Filter::post('type');
-	$title = Filter::post('title');
-	$note  = Filter::post('note');
-
-	if (preg_match('/\.([a-zA-Z0-9]+)$/', $file, $match)) {
-		$format = ' ' . $match[1];
-	} else {
-		$format = '';
-	}
-
-	$gedcom = "0 @new@ OBJE\n1 FILE " . $file . "\n2 FORM " . $format;
-
-	if ($type !== '') {
-		$gedcom .= "\n3 TYPE " . $type;
-	}
-
-	if ($title !== '') {
-		$gedcom .= "\n2 TITL " . $title;
-	}
-	if ($note !== '') {
-		$gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
-	}
-	$media_object = $WT_TREE->createRecord($gedcom);
-	// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-	FunctionsImport::acceptAllChanges($media_object->getXref(), $media_object->getTree()->getTreeId());
-	header('Location: admin_media.php?files=unused');
-	break;
-
 case 'paste-fact':
 	// Paste a fact from the clipboard
 	$xref      = Filter::post('xref', WT_REGEX_XREF);
