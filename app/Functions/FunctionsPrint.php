@@ -645,17 +645,6 @@ class FunctionsPrint {
 	}
 
 	/**
-	 * HTML link to find a fact.
-	 *
-	 * @param string $element_id
-	 *
-	 * @return string
-	 */
-	public static function printFindFactLink($element_id) {
-		return '<a href="#" onclick="findFact(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_find_facts" title="' . I18N::translate('Find a fact or event') . '"></a>';
-	}
-
-	/**
 	 * Summary of LDS ordinances.
 	 *
 	 * @param Individual $individual

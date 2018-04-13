@@ -819,21 +819,7 @@ echo Bootstrap4::breadcrumbs([
 		</label>
 		<div class="col-sm-9">
 			<div class="input-group">
-				<input
-					class="form-control"
-					dir="ltr"
-					id="CHART_BOX_TAGS"
-					maxlength="255"
-					name="CHART_BOX_TAGS"
-					type="text"
-					value="<?= e($WT_TREE->getPreference('CHART_BOX_TAGS')) ?>"
-					>
-				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
-						<i class="fas fa-pencil-alt"></i>
-						<?= /* I18N: A button label. */ I18N::translate('edit') ?>
-					</a>
-				</div>
+				<?= Bootstrap4::multiSelect(GedcomTag::getPicklistFacts('INDI'), explode(',', $WT_TREE->getPreference('CHART_BOX_TAGS')), ['id' => 'CHART_BOX_TAGS', 'name' => 'CHART_BOX_TAGS[]', 'class' => 'select2']) ?>
 			</div>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>
