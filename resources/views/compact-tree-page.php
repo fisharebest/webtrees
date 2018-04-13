@@ -14,7 +14,7 @@
 			<?= I18N::translate('Individual') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
+			<?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
 		</div>
 	</div>
 

@@ -987,7 +987,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?= I18N::translate('Individual') ?>
 				</label>
 				<div class="col-sm-9 wt-page-options-value">
-					<?= FunctionsEdit::formControlIndividual($controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
+					<?= FunctionsEdit::formControlIndividual($WT_TREE, $controller->root, ['id' => 'rootid', 'name' => 'rootid']) ?>
 				</div>
 			</div>
 

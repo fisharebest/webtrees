@@ -18,6 +18,6 @@
 		</label>
 	</label>
 	<div class="col-sm-9">
-		<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'pid', 'name' => 'pid']) ?>
+		<?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'pid', 'name' => 'pid']) ?>
 	</div>
 </div>

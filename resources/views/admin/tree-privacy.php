@@ -175,22 +175,22 @@
 					<option value="media"><?= I18N::translate('Media object') ?></option>
 				</select>
 				<span class="select-record select-individual">
-					<?= FunctionsEdit::formControlIndividual(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+					<?= FunctionsEdit::formControlIndividual($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
 				</span>
 				<span class="select-record select-family d-none">
-					<?= FunctionsEdit::formControlFamily(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+					<?= FunctionsEdit::formControlFamily($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
 				</span>
 				<span class="select-record select-source d-none">
-					<?= FunctionsEdit::formControlSource(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+					<?= FunctionsEdit::formControlSource($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
 				</span>
 				<span class="select-record select-repository d-none">
-					<?= FunctionsEdit::formControlRepository(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+					<?= FunctionsEdit::formControlRepository($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
 				</span>
 				<span class="select-record select-note d-none">
-					<?= FunctionsEdit::formControlNote(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+					<?= FunctionsEdit::formControlNote($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
 				</span>
 				<span class="select-record select-media d-none">
-					<?= FunctionsEdit::formControlMediaObject(null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+					<?= FunctionsEdit::formControlMediaObject($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
 				</span>
 				<input data-autocomplete-type="IFSRO" id="xref" maxlength="20" name="xref[]" type="text">
 			</td>

@@ -323,7 +323,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Default individual') ?>
 		</label>
 		<div class="col-sm-9">
-			<?= FunctionsEdit::formControlIndividual(Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE), ['id' => 'PEDIGREE_ROOT_ID', 'name' => 'PEDIGREE_ROOT_ID']) ?>
+			<?= FunctionsEdit::formControlIndividual($WT_TREE, Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE), ['id' => 'PEDIGREE_ROOT_ID', 'name' => 'PEDIGREE_ROOT_ID']) ?>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Default individual” configuration setting */ I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
 			</p>

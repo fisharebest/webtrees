@@ -33,7 +33,7 @@
 		<?php endif ?>
 
 
-		<a class="dropdown-item menu-indi-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>');">
+		<a class="dropdown-item menu-indi-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>', '<?= $individual->getXref() ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 

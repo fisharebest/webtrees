@@ -73,7 +73,7 @@
 			<?= I18N::translate('Default individual') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($default_individual, ['id' => 'root-id',
+			<?= FunctionsEdit::formControlIndividual($tree, $default_individual, ['id' => 'root-id',
  'name' => 'root_id', 'aria-describedby' => 'root-id-description']) ?>
 			<p class="small text-muted" id="root-id-description">
 				<?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>

@@ -795,7 +795,7 @@ case 'addfamlink':
 				<?= I18N::translate('Family') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlFamily(null, ['id' => 'famid', 'name' => 'famid']) ?>
+				<?= FunctionsEdit::formControlFamily($controller->tree(), null, ['id' => 'famid', 'name' => 'famid']) ?>
 			</div>
 		</div>
 
@@ -911,7 +911,7 @@ case 'linkspouse':
 				<?= $label ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlIndividual(null, ['id' => 'spouse', 'name' => 'spid']) ?>
+				<?= FunctionsEdit::formControlIndividual($controller->tree(), null, ['id' => 'spouse', 'name' => 'spid']) ?>
 			</div>
 		</div>
 
@@ -1055,7 +1055,7 @@ case 'add-media-link':
 							</button>
 						</span>
 					<?php endif ?>
-					<?= FunctionsEdit::formControlMediaObject(null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
+					<?= FunctionsEdit::formControlMediaObject($controller->tree(), null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
 				</div>
 			</div>
 		</div>

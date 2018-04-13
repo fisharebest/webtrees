@@ -233,7 +233,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?= I18N::translate('Individual') ?>
 						</label>
 						<div class="col-sm-9">
-							<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'xref', 'name' => 'xref']) ?>
+							<?= FunctionsEdit::formControlIndividual($WT_TREE, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
 						</div>
 					</div>
 

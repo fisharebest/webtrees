@@ -19,7 +19,7 @@
 			<?= I18N::translate('Add individuals') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual(null, [
+			<?= FunctionsEdit::formControlIndividual($tree, null, [
 				'id'   => 'addxref',
 				'name' => 'addxref',
 			]) ?>

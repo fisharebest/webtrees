@@ -22,7 +22,9 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -186,5 +188,137 @@ class AutocompleteController extends AbstractBaseController {
 		}
 
 		return new JsonResponse($data);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Family(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::familySearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Flag(Request $request): JsonResponse {
+		$page  = $request->get('page');
+		$query = (int) $request->get('q');
+
+		return new JsonResponse(Select2::flagSearch($page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Individual(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::individualSearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Media(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::mediaObjectSearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Note(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::noteSearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Place(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::placeSearch($tree, $page, $query, true));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Repository(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::repositorySearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Source(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::sourceSearch($tree, $page, $query));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return JsonResponse
+	 */
+	public function select2Submitter(Request $request): JsonResponse {
+		/** @var Tree $tree */
+		$tree  = $request->attributes->get('tree');
+
+		$page  = (int) $request->get('page');
+		$query = $request->get('q');
+
+		return new JsonResponse(Select2::submitterSearch($tree, $page, $query));
 	}
 }

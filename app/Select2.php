@@ -35,15 +35,15 @@ class Select2 extends Html {
 	const DELAY = '350';
 
 	// API endpoints
-	const URL_FAM  = 'action.php?action=select2-family';
-	const URL_INDI = 'action.php?action=select2-individual';
-	const URL_NOTE = 'action.php?action=select2-note';
-	const URL_OBJE = 'action.php?action=select2-media';
-	const URL_PLAC = 'action.php?action=select2-place';
-	const URL_REPO = 'action.php?action=select2-repository';
-	const URL_SOUR = 'action.php?action=select2-source';
-	const URL_SUBM = 'action.php?action=select2-submitter';
-	const URL_FLAG = 'action.php?action=select2-flag';
+	const URL_FAM  = 'index.php?route=select2-family';
+	const URL_INDI = 'index.php?route=select2-individual';
+	const URL_NOTE = 'index.php?route=select2-note';
+	const URL_OBJE = 'index.php?route=select2-media';
+	const URL_PLAC = 'index.php?route=select2-place';
+	const URL_REPO = 'index.php?route=select2-repository';
+	const URL_SOUR = 'index.php?route=select2-source';
+	const URL_SUBM = 'index.php?route=select2-submitter';
+	const URL_FLAG = 'index.php?route=select2-flag';
 
 	/**
 	 * Select2 configuration that is common to all searches.
@@ -65,10 +65,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a family lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function familyConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_FAM];
+	public static function familyConfig(Tree $tree) {
+		$url = route('select2-family', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -134,7 +138,7 @@ class Select2 extends Html {
 	 * @return string[]
 	 */
 	public static function flagConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_FLAG];
+		return self::commonConfig() + ['data-ajax--url' => route('select2-flag')];
 	}
 
 	/**
@@ -198,10 +202,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for an individual lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function individualConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_INDI];
+	public static function individualConfig(Tree $tree) {
+		$url = route('select2-individual', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -258,10 +266,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a media object lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function mediaObjectConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_OBJE];
+	public static function mediaObjectConfig(Tree $tree) {
+		$url = route('select2-media', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -317,10 +329,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a note.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function noteConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_NOTE];
+	public static function noteConfig(Tree $tree) {
+		$url = route('select2-note', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -376,10 +392,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a note.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function placeConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_PLAC];
+	public static function placeConfig(Tree $tree) {
+		$url = route('select2-place', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -469,10 +489,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a repository lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function repositoryConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_REPO];
+	public static function repositoryConfig(Tree $tree) {
+		$url = route('select2-repository', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -528,10 +552,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a source lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function sourceConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_SOUR];
+	public static function sourceConfig(Tree $tree) {
+		$url = route('select2-source', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**
@@ -587,10 +615,14 @@ class Select2 extends Html {
 	/**
 	 * Select2 configuration for a submitter lookup.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
-	public static function submitterConfig() {
-		return self::commonConfig() + ['data-ajax--url' => self::URL_SUBM];
+	public static function submitterConfig(Tree $tree) {
+		$url = route('select2-submitter', ['ged' => $tree->getName()]);
+
+		return self::commonConfig() + ['data-ajax--url' => $url];
 	}
 
 	/**

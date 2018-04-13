@@ -27,7 +27,7 @@
 			</a>
 		<?php endif ?>
 
-		<a class="dropdown-item menu-obje-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>');">
+		<a class="dropdown-item menu-obje-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>', '<?= $record->getXref() ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 

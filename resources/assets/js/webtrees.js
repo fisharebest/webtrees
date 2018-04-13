@@ -27,8 +27,8 @@ function expand_layer (sid) {
 
 // Accept the changes to a record - and reload the page
 function accept_changes (xref) {
-  $.post('action.php', {
-    action: 'accept-changes',
+  $.post('index.php', {
+    route: 'accept-changes',
     xref: xref,
     ged: WT_GEDCOM,
   },
@@ -40,8 +40,8 @@ function accept_changes (xref) {
 
 // Reject the changes to a record - and reload the page
 function reject_changes (xref) {
-  $.post('action.php', {
-    action: 'reject-changes',
+  $.post('index.php', {
+    route: 'reject-changes',
     xref: xref,
     ged: WT_GEDCOM,
   },
@@ -54,8 +54,8 @@ function reject_changes (xref) {
 // Delete a record - and reload the page
 function delete_record (message, xref, gedcom) {
   if (confirm(message)) {
-    $.post('action.php', {
-      action: 'delete-record',
+    $.post('index.php', {
+      route: 'delete-record',
       xref: xref,
       ged: typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
     },
@@ -69,8 +69,8 @@ function delete_record (message, xref, gedcom) {
 // Delete a fact - and reload the page
 function delete_fact (message, xref, fact_id) {
   if (confirm(message)) {
-    $.post('action.php', {
-      action: 'delete-fact',
+    $.post('index.php', {
+      route: 'delete-fact',
       xref: xref,
       fact_id: fact_id,
       ged: WT_GEDCOM,
@@ -82,26 +82,10 @@ function delete_fact (message, xref, fact_id) {
   return false;
 }
 
-// Remove links from one record to another - and reload the page
-function unlink_media (message, source, target) {
-  if (confirm(message)) {
-    $.post('action.php', {
-      action: 'unlink-media',
-      source: source,
-      target: target,
-      ged: WT_GEDCOM,
-    },
-      function () {
-        location.reload();
-      });
-  }
-  return false;
-}
-
 // Copy a fact to the clipboard
 function copy_fact (xref, fact_id) {
-  $.post('action.php', {
-    action: 'copy-fact',
+  $.post('index.php', {
+    route: 'copy-fact',
     xref: xref,
     fact_id: fact_id,
     ged: WT_GEDCOM,
@@ -114,8 +98,8 @@ function copy_fact (xref, fact_id) {
 
 // Paste a fact from the clipboard
 function paste_fact (xref, element) {
-  $.post('action.php', {
-    action: 'paste-fact',
+  $.post('index.php', {
+    route: 'paste-fact',
     xref: xref,
     fact_id: $(element).val(), // element is the <select> containing the option
     ged: WT_GEDCOM,
@@ -129,8 +113,8 @@ function paste_fact (xref, element) {
 // Delete a user - and reload the page
 function delete_user (message, user_id) {
   if (confirm(message)) {
-    $.post('action.php', {
-      action: 'delete-user',
+    $.post('index.php', {
+      route: 'delete-user',
       user_id: user_id,
     },
       function () {
@@ -919,8 +903,9 @@ $(function () {
   $('.wt-modal-create-record form').on('submit', function (event) {
     event.preventDefault();
     var elementId = $(this).data('element-id');
+    alert(123);
     $.ajax({
-      url: 'action.php',
+      url: 'index.php',
       type: 'POST',
       data: new FormData(this),
       async: false,

@@ -51,6 +51,7 @@ if (Auth::isAdmin()) {
 		'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
 		'GET:broadcast'                       => 'MessageController@broadcastPage',
 		'POST:broadcast'                      => 'MessageController@broadcastAction',
+		'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
 	];
 }
 
@@ -115,6 +116,10 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:edit-raw-record'        => 'EditGedcomRecordController@editRawRecordAction',
 		'GET:edit-raw-fact'           => 'EditGedcomRecordController@editRawFact',
 		'POST:edit-raw-fact'          => 'EditGedcomRecordController@editRawFactAction',
+		'POST:copy-fact'              => 'EditGedcomRecordController@copyFact',
+		'POST:delete-fact'            => 'EditGedcomRecordController@deleteFact',
+		'POST:paste-fact'             => 'EditGedcomRecordController@pasteFact',
+		'POST:delete-record'          => 'EditGedcomRecordController@deleteRecord',
 	];
 }
 
@@ -199,6 +204,15 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:statistics-chart'       => 'StatisticsChartController@chartCustomChart',
 		'GET:timeline'               => 'TimelineChartController@page',
 		'GET:timeline-chart'         => 'TimelineChartController@chart',
+		'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
+		'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
+		'POST:select2-family'        => 'AutocompleteController@select2Family',
+		'POST:select2-individual'    => 'AutocompleteController@select2Individual',
+		'POST:select2-media'         => 'AutocompleteController@select2MediaObject',
+		'POST:select2-note'          => 'AutocompleteController@select2Note',
+		'POST:select2-source'        => 'AutocompleteController@select2Source',
+		'POST:select2-submitter'     => 'AutocompleteController@select2Submitter',
+		'POST:select2-repository'    => 'AutocompleteController@select2Repository',
 	];
 }
 
@@ -215,6 +229,7 @@ $routes += [
 	'GET:verify'           => 'Auth\\VerifyEmailController@verify',
 	'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
 	'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
+	'POST:delete-user'     => 'UserController@delete',
 	'POST:language'        => 'UserController@language',
 	'POST:masquerade'      => 'UserController@masquerade',
 	'POST:theme'           => 'UserController@theme',

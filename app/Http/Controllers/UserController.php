@@ -32,6 +32,26 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UserController extends AbstractBaseController {
 	/**
+	 * Delete a user.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function delete(Request $request): Response {
+		$user_id = (int) $request->get('user_id');
+
+		$user = User::find($user_id);
+
+		if ($user && Auth::isAdmin() && Auth::user() !== $user) {
+			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+			$user->delete();
+		}
+
+		return new Response;
+	}
+
+	/**
 	 * Select a language.
 	 *
 	 * @param Request $request

@@ -36,7 +36,7 @@
 		<?= I18N::translate('Repository') ?>
 	</label>
 	<div class="col-sm-4">
-		<?= FunctionsEdit::formControlRepository(null, ['id' => 'source-repository', 'name' => 'source-repository']) ?>
+		<?= FunctionsEdit::formControlRepository($tree, null, ['id' => 'source-repository', 'name' => 'source-repository']) ?>
 	</div>
 	<label class="col-form-label col-sm-2" for="source-call-number">
 		<?= I18N::translate('Call number') ?>
