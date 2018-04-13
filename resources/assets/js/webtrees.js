@@ -903,7 +903,6 @@ $(function () {
   $('.wt-modal-create-record form').on('submit', function (event) {
     event.preventDefault();
     var elementId = $(this).data('element-id');
-    alert(123);
     $.ajax({
       url: 'index.php',
       type: 'POST',
