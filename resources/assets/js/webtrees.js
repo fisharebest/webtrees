@@ -15,9 +15,6 @@
 
 'use strict';
 
-// "rtl" on right-to-left pages.
-var textDirection = $('html').attr('dir');
-
 function expand_layer (sid) {
   $('#' + sid + '_img').toggleClass('icon-plus icon-minus');
   $('#' + sid).slideToggle('fast');
@@ -26,11 +23,11 @@ function expand_layer (sid) {
 }
 
 // Accept the changes to a record - and reload the page
-function accept_changes (xref) {
+function accept_changes(xref, ged) {
   $.post('index.php', {
     route: 'accept-changes',
     xref: xref,
-    ged: WT_GEDCOM,
+    ged: ged,
   },
     function () {
       location.reload();
@@ -39,11 +36,11 @@ function accept_changes (xref) {
 }
 
 // Reject the changes to a record - and reload the page
-function reject_changes (xref) {
+function reject_changes (xref, ged) {
   $.post('index.php', {
     route: 'reject-changes',
     xref: xref,
-    ged: WT_GEDCOM,
+    ged: ged,
   },
     function () {
       location.reload();
@@ -57,7 +54,7 @@ function delete_record (message, xref, gedcom) {
     $.post('index.php', {
       route: 'delete-record',
       xref: xref,
-      ged: typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+      ged: gedcom,
     },
     function () {
       location.reload();
@@ -67,28 +64,28 @@ function delete_record (message, xref, gedcom) {
 }
 
 // Delete a fact - and reload the page
-function delete_fact (message, xref, fact_id) {
+function delete_fact (message, ged, xref, fact_id) {
   if (confirm(message)) {
     $.post('index.php', {
       route: 'delete-fact',
       xref: xref,
       fact_id: fact_id,
-      ged: WT_GEDCOM,
+      ged: ged
     },
-      function () {
-        location.reload();
-      });
+    function () {
+      location.reload();
+    });
   }
   return false;
 }
 
 // Copy a fact to the clipboard
-function copy_fact (xref, fact_id) {
+function copy_fact (ged, xref, fact_id) {
   $.post('index.php', {
     route: 'copy-fact',
     xref: xref,
     fact_id: fact_id,
-    ged: WT_GEDCOM,
+    ged: ged,
   },
     function () {
       location.reload();
@@ -97,12 +94,12 @@ function copy_fact (xref, fact_id) {
 }
 
 // Paste a fact from the clipboard
-function paste_fact (xref, element) {
+function paste_fact (ged, xref, element) {
   $.post('index.php', {
     route: 'paste-fact',
     xref: xref,
     fact_id: $(element).val(), // element is the <select> containing the option
-    ged: WT_GEDCOM,
+    ged: ged,
   },
     function () {
       location.reload();
@@ -269,7 +266,7 @@ function show_submenu (elementid, parentid) {
       pagewidth = document.body.offsetWidth;
     } else {
       pagewidth = document.body.scrollWidth + document.documentElement.scrollLeft - 55;
-      if (textDirection === 'rtl') {
+      if (document.documentElement.dir === 'rtl') {
         boxright = element.offsetLeft + element.offsetWidth + 10;
       }
     }
@@ -617,7 +614,6 @@ function paste_char (value) {
 }
 
 function ilinkitem (mediaid, type, ged) {
-  ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
   window.open('inverselink.php?mediaid=' + encodeURIComponent(mediaid) + '&linkto=' + encodeURIComponent(type) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
   return false;
 }
@@ -799,7 +795,7 @@ $('body').on('click', '.iconz', function (e) {
 
   if (!inout.text().length) {
     wrapper.css('cursor', 'progress');
-    inout.load('index.php', {route: 'expand-chart-box', xref: wrapper.data('pid'), ged: WT_GEDCOM}, function () {
+    inout.load('index.php', {route: 'expand-chart-box', xref: wrapper.data('xref'), ged: wrapper.data('tree')}, function () {
       wrapper.css('cursor', '');
       showDetails();
     });

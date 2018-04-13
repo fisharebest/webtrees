@@ -80,7 +80,7 @@
   }
 
   document.onmousemove = function (e) {
-    var textDirection = document.querySelector("html").dir;
+    var textDirection = document.documentElement.dir;
 
     if (ob === null) {
       return true;

@@ -506,7 +506,7 @@ class FunctionsPrint {
 			}
 			if (!$newRow) {
 				echo '</select>';
-				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), "\" onclick=\"return paste_fact('$id', '#newClipboardFact');\"> ";
+				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), '" onclick="return paste_fact(\'' . e($WT_TREE->getName()) . '\',\'' . e($id) . '\', \'#newClipboardFact\');"> ';
 				echo '</form></td></tr>', "\n";
 			}
 		}

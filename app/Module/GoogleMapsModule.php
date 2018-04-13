@@ -562,193 +562,193 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// === Create an associative array of GIcons()
 					var gicons = [];
 					gicons["1"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon1.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon1.png"
 					};
 					gicons["2"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon2.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon2.png"
 					};
 					gicons["2L"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon2L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon2L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["2R"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon2R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon2R.png",
 						size:  new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["2Ls"] = {
-						url: WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon2Ls.png",
 						size:  new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["2Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon2Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon2Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["3"]   = {
-						url: WT_MODULES_DIR + "googlemap/images/icon3.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon3.png"
 					};
 					gicons["3L"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon3L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon3L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["3R"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon3R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon3R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["3Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon3Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon3Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["3Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon3Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon3Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["4"]   = {
-						url: WT_MODULES_DIR + "googlemap/images/icon4.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon4.png"
 					};
 					gicons["4L"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon4L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon4L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["4R"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon4R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon4R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["4Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon4Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon4Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["4Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon4Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon4Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["5"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon5.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon5.png"
 					};
 					gicons["5L"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon5L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon5L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["5R"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon5R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon5R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["5Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon5Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon5Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["5Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon5Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon5Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["6"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon6.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon6.png"
 					};
 					gicons["6L"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon6L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon6L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["6R"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon6R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon6R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["6Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon6Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon6Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["6Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon6Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon6Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["7"]   = {
-						url: WT_MODULES_DIR + "googlemap/images/icon7.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon7.png"
 					};
 					gicons["7L"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon7L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon7L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["7R"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon7R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon7R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["7Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon7Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon7Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["7Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon7Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon7Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
 					};
 					gicons["8"]   = {
-						url: WT_MODULES_DIR + "googlemap/images/icon8.png"
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon8.png"
 					};
 					gicons["8L"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon8L.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon8L.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(28, 28)
 					};
 					gicons["8R"]  = {
-						url: WT_MODULES_DIR + "googlemap/images/icon8R.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon8R.png",
 						size: new google.maps.Size(32, 32),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(4, 28)
 					};
 					gicons["8Ls"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon8Ls.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon8Ls.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(22, 22)
 					};
 					gicons["8Rs"] = {
-						url: WT_MODULES_DIR + "googlemap/images/icon8Rs.png",
+						url: "<?= WT_MODULES_DIR ?>googlemap/images/icon8Rs.png",
 						size: new google.maps.Size(24, 24),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(2, 22)
@@ -2787,7 +2787,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<?php
 			if ($level < 3 && $record->pl_icon != '') {
 				echo 'var image = {
-						"url"    : WT_MODULES_DIR + "googlemap/" + "' . $record->pl_icon . '",
+						"url"    : "' . WT_MODULES_DIR .  'googlemap/" + "' . $record->pl_icon . '",
 						"size"   : new google.maps.Size(25, 15),
 						"origin" : new google.maps.Point(0, 0),
 						"anchor" : new google.maps.Point(12, 15)

@@ -831,7 +831,7 @@ abstract class AbstractTheme {
 		}
 
 		return
-			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
+			'<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $personBoxClass . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
 			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
@@ -883,7 +883,7 @@ abstract class AbstractTheme {
 		}
 
 		return
-			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style2">' .
+			'<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $personBoxClass . ' box-style2">' .
 			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
@@ -910,7 +910,7 @@ abstract class AbstractTheme {
 		}
 
 		return
-			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
+			'<div data-xref="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
 			'<a href="' . e($individual->url()) . '">' .

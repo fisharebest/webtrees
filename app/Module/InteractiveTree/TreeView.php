@@ -50,7 +50,7 @@ class TreeView {
 			'individual' => $this->drawPerson($individual, $generations, 0, null, null, true),
 		]);
 
-		return [$html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");'];
+		return [$html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->getTree()->getName()) . '");'];
 	}
 
 	/**

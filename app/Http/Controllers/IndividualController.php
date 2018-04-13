@@ -315,7 +315,7 @@
 					FontAwesome::linkIcon('delete', I18N::translate('Delete this name'), [
 						'class'   => 'btn btn-link',
 						'href'    => '#',
-						'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $individual->getXref() . '", "' . $fact->getFactId() . '");',
+						'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($individual->getTree()->getName()) . '", "' . e($individual->getXref()) . '", "' . $fact->getFactId() . '");',
 					]) .
 					FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
 						'class' => 'btn btn-link',
