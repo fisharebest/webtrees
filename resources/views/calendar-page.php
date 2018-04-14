@@ -184,5 +184,6 @@
 	</table>
 </form>
 
-
 <div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e(route('calendar-events', ['ged' => $tree->getName(), 'cal' => $cal, 'day' => $day, 'month' => $month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx,])) ?>"></div>
+
+<?= view('modals/ajax') ?>
