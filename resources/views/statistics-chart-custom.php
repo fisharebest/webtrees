@@ -72,7 +72,7 @@
 			<?= Bootstrap4::radioButtons('x-as', ['12' => I18N::translate('Month of death')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
 			<?= Bootstrap4::radioButtons('x-as', [
 				'13' => I18N::translate('Month of marriage'),
-				'14' => I18N::translate('Month of first marriage'),
+				'15' => I18N::translate('Month of first marriage'),
 			], false, false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
 			<?= Bootstrap4::radioButtons('x-as', ['14' => I18N::translate('Month of birth of first child in a relation')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
 			<?= Bootstrap4::radioButtons('x-as', ['18' => I18N::translate('Longevity versus time')], false, false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
