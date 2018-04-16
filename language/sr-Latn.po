@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-13 14:03+0000\n"
+"PO-Revision-Date: 2018-04-16 21:21+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -1376,16 +1376,16 @@ msgstr "Dodaj novog korisnika"
 #: app/Module/RelativesTabModule.php:402 edit_interface.php:819
 #: edit_interface.php:907
 msgid "Add a wife"
-msgstr "Dodaj suprugu"
+msgstr "Dodaj ženu"
 
 #: app/Module/RelativesTabModule.php:199
 msgid "Add a wife to this family"
-msgstr "Dodaj suprugu ovoj porodici"
+msgstr "Dodaj ženu ovoj porodici"
 
 #: app/Module/RelativesTabModule.php:407 edit_interface.php:1105
 #: edit_interface.php:1177
 msgid "Add a wife using an existing individual"
-msgstr "Dodaj suprugu od već unesenih osoba"
+msgstr "Dodaj ženu od već unesenih osoba"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:151
@@ -2041,7 +2041,7 @@ msgstr ""
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:87
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Primeni automatske ispravke u vašim genealoškim podacima."
 
 #: admin_trees_download.php:205 app/Module/ClippingsCartModule.php:368
 #: app/Module/ClippingsCartModule.php:387
@@ -2081,22 +2081,22 @@ msgstr "apr"
 #: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "april"
+msgstr "aprila"
 
 #: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr "april"
+msgstr "aprilom"
 
 #: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "april"
+msgstr "aprilu"
 
 #: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:601
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr "april"
+msgstr "April"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:47
@@ -2253,22 +2253,22 @@ msgstr "avg"
 #: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "august"
+msgstr "avgusta"
 
 #: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr "august"
+msgstr "avgustom"
 
 #: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr "august"
+msgstr "avgustu"
 
 #: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:605
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr "august"
+msgstr "Avgust"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6634
@@ -2744,7 +2744,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr "Rođen/a"
+msgstr "Rođenje"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
@@ -3205,7 +3205,7 @@ msgstr "Pokop supružnika"
 
 #: app/GedcomTag.php:880
 msgid "Burial of a wife"
-msgstr "Pokop supruge"
+msgstr "Pokop žene"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -4221,7 +4221,7 @@ msgstr "Kremacija supružnika"
 
 #: app/GedcomTag.php:1035
 msgid "Cremation of a wife"
-msgstr "Kremacija supruge"
+msgstr "Kremacija žene"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
@@ -5301,7 +5301,7 @@ msgstr ""
 
 #: statistics.php:239
 msgid "Earliest marriage"
-msgstr ""
+msgstr "Najraniji brak"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
@@ -5612,7 +5612,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:667
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Procenjeni datumi rođenja i smrti"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6692
@@ -6116,22 +6116,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "februar"
+msgstr "februara"
 
 #: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "februar"
+msgstr "februarom"
 
 #: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "februar"
+msgstr "februaru"
 
 #: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:599
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr "februar"
+msgstr "Februar"
 
 #: app/Controller/IndividualController.php:235
 #: app/Functions/FunctionsEdit.php:794 app/Stats.php:5547 calendar.php:651
@@ -6159,7 +6159,7 @@ msgstr "Fidži"
 
 #: admin_media.php:490 app/GedcomTag.php:1374
 msgid "File size"
-msgstr ""
+msgstr "Veličina datoteke"
 
 #: app/Functions/Functions.php:83
 msgid "File successfully uploaded"
@@ -6622,12 +6622,12 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:7 pedigree.php:200
 #: resources/views/family-book-page.php:23
 msgid "Generations"
-msgstr ""
+msgstr "Generacije"
 
 #. I18N: gedcom tag ANCE
 #: app/GedcomTag.php:142
 msgid "Generations of ancestors"
-msgstr ""
+msgstr "Generacije predaka"
 
 #: statistics.php:607
 msgid "Geographic area"
@@ -7147,7 +7147,7 @@ msgstr "Suprug"
 
 #: app/Controller/TimelineController.php:229
 msgid "Husband’s age"
-msgstr ""
+msgstr "Muževe godine"
 
 #: admin_site_logs.php:272 admin_site_logs.php:330
 msgid "IP address"
@@ -7295,7 +7295,7 @@ msgstr ""
 
 #: admin_media.php:495 app/GedcomTag.php:1376
 msgid "Image dimensions"
-msgstr ""
+msgstr "Dimanzije fotografije"
 
 #: admin_trees_config.php:618
 msgid "Images without watermarks"
@@ -7532,7 +7532,7 @@ msgstr "Interaktivno stablo"
 #: app/Module/InteractiveTreeModule.php:137
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Interaktivno stablo osobe %s"
 
 #: app/Functions/FunctionsEdit.php:129
 msgid "Internal messaging"
@@ -7647,22 +7647,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "januar"
+msgstr "januara"
 
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "januar"
+msgstr "januarom"
 
 #: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "januar"
+msgstr "januaru"
 
 #: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:598
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr "januar"
+msgstr "Januar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
@@ -7702,32 +7702,32 @@ msgstr ""
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "jul"
 
 #. I18N: The julian calendar
 #: app/Date.php:199 help_text.php:178
 msgid "Julian"
-msgstr ""
+msgstr "Julijanski"
 
 #: app/Date/CalendarDate.php:228
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "jul"
+msgstr "jula"
 
 #: app/Date/CalendarDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr "jul"
+msgstr "julom"
 
 #: app/Date/CalendarDate.php:262
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "jul"
+msgstr "julu"
 
 #: app/Date/CalendarDate.php:194 app/Functions/FunctionsPrint.php:604
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr "jul"
+msgstr "Jul"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:94
@@ -7780,27 +7780,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "jun"
 
 #: app/Date/CalendarDate.php:227
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "june"
+msgstr "juna"
 
 #: app/Date/CalendarDate.php:295
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr "june"
+msgstr "junom"
 
 #: app/Date/CalendarDate.php:261
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "june"
+msgstr "junu"
 
 #: app/Date/CalendarDate.php:193 app/Functions/FunctionsPrint.php:603
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr "june"
+msgstr "Jun"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
@@ -8053,7 +8053,7 @@ msgstr ""
 
 #: statistics.php:247
 msgid "Latest marriage"
-msgstr ""
+msgstr "Poslednji brak"
 
 #. I18N: gedcom tag LATI
 #: app/Functions/FunctionsEdit.php:770 app/Functions/FunctionsPrint.php:402
@@ -8116,7 +8116,7 @@ msgstr ""
 
 #: statistics.php:256
 msgid "Length of marriage"
-msgstr ""
+msgstr "Trajanje braka"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
@@ -8297,7 +8297,7 @@ msgstr ""
 
 #: statistics.php:260
 msgid "Longest marriage"
-msgstr ""
+msgstr "Najduži brak"
 
 #. I18N: Two axes of a graph
 #: statistics.php:521 statisticsplot.php:1048
@@ -8505,22 +8505,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "mart"
+msgstr "marta"
 
 #: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr "mart"
+msgstr "martom"
 
 #: app/Date/CalendarDate.php:258
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "mart"
+msgstr "martu"
 
 #: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:600
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr "mart"
+msgstr "Mart"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1052
@@ -8588,21 +8588,21 @@ msgstr "Sklapanje braka"
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:395 modules_v3/missing_facts_report/report.xml:22
 msgid "Marriage banns"
-msgstr ""
+msgstr "Objava braka"
 
 #. I18N: gedcom tag _MSTAT
 #: app/GedcomTag.php:1293
 msgid "Marriage beginning status"
-msgstr ""
+msgstr "Status početka braka"
 
 #. I18N: gedcom tag _MBON
 #: app/GedcomTag.php:1279
 msgid "Marriage bond"
-msgstr ""
+msgstr "Bračna obveza"
 
 #: app/Stats.php:1691 statistics.php:527
 msgid "Marriage by country"
-msgstr ""
+msgstr "Brakovi po državi"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:401
@@ -8611,34 +8611,34 @@ msgstr "Bračni ugovor"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
-msgstr ""
+msgstr "Do datuma venčanja"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage date range start"
-msgstr ""
+msgstr "Od datuma venčanja"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1285
 msgid "Marriage ending status"
-msgstr ""
+msgstr "Status kraja braka"
 
 #. I18N: gedcom tag _MARI
 #: app/GedcomTag.php:1206
 msgid "Marriage intention"
-msgstr ""
+msgstr "Bračna namera"
 
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:403
 msgid "Marriage license"
-msgstr ""
+msgstr "Bračna dozvola"
 
 #: app/GedcomTag.php:1272
 msgid "Marriage of a brother"
-msgstr ""
+msgstr "Venčanje brata"
 
 #: app/GedcomTag.php:1220
 msgid "Marriage of a child"
-msgstr "Sklapanje braka deteta"
+msgstr "Venčanje deteta"
 
 #: app/GedcomTag.php:1218
 msgid "Marriage of a daughter"
@@ -8651,7 +8651,7 @@ msgstr "Venčanje oca"
 
 #: app/GedcomTag.php:1231 app/GedcomTag.php:1240 app/GedcomTag.php:1249
 msgid "Marriage of a grandchild"
-msgstr ""
+msgstr "Venčanje unuka/unuke"
 
 #: app/GedcomTag.php:1229
 msgid "Marriage of a granddaughter"
@@ -8687,7 +8687,7 @@ msgstr "Venčanje polubrata"
 
 #: app/GedcomTag.php:1258
 msgid "Marriage of a half-sibling"
-msgstr ""
+msgstr "Venčanje polubrata/polusestre"
 
 #: app/GedcomTag.php:1256
 msgid "Marriage of a half-sister"
@@ -8701,15 +8701,15 @@ msgstr "Venčanje majke"
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1267
 msgid "Marriage of a parent"
-msgstr ""
+msgstr "Venčanje roditelja"
 
 #: app/GedcomTag.php:1276
 msgid "Marriage of a sibling"
-msgstr ""
+msgstr "Venčanje polubrata/polusestre"
 
 #: app/GedcomTag.php:1274
 msgid "Marriage of a sister"
-msgstr ""
+msgstr "Venčanje sestre"
 
 #: app/GedcomTag.php:1216
 msgid "Marriage of a son"
@@ -8718,20 +8718,20 @@ msgstr "Venčanje sina"
 #. I18N: ...to each other
 #: app/GedcomTag.php:1223
 msgid "Marriage of parents"
-msgstr ""
+msgstr "Venčanje roditelja"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage place contains"
-msgstr ""
+msgstr "Mesto venčanja sadrži"
 
 #: statistics.php:432
 msgid "Marriage places"
-msgstr ""
+msgstr "Mesta venčanja"
 
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:419
 msgid "Marriage settlement"
-msgstr ""
+msgstr "Bračni ugovor"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1340
@@ -8747,11 +8747,11 @@ msgstr "Nepoznata vrsta braka"
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:30
 msgid "Marriages"
-msgstr ""
+msgstr "Brakovi"
 
 #: app/Stats.php:3541 statistics.php:231
 msgid "Marriages by century"
-msgstr ""
+msgstr "Brakovi po veku"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1208 modules_v3/cemetery_report/report.xml:7
@@ -8808,7 +8808,7 @@ msgstr "Maurícius"
 #. I18N: A configuration setting
 #: admin_trees_config.php:753
 msgid "Maximum descendancy generations"
-msgstr ""
+msgstr "Maksimalno generacija potomaka"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:645
@@ -8832,22 +8832,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:226
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "maj"
+msgstr "maja"
 
 #: app/Date/CalendarDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "maj"
+msgstr "majem"
 
 #: app/Date/CalendarDate.php:260
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "maj"
+msgstr "maju"
 
 #: app/Date/CalendarDate.php:192 app/Functions/FunctionsPrint.php:602
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "maj"
+msgstr "Maj"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
@@ -9138,7 +9138,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:3
 #: modules_v3/missing_facts_report/report.xml:52
 msgid "Missing data"
-msgstr ""
+msgstr "Podaci koji nedostaju"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:36 admin_users.php:553
@@ -9412,7 +9412,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:667
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Višestruki brakovi"
 
 #: app/Module/UserWelcomeModule.php:75 app/Theme/AbstractTheme.php:1671
 #: edituser.php:100
@@ -9814,7 +9814,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:211
 msgid "No map data exists for this individual"
-msgstr ""
+msgstr "Nema podataka na mapi za ovu osobu"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10015,22 +10015,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "novembar"
+msgstr "novembra"
 
 #: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "novembar"
+msgstr "novembrom"
 
 #: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "novembar"
+msgstr "novembru"
 
 #: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:608
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr "novembar"
+msgstr "Novembar"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:265
@@ -10057,7 +10057,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr ""
+msgstr "Broj generacija"
 
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:144
@@ -10067,7 +10067,7 @@ msgstr ""
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:445
 msgid "Number of marriages"
-msgstr ""
+msgstr "Broj brakova"
 
 #: admin_users.php:674
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
@@ -10139,22 +10139,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "oktobar"
+msgstr "oktobra"
 
 #: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr "oktobar"
+msgstr "oktobrom"
 
 #: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "oktobar"
+msgstr "oktobru"
 
 #: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:607
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr "oktobar"
+msgstr "Oktobar"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
@@ -10620,7 +10620,7 @@ msgstr ""
 #: app/Controller/SearchController.php:197 app/Theme/AbstractTheme.php:1811
 #: branches.php:45
 msgid "Phonetic search"
-msgstr ""
+msgstr "Fonetsko pretraživanje"
 
 #: app/GedcomTag.php:564
 msgid "Phonetic title"
@@ -10629,7 +10629,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1319 app/GedcomTag.php:1527
 msgid "Photo"
-msgstr ""
+msgstr "Fotografija"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
@@ -10681,7 +10681,7 @@ msgstr "Mesto"
 #: app/Module/GoogleMapsModule.php:423 app/Theme/AbstractTheme.php:1598
 #: placelist.php:36 placelist.php:38 placelist.php:134
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Hijerarhija mesta"
 
 #: app/GedcomTag.php:482
 msgid "Place in Hebrew"
@@ -10790,11 +10790,11 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr ""
+msgstr "Mesto venčanja"
 
 #: app/GedcomTag.php:399 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Mesto objave venčanja"
 
 #: app/GedcomTag.php:439
 msgid "Place of naturalization"
@@ -11413,7 +11413,7 @@ msgstr ""
 
 #: app/GedcomTag.php:415 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr "Crkveni brak"
+msgstr "Verski brak"
 
 #: app/GedcomTag.php:1331
 msgid "Religious name"
@@ -11839,13 +11839,13 @@ msgstr ""
 #: app/Theme/FabTheme.php:56 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:85
 #: search.php:211
 msgid "Search"
-msgstr ""
+msgstr "Pretraga"
 
 #: app/Controller/SearchController.php:201
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:52
 #: app/Theme/AbstractTheme.php:1830
 msgid "Search and replace"
-msgstr ""
+msgstr "Pretraži i zameni"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:61
@@ -11854,27 +11854,27 @@ msgstr ""
 
 #: medialist.php:109
 msgid "Search filters"
-msgstr ""
+msgstr "Filteri za pretragu"
 
 #: admin_trees_places.php:96 search.php:70 search.php:178
 msgid "Search for"
-msgstr "Pretraga za"
+msgstr "Traži"
 
 #: app/Module/GoogleMapsModule.php:3028
 msgid "Search globally"
-msgstr ""
+msgstr "Traži globalno"
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "Search locally"
-msgstr ""
+msgstr "Traži lokalno"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 msgid "Search method"
-msgstr ""
+msgstr "Metoda traženja"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:151
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Traži tekst/uzorak"
 
 #: app/Module/RelationshipsChartModule.php:172
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12034,22 +12034,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "septembar"
+msgstr "septembra"
 
 #: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "septembar"
+msgstr "septembrom"
 
 #: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "septembar"
+msgstr "septembru"
 
 #: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:606
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr "septembar"
+msgstr "Septembar"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
@@ -12317,7 +12317,7 @@ msgstr ""
 
 #: statistics.php:261
 msgid "Shortest marriage"
-msgstr ""
+msgstr "Najkraći brak"
 
 #: calendar.php:216
 msgid "Show"
@@ -12339,7 +12339,7 @@ msgstr "Prikaži sve beleške"
 
 #: placelist.php:218
 msgid "Show all places in a list"
-msgstr ""
+msgstr "Prikaži sva mesta u listi"
 
 #: app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
@@ -12381,7 +12381,7 @@ msgstr "Prikaži parove koji su venčani unutar prethodnih 100 godina."
 
 #: app/Functions/FunctionsPrintLists.php:633
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "Prikaži parove sa nepoznatim datumom venčanja."
 
 #: ancestry.php:76
 msgid "Show cousins"
@@ -12459,7 +12459,7 @@ msgstr "Prikaži zanimanja"
 
 #: app/Module/UpcomingAnniversariesModule.php:168
 msgid "Show only births, deaths, and marriages"
-msgstr ""
+msgstr "Prikaži samo rođenja, smrti i brakove"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:138
@@ -12496,7 +12496,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr ""
+msgstr "Prikaži fotografije"
 
 #: placelist.php:76
 msgid "Show places in hierarchy"
@@ -12944,7 +12944,7 @@ msgstr ""
 #: resources/views/media-page.php:36 search.php:104 sourcelist.php:28
 #: sourcelist.php:32 statistics.php:367 statistics.php:403
 msgid "Sources"
-msgstr "Dokumenata"
+msgstr "Izvori"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -14818,7 +14818,7 @@ msgstr "Ukupno muškaraca"
 
 #: statistics.php:223
 msgid "Total marriages"
-msgstr ""
+msgstr "Ukupno brakova"
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
@@ -15123,7 +15123,7 @@ msgstr "Uruguaj"
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Koristi Google Maps™ za hijerarhiju mesta"
 
 #: admin_site_config.php:115 app/Functions/FunctionsEdit.php:256
 msgid "Use PHP mail to send messages"
@@ -15593,19 +15593,19 @@ msgstr "Udovica"
 #: modules_v3/relative_ext_report/report.xml:104
 #: resources/views/modals/create-family.php:27
 msgid "Wife"
-msgstr "Supruga"
+msgstr "Žena"
 
 #: app/Controller/TimelineController.php:229
 msgid "Wife’s age"
-msgstr ""
+msgstr "Ženine godine"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Ženino devojačko prezime postaje novo ime"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Ženino prezime zamenjeno muževim prezimenom"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:168
 msgid "Wildcards"
@@ -15640,7 +15640,7 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:85
 #: app/SurnameTradition.php:89
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Žene uzimaju prezimena svojih muževa."
 
 #: statistics.php:612
 msgid "World"
@@ -16166,7 +16166,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:741
 msgid "brother"
-msgstr ""
+msgstr "brat"
 
 #: app/Functions/Functions.php:1003
 msgctxt "brother’s wife’s brother"
@@ -16196,12 +16196,12 @@ msgstr ""
 #: app/Functions/Functions.php:907
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "badžo"
 
 #: app/Functions/Functions.php:925
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šurak"
 
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s sister’s husband"
@@ -16504,11 +16504,11 @@ msgstr ""
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "procenjeno %s"
 
 #: app/Functions/Functions.php:671
 msgid "ex-husband"
-msgstr ""
+msgstr "bivši muž"
 
 #: app/Functions/Functions.php:712
 msgid "ex-partner"
@@ -18431,12 +18431,12 @@ msgstr "polusestra"
 
 #: statistics.php:561
 msgid "half-year after marriage"
-msgstr ""
+msgstr "Pola godine nakon venčanja"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:274
 msgid "herself"
-msgstr ""
+msgstr "ona"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:812
@@ -18446,12 +18446,12 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:272
 msgid "himself"
-msgstr "osoba"
+msgstr "on"
 
 #: app/Functions/Functions.php:673 edit_interface.php:1473
 #: edit_interface.php:1512
 msgid "husband"
-msgstr ""
+msgstr "muž"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
@@ -18930,7 +18930,7 @@ msgstr ""
 
 #: statistics.php:558
 msgid "quarters after marriage"
-msgstr ""
+msgstr "kvartali posle braka"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
@@ -19019,7 +19019,7 @@ msgstr ""
 #: resources/views/admin/changes-log.php:91 search.php:166 search.php:369
 #: search_advanced.php:326
 msgid "search"
-msgstr ""
+msgstr "pretraži"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:610
@@ -19249,7 +19249,7 @@ msgstr "odjava"
 
 #: app/Functions/Functions.php:758
 msgid "sister"
-msgstr ""
+msgstr "sestra"
 
 #: app/Functions/Functions.php:785
 msgctxt "brother’s wife"
@@ -19371,7 +19371,7 @@ msgstr ""
 #. I18N: A button label.
 #: edit_interface.php:2058 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "sortiraj po datumu venčanja"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:154
@@ -19444,17 +19444,17 @@ msgstr ""
 #: app/Functions/Functions.php:831
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pastorka"
 
 #: app/Functions/Functions.php:911
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pastorka"
 
 #: app/Functions/Functions.php:929
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pastorka"
 
 #: app/Functions/Functions.php:851 app/Module/FamilyNavigatorModule.php:232
 msgctxt "mother’s husband"
@@ -19504,17 +19504,17 @@ msgstr "polusestra"
 #: app/Functions/Functions.php:841
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "pastorak"
 
 #: app/Functions/Functions.php:919
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "pastorak"
 
 #: app/Functions/Functions.php:939
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "pastorak"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:35 app/Module/OnThisDayModule.php:150
@@ -19796,7 +19796,7 @@ msgstr "zapad"
 #: app/Functions/Functions.php:691 edit_interface.php:1476
 #: edit_interface.php:1515
 msgid "wife"
-msgstr "supruga"
+msgstr "žena"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:90
