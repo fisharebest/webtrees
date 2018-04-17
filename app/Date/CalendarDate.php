@@ -946,11 +946,12 @@ class CalendarDate {
 			$view = 'year';
 		}
 
-		return
-			'calendar.php?cal=' . rawurlencode($this->calendar->gedcomCalendarEscape()) .
-			'&amp;year=' . $this->formatGedcomYear() .
-			'&amp;month=' . $this->formatGedcomMonth() .
-			'&amp;day=' . $this->formatGedcomDay() .
-			'&amp;view=' . $view;
+		return route('calendar', [
+			'cal'   => $this->calendar->gedcomCalendarEscape(),
+			'year'  => $this->formatGedcomYear(),
+			'month' => $this->formatGedcomMonth(),
+			'day'   => $this->formatGedcomDay(),
+			'view'  => $view,
+		]);
 	}
 }
