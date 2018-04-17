@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-16 03:17+0000\n"
+"PO-Revision-Date: 2018-04-17 16:40+0000\n"
 "Last-Translator: Pedja Micevic <mpedja@gmail.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/webtrees/sr/>\n"
 "Language: sr\n"
@@ -56,7 +56,7 @@ msgstr "број %s"
 #: admin_trees_check.php:222
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "\"%1$s %2$s садржи %3$s везу cа %4$s.\""
+msgstr "%1$s %2$s садржи %3$s везу cа %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2105
@@ -105,9 +105,9 @@ msgstr "%1$s нема повратну везу на %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Датотека %1$s је унета у %2$s секунди."
+msgstr[1] "Датотека %1$s је унета у %2$s секунди."
+msgstr[2] "Датотека %1$s је унета у %2$s секунди."
 
 #: app/Module/GoogleMapsModule.php:563
 #, php-format
@@ -6342,7 +6342,7 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:360
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr ""
+msgstr "За помоћ сa родословним питањима обратите се %s."
 
 #: app/Theme/AbstractTheme.php:371
 #, php-format
@@ -6350,9 +6350,9 @@ msgid "For technical support and information contact %s."
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:349
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Za tehničku podršku i pitanja u vezi rodoslova kontakt je %s"
+msgstr "За техничку подршку или родословна питања обратите се %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:280
@@ -6361,13 +6361,13 @@ msgstr ""
 
 #: login.php:209 resources/views/blocks/sign-in.php:27
 msgid "Forgot password?"
-msgstr ""
+msgstr "Заборавили сте лозинку?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:361 help_text.php:133 help_text.php:149 help_text.php:164
 #: help_text.php:175
 msgid "Format"
-msgstr "Oblika"
+msgstr "Формат"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1044
@@ -11334,14 +11334,12 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #: edit_changes.php:211 edit_changes.php:238
-#, fuzzy
 msgid "Reject"
-msgstr "Opozovi"
+msgstr "Опозови"
 
 #: edit_changes.php:193
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Opozovi sve promene"
+msgstr "Опозови све промене"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -12681,15 +12679,13 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1633 login.php:150
 #: resources/views/emails/password-reset-html.php:19
 #: resources/views/emails/password-reset-text.php:9
-#, fuzzy
 msgid "Sign in"
-msgstr "Prijava"
+msgstr "Пријавите се"
 
 #: app/Module/LoginBlockModule.php:48 app/Theme/AbstractTheme.php:1644
 #: resources/views/layouts/administration.php:48
-#, fuzzy
 msgid "Sign out"
-msgstr "Odjava"
+msgstr "Одјава"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:439
@@ -12707,12 +12703,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
 msgid "Singapore"
-msgstr "Singapur"
+msgstr "Сингапур"
 
 #: modules_v3/individual_ext_report/report.xml:355
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr "Sestra"
+msgstr "Сестра"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:559 admin_site_config.php:575
@@ -15383,18 +15379,16 @@ msgstr ""
 #: app/Stats.php:4570 app/Stats.php:4579
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:95
 #: resources/views/blocks/slide-show.php:37
-#, fuzzy
 msgid "View this family"
-msgstr "Pogledaj upis porodice"
+msgstr "Погледајте ову породицу"
 
 #: calendar.php:291
 msgid "View this month"
 msgstr ""
 
 #: resources/views/blocks/slide-show.php:45
-#, fuzzy
 msgid "View this source"
-msgstr "Pogledaj izvor"
+msgstr "Погледајте овај извор"
 
 #: calendar.php:295
 msgid "View this year"
@@ -16271,9 +16265,8 @@ msgstr ""
 #: resources/views/modals/create-family.php:39
 #: resources/views/modals/create-media-from-file.php:60
 #: resources/views/modals/footer-save-cancel.php:11
-#, fuzzy
 msgid "cancel"
-msgstr "Poništi"
+msgstr "Поништи"
 
 #: app/Stats.php:2916
 msgid "census added"
@@ -19244,9 +19237,8 @@ msgstr "prijava"
 
 #. I18N: A button label.
 #: resources/views/blocks/sign-out.php:9
-#, fuzzy
 msgid "sign out"
-msgstr "odjava"
+msgstr "Одјава"
 
 #: app/Functions/Functions.php:758
 msgid "sister"
@@ -19724,9 +19716,8 @@ msgstr ""
 #: resources/views/compact-chart-page.php:23
 #: resources/views/family-book-page.php:53
 #: resources/views/interactive-tree-page.php:25
-#, fuzzy
 msgid "view"
-msgstr "приказ"
+msgstr "поглед"
 
 #: resources/views/admin/tree-privacy.php:23
 #: resources/views/admin/tree-privacy.php:47
@@ -19779,7 +19770,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:131
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees шаље е-пошту без складишта"
 
 #: admin_trees_download.php:195
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
@@ -19787,25 +19778,25 @@ msgstr ""
 
 #: admin_trees_manage.php:745
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "webtrees база података мора бити на истом серверу као и PhpGedView’s"
 
 #: app/Module/GoogleMapsModule.php:3076
 msgid "west"
-msgstr ""
+msgstr "запад"
 
 #: app/Functions/Functions.php:691 edit_interface.php:1476
 #: edit_interface.php:1515
 msgid "wife"
-msgstr ""
+msgstr "жена"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:90
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:132
 msgid "years"
-msgstr "god"
+msgstr "године"
 
 #: admin_users.php:248 admin_users.php:249 app/Functions/FunctionsEdit.php:145
 #: app/Functions/FunctionsEdit.php:191 app/Functions/FunctionsPrint.php:358
@@ -19827,19 +19818,19 @@ msgstr "да"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.php:22
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "можете се повезати са базом података помоћу других апликација, као што је phpmyadmin"
 
 #: app/Functions/Functions.php:734
 msgid "younger brother"
-msgstr ""
+msgstr "млађи брат"
 
 #: app/Functions/Functions.php:768
 msgid "younger sibling"
-msgstr ""
+msgstr "млађи брат / сестра"
 
 #: app/Functions/Functions.php:751
 msgid "younger sister"
-msgstr ""
+msgstr "млађа сестра"
 
 #: search_advanced.php:104 search_advanced.php:108 search_advanced.php:112
 #: search_advanced.php:171 search_advanced.php:174 search_advanced.php:177
@@ -19859,13 +19850,13 @@ msgstr ""
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "„%s” је додан/a у вашe омиљенe."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:40
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "%s је избрисан."
 
 #: app/Functions/FunctionsPrint.php:102 app/Note.php:108
 msgid "…"
