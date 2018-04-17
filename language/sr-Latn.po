@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-16 21:21+0000\n"
+"PO-Revision-Date: 2018-04-17 14:01+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -210,7 +210,7 @@ msgstr "%s i njegovi preci"
 #: app/Module/ClippingsCartModule.php:293
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s i povezani pojedinci."
+msgstr "%s i povezane osobe."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:120
@@ -1904,7 +1904,7 @@ msgstr "Alternativni način za prikaz grafikona."
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:47
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "Alternativni način da unesete popise traskripata i povežete ih sa pojedincima."
+msgstr "Alternativni način da unesete popise traskripata i povežete ih sa osobama."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:33
@@ -5655,15 +5655,15 @@ msgstr ""
 #: search_advanced.php:150 search_advanced.php:227 search_advanced.php:250
 #: search_advanced.php:279 search_advanced.php:302
 msgid "Exact"
-msgstr ""
+msgstr "Tačno"
 
 #: search_advanced.php:100 search_advanced.php:168
 msgid "Exact date"
-msgstr ""
+msgstr "Tačan datum"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:166
 msgid "Exact text"
-msgstr ""
+msgstr "Tačan tekst"
 
 #: famlist.php:152 indilist.php:152
 #, php-format
@@ -5866,11 +5866,11 @@ msgstr "Falklandy"
 #: statistics.php:51 statisticsplot.php:922 statisticsplot.php:1018
 #: statisticsplot.php:1186
 msgid "Families"
-msgstr "Porodica"
+msgstr "Porodice"
 
 #: app/Stats.php:518 statistics.php:408
 msgid "Families with sources"
-msgstr ""
+msgstr "Porodice sa izvorima"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
@@ -6788,7 +6788,7 @@ msgstr "Grónsko"
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:208
 msgid "Gregorian"
-msgstr ""
+msgstr "Gregorijanski"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6713
@@ -7060,7 +7060,7 @@ msgstr "Važna slika"
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:197
 msgid "Hijri"
-msgstr ""
+msgstr "Hidžretski"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7459,7 +7459,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:231
 #: resources/views/blocks/family-tree-statistics.php:184
 msgid "Individual who lived the longest"
-msgstr "Osoba koja je živela najduže"
+msgstr "Osoba koja je najduže živela"
 
 #: admin_trees_duplicates.php:138 ancestry.php:75
 #: app/Controller/SearchController.php:514
@@ -7483,7 +7483,7 @@ msgstr "Osoba koja je živela najduže"
 #: statistics.php:46 statisticsplot.php:826 statisticsplot.php:872
 #: statisticsplot.php:1060 statisticsplot.php:1102 statisticsplot.php:1144
 msgid "Individuals"
-msgstr "Pojedinci"
+msgstr "Osobe"
 
 #: app/Stats.php:420 statistics.php:407
 msgid "Individuals with sources"
@@ -7492,7 +7492,7 @@ msgstr ""
 #: famlist.php:204 indilist.php:204
 #, php-format
 msgid "Individuals with surname %s"
-msgstr "Pojedinci koji se prezivaju %s"
+msgstr "Osobe koje se prezivaju %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6725
@@ -7632,7 +7632,7 @@ msgstr ""
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
 msgid "Jalali"
-msgstr ""
+msgstr "Dželali"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6735
@@ -7672,7 +7672,7 @@ msgstr "Japonska"
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:208 help_text.php:183
 msgid "Jewish"
-msgstr ""
+msgstr "Jevrejski"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:203
@@ -7997,7 +7997,7 @@ msgstr ""
 
 #: app/Stats.php:4852 statistics.php:330
 msgid "Largest families"
-msgstr ""
+msgstr "Najveće porodice"
 
 #: statistics.php:331
 msgid "Largest number of grandchildren"
@@ -8789,11 +8789,11 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:143
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr ""
+msgstr "Ponađi tačan tekst, čak i ako se nalazi u sedini reči."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:144
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr ""
+msgstr "Ponađi tačan tekst, osim ako se nalazi u sredini reči."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -10047,11 +10047,11 @@ msgstr "Broj dece"
 #: app/Module/UpcomingAnniversariesModule.php:149
 #: app/Module/YahrzeitModule.php:193
 msgid "Number of days to show"
-msgstr ""
+msgstr "Broj dana za prikaz"
 
 #: app/Stats.php:5206 statistics.php:319
 msgid "Number of families without children"
-msgstr ""
+msgstr "Broj porodica bez dece"
 
 #: app/Module/ClippingsCartModule.php:211
 #: app/Module/ClippingsCartModule.php:230
@@ -10307,7 +10307,7 @@ msgstr ""
 
 #: admin_trees_config.php:818
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "Prikazati druge činjenice na grafikonu"
 
 #: admin_media_upload.php:203
 msgid "Other folder… please type in"
@@ -10606,7 +10606,7 @@ msgstr ""
 
 #: search.php:302
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Fonetski algoritam"
 
 #: app/GedcomTag.php:429
 msgid "Phonetic name"
@@ -10735,7 +10735,7 @@ msgstr ""
 #: app/GedcomTag.php:180 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Mesto rođenja"
 
 #: app/GedcomTag.php:186
 msgid "Place of blessing"
@@ -10764,7 +10764,7 @@ msgstr ""
 #: app/GedcomTag.php:272 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr ""
+msgstr "Mesto smrti"
 
 #: app/GedcomTag.php:299
 msgid "Place of emigration"
@@ -11348,7 +11348,7 @@ msgstr "Opozovi sve promene"
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Povezane porodice"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
@@ -12321,7 +12321,7 @@ msgstr "Najkraći brak"
 
 #: calendar.php:216
 msgid "Show"
-msgstr ""
+msgstr "Prikaži"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:570
@@ -12331,7 +12331,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:495
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr ""
+msgstr "Prikaži sporazum o korišćenju na stranici „Zatraži novi korisnički nalog”"
 
 #: app/Module/NotesTabModule.php:70
 msgid "Show all notes"
@@ -12343,16 +12343,16 @@ msgstr "Prikaži sva mesta u listi"
 
 #: app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
-msgstr "Vidi sve izvore"
+msgstr "Prikaži sve izvore"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:406
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Prikaži pokazivač starosti"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr ""
+msgstr "Prikaži decu predaka"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:170
@@ -12361,19 +12361,19 @@ msgstr "Postaviti brojeve ispred ili iza imena"
 
 #: app/Functions/FunctionsPrintLists.php:665
 msgid "Show couples where either partner married more than once."
-msgstr ""
+msgstr "Prikaži parove gde je bilo koji partner venčan više puta."
 
 #: app/Functions/FunctionsPrintLists.php:589
 msgid "Show couples where only the female partner is dead."
-msgstr ""
+msgstr "Prikaži parove gde je samo ženski partner umro."
 
 #: app/Functions/FunctionsPrintLists.php:597
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "Prikaži parove gde je samo muški partner umro."
 
 #: app/Functions/FunctionsPrintLists.php:641
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "Prikaži parove koji su venčani pre više od 100 godina."
 
 #: app/Functions/FunctionsPrintLists.php:649
 msgid "Show couples who married within the last 100 years."
@@ -12385,7 +12385,7 @@ msgstr "Prikaži parove sa nepoznatim datumom venčanja."
 
 #: ancestry.php:76
 msgid "Show cousins"
-msgstr ""
+msgstr "Prikaži rođake"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:217
@@ -12395,56 +12395,56 @@ msgstr "Prikaži datum poslednje izmene"
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:44
 msgid "Show dead individuals"
-msgstr ""
+msgstr "Prikaži mrtve osobe"
 
 #: app/Functions/FunctionsPrintLists.php:657
 msgid "Show divorced couples."
-msgstr ""
+msgstr "Prikaži razvedene parove."
 
 #: app/Module/GoogleMapsModule.php:3269
 msgid "Show inactive places"
-msgstr ""
+msgstr "Prikaži neaktivna mesta"
 
 #: app/Functions/FunctionsPrintLists.php:226
 msgid "Show individuals born more than 100 years ago."
-msgstr ""
+msgstr "Prikaži osobe rođene pre više od 100 godina."
 
 #: app/Functions/FunctionsPrintLists.php:234
 msgid "Show individuals born within the last 100 years."
-msgstr ""
+msgstr "Prikaži osobe rođene unutar prethodnih 100 godina."
 
 #: app/Functions/FunctionsPrintLists.php:192
 #: app/Functions/FunctionsPrintLists.php:581
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr ""
+msgstr "Prikaži osobe koje su žive ili parove gde su oba partnera živa."
 
 #: app/Functions/FunctionsPrintLists.php:200
 #: app/Functions/FunctionsPrintLists.php:605
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr ""
+msgstr "Prikaži osobe koje su umrle ili parove gde su oba partnera umrla."
 
 #: app/Functions/FunctionsPrintLists.php:208
 msgid "Show individuals who died more than 100 years ago."
-msgstr ""
+msgstr "Prikaži osobe koje su umrle pre više od 100 godina."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
-msgstr "Prikaži osobe koje su umrle unutar prošlih 100 godina."
+msgstr "Prikaži osobe koje su umrle unutar prethodnih 100 godina."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:275
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Prikaži listu porodičnih stabala"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:85
 msgid "Show living individuals"
-msgstr ""
+msgstr "Prikaži žive osobe"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:126
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Prikaži imena zaštićenih osoba"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12465,11 +12465,11 @@ msgstr "Prikaži samo rođenja, smrti i brakove"
 #: app/Module/OnThisDayModule.php:138
 #: app/Module/UpcomingAnniversariesModule.php:159
 msgid "Show only events of living individuals"
-msgstr ""
+msgstr "Prikaži događaje samo za žive osobe"
 
 #: app/Functions/FunctionsPrintLists.php:174
 msgid "Show only females."
-msgstr "Pokaži samo osobe ženskog pola."
+msgstr "Prikaži samo žene."
 
 #: app/Functions/FunctionsPrintLists.php:182
 msgid "Show only individuals for whom the gender is not known."
@@ -12481,16 +12481,16 @@ msgstr "Prikaži samo osobe, događaje ili sve"
 
 #: app/Functions/FunctionsPrintLists.php:166
 msgid "Show only males."
-msgstr "Pokaži samo osobe muškog pola."
+msgstr "Prikaži samo muškarce."
 
 #: app/Functions/FunctionsPrintLists.php:285
 #: app/Functions/FunctionsPrintLists.php:696
 msgid "Show parents"
-msgstr "Pokaži roditelje"
+msgstr "Prikaži roditelje"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Prikaži promene na čekanju"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -12500,7 +12500,7 @@ msgstr "Prikaži fotografije"
 
 #: placelist.php:76
 msgid "Show places in hierarchy"
-msgstr ""
+msgstr "Prikaži mesta hijerarhijski"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:146
@@ -12513,19 +12513,19 @@ msgstr "Prikaži povezane osobe/porodice"
 
 #: app/Module/ResearchTaskModule.php:162
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Prikaži zadatke za istraživanje koji su dodeljeni drugim korisnicima"
 
 #: app/Module/ResearchTaskModule.php:168
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Prikaži zadatke za istraživanje koji nisu dodeljeni ni jednom korisniku"
 
 #: app/Module/ResearchTaskModule.php:174
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Prikaži zadatke za istraživanje koji imaju datum u budućnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "Prikaži prebivališta"
 
 #: app/Module/SlideShowModule.php:240
 msgid "Show slide show controls"
@@ -12537,11 +12537,11 @@ msgstr "Prikaži kontrole automatskog puštanja slika"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr ""
+msgstr "Prikaži izvore"
 
 #: hourglass.php:81 resources/views/family-book-page.php:45
 msgid "Show spouses"
-msgstr "Pokaži supruge"
+msgstr "Prikaži supružnike"
 
 #: app/Functions/FunctionsPrintLists.php:288
 #: app/Functions/FunctionsPrintLists.php:699
@@ -12556,20 +12556,20 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:311
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Prikaži datum i vreme ažuriranja"
 
 #: admin_trees_config.php:850
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "Prikaži događaje uže rodbine na stranici pojedinca"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:20
 msgid "Show the family tree"
-msgstr ""
+msgstr "Prikaži porodično stablo"
 
 #: famlist.php:159 indilist.php:159
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Prikaži listu osoba"
 
 #: famlist.php:161 indilist.php:161
 msgid "Show the list of surnames"
@@ -12578,7 +12578,7 @@ msgstr "Prikaži listu prezimena"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:88
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr ""
+msgstr "Prikazuje lokaciju mesta i događaja koristeći Google Maps™ servis."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:159
@@ -12604,7 +12604,7 @@ msgstr ""
 #: app/Http/Controllers/AdminController.php:1960
 #: resources/views/modals/restriction-fields.php:17
 msgid "Show to managers"
-msgstr ""
+msgstr "Prikaži administratorima"
 
 #: admin_trees_config.php:59 admin_trees_config.php:559
 #: app/Functions/FunctionsEdit.php:93 app/Functions/FunctionsEdit.php:237
@@ -12617,7 +12617,7 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:93
 #: resources/views/modals/restriction-fields.php:14
 msgid "Show to members"
-msgstr ""
+msgstr "Prikaži članovima"
 
 #: admin_trees_config.php:58 app/Functions/FunctionsEdit.php:92
 #: app/Functions/FunctionsEdit.php:236
@@ -12631,12 +12631,12 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:154
 #: resources/views/modals/restriction-fields.php:11
 msgid "Show to visitors"
-msgstr ""
+msgstr "Prikaži posetiocima"
 
 #: app/Functions/FunctionsPrintLists.php:252
 #: app/Functions/FunctionsPrintLists.php:623
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "Prikaži osobe ili parove koji su živi ali nemaju zabeleženu decu u bazi podataka."
 
 #: app/Functions/FunctionsPrintLists.php:244
 #: app/Functions/FunctionsPrintLists.php:615
@@ -12884,7 +12884,7 @@ msgstr ""
 #: search_advanced.php:158 search_advanced.php:236 search_advanced.php:259
 #: search_advanced.php:288 search_advanced.php:311
 msgid "Sounds like"
-msgstr ""
+msgstr "Zvuči kao"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -14776,12 +14776,12 @@ msgstr "Ukupno događaja"
 #: modules_v3/fact_sources/report.xml:354
 #: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
-msgstr ""
+msgstr "Ukupno porodica"
 
 #: calendar.php:435 statistics.php:219
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Ukupno porodica: %s"
 
 #: statistics.php:90
 msgid "Total females"
@@ -14801,12 +14801,12 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:94
 #: modules_v3/relative_ext_report/report.xml:140
 msgid "Total individuals"
-msgstr ""
+msgstr "Ukupno osoba"
 
 #: app/Module/CensusAssistantModule.php:261 calendar.php:427 statistics.php:84
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Ukupno osoba: %s"
 
 #: statistics.php:91
 msgid "Total living"
@@ -14831,7 +14831,7 @@ msgstr "Ukupno prezimena"
 
 #: app/Module/FamilyTreeStatisticsModule.php:235
 msgid "Total users"
-msgstr "Broj reg. korisnika"
+msgstr "Ukupno korisnika"
 
 #. I18N: e.g. http://www.google.com/analytics
 #: admin_site_config.php:148 resources/views/admin/control-panel.php:70
@@ -15373,7 +15373,7 @@ msgstr "Prikaži sve zapise pronađene na ovom mestu"
 
 #: calendar.php:287
 msgid "View this day"
-msgstr ""
+msgstr "Prikaži današnji dan"
 
 #: app/Controller/AncestryController.php:82
 #: app/Controller/DescendancyController.php:165
@@ -15388,7 +15388,7 @@ msgstr "Pogledaj ovu porodicu"
 
 #: calendar.php:291
 msgid "View this month"
-msgstr ""
+msgstr "Prikaži ovaj mesec"
 
 #: resources/views/blocks/slide-show.php:45
 #, fuzzy
@@ -15397,7 +15397,7 @@ msgstr "Pogledaj izvor"
 
 #: calendar.php:295
 msgid "View this year"
-msgstr ""
+msgstr "Prikaži ovu godinu"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15465,7 +15465,7 @@ msgstr ""
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:623
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vodeni žigovi su opcionalni i uobičajeno se prikazuju samo posetiocima."
 
 #: login.php:369
 #, php-format
@@ -19226,11 +19226,11 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:459
 #: app/Module/StoriesModule.php:354
 msgid "show"
-msgstr ""
+msgstr "prikaži"
 
 #: statistics.php:697
 msgid "show the chart"
-msgstr ""
+msgstr "prikaži grafikon"
 
 #: app/Functions/Functions.php:775
 msgid "sibling"
