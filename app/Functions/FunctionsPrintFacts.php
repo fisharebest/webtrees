@@ -1135,20 +1135,6 @@ class FunctionsPrintFacts {
 					echo '</a>';
 					echo '</span>';
 
-					// @TODO - now that we have multiple images/object, what do we show here?
-					//echo GedcomTag::getLabelValue('FORM', $media->mimeType());
-					//$imgsize = $media->getImageAttributes();
-					//if (!empty($imgsize['WxH'])) {
-					//	echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
-					//}
-					//if ($media->getFilesizeraw() > 0) {
-					//	echo GedcomTag::getLabelValue('__FILE_SIZE__', $media->getFilesize());
-					//}
-					//$mediatype = $media->getMediaType();
-					//if ($mediatype) {
-					//	echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-					//}
-
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
 					echo self::printFactSources($media->getGedcom(), 1);
 				} else {
