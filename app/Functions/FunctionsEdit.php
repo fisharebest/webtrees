@@ -724,7 +724,7 @@ class FunctionsEdit {
 			}
 		} elseif ($fact === 'DATE') {
 			$html .= '<div class="input-group">';
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this)">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this)" dir="ltr">';
 			$html .= self::inputAddonCalendar($id);
 			$html .= self::inputAddonHelp('DATE');
 			$html .= '</div>';
