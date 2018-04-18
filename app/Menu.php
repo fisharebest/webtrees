@@ -34,12 +34,6 @@ class Menu {
 	/** @var Menu[] An optional list of sub-menus. */
 	private $submenus;
 
-	/** @var string Used to format javascript menus */
-	private $submenuclass;
-
-	/** @var string Used to format javascript menus */
-	private $menuclass;
-
 	/**
 	 * Constructor for the menu class
 	 *
@@ -119,17 +113,6 @@ class Menu {
 		$this->attrs = $attrs;
 
 		return $this;
-	}
-
-	/**
-	 * Set the CSS classes for the (legacy) javascript menus
-	 *
-	 * @param string $menuclass
-	 * @param string $submenuclass
-	 */
-	public function addClass($menuclass, $submenuclass = '') {
-		$this->menuclass    = $menuclass;
-		$this->submenuclass = $submenuclass;
 	}
 
 	/**
