@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-17 16:40+0000\n"
+"PO-Revision-Date: 2018-04-18 15:27+0000\n"
 "Last-Translator: Pedja Micevic <mpedja@gmail.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/webtrees/sr/>\n"
 "Language: sr\n"
@@ -105,132 +105,132 @@ msgstr "%1$s нема повратну везу на %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Датотека %1$s је унета у %2$s секунди."
-msgstr[1] "Датотека %1$s је унета у %2$s секунди."
-msgstr[2] "Датотека %1$s је унета у %2$s секунди."
+msgstr[0] "%1$s датотека је унета у %2$s секунди."
+msgstr[1] "%1$s датотекe cy унетe у %2$s секунди."
+msgstr[2] "%1$s датотека је унетo у %2$s секунди."
 
 #: app/Module/GoogleMapsModule.php:563
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s појединац приказан, од нормалног укупног %2$s, од %3$s генерација."
+msgstr[1] "%1$s појединац приказан, од нормалног укупног %2$s, од %3$s генерација."
+msgstr[2] "%1$s појединац приказан, од нормалног укупног %2$s, од %3$s генерација."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:577
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s појединцу недостају координате места рођења: %2$s."
+msgstr[1] "%1$s појединца недостају координате места рођења: %2$s."
+msgstr[2] "%1$s појединаца недостају координате места рођења: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:186
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s je %2$s a %3$s je očekivano."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:618
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:603
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:588
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/MediaFile.php:223 app/MediaFile.php:321
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s пиксела"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:523 statisticsplot.php:746
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:731
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:163
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j. %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6889
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s п.н.е"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Http/Controllers/EditMediaController.php:371
 #: app/MediaFile.php:284
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s КБ"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s и њезини преци"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:206
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s и његови преци"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:293
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s и повезани појединци."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:120
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s и њихова дјеца"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:127
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s и њихови потомци"
 
 #: app/Module/LoggedInUsersModule.php:69 app/Stats.php:5874
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s анонимни пријављени корисник"
+msgstr[1] "%s анонимних пријављених корисника"
+msgstr[2] "%s анонимних пријављених корисника"
 
 #: app/Functions/FunctionsCharts.php:284 app/Stats.php:4453 app/Stats.php:4455
 #: resources/views/blocks/family-tree-statistics.php:213
@@ -19792,7 +19792,7 @@ msgstr "жена"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:90
 msgid "xenea"
-msgstr "xenea"
+msgstr "Kenea"
 
 #: timeline.php:132
 msgid "years"
@@ -19837,14 +19837,14 @@ msgstr "млађа сестра"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "±%s година"
+msgstr[1] "±%s годинe"
+msgstr[2] "±%s година"
 
 #: app/Individual.php:1186
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "„%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
@@ -19860,7 +19860,7 @@ msgstr "%s је избрисан."
 
 #: app/Functions/FunctionsPrint.php:102 app/Note.php:108
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:542 app/Family.php:342
 #: app/Family.php:360 app/Individual.php:1181 app/Individual.php:1272
@@ -19868,7 +19868,7 @@ msgstr ""
 #: famlist.php:85 indilist.php:85
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:560 app/Family.php:342
 #: app/Family.php:360 app/Individual.php:1180 app/Individual.php:1272
@@ -19878,7 +19878,7 @@ msgstr ""
 #: indilist.php:74 indilist.php:96
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
