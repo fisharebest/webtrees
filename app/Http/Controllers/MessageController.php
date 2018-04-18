@@ -450,7 +450,7 @@ class MessageController extends AbstractBaseController {
 	 *
 	 * @return User[]
 	 */
-	function recipientUsers(string $to): array {
+	private function recipientUsers(string $to): array {
 		switch ($to) {
 			default:
 			case 'all':
