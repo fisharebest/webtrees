@@ -30,13 +30,13 @@
 
 	<div class="row form-group">
 		<div class="col-sm-12 col-form-label wt-page-options-label">
-			<?= I18N::translate('Select individuals by place or date ') ?>
+			<?= I18N::translate('Select individuals by place or date') ?>
 		</div>
 	</div>
 
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="placename">
-			<?= I18N::translate('Place ') ?>
+			<?= I18N::translate('Place') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" id="placename" name="placename" type="text">
@@ -45,7 +45,7 @@
 
 	<div class="row form-group">
 		<div class="col-sm-3 col-form-label wt-page-options-label" for="start">
-			<?= I18N::translate('Start year ') ?>
+			<?= I18N::translate('Start year') ?>
 		</div>
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" id="start" name="start" type="text">
@@ -54,7 +54,7 @@
 
 	<div class="row form-group">
 		<div class="col-sm-3 col-form-label wt-page-options-label" for="end-year">
-			<?= I18N::translate('End year ') ?>
+			<?= I18N::translate('End year') ?>
 		</div>
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" id="end" name="end" type="text">
