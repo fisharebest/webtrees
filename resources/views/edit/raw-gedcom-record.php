@@ -17,11 +17,11 @@
 	</p>
 
 	<div class="card">
-		<div class="card-header">
+		<label class="card-header py-1 px-2" for="fact0">
 			<?= $record->getFullName() ?>
-		</div>
-		<div class="card-body form-control text-muted py-1 px-2">
-			0 @<?= e($record->getXref()) ?>@ <?= e($record::RECORD_TYPE) ?>
+		</label>
+		<div class="card-body form-control py-1 px-2">
+			<textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact0" rows="1">0 @<?= e($record->getXref()) ?>@ <?= e($record::RECORD_TYPE) ?></textarea>
 		</div>
 	</div>
 
