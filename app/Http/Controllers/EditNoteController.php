@@ -57,7 +57,7 @@ class EditNoteController extends AbstractBaseController {
 		$edit_restriction    = $request->get('edit-restriction', '');
 
 		// Convert line endings to GEDDCOM continuations
-		$note = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $note);
+		$note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);
 
 		$gedcom = '0 @XREF@ NOTE ' . $note;
 
