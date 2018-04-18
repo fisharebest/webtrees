@@ -302,6 +302,77 @@ case 'update':
 	header('Location: ' . $record->url());
 	break;
 
+case 'editnote':
+	//////////////////////////////////////////////////////////////////////////////
+	// Edit a note record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref = Filter::get('xref', WT_REGEX_XREF);
+	$note = Note::getInstance($xref, $controller->tree());
+	check_record_access($note);
+	$controller
+		->setPageTitle(I18N::translate('Edit the shared note'))
+		->pageHeader();
+	?>
+	<h2><?= $controller->getPageTitle() ?></h2>
+
+	<form method="post">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+		<input type="hidden" name="action" value="editnoteaction">
+		<input type="hidden" name="xref" value="<?= $xref ?>">
+		<?= Filter::getCsrf() ?>
+		<table class="table wt-facts-table">
+			<tr>
+				<th scope="row"><?= I18N::translate('Shared note') ?></th>
+				<td>
+					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= e($note->getNote()) ?></textarea>
+					<br>
+					<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
+				</td>
+			</tr>
+		</table>
+		<?= keep_chan($note) ?>
+		<div class="row form-group">
+			<div class="col-sm-9 offset-sm-3">
+				<button class="btn btn-primary" type="submit">
+					<?= FontAwesome::decorativeIcon('save') ?>
+					<?= /* I18N: A button label. */
+					I18N::translate('save') ?>
+				</button>
+				<a class="btn btn-secondary" href="<?= e($note->url()) ?>">
+					<?= FontAwesome::decorativeIcon('cancel') ?>
+					<?= /* I18N: A button label. */
+					I18N::translate('cancel') ?>
+				</a>
+			</div>
+		</div>
+	</form>
+	<?php
+	break;
+
+case 'editnoteaction':
+	//////////////////////////////////////////////////////////////////////////////
+	// Edit a note record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref      = Filter::post('xref', WT_REGEX_XREF);
+	$keep_chan = Filter::postBool('keep_chan');
+	$note      = Filter::post('NOTE');
+	if (!Filter::checkCsrf()) {
+		header('Location: edit_interface.php?action=editnote&xref=' . $xref);
+		break;
+	}
+	$record = Note::getInstance($xref, $controller->tree());
+	check_record_access($record);
+	// We have user-supplied data in a replacement string - escape it against backreferences
+	$note = str_replace(['\\', '$'], ['\\\\', '\\$'], $note);
+	$gedrec = preg_replace(
+		'/^0 @' . $record->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
+		'0 @' . $record->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $note),
+		$record->getGedcom()
+	);
+	$record->updateRecord($gedrec, !$keep_chan);
+	header('Location: ' . $record->url());
+	break;
+
 case 'add_child_to_family':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a child to an existing family
