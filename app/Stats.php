@@ -5322,7 +5322,7 @@ class Stats {
 			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
 
-		return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
+		return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'individual-list', $this->tree);
 	}
 
 	/**

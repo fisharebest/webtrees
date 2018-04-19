@@ -151,7 +151,7 @@
 						</td>
 						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($individuals[$tree->getTreeId()]): ?>
-								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('individual-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
@@ -160,7 +160,7 @@
 						</td>
 						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($families[$tree->getTreeId()]): ?>
-								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('family-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($families[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>

@@ -85,7 +85,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			}
 			ksort($all_surnames);
 
-			$surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, 'indilist.php', $WT_TREE);
+			$surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, 'individual-list', $WT_TREE);
 		} else {
 			$surnames = '';
 		}
