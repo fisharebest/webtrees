@@ -265,7 +265,7 @@ class HourglassChartController extends AbstractChartController {
 					'data-route'   => 'hourglass-add-desc',
 					'data-xref'    => $pid,
 					'data-spouses' => $show_spouse,
-					'data_tree'    => $individual->getTree()->getName(),
+					'data-tree'    => $individual->getTree()->getName(),
 				]);
 
 				//-- move the arrow up to line up with the correct box
@@ -397,7 +397,7 @@ class HourglassChartController extends AbstractChartController {
 						'data-route'   => 'hourglass-add-asc',
 						'data-xref'    => $ARID,
 						'data-spouses' => (int) $show_spouse,
-						'data_tree'    => $family->getHusband()->getTree()->getName(),
+						'data-tree'    => $family->getHusband()->getTree()->getName(),
 					]);
 				}
 
@@ -434,7 +434,7 @@ class HourglassChartController extends AbstractChartController {
 						'data-route'   => 'hourglass-add-asc',
 						'data-xref'    => $ARID,
 						'data-spouses' => (int) $show_spouse,
-						'data_tree'    => $family->getWife()->getTree()->getName(),
+						'data-tree'    => $family->getWife()->getTree()->getName(),
 					]);
 				}
 
