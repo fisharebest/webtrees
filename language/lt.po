@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2017-01-24 10:53+0000\n"
+"PO-Revision-Date: 2018-04-22 15:55+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/lt/>\n"
 "Language: lt\n"
@@ -529,7 +529,7 @@ msgstr "%s&nbsp;CE"
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
@@ -760,7 +760,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Diagrama rodanti giminystės ryšius tarp dviejų asmenų."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
@@ -1134,7 +1134,7 @@ msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "API raktas"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1502,7 +1502,7 @@ msgstr "Įdėti į iškarpų krepšelį"
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Pridėti unikalus identifikatorius"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
@@ -2081,7 +2081,7 @@ msgstr "Antigva ir Barbuda"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Kiekvienas, turintis naudotojo paskyrą, gali pasiekti šią svetainę."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -3035,7 +3035,7 @@ msgstr "Pamergė"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Juta, Jungtinės Valstijos"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3337,7 +3337,7 @@ msgstr "Kalendoriaus perskaičiavimas"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Kalgaris, Alberta, Kanada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3426,7 +3426,7 @@ msgstr "Kaimanų salos"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu miestas, Filipinai"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3509,7 +3509,7 @@ msgstr "Pakeisti „Mano puslapis“ blokus"
 #: app/Module/RecentChangesModule.php:261
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Pakeistas %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:258
@@ -3548,7 +3548,7 @@ msgstr "Diagrama"
 
 #: app/Module/RelationshipsChartModule.php:159
 msgid "Chart preferences"
-msgstr ""
+msgstr "Diagramos parinktys"
 
 #: app/Module/ChartsBlockModule.php:198 statistics.php:505 statistics.php:651
 msgid "Chart type"
@@ -4023,7 +4023,7 @@ msgstr "Kuko salos"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "Slaptukai"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
@@ -4062,7 +4062,7 @@ msgstr "Autorinės teisės"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Kordoba, Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -4305,7 +4305,7 @@ msgstr "Kuba"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "Kuritiba, Brazilija"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -5052,7 +5052,7 @@ msgstr "Ištrinti savo sąskaitą"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Ištrinant šeimą bus nutraukti visi asmeniniai tarpusavio ryšių įrašai, bet asmeniniai įrašai išliks. Ar Jūs tikrai norite ištrinti įrašus apie šią šeimą?"
+msgstr "Ištrinant šeimą bus nutraukti visi asmeniniai giminystės ryšių įrašai, bet asmeniniai įrašai išliks. Ar Jūs tikrai norite ištrinti įrašus apie šią šeimą?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -5352,7 +5352,7 @@ msgstr "Parsisiųsti geografinius duomenis"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Draper, Juta, Jungtinės Valstijos"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
@@ -6356,7 +6356,7 @@ msgstr "Rasti asmenį"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Rasti bet kokį giminystės ryšį"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6382,7 +6382,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
 msgid "Finland"
-msgstr "Finlandia"
+msgstr "Suomija"
 
 #. I18N: gedcom tag FCOM
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:21
@@ -6498,7 +6498,7 @@ msgstr "Svetainėse su daugiau negu vienu šeimos medžiu ši parinktis parodys 
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr ""
+msgstr "Pamiršote slaptažodį?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -11483,13 +11483,13 @@ msgstr "Šeimyniniai ryšiai: %s"
 #: app/Module/RelationshipsChartModule.php:90
 #: app/Module/RelationshipsChartModule.php:179 relationship.php:59
 msgid "Relationships"
-msgstr "Tarpusavio ryšiai"
+msgstr "Giminystės ryšiai"
 
 #. I18N: %s are individual’s names
 #: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Tarpusavio ryšiai tarp %1$s ir %2$s"
+msgstr "Giminystės ryšiai tarp %1$s ir %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -13823,9 +13823,8 @@ msgstr "Modulis „%s“ yra įjungtas."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
-#, fuzzy
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Tai yra trumpas sąrašas GEDCOM šeimos faktų, kurie, atrodo yra šalia pilno sąrašo ir gali būti pridėti vienu paspaudimu."
+msgstr "Dažniausiai naudojami šeimos faktai, kurie bus rodomi šalia pilno sąrašo ir gali būti pridėti vienu paspaudimu."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
@@ -13839,9 +13838,8 @@ msgstr ""
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
-#, fuzzy
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Tai yra trumpas GEDCOM šaltinio faktų sąrašas, kuris parodomas šalia pilno sąrašo ir gali būti greitai pridėtas vienu paspaudimu."
+msgstr "Dažniausiai naudojamų šaltinio faktų sąrašas, kurie bus rodomi šalia pilno sąrašo ir gali būti greitai pridėti vienu paspaudimu."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -13858,7 +13856,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr "Slaptažodis turi būti bent iš šešių simbolių."
+msgstr "Slaptažodis turi būti bent šešių simbolių ilgumo."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
