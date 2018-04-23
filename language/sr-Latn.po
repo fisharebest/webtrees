@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-20 14:42+0000\n"
+"PO-Revision-Date: 2018-04-23 13:57+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -6711,7 +6711,7 @@ msgstr "Ime"
 #: app/Functions/FunctionsPrintLists.php:677 app/GedcomTag.php:365
 #: search_advanced.php:221 search_advanced.php:273
 msgid "Given names"
-msgstr "Imena"
+msgstr "Ime"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7175,7 +7175,7 @@ msgstr ""
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:373
 msgid "Identification number"
-msgstr "Identifikacioni broj"
+msgstr "Identifikacioni broj (JMBG)"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -9506,7 +9506,7 @@ msgstr "Sufiks imena"
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10 search.php:224 statistics.php:196
 msgid "Names"
-msgstr "Imena"
+msgstr "Ime"
 
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1297
@@ -11249,7 +11249,7 @@ msgstr ""
 #: resources/views/emails/register-notify-html.php:13
 #: resources/views/emails/register-notify-text.php:7
 msgid "Real name"
-msgstr ""
+msgstr "Pravo ime"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:47 modules_v3/change_report/report.xml:92
@@ -11998,7 +11998,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:319
 msgid "Sender name"
-msgstr ""
+msgstr "Ime pošiljaoca"
 
 #: admin_site_config.php:142 resources/views/admin/control-panel.php:52
 msgid "Sending email"
@@ -12007,7 +12007,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:414
 msgid "Sending server name"
-msgstr ""
+msgstr "Ime servera pošiljaoca"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
@@ -12082,7 +12082,7 @@ msgstr ""
 #: admin_site_config.php:334
 #: resources/views/setup/step-3-database-connection.php:33
 msgid "Server name"
-msgstr ""
+msgstr "Ime servera"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:289
@@ -12813,7 +12813,7 @@ msgstr ""
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:542
 msgid "Social security number"
-msgstr "Identifikacioni broj"
+msgstr "Broj socijalnog osiguranja (SSN)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
@@ -13185,11 +13185,11 @@ msgstr ""
 
 #: admin_trees_config.php:633
 msgid "Surname list style"
-msgstr ""
+msgstr "Stil liste prezimena"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
-msgstr ""
+msgstr "Opcije prezimena"
 
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:540
@@ -13198,7 +13198,7 @@ msgstr "Prefiks prezimena"
 
 #: admin_trees_config.php:1331
 msgid "Surname tradition"
-msgstr ""
+msgstr "Tradicija prezimena"
 
 #: app/Module/FamilyTreeStatisticsModule.php:252
 #: resources/views/blocks/family-tree-statistics.php:52
@@ -13208,12 +13208,12 @@ msgstr ""
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:90
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Prezimena ukazuju na pol i bračno stanje pojedinca."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:86
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Prezimena ukazuju na pol pojedinca."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
@@ -13421,7 +13421,7 @@ msgstr ""
 
 #: login.php:552
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr ""
+msgstr "Administrator je obavešten. Čim vam da odobrenje, moći ćete da se prijavite sa vašim korisničkim imenom i lozinkom."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:43
@@ -13494,7 +13494,7 @@ msgstr ""
 #: admin_media_upload.php:118
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "Datoteka %s već postoji. Koristite drugo ime za datoteku."
 
 #: admin_site_upgrade.php:235 admin_site_upgrade.php:338
 #: admin_trees_export.php:41
@@ -15851,7 +15851,7 @@ msgstr ""
 #: resources/views/emails/register-notify-html.php:26
 #: resources/views/emails/register-notify-text.php:13
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr ""
+msgstr "Bićete obavešteni e-mailom kada ovaj potencijalni korisnik potvrdi zahtev. Nakon toga ovaj proces možete završiti aktiviranjem korisnika. Novi korisnik se neće moći prijaviti dok ne aktivirate njegov nalog."
 
 #: resources/views/setup/step-5-administrator.php:44
 msgid "You will use this to sign in to webtrees."
@@ -15880,7 +15880,7 @@ msgstr ""
 
 #: message.php:132 resources/views/setup/step-5-administrator.php:27
 msgid "Your name"
-msgstr ""
+msgstr "Vaše ime"
 
 #. I18N: %s is a server name/URL
 #: login.php:335
@@ -16139,19 +16139,19 @@ msgstr "rođenje"
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/tree-privacy.php:111
@@ -16280,19 +16280,19 @@ msgstr ""
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr ""
+msgstr "promena imena"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "promenila ime"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "promenio ime"
 
 #: app/Functions/Functions.php:724 edit_interface.php:1559
 #: edit_interface.php:1581
@@ -18539,7 +18539,7 @@ msgstr ""
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "devojačko prezime"
 
 #: resources/views/admin/tree-privacy.php:131
 msgid "managers"
@@ -18567,19 +18567,19 @@ msgstr ""
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr ""
+msgstr "venčano prezime"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "venčano prezime"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "venčano prezime"
 
 #: app/Functions/Functions.php:849
 msgctxt "mother’s father"
@@ -18955,19 +18955,19 @@ msgstr ""
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "versko ime"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "versko ime"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "versko ime"
 
 #. I18N: A button label.
 #: search.php:244
