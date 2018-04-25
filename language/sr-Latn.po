@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-04-24 14:06+0000\n"
+"PO-Revision-Date: 2018-04-25 10:41+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -11608,7 +11608,7 @@ msgstr "Pronađena skladišta"
 #: admin_trees_config.php:792 admin_trees_manage.php:567 app/GedcomTag.php:728
 #: inverselink.php:130
 msgid "Repository"
-msgstr "Skladišče"
+msgstr "Skladište"
 
 #. I18N: Label for search field
 #: find.php:220
