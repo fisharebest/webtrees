@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-24 14:06+0000\n"
+"PO-Revision-Date: 2018-04-25 10:41+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -11526,7 +11526,7 @@ msgstr "Skladišta"
 #: resources/views/admin/tree-privacy.php:172
 #: resources/views/modals/source-fields.php:36
 msgid "Repository"
-msgstr "Skladišče"
+msgstr "Skladište"
 
 #: app/Functions/FunctionsPrintLists.php:1112
 msgid "Repository name"
