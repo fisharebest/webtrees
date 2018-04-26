@@ -553,9 +553,8 @@ abstract class AbstractTheme {
 		if ($this->tree) {
 			return
 				'<div class="col wt-header-search">' .
-				'<form class="wt-header-search-form" role="search" action="search.php">' .
+				'<form class="wt-header-search-form" role="search" action="' . e(route('search-quick', ['ged' => $this->tree->getName()])) . '">' .
 				'<input type="hidden" name="action" value="header">' .
-				'<input type="hidden" name="ged" value="' . e($this->tree->getName()) . '">' .
 				$this->formQuickSearchFields() .
 				'</form>' .
 				'</div>';
@@ -1792,7 +1791,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchGeneral() {
-		return new Menu(I18N::translate('General search'), e(Html::url('search.php', ['ged' => $this->tree->getName()])), 'menu-search-general', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('General search'), e(route('search-general', ['ged' => $this->tree->getName()])), 'menu-search-general', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1801,7 +1800,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchPhonetic() {
-		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), e(Html::url('search.php', ['ged' => $this->tree->getName(), 'action' => 'soundex'])), 'menu-search-soundex', ['rel' => 'nofollow']);
+		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), e(route('search-phonetic', ['ged' => $this->tree->getName(), 'action' => 'soundex'])), 'menu-search-soundex', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1810,7 +1809,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuSearchAdvanced() {
-		return new Menu(I18N::translate('Advanced search'), e(Html::url('search_advanced.php', ['ged' => $this->tree->getName()])), 'menu-search-advanced', ['rel' => 'nofollow']);
+		return new Menu(I18N::translate('Advanced search'), e(route('search-advanced', ['ged' => $this->tree->getName()])), 'menu-search-advanced', ['rel' => 'nofollow']);
 	}
 
 	/**
@@ -1820,7 +1819,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuSearchAndReplace() {
 		if (Auth::isEditor($this->tree)) {
-			return new Menu(I18N::translate('Search and replace'), e(Html::url('search.php', ['ged' => $this->tree->getName(), 'action' => 'replace'])), 'menu-search-replace');
+			return new Menu(I18N::translate('Search and replace'), e(route('search-replace', ['ged' => $this->tree->getName(), 'action' => 'replace'])), 'menu-search-replace');
 		} else {
 			return null;
 		}

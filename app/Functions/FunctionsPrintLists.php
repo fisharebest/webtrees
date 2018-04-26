@@ -1148,7 +1148,7 @@ class FunctionsPrintLists {
 			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
 			$html .= '</tr>';
 		}
-		$html .= '</tbody></table></div>';
+		$html .= '</tbody></table>';
 
 		return $html;
 	}

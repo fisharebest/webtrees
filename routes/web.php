@@ -120,6 +120,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:delete-fact'            => 'EditGedcomRecordController@deleteFact',
 		'POST:paste-fact'             => 'EditGedcomRecordController@pasteFact',
 		'POST:delete-record'          => 'EditGedcomRecordController@deleteRecord',
+		'GET:search-replace'          => 'SearchController@replace',
+		'POST:search-replace'         => 'SearchController@replaceAction',
 	];
 }
 
@@ -213,6 +215,10 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'POST:select2-source'        => 'AutocompleteController@select2Source',
 		'POST:select2-submitter'     => 'AutocompleteController@select2Submitter',
 		'POST:select2-repository'    => 'AutocompleteController@select2Repository',
+		'GET:search-quick'           => 'SearchController@quick',
+		'GET:search-advanced'        => 'SearchController@advanced',
+		'GET:search-general'         => 'SearchController@general',
+		'GET:search-phonetic'        => 'SearchController@phonetic',
 	];
 }
 

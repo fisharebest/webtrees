@@ -1,0 +1,84 @@
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\GedcomTag; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<h2 class="wt-page-title">
+	<?= $title ?>
+</h2>
+
+<div id="advanced-search-page">
+	<form class="wt-page-options wt-page-options-search-advanced hidden-print mb-4">
+		<input type="hidden" name="route" value="search-advanced">
+
+		<div class="row form-group wt-page-options-label mt-4">
+			<div class="form-row mx-auto">
+				<?= I18N::translate('Individual') ?>
+			</div>
+		</div>
+
+		<?php foreach ($fields as $field_name => $field_value): ?>
+			<?php if (substr($field_name, 0, 5) !== 'FAMC:'): ?>
+				<?= view('search-advanced-field', ['field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+			<?php endif ?>
+		<?php endforeach ?>
+
+		<div class="row form-group">
+			<div class="col-sm-3 col-form-label wt-page-options-label">
+				<?= I18N::translate('Add more fields') ?>
+			</div>
+
+			<div class="col-sm-3 wt-page-options-value">
+				<?= Bootstrap4::select(['' => ''] + $other_fields, '', ['name' => 'other_field']) ?>
+			</div>
+
+			<div class="col-sm-3 wt-page-options-value">
+				<input type="text" class="form-control" name="other_value">
+			</div>
+
+			<div class="col-sm-3 wt-page-options-value">
+			</div>
+		</div>
+
+		<div class="row form-group wt-page-options-label mt-4">
+			<div class="form-row mx-auto">
+				<?= I18N::translate('Father') ?>
+			</div>
+		</div>
+
+		<?php foreach ($fields as $field_name => $field_value): ?>
+			<?php if (substr($field_name, 0, 10) === 'FAMC:HUSB:'): ?>
+				<?= view('search-advanced-field', ['field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+			<?php endif ?>
+		<?php endforeach ?>
+
+		<div class="row form-group wt-page-options-label mt-4">
+			<div class="form-row mx-auto">
+				<?= I18N::translate('Mother') ?>
+			</div>
+		</div>
+
+		<?php foreach ($fields as $field_name => $field_value): ?>
+			<?php if (substr($field_name, 0, 10) === 'FAMC:WIFE:'): ?>
+				<?= view('search-advanced-field', ['field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+			<?php endif ?>
+		<?php endforeach ?>
+
+		<div class="row form-group my-3">
+			<div class="form-row mx-auto">
+				<input type="submit" class="btn btn-primary" value="<?= /* I18N: A button label. */
+				I18N::translate('search') ?>">
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php if (true): ?>
+	<?php if (empty($individuals)): ?>
+		<div class="alert alert-info row">
+			<?= I18N::translate('No results found.') ?>
+		</div>
+	<?php else: ?>
+		<?= view('search-results', ['individuals' => $individuals, 'search_families' => false, 'search_individuals' => true, 'search_notes' => false, 'search_sources' => false, 'search_repositories' => false]) ?>
+	<?php endif ?>
+<?php endif ?>
+

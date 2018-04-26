@@ -270,7 +270,7 @@ class ListController extends AbstractBaseController {
 							break;
 						case 'style2':
 						default:
-							echo view('tables/surname', [
+							echo view('tables/surnames', [
 								'surnames' => $surns,
 								'route'    => $route,
 								'tree'     => $tree,

@@ -1090,6 +1090,7 @@ class FunctionsEdit {
 
 		if (!in_array($fact, Config::nonDateFacts())) {
 			echo self::addSimpleTag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
+			echo self::addSimpleTag('0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
 		}
 
 		if (!in_array($fact, Config::nonPlaceFacts())) {
@@ -1167,6 +1168,7 @@ class FunctionsEdit {
 		$FACT = Filter::post($fact);
 		$DATE = Filter::post($fact . '_DATE');
 		$PLAC = Filter::post($fact . '_PLAC');
+		$PLAC = Filter::post($fact . '_RELI');
 		if ($DATE || $PLAC || $FACT && $FACT !== 'Y') {
 			if ($FACT && $FACT !== 'Y') {
 				$gedrec = "\n1 " . $fact . ' ' . $FACT;
