@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-03 12:45+0000\n"
+"PO-Revision-Date: 2018-04-27 00:37+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -862,7 +862,7 @@ msgstr "Webtrees ya sika ezalí."
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Ntáká ya yɔ̌ mɔ̌kɔ́ mpɔ̂ na kokɔ́tisa nkomá tǒ kobátela na zoloná."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.php:7
@@ -13804,7 +13804,7 @@ msgstr ""
 #: admin_trees_renumber.php:241
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Nkómbó ya bokɔ́tisi %1$s ebóngólámí na %2$s."
 
 #: action.php:85
 msgid "The record has been copied to the clipboard."
