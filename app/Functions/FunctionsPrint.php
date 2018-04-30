@@ -506,7 +506,7 @@ class FunctionsPrint {
 			}
 			if (!$newRow) {
 				echo '</select>';
-				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), "\" onclick=\"return paste_fact('$id', '#newClipboardFact');\"> ";
+				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), '" onclick="return paste_fact(\'' . e($WT_TREE->getName()) . '\',\'' . e($id) . '\', \'#newClipboardFact\');"> ';
 				echo '</form></td></tr>', "\n";
 			}
 		}
@@ -562,7 +562,7 @@ class FunctionsPrint {
 		echo '<form action="edit_interface.php" onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
 		echo '<input type="hidden" name="action" value="add">';
 		echo '<input type="hidden" name="xref" value="' . $id . '">';
-		echo '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
+		echo '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
 		echo '<select id="add-fact" name="fact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
@@ -577,7 +577,7 @@ class FunctionsPrint {
 		echo '</form>';
 		echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . $id . '&amp;ged=' . $WT_TREE->getNameHtml() . '">', GedcomTag::getLabel($fact), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . $id . '&amp;ged=' . e($WT_TREE->getName()) . '">', GedcomTag::getLabel($fact), '</a>';
 		}
 		echo '</span>';
 		echo '</td></tr>';
@@ -642,17 +642,6 @@ class FunctionsPrint {
 			echo ' return false;">', $choice, '</span> ';
 		}
 		echo '</small>';
-	}
-
-	/**
-	 * HTML link to find a fact.
-	 *
-	 * @param string $element_id
-	 *
-	 * @return string
-	 */
-	public static function printFindFactLink($element_id) {
-		return '<a href="#" onclick="findFact(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_find_facts" title="' . I18N::translate('Find a fact or event') . '"></a>';
 	}
 
 	/**

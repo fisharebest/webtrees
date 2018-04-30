@@ -108,11 +108,11 @@
 					<i class="<?= $filtersx === '' ? 'icon-sex_f_15x15' : 'icon-sex_f_9x9' ?>"></i>
 				</a>
 				|
-				<a title="<?= I18N::translate('Males') ?>" href="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $cal_month, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'ged' => $tree->getName()])) ?>" rel="nofollow">
+				<a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $cal_month, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'ged' => $tree->getName()])) ?>" rel="nofollow">
 					<i class="<?= $filtersx === 'M' ? 'icon-sex_m_15x15' : 'icon-sex_m_9x9' ?>"></i>
 				</a>
 				|
-				<a title="<?= I18N::translate('Females') ?>" href="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $cal_month, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'ged' => $tree->getName()])) ?>" rel="nofollow">
+				<a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $cal_month, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'ged' => $tree->getName()])) ?>" rel="nofollow">
 					<i class="<?= $filtersx === 'F' ? 'icon-sex_f_15x15' : 'icon-sex_f_9x9' ?>"></i>
 				</a>
 
@@ -184,5 +184,6 @@
 	</table>
 </form>
 
-
 <div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e(route('calendar-events', ['ged' => $tree->getName(), 'cal' => $cal, 'day' => $day, 'month' => $month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx,])) ?>"></div>
+
+<?= view('modals/ajax') ?>

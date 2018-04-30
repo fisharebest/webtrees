@@ -108,15 +108,15 @@ class ReportEngineController extends AbstractBaseController {
 			switch ($input['lookup']) {
 				case 'INDI':
 					$individual       = Individual::getInstance($pid, $tree);
-					$input['control'] = FunctionsEdit::formControlIndividual($individual, $attributes);
+					$input['control'] = FunctionsEdit::formControlIndividual($tree, $individual, $attributes);
 					break;
 				case 'FAM':
 					$family           = Family::getInstance($pid, $tree);
-					$input['control'] = FunctionsEdit::formControlFamily($family, $attributes);
+					$input['control'] = FunctionsEdit::formControlFamily($tree, $family, $attributes);
 					break;
 				case 'SOUR':
 					$source           = Source::getInstance($pid, $tree);
-					$input['control'] = FunctionsEdit::formControlSource($source, $attributes);
+					$input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes);
 					break;
 				case 'DATE':
 					$attributes += [

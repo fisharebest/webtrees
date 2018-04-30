@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\View;
 			<?= I18N::translate('Individual 1') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($individual1, [
+			<?= FunctionsEdit::formControlIndividual($tree, $individual1, [
 				'id'   => 'xref1',
 				'name' => 'xref1',
 			]) ?>
@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\View;
 			<?= I18N::translate('Individual 2') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual($individual2, [
+			<?= FunctionsEdit::formControlIndividual($tree, $individual2, [
 				'id'   => 'xref2',
 				'name' => 'xref2',
 			]) ?>

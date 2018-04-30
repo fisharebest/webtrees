@@ -174,7 +174,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 
 		<form method="post">
 			<?php foreach (Tree::getAll() as $tree): ?>
-				<h2><?= $tree->getTitleHtml() ?></h2>
+				<h2><?= e($tree->getTitle()) ?></h2>
 				<div class="row form-group">
 					<label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->getTreeId() ?>">
 						<?= /* I18N: Configuration option */I18N::translate('Relationships') ?>

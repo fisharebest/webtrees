@@ -122,7 +122,7 @@ define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
 
 // Convert PHP warnings/notices into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	// Ignore errors thar are silenced with '@'
+	// Ignore errors that are silenced with '@'
 	if (error_reporting() & $errno) {
 		throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 	}

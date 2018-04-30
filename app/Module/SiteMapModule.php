@@ -316,7 +316,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 				echo 'checked';
 				$include_any = true;
 			}
-			echo '>', $tree->getTitleHtml(), '</label></div>';
+			echo '>', e($tree->getTitle()), '</label></div>';
 		}
 		echo
 		'<input type="submit" value="', I18N::translate('save'), '">',

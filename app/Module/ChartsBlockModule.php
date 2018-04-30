@@ -202,6 +202,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo view('blocks/charts-config', [
 			'charts'     => $charts,
 			'individual' => $individual,
+			'tree'       => $WT_TREE,
 			'type'       => $type,
 		]);
 	}

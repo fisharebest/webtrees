@@ -12,29 +12,29 @@
 	<div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
 
 		<?php if (Module::getModuleByName('GEDFact_assistant')): ?>
-			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','manage');">
+			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','manage','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Manage the links') ?>
 			</a>
 		<?php else: ?>
-			<a class=dropdown-item menu-obje-link-indi" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','person');">
+			<a class=dropdown-item menu-obje-link-indi" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','person','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to an individual') ?>
 			</a>
-			<a class="dropdown-item menu-obje-link-fam" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','family');">
+			<a class="dropdown-item menu-obje-link-fam" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','family','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to a family') ?>
 			</a>
-			<a class="dropdown-item menu-obje-link-sour" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','source');">
+			<a class="dropdown-item menu-obje-link-sour" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','source','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to a source') ?>
 			</a>
 		<?php endif ?>
 
-		<a class="dropdown-item menu-obje-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>');">
+		<a class="dropdown-item menu-obje-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>', '<?= e($record->getXref()) ?>', '<?= e($record->getTree()->getName()) ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 
 		<?php if (Auth::isAdmin() || $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
 			<div class="dropdown-divider"></div>
 
-			<a class="dropdown-item menu-obje-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'editraw', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
+			<a class="dropdown-item menu-obje-editraw" href="<?= e(route('edit-raw-record', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
 				<?= I18N::translate('Edit the raw GEDCOM') ?>
 			</a>
 			<?php endif ?>

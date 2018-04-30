@@ -90,55 +90,9 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	 * @return string
 	 */
 	public function getSidebarContent(Individual $individual) {
-		global $controller;
-
-		$controller->addInlineJavascript('
-			function dsearchQ() {
-				var query = $("#sb_desc_name").val();
-				if (query.length>1) {
-					$("#sb_desc_content").load("module.php?mod=' . $this->getName() . '&mod_action=search&search="+query);
-				}
-			}
-
-			$("#sb_desc_name").focus(function(){this.select();});
-			$("#sb_desc_name").blur(function(){if (this.value=="") this.value="' . I18N::translate('Search') . '";});
-			var dtimerid = null;
-			$("#sb_desc_name").keyup(function(e) {
-				if (dtimerid) window.clearTimeout(dtimerid);
-				dtimerid = window.setTimeout("dsearchQ()", 500);
-			});
-
-			$("#sb_desc_content").on("click", ".sb_desc_indi", function() {
-				var self = $(this),
-					state = self.children(".plusminus"),
-					target = self.siblings("div");
-				if(state.hasClass("icon-plus")) {
-					if (jQuery.trim(target.html())) {
-						target.show("fast"); // already got content so just show it
-					} else {
-						target
-							.hide()
-							.load(self.attr("href"), function(response, status, xhr) {
-								if(status == "success" && response !== "") {
-									target.show("fast");
-								}
-							})
-					}
-				} else {
-					target.hide("fast");
-				}
-				state.toggleClass("icon-minus icon-plus");
-				return false;
-			});
-		');
-
-		return
-			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=search" onsubmit="return false;">' .
-			'<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="' . I18N::translate('Search') . '">' .
-			'</form>' .
-			'<div id="sb_desc_content">' .
-			'<ul>' . $this->getPersonLi($individual, 1) . '</ul>' .
-			'</div>';
+		return view('modules/descendancy', [
+			'individual_list' => $this->getPersonLi($individual, 1),
+		]);
 	}
 
 	/**

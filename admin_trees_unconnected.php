@@ -26,7 +26,7 @@ require 'includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . $WT_TREE->getTitleHtml())
+	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . e($WT_TREE->getTitle()))
 	->pageHeader();
 
 $associates = Filter::getBool('associates');
@@ -79,7 +79,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form-inline">
 	<div class="row form-group">
-		<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($WT_TREE->getName()) ?>">
 		<label for="associates"><?= I18N::translate('Include associates') ?></label>
 		<input type="checkbox" value="1" id="associates" name="associates" <?= $associates ? 'checked' : '' ?>>
 	</div>

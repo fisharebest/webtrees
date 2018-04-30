@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
@@ -67,7 +67,7 @@ try {
 
 	list($controller_name, $action) = explode('@', $controller_action);
 	$controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
-	$controller = new $controller_class;
+	$controller       = new $controller_class;
 
 	DebugBar::stopMeasure('create controller');
 
@@ -102,13 +102,13 @@ try {
 		ob_end_clean();
 	}
 
-	if ($ex instanceof HttpExceptionInterface) {
+	if ($ex instanceof HttpException) {
 		// Show a friendly page for expected exceptions.
 		if ($request->isXmlHttpRequest()) {
 			$response = new Response($ex->getMessage(), $ex->getStatusCode());
 		} else {
 			$controller = new ErrorController;
-			$response   = $controller->errorResponse($ex->getMessage());
+			$response   = $controller->errorResponse($ex);
 		}
 	} else {
 		// Show an error page for unexpected exceptions.

@@ -49,6 +49,9 @@ if (Auth::isAdmin()) {
 		'GET:user-page-user-edit'             => 'HomePageController@userPageUserEdit',
 		'POST:user-page-user-update'          => 'HomePageController@userPageUserUpdate',
 		'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
+		'GET:broadcast'                       => 'MessageController@broadcastPage',
+		'POST:broadcast'                      => 'MessageController@broadcastAction',
+		'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
 	];
 }
 
@@ -86,28 +89,37 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 // Editor routes.
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
 	$routes += [
-		'GET:add-media-file'       => 'EditMediaController@addMediaFile',
-		'POST:add-media-file'      => 'EditMediaController@addMediaFileAction',
-		'GET:edit-media-file'      => 'EditMediaController@editMediaFile',
-		'POST:edit-media-file'     => 'EditMediaController@editMediaFileAction',
-		'GET:create-media-object'  => 'EditMediaController@createMediaObject',
-		'POST:create-media-object' => 'EditMediaController@createMediaObjectAction',
-		'GET:create-note-object'   => 'EditNoteController@createNoteObject',
-		'POST:create-note-object'  => 'EditNoteController@createNoteObjectAction',
-		'GET:create-repository'    => 'EditRepositoryController@createRepository',
-		'POST:create-repository'   => 'EditRepositoryController@createRepositoryAction',
-		'GET:create-source'        => 'EditSourceController@createSource',
-		'POST:create-source'       => 'EditSourceController@createSourceAction',
-		'GET:create-submitter'     => 'EditSubmitterController@createSubmitter',
-		'POST:create-submitter'    => 'EditSubmitterController@createSubmitterAction',
-		'GET:reorder-children'     => 'EditFamilyController@reorderChildren',
-		'POST:reorder-children'    => 'EditFamilyController@reorderChildrenAction',
-		'GET:reorder-media'        => 'EditIndividualController@reorderMedia',
-		'POST:reorder-media'       => 'EditIndividualController@reorderMediaAction',
-		'GET:reorder-names'        => 'EditIndividualController@reorderNames',
-		'POST:reorder-names'       => 'EditIndividualController@reorderNamesAction',
-		'GET:reorder-spouses'      => 'EditIndividualController@reorderSpouses',
-		'POST:reorder-spouses'     => 'EditIndividualController@reorderSpousesAction',
+		'GET:add-media-file'          => 'EditMediaController@addMediaFile',
+		'POST:add-media-file'         => 'EditMediaController@addMediaFileAction',
+		'GET:edit-media-file'         => 'EditMediaController@editMediaFile',
+		'POST:edit-media-file'        => 'EditMediaController@editMediaFileAction',
+		'GET:create-media-object'     => 'EditMediaController@createMediaObject',
+		'POST:create-media-object'    => 'EditMediaController@createMediaObjectAction',
+		'POST:create-media-from-file' => 'EditMediaController@createMediaObjectFromFileAction',
+		'GET:create-note-object'      => 'EditNoteController@createNoteObject',
+		'POST:create-note-object'     => 'EditNoteController@createNoteObjectAction',
+		'GET:create-repository'       => 'EditRepositoryController@createRepository',
+		'POST:create-repository'      => 'EditRepositoryController@createRepositoryAction',
+		'GET:create-source'           => 'EditSourceController@createSource',
+		'POST:create-source'          => 'EditSourceController@createSourceAction',
+		'GET:create-submitter'        => 'EditSubmitterController@createSubmitter',
+		'POST:create-submitter'       => 'EditSubmitterController@createSubmitterAction',
+		'GET:reorder-children'        => 'EditFamilyController@reorderChildren',
+		'POST:reorder-children'       => 'EditFamilyController@reorderChildrenAction',
+		'GET:reorder-media'           => 'EditIndividualController@reorderMedia',
+		'POST:reorder-media'          => 'EditIndividualController@reorderMediaAction',
+		'GET:reorder-names'           => 'EditIndividualController@reorderNames',
+		'POST:reorder-names'          => 'EditIndividualController@reorderNamesAction',
+		'GET:reorder-spouses'         => 'EditIndividualController@reorderSpouses',
+		'POST:reorder-spouses'        => 'EditIndividualController@reorderSpousesAction',
+		'GET:edit-raw-record'         => 'EditGedcomRecordController@editRawRecord',
+		'POST:edit-raw-record'        => 'EditGedcomRecordController@editRawRecordAction',
+		'GET:edit-raw-fact'           => 'EditGedcomRecordController@editRawFact',
+		'POST:edit-raw-fact'          => 'EditGedcomRecordController@editRawFactAction',
+		'POST:copy-fact'              => 'EditGedcomRecordController@copyFact',
+		'POST:delete-fact'            => 'EditGedcomRecordController@deleteFact',
+		'POST:paste-fact'             => 'EditGedcomRecordController@pasteFact',
+		'POST:delete-record'          => 'EditGedcomRecordController@deleteRecord',
 	];
 }
 
@@ -145,6 +157,10 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual'             => 'IndividualController@show',
 		'GET:individual-tab'         => 'IndividualController@tab',
 		'GET:media'                  => 'MediaController@show',
+		'GET:contact'                => 'MessageController@contactPage',
+		'POST:contact'               => 'MessageController@contactAction',
+		'GET:message'                => 'MessageController@messagePage',
+		'POST:message'               => 'MessageController@messageAction',
 		'GET:note'                   => 'NoteController@show',
 		'GET:source'                 => 'SourceController@show',
 		'GET:record'                 => 'GedcomRecordController@show',
@@ -188,12 +204,20 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:statistics-chart'       => 'StatisticsChartController@chartCustomChart',
 		'GET:timeline'               => 'TimelineChartController@page',
 		'GET:timeline-chart'         => 'TimelineChartController@chart',
+		'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
+		'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
+		'POST:select2-family'        => 'AutocompleteController@select2Family',
+		'POST:select2-individual'    => 'AutocompleteController@select2Individual',
+		'POST:select2-media'         => 'AutocompleteController@select2MediaObject',
+		'POST:select2-note'          => 'AutocompleteController@select2Note',
+		'POST:select2-source'        => 'AutocompleteController@select2Source',
+		'POST:select2-submitter'     => 'AutocompleteController@select2Submitter',
+		'POST:select2-repository'    => 'AutocompleteController@select2Repository',
 	];
 }
 
 // Public routes (that do not need a tree).
 $routes += [
-	'GET:message'          => 'MessageController@page',
 	'GET:module'           => 'ModuleController@action',
 	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
@@ -205,6 +229,10 @@ $routes += [
 	'GET:verify'           => 'Auth\\VerifyEmailController@verify',
 	'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
 	'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
+	'POST:delete-user'     => 'UserController@delete',
+	'POST:language'        => 'UserController@language',
+	'POST:masquerade'      => 'UserController@masquerade',
+	'POST:theme'           => 'UserController@theme',
 ];
 
 return $routes;

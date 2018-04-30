@@ -117,7 +117,7 @@ class BranchesController extends PageController {
 		}
 		if ($this->soundex_dm) {
 			$sdx = Soundex::daitchMokotoff($this->surname);
-			if ($sdx !== null) {
+			if ($sdx !== '') {
 				foreach (explode(':', $sdx) as $value) {
 					$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 					$args[] = $value;

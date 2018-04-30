@@ -47,7 +47,7 @@
       generations:  1,
       route:        route,
       show_spouses: spouses,
-      tree:         tree,
+      ged:          tree,
       xref:         xref
     }, function() {
       sizeLines();

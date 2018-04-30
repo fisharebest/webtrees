@@ -79,13 +79,13 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 
 				$content .= '<div class="logged_in_name">';
 				if ($individual) {
-					$content .= '<a href="' . e($individual->url()) . '">' . $user->getRealNameHtml() . '</a>';
+					$content .= '<a href="' . e($individual->url()) . '">' . e($user->getRealName()) . '</a>';
 				} else {
-					$content .= $user->getRealNameHtml();
+					$content .= e($user->getRealName());
 				}
 				$content .= ' - ' . e($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . rawurlencode($user->getUserName()) . '&ged=' . $WT_TREE->getNameUrl()]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $WT_TREE->getNameUrl()])]);
 				}
 				$content .= '</div>';
 			}

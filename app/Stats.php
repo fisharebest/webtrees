@@ -186,7 +186,7 @@ class Stats {
 	 * @return string
 	 */
 	public function gedcomTitle() {
-		return $this->tree->getTitleHtml();
+		return e($this->tree->getTitle());
 	}
 
 	/**
@@ -5322,7 +5322,7 @@ class Stats {
 			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
 
-		return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
+		return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'individual-list', $this->tree);
 	}
 
 	/**
@@ -5894,7 +5894,7 @@ class Stats {
 					if ($type == 'list') {
 						$content .= '<br>';
 					}
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => 'message.php?to=' . rawurlencode($user->getUserName())]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $this->tree->getName()])]);
 				}
 				if ($type == 'list') {
 					$content .= '</li>';
@@ -6012,7 +6012,7 @@ class Stats {
 	 * @return string
 	 */
 	public function userFullName() {
-		return Auth::check() ? Auth::user()->getRealNameHtml() : '';
+		return Auth::check() ? '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>' : '';
 	}
 
 	/**
@@ -6039,7 +6039,7 @@ class Stats {
 			case 'username':
 				return e($user->getUserName());
 			case 'fullname':
-				return $user->getRealNameHtml();
+				return e($user->getRealName());
 			case 'regdate':
 				if (is_array($params) && isset($params[0]) && $params[0] != '') {
 					$datestamp = $params[0];

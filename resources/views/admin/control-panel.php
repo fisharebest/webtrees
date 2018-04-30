@@ -151,7 +151,7 @@
 						</td>
 						<td class="d-none d-sm-table-cell text-right">
 							<?php if ($individuals[$tree->getTreeId()]): ?>
-								<a href="indilist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('individual-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($individuals[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
@@ -160,7 +160,7 @@
 						</td>
 						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($families[$tree->getTreeId()]): ?>
-								<a href="famlist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('family-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($families[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>
@@ -291,38 +291,58 @@
 			<?php endforeach ?>
 		</dl>
 
-		<ul class="fa-ul">
-			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(Html::url('admin_users.php', [])) ?>">
-					<?= I18N::translate('User administration') ?>
-				</a>
-			</li>
-			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
-					<?= I18N::translate('Add a user') ?>
-				</a>
-			</li>
-			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(Html::url('admin_users_bulk.php', [])) ?>">
-					<?= I18N::translate('Send broadcast messages') ?>
-				</a>
-			</li>
-			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
-					<?= I18N::translate('Delete inactive users') ?>
-				</a>
-			</li>
-			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(route('user-page-default-edit')) ?>">
-					<?= I18N::translate('Set the default blocks for new users') ?>
-				</a>
-			</li>
-		</ul>
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<a href="<?= e(Html::url('admin_users.php', [])) ?>">
+							<?= I18N::translate('User administration') ?>
+						</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<a href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
+							<?= I18N::translate('Add a user') ?>
+						</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<a href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
+							<?= I18N::translate('Delete inactive users') ?>
+						</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<a href="<?= e(route('user-page-default-edit')) ?>">
+							<?= I18N::translate('Set the default blocks for new users') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<a href="<?= e(route('broadcast', ['to' => 'all'])) ?>">
+							<?= I18N::translate('Send a message to all users') ?>
+						</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<a href="<?= e(route('broadcast', ['to' => 'never_logged'])) ?>">
+							<?= I18N::translate('Send a message to users who have never signed in') ?>
+						</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<a href="<?= e(route('broadcast', ['to' => 'last_6mo'])) ?>">
+							<?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 

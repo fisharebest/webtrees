@@ -113,10 +113,10 @@ switch (Filter::post('action')) {
 
 		// Coming soon
 		if (Filter::postBool('all_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
 		}
 		if (Filter::postBool('new_trees')) {
-			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
 		}
 
 		$WT_TREE->setPreference('ADVANCED_NAME_FACTS', implode(',', Filter::postArray('ADVANCED_NAME_FACTS')));
@@ -215,7 +215,7 @@ switch (Filter::post('action')) {
 			}
 		}
 
-		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($WT_TREE->getTitle())), 'success');
 		header('Location: admin_trees_manage.php');
 
 		return;
@@ -223,7 +223,7 @@ switch (Filter::post('action')) {
 
 switch (Filter::get('action')) {
 case 'general':
-	$controller->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Preferences'));
+	$controller->setPageTitle(I18N::translate('Preferences') . ' — ' . e($WT_TREE->getTitle()));
 	break;
 default:
 	header('Location: ' . route('admin-control-panel'));
@@ -243,7 +243,7 @@ echo Bootstrap4::breadcrumbs([
 
 <form class="form-horizontal" method="post">
 	<?= Filter::getCsrf() ?>
-	<input type="hidden" name="ged" value="<?= $WT_TREE->getNameHtml() ?>">
+	<input type="hidden" name="ged" value="<?= e($WT_TREE->getName()) ?>">
 
 	<?php if (Filter::get('action') === 'general'): ?>
 
@@ -289,7 +289,7 @@ echo Bootstrap4::breadcrumbs([
 					name="gedcom"
 					required
 					type="text"
-					value="<?= $WT_TREE->getNameHtml() ?>"
+					value="<?= e($WT_TREE->getName()) ?>"
 					>
 			</div>
 			<p class="small text-muted">
@@ -323,7 +323,7 @@ echo Bootstrap4::breadcrumbs([
 			<?= /* I18N: A configuration setting */ I18N::translate('Default individual') ?>
 		</label>
 		<div class="col-sm-9">
-			<?= FunctionsEdit::formControlIndividual(Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE), ['id' => 'PEDIGREE_ROOT_ID', 'name' => 'PEDIGREE_ROOT_ID']) ?>
+			<?= FunctionsEdit::formControlIndividual($WT_TREE, Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE), ['id' => 'PEDIGREE_ROOT_ID', 'name' => 'PEDIGREE_ROOT_ID']) ?>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Default individual” configuration setting */ I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
 			</p>
@@ -413,7 +413,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
+							<?= e($user->getRealName()) ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>
@@ -435,7 +435,7 @@ echo Bootstrap4::breadcrumbs([
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?= $user->getUserId() ?>" <?= $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : '' ?>>
-							<?= $user->getRealNameHtml() ?> - <?= e($user->getUserName()) ?>
+							<?= e($user->getRealName()) ?> - <?= e($user->getUserName()) ?>
 						</option>
 					<?php endif ?>
 				<?php endforeach ?>
@@ -819,21 +819,7 @@ echo Bootstrap4::breadcrumbs([
 		</label>
 		<div class="col-sm-9">
 			<div class="input-group">
-				<input
-					class="form-control"
-					dir="ltr"
-					id="CHART_BOX_TAGS"
-					maxlength="255"
-					name="CHART_BOX_TAGS"
-					type="text"
-					value="<?= e($WT_TREE->getPreference('CHART_BOX_TAGS')) ?>"
-					>
-				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
-						<i class="fas fa-pencil-alt"></i>
-						<?= /* I18N: A button label. */ I18N::translate('edit') ?>
-					</a>
-				</div>
+				<?= Bootstrap4::multiSelect(GedcomTag::getPicklistFacts('INDI'), explode(',', $WT_TREE->getPreference('CHART_BOX_TAGS')), ['id' => 'CHART_BOX_TAGS', 'name' => 'CHART_BOX_TAGS[]', 'class' => 'select2']) ?>
 			</div>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>

@@ -32,216 +32,6 @@ $controller
 	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(['j', 'F'], ['D', 'M'], I18N::dateFormat())) . '";');
 
 switch ($action) {
-case 'editraw':
-	//////////////////////////////////////////////////////////////////////////////
-	// Edit a GEDCOM record
-	//////////////////////////////////////////////////////////////////////////////
-	$xref = Filter::get('xref', WT_REGEX_XREF);
-
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
-	check_record_access($record);
-
-	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
-		->pageHeader()
-		->addInlineJavascript('$("#raw-gedcom-list").sortable({opacity: 0.7, cursor: "move", axis: "y"});');
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="updateraw">
-		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<?= Filter::getCsrf() ?>
-		<p class="text-muted small">
-			<?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
-			<?= /* I18N: %s is a URL */
-			I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="https://wiki.webtrees.net/w/images-en/Ged551-5.pdf">https://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>') ?>
-		</p>
-		<ul id="raw-gedcom-list">
-			<li><textarea class="form-control" readonly
-			              rows="1"><?= '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE ?></textarea></li>
-			<?php foreach ($record->getFacts() as $fact): ?>
-				<?php if (!$fact->isPendingDeletion()): ?>
-					<li>
-						<div style="cursor:move;">
-							<?= $fact->summary() ?>
-						</div>
-						<input type="hidden" name="fact_id[]" value="<?= $fact->getFactId() ?>">
-						<textarea name="fact[]" dir="ltr" rows="<?= preg_match_all('/\n/', $fact->getGedcom()) ?>"
-						          style="width:100%;"><?= e($fact->getGedcom()) ?></textarea>
-					</li>
-				<?php endif ?>
-			<?php endforeach ?>
-			<li>
-				<div style="cursor:move;">
-					<b><i><?= I18N::translate('Add a fact') ?></i></b>
-				</div>
-				<input type="hidden" name="fact_id[]" value="">
-				<textarea name="fact[]" dir="ltr" rows="2" style="width:100%;"></textarea>
-			</li>
-		</ul>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'updateraw':
-	//////////////////////////////////////////////////////////////////////////////
-	// Save an updated GEDCOM record
-	//////////////////////////////////////////////////////////////////////////////
-	$xref     = Filter::post('xref', WT_REGEX_XREF);
-	$facts    = Filter::postArray('fact');
-	$fact_ids = Filter::postArray('fact_id');
-
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=editraw&xref=' . $xref);
-		break;
-	}
-
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
-	check_record_access($record);
-
-	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
-
-	// Retain any private facts
-	foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
-		if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
-			$gedcom .= "\n" . $fact->getGedcom();
-		}
-	}
-	// Append the new facts
-	foreach ($facts as $fact) {
-		$gedcom .= "\n" . $fact;
-	}
-
-	// Cleanup the client’s bad editing?
-	$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
-	$gedcom = trim($gedcom); // Leading/trailing spaces
-
-	$record->updateRecord($gedcom, false);
-
-	header('Location: ' . $record->url());
-	break;
-
-case 'editrawfact':
-	//////////////////////////////////////////////////////////////////////////////
-	// Edit a GEDCOM fact
-	//////////////////////////////////////////////////////////////////////////////
-	$xref    = Filter::get('xref', WT_REGEX_XREF);
-	$fact_id = Filter::get('fact_id');
-
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
-	check_record_access($record);
-
-	// Find the fact to edit
-	$edit_fact = null;
-	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
-			$edit_fact = $fact;
-			break;
-		}
-	}
-	if (!$edit_fact) {
-		header('Location: ' . $record->url());
-		break;
-	}
-
-	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
-		->pageHeader();
-
-	// How many lines to use in the edit control?
-	$rows = count(explode("\n", $edit_fact->getGedcom())) + 2;
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form method="post">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
-		<input type="hidden" name="action" value="updaterawfact">
-		<input type="hidden" name="xref" value="<?= $xref ?>">
-		<input type="hidden" name="fact_id" value="<?= $fact_id ?>">
-		<?= Filter::getCsrf() ?>
-		<p class="text-muted small">
-			<?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
-			<?= /* I18N: %s is a URL */
-			I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="https://wiki.webtrees.net/w/images-en/Ged551-5.pdf">https://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>') ?>
-		</p>
-		<div class="row form-group">
-			<label class="col-sm-3 col-form-label" for="gedcom">
-				<?= GedcomTag::getLabel($edit_fact->getTag()) ?>
-			</label>
-			<div class="col-sm-9">
-					<textarea autofocus class="form-control" rows="<?= $rows ?>" name="gedcom" id="gedcom"
-					          dir="ltr"><?= e($edit_fact->getGedcom()) ?></textarea>
-			</div>
-		</div>
-		<?= keep_chan($record) ?>
-		<div class="row form-group">
-			<div class="col-sm-9 offset-sm-3">
-				<button class="btn btn-primary" type="submit">
-					<?= FontAwesome::decorativeIcon('save') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('save') ?>
-				</button>
-				<a class="btn btn-secondary" href="<?= e($record->url()) ?>">
-					<?= FontAwesome::decorativeIcon('cancel') ?>
-					<?= /* I18N: A button label. */
-					I18N::translate('cancel') ?>
-				</a>
-			</div>
-		</div>
-	</form>
-	<?php
-	break;
-
-case 'updaterawfact':
-	//////////////////////////////////////////////////////////////////////////////
-	// Save an updated GEDCOM fact
-	//////////////////////////////////////////////////////////////////////////////
-	$xref      = Filter::post('xref', WT_REGEX_XREF);
-	$fact_id   = Filter::post('fact_id');
-	$gedcom    = Filter::post('gedcom');
-	$keep_chan = Filter::postBool('keep_chan');
-
-	if (!Filter::checkCsrf()) {
-		header('Location: edit_interface.php?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
-		break;
-	}
-
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
-	check_record_access($record);
-
-	// Find the fact to edit
-	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
-			// Cleanup the client’s bad editing?
-			$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
-			$gedcom = trim($gedcom); // Leading/trailing spaces
-
-			$record->updateFact($fact_id, $gedcom, !$keep_chan);
-			break;
-		}
-	}
-
-	header('Location: ' . $record->url());
-	break;
-
 case 'edit':
 	//////////////////////////////////////////////////////////////////////////////
 	// Edit a fact
@@ -272,7 +62,7 @@ case 'edit':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="editform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -333,8 +123,7 @@ case 'edit':
 				I18N::translate('cancel') ?>
 			</a>
 			<?php if (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
-				<a class="btn btn-link"
-				   href="edit_interface.php?action=editrawfact&amp;xref=<?= $xref ?>&amp;fact_id=<?= $fact_id ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
+				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $fact_id, 'ged' => $controller->tree()->getName()])) ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
 			<?php endif; ?>
@@ -367,7 +156,7 @@ case 'add':
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="addform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<input type="hidden" name="prev_action" value="add">';
@@ -510,6 +299,77 @@ case 'update':
 		}
 	}
 
+	header('Location: ' . $record->url());
+	break;
+
+case 'editnote':
+	//////////////////////////////////////////////////////////////////////////////
+	// Edit a note record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref = Filter::get('xref', WT_REGEX_XREF);
+	$note = Note::getInstance($xref, $controller->tree());
+	check_record_access($note);
+	$controller
+		->setPageTitle(I18N::translate('Edit the shared note'))
+		->pageHeader();
+	?>
+	<h2><?= $controller->getPageTitle() ?></h2>
+
+	<form method="post">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+		<input type="hidden" name="action" value="editnoteaction">
+		<input type="hidden" name="xref" value="<?= $xref ?>">
+		<?= Filter::getCsrf() ?>
+		<table class="table wt-facts-table">
+			<tr>
+				<th scope="row"><?= I18N::translate('Shared note') ?></th>
+				<td>
+					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= e($note->getNote()) ?></textarea>
+					<br>
+					<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
+				</td>
+			</tr>
+		</table>
+		<?= keep_chan($note) ?>
+		<div class="row form-group">
+			<div class="col-sm-9 offset-sm-3">
+				<button class="btn btn-primary" type="submit">
+					<?= FontAwesome::decorativeIcon('save') ?>
+					<?= /* I18N: A button label. */
+					I18N::translate('save') ?>
+				</button>
+				<a class="btn btn-secondary" href="<?= e($note->url()) ?>">
+					<?= FontAwesome::decorativeIcon('cancel') ?>
+					<?= /* I18N: A button label. */
+					I18N::translate('cancel') ?>
+				</a>
+			</div>
+		</div>
+	</form>
+	<?php
+	break;
+
+case 'editnoteaction':
+	//////////////////////////////////////////////////////////////////////////////
+	// Edit a note record
+	//////////////////////////////////////////////////////////////////////////////
+	$xref      = Filter::post('xref', WT_REGEX_XREF);
+	$keep_chan = Filter::postBool('keep_chan');
+	$note      = Filter::post('NOTE');
+	if (!Filter::checkCsrf()) {
+		header('Location: edit_interface.php?action=editnote&xref=' . $xref);
+		break;
+	}
+	$record = Note::getInstance($xref, $controller->tree());
+	check_record_access($record);
+	// We have user-supplied data in a replacement string - escape it against backreferences
+	$note = str_replace(['\\', '$'], ['\\\\', '\\$'], $note);
+	$gedrec = preg_replace(
+		'/^0 @' . $record->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
+		'0 @' . $record->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $note),
+		$record->getGedcom()
+	);
+	$record->updateRecord($gedrec, !$keep_chan);
 	header('Location: ' . $record->url());
 	break;
 
@@ -996,7 +856,7 @@ case 'addfamlink':
 	?>
 	<h2><?= $controller->getPageTitle() ?></h2>
 	<form method="post" name="addchildform">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="linkfamaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<?= Filter::getCsrf() ?>
@@ -1006,7 +866,7 @@ case 'addfamlink':
 				<?= I18N::translate('Family') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlFamily(null, ['id' => 'famid', 'name' => 'famid']) ?>
+				<?= FunctionsEdit::formControlFamily($controller->tree(), null, ['id' => 'famid', 'name' => 'famid']) ?>
 			</div>
 		</div>
 
@@ -1112,7 +972,7 @@ case 'linkspouse':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post" name="addchildform">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="linkspouseaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<input type="hidden" name="famtag" value="<?= $famtag ?>">
@@ -1122,7 +982,7 @@ case 'linkspouse':
 				<?= $label ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlIndividual(null, ['id' => 'spouse', 'name' => 'spid']) ?>
+				<?= FunctionsEdit::formControlIndividual($controller->tree(), null, ['id' => 'spouse', 'name' => 'spid']) ?>
 			</div>
 		</div>
 
@@ -1222,7 +1082,7 @@ case 'addmedia_links':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post" action="edit_interface.php?xref=<?= $person->getXref() ?>" onsubmit="findindi()">
-		<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 		<input type="hidden" name="action" value="addmedia_links">
 		<input type="hidden" name="noteid" value="newnote">
 		<?= Filter::getCsrf() ?>
@@ -1247,8 +1107,8 @@ case 'add-media-link':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= $record->getTree()->getNameHtml() ?>">
-		<input type="hidden" name="xref" value="<?= $record->getXref() ?>">
+		<input type="hidden" name="ged" value="<?= e($record->getTree()->getName()) ?>">
+		<input type="hidden" name="xref" value="<?= e($record->getXref()) ?>">
 		<input type="hidden" name="action" value="save-media-link">
 		<?= Filter::getCsrf() ?>
 
@@ -1266,7 +1126,7 @@ case 'add-media-link':
 							</button>
 						</span>
 					<?php endif ?>
-					<?= FunctionsEdit::formControlMediaObject(null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
+					<?= FunctionsEdit::formControlMediaObject($controller->tree(), null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
 				</div>
 			</div>
 		</div>
@@ -1377,7 +1237,7 @@ case 'changefamily':
 
 	<div id="changefam">
 		<form name="changefamform" method="post">
-			<input type="hidden" name="ged" value="<?= $controller->tree()->getNameHtml() ?>">
+			<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
 			<input type="hidden" name="action" value="changefamily_update">
 			<input type="hidden" name="xref" value="<?= $xref ?>">
 			<?= Filter::getCsrf() ?>
@@ -1803,7 +1663,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
-	echo '<input type="hidden" name="ged" value="', $controller->tree()->getNameHtml(), '">';
+	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
 	echo '<input type="hidden" name="action" value="', $nextaction, '">';
 	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -1979,8 +1839,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
 			<?php if ($name_fact !== null && (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD'))): ?>
-				<a class="btn btn-link"
-				   href="edit_interface.php?action=editrawfact&amp;xref=<?= $xref ?>&amp;fact_id=<?= $name_fact->getFactId() ?>&amp;ged=<?= $controller->tree()->getNameUrl() ?>">
+				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->getFactId(), 'ged' => $controller->tree()->getName()])) ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
 			<?php endif ?>
@@ -2024,10 +1883,11 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// For example, to differentiate the two Spanish surnames from an English
 		// double-barred name.
 		// Commas *may* be used in other fields, and will form part of the NAME.
-		if (WT_LOCALE === "vi" || WT_LOCALE === "hu") {
+		var locale = document.documentElement.lang;
+		if (locale === "vi" || locale === "hu") {
 			// Default format: /SURN/ GIVN
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else if (WT_LOCALE === "zh-Hans" || WT_LOCALE === "zh-Hant") {
+		} else if (locale === "zh-Hans" || locale === "zh-Hant") {
 			// Default format: /SURN/GIVN
 			return npfx+"/"+spfx+surn+"/"+givn+nsfx;
 		} else {

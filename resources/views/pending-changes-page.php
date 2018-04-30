@@ -74,7 +74,7 @@
 									<?php endforeach ?>
 								</td>
 								<td>
-									<a href="<?= e(Html::url('message.php', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->getFullName()), 'body' => WT_BASE_URL . $record_change->record->url(), 'ged' => $record_change->gedcom_name,])) ?>" title="<?= I18N::translate('Send a message') ?>">
+									<a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->getFullName()), 'body' => WT_BASE_URL . $record_change->record->url(), 'ged' => $record_change->gedcom_name,])) ?>" title="<?= I18N::translate('Send a message') ?>">
 										<?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
 									</a>
 								</td>

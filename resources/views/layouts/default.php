@@ -10,14 +10,6 @@
 
 		<?= $theme_footer_container ?>
 
-		<script>
-			// Global constants
-			var WT_MODULES_DIR = <?= json_encode(WT_MODULES_DIR) ?>;
-			var WT_GEDCOM      = <?= json_encode($tree ? $tree->getName() : '') ?>;
-			var textDirection  = <?= json_encode(I18N::direction()) ?>;
-			var WT_LOCALE      = <?= json_encode(WT_LOCALE) ?>;
-		</script>
-
 		<script src="<?= e(WT_ASSETS_URL . 'js/vendor.js') ?>"></script>
 		<script src="<?= e(WT_ASSETS_URL . 'js/webtrees.js') ?>"></script>
 

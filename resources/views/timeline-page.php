@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\View;
 			<?= I18N::translate('Individual') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= FunctionsEdit::formControlIndividual(null, [
+			<?= FunctionsEdit::formControlIndividual($tree, null, [
 				'id'   => 'xref-add',
 				'name' => 'xrefs[]',
 			]) ?>

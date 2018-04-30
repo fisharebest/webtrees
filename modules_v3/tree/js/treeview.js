@@ -13,7 +13,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-function TreeViewHandler(treeview_instance) {
+function TreeViewHandler(treeview_instance, ged) {
 	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
 
 	this.treeview = $("#" + treeview_instance + "_in");
@@ -24,7 +24,7 @@ function TreeViewHandler(treeview_instance) {
 	this.boxWidth = 180; // default family box width
 	this.boxExpandedWidth = 250; // default expanded family box width
 	this.cookieDays = 3; // lifetime of preferences memory, in days
-	this.ajaxUrl = "module.php?mod=tree&ged=" + encodeURIComponent(WT_GEDCOM) + "&instance=" + treeview_instance + "&mod_action=";
+	this.ajaxUrl = "module.php?mod=tree&ged=" + encodeURIComponent(ged) + "&instance=" + treeview_instance + "&mod_action=";
 
 	this.container = this.treeview.parent(); // Store the container element ("#" + treeview_instance + "_out")
 	this.auto_box_width = false;

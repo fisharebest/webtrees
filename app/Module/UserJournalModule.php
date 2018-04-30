@@ -87,9 +87,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 				$article->body = nl2br($article->body, false);
 			}
 			$content .= $article->body;
-			$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('Edit') . '</a>';
+			$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . e($WT_TREE->getName()) . '">' . I18N::translate('Edit') . '</a>';
 			$content .= ' | ';
-			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . $WT_TREE->getNameHtml() . '" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Delete') . '</a><br>';
+			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . e($WT_TREE->getName()) . '" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Delete') . '</a><br>';
 			$content .= '</div><br>';
 		}
 

@@ -230,7 +230,7 @@ case 'load_json':
 		$datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="' . e(Html::url('message.php', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . e($datum[4]) . '</a>';
+			$datum[4] = '<a href="' . e(route('message', ['to' => $datum[2], 'url' => 'admin_users.php'])) . '">' . e($datum[4]) . '</a>';
 		}
 		// The username
 		$datum[2] = '<span dir="auto">' . e($datum[2]) . '</span>';
@@ -611,7 +611,7 @@ case 'edit':
 				<?php foreach (Tree::getAll() as $tree): ?>
 				<tr>
 					<td>
-						<?= $tree->getTitleHtml() ?>
+						<?= e($tree->getTitle()) ?>
 					</td>
 					<td>
 						<select name="canedit<?= $tree->getTreeId() ?>">
@@ -625,7 +625,7 @@ case 'edit':
 						</select>
 					</td>
 					<td>
-						<?= FunctionsEdit::formControlIndividual(Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId(), 'data-ajax--data--ged' => $tree->getName()]) ?>
+						<?= FunctionsEdit::formControlIndividual($tree, Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId(), 'data-ajax--data--ged' => $tree->getName()]) ?>
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" class="relpath">
@@ -698,7 +698,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>
@@ -722,7 +722,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>
@@ -746,7 +746,7 @@ case 'cleanup':
 					<a href="?action=edit&amp;user_id=<?= $user->getUserId() ?>">
 						<?= e($user->getUserName()) ?>
 						—
-						<?= $user->getRealNameHtml() ?>
+						<span dir="auto"><?= e($user->getRealName()) ?></span>
 					</a>
 				</td>
 				<td>

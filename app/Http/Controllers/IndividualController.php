@@ -315,11 +315,11 @@
 					FontAwesome::linkIcon('delete', I18N::translate('Delete this name'), [
 						'class'   => 'btn btn-link',
 						'href'    => '#',
-						'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . $individual->getXref() . '", "' . $fact->getFactId() . '");',
+						'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($individual->getTree()->getName()) . '", "' . e($individual->getXref()) . '", "' . $fact->getFactId() . '");',
 					]) .
 					FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
 						'class' => 'btn btn-link',
-						'href'  => 'edit_interface.php?action=editname&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $individual->getTree()->getNameHtml(),
+						'href'  => 'edit_interface.php?action=editname&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($individual->getTree()->getName()),
 					]);
 			} else {
 				$edit_links = '';
@@ -369,7 +369,7 @@
 			if ($individual->canEdit() && !$fact->isPendingDeletion()) {
 				$edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), [
 					'class' => 'btn btn-link',
-					'href'  => 'edit_interface.php?action=edit&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . $individual->getTree()->getNameHtml(),
+					'href'  => 'edit_interface.php?action=edit&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($individual->getTree()->getName()),
 				]);
 			} else {
 				$edit_links = '';

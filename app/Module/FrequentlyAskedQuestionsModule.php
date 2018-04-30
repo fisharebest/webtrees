@@ -476,7 +476,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			if ($faq->gedcom_id === null) {
 				echo I18N::translate('All');
 			} else {
-				echo $WT_TREE->getTitleHtml();
+				echo e($WT_TREE->getTitle());
 			}
 			echo '</td>';
 			// NOTE: Print the edit options of the current item

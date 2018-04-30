@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-07 21:44+0000\n"
+"PO-Revision-Date: 2018-04-10 08:37+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -7015,7 +7015,7 @@ msgstr "für niemand zeigen"
 
 #: app/Stats.php:1738
 msgid "Highest population"
-msgstr "Höchste Bevölkerung"
+msgstr "Höchste Personenzahl"
 
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1210 modules_v3/individual_ext_report/report.xml:11
@@ -8293,7 +8293,7 @@ msgstr "Louisville, Kentucky, Vereinigte Staaten"
 
 #: app/Stats.php:1739
 msgid "Lowest population"
-msgstr "Niedrigste Bevölkerung"
+msgstr "Niedrige Personenzahl"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9835,7 +9835,7 @@ msgstr "Es sind keine Aktualisierungsinformationen verfügbar."
 
 #: app/Stats.php:1740
 msgid "Nobody at all"
-msgstr "Überhaupt niemand"
+msgstr "keine Personen"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:57

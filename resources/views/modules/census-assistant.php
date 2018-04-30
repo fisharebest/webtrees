@@ -52,7 +52,7 @@
 					<?= I18N::translate('Individuals') ?>
 				</span>
 			</div>
-			<?= FunctionsEdit::formControlIndividual($individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
+			<?= FunctionsEdit::formControlIndividual($individual->getTree(), $individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
 			<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" id="census-assistant-add">
 							<?= FontAwesome::semanticIcon('add', I18N::translate('Add')) ?>

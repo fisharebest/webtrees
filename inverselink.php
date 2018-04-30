@@ -55,7 +55,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 		}
 		echo '<input type="hidden" name="linkto" value="', $linkto, '">';
-		echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
+		echo '<input type="hidden" name="ged" value="', e($WT_TREE->getName()), '">';
 		echo '<table class="table wt-facts-table">';
 		echo '<tr><td class="topbottombar" colspan="2">';
 		echo I18N::translate('Link to an existing media object');

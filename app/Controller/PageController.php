@@ -116,14 +116,6 @@ class PageController extends BaseController {
 	 * @return $this
 	 */
 	public function pageHeader() {
-		// Give Javascript access to some PHP constants
-		$this->addInlineJavascript('
-			var WT_MODULES_DIR = ' . json_encode(WT_MODULES_DIR) . ';
-			var WT_GEDCOM      = ' . json_encode($this->tree() ? $this->tree()->getName() : '') . ';
-			var textDirection  = ' . json_encode(I18N::direction()) . ';
-			var WT_LOCALE      = ' . json_encode(WT_LOCALE) . ';
-		', self::JS_PRIORITY_HIGH);
-
 		Theme::theme()->sendHeaders();
 		echo Theme::theme()->doctype();
 		echo Theme::theme()->html();

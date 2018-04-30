@@ -114,15 +114,6 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function getNameHtml() {
-		return e($this->name);
-	}
-
-	/**
-	 * The name of this tree
-	 *
-	 * @return string
-	 */
 	public function getNameUrl() {
 		return rawurlencode($this->name);
 	}
@@ -134,15 +125,6 @@ class Tree {
 	 */
 	public function getTitle() {
 		return $this->title;
-	}
-
-	/**
-	 * The title of this tree, with HTML markup
-	 *
-	 * @return string
-	 */
-	public function getTitleHtml() {
-		return '<span dir="auto">' . e($this->title) . '</span>';
 	}
 
 	/**

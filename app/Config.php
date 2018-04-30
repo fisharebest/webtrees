@@ -104,12 +104,6 @@ class Config {
 	 */
 	public static function levelTwoTags() {
 		return [
-			'_HEB' => [
-				'NAME', 'TITL',
-			],
-			'ROMN' => [
-				'NAME', 'TITL',
-			],
 			'TYPE' => [
 				'EVEN', 'FACT', 'GRAD', 'IDNO', 'MARR', 'ORDN', 'SSN',
 			],
@@ -130,7 +124,7 @@ class Config {
 				'CENS', 'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'DSCR', 'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI',
 				'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB',
-				'PROP', 'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'WILL', '_TODO',
+				'PROP', 'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'TITL', 'WILL', '_TODO',
 			],
 			'AGE' => [
 				'CENS', 'DEAT',
@@ -143,7 +137,7 @@ class Config {
 				'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
 				'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI', 'MARB',
 				'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB', 'PROP',
-				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'WILL',
+				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'TITL', 'WILL',
 			],
 			'STAT' => [
 				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
