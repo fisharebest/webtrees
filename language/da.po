@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-04-12 21:41+0000\n"
+"PO-Revision-Date: 2018-05-01 18:09+0000\n"
 "Last-Translator: Lars Juul <lars@krugerjuul.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
@@ -3329,7 +3329,7 @@ msgstr "Årsag for dødsfald"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "Advarsel!"
 
 #: admin_trees_manage.php:794 admin_trees_renumber.php:284
 msgid "Caution! This may take a long time. Be patient."
@@ -7149,7 +7149,7 @@ msgstr "Identifikationsnummer"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Hvis et medieobjekt er knyttet til en person, når det burde være knyttet til et faktum eller en begivenhed, kan du flytte det til rette sted."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -13660,7 +13660,7 @@ msgstr "Den nye bruger vil blive bedt om at bekræfte deres email adresse før o
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Notatet er oprettet"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13754,7 +13754,7 @@ msgstr "Kilden er oprettet"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Indsenderen er oprettet"
 
 #: help_text.php:234
 #, php-format
@@ -15904,7 +15904,7 @@ msgstr "Zoom ud"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "En URL"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
