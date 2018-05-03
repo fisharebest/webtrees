@@ -95,7 +95,7 @@ class AutocompleteController extends AbstractBaseController {
 			" AND   i_file = :tree_id"
 		)->execute([
 			'xref'    => $xref,
-			'term'    => $query,
+			'term'    => $like_query,
 			'tree_id' => $tree->getTreeId(),
 		])->fetchAll();
 
@@ -125,7 +125,7 @@ class AutocompleteController extends AbstractBaseController {
 			if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
 				$pages[] = $match[1];
 			}
-			if (preg_match('/\n2 SOUR @' . $sid . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
+			if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
 				$pages[] = $match[1];
 			}
 		}
