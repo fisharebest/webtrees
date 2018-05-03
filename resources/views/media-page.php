@@ -16,7 +16,7 @@
 	<?php endif ?>
 <?php elseif ($media->isPendingAddition()): ?>
 	<?php if (Auth::isModerator($media->getTree())): ?>
-		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This media object has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>' ) . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate( 'This media object has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>' ) . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php elseif (Auth::isEditor($media->getTree())): ?>
 		<?= view('alerts/warning-dissmissible', ['alert' => I18N::translate('This media object has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php endif ?>
@@ -75,7 +75,7 @@
 							<div class="editfacts">
 								<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->getName(), 'xref' => $media->getXref(), 'fact_id' => $media_file->factId()])]) ?>
 								<?php if (count($media->mediaFiles()) > 1): ?>
-									<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($media->gettree->getName()) . '", , "' . e($media->getXref()) . '", "' . $media_file->factId() . '");']) ?>
+									<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($media->getTree()->getName()) . '", , "' . e($media->getXref()) . '", "' . $media_file->factId() . '");']) ?>
 								<?php endif ?>
 							</div>
 						<?php endif ?>
