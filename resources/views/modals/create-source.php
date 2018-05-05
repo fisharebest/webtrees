@@ -7,7 +7,7 @@
 	<?= view('modals/header', ['title' => I18N::translate('Create a source')]) ?>
 
 	<div class="modal-body">
-		<?= view('modals/source-fields') ?>
+		<?= view('modals/source-fields', ['tree' => $tree]) ?>
 	</div>
 
 	<?= view('modals/footer-save-cancel') ?>
