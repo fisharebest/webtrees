@@ -29,6 +29,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class PlaceHierarchyController
+ */
 class PlaceHierarchyController extends AbstractBaseController {
 	const MAP_MODULE = 'openstreetmap';
 
