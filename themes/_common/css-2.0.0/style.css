@@ -401,6 +401,10 @@
 	width:            1px;
 }
 
+#pedigree-page .shadow {
+	box-shadow: 0 0 0!important;  /* override vendor css shadow  */
+}
+
 #childarrow,
 .ancestorarrow {
 	text-align: center;
