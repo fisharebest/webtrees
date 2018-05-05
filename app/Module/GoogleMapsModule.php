@@ -2478,7 +2478,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '"', I18N::translate('Longitude'), '";';
 		echo '"', I18N::translate('Latitude'), '";';
 		echo '"', I18N::translate('Zoom level'), '";';
-		echo '"', I18N::translate('Icon'), '";', WT_EOL;
+		echo '"', I18N::translate('Icon'), '";';
 		$this->outputLevel($parent_id);
 	}
 

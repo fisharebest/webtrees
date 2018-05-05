@@ -74,12 +74,6 @@ define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
 define('WT_EVENTS_MARR', 'MARR|_NMR');
 define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 
-// Use these line endings when writing files on the server
-define('WT_EOL', "\r\n");
-
-// Gedcom specification/definitions
-define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
-
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 

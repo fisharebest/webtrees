@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Gedcom;
 use PDOException;
 
 /**
@@ -576,7 +577,7 @@ class Tree {
 				$buffer = '';
 			}
 		}
-		fwrite($stream, $buffer . '0 TRLR' . WT_EOL);
+		fwrite($stream, $buffer . '0 TRLR' . Gedcom::EOL);
 		$stmt->closeCursor();
 	}
 

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -46,14 +47,14 @@ class FunctionsExport {
 			// Split long lines
 			// The total length of a GEDCOM line, including level number, cross-reference number,
 			// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
-			if (mb_strlen($line) > WT_GEDCOM_LINE_LENGTH) {
+			if (mb_strlen($line) > Gedcom::LINE_LENGTH) {
 				list($level, $tag) = explode(' ', $line, 3);
 				if ($tag != 'CONT' && $tag != 'CONC') {
 					$level++;
 				}
 				do {
 					// Split after $pos chars
-					$pos = WT_GEDCOM_LINE_LENGTH;
+					$pos = Gedcom::LINE_LENGTH;
 					if ($WT_TREE->getPreference('WORD_WRAPPED_NOTES')) {
 						// Split on a space, and remove it (for compatibility with some desktop apps)
 						while ($pos && mb_substr($line, $pos - 1, 1) != ' ') {
@@ -63,7 +64,7 @@ class FunctionsExport {
 							// No spaces in the data! Can’t split it :-(
 							break;
 						} else {
-							$newrec .= mb_substr($line, 0, $pos - 1) . WT_EOL;
+							$newrec .= mb_substr($line, 0, $pos - 1) . Gedcom::EOL;
 							$line = $level . ' CONC ' . mb_substr($line, $pos);
 						}
 					} else {
@@ -75,12 +76,12 @@ class FunctionsExport {
 							// No non-spaces in the data! Can’t split it :-(
 							break;
 						}
-						$newrec .= mb_substr($line, 0, $pos) . WT_EOL;
+						$newrec .= mb_substr($line, 0, $pos) . Gedcom::EOL;
 						$line = $level . ' CONC ' . mb_substr($line, $pos);
 					}
-				} while (mb_strlen($line) > WT_GEDCOM_LINE_LENGTH);
+				} while (mb_strlen($line) > Gedcom::LINE_LENGTH);
 			}
-			$newrec .= $line . WT_EOL;
+			$newrec .= $line . Gedcom::EOL;
 		}
 
 		return $newrec;
@@ -309,6 +310,6 @@ class FunctionsExport {
 
 		fwrite($gedout, $buffer);
 		fwrite($gedout, $tmp_gedcom);
-		fwrite($gedout, '0 TRLR' . WT_EOL);
+		fwrite($gedout, '0 TRLR' . Gedcom::EOL);
 	}
 }

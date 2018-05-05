@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Session;
@@ -268,7 +269,7 @@ class ClippingsCartController {
 			$filetext .= "0 TRLR\n";
 
 			// Make sure the preferred line endings are used
-			$filetext = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
+			$filetext = preg_replace("/[\r\n]+/", Gedcom::EOL, $filetext);
 
 			if ($convert === 'yes') {
 				$filetext = str_replace('UTF-8', 'ANSI', $filetext);
