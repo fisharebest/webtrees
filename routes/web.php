@@ -177,6 +177,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:individual-list'        => 'ListController@individualList',
 		'GET:media-list'             => 'ListController@mediaList',
 		'GET:note-list'              => 'ListController@noteList',
+		'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
 		'GET:repository-list'        => 'ListController@repositoryList',
 		'GET:source-list'            => 'ListController@sourceList',
 		'GET:ancestors'              => 'AncestorsChartController@page',
