@@ -1379,8 +1379,10 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuControlPanel() {
-		if (Auth::isManager($this->tree)) {
+		if (Auth::isAdmin()) {
 			return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
+		} elseif (Auth::isManager($this->tree)) {
+			return new Menu(I18N::translate('Control panel'), route('admin-control-panel-manager'), 'menu-admin');
 		} else {
 			return null;
 		}
