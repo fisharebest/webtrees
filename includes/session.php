@@ -122,13 +122,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 DebugBar::startMeasure('init database');
 
 // Load our configuration file, so we can connect to the database
-if (file_exists(WT_ROOT . 'data/config.ini.php')) {
-	// Down for maintenance?
-	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: site-offline.php');
-		exit;
-	}
-} else {
+if (!file_exists(WT_ROOT . 'data/config.ini.php')) {
 	// No config file. Set one up.
 	$url      = Html::url('setup.php', ['route' => 'setup']);
 	$response = new RedirectResponse($url);
@@ -210,10 +204,9 @@ if (!Session::get('initiated')) {
 DebugBar::startMeasure('init tree');
 
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
-foreach ([Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')] as $tree_name) {
+foreach ([Filter::post('ged'), Filter::get('ged'), Site::getPreference('DEFAULT_GEDCOM')] as $tree_name) {
 	$WT_TREE = Tree::findByName($tree_name);
 	if ($WT_TREE) {
-		Session::put('GEDCOM', $tree_name);
 		break;
 	}
 }

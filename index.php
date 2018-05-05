@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Http\Controllers\ErrorController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
+use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -75,7 +76,9 @@ try {
 	// generate the response - which includes (and stops) the timer
 	DebugBar::startMeasure('controller_action', $controller_action);
 
-	$middleware_stack = [];
+	$middleware_stack = [
+		new CheckForMaintenanceMode,
+	];
 
 	if ($method === 'POST') {
 		$middleware_stack[] = new UseTransaction;

@@ -500,6 +500,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'reportengine.php',
 		WT_ROOT . 'search.php',
 		WT_ROOT . 'search_advanced.php',
+		WT_ROOT . 'site-offline.php',
 		WT_ROOT . 'site-unavailable.php',
 		WT_ROOT . 'sourcelist.php',
 		WT_ROOT . 'statistics.php',
