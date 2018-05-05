@@ -37,7 +37,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			self::STYLESHEET,
 		]);
@@ -48,7 +48,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string
 	 */
-	protected function footerContent() {
+	public function footerContent() {
 		return '';
 	}
 
@@ -58,7 +58,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return Menu[]
 	 */
-	protected function primaryMenu() {
+	public function primaryMenu() {
 		return [];
 	}
 
@@ -67,7 +67,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return Menu[]
 	 */
-	protected function secondaryMenu() {
+	public function secondaryMenu() {
 		return array_filter([
 			$this->menuPendingChanges(),
 			$this->menuMyPage(),

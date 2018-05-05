@@ -93,7 +93,7 @@ abstract class AbstractBaseController extends LegacyBaseController {
 
 	/**
 	 * @param Note|null $note
-	 * @param bool|null  $edit
+	 * @param bool|null $edit
 	 *
 	 * @throws NotFoundHttpException
 	 * @throws AccessDeniedHttpException
@@ -162,27 +162,22 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	/**
 	 * Create a response object from a view.
 	 *
-	 * @param string  $name
-	 * @param mixed[] $data
+	 * @param string  $view_name
+	 * @param mixed[] $view_data
 	 * @param int     $status
 	 *
 	 * @return Response
 	 */
-	protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response {
-		$theme = Theme::theme();
+	protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response {
+		// Make the view's data available to the layout.
+		$layout_data = $view_data;
+		$layout_data['javascript'] = $this->getJavascript();
 
-		$html = view($this->layout, [
-			'content'                 => view($name, $data),
-			'title'                   => $data['title'] ?? '',
-			'theme'                   => Theme::theme(),
-			'tree'                    => $this->tree(),
-			'theme_head'              => $theme->head($this),
-			'theme_body_header'       => $theme->bodyHeader(),
-			'theme_footer_container'  => $theme->footerContainer(),
-			'theme_footer_javascript' => $theme->hookFooterExtraJavascript(),
-			'javascript'              => $this->getJavascript(),
+		// Render the view
+		$layout_data['content'] = view($view_name, $view_data);
 
-		]);
+		// Insert the view into the layout
+		$html = view($this->layout, $layout_data);
 
 		return new Response($html, $status);
 	}

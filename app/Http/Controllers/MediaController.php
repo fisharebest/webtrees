@@ -51,6 +51,7 @@ class MediaController extends AbstractBaseController {
 			'notes'       => $media->linkedNotes('OBJE'),
 			'sources'     => $media->linkedSources('OBJE'),
 			'title'       => $media->getFullName(),
+			'tree'        => $tree,
 		]);
 	}
 

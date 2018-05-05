@@ -78,6 +78,7 @@ class FamilyBookChartController extends AbstractChartController {
 			'minimum_generations' => $minimum_generations,
 			'show_spouse'         => $show_spouse,
 			'title'               => $title,
+			'tree'                => $tree,
 		]);
 	}
 
@@ -120,7 +121,7 @@ class FamilyBookChartController extends AbstractChartController {
 		$this->descent     = $generations;
 		$this->generations = $book_size;
 
-		$this->bhalfheight = $this->box->height / 2;
+		$this->bhalfheight  = $this->box->height / 2;
 		$this->dgenerations = $this->maxDescendencyGenerations($individual->getXref(), 0);
 
 		if ($this->dgenerations < 1) {
@@ -169,7 +170,7 @@ class FamilyBookChartController extends AbstractChartController {
 				echo '<table cellspacing="0" cellpadding="0" border="0" >';
 				foreach ($children as $i => $child) {
 					echo '<tr><td>';
-					$kids = $this->printDescendency($child, $generation + 1);
+					$kids    = $this->printDescendency($child, $generation + 1);
 					$numkids += $kids;
 					echo '</td>';
 					// Print the lines
@@ -419,7 +420,7 @@ class FamilyBookChartController extends AbstractChartController {
 	 * Print a “Family Book” for an individual
 	 *
 	 * @param Individual $person
-	 * @param int    $descent_steps
+	 * @param int        $descent_steps
 	 */
 	private function printFamilyBook(Individual $person, $descent_steps) {
 		if ($descent_steps == 0) {
@@ -430,7 +431,8 @@ class FamilyBookChartController extends AbstractChartController {
 		if (1 || !empty($families)) {
 			echo
 			'<h3>',
-				/* I18N: %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),
+				/* I18N: %s is an individual’s name */
+			I18N::translate('Family of %s', $person->getFullName()),
 			'</h3>',
 			'<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
 			$this->dgenerations = $this->generations;

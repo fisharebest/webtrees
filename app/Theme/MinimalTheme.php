@@ -77,7 +77,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			self::STYLESHEET,
 		]);

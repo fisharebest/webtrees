@@ -16,11 +16,17 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Controller\ChartController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class InteractiveTreeModule
@@ -29,12 +35,14 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Interactive tree');
+		return /* I18N: Name of a module */
+			I18N::translate('Interactive tree');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Interactive tree” module */ I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
+		return /* I18N: Description of the “Interactive tree” module */
+			I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
 	/** {@inheritdoc} */
@@ -44,14 +52,14 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		$treeview        = new TreeView('tvTab');
+		$treeview = new TreeView('tvTab');
 		list($html, $js) = $treeview->drawViewport($individual, 3);
 
 		return view('tabs/treeview', [
 			'html'         => $html,
 			'js'           => $js,
-			'treeview_css' => $this->css(),
-			'treeview_js'  => $this->js(),
+			'treeview_css' => WT_MODULES_DIR . $this->getName() . '/css/treeview.css',
+			'treeview_js'  => WT_MODULES_DIR . $this->getName() . '/js/treeview.js',
 		]);
 	}
 
@@ -80,7 +88,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			e(route('module', ['module' => $this->getName(), 'action' => 'Treeview', 'xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
 			'menu-chart-tree',
 			['rel' => 'nofollow']
 		);
@@ -98,86 +106,65 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
+	 * @param Request $request
 	 *
-	 * @param string $mod_action
+	 * @return Response
 	 */
-	public function modAction($mod_action) {
-		global $controller, $WT_TREE;
+	public function getTreeviewAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
 
-		switch ($mod_action) {
-			case 'treeview':
-				$controller = new ChartController;
-				$tv         = new TreeView('tv');
+		$xref = $request->get('xref');
 
-				$person = $controller->getSignificantIndividual();
+		$individual = Individual::getInstance($xref, $tree);
+		$controller = new ChartController;
+		$tv         = new TreeView('tv');
 
-				list($html, $js) = $tv->drawViewport($person, 4);
+		list($html, $js) = $tv->drawViewport($individual, 4);
 
-				$controller
-					->setPageTitle(I18N::translate('Interactive tree of %s', $person->getFullName()))
-					->pageHeader()
-					->addExternalJavascript($this->js())
-					->addInlineJavascript($js)
-					->addInlineJavascript('
-					if (document.createStyleSheet) {
-						document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
-					} else {
-						$("head").append(\'<link rel="stylesheet" type="text/css" href="' . $this->css() . '">\');
-					}
-				');
+		$title = I18N::translate('Interactive tree of %s', $individual->getFullName());
 
-				echo view('interactive-tree-page', [
-					'title'      => $controller->getPageTitle(),
-					'individual' => $controller->root,
-					'html'       => $html,
-					//'css'        => $this->css(),
-					//'js'         => $this->js(),
-				]);
+		return $this->viewResponse('interactive-tree-page', [
+			'title'      => $title,
+			'individual' => $controller->root,
+			'js'         => $js,
+			'html'       => $html,
+			'tree'       => $tree,
+		]);
+	}
 
-				break;
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getDetailsAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
 
-			case 'getDetails':
-				header('Content-Type: text/html; charset=UTF-8');
-				$pid        = Filter::get('pid', WT_REGEX_XREF);
-				$i          = Filter::get('instance');
-				$tv         = new TreeView($i);
-				$individual = Individual::getInstance($pid, $WT_TREE);
-				if ($individual) {
-					echo $tv->getDetails($individual);
-				}
-				break;
+		$pid        = $request->get('pid', WT_REGEX_XREF);
+		$individual = Individual::getInstance($pid, $tree);
 
-			case 'getPersons':
-				header('Content-Type: text/html; charset=UTF-8');
-				$q  = Filter::get('q');
-				$i  = Filter::get('instance');
-				$tv = new TreeView($i);
-				echo $tv->getPersons($q);
-				break;
+		if ($individual && $individual->canShow()) {
+			$instance = $request->get('instance');
+			$treeview = new TreeView($instance);
 
-			default:
-				http_response_code(404);
-				break;
+			return new Response($treeview->getDetails($individual));
+		} else {
+			throw new NotFoundHttpException;
 		}
 	}
 
 	/**
-	 * URL for our style sheet.
+	 * @param Request $request
 	 *
-	 * @return string
+	 * @return Response
 	 */
-	public function css() {
-		return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
-	}
+	public function getPersonsAction(Request $request): Response {
+		$q  = $request->get('q');
+		$instance = $request->get('instance');
+		$treeview = new TreeView($instance);
 
-	/**
-	 * URL for our JavaScript.
-	 *
-	 * @return string
-	 */
-	public function js() {
-		return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+		return new Response($treeview->getPersons($q));
 	}
 }

@@ -48,6 +48,7 @@ class RepositoryController extends AbstractBaseController {
 			'repository'  => $record,
 			'sources'     => $record->linkedSources('REPO'),
 			'title'       => $record->getFullName(),
+			'tree'        => $tree,
 		]);
 	}
 

@@ -45,7 +45,7 @@ class MyTheme extends WebtreesTheme {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			// Put a version number in the URL, for efficient browser caching.
 			WT_BASE_URL . 'themes/' . self::THEME_DIR . '/css-1.0.0/style.css',

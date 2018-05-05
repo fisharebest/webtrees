@@ -48,6 +48,7 @@ class FamilyController extends AbstractBaseController {
 			'record'      => $family,
 			'significant' => $this->significant($family),
 			'title'       => $family->getFullName(),
+			'tree'        => $tree,
 		]);
 	}
 
@@ -63,7 +64,7 @@ class FamilyController extends AbstractBaseController {
 		$significant = (object) [
 			'family'     => $family,
 			'individual' => null,
-			'surname'    => ''
+			'surname'    => '',
 		];
 
 		foreach ($family->getSpouses() + $family->getChildren() as $individual) {

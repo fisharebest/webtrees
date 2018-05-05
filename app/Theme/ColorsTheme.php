@@ -96,7 +96,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 *
 	 * @return Menu[]
 	 */
-	protected function secondaryMenu() {
+	public function secondaryMenu() {
 		return array_filter([
 			$this->menuPendingChanges(),
 			$this->menuMyPages(),
@@ -114,7 +114,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 *
 	 * @return Menu
 	 */
-	protected function menuPalette() {
+	public function menuPalette() {
 		if ($this->tree !== null && Site::getPreference('ALLOW_USER_THEMES') === '1' && $this->tree->getPreference('ALLOW_THEME_DROPDOWN') === '1') {
 			$menu = new Menu(/* I18N: A colour scheme */
 				I18N::translate('Palette'), '#', 'menu-color');
@@ -141,7 +141,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			'themes/colors/css-2.0.0/style.css',
 			'themes/colors/css-2.0.0/palette/' . $this->palette . '.css',

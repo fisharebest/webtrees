@@ -34,7 +34,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string
 	 */
-	protected function formatSecondaryMenu() {
+	public function formatSecondaryMenu() {
 		return
 			'<ul class="nav wt-secondary-menu justify-content-end">' .
 			implode('', array_map(function (Menu $menu) {
@@ -51,7 +51,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string
 	 */
-	protected function formQuickSearchFields() {
+	public function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
 	}
@@ -105,7 +105,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			self::STYLESHEET,
 		]);

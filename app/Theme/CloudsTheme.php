@@ -81,7 +81,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string
 	 */
-	protected function primaryMenuContent(array $menus) {
+	public function primaryMenuContent(array $menus) {
 		return implode('', array_map(function (Menu $menu) {
 			if (!empty($menu->getSubmenus())) {
 				// Insert a dummy menu / label into the submenu
@@ -99,7 +99,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 		return array_merge(parent::stylesheets(), [
 			self::STYLESHEET,
 		]);

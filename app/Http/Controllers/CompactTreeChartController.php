@@ -48,8 +48,9 @@ class CompactTreeChartController extends AbstractChartController {
 		$title = /* I18N: %s is an individual’s name */ I18N::translate('Compact tree of %s', $individual->getFullName());
 
 		return $this->viewResponse('compact-tree-page', [
-			'title'      => $title,
 			'individual' => $individual,
+			'title'      => $title,
+			'tree'       => $tree,
 		]);
 	}
 

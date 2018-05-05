@@ -171,6 +171,7 @@ class ReportEngineController extends AbstractBaseController {
 			'inputs'      => $inputs,
 			'report'      => $report,
 			'title'       => $title,
+			'tree'        => $tree,
 		]);
 
 	}

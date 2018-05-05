@@ -135,7 +135,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function accessibilityLinks() {
+	public function accessibilityLinks() {
 		return
 			'<div class="wt-accessibility-links">' .
 			'<a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">' .
@@ -149,7 +149,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analytics() {
+	public function analytics() {
 		if ($this->themeId() === '_administration' || !empty($_SERVER['HTTP_DNT'])) {
 			return '';
 		} else {
@@ -181,7 +181,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analyticsBingWebmaster($verification_id) {
+	public function analyticsBingWebmaster($verification_id) {
 		// Only need to add this to the home page.
 		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
 			return '<meta name="msvalidate.01" content="' . $verification_id . '">';
@@ -197,7 +197,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analyticsGoogleWebmaster($verification_id) {
+	public function analyticsGoogleWebmaster($verification_id) {
 		// Only need to add this to the home page.
 		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
 			return '<meta name="google-site-verification" content="' . $verification_id . '">';
@@ -215,7 +215,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analyticsGoogleTracker($analytics_id) {
+	public function analyticsGoogleTracker($analytics_id) {
 		if ($analytics_id) {
 			// Add extra dimensions (i.e. filtering categories)
 			$dimensions = (object) [
@@ -243,7 +243,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analyticsPiwikTracker($url, $site_id) {
+	public function analyticsPiwikTracker($url, $site_id) {
 		$url = preg_replace(['/^https?:\/\//', '/\/$/'], '', $url);
 
 		if ($url && $site_id) {
@@ -271,7 +271,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function analyticsStatcounterTracker($project_id, $security_id) {
+	public function analyticsStatcounterTracker($project_id, $security_id) {
 		if ($project_id && $security_id) {
 			return
 				'<script>' .
@@ -348,7 +348,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function contactLinkEverything(User $user) {
+	public function contactLinkEverything(User $user) {
 		return I18N::translate('For technical support or genealogy questions contact %s.', $this->contactLink($user));
 	}
 
@@ -359,7 +359,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function contactLinkGenealogy(User $user) {
+	public function contactLinkGenealogy(User $user) {
 		return I18N::translate('For help with genealogy questions contact %s.', $this->contactLink($user));
 	}
 
@@ -370,7 +370,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function contactLinkTechnical(User $user) {
+	public function contactLinkTechnical(User $user) {
 		return I18N::translate('For technical support and information contact %s.', $this->contactLink($user));
 	}
 
@@ -379,7 +379,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function contactLinks() {
+	public function contactLinks() {
 		$contact_user   = User::find($this->tree->getPreference('CONTACT_USER_ID'));
 		$webmaster_user = User::find($this->tree->getPreference('WEBMASTER_USER_ID'));
 
@@ -432,7 +432,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function favicon() {
+	public function favicon() {
 		return
 			'<link rel="icon" href="' . self::ASSET_DIR . 'favicon.png" type="image/png">' .
 			'<link rel="icon" type="image/png" href="' . self::ASSET_DIR . 'favicon192.png" sizes="192x192">' .
@@ -446,7 +446,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function flashMessageContainer(stdClass $message) {
+	public function flashMessageContainer(stdClass $message) {
 		return $this->htmlAlert($message->text, $message->status, true);
 	}
 
@@ -459,7 +459,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function flashMessagesContainer(array $messages) {
+	public function flashMessagesContainer(array $messages) {
 		$html = '';
 		foreach ($messages as $message) {
 			$html .= $this->flashMessageContainer($message);
@@ -491,7 +491,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function footerContent() {
+	public function footerContent() {
 		return
 			$this->formatContactLinks() .
 			$this->logoPoweredBy() .
@@ -504,7 +504,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatContactLinks() {
+	public function formatContactLinks() {
 		if ($this->tree) {
 			return '<div class="wt-contact-links">' . $this->contactLinks() . '</div>';
 		} else {
@@ -519,7 +519,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatPageViews($count) {
+	public function formatPageViews($count) {
 		if ($count > 0) {
 			return
 				'<div class="wt-page-views">' .
@@ -536,7 +536,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatPendingChangesLink() {
+	public function formatPendingChangesLink() {
 		if ($this->pendingChangesExist()) {
 			return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
 		} else {
@@ -549,7 +549,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formQuickSearch() {
+	public function formQuickSearch() {
 		if ($this->tree) {
 			return
 				'<div class="col wt-header-search">' .
@@ -569,7 +569,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formQuickSearchFields() {
+	public function formQuickSearchFields() {
 		return
 			'<div class="input-group">' .
 			'<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
@@ -585,7 +585,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatTreeTitle() {
+	public function formatTreeTitle() {
 		if ($this->tree) {
 			return '<h1 class="col wt-site-title">' . e($this->tree->getTitle()) . '</h1>';
 		} else {
@@ -598,7 +598,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatSecondaryMenu() {
+	public function formatSecondaryMenu() {
 		return
 			'<ul class="nav wt-secondary-menu">' .
 			implode('', array_map(function (Menu $menu) {
@@ -614,7 +614,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function formatSecondaryMenuItem(Menu $menu) {
+	public function formatSecondaryMenuItem(Menu $menu) {
 		return $menu->bootstrap4();
 	}
 
@@ -644,7 +644,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function headContents(PageController $controller) {
+	public function headContents(PageController $controller) {
 		// The title often includes the names of records, which may include HTML markup.
 		$title = strip_tags($controller->getPageTitle());
 
@@ -678,7 +678,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function headerContent() {
+	public function headerContent() {
 		return
 			$this->accessibilityLinks() .
 			$this->logoHeader() .
@@ -938,7 +938,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function individualBoxFacts(Individual $individual) {
+	public function individualBoxFacts(Individual $individual) {
 		$html = '';
 
 		$opt_tags = preg_split('/\W/', $individual->getTree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
@@ -991,7 +991,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function individualBoxLdsSummary(Individual $individual) {
+	public function individualBoxLdsSummary(Individual $individual) {
 		if ($individual->getTree()->getPreference('SHOW_LDS_AT_GLANCE')) {
 			$BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
 			$ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
@@ -1033,7 +1033,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function individualBoxMenuCharts(Individual $individual) {
+	public function individualBoxMenuCharts(Individual $individual) {
 		$menus = [];
 		foreach (Module::getActiveCharts($this->tree) as $chart) {
 			$menu = $chart->getBoxChartMenu($individual);
@@ -1056,7 +1056,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function individualBoxMenuFamilyLinks(Individual $individual) {
+	public function individualBoxMenuFamilyLinks(Individual $individual) {
 		$menus = [];
 
 		foreach ($individual->getSpouseFamilies() as $family) {
@@ -1082,7 +1082,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function individualBoxSexSymbol(Individual $individual) {
+	public function individualBoxSexSymbol(Individual $individual) {
 		if ($individual->getTree()->getPreference('PEDIGREE_SHOW_GENDER')) {
 			return $individual->sexImage('large');
 		} else {
@@ -1108,7 +1108,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function logoHeader() {
+	public function logoHeader() {
 		return '<div class="col wt-site-logo"></div>';
 	}
 
@@ -1117,7 +1117,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function logoPoweredBy() {
+	public function logoPoweredBy() {
 		return '<a href="' . WT_WEBTREES_URL . '" class="wt-powered-by-webtrees" title="' . WT_WEBTREES_URL . '" dir="ltr">' . WT_WEBTREES_URL . '</a>';
 	}
 
@@ -1126,7 +1126,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuCalendar() {
+	public function menuCalendar() {
 		return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', ['rel' => 'nofollow'], [
 			// Day view
 			new Menu(I18N::translate('Day'), e(route('calendar', ['view' => 'day', 'ged' => $this->tree->getName()])), 'menu-calendar-day', ['rel' => 'nofollow']),
@@ -1142,7 +1142,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuChangeBlocks() {
+	public function menuChangeBlocks() {
 		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('route') === 'user-page') {
 			return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
 		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree) && Filter::get('route') === 'tree-page') {
@@ -1159,7 +1159,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuChart(Individual $individual) {
+	public function menuChart(Individual $individual) {
 		$submenus = [];
 		foreach (Module::getActiveCharts($this->tree) as $chart) {
 			$menu = $chart->getChartMenu($individual);
@@ -1188,7 +1188,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartAncestors(Individual $individual) {
+	public function menuChartAncestors(Individual $individual) {
 		$chart = new AncestorsChartModule(WT_ROOT . WT_MODULES_DIR . 'ancestors_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1203,7 +1203,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartCompact(Individual $individual) {
+	public function menuChartCompact(Individual $individual) {
 		$chart = new CompactTreeChartModule(WT_ROOT . WT_MODULES_DIR . 'compact_tree_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1218,7 +1218,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartDescendants(Individual $individual) {
+	public function menuChartDescendants(Individual $individual) {
 		$chart = new DescendancyChartModule(WT_ROOT . WT_MODULES_DIR . 'descendancy_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1233,7 +1233,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartFamilyBook(Individual $individual) {
+	public function menuChartFamilyBook(Individual $individual) {
 		$chart = new FamilyBookChartModule(WT_ROOT . WT_MODULES_DIR . 'family_book_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1250,7 +1250,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartFanChart(Individual $individual) {
+	public function menuChartFanChart(Individual $individual) {
 		$chart = new FanChartModule(WT_ROOT . WT_MODULES_DIR . 'fan_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1265,7 +1265,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartInteractiveTree(Individual $individual) {
+	public function menuChartInteractiveTree(Individual $individual) {
 		$chart = new InteractiveTreeModule(WT_ROOT . WT_MODULES_DIR . 'tree');
 
 		return $chart->getChartMenu($individual);
@@ -1280,7 +1280,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartHourglass(Individual $individual) {
+	public function menuChartHourglass(Individual $individual) {
 		$chart = new HourglassChartModule(WT_ROOT . WT_MODULES_DIR . 'hourglass_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1295,7 +1295,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartLifespan(Individual $individual) {
+	public function menuChartLifespan(Individual $individual) {
 		$chart = new LifespansChartModule(WT_ROOT . WT_MODULES_DIR . 'lifespans_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1310,7 +1310,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartPedigree(Individual $individual) {
+	public function menuChartPedigree(Individual $individual) {
 		$chart = new PedigreeChartModule(WT_ROOT . WT_MODULES_DIR . 'pedigree_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1325,7 +1325,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartPedigreeMap(Individual $individual) {
+	public function menuChartPedigreeMap(Individual $individual) {
 		$chart = new GoogleMapsModule(WT_ROOT . WT_MODULES_DIR . 'googlemap');
 
 		return $chart->getChartMenu($individual);
@@ -1340,7 +1340,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartRelationship(Individual $individual) {
+	public function menuChartRelationship(Individual $individual) {
 		$chart = new RelationshipsChartModule(WT_ROOT . WT_MODULES_DIR . 'relationships_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1353,7 +1353,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartStatistics() {
+	public function menuChartStatistics() {
 		$chart = new StatisticsChartModule(WT_ROOT . WT_MODULES_DIR . 'statistics_chart');
 
 		return $chart->getChartMenu(null);
@@ -1368,7 +1368,7 @@ abstract class AbstractTheme {
 	 *
 	 * @deprecated
 	 */
-	protected function menuChartTimeline(Individual $individual) {
+	public function menuChartTimeline(Individual $individual) {
 		$chart = new TimelineChartModule(WT_ROOT . WT_MODULES_DIR . 'timeline_chart');
 
 		return $chart->getChartMenu($individual);
@@ -1379,7 +1379,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuControlPanel() {
+	public function menuControlPanel() {
 		if (Auth::isAdmin()) {
 			return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
 		} elseif (Auth::isManager($this->tree)) {
@@ -1394,7 +1394,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuFavorites() {
+	public function menuFavorites() {
 		global $controller;
 
 		$show_user_favorites = $this->tree && Module::getModuleByName('user_favorites') && Auth::check();
@@ -1448,7 +1448,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuHomePage() {
+	public function menuHomePage() {
 		if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
 			return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->getName()]), 'menu-tree');
 		} else {
@@ -1471,7 +1471,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuLanguages() {
+	public function menuLanguages() {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
 		foreach (I18N::activeLocales() as $locale) {
@@ -1497,7 +1497,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuLists($surname) {
+	public function menuLists($surname) {
 		// Do not show empty lists
 		$row = Database::prepare(
 			"SELECT SQL_CACHE" .
@@ -1545,7 +1545,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsBranches($surname) {
+	public function menuListsBranches($surname) {
 		return new Menu(I18N::translate('Branches'), e(route('branches', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-branches', ['rel' => 'nofollow']);
 	}
 
@@ -1556,7 +1556,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsFamilies($surname) {
+	public function menuListsFamilies($surname) {
 		return new Menu(I18N::translate('Families'), e(route('family-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
@@ -1567,7 +1567,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsIndividuals($surname) {
+	public function menuListsIndividuals($surname) {
 		return new Menu(I18N::translate('Individuals'), e(route('individual-list', ['ged' => $this->tree->getName(), 'surname' => $surname])), 'menu-list-indi');
 	}
 
@@ -1576,7 +1576,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsMedia() {
+	public function menuListsMedia() {
 		return new Menu(I18N::translate('Media objects'), e(route('media-list', ['ged' => $this->tree->getName()])), 'menu-list-obje', ['rel' => 'nofollow']);
 	}
 
@@ -1585,7 +1585,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsNotes() {
+	public function menuListsNotes() {
 		return new Menu(I18N::translate('Shared notes'), e(route('note-list', ['ged' => $this->tree->getName()])), 'menu-list-note', ['rel' => 'nofollow']);
 	}
 
@@ -1594,7 +1594,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsPlaces() {
+	public function menuListsPlaces() {
 		return new Menu(I18N::translate('Place hierarchy'), e(Html::url('placelist.php' ,['ged' => $this->tree->getName()])), 'menu-list-plac', ['rel' => 'nofollow']);
 	}
 
@@ -1603,7 +1603,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsRepositories() {
+	public function menuListsRepositories() {
 		return new Menu(I18N::translate('Repositories'), e(route('repository-list', ['ged' => $this->tree->getName()])), 'menu-list-repo', ['rel' => 'nofollow']);
 	}
 
@@ -1612,7 +1612,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuListsSources() {
+	public function menuListsSources() {
 		return new Menu(
 			I18N::translate('Sources'), e(route('source-list', ['ged' => $this->tree->getName()])), 'menu-list-sour', ['rel' => 'nofollow']);
 	}
@@ -1622,7 +1622,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuLogin() {
+	public function menuLogin() {
 		if (Auth::check()) {
 			return null;
 		} else {
@@ -1640,7 +1640,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuLogout() {
+	public function menuLogout() {
 		if (Auth::check()) {
 			return new Menu(I18N::translate('Sign out'), e(route('logout')), 'menu-logout');
 		} else {
@@ -1653,7 +1653,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function menuModules() {
+	public function menuModules() {
 		$menus = [];
 		foreach (Module::getActiveMenus($this->tree) as $module) {
 			$menus[] = $module->getMenu();
@@ -1667,7 +1667,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuMyAccount() {
+	public function menuMyAccount() {
 		if (Auth::check()) {
 			return new Menu(I18N::translate('My account'), e(route('my-account', [])));
 		} else {
@@ -1680,7 +1680,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuMyIndividualRecord() {
+	public function menuMyIndividualRecord() {
 		$record = Individual::getInstance($this->tree->getUserPreference(Auth::user(), 'gedcomid'), $this->tree);
 
 		if ($record) {
@@ -1695,7 +1695,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuMyPage() {
+	public function menuMyPage() {
 		return new Menu(I18N::translate('My page'), route('user-page'), 'menu-mypage');
 	}
 
@@ -1704,7 +1704,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuMyPages() {
+	public function menuMyPages() {
 		if (Auth::id() && $this->tree !== null) {
 			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
 				$this->menuMyPage(),
@@ -1724,7 +1724,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuMyPedigree() {
+	public function menuMyPedigree() {
 		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
 		if ($gedcomid && Module::isActiveChart($this->tree, 'pedigree_chart')) {
@@ -1743,7 +1743,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuPendingChanges() {
+	public function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
 			$url = route('show-pending', [
 				'ged' => $this->tree ? $this->tree->getName() : '',
@@ -1761,7 +1761,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu|null
 	 */
-	protected function menuReports() {
+	public function menuReports() {
 		$submenus = [];
 		foreach (Module::getActiveReports($this->tree) as $report) {
 			$submenus[] = $report->getReportMenu($this->tree);
@@ -1779,7 +1779,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuSearch() {
+	public function menuSearch() {
 		return new Menu(I18N::translate('Search'), '#', 'menu-search', ['rel' => 'nofollow'], array_filter([
 			$this->menuSearchGeneral(),
 			$this->menuSearchPhonetic(),
@@ -1793,7 +1793,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuSearchGeneral() {
+	public function menuSearchGeneral() {
 		return new Menu(I18N::translate('General search'), e(route('search-general', ['ged' => $this->tree->getName()])), 'menu-search-general', ['rel' => 'nofollow']);
 	}
 
@@ -1802,7 +1802,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuSearchPhonetic() {
+	public function menuSearchPhonetic() {
 		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), e(route('search-phonetic', ['ged' => $this->tree->getName(), 'action' => 'soundex'])), 'menu-search-soundex', ['rel' => 'nofollow']);
 	}
 
@@ -1811,7 +1811,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuSearchAdvanced() {
+	public function menuSearchAdvanced() {
 		return new Menu(I18N::translate('Advanced search'), e(route('search-advanced', ['ged' => $this->tree->getName()])), 'menu-search-advanced', ['rel' => 'nofollow']);
 	}
 
@@ -1820,7 +1820,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuSearchAndReplace() {
+	public function menuSearchAndReplace() {
 		if (Auth::isEditor($this->tree)) {
 			return new Menu(I18N::translate('Search and replace'), e(route('search-replace', ['ged' => $this->tree->getName(), 'action' => 'replace'])), 'menu-search-replace');
 		} else {
@@ -1861,7 +1861,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaCharset() {
+	public function metaCharset() {
 		return '<meta charset="UTF-8">';
 	}
 
@@ -1870,7 +1870,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaCsrf() {
+	public function metaCsrf() {
 		return '<meta name="csrf" content="' . e(Filter::getCsrfToken()) . '">';
 	}
 
@@ -1881,7 +1881,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaDescription($description) {
+	public function metaDescription($description) {
 		if ($description) {
 			return '<meta name="description" content="' . $description . '">';
 		} else {
@@ -1896,7 +1896,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaGenerator($generator) {
+	public function metaGenerator($generator) {
 		if ($generator) {
 			return '<meta name="generator" content="' . $generator . '">';
 		} else {
@@ -1911,7 +1911,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaRobots($robots) {
+	public function metaRobots($robots) {
 		if ($robots) {
 			return '<meta name="robots" content="' . $robots . '">';
 		} else {
@@ -1924,7 +1924,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function metaViewport() {
+	public function metaViewport() {
 		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
 	}
 
@@ -1935,7 +1935,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return int Number of views, or zero for pages that aren't logged.
 	 */
-	protected function pageViews(PageController $controller) {
+	public function pageViews(PageController $controller) {
 		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
 			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
 				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->record->getXref());
@@ -2006,7 +2006,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return bool
 	 */
-	protected function pendingChangesExist() {
+	public function pendingChangesExist() {
 		return $this->tree && $this->tree->hasPendingEdit() && Auth::isModerator($this->tree);
 	}
 
@@ -2015,7 +2015,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function pendingChangesLink() {
+	public function pendingChangesLink() {
 		return '<a href="' . e(route('show-pending', ['ged' => $this->tree->getName()])) . '">' . $this->pendingChangesLinkText() . '</a>';
 	}
 
@@ -2024,7 +2024,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function pendingChangesLinkText() {
+	public function pendingChangesLinkText() {
 		return I18N::translate('There are pending changes for you to moderate.');
 	}
 
@@ -2033,7 +2033,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function primaryMenu() {
+	public function primaryMenu() {
 		global $controller;
 
 		if ($this->tree) {
@@ -2060,7 +2060,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function primaryMenuContainer(array $menus) {
+	public function primaryMenuContainer(array $menus) {
 		return '<nav class="col wt-primary-navigation"><ul class="nav wt-primary-menu">' . $this->primaryMenuContent($menus) . '</ul></nav>';
 	}
 
@@ -2071,7 +2071,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function primaryMenuContent(array $menus) {
+	public function primaryMenuContent(array $menus) {
 		return implode('', array_map(function (Menu $menu) {
 			return $menu->bootstrap4();
 		}, $menus));
@@ -2082,7 +2082,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function secondaryMenu() {
+	public function secondaryMenu() {
 		return array_filter([
 			$this->menuPendingChanges(),
 			$this->menuMyPages(),
@@ -2101,7 +2101,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function secondaryMenuContainer(array $menus) {
+	public function secondaryMenuContainer(array $menus) {
 		return '<div class="col wt-secondary-navigation"><ul class="nav wt-secondary-menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
 	}
 
@@ -2112,7 +2112,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function secondaryMenuContent(array $menus) {
+	public function secondaryMenuContent(array $menus) {
 		return implode('', array_map(function (Menu $menu) {
 			return $menu->bootstrap4();
 		}, $menus));
@@ -2130,7 +2130,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string[]
 	 */
-	protected function stylesheets() {
+	public function stylesheets() {
 
 		if (I18N::direction() === 'rtl') {
 			$stylesheets = [
@@ -2170,7 +2170,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return string
 	 */
-	protected function title($title) {
+	public function title($title) {
 		return '<title>' . e($title) . '</title>';
 	}
 }

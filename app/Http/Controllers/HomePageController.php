@@ -513,6 +513,7 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
+			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);

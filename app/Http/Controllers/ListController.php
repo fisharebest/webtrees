@@ -343,8 +343,9 @@ class ListController extends AbstractBaseController {
 
 		// @TODO convert this to use views
 		return $this->viewResponse('individual-list-page', [
-			'title'   => $title,
 			'content' => $html,
+			'title'   => $title,
+			'tree'       => $tree,
 		]);
 	}
 
@@ -424,6 +425,7 @@ class ListController extends AbstractBaseController {
 		return $this->viewResponse('note-list-page', [
 			'notes' => $notes,
 			'title' => I18N::translate('Shared notes'),
+			'tree'       => $tree,
 		]);
 	}
 
@@ -443,6 +445,7 @@ class ListController extends AbstractBaseController {
 		return $this->viewResponse('repository-list-page', [
 			'repositories' => $repositories,
 			'title'        => I18N::translate('Repositories'),
+			'tree'       => $tree,
 		]);
 	}
 
@@ -462,6 +465,7 @@ class ListController extends AbstractBaseController {
 		return $this->viewResponse('source-list-page', [
 			'sources' => $sources,
 			'title'   => I18N::translate('Sources'),
+			'tree'       => $tree,
 		]);
 	}
 

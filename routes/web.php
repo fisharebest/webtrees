@@ -222,13 +222,13 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:search-advanced'        => 'SearchController@advanced',
 		'GET:search-general'         => 'SearchController@general',
 		'GET:search-phonetic'        => 'SearchController@phonetic',
+		'GET:module'                 => 'ModuleController@action',
+		'POST:module'                => 'ModuleController@action',
 	];
 }
 
 // Public routes (that do not need a tree).
 $routes += [
-	'GET:module'           => 'ModuleController@action',
-	'POST:module'          => 'ModuleController@action',
 	'GET:login'            => 'Auth\\LoginController@loginPage',
 	'POST:login'           => 'Auth\\LoginController@loginAction',
 	'GET:logout'           => 'Auth\\LoginController@logoutAction',

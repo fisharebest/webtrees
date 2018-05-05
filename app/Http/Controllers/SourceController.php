@@ -51,6 +51,7 @@ class SourceController extends AbstractBaseController {
 			'media_objects' => $record->linkedMedia('SOUR'),
 			'source'        => $record,
 			'title'         => $record->getFullName(),
+			'tree'          => $tree,
 		]);
 	}
 
