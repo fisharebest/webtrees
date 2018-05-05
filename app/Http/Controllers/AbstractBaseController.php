@@ -173,7 +173,7 @@ abstract class AbstractBaseController extends LegacyBaseController {
 
 		$html = view($this->layout, [
 			'content'                 => view($name, $data),
-			'title'                   => $data['title'],
+			'title'                   => $data['title'] ?? '',
 			'theme'                   => Theme::theme(),
 			'tree'                    => $this->tree(),
 			'theme_head'              => $theme->head($this),

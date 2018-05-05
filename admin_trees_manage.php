@@ -384,10 +384,10 @@ echo Bootstrap4::breadcrumbs([
 								<?= I18N::translate('Calculating…') ?>
 							</div>
 						</div>
-						<?php $controller->addInlineJavascript('$("#import' . $tree->getTreeId() . '").load("import.php?gedcom_id=' . $tree->getTreeId() . '");');
+						<?php $controller->addInlineJavascript('$("#import' . $tree->getTreeId() . '").load("' . route('import', ['ged' => $tree->getName()]) . '", {});');
 					}
 					?>
-					<div class="row<?= $importing ? ' hidden' : '' ?>" id="actions<?= $tree->getTreeId() ?>">
+					<div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $tree->getTreeId() ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
 							<a href="<?= e(route('tree-page', ['ged' => $tree->getName()])) ?>">

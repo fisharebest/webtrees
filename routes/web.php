@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
+
 $routes = [];
 
 // Admin routes.
@@ -63,6 +65,7 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
 		'GET:admin-changes-log-data'      => 'AdminController@changesLogData',
 		'GET:admin-changes-log-download'  => 'AdminController@changesLogDownload',
 		'GET:tree-page-edit'              => 'HomePageController@treePageEdit',
+		'POST:import'                     => 'GedcomFileController@import',
 		'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
 		'GET:merge-records'               => 'AdminController@mergeRecords',
 		'POST:merge-records'              => 'AdminController@mergeRecordsAction',
