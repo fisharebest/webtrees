@@ -553,8 +553,9 @@ abstract class AbstractTheme {
 		if ($this->tree) {
 			return
 				'<div class="col wt-header-search">' .
-				'<form class="wt-header-search-form" role="search" action="' . e(route('search-quick', ['ged' => $this->tree->getName()])) . '">' .
-				'<input type="hidden" name="action" value="header">' .
+				'<form class="wt-header-search-form" role="search">' .
+				'<input type="hidden" name="route" value="search-quick">' .
+				'<input type="hidden" name="ged" value="' . e($this->tree->getName()) . '">' .
 				$this->formQuickSearchFields() .
 				'</form>' .
 				'</div>';
