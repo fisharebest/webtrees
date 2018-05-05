@@ -32,6 +32,9 @@ use PDOException;
  * are also used elsewhere in the code.
  */
 class Stats {
+	// Used in Google charts
+	const GOOGLE_CHART_ENCODING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
+	
 	/** @var Tree Generate statistics for a specified tree. */
 	private $tree;
 
@@ -1724,7 +1727,7 @@ class Stats {
 		$chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
 		$chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
 		foreach ($surn_countries as $count) {
-			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
+			$chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
 		}
 		$chart = '<div id="google_charts" class="center">';
 		$chart .= '<p>' . $chart_title . '</p>';
@@ -6362,7 +6365,7 @@ class Stats {
 	 * @return string
 	 */
 	private function arrayToExtendedEncoding($a) {
-		$xencoding = WT_GOOGLE_CHART_ENCODING;
+		$xencoding = self::GOOGLE_CHART_ENCODING;
 
 		$encoding = '';
 		foreach ($a as $value) {

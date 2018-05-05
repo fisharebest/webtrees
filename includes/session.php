@@ -80,9 +80,6 @@ define('WT_EOL', "\r\n");
 // Gedcom specification/definitions
 define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 
-// Used in Google charts
-define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
-
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 
