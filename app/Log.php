@@ -44,7 +44,6 @@ class Log {
 			$tree = $WT_TREE;
 		}
 
-		//$request = Request::createFromGlobals();
 		$request = Request::create('', '', [], [], [], $_SERVER);
 
 		Database::prepare(
