@@ -1430,9 +1430,18 @@ abstract class AbstractTheme {
 			}
 		}
 
+		// @TODO we no longer have a global $controller
 		if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
+			$url = route('module', [
+				'module' => 'user_favorites',
+				'action' => 'AddFavorite',
+				'ged'    => $this->tree->getName(),
+				'xref'   => $controller->record->getXref(),
+			]);
+
 			$submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', [
-				'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite", {xref:"' . $controller->record->getXref() . '"},function(){location.reload();})',
+				'data-url' => $url,
+				'onclick'  => 'jQuery.post(this.dataset.url,function() {location.reload();})',
 			]);
 		}
 

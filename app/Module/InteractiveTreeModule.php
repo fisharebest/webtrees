@@ -15,14 +15,10 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Controller\ChartController;
-use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -117,7 +113,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		$xref = $request->get('xref');
 
 		$individual = Individual::getInstance($xref, $tree);
-		$controller = new ChartController;
 		$tv         = new TreeView('tv');
 
 		list($html, $js) = $tv->drawViewport($individual, 4);
@@ -126,7 +121,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 		return $this->viewResponse('interactive-tree-page', [
 			'title'      => $title,
-			'individual' => $controller->root,
+			'individual' => $individual,
 			'js'         => $js,
 			'html'       => $html,
 			'tree'       => $tree,

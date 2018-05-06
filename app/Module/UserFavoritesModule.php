@@ -17,13 +17,13 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use PDO;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserFavoritesModule
@@ -81,31 +81,32 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
+	 * @param Request $request
 	 *
-	 * @param string $mod_action
+	 * @return Response
 	 */
-	public function modAction($mod_action) {
-		global $WT_TREE;
+	public function postAddFavoriteAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
 
-		switch ($mod_action) {
-			case 'menu-add-favorite':
-				// Process the "add to user favorites" menu item on indi/fam/etc. pages
-				$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
-				if (Auth::check() && $record->canShowName()) {
-					self::addFavorite([
-						'user_id'   => Auth::id(),
-						'gedcom_id' => $record->getTree()->getTreeId(),
-						'gid'       => $record->getXref(),
-						'type'      => $record::RECORD_TYPE,
-						'url'       => null,
-						'note'      => null,
-						'title'     => null,
-					]);
-					FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
-				}
-				break;
+		$xref = $request->get('xref');
+
+		$record = GedcomRecord::getInstance($xref, $tree);
+
+		if (Auth::check() && $record->canShowName()) {
+			self::addFavorite([
+				'user_id'   => Auth::id(),
+				'gedcom_id' => $record->getTree()->getTreeId(),
+				'gid'       => $record->getXref(),
+				'type'      => $record::RECORD_TYPE,
+				'url'       => null,
+				'note'      => null,
+				'title'     => null,
+			]);
+
+			FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 		}
+
+		return new Response;
 	}
 }
