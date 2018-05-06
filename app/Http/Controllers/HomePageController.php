@@ -48,6 +48,7 @@ class HomePageController extends AbstractBaseController {
 	public function treePageBlockEdit(Request $request): Response {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
+
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->treeBlock($request);
 		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
@@ -57,6 +58,7 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
+			'tree'       => $tree,
 		]);
 	}
 
@@ -127,6 +129,7 @@ class HomePageController extends AbstractBaseController {
 	public function userPageBlockEdit(Request $request): Response {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
+
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->userBlock($request);
 		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
@@ -136,6 +139,7 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('user-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
+			'tree'       => $tree,
 		]);
 	}
 
@@ -274,9 +278,14 @@ class HomePageController extends AbstractBaseController {
 	/**
 	 * Show a form to edit the default blocks for new trees.
 	 *
+	 * @param Request $request
+	 *
 	 * @return Response
 	 */
-	public function treePageDefaultEdit(): Response {
+	public function treePageDefaultEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$main_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'main');
 		$side_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableTreeBlocks();
@@ -290,6 +299,7 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
+			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -335,6 +345,7 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
+			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -449,9 +460,14 @@ class HomePageController extends AbstractBaseController {
 	/**
 	 * Show a form to edit the default blocks for new uesrs.
 	 *
+	 * @param Request $request
+	 *
 	 * @return Response
 	 */
-	public function userPageDefaultEdit(): Response {
+	public function userPageDefaultEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$main_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'main');
 		$side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
@@ -465,6 +481,7 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
+			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -556,6 +573,9 @@ class HomePageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function userPageUserEdit(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$user_id     = (int) $request->get('user_id');
 		$user        = User::find($user_id);
 		$main_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'main');
@@ -571,6 +591,7 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
+			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
