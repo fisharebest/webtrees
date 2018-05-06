@@ -2639,6 +2639,7 @@ div.faq_body {
 
 .sb_desc_indi_li {
 	list-style-type: none;
+	margin-left: 5px;
 }
 
 .desc_tree_div {
@@ -2650,6 +2651,10 @@ div.faq_body {
 	margin-left: 10px;
 	margin-top: 0;
 	margin-right: 0;
+}
+
+[dir=rtl] .sb_desc_indi_li {
+	margin-right: 5px;
 }
 
 [dir=rtl] #sb_desc_content {
