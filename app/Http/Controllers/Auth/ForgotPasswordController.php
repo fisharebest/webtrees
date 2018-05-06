@@ -40,10 +40,14 @@ class ForgotPasswordController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function forgotPasswordPage(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$title = I18N::translate('Request a new password');
 
 		return $this->viewResponse('forgot-password-page', [
 			'title' => $title,
+			'tree'  => $tree,
 		]);
 	}
 

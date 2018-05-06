@@ -46,6 +46,9 @@ class RegisterController extends AbstractBaseController {
 	 * @throws NotFoundHttpException
 	 */
 	public function registerPage(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$this->checkRegistrationAllowed();
 
 		$comments = $request->get('comments', '');
@@ -63,6 +66,7 @@ class RegisterController extends AbstractBaseController {
 			'realname'     => $realname,
 			'show_caution' => $show_caution,
 			'title'        => $title,
+			'tree'         => $tree,
 			'username'     => $username,
 		]);
 	}
@@ -170,6 +174,7 @@ class RegisterController extends AbstractBaseController {
 
 		return $this->viewResponse('register-success-page', [
 			'title' => $title,
+			'tree'  => $tree,
 			'user'  => $user,
 		]);
 	}
@@ -221,12 +226,16 @@ class RegisterController extends AbstractBaseController {
 	 * @throws NotFoundHttpException
 	 */
 	public function verifyPage(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$this->checkRegistrationAllowed();
 
 		$title = I18N::translate('User verification');
 
 		return $this->viewResponse('register-page', [
 			'title' => $title,
+			'tree'  => $tree,
 		]);
 	}
 
