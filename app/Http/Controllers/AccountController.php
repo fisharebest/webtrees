@@ -71,7 +71,6 @@ class AccountController extends AbstractBaseController {
 			'themes'               => $themes,
 			'timezones'            => $timezones,
 			'title'                => $title,
-			'tree'                 => $tree,
 			'user'                 => $user,
 		]);
 	}

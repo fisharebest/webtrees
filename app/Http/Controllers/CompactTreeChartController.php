@@ -50,7 +50,6 @@ class CompactTreeChartController extends AbstractChartController {
 		return $this->viewResponse('compact-tree-page', [
 			'individual' => $individual,
 			'title'      => $title,
-			'tree'       => $tree,
 		]);
 	}
 

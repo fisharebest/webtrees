@@ -98,7 +98,6 @@ class LifespansChartController extends AbstractChartController {
 			'xrefs'    => $xrefs,
 			'subtitle' => $subtitle,
 			'title'    => $title,
-			'tree'     => $tree,
 		]);
 	}
 

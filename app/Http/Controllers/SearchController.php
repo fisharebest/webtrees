@@ -236,7 +236,6 @@ class SearchController extends AbstractBaseController {
 			'search_trees'        => $search_trees,
 			'sources'             => $sources,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 
@@ -293,7 +292,6 @@ class SearchController extends AbstractBaseController {
 			'search_trees' => $search_trees,
 			'soundex'      => $soundex,
 			'title'        => $title,
-			'tree'         => $tree,
 		]);
 	}
 
@@ -323,7 +321,6 @@ class SearchController extends AbstractBaseController {
 			'replace' => $replace,
 			'search'  => $search,
 			'title'   => $title,
-			'tree'    => $tree,
 		]);
 	}
 
@@ -437,7 +434,6 @@ class SearchController extends AbstractBaseController {
 			'name_options' => $name_options,
 			'other_fields' => $other_fields,
 			'title'        => $title,
-			'tree'         => $tree,
 		]);
 	}
 

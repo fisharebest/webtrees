@@ -88,7 +88,6 @@ class LoginController extends AbstractBaseController {
 			'can_register' => $can_register,
 			'error'        => $error,
 			'title'        => $title,
-			'tree'         => $tree,
 			'url'          => $url,
 			'username'     => $username,
 			'welcome'      => $welcome,

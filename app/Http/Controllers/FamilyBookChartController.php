@@ -78,7 +78,6 @@ class FamilyBookChartController extends AbstractChartController {
 			'minimum_generations' => $minimum_generations,
 			'show_spouse'         => $show_spouse,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 

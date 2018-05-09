@@ -147,7 +147,6 @@
 				'title'         => $title,
 				'today'         => $today,
 				'today_month'   => $today_month,
-				'tree'          => $tree,
 				'view'          => $view,
 				'year'          => $year,
 			]);

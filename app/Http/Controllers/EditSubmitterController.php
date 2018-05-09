@@ -35,11 +35,7 @@ class EditSubmitterController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function createSubmitter(Request $request): Response {
-		$tree = $request->attributes->get('tree');
-
-		return new Response(view('modals/create-submitter', [
-			'tree' => $tree,
-		]));
+		return new Response(view('modals/create-submitter'));
 	}
 
 	/**

@@ -79,7 +79,6 @@ class RelationshipsChartController extends AbstractChartController {
 			'recursion'         => $recursion,
 			'recursion_options' => $this->recursionOptions($max_recursion),
 			'title'             => $title,
-			'tree'              => $tree,
 		]);
 	}
 

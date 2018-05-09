@@ -145,7 +145,6 @@
 				'tabs'             => $this->getTabs($individual),
 				'significant'      => $this->significant($individual),
 				'title'            => $individual->getFullName() . ' ' . $individual->getLifeSpan(),
-				'tree'             => $tree,
 				'user_link'        => $user_link,
 			]);
 		}

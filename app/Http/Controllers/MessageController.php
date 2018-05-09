@@ -71,7 +71,6 @@ class MessageController extends AbstractBaseController {
 			'title'    => $title,
 			'to'       => $to,
 			'to_names' => $to_names,
-			'tree'     => $tree,
 			'url'      => $url,
 		]);
 	}
@@ -163,7 +162,6 @@ class MessageController extends AbstractBaseController {
 			'title'      => $title,
 			'to'         => $to,
 			'to_name'    => $to_name,
-			'tree'       => $tree,
 			'url'        => $url,
 		]);
 	}
@@ -275,7 +273,6 @@ class MessageController extends AbstractBaseController {
 			'subject' => $subject,
 			'title'   => $title,
 			'to'      => $to_user,
-			'tree'    => $tree,
 			'url'     => $url,
 		]);
 	}

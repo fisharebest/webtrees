@@ -1021,7 +1021,6 @@ class AdminController extends AbstractBaseController {
 					'fact'       => $fact,
 					'individual' => $individual,
 					'media'      => $media,
-					'tree'       => $tree,
 				]);
 			}, $facts);
 
@@ -1251,7 +1250,6 @@ class AdminController extends AbstractBaseController {
 				'note1'       => $record1 instanceof Note ? $record1 : null,
 				'note2'       => $record2 instanceof Note ? $record2 : null,
 				'title'       => $title,
-				'tree'        => $tree,
 			]);
 		}
 
@@ -1290,7 +1288,6 @@ class AdminController extends AbstractBaseController {
 			'record1' => $record1,
 			'record2' => $record2,
 			'title'   => $title,
-			'tree'    => $tree,
 		]);
 	}
 
@@ -1508,7 +1505,6 @@ class AdminController extends AbstractBaseController {
 			'privacy_constants'    => $privacy_constants,
 			'privacy_restrictions' => $privacy_restrictions,
 			'title'                => $title,
-			'tree'                 => $tree,
 		]);
 	}
 

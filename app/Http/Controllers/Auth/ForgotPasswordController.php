@@ -47,7 +47,6 @@ class ForgotPasswordController extends AbstractBaseController {
 
 		return $this->viewResponse('forgot-password-page', [
 			'title' => $title,
-			'tree'  => $tree,
 		]);
 	}
 

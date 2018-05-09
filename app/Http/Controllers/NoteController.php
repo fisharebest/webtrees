@@ -53,7 +53,6 @@ class NoteController extends AbstractBaseController {
 			'sources'       => $record->linkedSources('NOTE'),
 			'text'          => Filter::formatText($record->getNote(), $tree),
 			'title'         => $record->getFullName(),
-			'tree'          => $tree,
 		]);
 	}
 

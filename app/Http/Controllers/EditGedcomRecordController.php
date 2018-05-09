@@ -221,7 +221,6 @@ class EditGedcomRecordController extends AbstractBaseController {
 					'pattern' => self::GEDCOM_FACT_REGEX,
 					'fact'    => $fact,
 					'title'   => $title,
-					'tree'    => $tree,
 				]);
 			}
 		}
@@ -278,7 +277,6 @@ class EditGedcomRecordController extends AbstractBaseController {
 			'pattern' => self::GEDCOM_FACT_REGEX,
 			'record'  => $record,
 			'title'   => $title,
-			'tree'    => $tree,
 		]);
 	}
 

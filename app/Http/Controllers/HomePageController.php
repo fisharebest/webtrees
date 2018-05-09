@@ -58,7 +58,6 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
-			'tree'       => $tree,
 		]);
 	}
 
@@ -139,7 +138,6 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('user-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
-			'tree'       => $tree,
 		]);
 	}
 
@@ -228,7 +226,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'meta_robots' => 'index,follow',
 		]);
 	}
@@ -299,7 +296,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -345,7 +341,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -408,7 +403,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 		]);
 	}
 
@@ -481,7 +475,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -530,7 +523,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);
@@ -591,7 +583,6 @@ class HomePageController extends AbstractBaseController {
 			'main_blocks' => $main_blocks,
 			'side_blocks' => $side_blocks,
 			'title'       => $title,
-			'tree'        => $tree,
 			'url_cancel'  => $url_cancel,
 			'url_save'    => $url_save,
 		]);

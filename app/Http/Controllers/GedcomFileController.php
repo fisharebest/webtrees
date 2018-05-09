@@ -64,9 +64,7 @@ class GedcomFileController extends AbstractBaseController {
 		if ($row->import_offset == $row->import_total) {
 			$tree->setPreference('imported', '1');
 
-			$html = view('admin/import-complete', [
-				'tree' => $tree,
-			]);
+			$html = view('admin/import-complete');
 
 			return new Response($html);
 		}
@@ -110,7 +108,6 @@ class GedcomFileController extends AbstractBaseController {
 				if (substr($data->chunk_data, 0, 6) != '0 HEAD') {
 					return $this->viewResponse('admin/import-fail', [
 						'error' => I18N::translate('Invalid GEDCOM file - no header record found.'),
-						'tree'  => $tree,
 					]);
 				}
 				// What character set is this? Need to convert it to UTF8
@@ -193,7 +190,6 @@ class GedcomFileController extends AbstractBaseController {
 					default:
 						return $this->viewResponse('admin/import-fail', [
 							'error' => I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset),
-							'tree'  => $tree,
 						]);
 				}
 				$first_time = false;
@@ -227,14 +223,12 @@ class GedcomFileController extends AbstractBaseController {
 
 				return $this->viewResponse('admin/import-fail', [
 					'error' => $ex->getMessage(),
-					'tree'  => $tree,
 				]);
 			}
 		}
 
 		return $this->viewResponse('admin/import-progress', [
 			'progress' => $progress,
-			'tree'     => $tree,
 		]);
 	}
 }

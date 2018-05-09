@@ -55,22 +55,22 @@ try {
 	$request->attributes->set('tree', $tree);
 	$request->attributes->set('user', Auth::user());
 
+	// Most layouts will require a tree for the page header/footer
+	View::share('tree', $tree);
+
 	// Load the routing table.
 	$routes = require 'routes/web.php';
 
 	// Find the action for the selected route
 	$controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
 
-	DebugBar::stopMeasure('routing');
 
 	// Create the controller
-	DebugBar::startMeasure('create controller');
-
 	list($controller_name, $action) = explode('@', $controller_action);
 	$controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
 	$controller       = new $controller_class;
 
-	DebugBar::stopMeasure('create controller');
+	DebugBar::stopMeasure('routing');
 
 	// Note that we can't stop this timer, as running the action will
 	// generate the response - which includes (and stops) the timer

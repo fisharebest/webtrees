@@ -74,7 +74,6 @@ class HourglassChartController extends AbstractChartController {
 			'minimum_generations' => self::MINIMUM_GENERATIONS,
 			'show_spouse'         => $show_spouse,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 

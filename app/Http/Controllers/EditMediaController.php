@@ -270,7 +270,6 @@ class EditMediaController extends AbstractBaseController {
 		$tree = $request->attributes->get('tree');
 
 		return new Response(view('modals/create-media-object', [
-			'tree'            => $tree,
 			'max_upload_size' => $this->maxUploadFilesize(),
 			'media_types'     => $this->mediaTypes(),
 			'unused_files'    => $this->unusedFiles($tree),

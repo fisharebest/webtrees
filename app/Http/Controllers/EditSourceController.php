@@ -35,11 +35,7 @@ class EditSourceController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function createSource(Request $request): Response {
-		$tree = $request->attributes->get('tree');
-
-		return new Response(view('modals/create-source', [
-			'tree' => $tree,
-		]));
+		return new Response(view('modals/create-source'));
 	}
 
 	/**

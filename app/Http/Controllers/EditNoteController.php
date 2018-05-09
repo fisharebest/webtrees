@@ -35,11 +35,7 @@ class EditNoteController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function createNoteObject(Request $request): Response {
-		$tree = $request->attributes->get('tree');
-
-		return new Response(view('modals/create-note-object', [
-			'tree' => $tree,
-		]));
+		return new Response(view('modals/create-note-object'));
 	}
 
 	/**

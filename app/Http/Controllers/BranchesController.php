@@ -60,7 +60,6 @@ class BranchesController extends AbstractBaseController {
 			'soundex_std' => $soundex_std,
 			'surname'     => $surname,
 			'title'       => $title,
-			'tree'        => $tree,
 		]);
 	}
 

@@ -48,7 +48,6 @@ class FamilyController extends AbstractBaseController {
 			'record'      => $family,
 			'significant' => $this->significant($family),
 			'title'       => $family->getFullName(),
-			'tree'        => $tree,
 		]);
 	}
 

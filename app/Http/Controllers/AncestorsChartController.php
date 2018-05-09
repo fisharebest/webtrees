@@ -89,7 +89,6 @@ class AncestorsChartController extends AbstractChartController {
 			'minimum_generations' => $minimum_generations,
 			'show_cousins'        => $show_cousins,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 

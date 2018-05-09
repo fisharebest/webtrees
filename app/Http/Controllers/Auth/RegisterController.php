@@ -66,7 +66,6 @@ class RegisterController extends AbstractBaseController {
 			'realname'     => $realname,
 			'show_caution' => $show_caution,
 			'title'        => $title,
-			'tree'         => $tree,
 			'username'     => $username,
 		]);
 	}
@@ -132,10 +131,8 @@ class RegisterController extends AbstractBaseController {
 		// Send a verification message to the user.
 		Mail::send($sender, $user, $sender, /* I18N: %s is a server name/URL */
 			I18N::translate('Your registration at %s', WT_BASE_URL), view('emails/register-user-text', [
-				'tree' => $tree,
 				'user' => $user,
 			]), view('emails/register-user-html', [
-				'tree' => $tree,
 				'user' => $user,
 			]));
 
@@ -145,11 +142,9 @@ class RegisterController extends AbstractBaseController {
 
 		Mail::send($sender, $webmaster, $user, /* I18N: %s is a server name/URL */
 			I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
-				'tree'     => $tree,
 				'user'     => $user,
 				'comments' => $comments,
 			]), view('emails/register-notify-html', [
-				'tree'     => $tree,
 				'user'     => $user,
 				'comments' => $comments,
 			]));
@@ -163,7 +158,6 @@ class RegisterController extends AbstractBaseController {
 				/* I18N: %s is a server name/URL */
 				I18N::translate('New registration at %s', $tree->getTitle()),
 				view('emails/register-notify-text', [
-					'tree'     => $tree,
 					'user'     => $user,
 					'comments' => $comments,
 				]),
@@ -174,7 +168,6 @@ class RegisterController extends AbstractBaseController {
 
 		return $this->viewResponse('register-success-page', [
 			'title' => $title,
-			'tree'  => $tree,
 			'user'  => $user,
 		]);
 	}
@@ -235,7 +228,6 @@ class RegisterController extends AbstractBaseController {
 
 		return $this->viewResponse('register-page', [
 			'title' => $title,
-			'tree'  => $tree,
 		]);
 	}
 

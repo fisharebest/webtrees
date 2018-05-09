@@ -63,7 +63,6 @@ class StatisticsChartController extends AbstractChartController {
 
 		return $this->viewResponse('statistics-page', [
 			'title' => $title,
-			'tree'  => $tree,
 		]);
 	}
 

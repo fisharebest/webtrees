@@ -85,7 +85,6 @@ class FanChartController extends AbstractChartController {
 			'maximum_width'       => self::MAXIMUM_WIDTH,
 			'minimum_width'       => self::MINIMUM_WIDTH,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 

@@ -87,7 +87,6 @@ class DescendantsChartController extends AbstractChartController {
 			'maximum_generations' => $maximum_generations,
 			'minimum_generations' => $minimum_generations,
 			'title'               => $title,
-			'tree'                => $tree,
 		]);
 	}
 

@@ -326,7 +326,6 @@ class PendingChangesController extends AbstractBaseController {
 			'active_tree_id' => $active_tree_id,
 			'changes'        => $changes,
 			'title'          => $title,
-			'tree'           => $tree,
 			'url'            => $url,
 		]);
 	}

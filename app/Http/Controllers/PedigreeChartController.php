@@ -111,7 +111,6 @@ class PedigreeChartController extends AbstractChartController {
 			'orientation'        => $orientation,
 			'orientations'       => $orientations,
 			'title'              => $title,
-			'tree'               => $tree,
 		]);
 	}
 

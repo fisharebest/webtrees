@@ -116,7 +116,6 @@ class TimelineChartController extends AbstractChartController {
 			'individuals'  => $individuals,
 			'remove_urls'  => $remove_urls,
 			'title'        => $title,
-			'tree'         => $tree,
 			'scale'        => $scale,
 			'zoom_in_url'  => $zoom_in_url,
 			'zoom_out_url' => $zoom_out_url,

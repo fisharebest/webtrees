@@ -35,11 +35,7 @@ class EditRepositoryController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function createRepository(Request $request): Response {
-		$tree = $request->attributes->get('tree');
-
-		return new Response(view('modals/create-repository', [
-			'tree' => $tree,
-		]));
+		return new Response(view('modals/create-repository'));
 	}
 
 	/**
