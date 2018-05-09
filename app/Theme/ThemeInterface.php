@@ -27,14 +27,6 @@ use Fisharebest\Webtrees\User;
  */
 interface ThemeInterface {
 	/**
-	 * Create the top of the <body>.
-	 *
-	 * @return string
-	 */
-	public function bodyHeader();
-
-
-	/**
 	 * Create a contact link for a user.
 	 *
 	 * @param User $user
@@ -42,68 +34,6 @@ interface ThemeInterface {
 	 * @return string
 	 */
 	public function contactLink(User $user);
-
-	/**
-	 * Create the <DOCTYPE> tag.
-	 *
-	 * @return string
-	 */
-	public function doctype();
-
-	/**
-	 * Close the main content and create the <footer> tag.
-	 *
-	 * @return string
-	 */
-	public function footerContainer();
-
-	/**
-	 * Create the <head> tag.
-	 *
-	 * @param PageController $controller The current controller
-	 *
-	 * @return string
-	 */
-	public function head(PageController $controller);
-
-	/**
-	 * Allow themes to do things after initialization (since they cannot use
-	 * the constructor).
-	 */
-	public function hookAfterInit();
-
-	/**
-	 * Allow themes to add extra scripts to the page footer.
-	 *
-	 * @return string
-	 */
-	public function hookFooterExtraJavascript();
-
-	/**
-	 * Allow themes to add extra content to the page header.
-	 * Typically this will be additional CSS.
-	 *
-	 * @return string
-	 */
-	public function hookHeaderExtraContent();
-
-	/**
-	 * Create the <html> tag.
-	 *
-	 * @return string
-	 */
-	public function html();
-
-	/**
-	 * Add HTML markup to create an alert
-	 *
-	 * @param string $html        The content of the alert
-	 * @param string $level       One of 'success', 'info', 'warning', 'danger'
-	 * @param bool   $dismissible If true, add a close button.
-	 *
-	 * @return string
-	 */
-	public function htmlAlert($html, $level, $dismissible);
 
 	/**
 	 * Display an icon for this fact.
@@ -173,13 +103,6 @@ interface ThemeInterface {
 	public function individualBoxMenu(Individual $individual);
 
 	/**
-	 * Themes menu.
-	 *
-	 * @return Menu|null
-	 */
-	public function menuThemes();
-
-	/**
 	 * Misecellaneous dimensions, fonts, styles, etc.
 	 *
 	 * @param string $parameter_name
@@ -187,11 +110,6 @@ interface ThemeInterface {
 	 * @return string|int|float
 	 */
 	public function parameter($parameter_name);
-
-	/**
-	 * Send any HTTP headers.
-	 */
-	public function sendHeaders();
 
 	/**
 	 * A fixed string to identify this theme, in settings, etc.
