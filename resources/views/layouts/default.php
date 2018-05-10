@@ -123,7 +123,7 @@
        width: "85%",
        height: "85%",
        transition: "none",
-       slideshowStart: "<?= I18N::translate('Play') ?>"
+       slideshowStart: "<?= I18N::translate('Play') ?>",
        slideshowStop: "<?= I18N::translate('Stop') ?>",
        title: function() { return this.dataset.title; }
       });
