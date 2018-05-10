@@ -71,6 +71,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'editconfig_gedcom.php',
 		WT_ROOT . 'editgedcoms.php',
 		WT_ROOT . 'edit_merge.php',
+		WT_ROOT . 'edit_news.php',
 		WT_ROOT . 'genservice.php',
 		WT_ROOT . 'logs.php',
 		WT_ROOT . 'manageservers.php',

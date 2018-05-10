@@ -17,8 +17,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class UserJournalModule
@@ -64,7 +68,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+		global $WT_TREE;
 
 		$articles = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
@@ -73,27 +77,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			'user_id' => Auth::id(),
 		])->fetchAll();
 
-		$content = '';
-
-		if (empty($articles)) {
-			$content .= '<p>' . I18N::translate('You have not created any journal items.') . '</p>';
-		}
-
-		foreach ($articles as $article) {
-			$content .= '<div class="journal_box">';
-			$content .= '<div class="news_title">' . e($article->subject) . '</div>';
-			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($article->updated) . '</div>';
-			if ($article->body == strip_tags($article->body)) {
-				$article->body = nl2br($article->body, false);
-			}
-			$content .= $article->body;
-			$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . e($WT_TREE->getName()) . '">' . I18N::translate('Edit') . '</a>';
-			$content .= ' | ';
-			$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=user&amp;ged=' . e($WT_TREE->getName()) . '" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Delete') . '</a><br>';
-			$content .= '</div><br>';
-		}
-
-		$content .= '<p><a href="editnews.php?ctype=user&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('Add a journal entry') . '</a></p>';
+		$content = view('blocks/journal', [
+			'articles' => $articles,
+			'block_id' => $block_id,
+			'limit'    => 5,
+		]);
 
 		if ($template) {
 			return view('blocks/template', [
@@ -131,5 +119,117 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getEditJournalAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		if (!Auth::check()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		$news_id = $request->get('news_id');
+
+		if ($news_id > 0) {
+			$row = Database::prepare(
+				"SELECT subject, body FROM `##news` WHERE news_id = :news_id AND user_id = :user_id"
+			)->execute([
+				'news_id' => $news_id,
+				'user_id' => Auth::id(),
+			])->fetchOneRow();
+		} else {
+			$row = (object) [
+				'body'    => '',
+				'subject' => '',
+			];
+		}
+
+		$title = I18N::translate('Add/edit a journal/news entry');
+
+		return $this->viewResponse('blocks/journal-edit', [
+			'body'    => $row->body,
+			'news_id' => $news_id,
+			'subject' => $row->subject,
+			'title'   => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function postEditJournalAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		if (!Auth::check()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		$news_id = $request->get('news_id');
+		$subject = $request->get('subject');
+		$body    = $request->get('body');
+
+		if ($news_id > 0) {
+			Database::prepare(
+				"UPDATE `##news` SET subject = :subject, body = :body, updated = CURRENT_TIMESTAMP" .
+				" WHERE news_id = :news_id AND user_id = :user_id"
+			)->execute([
+				'subject' => $subject,
+				'body'    => $body,
+				'news_id' => $news_id,
+				'user_id' => Auth::id(),
+			]);
+		} else {
+			Database::prepare(
+				"INSERT INTO `##news` (user_id, subject, body, updated) VALUES (:user_id, :subject ,:body, CURRENT_TIMESTAMP)"
+			)->execute([
+				'body'    => $body,
+				'subject' => $subject,
+				'user_id' => Auth::id(),
+			]);
+		}
+
+		$url = route('user-page', [
+			'ged' => $tree->getName(),
+		]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function postDeleteJournalAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$news_id = $request->get('news_id');
+
+		if (!Auth::check()) {
+			throw new AccessDeniedHttpException;
+		}
+
+		Database::prepare(
+			"DELETE FROM `##news` WHERE news_id = :news_id AND user_id = :user_id"
+		)->execute([
+			'news_id' => $news_id,
+			'user_id' => Auth::id(),
+		]);
+
+		$url = route('user-page', [
+			'ged' => $tree->getName(),
+		]);
+
+		return new RedirectResponse($url);
 	}
 }

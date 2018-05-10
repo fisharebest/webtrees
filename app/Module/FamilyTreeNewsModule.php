@@ -17,9 +17,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class FamilyTreeNewsModule
@@ -70,61 +73,20 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
-
-		$more_news = Filter::getInteger('more_news');
-		$limit     = 5 * (1 + $more_news);
+		global $WT_TREE;
 
 		$articles = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC LIMIT :limit"
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
 		)->execute([
 			'offset'  => WT_TIMESTAMP_OFFSET,
 			'tree_id' => $WT_TREE->getTreeId(),
-			'limit'   => $limit,
 		])->fetchAll();
 
-		$count = Database::prepare(
-			"SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = :tree_id"
-		)->execute([
-			'tree_id' => $WT_TREE->getTreeId(),
-		])->fetchOne();
-
-		$id      = $this->getName() . $block_id;
-		$class   = $this->getName() . '_block';
-		$title   = $this->getTitle();
-		$content = '';
-
-		if (empty($articles)) {
-			$content .= I18N::translate('No news articles have been submitted.');
-		}
-
-		foreach ($articles as $article) {
-			$content .= '<div class="news_box">';
-			$content .= '<div class="news_title">' . e($article->subject) . '</div>';
-			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($article->updated) . '</div>';
-			if ($article->body == strip_tags($article->body)) {
-				$article->body = nl2br($article->body, false);
-			}
-			$content .= $article->body;
-			if (Auth::isManager($WT_TREE)) {
-				$content .= '<hr>';
-				$content .= '<a href="editnews.php?news_id=' . $article->news_id . '&amp;ctype=gedcom&amp;ged=' . e($WT_TREE->getName()) . '">' . I18N::translate('Edit') . '</a>';
-				$content .= ' | ';
-				$content .= '<a href="editnews.php?action=delete&amp;news_id=' . $article->news_id . '&amp;ctype=gedcom&amp;ged=' . e($WT_TREE->getName()) . '" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Delete') . '</a><br>';
-			}
-			$content .= '</div>';
-		}
-
-		if (Auth::isManager($WT_TREE)) {
-			$content .= '<p><a href="editnews.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('Add a news article') . '</a></p>';
-		}
-
-		if ($count > $limit) {
-			if (Auth::isManager($WT_TREE)) {
-				$content .= ' | ';
-			}
-			$content .= '<a href="#" onclick="$(\'#' . $id . '\').load(\'index.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '&amp;block_id=' . $block_id . '&amp;action=ajax&amp;more_news=' . ($more_news + 1) . '\'); return false;">' . I18N::translate('More news articles') . '</a>';
-		}
+		$content = view('blocks/news', [
+			'articles' => $articles,
+			'block_id' => $block_id,
+			'limit'    => 5,
+		]);
 
 		if ($template) {
 			return view('blocks/template', [
@@ -162,5 +124,117 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 * @return void
 	 */
 	public function configureBlock($block_id) {
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getEditNewsAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		if (!Auth::isManager($tree)) {
+			throw new AccessDeniedHttpException;
+		}
+
+		$news_id = $request->get('news_id');
+
+		if ($news_id > 0) {
+			$row = Database::prepare(
+				"SELECT subject, body FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
+			)->execute([
+				'news_id' => $news_id,
+				'tree_id' => $tree->getTreeId(),
+			])->fetchOneRow();
+		} else {
+			$row = (object) [
+				'body'    => '',
+				'subject' => '',
+			];
+		}
+
+		$title = I18N::translate('Add/edit a journal/news entry');
+
+		return $this->viewResponse('blocks/news-edit', [
+			'body'    => $row->body,
+			'news_id' => $news_id,
+			'subject' => $row->subject,
+			'title'   => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function postEditNewsAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		if (!Auth::isManager($tree)) {
+			throw new AccessDeniedHttpException;
+		}
+
+		$news_id = $request->get('news_id');
+		$subject = $request->get('subject');
+		$body    = $request->get('body');
+
+		if ($news_id > 0) {
+			Database::prepare(
+				"UPDATE `##news` SET subject = :subject, body = :body, updated = CURRENT_TIMESTAMP" .
+				" WHERE news_id = :news_id AND gedcom_id = :tree_id"
+			)->execute([
+				'subject' => $subject,
+				'body'    => $body,
+				'news_id' => $news_id,
+				'tree_id' => $tree->getTreeId(),
+			]);
+		} else {
+			Database::prepare(
+				"INSERT INTO `##news` (gedcom_id, subject, body, updated) VALUES (:tree_id, :subject ,:body, CURRENT_TIMESTAMP)"
+			)->execute([
+				'body'    => $body,
+				'subject' => $subject,
+				'tree_id' => $tree->getTreeId(),
+			]);
+		}
+
+		$url = route('home-page', [
+			'ged' => $tree->getName(),
+		]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function postDeleteNewsAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$news_id = $request->get('news_id');
+
+		if (!Auth::isManager($tree)) {
+			throw new AccessDeniedHttpException;
+		}
+
+		Database::prepare(
+			"DELETE FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
+		)->execute([
+			'news_id' => $news_id,
+			'tree_id' => $tree->getTreeId(),
+		]);
+
+		$url = route('home-page', [
+			'ged' => $tree->getName(),
+		]);
+
+		return new RedirectResponse($url);
 	}
 }
