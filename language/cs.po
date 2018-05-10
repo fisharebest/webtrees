@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-23 20:48+0000\n"
+"PO-Revision-Date: 2018-05-10 16:10+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -5679,7 +5679,7 @@ msgstr "Mimo podsložek"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr "Vyňatý z tohoto výběru"
+msgstr "Vyňatý z tohoto podání"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:466
@@ -8181,7 +8181,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr "Propojit mediální objekty s fakty nebo událostmi"
+msgstr "Propojit objekty médií s fakty nebo událostmi"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -8892,7 +8892,7 @@ msgstr "Jména souborů médií dostanou předponu %s."
 
 #: admin_media.php:599 admin_trees_config.php:551
 msgid "Media files"
-msgstr "Multimediální soubory"
+msgstr "Soubory médií"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:525
@@ -8925,7 +8925,7 @@ msgstr "Objekt médií"
 #: resources/views/blocks/family-tree-statistics.php:86 source.php:119
 #: statistics.php:366 statistics.php:392 statistics.php:396
 msgid "Media objects"
-msgstr "Soubory médií"
+msgstr "Objekty médií"
 
 #: medialist.php:143
 msgid "Media objects found"
@@ -9830,7 +9830,7 @@ msgstr "Nebyl dodán žádný mediální soubor."
 
 #: app/Module/FamilyTreeNewsModule.php:100
 msgid "No news articles have been submitted."
-msgstr "Žádné články, novinky nebyly dodány."
+msgstr "Do novinek nejsou podány žádné články."
 
 #: app/Module/GoogleMapsModule.php:2946
 msgid "No places found"
@@ -9953,13 +9953,13 @@ msgstr "Nesezdaní"
 #: app/GedcomTag.php:1314
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr "Nesezdaní"
+msgstr "Nesezdaná"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1312
 msgctxt "MALE"
 msgid "Not married"
-msgstr "Nesezdaní"
+msgstr "Nesezdaný"
 
 #: resources/views/admin/control-panel.php:280
 msgid "Not verified by the user"
@@ -10194,7 +10194,7 @@ msgstr "Nejstarší žena"
 
 #: statistics.php:182
 msgid "Oldest living individuals"
-msgstr "Nejdéle žijící lidé"
+msgstr "Nejstarší žijící osoby"
 
 #: statistics.php:281
 msgid "Oldest male"
@@ -10238,7 +10238,7 @@ msgstr "Ouha! Webový server se nedokáže připojit na databázový server. Bu�
 
 #: app/Http/Controllers/SetupController.php:408
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr "Ups! webtrees nemohl vytvořit soubory v této složce."
+msgstr "Ouha! V této složce nemohl webtrees vytvořit soubory."
 
 #: app/Functions/FunctionsPrint.php:415
 msgid "OpenStreetMap™"
@@ -13126,12 +13126,12 @@ msgstr "Předmět"
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:552
 msgid "Submission"
-msgstr "Rezignace"
+msgstr "Podání"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr "Potvrzeno, ale ještě nejasné"
+msgstr "Podáno, ale ještě nejasné"
 
 #. I18N: gedcom tag SUBM
 #: admin_trees_manage.php:613 app/GedcomTag.php:550
@@ -15558,7 +15558,7 @@ msgstr "Které rodokmeny se mají zahrnout do map stránek"
 #. I18N: A configuration setting
 #: admin_trees_config.php:556
 msgid "Who can upload new media files"
-msgstr "Kdo může nahrávat nové mediální soubory"
+msgstr "Kdo může nahrávat nové soubory médií"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:33
