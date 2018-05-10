@@ -447,6 +447,8 @@ class PedigreeChartController extends AbstractChartController {
 
 
 	/**
+	 * @param Tree $tree
+	 *
 	 * @return string[]
 	 */
 	private function generationOptions(Tree $tree): array {

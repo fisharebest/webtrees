@@ -303,9 +303,6 @@ class SearchController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function replace(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$search  = $request->get('search', '');
 		$replace = $request->get('replace', '');
 		$context = $request->get('context', '');
@@ -329,7 +326,7 @@ class SearchController extends AbstractBaseController {
 	 *
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function replaceAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
@@ -400,9 +397,6 @@ class SearchController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function advanced(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
 		$fields      = $request->get('fields', $default_fields);

@@ -41,9 +41,6 @@ class MessageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function broadcastPage(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		/** @var User $user */
 		$user = $request->attributes->get('user');
 
@@ -246,9 +243,6 @@ class MessageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function messagePage(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		/** @var User $user */
 		$user = $request->attributes->get('user');
 

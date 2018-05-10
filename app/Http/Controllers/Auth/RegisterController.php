@@ -46,9 +46,6 @@ class RegisterController extends AbstractBaseController {
 	 * @throws NotFoundHttpException
 	 */
 	public function registerPage(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$this->checkRegistrationAllowed();
 
 		$comments = $request->get('comments', '');
@@ -219,9 +216,6 @@ class RegisterController extends AbstractBaseController {
 	 * @throws NotFoundHttpException
 	 */
 	public function verifyPage(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$this->checkRegistrationAllowed();
 
 		$title = I18N::translate('User verification');

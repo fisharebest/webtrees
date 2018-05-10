@@ -280,9 +280,6 @@ class HomePageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function treePageDefaultEdit(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$main_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'main');
 		$side_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableTreeBlocks();
@@ -459,9 +456,6 @@ class HomePageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function userPageDefaultEdit(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$main_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'main');
 		$side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
@@ -565,9 +559,6 @@ class HomePageController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function userPageUserEdit(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$user_id     = (int) $request->get('user_id');
 		$user        = User::find($user_id);
 		$main_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'main');

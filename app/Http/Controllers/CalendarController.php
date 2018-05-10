@@ -46,9 +46,6 @@
 		 * @return Response
 		 */
 		public function page(Request $request): Response {
-			/** @var Tree $tree */
-			$tree = $request->attributes->get('tree');
-
 			$cal      = $request->get('cal', '');
 			$day      = $request->get('day', '');
 			$month    = $request->get('month', '');
