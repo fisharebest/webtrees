@@ -16,8 +16,8 @@
     "laravel-mix": "^2.1.11"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.7",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.8",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "bootstrap": "^4.1.1",
     "corejs-typeahead": "^1.2.1",
     "datatables.net-bs4": "^1.10.16",
