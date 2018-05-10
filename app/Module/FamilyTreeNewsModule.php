@@ -168,7 +168,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function postEditNewsAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
@@ -212,7 +212,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function postDeleteNewsAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */

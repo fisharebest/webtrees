@@ -163,7 +163,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function postEditJournalAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
@@ -207,7 +207,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function postDeleteJournalAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
