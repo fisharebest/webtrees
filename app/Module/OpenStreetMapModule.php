@@ -243,7 +243,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			],
 		];
 
-		return new jsonResponse($options);
+		return new JsonResponse($options);
 	}
 
 	/**
@@ -336,7 +336,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			}
 		}
 
-		return new jsonResponse($geojson, $code);
+		return new JsonResponse($geojson, $code);
 	}
 
 	/**
@@ -406,7 +406,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 		$code = empty($features) ? 204 : 200;
 
-		return new jsonResponse(['type' => 'FeatureCollection', 'features' => $features], $code);
+		return new JsonResponse(['type' => 'FeatureCollection', 'features' => $features], $code);
 	}
 
 	/**
@@ -477,7 +477,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	public function getProviderStylesAction(Request $request) {
 		$styles = $this->getMapProviderData($request);
 
-		return new jsonResponse($styles);
+		return new JsonResponse($styles);
 	}
 
 	/**
@@ -624,7 +624,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			];
 		}
 
-		return new jsonResponse($json);
+		return new JsonResponse($json);
 	}
 
 	/**
@@ -1010,6 +1010,11 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 		return new RedirectResponse(route('admin-module', ['module' => $this->getName(), 'action' => 'AdminPlaces']));
 	}
 
+	/**
+	 * @param Request $request
+	 *
+	 * @return object
+	 */
 	public function getAdminImportFormAction(Request $request) {
 		$parent_id   = (int)$request->get('parent_id');
 		$inactive    = (int)$request->get('inactive');
