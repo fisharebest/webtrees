@@ -208,7 +208,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @param Request $request
 	 * @return JsonResponse
 	 */
-	public function getBaseDataAction(Request $request) {
+	public function getBaseDataAction(Request $request): JsonResponse {
 		$provider = $this->getMapProviderData($request);
 		$style    = $provider['selectedStyleName']    = '' ? '' : '.' . $provider['selectedStyleName'];
 
@@ -268,7 +268,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	private function getMapData(Request $request) {
+	private function getMapData(Request $request): JsonResponse {
 		$mapType     = $request->get('type');
 		$xref        = $request->get('reference');
 		$tree        = $request->attributes->get('tree');
@@ -344,7 +344,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	private function placelistGetMapData(Request $request) {
+	private function placelistGetMapData(Request $request): JsonResponse {
 		$reference = $request->get('reference');
 		$tree      = $request->attributes->get('tree');
 		$placeObj  = new Place($reference, $tree);
@@ -474,7 +474,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @param Request $request
 	 * @return JsonResponse
 	 */
-	public function getProviderStylesAction(Request $request) {
+	public function getProviderStylesAction(Request $request): JsonResponse {
 		$styles = $this->getMapProviderData($request);
 
 		return new JsonResponse($styles);
@@ -603,7 +603,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	public function getAdminMapDataAction(Request $request) {
+	public function getAdminMapDataAction(Request $request): JsonResponse {
 		$id  = $request->get('id', 0);
 		$row = Database::prepare("SELECT * FROM `##placelocation` WHERE pl_id = :id")
 			->execute(['id' => $id])
