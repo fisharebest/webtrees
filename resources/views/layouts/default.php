@@ -12,13 +12,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="<?= e($meta_robots ?? 'noindex,nofollow') ?>">
 		<meta name="generator" content="<?= e(WT_WEBTREES) ?>">
-		<?php if ($tree !== null): ?>
+		<?php if (($tree !== null) && ($tree !== false)): ?>
 			<meta name="description" content="<?= e($tree->getPreference('META_DESCRIPTION')) ?>">
 		<?php endif ?>
 
 		<title>
 			<?= e(strip_tags($title)) ?>
-			<?php if ($tree !== null && $tree->getPreference('META_TITLE') !== ''): ?>
+			<?php if ($tree !== null && ($tree !== false) && $tree->getPreference('META_TITLE') !== ''): ?>
 				– <?= e($tree->getPreference('META_TITLE')) ?>
 			<?php endif ?>
 		</title>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="col wt-site-logo"></div>
 
-					<?php if ($tree !== null): ?>
+					<?php if (($tree !== null) && ($tree !== false)): ?>
 						<h1 class="col wt-site-title"><?= e($tree->getTitle()) ?></h1>
 
 						<div class="col wt-header-search">
