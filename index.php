@@ -49,7 +49,7 @@ try {
 
 	// No tree specified/available?  Choose one.
 	if ($tree === null && $method === 'GET') {
-		$tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? current($all_trees);
+		$tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
 	}
 
 	$request->attributes->set('tree', $tree);
