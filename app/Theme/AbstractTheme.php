@@ -296,6 +296,26 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create the top of the <body>.
+	 *
+	 * @return string
+	 */
+	public function bodyHeader() {
+		return
+			'<body class="wt-global">' .
+			'<header class="wt-header-wrapper d-print-none">' .
+			'<div class="container wt-header-container">' .
+			'<div class="row wt-header-content">' .
+			$this->headerContent() .
+			'</div>' .
+			'</div>' .
+			'</header>' .
+			'<main id="content" class="wt-main-wrapper">' .
+			'<div class="container wt-main-container">' .
+			$this->flashMessagesContainer(FlashMessages::getMessages());
+	}
+
+	/**
 	 * Create a contact link for a user.
 	 *
 	 * @param User $user
@@ -399,6 +419,87 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create the <DOCTYPE> tag.
+	 *
+	 * @return string
+	 */
+	public function doctype() {
+		return '<!DOCTYPE html>';
+	}
+
+	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
+	protected function favicon() {
+		return
+			'<link rel="icon" href="' . self::ASSET_DIR . 'favicon.png" type="image/png">' .
+			'<link rel="icon" type="image/png" href="' . self::ASSET_DIR . 'favicon192.png" sizes="192x192">' .
+			'<link rel="apple-touch-icon" sizes="180x180" href="' . self::ASSET_DIR . 'favicon180.png">';
+	}
+
+	/**
+	 * Add markup to a flash message.
+	 *
+	 * @param stdClass $message
+	 *
+	 * @return string
+	 */
+	protected function flashMessageContainer(stdClass $message) {
+		return $this->htmlAlert($message->text, $message->status, true);
+	}
+
+	/**
+	 * Create a container for messages that are "flashed" to the session
+	 * on one request, and displayed on another. If there are many messages,
+	 * the container may need a max-height and scroll-bar.
+	 *
+	 * @param stdClass[] $messages
+	 *
+	 * @return string
+	 */
+	protected function flashMessagesContainer(array $messages) {
+		$html = '';
+		foreach ($messages as $message) {
+			$html .= $this->flashMessageContainer($message);
+		}
+
+		if ($html) {
+			return '<div class="flash-messages">' . $html . '</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Close the main content and create the <footer> tag.
+	 *
+	 * @return string
+	 */
+	public function footerContainer() {
+		return
+			'</div>' .
+			'</main>' .
+			'<footer class="wt-footer-container">' .
+			'<div class="wt-footer-content container d-print-none">' . $this->footerContent() . '</div>' .
+			'</footer>';
+	}
+
+	/**
+	 * Create the contents of the <footer> tag.
+	 *
+	 * @return string
+	 */
+	protected function footerContent() {
+		return
+			$this->formatContactLinks() .
+			$this->logoPoweredBy() .
+			$this->formatPageViews($this->page_views) .
+			$this->cookieWarning();
+	}
+
+	/**
 	 * Add markup to the contact links.
 	 *
 	 * @return string
@@ -444,6 +545,55 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create a quick search form for the header.
+	 *
+	 * @return string
+	 */
+	protected function formQuickSearch() {
+		if ($this->tree) {
+			return
+				'<div class="col wt-header-search">' .
+				'<form class="wt-header-search-form" role="search">' .
+				'<input type="hidden" name="route" value="search-quick">' .
+				'<input type="hidden" name="ged" value="' . e($this->tree->getName()) . '">' .
+				$this->formQuickSearchFields() .
+				'</form>' .
+				'</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create a search field and submit button for the quick search form in the header.
+	 *
+	 * @return string
+	 */
+	protected function formQuickSearchFields() {
+		return
+			'<div class="input-group">' .
+			'<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
+			'<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
+			'<span class="input-group-btn">' .
+			'<button type="submit" class="btn btn-primary wt-header-search-button"><i class="fas fa-search"></i></button>' .
+			'</span>' .
+			'</div>';
+	}
+
+	/**
+	 * Add markup to the tree title.
+	 *
+	 * @return string
+	 */
+	protected function formatTreeTitle() {
+		if ($this->tree) {
+			return '<h1 class="col wt-site-title">' . e($this->tree->getTitle()) . '</h1>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
 	 * Add markup to the secondary menu.
 	 *
 	 * @return string
@@ -469,7 +619,78 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create resources for the colors theme.
+	 * Create the <head> tag.
+	 *
+	 * @param PageController $controller The current controller
+	 *
+	 * @return string
+	 */
+	public function head(PageController $controller) {
+		// Record this now. By the time we render the footer, $controller no longer exists.
+		$this->page_views = $this->pageViews($controller);
+
+		return
+			'<head>' .
+			$this->headContents($controller) .
+			$this->hookHeaderExtraContent() .
+			$this->analytics() .
+			'</head>';
+	}
+
+	/**
+	 * Create the contents of the <head> tag.
+	 *
+	 * @param PageController $controller The current controller
+	 *
+	 * @return string
+	 */
+	protected function headContents(PageController $controller) {
+		// The title often includes the names of records, which may include HTML markup.
+		$title = strip_tags($controller->getPageTitle());
+
+		// If an extra (site) title is specified, append it.
+		if ($this->tree && $this->tree->getPreference('META_TITLE')) {
+			$title .= ' – ' . $this->tree->getPreference('META_TITLE');
+		}
+
+		$html = $this->metaCharset() .
+			$this->metaCsrf() .
+			$this->title($title) .
+			$this->favicon() .
+			$this->metaViewport() .
+			$this->metaRobots($controller->getMetaRobots()) .
+			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL);
+
+		if ($this->tree) {
+			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
+		}
+
+		// CSS files
+		foreach ($this->stylesheets() as $css) {
+			$html .= '<link rel="stylesheet" type="text/css" href="' . $css . '">';
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
+	protected function headerContent() {
+		return
+			$this->accessibilityLinks() .
+			$this->logoHeader() .
+			$this->formatTreeTitle() .
+			$this->formQuickSearch() .
+			$this->secondaryMenuContainer($this->secondaryMenu()) .
+			$this->primaryMenuContainer($this->primaryMenu());
+	}
+
+	/**
+	 * Allow themes to do things after initialization (since they cannot use
+	 * the constructor).
 	 */
 	public function hookAfterInit() {
 	}
@@ -481,6 +702,51 @@ abstract class AbstractTheme {
 	 */
 	public function hookFooterExtraJavascript() {
 		return '';
+	}
+
+	/**
+	 * Allow themes to add extra content to the page header.
+	 * Typically this will be additional CSS.
+	 *
+	 * @return string
+	 */
+	public function hookHeaderExtraContent() {
+		return '';
+	}
+
+	/**
+	 * Create the <html> tag.
+	 *
+	 * @return string
+	 */
+	public function html() {
+		return '<html ' . I18N::htmlAttributes() . '>';
+	}
+
+	/**
+	 * Add HTML markup to create an alert
+	 *
+	 * @param string $html        The content of the alert
+	 * @param string $level       One of 'success', 'info', 'warning', 'danger'
+	 * @param bool   $dismissible If true, add a close button.
+	 *
+	 * @return string
+	 */
+	public function htmlAlert($html, $level, $dismissible) {
+		if ($dismissible) {
+			return
+				'<div class="alert alert-' . $level . ' alert-dismissible" role="alert">' .
+				'<button type="button" class="close" data-dismiss="alert" aria-label="' . I18N::translate('close') . '">' .
+				'<span aria-hidden="true">&times;</span>' .
+				'</button>' .
+				$html .
+				'</div>';
+		} else {
+			return
+				'<div class="alert alert-' . $level . '" role="alert">' .
+				$html .
+				'</div>';
+		}
 	}
 
 	/**
@@ -835,6 +1101,15 @@ abstract class AbstractTheme {
 		$this->tree     = $tree;
 
 		$this->hookAfterInit();
+	}
+
+	/**
+	 * A large webtrees logo, for the header.
+	 *
+	 * @return string
+	 */
+	protected function logoHeader() {
+		return '<div class="col wt-site-logo"></div>';
 	}
 
 	/**
@@ -1591,6 +1866,78 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create the <meta charset=""> tag.
+	 *
+	 * @return string
+	 */
+	protected function metaCharset() {
+		return '<meta charset="UTF-8">';
+	}
+
+	/**
+	 * Make the CSRF token available to Javascript.
+	 *
+	 * @return string
+	 */
+	protected function metaCsrf() {
+		return '<meta name="csrf" content="' . e(Filter::getCsrfToken()) . '">';
+	}
+
+	/**
+	 * Create the <meta name="description"> tag.
+	 *
+	 * @param string $description
+	 *
+	 * @return string
+	 */
+	protected function metaDescription($description) {
+		if ($description) {
+			return '<meta name="description" content="' . $description . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the <meta name="generator"> tag.
+	 *
+	 * @param string $generator
+	 *
+	 * @return string
+	 */
+	protected function metaGenerator($generator) {
+		if ($generator) {
+			return '<meta name="generator" content="' . $generator . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the <meta name="robots"> tag.
+	 *
+	 * @param string $robots
+	 *
+	 * @return string
+	 */
+	protected function metaRobots($robots) {
+		if ($robots) {
+			return '<meta name="robots" content="' . $robots . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the <meta name="viewport" content="width=device-width, initial-scale=1"> tag.
+	 *
+	 * @return string
+	 */
+	protected function metaViewport() {
+		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
+	}
+
+	/**
 	 * How many times has the current page been shown?
 	 *
 	 * @param  PageController $controller
@@ -1716,6 +2063,17 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Add markup to the primary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
+	protected function primaryMenuContainer(array $menus) {
+		return '<nav class="col wt-primary-navigation"><ul class="nav wt-primary-menu">' . $this->primaryMenuContent($menus) . '</ul></nav>';
+	}
+
+	/**
 	 * Create the primary menu.
 	 *
 	 * @param Menu[] $menus
@@ -1746,6 +2104,17 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
+	protected function secondaryMenuContainer(array $menus) {
+		return '<div class="col wt-secondary-navigation"><ul class="nav wt-secondary-menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
+	}
+
+	/**
 	 * Format the secondary menu.
 	 *
 	 * @param Menu[] $menus
@@ -1756,6 +2125,13 @@ abstract class AbstractTheme {
 		return implode('', array_map(function (Menu $menu) {
 			return $menu->bootstrap4();
 		}, $menus));
+	}
+
+	/**
+	 * Send any HTTP headers.
+	 */
+	public function sendHeaders() {
+		header('Content-Type: text/html; charset=UTF-8');
 	}
 
 	/**
@@ -1796,4 +2172,14 @@ abstract class AbstractTheme {
 	 */
 	abstract public function themeName();
 
+	/**
+	 * Create the <title> tag.
+	 *
+	 * @param string $title
+	 *
+	 * @return string
+	 */
+	protected function title($title) {
+		return '<title>' . e($title) . '</title>';
+	}
 }
