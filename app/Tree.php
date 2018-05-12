@@ -601,7 +601,6 @@ class Tree {
 		// Don’t allow the user to cancel the request. We do not want to be left with an incomplete transaction.
 		ignore_user_abort(true);
 
-		Database::beginTransaction();
 		$this->deleteGenealogyData($this->getPreference('keep_media'));
 		$this->setPreference('gedcom_filename', $filename);
 		$this->setPreference('imported', '0');
@@ -626,7 +625,6 @@ class Tree {
 			"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
 		)->execute([$this->tree_id, $file_data]);
 
-		Database::commit();
 		fclose($fp);
 	}
 

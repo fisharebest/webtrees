@@ -80,8 +80,8 @@ $controller
 	->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
-	route('admin-control-panel')              => I18N::translate('Control panel'),
-	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
+	route('admin-trees')         => I18N::translate('Manage family trees'),
 ], $controller->getPageTitle());
 ?>
 

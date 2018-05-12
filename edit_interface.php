@@ -660,7 +660,7 @@ case 'add_unlinked_indi_action':
 	if (Filter::post('goto') === 'new') {
 		header('Location: ' . $new_indi->url());
 	} else {
-		header('Location: admin_trees_manage.php');
+		header('Location: ' . route('admin-trees'));
 	}
 	break;
 
@@ -1551,7 +1551,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$xref = $family->getXref();
 		$cancel_url = $family->url();
 	} else {
-		$cancel_url = 'admin_trees_manage.php';
+		$cancel_url = route('admin-trees');
 		$xref = 'new';
 	}
 

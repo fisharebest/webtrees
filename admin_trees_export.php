@@ -46,4 +46,4 @@ if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
 	}
 }
 
-header('Location: admin_trees_manage.php');
+header('Location: ' . route('admin-trees'));

@@ -216,7 +216,7 @@ switch (Filter::post('action')) {
 		}
 
 		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($WT_TREE->getTitle())), 'success');
-		header('Location: admin_trees_manage.php');
+		header('Location: ' . route('admin-trees'));
 
 		return;
 }
@@ -234,8 +234,8 @@ default:
 $controller->pageHeader();
 
 echo Bootstrap4::breadcrumbs([
-	route('admin-control-panel')              => I18N::translate('Control panel'),
-	'admin_trees_manage.php' => I18N::translate('Manage family trees'),
+	route('admin-control-panel') => I18N::translate('Control panel'),
+	route('admin-trees')         => I18N::translate('Manage family trees'),
 ], $controller->getPageTitle());
 ?>
 

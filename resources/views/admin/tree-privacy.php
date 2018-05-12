@@ -5,7 +5,7 @@
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), 'admin_trees_manage.php' => I18N::translate('Manage family trees'), $title]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees') => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -273,7 +273,7 @@
 				<?= FontAwesome::decorativeIcon('save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
-			<a class="btn btn-secondary" href="admin_trees_manage.php?ged=<?= e($tree->getName()) ?>">
+			<a class="btn btn-secondary" href="<?= route('admin-trees', ['ged' => $tree->getName()]) ?>">
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>

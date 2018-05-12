@@ -137,7 +137,7 @@
 							</a>
 						</th>
 						<td>
-							<?= FontAwesome::linkIcon('preferences', I18N::translate('Manage family trees'), ['href' => Html::url('admin_trees_manage.php', ['ged' => $tree->getName()])]) ?>
+							<?= FontAwesome::linkIcon('preferences', I18N::translate('Manage family trees'), ['href' => route('admin-trees', ['ged' => $tree->getName()])]) ?>
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>
@@ -240,7 +240,7 @@
 		<ul class="fa-ul">
 			<li>
 				<span class="fa-li"><i class="fas fa-wrench"></i></span>
-				<a href="<?= e(Html::url('admin_trees_manage.php', [])) ?>">
+				<a href="<?= e(route('admin-trees', ['ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('Manage family trees') ?>
 				</a>
 			</li>

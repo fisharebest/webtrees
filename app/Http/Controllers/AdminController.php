@@ -468,6 +468,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'admin_site_info.php',
 		WT_ROOT . 'admin_site_merge.php',
 		WT_ROOT . 'admin_site_readme.php',
+		WT_ROOT . 'admin_trees_manage.php',
 		WT_ROOT . 'admin_users_bulk.php',
 		WT_ROOT . 'assets/js-1.7.7',
 		WT_ROOT . 'autocomplete.php',
@@ -1586,7 +1587,7 @@ class AdminController extends AbstractBaseController {
 		}
 
 
-		return new RedirectResponse(Html::url('admin_trees_manage.php', ['ged' => $tree->getName()]));
+		return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
 	}
 
 	/**
