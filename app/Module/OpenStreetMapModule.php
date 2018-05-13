@@ -124,7 +124,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * Return a menu item for this chart.
 	 *
 	 * @param Individual $individual
-	 *
 	 * @return Menu
 	 */
 	public function getChartMenu(Individual $individual) {
@@ -160,7 +159,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					$dir . '/packages/leaflet-geosearch-' . self::LEAFLET_GEO . '/leaflet-geosearch.css',
 					$dir . '/assets/css/osm-module.css',
 				],
-				'js' => [
+				'js'  => [
 					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.js',
 					$dir . '/packages/leaflet-providers-' . self::LEAFLET_PROV . '/leaflet-providers.js',
 					$dir . '/packages/leaflet-geosearch-' . self::LEAFLET_GEO . '/leaflet-geosearch.min.js',
@@ -176,7 +175,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					$dir . '/packages/Leaflet.markercluster-' . self::LEAFLET_MC . '/dist/MarkerCluster.css',
 					$dir . '/assets/css/osm-module.css',
 				],
-				'js' => [
+				'js'  => [
 					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.js',
 					$dir . '/packages/leaflet-providers-' . self::LEAFLET_PROV . '/leaflet-providers.js',
 					$dir . '/packages/BeautifyMarker-' . self::LEAFLET_BEAU . '/leaflet-beautify-marker-icon.js',
@@ -210,7 +209,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 */
 	public function getBaseDataAction(Request $request): JsonResponse {
 		$provider = $this->getMapProviderData($request);
-		$style    = $provider['selectedStyleName']    = '' ? '' : '.' . $provider['selectedStyleName'];
+		$style    = $provider['selectedStyleName'] = '' ? '' : '.' . $provider['selectedStyleName'];
 
 		switch ($provider['selectedProvIndex']) {
 			case 'mapbox':
@@ -251,7 +250,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	public function getMapDataAction(Request $request) {
+	public function getMapDataAction(Request $request): JsonResponse {
 		switch ($request->get('type')) {
 			case 'placelist':
 				$response = $this->placelistGetMapData($request);
@@ -303,7 +302,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 							// rather than generate polylines but the MarkerCluster library
 							// doesn't seem to like them
 							$polyline = [
-								'points' => [
+								'points'  => [
 									$sosa_points[$sosa_parent],
 									$event->getLatLonJSArray(),
 								],
@@ -314,10 +313,10 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 						}
 					}
 					$geojson['features'][] = [
-						'type'     => 'Feature',
-						'id'       => $id,
-						'valid'    => true,
-						'geometry' => [
+						'type'       => 'Feature',
+						'id'         => $id,
+						'valid'      => true,
+						'geometry'   => [
 							'type'        => 'Point',
 							'coordinates' => $event->getGeoJsonCoords(),
 						],
@@ -329,7 +328,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 								'modules/openstreetmap/event-sidebar',
 								$event->shortSummary($mapType, $id)
 							),
-							'zoom' => (int)$event->getZoom(),
+							'zoom'     => (int)$event->getZoom(),
 						],
 					];
 				}
@@ -377,15 +376,15 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			}
 
 			$features[] = [
-				'type'     => 'Feature',
-				'id'       => $id,
-				'valid'    => $location->isValid() && $location->knownLatLon(),
-				'geometry' => [
+				'type'       => 'Feature',
+				'id'         => $id,
+				'valid'      => $location->isValid() && $location->knownLatLon(),
+				'geometry'   => [
 					'type'        => 'Point',
 					'coordinates' => $location->getGeoJsonCoords(),
 				],
 				'properties' => [
-					'icon' => [
+					'icon'    => [
 						'name'  => 'globe',
 						'color' => '#1e90ff',
 					],
@@ -399,7 +398,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 							'stats'    => $placeStats,
 						]
 					),
-					'zoom' => (int)($location->getZoom() ?? 2),
+					'zoom'    => (int)($location->getZoom() ?? 2),
 				],
 			];
 		}
@@ -455,8 +454,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			'generations',
 			$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS')
 		);
-		$ancestors = $this->sosaStradonitzAncestors($individual, $generations);
-		$facts     = [];
+		$ancestors   = $this->sosaStradonitzAncestors($individual, $generations);
+		$facts       = [];
 		foreach ($ancestors as $sosa => $person) {
 			if ($person !== null && $person->canShow()) {
 				/** @var Fact $birth */
@@ -516,7 +515,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					'provider' => 'openstreetmap',
 					'style'    => 'mapnik',
 				];
-				self::$map_providers = [
+				self::$map_providers  = [
 					'openstreetmap' => [
 						'name'   => 'OpenStreetMap',
 						'styles' => ['mapnik' => 'Mapnik'],
@@ -530,8 +529,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			case 'BaseData':
 				$varName = (self::$map_selections['style'] === '') ? '' : self::$map_providers[self::$map_selections['provider']]['styles'][self::$map_selections['style']];
 				$payload = ['selectedProvIndex' => self::$map_selections['provider'],
-							'selectedProvName'           => self::$map_providers[self::$map_selections['provider']]['name'],
-							'selectedStyleName'          => $varName,
+				            'selectedProvName'  => self::$map_providers[self::$map_selections['provider']]['name'],
+				            'selectedStyleName' => $varName,
 				];
 				break;
 			case 'ProviderStyles':
@@ -543,10 +542,10 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 				foreach (self::$map_providers as $key => $provider) {
 					$providers[$key] = $provider['name'];
 				}
-				$payload = ['providers' => $providers,
-							'selectedProv'       => self::$map_selections['provider'],
-							'styles'             => self::$map_providers[self::$map_selections['provider']]['styles'],
-							'selectedStyle'      => self::$map_selections['style'],
+				$payload = ['providers'     => $providers,
+				            'selectedProv'  => self::$map_selections['provider'],
+				            'styles'        => self::$map_providers[self::$map_selections['provider']]['styles'],
+				            'selectedStyle' => self::$map_selections['style'],
 				];
 				break;
 			default:
@@ -572,9 +571,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 		return (object)[
 			'name' => 'modules/openstreetmap/pedigreemap',
 			'data' => [
-				'assets' => $this->assets(),
-				'module' => $this->getName(),
-				'title'  => /* I18N: %s is an individual’s name */
+				'assets'         => $this->assets(),
+				'module'         => $this->getName(),
+				'title'          => /* I18N: %s is an individual’s name */
 					I18N::translate('Pedigree map of %s', $individual->getFullName()),
 				'tree'           => $tree,
 				'individual'     => $individual,
@@ -698,7 +697,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			route(
 				'admin-module',
 				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-			)          => $title,
+			)                            => $title,
 		];
 
 		foreach ($hierarchy as $row) {
@@ -757,7 +756,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			route(
 				'admin-module',
 				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-			)          => $title,
+			)                            => $title,
 		];
 
 		foreach ($hierarchy as $row) {
@@ -795,7 +794,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminSaveAction(Request $request) {
+	public function postAdminSaveAction(Request $request): RedirectResponse {
 		if (Filter::checkCsrf()) {
 			$parent_id = (int)$request->get('parent_id');
 			$place_id  = (int)$request->get('place_id');
@@ -818,28 +817,28 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 						  VALUES (:id, :parent, :level, :place, :lng, :lat, :zoom, :icon)"
 				)->execute(
 					[
-					'id'     => (int)Database::prepare("SELECT MAX(pl_id)+1 FROM `##placelocation`")->fetchOne(),
-					'parent' => $parent_id,
-					'level'  => $level,
-					'place'  => $request->get('new_place_name'),
-					'lat'    => $request->get('lati_control') . $lat,
-					'lng'    => $request->get('long_control') . $lng,
-					'zoom'   => $zoom,
-					'icon'   => $icon,
-				]
+						'id'     => (int)Database::prepare("SELECT MAX(pl_id)+1 FROM `##placelocation`")->fetchOne(),
+						'parent' => $parent_id,
+						'level'  => $level,
+						'place'  => $request->get('new_place_name'),
+						'lat'    => $request->get('lati_control') . $lat,
+						'lng'    => $request->get('long_control') . $lng,
+						'zoom'   => $zoom,
+						'icon'   => $icon,
+					]
 				);
 			} else {
 				Database::prepare(
 					"UPDATE `##placelocation` SET pl_place = :place, pl_lati = :lat, pl_long = :lng, pl_zoom = :zoom, pl_icon = :icon WHERE pl_id = :id"
 				)->execute(
 					[
-					'id'    => $place_id,
-					'place' => $request->get('new_place_name'),
-					'lat'   => $request->get('lati_control') . $lat,
-					'lng'   => $request->get('long_control') . $lng,
-					'zoom'  => (int)$request->get('new_zoom_factor'),
-					'icon'  => $icon,
-				]
+						'id'    => $place_id,
+						'place' => $request->get('new_place_name'),
+						'lat'   => $request->get('lati_control') . $lat,
+						'lng'   => $request->get('long_control') . $lng,
+						'zoom'  => (int)$request->get('new_zoom_factor'),
+						'icon'  => $icon,
+					]
 				);
 			}
 			FlashMessages::addMessage(
@@ -852,9 +851,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 			return new RedirectResponse(
 				route(
-				'admin-module',
-				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-			)
+					'admin-module',
+					['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
+				)
 			);
 		} else {
 			throw new AccessDeniedHttpException();
@@ -898,7 +897,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 				->fetchOne();
 
 			if ($children === 0) {
-				$row = Database::prepare('SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id')
+				$row       = Database::prepare('SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id')
 					->execute(['parent_id' => $parent_id])
 					->fetchOneRow();
 				$parent_id = $row->pl_parent_id;
@@ -906,12 +905,12 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 			return new RedirectResponse(
 				route(
-				'admin-module',
-				['module'    => $this->getName(),
-				 'action'    => 'AdminPlaces',
-				 'parent_id' => $parent_id,
-				 'inactive'  => $inactive]
-			)
+					'admin-module',
+					['module'    => $this->getName(),
+					 'action'    => 'AdminPlaces',
+					 'parent_id' => $parent_id,
+					 'inactive'  => $inactive]
+				)
 			);
 		} else {
 			throw new AccessDeniedHttpException();
@@ -923,7 +922,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function getAdminExportAction(Request $request) {
+	public function getAdminExportAction(Request $request): RedirectResponse {
 		$parent_id = (int)$request->get('parent_id');
 		$format    = $request->get('format', 'csv');
 		$maxlevel  = (int)Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
@@ -982,8 +981,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					$lati = (float)strtr($place['pl_lati'], ['N' => '', 'S' => '-', ',' => '.']);
 
 					$geojson['features'][] = [
-						'type'     => 'Feature',
-						'geometry' => [
+						'type'       => 'Feature',
+						'geometry'   => [
 							'type'        => 'Point',
 							'coordinates' => [$long, $lati],
 						],
@@ -1012,7 +1011,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 	/**
 	 * @param Request $request
-	 *
 	 * @return object
 	 */
 	public function getAdminImportFormAction(Request $request) {
@@ -1029,10 +1027,10 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					'parent_id' => 0,
 					'inactive'  => $inactive,
 				]
-			) => $this->getTitle() . ' (' . I18N::translate('Geographic data') . ')',
+			)                            => $this->getTitle() . ' (' . I18N::translate('Geographic data') . ')',
 			I18N::translate('Import file'),
 		];
-		$files = $this->findFiles(WT_MODULES_DIR . $this->getName() . '/extra', ['csv', 'geojson', 'json']);
+		$files       = $this->findFiles(WT_MODULES_DIR . $this->getName() . '/extra', ['csv', 'geojson', 'json']);
 		uasort(
 			$files,
 			function ($a, $b) {
@@ -1065,7 +1063,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminImportAction(Request $request) {
+	public function postAdminImportAction(Request $request): RedirectResponse {
 		$serverfile  = $request->get('serverfile');
 		$options     = $request->get('import-options');
 		$inactive    = $request->get('inactive');
@@ -1107,8 +1105,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 					$row    = explode($delimiter, $input_array[0]);
 					$fields = count($row);
 					if ($fields >= 6 &&
-						(bool)preg_match("/[SN][0-9]*\.?[0-9]*/", $row[$fields - 3]) &&
-						(bool)preg_match("/[EW][0-9]*\.?[0-9]*/", $row[$fields - 4])) {
+					    (bool)preg_match("/[SN][0-9]*\.?[0-9]*/", $row[$fields - 3]) &&
+					    (bool)preg_match("/[EW][0-9]*\.?[0-9]*/", $row[$fields - 4])) {
 						$filetype = 'csv';
 					}
 				}
@@ -1148,7 +1146,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 							}
 						);
 						// convert separate place fields into a comma separated placename
-						$row[] = implode(
+						$row[]    = implode(
 							Place::GEDCOM_SEPARATOR,
 							array_filter(
 								array_reverse(
@@ -1255,9 +1253,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 		return new RedirectResponse(
 			route(
-			'admin-module',
-			['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-		)
+				'admin-module',
+				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
+			)
 		);
 	}
 
@@ -1266,7 +1264,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminImportPlacesAction(Request $request) {
+	public function postAdminImportPlacesAction(Request $request): RedirectResponse {
 		$gedcomName = $request->get('ged');
 		$inactive   = (int)$request->get('inactive');
 		$tree       = Tree::findByName($gedcomName);
@@ -1324,7 +1322,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 				"INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place)" .
 				" VALUES (:id, :parent, :level, :place)"
 			);
-			$checkRecordQry = Database::prepare(
+			$checkRecordQry  = Database::prepare(
 				"SELECT pl1.pl_id" .
 				" FROM	  `##placelocation` AS pl1" .
 				" LEFT JOIN `##placelocation` AS pl2 ON (pl1.pl_parent_id = pl2.pl_id)" .
@@ -1384,9 +1382,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 		return new RedirectResponse(
 			route(
-			'admin-module',
-			['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-		)
+				'admin-module',
+				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
+			)
 		);
 	}
 
@@ -1567,7 +1565,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	/**
 	 * recursively find all of the files of specified types on the server
 	 *
-	 * @param string $path
+	 * @param string   $path
 	 * @param string[] $filetypes
 	 * @return array
 	 */
@@ -1601,7 +1599,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 *
 	 * @param Individual $individual  Start with this individual
 	 * @param int        $generations Fetch this number of generations
-	 *
 	 * @return Individual[]
 	 */
 	private function sosaStradonitzAncestors(Individual $individual, int $generations): array {
