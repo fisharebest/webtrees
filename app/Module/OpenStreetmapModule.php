@@ -251,7 +251,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	public function getMapDataAction(Request $request) {
+	public function getMapDataAction(Request $request): JsonResponse {
 		switch ($request->get('type')) {
 			case 'placelist':
 				$response = $this->placelistGetMapData($request);
@@ -795,7 +795,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminSaveAction(Request $request) {
+	public function postAdminSaveAction(Request $request): RedirectResponse {
 		if (Filter::checkCsrf()) {
 			$parent_id = (int)$request->get('parent_id');
 			$place_id  = (int)$request->get('place_id');
@@ -923,7 +923,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function getAdminExportAction(Request $request) {
+	public function getAdminExportAction(Request $request): RedirectResponse {
 		$parent_id = (int)$request->get('parent_id');
 		$format    = $request->get('format', 'csv');
 		$maxlevel  = (int)Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
@@ -1065,7 +1065,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminImportAction(Request $request) {
+	public function postAdminImportAction(Request $request): RedirectResponse {
 		$serverfile  = $request->get('serverfile');
 		$options     = $request->get('import-options');
 		$inactive    = $request->get('inactive');
@@ -1266,7 +1266,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return RedirectResponse
 	 * @throws \Exception
 	 */
-	public function postAdminImportPlacesAction(Request $request) {
+	public function postAdminImportPlacesAction(Request $request): RedirectResponse {
 		$gedcomName = $request->get('ged');
 		$inactive   = (int)$request->get('inactive');
 		$tree       = Tree::findByName($gedcomName);
