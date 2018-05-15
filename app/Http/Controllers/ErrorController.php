@@ -55,7 +55,7 @@ class ErrorController extends AbstractBaseController {
 
 		// No tree or tree not imported?
 		if (Auth::isAdmin()) {
-			return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
+			return new RedirectResponse(route('admin-trees'));
 		}
 
 		return $this->viewResponse('errors/no-tree-access', [ 'title' => '' ]);
