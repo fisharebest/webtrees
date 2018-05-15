@@ -296,19 +296,19 @@
 				<ul class="fa-ul">
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_users.php', [])) ?>">
+						<a href="<?= e(route('admin-users', ['ged' => $tree->getName()])) ?>">
 							<?= I18N::translate('User administration') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_users.php', ['action' => 'edit'])) ?>">
+						<a href="<?= e(route('admin-users-create', ['ged' => $tree->getName()])) ?>">
 							<?= I18N::translate('Add a user') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_users.php', ['action' => 'cleanup'])) ?>">
+						<a href="<?= e(route('admin-users-cleanup')) ?>">
 							<?= I18N::translate('Delete inactive users') ?>
 						</a>
 					</li>

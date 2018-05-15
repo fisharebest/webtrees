@@ -6,7 +6,7 @@
 
 <?= I18N::translate('You need to review the account details.') ?>
 
-<?= Html::url(WT_BASE_URL . 'admin_users.php', ['action' => 'edit', 'user_id' => $user->getUserId()]) ?>
+<?= route('admin_users-edit', ['user_id' => $user->getUserId()]) ?>
 
 <?= /* I18N: You need to: */ I18N::translate('Set the status to “approved”.') ?>
 <?= /* I18N: You need to: */ I18N::translate('Set the access level for each tree.') ?>

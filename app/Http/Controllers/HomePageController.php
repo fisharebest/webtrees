@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -37,6 +38,26 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class HomePageController extends AbstractBaseController {
 	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function privacyPolicy(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$title = I18N::translate('Privacy policy');
+
+		$uses_analytics = true;
+
+		return $this->viewResponse('privacy-policy', [
+			'uses_analytics' => $uses_analytics,
+			'title'          => $title,
+			'tree'           => $tree,
+		]);
+	}
+
+	/**
 	 * Show a form to edit block config options.
 	 *
 	 * @param Request $request
@@ -47,7 +68,7 @@ class HomePageController extends AbstractBaseController {
 	 */
 	public function treePageBlockEdit(Request $request): Response {
 		/** @var Tree $tree */
-		$tree     = $request->attributes->get('tree');
+		$tree = $request->attributes->get('tree');
 
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->treeBlock($request);
@@ -127,7 +148,7 @@ class HomePageController extends AbstractBaseController {
 	 */
 	public function userPageBlockEdit(Request $request): Response {
 		/** @var Tree $tree */
-		$tree     = $request->attributes->get('tree');
+		$tree = $request->attributes->get('tree');
 
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->userBlock($request);
@@ -239,7 +260,7 @@ class HomePageController extends AbstractBaseController {
 	 */
 	public function treePageBlock(Request $request): Response {
 		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+		$tree     = $request->attributes->get('tree');
 		$block_id = (int) $request->get('block_id');
 
 		$block = Database::prepare(
@@ -460,7 +481,7 @@ class HomePageController extends AbstractBaseController {
 		$side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
 		$title       = I18N::translate('Set the default blocks for new users');
-		$url_cancel  = Html::url('admin_users.php', []);
+		$url_cancel  = route('admin-users');
 		$url_save    = route('user-page-default-update');
 
 		return $this->viewResponse('edit-blocks-page', [
@@ -565,7 +586,7 @@ class HomePageController extends AbstractBaseController {
 		$side_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'side');
 		$all_blocks  = $this->getAvailableUserBlocks();
 		$title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->getUserName());
-		$url_cancel  = Html::url('admin_users.php', []);
+		$url_cancel  = route('admin-users');
 		$url_save    = route('user-page-user-update', ['user_id' => $user_id]);
 
 		return $this->viewResponse('edit-blocks-page', [

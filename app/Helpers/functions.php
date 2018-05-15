@@ -57,7 +57,7 @@ function e(string $text): string {
  *
  * @return string
  */
-function route(string $route, array $parameters = [], bool $absolute = false): string {
+function route(string $route, array $parameters = [], bool $absolute = true): string {
 	$parameters = ['route' => $route] + $parameters;
 
 	if ($absolute) {

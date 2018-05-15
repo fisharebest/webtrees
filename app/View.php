@@ -101,7 +101,8 @@ class View {
 		extract($this->data + self::$shared_data);
 
 		ob_start();
-		require $this->getFilenameForView($this->name);
+		// Do not use require, so we can catch errors for missing files
+		include $this->getFilenameForView($this->name);
 
 		return ob_get_clean();
 	}

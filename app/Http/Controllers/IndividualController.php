@@ -127,7 +127,7 @@
 			if (Auth::isAdmin()) {
 				$user = User::findByIndividual($individual);
 				if ($user) {
-					$user_link = ' —  <a href="admin_users.php?filter=' . e($user->getUserName()) . '">' . e($user->getUserName()) . '</a>';
+					$user_link = ' —  <a href="' . e(route('admin-users', ['filter' => $user->getEmail()])) . '">' . e($user->getUserName()) . '</a>';
 				};
 			}
 

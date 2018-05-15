@@ -51,6 +51,14 @@ if (Auth::isAdmin()) {
 		'POST:admin-trees-delete'             => 'AdminTreesController@delete',
 		'POST:admin-trees-sync'               => 'AdminTreesController@synchronize',
 		'GET:admin-trees'                     => 'AdminTreesController@index',
+		'GET:admin-users'                     => 'AdminUsersController@index',
+		'GET:admin-users-data'                => 'AdminUsersController@data',
+		'GET:admin-users-create'              => 'AdminUsersController@create',
+		'POST:admin-users-create'             => 'AdminUsersController@save',
+		'GET:admin-users-edit'                => 'AdminUsersController@edit',
+		'POST:admin-users-edit'               => 'AdminUsersController@update',
+		'GET:admin-users-cleanup'             => 'AdminUsersController@cleanup',
+		'POST:admin-users-cleanup'            => 'AdminUsersController@cleanupAction',
 		'GET:tree-page-default-edit'          => 'HomePageController@treePageDefaultEdit',
 		'POST:tree-page-default-update'       => 'HomePageController@treePageDefaultUpdate',
 		'GET:user-page-default-edit'          => 'HomePageController@userPageDefaultEdit',
@@ -249,6 +257,7 @@ $routes += [
 	'POST:language'        => 'UserController@language',
 	'POST:masquerade'      => 'UserController@masquerade',
 	'POST:theme'           => 'UserController@theme',
+	'GET:privacy-policy'   => 'HomePageController@privacyPolicy',
 ];
 
 return $routes;
