@@ -5,3 +5,4 @@
 /node_modules/
 /robots.txt
 /phpunit.xml.dist
+/language/*.po
