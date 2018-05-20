@@ -76,14 +76,7 @@ class AdminUsersController extends AbstractBaseController {
 			return $datelogin < $unverified_threshold && !$user->getPreference('verified');
 		});
 
-		$options = [
-			3 => I18N::number(3),
-			6 => I18N::number(6),
-			9 => I18N::number(9),
-			12 => I18N::number(12),
-			18 => I18N::number(18),
-			24 => I18N::number(24),
-		];
+		$options = $this->monthOptions();
 
 		$title = I18N::translate('Delete inactive users');
 
@@ -382,7 +375,6 @@ class AdminUsersController extends AbstractBaseController {
 		$real_name      = $request->get('real_name');
 		$email          = $request->get('email');
 		$pass1          = $request->get('pass1');
-		$pass2          = $request->get('pass2');
 		$theme          = $request->get('theme');
 		$language       = $request->get('language');
 		$timezone       = $request->get('timezone');
@@ -479,6 +471,22 @@ class AdminUsersController extends AbstractBaseController {
 				I18N::translate('Moderator'),
 			'admin'  => /* I18N: Listbox entry; name of a role */
 				I18N::translate('Manager'),
+		];
+	}
+
+	/**
+	 * Delete users older than this.
+	 *
+	 * @return string[]
+	 */
+	private function monthOptions(): array {
+		return [
+			3 => I18N::number(3),
+			6 => I18N::number(6),
+			9 => I18N::number(9),
+			12 => I18N::number(12),
+			18 => I18N::number(18),
+			24 => I18N::number(24),
 		];
 	}
 
