@@ -771,26 +771,4 @@ class Tree {
 
 		return $individual;
 	}
-
-	/**
-	 * What is the most significant family in this tree.
-	 *
-	 * @param User $user
-	 *
-	 * @return Family
-	 */
-	public function significantFamily(User $user): Family {
-		$individual = $this->significantIndividual($user);
-
-		foreach ($individual->getChildFamilies() as $family) {
-			return $family;
-		}
-		foreach ($individual->getSpouseFamilies() as $family) {
-			return $family;
-		}
-
-		// always return a record
-		return new Family('F', '0 @F@ FAM', null, $individual->getTree());
-	}
-
 }

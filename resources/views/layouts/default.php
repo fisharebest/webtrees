@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -77,13 +78,15 @@
 						</ul>
 					</div>
 
+					<?php if ($tree !== null): ?>
 					<nav class="col wt-primary-navigation">
 						<ul class="nav wt-primary-menu">
-							<?php foreach (Theme::theme()->primaryMenu() as $menu): ?>
+							<?php foreach (Theme::theme()->primaryMenu($individual ?? $tree->significantIndividual(Auth::user())) as $menu): ?>
 								<?= $menu->bootstrap4() ?>
 							<?php endforeach ?>
 						</ul>
 					</nav>
+					<?php endif ?>
 				</div>
 			</div>
 		</header>
