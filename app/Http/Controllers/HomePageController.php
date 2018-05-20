@@ -38,26 +38,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class HomePageController extends AbstractBaseController {
 	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function privacyPolicy(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
-		$title = I18N::translate('Privacy policy');
-
-		$uses_analytics = true;
-
-		return $this->viewResponse('privacy-policy', [
-			'uses_analytics' => $uses_analytics,
-			'title'          => $title,
-			'tree'           => $tree,
-		]);
-	}
-
-	/**
 	 * Show a form to edit block config options.
 	 *
 	 * @param Request $request

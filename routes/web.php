@@ -257,7 +257,7 @@ $routes += [
 	'POST:language'        => 'UserController@language',
 	'POST:masquerade'      => 'UserController@masquerade',
 	'POST:theme'           => 'UserController@theme',
-	'GET:privacy-policy'   => 'HomePageController@privacyPolicy',
+	'GET:privacy-policy'   => 'StaticPageController@privacyPolicy',
 ];
 
 return $routes;
