@@ -384,24 +384,6 @@ class AdminTreesController extends AbstractBaseController {
 
 		$xrefs = $this->duplicateXrefs($tree);
 
-		Database::exec(
-			"LOCK TABLE `##individuals` WRITE," .
-			" `##families` WRITE," .
-			" `##sources` WRITE," .
-			" `##media` WRITE," .
-			" `##media_file` WRITE," .
-			" `##other` WRITE," .
-			" `##name` WRITE," .
-			" `##placelinks` WRITE," .
-			" `##change` WRITE," .
-			" `##dates` WRITE," .
-			" `##default_resn` WRITE," .
-			" `##hit_counter` WRITE," .
-			" `##link` WRITE," .
-			" `##site_setting` WRITE," .
-			" `##user_gedcom_setting` WRITE"
-		);
-
 		foreach ($xrefs as $old_xref => $type) {
 			$new_xref = $tree->getNewXref();
 			switch ($type) {
@@ -580,8 +562,6 @@ class AdminTreesController extends AbstractBaseController {
 				break;
 			}
 		}
-
-		Database::exec("UNLOCK TABLES");
 
 		$url = route('admin-trees-renumber', ['ged' => $tree->getName()]);
 
