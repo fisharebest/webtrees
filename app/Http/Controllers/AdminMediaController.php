@@ -49,8 +49,8 @@ class AdminMediaController extends AbstractBaseController {
 		$media_path   = $request->get('media_path', '');
 		$subfolders   = $request->get('subfolders', 'include'); // include/exclude
 
-		$media_folders = $this->all_media_folders();
-		$media_paths   = $this->media_paths($media_folder);
+		$media_folders = $this->allMediaFolders();
+		$media_paths   = $this->mediaPaths($media_folder);
 
 		// Preserve the pagination/filtering/sorting between requests, so that the
 		// browser’s back button works. Pagination is dependent on the currently
@@ -81,7 +81,7 @@ class AdminMediaController extends AbstractBaseController {
 		$media_folder = $request->get('folder', '');
 
 		// Only delete valid (i.e. unused) media files
-		$disk_files   = $this->all_disk_files($media_folder, '', 'include', '');
+		$disk_files   = $this->allDiskFiles($media_folder, '', 'include', '');
 
 		// Check file exists? Maybe it was already deleted or renamed.
 		if (in_array($delete_file, $disk_files)) {
@@ -112,7 +112,7 @@ class AdminMediaController extends AbstractBaseController {
 		$length = (int) $request->get('length');
 
 		// family tree setting MEDIA_DIRECTORY
-		$media_folders = $this->all_media_folders();
+		$media_folders = $this->allMediaFolders();
 		$media_folder  = $request->get('media_folder', '');
 		// User folders may contain special characters. Restrict to actual folders.
 		if (!array_key_exists($media_folder, $media_folders)) {
@@ -120,7 +120,7 @@ class AdminMediaController extends AbstractBaseController {
 		}
 
 		// prefix to filename
-		$media_paths = $this->media_paths($media_folder);
+		$media_paths = $this->mediaPaths($media_folder);
 		$media_path  = $request->get('media_path', '');
 		// User paths may contain special characters. Restrict to actual paths.
 		if (!array_key_exists($media_path, $media_paths)) {
@@ -300,8 +300,8 @@ class AdminMediaController extends AbstractBaseController {
 					'media_folder' => $media_folder,
 				])->fetchAssoc();
 
-				$disk_files = $this->all_disk_files($media_folder, $media_path, $subfolders, $search);
-				$db_files   = $this->all_media_files($media_folder, $media_path, $subfolders, $search);
+				$disk_files = $this->allDiskFiles($media_folder, $media_path, $subfolders, $search);
+				$db_files   = $this->allMediaFiles($media_folder, $media_path, $search);
 
 				// All unused files
 				$unused_files = array_diff($disk_files, $db_files);
@@ -402,7 +402,7 @@ class AdminMediaController extends AbstractBaseController {
 	 *
 	 * @return string[]
 	 */
-	function all_media_folders(): array {
+	function allMediaFolders(): array {
 		return Database::prepare(
 			"SELECT SQL_CACHE setting_value, setting_value" .
 			" FROM `##gedcom_setting`" .
@@ -419,7 +419,7 @@ class AdminMediaController extends AbstractBaseController {
 	 *
 	 * @return string[]
 	 */
-	private function media_paths(string $media_folder): array {
+	private function mediaPaths(string $media_folder): array {
 		$media_paths = Database::prepare(
 			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
@@ -451,7 +451,7 @@ class AdminMediaController extends AbstractBaseController {
 	 *
 	 * @return string[]
 	 */
-	private function scan_dirs(string $dir, bool $recursive, string $filter): array {
+	private function scanFolders(string $dir, bool $recursive, string $filter): array {
 		$files = [];
 
 		// $dir comes from the database. The actual folder may not exist.
@@ -460,7 +460,7 @@ class AdminMediaController extends AbstractBaseController {
 				if (is_dir($dir . $path)) {
 					// What if there are user-defined subfolders “thumbs” or “watermarks”?
 					if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
-						foreach ($this->scan_dirs($dir . $path . '/', $recursive, $filter) as $subpath) {
+						foreach ($this->scanFolders($dir . $path . '/', $recursive, $filter) as $subpath) {
 							$files[] = $path . '/' . $subpath;
 						}
 					}
@@ -483,25 +483,20 @@ class AdminMediaController extends AbstractBaseController {
 	 *
 	 * @return string[]
 	 */
-	private function all_disk_files(string $media_folder, string $media_path, string $subfolders, string $filter): array {
-		return $this->scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders == 'include', $filter);
+	private function allDiskFiles(string $media_folder, string $media_path, string $subfolders, string $filter): array {
+		return $this->scanFolders(WT_DATA_DIR . $media_folder . $media_path, $subfolders == 'include', $filter);
 	}
 
 	/**
 	 * Fetch a list of all files on in the database.
 	 *
-	 * The subfolders parameter is not implemented. However, as we
-	 * currently use this function as an exclusion list, it is harmless
-	 * to always include sub-folders.
-	 *
 	 * @param string $media_folder
 	 * @param string $media_path
-	 * @param string $subfolders
 	 * @param string $filter
 	 *
 	 * @return string[]
 	 */
-	private function all_media_files(string $media_folder, string $media_path, string $subfolders, string $filter): array {
+	private function allMediaFiles(string $media_folder, string $media_path, string $filter): array {
 		return Database::prepare(
 			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, 'OBJE' AS type, descriptive_title, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, multimedia_file_refn" .
 			" FROM  `##media`" .
