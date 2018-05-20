@@ -314,7 +314,7 @@ class EditMediaController extends AbstractBaseController {
 		// Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
 		FunctionsImport::acceptAllChanges($media_object->getXref(), $tree->getTreeId());
 
-		return new RedirectResponse(Html::url('admin_media.php', ['files' => 'unused']));
+		return new RedirectResponse($media_object->url());
 	}
 
 	/**

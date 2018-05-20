@@ -434,7 +434,7 @@
 		<ul class="fa-ul">
 			<li>
 				<span class="fa-li"><i class="fas fa-cogs"></i></span>
-				<a href="<?= e(Html::url('admin_media.php', [])) ?>">
+				<a href="<?= e(route('admin-media')) ?>">
 					<?= I18N::translate('Manage media') ?>
 				</a>
 			</li>
