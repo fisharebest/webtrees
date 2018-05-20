@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
@@ -27,6 +28,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -359,13 +361,182 @@ class AdminTreesController extends AbstractBaseController {
 	 *
 	 * @return Response
 	 */
+	public function places(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$search  = $request->get('search', '');
+		$replace = $request->get('replace', '');
+
+		if ($search !== '' && $replace !== '') {
+			$changes = $this->changePlacesPreview($tree, $search, $replace);
+		} else {
+			$changes = [];
+		}
+
+		$title = I18N::translate(/* I18N: Renumber the records in a family tree */
+				'Renumber family tree') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-places', [
+			'changes' => $changes,
+			'replace' => $replace,
+			'search'  => $search,
+			'title'   => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function placesAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$search  = $request->get('search', '');
+		$replace = $request->get('replace', '');
+
+		$changes = $this->changePlacesUpdate($tree, $search, $replace);
+
+		$feedback = I18N::translate('The following places have been changed:') . '<ul>';
+		foreach ($changes as $old_place => $new_place) {
+			$feedback .= '<li>' . e($old_place) . ' &rarr; ' . e($new_place) . '</li>';
+		}
+		$feedback .= '</ul>';
+
+		FlashMessages::addMessage($feedback, 'success');
+
+		$url = route('admin-trees-places', [
+			'ged'     => $tree->getName(),
+			'replace' => $replace,
+			'search'  => $search,
+		]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * Find a list of place names that would be updated.
+	 *
+	 * @param Tree   $tree
+	 * @param string $search
+	 * @param string $replace
+	 *
+	 * @return string[]
+	 */
+	private function changePlacesPreview(Tree $tree, string $search, string $replace): array {
+		$changes = [];
+
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
+			" FROM `##individuals`" .
+			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
+			" WHERE i_file = ?" .
+			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+				}
+			}
+		}
+		$rows = Database::prepare(
+			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
+			" FROM `##families`" .
+			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
+			" WHERE f_file = ?" .
+			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+				}
+			}
+		}
+
+		asort($changes);
+
+		return $changes;
+	}
+
+	/**
+	 * Find a list of place names that would be updated.
+	 *
+	 * @param Tree   $tree
+	 * @param string $search
+	 * @param string $replace
+	 *
+	 * @return string[]
+	 */
+	private function changePlacesUpdate(Tree $tree, string $search, string $replace): array {
+		$changes = [];
+
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
+			" FROM `##individuals`" .
+			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
+			" WHERE i_file = ?" .
+			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$record->updateFact($fact->getFactId(), $gedcom, false);
+				}
+			}
+		}
+		$rows = Database::prepare(
+			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
+			" FROM `##families`" .
+			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
+			" WHERE f_file = ?" .
+			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$record->updateFact($fact->getFactId(), $gedcom, false);
+				}
+			}
+		}
+
+		asort($changes);
+
+		return $changes;
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
 	public function renumber(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
 		$xrefs = $this->duplicateXrefs($tree);
 
-		$title = I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . e($tree->getTitle());
+		$title = I18N::translate(/* I18N: Renumber the records in a family tree */
+				'Renumber family tree') . ' — ' . e($tree->getTitle());
 
 		return $this->viewResponse('admin/trees-renumber', [
 			'title' => $title,
@@ -570,7 +741,7 @@ class AdminTreesController extends AbstractBaseController {
 
 	/**
 	 * Every XREF used by this tree and also used by some other tree
-	 * 
+	 *
 	 * @param Tree $tree
 	 *
 	 * @return string[]

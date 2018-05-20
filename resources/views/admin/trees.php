@@ -148,7 +148,7 @@
 									<!-- UPDATE PLACE NAMES -->
 									<li>
 										<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
-										<a href="<?= e(Html::url('admin_trees_places.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-places', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Update place names') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>

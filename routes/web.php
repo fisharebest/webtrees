@@ -56,6 +56,8 @@ if (Auth::isAdmin()) {
 		'POST:admin-trees-delete'             => 'AdminTreesController@delete',
 		'POST:admin-trees-sync'               => 'AdminTreesController@synchronize',
 		'GET:admin-trees'                     => 'AdminTreesController@index',
+		'GET:admin-trees-places'              => 'AdminTreesController@places',
+		'POST:admin-trees-places'             => 'AdminTreesController@placesAction',
 		'GET:admin-trees-renumber'            => 'AdminTreesController@renumber',
 		'POST:admin-trees-renumber'           => 'AdminTreesController@renumberAction',
 		'GET:admin-trees-unconnected'         => 'AdminTreesController@unconnected',
