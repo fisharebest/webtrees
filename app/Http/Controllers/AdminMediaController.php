@@ -402,7 +402,7 @@ class AdminMediaController extends AbstractBaseController {
 	 *
 	 * @return string[]
 	 */
-	function allMediaFolders(): array {
+	private function allMediaFolders(): array {
 		return Database::prepare(
 			"SELECT SQL_CACHE setting_value, setting_value" .
 			" FROM `##gedcom_setting`" .
