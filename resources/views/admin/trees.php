@@ -168,7 +168,7 @@
 									<!-- UNCONNECTED INDIVIDUALS -->
 									<li>
 										<span class="fa-li"><i class="fas fa-unlink"></i></span>
-										<a href="<?= e(Html::url('admin_trees_unconnected.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-unconnected', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Find unrelated individuals') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>

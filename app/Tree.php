@@ -736,4 +736,61 @@ class Tree {
 		// record with a newly created pending change.
 		return GedcomRecord::getInstance($xref, $this, $gedcom);
 	}
+
+	/**
+	 * What is the most significant individual in this tree.
+	 *
+	 * @param User $user
+	 *
+	 * @return Individual
+	 */
+	public function significantIndividual(User $user): Individual {
+		static $individual; // Only query the DB once.
+
+		if (!$individual && $this->getUserPreference($user, 'rootid')) {
+			$individual = Individual::getInstance($this->getUserPreference($user, 'rootid'), $this);
+		}
+		if (!$individual && $this->getUserPreference($user, 'gedcomid')) {
+			$individual = Individual::getInstance($this->getUserPreference($user, 'gedcomid'), $this);
+		}
+		if (!$individual) {
+			$individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
+		}
+		if (!$individual) {
+			$individual = Individual::getInstance(
+				Database::prepare(
+					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
+				)->execute([$this->getTreeId()])->fetchOne(),
+				$this
+			);
+		}
+		if (!$individual) {
+			// always return a record
+			$individual = new Individual('I', '0 @I@ INDI', null, $this);
+		}
+
+		return $individual;
+	}
+
+	/**
+	 * What is the most significant family in this tree.
+	 *
+	 * @param User $user
+	 *
+	 * @return Family
+	 */
+	public function significantFamily(User $user): Family {
+		$individual = $this->significantIndividual($user);
+
+		foreach ($individual->getChildFamilies() as $family) {
+			return $family;
+		}
+		foreach ($individual->getSpouseFamilies() as $family) {
+			return $family;
+		}
+
+		// always return a record
+		return new Family('F', '0 @F@ FAM', null, $individual->getTree());
+	}
+
 }
