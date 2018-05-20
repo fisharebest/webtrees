@@ -685,7 +685,7 @@ abstract class AbstractTheme {
 			$this->formatTreeTitle() .
 			$this->formQuickSearch() .
 			$this->secondaryMenuContainer($this->secondaryMenu()) .
-			$this->primaryMenuContainer($this->primaryMenu());
+			$this->primaryMenuContainer($this->primaryMenu($this->tree->significantIndividual(Auth::user())));
 	}
 
 	/**

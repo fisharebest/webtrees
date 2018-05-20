@@ -178,7 +178,7 @@
 									<!-- RENUMBER -->
 									<li>
 										<span class="fa-li"><i class="fas fa-sort-numeric-down"></i></span>
-										<a href="<?= e(Html::url('admin_trees_renumber.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-renumber', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Renumber') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
