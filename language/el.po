@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-04 08:40+0000\n"
+"PO-Revision-Date: 2018-05-20 07:26+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
@@ -165,7 +165,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s του %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:731
@@ -303,15 +303,15 @@ msgstr[1] "%s άτομα με γεγονότα μεταξύ %s και %s"
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s άτομο με γεγονότα σε %s"
+msgstr[1] "%s άτομα με γεγονότα σε %s"
 
 #: app/Controller/LifespanController.php:236
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s άτομο με γεγονότα σε %s μεταξύ %s και %s"
+msgstr[1] "%s άτομα με γεγονότα σε %s μεταξύ %s και %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: app/Http/Controllers/SetupController.php:420
@@ -830,7 +830,7 @@ msgstr "Λίστα με τα δημοφιλέστερα επώνυμα."
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:46
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Οι σελίδες που έχουν προβληθεί τις περισσότερες φορές."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:38
@@ -879,7 +879,7 @@ msgstr ""
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Μια αναφορά με τους προγόνους ενός ατόμου, με την μορφή δέντρου."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
@@ -5948,11 +5948,11 @@ msgstr "Γενεαλογικά δέντρα"
 #: app/Controller/IndividualController.php:381
 #, php-format
 msgid "Family with %s"
-msgstr ""
+msgstr "Οικογένεια με %s"
 
 #: app/GedcomCode/GedcomCodePedi.php:129
 msgid "Family with adoptive parents"
-msgstr ""
+msgstr "Οικογένεια με θετούς γονείς"
 
 #: app/GedcomCode/GedcomCodePedi.php:131
 msgid "Family with foster parents"
@@ -6067,7 +6067,7 @@ msgstr "Οικογένεια πατέρα με %s"
 #. I18N: A step-family.
 #: app/Individual.php:979
 msgid "Father’s family with an unknown individual"
-msgstr "Οικογένεια πατέρα με αγνώστο άτομο"
+msgstr "Οικογένεια πατέρα με άγνωστο άτομο"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:61 app/Theme/AbstractTheme.php:1442
@@ -9321,7 +9321,7 @@ msgstr "Οικογένεια μητέρας με %s"
 #. I18N: A step-family.
 #: app/Individual.php:990
 msgid "Mother’s family with an unknown individual"
-msgstr "Οικογένεια μητέρας με αγνώστο άτομο"
+msgstr "Οικογένεια μητέρας με άγνωστο άτομο"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
@@ -18395,7 +18395,7 @@ msgstr "εξάμηνο μετά το γάμο"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:274
 msgid "herself"
-msgstr ""
+msgstr "η ίδια"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:812
@@ -18405,7 +18405,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:272
 msgid "himself"
-msgstr ""
+msgstr "ο ίδιος"
 
 #: app/Functions/Functions.php:673 edit_interface.php:1473
 #: edit_interface.php:1512
