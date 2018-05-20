@@ -440,7 +440,7 @@
 			</li>
 			<li>
 				<span class="fa-li"><i class="fas fa-cogs"></i></span>
-				<a href="<?= e(Html::url('admin_media_upload.php', [])) ?>">
+				<a href="<?= e(route('admin-media-upload')) ?>">
 					<?= I18N::translate('Upload media files') ?>
 				</a>
 			</li>

@@ -457,6 +457,7 @@ class AdminController extends AbstractBaseController {
 		// Removed in 2.0.0
 		WT_ROOT . 'addmedia.php',
 		WT_ROOT . 'admin_media.php',
+		WT_ROOT . 'admin_media_upload.php',
 		WT_ROOT . 'admin_module_blocks.php',
 		WT_ROOT . 'admin_module_charts.php',
 		WT_ROOT . 'admin_module_menus.php',

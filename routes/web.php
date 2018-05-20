@@ -47,6 +47,8 @@ if (Auth::isAdmin()) {
 		'GET:admin-media'                     => 'AdminMediaController@index',
 		'GET:admin-media-data'                => 'AdminMediaController@data',
 		'POST:admin-media-delete'             => 'AdminMediaController@delete',
+		'GET:admin-media-upload'              => 'AdminMediaController@upload',
+		'POST:admin-media-upload'             => 'AdminMediaController@uploadAction',
 		'GET:admin-trees-import'              => 'AdminTreesController@importForm',
 		'POST:admin-trees-import'             => 'AdminTreesController@importAction',
 		'POST:admin-trees-create'             => 'AdminTreesController@create',

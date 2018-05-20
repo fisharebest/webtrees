@@ -19,14 +19,18 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -36,6 +40,9 @@ use Throwable;
  * Controller for media administration.
  */
 class AdminMediaController extends AbstractBaseController {
+	// How many files to upload on one form.
+	const MAX_UPLOAD_FILES = 10;
+
 	protected $layout = 'layouts/administration';
 
 	/**
@@ -77,18 +84,18 @@ class AdminMediaController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function delete(Request $request): Response {
-		$delete_file = $request->get('file', '');
+		$delete_file  = $request->get('file', '');
 		$media_folder = $request->get('folder', '');
 
 		// Only delete valid (i.e. unused) media files
-		$disk_files   = $this->allDiskFiles($media_folder, '', 'include', '');
+		$disk_files = $this->allDiskFiles($media_folder, '', 'include', '');
 
 		// Check file exists? Maybe it was already deleted or renamed.
 		if (in_array($delete_file, $disk_files)) {
 			$tmp = WT_DATA_DIR . $media_folder . $delete_file;
 			try {
 				unlink($tmp);
-				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
+				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'info');
 			} catch (Throwable $ex) {
 				DebugBar::addThrowable($ex);
 
@@ -352,7 +359,7 @@ class AdminMediaController extends AbstractBaseController {
 						}
 					}
 
-					$delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-url="'. e(route('admin-media-delete', ['file' => $media_path . $unused_file, 'folder' => $media_folder])) .'" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+					$delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-url="' . e(route('admin-media-delete', ['file' => $media_path . $unused_file, 'folder' => $media_folder])) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 					$data[] = [
 						$this->mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
@@ -376,25 +383,122 @@ class AdminMediaController extends AbstractBaseController {
 	}
 
 	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function upload(Request $request): Response {
+		$media_folders = $this->folderListAll();
+
+		$filesize = ini_get('upload_max_filesize');
+		if (empty($filesize)) {
+			$filesize = '2M';
+		}
+
+		$title = I18N::translate('Upload media files');
+
+		return $this->viewResponse('admin/media-upload', [
+			'max_upload_files' => self::MAX_UPLOAD_FILES,
+			'filesize'         => $filesize,
+			'media_folders'    => $media_folders,
+			'title'            => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function uploadAction(Request $request): RedirectResponse {
+		$all_folders = $this->folderListAll();
+
+		for ($i = 1; $i < self::MAX_UPLOAD_FILES; $i++) {
+			if (!empty($_FILES['mediafile' . $i]['name'])) {
+				$folder   = $request->get('folder' . $i, '');
+				$filename = $request->get('filename' . $i, '');
+
+				// If no filename specified, use the original filename.
+				if ($filename === '') {
+					$filename = $_FILES['mediafile' . $i]['name'];
+				}
+
+				// Validate the folder
+				if (!in_array($folder, $all_folders)) {
+					break;
+				}
+
+				// Validate the filename.
+				$filename = str_replace('\\', '/', $filename);
+				$filename = trim($filename, '/');
+
+				if (strpos('/' . $filename, '/../') !== false) {
+					FlashMessages::addMessage('Folder names are not allowed to include “../”');
+					continue;
+				} elseif (preg_match('/([:])/', $filename, $match)) {
+					// Local media files cannot contain certain special characters, especially on MS Windows
+					FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
+					continue;
+				} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
+					// Do not allow obvious script files.
+					FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
+					continue;
+				}
+
+				// The new filename may have created a new sub-folder.
+				$full_path = WT_DATA_DIR . $folder . $filename;
+				$folder    = dirname($full_path);
+
+				// Make sure the media folder exists
+				if (!is_dir($folder)) {
+					if (File::mkdir($folder)) {
+						FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($folder)), 'info');
+					} else {
+						FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename($folder)), 'danger');
+						continue;
+					}
+				}
+
+				if (file_exists($full_path)) {
+					FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $full_path, 'error'));
+					continue;
+				}
+
+				// Now copy the file to the correct location.
+				if (move_uploaded_file($_FILES['mediafile' . $i]['tmp_name'], $full_path)) {
+					FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($full_path)), 'success');
+					Log::addMediaLog('Media file ' . $full_path . ' uploaded');
+				} else {
+					FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . Functions::fileUploadErrorText($_FILES['mediafile' . $i]['error']), 'danger');
+				}
+			}
+		}
+
+		$url = route('admin-media-upload');
+
+		return new RedirectResponse($url);
+	}
+
+	/**
 	 * Generate a list of all folders from all the trees.
 	 *
 	 * @return string[]
 	 */
 	private function folderListAll(): array {
 		$folders = Database::prepare(
-			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
-			" FROM  `##media_file`" .
+			"SELECT SQL_CACHE CONCAT(setting_value, LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))))" .
+			" FROM  `##gedcom_setting` AS gs" .
+			" JOIN  `##media_file` AS m ON m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY'" .
 			" WHERE multimedia_file_refn NOT LIKE 'http://%'" .
 			" AND   multimedia_file_refn NOT LIKE 'https://%'" .
+			" AND   gs.gedcom_id > 0" .
 			" GROUP BY 1" .
+			" UNION" .
+			" SELECT setting_value FROM `##gedcom_setting` WHERE setting_name = 'MEDIA_DIRECTORY'" .
 			" ORDER BY 1"
 		)->execute()->fetchOneColumn();
 
-		if ($folders) {
-			return array_combine($folders, $folders);
-		} else {
-			return [];
-		}
+		return $folders;
 	}
 
 	/**
