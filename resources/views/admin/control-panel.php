@@ -385,7 +385,7 @@
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-share-alt"></i></span>
+						<span class="fa-li"><i class="fas fa-sitemap"></i></span>
 						<a href="<?= e(route('admin-charts')) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>

@@ -52,7 +52,7 @@ class FontAwesome extends Html {
 		'block'      => 'fas fa-th-list fa-flip-horizontal wt-icon-block',
 		'block-user' => 'far fa-user wt-icon-block-user',
 		'block-tree' => 'fas fa-tree wt-icon-block-tree',
-		'chart'      => 'fas fa-share-alt wt-icon-chart',
+		'chart'      => 'fas fa-sitemap wt-icon-chart',
 		'menu'       => 'far fa-bar wt-icon-menu',
 		'report'     => 'far fa-file wt-icon-report',
 		'sidebar'    => 'fas fa-pause wt-icon-sidebar',
