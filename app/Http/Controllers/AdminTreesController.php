@@ -23,14 +23,23 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Throwable;
 
 /**
  * Controller for tree administration.
@@ -88,6 +97,157 @@ class AdminTreesController extends AbstractBaseController {
 
 		return new RedirectResponse($url);
 	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function export(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-export', [
+			'title' => $title,
+			'tree'  => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function exportClient(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		// Validate user parameters
+		$convert          = (bool) $request->get('convert');
+		$zip              = (bool) $request->get('zip');
+		$media            = (bool) $request->get('media');
+		$media_path       = $request->get('media-path');
+		$privatize_export = $request->get('privatize_export');
+
+		$exportOptions = [
+			'privatize' => $privatize_export,
+			'toANSI'    => $convert ? 'yes' : 'no',
+			'path'      => $media_path,
+		];
+
+		// What to call the downloaded file
+		$download_filename = $tree->getName();
+		if (strtolower(substr($download_filename, -4, 4)) != '.ged') {
+			$download_filename .= '.ged';
+		}
+
+		if ($zip || $media) {
+			// Export the GEDCOM to an in-memory stream.
+			$tmp_stream = tmpfile();
+			FunctionsExport::exportGedcom($tree, $tmp_stream, $exportOptions);
+			rewind($tmp_stream);
+
+			// Create a new/empty .ZIP file
+			$temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
+			$zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
+			$zip_filesystem->writeStream($download_filename, $tmp_stream);
+
+			if ($media) {
+				$rows = Database::prepare(
+					"SELECT m_id, m_gedcom FROM `##media` WHERE m_file = :tree_id"
+				)->execute([
+					'tree_id' => $tree->getTreeId(),
+				])->fetchAll();
+				$path = $tree->getPreference('MEDIA_DIRECTORY');
+				foreach ($rows as $row) {
+					$record = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+					if ($record->canShow()) {
+						foreach ($record->mediaFiles() as $media_file) {
+							if (file_exists($media_file->getServerFilename())) {
+								$fp = fopen($media_file->getServerFilename(), 'r');
+								$zip_filesystem->writeStream($path . $media_file->filename(), $fp);
+								fclose($fp);
+							}
+						}
+					}
+				}
+			}
+
+			// The ZipArchiveAdapter may or may not close the stream.
+			if (is_resource($tmp_stream)) {
+				fclose($tmp_stream);
+			}
+
+			// Need to force-close the filesystem
+			$zip_filesystem = null;
+
+			$response = new BinaryFileResponse($temp_zip_file);
+			$response->deleteFileAfterSend(true);
+
+			$response->headers->set('Content-Type', 'application/zip');
+			$response->setContentDisposition(
+				ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+				$download_filename . '.zip'
+			);
+		} else {
+			$response = new StreamedResponse(function() use ($tree, $exportOptions) {
+				$stream = fopen('php://output', 'w');
+				FunctionsExport::exportGedcom($tree, $stream, $exportOptions);
+				fclose($stream);
+			});
+
+			$charset = $convert ? 'ISO-8859-1' : 'UTF-8';
+
+			$response->headers->set('Content-Type', 'text/plain; charset=' . $charset);
+			$contentDisposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $download_filename);
+			$response->headers->set('Content-Disposition', $contentDisposition);
+		}
+
+		return $response;
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function exportServer(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$filename = WT_DATA_DIR . $tree->getName();
+
+		// Force a ".ged" suffix
+		if (strtolower(substr($filename, -4)) != '.ged') {
+			$filename .= '.ged';
+		}
+
+		try {
+			// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
+			$stream = fopen($filename . '.tmp', 'w');
+			$tree->exportGedcom($stream);
+			fclose($stream);
+			rename($filename . '.tmp', $filename);
+
+			FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
+		} catch (Throwable $ex) {
+			DebugBar::addThrowable($ex);
+
+			FlashMessages::addMessage(
+				I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
+				'danger'
+			);
+		}
+
+		$url = route('admin-trees', [
+			'ged' => $tree->getName(),
+		]);
+
+		return new RedirectResponse($url);
+	}
+
 
 	/**
 	 * @param Request $request

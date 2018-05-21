@@ -274,7 +274,7 @@
 									<!-- DOWNLOAD/Export -->
 									<li>
 										<span class="fa-li"><i class="fas fa-download"></i></span>
-										<a href="<?= e(Html::url('admin_trees_download.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-export', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Export') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
