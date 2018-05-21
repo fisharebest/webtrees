@@ -60,6 +60,8 @@ if (Auth::isAdmin()) {
 		'POST:admin-trees-places'             => 'AdminTreesController@placesAction',
 		'GET:admin-trees-renumber'            => 'AdminTreesController@renumber',
 		'POST:admin-trees-renumber'           => 'AdminTreesController@renumberAction',
+		'GET:admin-trees-merge'               => 'AdminTreesController@merge',
+		'POST:admin-trees-merge'              => 'AdminTreesController@mergeAction',
 		'GET:admin-trees-unconnected'         => 'AdminTreesController@unconnected',
 		'GET:admin-users'                     => 'AdminUsersController@index',
 		'GET:admin-users-data'                => 'AdminUsersController@data',

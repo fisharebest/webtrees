@@ -203,6 +203,135 @@ class AdminTreesController extends AbstractBaseController {
 	 *
 	 * @return Response
 	 */
+	public function merge(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$tree1_name = $request->get('tree1_name');
+		$tree2_name = $request->get('tree2_name');
+
+		$tree1 = Tree::findByName($tree1_name);
+		$tree2 = Tree::findByName($tree2_name);
+
+		if ($tree1 !== null && $tree2 !== null && $tree1->getTreeId() !== $tree2->getTreeId()) {
+			$xrefs = $this->commonXrefs($tree1, $tree2);
+		} else {
+			$xrefs = [];
+		}
+
+		$tree_list = Tree::getNameList();
+
+		$title = I18N::translate(I18N::translate('Merge family trees'));
+
+		return $this->viewResponse('admin/trees-merge', [
+			'tree_list' => $tree_list,
+			'tree1'     => $tree1,
+			'tree2'     => $tree2,
+			'title'     => $title,
+			'xrefs'     => $xrefs,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function mergeAction(Request $request): RedirectResponse {
+		$tree1_name = $request->get('tree1_name');
+		$tree2_name = $request->get('tree2_name');
+
+		$tree1 = Tree::findByName($tree1_name);
+		$tree2 = Tree::findByName($tree2_name);
+
+		if ($tree1 !== null && $tree2 !== null && $tree1 !== $tree2 && empty($this->commonXrefs($tree1, $tree2))) {
+			Database::prepare(
+				"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom)" .
+				" SELECT i_id, ?, i_rin, i_sex, i_gedcom FROM `##individuals` AS individuals2 WHERE i_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil)" .
+				" SELECT f_id, ?, f_husb, f_wife, f_gedcom, f_numchil FROM `##families` AS families2 WHERE f_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom)" .
+				" SELECT s_id, ?, s_name, s_gedcom FROM `##sources` AS sources2 WHERE s_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##media` (m_id, m_file, m_gedcom)" .
+				" SELECT m_id, ?, m_gedcom FROM `##media` AS media2 WHERE m_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title)" .
+				" SELECT m_id, ?, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title FROM `##media_file` AS media_file2 WHERE m_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom)" .
+				" SELECT o_id, ?, o_type, o_gedcom FROM `##other` AS other2 WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)" .
+				" SELECT ?, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `##name` AS name2 WHERE n_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##placelinks` (pl_p_id, pl_gid, pl_file)" .
+				" SELECT pl_p_id, pl_gid, ? FROM `##placelinks` AS placelinks2 WHERE pl_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##dates` (d_day, d_month, d_mon, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_file, d_type)" .
+				" SELECT d_day, d_month, d_mon, d_year, d_julianday1, d_julianday2, d_fact, d_gid, ?, d_type FROM `##dates` AS dates2 WHERE d_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
+				" SELECT ?, xref, tag_type, resn FROM `##default_resn` AS default_resn2 WHERE gedcom_id = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			Database::prepare(
+				"INSERT INTO `##link` (l_file, l_from, l_type, l_to)" .
+				" SELECT ?, l_from, l_type, l_to FROM `##link` AS link2 WHERE l_file = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			// This table may contain old (deleted) references, which could clash. IGNORE these.
+			Database::prepare(
+				"INSERT IGNORE INTO `##change` (change_time, status, gedcom_id, xref, old_gedcom, new_gedcom, user_id)" .
+				" SELECT change_time, status, ?, xref, old_gedcom, new_gedcom, user_id FROM `##change` AS change2 WHERE gedcom_id = ?"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			// This table may contain old (deleted) references, which could clash. IGNORE these.
+			Database::prepare(
+				"INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)" .
+				" SELECT ?, page_name, page_parameter, page_count FROM `##hit_counter` AS hit_counter2 WHERE gedcom_id = ? AND page_name <> 'index.php'"
+			)->execute([$tree2->getTreeId(), $tree1->getTreeId()]);
+
+			FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
+
+			$url = route('admin-trees', [
+				'ged' => $tree2->getName(),
+			]);
+		} else {
+			$url = route('admin-trees-merge', [
+				'tree1_name' => $tree1->getName(),
+				'tree2_name' => $tree2->getName(),
+			]);
+		}
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
 	public function places(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
@@ -666,7 +795,7 @@ class AdminTreesController extends AbstractBaseController {
 				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
 					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
 					$changes[$old_place] = $new_place;
-					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
 					$record->updateFact($fact->getFactId(), $gedcom, false);
 				}
 			}
@@ -685,7 +814,7 @@ class AdminTreesController extends AbstractBaseController {
 				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
 					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
 					$changes[$old_place] = $new_place;
-					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
 					$record->updateFact($fact->getFactId(), $gedcom, false);
 				}
 			}
@@ -694,6 +823,53 @@ class AdminTreesController extends AbstractBaseController {
 		asort($changes);
 
 		return $changes;
+	}
+
+	/**
+	 * Every XREF used by two trees at the same time.
+	 *
+	 * @param Tree $tree
+	 *
+	 * @return string[]
+	 */
+	private function commonXrefs(Tree $tree1, Tree $tree2): array {
+		return Database::prepare(
+			"SELECT xref, type FROM (" .
+			" SELECT i_id AS xref, 'INDI' AS type FROM `##individuals` WHERE i_file = ?" .
+			"  UNION " .
+			" SELECT f_id AS xref, 'FAM' AS type FROM `##families` WHERE f_file = ?" .
+			"  UNION " .
+			" SELECT s_id AS xref, 'SOUR' AS type FROM `##sources` WHERE s_file = ?" .
+			"  UNION " .
+			" SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
+			"  UNION " .
+			" SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
+			") AS this_tree JOIN (" .
+			" SELECT xref FROM `##change` WHERE gedcom_id = ?" .
+			"  UNION " .
+			" SELECT i_id AS xref FROM `##individuals` WHERE i_file = ?" .
+			"  UNION " .
+			" SELECT f_id AS xref FROM `##families` WHERE f_file = ?" .
+			"  UNION " .
+			" SELECT s_id AS xref FROM `##sources` WHERE s_file = ?" .
+			"  UNION " .
+			" SELECT m_id AS xref FROM `##media` WHERE m_file = ?" .
+			"  UNION " .
+			" SELECT o_id AS xref FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
+			") AS other_trees USING (xref)"
+		)->execute([
+			$tree1->getTreeId(),
+			$tree1->getTreeId(),
+			$tree1->getTreeId(),
+			$tree1->getTreeId(),
+			$tree1->getTreeId(),
+			$tree2->getTreeId(),
+			$tree2->getTreeId(),
+			$tree2->getTreeId(),
+			$tree2->getTreeId(),
+			$tree2->getTreeId(),
+			$tree2->getTreeId(),
+		])->fetchAssoc();
 	}
 
 	/**

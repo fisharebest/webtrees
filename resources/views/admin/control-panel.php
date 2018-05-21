@@ -253,7 +253,7 @@
 			<?php if (count($all_trees) > 1): ?>
 				<li>
 					<span class="fa-li"><i class="fas fa-wrench"></i></span>
-					<a href="<?= e(Html::url('admin_trees_merge.php', [])) ?>">
+					<a href="<?= e(route('admin-trees-merge')) ?>">
 						<?= I18N::translate('Merge family trees') ?>
 					</a>
 				</li>
