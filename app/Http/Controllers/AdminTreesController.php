@@ -204,9 +204,6 @@ class AdminTreesController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function merge(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		$tree1_name = $request->get('tree1_name');
 		$tree2_name = $request->get('tree2_name');
 
