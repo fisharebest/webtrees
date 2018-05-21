@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,132 +40,6 @@ class AdminTreesController extends AbstractBaseController {
 	const MULTIPLE_TREE_THRESHOLD = 500;
 
 	protected $layout = 'layouts/administration';
-
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function index(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
-		$multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
-		$gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
-
-		$all_trees = Tree::getAll();
-
-		// On sites with hundreds or thousands of trees, this page becomes very large.
-		// Just show the current tree, the default tree, and unimported trees
-		if (count($all_trees) >= $multiple_tree_threshold) {
-			$all_trees = array_filter($all_trees, function (Tree $x) use ($tree) {
-				return $x->getPreference('imported') === '0' || $tree->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
-			});
-		}
-
-		$default_tree_name  = $this->generateNewTreeName();
-		$default_tree_title = I18N::translate('My family tree');
-
-		$all_users = User::all();
-
-		$title = I18N::translate('Manage family trees');
-
-		return $this->viewResponse('admin/trees', [
-			'all_trees'               => $all_trees,
-			'all_users'               => $all_users,
-			'default_tree_name'       => $default_tree_name,
-			'default_tree_title'      => $default_tree_title,
-			'gedcom_files'            => $gedcom_files,
-			'multiple_tree_threshold' => $multiple_tree_threshold,
-			'title'                   => $title,
-		]);
-	}
-
-	/**
-	 * Generate a unqiue name for new trees
-	 *
-	 * @return string
-	 */
-	private function generateNewTreeName(): string {
-		$tree_name      = 'tree';
-		$tree_number    = 1;
-		$existing_trees = Tree::getNameList();
-
-		while (array_key_exists($tree_name . $tree_number, $existing_trees)) {
-			$tree_number++;
-		}
-
-		return $tree_name . $tree_number;
-	}
-
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function importForm(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
-		$default_gedcom_file = $tree->getPreference('gedcom_filename');
-		$gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
-		$gedcom_files        = $this->gedcomFiles(WT_DATA_DIR);
-
-		$title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->getTitle());
-
-		return $this->viewResponse('admin/tree-import', [
-			'default_gedcom_file' => $default_gedcom_file,
-			'gedcom_files'        => $gedcom_files,
-			'gedcom_media_path'   => $gedcom_media_path,
-			'title'               => $title,
-		]);
-	}
-
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function importAction(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
-		$source             = $request->get('source');
-		$keep_media         = (bool) $request->get('keep_media');
-		$WORD_WRAPPED_NOTES = (bool) $request->get('WORD_WRAPPED_NOTES');
-		$GEDCOM_MEDIA_PATH  = $request->get('GEDCOM_MEDIA_PATH');
-
-		// Save these choices as defaults
-		$tree->setPreference('keep_media', $keep_media ? '1' : '0');
-		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES ? '1' : '0');
-		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
-
-		if ($source === 'client') {
-			if (isset($_FILES['tree_name'])) {
-				if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
-					$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
-				} else {
-					FlashMessages::addMessage(Functions::fileUploadErrorText($_FILES['tree_name']['error']), 'danger');
-				}
-			} else {
-				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-			}
-		}
-
-		if ($source === 'server') {
-			$basename = basename($request->get('tree_name'));
-
-			if ($basename) {
-				$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename);
-			} else {
-				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-			}
-		}
-
-		$url = route('admin-trees', ['ged' => $tree->getName()]);
-
-		return new RedirectResponse($url);
-	}
 
 	/**
 	 * @param Request $request
@@ -221,30 +94,39 @@ class AdminTreesController extends AbstractBaseController {
 	 *
 	 * @return RedirectResponse
 	 */
-	public function synchronize(Request $request): RedirectResponse {
+	public function importAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		$gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
+		$source             = $request->get('source');
+		$keep_media         = (bool) $request->get('keep_media');
+		$WORD_WRAPPED_NOTES = (bool) $request->get('WORD_WRAPPED_NOTES');
+		$GEDCOM_MEDIA_PATH  = $request->get('GEDCOM_MEDIA_PATH');
 
-		foreach ($gedcom_files as $gedcom_file) {
-			// Only import files that have changed
-			$filemtime = (string) filemtime(WT_DATA_DIR . $gedcom_file);
+		// Save these choices as defaults
+		$tree->setPreference('keep_media', $keep_media ? '1' : '0');
+		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES ? '1' : '0');
+		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
 
-			$tree = Tree::findByName($gedcom_file) ?? Tree::create($gedcom_file, $gedcom_file);
-
-			if ($tree->getPreference('filemtime') !== $filemtime) {
-				$tree->importGedcomFile(WT_DATA_DIR . $gedcom_file, $gedcom_file);
-				$tree->setPreference('filemtime', $filemtime);
-
-				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
+		if ($source === 'client') {
+			if (isset($_FILES['tree_name'])) {
+				if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
+					$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
+				} else {
+					FlashMessages::addMessage(Functions::fileUploadErrorText($_FILES['tree_name']['error']), 'danger');
+				}
+			} else {
+				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
 			}
 		}
 
-		foreach (Tree::getAll() as $tree) {
-			if (!in_array($tree->getName(), $gedcom_files)) {
-				FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
-				$tree->delete();
+		if ($source === 'server') {
+			$basename = basename($request->get('tree_name'));
+
+			if ($basename) {
+				$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename);
+			} else {
+				FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
 			}
 		}
 
@@ -256,45 +138,24 @@ class AdminTreesController extends AbstractBaseController {
 	/**
 	 * @param Request $request
 	 *
-	 * @return RedirectResponse
+	 * @return Response
 	 */
-	public function setDefault(Request $request): RedirectResponse {
+	public function importForm(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		Site::setPreference('DEFAULT_GEDCOM', $tree->getName());
+		$default_gedcom_file = $tree->getPreference('gedcom_filename');
+		$gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
+		$gedcom_files        = $this->gedcomFiles(WT_DATA_DIR);
 
-		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */
-			I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
+		$title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->getTitle());
 
-		$url = route('admin-trees');
-
-		return new RedirectResponse($url);
-	}
-
-	/**
-	 * Find a list of GEDCOM files in a folder
-	 *
-	 * @param string $folder
-	 *
-	 * @return array
-	 */
-	private function gedcomFiles(string $folder): array {
-		$d     = opendir($folder);
-		$files = [];
-		while (($f = readdir($d)) !== false) {
-			if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
-				$fp     = fopen(WT_DATA_DIR . $f, 'rb');
-				$header = fread($fp, 64);
-				fclose($fp);
-				if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
-					$files[] = $f;
-				}
-			}
-		}
-		sort($files);
-
-		return $files;
+		return $this->viewResponse('admin/tree-import', [
+			'default_gedcom_file' => $default_gedcom_file,
+			'gedcom_files'        => $gedcom_files,
+			'gedcom_media_path'   => $gedcom_media_path,
+			'title'               => $title,
+		]);
 	}
 
 	/**
@@ -302,57 +163,38 @@ class AdminTreesController extends AbstractBaseController {
 	 *
 	 * @return Response
 	 */
-	public function unconnected(Request $request): Response {
+	public function index(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+		$multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
+		$gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
 
-		$associates = (bool) $request->get('associates');
+		$all_trees = Tree::getAll();
 
-		if ($associates) {
-			$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'ASSO', '_ASSO')";
-		} else {
-			$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')";
+		// On sites with hundreds or thousands of trees, this page becomes very large.
+		// Just show the current tree, the default tree, and unimported trees
+		if (count($all_trees) >= $multiple_tree_threshold) {
+			$all_trees = array_filter($all_trees, function (Tree $x) use ($tree) {
+				return $x->getPreference('imported') === '0' || $tree->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
+			});
 		}
 
-		$rows  = Database::prepare($sql)->execute([
-			'tree_id' => $tree->getTreeId(),
-		])->fetchAll();
-		$graph = [];
+		$default_tree_name  = $this->generateNewTreeName();
+		$default_tree_title = I18N::translate('My family tree');
 
-		foreach ($rows as $row) {
-			$graph[$row->l_from][$row->l_to] = 1;
-			$graph[$row->l_to][$row->l_from] = 1;
-		}
+		$all_users = User::all();
 
-		$algorithm  = new ConnectedComponent($graph);
-		$components = $algorithm->findConnectedComponents();
-		$root       = $tree->significantIndividual($user);
-		$xref       = $root->getXref();
+		$title = I18N::translate('Manage family trees');
 
-		/** @var Individual[][] */
-		$individual_groups = [];
-
-		foreach ($components as $component) {
-			if (!in_array($xref, $component)) {
-				$individuals = [];
-				foreach ($component as $xref) {
-					$individuals[] = Individual::getInstance($xref, $tree);
-				}
-				// The database query may return pending additions/deletions, which may not exist.
-				$individual_groups[] = array_filter($individuals);
-			}
-		}
-
-		$title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->getTitle());
-
-		return $this->viewResponse('admin/trees-unconnected', [
-			'associates'        => $associates,
-			'root'              => $root,
-			'individual_groups' => $individual_groups,
-			'title'             => $title,
+		return $this->viewResponse('admin/trees', [
+			'all_trees'               => $all_trees,
+			'all_users'               => $all_users,
+			'default_tree_name'       => $default_tree_name,
+			'default_tree_title'      => $default_tree_title,
+			'gedcom_files'            => $gedcom_files,
+			'multiple_tree_threshold' => $multiple_tree_threshold,
+			'title'                   => $title,
 		]);
 	}
 
@@ -414,114 +256,6 @@ class AdminTreesController extends AbstractBaseController {
 		]);
 
 		return new RedirectResponse($url);
-	}
-
-	/**
-	 * Find a list of place names that would be updated.
-	 *
-	 * @param Tree   $tree
-	 * @param string $search
-	 * @param string $replace
-	 *
-	 * @return string[]
-	 */
-	private function changePlacesPreview(Tree $tree, string $search, string $replace): array {
-		$changes = [];
-
-		$rows = Database::prepare(
-			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
-			" FROM `##individuals`" .
-			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
-			" WHERE i_file = ?" .
-			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
-		foreach ($rows as $row) {
-			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
-			foreach ($record->getFacts() as $fact) {
-				$old_place = $fact->getAttribute('PLAC');
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-					$changes[$old_place] = $new_place;
-				}
-			}
-		}
-		$rows = Database::prepare(
-			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
-			" FROM `##families`" .
-			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
-			" WHERE f_file = ?" .
-			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
-		foreach ($rows as $row) {
-			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
-			foreach ($record->getFacts() as $fact) {
-				$old_place = $fact->getAttribute('PLAC');
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-					$changes[$old_place] = $new_place;
-				}
-			}
-		}
-
-		asort($changes);
-
-		return $changes;
-	}
-
-	/**
-	 * Find a list of place names that would be updated.
-	 *
-	 * @param Tree   $tree
-	 * @param string $search
-	 * @param string $replace
-	 *
-	 * @return string[]
-	 */
-	private function changePlacesUpdate(Tree $tree, string $search, string $replace): array {
-		$changes = [];
-
-		$rows = Database::prepare(
-			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
-			" FROM `##individuals`" .
-			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
-			" WHERE i_file = ?" .
-			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
-		foreach ($rows as $row) {
-			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
-			foreach ($record->getFacts() as $fact) {
-				$old_place = $fact->getAttribute('PLAC');
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-					$changes[$old_place] = $new_place;
-					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
-					$record->updateFact($fact->getFactId(), $gedcom, false);
-				}
-			}
-		}
-		$rows = Database::prepare(
-			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
-			" FROM `##families`" .
-			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
-			" WHERE f_file = ?" .
-			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
-		foreach ($rows as $row) {
-			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
-			foreach ($record->getFacts() as $fact) {
-				$old_place = $fact->getAttribute('PLAC');
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-					$changes[$old_place] = $new_place;
-					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
-					$record->updateFact($fact->getFactId(), $gedcom, false);
-				}
-			}
-		}
-
-		asort($changes);
-
-		return $changes;
 	}
 
 	/**
@@ -740,6 +474,229 @@ class AdminTreesController extends AbstractBaseController {
 	}
 
 	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function setDefault(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		Site::setPreference('DEFAULT_GEDCOM', $tree->getName());
+
+		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */
+			I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
+
+		$url = route('admin-trees');
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function synchronize(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
+
+		foreach ($gedcom_files as $gedcom_file) {
+			// Only import files that have changed
+			$filemtime = (string) filemtime(WT_DATA_DIR . $gedcom_file);
+
+			$tree = Tree::findByName($gedcom_file) ?? Tree::create($gedcom_file, $gedcom_file);
+
+			if ($tree->getPreference('filemtime') !== $filemtime) {
+				$tree->importGedcomFile(WT_DATA_DIR . $gedcom_file, $gedcom_file);
+				$tree->setPreference('filemtime', $filemtime);
+
+				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
+			}
+		}
+
+		foreach (Tree::getAll() as $tree) {
+			if (!in_array($tree->getName(), $gedcom_files)) {
+				FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
+				$tree->delete();
+			}
+		}
+
+		$url = route('admin-trees', ['ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function unconnected(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
+		$associates = (bool) $request->get('associates');
+
+		if ($associates) {
+			$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'ASSO', '_ASSO')";
+		} else {
+			$sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')";
+		}
+
+		$rows  = Database::prepare($sql)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+		$graph = [];
+
+		foreach ($rows as $row) {
+			$graph[$row->l_from][$row->l_to] = 1;
+			$graph[$row->l_to][$row->l_from] = 1;
+		}
+
+		$algorithm  = new ConnectedComponent($graph);
+		$components = $algorithm->findConnectedComponents();
+		$root       = $tree->significantIndividual($user);
+		$xref       = $root->getXref();
+
+		/** @var Individual[][] */
+		$individual_groups = [];
+
+		foreach ($components as $component) {
+			if (!in_array($xref, $component)) {
+				$individuals = [];
+				foreach ($component as $xref) {
+					$individuals[] = Individual::getInstance($xref, $tree);
+				}
+				// The database query may return pending additions/deletions, which may not exist.
+				$individual_groups[] = array_filter($individuals);
+			}
+		}
+
+		$title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-unconnected', [
+			'associates'        => $associates,
+			'root'              => $root,
+			'individual_groups' => $individual_groups,
+			'title'             => $title,
+		]);
+	}
+
+	/**
+	 * Find a list of place names that would be updated.
+	 *
+	 * @param Tree   $tree
+	 * @param string $search
+	 * @param string $replace
+	 *
+	 * @return string[]
+	 */
+	private function changePlacesPreview(Tree $tree, string $search, string $replace): array {
+		$changes = [];
+
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
+			" FROM `##individuals`" .
+			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
+			" WHERE i_file = ?" .
+			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+				}
+			}
+		}
+		$rows = Database::prepare(
+			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
+			" FROM `##families`" .
+			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
+			" WHERE f_file = ?" .
+			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+				}
+			}
+		}
+
+		asort($changes);
+
+		return $changes;
+	}
+
+	/**
+	 * Find a list of place names that would be updated.
+	 *
+	 * @param Tree   $tree
+	 * @param string $search
+	 * @param string $replace
+	 *
+	 * @return string[]
+	 */
+	private function changePlacesUpdate(Tree $tree, string $search, string $replace): array {
+		$changes = [];
+
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
+			" FROM `##individuals`" .
+			" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
+			" WHERE i_file = ?" .
+			" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$record->updateFact($fact->getFactId(), $gedcom, false);
+				}
+			}
+		}
+		$rows = Database::prepare(
+			"SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
+			" FROM `##families`" .
+			" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
+			" WHERE f_file = ?" .
+			" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+		)->execute([$tree->getTreeId(), preg_quote($search)])->fetchAll();
+		foreach ($rows as $row) {
+			$record = Family::getInstance($row->xref, $tree, $row->gedcom);
+			foreach ($record->getFacts() as $fact) {
+				$old_place = $fact->getAttribute('PLAC');
+				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+					$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+					$changes[$old_place] = $new_place;
+					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
+					$record->updateFact($fact->getFactId(), $gedcom, false);
+				}
+			}
+		}
+
+		asort($changes);
+
+		return $changes;
+	}
+
+	/**
 	 * Every XREF used by this tree and also used by some other tree
 	 *
 	 * @param Tree $tree
@@ -784,5 +741,47 @@ class AdminTreesController extends AbstractBaseController {
 			'tree_id_10' => $tree->getTreeId(),
 			'tree_id_11' => $tree->getTreeId(),
 		])->fetchAssoc();
+	}
+
+	/**
+	 * Find a list of GEDCOM files in a folder
+	 *
+	 * @param string $folder
+	 *
+	 * @return array
+	 */
+	private function gedcomFiles(string $folder): array {
+		$d     = opendir($folder);
+		$files = [];
+		while (($f = readdir($d)) !== false) {
+			if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
+				$fp     = fopen(WT_DATA_DIR . $f, 'rb');
+				$header = fread($fp, 64);
+				fclose($fp);
+				if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
+					$files[] = $f;
+				}
+			}
+		}
+		sort($files);
+
+		return $files;
+	}
+
+	/**
+	 * Generate a unqiue name for new trees
+	 *
+	 * @return string
+	 */
+	private function generateNewTreeName(): string {
+		$tree_name      = 'tree';
+		$tree_number    = 1;
+		$existing_trees = Tree::getNameList();
+
+		while (array_key_exists($tree_name . $tree_number, $existing_trees)) {
+			$tree_number++;
+		}
+
+		return $tree_name . $tree_number;
 	}
 }
