@@ -6,6 +6,7 @@
 
 <form class="wt-page-options wt-page-options-forgot-password" method="post">
 	<?= csrf_field() ?>
+	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 
 	<div class="form-group row">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="identifier">
