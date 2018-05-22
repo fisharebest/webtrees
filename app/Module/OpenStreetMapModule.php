@@ -1451,33 +1451,20 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			)->fetchOne();
 		}
 
-		// Get the names of the child places from the places table
-		// then we'll create a join to the temporary table (used for speed)
-		// to determine inactive places
-		Database::prepare("DROP TEMPORARY TABLE IF EXISTS `place_subset`")->execute();
-		Database::prepare(
-			"CREATE TEMPORARY TABLE `place_subset`" .
-			" SELECT p_place" .
-			" FROM `##places`" .
-			" WHERE p_parent_id = :id"
-		)
-			->execute([
-					'id' => $place_id,
-				]
-			);
-		Database::prepare("CREATE INDEX nx1 ON place_subset (p_place)")->execute();
-
 		$rows = Database::prepare(
 			"SELECT SQL_CACHE pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
 			" IF(p_place IS NULL, 1, 0) AS inactive" .
 			" FROM `##placelocation`" .
-			" LEFT JOIN `place_subset` ON pl_place = p_place" .
+			" LEFT JOIN (SELECT p_place" .
+ 			" FROM `##places`" .
+ 			" WHERE p_parent_id = :p_id) AS t1 ON pl_place = t1.p_place" .
 			" WHERE pl_parent_id=:id" .
 			" ORDER BY pl_place COLLATE :collation"
 		)
 			->execute(
 				[
 					'id'        => $id,
+					'p_id'	    => $place_id,
 					'collation' => I18N::collation(),
 				]
 			)->fetchAll(\PDO::FETCH_ASSOC);
