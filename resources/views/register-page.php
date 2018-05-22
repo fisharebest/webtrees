@@ -11,8 +11,9 @@
 	</div>
 <?php endif ?>
 
-<form autocomplete="off" class="wt-page-options wt-page-options-register" method="post">
+<form autocomplete="off" class="wt-page-options wt-page-options-register" method="post" action="<?= e(route('register')) ?>">
 	<?= csrf_field() ?>
+	<input name="ged" type="hidden" value="<?= e($tree->getName()) ?>">
 
 	<div class="form-group row">
 		<label class="col-sm-3 col-form-label wt-page-options-label" for="realname">

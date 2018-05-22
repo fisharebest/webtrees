@@ -135,30 +135,34 @@ class RegisterController extends AbstractBaseController {
 
 		// Tell the genealogy contact about the registration.
 		$webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
-		I18N::init($webmaster->getPreference('language'));
 
-		Mail::send($sender, $webmaster, $user, /* I18N: %s is a server name/URL */
-			I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
-				'user'     => $user,
-				'comments' => $comments,
-			]), view('emails/register-notify-html', [
-				'user'     => $user,
-				'comments' => $comments,
-			]));
+		if ($webmaster !== null) {
+			I18N::init($webmaster->getPreference('language'));
 
-		$mail1_method = $webmaster->getPreference('contact_method');
-		if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
-			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")->execute([
-				$user->getEmail(),
-				$request->getClientIp(),
-				$webmaster->getUserId(),
-				/* I18N: %s is a server name/URL */
-				I18N::translate('New registration at %s', $tree->getTitle()),
-				view('emails/register-notify-text', [
+			Mail::send($sender, $webmaster, $user, /* I18N: %s is a server name/URL */
+				I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
 					'user'     => $user,
 					'comments' => $comments,
-				]),
-			]);
+				]), view('emails/register-notify-html', [
+					'user'     => $user,
+					'comments' => $comments,
+				])
+			);
+
+			$mail1_method = $webmaster->getPreference('contact_method');
+			if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")->execute([
+					$user->getEmail(),
+					$request->getClientIp(),
+					$webmaster->getUserId(),
+					/* I18N: %s is a server name/URL */
+					I18N::translate('New registration at %s', $tree->getTitle()),
+					view('emails/register-notify-text', [
+						'user'     => $user,
+						'comments' => $comments,
+					]),
+				]);
+			}
 		}
 
 		$title = I18N::translate('Request a new user account');
@@ -188,12 +192,12 @@ class RegisterController extends AbstractBaseController {
 		}
 
 		// Username already exists
-		if (User::findByUserName($username)) {
-			throw new Exception(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+		if (User::findByUserName($username) !== null) {
+			throw new Exception(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'.$username));
 		}
 
 		// Email already exists
-		if (User::findByEmail($email)) {
+		if (User::findByEmail($email) !== null) {
 			throw new Exception(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		}
 
