@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -52,6 +53,223 @@ class AdminTreesController extends AbstractBaseController {
 	const MULTIPLE_TREE_THRESHOLD = 500;
 
 	protected $layout = 'layouts/administration';
+
+	/**
+	 * /**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function check(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		// We need to work with raw GEDCOM data, as we are looking for errors
+		// which may prevent the GedcomRecord objects from working.
+
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?" .
+			" UNION " .
+			"SELECT f_id AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?" .
+			" UNION " .
+			"SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedrec FROM `##sources`     WHERE s_file=?" .
+			" UNION " .
+			"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?" .
+			" UNION " .
+			"SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
+		)->execute([$tree->getTreeId(), $tree->getTreeId(), $tree->getTreeId(), $tree->getTreeId(), $tree->getTreeId()])->fetchAll();
+
+		$records = [];
+		foreach ($rows as $row) {
+			$records[$row->xref] = $row;
+		}
+
+		// Need to merge pending new/changed/deleted records
+
+		$rows = Database::prepare(
+			"SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec" .
+			" FROM (" .
+			"  SELECT MAX(change_id) AS change_id" .
+			"  FROM `##change`" .
+			"  WHERE gedcom_id=? AND status='pending'" .
+			"  GROUP BY xref" .
+			" ) AS t1" .
+			" JOIN `##change` t2 USING (change_id)"
+		)->execute([$tree->getTreeId()])->fetchAll();
+
+		foreach ($rows as $row) {
+			if ($row->gedrec) {
+				// new/updated record
+				$records[$row->xref] = $row;
+			} else {
+				// deleted record
+				unset($records[$row->xref]);
+			}
+		}
+
+		// Keep a list of upper case XREFs, to detect mismatches.
+		$ukeys = [];
+		foreach (array_keys($records) as $key) {
+			$ukeys[strtoupper($key)] = $key;
+		}
+
+		// LOOK FOR BROKEN LINKS
+		$XREF_LINKS = [
+			'NOTE'          => 'NOTE',
+			'SOUR'          => 'SOUR',
+			'REPO'          => 'REPO',
+			'OBJE'          => 'OBJE',
+			'SUBM'          => 'SUBM',
+			'FAMC'          => 'FAM',
+			'FAMS'          => 'FAM',
+			//'ADOP'=>'FAM', // Need to handle this case specially. We may have both ADOP and FAMC links to the same FAM, but only store one.
+			'HUSB'          => 'INDI',
+			'WIFE'          => 'INDI',
+			'CHIL'          => 'INDI',
+			'ASSO'          => 'INDI',
+			'_ASSO'         => 'INDI', // A webtrees extension
+			'ALIA'          => 'INDI',
+			'AUTH'          => 'INDI', // A webtrees extension
+			'ANCI'          => 'SUBM',
+			'DESI'          => 'SUBM',
+			'_WT_OBJE_SORT' => 'OBJE',
+			'_LOC'          => '_LOC',
+		];
+
+		$RECORD_LINKS = [
+			'INDI' => ['NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'],
+			'FAM'  => ['NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'],
+			'SOUR' => ['NOTE', 'OBJE', 'REPO', 'AUTH'],
+			'REPO' => ['NOTE'],
+			'OBJE' => ['NOTE'], // The spec also allows SOUR, but we treat this as a warning
+			'NOTE' => [], // The spec also allows SOUR, but we treat this as a warning
+			'SUBM' => ['NOTE', 'OBJE'],
+			'SUBN' => ['SUBM'],
+			'_LOC' => ['SOUR', 'OBJE', '_LOC'],
+		];
+
+		$errors   = [];
+		$warnings = [];
+
+		// Generate lists of all links
+		$all_links   = [];
+		$upper_links = [];
+		foreach ($records as $record) {
+			$all_links[$record->xref]               = [];
+			$upper_links[strtoupper($record->xref)] = $record->xref;
+			preg_match_all('/\n\d (' . WT_REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+			foreach ($matches as $match) {
+				$all_links[$record->xref][$match[2]] = $match[1];
+			}
+		}
+
+		foreach ($all_links as $xref1 => $links) {
+			$type1 = $records[$xref1]->type;
+			foreach ($links as $xref2 => $type2) {
+				$type3 = isset($records[$xref2]) ? $records[$xref2]->type : '';
+				if (!array_key_exists($xref2, $all_links)) {
+					if (array_key_exists(strtoupper($xref2), $upper_links)) {
+						$warnings[] =
+							$this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
+							/* I18N: placeholders are GEDCOM XREFs, such as R123 */
+							I18N::translate('%1$s does not exist. Did you mean %2$s?', $this->checkLink($tree, $xref2), $this->checkLink($tree, $upper_links[strtoupper($xref2)]));
+					} else {
+						$errors[] =
+							$this->checkLinkMessage($tree, 
+								$type1, $xref1, $type2, $xref2) . ' ' .
+							/* I18N: placeholders are GEDCOM XREFs, such as R123 */
+							I18N::translate('%1$s does not exist.', $this->checkLink($tree, $xref2));
+					}
+				} elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
+					// Notes are intended to add explanations and comments to other records. They should not have their own sources.
+				} elseif ($type2 === 'SOUR' && $type1 === 'OBJE') {
+					// Media objects are intended to illustrate other records, facts, and source/citations. They should not have their own sources.
+				} elseif ($type2 === 'OBJE' && $type1 === 'REPO') {
+					$warnings[] =
+						$this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
+						' ' .
+						I18N::translate('This type of link is not allowed here.');
+				} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
+					$errors[] =
+						$this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
+						' ' .
+						I18N::translate('This type of link is not allowed here.');
+				} elseif ($XREF_LINKS[$type2] !== $type3) {
+					// Target XREF does exist - but is invalid
+					$errors[] =
+						$this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
+						/* I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR */
+						I18N::translate('%1$s is a %2$s but a %3$s is expected.', $this->checkLink($tree, $xref2), $this->formatType($type3), $this->formatType($type2));
+				} elseif (
+					$type2 === 'FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'CHIL') ||
+					$type2 === 'FAMS' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'HUSB' && $all_links[$xref2][$xref1] !== 'WIFE') ||
+					$type2 === 'CHIL' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMC') ||
+					$type2 === 'HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS') ||
+					$type2 === 'WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS')
+				) {
+					$errors[] =
+						$this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
+						/* I18N: %1$s and %2$s are internal ID numbers such as R123 */
+						I18N::translate('%1$s does not have a link back to %2$s.', $this->checkLink($tree, $xref2), $this->checkLink($tree, $xref1));
+				}
+			}
+		}
+
+		$title = I18N::translate('Check for errors') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-check', [
+			'errors'   => $errors,
+			'title'    => $title,
+			'tree'     => $tree,
+			'warnings' => $warnings,
+		]);
+	}
+
+	/**
+	 * Create a message linking one record to another.
+	 *
+	 * @param Tree   $tree
+	 * @param string $type1
+	 * @param string $xref1
+	 * @param string $type2
+	 * @param string $xref2
+	 *
+	 * @return string
+	 */
+	private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2) {
+		return /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
+			I18N::translate(
+				'%1$s %2$s has a %3$s link to %4$s.',
+				$this->formatType($type1),
+				$this->checkLink($tree, $xref1),
+				$this->formatType($type2),
+				$this->checkLink($tree, $xref2)
+			);
+	}
+
+
+	/**
+	 * Format a link to a record.
+	 *
+	 * @param Tree   $tree
+	 * @param string $xref
+	 *
+	 * @return string
+	 */
+	private function checkLink(Tree $tree, string $xref) {
+		return '<b><a href="' . e(route('record', ['xref' => $xref, 'ged' => $tree->getName()])) . '">' . $xref . '</a></b>';
+	}
+
+	/**
+	 * Format a record type.
+	 *
+	 * @param string $type
+	 *
+	 * @return string
+	 */
+	private function formatType($type) {
+		return '<b title="' . strip_tags(GedcomTag::getLabel($type)) . '">' . $type . '</b>';
+	}
 
 	/**
 	 * @param Request $request

@@ -158,7 +158,7 @@
 									<!-- CHECK FOR ERRORS -->
 									<li>
 										<span class="fa-li"><i class="fas fa-check"></i></span>
-										<a href="<?= e(Html::url('admin_trees_check.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-check', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Check for errors') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
