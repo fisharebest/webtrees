@@ -268,7 +268,7 @@ class AdminTreesController extends AbstractBaseController {
 	 * @return string
 	 */
 	private function formatType($type) {
-		return '<b title="' . strip_tags(GedcomTag::getLabel($type)) . '">' . $type . '</b>';
+		return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
 	}
 
 	/**
