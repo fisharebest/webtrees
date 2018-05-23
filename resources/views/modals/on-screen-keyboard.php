@@ -3,28 +3,28 @@
 <div class="card wt-osk">
 	<div class="card-header">
 		<div class="card-title">
-			<button type="button" class="btn btn-primary">&times;</button>
+			<button type="button" class="btn btn-primary wt-osk-close">&times;</button>
 
 			<button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false"><?= FontAwesome::semanticIcon('pin', I18N::translate('Keep open')) ?></button>
 
 			<button type="button" class="btn btn-secondary wt-osk-shift-button" data-toggle="button" aria-pressed="false">a &harr; A</button>
 
-			<div class="btn-group" data-toggle="buttons">
-				<label class="btn btn-secondary active" dir="ltr">
-					<input type="radio" class="wt-osk-script-button" checked autocomplete="off" data-script="latn"> Abcd
-				</label>
-				<label class="btn btn-secondary" dir="ltr">
-					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="cyrl"> &Acy;&bcy;&gcy;&dcy;
-				</label>
-				<label class="btn btn-secondary" dir="ltr">
-					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="grek"> &Alpha;&beta;&gamma;&delta;
-				</label>
-				<label class="btn btn-secondary" dir="rtl">
-					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="arab"> &#x627;&#x628;&#x629;&#x62a;
-				</label>
-				<label class="btn btn-secondary" dir="rtl">
-					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="hebr"> &#x5d0;&#x5d1;&#x5d2;&#x5d3;
-				</label>
+			<div class="btn-group" role="group" data-toggle="buttons">
+				<button class="btn btn-secondary active" dir="ltr">
+					<input type="radio" class="wt-osk-script-button" checked autocomplete="off" data-script="latn" name="osk-script"> Abcd
+				</button>
+				<button class="btn btn-secondary" dir="ltr">
+					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="cyrl" name="osk-script"> &Acy;&bcy;&gcy;&dcy;
+				</button>
+				<button class="btn btn-secondary" dir="ltr">
+					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="grek" name="osk-script"> &Alpha;&beta;&gamma;&delta;
+				</button>
+				<button class="btn btn-secondary" dir="rtl">
+					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="arab" name="osk-script"> &#x627;&#x628;&#x629;&#x62a;
+				</button>
+				<button class="btn btn-secondary" dir="rtl">
+					<input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="hebr" name="osk-script"> &#x5d0;&#x5d1;&#x5d2;&#x5d3;
+				</button>
 			</div>
 		</div>
 	</div>

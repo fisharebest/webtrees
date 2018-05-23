@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\Functions\Functionsedit; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
@@ -17,7 +18,7 @@
 				<input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= e($firstname) ?>" autofocus>
 				<div class="input-group-append">
 						<span class="input-group-text">
-							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
+							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
 						</span>
 				</div>
 			</div>
@@ -33,7 +34,7 @@
 				<input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= e($lastname) ?>">
 				<div class="input-group-append">
 						<span class="input-group-text">
-							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
+							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
 						</span>
 				</div>
 			</div>
@@ -121,3 +122,5 @@
 		<?= view('search-results', ['individuals' => $individuals, 'search_families' => false, 'search_individuals' => true, 'search_notes' => false, 'search_sources' => false, 'search_repositories' => false]) ?>
 	<?php endif ?>
 <?php endif ?>
+
+<?= view('modals/on-screen-keyboard') ?>
