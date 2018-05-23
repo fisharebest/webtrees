@@ -128,7 +128,7 @@
 									<!-- FIND DUPLICATES -->
 									<li>
 										<span class="fa-li"><i class="far fa-copy"></i></span>
-										<a href="<?= e(Html::url('admin_trees_duplicates.php', ['ged' => $managed_tree->getName()])) ?>">
+										<a href="<?= e(route('admin-trees-duplicates', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Find duplicates') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
