@@ -323,7 +323,7 @@
 						</select>
 					</td>
 					<td>
-						<?= FunctionsEdit::formControlIndividual($tree, Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId(), 'data-ajax--data--ged' => $tree->getName()]) ?>
+						<?= FunctionsEdit::formControlIndividual($tree, Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId()]) ?>
 					</td>
 					<td>
 						<select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" class="relpath">
