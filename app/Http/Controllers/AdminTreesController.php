@@ -28,11 +28,14 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use stdClass;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -96,6 +99,26 @@ class AdminTreesController extends AbstractBaseController {
 		$url = route('admin-trees');
 
 		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function duplicates(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$duplicates = $this->duplicateRecords($tree);
+
+		$title = I18N::translate('Find duplicates') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-duplicates', [
+			'duplicates' => $duplicates,
+			'title'      => $title,
+			'tree'       => $tree,
+		]);
 	}
 
 	/**
@@ -192,7 +215,7 @@ class AdminTreesController extends AbstractBaseController {
 				$download_filename . '.zip'
 			);
 		} else {
-			$response = new StreamedResponse(function() use ($tree, $exportOptions) {
+			$response = new StreamedResponse(function () use ($tree, $exportOptions) {
 				$stream = fopen('php://output', 'w');
 				FunctionsExport::exportGedcom($tree, $stream, $exportOptions);
 				fclose($stream);
@@ -231,7 +254,8 @@ class AdminTreesController extends AbstractBaseController {
 			fclose($stream);
 			rename($filename . '.tmp', $filename);
 
-			FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
+			FlashMessages::addMessage(/* I18N: %s is a filename */
+				I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
 		} catch (Throwable $ex) {
 			DebugBar::addThrowable($ex);
 
@@ -1027,6 +1051,125 @@ class AdminTreesController extends AbstractBaseController {
 			$tree2->getTreeId(),
 			$tree2->getTreeId(),
 		])->fetchAssoc();
+	}
+
+	/**
+	 * @param Tree $tree
+	 *
+	 * @return array
+	 */
+	private function duplicateRecords(Tree $tree): array {
+		$repositories = Database::prepare(
+			"SELECT GROUP_CONCAT(n_id) AS xrefs " .
+			" FROM `##other`" .
+			" JOIN `##name` ON o_id = n_id AND o_file = n_file" .
+			" WHERE o_file = :tree_id AND o_type = 'REPO'" .
+			" GROUP BY n_full" .
+			" HAVING COUNT(n_id) > 1"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		$repositories = array_map(
+			function (stdClass $x) use ($tree) {
+				$tmp = explode(',', $x->xrefs);
+
+				return array_map(function ($y) use ($tree) {
+					return Repository::getInstance($y, $tree);
+				}, $tmp);
+			}, $repositories
+		);
+
+		$sources = Database::prepare(
+			"SELECT GROUP_CONCAT(n_id) AS xrefs " .
+			" FROM `##sources`" .
+			" JOIN `##name` ON s_id = n_id AND s_file = n_file" .
+			" WHERE s_file = :tree_id" .
+			" GROUP BY n_full" .
+			" HAVING COUNT(n_id) > 1"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		$sources = array_map(
+			function (stdClass $x) use ($tree) {
+				$tmp = explode(',', $x->xrefs);
+
+				return array_map(function ($y) use ($tree) {
+					return Source::getInstance($y, $tree);
+				}, $tmp);
+			}, $sources
+		);
+
+		$individuals = Database::prepare(
+			"SELECT DISTINCT GROUP_CONCAT(d_gid ORDER BY d_gid) AS xrefs" .
+			" FROM `##dates` AS d" .
+			" JOIN `##name` ON d_file = n_file AND d_gid = n_id" .
+			" WHERE d_file = :tree_id AND d_fact IN ('BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI')" .
+			" GROUP BY d_day, d_month, d_year, d_type, d_fact, n_type, n_full" .
+			" HAVING COUNT(DISTINCT d_gid) > 1"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		$individuals = array_map(
+			function (stdClass $x) use ($tree) {
+				$tmp = explode(',', $x->xrefs);
+
+				return array_map(function ($y) use ($tree) {
+					return Individual::getInstance($y, $tree);
+				}, $tmp);
+			}, $individuals
+		);
+
+		$families = Database::prepare(
+			"SELECT GROUP_CONCAT(f_id) AS xrefs " .
+			" FROM `##families`" .
+			" WHERE f_file = :tree_id" .
+			" GROUP BY LEAST(f_husb, f_wife), GREATEST(f_husb, f_wife)" .
+			" HAVING COUNT(f_id) > 1"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		$families = array_map(
+			function (stdClass $x) use ($tree) {
+				$tmp = explode(',', $x->xrefs);
+
+				return array_map(function ($y) use ($tree) {
+					return Family::getInstance($y, $tree);
+				}, $tmp);
+			}, $families
+		);
+
+		$media = Database::prepare(
+			"SELECT GROUP_CONCAT(m_id) AS xrefs " .
+			" FROM `##media`" .
+			" JOIN `##media_file` USING (m_id, m_file)" .
+			" WHERE m_file = :tree_id AND descriptive_title <> ''" .
+			" GROUP BY descriptive_title" .
+			" HAVING COUNT(m_id) > 1"
+		)->execute([
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
+
+		$media = array_map(
+			function (stdClass $x) use ($tree) {
+				$tmp = explode(',', $x->xrefs);
+
+				return array_map(function ($y) use ($tree) {
+					return Media::getInstance($y, $tree);
+				}, $tmp);
+			}, $media
+		);
+
+		return [
+			I18N::translate('Repositories')  => $repositories,
+			I18N::translate('Sources')       => $sources,
+			I18N::translate('Individuals')   => $individuals,
+			I18N::translate('Families')      => $families,
+			I18N::translate('Media objects') => $media,
+		];
 	}
 
 	/**
