@@ -364,9 +364,6 @@ class AdminUsersController extends AbstractBaseController {
 	 * @return RedirectResponse
 	 */
 	public function update(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		/** @var User $user */
 		$user = $request->attributes->get('user');
 
@@ -390,30 +387,6 @@ class AdminUsersController extends AbstractBaseController {
 
 		if ($edit_user === null) {
 			throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
-		}
-
-		// Approving for the first time? Send a confirmation email
-		if ($approved && !$edit_user->getPreference('verified_by_admin') && $edit_user->getPreference('sessiontime') == 0) {
-			I18N::init($edit_user->getPreference('language'));
-
-			// Create a dummy user, so we can send messages from the tree.
-			$sender = new User(
-				(object) [
-					'user_id'   => null,
-					'user_name' => '',
-					'real_name' => $tree->getTitle(),
-					'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-				]
-			);
-
-			Mail::send(
-				$sender,
-				$edit_user,
-				$sender,
-				I18N::translate('Approval of account at %s', WT_BASE_URL),
-				view('emails/approve-user-text', ['user' => $edit_user]),
-				view('emails/approve-user-html', ['user' => $edit_user])
-			);
 		}
 
 		$edit_user
