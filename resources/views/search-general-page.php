@@ -1,4 +1,4 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -17,7 +17,7 @@
 				<input id="query" class="form-control form-control-sm" type="text" name="query" value="<?= e($query) ?>" required>
 				<div class="input-group-append">
 						<span class="input-group-text">
-							<?= FunctionsPrint::printSpecialCharacterLink('query') ?>
+							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
 						</span>
 				</div>
 			</div>
@@ -117,3 +117,5 @@
 		<?= view('search-results', ['families' => $families, 'individuals' => $individuals, 'notes' => $notes, 'repositories' => $repositories, 'sources' => $sources, 'search_families' => $search_families, 'search_individuals' => $search_individuals, 'search_notes' => $search_notes, 'search_repositories' => $search_repositories, 'search_sources' => $search_sources]) ?>
 	<?php endif ?>
 <?php endif ?>
+
+<?= view('modals/on-screen-keyboard') ?>

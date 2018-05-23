@@ -953,10 +953,7 @@ $(function () {
     $('.wt-osk').show();
 
   });
-  $(document).on('focusin', ':input', function () {
-    // When an element gains focus, remember it.
-    osk_focus_element = this;
-  });
+
   $('.wt-osk-script-button').change(function() {
     $('.wt-osk-script').prop('hidden', true);
     $('.wt-osk-script-' + $(this).data('script')).prop('hidden', false);
@@ -981,5 +978,9 @@ $(function () {
         $('.wt-osk').hide();
       }
     }
+  });
+
+  $('.wt-osk-close').on('click', function () {
+    $('.wt-osk').hide();
   });
 });

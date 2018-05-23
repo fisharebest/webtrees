@@ -326,7 +326,7 @@ case 'editnote':
 				<td>
 					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?= e($note->getNote()) ?></textarea>
 					<br>
-					<?= FunctionsPrint::printSpecialCharacterLink('NOTE') ?>
+					<?= FunctionsEdit::inputAddonKeyboard('NOTE') ?>
 				</td>
 			</tr>
 		</table>
@@ -347,6 +347,7 @@ case 'editnote':
 		</div>
 	</form>
 	<?php
+	echo view('modals/on-screen-keyboard');
 	break;
 
 case 'editnoteaction':

@@ -618,33 +618,6 @@ class FunctionsPrint {
 	}
 
 	/**
-	 * HTML link to open the special character window.
-	 *
-	 * @param string $element_id
-	 *
-	 * @return string
-	 */
-	public static function printSpecialCharacterLink($element_id) {
-		return FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['href' => '#', 'onclick' => 'findSpecialChar(document.getElementById("' . $element_id . '")); if (window.updatewholename) { updatewholename(); } return false;']);
-	}
-
-	/**
-	 * HTML element to insert a value from a list.
-	 *
-	 * @param string $element_id
-	 * @param string[] $choices
-	 */
-	public static function printAutoPasteLink($element_id, $choices) {
-		echo '<small>';
-		foreach ($choices as $choice) {
-			echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
-			echo '\'', $choice, '\';';
-			echo ' return false;">', $choice, '</span> ';
-		}
-		echo '</small>';
-	}
-
-	/**
 	 * Summary of LDS ordinances.
 	 *
 	 * @param Individual $individual

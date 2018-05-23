@@ -846,7 +846,6 @@ class FunctionsEdit {
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
 				$html .= '<div class="input-group">';
 				$html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" dir="auto">' . e($value) . '</textarea>';
-				$html .= self::inputAddonKeyboard($id);
 				$html .= '</div>';
 			} else {
 				// If using GEDFact-assistant window
@@ -936,13 +935,7 @@ class FunctionsEdit {
 				break;
 		}
 
-		$html .= '<div id="' . $id . '_description">';
-
-		// pastable values
-		if ($fact === 'FORM' && $upperlevel === 'OBJE') {
-			FunctionsPrint::printAutoPasteLink($id, Config::fileFormats());
-		}
-		$html .= '</div>' . $extra . '</div></div>';
+		$html .= $extra . '</div></div>';
 
 		return $html;
 	}
