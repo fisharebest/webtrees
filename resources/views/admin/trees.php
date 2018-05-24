@@ -53,7 +53,7 @@
 									<!-- PREFERENCES -->
 									<li>
 										<span class="fa-li"><i class="fas fa-cogs"></i></span>
-										<a href="<?= e(Html::url('admin_trees_config.php', ['ged' => $managed_tree->getName(), 'action' => 'general'])) ?>">
+										<a href="<?= e(route('admin-trees-preferences', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Preferences') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>

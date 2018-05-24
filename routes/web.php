@@ -61,6 +61,8 @@ if (Auth::isAdmin()) {
 		'POST:admin-trees-export'             => 'AdminTreesController@exportServer',
 		'GET:admin-trees-places'              => 'AdminTreesController@places',
 		'POST:admin-trees-places'             => 'AdminTreesController@placesAction',
+		'GET:admin-trees-preferences'         => 'AdminTreesController@preferences',
+		'POST:admin-trees-preferences'         => 'AdminTreesController@preferencesUpdate',
 		'GET:admin-trees-renumber'            => 'AdminTreesController@renumber',
 		'POST:admin-trees-renumber'           => 'AdminTreesController@renumberAction',
 		'GET:admin-trees-merge'               => 'AdminTreesController@merge',
