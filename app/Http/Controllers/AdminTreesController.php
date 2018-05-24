@@ -18,12 +18,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -32,6 +36,8 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\SurnameTradition;
+use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use League\Flysystem\Filesystem;
@@ -175,7 +181,7 @@ class AdminTreesController extends AbstractBaseController {
 							I18N::translate('%1$s does not exist. Did you mean %2$s?', $this->checkLink($tree, $xref2), $this->checkLink($tree, $upper_links[strtoupper($xref2)]));
 					} else {
 						$errors[] =
-							$this->checkLinkMessage($tree, 
+							$this->checkLinkMessage($tree,
 								$type1, $xref1, $type2, $xref2) . ' ' .
 							/* I18N: placeholders are GEDCOM XREFs, such as R123 */
 							I18N::translate('%1$s does not exist.', $this->checkLink($tree, $xref2));
@@ -791,6 +797,146 @@ class AdminTreesController extends AbstractBaseController {
 	 *
 	 * @return Response
 	 */
+	public function preferences(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$french_calendar_start    = new Date('22 SEP 1792');
+		$french_calendar_end      = new Date('31 DEC 1805');
+		$gregorian_calendar_start = new Date('15 OCT 1582');
+
+		$surname_list_styles = [
+			'style1' => /* I18N: Layout option for lists of names */
+				I18N::translate('list'),
+			'style2' => /* I18N: Layout option for lists of names */
+				I18N::translate('table'),
+			'style3' => /* I18N: Layout option for lists of names */
+				I18N::translate('tag cloud'),
+		];
+
+		$page_layouts = [
+			0 => /* I18N: page orientation */
+				I18N::translate('Portrait'),
+			1 => /* I18N: page orientation */
+				I18N::translate('Landscape'),
+		];
+
+		$formats = [
+			''         => /* I18N: None of the other options */
+				I18N::translate('none'),
+			'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */
+				I18N::translate('markdown'),
+		];
+
+		$source_types = [
+			0 => I18N::translate('none'),
+			1 => I18N::translate('facts'),
+			2 => I18N::translate('records'),
+		];
+
+		$theme_options = ['' => I18N::translate('<default theme>')] + Theme::themeNames();
+
+		$privacy_options = [
+			Auth::PRIV_USER => I18N::translate('Show to members'),
+			Auth::PRIV_NONE => I18N::translate('Show to managers'),
+			Auth::PRIV_HIDE => I18N::translate('Hide from everyone'),
+		];
+
+		$tags = array_unique(array_merge(
+			explode(',', $tree->getPreference('INDI_FACTS_ADD')), explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('FAM_FACTS_ADD')), explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('NOTE_FACTS_ADD')), explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('SOUR_FACTS_ADD')), explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
+			explode(',', $tree->getPreference('REPO_FACTS_ADD')), explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
+			['SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN']
+		));
+
+		$all_tags = [];
+		foreach ($tags as $tag) {
+			if ($tag) {
+				$all_tags[$tag] = GedcomTag::getLabel($tag);
+			}
+		}
+
+		uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
+
+		$resns = Database::prepare(
+			"SELECT default_resn_id, tag_type, xref, resn" .
+			" FROM `##default_resn`" .
+			" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
+			" WHERE gedcom_id=?" .
+			" ORDER BY xref IS NULL, n_sort, xref, tag_type"
+		)->execute([$tree->getTreeId()])->fetchAll();
+
+		foreach ($resns as $resn) {
+			$resn->record = GedcomRecord::getInstance($resn->xref, $tree);
+			if ($resn->tag_type) {
+				$resn->tag_label = GedcomTag::getLabel($resn->tag_type);
+			} else {
+				$resn->tag_label = '';
+			}
+		}
+		usort($resns, function (stdClass $x, stdClass $y) {
+			return I18N::strcasecmp($x->tag_label, $y->tag_label);
+		});
+
+		// For historical reasons, we have two fields in one
+		$calendar_formats = explode('_and_', $tree->getPreference('CALENDAR_FORMAT') . '_and_');
+
+		// Split into separate fields
+		$relatives_events = explode(',', $tree->getPreference('SHOW_RELATIVES_EVENTS'));
+
+		$pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
+
+		$members = array_filter(User::all(), function (User $user) use ($tree) {
+			return Auth::isMember($tree, $user);
+		});
+
+		$all_fam_facts  = GedcomTag::getPicklistFacts('FAM');
+		$all_indi_facts = GedcomTag::getPicklistFacts('INDI');
+		$all_name_facts = GedcomTag::getPicklistFacts('NAME');
+		$all_plac_facts = GedcomTag::getPicklistFacts('PLAC');
+		$all_repo_facts = GedcomTag::getPicklistFacts('REPO');
+		$all_sour_facts = GedcomTag::getPicklistFacts('SOUR');
+
+		$all_surname_traditions = SurnameTradition::allDescriptions();
+
+		$tree_count = count(Tree::getAll());
+
+		$title = I18N::translate('Preferences') . ' — ' . e($tree->getTitle());
+
+		return $this->viewResponse('admin/trees-preferences', [
+			'all_fam_facts'            => $all_fam_facts,
+			'all_indi_facts'           => $all_indi_facts,
+			'all_name_facts'           => $all_name_facts,
+			'all_plac_facts'           => $all_plac_facts,
+			'all_repo_facts'           => $all_repo_facts,
+			'all_sour_facts'           => $all_sour_facts,
+			'all_surname_traditions'   => $all_surname_traditions,
+			'calendar_formats'         => $calendar_formats,
+			'formats'                  => $formats,
+			'french_calendar_end'      => $french_calendar_end,
+			'french_calendar_start'    => $french_calendar_start,
+			'gregorian_calendar_start' => $gregorian_calendar_start,
+			'members'                  => $members,
+			'page_layouts'             => $page_layouts,
+			'pedigree_individual'      => $pedigree_individual,
+			'privacy_options'          => $privacy_options,
+			'relatives_events'         => $relatives_events,
+			'source_types'             => $source_types,
+			'surname_list_styles'      => $surname_list_styles,
+			'theme_options'            => $theme_options,
+			'title'                    => $title,
+			'tree'                     => $tree,
+			'tree_count'               => $tree_count,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
 	public function renumber(Request $request): Response {
 		/** @var Tree $tree */
 		$tree = $request->attributes->get('tree');
@@ -804,6 +950,125 @@ class AdminTreesController extends AbstractBaseController {
 			'title' => $title,
 			'xrefs' => $xrefs,
 		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function preferencesUpdate(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		// Coming soon
+		if ((bool) $request->get('all_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
+		}
+		if ((bool) $request->get('new_trees')) {
+			FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
+		}
+
+		$tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->get('ADVANCED_NAME_FACTS', [])));
+		$tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->get('ADVANCED_PLAC_FACTS', [])));
+		$tree->setPreference('ALLOW_THEME_DROPDOWN', (string) (bool) $request->get('ALLOW_THEME_DROPDOWN'));
+		// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
+		// e.g. "gregorian_and_jewish"
+		$tree->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
+			$request->get('CALENDAR_FORMAT0',  'none'),
+			$request->get('CALENDAR_FORMAT1',  'none'),
+		])));
+		$tree->setPreference('CHART_BOX_TAGS', implode(',', $request->get('CHART_BOX_TAGS', [])));
+		$tree->setPreference('CONTACT_USER_ID', $request->get('CONTACT_USER_ID'));
+		$tree->setPreference('DEFAULT_PEDIGREE_GENERATIONS', (string) (int) $request->get('DEFAULT_PEDIGREE_GENERATIONS'));
+		$tree->setPreference('EXPAND_NOTES', (string) (bool) $request->get('EXPAND_NOTES'));
+		$tree->setPreference('EXPAND_SOURCES', (string) (bool) $request->get('EXPAND_SOURCES'));
+		$tree->setPreference('FAM_FACTS_ADD', implode(',', $request->get('FAM_FACTS_ADD', [])));
+		$tree->setPreference('FAM_FACTS_QUICK', implode(',', $request->get('FAM_FACTS_QUICK', [])));
+		$tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $request->get('FAM_FACTS_UNIQUE', [])));
+		$tree->setPreference('FULL_SOURCES', (string) (bool) $request->get('FULL_SOURCES'));
+		$tree->setPreference('FORMAT_TEXT', $request->get('FORMAT_TEXT'));
+		$tree->setPreference('GENERATE_UIDS', (string) (bool) $request->get('GENERATE_UIDS'));
+		$tree->setPreference('GEONAMES_ACCOUNT', $request->get('GEONAMES_ACCOUNT'));
+		$tree->setPreference('HIDE_GEDCOM_ERRORS', (string) (bool) $request->get('HIDE_GEDCOM_ERRORS'));
+		$tree->setPreference('INDI_FACTS_ADD', implode(',', $request->get('INDI_FACTS_ADD', [])));
+		$tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->get('INDI_FACTS_QUICK', [])));
+		$tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $request->get('INDI_FACTS_UNIQUE', [])));
+		$tree->setPreference('LANGUAGE', $request->get('LANGUAGE'));
+		$tree->setPreference('MAX_DESCENDANCY_GENERATIONS', (string) (int) $request->get('MAX_DESCENDANCY_GENERATIONS'));
+		$tree->setPreference('MAX_PEDIGREE_GENERATIONS', (string) (int) $request->get('MAX_PEDIGREE_GENERATIONS'));
+		$tree->setPreference('MEDIA_UPLOAD', $request->get('MEDIA_UPLOAD'));
+		$tree->setPreference('META_DESCRIPTION', $request->get('META_DESCRIPTION'));
+		$tree->setPreference('META_TITLE', $request->get('META_TITLE'));
+		$tree->setPreference('NO_UPDATE_CHAN', (string) (bool) $request->get('NO_UPDATE_CHAN'));
+		$tree->setPreference('PEDIGREE_LAYOUT', (string) (bool) $request->get('PEDIGREE_LAYOUT'));
+		$tree->setPreference('PEDIGREE_ROOT_ID', $request->get('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+		$tree->setPreference('PEDIGREE_SHOW_GENDER', (string) (bool) $request->get('PEDIGREE_SHOW_GENDER'));
+		$tree->setPreference('PREFER_LEVEL2_SOURCES', $request->get('PREFER_LEVEL2_SOURCES'));
+		$tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->get('QUICK_REQUIRED_FACTS', [])));
+		$tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $request->get('QUICK_REQUIRED_FAMFACTS', [])));
+		$tree->setPreference('REPO_FACTS_ADD', implode(',', $request->get('REPO_FACTS_ADD', [])));
+		$tree->setPreference('REPO_FACTS_QUICK', implode(',', $request->get('REPO_FACTS_QUICK', [])));
+		$tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $request->get('REPO_FACTS_UNIQUE', [])));
+		$tree->setPreference('SHOW_COUNTER', (string) (bool) $request->get('SHOW_COUNTER'));
+		$tree->setPreference('SHOW_EST_LIST_DATES', (string) (bool) $request->get('SHOW_EST_LIST_DATES'));
+		$tree->setPreference('SHOW_FACT_ICONS', (string) (bool) $request->get('SHOW_FACT_ICONS'));
+		$tree->setPreference('SHOW_GEDCOM_RECORD', (string) (bool) $request->get('SHOW_GEDCOM_RECORD'));
+		$tree->setPreference('SHOW_HIGHLIGHT_IMAGES', (string) (bool) $request->get('SHOW_HIGHLIGHT_IMAGES'));
+		$tree->setPreference('SHOW_LAST_CHANGE', (string) (bool) $request->get('SHOW_LAST_CHANGE'));
+		$tree->setPreference('SHOW_LDS_AT_GLANCE', (string) (bool) $request->get('SHOW_LDS_AT_GLANCE'));
+		$tree->setPreference('SHOW_MEDIA_DOWNLOAD', $request->get('SHOW_MEDIA_DOWNLOAD'));
+		$tree->setPreference('SHOW_NO_WATERMARK', $request->get('SHOW_NO_WATERMARK'));
+		$tree->setPreference('SHOW_PARENTS_AGE', (string) (bool) $request->get('SHOW_PARENTS_AGE'));
+		$tree->setPreference('SHOW_PEDIGREE_PLACES', $request->get('SHOW_PEDIGREE_PLACES'));
+		$tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', (string) (bool) $request->get('SHOW_PEDIGREE_PLACES_SUFFIX'));
+		$tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $request->get('SHOW_RELATIVES_EVENTS', [])));
+		$tree->setPreference('SOUR_FACTS_ADD', implode(',', $request->get('SOUR_FACTS_ADD', [])));
+		$tree->setPreference('SOUR_FACTS_QUICK', implode(',', $request->get('SOUR_FACTS_QUICK', [])));
+		$tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $request->get('SOUR_FACTS_UNIQUE', [])));
+		$tree->setPreference('SUBLIST_TRIGGER_I', (string) (int) $request->get('SUBLIST_TRIGGER_I', 200));
+		$tree->setPreference('SURNAME_LIST_STYLE', $request->get('SURNAME_LIST_STYLE'));
+		$tree->setPreference('SURNAME_TRADITION', $request->get('SURNAME_TRADITION'));
+		$tree->setPreference('THEME_DIR', $request->get('THEME_DIR'));
+		$tree->setPreference('USE_SILHOUETTE', (string) (bool) $request->get('USE_SILHOUETTE'));
+		$tree->setPreference('WEBMASTER_USER_ID', $request->get('WEBMASTER_USER_ID'));
+		$tree->setPreference('WEBTREES_EMAIL', $request->get('WEBTREES_EMAIL'));
+		$tree->setPreference('title', $request->get('title'));
+
+		// Only accept valid folders for MEDIA_DIRECTORY
+		$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', $request->get('MEDIA_DIRECTORY') . '/');
+		if (substr($MEDIA_DIRECTORY, 0, 1) === '/') {
+			$MEDIA_DIRECTORY = substr($MEDIA_DIRECTORY, 1);
+		}
+
+		if ($MEDIA_DIRECTORY) {
+			if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+				$tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+			} elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+				$tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
+			} else {
+				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
+			}
+		}
+
+		$gedcom = $request->get('gedcom');
+		if ($gedcom && $gedcom !== $tree->getName()) {
+			try {
+				Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([$gedcom, $tree->getTreeId()]);
+				Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([$gedcom, $tree->getName()]);
+			} catch (\Exception $ex) {
+				DebugBar::addThrowable($ex);
+
+				// Probably a duplicate name.
+			}
+		}
+
+		FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle())), 'success');
+
+		$url = route('admin-trees', ['ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
 	}
 
 	/**
@@ -1227,7 +1492,8 @@ class AdminTreesController extends AbstractBaseController {
 	/**
 	 * Every XREF used by two trees at the same time.
 	 *
-	 * @param Tree $tree
+	 * @param Tree $tree1
+	 * @param Tree $tree2
 	 *
 	 * @return string[]
 	 */
