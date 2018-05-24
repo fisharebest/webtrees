@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
@@ -270,11 +269,11 @@
 	<div class="row form-group">
 		<div class="offset-sm-4 col-sm-8">
 			<button type="submit" class="btn btn-primary">
-				<?= FontAwesome::decorativeIcon('save') ?>
+				<i class="fas fa-check">
 				<?= I18N::translate('save') ?>
 			</button>
 			<a class="btn btn-secondary" href="<?= route('admin-trees', ['ged' => $tree->getName()]) ?>">
-				<?= FontAwesome::decorativeIcon('cancel') ?>
+				<i class="fas times">
 				<?= I18N::translate('cancel') ?>
 			</a>
 			<!-- Coming soon

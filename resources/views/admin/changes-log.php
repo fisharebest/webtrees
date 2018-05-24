@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees') => I18N::translate('Manage family trees'), $title]]) ?>
@@ -73,17 +72,17 @@
 
 	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
-			<?= FontAwesome::decorativeIcon('search') ?>
+			<i class="fas fa-search">
 			<?= I18N::translate('search') ?>
 		</button>
 
 		<button type="submit" class="btn btn-secondary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<?= FontAwesome::decorativeIcon('download') ?>
+			<i class="fas fa-download">
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
 		<button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" onclick="if (confirm(this.dataset.confirm)) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<?= FontAwesome::decorativeIcon('delete') ?>
+			<i class="fas fa-trash-alt"
 			<?= I18N::translate('delete') ?>
 		</button>
 	</div>

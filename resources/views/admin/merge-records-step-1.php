@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -79,7 +78,7 @@
 		</div>
 		<div class="col-sm-9">
 			<button class="btn btn-primary" type="submit">
-				<?= FontAwesome::decorativeIcon('save') ?>
+				<i class="fas fa-check">
 				<?= I18N::translate('continue') ?>
 			</button>
 		</div>

@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h1><?= $title ?></h1>

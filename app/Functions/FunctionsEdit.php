@@ -210,21 +210,6 @@ class FunctionsEdit {
 	}
 
 	/**
-	 * A list of registration rules (e.g. for an edit control).
-	 *
-	 * @return string[]
-	 */
-	public static function optionsRegistrationRules() {
-		return [
-			0 => I18N::translate('No predefined text'),
-			1 => I18N::translate('Predefined text that states all users can request a user account'),
-			2 => I18N::translate('Predefined text that states admin will decide on each request for a user account'),
-			3 => I18N::translate('Predefined text that states only family members can request a user account'),
-			4 => I18N::translate('Choose user defined welcome text typed below'),
-		];
-	}
-
-	/**
 	 * A list of GEDCOM restrictions (e.g. for an edit control).
 	 *
 	 * @param bool $include_empty
@@ -255,19 +240,6 @@ class FunctionsEdit {
 		return [
 			'internal' => I18N::translate('Use PHP mail to send messages'),
 			'external' => I18N::translate('Use SMTP to send messages'),
-		];
-	}
-
-	/**
-	 * A list SSL modes (e.g. for an edit control).
-	 *
-	 * @return string[]
-	 */
-	public static function optionsSslModes() {
-		return [
-			'none'                                                                        => I18N::translate('none'),
-			/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'      => I18N::translate('ssl'),
-			/* I18N: Transport Layer Security - a secure communications protocol */ 'tls' => I18N::translate('tls'),
 		];
 	}
 

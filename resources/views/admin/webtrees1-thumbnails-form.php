@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form action="<?= e(route('admin-webtrees1-thumbs-action')) ?>" method="POST">
@@ -10,7 +9,7 @@
 	<div class="btn-group">
 		<?php if (!empty($media)): ?>
 			<button class="btn <?= $difference < 99 ? 'btn-primary' : 'btn-secondary' ?> wt-fix-button" type="button" data-action="add">
-				<?= FontAwesome ::decorativeIcon('add') ?>
+				<i class="fas fa-plus"></i>
 				<?= I18N::translate('add') ?>
 				<?php if (count($media) > 1): ?>
 					<?= I18N::number(count($media)) ?>
@@ -18,7 +17,7 @@
 			</button>
 		<?php endif ?>
 		<button class="btn <?= $difference >= 99 ? 'btn-primary' : 'btn-secondary' ?> wt-fix-button" type="button" data-action="delete">
-			<?= FontAwesome ::decorativeIcon('delete') ?>
+			<i class="fas fa-trash-alt"></i>
 			<?= I18N::translate('delete') ?>
 		</button>
 	</div>

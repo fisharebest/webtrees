@@ -42,31 +42,31 @@
 				<ul class="fa-ul">
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'site'])) ?>">
+						<a href="<?= e(route('admin-site-preferences')) ?>">
 							<?= I18N::translate('Website preferences') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'email'])) ?>">
+						<a href="<?= e(route('admin-site-mail')) ?>">
 							<?= I18N::translate('Sending email') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'login'])) ?>">
+						<a href="<?= e(route('admin-site-registration')) ?>">
 							<?= I18N::translate('Sign-in and registration') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'languages'])) ?>">
+						<a href="<?= e(route('admin-site-languages')) ?>">
 							<?= I18N::translate('Languages') ?>
 						</a>
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_config.php', ['action' => 'tracking'])) ?>">
+						<a href="<?= e(route('admin-site-analytics')) ?>">
 							<?= I18N::translate('Tracking and analytics') ?>
 						</a>
 					</li>
@@ -88,7 +88,7 @@
 					</li>
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(route('admin-server-information')) ?>">
+						<a href="<?= e(route('admin-site-information')) ?>">
 							<?= I18N::translate('Server information') ?>
 						</a>
 					</li>
