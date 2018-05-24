@@ -739,9 +739,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		}
 
 		foreach ($person_privacy as $key => $value) {
-			if (isset($value['details'])) {
-				$stmt_default_resn->execute([$GED_DATA['id'], $key, null, $value['details']]);
-			}
+			$stmt_default_resn->execute([$GED_DATA['id'], $key, null, $value['details']]);
 		}
 
 		foreach ($person_facts as $key1 => $array) {
