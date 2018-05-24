@@ -30,14 +30,18 @@ class Migration3 implements MigrationInterface {
 
 	public function upgrade() {
 		$queries = [
-			// Remove streetview fields
+			// Remove streetview fields & update indexes
 			"ALTER TABLE `##placelocation`" .
 			" DROP COLUMN pl_media," .
 			" DROP COLUMN sv_long, " .
 			" DROP COLUMN sv_lati, " .
 			" DROP COLUMN sv_bearing, " .
 			" DROP COLUMN sv_elevation, ".
-			" DROP COLUMN sv_zoom",
+			" DROP COLUMN sv_zoom, " .
+			" DROP INDEX ix2, " .
+			" DROP INDEX ix3, " .
+			" ADD INDEX ix2 (pl_parent_id, pl_place)",
+
 			// Reset fields to default empty value
 			"UPDATE `##placelocation` SET " .
 			"pl_long = IF(pl_long IN ('', 'E0'), NULL, pl_long)," .
