@@ -190,7 +190,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
 		return view(
 			'modules/openstreetmap/map',
@@ -251,6 +250,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @throws \Exception
 	 */
 	public function getMapDataAction(Request $request): JsonResponse {
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
+
 		switch ($request->get('type')) {
 			case 'placelist':
 				$response = $this->placelistGetMapData($request);
