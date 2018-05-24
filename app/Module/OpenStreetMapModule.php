@@ -1454,7 +1454,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 		$rows = Database::prepare(
 			"SELECT SQL_CACHE pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
-			" IF(p_place IS NULL, 1, 0) AS inactive" .
+			" (t1.p_place IS NULL) AS inactive" .
 			" FROM `##placelocation`" .
 			" LEFT JOIN (SELECT p_place" .
  			" FROM `##places`" .
@@ -1473,7 +1473,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 		$list = [];
 		/** @var array $rows */
 		foreach ($rows as $row) {
-			if ((bool)$row['inactive'] && !$show_inactive) {
+			if ($row['inactive'] && !$show_inactive) {
 				continue;
 			}
 
@@ -1484,7 +1484,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 				]
 			)->fetchOneRow();
 
-			if ((bool)$row['inactive']) {
+			if ($row['inactive']) {
 				$badge = 'danger';
 			} elseif ((int)$children->no_coord > 0) {
 				$badge = 'warning';
