@@ -552,7 +552,7 @@ class AdminTreesController extends AbstractBaseController {
 
 		$title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->getTitle());
 
-		return $this->viewResponse('admin/tree-import', [
+		return $this->viewResponse('admin/trees-import', [
 			'default_gedcom_file' => $default_gedcom_file,
 			'gedcom_files'        => $gedcom_files,
 			'gedcom_media_path'   => $gedcom_media_path,

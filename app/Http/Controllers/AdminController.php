@@ -1511,7 +1511,7 @@ class AdminController extends AbstractBaseController {
 		$privacy_constants    = $this->privacyConstants();
 		$privacy_restrictions = $this->privacyRestrictions($tree);
 
-		return $this->viewResponse('admin/tree-privacy', [
+		return $this->viewResponse('admin/trees-privacy', [
 			'all_tags'             => $all_tags,
 			'count_trees'          => count(Tree::getAll()),
 			'privacy_constants'    => $privacy_constants,
