@@ -337,21 +337,6 @@ class MediaFile {
 	}
 
 	/**
-	 * get image properties
-	 *
-	 * @return array
-	 */
-	public function getImageAttributes() {
-		$imgsize = getimagesize($this->getServerFilename()) ?: [0, 0];
-
-		if ($imgsize === false) {
-			$imgsize = [0, 0];
-		}
-
-		return $imgsize;
-	}
-
-	/**
 	 * Generate a URL to download a non-image media file.
 	 *
 	 * @return string
