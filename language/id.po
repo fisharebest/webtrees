@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2016-08-06 23:55+0000\n"
-"Last-Translator: M Arief Budiman <arifbudiman.it@gmail.com>\n"
+"PO-Revision-Date: 2018-05-25 00:06+0000\n"
+"Last-Translator: alif juman <alifjuman@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -426,399 +426,399 @@ msgstr "Ulangtahun %s"
 #: app/Functions/Functions.php:558
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x sepupu"
 
 #: app/Functions/Functions.php:523
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x sepupu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:488
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x sepupu"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s &nbsp; SM"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s &nbsp; M"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:728
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s +"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s , leluhur dan keluarga mereka"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s , orang tua dan saudara kandung"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s , pasangan dan anak"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s , pasangan dan keturunan"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s , leluhur dan keluarga mereka"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, orang tua dan saudara kandung"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, pasangan dan anak"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, pasangan dan keturunan"
 
 #: admin_media_upload.php:201 app/Functions/FunctionsPrint.php:571
 #: app/Module/UserMessagesModule.php:95
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;pilih&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:284 app/I18N.php:288
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:278
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(umur kurang dari %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:281
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(umur lebih dari %s)"
 
 #. I18N: %s is a number
 #. I18N: %s is a placeholder for a number
 #: app/Datatables.php:57 app/I18N.php:188
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(disaring dari %s total masukan)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:249
 msgid "(in childhood)"
-msgstr ""
+msgstr "(sewaktu kecil)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:246
 msgid "(in infancy)"
-msgstr ""
+msgstr "(semasa bayi)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:243
 msgid "(stillborn)"
-msgstr ""
+msgstr "(gugur)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:396
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6916
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ke 10"
 
 #: app/Stats.php:6914
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ke 11"
 
 #: app/Stats.php:6912
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ke 12"
 
 #: app/Stats.php:6910
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "ke 13"
 
 #: app/Stats.php:6908
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "ke 14"
 
 #: app/Stats.php:6906
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "ke 15"
 
 #: app/Stats.php:6904
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "ke 16"
 
 #: app/Stats.php:6902
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "ke 17"
 
 #: app/Stats.php:6900
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "ke 18"
 
 #: app/Stats.php:6898
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "ke 19"
 
 #: app/Stats.php:6934
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "pertama"
 
 #: app/Stats.php:6896
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "ke 20"
 
 #: app/Stats.php:6894
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "ke 21"
 
 #: app/Stats.php:6932
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "kedua"
 
 #: app/Stats.php:6930
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "ketiga"
 
 #: app/Stats.php:6928
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "ke 4"
 
 #: app/Stats.php:6926
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "ke 5"
 
 #: app/Stats.php:6924
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "ke 6"
 
 #: app/Stats.php:6922
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "ke 7"
 
 #: app/Stats.php:6920
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "ke 8"
 
 #: app/Stats.php:6918
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "ke 9"
 
 #: admin_trees_manage.php:758
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr ""
+msgstr "<b> Catatan penting: </b> Pemandu transfer tidak dapat membantu dengan memindahkan item media. Anda harus mengatur dan memindahkan atau menyalin konfigurasi media dan objek secara terpisah setelah panduan transfer selesai."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:55 admin_users.php:40 edituser.php:251
 msgid "<default theme>"
-msgstr ""
+msgstr "<theme bawaan>"
 
 #: login.php:388
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
+msgstr "<div class=\"largeError\"> Pemberitahuan: </div> <div class=\"error\"> Dengan mengisi dan mengirimkan formulir ini, Anda setuju: <ul> <li> untuk melindungi privasi individu yang hidup yang terdaftar di situs kami; </li> <li> dan dalam kotak teks di bawah ini, untuk menjelaskan kepada siapa Anda terkait, atau untuk memberikan kami informasi tentang seseorang yang harus terdaftar di situs web kami. </li> </ul> </div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:414 app/Functions/FunctionsPrintFacts.php:520
 #: app/GedcomTag.php:1404
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s </span>"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:57
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Bagan yang menampilkan hubungan antara dua individu."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Bagan dari leluhur dan keturunan seseorang, sebagai buku keluarga."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Bagan dari leluhur seseorang, sebagai pohon yang ringkas."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Bagan dari leluhur seseorang, yang diformat seperti pohon."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Bagan dari leluhur seseorang."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Bagan dari keturunan seseorang."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Sebuah grafik rentang hidup individu."
 
 #: edit_interface.php:1021
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "Seorang anak mungkin memiliki lebih dari satu pasang orangtua. Hubungan antara anak dan orang tua dapat bersifat biologis, legal, atau berdasarkan budaya dan tradisi lokal. Jika tidak ada silsilah yang ditentukan, maka akan diasumsikan hubungan biologis."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr ""
+msgstr "Kesalahan umum adalah memiliki beberapa tautan ke rekaman yang sama, misalnya mencantumkan anak yang sama lebih dari satu kali dalam catatan keluarga."
 
 #: resources/views/setup/step-4-database-name.php:20
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Server database dapat menyimpan banyak basis data terpisah. Anda harus memilih basis data yang ada (dibuat oleh administrator server Anda) atau membuat yang baru (jika akun pengguna basis data Anda memiliki hak yang cukup)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Grafik penggemar dari leluhur seseorang."
 
 #: admin_trees_download.php:138 admin_trees_manage.php:218
 #: app/Module/GoogleMapsModule.php:2185
 #: resources/views/modals/media-file-fields.php:77
 msgid "A file on the server"
-msgstr ""
+msgstr "Sebuah file di server"
 
 #: admin_trees_download.php:238 admin_trees_manage.php:207
 #: app/Module/GoogleMapsModule.php:2175
 #: resources/views/modals/media-file-fields.php:28
 msgid "A file on your computer"
-msgstr ""
+msgstr "Sebuah file di komputer"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:38
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Pesan ucapan dan tautan berguna untuk pengguna."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:38
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Pesan ucapan untuk pengunjung situs."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:44
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr ""
+msgstr "Daftar perubahan yang perlu ditinjau oleh moderator, dan pemberitahuan email."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:41
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Daftar pertanyaan dan jawaban yang sering diajukan."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:52
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Daftar catatan yang telah diperbarui baru-baru ini."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "Daftar tugas dan kegiatan yang terkait dengan silsilah keluarga."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:40
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Daftar peringatan kematian Yahudi Ibrani yang akan terjadi dalam waktu dekat."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:38
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Daftar peringatan yang terjadi hari ini."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:46
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Daftar peringatan yang akan terjadi dalam waktu dekat."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:37
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Daftar nama yang paling populer yang diberikan."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:47
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Daftar nama keluarga paling populer."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:46
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Daftar halaman yang paling banyak di tampilkan."
+msgstr "Daftar halaman yang telah dilihat paling banyak."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:38
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Daftar pengguna dan pengunjung yang sedang online."
 
 #: help_text.php:259 resources/views/help/date.php:228
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "Objek media adalah catatan di pohon keluarga yang berisi informasi tentang file media. Informasi ini dapat mencakup judul, pemberitahuan hak cipta, transkrip, pembatasan privasi, dll. File media, seperti foto atau video, dapat disimpan secara lokal (pada server web ini) atau dari jarak jauh (pada server web yang berbeda)."
 
 #: login.php:269
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr ""
+msgstr "Kata sandi baru telah dibuat dan diemail ke %s. Anda dapat mengubah kata sandi ini setelah Anda masuk."
 
 #: resources/views/emails/password-reset-html.php:7
 #: resources/views/emails/password-reset-text.php:4
@@ -830,52 +830,52 @@ msgstr "Sandi baru telah diminta untuk nama pengguna Anda."
 #: resources/views/emails/verify-notify-text.php:5
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "Pengguna baru (%1$s) telah meminta akun (%2$s) dan memverifikasi alamat email (%3$s)."
 
 #: admin_site_upgrade.php:80 login.php:113
 #: resources/views/admin/control-panel.php:30
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Versi webtrees baru tersedia."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Area pribadi untuk mencatat catatan atau membuat jurnal."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.php:7
 #: resources/views/emails/register-notify-text.php:4
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Seorang calon pengguna telah terdaftar dengan webtrees di %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Laporan nenek moyang seseorang, yang diformat seperti pohon."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Laporan tentang leluhur seseorang, dalam gaya naratif."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Laporan keturunan individu, dalam gaya naratif."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Laporan tentang detail individu."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Laporan fakta yang didukung oleh sumber tertentu."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -886,78 +886,78 @@ msgstr "Laporan anggota keluarga dan detilnya masing-masing."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Laporan individu yang meninggal pada waktu atau tempat tertentu."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Laporan individu yang memiliki pekerjaan tertentu."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Laporan individu yang lahir di waktu atau tempat tertentu."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Laporan individu yang dikubur di tempat tertentu."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Laporan individu yang menikah pada waktu atau tempat tertentu."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Laporan perubahan terbaru dan tertunda."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Laporan keluarga yang terkait erat dengan seseorang."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Laporan dari individu yang terkait erat dengan individu."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Laporan informasi yang disediakan oleh sumber."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Laporan dari informasi yang hilang untuk individu dan keluarga mereka."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Laporan catatan penting untuk tanggal atau tempat tertentu."
 
 #: admin_users.php:527
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Peran adalah seperangkat hak akses, yang memberikan izin untuk melihat data, mengubah preferensi, dll. Hak akses ditugaskan untuk peran, dan peran diberikan kepada pengguna. Setiap pohon keluarga dapat menetapkan akses yang berbeda untuk setiap peran, dan pengguna dapat memiliki peran yang berbeda di setiap pohon keluarga."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr ""
+msgstr "Bilah sisi yang menampilkan daftar abjad semua keluarga dalam silsilah keluarga."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "Bilah sisi yang menampilkan daftar abjad semua individu dalam silsilah keluarga."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -19796,7 +19796,7 @@ msgstr ""
 #: indilist.php:74 indilist.php:96
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid " per gender"
 #~ msgstr " / lelaki-perempuan"
