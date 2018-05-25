@@ -1606,22 +1606,21 @@ class ReportParserGenerate extends ReportParserBase {
 
 		$person      = Individual::getInstance($id, $this->tree);
 		$media_file = $person->findHighlightedMediaFile();
-		if ($media_file) {
-			$attributes = $media_file->getImageAttributes();
-			if ($media_file->fileExists()) {
-				if ($width > 0 && $height == 0) {
-					$perc   = $width / $attributes[0];
-					$height = round($attributes[1] * $perc);
-				} elseif ($height > 0 && $width == 0) {
-					$perc  = $height / $attributes[1];
-					$width = round($attributes[0] * $perc);
-				} else {
-					$width  = $attributes[0];
-					$height = $attributes[1];
-				}
-				$image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
-				$this->wt_report->addElement($image);
+
+		if ($media_file !== null && $media_file->fileExists()) {
+			$attributes = getimagesize($media_file->getServerFilename()) ?: [0, 0];
+			if ($width > 0 && $height == 0) {
+				$perc   = $width / $attributes[0];
+				$height = round($attributes[1] * $perc);
+			} elseif ($height > 0 && $width == 0) {
+				$perc  = $height / $attributes[1];
+				$width = round($attributes[0] * $perc);
+			} else {
+				$width  = $attributes[0];
+				$height = $attributes[1];
 			}
+			$image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
+			$this->wt_report->addElement($image);
 		}
 	}
 
@@ -1687,7 +1686,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$media_file  = $mediaobject->firstImageFile();
 
 				if ($media_file !== null && $media_file->fileExists()) {
-					$attributes = $media_file->getImageAttributes();
+					$attributes = getimagesize($media_file->getServerFilename()) ?: [0, 0];
 					if ($width > 0 && $height == 0) {
 						$perc   = $width / $attributes[0];
 						$height = round($attributes[1] * $perc);

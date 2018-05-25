@@ -342,64 +342,10 @@ class MediaFile {
 	 * @return array
 	 */
 	public function getImageAttributes() {
-		$imgsize = [];
-		if ($this->fileExists()) {
-			try {
-				$imgsize = getimagesize($this->getServerFilename());
-				if (is_array($imgsize) && !empty($imgsize['0'])) {
-					// this is an image
-					$imageTypes     = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
-					$imgsize['ext'] = $imageTypes[0 + $imgsize[2]];
-					// this is for display purposes, always show non-adjusted info
-					$imgsize['WxH'] = /* I18N: image dimensions, width × height */
-						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-				}
-			} catch (Throwable $ex) {
-				DebugBar::addThrowable($ex);
+		$imgsize = getimagesize($this->getServerFilename()) ?: [0, 0];
 
-				// Not an image, or not a valid image?
-				$imgsize = false;
-			}
-		}
-
-		if (!is_array($imgsize) || empty($imgsize['0'])) {
-			// this is not an image, OR the file doesn’t exist OR it is a url
-			$imgsize[0]      = 0;
-			$imgsize[1]      = 0;
-			$imgsize['ext']  = '';
-			$imgsize['mime'] = '';
-			$imgsize['WxH']  = '';
-		}
-
-		if (empty($imgsize['mime'])) {
-			// this is not an image, OR the file doesn’t exist OR it is a url
-			// set file type equal to the file extension - can’t use parse_url because this may not be a full url
-			$exp            = explode('?', $this->multimedia_file_refn);
-			$imgsize['ext'] = strtoupper(pathinfo($exp[0], PATHINFO_EXTENSION));
-			// all mimetypes we wish to serve with the media firewall must be added to this array.
-			$mime = [
-				'DOC' => 'application/msword',
-				'MOV' => 'video/quicktime',
-				'MP3' => 'audio/mpeg',
-				'PDF' => 'application/pdf',
-				'PPT' => 'application/vnd.ms-powerpoint',
-				'RTF' => 'text/rtf',
-				'SID' => 'image/x-mrsid',
-				'TXT' => 'text/plain',
-				'XLS' => 'application/vnd.ms-excel',
-				'WMV' => 'video/x-ms-wmv',
-			];
-			if (empty($mime[$imgsize['ext']])) {
-				// if we don’t know what the mimetype is, use something ambiguous
-				$imgsize['mime'] = 'application/octet-stream';
-				if ($this->fileExists()) {
-					// alert the admin if we cannot determine the mime type of an existing file
-					// as the media firewall will be unable to serve this file properly
-					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->multimedia_file_refn . '<');
-				}
-			} else {
-				$imgsize['mime'] = $mime[$imgsize['ext']];
-			}
+		if ($imgsize === false) {
+			$imgsize = [0, 0];
 		}
 
 		return $imgsize;
