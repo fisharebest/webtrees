@@ -24,6 +24,33 @@ use Throwable;
  * recording, etc.
  */
 class MediaFile {
+	const MIME_TYPES = [
+		'bmp'  => 'image/bmp',
+		'doc'  => 'application/msword',
+		'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+		'ged'  => 'text/x-gedcom',
+		'gif'  => 'image/gif',
+		'html' => 'text/html',
+		'htm'  => 'text/html',
+		'jpeg' => 'image/jpeg',
+		'jpg'  => 'image/jpeg',
+		'mov'  => 'video/quicktime',
+		'mp3'  => 'audio/mpeg',
+		'mp4'  => 'video/mp4',
+		'ogv'  => 'video/ogg',
+		'pdf'  => 'application/pdf',
+		'png'  => 'image/png',
+		'rar'  => 'application/x-rar-compressed',
+		'swf'  => 'application/x-shockwave-flash',
+		'svg'  => 'image/svg',
+		'tiff' => 'image/tiff',
+		'tif'  => 'image/tiff',
+		'xls'  => 'application/vnd-ms-excel',
+		'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+		'wmv'  => 'video/x-ms-wmv',
+		'zip'  => 'application/zip',
+	];
+
 	/** @var string The filename */
 	private $multimedia_file_refn = '';
 
@@ -454,58 +481,6 @@ class MediaFile {
 	 * @return string
 	 */
 	public function mimeType() {
-		// Themes contain icon definitions for some/all of these mime-types
-		switch ($this->extension()) {
-			case 'bmp':
-				return 'image/bmp';
-			case 'doc':
-				return 'application/msword';
-			case 'docx':
-				return 'application/msword';
-			case 'ged':
-				return 'text/x-gedcom';
-			case 'gif':
-				return 'image/gif';
-			case 'htm':
-				return 'text/html';
-			case 'html':
-				return 'text/html';
-			case 'jpeg':
-				return 'image/jpeg';
-			case 'jpg':
-				return 'image/jpeg';
-			case 'mov':
-				return 'video/quicktime';
-			case 'mp3':
-				return 'audio/mpeg';
-			case 'mp4':
-				return 'video/mp4';
-			case 'ogv':
-				return 'video/ogg';
-			case 'pdf':
-				return 'application/pdf';
-			case 'png':
-				return 'image/png';
-			case 'rar':
-				return 'application/x-rar-compressed';
-			case 'swf':
-				return 'application/x-shockwave-flash';
-			case 'svg':
-				return 'image/svg';
-			case 'tif':
-				return 'image/tiff';
-			case 'tiff':
-				return 'image/tiff';
-			case 'xls':
-				return 'application/vnd-ms-excel';
-			case 'xlsx':
-				return 'application/vnd-ms-excel';
-			case 'wmv':
-				return 'video/x-ms-wmv';
-			case 'zip':
-				return 'application/zip';
-			default:
-				return 'application/octet-stream';
-		}
+		return self::MIME_TYPES[$this->extension()] ?? 'application/octet-stream';
 	}
 }
