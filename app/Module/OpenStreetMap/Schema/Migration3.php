@@ -33,21 +33,25 @@ class Migration3 implements MigrationInterface {
 			// Remove streetview fields & update indexes
 			"ALTER TABLE `##placelocation`" .
 			" DROP COLUMN pl_media," .
-			" DROP COLUMN sv_long, " .
-			" DROP COLUMN sv_lati, " .
-			" DROP COLUMN sv_bearing, " .
-			" DROP COLUMN sv_elevation, ".
-			" DROP COLUMN sv_zoom, " .
-			" DROP INDEX ix2, " .
-			" DROP INDEX ix3, " .
-			" ADD INDEX ix2 (pl_parent_id, pl_place)",
-
+			" DROP COLUMN sv_long," .
+			" DROP COLUMN sv_lati," .
+			" DROP COLUMN sv_bearing," .
+			" DROP COLUMN sv_elevation,".
+			" DROP COLUMN sv_zoom," .
+			" DROP INDEX ix1," .
+			" DROP INDEX ix2," .
+			" DROP INDEX ix3," .
+			" DROP INDEX ix4," .
+			" DROP INDEX ix5," .
+			" ADD UNIQUE INDEX ix1 (pl_parent_id, pl_place)," .
+			" ADD INDEX ix2 (pl_parent_id)," .
+			" ADD INDEX ix3 (pl_place)",
 			// Reset fields to default empty value
-			"UPDATE `##placelocation` SET " .
-			"pl_long = IF(pl_long IN ('', 'E0'), NULL, pl_long)," .
-			"pl_lati = IF(pl_lati IN ('', 'N0'), NULL, pl_lati)," .
-			"pl_zoom = IF(pl_zoom = '', NULL, pl_zoom)," .
-			"pl_icon = IF(pl_icon = '', NULL, pl_icon)",
+			"UPDATE `##placelocation` SET" .
+			" pl_long = IF(pl_long IN ('', 'E0'), NULL, pl_long)," .
+			" pl_lati = IF(pl_lati IN ('', 'N0'), NULL, pl_lati)," .
+			" pl_zoom = IF(pl_zoom = '', NULL, pl_zoom)," .
+			" pl_icon = IF(pl_icon = '', NULL, pl_icon)",
 			// Clear out earlier versions of settings (if any)
 			"DELETE FROM `##module_setting` WHERE module_name='openstreetmap' AND setting_name=''"
 			];
