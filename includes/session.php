@@ -115,7 +115,7 @@ define('WT_SCRIPT_NAME', basename(Filter::server('SCRIPT_NAME')));
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	// Ignore errors that are silenced with '@'
 	if (error_reporting() & $errno) {
-		throw new ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+		throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 	}
 });
 
