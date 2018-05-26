@@ -466,6 +466,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'admin_site_access.php',
 		WT_ROOT . 'admin_site_clean.php',
 		WT_ROOT . 'admin_site_info.php',
+		WT_ROOT . 'admin_site_logs.php',
 		WT_ROOT . 'admin_site_merge.php',
 		WT_ROOT . 'admin_site_readme.php',
 		WT_ROOT . 'admin_trees_check.php',

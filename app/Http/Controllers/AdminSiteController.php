@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use PDO;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -183,18 +184,43 @@ class AdminSiteController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function logs(Request $request): Response {
-		$tree_options = ['' => ''] + Tree::getNameList();
+		$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
+		$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
+
+		$action   = $request->get('action', '');
+		$from     = $request->get('from', $earliest);
+		$to       = $request->get('to', $latest);
+		$type     = $request->get('type', '');
+		$text     = $request->get('text', '');
+		$ip       = $request->get('ip', '');
+		$username = $request->get('username', '');
+		$gedc     = $request->get('gedc');
+
+		$from = max($from, $earliest);
+		$to   = min(max($from, $to), $latest);
 
 		$user_options = ['' => ''];
 		foreach (User::all() as $tmp_user) {
 			$user_options[$tmp_user->getUserName()] = $tmp_user->getUserName();
 		}
 
+		$tree_options = ['' => ''] + Tree::getNameList();
+
 		$title = I18N::translate('Website logs');
 
 		return $this->viewResponse('admin/site-logs', [
+			'action'       => $action,
+			'earliest'     => $earliest,
+			'from'         => $from,
+			'gedc'         => $gedc,
+			'ip'           => $ip,
+			'latest'       => $latest,
 			'tree_options' => $tree_options,
 			'title'        => $title,
+			'to'           => $to,
+			'text'         => $text,
+			'type'         => $type,
+			'username'     => $username,
 			'user_options' => $user_options,
 		]);
 	}
@@ -205,10 +231,171 @@ class AdminSiteController extends AbstractBaseController {
 	 * @return JsonResponse
 	 */
 	public function logsData(Request $request): JsonResponse {
+		$from     = $request->get('from');
+		$to       = $request->get('to');
+		$type     = $request->get('type', '');
+		$text     = $request->get('text', '');
+		$ip       = $request->get('ip', '');
+		$username = $request->get('username', '');
+		$gedc     = $request->get('gedc');
+		$search   = $request->get('search', []);
+		$search   = isset($search['value']) ? $search['value'] : '';
 
-		$data = null;
+		$start  = (int) $request->get('start');
+		$length = (int) $request->get('length');
+		$order  = $request->get('order', []);
+		$draw   = (int) $request->get('draw');
 
-		return new JsonResponse($data);
+		$sql =
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+			" FROM `##log`" .
+			" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+			" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+			" WHERE 1";
+
+		$args = [];
+		if ($search) {
+			$sql            .= " AND log_message LIKE CONCAT('%', :search, '%')";
+			$args['search'] = $search;
+		}
+		if ($from) {
+			$sql          .= " AND log_time >= :from";
+			$args['from'] = $from;
+		}
+		if ($to) {
+			$sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+			$args['to'] = $to;
+		}
+		if ($type) {
+			$sql          .= " AND log_type = :type";
+			$args['type'] = $type;
+		}
+		if ($text) {
+			$sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+			$args['text'] = $text;
+		}
+		if ($ip) {
+			$sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+			$args['ip'] = $ip;
+		}
+		if ($username) {
+			$sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+			$args['user'] = $username;
+		}
+		if ($gedc) {
+			$sql          .= " AND gedcom_name = :gedc";
+			$args['gedc'] = $gedc;
+		}
+
+		if ($order) {
+			$sql .= " ORDER BY ";
+			foreach ($order as $key => $value) {
+				if ($key > 0) {
+					$sql .= ',';
+				}
+				// Columns in datatables are numbered from zero.
+				// Columns in MySQL are numbered starting with one.
+				switch ($value['dir']) {
+					case 'asc':
+						$sql .= (1 + $value['column']) . " ASC ";
+						break;
+					case 'desc':
+						$sql .= (1 + $value['column']) . " DESC ";
+						break;
+				}
+			}
+		} else {
+			$sql .= " ORDER BY 1 ASC";
+		}
+
+		if ($length) {
+			$sql            .= " LIMIT :limit OFFSET :offset";
+			$args['limit']  = $length;
+			$args['offset'] = $start;
+		}
+
+		// This becomes a JSON list, not array, so need to fetch with numeric keys.
+		$data = Database::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
+
+		foreach ($data as &$datum) {
+			$datum[2] = e($datum[2]);
+			$datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
+			$datum[4] = '<span dir="auto">' . e($datum[4]) . '</span>';
+			$datum[5] = '<span dir="auto">' . e($datum[5]) . '</span>';
+			$datum[6] = '<span dir="auto">' . e($datum[6]) . '</span>';
+		}
+
+		// Total filtered/unfiltered rows
+		$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
+
+		return new JsonResponse([
+			'draw'            => $draw,
+			'recordsTotal'    => $recordsTotal,
+			'recordsFiltered' => $recordsFiltered,
+			'data'            => $data,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function logsDelete(Request $request): Response {
+		$from     = $request->get('from');
+		$to       = $request->get('to');
+		$type     = $request->get('type', '');
+		$text     = $request->get('text', '');
+		$ip       = $request->get('ip', '');
+		$username = $request->get('username', '');
+		$gedc     = $request->get('gedc');
+		$search   = $request->get('search', []);
+		$search   = isset($search['value']) ? $search['value'] : '';
+
+		$sql =
+			"DELETE `##log` FROM `##log`" .
+			" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+			" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+			" WHERE 1";
+
+		$args = [];
+		if ($search) {
+			$sql            .= " AND log_message LIKE CONCAT('%', :search, '%')";
+			$args['search'] = $search;
+		}
+		if ($from) {
+			$sql          .= " AND log_time >= :from";
+			$args['from'] = $from;
+		}
+		if ($to) {
+			$sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+			$args['to'] = $to;
+		}
+		if ($type) {
+			$sql          .= " AND log_type = :type";
+			$args['type'] = $type;
+		}
+		if ($text) {
+			$sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+			$args['text'] = $text;
+		}
+		if ($ip) {
+			$sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+			$args['ip'] = $ip;
+		}
+		if ($username) {
+			$sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+			$args['user'] = $username;
+		}
+		if ($gedc) {
+			$sql          .= " AND gedcom_name = :gedc";
+			$args['gedc'] = $gedc;
+		}
+
+		Database::prepare($sql)->execute($args);
+
+		return new Response('');
 	}
 
 	/**
@@ -217,10 +404,73 @@ class AdminSiteController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function logsExport(Request $request): Response {
+		$from     = $request->get('from');
+		$to       = $request->get('to');
+		$type     = $request->get('type', '');
+		$text     = $request->get('text', '');
+		$ip       = $request->get('ip', '');
+		$username = $request->get('username', '');
+		$gedc     = $request->get('gedc');
+
+		$sql =
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+			" FROM `##log`" .
+			" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+			" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+			" WHERE 1";
+
+		$args = [];
+		if ($from) {
+			$sql          .= " AND log_time >= :from";
+			$args['from'] = $from;
+		}
+		if ($to) {
+			$sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+			$args['to'] = $to;
+		}
+		if ($type) {
+			$sql          .= " AND log_type = :type";
+			$args['type'] = $type;
+		}
+		if ($text) {
+			$sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+			$args['text'] = $text;
+		}
+		if ($ip) {
+			$sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+			$args['ip'] = $ip;
+		}
+		if ($username) {
+			$sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+			$args['user'] = $username;
+		}
+		if ($gedc) {
+			$sql          .= " AND gedcom_name = :gedc";
+			$args['gedc'] = $gedc;
+		}
+
+		$sql .= " ORDER BY log_id";
+
+		$rows = Database::prepare($sql )->execute($args)->fetchAll();
 
 		$data = '';
 
-		return new Response($data);
+		foreach ($rows as $row) {
+			$data .=
+				'"' . $row->log_time . '",' .
+				'"' . $row->log_type . '",' .
+				'"' . str_replace('"', '""', $row->log_message) . '",' .
+				'"' . $row->ip_address . '",' .
+				'"' . str_replace('"', '""', $row->user_name) . '",' .
+				'"' . str_replace('"', '""', $row->gedcom_name) . '"' .
+				"\n";
+		}
+
+		$response = new Response($data);
+		$response->headers->set('Content-Type', 'text/plain');
+		$response->headers->set('Content-Disposition', 'attachment; filename="webtrees-logs.csv');
+
+		return $response;
 	}
 
 	/**

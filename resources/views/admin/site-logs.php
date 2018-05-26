@@ -1,11 +1,13 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <form class="form" name="logs">
+	<input type="hidden" name="route" value="admin-site-logs" id="route">
 	<input type="hidden" name="action" value="show">
 
 	<div class="row">
@@ -47,10 +49,10 @@
 		</div>
 
 		<div class="form-group col-sm-4">
-			<label for="user">
+			<label for="username">
 				<?= I18N::translate('User') ?>
 			</label>
-			<?= Bootstrap4::select($user_options, $user, ['id' => 'user', 'name' => 'user']) ?>
+			<?= Bootstrap4::select($user_options, $username, ['id' => 'username', 'name' => 'username']) ?>
 		</div>
 
 		<div class="form-group col-sm-4">
@@ -63,27 +65,24 @@
 
 	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
-			<i class="fas fa-search">
+			<i class="fas fa-search"></i>
 			<?= /* I18N: A button label. */ I18N::translate('search') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-download">
+		<a href="<?= e(route('admin-site-logs-export', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'gedc' => $gedc])) ?>" class="btn btn-primary" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<i class="fas fa-download"></i>
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
-		</button>
+		</a>
 
-		<button type="submit" class="btn btn-primary" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" onclick="if (confirm(this.dataset.confirm)) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-trash-alt"
+		<a href="#" class="btn btn-primary" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" id="delete-button" <?= $action === 'show' ? '' : 'disabled' ?>>
+			<i class="fas fa-trash-alt"></i>
 			<?= /* I18N: A button label. */ I18N::translate('delete') ?>
-		</button>
+		</a>
 	</div>
 </form>
 
 <?php if ($action): ?>
-	<table class="table table-bordered table-sm table-hover table-site-logs">
-		<caption class="sr-only">
-			<?= $controller->getPageTitle() ?>
-		</caption>
+	<table class="table table-bordered table-sm table-hover table-site-logs" data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'user' => $username, 'gedc' => $gedc])) ?>" data-server-side="true">
 		<thead>
 			<tr>
 				<th></th>
@@ -97,3 +96,35 @@
 		</thead>
 	</table>
 <?php endif ?>
+
+<?php View::push('javascript') ?>
+<script>
+	$("#delete-button").click(function() {
+    if (confirm(this.dataset.confirm)) {
+      var data = $(this).closest('form').serialize();
+      data.csrf = <?= json_encode(csrf_token()) ?>;
+
+      jQuery.post(
+        <?= json_encode(route('admin-site-logs-delete')) ?>,
+	      data,
+        function() { document.location.reload(); }
+      )
+    }
+  });
+
+  $(".table-site-logs").dataTable( {
+    processing: true,
+    sorting: [[ 0, "desc" ]],
+    columns: [
+      /* log_id      */ { visible: false },
+      /* Timestamp   */ { sort: 0 },
+      /* Type        */ { },
+      /* message     */ { },
+      /* IP address  */ { },
+      /* User        */ { },
+      /* Family tree */ { }
+    ],
+    <?= I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) ?>
+  });
+</script>
+<?php View::endpush() ?>

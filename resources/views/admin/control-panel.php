@@ -76,7 +76,7 @@
 				<ul class="fa-ul">
 					<li>
 						<span class="fa-li"><i class="fas fa-wrench"></i></span>
-						<a href="<?= e(Html::url('admin_site_logs.php', [])) ?>">
+						<a href="<?= e(route('admin-site-logs')) ?>">
 							<?= I18N::translate('Website logs') ?>
 						</a>
 					</li>
