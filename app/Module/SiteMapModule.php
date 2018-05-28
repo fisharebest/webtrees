@@ -64,7 +64,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	 * @return string
 	 */
 	public function getConfigLink() {
-		return route('module', ['module' => 'sitemap', 'action' => 'Admin']);
+		return route('module', ['module' => $this->getName(), 'action' => 'Admin']);
 	}
 
 	/**
@@ -83,7 +83,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			'Google'     => Html::url('https://www.google.com/webmasters/tools/ping', ['sitemap' => $sitemap_url]),
 		];
 
-		return $this->viewResponse('modules/sitemap/admin', [
+		return $this->viewResponse('modules/sitemap/config', [
 			'all_trees'   => Tree::getAll(),
 			'sitemap_url' => $sitemap_url,
 			'submit_urls' => $submit_urls,
@@ -102,7 +102,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			$tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
 		}
 
-		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getName()), 'success');
+		FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
 
 		return new RedirectResponse($this->getConfigLink());
 	}

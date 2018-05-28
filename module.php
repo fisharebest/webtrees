@@ -31,7 +31,7 @@ if ($mod === 'sitemap') {
 		$_GET['action'] = 'File';
 		$_GET['file'] = basename(substr(Filter::get('file'), 8), '.xml');
 	}
-	
+
 	require __DIR__ . '/index.php';
 }
 
