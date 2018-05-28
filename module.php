@@ -21,6 +21,20 @@ $mod        = Filter::get('mod');
 $mod_action = Filter::get('mod_action');
 $module     = Module::getModuleByName($mod);
 
+
+if ($mod === 'sitemap') {
+	// Redirect legacy calls to the new router
+	$_GET['route'] = 'module';
+	if (Filter::get('file') === 'sitemap.xml') {
+		$_GET['action'] = 'Index';
+	} else {
+		$_GET['action'] = 'File';
+		$_GET['file'] = basename(substr(Filter::get('file'), 8), '.xml');
+	}
+	
+	require __DIR__ . '/index.php';
+}
+
 if ($module) {
 	$module->modAction($mod_action);
 } else {

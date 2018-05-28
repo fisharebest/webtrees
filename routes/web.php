@@ -268,8 +268,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:search-advanced'        => 'SearchController@advanced',
 		'GET:search-general'         => 'SearchController@general',
 		'GET:search-phonetic'        => 'SearchController@phonetic',
-		'GET:module'                 => 'ModuleController@action',
-		'POST:module'                => 'ModuleController@action',
 	];
 }
 
@@ -289,6 +287,8 @@ $routes += [
 	'POST:masquerade'      => 'UserController@masquerade',
 	'POST:theme'           => 'UserController@theme',
 	'GET:privacy-policy'   => 'StaticPageController@privacyPolicy',
+	'GET:module'           => 'ModuleController@action',
+	'POST:module'          => 'ModuleController@action',
 ];
 
 return $routes;
