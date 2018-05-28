@@ -153,26 +153,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
-	 *
-	 * @param string $mod_action
-	 */
-	public function modAction($mod_action) {
-		switch ($mod_action) {
-			case 'admin':
-				if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-					$this->saveConfig();
-				} else {
-					$this->editConfig();
-				}
-				break;
-			default:
-				http_response_code(404);
-		}
-	}
-
-	/**
 	 * Possible options for the ancestors option
 	 */
 	private function ancestorsOptions() {
