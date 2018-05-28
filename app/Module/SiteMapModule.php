@@ -138,7 +138,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 				"SELECT s_file, COUNT(*) FROM `##sources` GROUP BY s_file"
 			)->execute()->fetchAssoc();
 
-			$content = view('modules/sitemap/sitemap-index', [
+			$content = view('modules/sitemap/sitemap-index.xml', [
 				'all_trees'          => Tree::getAll(),
 				'count_individuals'  => $count_individuals,
 				'count_media'        => $count_media,
@@ -183,7 +183,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			$records = $this->sitemapRecords($tree, $match[2], self::RECORDS_PER_VOLUME,
 				self::RECORDS_PER_VOLUME * $match[3]);
 
-			$content = view('modules/sitemap/sitemap-file', ['records' => $records]);
+			$content = view('modules/sitemap/sitemap-file.xml', ['records' => $records]);
 
 			$this->setPreference('sitemap.xml', $content);
 		}
