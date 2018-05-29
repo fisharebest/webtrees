@@ -118,63 +118,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	}
 
 	/**
-	 * Show and process a form to edit a story.
-	 */
-	private function edit() {
-		global $WT_TREE;
-
-		if (Auth::isEditor($WT_TREE)) {
-			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-				$block_id = Filter::postInteger('block_id');
-				if ($block_id) {
-					Database::prepare(
-						"UPDATE `##block` SET gedcom_id=?, xref=? WHERE block_id=?"
-					)->execute([Filter::postInteger('gedcom_id'), Filter::post('xref', WT_REGEX_XREF), $block_id]);
-				} else {
-					Database::prepare(
-						"INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
-					)->execute([
-						Filter::postInteger('gedcom_id'),
-						Filter::post('xref', WT_REGEX_XREF),
-						$this->getName(),
-						0,
-					]);
-					$block_id = Database::getInstance()->lastInsertId();
-				}
-				$this->setBlockSetting($block_id, 'title', Filter::post('title'));
-				$this->setBlockSetting($block_id, 'story_body', Filter::post('story_body'));
-				$languages = Filter::postArray('lang');
-				$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
-				$this->config();
-			}
-		} else {
-			header('Location: index.php');
-		}
-	}
-
-	/**
-	 * Respond to a request to delete a story.
-	 */
-	private function delete() {
-		global $WT_TREE;
-
-		if (Auth::isEditor($WT_TREE)) {
-			$block_id = Filter::getInteger('block_id');
-
-			Database::prepare(
-				"DELETE FROM `##block_setting` WHERE block_id=?"
-			)->execute([$block_id]);
-
-			Database::prepare(
-				"DELETE FROM `##block` WHERE block_id=?"
-			)->execute([$block_id]);
-		} else {
-			header('Location: index.php');
-			exit;
-		}
-	}
-
-	/**
 	 * The admin view - list, create, edit, delete stories.
 	 */
 	private function config() {
