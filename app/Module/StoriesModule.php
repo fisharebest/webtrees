@@ -16,16 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -115,112 +109,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		}
 
 		return $stories;
-	}
-
-	/**
-	 * The admin view - list, create, edit, delete stories.
-	 */
-	private function config() {
-		global $WT_TREE;
-
-		$controller = new PageController;
-		$controller
-			->restrictAccess(Auth::isAdmin())
-			->setPageTitle($this->getTitle())
-			->pageHeader()
-			->addInlineJavascript('
-				$("#story_table").dataTable({
-					' . I18N::datatablesI18N() . ',
-					autoWidth: false,
-					paging: true,
-					pagingType: "full_numbers",
-					lengthChange: true,
-					filter: true,
-					info: true,
-					sorting: [[0,"asc"]],
-					columns: [
-						/* 0-name */ null,
-						/* 1-NAME */ null,
-						/* 2-NAME */ { sortable:false },
-						/* 3-NAME */ { sortable:false }
-					]
-				});
-			');
-
-		$stories = Database::prepare(
-			"SELECT block_id, xref" .
-			" FROM `##block` b" .
-			" WHERE module_name=?" .
-			" AND gedcom_id=?" .
-			" ORDER BY xref"
-		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
-
-		echo Bootstrap4::breadcrumbs([
-			route('admin-control-panel') => I18N::translate('Control panel'),
-			route('admin-modules')       => I18N::translate('Module administration'),
-		], $controller->getPageTitle());
-		?>
-
-		<h1><?= $controller->getPageTitle() ?></h1>
-
-		<form class="form form-inline">
-			<label for="ged" class="sr-only">
-				<?= I18N::translate('Family tree') ?>
-			</label>
-			<input type="hidden" name="mod" value="<?= $this->getName() ?>">
-			<input type="hidden" name="mod_action" value="admin_config">
-			<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
-			<input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
-		</form>
-
-		<p>
-			<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit" class="btn btn-default">
-				<i class="fas fa-plus"></i>
-				<?= I18N::translate('Add a story') ?>
-			</a>
-		</p>
-
-		<table class="table table-bordered table-sm">
-			<thead>
-				<tr>
-					<th><?= I18N::translate('Story title') ?></th>
-					<th><?= I18N::translate('Individual') ?></th>
-					<th><?= I18N::translate('Edit') ?></th>
-					<th><?= I18N::translate('Delete') ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($stories as $story): ?>
-					<tr>
-						<td>
-							<?= e($this->getBlockSetting($story->block_id, 'title')) ?>
-						</td>
-						<td>
-							<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
-							<?php if ($individual): ?>
-								<a href="<?= e($individual->url()) ?>#tab-stories">
-									<?= $individual->getFullName() ?>
-								</a>
-							<?php else: ?>
-								<?= $story->xref ?>
-							<?php endif ?>
-						</td>
-						<td>
-							<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit&amp;block_id=<?= $story->block_id ?>">
-								<i class="fas fa-pencil-alt"></i> <?= I18N::translate('Edit') ?>
-							</a>
-						</td>
-						<td>
-							<a
-								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($this->getBlockSetting($story->block_id, 'title'))) ?>" onclick="return confirm(this.dataset.confirm);">
-								<i class="fas fa-trash-alt"></i> <?= I18N::translate('Delete') ?>
-							</a>
-						</td>
-					</tr>
-				<?php endforeach ?>
-			</tbody>
-		</table>
-		<?php
 	}
 
 	/**
