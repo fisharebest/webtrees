@@ -28,6 +28,9 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class StoriesModule
@@ -35,46 +38,19 @@ use stdClass;
 class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Stories');
+		return /* I18N: Name of a module */
+			I18N::translate('Stories');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Stories” module */ I18N::translate('Add narrative stories to individuals in the family tree.');
-	}
-
-	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
-	 *
-	 * @param string $mod_action
-	 */
-	public function modAction($mod_action) {
-		switch ($mod_action) {
-			case 'admin_edit':
-				$this->edit();
-				break;
-			case 'admin_delete':
-				$this->delete();
-				$this->config();
-				break;
-			case 'admin_config':
-				$this->config();
-				break;
-			case 'show_list':
-				$this->showList();
-				break;
-			default:
-				http_response_code(404);
-		}
+		return /* I18N: Description of the “Stories” module */
+			I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
-		return Html::url('module.php', [
-			'mod'        => $this->getName(),
-			'mod_action' => 'admin_config',
-		]);
+		return route('module', ['module' => $this->getName(), 'action' => 'Admin']);
 	}
 
 	/** {@inheritdoc} */
@@ -84,9 +60,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		return view('tabs/stories', [
-			'is_editor'  => Auth::isEditor($individual->getTree()),
-			'is_manager' => Auth::isManager($individual->getTree()),
+		return view('modules/stories/tab', [
+			'is_admin'   => Auth::isAdmin(),
 			'individual' => $individual,
 			'stories'    => $this->getStoriesForIndividual($individual),
 		]);
@@ -94,7 +69,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 	/** {@inheritdoc} */
 	public function hasTabContent(Individual $individual) {
-		return Auth::isManager($individual->getTree() )|| !empty($this->getStoriesForIndividual($individual));
+		return Auth::isManager($individual->getTree()) || !empty($this->getStoriesForIndividual($individual));
 	}
 
 	/** {@inheritdoc} */
@@ -132,9 +107,9 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			$languages = $this->getBlockSetting($block_id, 'languages', '');
 			if ($languages === '' || in_array(WT_LOCALE, explode(',', $languages))) {
 				$stories[] = (object) [
-					'block_id' => $block_id,
-					'title'    => $this->getBlockSetting($block_id, 'title'),
-					'body'     => $this->getBlockSetting($block_id, 'story_body'),
+					'block_id'   => $block_id,
+					'title'      => $this->getBlockSetting($block_id, 'title'),
+					'story_body' => $this->getBlockSetting($block_id, 'story_body'),
 				];
 			}
 		}
@@ -171,92 +146,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				$languages = Filter::postArray('lang');
 				$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 				$this->config();
-			} else {
-				$block_id = Filter::getInteger('block_id');
-
-				$controller = new PageController;
-				if ($block_id) {
-					$controller->setPageTitle(I18N::translate('Edit the story'));
-					$title      = $this->getBlockSetting($block_id, 'title');
-					$story_body = $this->getBlockSetting($block_id, 'story_body');
-					$xref       = Database::prepare(
-						"SELECT xref FROM `##block` WHERE block_id=?"
-					)->execute([$block_id])->fetchOne();
-				} else {
-					$controller->setPageTitle(I18N::translate('Add a story'));
-					$title      = '';
-					$story_body = '';
-					$xref       = Filter::get('xref', WT_REGEX_XREF);
-				}
-				$controller->pageHeader();
-				if (Module::getModuleByName('ckeditor')) {
-					CkeditorModule::enableEditor($controller);
-				}
-
-				$individual = Individual::getInstance($xref, $WT_TREE);
-
-				echo Bootstrap4::breadcrumbs([
-					route('admin-control-panel') => I18N::translate('Control panel'),
-					route('admin-modules')       => I18N::translate('Module administration'),
-					'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
-				], $controller->getPageTitle());
-				?>
-
-				<h1><?= $controller->getPageTitle() ?></h1>
-
-				<form class="form-horizontal" method="post" action="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit">
-					<?= Filter::getCsrf() ?>
-					<input type="hidden" name="save" value="1">
-					<input type="hidden" name="block_id" value="<?= $block_id ?>">
-					<input type="hidden" name="gedcom_id" value="<?= $WT_TREE->getTreeId() ?>">
-
-					<div class="row form-group">
-						<label for="title" class="col-sm-3 col-form-label">
-							<?= I18N::translate('Story title') ?>
-						</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="title" id="title" value="<?= e($title) ?>">
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<label for="story_body" class="col-sm-3 col-form-label">
-							<?= I18N::translate('Story') ?>
-						</label>
-						<div class="col-sm-9">
-							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?= e($story_body) ?></textarea>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<label for="xref" class="col-sm-3 col-form-label">
-							<?= I18N::translate('Individual') ?>
-						</label>
-						<div class="col-sm-9">
-							<?= FunctionsEdit::formControlIndividual($WT_TREE, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<label for="xref" class="col-sm-3 col-form-label">
-							<?= I18N::translate('Show this block for which languages') ?>
-						</label>
-						<div class="col-sm-9">
-							<?= FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))) ?>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<div class="offset-sm-3 col-sm-9">
-							<button type="submit" class="btn btn-primary">
-								<i class="fas fa-check"></i>
-								<?= I18N::translate('save') ?>
-							</button>
-						</div>
-					</div>
-
-				</form>
-				<?php
 			}
 		} else {
 			header('Location: index.php');
@@ -335,7 +224,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			<label for="ged" class="sr-only">
 				<?= I18N::translate('Family tree') ?>
 			</label>
-			<input type="hidden" name="mod" value="<?=  $this->getName() ?>">
+			<input type="hidden" name="mod" value="<?= $this->getName() ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
 			<?= Bootstrap4::select(Tree::getNameList(), $WT_TREE->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
 			<input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
@@ -359,19 +248,19 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			</thead>
 			<tbody>
 				<?php foreach ($stories as $story): ?>
-				<tr>
-					<td>
-						<?= e($this->getBlockSetting($story->block_id, 'title')) ?>
-					</td>
-					<td>
-						<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
-						<?php if ($individual): ?>
-						<a href="<?= e($individual->url()) ?>#tab-stories">
-							<?= $individual->getFullName() ?>
-						</a>
-						<?php else: ?>
-							<?= $story->xref ?>
-						<?php endif ?>
+					<tr>
+						<td>
+							<?= e($this->getBlockSetting($story->block_id, 'title')) ?>
+						</td>
+						<td>
+							<?php $individual = Individual::getInstance($story->xref, $WT_TREE) ?>
+							<?php if ($individual): ?>
+								<a href="<?= e($individual->url()) ?>#tab-stories">
+									<?= $individual->getFullName() ?>
+								</a>
+							<?php else: ?>
+								<?= $story->xref ?>
+							<?php endif ?>
 						</td>
 						<td>
 							<a href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_edit&amp;block_id=<?= $story->block_id ?>">
@@ -383,74 +272,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 								href="module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_delete&amp;block_id=<?= $story->block_id ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($this->getBlockSetting($story->block_id, 'title'))) ?>" onclick="return confirm(this.dataset.confirm);">
 								<i class="fas fa-trash-alt"></i> <?= I18N::translate('Delete') ?>
 							</a>
-					</td>
-				</tr>
+						</td>
+					</tr>
 				<?php endforeach ?>
 			</tbody>
 		</table>
 		<?php
-	}
-
-	/**
-	 * Show the list of stories
-	 */
-	private function showList() {
-		global $controller, $WT_TREE;
-
-		$controller = new PageController;
-		$controller
-			->setPageTitle($this->getTitle())
-			->pageHeader()
-			->addInlineJavascript('
-				$("#story_table").dataTable({
-					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					' . I18N::datatablesI18N() . ',
-					autoWidth: false,
-					paging: true,
-					pagingType: "full_numbers",
-					lengthChange: true,
-					filter: true,
-					info: true,
-					sorting: [[0,"asc"]],
-					columns: [
-						/* 0-name */ null,
-						/* 1-NAME */ null
-					]
-				});
-			');
-
-		$stories = Database::prepare(
-			"SELECT block_id, xref" .
-			" FROM `##block` b" .
-			" WHERE module_name=?" .
-			" AND gedcom_id=?" .
-			" ORDER BY xref"
-		)->execute([$this->getName(), $WT_TREE->getTreeId()])->fetchAll();
-
-		echo '<h2 class="wt-page-title">', I18N::translate('Stories'), '</h2>';
-		if (count($stories) > 0) {
-			echo '<table id="story_table" class="width100">';
-			echo '<thead><tr>
-				<th>', I18N::translate('Story title'), '</th>
-				<th>', I18N::translate('Individual'), '</th>
-				</tr></thead>
-				<tbody>';
-			foreach ($stories as $story) {
-				$indi        = Individual::getInstance($story->xref, $WT_TREE);
-				$story_title = $this->getBlockSetting($story->block_id, 'title');
-				$languages   = $this->getBlockSetting($story->block_id, 'languages');
-				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-					if ($indi) {
-						if ($indi->canShow()) {
-							echo '<tr><td><a href="' . e($indi->url()) . '#tab-stories">' . $story_title . '</a></td><td><a href="' . e($indi->url()) . '#tab-stories">' . $indi->getFullName() . '</a></td></tr>';
-						}
-					} else {
-						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';
-					}
-				}
-			}
-			echo '</tbody></table>';
-		}
 	}
 
 	/**
@@ -479,8 +306,206 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	 * @return Menu|null
 	 */
 	public function getMenu() {
-		$menu = new Menu($this->getTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show_list', 'menu-story');
+		$menu = new Menu($this->getTitle(), e(route('module', ['module' => $this->getName(), 'action' => 'ShowList'])), 'menu-story');
 
 		return $menu;
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getAdminAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$this->layout = 'layouts/administration';
+
+		$stories = Database::prepare(
+			"SELECT block_id, xref, gedcom_id" .
+			" FROM `##block` b" .
+			" WHERE module_name = :module_name" .
+			" AND gedcom_id = :tree_id" .
+			" ORDER BY gedcom_id, xref"
+		)->execute([
+			'tree_id'     => $tree->getTreeId(),
+			'module_name' => $this->getName(),
+		])->fetchAll();
+
+		foreach ($stories as $story) {
+			$story->individual = Individual::getInstance($story->xref, $tree);
+			$story->title      = $this->getBlockSetting($story->block_id, 'title');
+			$story->languages  = $this->getBlockSetting($story->block_id, 'languages');
+		}
+
+		return $this->viewResponse('modules/stories/config', [
+			'stories'    => $stories,
+			'title'      => $this->getTitle() . ' — ' . $tree->getTitle(),
+			'tree'       => $tree,
+			'tree_names' => Tree::getNameList(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getAdminEditAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$this->layout = 'layouts/administration';
+
+		$block_id = (int) $request->get('block_id');
+
+		if ($block_id === 0) {
+			// Creating a new story
+			$individual  = Individual::getInstance($request->get('xref', ''), $tree);
+			$story_title = '';
+			$story_body  = '';
+			$languages   = [];
+
+			$title = I18N::translate('Add a story') . ' — ' . e($tree->getTitle());
+		} else {
+			// Editing an existing story
+			$xref = Database::prepare(
+				"SELECT xref FROM `##block` WHERE block_id = :block_id"
+			)->execute([
+				'block_id' => $block_id,
+			])->fetchOne();
+
+			$individual  = Individual::getInstance($xref, $tree);
+			$story_title = $this->getBlockSetting($block_id, 'title', '');
+			$story_body  = $this->getBlockSetting($block_id, 'story_body', '');
+			$languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));
+
+			$title = I18N::translate('Edit the story') . ' — ' . e($tree->getTitle());
+		}
+
+		return $this->viewResponse('modules/stories/edit', [
+			'block_id'    => $block_id,
+			'languages'   => $languages,
+			'story_body'  => $story_body,
+			'story_title' => $story_title,
+			'title'       => $title,
+			'tree'        => $tree,
+			'individual'  => $individual,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function postAdminEditAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$block_id    = (int) $request->get('block_id');
+		$xref        = $request->get('xref', '');
+		$story_body  = $request->get('story_body', '');
+		$story_title = $request->get('story_title', '');
+		$languages   = $request->get('languages', []);
+
+		if ($block_id !== 0) {
+			Database::prepare(
+				"UPDATE `##block` SET gedcom_id = :tree_id, xref = :xref WHERE block_id = :block_id"
+			)->execute([
+				'tree_id'  => $tree->getTreeId(),
+				'xref'     => $xref,
+				'block_id' => $block_id,
+			]);
+		} else {
+			Database::prepare(
+				"INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (:tree_id, :xref, 'stories', 0)"
+			)->execute([
+				'tree_id' => $tree->getTreeId(),
+				'xref'    => $xref,
+			]);
+
+			$block_id = Database::getInstance()->lastInsertId();
+		}
+
+		$this->setBlockSetting($block_id, 'story_body', $story_body);
+		$this->setBlockSetting($block_id, 'title', $story_title);
+		$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
+
+		$url = route('module', ['module' => 'stories', 'action' => 'Admin', 'ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function postAdminDeleteAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$block_id = (int) $request->get('block_id');
+
+		Database::prepare(
+			"DELETE FROM `##block_setting` WHERE block_id = :block_id"
+		)->execute([
+			'block_id' => $block_id,
+		]);
+
+		Database::prepare(
+			"DELETE FROM `##block` WHERE block_id = :block_id"
+		)->execute([
+			'block_id' => $block_id,
+		]);
+
+		$url = route('module', ['module' => 'stories', 'action' => 'Admin', 'ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getShowListAction(Request $request): Response {
+		/** @var Tree $tree
+		 */
+		$tree = $request->attributes->get('tree');
+
+		$stories = Database::prepare(
+			"SELECT block_id, xref" .
+			" FROM `##block` b" .
+			" WHERE module_name = :module_name" .
+			" AND gedcom_id = :tree_id" .
+			" ORDER BY xref"
+		)->execute([
+			'module_name' => $this->getName(),
+			'tree_id'     => $tree->getTreeId(),
+		])->fetchAll();
+
+		foreach ($stories as $story) {
+			$story->individual = Individual::getInstance($story->xref, $tree);
+			$story->title      = $this->getBlockSetting($story->block_id, 'title');
+			$story->languages  = $this->getBlockSetting($story->block_id, 'languages');
+		}
+
+		// Filter non-existant and private individuals.
+		$stories = array_filter($stories, function (stdClass $story) {
+			return $story->individual !== null && $story->individual->canShow();
+		});
+
+		// Filter foreign languages.
+		$stories = array_filter($stories, function (stdClass $story) {
+			return $story->language === '' || in_array(WT_LOCALE, explode(',', $story->language));
+		});
+
+		return $this->viewResponse('modules/stories/list', [
+			'stories' => $stories,
+			'title'   => $this->getTitle(),
+		]);
 	}
 }

@@ -51,13 +51,13 @@ abstract class AbstractModule {
 	/**
 	 * Get a block setting.
 	 *
-	 * @param int         $block_id
-	 * @param string      $setting_name
-	 * @param string|null $default_value
+	 * @param int    $block_id
+	 * @param string $setting_name
+	 * @param string $default_value
 	 *
-	 * @return null|string
+	 * @return string
 	 */
-	public function getBlockSetting($block_id, $setting_name, $default_value = null) {
+	public function getBlockSetting($block_id, $setting_name, $default_value = '') {
 		$setting_value = Database::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
 		)->execute([

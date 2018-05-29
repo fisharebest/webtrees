@@ -7,20 +7,20 @@
 			<?= e($story->title) ?>
 		</div>
 		<div class="story_body optionbox">
-			<?= $story->body ?>
+			<?= $story->story_body ?>
 		</div>
-		<?php if ($is_editor): ?>
+		<?php if ($is_admin): ?>
 			<div class="story_edit">
-				<a href="<?= e(Html::url('module.php', ['mod' => 'stories', 'mod_action' => 'admin_edit', 'block_id' => $story->block_id])) ?>">
+				<a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('Edit the story') ?>
 				</a>
 			</div>
 		<?php endif ?>
 	<?php endforeach ?>
 
-	<?php if ($is_manager && empty($stories)): ?>
+	<?php if ($is_admin && empty($stories)): ?>
 		<div>
-			<a href="<?= e(Html::url('module.php', ['mod' => 'stories', 'mod_action' => 'admin_edit', 'xref' => $individual->getXref()])) ?>">
+			<a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->getXref(), 'ged' => $tree->getName()])) ?>">
 				<?= I18N::translate('Add a story') ?>
 			</a>
 		</div>
