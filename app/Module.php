@@ -110,7 +110,6 @@ class Module {
 			'missing_facts_report',
 			'notes',
 			'occupation_report',
-			'page_menu',
 			'pedigree_chart',
 			'pedigree_report',
 			'personal_facts',
