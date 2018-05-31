@@ -27,14 +27,12 @@ interface KernelInterface extends HttpKernelInterface, \Serializable
     /**
      * Returns an array of bundles to register.
      *
-     * @return BundleInterface[] An array of bundle instances
+     * @return iterable|BundleInterface[] An iterable of bundle instances
      */
     public function registerBundles();
 
     /**
      * Loads the container configuration.
-     *
-     * @param LoaderInterface $loader A LoaderInterface instance
      */
     public function registerContainerConfiguration(LoaderInterface $loader);
 
@@ -59,6 +57,9 @@ interface KernelInterface extends HttpKernelInterface, \Serializable
 
     /**
      * Returns a bundle and optionally its descendants by its name.
+     *
+     * The second argument is deprecated as of 3.4 and will be removed in 4.0. This method
+     * will always return an instance of BundleInterface in 4.0.
      *
      * @param string $name  Bundle name
      * @param bool   $first Whether to return the first bundle only or together with its descendants

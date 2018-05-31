@@ -1,6 +1,23 @@
 CHANGELOG
 =========
 
+3.4.0
+-----
+
+ * added a minimalist PSR-3 `Logger` class that writes in `stderr`
+ * made kernels implementing `CompilerPassInterface` able to process the container
+ * deprecated bundle inheritance
+ * added `RebootableInterface` and implemented it in `Kernel`
+ * deprecated commands auto registration
+ * deprecated `EnvParametersResource`
+ * added `Symfony\Component\HttpKernel\Client::catchExceptions()`
+ * deprecated the `ChainCacheClearer::add()` method
+ * deprecated the `CacheaWarmerAggregate::add()` and `setWarmers()` methods
+ * made `CacheWarmerAggregate` and `ChainCacheClearer` classes final
+ * added the possibility to reset the profiler to its initial state
+ * deprecated data collectors without a `reset()` method
+ * deprecated implementing `DebugLoggerInterface` without a `clear()` method
+
 3.3.0
 -----
 

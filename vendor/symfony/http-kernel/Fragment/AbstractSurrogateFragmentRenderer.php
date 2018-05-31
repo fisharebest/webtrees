@@ -29,8 +29,6 @@ abstract class AbstractSurrogateFragmentRenderer extends RoutableFragmentRendere
     private $signer;
 
     /**
-     * Constructor.
-     *
      * The "fallback" strategy when surrogate is not available should always be an
      * instance of InlineFragmentRenderer.
      *
@@ -65,7 +63,7 @@ abstract class AbstractSurrogateFragmentRenderer extends RoutableFragmentRendere
     {
         if (!$this->surrogate || !$this->surrogate->hasSurrogateCapability($request)) {
             if ($uri instanceof ControllerReference && $this->containsNonScalars($uri->attributes)) {
-                @trigger_error('Passing non-scalar values as part of URI attributes to the ESI and SSI rendering strategies is deprecated since version 3.1, and will be removed in 4.0. Use a different rendering strategy or pass scalar values.', E_USER_DEPRECATED);
+                @trigger_error('Passing non-scalar values as part of URI attributes to the ESI and SSI rendering strategies is deprecated since Symfony 3.1, and will be removed in 4.0. Use a different rendering strategy or pass scalar values.', E_USER_DEPRECATED);
             }
 
             return $this->inlineStrategy->render($uri, $request, $options);
@@ -100,8 +98,8 @@ abstract class AbstractSurrogateFragmentRenderer extends RoutableFragmentRendere
     private function containsNonScalars(array $values)
     {
         foreach ($values as $value) {
-            if (is_array($value) && $this->containsNonScalars($value)) {
-                return true;
+            if (is_array($value)) {
+                return $this->containsNonScalars($value);
             } elseif (!is_scalar($value) && null !== $value) {
                 return true;
             }

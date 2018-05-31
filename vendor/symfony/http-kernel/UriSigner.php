@@ -22,8 +22,6 @@ class UriSigner
     private $parameter;
 
     /**
-     * Constructor.
-     *
      * @param string $secret    A secret
      * @param string $parameter Query string parameter to use
      */
@@ -59,10 +57,6 @@ class UriSigner
 
     /**
      * Checks that a URI contains the correct hash.
-     *
-     * The query string parameter must be the last one
-     * (as it is generated that way by the sign() method, it should
-     * never be a problem).
      *
      * @param string $uri A signed URI
      *

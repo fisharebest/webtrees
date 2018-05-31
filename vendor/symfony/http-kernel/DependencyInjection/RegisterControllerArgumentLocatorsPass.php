@@ -22,6 +22,7 @@ use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\TypedReference;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Creates the service-locators required by ServiceValueResolver.
@@ -50,13 +51,16 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds($this->controllerTag, true) as $id => $tags) {
             $def = $container->getDefinition($id);
+            $def->setPublic(true);
             $class = $def->getClass();
             $autowire = $def->isAutowired();
+            $bindings = $def->getBindings();
 
             // resolve service class, taking parent definitions into account
-            while (!$class && $def instanceof ChildDefinition) {
+            while ($def instanceof ChildDefinition) {
                 $def = $container->findDefinition($def->getParent());
-                $class = $def->getClass();
+                $class = $class ?: $def->getClass();
+                $bindings = $def->getBindings();
             }
             $class = $parameterBag->resolveValue($class);
 
@@ -128,7 +132,24 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
                         } elseif ($p->allowsNull() && !$p->isOptional()) {
                             $invalidBehavior = ContainerInterface::NULL_ON_INVALID_REFERENCE;
                         }
+                    } elseif (isset($bindings[$bindingName = '$'.$p->name]) || isset($bindings[$bindingName = $type])) {
+                        $binding = $bindings[$bindingName];
+
+                        list($bindingValue, $bindingId) = $binding->getValues();
+
+                        if (!$bindingValue instanceof Reference) {
+                            continue;
+                        }
+
+                        $binding->setValues(array($bindingValue, $bindingId, true));
+                        $args[$p->name] = $bindingValue;
+
+                        continue;
                     } elseif (!$type || !$autowire) {
+                        continue;
+                    }
+
+                    if (Request::class === $type) {
                         continue;
                     }
 

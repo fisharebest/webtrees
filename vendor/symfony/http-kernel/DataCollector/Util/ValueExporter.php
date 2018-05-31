@@ -11,7 +11,7 @@
 
 namespace Symfony\Component\HttpKernel\DataCollector\Util;
 
-@trigger_error('The '.__NAMESPACE__.'\ValueExporter class is deprecated since version 3.2 and will be removed in 4.0. Use the VarDumper component instead.', E_USER_DEPRECATED);
+@trigger_error('The '.__NAMESPACE__.'\ValueExporter class is deprecated since Symfony 3.2 and will be removed in 4.0. Use the VarDumper component instead.', E_USER_DEPRECATED);
 
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
@@ -24,8 +24,8 @@ class ValueExporter
      * Converts a PHP value to a string.
      *
      * @param mixed $value The PHP value
-     * @param int   $depth only for internal usage
-     * @param bool  $deep  only for internal usage
+     * @param int   $depth Only for internal usage
+     * @param bool  $deep  Only for internal usage
      *
      * @return string The string representation of the given value
      */
