@@ -1,4 +1,5 @@
 [![Latest Stable Version](https://poser.pugx.org/fisharebest/webtrees/v/stable.svg)](https://packagist.org/packages/fisharebest/webtrees)
+[![Latest Stable Version](https://poser.pugx.org/fisharebest/webtrees/v/unstable.svg)](https://packagist.org/packages/fisharebest/webtrees)
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=master)](https://coveralls.io/github/fisharebest/webtrees?branch=master)
 [![Translation status](https://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](https://translate.webtrees.net/engage/webtrees/?utm_source=widget)
