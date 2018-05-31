@@ -18,7 +18,7 @@
 		<?php endif ?>
 
 		<title>
-			<?= e(strip_tags($title)) ?>
+			<?= strip_tags($title) ?>
 			<?php if ($tree !== null && $tree->getPreference('META_TITLE') !== ''): ?>
 				– <?= e($tree->getPreference('META_TITLE')) ?>
 			<?php endif ?>
