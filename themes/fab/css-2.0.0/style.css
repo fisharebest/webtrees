@@ -1625,7 +1625,7 @@ table.faq {
 	width: 98%;
 }
 
-table.faq tr.odd td {
+table.faq tr:nth-child(odd) td {
 	background-color: #eee;
 }
 

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -388,40 +389,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			'tree_id_2'   => $tree->getTreeId(),
 		])->fetchAll();
 
-		echo '<h2 class="wt-page-title">', I18N::translate('Frequently asked questions');
-		if (Auth::isManager($tree)) {
-			echo ' — <a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('edit'), '</a>';
-		}
-		echo '</h2>';
-		$row_count = 0;
-		echo '<table class="faq">';
-		// List of titles
-		foreach ($faqs as $id => $faq) {
-			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
-				$row_color = ($row_count % 2) ? 'odd' : 'even';
-				// NOTE: Print the header of the current item
-				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
-				echo '<a href="#faq', $id, '">', $faq->header, '</a>';
-				echo '</td></tr>';
-				$row_count++;
-			}
-		}
-		echo '</table><hr>';
-		// Detailed entries
-		foreach ($faqs as $id => $faq) {
-			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
-				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
-				echo '<div class="faq_top faq_italic">';
-				echo '<a href="#content">', I18N::translate('back to top'), '</a>';
-				echo '</div>';
-				echo '</div>';
-				echo '<div class="faq_body">', substr($faq->body, 0, 1) == '<' ? $faq->body : nl2br($faq->body, false), '</div>';
-				echo '<hr>';
-			}
-		}
+		// Filter foreign languages.
+		$faqs = array_filter($faqs, function (stdClass $faq) {
+			return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
+		});
 
 		return $this->viewResponse('modules/faq/show', [
+			'faqs' => $faqs,
 			'title' => I18N::translate('Frequently asked questions'),
+			'tree' => $tree,
 		]);
 	}
 }
