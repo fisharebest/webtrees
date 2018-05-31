@@ -49,8 +49,8 @@
 		"friendsofphp/php-cs-fixer": "*",
 		"maximebf/debugbar": "*",
 		"mockery/mockery": "*",
-		"phpunit/phpunit": "~6.5",
-		"satooshi/php-coveralls": "*"
+		"phpunit/phpunit": "*",
+		"php-coveralls/php-coveralls": "*"
 	},
 	"scripts": {
 		"webtrees-mo": [

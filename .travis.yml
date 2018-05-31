@@ -4,6 +4,7 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - nightly
 
 ## Non-sudo environments are faster
 sudo: false
@@ -14,14 +15,16 @@ cache:
     - vendor
     - $HOME/.composer/cache
 
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - if [ -f "$HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini" ]; then cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/; phpenv config-rm xdebug.ini; fi
-  - travis_retry composer update
-  - if [ -f "/tmp/xdebug.ini" ]; then phpenv config-add /tmp/xdebug.ini; fi
 
 script:
-  - vendor/bin/phpunit --coverage-clover tests/clover.xml
+  - mkdir -p build/logs
+  - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
 
 after_script:
-  - vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/php-coveralls -v
