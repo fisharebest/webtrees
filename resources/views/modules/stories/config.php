@@ -18,8 +18,14 @@
 	<button type="submit" class="btn btn-primary">
 		<?= I18N::translate('show') ?>
 	</button>
-
 </form>
+
+<p>
+	<a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName()])) ?>" class="btn btn-link">
+		<i class="fas fa-plus"></i>
+		<?= I18N::translate('Add a story') ?>
+	</a>
+</p>
 
 <table class="table table-bordered table-sm">
 	<thead>
@@ -62,10 +68,3 @@
 		<?php endforeach ?>
 	</tbody>
 </table>
-
-<p>
-	<a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName()])) ?>" class="btn btn-link">
-		<i class="fas fa-plus"></i>
-		<?= I18N::translate('Add a story') ?>
-	</a>
-</p>

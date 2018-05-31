@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Interface ModuleMenuInterface - Classes and libraries for module system
@@ -33,5 +34,5 @@ interface ModuleMenuInterface {
 	 *
 	 * @return Menu|null
 	 */
-	public function getMenu();
+	public function getMenu(Tree $tree);
 }

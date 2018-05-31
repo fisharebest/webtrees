@@ -1666,7 +1666,7 @@ abstract class AbstractTheme {
 	public function menuModules() {
 		$menus = [];
 		foreach (Module::getActiveMenus($this->tree) as $module) {
-			$menus[] = $module->getMenu();
+			$menus[] = $module->getMenu($this->tree);
 		}
 
 		return array_filter($menus);

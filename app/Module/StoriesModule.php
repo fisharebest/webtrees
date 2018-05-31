@@ -42,7 +42,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The URL to a page where the user can modify the configuration of this module.
+	 *
+	 * @return string
+	 */
 	public function getConfigLink() {
 		return route('module', ['module' => $this->getName(), 'action' => 'Admin']);
 	}
@@ -134,9 +138,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	/**
 	 * A menu, to be added to the main application menu.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu|null
 	 */
-	public function getMenu() {
+	public function getMenu(Tree $tree) {
 		$menu = new Menu($this->getTitle(), e(route('module', ['module' => $this->getName(), 'action' => 'ShowList'])), 'menu-story');
 
 		return $menu;

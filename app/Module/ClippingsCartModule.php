@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ClippingsCart\ClippingsCartController;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class ClippingsCartModule
@@ -536,14 +537,16 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	/**
 	 * A menu, to be added to the main application menu.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu|null
 	 */
-	public function getMenu() {
-		global $controller, $WT_TREE;
+	public function getMenu(Tree $tree) {
+		global $controller;
 
 		$submenus = [];
 		if (isset($controller->record)) {
-			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings-cart', ['rel' => 'nofollow']);
+			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $tree->getNameUrl(), 'menu-clippings-cart', ['rel' => 'nofollow']);
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
 			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippings-add', ['rel' => 'nofollow']);
@@ -552,7 +555,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		if ($submenus) {
 			return new Menu($this->getTitle(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);
 		} else {
-			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', ['rel' => 'nofollow']);
+			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $tree->getNameUrl(), 'menu-clippings', ['rel' => 'nofollow']);
 		}
 	}
 
