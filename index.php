@@ -18,7 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Fisharebest\Webtrees\Http\Controllers\ErrorController;
+use Exception;
+use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
@@ -26,10 +27,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Throwable;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run;
 
 // Bootstrap the application
 require 'includes/session.php';
@@ -64,7 +61,6 @@ try {
 	// Find the action for the selected route
 	$controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
 
-
 	// Create the controller
 	list($controller_name, $action) = explode('@', $controller_action);
 	$controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
@@ -97,35 +93,10 @@ try {
 	});
 
 	$response = call_user_func($pipeline, $request);
-} catch (Throwable $ex) {
-	DebugBar::addThrowable($ex);
+} catch (Exception $exception) {
+	DebugBar::addThrowable($exception);
 
-	// Clear any buffered output.
-	while (ob_get_level() > 0) {
-		ob_end_clean();
-	}
-
-	if ($ex instanceof HttpException) {
-		// Show a friendly page for expected exceptions.
-		if ($request->isXmlHttpRequest()) {
-			$response = new Response($ex->getMessage(), $ex->getStatusCode());
-		} else {
-			$controller = new ErrorController;
-			$response   = $controller->errorResponse($ex);
-		}
-	} else {
-		// Show an error page for unexpected exceptions.
-		if (getenv('DEBUG')) {
-			// Local dev environment?  Show full debug.
-			$whoops = new Run;
-			$whoops->pushHandler(new PrettyPageHandler);
-			$whoops->handleException($ex);
-		} else {
-			// Running remotely?  Show a friendly error page.
-			$controller = new ErrorController;
-			$response   = $controller->unhandledExceptionResponse($request, $ex);
-		}
-	}
+	$response = (new Handler)->render($request, $exception);
 }
 
 // Send response
@@ -137,4 +108,4 @@ if ($response instanceof RedirectResponse) {
 	DebugBar::sendDataInHeaders();
 }
 
-return $response->prepare($request)->send();
+$response->prepare($request)->send();

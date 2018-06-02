@@ -18,17 +18,28 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
+use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
+use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Exceptions\MediaAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Exceptions\NoteAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RecordAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RepositoryAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
+use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Common functions for all controllers
@@ -43,16 +54,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Family|null $family
 	 * @param bool|null   $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws FamilyNotFoundException
+	 * @throws FamilyAccessDeniedException
 	 */
 	protected function checkFamilyAccess(Family $family = null, $edit = false) {
 		if ($family === null) {
-			throw new NotFoundHttpException(I18N::translate('This family does not exist or you do not have permission to view it.'));
+			throw new FamilyNotFoundException;
 		}
 
 		if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This family does not exist or you do not have permission to view it.'));
+			throw new FamilyAccessDeniedException;
 		}
 	}
 
@@ -60,16 +71,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Individual|null $individual
 	 * @param bool|null       $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws IndividualNotFoundException
+	 * @throws IndividualAccessDeniedException
 	 */
 	protected function checkIndividualAccess(Individual $individual = null, $edit = false) {
 		if ($individual === null) {
-			throw new NotFoundHttpException(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+			throw new IndividualNotFoundException;
 		}
 
 		if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+			throw new IndividualAccessDeniedException;
 		}
 	}
 
@@ -77,16 +88,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Media|null $media
 	 * @param bool|null  $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws MediaNotFoundException
+	 * @throws MediaNotFoundException
 	 */
 	protected function checkMediaAccess(Media $media = null, $edit = false) {
 		if ($media === null) {
-			throw new NotFoundHttpException(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+			throw new MediaNotFoundException;
 		}
 
 		if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+			throw new MediaAccessDeniedException;
 		}
 	}
 
@@ -94,16 +105,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Note|null $note
 	 * @param bool|null $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws NoteNotFoundException
+	 * @throws NoteAccessDeniedException
 	 */
 	protected function checkNoteAccess(Note $note = null, $edit = false) {
 		if ($note === null) {
-			throw new NotFoundHttpException(I18N::translate('This note does not exist or you do not have permission to view it.'));
+			throw new NoteNotFoundException;
 		}
 
 		if (!$note->canShow() || $edit && (!$note->canEdit() || $note->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This note does not exist or you do not have permission to view it.'));
+			throw new NoteAccessDeniedException;
 		}
 	}
 
@@ -111,16 +122,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param GedcomRecord|null $record
 	 * @param bool|null         $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws RecordNotFoundException
+	 * @throws RecordAccessDeniedException
 	 */
 	protected function checkRecordAccess(GedcomRecord $record = null, $edit = false) {
 		if ($record === null) {
-			throw new NotFoundHttpException(I18N::translate('This record does not exist or you do not have permission to view it.'));
+			throw new RecordNotFoundException;
 		}
 
 		if (!$record->canShow() || $edit && (!$record->canEdit() || $record->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This record does not exist or you do not have permission to view it.'));
+			throw new RecordAccessDeniedException;
 		}
 	}
 
@@ -128,16 +139,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Repository|null $repository
 	 * @param bool|null       $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws RepositoryNotFoundException
+	 * @throws RepositoryAccessDeniedException
 	 */
 	protected function checkRepositoryAccess(Repository $repository = null, $edit = false) {
 		if ($repository === null) {
-			throw new NotFoundHttpException(I18N::translate('This repository does not exist or you do not have permission to view it.'));
+			throw new RepositoryNotFoundException;
 		}
 
 		if (!$repository->canShow() || $edit && (!$repository->canEdit() || $repository->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This repository does not exist or you do not have permission to view it.'));
+			throw new RepositoryAccessDeniedException;
 		}
 	}
 
@@ -145,16 +156,16 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	 * @param Source|null $source
 	 * @param bool|null   $edit
 	 *
-	 * @throws NotFoundHttpException
-	 * @throws AccessDeniedHttpException
+	 * @throws SourceNotFoundException
+	 * @throws SourceAccessDeniedException
 	 */
 	protected function checkSourceAccess(Source $source = null, $edit = false) {
 		if ($source === null) {
-			throw new NotFoundHttpException(I18N::translate('This source does not exist or you do not have permission to view it.'));
+			throw new SourceNotFoundException;
 		}
 
 		if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
-			throw new AccessDeniedHttpException(I18N::translate('This source does not exist or you do not have permission to view it.'));
+			throw new SourceAccessDeniedException;
 		}
 	}
 
