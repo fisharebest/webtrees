@@ -22,6 +22,7 @@ use Exception;
 use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -82,7 +83,7 @@ try {
 	}
 
 	// Apply the middleware using the "onion" pattern.
-	$pipeline = array_reduce($middleware_stack, function (Closure $next, $middleware): Closure {
+	$pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
 		// Create a closure to apply the middleware.
 		return function (Request $request) use ($middleware, $next): Response {
 			return $middleware->handle($request, $next);

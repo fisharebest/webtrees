@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Middleware to check whether the site is offline.
  */
-class CheckForMaintenanceMode {
+class CheckForMaintenanceMode implements MiddlewareInterface {
 	/**
 	 * @param Request $request
 	 * @param Closure $next

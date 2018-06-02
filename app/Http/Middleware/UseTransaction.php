@@ -26,7 +26,7 @@ use Throwable;
 /**
  * Middleware to wrap a request in a transaction.
  */
-class UseTransaction {
+class UseTransaction implements MiddlewareInterface {
 	/**
 	 * @param Request $request
 	 * @param Closure $next
@@ -39,6 +39,7 @@ class UseTransaction {
 		if ($connected) {
 			Database::beginTransaction();
 		}
+
 		try {
 			$response = $next($request);
 
@@ -48,9 +49,9 @@ class UseTransaction {
 		} catch (Throwable $ex) {
 			if ($connected) {
 				Database::rollBack();
-
-				throw $ex;
 			}
+
+			throw $ex;
 		}
 
 		return $response;
