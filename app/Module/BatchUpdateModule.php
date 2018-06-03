@@ -379,21 +379,24 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	/**
 	 * Create a submit button for our form
 	 *
-	 * @param string $text
-	 * @param string $xref
-	 * @param string $action
-	 * @param string $data
+	 * @param string      $text
+	 * @param string|null $xref
+	 * @param string      $action
+	 * @param string      $data
 	 *
 	 * @return string
 	 */
-	public static function createSubmitButton($text, $xref, $action = '', $data = '') {
-		return
-			'<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
-			'this.form.xref.value=\'' . e($xref) . '\';' .
-			'this.form.action.value=\'' . e($action) . '\';' .
-			'this.form.data.value=\'' . e($data) . '\';' .
-			'return true;"' .
-			($xref ? '' : ' disabled') . '>';
+	public static function createSubmitButton($text, $xref, $action = '', $data = ''): string {
+		if ($xref === null) {
+			return '<input class="btn btn-primary" type="submit" value="' . $text . '" disabled>';
+		} else {
+			return
+				'<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
+				'this.form.xref.value=\'' . e($xref) . '\';' .
+				'this.form.action.value=\'' . e($action) . '\';' .
+				'this.form.data.value=\'' . e($data) . '\';' .
+				'return true;">';
+		}
 	}
 
 	/**
