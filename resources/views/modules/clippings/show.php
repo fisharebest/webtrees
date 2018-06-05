@@ -1,0 +1,57 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<h2 class="wt-page-title"><?= $title ?></h2>
+
+<p>
+	<?= I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.') ?>
+</p>
+
+<?php if (empty($records)): ?>
+<p>
+	<?= I18N::translate('Your clippings cart is empty.') ?>
+</p>
+<?php else: ?>
+	<table class="table wt-facts-table">
+		<thead>
+			<tr>
+				<th><?= I18N::translate('Record') ?></th>
+				<th><?= I18N::translate('Remove') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($records as $record): ?>
+				<tr>
+					<td>
+						<?php if ($record::RECORD_TYPE === 'INDI'): ?>
+						<i class="icon-indis"></i>
+						<?php elseif ($record::RECORD_TYPE === 'FAM'): ?>
+						<i class="icon-sfamily"></i>
+						<?php elseif ($record::RECORD_TYPE === 'SOUR'): ?>
+						<i class="icon-source"></i>
+						<?php elseif ($record::RECORD_TYPE === 'REPO'): ?>
+						<i class="icon-repository"></i>
+						<?php elseif ($record::RECORD_TYPE === 'NOTE'): ?>
+						<i class="icon-note"></i>
+						<?php elseif ($record::RECORD_TYPE === 'OBJE'): ?>
+						<i class="icon-media"></i>
+						<?php else: ?>
+						<i class="icon-clippings"></i>
+						<?php endif ?>
+
+						<a href="<?= e($record->url()) ?>">
+							<?= $record->getFullName() ?>
+						</a>
+					</td>
+					<td>
+						<form method="post" action="<?= e(route('module', ['module' => 'clippings', 'action' => 'Remove', 'ged' => $tree->getName(), 'xref' => $record->getXref()])) ?>">
+							<?= csrf_field() ?>
+							<button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
+								<i class="icon-remove"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+<?php endif ?>

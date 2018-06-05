@@ -539,6 +539,14 @@ a > .wt-icon-arrow-up:hover::before {
 	content: url(menu/clippings-cart.png);
 }
 
+.menu-clippings-download::before {
+	content: url(menu/edit-preferences.png);
+}
+
+.menu-clippings-empty::before {
+	content: url(menu/edit-delete.png);
+}
+
 .menu-fam .nav-link::before {
 	content: url(menu/fam.png);
 }

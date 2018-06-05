@@ -32,6 +32,8 @@ interface ModuleMenuInterface {
 	/**
 	 * A menu, to be added to the main application menu.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu|null
 	 */
 	public function getMenu(Tree $tree);

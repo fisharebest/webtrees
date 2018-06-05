@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Theme;
 
-use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;

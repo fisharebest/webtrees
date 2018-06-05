@@ -480,6 +480,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'admin_trees_renumber.php',
 		WT_ROOT . 'admin_trees_unconnected.php',
 		WT_ROOT . 'admin_users_bulk.php',
+		WT_ROOT . 'app/Module/ClippingsCart/ClippingsCartController.php',
 		WT_ROOT . 'assets/js-1.7.7',
 		WT_ROOT . 'autocomplete.php',
 		WT_ROOT . 'block_edit.php',
