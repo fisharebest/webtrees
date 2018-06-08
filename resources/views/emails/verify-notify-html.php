@@ -12,8 +12,8 @@
 	<?= I18N::translate('You need to review the account details.') ?>
 </p>
 
-<a href="<?= e(route('admin_users-edit', ['user_id' => $user->getUserId()])) ?>">
-	<?= e(route('admin_users-edit', ['user_id' => $user->getUserId()])) ?>
+<a href="<?= e(route('admin-users-edit', ['user_id' => $user->getUserId()])) ?>">
+	<?= e(route('admin-users-edit', ['user_id' => $user->getUserId()])) ?>
 </a>
 
 <ul>
