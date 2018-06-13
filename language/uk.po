@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
 "PO-Revision-Date: 2018-06-13 21:47+0000\n"
-"Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
+"Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -5343,9 +5343,8 @@ msgstr "Редагувати налаштування"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:141
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Редагувати ЧаВО запис"
+msgstr "Редагувати запис ЧаПи"
 
 #: app/Controller/IndividualController.php:250 individual.php:206
 msgid "Edit the gender"
