@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-13 15:50+0000\n"
-"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
+"PO-Revision-Date: 2018-06-13 21:43+0000\n"
+"Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -455,7 +455,7 @@ msgstr[2] "%s тижнів"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s рік"
-msgstr[1] "%s року"
+msgstr[1] "%s роки"
 msgstr[2] "%s років"
 
 #: app/I18N.php:703
@@ -1771,7 +1771,7 @@ msgstr "Алжир"
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:140
 msgid "Alias"
-msgstr "Прізвище"
+msgstr "Прізвисько"
 
 #: app/Functions/FunctionsPrintLists.php:194
 msgid "Alive"
@@ -5558,7 +5558,7 @@ msgstr "Введіть номер запису персони, сім'ї або 
 
 #: app/Module/FamilyTreeFavoritesModule.php:200
 msgid "Enter an optional note about this favorite"
-msgstr "Введіть додаткове зауваження про обраному"
+msgstr "Введіть додаткові нотатки про запис"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:159
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
@@ -18478,9 +18478,8 @@ msgstr "півріч після вступу в шлюб"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:274
-#, fuzzy
 msgid "herself"
-msgstr "вона сама"
+msgstr "вона ж"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:812
@@ -18489,9 +18488,8 @@ msgstr "гг:хх or гг:хх:сс"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:272
-#, fuzzy
 msgid "himself"
-msgstr "він сам"
+msgstr "він же"
 
 #: app/Functions/Functions.php:673 edit_interface.php:1473
 #: edit_interface.php:1512
