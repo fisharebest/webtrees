@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-06-13 21:47+0000\n"
-"Last-Translator: Yuri <yurius.r@gmail.com>\n"
+"PO-Revision-Date: 2018-06-13 22:32+0000\n"
+"Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -1678,7 +1678,6 @@ msgstr "Після створення генеалогічного дерева 
 
 #: resources/views/emails/password-reset-html.php:24
 #: resources/views/emails/password-reset-text.php:11
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Після того як Ви ввійдете, відкрийте «Мої параметри» в меню «Моя сторінка» і вкажіть новий пароль. Збережіть зміни."
 
@@ -2288,9 +2287,8 @@ msgid "Author of last change"
 msgstr "Автор останньої зміни"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Автоматично приймати зміни зроблені цим користувачем"
+msgstr "Автоматично приймати зміни, зроблені цим користувачем"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:958
@@ -5699,9 +5697,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Експорт всіх сімейних дерев у GEDCOM-файли…"
 
 #: admin_trees_download.php:158
-#, fuzzy
 msgid "Export preferences"
-msgstr "Параметри експорту"
+msgstr "Налаштування експорту"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the 	last YY years
 #: resources/views/admin/tree-privacy.php:105
@@ -6349,7 +6346,7 @@ msgstr "З питаннями по генеалогії (база даних) з
 #: app/Theme/AbstractTheme.php:371
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "За допомогою і інформацією прохання звертатися до %s."
+msgstr "За технічною підтримкою та інформацією звертатися до %s."
 
 #: app/Theme/AbstractTheme.php:349
 #, php-format
@@ -8306,8 +8303,9 @@ msgstr "Довгий шлюб"
 
 #. I18N: Two axes of a graph
 #: statistics.php:521 statisticsplot.php:1048
+#, fuzzy
 msgid "Longevity versus time"
-msgstr ""
+msgstr "Довголіття з часом"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsEdit.php:770 app/Functions/FunctionsPrint.php:408
@@ -8785,9 +8783,8 @@ msgstr "Прикинеться в якості цього користувача
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:177
-#, fuzzy
 msgid "Match both upper and lower case letters."
-msgstr "Позначте цей прапорець, для пошуку без врахування регістру."
+msgstr "Позначте цей прапорець для пошуку без врахування регістру."
 
 #: lifespan.php:107
 msgid "Match calendar"
@@ -10325,7 +10322,6 @@ msgid "Other genealogy applications might not recognize this data."
 msgstr "Інші генеалогічні програми, можливо, не визнають ці дані."
 
 #: admin_trees_config.php:1325
-#, fuzzy
 msgid "Other preferences"
 msgstr "Інші налаштування"
 
@@ -11176,7 +11172,7 @@ msgstr "Рабі ас-сани"
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr "Молочный"
+msgstr "Молочний"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
@@ -11289,7 +11285,7 @@ msgstr "Запис"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:518
 msgid "Record ID number"
-msgstr "ID номер записи"
+msgstr "ID номер запису"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:514
@@ -11343,7 +11339,6 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Регулярні вирази являють технологію передових шаблонів."
 
 #: edit_changes.php:211 edit_changes.php:238
-#, fuzzy
 msgid "Reject"
 msgstr "Відхилити"
 
@@ -11853,7 +11848,6 @@ msgstr "Пошук"
 #: app/Controller/SearchController.php:201
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:52
 #: app/Theme/AbstractTheme.php:1830
-#, fuzzy
 msgid "Search and replace"
 msgstr "Знайти і замінити"
 
@@ -12605,7 +12599,7 @@ msgstr "Для яких мов показувати цей блок"
 #: admin_trees_config.php:592
 #, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Показувати головну фотографію в візитках"
+msgstr "Показувати мініатюру фотографії на графіках і групах сімей."
 
 #: admin_trees_config.php:60 admin_trees_config.php:559
 #: app/Functions/FunctionsEdit.php:94 app/Functions/FunctionsEdit.php:238
@@ -12699,13 +12693,11 @@ msgstr "Вхід в систему"
 
 #: app/Module/LoginBlockModule.php:48 app/Theme/AbstractTheme.php:1644
 #: resources/views/layouts/administration.php:48
-#, fuzzy
 msgid "Sign out"
-msgstr "Вихід"
+msgstr "Вийти"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:439
-#, fuzzy
 msgid "Sign-in URL"
 msgstr "Посилання (URL) входу"
 
@@ -13456,9 +13448,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Зміни для «%s» відхилені."
 
 #: app/Module/ClippingsCartModule.php:314
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Кошик вирізок дозволяє вам робити витяги (\"вирізки\") з цього генеалогічного дерева і поєднати їх у один файл для завантаження і наступного імпорту у вашу власну генеалогічно програму. Завантажуваний файл записується у форматі GEDCOM.<br><ul><li>Як зробити вирізку?<br>Це дуже просто. Кожного разу, коли ви бачите ім'я (особи, сім'ї чи джерела), на яке можна натиснути, перейдіть на сторінку із подробицями для цього імені. Там ви побачите посилання <b>Додати у кошик вирізок</b>. Коли ви перейдете по цьому посиланню, вам буде запропоновано декілька варіантів для завантаження.</li><li>Як завантажувати?<br>Коли у візку будуть усі потрібні вам елементи, ви можете завантажити їх просто натиснувши на посилання \"Завантажити\". Слідуйте інструкціям і посиланням.</li></ul>"
+msgstr "Кошик вирізок дозволяє вам робити витяги (\"вирізки\") з цього генеалогічного дерева і завантажити їх у форматі GEDCOM."
 
 #: admin_trees_config.php:682
 msgid "The date and time of the last update"
@@ -13820,9 +13811,8 @@ msgstr "Прізвище взято в косі риски: <%s>John Paul /Smith
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:501
-#, fuzzy
 msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Дає користувачам можливість вибрати із меню їх власну тему.<br><br>Навіть коли цей параметр увімкнутий, поточна схема може не надати такого меню. Щоб ця опція працювала, необхідно, щоб параметр <b>Дозволити користувачам вибирати власну тему</b> теж був увімкнутий."
+msgstr "Вибір теми показано лише якщо налаштування сайту дозволяють користувачам обрати власну тему."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:294
@@ -13912,7 +13902,6 @@ msgstr "Зміна теми"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:496
-#, fuzzy
 msgid "Theme menu"
 msgstr "Вибір теми"
 
@@ -13926,7 +13915,6 @@ msgstr "Теми можуть бути вибрані на трьох рівня
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:143
-#, fuzzy
 msgid "There are no facts for this individual."
 msgstr "Для цієї персони немає фактів."
 
@@ -14175,7 +14163,6 @@ msgid "This is case sensitive. If a database with this name does not already exi
 msgstr "З урахуванням регістру. Якщо база даних не існує, webtrees спробує створити її для Вас. Успіх залежить від прав виділені Вашого сервера. Ви будете сповіщені про результат."
 
 #: admin_site_upgrade.php:68 resources/views/admin/control-panel.php:36
-#, fuzzy
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Поточна версія webtrees є найновішою. Оновлення непотрібне."
 
@@ -14226,7 +14213,6 @@ msgstr "Це ім'я SMTP серверу. 'localhost' означає, що по�
 
 #: admin_users.php:321 edituser.php:149 login.php:403
 #: resources/views/setup/step-5-administrator.php:32
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Ваше справжнє ім'я, яке ви бажаєте бачити на екрані."
 
@@ -14422,7 +14408,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Цей репозиторій було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #: admin_users.php:556
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Цей користувач має всі права Редактора і додатково права приймати / відхиляти зміни інших користувачів."
 
@@ -14431,7 +14416,6 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "У цієї ролі є всі дозволи ролі менеджера у всіх родоводів, плюс дозвіл змінити настроювання сайту, користувачів і модулів."
 
 #: admin_users.php:550
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Ця роль має всі права ролі Учасник, а також право додавати, змінювати та видаляти дані. Будь-які зміни мають бути схвалені модератором окрім випадків, коли включено параметр \"автоматично приймати зміни\"."
 
@@ -15020,9 +15004,8 @@ msgstr "Унікальні сімейні факти"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
-#, fuzzy
 msgid "Unique identifier"
-msgstr "Глобально унікальний ідентифікатор"
+msgstr "Унікальний ідентифікатор"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:376
@@ -15248,9 +15231,8 @@ msgid "User not verified by administrator."
 msgstr "Користувач не схвалений адміністратором."
 
 #: admin_trees_config.php:491
-#, fuzzy
 msgid "User preferences"
-msgstr "Настройки користувача"
+msgstr "Налаштування користувача"
 
 #: login.php:492 login.php:549
 msgid "User verification"
@@ -15404,9 +15386,8 @@ msgid "View all records found in this place"
 msgstr "Переглянути всі записи, знайдені для цього місця"
 
 #: calendar.php:287
-#, fuzzy
 msgid "View this day"
-msgstr "Показати день"
+msgstr "Показати цей день"
 
 #: app/Controller/AncestryController.php:82
 #: app/Controller/DescendancyController.php:165
@@ -15416,24 +15397,20 @@ msgstr "Показати день"
 #: app/Stats.php:4570 app/Stats.php:4579
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:95
 #: resources/views/blocks/slide-show.php:37
-#, fuzzy
 msgid "View this family"
 msgstr "Дивитися відомості про сім'ю"
 
 #: calendar.php:291
-#, fuzzy
 msgid "View this month"
-msgstr "Показати місяць"
+msgstr "Показати цей місяць"
 
 #: resources/views/blocks/slide-show.php:45
-#, fuzzy
 msgid "View this source"
 msgstr "Дивитися джерело"
 
 #: calendar.php:295
-#, fuzzy
 msgid "View this year"
-msgstr "Показати рік"
+msgstr "Показати цей рік"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15827,9 +15804,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Ви маєте перенумерувати записи в одному з дерев перед тим, як їх можна буде об'єднати."
 
 #: app/Module/ChartsBlockModule.php:133
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Ви повинні вибрати особу і тип діаграми в налаштуваннях блоку."
+msgstr "Ви повинні вибрати особу і тип діаграми в налаштуваннях блоку"
 
 #: admin_users.php:291
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -15937,7 +15913,6 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Ваш адміністратор сервера (хостинг-провайдер) надасть Вам дані для підключення."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Для вашого облікового запису не увімкнуто параметр \"автоматично приймати зміни\". Ви зможете змінювати лише один запис за раз."
 
@@ -16310,9 +16285,8 @@ msgstr "обчислено %s"
 #: resources/views/modals/create-family.php:39
 #: resources/views/modals/create-media-from-file.php:60
 #: resources/views/modals/footer-save-cancel.php:11
-#, fuzzy
 msgid "cancel"
-msgstr "Скасування"
+msgstr "скасувати"
 
 #: app/Stats.php:2916
 msgid "census added"
@@ -16468,9 +16442,8 @@ msgstr "помер"
 #: admin_site_logs.php:309 app/Module/ClippingsCartModule.php:407
 #: app/Module/ClippingsCartModule.php:754 app/Module/GoogleMapsModule.php:3360
 #: resources/views/admin/changes-log.php:96
-#, fuzzy
 msgid "download"
-msgstr "скачати"
+msgstr "завантажити"
 
 #: app/Module/GoogleMapsModule.php:3073
 msgid "east"
@@ -18513,7 +18486,6 @@ msgstr "ім'я після імміграції"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:3389
-#, fuzzy
 msgid "import"
 msgstr "імпортувати"
 
@@ -18572,9 +18544,8 @@ msgstr "останній"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:140
-#, fuzzy
 msgid "link"
-msgstr "Приєднати"
+msgstr "приєднати"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:34 app/Module/OnThisDayModule.php:150
@@ -18969,7 +18940,7 @@ msgstr "попереднє"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr "первинни докази"
+msgstr "першоджерело"
 
 #: statistics.php:558
 msgid "quarters after marriage"
@@ -19286,9 +19257,8 @@ msgstr "вхід в систему"
 
 #. I18N: A button label.
 #: resources/views/blocks/sign-out.php:9
-#, fuzzy
 msgid "sign out"
-msgstr "вихід"
+msgstr "вийти"
 
 #: app/Functions/Functions.php:758
 msgid "sister"
@@ -19600,9 +19570,8 @@ msgstr "У каталогу «/data» і файлу «/data/config.ini.php» в�
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:276
-#, fuzzy
 msgid "themself"
-msgstr "воно саме"
+msgstr "він же"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
@@ -19768,9 +19737,8 @@ msgstr "завантажити"
 #: resources/views/compact-chart-page.php:23
 #: resources/views/family-book-page.php:53
 #: resources/views/interactive-tree-page.php:25
-#, fuzzy
 msgid "view"
-msgstr "вигляд"
+msgstr "переглянути"
 
 #: resources/views/admin/tree-privacy.php:23
 #: resources/views/admin/tree-privacy.php:47
