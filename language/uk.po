@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-06-13 21:43+0000\n"
-"Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
+"PO-Revision-Date: 2018-06-13 21:46+0000\n"
+"Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -1880,9 +1880,8 @@ msgstr "Американське Самоа"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:226
-#, fuzzy
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Записи ЧаВО можуть бути показані у всіх сімейних деревах або тільки в одному з сімейних дерев."
+msgstr "Запис ЧаПи можуть бути показані у всіх генеалогічних деревах або тільки в одному з генеалогічних дерев."
 
 #: admin_site_config.php:485
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
