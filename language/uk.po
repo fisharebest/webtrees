@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-06-13 22:32+0000\n"
+"PO-Revision-Date: 2018-06-14 19:42+0000\n"
 "Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/uk/>\n"
 "Language: uk\n"
@@ -115,7 +115,7 @@ msgstr "Немає зворотного посилання з %1$s на %2$s."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s файл був витягнутий за %2$s секунд."
-msgstr[1] "%1$s файлу було вилучено за %2$s секунд."
+msgstr[1] "%1$s файли було витягнено за %2$s секунд."
 msgstr[2] "%1$s файлів були витягнуті за %2$s секунд."
 
 #: app/Module/GoogleMapsModule.php:838
@@ -178,7 +178,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$sой %2$s"
+msgstr "%1$s &rarr; %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
@@ -237,7 +237,7 @@ msgstr "%s та їхні нащадки"
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s анонімний користувач"
-msgstr[1] "%s анонімних користувачів"
+msgstr[1] "%s анонімних користувача"
 msgstr[2] "%s анонімних користувачів"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
@@ -270,7 +270,7 @@ msgstr[2] "%s днів тому"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s сім'я була оновлена."
-msgstr[1] "%s сімей були оновлені."
+msgstr[1] "%s сім'ї були оновлені."
 msgstr[2] "%s сімей були оновлені."
 
 #: admin.php:861
@@ -302,16 +302,16 @@ msgstr[2] "%s годин тому"
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s персона"
-msgstr[1] "%s персон"
-msgstr[2] "%s персоны"
+msgstr[1] "%s персони"
+msgstr[2] "%s персон"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s людина була оновлена."
-msgstr[1] "%s осіб були поновлені."
-msgstr[2] "%s осіб були поновлені."
+msgstr[0] "%s особа була оновлена."
+msgstr[1] "%s особи були оновлені."
+msgstr[2] "%s осіб були оновлені."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
@@ -326,7 +326,7 @@ msgstr[2] "%s приватних персон."
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
 msgstr[0] "%s особа з подіями між %s та %s"
-msgstr[1] "%s осіб з подіями між %s та %s"
+msgstr[1] "%s особи з подіями між %s та %s"
 msgstr[2] "%s осіб з подіями між %s та %s"
 
 #: app/Controller/LifespanController.php:246
@@ -335,7 +335,7 @@ msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
 msgstr[0] "%s особа з подіями в %s"
 msgstr[1] "%s особи з подіями в %s"
-msgstr[2] "%s особи з подіями в %s"
+msgstr[2] "%s осіб з подіями в %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
@@ -356,7 +356,7 @@ msgstr "%s відключений(на) на цьому сервері. Ви н�
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s повідомлення"
-msgstr[1] "%s повідомлень"
+msgstr[1] "%s повідомлення"
 msgstr[2] "%s повідомлень"
 
 #: app/I18N.php:810
@@ -410,8 +410,8 @@ msgstr "%s двоюрідних за спаданням"
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s секунду тому"
-msgstr[1] "%s секунд тому"
-msgstr[2] "%s секунди тому"
+msgstr[1] "%s секунди тому"
+msgstr[2] "%s секунд тому"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
@@ -424,7 +424,7 @@ msgstr "%s надіслав вам наступне повідомлення."
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
 msgstr[0] "%s зареєстрований користувач"
-msgstr[1] "%s зареєстрованих користувачів"
+msgstr[1] "%s зареєстрованих користувачі"
 msgstr[2] "%s зареєстрованих користувачів"
 
 #: app/Controller/SearchController.php:411
@@ -833,7 +833,7 @@ msgstr "Список змін, які очікують на перевірку �
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "Список поширених запитань і відповідей (ЧаВо)."
+msgstr "Список поширених запитань і відповідей (ЧаПи)."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
@@ -1816,7 +1816,7 @@ msgstr "Алжир"
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
 msgid "Alias"
-msgstr "Прізвисько"
+msgstr "Також відомий як"
 
 #: app/Functions/FunctionsPrintLists.php:209
 msgid "Alive"
@@ -3030,9 +3030,8 @@ msgstr "Свідок нареченої"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
-#, fuzzy
 msgid "Brigham City, Utah, United States"
-msgstr "Brigham City, Utah, United States"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3301,7 +3300,7 @@ msgstr "За замовчанням в списку відображаються
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "По замовчуванню сервер дозволяє виконувати скрипти %s секунду."
+msgstr[0] "За замовчуванням сервер дозволяє виконувати скрипти %s секунду."
 msgstr[1] "За замовчуванням сервер дозволяє виконувати скрипти %s секунди."
 msgstr[2] "За замовчуванням сервер дозволяє виконувати скрипти %s секунд."
 
@@ -3333,9 +3332,8 @@ msgstr "Конвертація календаря"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
-#, fuzzy
 msgid "Calgary, Alberta, Canada"
-msgstr "Calgary, Alberta, Canada"
+msgstr ""
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3423,9 +3421,8 @@ msgstr "Кайманові острови"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
-#, fuzzy
 msgid "Cebu City, Philippines"
-msgstr "Cebu City, Philippines"
+msgstr ""
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3530,7 +3527,7 @@ msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Зміни за останній %s день"
 msgstr[1] "Зміни за останні %s дні"
-msgstr[2] "Зміни за останні %s днів"
+msgstr[2] "Зміни за останніх %s днів"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
@@ -3697,7 +3694,7 @@ msgstr "Використовувати текст привітання зада�
 
 #: addmedia.php:522
 msgid "Choose: "
-msgstr "Выберите: "
+msgstr "Виберіть: "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:278 modules_v3/family_group_report/report.xml:206
@@ -3944,7 +3941,7 @@ msgstr "Завершено; дата невідома"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr "Зтиснути GEDCOM файл"
+msgstr "Стиснути GEDCOM файл"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -4060,9 +4057,8 @@ msgstr "Авторські права"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
-#, fuzzy
 msgid "Cordoba, Argentina"
-msgstr "Cordoba, Argentina"
+msgstr ""
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -5560,13 +5556,13 @@ msgstr "Елула"
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr "Элулом"
+msgstr "Елулом"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr "Элула"
+msgstr "Елула"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
@@ -5859,7 +5855,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
-msgstr "ЧаВО"
+msgstr "«ЧаПи»"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
@@ -6112,7 +6108,7 @@ msgstr "Сім'я з батьками"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr "Семья с молочными родителями"
+msgstr "Сім'я з молочними батьками"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
@@ -7098,7 +7094,7 @@ msgstr "Висота"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "Здравствуйте,%s…"
+msgstr "Вітаємо, %s…"
 
 #: login.php:389
 #, php-format
@@ -7107,7 +7103,7 @@ msgstr "Здравствуйте, %s …<br>Дякуємо за Ваше зве�
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Здравствуйте, администратор…"
+msgstr "Привіт, адміністраторе…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7451,9 +7447,8 @@ msgid "Import all places from a family tree"
 msgstr "Імпортувати всі місця з древа"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
-msgstr "Параметри імпорту"
+msgstr "Налаштування імпорту"
 
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
@@ -8155,7 +8150,7 @@ msgstr "Рік останньої відомої смерті"
 
 #: statistics.php:240
 msgid "Latest divorce"
-msgstr "Останній розлучення"
+msgstr "Останнє розлучення"
 
 #: statistics.php:239
 msgid "Latest marriage"
@@ -8868,7 +8863,7 @@ msgstr "Мартініка"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr "Прикинеться в якості цього користувача"
+msgstr "Прикинутися цим користувачем"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
@@ -8914,7 +8909,7 @@ msgstr "Максимальне число генерацій"
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
-msgstr "Максимальний розмір загужаемого файлу: "
+msgstr "Максимальний розмір файлу: "
 
 #: app/Date/CalendarDate.php:315
 msgctxt "Abbreviation for May"
@@ -8996,7 +8991,7 @@ msgstr "Медіа-папки"
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:650
 msgid "Media object"
-msgstr "Мадіаоб'ект"
+msgstr "Медіаоб'єкт"
 
 #: admin.php:847 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
@@ -9731,7 +9726,7 @@ msgstr "Нікарагуа"
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:630
 msgid "Nickname"
-msgstr "Прізвище"
+msgstr "Прізвисько"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6835
@@ -9847,7 +9842,7 @@ msgstr "Ніякі помилки не знайдені."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Немає подій на наступний день %s."
+msgstr[0] "Немає подій на наступний %s день."
 msgstr[1] "Немає подій на наступні %s дня."
 msgstr[2] "Немає подій на наступні %s днів."
 
@@ -9869,7 +9864,7 @@ msgstr "Сьогодні немає жодних подій."
 #: app/Functions/FunctionsPrintLists.php:1724
 #: app/Functions/FunctionsPrintLists.php:1836
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Завтра немає подій для нині живучих."
+msgstr "Завтра немає подій для нині живих."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1727
@@ -9877,9 +9872,9 @@ msgstr "Завтра немає подій для нині живучих."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Немає подій для живучих людей для наступних %s днів."
-msgstr[1] "Немає подій для живучих людей для наступних %s дня."
-msgstr[2] "Немає подій для живучих людей для наступного %s дня."
+msgstr[0] "Немає подій для живих людей для наступного %s дня."
+msgstr[1] "Немає подій для живих людей для наступних %s дні."
+msgstr[2] "Немає подій для живих людей для наступних %s днів."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -9937,7 +9932,7 @@ msgstr "Інформація по запиту не знайдена."
 
 #: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
-msgstr "Немає зареєстрованих, ні анонімних користувачів"
+msgstr "Немає ні зареєстрованих, ні анонімних користувачів"
 
 #: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
@@ -11120,7 +11115,6 @@ msgstr "Обмеження доступу - ці настоянки вплива
 #: app/Module/GoogleMapsModule.php:784 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Приватні відомості"
 
@@ -11435,7 +11429,6 @@ msgid "Reject"
 msgstr "Відхилити"
 
 #: edit_changes.php:216 edit_changes.php:236
-#, fuzzy
 msgid "Reject all changes"
 msgstr "Скасувати всі зміни"
 
@@ -12121,7 +12114,7 @@ msgstr "Ім'я відправника"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Надсилання електронного листа"
+msgstr "Надсилання електронних листів"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -12517,7 +12510,7 @@ msgstr "Показати сім'ї, які вступили в шлюб рані
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married within the last 100 years."
-msgstr "Показати пари вступили в шлюб в останні 100 років."
+msgstr "Показати пари, які вступили в шлюб за останні 100 років."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
@@ -12560,7 +12553,7 @@ msgstr "Показати персон, що народилися раніше 10
 
 #: app/Functions/FunctionsPrintLists.php:253
 msgid "Show individuals born within the last 100 years."
-msgstr "Показати людей народилися в останні 100 років."
+msgstr "Показати людей, які народилися за останні 100 років."
 
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
@@ -12614,7 +12607,7 @@ msgstr "Показувати тільки дні народжень, смерт�
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Показувати тільки події для нині живучих"
+msgstr "Показувати тільки події для нині живих"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12733,12 +12726,12 @@ msgstr "Показати список прізвищ"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Показати розташування місць і подій з допомогою картографічного сервісу Google Maps ™."
+msgstr "Показати розташування місць і подій з допомогою картографічного сервісу Google Maps™."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr "Показати користувача, який зробив останні зміни"
+msgstr "Показати користувача, який зробив зміну"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
@@ -12747,7 +12740,6 @@ msgid "Show this block for which languages"
 msgstr "Для яких мов показувати цей блок"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Показувати мініатюру фотографії на графіках і групах сімей."
 
@@ -12786,12 +12778,12 @@ msgstr "Показувати відвідувачам"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Показати \"листя\" із пар чи осіб. \"Листки\" - це живі особи, що не мають дітей, зареєстрованих у базі даних."
+msgstr "Показати \"листки\" із пар чи осіб. Це живі особи, що не мають дітей, зареєстрованих у базі даних."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Показати \"коріння\" із пар і осіб. Цих осіб ще можна назвати \"родоначальниками.\" Це особи, у яких немає батьків, зареєстрованих у базі даних."
+msgstr "Показати \"кореневі\" пари чи особи. Цих осіб ще можна назвати \"родоначальниками.\" Це особи, у яких немає батьків, зареєстрованих у базі даних."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -12827,9 +12819,8 @@ msgstr "Сьєрра-Леоне"
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
-#, fuzzy
 msgid "Sign in"
-msgstr "Вхід в систему"
+msgstr "Увійти"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
@@ -13692,12 +13683,12 @@ msgstr "Файл %s було виделаено."
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "Файл %s був завантажений."
+msgstr "Файл %s був вивантажений."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr "Файл завантажений частково. Спробуйте заново."
+msgstr "Файл вивантажений частково. Спробуйте заново."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:146
@@ -14122,7 +14113,7 @@ msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "За останній %s день ніяких змін не було."
 msgstr[1] "За останні %s дні ніяких змін не було."
-msgstr[2] "За останні %s днів ніяких змін не було."
+msgstr[2] "За останніх %s днів ніяких змін не було."
 
 #: login.php:266
 #, php-format
@@ -14131,7 +14122,7 @@ msgstr "Намає облікового запису з іменем або ад
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr "Помилка при завантаженні файлу."
+msgstr "Помилка при вивантаженні файлу."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
@@ -14178,7 +14169,7 @@ msgstr "Цей обліковий запис не було схвалено. Б�
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Цей обліковий запис не будо перевірено. Будь-ласка, перевірте надходження на вашу електронну листа перевірки."
+msgstr "Цей обліковий запис не було перевірено. Будь-ласка, перевірте надходження перевірки на вашу електронну пошту."
 
 #: app/Module/ReviewChangesModule.php:179
 #, fuzzy
@@ -14736,7 +14727,7 @@ msgstr "Мініатюри зображення"
 
 #: addmedia.php:459 admin_media_upload.php:208
 msgid "Thumbnail to upload"
-msgstr "Мініатюрне відтворення"
+msgstr "Вибрати мініатюру"
 
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
@@ -15355,16 +15346,16 @@ msgstr "Майстер оновлення"
 
 #: app/Module/GoogleMapsModule.php:3630 app/Module/GoogleMapsModule.php:4056
 msgid "Upload geographic data"
-msgstr "Завантажити географічні дані"
+msgstr "Вивантажити географічні дані"
 
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
 msgid "Upload media files"
-msgstr "Завантажити медіа файли"
+msgstr "Вивантажити медіа файли"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Завантажити один або більше медіа файлів з вашого локального комп'ютера. Медіа файлами можуть бути зображення, відео, аудіо та інші формати."
+msgstr "Вивантажити один або більше медіа файлів з вашого локального комп'ютера. Медіа файлами можуть бути зображення, відео, аудіо та інші формати."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6910
@@ -15404,7 +15395,7 @@ msgstr "Використовувати кольори"
 
 #: app/Module/InteractiveTree/TreeView.php:59
 msgid "Use compact layout"
-msgstr "Використовувати компактне резмещеніе"
+msgstr "Компактне компонування"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
@@ -15698,7 +15689,7 @@ msgstr "Відвідувач"
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:254
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr "Акті громадянського стану"
+msgstr "Акти цивільного стану"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6921
@@ -15856,7 +15847,7 @@ msgstr "Які генеалогічні дерева має бути включ�
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr "Хто може завантажувати нові медіафайли"
+msgstr "Хто може вивантажувати нові медіафайли"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -16951,7 +16942,7 @@ msgstr "двоюрідний брат (5-го коліна)"
 #. I18N: a program feature
 #: setup.php:146
 msgid "file upload capability"
-msgstr "можливість завантажувати файли"
+msgstr "можливість вивантажувати файли"
 
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
@@ -20083,9 +20074,8 @@ msgstr "Оновлення"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4062
-#, fuzzy
 msgid "upload"
-msgstr "завантажити"
+msgstr "вивантажити"
 
 #. I18N: A button label.
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:738 branches.php:49
