@@ -1,5 +1,4 @@
-<?php use Fisharebest\Webtrees\Functions\Functionsedit; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
