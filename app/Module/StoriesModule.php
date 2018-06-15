@@ -337,7 +337,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 		// Filter foreign languages.
 		$stories = array_filter($stories, function (stdClass $story) {
-			return $story->language === '' || in_array(WT_LOCALE, explode(',', $story->language));
+			return $story->languages === '' || in_array(WT_LOCALE, explode(',', $story->languages));
 		});
 
 		return $this->viewResponse('modules/stories/list', [
