@@ -4,7 +4,7 @@
 </p>
 
 <p>
-	<?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $tree->getTitleHtml()) ?>
+	<?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . e($tree->getTitle())) ?>
 </p>
 
 <dl>
