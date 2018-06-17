@@ -18,6 +18,6 @@
 	<?php endforeach ?>
 
 	<?php if (empty($errors) && empty($warnings)): ?>
-		<li class="list-group-item">', I18N::translate('No errors have been found.'), '</li>
+		<li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
 	<?php endif ?>
 </ul>
