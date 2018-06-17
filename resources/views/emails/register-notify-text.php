@@ -1,7 +1,7 @@
 <?php namespace Fisharebest\Webtrees; ?>
 <?= I18N::translate('Hello administrator…') ?>
 
-<?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $tree->getTitleHtml()) ?>
+<?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $tree->getTitle()) ?>
 
 <?= I18N::translate('Username') ?> - <?= e($user->getUserName()) ?>
 <?= I18N::translate('Real name') ?> - <?= e($user->getRealName()) ?>
