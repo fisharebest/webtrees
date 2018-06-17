@@ -115,7 +115,7 @@ To install **webtrees**, you need:
 * To view sites that contain both left-to-right and right-to-left text (e.g.
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
-  or Internet Explorer support this.
+  nor Internet Explorer support this.
 * HTML Frames. Note that **webtrees** uses cookies to track login sessions.
   Internet Explorer users should review
   ``Settings`` / ``Internet Options`` / ``Privacy`` / ``Advanced`` for more details.
