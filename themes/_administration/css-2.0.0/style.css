@@ -16,6 +16,16 @@
 /* The administration theme */
 
 /*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 16px;
+	width: 16px;
+	background: url(images/indicator.gif) no-repeat 50% 50%;
+}
+
+/*
  * Pages have the following high-level structure:
  *
  * wt-global

@@ -100,6 +100,8 @@ if (Auth::isAdmin()) {
 		'GET:broadcast'                       => 'MessageController@broadcastPage',
 		'POST:broadcast'                      => 'MessageController@broadcastAction',
 		'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
+		'GET:phpgedview-wizard'               => 'AdminPhpGedViewController@wizard',
+		'POST:phpgedview-wizard'              => 'AdminPhpGedViewController@step',
 	];
 }
 

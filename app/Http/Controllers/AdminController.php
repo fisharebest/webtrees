@@ -463,6 +463,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'admin_module_sidebar.php',
 		WT_ROOT . 'admin_module_tabs.php',
 		WT_ROOT . 'admin_modules.php',
+		WT_ROOT . 'admin_pgv_to_wt.php',
 		WT_ROOT . 'admin_site_access.php',
 		WT_ROOT . 'admin_site_clean.php',
 		WT_ROOT . 'admin_site_info.php',

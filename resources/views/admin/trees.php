@@ -391,7 +391,7 @@
 						<?= I18N::translate('<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.') ?>
 					</p>
 					<p>
-						<a href="admin_pgv_to_wt.php">
+						<a href="<?= route('phpgedview-wizard') ?>">
 							<?= I18N::translate('PhpGedView to webtrees transfer wizard') ?>
 						</a>
 					</p>
