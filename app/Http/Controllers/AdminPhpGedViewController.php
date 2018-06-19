@@ -44,6 +44,53 @@ class AdminPhpGedViewController extends AbstractBaseController {
 	const SUCCESS = '<i class="fas fa-check" style="color:green"></i>';
 	const FAILURE = '<i class="fas fa-times" style="color:red"></i>';
 
+	// PhpGedView language codes and the equivalent in webtrees.
+	const PGV_LANGUAGES = [
+		'arabic'     => 'ar',
+		'catalan'    => 'ca',
+		'chinese'    => 'zh-Hans',
+		'croatian'   => 'hr',
+		'danish'     => 'da',
+		'dutch'      => 'nl',
+		'english'    => 'en-US',
+		'english-uk' => 'en-GB',
+		'estonian'   => 'et',
+		'french'     => 'fr',
+		'finnish'    => 'fi',
+		'german'     => 'de',
+		'greek'      => 'el',
+		'hebrew'     => 'he',
+		'hungarian'  => 'hu',
+		'indonesian' => 'id',
+		'italian'    => 'it',
+		'lithuanian' => 'lt',
+		'norwegian'  => 'nn',
+		'polish'     => 'pl',
+		'portuguese' => 'pt',
+		'romanian'   => 'ro',
+		'russian'    => 'ru',
+		'serbian-la' => 'sr@Latn',
+		'slovak'     => 'sk',
+		'slovenian'  => 'sl',
+		'spanish'    => 'es',
+		'spanish-ar' => 'es',
+		'swedish'    => 'sv',
+		'turkish'    => 'tr',
+		'vietnamese' => 'vi',
+	];
+
+	// PhpGedView themes and the equivalent in webtrees.
+	const PGV_THEMES = [
+		''                    => '',
+		'themes/cloudy/'      => 'clouds',
+		'themes/minimal/'     => 'minimal',
+		'themes/simplyblue/'  => 'colors',
+		'themes/simplygreen/' => 'colors',
+		'themes/simplyred/'   => 'colors',
+		'themes/xenea/'       => 'xenea',
+	];
+
+
 	protected $layout = 'layouts/administration';
 
 	/**
@@ -107,12 +154,12 @@ class AdminPhpGedViewController extends AbstractBaseController {
 	 */
 	private function wizardSteps(string $pgv_path): array {
 		return [
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Check'])     => 'config.php',
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Delete'])    => I18N::translate('Delete'),
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'GeoData'])   => I18N::translate('Geographic data'),
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Site'])      => I18N::translate('Site preferences'),
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Trees'])     => I18N::translate('Family trees'),
-			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Users'])     => I18N::translate('Users'),
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Check'])   => 'config.php',
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Delete'])  => I18N::translate('Delete'),
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'GeoData']) => I18N::translate('Geographic data'),
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Site'])    => I18N::translate('Site preferences'),
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Trees'])   => I18N::translate('Family trees'),
+			route('phpgedview-wizard', ['pgv_path' => $pgv_path, 'step' => 'Users'])   => I18N::translate('Users'),
 		];
 	}
 
@@ -319,7 +366,7 @@ class AdminPhpGedViewController extends AbstractBaseController {
 				"   WHEN 'norwegian'  THEN 'nn'" .
 				"   WHEN 'polish'     THEN 'pl'" .
 				"   WHEN 'portuguese' THEN 'pt'" .
-				"   WHEN 'romainian'  THEN 'ro'" .
+				"   WHEN 'romanian'  THEN 'ro'" .
 				"   WHEN 'russian'    THEN 'ru'" .
 				"   WHEN 'serbian-la' THEN 'sr@Latn'" .
 				"   WHEN 'slovak'     THEN 'sk'" .
@@ -386,7 +433,7 @@ class AdminPhpGedViewController extends AbstractBaseController {
 				"  WHEN 'norwegian'  THEN 'nn'" .
 				"  WHEN 'polish'     THEN 'pl'" .
 				"  WHEN 'portuguese' THEN 'pt'" .
-				"  WHEN 'romainian'  THEN 'ro'" .
+				"  WHEN 'romanian'  THEN 'ro'" .
 				"  WHEN 'russian'    THEN 'ru'" .
 				"  WHEN 'serbian-la' THEN 'sr@Latn'" .
 				"  WHEN 'slovak'     THEN 'sk'" .
@@ -428,30 +475,30 @@ class AdminPhpGedViewController extends AbstractBaseController {
 		} else {
 			// Copied from PhpGedView's db_schema_11_12
 			if (file_exists($INDEX_DIRECTORY . 'gedcoms.php')) {
+				// This array is set by gedcoms.php
+				$GEDCOMS = [];
+
 				require_once $INDEX_DIRECTORY . 'gedcoms.php';
-				// gedcoms.php => wt_gedcom…
 
-				if (isset($GEDCOMS) && is_array($GEDCOMS)) {
-					foreach ($GEDCOMS as $array) {
-						try {
-							Database::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
-								->execute([$array['id'], $array['gedcom']]);
-						} catch (PDOException $ex) {
-							DebugBar::addThrowable($ex);
+				foreach ($GEDCOMS as $array) {
+					try {
+						Database::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
+							->execute([$array['id'], $array['gedcom']]);
+					} catch (PDOException $ex) {
+						DebugBar::addThrowable($ex);
 
-							// Ignore duplicates
-						}
-						// insert gedcom
-						foreach ($array as $key => $value) {
-							if ($key != 'id' && $key != 'gedcom' && $key != 'commonsurnames') {
-								try {
-									Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
-										->execute([$array['id'], $key, $value]);
-								} catch (PDOException $ex) {
-									DebugBar::addThrowable($ex);
+						// Ignore duplicates
+					}
+					// insert gedcom
+					foreach ($array as $key => $value) {
+						if ($key != 'id' && $key != 'gedcom' && $key != 'commonsurnames') {
+							try {
+								Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
+									->execute([$array['id'], $key, $value]);
+							} catch (PDOException $ex) {
+								DebugBar::addThrowable($ex);
 
-									// Ignore duplicates
-								}
+								// Ignore duplicates
 							}
 						}
 					}
@@ -755,19 +802,24 @@ class AdminPhpGedViewController extends AbstractBaseController {
 			}
 
 			if (is_readable($privacy)) {
+				// These arrays are defined in the privacy file
+				$global_facts   = [];
+				$person_privacy = [];
+				$person_facts   = [];
+
 				require $privacy;
 
-				foreach ($global_facts ?? [] as $key => $value) {
+				foreach ($global_facts as $key => $value) {
 					if (isset($value['details'])) {
 						$stmt_default_resn->execute([$GED_DATA['id'], null, $key, $value['details']]);
 					}
 				}
 
-				foreach ($person_privacy ?? [] as $key => $value) {
+				foreach ($person_privacy as $key => $value) {
 					$stmt_default_resn->execute([$GED_DATA['id'], $key, null, $value['details']]);
 				}
 
-				foreach ($person_facts ?? [] as $key1 => $array) {
+				foreach ($person_facts as $key1 => $array) {
 					foreach ($array as $key2 => $value) {
 						if (isset($value['details'])) {
 							$stmt_default_resn->execute([$GED_DATA['id'], $key1, $key2, $value['details']]);
@@ -798,71 +850,7 @@ class AdminPhpGedViewController extends AbstractBaseController {
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_ADD', $INDI_FACTS_ADD]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_QUICK', $INDI_FACTS_QUICK]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'INDI_FACTS_UNIQUE', $INDI_FACTS_UNIQUE]);
-			switch ($LANGUAGE) {
-				case 'catalan':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ca']);
-					break;
-				case 'english-uk':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-GB']);
-					break;
-				case 'polish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pl']);
-					break;
-				case 'italian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'it']);
-					break;
-				case 'spanish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'es']);
-					break;
-				case 'finnish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fi']);
-					break;
-				case 'french':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'fr']);
-					break;
-				case 'german':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'de']);
-					break;
-				case 'danish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'da']);
-					break;
-				case 'portuguese':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'pt']);
-					break;
-				case 'hebrew':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'he']);
-					break;
-				case 'estonian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'et']);
-					break;
-				case 'turkish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'tr']);
-					break;
-				case 'dutch':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nl']);
-					break;
-				case 'slovak':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sk']);
-					break;
-				case 'norwegian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'nn']);
-					break;
-				case 'slovenian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sl']);
-					break;
-				case 'hungarian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'hu']);
-					break;
-				case 'swedish':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'sv']);
-					break;
-				case 'russian':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'ru']);
-					break;
-				default:
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', 'en-US']);
-					break;
-			}
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'LANGUAGE', self::PGV_LANGUAGES[$LANGUAGE] ?? 'en-US']);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_DESCENDANCY_GENERATIONS', $MAX_DESCENDANCY_GENERATIONS]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'MAX_PEDIGREE_GENERATIONS', $MAX_PEDIGREE_GENERATIONS]);
@@ -913,29 +901,9 @@ class AdminPhpGedViewController extends AbstractBaseController {
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SUBLIST_TRIGGER_I', $SUBLIST_TRIGGER_I]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_LIST_STYLE', $SURNAME_LIST_STYLE]);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'SURNAME_TRADITION', $SURNAME_TRADITION]);
-			switch ($THEME_DIR) {
-				case '':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', '']);
-					break;
-				case 'themes/cloudy/':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'clouds']);
-					break;
-				case 'themes/minimal/':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'minimal']);
-					break;
-				case 'themes/simplyblue/':
-				case 'themes/simplygreen/':
-				case 'themes/simplyred/':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'colors']);
-					break;
-				case 'themes/xenea/':
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'xenea']);
-					break;
-				default:
-					$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', 'webtrees']);
-					break;
-			}
+			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'THEME_DIR', self::PGV_THEMES[$THEME_DIR] ?? 'webtrees']);
 			$stmt_gedcom_setting->execute([$GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY]);
+
 			$user = User::findByIdentifier($WEBMASTER_EMAIL);
 			if ($user) {
 				$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);
@@ -1177,17 +1145,20 @@ class AdminPhpGedViewController extends AbstractBaseController {
 		$tmp_file   = WT_DATA_DIR . 'pgv-config.php';
 		file_put_contents($tmp_file, $config_php);
 
+		// This is defined in the config file.
+		$INDEX_DIRECTORY = '';
+
 		try {
 			ob_start();
 			include $tmp_file;
 		} catch (Exception $ex) {
+			// Invalid config file?  Nothing we can do.
 		} finally {
 			unlink($tmp_file);
 			ob_end_clean();
 		}
 
 		// The index directory can be either absolute or relative to the PhpGedView root.
-		$INDEX_DIRECTORY = $INDEX_DIRECTORY ?? '';
 		if (preg_match('/^(\/|\\|[A-Z]:)/', $INDEX_DIRECTORY)) {
 			$INDEX_DIRECTORY = realpath($INDEX_DIRECTORY) . DIRECTORY_SEPARATOR;
 		} else {
