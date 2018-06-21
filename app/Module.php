@@ -76,7 +76,7 @@ class Module {
 			'cemetery_report',
 			'change_report',
 			'charts',
-			'ckeditor',
+			//'ckeditor',
 			'clippings',
 			'compact_tree_chart',
 			'death_report',
