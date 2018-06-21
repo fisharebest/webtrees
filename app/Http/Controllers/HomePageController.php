@@ -658,7 +658,7 @@ class HomePageController extends AbstractBaseController {
 	 */
 	private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): array {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE block_id, module_name" .
+			"SELECT block_id, module_name" .
 			" FROM  `##block`" .
 			" JOIN  `##module` USING (module_name)" .
 			" JOIN  `##module_privacy` USING (module_name, gedcom_id)" .
@@ -688,7 +688,7 @@ class HomePageController extends AbstractBaseController {
 	 */
 	private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): array {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE block_id, module_name" .
+			"SELECT block_id, module_name" .
 			" FROM  `##block`" .
 			" JOIN  `##module` USING (module_name)" .
 			" JOIN  `##module_privacy` USING (module_name)" .

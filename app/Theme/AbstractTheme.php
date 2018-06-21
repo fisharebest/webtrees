@@ -1510,7 +1510,7 @@ abstract class AbstractTheme {
 	public function menuLists($surname) {
 		// Do not show empty lists
 		$row = Database::prepare(
-			"SELECT SQL_CACHE" .
+			"SELECT" .
 			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?) AS sour," .
 			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='REPO') AS repo," .
 			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .

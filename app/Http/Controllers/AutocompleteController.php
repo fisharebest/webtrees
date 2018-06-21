@@ -88,7 +88,7 @@ class AutocompleteController extends AbstractBaseController {
 
 		// Fetch all individuals with a link to this source
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+			"SELECT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##link ON i_file = l_file AND i_from = i_id AND i_to = :xref AND i_type = 'SOUR'" .
 			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%')" .
@@ -111,7 +111,7 @@ class AutocompleteController extends AbstractBaseController {
 		}
 		// Fetch all data, regardless of privacy
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
+			"SELECT f_id AS xref, f_gedcom AS gedcom" .
 			" FROM `##families`" .
 			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
 		)->execute([

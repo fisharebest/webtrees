@@ -76,7 +76,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		global $WT_TREE;
 
 		$articles = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
+			"SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
 		)->execute([
 			'offset'  => WT_TIMESTAMP_OFFSET,
 			'tree_id' => $WT_TREE->getTreeId(),

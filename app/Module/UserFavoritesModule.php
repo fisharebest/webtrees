@@ -65,7 +65,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	public static function getFavorites(Tree $tree, User $user) {
 		$favorites =
 			Database::prepare(
-				"SELECT SQL_CACHE favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
+				"SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
 				" FROM `##favorite` WHERE user_id = :user_id AND gedcom_id = :tree_id")
 			->execute([
 				'tree_id' => $tree->getTreeId(),

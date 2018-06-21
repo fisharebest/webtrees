@@ -114,7 +114,7 @@ class User {
 	public static function find($user_id) {
 		if (!array_key_exists($user_id, self::$cache)) {
 			$row = Database::prepare(
-				"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
+				"SELECT user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
 			)->execute([$user_id])->fetchOneRow();
 			if ($row) {
 				self::$cache[$user_id] = new self($row);
@@ -135,7 +135,7 @@ class User {
 	 */
 	public static function findByEmail($email) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE email = :email"
+			"SELECT user_id FROM `##user` WHERE email = :email"
 		)->execute([
 			'email' => $email,
 		])->fetchOne();
@@ -152,7 +152,7 @@ class User {
 	 */
 	public static function findByIdentifier($identifier) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE ? IN (user_name, email)"
+			"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
 		)->execute([$identifier])->fetchOne();
 
 		return self::find($user_id);
@@ -167,7 +167,7 @@ class User {
 	 */
 	public static function findByIndividual(Individual $individual) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id" .
+			"SELECT user_id" .
 			" FROM `##user_gedcom_setting`" .
 			" WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
 		)->execute([
@@ -187,7 +187,7 @@ class User {
 	 */
 	public static function findByUserName($user_name) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
+			"SELECT user_id FROM `##user` WHERE user_name = :user_name"
 		)->execute([
 			'user_name' => $user_name,
 		])->fetchOne();
@@ -202,7 +202,7 @@ class User {
 	 */
 	public static function findLatestToRegister() {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE u.user_id" .
+			"SELECT u.user_id" .
 			" FROM `##user` u" .
 			" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
 			" ORDER BY us.setting_value DESC LIMIT 1"
@@ -218,7 +218,7 @@ class User {
 	 */
 	public static function all() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" WHERE user_id > 0" .
 			" ORDER BY real_name"
@@ -236,7 +236,7 @@ class User {
 	 */
 	public static function administrators() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##user_setting` USING (user_id)" .
 			" WHERE user_id > 0 AND setting_name = 'canadmin' AND setting_value = '1'" .
@@ -276,7 +276,7 @@ class User {
 	 */
 	public static function managers() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
 			" WHERE setting_name = 'canedit' AND setting_value='admin'" .
 			" GROUP BY user_id, real_name" .
@@ -295,7 +295,7 @@ class User {
 	 */
 	public static function moderators() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
 			" WHERE setting_name = 'canedit' AND setting_value='accept'" .
 			" GROUP BY user_id, real_name" .
@@ -314,7 +314,7 @@ class User {
 	 */
 	public static function unapproved() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user` JOIN `##user_setting` USING (user_id)" .
 			" WHERE setting_name = 'verified_by_admin' AND setting_value = '0'" .
 			" ORDER BY real_name"
@@ -332,7 +332,7 @@ class User {
 	 */
 	public static function unverified() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user` JOIN `##user_setting` USING (user_id)" .
 			" WHERE setting_name = 'verified' AND setting_value = '0'" .
 			" ORDER BY real_name"
@@ -350,7 +350,7 @@ class User {
 	 */
 	public static function allLoggedIn() {
 		$rows = Database::prepare(
-			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
+			"SELECT DISTINCT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
@@ -482,7 +482,7 @@ class User {
 	public function getPreference($setting_name, $default = '') {
 		if (empty($this->preferences) && $this->user_id !== 0) {
 			$this->preferences = Database::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value" .
+				"SELECT setting_name, setting_value" .
 				" FROM `##user_setting`" .
 				" WHERE user_id = :user_id"
 			)->execute([

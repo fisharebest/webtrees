@@ -88,7 +88,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	private function getStoriesForIndividual(Individual $individual): array {
 		$block_ids =
 			Database::prepare(
-				"SELECT SQL_CACHE block_id" .
+				"SELECT block_id" .
 				" FROM `##block`" .
 				" WHERE module_name = :module_name" .
 				" AND xref          = :xref" .

@@ -2008,7 +2008,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Find/count places without co-ordinates
 			$children =
 				Database::prepare(
-				"SELECT SQL_CACHE COUNT(*) AS total, SUM(" .
+				"SELECT COUNT(*) AS total, SUM(" .
 				" p1.pl_place IS NOT NULL AND IFNULL(p1.pl_lati, '') IN ('N0', '') AND IFNULL(p1.pl_long, '') IN ('E0', '') OR " .
 				" p2.pl_place IS NOT NULL AND IFNULL(p2.pl_lati, '') IN ('N0', '') AND IFNULL(p2.pl_long, '') IN ('E0', '') OR " .
 				" p3.pl_place IS NOT NULL AND IFNULL(p3.pl_lati, '') IN ('N0', '') AND IFNULL(p3.pl_long, '') IN ('E0', '') OR " .

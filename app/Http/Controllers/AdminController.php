@@ -897,13 +897,13 @@ class AdminController extends AbstractBaseController {
 		$search = $request->get('search', []);
 		$search = $search['value'] ?? '';
 
-		$select1 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
+		$select1 = "SELECT SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
 			" JOIN `##media_file` USING (m_id, m_file)" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
 			" WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
 
-		$select2 = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
+		$select2 = "SELECT SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
 			" JOIN `##media_file` USING (m_id, m_file)" .
 			" JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
 			" JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
@@ -1643,7 +1643,7 @@ class AdminController extends AbstractBaseController {
 			$args['ged'] = $ged;
 		}
 
-		$select = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
+		$select = "SELECT SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
 		$delete = 'DELETE `##change` FROM `##change`';
 
 		$join = ' LEFT JOIN `##user` USING (user_id) JOIN `##gedcom` USING (gedcom_id)';
@@ -2004,7 +2004,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalChanges() {
-		return Database::prepare("SELECT SQL_CACHE g.gedcom_id, COUNT(change_id)" . " FROM `##gedcom` AS g" . " LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending'" . " GROUP BY g.gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT g.gedcom_id, COUNT(change_id)" . " FROM `##gedcom` AS g" . " LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending'" . " GROUP BY g.gedcom_id")->fetchAssoc();
 	}
 
 	/**
@@ -2013,7 +2013,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalFamilies() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(f_id)" . " FROM `##gedcom`" . " LEFT JOIN `##families` ON gedcom_id = f_file" . " GROUP BY gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT gedcom_id, COUNT(f_id)" . " FROM `##gedcom`" . " LEFT JOIN `##families` ON gedcom_id = f_file" . " GROUP BY gedcom_id")->fetchAssoc();
 	}
 
 	/**
@@ -2022,7 +2022,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalIndividuals() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(i_id)" . " FROM `##gedcom`" . " LEFT JOIN `##individuals` ON gedcom_id = i_file" . " GROUP BY gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT gedcom_id, COUNT(i_id)" . " FROM `##gedcom`" . " LEFT JOIN `##individuals` ON gedcom_id = i_file" . " GROUP BY gedcom_id")->fetchAssoc();
 	}
 
 	/**
@@ -2031,7 +2031,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalMediaObjects() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(m_id)" . " FROM `##gedcom`" . " LEFT JOIN `##media` ON gedcom_id = m_file" . " GROUP BY gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT gedcom_id, COUNT(m_id)" . " FROM `##gedcom`" . " LEFT JOIN `##media` ON gedcom_id = m_file" . " GROUP BY gedcom_id")->fetchAssoc();
 	}
 
 	/**
@@ -2040,7 +2040,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalNotes() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE'" . " GROUP BY gedcom_id"
+		return Database::prepare("SELECT gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE'" . " GROUP BY gedcom_id"
 
 		)->fetchAssoc();
 	}
@@ -2051,7 +2051,7 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalRepositories() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO'" . " GROUP BY gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO'" . " GROUP BY gedcom_id")->fetchAssoc();
 	}
 
 	/**
@@ -2060,6 +2060,6 @@ class AdminController extends AbstractBaseController {
 	 * @return string[]
 	 */
 	private function totalSources() {
-		return Database::prepare("SELECT SQL_CACHE gedcom_id, COUNT(s_id)" . " FROM `##gedcom`" . " LEFT JOIN `##sources` ON gedcom_id = s_file" . " GROUP BY gedcom_id")->fetchAssoc();
+		return Database::prepare("SELECT gedcom_id, COUNT(s_id)" . " FROM `##gedcom`" . " LEFT JOIN `##sources` ON gedcom_id = s_file" . " GROUP BY gedcom_id")->fetchAssoc();
 	}
 }

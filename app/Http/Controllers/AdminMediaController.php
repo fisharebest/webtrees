@@ -141,7 +141,7 @@ class AdminMediaController extends AbstractBaseController {
 			case 'local':
 				// Filtered rows
 				$SELECT1 =
-					"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
+					"SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 					" FROM  `##media`" .
 					" JOIN  `##media_file` USING (m_file, m_id)" .
 					" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -161,7 +161,7 @@ class AdminMediaController extends AbstractBaseController {
 				];
 				// Unfiltered rows
 				$SELECT2 =
-					"SELECT SQL_CACHE COUNT(*)" .
+					"SELECT COUNT(*)" .
 					" FROM  `##media`" .
 					" JOIN  `##media_file` USING (m_file, m_id)" .
 					" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -233,7 +233,7 @@ class AdminMediaController extends AbstractBaseController {
 			case 'external':
 				// Filtered rows
 				$SELECT1 =
-					"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
+					"SELECT SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
 					" FROM  `##media`" .
 					" JOIN  `##media_file` USING (m_id, m_file)" .
 					" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')" .
@@ -244,7 +244,7 @@ class AdminMediaController extends AbstractBaseController {
 				];
 				// Unfiltered rows
 				$SELECT2 =
-					"SELECT SQL_CACHE COUNT(*)" .
+					"SELECT COUNT(*)" .
 					" FROM  `##media`" .
 					" JOIN  `##media_file` USING (m_id, m_file)" .
 					" WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')";
@@ -486,7 +486,7 @@ class AdminMediaController extends AbstractBaseController {
 	 */
 	private function folderListAll(): array {
 		$folders = Database::prepare(
-			"SELECT SQL_CACHE CONCAT(setting_value, LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))))" .
+			"SELECT CONCAT(setting_value, LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))))" .
 			" FROM  `##gedcom_setting` AS gs" .
 			" JOIN  `##media_file` AS m ON m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY'" .
 			" WHERE multimedia_file_refn NOT LIKE 'http://%'" .
@@ -508,7 +508,7 @@ class AdminMediaController extends AbstractBaseController {
 	 */
 	private function allMediaFolders(): array {
 		return Database::prepare(
-			"SELECT SQL_CACHE setting_value, setting_value" .
+			"SELECT setting_value, setting_value" .
 			" FROM `##gedcom_setting`" .
 			" WHERE setting_name='MEDIA_DIRECTORY' AND gedcom_id > 0" .
 			" GROUP BY 1" .
@@ -525,7 +525,7 @@ class AdminMediaController extends AbstractBaseController {
 	 */
 	private function mediaPaths(string $media_folder): array {
 		$media_paths = Database::prepare(
-			"SELECT SQL_CACHE LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
+			"SELECT LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
 			" JOIN  `##media_file` USING (m_file, m_id)" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -602,7 +602,7 @@ class AdminMediaController extends AbstractBaseController {
 	 */
 	private function allMediaFiles(string $media_folder, string $media_path, string $filter): array {
 		return Database::prepare(
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, 'OBJE' AS type, descriptive_title, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, multimedia_file_refn" .
+			"SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, 'OBJE' AS type, descriptive_title, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, multimedia_file_refn" .
 			" FROM  `##media`" .
 			" JOIN  `##media_file` USING (m_file, m_id)" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .

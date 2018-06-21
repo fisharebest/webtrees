@@ -151,7 +151,7 @@ class Module {
 
 		if ($modules === null) {
 			$module_names = Database::prepare(
-				"SELECT SQL_CACHE module_name FROM `##module` WHERE status = 'enabled'"
+				"SELECT module_name FROM `##module` WHERE status = 'enabled'"
 			)->fetchOneColumn();
 
 			$modules = [];
@@ -193,7 +193,7 @@ class Module {
 	 */
 	private static function getActiveModulesByComponent(Tree $tree, $component) {
 		$module_names = Database::prepare(
-			"SELECT SQL_CACHE module_name" .
+			"SELECT module_name" .
 			" FROM `##module`" .
 			" JOIN `##module_privacy` USING (module_name)" .
 			" WHERE gedcom_id = :tree_id AND component = :component AND status = 'enabled' AND access_level >= :access_level" .
@@ -235,7 +235,7 @@ class Module {
 	 */
 	public static function getAllModulesByComponent($component) {
 		$module_names = Database::prepare(
-			"SELECT SQL_CACHE module_name" .
+			"SELECT module_name" .
 			" FROM `##module`" .
 			" ORDER BY CASE :component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
 		)->execute([
