@@ -82,6 +82,7 @@
 			"msgfmt --output=language/it.mo language/it.po",
 			"msgfmt --output=language/ja.mo language/ja.po",
 			"msgfmt --output=language/ka.mo language/ka.po",
+			"msgfmt --output=language/kk.mo language/kk.po",
 			"msgfmt --output=language/ko.mo language/ko.po",
 			"msgfmt --output=language/ln.mo language/ln.po",
 			"msgfmt --output=language/lt.mo language/lt.po",
