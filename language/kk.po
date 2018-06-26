@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-06-25 22:16+0000\n"
+"PO-Revision-Date: 2018-06-26 17:50+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -9760,56 +9760,56 @@ msgstr "Ертеңгі күні тірі адамдар үшін ешқанда�
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Келесі %s күніне тірі адамдар үшін ешқандай оқиғалар жоқ."
+msgstr[1] "Келесі %s күндерінде тірі адамдарға арналған оқиғалар жоқ."
 
 #: app/Controller/FamilyController.php:132
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "Бұл отбасы үшін ешқандай фактілер жоқ."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:93 app/Module/GoogleMapsModule.php:2308
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "Ешқандай файл қабылданбады. Әрекетті қайталап көріңіз."
 
 #: relationship.php:211
 msgid "No link between the two individuals could be found."
-msgstr ""
+msgstr "Екі адамның арасында байланыс жоқ."
 
 #: app/Module/GoogleMapsModule.php:211
 msgid "No map data exists for this individual"
-msgstr ""
+msgstr "Бұл адам үшін карта деректері жоқ"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
 #: resources/views/admin/merge-records-step-2.php:144
 msgid "No matching facts found"
-msgstr ""
+msgstr "Сәйкес фактілер табылмады"
 
 #: admin_media_upload.php:108
 msgid "No media file was provided."
-msgstr ""
+msgstr "Медиа-файлдар берілмеген."
 
 #: app/Module/FamilyTreeNewsModule.php:100
 msgid "No news articles have been submitted."
-msgstr ""
+msgstr "Ешбір жаңалық мақаласы жіберілмеді."
 
 #: app/Module/GoogleMapsModule.php:2946
 msgid "No places found"
-msgstr ""
+msgstr "Еш орын табылмады"
 
 #: admin_trees_places.php:121
 msgid "No places have been found."
-msgstr ""
+msgstr "Ешқандай орын табылмады."
 
 #: admin_site_config.php:125 app/Functions/FunctionsEdit.php:219
 msgid "No predefined text"
-msgstr ""
+msgstr "Алдын ала анықталған мәтін жоқ"
 
 #: app/Datatables.php:54 app/Datatables.php:62 app/I18N.php:185
 #: app/I18N.php:193
 msgid "No records to display"
-msgstr ""
+msgstr "Көрсетілетін жазбалар жоқ"
 
 #: app/Controller/AdvancedSearchController.php:660
 #: app/Controller/SearchController.php:541
@@ -9819,28 +9819,28 @@ msgstr ""
 #: app/Module/CensusAssistantModule.php:264 placelist.php:57 placelist.php:202
 #: placelist.php:210
 msgid "No results found."
-msgstr ""
+msgstr "Нәтижелер табылмады."
 
 #: app/Stats.php:5871
 msgid "No signed-in and no anonymous users"
-msgstr ""
+msgstr "Тіркелмеген және анонимді пайдаланушылар жоқ"
 
 #: app/Functions/FunctionsEdit.php:280
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "Ешқандай ғибадатхана - тірі шара жоқ"
 
 #: admin_site_upgrade.php:62 resources/views/admin/control-panel.php:28
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Жаңарту туралы ақпарат жоқ."
 
 #: app/Stats.php:1740
 msgid "Nobody at all"
-msgstr ""
+msgstr "Ешкім де жоқ"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:57
 msgid "Nocturnal"
-msgstr ""
+msgstr "Түнгі режим"
 
 #: admin_trees_download.php:211 app/Controller/IndividualListController.php:563
 #: app/Module/ClippingsCartModule.php:372
@@ -9852,80 +9852,80 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "None"
-msgstr ""
+msgstr "Жоқ"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:103
 msgid "Noon"
-msgstr ""
+msgstr "Түс"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Норфолк аралы"
 
 #: admin_users.php:448
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr ""
+msgstr "Әдетте, отбасылық ағашқа енгізілген өзгерістер модератормен қарастырылуы керек. Бұл опция пайдаланушыға модератор қажет етпей өзгерістер енгізуге мүмкіндік береді."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
 msgid "North Korea"
-msgstr ""
+msgstr "Солтүстік Корея"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6788
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Солтүстік Ирландия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6772
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Солтүстік Мариан аралдары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
 msgid "Norway"
-msgstr ""
+msgstr "Норвегия"
 
 #: app/Module/CensusAssistantModule.php:309
 msgid "Not a valid individual, family, or source ID"
-msgstr ""
+msgstr "Жарамды жеке, отбасы немесе дереккөз идентификаторы емес"
 
 #: resources/views/admin/control-panel.php:280
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Әкімші мақұлдамады"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1299
 msgid "Not living"
-msgstr ""
+msgstr "Тұрмайды"
 
 #. I18N: gedcom tag _NMR
 #: app/Controller/BranchesController.php:262 app/GedcomTag.php:1316
 msgid "Not married"
-msgstr ""
+msgstr "Үйленген жоқ"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1314
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr ""
+msgstr "Үйленген жоқ"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1312
 msgctxt "MALE"
 msgid "Not married"
-msgstr ""
+msgstr "Үйленген жоқ"
 
 #: resources/views/admin/control-panel.php:280
 msgid "Not verified by the user"
-msgstr ""
+msgstr "Пайдаланушы расталмаған"
 
 #. I18N: gedcom tag NOTE
 #: app/Controller/FamilyController.php:139 app/Functions/FunctionsPrint.php:156
@@ -9940,15 +9940,15 @@ msgstr ""
 #: resources/views/modals/media-object-fields.php:7
 #: resources/views/modals/note-object-fields.php:5
 msgid "Note"
-msgstr ""
+msgstr "Ескерту"
 
 #: help_text.php:270 resources/views/help/date.php:239
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "Есіңізде болсын, егер пайдаланушы тіркелгісі рекетке байланыстырылса, сол пайдаланушы сол жазбаны әрқашан көре алады."
 
 #: admin_users.php:605
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr ""
+msgstr "Ескерту: ұзын жолдың ұзындығы көптеген есептеулерді талап етеді, бұл сіздің веб-сайтыңызды бұл пайдаланушылар үшін баяу жұмыс жасай алады."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:532 app/Module/NotesTabModule.php:34
@@ -9961,182 +9961,182 @@ msgstr ""
 #: resources/views/modules/census-assistant.php:80 source.php:125
 #: statistics.php:368
 msgid "Notes"
-msgstr ""
+msgstr "Ескертулер"
 
 #: admin_users.php:768
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "Тазалау үшін ешнәрсе табылмады"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
-msgstr ""
+msgstr "Ештеңе табылмады."
 
 #: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Қар"
 
 #: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Қараша"
 
 #: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Қараша"
 
 #: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Қараша"
 
 #: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:608
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Қараша"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:265
 msgid "Nuku’Alofa, Tonga"
-msgstr ""
+msgstr "Нуку Алофа, Тонга"
 
 #. I18N: gedcom tag NCHI
 #: app/GedcomTag.php:441 app/Stats.php:4937 app/Stats.php:4939
 #: app/Stats.php:4941 statistics.php:524 statisticsplot.php:1174
 msgid "Number of children"
-msgstr ""
+msgstr "Балалардың саны"
 
 #: app/Module/RecentChangesModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:149
 #: app/Module/YahrzeitModule.php:193
 msgid "Number of days to show"
-msgstr ""
+msgstr "Көрсетілетін күндер саны"
 
 #: app/Stats.php:5206 statistics.php:319
 msgid "Number of families without children"
-msgstr ""
+msgstr "Балалы отбасылар саны"
 
 #: app/Module/ClippingsCartModule.php:211
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr ""
+msgstr "Ұрпақтар саны"
 
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:144
 msgid "Number of given names"
-msgstr ""
+msgstr "Берілген аттардың саны"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:445
 msgid "Number of marriages"
-msgstr ""
+msgstr "Некелер саны"
 
 #: admin_users.php:674
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-msgstr ""
+msgstr "Пайдаланушының тіркелгісі үшін соңғы рет кіргеннен кейінгі айлар саны белсенді емес болып саналады: "
 
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:164
 msgid "Number of pages"
-msgstr ""
+msgstr "Беттер саны"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:259
 #: app/Module/TopSurnamesModule.php:167
 msgid "Number of surnames"
-msgstr ""
+msgstr "Тегі, аты, әкесінің аты"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
-msgstr ""
+msgstr "күтуші әйел"
 
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "күтуші әйел"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
 msgid "Nurse"
-msgstr ""
+msgstr "күтуші әйел"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Oakland, California, United States"
-msgstr ""
+msgstr "Окленд, Калифорния, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Oaxaca, Mexico"
-msgstr ""
+msgstr "Оаксака, Мексика"
 
 #. I18N: gedcom tag OCCU
 #: app/GedcomTag.php:455 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "кәсіп"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:37
 msgid "Occupations"
-msgstr ""
+msgstr "Мамандықтар"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6808
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "Палестина аумағы басып алынған"
 
 #: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Қаз"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Қазан"
 
 #: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Қазан"
 
 #: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Қазан"
 
 #: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:607
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Қазан"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Ogden, Utah, United States"
-msgstr ""
+msgstr "Огден, Юта, АҚШ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr ""
+msgstr "Оклахома Сити, Оклахома, Америка Құрама Штаттары"
 
 #: resources/views/admin/changes-log.php:61
 msgid "Old data"
-msgstr ""
+msgstr "Ескі деректер"
 
 #: resources/views/admin/control-panel.php:454
 msgid "Old files found"
-msgstr ""
+msgstr "Ескі файлдар табылды"
 
 #: pedigree.php:212
 msgid "Oldest at bottom"
