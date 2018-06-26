@@ -196,7 +196,7 @@ class LoginController extends AbstractBaseController {
 			list($latest_version) = explode('|', $latest_version_txt);
 
 			if (version_compare(WT_VERSION, $latest_version) < 0) {
-				FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e('admin_site_upgrade.php') . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $latest_version . '</span>') . '</a>');
+				FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $latest_version . '</span>') . '</a>');
 			}
 		}
 	}

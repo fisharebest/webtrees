@@ -28,7 +28,7 @@
 				<?= I18N::translate('No upgrade information is available.') ?>
 			<?php elseif (version_compare(WT_VERSION, $latest_version) < 0): ?>
 				<?= I18N::translate('A new version of webtrees is available.') ?>
-				<a href="admin_site_upgrade.php" class="error">
+				<a href="<?= e(route('upgrade')) ?>" class="error">
 					<?= /* I18N: %s is a version number */
 					I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
 				</a>
