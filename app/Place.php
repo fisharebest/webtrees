@@ -52,7 +52,7 @@ class Place {
 		$place_id = 0;
 		foreach (array_reverse($this->gedcom_place) as $place) {
 			$place_id = Database::prepare(
-				"SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
+				"SELECT p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
 			)->execute(array(
 				'parent_id' => $place_id,
 				'place'     => $place,
@@ -86,7 +86,7 @@ class Place {
 		}
 
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE p_place FROM `##places`" .
+			"SELECT p_place FROM `##places`" .
 			" WHERE p_parent_id = :parent_id AND p_file = :tree_id" .
 			" ORDER BY p_place COLLATE :collation"
 		)->execute(array(
@@ -220,7 +220,7 @@ class Place {
 		$places = array();
 		$rows   =
 			Database::prepare(
-				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
+				"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
 				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
 				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
@@ -256,7 +256,7 @@ class Place {
 		$places = array();
 		$rows   =
 			Database::prepare(
-				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
+				"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
 				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
 				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .

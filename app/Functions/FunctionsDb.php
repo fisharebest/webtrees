@@ -679,7 +679,7 @@ class FunctionsDb {
 		if ($max == 0) {
 			return
 				Database::prepare(
-					"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
+					"SELECT n_surn, COUNT(n_surn) FROM `##name`" .
 					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC"
@@ -690,7 +690,7 @@ class FunctionsDb {
 		} else {
 			return
 				Database::prepare(
-					"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
+					"SELECT n_surn, COUNT(n_surn) FROM `##name`" .
 					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC" .
@@ -980,7 +980,7 @@ class FunctionsDb {
 
 		$blocks = array('main' => array(), 'side' => array());
 		$rows   = Database::prepare(
-			"SELECT SQL_CACHE location, block_id, module_name" .
+			"SELECT location, block_id, module_name" .
 			" FROM  `##block`" .
 			" JOIN  `##module` USING (module_name)" .
 			" JOIN  `##module_privacy` USING (module_name)" .
@@ -1013,7 +1013,7 @@ class FunctionsDb {
 
 		$blocks = array('main' => array(), 'side' => array());
 		$rows   = Database::prepare(
-			"SELECT SQL_CACHE location, block_id, module_name" .
+			"SELECT location, block_id, module_name" .
 			" FROM  `##block`" .
 			" JOIN  `##module` USING (module_name)" .
 			" JOIN  `##module_privacy` USING (module_name, gedcom_id)" .

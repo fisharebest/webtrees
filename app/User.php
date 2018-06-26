@@ -47,7 +47,7 @@ class User {
 	public static function find($user_id) {
 		if (!array_key_exists($user_id, self::$cache)) {
 			$row = Database::prepare(
-				"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
+				"SELECT user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
 			)->execute(array($user_id))->fetchOneRow();
 			if ($row) {
 				self::$cache[$user_id] = new self($row);
@@ -68,7 +68,7 @@ class User {
 	 */
 	public static function findByUserName($user_name) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
+			"SELECT user_id FROM `##user` WHERE user_name = :user_name"
 		)->execute(array(
 			'user_name' => $user_name,
 		))->fetchOne();
@@ -85,7 +85,7 @@ class User {
 	 */
 	public static function findByEmail($email) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE email = :email"
+			"SELECT user_id FROM `##user` WHERE email = :email"
 		)->execute(array(
 			'email' => $email,
 		))->fetchOne();
@@ -102,7 +102,7 @@ class User {
 	 */
 	public static function findByIdentifier($identifier) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user` WHERE ? IN (user_name, email)"
+			"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
 		)->execute(array($identifier))->fetchOne();
 
 		return self::find($user_id);
@@ -117,7 +117,7 @@ class User {
 	 */
 	public static function findByGenealogyRecord(Individual $individual) {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE user_id" .
+			"SELECT user_id" .
 			" FROM `##user_gedcom_setting`" .
 			" WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
 		)->execute(array(
@@ -135,7 +135,7 @@ class User {
 	 */
 	public static function findLatestToRegister() {
 		$user_id = Database::prepare(
-			"SELECT SQL_CACHE u.user_id" .
+			"SELECT u.user_id" .
 			" FROM `##user` u" .
 			" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
 			" ORDER BY us.setting_value DESC LIMIT 1"
@@ -184,7 +184,7 @@ class User {
 	 */
 	public static function count() {
 		return (int) Database::prepare(
-			"SELECT SQL_CACHE COUNT(*)" .
+			"SELECT COUNT(*)" .
 			" FROM `##user`" .
 			" WHERE user_id > 0"
 		)->fetchOne();
@@ -199,7 +199,7 @@ class User {
 		$users = array();
 
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" WHERE user_id > 0" .
 			" ORDER BY user_name"
@@ -219,7 +219,7 @@ class User {
 	 */
 	public static function allAdmins() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##user_setting` USING (user_id)" .
 			" WHERE user_id > 0" .
@@ -242,7 +242,7 @@ class User {
 	 */
 	public static function allVerified() {
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			"SELECT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##user_setting` USING (user_id)" .
 			" WHERE user_id > 0" .
@@ -265,7 +265,7 @@ class User {
 	 */
 	public static function allLoggedIn() {
 		$rows = Database::prepare(
-			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
+			"SELECT DISTINCT user_id, user_name, real_name, email" .
 			" FROM `##user`" .
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
@@ -458,7 +458,7 @@ class User {
 		if ($this->preferences === null) {
 			if ($this->user_id) {
 				$this->preferences = Database::prepare(
-					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
+					"SELECT setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
 				)->execute(array($this->user_id))->fetchAssoc();
 			} else {
 				// Not logged in? We have no preferences.

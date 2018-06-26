@@ -38,7 +38,7 @@ class Site {
 		// so it is quicker to fetch them all in one go.
 		if (self::$settings === null) {
 			self::$settings = Database::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##site_setting`"
+				"SELECT setting_name, setting_value FROM `##site_setting`"
 			)->fetchAssoc();
 		}
 

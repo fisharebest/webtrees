@@ -55,7 +55,7 @@ abstract class AbstractModule {
 	 */
 	public function getBlockSetting($block_id, $setting_name, $default_value = null) {
 		$setting_value = Database::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
+			"SELECT setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
 		)->execute(array(
 			'block_id'     => $block_id,
 			'setting_name' => $setting_name,
@@ -138,7 +138,7 @@ abstract class AbstractModule {
 	private function loadAllSettings() {
 		if ($this->settings === null) {
 			$this->settings = Database::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
+				"SELECT setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
 			)->execute(array($this->getName()))->fetchAssoc();
 		}
 	}

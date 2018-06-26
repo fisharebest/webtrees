@@ -68,7 +68,7 @@ class Tree {
 
 		// Load the privacy settings for this tree
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN :priv_public WHEN 'privacy' THEN :priv_user WHEN 'confidential' THEN :priv_none WHEN 'hidden' THEN :priv_hide END AS resn" .
+			"SELECT xref, tag_type, CASE resn WHEN 'none' THEN :priv_public WHEN 'privacy' THEN :priv_user WHEN 'confidential' THEN :priv_none WHEN 'hidden' THEN :priv_hide END AS resn" .
 			" FROM `##default_resn` WHERE gedcom_id = :tree_id"
 		)->execute(array(
 			'priv_public' => Auth::PRIV_PRIVATE,
@@ -184,7 +184,7 @@ class Tree {
 	public function getPreference($setting_name, $default = null) {
 		if ($this->preferences === null) {
 			$this->preferences = Database::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
+				"SELECT setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
 			)->execute(array($this->tree_id))->fetchAssoc();
 		}
 
@@ -246,7 +246,7 @@ class Tree {
 		// so it is quicker to fetch them all in one go.
 		if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
 			$this->user_preferences[$user->getUserId()] = Database::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
+				"SELECT setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
 			)->execute(array($user->getUserId(), $this->tree_id))->fetchAssoc();
 		}
 
@@ -316,7 +316,7 @@ class Tree {
 		if (self::$trees === null) {
 			self::$trees = array();
 			$rows        = Database::prepare(
-				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
+				"SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
 				" FROM `##gedcom` g" .
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')" .
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')" .

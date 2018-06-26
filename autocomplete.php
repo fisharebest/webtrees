@@ -84,7 +84,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 	$data = array();
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
-		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+		"SELECT i_id AS xref, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file = :tree_id" .
 		" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE :collation"
@@ -129,7 +129,7 @@ case 'GIVN': // Given names, that start with the search term
 	// Do not filter by privacy. Given names on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
-			"SELECT SQL_CACHE DISTINCT n_givn" .
+			"SELECT DISTINCT n_givn" .
 			" FROM `##name`" .
 			" WHERE n_givn LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
 			" ORDER BY n_givn COLLATE :collation"
@@ -240,7 +240,7 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 	// Do not filter by privacy. Place names on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
-			"SELECT SQL_CACHE p_place" .
+			"SELECT p_place" .
 			" FROM `##places`" .
 			" WHERE p_place LIKE CONCAT('%', :term, '%') AND p_file = :tree_id" .
 			" ORDER BY p_place COLLATE :collation"
@@ -307,7 +307,7 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	$sid  = Filter::get('extra', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
-		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+		"SELECT i_id AS xref, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND i_file = :tree_id"
 	)->execute(array(
@@ -327,7 +327,7 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	}
 	// Fetch all data, regardless of privacy
 	$rows = Database::prepare(
-		"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
+		"SELECT f_id AS xref, f_gedcom AS gedcom" .
 		" FROM `##families`" .
 		" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
 	)->execute(array(
@@ -381,7 +381,7 @@ case 'SURN': // Surnames, that start with the search term
 	// Do not filter by privacy. Surnames on their own do not identify individuals.
 	echo json_encode(
 		Database::prepare(
-			"SELECT SQL_CACHE DISTINCT n_surname" .
+			"SELECT DISTINCT n_surname" .
 			" FROM `##name`" .
 			" WHERE n_surname LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
 			" ORDER BY n_surname COLLATE :collation"

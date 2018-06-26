@@ -52,7 +52,7 @@ case 'compose':
 	echo '<h3>' . I18N::translate('Add/edit a journal/news entry') . '</h3>';
 	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id=' . $news_id . '">';
 	if ($news_id) {
-		$news = Database::prepare("SELECT SQL_CACHE news_id AS id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id=?")->execute(array($news_id))->fetchOneRow(PDO::FETCH_ASSOC);
+		$news = Database::prepare("SELECT news_id AS id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS date, subject, body FROM `##news` WHERE news_id=?")->execute(array($news_id))->fetchOneRow(PDO::FETCH_ASSOC);
 	} else {
 		$news              = array();
 		$news['user_id']   = $user_id;

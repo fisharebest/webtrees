@@ -316,7 +316,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		}
 
 		//-- make sure this is not a duplicate entry
-		$sql = "SELECT SQL_NO_CACHE 1 FROM `##favorite` WHERE";
+		$sql = "SELECT 1 FROM `##favorite` WHERE";
 		if (!empty($favorite['gid'])) {
 			$sql .= " xref=?";
 			$vars = array($favorite['gid']);
@@ -353,7 +353,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	public static function getFavorites($gedcom_id) {
 		return
 			Database::prepare(
-				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .
+				"SELECT favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .
 				" FROM `##favorite` WHERE gedcom_id=? AND user_id IS NULL")
 			->execute(array($gedcom_id))
 			->fetchAll(PDO::FETCH_ASSOC);

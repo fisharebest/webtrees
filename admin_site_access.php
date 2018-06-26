@@ -136,7 +136,7 @@ case 'load':
 	$length = Filter::getInteger('length');
 
 	$sql =
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
+		"SELECT SQL_CALC_FOUND_ROWS" .
 		" '', INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id" .
 		" FROM `##site_access_rule`";
 	$args = array();
