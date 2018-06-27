@@ -172,7 +172,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$map_data = '';
 		}
 
-		return view('tabs/map', [
+		return view('modules/googlemap/tab', [
 			'google_map_css'       => WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css',
 			'google_map_js'        => $this->googleMapsScript(),
 			'individual'           => $individual,

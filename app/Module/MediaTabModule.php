@@ -56,7 +56,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		return view('tabs/media', [
+		return view('modules/media/tab', [
 			'can_edit'   => $individual->canEdit(),
 			'individual' => $individual,
 			'facts'      => $this->getFactsWithMedia($individual),

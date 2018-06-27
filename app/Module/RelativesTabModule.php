@@ -60,7 +60,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			$fam_access_level = Auth::accessLevel($tree);
 		}
 
-		return view('tabs/relatives', [
+		return view('modules/relatives/tab', [
 			'fam_access_level'     => $fam_access_level,
 			'can_edit'             => $individual->canEdit(),
 			'individual'           => $individual,

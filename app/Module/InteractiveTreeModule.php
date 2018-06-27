@@ -51,7 +51,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		$treeview = new TreeView('tvTab');
 		list($html, $js) = $treeview->drawViewport($individual, 3);
 
-		return view('tabs/treeview', [
+		return view('modules/tree/tab', [
 			'html'         => $html,
 			'js'           => $js,
 			'treeview_css' => WT_MODULES_DIR . $this->getName() . '/css/treeview.css',

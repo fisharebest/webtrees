@@ -118,7 +118,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 		Functions::sortFacts($indifacts);
 
-		return view('tabs/facts', [
+		return view('modules/personal_facts/tab', [
 			'can_edit'             => $individual->canEdit(),
 			'has_historical_facts' => $has_historical_facts,
 			'individual'           => $individual,

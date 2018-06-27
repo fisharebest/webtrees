@@ -54,7 +54,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		return view('tabs/sources', [
+		return view('modules/sources_tab/tab', [
 			'can_edit'   => $individual->canEdit(),
 			'individual' => $individual,
 			'facts'      => $this->getFactsWithSources($individual),

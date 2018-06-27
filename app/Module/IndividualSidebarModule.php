@@ -96,7 +96,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = QueryName::surnameAlpha($individual->getTree(), true, false, false);
 
-		return view('sidebars/individuals', [
+		return view('modules/individuals/sidebar', [
 			'initials' => $initials,
 		]);
 	}

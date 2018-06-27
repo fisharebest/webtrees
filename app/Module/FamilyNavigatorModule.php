@@ -58,6 +58,6 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	 * @return string
 	 */
 	public function getSidebarContent(Individual $individual) {
-		return view('sidebars/family-navigator', ['individual' => $individual]);
+		return view('modules/family_nav/sidebar', ['individual' => $individual]);
 	}
 }

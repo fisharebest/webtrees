@@ -57,7 +57,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent(Individual $individual) {
-		return view('tabs/notes', [
+		return view('modules/notes/tab', [
 			'can_edit'   => $individual->canEdit(),
 			'individual' => $individual,
 			'facts'      => $this->getFactsWithNotes($individual),

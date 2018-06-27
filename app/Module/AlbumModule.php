@@ -85,7 +85,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	 * @return string
 	 */
 	public function getTabContent(Individual $individual) {
-		return view('tabs/album', [
+		return view('modules/lightbox/tab', [
 			'media_list' => $this->getMedia($individual)
 		]);
 	}

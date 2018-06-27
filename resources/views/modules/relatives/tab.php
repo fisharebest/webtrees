@@ -39,7 +39,7 @@
 
 <!-- Parents -->
 <?php foreach ($parent_families as $family): ?>
-	<?= view('tabs/relatives-family', [
+	<?= view('modules/relatives/family', [
 		'individual'       => $individual,
 		'family'           => $family,
 		'type'             => 'FAMC',
@@ -50,7 +50,7 @@
 
 <!-- step-parents -->
 <?php foreach ($step_parent_families as $family): ?>
-	<?= view('tabs/relatives-family', [
+	<?= view('modules/relatives/family', [
 		'individual'       => $individual,
 		'family'           => $family,
 		'type'             => 'FAMC',
@@ -61,7 +61,7 @@
 
 <!-- spouses -->
 <?php foreach ($spouse_families as $family): ?>
-	<?= view('tabs/relatives-family', [
+	<?= view('modules/relatives/family', [
 		'individual'       => $individual,
 		'family'           => $family,
 		'type'             => 'FAMS',
@@ -72,7 +72,7 @@
 
 <!-- step-children -->
 <?php foreach ($step_child_familiess as $family): ?>
-	<?= view('tabs/relatives-family', [
+	<?= view('modules/relatives/family', [
 		'individual'       => $individual,
 		'family'           => $family,
 		'type'             => 'FAMS',
