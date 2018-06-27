@@ -143,10 +143,8 @@
 									echo GedcomTag::getLabelValue('FILE', $media_file->filename());
 								}
 								echo GedcomTag::getLabelValue('FORM', $media_file->mimeType());
-								echo GedcomTag::getLabelValue('__FILE_SIZE__', $media_file->fileSizeKB());
-								$imgsize = $media_file->getImageAttributes();
-								if ($imgsize['WxH']) {
-									echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+								foreach ($media_file->attributes() as $tag => $value) {
+									echo GedcomTag::getLabelValue($tag, $value);
 								}
 								?>
 							</div>
