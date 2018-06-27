@@ -558,14 +558,7 @@ class FunctionsEdit {
 			$name = 'text[]';
 		}
 
-		if ($level === '0') {
-			$id = $fact;
-		} else {
-			$id = $fact . Uuid::uuid4();
-		}
-		if ($upperlevel) {
-			$id = $upperlevel . '_' . $fact . Uuid::uuid4();
-		}
+		$id = $fact . Uuid::uuid4()->toString();
 
 		$previous_ids[$fact] = $id;
 
@@ -751,10 +744,6 @@ class FunctionsEdit {
 			$html .= '<div class="input-group-append"><span class="input-group-text">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span></div>';
 			$html .= self::inputAddonHelp('PLAC');
 			$html .= '</div>';
-			if (Module::getModuleByName('places_assistant')) {
-				\PlacesAssistantModule::setup_place_subfields($id);
-				\PlacesAssistantModule::print_place_subfields($id);
-			}
 		} elseif ($fact === 'QUAY') {
 			$html .= Bootstrap4::select(GedcomCodeQuay::getValues(), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'RELA') {
@@ -982,60 +971,6 @@ class FunctionsEdit {
 
 		return
 			'<select id="census-selector" class="form-control" onchange="selectCensus(this)">' . $options . '</select>';
-	}
-
-	/**
-	 * Prints collapsable fields to add ASSO/RELA, SOUR, OBJE, etc.
-	 *
-	 * @param string $tag
-	 * @param int    $level
-	 * @param string $parent_tag
-	 */
-	public static function printAddLayer($tag, $level = 2, $parent_tag = '') {
-		global $WT_TREE;
-
-		switch ($tag) {
-			case 'SOUR':
-				echo view('cards/add-source-citation', [
-					'level'          => $level,
-					'full_citations' => $WT_TREE->getPreference('FULL_SOURCES'),
-				]);
-				break;
-
-			case 'ASSO':
-			case 'ASSO2':
-				echo view('cards/add-associate', [
-					'level' => $level,
-				]);
-				break;
-
-			case 'NOTE':
-				echo view('cards/add-note', [
-					'level' => $level,
-				]);
-				break;
-
-			case 'SHARED_NOTE':
-				echo view('cards/add-shared-note', [
-					'level'      => $level,
-					'parent_tag' => $parent_tag,
-				]);
-				break;
-
-			case 'OBJE':
-				if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-					echo view('cards/add-media-object', [
-						'level' => $level,
-					]);
-				}
-				break;
-
-			case 'RESN':
-				echo view('cards/add-restriction', [
-					'level' => $level,
-				]);
-				break;
-		}
 	}
 
 	/**

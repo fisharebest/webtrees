@@ -3,12 +3,12 @@
 
 <div class="card mb-4">
 	<div class="card-header">
-		<a href="#" data-toggle="collapse" data-target="#add-associate" aria-expanded="false" aria-controls="add-associate">
+		<a href="#" data-toggle="collapse" data-target="#<?= e($id) ?>" aria-expanded="false" aria-controls="add-associate">
 			<?= I18N::translate('Add an associate') ?>
 		</a>
 	</div>
 
-	<div class="card-body collapse" id="add-associate">
+	<div class="card-body collapse" id="<?= e($id) ?>">
 		<?= FunctionsEdit::addSimpleTag($level . ' _ASSO @') ?>
 		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' RELA') ?>
 		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' NOTE') ?>

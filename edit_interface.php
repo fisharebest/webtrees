@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Ramsey\Uuid\Uuid;
 
 require 'includes/session.php';
 
@@ -76,8 +77,12 @@ case 'edit':
 		case 'REPO':
 			// REPO:NAME facts may take a NOTE (but the REPO record may not).
 			if ($level1type === 'NAME') {
-				FunctionsEdit::printAddLayer('NOTE');
-				FunctionsEdit::printAddLayer('SHARED_NOTE');
+				echo view('cards/add-note', [
+					'level' => 2,
+				]);
+				echo view('cards/add-shared-note', [
+					'level' => 2,
+				]);
 			}
 			break;
 		case 'FAM':
@@ -85,22 +90,40 @@ case 'edit':
 			// FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
 			if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
 				if ($level1type !== 'SOUR') {
-					FunctionsEdit::printAddLayer('SOUR');
-				}
+					echo view('cards/add-source-citation', [
+						'level'          => 2,
+						'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+					]);				}
 				if ($level1type !== 'OBJE') {
-					FunctionsEdit::printAddLayer('OBJE');
+					if ($controller->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->tree())) {
+						echo view('cards/add-media-object', [
+							'level' => 2,
+						]);
+					}
 				}
-				FunctionsEdit::printAddLayer('NOTE');
-				FunctionsEdit::printAddLayer('SHARED_NOTE', 2, $level1type);
+				echo view('cards/add-note', [
+					'level' => 2,
+				]);
+				echo view('cards/add-shared-note', [
+					'level' => 2,
+				]);
 				if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
-					FunctionsEdit::printAddLayer('ASSO');
+					echo view('cards/add-associate', [
+						'id'    => Uuid::uuid4()->toString(),
+						'level' => 2,
+					]);
 				}
 				// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 				if (in_array($level1type, Config::twoAssociates())) {
-					FunctionsEdit::printAddLayer('ASSO2');
+					echo view('cards/add-associate', [
+						'id'    => Uuid::uuid4()->toString(),
+						'level' => 2,
+					]);
 				}
 				if ($level1type !== 'SOUR') {
-					FunctionsEdit::printAddLayer('RESN');
+					echo view('cards/add-restriction', [
+						'level' => 2,
+					]);
 				}
 			}
 			break;
@@ -169,19 +192,38 @@ case 'add':
 	if ($level0type === 'INDI' || $level0type === 'FAM') {
 		// ... but not facts which are simply links to other records
 		if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') {
-			FunctionsEdit::printAddLayer('SOUR');
-			FunctionsEdit::printAddLayer('OBJE');
+			echo view('cards/add-source-citation', [
+				'level'          => 2,
+				'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+			]);
+			if ($controller->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->tree())) {
+				echo view('cards/add-media-object', [
+					'level' => 2,
+				]);
+			}
 			// Don’t add notes to notes!
 			if ($fact !== 'NOTE') {
-				FunctionsEdit::printAddLayer('NOTE');
-				FunctionsEdit::printAddLayer('SHARED_NOTE', 2, $fact);
+				echo view('cards/add-note', [
+					'level' => 2,
+				]);
+				echo view('cards/add-shared-note', [
+					'level' => 2,
+				]);
 			}
-			FunctionsEdit::printAddLayer('ASSO');
+			echo view('cards/add-associate', [
+				'id'    => Uuid::uuid4()->toString(),
+				'level' => 2,
+			]);
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 			if (in_array($fact, Config::twoAssociates())) {
-				FunctionsEdit::printAddLayer('ASSO2');
+				echo view('cards/add-associate', [
+					'id'    => Uuid::uuid4()->toString(),
+					'level' => 2,
+				]);
 			}
-			FunctionsEdit::printAddLayer('RESN');
+			echo view('cards/add-restriction', [
+				'level' => 2,
+			]);
 		}
 	}
 	?>
@@ -1810,15 +1852,33 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '</table>';
 	if ($nextaction === 'update') {
 		// GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
-		FunctionsEdit::printAddLayer('SOUR');
-		FunctionsEdit::printAddLayer('NOTE');
-		FunctionsEdit::printAddLayer('SHARED_NOTE');
-		FunctionsEdit::printAddLayer('RESN');
+		echo view('cards/add-source-citation', [
+			'level'          => 2,
+			'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+		]);
+		echo view('cards/add-note', [
+			'level' => 2,
+		]);
+		echo view('cards/add-shared-note', [
+			'level' => 2,
+		]);
+		echo view('cards/add-restriction', [
+			'level' => 2,
+		]);
 	} else {
-		FunctionsEdit::printAddLayer('SOUR', 1);
-		FunctionsEdit::printAddLayer('NOTE', 1);
-		FunctionsEdit::printAddLayer('SHARED_NOTE', 1);
-		FunctionsEdit::printAddLayer('RESN', 1);
+		echo view('cards/add-source-citation', [
+			'level'          => 1,
+			'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+		]);
+		echo view('cards/add-note', [
+			'level' => 1,
+		]);
+		echo view('cards/add-shared-note', [
+			'level' => 1,
+		]);
+		echo view('cards/add-restriction', [
+			'level' => 1,
+		]);
 	}
 
 	?>
