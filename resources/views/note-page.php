@@ -14,7 +14,7 @@
 	<?php endif ?>
 <?php elseif ($note->isPendingAddition()): ?>
 	<?php if (Auth::isModerator($note->getTree())): ?>
-		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($note->getXref()) . '\', \'' . e($note->getTree()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($note->getXref()) . '\', \'' . e($note->getTree()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+		<?= view('alerts/warning-dissmissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($note->getXref()) . '\', \'' . e($note->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($note->getXref()) . '\', \'' . e($note->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php elseif (Auth::isEditor($note->getTree())): ?>
 		<?= view('alerts/warning-dissmissible', ['alert' => I18N::translate('This note has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
 	<?php endif ?>
@@ -76,7 +76,7 @@
 						<?= I18N::translate('Shared note') ?>
 						<?php if (Auth::isEditor($note->getTree())): ?>
 							<div class="editfacts">
-								<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=editnote&ged=' . $note->getTree()->getNameUrl() . '&xref=' . $note->getXref()]) ?>
+								<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => route('edit-note-object', ['xref' => $note->getXref(), 'ged' => $note->getTree()->getName()])]) ?>
 							</div>
 						<?php endif ?>
 					</th>

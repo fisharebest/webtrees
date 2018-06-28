@@ -151,6 +151,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:create-media-from-file' => 'EditMediaController@createMediaObjectFromFileAction',
 		'GET:create-note-object'      => 'EditNoteController@createNoteObject',
 		'POST:create-note-object'     => 'EditNoteController@createNoteObjectAction',
+		'GET:edit-note-object'        => 'EditNoteController@editNoteObject',
+		'POST:edit-note-object'       => 'EditNoteController@updateNoteObject',
 		'GET:create-repository'       => 'EditRepositoryController@createRepository',
 		'POST:create-repository'      => 'EditRepositoryController@createRepositoryAction',
 		'GET:create-source'           => 'EditSourceController@createSource',

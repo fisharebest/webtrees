@@ -18,8 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,6 +38,63 @@ class EditNoteController extends AbstractBaseController {
 	 */
 	public function createNoteObject(Request $request): Response {
 		return new Response(view('modals/create-note-object'));
+	}
+
+	/**
+	 * Show a form to create a new note object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editNoteObject(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$note = Note::getInstance($xref, $tree);
+
+		$this->checkNoteAccess($note, true);
+
+		return $this->viewResponse('edit/shared-note', [
+			'note'  => $note,
+			'title' => I18N::translate('Edit the shared note'),
+			'tree'  => $tree,
+		]);
+	}
+
+	/**
+	 * Show a form to create a new note object.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function updateNoteObject(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$note = Note::getInstance($xref, $tree);
+
+		$this->checkNoteAccess($note, true);
+
+		$NOTE = $request->get('NOTE');
+
+		// "\" and "$" are signficant in replacement strings, so escape them.
+		$NOTE = str_replace(['\\', '$'], ['\\\\', '\\$'], $NOTE);
+
+		$gedrec = preg_replace(
+			'/^0 @' . $note->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
+			'0 @' . $note->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
+			$note->getGedcom()
+		);
+
+		$note->updateRecord($gedrec, true);
+
+		return new RedirectResponse($note->url());
 	}
 
 	/**
@@ -68,7 +127,7 @@ class EditNoteController extends AbstractBaseController {
 		$record = $tree->createRecord($gedcom);
 
 		return new JsonResponse([
-			'id' => $record->getXref(),
+			'id'   => $record->getXref(),
 			'text' => view('selects/note', [
 				'note' => $record,
 			]),
@@ -76,7 +135,7 @@ class EditNoteController extends AbstractBaseController {
 				'title' => I18N::translate('The note has been created'),
 				'name'  => $record->getFullName(),
 				'url'   => $record->url(),
-			])
+			]),
 		]);
 	}
 }
