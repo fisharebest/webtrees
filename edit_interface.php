@@ -354,11 +354,13 @@ case 'add_child_to_family':
 	$family = Family::getInstance($xref, $controller->tree());
 	check_record_access($family);
 
+	$title = $family->getFullName() . ' - ' . I18N::translate('Add a child');
+
 	$controller
-		->setPageTitle($family->getFullName() . ' - ' . I18N::translate('Add a child'))
+		->setPageTitle($title)
 		->pageHeader();
 
-	print_indi_form('add_child_to_family_action', null, $family, null, 'CHIL', $gender);
+	print_indi_form($controller->tree(), $title, 'add_child_to_family_action', null, $family, null, 'CHIL', $gender);
 	break;
 
 case 'add_child_to_family_action':
@@ -433,11 +435,13 @@ case 'add_child_to_individual':
 	$person = Individual::getInstance($xref, $controller->tree());
 	check_record_access($person);
 
+	$title = $person->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
+
 	$controller
-		->setPageTitle($person->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family'))
+		->setPageTitle($title)
 		->pageHeader();
 
-	print_indi_form('add_child_to_individual_action', $person, null, null, 'CHIL', 'U');
+	print_indi_form($controller->tree(), $title, 'add_child_to_individual_action', $person, null, null, 'CHIL', 'U');
 	break;
 
 case 'add_child_to_individual_action':
@@ -511,15 +515,17 @@ case 'add_parent_to_individual':
 	check_record_access($individual);
 
 	if ($gender === 'F') {
-		$controller->setPageTitle(I18N::translate('Add a mother'));
+		$title = I18N::translate('Add a mother');
 		$famtag = 'WIFE';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a father'));
+		$title = I18N::translate('Add a father');
 		$famtag = 'HUSB';
 	}
-	$controller->pageHeader();
+	$controller
+		->setPageTitle($title)
+		->pageHeader();
 
-	print_indi_form('add_parent_to_individual_action', $individual, null, null, $famtag, $gender);
+	print_indi_form($controller->tree(), $title, 'add_parent_to_individual_action', $individual, null, null, $famtag, $gender);
 	break;
 
 case 'add_parent_to_individual_action':
@@ -587,12 +593,15 @@ case 'add_unlinked_indi':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a new, unlinked individual
 	//////////////////////////////////////////////////////////////////////////////
+
+	$title = I18N::translate('Create an individual');
+
 	$controller
 		->restrictAccess(Auth::isManager($controller->tree()))
-		->setPageTitle(I18N::translate('Create an individual'))
+		->setPageTitle($title)
 		->pageHeader();
 
-	print_indi_form('add_unlinked_indi_action', null, null, null, null, null);
+	print_indi_form($controller->tree(), $title, 'add_unlinked_indi_action', null, null, null, null, null);
 	break;
 
 case 'add_unlinked_indi_action':
@@ -646,15 +655,17 @@ case 'add_spouse_to_individual':
 	check_record_access($individual);
 
 	if ($sex === 'F') {
-		$controller->setPageTitle(I18N::translate('Add a wife'));
+		$title = I18N::translate('Add a wife');
 		$famtag = 'WIFE';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a husband'));
+		$title = I18N::translate('Add a husband');
 		$famtag = 'HUSB';
 	}
-	$controller->pageHeader();
+	$controller
+		->setPageTitle($title)
+		->pageHeader();
 
-	print_indi_form('add_spouse_to_individual_action', $individual, null, null, $famtag, $sex);
+	print_indi_form($controller->tree(), $title, 'add_spouse_to_individual_action', $individual, null, null, $famtag, $sex);
 	break;
 
 case 'add_spouse_to_individual_action':
@@ -734,15 +745,17 @@ case 'add_spouse_to_family':
 	check_record_access($family);
 
 	if ($famtag === 'WIFE') {
-		$controller->setPageTitle(I18N::translate('Add a wife'));
+		$title = I18N::translate('Add a wife');
 		$sex = 'F';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a husband'));
+		$title = I18N::translate('Add a husband');
 		$sex = 'M';
 	}
-	$controller->pageHeader();
+	$controller
+		->setPageTitle($title)
+		->pageHeader();
 
-	print_indi_form('add_spouse_to_family_action', null, $family, null, $famtag, $sex);
+	print_indi_form($controller->tree(), $title, 'add_spouse_to_family_action', null, $family, null, $famtag, $sex);
 	break;
 
 case 'add_spouse_to_family_action':
@@ -1163,11 +1176,13 @@ case 'editname':
 		break;
 	}
 
+	$title = I18N::translate('Edit the name');
+
 	$controller
-		->setPageTitle(I18N::translate('Edit the name'))
+		->setPageTitle($title)
 		->pageHeader();
 
-	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
+	print_indi_form($controller->tree(), $title, 'update', $person, null, $name_fact, '', $person->getSex());
 	echo view('modals/ajax');
 	break;
 
@@ -1180,11 +1195,13 @@ case 'addname':
 	$individual = Individual::getInstance($xref, $controller->tree());
 	check_record_access($individual);
 
+	$title = $individual->getFullName() . ' — ' . I18N::translate('Add a name');
+
 	$controller
-		->setPageTitle($individual->getFullName() . ' — ' . I18N::translate('Add a name'))
+		->setPageTitle($title)
 		->pageHeader();
 
-	print_indi_form('update', $individual, null, null, '', $individual->getSex());
+	print_indi_form($controller->tree(), $title, 'update', $individual, null, null, '', $individual->getSex());
 	break;
 
 case 'changefamily':
@@ -1505,19 +1522,21 @@ function keep_chan(GedcomRecord $record = null) {
 /**
  * Print a form to add an individual or edit an individual’s name
  *
+ * @param Tree       $tree
+ * @param string     $title
  * @param string     $nextaction
- * @param Individual $person
+ * @param Individual $individual
  * @param Family     $family
  * @param Fact       $name_fact
  * @param string     $famtag
  * @param string     $gender
  */
-function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
-	global $bdm, $controller;
+function print_indi_form(Tree $tree, string $title, $nextaction, Individual $individual = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
+	global $controller;
 
-	if ($person) {
-		$xref = $person->getXref();
-		$cancel_url = $person->url();
+	if ($individual) {
+		$xref = $individual->getXref();
+		$cancel_url = $individual->url();
 	} elseif ($family) {
 		$xref = $family->getXref();
 		$cancel_url = $family->url();
@@ -1527,7 +1546,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	// Different cultures do surnames differently
-	$surname_tradition = SurnameTradition::create($controller->tree()->getPreference('SURNAME_TRADITION'));
+	$surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
 
 	if ($name_fact !== null) {
 		// Editing an existing name
@@ -1589,8 +1608,8 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			$father_name = '';
 			$mother_name = '';
 		}
-		if ($person && $person->getFirstFact('NAME')) {
-			$indi_name = $person->getFirstFact('NAME')->getValue();
+		if ($individual && $individual->getFirstFact('NAME')) {
+			$indi_name = $individual->getFirstFact('NAME')->getValue();
 		} else {
 			$indi_name = '';
 		}
@@ -1600,7 +1619,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
 				break;
 			case 'add_child_to_individual_action':
-				if ($person->getSex() === 'F') {
+				if ($individual->getSex() === 'F') {
 					$name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
 				} else {
 					$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
@@ -1630,11 +1649,11 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	$bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
-	echo '<h2>', $controller->getPageTitle(), '</h2>';
+	echo '<h2 class="wt-page-title">', $title, '</h2>';
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
-	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
+	echo '<input type="hidden" name="ged" value="', e($tree->getName()), '">';
 	echo '<input type="hidden" name="action" value="', $nextaction, '">';
 	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -1653,7 +1672,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '', null, $person);
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '', null, $individual);
 		}
 	}
 
@@ -1663,7 +1682,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	} else {
 		$adv_name_fields = [];
 	}
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('ADVANCED_NAME_FACTS'), $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		foreach ($match[1] as $tag) {
 			// Ignore advanced facts that duplicate standard facts
 			if (!in_array($tag, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'])) {
@@ -1676,7 +1695,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// Edit existing tags, grouped together
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
-				echo FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+				echo FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
 				if ($tag === '_MARNM') {
 					preg_match_all('/\/([^\/]*)\//', $value, $matches);
 					echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
@@ -1685,7 +1704,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		}
 		// Allow a new tag to be entered
 		if (!array_key_exists($tag, $name_fields)) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+			echo FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
 			if ($tag === '_MARNM') {
 				echo FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
 			}
@@ -1751,7 +1770,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			echo FunctionsEdit::addSimpleTag('0 SEX U');
 		}
 		$bdm = 'BD';
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					FunctionsEdit::addSimpleTags($match);
@@ -1761,13 +1780,13 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		//-- if adding a spouse add the option to add a marriage fact to the new family
 		if ($nextaction === 'add_spouse_to_individual_action' || $nextaction === 'add_spouse_to_family_action') {
 			$bdm .= 'M';
-			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
 					FunctionsEdit::addSimpleTags($match);
 				}
 			}
 		}
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					FunctionsEdit::addSimpleTags($match);
@@ -1776,13 +1795,13 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		}
 	}
 
-	echo keep_chan($person);
+	echo keep_chan($individual);
 	echo '</table>';
 	if ($nextaction === 'update') {
 		// GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
 		echo view('cards/add-source-citation', [
 			'level'          => 2,
-			'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+			'full_citations' => $tree->getPreference('FULL_SOURCES'),
 		]);
 		echo view('cards/add-note', [
 			'level' => 2,
@@ -1795,8 +1814,12 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		]);
 	} else {
 		echo view('cards/add-source-citation', [
-			'level'          => 1,
-			'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+			'bdm'                     => $bdm,
+			'level'                   => 1,
+			'full_citations'          => $tree->getPreference('FULL_SOURCES'),
+			'prefer_level2_sources'   => $tree->getPreference('PREFER_LEVEL2_SOURCES'),
+			'quick_required_facts'    => $tree->getPreference('QUICK_REQUIRED_FACTS'),
+			'quick_required_famfacts' => $tree->getPreference('QUICK_REQUIRED_FAMFACTS'),
 		]);
 		echo view('cards/add-note', [
 			'level' => 1,
@@ -1827,8 +1850,8 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 				<?= FontAwesome::decorativeIcon('cancel') ?>
 				<?= /* I18N: A button label. */ I18N::translate('cancel') ?>
 			</a>
-			<?php if ($name_fact !== null && (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD'))): ?>
-				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->getFactId(), 'ged' => $controller->tree()->getName()])) ?>">
+			<?php if ($name_fact !== null && (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD'))): ?>
+				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->getFactId(), 'ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
 			<?php endif ?>
@@ -1839,7 +1862,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	<?php
 	$controller->addInlineJavascript('
-	SURNAME_TRADITION="' . $controller->tree()->getPreference('SURNAME_TRADITION') . '";
+	SURNAME_TRADITION="' . $tree->getPreference('SURNAME_TRADITION') . '";
 	gender="' . $gender . '";
 	famtag="' . $famtag . '";
 	function trim(str) {

@@ -540,7 +540,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function addSimpleTag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
-		global $tags, $xref, $bdm, $action, $WT_TREE;
+		global $tags, $xref, $action, $WT_TREE;
 
 		// Some form fields need access to previous form fields.
 		static $previous_ids = ['SOUR' => '', 'PLAC' => ''];
@@ -842,58 +842,6 @@ class FunctionsEdit {
 			// NAME TYPE : hide text field and show a selection list
 			$html .= Bootstrap4::select(GedcomCodeName::getValues($person), $value, ['id' => $id, 'name' => $name, 'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"']);
 			$html .= '<script>document.getElementById("' . $id . '").style.display="none";</script>';
-		}
-
-		// popup links
-		switch ($fact) {
-			case 'SOUR':
-				//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-				if ($level === '1') {
-					$html .= '<br>';
-					switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
-						case '2': // records
-						$level1_checked = 'checked';
-						$level2_checked = '';
-						break;
-						case '1': // facts
-						$level1_checked = '';
-						$level2_checked = 'checked';
-						break;
-						case '0': // none
-						default:
-						$level1_checked = '';
-						$level2_checked = '';
-						break;
-					}
-				if (strpos($bdm, 'B') !== false) {
-					$html .= ' <label><input type="checkbox" name="SOUR_INDI" ' . $level1_checked . ' value="1">' . I18N::translate('Individual') . '</label>';
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-						foreach ($matches[1] as $match) {
-							if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-								$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '" ' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
-							}
-						}
-					}
-				}
-				if (strpos($bdm, 'D') !== false) {
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-						foreach ($matches[1] as $match) {
-							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-								$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
-							}
-						}
-					}
-				}
-				if (strpos($bdm, 'M') !== false) {
-					$html .= ' <label><input type="checkbox" name="SOUR_FAM" ' . $level1_checked . ' value="1">' . I18N::translate('Family') . '</label>';
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
-						foreach ($matches[1] as $match) {
-							$html .= ' <label><input type="checkbox" name="SOUR_' . $match . '"' . $level2_checked . ' value="1">' . GedcomTag::getLabel($match) . '</label>';
-						}
-					}
-				}
-			}
-				break;
 		}
 
 		$html .= $extra . '</div></div>';
