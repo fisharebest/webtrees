@@ -206,7 +206,7 @@
 									<!-- UNLINKED INDIVIDUAL -->
 									<li>
 										<span class="fa-li"><i class="far fa-user"></i></span>
-										<a href="edit_interface.php?action=add_unlinked_indi&amp;ged=<?= e($managed_tree->getName()) ?>">
+										<a href="<?= e(route('add-unlinked-individual', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Individual') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>

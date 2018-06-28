@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller for edit forms and responses.
@@ -207,6 +208,325 @@ class EditIndividualController extends AbstractBaseController {
 		$gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
 
 		$individual->updateRecord($gedcom, false);
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Add a child to an existing individual (creating a one-parent family).
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addChild(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref   = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		$title = $individual->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'add_child_to_individual_action',
+			'individual' => $individual,
+			'family'     => null,
+			'name_fact'  => null,
+			'famtag'     => 'CHIL',
+			'gender'     => 'U',
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addChildAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Add a parent to an existing individual (creating a one-parent family).
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addParent(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref   = $request->get('xref', '');
+		$gender = $request->get('gender', 'U');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		if ($gender === 'F') {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a mother');
+			$famtag = 'WIFE';
+		} else {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a father');
+			$famtag = 'HUSB';
+		}
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'add_parent_to_individual_action',
+			'individual' => $individual,
+			'family'     => null,
+			'name_fact'  => null,
+			'famtag'     => $famtag,
+			'gender'     => $gender,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addParentAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Add a spouse to an existing individual (creating a new family).
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addSpouse(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$gender = $request->get('gender', 'F');
+		$xref   = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		if ($gender === 'F') {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a wife');
+			$famtag = 'WIFE';
+		} else {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a husband');
+			$famtag = 'HUSB';
+		}
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'add_spouse_to_individual_action',
+			'individual' => $individual,
+			'family'     => null,
+			'name_fact'  => null,
+			'famtag'     => $famtag,
+			'gender'     => $gender,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addSpouseAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Add an unlinked individual
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addUnlinked(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => I18N::translate('Create an individual'),
+			'nextaction' => 'add_unlinked_indi_action',
+			'individual' => null,
+			'family'     => null,
+			'name_fact'  => null,
+			'famtag'     => null,
+			'gender'     => 'U',
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addUnlinkedAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Edit a name record.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editName(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$fact_id = $request->get('fact_id', '');
+		$xref    = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// Find the fact to edit
+		$name_fact = null;
+		foreach ($individual->getFacts() as $fact) {
+			if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
+				return $this->viewResponse('edit/new-individual', [
+					'tree'       => $tree,
+					'title'      => I18N::translate('Edit the name'),
+					'nextaction' => 'update',
+					'individual' => $individual,
+					'family'     => null,
+					'name_fact'  => $name_fact,
+					'famtag'     => '',
+					'gender'     => $individual->getSex(),
+				]);
+			}
+		}
+
+		throw new NotFoundHttpException;
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function editNameAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * Add a new name record.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addName(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		$title = $individual->getFullName() . ' — ' . I18N::translate('Add a name');
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'update',
+			'individual' => $individual,
+			'family'     => null,
+			'name_fact'  => null,
+			'famtag'     => '',
+			'gender'     => $individual->getSex(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addNameAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		// @TODO move edit_interface.php code here
 
 		return new RedirectResponse($individual->url());
 	}

@@ -13,7 +13,7 @@
 			<?= I18N::translate('Change family members') ?>
 		</a>
 
-		<a class="dropdown-item menu-fam-addchil" href="<?= e(Html::url('edit_interface.php', ['action' => 'add_child_to_family', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
+		<a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
 			<?= I18N::translate('Add a child to this family') ?>
 		</a>
 

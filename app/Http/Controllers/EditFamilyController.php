@@ -88,4 +88,110 @@ class EditFamilyController extends AbstractBaseController {
 
 		return new RedirectResponse($family->url());
 	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addChild(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref   = $request->get('xref', '');
+		$gender = $request->get('gender', 'U');
+
+		$family = Family::getInstance($xref, $tree);
+
+		$this->checkFamilyAccess($family, true);
+
+		$title = $family->getFullName() . ' - ' . I18N::translate('Add a child');
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'add_child_to_family_action',
+			'individual' => null,
+			'family'     => $family,
+			'name_fact'  => null,
+			'famtag'     => 'CHIL',
+			'gender'     => $gender,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addChildAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$family = Family::getInstance($xref, $tree);
+
+		$this->checkFamilyAccess($family, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($family->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addSpouse(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref   = $request->get('xref', '');
+		$famtag = $request->get('famtag', '');
+
+		$family = Family::getInstance($xref, $tree);
+
+		$this->checkFamilyAccess($family, true);
+
+		if ($famtag === 'WIFE') {
+			$title = I18N::translate('Add a wife');
+			$gender = 'F';
+		} else {
+			$title = I18N::translate('Add a husband');
+			$gender = 'M';
+		}
+
+		return $this->viewResponse('edit/new-individual', [
+			'tree'       => $tree,
+			'title'      => $title,
+			'nextaction' => 'add_spouse_to_family_action',
+			'individual' => null,
+			'family'     => $family,
+			'name_fact'  => null,
+			'famtag'     => $famtag,
+			'gender'     => $gender,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function addSpouseAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$family = Family::getInstance($xref, $tree);
+
+		$this->checkFamilyAccess($family, true);
+
+		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($family->url());
+	}
 }

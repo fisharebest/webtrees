@@ -43,7 +43,7 @@
 			<tr>
 				<th scope="row"></th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_spouse_to_family', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'famtag' => 'HUSB'])) ?>">
+					<a href="<?= e(route('add-spouse-to-family', ['ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'famtag' => 'HUSB'])) ?>">
 						<?= I18N::translate('Add a husband to this family') ?>
 					</a>
 				</td>
@@ -80,7 +80,7 @@
 			<tr>
 				<th scope="row"></th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_spouse_to_family', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'famtag' => 'WIFE'])) ?>">
+					<a href="<?= e(route('add-spouse-to-family', ['ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'famtag' => 'WIFE'])) ?>">
 						<?= I18N::translate('Add a wife to this family') ?>
 					</a>
 				</td>
@@ -197,7 +197,7 @@
 					<?php endif; ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_child_to_family', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'gender' => 'U'])) ?>">
+					<a href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref()])) ?>">
 						<?php if ($type == 'FAMS'): ?>
 							<?= I18N::translate('Add a son or daughter') ?>
 						<?php else: ?>
@@ -205,9 +205,9 @@
 						<?php endif ?>
 					</a>
 
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_child_to_family', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'gender' => 'M'])) ?>" class="icon-sex_m_15x15"></a>
+					<a href="<?= e(route('add-child-to-family', ['gender' => 'M', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref()])) ?>" class="icon-sex_m_15x15"></a>
 
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_child_to_family', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'gender' => 'F'])) ?>" class="icon-sex_f_15x15"></a>
+					<a href="<?= e(route('add-child-to-family', ['gender' => 'F', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref()])) ?>" class="icon-sex_f_15x15"></a>
 				</td>
 			</tr>
 		<?php endif ?>

@@ -16,7 +16,7 @@
 
 		<?php endif ?>
 
-		<a class="dropdown-item menu-indi-editraw" href="<?= e(Html::url('edit_interface.php', ['action' => 'addname', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+		<a class="dropdown-item menu-indi-editraw" href="<?= e(route('add-name', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 			<?= I18N::translate('Add a name') ?>
 		</a>
 

@@ -319,7 +319,7 @@ class IndividualController extends AbstractBaseController {
 				]) .
 				FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
 					'class' => 'btn btn-link',
-					'href'  => 'edit_interface.php?action=editname&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($individual->getTree()->getName()),
+					'href'  => route('edit-name', ['xref' => $individual->getXref(), 'fact_id' => $fact->getFactId(), 'ged' => $individual->getTree()->getName()]),
 				]);
 		} else {
 			$edit_links = '';

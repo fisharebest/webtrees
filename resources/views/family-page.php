@@ -46,13 +46,13 @@
 							<?php FunctionsCharts::printFamilyParents($record) ?>
 							<?php if (Auth::isEditor($record->getTree())): ?>
 								<?php if ($record->getHusband() === null): ?>
-									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_spouse_to_family', 'ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'HUSB'])) ?>>
+									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'HUSB'])) ?>>
 										<?= I18N::translate('Add a father') ?>
 									</a>
 									<br>
 								<?php endif ?>
 								<?php if ($record->getWife() === null): ?>
-									<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add_spouse_to_family', 'ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'WIFE'])) ?>>
+									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'WIFE'])) ?>>
 										<?= I18N::translate('Add a mother') ?>
 									</a>
 									<br>
