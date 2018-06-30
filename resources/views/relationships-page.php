@@ -1,12 +1,7 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
-
-?>
-<?php ?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <h2 class="wt-page-title">
 	<?= $title ?>
