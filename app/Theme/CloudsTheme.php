@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Theme;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 
 /**
@@ -75,23 +76,26 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	}
 
 	/**
-	 * Create the primary menu.
+	 * Generate a list of items for the main menu.
 	 *
-	 * @param Menu[] $menus
+	 * @param Individual $individual
 	 *
-	 * @return string
+	 * @return Menu[]
 	 */
-	public function primaryMenuContent(array $menus) {
-		return implode('', array_map(function (Menu $menu) {
-			if (!empty($menu->getSubmenus())) {
+	public function primaryMenu(Individual $individual) {
+		$primary_menu = parent::primaryMenu($individual);
+
+		foreach ($primary_menu as $menu) {
+			$submenus = $menu->getSubmenus();
+
+			if (!empty($submenus)) {
 				// Insert a dummy menu / label into the submenu
-				$submenus = $menu->getSubmenus();
 				array_unshift($submenus, new Menu($menu->getLabel(), null, null, ['onclick' => 'return false;']));
 				$menu->setSubmenus($submenus);
 			}
+		}
 
-			return $menu->bootstrap4();
-		}, $menus));
+		return $primary_menu;
 	}
 
 	/**
