@@ -688,8 +688,11 @@ class FunctionsEdit {
 				$html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.') . '</p>';
 			}
 		} elseif ($fact === 'DATE') {
+			// Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
+			$dmy = '"' . preg_replace('/[^DMY]/', '', str_replace(['j', 'F'], ['D', 'M'], I18N::dateFormat())) . '"';
+
 			$html .= '<div class="input-group">';
-			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this)" dir="ltr">';
+			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this, ' . e($dmy) . ')" dir="ltr">';
 			$html .= self::inputAddonCalendar($id);
 			$html .= self::inputAddonHelp('DATE');
 			$html .= '</div>';
@@ -1016,7 +1019,6 @@ class FunctionsEdit {
 		$FACT = Filter::post($fact);
 		$DATE = Filter::post($fact . '_DATE');
 		$PLAC = Filter::post($fact . '_PLAC');
-		$PLAC = Filter::post($fact . '_RELI');
 		if ($DATE || $PLAC || $FACT && $FACT !== 'Y') {
 			if ($FACT && $FACT !== 'Y') {
 				$gedrec = "\n1 " . $fact . ' ' . $FACT;

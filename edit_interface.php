@@ -28,8 +28,6 @@ require 'includes/session.php';
 $action = Filter::post('action', null, Filter::get('action'));
 
 $controller = new PageController;
-$controller
-	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(['j', 'F'], ['D', 'M'], I18N::dateFormat())) . '";');
 
 switch ($action) {
 case 'edit':

@@ -140,7 +140,7 @@ function addmedia_links (field, iid, iname) {
   return false;
 }
 
-function valid_date (datefield) {
+function valid_date (datefield, dmy) {
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
   var hijri_months = ['MUHAR', 'SAFAR', 'RABIA', 'RABIT', 'JUMAA', 'JUMAT', 'RAJAB', 'SHAAB', 'RAMAD', 'SHAWW', 'DHUAQ', 'DHUAH'];
   var hebrew_months = ['TSH', 'CSH', 'KSL', 'TVT', 'SHV', 'ADR', 'ADS', 'NSN', 'IYR', 'SVN', 'TMZ', 'AAV', 'ELL'];
@@ -191,12 +191,6 @@ function valid_date (datefield) {
     var f1 = parseInt(RegExp.$2, 10);
     var f2 = parseInt(RegExp.$3, 10);
     var f3 = parseInt(RegExp.$4, 10);
-    var dmy = 'DMY';
-    if (typeof (locale_date_format) !== 'undefined') {
-      if (locale_date_format === 'MDY' || locale_date_format === 'YMD') {
-        dmy = locale_date_format;
-      }
-    }
     var yyyy = new Date().getFullYear();
     var yy = yyyy % 100;
     var cc = yyyy - yy;
