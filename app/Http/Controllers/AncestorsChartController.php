@@ -74,7 +74,8 @@ class AncestorsChartController extends AbstractChartController {
 		$generations = max($generations, $minimum_generations);
 
 		if ($individual !== null && $individual->canShowName()) {
-			$title = /* I18N: %s is an individual’s name */ I18N::translate('Ancestors of %s', $individual->getFullName());
+			$title = /* I18N: %s is an individual’s name */
+				I18N::translate('Ancestors of %s', $individual->getFullName());
 		} else {
 			$title = I18N::translate('Ancestors');
 		}
@@ -103,7 +104,7 @@ class AncestorsChartController extends AbstractChartController {
 
 		$this->checkModuleIsActive($tree, 'ancestors_chart');
 
-		$xref         = $request->get('xref');
+		$xref       = $request->get('xref');
 		$individual = Individual::getInstance($xref, $tree);
 
 		$this->checkIndividualAccess($individual);
@@ -121,14 +122,14 @@ class AncestorsChartController extends AbstractChartController {
 
 		$ancestors = $this->sosaStradonitzAncestors($individual, $generations);
 
-		switch($chart_style) {
+		switch ($chart_style) {
 			case self::CHART_STYLE_LIST:
 			default:
 				return $this->ancestorsList($individual, $generations);
 			case self::CHART_STYLE_BOOKLET:
 				return $this->ancestorsBooklet($ancestors, $show_cousins);
 			case self::CHART_STYLE_INDIVIDUALS:
-				return $this->ancestorsIndividuals($ancestors);
+				return $this->ancestorsIndividuals($tree, $ancestors);
 			case self::CHART_STYLE_FAMILIES:
 				return $this->ancestorsFamilies($ancestors);
 		}
@@ -148,9 +149,9 @@ class AncestorsChartController extends AbstractChartController {
 		ob_start();
 
 		echo
-		'<ul class="chart_common">' .
-		$this->printChildAscendancy($individual, 1, $generations - 1) .
-		'</ul>';
+			'<ul class="chart_common">' .
+			$this->printChildAscendancy($individual, 1, $generations - 1) .
+			'</ul>';
 
 		$html = ob_get_clean();
 
@@ -211,13 +212,17 @@ class AncestorsChartController extends AbstractChartController {
 	/**
 	 * Show a tabular list of individual ancestors.
 	 *
+	 * @param Tree         $tree
 	 * @param Individual[] $ancestors
 	 *
 	 * @return Response
 	 */
-	private function ancestorsIndividuals(array $ancestors): Response {
-		$ancestors = array_filter($ancestors);
-		$html      = FunctionsPrintLists::individualTable($ancestors, 'sosa');
+	private function ancestorsIndividuals(Tree $tree, array $ancestors): Response {
+		$html = view('tables/individuals', [
+			'individuals' => array_filter($ancestors),
+			'sosa'        => true,
+			'tree'        => $tree,
+		]);
 
 		return new Response($html);
 	}
@@ -238,7 +243,7 @@ class AncestorsChartController extends AbstractChartController {
 			}
 		}
 
-		$html =  FunctionsPrintLists::familyTable($families);
+		$html = FunctionsPrintLists::familyTable($families);
 
 		return new Response($html);
 	}

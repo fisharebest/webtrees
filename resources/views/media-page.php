@@ -160,7 +160,7 @@
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="individuals">
-			<?= FunctionsPrintLists::individualTable($individuals) ?>
+			<?= view('tables/individuals', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="families">

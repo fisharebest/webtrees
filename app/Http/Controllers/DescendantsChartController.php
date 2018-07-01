@@ -125,7 +125,7 @@ class DescendantsChartController extends AbstractChartController {
 			case self::CHART_STYLE_BOOKLET:
 				return $this->descendantsBooklet($individual, $generations);
 			case self::CHART_STYLE_INDIVIDUALS:
-				return $this->descendantsIndividuals($descendants);
+				return $this->descendantsIndividuals($tree, $descendants);
 			case self::CHART_STYLE_FAMILIES:
 				return $this->descendantsFamilies($descendants);
 		}
@@ -291,12 +291,17 @@ class DescendantsChartController extends AbstractChartController {
 	/**
 	 * Show a tabular list of individual descendants.
 	 *
+	 * @param Tree         $tree
 	 * @param Individual[] $descendants
 	 *
 	 * @return Response
 	 */
-	private function descendantsIndividuals(array $descendants): Response {
-		$html = FunctionsPrintLists::individualTable($descendants);
+	private function descendantsIndividuals(Tree $tree, array $descendants): Response {
+		$html = view('tables/individuals', [
+			'individuals' => $descendants,
+			'sosa'        => false,
+			'tree'        => $tree,
+		]);
 
 		return new Response($html);
 	}

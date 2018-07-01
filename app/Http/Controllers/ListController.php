@@ -327,7 +327,11 @@ class ListController extends AbstractBaseController {
 					}
 					if ($show === 'indi') {
 						if ($route === 'individual-list') {
-							echo FunctionsPrintLists::individualTable($this->individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false));
+							echo view('tables/individuals', [
+								'individuals' => $this->individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false),
+								'sosa'        => false,
+								'tree'        => $tree,
+							]);
 						} else {
 							echo FunctionsPrintLists::familyTable($this->families($surname, $alpha, $falpha, $show_marnm === 'yes'));
 						}

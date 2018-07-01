@@ -201,8 +201,8 @@ switch ($display) {
 				<?php if (empty($myindilist)): ?>
 						<p><?= I18N::translate('No results found.') ?></p>
 				<?php else: ?>
-						<?= FunctionsPrintLists::individualTable($myindilist) ?>
-					<?php endif ?>
+					<?= view('tables/individuals', ['individuals' => $myindilist, 'sosa' => false, 'tree' => $WT_TREE]) ?>
+				<?php endif ?>
 			</div>
 
 			<div class="tab-pane fade" role="tabpanel" id="families">
