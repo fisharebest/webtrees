@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintLists; ?>
 
 <ul class="nav nav-tabs" role="tablist">
 	<li class="nav-item">
@@ -21,7 +20,11 @@
 		<?php if (empty($indilist)): ?>
 			<p><?= I18N::translate('No results found.') ?></p>
 		<?php else: ?>
-			<?= FunctionsPrintLists::individualTable($indilist) ?>
+			<?= view('lists/individuals-table', [
+			'individuals' => $indilist,
+			'sosa'        => false,
+			'tree'        => $tree,
+			]) ?>
 		<?php endif ?>
 	</div>
 
@@ -29,7 +32,9 @@
 		<?php if (empty($famlist)): ?>
 			<p><?= I18N::translate('No results found.') ?></p>
 		<?php else: ?>
-			<?= FunctionsPrintLists::familyTable($famlist) ?>
+			<?= view('lists/families-table', [
+				'families' => $famlist,
+			]) ?>
 		<?php endif ?>
 	</div>
 </div>

@@ -7,7 +7,7 @@
 <form class="wt-page-options wt-page-options-pedigreemap-chart d-print-none">
 	<input type="hidden" name="route" value="module">
 	<input type="hidden" name="module" value="<?= $module ?>">
-	<input type="hidden" name="action" value="Pedigreemap">
+	<input type="hidden" name="action" value="PedigreeMap">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 
 	<div class="form-group row">

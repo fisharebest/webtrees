@@ -72,7 +72,7 @@ class PlaceHierarchyController extends AbstractBaseController {
 				break;
 			case 'hierarchy':
 			case 'hierarchy-e':
-				$nextaction      = ['list' => I18N::translate('List all places')];
+				$nextaction      = ['list' => I18N::translate('Show all places in a list')];
 				$data            = $this->getHierarchy($tree, $place, $parent);
 				$content         .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
 				if (null === $data || $action === 'hierarchy-e') {

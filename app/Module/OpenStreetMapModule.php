@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FactLocation;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
@@ -36,17 +35,11 @@ use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class OpenStreetMapModule
  */
 class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface {
-
-	// How to update the database schema for this module
-	const SCHEMA_TARGET_VERSION   = 4;
-	const SCHEMA_SETTING_NAME     = 'OSM_SCHEMA_VERSION';
-	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\OpenStreetMap\Schema';
 
 	// Package version numbers
 	const LEAFLET      = '1.3.1';
@@ -115,8 +108,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
-		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
-
 		return route('admin-module', ['module' => $this->getName(), 'action' => 'AdminConfig']);
 	}
 
@@ -128,8 +119,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			I18N::translate('Pedigree Map'),
-			route('module', ['module' => $this->getName(), 'action' => 'Pedigreemap', 'xref' => $individual->getXref()]),
+			I18N::translate('Pedigree map'),
+			route('module', ['module' => $this->getName(), 'action' => 'PedigreeMap', 'xref' => $individual->getXref()]),
 			'menu-chart-pedigreemap',
 			['rel' => 'nofollow']
 		);
@@ -206,7 +197,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @param Request $request
 	 * @return JsonResponse
 	 */
-	public function getBaseDataAction(Request $request) {
+	public function getBaseDataAction(Request $request): JsonResponse {
 		$provider = $this->getMapProviderData($request);
 		$style    = $provider['selectedStyleName'] = '' ? '' : '.' . $provider['selectedStyleName'];
 
@@ -250,8 +241,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @throws \Exception
 	 */
 	public function getMapDataAction(Request $request): JsonResponse {
-		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
-
 		switch ($request->get('type')) {
 			case 'placelist':
 				$response = $this->placelistGetMapData($request);
@@ -268,7 +257,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	private function getMapData(Request $request) {
+	private function getMapData(Request $request): JsonResponse {
 		$mapType     = $request->get('type');
 		$xref        = $request->get('reference');
 		$tree        = $request->attributes->get('tree');
@@ -344,7 +333,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	private function placelistGetMapData(Request $request) {
+	private function placelistGetMapData(Request $request): JsonResponse {
 		$reference = $request->get('reference');
 		$tree      = $request->attributes->get('tree');
 		$placeObj  = new Place($reference, $tree);
@@ -474,7 +463,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @param Request $request
 	 * @return JsonResponse
 	 */
-	public function getProviderStylesAction(Request $request) {
+	public function getProviderStylesAction(Request $request): JsonResponse {
 		$styles = $this->getMapProviderData($request);
 
 		return new JsonResponse($styles);
@@ -561,7 +550,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return object
 	 * @throws \Exception
 	 */
-	public function getPedigreemapAction(Request $request) {
+	public function getPedigreeMapAction(Request $request) {
 		/** @var Tree $tree */
 		$tree           = $request->attributes->get('tree');
 		$xref           = $request->get('xref');
@@ -603,7 +592,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return JsonResponse
 	 * @throws \Exception
 	 */
-	public function getAdminMapDataAction(Request $request) {
+	public function getAdminMapDataAction(Request $request): JsonResponse {
 		$id  = $request->get('id', 0);
 		$row = Database::prepare("SELECT * FROM `##placelocation` WHERE pl_id = :id")
 			->execute(['id' => $id])
@@ -796,69 +785,65 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @throws \Exception
 	 */
 	public function postAdminSaveAction(Request $request): RedirectResponse {
-		if (Filter::checkCsrf()) {
-			$parent_id = (int)$request->get('parent_id');
-			$place_id  = (int)$request->get('place_id');
-			$inactive  = (int)$request->get('inactive');
-			$lat       = round($request->get('new_place_lati'), 5); // 5 decimal places (locate to within about 1 metre)
-			$lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
-			$lng       = round($request->get('new_place_long'), 5);
-			$lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
-			$hierarchy = $this->gethierarchy($parent_id);
-			$level     = count($hierarchy);
-			$icon      = $request->get('icon', null);
-			$icon      = $icon === '' ? null : $icon;
-			$zoom      = $request->get('new_zoom_factor');
-			$zoom      = $zoom === '' ? null : $zoom;
+		$parent_id = (int)$request->get('parent_id');
+		$place_id  = (int)$request->get('place_id');
+		$inactive  = (int)$request->get('inactive');
+		$lat       = round($request->get('new_place_lati'), 5); // 5 decimal places (locate to within about 1 metre)
+		$lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
+		$lng       = round($request->get('new_place_long'), 5);
+		$lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
+		$hierarchy = $this->gethierarchy($parent_id);
+		$level     = count($hierarchy);
+		$icon      = $request->get('icon', null);
+		$icon      = $icon === '' ? null : $icon;
+		$zoom      = $request->get('new_zoom_factor');
+		$zoom      = $zoom === '' ? null : $zoom;
 
 
-			if ($place_id === 0) {
-				Database::prepare(
-					"INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)
+		if ($place_id === 0) {
+			Database::prepare(
+				"INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)
 						  VALUES (:id, :parent, :level, :place, :lng, :lat, :zoom, :icon)"
-				)->execute(
-					[
-						'id'     => (int)Database::prepare("SELECT MAX(pl_id)+1 FROM `##placelocation`")->fetchOne(),
-						'parent' => $parent_id,
-						'level'  => $level,
-						'place'  => $request->get('new_place_name'),
-						'lat'    => $request->get('lati_control') . $lat,
-						'lng'    => $request->get('long_control') . $lng,
-						'zoom'   => $zoom,
-						'icon'   => $icon,
-					]
-				);
-			} else {
-				Database::prepare(
-					"UPDATE `##placelocation` SET pl_place = :place, pl_lati = :lat, pl_long = :lng, pl_zoom = :zoom, pl_icon = :icon WHERE pl_id = :id"
-				)->execute(
-					[
-						'id'    => $place_id,
-						'place' => $request->get('new_place_name'),
-						'lat'   => $request->get('lati_control') . $lat,
-						'lng'   => $request->get('long_control') . $lng,
-						'zoom'  => (int)$request->get('new_zoom_factor'),
-						'icon'  => $icon,
-					]
-				);
-			}
-			FlashMessages::addMessage(
-				I18N::translate(
-					'The details for “%s” have been updated.',
-					$request->get('new_place_name')
-				),
-				'success'
-			);
-
-			return new RedirectResponse(
-				route(
-					'admin-module',
-					['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
-				)
+			)->execute(
+				[
+					'id'     => (int)Database::prepare("SELECT MAX(pl_id)+1 FROM `##placelocation`")->fetchOne(),
+					'parent' => $parent_id,
+					'level'  => $level,
+					'place'  => $request->get('new_place_name'),
+					'lat'    => $request->get('lati_control') . $lat,
+					'lng'    => $request->get('long_control') . $lng,
+					'zoom'   => $zoom,
+					'icon'   => $icon,
+				]
 			);
 		} else {
-			throw new AccessDeniedHttpException();
+			Database::prepare(
+				"UPDATE `##placelocation` SET pl_place = :place, pl_lati = :lat, pl_long = :lng, pl_zoom = :zoom, pl_icon = :icon WHERE pl_id = :id"
+			)->execute(
+				[
+					'id'    => $place_id,
+					'place' => $request->get('new_place_name'),
+					'lat'   => $request->get('lati_control') . $lat,
+					'lng'   => $request->get('long_control') . $lng,
+					'zoom'  => (int)$request->get('new_zoom_factor'),
+					'icon'  => $icon,
+				]
+			);
 		}
+		FlashMessages::addMessage(
+			I18N::translate(
+				'The details for “%s” have been updated.',
+				$request->get('new_place_name')
+			),
+			'success'
+		);
+
+		return new RedirectResponse(
+			route(
+				'admin-module',
+				['module' => $this->getName(), 'action' => 'AdminPlaces', 'inactive' => $inactive]
+			)
+		);
 	}
 
 	/**
@@ -869,53 +854,49 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @throws \Exception
 	 */
 	public function postAdminDeleteRecordAction(Request $request): RedirectResponse {
-		if (Filter::checkCsrf()) {
-			$place_id  = (int)$request->get('place_id');
-			$parent_id = (int)$request->get('parent_id');
-			$inactive  = (int)$request->get('inactive');
+		$place_id  = (int)$request->get('place_id');
+		$parent_id = (int)$request->get('parent_id');
+		$inactive  = (int)$request->get('inactive');
 
-			try {
-				Database::prepare(
-					"DELETE FROM `##placelocation` WHERE pl_id = :id"
-				)->execute(
-					[
-						'id' => $place_id,
-					]
-				);
-			} catch (\Exception $ex) {
-				DebugBar::addThrowable($ex);
-
-				FlashMessages::addMessage(
-					I18N::translate('Location not removed: this location contains sub-locations'),
-					'danger'
-				);
-			}
-			// If after deleting there are no more places at this level then go up a level
-			$children = (int)Database::prepare(
-				"SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id = :parent_id"
-			)
-				->execute(['parent_id' => $parent_id])
-				->fetchOne();
-
-			if ($children === 0) {
-				$row       = Database::prepare('SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id')
-					->execute(['parent_id' => $parent_id])
-					->fetchOneRow();
-				$parent_id = $row->pl_parent_id;
-			}
-
-			return new RedirectResponse(
-				route(
-					'admin-module',
-					['module'    => $this->getName(),
-					 'action'    => 'AdminPlaces',
-					 'parent_id' => $parent_id,
-					 'inactive'  => $inactive]
-				)
+		try {
+			Database::prepare(
+				"DELETE FROM `##placelocation` WHERE pl_id = :id"
+			)->execute(
+				[
+					'id' => $place_id,
+				]
 			);
-		} else {
-			throw new AccessDeniedHttpException();
+		} catch (\Exception $ex) {
+			DebugBar::addThrowable($ex);
+
+			FlashMessages::addMessage(
+				I18N::translate('Location not removed: this location contains sub-locations'),
+				'danger'
+			);
 		}
+		// If after deleting there are no more places at this level then go up a level
+		$children = (int)Database::prepare(
+			"SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id = :parent_id"
+		)
+			->execute(['parent_id' => $parent_id])
+			->fetchOne();
+
+		if ($children === 0) {
+			$row       = Database::prepare('SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id')
+				->execute(['parent_id' => $parent_id])
+				->fetchOneRow();
+			$parent_id = $row->pl_parent_id;
+		}
+
+		return new RedirectResponse(
+			route(
+				'admin-module',
+				['module'    => $this->getName(),
+				 'action'    => 'AdminPlaces',
+				 'parent_id' => $parent_id,
+				 'inactive'  => $inactive]
+			)
+		);
 	}
 
 	/**
@@ -1231,12 +1212,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 						}
 					}
 				}
-				Log::addEditLog(I18N::translate("Geographic places upload from %s: updated: %s, added: %s",
-					$filename,
-					I18N::number($updated),
-					I18N::number($added)
-				)
-				);
 				FlashMessages::addMessage(
 					I18N::translate(
 						'locations updated: %s, locations added: %s',
@@ -1401,10 +1376,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return \stdClass[]
 	 * @throws \Exception
 	 */
-	public function getPlaceListLocation($id, $show_inactive = false) {
-
+	private function getPlaceListLocation($id, $show_inactive = false) {
 		$child_qry = Database::prepare(
-			"SELECT SQL_CACHE COUNT(*) AS child_count, SUM(" .
+			"SELECT  COUNT(*) AS child_count, SUM(" .
 			" p1.pl_place IS NOT NULL AND (p1.pl_lati IS NULL OR p1.pl_long IS NULL) OR " .
 			" p2.pl_place IS NOT NULL AND (p2.pl_lati IS NULL OR p2.pl_long IS NULL) OR " .
 			" p3.pl_place IS NOT NULL AND (p3.pl_lati IS NULL OR p3.pl_long IS NULL) OR " .
@@ -1434,7 +1408,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 			$hierarchy = $this->gethierarchy($id);
 			$fqpn      = preg_quote($hierarchy[0]->fqpn);
 			$place_id  = Database::prepare(
-				"SELECT SQL_CACHE p1.p_id" .
+				"SELECT p1.p_id" .
 				" FROM      `##places` AS p1" .
 				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
 				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
@@ -1453,7 +1427,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 		}
 
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
+			"SELECT pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
 			" (t1.p_place IS NULL) AS inactive" .
 			" FROM `##placelocation`" .
 			" LEFT JOIN (SELECT p_place" .
@@ -1511,7 +1485,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	 * @return array
 	 * @throws \Exception
 	 */
-	public function gethierarchy($id) {
+	private function gethierarchy($id) {
 		$statement = Database::prepare("SELECT pl_id, pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=:id");
 		$arr       = [];
 		$fqpn      = [];
@@ -1617,5 +1591,3 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 		return $ancestors;
 	}
 }
-
-return new OpenStreetMapModule(__DIR__);
