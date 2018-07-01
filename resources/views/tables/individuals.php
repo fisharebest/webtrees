@@ -115,7 +115,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 								class="btn btn-secondary"
 								data-filter-column="12"
 								data-filter-value="U"
-								title="<? I18N::translate('Show only individuals for whom the gender is not known.') ?>"
+								title="<?= I18N::translate('Show only individuals for whom the gender is not known.') ?>"
 							>
 								<?= Individual::sexImage('U', 'large') ?>
 							</button>
