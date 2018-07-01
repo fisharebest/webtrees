@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-03-14 21:19+0000\n"
+"PO-Revision-Date: 2018-07-01 19:39+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
@@ -7295,7 +7295,7 @@ msgstr "Webtrees может автоматически добавлять код
 
 #: resources/views/setup/step-2-server-checks.php:58
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-msgstr "Если политика безопасности сервер позволяет, Вы можете запросить увеличение памяти или процессорного времени, используя webtrees на странице администрирования. В противном случае, Вам необходимо обратиться к Вашему администратору сервера."
+msgstr "Если политика безопасности Вашего сервера это позволяет, Вы сможете увеличить память или время процессора, используя страницу администрирования webtrees . В противном случае Вам нужно будет связаться с администратором Вашего сервера."
 
 #: admin_media.php:495 app/GedcomTag.php:1376
 msgid "Image dimensions"
@@ -16504,7 +16504,7 @@ msgstr "название недвижимости"
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr "предполагаемо в %s г."
+msgstr "предполагаемо в %s г"
 
 #: app/Functions/Functions.php:671
 msgid "ex-husband"
