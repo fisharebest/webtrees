@@ -333,7 +333,10 @@ class ListController extends AbstractBaseController {
 								'tree'        => $tree,
 							]);
 						} else {
-							echo FunctionsPrintLists::familyTable($this->families($surname, $alpha, $falpha, $show_marnm === 'yes'));
+							echo view('tables/families', [
+								'families' => $this->families($surname, $alpha, $falpha, $show_marnm === 'yes'),
+								'tree'     => $tree,
+							]);
 						}
 					}
 				}

@@ -131,7 +131,7 @@ class AncestorsChartController extends AbstractChartController {
 			case self::CHART_STYLE_INDIVIDUALS:
 				return $this->ancestorsIndividuals($tree, $ancestors);
 			case self::CHART_STYLE_FAMILIES:
-				return $this->ancestorsFamilies($ancestors);
+				return $this->ancestorsFamilies($tree, $ancestors);
 		}
 	}
 
@@ -230,11 +230,12 @@ class AncestorsChartController extends AbstractChartController {
 	/**
 	 * Show a tabular list of individual ancestors.
 	 *
+	 * @param Tree         $tree
 	 * @param Individual[] $ancestors
 	 *
 	 * @return Response
 	 */
-	private function ancestorsFamilies(array $ancestors): Response {
+	private function ancestorsFamilies(Tree $tree, array $ancestors): Response {
 		$ancestors = array_filter($ancestors);
 		$families  = [];
 		foreach ($ancestors as $individual) {
@@ -243,7 +244,10 @@ class AncestorsChartController extends AbstractChartController {
 			}
 		}
 
-		$html = FunctionsPrintLists::familyTable($families);
+		$html = view('tables/families', [
+			'families' => $families,
+			'tree'     => $tree,
+		]);
 
 		return new Response($html);
 	}

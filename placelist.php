@@ -209,7 +209,7 @@ switch ($display) {
 				<?php if (empty($myfamlist)): ?>
 						<p><?= I18N::translate('No results found.') ?></p>
 				<?php else: ?>
-						<?= FunctionsPrintLists::familyTable($myfamlist) ?>
+					<?= view('tables/families', ['families' => $myfamlist, 'tree' => $WT_TREE]) ?>
 					<?php endif ?>
 			</div>
 		</div>

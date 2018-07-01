@@ -97,7 +97,7 @@
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="families">
-			<?= FunctionsPrintLists::familyTable($families) ?>
+			<?= view('tables/families', ['families' => $families, 'tree' => $tree]) ?>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="media">
