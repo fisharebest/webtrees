@@ -96,7 +96,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			case 'table':
 			default:
 				uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-				$content = view('lists/surnames-tables', [
+				$content = view('lists/surnames-table', [
 					'surnames' => $all_surnames,
 					'route'    => 'individual-list',
 					'tree'     => $WT_TREE,
