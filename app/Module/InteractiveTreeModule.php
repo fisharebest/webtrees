@@ -54,9 +54,23 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		return view('modules/tree/tab', [
 			'html'         => $html,
 			'js'           => $js,
-			'treeview_css' => WT_MODULES_DIR . $this->getName() . '/css/treeview.css',
-			'treeview_js'  => WT_MODULES_DIR . $this->getName() . '/js/treeview.js',
+			'treeview_css' => $this->css(),
+			'treeview_js'  => $this->js(),
 		]);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function css(): string {
+		return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function js(): string {
+		return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
 
 	/** {@inheritdoc} */
