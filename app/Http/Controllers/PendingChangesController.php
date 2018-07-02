@@ -53,7 +53,7 @@ class PendingChangesController extends AbstractBaseController {
 		$url = $request->get('url', '');
 
 		$changes = Database::prepare(
-			"SELECT change_id, xref, old_gedcom, new_gedcom" .
+			"SELECT change_id, xref, gedcom_id, old_gedcom, new_gedcom" .
 			" FROM `##change` c" .
 			" JOIN `##gedcom` g USING (gedcom_id)" .
 			" WHERE c.status = 'pending' AND gedcom_id = :tree_id" .

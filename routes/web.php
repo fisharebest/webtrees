@@ -279,6 +279,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 		'GET:timeline-chart'         => 'TimelineChartController@chart',
 		'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
 		'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
+		'POST:accept-all-changes'    => 'PendingChangesController@acceptAllChanges',
+		'POST:reject-all-changes'    => 'PendingChangesController@rejectAllChanges',
 		'POST:select2-family'        => 'AutocompleteController@select2Family',
 		'POST:select2-individual'    => 'AutocompleteController@select2Individual',
 		'POST:select2-media'         => 'AutocompleteController@select2MediaObject',
