@@ -5,5 +5,5 @@
 </h2>
 
 <div class="wt-page-content">
-	<?= FunctionsPrintLists::sourceTable($sources) ?>
+	<?= view('lists/sources-table', ['sources' => $sources]) ?>
 </div>

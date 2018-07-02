@@ -5,5 +5,5 @@
 </h2>
 
 <div class="wt-page-content">
-	<?= FunctionsPrintLists::repositoryTable($repositories) ?>
+	<?= view('lists/repositories-table', ['repositories' => $repositories]) ?>
 </div>

@@ -386,15 +386,15 @@ for ($year = 1550; $year < 2030; $year += 10) {
 		<table class="list-charts">
 			<tr>
 				<td>
-					<?= view('tables/chart-by-decade', ['data' => $birt_by_decade, 'title' => I18N::translate('Decade of birth')]) ?>
+					<?= view('lists/chart-by-decade', ['data' => $birt_by_decade, 'title' => I18N::translate('Decade of birth')]) ?>
 				</td>
 				<td>
-					<?= view('tables/chart-by-decade', ['data' => $deat_by_decade, 'title' => I18N::translate('Decade of death')]) ?>
+					<?= view('lists/chart-by-decade', ['data' => $deat_by_decade, 'title' => I18N::translate('Decade of death')]) ?>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<?= view('tables/chart-by-age', ['data' => $deat_by_age, 'title' => I18N::translate('Age related to death year')]) ?>
+					<?= view('lists/chart-by-age', ['data' => $deat_by_age, 'title' => I18N::translate('Age related to death year')]) ?>
 				</td>
 			</tr>
 		</table>

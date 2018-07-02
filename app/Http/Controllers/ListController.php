@@ -270,7 +270,7 @@ class ListController extends AbstractBaseController {
 							break;
 						case 'style2':
 						default:
-							echo view('tables/surnames', [
+							echo view('lists/surnames-tables', [
 								'surnames' => $surns,
 								'route'    => $route,
 							]);
@@ -327,13 +327,13 @@ class ListController extends AbstractBaseController {
 					}
 					if ($show === 'indi') {
 						if ($route === 'individual-list') {
-							echo view('tables/individuals', [
+							echo view('lists/individuals-table', [
 								'individuals' => $this->individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false),
 								'sosa'        => false,
 								'tree'        => $tree,
 							]);
 						} else {
-							echo view('tables/families', [
+							echo view('lists/families-table', [
 								'families' => $this->families($surname, $alpha, $falpha, $show_marnm === 'yes'),
 								'tree'     => $tree,
 							]);

@@ -218,7 +218,7 @@ class AncestorsChartController extends AbstractChartController {
 	 * @return Response
 	 */
 	private function ancestorsIndividuals(Tree $tree, array $ancestors): Response {
-		$html = view('tables/individuals', [
+		$html = view('lists/individuals-table', [
 			'individuals' => array_filter($ancestors),
 			'sosa'        => true,
 			'tree'        => $tree,
@@ -244,7 +244,7 @@ class AncestorsChartController extends AbstractChartController {
 			}
 		}
 
-		$html = view('tables/families', [
+		$html = view('lists/families-table', [
 			'families' => $families,
 			'tree'     => $tree,
 		]);

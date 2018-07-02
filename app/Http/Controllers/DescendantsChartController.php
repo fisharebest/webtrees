@@ -297,7 +297,7 @@ class DescendantsChartController extends AbstractChartController {
 	 * @return Response
 	 */
 	private function descendantsIndividuals(Tree $tree, array $descendants): Response {
-		$html = view('tables/individuals', [
+		$html = view('lists/individuals-table', [
 			'individuals' => $descendants,
 			'sosa'        => false,
 			'tree'        => $tree,
@@ -322,7 +322,7 @@ class DescendantsChartController extends AbstractChartController {
 			}
 		}
 
-		$html = view('tables/families', [
+		$html = view('lists/families-table', [
 			'families' => $families,
 			'tree'     => $tree,
 		]);

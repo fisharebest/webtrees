@@ -26,17 +26,6 @@ class Datatables {
 	/**
 	 * Generate the HTML attributes for I18N.
 	 *
-	 * @return string[]
-	 */
-	private static function defaultAttributes() {
-		return [
-			'style' => 'display:none;', // Hide until processed, to prevent FOUC.
-		];
-	}
-
-	/**
-	 * Generate the HTML attributes for I18N.
-	 *
 	 * @param int[] $lengths
 	 *
 	 * @return string[]
@@ -101,47 +90,5 @@ class Datatables {
 			'data-state-save' => 'true',
 			'data-order'      => '[[1, "desc"]]',
 		]);
-	}
-
-	/**
-	 * Generate the HTML attributes for a table of notes.
-	 *
-	 * @return string
-	 */
-	public static function noteTableAttributes() {
-		return Html::attributes([
-				'class' => 'table table-bordered table-sm datatables table-note',
-				//'data-columns'   => '[{ type: "text" }, { type: "text" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-				'data-columns'    => '[null, null, null, null, null, null]',
-				'data-state-save' => 'true',
-			] + self::defaultAttributes() + self::languageAttributes());
-	}
-
-	/**
-	 * Generate the HTML attributes for a table of repositories.
-	 *
-	 * @return string
-	 */
-	public static function repositoryTableAttributes() {
-		return Html::attributes([
-			'class' => 'table table-bordered table-sm datatables table-repository',
-			//'data-columns'   => '[{ type: "text" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-			'data-columns'    => '[null, null, null]',
-			'data-state-save' => 'true',
-		] + self::languageAttributes());
-	}
-
-	/**
-	 * Generate the HTML attributes for a table of sources.
-	 *
-	 * @return string
-	 */
-	public static function sourceTableAttributes() {
-		return Html::attributes([
-			'class' => 'table table-bordered table-sm datatables table-source',
-			//'data-columns'   => '[{ type: "text" }, { type: "text" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "num" }, { type: "text" }, { sorting: false }]',
-			'data-columns'    => '[null, null, null, null, null, null, null]',
-			'data-state-save' => 'true',
-		] + self::languageAttributes());
 	}
 }

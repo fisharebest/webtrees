@@ -160,19 +160,19 @@
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="individuals">
-			<?= view('tables/individuals', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
+			<?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="families">
-			<?= view('tables/families', ['families' => $families, 'tree' => $tree]) ?>
+			<?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="sources">
-			<?= FunctionsPrintLists::sourceTable($sources) ?>
+			<?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="notes">
-			<?= FunctionsPrintLists::noteTable($notes) ?>
+			<?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
 		</div>
 	</div>
 </div>

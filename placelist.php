@@ -201,7 +201,7 @@ switch ($display) {
 				<?php if (empty($myindilist)): ?>
 						<p><?= I18N::translate('No results found.') ?></p>
 				<?php else: ?>
-					<?= view('tables/individuals', ['individuals' => $myindilist, 'sosa' => false, 'tree' => $WT_TREE]) ?>
+					<?= view('lists/individuals-table', ['individuals' => $myindilist, 'sosa' => false, 'tree' => $WT_TREE]) ?>
 				<?php endif ?>
 			</div>
 
@@ -209,7 +209,7 @@ switch ($display) {
 				<?php if (empty($myfamlist)): ?>
 						<p><?= I18N::translate('No results found.') ?></p>
 				<?php else: ?>
-					<?= view('tables/families', ['families' => $myfamlist, 'tree' => $WT_TREE]) ?>
+					<?= view('lists/families-table', ['families' => $myfamlist, 'tree' => $WT_TREE]) ?>
 					<?php endif ?>
 			</div>
 		</div>

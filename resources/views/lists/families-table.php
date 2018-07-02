@@ -397,15 +397,15 @@ for ($year = 1550; $year < 2030; $year += 10) {
 		<table class="list-charts">
 			<tr>
 				<td>
-					<?= view('tables/chart-by-decade', ['data' => $birt_by_decade, 'title' => I18N::translate('Decade of birth')]) ?>
+					<?= view('lists/chart-by-decade', ['data' => $birt_by_decade, 'title' => I18N::translate('Decade of birth')]) ?>
         </td>
         <td>
-					<?= view('tables/chart-by-decade', ['data' => $marr_by_decade, 'title' => I18N::translate('Decade of marriage')]) ?>
+					<?= view('lists/chart-by-decade', ['data' => $marr_by_decade, 'title' => I18N::translate('Decade of marriage')]) ?>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<?= view('tables/chart-by-age', ['data' => $marr_by_age, 'title' => I18N::translate('Age in year of marriage')]) ?>
+					<?= view('lists/chart-by-age', ['data' => $marr_by_age, 'title' => I18N::translate('Age in year of marriage')]) ?>
 				</td>
 			</tr>
 		</table>

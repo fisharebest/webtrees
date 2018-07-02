@@ -879,7 +879,7 @@ $(function () {
   };
 
   // DataTables - start hidden to prevent FOUC.
-  $('table.datatables').each(function () { $(this).DataTable(); $(this).show(); });
+  $('table.datatables').each(function () { $(this).DataTable(); $(this).removeClass('d-none'); });
 
   // Create a new record while editing an existing one.
   // Paste the XREF and description into the Select2 element.

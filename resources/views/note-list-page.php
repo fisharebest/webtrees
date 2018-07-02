@@ -5,5 +5,5 @@
 </h2>
 
 <div class="wt-page-content">
-	<?= FunctionsPrintLists::noteTable($notes) ?>
+	<?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
 </div>

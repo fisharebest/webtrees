@@ -62,13 +62,13 @@
 	<div class="tab-content wt-search-results-content">
 		<?php if ($search_individuals): ?>
 			<div class="tab-pane fade" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
-				<?= view('tables/individuals', ['individuals' => $individuals]) ?>
+				<?= view('lists/individuals-table', ['individuals' => $individuals]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_families): ?>
 			<div class="tab-pane fade" id="families" role="tabpanel" aria-labelledby="families-tab">
-				<?= view('tables/families', ['families' => $families]) ?>
+				<?= view('lists/families-table', ['families' => $families]) ?>
 			</div>
 		<?php endif ?>
 
