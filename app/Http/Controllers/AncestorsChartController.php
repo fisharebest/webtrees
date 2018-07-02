@@ -218,13 +218,13 @@ class AncestorsChartController extends AbstractChartController {
 	 * @return Response
 	 */
 	private function ancestorsIndividuals(Tree $tree, array $ancestors): Response {
-		$html = view('lists/individuals-table', [
+		$this->layout = 'layouts/ajax';
+
+		return $this->viewResponse('lists/individuals-table', [
 			'individuals' => array_filter($ancestors),
 			'sosa'        => true,
 			'tree'        => $tree,
 		]);
-
-		return new Response($html);
 	}
 
 	/**
@@ -236,6 +236,8 @@ class AncestorsChartController extends AbstractChartController {
 	 * @return Response
 	 */
 	private function ancestorsFamilies(Tree $tree, array $ancestors): Response {
+		$this->layout = 'layouts/ajax';
+
 		$ancestors = array_filter($ancestors);
 		$families  = [];
 		foreach ($ancestors as $individual) {
@@ -244,12 +246,10 @@ class AncestorsChartController extends AbstractChartController {
 			}
 		}
 
-		$html = view('lists/families-table', [
+		return $this->viewResponse('lists/families-table', [
 			'families' => $families,
 			'tree'     => $tree,
 		]);
-
-		return new Response($html);
 	}
 
 	/**
