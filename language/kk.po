@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-06-27 18:57+0000\n"
+"PO-Revision-Date: 2018-07-03 17:34+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -10694,250 +10694,250 @@ msgstr "Бар мицваның орны"
 
 #: app/GedcomTag.php:174 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Бит мицваның орны"
 
 #: app/GedcomTag.php:180 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Туған жері"
 
 #: app/GedcomTag.php:186
 msgid "Place of blessing"
-msgstr ""
+msgstr "Благодать орны"
 
 #: app/GedcomTag.php:784
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Брит миланың орны"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr ""
+msgstr "Көмген жері"
 
 #: app/GedcomTag.php:225 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "Крещение орны"
 
 #: app/GedcomTag.php:243 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Растау орны"
 
 #: app/GedcomTag.php:255
 msgid "Place of cremation"
-msgstr ""
+msgstr "Кремацияның орны"
 
 #: app/GedcomTag.php:272 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr ""
+msgstr "Өлген жері"
 
 #: app/GedcomTag.php:299
 msgid "Place of emigration"
-msgstr ""
+msgstr "Эмиграция орны"
 
 #: app/GedcomTag.php:311 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr ""
+msgstr "Келісу орны"
 
 #: app/GedcomTag.php:317
 msgid "Place of event"
-msgstr ""
+msgstr "Іс-шараның орны"
 
 #: app/GedcomTag.php:355 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr ""
+msgstr "Бірінші қауымның орны"
 
 #: app/GedcomTag.php:379
 msgid "Place of immigration"
-msgstr ""
+msgstr "Иммиграция орны"
 
 #: app/GedcomTag.php:341 app/GedcomTag.php:409
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr ""
+msgstr "Неке орны"
 
 #: app/GedcomTag.php:399 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Неке орны"
 
 #: app/GedcomTag.php:439
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Натурализация орны"
 
 #: app/GedcomTag.php:467
 msgid "Place of ordination"
-msgstr ""
+msgstr "Орындалу орны"
 
 #: app/GedcomTag.php:506
 msgid "Place of residence"
-msgstr ""
+msgstr "Тұрғылықты жері"
 
 #: admin_site_upgrade.php:330
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Веб-сайтты %s файлын жасау арқылы офлайн күйге орналастырыңыз …"
 
 #: admin_site_upgrade.php:383
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "Веб-сайтты %s файлын өшіріп, Интернетте орналастырыңыз …"
 
 #: admin_trees_config.php:986 search.php:230 statistics.php:420
 msgid "Places"
-msgstr ""
+msgstr "Орындар"
 
 #: placelist.php:132
 #, php-format
 msgid "Places in %s"
-msgstr ""
+msgstr "%s ішіндегі орындар"
 
 #: help_text.php:265 resources/views/help/date.php:234
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Орындарды генеалогияның стандарттарына сәйкес енгізу керек. Шежіредегі орындар орындарға ең алдымен орын туралы ең нақты ақпаратпен жазылып, содан соң әр түрлі орын деңгейлерін бөлуге арналған үтірлерді пайдаланып, ең соңғысы аз орынға дейін жұмыс істейді. Орналасқан жер туралы ақпаратты жазған деңгейіңіз сол жердегі маңызды жазбаларды сақтайтын үкіметтің немесе шіркеудің деңгейлерін көрсетуі керек.<br><br> Мысалы, Солт-Лейк-Сити сияқты орын \"Солт-Лейк-Сити, Солт-Лейк, Юта, АҚШ\".<br><br>Келіңіздер, осы жердің әрбір бөлігін қарастырайық. Бірінші бөлім, \"Солт-Лейк-Сити\" - бұл оқиға орын алған қала немесе елді мекен. Кейбір елдерде қаланың ішіндегі муниципалитеттер немесе аудандар болуы мүмкін. Бұл жағдайда олар қаланың алдына келуі керек. Келесі бөлік \"Солт-Лейк\" - бұл округ. \"Юта\" - бұл мемлекет, ал \"АҚШ\" - бұл ел. Әрбір орынды атап өту маңызды, себебі генеалогия жазбалары әр деңгейдегі үкімет тарапынан сақталады.<br><br>Егер орынның деңгейі белгісіз болса, үтір арасындағы бос орын қалдырыңыз. Жоғарыда келтірілген мысалда Солт-Лейк-Ситидің елді мекенін білмеген болар еді. Оны келесідей жазуыңыз керек: \"Солт-Лейк-Сити, Юта, АҚШ\". Мысалы, сіз тек Юта штатында туылғанын білесіз. Сіз мына мәліметтерді енгізесіз: \", , Юта, АҚШ\".<br><br>Дерекқорда бар жерлерді табуға көмектесу үшін <b>Табу орны</b> сілтемесін қолдануға болады."
 
 #: app/Theme/CloudsTheme.php:45 app/Theme/FabTheme.php:72
 #: app/Theme/MinimalTheme.php:44 app/Theme/XeneaTheme.php:44
 #: resources/views/blocks/slide-show.php:8
 msgid "Play"
-msgstr ""
+msgstr "Ойнату"
 
 #: search.php:51
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "Сізге жылына қосымша берілген атауды, тегіңізді немесе орынды енгізіңіз"
 
 #: message.php:51
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Өтінеміз қолданыстағы электронды пошта адресін енгізіңіз."
 
 #: app/Module/CensusAssistantModule.php:216 search.php:32 search.php:44
 msgid "Please enter more than one character."
-msgstr ""
+msgstr "Бірнеше таңбаны енгізіңіз."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
 msgid "Poland"
-msgstr ""
+msgstr "Польша"
 
 #: app/SurnameTradition.php:83
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Поляк"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:347
 #: resources/views/setup/step-3-database-connection.php:45
 msgid "Port number"
-msgstr ""
+msgstr "Порт нөмірі"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Portland, Oregon, United States"
-msgstr ""
+msgstr "Портленд, Орегон, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Porto Alegre, Brazil"
-msgstr ""
+msgstr "Порту Алегре, Бразилия"
 
 #. I18N: page orientation
 #: admin_trees_config.php:40 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:212
 msgid "Portrait"
-msgstr ""
+msgstr "Портрет"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
 msgid "Portugal"
-msgstr ""
+msgstr "Португалия"
 
 #: app/SurnameTradition.php:79
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "португал тілі"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:484
 msgid "Postal code"
-msgstr ""
+msgstr "Пошта Индексі"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: admin_site_config.php:127 app/Functions/FunctionsEdit.php:221
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr ""
+msgstr "Әкімші айтылған алдын ала анықталған мәтін пайдаланушы есептік жазбасының әрбір сұрауы бойынша шешеді"
 
 #: admin_site_config.php:126 app/Functions/FunctionsEdit.php:220
 msgid "Predefined text that states all users can request a user account"
-msgstr ""
+msgstr "Барлық пайдаланушылардың пайдаланушы тіркелгісін сұрайтыны туралы алдын ала анықталған мәтін"
 
 #: admin_site_config.php:128 app/Functions/FunctionsEdit.php:222
 msgid "Predefined text that states only family members can request a user account"
-msgstr ""
+msgstr "Тек отбасы мүшелерін анықтайтын алдын ала анықталған мәтін пайдаланушы тіркелгісін сұрата алады"
 
 #: admin_trees_config.php:226 admin_trees_manage.php:402 block_edit.php:69
 #: resources/views/blocks/template.php:7
 msgid "Preferences"
-msgstr ""
+msgstr "Теңшелімдер"
 
 #: resources/views/admin/modules.php:22
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Параметрлер \"%s\" модулінде бар, бірақ бұл модуль енді жоқ."
 
 #. I18N: A configuration setting
 #: admin_users.php:475
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Таңдаулы байланыс әдісі"
 
 #: app/Module/GoogleMapsModule.php:378
 msgid "Prefixes"
-msgstr ""
+msgstr "Префикс"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:147 app/Module/RecentChangesModule.php:143
@@ -10945,48 +10945,48 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:177
 #: app/Module/YahrzeitModule.php:200
 msgid "Presentation style"
-msgstr ""
+msgstr "Таныстыру стилі"
 
 #. I18N: I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "President’s Office"
-msgstr ""
+msgstr "Президент кеңсесі"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "Preston, England"
-msgstr ""
+msgstr "Престон, Англия"
 
 #: app/GedcomCode/GedcomCodeRela.php:216
 msgid "Priest"
-msgstr ""
+msgstr "Діни қызметкер"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr ""
+msgstr "Бос кезде негізгі оқиғаларды басып шығарыңыз"
 
 #: admin_trees_manage.php:412 app/Http/Controllers/AdminController.php:1464
 msgid "Privacy"
-msgstr ""
+msgstr "Құпиялылық"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Құпиялылықты шектеу"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
 msgid "Privacy restrictions"
-msgstr ""
+msgstr "Құпиялылық шектеулері"
 
 #: resources/views/admin/tree-privacy.php:209
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
+msgstr "Құпиялылық шектеулері - бұл GEDCOM RESN тегі жоқ жазбалар мен фактілерге қолданылады"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:522
 #: app/GedcomRecord.php:602 app/GedcomRecord.php:727 app/Individual.php:1278
@@ -10994,240 +10994,240 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:846 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1468 app/Stats.php:2973 expand_view.php:28
 msgid "Private"
-msgstr ""
+msgstr "Жеке"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:486
 msgid "Probate"
-msgstr ""
+msgstr "Өкілдік"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:488
 msgid "Property"
-msgstr ""
+msgstr "Жылжымайтын мүлік"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Provo City Center, Юта, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Provo, Utah, United States"
-msgstr ""
+msgstr "Прово, Юта, АҚШ"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:490 resources/views/modals/source-fields.php:28
 msgid "Publication"
-msgstr ""
+msgstr "Басылым"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6804
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Пуэрто-Рико"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6810
 msgid "Qatar"
-msgstr ""
+msgstr "Катар"
 
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:492
 msgid "Quality of data"
-msgstr ""
+msgstr "Деректердің сапасы"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr ""
+msgstr "Квартид"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:179
 msgid "Question"
-msgstr ""
+msgstr "Сұрақ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Кветталтенанго, Гватемала"
 
 #: admin_trees_config.php:1205
 msgid "Quick family facts"
-msgstr ""
+msgstr "Жылдам отбасылық фактілер"
 
 #: admin_trees_config.php:1151
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Жылдам жеке деректер"
 
 #: admin_trees_config.php:1287
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Жылдам қойма фактілері"
 
 #: admin_trees_config.php:1246
 msgid "Quick source facts"
-msgstr ""
+msgstr "Жылдам дерек көздері"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr ""
+msgstr "Квинтиди"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:130 app/Module/UserMessagesModule.php:131
 msgid "RE: "
-msgstr ""
+msgstr "RE: "
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr ""
+msgstr "Раввин"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Раби аль-аввал"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Раби аль-аввал"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Раби аль-аввал"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Раби аль-аввал"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Раби 'әл-Тани"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Раби 'әл-Тани"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Раби 'әл-Тани"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Раби 'әл-Тани"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr ""
+msgstr "Рада"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Ражаб"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Ражаб"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Ражаб"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Ражаб"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Raleigh, North Carolina, United States"
-msgstr ""
+msgstr "Raleigh, Солтүстік Каролина, Америка Құрама Штаттары"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Рамадан"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Рамадан"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Рамадан"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Рамадан"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:40
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Ағымдағы отбасылық ағаштан кездейсоқ суреттер."
 
 #: app/Controller/FamilyController.php:84 app/Module/RelativesTabModule.php:295
 #: edit_interface.php:1923
 msgid "Re-order children"
-msgstr ""
+msgstr "Балаларға қайта тапсырыс беру"
 
 #: app/Module/RelativesTabModule.php:389 edit_interface.php:2023
 msgid "Re-order families"
-msgstr ""
+msgstr "Отбасыларға қайта тапсырыс беру"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1356 edit_interface.php:1734 individual.php:170
 msgid "Re-order media"
-msgstr ""
+msgstr "Медианы қайта сұраңыз"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Атауларды қайта тапсырыңыз"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
 #: resources/views/emails/register-notify-text.php:7
 msgid "Real name"
-msgstr ""
+msgstr "Шын аты"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:47 modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Соңғы өзгерістер"
 
 #: calendar.php:229
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Соңғы жылдары (&lt; 100 жыл)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
 msgid "Recife, Brazil"
-msgstr ""
+msgstr "Ресифи, Бразилия"
 
 #: app/Functions/FunctionsPrintLists.php:1496
 #: app/Module/ClippingsCartModule.php:457
@@ -11239,114 +11239,114 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:214
 #: resources/views/blocks/research-tasks.php:10
 msgid "Record"
-msgstr ""
+msgstr "Жазба"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:518
 msgid "Record ID number"
-msgstr ""
+msgstr "ID нөмірін жазу"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:514
 msgid "Record file number"
-msgstr ""
+msgstr "Файлдың нөмірін жазыңыз"
 
 #: search.php:86 statistics.php:362
 msgid "Records"
-msgstr ""
+msgstr "Жазбалар"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Redlands, California, United States"
-msgstr ""
+msgstr "Redlands, Калифорния, Америка Құрама Штаттары"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:494
 msgid "Reference number"
-msgstr ""
+msgstr "Анықтама нөмірі"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Регина, Саскачеван, Канада"
 
 #: app/GedcomTag.php:413 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Тіркелген серіктестік"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr ""
+msgstr "Тіркеуші офицері"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Тіркеуші офицері"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Тіркеуші офицері"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:169
 msgid "Regular expression"
-msgstr ""
+msgstr "Тұрақты сөйлем"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:146
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Тұрақты өрнектер - озық үлгіні сәйкестендіру әдісі."
 
 #: edit_changes.php:211 edit_changes.php:238
 msgid "Reject"
-msgstr ""
+msgstr "Қабылдамау"
 
 #: edit_changes.php:193
 msgid "Reject all changes"
-msgstr ""
+msgstr "Барлық өзгерістерді қабылдамаңыз"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Байланысты отбасылар"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr ""
+msgstr "Байланысты тұлғалар"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:496
 msgid "Relationship"
-msgstr ""
+msgstr "Қатынас"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1179
 msgid "Relationship to father"
-msgstr ""
+msgstr "Әкесі қатынасы"
 
 #: app/Module/RelationshipsChartModule.php:84
 msgid "Relationship to me"
-msgstr ""
+msgstr "Менімен қарым-қатынас"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1291
 msgid "Relationship to mother"
-msgstr ""
+msgstr "Ананың қарым-қатынасы"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:471
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Ата-аналармен қарым-қатынас"
 
 #: relationship.php:133
 #, php-format
 msgid "Relationship: %s"
-msgstr ""
+msgstr "Қатынас: %s"
 
 #. I18N: Name of a module/chart
 #. I18N: Configuration option
@@ -11355,50 +11355,50 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:91
 #: app/Module/RelationshipsChartModule.php:180 relationship.php:47
 msgid "Relationships"
-msgstr ""
+msgstr "Қатынастар"
 
 #. I18N: %s are individual’s names
 #: relationship.php:42
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "%1$s және %2$s арасындағы қатынастар"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:498 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:587
 msgid "Religion"
-msgstr ""
+msgstr "Дін"
 
 #: app/GedcomTag.php:463
 msgid "Religious institution"
-msgstr ""
+msgstr "Діни мекеме"
 
 #: app/GedcomTag.php:415 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Діни неке"
 
 #: app/GedcomTag.php:1331
 msgid "Religious name"
-msgstr ""
+msgstr "Діни есімі"
 
 #: app/GedcomTag.php:1329
 msgctxt "FEMALE"
 msgid "Religious name"
-msgstr ""
+msgstr "Діни есімі"
 
 #: app/GedcomTag.php:1327
 msgctxt "MALE"
 msgid "Religious name"
-msgstr ""
+msgstr "Діни есімі"
 
 #: app/Module/ReviewChangesModule.php:206
 msgid "Reminder email frequency (days)"
-msgstr ""
+msgstr "Еске салғыш электрондық поштасы жиілігі (күн)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:524
 msgid "Remote server"
-msgstr ""
+msgstr "Қашықтағы сервер"
 
 #: app/Module/CensusAssistantModule.php:348
 #: app/Module/CensusAssistantModule.php:368
@@ -11412,67 +11412,67 @@ msgstr ""
 #: resources/views/edit-blocks-page.php:161
 #: resources/views/edit-blocks-page.php:203
 msgid "Remove"
-msgstr ""
+msgstr "Жою"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Көшірме сілтемелерді жою"
 
 #: timeline.php:402 timeline.php:418
 msgid "Remove individual"
-msgstr ""
+msgstr "Жеке адамды алып тастаңыз"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:112
 msgid "Remove link from list"
-msgstr ""
+msgstr "Сілтемені тізімнен алып тастаңыз"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:283
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "GEDCOM медиа жолын файл атауларынан алып тастаңыз"
 
 #: app/Module/GoogleMapsModule.php:3333
 msgid "Remove this location?"
-msgstr ""
+msgstr "Осы орынды жою керек пе?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Reno, Nevada, United States"
-msgstr ""
+msgstr "Рено, Невада, Америка Құрама Штаттары"
 
 #: admin_trees_manage.php:531
 msgid "Renumber"
-msgstr ""
+msgstr "Нөмірді қайта санау"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:93 admin_trees_merge.php:98
 #: admin_trees_renumber.php:28
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Отбасы ағашын қайта санау"
 
 #: admin_trees_places.php:98 search.php:186
 msgid "Replace with"
-msgstr ""
+msgstr "Ауыстырыңыз"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:157
 msgid "Replacement text"
-msgstr ""
+msgstr "Ауыстыру мәтіні"
 
 #: app/Module/UserMessagesModule.php:134
 msgid "Reply"
-msgstr ""
+msgstr "Жауап беру"
 
 #: app/Http/Controllers/AdminController.php:1411
 #: resources/views/admin/modules.php:159 resources/views/admin/modules.php:191
 #: resources/views/report-select.php:11
 msgid "Report"
-msgstr ""
+msgstr "Есеп"
 
 #: app/Http/Controllers/AdminController.php:1411
 #: app/Theme/AbstractTheme.php:1778 resources/views/admin/control-panel.php:379
 #: resources/views/admin/modules.php:75
 msgid "Reports"
-msgstr ""
+msgstr "Есептер"
 
 #: admin_trees_duplicates.php:136 app/Module/FamilyTreeStatisticsModule.php:233
 #: app/Module/HtmlBlockModule.php:198 app/Theme/AbstractTheme.php:1607
@@ -11482,7 +11482,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.php:21
 #: resources/views/blocks/family-tree-statistics.php:97 statistics.php:369
 msgid "Repositories"
-msgstr ""
+msgstr "Репозиторийлер"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_manage.php:579 app/GedcomTag.php:500
@@ -11490,308 +11490,308 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:172
 #: resources/views/modals/source-fields.php:36
 msgid "Repository"
-msgstr ""
+msgstr "Репозиторий"
 
 #: app/Functions/FunctionsPrintLists.php:1112
 msgid "Repository name"
-msgstr ""
+msgstr "Репозиторийдің атауы"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6668
 msgid "Republic of the Congo"
-msgstr ""
+msgstr "Конго Республикасы"
 
 #: login.php:221 resources/views/blocks/sign-in.php:42
 msgid "Request a new password"
-msgstr ""
+msgstr "Жаңа құпия сөз сұраңыз"
 
 #: app/Module/WelcomeBlockModule.php:74 login.php:212 login.php:285
 #: resources/views/blocks/sign-in.php:34
 msgid "Request a new user account"
-msgstr ""
+msgstr "Жаңа пайдаланушы тіркелгісін сұраңыз"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1344 resources/views/blocks/research-tasks.php:16
 msgid "Research task"
-msgstr ""
+msgstr "Зерттеу міндеті"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr ""
+msgstr "Зерттеу міндеттері"
 
 #: app/Module/ResearchTaskModule.php:155
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Зерттеу міндеттері - отбасылық ағаштардағы жеке тұлғаларға қосымша зерттеулер жүргізу қажеттілігін анықтайтын арнайы іс-шаралар. Сіз оларды дәлірек көздермен тексеруге, құжаттарды немесе фотосуреттерді алуға, қайшылықты ақпараттарды шешу үшін ескерту ретінде қолдануға болады."
 
 #: app/Module/ResearchTaskModule.php:157
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr ""
+msgstr "Зерттеу тапсырмалары «_TODO» тегті GEDCOM тегі арқылы сақталады. Басқа генеалогия бағдарламалары бұл тегті танымауы мүмкін."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:502
 msgid "Residence"
-msgstr ""
+msgstr "Резиденция"
 
 #: resources/views/edit-blocks-page.php:222
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Әдепкі блок орналасуын қалпына келтіріңіз"
 
 #: admin_users.php:588
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Шұғыл отбасын шектеңіз"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:508 resources/views/media-page.php:121
 msgid "Restriction"
-msgstr ""
+msgstr "Шектеу"
 
 #: help_text.php:270 resources/views/help/date.php:239
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "Шектеулер жазбаларға және/немесе фактілерге қосылуы мүмкін. Олар деректерді кім көре алатындығын және оны өңдей алатынды шектейді."
 
 #: app/Stats.php:85
 msgid "Resulting value"
-msgstr ""
+msgstr "Нәтиже мәні"
 
 #: statistics.php:681
 msgid "Results"
-msgstr ""
+msgstr "Нәтижелері"
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:510
 msgid "Retirement"
-msgstr ""
+msgstr "Зейнетақы"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
 msgid "Reunion"
-msgstr ""
+msgstr "қайта бірігу"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Рексбург, Айдахо, Америка Құрама Штаттары"
 
 #: resources/views/edit-blocks-page.php:149
 msgid "Right section blocks"
-msgstr ""
+msgstr "Оң жақ блок"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:582 app/GedcomTag.php:520
 msgid "Role"
-msgstr ""
+msgstr "Рөл"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
 msgid "Romania"
-msgstr ""
+msgstr "Румыния"
 
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:522
 msgid "Romanized"
-msgstr ""
+msgstr "Романсталған"
 
 #: app/GedcomTag.php:480
 msgid "Romanized place"
-msgstr ""
+msgstr "Романсталған орын"
 
 #: app/GedcomTag.php:566
 msgid "Romanized title"
-msgstr ""
+msgstr "Романстық атауы"
 
 #: app/Functions/FunctionsPrintLists.php:246
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Roots"
-msgstr ""
+msgstr "Түбірлер"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:48 search.php:308
 msgid "Russell"
-msgstr ""
+msgstr "Расселл"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6813
 msgid "Russia"
-msgstr ""
+msgstr "Ресей"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6814
 msgid "Rwanda"
-msgstr ""
+msgstr "Руанда"
 
 #: admin_site_config.php:329
 msgid "SMTP mail server"
-msgstr ""
+msgstr "SMTP пошта сервері"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Sacramento, California, United States"
-msgstr ""
+msgstr "Сакраменто, Калифорния, Америка Құрама Штаттары"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Сафар"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "Сафар"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Сафар"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Сафар"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:60
 msgid "Sage"
-msgstr ""
+msgstr "Sage"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
 msgid "Saint Helena"
-msgstr ""
+msgstr "Әулие Елена"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6744
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Сент-Китс және Невис"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Сент-Люсия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6830
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Сен-Пьер және Микелон"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6863
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Сент-Винсент және Гренадин"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
 msgid "Salt Lake City, Utah, United States"
-msgstr ""
+msgstr "Солт-Лейк-Сити, Юта, Америка Құрама Штаттары"
 
 #: resources/views/modals/media-file-fields.php:60
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Жүктелген файл сияқты"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6871
 msgid "Samoa"
-msgstr ""
+msgstr "Самоа"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "San Antonio, Texas, United States"
-msgstr ""
+msgstr "Сан-Антонио, Техас, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "San Diego, California, United States"
-msgstr ""
+msgstr "Сан-Диего, Калифорния, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "San Jose, Costa Rica"
-msgstr ""
+msgstr "Сан-Хосе, Коста-Рика"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6828
 msgid "San Marino"
-msgstr ""
+msgstr "Сан-Марино"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "Сан-Сальвадор, Сальвадор"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "Сантьяго, Чили"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Santo Domingo, Dominican Republic"
-msgstr ""
+msgstr "Санто-Доминго, Доминикан Республикасы"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:347
 msgid "Sao Paulo, Brazil"
-msgstr ""
+msgstr "Сан-Паулу, Бразилия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6832
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Сан-Томе және Принсипе"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:618
 msgid "Sat"
-msgstr ""
+msgstr "Сенбі"
 
 #: app/Date/CalendarDate.php:357
 msgid "Saturday"
-msgstr ""
+msgstr "Сенбі"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6815
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Сауд Арабиясы"
 
 #: app/GedcomTag.php:289
 msgid "School or college"
-msgstr ""
+msgstr "Мектеп немесе колледж"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6816
 msgid "Scotland"
-msgstr ""
+msgstr "Шотландия"
 
 #. I18N: gedcom tag _SCBK
 #: app/GedcomTag.php:1334
 msgid "Scrapbook"
-msgstr ""
+msgstr "альбом"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Қорғаныс"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Қорғаныс"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Қорғаныс"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing canceled (divorce)"
-msgstr ""
+msgstr "Қорғауды тоқтату (ажырасу)"
 
 #. I18N: A button label.
 #: app/Module/DescendancyModule.php:102 app/Module/DescendancyModule.php:135
@@ -11801,697 +11801,697 @@ msgstr ""
 #: app/Theme/FabTheme.php:56 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:85
 #: search.php:211
 msgid "Search"
-msgstr ""
+msgstr "Іздеу"
 
 #: app/Controller/SearchController.php:201
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:52
 #: app/Theme/AbstractTheme.php:1830
 msgid "Search and replace"
-msgstr ""
+msgstr "Іздеу және ауыстыру"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:61
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Мәтінді іздеңіз және ауыстырыңыз, қарапайым іздеулер немесе кеңейтілген үлгіні сәйкестендіру."
 
 #: medialist.php:109
 msgid "Search filters"
-msgstr ""
+msgstr "Іздеу сүзгілері"
 
 #: admin_trees_places.php:96 search.php:70 search.php:178
 msgid "Search for"
-msgstr ""
+msgstr "Іздеу"
 
 #: app/Module/GoogleMapsModule.php:3028
 msgid "Search globally"
-msgstr ""
+msgstr "Ғаламдық іздеу"
 
 #: app/Module/GoogleMapsModule.php:3034
 msgid "Search locally"
-msgstr ""
+msgstr "Жергілікті түрде іздеу"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 msgid "Search method"
-msgstr ""
+msgstr "Іздеу әдісі"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:151
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Мәтінді/үлгіні іздеу"
 
 #: app/Module/RelationshipsChartModule.php:172
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Барлық ықтимал қатынастарды іздестіру күрделі ағаштарда көп уақыт алады."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Seattle, Washington, United States"
-msgstr ""
+msgstr "Сиетл, Вашингтон, Америка Құрама Штаттары"
 
 #: resources/views/admin/merge-records-step-1.php:54
 msgid "Second record"
-msgstr ""
+msgstr "Екінші жазба"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:401
 msgid "Secure connection"
-msgstr ""
+msgstr "Қауіпсіз қосылу"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:610
 msgid "Security code"
-msgstr ""
+msgstr "Қауіпсіздік коды"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:146
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Қосымша ақпарат алу үшін %s бөлімін қараңыз."
 
 #: resources/views/admin/merge-records-step-2.php:24
 #: resources/views/admin/merge-records-step-2.php:71
 #: resources/views/admin/merge-records-step-2.php:117
 msgid "Select"
-msgstr ""
+msgstr "Таңдаңыз"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:201
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Импорттау үшін GEDCOM файлын таңдаңыз"
 
 #: resources/views/edit-blocks-page.php:130
 msgid "Select a block and use the arrows to move it."
-msgstr ""
+msgstr "Блокты таңдаңыз және оны жылжыту үшін көрсеткілерді пайдаланыңыз."
 
 #: app/Functions/FunctionsEdit.php:506 reportengine.php:163
 msgid "Select a date"
-msgstr ""
+msgstr "Күнді таңдаңыз"
 
 #: lifespan.php:79
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Адамдарды орын немесе күн бойынша таңдаңыз"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr ""
+msgstr "Отбасылық ағаштан жазбаларды таңдап, оларды GEDCOM файлы ретінде сақтаңыз."
 
 #: statistics.php:532 statistics.php:540 statistics.php:547
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Қажетті жас аралығын таңдаңыз"
 
 #: statistics.php:568
 msgid "Select the desired count interval"
-msgstr ""
+msgstr "Қажетті есептеу аралығын таңдаңыз"
 
 #: resources/views/admin/merge-records-step-2.php:10
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Екі жазбалардан сақтау үшін фактілер мен оқиғаларды таңдаңыз."
 
 #: admin_site_config.php:624
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Мәзірлерде көрсетілетін тілдерді таңдаңыз."
 
 #: resources/views/admin/merge-records-step-1.php:14
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Біріктіруге арналған екі жазбаны таңдаңыз."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
-msgstr ""
+msgstr "Сатушы"
 
 #: app/GedcomCode/GedcomCodeRela.php:234
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr ""
+msgstr "Сатушы"
 
 #: app/GedcomCode/GedcomCodeRela.php:232
 msgctxt "MALE"
 msgid "Seller"
-msgstr ""
+msgstr "Сатушы"
 
 #: app/Module/UserMessagesModule.php:100 message.php:169
 msgid "Send"
-msgstr ""
+msgstr "Жіберу"
 
 #: app/Module/LoggedInUsersModule.php:91 app/Module/UserMessagesModule.php:93
 #: app/Stats.php:5902 edit_changes.php:230 message.php:104
 msgid "Send a message"
-msgstr ""
+msgstr "Хабарды жіберу"
 
 #: admin_users_bulk.php:38
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Барлық пайдаланушыларға хабар жіберу"
 
 #: admin_users_bulk.php:43
 msgid "Send a message to users who have never signed in"
-msgstr ""
+msgstr "Ешқашан кірмеген пайдаланушыларға хабар жіберу"
 
 #: admin_users_bulk.php:48
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr ""
+msgstr "6 айға кірмеген пайдаланушыларға хабар жіберу"
 
 #: admin_users_bulk.php:25 resources/views/admin/control-panel.php:313
 msgid "Send broadcast messages"
-msgstr ""
+msgstr "Хабар тарату хабарларын жіберіңіз"
 
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:196
 msgid "Send out reminder emails"
-msgstr ""
+msgstr "Еске салатын электрондық хаттарды жіберіңіз"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:319
 msgid "Sender name"
-msgstr ""
+msgstr "Жіберушінің аты"
 
 #: admin_site_config.php:142 resources/views/admin/control-panel.php:52
 msgid "Sending email"
-msgstr ""
+msgstr "Электрондық поштаны жіберу"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:414
 msgid "Sending server name"
-msgstr ""
+msgstr "Сервер атауын жіберу"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
 msgid "Senegal"
-msgstr ""
+msgstr "Сенегал"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Seoul, Korea"
-msgstr ""
+msgstr "Сеул, Корея"
 
 #: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Қыркүйек"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1336
 msgid "Separated"
-msgstr ""
+msgstr "Бөлек"
 
 #: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "Қыркүйек"
 
 #: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "Қыркүйек"
 
 #: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "Қыркүйек"
 
 #: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:606
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "Қыркүйек"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr ""
+msgstr "Састлид"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6820
 msgid "Serbia"
-msgstr ""
+msgstr "Сербия"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
-msgstr ""
+msgstr "Қызметші"
 
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr ""
+msgstr "Қызметші"
 
 #: app/GedcomCode/GedcomCodeRela.php:241
 msgctxt "MALE"
 msgid "Servant"
-msgstr ""
+msgstr "Қызметші"
 
 #: app/Http/Controllers/AdminController.php:1432
 #: resources/views/admin/control-panel.php:92
 msgid "Server information"
-msgstr ""
+msgstr "Сервер туралы ақпарат"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:334
 #: resources/views/setup/step-3-database-connection.php:33
 msgid "Server name"
-msgstr ""
+msgstr "Сервер атауы"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:289
 msgid "Session timeout"
-msgstr ""
+msgstr "Сеанстың күту уақыты"
 
 #: admin_trees_manage.php:455 admin_trees_manage.php:464
 msgid "Set as default"
-msgstr ""
+msgstr "Әдепкі ретінде орнату"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:21
 #: resources/views/emails/verify-notify-text.php:12
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Әрбір ағаш үшін кіру деңгейін орнатыңыз."
 
 #: app/Http/Controllers/HomePageController.php:116
 #: resources/views/admin/control-panel.php:253
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Жаңа отбасылық ағаштарға арналған әдепкі блоктарды орнатыңыз"
 
 #: app/Http/Controllers/HomePageController.php:289
 #: resources/views/admin/control-panel.php:325
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Жаңа пайдаланушылар үшін әдепкі блоктарды орнатыңыз"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:725
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr ""
+msgstr "Некелер мен асыл тұқымды диаграммаларда көрсетілетін ұрпақтардың әдепкі сандарын орнатыңыз."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:765
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr ""
+msgstr "Өсімдік диаграммаларында көрсетілетін ұрпақтың максималды санын орнатыңыз."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:745
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr ""
+msgstr "Асыл тұқымды диаграммаларда көрсетілетін ұрпақтың максималды санын орнатыңыз."
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/tree-privacy.php:54
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "Барлық өлі адамдар үшін құпиялылыққа қол жеткізу деңгейін орнатыңыз."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:20
 #: resources/views/emails/verify-notify-text.php:11
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Күйді «мақұлданған» күйіне орнатыңыз."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1069
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr ""
+msgstr "Оны <b>Ия</b> параметріне жеке пайдаланушыларға, көздерге және отбасыларға GEDCOM файлынан тікелей алынған шикі деректерді қамтитын басқа терезені шығаруға мүмкіндік беретін сілтемелер орналастырады."
 
 #: resources/views/layouts/setup.php:8 resources/views/layouts/setup.php:16
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "Webtrees үшін орнату шебері"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr ""
+msgstr "Секстиди"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6839
 msgid "Seychelles"
-msgstr ""
+msgstr "Сейшель аралдары"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Шах"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Шахривар"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Шахривар"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Шахривар"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Шахривар"
 
 #: admin_trees_manage.php:603 app/Controller/FamilyController.php:145
 #: app/GedcomTag.php:528 edit_interface.php:1258 inverselink.php:129
 #: note.php:127 resources/views/media-page.php:111
 msgid "Shared note"
-msgstr ""
+msgstr "Ортақ ескерту"
 
 #: app/Functions/FunctionsPrintLists.php:964 app/Theme/AbstractTheme.php:1589
 #: notelist.php:28 notelist.php:32 search.php:110
 msgid "Shared notes"
-msgstr ""
+msgstr "Ортақ жазбалар"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Шавваль"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "Шавваль"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Шавваль"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Шавваль"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Шаабан"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Шаабан"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Шаабан"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Шаабан"
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
-msgstr ""
+msgstr "Ол "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
-msgstr ""
+msgstr "Ол қайтыс болды"
 
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr ""
+msgstr "Ол үйленді"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
-msgstr ""
+msgstr "Ол тұрды"
 
 #: modules_v3/descendancy_report/report.xml:331
 msgid "She was born"
-msgstr ""
+msgstr "Ол туды"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr ""
+msgstr "Ол жерленген"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
-msgstr ""
+msgstr "Ол шоқынды"
 
 #: modules_v3/ahnentafel_report/report.xml:315
 msgid "She was cremated"
-msgstr ""
+msgstr "Ол күйдірілген"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Шеват"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Шеват"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Шеват"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Шеват"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:61
 msgid "Shiny Tomato"
-msgstr ""
+msgstr "Жылтыр қызанақ"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1342
 msgid "Short version"
-msgstr ""
+msgstr "Қысқа нұсқасы"
 
 #: help_text.php:133 help_text.php:149 help_text.php:164
 msgid "Shortcut"
-msgstr ""
+msgstr "Таңбаша"
 
 #: statistics.php:261
 msgid "Shortest marriage"
-msgstr ""
+msgstr "Ең қысқа неке"
 
 #: calendar.php:216
 msgid "Show"
-msgstr ""
+msgstr "Көрсету"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:570
 msgid "Show a download link in the media viewer"
-msgstr ""
+msgstr "Медиа қарау құралында жүктеу сілтемесін көрсетіңіз"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:495
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr ""
+msgstr "«Жаңа пайдаланушы тіркелгісін сұрау» бетінде қолайлы пайдалану шартын көрсетіңіз"
 
 #: app/Module/NotesTabModule.php:70
 msgid "Show all notes"
-msgstr ""
+msgstr "Барлық жазбаларды көрсетіңіз"
 
 #: placelist.php:218
 msgid "Show all places in a list"
-msgstr ""
+msgstr "Тізімдегі барлық орындарды көрсетіңіз"
 
 #: app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
-msgstr ""
+msgstr "Барлық көздерді көрсетіңіз"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:406
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Жас жүгіргіні көрсетіңіз"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr ""
+msgstr "Ата-ана балаларын көрсетіңіз"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:170
 msgid "Show counts before or after name"
-msgstr ""
+msgstr "Атаудан бұрын немесе кейінгі сандарды көрсету"
 
 #: app/Functions/FunctionsPrintLists.php:665
 msgid "Show couples where either partner married more than once."
-msgstr ""
+msgstr "Әріптес бір-екі рет некеде болған жұптарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:589
 msgid "Show couples where only the female partner is dead."
-msgstr ""
+msgstr "Тек жұбайы қайтыс болған жұптарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:597
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "Жігіттерді тек ер адам өлген жерді көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:641
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "100 жылдан астам уақыт бұрын некеде тұрған жұптарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:649
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "Соңғы 100 жылда некеге тұрған жұптарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:633
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "Ерлі-зайыптылардың некеге тұру күнін көрсету."
 
 #: ancestry.php:76
 msgid "Show cousins"
-msgstr ""
+msgstr "Кузиндерді көрсету"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:217
 msgid "Show date of last update"
-msgstr ""
+msgstr "Соңғы жаңартылған күнді көрсету"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:44
 msgid "Show dead individuals"
-msgstr ""
+msgstr "Өлгендерді көрсету"
 
 #: app/Functions/FunctionsPrintLists.php:657
 msgid "Show divorced couples."
-msgstr ""
+msgstr "Ажырасқан жұптарды көрсетіңіз."
 
 #: app/Module/GoogleMapsModule.php:3269
 msgid "Show inactive places"
-msgstr ""
+msgstr "Белсенді емес жерлерді көрсету"
 
 #: app/Functions/FunctionsPrintLists.php:226
 msgid "Show individuals born more than 100 years ago."
-msgstr ""
+msgstr "100 жылдан астам бұрын туылған адамдарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:234
 msgid "Show individuals born within the last 100 years."
-msgstr ""
+msgstr "Соңғы 100 жылда туылған адамдарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:192
 #: app/Functions/FunctionsPrintLists.php:581
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr ""
+msgstr "Екі тірі серіктес болған жұптарды немесе жұптарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:200
 #: app/Functions/FunctionsPrintLists.php:605
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr ""
+msgstr "Екі серіктестің қайтыс болған қайтыс болған немесе жұп адамдарын көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:208
 msgid "Show individuals who died more than 100 years ago."
-msgstr ""
+msgstr "100 жылдан астам уақыт бұрын қайтыс болған адамдарды көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
-msgstr ""
+msgstr "Соңғы 100 жылда қайтыс болған адамдарды көрсетіңіз."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:275
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Жанұялық ағаштардың тізімін көрсету"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:85
 msgid "Show living individuals"
-msgstr ""
+msgstr "Жеке тұлғаларды көрсету"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:126
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Жеке тұлғалардың аттарын көрсету"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr ""
+msgstr "Жазбаларды көрсету"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr ""
+msgstr "Кәсіптерді көрсету"
 
 #: app/Module/UpcomingAnniversariesModule.php:168
 msgid "Show only births, deaths, and marriages"
-msgstr ""
+msgstr "Тек туылғандарды, өлімді және неке қиюды көрсетіңіз"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:138
 #: app/Module/UpcomingAnniversariesModule.php:159
 msgid "Show only events of living individuals"
-msgstr ""
+msgstr "Тек жеке тұлғалардың оқиғаларын көрсетіңіз"
 
 #: app/Functions/FunctionsPrintLists.php:174
 msgid "Show only females."
-msgstr ""
+msgstr "Тек әйелдерді көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:182
 msgid "Show only individuals for whom the gender is not known."
-msgstr ""
+msgstr "Жыныс белгісіз тұлғаларды ғана көрсетіңіз."
 
 #: app/Module/SlideShowModule.php:218
 msgid "Show only individuals, events, or all"
-msgstr ""
+msgstr "Жеке тұлғаларды, оқиғаларды немесе барлығы көрсетіңіз"
 
 #: app/Functions/FunctionsPrintLists.php:166
 msgid "Show only males."
-msgstr ""
+msgstr "Тек еркектерді көрсетіңіз."
 
 #: app/Functions/FunctionsPrintLists.php:285
 #: app/Functions/FunctionsPrintLists.php:696
 msgid "Show parents"
-msgstr ""
+msgstr "Ата-аналарды көрсету"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Күтпеген өзгерістерді көрсету"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr ""
+msgstr "Фотосуреттерді көрсету"
 
 #: placelist.php:76
 msgid "Show places in hierarchy"
-msgstr ""
+msgstr "Иерархиядағы орындарды көрсету"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:146
 msgid "Show private relationships"
-msgstr ""
+msgstr "Жеке қатынастарды көрсетіңіз"
 
 #: search.php:124 search.php:328
 msgid "Show related individuals/families"
-msgstr ""
+msgstr "Байланысты тұлғаларды/отбасыларды көрсету"
 
 #: app/Module/ResearchTaskModule.php:162
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Басқа пайдаланушыларға тағайындалған зерттеу тапсырмаларын көрсетіңіз"
 
 #: app/Module/ResearchTaskModule.php:168
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Кез келген пайдаланушыға тағайындалған зерттеу тапсырмаларын көрсетіңіз"
 
 #: app/Module/ResearchTaskModule.php:174
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Болашақта күні бар зерттеу тапсырмаларын көрсетіңіз"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "Тұрғындарды көрсетіңіз"
 
 #: app/Module/SlideShowModule.php:240
 msgid "Show slide show controls"
-msgstr ""
+msgstr "Слайд-шоу басқару элементтерін көрсету"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12499,63 +12499,63 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr ""
+msgstr "Көздерді көрсетіңіз"
 
 #: hourglass.php:81 resources/views/family-book-page.php:45
 msgid "Show spouses"
-msgstr ""
+msgstr "Жұбайларды көрсетіңіз"
 
 #: app/Functions/FunctionsPrintLists.php:288
 #: app/Functions/FunctionsPrintLists.php:699
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Статистика статистикасын көрсету"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1003
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "%1$s %2$s орынның атауын көрсету."
 
 #: app/Module/HtmlBlockModule.php:311
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Жаңарту күнін және уақытын көрсетіңіз"
 
 #: admin_trees_config.php:850
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "Жеке бетіндегі жақын туыстарының оқиғаларын көрсетіңіз"
 
 #. I18N: A configuration setting
 #: resources/views/admin/tree-privacy.php:20
 msgid "Show the family tree"
-msgstr ""
+msgstr "Отбасы ағашын көрсетіңіз"
 
 #: famlist.php:159 indilist.php:159
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Жеке тұлғалардың тізімін көрсету"
 
 #: famlist.php:161 indilist.php:161
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Тізімнің тізімін көрсетіңіз"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:88
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr ""
+msgstr "Google Maps™ салыстыру қызметін пайдаланып, орындар мен оқиғалардың орналасқан жерін көрсетіңіз."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:159
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Өзгерту жасаған пайдаланушыны көрсетіңіз"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:200
 #: app/Module/HtmlBlockModule.php:322 app/Module/StoriesModule.php:255
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "Бұл блокты қандай тілдерге көрсету"
 
 #: admin_trees_config.php:592
 msgid "Show thumbnail images in charts and family groups."
-msgstr ""
+msgstr "Диаграммалардағы және отбасылық топтардағы нобай суреттерін көрсету."
 
 #: admin_trees_config.php:60 admin_trees_config.php:559
 #: app/Functions/FunctionsEdit.php:94 app/Functions/FunctionsEdit.php:238
@@ -12566,7 +12566,7 @@ msgstr ""
 #: app/Http/Controllers/AdminController.php:1960
 #: resources/views/modals/restriction-fields.php:17
 msgid "Show to managers"
-msgstr ""
+msgstr "Менеджерлерге көрсету"
 
 #: admin_trees_config.php:59 admin_trees_config.php:559
 #: app/Functions/FunctionsEdit.php:93 app/Functions/FunctionsEdit.php:237
@@ -12579,7 +12579,7 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:93
 #: resources/views/modals/restriction-fields.php:14
 msgid "Show to members"
-msgstr ""
+msgstr "Мүшелерге көрсету"
 
 #: admin_trees_config.php:58 app/Functions/FunctionsEdit.php:92
 #: app/Functions/FunctionsEdit.php:236
@@ -12593,50 +12593,50 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:154
 #: resources/views/modals/restriction-fields.php:11
 msgid "Show to visitors"
-msgstr ""
+msgstr "Келушілерге көрсету"
 
 #: app/Functions/FunctionsPrintLists.php:252
 #: app/Functions/FunctionsPrintLists.php:623
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "«Жапырақтары» жұптарын немесе жеке адамдарды көрсетіңіз. Бұл тірі, бірақ дерекқорда жазылған балалар жоқ адамдар."
 
 #: app/Functions/FunctionsPrintLists.php:244
 #: app/Functions/FunctionsPrintLists.php:615
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "«Тамыры» жұптарын немесе жеке адамдарды көрсетіңіз. Олар сондай-ақ «патриархтар» деп аталуы мүмкін. Олар ата-аналары жоқ деректер базасында жазылған адамдар."
 
 #. I18N: %s are placeholders for numbers
 #: app/Datatables.php:55 app/Datatables.php:56 app/I18N.php:186
 #: app/I18N.php:187
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "%1$s-дан %2$s-ге %3$s мәнін көрсету"
 
 #: app/Controller/HourglassController.php:349
 #: app/Controller/PedigreeController.php:280
 msgid "Sibling"
-msgstr ""
+msgstr "Ағайынды"
 
 #: app/Controller/HourglassController.php:349
 #: app/Controller/PedigreeController.php:280
 msgid "Siblings"
-msgstr ""
+msgstr "Туысқандар"
 
 #: app/Http/Controllers/AdminController.php:1444
 #: resources/views/admin/modules.php:133 resources/views/admin/modules.php:179
 msgid "Sidebar"
-msgstr ""
+msgstr "Бүйірлік тақта"
 
 #: app/Http/Controllers/AdminController.php:1444
 #: resources/views/admin/control-panel.php:367
 #: resources/views/admin/modules.php:60
 msgid "Sidebars"
-msgstr ""
+msgstr "Сайдбарлар"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6826
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Сьерра-Леоне"
 
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:53
@@ -12644,17 +12644,17 @@ msgstr ""
 #: resources/views/emails/password-reset-html.php:19
 #: resources/views/emails/password-reset-text.php:9
 msgid "Sign in"
-msgstr ""
+msgstr "Кіру"
 
 #: app/Module/LoginBlockModule.php:48 app/Theme/AbstractTheme.php:1644
 #: resources/views/layouts/administration.php:48
 msgid "Sign out"
-msgstr ""
+msgstr "Шығу"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:439
 msgid "Sign-in URL"
-msgstr ""
+msgstr "Кіру URL-і"
 
 #: admin_site_config.php:145 resources/views/admin/control-panel.php:58
 msgid "Sign-in and registration"
