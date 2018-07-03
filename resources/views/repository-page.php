@@ -57,7 +57,7 @@
 		</div>
 
 		<div class="tab-pane fade" role="tabpanel" id="sources">
-			<?= FunctionsPrintLists::sourceTable($sources) ?>
+			<?= view('lists/sources-table', ['sources' => $sources]) ?>
 		</div>
 	</div>
 </div>
