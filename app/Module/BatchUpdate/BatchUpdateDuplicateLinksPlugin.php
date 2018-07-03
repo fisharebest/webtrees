@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -51,35 +52,35 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * Does this record need updating?
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return bool
 	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
+	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
+		$gedcom = $record->getGedcom();
+
 		return
-			preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedrec) ||
-			preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedrec) ||
-			preg_match('/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedrec);
+			preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedcom) ||
+			preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedcom) ||
+			preg_match('/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedcom);
 	}
 
 	/**
 	 * Apply any updates to this record
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	public function updateRecord($xref, $gedrec) {
-		return preg_replace(
-			[
-				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-				'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
-				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
-			],
-			'$2',
-			$gedrec
-		);
+	public function updateRecord(GedcomRecord $record): string {
+		$old_gedcom = $record->getGedcom();
+
+		$new_gedcom = preg_replace([
+			'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+			'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
+			'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
+		], '$2', $old_gedcom);
+
+		return $new_gedcom;
 	}
 }

@@ -1,0 +1,101 @@
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<?= Bootstrap4::breadcrumbs([route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Module administration')], $title) ?>
+
+<h1><?= $title ?></h1>
+
+<form >
+	<input type="hidden" name="route" value="module">
+	<input type="hidden" name="module" value="batch_update">
+	<input type="hidden" name="action" value="Admin">
+	<input type="hidden" name="xref" value="<?= $curr_xref ?>">
+	<?= csrf_field() ?>
+
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label"><?= I18N::translate('Family tree') ?></label>
+		<div class="col-sm-9">
+			<?= Bootstrap4::select($trees, $tree->getName(), ['id' => 'ged', 'name' => 'ged', 'onchange' => 'this.form.submit();']) ?>
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label"><?= I18N::translate('Batch update') ?></label>
+		<div class="col-sm-9">
+			<select class="form-control" name="plugin" onchange="this.form.submit();">
+				<?php if ($plugin === null): ?>
+					<option value="" selected></option>
+				<?php endif ?>
+
+				<?php foreach ($plugins as $key => $value): ?>
+					<option value="<?= $key ?>" <?= ($plugin ? '\\' . get_class($plugin) : null) === $key ? 'selected' : '' ?>>
+						<?= $value->getName() ?>
+					</option>
+				<?php endforeach ?>
+			</select>
+
+			<?php if ($plugin !== null): ?>
+				<p class="small text-muted"><?= $plugin->getDescription() ?></p>
+			<?php endif ?>
+		</div>
+	</div>
+
+	<?php if ($plugin !== null): ?>
+		<?= $plugin->getOptionsForm() ?>
+
+		<hr>
+
+		<?php if ($record !== null): ?>
+			<div class="row">
+				<div class="col-sm-3 d-flex flex-column justify-content-between">
+					<div>
+						<?php if ($prev_xref === null): ?>
+							<button class="btn btn-primary" type="submit" disabled>
+								<?= I18N::translate('previous') ?>
+							</button>
+						<?php else: ?>
+							<button class="btn btn-primary" type="submit" onclick="this.form.xref.value='<?= e($prev_xref) ?>'">
+								<?= I18N::translate('previous') ?>
+							</button>
+						<?php endif ?>
+
+						<?php if ($next_xref === null): ?>
+							<button class="btn btn-primary" type="submit" disabled>
+								<?= I18N::translate('next') ?>
+							</button>
+						<?php else: ?>
+							<button class="btn btn-primary" type="submit" onclick="this.form.xref.value='<?= e($next_xref) ?>'">
+								<?= I18N::translate('next') ?>
+							</button>
+						<?php endif ?>
+					</div>
+
+					<div>
+						<button class="btn btn-primary" type="submit" name="update" value="one" onclick="this.form.method='post'">
+							<?= I18N::translate('Update') ?>
+						</button>
+
+						<?php if ($auto_accept): ?>
+							<button class="btn btn-primary" type="submit" name="update" value="all" onclick="this.form.method='post'">
+								<?= I18N::translate('Update all') ?>
+							</button>
+						<?php else: ?>
+						<button class="btn btn-primary" disabled title="<?= I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.') ?>">
+							<?= I18N::translate('Update all') ?>
+						</button>
+						<?php endif ?>
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<a class="lead" href="<?= e($record->url()) ?>">
+						<?= $record->getFullName() ?>
+					</a>
+					<?= $plugin->getActionPreview($record) ?>
+				</div>
+			</div>
+		<?php else: ?>
+			<div class="alert alert-info">
+				<?= I18N::translate('Nothing found.') ?>
+			</div>
+		<?php endif ?>
+	<?php endif ?>
+</form>

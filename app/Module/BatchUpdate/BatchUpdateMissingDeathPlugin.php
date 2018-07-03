@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -43,26 +44,27 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * Does this record need updating?
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return bool
 	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
-		global $WT_TREE;
+	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
+		$gedcom = $record->getGedcom();
 
-		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref, $WT_TREE)->isDead();
+		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedcom) && $record->isDead();
 	}
 
 	/**
 	 * Apply any updates to this record
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	public function updateRecord($xref, $gedrec) {
-		return $gedrec . "\n1 DEAT Y";
+	public function updateRecord(GedcomRecord $record): string {
+		$old_gedcom = $record->getGedcom();
+		$new_gedcom = $old_gedcom . "\n1 DEAT Y";
+
+		return $new_gedcom;
 	}
 }

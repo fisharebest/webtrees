@@ -17,8 +17,9 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Symfony\Component\HttpFoundation\Request;
 use Throwable;
 
 /**
@@ -73,38 +74,45 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	/**
 	 * Does this record need updating?
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return bool
 	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedrec);
+	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
+		$gedcom = $record->getGedcom();
+
+		return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedcom);
 	}
 
 	/**
 	 * Apply any updates to this record
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	public function updateRecord($xref, $gedrec) {
+	public function updateRecord(GedcomRecord $record): string {
+		$old_gedcom = $record->getGedcom();
+
 		// Allow "\n" to indicate a line-feed in replacement text.
 		// Back-references such as $1, $2 are handled automatically.
-		return preg_replace('/' . $this->regex . '/mu' . $this->case, str_replace('\n', "\n", $this->replace), $gedrec);
+		$new_gedcom = preg_replace('/' . $this->regex . '/mu' . $this->case, str_replace('\n', "\n", $this->replace), $old_gedcom);
+
+		return $new_gedcom;
 	}
 
 	/**
 	 * Process the user-supplied options.
+	 *
+	 * @param Request $request
 	 */
-	public function getOptions() {
-		parent::getOptions();
-		$this->search  = Filter::get('search');
-		$this->replace = Filter::get('replace');
-		$this->method  = Filter::get('method', 'exact|words|wildcards|regex', 'exact');
-		$this->case    = Filter::get('case', 'i');
+	public function getOptions(Request $request) {
+		parent::getOptions($request);
+
+		$this->search  = $request->get('search', '');
+		$this->replace = $request->get('replace', '');
+		$this->method  = $request->get('method', 'exact');
+		$this->case    = $request->get('case', '');
 
 		$this->error = '';
 		switch ($this->method) {
@@ -173,7 +181,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'<div class="row form-group">' .
 			'<label class="col-sm-3 col-form-label">' . I18N::translate('Case insensitive') . '</label>' .
 			'<div class="col-sm-9">' .
-			Bootstrap4::radioButtons('case', ['I' => I18N::translate('no'), 'i' => I18N::translate('yes')], ($this->case ? 'i' : 'I'), true, ['onchange' => 'this.form.submit();']) .
+			Bootstrap4::radioButtons('case', ['' => I18N::translate('no'), 'i' => I18N::translate('yes')], ($this->case ? 'i' : ''), true, ['onchange' => 'this.form.submit();']) .
 			'<p class="small text-muted">' . /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') . '</p>' .
 			'</div></div>' .
 			parent::getOptionsForm();

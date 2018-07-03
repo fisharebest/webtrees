@@ -18,22 +18,31 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\BatchUpdateModule;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BatchUpdateBasePlugin
- *
- * Each plugin should extend this class, and implement these two functions:
- *
- * bool doesRecordNeedUpdate($xref, $gedrec)
- * string updateRecord($xref, $gedrec)
  */
-class BatchUpdateBasePlugin {
+abstract class BatchUpdateBasePlugin {
 	/** @var bool User option; update change record */
 	public $chan = false;
+
+	/**
+	 * @param GedcomRecord $record
+	 *
+	 * @return bool
+	 */
+	abstract public function doesRecordNeedUpdate(GedcomRecord $record): bool;
+
+	/**
+	 * @param GedcomRecord $record
+	 *
+	 * @return string
+	 */
+	abstract public function updateRecord(GedcomRecord $record): string;
 
 	/**
 	 * Default is to operate on INDI records
@@ -46,9 +55,11 @@ class BatchUpdateBasePlugin {
 
 	/**
 	 * Default option is just the "don't update CHAN record"
+	 *
+	 * @param Request $request
 	 */
-	public function getOptions() {
-		$this->chan = Filter::getBool('chan');
+	public function getOptions(Request $request) {
+		$this->chan = (bool) $request->get('chan');
 	}
 
 	/**
@@ -66,26 +77,6 @@ class BatchUpdateBasePlugin {
 	}
 
 	/**
-	 * Default buttons are update and update_all
-	 *
-	 * @param string $xref
-	 *
-	 * @return string[]
-	 */
-	public function getActionButtons($xref) {
-		if (Auth::user()->getPreference('auto_accept')) {
-			return [
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all'),
-			];
-		} else {
-			return [
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-			];
-		}
-	}
-
-	/**
 	 * Default previewer for plugins with no custom preview.
 	 *
 	 * @param GedcomRecord $record
@@ -94,7 +85,7 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getActionPreview(GedcomRecord $record) {
 		$old_lines   = preg_split('/[\n]+/', $record->getGedcom());
-		$new_lines   = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
+		$new_lines   = preg_split('/[\n]+/', $this->updateRecord($record, !$this->chan));
 		$algorithm   = new MyersDiff;
 		$differences = $algorithm->calculate($old_lines, $new_lines);
 		$diff_lines  = [];

@@ -15,9 +15,11 @@
  */
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
-use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\BatchUpdateModule;
+use Fisharebest\Webtrees\Individual;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
@@ -47,32 +49,33 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * Does this record need updating?
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return bool
 	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return preg_match('/^1 SEX F/m', $gedrec) && preg_match('/^1 NAME /m', $gedrec) && self::surnamesToAdd($xref, $gedrec);
+	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
+		$gedcom = $record->getGedcom();
+
+		return preg_match('/^1 SEX F/m', $gedcom) && preg_match('/^1 NAME /m', $gedcom) && $this->surnamesToAdd($record);
 	}
 
 	/**
 	 * Apply any updates to this record
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	public function updateRecord($xref, $gedrec) {
-		global $WT_TREE;
+	public function updateRecord(GedcomRecord $record): string {
+		$old_gedcom = $record->getGedcom();
+		$tree   = $record->getTree();
 
-		$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
+		$SURNAME_TRADITION = $tree->getPreference('SURNAME_TRADITION');
 
-		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
+		preg_match('/^1 NAME (.*)/m', $old_gedcom, $match);
 		$wife_name     = $match[1];
 		$married_names = [];
-		foreach (self::surnamesToAdd($xref, $gedrec) as $surname) {
+		foreach ($this->surnamesToAdd($record) as $surname) {
 			switch ($this->surname) {
 				case 'add':
 					$married_names[] = "\n2 _MARNM " . str_replace('/', '', $wife_name) . ' /' . $surname . '/';
@@ -86,27 +89,34 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 			}
 		}
 
-		return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $gedrec, 1);
+		$new_gedcom = preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $old_gedcom, 1);
+
+		return $new_gedcom;
 	}
 
 	/**
 	 * Generate a list of married surnames that are not already present.
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string[]
 	 */
-	private function surnamesToAdd($xref, $gedrec) {
-		$wife_surnames    = self::surnames($xref, $gedrec);
+	private function surnamesToAdd(GedcomRecord $record): array {
+		$gedcom = $record->getGedcom();
+		$tree   = $record->getTree();
+
+		$wife_surnames    = $this->surnames($record);
 		$husb_surnames    = [];
 		$missing_surnames = [];
-		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
+
+		preg_match_all('/^1 FAMS @(.+)@/m', $gedcom, $fmatch);
 		foreach ($fmatch[1] as $famid) {
-			$famrec = BatchUpdateModule::getLatestRecord($famid, 'FAM');
+			$family = Family::getInstance($famid, $tree);
+			$famrec = $family->getGedcom();
+
 			if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-				$husbrec       = BatchUpdateModule::getLatestRecord($hmatch[1], 'INDI');
-				$husb_surnames = array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
+				$spouse        = Individual::getInstance($hmatch[1], $tree);
+				$husb_surnames = array_unique(array_merge($husb_surnames, $this->surnames($spouse)));
 			}
 		}
 		foreach ($husb_surnames as $husb_surname) {
@@ -121,13 +131,14 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * Extract a list of surnames from a GEDCOM record.
 	 *
-	 * @param string $xref
-	 * @param string $gedrec
+	 * @param GedcomRecord $record
 	 *
 	 * @return string[]
 	 */
-	private function surnames($xref, $gedrec) {
-		if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedrec, $match)) {
+	private function surnames(GedcomRecord $record): array {
+		$gedcom = $record->getGedcom();
+
+		if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedcom, $match)) {
 			return $match[1];
 		} else {
 			return [];
@@ -136,10 +147,13 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 
 	/**
 	 * Process the user-supplied options.
+	 *
+	 * @param Request $request
 	 */
-	public function getOptions() {
-		parent::getOptions();
-		$this->surname = Filter::get('surname', 'add|replace', 'replace');
+	public function getOptions(Request $request) {
+		parent::getOptions($request);
+
+		$this->surname = $request->get('surname', 'replace');
 	}
 
 	/**
@@ -152,7 +166,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 			'<div class="row form-group">' .
 			'<label class="col-sm-3 col-form-label">' . I18N::translate('Surname option') . '</label>' .
 			'<div class="col-sm-9">' .
-			'<select class="form-control" name="surname" onchange="reset_reload();">' .
+			'<select class="form-control" name="surname" onchange="this.form.submit();">' .
 			'<option value="replace" ' .
 			($this->surname == 'replace' ? 'selected' : '') .
 			'">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
