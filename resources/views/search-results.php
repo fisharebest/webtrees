@@ -62,31 +62,31 @@
 	<div class="tab-content wt-search-results-content">
 		<?php if ($search_individuals): ?>
 			<div class="tab-pane fade" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
-				<?= view('lists/individuals-table', ['individuals' => $individuals]) ?>
+				<?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_families): ?>
 			<div class="tab-pane fade" id="families" role="tabpanel" aria-labelledby="families-tab">
-				<?= view('lists/families-table', ['families' => $families]) ?>
+				<?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_sources): ?>
 			<div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
-				<?= view('tables/sources', ['sources' => $sources]) ?>
+				<?= view('tables/sources', ['sources' => $sources, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_repositories): ?>
 			<div class="tab-pane fade" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
-				<?= view('tables/repositories', ['repositories' => $repositories]) ?>
+				<?= view('tables/repositories', ['repositories' => $repositories, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_notes): ?>
 			<div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-				<?= view('tables/notes', ['notes' => $notes]) ?>
+				<?= view('tables/notes', ['notes' => $notes, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 	</div>
