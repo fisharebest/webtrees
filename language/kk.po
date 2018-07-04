@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-07-03 17:34+0000\n"
+"PO-Revision-Date: 2018-07-04 17:36+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -12658,167 +12658,167 @@ msgstr "Кіру URL-і"
 
 #: admin_site_config.php:145 resources/views/admin/control-panel.php:58
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Кіру және тіркеу"
 
 #: help_text.php:172
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Қарапайым күндерді григориан күнтізбесінде қабылдау көзделген. Күнді басқа күнтізбеде көрсету үшін күннің алдында кілт сөзді қосыңыз. Егер бұл ай немесе жыл пішімі күнді анықтаса, бұл кілт сөз міндетті емес."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
 msgid "Singapore"
-msgstr ""
+msgstr "Сингапур"
 
 #: modules_v3/individual_ext_report/report.xml:355
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "қарындас"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:559 admin_site_config.php:575
 #: admin_site_config.php:600
 msgid "Site identification code"
-msgstr ""
+msgstr "Сайтты анықтау коды"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:481 edituser.php:273
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Сайт мүшелері бір-біріне басқа хабарларды жібере алады. Сіз бұл хабарларды қалай жіберілетінін таңдай аласыз немесе оларды мүлдем қабылдамайсыз."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:517 admin_site_config.php:538
 msgid "Site verification code"
-msgstr ""
+msgstr "Сайтты тексеру коды"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:528 admin_site_config.php:549
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Веб-тораптар ішкі қалтада орнатылған кезде тораптың растау кодтары жұмыс істемейді."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:41
 msgid "Sitemaps"
-msgstr ""
+msgstr "Сайт картасы"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:308
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "Сайт картасы веб-шеберлерге іздеу механизмдерін тексеріп шығу үшін қол жетімді веб-тораптағы беттер туралы айтуға мүмкіндік береді. Барлық негізгі іздеу жүйелері сайт карталарын қолдайды. Қосымша ақпарат алу үшін <a href=\"http://www.sitemaps.org/\"> www.sitemaps.org</a> бөлімін қараңыз."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Сиван"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Сиван"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Сиван"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Сиван"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:145
 #: resources/views/layouts/administration.php:29
 msgid "Skip to content"
-msgstr ""
+msgstr "Мазмұнға өту"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "Құл"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "Құл"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "Құл"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
 #: app/GedcomTag.php:1338 app/Module/SlideShowModule.php:35
 msgid "Slide show"
-msgstr ""
+msgstr "Слайд көрсетілімі"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6834
 msgid "Slovakia"
-msgstr ""
+msgstr "Словакия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6835
 msgid "Slovenia"
-msgstr ""
+msgstr "Словения"
 
 #: resources/views/setup/step-2-server-checks.php:42
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "Кіші жүйелер (500 адам): 16-32 Мб, 10-20 секунд"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Snowflake, Arizona, United States"
-msgstr ""
+msgstr "Snowflake, Аризона, Америка Құрама Штаттары"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:542
 msgid "Social security number"
-msgstr ""
+msgstr "Әлеуметтік жеке код"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Соломон аралдары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6829
 msgid "Somalia"
-msgstr ""
+msgstr "Сомали"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:295
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Кейбір генеалогия бағдарламасы толық жолдары бар медиа файл атауларын қамтитын GEDCOM файлдарын жасайды. Бұл жолдар веб-серверде болмайды. Webtrees файлды табу үшін жолдың бірінші бөлігін алып тастау қажет."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1099
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Кейбір беттерде олардың қанша рет болғаны көрсетіледі."
 
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr ""
+msgstr "Кейбір орын атаулары қосымша префикстермен және жұрнақтармен жазылуы мүмкін. Мысалы, \"апельсин\" қарсы \"Orange County\". Егер отбасылық ағашта толық орын атаулары болса, географиялық дерекқорда қысқа орын атаулары бар болса, онда сіз назардан тыс қалатын префикс және жұрнақтар тізімін көрсетуіңіз керек. Бірнеше мәндер нүктелі үтірмен бөлінуі керек. Мысалы, \"County;County\" немесе \"Township;Twp;Twp\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:948
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Кейбір тақырыптар \"Деректер мен оқиғалар\" қойындысында белгішелерді көрсетуі мүмкін."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
 #: modules_v3/individual_report/report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "ұл"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:318
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "%s-дің ұлы"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:210
@@ -12833,19 +12833,19 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "Сұрыптау тәртібі"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: app/Controller/BranchesController.php:215
 #: app/Controller/BranchesController.php:251
 #: app/Functions/FunctionsPrintLists.php:263
 msgid "Sosa"
-msgstr ""
+msgstr "Соса"
 
 #: search_advanced.php:158 search_advanced.php:236 search_advanced.php:259
 #: search_advanced.php:288 search_advanced.php:311
 msgid "Sounds like"
-msgstr ""
+msgstr "Сияқты естіледі"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -12873,17 +12873,17 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:171
 #: resources/views/media-page.php:101
 msgid "Source"
-msgstr ""
+msgstr "Көзі"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:1351
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr ""
+msgstr "Бастапқы дәйексөздер деректердің сапасын (бастапқы, қайталама және т.б.) және оқиға жазбадағы күні жазылған өрістерді қамтуы мүмкін. Егер сіз осы өрістерді пайдаланбаған болсаңыз, жаңа дереккөз сілтемелерін жасағанда оларды өшіре аласыз."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1361 modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "Көз түрі"
 
 #. I18N: Name of a module
 #: admin_trees_duplicates.php:137 app/Controller/SearchController.php:526
@@ -12905,121 +12905,121 @@ msgstr ""
 #: resources/views/media-page.php:36 search.php:104 sourcelist.php:28
 #: sourcelist.php:32 statistics.php:367 statistics.php:403
 msgid "Sources"
-msgstr ""
+msgstr "Көздер"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr ""
+msgstr "Оқиғаларға көздер"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
 msgid "South Africa"
-msgstr ""
+msgstr "Оңтүстік Африка"
 
 #: statistics.php:621
 msgid "South America"
-msgstr ""
+msgstr "Оңтүстік Америка"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6822
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "Оңтүстік Георгия және Оңтүстік Сандвич аралдары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6831
 msgid "South Sudan"
-msgstr ""
+msgstr "Оңтүстік Судан"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6691
 msgid "Spain"
-msgstr ""
+msgstr "Испания"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Испанша"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
 msgid "Spokane, Washington, United States"
-msgstr ""
+msgstr "Спокан, Вашингтон, Америка Құрама Штаттары"
 
 #: modules_v3/bdm_report/report.xml:169
 #: modules_v3/individual_ext_report/report.xml:202
 #: modules_v3/individual_ext_report/report.xml:219
 msgid "Spouse"
-msgstr ""
+msgstr "Жұбайы"
 
 #: app/GedcomTag.php:333
 msgid "Spouse census date"
-msgstr ""
+msgstr "Жұбайлардың санақ күні"
 
 #: app/GedcomTag.php:335
 msgid "Spouse census place"
-msgstr ""
+msgstr "Жұбайлардың санағын өткізу орны"
 
 #: app/GedcomTag.php:343
 msgid "Spouse note"
-msgstr ""
+msgstr "Жұбайға ескерту"
 
 #: app/Functions/FunctionsPrintLists.php:1252
 #: resources/views/family-book-page.php:42
 msgid "Spouses"
-msgstr ""
+msgstr "Жұбайы"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Ерлі-зайыптылар мен балалар"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Шри-Ланка"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "St. George, Utah, United States"
-msgstr ""
+msgstr "Джордж, Юта, Америка Құрама Штаттары"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:343
 msgid "St. Louis, Missouri, United States"
-msgstr ""
+msgstr "Сент-Луис, Миссури, АҚШ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:349
 msgid "St. Paul, Minnesota, United States"
-msgstr ""
+msgstr "Сент-Пол, Миннесота, Америка Құрама Штаттары"
 
 #: app/Module/GoogleMapsModule.php:444
 msgid "Standard"
-msgstr ""
+msgstr "Стандартты"
 
 #: app/Controller/DescendancyController.php:112
 #: app/Controller/DescendancyController.php:187
 msgid "Start at parents"
-msgstr ""
+msgstr "Ата-аналарынан бастаңыз"
 
 #: app/Module/SlideShowModule.php:249
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "Бет жүктемесінде слайд-шоуды бастау"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:92
 msgid "Start year"
-msgstr ""
+msgstr "Басталу жылы"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "Өзгерістердің басталу ауқымы"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:2487
 msgid "State"
-msgstr ""
+msgstr "Мемлекет"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -13030,106 +13030,106 @@ msgstr ""
 #: resources/views/blocks/family-tree-statistics.php:133 statistics.php:35
 #: statistics.php:40
 msgid "Statistics"
-msgstr ""
+msgstr "Статистика"
 
 #: statisticsplot.php:792
 msgid "Statistics chart"
-msgstr ""
+msgstr "Статистика кестесі"
 
 #. I18N: gedcom tag STAT
 #: app/Functions/FunctionsPrint.php:427 app/GedcomTag.php:546
 #: resources/views/admin/changes-log.php:45
 #: resources/views/admin/changes-log.php:120
 msgid "Status"
-msgstr ""
+msgstr "Күйі"
 
 #: app/GedcomTag.php:548
 msgid "Status change date"
-msgstr ""
+msgstr "Күйді өзгерту күні"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr ""
+msgstr "өлі туылған"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "өлі туылған: босатылған"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:353
 msgid "Stockholm, Sweden"
-msgstr ""
+msgstr "Стокгольм, Швеция"
 
 #: app/Theme/CloudsTheme.php:46 app/Theme/FabTheme.php:73
 #: app/Theme/MinimalTheme.php:45 app/Theme/XeneaTheme.php:45
 #: resources/views/blocks/slide-show.php:9
 msgid "Stop"
-msgstr ""
+msgstr "Тоқта"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:37 app/Module/StoriesModule.php:445
 msgid "Stories"
-msgstr ""
+msgstr "Әңгімелер"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "әңгіме"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:367
 #: app/Module/StoriesModule.php:449
 msgid "Story title"
-msgstr ""
+msgstr "Сахна тақырыбы"
 
 #: app/Module/UserMessagesModule.php:109 message.php:150
 msgid "Subject"
-msgstr ""
+msgstr "Тақырып"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:552
 msgid "Submission"
-msgstr ""
+msgstr "Ұсыныс"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "Жіберілген, бірақ әлі тазартылмаған"
 
 #. I18N: gedcom tag SUBM
 #: admin_trees_manage.php:613 app/GedcomTag.php:550
 #: app/Module/RecentChangesModule.php:321
 msgid "Submitter"
-msgstr ""
+msgstr "Жіберуші"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6817
 msgid "Sudan"
-msgstr ""
+msgstr "Судан"
 
 #: app/Module/GoogleMapsModule.php:398
 msgid "Suffixes"
-msgstr ""
+msgstr "Суффикстер"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:383 app/Functions/FunctionsPrint.php:612
 msgid "Sun"
-msgstr ""
+msgstr "Жексенбі"
 
 #: app/Date/CalendarDate.php:358
 msgid "Sunday"
-msgstr ""
+msgstr "Жексенбі"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel-manager.php:20
 #: resources/views/admin/control-panel.php:24
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "Қолдау және құжаттаманы %s ішінде табуға болады."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6833
 msgid "Suriname"
-msgstr ""
+msgstr "Суринам"
 
 #. I18N: gedcom tag SURN
 #: app/Functions/FunctionsPrintLists.php:262
@@ -13141,1032 +13141,1032 @@ msgstr ""
 #: search.php:270 search_advanced.php:244 search_advanced.php:296
 #: statistics.php:599
 msgid "Surname"
-msgstr ""
+msgstr "Тегі"
 
 #: app/Stats.php:1639 statistics.php:591
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "Тегі бойынша бөлу кестесі"
 
 #: admin_trees_config.php:633
 msgid "Surname list style"
-msgstr ""
+msgstr "Тегі тізімінің стилі"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
-msgstr ""
+msgstr "Баламалы тегі"
 
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:540
 msgid "Surname prefix"
-msgstr ""
+msgstr "Тышқанның префиксі"
 
 #: admin_trees_config.php:1331
 msgid "Surname tradition"
-msgstr ""
+msgstr "Тегі дәстүрі"
 
 #: app/Module/FamilyTreeStatisticsModule.php:252
 #: resources/views/blocks/family-tree-statistics.php:52
 msgid "Surnames"
-msgstr ""
+msgstr "Тегі"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:90
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Фамилиялар жеке тұлғаның гендерлік және отбасылық мәртебесін көрсету үшін көрсетіледі."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:86
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Фамилиялар жеке тұлғаның жынысын көрсетуге бағытталған."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Сува, Фиджи"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6824
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "Шпицберген және Ян Майен"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:64
 msgid "Swap individuals"
-msgstr ""
+msgstr "Жеке тұлғаларды ауыстыру"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6837
 msgid "Swaziland"
-msgstr ""
+msgstr "Свазиленд"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6836
 msgid "Sweden"
-msgstr ""
+msgstr "Швеция"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6662
 msgid "Switzerland"
-msgstr ""
+msgstr "Швейцария"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
 msgid "Sydney, Australia"
-msgstr ""
+msgstr "Сидней, Австралия"
 
 #: admin_trees_manage.php:777
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "GEDCOM файлдарымен отбасылық ағаштарды синхрондау"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6840
 msgid "Syria"
-msgstr ""
+msgstr "Сирия"
 
 #: app/Http/Controllers/AdminController.php:1453
 msgid "Tab"
-msgstr ""
+msgstr "Tab"
 
 #: resources/views/setup/step-4-database-name.php:43
 msgid "Table prefix"
-msgstr ""
+msgstr "Кестенің префиксі"
 
 #: app/Http/Controllers/AdminController.php:1453
 #: resources/views/admin/control-panel.php:355
 #: resources/views/admin/modules.php:55 resources/views/admin/modules.php:126
 #: resources/views/admin/modules.php:176
 msgid "Tabs"
-msgstr ""
+msgstr "Қойындылар"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:361
 msgid "Taipei, Taiwan"
-msgstr ""
+msgstr "Тайбэй, Тайвань"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
 msgid "Taiwan"
-msgstr ""
+msgstr "Тайвань"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
 msgid "Tajikistan"
-msgstr ""
+msgstr "Тәжікстан"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:363
 msgid "Tampico, Mexico"
-msgstr ""
+msgstr "Тампико, Мексика"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Тамуз"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Тамуз"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Тамуз"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Тамуз"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6855
 msgid "Tanzania"
-msgstr ""
+msgstr "Танзания"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:62
 msgid "Teal Top"
-msgstr ""
+msgstr "Teal Top"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:430
 msgid "Technical help contact"
-msgstr ""
+msgstr "Техникалық көмек байланысу"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Тегусигальпа, Гондурас"
 
 #: app/Module/HtmlBlockModule.php:274
 msgid "Templates"
-msgstr ""
+msgstr "Үлгілер"
 
 #. I18N: gedcom tag TEMP
 #: app/GedcomTag.php:556 modules_v3/individual_report/report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "самай"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Тевет"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Тевет"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Тевет"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Тевет"
 
 #. I18N: gedcom tag TEXT
 #: admin_trees_config.php:1038 app/GedcomTag.php:558
 #: resources/views/modals/source-fields.php:50
 msgid "Text"
-msgstr ""
+msgstr "Мәтін"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6844
 msgid "Thailand"
-msgstr ""
+msgstr "Таиланд"
 
 #: help_text.php:231
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "<b>атау</b> өрісі адамның толық атауын қамтиды, себебі олар жазылған немесе жазу жазылған. Бұл экранда көрсетіледі. Атаудың әр түрлі бөліктерін анықтау үшін стандартты генеалогиялық аннотацияларды пайдаланады."
 
 #: help_text.php:251 resources/views/help/date.php:220
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
+msgstr "<b>тегі</b> өрісінде сұрыптау және топтау үшін пайдаланылатын атау бар. Бұл әрқашанда <b>атау</b> өрісінен алынған жеке тұлғаның нақты тегі үшін әр түрлі болуы мүмкін. Бұл өріс префиксімен (Gogh / van Gogh) бірге немесе жоқ және олардың орфографиялық ауытқуларын (Kowalski / Kowalska) топтау үшін пайдаланылуы мүмкін. Егер жеке тұлғаның біреуден артық тегі болса, әрбір аты үтір арқылы бөлінуі керек."
 
 #: admin_trees_manage.php:142
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM \"%s\" файлы импортталды."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "GEDCOM стандарты медиа нысандарындағы URL мекенжайларына рұқсат бермейді."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
 msgid "The Hague, Netherlands"
-msgstr ""
+msgstr "Гаага, Нидерланды"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:96
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "PHP уақытша қалтасы жоқ."
 
 #: admin_trees_manage.php:741
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr ""
+msgstr "Веб-шебертер шеберіне PhpGedView - әкімшілердің PhpGedView қондырғысынан жаңа веб-шрифтерге өтуіне көмектесетін автоматтандырылған процесс. Ол барлық PhpGedView GEDCOM және басқа дерекқор ақпаратын тікелей жаңа webtrees дерекқорына жібереді. Мынадай талаптар қажет:"
 
 #: resources/views/emails/approve-user-html.php:7
 #: resources/views/emails/approve-user-text.php:4
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "%s веб-тораптар сайтындағы әкімші есептік жазбаңызға өтінішіңізді бекітті. Сіз келесі сілтемені ашу арқылы кіре аласыз: %s"
 
 #: login.php:552
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr ""
+msgstr "Әкімші хабардар болды. Сізге кіруге рұқсат бергеннен кейін, пайдаланушы атыңыз бен пароліңізбен кіруге болады."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:43
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "\"%s\" үшін өзгертулер қабылданды."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:259
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "\"%s\" ішіндегі өзгерістер қабылданбады."
 
 #: app/Module/ClippingsCartModule.php:314
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr ""
+msgstr "Кескіш арба осы отбасылық ағаштан алынған үзінділерді алуға және оларды GEDCOM файлына жүктеуге мүмкіндік береді."
 
 #: admin_trees_config.php:682
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Соңғы жаңартудың күні мен уақыты"
 
 #: family.php:106
 msgid "The details of this family are private."
-msgstr ""
+msgstr "Осы отбасы туралы мәліметтер жеке болып табылады."
 
 #: individual.php:71
 msgid "The details of this individual are private."
-msgstr ""
+msgstr "Бұл жеке тұлғаның жеке деректері жеке."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:231 admin_trees_export.php:36
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "Отбасылық ағаш %s-ге экспортталды."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:71
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "\"%s\" тұқымдары бұрыннан бар."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:74
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "\"%s\" отбасылық ағаш құрылды."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:51 admin_trees_manage.php:148
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "''%s\" отбасылық ағаш жойылды."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:60
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "\"%s\" отбасылық торабы келушілерге осы веб-сайтқа алғаш кіргенде көрсетіледі."
 
 #: admin_trees_merge.php:188
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Отбасылық ағаштар сәтті біріктірілді."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:167
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "\"%s\" отбасы жойылды, себебі ол тек бір мүшеге ие."
 
 #: admin_media_upload.php:118
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "%s деген файл бұрыннан бар. Басқа файл атауын қолданыңыз."
 
 #: admin_site_upgrade.php:235 admin_site_upgrade.php:338
 #: admin_trees_export.php:41
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "%s файлы жасалмады."
 
 #: admin_media.php:66 admin_media.php:77 admin_site_upgrade.php:388
 #: admin_site_upgrade.php:414 app/Http/Controllers/AdminController.php:579
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "%s деген файл жойылмады."
 
 #: admin_site_upgrade.php:367
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "%s-файл жаңартылмады."
 
 #: admin_site_upgrade.php:334
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "%s-файл құрылды."
 
 #: admin_media.php:62 admin_media.php:73 admin_site_upgrade.php:386
 #: admin_site_upgrade.php:412 app/Http/Controllers/AdminController.php:573
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "%s файл жойылды."
 
 #: admin_media_upload.php:123
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "%s деген файл кері жүктелді."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:90
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Бұл файл ішінара жүктелді. Әрекетті қайталап көріңіз."
 
 #. I18N: %s is a filename
 #: medialist.php:209 resources/views/media-page.php:78
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "\"%s\" файлы жоқ."
 
 #: admin_site_upgrade.php:402 admin_site_upgrade.php:408
 #: app/Http/Controllers/AdminController.php:577
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "%s папкасы жойылмады."
 
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_media_upload.php:84 admin_site_config.php:36
 #: admin_trees_config.php:202
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr ""
+msgstr "%s қалтасы жоқ және оны жасау мүмкін емес."
 
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:200
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "%s қалтасы жасалды."
 
 #: admin_site_upgrade.php:400 admin_site_upgrade.php:406
 #: app/Http/Controllers/AdminController.php:571
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "%s папкасы жойылды."
 
 #: admin_site_config.php:191
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "Қалтаны толығымен (мысалы. /home/user_name/webtrees_data/) немесе орнату қалтасына (мысалы. ../../webtrees_data/) қатысты болуы мүмкін."
 
 #: resources/views/admin/merge-records-step-2.php:15
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Екі жазбаларда да келесі фактілер мен оқиғалар анықталды."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.php:62
 #: resources/views/admin/merge-records-step-2.php:108
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Келесі фактілер мен оқиғалар тек %s-де жазылған."
 
 #: resources/views/setup/step-2-server-checks.php:39
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Төмендегі тізімде әдеттегі талаптар көрсетілген."
 
 #: admin_trees_places.php:108
 msgid "The following places have been changed:"
-msgstr ""
+msgstr "Келесі орындар өзгертілді:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Келесі орындар өзгертілді:"
 
 #: help_text.php:319 resources/views/help/date.php:288
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Бұл элемент үшін анықтама мәтіні жазылмады."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:444
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr ""
+msgstr "Сіздің веб-сайтыңызда кездесетін техникалық мәселелер немесе қателер туралы хабарласатын адам."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:422
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "Бұл веб-сайтта генеалогия туралы деректермен байланысу үшін жеке тұлға."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:175 action.php:179 app/Controller/GedcomRecordController.php:57
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "\"%1$s\" дегенден \"%2$s\" сілтемесі жойылды."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: app/Http/Controllers/AdminController.php:1310
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "\"%1$s\" дегеннен \"%2$s\" сілтемесі жаңартылды."
 
 #: app/Http/Controllers/EditMediaController.php:229
 #: app/Http/Controllers/EditMediaController.php:238
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "%1$s медиа файлы %2$s деп қайта аталмады."
 
 #: app/Http/Controllers/EditMediaController.php:235
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "%1$s медиа файлы %2$s деп өзгертілді."
 
 #: admin_media_upload.php:186
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
+msgstr "Сіз жүктеп жатқан медиа файл серверде жергілікті компьютерге қарағанда басқаша болуы мүмкін, мүмкін, басқаша болуы мүмкін. Міне, сондықтан жиі жергілікті файл атауы сіз үшін мағынасы бар, бірақ бұл веб-сайтқа кірушілер үшін әлдеқайда маңызсыз. Сондай-ақ, сіз және басқа біреу \"granny.jpg\" деп аталатын түрлі файлдарды жүктеуге тырысу мүмкіндігін қарастырыңыз.<br><br>Бұл өрісте жүктеп жатқан файлдың жаңа атауын көрсетесіз. Мұнда енгізілетін атау, сонымен қатар бөлек жүктелуі немесе автоматты түрде жасалуы мүмкін нобайды атау үшін де пайдаланылады. Файл атауы кеңейтімін (jpg, gif, pdf, doc және т.б.) енгізудің қажеті жоқ<br><br>Жергілікті компьютерден жүктеген файлдың түпнұсқасын сақтау үшін осы өрісті бос қалдырыңыз."
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "БАҚ объектісі жасалды"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr ""
+msgstr "Жад және процессорлық уақыт талаптары сіздің отбасыңыздағы жеке тұлғалардың санына байланысты."
 
 #: message.php:77
 msgid "The message was not sent."
-msgstr ""
+msgstr "Хабар жіберілмеді."
 
 #: message.php:75
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "Хабар сәтті %s-ке(ге) жіберілді."
 
 #: app/Http/Controllers/AdminController.php:1611
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "\"%s\" модулі өшірілді."
 
 #: app/Http/Controllers/AdminController.php:1609
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "\"%s\" модулі іске қосылды."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1210
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "Ең жиі кездесетін отбасылық фактілер мен оқиғалар бөлек тізімделеді, олар оңайырақ қосылуы мүмкін."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1156
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "Ең жиі кездесетін жекелеген фактілер мен оқиғалар бөлек тізімделеді, олар оңайырақ қосылуы мүмкін."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:1292
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "Ең жиі кездесетін репозиторий фактілері бөлек тізімделеді, олар оңайырақ қосылуы мүмкін."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1251
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "Ең көп таралған дерек көздері бөлек тізімделеді, осылайша оларды оңайырақ қосуға болады."
 
 #: admin_site_upgrade.php:370
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Жаңа файлдар қазір %s қалтасында орналасқан."
 
 #: admin_site_config.php:483
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "Жаңа пайдаланушыдан тіркелгі жасалмас бұрын электрондық поштасын растау сұралады."
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "Жазба жасалған"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-msgstr ""
+msgstr "Көрсетілген аттың қайталану саны картада көрсетіледі. Бұл өрісті бос қалдырсаңыз, ең көп тараған тегі пайдаланылады."
 
 #: app/Http/Controllers/SetupController.php:142
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Құпия сөз ұзындығы кемінде алты таңба болуы керек."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:393
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP серверімен түпнұсқаландыру үшін қажет құпия сөз."
 
 #: admin_users.php:71 edituser.php:111
 msgid "The passwords do not match."
-msgstr ""
+msgstr "Құпия сөздер сәйкес келмейді."
 
 #: admin_trees_config.php:116 app/Http/Controllers/AdminController.php:1549
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Барлық жанұялық ағаштар үшін артықшылықтар жаңартылды."
 
 #: admin_trees_config.php:119 app/Http/Controllers/AdminController.php:1552
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Жаңа отбасыларға арналған артықшылықтар жаңартылды."
 
 #: app/Module/RelationshipsChartModule.php:221
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "\"%s\" диаграммасының артықшылықтары жаңартылды."
 
 #: admin_trees_config.php:218 app/Http/Controllers/AdminController.php:1545
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "\"%s\" отбасылық ағашына арналған артықшылықтар жаңартылды."
 
 #: app/Http/Controllers/AdminController.php:857
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "\"%s\" модулінің артықшылықтары жойылды."
 
 #: app/Module/GoogleMapsModule.php:289
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "\"%s\" модулінің параметрлері жаңартылды."
 
 #: resources/views/setup/step-4-database-name.php:48
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr ""
+msgstr "Префикс міндетті емес, бірақ ұсынылады. Кестенің атауларын бірегей префикс бере отырып, сіз бірнеше дерекқорды бірдей дерекқорды ортақ пайдалануға мүмкіндік бере аласыз. \"wt_\" ұсынылады, бірақ сіз қалаған нәрсе болуы мүмкін."
 
 #: admin_trees_renumber.php:241
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "%1$s жазбасы %2$s деп өзгертілді."
 
 #: action.php:85
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "Жазба буферге көшірілді."
 
 #. I18N: Records are individuals, sources, etc.
 #: app/Http/Controllers/AdminController.php:1371
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "\"%1$s\" және \"%2$s\" жазбалары біріктірілді."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:130
 msgid "The regular expression appears to contain an error. It can’t be used."
-msgstr ""
+msgstr "Тұрақты өрнекте қате бар. Оны пайдалануға болмайды."
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Репозиторий құрылды"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Сервер теңшелімі - бұл OK."
 
 #: admin_trees_renumber.php:258
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Сервердің уақыт шегіне жетті."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:45
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr ""
+msgstr "Отбасылық ағаштың мөлшері, ерте және соңғы оқиғалар, жалпы атаулар және т.б."
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "Көзі жасалды"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Жіберуші құрылды"
 
 #: help_text.php:234
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Тегі тегістеледі: <%s>John Paul/Smith/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:501
 msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr ""
+msgstr "Тақырып мәзірі веб-сайт теңшелімдері пайдаланушыларға өздерінің тақырыптарын таңдауға мүмкіндік берсе ғана көрсетіледі."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:294
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "Жаңа секундына кіруді талап етпестен веб-сеанстың сеансы секундтарда белсенді болады. Әдепкі бойынша 7200, бұл 2 сағат."
 
 #: admin_site_config.php:238 admin_users.php:431 edituser.php:226
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Уақыт белдеуі бүгінгі күнді білу сияқты күн есептеулеріне қажет."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:83
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Екі отбасы ағашында бірдей «XREF» пайдаланатын %1$s жазба бар."
+msgstr[1] "Екі отбасы ағашында бірдей «XREF» пайдаланатын %1$s жазбалары бар."
 
 #: admin_site_upgrade.php:421
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Жаңарту аяқталды."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:87
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "Жүктелген файл рұқсат етілген өлшемнен асып түседі."
 
 #: admin_users.php:780
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "%s пайдаланушы пайдаланушысы жойылды."
 
 #: resources/views/emails/register-notify-html.php:22
 #: resources/views/emails/register-notify-text.php:11
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr ""
+msgstr "Пайдаланушыға кіру сұрауын растау үшін қажет ақпарат бар электрондық пошта жіберілді."
 
 #: login.php:79 login.php:84
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Пайдаланушы аты немесе құпия сөз дұрыс емес."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:380
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP серверімен аутентификация үшін пайдаланушы аты."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:486
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr ""
+msgstr "HTML парағының тақырыбындағы «мета сипаттамасы» тегінде орналастыру мәні. Отбасы ағашының атын пайдалану үшін осы өрісті бос қалдырыңыз."
 
 #: admin_pgv_to_wt.php:99
 #, php-format
 msgid "The version of %s is too new."
-msgstr ""
+msgstr "%s нұсқасы тым жаңа."
 
 #: admin_pgv_to_wt.php:96
 #, php-format
 msgid "The version of %s is too old."
-msgstr ""
+msgstr "%s нұсқасы тым ескі."
 
 #: admin_site_config.php:45 admin_site_config.php:64 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Сайттың артықшылықтары жаңартылды."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1033
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Www.geonames.org веб-сайтында орын атауларының үлкен дерекқоры бар. Бұл жаңа орындарға кіру кезінде іздеуге болады. Бұл мүмкіндікті пайдалану үшін www.geonames.org сайтында тегін тіркелгіге тіркелуіңіз керек және пайдаланушы атын беруіңіз қажет."
 
 #: resources/views/errors/database-error.php:12
 #: resources/views/setup/step-6-failed.php:12
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "Webtrees әзірлеушілері осы қате туралы білуге өте қызық болады. Егер сіз олармен байланыссаңыз, олар сізге мәселені шешуге көмектеседі."
 
 #: admin_users.php:489 app/Theme/AbstractTheme.php:1856 edituser.php:246
 #: resources/views/admin/modules.php:166 resources/views/admin/modules.php:194
 msgid "Theme"
-msgstr ""
+msgstr "Тақырып"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:28
 msgid "Theme change"
-msgstr ""
+msgstr "Тақырып өзгеруі"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:496
 msgid "Theme menu"
-msgstr ""
+msgstr "Тақырып мәзірі"
 
 #: resources/views/admin/modules.php:79
 msgid "Themes"
-msgstr ""
+msgstr "Тақырыптар"
 
 #: admin_site_config.php:254
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-msgstr ""
+msgstr "Тақырыптар үш деңгейде таңдауға болады: пайдаланушы, отбасылық ағаш және веб-сайт. Пайдаланушы теңшелімдері отбасылық ағаш теңшелімдеріне басымдық береді, бұл өз кезегінде веб-сайттың артықшылықтары бойынша басымдыққа ие болады. Бір деңгейде «әдепкі тақырыпты» таңдау тақырыпты келесі деңгейде қолданады."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:143
 msgid "There are no facts for this individual."
-msgstr ""
+msgstr "Бұл адам үшін ешқандай фактілер жоқ."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Бұл медиа нысанына байланыстар жоқ."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
-msgstr ""
+msgstr "Бұл адам үшін медиа-нысандар жоқ."
 
 #: app/Module/NotesTabModule.php:86
 msgid "There are no notes for this individual."
-msgstr ""
+msgstr "Бұл адам үшін жазбалар жоқ."
 
 #: admin_site_upgrade.php:106 edit_changes.php:174
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Күтпеген өзгерістер жоқ."
 
 #: app/Module/ResearchTaskModule.php:96
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Осы отбасы ағашында зерттеу міндеттері жоқ."
 
 #: app/Module/SourcesTabModule.php:82
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "Бұл адам үшін ешқандай сілтеме жоқ."
 
 #: app/Module/ReviewChangesModule.php:113 app/Theme/AbstractTheme.php:2035
 #: resources/views/emails/pending-changes-html.php:7
 #: resources/views/emails/pending-changes-text.php:5
 msgid "There are pending changes for you to moderate."
-msgstr ""
+msgstr "Сізді қалыпты ету үшін күтпеген өзгерістер бар."
 
 #: app/Module/RecentChangesModule.php:75
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы %s күн ішінде еш өзгеріс болмады."
+msgstr[1] "Соңғы %s күндер ішінде өзгерістер болған жоқ."
 
 #: login.php:271
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Пайдаланушы атымен немесе \"%s\" электрондық поштасы бар тіркелгі жоқ."
 
 #: admin_media_upload.php:127 app/Http/Controllers/EditMediaController.php:103
 #: app/Http/Controllers/EditMediaController.php:300
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "Файлыңызды кері жүктеу кезінде қате пайда болды."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:131
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "термидор"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "термидор"
 
 #: admin_trees_unconnected.php:91
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Бұл жеке тұлғалар топтары %s-ге қатысты емес."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:149
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr ""
+msgstr "Бұл GEDCOM файлы %1$s арқылы кодталады. Бұл %2$s дегенді білдіріңіз."
 
 #: login.php:94
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Бұл есептік жазба бекітілмеген. Әкімшінің мақұлдауын күтіңіз."
 
 #: login.php:89
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "Бұл есептік жазба расталмады. Тексеру хабары үшін электрондық поштаңызды тексеріңіз."
 
 #: app/Module/ReviewChangesModule.php:190
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr ""
+msgstr "Бұл блок редакторларға модератормен қаралуы қажет күтілетін өзгертулер бар жазбалардың тізімін көрсетеді. Сондай-ақ, күтпеген өзгерістер болған кезде, ол модераторларға күн сайын электрондық поштаны шығарады."
 
 #: admin_users.php:370 edituser.php:238 login.php:413
 #: resources/views/setup/step-5-administrator.php:68
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Бұл электрондық пошта мекенжайы парольді еске салғыштарды, веб-торап хабарландыруларын және веб-сайтқа тіркелген басқа отбасы мүшелерінің хабарламаларын жіберу үшін пайдаланылады."
 
 #: family.php:58
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Бұл отбасы жоқ немесе оны қарауға рұқсатыңыз жоқ."
 
 #: family.php:39
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Бұл отбасы жойылды. Жоюды модератор қарастыруы керек."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:34
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Бұл отбасы жойылды. Жоюды қарап шығу керек, содан кейін %1$s немесе %2$s."
 
 #: family.php:49
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Бұл отбасы редакцияланған. Өзгерістер модератормен қарастырылуы керек."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:44
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Бұл отбасы редакцияланған. Өзгерістерді қарап шығу керек, содан кейін %1$s немесе %2$s."
 
 #: app/Functions/FunctionsCharts.php:392 app/Functions/FunctionsCharts.php:491
 msgid "This family remained childless"
-msgstr ""
+msgstr "Бұл отбасы баласыз болды"
 
 #: admin_trees_renumber.php:268
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Бұл отбасылық ағашта %s жазбасы бар, ол бірдей «XREF» -ді басқа отбасылық ағаш ретінде пайдаланады."
+msgstr[1] "Бұл отбасылық ағашта %s жазбалары бар, олар бірдей «XREF» -ді басқа отбасылық ағаш ретінде пайдаланады."
 
 #: app/Module/SlideShowModule.php:121
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Бұл отбасылық ағашта бейнеленген бейнелер жоқ."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:161
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr ""
+msgstr "Бұл жанұя ағашы соңғы рет жаңартылды #gedcomUpdated#. Бұл отбасылық ағашта #totalSurnames# бар. Ең ерте жазылған оқиға - #firstEventType# #firstEventName# in #firstEventYear#. Ең соңғы оқиға - #lastEventType #lastEventName# in #lastEventYear#.<br><br>Егер сізде пікірлер немесе кері байланыс бар болса, #contactWebmaster# -ге хабарласыңыз."
 
 #: app/Module/HtmlBlockModule.php:165
 #: resources/views/blocks/family-tree-statistics.php:5
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Бұл отбасылық ағаш соңғы рет жаңартылды: %s."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:182
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr ""
+msgstr "Бұл қалта мультимедиалық файлдарды, GEDCOM файлдарын, уақытша файлдарды және т.б. сақтау үшін webtrees арқылы пайдаланылады. Бұл файлдарда жеке деректер болуы мүмкін және Интернет арқылы қол жетімді болмауы керек."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:544
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "Бұл қалта медиа файлдарды осы жанұяға сақтау үшін пайдаланылады."
 
 #: app/Filter.php:392
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Бұл пішіннің мерзімі аяқталды. Қайтадан байқап көріңіз."
 
 #: app/Controller/AncestryController.php:123
 #: app/Controller/ChartController.php:52 individual.php:75
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Бұл адам жоқ немесе оны қарауға рұқсатыңыз жоқ."
 
 #: individual.php:53
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Бұл адам жойылды. Жоюды модератор қарастыру қажет."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:48
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Бұл адам жойылды. Жоюды қарап шығу керек, содан кейін %1$s немесе %2$s."
 
 #: individual.php:63
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Бұл адам редакцияланған. Өзгерістер модератормен қарастырылуы керек."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:58
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Бұл адам редакцияланған. Өзгерістерді қарап шығу керек, содан кейін %1$s немесе %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:328 edituser.php:179
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "Бұл адам диаграммаларды және есептерді қарау кезінде әдепкі бойынша таңдалады."
 
 #: app/Stats.php:1450 app/Stats.php:2268 app/Stats.php:2376 app/Stats.php:2951
 #: app/Stats.php:3125 app/Stats.php:3423 app/Stats.php:4406 app/Stats.php:4534
 #: app/Stats.php:4583 timeline.php:413
 msgid "This information is private and cannot be shown."
-msgstr ""
+msgstr "Бұл ақпарат жеке болып табылады және оны көрсету мүмкін емес."
 
 #: help_text.php:289 resources/views/help/date.php:258
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr ""
+msgstr "Бұл кіріс қорабы күнтізбенің жылын өзгертуге мүмкіндік береді. Күнтізбені сол жылға өзгерту үшін <b>Enter</b> дегенді енгізіңіз және жылына<b> Жылды қарау </b> үшін <b> Қосымша мүмкіндіктер </b> <dl> <dt> <b> Бір жылдан астам </b> </dt> <dd> Күндерді бірнеше жыл ішінде іздеуге болады. <br> <br> Жыл ауқымы <u> u>. Бұл күндер ауқымы бірінші жылдың 1 қаңтарынан бастап, өткен жылдың 31 желтоқсанына дейін ұзартылғанын білдіреді. 1992 жылдан 1995 жылға дейін барлық оқиғалар үшін <b> 1992-5 </b>: <b> 1972-89 </b>. 1972 жылдан 1989 жылға дейін. Барлық оқиғалар үшін 1610-1759 жж. <B> 1610-759 </b>. 1880-1905 жылдардағы барлық оқиғалар үшін <b> 1880-1905 </b>. < b> 880-1105 </b> барлық оқиғалар үшін 880-ден 1105-ке дейін. <br> <br> Белгіленген онжылдықтағы немесе ғасырдағы барлық оқиғаларды көру үшін <b>? </b> соңғы сандар. Мысалы, 1970-1979 жылдардағы барлық оқиғалар үшін <b> 197? </b> немесе 1600-1699 аралығындағы барлық оқиғалар үшін <b> 16?? </b>. <br> <br> күнтізбені жыл көрінісіне өзгерту. </dd> </dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:1307
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr ""
+msgstr "Бұл GEDCOM фактінің тегтерінің үтірмен бөлінген тізімі, олар қосу / өңдеу атауын көрсету пішімінде көрсетіледі. Егер сіз иврит, грек, кириллица немесе араб сияқты латыни емес алфавиттерді пайдалансаңыз, бірнеше әртүрлі әліпбиде есімдерді сақтауға мүмкіндік беру үшін, _HEB, ROMN, FONE сияқты тегтерді қосқыңыз келуі мүмкін."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1197
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr ""
+msgstr "Бұл жаңа отбасын қосу кезінде көрсетілетін GEDCOM факт тегтерінің үтірмен бөлінген тізімі. Мысалы, егер MARR тізімде болса, некеге тұру және некеге тұру үшін өрістер нысан бойынша көрсетіледі."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1143
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr ""
+msgstr "Бұл жаңа жеке тұлғаны қосу кезінде көрсетілетін GEDCOM факт белгілерінің үтірмен бөлінген тізімі. Мысалы, егер BIRT тізімде болса, онда туған күні мен туған жеріне арналған өрістер пішінде көрсетіледі."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:1320
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "Бұл жер атауларын қосқанда немесе өңдеген кезде көрсетілетін GEDCOM факт тегтерінің үтірмен бөлінген тізімі. Егер сіз иврит, грек, кириллице немесе араб сияқты латыни емес алфавиттерді пайдалансаңыз, онда сіз жер атауын бірнеше әліпбиде сақтауға мүмкіндік беру үшін _HEB, ROMN, FONE сияқты тегтерді қосқыңыз келуі мүмкін."
 
 #: edituser.php:167
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "Бұл отбасылық ағашта өзіңіздің жазбаңыздың сілтемесі. Егер бұл дұрыс емес болса, әкімшіге хабарласыңыз."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:809
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr ""
+msgstr "Бұл жеке адам үшін <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS </abbr> қысқаша сипаттамасы. «B» LDS суға шомылдыру рәсімін білдіреді. «E» LDS эндаументін білдіреді. «S» LDS жұбайының тығыздауын білдіреді. «P» LDS баланың ата-аналық тығыздағышын көрсетеді."
 
 #: resources/views/setup/step-3-database-connection.php:62
 #: resources/views/setup/step-3-database-connection.php:74
 msgid "This is case sensitive."
-msgstr ""
+msgstr "Бұл регистрді ескереді."
 
 #: resources/views/setup/step-4-database-name.php:36
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-msgstr ""
+msgstr "Бұл регистрді ескереді. Егер осы атаумен дерекқорлар бар болса, webtrees сіз үшін біреуді жасауға тырысады. Сәттілік сіздің веб-серверіңізге орнатылған рұқсаттардан тәуелді болады, бірақ егер бұл сәтсіз болса, сізге хабарланады."
 
 #: admin_site_upgrade.php:68 resources/views/admin/control-panel.php:36
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Бұл webtrees бағдарламасының соңғы нұсқасы. Жаңарту болмайды."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1171
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыз отбасыларға қосатын GEDCOM фактілерінің тізімі. Сіз бұл тізімді өзгертуге немесе нақты атауды, тіпті қажет болған жағдайда, реттелетін файлдарды қосу арқылы өзгерте аласыз. Осы тізімде пайда болатын фактілер «Бірегей отбасылық фактілер» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1117
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыздың жеке тұлғаларға қосатын GEDCOM фактілерінің тізімі. Сіз бұл тізімді өзгертуге немесе нақты атауды, тіпті қажет болған жағдайда, реттелетін файлдарды қосу арқылы өзгерте аласыз. Осы тізімде пайда болатын фактілер «Бірегей жеке фактілер» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1266
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыз репозиторийлерге қосуға болатын GEDCOM фактілерінің тізімі. Сіз бұл тізімді өзгертуге немесе нақты атауды, тіпті қажет болған жағдайда, реттелетін файлдарды қосу арқылы өзгерте аласыз. Осы тізімде пайда болатын деректер атаулары «Бірегей репозиторий фактілері» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1225
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыздың көздеріне қосатын GEDCOM фактілерінің тізімі. Сіз бұл тізімді өзгертуге немесе нақты атауды, тіпті қажет болған жағдайда, реттелетін файлдарды қосу арқылы өзгерте аласыз. Осы тізімде пайда болатын деректердің атауы «Бірегей көздер туралы деректер» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1184
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыз тек бір рет отбасыларға қосатын GEDCOM фактілерінің тізімі. Мысалы, егер MARR осы тізімде болса, пайдаланушылар отбасыға бірнеше MARR жазбасын қоса алмайды. Осы тізімде пайда болатын деректер атаулары «Барлық отбасылық фактілер» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1130
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыз тек бір рет жеке тұлғаларға қосатын GEDCOM фактілерінің тізімі. Мысалы, егер BIRT осы тізімде болса, пайдаланушылар жеке адамға бірнеше BIRT жазбасын қоса алмайды. Осы тізімде пайда болатын деректердің атауы «Барлық жеке деректер» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1279
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыз тек бір рет репозиторийлерге қосатын GEDCOM фактілерінің тізімі. Мысалы, егер NAME осы тізімде болса, пайдаланушылар репозиторийге бірнеше NAME жазбасын қоса алмайды. Осы тізімде пайда болатын деректер атаулары «Барлық репозитория фактілері» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1238
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr ""
+msgstr "Бұл сіздің пайдаланушыларыңыздың тек қана көздеріне қосатын GEDCOM фактілерінің тізімі. Мысалы, TITL осы тізімде болса, пайдаланушылар бірден бірнеше TITL жазбасын көзге қоса алмайды. Осы тізімде пайда болатын деректер атаулары «Барлық дерек көздері» тізімінде де көрсетілмеуі керек."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:339
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr ""
+msgstr "Бұл - SMTP серверінің атауы. «Localhost» пошта қызметі веб-сервер сияқты бір компьютерде жұмыс істейтіндігін білдіреді."
 
 #: admin_users.php:321 edituser.php:149 login.php:403
 #: resources/views/setup/step-5-administrator.php:32
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Бұл сіздің нақты атыңыз, сіз оны экранда көргіңіз келеді."
 
 #: admin_trees_check.php:129
 msgid "This may be a mistake in your data."
-msgstr ""
+msgstr "Бұл сіздің деректеріңізде қате болуы мүмкін."
 
 #: admin_trees_check.php:128
 msgid "This may cause a problem for other applications."
-msgstr ""
+msgstr "Бұл басқа бағдарламалар үшін ақау тудыруы мүмкін."
 
 #: admin_trees_check.php:127
 msgid "This may cause a problem for webtrees."
