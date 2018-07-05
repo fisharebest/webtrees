@@ -48,7 +48,7 @@ class Bootstrap4 extends Html {
 		$html = '<ol class="breadcrumb">';
 
 		foreach ($hierarchy as $url => $label) {
-			$html .= '<li class="breadcrumb-item"><a href="' . $url . '">' . $label . '</a></li>';
+			$html .= '<li class="breadcrumb-item"><a href="' . e($url) . '">' . $label . '</a></li>';
 		}
 
 		$html .= '<li class="breadcrumb-item active">' . $active . '</li></ol>';
