@@ -74,7 +74,7 @@
 
 		<?php if ($search_sources): ?>
 			<div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
-				<?= view('tables/sources', ['sources' => $sources, 'tree' => $tree]) ?>
+				<?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
