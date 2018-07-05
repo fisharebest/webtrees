@@ -1,5 +1,5 @@
 <p class="wt-lifespans-subtitle">
-	<?= e($subtitle) ?>
+	<?= $subtitle ?>
 </p>
 
 <div class="wt-lifespans-scale">
