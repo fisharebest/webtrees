@@ -1364,7 +1364,7 @@ class AdminController extends AbstractBaseController {
 			'modules'           => Module::getInstalledModules('disabled'),
 			'module_status'     => $module_status,
 			'deleted_modules'   => $this->deletedModuleNames(),
-			'core_module_names' => Module::getCoreModuleNames(),
+			'core_module_names' => Module::CORE_MODULES,
 		]);
 	}
 
