@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<form method="post" action="module.php?mod=descendancy&amp;mod_action=search" onsubmit="return false;">
+<form method="post" action=<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'ged' => $tree->getName()])) ?>"" onsubmit="return false;">
 	<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
 </form>
 
@@ -16,12 +16,12 @@
   function dsearchQ() {
     var query = $("#sb_desc_name").val();
     if (query.length>1) {
-      $("#sb_desc_content").load("module.php?mod=descendancy&mod_action=search&search="+query);
+      $("#sb_desc_content").load(<?= json_encode(route('module', ['module' => 'descendancy', 'action' => 'Search', 'ged' => $tree->getName()])) ?> + "&search=" + encodeURIComponent(query));
     }
   }
 
   $("#sb_desc_name").focus(function(){this.select();});
-  $("#sb_desc_name").blur(function(){if (this.value === "") this.value="' . I18N::translate('Search') . '";});
+  $("#sb_desc_name").blur(function(){if (this.value === "") this.value="<?= I18N::translate('Search') ?>";});
   var dtimerid = null;
   $("#sb_desc_name").keyup(function(e) {
     if (dtimerid) window.clearTimeout(dtimerid);

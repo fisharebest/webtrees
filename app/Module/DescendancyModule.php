@@ -17,11 +17,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class DescendancyModule
@@ -40,31 +41,65 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
+	 * @param Request $request
 	 *
-	 * @param string $mod_action
+	 * @return Response
 	 */
-	public function modAction($mod_action) {
-		global $WT_TREE;
+	public function getSearchAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
 
-		header('Content-Type: text/html; charset=UTF-8');
+		$search = $request->get('search', '');
 
-		switch ($mod_action) {
-			case 'search':
-				$search = Filter::get('search');
-				echo $this->search($search, $WT_TREE);
-				break;
-			case 'descendants':
-				$individual = Individual::getInstance(Filter::get('xref', WT_REGEX_XREF), $WT_TREE);
-				if ($individual) {
-					echo $this->loadSpouses($individual, 1);
+		$html = '';
+
+		if (strlen($search) >= 2) {
+			$rows = Database::prepare(
+				"SELECT i_id AS xref" .
+				" FROM `##individuals`" .
+				" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
+				" WHERE n_sort LIKE CONCAT('%', :query, '%') AND i_file = :tree_id" .
+				" ORDER BY n_sort"
+			)->execute([
+				'query'   => $search,
+				'tree_id' => $tree->getTreeId(),
+			])->fetchAll();
+
+			foreach ($rows as $row) {
+				$individual = Individual::getInstance($row->xref, $tree);
+				if ($individual !== null && $individual->canShow()) {
+					$html .= $this->getPersonLi($individual);
 				}
-				break;
-			default:
-				http_response_code(404);
-				break;
+			}
 		}
+
+		if ($html !== '') {
+			$html = '<ul>' . $html . '</ul>';
+		}
+
+		return new Response($html);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getDescendantsAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		if ($individual !== null && $individual->canShow()) {
+			$html = $this->loadSpouses($individual, 1);
+		} else {
+			$html = '';
+		}
+
+		return new Response($html);
 	}
 
 	/** {@inheritdoc} */
@@ -110,7 +145,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
 		return
 			'<li class="sb_desc_indi_li">' .
-			'<a class="sb_desc_indi" href="module.php?mod=' . $this->getName() . '&amp;mod_action=descendants&amp;xref=' . $person->getXref() . '">' .
+			'<a class="sb_desc_indi" href="' . e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'ged' => $person->getTree()->getName(), 'xref' => $person->getXref()])) . '">' .
 			'<i class="plusminus ' . $icon . '"></i>' .
 			$person->getSexImage() . $person->getFullName() . $lifespan .
 			'</a>' .
@@ -148,44 +183,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			FontAwesome::linkIcon('family', $family->getFullName(), ['href' => $family->url()]) .
 		 '<div>' . $this->loadChildren($family, $generations) . '</div>' .
 			'</li>';
-	}
-
-	/**
-	 * Respond to an autocomplete search request.
-	 *
-	 * @param string $query Search for this term
-	 * @param Tree   $tree  Search in this tree
-	 *
-	 * @return string
-	 */
-	public function search($query, Tree $tree) {
-		if (strlen($query) < 2) {
-			return '';
-		}
-
-		$rows = Database::prepare(
-			"SELECT i_id AS xref" .
-			" FROM `##individuals`" .
-			" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
-			" WHERE n_sort LIKE CONCAT('%', :query, '%') AND i_file = :tree_id" .
-			" ORDER BY n_sort"
-		)->execute([
-			'query'   => $query,
-			'tree_id' => $tree->getTreeId(),
-		])->fetchAll();
-
-		$out = '';
-		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $tree);
-			if ($person && $person->canShowName()) {
-				$out .= $this->getPersonLi($person);
-			}
-		}
-		if ($out) {
-			return '<ul>' . $out . '</ul>';
-		} else {
-			return '';
-		}
 	}
 
 	/**
