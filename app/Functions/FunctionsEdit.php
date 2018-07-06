@@ -657,7 +657,9 @@ class FunctionsEdit {
 			$html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
 			if ($fact === 'CENS' && $value === 'Y') {
-				$html .= self::censusDateSelector(WT_LOCALE, $xref);
+				$html .= view('modules/GEDFact_assistant/select-census', [
+					'census_places' => Census::censusPlaces(WT_LOCALE),
+				]);
 
 				/** @var CensusAssistantModule $census_assistant */
 				$census_assistant = Module::getModuleByName('GEDFact_assistant');
@@ -850,78 +852,6 @@ class FunctionsEdit {
 		$html .= $extra . '</div></div>';
 
 		return $html;
-	}
-
-	/**
-	 * Genearate a <select> element, with the dates/places of all known censuses
-	 *
-	 *
-	 * @param string $locale Sort the censuses for this locale
-	 * @param string $xref   The individual for whom we are adding a census
-	 *
-	 * @return string
-	 */
-	public static function censusDateSelector($locale, $xref) {
-		global $controller;
-
-		// Show more likely census details at the top of the list.
-		switch ($locale) {
-			case 'cs':
-				$census_places = [new CensusOfCzechRepublic];
-				break;
-			case 'en-AU':
-			case 'en-GB':
-				$census_places = [new CensusOfEngland, new CensusOfWales, new CensusOfScotland];
-				break;
-			case 'en-US':
-				$census_places = [new CensusOfUnitedStates];
-				break;
-			case 'fr':
-			case 'fr-CA':
-				$census_places = [new CensusOfFrance];
-				break;
-			case 'da':
-				$census_places = [new CensusOfDenmark];
-				break;
-			case 'de':
-				$census_places = [new CensusOfDeutschland];
-				break;
-			default:
-				$census_places = [];
-				break;
-		}
-		foreach (Census::allCensusPlaces() as $census_place) {
-			if (!in_array($census_place, $census_places)) {
-				$census_places[] = $census_place;
-			}
-		}
-
-		$controller->addInlineJavascript('
-				function selectCensus(el) {
-					var option = $(":selected", el);
-					$("input[id^=CENS_DATE]", $(el).closest("form")).val(option.val());
-					//$("input[id^=CENS_PLAC]", $(el).closest("form")).val(option.data("place"));
-					var place = option.data("place");
-					$("select[id^=CENS_PLAC]", $(el).closest("form")).select2().empty().append(new Option(place, place)).val(place).trigger("change");
-
-					$("input.census-class", $(el).closest("form")).val(option.data("census"));
-				}
-			');
-
-		$options = '<option value="">' . I18N::translate('Census date') . '</option>';
-
-		foreach ($census_places as $census_place) {
-			$options .= '<option value=""></option>';
-			foreach ($census_place->allCensusDates() as $census) {
-				$date            = new Date($census->censusDate());
-				$year            = $date->minimumDate()->format('%Y');
-				$place_hierarchy = explode(', ', $census->censusPlace());
-				$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
-			}
-		}
-
-		return
-			'<select id="census-selector" class="form-control" onchange="selectCensus(this)">' . $options . '</select>';
 	}
 
 	/**
