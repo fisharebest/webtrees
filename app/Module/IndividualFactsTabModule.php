@@ -178,8 +178,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	 * @return Fact[]
 	 */
 	private static function childFacts(Individual $person, Family $family, $option, $relation) {
-		global $controller;
-
 		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = [];
@@ -311,8 +309,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	 * @return Fact[]
 	 */
 	private static function parentFacts(Individual $person, $sosa) {
-		global $controller;
-
 		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = [];

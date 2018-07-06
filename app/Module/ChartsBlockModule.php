@@ -49,7 +49,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE, $ctype, $controller;
+		global $WT_TREE, $ctype;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');

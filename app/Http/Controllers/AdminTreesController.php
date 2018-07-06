@@ -113,12 +113,6 @@ class AdminTreesController extends AbstractBaseController {
 			}
 		}
 
-		// Keep a list of upper case XREFs, to detect mismatches.
-		$ukeys = [];
-		foreach (array_keys($records) as $key) {
-			$ukeys[strtoupper($key)] = $key;
-		}
-
 		// LOOK FOR BROKEN LINKS
 		$XREF_LINKS = [
 			'NOTE'          => 'NOTE',

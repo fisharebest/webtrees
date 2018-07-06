@@ -958,7 +958,7 @@ class AdminController extends AbstractBaseController {
 				$facts = [];
 			}
 
-			$facts = array_map(function (Fact $fact) use ($individual, $media, $tree) {
+			$facts = array_map(function (Fact $fact) use ($individual, $media) {
 				return view('admin/fix-level-0-media-action', [
 					'fact'       => $fact,
 					'individual' => $individual,

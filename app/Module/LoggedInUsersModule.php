@@ -47,9 +47,6 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 	public function getBlock($block_id, $template = true, $cfg = []): string {
 		global $WT_TREE;
 
-		$id        = $this->getName() . $block_id;
-		$class     = $this->getName() . '_block';
-		$title     = $this->getTitle();
 		$anonymous = 0;
 		$logged_in = [];
 		$content   = '';

@@ -68,8 +68,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE;
-
 		$articles = Database::prepare(
 			"SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
 		)->execute([
@@ -127,9 +125,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return Response
 	 */
 	public function getEditJournalAction(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
-
 		if (!Auth::check()) {
 			throw new AccessDeniedHttpException;
 		}
