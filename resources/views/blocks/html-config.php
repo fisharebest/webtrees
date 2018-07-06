@@ -67,8 +67,4 @@
 	</div>
 </fieldset>
 
-<?php if ($enable_ckeditor): ?>
-	<?php View::push('javascript') ?>
-		<?= view('modules/ckeditor-js') ?>
-	<?php View::endpush() ?>
-<?php endif ?>
+<?= view('modules/ckeditor/ckeditor-js') ?>

@@ -169,7 +169,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		echo view('blocks/html-config', [
 			'all_trees'       => $all_trees,
-			'enable_ckeditor' => Module::getModuleByName('ckeditor'),
 			'gedcom'          => $gedcom,
 			'html'            => $html,
 			'languages'       => $languages,

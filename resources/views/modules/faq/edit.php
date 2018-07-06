@@ -74,5 +74,6 @@
 			</button>
 		</div>
 	</div>
-
 </form>
+
+<?= view('modules/ckeditor/ckeditor-js') ?>
