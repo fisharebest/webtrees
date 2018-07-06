@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-07-05 18:21+0000\n"
+"PO-Revision-Date: 2018-07-06 12:10+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -14735,15 +14735,15 @@ msgstr "Барлығы отбасылар"
 #: calendar.php:435 statistics.php:219
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Барлығы отбасы:%s"
 
 #: statistics.php:90
 msgid "Total females"
-msgstr ""
+msgstr "Барлығы әйелдер"
 
 #: statistics.php:201
 msgid "Total given names"
-msgstr ""
+msgstr "Барлығы берілген атаулар"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:89
@@ -14755,143 +14755,143 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:94
 #: modules_v3/relative_ext_report/report.xml:140
 msgid "Total individuals"
-msgstr ""
+msgstr "Жеке тұлғалар"
 
 #: app/Module/CensusAssistantModule.php:261 calendar.php:427 statistics.php:84
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Жеке тұлғалар:%s"
 
 #: statistics.php:91
 msgid "Total living"
-msgstr ""
+msgstr "Барлығы тірі"
 
 #: statistics.php:89
 msgid "Total males"
-msgstr ""
+msgstr "Барлығы ерлер"
 
 #: statistics.php:223
 msgid "Total marriages"
-msgstr ""
+msgstr "Жалпы некелер"
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Жалпы күтілетін өзгерістер: "
 
 #: app/Module/FamilyTreeStatisticsModule.php:229
 #: app/Module/HtmlBlockModule.php:182 statistics.php:200
 msgid "Total surnames"
-msgstr ""
+msgstr "Жалпы тегі"
 
 #: app/Module/FamilyTreeStatisticsModule.php:235
 msgid "Total users"
-msgstr ""
+msgstr "Барлығы пайдаланушылар"
 
 #. I18N: e.g. http://www.google.com/analytics
 #: admin_site_config.php:148 resources/views/admin/control-panel.php:70
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Бақылау және талдау"
 
 #: admin_site_config.php:565 admin_site_config.php:590
 #: admin_site_config.php:615
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Бақылау және аналитика басқару панеліне қосылмайды."
 
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:570
 msgid "Trailer"
-msgstr ""
+msgstr "Трейлер"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:199
 msgid "Tridi"
-msgstr ""
+msgstr "Треди"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6850
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Тринидад және Тобаго"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Трухильо, Перу"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:614
 msgid "Tue"
-msgstr ""
+msgstr "Сәу"
 
 #: app/Date/CalendarDate.php:353
 msgid "Tuesday"
-msgstr ""
+msgstr "Сейсенбі"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6851
 msgid "Tunisia"
-msgstr ""
+msgstr "Тунис"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6852
 msgid "Turkey"
-msgstr ""
+msgstr "Түркия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Түрікменстан"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6841
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Түрік және Кайкос аралдары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Tuvalu"
-msgstr ""
+msgstr "Тувалу"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:367
 msgid "Tuxtla Gutierrez, Mexico"
-msgstr ""
+msgstr "Tuxtla Gutierrez, Мексика"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Твин Фолс, Айдахо, Америка Құрама Штаттары"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:265 admin_site_logs.php:328
 #: app/Functions/FunctionsPrintFacts.php:673 app/GedcomTag.php:572
 #: medialist.php:94 resources/views/admin/modules.php:82
 msgid "Type"
-msgstr ""
+msgstr "Түрі"
 
 #: app/GedcomTag.php:319
 msgid "Type of event"
-msgstr ""
+msgstr "Іс-шараның түрі"
 
 #: app/GedcomTag.php:323
 msgid "Type of fact"
-msgstr ""
+msgstr "Факт түрі"
 
 #: app/Module/GoogleMapsModule.php:440
 msgid "Type of place markers in the place hierarchy"
-msgstr ""
+msgstr "Орын иерархиясында орын белгілерінің түрі"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:358 login.php:451
 msgid "Type the password again."
-msgstr ""
+msgstr "Құпия сөзді қайтадан енгізіңіз."
 
 #: edituser.php:205 login.php:456
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr ""
+msgstr "Пароліңізді дұрыс енгізгеніңізге көз жеткізу үшін құпия сөзіңізді қайтадан енгізіңіз."
 
 #: admin_trees_check.php:126
 msgid "Types of error"
-msgstr ""
+msgstr "Қате түрлері"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag URL (A web address / URL)
@@ -14901,93 +14901,93 @@ msgstr ""
 #: admin_trees_manage.php:685 app/GedcomTag.php:574 app/GedcomTag.php:582
 #: app/GedcomTag.php:1350 resources/views/modals/media-file-fields.php:88
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6858
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "АҚШ-тың кіші аралдары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "АҚШ-тың Виргин аралдары"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:42
 msgid "UTC"
-msgstr ""
+msgstr "Дүниежүзілік үйлестірілген уақыт"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
 msgid "Uganda"
-msgstr ""
+msgstr "Уганда"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6857
 msgid "Ukraine"
-msgstr ""
+msgstr "Украина"
 
 #: app/Http/Controllers/SetupController.php:174
 #: app/Http/Controllers/SetupController.php:220
 msgid "Unable to connect using this username and password. Your server gave the following error."
-msgstr ""
+msgstr "Бұл пайдаланушы аты мен құпия сөзді пайдаланып қосылу мүмкін емес. Серверіңіз келесі қатені берді."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "Белгісіз: жеткіліксіз деректер"
 
 #: admin_trees_config.php:1179
 msgid "Unique family facts"
-msgstr ""
+msgstr "Бірегей отбасылық фактілер"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1348
 msgid "Unique identifier"
-msgstr ""
+msgstr "Бірегей идентификатор"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:376
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Бірегей идентификаторлар әртүрлі отбасылық ағаштар мен әртүрлі жүйелерде бірдей жазбаны табуға мүмкіндік береді. Жазбалар жасалған немесе жаңартылған кезде олар қосылады. Егер бірегей идентификаторлар көрсетілуін қаламасаңыз, оларды құпиялылық ережелерімен жасыруға болады."
 
 #: admin_trees_config.php:1125
 msgid "Unique individual facts"
-msgstr ""
+msgstr "Бірегей жеке деректер"
 
 #: admin_trees_config.php:1274
 msgid "Unique repository facts"
-msgstr ""
+msgstr "Бірегей репозиторий фактілері"
 
 #: admin_trees_config.php:1233
 msgid "Unique source facts"
-msgstr ""
+msgstr "Бірегей дереккөздер"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6627
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Біріккен Араб Әмірліктері"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6702
 msgid "United Kingdom"
-msgstr ""
+msgstr "Біріккен Корольдік"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6860 statistics.php:618
 msgid "United States"
-msgstr ""
+msgstr "АҚШ"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1149 app/GedcomRecord.php:1153 app/Stats.php:6619
 msgid "Unknown"
-msgstr ""
+msgstr "Белгісіз"
 
 #: app/Stats.php:5187
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Белгісіз"
 
 #: app/Controller/IndividualController.php:238
 #: app/Functions/FunctionsEdit.php:794 app/Stats.php:5547 calendar.php:655
@@ -14998,53 +14998,53 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Белгісіз"
 
 #: app/Stats.php:939 app/Stats.php:945 edituser.php:163
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Белгісіз"
 
 #: app/GedcomTag.php:1386
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "Танылмаған GEDCOM коды"
 
 #: admin_media.php:618
 msgid "Unused files"
-msgstr ""
+msgstr "Пайдаланылмаған файлдар"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
 #: admin_site_upgrade.php:298
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Уақытша қалтаға %s-ін шығару …"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:37
 msgid "Upcoming events"
-msgstr ""
+msgstr "Алдағы оқиғалар"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
 msgid "Update"
-msgstr ""
+msgstr "Жаңарту"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:79
 msgid "Update all"
-msgstr ""
+msgstr "Барлығын жаңарту"
 
 #: admin_trees_places.php:79
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Жанұядағы ағаштың барлық атауларын жаңартыңыз"
 
 #: admin_trees_manage.php:501 app/Module/GoogleMapsModule.php:1677
 msgid "Update place names"
-msgstr ""
+msgstr "Жер атауларын жаңартыңыз"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:139 admin_site_upgrade.php:203
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Кез келген жағдайда жаңарту"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15052,130 +15052,130 @@ msgstr ""
 #: resources/views/admin/control-panel.php:33
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Webtrees %s-ке дейін жаңарту."
 
 #: admin_site_upgrade.php:56
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Жаңарту шебері"
 
 #: app/Module/GoogleMapsModule.php:2152
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Географиялық деректерді жүктеу"
 
 #: admin_media_upload.php:32 resources/views/admin/control-panel.php:430
 msgid "Upload media files"
-msgstr ""
+msgstr "Медиа файлдарды жүктеп салыңыз"
 
 #: admin_media_upload.php:157
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr ""
+msgstr "Жергілікті компьютерден бір немесе бірнеше мультимедиа файлдарын жүктеңіз. Медиа файлдар суреттер, бейне, аудио немесе басқа пішімдер болуы мүмкін."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6859
 msgid "Uruguay"
-msgstr ""
+msgstr "Уругвай"
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Орын иерархиясы үшін Google Maps™ қолданбасын пайдаланыңыз"
 
 #: admin_site_config.php:115 app/Functions/FunctionsEdit.php:256
 msgid "Use PHP mail to send messages"
-msgstr ""
+msgstr "Хабарларды жіберу үшін PHP поштасын пайдаланыңыз"
 
 #: admin_site_config.php:117 app/Functions/FunctionsEdit.php:257
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Хабарларды жіберу үшін SMTP пайдаланыңыз"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:145
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr ""
+msgstr "Бір таңбаны сәйкестендіру үшін \"?\" Белгісін пайдаланыңыз, \"*\" нөл немесе одан көп таңбаларды сәйкестендіру үшін пайдаланыңыз."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:345 login.php:434
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Кем дегенде %s таңба қолданыңыз."
+msgstr[1] "Кем дегенде %s таңбаны пайдаланыңыз."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
 #: modules_v3/individual_report/report.xml:10
 msgid "Use colors"
-msgstr ""
+msgstr "Түстерді пайдаланыңыз"
 
 #: resources/views/interactive-tree-chart.php:7
 msgid "Use compact layout"
-msgstr ""
+msgstr "Шағын құрылымды пайдаланыңыз"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1346
 msgid "Use full source citations"
-msgstr ""
+msgstr "Толық көз сілтемелерін пайдаланыңыз"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:361
 msgid "Use password"
-msgstr ""
+msgstr "Құпия сөзді пайдаланыңыз"
 
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:116
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Хабарларды жіберу үшін sendmail пайдалану"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:607
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Бұл адам үшін бөлектелген кескін көрсетілмеген кезде, түс көріністерін пайдаланыңыз. Қолданылған суреттер жеке адамның жынысына қатысты."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:602
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Тұлпарларды пайдаланыңыз"
 
 #: admin_trees_config.php:1020
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "GeoNames дерекқорын автотолтыру үшін орындарда пайдаланыңыз"
 
 #: login.php:470
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "Бұл өрісті сайт әкімшісіне есептік жазбаны неге сұратып жатырсыз және осы сайтта көрсетілген генеалогиямен қалай байланысты екеніңізді айту үшін пайдаланыңыз. Сондай-ақ, оны сайт әкімшісіне қатысты басқа да түсініктемелерді енгізу үшін пайдалануға болады."
 
 #: app/Functions/FunctionsEdit.php:817
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Бұл кескінді диаграммалар үшін және жеке бетке қолданыңыз."
 
 #: app/Module/GoogleMapsModule.php:2954
 msgid "Use this value"
-msgstr ""
+msgstr "Бұл мәнді пайдаланыңыз"
 
 #: admin_site_logs.php:288 admin_site_logs.php:331 edit_changes.php:209
 #: resources/views/admin/changes-log.php:75
 #: resources/views/admin/changes-log.php:123
 msgid "User"
-msgstr ""
+msgstr "Пайдаланушы"
 
 #: admin_users.php:302 admin_users.php:664 admin_users.php:788
 #: admin_users_bulk.php:30 resources/views/admin/control-panel.php:301
 msgid "User administration"
-msgstr ""
+msgstr "Пайдаланушы әкімшілігі"
 
 #: admin_users.php:729
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Пайдаланушы 7 күн ішінде тексермеді."
 
 #: admin_users.php:753
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Пайдаланушы әкімші тарапынан тексерілмеді."
 
 #: admin_trees_config.php:491
 msgid "User preferences"
-msgstr ""
+msgstr "Пайдаланушының қалауы"
 
 #: login.php:492 login.php:549
 msgid "User verification"
-msgstr ""
+msgstr "Пайдаланушыны тексеру"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:375 admin_users.php:329 admin_users.php:837
@@ -15188,145 +15188,145 @@ msgstr ""
 #: resources/views/emails/register-notify-text.php:6
 #: resources/views/setup/step-5-administrator.php:39
 msgid "Username"
-msgstr ""
+msgstr "Пайдаланушы аты"
 
 #: login.php:223 resources/views/blocks/sign-in.php:45
 msgid "Username or email address"
-msgstr ""
+msgstr "Пайдаланушының аты немесе электрондық пошта мекенжайы"
 
 #: admin_users.php:334 edituser.php:137 login.php:423
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Пайдаланушы аттары кіші әріптерге бағынбайды және \"хлоя\", \"хлоя\" және \"Хлоя\" деген сөздер бірдей деп есептеледі."
 
 #: app/Module/HtmlBlockModule.php:206
 #: resources/views/admin/control-panel.php:272
 #: resources/views/blocks/family-tree-statistics.php:119
 msgid "Users"
-msgstr ""
+msgstr "Пайдаланушылар"
 
 #: admin_users.php:705
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Пайдаланушының есептік жазбасы тым белсенді емес: "
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6861
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Өзбекстан"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Ванкувер, Британ Колумбия, Канада"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
 msgid "Vanuatu"
-msgstr ""
+msgstr "Вануату"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Әртүрлі статистикалық диаграммалар."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6862
 msgid "Vatican City"
-msgstr ""
+msgstr "Ватикан қаласы"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "вандемьера"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "вандемьера"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "вандемьера"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "вандемьера"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
 msgid "Venezuela"
-msgstr ""
+msgstr "Венесуэла"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "вантоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr ""
+msgstr "вантоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "вантоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "вантоз"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:381
 msgid "Veracruz, Mexico"
-msgstr ""
+msgstr "Веракрус, Мексика"
 
 #: admin_users.php:845
 msgid "Verified"
-msgstr ""
+msgstr "Тексерілген"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
 msgid "Vernal, Utah, United States"
-msgstr ""
+msgstr "Vernal, Юта, Америка Құрама Штаттары"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:576 resources/views/admin/modules.php:108
 msgid "Version"
-msgstr ""
+msgstr "Нұсқа"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1531
 msgid "Video"
-msgstr ""
+msgstr "Бейне"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6867
 msgid "Vietnam"
-msgstr ""
+msgstr "Вьетнам"
 
 #: app/Functions/FunctionsPrintFacts.php:991
 #: app/Functions/FunctionsPrintFacts.php:1029
 msgid "View"
-msgstr ""
+msgstr "көзқарас"
 
 #: placelist.php:152
 msgid "View all records found in this place"
-msgstr ""
+msgstr "Бұл жерде табылған барлық жазбаларды қараңыз"
 
 #: calendar.php:287
 msgid "View this day"
-msgstr ""
+msgstr "Бұл күні көру"
 
 #: app/Controller/AncestryController.php:82
 #: app/Controller/DescendancyController.php:165
@@ -15337,15 +15337,15 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:95
 #: resources/views/blocks/slide-show.php:37
 msgid "View this family"
-msgstr ""
+msgstr "Бұл отбасын қараңыз"
 
 #: calendar.php:291
 msgid "View this month"
-msgstr ""
+msgstr "Осы айды көру"
 
 #: resources/views/blocks/slide-show.php:45
 msgid "View this source"
-msgstr ""
+msgstr "Бұл көзді қараңыз"
 
 #: calendar.php:295
 msgid "View this year"
