@@ -90,7 +90,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	 * @return string
 	 */
 	public function getSidebarContent(Individual $individual) {
-		return view('modules/descendancy', [
+		return view('modules/descendancy/sidebar', [
 			'individual_list' => $this->getPersonLi($individual, 1),
 		]);
 	}
