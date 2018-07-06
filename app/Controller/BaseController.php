@@ -33,9 +33,6 @@ class BaseController {
 		self::JS_PRIORITY_LOW    => [],
 	];
 
-	/** @var string[] Exteral JavaScript files to load. */
-	private $external_javascript = [];
-
 	/** @var Tree Create a page for which tree */
 	private $tree;
 
@@ -55,19 +52,6 @@ class BaseController {
 	 */
 	public function tree() {
 		return $this->tree;
-	}
-
-	/**
-	 * Make a list of external Javascript, so we can render them in the footer
-	 *
-	 * @param string $script_name
-	 *
-	 * @return $this
-	 */
-	public function addExternalJavascript($script_name) {
-		$this->external_javascript[$script_name] = true;
-
-		return $this;
 	}
 
 	/**
@@ -103,11 +87,6 @@ class BaseController {
 			$javascript1 .= $script;
 		}
 
-		// External javascript
-		foreach (array_keys($this->external_javascript) as $script_name) {
-			$javascript2 .= '<script src="' . $script_name . '"></script>';
-		}
-
 		// Inline (lower priority) javascript
 		foreach ($this->inline_javascript as $priority => $scripts) {
 			if ($priority !== self::JS_PRIORITY_HIGH) {
@@ -123,7 +102,6 @@ class BaseController {
 			self::JS_PRIORITY_NORMAL => [],
 			self::JS_PRIORITY_LOW    => [],
 		];
-		$this->external_javascript = [];
 
 		return '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
 	}
