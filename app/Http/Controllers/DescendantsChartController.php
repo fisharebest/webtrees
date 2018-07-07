@@ -46,6 +46,9 @@ class DescendantsChartController extends AbstractChartController {
 	const DEFAULT_GENERATIONS         = 3;
 	const DEFAULT_MAXIMUM_GENERATIONS = 9;
 
+	protected $dabo_num = [];
+	protected $dabo_sex = [];
+
 	/**
 	 * A form to request the chart parameters.
 	 *
