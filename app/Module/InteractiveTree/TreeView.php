@@ -122,8 +122,10 @@ class TreeView {
 	 * @return string
 	 */
 	private function getPersonDetails(Individual $individual, Family $family = null) {
+		$chart_url = route('module', ['module' => 'tree', 'action' => 'Treeview', 'xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]);
+
 		$hmtl = $this->getThumbnail($individual);
-		$hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
+		$hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
 		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
 			$hmtl .= $fact->summary();
 		}
