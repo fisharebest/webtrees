@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class UserWelcomeModule
@@ -40,21 +41,20 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE;
-
-		$gedcomid   = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
-		$individual = Individual::getInstance($gedcomid, $WT_TREE);
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		$gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
+		$individual = Individual::getInstance($gedcomid, $tree);
 		$links      = [];
 
 		if ($individual) {
-			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
+			if (Module::isActiveChart($tree, 'pedigree_chart')) {
 				$links[] = [
 					'url'   => route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 					'title' => I18N::translate('Default chart'),
@@ -107,10 +107,11 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 }

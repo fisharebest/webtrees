@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
@@ -43,14 +42,15 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$title          = $this->getBlockSetting($block_id, 'title', '');
 		$content        = $this->getBlockSetting($block_id, 'html', '');
@@ -68,22 +68,18 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		 */
 		switch ($gedcom) {
 			case '__current__':
-				$stats = new Stats($WT_TREE);
+				$stats = new Stats($tree);
 				break;
 			case '__default__':
-				$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM'));
-				if ($tree) {
-					$stats = new Stats($tree);
-				} else {
-					$stats = new Stats($WT_TREE);
-				}
+				$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? $tree;
+				$stats = new Stats($tree);
 				break;
 			default:
 				$tree = Tree::findByName($gedcom);
 				if ($tree) {
 					$stats = new Stats($tree);
 				} else {
-					$stats = new Stats($WT_TREE);
+					$stats = new Stats($tree);
 				}
 				break;
 		}
@@ -95,14 +91,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$content = $stats->embedTags($content);
 
 		if ($show_timestamp === '1') {
-			$content .= '<br>' . FunctionsDate::formatTimestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
+			$content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -137,11 +133,12 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$languages = Filter::postArray('lang');
 			$this->setBlockSetting($block_id, 'gedcom', Filter::post('gedcom'));

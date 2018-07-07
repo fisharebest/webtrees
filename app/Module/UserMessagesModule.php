@@ -74,14 +74,15 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$messages = Database::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 			->execute([Auth::id()])
@@ -94,10 +95,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 
 		$content = '';
 		if (!empty($users)) {
-			$url = route('user-page', ['ged' => $WT_TREE->getName()]);
+			$url = route('user-page', ['ged' => $tree->getName()]);
 			$content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
 			$content .= '<input type="hidden" name="route" value="message">';
-			$content .= '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
+			$content .= '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
 			$content .= '<input type="hidden" name="url" value="' . e($url) . '">';
 			$content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
 			$content .= '<select id="to" name="to">';
@@ -109,7 +110,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
 			$content .= '</form>';
 		}
-		$content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', ['action' => 'DeleteMessage', 'module' => $this->getName(), 'ctype' => $ctype, 'ged' => $WT_TREE->getName()])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
+		$content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', ['action' => 'DeleteMessage', 'module' => $this->getName(), 'ctype' => $ctype, 'ged' => $tree->getName()])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
 		$content .= csrf_field();
 
 		if (!empty($messages)) {
@@ -134,14 +135,14 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '</td>';
 				$content .= '</tr>';
 				$content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
-				$content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $WT_TREE) . '</div><br>';
+				$content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $tree) . '</div><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ I18N::translate('RE: ')) !== 0) {
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}
 
 				// If this user still exists, show a reply link.
 				if ($user) {
-					$reply_url = route('message', ['to' => $user->getUserName(), 'subject' => $message->subject, 'ged' => $WT_TREE->getName()]);
+					$reply_url = route('message', ['to' => $user->getUserName(), 'subject' => $message->subject, 'ged' => $tree->getName()]);
 					$content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
 				}
 				$content .= '<button type="button" class="btn btn-danger" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onclick="if (confirm(this.dataset.confirm)) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
@@ -182,10 +183,11 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 }

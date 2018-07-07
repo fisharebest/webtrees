@@ -29,20 +29,13 @@ interface ModuleSidebarInterface {
 	public function defaultSidebarOrder();
 
 	/**
-	 * Load this sidebar synchronously.
+	 * Sidebar content.
 	 *
 	 * @param Individual $individual
 	 *
 	 * @return string
 	 */
 	public function getSidebarContent(Individual $individual);
-
-	/**
-	 * Load this sidebar asynchronously.
-	 *
-	 * @return string
-	 */
-	public function getSidebarAjaxContent();
 
 	/**
 	 * Does this sidebar have anything to display for this individual?

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class TopGivenNamesModule
@@ -37,21 +38,22 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		extract($cfg, EXTR_OVERWRITE);
 
-		$stats = new Stats($WT_TREE);
+		$stats = new Stats($tree);
 
 		switch ($infoStyle) {
 			case 'list':
@@ -82,10 +84,10 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 				$title = I18N::plural('Top %s given name', 'Top %s given names', $num, I18N::number($num));
 			}
 
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -120,11 +122,12 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));

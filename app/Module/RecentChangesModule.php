@@ -46,8 +46,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
@@ -56,7 +56,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
 		extract($cfg, EXTR_OVERWRITE);
 
-		$records = $this->getRecentChanges($WT_TREE, $days);
+		$records = $this->getRecentChanges($tree, $days);
 
 		switch ($sortStyle) {
 			case 'name':
@@ -82,10 +82,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -118,7 +118,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	}
 
 	/** {@inheritdoc} */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));

@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class TopPageViewsModule
@@ -46,14 +47,15 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
@@ -67,13 +69,13 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
 			" ORDER BY page_count DESC LIMIT :limit"
 		)->execute([
-			'tree_id' => $WT_TREE->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 			'limit'   => (int) $num,
 		])->fetchAssoc();
 
 		$content = '<table>';
 		foreach ($top10 as $id => $count) {
-			$record = GedcomRecord::getInstance($id, $WT_TREE);
+			$record = GedcomRecord::getInstance($id, $tree);
 			if ($record && $record->canShow()) {
 				$content .= '<tr>';
 				if ($count_placement == 'before') {
@@ -89,10 +91,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '</table>';
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -142,11 +144,12 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));

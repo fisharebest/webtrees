@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class UpcomingAnniversariesModule
@@ -96,14 +97,15 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$default_events = implode(',', self::DEFAULT_EVENTS);
 
@@ -126,9 +128,9 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$events_filter = implode('|', $event_array);
 
 		$startjd = WT_CLIENT_JD + 1;
-		$endjd   = WT_CLIENT_JD + $days;
+		$endjd   = WT_CLIENT_JD + (int) $days;
 
-		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $WT_TREE);
+		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
 		if (empty($facts)) {
 			if ($endjd == $startjd) {
@@ -148,10 +150,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		}
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -186,11 +188,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', self::MIN_DAYS, self::MAX_DAYS, self::DEFAULT_DAYS));
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));

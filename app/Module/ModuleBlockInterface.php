@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */
@@ -24,13 +26,14 @@ interface ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string;
 
 	/**
 	 * Should this block load asynchronously using AJAX?
@@ -59,9 +62,10 @@ interface ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id);
+	public function configureBlock(Tree $tree, int $block_id);
 }

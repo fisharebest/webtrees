@@ -46,14 +46,15 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
 		$days     = $this->getBlockSetting($block_id, 'days', '1');
@@ -81,8 +82,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 									(object) [
 										'user_id'   => null,
 										'user_name' => '',
-										'real_name' => $WT_TREE->getTitle(),
-										'email'     => $WT_TREE->getPreference('WEBTREES_EMAIL'),
+										'real_name' => $tree->getTitle(),
+										'email'     => $tree->getPreference('WEBTREES_EMAIL'),
 									]
 								);
 
@@ -102,10 +103,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
 		}
-		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
+		if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
 			$content = '';
-			if (Auth::isModerator($WT_TREE)) {
-				$content .= '<a href="' . e(route('show-pending', ['ged' => $WT_TREE->getName()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+			if (Auth::isModerator($tree)) {
+				$content .= '<a href="' . e(route('show-pending', ['ged' => $tree->getName()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
 			}
 			if ($sendmail === '1') {
 				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';
@@ -118,9 +119,9 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				" WHERE status='pending'" .
 				" AND   gedcom_id=?" .
 				" GROUP BY xref"
-			)->execute([$WT_TREE->getTreeId()])->fetchAll();
+			)->execute([$tree->getTreeId()])->fetchAll();
 			foreach ($changes as $change) {
-				$record = GedcomRecord::getInstance($change->xref, $WT_TREE);
+				$record = GedcomRecord::getInstance($change->xref, $tree);
 				if ($record->canShow()) {
 					$content .= '<li><a href="' . e($record->url()) . '">' . $record->getFullName() . '</a></li>';
 				}
@@ -128,10 +129,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			$content .= '</ul>';
 
 			if ($template) {
-				if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-					$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+					$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 				} elseif ($ctype === 'user' && Auth::check()) {
-					$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+					$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 				} else {
 					$config_url = '';
 				}
@@ -169,11 +170,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
 			$this->setBlockSetting($block_id, 'sendmail', Filter::postBool('sendmail'));

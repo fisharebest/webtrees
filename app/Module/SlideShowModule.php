@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class SlideShowModule
@@ -42,14 +43,15 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
 		$controls = $this->getBlockSetting($block_id, 'controls', '1');
@@ -64,7 +66,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			" AND multimedia_format  IN ('jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp')" .
 			" AND source_media_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute([
-			$WT_TREE->getTreeId(),
+			$tree->getTreeId(),
 			$this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
 			$this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
 			$this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
@@ -89,7 +91,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		$random_media = null;
 		while ($all_media) {
 			$n     = array_rand($all_media);
-			$media = Media::getInstance($all_media[$n], $WT_TREE);
+			$media = Media::getInstance($all_media[$n], $tree);
 			$media_file = $media->firstImageFile();
 			if ($media->canShow() && $media_file !== null && !$media_file->isExternal()) {
 				// Check if it is linked to a suitable individual
@@ -121,10 +123,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -159,11 +161,12 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
 			$this->setBlockSetting($block_id, 'controls', Filter::postBool('controls'));

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
@@ -38,15 +39,14 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE;
-
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
 		$anonymous = 0;
 		$logged_in = [];
 		$content   = '';
@@ -72,7 +72,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 		$content .= '<div class="logged_in_list">';
 		if (Auth::check()) {
 			foreach ($logged_in as $user) {
-				$individual = Individual::getInstance($WT_TREE->getUserPreference($user, 'gedcomid'), $WT_TREE);
+				$individual = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);
 
 				$content .= '<div class="logged_in_name">';
 				if ($individual) {
@@ -82,7 +82,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 				}
 				$content .= ' - ' . e($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $WT_TREE->getNameUrl()])]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $tree->getNameUrl()])]);
 				}
 				$content .= '</div>';
 			}
@@ -124,10 +124,11 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 }

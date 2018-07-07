@@ -66,20 +66,19 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE;
-
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
 		$articles = Database::prepare(
 			"SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
 		)->execute([
 			'offset'  => WT_TIMESTAMP_OFFSET,
-			'tree_id' => $WT_TREE->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 		])->fetchAll();
 
 		$content = view('blocks/news', [
@@ -119,11 +118,12 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 
 	/**

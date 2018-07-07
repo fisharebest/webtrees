@@ -75,14 +75,15 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $ctype, $WT_TREE;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$action = Filter::get('action');
 		switch ($action) {
@@ -99,11 +100,11 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				$favtitle = Filter::get('favtitle');
 
 				if ($gid !== '') {
-					$record = GedcomRecord::getInstance($gid, $WT_TREE);
+					$record = GedcomRecord::getInstance($gid, $tree);
 					if ($record && $record->canShow()) {
 						self::addFavorite([
 							'user_id'   => $ctype === 'user' ? Auth::id() : null,
-							'gedcom_id' => $WT_TREE->getTreeId(),
+							'gedcom_id' => $tree->getTreeId(),
 							'gid'       => $record->getXref(),
 							'type'      => $record::RECORD_TYPE,
 							'url'       => null,
@@ -114,7 +115,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				} elseif ($url !== null) {
 					self::addFavorite([
 						'user_id'   => $ctype === 'user' ? Auth::id() : null,
-						'gedcom_id' => $WT_TREE->getTreeId(),
+						'gedcom_id' => $tree->getTreeId(),
 						'gid'       => null,
 						'type'      => 'URL',
 						'url'       => $url,
@@ -125,22 +126,22 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				break;
 		}
 
-		$userfavs = $this->getFavorites($WT_TREE, Auth::user());
+		$userfavs = $this->getFavorites($tree, Auth::user());
 
 		$content = '';
 		if ($userfavs) {
 			foreach ($userfavs as $favorite) {
-				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . e($WT_TREE->getName()) . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
+				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . e($tree->getName()) . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
 				if ($favorite->favorite_type === 'URL') {
 					$content .= '<div id="boxurl' . e($favorite->favorite_id) . '.0" class="person_box">';
-					if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
+					if ($ctype == 'user' || Auth::isManager($tree)) {
 						$content .= $removeFavourite;
 					}
 					$content .= '<a href="' . e($favorite->url) . '"><b>' . e($favorite->title) . '</b></a>';
 					$content .= '<br>' . e((string) $favorite->note);
 					$content .= '</div>';
 				} else {
-					$record = GedcomRecord::getInstance($favorite->xref, $WT_TREE);
+					$record = GedcomRecord::getInstance($favorite->xref, $tree);
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
 							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box action_header';
@@ -155,7 +156,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 									break;
 							}
 							$content .= '">';
-							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
+							if ($ctype == 'user' || Auth::isManager($tree)) {
 								$content .= $removeFavourite;
 							}
 							$content .= Theme::theme()->individualBoxLarge($record);
@@ -163,7 +164,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 							$content .= '</div>';
 						} else {
 							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box">';
-							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
+							if ($ctype == 'user' || Auth::isManager($tree)) {
 								$content .= $removeFavourite;
 							}
 							$content .= $record->formatList();
@@ -174,7 +175,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				}
 			}
 		}
-		if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
+		if ($ctype == 'user' || Auth::isManager($tree)) {
 			$uniqueID = Uuid::uuid4(); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '<div class="add_fav_head">';
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';
@@ -183,7 +184,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<form name="addfavform" action="index.php">';
 			$content .= '<input type="hidden" name="action" value="addfav">';
 			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
-			$content .= '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
+			$content .= '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
 			$content .= '<div class="add_fav_ref">';
 			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="$(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); $(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
@@ -203,8 +204,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		$content = view('blocks/favorites', [
 			'ctype'      => $ctype,
 			'favorites'  => $userfavs,
-			'is_manager' => Auth::isManager($WT_TREE),
-			'tree'       => $WT_TREE,
+			'is_manager' => Auth::isManager($tree),
+			'tree'       => $tree,
 		]);
 
 		if ($template) {
@@ -253,11 +254,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 
 	/**

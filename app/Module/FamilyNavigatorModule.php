@@ -45,11 +45,6 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		return true;
 	}
 
-	/** {@inheritdoc} */
-	public function getSidebarAjaxContent() {
-		return '';
-	}
-
 	/**
 	 * Load this sidebar synchronously.
 	 *

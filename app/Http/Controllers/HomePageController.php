@@ -59,6 +59,7 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
+			'tree'       => $tree,
 		]);
 	}
 
@@ -72,10 +73,11 @@ class HomePageController extends AbstractBaseController {
 	public function treePageBlockUpdate(Request $request): RedirectResponse {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
+
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->treeBlock($request);
 
-		$block->configureBlock($block_id);
+		$block->configureBlock($tree, $block_id);
 
 		return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
 	}
@@ -139,6 +141,7 @@ class HomePageController extends AbstractBaseController {
 			'block_id'   => $block_id,
 			'cancel_url' => route('user-page', ['ged' => $tree->getName()]),
 			'title'      => $title,
+			'tree'       => $tree,
 		]);
 	}
 
@@ -152,10 +155,11 @@ class HomePageController extends AbstractBaseController {
 	public function userPageBlockUpdate(Request $request): RedirectResponse {
 		/** @var Tree $tree */
 		$tree     = $request->attributes->get('tree');
+
 		$block_id = (int) $request->get('block_id');
 		$block    = $this->userBlock($request);
 
-		$block->configureBlock($block_id);
+		$block->configureBlock($tree, $block_id);
 
 		return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
 	}
@@ -218,8 +222,7 @@ class HomePageController extends AbstractBaseController {
 		$title        = e($tree->getTitle());
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $WT_TREE, $ctype, $controller;
-		$WT_TREE    = $tree;
+		global $ctype, $controller;
 		$ctype      = 'gedcom';
 		$controller = $this;
 
@@ -263,7 +266,7 @@ class HomePageController extends AbstractBaseController {
 		$controller = $this;
 
 		$html = view('layouts/ajax', [
-			'content' => $module->getBlock($block_id, true),
+			'content' => $module->getBlock($tree, $block_id, true),
 		]);
 
 
@@ -392,8 +395,7 @@ class HomePageController extends AbstractBaseController {
 		$title        = I18N::translate('My page');
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $WT_TREE, $ctype, $controller;
-		$WT_TREE    = $tree;
+		global $ctype, $controller;
 		$ctype      = 'user';
 		$controller = $this;
 
@@ -434,13 +436,12 @@ class HomePageController extends AbstractBaseController {
 		}
 
 		// @TODO - ModuleBlockInterface::getBlock() relies on these globals :-(
-		global $WT_TREE, $ctype, $controller;
-		$WT_TREE    = $tree;
+		global $ctype, $controller;
 		$ctype      = 'user';
 		$controller = $this;
 
 		$html = view('layouts/ajax', [
-			'content' => $module->getBlock($block_id, true),
+			'content' => $module->getBlock($tree, $block_id, true),
 		]);
 
 		// Use HTTP headers and some jQuery to add debug to the current page.

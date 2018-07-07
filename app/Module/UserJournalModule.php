@@ -61,13 +61,14 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
 		$articles = Database::prepare(
 			"SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
 		)->execute([
@@ -112,11 +113,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 
 	/**

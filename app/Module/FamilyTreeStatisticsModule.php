@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -45,14 +46,15 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE, $ctype;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
 		$show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
@@ -77,15 +79,15 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		extract($cfg, EXTR_OVERWRITE);
 
 		if ($show_common_surnames) {
-			$surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, (int) $number_of_surnames);
+			$surnames = FunctionsDb::getTopSurnames($tree->getTreeId(), 0, (int) $number_of_surnames);
 
 			$all_surnames = [];
 			foreach (array_keys($surnames) as $surname) {
-				$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $surname, '', false, false));
+				$all_surnames = array_merge($all_surnames, QueryName::surnames($tree, $surname, '', false, false));
 			}
 			ksort($all_surnames);
 
-			$surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, 'individual-list', $WT_TREE);
+			$surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, 'individual-list', $tree);
 		} else {
 			$surnames = '';
 		}
@@ -110,15 +112,15 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			'stat_avg_life'        => $stat_avg_life,
 			'stat_most_chil'       => $stat_most_chil,
 			'stat_avg_chil'        => $stat_avg_chil,
-			'stats'                => new Stats($WT_TREE),
+			'stats'                => new Stats($tree),
 			'surnames'             => $surnames,
 		]);
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $WT_TREE->getName()]);
+				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
 			} else {
 				$config_url = '';
 			}
@@ -153,11 +155,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
 			$this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));

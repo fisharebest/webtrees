@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Http\Controllers\PedigreeChartController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class ChartsBlockModule
@@ -42,28 +43,29 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
-		global $WT_TREE, $ctype;
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
+		global $ctype;
 
-		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+		$PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
+		$gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
 		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		extract($cfg, EXTR_OVERWRITE);
 
-		$person = Individual::getInstance($pid, $WT_TREE);
+		$person = Individual::getInstance($pid, $tree);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			$this->setBlockSetting($block_id, 'pid', $pid);
-			$person = Individual::getInstance($pid, $WT_TREE);
+			$person = Individual::getInstance($pid, $tree);
 		}
 
 		$title = $this->getTitle();
@@ -125,15 +127,15 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
+			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
 				$config_url = route('tree-page-block-edit', [
 					'block_id' => $block_id,
-					'ged'      => $WT_TREE->getName(),
+					'ged'      => $tree->getName(),
 				]);
 			} elseif ($ctype === 'user' && Auth::check()) {
 				$config_url = route('user-page-block-edit', [
 					'block_id' => $block_id,
-					'ged'      => $WT_TREE->getName(),
+					'ged'      => $tree->getName(),
 				]);
 			} else {
 				$config_url = '';
@@ -169,15 +171,14 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
-		global $WT_TREE;
-
-		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+	public function configureBlock(Tree $tree, int $block_id) {
+		$PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
+		$gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
@@ -197,12 +198,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		];
 		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-		$individual = Individual::getInstance($pid, $WT_TREE);
+		$individual = Individual::getInstance($pid, $tree);
 
 		echo view('blocks/charts-config', [
 			'charts'     => $charts,
 			'individual' => $individual,
-			'tree'       => $WT_TREE,
+			'tree'       => $tree,
 			'type'       => $type,
 		]);
 	}

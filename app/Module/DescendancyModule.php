@@ -112,11 +112,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		return true;
 	}
 
-	/** {@inheritdoc} */
-	public function getSidebarAjaxContent() {
-		return '';
-	}
-
 	/**
 	 * Load this sidebar synchronously.
 	 *

@@ -6403,13 +6403,15 @@ class Stats {
 	/**
 	 * Find the favorites for the tree.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string
 	 */
-	public function gedcomFavorites() {
+	public function gedcomFavorites(Tree $tree) {
 		if (Module::getModuleByName('gedcom_favorites')) {
 			$block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
-			return $block->getBlock(0, false);
+			return $block->getBlock($tree, 0, false);
 		} else {
 			return '';
 		}
@@ -6418,13 +6420,14 @@ class Stats {
 	/**
 	 * Find the favorites for the user.
 	 *
+	 * @param Tree $tree
 	 * @return string
 	 */
-	public function userFavorites() {
+	public function userFavorites(Tree $tree) {
 		if (Auth::check() && Module::getModuleByName('user_favorites')) {
 			$block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
-			return $block->getBlock(0, false);
+			return $block->getBlock($tree, 0, false);
 		} else {
 			return '';
 		}

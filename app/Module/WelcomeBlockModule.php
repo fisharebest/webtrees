@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class WelcomeBlockModule
@@ -40,13 +41,14 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * Generate the HTML content of this block.
 	 *
+	 * @param Tree     $tree
 	 * @param int      $block_id
 	 * @param bool     $template
 	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = []): string {
+	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
 		global $controller;
 
 		$individual = $controller->getSignificantIndividual();
@@ -108,10 +110,11 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param Tree $tree
+	 * @param int  $block_id
 	 *
 	 * @return void
 	 */
-	public function configureBlock($block_id) {
+	public function configureBlock(Tree $tree, int $block_id) {
 	}
 }

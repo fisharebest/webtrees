@@ -73,11 +73,6 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 
-	/** {@inheritdoc} */
-	public function getSidebarAjaxContent() {
-		return '';
-	}
-
 	/**
 	 * Does this module display a particular fact
 	 *
