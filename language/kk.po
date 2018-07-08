@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-07-06 12:10+0000\n"
+"PO-Revision-Date: 2018-07-08 17:26+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -15349,22 +15349,22 @@ msgstr "Бұл көзді қараңыз"
 
 #: calendar.php:295
 msgid "View this year"
-msgstr ""
+msgstr "Осы жылы көру"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
 msgid "Villa Hermosa, Mexico"
-msgstr ""
+msgstr "Вилла Хермоза, Мексика"
 
 #. I18N: A configuration setting
 #: admin_users.php:457 edituser.php:281
 msgid "Visible online"
-msgstr ""
+msgstr "Онлайнда көруге болады"
 
 #. I18N: A configuration setting
 #: admin_users.php:463 edituser.php:284
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Онлайн режимінде басқа пайдаланушыларға көрінеді"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:229 admin_users.php:33 admin_users.php:533
@@ -15373,164 +15373,164 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:737
 #: app/Module/ClippingsCartModule.php:744
 msgid "Visitor"
-msgstr ""
+msgstr "келуші"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:249
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "Тіршілік жазбалары"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
 msgid "Wales"
-msgstr ""
+msgstr "Уэльс"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6869
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Уоллис және Футуна"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr ""
+msgstr "қарттар"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "қарттар"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "қарттар"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Washington, District of Columbia, United States"
-msgstr ""
+msgstr "Вашингтон, Колумбия округі, АҚШ"
 
 #: admin_trees_config.php:613
 msgid "Watermarks"
-msgstr ""
+msgstr "Су белгілері"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:623
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Су таңбалары міндетті емес және әдетте тек келушілерге көрсетіледі."
 
 #: login.php:369
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr ""
+msgstr "<b>%s</b> мекенжайына енді растау хатын жібереміз. Растау электрондық поштасындағы нұсқауларды орындау арқылы тіркелгі сұрауын тексеру қажет. Есептік жазбаңызды жеті күн ішінде растамасаңыз, өтінішіңіз автоматты түрде қабылданбайды. Сіз қайтадан қолдана аласыз. <br><br> Растау электрондық поштасындағы нұсқауларды орындағаннан кейін, тіркелгіңізді қолданар алдында әкімші әлі де сұранымды растауы керек. <br><br> Осыған кіру веб-сайтында пайдаланушы аты мен пароліңізді білу қажет."
 
 #: admin_trees_config.php:449 resources/views/admin/control-panel.php:11
 msgid "Website"
-msgstr ""
+msgstr "Веб-сайт"
 
 #: admin_site_logs.php:29 resources/views/admin/control-panel.php:80
 msgid "Website logs"
-msgstr ""
+msgstr "Веб-сайт журналдары"
 
 #: admin_site_config.php:139 resources/views/admin/control-panel.php:46
 msgid "Website preferences"
-msgstr ""
+msgstr "Веб-сайт артықшылықтары"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:615
 msgid "Wed"
-msgstr ""
+msgstr "Ср"
 
 #: app/Date/CalendarDate.php:354
 msgid "Wednesday"
-msgstr ""
+msgstr "Сәрсенбі"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1352
 msgid "Weight"
-msgstr ""
+msgstr "Салмақ"
 
 #. I18N: A %s is the user’s name
 #: app/Module/UserWelcomeModule.php:85
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Қош келдіңіз %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:452
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Кіру бетіндегі қош келдіңіз мәтіні"
 
 #: login.php:165
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "Осы генеалогия сайтына қош келдіңіз"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
 msgid "Western Sahara"
-msgstr ""
+msgstr "Батыс Сахара"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:1381
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "Жазба өңделгенде пайдаланушы мен уақыт белгісі жазылады. Кейде қолданыстағы «соңғы өзгеріс» туралы ақпаратты, мысалы, біреудің деректеріне шағын түзетулер жасаған кезде сақтау керек. Бұл параметр әдепкіде бұл мүмкіндік таңдалғанын басқарады."
 
 #: admin_users.php:392
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
+msgstr "Пайдаланушы есептік жазбаны тіркегенде, электрондық пошта электрондық пошта мекенжайына тексеру сілтемесі арқылы жіберіледі. Олар осы сілтеме бойынша жүрсе, электрондық пошта мекенжайы дұрыс екенін білеміз, ал «электрондық поштаны тексеру» опциясы автоматты түрде таңдалады."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:36
 msgid "When adding a link, the ID field cannot be empty."
-msgstr ""
+msgstr "Сілтемені қосқанда, идентификатор өрісі бос болмауы керек."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:1366
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr ""
+msgstr "Жаңа жақын туыстарын қосқанда, жазбаларға (жеке және отбасылық) немесе фактілер мен оқиғаларға (туу, неке және өлім) сілтемелер қоса аласыз. Бұл параметр әдепкі бойынша жазбалар немесе фактілер таңдалатындығын басқарады."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:1336
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "Жаңа отбасы мүшесін қосқанда, әдепкі тегі көрсетілуі мүмкін. Бұл фамилия жергілікті дәстүрге тәуелді болады."
 
 #: help_text.php:304 resources/views/help/date.php:273
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr ""
+msgstr "Мәліметтерді қосқанда, өңдегенде немесе жойғанда, өзгерістер бірден сақталмайды. Керісінше, олар «күткен» жерде сақталады. Бұл күтпеген өзгерістерді модератор қабылданар алдында қарастыру қажет."
 
 #: admin_users.php:603
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "Пайдаланушы отбасы ағашында жеке жазбаға байланысты және мүше, редактор немесе модератор рөлін атқаратын болса, олар алыс және жақын қарым-қатынастар туралы мәліметтерге қол жеткізуге кедергі келтіруі мүмкін. Пайдаланушы көруге рұқсат ететін қатынас қадамдарының санын көрсетесіз."
 
 #: admin_pgv_to_wt.php:159
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "PhpGedView қондырмасы қайда?"
 
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:310
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "Сайт карталарына қандай отбасылық ағаштарды қосу керек"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:556
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Жаңа медиа файлдарын кім жүктей алады"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:33
 msgid "Who is online"
-msgstr ""
+msgstr "Онлайнда кім бар?"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:167 search.php:236
 msgid "Whole words only"
-msgstr ""
+msgstr "Тек барлық сөздер"
 
 #: app/Functions/FunctionsPrintLists.php:599
 msgid "Widow"
-msgstr ""
+msgstr "Жесір"
 
 #: app/Functions/FunctionsPrintLists.php:591
 msgid "Widower"
-msgstr ""
+msgstr "Жесір"
 
 #. I18N: gedcom tag WIFE
 #: app/Functions/FunctionsPrint.php:361 app/GedcomTag.php:578
@@ -15545,46 +15545,46 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:104
 #: resources/views/modals/create-family.php:27
 msgid "Wife"
-msgstr ""
+msgstr "Әйел"
 
 #: app/Controller/TimelineController.php:229
 msgid "Wife’s age"
-msgstr ""
+msgstr "Әйелдің жасы"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Әйелдің қызының аты-жөні жаңа атқа ие болады"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Әйелдің аты-жөні жұбайының тегі бойынша ауыстырылды"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:168
 msgid "Wildcards"
-msgstr ""
+msgstr "Қойылмалы карталар"
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:580
 msgid "Will"
-msgstr ""
+msgstr "ерік"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
 msgid "Winter Quarters, Nebraska, United States"
-msgstr ""
+msgstr "Winter Quarters, Небраска, Америка Құрама Штаттары"
 
 #: app/Stats.php:419 app/Stats.php:517
 msgid "With sources"
-msgstr ""
+msgstr "Көздерімен"
 
 #: app/Stats.php:418 app/Stats.php:516
 msgid "Without sources"
-msgstr ""
+msgstr "Көздерсіз"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1354
 msgid "Witness"
-msgstr ""
+msgstr "Куәгер"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -15592,100 +15592,100 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:85
 #: app/SurnameTradition.php:89
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Әйелдер күйеуінің тегін қабылдайды."
 
 #: statistics.php:612
 msgid "World"
-msgstr ""
+msgstr "Әлем"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1358 resources/views/blocks/yahrzeit-table.php:9
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Қайтыс болу мерейтойы"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:35
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Қайтыс болу мерейтойы"
 
 #: app/Theme/AbstractTheme.php:1134 calendar.php:198 lifespan.php:94
 #: lifespan.php:100 search.php:293
 msgid "Year"
-msgstr ""
+msgstr "Жыл"
 
 #: help_text.php:288 resources/views/help/date.php:257
 msgid "Year input box"
-msgstr ""
+msgstr "Жыл енгізу терезесі"
 
 #: timeline.php:134 timeline.php:296
 msgid "Year:"
-msgstr ""
+msgstr "Жыл:"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
 msgid "Yemen"
-msgstr ""
+msgstr "Йемен"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.php:7
 #: resources/views/emails/register-user-text.php:4
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "%2$s электрондық пошта мекенжайы арқылы %1$s-ге тіркелгіңіз келген (немесе сізден үміткер)."
 
 #: login.php:297 message.php:54
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Сыртқы сілтемелері бар хабарларды жіберуге рұқсатыңыз жоқ."
 
 #: resources/views/blocks/sign-out.php:4
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "Сіз %s ретінде кірдіңіз."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Төмендегі сілтеме арқылы тіркелгіге өтініш жасай аласыз."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:251 admin_trees_config.php:515 edituser.php:260
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "Веб-шрифттердің көрінісін «тақырыптар» арқылы өзгертуге болады. Әр тақырыптың басқа стилі, орналасуы, түс схемасы және т.б. бар."
 
 #: admin_users.php:466 edituser.php:286
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Сіз қазіргі уақытта кірген пайдаланушылар тізімінде пайда болуды таңдауыңызға болады."
 
 #. I18N: %s is a URL
 #: edit_interface.php:61 edit_interface.php:184
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "GEDCOM спецификациясының көшірмесін %s-ден жүктеуге болады."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr ""
+msgstr "Сіз некеде тұрған әйелдерді некеге тұрған есімді жазу арқылы іздеуді жеңілдете аласыз. Дегенмен, барлық әйелдер күйеуінің тегін қабылдамайды, сондықтан сіздің деректер базасына қате ақпаратты енгізбеңіз."
 
 #: admin_site_upgrade.php:138
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Жаңартудан кейін осы модульдерді қайта қосуға болады."
 
 #: admin_site_upgrade.php:202
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Жаңартқаннан кейін осы тақырыптарды қайтадан қосуға болады."
 
 #: admin_trees_renumber.php:264
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Ішкі сілтеме сандары ешқандай басқа тұқымдық ағашта қайталанбайтын етіп, жазбаларды отбасындағы ағаштан қайта санауға болады."
 
 #: admin_trees_renumber.php:277
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Сіз бұл отбасы ағашын қайта санауға болады."
 
 #: admin_site_config.php:205 admin_site_config.php:224
 msgid "You can request a higher or lower limit, although the server may ignore this request."
-msgstr ""
+msgstr "Сервер бұл сұраны елемеуі мүмкін болса да, жоғары немесе төменгі шегі сұрауға болады."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:162
