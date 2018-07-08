@@ -44,16 +44,16 @@ class Filter {
 	 * Format block-level text such as notes or transcripts, etc.
 	 *
 	 * @param string $text
-	 * @param Tree   $WT_TREE
+	 * @param Tree   $tree
 	 *
 	 * @return string
 	 */
-	public static function formatText($text, Tree $WT_TREE) {
-		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
+	public static function formatText($text, Tree $tree) {
+		switch ($tree->getPreference('FORMAT_TEXT')) {
 			case 'markdown':
-				return '<div class="markdown" dir="auto">' . self::markdown($text, $WT_TREE) . '</div>';
+				return '<div class="markdown" dir="auto">' . self::markdown($text, $tree) . '</div>';
 			default:
-				return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $WT_TREE) . '</div>';
+				return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $tree) . '</div>';
 		}
 	}
 
