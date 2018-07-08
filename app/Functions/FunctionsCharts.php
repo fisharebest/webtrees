@@ -324,7 +324,6 @@ class FunctionsCharts {
 					$famids = $child->getSpouseFamilies();
 					$maxfam = count($famids) - 1;
 					for ($f = 0; $f <= $maxfam; $f++) {
-						$famid_child = $famids[$f]->getXref();
 						// multiple marriages
 						if ($f > 0) {
 							echo '</tr><tr><td></td>';
@@ -379,7 +378,7 @@ class FunctionsCharts {
 						echo '</td>';
 						// cousins
 						if ($show_cousins) {
-							self::printCousins($famid_child);
+							self::printCousins($famids[$f]);
 						}
 					}
 				}
@@ -443,13 +442,10 @@ class FunctionsCharts {
 	/**
 	 * print cousins list
 	 *
-	 * @param string $famid family ID
+	 * @param Family $family
 	 */
-	public static function printCousins($famid) {
-		global $WT_TREE;
-
+	private static function printCousins(Family $family) {
 		$bheight   = Theme::theme()->parameter('chart-box-y');
-		$family    = Family::getInstance($famid, $WT_TREE);
 		$fchildren = $family->getChildren();
 		$kids      = count($fchildren);
 
