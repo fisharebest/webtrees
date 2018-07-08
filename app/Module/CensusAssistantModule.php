@@ -24,6 +24,9 @@ use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CensusAssistantModule
@@ -42,29 +45,44 @@ class CensusAssistantModule extends AbstractModule {
 	}
 
 	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getCensusHeaderAction(Request $request): Response {
+		$census = $request->get('census');
+
+		$html = $this->censusTableHeader(new $census);
+
+		return new Response($html);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function getCensusIndividualAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$census = $request->get('census');
+
+		$individual = Individual::getInstance($request->get('xref'), $tree);
+		$head       = Individual::getInstance($request->get('head'), $tree);
+		$html       = $this->censusTableRow(new $census, $individual, $head);
+
+		return new Response($html);
+	}
+
+	/**
 	 * This is a general purpose hook, allowing modules to respond to routes
 	 * of the form module.php?mod=FOO&mod_action=BAR
 	 *
 	 * @param string $mod_action
 	 */
 	public function modAction($mod_action) {
-		global $WT_TREE;
-
 		switch ($mod_action) {
-			case 'census-header':
-				header('Content-Type: text/html; charset=utf8');
-				$census = Filter::get('census');
-				echo $this->censusTableHeader(new $census);
-				break;
-
-			case 'census-individual':
-				header('Content-Type: text/html; charset=utf8');
-				$census     = Filter::get('census');
-				$individual = Individual::getInstance(Filter::get('xref'), $WT_TREE);
-				$head       = Individual::getInstance(Filter::get('head'), $WT_TREE);
-				echo $this->censusTableRow(new $census, $individual, $head);
-				break;
-
 			case 'media_find':
 				self::mediaFind();
 				break;
@@ -78,6 +96,8 @@ class CensusAssistantModule extends AbstractModule {
 
 	/**
 	 * @param Individual $individual
+	 *
+	 * @return string
 	 */
 	public function createCensusAssistant(Individual $individual) {
 		return view('modules/census-assistant', [
@@ -176,46 +196,46 @@ class CensusAssistantModule extends AbstractModule {
 
 		?>
 		<script>
-			function pasterow(id, name, gend, yob, age, bpl) {
-				window.opener.opener.insertRowToTable(id, name, '', gend, '', yob, age, 'Y', '', bpl);
-			}
+      function pasterow(id, name, gend, yob, age, bpl) {
+        window.opener.opener.insertRowToTable(id, name, "", gend, "", yob, age, "Y", "", bpl);
+      }
 
-			function pasteid(id, name, thumb) {
-				if (thumb) {
-					window.opener.paste_id(id, name, thumb);
+      function pasteid(id, name, thumb) {
+        if (thumb) {
+          window.opener.paste_id(id, name, thumb);
 					<?php if (!$multiple) {
 					echo 'window.close();';
 				} ?>
-				} else {
-					// GEDFact_assistant ========================
-					if (window.opener.document.getElementById('addlinkQueue')) {
-						window.opener.insertRowToTable(id, name);
-					}
-					window.opener.paste_id(id);
-					if (window.opener.pastename) {
-						window.opener.pastename(name);
-					}
+        } else {
+          // GEDFact_assistant ========================
+          if (window.opener.document.getElementById("addlinkQueue")) {
+            window.opener.insertRowToTable(id, name);
+          }
+          window.opener.paste_id(id);
+          if (window.opener.pastename) {
+            window.opener.pastename(name);
+          }
 					<?php if (!$multiple) {
-						echo 'window.close();';
-					} ?>
-				}
-			}
+					echo 'window.close();';
+				} ?>
+        }
+      }
 
-			function checknames(frm) {
-				var button = '';
-				if (document.forms[0].subclick) {
-					button = document.forms[0].subclick.value;
-				}
-				if (frm.filter.value.length < 2 && button !== 'all') {
-					alert('<?= I18N::translate('Please enter more than one character.') ?>');
-					frm.filter.focus();
-					return false;
-				}
-				if (button === 'all') {
-					frm.filter.value = '';
-				}
-				return true;
-			}
+      function checknames(frm) {
+        var button = "";
+        if (document.forms[0].subclick) {
+          button = document.forms[0].subclick.value;
+        }
+        if (frm.filter.value.length < 2 && button !== "all") {
+          alert('<?= I18N::translate('Please enter more than one character.') ?>');
+          frm.filter.focus();
+          return false;
+        }
+        if (button === "all") {
+          frm.filter.value = "";
+        }
+        return true;
+      }
 		</script>
 
 		<?php

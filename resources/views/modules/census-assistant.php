@@ -105,7 +105,7 @@
     document.querySelector('#census-assistant-class').value = census;
     document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->getFullName()) ?> - <?= I18N::translate('Household') ?>';
 
-    fetch('module.php?mod=GEDFact_assistant&mod_action=census-header&census=' + census)
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'ged' => $individual->getTree()->getName()]) ?>&census=' + census)
       .then(function (response) {
         return response.text();
       })
@@ -135,7 +135,7 @@
     var headTd         = document.querySelector('#census-assistant-table td');
     var head           = headTd === null ? xref : headTd.innerHTML;
 
-    fetch('module.php?mod=GEDFact_assistant&mod_action=census-individual&census=' + census + '&xref=' + xref + '&head=' + head, {credentials: 'same-origin'})
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual']) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
       .then(function (response) {
         return response.text();
       })
@@ -153,7 +153,7 @@
     var indi_selector  = document.querySelector('#census-assistant-individual');
     var xref           = indi_selector.options[indi_selector.selectedIndex].value;
 
-    fetch('module.php?mod=GEDFact_assistant&mod_action=census-individual&census=' + census + '&xref=' + xref + '&head=' + xref, {credentials: 'same-origin'})
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'ged' => $individual->getTree()->getName()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(xref), {credentials: 'same-origin'})
       .then(function (response) {
         return response.text();
       })
