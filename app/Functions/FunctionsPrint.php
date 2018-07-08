@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -58,27 +59,26 @@ class FunctionsPrint {
 	/**
 	 * print a note record
 	 *
+	 * @param Tree   $tree
 	 * @param string $text
-	 * @param int $nlevel the level of the note record
-	 * @param string $nrec the note record to print
-	 * @param bool $textOnly Don't print the "Note: " introduction
+	 * @param int    $nlevel   the level of the note record
+	 * @param string $nrec     the note record to print
+	 * @param bool   $textOnly Don't print the "Note: " introduction
 	 *
 	 * @return string
 	 */
-	public static function printNoteRecord($text, $nlevel, $nrec, $textOnly = false) {
-		global $WT_TREE;
-
+	private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec, $textOnly) {
 		$text .= Functions::getCont($nlevel, $nrec);
 
 		// Check if shared note (we have already checked that it exists)
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-			$note  = Note::getInstance($match[1], $WT_TREE);
+			$note  = Note::getInstance($match[1], $tree);
 			$label = 'SHARED_NOTE';
-			$html  = Filter::formatText($note->getNote(), $WT_TREE);
+			$html  = Filter::formatText($note->getNote(), $tree);
 		} else {
 			$note  = null;
 			$label = 'NOTE';
-			$html  = Filter::formatText($text, $WT_TREE);
+			$html  = Filter::formatText($text, $tree);
 		}
 
 		if ($textOnly) {
@@ -88,7 +88,7 @@ class FunctionsPrint {
 		if (strpos($text, "\n") === false) {
 			// A one-line note? strip the block-level tags, so it displays inline
 			return GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
-		} elseif ($WT_TREE->getPreference('EXPAND_NOTES')) {
+		} elseif ($tree->getPreference('EXPAND_NOTES')) {
 			// A multi-line note, and we're expanding notes by default
 			return GedcomTag::getLabelValue($label, $html);
 		} else {
@@ -138,14 +138,14 @@ class FunctionsPrint {
 				$match[$j][1] = '';
 			}
 			if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
-				$data .= self::printNoteRecord($match[$j][1], $nlevel, $nrec, $textOnly);
+				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec, $textOnly);
 			} else {
 				$note = Note::getInstance($nmatch[1], $WT_TREE);
 				if ($note) {
 					if ($note->canShow()) {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-						$data .= self::printNoteRecord(($nt > 0) ? $n1match[1] : '', 1, $noterec, $textOnly);
+						$data .= self::printNoteRecord($WT_TREE, ($nt > 0) ? $n1match[1] : '', 1, $noterec, $textOnly);
 						if (!$textOnly) {
 							if (strpos($noterec, '1 SOUR') !== false) {
 								$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
