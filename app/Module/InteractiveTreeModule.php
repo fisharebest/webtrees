@@ -170,10 +170,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 * @return Response
 	 */
 	public function getPersonsAction(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$q  = $request->get('q');
 		$instance = $request->get('instance');
 		$treeview = new TreeView($instance);
 
-		return new Response($treeview->getPersons($q));
+		return new Response($treeview->getPersons($tree, $q));
 	}
 }

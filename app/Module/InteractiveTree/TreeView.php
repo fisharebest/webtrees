@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class TreeView
@@ -56,13 +57,12 @@ class TreeView {
 	/**
 	 * Return a JSON structure to a JSON request
 	 *
+	 * @param Tree   $tree
 	 * @param string $list list of JSON requests
 	 *
 	 * @return string
 	 */
-	public function getPersons($list) {
-		global $WT_TREE;
-
+	public function getPersons(Tree $tree, $list) {
 		$list = explode(';', $list);
 		$r    = [];
 		foreach ($list as $jsonRequest) {
@@ -73,7 +73,7 @@ class TreeView {
 					$fidlist = explode(',', $jsonRequest);
 					$flist   = [];
 					foreach ($fidlist as $fid) {
-						$flist[] = Family::getInstance($fid, $WT_TREE);
+						$flist[] = Family::getInstance($fid, $tree);
 					}
 					$r[] = $this->drawChildren($flist, 1, true);
 					break;
@@ -81,7 +81,7 @@ class TreeView {
 					$params = explode('@', $jsonRequest);
 					$fid    = $params[0];
 					$order  = $params[1];
-					$f      = Family::getInstance($fid, $WT_TREE);
+					$f      = Family::getInstance($fid, $tree);
 					if ($f->getHusband()) {
 						$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
 					} elseif ($f->getWife()) {
