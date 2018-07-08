@@ -270,7 +270,7 @@ class AncestorsChartController extends AbstractChartController {
 		FunctionsPrint::printPedigreePerson($ancestors[1]);
 		foreach ($ancestors as $sosa => $individual) {
 			foreach ($individual->getChildFamilies() as $family) {
-				FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $show_cousins);
+				FunctionsCharts::printSosaFamily($family, $individual->getXref(), $sosa, '', '', '', $show_cousins);
 			}
 		}
 

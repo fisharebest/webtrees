@@ -398,7 +398,7 @@ class FunctionsCharts {
 	 * print a family with Sosa-Stradonitz numbering system
 	 * ($rootid=1, father=2, mother=3 ...)
 	 *
-	 * @param string $famid        family gedcom ID
+	 * @param Family $family       family gedcom
 	 * @param string $childid      tree root ID
 	 * @param int    $sosa         starting sosa number
 	 * @param string $label        indi label (descendancy booklet)
@@ -406,17 +406,14 @@ class FunctionsCharts {
 	 * @param string $gparid       gd-parent ID (descendancy booklet)
 	 * @param int    $show_cousins display cousins on chart
 	 */
-	public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0) {
-		global $WT_TREE;
+	public static function printSosaFamily(Family $family, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0) {
 		echo '<hr>';
 		echo '<p class="family-break">';
-		if (!empty($famid)) {
-			echo '<a name="', $famid, '"></a>';
-		}
-		self::printFamilyParents(Family::getInstance($famid, $WT_TREE), $sosa, $label, $parid, $gparid);
+		echo '<a name="', e($family->getXref()), '"></a>';
+		self::printFamilyParents($family, $sosa, $label, $parid, $gparid);
 		echo '<br>';
 		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td>';
-		self::printFamilyChildren(Family::getInstance($famid, $WT_TREE), $childid, $sosa, $label, $show_cousins);
+		self::printFamilyChildren($family, $childid, $sosa, $label, $show_cousins);
 		echo '</td></tr></table>';
 		echo '<br>';
 	}
