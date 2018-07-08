@@ -21,6 +21,14 @@ use Fisharebest\Webtrees\I18N;
  * RTL Functions for use in the PDF/HTML reports
  */
 class FunctionsRtl {
+	const UTF8_LRM = "\xE2\x80\x8E"; // U+200E (Left to Right mark:  zero-width character with LTR directionality)
+	const UTF8_RLM = "\xE2\x80\x8F"; // U+200F (Right to Left mark:  zero-width character with RTL directionality)
+	const UTF8_LRO = "\xE2\x80\xAD"; // U+202D (Left to Right override: force everything following to LTR mode)
+	const UTF8_RLO = "\xE2\x80\xAE"; // U+202E (Right to Left override: force everything following to RTL mode)
+	const UTF8_LRE = "\xE2\x80\xAA"; // U+202A (Left to Right embedding: treat everything following as LTR text)
+	const UTF8_RLE = "\xE2\x80\xAB"; // U+202B (Right to Left embedding: treat everything following as RTL text)
+	const UTF8_PDF = "\xE2\x80\xAC"; // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
+
 	const OPEN_PARENTHESES = '([{';
 
 	const CLOSE_PARENTHESES = ')]}';
@@ -73,7 +81,7 @@ class FunctionsRtl {
 	 * @return string The input string, with &lrm; and &rlm; stripped
 	 */
 	public static function stripLrmRlm($inputText) {
-		return str_replace([WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, '&lrm;', '&rlm;', '&LRM;', '&RLM;'], '', $inputText);
+		return str_replace([self::UTF8_LRM, self::UTF8_RLM, self::UTF8_LRO, self::UTF8_RLO, self::UTF8_LRE, self::UTF8_RLE, self::UTF8_PDF, '&lrm;', '&rlm;', '&LRM;', '&RLM;'], '', $inputText);
 	}
 
 	/**
@@ -137,7 +145,7 @@ class FunctionsRtl {
 						if ($numberState) {
 							$numberState = false;
 							if (self::$currentState == 'RTL') {
-								self::$waitingText .= WT_UTF8_PDF;
+								self::$waitingText .= self::UTF8_PDF;
 							}
 						}
 						self::breakCurrentSpan($result);
@@ -201,9 +209,9 @@ class FunctionsRtl {
 								$numberState = false;
 								if (self::$currentState == 'RTL') {
 									if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
-										$currentLetter = WT_UTF8_PDF . $currentLetter;
+										$currentLetter = self::UTF8_PDF . $currentLetter;
 									} else {
-										$currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+										$currentLetter = $currentLetter . self::UTF8_PDF; // Include a trailing + or - in the run
 									}
 								}
 							}
@@ -217,13 +225,13 @@ class FunctionsRtl {
 							if (strpos(self::NUMBERS, $nextChar) !== false) {
 								$numberState = true; // We found a digit: the lead-in is therefore numeric
 								if (self::$currentState == 'RTL') {
-									$currentLetter = WT_UTF8_LRE . $currentLetter;
+									$currentLetter = self::UTF8_LRE . $currentLetter;
 								}
 							}
 						} elseif (strpos(self::NUMBERS, $currentLetter) !== false) {
 							$numberState = true; // The current letter is a digit
 							if (self::$currentState == 'RTL') {
-								$currentLetter = WT_UTF8_LRE . $currentLetter;
+								$currentLetter = self::UTF8_LRE . $currentLetter;
 							}
 						}
 					}
@@ -267,7 +275,7 @@ class FunctionsRtl {
 								}
 							}
 							// This is a solitary RTL letter : wrap it in UTF8 control codes to force LTR directionality
-							$currentLetter = WT_UTF8_LRO . $currentLetter . WT_UTF8_PDF;
+							$currentLetter = self::UTF8_LRO . $currentLetter . self::UTF8_PDF;
 							$newState      = 'LTR';
 							break;
 						}
@@ -352,11 +360,11 @@ class FunctionsRtl {
 		if ($numberState) {
 			if (self::$waitingText === '') {
 				if (self::$currentState === 'RTL') {
-					$result .= WT_UTF8_PDF;
+					$result .= self::UTF8_PDF;
 				}
 			} else {
 				if (self::$currentState === 'RTL') {
-					self::$waitingText .= WT_UTF8_PDF;
+					self::$waitingText .= self::UTF8_PDF;
 				}
 			}
 		}
@@ -380,7 +388,7 @@ class FunctionsRtl {
 
 		// Move leading RTL numeric strings to following LTR text
 		// (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
-		while (substr($result, 0, self::$lenStart + 3) === self::$startRTL . WT_UTF8_LRE) {
+		while (substr($result, 0, self::$lenStart + 3) === self::$startRTL . self::UTF8_LRE) {
 			$spanEnd = strpos($result, self::$endRTL . self::$startLTR);
 			if ($spanEnd === false) {
 				break;
@@ -395,7 +403,7 @@ class FunctionsRtl {
 
 		// On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
 		if (I18N::direction() === 'rtl') {
-			$result = str_replace(WT_UTF8_PDF . '.' . self::$endRTL, WT_UTF8_PDF . self::$endRTL . self::$startRTL . '.' . self::$endRTL, $result);
+			$result = str_replace(self::UTF8_PDF . '.' . self::$endRTL, self::UTF8_PDF . self::$endRTL . self::$startRTL . '.' . self::$endRTL, $result);
 		}
 
 		// Trim trailing blanks preceding <br> in LTR text
@@ -616,11 +624,11 @@ class FunctionsRtl {
 			if ($posColon === false) {
 				break;
 			} // No more possible time strings
-			$posLRE = strpos($textSpan, WT_UTF8_LRE);
+			$posLRE = strpos($textSpan, self::UTF8_LRE);
 			if ($posLRE === false) {
 				break;
 			} // No more numeric strings
-			$posPDF = strpos($textSpan, WT_UTF8_PDF, $posLRE);
+			$posPDF = strpos($textSpan, self::UTF8_PDF, $posLRE);
 			if ($posPDF === false) {
 				break;
 			} // No more numeric strings
@@ -646,9 +654,9 @@ class FunctionsRtl {
 			if ($posColon > $posSeparator) {
 				// We have a time string preceded by a blank: Exclude that blank from the numeric string
 				$tempResult .= substr($numericString, 0, $posSeparator);
-				$tempResult .= WT_UTF8_PDF;
+				$tempResult .= self::UTF8_PDF;
 				$tempResult .= substr($numericString, $posSeparator, $lengthSeparator);
-				$tempResult .= WT_UTF8_LRE;
+				$tempResult .= self::UTF8_LRE;
 				$numericString = substr($numericString, $posSeparator + $lengthSeparator);
 			}
 
@@ -675,11 +683,11 @@ class FunctionsRtl {
 				$lengthSeparator = 6;
 			}
 			$tempResult .= substr($numericString, 0, $posSeparator);
-			$tempResult .= WT_UTF8_PDF;
+			$tempResult .= self::UTF8_PDF;
 			$tempResult .= substr($numericString, $posSeparator, $lengthSeparator);
 			$posSeparator += $lengthSeparator;
 			$numericString = substr($numericString, $posSeparator);
-			$textSpan      = WT_UTF8_LRE . $numericString . $textSpan;
+			$textSpan      = self::UTF8_LRE . $numericString . $textSpan;
 		}
 		$textSpan       = $tempResult . $textSpan;
 		$trailingBlanks = '';
@@ -704,14 +712,14 @@ class FunctionsRtl {
 						$textSpan       = substr($textSpan, 0, -1);
 						continue;
 					}
-					if (substr($textSpan, -3) !== WT_UTF8_PDF) {
+					if (substr($textSpan, -3) !== self::UTF8_PDF) {
 						// There is no trailing numeric string
 						$textSpan = $savedSpan;
 						break;
 					}
 
 					// We have a numeric string
-					$posStartNumber = strrpos($textSpan, WT_UTF8_LRE);
+					$posStartNumber = strrpos($textSpan, self::UTF8_LRE);
 					if ($posStartNumber === false) {
 						$posStartNumber = 0;
 					}
@@ -971,14 +979,14 @@ class FunctionsRtl {
 						$textSpan       = substr($textSpan, 0, -1);
 						continue;
 					}
-					if (substr($textSpan, -3) !== WT_UTF8_PDF) {
+					if (substr($textSpan, -3) !== self::UTF8_PDF) {
 						// There is no trailing numeric string
 						$textSpan = $savedSpan;
 						break;
 					}
 
 					// We have a numeric string
-					$posStartNumber = strrpos($textSpan, WT_UTF8_LRE);
+					$posStartNumber = strrpos($textSpan, self::UTF8_LRE);
 					if ($posStartNumber === false) {
 						$posStartNumber = 0;
 					}

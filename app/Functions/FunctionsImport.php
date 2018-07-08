@@ -44,9 +44,6 @@ class FunctionsImport {
 	 * @return string
 	 */
 	public static function reformatRecord($rec, Tree $tree) {
-		// Strip out UTF8 formatting characters
-		$rec = str_replace([WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM], '', $rec);
-
 		// Strip out mac/msdos line endings
 		$rec = preg_replace("/[\r\n]+/", "\n", $rec);
 
@@ -57,7 +54,7 @@ class FunctionsImport {
 		$newrec = '';
 		foreach ($matches as $n => $match) {
 			list(, $level, $xref, $tag, $data) = $match;
-			$tag                               = strtoupper($tag); // Tags should always be upper case
+			$tag = strtoupper($tag); // Tags should always be upper case
 			switch ($tag) {
 				// Convert PhpGedView tags to WT
 				case '_PGVU':
@@ -66,7 +63,7 @@ class FunctionsImport {
 				case '_PGV_OBJS':
 					$tag = '_WT_OBJE_SORT';
 					break;
-					// Convert FTM-style "TAG_FORMAL_NAME" into "TAG".
+				// Convert FTM-style "TAG_FORMAL_NAME" into "TAG".
 				case 'ABBREVIATION':
 					$tag = 'ABBR';
 					break;
@@ -189,7 +186,7 @@ class FunctionsImport {
 					// Preserve text from INT dates
 					if (strpos($data, '(') !== false) {
 						list($date, $text) = explode('(', $data, 2);
-						$text              = ' (' . $text;
+						$text = ' (' . $text;
 					} else {
 						$date = $data;
 						$text = '';
