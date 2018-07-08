@@ -54,7 +54,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		$title          = $this->getBlockSetting($block_id, 'title', '');
 		$content        = $this->getBlockSetting($block_id, 'html', '');
-		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = $this->getBlockSetting($block_id, 'languages');
 
@@ -63,26 +62,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 			return '';
 		}
 
-		/*
-		 * Select GEDCOM
-		 */
-		switch ($gedcom) {
-			case '__current__':
-				$stats = new Stats($tree);
-				break;
-			case '__default__':
-				$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? $tree;
-				$stats = new Stats($tree);
-				break;
-			default:
-				$tree = Tree::findByName($gedcom);
-				if ($tree) {
-					$stats = new Stats($tree);
-				} else {
-					$stats = new Stats($tree);
-				}
-				break;
-		}
+		$stats = new Stats($tree);
 
 		/*
 		* Retrieve text, process embedded variables
@@ -141,7 +121,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	public function configureBlock(Tree $tree, int $block_id) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$languages = Filter::postArray('lang');
-			$this->setBlockSetting($block_id, 'gedcom', Filter::post('gedcom'));
 			$this->setBlockSetting($block_id, 'title', Filter::post('title'));
 			$this->setBlockSetting($block_id, 'html', Filter::post('html'));
 			$this->setBlockSetting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
@@ -159,14 +138,12 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		$title          = $this->getBlockSetting($block_id, 'title', '');
 		$html           = $this->getBlockSetting($block_id, 'html', '');
-		$gedcom         = $this->getBlockSetting($block_id, 'gedcom', '__current__');
 		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
 		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
 		$all_trees      = Tree::getNameList();
 
 		echo view('blocks/html-config', [
 			'all_trees'       => $all_trees,
-			'gedcom'          => $gedcom,
 			'html'            => $html,
 			'languages'       => $languages,
 			'show_timestamp'  => $show_timestamp,

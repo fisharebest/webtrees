@@ -17,19 +17,10 @@
 		<?= I18N::translate('Templates') ?>
 	</label>
 	<div class="col-sm-9">
-		<?= Bootstrap4::select([$html => I18N::translate('Custom')] + array_flip($templates), '', ['onchange' => 'this.form.html.value=this.options[this.selectedIndex].value; CKEDITOR.instances.html.setData(document.block.html.value);', 'id' => 'template']) ?>
+		<?= Bootstrap4::select([$html => I18N::translate('Custom')] + array_flip($templates), '', ['onchange' => 'this.form.html.value=this.options[this.selectedIndex].value; CKEDITOR.instances.html.setData(document.getElementById("html").value);', 'id' => 'template']) ?>
 		<p class="small text-muted">
 			<?= I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.') ?>
 		</p>
-	</div>
-</div>
-
-<div class="row form-group">
-	<label class="col-sm-3 col-form-label" for="gedcom">
-		<?= I18N::translate('Family tree') ?>
-	</label>
-	<div class="col-sm-9">
-		<?= Bootstrap4::select(['__current__' => I18N::translate('Current'), '__default__' => I18N::translate('Default')] + $all_trees, $gedcom, ['id' => 'gedcom', 'name' => 'gedcom']) ?>
 	</div>
 </div>
 
