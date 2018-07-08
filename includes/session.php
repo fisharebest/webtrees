@@ -177,15 +177,13 @@ $data_dir->createDir('tmp');
 putenv('TMPDIR=' . WT_DATA_DIR . 'tmp');
 
 // Request more resources - if we can/want to
-if (!ini_get('safe_mode')) {
-	$memory_limit = Site::getPreference('MEMORY_LIMIT');
-	if ($memory_limit !== '' && strpos(ini_get('disable_functions'), 'ini_set') === false) {
-		ini_set('memory_limit', $memory_limit);
-	}
-	$max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
-	if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-		set_time_limit($max_execution_time);
-	}
+$memory_limit = Site::getPreference('MEMORY_LIMIT');
+if ($memory_limit !== '' && strpos(ini_get('disable_functions'), 'ini_set') === false) {
+	ini_set('memory_limit', $memory_limit);
+}
+$max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
+if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
+	set_time_limit($max_execution_time);
 }
 
 // Sessions
