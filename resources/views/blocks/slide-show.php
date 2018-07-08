@@ -21,7 +21,7 @@
 	</figure>
 
 	<p class="slide-show-notes">
-		<?= FunctionsPrint::printFactNotes($media->getGedcom(), '1', false) ?>
+		<?= FunctionsPrint::printFactNotes($media->getGedcom(), 1) ?>
 	</p>
 
 	<ul class="slide-show-links">

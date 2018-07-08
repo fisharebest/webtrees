@@ -601,7 +601,7 @@ class FunctionsPrintFacts {
 					ob_start();
 					self::printMediaLinks($srec, $nlevel);
 					$data .= ob_get_clean();
-					$data .= FunctionsPrint::printFactNotes($srec, $nlevel, false);
+					$data .= FunctionsPrint::printFactNotes($srec, $nlevel);
 					$data .= '</div>';
 					$data .= '</div>';
 				} else {

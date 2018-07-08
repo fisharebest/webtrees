@@ -63,11 +63,10 @@ class FunctionsPrint {
 	 * @param string $text
 	 * @param int    $nlevel   the level of the note record
 	 * @param string $nrec     the note record to print
-	 * @param bool   $textOnly Don't print the "Note: " introduction
 	 *
 	 * @return string
 	 */
-	private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec, $textOnly) {
+	private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec) {
 		$text .= Functions::getCont($nlevel, $nrec);
 
 		// Check if shared note (we have already checked that it exists)
@@ -79,10 +78,6 @@ class FunctionsPrint {
 			$note  = null;
 			$label = 'NOTE';
 			$html  = Filter::formatText($text, $tree);
-		}
-
-		if ($textOnly) {
-			return strip_tags($text);
 		}
 
 		if (strpos($text, "\n") === false) {
@@ -115,11 +110,10 @@ class FunctionsPrint {
 	 *
 	 * @param string $factrec The factrecord to print the notes from
 	 * @param int $level The level of the factrecord
-	 * @param bool $textOnly Don't print the "Note: " introduction
 	 *
 	 * @return string HTML
 	 */
-	public static function printFactNotes($factrec, $level, $textOnly = false) {
+	public static function printFactNotes($factrec, $level) {
 		global $WT_TREE;
 
 		$data          = '';
@@ -138,30 +132,26 @@ class FunctionsPrint {
 				$match[$j][1] = '';
 			}
 			if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
-				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec, $textOnly);
+				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec,);
 			} else {
 				$note = Note::getInstance($nmatch[1], $WT_TREE);
 				if ($note) {
 					if ($note->canShow()) {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-						$data .= self::printNoteRecord($WT_TREE, ($nt > 0) ? $n1match[1] : '', 1, $noterec, $textOnly);
-						if (!$textOnly) {
-							if (strpos($noterec, '1 SOUR') !== false) {
-								$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
-							}
+						$data .= self::printNoteRecord($WT_TREE, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
+						if (strpos($noterec, '1 SOUR') !== false) {
+							$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
 						}
 					}
 				} else {
 					$data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
 				}
 			}
-			if (!$textOnly) {
-				if (strpos($factrec, "$nlevel SOUR") !== false) {
-					$data .= '<div class="indent">';
-					$data .= FunctionsPrintFacts::printFactSources($nrec, $nlevel);
-					$data .= '</div>';
-				}
+			if (strpos($factrec, "$nlevel SOUR") !== false) {
+				$data .= '<div class="indent">';
+				$data .= FunctionsPrintFacts::printFactSources($nrec, $nlevel);
+				$data .= '</div>';
 			}
 		}
 
