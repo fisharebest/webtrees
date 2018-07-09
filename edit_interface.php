@@ -182,7 +182,7 @@ case 'add':
 	echo '<input type="hidden" name="prev_action" value="add">';
 	echo '<input type="hidden" name="fact_type" value="' . $fact . '">';
 	echo Filter::getCsrf();
-	FunctionsEdit::createAddForm($fact);
+	FunctionsEdit::createAddForm($controller->tree(), $fact);
 	echo keep_chan($record);
 
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...

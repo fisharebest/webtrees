@@ -1238,10 +1238,11 @@ class FunctionsEdit {
 	/**
 	 * builds the form for adding new facts
 	 *
+	 * @param Tree   $tree
 	 * @param string $fact the new fact we are adding
 	 */
-	public static function createAddForm($fact) {
-		global $tags, $WT_TREE;
+	public static function createAddForm(Tree $tree, $fact) {
+		global $tags;
 
 		$tags = [];
 
@@ -1249,7 +1250,7 @@ class FunctionsEdit {
 		if (substr($fact, 0, 5) === 'MARR_') {
 			$tags[0] = 'MARR';
 			echo self::addSimpleTag('1 MARR');
-			self::insertMissingSubtags($fact);
+			self::insertMissingSubtags($tree, $fact);
 		} else {
 			$tags[0] = $fact;
 			if ($fact === '_UID') {
@@ -1264,12 +1265,12 @@ class FunctionsEdit {
 			} else {
 				echo self::addSimpleTag('1 ' . $fact);
 			}
-			self::insertMissingSubtags($tags[0]);
+			self::insertMissingSubtags($tree, $tags[0]);
 			//-- handle the special SOURce case for level 1 sources [ 1759246 ]
 			if ($fact === 'SOUR') {
 				echo self::addSimpleTag('2 PAGE');
 				echo self::addSimpleTag('3 TEXT');
-				if ($WT_TREE->getPreference('FULL_SOURCES')) {
+				if ($tree->getPreference('FULL_SOURCES')) {
 					echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
 					echo self::addSimpleTag('2 QUAY');
 				}
@@ -1286,6 +1287,7 @@ class FunctionsEdit {
 		global $tags;
 
 		$record = $fact->getParent();
+		$tree   = $record->getTree();
 
 		$tags     = [];
 		$gedlines = explode("\n", $fact->getGedcom());
@@ -1414,18 +1416,19 @@ class FunctionsEdit {
 		}
 
 		if ($level1type !== '_PRIM') {
-			self::insertMissingSubtags($level1type, $add_date);
+			self::insertMissingSubtags($tree, $level1type, $add_date);
 		}
 	}
 
 	/**
 	 * Populates the global $tags array with any missing sub-tags.
 	 *
+	 * @param Tree   $tree
 	 * @param string $level1tag the type of the level 1 gedcom record
-	 * @param bool $add_date
+	 * @param bool   $add_date
 	 */
-	public static function insertMissingSubtags($level1tag, $add_date = false) {
-		global $tags, $WT_TREE;
+	public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false) {
+		global $tags;
 
 		// handle  MARRiage TYPE
 		$type_val = '';
@@ -1445,7 +1448,7 @@ class FunctionsEdit {
 					echo self::addSimpleTag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 					echo self::addSimpleTag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-				} elseif ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+				} elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 					echo self::addSimpleTag('2 ' . $key, $level1tag);
 				} elseif ($level1tag !== 'NAME') {
 					echo self::addSimpleTag('2 ' . $key, $level1tag);
@@ -1453,7 +1456,7 @@ class FunctionsEdit {
 				// Add level 3/4 tags as appropriate
 				switch ($key) {
 					case 'PLAC':
-						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 							foreach ($match[1] as $tag) {
 								echo self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
 							}
@@ -1500,7 +1503,7 @@ class FunctionsEdit {
 				if (!in_array($tag, $tags)) {
 					echo self::addSimpleTag('2 ' . $tag);
 					if ($tag === 'PLAC') {
-						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 							foreach ($match[1] as $ptag) {
 								echo self::addSimpleTag('3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
 							}
