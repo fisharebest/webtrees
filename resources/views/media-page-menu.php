@@ -11,18 +11,18 @@
 	</button>
 	<div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
 
-		<?php if (Module::getModuleByName('GEDFact_assistant')): ?>
+		<?php if (false && Module::getModuleByName('GEDFact_assistant')): ?>
 			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','manage','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Manage the links') ?>
 			</a>
 		<?php else: ?>
-			<a class=dropdown-item menu-obje-link-indi" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','person','<?= e($record->getTree()->getName()) ?>');">
+			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','person','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to an individual') ?>
 			</a>
-			<a class="dropdown-item menu-obje-link-fam" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','family','<?= e($record->getTree()->getName()) ?>');">
+			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','family','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to a family') ?>
 			</a>
-			<a class="dropdown-item menu-obje-link-sour" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','source','<?= e($record->getTree()->getName()) ?>');">
+			<a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->getXref()) ?>','source','<?= e($record->getTree()->getName()) ?>');">
 				<?= I18N::translate('Link this media object to a source') ?>
 			</a>
 		<?php endif ?>
