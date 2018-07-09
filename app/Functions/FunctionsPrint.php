@@ -132,7 +132,7 @@ class FunctionsPrint {
 				$match[$j][1] = '';
 			}
 			if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
-				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec,);
+				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec);
 			} else {
 				$note = Note::getInstance($nmatch[1], $WT_TREE);
 				if ($note) {
