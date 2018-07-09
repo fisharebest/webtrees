@@ -140,18 +140,10 @@ class FunctionsPrint {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 						$data .= self::printNoteRecord($WT_TREE, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
-						if (strpos($noterec, '1 SOUR') !== false) {
-							$data .= FunctionsPrintFacts::printFactSources($noterec, 1);
-						}
 					}
 				} else {
 					$data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
 				}
-			}
-			if (strpos($factrec, "$nlevel SOUR") !== false) {
-				$data .= '<div class="indent">';
-				$data .= FunctionsPrintFacts::printFactSources($nrec, $nlevel);
-				$data .= '</div>';
 			}
 		}
 
