@@ -17,7 +17,7 @@
 				<input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= e($firstname) ?>" autofocus>
 				<div class="input-group-append">
 						<span class="input-group-text">
-							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
+							<?= FunctionsEdit::inputAddonKeyboard('firstname') ?>
 						</span>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 				<input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= e($lastname) ?>">
 				<div class="input-group-append">
 						<span class="input-group-text">
-							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
+							<?= FunctionsEdit::inputAddonKeyboard('lastname') ?>
 						</span>
 				</div>
 			</div>
