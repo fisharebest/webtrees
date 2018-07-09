@@ -857,11 +857,10 @@ class FunctionsEdit {
 	/**
 	 * Add some empty tags to create a new fact.
 	 *
+	 * @param Tree   $tree
 	 * @param string $fact
 	 */
-	public static function addSimpleTags($fact) {
-		global $WT_TREE;
-
+	public static function addSimpleTags(Tree $tree, $fact) {
 		// For new individuals, these facts default to "Y"
 		if ($fact === 'MARR') {
 			echo self::addSimpleTag('0 ' . $fact . ' Y');
@@ -877,7 +876,7 @@ class FunctionsEdit {
 		if (!in_array($fact, Config::nonPlaceFacts())) {
 			echo self::addSimpleTag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
-			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
 					echo self::addSimpleTag('0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
 				}

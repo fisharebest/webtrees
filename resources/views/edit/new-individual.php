@@ -248,7 +248,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($tree, $match);
 				}
 			}
 		}
@@ -257,14 +257,14 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 			$bdm .= 'M';
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
-					FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($tree, $match);
 				}
 			}
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					FunctionsEdit::addSimpleTags($match);
+					FunctionsEdit::addSimpleTags($tree, $match);
 				}
 			}
 		}
