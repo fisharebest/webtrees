@@ -34,7 +34,7 @@
 			<?php endif ?>
 
 			<?php if ($individual->canEdit()): ?>
-				<?php FunctionsPrint::printAddNewFact($individual->getXref(), $facts, 'INDI') ?>
+				<?php FunctionsPrint::printAddNewFact($individual, $facts, 'INDI') ?>
 			<?php endif ?>
 		</tbody>
 	</table>

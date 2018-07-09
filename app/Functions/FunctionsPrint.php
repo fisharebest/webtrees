@@ -108,14 +108,13 @@ class FunctionsPrint {
 	/**
 	 * Print all of the notes in this fact record
 	 *
+	 * @param Tree   $tree
 	 * @param string $factrec The factrecord to print the notes from
-	 * @param int $level The level of the factrecord
+	 * @param int    $level   The level of the factrecord
 	 *
 	 * @return string HTML
 	 */
-	public static function printFactNotes($factrec, $level) {
-		global $WT_TREE;
-
+	public static function printFactNotes(Tree $tree, $factrec, $level) {
 		$data          = '';
 		$previous_spos = 0;
 		$nlevel        = $level + 1;
@@ -132,14 +131,14 @@ class FunctionsPrint {
 				$match[$j][1] = '';
 			}
 			if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
-				$data .= self::printNoteRecord($WT_TREE, $match[$j][1], $nlevel, $nrec);
+				$data .= self::printNoteRecord($tree, $match[$j][1], $nlevel, $nrec);
 			} else {
-				$note = Note::getInstance($nmatch[1], $WT_TREE);
+				$note = Note::getInstance($nmatch[1], $tree);
 				if ($note) {
 					if ($note->canShow()) {
 						$noterec = $note->getGedcom();
 						$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-						$data .= self::printNoteRecord($WT_TREE, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
+						$data .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
 					}
 				} else {
 					$data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
@@ -356,6 +355,8 @@ class FunctionsPrint {
 	 * @return string HTML
 	 */
 	public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false) {
+		$tree = $event->getParent()->getTree();
+
 		if ($anchor) {
 			// Show the full place name, for facts/events tab
 			$html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
@@ -369,7 +370,7 @@ class FunctionsPrint {
 			if (!empty($placerec)) {
 				if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 					foreach ($matches[1] as $match) {
-						$wt_place = new Place($match, $event->getParent()->getTree());
+						$wt_place = new Place($match, $tree);
 						$html .= ' - ' . $wt_place->getFullName();
 					}
 				}
@@ -393,7 +394,7 @@ class FunctionsPrint {
 					$html .= FontAwesome::linkIcon('openstreetmap', I18N::translate('OpenStreetMap™'), ['class' => 'btn btn-link', 'url' => 'https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long, 'rel' => 'nofollow']);
 				}
 				if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
-					$html .= '<br>' . self::printFactNotes($placerec, 3);
+					$html .= '<br>' . self::printFactNotes($tree, $placerec, 3);
 				}
 			}
 		}
@@ -455,12 +456,12 @@ class FunctionsPrint {
 	/**
 	 * Print a new fact box on details pages
 	 *
-	 * @param string $id the id of the person, family, source etc the fact will be added to
-	 * @param array $usedfacts an array of facts already used in this record
-	 * @param string $type the type of record INDI, FAM, SOUR etc
+	 * @param GedcomRecord $record    the person, family, source etc the fact will be added to
+	 * @param array        $usedfacts an array of facts already used in this record
+	 * @param string       $type      the type of record INDI, FAM, SOUR etc
 	 */
-	public static function printAddNewFact($id, $usedfacts, $type) {
-		global $WT_TREE;
+	public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type) {
+		$tree = $record->getTree();
 
 		// -- Add from clipboard
 		if (is_array(Session::get('clipboard'))) {
@@ -488,7 +489,7 @@ class FunctionsPrint {
 			}
 			if (!$newRow) {
 				echo '</select>';
-				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), '" onclick="return paste_fact(\'' . e($WT_TREE->getName()) . '\',\'' . e($id) . '\', \'#newClipboardFact\');"> ';
+				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->getName()) . '\',\'' . e($record->getXref()) . '\', \'#newClipboardFact\');"> ';
 				echo '</form></td></tr>', "\n";
 			}
 		}
@@ -496,29 +497,29 @@ class FunctionsPrint {
 		// -- Add from pick list
 		switch ($type) {
 			case 'INDI':
-				$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-				$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-				$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+				$addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+				$uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+				$quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 				break;
 			case 'FAM':
-				$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-				$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-				$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+				$addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+				$uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+				$quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 				break;
 			case 'SOUR':
-				$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-				$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-				$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+				$addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+				$uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+				$quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 				break;
 			case 'NOTE':
-				$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-				$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-				$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+				$addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+				$uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+				$quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 				break;
 			case 'REPO':
-				$addfacts    = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-				$uniquefacts = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-				$quickfacts  = preg_split('/[, ;:]+/', $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+				$addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+				$uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+				$quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 				break;
 			case 'OBJE':
 				$addfacts    = ['NOTE'];
@@ -543,8 +544,8 @@ class FunctionsPrint {
 		echo '<td>';
 		echo '<form action="edit_interface.php" onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
 		echo '<input type="hidden" name="action" value="add">';
-		echo '<input type="hidden" name="xref" value="' . $id . '">';
-		echo '<input type="hidden" name="ged" value="' . e($WT_TREE->getName()) . '">';
+		echo '<input type="hidden" name="xref" value="' . e($record->getXref()) . '">';
+		echo '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
 		echo '<select id="add-fact" name="fact">';
 		echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
 		foreach ($translated_addfacts as $fact => $fact_name) {
@@ -559,7 +560,7 @@ class FunctionsPrint {
 		echo '</form>';
 		echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . $id . '&amp;ged=' . e($WT_TREE->getName()) . '">', GedcomTag::getLabel($fact), '</a>';
+			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . e($record->getXref()) . '&amp;ged=' . e($tree->getName()) . '">', GedcomTag::getLabel($fact), '</a>';
 		}
 		echo '</span>';
 		echo '</td></tr>';

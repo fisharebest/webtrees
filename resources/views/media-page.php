@@ -114,7 +114,7 @@
 					<?php FunctionsPrintFacts::printFact($fact, $media) ?>
 				<?php endforeach ?>
 				<?php if ($media->canEdit()): ?>
-					<?php FunctionsPrint::printAddNewFact($media->getXref(), $facts, 'OBJE') ?>
+					<?php FunctionsPrint::printAddNewFact($media, $facts, 'OBJE') ?>
 					<tr>
 						<th>
 							<?= I18N::translate('Source') ?>

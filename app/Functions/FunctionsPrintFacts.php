@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Ramsey\Uuid\Uuid;
 
@@ -60,6 +61,7 @@ class FunctionsPrintFacts {
 		static $children = [], $grandchildren = [];
 
 		$parent = $fact->getParent();
+		$tree   = $parent->getTree();
 
 		// Some facts don't get printed here ...
 		switch ($fact->getTag()) {
@@ -87,7 +89,7 @@ class FunctionsPrintFacts {
 				return;
 			default:
 				// Hide unrecognized/custom tags?
-				if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
+				if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
 					return;
 				}
 				break;
@@ -168,7 +170,7 @@ class FunctionsPrintFacts {
 		echo '<tr class="', $styleadd, '">';
 		echo '<th scope="row">';
 
-		if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
+		if ($tree->getPreference('SHOW_FACT_ICONS')) {
 			echo Theme::theme()->icon($fact), ' ';
 		}
 
@@ -189,9 +191,9 @@ class FunctionsPrintFacts {
 			?>
 			<?= $label ?>
 			<div class="editfacts">
-				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($parent->getTree()->getName())]) ?>
-				<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
-				<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
+				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]) ?>
+				<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
+				<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
 			</div>
 		<?php
 		} else {
@@ -255,7 +257,7 @@ class FunctionsPrintFacts {
 				echo '</div>';
 				break;
 			case 'PUBL': // Publication details might contain URLs.
-				echo '<div class="field">', Filter::expandUrls($fact->getValue(), $record->getTree()), '</div>';
+				echo '<div class="field">', Filter::expandUrls($fact->getValue(), $tree), '</div>';
 				break;
 			case 'REPO':
 				$repository = $fact->getTarget();
@@ -288,7 +290,7 @@ class FunctionsPrintFacts {
 					break;
 					default:
 					if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-						$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
+						$target = GedcomRecord::getInstance($match[1], $tree);
 						if ($target) {
 							echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
 						} else {
@@ -384,7 +386,7 @@ class FunctionsPrintFacts {
 					}
 					break;
 				case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-					$family = Family::getInstance(str_replace('@', '', $match[2]), $fact->getParent()->getTree());
+					$family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
 					if ($family) {
 						echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>');
 						if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
@@ -424,7 +426,7 @@ class FunctionsPrintFacts {
 					}
 					break;
 				case 'CALN':
-					echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $record->getTree()));
+					echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $tree));
 					break;
 				case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
 					echo GedcomTag::getLabelValue('FORM', $match[2]);
@@ -439,10 +441,10 @@ class FunctionsPrintFacts {
 					echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 					break;
 				default:
-					if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
+					if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
 						if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
 							// Links
-							$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
+							$linked_record = GedcomRecord::getInstance($xmatch[1], $tree);
 							if ($linked_record) {
 								$link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->getFullName() . '</a>';
 								echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
@@ -457,9 +459,9 @@ class FunctionsPrintFacts {
 					break;
 			}
 		}
-		echo self::printFactSources($fact->getGedcom(), 2);
-		echo FunctionsPrint::printFactNotes($fact->getGedcom(), 2);
-		self::printMediaLinks($fact->getGedcom(), 2);
+		echo self::printFactSources($tree, $fact->getGedcom(), 2);
+		echo FunctionsPrint::printFactNotes($tree, $fact->getGedcom(), 2);
+		self::printMediaLinks($tree, $fact->getGedcom(), 2);
 		echo '</td></tr>';
 	}
 
@@ -536,14 +538,13 @@ class FunctionsPrintFacts {
 	 * this function is called by the FunctionsPrintFacts::print_fact function and other functions to
 	 * print any source information attached to the fact
 	 *
+	 * @param Tree   $tree
 	 * @param string $factrec The fact record to look for sources in
-	 * @param int $level The level to look for sources at
+	 * @param int    $level   The level to look for sources at
 	 *
 	 * @return string HTML text
 	 */
-	public static function printFactSources($factrec, $level) {
-		global $WT_TREE;
-
+	public static function printFactSources(Tree $tree, $factrec, $level) {
 		$data   = '';
 		$nlevel = $level + 1;
 
@@ -555,7 +556,7 @@ class FunctionsPrintFacts {
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
 				$source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
-				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
+				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
 			}
 		}
 		// Find source for each fact
@@ -563,7 +564,7 @@ class FunctionsPrintFacts {
 		$spos2 = 0;
 		for ($j = 0; $j < $ct; $j++) {
 			$sid    = $match[$j][1];
-			$source = Source::getInstance($sid, $WT_TREE);
+			$source = Source::getInstance($sid, $tree);
 			if ($source) {
 				if ($source->canShow()) {
 					$spos1 = strpos($factrec, "$level SOUR @" . $sid . '@', $spos2);
@@ -575,7 +576,7 @@ class FunctionsPrintFacts {
 					$lt   = preg_match_all("/$nlevel \w+/", $srec, $matches);
 					$data .= '<div class="fact_SOUR">';
 					$elementID = Uuid::uuid4();
-					if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
+					if ($tree->getPreference('EXPAND_SOURCES')) {
 						$plusminus = 'icon-minus';
 					} else {
 						$plusminus = 'icon-plus';
@@ -587,7 +588,7 @@ class FunctionsPrintFacts {
 					$data .= '</div>';
 
 					$data .= "<div id=\"$elementID\"";
-					if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
+					if ($tree->getPreference('EXPAND_SOURCES')) {
 						$data .= ' style="display:block"';
 					}
 					$data .= ' class="source_citations">';
@@ -596,12 +597,12 @@ class FunctionsPrintFacts {
 					if ($publ) {
 						$data .= GedcomTag::getLabelValue('PUBL', $publ->getValue());
 					}
-					$data .= self::printSourceStructure(self::getSourceStructure($srec));
+					$data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
 					$data .= '<div class="indent">';
 					ob_start();
-					self::printMediaLinks($srec, $nlevel);
+					self::printMediaLinks($tree, $srec, $nlevel);
 					$data .= ob_get_clean();
-					$data .= FunctionsPrint::printFactNotes($srec, $nlevel);
+					$data .= FunctionsPrint::printFactNotes($tree, $srec, $nlevel);
 					$data .= '</div>';
 					$data .= '</div>';
 				} else {
@@ -621,12 +622,11 @@ class FunctionsPrintFacts {
 	/**
 	 * Print the links to media objects
 	 *
+	 * @param Tree   $tree
 	 * @param string $factrec
-	 * @param int $level
+	 * @param int    $level
 	 */
-	public static function printMediaLinks($factrec, $level) {
-		global $WT_TREE;
-
+	public static function printMediaLinks(Tree $tree, $factrec, $level) {
 		$nlevel = $level + 1;
 		if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
 			return;
@@ -634,7 +634,7 @@ class FunctionsPrintFacts {
 		$objectNum = 0;
 		while ($objectNum < count($omatch)) {
 			$media_id = $omatch[$objectNum][1];
-			$media    = Media::getInstance($media_id, $WT_TREE);
+			$media    = Media::getInstance($media_id, $tree);
 			if ($media) {
 				if ($media->canShow()) {
 					if ($objectNum > 0) {
@@ -649,7 +649,7 @@ class FunctionsPrintFacts {
 					echo '<a href="', e($media->url()), '">', $media->getFullName(), '</a>';
 					// NOTE: echo the notes of the media
 					echo '<p>';
-					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
+					echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), 1);
 					$ttype = preg_match('/' . ($nlevel + 1) . ' TYPE (.*)/', $media->getGedcom(), $match);
 					if ($ttype > 0) {
 						$mediaType = GedcomTag::getFileFormTypeValue($match[1]);
@@ -659,7 +659,7 @@ class FunctionsPrintFacts {
 					//-- print spouse name for marriage events
 					$ct = preg_match('/WT_SPOUSE: (.*)/', $factrec, $match);
 					if ($ct > 0) {
-						$spouse = Individual::getInstance($match[1], $media->getTree());
+						$spouse = Individual::getInstance($match[1], $tree);
 						if ($spouse) {
 							echo '<a href="', e($spouse->url()), '">';
 							echo $spouse->getFullName();
@@ -668,7 +668,7 @@ class FunctionsPrintFacts {
 						$ct = preg_match('/WT_FAMILY_ID: (.*)/', $factrec, $match);
 						if ($ct > 0) {
 							$famid  = trim($match[1]);
-							$family = Family::getInstance($famid, $spouse->getTree());
+							$family = Family::getInstance($famid, $tree);
 							if ($family) {
 								if ($spouse) {
 									echo ' - ';
@@ -677,12 +677,12 @@ class FunctionsPrintFacts {
 							}
 						}
 					}
-					echo FunctionsPrint::printFactNotes($media->getGedcom(), $nlevel);
-					echo self::printFactSources($media->getGedcom(), $nlevel);
+					echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), $nlevel);
+					echo self::printFactSources($tree, $media->getGedcom(), $nlevel);
 					echo '</div>'; //close div "media-display-title"
 					echo '</div>'; //close div "media-display"
 				}
-			} elseif ($WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
+			} elseif ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
 				echo '<p class="alert alert-danger">', $media_id, '</p>';
 			}
 			$objectNum++;
@@ -700,6 +700,7 @@ class FunctionsPrintFacts {
 		$fact_id = $fact->getFactId();
 		$parent  = $fact->getParent();
 		$pid     = $parent->getXref();
+		$tree    = $fact->getParent()->getTree();
 
 		$nlevel = $level + 1;
 		if ($fact->isPendingAddition()) {
@@ -724,7 +725,7 @@ class FunctionsPrintFacts {
 				$spos2 = strlen($factrec);
 			}
 			$srec   = substr($factrec, $spos1, $spos2 - $spos1);
-			$source = Source::getInstance($sid, $fact->getParent()->getTree());
+			$source = Source::getInstance($sid, $tree);
 			// Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
 			if (!$source || $source->canShow()) {
 				if ($level > 1) {
@@ -750,8 +751,8 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabel($factname, $parent);
 					}
 				} elseif ($can_edit) {
-					echo '<a href="edit_interface.php?action=edit&amp;xref=' . $parent->getXref() . '&amp;fact_id=' . $fact->getFactId() . '&amp;ged=' . e($parent->getTree()->getName()) . '" title="', I18N::translate('Edit'), '">';
-					if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
+					echo '<a href="edit_interface.php?action=edit&amp;xref=' . $parent->getXref() . '&amp;fact_id=' . $fact->getFactId() . '&amp;ged=' . e($tree->getName()) . '" title="', I18N::translate('Edit'), '">';
+					if ($tree->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
 							echo '<i class="icon-source"></i> ';
 						}
@@ -762,10 +763,10 @@ class FunctionsPrintFacts {
 						// Inline sources can't be edited. Attempting to save one will convert it
 						// into a link, and delete it.
 						// e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
-						echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($parent->getTree()->getName())]);
-						echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+						echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]);
+						echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					}
-					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
@@ -812,15 +813,15 @@ class FunctionsPrintFacts {
 							echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', GedcomTag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
 						}
 					}
-					echo self::printSourceStructure(self::getSourceStructure($srec));
+					echo self::printSourceStructure($tree, self::getSourceStructure($srec));
 					echo '<div class="indent">';
-					self::printMediaLinks($srec, $nlevel);
+					self::printMediaLinks($tree, $srec, $nlevel);
 					if ($nlevel == 2) {
-						self::printMediaLinks($source->getGedcom(), 1);
+						self::printMediaLinks($tree, $source->getGedcom(), 1);
 					}
-					echo FunctionsPrint::printFactNotes($srec, $nlevel);
+					echo FunctionsPrint::printFactNotes($tree, $srec, $nlevel);
 					if ($nlevel == 2) {
-						echo FunctionsPrint::printFactNotes($source->getGedcom(), 1);
+						echo FunctionsPrint::printFactNotes($tree, $source->getGedcom(), 1);
 					}
 					echo '</div>';
 				} else {
@@ -836,16 +837,16 @@ class FunctionsPrintFacts {
 	 *  This function prints the input array of SOUR sub-records built by the
 	 *  getSourceStructure() function.
 	 *
+	 * @param Tree     $tree
 	 * @param string[] $textSOUR
 	 *
 	 * @return string
 	 */
-	public static function printSourceStructure($textSOUR) {
-		global $WT_TREE;
+	public static function printSourceStructure(Tree $tree, array $textSOUR) {
 		$html = '';
 
 		if ($textSOUR['PAGE']) {
-			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $WT_TREE));
+			$html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $tree));
 		}
 
 		if ($textSOUR['EVEN']) {
@@ -861,7 +862,7 @@ class FunctionsPrintFacts {
 				$html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
 			}
 			foreach ($textSOUR['TEXT'] as $text) {
-				$html .= GedcomTag::getLabelValue('TEXT', Filter::formatText($text, $WT_TREE));
+				$html .= GedcomTag::getLabelValue('TEXT', Filter::formatText($text, $tree));
 			}
 		}
 
@@ -937,6 +938,7 @@ class FunctionsPrintFacts {
 		$factrec = $fact->getGedcom();
 		$fact_id = $fact->getFactId();
 		$parent  = $fact->getParent();
+		$tree    = $parent->getTree();
 		$pid     = $parent->getXref();
 
 		if ($fact->isPendingAddition()) {
@@ -954,7 +956,7 @@ class FunctionsPrintFacts {
 		for ($j = 0; $j < $ct; $j++) {
 			// Note object, or inline note?
 			if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-				$note = Note::getInstance($nmatch[1], $fact->getParent()->getTree());
+				$note = Note::getInstance($nmatch[1], $tree);
 				if ($note && !$note->canShow()) {
 					continue;
 				}
@@ -976,14 +978,14 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabel('NOTE');
 					}
 					echo '<div class="editfacts">';
-					echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($parent->getTree()->getName())]);
-					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
-					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+					echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]);
+					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					echo '</div>';
 				}
 			} else {
 				if ($level < 2) {
-					if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
+					if ($tree->getPreference('SHOW_FACT_ICONS')) {
 						echo '<i class="icon-note"></i> ';
 					}
 					if ($note) {
@@ -995,7 +997,7 @@ class FunctionsPrintFacts {
 				$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
 				$factwords = explode(' ', $factlines[0]); // 1 BIRT Y
 				$factname  = $factwords[1]; // BIRT
-				$parent    = GedcomRecord::getInstance($pid, $fact->getParent()->getTree());
+				$parent    = GedcomRecord::getInstance($pid, $tree);
 				if ($factname == 'EVEN' || $factname == 'FACT') {
 					// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 					$ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
@@ -1016,19 +1018,19 @@ class FunctionsPrintFacts {
 			echo '</th>';
 			if ($note) {
 				// Note objects
-				$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
+				$text = Filter::formatText($note->getNote(), $tree);
 			} else {
 				// Inline notes
 				$nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
 				$text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
-				$text = Filter::formatText($text, $fact->getParent()->getTree());
+				$text = Filter::formatText($text, $tree);
 			}
 
 			echo '<td class="optionbox', $styleadd, ' wrap">';
 			echo $text;
 
 			if (!empty($noterec)) {
-				echo self::printFactSources($noterec, 1);
+				echo self::printFactSources($tree, $noterec, 1);
 			}
 
 			// 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
@@ -1070,6 +1072,7 @@ class FunctionsPrintFacts {
 	public static function printMainMedia(Fact $fact, $level) {
 		$factrec = $fact->getGedcom();
 		$parent  = $fact->getParent();
+		$tree    = $parent->getTree();
 
 		if ($fact->isPendingAddition()) {
 			$styleadd = 'new';
@@ -1085,7 +1088,7 @@ class FunctionsPrintFacts {
 		// -- find source for each fact
 		preg_match_all('/(?:^|\n)' . $level . ' OBJE @(.*)@/', $factrec, $matches);
 		foreach ($matches[1] as $xref) {
-			$media = Media::getInstance($xref, $fact->getParent()->getTree());
+			$media = Media::getInstance($xref, $tree);
 			// Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
 			if (!$media || $media->canShow()) {
 				echo '<tr>';
@@ -1110,8 +1113,8 @@ class FunctionsPrintFacts {
 				} elseif ($can_edit) {
 					echo GedcomTag::getLabel($factname, $parent);
 					echo '<div class="editfacts">';
-					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
-					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($parent->getTree()->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
+					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					echo '</div>';
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
@@ -1135,8 +1138,8 @@ class FunctionsPrintFacts {
 					echo '</a>';
 					echo '</span>';
 
-					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
-					echo self::printFactSources($media->getGedcom(), 1);
+					echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), 1);
+					echo self::printFactSources($tree, $media->getGedcom(), 1);
 				} else {
 					echo $xref;
 				}

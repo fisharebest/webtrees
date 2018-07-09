@@ -114,7 +114,7 @@ class IndividualController extends AbstractBaseController {
 
 		$name_records = [];
 		foreach ($individual->getFacts('NAME') as $n => $name_fact) {
-			$name_records[] = $this->formatNameRecord($n, $name_fact);
+			$name_records[] = $this->formatNameRecord($tree, $n, $name_fact);
 		}
 
 		$sex_records = [];
@@ -234,12 +234,13 @@ class IndividualController extends AbstractBaseController {
 	/**
 	 * Format a name record
 	 *
+	 * @param Tree $tree
 	 * @param int  $n
 	 * @param Fact $fact
 	 *
 	 * @return string
 	 */
-	private function formatNameRecord($n, Fact $fact) {
+	private function formatNameRecord(Tree $tree, $n, Fact $fact) {
 		$individual = $fact->getParent();
 
 		// Create a dummy record, so we can extract the formatted NAME value from it.
@@ -303,10 +304,10 @@ class IndividualController extends AbstractBaseController {
 			}
 		}
 		if (preg_match("/\n2 SOUR/", $fact->getGedcom())) {
-			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($fact->getGedcom(), 2), '</div>';
+			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($tree, $fact->getGedcom(), 2), '</div>';
 		}
 		if (preg_match("/\n2 NOTE/", $fact->getGedcom())) {
-			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($fact->getGedcom(), 2), '</div>';
+			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($tree, $fact->getGedcom(), 2), '</div>';
 		}
 		$content = ob_get_clean();
 

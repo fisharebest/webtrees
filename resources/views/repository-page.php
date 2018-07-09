@@ -51,7 +51,7 @@
 				<?php endforeach ?>
 
 				<?php if ($repository->canEdit()): ?>
-					<?php FunctionsPrint::printAddNewFact($repository->getXref(), $facts, 'REPO') ?>
+					<?php FunctionsPrint::printAddNewFact($repository, $facts, 'REPO') ?>
 				<?php endif ?>
 			</table>
 		</div>

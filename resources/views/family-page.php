@@ -79,7 +79,7 @@
 		<?php endif ?>
 
 		<?php if (Auth::isEditor($record->getTree())): ?>
-			<?php FunctionsPrint::printAddNewFact($record->getXref(), $facts, 'FAM') ?>
+			<?php FunctionsPrint::printAddNewFact($record, $facts, 'FAM') ?>
 			<tr>
 				<th scope="row">
 					<?= I18N::translate('Note') ?>

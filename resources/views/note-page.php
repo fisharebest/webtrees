@@ -87,7 +87,7 @@
 				<?php endforeach ?>
 
 				<?php if ($note->canEdit()): ?>
-					<?php FunctionsPrint::printAddNewFact($note->getXref(), $facts, 'NOTE') ?>
+					<?php FunctionsPrint::printAddNewFact($note, $facts, 'NOTE') ?>
 				<?php endif ?>
 			</table>
 		</div>

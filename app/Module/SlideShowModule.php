@@ -117,6 +117,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				'media_file'          => $media_file,
 				'show_controls'       => $controls,
 				'start_automatically' => $start,
+				'tree'                => $tree,
 			]);
 		} else {
 			$content = I18N::translate('This family tree has no images to display.');

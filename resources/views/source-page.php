@@ -70,7 +70,7 @@
 				<?php endforeach ?>
 
 				<?php if ($source->canEdit()): ?>
-					<?php FunctionsPrint::printAddNewFact($source->getXref(), $facts, 'SOUR') ?>
+					<?php FunctionsPrint::printAddNewFact($source, $facts, 'SOUR') ?>
 					<?php if ($source->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($source->getTree())): ?>
 						<tr>
 							<th scope="row">
