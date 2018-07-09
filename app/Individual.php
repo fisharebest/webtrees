@@ -115,12 +115,10 @@ class Individual extends GedcomRecord {
 	 * @return bool
 	 */
 	protected function canShowByType($access_level) {
-		global $WT_TREE;
-
 		// Dead people...
 		if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
 			$keep_alive             = false;
-			$KEEP_ALIVE_YEARS_BIRTH = $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
+			$KEEP_ALIVE_YEARS_BIRTH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
 			if ($KEEP_ALIVE_YEARS_BIRTH) {
 				preg_match_all('/\n1 (?:' . WT_EVENTS_BIRT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
@@ -131,7 +129,7 @@ class Individual extends GedcomRecord {
 					}
 				}
 			}
-			$KEEP_ALIVE_YEARS_DEATH = $this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
+			$KEEP_ALIVE_YEARS_DEATH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
 			if ($KEEP_ALIVE_YEARS_DEATH) {
 				preg_match_all('/\n1 (?:' . WT_EVENTS_DEAT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
@@ -147,9 +145,9 @@ class Individual extends GedcomRecord {
 			}
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
-		$user_path_length = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
+		$user_path_length = (int) $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
 		$gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
-		if ($gedcomid && $user_path_length && $this->tree->getTreeId() == $WT_TREE->getTreeId() && $access_level = Auth::accessLevel($this->tree)) {
+		if ($gedcomid !== '' && $user_path_length > 0) {
 			return self::isRelated($this, $user_path_length);
 		}
 
