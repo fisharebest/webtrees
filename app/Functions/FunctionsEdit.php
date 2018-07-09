@@ -489,38 +489,6 @@ class FunctionsEdit {
 	}
 
 	/**
-	 * Input addon to select a special characterr using a virtual keyboard
-	 *
-	 * @param string $id
-	 *
-	 * @return string
-	 */
-	public static function inputAddonKeyboard($id) {
-		return
-			'<div class="input-group-append">' .
-			'<span class="input-group-text">' .
-			FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => $id]) .
-			'</span>' .
-			'</div>';
-	}
-
-	/**
-	 * Input addon to generate a help link.
-	 *
-	 * @param string $fact
-	 *
-	 * @return string
-	 */
-	public static function inputAddonHelp($fact) {
-		return
-			'<div class="input-group-append">' .
-			'<span class="input-group-text">' .
-			FunctionsPrint::helpLink($fact) .
-			'</span>' .
-			'</div>';
-	}
-
-	/**
 	 * add a new tag input field
 	 *
 	 * called for each fact to be edited on a form.
@@ -697,7 +665,7 @@ class FunctionsEdit {
 			$html .= '<div class="input-group">';
 			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this, ' . e($dmy) . ')" dir="ltr">';
 			$html .= self::inputAddonCalendar($id);
-			$html .= self::inputAddonHelp('DATE');
+			$html .= view('edit/input-addon-help', ['fact' => 'DATE']);
 			$html .= '</div>';
 			$html .= '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
 			$html .= '<p class="text-muted">' . (new Date($value))->display() . '</p>';
@@ -748,7 +716,7 @@ class FunctionsEdit {
 			/** @TODO - typeaheadjs.css doesn't work in an input-group */
 			$html .= '<div class="input-group">';
 			$html .= '<div class="input-group-append"><span class="input-group-text">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span></div>';
-			$html .= self::inputAddonHelp('PLAC');
+			$html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
 			$html .= '</div>';
 		} elseif ($fact === 'QUAY') {
 			$html .= Bootstrap4::select(GedcomCodeQuay::getValues(), $value, ['id' => $id, 'name' => $name]);
@@ -763,7 +731,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'RESN') {
 			$html .= '<div class="input-group">';
 			$html .= Bootstrap4::select(FunctionsEdit::optionsRestrictions(true), $value, ['id' => $id, 'name' => $name]);
-			$html .= self::inputAddonHelp('RESN');
+			$html .= view('edit/input-addon-help', ['fact' => 'RESN']);
 			$html .= '</span>';
 			$html .= '</div>';
 		} elseif ($fact === 'SEX') {

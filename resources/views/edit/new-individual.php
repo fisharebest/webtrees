@@ -276,15 +276,19 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 		echo view('cards/add-source-citation', [
 			'level'          => 2,
 			'full_citations' => $tree->getPreference('FULL_SOURCES'),
+			'tree'           => $tree,
 		]);
 		echo view('cards/add-note', [
 			'level' => 2,
+			'tree' => $tree,
 		]);
 		echo view('cards/add-shared-note', [
 			'level' => 2,
+			'tree' => $tree,
 		]);
 		echo view('cards/add-restriction', [
 			'level' => 2,
+			'tree' => $tree,
 		]);
 	} else {
 		echo view('cards/add-source-citation', [
@@ -294,15 +298,19 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 			'prefer_level2_sources'   => $tree->getPreference('PREFER_LEVEL2_SOURCES'),
 			'quick_required_facts'    => $tree->getPreference('QUICK_REQUIRED_FACTS'),
 			'quick_required_famfacts' => $tree->getPreference('QUICK_REQUIRED_FAMFACTS'),
+			'tree'                    => $tree,
 		]);
 		echo view('cards/add-note', [
 			'level' => 1,
+			'tree' => $tree,
 		]);
 		echo view('cards/add-shared-note', [
 			'level' => 1,
+			'tree' => $tree,
 		]);
 		echo view('cards/add-restriction', [
 			'level' => 1,
+			'tree' => $tree,
 		]);
 	}
 

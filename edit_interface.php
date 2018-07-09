@@ -77,9 +77,11 @@ case 'edit':
 			if ($level1type === 'NAME') {
 				echo view('cards/add-note', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
-				echo view('cards/add-shared-note', [
+				echo view('addSimpleTag($tree, ', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 			}
 			break;
@@ -91,24 +93,29 @@ case 'edit':
 					echo view('cards/add-source-citation', [
 						'level'          => 2,
 						'full_citations' => $tree->getPreference('FULL_SOURCES'),
+						'tree'           => $tree,
 					]);				}
 				if ($level1type !== 'OBJE') {
 					if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
 						echo view('cards/add-media-object', [
 							'level' => 2,
+							'tree'  => $tree,
 						]);
 					}
 				}
 				echo view('cards/add-note', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 				echo view('cards/add-shared-note', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 				if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
 					echo view('cards/add-associate', [
 						'id'    => Uuid::uuid4()->toString(),
 						'level' => 2,
+						'tree' => $tree,
 					]);
 				}
 				// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
@@ -116,11 +123,13 @@ case 'edit':
 					echo view('cards/add-associate', [
 						'id'    => Uuid::uuid4()->toString(),
 						'level' => 2,
+						'tree' => $tree,
 					]);
 				}
 				if ($level1type !== 'SOUR') {
 					echo view('cards/add-restriction', [
 						'level' => 2,
+						'tree' => $tree,
 					]);
 				}
 			}
@@ -194,34 +203,41 @@ case 'add':
 			echo view('cards/add-source-citation', [
 				'level'          => 2,
 				'full_citations' => $tree->getPreference('FULL_SOURCES'),
+				'tree'           => $tree,
 			]);
 			if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
 				echo view('cards/add-media-object', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 			}
 			// Don’t add notes to notes!
 			if ($fact !== 'NOTE') {
 				echo view('cards/add-note', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 				echo view('cards/add-shared-note', [
 					'level' => 2,
+					'tree' => $tree,
 				]);
 			}
 			echo view('cards/add-associate', [
 				'id'    => Uuid::uuid4()->toString(),
 				'level' => 2,
+				'tree' => $tree,
 			]);
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 			if (in_array($fact, Config::twoAssociates())) {
 				echo view('cards/add-associate', [
 					'id'    => Uuid::uuid4()->toString(),
 					'level' => 2,
+					'tree' => $tree,
 				]);
 			}
 			echo view('cards/add-restriction', [
 				'level' => 2,
+				'tree' => $tree,
 			]);
 		}
 	}

@@ -15,11 +15,7 @@
 		<div class="col-sm-9 wt-page-options-value">
 			<div class="input-group input-group-sm">
 				<input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= e($firstname) ?>" autofocus>
-				<div class="input-group-append">
-						<span class="input-group-text">
-							<?= FunctionsEdit::inputAddonKeyboard('firstname') ?>
-						</span>
-				</div>
+				<?= view('edit/input-addon-keyboard', ['id' => 'firstname']) ?>
 			</div>
 		</div>
 	</div>
@@ -31,11 +27,7 @@
 		<div class="col-sm-9 wt-page-options-value">
 			<div class="input-group input-group-sm">
 				<input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= e($lastname) ?>">
-				<div class="input-group-append">
-						<span class="input-group-text">
-							<?= FunctionsEdit::inputAddonKeyboard('lastname') ?>
-						</span>
-				</div>
+				<?= view('edit/input-addon-keyboard', ['id' => 'lastname']) ?>
 			</div>
 		</div>
 	</div>

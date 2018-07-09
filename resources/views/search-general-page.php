@@ -15,11 +15,7 @@
 		<div class="col-sm-9 wt-page-options-value">
 			<div class="input-group input-group-sm">
 				<input id="query" class="form-control form-control-sm" type="text" name="query" value="<?= e($query) ?>" required>
-				<div class="input-group-append">
-						<span class="input-group-text">
-							<?= FunctionsEdit::inputAddonKeyboard('query') ?>
-						</span>
-				</div>
+				<?= view('edit/input-addon-keyboard', ['id' => 'query']) ?>
 			</div>
 		</div>
 	</div>
