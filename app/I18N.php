@@ -306,8 +306,6 @@ class I18N {
 	 * @return string $string
 	 */
 	public static function init($code = '') {
-		global $WT_TREE;
-
 		mb_internal_encoding('UTF-8');
 
 		if ($code !== '') {
@@ -323,9 +321,9 @@ class I18N {
 				// Browser negotiation
 				$default_locale = new LocaleEnUs;
 				try {
-					if ($WT_TREE) {
-						$default_locale = Locale::create($WT_TREE->getPreference('LANGUAGE'));
-					}
+					// @TODO, when no language is requested by the user (e.g. search engines), we should use
+	        // the tree's default language.  However, we currently initialise languages before trees,
+	        //  so there is no tree available for us to use.
 				} catch (\Exception $ex) {
 					DebugBar::addThrowable($ex);
 				}
