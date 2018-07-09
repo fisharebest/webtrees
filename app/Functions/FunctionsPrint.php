@@ -25,11 +25,8 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Session;
@@ -88,7 +85,7 @@ class FunctionsPrint {
 			return GedcomTag::getLabelValue($label, $html);
 		} else {
 			// A multi-line note, with an expand/collapse option
-			$element_id = Uuid::uuid4();
+			$element_id = Uuid::uuid4()->toString();
 			// NOTE: class "note-details" is (currently) used only by some third-party themes
 			if ($note) {
 				$first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';

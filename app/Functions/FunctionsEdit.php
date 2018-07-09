@@ -473,22 +473,6 @@ class FunctionsEdit {
 	}
 
 	/**
-	 * Input addon to generate a calendar widget.
-	 *
-	 * @param string $id
-	 *
-	 * @return string
-	 */
-	public static function inputAddonCalendar($id) {
-		return
-			'<div class="input-group-append">' .
-			'<span class="input-group-text">' .
-			FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), ['href' => '#', 'onclick' => 'return calendarWidget("caldiv' . $id . '", "' . $id . '");']) .
-			'</span>' .
-			'</div>';
-	}
-
-	/**
 	 * add a new tag input field
 	 *
 	 * called for each fact to be edited on a form.
@@ -664,7 +648,7 @@ class FunctionsEdit {
 
 			$html .= '<div class="input-group">';
 			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this, ' . e($dmy) . ')" dir="ltr">';
-			$html .= self::inputAddonCalendar($id);
+			$html .= view('edit/input-addon-calendar', ['id' => $id]);
 			$html .= view('edit/input-addon-help', ['fact' => 'DATE']);
 			$html .= '</div>';
 			$html .= '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
@@ -700,6 +684,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'PEDI') {
 			$html .= Bootstrap4::select(GedcomCodePedi::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'PLAC') {
+			$html .= '<div class="input-group">';
 			$html .= '<input ' . Html::attributes([
 					'autocomplete'          => 'off',
 					'class'                 => 'form-control',
@@ -714,8 +699,7 @@ class FunctionsEdit {
 			]) . '>';
 
 			/** @TODO - typeaheadjs.css doesn't work in an input-group */
-			$html .= '<div class="input-group">';
-			$html .= '<div class="input-group-append"><span class="input-group-text">' . FontAwesome::linkIcon('coordinates', I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude'), ['data-toggle' => 'collapse', 'data-target' => '.child_of_' . $id]) . '</span></div>';
+			$html .= view('edit/input-addon-coordinates', ['id' => $id]);
 			$html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
 			$html .= '</div>';
 		} elseif ($fact === 'QUAY') {
