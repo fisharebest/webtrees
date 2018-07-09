@@ -68,7 +68,7 @@ class Site {
 
 			self::$preferences[$setting_name] = $setting_value;
 
-			Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"');
+			Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"', null);
 		}
 	}
 }

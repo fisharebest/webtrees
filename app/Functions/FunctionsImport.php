@@ -1105,7 +1105,7 @@ class FunctionsImport {
 				" SET status='accepted'" .
 				" WHERE status='pending' AND xref=? AND gedcom_id=?"
 			)->execute([$xref, $ged_id]);
-			Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
+			Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
 		}
 	}
 

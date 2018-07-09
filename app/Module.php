@@ -158,7 +158,7 @@ class Module {
 					DebugBar::addThrowable($ex);
 
 					// The module has been deleted or is broken? Disable it.
-					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. " . $ex->getMessage());
+					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. " . $ex->getMessage(), null);
 					Database::prepare(
 						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
 					)->execute([

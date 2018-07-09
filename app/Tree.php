@@ -725,7 +725,7 @@ class Tree {
 			Auth::id(),
 		]);
 
-		Log::addEditLog('Create: ' . $type . ' ' . $xref);
+		Log::addEditLog('Create: ' . $type . ' ' . $xref, $this);
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {

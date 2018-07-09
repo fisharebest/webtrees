@@ -77,7 +77,7 @@ class PendingChangesController extends AbstractBaseController {
 				'change_id' => $change->change_id,
 			]);
 
-			Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName());
+			Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName(), $tree);
 		}
 
 		return new RedirectResponse(route('show-pending', [
@@ -130,7 +130,7 @@ class PendingChangesController extends AbstractBaseController {
 				'change_id' => $change->change_id,
 			]);
 
-			Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName());
+			Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName(), $tree);
 		}
 
 		return new RedirectResponse(route('show-pending', [

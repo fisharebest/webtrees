@@ -1279,7 +1279,7 @@ class GedcomRecord {
 
 		$this->parseFacts();
 
-		Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref);
+		Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
 	}
 
 	/**
@@ -1307,7 +1307,7 @@ class GedcomRecord {
 		self::$gedcom_record_cache  = null;
 		self::$pending_record_cache = null;
 
-		Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref);
+		Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
 	}
 
 	/**

@@ -24,7 +24,6 @@ class Log {
 	// We can log the following types of message in the wt_log table.
 	const TYPE_AUTHENTICATION = 'auth';
 	const TYPE_CONFIGURATION  = 'config';
-	const TYPE_DEBUG          = 'debug';
 	const TYPE_EDIT           = 'edit';
 	const TYPE_ERROR          = 'error';
 	const TYPE_MEDIA          = 'media';
@@ -38,12 +37,6 @@ class Log {
 	 * @param Tree|null $tree
 	 */
 	private static function addLog($message, $log_type, Tree $tree = null) {
-		global $WT_TREE;
-
-		if (!$tree) {
-			$tree = $WT_TREE;
-		}
-
 		$request = Request::create('', '', [], [], [], $_SERVER);
 
 		Database::prepare(
@@ -63,7 +56,7 @@ class Log {
 	 * @param string $message
 	 */
 	public static function addAuthenticationLog($message) {
-		self::addLog($message, self::TYPE_AUTHENTICATION);
+		self::addLog($message, self::TYPE_AUTHENTICATION, null);
 	}
 
 	/**
@@ -77,21 +70,13 @@ class Log {
 	}
 
 	/**
-	 * Store a debug message in the message log.
-	 *
-	 * @param string $message
-	 */
-	public static function addDebugLog($message) {
-		self::addLog($message, self::TYPE_DEBUG);
-	}
-
-	/**
 	 * Store an edit message in the message log.
 	 *
 	 * @param string $message
+	 * @param Tree   $tree
 	 */
-	public static function addEditLog($message) {
-		self::addLog($message, self::TYPE_EDIT);
+	public static function addEditLog($message, Tree $tree) {
+		self::addLog($message, self::TYPE_EDIT, $tree);
 	}
 
 	/**
@@ -109,7 +94,7 @@ class Log {
 	 * @param string $message
 	 */
 	public static function addMediaLog($message) {
-		self::addLog($message, self::TYPE_MEDIA);
+		self::addLog($message, self::TYPE_MEDIA, null);
 	}
 
 	/**
