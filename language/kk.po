@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-07-08 17:26+0000\n"
+"PO-Revision-Date: 2018-07-09 16:17+0000\n"
 "Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
 "Language: kk\n"
@@ -15690,255 +15690,255 @@ msgstr "Сервер бұл сұраны елемеуі мүмкін болса 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:162
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Белгілі бір жазба, факт немесе оқиғаға кіруді шектеуді қосу арқылы орнатуға болады. Егер жазбалар, фактілер немесе оқиғалар шектеу болмаса, төмендегі әдепкі шектеулер қолданылады."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr ""
+msgstr "Құпиялылықты есептеулерді тездетіп, қайтыс болуы мүмкін, өлім жазба болмаған, бірақ қайтыс болған, көму, кремация және т.б. жазылған жоқ адамдарға өлім жазба қосу."
 
 #: login.php:72
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "Сіз браузеріңіз кукилерді қабылдамағандықтан, кіре алмайсыз."
 
 #: login.php:551
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "Сіз тіркелген пайдаланушысы болуға өтінішіңізді растадыңыз."
 
 #: app/Module/UserJournalModule.php:81
 msgid "You have not created any journal items."
-msgstr ""
+msgstr "Журнал элементтерін жасамадыңыз."
 
 #: admin_trees_manage.php:193
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "Сіз басқа атаумен GEDCOM файлын таңдадыңыз. Бұл дұрыс па?"
 
 #: logout.php:26
 msgid "You have signed out."
-msgstr ""
+msgstr "Сіз шығып кеттіңіз."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:448
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "Жауапты пішімдеу және басқа веб-сайттарға сілтемелер қосу үшін HTML-ні пайдалануға болады."
 
 #: admin_site_config.php:427
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Сондай-ақ, Google есептік жазбаңызда «қауіпсіздікті аздау» мүмкіндігін қосу керек."
 
 #: app/Http/Controllers/SetupController.php:408
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Жалғастыра алмай тұрып, оны өзгертуіңіз керек."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:77
 msgid "You must enter a name"
-msgstr ""
+msgstr "Атын енгізу керек"
 
 #: app/Http/Controllers/SetupController.php:138
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "Барлық әкімші тіркелгі өрістерін енгізуіңіз керек."
 
 #: admin_trees_merge.php:89
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Сіз оларды біріктірер алдында ағаштардың бірінде жазбаларды қайта санауыңыз керек."
 
 #: app/Module/ChartsBlockModule.php:133
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr ""
+msgstr "Блокты теңшелімдерінде жеке және диаграмма түрін таңдауыңыз қажет"
 
 #: admin_users.php:291
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr ""
+msgstr "Пайдаланушыны тікелей отбасымен шектеуге дейін жеке жазбаны көрсетуіңіз керек."
 
 #: login.php:175
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Сіз бұл сайтқа кіру үшін отбасылық мүше болуыңыз керек."
 
 #: login.php:172
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Осы веб-сайтқа кіру үшін сізге авторизацияланған пайдаланушы болуыңыз қажет."
 
 #: admin_trees_manage.php:340
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Сіз отбасылық ағаш құруыңыз керек."
 
 #: resources/views/emails/verify-notify-html.php:12
 #: resources/views/emails/verify-notify-text.php:7
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Есептік жазба мәліметтерін қарап шығу керек."
 
 #: resources/views/setup/step-5-administrator.php:16
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr ""
+msgstr "Әкімші тіркелгісін орнату қажет. Бұл есептік жазба осы веб-торапты орнатудың барлық аспектілерін басқара алады. Күшті парольді таңдаңыз."
 
 #: admin_pgv_to_wt.php:1137
 msgid "You need to sign in again, using your PhpGedView username and password."
-msgstr ""
+msgstr "PhpGedView пайдаланушы аты мен паролін пайдаланып қайтадан кіруіңіз керек."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:444
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
+msgstr "Сіз өзіңіздің пайдаланушыларыңыз кірген кезде басқа веб-сайтқа немесе орынға қайта бағыттауды қаласаңыз, кіру адресін енгізу қажет. Бұл сіздің пайдаланушыларыңыз кіргенде http-дан https-ге ауысу қажет болған жағдайда өте пайдалы. <i>login.php</i> тармағына өтіңіз. Мысалы, https://www.yourserver.com/webtrees/login.php."
 
 #: resources/views/emails/message-copy-html.php:7
 #: resources/views/emails/message-copy-text.php:4
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "Сіз webtrees пайдаланушысына келесі хабарламаны жібердіңіз:"
 
 #: admin_site_upgrade.php:100
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Жаңартпас бұрын күткен барлық өзгертулерді қабылдауға немесе қабылдамауға тиіссіз."
 
 #: admin_site_upgrade.php:137
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Веб-шрифтердің осы нұсқасымен үйлесімділікті растау үшін модуль авторына хабарласыңыз."
 
 #: admin_site_upgrade.php:201
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Вебтриттердің осы нұсқасымен үйлесімділікті растау үшін тақырып авторына кеңес беру керек."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:298 message.php:54
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "\"%1$s\" ішінен \"%2$s\" ішінен жою керек және қайталап көріңіз."
 
 #: admin_users.php:398
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr ""
+msgstr "Электрондық пошта мекенжайы дұрыс екенін білмейінше, тіркелгіні растауыңыз керек."
 
 #: resources/views/emails/register-notify-html.php:26
 #: resources/views/emails/register-notify-text.php:13
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr ""
+msgstr "Бұл перспективалы пайдаланушы сұрауды растаған кезде электрондық пошта арқылы хабарланасыз. Содан кейін процесті пайдаланушы атын белсендіру арқылы аяқтауға болады. Жаңа пайдаланушы есептік жазбаны белсендіргенше кіре алмайды."
 
 #: resources/views/setup/step-5-administrator.php:44
 msgid "You will use this to sign in to webtrees."
-msgstr ""
+msgstr "Сіз webtrees-ге кіру үшін оны қолданасыз."
 
 #: statistics.php:297
 msgid "Youngest father"
-msgstr ""
+msgstr "Ең жас әке"
 
 #: statistics.php:274
 msgid "Youngest female"
-msgstr ""
+msgstr "Ең жас әйел"
 
 #: statistics.php:273
 msgid "Youngest male"
-msgstr ""
+msgstr "Ең жас жігіт"
 
 #: statistics.php:298
 msgid "Youngest mother"
-msgstr ""
+msgstr "Ең жас анасы"
 
 #: app/Module/ClippingsCartModule.php:346
 #: app/Module/ClippingsCartModule.php:652
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Сіздің үзінділеріңіздің қоржыны бос."
 
 #: message.php:132 resources/views/setup/step-5-administrator.php:27
 msgid "Your name"
-msgstr ""
+msgstr "Сіздің атыңыз"
 
 #. I18N: %s is a server name/URL
 #: login.php:335
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "Тіркелу %s ішінде"
 
 #: resources/views/setup/step-3-database-connection.php:20
 msgid "Your server’s administrator will provide you with the connection details."
-msgstr ""
+msgstr "Серверіңіздің әкімшісі қосылым мәліметтерін береді."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr ""
+msgstr "Пайдаланушы тіркелгіңізде «автоматты түрде өзгерістерді қабылдау» мүмкіндігі жоқ. Бір уақытта тек бір жазбаны өзгерте аласыз."
 
 #: app/Http/Controllers/AdminController.php:2012
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr ""
+msgstr "Веб-серверіңіз PHP нұсқасының %s нұсқасын қолданады, ол бұдан былай сақталмайды. Сіз кейінірек нұсқаға жаңартуыңыз керек."
 
 #: app/Http/Controllers/AdminController.php:2010
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Сіздің веб-серверіңіз %s PHP нұсқасын қолданады, ол енді қауіпсіздік жаңартуларын алмайды. Сізге кейінірек нұсқаға мүмкіндігінше тезірек жаңарту керек."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
 msgid "Zambia"
-msgstr ""
+msgstr "Замбия"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Зимбабве"
 
 #: fanchart.php:107
 msgid "Zoom"
-msgstr ""
+msgstr "Үлкейту"
 
 #: timeline.php:427
 msgid "Zoom in"
-msgstr ""
+msgstr "Үлкейту"
 
 #: app/Theme/AbstractTheme.php:820 app/Theme/AbstractTheme.php:872
 msgid "Zoom in/out on this box."
-msgstr ""
+msgstr "Бұл ұяға үлкейту / кішірейту."
 
 #: app/Module/GoogleMapsModule.php:2512 app/Module/GoogleMapsModule.php:3040
 #: app/Module/GoogleMapsModule.php:3283
 msgid "Zoom level"
-msgstr ""
+msgstr "Ұлғайту деңгейі"
 
 #: app/Module/GoogleMapsModule.php:339
 msgid "Zoom level of map"
-msgstr ""
+msgstr "Картаның масштаб деңгейі"
 
 #: timeline.php:428
 msgid "Zoom out"
-msgstr ""
+msgstr "Кішірейту"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "URL мекенжайы"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "сервердегі файл"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "компьютердегі файл"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
 msgid "a.m."
-msgstr ""
+msgstr "a.m."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "шамамен %s"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:45 gedrecord.php:58 individual.php:59 mediaviewer.php:40
 #: note.php:47 repo.php:46 source.php:46
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "қабылдау"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:35 gedrecord.php:48 individual.php:49 mediaviewer.php:33
 #: note.php:37 repo.php:36 source.php:36
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "қабылдау"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/Controllers/AdminController.php:683
 msgid "accepted"
-msgstr ""
+msgstr "қабылданды"
 
 #. I18N: A button label.
 #: app/Functions/FunctionsPrint.php:513 app/Functions/FunctionsPrint.php:580
@@ -15949,68 +15949,68 @@ msgstr ""
 #: edit_interface.php:1346 resources/views/admin/tree-privacy.php:225
 #: resources/views/admin/webtrees1-thumbnails-form.php:14 timeline.php:370
 msgid "add"
-msgstr ""
+msgstr "қосу"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr ""
+msgstr "қабылданған атауы"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "қабылданған атауы"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "қабылданған атауы"
 
 #: app/Stats.php:2914
 msgid "adoption"
-msgstr ""
+msgstr "асырап алу"
 
 #: app/Module/TopPageViewsModule.php:172
 msgid "after"
-msgstr ""
+msgstr "кейін"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "кейін %s"
 
 #: app/Functions/FunctionsPrint.php:319
 msgid "after death"
-msgstr ""
+msgstr "қайтыс болғаннан кейін"
 
 #: individual.php:96 individual.php:99 statisticsplot.php:1049
 #: statisticsplot.php:1091 statisticsplot.php:1133
 msgid "age"
-msgstr ""
+msgstr "жасы"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr ""
+msgstr "ретінде белгілі"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "ретінде белгілі"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "ретінде белгілі"
 
 #: app/Functions/FunctionsEdit.php:816
 msgid "always"
-msgstr ""
+msgstr "әрқашан"
 
 #: app/Controller/AncestryController.php:83 app/Stats.php:4530
 #: app/Stats.php:4556 app/Stats.php:4567 app/Stats.php:4577 app/Stats.php:5881
@@ -16022,191 +16022,191 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:433
 #: modules_v3/descendancy_report/report.xml:486
 msgid "and"
-msgstr ""
+msgstr "және"
 
 #: app/Functions/Functions.php:1065
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "нағашы тәте"
 
 #: app/Functions/Functions.php:821
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "тәте"
 
 #: app/Functions/Functions.php:1127
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "тәте"
 
 #: app/Functions/Functions.php:859
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "тәте"
 
 #: app/Functions/Functions.php:1179
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "нағашы тәте"
 
 #: app/Functions/Functions.php:877
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "нағашы тәте"
 
 #: app/Functions/Functions.php:819
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "аға / ағайынды"
 
 #: app/Functions/Functions.php:857
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "аға / ағайынды"
 
 #: app/Functions/Functions.php:875
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "аға / ағайынды"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:390
 msgid "back to top"
-msgstr ""
+msgstr "артқа қарай"
 
 #: app/Module/TopPageViewsModule.php:172
 msgid "before"
-msgstr ""
+msgstr "бұрын"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "%s дейін"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "%s және %s арасында"
 
 #: app/Stats.php:2911
 msgid "birth"
-msgstr ""
+msgstr "туу"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "туудың атауы"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "туудың атауы"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "туудың атауы"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/tree-privacy.php:111
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "соңғы %1$s жылы туылған немесе соңғы %2$s жыл ішінде қайтыс болған"
 
 #: app/Functions/Functions.php:741
 msgid "brother"
-msgstr ""
+msgstr "ағасы"
 
 #: app/Functions/Functions.php:1003
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:827
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:1119
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:895
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:1285
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:907
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:925
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "балдыз"
 
 #: app/Functions/Functions.php:1005
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Functions/Functions.php:837
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Functions/Functions.php:889
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Functions/Functions.php:1287
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Functions/Functions.php:923
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Functions/Functions.php:935
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "ағасы / келіні"
 
 #: app/Module/TopSurnamesModule.php:179
 msgid "bullet list"
-msgstr ""
+msgstr "оқтар тізімі"
 
 #: app/Stats.php:2915
 msgid "burial"
-msgstr ""
+msgstr "жерлеу"
 
 #: app/GedcomTag.php:1321
 msgid "by"
-msgstr ""
+msgstr "бойынша"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "есептелген %s"
 
 #. I18N: A button label.
 #: admin_trees_config.php:1397 app/Module/ClippingsCartModule.php:753
@@ -16223,42 +16223,42 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.php:60
 #: resources/views/modals/footer-save-cancel.php:11
 msgid "cancel"
-msgstr ""
+msgstr "жою"
 
 #: app/Stats.php:2916
 msgid "census added"
-msgstr ""
+msgstr "санақ қосылды"
 
 #: app/Stats.php:2586 app/Stats.php:3927 app/Stats.php:3929 app/Stats.php:4937
 #: app/Stats.php:4939 app/Stats.php:4941 app/Stats.php:5187
 msgid "century"
-msgstr ""
+msgstr "ғасыр"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr ""
+msgstr "атауын өзгерту"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "атауын өзгерту"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "атауын өзгерту"
 
 #: app/Functions/Functions.php:724 edit_interface.php:1559
 #: edit_interface.php:1581
 msgid "child"
-msgstr ""
+msgstr "бала"
 
 #: statisticsplot.php:1175
 msgid "children"
-msgstr ""
+msgstr "балалар"
 
 #: app/Module/CensusAssistantModule.php:236 app/Theme/AbstractTheme.php:736
 #: inverselink.php:148 resources/views/layouts/administration.php:57
@@ -16267,21 +16267,21 @@ msgstr ""
 #: resources/views/modals/footer-close.php:7
 #: resources/views/modals/header.php:7
 msgid "close"
-msgstr ""
+msgstr "жабу"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:112
 msgid "clouds"
-msgstr ""
+msgstr "бұлт"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:157
 msgid "colors"
-msgstr ""
+msgstr "түстер"
 
 #: app/Module/TopSurnamesModule.php:179
 msgid "compact list"
-msgstr ""
+msgstr "ықшам тізім"
 
 #. I18N: A button label.
 #: admin_pgv_to_wt.php:179 admin_pgv_to_wt.php:1138
@@ -16296,64 +16296,64 @@ msgstr ""
 #: resources/views/blocks/sign-in.php:51 resources/views/report-select.php:28
 #: resources/views/report-setup.php:55
 msgid "continue"
-msgstr ""
+msgstr "жалғастыру"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:714
 msgid "create"
-msgstr ""
+msgstr "жасау"
 
 #. I18N: a program feature
 #: app/Http/Controllers/SetupController.php:434
 msgid "creating thumbnails of images"
-msgstr ""
+msgstr "суреттердің нобайларын жасау"
 
 #: statistics.php:651
 msgid "date periods"
-msgstr ""
+msgstr "күндер"
 
 #: app/Functions/Functions.php:722 app/Functions/FunctionsCharts.php:292
 #: edit_interface.php:1556
 msgid "daughter"
-msgstr ""
+msgstr "қызы"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr ""
+msgstr "қызы"
 
 #: app/Functions/Functions.php:797
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "Жасы келіні"
 
 #: app/Functions/Functions.php:905
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "Жасы келіні"
 
 #: app/Functions/Functions.php:1333
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "келіннің әкесі"
 
 #: app/Functions/Functions.php:1335
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "Келіннің анасы"
 
 #: app/Functions/Functions.php:1337
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "келіннің ата-анасы"
 
 #: app/Stats.php:2912
 msgid "death"
-msgstr ""
+msgstr "өлім"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3053 app/Module/GoogleMapsModule.php:3070
 msgid "degrees"
-msgstr ""
+msgstr "дәрежесі"
 
 #. I18N: A button label.
 #: admin_site_logs.php:314 admin_users.php:766
@@ -16361,477 +16361,477 @@ msgstr ""
 #: resources/views/admin/clean-data.php:33
 #: resources/views/admin/webtrees1-thumbnails-form.php:22
 msgid "delete"
-msgstr ""
+msgstr "жою"
 
 #: modules_v3/descendancy_report/report.xml:137
 #: modules_v3/descendancy_report/report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "қайтыс болды"
 
 #: modules_v3/descendancy_report/report.xml:134
 #: modules_v3/descendancy_report/report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "қайтыс болды"
 
 #. I18N: A button label.
 #: admin_site_logs.php:309 app/Module/ClippingsCartModule.php:407
 #: app/Module/ClippingsCartModule.php:754 app/Module/GoogleMapsModule.php:3360
 #: resources/views/admin/changes-log.php:96
 msgid "download"
-msgstr ""
+msgstr "жүктеу"
 
 #: app/Module/GoogleMapsModule.php:3073
 msgid "east"
-msgstr ""
+msgstr "шығыс"
 
 #. I18N: A button label.
 #: admin_trees_config.php:834 app/Module/FrequentlyAskedQuestionsModule.php:368
 #: app/Module/GoogleMapsModule.php:315
 msgid "edit"
-msgstr ""
+msgstr "өңдеу"
 
 #: app/Functions/Functions.php:542
 msgid "eighth cousin"
-msgstr ""
+msgstr "сегізінші немере ағасы"
 
 #: app/Functions/Functions.php:507
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "сегізінші немере ағасы"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:464
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "сегізінші немере ағасы"
 
 #: app/Functions/Functions.php:736
 msgid "elder brother"
-msgstr ""
+msgstr "үлкен аға"
 
 #: app/Functions/Functions.php:770
 msgid "elder sibling"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:753
 msgid "elder sister"
-msgstr ""
+msgstr "үлкен апа"
 
 #: app/Functions/Functions.php:548
 msgid "eleventh cousin"
-msgstr ""
+msgstr "он бір ағасы"
 
 #: app/Functions/Functions.php:513
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "он бір ағасы"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "он бір ағасы"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "жылжымайтын мүлік атауы"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "жылжымайтын мүлік атауы"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "жылжымайтын мүлік атауы"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "бағалау %s"
 
 #: app/Functions/Functions.php:671
 msgid "ex-husband"
-msgstr ""
+msgstr "бұрынғы күйеуі"
 
 #: app/Functions/Functions.php:712
 msgid "ex-partner"
-msgstr ""
+msgstr "бұрынғы серіктес"
 
 #: app/Functions/Functions.php:694
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "бұрынғы серіктес"
 
 #: app/Functions/Functions.php:676
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "бұрынғы серіктес"
 
 #: app/Functions/Functions.php:707
 msgid "ex-spouse"
-msgstr ""
+msgstr "бұрынғы жұбайы"
 
 #: app/Functions/Functions.php:689
 msgid "ex-wife"
-msgstr ""
+msgstr "бұрынғы әйелі"
 
 #: admin_trees_config.php:51 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr ""
+msgstr "фактілер"
 
 #: app/Functions/Functions.php:662
 msgid "father"
-msgstr ""
+msgstr "әке"
 
 #: app/Functions/Functions.php:833
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "қайын ата"
 
 #: app/Functions/Functions.php:913
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "қайын ата"
 
 #: app/Functions/Functions.php:931
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "қайын ата"
 
 #: app/Functions/Functions.php:556
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "он бесінші кузен"
 
 #: app/Functions/Functions.php:521
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "он бесінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "он бесінші кузен"
 
 #. I18N: A Spanish relationship name, such as fifth great-nephew
 #: app/Functions/Functions.php:616
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "бесінші %s"
 
 #: app/Functions/Functions.php:601
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "бесінші %s"
 
 #: app/Functions/Functions.php:586
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "бесінші %s"
 
 #: app/Functions/Functions.php:536
 msgid "fifth cousin"
-msgstr ""
+msgstr "бесінші немере ағасы"
 
 #: app/Functions/Functions.php:501
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "бесінші немере ағасы"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:455
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "бесінші немере ағасы"
 
 #. I18N: a program feature
 #: app/Http/Controllers/SetupController.php:439
 msgid "file upload capability"
-msgstr ""
+msgstr "файлды жүктеу мүмкіндігі"
 
 #. I18N: A button label, first page
 #: admin_trees_config.php:995 app/Datatables.php:49 app/I18N.php:180
 #: medialist.php:148 medialist.php:236
 msgid "first"
-msgstr ""
+msgstr "бірінші"
 
 #: admin_trees_config.php:1005
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "бірінші"
 
 #. I18N: A Spanish relationship name, such as first great-nephew
 #: app/Functions/Functions.php:608
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "бірінші %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:593
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "бірінші %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:578
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "бірінші %s"
 
 #: app/Functions/Functions.php:528
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:493
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:443
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1059
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1061
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1063
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1103
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1105
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1109
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1121
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1123
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1125
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1171
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1173
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1177
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "бірінші кузен"
 
 #: app/Functions/Functions.php:1403
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1399
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1401
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1409
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1405
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1407
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1415
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1411
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1413
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1421
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1417
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1419
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1427
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1423
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1425
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1433
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1429
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1431
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1439
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1435
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1437
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1445
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1441
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:1443
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "Алғашқы кузендері бір рет көтерілген"
 
 #: app/Functions/Functions.php:554
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "он төртінші кузен"
 
 #: app/Functions/Functions.php:519
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "он төртінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "он төртінші кузен"
 
 #. I18N: A Spanish relationship name, such as fourth great-nephew
 #: app/Functions/Functions.php:614
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "төртінші %s"
 
 #: app/Functions/Functions.php:599
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "төртінші %s"
 
 #: app/Functions/Functions.php:584
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "төртінші %s"
 
 #: app/Functions/Functions.php:534
 msgid "fourth cousin"
-msgstr ""
+msgstr "төртінші кузен"
 
 #: app/Functions/Functions.php:499
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "төртінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:452
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "төртінші кузен"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:661 statistics.php:664 statistics.php:667 statistics.php:670
@@ -16839,146 +16839,146 @@ msgstr ""
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s аралығындағы аралық %2$s жыл"
+msgstr[1] "%1$s аралығындағы аралық %2$s жыл"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "%s-ден бастап"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "%s-дан %s-ге дейін"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "full circle"
-msgstr ""
+msgstr "толық шеңбер"
 
 #: statistics.php:646
 msgid "gender"
-msgstr ""
+msgstr "жыныс"
 
 #. I18N: A button label.
 #: edit_interface.php:2440
 msgid "go to new individual"
-msgstr ""
+msgstr "жаңа адамға барыңыз"
 
 #: app/Functions/Functions.php:787
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:799
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:899
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:789
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:801
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:901
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:1019
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "немересінің күйеуі"
 
 #: app/Functions/Functions.php:1041
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "немересінің күйеуі"
 
 #: app/Functions/Functions.php:1321
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "немересінің күйеуі"
 
 #: app/Functions/Functions.php:869
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "атасы"
 
 #: app/Functions/Functions.php:871
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "әже"
 
 #: app/Functions/Functions.php:873
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "әже немесе атасы"
 
 #: app/Functions/Functions.php:793
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:805
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:903
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "немересі"
 
 #: app/Functions/Functions.php:1029
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "немересінің әйелі"
 
 #: app/Functions/Functions.php:1057
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "немересінің әйелі"
 
 #: app/Functions/Functions.php:1331
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "немересінің әйелі"
 
 #: app/Functions/Functions.php:1612 app/Functions/Functions.php:1627
 #: app/Functions/Functions.php:1640
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "үлкен ×%s тәте"
 
 #: app/Functions/Functions.php:1614 app/Functions/Functions.php:1629
 #: app/Functions/Functions.php:1642
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "үлкен ×%s тәте/аға"
 
 #: app/Functions/Functions.php:2015 app/Functions/Functions.php:2030
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "үлкен ×%s немересі"
 
 #: app/Functions/Functions.php:2013 app/Functions/Functions.php:2028
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "үлкен ×%s немересі"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1885 app/Functions/Functions.php:1895
@@ -16986,1353 +16986,1353 @@ msgstr ""
 #: app/Functions/Functions.php:1927
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "үлкен ×%s атасы"
 
 #: app/Functions/Functions.php:1887 app/Functions/Functions.php:1897
 #: app/Functions/Functions.php:1907 app/Functions/Functions.php:1917
 #: app/Functions/Functions.php:1929
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "үлкен ×%s әже"
 
 #: app/Functions/Functions.php:1889 app/Functions/Functions.php:1899
 #: app/Functions/Functions.php:1909 app/Functions/Functions.php:1919
 #: app/Functions/Functions.php:1931
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "үлкен ×%s әже немесе атасы"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2011 app/Functions/Functions.php:2026
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "үлкен ×%s немересі"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1796 app/Functions/Functions.php:1809
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1770
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1772
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1774
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1800 app/Functions/Functions.php:1813
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1786
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1788
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1790
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1798 app/Functions/Functions.php:1811
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1778
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1780
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #: app/Functions/Functions.php:1782
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "үлкен ×%s жиен"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1610 app/Functions/Functions.php:1638
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "үлкен ×%s ағайынды"
 
 #: app/Functions/Functions.php:1620
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "үлкен ×%s ағайынды"
 
 #: app/Functions/Functions.php:1622
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "үлкен ×%s ағайынды"
 
 #: app/Functions/Functions.php:1624
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "үлкен ×%s ағайынды"
 
 #: app/Functions/Functions.php:1552
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "ұлы ×4 тайпасы"
 
 #: app/Functions/Functions.php:1554
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "ұлы ×4 аға / ағайынды"
 
 #: app/Functions/Functions.php:1967
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "үлкен ×4 немере"
 
 #: app/Functions/Functions.php:1965
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "үлкен ×4 немере"
 
 #: app/Functions/Functions.php:1843
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "үлкен ×4 ата"
 
 #: app/Functions/Functions.php:1845
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "үлкен ×4 әже"
 
 #: app/Functions/Functions.php:1847
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "үлкен × 4 үлкен әже"
 
 #: app/Functions/Functions.php:1963
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "үлкен ×4 немересі"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1714
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1726
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1728
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1730
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасын"
 
 #: app/Functions/Functions.php:1718
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасы"
 
 #: app/Functions/Functions.php:1720
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасы"
 
 #: app/Functions/Functions.php:1722
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "үлкен ×4 қарындасы"
 
 #: app/Functions/Functions.php:1545
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "үлкен ×4 ағайынды"
 
 #: app/Functions/Functions.php:1547
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "үлкен ×4 ағайынды"
 
 #: app/Functions/Functions.php:1549
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "үлкен ×4 ағайынды"
 
 #: app/Functions/Functions.php:1567
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "ұлы ×5 тайпасы"
 
 #: app/Functions/Functions.php:1569
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "үлкен ×5 тетя/ағайынды"
 
 #: app/Functions/Functions.php:1977
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "үлкен ×5 немере"
 
 #: app/Functions/Functions.php:1975
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "үлкен ×5 немере"
 
 #: app/Functions/Functions.php:1852
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "үлкен ×5 ата"
 
 #: app/Functions/Functions.php:1854
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "үлкен ×5 әже"
 
 #: app/Functions/Functions.php:1856
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "үлкен ×5 үлкен әже"
 
 #: app/Functions/Functions.php:1973
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "үлкен ×5 немересі"
 
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1741
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1753
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1755
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1757
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасын"
 
 #: app/Functions/Functions.php:1745
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасы"
 
 #: app/Functions/Functions.php:1747
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасы"
 
 #: app/Functions/Functions.php:1749
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "үлкен ×5 қарындасы"
 
 #: app/Functions/Functions.php:1560
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "үлкен ×5 ағайынды"
 
 #: app/Functions/Functions.php:1562
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "үлкен ×5 ағайынды"
 
 #: app/Functions/Functions.php:1564
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "үлкен ×5 ағайынды"
 
 #: app/Functions/Functions.php:1582
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "үлкен ×6 тайпасы"
 
 #: app/Functions/Functions.php:1584
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "үлкен ×6 аға/ағайынды"
 
 #: app/Functions/Functions.php:1987
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "үлкен ×6 немере"
 
 #: app/Functions/Functions.php:1985
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "үлкен ×6 немересі"
 
 #: app/Functions/Functions.php:1861
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "үлкен ×6 ата"
 
 #: app/Functions/Functions.php:1863
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "үлкен ×6 әже"
 
 #: app/Functions/Functions.php:1865
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "үлкен ×6 үлкен әже"
 
 #: app/Functions/Functions.php:1983
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "үлкен ×6 немересі"
 
 #: app/Functions/Functions.php:1575
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "үлкен × 6 ағайынды"
 
 #: app/Functions/Functions.php:1577
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "үлкен × 6 ағайынды"
 
 #: app/Functions/Functions.php:1579
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "үлкен × 6 ағайынды"
 
 #: app/Functions/Functions.php:1597
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "үлкен × 7 тайпасы"
 
 #: app/Functions/Functions.php:1599
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "үлкен ×7 тетя / ағайынды"
 
 #: app/Functions/Functions.php:1997
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "үлкен ×7 немере"
 
 #: app/Functions/Functions.php:1995
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "үлкен ×7 немересі"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "үлкен ×7 ата"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "үлкен ×7 әже"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "үлкен ×7 үлкен әже"
 
 #: app/Functions/Functions.php:1993
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "үлкен ×7 немересі"
 
 #: app/Functions/Functions.php:1590
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "үлкен ×7 ағайынды"
 
 #: app/Functions/Functions.php:1592
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "үлкен ×7 ағайынды"
 
 #: app/Functions/Functions.php:1594
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "үлкен × 7 ағайынды"
 
 #: app/Functions/Functions.php:1345
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1077
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1351
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1089
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1357
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1101
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1363
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1139
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1369
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1157
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1375
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1169
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1381
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1191
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1387
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1203
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1393
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1215
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "үлкен-аға"
 
 #: app/Functions/Functions.php:1075
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1347
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1087
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1353
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1099
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1359
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1137
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1365
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1155
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1371
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1167
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1377
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1189
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1383
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1201
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1389
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1213
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1395
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "үлкен аға / ағайынды"
 
 #: app/Functions/Functions.php:1009
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1015
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1023
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1031
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1037
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1051
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1311
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1317
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1325
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "шөбересі"
 
 #: app/Functions/Functions.php:1011
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1017
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1025
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1033
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1039
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1053
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1313
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1319
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1327
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1069
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1081
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1093
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1131
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1149
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1161
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1183
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1195
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1207
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "үлкен ата"
 
 #: app/Functions/Functions.php:1071
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1083
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1095
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1133
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1151
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1163
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1185
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1197
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1209
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "үлкен әже"
 
 #: app/Functions/Functions.php:1073
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1085
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1097
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1135
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1153
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1165
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1187
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1199
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1211
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "үлкен ата-анасы"
 
 #: app/Functions/Functions.php:1013
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1021
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1027
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1035
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1043
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1055
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1315
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1323
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1329
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "ұлы немересі"
 
 #: app/Functions/Functions.php:1522
 msgid "great-great-aunt"
-msgstr ""
+msgstr "үлкен ұлы-аға"
 
 #: app/Functions/Functions.php:1524
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "үлкен ұлы-аға / ағайынды"
 
 #: app/Functions/Functions.php:1947
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "Үлкен ұлы шөбересі"
 
 #: app/Functions/Functions.php:1945
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "үлкен ұлы немересі"
 
 #: app/Functions/Functions.php:1825
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "үлкен-үлкен ата"
 
 #: app/Functions/Functions.php:1827
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "ұлы әже"
 
 #: app/Functions/Functions.php:1829
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "ұлы-үлкен апасы"
 
 #: app/Functions/Functions.php:1943
 msgid "great-great-grandson"
-msgstr ""
+msgstr "үлкен ұлы немересі"
 
 #: app/Functions/Functions.php:1537
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "үлкен-ұлы-ұлы-аға"
 
 #: app/Functions/Functions.php:1539
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "үлкен ұлы-ұлы-адал / ағайынды"
 
 #: app/Functions/Functions.php:1957
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "ұлы ұлы ұлы немере"
 
 #: app/Functions/Functions.php:1955
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "ұлы ұлы ұлы немере"
 
 #: app/Functions/Functions.php:1834
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "ұлы ұлы үлкен ата"
 
 #: app/Functions/Functions.php:1836
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "үлкен ұлы әже"
 
 #: app/Functions/Functions.php:1838
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "ұлы ұлы-үлкен-үлкен әжелер"
 
 #: app/Functions/Functions.php:1953
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "ұлы ұлы ұлы немере"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1687
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1699
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1701
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1703
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы қарындасы"
 
 #: app/Functions/Functions.php:1691
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы інісі"
 
 #: app/Functions/Functions.php:1693
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы інісі"
 
 #: app/Functions/Functions.php:1695
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ұлы інісі"
 
 #: app/Functions/Functions.php:1530
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "үлкен-ұлы-үлкен-аға"
 
 #: app/Functions/Functions.php:1532
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "үлкен-ұлы-үлкен-аға"
 
 #: app/Functions/Functions.php:1534
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "үлкен-ұлы-үлкен-аға"
 
 #: app/Functions/Functions.php:1656
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1658
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1660
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1672
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын / қарындасы"
 
 #: app/Functions/Functions.php:1674
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын / қарындасы"
 
 #: app/Functions/Functions.php:1676
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "ұлы ұлы-қарындасын / қарындасы"
 
 #: app/Functions/Functions.php:1664
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ағасы"
 
 #: app/Functions/Functions.php:1666
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ағасы"
 
 #: app/Functions/Functions.php:1668
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "ұлы ұлы ағасы"
 
 #: app/Functions/Functions.php:1515
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "үлкен ұлы"
 
 #: app/Functions/Functions.php:1517
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "үлкен ұлы"
 
 #: app/Functions/Functions.php:1519
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "үлкен ұлы"
 
 #: app/Functions/Functions.php:958
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:978
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:996
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1260
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1280
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1304
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:960
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:980
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:998
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1262
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1282
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1306
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1229
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1237
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:1243
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "ұлы-қарындасын"
 
 #: app/Functions/Functions.php:946
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:964
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:984
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1248
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1266
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1292
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:948
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:966
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:986
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1250
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1268
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1294
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1225
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1231
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:1239
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "ұлы қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:952
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:970
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:990
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1254
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1272
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1298
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:954
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:972
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:992
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1256
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1274
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1300
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1227
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1233
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1241
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "ұлы ағасы"
 
 #: app/Functions/Functions.php:1067
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1349
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1079
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1355
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1091
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1361
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1129
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1367
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1147
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1373
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1159
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1379
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1181
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1385
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1193
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1391
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1205
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #: app/Functions/Functions.php:1397
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "үлкен ағасы"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:65
 msgid "half circle"
-msgstr ""
+msgstr "жарты шеңбер"
 
 #: app/Functions/Functions.php:823
 msgctxt "father’s son"
@@ -18352,136 +18352,136 @@ msgstr "өгей аға"
 #: app/Functions/Functions.php:809
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "ағасы немесе әпкесі"
 
 #: app/Functions/Functions.php:845
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "ағасы немесе әпкесі"
 
 #: app/Functions/Functions.php:865
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "ағасы немесе әпкесі"
 
 #: app/Functions/Functions.php:811
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "жартылай әпкеме"
 
 #: app/Functions/Functions.php:847
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "жартылай әпкеме"
 
 #: app/Functions/Functions.php:867
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "жартылай әпкеме"
 
 #: statistics.php:561
 msgid "half-year after marriage"
-msgstr ""
+msgstr "некеден кейінгі жарты жыл"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:274
 msgid "herself"
-msgstr ""
+msgstr "өзі"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:812
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "сс:мм немесе сс:мм:сс"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:272
 msgid "himself"
-msgstr ""
+msgstr "өзі"
 
 #: app/Functions/Functions.php:673 edit_interface.php:1473
 #: edit_interface.php:1512
 msgid "husband"
-msgstr ""
+msgstr "күйеуі"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
 msgid "immigration name"
-msgstr ""
+msgstr "иммиграция атауы"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "иммиграция атауы"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "иммиграция атауы"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:3389
 msgid "import"
-msgstr ""
+msgstr "импорт"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "интерпретацияланған %s (%s)"
 
 #: statistics.php:573
 msgid "interval one child"
-msgstr ""
+msgstr "аралықта бір бала"
 
 #: statistics.php:576
 msgid "interval two children"
-msgstr ""
+msgstr "аралығы екі бала"
 
 #: search.php:153 search.php:357
 msgid "invert selection"
-msgstr ""
+msgstr "іріктеуді ауыстырыңыз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "қосымша күндер"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "қосымша күндер"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "қосымша күндер"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "қосымша күндер"
 
 #. I18N: A button label, last page
 #: admin_trees_config.php:995 app/Datatables.php:50 app/I18N.php:181
 #: medialist.php:166 medialist.php:254
 msgid "last"
-msgstr ""
+msgstr "соңғы"
 
 #: admin_trees_config.php:1006
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "соңғы"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:140
 msgid "link"
-msgstr ""
+msgstr "сілтеме"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:34 app/Module/OnThisDayModule.php:150
@@ -18490,76 +18490,76 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:180
 #: app/Module/YahrzeitModule.php:202
 msgid "list"
-msgstr ""
+msgstr "тізім"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "қыз кезіндегі тегі"
 
 #: resources/views/admin/tree-privacy.php:131
 msgid "managers"
-msgstr ""
+msgstr "менеджерлер"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:46
 msgid "markdown"
-msgstr ""
+msgstr "таңбалау"
 
 #: app/Stats.php:2913
 msgid "marriage"
-msgstr ""
+msgstr "неке"
 
 #: modules_v3/descendancy_report/report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "үйленген"
 
 #: modules_v3/descendancy_report/report.xml:176
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "үйленген"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr ""
+msgstr "некеде тұрған аты"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "некеде тұрған аты"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "некеде тұрған аты"
 
 #: app/Functions/Functions.php:849
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "ана атасы"
 
 #: app/Functions/Functions.php:853
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "ана әжесі"
 
 #: app/Functions/Functions.php:855
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "ана мен әжесі"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:75
 msgid "matrilineal"
-msgstr ""
+msgstr "ананың тарапынан"
 
 #: app/Module/GoogleMapsModule.php:357
 msgid "maximum"
-msgstr ""
+msgstr "максимум"
 
 #: app/Module/RecentChangesModule.php:139
 #: app/Module/UpcomingAnniversariesModule.php:153
@@ -18567,8 +18567,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "максимум %s күн"
+msgstr[1] "максимум %s күн"
 
 #: resources/views/admin/tree-privacy.php:24
 #: resources/views/admin/tree-privacy.php:48
@@ -18576,102 +18576,102 @@ msgstr[1] ""
 #: resources/views/admin/tree-privacy.php:130
 #: resources/views/admin/tree-privacy.php:150
 msgid "members"
-msgstr ""
+msgstr "мүшелері"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:81
 msgid "midnight"
-msgstr ""
+msgstr "түн ортасы"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:90
 msgid "minimal"
-msgstr ""
+msgstr "минималды"
 
 #: app/Module/GoogleMapsModule.php:347
 msgid "minimum"
-msgstr ""
+msgstr "минимум"
 
 #: statistics.php:552
 msgid "months after marriage"
-msgstr ""
+msgstr "некеге дейінгі айлар"
 
 #: statistics.php:555
 msgid "months before and after marriage"
-msgstr ""
+msgstr "некеге дейінгі және кейінгі айлар"
 
 #: app/Functions/Functions.php:660
 msgid "mother"
-msgstr ""
+msgstr "ана"
 
 #: app/Functions/Functions.php:835
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "қайын ене"
 
 #: app/Functions/Functions.php:915
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "қайын ене"
 
 #: app/Functions/Functions.php:933
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "қайын ене"
 
 #: app/Functions/Functions.php:921
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "анасы / қайын атасы"
 
 #: app/Functions/Functions.php:783
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "жиен"
 
 #: app/Functions/Functions.php:887
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "жиен"
 
 #: app/Functions/Functions.php:897
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "жиен"
 
 #: app/Functions/Functions.php:975
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "жезөкше"
 
 #: app/Functions/Functions.php:1235
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "жезөкше"
 
 #: app/Functions/Functions.php:1277
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "жезөкше"
 
 #: app/Functions/Functions.php:779
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:883
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "қарындасы / қарындасы"
 
 #: app/Functions/Functions.php:891
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "қарындасы / қарындасы"
 
 #: app/Functions/FunctionsEdit.php:816
 msgid "never"
-msgstr ""
+msgstr "ешқашан"
 
 #. I18N: A button label, next page
 #: app/Datatables.php:51 app/I18N.php:182 app/Module/BatchUpdateModule.php:247
@@ -18682,52 +18682,52 @@ msgstr ""
 #: resources/views/setup/step-4-database-name.php:56
 #: resources/views/setup/step-5-administrator.php:76
 msgid "next"
-msgstr ""
+msgstr "Келесі"
 
 #: app/Functions/Functions.php:781
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "немере"
 
 #: app/Functions/Functions.php:885
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "немере"
 
 #: app/Functions/Functions.php:893
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "немере"
 
 #: app/Functions/Functions.php:1001
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "келіншек"
 
 #: app/Functions/Functions.php:1245
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "келіншек"
 
 #: app/Functions/Functions.php:1309
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "келіншек"
 
 #: app/Functions/Functions.php:544
 msgid "ninth cousin"
-msgstr ""
+msgstr "тоғызыншы кузен"
 
 #: app/Functions/Functions.php:509
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "тоғызыншы кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:467
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "тоғызыншы кузен"
 
 #: admin_users.php:248 admin_users.php:249 app/Functions/FunctionsEdit.php:144
 #: app/Functions/FunctionsEdit.php:190
@@ -18744,7 +18744,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr ""
+msgstr "жоқ"
 
 #. I18N: None of the other options
 #: admin_site_config.php:109 admin_trees_config.php:45
@@ -18752,28 +18752,28 @@ msgstr ""
 #: app/Module/FamilyNavigatorModule.php:268
 #: app/Module/RelationshipsChartModule.php:145
 msgid "none"
-msgstr ""
+msgstr "жоқ"
 
 #: app/SurnameTradition.php:91
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "жоқ"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:87
 msgid "noon"
-msgstr ""
+msgstr "талтүс"
 
 #: app/Module/GoogleMapsModule.php:3056
 msgid "north"
-msgstr ""
+msgstr "солтүстік"
 
 #: statistics.php:685 statisticsplot.php:816 statisticsplot.php:862
 #: statisticsplot.php:912 statisticsplot.php:958 statisticsplot.php:1008
 #: statisticsplot.php:1050 statisticsplot.php:1092 statisticsplot.php:1134
 #: statisticsplot.php:1176
 msgid "numbers"
-msgstr ""
+msgstr "сандар"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -18787,80 +18787,80 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "of"
-msgstr ""
+msgstr "оның ішінде"
 
 #: app/Functions/FunctionsPrint.php:317
 msgid "on the date of death"
-msgstr ""
+msgstr "қайтыс болған күні"
 
 #: statistics.php:641
 msgid "overall"
-msgstr ""
+msgstr "жалпы"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:90
 msgid "p.m."
-msgstr ""
+msgstr "p.m."
 
 #: app/Functions/Functions.php:664
 msgid "parent"
-msgstr ""
+msgstr "ата-анасы"
 
 #: app/Functions/Functions.php:718
 msgid "partner"
-msgstr ""
+msgstr "серіктес"
 
 #: app/Functions/Functions.php:700
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "серіктес"
 
 #: app/Functions/Functions.php:682
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "серіктес"
 
 #: app/SurnameTradition.php:70
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "әкенің"
 
 #: app/Functions/Functions.php:813
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "атасының атасы"
 
 #: app/Functions/Functions.php:815
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "әке әжесі"
 
 #: app/Functions/Functions.php:817
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "атасы және әжесі"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:73
 msgid "patrilineal"
-msgstr ""
+msgstr "патрилиналдық"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/Controllers/AdminController.php:685
 msgid "pending"
-msgstr ""
+msgstr "күтуде"
 
 #: statistics.php:690 statisticsplot.php:829 statisticsplot.php:875
 #: statisticsplot.php:925 statisticsplot.php:971 statisticsplot.php:1021
 #: statisticsplot.php:1063 statisticsplot.php:1105 statisticsplot.php:1147
 #: statisticsplot.php:1189
 msgid "percentage"
-msgstr ""
+msgstr "пайызбен"
 
 #. I18N: A button label.
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr ""
+msgstr "алдын-ала қарау"
 
 #. I18N: A button label, previous page
 #: app/Datatables.php:52 app/I18N.php:183 app/Module/BatchUpdateModule.php:246
@@ -18870,75 +18870,75 @@ msgstr ""
 #: resources/views/setup/step-4-database-name.php:60
 #: resources/views/setup/step-5-administrator.php:80
 msgid "previous"
-msgstr ""
+msgstr "алдыңғы"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "алғашқы дәлелдемелер"
 
 #: statistics.php:558
 msgid "quarters after marriage"
-msgstr ""
+msgstr "некеден кейінгі тоқсан"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "күмәнді дәлелдемелер"
 
 #: admin_trees_config.php:52 modules_v3/fact_sources/report.xml:6
 msgid "records"
-msgstr ""
+msgstr "жазбалар"
 
 #: family.php:46 gedrecord.php:59 individual.php:60 mediaviewer.php:40
 #: note.php:48 repo.php:47 source.php:47
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "қабыл алмау"
 
 #: family.php:36 gedrecord.php:49 individual.php:50 mediaviewer.php:33
 #: note.php:38 repo.php:37 source.php:37
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "қабыл алмау"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/Controllers/AdminController.php:684
 msgid "rejected"
-msgstr ""
+msgstr "қабылдамады"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "діни атауы"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "діни атауы"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "діни атауы"
 
 #. I18N: A button label.
 #: search.php:244
 msgid "replace"
-msgstr ""
+msgstr "ауыстырыңыз"
 
 #. I18N: a program feature
 #: app/Http/Controllers/SetupController.php:435
 #: app/Http/Controllers/SetupController.php:436
 msgid "reporting"
-msgstr ""
+msgstr "есеп беру"
 
 #. I18N: A button label.
 #: lifespan.php:117 medialist.php:122 timeline.php:429
 msgid "reset"
-msgstr ""
+msgstr "қалпына келтіру"
 
 #. I18N: A button label.
 #: admin_site_config.php:650 admin_trees_config.php:1393 admin_users.php:647
@@ -18961,344 +18961,344 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.php:56
 #: resources/views/modals/footer-save-cancel.php:7
 msgid "save"
-msgstr ""
+msgstr "сақтау"
 
 #. I18N: A button label.
 #: admin_site_logs.php:304 medialist.php:119
 #: resources/views/admin/changes-log.php:91 search.php:166 search.php:369
 #: search_advanced.php:326
 msgid "search"
-msgstr ""
+msgstr "іздеу"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:610
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "екінші %s"
 
 #: app/Functions/Functions.php:595
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "екінші %s"
 
 #: app/Functions/Functions.php:580
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "екінші %s"
 
 #: app/Functions/Functions.php:530
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:495
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:446
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1454
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1450
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1452
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1466
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1462
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1464
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1460
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1456
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1458
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1472
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1468
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1470
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1484
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1480
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1482
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1478
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1474
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1476
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1490
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1486
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1488
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1502
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1498
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1500
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1496
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1492
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #: app/Functions/Functions.php:1494
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "екінші кузен"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "қайталама дәлелдемелер"
 
 #. I18N: select all (of the family trees)
 #: search.php:150 search.php:354
 msgid "select all"
-msgstr ""
+msgstr "бәрін таңдаңыз"
 
 #. I18N: select none (of the family trees)
 #: search.php:151 search.php:355
 msgid "select none"
-msgstr ""
+msgstr "ешкімді таңдаңыз"
 
 #: app/Functions/Functions.php:657
 msgid "self"
-msgstr ""
+msgstr "өзін"
 
 #: app/Functions/Functions.php:540
 msgid "seventh cousin"
-msgstr ""
+msgstr "жетінші кузен"
 
 #: app/Functions/Functions.php:505
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "жетінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:461
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "жетінші кузен"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:459
 #: app/Module/StoriesModule.php:354
 msgid "show"
-msgstr ""
+msgstr "көрсету"
 
 #: statistics.php:697
 msgid "show the chart"
-msgstr ""
+msgstr "диаграмманы көрсету"
 
 #: app/Functions/Functions.php:775
 msgid "sibling"
-msgstr ""
+msgstr "ағайынды"
 
 #. I18N: A button label.
 #: login.php:201 resources/views/blocks/sign-in.php:23
 msgid "sign in"
-msgstr ""
+msgstr "кіру"
 
 #. I18N: A button label.
 #: resources/views/blocks/sign-out.php:9
 msgid "sign out"
-msgstr ""
+msgstr "шығу"
 
 #: app/Functions/Functions.php:758
 msgid "sister"
-msgstr ""
+msgstr "апай"
 
 #: app/Functions/Functions.php:785
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:1007
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:1117
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:839
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:1289
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:917
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:1339
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:937
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "қайын апа"
 
 #: app/Functions/Functions.php:538
 msgid "sixth cousin"
-msgstr ""
+msgstr "алтыншы кузен"
 
 #: app/Functions/Functions.php:503
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "алтыншы кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:458
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "алтыншы кузен"
 
 #: app/Functions/Functions.php:720 app/Functions/FunctionsCharts.php:291
 #: edit_interface.php:1553
 msgid "son"
-msgstr ""
+msgstr "ұл"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr ""
+msgstr "ұлы"
 
 #: app/Functions/Functions.php:791
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "күйеу бала"
 
 #: app/Functions/Functions.php:803
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "күйеу бала"
 
 #: app/Functions/Functions.php:1045
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "күйеу баласының әкесі"
 
 #: app/Functions/Functions.php:1047
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "күйеу баласының анасы"
 
 #: app/Functions/Functions.php:1049
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "күйеу баланың ата-анасы"
 
 #: app/Functions/Functions.php:795
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "ұлы / келіні"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:159
 #: app/Module/UpcomingAnniversariesModule.php:189
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "күні бойынша сұрыптау"
 
 #. I18N: A button label.
 #: edit_interface.php:1958 modules_v3/bdm_report/report.xml:11
@@ -19308,28 +19308,28 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "туған күніне қарай сұрыптау"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "қайтыс болған күні бойынша сұрыптау"
 
 #. I18N: A button label.
 #: edit_interface.php:2058 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "некеге тұру күні бойынша сұрыптау"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:154
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "күні бойынша сұрыптау, алдымен ең жаңа"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:153
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "күні бойынша сұрыптау, ең ескі"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:159 app/Module/RecentChangesModule.php:152
@@ -19343,126 +19343,126 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr ""
+msgstr "аты бойынша сұрыптау"
 
 #: app/Module/GoogleMapsModule.php:3059
 msgid "south"
-msgstr ""
+msgstr "оңтүстік"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1479
 #: edit_interface.php:1490 edit_interface.php:1518 edit_interface.php:1530
 msgid "spouse"
-msgstr ""
+msgstr "жұбай"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:110 app/Functions/FunctionsEdit.php:269
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #: app/Functions/Functions.php:1115
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "өгей аға"
 
 #: app/Functions/Functions.php:1145
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "өгей аға"
 
 #: app/Functions/Functions.php:1223
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "өгей аға"
 
 #: app/Functions/Functions.php:829
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "өгей бала"
 
 #: app/Functions/Functions.php:909
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "өгей бала"
 
 #: app/Functions/Functions.php:927
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "өгей бала"
 
 #: app/Functions/Functions.php:831
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "өгей"
 
 #: app/Functions/Functions.php:911
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "өгей"
 
 #: app/Functions/Functions.php:929
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "өгей"
 
 #: app/Functions/Functions.php:851 app/Module/FamilyNavigatorModule.php:232
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "өгей әке"
 
 #: app/Functions/Functions.php:825 app/Module/FamilyNavigatorModule.php:232
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "өгей шеше"
 
 #: app/Functions/Functions.php:881
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "өгей ата-анасы"
 
 #: app/Functions/Functions.php:1111
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "сіңлісі"
 
 #: app/Functions/Functions.php:1141
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "сіңлісі"
 
 #: app/Functions/Functions.php:1219
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "сіңлісі"
 
 #: app/Functions/Functions.php:1113
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "әпке-қарындас"
 
 #: app/Functions/Functions.php:1143
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "әпке-қарындас"
 
 #: app/Functions/Functions.php:1221
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "әпке-қарындас"
 
 #: app/Functions/Functions.php:841
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "қадам-ұл"
 
 #: app/Functions/Functions.php:919
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "қадам-ұл"
 
 #: app/Functions/Functions.php:939
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "қадам-ұл"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:35 app/Module/OnThisDayModule.php:150
@@ -19471,198 +19471,198 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:180
 #: app/Module/YahrzeitModule.php:202
 msgid "table"
-msgstr ""
+msgstr "кесте"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:36 app/Module/TopSurnamesModule.php:179
 msgid "tag cloud"
-msgstr ""
+msgstr "тег бұлты"
 
 #: app/Functions/Functions.php:546
 msgid "tenth cousin"
-msgstr ""
+msgstr "оныншы кузен"
 
 #: app/Functions/Functions.php:511
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "оныншы кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:470
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "оныншы кузен"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.php:16
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr ""
+msgstr "«/data/config.ini.php» файлындағы дерекқордың қосылым параметрлері әлі де дұрыс"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.php:19
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr ""
+msgstr "«/ data» қалтасына және «/data/config.ini.php» файлында веб-сервердің оқылуына рұқсат беретін рұқсаттар бар"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:276
 msgid "themself"
-msgstr ""
+msgstr "өздері"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
 #, php-format
 msgid "third %s"
-msgstr ""
+msgstr "үшінші %s"
 
 #: app/Functions/Functions.php:597
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "үшінші %s"
 
 #: app/Functions/Functions.php:582
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "үшінші %s"
 
 #: app/Functions/Functions.php:532
 msgid "third cousin"
-msgstr ""
+msgstr "үшінші кузен"
 
 #: app/Functions/Functions.php:497
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "үшінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:449
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "үшінші кузен"
 
 #: app/Functions/Functions.php:552
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "он үшінші кузен"
 
 #: app/Functions/Functions.php:517
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "он үшінші кузен"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:479
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "он үшінші кузен"
 
 #: resources/views/admin/tree-privacy.php:238
 msgid "this record does not exist"
-msgstr ""
+msgstr "бұл жазба жоқ"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:66
 msgid "three-quarter circle"
-msgstr ""
+msgstr "шеңбердің төрттен үш бөлігі"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:111 app/Functions/FunctionsEdit.php:270
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "%s дейін"
 
 #: app/Functions/Functions.php:550
 msgid "twelfth cousin"
-msgstr ""
+msgstr "он екінші ағасы"
 
 #: app/Functions/Functions.php:515
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "он екінші ағасы"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:476
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "он екінші ағасы"
 
 #: app/Functions/Functions.php:732
 msgid "twin brother"
-msgstr ""
+msgstr "егіз ағасы"
 
 #: app/Functions/Functions.php:766
 msgid "twin sibling"
-msgstr ""
+msgstr "егіз бауырлас"
 
 #: app/Functions/Functions.php:749
 msgid "twin sister"
-msgstr ""
+msgstr "егіз апа"
 
 #: app/Functions/Functions.php:807
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Functions/Functions.php:1107
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Functions/Functions.php:843
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Functions/Functions.php:1175
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Functions/Functions.php:863
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Functions/Functions.php:1217
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "аға"
 
 #: app/Module/FamilyNavigatorModule.php:196
 #: app/Module/GoogleMapsModule.php:1737 app/Module/GoogleMapsModule.php:1778
 #: app/Module/GoogleMapsModule.php:3297 app/Place.php:145
 msgid "unknown"
-msgstr ""
+msgstr "белгісіз"
 
 #: app/Module/FamilyNavigatorModule.php:238
 #: app/Module/InteractiveTree/TreeView.php:314
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "белгісіз"
 
 #: app/Module/RelationshipsChartModule.php:149
 msgid "unlimited"
-msgstr ""
+msgstr "шектеусіз"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "сенімсіз дәлелдемелер"
 
 #. I18N: A button label.
 #: admin_trees_places.php:102 admin_trees_unconnected.php:87
 msgid "update"
-msgstr ""
+msgstr "жаңарту"
 
 #. I18N: A button label.
 #: admin_media_upload.php:224 app/Module/GoogleMapsModule.php:3365
 msgid "upload"
-msgstr ""
+msgstr "жүктеу"
 
 #. I18N: A button label.
 #: ancestry.php:85 app/Module/GoogleMapsModule.php:1041 branches.php:59
@@ -19672,7 +19672,7 @@ msgstr ""
 #: resources/views/family-book-page.php:53
 #: resources/views/interactive-tree-page.php:25
 msgid "view"
-msgstr ""
+msgstr "көзқарас"
 
 #: resources/views/admin/tree-privacy.php:23
 #: resources/views/admin/tree-privacy.php:47
@@ -19680,78 +19680,78 @@ msgstr ""
 #: resources/views/admin/tree-privacy.php:129
 #: resources/views/admin/tree-privacy.php:149
 msgid "visitors"
-msgstr ""
+msgstr "келушілер"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "туылған"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:102
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "туылған"
 
 #: app/Theme/WebtreesTheme.php:90
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtrees PhpGedView дерекқорына қосыла алмады:%s."
 
 #: message.php:27 message.php:264
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees хабарламасы"
 
 #: resources/views/setup/step-3-database-connection.php:16
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees MySQL дерекқорына, %s немесе одан кейінгі нұсқасына қажет."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:311
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr ""
+msgstr "webtrees құпиясөзді еске салғыштар және веб-сайт хабарландырулары сияқты электрондық хаттарды жіберу керек. Ол үшін бұл сервердің PHP поштасында орнатылған (ол әрдайым қол жетімді емес) немесе сыртқы SMTP (пошта релизі) қызметін пайдалануы мүмкін, ол үшін қосылым мәліметтерін беру қажет."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:387
 msgid "webtrees reply address"
-msgstr ""
+msgstr "webtrees жауап мекенжайы"
 
 #: app/Functions/FunctionsEdit.php:131
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees сақтаусыз электрондық хаттарды жібереді"
 
 #: admin_trees_download.php:195
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees UTF-8 шифрланған әріптерді, арнайы таңбаларды және латын емес сценарийлерді пайдаланады. Егер осы GEDCOM файлын UTF-8 қолдамайтын генеалогиялық бағдарламалық жасақтамамен қолданғыңыз келсе, оны ISO-8859-1 кодтауы арқылы жасауға болады."
 
 #: admin_trees_manage.php:745
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "webtrees дерекқоры PhpGedView сияқты бір серверде болуы керек"
 
 #: app/Module/GoogleMapsModule.php:3076
 msgid "west"
-msgstr ""
+msgstr "батыс"
 
 #: app/Functions/Functions.php:691 edit_interface.php:1476
 #: edit_interface.php:1515
 msgid "wife"
-msgstr ""
+msgstr "әйелі"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:90
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:132
 msgid "years"
-msgstr ""
+msgstr "жылдар"
 
 #: admin_users.php:248 admin_users.php:249 app/Functions/FunctionsEdit.php:145
 #: app/Functions/FunctionsEdit.php:191 app/Functions/FunctionsPrint.php:358
@@ -19768,53 +19768,53 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "иә"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.php:22
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "дерекқорға phpmyadmin сияқты басқа қолданбалармен қосылуға болады"
 
 #: app/Functions/Functions.php:734
 msgid "younger brother"
-msgstr ""
+msgstr "іні"
 
 #: app/Functions/Functions.php:768
 msgid "younger sibling"
-msgstr ""
+msgstr "кіші інісі"
 
 #: app/Functions/Functions.php:751
 msgid "younger sister"
-msgstr ""
+msgstr "сіңлі"
 
 #: search_advanced.php:104 search_advanced.php:108 search_advanced.php:112
 #: search_advanced.php:171 search_advanced.php:174 search_advanced.php:177
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s жыл"
+msgstr[1] "±%s жыл"
 
 #: app/Individual.php:1186
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "\"%s\""
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "\"%s\" сіздің таңдаулыларыңызға қосылды."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:40
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" жойылды."
 
 #: app/Functions/FunctionsPrint.php:102 app/Note.php:108
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:542 app/Family.php:342
 #: app/Family.php:360 app/Individual.php:1181 app/Individual.php:1272
@@ -19822,7 +19822,7 @@ msgstr ""
 #: famlist.php:85 indilist.php:85
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Controller/IndividualListController.php:560 app/Family.php:342
 #: app/Family.php:360 app/Individual.php:1180 app/Individual.php:1272
@@ -19832,4 +19832,4 @@ msgstr ""
 #: indilist.php:74 indilist.php:96
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
