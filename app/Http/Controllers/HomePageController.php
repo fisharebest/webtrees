@@ -260,8 +260,7 @@ class HomePageController extends AbstractBaseController {
 		}
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $WT_TREE, $ctype, $controller;
-		$WT_TREE    = $tree;
+		global $ctype, $controller;
 		$ctype      = 'gedcom';
 		$controller = $this;
 
