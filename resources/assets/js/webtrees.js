@@ -607,11 +607,6 @@ function paste_char (value) {
   }
 }
 
-function ilinkitem (mediaid, type, ged) {
-  window.open('inverselink.php?mediaid=' + encodeURIComponent(mediaid) + '&linkto=' + encodeURIComponent(type) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
-  return false;
-}
-
 /**
  * Persistant checkbox options to hide/show extra data.
 

@@ -502,6 +502,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'import.php',
 		WT_ROOT . 'index_edit.php',
 		WT_ROOT . 'indilist.php',
+		WT_ROOT . 'inverselink.php',
 		WT_ROOT . 'lifespan.php',
 		WT_ROOT . 'login.php',
 		WT_ROOT . 'logout.php',

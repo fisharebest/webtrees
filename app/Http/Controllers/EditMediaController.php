@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -376,6 +377,83 @@ class EditMediaController extends AbstractBaseController {
 				'url'   => $record->url(),
 			]),
 		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkMediaToIndividual(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$media = Media::getInstance($xref, $tree);
+
+		return new Response(view('modals/link-media-to-individual', [
+			'media' => $media,
+			'tree'  => $tree,
+		]));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkMediaToFamily(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$media = Media::getInstance($xref, $tree);
+
+		return new Response(view('modals/link-media-to-family', [
+			'media' => $media,
+			'tree'  => $tree,
+		]));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkMediaToSource(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+
+		$media = Media::getInstance($xref, $tree);
+
+		return new Response(view('modals/link-media-to-source', [
+			'media' => $media,
+			'tree'  => $tree,
+		]));
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkMediaToRecordAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref');
+		$link = $request->get('link');
+
+		$media  = Media::getInstance($xref, $tree);
+		$record = GedcomRecord::getInstance($link, $tree);
+
+		$record->createFact('1 OBJE @' . $xref . '@', true);
+
+		return new RedirectResponse($media->url());
 	}
 
 	/**

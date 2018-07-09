@@ -7,16 +7,24 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    $('#wt-ajax-modal').on('show.bs.modal', function (event) {
-      let modal_content = this.querySelector('.modal-content');
+    $("#wt-ajax-modal")
+      .on("show.bs.modal", function (event) {
+        let modal_content = this.querySelector(".modal-content");
 
-      // If we need to paste the result into a select2 control
-      modal_content.dataset.selectId = event.relatedTarget.dataset.selectId;
+        // If we need to paste the result into a select2 control
+        modal_content.dataset.selectId = event.relatedTarget.dataset.selectId;
 
-      // Clear existing content (to prevent FOUC) and load new content.
-      $(modal_content)
-        .empty()
-        .load(event.relatedTarget.dataset.href);
-    });
+        // Clear existing content (to prevent FOUC) and load new content.
+        $(modal_content)
+          .empty()
+          .load(event.relatedTarget.dataset.href);
+      })
+      .on("shown.bs.modal", function (event) {
+        // Activate autocomplete fields
+        $(".select2", $(this)).select2({
+          dropdownParent: $(this),
+          escapeMarkup: function (x) { return x }
+        });
+      });
   });
 </script>
