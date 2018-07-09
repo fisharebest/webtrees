@@ -729,7 +729,7 @@ class Tree {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			FunctionsImport::acceptAllChanges($xref, $this->tree_id);
+			FunctionsImport::acceptAllChanges($xref, $this);
 		}
 		// Return the newly created record. Note that since GedcomRecord
 		// has a cache of pending changes, we cannot use it to create a

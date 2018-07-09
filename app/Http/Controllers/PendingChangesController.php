@@ -119,10 +119,10 @@ class PendingChangesController extends AbstractBaseController {
 		foreach ($changes as $change) {
 			if (empty($change->new_gedcom)) {
 				// delete
-				FunctionsImport::updateRecord($change->old_gedcom, $tree->getTreeId(), true);
+				FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
 			} else {
 				// add/update
-				FunctionsImport::updateRecord($change->new_gedcom, $tree->getTreeId(), false);
+				FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
 			}
 			Database::prepare(
 				"UPDATE `##change` SET status = 'accepted' WHERE change_id = :change_id"
@@ -164,7 +164,7 @@ class PendingChangesController extends AbstractBaseController {
 				FlashMessages::addMessage(/* I18N: %s is the name of a genealogy record */
 					I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 			}
-			FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
+			FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree());
 		}
 
 		return new Response;

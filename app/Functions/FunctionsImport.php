@@ -1082,29 +1082,33 @@ class FunctionsImport {
 	 * Accept all pending changes for a specified record.
 	 *
 	 * @param string $xref
-	 * @param int    $ged_id
+	 * @param Tree   $tree
 	 */
-	public static function acceptAllChanges($xref, $ged_id) {
+	public static function acceptAllChanges($xref, Tree $tree) {
 		$changes = Database::prepare(
 			"SELECT change_id, gedcom_name, old_gedcom, new_gedcom" .
 			" FROM `##change` c" .
 			" JOIN `##gedcom` g USING (gedcom_id)" .
-			" WHERE c.status='pending' AND xref=? AND gedcom_id=?" .
+			" WHERE c.status='pending' AND xref = :xref AND gedcom_id = :tree_id" .
 			" ORDER BY change_id"
-		)->execute([$xref, $ged_id])->fetchAll();
+		)->execute([
+			'xref'    => $xref,
+			'tree_id' => $tree->getTreeId(),
+		])->fetchAll();
 		foreach ($changes as $change) {
 			if (empty($change->new_gedcom)) {
 				// delete
-				self::updateRecord($change->old_gedcom, $ged_id, true);
+				self::updateRecord($change->old_gedcom, $tree, true);
 			} else {
 				// add/update
-				self::updateRecord($change->new_gedcom, $ged_id, false);
+				self::updateRecord($change->new_gedcom, $tree, false);
 			}
 			Database::prepare(
-				"UPDATE `##change`" .
-				" SET status='accepted'" .
-				" WHERE status='pending' AND xref=? AND gedcom_id=?"
-			)->execute([$xref, $ged_id]);
+				"UPDATE `##change` SET status='accepted' WHERE status='pending' AND xref=? AND gedcom_id=?"
+			)->execute([
+				$xref,
+				$tree->getTreeId(),
+			]);
 			Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
 		}
 	}
@@ -1129,10 +1133,10 @@ class FunctionsImport {
 	 * update a record in the database
 	 *
 	 * @param string $gedrec
-	 * @param int    $ged_id
+	 * @param Tree   $tree
 	 * @param bool   $delete
 	 */
-	public static function updateRecord($gedrec, $ged_id, $delete) {
+	public static function updateRecord($gedrec, Tree $tree, bool $delete) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
 			list(, $gid, $type) = $match;
 		} elseif (preg_match('/^0 (HEAD)(?:\n|$)/', $gedrec, $match)) {
@@ -1147,48 +1151,116 @@ class FunctionsImport {
 
 		// TODO deleting unlinked places can be done more efficiently in a single query
 		$placeids =
-			Database::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
-				->execute([$gid, $ged_id])
-				->fetchOneColumn();
+			Database::prepare(
+				"SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?"
+			)->execute([
+				$gid,
+				$tree->getTreeId(),
+			])->fetchOneColumn();
 
-		Database::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute([$gid, $ged_id]);
-		Database::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute([$gid, $ged_id]);
+		Database::prepare(
+			"DELETE FROM `##placelinks` WHERE pl_gid = ? AND pl_file = ?"
+		)->execute([
+			$gid,
+			$tree->getTreeId(),
+		]);
+
+		Database::prepare(
+			"DELETE FROM `##dates` WHERE d_gid =? AND d_file = ?"
+		)->execute([
+			$gid,
+			$tree->getTreeId(),
+		]);
 
 		//-- delete any unlinked places
 		foreach ($placeids as $p_id) {
-			$num =
-				Database::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-					->execute([$p_id, $ged_id])
-					->fetchOne();
+			$num = Database::prepare(
+				"SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?"
+			)->execute([
+				$p_id,
+				$tree->getTreeId(),
+			])->fetchOne();
+
 			if ($num == 0) {
-				Database::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute([$p_id, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##places` WHERE p_id=? AND p_file=?"
+				)->execute([
+					$p_id,
+					$tree->getTreeId(),
+				]);
 			}
 		}
 
-		Database::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute([$gid, $ged_id]);
-		Database::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute([$gid, $ged_id]);
+		Database::prepare(
+			"DELETE FROM `##name` WHERE n_id=? AND n_file=?"
+		)->execute([
+			$gid,
+			$tree->getTreeId(),
+		]);
+
+		Database::prepare(
+			"DELETE FROM `##link` WHERE l_from=? AND l_file=?"
+		)->execute([
+			$gid,
+			$tree->getTreeId(),
+		]);
 
 		switch ($type) {
 			case 'INDI':
-				Database::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute([$gid, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##individuals` WHERE i_id=? AND i_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
 				break;
+
 			case 'FAM':
-				Database::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute([$gid, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##families` WHERE f_id=? AND f_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
 				break;
+
 			case 'SOUR':
-				Database::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute([$gid, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##sources` WHERE s_id=? AND s_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
 				break;
+
 			case 'OBJE':
-				Database::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute([$gid, $ged_id]);
-				Database::prepare("DELETE FROM `##media_file` WHERE m_id=? AND m_file=?")->execute([$gid, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##media` WHERE m_id=? AND m_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
+
+				Database::prepare(
+					"DELETE FROM `##media_file` WHERE m_id=? AND m_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
 				break;
+
 			default:
-				Database::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute([$gid, $ged_id]);
+				Database::prepare(
+					"DELETE FROM `##other` WHERE o_id=? AND o_file=?"
+				)->execute([
+					$gid,
+					$tree->getTreeId(),
+				]);
 				break;
 		}
 
 		if (!$delete) {
-			self::importRecord($gedrec, Tree::findById($ged_id), true);
+			self::importRecord($gedrec, $tree, true);
 		}
 	}
 }

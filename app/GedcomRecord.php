@@ -1231,7 +1231,7 @@ class GedcomRecord {
 			$this->pending = $new_gedcom;
 
 			if (Auth::user()->getPreference('auto_accept')) {
-				FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
+				FunctionsImport::acceptAllChanges($this->xref, $this->tree);
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
 			}
@@ -1272,7 +1272,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
+			FunctionsImport::acceptAllChanges($this->xref, $this->tree);
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
 		}
@@ -1300,7 +1300,7 @@ class GedcomRecord {
 
 		// Auto-accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
+			FunctionsImport::acceptAllChanges($this->xref, $this->tree);
 		}
 
 		// Clear the cache
