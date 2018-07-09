@@ -531,16 +531,17 @@ class FunctionsEdit {
 	 *     tag[] : tag name
 	 *    text[] : tag value
 	 *
-	 * @param string $tag fact record to edit (eg 2 DATE xxxxx)
-	 * @param string $upperlevel optional upper level tag (eg BIRT)
-	 * @param string $label An optional label to echo instead of the default
-	 * @param string $extra optional text to display after the input field
-	 * @param Individual $person For male/female translations
+	 * @param Tree       $tree
+	 * @param string     $tag        fact record to edit (eg 2 DATE xxxxx)
+	 * @param string     $upperlevel optional upper level tag (eg BIRT)
+	 * @param string     $label      An optional label to echo instead of the default
+	 * @param string     $extra      optional text to display after the input field
+	 * @param Individual $person     For male/female translations
 	 *
 	 * @return string
 	 */
-	public static function addSimpleTag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
-		global $tags, $xref, $action, $WT_TREE;
+	public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
+		global $tags, $xref, $action;
 
 		// Some form fields need access to previous form fields.
 		static $previous_ids = ['SOUR' => '', 'PLAC' => ''];
@@ -641,7 +642,7 @@ class FunctionsEdit {
 
 		// Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
 		if ($fact === 'HUSB' || $fact === 'WIFE') {
-			$family = Family::getInstance($xref, $WT_TREE);
+			$family = Family::getInstance($xref, $tree);
 			if ($family) {
 				$spouse_link = $family->getFirstFact($fact);
 				if ($spouse_link) {
@@ -663,7 +664,7 @@ class FunctionsEdit {
 
 				/** @var CensusAssistantModule $census_assistant */
 				$census_assistant = Module::getModuleByName('GEDFact_assistant');
-				$record           = Individual::getInstance($xref, $WT_TREE);
+				$record           = Individual::getInstance($xref, $tree);
 				if ($census_assistant !== null && $record instanceof Individual) {
 					$html .= $census_assistant->createCensusAssistant($record);
 				}
@@ -677,12 +678,12 @@ class FunctionsEdit {
 		} elseif ($fact === 'ADOP') {
 			$html .= Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ALIA') {
-			$html .= self::formControlIndividual($WT_TREE, Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]);
+			$html .= self::formControlIndividual($tree, Individual::getInstance($value, $tree), ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ASSO' || $fact === '_ASSO') {
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" onclick="createNewRecord(' . $id . ')" title="' . I18N::translate('Create an individual') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlIndividual($WT_TREE, Individual::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				self::formControlIndividual($tree, Individual::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 			if ($level === '1') {
 				$html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
@@ -704,7 +705,7 @@ class FunctionsEdit {
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlFamily($WT_TREE, Family::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				self::formControlFamily($tree, Family::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'LATI') {
 			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
@@ -714,17 +715,17 @@ class FunctionsEdit {
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn">' .
-				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['tree' => $WT_TREE->getName()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
+				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['tree' => $tree->getName()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
 				'<i class="fas fa-plus"></i><' .
 				'/button>' .
 				'</span>' .
-				self::formControlNote($WT_TREE, Note::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				self::formControlNote($tree, Note::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'OBJE') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlMediaObject($WT_TREE, Media::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '"><i class="fas fa-plus"></i></button></span>' .
+				self::formControlMediaObject($tree, Media::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
 			$html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
@@ -739,7 +740,7 @@ class FunctionsEdit {
 					'value'                 => $value,
 					'type'                  => 'text',
 					'data-autocomplete-url' => route('autocomplete-place', [
-						'ged'   => $WT_TREE->getName(),
+						'ged'   => $tree->getName(),
 						'query' => 'QUERY',
 					]),
 			]) . '>';
@@ -756,8 +757,8 @@ class FunctionsEdit {
 		} elseif ($fact === 'REPO') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlRepository($WT_TREE, Repository::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fas fa-plus"></i></button></span>' .
+				self::formControlRepository($tree, Repository::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'RESN') {
 			$html .= '<div class="input-group">';
@@ -773,16 +774,16 @@ class FunctionsEdit {
 		} elseif ($fact === 'SOUR') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlSource($WT_TREE, Source::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '"><i class="fas fa-plus"></i></button></span>' .
+				self::formControlSource($tree, Source::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'STAT') {
 			$html .= Bootstrap4::select(GedcomCodeStat::statusNames($upperlevel), $value);
 		} elseif ($fact === 'SUBM') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['tree' => $WT_TREE->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fas fa-plus"></i></button></span>' .
-				self::formControlSubmitter($WT_TREE, GedcomRecord::getInstance($value, $WT_TREE), ['id' => $id, 'name' => $name]) .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fas fa-plus"></i></button></span>' .
+				self::formControlSubmitter($tree, GedcomRecord::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'TEMP') {
 			$html .= Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, ['id' => $id, 'name' => $name]);
@@ -863,48 +864,48 @@ class FunctionsEdit {
 	public static function addSimpleTags(Tree $tree, $fact) {
 		// For new individuals, these facts default to "Y"
 		if ($fact === 'MARR') {
-			echo self::addSimpleTag('0 ' . $fact . ' Y');
+			echo self::addSimpleTag($tree, '0 ' . $fact . ' Y');
 		} else {
-			echo self::addSimpleTag('0 ' . $fact);
+			echo self::addSimpleTag($tree, '0 ' . $fact);
 		}
 
 		if (!in_array($fact, Config::nonDateFacts())) {
-			echo self::addSimpleTag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
-			echo self::addSimpleTag('0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
+			echo self::addSimpleTag($tree, '0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
+			echo self::addSimpleTag($tree, '0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
 		}
 
 		if (!in_array($fact, Config::nonPlaceFacts())) {
-			echo self::addSimpleTag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
+			echo self::addSimpleTag($tree, '0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
-					echo self::addSimpleTag('0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
+					echo self::addSimpleTag($tree, '0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
 				}
 			}
-			echo self::addSimpleTag('0 MAP', $fact);
-			echo self::addSimpleTag('0 LATI', $fact);
-			echo self::addSimpleTag('0 LONG', $fact);
+			echo self::addSimpleTag($tree, '0 MAP', $fact);
+			echo self::addSimpleTag($tree, '0 LATI', $fact);
+			echo self::addSimpleTag($tree, '0 LONG', $fact);
 		}
 	}
 
 	/**
 	 * Assemble the pieces of a newly created record into gedcom
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return string
 	 */
-	public static function addNewName() {
-		global $WT_TREE;
-
+	public static function addNewName(Tree $tree) {
 		$gedrec = "\n1 NAME " . Filter::post('NAME');
 
 		$tags = ['NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX'];
 
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 			$tags = array_merge($tags, $match[1]);
 		}
 
 		// Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
-		$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
+		$SURNAME_TRADITION = $tree->getPreference('SURNAME_TRADITION');
 		if ($SURNAME_TRADITION === 'paternal' || $SURNAME_TRADITION === 'polish' || $SURNAME_TRADITION === 'lithuanian') {
 			$tags[] = '_MARNM';
 		}
@@ -1247,7 +1248,7 @@ class FunctionsEdit {
 		// handle  MARRiage TYPE
 		if (substr($fact, 0, 5) === 'MARR_') {
 			$tags[0] = 'MARR';
-			echo self::addSimpleTag('1 MARR');
+			echo self::addSimpleTag($tree, '1 MARR');
 			self::insertMissingSubtags($tree, $fact);
 		} else {
 			$tags[0] = $fact;
@@ -1259,18 +1260,18 @@ class FunctionsEdit {
 				$fact .= ' @';
 			}
 			if (in_array($fact, Config::emptyFacts())) {
-				echo self::addSimpleTag('1 ' . $fact . ' Y');
+				echo self::addSimpleTag($tree, '1 ' . $fact . ' Y');
 			} else {
-				echo self::addSimpleTag('1 ' . $fact);
+				echo self::addSimpleTag($tree, '1 ' . $fact);
 			}
 			self::insertMissingSubtags($tree, $tags[0]);
 			//-- handle the special SOURce case for level 1 sources [ 1759246 ]
 			if ($fact === 'SOUR') {
-				echo self::addSimpleTag('2 PAGE');
-				echo self::addSimpleTag('3 TEXT');
+				echo self::addSimpleTag($tree, '2 PAGE');
+				echo self::addSimpleTag($tree, '3 TEXT');
 				if ($tree->getPreference('FULL_SOURCES')) {
-					echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
-					echo self::addSimpleTag('2 QUAY');
+					echo self::addSimpleTag($tree, '3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
+					echo self::addSimpleTag($tree, '2 QUAY');
 				}
 			}
 		}
@@ -1360,17 +1361,17 @@ class FunctionsEdit {
 				$tags[]    = $type;
 				$subrecord = $level . ' ' . $type . ' ' . $text;
 				if ($inSource && $type === 'DATE') {
-					echo self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($tree, $subrecord, '', GedcomTag::getLabel($label, $record));
 				} elseif (!$inSource && $type === 'DATE') {
-					echo self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label, $record));
 					if ($level === '2') {
 						// We already have a date - no need to add one.
 						$add_date = false;
 					}
 				} elseif ($type === 'STAT') {
-					echo self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label, $record));
 				} else {
-					echo self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $record));
+					echo self::addSimpleTag($tree, $subrecord, $level0type, GedcomTag::getLabel($label, $record));
 				}
 			}
 
@@ -1386,10 +1387,10 @@ class FunctionsEdit {
 			if (!empty($expected_subtags[$type])) {
 				foreach ($expected_subtags[$type] as $subtag) {
 					if (!in_array($subtag, $subtags)) {
-						echo self::addSimpleTag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
+						echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
 						if (!empty($expected_subtags[$subtag])) {
 							foreach ($expected_subtags[$subtag] as $subsubtag) {
-								echo self::addSimpleTag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
+								echo self::addSimpleTag($tree, ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
 							}
 						}
 					}
@@ -1441,74 +1442,74 @@ class FunctionsEdit {
 			}
 			if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 				if ($key === 'TYPE') {
-					echo self::addSimpleTag('2 TYPE ' . $type_val, $level1tag);
+					echo self::addSimpleTag($tree, '2 TYPE ' . $type_val, $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === 'DATE') {
-					echo self::addSimpleTag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
+					echo self::addSimpleTag($tree, '2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
-					echo self::addSimpleTag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
+					echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
 				} elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
-					echo self::addSimpleTag('2 ' . $key, $level1tag);
+					echo self::addSimpleTag($tree, '2 ' . $key, $level1tag);
 				} elseif ($level1tag !== 'NAME') {
-					echo self::addSimpleTag('2 ' . $key, $level1tag);
+					echo self::addSimpleTag($tree, '2 ' . $key, $level1tag);
 				}
 				// Add level 3/4 tags as appropriate
 				switch ($key) {
 					case 'PLAC':
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 							foreach ($match[1] as $tag) {
-								echo self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+								echo self::addSimpleTag($tree, '3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
 							}
 						}
-						echo self::addSimpleTag('3 MAP');
-						echo self::addSimpleTag('4 LATI');
-						echo self::addSimpleTag('4 LONG');
+						echo self::addSimpleTag($tree, '3 MAP');
+						echo self::addSimpleTag($tree, '4 LATI');
+						echo self::addSimpleTag($tree, '4 LONG');
 						break;
 					case 'FILE':
-						echo self::addSimpleTag('3 FORM');
+						echo self::addSimpleTag($tree, '3 FORM');
 						break;
 					case 'EVEN':
-						echo self::addSimpleTag('3 DATE');
-						echo self::addSimpleTag('3 PLAC');
+						echo self::addSimpleTag($tree, '3 DATE');
+						echo self::addSimpleTag($tree, '3 PLAC');
 						break;
 					case 'STAT':
 						if (GedcomCodeTemp::isTagLDS($level1tag)) {
-							echo self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
+							echo self::addSimpleTag($tree, '3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 						}
 						break;
 					case 'DATE':
 						// TIME is NOT a valid 5.5.1 tag
 						if (in_array($level1tag, Config::dateAndTime())) {
-							echo self::addSimpleTag('3 TIME');
+							echo self::addSimpleTag($tree, '3 TIME');
 						}
 						break;
 					case 'HUSB':
 					case 'WIFE':
-						echo self::addSimpleTag('3 AGE');
+						echo self::addSimpleTag($tree, '3 AGE');
 						break;
 					case 'FAMC':
 						if ($level1tag === 'ADOP') {
-							echo self::addSimpleTag('3 ADOP BOTH');
+							echo self::addSimpleTag($tree, '3 ADOP BOTH');
 						}
 						break;
 				}
 			} elseif ($key === 'DATE' && $add_date) {
-				echo self::addSimpleTag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));
+				echo self::addSimpleTag($tree, '2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));
 			}
 		}
 		// Do something (anything!) with unrecognized custom tags
 		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
 			foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
 				if (!in_array($tag, $tags)) {
-					echo self::addSimpleTag('2 ' . $tag);
+					echo self::addSimpleTag($tree, '2 ' . $tag);
 					if ($tag === 'PLAC') {
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 							foreach ($match[1] as $ptag) {
-								echo self::addSimpleTag('3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
+								echo self::addSimpleTag($tree, '3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
 							}
 						}
-						echo self::addSimpleTag('3 MAP');
-						echo self::addSimpleTag('4 LATI');
-						echo self::addSimpleTag('4 LONG');
+						echo self::addSimpleTag($tree, '3 MAP');
+						echo self::addSimpleTag($tree, '4 LATI');
+						echo self::addSimpleTag($tree, '4 LONG');
 					}
 				}
 			}

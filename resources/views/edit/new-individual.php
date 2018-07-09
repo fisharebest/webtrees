@@ -140,14 +140,14 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 	<?= csrf_field() ?>
 
 	<?php if ($nextaction === 'add_child_to_family_action' || $nextaction === 'add_child_to_individual_action'): ?>
-		<?= FunctionsEdit::addSimpleTag('0 PEDI') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, '0 PEDI') ?>
 	<?php endif ?>
 
 	<?php
 	// First - standard name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) !== 0) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value, '', '', null, $individual);
+			echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value, '', '', null, $individual);
 		}
 	}
 
@@ -170,18 +170,18 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 		// Edit existing tags, grouped together
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
-				echo FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
+				echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
 				if ($tag === '_MARNM') {
 					preg_match_all('/\/([^\/]*)\//', $value, $matches);
-					echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+					echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
 				}
 			}
 		}
 		// Allow a new tag to be entered
 		if (!array_key_exists($tag, $name_fields)) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
+			echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
 			if ($tag === '_MARNM') {
-				echo FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
+				echo FunctionsEdit::addSimpleTag($tree, '0 _MARNM_SURN');
 			}
 		}
 	}
@@ -189,10 +189,10 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 	// Third - new/existing custom name fields
 	foreach ($name_fields as $tag => $value) {
 		if (substr_compare($tag, '_', 0, 1) === 0) {
-			echo FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+			echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value);
 			if ($tag === '_MARNM') {
 				preg_match_all('/\/([^\/]*)\//', $value, $matches);
-				echo FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+				echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
 			}
 		}
 	}
@@ -219,7 +219,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 					$text .= "\n" . $cmatch[1];
 					$i++;
 				}
-				echo FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
+				echo FunctionsEdit::addSimpleTag($tree, $level . ' ' . $type . ' ' . $text);
 			}
 			$tags[] = $type;
 			$i++;
@@ -238,11 +238,11 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 		echo '</table><br><table class="table wt-facts-table">';
 		// 1 SEX
 		if ($famtag === 'HUSB' || $gender === 'M') {
-			echo FunctionsEdit::addSimpleTag('0 SEX M');
+			echo FunctionsEdit::addSimpleTag($tree, '0 SEX M');
 		} elseif ($famtag === 'WIFE' || $gender === 'F') {
-			echo FunctionsEdit::addSimpleTag('0 SEX F');
+			echo FunctionsEdit::addSimpleTag($tree, '0 SEX F');
 		} else {
-			echo FunctionsEdit::addSimpleTag('0 SEX U');
+			echo FunctionsEdit::addSimpleTag($tree, '0 SEX U');
 		}
 		$bdm = 'BD';
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {

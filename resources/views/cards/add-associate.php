@@ -9,9 +9,9 @@
 	</div>
 
 	<div class="card-body collapse" id="<?= e($id) ?>">
-		<?= FunctionsEdit::addSimpleTag($level . ' _ASSO @') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' RELA') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' NOTE') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' SHARED_NOTE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, $level . ' _ASSO @') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' RELA') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' NOTE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' SHARED_NOTE') ?>
 	</div>
 </div>

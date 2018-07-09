@@ -9,6 +9,6 @@
 	</div>
 
 	<div class="card-body collapse" id="add-restriction">
-		<?= FunctionsEdit::addSimpleTag($level . ' RESN') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, $level . ' RESN') ?>
 	</div>
 </div>

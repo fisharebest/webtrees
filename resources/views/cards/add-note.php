@@ -9,6 +9,6 @@
 	</div>
 
 	<div class="card-body collapse" id="add-note">
-		<?= FunctionsEdit::addSimpleTag($level . ' NOTE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, $level . ' NOTE') ?>
 	</div>
 </div>

@@ -9,6 +9,6 @@
 	</div>
 
 	<div class="card-body collapse" id="add-media-object">
-		<?= FunctionsEdit::addSimpleTag($level . ' OBJE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, $level . ' OBJE') ?>
 	</div>
 </div>

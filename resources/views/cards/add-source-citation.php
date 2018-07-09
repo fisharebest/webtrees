@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="card-body collapse" id="add-source-citation">
-		<?= FunctionsEdit::addSimpleTag($level . ' SOUR @') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, $level . ' SOUR @') ?>
 
 		<?php if ($level === 1): ?>
 			<div class="row">
@@ -64,16 +64,16 @@
 			</div>
 		<?php endif ?>
 
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' PAGE') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' DATA') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 2) . ' TEXT') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' PAGE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' DATA') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 2) . ' TEXT') ?>
 
 		<?php if ($full_citations): ?>
-			<?= FunctionsEdit::addSimpleTag(($level + 2) . ' DATE', '', I18N::translate('Date of entry in original source')) ?>
-			<?= FunctionsEdit::addSimpleTag(($level + 1) . ' QUAY') ?>
+			<?= FunctionsEdit::addSimpleTag($tree, ($level + 2) . ' DATE', '', I18N::translate('Date of entry in original source')) ?>
+			<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' QUAY') ?>
 		<?php endif ?>
 
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' OBJE') ?>
-		<?= FunctionsEdit::addSimpleTag(($level + 1) . ' SHARED_NOTE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' OBJE') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, ($level + 1) . ' SHARED_NOTE') ?>
 	</div>
 </div>

@@ -355,7 +355,7 @@ case 'add_child_to_family_action':
 
 	FunctionsEdit::splitSource();
 	$gedrec = '0 @REF@ INDI';
-	$gedrec .= FunctionsEdit::addNewName();
+	$gedrec .= FunctionsEdit::addNewName($tree);
 	$gedrec .= FunctionsEdit::addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
@@ -425,7 +425,7 @@ case 'add_child_to_individual_action':
 	FunctionsEdit::splitSource(); // separate SOUR record from the rest
 
 	$gedcom = '0 @NEW@ INDI';
-	$gedcom .= FunctionsEdit::addNewName();
+	$gedcom .= FunctionsEdit::addNewName($tree);
 	$gedcom .= FunctionsEdit::addNewSex();
 	$gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -477,7 +477,7 @@ case 'add_parent_to_individual_action':
 	FunctionsEdit::splitSource(); // separate SOUR record from the rest
 
 	$gedcom = '0 @NEW@ INDI';
-	$gedcom .= FunctionsEdit::addNewName();
+	$gedcom .= FunctionsEdit::addNewName($tree);
 	$gedcom .= FunctionsEdit::addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
@@ -519,7 +519,7 @@ case 'add_unlinked_indi_action':
 
 	FunctionsEdit::splitSource();
 	$gedrec = '0 @REF@ INDI';
-	$gedrec .= FunctionsEdit::addNewName();
+	$gedrec .= FunctionsEdit::addNewName($tree);
 	$gedrec .= FunctionsEdit::addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
@@ -558,7 +558,7 @@ case 'add_spouse_to_individual_action':
 
 	FunctionsEdit::splitSource();
 	$indi_gedcom = '0 @REF@ INDI';
-	$indi_gedcom .= FunctionsEdit::addNewName();
+	$indi_gedcom .= FunctionsEdit::addNewName($tree);
 	$indi_gedcom .= FunctionsEdit::addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
@@ -620,7 +620,7 @@ case 'add_spouse_to_family_action':
 	FunctionsEdit::splitSource(); // separate SOUR record from the rest
 
 	$gedrec = '0 @REF@ INDI';
-	$gedrec .= FunctionsEdit::addNewName();
+	$gedrec .= FunctionsEdit::addNewName($tree);
 	$gedrec .= FunctionsEdit::addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
@@ -806,9 +806,9 @@ case 'linkspouse':
 			</div>
 		</div>
 
-		<?= FunctionsEdit::addSimpleTag('0 MARR Y') ?>
-		<?= FunctionsEdit::addSimpleTag('0 DATE', 'MARR') ?>
-		<?= FunctionsEdit::addSimpleTag('0 PLAC', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, '0 MARR Y') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, '0 DATE', 'MARR') ?>
+		<?= FunctionsEdit::addSimpleTag($tree, '0 PLAC', 'MARR') ?>
 
 		<div class="row form-group">
 			<div class="col-sm-9 offset-sm-3">
