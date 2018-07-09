@@ -34,10 +34,11 @@ case 'edit':
 	//////////////////////////////////////////////////////////////////////////////
 	// Edit a fact
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$xref    = Filter::get('xref', WT_REGEX_XREF);
 	$fact_id = Filter::get('fact_id');
 
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
+	$record = GedcomRecord::getInstance($xref, $tree);
 	check_record_access($record);
 
 	// Find the fact to edit
@@ -60,7 +61,7 @@ case 'edit':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="editform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
+	echo '<input type="hidden" name="ged" value="', e($tree->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -89,10 +90,10 @@ case 'edit':
 				if ($level1type !== 'SOUR') {
 					echo view('cards/add-source-citation', [
 						'level'          => 2,
-						'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+						'full_citations' => $tree->getPreference('FULL_SOURCES'),
 					]);				}
 				if ($level1type !== 'OBJE') {
-					if ($controller->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->tree())) {
+					if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
 						echo view('cards/add-media-object', [
 							'level' => 2,
 						]);
@@ -142,8 +143,8 @@ case 'edit':
 				<?= /* I18N: A button label. */
 				I18N::translate('cancel') ?>
 			</a>
-			<?php if (Auth::isAdmin() || $controller->tree()->getPreference('SHOW_GEDCOM_RECORD')): ?>
-				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $fact_id, 'ged' => $controller->tree()->getName()])) ?>">
+			<?php if (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD')): ?>
+				<a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $fact_id, 'ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('Edit the raw GEDCOM') ?>
 				</a>
 			<?php endif; ?>
@@ -160,10 +161,11 @@ case 'add':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a new fact
 	//////////////////////////////////////////////////////////////////////////////
+	$tree = $controller->tree();
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 	$fact = Filter::get('fact', WT_REGEX_TAG);
 
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
+	$record = GedcomRecord::getInstance($xref, $tree);
 	check_record_access($record);
 
 	$controller
@@ -176,13 +178,13 @@ case 'add':
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="addform" method="post" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', e($controller->tree()->getName()), '">';
+	echo '<input type="hidden" name="ged" value="', e($tree->getName()), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<input type="hidden" name="prev_action" value="add">';
 	echo '<input type="hidden" name="fact_type" value="' . $fact . '">';
 	echo Filter::getCsrf();
-	FunctionsEdit::createAddForm($controller->tree(), $fact);
+	FunctionsEdit::createAddForm($tree, $fact);
 	echo keep_chan($record);
 
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
@@ -191,9 +193,9 @@ case 'add':
 		if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') {
 			echo view('cards/add-source-citation', [
 				'level'          => 2,
-				'full_citations' => $controller->tree()->getPreference('FULL_SOURCES'),
+				'full_citations' => $tree->getPreference('FULL_SOURCES'),
 			]);
-			if ($controller->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->tree())) {
+			if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
 				echo view('cards/add-media-object', [
 					'level' => 2,
 				]);
@@ -249,11 +251,12 @@ case 'update':
 	//////////////////////////////////////////////////////////////////////////////
 	// Save a new/updated fact
 	//////////////////////////////////////////////////////////////////////////////
+	$tree      = $controller->tree();
 	$xref      = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id   = Filter::post('fact_id');
 	$keep_chan = Filter::postBool('keep_chan');
 
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
+	$record = GedcomRecord::getInstance($xref, $tree);
 	check_record_access($record);
 
 	// Arrays for each GEDCOM line
@@ -298,7 +301,7 @@ case 'update':
 
 	// Add new names after existing names
 	if (!empty($_POST['NAME'])) {
-		preg_match_all('/[_0-9A-Z]+/', $controller->tree()->getPreference('ADVANCED_NAME_FACTS'), $match);
+		preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
 		$name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
 		foreach ($name_facts as $name_fact) {
 			// Ignore advanced facts that duplicate standard facts.
@@ -323,7 +326,7 @@ case 'update':
 	if ($pid_array) {
 		foreach (explode(',', $pid_array) as $pid) {
 			if ($pid !== $xref) {
-				$indi = Individual::getInstance($pid, $controller->tree());
+				$indi = Individual::getInstance($pid, $tree);
 				if ($indi && $indi->canEdit()) {
 					$indi->updateFact($fact_id, $newged, !$keep_chan);
 				}
@@ -338,6 +341,7 @@ case 'add_child_to_family_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a child to an existing family
 	//////////////////////////////////////////////////////////////////////////////
+	$tree      = $controller->tree();
 	$xref      = Filter::post('xref', WT_REGEX_XREF);
 	$PEDI      = Filter::post('PEDI');
 	$keep_chan = Filter::postBool('keep_chan');
@@ -346,16 +350,16 @@ case 'add_child_to_family_action':
 	$text      = Filter::postArray('text');
 	$islink    = Filter::postArray('islink', '[01]');
 
-	$family = Family::getInstance($xref, $controller->tree());
+	$family = Family::getInstance($xref, $tree);
 	check_record_access($family);
 
 	FunctionsEdit::splitSource();
 	$gedrec = '0 @REF@ INDI';
 	$gedrec .= FunctionsEdit::addNewName();
 	$gedrec .= FunctionsEdit::addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec .= FunctionsEdit::addNewFact($match);
+			$gedrec .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	$gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
@@ -395,6 +399,7 @@ case 'add_child_to_individual_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a child to an existing individual (creating a one-parent family)
 	//////////////////////////////////////////////////////////////////////////////
+	$tree      = $controller->tree();
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$PEDI    = Filter::post('PEDI');
 	$glevels = Filter::postArray('glevels', '[0-9]');
@@ -402,7 +407,7 @@ case 'add_child_to_individual_action':
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$person = Individual::getInstance($xref, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
 	check_record_access($person);
 
 	// Create a family
@@ -411,7 +416,7 @@ case 'add_child_to_individual_action':
 	} else {
 		$gedcom = "0 @NEW@ FAM\n1 HUSB @" . $person->getXref() . '@';
 	}
-	$family = $person->getTree()->createRecord($gedcom);
+	$family = $tree->createRecord($gedcom);
 
 	// Link the parent to the family
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -423,9 +428,9 @@ case 'add_child_to_individual_action':
 	$gedcom .= FunctionsEdit::addNewName();
 	$gedcom .= FunctionsEdit::addNewSex();
 	$gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedcom .= FunctionsEdit::addNewFact($match);
+			$gedcom .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_INDI')) {
@@ -434,7 +439,7 @@ case 'add_child_to_individual_action':
 		$gedcom = FunctionsEdit::updateRest($gedcom);
 	}
 
-	$child = $person->getTree()->createRecord($gedcom);
+	$child = $tree->createRecord($gedcom);
 
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
@@ -450,6 +455,7 @@ case 'add_parent_to_individual_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a new parent to an existing individual (creating a one-parent family)
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$PEDI    = Filter::post('PEDI');
 	$glevels = Filter::postArray('glevels', '[0-9]');
@@ -457,12 +463,12 @@ case 'add_parent_to_individual_action':
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$person = Individual::getInstance($xref, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
 	check_record_access($person);
 
 	// Create a new family
 	$gedcom = "0 @NEW@ FAM\n1 CHIL @" . $person->getXref() . '@';
-	$family = $person->getTree()->createRecord($gedcom);
+	$family = $tree->createRecord($gedcom);
 
 	// Link the child to the family
 	$person->createFact('1 FAMC @' . $family->getXref() . '@', true);
@@ -473,9 +479,9 @@ case 'add_parent_to_individual_action':
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= FunctionsEdit::addNewName();
 	$gedcom .= FunctionsEdit::addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedcom .= FunctionsEdit::addNewFact($match);
+			$gedcom .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_INDI')) {
@@ -485,7 +491,7 @@ case 'add_parent_to_individual_action':
 	}
 	$gedcom .= "\n1 FAMS @" . $family->getXref() . '@';
 
-	$parent = $person->getTree()->createRecord($gedcom);
+	$parent = $tree->createRecord($gedcom);
 
 	// Link the family to the child
 	if ($parent->getSex() === 'F') {
@@ -505,6 +511,7 @@ case 'add_unlinked_indi_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a new, unlinked individual
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$glevels = Filter::postArray('glevels', '[0-9]');
 	$tag     = Filter::postArray('tag', WT_REGEX_TAG);
 	$text    = Filter::postArray('text');
@@ -514,9 +521,9 @@ case 'add_unlinked_indi_action':
 	$gedrec = '0 @REF@ INDI';
 	$gedrec .= FunctionsEdit::addNewName();
 	$gedrec .= FunctionsEdit::addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec .= FunctionsEdit::addNewFact($match);
+			$gedrec .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_INDI')) {
@@ -525,7 +532,7 @@ case 'add_unlinked_indi_action':
 		$gedrec = FunctionsEdit::updateRest($gedrec);
 	}
 
-	$new_indi = $controller->tree()->createRecord($gedrec);
+	$new_indi = $tree->createRecord($gedrec);
 
 	if (Filter::post('goto') === 'new') {
 		header('Location: ' . $new_indi->url());
@@ -538,6 +545,7 @@ case 'add_spouse_to_individual_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a spouse to an existing individual (creating a new family)
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$xref    = Filter::post('xref'); // Add a spouse to this individual
 	$sex     = Filter::post('SEX', '[MFU]', 'U');
 	$glevels = Filter::postArray('glevels', '[0-9]');
@@ -545,16 +553,16 @@ case 'add_spouse_to_individual_action':
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$person = Individual::getInstance($xref, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
 	check_record_access($person);
 
 	FunctionsEdit::splitSource();
 	$indi_gedcom = '0 @REF@ INDI';
 	$indi_gedcom .= FunctionsEdit::addNewName();
 	$indi_gedcom .= FunctionsEdit::addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$indi_gedcom .= FunctionsEdit::addNewFact($match);
+			$indi_gedcom .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_INDI')) {
@@ -564,9 +572,9 @@ case 'add_spouse_to_individual_action':
 	}
 
 	$fam_gedcom = '';
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$fam_gedcom .= FunctionsEdit::addNewFact($match);
+			$fam_gedcom .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_FAM')) {
@@ -576,12 +584,12 @@ case 'add_spouse_to_individual_action':
 	}
 
 	// Create the new spouse
-	$spouse = $person->getTree()->createRecord($indi_gedcom);
+	$spouse = $tree->createRecord($indi_gedcom);
 	// Create a new family
 	if ($sex === 'F') {
-		$family = $spouse->getTree()->createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . '@' . $fam_gedcom);
+		$family = $tree->createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . '@' . $fam_gedcom);
 	} else {
-		$family = $spouse->getTree()->createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . '@' . $fam_gedcom);
+		$family = $tree->createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . '@' . $fam_gedcom);
 	}
 	// Link the spouses to the family
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -598,13 +606,14 @@ case 'add_spouse_to_family_action':
 	//////////////////////////////////////////////////////////////////////////////
 	// Add a spouse to an existing family
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$glevels = Filter::postArray('glevels', '[0-9]');
 	$tag     = Filter::postArray('tag', WT_REGEX_TAG);
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$family = Family::getInstance($xref, $controller->tree());
+	$family = Family::getInstance($xref, $tree);
 	check_record_access($family);
 
 	// Create the new spouse
@@ -613,9 +622,9 @@ case 'add_spouse_to_family_action':
 	$gedrec = '0 @REF@ INDI';
 	$gedrec .= FunctionsEdit::addNewName();
 	$gedrec .= FunctionsEdit::addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec .= FunctionsEdit::addNewFact($match);
+			$gedrec .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 
@@ -625,7 +634,7 @@ case 'add_spouse_to_family_action':
 		$gedrec = FunctionsEdit::updateRest($gedrec);
 	}
 	$gedrec .= "\n1 FAMS @" . $family->getXref() . '@';
-	$spouse = $family->getTree()->createRecord($gedrec);
+	$spouse = $tree->createRecord($gedrec);
 
 	// Update the existing family - add marriage, etc
 	if ($family->getFirstFact('HUSB')) {
@@ -634,9 +643,9 @@ case 'add_spouse_to_family_action':
 		$family->createFact('1 HUSB @' . $spouse->getXref() . '@', true);
 	}
 	$famrec = '';
-	if (preg_match_all('/([A-Z0-9_]+)/', $controller->tree()->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
-			$famrec .= FunctionsEdit::addNewFact($match);
+			$famrec .= FunctionsEdit::addNewFact($tree, $match);
 		}
 	}
 	if (Filter::postBool('SOUR_FAM')) {
@@ -657,9 +666,10 @@ case 'addfamlink':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link an individual to an existing family, as a child
 	//////////////////////////////////////////////////////////////////////////////
+	$tree = $controller->tree();
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
 	check_record_access($person);
 
 	$controller
@@ -669,7 +679,7 @@ case 'addfamlink':
 	?>
 	<h2><?= $controller->getPageTitle() ?></h2>
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 		<input type="hidden" name="action" value="linkfamaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<?= Filter::getCsrf() ?>
@@ -679,7 +689,7 @@ case 'addfamlink':
 				<?= I18N::translate('Family') ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlFamily($controller->tree(), null, ['id' => 'famid', 'name' => 'famid']) ?>
+				<?= FunctionsEdit::formControlFamily($tree, null, ['id' => 'famid', 'name' => 'famid']) ?>
 			</div>
 		</div>
 
@@ -719,12 +729,13 @@ case 'linkfamaction':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link an individual to an existing family, as a child
 	//////////////////////////////////////////////////////////////////////////////
+	$tree  = $controller->tree();
 	$xref  = Filter::post('xref', WT_REGEX_XREF);
 	$famid = Filter::post('famid', WT_REGEX_XREF);
 	$PEDI  = Filter::post('PEDI');
 
-	$person = Individual::getInstance($xref, $controller->tree());
-	$family = Family::getInstance($famid, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
+	$family = Family::getInstance($famid, $tree);
 	check_record_access($person);
 	check_record_access($family);
 
@@ -759,10 +770,11 @@ case 'linkspouse':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link and individual to an existing individual as a spouse
 	//////////////////////////////////////////////////////////////////////////////
+	$tree   = $controller->tree();
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
 	check_record_access($person);
 
 	if ($person->getSex() === 'F') {
@@ -780,7 +792,7 @@ case 'linkspouse':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 		<input type="hidden" name="action" value="linkspouseaction">
 		<input type="hidden" name="xref" value="<?= $person->getXref() ?>">
 		<input type="hidden" name="famtag" value="<?= $famtag ?>">
@@ -790,7 +802,7 @@ case 'linkspouse':
 				<?= $label ?>
 			</label>
 			<div class="col-sm-9">
-				<?= FunctionsEdit::formControlIndividual($controller->tree(), null, ['id' => 'spouse', 'name' => 'spid']) ?>
+				<?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'spouse', 'name' => 'spid']) ?>
 			</div>
 		</div>
 
@@ -818,6 +830,7 @@ case 'linkspouseaction':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link and individual to an existing individual as a spouse
 	//////////////////////////////////////////////////////////////////////////////
+	$tree    = $controller->tree();
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$spid    = Filter::post('spid', WT_REGEX_XREF);
 	$famtag  = Filter::post('famtag', 'HUSB|WIFE');
@@ -826,8 +839,8 @@ case 'linkspouseaction':
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$person = Individual::getInstance($xref, $controller->tree());
-	$spouse = Individual::getInstance($spid, $controller->tree());
+	$person = Individual::getInstance($xref, $tree);
+	$spouse = Individual::getInstance($spid, $tree);
 	check_record_access($person);
 	check_record_access($spouse);
 
@@ -843,23 +856,23 @@ case 'linkspouseaction':
 		$gedcom = "0 @new@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . '@';
 	}
 	FunctionsEdit::splitSource();
-	$gedcom .= FunctionsEdit::addNewFact('MARR');
+	$gedcom .= FunctionsEdit::addNewFact($tree, 'MARR');
 
 	if (Filter::postBool('SOUR_FAM') || count($tagSOUR) > 0) {
 		// before adding 2 SOUR it needs to add 1 MARR Y first
-		if (FunctionsEdit::addNewFact('MARR') === '') {
+		if (FunctionsEdit::addNewFact($tree, 'MARR') === '') {
 			$gedcom .= "\n1 MARR Y";
 		}
 		$gedcom = FunctionsEdit::handleUpdates($gedcom);
 	} else {
 		// before adding level 2 facts it needs to add 1 MARR Y first
-		if (FunctionsEdit::addNewFact('MARR') === '') {
+		if (FunctionsEdit::addNewFact($tree, 'MARR') === '') {
 			$gedcom .= "\n1 MARR Y";
 		}
 		$gedcom = FunctionsEdit::updateRest($gedcom);
 	}
 
-	$family = $person->getTree()->createRecord($gedcom);
+	$family = $tree->createRecord($gedcom);
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
@@ -870,9 +883,10 @@ case 'addmedia_links':
 	//////////////////////////////////////////////////////////////////////////////
 	//
 	//////////////////////////////////////////////////////////////////////////////
-	$pid = Filter::get('pid', WT_REGEX_XREF);
+	$tree = $controller->tree();
+	$pid  = Filter::get('pid', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($pid, $controller->tree());
+	$person = Individual::getInstance($pid, $tree);
 	check_record_access($person);
 
 	$controller
@@ -883,7 +897,7 @@ case 'addmedia_links':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post" action="edit_interface.php?xref=<?= $person->getXref() ?>" onsubmit="findindi()">
-		<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 		<input type="hidden" name="action" value="addmedia_links">
 		<input type="hidden" name="noteid" value="newnote">
 		<?= Filter::getCsrf() ?>
@@ -896,8 +910,9 @@ case 'add-media-link':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link a media object to a record.
 	//////////////////////////////////////////////////////////////////////////////
+	$tree   = $controller->tree();
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
-	$record = GedcomRecord::getInstance($xref, $controller->tree());
+	$record = GedcomRecord::getInstance($xref, $tree);
 	check_record_access($record);
 
 	$controller
@@ -908,7 +923,7 @@ case 'add-media-link':
 	<h2><?= $controller->getPageTitle() ?></h2>
 
 	<form method="post">
-		<input type="hidden" name="ged" value="<?= e($record->getTree()->getName()) ?>">
+		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 		<input type="hidden" name="xref" value="<?= e($record->getXref()) ?>">
 		<input type="hidden" name="action" value="save-media-link">
 		<?= Filter::getCsrf() ?>
@@ -919,15 +934,15 @@ case 'add-media-link':
 			</label>
 			<div class="col-sm-9">
 				<div class="input-group">
-					<?php if ($record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($record->getTree())): ?>
+					<?php if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)): ?>
 						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="button" data-toggle="modal" data-href="<?= e(route('create-media-object', ['tree' => $record->getTree()->getName()])) ?>" data-target="#wt-ajax-modal" data-select-id="media-xref" title="<?= I18N::translate('Create a media object') ?>">
+							<button class="btn btn-secondary" type="button" data-toggle="modal" data-href="<?= e(route('create-media-object', ['tree' => $tree->getName()])) ?>" data-target="#wt-ajax-modal" data-select-id="media-xref" title="<?= I18N::translate('Create a media object') ?>">
 								<i class="fas fa-plus" aria-hidden="true" title="<?= I18N::translate('add') ?>"></i>
 								<span class="sr-only"><?= I18N::translate('add') ?></span>
 							</button>
 						</span>
 					<?php endif ?>
-					<?= FunctionsEdit::formControlMediaObject($controller->tree(), null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
+					<?= FunctionsEdit::formControlMediaObject($tree, null, ['id' => 'media-xref', 'name' => 'media-xref', 'data-element-id' => 'media-xref']) ?>
 				</div>
 			</div>
 		</div>
@@ -955,9 +970,10 @@ case 'save-media-link':
 	//////////////////////////////////////////////////////////////////////////////
 	// Link a media object to a record.
 	//////////////////////////////////////////////////////////////////////////////
+	$tree       = $controller->tree();
 	$xref       = Filter::post('xref', WT_REGEX_XREF);
 	$media_xref = Filter::post('media-xref', WT_REGEX_XREF);
-	$record     = GedcomRecord::getInstance($xref, $controller->tree());
+	$record     = GedcomRecord::getInstance($xref, $tree);
 	check_record_access($record);
 
 	$gedcom = '1 OBJE @' . $media_xref . '@';
@@ -971,9 +987,10 @@ case 'changefamily':
 	//////////////////////////////////////////////////////////////////////////////
 	// Change the members of a family record
 	//////////////////////////////////////////////////////////////////////////////
+	$tree = $controller->tree();
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$family = Family::getInstance($xref, $controller->tree());
+	$family = Family::getInstance($xref, $tree);
 	check_record_access($family);
 
 	$controller
@@ -988,7 +1005,7 @@ case 'changefamily':
 
 	<div id="changefam">
 		<form name="changefamform" method="post">
-			<input type="hidden" name="ged" value="<?= e($controller->tree()->getName()) ?>">
+			<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 			<input type="hidden" name="action" value="changefamily_update">
 			<input type="hidden" name="xref" value="<?= $xref ?>">
 			<?= Filter::getCsrf() ?>
@@ -1144,6 +1161,7 @@ case 'changefamily_update':
 	//////////////////////////////////////////////////////////////////////////////
 	// Change the members of a family record
 	//////////////////////////////////////////////////////////////////////////////
+	$tree      = $controller->tree();
 	$xref      = Filter::post('xref', WT_REGEX_XREF);
 	$HUSB      = Filter::post('HUSB', WT_REGEX_XREF);
 	$WIFE      = Filter::post('WIFE', WT_REGEX_XREF);
@@ -1154,7 +1172,7 @@ case 'changefamily_update':
 		$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 	}
 
-	$family = Family::getInstance($xref, $controller->tree());
+	$family = Family::getInstance($xref, $tree);
 	check_record_access($family);
 
 	// Current family members
@@ -1163,11 +1181,11 @@ case 'changefamily_update':
 	$old_children = $family->getChildren();
 
 	// New family members
-	$new_father   = Individual::getInstance($HUSB, $controller->tree());
-	$new_mother   = Individual::getInstance($WIFE, $controller->tree());
+	$new_father   = Individual::getInstance($HUSB, $tree);
+	$new_mother   = Individual::getInstance($WIFE, $tree);
 	$new_children = [];
 	foreach ($CHIL as $child) {
-		$new_children[] = Individual::getInstance($child, $controller->tree());
+		$new_children[] = Individual::getInstance($child, $tree);
 	}
 
 	if ($old_father !== $new_father) {

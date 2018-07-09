@@ -939,13 +939,12 @@ class FunctionsEdit {
 	/**
 	 * Create a form to add a new fact.
 	 *
+	 * @param Tree   $tree
 	 * @param string $fact
 	 *
 	 * @return string
 	 */
-	public static function addNewFact($fact) {
-		global $WT_TREE;
-
+	public static function addNewFact(Tree $tree, $fact) {
 		$FACT = Filter::post($fact);
 		$DATE = Filter::post($fact . '_DATE');
 		$PLAC = Filter::post($fact . '_PLAC');
@@ -961,7 +960,7 @@ class FunctionsEdit {
 			if ($PLAC) {
 				$gedrec .= "\n2 PLAC " . $PLAC;
 
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 					foreach ($match[1] as $tag) {
 						$TAG = Filter::post($fact . '_' . $tag);
 						if ($TAG) {
