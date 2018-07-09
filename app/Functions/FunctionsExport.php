@@ -40,8 +40,6 @@ class FunctionsExport {
 	 * @return string
 	 */
 	public static function reformatRecord($rec) {
-		global $WT_TREE;
-
 		$newrec = '';
 		foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
 			// Split long lines
@@ -55,30 +53,16 @@ class FunctionsExport {
 				do {
 					// Split after $pos chars
 					$pos = Gedcom::LINE_LENGTH;
-					if ($WT_TREE->getPreference('WORD_WRAPPED_NOTES')) {
-						// Split on a space, and remove it (for compatibility with some desktop apps)
-						while ($pos && mb_substr($line, $pos - 1, 1) != ' ') {
-							--$pos;
-						}
-						if ($pos == strpos($line, ' ', 3) + 1) {
-							// No spaces in the data! Can’t split it :-(
-							break;
-						} else {
-							$newrec .= mb_substr($line, 0, $pos - 1) . Gedcom::EOL;
-							$line = $level . ' CONC ' . mb_substr($line, $pos);
-						}
-					} else {
-						// Split on a non-space (standard gedcom behaviour)
-						while ($pos && mb_substr($line, $pos - 1, 1) == ' ') {
-							--$pos;
-						}
-						if ($pos == strpos($line, ' ', 3)) {
-							// No non-spaces in the data! Can’t split it :-(
-							break;
-						}
-						$newrec .= mb_substr($line, 0, $pos) . Gedcom::EOL;
-						$line = $level . ' CONC ' . mb_substr($line, $pos);
+					// Split on a non-space (standard gedcom behaviour)
+					while ($pos && mb_substr($line, $pos - 1, 1) == ' ') {
+						--$pos;
 					}
+					if ($pos == strpos($line, ' ', 3)) {
+						// No non-spaces in the data! Can’t split it :-(
+						break;
+					}
+					$newrec .= mb_substr($line, 0, $pos) . Gedcom::EOL;
+					$line = $level . ' CONC ' . mb_substr($line, $pos);
 				} while (mb_strlen($line) > Gedcom::LINE_LENGTH);
 			}
 			$newrec .= $line . Gedcom::EOL;
