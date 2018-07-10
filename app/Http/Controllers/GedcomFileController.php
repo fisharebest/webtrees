@@ -45,7 +45,7 @@ class GedcomFileController extends AbstractBaseController {
 
 		// Only allow one process to import each gedcom at a time
 		Database::prepare(
-			"SELECT * FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id FOR UPDATE"
+			"SELECT imported FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id FOR UPDATE"
 		)->execute([
 			'tree_id' => $tree->getTreeId(),
 		]);
