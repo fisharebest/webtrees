@@ -45,7 +45,7 @@ ignore_user_abort(true);
 Database::beginTransaction();
 
 // Only allow one process to import each gedcom at a time
-Database::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
+Database::prepare("SELECT imported FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
 
 // What is the current import status?
 $row = Database::prepare(
