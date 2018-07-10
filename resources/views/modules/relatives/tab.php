@@ -101,39 +101,31 @@
 					</a>
 				</td>
 			</tr>
-			<?php if ($individual->getSex() !== 'F'): ?>
-				<tr>
-					<td>
-						<a href="<?= e(route('add-spouse-to-individual', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'gender' => 'F'])) ?>">
-							<?= I18N::translate('Add a wife') ?>
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'linkspouse', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'famtag' => 'WIFE'])) ?>">
-							<?= I18N::translate('Add a wife using an existing individual') ?>
-						</a>
-					</td>
-				</tr>
-			<?php endif ?>
 
-			<?php if ($individual->getSex() !== 'M'): ?>
-				<tr>
-					<td>
-						<a href="<?= e(route('add-spouse-to-family', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'gender' => 'M'])) ?>">
+			<tr>
+				<td>
+					<a href="<?= e(route('add-new-spouse', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+						<?php if ($individual->getSex() !== 'F'): ?>
+							<?= I18N::translate('Add a wife') ?>
+						<?php else: ?>
 							<?= I18N::translate('Add a husband') ?>
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'linkspouse', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'famtag' => 'HUSB'])) ?>">
+						<?php endif ?>
+					</a>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<a href="<?= e(route('link-spouse-to-individual', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+						<?php if ($individual->getSex() !== 'F'): ?>
+							<?= I18N::translate('Add a wife using an existing individual') ?>
+						<?php else: ?>
 							<?= I18N::translate('Add a husband using an existing individual') ?>
-						</a>
-					</td>
-				</tr>
-			<?php endif ?>
+						<?php endif ?>
+					</a>
+				</td>
+			</tr>
+
 			<tr>
 				<td>
 					<a href="<?= e(route('add-child-to-individual', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'gender' => 'U'])) ?>">

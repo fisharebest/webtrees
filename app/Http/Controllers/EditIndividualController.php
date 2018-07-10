@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -601,5 +602,68 @@ class EditIndividualController extends AbstractBaseController {
 		}
 
 		return new RedirectResponse($individual->url());
+	}
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkSpouseToIndividual(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		if ($individual->getSex() === 'F') {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
+			$label = I18N::translate('Husband');
+		} else {
+			$title = $individual->getFullName() . ' - ' . I18N::translate('Add a wife using an existing individual');
+			$label = I18N::translate('Wife');
+		}
+
+		return $this->viewResponse('edit/link-spouse-to-individual', [
+			'individual' => $individual,
+			'label'      => $label,
+			'title'      => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function linkSpouseToIndividualAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref   = $request->get('xref', '');
+		$spouse = $request->get('spid', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+		$this->checkIndividualAccess($individual, true);
+
+		$spouse = Individual::getInstance($spouse, $tree);
+		$this->checkIndividualAccess($spouse, true);
+
+		if ($individual->getSex() === 'M') {
+			$gedcom = "0 @new@ FAM\n1 HUSB @" . $individual->getXref() . "@\n1 WIFE @" . $spouse->getXref() . '@';
+		} else {
+			$gedcom = "0 @new@ FAM\n1 WIFE @" . $individual->getXref() . "@\n1 HUSB @" . $spouse->getXref() . '@';
+		}
+
+		$gedcom .= FunctionsEdit::addNewFact($tree, 'MARR');
+
+		$family = $tree->createRecord($gedcom);
+
+		$individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
+		$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
+
+		return new RedirectResponse($family->url());
 	}
 }
