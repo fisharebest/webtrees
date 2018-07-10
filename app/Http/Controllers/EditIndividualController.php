@@ -400,7 +400,7 @@ class EditIndividualController extends AbstractBaseController {
 			'individual' => null,
 			'family'     => null,
 			'name_fact'  => null,
-			'famtag'     => null,
+			'famtag'     => '',
 			'gender'     => 'U',
 		]);
 	}
