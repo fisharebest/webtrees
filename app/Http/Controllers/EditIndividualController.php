@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -527,6 +529,76 @@ class EditIndividualController extends AbstractBaseController {
 		$this->checkIndividualAccess($individual, true);
 
 		// @TODO move edit_interface.php code here
+
+		return new RedirectResponse($individual->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function linkChildToFamily(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+
+		$this->checkIndividualAccess($individual, true);
+
+		$title = $individual->getFullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
+
+		return $this->viewResponse('edit/link-child-to-family', [
+			'individual' => $individual,
+			'title'      => $title,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function linkChildToFamilyAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref  = $request->get('xref', '');
+		$famid = $request->get('famid', '');
+		$PEDI  = $request->get('PEDI', '');
+
+		$individual = Individual::getInstance($xref, $tree);
+		$this->checkIndividualAccess($individual, true);
+
+		$family = Family::getInstance($famid, $tree);
+		$this->checkFamilyAccess($family, true);
+
+		// Replace any existing child->family link (we may be changing the PEDI);
+		$fact_id = null;
+		foreach ($individual->getFacts('FAMC') as $fact) {
+			if ($family === $fact->getTarget()) {
+				$fact_id = $fact->getFactId();
+				break;
+			}
+		}
+
+		$gedcom = GedcomCodePedi::createNewFamcPedi($PEDI, $famid);
+		$individual->updateFact($fact_id, $gedcom, true);
+
+		// Only set the family->child link if it does not already exist
+		$chil_link_exists = false;
+		foreach ($family->getFacts('CHIL') as $fact) {
+			if ($individual === $fact->getTarget()) {
+				$chil_link_exists = true;
+				break;
+			}
+		}
+
+		if (!$chil_link_exists) {
+			$family->createFact('1 CHIL @' . $individual->getXref() . '@', true);
+		}
 
 		return new RedirectResponse($individual->url());
 	}

@@ -96,7 +96,7 @@
 			<?php endif ?>
 			<tr>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'addfamlink', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+					<a href="<?= e(route('link-child-to-family', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 						<?= I18N::translate('Link this individual to an existing family as a child') ?>
 					</a>
 				</td>

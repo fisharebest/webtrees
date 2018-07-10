@@ -193,6 +193,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:add-spouse-to-individual' => 'EditIndividualController@addSpouseAction',
 		'GET:add-unlinked-individual'   => 'EditIndividualController@addUnlinked',
 		'POST:add-unlinked-individual'  => 'EditIndividualController@addUnlinkedAction',
+		'GET:link-child-to-family'      => 'EditIndividualController@linkChildToFamily',
+		'POST:link-child-to-family'     => 'EditIndividualController@linkChildToFamilyAction',
 		'GET:edit-name'                 => 'EditIndividualController@editName',
 		'POST:edit-name'                => 'EditIndividualController@editNameAction',
 		'GET:add-name'                  => 'EditIndividualController@addName',
