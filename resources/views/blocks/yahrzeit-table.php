@@ -23,13 +23,13 @@
 					</a>
 				</td>
 				<td data-sort="<?= e($yahrzeit->fact_date->julianDay()) ?>">
-					<?= $yahrzeit->fact_date->display() ?>
+					<?= $yahrzeit->fact_date->display(true) ?>
 				</td>
 				<td data-sort="<?= e($yahrzeit->fact->anniv) ?>">
 					<?= I18N::number($yahrzeit->fact->anniv) ?>
 				</td>
 				<td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
-					<?= $yahrzeit->yahrzeit_date->display() ?>
+					<?= $yahrzeit->yahrzeit_date->display(true) ?>
 				</td>
 			</tr>
 		<?php endforeach ?>
