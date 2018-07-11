@@ -658,7 +658,7 @@ class FunctionsEdit {
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn">' .
-				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['tree' => $tree->getName()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
+				'<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['ged' => $tree->getName()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
 				'<i class="fas fa-plus"></i><' .
 				'/button>' .
 				'</span>' .
@@ -667,7 +667,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'OBJE') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '"><i class="fas fa-plus"></i></button></span>' .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['ged' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '"><i class="fas fa-plus"></i></button></span>' .
 				self::formControlMediaObject($tree, Media::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'PAGE') {
@@ -700,7 +700,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'REPO') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fas fa-plus"></i></button></span>' .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['ged' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '"><i class="fas fa-plus"></i></button></span>' .
 				self::formControlRepository($tree, Repository::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'RESN') {
@@ -717,7 +717,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'SOUR') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '"><i class="fas fa-plus"></i></button></span>' .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['ged' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '"><i class="fas fa-plus"></i></button></span>' .
 				self::formControlSource($tree, Source::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'STAT') {
@@ -725,7 +725,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'SUBM') {
 			$html .=
 				'<div class="input-group">' .
-				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['tree' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fas fa-plus"></i></button></span>' .
+				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['ged' => $tree->getName()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '"><i class="fas fa-plus"></i></button></span>' .
 				self::formControlSubmitter($tree, GedcomRecord::getInstance($value, $tree), ['id' => $id, 'name' => $name]) .
 				'</div>';
 		} elseif ($fact === 'TEMP') {

@@ -216,7 +216,7 @@
 									<!-- UNLINKED SOURCE -->
 									<li>
 										<span class="fa-li"><i class="fas fa-book"></i></span>
-										<a href="#" data-href="<?= e(route('create-source', ['tree' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<a href="#" data-href="<?= e(route('create-source', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 											<?= I18N::translate('Source') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
@@ -226,7 +226,7 @@
 									<!-- UNLINKED REPOSITORY -->
 									<li>
 										<span class="fa-li"><i class="fas fa-university"></i></span>
-										<a href="#" data-href="<?= e(route('create-repository', ['tree' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<a href="#" data-href="<?= e(route('create-repository', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 											<?= I18N::translate('Repository') ?>
 											<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
@@ -236,7 +236,7 @@
 									<!-- UNLINKED MEDIA OBJECT -->
 									<li>
 										<span class="fa-li"><i class="far fa-image"></i></span>
-										<a href="#" data-href="<?= e(route('create-media-object', ['tree' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<a href="#" data-href="<?= e(route('create-media-object', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 
 											<?= I18N::translate('Media object') ?>
 											<span class="sr-only">
@@ -247,7 +247,7 @@
 									<!-- UNLINKED NOTE -->
 									<li>
 										<span class="fa-li"><i class="fas fa-paragraph"></i></span>
-										<a href="#" data-href="<?= e(route('create-note-object', ['tree' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<a href="#" data-href="<?= e(route('create-note-object', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
 									</span>
@@ -257,7 +257,7 @@
 									<!-- UNLINKED SUBMITTER -->
 									<li>
 										<span class="fa-li"><i class="far fa-user"></i></span>
-										<a href="#" data-href="<?= e(route('create-submitter', ['tree' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+										<a href="#" data-href="<?= e(route('create-submitter', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 									<span class="sr-only">
 										<?= e($managed_tree->getTitle()) ?>
 									</span>

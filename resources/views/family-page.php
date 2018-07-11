@@ -108,7 +108,7 @@
 						<?= I18N::translate('Media object') ?>
 					</th>
 					<td class="optionbox">
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref()]))  ?>">
+						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'OBJE']))  ?>">
 							<?= I18N::translate('Add a media object') ?>
 						</a>
 					</td>

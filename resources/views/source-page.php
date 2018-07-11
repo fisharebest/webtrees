@@ -77,7 +77,7 @@
 								<?= I18N::translate('Media object') ?>
 							</th>
 							<td>
-								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add-media-link', 'ged' => $source->getTree()->getName(), 'xref' => $source->getXref()])) ?>">
+								<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $source->getTree()->getName(), 'xref' => $source->getXref(), 'fact' => 'OBJE'])) ?>">
 									<?= I18N::translate('Add a media object') ?>
 								</a>
 							</td>
