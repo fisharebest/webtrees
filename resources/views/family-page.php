@@ -52,7 +52,7 @@
 									<br>
 								<?php endif ?>
 								<?php if ($record->getWife() === null): ?>
-									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'WIFE'])) ?>>
+									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'WIFE'])) ?>">
 										<?= I18N::translate('Add a mother') ?>
 									</a>
 									<br>

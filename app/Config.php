@@ -170,12 +170,6 @@ class Config {
 			'FAMC' => [
 				'ADOP', 'SLGC',
 			],
-			'FILE' => [
-				'OBJE',
-			],
-			'_PRIM' => [
-				'OBJE',
-			],
 			'EVEN' => [
 				'DATA',
 			],

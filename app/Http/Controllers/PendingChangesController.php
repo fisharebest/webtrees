@@ -65,10 +65,10 @@ class PendingChangesController extends AbstractBaseController {
 		foreach ($changes as $change) {
 			if (empty($change->new_gedcom)) {
 				// delete
-				FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
+				FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
 			} else {
 				// add/update
-				FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
+				FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
 			}
 
 			Database::prepare(

@@ -1407,9 +1407,6 @@ class FunctionsEdit {
 						echo self::addSimpleTag($tree, '4 LATI');
 						echo self::addSimpleTag($tree, '4 LONG');
 						break;
-					case 'FILE':
-						echo self::addSimpleTag($tree, '3 FORM');
-						break;
 					case 'EVEN':
 						echo self::addSimpleTag($tree, '3 DATE');
 						echo self::addSimpleTag($tree, '3 PLAC');
