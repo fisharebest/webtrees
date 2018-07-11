@@ -98,7 +98,7 @@ class I18N {
 	// Default list of locales to show in the menu.
 	const DEFAULT_LOCALES = [
 		'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
-		'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
+		'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'kk', 'lt', 'mr', 'nb',
 		'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans',
 	];
 
