@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-01-05 10:14+0000\n"
-"PO-Revision-Date: 2018-01-15 20:05+0000\n"
+"PO-Revision-Date: 2018-07-11 20:50+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1154,7 +1154,7 @@ msgstr "Accra, Ghána"
 
 #: resources/views/admin/webtrees1-thumbnails.php:27
 msgid "Action"
-msgstr ""
+msgstr "Művelet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1291,7 +1291,7 @@ msgstr "Naplóbejegyzés felvétele"
 #: resources/views/media-page.php:135
 #: resources/views/modals/add-media-file.php:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Médiafájl felvétele"
 
 #: app/Controller/FamilyController.php:154 edit_interface.php:1324
 #: individual.php:176 resources/views/cards/add-media-object.php:7
@@ -3188,7 +3188,7 @@ msgstr "A temetés helye tartalmazza"
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Temetések"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6642
@@ -3832,7 +3832,7 @@ msgstr "%s tömör fája"
 
 #: resources/views/admin/webtrees1-thumbnails.php:26
 msgid "Comparison"
-msgstr ""
+msgstr "Összehasonlítás"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -5304,7 +5304,7 @@ msgstr "Szerkesztés"
 #: app/Http/Controllers/EditMediaController.php:139
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "Médiafájlszerkesztés"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1105
@@ -5368,7 +5368,7 @@ msgstr "Módosítsa ezt a személyt és írja felül az Ön saját adataival."
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "Szerkesztési korlátozás"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:35 admin_users.php:547
@@ -7150,7 +7150,7 @@ msgstr "Azonosítószám"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Ha a médiaobjektum egy személyhez van kapcsolva, miközben egy tényhez vagy eseményhez kötődik, akkor áthelyezheti a megfelelő helyre."
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:315
@@ -7188,7 +7188,7 @@ msgstr "Ha a vezetéknév ismeretlen, használjunk két, egymást követő perje
 
 #: resources/views/admin/webtrees1-thumbnails.php:14
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Ha bélyegkép megegyezik az eredeti képpel, akkor többé már szükségtelen és törölni kell. Ha ez egy egyéni kép, akkor a médiaobjektumhoz kell adni."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/tree-privacy.php:75
@@ -7292,7 +7292,7 @@ msgstr "Az összes hely betöltése egy családfából"
 #: app/Http/Controllers/AdminController.php:1016
 #: resources/views/admin/control-panel.php:442
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "A webtrees 1 verziós egyéni bélyegképek betöltése"
 
 #: admin_trees_manage.php:265
 msgid "Import preferences"
@@ -7331,11 +7331,11 @@ msgstr "Ebben az évben…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:10
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "A webtrees 1 verzióban a médiaobjektumokhoz egyéni bélyegképet lehetett adni egy fájl létrehozásával a “thumbs” mappában."
 
 #: resources/views/admin/webtrees1-thumbnails.php:12
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "A webtrees 2 verzióban az egyéni bélyegkép a médiaobjektum második médiafájlaként van tárolva."
 
 #: admin_trees_unconnected.php:83
 msgid "Include associates"
@@ -8150,7 +8150,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:870
 #: resources/views/admin/control-panel.php:436
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Médiaobjektum tényhez és eseményhez rendelése"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -9344,7 +9344,7 @@ msgstr "Jobbra"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "Áthelyezni a médiaobjektumot?"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487
 #: resources/views/edit-blocks-page.php:157
@@ -10284,7 +10284,7 @@ msgstr "Egyéb mappa… kérjük, írja be"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Egyéb származástani alkalmazások esetleg nem ismerik fel ezeket az adatokat."
 
 #: admin_trees_config.php:1325
 msgid "Other preferences"
@@ -10982,7 +10982,7 @@ msgstr "Adatvédelem"
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Adatvédelmi megszorítás"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/tree-privacy.php:160
@@ -11212,7 +11212,7 @@ msgstr "Médiasorrend-csere"
 
 #: edit_interface.php:1828 individual.php:200
 msgid "Re-order names"
-msgstr ""
+msgstr "Névsorrendcsere"
 
 #: admin_users.php:316 admin_users.php:838 edituser.php:144 login.php:399
 #: resources/views/emails/register-notify-html.php:13
@@ -13366,7 +13366,7 @@ msgstr "A(z) „%s” GEDCOM-állomány betöltődött."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "A GEDCOM szabvány nem engedélyezi a médiaobjektumok URL-jét."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13605,7 +13605,7 @@ msgstr "A feltöltendő médiaállományt át lehet és valószínűleg át is k
 
 #: app/Http/Controllers/EditMediaController.php:328
 msgid "The media object has been created"
-msgstr ""
+msgstr "A médiaobjektum létrejött"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13661,7 +13661,7 @@ msgstr "A fiók létrehozása előtt az új felhasználót felkérjük az e-mail
 
 #: app/Http/Controllers/EditNoteController.php:81
 msgid "The note has been created"
-msgstr ""
+msgstr "A jegyzet létrejött"
 
 #: help_text.php:299 resources/views/help/date.php:268
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13734,7 +13734,7 @@ msgstr "Úgy tűnik, a regex hibát tartalmaz, ezért nem használható."
 
 #: app/Http/Controllers/EditRepositoryController.php:83
 msgid "The repository has been created"
-msgstr ""
+msgstr "Az adattár létrejött"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13751,11 +13751,11 @@ msgstr "A családfa mérete, legkorábbi és legkésőbbi események, gyakori ne
 
 #: app/Http/Controllers/EditSourceController.php:121
 msgid "The source has been created"
-msgstr ""
+msgstr "A forrás létrejött"
 
 #: app/Http/Controllers/EditSubmitterController.php:89
 msgid "The submitter has been created"
-msgstr ""
+msgstr "A küldő létrejött"
 
 #: help_text.php:234
 #, php-format
@@ -13872,7 +13872,7 @@ msgstr "E személy bejegyzésében nincs tény."
 
 #: admin_media.php:549
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Nincs kapcsolat a médiaobjektumra."
 
 #: app/Module/MediaTabModule.php:77
 msgid "There are no media objects for this individual."
@@ -14464,7 +14464,7 @@ msgstr "Csüt."
 
 #: resources/views/admin/webtrees1-thumbnails.php:23
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Miniatűr kép"
 
 #: admin_trees_config.php:581 admin_trees_config.php:587
 msgid "Thumbnail images"
@@ -15905,15 +15905,15 @@ msgstr "Léptékcsökkentés"
 
 #: resources/views/modals/media-file-fields.php:20
 msgid "a URL"
-msgstr ""
+msgstr "egy URL"
 
 #: resources/views/modals/media-file-fields.php:16
 msgid "a file on the server"
-msgstr ""
+msgstr "egy fájl a szerveren"
 
 #: resources/views/modals/media-file-fields.php:12
 msgid "a file on your computer"
-msgstr ""
+msgstr "egy fájl a számítógépen"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
