@@ -185,6 +185,8 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 		'POST:add-child-to-family'       => 'EditFamilyController@addChildAction',
 		'GET:add-spouse-to-family'       => 'EditFamilyController@addSpouse',
 		'POST:add-spouse-to-family'      => 'EditFamilyController@addSpouseAction',
+		'GET:change-family-members'      => 'EditFamilyController@changeFamilyMembers',
+		'POST:change-family-members'     => 'EditFamilyController@changeFamilyMembersAction',
 		'GET:add-child-to-individual'    => 'EditIndividualController@addChild',
 		'POST:add-child-to-individual'   => 'EditIndividualController@addChildAction',
 		'GET:add-parent-to-individual'   => 'EditIndividualController@addParent',

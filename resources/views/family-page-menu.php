@@ -9,7 +9,7 @@
 		<?= I18N::translate('edit') ?>
 	</button>
 	<div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-		<a class="dropdown-item menu-fam-change" href="<?= e(Html::url('edit_interface.php', ['action' => 'changefamily', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'gender' => 'U'])) ?>">
+		<a class="dropdown-item menu-fam-change" href="<?= e(route('change-family-members', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) ?>">
 			<?= I18N::translate('Change family members') ?>
 		</a>
 

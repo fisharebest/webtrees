@@ -1767,30 +1767,7 @@ div.faq_body {
 	width: 300px;
 }
 
-#edit_interface-page #changefam {
-	padding: 5px;
-}
-
-#edit_interface-page #changefam table {
-	margin: 10px auto;
-	min-width: 400px;
-	max-width: 650px;
-}
-
-#edit_interface-page #changefam span {
-	margin: 0;
-}
-
-#edit_interface-page #changefam td {
-	padding: 5px;
-	white-space: normal;
-}
-
-#edit_interface-page #changefam td.child {
-	text-align: center;
-}
-
-#save-cancel {
+save-cancel {
 	position: fixed;
 	bottom: 0;
 	background-color: #fff;
