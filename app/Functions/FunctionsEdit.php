@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
@@ -466,6 +465,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
+		// @TODO $xref is no longer set (from edit_interface).
 		global $tags, $xref;
 
 		// Some form fields need access to previous form fields.
@@ -601,6 +601,7 @@ class FunctionsEdit {
 		} elseif ($fact === 'ALIA') {
 			$html .= self::formControlIndividual($tree, Individual::getInstance($value, $tree), ['id' => $id, 'name' => $name]);
 		} elseif ($fact === 'ASSO' || $fact === '_ASSO') {
+			// @TODO we no longer have/user createNewRecord()
 			$html .=
 				'<div class="input-group">' .
 				'<span class="input-group-btn"><button class="btn btn-secondary" type="button" onclick="createNewRecord(' . $id . ')" title="' . I18N::translate('Create an individual') . '"><i class="fas fa-plus"></i></button></span>' .
