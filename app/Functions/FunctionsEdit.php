@@ -466,7 +466,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
-		global $tags, $xref, $action;
+		global $tags, $xref;
 
 		// Some form fields need access to previous form fields.
 		static $previous_ids = ['SOUR' => '', 'PLAC' => ''];
@@ -536,24 +536,20 @@ class FunctionsEdit {
 			$html .= GedcomTag::getLabel($fact);
 		}
 
-		// If using GEDFact-assistant window
-		if ($action === 'addnewnote_assisted') {
-			// Do not print on GEDFact Assistant window
-		} else {
-			// Not all facts have help text.
-			switch ($fact) {
-				case 'NAME':
-					if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
-						$html .= FunctionsPrint::helpLink($fact);
-					}
-					break;
-				case 'ROMN':
-				case 'SURN':
-				case '_HEB':
+		// Not all facts have help text.
+		switch ($fact) {
+			case 'NAME':
+				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
 					$html .= FunctionsPrint::helpLink($fact);
-					break;
-			}
+				}
+				break;
+			case 'ROMN':
+			case 'SURN':
+			case '_HEB':
+				$html .= FunctionsPrint::helpLink($fact);
+				break;
 		}
+
 		// tag level
 		if ($level !== '0') {
 			$html .= '<input type="hidden" name="glevels[]" value="' . $level . '">';
