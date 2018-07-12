@@ -307,7 +307,7 @@ abstract class AbstractEditController extends AbstractBaseController {
 		$this->islink  = $this->islinkSOUR;
 		$this->text    = $this->textSOUR;
 
-		$myRecord = self::handleUpdates($inputRec, $levelOverride); // Now do the update
+		$myRecord = $this->handleUpdates($inputRec, $levelOverride); // Now do the update
 
 		// Restore the original interface update arrays (just in case ...)
 		$this->glevels = $glevelsSave;
