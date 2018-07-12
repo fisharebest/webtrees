@@ -87,7 +87,7 @@ class ReportEngineController extends AbstractBaseController {
 		$description  = $report_array['description'];
 		$title        = $report_array['title'];
 
-		//FunctionsPrint::initializeCalendarPopup();
+		view('edit/initialize-calendar-popup');
 
 		$inputs = [];
 

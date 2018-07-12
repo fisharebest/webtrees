@@ -564,40 +564,6 @@ class FunctionsPrint {
 	}
 
 	/**
-	 * javascript declaration for calendar popup
-	 */
-	public static function initializeCalendarPopup() {
-		global $controller;
-
-		$controller->addInlineJavascript('
-			cal_setMonthNames(
-				"' . I18N::translateContext('NOMINATIVE', 'January') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'February') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'March') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'April') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'May') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'June') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'July') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'August') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'September') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'October') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'November') . '",
-				"' . I18N::translateContext('NOMINATIVE', 'December') . '"
-			)
-			cal_setDayHeaders(
-				"' . I18N::translate('Sun') . '",
-				"' . I18N::translate('Mon') . '",
-				"' . I18N::translate('Tue') . '",
-				"' . I18N::translate('Wed') . '",
-				"' . I18N::translate('Thu') . '",
-				"' . I18N::translate('Fri') . '",
-				"' . I18N::translate('Sat') . '"
-			)
-			cal_setWeekStart(' . I18N::firstDay() . ');
-		');
-	}
-
-	/**
 	 * Summary of LDS ordinances.
 	 *
 	 * @param Individual $individual

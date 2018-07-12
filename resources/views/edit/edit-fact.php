@@ -122,4 +122,4 @@
 
 <?= view('modals/on-screen-keyboard') ?>
 <?= view('modals/ajax') ?>
-<?php FunctionsPrint::initializeCalendarPopup(); ?>
+<?= view('edit/initialize-calendar-popup') ?>

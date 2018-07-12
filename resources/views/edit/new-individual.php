@@ -128,8 +128,6 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 ?>
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<?php FunctionsPrint::initializeCalendarPopup(); ?>
-
 <form method="post" onsubmit="return checkform();">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 	<input type="hidden" name="action" value="<?= e($nextaction) ?>">
@@ -345,7 +343,9 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 	</div>
 </form>
 
+<?= view('modals/on-screen-keyboard') ?>
 <?= view('modals/ajax') ?>
+<?= view('edit/initialize-calendar-popup') ?>
 
 <?php View::push('javascript') ?>
 <script>
