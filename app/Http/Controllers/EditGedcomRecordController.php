@@ -412,7 +412,7 @@ class EditGedcomRecordController extends AbstractEditController {
 		if ($this->text[0] === 'Y') {
 			foreach ($this->tag as $n => $value) {
 				if ($this->glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $this->text[$n] !== '') {
-					$text[0] = '';
+					$this->text[0] = '';
 					break;
 				}
 			}
