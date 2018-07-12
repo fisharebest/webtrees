@@ -23,8 +23,8 @@ class CensusTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * @covers \Fisharebest\Webtrees\Census\Census
 	 */
-	public function testAllCensus() {
-		$censuses = Census::allCensusPlaces();
+	public function testCensusPlaces() {
+		$censuses = Census::censusPlaces('XX');
 
 		$this->assertCount(8, $censuses);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic', $censuses[0]);
