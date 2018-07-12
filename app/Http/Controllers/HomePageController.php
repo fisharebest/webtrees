@@ -222,9 +222,8 @@ class HomePageController extends AbstractBaseController {
 		$title        = e($tree->getTitle());
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $ctype, $controller;
-		$ctype      = 'gedcom';
-		$controller = $this;
+		global $ctype;
+		$ctype = 'gedcom';
 
 		return $this->viewResponse('tree-page', [
 			'main_blocks' => $main_blocks,
@@ -260,9 +259,8 @@ class HomePageController extends AbstractBaseController {
 		}
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $ctype, $controller;
-		$ctype      = 'gedcom';
-		$controller = $this;
+		global $ctype;
+		$ctype = 'gedcom';
 
 		$html = view('layouts/ajax', [
 			'content' => $module->getBlock($tree, $block_id, true),
@@ -394,9 +392,8 @@ class HomePageController extends AbstractBaseController {
 		$title        = I18N::translate('My page');
 
 		// @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-		global $ctype, $controller;
-		$ctype      = 'user';
-		$controller = $this;
+		global $ctype;
+		$ctype = 'user';
 
 		return $this->viewResponse('user-page', [
 			'main_blocks' => $main_blocks,
@@ -435,9 +432,8 @@ class HomePageController extends AbstractBaseController {
 		}
 
 		// @TODO - ModuleBlockInterface::getBlock() relies on these globals :-(
-		global $ctype, $controller;
-		$ctype      = 'user';
-		$controller = $this;
+		global $ctype;
+		$ctype = 'user';
 
 		$html = view('layouts/ajax', [
 			'content' => $module->getBlock($tree, $block_id, true),
