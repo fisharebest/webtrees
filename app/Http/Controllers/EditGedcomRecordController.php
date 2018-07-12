@@ -433,9 +433,12 @@ class EditGedcomRecordController extends AbstractBaseController {
 			}
 		}
 
+		// @TODO - is $NOTE used?  The original code made it global, so need to check
 		if (isset($_POST['NOTE'])) {
 			$NOTE = $_POST['NOTE'];
 		}
+
+		// @TODO - is $title used?  The original code made it global, so need to check
 		if (!empty($NOTE)) {
 			$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 			$title[]  = '0 @' . $xref . '@ NOTE ' . array_shift($tempnote);
@@ -469,7 +472,7 @@ class EditGedcomRecordController extends AbstractBaseController {
 		$record->updateFact($fact_id, $newged, !$keep_chan);
 
 		// For the GEDFact_assistant module
-		$pid_array = $request->get('pid_array', []);
+		$pid_array = $request->get('pid_array', '');
 		if ($pid_array) {
 			foreach (explode(',', $pid_array) as $pid) {
 				if ($pid !== $xref) {
