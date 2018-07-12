@@ -261,9 +261,54 @@ class EditIndividualController extends AbstractBaseController {
 
 		$this->checkIndividualAccess($individual, true);
 
-		// @TODO move edit_interface.php code here
+		$PEDI    = $request->get('PEDI', '');
 
-		return new RedirectResponse($individual->url());
+		global $glevels, $tag, $text, $islink;
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
+
+
+		// Create a family
+		if ($individual->getSex() === 'F') {
+			$gedcom = "0 @NEW@ FAM\n1 WIFE @" . $individual->getXref() . '@';
+		} else {
+			$gedcom = "0 @NEW@ FAM\n1 HUSB @" . $individual->getXref() . '@';
+		}
+		$family = $tree->createRecord($gedcom);
+
+		// Link the parent to the family
+		$individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
+
+		// Create a child
+		FunctionsEdit::splitSource(); // separate SOUR record from the rest
+
+		$gedcom = '0 @NEW@ INDI';
+		$gedcom .= FunctionsEdit::addNewName($tree);
+		$gedcom .= FunctionsEdit::addNewSex();
+		$gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$gedcom .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((bool) $request->get('SOUR_INDI')) {
+			$gedcom = FunctionsEdit::handleUpdates($gedcom);
+		} else {
+			$gedcom = FunctionsEdit::updateRest($gedcom);
+		}
+
+		$child = $tree->createRecord($gedcom);
+
+		// Link the family to the child
+		$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($child->url());
+		} else {
+			return new RedirectResponse($individual->url());
+		}
 	}
 
 	/**
@@ -319,9 +364,51 @@ class EditIndividualController extends AbstractBaseController {
 
 		$this->checkIndividualAccess($individual, true);
 
-		// @TODO move edit_interface.php code here
+		global $glevels, $tag, $text, $islink;
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
 
-		return new RedirectResponse($individual->url());
+		// Create a new family
+		$gedcom = "0 @NEW@ FAM\n1 CHIL @" . $individual->getXref() . '@';
+		$family = $tree->createRecord($gedcom);
+
+		// Link the child to the family
+		$individual->createFact('1 FAMC @' . $family->getXref() . '@', true);
+
+		// Create a child
+		FunctionsEdit::splitSource(); // separate SOUR record from the rest
+
+		$gedcom = '0 @NEW@ INDI';
+		$gedcom .= FunctionsEdit::addNewName($tree);
+		$gedcom .= FunctionsEdit::addNewSex();
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$gedcom .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((bool) $request->get('SOUR_INDI')) {
+			$gedcom = FunctionsEdit::handleUpdates($gedcom);
+		} else {
+			$gedcom = FunctionsEdit::updateRest($gedcom);
+		}
+		$gedcom .= "\n1 FAMS @" . $family->getXref() . '@';
+
+		$parent = $tree->createRecord($gedcom);
+
+		// Link the family to the child
+		if ($parent->getSex() === 'F') {
+			$family->createFact('1 WIFE @' . $parent->getXref() . '@', true);
+		} else {
+			$family->createFact('1 HUSB @' . $parent->getXref() . '@', true);
+		}
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($parent->url());
+		} else {
+			return new RedirectResponse($individual->url());
+		}
 	}
 
 	/**
@@ -377,9 +464,58 @@ class EditIndividualController extends AbstractBaseController {
 
 		$this->checkIndividualAccess($individual, true);
 
-		// @TODO move edit_interface.php code here
+		$sex     = $request->get('SEX', 'U');
 
-		return new RedirectResponse($individual->url());
+		global $glevels, $tag, $text, $islink;
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
+
+		FunctionsEdit::splitSource();
+		$indi_gedcom = '0 @REF@ INDI';
+		$indi_gedcom .= FunctionsEdit::addNewName($tree);
+		$indi_gedcom .= FunctionsEdit::addNewSex();
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$indi_gedcom .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((bool) $request->get('SOUR_INDI')) {
+			$indi_gedcom = FunctionsEdit::handleUpdates($indi_gedcom);
+		} else {
+			$indi_gedcom = FunctionsEdit::updateRest($indi_gedcom);
+		}
+
+		$fam_gedcom = '';
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$fam_gedcom .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((bool) $request->get('SOUR_FAM')) {
+			$fam_gedcom = FunctionsEdit::handleUpdates($fam_gedcom);
+		} else {
+			$fam_gedcom = FunctionsEdit::updateRest($fam_gedcom);
+		}
+
+		// Create the new spouse
+		$spouse = $tree->createRecord($indi_gedcom);
+		// Create a new family
+		if ($sex === 'F') {
+			$family = $tree->createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $individual->getXref() . '@' . $fam_gedcom);
+		} else {
+			$family = $tree->createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $individual->getXref() . '@' . $fam_gedcom);
+		}
+		// Link the spouses to the family
+		$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
+		$individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($spouse->url());
+		} else {
+			return new RedirectResponse($individual->url());
+		}
 	}
 
 	/**
@@ -420,9 +556,34 @@ class EditIndividualController extends AbstractBaseController {
 
 		$this->checkIndividualAccess($individual, true);
 
-		// @TODO move edit_interface.php code here
+		global $glevels, $tag, $text, $islink;
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
 
-		return new RedirectResponse($individual->url());
+		FunctionsEdit::splitSource();
+		$gedrec = '0 @REF@ INDI';
+		$gedrec .= FunctionsEdit::addNewName($tree);
+		$gedrec .= FunctionsEdit::addNewSex();
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$gedrec .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((BOOL) $request->get('SOUR_INDI')) {
+			$gedrec = FunctionsEdit::handleUpdates($gedrec);
+		} else {
+			$gedrec = FunctionsEdit::updateRest($gedrec);
+		}
+
+		$new_indi = $tree->createRecord($gedrec);
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($new_indi->url());
+		} else {
+			return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
+		}
 	}
 
 	/**

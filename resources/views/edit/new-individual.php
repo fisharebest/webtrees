@@ -130,7 +130,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
 <?php FunctionsPrint::initializeCalendarPopup(); ?>
 
-<form action="edit_interface.php" method="post" onsubmit="return checkform();">
+<form method="post" onsubmit="return checkform();">
 	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 	<input type="hidden" name="action" value="<?= e($nextaction) ?>">
 	<input type="hidden" name="fact_id" value="<?= e($name_fact_id) ?>">

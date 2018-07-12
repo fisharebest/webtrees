@@ -17,7 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -135,9 +138,55 @@ class EditFamilyController extends AbstractBaseController {
 
 		$this->checkFamilyAccess($family, true);
 
-		// @TODO move edit_interface.php code here
+		$PEDI      = $request->get('PEDI', '');
+		$keep_chan = (bool) $request->get('keep_chan');
 
-		return new RedirectResponse($family->url());
+		global $glevels, $tag, $text, $islink;
+		$glevels   = $request->get('glevels', []);
+		$tag       = $request->get('tag', []);
+		$text      = $request->get('text', []);
+		$islink    = $request->get('islink', []);
+
+		FunctionsEdit::splitSource();
+		$gedrec = '0 @REF@ INDI';
+		$gedrec .= FunctionsEdit::addNewName($tree);
+		$gedrec .= FunctionsEdit::addNewSex();
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$gedrec .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		$gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
+		if ((bool) $request->get('SOUR_INDI')) {
+			$gedrec = FunctionsEdit::handleUpdates($gedrec);
+		} else {
+			$gedrec = FunctionsEdit::updateRest($gedrec);
+		}
+
+		// Create the new child
+		$new_child = $family->getTree()->createRecord($gedrec);
+
+		// Insert new child at the right place
+		$done = false;
+		foreach ($family->getFacts('CHIL') as $fact) {
+			$old_child = $fact->getTarget();
+			if ($old_child && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
+				// Insert before this child
+				$family->updateFact($fact->getFactId(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->getGedcom(), !$keep_chan);
+				$done = true;
+				break;
+			}
+		}
+		if (!$done) {
+			// Append child at end
+			$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
+		}
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($new_child->url());
+		} else {
+			return new RedirectResponse($family->url());
+		}
 	}
 
 	/**
@@ -191,9 +240,56 @@ class EditFamilyController extends AbstractBaseController {
 
 		$this->checkFamilyAccess($family, true);
 
-		// @TODO move edit_interface.php code here
+		global $glevels, $tag, $text, $islink;
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
 
-		return new RedirectResponse($family->url());
+		// Create the new spouse
+		FunctionsEdit::splitSource(); // separate SOUR record from the rest
+
+		$gedrec = '0 @REF@ INDI';
+		$gedrec .= FunctionsEdit::addNewName($tree);
+		$gedrec .= FunctionsEdit::addNewSex();
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$gedrec .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+
+		if ((bool) $request->get('SOUR_INDI')) {
+			$gedrec = FunctionsEdit::handleUpdates($gedrec);
+		} else {
+			$gedrec = FunctionsEdit::updateRest($gedrec);
+		}
+		$gedrec .= "\n1 FAMS @" . $family->getXref() . '@';
+		$spouse = $tree->createRecord($gedrec);
+
+		// Update the existing family - add marriage, etc
+		if ($family->getFirstFact('HUSB')) {
+			$family->createFact('1 WIFE @' . $spouse->getXref() . '@', true);
+		} else {
+			$family->createFact('1 HUSB @' . $spouse->getXref() . '@', true);
+		}
+		$famrec = '';
+		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+			foreach ($matches[1] as $match) {
+				$famrec .= FunctionsEdit::addNewFact($tree, $match);
+			}
+		}
+		if ((bool) $request->get('SOUR_FAM')) {
+			$famrec = FunctionsEdit::handleUpdates($famrec);
+		} else {
+			$famrec = FunctionsEdit::updateRest($famrec);
+		}
+		$family->createFact(trim($famrec), true); // trim leading \n
+
+		if ($request->get('goto') === 'new') {
+			return new RedirectResponse($spouse->url());
+		} else {
+			return new RedirectResponse($family->url());
+		}
 	}
 
 	/**
