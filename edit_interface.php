@@ -677,33 +677,6 @@ case 'add_spouse_to_family_action':
 		header('Location: ' . $family->url());
 	}
 	break;
-
-case 'addmedia_links':
-	//////////////////////////////////////////////////////////////////////////////
-	//
-	//////////////////////////////////////////////////////////////////////////////
-	$tree = $controller->tree();
-	$pid  = Filter::get('pid', WT_REGEX_XREF);
-
-	$person = Individual::getInstance($pid, $tree);
-	check_record_access($person);
-
-	$controller
-		->setPageTitle(I18N::translate('Family navigator') . ' — ' . $person->getFullName())
-		->pageHeader();
-
-	?>
-	<h2><?= $controller->getPageTitle() ?></h2>
-
-	<form method="post" action="edit_interface.php?xref=<?= $person->getXref() ?>" onsubmit="findindi()">
-		<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
-		<input type="hidden" name="action" value="addmedia_links">
-		<input type="hidden" name="noteid" value="newnote">
-		<?= Filter::getCsrf() ?>
-		<?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/MEDIA_ctrl.php' ?>
-	</form>
-	<?php
-	break;
 }
 
 /**
