@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -6264,7 +6265,7 @@ class Stats {
 			// indi/fam/sour/etc.
 		}
 
-		return '<span class="odometer">' . I18N::digits(HitCounter::getCount($this->tree, $page_name, $page_parameter)) . '</span>';
+		return '<span class="odometer">' . I18N::digits(PageHitCounter::getCount($this->tree, $page_name, $page_parameter)) . '</span>';
 	}
 
 	/**

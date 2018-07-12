@@ -112,7 +112,14 @@
 			<div class="wt-footer-content container d-print-none">
 				<?= Theme::theme()->formatContactLinks() ?>
 				<?= Theme::theme()->logoPoweredBy() ?>
-				<?= Theme::theme()->formatPageViews(123) ?>
+
+				<?php if ($page_hits > 0): ?>
+				<div class="wt-page-views">
+					<?= I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $page_hits,
+					'<span class="odometer">' . I18N::digits($page_hits) . '</span>') ?>
+				</div>
+				<?php endif ?>
+
 				<?= Theme::theme()->cookieWarning()?>
 			</div>
 		</footer>

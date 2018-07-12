@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\HitCounter;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -116,9 +115,6 @@ abstract class AbstractTheme {
 
 	/** @var Tree */
 	protected $tree;
-
-	/** @var int The number of times this page has been shown */
-	protected $page_views;
 
 	/**
 	 * Custom themes should place their initialization code in the function hookAfterInit(), not in
@@ -296,26 +292,6 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create the top of the <body>.
-	 *
-	 * @return string
-	 */
-	public function bodyHeader() {
-		return
-			'<body class="wt-global">' .
-			'<header class="wt-header-wrapper d-print-none">' .
-			'<div class="container wt-header-container">' .
-			'<div class="row wt-header-content">' .
-			$this->headerContent() .
-			'</div>' .
-			'</div>' .
-			'</header>' .
-			'<main id="content" class="wt-main-wrapper">' .
-			'<div class="container wt-main-container">' .
-			$this->flashMessagesContainer(FlashMessages::getMessages());
-	}
-
-	/**
 	 * Create a contact link for a user.
 	 *
 	 * @param User $user
@@ -473,33 +449,6 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Close the main content and create the <footer> tag.
-	 *
-	 * @return string
-	 */
-	public function footerContainer() {
-		return
-			'</div>' .
-			'</main>' .
-			'<footer class="wt-footer-container">' .
-			'<div class="wt-footer-content container d-print-none">' . $this->footerContent() . '</div>' .
-			'</footer>';
-	}
-
-	/**
-	 * Create the contents of the <footer> tag.
-	 *
-	 * @return string
-	 */
-	protected function footerContent() {
-		return
-			$this->formatContactLinks() .
-			$this->logoPoweredBy() .
-			$this->formatPageViews($this->page_views) .
-			$this->cookieWarning();
-	}
-
-	/**
 	 * Add markup to the contact links.
 	 *
 	 * @return string
@@ -507,25 +456,6 @@ abstract class AbstractTheme {
 	public function formatContactLinks() {
 		if ($this->tree) {
 			return '<div class="wt-contact-links">' . $this->contactLinks() . '</div>';
-		} else {
-			return '';
-		}
-	}
-
-	/**
-	 * Add markup to the hit counter.
-	 *
-	 * @param int $count
-	 *
-	 * @return string
-	 */
-	public function formatPageViews($count) {
-		if ($count > 0) {
-			return
-				'<div class="wt-page-views">' .
-				I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $count,
-					'<span class="odometer">' . I18N::digits($count) . '</span>') .
-				'</div>';
 		} else {
 			return '';
 		}
@@ -616,61 +546,6 @@ abstract class AbstractTheme {
 	 */
 	public function formatSecondaryMenuItem(Menu $menu) {
 		return $menu->bootstrap4();
-	}
-
-	/**
-	 * Create the <head> tag.
-	 *
-	 * @param PageController $controller The current controller
-	 *
-	 * @return string
-	 */
-	public function head(PageController $controller) {
-		// Record this now. By the time we render the footer, $controller no longer exists.
-		$this->page_views = $this->pageViews($controller);
-
-		return
-			'<head>' .
-			$this->headContents($controller) .
-			$this->hookHeaderExtraContent() .
-			$this->analytics() .
-			'</head>';
-	}
-
-	/**
-	 * Create the contents of the <head> tag.
-	 *
-	 * @param PageController $controller The current controller
-	 *
-	 * @return string
-	 */
-	protected function headContents(PageController $controller) {
-		// The title often includes the names of records, which may include HTML markup.
-		$title = strip_tags($controller->getPageTitle());
-
-		// If an extra (site) title is specified, append it.
-		if ($this->tree && $this->tree->getPreference('META_TITLE')) {
-			$title .= ' – ' . $this->tree->getPreference('META_TITLE');
-		}
-
-		$html = $this->metaCharset() .
-			$this->metaCsrf() .
-			$this->title($title) .
-			$this->favicon() .
-			$this->metaViewport() .
-			$this->metaRobots($controller->getMetaRobots()) .
-			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL);
-
-		if ($this->tree) {
-			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
-		}
-
-		// CSS files
-		foreach ($this->stylesheets() as $css) {
-			$html .= '<link rel="stylesheet" type="text/css" href="' . $css . '">';
-		}
-
-		return $html;
 	}
 
 	/**
@@ -1936,31 +1811,6 @@ abstract class AbstractTheme {
 	 */
 	protected function metaViewport() {
 		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
-	}
-
-	/**
-	 * How many times has the current page been shown?
-	 *
-	 * @param  PageController $controller
-	 *
-	 * @return int Number of views, or zero for pages that aren't logged.
-	 */
-	public function pageViews(PageController $controller) {
-		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
-			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
-				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->record->getXref());
-			} elseif (isset($controller->root) && $controller->root instanceof GedcomRecord) {
-				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->root->getXref());
-			} elseif (WT_SCRIPT_NAME === 'index.php') {
-				if (Auth::check() && Filter::get('ctype') !== 'gedcom') {
-					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'user:' . Auth::id());
-				} else {
-					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'gedcom:' . $this->tree->getTreeId());
-				}
-			}
-		}
-
-		return 0;
 	}
 
 	/**

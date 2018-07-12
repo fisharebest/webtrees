@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
+use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -76,6 +77,10 @@ try {
 	$middleware_stack = [
 		new CheckForMaintenanceMode,
 	];
+
+	if ($method === 'GET') {
+		$middleware_stack[] = new PageHitCounter;
+	}
 
 	if ($method === 'POST') {
 		$middleware_stack[] = new UseTransaction;
