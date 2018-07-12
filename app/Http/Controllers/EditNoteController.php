@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditNoteController extends AbstractBaseController {
+class EditNoteController extends AbstractEditController {
 	/**
 	 * Show a form to create a new note object.
 	 *

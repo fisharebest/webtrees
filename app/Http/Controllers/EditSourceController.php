@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditSourceController extends AbstractBaseController {
+class EditSourceController extends AbstractEditController {
 	/**
 	 * Show a form to create a new source.
 	 *

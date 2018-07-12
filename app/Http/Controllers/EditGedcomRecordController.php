@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -37,7 +36,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for edit forms and responses.
  */
-class EditGedcomRecordController extends AbstractBaseController {
+class EditGedcomRecordController extends AbstractEditController {
 	const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
 
 	/**
@@ -142,7 +141,7 @@ class EditGedcomRecordController extends AbstractBaseController {
 			foreach (FunctionsDb::fetchAllLinks($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
 				$linker     = GedcomRecord::getInstance($xref, $tree);
 				$old_gedcom = $linker->getGedcom();
-				$new_gedcom = FunctionsEdit::removeLinks($old_gedcom, $record->getXref());
+				$new_gedcom = $this->removeLinks($old_gedcom, $record->getXref());
 				// FunctionsDb::fetch_all_links() does not take account of pending changes. The links (or even the
 				// record itself) may have already been deleted.
 				if ($old_gedcom !== $new_gedcom) {
@@ -157,7 +156,7 @@ class EditGedcomRecordController extends AbstractBaseController {
 						if ($match) {
 							$relict     = GedcomRecord::getInstance($match[2][0], $tree);
 							$new_gedcom = $relict->getGedcom();
-							$new_gedcom = FunctionsEdit::removeLinks($new_gedcom, $linker->getXref());
+							$new_gedcom = $this->removeLinks($new_gedcom, $linker->getXref());
 							$relict->updateRecord($new_gedcom, false);
 							FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */
 								I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
@@ -404,18 +403,15 @@ class EditGedcomRecordController extends AbstractBaseController {
 
 		$keep_chan = (bool) $request->get('keep_chan');
 
-		// Arrays for each GEDCOM line
-		global $glevels, $tag, $text, $islink;
-
-		$glevels = $request->get('glevels', []);
-		$tag     = $request->get('tag', []);
-		$text    = $request->get('text', []);
-		$islink  = $request->get('islink', []);
+		$this->glevels = $request->get('glevels', []);
+		$this->tag     = $request->get('tag', []);
+		$this->text    = $request->get('text', []);
+		$this->islink  = $request->get('islink', []);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
-		if ($text[0] === 'Y') {
-			foreach ($tag as $n => $value) {
-				if ($glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $text[$n] !== '') {
+		if ($this->text[0] === 'Y') {
+			foreach ($this->tag as $n => $value) {
+				if ($this->glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $this->text[$n] !== '') {
 					$text[0] = '';
 					break;
 				}
@@ -447,7 +443,7 @@ class EditGedcomRecordController extends AbstractBaseController {
 			}
 		}
 
-		$newged = FunctionsEdit::handleUpdates($newged);
+		$newged = $this->handleUpdates($newged);
 
 		// Add new names after existing names
 		if (!empty($_POST['NAME'])) {
@@ -485,5 +481,23 @@ class EditGedcomRecordController extends AbstractBaseController {
 		}
 
 		return new RedirectResponse($record->url());
+	}
+
+	/**
+	 * Remove all links from $gedrec to $xref, and any sub-tags.
+	 *
+	 * @param string $gedrec
+	 * @param string $xref
+	 *
+	 * @return string
+	 */
+	private function removeLinks($gedrec, $xref) {
+		$gedrec = preg_replace('/\n1 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
+		$gedrec = preg_replace('/\n2 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);
+		$gedrec = preg_replace('/\n3 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[4-9].*)*/', '', $gedrec);
+		$gedrec = preg_replace('/\n4 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[5-9].*)*/', '', $gedrec);
+		$gedrec = preg_replace('/\n5 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[6-9].*)*/', '', $gedrec);
+
+		return $gedrec;
 	}
 }

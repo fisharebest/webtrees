@@ -43,7 +43,7 @@ use Throwable;
 /**
  * Controller for edit forms and responses.
  */
-class EditMediaController extends AbstractBaseController {
+class EditMediaController extends AbstractEditController {
 	const EDIT_RESTRICTIONS    = ['locked'];
 	const PRIVACY_RESTRICTIONS = ['none', 'privacy', 'confidential'];
 

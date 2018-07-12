@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -31,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditFamilyController extends AbstractBaseController {
+class EditFamilyController extends AbstractEditController {
 	/**
 	 * @param Request $request
 	 *
@@ -147,20 +146,20 @@ class EditFamilyController extends AbstractBaseController {
 		$text      = $request->get('text', []);
 		$islink    = $request->get('islink', []);
 
-		FunctionsEdit::splitSource();
+		$this->splitSource();
 		$gedrec = '0 @REF@ INDI';
-		$gedrec .= FunctionsEdit::addNewName($tree);
-		$gedrec .= FunctionsEdit::addNewSex();
+		$gedrec .= $this->addNewName($tree);
+		$gedrec .= $this->addNewSex();
 		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
-				$gedrec .= FunctionsEdit::addNewFact($tree, $match);
+				$gedrec .= $this->addNewFact($tree, $match);
 			}
 		}
 		$gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
 		if ((bool) $request->get('SOUR_INDI')) {
-			$gedrec = FunctionsEdit::handleUpdates($gedrec);
+			$gedrec = $this->handleUpdates($gedrec);
 		} else {
-			$gedrec = FunctionsEdit::updateRest($gedrec);
+			$gedrec = $this->updateRest($gedrec);
 		}
 
 		// Create the new child
@@ -240,28 +239,27 @@ class EditFamilyController extends AbstractBaseController {
 
 		$this->checkFamilyAccess($family, true);
 
-		global $glevels, $tag, $text, $islink;
-		$glevels = $request->get('glevels', []);
-		$tag     = $request->get('tag', []);
-		$text    = $request->get('text', []);
-		$islink  = $request->get('islink', []);
+		$this->glevels = $request->get('glevels', []);
+		$this->tag     = $request->get('tag', []);
+		$this->text    = $request->get('text', []);
+		$this->islink  = $request->get('islink', []);
 
 		// Create the new spouse
-		FunctionsEdit::splitSource(); // separate SOUR record from the rest
+		$this->splitSource(); // separate SOUR record from the rest
 
 		$gedrec = '0 @REF@ INDI';
-		$gedrec .= FunctionsEdit::addNewName($tree);
-		$gedrec .= FunctionsEdit::addNewSex();
+		$gedrec .= $this->addNewName($tree);
+		$gedrec .= $this->addNewSex();
 		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
-				$gedrec .= FunctionsEdit::addNewFact($tree, $match);
+				$gedrec .= $this->addNewFact($tree, $match);
 			}
 		}
 
 		if ((bool) $request->get('SOUR_INDI')) {
-			$gedrec = FunctionsEdit::handleUpdates($gedrec);
+			$gedrec = $this->handleUpdates($gedrec);
 		} else {
-			$gedrec = FunctionsEdit::updateRest($gedrec);
+			$gedrec = $this->updateRest($gedrec);
 		}
 		$gedrec .= "\n1 FAMS @" . $family->getXref() . '@';
 		$spouse = $tree->createRecord($gedrec);
@@ -275,13 +273,13 @@ class EditFamilyController extends AbstractBaseController {
 		$famrec = '';
 		if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
-				$famrec .= FunctionsEdit::addNewFact($tree, $match);
+				$famrec .= $this->addNewFact($tree, $match);
 			}
 		}
 		if ((bool) $request->get('SOUR_FAM')) {
-			$famrec = FunctionsEdit::handleUpdates($famrec);
+			$famrec = $this->handleUpdates($famrec);
 		} else {
-			$famrec = FunctionsEdit::updateRest($famrec);
+			$famrec = $this->updateRest($famrec);
 		}
 		$family->createFact(trim($famrec), true); // trim leading \n
 
