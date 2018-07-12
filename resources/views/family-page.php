@@ -85,7 +85,7 @@
 					<?= I18N::translate('Note') ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'NOTE'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'NOTE'])) ?>">
 						<?= I18N::translate('Add a note') ?>
 					</a>
 				</td>
@@ -96,7 +96,7 @@
 					<?= I18N::translate('Shared note') ?>
 				</th>
 				<td class="optionbox">
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
 						<?= I18N::translate('Add a shared note') ?>
 					</a>
 				</td>
@@ -108,7 +108,7 @@
 						<?= I18N::translate('Media object') ?>
 					</th>
 					<td class="optionbox">
-						<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'OBJE']))  ?>">
+						<a href="<?= e(route('add-fact', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'OBJE']))  ?>">
 							<?= I18N::translate('Add a media object') ?>
 						</a>
 					</td>
@@ -120,7 +120,7 @@
 					<?= I18N::translate('Source') ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'SOUR'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'fact' => 'SOUR'])) ?>">
 						<?= I18N::translate('Add a source citation') ?>
 					</a>
 				</td>

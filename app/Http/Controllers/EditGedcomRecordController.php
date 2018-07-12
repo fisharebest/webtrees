@@ -22,12 +22,17 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller for edit forms and responses.
@@ -313,6 +318,168 @@ class EditGedcomRecordController extends AbstractBaseController {
 		$gedcom = trim($gedcom);
 
 		$record->updateRecord($gedcom, false);
+
+		return new RedirectResponse($record->url());
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function addFact(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref = $request->get('xref', '');
+		$fact = $request->get('fact', '');
+
+		$record = GedcomRecord::getInstance($xref, $tree);
+		$this->checkRecordAccess($record, true);
+
+		$title = $record->getFullName() . ' - ' . GedcomTag::getLabel($fact, $record);
+
+		return $this->viewResponse('edit/add-fact', [
+			'fact'   => $fact,
+			'record' => $record,
+			'title'  => $title,
+			'tree'   => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function editFact(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref    = $request->get('xref', '');
+		$fact_id = $request->get('fact_id', '');
+
+		$record = GedcomRecord::getInstance($xref, $tree);
+		$this->checkRecordAccess($record, true);
+
+		// Find the fact to edit
+		$edit_fact = null;
+		foreach ($record->getFacts() as $fact) {
+			if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
+				$edit_fact = $fact;
+				break;
+			}
+		}
+		if ($edit_fact === null) {
+			throw new NotFoundHttpException;
+		}
+
+		$can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
+
+		$title = $record->getFullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
+
+		return $this->viewResponse('edit/edit-fact', [
+			'can_edit_raw' => $can_edit_raw,
+			'edit_fact'    => $edit_fact,
+			'record'       => $record,
+			'title'        => $title,
+			'tree'         => $tree,
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function updateFact(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		$xref    = $request->get('xref', '');
+		$fact_id = $request->get('fact_id', '');
+
+		$record = GedcomRecord::getInstance($xref, $tree);
+		$this->checkRecordAccess($record, true);
+
+		$keep_chan = (bool) $request->get('keep_chan');
+
+		// Arrays for each GEDCOM line
+		global $glevels, $tag, $text, $islink;
+
+		$glevels = $request->get('glevels', []);
+		$tag     = $request->get('tag', []);
+		$text    = $request->get('text', []);
+		$islink  = $request->get('islink', []);
+
+		// If the fact has a DATE or PLAC, then delete any value of Y
+		if ($text[0] === 'Y') {
+			foreach ($tag as $n => $value) {
+				if ($glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $text[$n] !== '') {
+					$text[0] = '';
+					break;
+				}
+			}
+		}
+
+		$newged = '';
+		if (!empty($_POST['NAME'])) {
+			$newged .= "\n1 NAME " . $_POST['NAME'];
+			$name_facts = ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'];
+			foreach ($name_facts as $name_fact) {
+				if (!empty($_POST[$name_fact])) {
+					$newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+				}
+			}
+		}
+
+		if (isset($_POST['NOTE'])) {
+			$NOTE = $_POST['NOTE'];
+		}
+		if (!empty($NOTE)) {
+			$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
+			$title[]  = '0 @' . $xref . '@ NOTE ' . array_shift($tempnote);
+			foreach ($tempnote as &$line) {
+				$line = trim('1 CONT ' . $line, ' ');
+			}
+		}
+
+		$newged = FunctionsEdit::handleUpdates($newged);
+
+		// Add new names after existing names
+		if (!empty($_POST['NAME'])) {
+			preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
+			$name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
+			foreach ($name_facts as $name_fact) {
+				// Ignore advanced facts that duplicate standard facts.
+				if (!in_array($name_fact, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX']) && !empty($_POST[$name_fact])) {
+					$newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+				}
+			}
+		}
+
+		$newged = substr($newged, 1); // Remove leading newline
+
+		/** @var CensusAssistantModule $census_assistant */
+		$census_assistant = Module::getModuleByName('GEDFact_assistant');
+		if ($census_assistant !== null && $record instanceof Individual) {
+			$newged = $census_assistant->updateCensusAssistant($record, $fact_id, $newged, $keep_chan);
+		}
+
+		$record->updateFact($fact_id, $newged, !$keep_chan);
+
+		// For the GEDFact_assistant module
+		$pid_array = $request->get('pid_array', []);
+		if ($pid_array) {
+			foreach (explode(',', $pid_array) as $pid) {
+				if ($pid !== $xref) {
+					$indi = Individual::getInstance($pid, $tree);
+					if ($indi && $indi->canEdit()) {
+						$indi->updateFact($fact_id, $newged, !$keep_chan);
+					}
+				}
+			}
+		}
 
 		return new RedirectResponse($record->url());
 	}

@@ -123,7 +123,7 @@
 				<th scope="row">
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'fact' => 'MARR'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $family->getTree()->getName(), 'xref' => $family->getXref(), 'fact' => 'MARR'])) ?>">
 						<?= I18N::translate('Add marriage details') ?>
 					</a>
 				</td>

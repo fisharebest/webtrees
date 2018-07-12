@@ -65,7 +65,7 @@
 					<?php endif ?>
 
 					<?php if ($individual->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($individual->getTree())): ?>
-						<div><a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'OBJE'])) ?>">
+						<div><a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'OBJE'])) ?>">
 								<?= I18N::translate('Add a media object') ?>
 							</a></div>
 					<?php endif ?>

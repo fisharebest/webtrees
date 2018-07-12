@@ -539,8 +539,8 @@ class FunctionsPrint {
 		echo I18N::translate('Fact or event');
 		echo '</th>';
 		echo '<td>';
-		echo '<form action="edit_interface.php" onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
-		echo '<input type="hidden" name="action" value="add">';
+		echo '<form onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
+		echo '<input type="hidden" name="route" value="add-fact">';
 		echo '<input type="hidden" name="xref" value="' . e($record->getXref()) . '">';
 		echo '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
 		echo '<select id="add-fact" name="fact">';
@@ -557,7 +557,7 @@ class FunctionsPrint {
 		echo '</form>';
 		echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&amp;fact=' . $fact . '&amp;xref=' . e($record->getXref()) . '&amp;ged=' . e($tree->getName()) . '">', GedcomTag::getLabel($fact), '</a>';
+			echo '<a href="' . e(route('add-fact', ['fact' => $fact, 'xref' => $record->getXref(), 'ged' => $tree->getName()])) . '">', GedcomTag::getLabel($fact), '</a>';
 		}
 		echo '</span>';
 		echo '</td></tr>';

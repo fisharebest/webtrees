@@ -33,7 +33,7 @@
 					<?= I18N::translate('Source') ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'SOUR'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'SOUR'])) ?>">
 						<?= I18N::translate('Add a source citation') ?>
 					</a>
 				</td>

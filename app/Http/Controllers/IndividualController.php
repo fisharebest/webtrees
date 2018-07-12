@@ -370,7 +370,7 @@ class IndividualController extends AbstractBaseController {
 		if ($individual->canEdit() && !$fact->isPendingDeletion()) {
 			$edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), [
 				'class' => 'btn btn-link',
-				'href'  => 'edit_interface.php?action=edit&xref=' . $individual->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($individual->getTree()->getName()),
+				'href'  => route('edit-fact', ['xref' => $individual->getXref(), 'fact_id' => $fact->getFactId(), 'ged' => $individual->getTree()->getName()])
 			]);
 		} else {
 			$edit_links = '';

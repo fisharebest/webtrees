@@ -191,7 +191,7 @@ class FunctionsPrintFacts {
 			?>
 			<?= $label ?>
 			<div class="editfacts">
-				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]) ?>
+				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => route('edit-fact', ['xref' => $parent->getXref(), 'fact_id' => $fact->getFactId(), 'ged' . $tree->getName()])]) ?>
 				<?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
 				<?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']) ?>
 			</div>
@@ -751,7 +751,7 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabel($factname, $parent);
 					}
 				} elseif ($can_edit) {
-					echo '<a href="edit_interface.php?action=edit&amp;xref=' . $parent->getXref() . '&amp;fact_id=' . $fact->getFactId() . '&amp;ged=' . e($tree->getName()) . '" title="', I18N::translate('Edit'), '">';
+					echo '<a href="' . e(route('edit-fact', ['xref' => $parent->getXref(), 'fact_id' => $fact->getFactId(), 'ged', $tree->getName()])) . '" title="', I18N::translate('Edit'), '">';
 					if ($tree->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
 							echo '<i class="icon-source"></i> ';
@@ -763,7 +763,7 @@ class FunctionsPrintFacts {
 						// Inline sources can't be edited. Attempting to save one will convert it
 						// into a link, and delete it.
 						// e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
-						echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]);
+						echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => route('edit-fact', ['xref' => $parent->getXref(),  'fact_id' => $fact->getFactId(), 'ged' => $tree->getName()])]);
 						echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					}
 					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
@@ -978,7 +978,7 @@ class FunctionsPrintFacts {
 						echo GedcomTag::getLabel('NOTE');
 					}
 					echo '<div class="editfacts">';
-					echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => 'edit_interface.php?action=edit&xref=' . $parent->getXref() . '&fact_id=' . $fact->getFactId() . '&ged=' . e($tree->getName())]);
+					echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => route('edit-fact', ['xref' => $parent->getXref(), 'fact_id' => $fact->getFactId(), 'ged' => $tree->getName()])]);
 					echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");']);
 					echo '</div>';

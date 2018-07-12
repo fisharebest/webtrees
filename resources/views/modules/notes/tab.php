@@ -35,7 +35,7 @@
 					<?= I18N::translate('Note') ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'NOTE'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'NOTE'])) ?>">
 						<?= I18N::translate('Add a note') ?>
 					</a>
 				</td>
@@ -45,7 +45,7 @@
 					<?= I18N::translate('Shared note') ?>
 				</th>
 				<td>
-					<a href="<?= e(Html::url('edit_interface.php', ['action' => 'add', 'ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+					<a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
 						<?= I18N::translate('Add a shared note') ?>
 					</a>
 				</td>
