@@ -2172,11 +2172,8 @@ class Functions {
 			}
 		}
 		$query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
-		if ($query_string) {
-			return WT_SCRIPT_NAME . '?' . $query_string;
-		} else {
-			return WT_SCRIPT_NAME;
-		}
+
+		return 'index.php?' . $query_string;
 	}
 
 	/**

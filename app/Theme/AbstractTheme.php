@@ -175,12 +175,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function analyticsBingWebmaster($verification_id) {
-		// Only need to add this to the home page.
-		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
-			return '<meta name="msvalidate.01" content="' . $verification_id . '">';
-		} else {
-			return '';
-		}
+		return '<meta name="msvalidate.01" content="' . $verification_id . '">';
 	}
 
 	/**
@@ -191,12 +186,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function analyticsGoogleWebmaster($verification_id) {
-		// Only need to add this to the home page.
-		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
-			return '<meta name="google-site-verification" content="' . $verification_id . '">';
-		} else {
-			return '';
-		}
+		return '<meta name="google-site-verification" content="' . $verification_id . '">';
 	}
 
 	/**
@@ -1015,9 +1005,9 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	public function menuChangeBlocks() {
-		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('route') === 'user-page') {
+		if (Auth::check() && Filter::get('route') === 'user-page') {
 			return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
-		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree) && Filter::get('route') === 'tree-page') {
+		} elseif (Auth::isManager($this->tree) && Filter::get('route') === 'tree-page') {
 			return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
 		} else {
 			return null;

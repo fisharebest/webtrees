@@ -518,6 +518,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'hourglass.php',
 		WT_ROOT . 'hourglass_ajax.php',
 		WT_ROOT . 'import.php',
+		WT_ROOT . 'includes',
 		WT_ROOT . 'index_edit.php',
 		WT_ROOT . 'indilist.php',
 		WT_ROOT . 'inverselink.php',
