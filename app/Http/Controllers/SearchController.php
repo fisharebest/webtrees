@@ -397,6 +397,9 @@ class SearchController extends AbstractBaseController {
 	 * @return Response
 	 */
 	public function advanced(Request $request): Response {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
 		$default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
 		$fields      = $request->get('fields', $default_fields);
@@ -413,7 +416,7 @@ class SearchController extends AbstractBaseController {
 		$name_options = $this->nameOptions();
 
 		if (!empty(array_filter($fields))) {
-			$individuals = $this->searchIndividualsAdvanced($fields, $modifiers);
+			$individuals = $this->searchIndividualsAdvanced($tree, $fields, $modifiers);
 		} else {
 			$individuals = [];
 		}
@@ -739,12 +742,13 @@ class SearchController extends AbstractBaseController {
 	}
 
 	/**
+	 * @param Tree     $tree
 	 * @param string[] $fields
 	 * @param string[] $modifiers
 	 *
 	 * @return Individual[]
 	 */
-	private function searchIndividualsAdvanced(array $fields, array $modifiers): array {
+	private function searchIndividualsAdvanced(Tree $tree, array $fields, array $modifiers): array {
 		$fields = array_filter($fields);
 
 		// Dynamic SQL query, plus bind variables
@@ -846,7 +850,7 @@ class SearchController extends AbstractBaseController {
 
 		// Add the where clause
 		$sql    .= " WHERE ind.i_file=?";
-		$bind[] = $this->tree()->getTreeId();
+		$bind[] = $tree->getTreeId();
 
 		foreach ($fields as $field_name => $field_value) {
 			$parts = preg_split('/:/', $field_name . '::::');
@@ -1108,7 +1112,7 @@ class SearchController extends AbstractBaseController {
 		$individuals = [];
 
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
+			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($fields as $field_name => $field_value) {
 				if (preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field_name, $match)) {

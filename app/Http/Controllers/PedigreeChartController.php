@@ -144,15 +144,6 @@ class PedigreeChartController extends AbstractChartController {
 
 		$this->root = $individual;
 
-		if ($this->root && $this->root->canShowName()) {
-			$this->setPageTitle(
-			/* I18N: %s is an individual’s name */
-				I18N::translate('Pedigree tree of %s', $this->root->getFullName())
-			);
-		} else {
-			$this->setPageTitle(I18N::translate('Pedigree'));
-		}
-
 		$this->treesize = pow(2, $this->generations) - 1;
 
 		// sosaAncestors() starts array at index 1 we need to start at 0

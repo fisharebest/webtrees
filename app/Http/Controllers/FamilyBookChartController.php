@@ -121,7 +121,7 @@ class FamilyBookChartController extends AbstractChartController {
 		$this->generations = $book_size;
 
 		$this->bhalfheight  = $this->box->height / 2;
-		$this->dgenerations = $this->maxDescendencyGenerations($individual->getXref(), 0);
+		$this->dgenerations = $this->maxDescendencyGenerations($individual, 0);
 
 		if ($this->dgenerations < 1) {
 			$this->dgenerations = 1;
@@ -374,23 +374,19 @@ class FamilyBookChartController extends AbstractChartController {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string $pid
-	 * @param int    $depth
+	 * @param Individual $individual
+	 * @param int        $depth
 	 *
 	 * @return int
 	 */
-	private function maxDescendencyGenerations($pid, $depth) {
+	private function maxDescendencyGenerations(Individual $individual, $depth) {
 		if ($depth > $this->generations) {
 			return $depth;
 		}
-		$person = Individual::getInstance($pid, $this->tree());
-		if (is_null($person)) {
-			return $depth;
-		}
 		$maxdc = $depth;
-		foreach ($person->getSpouseFamilies() as $family) {
+		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
-				$dc = $this->maxDescendencyGenerations($child->getXref(), $depth + 1);
+				$dc = $this->maxDescendencyGenerations($child, $depth + 1);
 				if ($dc >= $this->generations) {
 					return $dc;
 				}

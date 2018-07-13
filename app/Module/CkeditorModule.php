@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Controller\BaseController;
 use Fisharebest\Webtrees\I18N;
 
 /**

@@ -80,7 +80,7 @@ class BranchesController extends AbstractBaseController {
 		$self = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);
 
 		if ($surname !== '') {
-			$individuals = $this->loadIndividuals($surname, $soundex_dm, $soundex_std);
+			$individuals = $this->loadIndividuals($tree, $surname, $soundex_dm, $soundex_std);
 		} else {
 			$individuals = [];
 		}
@@ -133,13 +133,14 @@ class BranchesController extends AbstractBaseController {
 	/**
 	 * Fetch all individuals with a matching surname
 	 *
+	 * @param Tree   $tree
 	 * @param string $surname
 	 * @param bool   $soundex_dm
 	 * @param bool   $soundex_std
 	 *
 	 * @return Individual[]
 	 */
-	private function loadIndividuals(string $surname, bool $soundex_dm, bool $soundex_std): array {
+	private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array {
 		$sql =
 			"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
@@ -149,7 +150,7 @@ class BranchesController extends AbstractBaseController {
 			" AND (n_surn = ? OR n_surname = ?";
 
 		$args = [
-			$this->tree()->getTreeId(),
+			$tree->getTreeId(),
 			'_MARNM',
 			$surname,
 			$surname,
@@ -179,7 +180,7 @@ class BranchesController extends AbstractBaseController {
 
 		$individuals = [];
 		foreach ($rows as $row) {
-			$individuals[] = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
+			$individuals[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
 		}
 
 		usort($individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');

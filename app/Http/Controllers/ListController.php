@@ -136,7 +136,7 @@ class ListController extends AbstractBaseController {
 			} else {
 				// The surname parameter is a root/canonical form.
 				// Display it as the actual surname
-				$legend = implode('/', array_keys($this->surnames($surname, $alpha, $show_marnm === 'yes', $families)));
+				$legend = implode('/', array_keys($this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families)));
 			}
 			$params = [
 				'ged'     => $tree->getName(),
@@ -199,7 +199,7 @@ class ListController extends AbstractBaseController {
 			<ul class="d-flex flex-wrap wt-initials-list">
 
 				<?php
-				foreach ($this->surnameAlpha($show_marnm === 'yes', $families) as $letter => $count) {
+				foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) {
 					echo '<li class="wt-initials-list-item">';
 					if ($count > 0) {
 						echo '<a href="' . e(route($route, [
@@ -258,7 +258,7 @@ class ListController extends AbstractBaseController {
 			<?php
 
 			if ($show === 'indi' || $show === 'surn') {
-				$surns = $this->surnames($surname, $alpha, $show_marnm === 'yes', $families);
+				$surns = $this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families);
 				if ($show === 'surn') {
 					// Show the surname list
 					switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
@@ -288,7 +288,7 @@ class ListController extends AbstractBaseController {
 					if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
 						$falpha              = '';
 					} else {
-						$givn_initials = $this->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families);
+						$givn_initials = $this->givenAlpha($tree, $surname, $alpha, $show_marnm === 'yes', $families);
 						// Break long lists by initial letter of given name
 						if ($surname || $show_all === 'yes') {
 							if ($show_all === 'no') {
@@ -328,7 +328,7 @@ class ListController extends AbstractBaseController {
 					if ($show === 'indi') {
 						if ($route === 'individual-list') {
 							echo view('lists/individuals-table', [
-								'individuals' => $this->individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false),
+								'individuals' => $this->individuals($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', false),
 								'sosa'        => false,
 								'tree'        => $tree,
 							]);
@@ -1421,20 +1421,21 @@ class ListController extends AbstractBaseController {
 	/**
 	 * Get a list of initial surname letters for indilist.php and famlist.php
 	 *
+	 * @param Tree $tree
 	 * @param bool $marnm  if set, include married names
 	 * @param bool $fams   if set, only consider individuals with FAMS records
 	 * @param bool $totals if set, count the number of names beginning with each letter
 	 *
 	 * @return int[]
 	 */
-	public function surnameAlpha($marnm, $fams, $totals = true) {
+	public function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
 		$alphas = [];
 
 		$sql =
 			"SELECT COUNT(n_id)" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file=" . $this->tree()->getTreeId() .
+			" WHERE n_file=" . $tree->getTreeId() .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
@@ -1458,7 +1459,7 @@ class ListController extends AbstractBaseController {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = [
-			'tree_id' => $this->tree()->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 		];
 
 		foreach ($this->getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
@@ -1480,7 +1481,7 @@ class ListController extends AbstractBaseController {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = [
-			'tree_id' => $this->tree()->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 		];
 
 		$count_no_surname = (int) Database::prepare($sql)->execute($args)->fetchOne();
@@ -1495,6 +1496,7 @@ class ListController extends AbstractBaseController {
 	/**
 	 * Get a list of initial given name letters for indilist.php and famlist.php
 	 *
+	 * @param Tree   $tree
 	 * @param string $surn   if set, only consider people with this surname
 	 * @param string $salpha if set, only consider surnames starting with this letter
 	 * @param bool   $marnm  if set, include married names
@@ -1502,14 +1504,14 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return int[]
 	 */
-	public function givenAlpha($surn, $salpha, $marnm, $fams) {
+	public function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$alphas = [];
 
 		$sql =
 			"SELECT COUNT(DISTINCT n_id)" .
 			" FROM `##name`" .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file=" . $this->tree()->getTreeId() . " " .
+			" WHERE n_file=" . $tree->getTreeId() . " " .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		if ($surn) {
@@ -1543,7 +1545,7 @@ class ListController extends AbstractBaseController {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = [
-			'tree_id' => $this->tree()->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 		];
 
 		if ($surn) {
@@ -1576,6 +1578,7 @@ class ListController extends AbstractBaseController {
 	/**
 	 * Get a list of actual surnames and variants, based on a "root" surname.
 	 *
+	 * @param Tree   $tree
 	 * @param string $surn   if set, only fetch people with this surname
 	 * @param string $salpha if set, only consider surnames starting with this letter
 	 * @param bool   $marnm  if set, include married names
@@ -1583,7 +1586,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return array
 	 */
-	public function surnames($surn, $salpha, $marnm, $fams) {
+	public function surnames(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$sql =
 			"SELECT n2.n_surn, n1.n_surname, n1.n_id" .
 			" FROM `##name` n1 " .
@@ -1593,7 +1596,7 @@ class ListController extends AbstractBaseController {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = [
-			'tree_id'   => $this->tree()->getTreeId(),
+			'tree_id'   => $tree->getTreeId(),
 			'collate_0' => I18N::collation(),
 		];
 
@@ -1629,6 +1632,7 @@ class ListController extends AbstractBaseController {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
+	 * @param Tree   $tree
 	 * @param string $surn   if set, only fetch people with this surname
 	 * @param string $salpha if set, only fetch surnames starting with this letter
 	 * @param string $galpha if set, only fetch given names starting with this letter
@@ -1637,7 +1641,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return Individual[]
 	 */
-	public function individuals($surn, $salpha, $galpha, $marnm, $fams) {
+	public function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams) {
 		$sql =
 			"SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
@@ -1647,7 +1651,7 @@ class ListController extends AbstractBaseController {
 			($marnm ? "" : "AND n_type != '_MARNM'");
 
 		$args = [
-			'tree_id' => $this->tree()->getTreeId(),
+			'tree_id' => $tree->getTreeId(),
 		];
 
 		if ($surn) {
@@ -1675,7 +1679,7 @@ class ListController extends AbstractBaseController {
 		$list = [];
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $this->tree(), $row->gedcom);
+			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			// The name from the database may be private - check the filtered list...
 			foreach ($person->getAllNames() as $n => $name) {
 				if ($name['fullNN'] == $row->n_full) {
@@ -1707,7 +1711,7 @@ class ListController extends AbstractBaseController {
 	 */
 	public function families($surn, $salpha, $galpha, $marnm) {
 		$list = [];
-		foreach ($this->individuals($surn, $salpha, $galpha, $marnm, true) as $indi) {
+		foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
 				$list[$family->getXref()] = $family;
 			}
