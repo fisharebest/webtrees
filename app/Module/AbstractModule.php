@@ -199,15 +199,6 @@ abstract class AbstractModule {
 	}
 
 	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
-	 *
-	 * @param string $mod_action
-	 */
-	public function modAction($mod_action) {
-	}
-
-	/**
 	 * Get a the current access level for a module
 	 *
 	 * @param Tree   $tree

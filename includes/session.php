@@ -48,7 +48,7 @@ define('WT_CKEDITOR_BASE_URL', 'public/ckeditor-4.5.2-custom/');
 define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 38);
+define('WT_SCHEMA_VERSION', 39);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -252,34 +252,28 @@ if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 
 DebugBar::startMeasure('init theme');
 
-// Set the theme
-if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
-	// Administration scripts begin with “admin” and use a special administration theme
-	Theme::theme(new AdministrationTheme)->init($WT_TREE);
-} else {
-	// Last theme used?
-	$theme_id = Session::get('theme_id');
-	// Default for tree
-	if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
-		$theme_id = $WT_TREE->getPreference('THEME_DIR');
-	}
-	// Default for site
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = Site::getPreference('THEME_DIR');
-	}
-	// Default
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = 'webtrees';
-	}
-	foreach (Theme::installedThemes() as $theme) {
-		if ($theme->themeId() === $theme_id) {
-			Theme::theme($theme)->init($WT_TREE);
-			// Remember this setting
-			if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
-				Session::put('theme_id', $theme_id);
-			}
-			break;
+// Last theme used?
+$theme_id = Session::get('theme_id');
+// Default for tree
+if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
+	$theme_id = $WT_TREE->getPreference('THEME_DIR');
+}
+// Default for site
+if (!array_key_exists($theme_id, Theme::themeNames())) {
+	$theme_id = Site::getPreference('THEME_DIR');
+}
+// Default
+if (!array_key_exists($theme_id, Theme::themeNames())) {
+	$theme_id = 'webtrees';
+}
+foreach (Theme::installedThemes() as $theme) {
+	if ($theme->themeId() === $theme_id) {
+		Theme::theme($theme)->init($WT_TREE);
+		// Remember this setting
+		if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
+			Session::put('theme_id', $theme_id);
 		}
+		break;
 	}
 }
 

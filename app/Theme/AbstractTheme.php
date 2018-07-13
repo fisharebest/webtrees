@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FanChartModule;
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
@@ -1200,9 +1199,7 @@ abstract class AbstractTheme {
 	 * @deprecated
 	 */
 	public function menuChartPedigreeMap(Individual $individual) {
-		$chart = new GoogleMapsModule(WT_ROOT . WT_MODULES_DIR . 'googlemap');
-
-		return $chart->getChartMenu($individual);
+		return null;
 	}
 
 	/**

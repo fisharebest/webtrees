@@ -49,9 +49,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 * @return string
 	 */
 	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $controller;
-
-		$individual = $controller->getSignificantIndividual();
+		$individual = $tree->getSignificantIndividual();
 
 		$links = [];
 

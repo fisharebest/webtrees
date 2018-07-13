@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Controller\PageController as LegacyBaseController;
 use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
@@ -43,11 +42,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Common functions for all controllers
- *
- * The "Legacy" base controller was used to inject Javascript into responses.
- * Once this is updated, we can remove it.
  */
-abstract class AbstractBaseController extends LegacyBaseController {
+abstract class AbstractBaseController {
 	protected $layout = 'layouts/default';
 
 	/**
@@ -181,7 +177,6 @@ abstract class AbstractBaseController extends LegacyBaseController {
 	protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response {
 		// Make the view's data available to the layout.
 		$layout_data = $view_data;
-		$layout_data['javascript'] = $this->getJavascript();
 
 		// Render the view
 		$layout_data['content'] = view($view_name, $view_data);

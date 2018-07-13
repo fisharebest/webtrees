@@ -759,6 +759,42 @@ class Tree {
 		if (!$individual) {
 			$individual = Individual::getInstance(
 				Database::prepare(
+					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
+				)->execute([
+					'tree_id' => $this->getTreeId(),
+				])->fetchOne(),
+				$this
+			);
+		}
+		if (!$individual) {
+			// always return a record
+			$individual = new Individual('I', '0 @I@ INDI', null, $this);
+		}
+
+		return $individual;
+	}
+
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return Individual
+	 */
+	public function getSignificantIndividual() {
+		static $individual; // Only query the DB once.
+
+		if (!$individual && $this->getUserPreference(Auth::user(), 'rootid')) {
+			$individual = Individual::getInstance($this->getUserPreference(Auth::user(), 'rootid'), $this);
+		}
+		if (!$individual && $this->getUserPreference(Auth::user(), 'gedcomid')) {
+			$individual = Individual::getInstance($this->getUserPreference(Auth::user(), 'gedcomid'), $this);
+		}
+		if (!$individual) {
+			$individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
+		}
+		if (!$individual) {
+			$individual = Individual::getInstance(
+				Database::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
 				)->execute([$this->getTreeId()])->fetchOne(),
 				$this

@@ -59,7 +59,6 @@ class Module {
 		'gedcom_favorites',
 		'gedcom_news',
 		'gedcom_stats',
-		'googlemap',
 		'hourglass_chart',
 		'html',
 		'individual_ext_report',
