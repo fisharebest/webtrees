@@ -36,15 +36,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * We set the following global variable.  It is used by Date::display()
- *
- * @todo refactor this
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
 define('WT_VERSION', '2.0.0-dev');
@@ -200,24 +191,6 @@ if (!Session::get('initiated')) {
 	Session::put('initiated', true);
 }
 
-DebugBar::startMeasure('init tree');
-
-// Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
-foreach ([Filter::post('ged'), Filter::get('ged'), Site::getPreference('DEFAULT_GEDCOM')] as $tree_name) {
-	$WT_TREE = Tree::findByName($tree_name);
-	if ($WT_TREE) {
-		break;
-	}
-}
-// No chosen tree? Use any one.
-if (!$WT_TREE) {
-	foreach (Tree::getAll() as $WT_TREE) {
-		break;
-	}
-}
-
-DebugBar::stopMeasure('init tree');
-
 DebugBar::startMeasure('init i18n');
 
 // With no parameters, init() looks to the environment to choose a language
@@ -245,13 +218,6 @@ define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
-// Redirect to login url
-// @TODO - this needs rewriting.  perhaps as a middleware?
-//if (!$WT_TREE && !Auth::check() && WT_SCRIPT_NAME !== 'index.php') {
-//	header('Location: ' . route('login', ['url' => $request->getRequestUri()]));
-//	exit;
-//}
-
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 	if (Session::get('masquerade') === null) {
@@ -259,35 +225,6 @@ if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 	}
 	Session::put('activity_time', WT_TIMESTAMP);
 }
-
-DebugBar::startMeasure('init theme');
-
-// Last theme used?
-$theme_id = Session::get('theme_id');
-// Default for tree
-if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
-	$theme_id = $WT_TREE->getPreference('THEME_DIR');
-}
-// Default for site
-if (!array_key_exists($theme_id, Theme::themeNames())) {
-	$theme_id = Site::getPreference('THEME_DIR');
-}
-// Default
-if (!array_key_exists($theme_id, Theme::themeNames())) {
-	$theme_id = 'webtrees';
-}
-foreach (Theme::installedThemes() as $theme) {
-	if ($theme->themeId() === $theme_id) {
-		Theme::theme($theme)->init($WT_TREE);
-		// Remember this setting
-		if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
-			Session::put('theme_id', $theme_id);
-		}
-		break;
-	}
-}
-
-DebugBar::stopMeasure('init theme');
 
 DebugBar::startMeasure('routing');
 
@@ -325,6 +262,35 @@ try {
 	$controller       = new $controller_class;
 
 	DebugBar::stopMeasure('routing');
+
+	DebugBar::startMeasure('init theme');
+
+	// Last theme used?
+	$theme_id = Session::get('theme_id');
+	// Default for tree
+	if (!array_key_exists($theme_id, Theme::themeNames()) && $tree) {
+		$theme_id = $tree->getPreference('THEME_DIR');
+	}
+	// Default for site
+	if (!array_key_exists($theme_id, Theme::themeNames())) {
+		$theme_id = Site::getPreference('THEME_DIR');
+	}
+	// Default
+	if (!array_key_exists($theme_id, Theme::themeNames())) {
+		$theme_id = 'webtrees';
+	}
+	foreach (Theme::installedThemes() as $theme) {
+		if ($theme->themeId() === $theme_id) {
+			Theme::theme($theme)->init($tree);
+			// Remember this setting
+			if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
+				Session::put('theme_id', $theme_id);
+			}
+			break;
+		}
+	}
+
+	DebugBar::stopMeasure('init theme');
 
 	// Note that we can't stop this timer, as running the action will
 	// generate the response - which includes (and stops) the timer

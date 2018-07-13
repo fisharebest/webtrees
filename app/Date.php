@@ -214,9 +214,10 @@ class Date {
 	 * @return string
 	 */
 	public function display($url = false, $date_format = null, $convert_calendars = true) {
-		global $WT_TREE;
+		// @TODO, This is set in index.php - but it is not safe to rely on globals.
+		global $tree;
 
-		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
+		$CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
 		if ($date_format === null) {
 			$date_format = I18N::dateFormat();
