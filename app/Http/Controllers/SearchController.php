@@ -208,11 +208,11 @@ class SearchController extends AbstractBaseController {
 		}
 
 		if (empty($individuals) && count($families) === 1 && empty($sources) && empty($notes)) {
-			return new RedirectResponse($sources[0]->url());
+			return new RedirectResponse($families[0]->url());
 		}
 
 		if (empty($individuals) && empty($families) && count($sources) === 1 && empty($notes)) {
-			return new RedirectResponse($families[0]->url());
+			return new RedirectResponse($sources[0]->url());
 		}
 
 		if (empty($individuals) && empty($families) && empty($sources) && count($notes) === 1) {
