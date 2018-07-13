@@ -33,7 +33,7 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_BASE_URL', '');
 define('WT_DATA_DIR', 'data/');
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
-define('WT_REQUIRED_PHP_VERSION', '5.6');
+define('WT_REQUIRED_PHP_VERSION', '7.0');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', __DIR__ . '/');
 define('WT_THEMES_DIR', 'themes/');
