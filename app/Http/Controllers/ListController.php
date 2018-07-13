@@ -334,7 +334,7 @@ class ListController extends AbstractBaseController {
 							]);
 						} else {
 							echo view('lists/families-table', [
-								'families' => $this->families($surname, $alpha, $falpha, $show_marnm === 'yes'),
+								'families' => $this->families($tree, $surname, $alpha, $falpha, $show_marnm === 'yes'),
 								'tree'     => $tree,
 							]);
 						}
@@ -1641,7 +1641,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return Individual[]
 	 */
-	public function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams) {
+	private function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams) {
 		$sql =
 			"SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
@@ -1702,6 +1702,7 @@ class ListController extends AbstractBaseController {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
+	 * @param Tree   $tree
 	 * @param string $surn   if set, only fetch people with this surname
 	 * @param string $salpha if set, only fetch surnames starting with this letter
 	 * @param string $galpha if set, only fetch given names starting with this letter
@@ -1709,7 +1710,7 @@ class ListController extends AbstractBaseController {
 	 *
 	 * @return Family[]
 	 */
-	public function families($surn, $salpha, $galpha, $marnm) {
+	private function families(Tree $tree, $surn, $salpha, $galpha, $marnm) {
 		$list = [];
 		foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
