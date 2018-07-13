@@ -80,13 +80,13 @@
 
 		<?php if ($search_repositories): ?>
 			<div class="tab-pane fade" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
-				<?= view('tables/repositories', ['repositories' => $repositories, 'tree' => $tree]) ?>
+				<?= view('lists/repositories-table', ['repositories' => $repositories, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 
 		<?php if ($search_notes): ?>
 			<div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-				<?= view('tables/notes', ['notes' => $notes, 'tree' => $tree]) ?>
+				<?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
 			</div>
 		<?php endif ?>
 	</div>
