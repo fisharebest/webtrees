@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
@@ -58,7 +59,7 @@ class MediaFileController extends AbstractBaseController {
 		$media   = Media::getInstance($xref, $tree);
 
 		if ($media === null) {
-			throw new NotFoundHttpException;
+			throw new MediaNotFoundException;
 		}
 
 		if (!$media->canShow()) {

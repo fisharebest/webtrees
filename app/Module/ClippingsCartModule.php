@@ -17,6 +17,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
+use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
+use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
@@ -352,7 +358,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$family = Family::getInstance($xref, $tree);
 
 		if ($family === null) {
-			throw new NotFoundHttpException;
+			throw new FamilyNotFoundException;
 		}
 
 		$options = $this->familyOptions($family);
@@ -398,7 +404,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$family = Family::getInstance($xref, $tree);
 
 		if ($family === null) {
-			throw new NotFoundHttpException;
+			throw new FamilyNotFoundException;
 		}
 
 		switch ($option) {
@@ -474,7 +480,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$individual = Individual::getInstance($xref, $tree);
 
 		if ($individual === null) {
-			throw new NotFoundHttpException;
+			throw new IndividualNotFoundException;
 		}
 
 		$options = $this->individualOptions($individual);
@@ -534,7 +540,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$individual = Individual::getInstance($xref, $tree);
 
 		if ($individual === null) {
-			throw new NotFoundHttpException;
+			throw new IndividualNotFoundException;
 		}
 
 		switch ($option) {
@@ -611,7 +617,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$media  = Media::getInstance($xref, $tree);
 
 		if ($media === null) {
-			throw new NotFoundHttpException;
+			throw new MediaNotFoundException;
 		}
 
 		$options = $this->mediaOptions($media);
@@ -654,7 +660,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$media = Media::getInstance($xref, $tree);
 
 		if ($media === null) {
-			throw new NotFoundHttpException;
+			throw new MediaNotFoundException;
 		}
 
 		$this->addRecordToCart($media);
@@ -676,7 +682,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$note  = Note::getInstance($xref, $tree);
 
 		if ($note === null) {
-			throw new NotFoundHttpException;
+			throw new NoteNotFoundException;
 		}
 
 		$options = $this->noteOptions($note);
@@ -719,7 +725,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$note = Note::getInstance($xref, $tree);
 
 		if ($note === null) {
-			throw new NotFoundHttpException;
+			throw new NoteNotFoundException;
 		}
 
 		$this->addRecordToCart($note);
@@ -741,7 +747,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$repository  = Repository::getInstance($xref, $tree);
 
 		if ($repository === null) {
-			throw new NotFoundHttpException;
+			throw new RepositoryNotFoundException;
 		}
 
 		$options = $this->repositoryOptions($repository);
@@ -784,7 +790,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$repository = Repository::getInstance($xref, $tree);
 
 		if ($repository === null) {
-			throw new NotFoundHttpException;
+			throw new RepositoryNotFoundException;
 		}
 
 		$this->addRecordToCart($repository);
@@ -806,7 +812,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$source  = Source::getInstance($xref, $tree);
 
 		if ($source === null) {
-			throw new NotFoundHttpException;
+			throw new SourceNotFoundException;
 		}
 
 		$options = $this->sourceOptions($source);
@@ -851,7 +857,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$source = Source::getInstance($xref, $tree);
 
 		if ($source === null) {
-			throw new NotFoundHttpException;
+			throw new SourceNotFoundException;
 		}
 
 		$this->addRecordToCart($source);

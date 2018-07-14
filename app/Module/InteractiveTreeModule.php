@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -22,7 +24,6 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class InteractiveTreeModule
@@ -154,14 +155,18 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		$pid        = $request->get('pid', WT_REGEX_XREF);
 		$individual = Individual::getInstance($pid, $tree);
 
-		if ($individual && $individual->canShow()) {
-			$instance = $request->get('instance');
-			$treeview = new TreeView($instance);
-
-			return new Response($treeview->getDetails($individual));
-		} else {
-			throw new NotFoundHttpException;
+		if ($individual === null) {
+			throw new IndividualNotFoundException;
 		}
+
+		if (!$individual->canShow()) {
+			throw new IndividualAccessDeniedException;
+		}
+
+		$instance = $request->get('instance');
+		$treeview = new TreeView($instance);
+
+		return new Response($treeview->getDetails($individual));
 	}
 
 	/**
