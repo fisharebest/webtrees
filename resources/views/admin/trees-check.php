@@ -13,8 +13,8 @@
 		<li class="list-group-item list-group-item-danger"><?= $error ?></li>
 	<?php endforeach ?>
 
-	<?php foreach ($warnings as $warnings): ?>
-		<li class="list-group-item list-group-item-warning"><?= $warnings ?></li>
+	<?php foreach ($warnings as $warning): ?>
+		<li class="list-group-item list-group-item-warning"><?= $warning ?></li>
 	<?php endforeach ?>
 
 	<?php if (empty($errors) && empty($warnings)): ?>
