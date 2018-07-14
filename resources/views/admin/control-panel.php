@@ -196,7 +196,7 @@
 						</td>
 						<td class="d-none d-lg-table-cell text-right">
 							<?php if ($notes[$tree->getTreeId()]): ?>
-								<a href="notelist.php?ged=<?= $tree->getNameUrl() ?>">
+								<a href="<?= e(route('note-list', ['ged' => $tree->getName()])) ?>">
 									<?= I18N::number($media[$tree->getTreeId()]) ?>
 								</a>
 							<?php else: ?>

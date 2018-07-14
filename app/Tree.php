@@ -111,15 +111,6 @@ class Tree {
 	}
 
 	/**
-	 * The name of this tree
-	 *
-	 * @return string
-	 */
-	public function getNameUrl() {
-		return rawurlencode($this->name);
-	}
-
-	/**
 	 * The title of this tree
 	 *
 	 * @return string

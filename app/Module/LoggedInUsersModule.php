@@ -82,7 +82,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 				}
 				$content .= ' - ' . e($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $tree->getNameUrl()])]);
+					$content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), ['class' => 'btn btn-link', 'href' => route('message', ['to' => $user->getUserName(), 'ged' => $tree->getName()])]);
 				}
 				$content .= '</div>';
 			}
