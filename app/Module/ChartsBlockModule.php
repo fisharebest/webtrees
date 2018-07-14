@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Http\Controllers\PedigreeChartController;
 use Fisharebest\Webtrees\I18N;
