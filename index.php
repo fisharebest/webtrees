@@ -72,7 +72,7 @@ define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(__DIR__) . DIRECTORY_SEPARATOR);
 
-// Keep track of time statistics, for the summary in the footer
+// Keep track of time so we can handle timeouts gracefully.
 define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors during development, and fewer in production.
@@ -119,7 +119,7 @@ if (!file_exists(WT_ROOT . 'data/config.ini.php')) {
 	$url      = Html::url('setup.php', ['route' => 'setup']);
 	$response = new RedirectResponse($url);
 	$response->send();
-	exit;
+	return;
 }
 
 // Connect to the database
@@ -144,7 +144,7 @@ try {
 	$html     = view('layouts/error', ['content' => $content]);
 	$response = new Response($html, 503);
 	$response->prepare($request)->send();
-	exit;
+	return;
 } catch (Throwable $ex) {
 	DebugBar::addThrowable($ex);
 
@@ -154,7 +154,7 @@ try {
 	$html     = view('layouts/error', ['content' => $content]);
 	$response = new Response($html, 503);
 	$response->prepare($request)->send();
-	exit;
+	return;
 }
 
 DebugBar::stopMeasure('init database');
