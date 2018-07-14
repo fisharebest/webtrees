@@ -17,42 +17,18 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Ramsey\Uuid\Uuid;
 use stdClass;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class FamilyTreeFavoritesModule
- *
- * Note that the user favorites module simply extends this module, so ensure that the
- * logic works for both.
  */
 class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
-	// How to update the database schema for this module
-	const SCHEMA_TARGET_VERSION   = 4;
-	const SCHEMA_SETTING_NAME     = 'FV_SCHEMA_VERSION';
-	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema';
-
-	/**
-	 * Create a new module.
-	 *
-	 * @param string $directory Where is this module installed
-	 */
-	public function __construct($directory) {
-		parent::__construct($directory);
-
-		// Create/update the database tables.
-		// NOTE: if we want to set any module-settings, we'll need to move this.
-		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
-	}
-
 	/**
 	 * How should this module be labelled on tabs, menus, etc.?
 	 *
@@ -82,127 +58,9 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 * @return string
 	 */
 	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
-
-		$action = Filter::get('action');
-		switch ($action) {
-			case 'deletefav':
-				$favorite_id = Filter::getInteger('favorite_id');
-				if ($favorite_id) {
-					self::deleteFavorite($favorite_id);
-				}
-				break;
-			case 'addfav':
-				$gid      = Filter::get('gid', WT_REGEX_XREF, '');
-				$favnote  = Filter::get('favnote');
-				$url      = Filter::getUrl('url');
-				$favtitle = Filter::get('favtitle');
-
-				if ($gid !== '') {
-					$record = GedcomRecord::getInstance($gid, $tree);
-					if ($record && $record->canShow()) {
-						self::addFavorite([
-							'user_id'   => $ctype === 'user' ? Auth::id() : null,
-							'gedcom_id' => $tree->getTreeId(),
-							'gid'       => $record->getXref(),
-							'type'      => $record::RECORD_TYPE,
-							'url'       => null,
-							'note'      => $favnote,
-							'title'     => $favtitle,
-						]);
-					}
-				} elseif ($url !== null) {
-					self::addFavorite([
-						'user_id'   => $ctype === 'user' ? Auth::id() : null,
-						'gedcom_id' => $tree->getTreeId(),
-						'gid'       => null,
-						'type'      => 'URL',
-						'url'       => $url,
-						'note'      => $favnote,
-						'title'     => $favtitle ? $favtitle : $url,
-					]);
-				}
-				break;
-		}
-
-		$userfavs = $this->getFavorites($tree, Auth::user());
-
-		$content = '';
-		if ($userfavs) {
-			foreach ($userfavs as $favorite) {
-				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;ged=' . e($tree->getName()) . '&amp;action=deletefav&amp;favorite_id=' . $favorite->favorite_id . '" data-confirm="' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '" onclick="return confirm(this.dataset.confirm);">' . I18N::translate('Remove') . '</a> ';
-				if ($favorite->favorite_type === 'URL') {
-					$content .= '<div id="boxurl' . e($favorite->favorite_id) . '.0" class="person_box">';
-					if ($ctype == 'user' || Auth::isManager($tree)) {
-						$content .= $removeFavourite;
-					}
-					$content .= '<a href="' . e($favorite->url) . '"><b>' . e($favorite->title) . '</b></a>';
-					$content .= '<br>' . e((string) $favorite->note);
-					$content .= '</div>';
-				} else {
-					$record = GedcomRecord::getInstance($favorite->xref, $tree);
-					if ($record && $record->canShow()) {
-						if ($record instanceof Individual) {
-							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box action_header';
-							switch ($record->getSex()) {
-								case 'M':
-									break;
-								case 'F':
-									$content .= 'F';
-									break;
-								default:
-									$content .= 'NN';
-									break;
-							}
-							$content .= '">';
-							if ($ctype == 'user' || Auth::isManager($tree)) {
-								$content .= $removeFavourite;
-							}
-							$content .= Theme::theme()->individualBoxLarge($record);
-							$content .= e((string) $favorite->note);
-							$content .= '</div>';
-						} else {
-							$content .= '<div id="box' . e($favorite->xref) . '.0" class="person_box">';
-							if ($ctype == 'user' || Auth::isManager($tree)) {
-								$content .= $removeFavourite;
-							}
-							$content .= $record->formatList();
-							$content .= '<br>' . e((string) $favorite->note);
-							$content .= '</div>';
-						}
-					}
-				}
-			}
-		}
-		if ($ctype == 'user' || Auth::isManager($tree)) {
-			$uniqueID = Uuid::uuid4()->toString(); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= '<div class="add_fav_head">';
-			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';
-			$content .= '</div>';
-			$content .= '<div id="add_fav' . $uniqueID . '" style="display: none;">';
-			$content .= '<form name="addfavform" action="index.php">';
-			$content .= '<input type="hidden" name="action" value="addfav">';
-			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
-			$content .= '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
-			$content .= '<div class="add_fav_ref">';
-			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="$(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); $(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
-			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid' . $uniqueID . '" size="5" value="">';
-			$content .= '</div>';
-			$content .= '<div class="add_fav_url">';
-			$content .= '<input type="radio" name="fav_category" value="url" onclick="$(\'#url, #favtitle\').removeAttr(\'disabled\'); $(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . GedcomTag::getLabel('URL') . '" disabled> ';
-			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="' . I18N::translate('Title') . '" disabled>';
-			$content .= '<p>' . I18N::translate('Enter an optional note about this favorite') . '</p>';
-			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';
-			$content .= '</div>';
-			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('add') . '">';
-			$content .= '</form></div>';
-		}
-
-		$content = view('blocks/favorites', [
-			'ctype'      => $ctype,
-			'favorites'  => $userfavs,
+		$content = view('modules/gedcom_favorites/favorites', [
+			'block_id'   => $block_id,
+			'favorites'  => $this->getFavorites($tree),
 			'is_manager' => Auth::isManager($tree),
 			'tree'       => $tree,
 		]);
@@ -262,81 +120,149 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	}
 
 	/**
-	 * Delete a favorite from the database
-	 *
-	 * @param int $favorite_id
-	 *
-	 * @return bool
-	 */
-	public static function deleteFavorite($favorite_id) {
-		return (bool)
-			Database::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
-			->execute([$favorite_id]);
-	}
-
-	/**
-	 * Store a new favorite in the database
-	 *
-	 * @param $favorite
-	 *
-	 * @return bool
-	 */
-	public static function addFavorite($favorite) {
-		// -- make sure a favorite is added
-		if (empty($favorite['gid']) && empty($favorite['url'])) {
-			return false;
-		}
-
-		//-- make sure this is not a duplicate entry
-		$sql = "SELECT 1 FROM `##favorite` WHERE";
-		if (!empty($favorite['gid'])) {
-			$sql .= " xref=?";
-			$vars = [$favorite['gid']];
-		} else {
-			$sql .= " url=?";
-			$vars = [$favorite['url']];
-		}
-		$sql .= " AND gedcom_id=?";
-		$vars[] = $favorite['gedcom_id'];
-		if ($favorite['user_id']) {
-			$sql .= " AND user_id=?";
-			$vars[] = $favorite['user_id'];
-		} else {
-			$sql .= " AND user_id IS NULL";
-		}
-
-		if (Database::prepare($sql)->execute($vars)->fetchOne()) {
-			return false;
-		}
-
-		//-- add the favorite to the database
-		return (bool)
-			Database::prepare("INSERT INTO `##favorite` (user_id, gedcom_id, xref, favorite_type, url, title, note) VALUES (? ,? ,? ,? ,? ,? ,?)")
-				->execute([$favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']]);
-	}
-
-	/**
-	 * Get favorites for a user or family tree
+	 * Get favorites for a family tree
 	 *
 	 * @param Tree $tree
-	 * @param User $user
 	 *
 	 * @return stdClass[]
 	 */
-	public static function getFavorites(Tree $tree, User $user) {
+	public function getFavorites(Tree $tree) {
 		$favorites =
 			Database::prepare(
 				"SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
 				" FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id IS NULL")
-			->execute([
-				'tree_id' => $tree->getTreeId(),
-			])
-			->fetchAll();
+				->execute([
+					'tree_id' => $tree->getTreeId(),
+				])
+				->fetchAll();
 
 		foreach ($favorites as $favorite) {
 			$favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
 		}
 
 		return $favorites;
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function postAddFavoriteAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
+		$note  = $request->get('note', '');
+		$title = $request->get('title', '');
+		$url   = $request->get('url', '');
+		$xref  = $request->get('xref', '');
+
+		if (Auth::isManager($tree, $user)) {
+			if ($url !== '') {
+				$this->addUrlFavorite($tree, $url, $title ?: $url, $note);
+			} else {
+				$this->addRecordFavorite($tree, $xref, $note);
+			}
+		}
+
+		$url = route('tree-page', ['ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function postDeleteFavoriteAction(Request $request): RedirectResponse {
+		/** @var Tree $tree */
+		$tree = $request->attributes->get('tree');
+
+		/** @var User $user */
+		$user = $request->attributes->get('user');
+
+		$favorite_id = (int) $request->get('favorite_id');
+
+		if (Auth::isManager($tree, $user)) {
+			Database::prepare(
+				"DELETE FROM `##favorite` WHERE favorite_id = :favorite_id AND gedcom_id = :tree_id"
+			)->execute([
+				'favorite_id' => $favorite_id,
+				'tree_id'     => $tree->getTreeId(),
+			]);
+		}
+
+		$url = route('tree-page', ['ged' => $tree->getName()]);
+
+		return new RedirectResponse($url);
+	}
+
+	/**
+	 * @param Tree   $tree
+	 * @param string $url
+	 * @param string $title
+	 * @param string $note
+	 */
+	private function addUrlFavorite(Tree $tree, string $url, string $title, string $note) {
+		$favorite = Database::prepare(
+			"SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id IS NULL AND url = :url"
+		)->execute([
+			'gedcom_id' => $tree->getTreeId(),
+			'url'       => $url,
+		])->fetchOneRow();
+
+		if ($favorite === null) {
+			Database::prepare(
+				"INSERT INTO `##favorite` (gedcom_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
+			)->execute([
+				'gedcom_id' => $tree->getTreeId(),
+				'url'       => $url,
+				'note'      => $note,
+				'title'     => $title,
+			]);
+		} else {
+			Database::prepare(
+				"UPDATE `##favorite` SET note = :note, title = :title WHERE favorite_id = :favorite_id"
+			)->execute([
+				'note'        => $note,
+				'title'       => $title,
+				'favorite_id' => $favorite->favorite_id,
+			]);
+		}
+	}
+
+	/**
+	 * @param Tree   $tree
+	 * @param string $xref
+	 * @param string $note
+	 */
+	private function addRecordFavorite(Tree $tree, string $xref, string $note) {
+		$favorite = Database::prepare(
+			"SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id IS NULL AND xref = :xref"
+		)->execute([
+			'gedcom_id' => $tree->getTreeId(),
+			'xref'      => $xref,
+		])->fetchOneRow();
+
+		if ($favorite === null) {
+			Database::prepare(
+				"INSERT INTO `##favorite` (gedcom_id, xref, note) VALUES (:gedcom_id, :xref, :note)"
+			)->execute([
+				'gedcom_id' => $tree->getTreeId(),
+				'xref'      => $xref,
+				'note'      => $note,
+			]);
+		} else {
+			Database::prepare(
+				"UPDATE `##favorite` SET note = :note WHERE favorite_id = :favorite_id"
+			)->execute([
+				'note'        => $note,
+				'favorite_id' => $favorite->favorite_id,
+			]);
+		}
 	}
 }

@@ -113,7 +113,7 @@
 				<?= Theme::theme()->formatContactLinks() ?>
 				<?= Theme::theme()->logoPoweredBy() ?>
 
-				<?php if ($page_hits > 0): ?>
+				<?php if ($page_hits ?? 0 > 0): ?>
 				<div class="wt-page-views">
 					<?= I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $page_hits,
 					'<span class="odometer">' . I18N::digits($page_hits) . '</span>') ?>

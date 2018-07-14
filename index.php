@@ -51,7 +51,7 @@ define('WT_CKEDITOR_BASE_URL', 'public/ckeditor-4.5.2-custom/');
 define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 39);
+define('WT_SCHEMA_VERSION', 40);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);

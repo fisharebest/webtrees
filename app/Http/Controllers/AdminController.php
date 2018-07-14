@@ -492,6 +492,7 @@ class AdminController extends AbstractBaseController {
 		WT_ROOT . 'app/HitCounter.php',
 		WT_ROOT . 'app/Module/ClippingsCart/ClippingsCartController.php',
 		WT_ROOT . 'app/Module/FamiliesSidebarModule.php',
+		WT_ROOT . 'app/Module/FamilyTreeFavorites',
 		WT_ROOT . 'app/Module/GoogleMaps',
 		WT_ROOT . 'app/Module/IndividualSidebarModule.php',
 		WT_ROOT . 'app/Module/PageMenuModule.php',

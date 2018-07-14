@@ -1258,18 +1258,24 @@ abstract class AbstractTheme {
 	public function menuFavorites() {
 		global $controller;
 
-		$show_user_favorites = $this->tree && Module::getModuleByName('user_favorites') && Auth::check();
-		$show_tree_favorites = $this->tree && Module::getModuleByName('gedcom_favorites');
+		/** @var UserFavoritesModule $user_favorites */
+		$user_favorites = Module::getModuleByName('user_favorites');
+
+		/** @var FamilyTreeFavoritesModule $tree_favorites */
+		$tree_favorites = Module::getModuleByName('gedcom_favorites');
+
+		$show_user_favorites = $this->tree !== null && $user_favorites !== null && Auth::check();
+		$show_tree_favorites = $this->tree != null && $tree_favorites !== null;
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::user()),
-				UserFavoritesModule::getFavorites($this->tree, Auth::user())
+				$tree_favorites->getFavorites($this->tree),
+				$user_favorites->getFavorites($this->tree, Auth::user())
 			);
 		} elseif ($show_user_favorites) {
-			$favorites = UserFavoritesModule::getFavorites($this->tree, Auth::user());
+			$favorites = $user_favorites->getFavorites($this->tree, Auth::user());
 		} elseif ($show_tree_favorites) {
-			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::user());
+			$favorites = $tree_favorites->getFavorites($this->tree);
 		} else {
 			$favorites = [];
 		}
