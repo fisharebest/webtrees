@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\Database; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>

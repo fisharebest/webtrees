@@ -15,26 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Datatables;
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Place;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net

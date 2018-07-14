@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
-use Fisharebest\Webtrees\CommonMark\XrefParser;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\Converter;

@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <div class="row form-group">
 	<label class="col-sm-3 col-form-label" for="title">

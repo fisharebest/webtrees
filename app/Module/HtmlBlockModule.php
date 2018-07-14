@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
 

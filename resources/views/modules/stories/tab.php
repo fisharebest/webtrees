@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="wt-stories-tab py-4">

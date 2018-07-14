@@ -16,11 +16,9 @@
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Algorithm\MyersDiff;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\BatchUpdateModule;
 use Symfony\Component\HttpFoundation\Request;
 
 /**

@@ -15,11 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 

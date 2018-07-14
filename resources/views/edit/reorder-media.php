@@ -1,6 +1,4 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
-<?php use Fisharebest\Webtrees\GedcomCode\GedcomCodeName; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 

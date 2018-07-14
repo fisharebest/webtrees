@@ -3,7 +3,6 @@
 <?php use Fisharebest\Webtrees\Config; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Ramsey\Uuid\Uuid; ?>

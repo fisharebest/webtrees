@@ -16,12 +16,9 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;

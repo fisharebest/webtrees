@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsDate; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-users') => I18N::translate('User administration'), $title]]) ?>
 

@@ -3,7 +3,6 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintLists; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?php if ($note->isPendingDeletion()): ?>

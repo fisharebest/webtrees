@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
-use Fisharebest\Webtrees\Gedcom;
 use PDOException;
 
 /**

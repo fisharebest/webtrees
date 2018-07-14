@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Response;
 

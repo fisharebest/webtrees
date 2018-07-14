@@ -19,8 +19,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;

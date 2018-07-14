@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use PDO;
 use Ramsey\Uuid\Uuid;
 use stdClass;
 

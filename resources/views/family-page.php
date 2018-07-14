@@ -2,7 +2,6 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsCharts; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>
 

@@ -16,8 +16,6 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
-use PDOException;
 
 /**
  * Upgrade the database schema from version 27 to version 28.

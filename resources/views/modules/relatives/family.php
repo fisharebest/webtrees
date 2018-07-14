@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Date; ?>
 <?php use Fisharebest\Webtrees\Functions\Functions; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>

@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Site; ?>
 
 <?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 

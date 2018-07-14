@@ -2,8 +2,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintLists; ?>
-<?php use Fisharebest\Webtrees\Html; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?php if ($source->isPendingDeletion()): ?>

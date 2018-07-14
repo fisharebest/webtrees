@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;

@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;

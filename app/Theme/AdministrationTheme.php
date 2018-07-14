@@ -15,12 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Theme;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * The theme for the control panel.

@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 
 /**
  * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y

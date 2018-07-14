@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 
 /**

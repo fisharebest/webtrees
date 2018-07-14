@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
