@@ -571,7 +571,7 @@ class FunctionsPrintFacts {
 					$srec = substr($factrec, $spos1, $spos2 - $spos1);
 					$lt   = preg_match_all("/$nlevel \w+/", $srec, $matches);
 					$data .= '<div class="fact_SOUR">';
-					$elementID = Uuid::uuid4();
+					$elementID = Uuid::uuid4()->toString();
 					if ($tree->getPreference('EXPAND_SOURCES')) {
 						$plusminus = 'icon-minus';
 					} else {
