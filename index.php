@@ -230,7 +230,6 @@ DebugBar::startMeasure('routing');
 
 // The HTTP request.
 $request = Request::createFromGlobals();
-$method  = $request->getMethod();
 $route   = $request->get('route');
 
 try {
@@ -240,7 +239,7 @@ try {
 	$tree = $all_trees[$request->get('ged')] ?? null;
 
 	// No tree specified/available?  Choose one.
-	if ($tree === null && $method === 'GET') {
+	if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
 		$tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
 	}
 
@@ -254,7 +253,7 @@ try {
 	$routes = require 'routes/web.php';
 
 	// Find the action for the selected route
-	$controller_action = $routes[$method . ':' . $route] ?? 'ErrorController@noRouteFound';
+	$controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
 
 	// Create the controller
 	list($controller_name, $action) = explode('@', $controller_action);
@@ -300,11 +299,11 @@ try {
 		new CheckForMaintenanceMode,
 	];
 
-	if ($method === 'GET') {
+	if ($request->getMethod() === Request::METHOD_GET) {
 		$middleware_stack[] = new PageHitCounter;
 	}
 
-	if ($method === 'POST') {
+	if ($request->getMethod() === Request::METHOD_POST) {
 		$middleware_stack[] = new UseTransaction;
 		$middleware_stack[] = new CheckCsrf;
 	}
