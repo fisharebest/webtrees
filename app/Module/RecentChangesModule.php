@@ -73,9 +73,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		if (empty($records)) {
 			$content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
 		} elseif ($infoStyle === 'list') {
-			$content = $this->changesList($records, $show_user);
+			$content = view('modules/recent_changes/changes-list', [
+				'records'   => $records,
+				'show_user' => $show_user,
+			]);
 		} else {
-			$content = view('blocks/changes-' . $infoStyle, [
+			$content = view('modules/recent_changes/changes-table', [
 				'records'   => $records,
 				'show_user' => $show_user,
 			]);
@@ -186,42 +189,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		}
 
 		return $records;
-	}
-
-	/**
-	 * Format a table of events
-	 *
-	 * @param GedcomRecord[] $records
-	 * @param bool           $show_user
-	 *
-	 * @return string
-	 */
-	private function changesList(array $records, $show_user) {
-		$html = '';
-		foreach ($records as $record) {
-			$html .= '<a href="' . e($record->url()) . '" class="list_item name2">' . $record->getFullName() . '</a>';
-			$html .= '<div class="indent" style="margin-bottom: 5px;">';
-			if ($record instanceof Individual) {
-				if ($record->getAddName()) {
-					$html .= '<a href="' . e($record->url()) . '" class="list_item">' . $record->getAddName() . '</a>';
-				}
-			}
-
-			// The timestamp may be missing or private.
-			$timestamp = $record->lastChangeTimestamp();
-			if ($timestamp !== '') {
-				if ($show_user) {
-					$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-						I18N::translate('Changed on %1$s by %2$s', $timestamp, e($record->lastChangeUser()));
-				} else {
-					$html .= /* I18N: [a record was] Changed on <date/time> */
-						I18N::translate('Changed on %1$s', $timestamp);
-				}
-			}
-			$html .= '</div>';
-		}
-
-		return $html;
 	}
 
 	/**
