@@ -262,17 +262,12 @@ class Fact {
 	 * @return string
 	 */
 	public function getLabel() {
-		switch ($this->tag) {
-			case 'EVEN':
-			case 'FACT':
-				if ($this->getAttribute('TYPE') !== '') {
-					// Custom FACT/EVEN - with a TYPE
-					return I18N::translate(e($this->getAttribute('TYPE')));
-				}
-				// no break - drop into next case
-			default:
-				return GedcomTag::getLabel($this->tag, $this->parent);
+		// Custom FACT/EVEN - with a TYPE
+		if (($this->tag ==='FACT' || $this->tag === 'EVEN') && $this->getAttribute('TYPE') !== '') {
+			return I18N::translate(e($this->getAttribute('TYPE')));
 		}
+
+		return GedcomTag::getLabel($this->tag, $this->parent);
 	}
 
 	/**
