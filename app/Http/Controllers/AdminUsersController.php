@@ -91,7 +91,7 @@ class AdminUsersController extends AbstractBaseController {
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function cleanupAction(Request $request): RedirectResponse {
 		foreach (User::all() as $user) {

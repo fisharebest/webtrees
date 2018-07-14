@@ -58,6 +58,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
 	/**
 	 * Return a menu item for this report.
 	 *
+	 * @param Tree $tree
+	 *
 	 * @return Menu
 	 */
 	public function getReportMenu(Tree $tree): Menu {

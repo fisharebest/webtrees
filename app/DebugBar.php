@@ -190,7 +190,8 @@ class DebugBar {
 	/**
 	 * Log an exception/throwable
 	 *
-	 * @param Throwable $throwable
+	 * @param string  $view
+	 * @param mixed[] $data
 	 */
 	public static function addView(string $view, array $data) {
 		if (self::$debugbar !== null) {

@@ -57,8 +57,11 @@ class View {
 
 	/**
 	 * Shared data that is available to all views.
+	 *
+	 * @param string $key
+	 * @param mixed  $value
 	 */
-	public static function share($key, $value) {
+	public static function share(string $key, $value) {
 		self::$shared_data[$key] = $value;
 	}
 
@@ -66,6 +69,8 @@ class View {
 	 * Implementation of Blade "stacks".
 	 *
 	 * @see https://laravel.com/docs/5.5/blade#stacks
+	 *
+	 * @param string $stack
 	 */
 	public static function push(string $stack) {
 		self::$stack = $stack;
@@ -81,6 +86,8 @@ class View {
 
 	/**
 	 * Implementation of Blade "stacks".
+	 *
+	 * @param string $stack
 	 *
 	 * @return string
 	 */

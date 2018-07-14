@@ -439,7 +439,7 @@ class EditMediaController extends AbstractEditController {
 	/**
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function linkMediaToRecordAction(Request $request): RedirectResponse {
 		/** @var Tree $tree */

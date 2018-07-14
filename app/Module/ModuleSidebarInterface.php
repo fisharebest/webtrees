@@ -40,7 +40,7 @@ interface ModuleSidebarInterface {
 	/**
 	 * Does this sidebar have anything to display for this individual?
 	 *
-	 * Individual $individual
+	 * @param Individual $individual
 	 *
 	 * @return bool
 	 */

@@ -69,7 +69,7 @@ class EditNoteController extends AbstractEditController {
 	 *
 	 * @param Request $request
 	 *
-	 * @return Response
+	 * @return RedirectResponse
 	 */
 	public function updateNoteObject(Request $request): RedirectResponse {
 		/** @var Tree $tree */

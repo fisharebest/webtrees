@@ -245,7 +245,7 @@ class ReportPdf extends ReportBase {
 	/**
 	 * Create a new image object from Media Object - ReportPdf
 	 *
-	 * @param MediaFile $mediafile
+	 * @param MediaFile $media_file
 	 * @param mixed     $x
 	 * @param mixed     $y
 	 * @param int       $w     Image width
