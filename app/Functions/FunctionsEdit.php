@@ -49,6 +49,9 @@ use Ramsey\Uuid\Uuid;
  * Class FunctionsEdit - common functions for editing
  */
 class FunctionsEdit {
+	/** @var string[] - a list of GEDCOM tags in the edit form. */
+	private static $tags = [];
+	
 	/**
 	 * Function edit_language_checkboxes
 	 *
@@ -466,7 +469,7 @@ class FunctionsEdit {
 	 */
 	public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
 		// @TODO $xref is no longer set (from edit_interface).
-		global $tags, $xref;
+		global $xref;
 
 		// Some form fields need access to previous form fields.
 		static $previous_ids = ['SOUR' => '', 'PLAC' => ''];
@@ -747,7 +750,7 @@ class FunctionsEdit {
 			$html .= ' <a href="#edit_name" onclick="convertHidden(\'' . $id . '\'); return false" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		}
 		// MARRiage TYPE : hide text field and show a selection list
-		if ($fact === 'TYPE' && $level === '2' && $tags[0] === 'MARR') {
+		if ($fact === 'TYPE' && $level === '2' && self::$tags[0] === 'MARR') {
 			$html .= '<script>';
 			$html .= 'document.getElementById(\'' . $id . '\').style.display=\'none\'';
 			$html .= '</script>';
@@ -817,17 +820,15 @@ class FunctionsEdit {
 	 * @param string $fact the new fact we are adding
 	 */
 	public static function createAddForm(Tree $tree, $fact) {
-		global $tags;
-
-		$tags = [];
+		self::$tags = [];
 
 		// handle  MARRiage TYPE
 		if (substr($fact, 0, 5) === 'MARR_') {
-			$tags[0] = 'MARR';
+			self::$tags[0] = 'MARR';
 			echo self::addSimpleTag($tree, '1 MARR');
 			self::insertMissingSubtags($tree, $fact);
 		} else {
-			$tags[0] = $fact;
+			self::$tags[0] = $fact;
 			if ($fact === '_UID') {
 				$fact .= ' ' . GedcomTag::createUid();
 			}
@@ -840,7 +841,7 @@ class FunctionsEdit {
 			} else {
 				echo self::addSimpleTag($tree, '1 ' . $fact);
 			}
-			self::insertMissingSubtags($tree, $tags[0]);
+			self::insertMissingSubtags($tree, self::$tags[0]);
 			//-- handle the special SOURce case for level 1 sources [ 1759246 ]
 			if ($fact === 'SOUR') {
 				echo self::addSimpleTag($tree, '2 PAGE');
@@ -859,13 +860,11 @@ class FunctionsEdit {
 	 * @param Fact $fact
 	 */
 	public static function createEditForm(Fact $fact) {
-		global $tags;
-
 		$record = $fact->getParent();
 		$tree   = $record->getTree();
 
-		$tags     = [];
-		$gedlines = explode("\n", $fact->getGedcom());
+		self::$tags = [];
+		$gedlines   = explode("\n", $fact->getGedcom());
 
 		$linenum = 0;
 		$fields  = explode(' ', $gedlines[$linenum]);
@@ -934,7 +933,7 @@ class FunctionsEdit {
 			}
 
 			if ($type !== 'CONT') {
-				$tags[]    = $type;
+				self::$tags[]    = $type;
 				$subrecord = $level . ' ' . $type . ' ' . $text;
 				if ($inSource && $type === 'DATE') {
 					echo self::addSimpleTag($tree, $subrecord, '', GedcomTag::getLabel($label, $record));
@@ -1003,8 +1002,6 @@ class FunctionsEdit {
 	 * @param bool   $add_date
 	 */
 	public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false) {
-		global $tags;
-
 		// handle  MARRiage TYPE
 		$type_val = '';
 		if (substr($level1tag, 0, 5) === 'MARR_') {
@@ -1016,7 +1013,7 @@ class FunctionsEdit {
 			if ($key === 'DATE' && in_array($level1tag, Config::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts())) {
 				continue;
 			}
-			if (in_array($level1tag, $value) && !in_array($key, $tags)) {
+			if (in_array($level1tag, $value) && !in_array($key, self::$tags)) {
 				if ($key === 'TYPE') {
 					echo self::addSimpleTag($tree, '2 TYPE ' . $type_val, $level1tag);
 				} elseif ($level1tag === '_TODO' && $key === 'DATE') {
@@ -1072,7 +1069,7 @@ class FunctionsEdit {
 		// Do something (anything!) with unrecognized custom tags
 		if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
 			foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
-				if (!in_array($tag, $tags)) {
+				if (!in_array($tag, self::$tags)) {
 					echo self::addSimpleTag($tree, '2 ' . $tag);
 					if ($tag === 'PLAC') {
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
