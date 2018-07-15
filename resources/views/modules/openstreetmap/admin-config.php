@@ -3,13 +3,9 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('admin/breadcrumbs', [
-		'links' => [route('admin-control-panel') => I18N::translate('Control panel'),
-		            route('admin-modules') => I18N::translate('Module administration'),
-					$title
-		]]) ?>
+<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Module administration'), $title]]) ?>
 
-<form method="POST" name="configform" action="<?=e(route('admin-module', ['module' => $module, 'action' => 'AdminUpdateConfig'])) ?>">
+<form method="POST" name="configform" action="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminUpdateConfig'])) ?>">
 	<?= csrf_field() ?>
 
 	<div class="form-group row">
@@ -18,9 +14,9 @@
 		</div>
 		<div class="col-sm-9">
 			<a class="btn btn-primary"
-			   href="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminPlaces'])) ?>">
-					<?= FontAwesome::decorativeIcon('edit') ?>
-					<?= I18N::translate('edit') ?>
+				href="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminPlaces'])) ?>">
+				<?= FontAwesome::decorativeIcon('edit') ?>
+				<?= I18N::translate('edit') ?>
 			</a>
 		</div>
 	</div>
@@ -133,7 +129,7 @@
 								</label>
 							</div>
 							<input id="mapbox_id" class="form-control" type="text" name="mapbox_id"
-								   value="<?= $mapboxId ?>">
+								value="<?= $mapboxId ?>">
 						</div>
 					</div>
 					<div class="col-sm-9">
@@ -144,8 +140,8 @@
 								</label>
 							</div>
 							<input id="mapbox_token" class="form-control" type="text"
-								   name="mapbox_token"
-								   value="<?= $mapboxToken ?>">
+								name="mapbox_token"
+								value="<?= $mapboxToken ?>">
 						</div>
 					</div>
 				</div>
@@ -175,7 +171,7 @@
 								</label>
 							</div>
 							<input id="here_appid" class="form-control" type="text" name="here_appid"
-								   value="<?= $here_Appid ?>">
+								value="<?= $here_Appid ?>">
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -186,8 +182,8 @@
 								</label>
 							</div>
 							<input id="here_appcode" class="form-control" type="text"
-								   name="here_appcode"
-								   value="<?= $here_Appcode ?>">
+								name="here_appcode"
+								value="<?= $here_Appcode ?>">
 						</div>
 					</div>
 				</div>
@@ -213,35 +209,35 @@
 
 <?php View::push('javascript') ?>
 
-	<script>
-		'use strict';
+<script>
+  "use strict";
 
-		let domSelect = $('#provider');
-		$(function() {
-			if($('#mapbox_id').val().length === 0 || !$('#mapbox_token').length === 0) {
-				domSelect.children('option[value=\"mapbox\"]').attr('disabled', 'disabled');
-			}
-			if($('#here_appid').val().length === 0 || !$('#here_appcode').length === 0) {
-				domSelect.children('option[value=\"here\"]').attr('disabled', 'disabled');
-			}
-		});
-		domSelect.change(function () {
-			let newProvider = this.value;
-			$.getJSON('<?= e(route('module')) ?>', {
-				module  : '<?= $module ?>',
-				action  : 'ProviderStyles',
-				provider: newProvider,
-			})
-				.done(function (data, textStatus, jqXHR) {
-					let html = '';
-					Object.keys(data).forEach(function(key) {
-						html += '<option value=' + key +'>' + data[key] + '</option>';
-					});
-					$('#provider_style').html(html);
-				})
-				.fail(function (jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR, textStatus, errorThrown);
-				})
-		});
-	</script>
+  let domSelect = $("#provider");
+  $(function () {
+    if ($("#mapbox_id").val().length === 0 || !$("#mapbox_token").length === 0) {
+      domSelect.children("option[value=\"mapbox\"]").attr("disabled", "disabled");
+    }
+    if ($("#here_appid").val().length === 0 || !$("#here_appcode").length === 0) {
+      domSelect.children("option[value=\"here\"]").attr("disabled", "disabled");
+    }
+  });
+  domSelect.change(function () {
+    let newProvider = this.value;
+    $.getJSON('<?= e(route('module')) ?>', {
+      module:   '<?= $module ?>',
+      action:   "ProviderStyles",
+      provider: newProvider,
+    })
+      .done(function (data, textStatus, jqXHR) {
+        let html = "";
+        Object.keys(data).forEach(function (key) {
+          html += "<option value=" + key + ">" + data[key] + "</option>";
+        });
+        $("#provider_style").html(html);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR, textStatus, errorThrown);
+      });
+  });
+</script>
 <?php View::endpush() ?>

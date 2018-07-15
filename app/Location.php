@@ -13,31 +13,41 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Exception;
+use stdClass;
+
+/**
+ * Class Location
+ *
+ * @package Fisharebest\Webtrees
+ */
 class Location {
 
 	/**
-	 * @var \stdClass $record
+	 * @var stdClass $record
 	 */
 	protected $record;
 
 	/**
 	 * Location constructor.
+	 *
 	 * @param string $gedcomName
-	 * @param array $record
-	 * @throws \Exception
+	 * @param array  $record
+	 *
+	 * @throws Exception
 	 */
-	public function __construct($gedcomName, $record=[]) {
+	public function __construct($gedcomName, $record = []) {
 		$tmp = $this->getRecordFromName($gedcomName);
 		if ($tmp !== null) {
 			$this->record = $tmp;
 		} elseif (!empty($record)) {
-			$this->record = (object)$record;
+			$this->record = (object) $record;
 		} else {
-			$this->record = (object)[
+			$this->record = (object) [
 				'fqpn'         => '',
 				'pl_id'        => 0,
 				'pl_parent_id' => 0,
@@ -67,7 +77,7 @@ class Location {
 		switch ($format) {
 			case 'signed':
 				return $this->record->pl_lati ?
-					(float)strtr($this->record->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) :
+					(float) strtr($this->record->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) :
 					$this->record->pl_lati;
 			default:
 				return $this->record->pl_lati;
@@ -83,7 +93,7 @@ class Location {
 		switch ($format) {
 			case 'signed':
 				return $this->record->pl_long ?
-					(float)strtr($this->record->pl_long, ['E' => '', 'W' => '-', ',' => '.']) :
+					(float) strtr($this->record->pl_long, ['E' => '', 'W' => '-', ',' => '.']) :
 					$this->record->pl_long;
 			default:
 				return $this->record->pl_long;
@@ -149,14 +159,14 @@ class Location {
 	}
 
 	/**
-	 * @return \stdClass
+	 * @return stdClass
 	 */
 	public function getRecord() {
 		return $this->record;
 	}
 
 	/**
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function add() {
 		$this->record->pl_id = Database::prepare("SELECT IFNULL(MAX(pl_id)+1, 1) FROM `##placelocation`")
@@ -164,8 +174,7 @@ class Location {
 			->fetchOne();
 
 		Database::prepare(
-			"INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)
-							VALUES(:id, :parent_id, :level, :place, :long, :lati, :zoom, :icon)"
+			"INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES(:id, :parent_id, :level, :place, :long, :lati, :zoom, :icon)"
 		)->execute(
 			[
 				'id'        => $this->record->pl_id,
@@ -183,26 +192,28 @@ class Location {
 	}
 
 	/**
-	 * @param \stdClass $new_data
-	 * @throws \Exception
+	 * @param stdClass $new_data
+	 *
+	 * @throws Exception
 	 */
-	public function update($new_data) {
+	public function update(stdClass $new_data) {
 		Database::prepare(
 			"UPDATE `##placelocation` SET pl_lati=:lati, pl_long=:long, pl_zoom=:zoom, pl_icon=:icon WHERE pl_id=:id"
 		)
 			->execute([
-				'lati'  => $new_data->pl_lati ?? $this->record->pl_lati,
-				'long'  => $new_data->pl_long ?? $this->record->pl_long,
-				'zoom'  => $new_data->pl_zoom ?? $this->record->pl_zoom,
-				'icon'  => $new_data->pl_icon ?? $this->record->pl_icon,
-				'id'    => $this->record->pl_id,
+				'lati' => $new_data->pl_lati ?? $this->record->pl_lati,
+				'long' => $new_data->pl_long ?? $this->record->pl_long,
+				'zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
+				'icon' => $new_data->pl_icon ?? $this->record->pl_icon,
+				'id'   => $this->record->pl_id,
 			]);
 	}
 
 	/**
 	 * @param string $gedcomName
-	 * @return null|\stdClass
-	 * @throws \Exception
+	 *
+	 * @return null|stdClass
+	 * @throws Exception
 	 */
 	private function getRecordFromName($gedcomName) {
 
