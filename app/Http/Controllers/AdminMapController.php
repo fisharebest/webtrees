@@ -1,3 +1,4 @@
+<?php
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -12,32 +13,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
 
-import $ from "jquery";
-window.$ = window.jQuery = $;
+namespace Fisharebest\Webtrees\Http\Controllers;
 
-import "popper.js";
-import "bootstrap";
-import "datatables.net";
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-window.Bloodhound = require("corejs-typeahead/dist/bloodhound.min.js");
-import "corejs-typeahead";
+/**
+ * Controller for maps and geographic data.
+ */
+class AdminMapController extends AbstractBaseController {
+	protected $layout = 'layouts/administration';
 
-import "datatables.net-bs4";
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function providerDetails(Request $request): Response {
 
-// See https://github.com/RubaXa/Sortable/issues/1229
-window.Sortable = require('sortablejs');
+	}
 
-import "select2";
+	/**
+	 * @param Request $request
+	 *
+	 * @return RedirectResponse
+	 */
+	public function providerDetailsAction(Request $request): RedirectResponse {
 
-import "moment";
-
-import "jquery-colorbox";
-
-import "wheelzoom";
-
-import "leaflet";
-import "leaflet-providers";
-window.GeoSearch = require("leaflet-geosearch");
-import "leaflet.markercluster";
-import "beautifymarker";
+	}
+}

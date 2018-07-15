@@ -28,25 +28,18 @@
 </div>
 
 <?php View::push('javascript') ?>
-	<script>
-		'use strict';
-		// Load the module's CSS files
-		let link;
-		<?php foreach ($assets['css'] as $css_file): ?>
-			link = document.createElement("link");
-			link.setAttribute("rel", "stylesheet");
-			link.setAttribute("type", "text/css");
-			link.setAttribute("href", "<?= e($css_file) ?>");
-			document.head.appendChild(link);
-		<?php endforeach ?>
-	</script>
+<?php foreach ($assets['css'] as $css_file): ?>
+	<link rel="stylesheet" type="text/css" href="<?= e($css_file) ?>">
+<?php endforeach; ?>
+<?php View::endpush() ?>
 
-	<?php foreach ($assets['js'] as $js_file): ?>
-		<script src="<?= e($js_file) ?>"></script>
-	<?php endforeach ?>
+<?php View::push('javascript') ?>
+<?php foreach ($assets['js'] as $js_file): ?>
+	<script src="<?= e($js_file) ?>"></script>
+<?php endforeach ?>
 
-	<script>
-		'use strict';
-		WT_OSM.drawMap('<?= $ref ?>', '<?= $type ?>', <?= $generations ?? null ?>);
-	</script>
+<script>
+	'use strict';
+	WT_OSM.drawMap(<?= json_encode($ref) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
+</script>
 <?php View::endpush() ?>

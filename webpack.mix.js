@@ -16,7 +16,12 @@ mix
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css',
     'node_modules/font-awesome-rtl/font-awesome-rtl.css',
     'node_modules/select2/dist/css/select2.min.css',
-    'node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css'
+    'node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css',
+    'node_modules/leaflet/dist/leaflet.css',
+    'node_modules/beautifymarker/leaflet-beautify-marker-icon.css',
+    'node_modules/leaflet-geosearch/dist/style.css',
+    'node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css',
+    'node_modules/leaflet.markercluster/dist/MarkerCluster.css',
   ], path + 'css/vendor.css')
   .styles([
     'resources/assets/css/bootstrap-rtl.min.css',
@@ -27,7 +32,13 @@ mix
     'node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css',
     'node_modules/font-awesome-rtl/font-awesome-rtl.css',
     'node_modules/select2/dist/css/select2.min.css',
-    'node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css'
+    'node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css',
+    'node_modules/leaflet/dist/leaflet.css',
+    'node_modules/beautifymarker/leaflet-beautify-marker-icon.css',
+    'node_modules/leaflet-geosearch/dist/style.css',
+    'node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css',
+    'node_modules/leaflet.markercluster/dist/MarkerCluster.css',
   ], path + 'css/vendor-rtl.css')
   .copy('node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/*', path + 'webfonts/')
-  .copy('node_modules//dejavu-fonts-ttf/ttf/DejaVuSans.ttf', 'resources/fonts/');
+  .copy('node_modules//dejavu-fonts-ttf/ttf/DejaVuSans.ttf', 'resources/fonts/')
+  .copy('node_modules/leaflet/dist/images/*', path + 'css/images/');

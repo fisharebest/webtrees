@@ -41,13 +41,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface {
 
-	// Package version numbers
-	const LEAFLET      = '1.3.1';
-	const LEAFLET_BEAU = '1.0.5';
-	const LEAFLET_MC   = '1.3.0';
-	const LEAFLET_PROV = '1.1.17';
-	const LEAFLET_GEO  = '2.6.0';
-
 	const OSM_MIN_ZOOM = 2;
 	const LINE_COLORS  = [
 		'#FF0000', // Red
@@ -144,39 +137,24 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
 	public function assets($type = 'user') {
 		$dir = WT_MODULES_DIR . $this->getName();
 		if ($type === 'admin') {
-			$files = [
+			return [
 				'css' => [
-					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.css',
-					$dir . '/packages/leaflet-geosearch-' . self::LEAFLET_GEO . '/leaflet-geosearch.css',
 					$dir . '/assets/css/osm-module.css',
 				],
 				'js'  => [
-					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.js',
-					$dir . '/packages/leaflet-providers-' . self::LEAFLET_PROV . '/leaflet-providers.js',
-					$dir . '/packages/leaflet-geosearch-' . self::LEAFLET_GEO . '/leaflet-geosearch.min.js',
 					$dir . '/assets/js/osm-admin.js',
 				],
 			];
 		} else {
-			$files = [
+			return [
 				'css' => [
-					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.css',
-					$dir . '/packages/BeautifyMarker-' . self::LEAFLET_BEAU . '/leaflet-beautify-marker-icon.css',
-					$dir . '/packages/Leaflet.markercluster-' . self::LEAFLET_MC . '/dist/MarkerCluster.Default.css',
-					$dir . '/packages/Leaflet.markercluster-' . self::LEAFLET_MC . '/dist/MarkerCluster.css',
 					$dir . '/assets/css/osm-module.css',
 				],
 				'js'  => [
-					$dir . '/packages/leaflet-' . self::LEAFLET . '/leaflet.js',
-					$dir . '/packages/leaflet-providers-' . self::LEAFLET_PROV . '/leaflet-providers.js',
-					$dir . '/packages/BeautifyMarker-' . self::LEAFLET_BEAU . '/leaflet-beautify-marker-icon.js',
-					$dir . '/packages/leaflet.markercluster-' . self::LEAFLET_MC . '/dist/leaflet.markercluster.js',
 					$dir . '/assets/js/osm-module.js',
 				],
 			];
 		}
-
-		return $files;
 	}
 
 	/** {@inheritdoc} */

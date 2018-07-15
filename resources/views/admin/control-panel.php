@@ -459,6 +459,39 @@
 	</div>
 </div>
 
+<!-- MAPS -->
+<div class="card mb-4">
+	<div class="card-header">
+		<h2 class="mb-0">
+			<?= I18N::translate('Map') ?>
+		</h2>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
+						<a href="#">
+							<?= I18N::translate('Geographic data') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="fa-ul">
+					<li>
+						<span class="fa-li"><i class="far fa-map"></i></span>
+						<a href="#">
+							<?= I18N::translate('Map provider') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- OLD FILES -->
 <?php if (!empty($files_to_delete)): ?>
 	<div class="card mb-4 card-outline-danger">
