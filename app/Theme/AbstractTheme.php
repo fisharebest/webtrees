@@ -1977,20 +1977,9 @@ abstract class AbstractTheme {
 	 * @return string[]
 	 */
 	public function stylesheets() {
-
-		if (I18N::direction() === 'rtl') {
-			$stylesheets = [
-				WT_ASSETS_URL . 'css/vendor-rtl.css',
-				self::STYLESHEET,
-			];
-		} else {
-			$stylesheets = [
-				WT_ASSETS_URL . 'css/vendor.css',
-				self::STYLESHEET,
-			];
-		}
-
-		return $stylesheets;
+		return [
+			self::STYLESHEET,
+		];
 	}
 
 	/**

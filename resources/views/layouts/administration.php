@@ -19,6 +19,9 @@
 			<link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor.css') ?>">
 		<?php endif ?>
 		<link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/administration.css') ?>">
+
+		<?= View::stack('styles') ?>
+
 		<?= DebugBar::renderHead() ?>
 	</head>
 	<body class="container wt-global">

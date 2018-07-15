@@ -28,6 +28,12 @@
 		<link rel="icon" type="image/png" href="<?= Theme::theme()::ASSET_DIR ?>favicon192.png" sizes="192x192">
 		<link rel="apple-touch-icon" sizes="180x180" href="<?= Theme::theme()::ASSET_DIR ?>favicon180.png">
 
+		<?php if (I18N::direction() === 'rtl'): ?>
+			<link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor-rtl.css') ?>">
+		<?php else: ?>
+			<link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor.css') ?>">
+		<?php endif ?>
+
 		<?php foreach (Theme::theme()->stylesheets() as $stylesheet): ?>
 			<link rel="stylesheet" type="text/css" href="<?=  $stylesheet ?>">
 		<?php endforeach ?>
