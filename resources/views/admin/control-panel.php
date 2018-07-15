@@ -281,7 +281,7 @@
 					<dd class="col-sm-9">
 						<?php foreach ($list as $n => $user): ?>
 							<?= $n ? I18N::$list_separator : '' ?>
-							<a href="admin_users.php?action=edit&user_id=<?= $user->getUserId() ?>" dir="auto">
+							<a href="<?= e(route('admin-users-edit', ['user_id' => $user->getUserId()])) ?>" dir="auto">
 								<?= e($user->getRealName()) ?>
 							</a>
 						<?php endforeach ?>
