@@ -216,7 +216,7 @@ class MessageController extends AbstractBaseController {
 		if ($this->deliverMessage($tree, $from_email, $from_name, $to_user, $subject, $body, $url, $ip)) {
 			FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->getRealName())), 'success');
 
-			$url = $url ?: route('home-page', ['ged' => $tree->getName()]);
+			$url = $url ?: route('tree-page', ['ged' => $tree->getName()]);
 
 			return new RedirectResponse($url);
 		} else {
@@ -310,7 +310,7 @@ class MessageController extends AbstractBaseController {
 		if ($this->deliverMessage($tree, $user->getEmail(), $user->getRealName(), $to_user, $subject, $body, $url, $ip)) {
 			FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->getRealName())), 'success');
 
-			$url = $url ?: route('home-page', ['ged' => $tree->getName()]);
+			$url = $url ?: route('tree-page', ['ged' => $tree->getName()]);
 
 			return new RedirectResponse($url);
 		} else {

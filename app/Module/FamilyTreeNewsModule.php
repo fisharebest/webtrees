@@ -202,7 +202,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			]);
 		}
 
-		$url = route('home-page', [
+		$url = route('tree-page', [
 			'ged' => $tree->getName(),
 		]);
 
@@ -231,7 +231,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			'tree_id' => $tree->getTreeId(),
 		]);
 
-		$url = route('home-page', [
+		$url = route('tree-page', [
 			'ged' => $tree->getName(),
 		]);
 

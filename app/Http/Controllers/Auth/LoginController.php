@@ -124,7 +124,7 @@ class LoginController extends AbstractBaseController {
 					'tree_id' => $tree ? $tree->getTreeId() : 0,
 				])->fetchOne();
 
-				$url = route('home-page', ['ged' => $ged]);
+				$url = route('tree-page', ['ged' => $ged]);
 			}
 
 			// Redirect to the target URL
