@@ -1,0 +1,76 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2018 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* The administration theme is mostly vanilla bootstrap. */
+
+.wt-global {
+	background: url(paper_fibers.png); /* http://www.subtlepatterns.com */
+}
+@media (min-device-pixel-ratio: 2) {
+	.wt-global {
+		background: url(paper_fibers_@2X.png);
+	}
+}
+
+/* Raw GEDCOM data */
+.gedcom-data {
+	white-space: pre-wrap;
+}
+
+.gedcom-data ins {
+	text-decoration: none;
+	background-color: #eea;
+}
+
+/* Combine bootstrap styling with phpinfo() styling */
+.php-info table {
+	width: 100%;
+}
+.php-info .center {
+	text-align: center;
+}
+.php-info .center table {
+	margin: 1em auto;
+	text-align: left;
+}
+.php-info .center th {
+	text-align: center;
+}
+.php-info td,
+.php-info th {
+	border: 1px solid #666;
+	vertical-align: baseline;
+	padding: 4px 5px;
+}
+.php-info .e {
+	background-color: #ccf;
+	width: 300px;
+}
+.php-info .h {
+	background-color: #99c;
+}
+.php-info .v {
+	background-color: #ddd;
+	max-width: 300px;
+	overflow-x: auto;
+	word-break: break-all;
+}
+.php-info .v i {
+	color: #999;
+}
+.php-info img {
+	float: right;
+	border: 0;
+}

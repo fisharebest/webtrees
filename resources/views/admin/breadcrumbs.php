@@ -1,5 +1,5 @@
 <nav class="wt-breadcrumbs" aria-label="breadcrumb" role="navigation">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb small py-2">
 		<?php foreach ($links as $url => $label): ?>
 			<?php if (is_int($url)): ?>
 				<li class="breadcrumb-item active">
