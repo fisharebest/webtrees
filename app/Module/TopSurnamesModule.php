@@ -123,7 +123,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -176,7 +176,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			'tagcloud' => /* I18N: An option in a list-box */ I18N::translate('tag cloud'),
 		];
 
-		echo view('blocks/top-surnames-config', [
+		echo view('modules/top10_surnames/config', [
 			'num'         => $num,
 			'infoStyle'   => $infoStyle,
 			'info_styles' => $info_styles,

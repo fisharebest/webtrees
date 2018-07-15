@@ -93,7 +93,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -147,7 +147,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
 		];
 
-		echo view('blocks/recent-changes-config', [
+		echo view('modules/recent_changes/config', [
 			'days'        => $days,
 			'infoStyle'   => $infoStyle,
 			'info_styles' => $info_styles,

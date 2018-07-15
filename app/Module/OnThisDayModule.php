@@ -122,13 +122,15 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
 		if (empty($facts)) {
-			$content = view('blocks/events-empty', [
-				'message' => I18N::translate('No events exist for today.')
+			$content = view('modules/todays_events/empty');
+		} elseif ($infoStyle === 'list') {
+			$content = view('modules/todays_events/list', [
+				'facts' => $facts,
 			]);
 		} else {
-			$content = view('blocks/events-' . $infoStyle, [
-					'facts'   => $facts,
-				]);
+			$content = view('modules/todays_events/table', [
+				'facts' => $facts,
+			]);
 		}
 
 		if ($template) {
@@ -140,7 +142,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -209,7 +211,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 			'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date'),
 		];
 
-		echo view('blocks/on-this-day-config', [
+		echo view('modules/todays_events/config', [
 			'all_events'  => $all_events,
 			'event_array' => $event_array,
 			'filter'      => $filter,

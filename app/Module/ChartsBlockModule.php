@@ -80,7 +80,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 						'generations' => 3,
 						'layout'      => PedigreeChartController::PORTRAIT,
 					]);
-					$content = view('blocks/chart', [
+					$content = view('modules/charts/chart', [
 						'block_id'  => $block_id,
 						'chart_url' => $chart_url,
 					]);
@@ -93,7 +93,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 						'generations' => 2,
 						'chart_style' => 0,
 					]);
-					$content = view('blocks/chart', [
+					$content = view('modules/charts/chart', [
 						'block_id'  => $block_id,
 						'chart_url' => $chart_url,
 					]);
@@ -106,7 +106,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 						'generations' => 2,
 						'layout'      => PedigreeChartController::PORTRAIT,
 					]);
-					$content = view('blocks/chart', [
+					$content = view('modules/charts/chart', [
 						'block_id'  => $block_id,
 						'chart_url' => $chart_url,
 					]);
@@ -140,7 +140,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -199,7 +199,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		$individual = Individual::getInstance($pid, $tree);
 
-		echo view('blocks/charts-config', [
+		echo view('modules/charts/config', [
 			'charts'     => $charts,
 			'individual' => $individual,
 			'tree'       => $tree,

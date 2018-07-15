@@ -74,10 +74,10 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 			];
 		}
 
-		$content = view('blocks/welcome', ['links' => $links]);
+		$content = view('modules/gedcom_block/welcome', ['links' => $links]);
 
 		if ($template) {
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

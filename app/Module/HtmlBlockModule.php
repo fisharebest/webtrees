@@ -82,7 +82,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -130,9 +130,9 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$templates = [
-			I18N::translate('Keyword examples')      => view('blocks/html-template-keywords', []),
-			I18N::translate('Narrative description') => view('blocks/html-template-narrative', []),
-			I18N::translate('Statistics')            => view('blocks/html-template-statistics', []),
+			I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
+			I18N::translate('Narrative description') => view('modules/html/template-narrative', []),
+			I18N::translate('Statistics')            => view('modules/html/template-statistics', []),
 		];
 
 		$title          = $this->getBlockSetting($block_id, 'title', '');
@@ -141,7 +141,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
 		$all_trees      = Tree::getNameList();
 
-		echo view('blocks/html-config', [
+		echo view('modules/html/config', [
 			'all_trees'       => $all_trees,
 			'html'            => $html,
 			'languages'       => $languages,

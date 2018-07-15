@@ -81,14 +81,14 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			'tree_id' => $tree->getTreeId(),
 		])->fetchAll();
 
-		$content = view('blocks/news', [
+		$content = view('modules/gedcom_news/list', [
 			'articles' => $articles,
 			'block_id' => $block_id,
 			'limit'    => 5,
 		]);
 
 		if ($template) {
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',
@@ -157,7 +157,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 
 		$title = I18N::translate('Add/edit a journal/news entry');
 
-		return $this->viewResponse('blocks/news-edit', [
+		return $this->viewResponse('modules/gedcom_news/edit', [
 			'body'    => $row->body,
 			'news_id' => $news_id,
 			'subject' => $row->subject,

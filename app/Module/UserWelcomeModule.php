@@ -73,10 +73,10 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 			'title' => I18N::translate('My account'),
 			'icon'  => 'icon-mypage',
 		];
-		$content = view('blocks/welcome', ['links' => $links]);
+		$content = view('modules/user_welcome/welcome', ['links' => $links]);
 
 		if ($template) {
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

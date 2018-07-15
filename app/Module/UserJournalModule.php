@@ -76,14 +76,14 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			'user_id' => Auth::id(),
 		])->fetchAll();
 
-		$content = view('blocks/journal', [
+		$content = view('modules/user_blog/list', [
 			'articles' => $articles,
 			'block_id' => $block_id,
 			'limit'    => 5,
 		]);
 
 		if ($template) {
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',
@@ -149,7 +149,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 
 		$title = I18N::translate('Add/edit a journal/news entry');
 
-		return $this->viewResponse('blocks/journal-edit', [
+		return $this->viewResponse('modules/user_blog/edit', [
 			'body'    => $row->body,
 			'news_id' => $news_id,
 			'subject' => $row->subject,

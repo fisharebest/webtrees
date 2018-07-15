@@ -59,7 +59,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			case 'list':
 				$males   = $stats->commonGivenMaleTotals([1, $num, 'rcount']);
 				$females = $stats->commonGivenFemaleTotals([1, $num, 'rcount']);
-				$content = view('blocks/top-given-names-list', [
+				$content = view('modules/top10_givnnames/list', [
 					'males'   => $males,
 					'females' => $females,
 				]);
@@ -68,7 +68,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			case 'table':
 				$males   = $stats->commonGivenMaleTable([1, $num, 'rcount']);
 				$females = $stats->commonGivenFemaleTable([1, $num, 'rcount']);
-				$content = view('blocks/top-given-names-table', [
+				$content = view('modules/top10_givnnames/table', [
 					'males'   => $males,
 					'females' => $females,
 				]);
@@ -92,7 +92,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -143,7 +143,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
 		];
 
-		echo view('blocks/top-given-names-config', [
+		echo view('modules/top10_givnnames/config', [
 			'infoStyle'   => $infoStyle,
 			'info_styles' => $info_styles,
 			'num'         => $num,

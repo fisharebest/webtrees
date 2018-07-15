@@ -134,7 +134,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 					$config_url = '';
 				}
 
-				return view('blocks/template', [
+				return view('modules/block-template', [
 					'block'      => str_replace('_', '-', $this->getName()),
 					'id'         => $block_id,
 					'config_url' => $config_url,
@@ -183,7 +183,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
 		$days     = $this->getBlockSetting($block_id, 'days', '1');
 
-		echo view('blocks/review-changes-config', [
+		echo view('modules/review_changes/config', [
 			'days'     => $days,
 			'sendmail' => $sendmail,
 		]);

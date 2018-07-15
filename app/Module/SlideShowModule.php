@@ -108,7 +108,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($random_media) {
-			$content = view('blocks/slide-show', [
+			$content = view('modules/random_media/slide-show', [
 				'block_id'            => $block_id,
 				'media'               => $random_media,
 				'media_file'          => $media_file,
@@ -129,7 +129,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -218,7 +218,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 
 		$formats = GedcomTag::getFileFormTypes();
 
-		echo view('blocks/slide-show-config', [
+		echo view('modules/random_media/config', [
 			'controls' => $controls,
 			'filter'   => $filter,
 			'filters'  => $filters,

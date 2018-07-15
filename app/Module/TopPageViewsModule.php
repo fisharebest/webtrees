@@ -99,7 +99,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -165,7 +165,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'after'  => /* I18N: An option in a list-box */ I18N::translate('after'),
 		];
 
-		echo view('blocks/top-page-views-config', [
+		echo view('modules/top10_pageviews/config', [
 			'count_placement' => $count_placement,
 			'num'             => $num,
 			'options'         => $options,

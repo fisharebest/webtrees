@@ -129,13 +129,13 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 
 		switch ($infoStyle) {
 			case 'list':
-				$content = view('blocks/yahrzeit-list', [
+				$content = view('modules/yahrzeit/list', [
 					'yahrzeits' => $yahrzeits,
 				]);
 				break;
 			case 'table':
 			default:
-				$content = view('blocks/yahrzeit-table', [
+				$content = view('modules/yahrzeit/table', [
 					'yahrzeits' => $yahrzeits,
 				]);
 			break;
@@ -150,7 +150,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -195,7 +195,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
-		$days      = $this->getBlockSetting($block_id, 'days', 'self::DEFAULT_DAYS');
+		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		$styles = [
@@ -208,7 +208,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			'gregorian' => I18N::translate('Gregorian'),
 		];
 
-		echo view('blocks/yahrzeit-config', [
+		echo view('modules/yahrzeit/config', [
 			'calendar'  => $calendar,
 			'calendars' => $calendars,
 			'days'      => $days,

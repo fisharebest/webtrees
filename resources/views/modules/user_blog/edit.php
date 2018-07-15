@@ -37,7 +37,7 @@
 					<?= I18N::translate('save') ?>
 				</button>
 
-				<a class="btn btn-secondary" href="<?= e(route('tree-page', ['ged' => $tree->getName()])) ?>">
+				<a class="btn btn-secondary" href="<?= e(route('user-page', ['ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('cancel') ?>
 				</a>
 			</td>

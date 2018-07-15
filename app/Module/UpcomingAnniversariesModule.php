@@ -134,19 +134,22 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
 		if (empty($facts)) {
 			if ($endjd == $startjd) {
-				$content = view('blocks/events-empty', [
+				$content = view('modules/upcoming_events/empty', [
 					'message' => I18N::translate('No events exist for tomorrow.')
 				]);
 			} else {
-				$content = view('blocks/events-empty', [
+				$content = view('modules/upcoming_events/empty', [
 					'message' => /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1))
 				]);
 			}
+		} elseif ($infoStyle === 'list') {
+			$content = view('modules/upcoming_events/list', [
+				'facts'   => $facts,
+			]);
 		} else {
-			$content = view('blocks/events-' . $infoStyle, [
-					'facts'   => $facts,
-				]
-			);
+			$content = view('modules/upcoming_events/table', [
+				'facts'   => $facts,
+			]);
 		}
 
 		if ($template) {
@@ -158,7 +161,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -229,7 +232,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 			'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date'),
 		];
 
-		echo view('blocks/upcoming-anniversaries-config', [
+		echo view('modules/upcoming_events/config', [
 			'all_events'  => $all_events,
 			'days'        => $days,
 			'event_array' => $event_array,

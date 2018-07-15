@@ -92,7 +92,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$surnames = '';
 		}
 
-		$content = view('blocks/family-tree-statistics', [
+		$content = view('modules/gedcom_stats/statistics', [
 			'show_last_update'     => $show_last_update,
 			'show_common_surnames' => $show_common_surnames,
 			'number_of_surnames'   => $number_of_surnames,
@@ -125,7 +125,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -206,7 +206,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		$stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
 		$stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-		echo view('blocks/family-tree-statistics-config', [
+		echo view('modules/gedcom_stats/config', [
 			'show_last_update'     => $show_last_update,
 			'show_common_surnames' => $show_common_surnames,
 			'number_of_surnames'   => $number_of_surnames,

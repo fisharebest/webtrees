@@ -52,7 +52,7 @@ class HomePageController extends AbstractBaseController {
 		$block    = $this->treeBlock($request);
 		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
-		return $this->viewResponse('blocks/edit-config', [
+		return $this->viewResponse('modules/edit-block-config', [
 			'block'      => $block,
 			'block_id'   => $block_id,
 			'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
@@ -134,7 +134,7 @@ class HomePageController extends AbstractBaseController {
 		$block    = $this->userBlock($request);
 		$title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
-		return $this->viewResponse('blocks/edit-config', [
+		return $this->viewResponse('modules/edit-block-config', [
 			'block'      => $block,
 			'block_id'   => $block_id,
 			'cancel_url' => route('user-page', ['ged' => $tree->getName()]),

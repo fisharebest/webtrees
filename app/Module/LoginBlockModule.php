@@ -47,18 +47,18 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
 		if (Auth::check()) {
 			$title   = I18N::translate('Sign out');
-			$content = view('blocks/sign-out', [
+			$content = view('modules/login_block/sign-out', [
 				'user' => Auth::user(),
 				]);
 		} else {
 			$title   = I18N::translate('Sign in');
-			$content = view('blocks/sign-in', [
+			$content = view('modules/login_block/sign-in', [
 				'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE')
 			]);
 		}
 
 		if ($template) {
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => '',

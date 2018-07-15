@@ -89,7 +89,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		if (empty($records)) {
 			$content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
 		} else {
-			$content = view('blocks/research-tasks', ['tasks' => $tasks]);
+			$content = view('modules/todo/research-tasks', ['tasks' => $tasks]);
 		}
 
 		if ($template) {
@@ -101,7 +101,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				$config_url = '';
 			}
 
-			return view('blocks/template', [
+			return view('modules/block-template', [
 				'block'      => str_replace('_', '-', $this->getName()),
 				'id'         => $block_id,
 				'config_url' => $config_url,
@@ -149,7 +149,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
 		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
 
-		echo view('blocks/research-tasks-config', [
+		echo view('modules/todo/config', [
 			'show_future'     => $show_future,
 			'show_other'      => $show_other,
 			'show_unassigned' => $show_unassigned,
