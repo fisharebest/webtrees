@@ -83,14 +83,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 		if ($gedcomid !== '') {
 			return new Menu(
 				I18N::translate('Relationship to me'),
-				e(route('relationships', ['xref1' => $gedcomid, 'xref2' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+				route('relationships', ['xref1' => $gedcomid, 'xref2' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 				'menu-chart-relationship',
 				['rel' => 'nofollow']
 			);
 		} else {
 			return new Menu(
 				I18N::translate('Relationships'),
-				e(route('relationships', ['xref1' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+				route('relationships', ['xref1' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 				'menu-chart-relationship',
 				['rel' => 'nofollow']
 			);

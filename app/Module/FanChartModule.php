@@ -66,7 +66,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 		if (function_exists('imagettftext')) {
 			return new Menu(
 				$this->getTitle(),
-				e(route('fan', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+				route('fan', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 				'menu-chart-fanchart',
 				['rel' => 'nofollow']
 			);

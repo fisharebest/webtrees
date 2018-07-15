@@ -99,7 +99,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 		$route = $request->get('route');
 
 		$submenus = [
-			new Menu($this->getTitle(), e(route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->getName()])), 'menu-clippings-cart', ['rel' => 'nofollow']),
+			new Menu($this->getTitle(), route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->getName()]), 'menu-clippings-cart', ['rel' => 'nofollow']),
 		];
 
 		if (in_array($route, self::ROUTES_WITH_RECORDS)) {
@@ -107,12 +107,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface 
 			$action    = 'Add' . ucfirst($route);
 			$add_route = route('module', ['module' => 'clippings', 'action' => $action, 'xref' => $xref, 'ged' => $tree->getName()]);
 
-			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), e($add_route), 'menu-clippings-add', ['rel' => 'nofollow']);
+			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), $add_route, 'menu-clippings-add', ['rel' => 'nofollow']);
 		}
 
 		if (!$this->isCartEmpty($tree)) {
-			$submenus[] = new Menu(I18N::translate('Empty the clippings cart'), e(route('module', ['module' => 'clippings', 'action' => 'Empty', 'ged' => $tree->getName()])), 'menu-clippings-empty', ['rel' => 'nofollow']);
-			$submenus[] = new Menu(I18N::translate('Download'), e(route('module', ['module' => 'clippings', 'action' => 'DownloadForm', 'ged' => $tree->getName()])), 'menu-clippings-download', ['rel' => 'nofollow']);
+			$submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', ['module' => 'clippings', 'action' => 'Empty', 'ged' => $tree->getName()]), 'menu-clippings-empty', ['rel' => 'nofollow']);
+			$submenus[] = new Menu(I18N::translate('Download'), route('module', ['module' => 'clippings', 'action' => 'DownloadForm', 'ged' => $tree->getName()]), 'menu-clippings-download', ['rel' => 'nofollow']);
 		}
 
 		return new Menu($this->getTitle(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);

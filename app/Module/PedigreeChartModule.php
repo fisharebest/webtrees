@@ -63,7 +63,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			e(route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+			route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 			'menu-chart-pedigree',
 			['rel' => 'nofollow']
 		);

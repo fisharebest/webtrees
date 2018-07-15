@@ -90,7 +90,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 
 			if (!empty($submenus)) {
 				// Insert a dummy menu / label into the submenu
-				array_unshift($submenus, new Menu($menu->getLabel(), null, null, ['onclick' => 'return false;']));
+				array_unshift($submenus, new Menu($menu->getLabel(), '#', null, ['onclick' => 'return false;']));
 				$menu->setSubmenus($submenus);
 			}
 		}

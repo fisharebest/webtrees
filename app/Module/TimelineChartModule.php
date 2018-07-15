@@ -63,7 +63,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			e(route('timeline', ['xrefs[]' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+			route('timeline', ['xrefs[]' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 			'menu-chart-timeline',
 			['rel' => 'nofollow']
 		);

@@ -67,7 +67,7 @@ class Menu {
 				}
 
 				$class = trim('dropdown-item ' . $submenu->class);
-				$submenus .= '<a class="' . $class . '" href="' . $submenu->link . '"' . $attrs . '>' . $submenu->label . '</a>';
+				$submenus .= '<a class="' . $class . '" href="' . e($submenu->link) . '"' . $attrs . '>' . $submenu->label . '</a>';
 			}
 
 			$class = trim('nav-item dropdown ' . $this->class);
@@ -89,7 +89,7 @@ class Menu {
 
 			$class = trim('nav-item ' . $this->class);
 
-			return '<li class="' . $class . '"><a class="nav-link" href="' . $this->link . '"' . $attrs . '>' . $this->label . '</a></li>';
+			return '<li class="' . $class . '"><a class="nav-link" href="' . e($this->link) . '"' . $attrs . '>' . $this->label . '</a></li>';
 		}
 	}
 
@@ -205,7 +205,7 @@ class Menu {
 			$attrs .= ' ' . $key . '="' . e($value) . '"';
 		}
 		if ($this->link) {
-			$link = ' href="' . $this->link . '"';
+			$link = ' href="' . e($this->link) . '"';
 		} else {
 			$link = '';
 		}

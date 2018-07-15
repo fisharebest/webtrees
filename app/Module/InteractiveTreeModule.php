@@ -99,7 +99,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
 			$this->getTitle(),
-			e(route('module', ['module' => $this->getName(), 'action' => 'Treeview', 'xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()])),
+			route('module', ['module' => $this->getName(), 'action' => 'Treeview', 'xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
 			'menu-chart-tree',
 			['rel' => 'nofollow']
 		);

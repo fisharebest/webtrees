@@ -80,7 +80,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		])->fetchAll();
 
 		if ($faqs) {
-			return new Menu($this->getTitle(), e(route('module', ['module' => 'faq', 'action' => 'Show', 'ged' => $tree->getName()])), 'menu-help');
+			return new Menu($this->getTitle(), route('module', ['module' => 'faq', 'action' => 'Show', 'ged' => $tree->getName()]), 'menu-help');
 		} else {
 			return null;
 		}
