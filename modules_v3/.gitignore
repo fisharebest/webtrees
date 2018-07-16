@@ -17,7 +17,6 @@
 !/descendancy_report/
 !/extra_info/
 !/fact_sources/
-!/families/
 !/family_book_chart/
 !/family_group_report/
 !/family_nav/
@@ -32,7 +31,6 @@
 !/html/
 !/individual_ext_report/
 !/individual_report/
-!/individuals/
 !/lifespans_chart/
 !/lightbox/
 !/logged_in/
@@ -44,9 +42,11 @@
 !/occupation_report/
 !/openstreetmap/
 !/page_menu/
+!/pedigree-map/
 !/pedigree_chart/
 !/pedigree_report/
 !/personal_facts/
+!/places/
 !/random_media/
 !/recent_changes/
 !/relationships_chart/
