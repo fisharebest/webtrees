@@ -858,13 +858,17 @@ $(function () {
     // Same formatting for both selections and rsult
     //templateResult: templateOptionForSelect2,
     //templateSelection: templateOptionForSelect2
-  });
-
+  })
   // If we clear the select (using the "X" button), we need an empty
   // value (rather than no value at all) for inputs with name="array[]"
-	$('select.select2').on('select2:unselect', function (evt) {
+	.on('select2:unselect', function (evt) {
     $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
-	});
+	})
+  // Select2 adds titles.  Remove them.
+  // https://stackoverflow.com/questions/35500508/how-to-disable-the-title-in-select2
+	.on('change', function (evt) {
+    $('.select2-selection__rendered').removeAttr('title');
+  });
 
   // Datatables - locale aware sorting
   $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
