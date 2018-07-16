@@ -21,6 +21,8 @@ use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\I18N;
@@ -140,21 +142,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 ],
             ];
         }
-    }
-
-    /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
-    {
-
-        return view(
-            'modules/openstreetmap/map',
-            [
-                'assets' => $this->assets(),
-                'module' => $this->getName(),
-                'ref'    => $individual->getXref(),
-                'type'   => 'individual',
-            ]
-        );
     }
 
     /**
@@ -410,6 +397,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $maxgenerations = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
         $generations    = $request->get('generations', $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
+        if ($individual === null) {
+            throw new IndividualNotFoundException;
+        } elseif (!$individual->canShow()) {
+            throw new IndividualAccessDeniedException;
+        }
+        
         return (object)[
             'name' => 'modules/openstreetmap/pedigreemap',
             'data' => [
